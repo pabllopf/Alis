@@ -303,12 +303,12 @@ namespace Alis.Core.Ecs.Core
         {
             if (NoneComponentRunnerTable.TryGetValue(type, out IComponentStorageBaseFactory fac))
             {
-                return (IdTable) fac.CreateStack();
+                return fac.CreateStack();
             }
 
             if (GenerationServices.UserGeneratedTypeMap.TryGetValue(type, out (IComponentStorageBaseFactory Factory, int UpdateOrder) data))
             {
-                return (IdTable) data.Factory.CreateStack();
+                return data.Factory.CreateStack();
             }
 
             if (type == typeof(void))

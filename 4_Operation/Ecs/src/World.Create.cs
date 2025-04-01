@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs
       Archetype existingArchetype = Archetype<T1, T2>.CreateNewOrGetExistingArchetype(this);
       
       EntityLocation entityLocation = new EntityLocation();
-      Unsafe.SkipInit<int>(out int physicalIndex);
+      Unsafe.SkipInit(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
       
       ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
@@ -60,20 +60,26 @@ namespace Alis.Core.Ecs
         local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
         entityLocation.Archetype = this.DeferredCreateArchetype;
       }
-      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
       entityLocation.Version = version;
       this.EntityTable[num] = entityLocation;
-      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2>.OfComponent<T1>.Index))[physicalIndex];
+      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2>.OfComponent<T1>.Index))[physicalIndex];
       local2 = comp1;
-      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2>.OfComponent<T2>.Index))[physicalIndex];
+      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2>.OfComponent<T2>.Index))[physicalIndex];
       local3 = comp2;
       Entity entity = new Entity(this.ID, version, num);
       ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
       if (initer1 != null)
-        initer1(entity, ref local2);
+      {
+          initer1(entity, ref local2);
+      }
+
       ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
       if (initer2 != null)
-        initer2(entity, ref local3);
+      {
+          initer2(entity, ref local3);
+      }
+
       this.EntityCreatedEvent.Invoke(entity);
       return entity;
     }
@@ -84,7 +90,10 @@ namespace Alis.Core.Ecs
     public ChunkTuple<T1, T2> CreateMany<T1, T2>(int count)
     {
       if (count < 0)
-        FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      {
+          FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      }
+
       Archetype existingArchetype = Archetype<T1, T2>.CreateNewOrGetExistingArchetype(this);
       int entityCount = existingArchetype.EntityCount;
       this.EntityTable.EnsureCapacity(this.EntityCount + count);
@@ -95,9 +104,11 @@ namespace Alis.Core.Ecs
         for (int index = 0; index < span.Length; ++index)
           this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
       }
-      ChunkTuple<T1, T2> many = new ChunkTuple<T1, T2>();
-      many.Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations);
-      ref ChunkTuple<T1, T2> local1 = ref many;
+      ChunkTuple<T1, T2> many = new ChunkTuple<T1, T2>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+          };
+          ref ChunkTuple<T1, T2> local1 = ref many;
       Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
       ref Span<T1> local2 = ref componentSpan1;
       int start1 = entityCount;
@@ -122,7 +133,7 @@ namespace Alis.Core.Ecs
       Archetype existingArchetype = Archetype<T1, T2, T3>.CreateNewOrGetExistingArchetype(this);
       
       EntityLocation entityLocation = new EntityLocation();
-      Unsafe.SkipInit<int>(out int physicalIndex);
+      Unsafe.SkipInit(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
       
       ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
@@ -137,25 +148,34 @@ namespace Alis.Core.Ecs
         local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
         entityLocation.Archetype = this.DeferredCreateArchetype;
       }
-      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
       entityLocation.Version = version;
       this.EntityTable[num] = entityLocation;
-      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3>.OfComponent<T1>.Index))[physicalIndex];
+      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3>.OfComponent<T1>.Index))[physicalIndex];
       local2 = comp1;
-      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3>.OfComponent<T2>.Index))[physicalIndex];
+      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3>.OfComponent<T2>.Index))[physicalIndex];
       local3 = comp2;
-      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3>.OfComponent<T3>.Index))[physicalIndex];
+      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3>.OfComponent<T3>.Index))[physicalIndex];
       local4 = comp3;
       Entity entity = new Entity(this.ID, version, num);
       ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
       if (initer1 != null)
-        initer1(entity, ref local2);
+      {
+          initer1(entity, ref local2);
+      }
+
       ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
       if (initer2 != null)
-        initer2(entity, ref local3);
+      {
+          initer2(entity, ref local3);
+      }
+
       ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
       if (initer3 != null)
-        initer3(entity, ref local4);
+      {
+          initer3(entity, ref local4);
+      }
+
       this.EntityCreatedEvent.Invoke(entity);
       return entity;
     }
@@ -166,7 +186,10 @@ namespace Alis.Core.Ecs
     public ChunkTuple<T1, T2, T3> CreateMany<T1, T2, T3>(int count)
     {
       if (count < 0)
-        FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      {
+          FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      }
+
       Archetype existingArchetype = Archetype<T1, T2, T3>.CreateNewOrGetExistingArchetype(this);
       int entityCount = existingArchetype.EntityCount;
       this.EntityTable.EnsureCapacity(this.EntityCount + count);
@@ -177,9 +200,11 @@ namespace Alis.Core.Ecs
         for (int index = 0; index < span.Length; ++index)
           this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
       }
-      ChunkTuple<T1, T2, T3> many = new ChunkTuple<T1, T2, T3>();
-      many.Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations);
-      ref ChunkTuple<T1, T2, T3> local1 = ref many;
+      ChunkTuple<T1, T2, T3> many = new ChunkTuple<T1, T2, T3>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+          };
+          ref ChunkTuple<T1, T2, T3> local1 = ref many;
       Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
       ref Span<T1> local2 = ref componentSpan1;
       int start1 = entityCount;
@@ -208,7 +233,7 @@ namespace Alis.Core.Ecs
       Archetype existingArchetype = Archetype<T1, T2, T3, T4>.CreateNewOrGetExistingArchetype(this);
       
       EntityLocation entityLocation = new EntityLocation();
-      Unsafe.SkipInit<int>(out int physicalIndex);
+      Unsafe.SkipInit(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
       
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
@@ -223,30 +248,42 @@ namespace Alis.Core.Ecs
         local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
         entityLocation.Archetype = this.DeferredCreateArchetype;
       }
-      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
       entityLocation.Version = version;
       this.EntityTable[num] = entityLocation;
-      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4>.OfComponent<T1>.Index))[physicalIndex];
+      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4>.OfComponent<T1>.Index))[physicalIndex];
       local2 = comp1;
-      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4>.OfComponent<T2>.Index))[physicalIndex];
+      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4>.OfComponent<T2>.Index))[physicalIndex];
       local3 = comp2;
-      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4>.OfComponent<T3>.Index))[physicalIndex];
+      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4>.OfComponent<T3>.Index))[physicalIndex];
       local4 = comp3;
-      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4>.OfComponent<T4>.Index))[physicalIndex];
+      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4>.OfComponent<T4>.Index))[physicalIndex];
       local5 = comp4;
       Entity entity = new Entity(this.ID, version, num);
       ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
       if (initer1 != null)
-        initer1(entity, ref local2);
+      {
+          initer1(entity, ref local2);
+      }
+
       ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
       if (initer2 != null)
-        initer2(entity, ref local3);
+      {
+          initer2(entity, ref local3);
+      }
+
       ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
       if (initer3 != null)
-        initer3(entity, ref local4);
+      {
+          initer3(entity, ref local4);
+      }
+
       ComponentDelegates<T4>.InitDelegate initer4 = Component<T4>.Initer;
       if (initer4 != null)
-        initer4(entity, ref local5);
+      {
+          initer4(entity, ref local5);
+      }
+
       this.EntityCreatedEvent.Invoke(entity);
       return entity;
     }
@@ -257,7 +294,10 @@ namespace Alis.Core.Ecs
     public ChunkTuple<T1, T2, T3, T4> CreateMany<T1, T2, T3, T4>(int count)
     {
       if (count < 0)
-        FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      {
+          FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      }
+
       Archetype existingArchetype = Archetype<T1, T2, T3, T4>.CreateNewOrGetExistingArchetype(this);
       int entityCount = existingArchetype.EntityCount;
       this.EntityTable.EnsureCapacity(this.EntityCount + count);
@@ -268,9 +308,11 @@ namespace Alis.Core.Ecs
         for (int index = 0; index < span.Length; ++index)
           this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
       }
-      ChunkTuple<T1, T2, T3, T4> many = new ChunkTuple<T1, T2, T3, T4>();
-      many.Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations);
-      ref ChunkTuple<T1, T2, T3, T4> local1 = ref many;
+      ChunkTuple<T1, T2, T3, T4> many = new ChunkTuple<T1, T2, T3, T4>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+          };
+          ref ChunkTuple<T1, T2, T3, T4> local1 = ref many;
       Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
       ref Span<T1> local2 = ref componentSpan1;
       int start1 = entityCount;
@@ -312,7 +354,7 @@ namespace Alis.Core.Ecs
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5>.CreateNewOrGetExistingArchetype(this);
       
       EntityLocation entityLocation = new EntityLocation();
-      Unsafe.SkipInit<int>(out int physicalIndex);
+      Unsafe.SkipInit(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
       
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
@@ -327,35 +369,50 @@ namespace Alis.Core.Ecs
         local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
         entityLocation.Archetype = this.DeferredCreateArchetype;
       }
-      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
       entityLocation.Version = version;
       this.EntityTable[num] = entityLocation;
-      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5>.OfComponent<T1>.Index))[physicalIndex];
+      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5>.OfComponent<T1>.Index))[physicalIndex];
       local2 = comp1;
-      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5>.OfComponent<T2>.Index))[physicalIndex];
+      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5>.OfComponent<T2>.Index))[physicalIndex];
       local3 = comp2;
-      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5>.OfComponent<T3>.Index))[physicalIndex];
+      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5>.OfComponent<T3>.Index))[physicalIndex];
       local4 = comp3;
-      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5>.OfComponent<T4>.Index))[physicalIndex];
+      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5>.OfComponent<T4>.Index))[physicalIndex];
       local5 = comp4;
-      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5>.OfComponent<T5>.Index))[physicalIndex];
+      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5>.OfComponent<T5>.Index))[physicalIndex];
       local6 = comp5;
       Entity entity = new Entity(this.ID, version, num);
       ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
       if (initer1 != null)
-        initer1(entity, ref local2);
+      {
+          initer1(entity, ref local2);
+      }
+
       ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
       if (initer2 != null)
-        initer2(entity, ref local3);
+      {
+          initer2(entity, ref local3);
+      }
+
       ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
       if (initer3 != null)
-        initer3(entity, ref local4);
+      {
+          initer3(entity, ref local4);
+      }
+
       ComponentDelegates<T4>.InitDelegate initer4 = Component<T4>.Initer;
       if (initer4 != null)
-        initer4(entity, ref local5);
+      {
+          initer4(entity, ref local5);
+      }
+
       ComponentDelegates<T5>.InitDelegate initer5 = Component<T5>.Initer;
       if (initer5 != null)
-        initer5(entity, ref local6);
+      {
+          initer5(entity, ref local6);
+      }
+
       this.EntityCreatedEvent.Invoke(entity);
       return entity;
     }
@@ -366,7 +423,10 @@ namespace Alis.Core.Ecs
     public ChunkTuple<T1, T2, T3, T4, T5> CreateMany<T1, T2, T3, T4, T5>(int count)
     {
       if (count < 0)
-        FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      {
+          FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      }
+
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5>.CreateNewOrGetExistingArchetype(this);
       int entityCount = existingArchetype.EntityCount;
       this.EntityTable.EnsureCapacity(this.EntityCount + count);
@@ -377,9 +437,11 @@ namespace Alis.Core.Ecs
         for (int index = 0; index < span.Length; ++index)
           this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
       }
-      ChunkTuple<T1, T2, T3, T4, T5> many = new ChunkTuple<T1, T2, T3, T4, T5>();
-      many.Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations);
-      ref ChunkTuple<T1, T2, T3, T4, T5> local1 = ref many;
+      ChunkTuple<T1, T2, T3, T4, T5> many = new ChunkTuple<T1, T2, T3, T4, T5>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+          };
+          ref ChunkTuple<T1, T2, T3, T4, T5> local1 = ref many;
       Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
       ref Span<T1> local2 = ref componentSpan1;
       int start1 = entityCount;
@@ -428,7 +490,7 @@ namespace Alis.Core.Ecs
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6>.CreateNewOrGetExistingArchetype(this);
       
       EntityLocation entityLocation = new EntityLocation();
-      Unsafe.SkipInit<int>(out int physicalIndex);
+      Unsafe.SkipInit(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
       
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
@@ -443,40 +505,58 @@ namespace Alis.Core.Ecs
         local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
         entityLocation.Archetype = this.DeferredCreateArchetype;
       }
-      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
       entityLocation.Version = version;
       this.EntityTable[num] = entityLocation;
-      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T1>.Index))[physicalIndex];
+      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T1>.Index))[physicalIndex];
       local2 = comp1;
-      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T2>.Index))[physicalIndex];
+      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T2>.Index))[physicalIndex];
       local3 = comp2;
-      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T3>.Index))[physicalIndex];
+      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T3>.Index))[physicalIndex];
       local4 = comp3;
-      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T4>.Index))[physicalIndex];
+      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T4>.Index))[physicalIndex];
       local5 = comp4;
-      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T5>.Index))[physicalIndex];
+      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T5>.Index))[physicalIndex];
       local6 = comp5;
-      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T6>.Index))[physicalIndex];
+      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6>.OfComponent<T6>.Index))[physicalIndex];
       local7 = comp6;
       Entity entity = new Entity(this.ID, version, num);
       ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
       if (initer1 != null)
-        initer1(entity, ref local2);
+      {
+          initer1(entity, ref local2);
+      }
+
       ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
       if (initer2 != null)
-        initer2(entity, ref local3);
+      {
+          initer2(entity, ref local3);
+      }
+
       ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
       if (initer3 != null)
-        initer3(entity, ref local4);
+      {
+          initer3(entity, ref local4);
+      }
+
       ComponentDelegates<T4>.InitDelegate initer4 = Component<T4>.Initer;
       if (initer4 != null)
-        initer4(entity, ref local5);
+      {
+          initer4(entity, ref local5);
+      }
+
       ComponentDelegates<T5>.InitDelegate initer5 = Component<T5>.Initer;
       if (initer5 != null)
-        initer5(entity, ref local6);
+      {
+          initer5(entity, ref local6);
+      }
+
       ComponentDelegates<T6>.InitDelegate initer6 = Component<T6>.Initer;
       if (initer6 != null)
-        initer6(entity, ref local7);
+      {
+          initer6(entity, ref local7);
+      }
+
       this.EntityCreatedEvent.Invoke(entity);
       return entity;
     }
@@ -487,7 +567,10 @@ namespace Alis.Core.Ecs
     public ChunkTuple<T1, T2, T3, T4, T5, T6> CreateMany<T1, T2, T3, T4, T5, T6>(int count)
     {
       if (count < 0)
-        FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      {
+          FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      }
+
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6>.CreateNewOrGetExistingArchetype(this);
       int entityCount = existingArchetype.EntityCount;
       this.EntityTable.EnsureCapacity(this.EntityCount + count);
@@ -498,9 +581,11 @@ namespace Alis.Core.Ecs
         for (int index = 0; index < span.Length; ++index)
           this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
       }
-      ChunkTuple<T1, T2, T3, T4, T5, T6> many = new ChunkTuple<T1, T2, T3, T4, T5, T6>();
-      many.Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations);
-      ref ChunkTuple<T1, T2, T3, T4, T5, T6> local1 = ref many;
+      ChunkTuple<T1, T2, T3, T4, T5, T6> many = new ChunkTuple<T1, T2, T3, T4, T5, T6>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+          };
+          ref ChunkTuple<T1, T2, T3, T4, T5, T6> local1 = ref many;
       Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
       ref Span<T1> local2 = ref componentSpan1;
       int start1 = entityCount;
@@ -556,7 +641,7 @@ namespace Alis.Core.Ecs
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7>.CreateNewOrGetExistingArchetype(this);
       
       EntityLocation entityLocation = new EntityLocation();
-      Unsafe.SkipInit<int>(out int physicalIndex);
+      Unsafe.SkipInit(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
       
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
@@ -571,45 +656,66 @@ namespace Alis.Core.Ecs
         local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
         entityLocation.Archetype = this.DeferredCreateArchetype;
       }
-      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
       entityLocation.Version = version;
       this.EntityTable[num] = entityLocation;
-      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T1>.Index))[physicalIndex];
+      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T1>.Index))[physicalIndex];
       local2 = comp1;
-      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T2>.Index))[physicalIndex];
+      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T2>.Index))[physicalIndex];
       local3 = comp2;
-      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T3>.Index))[physicalIndex];
+      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T3>.Index))[physicalIndex];
       local4 = comp3;
-      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T4>.Index))[physicalIndex];
+      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T4>.Index))[physicalIndex];
       local5 = comp4;
-      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T5>.Index))[physicalIndex];
+      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T5>.Index))[physicalIndex];
       local6 = comp5;
-      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T6>.Index))[physicalIndex];
+      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T6>.Index))[physicalIndex];
       local7 = comp6;
-      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T7>.Index))[physicalIndex];
+      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7>.OfComponent<T7>.Index))[physicalIndex];
       local8 = comp7;
       Entity entity = new Entity(this.ID, version, num);
       ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
       if (initer1 != null)
-        initer1(entity, ref local2);
+      {
+          initer1(entity, ref local2);
+      }
+
       ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
       if (initer2 != null)
-        initer2(entity, ref local3);
+      {
+          initer2(entity, ref local3);
+      }
+
       ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
       if (initer3 != null)
-        initer3(entity, ref local4);
+      {
+          initer3(entity, ref local4);
+      }
+
       ComponentDelegates<T4>.InitDelegate initer4 = Component<T4>.Initer;
       if (initer4 != null)
-        initer4(entity, ref local5);
+      {
+          initer4(entity, ref local5);
+      }
+
       ComponentDelegates<T5>.InitDelegate initer5 = Component<T5>.Initer;
       if (initer5 != null)
-        initer5(entity, ref local6);
+      {
+          initer5(entity, ref local6);
+      }
+
       ComponentDelegates<T6>.InitDelegate initer6 = Component<T6>.Initer;
       if (initer6 != null)
-        initer6(entity, ref local7);
+      {
+          initer6(entity, ref local7);
+      }
+
       ComponentDelegates<T7>.InitDelegate initer7 = Component<T7>.Initer;
       if (initer7 != null)
-        initer7(entity, ref local8);
+      {
+          initer7(entity, ref local8);
+      }
+
       this.EntityCreatedEvent.Invoke(entity);
       return entity;
     }
@@ -620,7 +726,10 @@ namespace Alis.Core.Ecs
     public ChunkTuple<T1, T2, T3, T4, T5, T6, T7> CreateMany<T1, T2, T3, T4, T5, T6, T7>(int count)
     {
       if (count < 0)
-        FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      {
+          FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      }
+
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7>.CreateNewOrGetExistingArchetype(this);
       int entityCount = existingArchetype.EntityCount;
       this.EntityTable.EnsureCapacity(this.EntityCount + count);
@@ -631,9 +740,11 @@ namespace Alis.Core.Ecs
         for (int index = 0; index < span.Length; ++index)
           this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
       }
-      ChunkTuple<T1, T2, T3, T4, T5, T6, T7> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7>();
-      many.Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations);
-      ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7> local1 = ref many;
+      ChunkTuple<T1, T2, T3, T4, T5, T6, T7> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+          };
+          ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7> local1 = ref many;
       Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
       ref Span<T1> local2 = ref componentSpan1;
       int start1 = entityCount;
@@ -696,7 +807,7 @@ namespace Alis.Core.Ecs
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.CreateNewOrGetExistingArchetype(this);
       
       EntityLocation entityLocation = new EntityLocation();
-      Unsafe.SkipInit<int>(out int physicalIndex);
+      Unsafe.SkipInit(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
       
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
@@ -711,50 +822,74 @@ namespace Alis.Core.Ecs
         local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
         entityLocation.Archetype = this.DeferredCreateArchetype;
       }
-      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
       entityLocation.Version = version;
       this.EntityTable[num] = entityLocation;
-      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T1>.Index))[physicalIndex];
+      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T1>.Index))[physicalIndex];
       local2 = comp1;
-      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T2>.Index))[physicalIndex];
+      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T2>.Index))[physicalIndex];
       local3 = comp2;
-      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T3>.Index))[physicalIndex];
+      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T3>.Index))[physicalIndex];
       local4 = comp3;
-      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T4>.Index))[physicalIndex];
+      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T4>.Index))[physicalIndex];
       local5 = comp4;
-      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T5>.Index))[physicalIndex];
+      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T5>.Index))[physicalIndex];
       local6 = comp5;
-      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T6>.Index))[physicalIndex];
+      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T6>.Index))[physicalIndex];
       local7 = comp6;
-      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T7>.Index))[physicalIndex];
+      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T7>.Index))[physicalIndex];
       local8 = comp7;
-      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T8>.Index))[physicalIndex];
+      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T8>.Index))[physicalIndex];
       local9 = comp8;
       Entity entity = new Entity(this.ID, version, num);
       ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
       if (initer1 != null)
-        initer1(entity, ref local2);
+      {
+          initer1(entity, ref local2);
+      }
+
       ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
       if (initer2 != null)
-        initer2(entity, ref local3);
+      {
+          initer2(entity, ref local3);
+      }
+
       ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
       if (initer3 != null)
-        initer3(entity, ref local4);
+      {
+          initer3(entity, ref local4);
+      }
+
       ComponentDelegates<T4>.InitDelegate initer4 = Component<T4>.Initer;
       if (initer4 != null)
-        initer4(entity, ref local5);
+      {
+          initer4(entity, ref local5);
+      }
+
       ComponentDelegates<T5>.InitDelegate initer5 = Component<T5>.Initer;
       if (initer5 != null)
-        initer5(entity, ref local6);
+      {
+          initer5(entity, ref local6);
+      }
+
       ComponentDelegates<T6>.InitDelegate initer6 = Component<T6>.Initer;
       if (initer6 != null)
-        initer6(entity, ref local7);
+      {
+          initer6(entity, ref local7);
+      }
+
       ComponentDelegates<T7>.InitDelegate initer7 = Component<T7>.Initer;
       if (initer7 != null)
-        initer7(entity, ref local8);
+      {
+          initer7(entity, ref local8);
+      }
+
       ComponentDelegates<T8>.InitDelegate initer8 = Component<T8>.Initer;
       if (initer8 != null)
-        initer8(entity, ref local9);
+      {
+          initer8(entity, ref local9);
+      }
+
       this.EntityCreatedEvent.Invoke(entity);
       return entity;
     }
@@ -766,7 +901,10 @@ namespace Alis.Core.Ecs
       int count)
     {
       if (count < 0)
-        FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      {
+          FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      }
+
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.CreateNewOrGetExistingArchetype(this);
       int entityCount = existingArchetype.EntityCount;
       this.EntityTable.EnsureCapacity(this.EntityCount + count);
@@ -777,9 +915,11 @@ namespace Alis.Core.Ecs
         for (int index = 0; index < span.Length; ++index)
           this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
       }
-      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8>();
-      many.Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations);
-      ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8> local1 = ref many;
+      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+          };
+          ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8> local1 = ref many;
       Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
       ref Span<T1> local2 = ref componentSpan1;
       int start1 = entityCount;
@@ -849,7 +989,7 @@ namespace Alis.Core.Ecs
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.CreateNewOrGetExistingArchetype(this);
       
       EntityLocation entityLocation = new EntityLocation();
-      Unsafe.SkipInit<int>(out int physicalIndex);
+      Unsafe.SkipInit(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
       
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
@@ -864,55 +1004,82 @@ namespace Alis.Core.Ecs
         local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
         entityLocation.Archetype = this.DeferredCreateArchetype;
       }
-      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
       entityLocation.Version = version;
       this.EntityTable[num] = entityLocation;
-      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T1>.Index))[physicalIndex];
+      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T1>.Index))[physicalIndex];
       local2 = comp1;
-      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T2>.Index))[physicalIndex];
+      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T2>.Index))[physicalIndex];
       local3 = comp2;
-      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T3>.Index))[physicalIndex];
+      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T3>.Index))[physicalIndex];
       local4 = comp3;
-      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T4>.Index))[physicalIndex];
+      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T4>.Index))[physicalIndex];
       local5 = comp4;
-      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T5>.Index))[physicalIndex];
+      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T5>.Index))[physicalIndex];
       local6 = comp5;
-      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T6>.Index))[physicalIndex];
+      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T6>.Index))[physicalIndex];
       local7 = comp6;
-      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T7>.Index))[physicalIndex];
+      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T7>.Index))[physicalIndex];
       local8 = comp7;
-      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T8>.Index))[physicalIndex];
+      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T8>.Index))[physicalIndex];
       local9 = comp8;
-      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T9>.Index))[physicalIndex];
+      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.OfComponent<T9>.Index))[physicalIndex];
       local10 = comp9;
       Entity entity = new Entity(this.ID, version, num);
       ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
       if (initer1 != null)
-        initer1(entity, ref local2);
+      {
+          initer1(entity, ref local2);
+      }
+
       ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
       if (initer2 != null)
-        initer2(entity, ref local3);
+      {
+          initer2(entity, ref local3);
+      }
+
       ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
       if (initer3 != null)
-        initer3(entity, ref local4);
+      {
+          initer3(entity, ref local4);
+      }
+
       ComponentDelegates<T4>.InitDelegate initer4 = Component<T4>.Initer;
       if (initer4 != null)
-        initer4(entity, ref local5);
+      {
+          initer4(entity, ref local5);
+      }
+
       ComponentDelegates<T5>.InitDelegate initer5 = Component<T5>.Initer;
       if (initer5 != null)
-        initer5(entity, ref local6);
+      {
+          initer5(entity, ref local6);
+      }
+
       ComponentDelegates<T6>.InitDelegate initer6 = Component<T6>.Initer;
       if (initer6 != null)
-        initer6(entity, ref local7);
+      {
+          initer6(entity, ref local7);
+      }
+
       ComponentDelegates<T7>.InitDelegate initer7 = Component<T7>.Initer;
       if (initer7 != null)
-        initer7(entity, ref local8);
+      {
+          initer7(entity, ref local8);
+      }
+
       ComponentDelegates<T8>.InitDelegate initer8 = Component<T8>.Initer;
       if (initer8 != null)
-        initer8(entity, ref local9);
+      {
+          initer8(entity, ref local9);
+      }
+
       ComponentDelegates<T9>.InitDelegate initer9 = Component<T9>.Initer;
       if (initer9 != null)
-        initer9(entity, ref local10);
+      {
+          initer9(entity, ref local10);
+      }
+
       this.EntityCreatedEvent.Invoke(entity);
       return entity;
     }
@@ -924,7 +1091,10 @@ namespace Alis.Core.Ecs
       int count)
     {
       if (count < 0)
-        FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      {
+          FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      }
+
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.CreateNewOrGetExistingArchetype(this);
       int entityCount = existingArchetype.EntityCount;
       this.EntityTable.EnsureCapacity(this.EntityCount + count);
@@ -935,9 +1105,11 @@ namespace Alis.Core.Ecs
         for (int index = 0; index < span.Length; ++index)
           this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
       }
-      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9>();
-      many.Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations);
-      ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9> local1 = ref many;
+      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+          };
+          ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9> local1 = ref many;
       Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
       ref Span<T1> local2 = ref componentSpan1;
       int start1 = entityCount;
@@ -1014,7 +1186,7 @@ namespace Alis.Core.Ecs
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.CreateNewOrGetExistingArchetype(this);
       
       EntityLocation entityLocation = new EntityLocation();
-      Unsafe.SkipInit<int>(out int physicalIndex);
+      Unsafe.SkipInit(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
       
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
@@ -1029,60 +1201,90 @@ namespace Alis.Core.Ecs
         local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
         entityLocation.Archetype = this.DeferredCreateArchetype;
       }
-      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
       entityLocation.Version = version;
       this.EntityTable[num] = entityLocation;
-      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T1>.Index))[physicalIndex];
+      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T1>.Index))[physicalIndex];
       local2 = comp1;
-      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T2>.Index))[physicalIndex];
+      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T2>.Index))[physicalIndex];
       local3 = comp2;
-      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T3>.Index))[physicalIndex];
+      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T3>.Index))[physicalIndex];
       local4 = comp3;
-      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T4>.Index))[physicalIndex];
+      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T4>.Index))[physicalIndex];
       local5 = comp4;
-      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T5>.Index))[physicalIndex];
+      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T5>.Index))[physicalIndex];
       local6 = comp5;
-      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T6>.Index))[physicalIndex];
+      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T6>.Index))[physicalIndex];
       local7 = comp6;
-      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T7>.Index))[physicalIndex];
+      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T7>.Index))[physicalIndex];
       local8 = comp7;
-      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T8>.Index))[physicalIndex];
+      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T8>.Index))[physicalIndex];
       local9 = comp8;
-      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T9>.Index))[physicalIndex];
+      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T9>.Index))[physicalIndex];
       local10 = comp9;
-      ref T10 local11 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T10>.Index))[physicalIndex];
+      ref T10 local11 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.OfComponent<T10>.Index))[physicalIndex];
       local11 = comp10;
       Entity entity = new Entity(this.ID, version, num);
       ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
       if (initer1 != null)
-        initer1(entity, ref local2);
+      {
+          initer1(entity, ref local2);
+      }
+
       ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
       if (initer2 != null)
-        initer2(entity, ref local3);
+      {
+          initer2(entity, ref local3);
+      }
+
       ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
       if (initer3 != null)
-        initer3(entity, ref local4);
+      {
+          initer3(entity, ref local4);
+      }
+
       ComponentDelegates<T4>.InitDelegate initer4 = Component<T4>.Initer;
       if (initer4 != null)
-        initer4(entity, ref local5);
+      {
+          initer4(entity, ref local5);
+      }
+
       ComponentDelegates<T5>.InitDelegate initer5 = Component<T5>.Initer;
       if (initer5 != null)
-        initer5(entity, ref local6);
+      {
+          initer5(entity, ref local6);
+      }
+
       ComponentDelegates<T6>.InitDelegate initer6 = Component<T6>.Initer;
       if (initer6 != null)
-        initer6(entity, ref local7);
+      {
+          initer6(entity, ref local7);
+      }
+
       ComponentDelegates<T7>.InitDelegate initer7 = Component<T7>.Initer;
       if (initer7 != null)
-        initer7(entity, ref local8);
+      {
+          initer7(entity, ref local8);
+      }
+
       ComponentDelegates<T8>.InitDelegate initer8 = Component<T8>.Initer;
       if (initer8 != null)
-        initer8(entity, ref local9);
+      {
+          initer8(entity, ref local9);
+      }
+
       ComponentDelegates<T9>.InitDelegate initer9 = Component<T9>.Initer;
       if (initer9 != null)
-        initer9(entity, ref local10);
+      {
+          initer9(entity, ref local10);
+      }
+
       ComponentDelegates<T10>.InitDelegate initer10 = Component<T10>.Initer;
       if (initer10 != null)
-        initer10(entity, ref local11);
+      {
+          initer10(entity, ref local11);
+      }
+
       this.EntityCreatedEvent.Invoke(entity);
       return entity;
     }
@@ -1094,7 +1296,10 @@ namespace Alis.Core.Ecs
       int count)
     {
       if (count < 0)
-        FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      {
+          FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      }
+
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.CreateNewOrGetExistingArchetype(this);
       int entityCount = existingArchetype.EntityCount;
       this.EntityTable.EnsureCapacity(this.EntityCount + count);
@@ -1105,9 +1310,11 @@ namespace Alis.Core.Ecs
         for (int index = 0; index < span.Length; ++index)
           this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
       }
-      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>();
-      many.Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations);
-      ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> local1 = ref many;
+      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+          };
+          ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> local1 = ref many;
       Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
       ref Span<T1> local2 = ref componentSpan1;
       int start1 = entityCount;
@@ -1191,7 +1398,7 @@ namespace Alis.Core.Ecs
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.CreateNewOrGetExistingArchetype(this);
       
       EntityLocation entityLocation = new EntityLocation();
-      Unsafe.SkipInit<int>(out int physicalIndex);
+      Unsafe.SkipInit(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
       
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
@@ -1206,65 +1413,98 @@ namespace Alis.Core.Ecs
         local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
         entityLocation.Archetype = this.DeferredCreateArchetype;
       }
-      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
       entityLocation.Version = version;
       this.EntityTable[num] = entityLocation;
-      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T1>.Index))[physicalIndex];
+      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T1>.Index))[physicalIndex];
       local2 = comp1;
-      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T2>.Index))[physicalIndex];
+      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T2>.Index))[physicalIndex];
       local3 = comp2;
-      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T3>.Index))[physicalIndex];
+      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T3>.Index))[physicalIndex];
       local4 = comp3;
-      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T4>.Index))[physicalIndex];
+      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T4>.Index))[physicalIndex];
       local5 = comp4;
-      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T5>.Index))[physicalIndex];
+      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T5>.Index))[physicalIndex];
       local6 = comp5;
-      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T6>.Index))[physicalIndex];
+      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T6>.Index))[physicalIndex];
       local7 = comp6;
-      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T7>.Index))[physicalIndex];
+      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T7>.Index))[physicalIndex];
       local8 = comp7;
-      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T8>.Index))[physicalIndex];
+      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T8>.Index))[physicalIndex];
       local9 = comp8;
-      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T9>.Index))[physicalIndex];
+      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T9>.Index))[physicalIndex];
       local10 = comp9;
-      ref T10 local11 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T10>.Index))[physicalIndex];
+      ref T10 local11 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T10>.Index))[physicalIndex];
       local11 = comp10;
-      ref T11 local12 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T11>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T11>.Index))[physicalIndex];
+      ref T11 local12 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T11>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.OfComponent<T11>.Index))[physicalIndex];
       local12 = comp11;
       Entity entity = new Entity(this.ID, version, num);
       ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
       if (initer1 != null)
-        initer1(entity, ref local2);
+      {
+          initer1(entity, ref local2);
+      }
+
       ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
       if (initer2 != null)
-        initer2(entity, ref local3);
+      {
+          initer2(entity, ref local3);
+      }
+
       ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
       if (initer3 != null)
-        initer3(entity, ref local4);
+      {
+          initer3(entity, ref local4);
+      }
+
       ComponentDelegates<T4>.InitDelegate initer4 = Component<T4>.Initer;
       if (initer4 != null)
-        initer4(entity, ref local5);
+      {
+          initer4(entity, ref local5);
+      }
+
       ComponentDelegates<T5>.InitDelegate initer5 = Component<T5>.Initer;
       if (initer5 != null)
-        initer5(entity, ref local6);
+      {
+          initer5(entity, ref local6);
+      }
+
       ComponentDelegates<T6>.InitDelegate initer6 = Component<T6>.Initer;
       if (initer6 != null)
-        initer6(entity, ref local7);
+      {
+          initer6(entity, ref local7);
+      }
+
       ComponentDelegates<T7>.InitDelegate initer7 = Component<T7>.Initer;
       if (initer7 != null)
-        initer7(entity, ref local8);
+      {
+          initer7(entity, ref local8);
+      }
+
       ComponentDelegates<T8>.InitDelegate initer8 = Component<T8>.Initer;
       if (initer8 != null)
-        initer8(entity, ref local9);
+      {
+          initer8(entity, ref local9);
+      }
+
       ComponentDelegates<T9>.InitDelegate initer9 = Component<T9>.Initer;
       if (initer9 != null)
-        initer9(entity, ref local10);
+      {
+          initer9(entity, ref local10);
+      }
+
       ComponentDelegates<T10>.InitDelegate initer10 = Component<T10>.Initer;
       if (initer10 != null)
-        initer10(entity, ref local11);
+      {
+          initer10(entity, ref local11);
+      }
+
       ComponentDelegates<T11>.InitDelegate initer11 = Component<T11>.Initer;
       if (initer11 != null)
-        initer11(entity, ref local12);
+      {
+          initer11(entity, ref local12);
+      }
+
       this.EntityCreatedEvent.Invoke(entity);
       return entity;
     }
@@ -1276,7 +1516,10 @@ namespace Alis.Core.Ecs
       int count)
     {
       if (count < 0)
-        FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      {
+          FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      }
+
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.CreateNewOrGetExistingArchetype(this);
       int entityCount = existingArchetype.EntityCount;
       this.EntityTable.EnsureCapacity(this.EntityCount + count);
@@ -1287,9 +1530,11 @@ namespace Alis.Core.Ecs
         for (int index = 0; index < span.Length; ++index)
           this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
       }
-      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>();
-      many.Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations);
-      ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> local1 = ref many;
+      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+          };
+          ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> local1 = ref many;
       Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
       ref Span<T1> local2 = ref componentSpan1;
       int start1 = entityCount;
@@ -1380,7 +1625,7 @@ namespace Alis.Core.Ecs
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.CreateNewOrGetExistingArchetype(this);
       
       EntityLocation entityLocation = new EntityLocation();
-      Unsafe.SkipInit<int>(out int physicalIndex);
+      Unsafe.SkipInit(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
       
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
@@ -1395,70 +1640,106 @@ namespace Alis.Core.Ecs
         local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
         entityLocation.Archetype = this.DeferredCreateArchetype;
       }
-      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
       entityLocation.Version = version;
       this.EntityTable[num] = entityLocation;
-      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T1>.Index))[physicalIndex];
+      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T1>.Index))[physicalIndex];
       local2 = comp1;
-      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T2>.Index))[physicalIndex];
+      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T2>.Index))[physicalIndex];
       local3 = comp2;
-      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T3>.Index))[physicalIndex];
+      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T3>.Index))[physicalIndex];
       local4 = comp3;
-      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T4>.Index))[physicalIndex];
+      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T4>.Index))[physicalIndex];
       local5 = comp4;
-      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T5>.Index))[physicalIndex];
+      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T5>.Index))[physicalIndex];
       local6 = comp5;
-      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T6>.Index))[physicalIndex];
+      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T6>.Index))[physicalIndex];
       local7 = comp6;
-      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T7>.Index))[physicalIndex];
+      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T7>.Index))[physicalIndex];
       local8 = comp7;
-      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T8>.Index))[physicalIndex];
+      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T8>.Index))[physicalIndex];
       local9 = comp8;
-      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T9>.Index))[physicalIndex];
+      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T9>.Index))[physicalIndex];
       local10 = comp9;
-      ref T10 local11 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T10>.Index))[physicalIndex];
+      ref T10 local11 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T10>.Index))[physicalIndex];
       local11 = comp10;
-      ref T11 local12 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T11>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T11>.Index))[physicalIndex];
+      ref T11 local12 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T11>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T11>.Index))[physicalIndex];
       local12 = comp11;
-      ref T12 local13 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T12>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T12>.Index))[physicalIndex];
+      ref T12 local13 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T12>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.OfComponent<T12>.Index))[physicalIndex];
       local13 = comp12;
       Entity entity = new Entity(this.ID, version, num);
       ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
       if (initer1 != null)
-        initer1(entity, ref local2);
+      {
+          initer1(entity, ref local2);
+      }
+
       ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
       if (initer2 != null)
-        initer2(entity, ref local3);
+      {
+          initer2(entity, ref local3);
+      }
+
       ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
       if (initer3 != null)
-        initer3(entity, ref local4);
+      {
+          initer3(entity, ref local4);
+      }
+
       ComponentDelegates<T4>.InitDelegate initer4 = Component<T4>.Initer;
       if (initer4 != null)
-        initer4(entity, ref local5);
+      {
+          initer4(entity, ref local5);
+      }
+
       ComponentDelegates<T5>.InitDelegate initer5 = Component<T5>.Initer;
       if (initer5 != null)
-        initer5(entity, ref local6);
+      {
+          initer5(entity, ref local6);
+      }
+
       ComponentDelegates<T6>.InitDelegate initer6 = Component<T6>.Initer;
       if (initer6 != null)
-        initer6(entity, ref local7);
+      {
+          initer6(entity, ref local7);
+      }
+
       ComponentDelegates<T7>.InitDelegate initer7 = Component<T7>.Initer;
       if (initer7 != null)
-        initer7(entity, ref local8);
+      {
+          initer7(entity, ref local8);
+      }
+
       ComponentDelegates<T8>.InitDelegate initer8 = Component<T8>.Initer;
       if (initer8 != null)
-        initer8(entity, ref local9);
+      {
+          initer8(entity, ref local9);
+      }
+
       ComponentDelegates<T9>.InitDelegate initer9 = Component<T9>.Initer;
       if (initer9 != null)
-        initer9(entity, ref local10);
+      {
+          initer9(entity, ref local10);
+      }
+
       ComponentDelegates<T10>.InitDelegate initer10 = Component<T10>.Initer;
       if (initer10 != null)
-        initer10(entity, ref local11);
+      {
+          initer10(entity, ref local11);
+      }
+
       ComponentDelegates<T11>.InitDelegate initer11 = Component<T11>.Initer;
       if (initer11 != null)
-        initer11(entity, ref local12);
+      {
+          initer11(entity, ref local12);
+      }
+
       ComponentDelegates<T12>.InitDelegate initer12 = Component<T12>.Initer;
       if (initer12 != null)
-        initer12(entity, ref local13);
+      {
+          initer12(entity, ref local13);
+      }
+
       this.EntityCreatedEvent.Invoke(entity);
       return entity;
     }
@@ -1470,7 +1751,10 @@ namespace Alis.Core.Ecs
       int count)
     {
       if (count < 0)
-        FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      {
+          FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      }
+
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.CreateNewOrGetExistingArchetype(this);
       int entityCount = existingArchetype.EntityCount;
       this.EntityTable.EnsureCapacity(this.EntityCount + count);
@@ -1481,9 +1765,11 @@ namespace Alis.Core.Ecs
         for (int index = 0; index < span.Length; ++index)
           this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
       }
-      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>();
-      many.Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations);
-      ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> local1 = ref many;
+      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+          };
+          ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> local1 = ref many;
       Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
       ref Span<T1> local2 = ref componentSpan1;
       int start1 = entityCount;
@@ -1581,7 +1867,7 @@ namespace Alis.Core.Ecs
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.CreateNewOrGetExistingArchetype(this);
       
       EntityLocation entityLocation = new EntityLocation();
-      Unsafe.SkipInit<int>(out int physicalIndex);
+      Unsafe.SkipInit(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
       
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
@@ -1596,75 +1882,114 @@ namespace Alis.Core.Ecs
         local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
         entityLocation.Archetype = this.DeferredCreateArchetype;
       }
-      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
       entityLocation.Version = version;
       this.EntityTable[num] = entityLocation;
-      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T1>.Index))[physicalIndex];
+      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T1>.Index))[physicalIndex];
       local2 = comp1;
-      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T2>.Index))[physicalIndex];
+      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T2>.Index))[physicalIndex];
       local3 = comp2;
-      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T3>.Index))[physicalIndex];
+      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T3>.Index))[physicalIndex];
       local4 = comp3;
-      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T4>.Index))[physicalIndex];
+      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T4>.Index))[physicalIndex];
       local5 = comp4;
-      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T5>.Index))[physicalIndex];
+      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T5>.Index))[physicalIndex];
       local6 = comp5;
-      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T6>.Index))[physicalIndex];
+      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T6>.Index))[physicalIndex];
       local7 = comp6;
-      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T7>.Index))[physicalIndex];
+      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T7>.Index))[physicalIndex];
       local8 = comp7;
-      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T8>.Index))[physicalIndex];
+      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T8>.Index))[physicalIndex];
       local9 = comp8;
-      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T9>.Index))[physicalIndex];
+      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T9>.Index))[physicalIndex];
       local10 = comp9;
-      ref T10 local11 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T10>.Index))[physicalIndex];
+      ref T10 local11 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T10>.Index))[physicalIndex];
       local11 = comp10;
-      ref T11 local12 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T11>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T11>.Index))[physicalIndex];
+      ref T11 local12 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T11>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T11>.Index))[physicalIndex];
       local12 = comp11;
-      ref T12 local13 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T12>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T12>.Index))[physicalIndex];
+      ref T12 local13 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T12>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T12>.Index))[physicalIndex];
       local13 = comp12;
-      ref T13 local14 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T13>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T13>.Index))[physicalIndex];
+      ref T13 local14 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T13>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.OfComponent<T13>.Index))[physicalIndex];
       local14 = comp13;
       Entity entity = new Entity(this.ID, version, num);
       ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
       if (initer1 != null)
-        initer1(entity, ref local2);
+      {
+          initer1(entity, ref local2);
+      }
+
       ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
       if (initer2 != null)
-        initer2(entity, ref local3);
+      {
+          initer2(entity, ref local3);
+      }
+
       ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
       if (initer3 != null)
-        initer3(entity, ref local4);
+      {
+          initer3(entity, ref local4);
+      }
+
       ComponentDelegates<T4>.InitDelegate initer4 = Component<T4>.Initer;
       if (initer4 != null)
-        initer4(entity, ref local5);
+      {
+          initer4(entity, ref local5);
+      }
+
       ComponentDelegates<T5>.InitDelegate initer5 = Component<T5>.Initer;
       if (initer5 != null)
-        initer5(entity, ref local6);
+      {
+          initer5(entity, ref local6);
+      }
+
       ComponentDelegates<T6>.InitDelegate initer6 = Component<T6>.Initer;
       if (initer6 != null)
-        initer6(entity, ref local7);
+      {
+          initer6(entity, ref local7);
+      }
+
       ComponentDelegates<T7>.InitDelegate initer7 = Component<T7>.Initer;
       if (initer7 != null)
-        initer7(entity, ref local8);
+      {
+          initer7(entity, ref local8);
+      }
+
       ComponentDelegates<T8>.InitDelegate initer8 = Component<T8>.Initer;
       if (initer8 != null)
-        initer8(entity, ref local9);
+      {
+          initer8(entity, ref local9);
+      }
+
       ComponentDelegates<T9>.InitDelegate initer9 = Component<T9>.Initer;
       if (initer9 != null)
-        initer9(entity, ref local10);
+      {
+          initer9(entity, ref local10);
+      }
+
       ComponentDelegates<T10>.InitDelegate initer10 = Component<T10>.Initer;
       if (initer10 != null)
-        initer10(entity, ref local11);
+      {
+          initer10(entity, ref local11);
+      }
+
       ComponentDelegates<T11>.InitDelegate initer11 = Component<T11>.Initer;
       if (initer11 != null)
-        initer11(entity, ref local12);
+      {
+          initer11(entity, ref local12);
+      }
+
       ComponentDelegates<T12>.InitDelegate initer12 = Component<T12>.Initer;
       if (initer12 != null)
-        initer12(entity, ref local13);
+      {
+          initer12(entity, ref local13);
+      }
+
       ComponentDelegates<T13>.InitDelegate initer13 = Component<T13>.Initer;
       if (initer13 != null)
-        initer13(entity, ref local14);
+      {
+          initer13(entity, ref local14);
+      }
+
       this.EntityCreatedEvent.Invoke(entity);
       return entity;
     }
@@ -1676,7 +2001,10 @@ namespace Alis.Core.Ecs
       int count)
     {
       if (count < 0)
-        FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      {
+          FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      }
+
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.CreateNewOrGetExistingArchetype(this);
       int entityCount = existingArchetype.EntityCount;
       this.EntityTable.EnsureCapacity(this.EntityCount + count);
@@ -1687,9 +2015,11 @@ namespace Alis.Core.Ecs
         for (int index = 0; index < span.Length; ++index)
           this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
       }
-      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>();
-      many.Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations);
-      ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> local1 = ref many;
+      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+          };
+          ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> local1 = ref many;
       Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
       ref Span<T1> local2 = ref componentSpan1;
       int start1 = entityCount;
@@ -1794,7 +2124,7 @@ namespace Alis.Core.Ecs
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.CreateNewOrGetExistingArchetype(this);
       
       EntityLocation entityLocation = new EntityLocation();
-      Unsafe.SkipInit<int>(out int physicalIndex);
+      Unsafe.SkipInit(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
       
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
@@ -1809,80 +2139,122 @@ namespace Alis.Core.Ecs
         local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
         entityLocation.Archetype = this.DeferredCreateArchetype;
       }
-      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
       entityLocation.Version = version;
       this.EntityTable[num] = entityLocation;
-      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T1>.Index))[physicalIndex];
+      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T1>.Index))[physicalIndex];
       local2 = comp1;
-      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T2>.Index))[physicalIndex];
+      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T2>.Index))[physicalIndex];
       local3 = comp2;
-      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T3>.Index))[physicalIndex];
+      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T3>.Index))[physicalIndex];
       local4 = comp3;
-      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T4>.Index))[physicalIndex];
+      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T4>.Index))[physicalIndex];
       local5 = comp4;
-      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T5>.Index))[physicalIndex];
+      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T5>.Index))[physicalIndex];
       local6 = comp5;
-      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T6>.Index))[physicalIndex];
+      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T6>.Index))[physicalIndex];
       local7 = comp6;
-      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T7>.Index))[physicalIndex];
+      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T7>.Index))[physicalIndex];
       local8 = comp7;
-      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T8>.Index))[physicalIndex];
+      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T8>.Index))[physicalIndex];
       local9 = comp8;
-      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T9>.Index))[physicalIndex];
+      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T9>.Index))[physicalIndex];
       local10 = comp9;
-      ref T10 local11 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T10>.Index))[physicalIndex];
+      ref T10 local11 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T10>.Index))[physicalIndex];
       local11 = comp10;
-      ref T11 local12 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T11>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T11>.Index))[physicalIndex];
+      ref T11 local12 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T11>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T11>.Index))[physicalIndex];
       local12 = comp11;
-      ref T12 local13 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T12>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T12>.Index))[physicalIndex];
+      ref T12 local13 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T12>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T12>.Index))[physicalIndex];
       local13 = comp12;
-      ref T13 local14 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T13>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T13>.Index))[physicalIndex];
+      ref T13 local14 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T13>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T13>.Index))[physicalIndex];
       local14 = comp13;
-      ref T14 local15 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T14>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T14>.Index))[physicalIndex];
+      ref T14 local15 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T14>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.OfComponent<T14>.Index))[physicalIndex];
       local15 = comp14;
       Entity entity = new Entity(this.ID, version, num);
       ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
       if (initer1 != null)
-        initer1(entity, ref local2);
+      {
+          initer1(entity, ref local2);
+      }
+
       ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
       if (initer2 != null)
-        initer2(entity, ref local3);
+      {
+          initer2(entity, ref local3);
+      }
+
       ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
       if (initer3 != null)
-        initer3(entity, ref local4);
+      {
+          initer3(entity, ref local4);
+      }
+
       ComponentDelegates<T4>.InitDelegate initer4 = Component<T4>.Initer;
       if (initer4 != null)
-        initer4(entity, ref local5);
+      {
+          initer4(entity, ref local5);
+      }
+
       ComponentDelegates<T5>.InitDelegate initer5 = Component<T5>.Initer;
       if (initer5 != null)
-        initer5(entity, ref local6);
+      {
+          initer5(entity, ref local6);
+      }
+
       ComponentDelegates<T6>.InitDelegate initer6 = Component<T6>.Initer;
       if (initer6 != null)
-        initer6(entity, ref local7);
+      {
+          initer6(entity, ref local7);
+      }
+
       ComponentDelegates<T7>.InitDelegate initer7 = Component<T7>.Initer;
       if (initer7 != null)
-        initer7(entity, ref local8);
+      {
+          initer7(entity, ref local8);
+      }
+
       ComponentDelegates<T8>.InitDelegate initer8 = Component<T8>.Initer;
       if (initer8 != null)
-        initer8(entity, ref local9);
+      {
+          initer8(entity, ref local9);
+      }
+
       ComponentDelegates<T9>.InitDelegate initer9 = Component<T9>.Initer;
       if (initer9 != null)
-        initer9(entity, ref local10);
+      {
+          initer9(entity, ref local10);
+      }
+
       ComponentDelegates<T10>.InitDelegate initer10 = Component<T10>.Initer;
       if (initer10 != null)
-        initer10(entity, ref local11);
+      {
+          initer10(entity, ref local11);
+      }
+
       ComponentDelegates<T11>.InitDelegate initer11 = Component<T11>.Initer;
       if (initer11 != null)
-        initer11(entity, ref local12);
+      {
+          initer11(entity, ref local12);
+      }
+
       ComponentDelegates<T12>.InitDelegate initer12 = Component<T12>.Initer;
       if (initer12 != null)
-        initer12(entity, ref local13);
+      {
+          initer12(entity, ref local13);
+      }
+
       ComponentDelegates<T13>.InitDelegate initer13 = Component<T13>.Initer;
       if (initer13 != null)
-        initer13(entity, ref local14);
+      {
+          initer13(entity, ref local14);
+      }
+
       ComponentDelegates<T14>.InitDelegate initer14 = Component<T14>.Initer;
       if (initer14 != null)
-        initer14(entity, ref local15);
+      {
+          initer14(entity, ref local15);
+      }
+
       this.EntityCreatedEvent.Invoke(entity);
       return entity;
     }
@@ -1894,7 +2266,10 @@ namespace Alis.Core.Ecs
       int count)
     {
       if (count < 0)
-        FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      {
+          FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      }
+
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.CreateNewOrGetExistingArchetype(this);
       int entityCount = existingArchetype.EntityCount;
       this.EntityTable.EnsureCapacity(this.EntityCount + count);
@@ -1905,9 +2280,11 @@ namespace Alis.Core.Ecs
         for (int index = 0; index < span.Length; ++index)
           this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
       }
-      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>();
-      many.Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations);
-      ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> local1 = ref many;
+      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+          };
+          ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> local1 = ref many;
       Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
       ref Span<T1> local2 = ref componentSpan1;
       int start1 = entityCount;
@@ -2019,7 +2396,7 @@ namespace Alis.Core.Ecs
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.CreateNewOrGetExistingArchetype(this);
       
       EntityLocation entityLocation = new EntityLocation();
-      Unsafe.SkipInit<int>(out int physicalIndex);
+      Unsafe.SkipInit(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
       
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
@@ -2034,85 +2411,130 @@ namespace Alis.Core.Ecs
         local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
         entityLocation.Archetype = this.DeferredCreateArchetype;
       }
-      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
       entityLocation.Version = version;
       this.EntityTable[num] = entityLocation;
-      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T1>.Index))[physicalIndex];
+      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T1>.Index))[physicalIndex];
       local2 = comp1;
-      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T2>.Index))[physicalIndex];
+      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T2>.Index))[physicalIndex];
       local3 = comp2;
-      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T3>.Index))[physicalIndex];
+      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T3>.Index))[physicalIndex];
       local4 = comp3;
-      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T4>.Index))[physicalIndex];
+      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T4>.Index))[physicalIndex];
       local5 = comp4;
-      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T5>.Index))[physicalIndex];
+      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T5>.Index))[physicalIndex];
       local6 = comp5;
-      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T6>.Index))[physicalIndex];
+      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T6>.Index))[physicalIndex];
       local7 = comp6;
-      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T7>.Index))[physicalIndex];
+      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T7>.Index))[physicalIndex];
       local8 = comp7;
-      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T8>.Index))[physicalIndex];
+      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T8>.Index))[physicalIndex];
       local9 = comp8;
-      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T9>.Index))[physicalIndex];
+      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T9>.Index))[physicalIndex];
       local10 = comp9;
-      ref T10 local11 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T10>.Index))[physicalIndex];
+      ref T10 local11 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T10>.Index))[physicalIndex];
       local11 = comp10;
-      ref T11 local12 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T11>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T11>.Index))[physicalIndex];
+      ref T11 local12 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T11>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T11>.Index))[physicalIndex];
       local12 = comp11;
-      ref T12 local13 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T12>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T12>.Index))[physicalIndex];
+      ref T12 local13 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T12>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T12>.Index))[physicalIndex];
       local13 = comp12;
-      ref T13 local14 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T13>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T13>.Index))[physicalIndex];
+      ref T13 local14 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T13>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T13>.Index))[physicalIndex];
       local14 = comp13;
-      ref T14 local15 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T14>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T14>.Index))[physicalIndex];
+      ref T14 local15 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T14>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T14>.Index))[physicalIndex];
       local15 = comp14;
-      ref T15 local16 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T15>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T15>.Index))[physicalIndex];
+      ref T15 local16 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T15>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.OfComponent<T15>.Index))[physicalIndex];
       local16 = comp15;
       Entity entity = new Entity(this.ID, version, num);
       ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
       if (initer1 != null)
-        initer1(entity, ref local2);
+      {
+          initer1(entity, ref local2);
+      }
+
       ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
       if (initer2 != null)
-        initer2(entity, ref local3);
+      {
+          initer2(entity, ref local3);
+      }
+
       ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
       if (initer3 != null)
-        initer3(entity, ref local4);
+      {
+          initer3(entity, ref local4);
+      }
+
       ComponentDelegates<T4>.InitDelegate initer4 = Component<T4>.Initer;
       if (initer4 != null)
-        initer4(entity, ref local5);
+      {
+          initer4(entity, ref local5);
+      }
+
       ComponentDelegates<T5>.InitDelegate initer5 = Component<T5>.Initer;
       if (initer5 != null)
-        initer5(entity, ref local6);
+      {
+          initer5(entity, ref local6);
+      }
+
       ComponentDelegates<T6>.InitDelegate initer6 = Component<T6>.Initer;
       if (initer6 != null)
-        initer6(entity, ref local7);
+      {
+          initer6(entity, ref local7);
+      }
+
       ComponentDelegates<T7>.InitDelegate initer7 = Component<T7>.Initer;
       if (initer7 != null)
-        initer7(entity, ref local8);
+      {
+          initer7(entity, ref local8);
+      }
+
       ComponentDelegates<T8>.InitDelegate initer8 = Component<T8>.Initer;
       if (initer8 != null)
-        initer8(entity, ref local9);
+      {
+          initer8(entity, ref local9);
+      }
+
       ComponentDelegates<T9>.InitDelegate initer9 = Component<T9>.Initer;
       if (initer9 != null)
-        initer9(entity, ref local10);
+      {
+          initer9(entity, ref local10);
+      }
+
       ComponentDelegates<T10>.InitDelegate initer10 = Component<T10>.Initer;
       if (initer10 != null)
-        initer10(entity, ref local11);
+      {
+          initer10(entity, ref local11);
+      }
+
       ComponentDelegates<T11>.InitDelegate initer11 = Component<T11>.Initer;
       if (initer11 != null)
-        initer11(entity, ref local12);
+      {
+          initer11(entity, ref local12);
+      }
+
       ComponentDelegates<T12>.InitDelegate initer12 = Component<T12>.Initer;
       if (initer12 != null)
-        initer12(entity, ref local13);
+      {
+          initer12(entity, ref local13);
+      }
+
       ComponentDelegates<T13>.InitDelegate initer13 = Component<T13>.Initer;
       if (initer13 != null)
-        initer13(entity, ref local14);
+      {
+          initer13(entity, ref local14);
+      }
+
       ComponentDelegates<T14>.InitDelegate initer14 = Component<T14>.Initer;
       if (initer14 != null)
-        initer14(entity, ref local15);
+      {
+          initer14(entity, ref local15);
+      }
+
       ComponentDelegates<T15>.InitDelegate initer15 = Component<T15>.Initer;
       if (initer15 != null)
-        initer15(entity, ref local16);
+      {
+          initer15(entity, ref local16);
+      }
+
       this.EntityCreatedEvent.Invoke(entity);
       return entity;
     }
@@ -2124,7 +2546,10 @@ namespace Alis.Core.Ecs
       int count)
     {
       if (count < 0)
-        FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      {
+          FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      }
+
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.CreateNewOrGetExistingArchetype(this);
       int entityCount = existingArchetype.EntityCount;
       this.EntityTable.EnsureCapacity(this.EntityCount + count);
@@ -2135,9 +2560,11 @@ namespace Alis.Core.Ecs
         for (int index = 0; index < span.Length; ++index)
           this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
       }
-      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>();
-      many.Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations);
-      ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> local1 = ref many;
+      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+          };
+          ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> local1 = ref many;
       Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
       ref Span<T1> local2 = ref componentSpan1;
       int start1 = entityCount;
@@ -2256,7 +2683,7 @@ namespace Alis.Core.Ecs
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.CreateNewOrGetExistingArchetype(this);
       
       EntityLocation entityLocation = new EntityLocation();
-      Unsafe.SkipInit<int>(out int physicalIndex);
+      Unsafe.SkipInit(out int physicalIndex);
       ComponentStorageBase[] writeStorage;
       
        ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
@@ -2271,90 +2698,138 @@ namespace Alis.Core.Ecs
         local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
         entityLocation.Archetype = this.DeferredCreateArchetype;
       }
-      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, (ushort) 0);
+      (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
       entityLocation.Version = version;
       this.EntityTable[num] = entityLocation;
-      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T1>.Index))[physicalIndex];
+      ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T1>.Index))[physicalIndex];
       local2 = comp1;
-      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T2>.Index))[physicalIndex];
+      ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T2>.Index))[physicalIndex];
       local3 = comp2;
-      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T3>.Index))[physicalIndex];
+      ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T3>.Index))[physicalIndex];
       local4 = comp3;
-      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T4>.Index))[physicalIndex];
+      ref T4 local5 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T4>.Index))[physicalIndex];
       local5 = comp4;
-      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T5>.Index))[physicalIndex];
+      ref T5 local6 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T5>.Index))[physicalIndex];
       local6 = comp5;
-      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T6>.Index))[physicalIndex];
+      ref T6 local7 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T6>.Index))[physicalIndex];
       local7 = comp6;
-      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T7>.Index))[physicalIndex];
+      ref T7 local8 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T7>.Index))[physicalIndex];
       local8 = comp7;
-      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T8>.Index))[physicalIndex];
+      ref T8 local9 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T8>.Index))[physicalIndex];
       local9 = comp8;
-      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T9>.Index))[physicalIndex];
+      ref T9 local10 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T9>.Index))[physicalIndex];
       local10 = comp9;
-      ref T10 local11 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T10>.Index))[physicalIndex];
+      ref T10 local11 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T10>.Index))[physicalIndex];
       local11 = comp10;
-      ref T11 local12 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T11>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T11>.Index))[physicalIndex];
+      ref T11 local12 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T11>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T11>.Index))[physicalIndex];
       local12 = comp11;
-      ref T12 local13 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T12>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T12>.Index))[physicalIndex];
+      ref T12 local13 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T12>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T12>.Index))[physicalIndex];
       local13 = comp12;
-      ref T13 local14 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T13>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T13>.Index))[physicalIndex];
+      ref T13 local14 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T13>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T13>.Index))[physicalIndex];
       local14 = comp13;
-      ref T14 local15 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T14>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T14>.Index))[physicalIndex];
+      ref T14 local15 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T14>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T14>.Index))[physicalIndex];
       local15 = comp14;
-      ref T15 local16 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T15>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T15>.Index))[physicalIndex];
+      ref T15 local16 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T15>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T15>.Index))[physicalIndex];
       local16 = comp15;
-      ref T16 local17 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T16>>((object) writeStorage.UnsafeArrayIndex<ComponentStorageBase>(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T16>.Index))[physicalIndex];
+      ref T16 local17 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T16>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.OfComponent<T16>.Index))[physicalIndex];
       local17 = comp16;
       Entity entity = new Entity(this.ID, version, num);
       ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
       if (initer1 != null)
-        initer1(entity, ref local2);
+      {
+          initer1(entity, ref local2);
+      }
+
       ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
       if (initer2 != null)
-        initer2(entity, ref local3);
+      {
+          initer2(entity, ref local3);
+      }
+
       ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
       if (initer3 != null)
-        initer3(entity, ref local4);
+      {
+          initer3(entity, ref local4);
+      }
+
       ComponentDelegates<T4>.InitDelegate initer4 = Component<T4>.Initer;
       if (initer4 != null)
-        initer4(entity, ref local5);
+      {
+          initer4(entity, ref local5);
+      }
+
       ComponentDelegates<T5>.InitDelegate initer5 = Component<T5>.Initer;
       if (initer5 != null)
-        initer5(entity, ref local6);
+      {
+          initer5(entity, ref local6);
+      }
+
       ComponentDelegates<T6>.InitDelegate initer6 = Component<T6>.Initer;
       if (initer6 != null)
-        initer6(entity, ref local7);
+      {
+          initer6(entity, ref local7);
+      }
+
       ComponentDelegates<T7>.InitDelegate initer7 = Component<T7>.Initer;
       if (initer7 != null)
-        initer7(entity, ref local8);
+      {
+          initer7(entity, ref local8);
+      }
+
       ComponentDelegates<T8>.InitDelegate initer8 = Component<T8>.Initer;
       if (initer8 != null)
-        initer8(entity, ref local9);
+      {
+          initer8(entity, ref local9);
+      }
+
       ComponentDelegates<T9>.InitDelegate initer9 = Component<T9>.Initer;
       if (initer9 != null)
-        initer9(entity, ref local10);
+      {
+          initer9(entity, ref local10);
+      }
+
       ComponentDelegates<T10>.InitDelegate initer10 = Component<T10>.Initer;
       if (initer10 != null)
-        initer10(entity, ref local11);
+      {
+          initer10(entity, ref local11);
+      }
+
       ComponentDelegates<T11>.InitDelegate initer11 = Component<T11>.Initer;
       if (initer11 != null)
-        initer11(entity, ref local12);
+      {
+          initer11(entity, ref local12);
+      }
+
       ComponentDelegates<T12>.InitDelegate initer12 = Component<T12>.Initer;
       if (initer12 != null)
-        initer12(entity, ref local13);
+      {
+          initer12(entity, ref local13);
+      }
+
       ComponentDelegates<T13>.InitDelegate initer13 = Component<T13>.Initer;
       if (initer13 != null)
-        initer13(entity, ref local14);
+      {
+          initer13(entity, ref local14);
+      }
+
       ComponentDelegates<T14>.InitDelegate initer14 = Component<T14>.Initer;
       if (initer14 != null)
-        initer14(entity, ref local15);
+      {
+          initer14(entity, ref local15);
+      }
+
       ComponentDelegates<T15>.InitDelegate initer15 = Component<T15>.Initer;
       if (initer15 != null)
-        initer15(entity, ref local16);
+      {
+          initer15(entity, ref local16);
+      }
+
       ComponentDelegates<T16>.InitDelegate initer16 = Component<T16>.Initer;
       if (initer16 != null)
-        initer16(entity, ref local17);
+      {
+          initer16(entity, ref local17);
+      }
+
       this.EntityCreatedEvent.Invoke(entity);
       return entity;
     }
@@ -2366,7 +2841,10 @@ namespace Alis.Core.Ecs
       int count)
     {
       if (count < 0)
-        FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      {
+          FrentExceptions.Throw_ArgumentOutOfRangeException("Must create at least 1 entity!");
+      }
+
       Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.CreateNewOrGetExistingArchetype(this);
       int entityCount = existingArchetype.EntityCount;
       this.EntityTable.EnsureCapacity(this.EntityCount + count);
@@ -2377,8 +2855,11 @@ namespace Alis.Core.Ecs
         for (int index = 0; index < span.Length; ++index)
           this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
       }
-      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>();
-      many.Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations);
+      ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+          }; 
+      
       ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> local1 = ref many;
       Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
       ref Span<T1> local2 = ref componentSpan1;

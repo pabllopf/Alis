@@ -900,7 +900,7 @@ namespace Alis.Core.Ecs.Collections
             public void Reverse()
             {
 #if NET || NETSTANDARD2_1_OR_GREATER
-                Array.Reverse<T>(_elements, 0, _count);
+                Array.Reverse(_elements, 0, _count);
 #else
                 // The non-generic Array.Reverse is not used because it does not perform
                 // well for non-primitive value types.
