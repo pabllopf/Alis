@@ -27,11 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Core.Ecs.System.Manager.Scene
@@ -44,12 +40,21 @@ namespace Alis.Core.Ecs.System.Manager.Scene
     {
         public SceneManager(Context context) : base(context)
         {
+            World = new World();
         }
 
         public SceneManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
         {
+            World = new World();
         }
-        
-        
+
+        public override void OnUpdate()
+        {
+            // Update the world
+            World.Update();
+        }
+
+
+        public World World { get; set; } 
     }
 }

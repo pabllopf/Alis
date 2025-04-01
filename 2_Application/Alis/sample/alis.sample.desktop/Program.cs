@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
+using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.System;
 
 namespace Alis.Sample.Desktop
@@ -44,6 +45,9 @@ namespace Alis.Sample.Desktop
         public static void Main(string[] args)
         {
             VideoGame game = new VideoGame();
+
+            game.Context.SceneManager.World.Create(new Sprite("app.bmp"), 0);
+            
             
             game.Run();
         }

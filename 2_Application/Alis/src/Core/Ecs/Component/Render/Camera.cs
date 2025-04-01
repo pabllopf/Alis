@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SceneSetting.cs
+//  File:Camera.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,10 +27,43 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.System.Configuration.Scene
+using System.Runtime.CompilerServices;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Operations;
+
+namespace Alis.Core.Ecs.Component.Render
 {
-    
-    public record struct SceneSetting(
-       int MaximumEntities = 1000
-        ): ISceneSetting;
+    public struct Camera (Vector2F position,  Vector2F resolution) : IInitable, IEntityComponent, IRuleProvider
+    {
+        /// <summary>
+        ///     The position
+        /// </summary>
+        public Vector2F Position { get; set; } = position;
+
+        /// <summary>
+        ///     Gets or sets the value of the resolution
+        /// </summary>
+        public Vector2F Resolution { get; set; } = resolution;
+         
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void Init(Entity self)
+        {
+            
+        }
+        
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void Update(Entity self)
+        {
+            
+        }
+
+        public Rule Rule { get; }
+    }
 }
