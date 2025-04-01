@@ -74,7 +74,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The entity id
         /// </summary>
-        internal int EntityID;
+        public int EntityID;
 
         /// <summary>
         ///     The entity version
@@ -84,9 +84,8 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The world id
         /// </summary>
-        internal ushort WorldID;
-
-
+        public ushort WorldID;
+        
         /// <summary>
         ///     Gets the value of the entity id only
         /// </summary>

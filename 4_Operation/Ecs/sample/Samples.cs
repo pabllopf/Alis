@@ -31,6 +31,7 @@ using System;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Sample.Components;
 using Alis.Core.Ecs.Systems;
 
 namespace Frent.Sample
@@ -70,6 +71,22 @@ namespace Frent.Sample
             for (int i = 0; i < 100_000; i++)
             {
                 world.Create<ConsoleText>(new(ConsoleColor.Blue));
+            }
+        }
+        
+        private static readonly EntityType _entityAlisType = Entity.EntityTypeOf([Component<Component1>.ID], []);
+        
+        [Sample]
+        public static void Create_Entity()
+        {
+            using World world = new World();
+            
+            world.EnsureCapacity(_entityAlisType, 1000);
+
+            for (int i = 0; i < 1000; i++)
+            {
+                Entity entity = world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11), default(Component12), default(Component13), default(Component14), default(Component15), default(Component16));
+                Console.WriteLine(entity.EntityID);
             }
         }
 
@@ -163,6 +180,7 @@ namespace Frent.Sample
             }
         }
     }
+    
 
     internal record struct Pos(float X) : IEntityComponent
     {
