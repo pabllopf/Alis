@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Shape.Square
     ///     The sdl f rect
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    
     public struct SquareF : IShape
     {
         /// <summary>
