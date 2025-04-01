@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs.Core
     /// <summary>
     ///     Represents an entity's type, or set of component and tag types that make it up
     /// </summary>
-    [StructLayout( LayoutKind.Auto )]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct EntityType : IEquatable<ArchetypeID>
     {
         /// <summary>

@@ -521,7 +521,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         /// The enumerator
         /// </summary>
-        [StructLayout( LayoutKind.Auto )]
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct Enumerator : IEnumerator<T>
         {
             /// <summary>

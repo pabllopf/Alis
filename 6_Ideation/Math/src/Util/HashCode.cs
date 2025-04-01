@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Math.Util
     /// <summary>
     ///     The hash code
     /// </summary>
-    [StructLayout( LayoutKind.Auto )]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct HashCode
     {
         /// <summary>

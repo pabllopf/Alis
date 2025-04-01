@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Math.Matrix
     /// <summary>
     ///     A 2-by-2 matrix. Stored in column-major order.
     /// </summary>
-    [StructLayout( LayoutKind.Auto )]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Matrix2X2
     {
         /// <summary>

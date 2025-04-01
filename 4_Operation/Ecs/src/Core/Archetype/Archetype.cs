@@ -481,7 +481,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// <summary>
         ///     The fields
         /// </summary>
-        [StructLayout( LayoutKind.Auto )]
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         internal struct Fields
         {
             /// <summary>
