@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Ecs.Sample
+namespace Frent.Sample
 {
     /// <summary>
     ///     The sample attribute class

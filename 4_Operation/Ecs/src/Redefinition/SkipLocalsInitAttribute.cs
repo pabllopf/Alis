@@ -27,11 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
 
-namespace Alis.Core.Ecs.Redefinition
+namespace System.Runtime.CompilerServices
 {
     /// <summary>
     ///     Used to indicate to the compiler that the <c>.locals init</c>

@@ -31,7 +31,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-namespace Alis.Core.Ecs.Sample
+namespace Frent.Sample
 {
     /// <summary>
     ///     The program class
