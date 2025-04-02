@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -38,6 +38,9 @@ using BenchmarkDotNet.Attributes;
 
 namespace Alis.Benchmark.CustomEcs
 {
+    /// <summary>
+    /// The alis ecs benchmark class
+    /// </summary>
     public partial class AlisEcsBenchmark
     {
         /// <summary>
@@ -45,6 +48,9 @@ namespace Alis.Benchmark.CustomEcs
         /// </summary>
         private static readonly EntityType _entityAlisType = Entity.EntityTypeOf([Component<Component1>.ID], []);
         
+        /// <summary>
+        /// Setup the alis
+        /// </summary>
         private void SetupAlis()
         {
             World = new Alis.Core.Ecs.World();
@@ -112,6 +118,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create with two component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_With_Two_Component()
         {
@@ -141,6 +150,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create with three component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_With_Three_Component()
         {
@@ -172,6 +184,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create with four component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_With_Four_Component()
         {
@@ -184,6 +199,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create bulk with four component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_Bulk_With_Four_Component()
         {
@@ -202,6 +220,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
 
+        /// <summary>
+        /// Alises the create with five component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_With_Five_Component()
         {
@@ -214,6 +235,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create bulk with five component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_Bulk_With_Five_Component()
         {
@@ -234,6 +258,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create with six component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_With_Six_Component()
         {
@@ -246,6 +273,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create bulk with six component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_Bulk_With_Six_Component()
         {
@@ -268,6 +298,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create with seven component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_With_Seven_Component()
         {
@@ -280,6 +313,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create bulk with seven component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_Bulk_With_Seven_Component()
         {
@@ -304,6 +340,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create with eight component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_With_Eight_Component()
         {
@@ -316,6 +355,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create bulk with eight component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_Bulk_With_Eight_Component()
         {
@@ -342,6 +384,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create with nine component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_With_Nine_Component()
         {
@@ -354,6 +399,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create bulk with nine component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_Bulk_With_Nine_Component()
         {
@@ -382,6 +430,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create with ten component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_With_Ten_Component()
         {
@@ -394,6 +445,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create bulk with ten component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_Bulk_With_Ten_Component()
         {
@@ -424,6 +478,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create with eleven component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_With_Eleven_Component()
         {
@@ -436,6 +493,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create bulk with eleven component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_Bulk_With_Eleven_Component()
         {
@@ -467,6 +527,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create with twelve component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_With_Twelve_Component()
         {
@@ -479,6 +542,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create bulk with twelve component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_Bulk_With_Twelve_Component()
         {
@@ -512,6 +578,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create with thirteen component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_With_Thirteen_Component()
         {
@@ -524,6 +593,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create bulk with thirteen component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_Bulk_With_Thirteen_Component()
         {
@@ -558,6 +630,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create with fourteen component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_With_Fourteen_Component()
         {
@@ -570,6 +645,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create bulk with fourteen component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_Bulk_With_Fourteen_Component()
         {
@@ -605,6 +683,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create with fifteen component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_With_Fifteen_Component()
         {
@@ -618,6 +699,9 @@ namespace Alis.Benchmark.CustomEcs
         }
         
         
+        /// <summary>
+        /// Alises the create bulk with fifteen component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_Bulk_With_Fifteen_Component()
         {
@@ -653,6 +737,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create with sixteen component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_With_Sixteen_Component()
         {
@@ -665,6 +752,9 @@ namespace Alis.Benchmark.CustomEcs
             }
         }
         
+        /// <summary>
+        /// Alises the create bulk with sixteen component
+        /// </summary>
         [Benchmark]
         public void Alis_Create_Bulk_With_Sixteen_Component()
         {

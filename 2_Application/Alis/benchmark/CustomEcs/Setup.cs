@@ -37,6 +37,9 @@ using BenchmarkDotNet.Reports;
 
 namespace Alis.Benchmark.CustomEcs
 {
+    /// <summary>
+    /// The alis ecs benchmark class
+    /// </summary>
     [ShortRunJob, MemoryDiagnoser(false)]
     [Config(typeof(CustomConfig))]
     public partial class AlisEcsBenchmark
@@ -48,6 +51,9 @@ namespace Alis.Benchmark.CustomEcs
         public int EntityCount { get; set; }
 
         
+        /// <summary>
+        /// Setup this instance
+        /// </summary>
         [IterationSetup]
         public void Setup()
         {
@@ -55,8 +61,15 @@ namespace Alis.Benchmark.CustomEcs
             SetupFrent();
         }
         
+        /// <summary>
+        /// The custom config class
+        /// </summary>
+        /// <seealso cref="ManualConfig"/>
         internal class CustomConfig : ManualConfig
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="CustomConfig"/> class
+            /// </summary>
             public CustomConfig()
             {
                 Options |= ConfigOptions.DisableLogFile;
