@@ -31,6 +31,7 @@
 using System.Linq;
 using System.Reflection;
 
+// ReSharper disable once CheckNamespace
 namespace System.Runtime.CompilerServices
 {
     public static class RuntimeHelpers
