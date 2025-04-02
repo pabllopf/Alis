@@ -1,0 +1,90 @@
+```
+
+BenchmarkDotNet v0.14.0, macOS Sequoia 15.3.2 (24D81) [Darwin 24.3.0]
+Apple M3 Max, 1 CPU, 16 logical and 16 physical cores
+.NET SDK 9.0.100
+  [Host]   : .NET 8.0.11 (8.0.1124.51707), Arm64 RyuJIT AdvSIMD
+  ShortRun : .NET 8.0.11 (8.0.1124.51707), Arm64 RyuJIT AdvSIMD
+
+Job=ShortRun  InvocationCount=1  IterationCount=3  
+LaunchCount=1  UnrollFactor=1  WarmupCount=3  
+
+```
+| Method                                                     | EntityCount | Mean       | Error       | StdDev     | Median     | Allocated |
+|----------------------------------------------------------- |------------ |-----------:|------------:|-----------:|-----------:|----------:|
+| Alis_Create_With_One_Component                             | 1000000     |  11.761 ms |   5.3534 ms |  0.2934 ms |  11.919 ms |   24.8 MB |
+| Alis_Create_Bulk_With_One_Component                        | 1000000     |   4.368 ms |   0.3958 ms |  0.0217 ms |   4.364 ms |   24.8 MB |
+| Alis_Create_With_Two_Component                             | 1000000     |   9.801 ms |   1.5650 ms |  0.0858 ms |   9.840 ms |   52.8 MB |
+| Alis_Create_Bulk_With_Two_Component                        | 1000000     |   4.916 ms |   0.7935 ms |  0.0435 ms |   4.898 ms |  28.61 MB |
+| Alis_Create_With_Three_Component                           | 1000000     |  15.030 ms |   4.0973 ms |  0.2246 ms |  15.094 ms |   60.8 MB |
+| Alis_Create_Bulk_With_Thre_Component                       | 1000000     |   5.540 ms |   2.0056 ms |  0.1099 ms |   5.586 ms |  32.43 MB |
+| Alis_Create_With_Four_Component                            | 1000000     |  24.447 ms |   2.9366 ms |  0.1610 ms |  24.485 ms |   68.8 MB |
+| Alis_Create_Bulk_With_Four_Component                       | 1000000     |   7.364 ms |  19.0672 ms |  1.0451 ms |   7.009 ms |  36.24 MB |
+| Alis_Create_With_Five_Component                            | 1000000     |  10.594 ms |   1.8803 ms |  0.1031 ms |  10.561 ms |   76.8 MB |
+| Alis_Create_Bulk_With_Five_Component                       | 1000000     |   6.432 ms |   4.3116 ms |  0.2363 ms |   6.411 ms |  40.06 MB |
+| Alis_Create_With_Six_Component                             | 1000000     |  12.159 ms |   8.4568 ms |  0.4635 ms |  11.905 ms |   84.8 MB |
+| Alis_Create_Bulk_With_Six_Component                        | 1000000     |   7.245 ms |   7.1534 ms |  0.3921 ms |   7.354 ms |  43.87 MB |
+| Alis_Create_With_Seven_Component                           | 1000000     |  13.452 ms |   9.1935 ms |  0.5039 ms |  13.668 ms |   92.8 MB |
+| Alis_Create_Bulk_With_Seven_Component                      | 1000000     |   8.367 ms |   2.9451 ms |  0.1614 ms |   8.361 ms |  47.69 MB |
+| Alis_Create_With_Eight_Component                           | 1000000     |  15.541 ms |   0.9107 ms |  0.0499 ms |  15.561 ms |  100.8 MB |
+| Alis_Create_Bulk_With_Eight_Component                      | 1000000     |   8.934 ms |   5.3757 ms |  0.2947 ms |   8.770 ms |   51.5 MB |
+| Alis_Create_With_Nine_Component                            | 1000000     |  17.696 ms |   4.3109 ms |  0.2363 ms |  17.655 ms |  108.8 MB |
+| Alis_Create_Bulk_With_Nine_Component                       | 1000000     |   9.428 ms |   5.4049 ms |  0.2963 ms |   9.487 ms |  55.32 MB |
+| Alis_Create_With_Ten_Component                             | 1000000     |  17.939 ms |  14.0086 ms |  0.7679 ms |  18.370 ms |  116.8 MB |
+| Alis_Create_Bulk_With_Ten_Component                        | 1000000     |  10.112 ms |   4.6773 ms |  0.2564 ms |  10.190 ms |  59.13 MB |
+| Alis_Create_With_Eleven_Component                          | 1000000     |  20.946 ms |   9.8951 ms |  0.5424 ms |  20.820 ms |  124.8 MB |
+| Alis_Create_Bulk_With_Eleven_Component                     | 1000000     |  10.644 ms |   3.4344 ms |  0.1883 ms |  10.692 ms |  62.94 MB |
+| Alis_Create_With_Twelve_Component                          | 1000000     |  21.792 ms |  12.1943 ms |  0.6684 ms |  21.611 ms |  132.8 MB |
+| Alis_Create_Bulk_With_Twelve_Component                     | 1000000     |  11.288 ms |   7.8292 ms |  0.4291 ms |  11.152 ms |  66.76 MB |
+| Alis_Create_With_Thirteen_Component                        | 1000000     |  25.304 ms |   3.4355 ms |  0.1883 ms |  25.265 ms |  140.8 MB |
+| Alis_Create_Bulk_With_Thirteen_Component                   | 1000000     |  11.846 ms |   3.6812 ms |  0.2018 ms |  11.740 ms |  70.57 MB |
+| Alis_Create_With_Fourteen_Component                        | 1000000     |  32.039 ms |  11.2053 ms |  0.6142 ms |  32.183 ms |  148.8 MB |
+| Alis_Create_Bulk_With_Fourteen_Component                   | 1000000     |  12.199 ms |   3.8637 ms |  0.2118 ms |  12.239 ms |  74.39 MB |
+| Alis_Create_With_Fifteen_Component                         | 1000000     |  33.630 ms |  62.3611 ms |  3.4182 ms |  34.038 ms | 156.81 MB |
+| Alis_Create_Bulk_With_Fifteen_Component                    | 1000000     |  13.424 ms |   2.4922 ms |  0.1366 ms |  13.364 ms |   78.2 MB |
+| Alis_Create_With_Sixteen_Component                         | 1000000     |  38.041 ms |  67.0199 ms |  3.6736 ms |  39.430 ms | 164.81 MB |
+| Alis_Create_Bulk_With_Sixteen_Component                    | 1000000     |  13.675 ms |  10.2345 ms |  0.5610 ms |  13.853 ms |  82.02 MB |
+| Alis_SystemWithOneComponent_QueryInline_With_Padding_0     | 1000000     |   9.605 ms |   2.2352 ms |  0.1225 ms |   9.540 ms |  51.99 MB |
+| Alis_SystemWithOneComponent_QueryDelegate_With_Padding_0   | 1000000     |   8.554 ms |  18.3126 ms |  1.0038 ms |   8.138 ms |  51.99 MB |
+| Alis_SystemWithOneComponent_Simd_With_Padding_0            | 1000000     |   8.382 ms |   8.4079 ms |  0.4609 ms |   8.640 ms |  51.99 MB |
+| Alis_SystemWithOneComponent_QueryInline_With_Padding_10    | 1000000     | 101.678 ms |  36.2506 ms |  1.9870 ms | 102.012 ms | 723.99 MB |
+| Alis_SystemWithOneComponent_QueryDelegate_With_Padding_10  | 1000000     |  94.694 ms |  38.9643 ms |  2.1358 ms |  94.617 ms | 723.99 MB |
+| Alis_SystemWithOneComponent_Simd_With_Padding_10           | 1000000     |  91.314 ms |   4.4389 ms |  0.2433 ms |  91.309 ms | 723.99 MB |
+| Frent_Create_With_One_Component                            | 1000000     |  14.368 ms |   7.1370 ms |  0.3912 ms |  14.380 ms |   24.8 MB |
+| Frent_Create_Bulk_With_One_Component                       | 1000000     |   5.025 ms |   6.7623 ms |  0.3707 ms |   4.932 ms |   24.8 MB |
+| Frent_Create_With_Two_Component                            | 1000000     |  18.208 ms |   4.0355 ms |  0.2212 ms |  18.283 ms |   52.8 MB |
+| Frent_Create_Bulk_With_Two_Component                       | 1000000     |   5.406 ms |   1.9264 ms |  0.1056 ms |   5.442 ms |  28.61 MB |
+| Frent_Create_With_Three_Component                          | 1000000     |  20.145 ms |   8.7450 ms |  0.4793 ms |  20.378 ms |   60.8 MB |
+| Frent_Create_Bulk_With_Thre_Component                      | 1000000     |   5.796 ms |  10.8406 ms |  0.5942 ms |   5.600 ms |  32.43 MB |
+| Frent_Create_With_Four_Component                           | 1000000     |  38.163 ms |  44.4708 ms |  2.4376 ms |  38.195 ms |   68.8 MB |
+| Frent_Create_Bulk_With_Four_Component                      | 1000000     |   6.521 ms |   3.2168 ms |  0.1763 ms |   6.506 ms |  36.24 MB |
+| Frent_Create_With_Five_Component                           | 1000000     |  16.303 ms |  10.8633 ms |  0.5955 ms |  16.137 ms |   76.8 MB |
+| Frent_Create_Bulk_With_Five_Component                      | 1000000     |   7.049 ms |   6.3785 ms |  0.3496 ms |   7.240 ms |  40.06 MB |
+| Frent_Create_With_Six_Component                            | 1000000     |  36.297 ms | 258.1349 ms | 14.1492 ms |  43.790 ms |   84.8 MB |
+| Frent_Create_Bulk_With_Six_Component                       | 1000000     |   7.939 ms |   8.4136 ms |  0.4612 ms |   8.121 ms |  43.87 MB |
+| Frent_Create_With_Seven_Component                          | 1000000     |  20.332 ms |  10.9116 ms |  0.5981 ms |  20.072 ms |   92.8 MB |
+| Frent_Create_Bulk_With_Seven_Component                     | 1000000     |   8.286 ms |   5.3529 ms |  0.2934 ms |   8.155 ms |  47.69 MB |
+| Create_With_Eight_Component                                | 1000000     |  21.598 ms |   8.4099 ms |  0.4610 ms |  21.519 ms |  100.8 MB |
+| Frent_Create_Bulk_With_Eight_Component                     | 1000000     |   9.198 ms |   0.8910 ms |  0.0488 ms |   9.185 ms |   51.5 MB |
+| Frent_Create_With_Nine_Component                           | 1000000     |  22.378 ms |   9.5835 ms |  0.5253 ms |  22.593 ms |  108.8 MB |
+| Frent_Create_Bulk_With_Nine_Component                      | 1000000     |   9.743 ms |   6.4977 ms |  0.3562 ms |   9.635 ms |  55.32 MB |
+| Frent_Create_With_Ten_Component                            | 1000000     |  22.501 ms |   5.8505 ms |  0.3207 ms |  22.407 ms |  116.8 MB |
+| Frent_Create_Bulk_With_Ten_Component                       | 1000000     |  10.378 ms |   4.2170 ms |  0.2311 ms |  10.253 ms |  59.13 MB |
+| Frent_Create_With_Eleven_Component                         | 1000000     |  22.933 ms |   9.2484 ms |  0.5069 ms |  22.704 ms |  124.8 MB |
+| Frent_Create_Bulk_With_Eleven_Component                    | 1000000     |  10.980 ms |   4.8280 ms |  0.2646 ms |  11.124 ms |  62.94 MB |
+| Frent_Create_With_Twelve_Component                         | 1000000     |  19.562 ms |  13.7121 ms |  0.7516 ms |  19.939 ms |  132.8 MB |
+| Frent_Create_Bulk_With_Twelve_Component                    | 1000000     |  11.775 ms |  12.7877 ms |  0.7009 ms |  11.459 ms |  66.76 MB |
+| Frent_Create_With_Thirteen_Component                       | 1000000     |  20.976 ms |   6.1767 ms |  0.3386 ms |  21.084 ms |  140.8 MB |
+| Frent_Create_Bulk_With_Thirteen_Component                  | 1000000     |  12.607 ms |   6.7471 ms |  0.3698 ms |  12.468 ms |  70.57 MB |
+| Frent_Create_With_Fourteen_Component                       | 1000000     |  27.117 ms |   8.8554 ms |  0.4854 ms |  27.127 ms |  148.8 MB |
+| Frent_Create_Bulk_With_Fourteen_Component                  | 1000000     |  12.141 ms |   3.1565 ms |  0.1730 ms |  12.155 ms |  74.39 MB |
+| Frent_Create_With_Fifteen_Component                        | 1000000     |  30.974 ms |  43.4812 ms |  2.3834 ms |  32.266 ms | 156.81 MB |
+| Frent_Create_Bulk_With_Fifteen_Component                   | 1000000     |  13.500 ms |   3.5641 ms |  0.1954 ms |  13.520 ms |   78.2 MB |
+| Frent_Create_With_Sixteen_Component                        | 1000000     |  35.664 ms |  96.1824 ms |  5.2721 ms |  35.454 ms | 164.81 MB |
+| Frent_Create_Bulk_With_Sixteen_Component                   | 1000000     |  13.761 ms |   5.8987 ms |  0.3233 ms |  13.877 ms |  82.02 MB |
+| Frent_SystemWithOneComponent_QueryInline_With_Padding_0    | 1000000     |  17.129 ms |   7.4162 ms |  0.4065 ms |  17.016 ms |  51.99 MB |
+| Frent_SystemWithOneComponent_QueryDelegate_With_Padding_0  | 1000000     |  16.858 ms |   4.2908 ms |  0.2352 ms |  16.908 ms |  51.99 MB |
+| Frent_SystemWithOneComponent_Simd_With_Padding_0           | 1000000     |   7.041 ms |   2.1163 ms |  0.1160 ms |   7.056 ms |  51.99 MB |
+| Frent_SystemWithOneComponent_QueryInline_With_Padding_10   | 1000000     |  98.985 ms |  42.5228 ms |  2.3308 ms |  98.856 ms | 723.99 MB |
+| Frent_SystemWithOneComponent_QueryDelegate_With_Padding_10 | 1000000     |  98.786 ms |  26.3158 ms |  1.4425 ms |  98.942 ms | 723.99 MB |
+| Frent_SystemWithOneComponent_Simd_With_Padding_10          | 1000000     |  91.317 ms |  11.7172 ms |  0.6423 ms |  90.964 ms | 723.99 MB |
