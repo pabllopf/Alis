@@ -29,10 +29,10 @@
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
 
+using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
-namespace System.Numerics
+namespace Alis.Core.Ecs.Redefinition
 {
     public static class BitOperations
     {

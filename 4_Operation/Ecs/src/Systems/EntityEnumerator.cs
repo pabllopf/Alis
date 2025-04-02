@@ -31,6 +31,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Redefinition;
 
 namespace Alis.Core.Ecs.Systems
 {

@@ -30,6 +30,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Core.Events;
+using RuntimeHelpers = Alis.Core.Ecs.Redefinition.RuntimeHelpers;
 
 
 namespace Alis.Core.Ecs.Collections

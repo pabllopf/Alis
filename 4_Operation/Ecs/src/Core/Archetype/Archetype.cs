@@ -37,7 +37,9 @@ using System.Threading;
 using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Redefinition;
 using Alis.Core.Ecs.Updating;
+using MemoryMarshal = Alis.Core.Ecs.Redefinition.MemoryMarshal;
 
 
 namespace Alis.Core.Ecs.Core.Archetype

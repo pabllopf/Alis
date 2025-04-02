@@ -30,6 +30,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using MemoryMarshal = Alis.Core.Ecs.Redefinition.MemoryMarshal;
 
 
 namespace Alis.Core.Ecs.Core.Memory

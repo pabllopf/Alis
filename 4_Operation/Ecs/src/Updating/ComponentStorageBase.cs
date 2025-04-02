@@ -34,6 +34,7 @@ using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
 using Alis.Core.Ecs.Core.Events;
+using RuntimeHelpers = Alis.Core.Ecs.Redefinition.RuntimeHelpers;
 
 
 namespace Alis.Core.Ecs.Updating
