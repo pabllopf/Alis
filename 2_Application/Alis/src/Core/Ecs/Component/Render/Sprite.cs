@@ -46,41 +46,8 @@ namespace Alis.Core.Ecs.Component.Render
     /// The sprite
     /// </summary>
     
-    public struct Sprite : IInitable, IEntityComponent, IRuleProvider
+    public struct Sprite(string nameFile, int depth) : IInitable
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Sprite" /> class
-        /// </summary>
-        public Sprite()
-        {
-            NameFile = "";
-            Path = "";
-            Depth = 0;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Sprite" /> class
-        /// </summary>
-        /// <param name="nameFile">The name file</param>
-        public Sprite(string nameFile)
-        {
-            NameFile = nameFile;
-            Path = "";
-            Depth = 0;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Sprite" /> class
-        /// </summary>
-        /// <param name="nameFile">The name file</param>
-        /// <param name="depth">The depth</param>
-        private Sprite(string nameFile, int depth)
-        {
-            NameFile = nameFile;
-            Path = AssetManager.Find(nameFile);
-            Depth = depth;
-        }
-
         /// <summary>
         /// Inits the self
         /// </summary>
@@ -102,11 +69,9 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="self">The self</param>
         public void Update(Entity self)
         {
-
+            Console.WriteLine($"Sprite {self.EntityID} updated");
         }
-
-        public Rule Rule { get; }
-
+        
         /// <summary>
         ///     The image handle
         /// </summary>
@@ -126,7 +91,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Gets or sets the value of the depth
         /// </summary>
         [JsonPropertyName("_Depth_")]
-        public int Depth { get; set; }
+        public int Depth { get; set; } = depth;
 
         /// <summary>
         ///     Gets or sets the value of the path
@@ -138,7 +103,7 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Gets or sets the value of the name file
         /// </summary>
         [JsonPropertyName("_NameFile_")]
-        public string NameFile { get; set; }
+        public string NameFile { get; set; } = nameFile;
 
         /// <summary>
         ///     Gets or sets the value of the size
@@ -386,6 +351,11 @@ namespace Alis.Core.Ecs.Component.Render
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
 
             Gl.GlDisable(EnableCap.Blend);
+        }
+
+        public void Update()
+        {
+            Console.WriteLine($"Sprite {NameFile} updated");
         }
     }
 }

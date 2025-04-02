@@ -213,7 +213,7 @@ namespace Alis.Core.Ecs.Sample
         /// <summary>
         /// The velocity
         /// </summary>
-        struct Velocity(int dx, int dy) : IComponent<Position>
+        struct Velocity(int dx, int dy) : IComponent<Position>, IInitable
         {
             /// <summary>
             /// The dx
@@ -231,6 +231,11 @@ namespace Alis.Core.Ecs.Sample
             {
                 pos.X += DX;
                 pos.Y += DY;
+            }
+
+            public void Init(Entity self)
+            {
+                Console.WriteLine("Init");
             }
         }
 

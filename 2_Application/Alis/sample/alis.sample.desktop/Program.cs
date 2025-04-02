@@ -46,8 +46,9 @@ namespace Alis.Sample.Desktop
         {
             VideoGame game = new VideoGame();
 
-            game.Context.SceneManager.World.Create(new Sprite("app.bmp"), 0);
+            game.Context.SceneManager.World.Create(new Camera()); 
             
+            game.Context.SceneManager.World.Create(new Sprite("app.bmp", 0));
             
             game.Run();
         }

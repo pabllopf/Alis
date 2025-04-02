@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.System.Scope;
 
@@ -46,6 +47,10 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         public SceneManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
         {
             World = new World();
+        }
+
+        public override void OnInit()
+        {
         }
 
         public override void OnUpdate()
