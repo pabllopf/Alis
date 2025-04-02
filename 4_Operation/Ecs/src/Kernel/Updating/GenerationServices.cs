@@ -64,18 +64,28 @@ namespace Alis.Core.Ecs.Kernel.Updating
         ///     Used only for source generation
         /// </summary>
         public static void RegisterInit<T>()
-            where T : IInitable
         {
-            TypeIniters[typeof(T)] = (ComponentDelegates<T>.InitDelegate) ([method: DebuggerHidden, DebuggerStepThrough] static (Entity e, ref T c) => c.Init(e));
+            TypeIniters[typeof(T)] = (ComponentDelegates<T>.InitDelegate) ([method: DebuggerHidden, DebuggerStepThrough] static (Entity e, ref T c) =>
+            {
+                if (c is IInitable component)
+                {
+                    component.Init(e);
+                }
+            });
         }
 
         /// <summary>
         ///     Used only for source generation
         /// </summary>
         public static void RegisterDestroy<T>()
-            where T : IDestroyable
         {
-            TypeDestroyers[typeof(T)] = (ComponentDelegates<T>.DestroyDelegate) ([method: DebuggerHidden, DebuggerStepThrough] static (ref T c) => c.Destroy());
+            TypeDestroyers[typeof(T)] = (ComponentDelegates<T>.DestroyDelegate) ([method: DebuggerHidden, DebuggerStepThrough] static (ref T c) =>
+            {
+                if (c is IDestroyable component)
+                {
+                    component.Destroy();
+                }
+            });
         }
 
         /// <summary>

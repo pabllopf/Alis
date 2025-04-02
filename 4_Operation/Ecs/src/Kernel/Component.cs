@@ -84,19 +84,14 @@ namespace Alis.Core.Ecs.Kernel
         static Component()
         {
             (_id, GeneralComponentStorage, Initer, Destroyer) = Component.GetExistingOrSetupNewComponent<T>();
-
-            if (GenerationServices.UserGeneratedTypeMap.TryGetValue(typeof(T), out (IComponentStorageBaseFactory Factory, int UpdateOrder) type))
+            
+            if (typeof(IEntityComponent).IsAssignableFrom(typeof(T)))
             {
-                if (type.Factory is IComponentStorageBaseFactory<T> casted)
-                {
-                    RunnerInstance = casted;
-                    return;
-                }
-
-                throw new InvalidOperationException($"{typeof(T).FullName} is not initalized correctly. (Is the source generator working?)");
+                RunnerInstance = new EntityUpdateRunnerFactory<T>();
+                return;
             }
-
-            NoneUpdateRunnerFactory<T> fac = new NoneUpdateRunnerFactory<T>();
+        
+            var fac = new NoneUpdateRunnerFactory<T>();
             Component.NoneComponentRunnerTable[typeof(T)] = fac;
             RunnerInstance = fac;
         }
@@ -223,6 +218,17 @@ namespace Alis.Core.Ecs.Kernel
 
                 GlobalWorldTables.GrowComponentTagTableIfNeeded(id.RawIndex);
 
+                if (typeof(IInitable).IsAssignableFrom(typeof(T)))
+                {
+                    GenerationServices.RegisterInit<T>();
+                }
+                
+                if (typeof(IDestroyable).IsAssignableFrom(typeof(T)))
+                {
+                    GenerationServices.RegisterDestroy<T>();
+                }
+                
+                
                 ComponentDelegates<T>.InitDelegate initDelegate = (ComponentDelegates<T>.InitDelegate) (GenerationServices.TypeIniters.TryGetValue(type, out Delegate v) ? v : null);
                 ComponentDelegates<T>.DestroyDelegate destroyDelegate = (ComponentDelegates<T>.DestroyDelegate) (GenerationServices.TypeDestroyers.TryGetValue(type, out Delegate v2) ? v2 : null);
 

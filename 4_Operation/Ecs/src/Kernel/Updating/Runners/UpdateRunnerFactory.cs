@@ -5,7 +5,6 @@ namespace Alis.Core.Ecs.Kernel.Updating.Runners
 {
     /// <inheritdoc cref="IComponentStorageBaseFactory" />
     public class UpdateRunnerFactory<TComp> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
-        where TComp : IComponent
     {
         /// <summary>
         ///     Creates the capacity
