@@ -32,7 +32,7 @@ using System;
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    ///     The frent exceptions class
+    ///     The Alis exceptions class
     /// </summary>
     internal class FrentExceptions
     {
