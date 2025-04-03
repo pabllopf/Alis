@@ -30,11 +30,11 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Collections;
-using Alis.Core.Ecs.Kernel.Events;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Events;
 using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The component handle
@@ -171,7 +171,7 @@ namespace Alis.Core.Ecs.Kernel
         public Type Type => _componentType.Type;
 
         /// <summary>
-        ///     The <see cref="Kernel.ComponentID" /> of the component represented by this <see cref="ComponentHandle" />
+        ///     The <see cref="Ecs.ComponentID" /> of the component represented by this <see cref="ComponentHandle" />
         /// </summary>
         public ComponentID ComponentID => _componentType;
 

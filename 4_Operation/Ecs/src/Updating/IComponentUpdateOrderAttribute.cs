@@ -1,4 +1,4 @@
-namespace Alis.Core.Ecs.Kernel.Updating
+namespace Alis.Core.Ecs.Updating
 {
     /// <summary>
     ///     Marker interface for any update order attribute.

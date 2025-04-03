@@ -27,11 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Memory;
-using Alis.Core.Ecs.Kernel.Operations;
+using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Operations;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The world query extensions class

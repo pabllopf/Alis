@@ -30,8 +30,9 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Alis.Core.Ecs.Arch;
 
-namespace Alis.Core.Ecs.Kernel.Operations
+namespace Alis.Core.Ecs.Operations
 {
     /// <summary>
     ///     The chunk query enumerator
@@ -48,7 +49,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         ///     The archetypes
         /// </summary>
-        private readonly Span<Archetype.Archetype> _archetypes;
+        private readonly Span<Archetype> _archetypes;
 
         /// <summary>
         ///     The archetype index
@@ -74,7 +75,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype cur = _archetypes[_archetypeIndex];
+                Archetype cur = _archetypes[_archetypeIndex];
                 return new()
                 {
                     Span = cur.GetComponentSpan<T>()
@@ -126,7 +127,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         /// The archetypes
         /// </summary>
-        private Span<Archetype.Archetype> _archetypes;
+        private Span<Archetype> _archetypes;
         
         /// <summary>
         /// The archetype index
@@ -152,7 +153,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype archetype = this._archetypes[this._archetypeIndex];
+                Archetype archetype = this._archetypes[this._archetypeIndex];
                 return new ChunkTuple<T1, T2>()
                 {
                     Span1 = archetype.GetComponentSpan<T1>(),
@@ -202,7 +203,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         /// The archetypes
         /// </summary>
-        private Span<Archetype.Archetype> _archetypes;
+        private Span<Archetype> _archetypes;
         /// <summary>
         /// The archetype index
         /// </summary>
@@ -227,7 +228,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype archetype = this._archetypes[this._archetypeIndex];
+                Archetype archetype = this._archetypes[this._archetypeIndex];
                 return new ChunkTuple<T1, T2, T3>()
                 {
                     Span1 = archetype.GetComponentSpan<T1>(),
@@ -278,7 +279,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         /// The archetypes
         /// </summary>
-        private Span<Archetype.Archetype> _archetypes;
+        private Span<Archetype> _archetypes;
         /// <summary>
         /// The archetype index
         /// </summary>
@@ -303,7 +304,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype archetype = this._archetypes[this._archetypeIndex];
+                Archetype archetype = this._archetypes[this._archetypeIndex];
                 return new ChunkTuple<T1, T2, T3, T4>()
                 {
                     Span1 = archetype.GetComponentSpan<T1>(),
@@ -354,7 +355,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         /// The archetypes
         /// </summary>
-        private Span<Archetype.Archetype> _archetypes;
+        private Span<Archetype> _archetypes;
         /// <summary>
         /// The archetype index
         /// </summary>
@@ -379,7 +380,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype archetype = this._archetypes[this._archetypeIndex];
+                Archetype archetype = this._archetypes[this._archetypeIndex];
                 return new ChunkTuple<T1, T2, T3, T4, T5>()
                 {
                     Span1 = archetype.GetComponentSpan<T1>(),
@@ -431,7 +432,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         /// The archetypes
         /// </summary>
-        private Span<Archetype.Archetype> _archetypes;
+        private Span<Archetype> _archetypes;
         /// <summary>
         /// The archetype index
         /// </summary>
@@ -456,7 +457,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype archetype = this._archetypes[this._archetypeIndex];
+                Archetype archetype = this._archetypes[this._archetypeIndex];
                 return new ChunkTuple<T1, T2, T3, T4, T5, T6>()
                 {
                     Span1 = archetype.GetComponentSpan<T1>(),
@@ -509,7 +510,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         /// The archetypes
         /// </summary>
-        private Span<Archetype.Archetype> _archetypes;
+        private Span<Archetype> _archetypes;
         /// <summary>
         /// The archetype index
         /// </summary>
@@ -534,7 +535,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype archetype = this._archetypes[this._archetypeIndex];
+                Archetype archetype = this._archetypes[this._archetypeIndex];
                 return new ChunkTuple<T1, T2, T3, T4, T5, T6, T7>()
                 {
                     Span1 = archetype.GetComponentSpan<T1>(),
@@ -588,7 +589,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         /// The archetypes
         /// </summary>
-        private Span<Archetype.Archetype> _archetypes;
+        private Span<Archetype> _archetypes;
         /// <summary>
         /// The archetype index
         /// </summary>
@@ -613,7 +614,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype archetype = this._archetypes[this._archetypeIndex];
+                Archetype archetype = this._archetypes[this._archetypeIndex];
                 return new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8>()
                 {
                     Span1 = archetype.GetComponentSpan<T1>(),
@@ -668,7 +669,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         /// The archetypes
         /// </summary>
-        private Span<Archetype.Archetype> _archetypes;
+        private Span<Archetype> _archetypes;
         /// <summary>
         /// The archetype index
         /// </summary>
@@ -693,7 +694,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype archetype = this._archetypes[this._archetypeIndex];
+                Archetype archetype = this._archetypes[this._archetypeIndex];
                 return new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9>()
                 {
                     Span1 = archetype.GetComponentSpan<T1>(),
@@ -749,7 +750,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         /// The archetypes
         /// </summary>
-        private Span<Archetype.Archetype> _archetypes;
+        private Span<Archetype> _archetypes;
         /// <summary>
         /// The archetype index
         /// </summary>
@@ -774,7 +775,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype archetype = this._archetypes[this._archetypeIndex];
+                Archetype archetype = this._archetypes[this._archetypeIndex];
                 return new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>()
                 {
                     Span1 = archetype.GetComponentSpan<T1>(),
@@ -831,7 +832,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         /// The archetypes
         /// </summary>
-        private Span<Archetype.Archetype> _archetypes;
+        private Span<Archetype> _archetypes;
         /// <summary>
         /// The archetype index
         /// </summary>
@@ -856,7 +857,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype archetype = this._archetypes[this._archetypeIndex];
+                Archetype archetype = this._archetypes[this._archetypeIndex];
                 return new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>()
                 {
                     Span1 = archetype.GetComponentSpan<T1>(),
@@ -914,7 +915,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         /// The archetypes
         /// </summary>
-        private Span<Archetype.Archetype> _archetypes;
+        private Span<Archetype> _archetypes;
         /// <summary>
         /// The archetype index
         /// </summary>
@@ -939,7 +940,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype archetype = this._archetypes[this._archetypeIndex];
+                Archetype archetype = this._archetypes[this._archetypeIndex];
                 return new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>()
                 {
                     Span1 = archetype.GetComponentSpan<T1>(),
@@ -998,7 +999,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         /// The archetypes
         /// </summary>
-        private Span<Archetype.Archetype> _archetypes;
+        private Span<Archetype> _archetypes;
         /// <summary>
         /// The archetype index
         /// </summary>
@@ -1023,7 +1024,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype archetype = this._archetypes[this._archetypeIndex];
+                Archetype archetype = this._archetypes[this._archetypeIndex];
                 return new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>()
                 {
                     Span1 = archetype.GetComponentSpan<T1>(),
@@ -1083,7 +1084,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         /// The archetypes
         /// </summary>
-        private Span<Archetype.Archetype> _archetypes;
+        private Span<Archetype> _archetypes;
         /// <summary>
         /// The archetype index
         /// </summary>
@@ -1108,7 +1109,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype archetype = this._archetypes[this._archetypeIndex];
+                Archetype archetype = this._archetypes[this._archetypeIndex];
                 return new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>()
                 {
                     Span1 = archetype.GetComponentSpan<T1>(),
@@ -1169,7 +1170,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         /// The archetypes
         /// </summary>
-        private Span<Archetype.Archetype> _archetypes;
+        private Span<Archetype> _archetypes;
         /// <summary>
         /// The archetype index
         /// </summary>
@@ -1194,7 +1195,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype archetype = this._archetypes[this._archetypeIndex];
+                Archetype archetype = this._archetypes[this._archetypeIndex];
                 return new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>()
                 {
                     Span1 = archetype.GetComponentSpan<T1>(),
@@ -1256,7 +1257,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         /// The archetypes
         /// </summary>
-        private Span<Archetype.Archetype> _archetypes;
+        private Span<Archetype> _archetypes;
         /// <summary>
         /// The archetype index
         /// </summary>
@@ -1281,7 +1282,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         {
             get
             {
-                Archetype.Archetype archetype = this._archetypes[this._archetypeIndex];
+                Archetype archetype = this._archetypes[this._archetypeIndex];
                 return new ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>()
                 {
                     Span1 = archetype.GetComponentSpan<T1>(),

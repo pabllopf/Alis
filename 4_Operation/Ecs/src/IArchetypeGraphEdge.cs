@@ -1,6 +1,6 @@
-using Alis.Core.Ecs.Kernel.Collections;
+using Alis.Core.Ecs.Collections;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The archetype graph edge interface

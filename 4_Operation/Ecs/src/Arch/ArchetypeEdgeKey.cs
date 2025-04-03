@@ -31,7 +31,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Ecs.Kernel.Archetype
+namespace Alis.Core.Ecs.Arch
 {
     /// <summary>
     ///     The archetype edge key

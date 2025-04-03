@@ -30,10 +30,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using Alis.Core.Ecs.Kernel.Archetype;
-using Alis.Core.Ecs.Kernel.Collections;
+using Alis.Core.Ecs.Arch;
+using Alis.Core.Ecs.Collections;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     Holds the static <see cref="TagId" /> instance for the type <typeparamref name="T" />

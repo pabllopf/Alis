@@ -28,9 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Ecs.Kernel.Collections;
+using Alis.Core.Ecs.Arch;
+using Alis.Core.Ecs.Collections;
 
-namespace Alis.Core.Ecs.Kernel.Operations
+namespace Alis.Core.Ecs.Operations
 {
     /// <summary>
     ///     Represents a set of entities from a world which can have systems applied to
@@ -45,7 +46,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         ///     The create
         /// </summary>
-        private FastStack<Archetype.Archetype> _archetypes = FastStack<Archetype.Archetype>.Create(2);
+        private FastStack<Archetype> _archetypes = FastStack<Archetype>.Create(2);
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Query" /> class
@@ -80,13 +81,13 @@ namespace Alis.Core.Ecs.Kernel.Operations
         ///     Converts the span
         /// </summary>
         /// <returns>A span of archetype</returns>
-        internal Span<Archetype.Archetype> AsSpan() => _archetypes.AsSpan();
+        internal Span<Archetype> AsSpan() => _archetypes.AsSpan();
 
         /// <summary>
         ///     Tries the attach archetype using the specified archetype
         /// </summary>
         /// <param name="archetype">The archetype</param>
-        internal void TryAttachArchetype(Archetype.Archetype archetype)
+        internal void TryAttachArchetype(Archetype archetype)
         {
             if (!IncludeDisabled && archetype.HasTag<Disable>())
             {

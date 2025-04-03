@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Ecs.Kernel.Collections;
-using Alis.Core.Ecs.Kernel.Memory;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Memory;
 
-namespace Alis.Core.Ecs.Kernel.Archetype
+namespace Alis.Core.Ecs.Arch
 {
     /// <summary>
     ///     The global world tables class

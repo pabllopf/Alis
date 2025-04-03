@@ -34,10 +34,10 @@ using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Buffers;
-using Alis.Core.Ecs.Kernel.Collections;
+using Alis.Core.Ecs.Buffers;
+using Alis.Core.Ecs.Collections;
 
-namespace Alis.Core.Ecs.Kernel.Memory
+namespace Alis.Core.Ecs.Memory
 {
     /// <summary>
     ///     The memory helpers class

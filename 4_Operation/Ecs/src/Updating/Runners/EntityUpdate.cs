@@ -30,10 +30,11 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.Kernel.Collections;
+using Alis.Core.Ecs.Arch;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Comps;
 
-namespace Alis.Core.Ecs.Kernel.Updating.Runners
+namespace Alis.Core.Ecs.Updating.Runners
 {
     /// <summary>
     ///     The entity update class
@@ -46,7 +47,7 @@ namespace Alis.Core.Ecs.Kernel.Updating.Runners
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="b">The </param>
-        internal override void Run(World world, Archetype.Archetype b)
+        internal override void Run(World world, Archetype b)
         {
             ref EntityIdOnly entityIds = ref b.GetEntityDataReference();
             ref TComp comp = ref GetComponentStorageDataReference();
@@ -74,7 +75,7 @@ namespace Alis.Core.Ecs.Kernel.Updating.Runners
         /// <param name="countdown">The countdown</param>
         /// <param name="world">The world</param>
         /// <param name="b">The </param>
-        internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype.Archetype b) =>
+        internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype b) =>
             throw new NotImplementedException();
     }
 
@@ -91,7 +92,7 @@ namespace Alis.Core.Ecs.Kernel.Updating.Runners
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="b">The </param>
-        internal override void Run(World world, Archetype.Archetype b)
+        internal override void Run(World world, Archetype b)
         {
             ref EntityIdOnly entityIds = ref b.GetEntityDataReference();
             ref TComp comp = ref GetComponentStorageDataReference();
@@ -119,7 +120,7 @@ namespace Alis.Core.Ecs.Kernel.Updating.Runners
         /// <param name="countdown">The countdown</param>
         /// <param name="world">The world</param>
         /// <param name="b">The </param>
-        internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype.Archetype b)
+        internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype b)
             => throw new NotImplementedException();
     }
 

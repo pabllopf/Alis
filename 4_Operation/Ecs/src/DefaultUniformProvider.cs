@@ -30,7 +30,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The default uniform provider, using a dictionary.

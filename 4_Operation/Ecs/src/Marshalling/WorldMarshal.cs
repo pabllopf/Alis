@@ -28,10 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Ecs.Kernel.Memory;
-using Alis.Core.Ecs.Kernel.Updating;
+using Alis.Core.Ecs.Arch;
+using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Updating;
 
-namespace Alis.Core.Ecs.Kernel.Marshalling
+namespace Alis.Core.Ecs.Marshalling
 {
     /// <summary>
     ///     Unsafe methods to write even faster code! Users are expected to know what they are doing and improper usage can
@@ -77,7 +78,7 @@ namespace Alis.Core.Ecs.Kernel.Marshalling
         {
             EntityLocation location = world.EntityTable.UnsafeIndexNoResize(entityID);
 
-            Archetype.Archetype archetype = location.Archetype;
+            Archetype archetype = location.Archetype;
 
             int compIndex = archetype.GetComponentIndex<T>();
 

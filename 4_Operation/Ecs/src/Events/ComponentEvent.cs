@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Ecs.Kernel.Events
+namespace Alis.Core.Ecs.Events
 {
     /// <summary>
     ///     The component event

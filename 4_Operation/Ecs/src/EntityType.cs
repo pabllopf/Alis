@@ -27,15 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-global using ArchetypeID = Alis.Core.Ecs.Kernel.EntityType;
+global using ArchetypeID = Alis.Core.Ecs.EntityType;
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Archetype;
-using Alis.Core.Ecs.Kernel.Collections;
-using Alis.Core.Ecs.Kernel.Memory;
+using Alis.Core.Ecs.Arch;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Memory;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     //This isn't named ArchetypeID because archetypes are an implementation detail
     /// <summary>
@@ -59,12 +59,12 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The component types
         /// </summary>
-        public readonly FastImmutableArray<ComponentID> Types => Kernel.Archetype.Archetype.ArchetypeTable[RawIndex].ComponentTypes;
+        public readonly FastImmutableArray<ComponentID> Types => Arch.Archetype.ArchetypeTable[RawIndex].ComponentTypes;
 
         /// <summary>
         ///     The tag types
         /// </summary>
-        public readonly FastImmutableArray<TagId> Tags => Kernel.Archetype.Archetype.ArchetypeTable[RawIndex].TagTypes;
+        public readonly FastImmutableArray<TagId> Tags => Arch.Archetype.ArchetypeTable[RawIndex].TagTypes;
 
         /// <summary>
         ///     Checks if this <see cref="EntityType" /> has a component represented by a <see cref="ComponentID" />
@@ -127,6 +127,6 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         /// <param name="context">The context</param>
         /// <returns>The ref archetype archetype</returns>
-        internal readonly ref Archetype.Archetype Archetype(World context) => ref context.WorldArchetypeTable.UnsafeArrayIndex(RawIndex);
+        internal readonly ref Archetype Archetype(World context) => ref context.WorldArchetypeTable.UnsafeArrayIndex(RawIndex);
     }
 }

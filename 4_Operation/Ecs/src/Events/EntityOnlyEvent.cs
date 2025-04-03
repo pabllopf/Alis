@@ -1,9 +1,9 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Collections;
+using Alis.Core.Ecs.Collections;
 
-namespace Alis.Core.Ecs.Kernel.Events
+namespace Alis.Core.Ecs.Events
 {
     /// <summary>
     ///     The entity only event

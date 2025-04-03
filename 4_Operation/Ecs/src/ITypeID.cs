@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The type id interface

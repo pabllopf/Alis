@@ -30,13 +30,12 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Collections;
-using Alis.Core.Ecs.Kernel.Memory;
-using Alis.Core.Ecs.Kernel.Updating;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Updating;
 using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
-namespace Alis.Core.Ecs.Kernel.Archetype
+namespace Alis.Core.Ecs.Arch
 {
    
     

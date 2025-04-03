@@ -1,7 +1,6 @@
-using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.Kernel.Collections;
+using Alis.Core.Ecs.Collections;
 
-namespace Alis.Core.Ecs.Kernel.Updating.Runners
+namespace Alis.Core.Ecs.Updating.Runners
 {
     /// <inheritdoc cref="IComponentStorageBaseFactory" />
     public class EntityUpdateRunnerFactory<TComp> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>

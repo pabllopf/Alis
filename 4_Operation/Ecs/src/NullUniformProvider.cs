@@ -1,6 +1,6 @@
 using System;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The null uniform provider class

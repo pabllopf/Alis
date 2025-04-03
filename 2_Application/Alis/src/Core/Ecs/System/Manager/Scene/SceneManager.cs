@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Core.Ecs.System.Manager.Scene

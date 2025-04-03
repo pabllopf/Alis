@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.Kernel.Events
+namespace Alis.Core.Ecs.Events
 {
     /// <summary>
     ///     An generic action with known parameter

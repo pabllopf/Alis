@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Ecs.Kernel.Updating;
+using Alis.Core.Ecs.Updating;
 
-namespace Alis.Core.Ecs.Kernel.Archetype
+namespace Alis.Core.Ecs.Arch
 {
     //38 bytes total - 16 header + mt, 8 comps, 8 create, 8 entities, 6 ids and tracking
     /// <summary>

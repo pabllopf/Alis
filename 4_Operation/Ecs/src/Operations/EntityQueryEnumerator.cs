@@ -30,8 +30,9 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Alis.Core.Ecs.Arch;
 
-namespace Alis.Core.Ecs.Kernel.Operations
+namespace Alis.Core.Ecs.Operations
 {
     /// <summary>
     ///     The entity query enumerator
@@ -58,7 +59,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         ///     The archetypes
         /// </summary>
-        private readonly Span<Archetype.Archetype> _archetypes;
+        private readonly Span<Archetype> _archetypes;
 
         /// <summary>
         ///     The entity ids
@@ -117,7 +118,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
 
                 if ((uint) _archetypeIndex < (uint) _archetypes.Length)
                 {
-                    Archetype.Archetype cur = _archetypes[_archetypeIndex];
+                    Archetype cur = _archetypes[_archetypeIndex];
                     _entityIds = cur.GetEntitySpan();
                     _currentSpan1 = cur.GetComponentSpan<T>();
                 }
@@ -168,7 +169,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <summary>
         ///     The archetypes
         /// </summary>
-        private readonly Span<Archetype.Archetype> _archetypes;
+        private readonly Span<Archetype> _archetypes;
 
         /// <summary>
         ///     The entity ids
@@ -216,7 +217,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
 
             if ((uint) _archetypeIndex < (uint) _archetypes.Length)
             {
-                Archetype.Archetype cur = _archetypes[_archetypeIndex];
+                Archetype cur = _archetypes[_archetypeIndex];
                 _entityIds = cur.GetEntitySpan();
                 return true;
             }

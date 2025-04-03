@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-namespace Alis.Core.Ecs.Kernel.Operations
+namespace Alis.Core.Ecs.Operations
 {
     /// <summary>
     ///     Delegates for executing a functions on a <see cref="Query" />
