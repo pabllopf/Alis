@@ -30,7 +30,7 @@
 using Alis.Benchmark.EntityComponentSystem.Contexts;
 using BenchmarkDotNet.Attributes;
 using Frent;
-using Frent.Core;
+
 using Frent.Systems;
 using static Alis.Benchmark.EntityComponentSystem.Contexts.FrentBaseContext;
 
