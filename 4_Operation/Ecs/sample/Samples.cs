@@ -132,8 +132,6 @@ namespace Alis.Core.Ecs.Sample
 
             world.Query<With<int>>().Delegate((ref int x) => Console.Write($"{x++}, "));
             Console.WriteLine();
-
-            world.Query<With<int>>().Inline<WriteAction, int>(default(WriteAction));
         }
 
 
