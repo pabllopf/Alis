@@ -29,6 +29,8 @@
 
 using System;
 using System.Threading;
+using Alis.Core.Ecs.Comps;
+using Alis.Core.Ecs.Operations;
 using Alis.Core.Ecs.Sample.Components;
 
 namespace Alis.Core.Ecs.Sample
