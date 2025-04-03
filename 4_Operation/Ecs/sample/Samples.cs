@@ -28,6 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Operations;
 using Alis.Core.Ecs.Sample.Components;
 
 namespace Alis.Core.Ecs.Sample
