@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs
     ///     An Entity reference; refers to a collection of components of unqiue types.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct Entity : IEquatable<Entity>
+    public partial struct Entity : IEquatable<Entity>
     {
         /// <summary>
         ///     Creates an <see cref="Entity" /> identical to <see cref="Entity.Null" />
@@ -1008,11 +1008,7 @@ namespace Alis.Core.Ecs
         /// <param name="tags">The tags the <see cref="EntityType" /> should have.</param>
         public static EntityType EntityTypeOf(ReadOnlySpan<ComponentID> components, ReadOnlySpan<TagId> tags) => Archetype.GetArchetypeID(components, tags);
 
-        //traversing archetype graph strategy:
-        //1. hit small & fast static per type cache - 1 branch
-        //2. dictionary lookup
-        //3. find existing archetype
-        //4. create new archetype
+        
 
         /// <summary>
         ///     Adds a component to this <see cref="Entity" />.

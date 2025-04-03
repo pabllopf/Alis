@@ -68,7 +68,7 @@ internal class Tag
         /// </summary>
         private static int _nextTagID = -1;
 
-        //initalize default(TagID) to point to disable
+        //initalize default(TagId) to point to disable
         /// <summary>
         ///     Initializes a new instance of the <see cref="Tag" /> class
         /// </summary>

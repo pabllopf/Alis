@@ -212,10 +212,10 @@ namespace Alis.Core.Ecs.Arch
                     fromComponents = MemoryHelpers.Remove(fromComponents, edge.ComponentID);
                     break;
                 case ArchetypeEdgeType.AddTag:
-                    fromTags = MemoryHelpers.Concat(fromTags, edge.TagID);
+                    fromTags = MemoryHelpers.Concat(fromTags, edge.TagId);
                     break;
                 case ArchetypeEdgeType.RemoveTag:
-                    fromTags = MemoryHelpers.Remove(fromTags, edge.TagID);
+                    fromTags = MemoryHelpers.Remove(fromTags, edge.TagId);
                     break;
             }
 

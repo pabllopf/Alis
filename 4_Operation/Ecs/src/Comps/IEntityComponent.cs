@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.ComponentModel;
+
 namespace Alis.Core.Ecs.Comps
 {
     /// <summary>
