@@ -171,6 +171,9 @@ namespace Alis.Core.Ecs.Sample
             Console.WriteLine(d.Value);
         }
 
+        /// <summary>
+        /// Simples the game
+        /// </summary>
         [Sample]
         public static void SimpleGame()
         {
@@ -192,16 +195,38 @@ namespace Alis.Core.Ecs.Sample
         }
 
 
+        /// <summary>
+        /// The position
+        /// </summary>
         struct Position(int x, int y)
         {
+            /// <summary>
+            /// The 
+            /// </summary>
             public int X = x;
+            /// <summary>
+            /// The 
+            /// </summary>
             public int Y = y;
         }
 
+        /// <summary>
+        /// The velocity
+        /// </summary>
         struct Velocity(int dx, int dy) : IComponent<Position>
         {
+            /// <summary>
+            /// The dx
+            /// </summary>
             public int DX = dx;
+            /// <summary>
+            /// The dy
+            /// </summary>
             public int DY = dy;
+            /// <summary>
+            /// Updates the pos
+            /// </summary>
+            /// <param name="pos">The pos</param>
             public void Update(ref Position pos)
             {
                 pos.X += DX;
@@ -209,9 +234,19 @@ namespace Alis.Core.Ecs.Sample
             }
         }
 
+        /// <summary>
+        /// The character
+        /// </summary>
         struct Character(char c) : IComponent<Position>
         {
+            /// <summary>
+            /// The 
+            /// </summary>
             public char Char = c;
+            /// <summary>
+            /// Updates the pos
+            /// </summary>
+            /// <param name="pos">The pos</param>
             public void Update(ref Position pos)
             {
                 Console.SetCursorPosition(pos.X, pos.Y);
