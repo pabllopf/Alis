@@ -152,13 +152,13 @@ namespace Alis.Core.Ecs.Sample
             //false
             Console.WriteLine(ent.Has<bool>());
             //You can also add and remove components
-            ent.Add<string>("I like Frent");
+            ent.Add<string>("I like Alis");
 
             if (ent.TryGet<string>(out Ref<string> strRef))
             {
                 Console.WriteLine(strRef);
                 //reassign the string value
-                strRef.Value = "Do you like Frent?";
+                strRef.Value = "Do you like Alis?";
             }
 
             //If we didn't add a string earlier, this would throw instead
