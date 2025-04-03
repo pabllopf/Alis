@@ -27,7 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.EcsOld.System;
+
+using Alis.Core.Ecs.System;
 
 namespace Alis.Sample.Desktop
 {
@@ -40,6 +41,11 @@ namespace Alis.Sample.Desktop
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        public static void Main(string[] args) => VideoGame.Create().Build().Run();
+        public static void Main(string[] args)
+        {
+            VideoGame game = new VideoGame();
+            
+            game.Run();
+        }
     }
 }

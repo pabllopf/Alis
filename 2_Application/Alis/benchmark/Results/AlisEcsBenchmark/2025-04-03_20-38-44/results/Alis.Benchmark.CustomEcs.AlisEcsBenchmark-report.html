@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Alis.Benchmark.CustomEcs.AlisEcsBenchmark-20250403-203909</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.14.0, macOS Sequoia 15.3.2 (24D81) [Darwin 24.3.0]
+Apple M3 Max, 1 CPU, 16 logical and 16 physical cores
+.NET SDK 9.0.100
+  [Host]   : .NET 8.0.11 (8.0.1124.51707), Arm64 RyuJIT AdvSIMD
+  ShortRun : .NET 8.0.11 (8.0.1124.51707), Arm64 RyuJIT AdvSIMD
+</code></pre>
+<pre><code>Job=ShortRun  InvocationCount=1  IterationCount=3  
+LaunchCount=1  UnrollFactor=1  WarmupCount=3  
+</code></pre>
+
+<table>
+<thead><tr><th>Method                                              </th><th>EntityCount</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Alis_Create_With_One_Component</td><td>1000000</td><td>11.919 ms</td><td>3.7930 ms</td><td>0.2079 ms</td><td>24.8 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_One_Component</td><td>1000000</td><td>4.619 ms</td><td>4.0348 ms</td><td>0.2212 ms</td><td>24.8 MB</td>
+</tr><tr><td>Alis_Create_With_Two_Component</td><td>1000000</td><td>9.847 ms</td><td>3.8177 ms</td><td>0.2093 ms</td><td>52.8 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_Two_Component</td><td>1000000</td><td>5.007 ms</td><td>1.3687 ms</td><td>0.0750 ms</td><td>28.61 MB</td>
+</tr><tr><td>Alis_Create_With_Three_Component</td><td>1000000</td><td>15.651 ms</td><td>1.5447 ms</td><td>0.0847 ms</td><td>60.8 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_Thre_Component</td><td>1000000</td><td>5.689 ms</td><td>1.5314 ms</td><td>0.0839 ms</td><td>32.43 MB</td>
+</tr><tr><td>Alis_Create_With_Four_Component</td><td>1000000</td><td>25.405 ms</td><td>6.5052 ms</td><td>0.3566 ms</td><td>68.8 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_Four_Component</td><td>1000000</td><td>6.365 ms</td><td>3.2684 ms</td><td>0.1791 ms</td><td>36.24 MB</td>
+</tr><tr><td>Alis_Create_With_Five_Component</td><td>1000000</td><td>11.496 ms</td><td>1.7687 ms</td><td>0.0969 ms</td><td>76.8 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_Five_Component</td><td>1000000</td><td>6.539 ms</td><td>1.4444 ms</td><td>0.0792 ms</td><td>40.06 MB</td>
+</tr><tr><td>Alis_Create_With_Six_Component</td><td>1000000</td><td>11.646 ms</td><td>1.3010 ms</td><td>0.0713 ms</td><td>84.8 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_Six_Component</td><td>1000000</td><td>6.979 ms</td><td>6.7015 ms</td><td>0.3673 ms</td><td>43.87 MB</td>
+</tr><tr><td>Alis_Create_With_Seven_Component</td><td>1000000</td><td>13.256 ms</td><td>2.8183 ms</td><td>0.1545 ms</td><td>92.8 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_Seven_Component</td><td>1000000</td><td>8.169 ms</td><td>0.2440 ms</td><td>0.0134 ms</td><td>47.69 MB</td>
+</tr><tr><td>Alis_Create_With_Eight_Component</td><td>1000000</td><td>14.919 ms</td><td>0.4269 ms</td><td>0.0234 ms</td><td>100.8 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_Eight_Component</td><td>1000000</td><td>9.366 ms</td><td>18.9341 ms</td><td>1.0378 ms</td><td>51.5 MB</td>
+</tr><tr><td>Alis_Create_With_Nine_Component</td><td>1000000</td><td>16.631 ms</td><td>6.8276 ms</td><td>0.3742 ms</td><td>108.8 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_Nine_Component</td><td>1000000</td><td>9.162 ms</td><td>4.7136 ms</td><td>0.2584 ms</td><td>55.32 MB</td>
+</tr><tr><td>Alis_Create_With_Ten_Component</td><td>1000000</td><td>17.812 ms</td><td>1.1180 ms</td><td>0.0613 ms</td><td>116.8 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_Ten_Component</td><td>1000000</td><td>9.095 ms</td><td>10.3296 ms</td><td>0.5662 ms</td><td>59.13 MB</td>
+</tr><tr><td>Alis_Create_With_Eleven_Component</td><td>1000000</td><td>19.317 ms</td><td>6.2964 ms</td><td>0.3451 ms</td><td>124.8 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_Eleven_Component</td><td>1000000</td><td>9.579 ms</td><td>4.3263 ms</td><td>0.2371 ms</td><td>62.94 MB</td>
+</tr><tr><td>Alis_Create_With_Twelve_Component</td><td>1000000</td><td>20.120 ms</td><td>9.7644 ms</td><td>0.5352 ms</td><td>132.8 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_Twelve_Component</td><td>1000000</td><td>10.182 ms</td><td>8.7188 ms</td><td>0.4779 ms</td><td>66.76 MB</td>
+</tr><tr><td>Alis_Create_With_Thirteen_Component</td><td>1000000</td><td>24.888 ms</td><td>15.3483 ms</td><td>0.8413 ms</td><td>140.8 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_Thirteen_Component</td><td>1000000</td><td>11.626 ms</td><td>1.8271 ms</td><td>0.1002 ms</td><td>70.57 MB</td>
+</tr><tr><td>Alis_Create_With_Fourteen_Component</td><td>1000000</td><td>29.841 ms</td><td>43.1254 ms</td><td>2.3639 ms</td><td>148.8 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_Fourteen_Component</td><td>1000000</td><td>10.677 ms</td><td>11.6720 ms</td><td>0.6398 ms</td><td>74.39 MB</td>
+</tr><tr><td>Alis_Create_With_Fifteen_Component</td><td>1000000</td><td>34.504 ms</td><td>56.9248 ms</td><td>3.1202 ms</td><td>156.81 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_Fifteen_Component</td><td>1000000</td><td>11.370 ms</td><td>9.3830 ms</td><td>0.5143 ms</td><td>78.2 MB</td>
+</tr><tr><td>Alis_Create_With_Sixteen_Component</td><td>1000000</td><td>37.210 ms</td><td>87.6524 ms</td><td>4.8045 ms</td><td>164.81 MB</td>
+</tr><tr><td>Alis_Create_Bulk_With_Sixteen_Component</td><td>1000000</td><td>12.833 ms</td><td>4.4025 ms</td><td>0.2413 ms</td><td>82.02 MB</td>
+</tr><tr><td>Alis_SystemWithOneComponent_QueryInline_With_Padding_0</td><td>1000000</td><td>9.644 ms</td><td>2.4437 ms</td><td>0.1339 ms</td><td>51.99 MB</td>
+</tr><tr><td>Alis_SystemWithOneComponent_QueryDelegate_With_Padding_0</td><td>1000000</td><td>7.833 ms</td><td>2.6609 ms</td><td>0.1459 ms</td><td>51.99 MB</td>
+</tr><tr><td>Alis_SystemWithOneComponent_Simd_With_Padding_0</td><td>1000000</td><td>7.955 ms</td><td>3.0824 ms</td><td>0.1690 ms</td><td>51.99 MB</td>
+</tr><tr><td>Alis_SystemWithOneComponent_QueryInline_With_Padding_10</td><td>1000000</td><td>97.667 ms</td><td>53.5635 ms</td><td>2.9360 ms</td><td>723.99 MB</td>
+</tr><tr><td>Alis_SystemWithOneComponent_QueryDelegate_With_Padding_10</td><td>1000000</td><td>97.173 ms</td><td>11.6519 ms</td><td>0.6387 ms</td><td>723.99 MB</td>
+</tr><tr><td>Alis_SystemWithOneComponent_Simd_With_Padding_10</td><td>1000000</td><td>91.417 ms</td><td>19.7824 ms</td><td>1.0843 ms</td><td>723.99 MB</td>
+</tr><tr><td>Frent_Create_With_One_Component</td><td>1000000</td><td>13.924 ms</td><td>8.2872 ms</td><td>0.4542 ms</td><td>24.8 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_One_Component</td><td>1000000</td><td>4.306 ms</td><td>0.8606 ms</td><td>0.0472 ms</td><td>24.8 MB</td>
+</tr><tr><td>Frent_Create_With_Two_Component</td><td>1000000</td><td>17.866 ms</td><td>4.5743 ms</td><td>0.2507 ms</td><td>52.8 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_Two_Component</td><td>1000000</td><td>4.854 ms</td><td>2.6155 ms</td><td>0.1434 ms</td><td>28.61 MB</td>
+</tr><tr><td>Frent_Create_With_Three_Component</td><td>1000000</td><td>19.324 ms</td><td>5.5089 ms</td><td>0.3020 ms</td><td>60.8 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_Thre_Component</td><td>1000000</td><td>5.647 ms</td><td>2.2003 ms</td><td>0.1206 ms</td><td>32.43 MB</td>
+</tr><tr><td>Frent_Create_With_Four_Component</td><td>1000000</td><td>28.267 ms</td><td>47.4534 ms</td><td>2.6011 ms</td><td>68.8 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_Four_Component</td><td>1000000</td><td>6.052 ms</td><td>4.0371 ms</td><td>0.2213 ms</td><td>36.24 MB</td>
+</tr><tr><td>Frent_Create_With_Five_Component</td><td>1000000</td><td>31.180 ms</td><td>220.6693 ms</td><td>12.0956 ms</td><td>76.8 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_Five_Component</td><td>1000000</td><td>6.769 ms</td><td>4.4739 ms</td><td>0.2452 ms</td><td>40.06 MB</td>
+</tr><tr><td>Frent_Create_With_Six_Component</td><td>1000000</td><td>51.065 ms</td><td>14.3526 ms</td><td>0.7867 ms</td><td>84.8 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_Six_Component</td><td>1000000</td><td>7.131 ms</td><td>6.5135 ms</td><td>0.3570 ms</td><td>43.87 MB</td>
+</tr><tr><td>Frent_Create_With_Seven_Component</td><td>1000000</td><td>49.699 ms</td><td>13.3559 ms</td><td>0.7321 ms</td><td>92.8 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_Seven_Component</td><td>1000000</td><td>8.215 ms</td><td>12.5047 ms</td><td>0.6854 ms</td><td>47.69 MB</td>
+</tr><tr><td>Create_With_Eight_Component</td><td>1000000</td><td>21.436 ms</td><td>10.3121 ms</td><td>0.5652 ms</td><td>100.8 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_Eight_Component</td><td>1000000</td><td>8.299 ms</td><td>2.1820 ms</td><td>0.1196 ms</td><td>51.5 MB</td>
+</tr><tr><td>Frent_Create_With_Nine_Component</td><td>1000000</td><td>20.487 ms</td><td>7.1211 ms</td><td>0.3903 ms</td><td>108.8 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_Nine_Component</td><td>1000000</td><td>8.866 ms</td><td>5.7966 ms</td><td>0.3177 ms</td><td>55.32 MB</td>
+</tr><tr><td>Frent_Create_With_Ten_Component</td><td>1000000</td><td>21.012 ms</td><td>5.2437 ms</td><td>0.2874 ms</td><td>116.8 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_Ten_Component</td><td>1000000</td><td>9.607 ms</td><td>10.2568 ms</td><td>0.5622 ms</td><td>59.13 MB</td>
+</tr><tr><td>Frent_Create_With_Eleven_Component</td><td>1000000</td><td>21.584 ms</td><td>4.7694 ms</td><td>0.2614 ms</td><td>124.8 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_Eleven_Component</td><td>1000000</td><td>9.916 ms</td><td>3.8599 ms</td><td>0.2116 ms</td><td>62.94 MB</td>
+</tr><tr><td>Frent_Create_With_Twelve_Component</td><td>1000000</td><td>18.673 ms</td><td>14.1777 ms</td><td>0.7771 ms</td><td>132.8 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_Twelve_Component</td><td>1000000</td><td>10.735 ms</td><td>11.2578 ms</td><td>0.6171 ms</td><td>66.76 MB</td>
+</tr><tr><td>Frent_Create_With_Thirteen_Component</td><td>1000000</td><td>20.979 ms</td><td>7.1485 ms</td><td>0.3918 ms</td><td>140.8 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_Thirteen_Component</td><td>1000000</td><td>11.131 ms</td><td>6.6203 ms</td><td>0.3629 ms</td><td>70.57 MB</td>
+</tr><tr><td>Frent_Create_With_Fourteen_Component</td><td>1000000</td><td>25.594 ms</td><td>4.1015 ms</td><td>0.2248 ms</td><td>148.8 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_Fourteen_Component</td><td>1000000</td><td>10.956 ms</td><td>9.6475 ms</td><td>0.5288 ms</td><td>74.39 MB</td>
+</tr><tr><td>Frent_Create_With_Fifteen_Component</td><td>1000000</td><td>27.830 ms</td><td>47.1652 ms</td><td>2.5853 ms</td><td>156.81 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_Fifteen_Component</td><td>1000000</td><td>11.555 ms</td><td>8.8677 ms</td><td>0.4861 ms</td><td>78.2 MB</td>
+</tr><tr><td>Frent_Create_With_Sixteen_Component</td><td>1000000</td><td>31.911 ms</td><td>73.7971 ms</td><td>4.0451 ms</td><td>164.81 MB</td>
+</tr><tr><td>Frent_Create_Bulk_With_Sixteen_Component</td><td>1000000</td><td>13.817 ms</td><td>7.2311 ms</td><td>0.3964 ms</td><td>82.02 MB</td>
+</tr><tr><td>Frent_SystemWithOneComponent_QueryInline_With_Padding_0</td><td>1000000</td><td>17.316 ms</td><td>7.1855 ms</td><td>0.3939 ms</td><td>51.99 MB</td>
+</tr><tr><td>Frent_SystemWithOneComponent_QueryDelegate_With_Padding_0</td><td>1000000</td><td>17.213 ms</td><td>1.9798 ms</td><td>0.1085 ms</td><td>51.99 MB</td>
+</tr><tr><td>Frent_SystemWithOneComponent_Simd_With_Padding_0</td><td>1000000</td><td>6.709 ms</td><td>2.3748 ms</td><td>0.1302 ms</td><td>51.99 MB</td>
+</tr><tr><td>Frent_SystemWithOneComponent_QueryInline_With_Padding_10</td><td>1000000</td><td>92.619 ms</td><td>53.7715 ms</td><td>2.9474 ms</td><td>723.99 MB</td>
+</tr><tr><td>Frent_SystemWithOneComponent_QueryDelegate_With_Padding_10</td><td>1000000</td><td>94.730 ms</td><td>33.2653 ms</td><td>1.8234 ms</td><td>723.99 MB</td>
+</tr><tr><td>Frent_SystemWithOneComponent_Simd_With_Padding_10</td><td>1000000</td><td>88.822 ms</td><td>32.9292 ms</td><td>1.8050 ms</td><td>723.99 MB</td>
+</tr></tbody></table>
+</body>
+</html>

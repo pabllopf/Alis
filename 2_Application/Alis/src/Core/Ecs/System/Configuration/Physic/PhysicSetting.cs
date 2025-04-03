@@ -4,7 +4,7 @@ using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Ecs.System.Configuration.Physic
 {
-    [SkipLocalsInit]
+    
     public record struct PhysicSetting(
         bool DebugMode = false,
         Color DebugColor = default(Color),

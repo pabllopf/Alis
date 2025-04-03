@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.EcsOld.System;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.System.Configuration;
@@ -89,19 +88,9 @@ namespace Alis.Core.Ecs.System
         public void Run() => _contextHandler.Run();
 
         /// <summary>
-        ///     Runs the game in preview mode.
-        /// </summary>
-        public void RunPreview() => _contextHandler.RunPreview();
-
-        /// <summary>
         ///     Exits the game.
         /// </summary>
         public void Exit() => _contextHandler.Exit();
-        
-        /// <summary>
-        ///     Starts the preview
-        /// </summary>
-        public void StartPreview() => _contextHandler.StartPreview();
 
         /// <summary>
         ///     Saves this instance
@@ -132,11 +121,5 @@ namespace Alis.Core.Ecs.System
         {
             _contextHandler.LoadAndRun();
         }
-
-        /// <summary>
-        ///     Creates a new instance of the <see cref="VideoGameBuilder" />.
-        /// </summary>
-        /// <returns>A new <see cref="VideoGameBuilder" /> instance.</returns>
-        public static VideoGameBuilder Create() => new VideoGameBuilder();
     }
 }

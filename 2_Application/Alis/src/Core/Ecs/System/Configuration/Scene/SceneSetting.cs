@@ -27,16 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Data.Json;
-using Alis.Core.Aspect.Fluent;
+using System.Runtime.CompilerServices;
 
 namespace Alis.Core.Ecs.System.Configuration.Scene
 {
-    /// <summary>
-    ///     The scene setting class
-    /// </summary>
-    /// <seealso cref="ISceneSetting" />
-    public class SceneSetting :
-        ISceneSetting
-    }
+    
+    public record struct SceneSetting(
+       int MaximumEntities = 1000
+        ): ISceneSetting;
 }

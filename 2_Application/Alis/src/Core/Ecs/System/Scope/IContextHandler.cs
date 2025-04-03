@@ -43,17 +43,7 @@ namespace Alis.Core.Ecs.System.Scope
         ///     Runs this instance
         /// </summary>
         void Run();
-
-        /// <summary>
-        ///     Starts the preview
-        /// </summary>
-        void StartPreview();
-
-        /// <summary>
-        ///     Runs the preview
-        /// </summary>
-        void RunPreview();
-
+        
         /// <summary>
         ///     Exits this instance
         /// </summary>

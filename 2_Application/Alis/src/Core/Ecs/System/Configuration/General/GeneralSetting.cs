@@ -28,11 +28,9 @@
 //  --------------------------------------------------------------------------
 
 
-using System.Runtime.CompilerServices;
-
 namespace Alis.Core.Ecs.System.Configuration.General
 {
-    [SkipLocalsInit]
+    
     public record struct GeneralSetting(
         bool Debug = false, 
         string Name = "Default Name", 

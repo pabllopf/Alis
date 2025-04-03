@@ -32,6 +32,8 @@ using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics;
 using Alis.Benchmark.EntityComponentSystem.Contexts;
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Operations;
 using BenchmarkDotNet.Attributes;
 using static Alis.Benchmark.EntityComponentSystem.Contexts.AlisBaseContext;
 
@@ -76,7 +78,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         public void Alis_Simd()
         {
             Vector256<int> sum = Vector256.Create(1);
-            foreach (ChunkTuple<Component1> chunk in _alis.Query.EnumerateChunks<Component1>())
+            foreach (var chunk in _alis.Query.EnumerateChunks<Component1>())
             {
                 int len = chunk.Span.Length - (chunk.Span.Length & 7);
                 Span<Vector256<int>> ints = MemoryMarshal.Cast<Component1, Vector256<int>>(chunk.Span.Slice(0, len));
