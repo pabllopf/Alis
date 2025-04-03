@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Memory;
 using Alis.Core.Ecs.Operations;
 
