@@ -27,19 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Benchmark.CustomEcs.EcsOld.System.Configuration;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Execution;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Manager;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Audio;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Graphic;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Input;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Network;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Physic;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Scene;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Time;
 using Alis.Core.Aspect.Data.Json;
-using Alis.Core.EcsOld.System.Configuration;
-using Alis.Core.EcsOld.System.Execution;
-using Alis.Core.EcsOld.System.Manager;
-using Alis.Core.EcsOld.System.Manager.Audio;
-using Alis.Core.EcsOld.System.Manager.Graphic;
-using Alis.Core.EcsOld.System.Manager.Input;
-using Alis.Core.EcsOld.System.Manager.Network;
-using Alis.Core.EcsOld.System.Manager.Physic;
-using Alis.Core.EcsOld.System.Manager.Scene;
-using Alis.Core.EcsOld.System.Manager.Time;
 
-namespace Alis.Core.EcsOld.System.Scope
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Scope
 {
     /// <summary>
     ///     The context class

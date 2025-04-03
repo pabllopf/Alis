@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.EcsOld.System.Common;
-using Alis.Core.EcsOld.System.Execution;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Common;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Execution;
 
-namespace Alis.Core.EcsOld.System.Manager
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Manager
 {
     /// <summary>
     ///     The manager interface

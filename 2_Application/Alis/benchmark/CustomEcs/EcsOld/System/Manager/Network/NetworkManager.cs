@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.EcsOld.System.Scope;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Scope;
 
-namespace Alis.Core.EcsOld.System.Manager.Network
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Network
 {
     /// <summary>
     ///     The network manager class

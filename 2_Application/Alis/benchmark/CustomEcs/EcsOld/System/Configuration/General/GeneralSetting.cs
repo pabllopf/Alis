@@ -27,11 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.EcsOld.System.Setting.General;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 
-namespace Alis.Core.EcsOld.System.Configuration.General
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.General
 {
     /// <summary>
     ///     The general setting class

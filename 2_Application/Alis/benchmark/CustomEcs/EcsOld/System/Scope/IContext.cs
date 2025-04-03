@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.EcsOld.System.Scope
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Scope
 {
     /// <summary>
     ///     The context interface

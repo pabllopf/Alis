@@ -27,13 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.EcsOld.Component.Audio;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Audio;
 
-namespace Alis.Core.EcsOld.Component.Audio
+namespace Alis.Benchmark.CustomEcs.EcsOld.Component.Audio
 {
     /// <summary>
     ///     The audio clip class

@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.EcsOld.Component.Body;
 using Alis.Core.Aspect.Fluent;
 
-namespace Alis.Core.EcsOld.Component.Body
+namespace Alis.Benchmark.CustomEcs.EcsOld.Component.Body
 {
     /// <summary>
     ///     The rigid body class

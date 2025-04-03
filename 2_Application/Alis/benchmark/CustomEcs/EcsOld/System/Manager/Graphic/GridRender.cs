@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.EcsOld.System.Manager.Graphic
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Manager.Graphic
 {
     /// <summary>
     ///     The grid render class

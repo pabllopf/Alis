@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.EcsOld.Component.Ui;
 using Alis.Core.Aspect.Fluent;
 
-namespace Alis.Core.EcsOld.Component.Ui
+namespace Alis.Benchmark.CustomEcs.EcsOld.Component.Ui
 {
     /// <summary>
     ///     The canvas class

@@ -29,13 +29,12 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using Alis.Builder.Core.EcsOld.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
 
-namespace Alis.Core.EcsOld.Component.Render
+namespace Alis.Benchmark.CustomEcs.EcsOld.Component.Render
 {
     /// <summary>
     ///     The animator class

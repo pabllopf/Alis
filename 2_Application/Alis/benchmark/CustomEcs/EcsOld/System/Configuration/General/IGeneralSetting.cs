@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.EcsOld.System.Configuration.General
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.General
 {
     /// <summary>
     ///     The general setting interface

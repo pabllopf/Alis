@@ -29,20 +29,15 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Builder.Core.EcsOld.Component.Collider;
+using Alis.Benchmark.CustomEcs.EcsOld.Component.Render;
+using Alis.Benchmark.CustomEcs.EcsOld.Entity;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.EcsOld.Component.Render;
-using Alis.Core.EcsOld.Entity;
-using Alis.Core.Graphic.OpenGL;
-using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Dynamics.Contacts;
 
-namespace Alis.Core.EcsOld.Component.Collider
+namespace Alis.Benchmark.CustomEcs.EcsOld.Component.Collider
 {
     /// <summary>
     ///     The box collider class

@@ -30,15 +30,14 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using Alis.Builder.Core.EcsOld.Entity.GameObject;
+using Alis.Benchmark.CustomEcs.EcsOld.Component;
+using Alis.Benchmark.CustomEcs.EcsOld.System.Scope;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.EcsOld.Component;
-using Alis.Core.EcsOld.System.Scope;
 
-namespace Alis.Core.EcsOld.Entity
+namespace Alis.Benchmark.CustomEcs.EcsOld.Entity
 {
     /// <summary>
     ///     The game object class

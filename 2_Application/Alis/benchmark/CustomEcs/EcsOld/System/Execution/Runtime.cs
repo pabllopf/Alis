@@ -31,7 +31,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
-namespace Alis.Core.EcsOld.System.Execution
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Execution
 {
     /// <summary>
     ///     The runtime class

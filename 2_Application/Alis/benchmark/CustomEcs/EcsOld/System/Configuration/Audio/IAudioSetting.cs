@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.EcsOld.System.Configuration.Audio
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Audio
 {
     /// <summary>
     ///     The audio setting interface

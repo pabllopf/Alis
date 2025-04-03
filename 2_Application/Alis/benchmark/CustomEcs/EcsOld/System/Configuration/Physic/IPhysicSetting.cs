@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.EcsOld.System.Configuration.Physic
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Physic
 {
     /// <summary>
     ///     The physic setting interface

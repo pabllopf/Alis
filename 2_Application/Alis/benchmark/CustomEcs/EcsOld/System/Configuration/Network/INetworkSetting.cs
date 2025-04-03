@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.EcsOld.System.Configuration.Network
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Network
 {
     /// <summary>
     ///     The network setting interface

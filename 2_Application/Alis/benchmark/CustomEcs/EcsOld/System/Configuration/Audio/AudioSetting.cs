@@ -27,11 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.EcsOld.System.Setting.Audio;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 
-namespace Alis.Core.EcsOld.System.Configuration.Audio
+namespace Alis.Benchmark.CustomEcs.EcsOld.System.Configuration.Audio
 {
     /// <summary>
     ///     The audio setting class
