@@ -27,20 +27,29 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Ecs.System.Configuration.Graphic
 {
     
-    public record struct GraphicSetting(
-        double TargetFrames = 60, 
-        string Target = "OpenGL", 
-        bool PreviewMode = false, 
-        Color GridColor = default(Color), 
-        bool HasGrid = false, 
-        Color BackgroundColor = default(Color),
-        Vector2F WindowSize = default(Vector2F),
-        bool IsResizable = true) : IGraphicSetting;
+    public class GraphicSetting(
+        double targetFrames = 60, 
+        string target = "OpenGL", 
+        bool previewMode = false, 
+        Color gridColor = default(Color), 
+        bool hasGrid = false, 
+        Color backgroundColor = default(Color),
+        Vector2F windowSize = default(Vector2F),
+        bool isResizable = true) : IGraphicSetting
+    {
+        public double TargetFrames { get; set; } = targetFrames;
+        public string Target { get; set; } = target;
+        public bool PreviewMode { get; set; } = previewMode;
+        public Color GridColor { get; set; } = gridColor;
+        public bool HasGrid { get; set; } = hasGrid; 
+        public Color BackgroundColor { get; set; } = backgroundColor;
+        public Vector2F WindowSize { get; set; } = windowSize;
+        public bool IsResizable { get; set; } = isResizable;
+    }
 }

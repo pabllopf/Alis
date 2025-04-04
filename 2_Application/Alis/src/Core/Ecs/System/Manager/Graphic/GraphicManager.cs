@@ -27,7 +27,24 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.IO;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Data.Resource;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Operations;
+using Alis.Core.Ecs.System.Configuration;
+using Alis.Core.Ecs.System.Configuration.Physic;
 using Alis.Core.Ecs.System.Scope;
+using Alis.Core.Graphic.GlfwLib;
+using Alis.Core.Graphic.GlfwLib.Enums;
+using Alis.Core.Graphic.GlfwLib.Structs;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Enums;
+using Alis.Core.Graphic.Stb;
+using Color = Alis.Core.Aspect.Math.Definition.Color;
 
 namespace Alis.Core.Ecs.System.Manager.Graphic
 {
@@ -37,12 +54,195 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
     /// <seealso cref="AManager" />
     public class GraphicManager : AManager
     {
+        /// <summary>
+        ///     The pixels per meter
+        /// </summary>
+        private const float PixelsPerMeter = 32.0f;
+
+        /// <summary>
+        ///     The framebuffer size callback
+        /// </summary>
+        private SizeCallback framebufferSizeCallback;
+
+        /// <summary>
+        ///     The world position
+        /// </summary>
+        public Vector2F WorldPosition;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="GraphicManager" /> class
+        /// </summary>
         public GraphicManager(Context context) : base(context)
+        {
+            Renderer = IntPtr.Zero;
+        }
+
+        public Window Window { get; set; }
+
+        public IntPtr Renderer { get; set; }
+
+        /// <summary>
+        ///     Ons the init
+        /// </summary>
+        public override void OnInit()
+        {
+            // Initialize GLFW
+            Glfw.Init();
+
+            // Set GLFW window hints for OpenGL context
+            Glfw.WindowHint(Hint.ContextVersionMajor, 3);
+            Glfw.WindowHint(Hint.ContextVersionMinor, 2);
+            Glfw.WindowHint(Hint.OpenglProfile, Profile.Core);
+            Glfw.WindowHint(Hint.OpenglForwardCompatible, true);
+            Glfw.WindowHint(Hint.Doublebuffer, true);
+            Glfw.WindowHint(Hint.DepthBits, 24);
+            Glfw.WindowHint(Hint.AlphaBits, 8);
+            Glfw.WindowHint(Hint.StencilBits, 8);
+
+            if (Context.Setting.Graphic.IsResizable)
+            {
+                Glfw.WindowHint(Hint.Resizable, true);
+            }
+            else
+            {
+                Glfw.WindowHint(Hint.Resizable, false);
+            }
+
+            // Create a GLFW window
+            if (Context.Setting.Graphic.WindowSize == new Vector2F(0, 0))
+            {
+                Context.Setting.Graphic.WindowSize = new Vector2F(1280, 720);
+            }
+
+            Window = Glfw.CreateWindow((int) Context.Setting.Graphic.WindowSize.X, (int) Context.Setting.Graphic.WindowSize.Y, Context.Setting.General.Name, Monitor.None, Window.None);
+            if (Window == Window.None)
+            {
+                throw new Exception("Failed to create GLFW window");
+            }
+
+            // Make the OpenGL context current
+            Glfw.MakeContextCurrent(Window);
+
+            // Enable v-sync
+            Glfw.SwapInterval(1);
+
+            // Log GLFW version
+            Console.WriteLine($"GLFW VERSION {Glfw.GetVersionString()}");
+
+            // Set window icon (skip on macOS)
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                Console.WriteLine("Skipping window icon setting on macOS");
+            }
+            else
+            {
+                string iconPath = Context.Setting.General.Icon;
+                if (!string.IsNullOrEmpty(iconPath))
+                {
+                    Image icon = LoadIcon(AssetManager.Find(iconPath));
+                    Glfw.SetWindowIcon(Window, 1, new[] {icon});
+                }
+            }
+
+            framebufferSizeCallback = FramebufferSizeCallback;
+            Glfw.SetFramebufferSizeCallback(Window, framebufferSizeCallback);
+        }
+
+        /// <summary>
+        ///     Loads the icon using the specified icon path
+        /// </summary>
+        /// <param name="iconPath">The icon path</param>
+        /// <exception cref="FileNotFoundException">Icon file not found </exception>
+        /// <returns>The image</returns>
+        private Image LoadIcon(string iconPath)
+        {
+            if (!File.Exists(iconPath))
+            {
+                throw new FileNotFoundException("Icon file not found", iconPath);
+            }
+
+            using (FileStream stream = File.OpenRead(iconPath))
+            {
+                ImageResult image = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
+
+                GCHandle handle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
+                IntPtr dataPtr = handle.AddrOfPinnedObject();
+
+                Image icon = new Image(image.Width, image.Height, dataPtr);
+
+                handle.Free();
+
+                return icon;
+            }
+        }
+
+
+        /// <summary>
+        ///     Ons the start
+        /// </summary>
+        public override void OnStart()
+        {
+
+        }
+
+        /// <summary>
+        ///     Ons the before draw
+        /// </summary>
+        public override void OnBeforeDraw()
         {
         }
 
-        public GraphicManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
+        /// <summary>
+        ///     Ons the draw
+        /// </summary>
+        public override void OnDraw()
         {
+            float pixelsPerMeter = PixelsPerMeter;
+            Setting contextSetting = Context.Setting;
+            PhysicSetting physicSettings = contextSetting.Physic;
+            Color debugColor = physicSettings.DebugColor;
+            Color backgrounColor = contextSetting.Graphic.BackgroundColor;
+
+            Glfw.PollEvents();
+
+            // Set the clear color (convert from 0-255 range to 0.0-1.0 range)
+            Gl.GlClearColor(backgrounColor.R / 255.0f, backgrounColor.G / 255.0f, backgrounColor.B / 255.0f, backgrounColor.A / 255.0f);
+
+            // Clear the screen
+            Gl.GlClear(ClearBufferMask.ColorBufferBit);
+
+            World world = Context.SceneManager.World;
+
+            /*
+            foreach (ChunkTuple<Camera, Sprite> chunk in world.Query<Camera, Sprite>().EnumerateChunks<Camera, Sprite>())
+            {
+                Span<Camera> cameras = chunk.Span1;
+                Span<Sprite> sprites = chunk.Span2;
+                foreach (Camera camera in cameras)
+                {
+                    foreach (Sprite sprite in sprites)
+                    {
+                        // Render sprite with OpenGL:
+                        sprite.Render(camera.Position, camera.Resolution, pixelsPerMeter);
+                    }
+                }
+            }*/
+
+            // Swap the buffers to display the triangle
+            Glfw.SwapBuffers(Window);
+        }
+
+        /// <summary>
+        ///     Framebuffers the size callback using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        private void FramebufferSizeCallback(Window window, int width, int height)
+        {
+            Console.WriteLine($"Framebuffer Size: {width}, {height}");
+            Gl.GlViewport(0, 0, width, height);
+            Context.Setting.Graphic.WindowSize = new Vector2F(width, height);
         }
     }
 }

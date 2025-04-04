@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 

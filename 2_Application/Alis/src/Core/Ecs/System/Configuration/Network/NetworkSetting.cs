@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
-
 namespace Alis.Core.Ecs.System.Configuration.Network
 {
     

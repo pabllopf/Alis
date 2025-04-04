@@ -66,9 +66,7 @@ namespace Alis.Core.Ecs.Kernel
             EntityVersion = version;
             EntityID = entityID;
         }
-
-        //WARNING
-        //DO NOT CHANGE STRUCT LAYOUT
+        
         /// <summary>
         ///     The entity id
         /// </summary>
