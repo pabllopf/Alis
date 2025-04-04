@@ -32,6 +32,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics;
 using Alis.Benchmark.CustomEcs.Components;
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.Operations;
 using BenchmarkDotNet.Attributes;
 
 namespace Alis.Benchmark.CustomEcs
@@ -51,8 +52,8 @@ namespace Alis.Benchmark.CustomEcs
         /// </summary>
         private void SetupAlis()
         {
-            World = new Alis.Core.Ecs.Kernel.World();
-            Query = World.Query<Alis.Core.Ecs.Kernel.Operations.With<Component1>>();
+            World = new World();
+            Query = World.Query<With<Component1>>();
         }
         
         /// <summary>

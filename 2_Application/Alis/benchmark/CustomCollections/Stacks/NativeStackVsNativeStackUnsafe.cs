@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Collections;
 using BenchmarkDotNet.Attributes;
 
 namespace Alis.Benchmark.CustomCollections.Stacks
