@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.EcsOld.System.Scope;
+using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Extension.Plugin.Sample
 {
