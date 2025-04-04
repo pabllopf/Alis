@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.System;
 
 namespace Alis.Sample.Desktop

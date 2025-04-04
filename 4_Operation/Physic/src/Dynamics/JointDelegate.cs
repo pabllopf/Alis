@@ -34,5 +34,5 @@ namespace Alis.Core.Physic.Dynamics
     /// <summary>
     ///     The joint delegate
     /// </summary>
-    public delegate void JointDelegate(World sender, Joint joint);
+    public delegate void JointDelegate(WorldPhysic sender, Joint joint);
 }

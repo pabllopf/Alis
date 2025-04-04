@@ -34,5 +34,5 @@ namespace Alis.Core.Physic.Dynamics
     /// <summary>
     ///     The controller delegate
     /// </summary>
-    public delegate void ControllerDelegate(World sender, Controller controller);
+    public delegate void ControllerDelegate(WorldPhysic sender, Controller controller);
 }

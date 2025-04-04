@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// <summary>
         ///     The vector
         /// </summary>
-        public World World = new World();
+        public WorldPhysic WorldPhysic = new WorldPhysic();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicManager" /> class
@@ -79,7 +79,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// </summary>
         public override void OnInit()
         {
-            World = new World(Context.Setting.Physic.Gravity);
+            WorldPhysic = new WorldPhysic(Context.Setting.Physic.Gravity);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// </summary>
         public override void OnPhysicUpdate()
         {
-            World.Step(timeStepPhysics);
+            WorldPhysic.Step(timeStepPhysics);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// <param name="body">The body</param>
         public void UnAttach(Body body)
         {
-            World.Remove(body);
+            WorldPhysic.Remove(body);
         }
     }
 }

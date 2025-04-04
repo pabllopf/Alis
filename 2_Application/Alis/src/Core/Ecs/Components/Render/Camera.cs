@@ -31,7 +31,7 @@ using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Comps;
 
-namespace Alis.Core.Ecs.Component.Render
+namespace Alis.Core.Ecs.Components.Render
 {
     public struct Camera (Vector2F position,  Vector2F resolution) : IInitable, IEntityComponent
     {

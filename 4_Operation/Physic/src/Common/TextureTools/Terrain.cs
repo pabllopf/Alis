@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <summary>
         ///     World to manage terrain in.
         /// </summary>
-        public readonly World World;
+        public readonly WorldPhysic WorldPhysic;
 
         /// <summary>
         ///     Generated bodies.
@@ -131,11 +131,11 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <summary>
         ///     Creates a new terrain.
         /// </summary>
-        /// <param name="world">The World</param>
+        /// <param name="worldPhysic">The World</param>
         /// <param name="area">The area of the terrain.</param>
-        public Terrain(World world, Aabb area)
+        public Terrain(WorldPhysic worldPhysic, Aabb area)
         {
-            World = world;
+            WorldPhysic = worldPhysic;
             Width = area.Width;
             Height = area.Height;
             Center = area.Center;
@@ -144,13 +144,13 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <summary>
         ///     Creates a new terrain
         /// </summary>
-        /// <param name="world">The World</param>
+        /// <param name="worldPhysic">The World</param>
         /// <param name="position">The position (center) of the terrain.</param>
         /// <param name="width">The width of the terrain.</param>
         /// <param name="height">The height of the terrain.</param>
-        public Terrain(World world, Vector2F position, float width, float height)
+        public Terrain(WorldPhysic worldPhysic, Vector2F position, float width, float height)
         {
-            World = world;
+            WorldPhysic = worldPhysic;
             Width = width;
             Height = height;
             Center = position;
@@ -302,7 +302,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                     {
                         for (int i = 0; i < _bodyMap[x, y].Count; i++)
                         {
-                            World.Remove(_bodyMap[x, y][i]);
+                            WorldPhysic.Remove(_bodyMap[x, y][i]);
                         }
                     }
 
@@ -349,7 +349,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                 {
                     if (poly.Count > 2)
                     {
-                        _bodyMap[gx, gy].Add(World.CreatePolygon(poly, 1));
+                        _bodyMap[gx, gy].Add(WorldPhysic.CreatePolygon(poly, 1));
                     }
                 }
             }

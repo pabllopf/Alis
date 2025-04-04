@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The world
         /// </summary>
-        private readonly World _world;
+        private readonly WorldPhysic worldPhysic;
 
         /// <summary>
         ///     The body
@@ -60,8 +60,8 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Initializes a new instance of the <see cref="BodyCollection" /> class
         /// </summary>
-        /// <param name="world">The world</param>
-        public BodyCollection(World world) => _world = world;
+        /// <param name="worldPhysic">The world</param>
+        public BodyCollection(WorldPhysic worldPhysic) => this.worldPhysic = worldPhysic;
 
 
         /// <summary>
