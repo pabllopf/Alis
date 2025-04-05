@@ -109,7 +109,7 @@ namespace Alis.Core.Ecs.Sample
 
             using World world = new World(uniforms);
 
-            world.Create<Vel>(default(Vel));
+            world.Create<Vel, Pos>(default(Vel), default(Pos));
             world.Create<Pos>(default(Pos));
 
             world.Update();
@@ -289,16 +289,16 @@ namespace Alis.Core.Ecs.Sample
         }
     }
 
-    internal record struct Vel(float DX) : IUniformComponent<float, Pos>
+    internal record struct Vel(float DX) : IInitable, IEntityComponent
     {
-        /// <summary>
-        ///     Updates the dt
-        /// </summary>
-        /// <param name="dt">The dt</param>
-        /// <param name="pos">The pos</param>
-        public void Update(float dt, ref Pos pos)
+        public void Update(Entity self)
         {
-            pos.X += DX * dt;
+           Console.WriteLine("entity update:" + self.EntityID);
+        }
+
+        public void Init(Entity self)
+        {
+            Console.WriteLine("entiti init vel: " + self.EntityID);
         }
     }
 

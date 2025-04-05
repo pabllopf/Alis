@@ -40,7 +40,6 @@ namespace Alis.Core.Ecs.Kernel.Updating.Runners
     /// </summary>
     /// <seealso cref="ComponentStorage{TComp}" />
     internal class Update<TComp>(int cap) : ComponentStorage<TComp>(cap)
-        where TComp : IComponent
     {
         /// <summary>
         ///     Runs the world
@@ -54,8 +53,11 @@ namespace Alis.Core.Ecs.Kernel.Updating.Runners
             int size = b.EntityCount;
             for (int i = size - 1; i >= 0; i--)
             {
-                comp.Update();
-
+                if (comp is IComponent storage2)
+                {
+                    storage2.Update();
+                }
+                
                 comp = ref Unsafe.Add(ref comp, 1);
             }
         }
