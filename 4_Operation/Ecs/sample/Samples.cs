@@ -213,7 +213,7 @@ namespace Alis.Core.Ecs.Sample
         /// <summary>
         /// The velocity
         /// </summary>
-        struct Velocity(int dx, int dy) : IComponent<Position>, IInitable
+        struct Velocity(int dx, int dy) : IEntityComponent, IInitable
         {
             /// <summary>
             /// The dx
@@ -223,37 +223,32 @@ namespace Alis.Core.Ecs.Sample
             /// The dy
             /// </summary>
             public int DY = dy;
-            /// <summary>
-            /// Updates the pos
-            /// </summary>
-            /// <param name="pos">The pos</param>
-            public void Update(ref Position pos)
-            {
-                pos.X += DX;
-                pos.Y += DY;
-            }
 
             public void Init(Entity self)
             {
                 Console.WriteLine("Init");
+            }
+
+            public void Update(Entity self)
+            {
+                self.Get<Position>().X += DX;
+                self.Get<Position>().Y += DY;
             }
         }
 
         /// <summary>
         /// The character
         /// </summary>
-        struct Character(char c) : IComponent<Position>
+        struct Character(char c) : IEntityComponent
         {
             /// <summary>
             /// The 
             /// </summary>
             public char Char = c;
-            /// <summary>
-            /// Updates the pos
-            /// </summary>
-            /// <param name="pos">The pos</param>
-            public void Update(ref Position pos)
+            
+            public void Update(Entity self)
             {
+                Position pos = self.Get<Position>();
                 Console.SetCursorPosition(pos.X, pos.Y);
                 Console.Write(Char);
             }
@@ -305,16 +300,13 @@ namespace Alis.Core.Ecs.Sample
     /// <summary>
     ///     The console text
     /// </summary>
-    internal struct ConsoleText(ConsoleColor Color) : IComponent<string>
+    internal struct ConsoleText(ConsoleColor Color) : IEntityComponent
     {
-        /// <summary>
-        ///     Updates the str
-        /// </summary>
-        /// <param name="str">The str</param>
-        public void Update(ref string str)
+
+        public void Update(Entity self)
         {
             Console.ForegroundColor = Color;
-            Console.Write(str);
+            Console.Write(self.Get<string>());
         }
     }
 
