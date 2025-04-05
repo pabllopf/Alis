@@ -30,7 +30,7 @@
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    ///     Config information for a <see cref="World" />.
+    ///     Config information for a <see cref="Scene" />.
     /// </summary>
     public class Config
     {

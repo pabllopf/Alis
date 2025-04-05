@@ -131,9 +131,9 @@ namespace Alis.Core.Ecs.Collections
         ///     Invokes the event with and consume using the specified generic event
         /// </summary>
         /// <param name="genericEvent">The generic event</param>
-        /// <param name="entity">The entity</param>
+        /// <param name="gameObject">The entity</param>
         /// <param name="index">The index</param>
-        public abstract void InvokeEventWithAndConsume(GenericEvent genericEvent, Entity entity, int index);
+        public abstract void InvokeEventWithAndConsume(GenericEvent genericEvent, GameObject gameObject, int index);
 
         /// <summary>
         ///     Sets the value using the specified value
@@ -206,11 +206,11 @@ namespace Alis.Core.Ecs.Collections
         ///     Invokes the event with and consume using the specified generic event
         /// </summary>
         /// <param name="genericEvent">The generic event</param>
-        /// <param name="entity">The entity</param>
+        /// <param name="gameObject">The entity</param>
         /// <param name="index">The index</param>
-        public override void InvokeEventWithAndConsume(GenericEvent genericEvent, Entity entity, int index)
+        public override void InvokeEventWithAndConsume(GenericEvent genericEvent, GameObject gameObject, int index)
         {
-            genericEvent?.Invoke(entity, ref Buffer[index]);
+            genericEvent?.Invoke(gameObject, ref Buffer[index]);
             Recycled.Push(index);
         }
 

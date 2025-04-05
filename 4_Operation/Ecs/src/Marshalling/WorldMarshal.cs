@@ -45,12 +45,12 @@ namespace Alis.Core.Ecs.Marshalling
         ///     Gets the component using the specified world
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="world">The world</param>
-        /// <param name="entity">The entity</param>
+        /// <param name="scene">The world</param>
+        /// <param name="gameObject">The entity</param>
         /// <returns>The ref</returns>
-        public static ref T GetComponent<T>(World world, Entity entity)
+        public static ref T GetComponent<T>(Scene scene, GameObject gameObject)
         {
-            EntityLocation location = world.EntityTable.UnsafeIndexNoResize(entity.EntityID);
+            EntityLocation location = scene.EntityTable.UnsafeIndexNoResize(gameObject.EntityID);
             return ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(location.Archetype.Components.UnsafeArrayIndex(location.Archetype.GetComponentIndex<T>()))[location.Index];
         }
 
@@ -58,12 +58,12 @@ namespace Alis.Core.Ecs.Marshalling
         ///     Gets the raw buffer using the specified world
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="world">The world</param>
-        /// <param name="entity">The entity</param>
+        /// <param name="scene">The world</param>
+        /// <param name="gameObject">The entity</param>
         /// <returns>A span of t</returns>
-        public static Span<T> GetRawBuffer<T>(World world, Entity entity)
+        public static Span<T> GetRawBuffer<T>(Scene scene, GameObject gameObject)
         {
-            EntityLocation location = world.EntityTable.UnsafeIndexNoResize(entity.EntityID);
+            EntityLocation location = scene.EntityTable.UnsafeIndexNoResize(gameObject.EntityID);
             return UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(location.Archetype.Components.UnsafeArrayIndex(location.Archetype.GetComponentIndex<T>())).AsSpan();
         }
 
@@ -71,12 +71,12 @@ namespace Alis.Core.Ecs.Marshalling
         ///     Gets the world
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <param name="entityID">The entity id</param>
         /// <returns>The ref</returns>
-        public static ref T Get<T>(World world, int entityID)
+        public static ref T Get<T>(Scene scene, int entityID)
         {
-            EntityLocation location = world.EntityTable.UnsafeIndexNoResize(entityID);
+            EntityLocation location = scene.EntityTable.UnsafeIndexNoResize(entityID);
 
             Archetype archetype = location.Archetype;
 

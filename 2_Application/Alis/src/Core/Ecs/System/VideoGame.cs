@@ -27,10 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Builder.Core.Ecs.System;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Scope;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.System
 {
@@ -92,34 +94,6 @@ namespace Alis.Core.Ecs.System
         /// </summary>
         public void Exit() => _contextHandler.Exit();
 
-        /// <summary>
-        ///     Saves this instance
-        /// </summary>
-        public void Save() => _contextHandler.Save();
-
-        /// <summary>
-        ///     Saves the path
-        /// </summary>
-        /// <param name="path">The path</param>
-        public void Save(string path) => _contextHandler.Save(path);
-
-        /// <summary>
-        ///     Loads this instance
-        /// </summary>
-        public void Load() => _contextHandler.Load();
-
-        /// <summary>
-        ///     Loads the path
-        /// </summary>
-        /// <param name="path">The path</param>
-        public void Load(string path) => _contextHandler.Load(path);
-
-        /// <summary>
-        ///     Loads the and run
-        /// </summary>
-        public void LoadAndRun()
-        {
-            _contextHandler.LoadAndRun();
-        }
+        public static VideoGameBuilder Create() => new VideoGameBuilder();
     }
 }

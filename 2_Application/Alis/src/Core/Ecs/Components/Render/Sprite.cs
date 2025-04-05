@@ -47,13 +47,11 @@ namespace Alis.Core.Ecs.Components.Render
     
     public struct Sprite(string nameFile, int depth) : IEntityComponent
     {
-
-
         /// <summary>
         /// Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(Entity self)
+        public void Update(GameObject self)
         {
             if (!string.IsNullOrEmpty(NameFile))
             {

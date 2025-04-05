@@ -45,23 +45,23 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <summary>
         ///     Runs the world
         /// </summary>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <param name="b">The </param>
-        internal override void Run(World world, Archetype b)
+        internal override void Run(Scene scene, Archetype b)
         {
             ref EntityIdOnly entityIds = ref b.GetEntityDataReference();
             ref TComp comp = ref GetComponentStorageDataReference();
 
-            Entity entity = world.DefaultWorldEntity;
+            GameObject gameObject = scene.DefaultWorldGameObject;
 
             int size = b.EntityCount;
             for (int i = size - 1; i >= 0; i--)
             {
-                entityIds.SetEntity(ref entity);
+                entityIds.SetEntity(ref gameObject);
                 
                 if (comp is IEntityComponent storage)
                 {
-                    storage.Update(entity);
+                    storage.Update(gameObject);
                 }
                 
                 entityIds = ref Unsafe.Add(ref entityIds, 1);
@@ -73,9 +73,9 @@ namespace Alis.Core.Ecs.Updating.Runners
         ///     Multithreadeds the run using the specified countdown
         /// </summary>
         /// <param name="countdown">The countdown</param>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <param name="b">The </param>
-        internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype b) =>
+        internal override void MultithreadedRun(CountdownEvent countdown, Scene scene, Archetype b) =>
             throw new NotImplementedException();
     }
 
@@ -90,22 +90,22 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <summary>
         ///     Runs the world
         /// </summary>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <param name="b">The </param>
-        internal override void Run(World world, Archetype b)
+        internal override void Run(Scene scene, Archetype b)
         {
             ref EntityIdOnly entityIds = ref b.GetEntityDataReference();
             ref TComp comp = ref GetComponentStorageDataReference();
 
             ref TArg arg = ref b.GetComponentDataReference<TArg>();
 
-            Entity entity = world.DefaultWorldEntity;
+            GameObject gameObject = scene.DefaultWorldGameObject;
 
             int size = b.EntityCount;
             for (int i = size - 1; i >= 0; i--)
             {
-                entityIds.SetEntity(ref entity);
-                comp.Update(entity, ref arg);
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject, ref arg);
 
                 entityIds = ref Unsafe.Add(ref entityIds, 1);
                 comp = ref Unsafe.Add(ref comp, 1);
@@ -118,9 +118,9 @@ namespace Alis.Core.Ecs.Updating.Runners
         ///     Multithreadeds the run using the specified countdown
         /// </summary>
         /// <param name="countdown">The countdown</param>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <param name="b">The </param>
-        internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype b)
+        internal override void MultithreadedRun(CountdownEvent countdown, Scene scene, Archetype b)
             => throw new NotImplementedException();
     }
 

@@ -54,7 +54,7 @@ namespace Alis.Core.Ecs.Operations
         /// <summary>
         ///     The world
         /// </summary>
-        private readonly World _world;
+        private readonly Scene scene;
 
         /// <summary>
         ///     The archetypes
@@ -77,8 +77,8 @@ namespace Alis.Core.Ecs.Operations
         /// <param name="query">The query</param>
         private EntityQueryEnumerator(Query query)
         {
-            _world = query.World;
-            _world.EnterDisallowState();
+            scene = query.Scene;
+            scene.EnterDisallowState();
             _archetypes = query.AsSpan();
             _archetypeIndex = -1;
         }
@@ -88,7 +88,7 @@ namespace Alis.Core.Ecs.Operations
         /// </summary>
         public EntityRefTuple<T> Current => new()
         {
-            Entity = _entityIds[_componentIndex].ToEntity(_world),
+            GameObject = _entityIds[_componentIndex].ToEntity(scene),
             Item1 = new Ref<T>(_currentSpan1, _componentIndex)
         };
 
@@ -97,7 +97,7 @@ namespace Alis.Core.Ecs.Operations
         /// </summary>
         public void Dispose()
         {
-            _world.ExitDisallowState();
+            scene.ExitDisallowState();
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace Alis.Core.Ecs.Operations
         /// <summary>
         ///     The world
         /// </summary>
-        private readonly World _world;
+        private readonly Scene scene;
 
         /// <summary>
         ///     The archetypes
@@ -182,8 +182,8 @@ namespace Alis.Core.Ecs.Operations
         /// <param name="query">The query</param>
         private EntityQueryEnumerator(Query query)
         {
-            _world = query.World;
-            _world.EnterDisallowState();
+            scene = query.Scene;
+            scene.EnterDisallowState();
             _archetypes = query.AsSpan();
             _archetypeIndex = -1;
         }
@@ -191,14 +191,14 @@ namespace Alis.Core.Ecs.Operations
         /// <summary>
         ///     Gets the value of the current
         /// </summary>
-        public Entity Current => _entityIds[_componentIndex].ToEntity(_world);
+        public GameObject Current => _entityIds[_componentIndex].ToEntity(scene);
 
         /// <summary>
         ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
-            _world.ExitDisallowState();
+            scene.ExitDisallowState();
         }
 
         /// <summary>

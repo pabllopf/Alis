@@ -51,18 +51,18 @@ namespace Alis.Core.Ecs.Events
         /// <summary>
         ///     The first
         /// </summary>
-        private Action<Entity, T> _first;
+        private Action<GameObject, T> _first;
 
         /// <summary>
         ///     The
         /// </summary>
-        private FastStack<Action<Entity, T>> _invokationList = new FastStack<Action<Entity, T>>();
+        private FastStack<Action<GameObject, T>> _invokationList = new FastStack<Action<GameObject, T>>();
 
         /// <summary>
         ///     Adds the action
         /// </summary>
         /// <param name="action">The action</param>
-        public void Add(Action<Entity, T> action)
+        public void Add(Action<GameObject, T> action)
         {
             if (_first is null)
             {
@@ -78,12 +78,12 @@ namespace Alis.Core.Ecs.Events
         ///     Removes the action
         /// </summary>
         /// <param name="action">The action</param>
-        public void Remove(Action<Entity, T> action)
+        public void Remove(Action<GameObject, T> action)
         {
             if (_first == action)
             {
                 _first = null;
-                if (_invokationList.TryPop(out Action<Entity, T> v))
+                if (_invokationList.TryPop(out Action<GameObject, T> v))
                 {
                     _first = v;
                 }
@@ -97,27 +97,27 @@ namespace Alis.Core.Ecs.Events
         /// <summary>
         ///     Invokes the entity
         /// </summary>
-        /// <param name="entity">The entity</param>
+        /// <param name="gameObject">The entity</param>
         /// <param name="arg">The arg</param>
-        public readonly void Invoke(Entity entity, T arg)
+        public readonly void Invoke(GameObject gameObject, T arg)
         {
             if (_first is not null)
             {
-                InvokeInternal(entity, arg);
+                InvokeInternal(gameObject, arg);
             }
         }
 
         /// <summary>
         ///     Invokes the internal using the specified entity
         /// </summary>
-        /// <param name="entity">The entity</param>
+        /// <param name="gameObject">The entity</param>
         /// <param name="arg">The arg</param>
-        public readonly void InvokeInternal(Entity entity, T arg)
+        public readonly void InvokeInternal(GameObject gameObject, T arg)
         {
-            _first!.Invoke(entity, arg);
-            foreach (Action<Entity, T> item in _invokationList.AsSpan())
+            _first!.Invoke(gameObject, arg);
+            foreach (Action<GameObject, T> item in _invokationList.AsSpan())
             {
-                item.Invoke(entity, arg);
+                item.Invoke(gameObject, arg);
             }
         }
     }

@@ -7,7 +7,7 @@ namespace Alis.Core.Ecs.Operations
     {
         private int _archetypeIndex;
         private int _componentIndex;
-        private World _world;
+        private Scene scene;
         private Span<Archetype> _archetypes;
         private Span<EntityIdOnly> _entityIds;
         private Span<T1> _currentSpan1;
@@ -29,18 +29,18 @@ namespace Alis.Core.Ecs.Operations
 
         private EntityQueryEnumerator(Query query)
         {
-            _world = query.World;
-            _world.EnterDisallowState();
+            scene = query.Scene;
+            scene.EnterDisallowState();
             _archetypes = query.AsSpan();
             _archetypeIndex = -1;
         }
 
         /// <summary>
-        /// The current tuple of component references and the <see cref="Entity"/> instance.
+        /// The current tuple of component references and the <see cref="GameObject"/> instance.
         /// </summary>
         public EntityRefTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> Current => new()
         {
-            Entity = _entityIds[_componentIndex].ToEntity(_world),
+            GameObject = _entityIds[_componentIndex].ToEntity(scene),
             Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
             Item2 = new Ref<T2>(_currentSpan2, _componentIndex),
             Item3 = new Ref<T3>(_currentSpan3, _componentIndex),
@@ -65,7 +65,7 @@ namespace Alis.Core.Ecs.Operations
         /// </summary>
         public void Dispose()
         {
-            _world.ExitDisallowState();
+            scene.ExitDisallowState();
         }
 
         /// <summary>

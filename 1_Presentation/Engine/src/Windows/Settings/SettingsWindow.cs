@@ -93,6 +93,7 @@ namespace Alis.App.Engine.Windows.Settings
                 return;
             }
 
+            /*
             object[] settings =
             {
                 SpaceWork.VideoGame.Context.Setting.General,
@@ -102,11 +103,11 @@ namespace Alis.App.Engine.Windows.Settings
                 SpaceWork.VideoGame.Context.Setting.Network,
                 SpaceWork.VideoGame.Context.Setting.Physic,
                 SpaceWork.VideoGame.Context.Setting.Scene
-            };
+            };*/
 
             if (ImGui.Begin(WindowName, ref isOpen))
             {
-                RenderSettings(settings);
+                //RenderSettings(settings);
             }
 
             ImGui.End();

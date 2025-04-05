@@ -39,12 +39,12 @@ namespace Alis.Core.Ecs.Events
         /// <summary>
         ///     The first
         /// </summary>
-        private IGenericAction<Entity> _first;
+        private IGenericAction<GameObject> _first;
 
         /// <summary>
         ///     The entity
         /// </summary>
-        private FastStack<IGenericAction<Entity>> _invokationList = new FastStack<IGenericAction<Entity>>();
+        private FastStack<IGenericAction<GameObject>> _invokationList = new FastStack<IGenericAction<GameObject>>();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GenericEvent" /> class
@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Events
         ///     Adds the action
         /// </summary>
         /// <param name="action">The action</param>
-        internal void Add(IGenericAction<Entity> action)
+        internal void Add(IGenericAction<GameObject> action)
         {
             if (_first is null)
             {
@@ -78,12 +78,12 @@ namespace Alis.Core.Ecs.Events
         ///     Removes the action
         /// </summary>
         /// <param name="action">The action</param>
-        internal void Remove(IGenericAction<Entity> action)
+        internal void Remove(IGenericAction<GameObject> action)
         {
             if (_first == action)
             {
                 _first = null;
-                if (_invokationList.TryPop(out IGenericAction<Entity> v))
+                if (_invokationList.TryPop(out IGenericAction<GameObject> v))
                 {
                     _first = v;
                 }
@@ -98,16 +98,16 @@ namespace Alis.Core.Ecs.Events
         ///     Invokes the entity
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="entity">The entity</param>
+        /// <param name="gameObject">The entity</param>
         /// <param name="arg">The arg</param>
-        internal void Invoke<T>(Entity entity, ref T arg)
+        internal void Invoke<T>(GameObject gameObject, ref T arg)
         {
             if (_first is not null)
             {
-                _first.Invoke(entity, ref arg);
-                foreach (IGenericAction<Entity> item in _invokationList.AsSpan())
+                _first.Invoke(gameObject, ref arg);
+                foreach (IGenericAction<GameObject> item in _invokationList.AsSpan())
                 {
-                    item.Invoke(entity, ref arg);
+                    item.Invoke(gameObject, ref arg);
                 }
             }
         }
@@ -121,7 +121,7 @@ namespace Alis.Core.Ecs.Events
         /// <param name="left">The event collection to add to.</param>
         /// <param name="right">The event to add</param>
         /// <returns>The event itself. When <paramref name="left" /> is null, the return value is also null.</returns>
-        public static GenericEvent operator +(GenericEvent left, IGenericAction<Entity> right)
+        public static GenericEvent operator +(GenericEvent left, IGenericAction<GameObject> right)
         {
             if (left is null)
             {
@@ -146,7 +146,7 @@ namespace Alis.Core.Ecs.Events
         /// <param name="left">The event collection to unsubscribe from.</param>
         /// <param name="right">The event to unsubscribe</param>
         /// <returns>The event itself. When <paramref name="left" /> is null, the return value is also null.</returns>
-        public static GenericEvent operator -(GenericEvent left, IGenericAction<Entity> right)
+        public static GenericEvent operator -(GenericEvent left, IGenericAction<GameObject> right)
         {
             if (left is null)
             {

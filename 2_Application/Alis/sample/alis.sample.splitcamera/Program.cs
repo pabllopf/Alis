@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.EcsOld.Component.Render;
-using Alis.Core.EcsOld.Entity;
-using Alis.Core.EcsOld.System;
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.System;
+
 
 namespace Alis.Sample.SplitCamera
 {
@@ -49,83 +49,25 @@ namespace Alis.Sample.SplitCamera
                 .Create()
                 .Settings(setting => setting
                     .General(general => general
-                        .Name("Camera sample")
+                        .Name("T-Rex Dino Game")
                         .Author("Pablo Perdomo Falcón")
-                        .Description("Sample camera game.")
-                        .Debug(true)
+                        .Description("T-Rex Dino Game")
                         .License("GNU General Public License v3.0")
+                        .Icon("app.bmp")
                         .Build())
                     .Audio(audio => audio
                         .Build())
                     .Graphic(graphic => graphic
-                        .Resolution(1024, 640)
+                        .Resolution(800, 600)
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
-                        .Debug(true)
-                        .DebugColor(Color.Green)
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("Camera")
-                            .AddComponent<Camera>(camera => camera.Builder()
-                                .Resolution(1024, 640)
-                                .BackgroundColor(Color.DarkGreen)
-                                .Build())
-                            .AddComponent(new CameraMovement())
-                            .Build())
-
-                        // Decoration tree-001
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("tree-001")
-                            .Transform(transform => transform
-                                .Position(-4, -4)
-                                .Scale(3, 3)
-                                .Rotation(0)
-                                .Build())
-                            .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture("tree-001.bmp")
-                                .Build())
-                            .Build())
-
-                        // Decoration tree-001
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("tree-002")
-                            .IsStatic()
-                            .Transform(transform => transform
-                                .Position(2, 2)
-                                .Scale(2, 2)
-                                .Rotation(0)
-                                .Build())
-                            .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture("tree-001.bmp")
-                                .Build())
-                            .Build())
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("tree-001")
-                            .IsStatic()
-                            .Transform(transform => transform
-                                .Position(0, 0)
-                                .Scale(2, 2)
-                                .Rotation(0)
-                                .Build())
-                            .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture("tree-001.bmp")
-                                .Build())
-                            .Build())
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("tree-001")
-                            .IsStatic()
-                            .Transform(transform => transform
-                                .Position(3, 3)
-                                .Scale(2, 2)
-                                .Rotation(0)
-                                .Build())
-                            .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture("tree-001.bmp")
-                                .Build())
+                        .Add<GameObject>(soundTrack => soundTrack
+                            .Name("Soundtrack")
                             .Build())
                         .Build())
                     .Build())

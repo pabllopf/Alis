@@ -52,9 +52,9 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Returns the entity using the specified world
         /// </summary>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <returns>The entity</returns>
-        internal Entity ToEntity(World world) => new Entity(world.ID, Version, ID);
+        internal GameObject ToEntity(Scene scene) => new GameObject(scene.ID, Version, ID);
 
         /// <summary>
         ///     Deconstructs the id
@@ -70,23 +70,23 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Sets the entity using the specified entity
         /// </summary>
-        /// <param name="entity">The entity</param>
+        /// <param name="gameObject">The entity</param>
         
-        internal void SetEntity(ref Entity entity)
+        internal void SetEntity(ref GameObject gameObject)
         {
-            entity.EntityVersion = Version;
-            entity.EntityID = ID;
+            gameObject.EntityVersion = Version;
+            gameObject.EntityID = ID;
         }
 
         /// <summary>
         ///     Inits the entity
         /// </summary>
-        /// <param name="entity">The entity</param>
+        /// <param name="gameObject">The entity</param>
         
-        internal void Init(Entity entity)
+        internal void Init(GameObject gameObject)
         {
-            Version = entity.EntityVersion;
-            ID = entity.EntityID;
+            Version = gameObject.EntityVersion;
+            ID = gameObject.EntityID;
         }
 
         /// <summary>

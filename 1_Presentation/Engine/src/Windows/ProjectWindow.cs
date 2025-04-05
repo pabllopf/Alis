@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.EcsOld.Entity;
+using Alis.Core.Ecs;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 
@@ -95,7 +95,7 @@ namespace Alis.App.Engine.Windows
                     ImGui.Text($"{FontAwesome5.Cube}");
 
                     ImGui.SameLine();
-
+/*
                     commandPtr = Marshal.StringToHGlobalAnsi(SpaceWork.VideoGame.Context.SceneManager.CurrentScene.Name);
                     if (ImGui.InputText("##SceneName", commandPtr, 125, ImGuiInputTextFlags.AlwaysOverwrite))
                     {
@@ -156,10 +156,11 @@ namespace Alis.App.Engine.Windows
                     default:
                         RenderGameObjects(gameObjects);
                         break;
+                }*/
                 }
-            }
 
-            ImGui.End();
+                ImGui.End();
+            }
         }
 
         /// <summary>
@@ -167,6 +168,7 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
+        /*
         /// <summary>
         ///     Renders the grouped by tag using the specified game objects
         /// </summary>
@@ -301,7 +303,7 @@ namespace Alis.App.Engine.Windows
         private void DeleteGameObject(GameObject gameObject)
         {
             SpaceWork.VideoGame.Context.SceneManager.CurrentScene.Remove(gameObject);
-        }
+        }*/
 
         /// <summary>
         ///     Renames the game object using the specified game object

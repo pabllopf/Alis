@@ -18,7 +18,7 @@ namespace Alis.Core.Ecs.Operations
         public QueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.QueryEnumerable Enumerate<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>() => new(this);
         
         /// <summary>
-        /// Enumerates component references and <see cref="Entity"/> instances for all entities in this query. Intended for use in foreach loops.
+        /// Enumerates component references and <see cref="GameObject"/> instances for all entities in this query. Intended for use in foreach loops.
         /// </summary>
         public EntityQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.QueryEnumerable EnumerateWithEntities<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>() => new(this);
         

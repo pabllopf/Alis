@@ -9,7 +9,7 @@ namespace Alis.Core.Ecs.Updating.Runners
     internal class EntityUpdate<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(int capacity) : ComponentStorage<TComp>(capacity)
         where TComp : IEntityComponent<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>
     {
-        internal override void Run(World world, Archetype b)
+        internal override void Run(Scene scene, Archetype b)
         {
             ref EntityIdOnly entityIds = ref b.GetEntityDataReference();
             ref TComp comp = ref GetComponentStorageDataReference();
@@ -25,12 +25,12 @@ namespace Alis.Core.Ecs.Updating.Runners
             ref TArg9 arg9 = ref b.GetComponentDataReference<TArg9>();
 
 
-            Entity entity = world.DefaultWorldEntity;
+            GameObject gameObject = scene.DefaultWorldGameObject;
 
             for (int i = b.EntityCount - 1; i >= 0; i--)
             {
-                entityIds.SetEntity(ref entity);
-                comp.Update(entity, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, ref arg7, ref arg8, ref arg9);
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, ref arg7, ref arg8, ref arg9);
 
                 entityIds = ref Unsafe.Add(ref entityIds, 1);
                 comp = ref Unsafe.Add(ref comp, 1);
@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Updating.Runners
             }
         }
 
-        internal void Run(World world, Archetype b, int start, int length)
+        internal void Run(Scene scene, Archetype b, int start, int length)
         {
             ref EntityIdOnly entityIds = ref Unsafe.Add(ref b.GetEntityDataReference(), start);
             ref TComp comp = ref Unsafe.Add(ref GetComponentStorageDataReference(), start);
@@ -64,12 +64,12 @@ namespace Alis.Core.Ecs.Updating.Runners
             ref TArg9 arg9 = ref Unsafe.Add(ref b.GetComponentDataReference<TArg9>(), start);
 
 
-            Entity entity = world.DefaultWorldEntity;
+            GameObject gameObject = scene.DefaultWorldGameObject;
 
             for (int i = length - 1; i >= 0; i--)
             {
-                entityIds.SetEntity(ref entity);
-                comp.Update(entity, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, ref arg7, ref arg8, ref arg9);
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject, ref arg1, ref arg2, ref arg3, ref arg4, ref arg5, ref arg6, ref arg7, ref arg8, ref arg9);
 
                 entityIds = ref Unsafe.Add(ref entityIds, 1);
                 comp = ref Unsafe.Add(ref comp, 1);
@@ -87,7 +87,7 @@ namespace Alis.Core.Ecs.Updating.Runners
             }
         }
 
-        internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype b)
+        internal override void MultithreadedRun(CountdownEvent countdown, Scene scene, Archetype b)
             => throw new NotImplementedException();
     }
 }

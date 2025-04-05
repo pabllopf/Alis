@@ -39,7 +39,7 @@ using Alis.Core.Ecs.Updating;
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    ///     Stores a set of structual changes that can be applied to a <see cref="World" />.
+    ///     Stores a set of structual changes that can be applied to a <see cref="Scene" />.
     /// </summary>
     public class CommandBuffer
     {
@@ -87,15 +87,15 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The world
         /// </summary>
-        internal World _world;
+        internal Scene Scene;
 
         /// <summary>
         ///     Creates a command buffer, which stores changes to a world without directly applying them.
         /// </summary>
-        /// <param name="world">The world to apply things to.</param>
-        public CommandBuffer(World world)
+        /// <param name="scene">The world to apply things to.</param>
+        public CommandBuffer(Scene scene)
         {
-            _world = world;
+            Scene = scene;
             _isInactive = true;
         }
 
@@ -107,78 +107,78 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Deletes a component from when <see cref="Playback" /> is called.
         /// </summary>
-        /// <param name="entity">The entity that will be deleted on playback.</param>
-        public void DeleteEntity(Entity entity)
+        /// <param name="gameObject">The entity that will be deleted on playback.</param>
+        public void DeleteEntity(GameObject gameObject)
         {
             SetIsActive();
-            _deleteEntityBuffer.Push(entity.EntityIdOnly);
+            _deleteEntityBuffer.Push(gameObject.EntityIdOnly);
         }
 
         /// <summary>
         ///     Removes a component from when <see cref="Playback" /> is called.
         /// </summary>
-        /// <param name="entity">The entity to remove a component from.</param>
+        /// <param name="gameObject">The entity to remove a component from.</param>
         /// <param name="component">The component to remove.</param>
-        public void RemoveComponent(Entity entity, ComponentID component)
+        public void RemoveComponent(GameObject gameObject, ComponentID component)
         {
             SetIsActive();
-            _removeComponentBuffer.Push(new DeleteComponent(entity.EntityIdOnly, component));
+            _removeComponentBuffer.Push(new DeleteComponent(gameObject.EntityIdOnly, component));
         }
 
         /// <summary>
         ///     Removes a component from when <see cref="Playback" /> is called.
         /// </summary>
         /// <typeparam name="T">The component type to remove.</typeparam>
-        /// <param name="entity">The entity to remove a component from.</param>
-        public void RemoveComponent<T>(Entity entity) => RemoveComponent(entity, Component<T>.ID);
+        /// <param name="gameObject">The entity to remove a component from.</param>
+        public void RemoveComponent<T>(GameObject gameObject) => RemoveComponent(gameObject, Component<T>.ID);
 
         /// <summary>
         ///     Removes a component from when <see cref="Playback" /> is called.
         /// </summary>
-        /// <param name="entity">The entity to remove a component from.</param>
+        /// <param name="gameObject">The entity to remove a component from.</param>
         /// <param name="type">The type of component to remove.</param>
-        public void RemoveComponent(Entity entity, Type type) => RemoveComponent(entity, Component.GetComponentID(type));
+        public void RemoveComponent(GameObject gameObject, Type type) => RemoveComponent(gameObject, Component.GetComponentID(type));
 
         /// <summary>
         ///     Adds a component to an entity when <see cref="Playback" /> is called.
         /// </summary>
         /// <typeparam name="T">The component type to add.</typeparam>
-        /// <param name="entity">The entity to add to.</param>
+        /// <param name="gameObject">The entity to add to.</param>
         /// <param name="component">The component to add.</param>
-        public void AddComponent<T>(Entity entity, in T component)
+        public void AddComponent<T>(GameObject gameObject, in T component)
         {
             SetIsActive();
-            _addComponentBuffer.Push(new AddComponent(entity.EntityIdOnly, ComponentHandle.Create(component)));
+            _addComponentBuffer.Push(new AddComponent(gameObject.EntityIdOnly, ComponentHandle.Create(component)));
         }
 
         /// <summary>
         ///     Adds a component to an entity when <see cref="Playback" /> is called.
         /// </summary>
-        /// <param name="entity">The entity to add to.</param>
+        /// <param name="gameObject">The entity to add to.</param>
         /// <param name="component">The component to add.</param>
         /// <param name="componentID">The ID of the component type to add as.</param>
         /// <remarks><paramref name="component" /> must be assignable to <see cref="ComponentID.Type" />.</remarks>
-        public void AddComponent(Entity entity, ComponentID componentID, object component)
+        public void AddComponent(GameObject gameObject, ComponentID componentID, object component)
         {
             SetIsActive();
-            _addComponentBuffer.Push(new AddComponent(entity.EntityIdOnly, ComponentHandle.CreateFromBoxed(componentID, component)));
+            _addComponentBuffer.Push(new AddComponent(gameObject.EntityIdOnly, ComponentHandle.CreateFromBoxed(componentID, component)));
         }
 
         /// <summary>
         ///     Adds a component to an entity when <see cref="Playback" /> is called.
         /// </summary>
-        /// <param name="entity">The entity to add to.</param>
+        /// <param name="gameObject">The entity to add to.</param>
         /// <param name="component">The component to add.</param>
         /// <param name="componentType">The type to add the component as.</param>
         /// <remarks><paramref name="component" /> must be assignable to <paramref name="componentType" />.</remarks>
-        public void AddComponent(Entity entity, Type componentType, object component) => AddComponent(entity, Component.GetComponentID(componentType), component);
+        public void AddComponent(GameObject gameObject, Type componentType, object component) => AddComponent(gameObject, Component.GetComponentID(componentType), component);
 
         /// <summary>
         ///     Adds a component to an entity when <see cref="Playback" /> is called.
         /// </summary>
-        /// <param name="entity">The entity to add to.</param>
+        /// <param name="gameObject">The entity to add to.</param>
         /// <param name="component">The component to add.</param>
-        public void AddComponent(Entity entity, object component) => AddComponent(entity, component.GetType(), component);
+        public void AddComponent(GameObject gameObject, object component) => AddComponent(gameObject, component.GetType(), component);
 
         /// <summary>
         ///     Removes all commands without playing them back.
@@ -191,10 +191,10 @@ namespace Alis.Core.Ecs
             while (_createEntityBuffer.TryPop(out CreateCommand createCommand))
             {
                 EntityIdOnly item = createCommand.Entity;
-                ref EntityLocation record = ref _world.EntityTable[item.ID];
+                ref EntityLocation record = ref Scene.EntityTable[item.ID];
                 if (record.Version == item.Version)
                 {
-                    _world.DeleteEntityWithoutEvents(item.ToEntity(_world), ref record);
+                    Scene.DeleteEntityWithoutEvents(item.ToEntity(Scene), ref record);
                 }
             }
 
@@ -220,66 +220,66 @@ namespace Alis.Core.Ecs
 
             while (_createEntityBuffer.TryPop(out CreateCommand createCommand))
             {
-                Entity concrete = createCommand.Entity.ToEntity(_world);
-                ref EntityLocation lookup = ref _world.EntityTable.UnsafeIndexNoResize(concrete.EntityID);
+                GameObject concrete = createCommand.Entity.ToEntity(Scene);
+                ref EntityLocation lookup = ref Scene.EntityTable.UnsafeIndexNoResize(concrete.EntityID);
 
                 if (createCommand.BufferLength > 0)
                 {
                     Span<ComponentStorageBase> runners = _componentRunnerBuffer.AsSpan(0, createCommand.BufferLength);
 
-                    EntityType id = _world.DefaultArchetype.ID;
+                    EntityType id = Scene.DefaultArchetype.ID;
                     Span<ComponentHandle> handles = _createEntityComponents.AsSpan().Slice(createCommand.BufferIndex, createCommand.BufferLength);
                     int size = handles.Length;
                     for (int i = 0; i < size; i++)
                     {
-                        id = _world.AddComponentLookup.FindAdjacentArchetypeId(handles[i].ComponentID, id, _world, ArchetypeEdgeType.AddComponent);
+                        id = Scene.AddComponentLookup.FindAdjacentArchetypeId(handles[i].ComponentID, id, Scene, ArchetypeEdgeType.AddComponent);
                     }
 
-                    _world.MoveEntityToArchetypeAdd(runners, concrete, ref lookup, out EntityLocation location, id.Archetype(_world));
+                    Scene.MoveEntityToArchetypeAdd(runners, concrete, ref lookup, out EntityLocation location, id.Archetype(Scene));
                 }
 
-                _world.InvokeEntityCreated(concrete);
+                Scene.InvokeEntityCreated(concrete);
             }
 
             while (_deleteEntityBuffer.TryPop(out EntityIdOnly item))
             {
                 //double check that its alive
-                ref EntityLocation record = ref _world.EntityTable[item.ID];
+                ref EntityLocation record = ref Scene.EntityTable[item.ID];
                 if (record.Version == item.Version)
                 {
-                    _world.DeleteEntity(item.ToEntity(_world), ref record);
+                    Scene.DeleteEntity(item.ToEntity(Scene), ref record);
                 }
             }
 
             while (_removeComponentBuffer.TryPop(out DeleteComponent item))
             {
                 int id = item.Entity.ID;
-                ref EntityLocation record = ref _world.EntityTable[id];
+                ref EntityLocation record = ref Scene.EntityTable[id];
                 if (record.Version == item.Entity.Version)
                 {
-                    _world.RemoveComponent(item.Entity.ToEntity(_world), ref record, item.ComponentId);
+                    Scene.RemoveComponent(item.Entity.ToEntity(Scene), ref record, item.ComponentId);
                 }
             }
 
             while (_addComponentBuffer.TryPop(out AddComponent command))
             {
                 int id = command.Entity.ID;
-                ref EntityLocation record = ref _world.EntityTable[id];
+                ref EntityLocation record = ref Scene.EntityTable[id];
                 if (record.Version == command.Entity.Version)
                 {
-                    Entity concrete = command.Entity.ToEntity(_world);
+                    GameObject concrete = command.Entity.ToEntity(Scene);
 
                     ComponentStorageBase runner = null!;
-                    _world.AddComponent(concrete, ref record, command.ComponentHandle.ComponentID, ref runner, out EntityLocation location);
+                    Scene.AddComponent(concrete, ref record, command.ComponentHandle.ComponentID, ref runner, out EntityLocation location);
 
                     runner.PullComponentFrom(command.ComponentHandle.ParentTable, location.Index, command.ComponentHandle.Index);
 
                     if (record.HasEvent(EntityFlags.AddComp))
                     {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-                        EventRecord events = _world.EventLookup[command.Entity];
+                        EventRecord events = Scene.EventLookup[command.Entity];
 #else
-                        ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(_world.EventLookup, command.Entity);
+                        ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(Scene.EventLookup, command.Entity);
 #endif
                         events.Add.NormalEvent.Invoke(concrete, command.ComponentHandle.ComponentID);
                         runner.InvokeGenericActionWith(events.Add.GenericEvent, concrete, location.Index);
@@ -383,10 +383,10 @@ namespace Alis.Core.Ecs
         ///     playback.
         /// </summary>
         /// <returns>The created entity ID</returns>
-        public Entity End()
+        public GameObject End()
         {
             //CreateCommand points to a segment of the _createEntityComponents stack
-            Entity e = _world.CreateEntityWithoutEvent();
+            GameObject e = Scene.CreateEntityWithoutEvent();
             _createEntityBuffer.Push(new CreateCommand(
                 e.EntityIdOnly,
                 _lastCreateEntityComponentsBufferIndex,

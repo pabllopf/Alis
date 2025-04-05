@@ -49,7 +49,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// Inits the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(Entity self)
+        public void Init(GameObject self)
         {
             Console.WriteLine($"Camera {self.EntityID} created");
         }
@@ -58,7 +58,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(Entity self)
+        public void Update(GameObject self)
         {
             Console.WriteLine($"Camera {self.EntityID} updated");
         }

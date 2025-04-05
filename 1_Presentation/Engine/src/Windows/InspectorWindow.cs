@@ -37,12 +37,6 @@ using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.EcsOld.Component;
-using Alis.Core.EcsOld.Component.Audio;
-using Alis.Core.EcsOld.Component.Collider;
-using Alis.Core.EcsOld.Component.Light;
-using Alis.Core.EcsOld.Component.Render;
-using Alis.Core.EcsOld.Entity;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 
@@ -59,6 +53,7 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.InfoCircle} Inspector";
 
+        /*
         // Define a dictionary to map component types to icons
         /// <summary>
         ///     The play
@@ -75,7 +70,7 @@ namespace Alis.App.Engine.Windows
             {typeof(PointLight), FontAwesome5.Lightbulb},
             {typeof(SpotLight), FontAwesome5.Lightbulb},
             {typeof(AreaLight), FontAwesome5.Lightbulb}
-        };
+        };*/
 
         /// <summary>
         ///     The tags
@@ -85,7 +80,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The selected game object
         /// </summary>
-        private GameObject _selectedGameObject;
+        //private GameObject _selectedGameObject;
 
         /// <summary>
         ///     The zero
@@ -135,7 +130,7 @@ namespace Alis.App.Engine.Windows
         {
             ImGui.Begin(NameWindow);
 
-            if (_selectedGameObject != null)
+            /*if (_selectedGameObject != null)
             {
                 RenderHeader();
 
@@ -144,7 +139,7 @@ namespace Alis.App.Engine.Windows
                 RenderComponents();
 
                 RenderAddComponentButton();
-            }
+            }*/
 
             ImGui.End();
         }
@@ -167,7 +162,7 @@ namespace Alis.App.Engine.Windows
             }
 
             // Obtener todos los tipos de componentes en el namespace Alis.xxx
-            Assembly assembly = Assembly.GetAssembly(typeof(AComponent))!;
+            /*Assembly assembly = Assembly.GetAssembly(typeof(AComponent))!;
             Type[] allTypes = assembly.GetTypes();
             IEnumerable<Type> componentSubclasses = allTypes.Where(t => t.IsSubclassOf(typeof(AComponent)));
             List<Type> componentTypes = componentSubclasses
@@ -213,7 +208,7 @@ namespace Alis.App.Engine.Windows
                 }
 
                 ImGui.EndPopup();
-            }
+            }*/
         }
 
         /// <summary>
@@ -231,13 +226,14 @@ namespace Alis.App.Engine.Windows
         /// <param name="componentType">The component type</param>
         private void AddComponentToSelectedGameObject([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)] Type componentType)
         {
+            /*
             if (_selectedGameObject == null)
             {
                 return;
             }
 
             AComponent component = (AComponent) Activator.CreateInstance(componentType);
-            _selectedGameObject.Add(component);
+            _selectedGameObject.Add(component);*/
         }
 
         /// <summary>
@@ -245,10 +241,11 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private void RenderHeader()
         {
-            if (_selectedGameObject == null)
-            {
-                return;
-            }
+            /*
+                if (_selectedGameObject == null)
+                {
+                    return;
+                }*/
 
             if (ImGui.BeginChild("##Header", new Vector2F(ImGui.GetContentRegionAvail().X, 80), true, ImGuiWindowFlags.NoCollapse))
             {
@@ -260,6 +257,7 @@ namespace Alis.App.Engine.Windows
 
                 ImGui.SameLine();
 
+                /*
                 // check if iseneable:
                 bool isEnable = _selectedGameObject.IsEnable;
                 ImGui.SetCursorPosY(ImGui.GetCursorPosY() - 3); // Adjust the Y position
@@ -308,199 +306,200 @@ namespace Alis.App.Engine.Windows
                     _selectedGameObject.Layer = layers[currentLayerIndex];
                 }
             }
-
-            ImGui.EndChild();
-        }
-
-        /// <summary>
-        ///     Renders the transform
-        /// </summary>
-        private void RenderTransform()
-        {
-            // Transform
-            if (ImGui.CollapsingHeader($"{FontAwesome5.Compass} Transform", ImGuiTreeNodeFlags.DefaultOpen))
-            {
-                if (ImGui.BeginChild("##Transform", new Vector2F(ImGui.GetContentRegionAvail().X, 105), true, ImGuiWindowFlags.NoCollapse))
-                {
-                    ImGui.AlignTextToFramePadding();
-                    ImGui.Text("Position");
-                    ImGui.SameLine(80);
-                    Vector2F position = _selectedGameObject.Transform.Position;
-                    ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-                    ImGui.DragFloat2("##Position", ref position, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
-
-                    ImGui.AlignTextToFramePadding();
-                    ImGui.Text("Rotation");
-                    ImGui.SameLine(80);
-                    float rotation = _selectedGameObject.Transform.Rotation;
-                    ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-                    ImGui.DragFloat("##Rotation", ref rotation, 0.1f, -360, 360, "%.2f", ImGuiSliderFlags.AlwaysClamp);
-
-                    ImGui.AlignTextToFramePadding();
-                    ImGui.Text("Scale");
-                    ImGui.SameLine(80);
-                    Vector2F scale = _selectedGameObject.Transform.Scale;
-                    ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-                    ImGui.DragFloat2("##Scale", ref scale, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
-
-                    _selectedGameObject.Transform = new Transform(position, rotation, scale);
-                }
-
+*/
                 ImGui.EndChild();
             }
-        }
 
-        /// <summary>
-        ///     Renders the components
-        /// </summary>
-        private void RenderComponents()
-        {
-            // Show the components of the selected game object
-            foreach (AComponent component in _selectedGameObject.Components)
+            /// <summary>
+            ///     Renders the transform
+            /// </summary>
+            /*private void RenderTransform()
             {
-                string icon = _componentIcons.TryGetValue(component.GetType(), out string value) ? value : FontAwesome5.File;
-                bool isEnabled = component.IsEnable;
-
-                ImGui.AlignTextToFramePadding();
-                ImGui.Checkbox($"##{component.GetType().Name}Enabled", ref isEnabled);
-                component.IsEnable = isEnabled;
-
-                ImGui.SameLine();
-
-                if (ImGui.CollapsingHeader($"{icon} {component.GetType().Name}", ImGuiTreeNodeFlags.None))
+                // Transform
+                if (ImGui.CollapsingHeader($"{FontAwesome5.Compass} Transform", ImGuiTreeNodeFlags.DefaultOpen))
                 {
-                    Type typeP = component.GetType();
-                    PropertyInfo[] properties = typeP.GetProperties();
-                    int counter = 0;
-                    for (int i = 0; i < properties.Length; i++)
+                    if (ImGui.BeginChild("##Transform", new Vector2F(ImGui.GetContentRegionAvail().X, 105), true, ImGuiWindowFlags.NoCollapse))
                     {
-                        if (properties[i].PropertyType == typeof(IntPtr) || properties[i].Name == "Name" || properties[i].Name == "Id" || properties[i].Name == "Tag" || properties[i].Name == "GameObject" || properties[i].Name == "Context" || properties[i].Name == "IsEnable")
-                        {
-                            continue;
-                        }
+                        ImGui.AlignTextToFramePadding();
+                        ImGui.Text("Position");
+                        ImGui.SameLine(80);
+                        Vector2F position = _selectedGameObject.Transform.Position;
+                        ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
+                        ImGui.DragFloat2("##Position", ref position, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
 
-                        if (properties[i].CanRead && properties[i].CanWrite)
-                        {
-                            counter++;
-                        }
-                    }
+                        ImGui.AlignTextToFramePadding();
+                        ImGui.Text("Rotation");
+                        ImGui.SameLine(80);
+                        float rotation = _selectedGameObject.Transform.Rotation;
+                        ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
+                        ImGui.DragFloat("##Rotation", ref rotation, 0.1f, -360, 360, "%.2f", ImGuiSliderFlags.AlwaysClamp);
 
-                    if (ImGui.BeginChild($"##{component.GetType().Name}", new Vector2F(ImGui.GetContentRegionAvail().X, counter * 35), true, ImGuiWindowFlags.NoCollapse))
-                    {
-                        RenderComponentProperties(component);
+                        ImGui.AlignTextToFramePadding();
+                        ImGui.Text("Scale");
+                        ImGui.SameLine(80);
+                        Vector2F scale = _selectedGameObject.Transform.Scale;
+                        ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
+                        ImGui.DragFloat2("##Scale", ref scale, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
+
+                        _selectedGameObject.Transform = new Transform(position, rotation, scale);
                     }
 
                     ImGui.EndChild();
                 }
             }
-        }
 
-        /// <summary>
-        ///     Renders the component properties using the specified component
-        /// </summary>
-        /// <param name="component">The component</param>
-        private void RenderComponentProperties(AComponent component)
-        {
-            Type typeP = component.GetType();
-            PropertyInfo[] properties = typeP.GetProperties();
-            foreach (PropertyInfo property in properties)
+            /// <summary>
+            ///     Renders the components
+            /// </summary>
+            private void RenderComponents()
             {
-                // omit propertie name, id and tag:
-                if (property.PropertyType == typeof(IntPtr) || property.Name == "Name" || property.Name == "Id" || property.Name == "Tag" || property.Name == "GameObject" || property.Name == "Context" || property.Name == "IsEnable")
+                // Show the components of the selected game object
+                foreach (AComponent component in _selectedGameObject.Components)
                 {
-                    continue;
-                }
-
-                if (property.CanRead && property.CanWrite)
-                {
-                    object value = property.GetValue(component);
-                    string propertyId = $"##{property.Name}{component.GetType().Name}";
+                    string icon = _componentIcons.TryGetValue(component.GetType(), out string value) ? value : FontAwesome5.File;
+                    bool isEnabled = component.IsEnable;
 
                     ImGui.AlignTextToFramePadding();
-                    ImGui.Text(property.Name);
-                    ImGui.SameLine(100); // Adjust the spacing as needed
+                    ImGui.Checkbox($"##{component.GetType().Name}Enabled", ref isEnabled);
+                    component.IsEnable = isEnabled;
 
-                    ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X); // Adjust the width as needed
+                    ImGui.SameLine();
 
-                    switch (value)
+                    if (ImGui.CollapsingHeader($"{icon} {component.GetType().Name}", ImGuiTreeNodeFlags.None))
                     {
-                        case float floatValue:
-                            ImGui.DragFloat(propertyId, ref floatValue, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
-                            property.SetValue(component, floatValue);
-                            break;
-                        case double doubleValue:
-                            float floatDoubleValue = (float) doubleValue;
-                            ImGui.DragFloat(propertyId, ref floatDoubleValue, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
-                            property.SetValue(component, (double) floatDoubleValue);
-                            break;
-                        case int intValue:
-                            ImGui.DragInt(propertyId, ref intValue, 1, -1000, 1000, "%d", ImGuiSliderFlags.AlwaysClamp);
-                            property.SetValue(component, intValue);
-                            break;
-                        case bool boolValue:
-                            ImGui.Checkbox(propertyId, ref boolValue);
-                            property.SetValue(component, boolValue);
-                            break;
-                        case Vector2F vector2Value:
-                            ImGui.DragFloat2(propertyId, ref vector2Value, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
-                            property.SetValue(component, vector2Value);
-                            break;
-                        case Vector3F vector3Value:
-                            ImGui.DragFloat3(propertyId, ref vector3Value, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
-                            property.SetValue(component, vector3Value);
-                            break;
-                        case Vector4F vector4Value:
-                            ImGui.DragFloat4(propertyId, ref vector4Value, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
-                            property.SetValue(component, vector4Value);
-                            break;
-                        case string stringValue:
-                            IntPtr stringBuffer = Marshal.StringToHGlobalAnsi(stringValue);
-                            if (ImGui.InputText(propertyId, stringBuffer, 256))
+                        Type typeP = component.GetType();
+                        PropertyInfo[] properties = typeP.GetProperties();
+                        int counter = 0;
+                        for (int i = 0; i < properties.Length; i++)
+                        {
+                            if (properties[i].PropertyType == typeof(IntPtr) || properties[i].Name == "Name" || properties[i].Name == "Id" || properties[i].Name == "Tag" || properties[i].Name == "GameObject" || properties[i].Name == "Context" || properties[i].Name == "IsEnable")
                             {
-                                property.SetValue(component, Marshal.PtrToStringAnsi(stringBuffer));
+                                continue;
                             }
 
-                            Marshal.FreeHGlobal(stringBuffer);
-                            break;
-                        case Enum enumValue:
-                            string[] enumNames = Enum.GetNames(property.PropertyType);
-                            int currentEnumIndex = Array.IndexOf(enumNames, enumValue.ToString());
-                            // enumNames separated by zeros:
-                            string itemsSeparatedByZeros = string.Join("\0", enumNames);
-                            if (ImGui.Combo(propertyId, ref currentEnumIndex, itemsSeparatedByZeros))
+                            if (properties[i].CanRead && properties[i].CanWrite)
                             {
-                                property.SetValue(component, Enum.Parse(property.PropertyType, enumNames[currentEnumIndex]));
+                                counter++;
                             }
+                        }
 
-                            break;
-                        case byte byteValue:
-                            ImGui.DragScalar(propertyId, ImGuiDataType.U8, new IntPtr(byteValue), 1, new IntPtr(byte.MinValue), new IntPtr(byte.MaxValue), "%d", ImGuiSliderFlags.AlwaysClamp);
-                            property.SetValue(component, byteValue);
-                            break;
-                        case sbyte sbyteValue:
-                            ImGui.DragScalar(propertyId, ImGuiDataType.S8, new IntPtr(sbyteValue), 1, new IntPtr(sbyte.MinValue), new IntPtr(sbyte.MaxValue), "%d", ImGuiSliderFlags.AlwaysClamp);
-                            property.SetValue(component, sbyteValue);
-                            break;
-                        case short shortValue:
-                            ImGui.DragScalar(propertyId, ImGuiDataType.S16, new IntPtr(shortValue), 1, new IntPtr(short.MinValue), new IntPtr(short.MaxValue), "%d", ImGuiSliderFlags.AlwaysClamp);
-                            property.SetValue(component, shortValue);
-                            break;
-                        case ushort ushortValue:
-                            ImGui.DragScalar(propertyId, ImGuiDataType.U16, new IntPtr(ushortValue), 1, new IntPtr(ushort.MinValue), new IntPtr(ushort.MaxValue), "%d", ImGuiSliderFlags.AlwaysClamp);
-                            property.SetValue(component, ushortValue);
-                            break;
+                        if (ImGui.BeginChild($"##{component.GetType().Name}", new Vector2F(ImGui.GetContentRegionAvail().X, counter * 35), true, ImGuiWindowFlags.NoCollapse))
+                        {
+                            RenderComponentProperties(component);
+                        }
+
+                        ImGui.EndChild();
                     }
                 }
             }
-        }
 
-        /// <summary>
-        ///     Selects the game object using the specified game object
-        /// </summary>
-        /// <param name="gameObject">The game object</param>
-        public void SelectGameObject(GameObject gameObject)
-        {
-            _selectedGameObject = gameObject;
+            /// <summary>
+            ///     Renders the component properties using the specified component
+            /// </summary>
+            /// <param name="component">The component</param>
+            private void RenderComponentProperties(AComponent component)
+            {
+                Type typeP = component.GetType();
+                PropertyInfo[] properties = typeP.GetProperties();
+                foreach (PropertyInfo property in properties)
+                {
+                    // omit propertie name, id and tag:
+                    if (property.PropertyType == typeof(IntPtr) || property.Name == "Name" || property.Name == "Id" || property.Name == "Tag" || property.Name == "GameObject" || property.Name == "Context" || property.Name == "IsEnable")
+                    {
+                        continue;
+                    }
+
+                    if (property.CanRead && property.CanWrite)
+                    {
+                        object value = property.GetValue(component);
+                        string propertyId = $"##{property.Name}{component.GetType().Name}";
+
+                        ImGui.AlignTextToFramePadding();
+                        ImGui.Text(property.Name);
+                        ImGui.SameLine(100); // Adjust the spacing as needed
+
+                        ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X); // Adjust the width as needed
+
+                        switch (value)
+                        {
+                            case float floatValue:
+                                ImGui.DragFloat(propertyId, ref floatValue, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
+                                property.SetValue(component, floatValue);
+                                break;
+                            case double doubleValue:
+                                float floatDoubleValue = (float) doubleValue;
+                                ImGui.DragFloat(propertyId, ref floatDoubleValue, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
+                                property.SetValue(component, (double) floatDoubleValue);
+                                break;
+                            case int intValue:
+                                ImGui.DragInt(propertyId, ref intValue, 1, -1000, 1000, "%d", ImGuiSliderFlags.AlwaysClamp);
+                                property.SetValue(component, intValue);
+                                break;
+                            case bool boolValue:
+                                ImGui.Checkbox(propertyId, ref boolValue);
+                                property.SetValue(component, boolValue);
+                                break;
+                            case Vector2F vector2Value:
+                                ImGui.DragFloat2(propertyId, ref vector2Value, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
+                                property.SetValue(component, vector2Value);
+                                break;
+                            case Vector3F vector3Value:
+                                ImGui.DragFloat3(propertyId, ref vector3Value, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
+                                property.SetValue(component, vector3Value);
+                                break;
+                            case Vector4F vector4Value:
+                                ImGui.DragFloat4(propertyId, ref vector4Value, 0.1f, -1000, 1000, "%.2f", ImGuiSliderFlags.AlwaysClamp);
+                                property.SetValue(component, vector4Value);
+                                break;
+                            case string stringValue:
+                                IntPtr stringBuffer = Marshal.StringToHGlobalAnsi(stringValue);
+                                if (ImGui.InputText(propertyId, stringBuffer, 256))
+                                {
+                                    property.SetValue(component, Marshal.PtrToStringAnsi(stringBuffer));
+                                }
+
+                                Marshal.FreeHGlobal(stringBuffer);
+                                break;
+                            case Enum enumValue:
+                                string[] enumNames = Enum.GetNames(property.PropertyType);
+                                int currentEnumIndex = Array.IndexOf(enumNames, enumValue.ToString());
+                                // enumNames separated by zeros:
+                                string itemsSeparatedByZeros = string.Join("\0", enumNames);
+                                if (ImGui.Combo(propertyId, ref currentEnumIndex, itemsSeparatedByZeros))
+                                {
+                                    property.SetValue(component, Enum.Parse(property.PropertyType, enumNames[currentEnumIndex]));
+                                }
+
+                                break;
+                            case byte byteValue:
+                                ImGui.DragScalar(propertyId, ImGuiDataType.U8, new IntPtr(byteValue), 1, new IntPtr(byte.MinValue), new IntPtr(byte.MaxValue), "%d", ImGuiSliderFlags.AlwaysClamp);
+                                property.SetValue(component, byteValue);
+                                break;
+                            case sbyte sbyteValue:
+                                ImGui.DragScalar(propertyId, ImGuiDataType.S8, new IntPtr(sbyteValue), 1, new IntPtr(sbyte.MinValue), new IntPtr(sbyte.MaxValue), "%d", ImGuiSliderFlags.AlwaysClamp);
+                                property.SetValue(component, sbyteValue);
+                                break;
+                            case short shortValue:
+                                ImGui.DragScalar(propertyId, ImGuiDataType.S16, new IntPtr(shortValue), 1, new IntPtr(short.MinValue), new IntPtr(short.MaxValue), "%d", ImGuiSliderFlags.AlwaysClamp);
+                                property.SetValue(component, shortValue);
+                                break;
+                            case ushort ushortValue:
+                                ImGui.DragScalar(propertyId, ImGuiDataType.U16, new IntPtr(ushortValue), 1, new IntPtr(ushort.MinValue), new IntPtr(ushort.MaxValue), "%d", ImGuiSliderFlags.AlwaysClamp);
+                                property.SetValue(component, ushortValue);
+                                break;
+                        }
+                    }
+                }
+            }
+
+            /// <summary>
+            ///     Selects the game object using the specified game object
+            /// </summary>
+            /// <param name="gameObject">The game object</param>
+            public void SelectGameObject(GameObject gameObject)
+            {
+                _selectedGameObject = gameObject;
+            }*/
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Comps
     {
         /// <summary>
         ///     This method is called whenever a component reaches the end of its lifetime, whether by an
-        ///     <see cref="Entity.Remove{T}" /> method or <see cref="Entity.Delete" />.
+        ///     <see cref="GameObject.Remove{T}" /> method or <see cref="GameObject.Delete" />.
         /// </summary>
         void Destroy();
     }

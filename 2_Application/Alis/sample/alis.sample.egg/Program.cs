@@ -28,9 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.EcsOld.Component.Render;
-using Alis.Core.EcsOld.Entity;
-using Alis.Core.EcsOld.System;
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.System;
 
 namespace Alis.Sample.Egg
 {
@@ -49,103 +48,25 @@ namespace Alis.Sample.Egg
                 .Create()
                 .Settings(setting => setting
                     .General(general => general
-                        .Name("Egg game")
-                        .Author("Pablo Perdomo Falcón y Luis")
-                        .Description("Egg game.")
+                        .Name("T-Rex Dino Game")
+                        .Author("Pablo Perdomo Falcón")
+                        .Description("T-Rex Dino Game")
                         .License("GNU General Public License v3.0")
-                        .Icon("app.jpeg")
+                        .Icon("app.bmp")
                         .Build())
                     .Audio(audio => audio
                         .Build())
                     .Graphic(graphic => graphic
-                        .Resolution(1024, 640)
-                        .FrameRate(60)
-                        .BackgroundColor(new Color(20, 23, 32, 255))
+                        .Resolution(800, 600)
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
-                        .Debug(false)
-                        .DebugColor(Color.Red)
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
-                        .Name("Main Scene")
-
-                        // CAMERA
-                        .Add<GameObject>(mainCamera => mainCamera
-                            .Name("Camera")
-                            .WithTag("Camera")
-                            .AddComponent<Camera>(camera => camera
-                                .Builder()
-                                .Resolution(1024, 640)
-                                .Build())
-                            .Build())
-                        .Add<GameObject>(sarten => sarten
-                            .Transform(transform => transform
-                                .Position(-6, -2)
-                                .Rotation(0)
-                                .Scale(0.30f, 0.30f)
-                                .Build())
-                            .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture("sarten.jpeg")
-                                .Depth(0)
-                                .Build())
-                            .Build())
-                        .Add<GameObject>(clara => clara
-                            .Transform(transform => transform
-                                .Position(-3, -1)
-                                .Rotation(0)
-                                .Scale(0.10f, 0.10f)
-                                .Build())
-                            .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture("clara.jpeg")
-                                .Depth(1)
-                                .Build())
-                            .Build())
-                        .Add<GameObject>(yema => yema
-                            .Transform(transform => transform
-                                .Position(-3, -1)
-                                .Rotation(0)
-                                .Scale(0.15f, 0.15f)
-                                .Build())
-                            .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture("yema.jpeg")
-                                .Depth(2)
-                                .Build())
-                            .Build())
-                        .Add<GameObject>(sarten => sarten
-                            .Transform(transform => transform
-                                .Position(-4, 0)
-                                .Rotation(0)
-                                .Scale(0.40f, 0.40f)
-                                .Build())
-                            .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture("vitro.jpeg")
-                                .Depth(-2)
-                                .Build())
-                            .Build())
-                        .Add<GameObject>(sarten => sarten
-                            .Transform(transform => transform
-                                .Position(9, -8)
-                                .Rotation(0)
-                                .Scale(0.08f, 0.08f)
-                                .Build())
-                            .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture("button.jpeg")
-                                .Depth(-1)
-                                .Build())
-                            .Build())
-                        .Add<GameObject>(sarten => sarten
-                            .Transform(transform => transform
-                                .Position(13, -8)
-                                .Rotation(0)
-                                .Scale(0.08f, 0.08f)
-                                .Build())
-                            .AddComponent<Sprite>(sprite => sprite.Builder()
-                                .SetTexture("button.jpeg")
-                                .Depth(-1)
-                                .Build())
+                        .Add<GameObject>(soundTrack => soundTrack
+                            .Name("Soundtrack")
                             .Build())
                         .Build())
                     .Build())

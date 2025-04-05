@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
+
 namespace Alis.Core.Ecs.System.Configuration.Physic
 {
     /// <summary>
@@ -34,5 +36,10 @@ namespace Alis.Core.Ecs.System.Configuration.Physic
     /// </summary>
     public interface IPhysicSetting
     {
+        /// <summary>
+        ///     Gets or sets the gravity.
+        /// </summary>
+        /// <value>The gravity.</value>
+        Vector2F Gravity { get; set; }
     }
 }

@@ -65,7 +65,7 @@ namespace Alis.Core.Ecs.Updating
         /// </summary>
         public static void RegisterInit<T>()
         {
-            TypeIniters[typeof(T)] = (ComponentDelegates<T>.InitDelegate) ([method: DebuggerHidden, DebuggerStepThrough] static (Entity e, ref T c) =>
+            TypeIniters[typeof(T)] = (ComponentDelegates<T>.InitDelegate) ([method: DebuggerHidden, DebuggerStepThrough] static (GameObject e, ref T c) =>
             {
                 if (c is IInitable component)
                 {

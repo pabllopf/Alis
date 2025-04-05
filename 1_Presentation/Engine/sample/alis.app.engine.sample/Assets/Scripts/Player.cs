@@ -27,22 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
-using Alis.Core.EcsOld.Component;
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.Comps;
 
 namespace Alis.App.Engine.Sample.Assets.Scripts
 {
     /// <summary>
     ///     The player class
     /// </summary>
-    public class Player : AComponent
+    public class Player : IEntityComponent
     {
-        /// <summary>
-        ///     Ons the awake
-        /// </summary>
-        public override void OnAwake()
+
+        public void Update(GameObject self)
         {
-            Logger.Info("Player awake");
+            
         }
     }
 }

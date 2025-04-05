@@ -43,7 +43,7 @@ namespace Alis.Core.Ecs.Operations
         /// <summary>
         ///     The world
         /// </summary>
-        private readonly World _world;
+        private readonly Scene scene;
 
         /// <summary>
         ///     The entities
@@ -58,11 +58,11 @@ namespace Alis.Core.Ecs.Operations
         /// <summary>
         ///     Initializes a new instance of the <see cref="EntityEnumerator" /> class
         /// </summary>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <param name="entities">The entities</param>
-        internal EntityEnumerator(World world, Span<EntityIdOnly> entities)
+        internal EntityEnumerator(Scene scene, Span<EntityIdOnly> entities)
         {
-            _world = world;
+            this.scene = scene;
             _entities = entities;
             _index = -1;
         }
@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.Operations
         /// <summary>
         ///     Gets the value of the current
         /// </summary>
-        public Entity Current => _entities[_index].ToEntity(_world);
+        public GameObject Current => _entities[_index].ToEntity(scene);
 
         /// <summary>
         ///     The entity enumerable
@@ -87,7 +87,7 @@ namespace Alis.Core.Ecs.Operations
             /// <summary>
             ///     The world
             /// </summary>
-            private readonly World _world;
+            private readonly Scene scene;
 
             /// <summary>
             ///     The entities
@@ -97,11 +97,11 @@ namespace Alis.Core.Ecs.Operations
             /// <summary>
             ///     Initializes a new instance of the <see cref="EntityEnumerable" /> class
             /// </summary>
-            /// <param name="world">The world</param>
+            /// <param name="scene">The world</param>
             /// <param name="entities">The entities</param>
-            internal EntityEnumerable(World world, Span<EntityIdOnly> entities)
+            internal EntityEnumerable(Scene scene, Span<EntityIdOnly> entities)
             {
-                _world = world;
+                this.scene = scene;
                 _entities = entities;
             }
 
@@ -109,7 +109,7 @@ namespace Alis.Core.Ecs.Operations
             ///     Gets the enumerator
             /// </summary>
             /// <returns>The entity enumerator</returns>
-            public EntityEnumerator GetEnumerator() => new EntityEnumerator(_world, _entities);
+            public EntityEnumerator GetEnumerator() => new EntityEnumerator(scene, _entities);
         }
     }
 }

@@ -56,18 +56,18 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     /// Creates the new or get existing archetype using the specified world
     /// </summary>
-    /// <param name="world">The world</param>
+    /// <param name="scene">The world</param>
     /// <returns>The local</returns>
-    internal static Archetype CreateNewOrGetExistingArchetype(World world)
+    internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
     {
       ushort rawIndex = Archetype<T1, T2>.ID.RawIndex;
-      ref Archetype local = ref world.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
+      ref Archetype local = ref scene.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
       if (local == null)
-        local = CreateArchetype(world);
+        local = CreateArchetype(scene);
       return local;
 
       [MethodImpl(MethodImplOptions.NoInlining)]
-      static Archetype CreateArchetype(World world)
+      static Archetype CreateArchetype(Scene world)
       {
         ComponentStorageBase[] components = new ComponentStorageBase[Archetype<T1, T2>.ArchetypeComponentIDs.Length + 1];
         ComponentStorageBase[] createBuffers = new ComponentStorageBase[components.Length];
@@ -119,21 +119,21 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     /// Creates the new or get existing archetype using the specified world
     /// </summary>
-    /// <param name="world">The world</param>
+    /// <param name="scene">The world</param>
     /// <returns>The local</returns>
-    internal static Archetype CreateNewOrGetExistingArchetype(World world)
+    internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
     {
       ushort rawIndex = Archetype<T1, T2, T3>.ID.RawIndex;
-      ref Archetype local = ref world.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
+      ref Archetype local = ref scene.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
       if (local == null)
       {
-          local = CreateArchetype(world);
+          local = CreateArchetype(scene);
       }
 
       return local;
 
       [MethodImpl(MethodImplOptions.NoInlining)]
-      static Archetype CreateArchetype(World world)
+      static Archetype CreateArchetype(Scene world)
       {
         ComponentStorageBase[] components = new ComponentStorageBase[Archetype<T1, T2, T3>.ArchetypeComponentIDs.Length + 1];
         ComponentStorageBase[] createBuffers = new ComponentStorageBase[components.Length];
@@ -189,18 +189,18 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     /// Creates the new or get existing archetype using the specified world
     /// </summary>
-    /// <param name="world">The world</param>
+    /// <param name="scene">The world</param>
     /// <returns>The local</returns>
-    internal static Archetype CreateNewOrGetExistingArchetype(World world)
+    internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4>.ID.RawIndex;
-      ref Archetype local = ref world.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
+      ref Archetype local = ref scene.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
       if (local == null)
-        local = CreateArchetype(world);
+        local = CreateArchetype(scene);
       return local;
 
       [MethodImpl(MethodImplOptions.NoInlining)]
-      static Archetype CreateArchetype(World world)
+      static Archetype CreateArchetype(Scene world)
       {
         ComponentStorageBase[] components = new ComponentStorageBase[Archetype<T1, T2, T3, T4>.ArchetypeComponentIDs.Length + 1];
         ComponentStorageBase[] createBuffers = new ComponentStorageBase[components.Length];
@@ -259,18 +259,18 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     /// Creates the new or get existing archetype using the specified world
     /// </summary>
-    /// <param name="world">The world</param>
+    /// <param name="scene">The world</param>
     /// <returns>The local</returns>
-    internal static Archetype CreateNewOrGetExistingArchetype(World world)
+    internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5>.ID.RawIndex;
-      ref Archetype local = ref world.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
+      ref Archetype local = ref scene.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
       if (local == null)
-        local = CreateArchetype(world);
+        local = CreateArchetype(scene);
       return local;
 
       [MethodImpl(MethodImplOptions.NoInlining)]
-      static Archetype CreateArchetype(World world)
+      static Archetype CreateArchetype(Scene world)
       {
         ComponentStorageBase[] components = new ComponentStorageBase[Archetype<T1, T2, T3, T4, T5>.ArchetypeComponentIDs.Length + 1];
         ComponentStorageBase[] createBuffers = new ComponentStorageBase[components.Length];
@@ -333,18 +333,18 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     /// Creates the new or get existing archetype using the specified world
     /// </summary>
-    /// <param name="world">The world</param>
+    /// <param name="scene">The world</param>
     /// <returns>The local</returns>
-    internal static Archetype CreateNewOrGetExistingArchetype(World world)
+    internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6>.ID.RawIndex;
-      ref Archetype local = ref world.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
+      ref Archetype local = ref scene.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
       if (local == null)
-        local = CreateArchetype(world);
+        local = CreateArchetype(scene);
       return local;
 
       [MethodImpl(MethodImplOptions.NoInlining)]
-      static Archetype CreateArchetype(World world)
+      static Archetype CreateArchetype(Scene world)
       {
         ComponentStorageBase[] components = new ComponentStorageBase[Archetype<T1, T2, T3, T4, T5, T6>.ArchetypeComponentIDs.Length + 1];
         ComponentStorageBase[] createBuffers = new ComponentStorageBase[components.Length];
@@ -411,18 +411,18 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     /// Creates the new or get existing archetype using the specified world
     /// </summary>
-    /// <param name="world">The world</param>
+    /// <param name="scene">The world</param>
     /// <returns>The local</returns>
-    internal static Archetype CreateNewOrGetExistingArchetype(World world)
+    internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7>.ID.RawIndex;
-      ref Archetype local = ref world.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
+      ref Archetype local = ref scene.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
       if (local == null)
-        local = CreateArchetype(world);
+        local = CreateArchetype(scene);
       return local;
 
       [MethodImpl(MethodImplOptions.NoInlining)]
-      static Archetype CreateArchetype(World world)
+      static Archetype CreateArchetype(Scene world)
       {
         ComponentStorageBase[] components = new ComponentStorageBase[Archetype<T1, T2, T3, T4, T5, T6, T7>.ArchetypeComponentIDs.Length + 1];
         ComponentStorageBase[] createBuffers = new ComponentStorageBase[components.Length];
@@ -493,18 +493,18 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     /// Creates the new or get existing archetype using the specified world
     /// </summary>
-    /// <param name="world">The world</param>
+    /// <param name="scene">The world</param>
     /// <returns>The local</returns>
-    internal static Archetype CreateNewOrGetExistingArchetype(World world)
+    internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.ID.RawIndex;
-      ref Archetype local = ref world.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
+      ref Archetype local = ref scene.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
       if (local == null)
-        local = CreateArchetype(world);
+        local = CreateArchetype(scene);
       return local;
 
       [MethodImpl(MethodImplOptions.NoInlining)]
-      static Archetype CreateArchetype(World world)
+      static Archetype CreateArchetype(Scene world)
       {
         ComponentStorageBase[] components = new ComponentStorageBase[Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.ArchetypeComponentIDs.Length + 1];
         ComponentStorageBase[] createBuffers = new ComponentStorageBase[components.Length];
@@ -579,18 +579,18 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     /// Creates the new or get existing archetype using the specified world
     /// </summary>
-    /// <param name="world">The world</param>
+    /// <param name="scene">The world</param>
     /// <returns>The local</returns>
-    internal static Archetype CreateNewOrGetExistingArchetype(World world)
+    internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.ID.RawIndex;
-      ref Archetype local = ref world.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
+      ref Archetype local = ref scene.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
       if (local == null)
-        local = CreateArchetype(world);
+        local = CreateArchetype(scene);
       return local;
 
       [MethodImpl(MethodImplOptions.NoInlining)]
-      static Archetype CreateArchetype(World world)
+      static Archetype CreateArchetype(Scene world)
       {
         ComponentStorageBase[] components = new ComponentStorageBase[Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.ArchetypeComponentIDs.Length + 1];
         ComponentStorageBase[] createBuffers = new ComponentStorageBase[components.Length];
@@ -669,18 +669,18 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     /// Creates the new or get existing archetype using the specified world
     /// </summary>
-    /// <param name="world">The world</param>
+    /// <param name="scene">The world</param>
     /// <returns>The local</returns>
-    internal static Archetype CreateNewOrGetExistingArchetype(World world)
+    internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.ID.RawIndex;
-      ref Archetype local = ref world.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
+      ref Archetype local = ref scene.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
       if (local == null)
-        local = CreateArchetype(world);
+        local = CreateArchetype(scene);
       return local;
 
       [MethodImpl(MethodImplOptions.NoInlining)]
-      static Archetype CreateArchetype(World world)
+      static Archetype CreateArchetype(Scene world)
       {
         ComponentStorageBase[] components = new ComponentStorageBase[Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.ArchetypeComponentIDs.Length + 1];
         ComponentStorageBase[] createBuffers = new ComponentStorageBase[components.Length];
@@ -763,18 +763,18 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     /// Creates the new or get existing archetype using the specified world
     /// </summary>
-    /// <param name="world">The world</param>
+    /// <param name="scene">The world</param>
     /// <returns>The local</returns>
-    internal static Archetype CreateNewOrGetExistingArchetype(World world)
+    internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.ID.RawIndex;
-      ref Archetype local = ref world.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
+      ref Archetype local = ref scene.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
       if (local == null)
-        local = CreateArchetype(world);
+        local = CreateArchetype(scene);
       return local;
 
       [MethodImpl(MethodImplOptions.NoInlining)]
-      static Archetype CreateArchetype(World world)
+      static Archetype CreateArchetype(Scene world)
       {
         ComponentStorageBase[] components = new ComponentStorageBase[Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.ArchetypeComponentIDs.Length + 1];
         ComponentStorageBase[] createBuffers = new ComponentStorageBase[components.Length];
@@ -861,18 +861,18 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     /// Creates the new or get existing archetype using the specified world
     /// </summary>
-    /// <param name="world">The world</param>
+    /// <param name="scene">The world</param>
     /// <returns>The local</returns>
-    internal static Archetype CreateNewOrGetExistingArchetype(World world)
+    internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.ID.RawIndex;
-      ref Archetype local = ref world.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
+      ref Archetype local = ref scene.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
       if (local == null)
-        local = CreateArchetype(world);
+        local = CreateArchetype(scene);
       return local;
 
       [MethodImpl(MethodImplOptions.NoInlining)]
-      static Archetype CreateArchetype(World world)
+      static Archetype CreateArchetype(Scene world)
       {
         ComponentStorageBase[] components = new ComponentStorageBase[Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.ArchetypeComponentIDs.Length + 1];
         ComponentStorageBase[] createBuffers = new ComponentStorageBase[components.Length];
@@ -963,18 +963,18 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     /// Creates the new or get existing archetype using the specified world
     /// </summary>
-    /// <param name="world">The world</param>
+    /// <param name="scene">The world</param>
     /// <returns>The local</returns>
-    internal static Archetype CreateNewOrGetExistingArchetype(World world)
+    internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.ID.RawIndex;
-      ref Archetype local = ref world.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
+      ref Archetype local = ref scene.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
       if (local == null)
-        local = CreateArchetype(world);
+        local = CreateArchetype(scene);
       return local;
 
       [MethodImpl(MethodImplOptions.NoInlining)]
-      static Archetype CreateArchetype(World world)
+      static Archetype CreateArchetype(Scene world)
       {
         ComponentStorageBase[] components = new ComponentStorageBase[Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.ArchetypeComponentIDs.Length + 1];
         ComponentStorageBase[] createBuffers = new ComponentStorageBase[components.Length];
@@ -1069,18 +1069,18 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     /// Creates the new or get existing archetype using the specified world
     /// </summary>
-    /// <param name="world">The world</param>
+    /// <param name="scene">The world</param>
     /// <returns>The local</returns>
-    internal static Archetype CreateNewOrGetExistingArchetype(World world)
+    internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.ID.RawIndex;
-      ref Archetype local = ref world.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
+      ref Archetype local = ref scene.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
       if (local == null)
-        local = CreateArchetype(world);
+        local = CreateArchetype(scene);
       return local;
 
       [MethodImpl(MethodImplOptions.NoInlining)]
-      static Archetype CreateArchetype(World world)
+      static Archetype CreateArchetype(Scene world)
       {
         ComponentStorageBase[] components = new ComponentStorageBase[Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.ArchetypeComponentIDs.Length + 1];
         ComponentStorageBase[] createBuffers = new ComponentStorageBase[components.Length];
@@ -1179,18 +1179,18 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     /// Creates the new or get existing archetype using the specified world
     /// </summary>
-    /// <param name="world">The world</param>
+    /// <param name="scene">The world</param>
     /// <returns>The local</returns>
-    internal static Archetype CreateNewOrGetExistingArchetype(World world)
+    internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
     {
       ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.ID.RawIndex;
-      ref Archetype local = ref world.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
+      ref Archetype local = ref scene.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
       if (local == null)
-        local = CreateArchetype(world);
+        local = CreateArchetype(scene);
       return local;
 
       [MethodImpl(MethodImplOptions.NoInlining)]
-      static Archetype CreateArchetype(World world)
+      static Archetype CreateArchetype(Scene world)
       {
         ComponentStorageBase[] components = new ComponentStorageBase[Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.ArchetypeComponentIDs.Length + 1];
         ComponentStorageBase[] createBuffers = new ComponentStorageBase[components.Length];
@@ -1295,18 +1295,18 @@ namespace Alis.Core.Ecs.Arch
       /// <summary>
       /// Creates the new or get existing archetype using the specified world
       /// </summary>
-      /// <param name="world">The world</param>
+      /// <param name="scene">The world</param>
       /// <returns>The local</returns>
-      internal static Archetype CreateNewOrGetExistingArchetype(World world)
+      internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
       {
           ushort rawIndex = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.ID.RawIndex;
-          ref Archetype local = ref world.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
+          ref Archetype local = ref scene.WorldArchetypeTable.UnsafeArrayIndex(rawIndex);
           if (local == null)
-              local = CreateArchetype(world);
+              local = CreateArchetype(scene);
           return local;
 
           [MethodImpl(MethodImplOptions.NoInlining)]
-          static Archetype CreateArchetype(World world)
+          static Archetype CreateArchetype(Scene world)
           {
               ComponentStorageBase[] components = new ComponentStorageBase[Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.ArchetypeComponentIDs.Length + 1];
               ComponentStorageBase[] createBuffers = new ComponentStorageBase[components.Length];

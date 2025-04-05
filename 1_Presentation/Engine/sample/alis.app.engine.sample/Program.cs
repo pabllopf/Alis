@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.EcsOld.System;
+using Alis.Core.Ecs.System;
 
 namespace Alis.App.Engine.Sample
 {
@@ -40,6 +40,6 @@ namespace Alis.App.Engine.Sample
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        public static void Main(string[] args) => VideoGame.Create().Build().LoadAndRun();
+        public static void Main(string[] args) => VideoGame.Create().Build().Run();
     }
 }

@@ -7,6 +7,6 @@ namespace Alis.Core.Ecs.Operations
         /// <summary>
         /// Executes the function
         /// </summary>
-        void RunChunk(ReadOnlySpan<Entity> entity, Span<TArg1> arg1, Span<TArg2> arg2, Span<TArg3> arg3, Span<TArg4> arg4, Span<TArg5> arg5, Span<TArg6> arg6, Span<TArg7> arg7, Span<TArg8> arg8, Span<TArg9> arg9, Span<TArg10> arg10, Span<TArg11> arg11, Span<TArg12> arg12);
+        void RunChunk(ReadOnlySpan<GameObject> entity, Span<TArg1> arg1, Span<TArg2> arg2, Span<TArg3> arg3, Span<TArg4> arg4, Span<TArg5> arg5, Span<TArg6> arg6, Span<TArg7> arg7, Span<TArg8> arg8, Span<TArg9> arg9, Span<TArg10> arg10, Span<TArg11> arg11, Span<TArg12> arg12);
     }
 }

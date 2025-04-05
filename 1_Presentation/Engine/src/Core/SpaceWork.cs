@@ -36,7 +36,6 @@ using Alis.App.Engine.Menus;
 using Alis.App.Engine.Windows;
 using Alis.App.Engine.Windows.Settings;
 using Alis.Core.Aspect.Data.Json;
-using Alis.Core.EcsOld.System;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.Sdl2.Structs;
 
@@ -126,12 +125,7 @@ namespace Alis.App.Engine.Core
         ///     The style
         /// </summary>
         public ImGuiStyle Style;
-
-        /// <summary>
-        ///     The video game
-        /// </summary>
-        public VideoGame VideoGame;
-
+        
         /// <summary>
         ///     Gets or sets the value of the viewport
         /// </summary>

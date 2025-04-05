@@ -11,7 +11,7 @@ namespace Alis.Core.Ecs.Operations
         /// <summary>
         ///     The entity
         /// </summary>
-        public Entity Entity;
+        public GameObject GameObject;
 
         /// <summary>
         ///     The item
@@ -21,11 +21,11 @@ namespace Alis.Core.Ecs.Operations
         /// <summary>
         ///     Deconstructs the entity
         /// </summary>
-        /// <param name="entity">The entity</param>
+        /// <param name="gameObject">The entity</param>
         /// <param name="ref">The ref</param>
-        public void Deconstruct(out Entity entity, out Ref<T> @ref)
+        public void Deconstruct(out GameObject gameObject, out Ref<T> @ref)
         {
-            entity = Entity;
+            gameObject = GameObject;
             @ref = Item1;
         }
     }

@@ -101,16 +101,16 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             {
                 for (int i = 0; i < entityCount; i++)
                 {
-                    Entity e = (entityCount % 4) switch
+                    GameObject e = (entityCount % 4) switch
                     {
-                        0 => World.Create<Component1, Component2, Padding1>(default(Component1), new Component2 {Value = 1}, default(Padding1)),
-                        1 => World.Create<Component1, Component2, Padding2>(default(Component1), new Component2 {Value = 1}, default(Padding2)),
-                        2 => World.Create<Component1, Component2, Padding3>(default(Component1), new Component2 {Value = 1}, default(Padding3)),
-                        _ => World.Create<Component1, Component2, Padding4>(default(Component1), new Component2 {Value = 1}, default(Padding4))
+                        0 => Scene.Create<Component1, Component2, Padding1>(default(Component1), new Component2 {Value = 1}, default(Padding1)),
+                        1 => Scene.Create<Component1, Component2, Padding2>(default(Component1), new Component2 {Value = 1}, default(Padding2)),
+                        2 => Scene.Create<Component1, Component2, Padding3>(default(Component1), new Component2 {Value = 1}, default(Padding3)),
+                        _ => Scene.Create<Component1, Component2, Padding4>(default(Component1), new Component2 {Value = 1}, default(Padding4))
                     };
                 }
 
-                Query = World.Query<With<Component1>, With<Component2>>();
+                Query = Scene.Query<With<Component1>, With<Component2>>();
             }
 
             /// <summary>

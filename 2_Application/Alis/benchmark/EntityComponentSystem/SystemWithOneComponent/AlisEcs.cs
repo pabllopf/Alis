@@ -116,14 +116,14 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             {
                 for (int i = 0; i < entityCount; i++)
                 {
-                    World.Create<Component1>(default(Component1));
+                    Scene.Create<Component1>(default(Component1));
                     for (int j = 0; j < entityPadding; j++)
                     {
-                        World.Create();
+                        Scene.Create();
                     }
                 }
 
-                Query = World.Query<With<Component1>>();
+                Query = Scene.Query<With<Component1>>();
             }
         }
 

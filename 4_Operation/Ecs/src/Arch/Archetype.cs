@@ -126,11 +126,11 @@ namespace Alis.Core.Ecs.Arch
         ///     Caller needs write archetype field
         /// </summary>
         
-        internal ref EntityIdOnly CreateDeferredEntityLocation(World world, scoped ref EntityLocation entityLocation, out int physicalIndex, out ComponentStorageBase[] writeStorage)
+        internal ref EntityIdOnly CreateDeferredEntityLocation(Scene scene, scoped ref EntityLocation entityLocation, out int physicalIndex, out ComponentStorageBase[] writeStorage)
         {
             if (_deferredEntityCount == 0)
             {
-                world.DeferredCreationArchetypes.Push(this);
+                scene.DeferredCreationArchetypes.Push(this);
             }
 
             int futureSlot = _nextComponentIndex + _deferredEntityCount++;
@@ -159,8 +159,8 @@ namespace Alis.Core.Ecs.Arch
         /// <summary>
         ///     Resolves the deferred entity creations using the specified world
         /// </summary>
-        /// <param name="world">The world</param>
-        internal void ResolveDeferredEntityCreations(World world)
+        /// <param name="scene">The world</param>
+        internal void ResolveDeferredEntityCreations(Scene scene)
         {
             int deltaFromMaxDeferredInPlace = -(_entities.Length - (_nextComponentIndex + _deferredEntityCount));
             int previousComponentCount = _nextComponentIndex;
@@ -187,7 +187,7 @@ namespace Alis.Core.Ecs.Arch
             _nextComponentIndex += _deferredEntityCount;
 
             EntityIdOnly[] entities = _entities;
-            EntityLocation[] table = world.EntityTable._buffer;
+            EntityLocation[] table = scene.EntityTable._buffer;
             int sizeEntities = entities.Length;
             for (int i = previousComponentCount; (i < sizeEntities) && (i < _nextComponentIndex); i++)
             {
@@ -201,9 +201,9 @@ namespace Alis.Core.Ecs.Arch
         ///     Creates the entity locations using the specified count
         /// </summary>
         /// <param name="count">The count</param>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <returns>The entity span</returns>
-        internal Span<EntityIdOnly> CreateEntityLocations(int count, World world)
+        internal Span<EntityIdOnly> CreateEntityLocations(int count, Scene scene)
         {
             int newLen = _nextComponentIndex + count;
             EnsureCapacity(newLen);
@@ -211,15 +211,15 @@ namespace Alis.Core.Ecs.Arch
             Span<EntityIdOnly> entitySpan = _entities.AsSpan(_nextComponentIndex, count);
 
             int componentIndex = _nextComponentIndex;
-            ref FastStack<EntityIdOnly> recycled = ref world.RecycledEntityIds;
+            ref FastStack<EntityIdOnly> recycled = ref scene.RecycledEntityIds;
             int size = entitySpan.Length;
             for (int i = 0; i < size; i++)
             {
                 ref EntityIdOnly archetypeEntity = ref entitySpan[i];
 
-                archetypeEntity = recycled.CanPop() ? recycled.Pop() : new EntityIdOnly(world.NextEntityID++, 0);
+                archetypeEntity = recycled.CanPop() ? recycled.Pop() : new EntityIdOnly(scene.NextEntityID++, 0);
 
-                ref EntityLocation lookup = ref world.EntityTable.UnsafeIndexNoResize(archetypeEntity.ID);
+                ref EntityLocation lookup = ref scene.EntityTable.UnsafeIndexNoResize(archetypeEntity.ID);
 
                 lookup.Version = archetypeEntity.Version;
                 lookup.Archetype = this;
@@ -354,8 +354,8 @@ namespace Alis.Core.Ecs.Arch
         /// <summary>
         ///     Updates the world
         /// </summary>
-        /// <param name="world">The world</param>
-        internal void Update(World world)
+        /// <param name="scene">The world</param>
+        internal void Update(Scene scene)
         {
             if (_nextComponentIndex == 0)
             {
@@ -366,16 +366,16 @@ namespace Alis.Core.Ecs.Arch
             int size = comprunners.Length;
             for (int i = 1; i < size; i++)
             {
-                comprunners[i].Run(world, this);
+                comprunners[i].Run(scene, this);
             }
         }
 
         /// <summary>
         ///     Updates the world
         /// </summary>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <param name="componentID">The component id</param>
-        internal void Update(World world, ComponentID componentID)
+        internal void Update(Scene scene, ComponentID componentID)
         {
             if (_nextComponentIndex == 0)
             {
@@ -389,15 +389,15 @@ namespace Alis.Core.Ecs.Arch
                 return;
             }
 
-            Components.UnsafeArrayIndex(compIndex).Run(world, this);
+            Components.UnsafeArrayIndex(compIndex).Run(scene, this);
         }
 
         /// <summary>
         ///     Multis the threaded update using the specified countdown
         /// </summary>
         /// <param name="countdown">The countdown</param>
-        /// <param name="world">The world</param>
-        internal void MultiThreadedUpdate(CountdownEvent countdown, World world)
+        /// <param name="scene">The world</param>
+        internal void MultiThreadedUpdate(CountdownEvent countdown, Scene scene)
         {
             if (_nextComponentIndex == 0)
             {
@@ -406,7 +406,7 @@ namespace Alis.Core.Ecs.Arch
 
             foreach (ComponentStorageBase comprunner in Components)
             {
-                comprunner.MultithreadedRun(countdown, world, this);
+                comprunner.MultithreadedRun(countdown, scene, this);
             }
         }
 

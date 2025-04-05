@@ -59,17 +59,17 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     Runs the world
         /// </summary>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <param name="b">The </param>
-        internal abstract void Run(World world, Archetype b);
+        internal abstract void Run(Scene scene, Archetype b);
 
         /// <summary>
         ///     Multithreadeds the run using the specified countdown
         /// </summary>
         /// <param name="countdown">The countdown</param>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <param name="b">The </param>
-        internal abstract void MultithreadedRun(CountdownEvent countdown, World world, Archetype b);
+        internal abstract void MultithreadedRun(CountdownEvent countdown, Scene scene, Archetype b);
 
         /// <summary>
         ///     Deletes the delete component data
@@ -110,9 +110,9 @@ namespace Alis.Core.Ecs.Updating
         ///     Invokes the generic action with using the specified action
         /// </summary>
         /// <param name="action">The action</param>
-        /// <param name="entity">The entity</param>
+        /// <param name="gameObject">The entity</param>
         /// <param name="index">The index</param>
-        internal abstract void InvokeGenericActionWith(GenericEvent action, Entity entity, int index);
+        internal abstract void InvokeGenericActionWith(GenericEvent action, GameObject gameObject, int index);
 
         /// <summary>
         ///     Invokes the generic action with using the specified action

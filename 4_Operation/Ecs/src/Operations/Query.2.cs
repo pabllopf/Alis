@@ -8,7 +8,7 @@
         public QueryEnumerator<T1, T2>.QueryEnumerable Enumerate<T1, T2>() => new(this);
         
         /// <summary>
-        /// Enumerates component references and <see cref="Entity"/> instances for all entities in this query. Intended for use in foreach loops.
+        /// Enumerates component references and <see cref="GameObject"/> instances for all entities in this query. Intended for use in foreach loops.
         /// </summary>
         public EntityQueryEnumerator<T1, T2>.QueryEnumerable EnumerateWithEntities<T1, T2>() => new(this);
         

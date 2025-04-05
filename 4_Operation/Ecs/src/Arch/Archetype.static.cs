@@ -60,18 +60,18 @@ namespace Alis.Core.Ecs.Arch
         /// <summary>
         ///     Creates the new or get existing archetype using the specified world
         /// </summary>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <returns>The archetype</returns>
-        internal static Archetype CreateNewOrGetExistingArchetype(World world)
+        internal static Archetype CreateNewOrGetExistingArchetype(Scene scene)
         {
             ushort index = ID.RawIndex;
-            ref Archetype archetype = ref world.WorldArchetypeTable.UnsafeArrayIndex(index);
-            archetype ??= CreateArchetype(world);
+            ref Archetype archetype = ref scene.WorldArchetypeTable.UnsafeArrayIndex(index);
+            archetype ??= CreateArchetype(scene);
             return archetype!;
 
             //this method is literally only called once per world
             [MethodImpl(MethodImplOptions.NoInlining)]
-            static Archetype CreateArchetype(World world)
+            static Archetype CreateArchetype(Scene world)
             {
                 ComponentStorageBase[] runners = new ComponentStorageBase[ArchetypeComponentIDs.Length + 1];
                 ComponentStorageBase[] tmpStorages = new ComponentStorageBase[runners.Length];
@@ -148,25 +148,25 @@ namespace Alis.Core.Ecs.Arch
         /// </summary>
         /// <param name="types">The types</param>
         /// <param name="tagTypes">The tag types</param>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <param name="typeArray">The type array</param>
         /// <param name="tagTypesArray">The tag types array</param>
         /// <returns>The archetype</returns>
-        internal static Archetype CreateOrGetExistingArchetype(ReadOnlySpan<ComponentID> types, ReadOnlySpan<TagId> tagTypes, World world, FastImmutableArray<ComponentID>? typeArray = null, FastImmutableArray<TagId>? tagTypesArray = null)
+        internal static Archetype CreateOrGetExistingArchetype(ReadOnlySpan<ComponentID> types, ReadOnlySpan<TagId> tagTypes, Scene scene, FastImmutableArray<ComponentID>? typeArray = null, FastImmutableArray<TagId>? tagTypesArray = null)
         {
             EntityType id = GetArchetypeID(types, tagTypes, typeArray, tagTypesArray);
-            return CreateOrGetExistingArchetype(id, world);
+            return CreateOrGetExistingArchetype(id, scene);
         }
 
         /// <summary>
         ///     Creates the or get existing archetype using the specified id
         /// </summary>
         /// <param name="id">The id</param>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <returns>The archetype</returns>
-        internal static Archetype CreateOrGetExistingArchetype(EntityType id, World world)
+        internal static Archetype CreateOrGetExistingArchetype(EntityType id, Scene scene)
         {
-            ref Archetype archetype = ref world.WorldArchetypeTable[id.RawIndex];
+            ref Archetype archetype = ref scene.WorldArchetypeTable[id.RawIndex];
             if (archetype is not null)
             {
                 return archetype;
@@ -184,7 +184,7 @@ namespace Alis.Core.Ecs.Arch
             }
 
             archetype = new Archetype(id, componentRunners, tmpRunners);
-            world.ArchetypeAdded(archetype);
+            scene.ArchetypeAdded(archetype);
 
             return archetype;
         }
@@ -192,14 +192,14 @@ namespace Alis.Core.Ecs.Arch
         /// <summary>
         ///     Gets the adjacent archetype cold using the specified world
         /// </summary>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <param name="edge">The edge</param>
         /// <returns>The archetype</returns>
-        internal static Archetype GetAdjacentArchetypeCold(World world, ArchetypeEdgeKey edge)
+        internal static Archetype GetAdjacentArchetypeCold(Scene scene, ArchetypeEdgeKey edge)
         {
             //this world doesn't have the archetype, or it doesnt even exist
 
-            Archetype from = edge.ArchetypeFrom.Archetype(world);
+            Archetype from = edge.ArchetypeFrom.Archetype(scene);
             FastImmutableArray<ComponentID> fromComponents = edge.ArchetypeFrom.Types;
             FastImmutableArray<TagId> fromTags = edge.ArchetypeFrom.Tags;
 
@@ -219,7 +219,7 @@ namespace Alis.Core.Ecs.Arch
                     break;
             }
 
-            Archetype archetype = CreateOrGetExistingArchetype(fromComponents.AsSpan(), fromTags.AsSpan(), world, fromComponents, fromTags);
+            Archetype archetype = CreateOrGetExistingArchetype(fromComponents.AsSpan(), fromTags.AsSpan(), scene, fromComponents, fromTags);
 
             return archetype;
         }
@@ -310,9 +310,9 @@ namespace Alis.Core.Ecs.Arch
             {
                 int size = Math.Max(id << 1, 1);
                 Array.Resize(ref GlobalWorldTables.ComponentTagLocationTable, size);
-                foreach (World world in GlobalWorldTables.Worlds.AsSpan())
+                foreach (Scene world in GlobalWorldTables.Worlds.AsSpan())
                 {
-                    if (world is World w)
+                    if (world is Scene w)
                     {
                         w.UpdateArchetypeTable(size);
                     }

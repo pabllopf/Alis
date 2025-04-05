@@ -127,6 +127,6 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="context">The context</param>
         /// <returns>The ref archetype archetype</returns>
-        internal readonly ref Archetype Archetype(World context) => ref context.WorldArchetypeTable.UnsafeArrayIndex(RawIndex);
+        internal readonly ref Archetype Archetype(Scene context) => ref context.WorldArchetypeTable.UnsafeArrayIndex(RawIndex);
     }
 }

@@ -13,7 +13,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <exception cref="InvalidOperationException">The entity is not alive.</exception>
         /// <exception cref="ComponentNotFoundException">The entity does not have all the components specified.</exception>
-        public static void Deconstruct<T>(this Entity e, out Ref<T> comp)
+        public static void Deconstruct<T>(this GameObject e, out Ref<T> comp)
         {
             EntityLocation eloc = e.AssertIsAlive(out _);
 

@@ -28,9 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.EcsOld.Component.Audio;
-using Alis.Core.EcsOld.Entity;
-using Alis.Core.EcsOld.System;
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.System;
 
 namespace Alis.Sample.Dino
 {
@@ -62,25 +61,15 @@ namespace Alis.Sample.Dino
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
-                        .Debug(true)
-                        .DebugColor(Color.Red)
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
-                            .AddComponent<AudioSource>(audioSource => audioSource
-                                .Builder()
-                                .PlayOnAwake(true)
-                                .SetAudioClip(audioClip => audioClip
-                                    .FilePath("soundtrack.wav")
-                                    .Volume(100.0f)
-                                    .Build())
-                                .Build())
-                            .Build())
                         .Build())
                     .Build())
+                .Build())
                 .Build()
                 .Run();
         }

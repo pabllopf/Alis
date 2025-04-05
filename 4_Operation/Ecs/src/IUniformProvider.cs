@@ -30,7 +30,7 @@
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    ///     Defines a uniform provider, which is used by <see cref="World" /> to supply uniforms to components and queries
+    ///     Defines a uniform provider, which is used by <see cref="Scene" /> to supply uniforms to components and queries
     ///     e.g., <see cref="IUniformComponent{TUniform}" />
     /// </summary>
     public interface IUniformProvider
