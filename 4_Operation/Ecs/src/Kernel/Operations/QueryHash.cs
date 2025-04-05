@@ -38,12 +38,12 @@ namespace Alis.Core.Ecs.Kernel.Operations
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     [SkipLocalsInit]
-    internal struct QueryHash(int state = 12582917)
+    internal struct QueryHash()
     {
         /// <summary>
         ///     The state
         /// </summary>
-        private int _state = state;
+        private int _state = 12582917;
 
         /// <summary>
         ///     News

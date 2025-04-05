@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Kernel;
@@ -34,7 +35,7 @@ using Alis.Core.Ecs.Kernel.Operations;
 
 namespace Alis.Core.Ecs.Component.Render
 {
-    public struct Camera (Vector2F position,  Vector2F resolution) : IInitable, IEntityComponent, IRuleProvider
+    public struct Camera (Vector2F position,  Vector2F resolution) : IInitable, IComponent
     {
         /// <summary>
         ///     The position
@@ -52,7 +53,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="self">The self</param>
         public void Init(Entity self)
         {
-            
+            Console.WriteLine($"Camera {self.EntityID} created");
         }
         
         /// <summary>
@@ -61,9 +62,12 @@ namespace Alis.Core.Ecs.Component.Render
         /// <param name="self">The self</param>
         public void Update(Entity self)
         {
-            
+            Console.WriteLine($"Camera {self.EntityID} updated");
         }
 
-        public Rule Rule { get; }
+        public void Update()
+        {
+            Console.WriteLine($"Camera updated");
+        }
     }
 }

@@ -212,21 +212,23 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
 
             World world = Context.SceneManager.World;
-
-            /*
-            foreach (ChunkTuple<Camera, Sprite> chunk in world.Query<Camera, Sprite>().EnumerateChunks<Camera, Sprite>())
+            
+            foreach (ChunkTuple<Camera> chunk in world.Query<With<Camera>>().EnumerateChunks<Camera>())
             {
-                Span<Camera> cameras = chunk.Span1;
-                Span<Sprite> sprites = chunk.Span2;
+                Span<Camera> cameras = chunk.Span;
                 foreach (Camera camera in cameras)
                 {
-                    foreach (Sprite sprite in sprites)
+                    foreach (ChunkTuple<Sprite> chunkSprites in world.Query<With<Sprite>>().EnumerateChunks<Sprite>())
                     {
-                        // Render sprite with OpenGL:
-                        sprite.Render(camera.Position, camera.Resolution, pixelsPerMeter);
+                        Span<Sprite> sprites = chunkSprites.Span;
+                        foreach (Sprite sprite in sprites)
+                        {
+                            // Render sprite with OpenGL:
+                            sprite.Render(camera.Position, camera.Resolution, pixelsPerMeter);
+                        }
                     }
                 }
-            }*/
+            }
 
             // Swap the buffers to display the triangle
             Glfw.SwapBuffers(Window);
