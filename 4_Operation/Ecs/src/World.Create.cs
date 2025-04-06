@@ -29,12 +29,12 @@
 
 using System;
 using System.Runtime.CompilerServices;
-using Alis.Core.Ecs.Kernel.Archetype;
-using Alis.Core.Ecs.Kernel.Memory;
-using Alis.Core.Ecs.Kernel.Operations;
-using Alis.Core.Ecs.Kernel.Updating;
+using Alis.Core.Ecs.Arch;
+using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Operations;
+using Alis.Core.Ecs.Updating;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     /// The world class
@@ -52,7 +52,7 @@ namespace Alis.Core.Ecs.Kernel
         [SkipLocalsInit]
         public Entity Create<T1, T2>(in T1 comp1, in T2 comp2)
         {
-            Archetype.Archetype existingArchetype = Archetype<T1, T2>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2>.CreateNewOrGetExistingArchetype(this);
 
             EntityLocation entityLocation = new EntityLocation();
             Unsafe.SkipInit(out int physicalIndex);
@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype existingArchetype = Archetype<T1, T2>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
             this.EntityTable.EnsureCapacity(this.EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
@@ -136,7 +136,7 @@ namespace Alis.Core.Ecs.Kernel
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3>(in T1 comp1, in T2 comp2, in T3 comp3)
         {
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3>.CreateNewOrGetExistingArchetype(this);
 
             EntityLocation entityLocation = new EntityLocation();
             Unsafe.SkipInit(out int physicalIndex);
@@ -188,7 +188,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
             this.EntityTable.EnsureCapacity(this.EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
@@ -241,7 +241,7 @@ namespace Alis.Core.Ecs.Kernel
         [SkipLocalsInit]
         public Entity Create<T1, T2, T3, T4>(in T1 comp1, in T2 comp2, in T3 comp3, in T4 comp4)
         {
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4>.CreateNewOrGetExistingArchetype(this);
 
             EntityLocation entityLocation = new EntityLocation();
             Unsafe.SkipInit(out int physicalIndex);
@@ -298,7 +298,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
             this.EntityTable.EnsureCapacity(this.EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
@@ -352,7 +352,7 @@ namespace Alis.Core.Ecs.Kernel
             in T4 comp4,
             in T5 comp5)
         {
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5>.CreateNewOrGetExistingArchetype(this);
 
             EntityLocation entityLocation = new EntityLocation();
             Unsafe.SkipInit(out int physicalIndex);
@@ -414,7 +414,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
             this.EntityTable.EnsureCapacity(this.EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
@@ -475,7 +475,7 @@ namespace Alis.Core.Ecs.Kernel
             in T5 comp5,
             in T6 comp6)
         {
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6>.CreateNewOrGetExistingArchetype(this);
 
             EntityLocation entityLocation = new EntityLocation();
             Unsafe.SkipInit(out int physicalIndex);
@@ -542,7 +542,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
             this.EntityTable.EnsureCapacity(this.EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
@@ -610,7 +610,7 @@ namespace Alis.Core.Ecs.Kernel
             in T6 comp6,
             in T7 comp7)
         {
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7>.CreateNewOrGetExistingArchetype(this);
 
             EntityLocation entityLocation = new EntityLocation();
             Unsafe.SkipInit(out int physicalIndex);
@@ -682,7 +682,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
             this.EntityTable.EnsureCapacity(this.EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
@@ -757,7 +757,7 @@ namespace Alis.Core.Ecs.Kernel
             in T7 comp7,
             in T8 comp8)
         {
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.CreateNewOrGetExistingArchetype(this);
 
             EntityLocation entityLocation = new EntityLocation();
             Unsafe.SkipInit(out int physicalIndex);
@@ -835,7 +835,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
             this.EntityTable.EnsureCapacity(this.EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
@@ -917,7 +917,7 @@ namespace Alis.Core.Ecs.Kernel
             in T8 comp8,
             in T9 comp9)
         {
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.CreateNewOrGetExistingArchetype(this);
 
             EntityLocation entityLocation = new EntityLocation();
             Unsafe.SkipInit(out int physicalIndex);
@@ -1000,7 +1000,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
             this.EntityTable.EnsureCapacity(this.EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
@@ -1089,7 +1089,7 @@ namespace Alis.Core.Ecs.Kernel
             in T9 comp9,
             in T10 comp10)
         {
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.CreateNewOrGetExistingArchetype(this);
 
             EntityLocation entityLocation = new EntityLocation();
             Unsafe.SkipInit(out int physicalIndex);
@@ -1177,7 +1177,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
             this.EntityTable.EnsureCapacity(this.EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
@@ -1273,7 +1273,7 @@ namespace Alis.Core.Ecs.Kernel
             in T10 comp10,
             in T11 comp11)
         {
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.CreateNewOrGetExistingArchetype(this);
 
             EntityLocation entityLocation = new EntityLocation();
             Unsafe.SkipInit(out int physicalIndex);
@@ -1366,7 +1366,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
             this.EntityTable.EnsureCapacity(this.EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
@@ -1469,7 +1469,7 @@ namespace Alis.Core.Ecs.Kernel
             in T11 comp11,
             in T12 comp12)
         {
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.CreateNewOrGetExistingArchetype(this);
 
             EntityLocation entityLocation = new EntityLocation();
             Unsafe.SkipInit(out int physicalIndex);
@@ -1567,7 +1567,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
             this.EntityTable.EnsureCapacity(this.EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
@@ -1677,7 +1677,7 @@ namespace Alis.Core.Ecs.Kernel
             in T12 comp12,
             in T13 comp13)
         {
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.CreateNewOrGetExistingArchetype(this);
 
             EntityLocation entityLocation = new EntityLocation();
             Unsafe.SkipInit(out int physicalIndex);
@@ -1780,7 +1780,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
             this.EntityTable.EnsureCapacity(this.EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
@@ -1897,7 +1897,7 @@ namespace Alis.Core.Ecs.Kernel
             in T13 comp13,
             in T14 comp14)
         {
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.CreateNewOrGetExistingArchetype(this);
 
             EntityLocation entityLocation = new EntityLocation();
             Unsafe.SkipInit(out int physicalIndex);
@@ -2005,7 +2005,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
             this.EntityTable.EnsureCapacity(this.EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
@@ -2129,7 +2129,7 @@ namespace Alis.Core.Ecs.Kernel
             in T14 comp14,
             in T15 comp15)
         {
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.CreateNewOrGetExistingArchetype(this);
 
             EntityLocation entityLocation = new EntityLocation();
             Unsafe.SkipInit(out int physicalIndex);
@@ -2242,7 +2242,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
             this.EntityTable.EnsureCapacity(this.EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
@@ -2373,7 +2373,7 @@ namespace Alis.Core.Ecs.Kernel
             in T15 comp15,
             in T16 comp16)
         {
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.CreateNewOrGetExistingArchetype(this);
 
             EntityLocation entityLocation = new EntityLocation();
             Unsafe.SkipInit(out int physicalIndex);
@@ -2491,7 +2491,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.CreateNewOrGetExistingArchetype(this);
+            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
             this.EntityTable.EnsureCapacity(this.EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);

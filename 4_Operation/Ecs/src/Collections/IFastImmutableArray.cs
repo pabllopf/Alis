@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Ecs.Kernel.Collections
+namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
     /// An internal non-generic interface implemented by <see cref="FastImmutableArray"/>

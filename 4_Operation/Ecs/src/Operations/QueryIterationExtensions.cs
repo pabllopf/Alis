@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.CompilerServices;
+using Alis.Core.Ecs.Arch;
 
-namespace Alis.Core.Ecs.Kernel.Operations
+namespace Alis.Core.Ecs.Operations
 {
     /// <summary>
     ///     The query iteration extensions class
@@ -44,7 +45,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T>(this Query query, QueryDelegates.Query<T> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 //use ref instead of span to avoid extra locals
                 ref T c1 = ref archetype.GetComponentDataReference<T>();
@@ -69,7 +70,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T1, T2>(this Query query, QueryDelegates.Query<T1, T2> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -95,7 +96,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3>(this Query query, QueryDelegates.Query<T1, T2, T3> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -124,7 +125,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4>(this Query query, QueryDelegates.Query<T1, T2, T3, T4> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -156,7 +157,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -191,7 +192,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -229,7 +230,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -270,7 +271,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -314,7 +315,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -361,7 +362,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -411,7 +412,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -465,7 +466,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -521,7 +522,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -580,7 +581,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -642,7 +643,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -710,7 +711,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         /// <param name="action">The action</param>
         public static void Delegate<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(this Query query, QueryDelegates.Query<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> action)
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -764,7 +765,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T>(this Query query, TAction action)
             where TAction : IAction<T>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 //use ref instead of span to avoid extra locals
                 ref T c1 = ref archetype.GetComponentDataReference<T>();
@@ -790,7 +791,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T1, T2>(this Query query, TAction action)
             where TAction : IAction<T1, T2>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -818,7 +819,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T1, T2, T3>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -849,7 +850,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T1, T2, T3, T4>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -883,7 +884,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T1, T2, T3, T4, T5>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -920,7 +921,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -960,7 +961,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -1003,7 +1004,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -1049,7 +1050,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -1098,7 +1099,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -1150,7 +1151,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -1205,7 +1206,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -1263,7 +1264,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -1324,7 +1325,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -1388,7 +1389,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();
@@ -1455,7 +1456,7 @@ namespace Alis.Core.Ecs.Kernel.Operations
         public static void Inline<TAction, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(this Query query, TAction action)
             where TAction : IAction<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>
         {
-            foreach (Archetype.Archetype archetype in query.AsSpan())
+            foreach (Archetype archetype in query.AsSpan())
             {
                 ref T1 c1 = ref archetype.GetComponentDataReference<T1>();
                 ref T2 c2 = ref archetype.GetComponentDataReference<T2>();

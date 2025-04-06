@@ -29,9 +29,9 @@
 
 using System;
 using System.Runtime.CompilerServices;
-using Alis.Core.Ecs.Kernel.Events;
+using Alis.Core.Ecs.Events;
 
-namespace Alis.Core.Ecs.Kernel.Collections
+namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
     ///     The id table class

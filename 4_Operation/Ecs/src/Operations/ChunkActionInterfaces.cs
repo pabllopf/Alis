@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Ecs.Kernel.Operations
+namespace Alis.Core.Ecs.Operations
 {
     /// <summary>
     ///     An arbitary function that operates over a range of components

@@ -29,14 +29,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.Kernel.Archetype;
-using Alis.Core.Ecs.Kernel.Collections;
-using Alis.Core.Ecs.Kernel.Updating;
-using Alis.Core.Ecs.Kernel.Updating.Runners;
+using Alis.Core.Ecs.Arch;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Comps;
+using Alis.Core.Ecs.Updating;
+using Alis.Core.Ecs.Updating.Runners;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     Used to quickly get the component ID of a given type

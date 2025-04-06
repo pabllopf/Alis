@@ -27,15 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Arch;
 #if NET7_0_OR_GREATER
 using System.Runtime.Intrinsics;
 #endif
 
-namespace Alis.Core.Ecs.Kernel.Collections
+namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
     ///     The fast lookup
@@ -57,7 +56,7 @@ namespace Alis.Core.Ecs.Kernel.Collections
         /// <summary>
         ///     The archetype
         /// </summary>
-        internal Archetype.Archetype[] Archetypes = new Archetype.Archetype[8];
+        internal Archetype[] Archetypes = new Archetype[8];
 
         /// <summary>
         ///     The index
@@ -85,14 +84,14 @@ namespace Alis.Core.Ecs.Kernel.Collections
                 return new EntityType(InlineArray8<ushort>.Get(ref _ids, index));
             }
 
-            if (world.ArchetypeGraphEdges.TryGetValue(edgeKey = typeof(T) == typeof(ComponentID) ? ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType) : ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out Archetype.Archetype destination))
+            if (world.ArchetypeGraphEdges.TryGetValue(edgeKey = typeof(T) == typeof(ComponentID) ? ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType) : ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out Archetype destination))
             {
                 //warm/cool depending on number of times they add/remove
                 return destination.ID;
             }
 
             //cold path
-            Archetype.Archetype dest = Archetype.Archetype.GetAdjacentArchetypeCold(world, edgeKey);
+            Archetype dest = Archetype.GetAdjacentArchetypeCold(world, edgeKey);
             world.ArchetypeGraphEdges.Add(edgeKey, dest);
             return dest.ID;
         }
@@ -115,7 +114,7 @@ namespace Alis.Core.Ecs.Kernel.Collections
         /// <param name="id">The id</param>
         /// <param name="from">The from</param>
         /// <param name="to">The to</param>
-        public void SetArchetype(ushort id, EntityType from, Archetype.Archetype to)
+        public void SetArchetype(ushort id, EntityType from, Archetype to)
         {
             uint key = GetKey(id, from);
 

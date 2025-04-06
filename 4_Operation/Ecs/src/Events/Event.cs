@@ -27,14 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
-global using TagEvent = Alis.Core.Ecs.Kernel.Events.Event<Alis.Core.Ecs.Kernel.TagId>;
+global using TagEvent = Alis.Core.Ecs.Events.Event<Alis.Core.Ecs.TagId>;
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Collections;
+using Alis.Core.Ecs.Collections;
 
 
-namespace Alis.Core.Ecs.Kernel.Events
+namespace Alis.Core.Ecs.Events
 {
     /// <summary>
     ///     The event

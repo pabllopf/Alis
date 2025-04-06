@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Ecs.Kernel.Updating
+namespace Alis.Core.Ecs.Updating
 {
     /// <summary>
     ///     The base class of all attributes used to filter world updates

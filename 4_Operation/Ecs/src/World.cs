@@ -30,18 +30,16 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Threading;
-using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.Kernel.Archetype;
-using Alis.Core.Ecs.Kernel.Buffers;
-using Alis.Core.Ecs.Kernel.Collections;
-using Alis.Core.Ecs.Kernel.Events;
-using Alis.Core.Ecs.Kernel.Memory;
-using Alis.Core.Ecs.Kernel.Operations;
-using Alis.Core.Ecs.Kernel.Updating;
+using Alis.Core.Ecs.Arch;
+using Alis.Core.Ecs.Buffers;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Events;
+using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Operations;
+using Alis.Core.Ecs.Updating;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     A collection of entities that can be updated and queried.
@@ -63,12 +61,12 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The world archetype table
         /// </summary>
-        internal Archetype.Archetype[] WorldArchetypeTable;
+        internal Archetype[] WorldArchetypeTable;
 
         /// <summary>
         ///     The archetype graph edges
         /// </summary>
-        internal Dictionary<ArchetypeEdgeKey, Archetype.Archetype> ArchetypeGraphEdges = [];
+        internal Dictionary<ArchetypeEdgeKey, Archetype> ArchetypeGraphEdges = [];
 
         /// <summary>
         ///     The entity id only
@@ -191,7 +189,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The create
         /// </summary>
-        internal FastStack<Archetype.Archetype> DeferredCreationArchetypes = FastStack<Archetype.Archetype>.Create(4);
+        internal FastStack<Archetype> DeferredCreationArchetypes = FastStack<Archetype>.Create(4);
 
         /// <summary>
         ///     Invoked whenever an entity is created on this world.
@@ -330,12 +328,12 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The default archetype
         /// </summary>
-        internal readonly Archetype.Archetype DefaultArchetype;
+        internal readonly Archetype DefaultArchetype;
 
         /// <summary>
         ///     The deferred create archetype
         /// </summary>
-        internal readonly Archetype.Archetype DeferredCreateArchetype;
+        internal readonly Archetype DeferredCreateArchetype;
 
         /// <summary>
         ///     Creates a world with zero entities and a uniform provider.
@@ -350,12 +348,12 @@ namespace Alis.Core.Ecs.Kernel
 
             GlobalWorldTables.Worlds[ID] = this;
 
-            WorldArchetypeTable = new Archetype.Archetype[GlobalWorldTables.ComponentTagLocationTable.Length];
+            WorldArchetypeTable = new Archetype[GlobalWorldTables.ComponentTagLocationTable.Length];
 
             WorldUpdateCommandBuffer = new CommandBuffer(this);
             DefaultWorldEntity = new Entity(ID, default(ushort), default(int));
-            DefaultArchetype = Archetype.Archetype.CreateOrGetExistingArchetype([], [], this, FastImmutableArray<ComponentID>.Empty, FastImmutableArray<TagId>.Empty);
-            DeferredCreateArchetype = Archetype.Archetype.CreateOrGetExistingArchetype(Archetype.Archetype.DeferredCreate, this);
+            DefaultArchetype = Archetype.CreateOrGetExistingArchetype([], [], this, FastImmutableArray<ComponentID>.Empty, FastImmutableArray<TagId>.Empty);
+            DeferredCreateArchetype = Archetype.CreateOrGetExistingArchetype(Archetype.DeferredCreate, this);
         }
 
         /// <summary>
@@ -479,7 +477,7 @@ namespace Alis.Core.Ecs.Kernel
         ///     Archetypes the added using the specified archetype
         /// </summary>
         /// <param name="archetype">The archetype</param>
-        internal void ArchetypeAdded(Archetype.Archetype archetype)
+        internal void ArchetypeAdded(Archetype archetype)
         {
             if (!GlobalWorldTables.HasTag(archetype.ID, Tag<Disable>.ID))
             {
@@ -500,7 +498,7 @@ namespace Alis.Core.Ecs.Kernel
         internal Query CreateQuery(FastImmutableArray<Rule> rules)
         {
             Query q = new Query(this, rules);
-            foreach (ref Archetype.Archetype element in WorldArchetypeTable.AsSpan())
+            foreach (ref Archetype element in WorldArchetypeTable.AsSpan())
             {
                 if (element is not null)
                 {
@@ -522,7 +520,7 @@ namespace Alis.Core.Ecs.Kernel
         ///     Updates the archetype table using the specified new size
         /// </summary>
         /// <param name="newSize">The new size</param>
-        internal void UpdateArchetypeTable(int newSize) => ComponentArrayPool<Archetype.Archetype>.ResizeArrayFromPool(ref WorldArchetypeTable, newSize);
+        internal void UpdateArchetypeTable(int newSize) => ComponentArrayPool<Archetype>.ResizeArrayFromPool(ref WorldArchetypeTable, newSize);
 
         /// <summary>
         ///     Enters the disallow state
@@ -539,9 +537,9 @@ namespace Alis.Core.Ecs.Kernel
         {
             if (Interlocked.Decrement(ref _allowStructuralChanges) == 0)
             {
-                Span<Archetype.Archetype> resolveArchetypes = DeferredCreationArchetypes.AsSpan();
+                Span<Archetype> resolveArchetypes = DeferredCreationArchetypes.AsSpan();
 
-                foreach (Archetype.Archetype archetype in resolveArchetypes)
+                foreach (Archetype archetype in resolveArchetypes)
                 {
                     archetype.ResolveDeferredEntityCreations(this);
                 }
@@ -597,7 +595,7 @@ namespace Alis.Core.Ecs.Kernel
 
             GlobalWorldTables.Worlds[ID] = null!;
 
-            foreach (ref Archetype.Archetype item in WorldArchetypeTable.AsSpan())
+            foreach (ref Archetype item in WorldArchetypeTable.AsSpan())
             {
                 if (item is not null)
                 {
@@ -633,7 +631,7 @@ namespace Alis.Core.Ecs.Kernel
                 types[i] = Component.GetComponentID(components[i].GetType());
             }
 
-            Archetype.Archetype archetype = Archetype.Archetype.CreateOrGetExistingArchetype(types!, [], this);
+            Archetype archetype = Archetype.CreateOrGetExistingArchetype(types!, [], this);
 
             ref EntityIdOnly entityID = ref archetype.CreateEntityLocation(EntityFlags.None, out EntityLocation loc);
             Entity entity = CreateEntityFromLocation(loc);
@@ -699,7 +697,7 @@ namespace Alis.Core.Ecs.Kernel
                 return;
             }
 
-            Archetype.Archetype archetype = Archetype.Archetype.CreateOrGetExistingArchetype(entityType, this);
+            Archetype archetype = Archetype.CreateOrGetExistingArchetype(entityType, this);
             EnsureCapacityCore(archetype, count);
         }
 
@@ -709,7 +707,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <param name="archetype">The archetype</param>
         /// <param name="count">The count</param>
         /// <exception cref="ArgumentOutOfRangeException">Count must be positive </exception>
-        internal void EnsureCapacityCore(Archetype.Archetype archetype, int count)
+        internal void EnsureCapacityCore(Archetype archetype, int count)
         {
             if (count < 1)
             {
@@ -728,7 +726,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <param name="componentID">The component id</param>
         internal void RemoveComponent(Entity entity, ref EntityLocation lookup, ComponentID componentID)
         {
-            Archetype.Archetype destination = RemoveComponentLookup.FindAdjacentArchetypeId(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.RemoveComponent)
+            Archetype destination = RemoveComponentLookup.FindAdjacentArchetypeId(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.RemoveComponent)
                 .Archetype(this);
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
@@ -752,7 +750,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <param name="entityLocation">The entity location</param>
         internal void AddComponent(Entity entity, ref EntityLocation lookup, ComponentID componentID, ref ComponentStorageBase runner, out EntityLocation entityLocation)
         {
-            Archetype.Archetype destination = AddComponentLookup.FindAdjacentArchetypeId(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.AddComponent)
+            Archetype destination = AddComponentLookup.FindAdjacentArchetypeId(componentID, lookup.ArchetypeID, this, ArchetypeEdgeType.AddComponent)
                 .Archetype(this);
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
             MoveEntityToArchetypeAdd(_sharedOneElementComponentStorage, entity, ref lookup, out entityLocation, destination);
@@ -771,9 +769,9 @@ namespace Alis.Core.Ecs.Kernel
         /// <param name="nextLocation">The next location</param>
         /// <param name="destination">The destination</param>
         
-        internal void MoveEntityToArchetypeAdd(Span<ComponentStorageBase> writeTo, Entity entity, ref EntityLocation currentLookup, out EntityLocation nextLocation, Archetype.Archetype destination)
+        internal void MoveEntityToArchetypeAdd(Span<ComponentStorageBase> writeTo, Entity entity, ref EntityLocation currentLookup, out EntityLocation nextLocation, Archetype destination)
         {
-            Archetype.Archetype from = currentLookup.Archetype;
+            Archetype from = currentLookup.Archetype;
 
             destination.CreateEntityLocation(currentLookup.Flags, out nextLocation).Init(entity);
             nextLocation.Version = currentLookup.Version;
@@ -818,9 +816,9 @@ namespace Alis.Core.Ecs.Kernel
         /// <param name="currentLookup">The current lookup</param>
         /// <param name="destination">The destination</param>
         
-        internal void MoveEntityToArchetypeRemove(Span<ComponentHandle> componentHandles, Entity entity, ref EntityLocation currentLookup, Archetype.Archetype destination)
+        internal void MoveEntityToArchetypeRemove(Span<ComponentHandle> componentHandles, Entity entity, ref EntityLocation currentLookup, Archetype destination)
         {
-            Archetype.Archetype from = currentLookup.Archetype;
+            Archetype from = currentLookup.Archetype;
 
             destination.CreateEntityLocation(currentLookup.Flags, out EntityLocation nextLocation).Init(entity);
             nextLocation.Version = currentLookup.Version;
@@ -916,9 +914,9 @@ namespace Alis.Core.Ecs.Kernel
         /// <param name="currentLookup">The current lookup</param>
         /// <param name="destination">The destination</param>
         
-        internal void MoveEntityToArchetypeIso(Entity entity, ref EntityLocation currentLookup, Archetype.Archetype destination)
+        internal void MoveEntityToArchetypeIso(Entity entity, ref EntityLocation currentLookup, Archetype destination)
         {
-            Archetype.Archetype from = currentLookup.Archetype;
+            Archetype from = currentLookup.Archetype;
 
             destination.CreateEntityLocation(currentLookup.Flags, out EntityLocation nextLocation).Init(entity);
             nextLocation.Version = currentLookup.Version;
@@ -1021,7 +1019,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <returns>An <see cref="Entity" /> that can be used to acsess the component data</returns>
         public Entity Create<T>(in T comp)
         {
-            Archetype.Archetype archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
+            Archetype archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
 
             ref EntityIdOnly entity = ref Unsafe.NullRef<EntityIdOnly>();
             EntityLocation eloc = default(EntityLocation);
@@ -1073,7 +1071,7 @@ namespace Alis.Core.Ecs.Kernel
                 throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
             }
 
-            Archetype.Archetype archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
+            Archetype archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
             int initalEntityCount = archetype.EntityCount;
 
             EntityTable.EnsureCapacity(EntityCount + count);

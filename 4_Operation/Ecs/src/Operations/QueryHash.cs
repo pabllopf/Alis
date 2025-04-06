@@ -29,9 +29,9 @@
 
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Collections;
+using Alis.Core.Ecs.Collections;
 
-namespace Alis.Core.Ecs.Kernel.Operations
+namespace Alis.Core.Ecs.Operations
 {
     /// <summary>
     ///     The query hash

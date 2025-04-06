@@ -31,7 +31,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     A lightweight struct that represents a component type. Used for fast lookups

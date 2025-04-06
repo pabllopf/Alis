@@ -32,12 +32,12 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Alis.Core.Ecs.Kernel.Buffers;
-using Alis.Core.Ecs.Kernel.Collections;
-using Alis.Core.Ecs.Kernel.Memory;
-using Alis.Core.Ecs.Kernel.Updating;
+using Alis.Core.Ecs.Buffers;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Updating;
 
-namespace Alis.Core.Ecs.Kernel.Archetype
+namespace Alis.Core.Ecs.Arch
 {
     /// <summary>
     ///     The archetype class

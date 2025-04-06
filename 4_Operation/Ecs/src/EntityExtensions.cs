@@ -1,7 +1,7 @@
 using System;
-using Alis.Core.Ecs.Kernel.Updating;
+using Alis.Core.Ecs.Updating;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     Deconstruction extensions for entities.

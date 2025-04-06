@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-namespace Alis.Core.Ecs.Kernel.Operations
+namespace Alis.Core.Ecs.Operations
 {
     /// <summary>
     ///     The query hash cache class

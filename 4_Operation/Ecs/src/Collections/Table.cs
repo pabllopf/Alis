@@ -30,10 +30,10 @@
 using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Buffers;
-using Alis.Core.Ecs.Kernel.Memory;
+using Alis.Core.Ecs.Buffers;
+using Alis.Core.Ecs.Memory;
 
-namespace Alis.Core.Ecs.Kernel.Collections
+namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
     ///     The table

@@ -1,8 +1,8 @@
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Collections;
-using Alis.Core.Ecs.Kernel.Memory;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Memory;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The neighbor cache

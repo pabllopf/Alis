@@ -30,7 +30,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Ecs.Kernel.Operations
+namespace Alis.Core.Ecs.Operations
 {
     /// <summary>
     ///     Specifies a query should have a component of <see paramref="T" />

@@ -1,4 +1,4 @@
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     Used only in source generation

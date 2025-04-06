@@ -33,7 +33,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
-namespace Alis.Core.Ecs.Kernel.Operations
+namespace Alis.Core.Ecs.Operations
 {
     /// <summary>
     ///     Encapsulates a check for an entity, used to filter queries

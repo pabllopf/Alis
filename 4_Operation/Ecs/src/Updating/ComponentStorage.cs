@@ -31,11 +31,11 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Collections;
-using Alis.Core.Ecs.Kernel.Events;
-using Alis.Core.Ecs.Kernel.Memory;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Events;
+using Alis.Core.Ecs.Memory;
 
-namespace Alis.Core.Ecs.Kernel.Updating
+namespace Alis.Core.Ecs.Updating
 {
     /// <summary>
     ///     The component storage class

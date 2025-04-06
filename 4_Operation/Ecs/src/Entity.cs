@@ -32,13 +32,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Archetype;
-using Alis.Core.Ecs.Kernel.Collections;
-using Alis.Core.Ecs.Kernel.Events;
-using Alis.Core.Ecs.Kernel.Memory;
-using Alis.Core.Ecs.Kernel.Updating;
+using Alis.Core.Ecs.Arch;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Events;
+using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Updating;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     An Entity reference; refers to a collection of components of unqiue types.
@@ -377,7 +377,7 @@ namespace Alis.Core.Ecs.Kernel
 
             //1x
             //other lookup is optimized into indirect pointer addressing
-            Archetype.Archetype archetype = lookup.Archetype;
+            Archetype archetype = lookup.Archetype;
 
             int compIndex = archetype.GetComponentIndex<T>();
 
@@ -606,7 +606,7 @@ namespace Alis.Core.Ecs.Kernel
         ///     <see langword="false" />.
         /// </returns>
         /// <exception cref="InvalidOperationException">Thrown if the <see cref="Entity" /> is not alive.</exception>
-        public bool Tagged<T>() => Tagged(Kernel.Tag<T>.ID);
+        public bool Tagged<T>() => Tagged(Ecs.Tag<T>.ID);
 
         /// <summary>
         ///     Checks whether this <see cref="Entity" /> has a specific tag, using a <see cref="Type" /> to represent the tag.
@@ -621,14 +621,14 @@ namespace Alis.Core.Ecs.Kernel
         ///     otherwise, <see langword="false" />.
         /// </returns>
         /// <exception cref="InvalidOperationException">Thrown if the <see cref="Entity" /> not alive.</exception>
-        public bool Tagged(Type type) => Tagged(Kernel.Tag.GetTagID(type));
+        public bool Tagged(Type type) => Tagged(Ecs.Tag.GetTagID(type));
 
         /// <summary>
         ///     Adds a tag to this <see cref="Entity" />. Tags are like components but do not take up extra memory.
         /// </summary>
         /// <exception cref="InvalidOperationException"><see cref="Entity" /> is dead.</exception>
         /// <param name="type">The type to use as a tag</param>
-        public bool Tag(Type type) => Tag(Kernel.Tag.GetTagID(type));
+        public bool Tag(Type type) => Tag(Ecs.Tag.GetTagID(type));
 
         /// <summary>
         ///     Adds a tag to this <see cref="Entity" />. Tags are like components but do not take up extra memory.
@@ -666,7 +666,7 @@ namespace Alis.Core.Ecs.Kernel
         ///     <see cref="Entity" /> doesn't have the component
         /// </returns>
         /// <param name="type">The type of tag to remove.</param>
-        public bool Detach(Type type) => Detach(Kernel.Tag.GetTagID(type));
+        public bool Detach(Type type) => Detach(Ecs.Tag.GetTagID(type));
 
         /// <summary>
         ///     Removes a tag from this <see cref="Entity" />. Tags are like components but do not take up extra memory.
@@ -1006,7 +1006,7 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         /// <param name="components">The components the <see cref="EntityType" /> should have.</param>
         /// <param name="tags">The tags the <see cref="EntityType" /> should have.</param>
-        public static EntityType EntityTypeOf(ReadOnlySpan<ComponentID> components, ReadOnlySpan<TagId> tags) => Archetype.Archetype.GetArchetypeID(components, tags);
+        public static EntityType EntityTypeOf(ReadOnlySpan<ComponentID> components, ReadOnlySpan<TagId> tags) => Archetype.GetArchetypeID(components, tags);
 
         //traversing archetype graph strategy:
         //1. hit small & fast static per type cache - 1 branch
@@ -1029,7 +1029,7 @@ namespace Alis.Core.Ecs.Kernel
                 return;
             }
 
-            Archetype.Archetype to = TraverseThroughCacheOrCreate<ComponentID, NeighborCache<T>>(
+            Archetype to = TraverseThroughCacheOrCreate<ComponentID, NeighborCache<T>>(
                 world,
                 ref NeighborCache<T>.Add.Lookup,
                 ref thisLookup,
@@ -1078,7 +1078,7 @@ namespace Alis.Core.Ecs.Kernel
                 return;
             }
 
-            Archetype.Archetype to = TraverseThroughCacheOrCreate<ComponentID, NeighborCache<T>>(
+            Archetype to = TraverseThroughCacheOrCreate<ComponentID, NeighborCache<T>>(
                 world,
                 ref NeighborCache<T>.Remove.Lookup,
                 ref thisLookup,
@@ -1098,7 +1098,7 @@ namespace Alis.Core.Ecs.Kernel
         {
             ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
 
-            Archetype.Archetype to = TraverseThroughCacheOrCreate<TagId, NeighborCache<T>>(
+            Archetype to = TraverseThroughCacheOrCreate<TagId, NeighborCache<T>>(
                 world,
                 ref NeighborCache<T>.Tag.Lookup,
                 ref thisLookup,
@@ -1134,7 +1134,7 @@ namespace Alis.Core.Ecs.Kernel
         {
             ref EntityLocation thisLookup = ref AssertIsAlive(out World world);
 
-            Archetype.Archetype to = TraverseThroughCacheOrCreate<TagId, NeighborCache<T>>(
+            Archetype to = TraverseThroughCacheOrCreate<TagId, NeighborCache<T>>(
                 world,
                 ref NeighborCache<T>.Detach.Lookup,
                 ref thisLookup,
@@ -1201,7 +1201,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <param name="entity">The entity</param>
         private static void InvokeTagWorldEvents<T>(ref TagEvent @event, Entity entity)
         {
-            @event.InvokeInternal(entity, Kernel.Tag<T>.ID);
+            @event.InvokeInternal(entity, Ecs.Tag<T>.ID);
         }
 
         /// <summary>
@@ -1212,7 +1212,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <param name="events">The events</param>
         private static void InvokePerEntityTagEvents<T>(Entity entity, ref TagEvent events)
         {
-            events.Invoke(entity, Kernel.Tag<T>.ID);
+            events.Invoke(entity, Ecs.Tag<T>.ID);
         }
 
         /// <summary>
@@ -1226,7 +1226,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <param name="add">The add</param>
         /// <returns>The archetype</returns>
         
-        internal static Archetype.Archetype TraverseThroughCacheOrCreate<T, TEdge>(
+        internal static Archetype TraverseThroughCacheOrCreate<T, TEdge>(
             World world,
             ref ArchetypeNeighborCache cache,
             ref EntityLocation currentLookup,
@@ -1242,9 +1242,9 @@ namespace Alis.Core.Ecs.Kernel
                 return NotInCache(world, ref cache, archetypeFromID, add);
             }
 
-            return Archetype.Archetype.CreateOrGetExistingArchetype(new EntityType(cache.Lookup(index)), world);
+            return Archetype.CreateOrGetExistingArchetype(new EntityType(cache.Lookup(index)), world);
 
-            static Archetype.Archetype NotInCache(World world, ref ArchetypeNeighborCache cache, ArchetypeID archetypeFromID, bool add)
+            static Archetype NotInCache(World world, ref ArchetypeNeighborCache cache, ArchetypeID archetypeFromID, bool add)
             {
                 FastImmutableArray<ComponentID> componentIDs = archetypeFromID.Types;
                 FastImmutableArray<TagId> tagIDs = archetypeFromID.Tags;
@@ -1258,7 +1258,7 @@ namespace Alis.Core.Ecs.Kernel
                     default(TEdge).ModifyTags(ref tagIDs, add);
                 }
 
-                Archetype.Archetype archetype = Archetype.Archetype.CreateOrGetExistingArchetype(
+                Archetype archetype = Archetype.CreateOrGetExistingArchetype(
                     componentIDs.AsSpan(),
                     tagIDs.AsSpan(),
                     world,

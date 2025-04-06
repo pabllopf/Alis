@@ -34,8 +34,6 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Operations;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Stb;

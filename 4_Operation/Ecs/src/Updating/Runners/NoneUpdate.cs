@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Threading;
+using Alis.Core.Ecs.Arch;
 
-namespace Alis.Core.Ecs.Kernel.Updating.Runners
+namespace Alis.Core.Ecs.Updating.Runners
 {
     /// <summary>
     ///     The none update class
@@ -43,7 +44,7 @@ namespace Alis.Core.Ecs.Kernel.Updating.Runners
         /// <param name="countdown">The countdown</param>
         /// <param name="world">The world</param>
         /// <param name="b">The </param>
-        internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype.Archetype b)
+        internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype b)
         {
         }
 
@@ -52,7 +53,7 @@ namespace Alis.Core.Ecs.Kernel.Updating.Runners
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="b">The </param>
-        internal override void Run(World world, Archetype.Archetype b)
+        internal override void Run(World world, Archetype b)
         {
         }
     }

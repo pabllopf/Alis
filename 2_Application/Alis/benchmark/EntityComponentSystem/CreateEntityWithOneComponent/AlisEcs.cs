@@ -29,8 +29,6 @@
 
 using Alis.Benchmark.EntityComponentSystem.Contexts;
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Operations;
 using BenchmarkDotNet.Attributes;
 using static Alis.Benchmark.EntityComponentSystem.Contexts.AlisBaseContext;
 

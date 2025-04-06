@@ -29,8 +29,9 @@
 
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Alis.Core.Ecs.Arch;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The entity location
@@ -43,7 +44,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The archetype
         /// </summary>
-        internal Archetype.Archetype Archetype;
+        internal Archetype Archetype;
 
         /// <summary>
         ///     The index
@@ -70,7 +71,7 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         /// <param name="archetype">The archetype</param>
         /// <param name="index">The index</param>
-        public EntityLocation(Archetype.Archetype archetype, int index)
+        public EntityLocation(Archetype archetype, int index)
         {
             Archetype = archetype;
             Index = index;
@@ -83,7 +84,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <param name="archetype">The archetype</param>
         /// <param name="index">The index</param>
         /// <param name="flags">The flags</param>
-        public EntityLocation(Archetype.Archetype archetype, int index, EntityFlags flags)
+        public EntityLocation(Archetype archetype, int index, EntityFlags flags)
         {
             Archetype = archetype;
             Index = index;

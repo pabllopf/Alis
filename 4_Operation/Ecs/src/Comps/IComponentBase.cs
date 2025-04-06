@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.Component
+namespace Alis.Core.Ecs.Comps
 {
     /*  ALL COMPONENT TYPES                                 |Interface|Storage
      *  Arbitary data                                           X       X

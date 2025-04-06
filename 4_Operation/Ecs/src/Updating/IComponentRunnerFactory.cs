@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.Kernel.Updating
+namespace Alis.Core.Ecs.Updating
 {
     /// <summary>
     ///     The component storage base factory interface

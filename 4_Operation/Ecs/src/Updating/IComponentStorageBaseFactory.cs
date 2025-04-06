@@ -1,6 +1,6 @@
-using Alis.Core.Ecs.Kernel.Collections;
+using Alis.Core.Ecs.Collections;
 
-namespace Alis.Core.Ecs.Kernel.Updating
+namespace Alis.Core.Ecs.Updating
 {
     /// <summary>
     ///     Defines an object for creating component runners

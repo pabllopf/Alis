@@ -33,8 +33,6 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Render;
-using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Operations;
 using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Configuration.Physic;
 using Alis.Core.Ecs.System.Scope;

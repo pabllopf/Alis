@@ -1,6 +1,6 @@
 using System;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The entity flags enum

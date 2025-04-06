@@ -30,10 +30,11 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using Alis.Core.Ecs.Kernel.Collections;
-using Alis.Core.Ecs.Kernel.Events;
+using Alis.Core.Ecs.Arch;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Events;
 
-namespace Alis.Core.Ecs.Kernel.Updating
+namespace Alis.Core.Ecs.Updating
 {
     /// <summary>
     ///     The component storage base class
@@ -60,7 +61,7 @@ namespace Alis.Core.Ecs.Kernel.Updating
         /// </summary>
         /// <param name="world">The world</param>
         /// <param name="b">The </param>
-        internal abstract void Run(World world, Archetype.Archetype b);
+        internal abstract void Run(World world, Archetype b);
 
         /// <summary>
         ///     Multithreadeds the run using the specified countdown
@@ -68,7 +69,7 @@ namespace Alis.Core.Ecs.Kernel.Updating
         /// <param name="countdown">The countdown</param>
         /// <param name="world">The world</param>
         /// <param name="b">The </param>
-        internal abstract void MultithreadedRun(CountdownEvent countdown, World world, Archetype.Archetype b);
+        internal abstract void MultithreadedRun(CountdownEvent countdown, World world, Archetype b);
 
         /// <summary>
         ///     Deletes the delete component data

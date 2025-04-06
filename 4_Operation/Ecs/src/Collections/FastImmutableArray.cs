@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
-namespace Alis.Core.Ecs.Kernel.Collections
+namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
     /// A readonly array with O(1) indexable lookup time.

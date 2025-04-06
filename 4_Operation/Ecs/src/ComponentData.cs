@@ -30,9 +30,9 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Collections;
+using Alis.Core.Ecs.Collections;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     [StructLayout( LayoutKind.Sequential, Pack = 1 )]
     [SkipLocalsInit]

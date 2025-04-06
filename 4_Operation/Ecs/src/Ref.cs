@@ -30,10 +30,10 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Memory;
-using Alis.Core.Ecs.Kernel.Updating;
+using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Updating;
 
-namespace Alis.Core.Ecs.Kernel
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     A wrapper ref struct over a reference to a <typeparamref name="T" />

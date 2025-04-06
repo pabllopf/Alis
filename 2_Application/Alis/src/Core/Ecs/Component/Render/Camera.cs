@@ -30,8 +30,6 @@
 using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Operations;
 
 namespace Alis.Core.Ecs.Component.Render
 {

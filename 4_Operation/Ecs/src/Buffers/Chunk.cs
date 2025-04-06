@@ -30,9 +30,9 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Kernel.Memory;
+using Alis.Core.Ecs.Memory;
 
-namespace Alis.Core.Ecs.Kernel.Buffers
+namespace Alis.Core.Ecs.Buffers
 {
     /// <summary>
     ///     The chunk

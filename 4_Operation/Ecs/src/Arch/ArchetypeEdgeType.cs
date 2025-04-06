@@ -1,4 +1,4 @@
-namespace Alis.Core.Ecs.Kernel.Archetype
+namespace Alis.Core.Ecs.Arch
 {
     /// <summary>
     ///     The archetype edge type enum

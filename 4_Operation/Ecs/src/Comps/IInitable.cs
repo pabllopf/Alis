@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
-
-namespace Alis.Core.Ecs.Component
+namespace Alis.Core.Ecs.Comps
 {
     /// <summary>
     ///     Marks a component to have a <see cref="Init(Entity)" /> method to be called at the start of a component lifetime.

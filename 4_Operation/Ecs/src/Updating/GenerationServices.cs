@@ -30,10 +30,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.Comps;
 
-namespace Alis.Core.Ecs.Kernel.Updating
+namespace Alis.Core.Ecs.Updating
 {
     /// <summary>
     ///     Used only for source generation

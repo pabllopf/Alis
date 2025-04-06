@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
-
-namespace Alis.Core.Ecs.Component
+namespace Alis.Core.Ecs.Comps
 {
     /// <summary>
     ///     Indicates a component should be updated with itself as an argument
