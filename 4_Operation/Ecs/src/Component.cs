@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Arch;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Comps;
