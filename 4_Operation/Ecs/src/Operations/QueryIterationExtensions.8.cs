@@ -1,9 +1,6 @@
-﻿
+﻿using System.Runtime.CompilerServices;
 
-using System.Runtime.CompilerServices;
-using Alis.Core.Ecs.Operations;
-
-namespace Frent.Systems
+namespace Alis.Core.Ecs.Operations
 {
     public static partial class QueryIterationExtensions
     {

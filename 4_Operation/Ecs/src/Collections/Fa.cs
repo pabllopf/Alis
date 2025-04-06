@@ -495,7 +495,7 @@ namespace Alis.Core.Ecs.Collections
             /// If <c>null</c>, <see cref="EqualityComparer{T}.Default"/> is used.
             /// </param>
             /// <returns>A value indicating whether the specified element was found and removed from the collection.</returns>
-            public bool Remove(T element, IEqualityComparer<T>? equalityComparer)
+            public bool Remove(T element, IEqualityComparer<T> equalityComparer)
             {
                 int index = this.IndexOf(element, 0, _count, equalityComparer);
 
@@ -518,7 +518,7 @@ namespace Alis.Core.Ecs.Collections
             /// </param>
             public void RemoveAll(Predicate<T> match)
             {
-                List<int>? removeIndices = null;
+                List<int> removeIndices = null;
                 for (int i = 0; i < _count; i++)
                 {
                     if (match(_elements[i]))
@@ -597,7 +597,7 @@ namespace Alis.Core.Ecs.Collections
             /// The equality comparer to use in the search.
             /// If <c>null</c>, <see cref="EqualityComparer{T}.Default"/> is used.
             /// </param>
-            public void RemoveRange(IEnumerable<T> items, IEqualityComparer<T>? equalityComparer)
+            public void RemoveRange(IEnumerable<T> items, IEqualityComparer<T> equalityComparer)
             {
                 
 
@@ -633,7 +633,7 @@ namespace Alis.Core.Ecs.Collections
             /// The equality comparer to use in the search.
             /// If <c>null</c>, <see cref="EqualityComparer{T}.Default"/> is used.
             /// </param>
-            public void Replace(T oldValue, T newValue, IEqualityComparer<T>? equalityComparer)
+            public void Replace(T oldValue, T newValue, IEqualityComparer<T> equalityComparer)
             {
                 int index = this.IndexOf(oldValue, 0, _count, equalityComparer);
 
@@ -767,7 +767,7 @@ namespace Alis.Core.Ecs.Collections
             /// If <c>null</c>, <see cref="EqualityComparer{T}.Default"/> is used.
             /// </param>
             /// <returns>The 0-based index into the array where the item was found; or -1 if it could not be found.</returns>
-            public int IndexOf(T item, int startIndex, int count, IEqualityComparer<T>? equalityComparer)
+            public int IndexOf(T item, int startIndex, int count, IEqualityComparer<T> equalityComparer)
             {
                 if (count == 0 && startIndex == 0)
                 {
@@ -806,7 +806,7 @@ namespace Alis.Core.Ecs.Collections
             /// If <c>null</c>, <see cref="EqualityComparer{T}.Default"/> is used.
             /// </param>
             /// <returns>The 0-based index into the array where the item was found; or -1 if it could not be found.</returns>
-            public int IndexOf(T item, int startIndex, IEqualityComparer<T>? equalityComparer)
+            public int IndexOf(T item, int startIndex, IEqualityComparer<T> equalityComparer)
             {
                 return this.IndexOf(item, startIndex, this.Count - startIndex, equalityComparer);
             }
@@ -864,7 +864,7 @@ namespace Alis.Core.Ecs.Collections
             /// <param name="count">The number of elements to search.</param>
             /// <param name="equalityComparer">The equality comparer to use in the search.</param>
             /// <returns>The 0-based index into the array where the item was found; or -1 if it could not be found.</returns>
-            public int LastIndexOf(T item, int startIndex, int count, IEqualityComparer<T>? equalityComparer)
+            public int LastIndexOf(T item, int startIndex, int count, IEqualityComparer<T> equalityComparer)
             {
                 if (count == 0 && startIndex == 0)
                 {
@@ -960,7 +960,7 @@ namespace Alis.Core.Ecs.Collections
             /// Sorts the array.
             /// </summary>
             /// <param name="comparer">The comparer to use in sorting. If <c>null</c>, the default comparer is used.</param>
-            public void Sort(IComparer<T>? comparer)
+            public void Sort(IComparer<T> comparer)
             {
                 if (Count > 1)
                 {
@@ -974,7 +974,7 @@ namespace Alis.Core.Ecs.Collections
             /// <param name="index">The index of the first element to consider in the sort.</param>
             /// <param name="count">The number of elements to include in the sort.</param>
             /// <param name="comparer">The comparer to use in sorting. If <c>null</c>, the default comparer is used.</param>
-            public void Sort(int index, int count, IComparer<T>? comparer)
+            public void Sort(int index, int count, IComparer<T> comparer)
             {
                 // Don't rely on Array.Sort's argument validation since our internal array may exceed
                 // the bounds of the publicly addressable region.
