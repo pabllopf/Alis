@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TagID.cs
+//  File:TagId.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs
         internal readonly ushort RawData = rawData;
 
         /// <summary>
-        ///     The type that this TagID represents
+        ///     The type that this TagId represents
         /// </summary>
         public Type Type => Tag.TagTable[RawData];
 
@@ -54,14 +54,14 @@ namespace Alis.Core.Ecs
         ushort ITypeID.Value => RawData;
 
         /// <summary>
-        ///     Checks if this TagID instance represents the same type as <paramref name="other" />
+        ///     Checks if this TagId instance represents the same type as <paramref name="other" />
         /// </summary>
         /// <param name="other">The tag to compare against</param>
         /// <returns><see langword="true" /> when they represent the same type, <see langword="false" /> otherwise</returns>
         public bool Equals(TagId other) => other.RawData == RawData;
 
         /// <summary>
-        ///     Checks if this TagID instance represents the same type as <paramref name="other" />
+        ///     Checks if this TagId instance represents the same type as <paramref name="other" />
         /// </summary>
         /// <param name="other">The tag to compare against</param>
         /// <returns><see langword="true" /> when they represent the same type, <see langword="false" /> otherwise</returns>
