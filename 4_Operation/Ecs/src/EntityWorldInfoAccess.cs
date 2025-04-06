@@ -11,7 +11,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The entity id only
         /// </summary>
-        internal EntityIdOnly EntityIDOnly;
+        internal EntityIdOnly EntityIdOnly;
 
         /// <summary>
         ///     The world id

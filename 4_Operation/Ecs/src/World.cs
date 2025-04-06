@@ -883,9 +883,9 @@ namespace Alis.Core.Ecs
                 if (EntityLocation.HasEventFlag(currentLookup.Flags, EntityFlags.RemoveComp | EntityFlags.RemoveGenericComp))
                 {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-                    EventRecord lookup = EventLookup[entity.EntityIDOnly];
+                    EventRecord lookup = EventLookup[entity.EntityIdOnly];
 #else
-                    ref EventRecord lookup = ref CollectionsMarshal.GetValueRefOrNullRef(EventLookup, entity.EntityIDOnly);
+                    ref EventRecord lookup = ref CollectionsMarshal.GetValueRefOrNullRef(EventLookup, entity.EntityIdOnly);
 #endif
 
                     if (hasGenericRemoveEvent)
@@ -980,13 +980,13 @@ namespace Alis.Core.Ecs
             EntityDeletedEvent.Invoke(entity);
             if (entityLocation.HasEvent(EntityFlags.OnDelete))
             {
-                foreach (Action<Entity> @event in EventLookup[entity.EntityIDOnly].Delete.AsSpan())
+                foreach (Action<Entity> @event in EventLookup[entity.EntityIdOnly].Delete.AsSpan())
                 {
                     @event.Invoke(entity);
                 }
             }
 
-            EventLookup.Remove(entity.EntityIDOnly);
+            EventLookup.Remove(entity.EntityIdOnly);
         }
 
         /// <summary>
@@ -1008,7 +1008,7 @@ namespace Alis.Core.Ecs
            if (entity.EntityVersion != ushort.MaxValue - 1)
            {
                // can't use max value as an ID, as it is used as a default value
-               EntityIdOnly id = entity.EntityIDOnly;
+               EntityIdOnly id = entity.EntityIdOnly;
                id.Version++;
                RecycledEntityIds.Push(id);
            }

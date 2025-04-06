@@ -111,7 +111,7 @@ namespace Alis.Core.Ecs
         public void DeleteEntity(Entity entity)
         {
             SetIsActive();
-            _deleteEntityBuffer.Push(entity.EntityIDOnly);
+            _deleteEntityBuffer.Push(entity.EntityIdOnly);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Alis.Core.Ecs
         public void RemoveComponent(Entity entity, ComponentID component)
         {
             SetIsActive();
-            _removeComponentBuffer.Push(new DeleteComponent(entity.EntityIDOnly, component));
+            _removeComponentBuffer.Push(new DeleteComponent(entity.EntityIdOnly, component));
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Alis.Core.Ecs
         public void AddComponent<T>(Entity entity, in T component)
         {
             SetIsActive();
-            _addComponentBuffer.Push(new AddComponent(entity.EntityIDOnly, ComponentHandle.Create(component)));
+            _addComponentBuffer.Push(new AddComponent(entity.EntityIdOnly, ComponentHandle.Create(component)));
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Alis.Core.Ecs
         public void AddComponent(Entity entity, ComponentID componentID, object component)
         {
             SetIsActive();
-            _addComponentBuffer.Push(new AddComponent(entity.EntityIDOnly, ComponentHandle.CreateFromBoxed(componentID, component)));
+            _addComponentBuffer.Push(new AddComponent(entity.EntityIdOnly, ComponentHandle.CreateFromBoxed(componentID, component)));
         }
 
         /// <summary>
@@ -388,7 +388,7 @@ namespace Alis.Core.Ecs
             //CreateCommand points to a segment of the _createEntityComponents stack
             Entity e = _world.CreateEntityWithoutEvent();
             _createEntityBuffer.Push(new CreateCommand(
-                e.EntityIDOnly,
+                e.EntityIdOnly,
                 _lastCreateEntityComponentsBufferIndex,
                 _createEntityComponents.Count - _lastCreateEntityComponentsBufferIndex));
             _lastCreateEntityComponentsBufferIndex = -1;

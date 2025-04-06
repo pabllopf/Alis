@@ -85,7 +85,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets the value of the entity id only
         /// </summary>
-        internal EntityIdOnly EntityIDOnly => Unsafe.As<Entity, EntityWorldInfoAccess>(ref this).EntityIDOnly;
+        internal EntityIdOnly EntityIdOnly => Unsafe.As<Entity, EntityWorldInfoAccess>(ref this).EntityIdOnly;
 
         /// <summary>
         ///     Gets the value of the packed value
@@ -739,7 +739,7 @@ namespace Alis.Core.Ecs
                 }
 
                 world.EntityTable[EntityID].Flags |= EntityFlags.AddGenericComp;
-                return world.EventLookup.GetOrAddNew(EntityIDOnly).Add.GenericEvent ??= new();
+                return world.EventLookup.GetOrAddNew(EntityIdOnly).Add.GenericEvent ??= new();
             }
         }
 
@@ -760,7 +760,7 @@ namespace Alis.Core.Ecs
                 }
 
                 world.EntityTable[EntityID].Flags |= EntityFlags.RemoveGenericComp;
-                return world.EventLookup.GetOrAddNew(EntityIDOnly).Remove.GenericEvent ??= new();
+                return world.EventLookup.GetOrAddNew(EntityIdOnly).Remove.GenericEvent ??= new();
             }
         }
 
@@ -796,9 +796,9 @@ namespace Alis.Core.Ecs
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
             bool exists = entityLocation.HasEvent(flag);
-            EventRecord events = exists ? world.EventLookup[EntityIDOnly] : default(EventRecord);
+            EventRecord events = exists ? world.EventLookup[EntityIdOnly] : default(EventRecord);
 #else
-            ref EventRecord events = ref world.TryGetEventData(entityLocation, EntityIDOnly, flag, out bool exists);
+            ref EventRecord events = ref world.TryGetEventData(entityLocation, EntityIdOnly, flag, out bool exists);
 #endif
 
 
@@ -851,9 +851,9 @@ namespace Alis.Core.Ecs
             }
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
             bool exists = entityLocation.HasEvent(flag);
-            EventRecord record = exists ? world.EventLookup[EntityIDOnly] : default(EventRecord);
+            EventRecord record = exists ? world.EventLookup[EntityIdOnly] : default(EventRecord);
 #else
-            ref EventRecord record = ref CollectionsMarshal.GetValueRefOrAddDefault(world.EventLookup, EntityIDOnly, out bool exists);
+            ref EventRecord record = ref CollectionsMarshal.GetValueRefOrAddDefault(world.EventLookup, EntityIdOnly, out bool exists);
 #endif
             world.EntityTable[EntityID].Flags |= flag;
             EventRecord.Initalize(exists, ref record!);
@@ -1054,9 +1054,9 @@ namespace Alis.Core.Ecs
                 if (EntityLocation.HasEventFlag(flags, EntityFlags.AddComp | EntityFlags.AddGenericComp))
                 {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-                    EventRecord events = world.EventLookup[EntityIDOnly];
+                    EventRecord events = world.EventLookup[EntityIdOnly];
 #else
-                    ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIDOnly);
+                    ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
 #endif
                     InvokePerEntityEvents(this, EntityLocation.HasEventFlag(thisLookup.Flags, EntityFlags.AddGenericComp), ref events.Add, ref c1ref);
                 }
@@ -1117,9 +1117,9 @@ namespace Alis.Core.Ecs
                 if (EntityLocation.HasEventFlag(flags, EntityFlags.Tagged))
                 {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-                    EventRecord events = world.EventLookup[EntityIDOnly];
+                    EventRecord events = world.EventLookup[EntityIdOnly];
 #else
-                    ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIDOnly);
+                    ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
 #endif
                     InvokePerEntityTagEvents<T>(this, ref events.Tag);
                 }
@@ -1153,9 +1153,9 @@ namespace Alis.Core.Ecs
                 if (EntityLocation.HasEventFlag(flags, EntityFlags.Detach))
                 {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-                    EventRecord events = world.EventLookup[EntityIDOnly];
+                    EventRecord events = world.EventLookup[EntityIdOnly];
 #else
-                    ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIDOnly);
+                    ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
 #endif
                     InvokePerEntityTagEvents<T>(this, ref events.Detach);
                 }

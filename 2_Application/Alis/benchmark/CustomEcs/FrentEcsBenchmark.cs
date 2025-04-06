@@ -5,7 +5,7 @@ using System.Runtime.Intrinsics;
 using Alis.Benchmark.CustomEcs.Components;
 using BenchmarkDotNet.Attributes;
 using Frent;
-using Frent.Core;
+
 using Frent.Systems;
 
 namespace Alis.Benchmark.CustomEcs

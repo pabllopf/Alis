@@ -253,7 +253,7 @@ namespace Alis.Core.Ecs.Arch
         private void ResizeCreateComponentBuffers()
         {
             int newLen = checked(Math.Max(1, _createComponentBufferEntities.Length) * 2);
-            //we only need to resize the EntityIDOnly array when future total entity count is greater than capacity
+            //we only need to resize the EntityIdOnly array when future total entity count is greater than capacity
             Array.Resize(ref _createComponentBufferEntities, newLen);
             ComponentStorageBase[] runners = CreateComponentBuffers;
             int size = runners.Length;
