@@ -28,12 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Comps;
 
 namespace Alis.Core.Ecs.Component.Render
 {
-    public struct Camera (Vector2F position,  Vector2F resolution) : IInitable, IComponent
+    public struct Camera (Vector2F position,  Vector2F resolution) : IInitable, IEntityComponent
     {
         /// <summary>
         ///     The position
@@ -61,11 +61,6 @@ namespace Alis.Core.Ecs.Component.Render
         public void Update(Entity self)
         {
             Console.WriteLine($"Camera {self.EntityID} updated");
-        }
-
-        public void Update()
-        {
-            Console.WriteLine($"Camera updated");
         }
     }
 }
