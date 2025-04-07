@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Dynamics
     ///     The world class manages all physics entities, dynamic simulation,
     ///     and asynchronous queries.
     /// </summary>
-    public class World
+    public class WorldPhysic
     {
         /// <summary>This is only for debugging the solver</summary>
         private const bool WarmStarting = true;
@@ -193,9 +193,9 @@ namespace Alis.Core.Physic.Dynamics
         internal bool WorldHasNewFixture;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="World" /> class.
+        ///     Initializes a new instance of the <see cref="WorldPhysic" /> class.
         /// </summary>
-        public World()
+        public WorldPhysic()
         {
             GetIsland = new Island();
             GetEnabled = true;
@@ -213,15 +213,15 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="World" /> class.
+        ///     Initializes a new instance of the <see cref="WorldPhysic" /> class.
         /// </summary>
         /// <param name="gravity">The gravity.</param>
-        public World(Vector2F gravity) : this() => GetGravity = gravity;
+        public WorldPhysic(Vector2F gravity) : this() => GetGravity = gravity;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="World" /> class.
+        ///     Initializes a new instance of the <see cref="WorldPhysic" /> class.
         /// </summary>
-        public World(IBroadPhase broadPhase) : this() => ContactManager = new ContactManager(broadPhase);
+        public WorldPhysic(IBroadPhase broadPhase) : this() => ContactManager = new ContactManager(broadPhase);
 
         /// <summary>
         ///     Gets or sets the value of the update time
@@ -842,17 +842,17 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentNullException("body");
             }
 
-            if (body.World == this)
+            if (body.WorldPhysic == this)
             {
                 throw new ArgumentException("You are adding the same body more than once.", "body");
             }
 
-            if (body.World != null)
+            if (body.WorldPhysic != null)
             {
                 throw new ArgumentException("body belongs to another world.", "body");
             }
 
-            body.World = this;
+            body.WorldPhysic = this;
             BodyList.List.Add(body);
             BodyList.GenerationStamp++;
 
@@ -906,7 +906,7 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentNullException("body");
             }
 
-            if (body.GetWorld != this)
+            if (body.GetWorldPhysic != this)
             {
                 throw new ArgumentException("You are removing a body that is not in the simulation.", "body");
             }
@@ -949,7 +949,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            body.World = null;
+            body.WorldPhysic = null;
             BodyList.List.Remove(body);
             BodyList.GenerationStamp++;
 
@@ -978,18 +978,18 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentNullException("joint");
             }
 
-            if (joint.WorldInternal == this)
+            if (joint.WorldPhysicInternal == this)
             {
                 throw new ArgumentException("You are adding the same joint more than once.", "joint");
             }
 
-            if (joint.WorldInternal != null)
+            if (joint.WorldPhysicInternal != null)
             {
                 throw new ArgumentException("joint belongs to another world.", "joint");
             }
 
             // Connect to the world list.
-            joint.WorldInternal = this;
+            joint.WorldPhysicInternal = this;
             JointList.List.Add(joint);
             JointList.GenerationStamp++;
 
@@ -1069,7 +1069,7 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentNullException("joint");
             }
 
-            if (joint.World != this)
+            if (joint.WorldPhysic != this)
             {
                 throw new ArgumentException("You are removing a joint that is not in the simulation.", "joint");
             }
@@ -1077,7 +1077,7 @@ namespace Alis.Core.Physic.Dynamics
             bool collideConnected = joint.CollideConnected;
 
             // Remove from the world list.
-            joint.WorldInternal = null;
+            joint.WorldPhysicInternal = null;
             JointList.List.Remove(joint);
             JointList.GenerationStamp++;
 
@@ -1432,17 +1432,17 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentNullException("controller");
             }
 
-            if (controller.World == this)
+            if (controller.WorldPhysic == this)
             {
                 throw new ArgumentException("You are adding the same controller more than once.", "controller");
             }
 
-            if (controller.World != null)
+            if (controller.WorldPhysic != null)
             {
                 throw new ArgumentException("Controller belongs to another world.", "controller");
             }
 
-            controller.World = this;
+            controller.WorldPhysic = this;
             ControllerList.List.Add(controller);
             ControllerList.GenerationStamp++;
 
@@ -1469,12 +1469,12 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentNullException("controller");
             }
 
-            if (controller.World != this)
+            if (controller.WorldPhysic != this)
             {
                 throw new ArgumentException("You are removing a controller that is not in the simulation.", "controller");
             }
 
-            controller.World = null;
+            controller.WorldPhysic = null;
             ControllerList.List.Remove(controller);
             ControllerList.GenerationStamp++;
 

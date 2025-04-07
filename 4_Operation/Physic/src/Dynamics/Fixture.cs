@@ -286,15 +286,15 @@ namespace Alis.Core.Physic.Dynamics
                 edge = edge.Next;
             }
 
-            World world = GetBody.GetWorld;
+            WorldPhysic worldPhysic = GetBody.GetWorldPhysic;
 
-            if (world == null)
+            if (worldPhysic == null)
             {
                 return;
             }
 
             // Touch each proxy so that new pairs may be created
-            IBroadPhase broadPhase = world.ContactManager.BroadPhase;
+            IBroadPhase broadPhase = worldPhysic.ContactManager.BroadPhase;
             TouchProxies(broadPhase);
         }
 

@@ -177,24 +177,24 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         ///     This is a high-level function to cuts fixtures inside the given world, using the start and end points.
         ///     Note: We don't support cutting when the start or end is inside a shape.
         /// </summary>
-        /// <param name="world">The world.</param>
+        /// <param name="worldPhysic">The world.</param>
         /// <param name="start">The startpoint.</param>
         /// <param name="end">The endpoint.</param>
         /// <returns>True if the cut was performed.</returns>
-        public static bool Cut(World world, Vector2F start, Vector2F end)
+        public static bool Cut(WorldPhysic worldPhysic, Vector2F start, Vector2F end)
         {
             List<Fixture> fixtures = new List<Fixture>();
             List<Vector2F> entryPoints = new List<Vector2F>();
             List<Vector2F> exitPoints = new List<Vector2F>();
 
             //We don't support cutting when the start or end is inside a shape.
-            if (world.TestPoint(start) != null || world.TestPoint(end) != null)
+            if (worldPhysic.TestPoint(start) != null || worldPhysic.TestPoint(end) != null)
             {
                 return false;
             }
 
             //Get the entry points
-            world.RayCast((f, p, n, fr) =>
+            worldPhysic.RayCast((f, p, n, fr) =>
             {
                 fixtures.Add(f);
                 entryPoints.Add(p);
@@ -202,7 +202,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
             }, start, end);
 
             //Reverse the ray to get the exitpoints
-            world.RayCast((f, p, n, fr) =>
+            worldPhysic.RayCast((f, p, n, fr) =>
             {
                 exitPoints.Add(p);
                 return 1;
@@ -230,7 +230,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                     //Delete the original shape and create two new. Retain the properties of the body.
                     if (first.CheckPolygon() == PolygonError.NoError)
                     {
-                        Body firstFixture = world.CreatePolygon(first, fixtures[i].GetShape.GetDensity, fixtures[i].GetBody.Position);
+                        Body firstFixture = worldPhysic.CreatePolygon(first, fixtures[i].GetShape.GetDensity, fixtures[i].GetBody.Position);
                         firstFixture.Rotation = fixtures[i].GetBody.Rotation;
                         firstFixture.LinearVelocity = fixtures[i].GetBody.LinearVelocity;
                         firstFixture.AngularVelocity = fixtures[i].GetBody.AngularVelocity;
@@ -239,14 +239,14 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
 
                     if (second.CheckPolygon() == PolygonError.NoError)
                     {
-                        Body secondFixture = world.CreatePolygon(second, fixtures[i].GetShape.GetDensity, fixtures[i].GetBody.Position);
+                        Body secondFixture = worldPhysic.CreatePolygon(second, fixtures[i].GetShape.GetDensity, fixtures[i].GetBody.Position);
                         secondFixture.Rotation = fixtures[i].GetBody.Rotation;
                         secondFixture.LinearVelocity = fixtures[i].GetBody.LinearVelocity;
                         secondFixture.AngularVelocity = fixtures[i].GetBody.AngularVelocity;
                         secondFixture.GetBodyType = BodyType.Dynamic;
                     }
 
-                    world.Remove(fixtures[i].GetBody);
+                    worldPhysic.Remove(fixtures[i].GetBody);
                 }
             }
 

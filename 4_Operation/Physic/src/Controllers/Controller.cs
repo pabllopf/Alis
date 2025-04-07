@@ -51,7 +51,7 @@ namespace Alis.Core.Physic.Controllers
         /// <summary>
         ///     Gets or sets the value of the world
         /// </summary>
-        public World World { get; internal set; }
+        public WorldPhysic WorldPhysic { get; internal set; }
 
         /// <summary>
         ///     Describes whether this instance is active on

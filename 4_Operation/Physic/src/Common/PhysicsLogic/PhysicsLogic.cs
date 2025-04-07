@@ -45,13 +45,13 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicsLogic" /> class
         /// </summary>
-        /// <param name="world">The world</param>
-        public PhysicsLogic(World world) => World = world;
+        /// <param name="worldPhysic">The world</param>
+        public PhysicsLogic(WorldPhysic worldPhysic) => WorldPhysic = worldPhysic;
 
         /// <summary>
         ///     Gets or sets the value of the world
         /// </summary>
-        public World World { get; internal set; }
+        public WorldPhysic WorldPhysic { get; internal set; }
 
         /// <summary>
         ///     Describes whether this instance is active on

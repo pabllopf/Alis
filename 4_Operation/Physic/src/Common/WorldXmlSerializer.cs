@@ -404,9 +404,9 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Serializes the world
         /// </summary>
-        /// <param name="world">The world</param>
+        /// <param name="worldPhysic">The world</param>
         /// <param name="stream">The stream</param>
-        internal static void Serialize(World world, Stream stream)
+        internal static void Serialize(WorldPhysic worldPhysic, Stream stream)
         {
             List<Body> bodies = new List<Body>();
             List<Fixture> fixtures = new List<Fixture>();
@@ -421,11 +421,11 @@ namespace Alis.Core.Physic.Common
 
             _writer.WriteStartElement("World");
             _writer.WriteAttributeString("Version", "3");
-            WriteElement("Gravity", world.GetGravity);
+            WriteElement("Gravity", worldPhysic.GetGravity);
 
             _writer.WriteStartElement("Shapes");
 
-            foreach (Body body in world.BodyList)
+            foreach (Body body in worldPhysic.BodyList)
             {
                 foreach (Fixture fixture in body.FixtureList)
                 {
@@ -440,7 +440,7 @@ namespace Alis.Core.Physic.Common
             _writer.WriteEndElement();
             _writer.WriteStartElement("Fixtures");
 
-            foreach (Body body in world.BodyList)
+            foreach (Body body in worldPhysic.BodyList)
             {
                 foreach (Fixture fixture in body.FixtureList)
                 {
@@ -455,7 +455,7 @@ namespace Alis.Core.Physic.Common
             _writer.WriteEndElement();
             _writer.WriteStartElement("Bodies");
 
-            foreach (Body body in world.BodyList)
+            foreach (Body body in worldPhysic.BodyList)
             {
                 bodies.Add(body);
                 SerializeBody(fixtures, shapes, body);
@@ -464,7 +464,7 @@ namespace Alis.Core.Physic.Common
             _writer.WriteEndElement();
             _writer.WriteStartElement("Joints");
 
-            foreach (Joint joint in world.JointList)
+            foreach (Joint joint in worldPhysic.JointList)
             {
                 SerializeJoint(bodies, joint);
             }

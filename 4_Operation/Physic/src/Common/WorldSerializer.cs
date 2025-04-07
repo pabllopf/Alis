@@ -40,17 +40,17 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Serialize the world to a stream in XML format
         /// </summary>
-        /// <param name="world"></param>
+        /// <param name="worldPhysic"></param>
         /// <param name="stream"></param>
-        public static void Serialize(World world, Stream stream)
+        public static void Serialize(WorldPhysic worldPhysic, Stream stream)
         {
-            WorldXmlSerializer.Serialize(world, stream);
+            WorldXmlSerializer.Serialize(worldPhysic, stream);
         }
 
         /// <summary>
         ///     Deserialize the world from a stream XML
         /// </summary>
         /// <param name="stream"></param>
-        public static World Deserialize(Stream stream) => WorldXmlDeserializer.Deserialize(stream);
+        public static WorldPhysic Deserialize(Stream stream) => WorldXmlDeserializer.Deserialize(stream);
     }
 }

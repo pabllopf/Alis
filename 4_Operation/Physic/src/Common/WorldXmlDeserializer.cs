@@ -51,17 +51,17 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The world</returns>
-        internal static World Deserialize(Stream stream)
+        internal static WorldPhysic Deserialize(Stream stream)
         {
-            World world = new World(Vector2F.Zero);
-            Deserialize(world, stream);
-            return world;
+            WorldPhysic worldPhysic = new WorldPhysic(Vector2F.Zero);
+            Deserialize(worldPhysic, stream);
+            return worldPhysic;
         }
 
         /// <summary>
         ///     Deserializes the world
         /// </summary>
-        /// <param name="world">The world</param>
+        /// <param name="worldPhysic">The world</param>
         /// <param name="stream">The stream</param>
         /// <exception cref="Exception"></exception>
         /// <exception cref="Exception"></exception>
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Common
         /// <exception cref="Exception">Gear joint is unsupported</exception>
         /// <exception cref="Exception">GearJoint is not supported.</exception>
         /// <exception cref="Exception">Invalid or unsupported joint.</exception>
-        private static void Deserialize(World world, Stream stream)
+        private static void Deserialize(WorldPhysic worldPhysic, Stream stream)
         {
             List<Body> bodies = new List<Body>();
             List<Fixture> fixtures = new List<Fixture>();
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Common
             {
                 if (element.Name.ToLower() == "gravity")
                 {
-                    world.GetGravity = ReadVector(element);
+                    worldPhysic.GetGravity = ReadVector(element);
                     break;
                 }
             }
@@ -311,7 +311,7 @@ namespace Alis.Core.Physic.Common
                 {
                     foreach (XmlFragmentElement element in bodyElement.Elements)
                     {
-                        Body body = world.CreateBody();
+                        Body body = worldPhysic.CreateBody();
 
                         if (element.Name.ToLower() != "body")
                         {
@@ -487,7 +487,7 @@ namespace Alis.Core.Physic.Common
                         joint.BodyA = bodyA;
                         joint.BodyB = bodyB;
                         joints.Add(joint);
-                        world.Add(joint);
+                        worldPhysic.Add(joint);
 
                         foreach (XmlFragmentElement sn in n.Elements)
                         {

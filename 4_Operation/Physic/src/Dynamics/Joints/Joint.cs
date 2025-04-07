@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The world
         /// </summary>
-        internal World WorldInternal;
+        internal WorldPhysic WorldPhysicInternal;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Joint" /> class
@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Get the parent World of this joint. This is null if the joint is not attached.
         /// </summary>
-        public World World => WorldInternal;
+        public WorldPhysic WorldPhysic => WorldPhysicInternal;
 
         /// <summary>
         ///     Gets or sets the type of the joint.

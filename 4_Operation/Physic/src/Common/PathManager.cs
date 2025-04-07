@@ -114,21 +114,21 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Duplicates the given Body along the given path for approximatly the given copies.
         /// </summary>
-        /// <param name="world">The world.</param>
+        /// <param name="worldPhysic">The world.</param>
         /// <param name="path">The path.</param>
         /// <param name="shapes">The shapes.</param>
         /// <param name="type">The type.</param>
         /// <param name="copies">The copies.</param>
         /// <param name="userData"></param>
         /// <returns></returns>
-        public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, IEnumerable<Shape> shapes, BodyType type, int copies, object userData = null)
+        public static List<Body> EvenlyDistributeShapesAlongPath(WorldPhysic worldPhysic, Path path, IEnumerable<Shape> shapes, BodyType type, int copies, object userData = null)
         {
             List<Vector3F> centers = path.SubdivideEvenly(copies);
             List<Body> bodyList = new List<Body>();
 
             for (int i = 0; i < centers.Count; i++)
             {
-                Body b = world.CreateBody();
+                Body b = worldPhysic.CreateBody();
 
                 // copy the type from original body
                 b.GetBodyType = type;
@@ -151,19 +151,19 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Duplicates the given Body along the given path for approximatly the given copies.
         /// </summary>
-        /// <param name="world">The world.</param>
+        /// <param name="worldPhysic">The world.</param>
         /// <param name="path">The path.</param>
         /// <param name="shape">The shape.</param>
         /// <param name="type">The type.</param>
         /// <param name="copies">The copies.</param>
         /// <param name="userData">The user data.</param>
         /// <returns></returns>
-        public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, Shape shape, BodyType type, int copies, object userData = null)
+        public static List<Body> EvenlyDistributeShapesAlongPath(WorldPhysic worldPhysic, Path path, Shape shape, BodyType type, int copies, object userData = null)
         {
             List<Shape> shapes = new List<Shape>(1);
             shapes.Add(shape);
 
-            return EvenlyDistributeShapesAlongPath(world, path, shapes, type, copies, userData);
+            return EvenlyDistributeShapesAlongPath(worldPhysic, path, shapes, type, copies, userData);
         }
 
         /// <summary>
@@ -186,13 +186,13 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     Attaches the bodies with revolute joints.
         /// </summary>
-        /// <param name="world">The world.</param>
+        /// <param name="worldPhysic">The world.</param>
         /// <param name="bodies">The bodies.</param>
         /// <param name="localAnchorA">The local anchor A.</param>
         /// <param name="localAnchorB">The local anchor B.</param>
         /// <param name="connectFirstAndLast">if set to <c>true</c> [connect first and last].</param>
         /// <param name="collideConnected">if set to <c>true</c> [collide connected].</param>
-        public static List<RevoluteJoint> AttachBodiesWithRevoluteJoint(World world, List<Body> bodies, Vector2F localAnchorA, Vector2F localAnchorB, bool connectFirstAndLast, bool collideConnected)
+        public static List<RevoluteJoint> AttachBodiesWithRevoluteJoint(WorldPhysic worldPhysic, List<Body> bodies, Vector2F localAnchorA, Vector2F localAnchorB, bool connectFirstAndLast, bool collideConnected)
         {
             List<RevoluteJoint> joints = new List<RevoluteJoint>(bodies.Count + 1);
 
@@ -200,7 +200,7 @@ namespace Alis.Core.Physic.Common
             {
                 RevoluteJoint joint = new RevoluteJoint(bodies[i], bodies[i - 1], localAnchorA, localAnchorB);
                 joint.CollideConnected = collideConnected;
-                world.Add(joint);
+                worldPhysic.Add(joint);
                 joints.Add(joint);
             }
 
@@ -208,7 +208,7 @@ namespace Alis.Core.Physic.Common
             {
                 RevoluteJoint lastjoint = new RevoluteJoint(bodies[0], bodies[bodies.Count - 1], localAnchorA, localAnchorB);
                 lastjoint.CollideConnected = collideConnected;
-                world.Add(lastjoint);
+                worldPhysic.Add(lastjoint);
                 joints.Add(lastjoint);
             }
 

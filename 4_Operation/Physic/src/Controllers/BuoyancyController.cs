@@ -128,7 +128,7 @@ namespace Alis.Core.Physic.Controllers
         public override void Update(float dt)
         {
             _uniqueBodies.Clear();
-            World.QueryAabb(fixture =>
+            WorldPhysic.QueryAabb(fixture =>
             {
                 if (fixture.GetBody.GetBodyType == BodyType.Static || !fixture.GetBody.Awake)
                 {

@@ -66,11 +66,11 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class
         /// </summary>
-        /// <param name="world">The world</param>
-        private BreakableBody(World world)
+        /// <param name="worldPhysic">The world</param>
+        private BreakableBody(WorldPhysic worldPhysic)
         {
-            World = world;
-            World.ContactManager.PostSolve += PostSolve;
+            WorldPhysic = worldPhysic;
+            WorldPhysic.ContactManager.PostSolve += PostSolve;
 
             State = BreakableBodyState.Unbroken;
         }
@@ -78,14 +78,14 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class
         /// </summary>
-        /// <param name="world">The world</param>
+        /// <param name="worldPhysic">The world</param>
         /// <param name="vertices">The vertices</param>
         /// <param name="density">The density</param>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
-        public BreakableBody(World world, IEnumerable<Vertices> vertices, float density, Vector2F position = new Vector2F(), float rotation = 0) : this(world)
+        public BreakableBody(WorldPhysic worldPhysic, IEnumerable<Vertices> vertices, float density, Vector2F position = new Vector2F(), float rotation = 0) : this(worldPhysic)
         {
-            MainBody = World.CreateBody(position, rotation, BodyType.Dynamic);
+            MainBody = WorldPhysic.CreateBody(position, rotation, BodyType.Dynamic);
 
             foreach (Vertices part in vertices)
             {
@@ -98,13 +98,13 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class
         /// </summary>
-        /// <param name="world">The world</param>
+        /// <param name="worldPhysic">The world</param>
         /// <param name="shapes">The shapes</param>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
-        public BreakableBody(World world, IEnumerable<Shape> shapes, Vector2F position = new Vector2F(), float rotation = 0) : this(world)
+        public BreakableBody(WorldPhysic worldPhysic, IEnumerable<Shape> shapes, Vector2F position = new Vector2F(), float rotation = 0) : this(worldPhysic)
         {
-            MainBody = World.CreateBody(position, rotation, BodyType.Dynamic);
+            MainBody = WorldPhysic.CreateBody(position, rotation, BodyType.Dynamic);
 
             foreach (Shape part in shapes)
             {
@@ -116,14 +116,14 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class
         /// </summary>
-        /// <param name="world">The world</param>
+        /// <param name="worldPhysic">The world</param>
         /// <param name="vertices">The vertices</param>
         /// <param name="density">The density</param>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
-        public BreakableBody(World world, Vertices vertices, float density, Vector2F position = new Vector2F(), float rotation = 0) : this(world)
+        public BreakableBody(WorldPhysic worldPhysic, Vertices vertices, float density, Vector2F position = new Vector2F(), float rotation = 0) : this(worldPhysic)
         {
-            MainBody = World.CreateBody(position, rotation, BodyType.Dynamic);
+            MainBody = WorldPhysic.CreateBody(position, rotation, BodyType.Dynamic);
 
 
             List<Vertices> triangles = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Earclip);
@@ -139,7 +139,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <summary>
         ///     Gets the value of the world
         /// </summary>
-        public World World { get; }
+        public WorldPhysic WorldPhysic { get; }
 
         /// <summary>
         ///     Gets the value of the main body
@@ -228,7 +228,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             }
 
             //Unsubsribe from the PostSolve delegate
-            World.ContactManager.PostSolve -= PostSolve;
+            WorldPhysic.ContactManager.PostSolve -= PostSolve;
 
             for (int i = 0; i < Parts.Count; i++)
             {
@@ -239,7 +239,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
 
                 MainBody.Remove(oldFixture);
 
-                Body body = World.CreateBody(MainBody.Position, MainBody.Rotation, BodyType.Dynamic);
+                Body body = WorldPhysic.CreateBody(MainBody.Position, MainBody.Rotation, BodyType.Dynamic);
                 body.Tag = MainBody.Tag;
 
                 Fixture newFixture = body.CreateFixture(shape);
@@ -250,7 +250,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                 body.LinearVelocity = _velocitiesCache[i];
             }
 
-            World.Remove(MainBody);
+            WorldPhysic.Remove(MainBody);
 
             State = BreakableBodyState.Broken;
         }

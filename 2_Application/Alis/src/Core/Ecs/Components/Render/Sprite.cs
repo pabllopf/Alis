@@ -32,25 +32,28 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
+using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Comps;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Stb;
 
-namespace Alis.Core.Ecs.Component.Render
+namespace Alis.Core.Ecs.Components.Render
 {
     /// <summary>
     /// The sprite
     /// </summary>
     
-    public struct Sprite(string nameFile, int depth) : IInitable
+    public struct Sprite(string nameFile, int depth) : IEntityComponent
     {
+
+
         /// <summary>
-        /// Inits the self
+        /// Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(Entity self)
+        public void Update(Entity self)
         {
             if (!string.IsNullOrEmpty(NameFile))
             {
@@ -59,15 +62,6 @@ namespace Alis.Core.Ecs.Component.Render
                 LoadTexture(Path);
                 SetupBuffers();
             }
-        }
-
-        /// <summary>
-        /// Updates the self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void Update(Entity self)
-        {
-            Console.WriteLine($"Sprite {self.EntityID} updated");
         }
         
         /// <summary>

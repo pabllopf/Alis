@@ -43,8 +43,8 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <summary>
         ///     Initializes a new instance of the <see cref="SimpleExplosion" /> class
         /// </summary>
-        /// <param name="world">The world</param>
-        public SimpleExplosion(World world) : base(world) => Power = 1; //linear
+        /// <param name="worldPhysic">The world</param>
+        public SimpleExplosion(WorldPhysic worldPhysic) : base(worldPhysic) => Power = 1; //linear
 
         /// <summary>
         ///     This is the power used in the power function. A value of 1 means the force
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             aabb.UpperBound = pos + new Vector2F(radius);
 
             // Query the world for bodies within the radius.
-            World.QueryAabb(fixture =>
+            WorldPhysic.QueryAabb(fixture =>
             {
                 if (Vector2F.Distance(fixture.GetBody.Position, pos) <= radius)
                 {

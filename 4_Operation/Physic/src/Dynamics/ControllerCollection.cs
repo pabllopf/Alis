@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The world
         /// </summary>
-        private readonly World _world;
+        private readonly WorldPhysic worldPhysic;
 
         /// <summary>
         ///     The controller
@@ -61,8 +61,8 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Initializes a new instance of the <see cref="ControllerCollection" /> class
         /// </summary>
-        /// <param name="world">The world</param>
-        public ControllerCollection(World world) => _world = world;
+        /// <param name="worldPhysic">The world</param>
+        public ControllerCollection(WorldPhysic worldPhysic) => this.worldPhysic = worldPhysic;
 
         /// <summary>
         ///     Gets the value of the is read only

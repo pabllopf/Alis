@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Controllers
         {
             Vector2F f = Vector2F.Zero;
 
-            foreach (Body worldBody in World.BodyList)
+            foreach (Body worldBody in WorldPhysic.BodyList)
             {
                 if (!IsActiveOn(worldBody))
                 {

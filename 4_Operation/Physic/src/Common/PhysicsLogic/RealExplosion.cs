@@ -110,8 +110,8 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
         /// <summary>
         ///     Initializes a new instance of the <see cref="RealExplosion" /> class
         /// </summary>
-        /// <param name="world">The world</param>
-        public RealExplosion(World world) : base(world)
+        /// <param name="worldPhysic">The world</param>
+        public RealExplosion(WorldPhysic worldPhysic) : base(worldPhysic)
         {
             _rdc = new RayDataComparer();
             _data = new List<ShapeData>();
@@ -142,7 +142,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
             int containedShapeCount = 0;
 
             // Query the world for overlapping shapes.
-            World.QueryAabb(
+            WorldPhysic.QueryAabb(
                 fixture =>
                 {
                     if (fixture.TestPoint(ref pos))
@@ -278,7 +278,7 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
 
                 // RaycastOne
                 bool hitClosest = false;
-                World.RayCast((f, p, n, fr) =>
+                WorldPhysic.RayCast((f, p, n, fr) =>
                 {
                     Body body = f.GetBody;
 

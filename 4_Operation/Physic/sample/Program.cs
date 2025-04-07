@@ -50,11 +50,11 @@ namespace Alis.Core.Physic.Sample
 
             Vector2F gravity = new Vector2F(0.0f, -9.8f);
 
-            World world = new World(gravity);
+            WorldPhysic worldPhysic = new WorldPhysic(gravity);
 
             for (int i = 0; i < 100; i++)
             {
-                world.Step(1.0f / 60.0f);
+                worldPhysic.Step(1.0f / 60.0f);
                 Logger.Info($"Step {i}");
             }
 

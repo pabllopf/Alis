@@ -159,7 +159,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The world
         /// </summary>
-        internal World World;
+        internal WorldPhysic WorldPhysic;
 
         /// <summary>
         ///     The xf
@@ -199,7 +199,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Get the parent World of this body. This is null if the body is not attached.
         /// </summary>
-        public World GetWorld => World;
+        public WorldPhysic GetWorldPhysic => WorldPhysic;
 
         /// <remarks>Deprecated in version 1.6</remarks>
 
@@ -222,7 +222,7 @@ namespace Alis.Core.Physic.Dynamics
             get => _bodyType;
             set
             {
-                if ((GetWorld != null) && GetWorld.GetIsLocked)
+                if ((GetWorldPhysic != null) && GetWorldPhysic.GetIsLocked)
                 {
                     throw new InvalidOperationException("The World is locked.");
                 }
@@ -256,15 +256,15 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     ContactEdge ce0 = ce;
                     ce = ce.Next;
-                    GetWorld.ContactManager.Destroy(ce0.Contact);
+                    GetWorldPhysic.ContactManager.Destroy(ce0.Contact);
                 }
 
                 ContactList = null;
 
-                if (GetWorld != null)
+                if (GetWorldPhysic != null)
                 {
                     // Touch the proxies so that new contacts will be created (when appropriate)
-                    IBroadPhase broadPhase = GetWorld.ContactManager.BroadPhase;
+                    IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
                     foreach (Fixture fixture in FixtureList)
                     {
                         fixture.TouchProxies(broadPhase);
@@ -429,7 +429,7 @@ namespace Alis.Core.Physic.Dynamics
             get => _enabled;
             set
             {
-                if ((GetWorld != null) && GetWorld.GetIsLocked)
+                if ((GetWorldPhysic != null) && GetWorldPhysic.GetIsLocked)
                 {
                     throw new InvalidOperationException("The World is locked.");
                 }
@@ -443,7 +443,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (Enabled)
                 {
-                    if (GetWorld != null)
+                    if (GetWorldPhysic != null)
                     {
                         CreateProxies();
                     }
@@ -452,7 +452,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
                 else
                 {
-                    if (GetWorld != null)
+                    if (GetWorldPhysic != null)
                     {
                         DestroyProxies();
                         DestroyContacts();
@@ -509,7 +509,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
 
-                if (GetWorld == null)
+                if (GetWorldPhysic == null)
                 {
                     Xf.P = value;
                 }
@@ -531,7 +531,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 Debug.Assert(!float.IsNaN(value));
 
-                if (GetWorld == null)
+                if (GetWorldPhysic == null)
                 {
                     Sweep.A = value;
                 }
@@ -565,7 +565,7 @@ namespace Alis.Core.Physic.Dynamics
             get => Sweep.LocalCenter;
             set
             {
-                if ((GetWorld != null) && GetWorld.GetIsLocked)
+                if ((GetWorldPhysic != null) && GetWorldPhysic.GetIsLocked)
                 {
                     throw new InvalidOperationException("The World is locked.");
                 }
@@ -597,7 +597,7 @@ namespace Alis.Core.Physic.Dynamics
             get => _mass;
             set
             {
-                if ((GetWorld != null) && GetWorld.GetIsLocked)
+                if ((GetWorldPhysic != null) && GetWorldPhysic.GetIsLocked)
                 {
                     throw new InvalidOperationException("The World is locked.");
                 }
@@ -631,7 +631,7 @@ namespace Alis.Core.Physic.Dynamics
             get => _inertia + Mass * Vector2F.Dot(Sweep.LocalCenter, Sweep.LocalCenter);
             set
             {
-                if ((GetWorld != null) && GetWorld.GetIsLocked)
+                if ((GetWorldPhysic != null) && GetWorldPhysic.GetIsLocked)
                 {
                     throw new InvalidOperationException("The World is locked.");
                 }
@@ -662,7 +662,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void CreateProxies()
         {
-            IBroadPhase broadPhase = GetWorld.ContactManager.BroadPhase;
+            IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList.List.Count; i++)
             {
                 FixtureList.List[i].CreateProxies(broadPhase, ref Xf);
@@ -674,7 +674,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void DestroyProxies()
         {
-            IBroadPhase broadPhase = GetWorld.ContactManager.BroadPhase;
+            IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList.List.Count; i++)
             {
                 FixtureList.List[i].DestroyProxies(broadPhase);
@@ -691,7 +691,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 ContactEdge ce0 = ce;
                 ce = ce.Next;
-                GetWorld.ContactManager.Destroy(ce0.Contact);
+                GetWorldPhysic.ContactManager.Destroy(ce0.Contact);
             }
 
             ContactList = null;
@@ -716,7 +716,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void Add(Fixture fixture)
         {
-            if ((GetWorld != null) && GetWorld.GetIsLocked)
+            if ((GetWorldPhysic != null) && GetWorldPhysic.GetIsLocked)
             {
                 throw new InvalidOperationException("The World is locked.");
             }
@@ -752,22 +752,22 @@ namespace Alis.Core.Physic.Dynamics
                 ResetMassData();
             }
 
-            if (GetWorld != null)
+            if (GetWorldPhysic != null)
             {
                 if (Enabled)
                 {
-                    IBroadPhase broadPhase = GetWorld.ContactManager.BroadPhase;
+                    IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
                     fixture.CreateProxies(broadPhase, ref Xf);
                 }
 
                 // Let the world know we have a new fixture. This will cause new contacts
                 // to be created at the beginning of the next time step.
-                GetWorld.WorldHasNewFixture = true;
+                GetWorldPhysic.WorldHasNewFixture = true;
 
-                FixtureDelegate fixtureAddedHandler = GetWorld.FixtureAdded;
+                FixtureDelegate fixtureAddedHandler = GetWorldPhysic.FixtureAdded;
                 if (fixtureAddedHandler != null)
                 {
-                    fixtureAddedHandler(GetWorld, this, fixture);
+                    fixtureAddedHandler(GetWorldPhysic, this, fixture);
                 }
             }
         }
@@ -784,7 +784,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public virtual void Remove(Fixture fixture)
         {
-            if ((GetWorld != null) && GetWorld.GetIsLocked)
+            if ((GetWorldPhysic != null) && GetWorldPhysic.GetIsLocked)
             {
                 throw new InvalidOperationException("The World is locked.");
             }
@@ -813,13 +813,13 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     // This destroys the contact and removes it from
                     // this body's contact list.
-                    GetWorld.ContactManager.Destroy(c);
+                    GetWorldPhysic.ContactManager.Destroy(c);
                 }
             }
 
             if (Enabled)
             {
-                IBroadPhase broadPhase = GetWorld.ContactManager.BroadPhase;
+                IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
                 fixture.DestroyProxies(broadPhase);
             }
 
@@ -833,10 +833,10 @@ namespace Alis.Core.Physic.Dynamics
             }
 #endif
 
-            FixtureDelegate fixtureRemovedHandler = GetWorld.FixtureRemoved;
+            FixtureDelegate fixtureRemovedHandler = GetWorldPhysic.FixtureRemoved;
             if (fixtureRemovedHandler != null)
             {
-                fixtureRemovedHandler(GetWorld, this, fixture);
+                fixtureRemovedHandler(GetWorldPhysic, this, fixture);
             }
 
             ResetMassData();
@@ -855,7 +855,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             SetTransformIgnoreContacts(ref position, rotation);
 
-            GetWorld.ContactManager.FindNewContacts();
+            GetWorldPhysic.ContactManager.FindNewContacts();
         }
 
         /// <summary>
@@ -881,8 +881,8 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void SetTransformIgnoreContacts(ref Vector2F position, float angle)
         {
-            Debug.Assert(GetWorld != null);
-            if (GetWorld.GetIsLocked)
+            Debug.Assert(GetWorldPhysic != null);
+            if (GetWorldPhysic.GetIsLocked)
             {
                 throw new InvalidOperationException("The World is locked.");
             }
@@ -896,7 +896,7 @@ namespace Alis.Core.Physic.Dynamics
             Sweep.C0 = Sweep.C;
             Sweep.A0 = angle;
 
-            IBroadPhase broadPhase = GetWorld.ContactManager.BroadPhase;
+            IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList.List.Count; i++)
             {
                 FixtureList.List[i].Synchronize(broadPhase, ref Xf, ref Xf);
@@ -1263,7 +1263,7 @@ namespace Alis.Core.Physic.Dynamics
             Transform xf1 = new Transform(Vector2F.Zero, Sweep.A0);
             xf1.P = Sweep.C0 - Complex.Multiply(ref Sweep.LocalCenter, ref xf1.Q);
 
-            IBroadPhase broadPhase = GetWorld.ContactManager.BroadPhase;
+            IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList.List.Count; i++)
             {
                 FixtureList.List[i].Synchronize(broadPhase, ref xf1, ref Xf);
@@ -1421,12 +1421,12 @@ namespace Alis.Core.Physic.Dynamics
         ///     Makes a clone of the body. Fixtures and therefore shapes are not included.
         ///     Use DeepClone() to clone the body, as well as fixtures and shapes.
         /// </summary>
-        /// <param name="world"></param>
+        /// <param name="worldPhysic"></param>
         /// <returns></returns>
-        public Body Clone(World world = null)
+        public Body Clone(WorldPhysic worldPhysic = null)
         {
-            world = world ?? GetWorld;
-            Body body = world.CreateBody(Position, Rotation);
+            worldPhysic = worldPhysic ?? GetWorldPhysic;
+            Body body = worldPhysic.CreateBody(Position, Rotation);
             body._bodyType = _bodyType;
             body.LinearVelocityInternal = LinearVelocityInternal;
             body.AngularVelocity = AngularVelocity;
@@ -1448,11 +1448,11 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Clones the body and all attached fixtures and shapes. Simply said, it makes a complete copy of the body.
         /// </summary>
-        /// <param name="world"></param>
+        /// <param name="worldPhysic"></param>
         /// <returns></returns>
-        public Body DeepClone(World world = null)
+        public Body DeepClone(WorldPhysic worldPhysic = null)
         {
-            Body body = Clone(world ?? GetWorld);
+            Body body = Clone(worldPhysic ?? GetWorldPhysic);
 
             int count = FixtureList.List.Count; //Make a copy of the count. Otherwise it causes an infinite loop.
             for (int i = 0; i < count; i++)
