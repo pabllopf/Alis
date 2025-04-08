@@ -14,7 +14,7 @@ namespace Alis.Core.Ecs.Operations
     {
         private int _archetypeIndex;
         private int _componentIndex;
-        private World _world;
+        private Scene scene;
         private Span<Archetype> _archetypes;
         private Span<T1> _currentSpan1;
         private Span<T2> _currentSpan2;
@@ -24,8 +24,8 @@ namespace Alis.Core.Ecs.Operations
 
         private QueryEnumerator(Query query)
         {
-            _world = query.World;
-            _world.EnterDisallowState();
+            scene = query.Scene;
+            scene.EnterDisallowState();
             _archetypes = query.AsSpan();
             _archetypeIndex = -1;
         }
@@ -49,7 +49,7 @@ namespace Alis.Core.Ecs.Operations
         /// <remarks>This MUST be called when finished with the enumerator!</remarks>
         public void Dispose()
         {
-            _world.ExitDisallowState();
+            scene.ExitDisallowState();
         }
 
         /// <summary>

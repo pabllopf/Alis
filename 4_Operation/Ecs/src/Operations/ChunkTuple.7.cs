@@ -5,7 +5,7 @@ namespace Alis.Core.Ecs.Operations
     public ref struct ChunkTuple<T1, T2, T3, T4, T5, T6, T7>
     {
         /// <summary>
-        /// An enumerator that can be used to enumerate individual <see cref="Entity"/> instances.
+        /// An enumerator that can be used to enumerate individual <see cref="GameObject"/> instances.
         /// </summary>
         public EntityEnumerator.EntityEnumerable Entities;
         public Span<T1> Span1;

@@ -41,15 +41,15 @@ namespace Alis.Core.Ecs.Marshalling
         /// <summary>
         ///     Gets the world using the specified entity
         /// </summary>
-        /// <param name="entity">The entity</param>
+        /// <param name="gameObject">The entity</param>
         /// <returns>The world</returns>
-        public static World GetWorld(Entity entity) => GlobalWorldTables.Worlds.UnsafeIndexNoResize(entity.EntityID);
+        public static Scene GetWorld(GameObject gameObject) => GlobalWorldTables.Worlds.UnsafeIndexNoResize(gameObject.EntityID);
 
         /// <summary>
         ///     Entities the id using the specified entity
         /// </summary>
-        /// <param name="entity">The entity</param>
+        /// <param name="gameObject">The entity</param>
         /// <returns>The int</returns>
-        public static int EntityID(Entity entity) => entity.EntityID;
+        public static int EntityID(GameObject gameObject) => gameObject.EntityID;
     }
 }

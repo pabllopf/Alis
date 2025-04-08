@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs.Events
         /// <summary>
         ///     The delete
         /// </summary>
-        internal FastStack<Action<Entity>> Delete;
+        internal FastStack<Action<GameObject>> Delete;
 
         /// <summary>
         ///     The detach
@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.Events
                 record.Detach = new TagEvent();
                 record.Add = new ComponentEvent();
                 record.Remove = new ComponentEvent();
-                record.Delete = new FastStack<Action<Entity>>();
+                record.Delete = new FastStack<Action<GameObject>>();
             }
         }
     }

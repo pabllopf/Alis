@@ -11,6 +11,6 @@ namespace Alis.Core.Ecs.Operations
         /// <summary>
         ///     Executes the function
         /// </summary>
-        void RunChunk(ReadOnlySpan<Entity> entity, Span<TArg> arg);
+        void RunChunk(ReadOnlySpan<GameObject> entity, Span<TArg> arg);
     }
 }

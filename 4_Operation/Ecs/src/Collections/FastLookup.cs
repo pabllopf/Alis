@@ -70,11 +70,11 @@ namespace Alis.Core.Ecs.Collections
         /// <typeparam name="T">The </typeparam>
         /// <param name="id">The id</param>
         /// <param name="archetype">The archetype</param>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <param name="edgeType">The edge type</param>
         /// <returns>The entity type</returns>
         
-        public ArchetypeID FindAdjacentArchetypeId<T>(T id, EntityType archetype, World world, ArchetypeEdgeType edgeType)
+        public ArchetypeID FindAdjacentArchetypeId<T>(T id, EntityType archetype, Scene scene, ArchetypeEdgeType edgeType)
             where T : ITypeID
         {
             uint key = GetKey(id.Value, archetype);
@@ -85,15 +85,15 @@ namespace Alis.Core.Ecs.Collections
                 return new EntityType(InlineArray8<ushort>.Get(ref _ids, index));
             }
 
-            if (world.ArchetypeGraphEdges.TryGetValue(edgeKey = typeof(T) == typeof(ComponentID) ? ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType) : ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out Archetype destination))
+            if (scene.ArchetypeGraphEdges.TryGetValue(edgeKey = typeof(T) == typeof(ComponentID) ? ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType) : ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out Archetype destination))
             {
                 //warm/cool depending on number of times they add/remove
                 return destination.ID;
             }
 
             //cold path
-            Archetype dest = Archetype.GetAdjacentArchetypeCold(world, edgeKey);
-            world.ArchetypeGraphEdges.Add(edgeKey, dest);
+            Archetype dest = Archetype.GetAdjacentArchetypeCold(scene, edgeKey);
+            scene.ArchetypeGraphEdges.Add(edgeKey, dest);
             return dest.ID;
         }
 

@@ -119,11 +119,11 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Invokes the component event and consume using the specified entity
         /// </summary>
-        /// <param name="entity">The entity</param>
+        /// <param name="gameObject">The entity</param>
         /// <param name="event">The event</param>
-        internal void InvokeComponentEventAndConsume(Entity entity, GenericEvent @event)
+        internal void InvokeComponentEventAndConsume(GameObject gameObject, GenericEvent @event)
         {
-            Component.ComponentTable[_componentType.RawIndex].Storage.InvokeEventWithAndConsume(@event, entity, _index);
+            Component.ComponentTable[_componentType.RawIndex].Storage.InvokeEventWithAndConsume(@event, gameObject, _index);
         }
 
         /// <summary>

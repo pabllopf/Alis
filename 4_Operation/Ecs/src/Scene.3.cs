@@ -1,0 +1,110 @@
+﻿using System;
+using System.Runtime.CompilerServices;
+using Alis.Core.Ecs.Arch;
+using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Operations;
+using Alis.Core.Ecs.Updating;
+
+namespace Alis.Core.Ecs
+{
+    
+    partial class Scene
+    {
+       
+        /// <summary>
+        /// Creates an <see cref="T:Alis.Entity" /> with the given component(s)
+        /// </summary>
+        /// <returns>An <see cref="T:Alis.Entity" /> that can be used to acsess the component data</returns>
+        [SkipLocalsInit]
+        public GameObject Create<T1, T2, T3>(in T1 comp1, in T2 comp2, in T3 comp3)
+        {
+            Archetype existingArchetype = Archetype<T1, T2, T3>.CreateNewOrGetExistingArchetype(this);
+
+            EntityLocation entityLocation = new EntityLocation();
+            Unsafe.SkipInit(out int physicalIndex);
+            ComponentStorageBase[] writeStorage;
+
+            ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
+            if (this.AllowStructualChanges)
+            {
+                writeStorage = existingArchetype.Components;
+                local1 = ref existingArchetype.CreateEntityLocation(EntityFlags.None, out entityLocation);
+                physicalIndex = entityLocation.Index;
+            }
+            else
+            {
+                local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
+                entityLocation.Archetype = this.DeferredCreateArchetype;
+            }
+
+            (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
+            entityLocation.Version = version;
+            this.EntityTable[num] = entityLocation;
+            ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3>.OfComponent<T1>.Index))[physicalIndex];
+            local2 = comp1;
+            ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3>.OfComponent<T2>.Index))[physicalIndex];
+            local3 = comp2;
+            ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3>.OfComponent<T3>.Index))[physicalIndex];
+            local4 = comp3;
+            GameObject gameObject = new GameObject(this.ID, version, num);
+            ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
+            initer1?.Invoke(gameObject, ref local2);
+
+            ComponentDelegates<T2>.InitDelegate initer2 = Component<T2>.Initer;
+            initer2?.Invoke(gameObject, ref local3);
+
+            ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
+            initer3?.Invoke(gameObject, ref local4);
+
+            this.EntityCreatedEvent.Invoke(gameObject);
+            return gameObject;
+        }
+
+        /// <summary>Creates a large amount of entities quickly</summary>
+        /// <param name="count">The number of entities to create</param>
+        /// <returns>The entities created and their component spans</returns>
+        [SkipLocalsInit]
+        public ChunkTuple<T1, T2, T3> CreateMany<T1, T2, T3>(int count)
+        {
+            if (count < 0)
+            {
+                throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
+            }
+
+            Archetype existingArchetype = Archetype<T1, T2, T3>.CreateNewOrGetExistingArchetype(this);
+            int entityCount = existingArchetype.EntityCount;
+            this.EntityTable.EnsureCapacity(this.EntityCount + count);
+            Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
+            if (this.EntityCreatedEvent.HasListeners)
+            {
+                Span<EntityIdOnly> span = entityLocations;
+                for (int index = 0; index < span.Length; ++index)
+                    this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
+            }
+
+            ChunkTuple<T1, T2, T3> many = new ChunkTuple<T1, T2, T3>
+            {
+                Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+            };
+            ref ChunkTuple<T1, T2, T3> local1 = ref many;
+            Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
+            ref Span<T1> local2 = ref componentSpan1;
+            int start1 = entityCount;
+            Span<T1> span1 = local2.Slice(start1, local2.Length - start1);
+            local1.Span1 = span1;
+            ref ChunkTuple<T1, T2, T3> local3 = ref many;
+            Span<T2> componentSpan2 = existingArchetype.GetComponentSpan<T2>();
+            ref Span<T2> local4 = ref componentSpan2;
+            int start2 = entityCount;
+            Span<T2> span2 = local4.Slice(start2, local4.Length - start2);
+            local3.Span2 = span2;
+            ref ChunkTuple<T1, T2, T3> local5 = ref many;
+            Span<T3> componentSpan3 = existingArchetype.GetComponentSpan<T3>();
+            ref Span<T3> local6 = ref componentSpan3;
+            int start3 = entityCount;
+            Span<T3> span3 = local6.Slice(start3, local6.Length - start3);
+            local5.Span3 = span3;
+            return many;
+        }
+    }
+}

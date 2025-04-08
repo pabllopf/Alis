@@ -40,7 +40,7 @@ namespace Alis.Core.Ecs.Operations
         /// <summary>
         ///     Executes the function
         /// </summary>
-        void RunChunk(ReadOnlySpan<Entity> entity);
+        void RunChunk(ReadOnlySpan<GameObject> entity);
     }
 
     /// <summary>
@@ -52,6 +52,6 @@ namespace Alis.Core.Ecs.Operations
         /// <summary>
         ///     Executes the function
         /// </summary>
-        void RunChunk(ReadOnlySpan<Entity> entity, TUniform uniform);
+        void RunChunk(ReadOnlySpan<GameObject> entity, TUniform uniform);
     }
 }

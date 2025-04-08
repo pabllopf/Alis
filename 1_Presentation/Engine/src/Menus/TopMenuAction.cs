@@ -34,8 +34,6 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
-using Alis.Core.EcsOld.Component.Render;
-using Alis.Core.EcsOld.Entity;
 using Alis.Extension.Graphic.ImGui.Native;
 using MonoMac.AppKit;
 
@@ -159,7 +157,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Save()
         {
-            _spaceWork.VideoGame.Save();
+            //_spaceWork.VideoGame.Save();
             string file = AppDomain.CurrentDomain.BaseDirectory + "settings.ini";
             if (File.Exists(file))
             {
@@ -239,7 +237,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void NewScene()
         {
-            Scene scene = new Scene().Builder()
+            /*Scene scene = new Scene().Builder()
                 .Name("New Scene")
                 .Add<GameObject>(camera => camera
                     .Name("Main Camera")
@@ -249,7 +247,7 @@ namespace Alis.App.Engine.Menus
 
             _spaceWork.VideoGame.Context.SceneManager.Add(scene);
             _spaceWork.VideoGame.Save();
-            _spaceWork.VideoGame.Context.SceneManager.LoadScene(scene);
+            _spaceWork.VideoGame.Context.SceneManager.LoadScene(scene);*/
         }
 
         /// <summary>
@@ -278,7 +276,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void SaveProject()
         {
-            _spaceWork.VideoGame.Save();
+            //_spaceWork.VideoGame.Save();
             ImGui.SaveIniSettingsToDisk(AppDomain.CurrentDomain.BaseDirectory + "settings.ini");
         }
 

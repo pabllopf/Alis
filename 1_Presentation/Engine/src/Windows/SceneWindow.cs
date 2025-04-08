@@ -37,10 +37,6 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.EcsOld.Component.Collider;
-using Alis.Core.EcsOld.Component.Render;
-using Alis.Core.EcsOld.Entity;
-using Alis.Core.EcsOld.System;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Physic.Dynamics;
@@ -101,7 +97,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The selected game object
         /// </summary>
-        private GameObject selectedGameObject;
+        //private GameObject selectedGameObject;
 
         /// <summary>
         ///     The textureopen gl id
@@ -130,6 +126,7 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public void Initialize()
         {
+            /*
             SpaceWork.VideoGame = VideoGame
                 .Create()
                 .Settings(setting => setting
@@ -314,7 +311,7 @@ namespace Alis.App.Engine.Windows
             SpaceWork.VideoGame.Load();
             SpaceWork.VideoGame.StartPreview();
 
-            SpaceWork.RendererGame = SpaceWork.VideoGame.Context.GraphicManager.Renderer;
+            SpaceWork.RendererGame = SpaceWork.VideoGame.Context.GraphicManager.Renderer;*/
         }
 
         /// <summary>
@@ -345,7 +342,7 @@ namespace Alis.App.Engine.Windows
         public void Render()
         {
             // Ejecutar el método de vista previa del videojuego
-            SpaceWork.VideoGame.RunPreview();
+           // SpaceWork.VideoGame.RunPreview();
 
             // Leer los píxeles del renderer de SDL
             RectangleI rect = new RectangleI(0, 0, 800, 600);
@@ -483,6 +480,7 @@ namespace Alis.App.Engine.Windows
                     ImGui.EndMenuBar();
                 }
 
+                /*
                 if (activeButtons.Contains(ActiveButton.InfoCircle))
                 {
                     // Display information as a simple overlay at the top right corner
@@ -503,8 +501,9 @@ namespace Alis.App.Engine.Windows
                     ImGui.Text($"FPS: {fps:F2}");
 
                     ImGui.End();
-                }
+                }*/
 
+                /*
                 // if Grid is active render the grid:
                 if (activeButtons.Contains(ActiveButton.Grid))
                 {
@@ -513,7 +512,7 @@ namespace Alis.App.Engine.Windows
                 else
                 {
                     SpaceWork.VideoGame.Context.Setting.Graphic.HasGrid = false;
-                }
+                }*/
 
 
                 // Obtener el tamaño disponible en el contenedor de ImGui
@@ -551,6 +550,7 @@ namespace Alis.App.Engine.Windows
                     new Vector4F(0, 0, 0, 0)); // Sin borde
             }
 
+            /*
             if (activeButton == ActiveButton.HandSpock)
             {
                 if (selectedGameObject != null)
@@ -607,7 +607,7 @@ namespace Alis.App.Engine.Windows
                     isDragging = false;
                 }
             }
-
+*/
             // Terminar la ventana de ImGui
             ImGui.End();
         }
@@ -683,11 +683,13 @@ namespace Alis.App.Engine.Windows
 
             Logger.Info($"Mouse Position Relative To Texture Centered: {mousePositionRelativeToTextureCentered.X}, {mousePositionRelativeToTextureCentered.Y}");
 
-            Vector2F worldPos = SpaceWork.VideoGame.Context.GraphicManager.ScreenToWorld(mousePositionRelativeToTextureCentered, textureSize);
+            //Vector2F worldPos = SpaceWork.VideoGame.Context.GraphicManager.ScreenToWorld(mousePositionRelativeToTextureCentered, textureSize);
 
+            Vector2F worldPos = new Vector2F();
             return worldPos;
         }
 
+        /*
         /// <summary>
         ///     Finds the game object under mouse using the specified mouse pos
         /// </summary>
@@ -707,7 +709,9 @@ namespace Alis.App.Engine.Windows
 
             return null;
         }
-
+*/
+        
+        /*
         /// <summary>
         ///     Gets the game object bounds using the specified game object
         /// </summary>
@@ -724,8 +728,9 @@ namespace Alis.App.Engine.Windows
                 scale.X,
                 scale.Y
             );
-        }
+        }*/
 
+        /*
         /// <summary>
         ///     Draws the selection rectangle using the specified game object
         /// </summary>
@@ -764,7 +769,9 @@ namespace Alis.App.Engine.Windows
                 selectionRectangle.Get<BoxCollider>().Body.Position = gameObject.Transform.Position;
                 selectionRectangle.Get<BoxCollider>().Body.Rotation = gameObject.Transform.Rotation;
             }
-        }
+        }*/
+        
+        /*
 
         /// <summary>
         ///     Handles the object manipulation
@@ -783,6 +790,6 @@ namespace Alis.App.Engine.Windows
             }
 
             // Agregar lógica para rotación o redimensionado según inputs adicionales
-        }
+        }*/
     }
 }

@@ -199,7 +199,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             float pixelsPerMeter = PixelsPerMeter;
             Setting contextSetting = Context.Setting;
             PhysicSetting physicSettings = contextSetting.Physic;
-            Color debugColor = physicSettings.DebugColor;
             Color backgrounColor = contextSetting.Graphic.BackgroundColor;
 
             Glfw.PollEvents();
@@ -210,14 +209,14 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // Clear the screen
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
 
-            World world = Context.SceneManager.World;
+            Ecs.Scene scene = Context.SceneManager.Scene;
             
-            foreach (ChunkTuple<Camera> chunk in world.Query<With<Camera>>().EnumerateChunks<Camera>())
+            foreach (ChunkTuple<Camera> chunk in scene.Query<With<Camera>>().EnumerateChunks<Camera>())
             {
                 Span<Camera> cameras = chunk.Span;
                 foreach (Camera camera in cameras)
                 {
-                    foreach (ChunkTuple<Sprite> chunkSprites in world.Query<With<Sprite>>().EnumerateChunks<Sprite>())
+                    foreach (ChunkTuple<Sprite> chunkSprites in scene.Query<With<Sprite>>().EnumerateChunks<Sprite>())
                     {
                         Span<Sprite> sprites = chunkSprites.Span;
                         foreach (Sprite sprite in sprites)

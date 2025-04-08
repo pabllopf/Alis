@@ -67,7 +67,7 @@ namespace Alis.Core.Ecs.Arch
         /// <summary>
         ///     The world
         /// </summary>
-        internal static Table<World> Worlds = new Table<World>(2);
+        internal static Table<Scene> Worlds = new Table<Scene>(2);
 
         /// <summary>
         ///     The buffer change lock
@@ -87,7 +87,7 @@ namespace Alis.Core.Ecs.Arch
         {
             byte[][] table = ComponentTagLocationTable;
             int tableSize = ComponentTagTableBufferSize;
-            Span<World> worlds = Worlds.AsSpan();
+            Span<Scene> worlds = Worlds.AsSpan();
 
             //when adding a component, we only care about changing the length
             if (tableSize == idValue)
@@ -102,7 +102,7 @@ namespace Alis.Core.Ecs.Arch
                     //componentsForArchetype.AsSpan(tableSize).Fill(DefaultNoTag);
 
                     //update world archetypes
-                    foreach (World world in worlds)
+                    foreach (Scene world in worlds)
                     {
                         if (world is not null && world.WorldArchetypeTable[i] is Archetype archetype)
                         {

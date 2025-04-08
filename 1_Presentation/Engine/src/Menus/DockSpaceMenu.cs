@@ -27,13 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.EcsOld.Entity;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 
@@ -137,6 +135,7 @@ namespace Alis.App.Engine.Menus
 
                 // Segundo conjunto de botones: en el centro
 
+                /*
                 Scene scene = SpaceWork.VideoGame.Context.SceneManager.CurrentScene;
                 List<Scene> scenes = SpaceWork.VideoGame.Context.SceneManager.Scenes;
 
@@ -156,7 +155,7 @@ namespace Alis.App.Engine.Menus
                     }
 
                     ImGui.EndCombo();
-                }
+                }*/
 
 
                 ImGui.SameLine();

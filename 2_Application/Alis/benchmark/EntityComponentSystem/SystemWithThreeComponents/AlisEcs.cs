@@ -112,10 +112,10 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
             {
                 for (int i = 0; i < entityCount; i++)
                 {
-                    World.Create<Component1, Component2, Component3>(default(Component1), new Component2 {Value = 1}, new Component3 {Value = 1});
+                    Scene.Create<Component1, Component2, Component3>(default(Component1), new Component2 {Value = 1}, new Component3 {Value = 1});
                 }
 
-                Query = World.Query<With<Component1>, With<Component2>, With<Component3>>();
+                Query = Scene.Query<With<Component1>, With<Component2>, With<Component3>>();
             }
         }
 

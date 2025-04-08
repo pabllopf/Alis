@@ -28,9 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.EcsOld.Component.Audio;
-using Alis.Core.EcsOld.Entity;
-using Alis.Core.EcsOld.System;
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.System;
+
+
 
 namespace Alis.Sample.Space.Simulator
 {
@@ -49,33 +50,25 @@ namespace Alis.Sample.Space.Simulator
                 .Create()
                 .Settings(setting => setting
                     .General(general => general
-                        .Name("Space Simulator")
+                        .Name("T-Rex Dino Game")
                         .Author("Pablo Perdomo Falcón")
-                        .Description("Space simulator")
+                        .Description("T-Rex Dino Game")
                         .License("GNU General Public License v3.0")
+                        .Icon("app.bmp")
                         .Build())
                     .Audio(audio => audio
                         .Build())
                     .Graphic(graphic => graphic
+                        .Resolution(800, 600)
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
-                        .Debug(true)
-                        .DebugColor(Color.Red)
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
-                            .AddComponent<AudioSource>(audioSource => audioSource
-                                .Builder()
-                                .PlayOnAwake(true)
-                                .SetAudioClip(audioClip => audioClip
-                                    .FilePath("soundtrack.wav")
-                                    .Volume(100.0f)
-                                    .Build())
-                                .Build())
                             .Build())
                         .Build())
                     .Build())

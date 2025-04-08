@@ -46,16 +46,16 @@ namespace Alis.Core.Ecs.Sample
         [Sample]
         public static void Update_Component()
         {
-            using World world = new World();
+            using Scene scene = new Scene();
 
             //Create three entities
             for (int i = 0; i < 3; i++)
             {
-                world.Create<ConsoleText>(new(ConsoleColor.Blue));
+                scene.Create<ConsoleText>(new(ConsoleColor.Blue));
             }
 
             //Update the three entities
-            world.Update();
+            scene.Update();
         }
 
         /// <summary>
@@ -64,19 +64,19 @@ namespace Alis.Core.Ecs.Sample
         [Sample]
         public static void Create_Component()
         {
-            using World world = new World();
+            using Scene scene = new Scene();
 
             //Create three entities
             for (int i = 0; i < 100_000; i++)
             {
-                world.Create<ConsoleText>(new(ConsoleColor.Blue));
+                scene.Create<ConsoleText>(new(ConsoleColor.Blue));
             }
         }
         
         /// <summary>
         /// The id
         /// </summary>
-        private static readonly EntityType _entityAlisType = Entity.EntityTypeOf([Component<Component1>.ID], []);
+        private static readonly EntityType _entityAlisType = GameObject.EntityTypeOf([Component<Component1>.ID], []);
         
         /// <summary>
         /// Creates the entity
@@ -84,14 +84,14 @@ namespace Alis.Core.Ecs.Sample
         [Sample]
         public static void Create_Entity()
         {
-            using World world = new World();
+            using Scene scene = new Scene();
             
-            world.EnsureCapacity(_entityAlisType, 1000);
+            scene.EnsureCapacity(_entityAlisType, 1000);
 
             for (int i = 0; i < 1000; i++)
             {
-                Entity entity = world.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11), default(Component12), default(Component13), default(Component14), default(Component15), default(Component16));
-                Console.WriteLine(entity.EntityID);
+                GameObject gameObject = scene.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11), default(Component12), default(Component13), default(Component14), default(Component15), default(Component16));
+                Console.WriteLine(gameObject.EntityID);
             }
         }
 
@@ -106,12 +106,12 @@ namespace Alis.Core.Ecs.Sample
             //add delta time as a float
             uniforms.Add(0.5f);
 
-            using World world = new World(uniforms);
+            using Scene scene = new Scene(uniforms);
 
-            world.Create<Vel, Pos>(default(Vel), default(Pos));
-            world.Create<Pos>(default(Pos));
+            scene.Create<Vel, Pos>(default(Vel), default(Pos));
+            scene.Create<Pos>(default(Pos));
 
-            world.Update();
+            scene.Update();
         }
 
 
@@ -123,14 +123,14 @@ namespace Alis.Core.Ecs.Sample
         {
             DefaultUniformProvider provider = new DefaultUniformProvider();
             provider.Add<byte>(5);
-            using World world = new World(provider);
+            using Scene scene = new Scene(provider);
 
             for (int i = 0; i < 5; i++)
             {
-                world.Create(i);
+                scene.Create(i);
             }
 
-            world.Query<With<int>>().Delegate((ref int x) => Console.Write($"{x++}, "));
+            scene.Query<With<int>>().Delegate((ref int x) => Console.Write($"{x++}, "));
             Console.WriteLine();
         }
 
@@ -141,8 +141,8 @@ namespace Alis.Core.Ecs.Sample
         [Sample]
         public static void Entities()
         {
-            using World world = new World();
-            Entity ent = world.Create<double>(2);
+            using Scene scene = new Scene();
+            GameObject ent = scene.Create<double>(2);
             //true
             Console.WriteLine(ent.IsAlive);
             //true
@@ -174,20 +174,20 @@ namespace Alis.Core.Ecs.Sample
         [Sample]
         public static void SimpleGame()
         {
-            World world = new World();
+            Scene scene = new Scene();
 
             //create
-            Entity entity = world.Create<Position, Velocity, Character>(new(4, 6), new(2, 0), new('@'));
+            GameObject gameObject = scene.Create<Position, Velocity, Character>(new(4, 6), new(2, 0), new('@'));
 
             //simulate 20 frames
             for (int i = 0; i < 20; i++)
             {
-                world.Update();
+                scene.Update();
                 Thread.Sleep(100);
                 Console.Clear();
             }
 
-            Position finalPos = entity.Get<Position>();
+            Position finalPos = gameObject.Get<Position>();
             Console.WriteLine($"Position: X: {finalPos.X} Y: {finalPos.Y}");
         }
 
@@ -221,12 +221,12 @@ namespace Alis.Core.Ecs.Sample
             /// </summary>
             public int DY = dy;
 
-            public void Init(Entity self)
+            public void Init(GameObject self)
             {
                 Console.WriteLine("Init");
             }
 
-            public void Update(Entity self)
+            public void Update(GameObject self)
             {
                 self.Get<Position>().X += DX;
                 self.Get<Position>().Y += DY;
@@ -243,7 +243,7 @@ namespace Alis.Core.Ecs.Sample
             /// </summary>
             public char Char = c;
             
-            public void Update(Entity self)
+            public void Update(GameObject self)
             {
                 Position pos = self.Get<Position>();
                 Console.SetCursorPosition(pos.X, pos.Y);
@@ -274,21 +274,21 @@ namespace Alis.Core.Ecs.Sample
         /// <summary>
         ///     Updates the entity
         /// </summary>
-        /// <param name="entity">The entity</param>
-        public void Update(Entity entity)
+        /// <param name="gameObject">The entity</param>
+        public void Update(GameObject gameObject)
         {
-            Console.WriteLine(entity.Has<Vel>() ? "I have velocity!" : "No velocity here!");
+            Console.WriteLine(gameObject.Has<Vel>() ? "I have velocity!" : "No velocity here!");
         }
     }
 
     internal record struct Vel(float DX) : IInitable, IEntityComponent
     {
-        public void Update(Entity self)
+        public void Update(GameObject self)
         {
            Console.WriteLine("entity update:" + self.EntityID);
         }
 
-        public void Init(Entity self)
+        public void Init(GameObject self)
         {
             Console.WriteLine("entiti init vel: " + self.EntityID);
         }
@@ -300,7 +300,7 @@ namespace Alis.Core.Ecs.Sample
     internal struct ConsoleText(ConsoleColor Color) : IEntityComponent
     {
 
-        public void Update(Entity self)
+        public void Update(GameObject self)
         {
             Console.ForegroundColor = Color;
             Console.Write(self.Get<string>());

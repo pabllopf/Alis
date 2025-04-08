@@ -20,23 +20,23 @@ namespace Alis.Core.Ecs.Events
         /// <summary>
         ///     The first
         /// </summary>
-        private Action<Entity> _first;
+        private Action<GameObject> _first;
 
         /// <summary>
         ///     The second
         /// </summary>
-        private Action<Entity> _second;
+        private Action<GameObject> _second;
 
         /// <summary>
         ///     The entity
         /// </summary>
-        private FastStack<Action<Entity>> _invokationList = new FastStack<Action<Entity>>();
+        private FastStack<Action<GameObject>> _invokationList = new FastStack<Action<GameObject>>();
 
         /// <summary>
         ///     Adds the action
         /// </summary>
         /// <param name="action">The action</param>
-        public void Add(Action<Entity> action)
+        public void Add(Action<GameObject> action)
         {
             if (_first is null)
             {
@@ -56,12 +56,12 @@ namespace Alis.Core.Ecs.Events
         ///     Removes the action
         /// </summary>
         /// <param name="action">The action</param>
-        public void Remove(Action<Entity> action)
+        public void Remove(Action<GameObject> action)
         {
             if (_first == action)
             {
                 _first = null;
-                if (_invokationList.TryPop(out Action<Entity> v))
+                if (_invokationList.TryPop(out Action<GameObject> v))
                 {
                     _first = v;
                 }
@@ -69,7 +69,7 @@ namespace Alis.Core.Ecs.Events
             else if (_second == action)
             {
                 _second = null;
-                if (_invokationList.TryPop(out Action<Entity> v))
+                if (_invokationList.TryPop(out Action<GameObject> v))
                 {
                     _second = v;
                 }
@@ -83,28 +83,28 @@ namespace Alis.Core.Ecs.Events
         /// <summary>
         ///     Invokes the entity
         /// </summary>
-        /// <param name="entity">The entity</param>
-        public readonly void Invoke(Entity entity)
+        /// <param name="gameObject">The entity</param>
+        public readonly void Invoke(GameObject gameObject)
         {
             if (_first is not null)
             {
-                Execute(entity);
+                Execute(gameObject);
             }
         }
 
         /// <summary>
         ///     Executes the entity
         /// </summary>
-        /// <param name="entity">The entity</param>
-        private readonly void Execute(Entity entity)
+        /// <param name="gameObject">The entity</param>
+        private readonly void Execute(GameObject gameObject)
         {
-            _first!.Invoke(entity);
+            _first!.Invoke(gameObject);
             if (_second is not null)
             {
-                _second.Invoke(entity);
-                foreach (Action<Entity> item in _invokationList.AsSpan())
+                _second.Invoke(gameObject);
+                foreach (Action<GameObject> item in _invokationList.AsSpan())
                 {
-                    item.Invoke(entity);
+                    item.Invoke(gameObject);
                 }
             }
         }

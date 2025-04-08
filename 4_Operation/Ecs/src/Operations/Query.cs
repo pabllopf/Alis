@@ -51,11 +51,11 @@ namespace Alis.Core.Ecs.Operations
         /// <summary>
         ///     Initializes a new instance of the <see cref="Query" /> class
         /// </summary>
-        /// <param name="world">The world</param>
+        /// <param name="scene">The world</param>
         /// <param name="rules">The rules</param>
-        internal Query(World world, FastImmutableArray<Rule> rules)
+        internal Query(Scene scene, FastImmutableArray<Rule> rules)
         {
-            World = world;
+            Scene = scene;
             _rules = rules;
             foreach (Rule rule in rules)
             {
@@ -70,7 +70,7 @@ namespace Alis.Core.Ecs.Operations
         /// <summary>
         ///     Gets or inits the value of the world
         /// </summary>
-        internal World World { get; init; }
+        internal Scene Scene { get; init; }
 
         /// <summary>
         ///     Gets or inits the value of the include disabled

@@ -13,6 +13,6 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Used only in source generation
         /// </summary>
-        public delegate void InitDelegate(Entity entity, ref T component);
+        public delegate void InitDelegate(GameObject gameObject, ref T component);
     }
 }

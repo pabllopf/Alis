@@ -54,7 +54,7 @@ namespace Alis.Core.Ecs.Operations
         /// <summary>
         ///     The world
         /// </summary>
-        private readonly World _world;
+        private readonly Scene scene;
 
         /// <summary>
         ///     The archetypes
@@ -72,8 +72,8 @@ namespace Alis.Core.Ecs.Operations
         /// <param name="query">The query</param>
         private QueryEnumerator(Query query)
         {
-            _world = query.World;
-            _world.EnterDisallowState();
+            scene = query.Scene;
+            scene.EnterDisallowState();
             _archetypes = query.AsSpan();
             _archetypeIndex = -1;
         }
@@ -91,7 +91,7 @@ namespace Alis.Core.Ecs.Operations
         /// </summary>
         public void Dispose()
         {
-            _world.ExitDisallowState();
+            scene.ExitDisallowState();
         }
 
         /// <summary>
