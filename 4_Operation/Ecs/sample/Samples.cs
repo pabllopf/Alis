@@ -41,6 +41,11 @@ namespace Alis.Core.Ecs.Sample
     internal class Samples
     {
         /// <summary>
+        ///     The id
+        /// </summary>
+        private static readonly EntityType _entityAlisType = GameObject.EntityTypeOf([Component<Component1>.ID], []);
+
+        /// <summary>
         ///     Updates the component
         /// </summary>
         [Sample]
@@ -72,25 +77,21 @@ namespace Alis.Core.Ecs.Sample
                 scene.Create<ConsoleText>(new(ConsoleColor.Blue));
             }
         }
-        
+
         /// <summary>
-        /// The id
-        /// </summary>
-        private static readonly EntityType _entityAlisType = GameObject.EntityTypeOf([Component<Component1>.ID], []);
-        
-        /// <summary>
-        /// Creates the entity
+        ///     Creates the entity
         /// </summary>
         [Sample]
         public static void Create_Entity()
         {
             using Scene scene = new Scene();
-            
+
             scene.EnsureCapacity(_entityAlisType, 1000);
 
             for (int i = 0; i < 1000; i++)
             {
-                GameObject gameObject = scene.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11), default(Component12), default(Component13), default(Component14), default(Component15), default(Component16));
+                GameObject gameObject = scene.Create(default(Component1), default(Component2), default(Component3), default(Component4), default(Component5), default(Component6), default(Component7), default(Component8), default(Component9), default(Component10), default(Component11), default(Component12), default(Component13), default(Component14), default(Component15),
+                    default(Component16));
                 Console.WriteLine(gameObject.EntityID);
             }
         }
@@ -108,8 +109,8 @@ namespace Alis.Core.Ecs.Sample
 
             using Scene scene = new Scene(uniforms);
 
-            scene.Create<Vel, Pos>(default(Vel), default(Pos));
-            scene.Create<Pos>(default(Pos));
+            scene.Create(default(Vel), default(Pos));
+            scene.Create(default(Pos));
 
             scene.Update();
         }
@@ -150,9 +151,9 @@ namespace Alis.Core.Ecs.Sample
             //false
             Console.WriteLine(ent.Has<bool>());
             //You can also add and remove components
-            ent.Add<string>("I like Alis");
+            ent.Add("I like Alis");
 
-            if (ent.TryGet<string>(out Ref<string> strRef))
+            if (ent.TryGet(out Ref<string> strRef))
             {
                 Console.WriteLine(strRef);
                 //reassign the string value
@@ -169,7 +170,7 @@ namespace Alis.Core.Ecs.Sample
         }
 
         /// <summary>
-        /// Simples the game
+        ///     Simples the game
         /// </summary>
         [Sample]
         public static void SimpleGame()
@@ -193,33 +194,35 @@ namespace Alis.Core.Ecs.Sample
 
 
         /// <summary>
-        /// The position
+        ///     The position
         /// </summary>
-        struct Position(int x, int y)
+        private struct Position(int x, int y)
         {
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             public int X = x;
+
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             public int Y = y;
         }
 
         /// <summary>
-        /// The velocity
+        ///     The velocity
         /// </summary>
-        struct Velocity(int dx, int dy) : IEntityComponent, IInitable
+        private struct Velocity(int dx, int dy) : IEntityComponent, IInitable
         {
             /// <summary>
-            /// The dx
+            ///     The dx
             /// </summary>
-            public int DX = dx;
+            public readonly int DX = dx;
+
             /// <summary>
-            /// The dy
+            ///     The dy
             /// </summary>
-            public int DY = dy;
+            public readonly int DY = dy;
 
             public void Init(GameObject self)
             {
@@ -234,15 +237,15 @@ namespace Alis.Core.Ecs.Sample
         }
 
         /// <summary>
-        /// The character
+        ///     The character
         /// </summary>
-        struct Character(char c) : IEntityComponent
+        private struct Character(char c) : IEntityComponent
         {
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
-            public char Char = c;
-            
+            public readonly char Char = c;
+
             public void Update(GameObject self)
             {
                 Position pos = self.Get<Position>();
@@ -250,7 +253,7 @@ namespace Alis.Core.Ecs.Sample
                 Console.Write(Char);
             }
         }
-        
+
 
         /// <summary>
         ///     The write action
@@ -267,7 +270,7 @@ namespace Alis.Core.Ecs.Sample
             }
         }
     }
-    
+
 
     internal record struct Pos(float X) : IEntityComponent
     {
@@ -285,7 +288,7 @@ namespace Alis.Core.Ecs.Sample
     {
         public void Update(GameObject self)
         {
-           Console.WriteLine("entity update:" + self.EntityID);
+            Console.WriteLine("entity update:" + self.EntityID);
         }
 
         public void Init(GameObject self)
@@ -299,7 +302,6 @@ namespace Alis.Core.Ecs.Sample
     /// </summary>
     internal struct ConsoleText(ConsoleColor Color) : IEntityComponent
     {
-
         public void Update(GameObject self)
         {
             Console.ForegroundColor = Color;

@@ -36,8 +36,7 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The archetype neighbor cache
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     internal struct ArchetypeNeighborCache
     {
         //128 bits
@@ -57,7 +56,6 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
-        
         public int Traverse(ushort value)
         {
             if (value == _keysAndValues._0)
@@ -88,10 +86,7 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ushort</returns>
-        public ushort Lookup(int index)
-        {
-            return Unsafe.Add(ref _keysAndValues._4, index);
-        }
+        public ushort Lookup(int index) => Unsafe.Add(ref _keysAndValues._4, index);
 
         /// <summary>
         ///     Sets the key

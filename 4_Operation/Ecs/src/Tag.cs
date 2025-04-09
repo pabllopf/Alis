@@ -48,10 +48,10 @@ namespace Alis.Core.Ecs
     }
 
 //this entirely piggybacks on top of component
-/// <summary>
-///     The tag class
-/// </summary>
-internal class Tag
+    /// <summary>
+    ///     The tag class
+    /// </summary>
+    internal class Tag
     {
         /// <summary>
         ///     The existing tag ds

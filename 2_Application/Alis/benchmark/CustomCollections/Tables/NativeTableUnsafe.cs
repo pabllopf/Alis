@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NativeTable.cs
+//  File:NativeTableUnsafe.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,27 +35,27 @@ using System.Runtime.InteropServices;
 namespace Alis.Benchmark.CustomCollections.Tables
 {
     /// <summary>
-    /// The native table unsafe
+    ///     The native table unsafe
     /// </summary>
     public unsafe struct NativeTableUnsafe<T> : IDisposable where T : struct
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private static readonly nuint Size = (nuint) Unsafe.SizeOf<T>();
 
         /// <summary>
-        /// The array
+        ///     The array
         /// </summary>
         private T* _array;
 
         /// <summary>
-        /// The length
+        ///     The length
         /// </summary>
         private int _length;
 
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         public ref T this[int index]
         {
@@ -71,17 +71,14 @@ namespace Alis.Benchmark.CustomCollections.Tables
         }
 
         /// <summary>
-        /// Unsafes the index no resize using the specified index
+        ///     Unsafes the index no resize using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        public ref T UnsafeIndexNoResize(int index)
-        {
-            return ref _array[index];
-        }
+        public ref T UnsafeIndexNoResize(int index) => ref _array[index];
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NativeTableUnsafe{T}"/> class
+        ///     Initializes a new instance of the <see cref="NativeTableUnsafe{T}" /> class
         /// </summary>
         /// <param name="initalCapacity">The inital capacity</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
@@ -103,7 +100,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
         }
 
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
@@ -113,7 +110,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
         }
 
         /// <summary>
-        /// Resizes the for using the specified index
+        ///     Resizes the for using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
@@ -125,7 +122,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
         }
 
         /// <summary>
-        /// Ensures the capacity using the specified new capacity
+        ///     Ensures the capacity using the specified new capacity
         /// </summary>
         /// <param name="newCapacity">The new capacity</param>
         public void EnsureCapacity(int newCapacity)
@@ -135,14 +132,13 @@ namespace Alis.Benchmark.CustomCollections.Tables
         }
 
         /// <summary>
-        /// Converts the span
+        ///     Converts the span
         /// </summary>
         /// <returns>A span of t</returns>
-        
-        public Span<T> AsSpan() => System.Runtime.InteropServices.MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), _length);
+        public Span<T> AsSpan() => MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), _length);
 
         /// <summary>
-        /// Gets the value of the span
+        ///     Gets the value of the span
         /// </summary>
         internal Span<T> Span => AsSpan();
     }

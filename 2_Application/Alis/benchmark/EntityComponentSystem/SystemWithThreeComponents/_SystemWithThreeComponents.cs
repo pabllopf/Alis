@@ -28,13 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
 {
     /// <summary>
     ///     The system with three components class
     /// </summary>
-    [BenchmarkCategory(Categories.System), MemoryDiagnoser(false), ShortRunJob, Orderer(BenchmarkDotNet.Order.SummaryOrderPolicy.FastestToSlowest)]
+    [BenchmarkCategory(Categories.System), MemoryDiagnoser(false), ShortRunJob, Orderer(SummaryOrderPolicy.FastestToSlowest)]
 #if CHECK_CACHE_MISSES
     [HardwareCounters(BenchmarkDotNet.Diagnosers.HardwareCounter.CacheMisses)]
 #endif

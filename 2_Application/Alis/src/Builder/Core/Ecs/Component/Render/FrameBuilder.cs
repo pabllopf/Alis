@@ -43,7 +43,7 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         /// <summary>
         ///     The frame
         /// </summary>
-        private Frame frame = new Frame();
+        private Frame frame;
 
         /// <summary>
         ///     Builds this instance

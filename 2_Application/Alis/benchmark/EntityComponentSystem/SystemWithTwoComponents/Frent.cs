@@ -111,7 +111,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             {
                 for (int i = 0; i < entityCount; i++)
                 {
-                    World.Create<Component1, Component2>(default(Component1), new Component2 {Value = 1});
+                    World.Create(default(Component1), new Component2 {Value = 1});
                     for (int j = 0; j < padding; j++)
                     {
                         World.Create();

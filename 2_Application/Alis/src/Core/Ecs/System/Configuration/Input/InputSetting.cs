@@ -33,6 +33,5 @@ namespace Alis.Core.Ecs.System.Configuration.Input
     ///     The input setting class
     /// </summary>
     /// <seealso cref="IInputSetting" />
-    
     public record struct InputSetting : IInputSetting;
 }

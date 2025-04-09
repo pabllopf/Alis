@@ -34,35 +34,34 @@ using BenchmarkDotNet.Attributes;
 namespace Alis.Benchmark.CustomCollections.ArrayPools
 {
     /// <summary>
-    /// The array pools benchmark class
+    ///     The array pools benchmark class
     /// </summary>
-    [MemoryDiagnoser(false)]
-    [ShortRunJob]
+    [MemoryDiagnoser(false), ShortRunJob]
     public class ArrayPoolsBenchmark
     {
         /// <summary>
-        /// The array pool
+        ///     The array pool
         /// </summary>
         private ArrayPool<int> _arrayPool;
-        
+
         /// <summary>
-        /// The fast stack array pool
-        /// </summary>
-        private FastStackArrayPool<int> _fastStackArrayPool;
-        
-        /// <summary>
-        /// The component array pool
+        ///     The component array pool
         /// </summary>
         private ComponentArrayPool<int> _componentArrayPool;
-        
+
         /// <summary>
-        /// Gets or sets the value of the array size
+        ///     The fast stack array pool
+        /// </summary>
+        private FastStackArrayPool<int> _fastStackArrayPool;
+
+        /// <summary>
+        ///     Gets or sets the value of the array size
         /// </summary>
         [Params(16, 32, 64, 128, 256, 512, 1024, 2048, 4096)]
         public int ArraySize { get; set; }
-        
+
         /// <summary>
-        /// Globals the setup
+        ///     Globals the setup
         /// </summary>
         [GlobalSetup]
         public void GlobalSetup()
@@ -71,18 +70,18 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
             _fastStackArrayPool = new FastStackArrayPool<int>();
             _componentArrayPool = new ComponentArrayPool<int>();
         }
-        
+
         /// <summary>
-        /// Creates the array new array
+        ///     Creates the array new array
         /// </summary>
         [Benchmark(Description = "[ARRAY] Create array with FastStackArrayPool")]
         public void CreateArrayNewArray()
         {
             int[] array = new int[ArraySize];
         }
-        
+
         /// <summary>
-        /// Creates the array with array pool
+        ///     Creates the array with array pool
         /// </summary>
         [Benchmark(Description = "[ARRAYPOOL] Create array with FastStackArrayPool")]
         public void CreateArrayWithArrayPool()
@@ -90,9 +89,9 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
             int[] array = _arrayPool.Rent(ArraySize);
             _arrayPool.Return(array);
         }
-        
+
         /// <summary>
-        /// Creates the array with fast stack array pool
+        ///     Creates the array with fast stack array pool
         /// </summary>
         [Benchmark(Description = "[FastStackArrayPool] Create array with FastStackArrayPool")]
         public void CreateArrayWithFastStackArrayPool()
@@ -100,9 +99,9 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
             int[] array = _fastStackArrayPool.Rent(ArraySize);
             _fastStackArrayPool.Return(array);
         }
-        
+
         /// <summary>
-        /// Creates the array with component array pool
+        ///     Creates the array with component array pool
         /// </summary>
         [Benchmark(Description = "[ComponentArrayPool] Create array with FastStackArrayPool")]
         public void CreateArrayWithComponentArrayPool()

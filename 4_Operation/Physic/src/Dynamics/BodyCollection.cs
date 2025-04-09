@@ -43,14 +43,14 @@ namespace Alis.Core.Physic.Dynamics
         , ICollection<Body>, IList<Body>
     {
         /// <summary>
-        ///     The world
-        /// </summary>
-        private readonly WorldPhysic worldPhysic;
-
-        /// <summary>
         ///     The body
         /// </summary>
         internal readonly List<Body> List = new List<Body>(32);
+
+        /// <summary>
+        ///     The world
+        /// </summary>
+        private readonly WorldPhysic worldPhysic;
 
         /// <summary>
         ///     The generation stamp

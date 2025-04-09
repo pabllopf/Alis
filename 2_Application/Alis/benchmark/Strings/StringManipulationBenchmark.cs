@@ -36,7 +36,7 @@ namespace Alis.Benchmark.Strings
     /// <summary>
     ///     The string manipulation benchmark class
     /// </summary>
-     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class StringManipulationBenchmark
     {
         /// <summary>

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
@@ -341,7 +340,6 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a
         ///     <see cref="Matrix4X4" /> object and the corresponding elements of each matrix are equal.
         /// </remarks>
-        
         public override bool Equals(object obj) => obj is Matrix4X4 other && Equals(other);
 
         public static Matrix4X4 operator *(Matrix4X4 a, Matrix4X4 b)

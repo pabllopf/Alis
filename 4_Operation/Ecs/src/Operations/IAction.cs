@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ActionInterfaces.cs
+//  File:IAction.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,12 +30,12 @@
 namespace Alis.Core.Ecs.Operations
 {
     /// <summary>
-    /// The action interface
+    ///     The action interface
     /// </summary>
     public interface IAction<TArg>
     {
         /// <summary>
-        /// Runs the arg
+        ///     Runs the arg
         /// </summary>
         /// <param name="arg">The arg</param>
         void Run(ref TArg arg);

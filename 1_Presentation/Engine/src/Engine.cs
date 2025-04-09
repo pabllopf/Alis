@@ -52,7 +52,6 @@ using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Structs;
-using MonoMac.OpenGL;
 using BeginMode = Alis.Core.Graphic.OpenGL.Enums.BeginMode;
 using BlendEquationMode = Alis.Core.Graphic.OpenGL.Enums.BlendEquationMode;
 using BlendingFactorDest = Alis.Core.Graphic.OpenGL.Enums.BlendingFactorDest;

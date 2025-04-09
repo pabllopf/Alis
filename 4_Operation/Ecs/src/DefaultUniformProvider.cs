@@ -64,6 +64,7 @@ namespace Alis.Core.Ecs
             {
                 throw new ArgumentNullException(nameof(obj));
             }
+
             _uniforms[typeof(T)] = boxed;
             return this;
         }
@@ -81,7 +82,7 @@ namespace Alis.Core.Ecs
             {
                 throw new ArgumentNullException(nameof(type));
             }
-            
+
             if (!type.IsAssignableFrom(@object.GetType()))
             {
                 throw new ArgumentException("Object must be assignable to the type!", nameof(@object));

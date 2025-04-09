@@ -61,10 +61,7 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scenes
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The scene builder</returns>
-        public SceneManagerBuilder Add<T>(Func<SceneBuilder, Scene> value)
-        {
-            return this;
-        }
+        public SceneManagerBuilder Add<T>(Func<SceneBuilder, Scene> value) => this;
 
         /// <summary>
         ///     Builds this instance

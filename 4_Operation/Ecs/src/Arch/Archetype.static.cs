@@ -38,18 +38,15 @@ using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
 namespace Alis.Core.Ecs.Arch
 {
-   
-    
     /// <summary>
     ///     The archetype class
     /// </summary>
     internal static class Archetype<T>
     {
-        
         /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
-        public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[] { Component<T>.ID });
+        public static readonly FastImmutableArray<ComponentID> ArchetypeComponentIDs = new FastImmutableArray<ComponentID>(new[] {Component<T>.ID});
 
         //ArchetypeTypes init first, then ID
         /// <summary>
@@ -318,7 +315,7 @@ namespace Alis.Core.Ecs.Arch
                     }
                 }
             }
-            
+
             ref byte[] componentTable = ref GlobalWorldTables.ComponentTagLocationTable[id];
             componentTable = new byte[GlobalWorldTables.ComponentTagTableBufferSize];
             componentTable.AsSpan().Fill(GlobalWorldTables.DefaultNoTag);

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
@@ -286,7 +285,6 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="value1">The first matrix.</param>
         /// <param name="value2">The second matrix.</param>
         /// <returns>The matrix that contains the summed values of <paramref name="value1" /> and <paramref name="value2" />.</returns>
-        
         public static Matrix3X2 Add(Matrix3X2 value1, Matrix3X2 value2) => value1 + value2;
 
 

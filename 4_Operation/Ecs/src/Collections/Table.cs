@@ -51,7 +51,6 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         public ref T this[int index]
         {
-           
             get
             {
                 T[] buffer = _buffer;
@@ -69,7 +68,6 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        
         private ref T ResizeGet(int index)
         {
             ComponentArrayPool<T>.ResizeArrayFromPool(ref _buffer, (int) BitOperations.RoundUpToPowerOf2((uint) (index + 1)));
@@ -81,14 +79,12 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        
         public ref T UnsafeIndexNoResize(int index) => ref _buffer.UnsafeArrayIndex(index);
 
         /// <summary>
         ///     Ensures the capacity using the specified size
         /// </summary>
         /// <param name="size">The size</param>
-        
         public void EnsureCapacity(int size)
         {
             if (_buffer.Length >= size)
@@ -103,7 +99,6 @@ namespace Alis.Core.Ecs.Collections
         ///     Converts the span
         /// </summary>
         /// <returns>A span of t</returns>
-        
         public Span<T> AsSpan() => _buffer.AsSpan();
     }
 }

@@ -38,8 +38,7 @@ namespace Alis.Core.Ecs.Operations
     /// <summary>
     ///     Encapsulates a check for an entity, used to filter queries
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     public struct Rule : IEquatable<Rule>
     {
         /// <summary>

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.System;
 
@@ -67,9 +66,9 @@ namespace Alis.Sample.Dino
                     .Add<Scene>(gameScene => gameScene
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
+                            .Build())
                         .Build())
                     .Build())
-                .Build())
                 .Build()
                 .Run();
         }

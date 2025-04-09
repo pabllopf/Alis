@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NativeArrayUnsafeVsNativeArraySafe.cs
+//  File:NativeStackVsNativeStackUnsafe.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,30 +33,29 @@ using BenchmarkDotNet.Attributes;
 namespace Alis.Benchmark.CustomCollections.Stacks
 {
     /// <summary>
-    /// The native array unsafe vs native array safe class
+    ///     The native array unsafe vs native array safe class
     /// </summary>
-     [MemoryDiagnoser(false), ShortRunJob]
+    [MemoryDiagnoser(false), ShortRunJob]
     public class NativeStackVsNativeStackUnsafe
     {
         /// <summary>
-        /// The array size
+        ///     The array size
         /// </summary>
-        [Params(10)]
-        public int ArraySize;
-        
+        [Params(10)] public int ArraySize;
+
         /// <summary>
-        /// The fastest stack
+        ///     The fastest stack
         /// </summary>
         private FastStack<int> fastStack;
-        
+
         /// <summary>
-        /// The pooled stack
+        ///     The pooled stack
         /// </summary>
         private PooledStack<int> pooledStack;
-        
+
         // Inicialización
         /// <summary>
-        /// Setup this instance
+        ///     Setup this instance
         /// </summary>
         [GlobalSetup]
         public void Setup()
@@ -64,9 +63,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             fastStack = new FastStack<int>(ArraySize);
             pooledStack = new PooledStack<int>(ArraySize);
         }
-        
+
         /// <summary>
-        /// Fastests the stack array iterate
+        ///     Fastests the stack array iterate
         /// </summary>
         [Benchmark(Description = "[FASTEST] Initialize stack")]
         public void Fastest_Stack_ArrayIterate()
@@ -76,9 +75,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 fastStack[i] = i;
             }
         }
-        
+
         /// <summary>
-        /// Pooleds the stack array iterate
+        ///     Pooleds the stack array iterate
         /// </summary>
         [Benchmark(Description = "[POOLED] Initialize stack")]
         public void Pooled_Stack_ArrayIterate()
@@ -88,9 +87,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 pooledStack[i] = i;
             }
         }
-        
+
         /// <summary>
-        /// Fastests the stack pop
+        ///     Fastests the stack pop
         /// </summary>
         [Benchmark(Description = "[FASTEST] Pop elements")]
         public void Fastest_Stack_Pop()
@@ -100,9 +99,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 _ = fastStack.Pop();
             }
         }
-        
+
         /// <summary>
-        /// Pooleds the stack pop
+        ///     Pooleds the stack pop
         /// </summary>
         [Benchmark(Description = "[POOLED] Pop elements")]
         public void Pooled_Stack_Pop()
@@ -112,10 +111,10 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 _ = pooledStack.Pop();
             }
         }
-        
-        
+
+
         /// <summary>
-        /// Fastests the stack push
+        ///     Fastests the stack push
         /// </summary>
         [Benchmark(Description = "[FASTEST] Push elements")]
         public void Fastest_Stack_Push()
@@ -125,9 +124,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 fastStack.Push(i);
             }
         }
-        
+
         /// <summary>
-        /// Pooleds the stack push
+        ///     Pooleds the stack push
         /// </summary>
         [Benchmark(Description = "[POOLED] Push elements")]
         public void Pooled_Stack_Push()
@@ -137,9 +136,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 pooledStack.Push(i);
             }
         }
-        
+
         /// <summary>
-        /// Fastests the stack peek
+        ///     Fastests the stack peek
         /// </summary>
         [Benchmark(Description = "[FASTEST] Peek elements")]
         public void Fastest_Stack_Peek()
@@ -149,9 +148,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 _ = fastStack.Peek();
             }
         }
-        
+
         /// <summary>
-        /// Pooleds the stack peek
+        ///     Pooleds the stack peek
         /// </summary>
         [Benchmark(Description = "[POOLED] Peek elements")]
         public void Pooled_Stack_Peek()
@@ -161,8 +160,5 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 _ = pooledStack.Peek();
             }
         }
-        
-
-        
     }
 }

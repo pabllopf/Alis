@@ -27,7 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.System;
 
@@ -44,13 +45,22 @@ namespace Alis.Sample.Desktop
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            VideoGame game = new VideoGame();
-
-            game.Context.SceneManager.Scene.Create(new Camera()); 
-            
-            game.Context.SceneManager.Scene.Create(new Sprite("app.bmp", 0));
-            
-            game.Run();
+            VideoGame
+                .Create()
+                .World(world => world
+                    .Add<Scene>(scene => scene
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Camera")
+                            .WithTag("Camera")
+                            .Add<Camera>(new Camera(new Vector2F(0 , 0), new Vector2F(640, 480)))
+                            .Build())
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Simple Sprite")
+                            .Add<Sprite>(new Sprite("app.bmp", 0))
+                            .Build())
+                        .Build())
+                    .Build())
+                .Run();
         }
     }
 }

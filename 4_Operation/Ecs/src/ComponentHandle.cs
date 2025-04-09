@@ -39,8 +39,7 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The component handle
     /// </summary>
-    [StructLayout( LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     public readonly struct ComponentHandle : IEquatable<ComponentHandle>, IDisposable
     {
         /// <summary>

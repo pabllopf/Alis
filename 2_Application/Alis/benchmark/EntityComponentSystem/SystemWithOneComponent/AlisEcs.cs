@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Frent.cs
+//  File:AlisEcs.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -39,19 +39,18 @@ using static Alis.Benchmark.EntityComponentSystem.Contexts.AlisBaseContext;
 namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
 {
     /// <summary>
-    /// The system with one component class
+    ///     The system with one component class
     /// </summary>
     public partial class SystemWithOneComponent
     {
-
         /// <summary>
-        /// The alis
+        ///     The alis
         /// </summary>
         [Context] private readonly AlisContext _alis;
 
 
         /// <summary>
-        /// Alises the query inline
+        ///     Alises the query inline
         /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis_QueryInline()
@@ -61,7 +60,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
 
 
         /// <summary>
-        /// Alises the query delegate
+        ///     Alises the query delegate
         /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis_QueryDelegate()
@@ -71,7 +70,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
 
 
         /// <summary>
-        /// Alises the simd
+        ///     Alises the simd
         /// </summary>
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis_Simd()
@@ -95,20 +94,19 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
 
 
         /// <summary>
-        /// The alis context class
+        ///     The alis context class
         /// </summary>
-        /// <seealso cref="AlisBaseContext"/>
+        /// <seealso cref="AlisBaseContext" />
         private sealed class AlisContext : AlisBaseContext
         {
-
             /// <summary>
-            /// The query
+            ///     The query
             /// </summary>
             public readonly Query Query;
 
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="AlisContext"/> class
+            ///     Initializes a new instance of the <see cref="AlisContext" /> class
             /// </summary>
             /// <param name="entityCount">The entity count</param>
             /// <param name="entityPadding">The entity padding</param>
@@ -116,7 +114,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             {
                 for (int i = 0; i < entityCount; i++)
                 {
-                    Scene.Create<Component1>(default(Component1));
+                    Scene.Create(default(Component1));
                     for (int j = 0; j < entityPadding; j++)
                     {
                         Scene.Create();
@@ -129,13 +127,12 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
 
 
         /// <summary>
-        /// The increment alis
+        ///     The increment alis
         /// </summary>
         internal struct IncrementAlis : IAction<Component1>
         {
-
             /// <summary>
-            /// Runs the t 0
+            ///     Runs the t 0
             /// </summary>
             /// <param name="t0">The </param>
             public void Run(ref Component1 t0)

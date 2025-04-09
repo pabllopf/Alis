@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:World.cs
+//  File:Scene.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs
         ///     The next world id
         /// </summary>
         private static ushort _nextWorldID = 1;
-        
+
         //entityID -> entity metadata
         /// <summary>
         ///     The entity location
@@ -564,7 +564,6 @@ namespace Alis.Core.Ecs
         /// <param name="eventType">The event type</param>
         /// <param name="exists">The exists</param>
         /// <returns>The ref event record</returns>
-        
         internal ref EventRecord TryGetEventData(EntityLocation entityLocation, EntityIdOnly entity, EntityFlags eventType, out bool exists)
         {
             if (entityLocation.HasEvent(eventType))
@@ -627,7 +626,7 @@ namespace Alis.Core.Ecs
             Span<ComponentID> types = stackalloc ComponentID[components.Length];
 
             int size = components.Length;
-            for (int i = 0; i < size ; i++)
+            for (int i = 0; i < size; i++)
             {
                 types[i] = Component.GetComponentID(components[i].GetType());
             }
@@ -769,7 +768,6 @@ namespace Alis.Core.Ecs
         /// <param name="currentLookup">The current lookup</param>
         /// <param name="nextLocation">The next location</param>
         /// <param name="destination">The destination</param>
-        
         internal void MoveEntityToArchetypeAdd(Span<ComponentStorageBase> writeTo, GameObject gameObject, ref EntityLocation currentLookup, out EntityLocation nextLocation, Archetype destination)
         {
             Archetype from = currentLookup.Archetype;
@@ -816,7 +814,6 @@ namespace Alis.Core.Ecs
         /// <param name="gameObject">The entity</param>
         /// <param name="currentLookup">The current lookup</param>
         /// <param name="destination">The destination</param>
-        
         internal void MoveEntityToArchetypeRemove(Span<ComponentHandle> componentHandles, GameObject gameObject, ref EntityLocation currentLookup, Archetype destination)
         {
             Archetype from = currentLookup.Archetype;
@@ -839,7 +836,7 @@ namespace Alis.Core.Ecs
             DeleteComponentData deleteData = new DeleteComponentData(currentLookup.Index, deletedIndex);
 
             int size = fromComponents.Length;
-            for (int i = 0; i < size ;)
+            for (int i = 0; i < size;)
             {
                 ComponentID componentToMoveFromFromToTo = fromComponents[i];
                 int toIndex = destMap.UnsafeArrayIndex(componentToMoveFromFromToTo.RawIndex);
@@ -914,7 +911,6 @@ namespace Alis.Core.Ecs
         /// <param name="gameObject">The entity</param>
         /// <param name="currentLookup">The current lookup</param>
         /// <param name="destination">The destination</param>
-        
         internal void MoveEntityToArchetypeIso(GameObject gameObject, ref EntityLocation currentLookup, Archetype destination)
         {
             Archetype from = currentLookup.Archetype;
@@ -923,7 +919,7 @@ namespace Alis.Core.Ecs
             nextLocation.Version = currentLookup.Version;
 
             EntityIdOnly movedDown = from.DeleteEntityFromStorage(currentLookup.Index, out int deletedIndex);
-            
+
             ComponentStorageBase[] fromRunners = from.Components;
             ComponentStorageBase[] destRunners = destination.Components;
             byte[] destMap = destination.ComponentTagTable;
@@ -944,20 +940,19 @@ namespace Alis.Core.Ecs
             currentLookup = nextLocation;
         }
 
-        
+
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
         [ThreadStatic] private static readonly ComponentHandle[] _sharedOneElementComponentHandle = new ComponentHandle[1];
 
         [ThreadStatic] private static readonly ComponentStorageBase[] _sharedOneElementComponentStorage = new ComponentStorageBase[1];
 #endif
-        
+
         //Delete
         /// <summary>
         ///     Deletes the entity using the specified entity
         /// </summary>
         /// <param name="gameObject">The entity</param>
         /// <param name="entityLocation">The entity location</param>
-        
         internal void DeleteEntity(GameObject gameObject, ref EntityLocation entityLocation)
         {
             EntityFlags check = entityLocation.Flags | WorldEventFlags;
@@ -994,7 +989,6 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="gameObject">The entity</param>
         /// <param name="currentLookup">The current lookup</param>
-        
         internal void DeleteEntityWithoutEvents(GameObject gameObject, ref EntityLocation currentLookup)
         {
             //entity is guaranteed to be alive here
@@ -1005,15 +999,15 @@ namespace Alis.Core.Ecs
             replaced.Version = replacedEntity.Version;
             currentLookup.Version = ushort.MaxValue;
 
-           if (gameObject.EntityVersion != ushort.MaxValue - 1)
-           {
-               // can't use max value as an ID, as it is used as a default value
-               EntityIdOnly id = gameObject.EntityIdOnly;
-               id.Version++;
-               RecycledEntityIds.Push(id);
-           }
+            if (gameObject.EntityVersion != ushort.MaxValue - 1)
+            {
+                // can't use max value as an ID, as it is used as a default value
+                EntityIdOnly id = gameObject.EntityIdOnly;
+                id.Version++;
+                RecycledEntityIds.Push(id);
+            }
         }
-        
+
         /// <summary>
         ///     Creates an <see cref="GameObject" /> with the given component(s)
         /// </summary>
@@ -1086,7 +1080,7 @@ namespace Alis.Core.Ecs
                     EntityCreatedEvent.Invoke(entity.ToEntity(this));
                 }
             }
-            
+
             ChunkTuple<T> chunks = new ChunkTuple<T>
             {
                 Entities = new EntityEnumerator.EntityEnumerable(this, entities),

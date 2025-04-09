@@ -66,22 +66,19 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The scene builder</returns>
-        public SceneBuilder Add<T>(Func<GameObjectBuilder, GameObject> value)
-        {
-            return this;
-        }
-        
+        public SceneBuilder Add<T>(Func<GameObjectBuilder, GameObject> value) => this;
+
+        /// <summary>
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The scene</returns>
+        public Scene Build() => Scene;
+
         /// <summary>
         ///     Names the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The scene builder</returns>
         public SceneBuilder Name(string value) => this;
-        
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The scene</returns>
-        public Scene Build() => Scene;
     }
 }

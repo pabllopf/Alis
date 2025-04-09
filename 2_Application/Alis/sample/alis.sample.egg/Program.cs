@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.System;
 

@@ -62,7 +62,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents
 
             for (int i = 0; i < EntityCount; i++)
             {
-                world.Create<Component1, Component2, Component3>(default(Component1), default(Component2), default(Component3));
+                world.Create(default(Component1), default(Component2), default(Component3));
             }
         }
 

@@ -144,7 +144,7 @@ namespace Alis.App.Engine.Menus
 
                 if (ImGui.BeginCombo($"##{scene.Id}", $"{FontAwesome5.Cube} {scene.Name}"))
                 {
-                    // Show the scenes of game: 
+                    // Show the scenes of game:
                     for (int i = 0; i < scenes.Count; i++)
                     {
                         Scene s = scenes[i];

@@ -167,7 +167,7 @@ namespace Alis.Core.Ecs.Updating
             return new ComponentHandle(stackIndex, Component<TComponent>.ID);
         }
     }
-    
+
     /// <summary>
     ///     The component storage class
     /// </summary>
@@ -177,11 +177,7 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     The index
         /// </summary>
-        public ref TComponent this[int index]
-        {
-            
-            get => ref TypedBuffer.UnsafeArrayIndex(index);
-        }
+        public ref TComponent this[int index] => ref TypedBuffer.UnsafeArrayIndex(index);
 
         /// <summary>
         ///     Gets the value of the typed buffer

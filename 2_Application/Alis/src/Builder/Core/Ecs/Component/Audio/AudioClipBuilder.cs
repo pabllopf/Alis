@@ -59,29 +59,20 @@ namespace Alis.Builder.Core.Ecs.Component.Audio
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The audio clip builder</returns>
-        public AudioClipBuilder FilePath(string value)
-        {
-            return this;
-        }
+        public AudioClipBuilder FilePath(string value) => this;
 
         /// <summary>
         ///     Mutes the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The audio clip builder</returns>
-        public AudioClipBuilder Mute(bool value)
-        {
-            return this;
-        }
+        public AudioClipBuilder Mute(bool value) => this;
 
         /// <summary>
         ///     Volumes the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The audio clip builder</returns>
-        public AudioClipBuilder Volume(float value)
-        {
-            return this;
-        }
+        public AudioClipBuilder Volume(float value) => this;
     }
 }

@@ -33,15 +33,13 @@ using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Exporters;
 using BenchmarkDotNet.Exporters.Csv;
 using BenchmarkDotNet.Loggers;
-using BenchmarkDotNet.Reports;
 
 namespace Alis.Benchmark.CustomEcs
 {
     /// <summary>
-    /// The alis ecs benchmark class
+    ///     The alis ecs benchmark class
     /// </summary>
-    [ShortRunJob, MemoryDiagnoser(false)]
-    [Config(typeof(CustomConfig))]
+    [ShortRunJob, MemoryDiagnoser(false), Config(typeof(CustomConfig))]
     public partial class AlisEcsBenchmark
     {
         /// <summary>
@@ -50,9 +48,9 @@ namespace Alis.Benchmark.CustomEcs
         [Params(1_000_000)]
         public int EntityCount { get; set; }
 
-        
+
         /// <summary>
-        /// Setup this instance
+        ///     Setup this instance
         /// </summary>
         [IterationSetup]
         public void Setup()
@@ -60,29 +58,29 @@ namespace Alis.Benchmark.CustomEcs
             SetupAlis();
             SetupFrent();
         }
-        
+
         /// <summary>
-        /// The custom config class
+        ///     The custom config class
         /// </summary>
-        /// <seealso cref="ManualConfig"/>
+        /// <seealso cref="ManualConfig" />
         internal class CustomConfig : ManualConfig
         {
             /// <summary>
-            /// Initializes a new instance of the <see cref="CustomConfig"/> class
+            ///     Initializes a new instance of the <see cref="CustomConfig" /> class
             /// </summary>
             public CustomConfig()
             {
                 Options |= ConfigOptions.DisableLogFile;
-                
+
                 // Especifica la carpeta de salida
                 string outputDirectory = $"../../../../Results/{nameof(AlisEcsBenchmark)}/{DateTime.Now:yyyy-MM-dd_HH-mm-ss}/";
-        
+
                 // Configura la ruta de los artefactos
                 ArtifactsPath = outputDirectory;
-                
+
                 // Desactiva la generación de archivos de log, pero mantiene la consola
                 AddLogger(ConsoleLogger.Default); // Muestra solo en consola sin guardar logs en ficheros
-                
+
                 // Agrega los exportadores
                 AddExporter(MarkdownExporter.GitHub);
                 AddExporter(CsvExporter.Default);

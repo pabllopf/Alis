@@ -71,10 +71,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
-        public GraphicManager(Context context) : base(context)
-        {
-            Renderer = IntPtr.Zero;
-        }
+        public GraphicManager(Context context) : base(context) => Renderer = IntPtr.Zero;
 
         public Window Window { get; set; }
 
@@ -181,7 +178,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         public override void OnStart()
         {
-
         }
 
         /// <summary>
@@ -210,7 +206,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
 
             Ecs.Scene scene = Context.SceneManager.Scene;
-            
+
             foreach (ChunkTuple<Camera> chunk in scene.Query<With<Camera>>().EnumerateChunks<Camera>())
             {
                 Span<Camera> cameras = chunk.Span;

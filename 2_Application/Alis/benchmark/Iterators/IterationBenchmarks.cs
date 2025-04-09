@@ -39,21 +39,18 @@ namespace Alis.Benchmark.Iterators
     /// <summary>
     ///     The iteration benchmarks class
     /// </summary>
-    [MemoryDiagnoser(false)]
-    [ShortRunJob]
-    [Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [MemoryDiagnoser(false), ShortRunJob, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class IterationBenchmarks
     {
         /// <summary>
         ///     The array
         /// </summary>
         private int[] array;
-        
+
         /// <summary>
         ///     The
         /// </summary>
-        [Params(10, 1000, 10_000)] 
-        public int N;
+        [Params(10, 1000, 10_000)] public int N;
 
         /// <summary>
         ///     Setup this instance
@@ -63,7 +60,7 @@ namespace Alis.Benchmark.Iterators
         {
             array = Enumerable.Range(0, N).ToArray();
         }
-        
+
         /// <summary>
         ///     Iterates the array for
         /// </summary>
@@ -89,7 +86,7 @@ namespace Alis.Benchmark.Iterators
                 DoSometring(item);
             }
         }
-        
+
         /// <summary>
         ///     Iteración optimizada con ref y Unsafe.Add
         /// </summary>
@@ -104,7 +101,7 @@ namespace Alis.Benchmark.Iterators
                 DoSometring(item);
             }
         }
-        
+
         /// <summary>
         ///     Iterates the fastest
         /// </summary>
@@ -121,7 +118,7 @@ namespace Alis.Benchmark.Iterators
                 start = ref Unsafe.Add(ref start, 1);
             }
         }
-        
+
         /// <summary>
         ///     Bests the iterate with span and vector
         /// </summary>
@@ -131,9 +128,9 @@ namespace Alis.Benchmark.Iterators
         {
             array.AsSpan().FastFor(element => DoSometring(element));
         }
-        
+
         /// <summary>
-        /// Does the while
+        ///     Does the while
         /// </summary>
         [Benchmark]
         public void DoWhile()
@@ -143,17 +140,14 @@ namespace Alis.Benchmark.Iterators
             {
                 DoSometring(array[i]);
                 i++;
-            } while (i <  array.Length);
+            } while (i < array.Length);
         }
 
         /// <summary>
-        /// Does the sometring using the specified i
+        ///     Does the sometring using the specified i
         /// </summary>
         /// <param name="i">The </param>
         /// <returns>The </returns>
-        public int DoSometring(int i)
-        {
-            return i;
-        }
+        public int DoSometring(int i) => i;
     }
 }

@@ -156,7 +156,7 @@ namespace Alis.Core.Ecs.System.Scope
             runtime.OnExit();
         }
 
-        
+
         /// <summary>
         ///     Exits this instance
         /// </summary>

@@ -33,46 +33,43 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Benchmark.CustomCollections.Stacks
 {
-   /// <summary>
-   /// The native stack unsafe
-   /// </summary>
-   internal unsafe struct NativeStackUnsafe<T> : IDisposable where T : struct
+    /// <summary>
+    ///     The native stack unsafe
+    /// </summary>
+    internal unsafe struct NativeStackUnsafe<T> : IDisposable where T : struct
     {
         /// <summary>
-        /// Gets the value of the count
+        ///     Gets the value of the count
         /// </summary>
         public int Count => _nextIndex;
 
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
-        private static readonly nuint Size = (nuint)Unsafe.SizeOf<T>();
+        private static readonly nuint Size = (nuint) Unsafe.SizeOf<T>();
+
         /// <summary>
-        /// The array
+        ///     The array
         /// </summary>
         private T* _array;
+
         /// <summary>
-        /// The capacity
+        ///     The capacity
         /// </summary>
         private int _capacity;
+
         /// <summary>
-        /// The next index
+        ///     The next index
         /// </summary>
         private int _nextIndex;
 
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
-        public ref T this[int index]
-        {
-            get
-            {
-                return ref _array[index];
-            }
-        }
+        public ref T this[int index] => ref _array[index];
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NativeStack"/> class
+        ///     Initializes a new instance of the <see cref="NativeStack" /> class
         /// </summary>
         /// <param name="initalCapacity">The inital capacity</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
@@ -90,11 +87,11 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             }
 
             _capacity = initalCapacity;
-            _array = (T*)NativeMemory.Alloc((nuint)initalCapacity * Size);
+            _array = (T*) NativeMemory.Alloc((nuint) initalCapacity * Size);
         }
 
         /// <summary>
-        /// Pushes this instance
+        ///     Pushes this instance
         /// </summary>
         /// <returns>The ref</returns>
         public ref T Push()
@@ -108,7 +105,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         }
 
         /// <summary>
-        /// Pops the value
+        ///     Pops the value
         /// </summary>
         /// <param name="value">The value</param>
         public void Pop(out T value)
@@ -122,19 +119,19 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         }
 
         /// <summary>
-        /// Cans the pop
+        ///     Cans the pop
         /// </summary>
         /// <returns>The bool</returns>
         public bool CanPop() => _nextIndex != 0;
 
         /// <summary>
-        /// Pops the unsafe
+        ///     Pops the unsafe
         /// </summary>
         /// <returns>The</returns>
         public T PopUnsafe() => _array[--_nextIndex];
 
         /// <summary>
-        /// Tries the pop using the specified value
+        ///     Tries the pop using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The bool</returns>
@@ -151,39 +148,40 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         }
 
         /// <summary>
-        /// Removes the at using the specified index
+        ///     Removes the at using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         public void RemoveAt(int index)
         {
-            if ((uint)index < (uint)_nextIndex)
+            if ((uint) index < (uint) _nextIndex)
             {
                 _array[index] = _array[--_nextIndex];
                 return;
             }
-           throw new InvalidOperationException("Invalid Index!");
+
+            throw new InvalidOperationException("Invalid Index!");
         }
 
         /// <summary>
-        /// Resizes this instance
+        ///     Resizes this instance
         /// </summary>
         private void Resize()
         {
             _capacity = checked(_capacity * 2);
-            _array = (T*)NativeMemory.Realloc(_array, Size * (nuint)_capacity);
+            _array = (T*) NativeMemory.Realloc(_array, Size * (nuint) _capacity);
         }
 
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
             NativeMemory.Free(_array);
-            _array = (T*)0;
+            _array = (T*) 0;
         }
 
         /// <summary>
-        /// Converts the span
+        ///     Converts the span
         /// </summary>
         /// <returns>A span of t</returns>
         public Span<T> AsSpan() => MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), _nextIndex);

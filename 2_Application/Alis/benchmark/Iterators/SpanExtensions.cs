@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:d.cs
+//  File:SpanExtensions.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,12 +35,12 @@ using System.Runtime.InteropServices;
 namespace Alis.Benchmark.Iterators
 {
     /// <summary>
-    /// The span extensions class
+    ///     The span extensions class
     /// </summary>
     public static class SpanExtensions
     {
         /// <summary>
-        /// Fasts the for using the specified span
+        ///     Fasts the for using the specified span
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="span">The span</param>
@@ -60,7 +60,7 @@ namespace Alis.Benchmark.Iterators
                 }
             }
 
-            for (int i = length - (length % vectorSize); i < length; i++)
+            for (int i = length - length % vectorSize; i < length; i++)
             {
                 action(Unsafe.Add(ref start, i));
             }

@@ -88,20 +88,20 @@ namespace Alis.Benchmark
                 typeof(IdStorageBenchmark),
                 typeof(IterationBenchmarks),
                 typeof(InterfaceVsAbstractBenchmark),
-                
+
                 typeof(NativeArrayUnsafeVsNativeArraySafe),
                 typeof(NativeStackVsNativeStackUnsafe),
                 typeof(NativeTableUnsafeVsNativeTableSafe),
-                
+
                 typeof(RemoveAtVsRemoveUnnorderAtListBenchmark),
-                
+
                 typeof(ArrayPoolsBenchmark),
-                
+
                 typeof(ListsBenchmarks),
-                
+
                 typeof(LoopBenchmark),
-                
-                typeof(AlisEcsBenchmark),
+
+                typeof(AlisEcsBenchmark)
             });
 
             IConfig configuration = DefaultConfig.Instance

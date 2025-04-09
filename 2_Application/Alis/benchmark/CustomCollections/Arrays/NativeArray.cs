@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:NativeArray.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -6,45 +35,23 @@ using System.Runtime.InteropServices;
 namespace Alis.Benchmark.CustomCollections.Arrays
 {
     /// <summary>
-    /// The native array class
+    ///     The native array class
     /// </summary>
-    /// <seealso cref="IDisposable"/>
+    /// <seealso cref="IDisposable" />
     public sealed class NativeArray<T> : IDisposable where T : unmanaged
     {
         /// <summary>
-        /// The handle
+        ///     The handle
         /// </summary>
-        private SafeMemoryHandle _handle;
-        
+        private readonly SafeMemoryHandle _handle;
+
         /// <summary>
-        /// The length
+        ///     The length
         /// </summary>
         private int _length;
 
         /// <summary>
-        /// Gets the value of the length
-        /// </summary>
-        public int Length => _length;
-
-        /// <summary>
-        /// The index
-        /// </summary>
-        public ref T this[int index]
-        {
-            
-            get
-            {
-                if ((uint)index >= (uint)_length)
-                {
-                    throw new IndexOutOfRangeException();
-                }
-
-                return ref AsSpan()[index];
-            }
-        }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NativeArray{T}"/> class
+        ///     Initializes a new instance of the <see cref="NativeArray{T}" /> class
         /// </summary>
         /// <param name="length">The length</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
@@ -60,7 +67,33 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Resizes the new size
+        ///     Gets the value of the length
+        /// </summary>
+        public int Length => _length;
+
+        /// <summary>
+        ///     The index
+        /// </summary>
+        public ref T this[int index]
+        {
+            get
+            {
+                if ((uint) index >= (uint) _length)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+
+                return ref AsSpan()[index];
+            }
+        }
+
+        /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose() => _handle.Dispose();
+
+        /// <summary>
+        ///     Resizes the new size
         /// </summary>
         /// <param name="newSize">The new size</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
@@ -76,13 +109,13 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Converts the span
+        ///     Converts the span
         /// </summary>
         /// <returns>A span of t</returns>
         public Span<T> AsSpan() => MemoryMarshal.Cast<byte, T>(_handle.GetSpan(_length * Unsafe.SizeOf<T>()));
 
         /// <summary>
-        /// Converts the span len using the specified len
+        ///     Converts the span len using the specified len
         /// </summary>
         /// <param name="len">The len</param>
         /// <returns>A span of t</returns>
@@ -91,26 +124,16 @@ namespace Alis.Benchmark.CustomCollections.Arrays
             Debug.Assert(len <= _length);
             return AsSpan().Slice(0, len);
         }
-
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose() => _handle.Dispose();
     }
 
     /// <summary>
-    /// The safe memory handle class
+    ///     The safe memory handle class
     /// </summary>
-    /// <seealso cref="SafeHandle"/>
+    /// <seealso cref="SafeHandle" />
     internal sealed class SafeMemoryHandle : SafeHandle
     {
         /// <summary>
-        /// Gets the value of the pointer
-        /// </summary>
-        public IntPtr Pointer => handle;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SafeMemoryHandle"/> class
+        ///     Initializes a new instance of the <see cref="SafeMemoryHandle" /> class
         /// </summary>
         /// <param name="byteSize">The byte size</param>
         public SafeMemoryHandle(int byteSize) : base(IntPtr.Zero, true)
@@ -119,7 +142,17 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Reallocs the new size
+        ///     Gets the value of the pointer
+        /// </summary>
+        public IntPtr Pointer => handle;
+
+        /// <summary>
+        ///     Gets the value of the is invalid
+        /// </summary>
+        public override bool IsInvalid => handle == IntPtr.Zero;
+
+        /// <summary>
+        ///     Reallocs the new size
         /// </summary>
         /// <param name="newSize">The new size</param>
         /// <exception cref="ObjectDisposedException"></exception>
@@ -130,11 +163,11 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 throw new ObjectDisposedException(nameof(SafeMemoryHandle));
             }
 
-            SetHandle(Marshal.ReAllocHGlobal(handle, (IntPtr)newSize));
+            SetHandle(Marshal.ReAllocHGlobal(handle, newSize));
         }
 
         /// <summary>
-        /// Gets the span using the specified size
+        ///     Gets the span using the specified size
         /// </summary>
         /// <param name="size">The size</param>
         /// <exception cref="ObjectDisposedException"></exception>
@@ -150,9 +183,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
             Marshal.Copy(handle, tempArray, 0, size);
             return tempArray;
         }
-        
+
         /// <summary>
-        /// Releases the handle
+        ///     Releases the handle
         /// </summary>
         /// <returns>The bool</returns>
         protected override bool ReleaseHandle()
@@ -162,12 +195,8 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 Marshal.FreeHGlobal(handle);
                 SetHandle(IntPtr.Zero);
             }
+
             return true;
         }
-
-        /// <summary>
-        /// Gets the value of the is invalid
-        /// </summary>
-        public override bool IsInvalid => handle == IntPtr.Zero;
     }
 }

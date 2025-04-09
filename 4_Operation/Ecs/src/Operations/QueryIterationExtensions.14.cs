@@ -1,11 +1,40 @@
-﻿using System.Runtime.CompilerServices;
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:QueryIterationExtensions.14.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System.Runtime.CompilerServices;
 
 namespace Alis.Core.Ecs.Operations
 {
     public static partial class QueryIterationExtensions
     {
         /// <summary>
-        /// Executes a delegate for every entity in a query, using the specified component types.
+        ///     Executes a delegate for every entity in a query, using the specified component types.
         /// </summary>
         /// <param name="query">The query to iterate over.</param>
         /// <param name="action">The behavior to execute on every component set.</param>
@@ -49,13 +78,12 @@ namespace Alis.Core.Ecs.Operations
                     c12 = ref Unsafe.Add(ref c12, 1);
                     c13 = ref Unsafe.Add(ref c13, 1);
                     c14 = ref Unsafe.Add(ref c14, 1);
-
                 }
             }
         }
 
         /// <summary>
-        /// Executes a inlinable struct instance method for every entity in a query, using the specified component types.
+        ///     Executes a inlinable struct instance method for every entity in a query, using the specified component types.
         /// </summary>
         /// <param name="query">The query to iterate over.</param>
         /// <param name="action">The struct behavior to execute on every component set.</param>
@@ -99,7 +127,6 @@ namespace Alis.Core.Ecs.Operations
                     c12 = ref Unsafe.Add(ref c12, 1);
                     c13 = ref Unsafe.Add(ref c13, 1);
                     c14 = ref Unsafe.Add(ref c14, 1);
-
                 }
             }
         }

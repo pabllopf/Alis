@@ -38,36 +38,42 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
     public interface IGraphicSetting
     {
         /// <summary>
-        /// Gets or sets the value of the target frames
+        ///     Gets or sets the value of the target frames
         /// </summary>
         double TargetFrames { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the target
+        ///     Gets or sets the value of the target
         /// </summary>
         string Target { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the preview mode
+        ///     Gets or sets the value of the preview mode
         /// </summary>
         bool PreviewMode { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the grid color
+        ///     Gets or sets the value of the grid color
         /// </summary>
         Color GridColor { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the has grid
+        ///     Gets or sets the value of the has grid
         /// </summary>
         bool HasGrid { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the background color
+        ///     Gets or sets the value of the background color
         /// </summary>
         Color BackgroundColor { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the window size
+        ///     Gets or sets the value of the window size
         /// </summary>
         Vector2F WindowSize { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the is resizable
+        ///     Gets or sets the value of the is resizable
         /// </summary>
         bool IsResizable { get; set; }
     }

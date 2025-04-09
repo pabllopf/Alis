@@ -60,9 +60,9 @@ namespace Alis.Core.Ecs.Operations
                 }
             }
         }
-        
+
         /// <summary>
-        /// Executes a inlinable struct instance method for every entity in a query, using the specified component types.
+        ///     Executes a inlinable struct instance method for every entity in a query, using the specified component types.
         /// </summary>
         /// <param name="query">The query to iterate over.</param>
         /// <param name="action">The struct behavior to execute on every component set.</param>

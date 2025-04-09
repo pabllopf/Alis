@@ -31,6 +31,5 @@ namespace Alis.Core.Ecs.Components.Light
 {
     public struct SpotLight
     {
-        
     }
 }

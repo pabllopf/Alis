@@ -36,8 +36,7 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The entity location
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     internal struct EntityLocation
     {
         //128 bits
@@ -101,7 +100,6 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="entityFlags">The entity flags</param>
         /// <returns>The res</returns>
-        
         public readonly bool HasEvent(EntityFlags entityFlags)
         {
             bool res = (Flags & entityFlags) != EntityFlags.None;
@@ -114,7 +112,6 @@ namespace Alis.Core.Ecs
         /// <param name="entityFlags">The entity flags</param>
         /// <param name="target">The target</param>
         /// <returns>The res</returns>
-        
         public static bool HasEventFlag(EntityFlags entityFlags, EntityFlags target)
         {
             bool res = (entityFlags & target) != EntityFlags.None;

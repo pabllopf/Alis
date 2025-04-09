@@ -72,7 +72,7 @@ namespace System.Numerics
             return value + 1;
         }
 
-        
+
         public static uint RotateLeft(uint value, int offset) => (value << offset) | (value >> (32 - offset));
     }
 }

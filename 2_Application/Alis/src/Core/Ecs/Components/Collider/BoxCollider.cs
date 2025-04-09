@@ -35,7 +35,6 @@ namespace Alis.Core.Ecs.Components.Collider
     {
         public void Update(GameObject self)
         {
-            
         }
     }
 }

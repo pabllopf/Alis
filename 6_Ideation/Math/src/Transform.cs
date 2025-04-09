@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -39,7 +38,6 @@ namespace Alis.Core.Aspect.Math
     ///     frames.
     /// </summary>
     [Serializable]
-    
     public struct Transform : ISerializable
     {
         /// <summary>

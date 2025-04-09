@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Lopp.cs
+//  File:LoopBenchmark.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -37,30 +37,29 @@ using BenchmarkDotNet.Attributes;
 namespace Alis.Benchmark.Loop
 {
     /// <summary>
-    /// The loop benchmark class
+    ///     The loop benchmark class
     /// </summary>
-    [MemoryDiagnoser(false)]
-    [ShortRunJob]
+    [MemoryDiagnoser(false), ShortRunJob]
     public class LoopBenchmark
     {
         /// <summary>
-        /// The random
+        ///     The random
         /// </summary>
         private static readonly Random random = new Random(999999);
 
         /// <summary>
-        /// Gets or sets the value of the size
+        ///     The items
+        /// </summary>
+        private List<int> items = new();
+
+        /// <summary>
+        ///     Gets or sets the value of the size
         /// </summary>
         [Params(100, 10000)]
         public int size { get; set; } = 100;
 
         /// <summary>
-        /// The items
-        /// </summary>
-        private List<int> items = new();
-
-        /// <summary>
-        /// Inits the list
+        ///     Inits the list
         /// </summary>
         [GlobalSetup]
         public void InitList()
@@ -69,7 +68,7 @@ namespace Alis.Benchmark.Loop
         }
 
         /// <summary>
-        /// Fors this instance
+        ///     Fors this instance
         /// </summary>
         [Benchmark]
         public void For()
@@ -81,7 +80,7 @@ namespace Alis.Benchmark.Loop
         }
 
         /// <summary>
-        /// Whiles this instance
+        ///     Whiles this instance
         /// </summary>
         [Benchmark]
         public void While()
@@ -95,7 +94,7 @@ namespace Alis.Benchmark.Loop
         }
 
         /// <summary>
-        /// Fors the each
+        ///     Fors the each
         /// </summary>
         [Benchmark]
         public void ForEach()
@@ -106,66 +105,55 @@ namespace Alis.Benchmark.Loop
         }
 
         /// <summary>
-        /// Foreaches the linq
+        ///     Foreaches the linq
         /// </summary>
         [Benchmark]
         public void Foreach_Linq()
         {
-            items.ForEach(item =>
-            {
-
-            });
+            items.ForEach(item => { });
         }
 
         /// <summary>
-        /// Parallels the for each
+        ///     Parallels the for each
         /// </summary>
         [Benchmark]
         public void Parallel_ForEach()
         {
-            Parallel.ForEach(items, item =>
-            {
-
-            });
+            Parallel.ForEach(items, item => { });
         }
 
         /// <summary>
-        /// Parallels the linq
+        ///     Parallels the linq
         /// </summary>
         [Benchmark]
         public void Parallel_Linq()
         {
-            items.AsParallel().ForAll(item =>
-            {
-
-            });
+            items.AsParallel().ForAll(item => { });
         }
 
         /// <summary>
-        /// Fors the span
+        ///     Fors the span
         /// </summary>
         [Benchmark]
         public void For_Span()
         {
             Span<int> asSpanList = CollectionsMarshal.AsSpan(items);
 
-            for (int i=0;i< asSpanList.Length;i++)
+            for (int i = 0; i < asSpanList.Length; i++)
             {
                 int item = asSpanList[i];
             }
         }
 
         /// <summary>
-        /// Foreaches the span
+        ///     Foreaches the span
         /// </summary>
         [Benchmark]
         public void Foreach_Span()
         {
             foreach (int item in CollectionsMarshal.AsSpan(items))
             {
-
             }
         }
-
     }
 }

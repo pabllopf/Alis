@@ -101,7 +101,7 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
                 }
             }
 
-            return new T[minimumLength]; 
+            return new T[minimumLength];
         }
 
         /// <summary>

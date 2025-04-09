@@ -317,7 +317,6 @@ namespace Alis.Core.Ecs
             _isInactive = false;
         }
 
-        
 
         /// <summary>
         ///     Begins to create an entity, which will be resolved when <see cref="Playback" /> is called.
@@ -394,7 +393,5 @@ namespace Alis.Core.Ecs
             _lastCreateEntityComponentsBufferIndex = -1;
             return e;
         }
-
-        
     }
 }

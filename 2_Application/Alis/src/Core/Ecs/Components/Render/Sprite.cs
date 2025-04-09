@@ -32,7 +32,6 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
-using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Comps;
 using Alis.Core.Graphic.OpenGL;
@@ -42,13 +41,12 @@ using Alis.Core.Graphic.Stb;
 namespace Alis.Core.Ecs.Components.Render
 {
     /// <summary>
-    /// The sprite
+    ///     The sprite
     /// </summary>
-    
     public struct Sprite(string nameFile, int depth) : IEntityComponent
     {
         /// <summary>
-        /// Updates the self
+        ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         public void Update(GameObject self)
@@ -61,7 +59,7 @@ namespace Alis.Core.Ecs.Components.Render
                 SetupBuffers();
             }
         }
-        
+
         /// <summary>
         ///     The image handle
         /// </summary>
@@ -253,8 +251,8 @@ namespace Alis.Core.Ecs.Components.Render
         /// </summary>
         private void SetupBuffers()
         {
-            int windowWidth = (int) 800;
-            int windowHeight = (int) 600;
+            int windowWidth = 800;
+            int windowHeight = 600;
 
             float scaleX = Size.X / windowWidth;
             float scaleY = Size.Y / windowHeight;

@@ -43,7 +43,7 @@ namespace Alis.Core.Ecs.System.Scope
         ///     Runs this instance
         /// </summary>
         void Run();
-        
+
         /// <summary>
         ///     Exits this instance
         /// </summary>

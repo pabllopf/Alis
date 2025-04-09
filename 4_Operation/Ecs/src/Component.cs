@@ -84,13 +84,13 @@ namespace Alis.Core.Ecs
         static Component()
         {
             (_id, GeneralComponentStorage, Initer, Destroyer) = Component.GetExistingOrSetupNewComponent<T>();
-            
+
             if (typeof(IEntityComponent).IsAssignableFrom(typeof(T)))
             {
                 RunnerInstance = new EntityUpdateRunnerFactory<T>();
                 return;
             }
-        
+
             var fac = new NoneUpdateRunnerFactory<T>();
             Component.NoneComponentRunnerTable[typeof(T)] = fac;
             RunnerInstance = fac;
@@ -222,13 +222,13 @@ namespace Alis.Core.Ecs
                 {
                     GenerationServices.RegisterInit<T>();
                 }
-                
+
                 if (typeof(IDestroyable).IsAssignableFrom(typeof(T)))
                 {
                     GenerationServices.RegisterDestroy<T>();
                 }
-                
-                
+
+
                 ComponentDelegates<T>.InitDelegate initDelegate = (ComponentDelegates<T>.InitDelegate) (GenerationServices.TypeIniters.TryGetValue(type, out Delegate v) ? v : null);
                 ComponentDelegates<T>.DestroyDelegate destroyDelegate = (ComponentDelegates<T>.DestroyDelegate) (GenerationServices.TypeDestroyers.TryGetValue(type, out Delegate v2) ? v2 : null);
 

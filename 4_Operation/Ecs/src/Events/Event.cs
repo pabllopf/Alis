@@ -39,8 +39,7 @@ namespace Alis.Core.Ecs.Events
     /// <summary>
     ///     The event
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     internal struct Event<T>()
     {
         /// <summary>

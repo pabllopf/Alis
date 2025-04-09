@@ -36,8 +36,7 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     ///     The archetype edge key
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     internal struct ArchetypeEdgeKey : IEquatable<ArchetypeEdgeKey>
     {
         //could be tag type or component type

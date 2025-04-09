@@ -61,7 +61,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
 
             for (int i = 0; i < EntityCount; i++)
             {
-                scene.Create<Component1>(default(Component1));
+                scene.Create(default(Component1));
             }
         }
 

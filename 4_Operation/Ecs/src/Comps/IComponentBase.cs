@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent;
+
 namespace Alis.Core.Ecs.Comps
 {
     /*  ALL COMPONENT TYPES                                 |Interface|Storage

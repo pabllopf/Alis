@@ -49,16 +49,13 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         ///     The animation
         /// </summary>
         private readonly Animation animation = new Animation();
-        
+
         /// <summary>
         ///     Adds the frame using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The animation builder</returns>
-        public AnimationBuilder AddFrame(Func<FrameBuilder, Frame> value)
-        {
-            return this;
-        }
+        public AnimationBuilder AddFrame(Func<FrameBuilder, Frame> value) => this;
 
         /// <summary>
         ///     Builds this instance
@@ -71,29 +68,20 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The animation builder</returns>
-        public AnimationBuilder Name(string value)
-        {
-            return this;
-        }
+        public AnimationBuilder Name(string value) => this;
 
         /// <summary>
         ///     Orders the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The animation builder</returns>
-        public AnimationBuilder Order(int value)
-        {
-            return this;
-        }
+        public AnimationBuilder Order(int value) => this;
 
         /// <summary>
         ///     Speeds the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The animation builder</returns>
-        public AnimationBuilder Speed(float value)
-        {
-            return this;
-        }
+        public AnimationBuilder Speed(float value) => this;
     }
 }

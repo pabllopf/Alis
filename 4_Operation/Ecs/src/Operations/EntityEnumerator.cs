@@ -36,8 +36,7 @@ namespace Alis.Core.Ecs.Operations
     /// <summary>
     ///     The entity enumerator
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     public ref struct EntityEnumerator
     {
         /// <summary>

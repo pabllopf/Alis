@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Entity.cs
+//  File:GameObject.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -66,7 +66,7 @@ namespace Alis.Core.Ecs
             EntityVersion = version;
             EntityID = entityID;
         }
-        
+
         /// <summary>
         ///     The entity id
         /// </summary>
@@ -81,7 +81,7 @@ namespace Alis.Core.Ecs
         ///     The world id
         /// </summary>
         public ushort WorldID;
-        
+
         /// <summary>
         ///     Gets the value of the entity id only
         /// </summary>
@@ -96,7 +96,7 @@ namespace Alis.Core.Ecs
         ///     Gets the value of the entity low
         /// </summary>
         internal int EntityLow => Unsafe.As<GameObject, EntityHighLow>(ref this).EntityLow;
-        
+
         /// <summary>
         ///     Internals the is alive using the specified world
         /// </summary>
@@ -133,7 +133,6 @@ namespace Alis.Core.Ecs
 
             return ref lookup;
         }
-
 
 
         /// <summary>
@@ -238,9 +237,6 @@ namespace Alis.Core.Ecs
         }
 
 
-
-
-
         /// <summary>
         ///     Checks if two <see cref="GameObject" /> structs refer to the same entity.
         /// </summary>
@@ -319,7 +315,8 @@ namespace Alis.Core.Ecs
         public bool Has(Type type) => Has(Component.GetComponentID(type));
 
         /// <summary>
-        ///     Checks of this <see cref="GameObject" /> has a component specified by <paramref name="componentID" /> without throwing
+        ///     Checks of this <see cref="GameObject" /> has a component specified by <paramref name="componentID" /> without
+        ///     throwing
         ///     when dead.
         /// </summary>
         /// <param name="componentID">The component ID of the component type to check.</param>
@@ -332,7 +329,8 @@ namespace Alis.Core.Ecs
             (entityLocation.Archetype.GetComponentIndex(componentID) != 0);
 
         /// <summary>
-        ///     Checks of this <see cref="GameObject" /> has a component specified by <typeparamref name="T" /> without throwing when
+        ///     Checks of this <see cref="GameObject" /> has a component specified by <typeparamref name="T" /> without throwing
+        ///     when
         ///     dead.
         /// </summary>
         /// <typeparam name="T">The type of component to check.</typeparam>
@@ -343,7 +341,8 @@ namespace Alis.Core.Ecs
         public bool TryHas<T>() => TryHas(Component<T>.ID);
 
         /// <summary>
-        ///     Checks of this <see cref="GameObject" /> has a component specified by <paramref name="type" /> without throwing when
+        ///     Checks of this <see cref="GameObject" /> has a component specified by <paramref name="type" /> without throwing
+        ///     when
         ///     dead.
         /// </summary>
         /// <param name="type">The type of the component type to check.</param>
@@ -352,9 +351,6 @@ namespace Alis.Core.Ecs
         ///     <see langword="false" />.
         /// </returns>
         public bool TryHas(Type type) => TryHas(Component.GetComponentID(type));
-
-
-
 
 
         /// <summary>
@@ -367,7 +363,6 @@ namespace Alis.Core.Ecs
         ///     <typeparamref name="T" />.
         /// </exception>
         /// <returns>A reference to the component in memory.</returns>
-        
         public ref T Get<T>()
         {
             //Total: 4x lookup
@@ -458,9 +453,6 @@ namespace Alis.Core.Ecs
         public void Set(Type type, object obj) => Set(Component.GetComponentID(type), obj);
 
 
-
-
-
         /// <summary>
         ///     Attempts to get a component from an <see cref="GameObject" />.
         /// </summary>
@@ -501,9 +493,6 @@ namespace Alis.Core.Ecs
             value = lookup.Archetype.Components[compIndex].GetAt(lookup.Index);
             return true;
         }
-
-
-
 
 
         /// <summary>
@@ -547,9 +536,6 @@ namespace Alis.Core.Ecs
         }
 
 
-
-
-
         /// <summary>
         ///     Removes a component from this entity
         /// </summary>
@@ -579,11 +565,9 @@ namespace Alis.Core.Ecs
         public void Remove(Type type) => Remove(Component.GetComponentID(type));
 
 
-
-
-
         /// <summary>
-        ///     Checks whether this <see cref="GameObject" /> has a specific tag, using a <see cref="TagId" /> to represent the tag.
+        ///     Checks whether this <see cref="GameObject" /> has a specific tag, using a <see cref="TagId" /> to represent the
+        ///     tag.
         /// </summary>
         /// <param name="tagID">The identifier of the tag to check.</param>
         /// <returns>
@@ -598,7 +582,8 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Checks whether this <see cref="GameObject" /> has a specific tag, using a generic type parameter to represent the tag.
+        ///     Checks whether this <see cref="GameObject" /> has a specific tag, using a generic type parameter to represent the
+        ///     tag.
         /// </summary>
         /// <typeparam name="T">The type used as the tag.</typeparam>
         /// <returns>
@@ -654,9 +639,6 @@ namespace Alis.Core.Ecs
         }
 
 
-
-
-
         /// <summary>
         ///     Removes a tag from this <see cref="GameObject" />. Tags are like components but do not take up extra memory.
         /// </summary>
@@ -690,9 +672,6 @@ namespace Alis.Core.Ecs
 
             return true;
         }
-
-
-
 
 
         /// <summary>
@@ -895,13 +874,9 @@ namespace Alis.Core.Ecs
         }
 
 
-
-
-
         /// <summary>
         ///     Deletes this entity
         /// </summary>
-        
         public void Delete()
         {
             Scene scene = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
@@ -1008,13 +983,11 @@ namespace Alis.Core.Ecs
         /// <param name="tags">The tags the <see cref="EntityType" /> should have.</param>
         public static EntityType EntityTypeOf(ReadOnlySpan<ComponentID> components, ReadOnlySpan<TagId> tags) => Archetype.GetArchetypeID(components, tags);
 
-        
 
         /// <summary>
         ///     Adds a component to this <see cref="GameObject" />.
         /// </summary>
         /// <remarks>If the world is being updated, changed are deffered to the end of the world update.</remarks>
-        
         public void Add<T>(in T c1)
         {
             ref EntityLocation thisLookup = ref AssertIsAlive(out Scene world);
@@ -1063,7 +1036,6 @@ namespace Alis.Core.Ecs
         ///     Removes a component from this <see cref="GameObject" />
         /// </summary>
         /// <inheritdoc cref="Add{T}(in T)" />
-        
         public void Remove<T>()
         {
             ref EntityLocation thisLookup = ref AssertIsAlive(out Scene world);
@@ -1089,7 +1061,6 @@ namespace Alis.Core.Ecs
         ///     Adds a tag to this <see cref="GameObject" />
         /// </summary>
         /// <inheritdoc cref="Add{T}(in T)" />
-        
         public void Tag<T>()
         {
             ref EntityLocation thisLookup = ref AssertIsAlive(out Scene world);
@@ -1221,7 +1192,6 @@ namespace Alis.Core.Ecs
         /// <param name="currentLookup">The current lookup</param>
         /// <param name="add">The add</param>
         /// <returns>The archetype</returns>
-        
         internal static Archetype TraverseThroughCacheOrCreate<T, TEdge>(
             Scene scene,
             ref ArchetypeNeighborCache cache,

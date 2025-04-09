@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs.System.Scope;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.System.Manager.Scene
 {
@@ -38,15 +37,12 @@ namespace Alis.Core.Ecs.System.Manager.Scene
     /// <seealso cref="AManager" />
     public class SceneManager : AManager
     {
-        public SceneManager(Context context) : base(context)
-        {
-            Scene = new Ecs.Scene();
-        }
+        public SceneManager(Context context) : base(context) => Scene = new Ecs.Scene();
 
-        public SceneManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
-        {
-            Scene = new Ecs.Scene();
-        }
+        public SceneManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context) => Scene = new Ecs.Scene();
+
+
+        public Ecs.Scene Scene { get; set; }
 
         public override void OnInit()
         {
@@ -57,8 +53,5 @@ namespace Alis.Core.Ecs.System.Manager.Scene
             // Update the world
             Scene.Update();
         }
-
-
-        public Ecs.Scene Scene { get; set; }
     }
 }
