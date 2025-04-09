@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.ImGui
     /// <summary>
     ///     The im font
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [StructLayout(LayoutKind.Sequential)]
     public struct ImFont
     {
         /// <summary>

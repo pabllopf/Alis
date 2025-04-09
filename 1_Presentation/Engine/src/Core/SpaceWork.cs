@@ -147,7 +147,7 @@ namespace Alis.App.Engine.Core
             SettingsWindow = new SettingsWindow(this);
             InspectorWindow = new InspectorWindow(this);
             SolutionWindow = new SolutionWindow(this);
-            SceneWindow = new SceneWindow(this);
+            //SceneWindow = new SceneWindow(this);
             ProjectWindow = new ProjectWindow(this);
             AudioPlayerWindow = new AudioPlayerWindow(this);
             AssetsWindow = new AssetsWindow(this);
@@ -266,7 +266,7 @@ namespace Alis.App.Engine.Core
             GameWindow.Initialize();
             InspectorWindow.Initialize();
             //SolutionWindow.Initialize();
-            SceneWindow.Initialize();
+            //SceneWindow.Initialize();
             ProjectWindow.Initialize();
             AudioPlayerWindow.Initialize();
             AssetsWindow.Initialize();
@@ -300,7 +300,7 @@ namespace Alis.App.Engine.Core
             GameWindow.Start();
             InspectorWindow.Start();
             //SolutionWindow.Start();
-            SceneWindow.Start();
+            //SceneWindow.Start();
             ProjectWindow.Start();
             AudioPlayerWindow.Start();
             AssetsWindow.Start();
@@ -331,11 +331,11 @@ namespace Alis.App.Engine.Core
             SettingsWindow.Render();
             BottomMenu.Render();
             ConsoleWindow.Render();
-            GameWindow.Render();
-            InspectorWindow.Render();
+            //GameWindow.Render();
+            //InspectorWindow.Render();
             //SolutionWindow.Render();
-            SceneWindow.Render();
-            ProjectWindow.Render();
+            //SceneWindow.Render();
+            //ProjectWindow.Render();
             AudioPlayerWindow.Render();
             AssetsWindow.Render();
         }
