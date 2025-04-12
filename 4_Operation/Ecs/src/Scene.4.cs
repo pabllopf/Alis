@@ -103,59 +103,38 @@ namespace Alis.Core.Ecs
             return gameObject;
         }
 
-        /// <summary>Creates a large amount of entities quickly</summary>
-        /// <param name="count">The number of entities to create</param>
-        /// <returns>The entities created and their component spans</returns>
-        [SkipLocalsInit]
+      [SkipLocalsInit]
         public ChunkTuple<T1, T2, T3, T4> CreateMany<T1, T2, T3, T4>(int count)
         {
-            if (count < 0)
-            {
-                throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
-            }
-
-            Archetype existingArchetype = Archetype<T1, T2, T3, T4>.CreateNewOrGetExistingArchetype(this);
-            int entityCount = existingArchetype.EntityCount;
+            if ((uint)count == 0) // Efficient validation for non-positive values
+                throw new ArgumentOutOfRangeException(nameof(count));
+        
+            var archetype = Archetype<T1, T2, T3, T4>.CreateNewOrGetExistingArchetype(this);
+            int entityCount = archetype.EntityCount;
+        
             EntityTable.EnsureCapacity(EntityCount + count);
-            Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
+        
+            // Create entity locations directly in a Span
+            Span<EntityIdOnly> entityLocations = archetype.CreateEntityLocations(count, this);
+        
+            // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
             {
-                Span<EntityIdOnly> span = entityLocations;
-                for (int index = 0; index < span.Length; ++index)
+                foreach (ref var entityId in entityLocations)
                 {
-                    EntityCreatedEvent.Invoke(span[index].ToEntity(this));
+                    EntityCreatedEvent.Invoke(entityId.ToEntity(this));
                 }
             }
-
-            ChunkTuple<T1, T2, T3, T4> many = new ChunkTuple<T1, T2, T3, T4>
+        
+            // Return the result with calculated spans
+            return new ChunkTuple<T1, T2, T3, T4>
             {
-                Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
+                Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations),
+                Span1 = archetype.GetComponentSpan<T1>().Slice(entityCount, count),
+                Span2 = archetype.GetComponentSpan<T2>().Slice(entityCount, count),
+                Span3 = archetype.GetComponentSpan<T3>().Slice(entityCount, count),
+                Span4 = archetype.GetComponentSpan<T4>().Slice(entityCount, count)
             };
-            ref ChunkTuple<T1, T2, T3, T4> local1 = ref many;
-            Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
-            ref Span<T1> local2 = ref componentSpan1;
-            int start1 = entityCount;
-            Span<T1> span1 = local2.Slice(start1, local2.Length - start1);
-            local1.Span1 = span1;
-            ref ChunkTuple<T1, T2, T3, T4> local3 = ref many;
-            Span<T2> componentSpan2 = existingArchetype.GetComponentSpan<T2>();
-            ref Span<T2> local4 = ref componentSpan2;
-            int start2 = entityCount;
-            Span<T2> span2 = local4.Slice(start2, local4.Length - start2);
-            local3.Span2 = span2;
-            ref ChunkTuple<T1, T2, T3, T4> local5 = ref many;
-            Span<T3> componentSpan3 = existingArchetype.GetComponentSpan<T3>();
-            ref Span<T3> local6 = ref componentSpan3;
-            int start3 = entityCount;
-            Span<T3> span3 = local6.Slice(start3, local6.Length - start3);
-            local5.Span3 = span3;
-            ref ChunkTuple<T1, T2, T3, T4> local7 = ref many;
-            Span<T4> componentSpan4 = existingArchetype.GetComponentSpan<T4>();
-            ref Span<T4> local8 = ref componentSpan4;
-            int start4 = entityCount;
-            Span<T4> span4 = local8.Slice(start4, local8.Length - start4);
-            local7.Span4 = span4;
-            return many;
         }
     }
 }

@@ -1056,40 +1056,35 @@ namespace Alis.Core.Ecs
             return concreteGameObject;
         }
 
-        /// <summary>
-        ///     Creates a large amount of entities quickly
-        /// </summary>
-        /// <param name="count">The number of entities to create</param>
-        /// <returns>The entities created and their component spans</returns>
+        [SkipLocalsInit]
         public ChunkTuple<T> CreateMany<T>(int count)
         {
-            if (count < 0)
-            {
-                throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
-            }
-
-            Archetype archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
-            int initalEntityCount = archetype.EntityCount;
-
+            if ((uint)count == 0) // Efficient validation for non-positive values
+                throw new ArgumentOutOfRangeException(nameof(count));
+        
+            var archetype = Archetype<T>.CreateNewOrGetExistingArchetype(this);
+            int initialEntityCount = archetype.EntityCount;
+        
             EntityTable.EnsureCapacity(EntityCount + count);
-
-            Span<EntityIdOnly> entities = archetype.CreateEntityLocations(count, this);
-
+        
+            // Create entity locations directly in a Span
+            Span<EntityIdOnly> entityLocations = archetype.CreateEntityLocations(count, this);
+        
+            // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
             {
-                foreach (EntityIdOnly entity in entities)
+                foreach (ref var entityId in entityLocations)
                 {
-                    EntityCreatedEvent.Invoke(entity.ToEntity(this));
+                    EntityCreatedEvent.Invoke(entityId.ToEntity(this));
                 }
             }
-
-            ChunkTuple<T> chunks = new ChunkTuple<T>
+        
+            // Return the result with calculated spans
+            return new ChunkTuple<T>
             {
-                Entities = new EntityEnumerator.EntityEnumerable(this, entities),
-                Span = archetype.GetComponentSpan<T>().Slice(initalEntityCount)
+                Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations),
+                Span = archetype.GetComponentSpan<T>().Slice(initialEntityCount, count)
             };
-
-            return chunks;
         }
     }
 }
