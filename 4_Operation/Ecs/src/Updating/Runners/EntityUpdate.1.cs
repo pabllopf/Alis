@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EntityUpdate.cs
+//  File:EntityUpdate.2.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,12 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using Alis.Core.Ecs.Arch;
-using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Comps;
 using Alis.Core.Ecs.Operations;
 
 namespace Alis.Core.Ecs.Updating.Runners
@@ -41,7 +40,8 @@ namespace Alis.Core.Ecs.Updating.Runners
     ///     The entity update class
     /// </summary>
     /// <seealso cref="ComponentStorage{TComp}" />
-    internal class EntityUpdate<TComp>(int capacity) : ComponentStorage<TComp>(capacity)
+    internal class EntityUpdate<TComp, TArg>(int capacity) : ComponentStorage<TComp>(capacity)
+        where TComp : IEntityComponent<TArg>
     {
         /// <summary>
         ///     Runs the world
@@ -53,22 +53,21 @@ namespace Alis.Core.Ecs.Updating.Runners
             ref EntityIdOnly entityIds = ref b.GetEntityDataReference();
             ref TComp comp = ref GetComponentStorageDataReference();
 
+            ref TArg arg = ref b.GetComponentDataReference<TArg>();
+
             GameObject gameObject = scene.DefaultWorldGameObject;
 
             int size = b.EntityCount;
             for (int i = size - 1; i >= 0; i--)
             {
                 entityIds.SetEntity(ref gameObject);
-
-                if (comp is IEntityComponent storage)
-                {
-                    storage.Update(gameObject);
-                }
+                comp.Update(gameObject, ref arg);
 
                 entityIds = ref Unsafe.Add(ref entityIds, 1);
                 comp = ref Unsafe.Add(ref comp, 1);
+
+                arg = ref Unsafe.Add(ref arg, 1);
             }
         }
-        
     }
 }
