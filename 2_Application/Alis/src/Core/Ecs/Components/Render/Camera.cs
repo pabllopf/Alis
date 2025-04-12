@@ -36,6 +36,9 @@ using Alis.Core.Ecs.Comps;
 
 namespace Alis.Core.Ecs.Components.Render
 {
+    /// <summary>
+    /// The camera
+    /// </summary>
     public struct Camera(Vector2F position, Vector2F resolution) : ICamera
     {
         /// <summary>
@@ -66,9 +69,21 @@ namespace Alis.Core.Ecs.Components.Render
             Console.WriteLine($"Camera {self.EntityID} updated");
         }
 
+        /// <summary>
+        /// Creates the builder
+        /// </summary>
+        /// <returns>The camera builder</returns>
         public CameraBuilder CreateBuilder() => new CameraBuilder();
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The camera</returns>
         public Camera Build() => new Camera(Position, Resolution);
 
+        /// <summary>
+        /// Configures the configure
+        /// </summary>
+        /// <param name="configure">The configure</param>
         public void Configure(Action<Camera> configure)
         {
             configure(this);

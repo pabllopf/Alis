@@ -32,14 +32,30 @@ using Alis.Core.Ecs.Operations;
 
 namespace Alis.Core.Ecs.Components.Audio
 {
+    /// <summary>
+    /// The audio clip
+    /// </summary>
     public struct AudioClip(string nameFile, float volume, bool isMute) : IEntityComponent
     {
+        /// <summary>
+        /// Gets or sets the value of the name file
+        /// </summary>
         public string NameFile { get; set; } = nameFile;
 
+        /// <summary>
+        /// Gets or sets the value of the volume
+        /// </summary>
         public float Volume { get; set; } = volume;
 
+        /// <summary>
+        /// Gets or sets the value of the is mute
+        /// </summary>
         public bool IsMute { get; set; } = isMute;
 
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Update(GameObject self)
         {
         }

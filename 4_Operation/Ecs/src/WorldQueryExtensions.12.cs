@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -29,11 +29,14 @@
 
 
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Marshalling;
 using Alis.Core.Ecs.Operations;
 
 namespace Alis.Core.Ecs
 {
+    /// <summary>
+    /// The world query extensions class
+    /// </summary>
     public static partial class WorldQueryExtensions
     {
         /// <summary>

@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Marshalling;
 
 namespace Alis.Core.Ecs.Buffers
 {

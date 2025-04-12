@@ -37,7 +37,7 @@ using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Collections;
 
-namespace Alis.Core.Ecs.Memory
+namespace Alis.Core.Ecs.Marshalling
 {
     /// <summary>
     ///     The memory helpers class

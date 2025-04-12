@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -30,8 +30,14 @@
 
 namespace Alis.Core.Ecs.Operations
 {
+    /// <summary>
+    /// The query delegates class
+    /// </summary>
     public static partial class QueryDelegates
     {
+        /// <summary>
+        /// The query
+        /// </summary>
         public delegate void Query<T1, T2>(ref T1 comp1, ref T2 comp2);
     }
 }

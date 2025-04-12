@@ -32,8 +32,15 @@ using Alis.Core.Ecs.Comps;
 
 namespace Alis.Core.Ecs.Components.Render
 {
+    /// <summary>
+    /// The component builder provider interface
+    /// </summary>
     public interface IComponentBuilderProvider<TBuilder>
     {
+        /// <summary>
+        /// Creates the builder
+        /// </summary>
+        /// <returns>The builder</returns>
         TBuilder CreateBuilder();
     }
 }

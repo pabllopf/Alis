@@ -34,16 +34,30 @@ using Alis.Core.Ecs.Operations;
 
 namespace Alis.Sample.Desktop
 {
+    /// <summary>
+    /// The player movement
+    /// </summary>
     public struct PlayerMovement (int velocity) : IInitable, IEntityComponent
     {
         
+        /// <summary>
+        /// Gets or sets the value of the velocity
+        /// </summary>
         public int Velocity { get; set; } = velocity;
         
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Update(GameObject self)
         {
             Console.WriteLine("PlayerMovement Update");
         }
 
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Init(GameObject self)
         {
             Console.WriteLine("PlayerMovement Init");

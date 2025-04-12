@@ -343,20 +343,39 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GlDisable(EnableCap.Blend);
         }
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public void Update()
         {
             Console.WriteLine($"Sprite {NameFile} updated");
         }
 
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The sprite builder</returns>
         public SpriteBuilder Builder() => new SpriteBuilder();
         
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Init(GameObject self)
         {
             
         }
 
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The sprite</returns>
         public Sprite Build() => this;
 
+        /// <summary>
+        /// Creates the builder
+        /// </summary>
+        /// <returns>The sprite builder</returns>
         public SpriteBuilder CreateBuilder() => new SpriteBuilder();
     }
 }

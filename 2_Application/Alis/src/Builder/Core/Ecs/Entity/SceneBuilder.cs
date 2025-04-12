@@ -64,6 +64,12 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// </summary>
         private Scene Scene { get; } = new Scene();
         
+        /// <summary>
+        /// Adds the config
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="config">The config</param>
+        /// <returns>The scene builder</returns>
         public SceneBuilder Add<T>(Action<GameObjectBuilder> config) where T : IGameObject
         {
             GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();

@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -35,9 +35,18 @@ using Alis.Core.Ecs.Operations;
 
 namespace Alis.Core.Ecs.Updating.Runners
 {
+    /// <summary>
+    /// The entity update class
+    /// </summary>
+    /// <seealso cref="ComponentStorage{TComp}"/>
     internal class EntityUpdate<TComp, TArg1, TArg2, TArg3, TArg4, TArg5>(int capacity) : ComponentStorage<TComp>(capacity)
         where TComp : IEntityComponent<TArg1, TArg2, TArg3, TArg4, TArg5>
     {
+        /// <summary>
+        /// Runs the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="b">The </param>
         internal override void Run(Scene scene, Archetype b)
         {
             ref EntityIdOnly entityIds = ref b.GetEntityDataReference();
@@ -68,6 +77,13 @@ namespace Alis.Core.Ecs.Updating.Runners
             }
         }
 
+        /// <summary>
+        /// Runs the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="b">The </param>
+        /// <param name="start">The start</param>
+        /// <param name="length">The length</param>
         internal void Run(Scene scene, Archetype b, int start, int length)
         {
             ref EntityIdOnly entityIds = ref Unsafe.Add(ref b.GetEntityDataReference(), start);
@@ -98,6 +114,12 @@ namespace Alis.Core.Ecs.Updating.Runners
             }
         }
 
+        /// <summary>
+        /// Multithreadeds the run using the specified countdown
+        /// </summary>
+        /// <param name="countdown">The countdown</param>
+        /// <param name="scene">The scene</param>
+        /// <param name="b">The </param>
         internal override void MultithreadedRun(CountdownEvent countdown, Scene scene, Archetype b)
             => throw new NotImplementedException();
     }

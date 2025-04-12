@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,6 +31,9 @@ using System;
 
 namespace Alis.Core.Ecs.Operations
 {
+    /// <summary>
+    /// The entity chunk action interface
+    /// </summary>
     public interface IEntityChunkAction<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>
     {
         /// <summary>

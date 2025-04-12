@@ -38,7 +38,7 @@ using Alis.Core.Ecs.Arch;
 using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Events;
-using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Marshalling;
 using Alis.Core.Ecs.Operations;
 using Alis.Core.Ecs.Updating;
 

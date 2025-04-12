@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -30,9 +30,18 @@
 
 namespace Alis.Core.Ecs.Operations
 {
+    /// <summary>
+    /// The ref tuple
+    /// </summary>
     public ref struct RefTuple<T1, T2>
     {
+        /// <summary>
+        /// The item
+        /// </summary>
         public Ref<T1> Item1;
+        /// <summary>
+        /// The item
+        /// </summary>
         public Ref<T2> Item2;
 
 

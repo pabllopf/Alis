@@ -32,7 +32,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Marshalling;
 using Alis.Core.Ecs.Updating;
 using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 

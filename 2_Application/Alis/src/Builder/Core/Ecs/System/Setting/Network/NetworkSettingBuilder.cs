@@ -44,6 +44,11 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Network
         private readonly NetworkSetting networkSetting = new NetworkSetting();
 
         
+        /// <summary>
+        /// Ips the ip
+        /// </summary>
+        /// <param name="ip">The ip</param>
+        /// <returns>The network setting builder</returns>
         public NetworkSettingBuilder Ip(string ip)
         {
             return this;

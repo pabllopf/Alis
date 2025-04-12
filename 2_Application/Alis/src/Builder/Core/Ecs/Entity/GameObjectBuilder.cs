@@ -28,6 +28,12 @@ namespace Alis.Builder.Core.Ecs.Entity
        /// <returns>The dictionary of components</returns>
        public Dictionary<Type, IEntityComponent> Build() => components;
        
+       /// <summary>
+       /// Adds the component using the specified config
+       /// </summary>
+       /// <typeparam name="T">The </typeparam>
+       /// <param name="config">The config</param>
+       /// <returns>The game object builder</returns>
        public GameObjectBuilder WithComponent<T>(CameraConfig<T> config) where T : ICamera, new()
        {
            CameraBuilder cameraBuilder = new CameraBuilder();
@@ -37,6 +43,12 @@ namespace Alis.Builder.Core.Ecs.Entity
            return this;
        }
 
+       /// <summary>
+       /// Adds the component using the specified config
+       /// </summary>
+       /// <typeparam name="T">The </typeparam>
+       /// <param name="config">The config</param>
+       /// <returns>The game object builder</returns>
        public GameObjectBuilder WithComponent<T>(SpriteConfig<T> config) where T : ISprite, new()
        {
            SpriteBuilder spriteBuilder = new SpriteBuilder();
@@ -46,6 +58,12 @@ namespace Alis.Builder.Core.Ecs.Entity
            return this;
        }
 
+       /// <summary>
+       /// Adds the component using the specified config
+       /// </summary>
+       /// <typeparam name="T">The </typeparam>
+       /// <param name="config">The config</param>
+       /// <returns>The game object builder</returns>
        public GameObjectBuilder WithComponent<T>(Action<T> config) where T : IEntityComponent, new()
        {
            T component = new T();
@@ -54,12 +72,23 @@ namespace Alis.Builder.Core.Ecs.Entity
            return this;
        }
        
+       /// <summary>
+       /// Adds the component
+       /// </summary>
+       /// <typeparam name="T">The </typeparam>
+       /// <returns>The game object builder</returns>
        public GameObjectBuilder WithComponent<T>() where T : IEntityComponent, new()
        {
            components[typeof(T)] = new T();
            return this;
        }
 
+       /// <summary>
+       /// Adds the component using the specified component
+       /// </summary>
+       /// <typeparam name="T">The </typeparam>
+       /// <param name="component">The component</param>
+       /// <returns>The game object builder</returns>
        public GameObjectBuilder WithComponent<T>(T component) where T : IEntityComponent, new()
        {
            components[typeof(T)] = component;

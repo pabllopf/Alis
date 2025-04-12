@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -32,6 +32,9 @@ using System.Runtime.CompilerServices;
 
 namespace Alis.Core.Ecs.Operations
 {
+    /// <summary>
+    /// The query iteration extensions class
+    /// </summary>
     public static partial class QueryIterationExtensions
     {
         /// <summary>

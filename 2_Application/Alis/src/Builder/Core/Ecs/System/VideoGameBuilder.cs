@@ -81,6 +81,9 @@ namespace Alis.Builder.Core.Ecs.System
             return this;
         }
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public void Run() => this.Build().Run();
     }
 }
