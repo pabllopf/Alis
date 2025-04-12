@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:ISprite.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,26 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Ecs.Comps;
 
-using Alis.Core.Ecs;
-using Alis.Core.Ecs.System;
-
-namespace Alis.Sample.Flappy.Bird
+namespace Alis.Core.Ecs.Components.Render
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public static class Program
+    public interface ISprite : IInitable, IEntityComponent, IHasBuilder<SpriteBuilder>, IBuild<Sprite>
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            VideoGame
-                .Create()
-                .Run();
-        }
     }
 }

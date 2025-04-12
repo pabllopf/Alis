@@ -79,7 +79,7 @@ namespace Alis.Core.Ecs.System.Manager
         ///     Gets or sets the value of the context
         /// </summary>
         [JsonPropertyName("_Context_", true, true)]
-        protected Context Context => _context;
+        public Context Context => _context;
 
         /// <summary>
         ///     Gets or sets the value of the is enable

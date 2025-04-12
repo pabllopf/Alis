@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Builder.Core.Ecs.Entity;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Render;
@@ -45,22 +48,46 @@ namespace Alis.Sample.Desktop
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            VideoGame
-                .Create()
+            VideoGame.Create()
+                .Settings(settings => settings
+                    .General(general => general
+                        .Name("Sample")
+                        .Author("Pablo Perdomo Falcón")
+                        .Icon("app.bmp")
+                        .Debug(true)
+                        .License("GNU General Public License v3.0")
+                        .Description("Sample game")
+                        .Version("0.0.1"))
+                    .Audio(audioSettings => audioSettings
+                        .Volume(100)
+                        .IsMute(false))
+                    .Graphic(graphicSettings => graphicSettings
+                        .Resolution(640, 480)
+                        .IsResizable(true)
+                        .FrameRate(60))
+                    .Physic(physic => physic
+                        .Gravity(9.8f, 0))
+                    .Input(inputSetting => inputSetting
+                        .MouseSensitivity(0.1f))
+                    .Network(networkSettings => networkSettings
+                        .Ip("localhost")))
                 .World(world => world
                     .Add<Scene>(scene => scene
                         .Add<GameObject>(gameObject => gameObject
-                            .Name("Camera")
-                            .WithTag("Camera")
-                            .Add<Camera>(new Camera(new Vector2F(0 , 0), new Vector2F(640, 480)))
-                            .Build())
+                            .WithComponent<Camera>(camera => camera
+                                .Position(0, 0)
+                                .Resolution(640, 480)
+                            )
+                        )
                         .Add<GameObject>(gameObject => gameObject
-                            .Name("Simple Sprite")
-                            .Add<Sprite>(new Sprite("app.bmp", 0))
-                            .Build())
-                        .Build())
-                    .Build())
-                .Run();
+                            .WithComponent<PlayerMovement>()
+                            .WithComponent<Sprite>(sprite => sprite
+                                .SetTexture("app.bmp")
+                                .Depth(0)
+                            )
+                        )
+                    )
+                ).Run();
         }
     }
 }

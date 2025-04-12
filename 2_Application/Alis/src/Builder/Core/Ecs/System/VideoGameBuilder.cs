@@ -44,12 +44,11 @@ namespace Alis.Builder.Core.Ecs.System
     /// <seealso cref="IBuild{VideoGame}" />
     public class VideoGameBuilder :
         IBuild<VideoGame>,
-        IWorld<VideoGameBuilder, Func<SceneManagerBuilder, SceneManager>>,
-        ISettings<VideoGameBuilder, Func<SettingsBuilder, Alis.Core.Ecs.System.Configuration.Setting>>
+        ISettings<VideoGameBuilder, Action<SettingsBuilder>>
     {
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
-        public readonly Context Context = new Context(new Alis.Core.Ecs.System.Configuration.Setting());
+        internal readonly Context Context = new Context(new Alis.Core.Ecs.System.Configuration.Setting());
 
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
@@ -60,14 +59,27 @@ namespace Alis.Builder.Core.Ecs.System
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The video game builder</returns>
-        public VideoGameBuilder Settings(Func<SettingsBuilder, Alis.Core.Ecs.System.Configuration.Setting> value) => this;
+        public VideoGameBuilder Settings(Action<SettingsBuilder> value)
+        {
+            SettingsBuilder settingsBuilder = new SettingsBuilder();
+            value(settingsBuilder);
+            Context.Setting = settingsBuilder.Build();
+            return this;
+        }
 
         /// <summary>
         ///     Worlds the value
         /// </summary>
-        /// <param name="value">The value</param>
+        /// <param name="config">The value</param>
         /// <returns>The video game builder</returns>
-        public VideoGameBuilder World(Func<SceneManagerBuilder, SceneManager> value) => this;
+        public VideoGameBuilder World(Action<SceneManagerBuilder> config)
+        {
+            SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder(Context);
+            config(sceneManagerBuilder);
+            SceneManager sceneManager = sceneManagerBuilder.Build();
+            Context.SceneManager.Scene = sceneManager.Scene;
+            return this;
+        }
 
         public void Run() => this.Build().Run();
     }

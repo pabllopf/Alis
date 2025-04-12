@@ -52,30 +52,18 @@ namespace Alis.Builder.Core.Ecs.System.Setting
     /// </summary>
     public class SettingsBuilder :
         IBuild<Alis.Core.Ecs.System.Configuration.Setting>,
-        IAudio<SettingsBuilder, Func<AudioSettingBuilder, AudioSetting>>,
-        IGeneral<SettingsBuilder, Func<GeneralSettingBuilder, GeneralSetting>>,
-        IGraphic<SettingsBuilder, Func<GraphicSettingBuilder, GraphicSetting>>,
-        IInput<SettingsBuilder, Func<InputSettingBuilder, InputSetting>>,
-        INetwork<SettingsBuilder, Func<NetworkSettingBuilder, NetworkSetting>>,
-        IPhysic<SettingsBuilder, Func<PhysicSettingBuilder, PhysicSetting>>,
-        IScene<SettingsBuilder, Func<SceneSettingBuilder, SceneSetting>>
+        IAudio<SettingsBuilder, Action<AudioSettingBuilder>>,
+        IGeneral<SettingsBuilder, Action<GeneralSettingBuilder>>,
+        IGraphic<SettingsBuilder, Action<GraphicSettingBuilder>>,
+        IInput<SettingsBuilder, Action<InputSettingBuilder>>,
+        INetwork<SettingsBuilder, Action<NetworkSettingBuilder>>,
+        IPhysic<SettingsBuilder, Action<PhysicSettingBuilder>>
     {
         /// <summary>
         ///     The setting base
         /// </summary>
         private readonly Alis.Core.Ecs.System.Configuration.Setting settingBase = new Alis.Core.Ecs.System.Configuration.Setting();
-
-        /// <summary>
-        ///     Audio the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The settings builder</returns>
-        public SettingsBuilder Audio(Func<AudioSettingBuilder, AudioSetting> value)
-        {
-            settingBase.Audio = value.Invoke(new AudioSettingBuilder());
-            return this;
-        }
-
+        
         /// <summary>
         ///     Build setting
         /// </summary>
@@ -87,9 +75,11 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The settings builder</returns>
-        public SettingsBuilder General(Func<GeneralSettingBuilder, GeneralSetting> value)
+        public SettingsBuilder General(Action<GeneralSettingBuilder> value)
         {
-            settingBase.General = value.Invoke(new GeneralSettingBuilder());
+            GeneralSettingBuilder generalSettingBuilder = new GeneralSettingBuilder();
+            value(generalSettingBuilder);
+            settingBase.General = generalSettingBuilder.Build();
             return this;
         }
 
@@ -98,21 +88,24 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The settings builder</returns>
-        public SettingsBuilder Graphic(Func<GraphicSettingBuilder, GraphicSetting> value)
+        public SettingsBuilder Graphic(Action<GraphicSettingBuilder> value)
         {
-            settingBase.Graphic = value.Invoke(new GraphicSettingBuilder());
+            GraphicSettingBuilder graphicSettingBuilder = new GraphicSettingBuilder();
+            value(graphicSettingBuilder);
+            settingBase.Graphic = graphicSettingBuilder.Build();
             return this;
         }
-
-
+        
         /// <summary>
         ///     Inputs the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The settings builder</returns>
-        public SettingsBuilder Input(Func<InputSettingBuilder, InputSetting> value)
+        public SettingsBuilder Input(Action<InputSettingBuilder> value)
         {
-            settingBase.Input = value.Invoke(new InputSettingBuilder());
+            InputSettingBuilder inputSettingBuilder = new InputSettingBuilder();
+            value(inputSettingBuilder);
+            settingBase.Input = inputSettingBuilder.Build();
             return this;
         }
 
@@ -121,9 +114,11 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The settings builder</returns>
-        public SettingsBuilder Network(Func<NetworkSettingBuilder, NetworkSetting> value)
+        public SettingsBuilder Network(Action<NetworkSettingBuilder> value)
         {
-            settingBase.Network = value.Invoke(new NetworkSettingBuilder());
+            NetworkSettingBuilder networkSettingBuilder = new NetworkSettingBuilder();
+            value(networkSettingBuilder);
+            settingBase.Network = networkSettingBuilder.Build();
             return this;
         }
 
@@ -132,9 +127,24 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The settings builder</returns>
-        public SettingsBuilder Physic(Func<PhysicSettingBuilder, PhysicSetting> value)
+        public SettingsBuilder Physic(Action<PhysicSettingBuilder> value)
         {
-            settingBase.Physic = value.Invoke(new PhysicSettingBuilder());
+            PhysicSettingBuilder physicSettingBuilder = new PhysicSettingBuilder();
+            value(physicSettingBuilder);
+            settingBase.Physic = physicSettingBuilder.Build();
+            return this;
+        }
+        
+        /// <summary>
+        ///     Audio the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The settings builder</returns>
+        public SettingsBuilder Audio(Action<AudioSettingBuilder> value)
+        {
+            AudioSettingBuilder audioSettingBuilder = new AudioSettingBuilder();
+            value(audioSettingBuilder);
+            settingBase.Audio = audioSettingBuilder.Build();
             return this;
         }
 
@@ -143,9 +153,11 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The settings builder</returns>
-        public SettingsBuilder Scene(Func<SceneSettingBuilder, SceneSetting> value)
+        public SettingsBuilder Scene(Action<SceneSettingBuilder> value)
         {
-            settingBase.Scene = value.Invoke(new SceneSettingBuilder());
+            SceneSettingBuilder sceneSettingBuilder = new SceneSettingBuilder();
+            value(sceneSettingBuilder);
+            settingBase.Scene = sceneSettingBuilder.Build();
             return this;
         }
     }

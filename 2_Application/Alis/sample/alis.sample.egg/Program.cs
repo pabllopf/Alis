@@ -65,7 +65,6 @@ namespace Alis.Sample.Egg
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
                         .Add<GameObject>(soundTrack => soundTrack
-                            .Name("Soundtrack")
                             .Build())
                         .Build())
                     .Build())

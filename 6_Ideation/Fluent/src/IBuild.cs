@@ -32,7 +32,7 @@ namespace Alis.Core.Aspect.Fluent
     /// <summary>
     ///     The build interface
     /// </summary>
-    public interface IBuild<out TOrigin>
+    public interface IBuild<TOrigin>
     {
         /// <summary>
         ///     Builds this instance

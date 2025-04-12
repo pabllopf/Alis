@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:IScene.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,26 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-using Alis.Core.Ecs;
-using Alis.Core.Ecs.System;
-
-namespace Alis.Sample.Flappy.Bird
+namespace Alis.Core.Ecs
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public static class Program
+    public interface IScene
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            VideoGame
-                .Create()
-                .Run();
-        }
     }
 }

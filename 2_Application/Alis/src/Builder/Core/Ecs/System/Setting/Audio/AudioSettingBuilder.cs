@@ -38,15 +38,26 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Audio
     public class AudioSettingBuilder :
         IBuild<AudioSetting>
     {
-        /// <summary>
-        ///     The audio setting
-        /// </summary>
-        private readonly AudioSetting audioSetting = new AudioSetting();
+        private int volume;
+
+        private bool isMute;
+
+        public AudioSettingBuilder Volume(int volume)
+        {
+            this.volume = volume;
+            return this;
+        }
+        
+        public AudioSettingBuilder IsMute(bool mute)
+        {
+            isMute = mute;
+            return this;
+        }
 
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The audio setting</returns>
-        public AudioSetting Build() => audioSetting;
+        public AudioSetting Build() => new AudioSetting(volume, isMute);
     }
 }

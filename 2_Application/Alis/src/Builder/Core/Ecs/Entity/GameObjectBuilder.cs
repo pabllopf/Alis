@@ -1,117 +1,69 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GameObjectBuilder.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
 using System;
+using System.Collections.Generic;
+using Alis.Builder.Core.Ecs.Component;
+using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Comps;
 using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Builder.Core.Ecs.Entity
 {
-    /// <summary>
-    ///     The game object builder class
-    /// </summary>
-    public class GameObjectBuilder :
-        IBuild<GameObject>,
-        IName<GameObjectBuilder, string>,
-        IIsStatic<GameObjectBuilder, bool>,
-        ITransform<GameObjectBuilder, Func<TransformBuilder, Transform>>,
-        IWithTag<GameObjectBuilder, string>
-    {
-        /// <summary>
-        ///     The context
-        /// </summary>
-        private readonly Context context;
+   /// <summary>
+   ///     The game object builder class
+   /// </summary>
+   public class GameObjectBuilder : IBuild<Dictionary<Type, IEntityComponent>>
+   {
+       /// <summary>
+       ///     Stores the components as a dictionary
+       /// </summary>
+       private readonly Dictionary<Type, IEntityComponent> components = new Dictionary<Type, IEntityComponent>();
 
-        /// <summary>
-        ///     Gets or sets the value of the game object
-        /// </summary>
-        private readonly GameObject gameObject = new GameObject();
+       /// <summary>
+       ///     Builds this instance
+       /// </summary>
+       /// <returns>The dictionary of components</returns>
+       public Dictionary<Type, IEntityComponent> Build() => components;
+       
+       public GameObjectBuilder WithComponent<T>(CameraConfig<T> config) where T : ICamera, new()
+       {
+           CameraBuilder cameraBuilder = new CameraBuilder();
+           config(cameraBuilder);
+           Camera camera = cameraBuilder.Build();
+           components[typeof(Camera)] = camera;
+           return this;
+       }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="GameObjectBuilder" /> class
-        /// </summary>
-        /// <param name="context">The context</param>
-        public GameObjectBuilder(Context context) => this.context = context;
+       public GameObjectBuilder WithComponent<T>(SpriteConfig<T> config) where T : ISprite, new()
+       {
+           SpriteBuilder spriteBuilder = new SpriteBuilder();
+           config(spriteBuilder);
+           Sprite sprite = spriteBuilder.Build();
+           components[typeof(Sprite)] = sprite;
+           return this;
+       }
 
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The game object</returns>
-        public GameObject Build() => gameObject;
+       public GameObjectBuilder WithComponent<T>(Action<T> config) where T : IEntityComponent, new()
+       {
+           T component = new T();
+           config(component);
+           components[typeof(T)] = component;
+           return this;
+       }
+       
+       public GameObjectBuilder WithComponent<T>() where T : IEntityComponent, new()
+       {
+           components[typeof(T)] = new T();
+           return this;
+       }
 
-        /// <summary>
-        ///     Ises the static
-        /// </summary>
-        /// <returns>The game object builder</returns>
-        public GameObjectBuilder IsStatic() => this;
-
-        /// <summary>
-        ///     Ises the static using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The game object builder</returns>
-        public GameObjectBuilder IsStatic(bool value) => this;
-
-        /// <summary>
-        ///     Names the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The game object builder</returns>
-        public GameObjectBuilder Name(string value) => this;
-
-        /// <summary>
-        ///     Transforms the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The game object builder</returns>
-        public GameObjectBuilder Transform(Func<TransformBuilder, Transform> value) => this;
-
-        /// <summary>
-        ///     Adds the tag using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The game object builder</returns>
-        public GameObjectBuilder WithTag(string value) => this;
-
-        public GameObjectBuilder Add<T>(Func<T, IEntityComponent> value)
-        {
-            return this;
-        }
-
-        public GameObjectBuilder Add<T>(IEntityComponent value)
-        {
-
-            return this;
-        }
-    }
+       public GameObjectBuilder WithComponent<T>(T component) where T : IEntityComponent, new()
+       {
+           components[typeof(T)] = component;
+           return this;
+       }
+   }
 }

@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs
     ///     An Entity reference; refers to a collection of components of unqiue types.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public partial struct GameObject : IEquatable<GameObject>
+    public partial struct GameObject : IEquatable<GameObject>, IGameObject
     {
         /// <summary>
         ///     Creates an <see cref="GameObject" /> identical to <see cref="GameObject.Null" />
@@ -988,7 +988,7 @@ namespace Alis.Core.Ecs
         ///     Adds a component to this <see cref="GameObject" />.
         /// </summary>
         /// <remarks>If the world is being updated, changed are deffered to the end of the world update.</remarks>
-        public void Add<T>(in T c1)
+        public readonly void Add<T>(in T c1)
         {
             ref EntityLocation thisLookup = ref AssertIsAlive(out Scene world);
 

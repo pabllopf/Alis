@@ -30,8 +30,10 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Comps;
 using Alis.Core.Graphic.OpenGL;
@@ -43,7 +45,7 @@ namespace Alis.Core.Ecs.Components.Render
     /// <summary>
     ///     The sprite
     /// </summary>
-    public struct Sprite(string nameFile, int depth) : IEntityComponent
+    public struct Sprite(string nameFile, int depth) : ISprite
     {
         /// <summary>
         ///     Updates the self
@@ -345,5 +347,16 @@ namespace Alis.Core.Ecs.Components.Render
         {
             Console.WriteLine($"Sprite {NameFile} updated");
         }
+
+        public SpriteBuilder Builder() => new SpriteBuilder();
+        
+        public void Init(GameObject self)
+        {
+            
+        }
+
+        public Sprite Build() => this;
+
+        public SpriteBuilder CreateBuilder() => new SpriteBuilder();
     }
 }

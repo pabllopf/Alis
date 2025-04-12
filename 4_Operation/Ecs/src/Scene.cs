@@ -29,9 +29,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Arch;
 using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Collections;
@@ -45,7 +47,7 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     A collection of entities that can be updated and queried.
     /// </summary>
-    public partial class Scene : IDisposable
+    public partial class Scene : IDisposable, IScene
     {
         /// <summary>
         ///     The next world id

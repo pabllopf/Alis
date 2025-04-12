@@ -41,7 +41,6 @@ namespace Alis.Core.Ecs.System.Manager.Scene
 
         public SceneManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context) => Scene = new Ecs.Scene();
 
-
         public Ecs.Scene Scene { get; set; }
 
         public override void OnInit()
