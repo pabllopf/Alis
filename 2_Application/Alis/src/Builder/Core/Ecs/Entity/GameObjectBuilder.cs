@@ -8,7 +8,7 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Comps;
-using Alis.Core.Ecs.System.Scope;
+using Alis.Core.Ecs.Operations;
 
 namespace Alis.Builder.Core.Ecs.Entity
 {

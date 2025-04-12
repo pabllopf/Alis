@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.System;
+using Alis.Core.Ecs.Systems;
 
 namespace Alis.Sample.Snake
 {

@@ -33,6 +33,7 @@ using System.Threading;
 using Alis.Core.Ecs.Arch;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Comps;
+using Alis.Core.Ecs.Operations;
 
 namespace Alis.Core.Ecs.Updating.Runners
 {

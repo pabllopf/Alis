@@ -29,7 +29,7 @@
 
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Ecs.System.Configuration.General;
+using Alis.Core.Ecs.Systems.Configuration.General;
 
 namespace Alis.Builder.Core.Ecs.System.Setting.General
 {

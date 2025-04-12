@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Comps;
+using Alis.Core.Ecs.Operations;
 
 namespace Alis.Sample.Desktop
 {
