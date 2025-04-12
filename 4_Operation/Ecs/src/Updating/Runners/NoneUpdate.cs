@@ -39,16 +39,6 @@ namespace Alis.Core.Ecs.Updating.Runners
     internal class NoneUpdate<TComp>(int cap) : ComponentStorage<TComp>(cap)
     {
         /// <summary>
-        ///     Multithreadeds the run using the specified countdown
-        /// </summary>
-        /// <param name="countdown">The countdown</param>
-        /// <param name="scene">The world</param>
-        /// <param name="b">The </param>
-        internal override void MultithreadedRun(CountdownEvent countdown, Scene scene, Archetype b)
-        {
-        }
-
-        /// <summary>
         ///     Runs the world
         /// </summary>
         /// <param name="scene">The world</param>

@@ -62,15 +62,7 @@ namespace Alis.Core.Ecs.Updating
         /// <param name="scene">The world</param>
         /// <param name="b">The </param>
         internal abstract void Run(Scene scene, Archetype b);
-
-        /// <summary>
-        ///     Multithreadeds the run using the specified countdown
-        /// </summary>
-        /// <param name="countdown">The countdown</param>
-        /// <param name="scene">The world</param>
-        /// <param name="b">The </param>
-        internal abstract void MultithreadedRun(CountdownEvent countdown, Scene scene, Archetype b);
-
+        
         /// <summary>
         ///     Deletes the delete component data
         /// </summary>
