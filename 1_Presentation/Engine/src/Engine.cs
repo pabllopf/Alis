@@ -52,7 +52,23 @@ using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Structs;
+using MonoMac.OpenGL;
+using BeginMode = Alis.Core.Graphic.OpenGL.Enums.BeginMode;
+using BlendEquationMode = Alis.Core.Graphic.OpenGL.Enums.BlendEquationMode;
+using BlendingFactorDest = Alis.Core.Graphic.OpenGL.Enums.BlendingFactorDest;
+using BlendingFactorSrc = Alis.Core.Graphic.OpenGL.Enums.BlendingFactorSrc;
+using BufferTarget = Alis.Core.Graphic.OpenGL.Enums.BufferTarget;
+using BufferUsageHint = Alis.Core.Graphic.OpenGL.Enums.BufferUsageHint;
+using ClearBufferMask = Alis.Core.Graphic.OpenGL.Enums.ClearBufferMask;
+using DrawElementsType = Alis.Core.Graphic.OpenGL.Enums.DrawElementsType;
+using EnableCap = Alis.Core.Graphic.OpenGL.Enums.EnableCap;
 using PixelFormat = Alis.Core.Graphic.OpenGL.Enums.PixelFormat;
+using PixelInternalFormat = Alis.Core.Graphic.OpenGL.Enums.PixelInternalFormat;
+using PixelType = Alis.Core.Graphic.OpenGL.Enums.PixelType;
+using StringName = Alis.Core.Graphic.OpenGL.Enums.StringName;
+using TextureParameterName = Alis.Core.Graphic.OpenGL.Enums.TextureParameterName;
+using TextureTarget = Alis.Core.Graphic.OpenGL.Enums.TextureTarget;
+using VertexAttribPointerType = Alis.Core.Graphic.OpenGL.Enums.VertexAttribPointerType;
 
 
 namespace Alis.App.Engine
@@ -179,6 +195,8 @@ namespace Alis.App.Engine
                 Logger.Info($@"Error of SDL2: {Sdl.GetError()}");
                 return;
             }
+
+            Gl.Initialize(Sdl.GetProcAddress);
 
             enginePath = AppDomain.CurrentDomain.BaseDirectory;
 

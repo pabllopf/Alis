@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static void ShowAboutWindow(ref bool pOpen)
         {
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
-            ImGuiNative.igShowAboutWindow(new IntPtr(nativePOpenVal));
+            ImGuiNative.igShowAboutWindow((IntPtr) nativePOpenVal);
             pOpen = nativePOpenVal != 0;
         }
 
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static void ShowDebugLogWindow(ref bool pOpen)
         {
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
-            ImGuiNative.igShowDebugLogWindow((IntPtr)nativePOpenVal);
+            ImGuiNative.igShowDebugLogWindow((IntPtr) nativePOpenVal);
             pOpen = nativePOpenVal != 0;
         }
 
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static void ShowDemoWindow(ref bool pOpen)
         {
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
-            ImGuiNative.igShowDemoWindow((IntPtr)nativePOpenVal);
+            ImGuiNative.igShowDemoWindow((IntPtr) nativePOpenVal);
             pOpen = nativePOpenVal != 0;
         }
 
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static void ShowMetricsWindow(ref bool pOpen)
         {
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
-            ImGuiNative.igShowMetricsWindow((IntPtr)nativePOpenVal);
+            ImGuiNative.igShowMetricsWindow((IntPtr) nativePOpenVal);
             pOpen = nativePOpenVal != 0;
         }
 
@@ -139,7 +139,7 @@ namespace Alis.Extension.Graphic.ImGui.Native
         public static void ShowStackToolWindow(ref bool pOpen)
         {
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
-            ImGuiNative.igShowStackToolWindow(new IntPtr(nativePOpenVal));
+            ImGuiNative.igShowStackToolWindow((IntPtr) nativePOpenVal);
             pOpen = nativePOpenVal != 0;
         }
 
