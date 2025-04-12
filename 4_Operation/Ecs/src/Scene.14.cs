@@ -162,6 +162,7 @@ namespace Alis.Core.Ecs
         /// <summary>Creates a large amount of entities quickly</summary>
         /// <param name="count">The number of entities to create</param>
         /// <returns>The entities created and their component spans</returns>
+        [SkipLocalsInit]
         public ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> CreateMany<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(
             int count)
         {
