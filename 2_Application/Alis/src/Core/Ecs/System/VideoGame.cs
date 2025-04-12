@@ -32,7 +32,6 @@ using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.System.Configuration;
 using Alis.Core.Ecs.System.Scope;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.System
 {

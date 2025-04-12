@@ -27,14 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 
 namespace Alis.Core.Ecs.Arch
 {
-    [StructLayout( LayoutKind.Sequential, Pack = 1 )]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     internal readonly record struct ArchetypeData(EntityType Id, FastImmutableArray<ComponentID> ComponentTypes, FastImmutableArray<TagId> TagTypes);
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Frent.cs
+//  File:AlisEcs.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -103,10 +103,10 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
                 {
                     GameObject e = (entityCount % 4) switch
                     {
-                        0 => Scene.Create<Component1, Component2, Padding1>(default(Component1), new Component2 {Value = 1}, default(Padding1)),
-                        1 => Scene.Create<Component1, Component2, Padding2>(default(Component1), new Component2 {Value = 1}, default(Padding2)),
-                        2 => Scene.Create<Component1, Component2, Padding3>(default(Component1), new Component2 {Value = 1}, default(Padding3)),
-                        _ => Scene.Create<Component1, Component2, Padding4>(default(Component1), new Component2 {Value = 1}, default(Padding4))
+                        0 => Scene.Create(default(Component1), new Component2 {Value = 1}, default(Padding1)),
+                        1 => Scene.Create(default(Component1), new Component2 {Value = 1}, default(Padding2)),
+                        2 => Scene.Create(default(Component1), new Component2 {Value = 1}, default(Padding3)),
+                        _ => Scene.Create(default(Component1), new Component2 {Value = 1}, default(Padding4))
                     };
                 }
 

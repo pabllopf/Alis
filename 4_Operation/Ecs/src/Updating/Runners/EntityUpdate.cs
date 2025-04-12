@@ -58,12 +58,12 @@ namespace Alis.Core.Ecs.Updating.Runners
             for (int i = size - 1; i >= 0; i--)
             {
                 entityIds.SetEntity(ref gameObject);
-                
+
                 if (comp is IEntityComponent storage)
                 {
                     storage.Update(gameObject);
                 }
-                
+
                 entityIds = ref Unsafe.Add(ref entityIds, 1);
                 comp = ref Unsafe.Add(ref comp, 1);
             }

@@ -1,4 +1,32 @@
-﻿
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:GameObject.16.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 
 using System;
 using System.Runtime.CompilerServices;
@@ -13,10 +41,8 @@ namespace Alis.Core.Ecs
 {
     partial struct GameObject
     {
-        
-
         /// <summary>
-        /// Adds a component to this <see cref="GameObject"/>.
+        ///     Adds a component to this <see cref="GameObject" />.
         /// </summary>
         /// <remarks>If the world is being updated, changed are deffered to the end of the world update.</remarks>
         [SkipLocalsInit]
@@ -55,22 +81,38 @@ namespace Alis.Core.Ecs
             Span<ComponentStorageBase> buff = [null!, null!, null!, null!, null!, null!, null!, null!, null!, null!, null!, null!, null!, null!, null!, null!];
             world.MoveEntityToArchetypeAdd(buff, this, ref thisLookup, out EntityLocation nextLocation, to);
 
-            ref var c1ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(buff.UnsafeSpanIndex(1 - 1))[nextLocation.Index]; c1ref = c1;
-            ref var c2ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(buff.UnsafeSpanIndex(2 - 1))[nextLocation.Index]; c2ref = c2;
-            ref var c3ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(buff.UnsafeSpanIndex(3 - 1))[nextLocation.Index]; c3ref = c3;
-            ref var c4ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(buff.UnsafeSpanIndex(4 - 1))[nextLocation.Index]; c4ref = c4;
-            ref var c5ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(buff.UnsafeSpanIndex(5 - 1))[nextLocation.Index]; c5ref = c5;
-            ref var c6ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>(buff.UnsafeSpanIndex(6 - 1))[nextLocation.Index]; c6ref = c6;
-            ref var c7ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>(buff.UnsafeSpanIndex(7 - 1))[nextLocation.Index]; c7ref = c7;
-            ref var c8ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>(buff.UnsafeSpanIndex(8 - 1))[nextLocation.Index]; c8ref = c8;
-            ref var c9ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>(buff.UnsafeSpanIndex(9 - 1))[nextLocation.Index]; c9ref = c9;
-            ref var c10ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>(buff.UnsafeSpanIndex(10 - 1))[nextLocation.Index]; c10ref = c10;
-            ref var c11ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T11>>(buff.UnsafeSpanIndex(11 - 1))[nextLocation.Index]; c11ref = c11;
-            ref var c12ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T12>>(buff.UnsafeSpanIndex(12 - 1))[nextLocation.Index]; c12ref = c12;
-            ref var c13ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T13>>(buff.UnsafeSpanIndex(13 - 1))[nextLocation.Index]; c13ref = c13;
-            ref var c14ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T14>>(buff.UnsafeSpanIndex(14 - 1))[nextLocation.Index]; c14ref = c14;
-            ref var c15ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T15>>(buff.UnsafeSpanIndex(15 - 1))[nextLocation.Index]; c15ref = c15;
-            ref var c16ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T16>>(buff.UnsafeSpanIndex(16 - 1))[nextLocation.Index]; c16ref = c16;
+            ref var c1ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(buff.UnsafeSpanIndex(1 - 1))[nextLocation.Index];
+            c1ref = c1;
+            ref var c2ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(buff.UnsafeSpanIndex(2 - 1))[nextLocation.Index];
+            c2ref = c2;
+            ref var c3ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(buff.UnsafeSpanIndex(3 - 1))[nextLocation.Index];
+            c3ref = c3;
+            ref var c4ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(buff.UnsafeSpanIndex(4 - 1))[nextLocation.Index];
+            c4ref = c4;
+            ref var c5ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(buff.UnsafeSpanIndex(5 - 1))[nextLocation.Index];
+            c5ref = c5;
+            ref var c6ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>(buff.UnsafeSpanIndex(6 - 1))[nextLocation.Index];
+            c6ref = c6;
+            ref var c7ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>(buff.UnsafeSpanIndex(7 - 1))[nextLocation.Index];
+            c7ref = c7;
+            ref var c8ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>(buff.UnsafeSpanIndex(8 - 1))[nextLocation.Index];
+            c8ref = c8;
+            ref var c9ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>(buff.UnsafeSpanIndex(9 - 1))[nextLocation.Index];
+            c9ref = c9;
+            ref var c10ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>(buff.UnsafeSpanIndex(10 - 1))[nextLocation.Index];
+            c10ref = c10;
+            ref var c11ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T11>>(buff.UnsafeSpanIndex(11 - 1))[nextLocation.Index];
+            c11ref = c11;
+            ref var c12ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T12>>(buff.UnsafeSpanIndex(12 - 1))[nextLocation.Index];
+            c12ref = c12;
+            ref var c13ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T13>>(buff.UnsafeSpanIndex(13 - 1))[nextLocation.Index];
+            c13ref = c13;
+            ref var c14ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T14>>(buff.UnsafeSpanIndex(14 - 1))[nextLocation.Index];
+            c14ref = c14;
+            ref var c15ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T15>>(buff.UnsafeSpanIndex(15 - 1))[nextLocation.Index];
+            c15ref = c15;
+            ref var c16ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T16>>(buff.UnsafeSpanIndex(16 - 1))[nextLocation.Index];
+            c16ref = c16;
 
 
             Component<T1>.Initer?.Invoke(this, ref c1ref);
@@ -95,12 +137,14 @@ namespace Alis.Core.Ecs
             if (EntityLocation.HasEventFlag(flags | world.WorldEventFlags, EntityFlags.AddComp | EntityFlags.AddGenericComp))
             {
                 if (world.ComponentAddedEvent.HasListeners)
+                {
                     InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(ref world.ComponentAddedEvent, this);
+                }
 
                 if (EntityLocation.HasEventFlag(flags, EntityFlags.AddComp | EntityFlags.AddGenericComp))
                 {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-                EventRecord events = world.EventLookup[EntityIdOnly];
+                    EventRecord events = world.EventLookup[EntityIdOnly];
 #else
                     ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
 #endif
@@ -110,9 +154,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Removes a component from this <see cref="GameObject"/>
+        ///     Removes a component from this <see cref="GameObject" />
         /// </summary>
-        /// <inheritdoc cref="Add{T}(in T)"/>
+        /// <inheritdoc cref="Add{T}(in T)" />
         [SkipLocalsInit]
         public void Remove<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>()
         {
@@ -150,7 +194,7 @@ namespace Alis.Core.Ecs
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
             //world.MoveEntityToArchetypeRemove invokes the events for us
         }
-        
+
 
         private static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(ref Event<ComponentID> @event, GameObject gameObject)
         {
@@ -170,10 +214,10 @@ namespace Alis.Core.Ecs
             @event.InvokeInternal(gameObject, Component<T14>.ID);
             @event.InvokeInternal(gameObject, Component<T15>.ID);
             @event.InvokeInternal(gameObject, Component<T16>.ID);
-
         }
 
-        private static void InvokePerEntityEvents<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(GameObject gameObject, bool hasGenericEvent, ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3, ref T4 component4, ref T5 component5, ref T6 component6, ref T7 component7, ref T8 component8, ref T9 component9, ref T10 component10, ref T11 component11, ref T12 component12, ref T13 component13, ref T14 component14, ref T15 component15, ref T16 component16)
+        private static void InvokePerEntityEvents<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(GameObject gameObject, bool hasGenericEvent, ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3, ref T4 component4, ref T5 component5, ref T6 component6, ref T7 component7, ref T8 component8, ref T9 component9, ref T10 component10,
+            ref T11 component11, ref T12 component12, ref T13 component13, ref T14 component14, ref T15 component15, ref T16 component16)
         {
             events.NormalEvent.Invoke(gameObject, Component<T1>.ID);
             events.NormalEvent.Invoke(gameObject, Component<T2>.ID);
@@ -194,7 +238,9 @@ namespace Alis.Core.Ecs
 
 
             if (!hasGenericEvent)
+            {
                 return;
+            }
 
             events.GenericEvent!.Invoke(gameObject, ref component1);
             events.GenericEvent!.Invoke(gameObject, ref component2);
@@ -212,9 +258,8 @@ namespace Alis.Core.Ecs
             events.GenericEvent!.Invoke(gameObject, ref component14);
             events.GenericEvent!.Invoke(gameObject, ref component15);
             events.GenericEvent!.Invoke(gameObject, ref component16);
-
         }
-        
+
         private struct NeighborCache<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16> : IArchetypeGraphEdge
         {
             public void ModifyTags(ref FastImmutableArray<TagId> tags, bool add)

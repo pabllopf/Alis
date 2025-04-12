@@ -33,7 +33,6 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.System.Scope;
-
 using Alis.Extension.Plugin.Test.Fakes;
 using Alis.Extension.Plugin.Test.Mocks;
 using Alis.Extension.Plugin.Test.PlatformAttributes;

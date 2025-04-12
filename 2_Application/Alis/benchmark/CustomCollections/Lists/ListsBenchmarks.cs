@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NativeArrayUnsafeVsNativeArraySafe.cs
+//  File:ListsBenchmarks.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,29 +33,29 @@ using BenchmarkDotNet.Attributes;
 namespace Alis.Benchmark.CustomCollections.Lists
 {
     /// <summary>
-    /// The native array unsafe vs native array safe class
+    ///     The native array unsafe vs native array safe class
     /// </summary>
     [MemoryDiagnoser(false), ShortRunJob]
     public class ListsBenchmarks
     {
         /// <summary>
-        /// The array size
+        ///     The array size
         /// </summary>
         [Params(10)] public int ArraySize;
 
         /// <summary>
-        /// The NORMAL stack
+        ///     The NORMAL stack
         /// </summary>
         private List<int> fastList;
 
         /// <summary>
-        /// The pooled list
+        ///     The pooled list
         /// </summary>
         private PooledList<int> pooledList;
 
         // Inicialización
         /// <summary>
-        /// Setup this instance
+        ///     Setup this instance
         /// </summary>
         [GlobalSetup]
         public void Setup()
@@ -65,6 +65,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
             {
                 fastList.Add(i);
             }
+
             pooledList = new PooledList<int>();
             for (int i = 0; i < ArraySize; i++)
             {
@@ -73,186 +74,172 @@ namespace Alis.Benchmark.CustomCollections.Lists
         }
 
         /// <summary>
-        /// Fastests the stack array iterate
+        ///     Fastests the stack array iterate
         /// </summary>
         [Benchmark(Description = "[NORMAL] Iterate List")]
         public void Fastest_List_ArrayIterate()
         {
-            
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 _ = fastList[i];
             }
         }
-        
+
         /// <summary>
-        /// Pooleds the list array iterate
+        ///     Pooleds the list array iterate
         /// </summary>
         [Benchmark(Description = "[POOLED] Iterate List")]
         public void Pooled_List_ArrayIterate()
         {
-            
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 _ = pooledList[i];
             }
         }
-        
+
         /// <summary>
-        /// Fastests the list add
+        ///     Fastests the list add
         /// </summary>
         [Benchmark(Description = "[NORMAL] Add List")]
         public void Fastest_List_Add()
         {
-            
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 fastList.Add(i);
             }
         }
-        
+
         /// <summary>
-        /// Pooleds the list add
+        ///     Pooleds the list add
         /// </summary>
         [Benchmark(Description = "[POOLED] Add List")]
         public void Pooled_List_Add()
         {
-            
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 pooledList.Add(i);
             }
         }
-        
+
         /// <summary>
-        /// Fastests the list remove
+        ///     Fastests the list remove
         /// </summary>
         [Benchmark(Description = "[NORMAL] Remove List")]
         public void Fastest_List_Remove()
         {
-            
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 fastList.Add(i);
             }
-            
+
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 fastList.RemoveAt(i);
             }
         }
-        
+
         /// <summary>
-        /// Pooleds the list remove
+        ///     Pooleds the list remove
         /// </summary>
         [Benchmark(Description = "[POOLED] Remove List")]
         public void Pooled_List_Remove()
         {
-            
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 pooledList.Add(i);
             }
-            
+
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 pooledList.RemoveAt(i);
             }
         }
-        
+
         /// <summary>
-        /// Fastests the list clear
+        ///     Fastests the list clear
         /// </summary>
         [Benchmark(Description = "[NORMAL] Clear List")]
         public void Fastest_List_Clear()
         {
-            
             fastList.Clear();
         }
-        
+
         /// <summary>
-        /// Pooleds the list clear
+        ///     Pooleds the list clear
         /// </summary>
         [Benchmark(Description = "[POOLED] Clear List")]
         public void Pooled_List_Clear()
         {
-            
             pooledList.Clear();
         }
-        
+
         /// <summary>
-        /// Fastests the list contains
+        ///     Fastests the list contains
         /// </summary>
         [Benchmark(Description = "[NORMAL] Contains List")]
         public void Fastest_List_Contains()
         {
-            
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 _ = fastList.Contains(i);
             }
         }
-        
+
         /// <summary>
-        /// Pooleds the list contains
+        ///     Pooleds the list contains
         /// </summary>
         [Benchmark(Description = "[POOLED] Contains List")]
         public void Pooled_List_Contains()
         {
-            
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 _ = pooledList.Contains(i);
             }
         }
-        
-        
+
+
         /// <summary>
-        /// Fastests the list index of
+        ///     Fastests the list index of
         /// </summary>
         [Benchmark(Description = "[NORMAL] IndexOf List")]
         public void Fastest_List_IndexOf()
         {
-            
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 _ = fastList.IndexOf(i);
             }
         }
-        
+
         /// <summary>
-        /// Pooleds the list index of
+        ///     Pooleds the list index of
         /// </summary>
         [Benchmark(Description = "[POOLED] IndexOf List")]
         public void Pooled_List_IndexOf()
         {
-            
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 _ = pooledList.IndexOf(i);
             }
         }
-        
+
         /// <summary>
-        /// Fastests the list insert
+        ///     Fastests the list insert
         /// </summary>
         [Benchmark(Description = "[NORMAL] Insert List")]
         public void Fastest_List_Insert()
         {
-            
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 fastList.Insert(i, i);
             }
         }
-        
+
         /// <summary>
-        /// Pooleds the list insert
+        ///     Pooleds the list insert
         /// </summary>
         [Benchmark(Description = "[POOLED] Insert List")]
         public void Pooled_List_Insert()
         {
-            
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 pooledList.Insert(i, i);

@@ -36,8 +36,7 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     A lightweight struct that represents a component type. Used for fast lookups
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     public readonly struct ComponentID : ITypeID, IEquatable<ComponentID>
     {
         /// <summary>

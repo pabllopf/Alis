@@ -29,7 +29,6 @@
 
 using System;
 using System.Globalization;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Text;
@@ -42,7 +41,6 @@ namespace Alis.Core.Aspect.Math.Vector
     ///     The vector
     /// </summary>
     [StructLayout(LayoutKind.Sequential), Serializable]
-    
     public struct Vector3F : IEquatable<Vector3F>, IFormattable, ISerializable
     {
         /// <summary>
@@ -119,7 +117,6 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     The <see cref="Vector3F.op_Addition" /> method defines the addition operation for <see cref="Vector3F" />
         ///     objects.
         /// </remarks>
-        
         public static Vector3F operator +(Vector3F left, Vector3F right) => new Vector3F(
             left.X + right.X,
             left.Y + right.Y,
@@ -130,7 +127,6 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="left">The first vector.</param>
         /// <param name="right">The second vector.</param>
         /// <returns>The vector that results from dividing <paramref name="left" /> by <paramref name="right" />.</returns>
-        
         public static Vector3F operator /(Vector3F left, Vector3F right) => new Vector3F(
             left.X / right.X,
             left.Y / right.Y,
@@ -141,7 +137,6 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="value1">The vector.</param>
         /// <param name="value2">The scalar value.</param>
         /// <returns>The result of the division.</returns>
-        
         public static Vector3F operator /(Vector3F value1, float value2) => value1 / new Vector3F(value2);
 
         /// <summary>Returns a value that indicates whether each pair of elements in two specified vectors is equal.</summary>
@@ -155,7 +150,6 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     Two <see cref="Vector3F" /> objects are equal if each element in <paramref name="right" /> is equal to the
         ///     corresponding element in <paramref name="right" />.
         /// </remarks>
-        
         public static bool operator ==(Vector3F left, Vector3F right) => (System.Math.Abs(left.X - right.X) < 0.1f)
                                                                          && (System.Math.Abs(left.Y - right.Y) < 0.1f)
                                                                          && (System.Math.Abs(left.Z - right.Z) < 0.1f);
@@ -167,14 +161,12 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     <see langword="true" /> if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise,
         ///     <see langword="false" />.
         /// </returns>
-        
         public static bool operator !=(Vector3F left, Vector3F right) => !(left == right);
 
         /// <summary>Returns a new vector whose values are the product of each pair of elements in two specified vectors.</summary>
         /// <param name="left">The first vector.</param>
         /// <param name="right">The second vector.</param>
         /// <returns>The element-wise product vector.</returns>
-        
         public static Vector3F operator *(Vector3F left, Vector3F right) => new Vector3F(
             left.X * right.X,
             left.Y * right.Y,
@@ -185,14 +177,12 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="left">The vector.</param>
         /// <param name="right">The scalar value.</param>
         /// <returns>The scaled vector.</returns>
-        
         public static Vector3F operator *(Vector3F left, float right) => left * new Vector3F(right);
 
         /// <summary>Multiplies the scalar value by the specified vector.</summary>
         /// <param name="left">The vector.</param>
         /// <param name="right">The scalar value.</param>
         /// <returns>The scaled vector.</returns>
-        
         public static Vector3F operator *(float left, Vector3F right) => right * left;
 
         /// <summary>Subtracts the second vector from the first.</summary>
@@ -203,7 +193,6 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     The <see cref="Vector3F.op_Subtraction" /> method defines the subtraction operation for
         ///     <see cref="Vector3F" /> objects.
         /// </remarks>
-        
         public static Vector3F operator -(Vector3F left, Vector3F right) => new Vector3F(
             left.X - right.X,
             left.Y - right.Y,
@@ -217,14 +206,12 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     The <see cref="Vector3F.op_UnaryNegation" /> method defines the unary negation operation for
         ///     <see cref="Vector3F" /> objects.
         /// </remarks>
-        
         public static Vector3F operator -(Vector3F value) => Zero - value;
 
         /// <summary>Computes the cross product of two vectors.</summary>
         /// <param name="vector1">The first vector.</param>
         /// <param name="vector2">The second vector.</param>
         /// <returns>The cross product.</returns>
-        
         public static Vector3F Cross(Vector3F vector1, Vector3F vector2) => new Vector3F(
             vector1.Y * vector2.Z - vector1.Z * vector2.Y,
             vector1.Z * vector2.X - vector1.X * vector2.Z,
@@ -235,7 +222,6 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="vector1">The first vector.</param>
         /// <param name="vector2">The second vector.</param>
         /// <returns>The dot product.</returns>
-        
         public static float Dot(Vector3F vector1, Vector3F vector2) => vector1.X * vector2.X
                                                                        + vector1.Y * vector2.Y
                                                                        + vector1.Z * vector2.Z;
@@ -243,7 +229,6 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <summary>Returns a vector with the same direction as the specified vector, but with a length of one.</summary>
         /// <param name="value">The vector to normalize.</param>
         /// <returns>The normalized vector.</returns>
-        
         public static Vector3F Normalize(Vector3F value) => value / value.Length();
 
         /// <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
@@ -257,7 +242,6 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a
         ///     <see cref="Vector3F" /> object and their corresponding elements are equal.
         /// </remarks>
-        
         public readonly override bool Equals(object obj) => obj is Vector3F other && Equals(other);
 
         /// <summary>Returns a value that indicates whether this instance and another vector are equal.</summary>
@@ -276,7 +260,6 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <summary>Returns the length of this vector object.</summary>
         /// <returns>The vector's length.</returns>
         /// <altmember cref="Vector3F.LengthSquared" />
-        
         public readonly float Length()
         {
             float lengthSquared = LengthSquared();
@@ -287,7 +270,6 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <returns>The vector's length squared.</returns>
         /// <remarks>This operation offers better performance than a call to the <see cref="Vector3F.Length" /> method.</remarks>
         /// <altmember cref="Vector3F.Length" />
-        
         public readonly float LengthSquared() => Dot(this, this);
 
         /// <summary>Returns the string representation of the current instance using default formatting.</summary>

@@ -50,29 +50,25 @@ namespace Alis.Builder.Core.Ecs.System
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
         public readonly Context Context = new Context(new Alis.Core.Ecs.System.Configuration.Setting());
-        
+
+        /// <summary>Builds this instance.</summary>
+        /// <returns></returns>
+        public VideoGame Build() => new VideoGame(new ContextHandler(Context));
+
         /// <summary>
         ///     Setting the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The video game builder</returns>
-        public VideoGameBuilder Settings(Func<SettingsBuilder, Alis.Core.Ecs.System.Configuration.Setting> value)
-        {
-            return this;
-        }
+        public VideoGameBuilder Settings(Func<SettingsBuilder, Alis.Core.Ecs.System.Configuration.Setting> value) => this;
 
         /// <summary>
         ///     Worlds the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The video game builder</returns>
-        public VideoGameBuilder World(Func<SceneManagerBuilder, SceneManager> value)
-        {
-            return this;
-        }
-        
-        /// <summary>Builds this instance.</summary>
-        /// <returns></returns>
-        public VideoGame Build() => new VideoGame(new ContextHandler(Context));
+        public VideoGameBuilder World(Func<SceneManagerBuilder, SceneManager> value) => this;
+
+        public void Run() => this.Build().Run();
     }
 }

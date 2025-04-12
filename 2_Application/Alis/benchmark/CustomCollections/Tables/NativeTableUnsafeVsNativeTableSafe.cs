@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NativeArrayUnsafeVsNativeArraySafe.cs
+//  File:NativeTableUnsafeVsNativeTableSafe.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,37 +33,35 @@ using BenchmarkDotNet.Attributes;
 
 namespace Alis.Benchmark.CustomCollections.Tables
 {
-        /// <summary>
-    /// The native array unsafe vs native array safe class
+    /// <summary>
+    ///     The native array unsafe vs native array safe class
     /// </summary>
-    [ShortRunJob]
-    [MemoryDiagnoser(false)]
+    [ShortRunJob, MemoryDiagnoser(false)]
     public class NativeTableUnsafeVsNativeTableSafe
     {
         /// <summary>
-        /// The array size
+        ///     The array size
         /// </summary>
-        [Params(256)]
-        public int ArraySize;
+        [Params(256)] public int ArraySize;
 
         /// <summary>
-        /// The tabla unsafe
-        /// </summary>
-        private NativeTableUnsafe<int> nativeTableUnsafe;
-        
-        /// <summary>
-        /// The table
-        /// </summary>
-        private Table<int> table;
-        
-        /// <summary>
-        /// The fast table
+        ///     The fast table
         /// </summary>
         private FastTable<int> fastTable;
-        
+
+        /// <summary>
+        ///     The tabla unsafe
+        /// </summary>
+        private NativeTableUnsafe<int> nativeTableUnsafe;
+
+        /// <summary>
+        ///     The table
+        /// </summary>
+        private Table<int> table;
+
         // Inicialización
         /// <summary>
-        /// Setup this instance
+        ///     Setup this instance
         /// </summary>
         [GlobalSetup]
         public void Setup()
@@ -72,9 +70,9 @@ namespace Alis.Benchmark.CustomCollections.Tables
             table = new Table<int>(ArraySize);
             fastTable = new FastTable<int>(ArraySize);
         }
-        
+
         /// <summary>
-        /// Benchmarks the native array safe
+        ///     Benchmarks the native array safe
         /// </summary>
         [Benchmark(Description = "[UNSAFE] get value of the native array")]
         public void BenchmarkNativeArraySafe()
@@ -84,9 +82,9 @@ namespace Alis.Benchmark.CustomCollections.Tables
                 int value = nativeTableUnsafe[i];
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the current
+        ///     Benchmarks the current
         /// </summary>
         [Benchmark(Description = "[CURRENT] get value of the current array")]
         public void BenchmarkCurrent()
@@ -96,9 +94,9 @@ namespace Alis.Benchmark.CustomCollections.Tables
                 int value = table[i];
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the fast
+        ///     Benchmarks the fast
         /// </summary>
         [Benchmark(Description = "[FAST] get value of the fast array")]
         public void BenchmarkFast()
@@ -108,65 +106,65 @@ namespace Alis.Benchmark.CustomCollections.Tables
                 int value = fastTable[i];
             }
         }
-        
+
         /// <summary>
-        /// Ensures the capacity of the unsafe table
+        ///     Ensures the capacity of the unsafe table
         /// </summary>
         [Benchmark(Description = "[UNSAFE] ensure capacity")]
         public void BenchmarkEnsureCapacityUnsafe()
         {
             nativeTableUnsafe.EnsureCapacity(ArraySize * 2);
         }
-        
+
         /// <summary>
-        /// Benchmarks the ensure capacity current
+        ///     Benchmarks the ensure capacity current
         /// </summary>
         [Benchmark(Description = "[CURRENT] ensure capacity")]
         public void BenchmarkEnsureCapacityCurrent()
         {
             table.EnsureCapacity(ArraySize * 2);
         }
-        
+
         /// <summary>
-        /// Benchmarks the ensure capacity fast
+        ///     Benchmarks the ensure capacity fast
         /// </summary>
         [Benchmark(Description = "[FAST] ensure capacity")]
         public void BenchmarkEnsureCapacityFast()
         {
             fastTable.EnsureCapacity(ArraySize * 2);
         }
-        
+
         /// <summary>
-        /// Converts the unsafe table to Span
+        ///     Converts the unsafe table to Span
         /// </summary>
         [Benchmark(Description = "[UNSAFE] convert to Span")]
         public void BenchmarkConvertToSpanUnsafe()
         {
             Span<int> span = nativeTableUnsafe.AsSpan();
         }
-        
+
         /// <summary>
-        /// Benchmarks the convert to span current
+        ///     Benchmarks the convert to span current
         /// </summary>
         [Benchmark(Description = "[CURRENT] convert to Span")]
         public void BenchmarkConvertToSpanCurrent()
         {
             Span<int> span = table.AsSpan();
         }
-        
+
         /// <summary>
-        /// Benchmarks the convert to span fast
+        ///     Benchmarks the convert to span fast
         /// </summary>
         [Benchmark(Description = "[FAST] convert to Span")]
         public void BenchmarkConvertToSpanFast()
         {
             Span<int> span = fastTable.AsSpan();
         }
-        
+
         /// <summary>
-        /// Benchmarks the unsafe index no resize
+        ///     Benchmarks the unsafe index no resize
         /// </summary>
-        [Benchmark(Description ="[UNSAFE] test UnsafeIndexNoResize")]
+        [Benchmark(Description = "[UNSAFE] test UnsafeIndexNoResize")]
         public void BenchmarkUnsafeIndexNoResize()
         {
             for (int i = 0; i < ArraySize; i++)
@@ -174,9 +172,9 @@ namespace Alis.Benchmark.CustomCollections.Tables
                 int value = nativeTableUnsafe.UnsafeIndexNoResize(i);
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the unsafe index no resize current
+        ///     Benchmarks the unsafe index no resize current
         /// </summary>
         [Benchmark(Description = "[CURRENT] test UnsafeIndexNoResize")]
         public void BenchmarkUnsafeIndexNoResizeCurrent()
@@ -186,9 +184,9 @@ namespace Alis.Benchmark.CustomCollections.Tables
                 int value = table.UnsafeIndexNoResize(i);
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the unsafe index no resize fast
+        ///     Benchmarks the unsafe index no resize fast
         /// </summary>
         [Benchmark(Description = "[FAST] test UnsafeIndexNoResize")]
         public void BenchmarkUnsafeIndexNoResizeFast()

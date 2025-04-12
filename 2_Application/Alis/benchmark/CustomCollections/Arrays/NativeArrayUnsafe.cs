@@ -34,43 +34,37 @@ using System.Runtime.InteropServices;
 namespace Alis.Benchmark.CustomCollections.Arrays
 {
     /// <summary>
-    /// The native array unsafe
+    ///     The native array unsafe
     /// </summary>
     public unsafe struct NativeArrayUnsafe<T> : IDisposable
     {
         /// <summary>
-        /// Gets the value of the length
+        ///     Gets the value of the length
         /// </summary>
         public int Length => _length;
 
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
-        private static readonly nuint Size = (nuint)Unsafe.SizeOf<T>();
+        private static readonly nuint Size = (nuint) Unsafe.SizeOf<T>();
+
         /// <summary>
-        /// The array
+        ///     The array
         /// </summary>
         private T* _array;
-        
+
         /// <summary>
-        /// The length
+        ///     The length
         /// </summary>
         private int _length;
 
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
-        public ref T this[int index]
-        {
-            
-            get
-            {
-                return ref _array[index];
-            }
-        }
+        public ref T this[int index] => ref _array[index];
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NativeArray"/> class
+        ///     Initializes a new instance of the <see cref="NativeArray" /> class
         /// </summary>
         /// <param name="length">The length</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
@@ -88,43 +82,40 @@ namespace Alis.Benchmark.CustomCollections.Arrays
             }
 
             _length = length;
-            _array = (T*)NativeMemory.Alloc((nuint)length * Size);
+            _array = (T*) NativeMemory.Alloc((nuint) length * Size);
         }
 
         /// <summary>
-        /// Resizes the size
+        ///     Resizes the size
         /// </summary>
         /// <param name="size">The size</param>
         public void Resize(int size)
         {
             _length = size;
-            _array = (T*)NativeMemory.Realloc(_array, Size * (nuint)size);
+            _array = (T*) NativeMemory.Realloc(_array, Size * (nuint) size);
         }
 
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
             NativeMemory.Free(_array);
             //null reference isnt as bad as a use after free, right?
-            _array = (T*)0;
+            _array = (T*) 0;
         }
 
         /// <summary>
-        /// Converts the span
+        ///     Converts the span
         /// </summary>
         /// <returns>A span of t</returns>
         public Span<T> AsSpan() => MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), _length);
-        
+
         /// <summary>
-        /// Converts the span len using the specified len
+        ///     Converts the span len using the specified len
         /// </summary>
         /// <param name="len">The len</param>
         /// <returns>A span of t</returns>
-        public Span<T> AsSpanLen(int len)
-        {
-            return MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), len);
-        }
+        public Span<T> AsSpanLen(int len) => MemoryMarshal.CreateSpan(ref Unsafe.AsRef<T>(_array), len);
     }
 }

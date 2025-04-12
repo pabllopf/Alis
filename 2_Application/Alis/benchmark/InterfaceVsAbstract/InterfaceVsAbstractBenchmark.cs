@@ -36,7 +36,7 @@ namespace Alis.Benchmark.InterfaceVsAbstract
     /// <summary>
     ///     The interface vs abstract benchmark class
     /// </summary>
-     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class InterfaceVsAbstractBenchmark
     {
         /// <summary>

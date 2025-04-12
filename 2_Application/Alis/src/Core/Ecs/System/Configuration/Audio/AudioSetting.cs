@@ -30,7 +30,7 @@
 namespace Alis.Core.Ecs.System.Configuration.Audio
 {
     /// <summary>
-    /// The audio setting
+    ///     The audio setting
     /// </summary>
     public record struct AudioSetting(int Volume = 100, bool Mute = false) : IAudioSetting;
 }

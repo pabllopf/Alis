@@ -33,13 +33,10 @@ using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Physic.Dynamics;
 using Alis.Extension.Graphic.ImGui;
 using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.Sdl2;
@@ -342,7 +339,7 @@ namespace Alis.App.Engine.Windows
         public void Render()
         {
             // Ejecutar el método de vista previa del videojuego
-           // SpaceWork.VideoGame.RunPreview();
+            // SpaceWork.VideoGame.RunPreview();
 
             // Leer los píxeles del renderer de SDL
             RectangleI rect = new RectangleI(0, 0, 800, 600);
@@ -710,7 +707,7 @@ namespace Alis.App.Engine.Windows
             return null;
         }
 */
-        
+
         /*
         /// <summary>
         ///     Gets the game object bounds using the specified game object
@@ -770,7 +767,7 @@ namespace Alis.App.Engine.Windows
                 selectionRectangle.Get<BoxCollider>().Body.Rotation = gameObject.Transform.Rotation;
             }
         }*/
-        
+
         /*
 
         /// <summary>

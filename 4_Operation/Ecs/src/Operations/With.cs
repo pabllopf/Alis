@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:QueryHashes.cs
+//  File:With.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,8 +35,7 @@ namespace Alis.Core.Ecs.Operations
     /// <summary>
     ///     Specifies a query should have a component of <see paramref="T" />
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     public readonly struct With<T> : IRuleProvider
     {
         /// <summary>

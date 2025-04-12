@@ -42,7 +42,6 @@ namespace Alis.Core.Ecs.Arch
     /// <summary>
     ///     The archetype class
     /// </summary>
-    
     internal partial class Archetype
     {
         /// <summary>
@@ -59,7 +58,7 @@ namespace Alis.Core.Ecs.Arch
         ///     Gets the value of the archetype tag array
         /// </summary>
         internal FastImmutableArray<TagId> ArchetypeTagArray => _archetypeID.Tags;
-        
+
         /// <summary>
         ///     Gets the value of the entity count
         /// </summary>
@@ -96,7 +95,6 @@ namespace Alis.Core.Ecs.Arch
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The ref</returns>
-        
         internal ref T GetComponentDataReference<T>()
         {
             int index = GetComponentIndex<T>();
@@ -106,7 +104,6 @@ namespace Alis.Core.Ecs.Arch
         /// <summary>
         ///     Note! Entity location version is not set!
         /// </summary>
-        
         internal ref EntityIdOnly CreateEntityLocation(EntityFlags flags, out EntityLocation entityLocation)
         {
             if (_entities.Length == _nextComponentIndex)
@@ -125,7 +122,6 @@ namespace Alis.Core.Ecs.Arch
         /// <summary>
         ///     Caller needs write archetype field
         /// </summary>
-        
         internal ref EntityIdOnly CreateDeferredEntityLocation(Scene scene, scoped ref EntityLocation entityLocation, out int physicalIndex, out ComponentStorageBase[] writeStorage)
         {
             if (_deferredEntityCount == 0)
@@ -301,7 +297,7 @@ namespace Alis.Core.Ecs.Arch
         {
             _nextComponentIndex--;
             //TODO: args
-            
+
             DeleteComponentData args = new(index, _nextComponentIndex);
 
             ref ComponentStorageBase first = ref MemoryMarshal.GetArrayDataReference(Components);
@@ -345,7 +341,7 @@ namespace Alis.Core.Ecs.Arch
             Unsafe.Add(ref first, 2).Delete(args);
             len2:
             Unsafe.Add(ref first, 1).Delete(args);
-            
+
             end:
 
             return _entities.UnsafeArrayIndex(args.ToIndex) = _entities.UnsafeArrayIndex(args.FromIndex);
@@ -429,7 +425,6 @@ namespace Alis.Core.Ecs.Arch
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The int</returns>
-        
         internal int GetComponentIndex<T>() => ComponentTagTable.UnsafeArrayIndex(Component<T>.ID.RawIndex) & GlobalWorldTables.IndexBits;
 
         /// <summary>
@@ -437,7 +432,6 @@ namespace Alis.Core.Ecs.Arch
         /// </summary>
         /// <param name="component">The component</param>
         /// <returns>The int</returns>
-        
         internal int GetComponentIndex(ComponentID component) => ComponentTagTable.UnsafeArrayIndex(component.RawIndex) & GlobalWorldTables.IndexBits;
 
         /// <summary>
@@ -445,7 +439,6 @@ namespace Alis.Core.Ecs.Arch
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
-        
         internal bool HasTag<T>() => ComponentTagTable.UnsafeArrayIndex(Tag<T>.ID.RawData) << 7 != 0;
 
         /// <summary>
@@ -453,7 +446,6 @@ namespace Alis.Core.Ecs.Arch
         /// </summary>
         /// <param name="tagID">The tag id</param>
         /// <returns>The bool</returns>
-        
         internal bool HasTag(TagId tagID) => ComponentTagTable.UnsafeArrayIndex(tagID.RawData) << 7 != 0;
 
         /// <summary>
@@ -462,7 +454,7 @@ namespace Alis.Core.Ecs.Arch
         /// <returns>A span of entity id only</returns>
         internal Span<EntityIdOnly> GetEntitySpan()
         {
-            #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
             return _entities.AsSpan(0, _nextComponentIndex);
 #else
             return System.Runtime.InteropServices.MemoryMarshal.CreateSpan(ref System.Runtime.InteropServices.MemoryMarshal.GetArrayDataReference(_entities), _nextComponentIndex);
@@ -478,8 +470,7 @@ namespace Alis.Core.Ecs.Arch
         /// <summary>
         ///     The fields
         /// </summary>
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        [SkipLocalsInit]
+        [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
         internal struct Fields
         {
             /// <summary>
@@ -497,7 +488,6 @@ namespace Alis.Core.Ecs.Arch
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <returns>The ref</returns>
-            
             internal ref T GetComponentDataReference<T>()
             {
                 int index = Map.UnsafeArrayIndex(Component<T>.ID.RawIndex);

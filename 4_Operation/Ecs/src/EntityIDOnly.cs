@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CommandBufferItems.cs
+//  File:EntityIDOnly.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,8 +35,7 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The entity id only
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     internal struct EntityIdOnly(int id, ushort version)
     {
         /// <summary>
@@ -71,7 +70,6 @@ namespace Alis.Core.Ecs
         ///     Sets the entity using the specified entity
         /// </summary>
         /// <param name="gameObject">The entity</param>
-        
         internal void SetEntity(ref GameObject gameObject)
         {
             gameObject.EntityVersion = Version;
@@ -82,7 +80,6 @@ namespace Alis.Core.Ecs
         ///     Inits the entity
         /// </summary>
         /// <param name="gameObject">The entity</param>
-        
         internal void Init(GameObject gameObject)
         {
             Version = gameObject.EntityVersion;
@@ -93,7 +90,6 @@ namespace Alis.Core.Ecs
         ///     Inits the entity
         /// </summary>
         /// <param name="entity">The entity</param>
-        
         internal void Init(EntityIdOnly entity)
         {
             Version = entity.Version;

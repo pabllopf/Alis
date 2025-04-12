@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:po.cs
+//  File:PooledStack.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -41,237 +41,74 @@ using Collections.Pooled;
 namespace Alis.Benchmark.CustomCollections.Stacks
 {
     /// <summary>
-    /// A simple stack of objects.  Internally it is implemented as an array,
-    /// so Push can be O(n).  Pop is O(1).
+    ///     A simple stack of objects.  Internally it is implemented as an array,
+    ///     so Push can be O(n).  Pop is O(1).
     /// </summary>
     [Serializable]
     public class PooledStack<T> : IEnumerable<T>, ICollection, IReadOnlyCollection<T>, IDisposable, IDeserializationCallback
     {
         /// <summary>
-        /// The pool
+        ///     The default capacity
         /// </summary>
-        [NonSerialized]
-        private ArrayPool<T> _pool;
-        /// <summary>
-        /// The sync root
-        /// </summary>
-        [NonSerialized]
-        private object _syncRoot;
+        private const int DefaultCapacity = 4;
 
         /// <summary>
-        /// The array
-        /// </summary>
-        private T[] _array; // Storage for stack elements. Do not rename (binary serialization)
-        /// <summary>
-        /// The size
-        /// </summary>
-        private int _size; // Number of items in the stack. Do not rename (binary serialization)
-        /// <summary>
-        /// The version
-        /// </summary>
-        private int _version; // Used to keep enumerator in sync w/ collection. Do not rename (binary serialization)
-        /// <summary>
-        /// The clear on free
+        ///     The clear on free
         /// </summary>
         private readonly bool _clearOnFree;
 
         /// <summary>
-        /// The default capacity
+        ///     The array
         /// </summary>
-        private const int DefaultCapacity = 4;
-
-        #region Constructors
+        private T[] _array; // Storage for stack elements. Do not rename (binary serialization)
 
         /// <summary>
-        /// Create a stack with the default initial capacity. 
+        ///     The pool
         /// </summary>
-        public PooledStack() : this(ClearMode.Auto, ArrayPool<T>.Shared) { }
+        [NonSerialized] private ArrayPool<T> _pool;
 
         /// <summary>
-        /// Create a stack with the default initial capacity. 
+        ///     The size
         /// </summary>
-        public PooledStack(ClearMode clearMode) : this(clearMode, ArrayPool<T>.Shared) { }
+        private int _size; // Number of items in the stack. Do not rename (binary serialization)
 
         /// <summary>
-        /// Create a stack with the default initial capacity. 
+        ///     The sync root
         /// </summary>
-        public PooledStack(ArrayPool<T> customPool) : this(ClearMode.Auto, customPool) { }
+        [NonSerialized] private object _syncRoot;
 
         /// <summary>
-        /// Create a stack with the default initial capacity and a custom ArrayPool.
+        ///     The version
         /// </summary>
-        public PooledStack(ClearMode clearMode, ArrayPool<T> customPool)
-        {
-            _pool = customPool ?? ArrayPool<T>.Shared;
-            _array = Array.Empty<T>();
-            _clearOnFree = ShouldClear(clearMode);
-        }
+        private int _version; // Used to keep enumerator in sync w/ collection. Do not rename (binary serialization)
 
         /// <summary>
-        /// Create a stack with a specific initial capacity.  The initial capacity
-        /// must be a non-negative number.
-        /// </summary>
-        public PooledStack(int capacity) : this(capacity, ClearMode.Auto, ArrayPool<T>.Shared) { }
-
-        /// <summary>
-        /// Create a stack with a specific initial capacity.  The initial capacity
-        /// must be a non-negative number.
-        /// </summary>
-        public PooledStack(int capacity, ClearMode clearMode) : this(capacity, clearMode, ArrayPool<T>.Shared) { }
-
-        /// <summary>
-        /// Create a stack with a specific initial capacity.  The initial capacity
-        /// must be a non-negative number.
-        /// </summary>
-        public PooledStack(int capacity, ArrayPool<T> customPool) : this(capacity, ClearMode.Auto, customPool) { }
-
-        /// <summary>
-        /// Create a stack with a specific initial capacity.  The initial capacity
-        /// must be a non-negative number.
-        /// </summary>
-        public PooledStack(int capacity, ClearMode clearMode, ArrayPool<T> customPool)
-        {
-            if (capacity < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(capacity));
-            }
-            _pool = customPool ?? ArrayPool<T>.Shared;
-            _array = _pool.Rent(capacity);
-            _clearOnFree = ShouldClear(clearMode);
-        }
-
-        /// <summary>
-        /// Fills a Stack with the contents of a particular collection.  The items are
-        /// pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(IEnumerable<T> enumerable) : this(enumerable, ClearMode.Auto, ArrayPool<T>.Shared) { }
-
-        /// <summary>
-        /// Fills a Stack with the contents of a particular collection.  The items are
-        /// pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(IEnumerable<T> enumerable, ClearMode clearMode) : this(enumerable, clearMode, ArrayPool<T>.Shared) { }
-
-        /// <summary>
-        /// Fills a Stack with the contents of a particular collection.  The items are
-        /// pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(IEnumerable<T> enumerable, ArrayPool<T> customPool) : this(enumerable, ClearMode.Auto, customPool) { }
-
-        /// <summary>
-        /// Fills a Stack with the contents of a particular collection.  The items are
-        /// pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(IEnumerable<T> enumerable, ClearMode clearMode, ArrayPool<T> customPool)
-        {
-            _pool = customPool ?? ArrayPool<T>.Shared;
-            _clearOnFree = ShouldClear(clearMode);
-
-            switch (enumerable)
-            {
-                case null:
-                    throw new ArgumentNullException(nameof(enumerable));
-                    break;
-
-                case ICollection<T> collection:
-                    if (collection.Count == 0)
-                    {
-                        _array = Array.Empty<T>();
-                    }
-                    else
-                    {
-                        _array = _pool.Rent(collection.Count);
-                        collection.CopyTo(_array, 0);
-                        _size = collection.Count;
-                    }
-                    break;
-
-                default:
-                    using (var list = new PooledList<T>(enumerable))
-                    {
-                        _array = _pool.Rent(list.Count);
-                        list.Span.CopyTo(_array);
-                        _size = list.Count;
-                    }
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// Fills a Stack with the contents of a particular collection.  The items are
-        /// pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(T[] array) : this(array.AsSpan(), ClearMode.Auto, ArrayPool<T>.Shared) { }
-
-        /// <summary>
-        /// Fills a Stack with the contents of a particular collection.  The items are
-        /// pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(T[] array, ClearMode clearMode) : this(array.AsSpan(), clearMode, ArrayPool<T>.Shared) { }
-
-        /// <summary>
-        /// Fills a Stack with the contents of a particular collection.  The items are
-        /// pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(T[] array, ArrayPool<T> customPool) : this(array.AsSpan(), ClearMode.Auto, customPool) { }
-
-        /// <summary>
-        /// Fills a Stack with the contents of a particular collection.  The items are
-        /// pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(T[] array, ClearMode clearMode, ArrayPool<T> customPool) : this(array.AsSpan(), clearMode, customPool) { }
-
-        /// <summary>
-        /// Fills a Stack with the contents of a particular collection.  The items are
-        /// pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(ReadOnlySpan<T> span) : this(span, ClearMode.Auto, ArrayPool<T>.Shared) { }
-
-        /// <summary>
-        /// Fills a Stack with the contents of a particular collection.  The items are
-        /// pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(ReadOnlySpan<T> span, ClearMode clearMode) : this(span, clearMode, ArrayPool<T>.Shared) { }
-
-        /// <summary>
-        /// Fills a Stack with the contents of a particular collection.  The items are
-        /// pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(ReadOnlySpan<T> span, ArrayPool<T> customPool) : this(span, ClearMode.Auto, customPool) { }
-
-        /// <summary>
-        /// Fills a Stack with the contents of a particular collection.  The items are
-        /// pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(ReadOnlySpan<T> span, ClearMode clearMode, ArrayPool<T> customPool)
-        {
-            _pool = customPool ?? ArrayPool<T>.Shared;
-            _clearOnFree = ShouldClear(clearMode);
-            _array = _pool.Rent(span.Length);
-            span.CopyTo(_array);
-            _size = span.Length;
-        }
-
-        #endregion
-
-        /// <summary>
-        /// The number of items in the stack.
-        /// </summary>
-        public int Count => _size;
-
-        /// <summary>
-        /// Returns the ClearMode behavior for the collection, denoting whether values are
-        /// cleared from internal arrays before returning them to the pool.
+        ///     Returns the ClearMode behavior for the collection, denoting whether values are
+        ///     cleared from internal arrays before returning them to the pool.
         /// </summary>
         public ClearMode ClearMode => _clearOnFree ? ClearMode.Always : ClearMode.Never;
 
         /// <summary>
-        /// Gets the value of the is synchronized
+        ///     The value
+        /// </summary>
+        public T this[int i]
+        {
+            get => _array[i];
+            set => _array[i] = value;
+        }
+
+        /// <summary>
+        ///     The number of items in the stack.
+        /// </summary>
+        public int Count => _size;
+
+        /// <summary>
+        ///     Gets the value of the is synchronized
         /// </summary>
         bool ICollection.IsSynchronized => false;
 
         /// <summary>
-        /// Gets the value of the sync root
+        ///     Gets the value of the sync root
         /// </summary>
         object ICollection.SyncRoot
         {
@@ -281,12 +118,95 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 {
                     Interlocked.CompareExchange<object>(ref _syncRoot, new object(), null);
                 }
+
                 return _syncRoot;
             }
         }
 
         /// <summary>
-        /// Removes all Objects from the Stack.
+        ///     Copies the to using the specified array
+        /// </summary>
+        /// <param name="array">The array</param>
+        /// <param name="arrayIndex">The array index</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentException">Argument_InvalidOffLen</exception>
+        /// <exception cref="ArgumentException">Argument_InvalidOffLen</exception>
+        /// <exception cref="ArgumentException">Argument_InvalidOffLen</exception>
+        void ICollection.CopyTo(Array array, int arrayIndex)
+        {
+            if (array == null)
+            {
+                throw new ArgumentNullException(nameof(array));
+            }
+
+            if (array.Rank != 1)
+            {
+                throw new ArgumentException("Argument_InvalidOffLen");
+            }
+
+            if (array.GetLowerBound(0) != 0)
+            {
+                throw new ArgumentException("Argument_InvalidOffLen");
+            }
+
+            if (arrayIndex < 0 || arrayIndex > array.Length)
+            {
+                throw new ArgumentOutOfRangeException(nameof(arrayIndex));
+            }
+
+            if (array.Length - arrayIndex < _size)
+            {
+                throw new ArgumentException("Argument_InvalidOffLen");
+            }
+
+            try
+            {
+                Array.Copy(_array, 0, array, arrayIndex, _size);
+                Array.Reverse(array, arrayIndex, _size);
+            }
+            catch (ArrayTypeMismatchException)
+            {
+                throw new ArgumentException(nameof(array));
+            }
+        }
+
+        /// <summary>
+        ///     Ons the deserialization using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        void IDeserializationCallback.OnDeserialization(object sender)
+        {
+            // We can't serialize array pools, so deserialized PooledStacks will
+            // have to use the shared pool, even if they were using a custom pool
+            // before serialization.
+            _pool = ArrayPool<T>.Shared;
+        }
+
+        /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            ReturnArray(Array.Empty<T>());
+            _size = 0;
+            _version++;
+        }
+
+        /// <internalonly />
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+            => new Enumerator(this);
+
+        /// <summary>
+        ///     Gets the enumerator
+        /// </summary>
+        /// <returns>The enumerator</returns>
+        IEnumerator IEnumerable.GetEnumerator()
+            => new Enumerator(this);
+
+        /// <summary>
+        ///     Removes all Objects from the Stack.
         /// </summary>
         public void Clear()
         {
@@ -294,15 +214,15 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             {
                 Array.Clear(_array, 0, _size); // clear the elements so that the gc can reclaim the references.
             }
+
             _size = 0;
             _version++;
         }
 
         /// <summary>
-        /// Compares items using the default equality comparer
+        ///     Compares items using the default equality comparer
         /// </summary>
-        public bool Contains(T item)
-        {
+        public bool Contains(T item) =>
             // PERF: Internally Array.LastIndexOf calls
             // EqualityComparer<T>.Default.LastIndexOf, which
             // is specialized for different types. This
@@ -310,13 +230,11 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             // virtual method call each iteration of the loop,
             // via EqualityComparer<T>.Default.Equals, we
             // only make one virtual call to EqualityComparer.LastIndexOf.
-
-            return _size != 0 && Array.LastIndexOf(_array, item, _size - 1) != -1;
-        }
+            (_size != 0) && (Array.LastIndexOf(_array, item, _size - 1) != -1);
 
         /// <summary>
-        /// This method removes all items which match the predicate.
-        /// The complexity is O(n).
+        ///     This method removes all items which match the predicate.
+        ///     The complexity is O(n).
         /// </summary>
         public int RemoveWhere(Func<T, bool> match)
         {
@@ -325,10 +243,14 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 throw new ArgumentNullException(nameof(match));
             }
 
-            int freeIndex = 0;   // the first free slot in items array
+            int freeIndex = 0; // the first free slot in items array
 
             // Find the first item which needs to be removed.
-            while (freeIndex < _size && !match(_array[freeIndex])) freeIndex++;
+            while ((freeIndex < _size) && !match(_array[freeIndex]))
+            {
+                freeIndex++;
+            }
+
             if (freeIndex >= _size)
             {
                 return 0;
@@ -338,7 +260,10 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             while (current < _size)
             {
                 // Find the first item which needs to be kept.
-                while (current < _size && match(_array[current])) current++;
+                while ((current < _size) && match(_array[current]))
+                {
+                    current++;
+                }
 
                 if (current < _size)
                 {
@@ -361,7 +286,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks
 
         // Copies the stack into an array.
         /// <summary>
-        /// Copies the to using the specified array
+        ///     Copies the to using the specified array
         /// </summary>
         /// <param name="array">The array</param>
         /// <param name="arrayIndex">The array index</param>
@@ -395,7 +320,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         }
 
         /// <summary>
-        /// Copies the to using the specified span
+        ///     Copies the to using the specified span
         /// </summary>
         /// <param name="span">The span</param>
         /// <exception cref="ArgumentException">Argument_InvalidOffLen</exception>
@@ -415,92 +340,32 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         }
 
         /// <summary>
-        /// Copies the to using the specified array
-        /// </summary>
-        /// <param name="array">The array</param>
-        /// <param name="arrayIndex">The array index</param>
-        /// <exception cref="ArgumentException"></exception>
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        /// <exception cref="ArgumentException">Argument_InvalidOffLen</exception>
-        /// <exception cref="ArgumentException">Argument_InvalidOffLen</exception>
-        /// <exception cref="ArgumentException">Argument_InvalidOffLen</exception>
-        void ICollection.CopyTo(Array array, int arrayIndex)
-        {
-            if (array == null)
-            {
-                throw new ArgumentNullException(nameof(array));
-            }
-
-            if (array.Rank != 1)
-            {
-               throw new ArgumentException("Argument_InvalidOffLen");
-            }
-
-            if (array.GetLowerBound(0) != 0)
-            {
-                throw new ArgumentException("Argument_InvalidOffLen");
-            }
-
-            if (arrayIndex < 0 || arrayIndex > array.Length)
-            {
-                throw new ArgumentOutOfRangeException(nameof(arrayIndex));
-            }
-
-            if (array.Length - arrayIndex < _size)
-            {
-                throw new ArgumentException("Argument_InvalidOffLen");
-            }
-
-            try
-            {
-                Array.Copy(_array, 0, array, arrayIndex, _size);
-                Array.Reverse(array, arrayIndex, _size);
-            }
-            catch (ArrayTypeMismatchException)
-            {
-                throw new ArgumentException( nameof(array));
-            }
-        }
-
-        /// <summary>
-        /// Returns an IEnumerator for this PooledStack.
+        ///     Returns an IEnumerator for this PooledStack.
         /// </summary>
         /// <returns></returns>
         public Enumerator GetEnumerator()
             => new Enumerator(this);
 
-        /// <internalonly/>
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
-            => new Enumerator(this);
-
         /// <summary>
-        /// Gets the enumerator
-        /// </summary>
-        /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator()
-            => new Enumerator(this);
-
-        /// <summary>
-        /// Trims the excess
+        ///     Trims the excess
         /// </summary>
         public void TrimExcess()
         {
             if (_size == 0)
             {
-                ReturnArray(replaceWith: Array.Empty<T>());
+                ReturnArray(Array.Empty<T>());
                 _version++;
                 return;
             }
 
-            int threshold = (int)(_array.Length * 0.9);
+            int threshold = (int) (_array.Length * 0.9);
             if (_size < threshold)
             {
                 var newArray = _pool.Rent(_size);
                 if (newArray.Length < _array.Length)
                 {
                     Array.Copy(_array, newArray, _size);
-                    ReturnArray(replaceWith: newArray);
+                    ReturnArray(newArray);
                     _version++;
                 }
                 else
@@ -515,15 +380,15 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         }
 
         /// <summary>
-        /// Returns the top object on the stack without removing it.  If the stack
-        /// is empty, Peek throws an InvalidOperationException.
+        ///     Returns the top object on the stack without removing it.  If the stack
+        ///     is empty, Peek throws an InvalidOperationException.
         /// </summary>
         public T Peek()
         {
             int size = _size - 1;
             T[] array = _array;
 
-            if ((uint)size >= (uint)array.Length)
+            if ((uint) size >= (uint) array.Length)
             {
                 ThrowForEmptyStack();
             }
@@ -532,7 +397,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         }
 
         /// <summary>
-        /// Tries the peek using the specified result
+        ///     Tries the peek using the specified result
         /// </summary>
         /// <param name="result">The result</param>
         /// <returns>The bool</returns>
@@ -541,18 +406,19 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             int size = _size - 1;
             T[] array = _array;
 
-            if ((uint)size >= (uint)array.Length)
+            if ((uint) size >= (uint) array.Length)
             {
-                result = default;
+                result = default(T);
                 return false;
             }
+
             result = array[size];
             return true;
         }
 
         /// <summary>
-        /// Pops an item from the top of the stack.  If the stack is empty, Pop
-        /// throws an InvalidOperationException.
+        ///     Pops an item from the top of the stack.  If the stack is empty, Pop
+        ///     throws an InvalidOperationException.
         /// </summary>
         public T Pop()
         {
@@ -562,7 +428,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             // if (_size == 0) is equivalent to if (size == -1), and this case
             // is covered with (uint)size, thus allowing bounds check elimination 
             // https://github.com/dotnet/coreclr/pull/9773
-            if ((uint)size >= (uint)array.Length)
+            if ((uint) size >= (uint) array.Length)
             {
                 ThrowForEmptyStack();
             }
@@ -572,13 +438,14 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             T item = array[size];
             if (_clearOnFree)
             {
-                array[size] = default;     // Free memory quicker.
+                array[size] = default(T); // Free memory quicker.
             }
+
             return item;
         }
 
         /// <summary>
-        /// Tries the pop using the specified result
+        ///     Tries the pop using the specified result
         /// </summary>
         /// <param name="result">The result</param>
         /// <returns>The bool</returns>
@@ -587,9 +454,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             int size = _size - 1;
             T[] array = _array;
 
-            if ((uint)size >= (uint)array.Length)
+            if ((uint) size >= (uint) array.Length)
             {
-                result = default;
+                result = default(T);
                 return false;
             }
 
@@ -598,20 +465,21 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             result = array[size];
             if (_clearOnFree)
             {
-                array[size] = default;     // Free memory quicker.
+                array[size] = default(T); // Free memory quicker.
             }
+
             return true;
         }
 
         /// <summary>
-        /// Pushes an item to the top of the stack.
+        ///     Pushes an item to the top of the stack.
         /// </summary>
         public void Push(T item)
         {
             int size = _size;
             T[] array = _array;
 
-            if ((uint)size < (uint)array.Length)
+            if ((uint) size < (uint) array.Length)
             {
                 array[size] = item;
                 _version++;
@@ -625,22 +493,22 @@ namespace Alis.Benchmark.CustomCollections.Stacks
 
         // Non-inline from Stack.Push to improve its code quality as uncommon path
         /// <summary>
-        /// Pushes the with resize using the specified item
+        ///     Pushes the with resize using the specified item
         /// </summary>
         /// <param name="item">The item</param>
         [MethodImpl(MethodImplOptions.NoInlining)]
         private void PushWithResize(T item)
         {
-            var newArray = _pool.Rent((_array.Length == 0) ? DefaultCapacity : 2 * _array.Length);
+            var newArray = _pool.Rent(_array.Length == 0 ? DefaultCapacity : 2 * _array.Length);
             Array.Copy(_array, newArray, _size);
-            ReturnArray(replaceWith: newArray);
+            ReturnArray(newArray);
             _array[_size] = item;
             _version++;
             _size++;
         }
 
         /// <summary>
-        /// Copies the Stack to an array, in the same order Pop would return the items.
+        ///     Copies the Stack to an array, in the same order Pop would return the items.
         /// </summary>
         public T[] ToArray()
         {
@@ -656,11 +524,12 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 objArray[i] = _array[_size - i - 1];
                 i++;
             }
+
             return objArray;
         }
 
         /// <summary>
-        /// Throws the for empty stack
+        ///     Throws the for empty stack
         /// </summary>
         /// <exception cref="InvalidOperationException">Stack was empty.</exception>
         private void ThrowForEmptyStack()
@@ -670,7 +539,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         }
 
         /// <summary>
-        /// Returns the array using the specified replace with
+        ///     Returns the array using the specified replace with
         /// </summary>
         /// <param name="replaceWith">The replace with</param>
         private void ReturnArray(T[] replaceWith = null)
@@ -679,7 +548,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             {
                 try
                 {
-                    _pool.Return(_array, clearArray: _clearOnFree);
+                    _pool.Return(_array, _clearOnFree);
                 }
                 catch (ArgumentException)
                 {
@@ -694,7 +563,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         }
 
         /// <summary>
-        /// Shoulds the clear using the specified mode
+        ///     Shoulds the clear using the specified mode
         /// </summary>
         /// <param name="mode">The mode</param>
         /// <returns>The bool</returns>
@@ -702,59 +571,40 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         {
 #if NETCOREAPP2_1
             return mode == ClearMode.Always
-                || (mode == ClearMode.Auto && RuntimeHelpers.IsReferenceOrContainsReferences<T>());
+                   || (mode == ClearMode.Auto && RuntimeHelpers.IsReferenceOrContainsReferences<T>());
 #else
             return mode != ClearMode.Never;
 #endif
         }
 
         /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            ReturnArray(replaceWith: Array.Empty<T>());
-            _size = 0;
-            _version++;
-        }
-
-        /// <summary>
-        /// Ons the deserialization using the specified sender
-        /// </summary>
-        /// <param name="sender">The sender</param>
-        void IDeserializationCallback.OnDeserialization(object sender)
-        {
-            // We can't serialize array pools, so deserialized PooledStacks will
-            // have to use the shared pool, even if they were using a custom pool
-            // before serialization.
-            _pool = ArrayPool<T>.Shared;
-        }
-
-        /// <summary>
-        /// The enumerator
+        ///     The enumerator
         /// </summary>
         [SuppressMessage("Microsoft.Performance", "CA1815:OverrideEqualsAndOperatorEqualsOnValueTypes", Justification = "not an expected scenario")]
         public struct Enumerator : IEnumerator<T>, IEnumerator
         {
             /// <summary>
-            /// The stack
+            ///     The stack
             /// </summary>
             private readonly PooledStack<T> _stack;
+
             /// <summary>
-            /// The version
+            ///     The version
             /// </summary>
             private readonly int _version;
+
             /// <summary>
-            /// The index
+            ///     The index
             /// </summary>
             private int _index;
+
             /// <summary>
-            /// The current element
+            ///     The current element
             /// </summary>
             private T _currentElement;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="Enumerator"/> class
+            ///     Initializes a new instance of the <see cref="Enumerator" /> class
             /// </summary>
             /// <param name="stack">The stack</param>
             internal Enumerator(PooledStack<T> stack)
@@ -762,11 +612,11 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 _stack = stack;
                 _version = stack._version;
                 _index = -2;
-                _currentElement = default;
+                _currentElement = default(T);
             }
 
             /// <summary>
-            /// Disposes this instance
+            ///     Disposes this instance
             /// </summary>
             public void Dispose()
             {
@@ -774,7 +624,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             }
 
             /// <summary>
-            /// Moves the next
+            ///     Moves the next
             /// </summary>
             /// <exception cref="InvalidOperationException">Collection was modified during enumeration.</exception>
             /// <returns>The retval</returns>
@@ -787,9 +637,10 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 }
 
                 if (_index == -2)
-                {  // First call to enumerator.
+                {
+                    // First call to enumerator.
                     _index = _stack._size - 1;
-                    retval = (_index >= 0);
+                    retval = _index >= 0;
                     if (retval)
                     {
                         _currentElement = _stack._array[_index];
@@ -797,26 +648,28 @@ namespace Alis.Benchmark.CustomCollections.Stacks
 
                     return retval;
                 }
+
                 if (_index == -1)
-                {  // End of enumeration.
+                {
+                    // End of enumeration.
                     return false;
                 }
 
-                retval = (--_index >= 0);
+                retval = --_index >= 0;
                 if (retval)
                 {
                     _currentElement = _stack._array[_index];
                 }
                 else
                 {
-                    _currentElement = default;
+                    _currentElement = default(T);
                 }
 
                 return retval;
             }
 
             /// <summary>
-            /// Gets the value of the current
+            ///     Gets the value of the current
             /// </summary>
             public T Current
             {
@@ -832,7 +685,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             }
 
             /// <summary>
-            /// Throws the enumeration not started or ended
+            ///     Throws the enumeration not started or ended
             /// </summary>
             /// <exception cref="InvalidOperationException"></exception>
             private void ThrowEnumerationNotStartedOrEnded()
@@ -842,15 +695,12 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             }
 
             /// <summary>
-            /// Gets the value of the current
+            ///     Gets the value of the current
             /// </summary>
-            object IEnumerator.Current
-            {
-                get { return Current; }
-            }
+            object IEnumerator.Current => Current;
 
             /// <summary>
-            /// Resets this instance
+            ///     Resets this instance
             /// </summary>
             /// <exception cref="InvalidOperationException">Collection was modified during enumeration.</exception>
             void IEnumerator.Reset()
@@ -861,17 +711,217 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 }
 
                 _index = -2;
-                _currentElement = default;
+                _currentElement = default(T);
             }
         }
-        
+
+        #region Constructors
+
         /// <summary>
-        /// The value
+        ///     Create a stack with the default initial capacity.
         /// </summary>
-        public T this[int i]
+        public PooledStack() : this(ClearMode.Auto, ArrayPool<T>.Shared)
         {
-            get => _array[i];
-            set => _array[i] = value;
         }
+
+        /// <summary>
+        ///     Create a stack with the default initial capacity.
+        /// </summary>
+        public PooledStack(ClearMode clearMode) : this(clearMode, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Create a stack with the default initial capacity.
+        /// </summary>
+        public PooledStack(ArrayPool<T> customPool) : this(ClearMode.Auto, customPool)
+        {
+        }
+
+        /// <summary>
+        ///     Create a stack with the default initial capacity and a custom ArrayPool.
+        /// </summary>
+        public PooledStack(ClearMode clearMode, ArrayPool<T> customPool)
+        {
+            _pool = customPool ?? ArrayPool<T>.Shared;
+            _array = Array.Empty<T>();
+            _clearOnFree = ShouldClear(clearMode);
+        }
+
+        /// <summary>
+        ///     Create a stack with a specific initial capacity.  The initial capacity
+        ///     must be a non-negative number.
+        /// </summary>
+        public PooledStack(int capacity) : this(capacity, ClearMode.Auto, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Create a stack with a specific initial capacity.  The initial capacity
+        ///     must be a non-negative number.
+        /// </summary>
+        public PooledStack(int capacity, ClearMode clearMode) : this(capacity, clearMode, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Create a stack with a specific initial capacity.  The initial capacity
+        ///     must be a non-negative number.
+        /// </summary>
+        public PooledStack(int capacity, ArrayPool<T> customPool) : this(capacity, ClearMode.Auto, customPool)
+        {
+        }
+
+        /// <summary>
+        ///     Create a stack with a specific initial capacity.  The initial capacity
+        ///     must be a non-negative number.
+        /// </summary>
+        public PooledStack(int capacity, ClearMode clearMode, ArrayPool<T> customPool)
+        {
+            if (capacity < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(capacity));
+            }
+
+            _pool = customPool ?? ArrayPool<T>.Shared;
+            _array = _pool.Rent(capacity);
+            _clearOnFree = ShouldClear(clearMode);
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(IEnumerable<T> enumerable) : this(enumerable, ClearMode.Auto, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(IEnumerable<T> enumerable, ClearMode clearMode) : this(enumerable, clearMode, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(IEnumerable<T> enumerable, ArrayPool<T> customPool) : this(enumerable, ClearMode.Auto, customPool)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(IEnumerable<T> enumerable, ClearMode clearMode, ArrayPool<T> customPool)
+        {
+            _pool = customPool ?? ArrayPool<T>.Shared;
+            _clearOnFree = ShouldClear(clearMode);
+
+            switch (enumerable)
+            {
+                case null:
+                    throw new ArgumentNullException(nameof(enumerable));
+                    break;
+
+                case ICollection<T> collection:
+                    if (collection.Count == 0)
+                    {
+                        _array = Array.Empty<T>();
+                    }
+                    else
+                    {
+                        _array = _pool.Rent(collection.Count);
+                        collection.CopyTo(_array, 0);
+                        _size = collection.Count;
+                    }
+
+                    break;
+
+                default:
+                    using (var list = new PooledList<T>(enumerable))
+                    {
+                        _array = _pool.Rent(list.Count);
+                        list.Span.CopyTo(_array);
+                        _size = list.Count;
+                    }
+
+                    break;
+            }
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(T[] array) : this(array.AsSpan(), ClearMode.Auto, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(T[] array, ClearMode clearMode) : this(array.AsSpan(), clearMode, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(T[] array, ArrayPool<T> customPool) : this(array.AsSpan(), ClearMode.Auto, customPool)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(T[] array, ClearMode clearMode, ArrayPool<T> customPool) : this(array.AsSpan(), clearMode, customPool)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(ReadOnlySpan<T> span) : this(span, ClearMode.Auto, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(ReadOnlySpan<T> span, ClearMode clearMode) : this(span, clearMode, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(ReadOnlySpan<T> span, ArrayPool<T> customPool) : this(span, ClearMode.Auto, customPool)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(ReadOnlySpan<T> span, ClearMode clearMode, ArrayPool<T> customPool)
+        {
+            _pool = customPool ?? ArrayPool<T>.Shared;
+            _clearOnFree = ShouldClear(clearMode);
+            _array = _pool.Rent(span.Length);
+            span.CopyTo(_array);
+            _size = span.Length;
+        }
+
+        #endregion
     }
 }

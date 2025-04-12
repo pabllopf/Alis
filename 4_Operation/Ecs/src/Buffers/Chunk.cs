@@ -37,8 +37,7 @@ namespace Alis.Core.Ecs.Buffers
     /// <summary>
     ///     The chunk
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     internal struct Chunk<TData>
     {
         /// <summary>
@@ -67,13 +66,13 @@ namespace Alis.Core.Ecs.Buffers
         }
 
 #if NET6_0_OR_GREATER
-            public Span<TData> AsSpan() => MemoryMarshal.CreateSpan(ref Buffer[0], Buffer.Length);
+        public Span<TData> AsSpan() => MemoryMarshal.CreateSpan(ref Buffer[0], Buffer.Length);
 #else
-           /// <summary>
-           /// Converts the span
-           /// </summary>
-           /// <returns>A span of t data</returns>
-           public Span<TData> AsSpan() => Buffer;
+        /// <summary>
+        ///     Converts the span
+        /// </summary>
+        /// <returns>A span of t data</returns>
+        public Span<TData> AsSpan() => Buffer;
 #endif
 
         /// <summary>
@@ -82,13 +81,13 @@ namespace Alis.Core.Ecs.Buffers
         /// <param name="start">The start</param>
         /// <param name="length">The length</param>
         /// <returns>A span of t data</returns>
-        
+
 #if NET6_0_OR_GREATER
         public Span<TData> AsSpan(int start, int length) => MemoryMarshal.CreateSpan(ref Buffer[start], length);
 #else
         public Span<TData> AsSpan(int start, int length) => Buffer.AsSpan(start, length);
 #endif
-        
+
         /// <summary>
         ///     Nexts the chunk using the specified chunks
         /// </summary>

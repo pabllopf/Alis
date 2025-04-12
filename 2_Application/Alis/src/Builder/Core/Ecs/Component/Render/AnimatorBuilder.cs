@@ -51,10 +51,7 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The animator builder</returns>
-        public AnimatorBuilder AddAnimation(Func<AnimationBuilder, Animation> value)
-        {
-            return this;
-        }
+        public AnimatorBuilder AddAnimation(Func<AnimationBuilder, Animation> value) => this;
 
         /// <summary>
         ///     Builds this instance

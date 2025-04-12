@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Aspect.Math.Shape.Line
@@ -36,7 +35,6 @@ namespace Alis.Core.Aspect.Math.Shape.Line
     ///     The line
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    
     public struct LineI : IShape
     {
         /// <summary>

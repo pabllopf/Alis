@@ -28,13 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
 {
     /// <summary>
     ///     The create entity with two components class
     /// </summary>
-    [BenchmarkCategory(Categories.CreateEntity), MemoryDiagnoser(false), Orderer(BenchmarkDotNet.Order.SummaryOrderPolicy.FastestToSlowest)]
+    [BenchmarkCategory(Categories.CreateEntity), MemoryDiagnoser(false), Orderer(SummaryOrderPolicy.FastestToSlowest)]
 #if CHECK_CACHE_MISSES
     [HardwareCounters(BenchmarkDotNet.Diagnosers.HardwareCounter.CacheMisses)]
 #endif

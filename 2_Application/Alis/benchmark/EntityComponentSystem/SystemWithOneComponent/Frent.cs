@@ -109,7 +109,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             {
                 for (int i = 0; i < entityCount; i++)
                 {
-                    World.Create<Component1>(default(Component1));
+                    World.Create(default(Component1));
                     for (int j = 0; j < entityPadding; j++)
                     {
                         World.Create();

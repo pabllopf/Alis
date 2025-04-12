@@ -46,17 +46,14 @@ namespace Alis.Builder.Core.Ecs.Component.Render
         /// <summary>
         ///     The camera
         /// </summary>
-        private Camera camera = new Camera();
+        private Camera camera;
 
         /// <summary>
         ///     Backgrounds the color using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The camera builder</returns>
-        public CameraBuilder BackgroundColor(Color value)
-        {
-            return this;
-        }
+        public CameraBuilder BackgroundColor(Color value) => this;
 
         /// <summary>
         ///     Builds this instance

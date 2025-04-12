@@ -40,8 +40,7 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The fast lookup
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     internal struct FastLookup()
     {
         /// <summary>
@@ -73,7 +72,6 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="scene">The world</param>
         /// <param name="edgeType">The edge type</param>
         /// <returns>The entity type</returns>
-        
         public ArchetypeID FindAdjacentArchetypeId<T>(T id, EntityType archetype, Scene scene, ArchetypeEdgeType edgeType)
             where T : ITypeID
         {
@@ -141,6 +139,7 @@ namespace Alis.Core.Ecs.Collections
                 if (span[i] == key)
                     return i;
             }
+
             return 32;
 #else
             if (_data._0 == key)

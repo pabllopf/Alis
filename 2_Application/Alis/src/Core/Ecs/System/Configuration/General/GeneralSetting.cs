@@ -27,31 +27,29 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Core.Ecs.System.Configuration.General
 {
-    
     public class GeneralSetting(
-        bool debug = false, 
-        string name = "Default Name", 
-        string description = "Default Description", 
-        string version = "0.0.0", 
-        string author = "Pablo Perdomo Falcón", 
-        string license = "GPL-3.0 license", 
+        bool debug = false,
+        string name = "Default Name",
+        string description = "Default Description",
+        string version = "0.0.0",
+        string author = "Pablo Perdomo Falcón",
+        string license = "GPL-3.0 license",
         string icon = "app.bmp") : IGeneralSetting
     {
         public bool Debug { get; set; } = debug;
-        
+
         public string Name { get; set; } = name;
-        
+
         public string Description { get; set; } = description;
-        
+
         public string Version { get; set; } = version;
-        
+
         public string Author { get; set; } = author;
-        
+
         public string License { get; set; } = license;
-        
+
         public string Icon { get; set; } = icon;
     }
 }

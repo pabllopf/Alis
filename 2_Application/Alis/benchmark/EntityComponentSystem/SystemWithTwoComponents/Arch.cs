@@ -111,7 +111,6 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             /// </summary>
             /// <param name="t0">The </param>
             /// <param name="t1">The </param>
-            
             public void Update(ref Component1 t0, ref Component2 t1)
             {
                 t0.Value += t1.Value;

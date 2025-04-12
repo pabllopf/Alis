@@ -34,14 +34,13 @@ namespace Alis.Core.Ecs.Components.Audio
     public struct AudioClip(string nameFile, float volume, bool isMute) : IEntityComponent
     {
         public string NameFile { get; set; } = nameFile;
-        
+
         public float Volume { get; set; } = volume;
-        
+
         public bool IsMute { get; set; } = isMute;
-        
+
         public void Update(GameObject self)
         {
-            
         }
     }
 }

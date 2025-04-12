@@ -34,7 +34,6 @@ using Alis.Core.Ecs.Collections;
 
 namespace Alis.Core.Ecs
 {
-    [StructLayout( LayoutKind.Sequential, Pack = 1 )]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     internal readonly record struct ComponentData(Type Type, IdTable Storage, Delegate Initer, Delegate Destroyer);
 }

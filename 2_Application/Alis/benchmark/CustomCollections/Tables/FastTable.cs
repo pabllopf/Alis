@@ -35,55 +35,53 @@ using System.Runtime.InteropServices;
 namespace Alis.Benchmark.CustomCollections.Tables
 {
     /// <summary>
-    /// The fast table
+    ///     The fast table
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct FastTable<T>
     {
         /// <summary>
-        /// The buffer
+        ///     The buffer
         /// </summary>
         public T[] _buffer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FastTable"/> class
+        ///     Initializes a new instance of the <see cref="FastTable" /> class
         /// </summary>
         /// <param name="size">The size</param>
         public FastTable(int size)
         {
 #if NET6_0_OR_GREATER
-            _buffer = GC.AllocateUninitializedArray<T>((int)BitOperations.RoundUpToPowerOf2((uint)size));
+            _buffer = GC.AllocateUninitializedArray<T>((int) BitOperations.RoundUpToPowerOf2((uint) size));
 #else
-            _buffer = new T[(int)BitOperations.RoundUpToPowerOf2((uint)size)];
+            _buffer = new T[(int) BitOperations.RoundUpToPowerOf2((uint) size)];
 #endif
         }
-        
+
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         public ref T this[int index]
         {
-            
             get
             {
-                if ((uint)index >= (uint)_buffer.Length)
+                if ((uint) index >= (uint) _buffer.Length)
                 {
-                    return ref ResizeGet(index); 
+                    return ref ResizeGet(index);
                 }
-                
+
                 return ref Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(_buffer), index);
             }
         }
-        
+
         /// <summary>
-        /// Resizes the get using the specified index
+        ///     Resizes the get using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        
         private ref T ResizeGet(int index)
         {
-            int newSize = (int)BitOperations.RoundUpToPowerOf2((uint)(index + 1));
+            int newSize = (int) BitOperations.RoundUpToPowerOf2((uint) (index + 1));
 
 #if NET6_0_OR_GREATER
             T[] newArray = GC.AllocateUninitializedArray<T>(newSize);
@@ -97,23 +95,21 @@ namespace Alis.Benchmark.CustomCollections.Tables
         }
 
         /// <summary>
-        /// Unsafes the index no resize using the specified index
+        ///     Unsafes the index no resize using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        
         public ref T UnsafeIndexNoResize(int index) => ref Unsafe.Add(ref MemoryMarshal.GetArrayDataReference(_buffer), index);
 
         /// <summary>
-        /// Ensures the capacity using the specified size
+        ///     Ensures the capacity using the specified size
         /// </summary>
         /// <param name="size">The size</param>
-        
         public void EnsureCapacity(int size)
         {
             if (_buffer.Length < size)
             {
-                int newSize = (int)BitOperations.RoundUpToPowerOf2((uint)size);
+                int newSize = (int) BitOperations.RoundUpToPowerOf2((uint) size);
 #if NET6_0_OR_GREATER
                 T[] newArray = GC.AllocateUninitializedArray<T>(newSize);
 #else
@@ -125,10 +121,9 @@ namespace Alis.Benchmark.CustomCollections.Tables
         }
 
         /// <summary>
-        /// Converts the span
+        ///     Converts the span
         /// </summary>
         /// <returns>A span of t</returns>
-        
         public Span<T> AsSpan()
         {
 #if NET6_0_OR_GREATER

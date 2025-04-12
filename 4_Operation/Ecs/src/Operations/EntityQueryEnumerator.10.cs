@@ -1,4 +1,33 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:EntityQueryEnumerator.10.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
 using Alis.Core.Ecs.Arch;
 
 namespace Alis.Core.Ecs.Operations
@@ -7,8 +36,8 @@ namespace Alis.Core.Ecs.Operations
     {
         private int _archetypeIndex;
         private int _componentIndex;
-        private Scene scene;
-        private Span<Archetype> _archetypes;
+        private readonly Scene scene;
+        private readonly Span<Archetype> _archetypes;
         private Span<EntityIdOnly> _entityIds;
         private Span<T1> _currentSpan1;
         private Span<T2> _currentSpan2;
@@ -30,7 +59,7 @@ namespace Alis.Core.Ecs.Operations
         }
 
         /// <summary>
-        /// The current tuple of component references and the <see cref="GameObject"/> instance.
+        ///     The current tuple of component references and the <see cref="GameObject" /> instance.
         /// </summary>
         public EntityRefTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> Current => new()
         {
@@ -44,12 +73,11 @@ namespace Alis.Core.Ecs.Operations
             Item7 = new Ref<T7>(_currentSpan7, _componentIndex),
             Item8 = new Ref<T8>(_currentSpan8, _componentIndex),
             Item9 = new Ref<T9>(_currentSpan9, _componentIndex),
-            Item10 = new Ref<T10>(_currentSpan10, _componentIndex),
-
+            Item10 = new Ref<T10>(_currentSpan10, _componentIndex)
         };
 
         /// <summary>
-        /// Indicates to the world that this enumeration is finished; the world might allow structual changes after this.
+        ///     Indicates to the world that this enumeration is finished; the world might allow structual changes after this.
         /// </summary>
         public void Dispose()
         {
@@ -57,9 +85,9 @@ namespace Alis.Core.Ecs.Operations
         }
 
         /// <summary>
-        /// Moves to the next entity and its components in this enumeration.
+        ///     Moves to the next entity and its components in this enumeration.
         /// </summary>
-        /// <returns><see langword="true"/> when its possible to enumerate further, otherwise <see langword="false"/>.</returns>
+        /// <returns><see langword="true" /> when its possible to enumerate further, otherwise <see langword="false" />.</returns>
         public bool MoveNext()
         {
             if (++_componentIndex < _currentSpan1.Length)
@@ -72,7 +100,7 @@ namespace Alis.Core.Ecs.Operations
                 _componentIndex = 0;
                 _archetypeIndex++;
 
-                if ((uint)_archetypeIndex < (uint)_archetypes.Length)
+                if ((uint) _archetypeIndex < (uint) _archetypes.Length)
                 {
                     var cur = _archetypes[_archetypeIndex];
                     _entityIds = cur.GetEntitySpan();
@@ -86,7 +114,6 @@ namespace Alis.Core.Ecs.Operations
                     _currentSpan8 = cur.GetComponentSpan<T8>();
                     _currentSpan9 = cur.GetComponentSpan<T9>();
                     _currentSpan10 = cur.GetComponentSpan<T10>();
-
                 }
                 else
                 {
@@ -98,13 +125,13 @@ namespace Alis.Core.Ecs.Operations
         }
 
         /// <summary>
-        /// Proxy type for foreach syntax
+        ///     Proxy type for foreach syntax
         /// </summary>
         /// <param name="query">The query to wrap.</param>
         public struct QueryEnumerable(Query query)
         {
             /// <summary>
-            /// Gets the enumerator over a query.
+            ///     Gets the enumerator over a query.
             /// </summary>
             public EntityQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> GetEnumerator() => new EntityQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(query);
         }

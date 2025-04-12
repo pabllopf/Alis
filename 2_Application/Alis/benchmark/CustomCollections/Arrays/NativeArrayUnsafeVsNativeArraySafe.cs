@@ -33,41 +33,39 @@ using BenchmarkDotNet.Attributes;
 namespace Alis.Benchmark.CustomCollections.Arrays
 {
     /// <summary>
-    /// The native array unsafe vs native array safe class
+    ///     The native array unsafe vs native array safe class
     /// </summary>
-    [MemoryDiagnoser(false)]
-    [ShortRunJob]
+    [MemoryDiagnoser(false), ShortRunJob]
     public class NativeArrayUnsafeVsNativeArraySafe
     {
         /// <summary>
-        /// The array size
+        ///     The array size
         /// </summary>
-        [Params(2)]
-        public int ArraySize;
+        [Params(2)] public int ArraySize;
 
         /// <summary>
-        /// The native array unsafe
-        /// </summary>
-        private NativeArrayUnsafe<int> nativeArrayUnsafe;
-
-        /// <summary>
-        /// The native array
-        /// </summary>
-        private NativeArray<int> nativeArray;
-        
-        /// <summary>
-        /// The fastest array
-        /// </summary>
-        private FastestArray<int> fastestArray;
-        
-        /// <summary>
-        /// The fast array safe
+        ///     The fast array safe
         /// </summary>
         private FastArraySafe<int> fastArraySafe;
 
+        /// <summary>
+        ///     The fastest array
+        /// </summary>
+        private FastestArray<int> fastestArray;
+
+        /// <summary>
+        ///     The native array
+        /// </summary>
+        private NativeArray<int> nativeArray;
+
+        /// <summary>
+        ///     The native array unsafe
+        /// </summary>
+        private NativeArrayUnsafe<int> nativeArrayUnsafe;
+
         // Inicialización
         /// <summary>
-        /// Setup this instance
+        ///     Setup this instance
         /// </summary>
         [GlobalSetup]
         public void Setup()
@@ -79,7 +77,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Cleanups this instance
+        ///     Cleanups this instance
         /// </summary>
         [GlobalCleanup]
         public void Cleanup()
@@ -91,7 +89,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Benchmarks the native array unsafe
+        ///     Benchmarks the native array unsafe
         /// </summary>
         [Benchmark(Description = "[UNSAFE] Iteration over NativeArrayUnsafe")]
         public void BenchmarkNativeArrayUnsafe()
@@ -103,9 +101,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Benchmarks the native array
+        ///     Benchmarks the native array
         /// </summary>
-        [Benchmark(Description ="[SAFE] Iteration over NativeArray")]
+        [Benchmark(Description = "[SAFE] Iteration over NativeArray")]
         public void BenchmarkNativeArray()
         {
             for (int i = 0; i < ArraySize; i++)
@@ -113,11 +111,11 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 nativeArray[i] = i;
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the fastest array
+        ///     Benchmarks the fastest array
         /// </summary>
-        [Benchmark(Description ="[FASTEST] Iteration over FastestArray")]
+        [Benchmark(Description = "[FASTEST] Iteration over FastestArray")]
         public void BenchmarkFastestArray()
         {
             for (int i = 0; i < ArraySize; i++)
@@ -125,11 +123,11 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 fastestArray[i] = i;
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the fast array safe
+        ///     Benchmarks the fast array safe
         /// </summary>
-        [Benchmark(Description ="[FASTEST SAFE] Iteration over FastArraySafe")]
+        [Benchmark(Description = "[FASTEST SAFE] Iteration over FastArraySafe")]
         public void BenchmarkFastArraySafe()
         {
             for (int i = 0; i < ArraySize; i++)
@@ -139,7 +137,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Benchmarks the resize native array unsafe
+        ///     Benchmarks the resize native array unsafe
         /// </summary>
         [Benchmark(Description = "[UNSAFE] Resize NativeArrayUnsafe")]
         public void BenchmarkResizeNativeArrayUnsafe()
@@ -148,34 +146,34 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Benchmarks the resize native array
+        ///     Benchmarks the resize native array
         /// </summary>
         [Benchmark(Description = "[SAFE] Resize NativeArray")]
         public void BenchmarkResizeNativeArray()
         {
             nativeArray.Resize(ArraySize * 2);
         }
-        
+
         /// <summary>
-        /// Benchmarks the resize fastest array
+        ///     Benchmarks the resize fastest array
         /// </summary>
         [Benchmark(Description = "[FASTEST] Resize FastestArray")]
         public void BenchmarkResizeFastestArray()
         {
             fastestArray.Resize(ArraySize * 2);
         }
-        
+
         /// <summary>
-        /// Benchmarks the resize fast array safe
+        ///     Benchmarks the resize fast array safe
         /// </summary>
         [Benchmark(Description = "[FASTEST SAFE] Resize FastArraySafe")]
         public void BenchmarkResizeFastArraySafe()
         {
             fastArraySafe.Resize(ArraySize * 2);
         }
-        
+
         /// <summary>
-        /// Benchmarks the native array unsafe assignment
+        ///     Benchmarks the native array unsafe assignment
         /// </summary>
         [Benchmark(Description = "[UNSAFE] Assignment NativeArrayUnsafe")]
         public void BenchmarkNativeArrayUnsafe_Assignment()
@@ -187,7 +185,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Benchmarks the native array assignment
+        ///     Benchmarks the native array assignment
         /// </summary>
         [Benchmark(Description = "[SAFE] Assignment NativeArray")]
         public void BenchmarkNativeArray_Assignment()
@@ -197,9 +195,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 nativeArray[i] = i;
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the fastest array assignment
+        ///     Benchmarks the fastest array assignment
         /// </summary>
         [Benchmark(Description = "[FASTEST] Assignment FastestArray")]
         public void BenchmarkFastestArray_Assignment()
@@ -209,9 +207,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 fastestArray[i] = i;
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the fast array safe assignment
+        ///     Benchmarks the fast array safe assignment
         /// </summary>
         [Benchmark(Description = "[FASTEST SAFE] Assignment FastArraySafe")]
         public void BenchmarkFastArraySafe_Assignment()
@@ -223,7 +221,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Benchmarks the native array unsafe sequential access
+        ///     Benchmarks the native array unsafe sequential access
         /// </summary>
         [Benchmark(Description = "[UNSAFE] Sequential Access NativeArrayUnsafe")]
         public void BenchmarkNativeArrayUnsafe_SequentialAccess()
@@ -235,7 +233,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Benchmarks the native array sequential access
+        ///     Benchmarks the native array sequential access
         /// </summary>
         [Benchmark(Description = "[SAFE] Sequential Access NativeArray")]
         public void BenchmarkNativeArray_SequentialAccess()
@@ -245,9 +243,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 int value = nativeArray[i];
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the fastest array sequential access
+        ///     Benchmarks the fastest array sequential access
         /// </summary>
         [Benchmark(Description = "[FASTEST] Sequential Access FastestArray")]
         public void BenchmarkFastestArray_SequentialAccess()
@@ -257,9 +255,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 int value = fastestArray[i];
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the fast array safe sequential access
+        ///     Benchmarks the fast array safe sequential access
         /// </summary>
         [Benchmark(Description = "[FASTEST SAFE] Sequential Access FastArraySafe")]
         public void BenchmarkFastArraySafe_SequentialAccess()
@@ -271,7 +269,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Benchmarks the native array unsafe random access
+        ///     Benchmarks the native array unsafe random access
         /// </summary>
         [Benchmark(Description = "[UNSAFE] Random Access NativeArrayUnsafe")]
         public void BenchmarkNativeArrayUnsafe_RandomAccess()
@@ -284,7 +282,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Benchmarks the native array random access
+        ///     Benchmarks the native array random access
         /// </summary>
         [Benchmark(Description = "[SAFE] Random Access NativeArray")]
         public void BenchmarkNativeArray_RandomAccess()
@@ -295,9 +293,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 int value = nativeArray[random.Next(0, ArraySize)];
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the fastest array random access
+        ///     Benchmarks the fastest array random access
         /// </summary>
         [Benchmark(Description = "[FASTEST] Random Access FastestArray")]
         public void BenchmarkFastestArray_RandomAccess()
@@ -308,9 +306,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 int value = fastestArray[random.Next(0, ArraySize)];
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the fast array safe random access
+        ///     Benchmarks the fast array safe random access
         /// </summary>
         [Benchmark(Description = "[FASTEST SAFE] Random Access FastArraySafe")]
         public void BenchmarkFastArraySafe_RandomAccess()
@@ -323,7 +321,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Benchmarks the dispose native array unsafe
+        ///     Benchmarks the dispose native array unsafe
         /// </summary>
         [Benchmark(Description = "[UNSAFE] Dispose NativeArrayUnsafe")]
         public void BenchmarkDisposeNativeArrayUnsafe()
@@ -332,25 +330,25 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Benchmarks the dispose native array
+        ///     Benchmarks the dispose native array
         /// </summary>
         [Benchmark(Description = "[SAFE] Dispose NativeArray")]
         public void BenchmarkDisposeNativeArray()
         {
             nativeArray.Dispose();
         }
-        
+
         /// <summary>
-        /// Benchmarks the dispose fastest array
+        ///     Benchmarks the dispose fastest array
         /// </summary>
         [Benchmark(Description = "[FASTEST] Dispose FastestArray")]
         public void BenchmarkDisposeFastestArray()
         {
             fastestArray.Dispose();
         }
-        
+
         /// <summary>
-        /// Benchmarks the dispose fast array safe
+        ///     Benchmarks the dispose fast array safe
         /// </summary>
         [Benchmark(Description = "[FASTEST SAFE] Dispose FastArraySafe")]
         public void BenchmarkDisposeFastArraySafe()
@@ -359,7 +357,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Benchmarks the native array unsafe as span
+        ///     Benchmarks the native array unsafe as span
         /// </summary>
         [Benchmark(Description = "[UNSAFE] AsSpan NativeArrayUnsafe")]
         public void BenchmarkNativeArrayUnsafe_AsSpan()
@@ -372,7 +370,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Benchmarks the native array as span
+        ///     Benchmarks the native array as span
         /// </summary>
         [Benchmark(Description = "[SAFE] AsSpan NativeArray")]
         public void BenchmarkNativeArray_AsSpan()
@@ -383,9 +381,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 int value = span[i];
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the fastest array as span
+        ///     Benchmarks the fastest array as span
         /// </summary>
         [Benchmark(Description = "[FASTEST] AsSpan FastestArray")]
         public void BenchmarkFastestArray_AsSpan()
@@ -396,9 +394,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 int value = span[i];
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the fast array safe as span
+        ///     Benchmarks the fast array safe as span
         /// </summary>
         [Benchmark(Description = "[FASTEST SAFE] AsSpan FastArraySafe")]
         public void BenchmarkFastArraySafe_AsSpan()
@@ -409,9 +407,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 int value = span[i];
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the native array unsafe as span len
+        ///     Benchmarks the native array unsafe as span len
         /// </summary>
         [Benchmark(Description = "[UNSAFE] AsSpanLen NativeArrayUnsafe")]
         public void BenchmarkNativeArrayUnsafe_AsSpanLen()
@@ -424,7 +422,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Benchmarks the native array as span len
+        ///     Benchmarks the native array as span len
         /// </summary>
         [Benchmark(Description = "[SAFE] AsSpanLen NativeArray")]
         public void BenchmarkNativeArray_AsSpanLen()
@@ -435,9 +433,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 int value = span[i];
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the fastest array as span len
+        ///     Benchmarks the fastest array as span len
         /// </summary>
         [Benchmark(Description = "[FASTEST] AsSpanLen FastestArray")]
         public void BenchmarkFastestArray_AsSpanLen()
@@ -448,9 +446,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 int value = span[i];
             }
         }
-        
+
         /// <summary>
-        /// Benchmarks the fast array safe as span len
+        ///     Benchmarks the fast array safe as span len
         /// </summary>
         [Benchmark(Description = "[FASTEST SAFE] AsSpanLen FastArraySafe")]
         public void BenchmarkFastArraySafe_AsSpanLen()

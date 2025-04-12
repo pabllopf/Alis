@@ -30,7 +30,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue
 {
@@ -77,7 +76,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Removes every node from the queue.
         ///     O(n) (So, don't do this often!)
         /// </summary>
-        
         public void Clear()
         {
             Array.Clear(_nodes, 1, _numNodes);
@@ -114,7 +112,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     If queue is empty, result is undefined
         ///     O(log n)
         /// </summary>
-        
         public T Dequeue()
         {
             T returnMe = _nodes[1];
@@ -164,7 +161,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Calling this method on a node not in the queue results in undefined behavior
         ///     O(log n)
         /// </summary>
-        
         public void UpdatePriority(T item, float priority)
         {
             item.Priority = priority;
@@ -176,7 +172,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     If the node is not in the queue, the result is undefined.  If unsure, check Contains() first
         ///     O(log n)
         /// </summary>
-        
         public void Remove(T item)
         {
             //If the node is already the last node, we can remove it immediately
@@ -203,7 +198,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     If you need to do this, please call originalQueue.ResetNode(node) before attempting to add it in the new queue
         ///     If the node is currently in the queue or belongs to another queue, the result is undefined
         /// </summary>
-        
         public void ResetNode(T node)
         {
             node.QueueIndex = 0;
@@ -232,7 +226,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Cascades the up using the specified node
         /// </summary>
         /// <param name="node">The node</param>
-        
         private void CascadeUp(T node)
         {
             //aka Heapify-up
@@ -281,7 +274,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Cascades the down using the specified node
         /// </summary>
         /// <param name="node">The node</param>
-        
         private void CascadeDown(T node)
         {
             int finalQueueIndex = node.QueueIndex;
@@ -321,7 +313,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <param name="childLeft">The child left</param>
         /// <param name="childRight">The child right</param>
         /// <returns>The final queue index</returns>
-        
         private int GetSwapIndex(int finalQueueIndex, int childLeftIndex, int childRightIndex, T childLeft, T childRight)
         {
             bool isLeftHigherPriority = HasHigherPriority(childLeft, _nodes[finalQueueIndex]);
@@ -345,7 +336,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// </summary>
         /// <param name="index1">The index</param>
         /// <param name="index2">The index</param>
-        
         private void Swap(int index1, int index2)
         {
             (_nodes[index1], _nodes[index2]) = (_nodes[index2], _nodes[index1]);
@@ -363,7 +353,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Returns true if 'higher' has higher priority than 'lower', false otherwise.
         ///     Note that calling HasHigherOrEqualPriority(node, node) (ie. both arguments the same node) will return true
         /// </summary>
-        
         private bool HasHigherOrEqualPriority(T higher, T lower) => higher.Priority <= lower.Priority;
 
 
@@ -371,7 +360,6 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Ons the node updated using the specified node
         /// </summary>
         /// <param name="node">The node</param>
-        
         private void OnNodeUpdated(T node)
         {
             //Bubble the updated node up or down as appropriate

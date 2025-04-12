@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Frent.cs
+//  File:AlisEcs.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -61,7 +61,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
 
             for (int i = 0; i < EntityCount; i++)
             {
-                scene.Create<Component1, Component2>(default(Component1), default(Component2));
+                scene.Create(default(Component1), default(Component2));
             }
         }
 

@@ -228,7 +228,6 @@ namespace Alis.Core.Ecs.Memory
         /// <typeparam name="TBlock">The block</typeparam>
         /// <param name="destination">The destination</param>
         /// <param name="source">The source</param>
-        
         public static void CopyBlock<TBlock>(ref byte destination, ref byte source)
             where TBlock : struct
         {
@@ -265,29 +264,25 @@ namespace Alis.Core.Ecs.Memory
         /// <summary>
         ///     The block
         /// </summary>
-        [StructLayout(LayoutKind.Sequential, Size = 2)]
-        [SkipLocalsInit]
+        [StructLayout(LayoutKind.Sequential, Size = 2), SkipLocalsInit]
         internal struct Block2;
 
         /// <summary>
         ///     The block
         /// </summary>
-        [StructLayout(LayoutKind.Sequential, Size = 4)]
-        [SkipLocalsInit]
+        [StructLayout(LayoutKind.Sequential, Size = 4), SkipLocalsInit]
         internal struct Block4;
 
         /// <summary>
         ///     The block
         /// </summary>
-        [StructLayout(LayoutKind.Sequential, Size = 8)]
-        [SkipLocalsInit]
+        [StructLayout(LayoutKind.Sequential, Size = 8), SkipLocalsInit]
         internal struct Block8;
 
         /// <summary>
         ///     The block 16
         /// </summary>
-        [StructLayout(LayoutKind.Sequential, Size = 16)]
-        [SkipLocalsInit]
+        [StructLayout(LayoutKind.Sequential, Size = 16), SkipLocalsInit]
         internal struct Block16;
     }
 

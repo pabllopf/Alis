@@ -39,8 +39,7 @@ namespace Alis.Core.Ecs
     ///     A wrapper ref struct over a reference to a <typeparamref name="T" />
     /// </summary>
     /// <typeparam name="T">The type this <see cref="Ref{T}" /> wraps over</typeparam>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     public ref struct Ref<T>
     {
 #if NET7_0_OR_GREATER

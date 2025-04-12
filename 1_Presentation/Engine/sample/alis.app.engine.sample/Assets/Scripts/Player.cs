@@ -37,10 +37,8 @@ namespace Alis.App.Engine.Sample.Assets.Scripts
     /// </summary>
     public class Player : IEntityComponent
     {
-
         public void Update(GameObject self)
         {
-            
         }
     }
 }

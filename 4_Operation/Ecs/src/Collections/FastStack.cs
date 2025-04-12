@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FastestStack.cs
+//  File:FastStack.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -36,51 +36,48 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Ecs.Collections
 {
     /// <summary>
-    /// The fastest stack class
+    ///     The fastest stack class
     /// </summary>
-    /// <seealso cref="ICollection"/>
-    /// <seealso cref="IReadOnlyCollection{T}"/>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)] 
+    /// <seealso cref="ICollection" />
+    /// <seealso cref="IReadOnlyCollection{T}" />
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct FastStack<T> : ICollection,
         IReadOnlyCollection<T>, IDisposable
     {
         /// <summary>
-        /// The array
+        ///     The array
         /// </summary>
-        private T[] _array; 
-        
+        private T[] _array;
+
         /// <summary>
-        /// The size
+        ///     The size
         /// </summary>
-        private int _size; 
-        
+        private int _size;
+
         /// <summary>
-        /// The version
+        ///     The version
         /// </summary>
         private int _version;
 
         /// <summary>
-        /// The default capacity
+        ///     The default capacity
         /// </summary>
         private const int DefaultCapacity = 32;
-        
-        /// <summary>
-        /// The max array length
-        /// </summary>
-        private const int MaxArrayLength = 0X7FEFFFFF; 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FastStack{T}"/> class
+        ///     The max array length
         /// </summary>
-        public FastStack()
-        {
-            _array = Array.Empty<T>();
-        }
+        private const int MaxArrayLength = 0X7FEFFFFF;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="FastStack{T}" /> class
+        /// </summary>
+        public FastStack() => _array = Array.Empty<T>();
 
         // Create a stack with a specific initial capacity.  The initial capacity
         // must be a non-negative number.
         /// <summary>
-        /// Initializes a new instance of the <see cref="FastStack{T}"/> class
+        ///     Initializes a new instance of the <see cref="FastStack{T}" /> class
         /// </summary>
         /// <param name="capacity">The capacity</param>
         public FastStack(int capacity)
@@ -89,19 +86,20 @@ namespace Alis.Core.Ecs.Collections
             {
                 throw new ArgumentOutOfRangeException(nameof(capacity), "ArgumentOutOfRange_NeedNonNegNum");
             }
-            
+
             if (capacity == 0)
             {
                 _array = [];
                 return;
             }
+
             _array = new T[capacity];
         }
 
         // Fills a Stack with the contents of a particular collection.  The items are
         // pushed onto the stack in the same order they are read by the enumerator.
         /// <summary>
-        /// Initializes a new instance of the <see cref="FastStack{T}"/> class
+        ///     Initializes a new instance of the <see cref="FastStack{T}" /> class
         /// </summary>
         /// <param name="collection">The collection</param>
         public FastStack(IEnumerable<T> collection)
@@ -115,32 +113,32 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>
-        /// Gets the value of the count
+        ///     Gets the value of the count
         /// </summary>
         public int Count => _size;
 
 
         /// <summary>
-        /// Gets the total numbers of elements the internal data structure can hold without resizing.
+        ///     Gets the total numbers of elements the internal data structure can hold without resizing.
         /// </summary>
         public int Capacity => _array.Length;
 
-        /// <inheritdoc cref="ICollection{T}"/>
+        /// <inheritdoc cref="ICollection{T}" />
         bool ICollection.IsSynchronized => false;
 
         /// <summary>
-        /// Gets the value of the sync root
+        ///     Gets the value of the sync root
         /// </summary>
         object ICollection.SyncRoot => this;
 
         /// <summary>
-        /// Gets the value of the any
+        ///     Gets the value of the any
         /// </summary>
         public bool Any => _size > 0;
 
         // Removes all Objects from the Stack.
         /// <summary>
-        /// Clears this instance
+        ///     Clears this instance
         /// </summary>
         public void Clear()
         {
@@ -148,23 +146,21 @@ namespace Alis.Core.Ecs.Collections
             {
                 Array.Clear(_array, 0, _size); // Don't need to doc this but we clear the elements so that the gc can reclaim the references.
             }
+
             _size = 0;
             _version++;
         }
 
         /// <summary>
-        /// Containses the item
+        ///     Containses the item
         /// </summary>
         /// <param name="item">The item</param>
         /// <returns>The bool</returns>
-        public bool Contains(T item)
-        {
-            return _size != 0 && Array.LastIndexOf(_array, item, _size - 1) != -1;
-        }
+        public bool Contains(T item) => (_size != 0) && (Array.LastIndexOf(_array, item, _size - 1) != -1);
 
         // Copies the stack into an array.
         /// <summary>
-        /// Copies the to using the specified array
+        ///     Copies the to using the specified array
         /// </summary>
         /// <param name="array">The array</param>
         /// <param name="arrayIndex">The array index</param>
@@ -196,7 +192,7 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>
-        /// Copies the to using the specified array
+        ///     Copies the to using the specified array
         /// </summary>
         /// <param name="array">The array</param>
         /// <param name="arrayIndex">The array index</param>
@@ -245,32 +241,31 @@ namespace Alis.Core.Ecs.Collections
 
         // Returns an IEnumerator for this Stack.
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
         public Enumerator GetEnumerator() => new Enumerator(this);
 
-       
+
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of t</returns>
         IEnumerator<T> IEnumerable<T>.GetEnumerator() =>
-            Count == 0 ? EnumerableHelpers.GetEmptyEnumerator<T>() :
-            GetEnumerator();
+            Count == 0 ? EnumerableHelpers.GetEmptyEnumerator<T>() : GetEnumerator();
 
         /// <summary>
-        /// Gets the enumerator
+        ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable<T>)this).GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable<T>) this).GetEnumerator();
 
         /// <summary>
-        /// Trims the excess
+        ///     Trims the excess
         /// </summary>
         public void TrimExcess()
         {
-            int threshold = (int)(_array.Length * 0.9);
+            int threshold = (int) (_array.Length * 0.9);
             if (_size < threshold)
             {
                 Array.Resize(ref _array, _size);
@@ -278,7 +273,7 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>
-        /// Sets the capacity of a <see cref="FastStack{T}"/> object to a specified number of entries.
+        ///     Sets the capacity of a <see cref="FastStack{T}" /> object to a specified number of entries.
         /// </summary>
         /// <param name="capacity">The new capacity.</param>
         /// <exception cref="ArgumentOutOfRangeException">Passed capacity is lower than 0 or entries count.</exception>
@@ -288,14 +283,16 @@ namespace Alis.Core.Ecs.Collections
             {
                 throw new ArgumentOutOfRangeException(nameof(capacity), "Dont use negative values");
             }
-            
+
             if (capacity < _size)
             {
                 throw new ArgumentOutOfRangeException(nameof(capacity), "Capacity is less than the current size");
             }
 
             if (capacity == _array.Length)
+            {
                 return;
+            }
 
             Array.Resize(ref _array, capacity);
         }
@@ -303,7 +300,7 @@ namespace Alis.Core.Ecs.Collections
         // Returns the top object on the stack without removing it.  If the stack
         // is empty, Peek throws an InvalidOperationException.
         /// <summary>
-        /// Peeks this instance
+        ///     Peeks this instance
         /// </summary>
         /// <returns>The</returns>
         public T Peek()
@@ -311,7 +308,7 @@ namespace Alis.Core.Ecs.Collections
             int size = _size - 1;
             T[] array = _array;
 
-            if ((uint)size >= (uint)array.Length)
+            if ((uint) size >= (uint) array.Length)
             {
                 ThrowForEmptyStack();
             }
@@ -320,20 +317,21 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>
-        /// Tries the peek using the specified result
+        ///     Tries the peek using the specified result
         /// </summary>
         /// <param name="result">The result</param>
         /// <returns>The bool</returns>
-        public bool TryPeek( out T result)
+        public bool TryPeek(out T result)
         {
             int size = _size - 1;
             T[] array = _array;
 
-            if ((uint)size >= (uint)array.Length)
+            if ((uint) size >= (uint) array.Length)
             {
-                result = default!;
+                result = default(T)!;
                 return false;
             }
+
             result = array[size];
             return true;
         }
@@ -341,7 +339,7 @@ namespace Alis.Core.Ecs.Collections
         // Pops an item from the top of the stack.  If the stack is empty, Pop
         // throws an InvalidOperationException.
         /// <summary>
-        /// Pops this instance
+        ///     Pops this instance
         /// </summary>
         /// <returns>The item</returns>
         public T Pop()
@@ -352,7 +350,7 @@ namespace Alis.Core.Ecs.Collections
             // if (_size == 0) is equivalent to if (size == -1), and this case
             // is covered with (uint)size, thus allowing bounds check elimination
             // https://github.com/dotnet/coreclr/pull/9773
-            if ((uint)size >= (uint)array.Length)
+            if ((uint) size >= (uint) array.Length)
             {
                 ThrowForEmptyStack();
             }
@@ -362,24 +360,25 @@ namespace Alis.Core.Ecs.Collections
             T item = array[size];
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             {
-                array[size] = default!;     // Free memory quicker.
+                array[size] = default(T)!; // Free memory quicker.
             }
+
             return item;
         }
 
         /// <summary>
-        /// Tries the pop using the specified result
+        ///     Tries the pop using the specified result
         /// </summary>
         /// <param name="result">The result</param>
         /// <returns>The bool</returns>
-        public bool TryPop( out T result)
+        public bool TryPop(out T result)
         {
             int size = _size - 1;
             T[] array = _array;
 
-            if ((uint)size >= (uint)array.Length)
+            if ((uint) size >= (uint) array.Length)
             {
-                result = default!;
+                result = default(T)!;
                 return false;
             }
 
@@ -388,14 +387,15 @@ namespace Alis.Core.Ecs.Collections
             result = array[size];
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             {
-                array[size] = default!;
+                array[size] = default(T)!;
             }
+
             return true;
         }
 
         // Pushes an item to the top of the stack.
         /// <summary>
-        /// Pushes the item
+        ///     Pushes the item
         /// </summary>
         /// <param name="item">The item</param>
         public void Push(T item)
@@ -403,7 +403,7 @@ namespace Alis.Core.Ecs.Collections
             int size = _size;
             T[] array = _array;
 
-            if ((uint)size < (uint)array.Length)
+            if ((uint) size < (uint) array.Length)
             {
                 array[size] = item;
                 _version++;
@@ -417,7 +417,7 @@ namespace Alis.Core.Ecs.Collections
 
         // Non-inline from Stack.Push to improve its code quality as uncommon path
         /// <summary>
-        /// Pushes the with resize using the specified item
+        ///     Pushes the with resize using the specified item
         /// </summary>
         /// <param name="item">The item</param>
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -428,7 +428,7 @@ namespace Alis.Core.Ecs.Collections
             _version++;
             _size++;
         }
-        
+
         /// <summary>
         ///     Removes the item
         /// </summary>
@@ -448,9 +448,10 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>
-        /// Ensures that the capacity of this Stack is at least the specified <paramref name="capacity"/>.
-        /// If the current capacity of the Stack is less than specified <paramref name="capacity"/>,
-        /// the capacity is increased by continuously twice current capacity until it is at least the specified <paramref name="capacity"/>.
+        ///     Ensures that the capacity of this Stack is at least the specified <paramref name="capacity" />.
+        ///     If the current capacity of the Stack is less than specified <paramref name="capacity" />,
+        ///     the capacity is increased by continuously twice current capacity until it is at least the specified
+        ///     <paramref name="capacity" />.
         /// </summary>
         /// <param name="capacity">The minimum capacity to ensure.</param>
         /// <returns>The new capacity of this stack.</returns>
@@ -468,35 +469,43 @@ namespace Alis.Core.Ecs.Collections
 
             return _array.Length;
         }
-        
+
         /// <summary>
-        /// Grows the capacity
+        ///     Grows the capacity
         /// </summary>
         /// <param name="capacity">The capacity</param>
         private void Grow(int capacity)
         {
             int newcapacity = _array.Length == 0 ? DefaultCapacity : 2 * _array.Length;
-        
+
             // Allow the list to grow to maximum possible capacity (~2G elements) before encountering overflow.
             // Note that this check works even when _items.Length overflowed thanks to the (uint) cast.
-            if ((uint)newcapacity > MaxArrayLength) newcapacity = MaxArrayLength;
-        
+            if ((uint) newcapacity > MaxArrayLength)
+            {
+                newcapacity = MaxArrayLength;
+            }
+
             // If computed capacity is still less than specified, set to the original argument.
             // Capacities exceeding MaxArrayLength will be surfaced as OutOfMemoryException by Array.Resize.
-            if (newcapacity < capacity) newcapacity = capacity;
-        
+            if (newcapacity < capacity)
+            {
+                newcapacity = capacity;
+            }
+
             Array.Resize(ref _array, newcapacity);
         }
 
         // Copies the Stack to an array, in the same order Pop would return the items.
         /// <summary>
-        /// Returns the array
+        ///     Returns the array
         /// </summary>
         /// <returns>The obj array</returns>
         public T[] ToArray()
         {
             if (_size == 0)
+            {
                 return Array.Empty<T>();
+            }
 
             T[] objArray = new T[_size];
             int i = 0;
@@ -505,11 +514,12 @@ namespace Alis.Core.Ecs.Collections
                 objArray[i] = _array[_size - i - 1];
                 i++;
             }
+
             return objArray;
         }
 
         /// <summary>
-        /// Throws the for empty stack
+        ///     Throws the for empty stack
         /// </summary>
         /// <exception cref="InvalidOperationException">InvalidOperation_EmptyStack</exception>
         private void ThrowForEmptyStack()
@@ -518,30 +528,33 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>
-        /// The enumerator
+        ///     The enumerator
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct Enumerator : IEnumerator<T>
         {
             /// <summary>
-            /// The fastest stack
+            ///     The fastest stack
             /// </summary>
             private readonly FastStack<T> fastStack;
+
             /// <summary>
-            /// The version
+            ///     The version
             /// </summary>
             private readonly int _version;
+
             /// <summary>
-            /// The index
+            ///     The index
             /// </summary>
             private int _index;
+
             /// <summary>
-            /// The current element
+            ///     The current element
             /// </summary>
             private T _currentElement;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="Enumerator"/> class
+            ///     Initializes a new instance of the <see cref="Enumerator" /> class
             /// </summary>
             /// <param name="fastStack">The fastest stack</param>
             internal Enumerator(FastStack<T> fastStack)
@@ -549,11 +562,11 @@ namespace Alis.Core.Ecs.Collections
                 this.fastStack = fastStack;
                 _version = fastStack._version;
                 _index = -2;
-                _currentElement = default;
+                _currentElement = default(T);
             }
 
             /// <summary>
-            /// Disposes this instance
+            ///     Disposes this instance
             /// </summary>
             public void Dispose()
             {
@@ -561,50 +574,68 @@ namespace Alis.Core.Ecs.Collections
             }
 
             /// <summary>
-            /// Moves the next
+            ///     Moves the next
             /// </summary>
             /// <exception cref="InvalidOperationException">InvalidOperation_EnumFailedVersion</exception>
             /// <returns>The retval</returns>
             public bool MoveNext()
             {
                 bool retval;
-                if (_version != fastStack._version) throw new InvalidOperationException("InvalidOperation_EnumFailedVersion");
+                if (_version != fastStack._version)
+                {
+                    throw new InvalidOperationException("InvalidOperation_EnumFailedVersion");
+                }
+
                 if (_index == -2)
-                {  // First call to enumerator.
+                {
+                    // First call to enumerator.
                     _index = fastStack._size - 1;
-                    retval = (_index >= 0);
+                    retval = _index >= 0;
                     if (retval)
+                    {
                         _currentElement = fastStack._array[_index];
+                    }
+
                     return retval;
                 }
+
                 if (_index == -1)
-                {  // End of enumeration.
+                {
+                    // End of enumeration.
                     return false;
                 }
 
-                retval = (--_index >= 0);
+                retval = --_index >= 0;
                 if (retval)
+                {
                     _currentElement = fastStack._array[_index];
+                }
                 else
-                    _currentElement = default;
+                {
+                    _currentElement = default(T);
+                }
+
                 return retval;
             }
 
             /// <summary>
-            /// Gets the value of the current
+            ///     Gets the value of the current
             /// </summary>
             public T Current
             {
                 get
                 {
                     if (_index < 0)
+                    {
                         ThrowEnumerationNotStartedOrEnded();
+                    }
+
                     return _currentElement!;
                 }
             }
 
             /// <summary>
-            /// Throws the enumeration not started or ended
+            ///     Throws the enumeration not started or ended
             /// </summary>
             /// <exception cref="InvalidOperationException"></exception>
             private void ThrowEnumerationNotStartedOrEnded()
@@ -613,24 +644,28 @@ namespace Alis.Core.Ecs.Collections
             }
 
             /// <summary>
-            /// Gets the value of the current
+            ///     Gets the value of the current
             /// </summary>
             object IEnumerator.Current => Current;
 
             /// <summary>
-            /// Resets this instance
+            ///     Resets this instance
             /// </summary>
             /// <exception cref="InvalidOperationException">InvalidOperation_EnumFailedVersion</exception>
             void IEnumerator.Reset()
             {
-                if (_version != fastStack._version) throw new InvalidOperationException("InvalidOperation_EnumFailedVersion");
+                if (_version != fastStack._version)
+                {
+                    throw new InvalidOperationException("InvalidOperation_EnumFailedVersion");
+                }
+
                 _index = -2;
-                _currentElement = default;
+                _currentElement = default(T);
             }
         }
 
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         public T this[int i]
         {
@@ -639,7 +674,7 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
@@ -649,14 +684,14 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>
-        /// Creates the i
+        ///     Creates the i
         /// </summary>
         /// <param name="i">The </param>
         /// <returns>A fast stack of t</returns>
         public static FastStack<T> Create(int i) => new FastStack<T>(i);
 
         /// <summary>
-        /// Converts the span
+        ///     Converts the span
         /// </summary>
         /// <returns>A span of t</returns>
 #if NET6_0_OR_GREATER
@@ -666,14 +701,14 @@ namespace Alis.Core.Ecs.Collections
 #endif
 
         /// <summary>
-        /// Cans the pop
+        ///     Cans the pop
         /// </summary>
         /// <returns>The bool</returns>
         public bool CanPop() => Count > 0;
     }
-    
+
     /// <summary>
-    /// Internal helper functions for working with enumerables.
+    ///     Internal helper functions for working with enumerables.
     /// </summary>
     internal static class EnumerableHelpers
     {
@@ -683,20 +718,20 @@ namespace Alis.Core.Ecs.Collections
 
         /// <summary>Gets an enumerator singleton for an empty collection.</summary>
         internal static IEnumerator<T> GetEmptyEnumerator<T>() =>
-            ((IEnumerable<T>)Array.Empty<T>()).GetEnumerator();
+            ((IEnumerable<T>) Array.Empty<T>()).GetEnumerator();
 
         /// <summary>Converts an enumerable to an array using the same logic as List{T}.</summary>
         /// <param name="source">The enumerable to convert.</param>
         /// <param name="length">The number of items stored in the resulting array, 0-indexed.</param>
         /// <returns>
-        /// The resulting array.  The length of the array may be greater than <paramref name="length"/>,
-        /// which is the actual number of elements in the array.
+        ///     The resulting array.  The length of the array may be greater than <paramref name="length" />,
+        ///     which is the actual number of elements in the array.
         /// </returns>
         internal static T[] ToArray<T>(IEnumerable<T> source, out int length)
         {
             // Copied from Array.MaxLength in System.Private.CoreLib/src/libraries/System.Private.CoreLib/src/System/Array.cs
             const int arrayMaxLength = 0X7FFFFFC7;
-            
+
             if (source is ICollection<T> ic)
             {
                 int count = ic.Count;
@@ -736,7 +771,7 @@ namespace Alis.Core.Ecs.Collections
                                 // constrain the length to be Array.MaxLength (this overflow check works because of the
                                 // cast to uint).
                                 int newLength = count << 1;
-                                if ((uint)newLength > arrayMaxLength)
+                                if ((uint) newLength > arrayMaxLength)
                                 {
                                     newLength = arrayMaxLength <= count ? count + 1 : arrayMaxLength;
                                 }

@@ -29,7 +29,6 @@
 
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.System.Configuration.Physic;
 
@@ -47,7 +46,13 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
         ///     The physic setting
         /// </summary>
         private PhysicSetting physicSetting;
-        
+
+        /// <summary>
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The physic setting</returns>
+        public PhysicSetting Build() => physicSetting;
+
         /// <summary>
         ///     Gravities the x
         /// </summary>
@@ -59,12 +64,5 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
             physicSetting.Gravity = new Vector2F(x, y);
             return this;
         }
-        
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The physic setting</returns>
-        public PhysicSetting Build() => physicSetting;
-
     }
 }

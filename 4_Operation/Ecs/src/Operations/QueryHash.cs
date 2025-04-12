@@ -36,8 +36,7 @@ namespace Alis.Core.Ecs.Operations
     /// <summary>
     ///     The query hash
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     internal struct QueryHash()
     {
         /// <summary>

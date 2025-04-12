@@ -1,4 +1,33 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Scene.3.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Arch;
 using Alis.Core.Ecs.Memory;
@@ -7,12 +36,10 @@ using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs
 {
-    
     partial class Scene
     {
-       
         /// <summary>
-        /// Creates an <see cref="T:Alis.Entity" /> with the given component(s)
+        ///     Creates an <see cref="T:Alis.Entity" /> with the given component(s)
         /// </summary>
         /// <returns>An <see cref="T:Alis.Entity" /> that can be used to acsess the component data</returns>
         [SkipLocalsInit]
@@ -25,7 +52,7 @@ namespace Alis.Core.Ecs
             ComponentStorageBase[] writeStorage;
 
             ref EntityIdOnly local1 = ref Unsafe.NullRef<EntityIdOnly>();
-            if (this.AllowStructualChanges)
+            if (AllowStructualChanges)
             {
                 writeStorage = existingArchetype.Components;
                 local1 = ref existingArchetype.CreateEntityLocation(EntityFlags.None, out entityLocation);
@@ -34,19 +61,19 @@ namespace Alis.Core.Ecs
             else
             {
                 local1 = ref existingArchetype.CreateDeferredEntityLocation(this, ref entityLocation, out physicalIndex, out writeStorage);
-                entityLocation.Archetype = this.DeferredCreateArchetype;
+                entityLocation.Archetype = DeferredCreateArchetype;
             }
 
-            (int num, ushort version) = local1 = this.RecycledEntityIds.CanPop() ? this.RecycledEntityIds.Pop() : new EntityIdOnly(this.NextEntityID++, 0);
+            (int num, ushort version) = local1 = RecycledEntityIds.CanPop() ? RecycledEntityIds.Pop() : new EntityIdOnly(NextEntityID++, 0);
             entityLocation.Version = version;
-            this.EntityTable[num] = entityLocation;
+            EntityTable[num] = entityLocation;
             ref T1 local2 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3>.OfComponent<T1>.Index))[physicalIndex];
             local2 = comp1;
             ref T2 local3 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3>.OfComponent<T2>.Index))[physicalIndex];
             local3 = comp2;
             ref T3 local4 = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(writeStorage.UnsafeArrayIndex(Archetype<T1, T2, T3>.OfComponent<T3>.Index))[physicalIndex];
             local4 = comp3;
-            GameObject gameObject = new GameObject(this.ID, version, num);
+            GameObject gameObject = new GameObject(ID, version, num);
             ComponentDelegates<T1>.InitDelegate initer1 = Component<T1>.Initer;
             initer1?.Invoke(gameObject, ref local2);
 
@@ -56,7 +83,7 @@ namespace Alis.Core.Ecs
             ComponentDelegates<T3>.InitDelegate initer3 = Component<T3>.Initer;
             initer3?.Invoke(gameObject, ref local4);
 
-            this.EntityCreatedEvent.Invoke(gameObject);
+            EntityCreatedEvent.Invoke(gameObject);
             return gameObject;
         }
 
@@ -73,13 +100,15 @@ namespace Alis.Core.Ecs
 
             Archetype existingArchetype = Archetype<T1, T2, T3>.CreateNewOrGetExistingArchetype(this);
             int entityCount = existingArchetype.EntityCount;
-            this.EntityTable.EnsureCapacity(this.EntityCount + count);
+            EntityTable.EnsureCapacity(EntityCount + count);
             Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
-            if (this.EntityCreatedEvent.HasListeners)
+            if (EntityCreatedEvent.HasListeners)
             {
                 Span<EntityIdOnly> span = entityLocations;
                 for (int index = 0; index < span.Length; ++index)
-                    this.EntityCreatedEvent.Invoke(span[index].ToEntity(this));
+                {
+                    EntityCreatedEvent.Invoke(span[index].ToEntity(this));
+                }
             }
 
             ChunkTuple<T1, T2, T3> many = new ChunkTuple<T1, T2, T3>

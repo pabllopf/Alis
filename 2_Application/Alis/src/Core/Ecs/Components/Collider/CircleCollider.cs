@@ -31,6 +31,5 @@ namespace Alis.Core.Ecs.Components.Collider
 {
     public struct CircleCollider
     {
-        
     }
 }

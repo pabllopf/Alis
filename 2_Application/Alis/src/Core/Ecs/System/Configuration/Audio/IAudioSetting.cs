@@ -35,12 +35,12 @@ namespace Alis.Core.Ecs.System.Configuration.Audio
     public interface IAudioSetting
     {
         /// <summary>
-        /// Gets or sets the value of the volume
+        ///     Gets or sets the value of the volume
         /// </summary>
         public int Volume { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the mute
+        ///     Gets or sets the value of the mute
         /// </summary>
         public bool Mute { get; set; }
     }

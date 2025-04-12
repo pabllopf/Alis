@@ -30,7 +30,9 @@
 using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.Comps;
 using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Builder.Core.Ecs.Entity
@@ -42,7 +44,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         IBuild<GameObject>,
         IName<GameObjectBuilder, string>,
         IIsStatic<GameObjectBuilder, bool>,
-        ITransform<GameObjectBuilder, Func<TransformBuilder, Alis.Core.Aspect.Math.Transform>>,
+        ITransform<GameObjectBuilder, Func<TransformBuilder, Transform>>,
         IWithTag<GameObjectBuilder, string>
     {
         /// <summary>
@@ -71,48 +73,44 @@ namespace Alis.Builder.Core.Ecs.Entity
         ///     Ises the static
         /// </summary>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder IsStatic()
-        {
-            return this;
-        }
+        public GameObjectBuilder IsStatic() => this;
 
         /// <summary>
         ///     Ises the static using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder IsStatic(bool value)
-        {
-            return this;
-        }
+        public GameObjectBuilder IsStatic(bool value) => this;
 
         /// <summary>
         ///     Names the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder Name(string value)
-        {
-            return this;
-        }
+        public GameObjectBuilder Name(string value) => this;
 
         /// <summary>
         ///     Transforms the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder Transform(Func<TransformBuilder, Alis.Core.Aspect.Math.Transform> value)
-        {
-            return this;
-        }
+        public GameObjectBuilder Transform(Func<TransformBuilder, Transform> value) => this;
 
         /// <summary>
         ///     Adds the tag using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder WithTag(string value)
+        public GameObjectBuilder WithTag(string value) => this;
+
+        public GameObjectBuilder Add<T>(Func<T, IEntityComponent> value)
         {
+            return this;
+        }
+
+        public GameObjectBuilder Add<T>(IEntityComponent value)
+        {
+
             return this;
         }
     }

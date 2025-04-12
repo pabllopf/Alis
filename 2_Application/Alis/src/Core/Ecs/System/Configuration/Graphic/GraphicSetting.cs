@@ -32,13 +32,12 @@ using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Ecs.System.Configuration.Graphic
 {
-    
     public class GraphicSetting(
-        double targetFrames = 60, 
-        string target = "OpenGL", 
-        bool previewMode = false, 
-        Color gridColor = default(Color), 
-        bool hasGrid = false, 
+        double targetFrames = 60,
+        string target = "OpenGL",
+        bool previewMode = false,
+        Color gridColor = default(Color),
+        bool hasGrid = false,
         Color backgroundColor = default(Color),
         Vector2F windowSize = default(Vector2F),
         bool isResizable = true) : IGraphicSetting
@@ -47,7 +46,7 @@ namespace Alis.Core.Ecs.System.Configuration.Graphic
         public string Target { get; set; } = target;
         public bool PreviewMode { get; set; } = previewMode;
         public Color GridColor { get; set; } = gridColor;
-        public bool HasGrid { get; set; } = hasGrid; 
+        public bool HasGrid { get; set; } = hasGrid;
         public Color BackgroundColor { get; set; } = backgroundColor;
         public Vector2F WindowSize { get; set; } = windowSize;
         public bool IsResizable { get; set; } = isResizable;

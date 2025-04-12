@@ -37,8 +37,7 @@ namespace Alis.Core.Ecs.Operations
     /// <summary>
     ///     The query enumerator
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    [SkipLocalsInit]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), SkipLocalsInit]
     public ref struct QueryEnumerator<T>
     {
         /// <summary>

@@ -33,31 +33,32 @@ using System.Buffers;
 namespace Alis.Benchmark.CustomCollections.Arrays
 {
     /// <summary>
-    /// The fastest array
+    ///     The fastest array
     /// </summary>
     public struct FastestArray<T>
     {
         /// <summary>
-        /// The array
+        ///     The array
         /// </summary>
         private T[] _array;
-        
+
         /// <summary>
-        /// The memory
+        ///     The memory
         /// </summary>
         private Memory<T> _memory;
 
         /// <summary>
-        /// Gets the value of the length
+        ///     Gets the value of the length
         /// </summary>
         public int Length => _array.Length;
+
         /// <summary>
-        /// Gets the value of the span
+        ///     Gets the value of the span
         /// </summary>
         public Span<T> Span => _memory.Span;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FastestArray"/> class
+        ///     Initializes a new instance of the <see cref="FastestArray" /> class
         /// </summary>
         /// <param name="length">The length</param>
         public FastestArray(int length)
@@ -67,7 +68,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         public T this[int index]
         {
@@ -76,12 +77,12 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Clears this instance
+        ///     Clears this instance
         /// </summary>
         public void Clear() => _memory.Span.Clear();
 
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
@@ -90,7 +91,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Resizes the array size
+        ///     Resizes the array size
         /// </summary>
         /// <param name="arraySize">The array size</param>
         public void Resize(int arraySize)
@@ -109,13 +110,13 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Converts the span
+        ///     Converts the span
         /// </summary>
         /// <returns>A span of t</returns>
         public Span<T> AsSpan() => _memory.Span;
 
         /// <summary>
-        /// Converts the span len using the specified array size
+        ///     Converts the span len using the specified array size
         /// </summary>
         /// <param name="arraySize">The array size</param>
         /// <returns>A span of t</returns>

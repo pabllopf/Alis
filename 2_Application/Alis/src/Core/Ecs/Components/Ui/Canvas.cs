@@ -31,6 +31,5 @@ namespace Alis.Core.Ecs.Components.Ui
 {
     public struct Canvas
     {
-        
     }
 }

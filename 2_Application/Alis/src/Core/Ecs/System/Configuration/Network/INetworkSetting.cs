@@ -35,19 +35,22 @@ namespace Alis.Core.Ecs.System.Configuration.Network
     public interface INetworkSetting
     {
         /// <summary>
-        /// Gets or sets the value of the port
+        ///     Gets or sets the value of the port
         /// </summary>
         int Port { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the ip
+        ///     Gets or sets the value of the ip
         /// </summary>
         string Ip { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the host
+        ///     Gets or sets the value of the host
         /// </summary>
         string Host { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the protocol
+        ///     Gets or sets the value of the protocol
         /// </summary>
         string Protocol { get; set; }
     }

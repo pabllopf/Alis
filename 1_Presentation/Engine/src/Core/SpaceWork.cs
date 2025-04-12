@@ -125,7 +125,7 @@ namespace Alis.App.Engine.Core
         ///     The style
         /// </summary>
         public ImGuiStyle Style;
-        
+
         /// <summary>
         ///     Gets or sets the value of the viewport
         /// </summary>

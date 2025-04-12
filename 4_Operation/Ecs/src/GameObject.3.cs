@@ -1,4 +1,33 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:GameObject.3.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Arch;
@@ -11,10 +40,8 @@ namespace Alis.Core.Ecs
 {
     partial struct GameObject
     {
-        
-
         /// <summary>
-        /// Adds a component to this <see cref="GameObject"/>.
+        ///     Adds a component to this <see cref="GameObject" />.
         /// </summary>
         /// <remarks>If the world is being updated, changed are deffered to the end of the world update.</remarks>
         [SkipLocalsInit]
@@ -40,9 +67,12 @@ namespace Alis.Core.Ecs
             Span<ComponentStorageBase> buff = [null!, null!, null!];
             world.MoveEntityToArchetypeAdd(buff, this, ref thisLookup, out EntityLocation nextLocation, to);
 
-            ref var c1ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(buff.UnsafeSpanIndex(1 - 1))[nextLocation.Index]; c1ref = c1;
-            ref var c2ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(buff.UnsafeSpanIndex(2 - 1))[nextLocation.Index]; c2ref = c2;
-            ref var c3ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(buff.UnsafeSpanIndex(3 - 1))[nextLocation.Index]; c3ref = c3;
+            ref var c1ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(buff.UnsafeSpanIndex(1 - 1))[nextLocation.Index];
+            c1ref = c1;
+            ref var c2ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(buff.UnsafeSpanIndex(2 - 1))[nextLocation.Index];
+            c2ref = c2;
+            ref var c3ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(buff.UnsafeSpanIndex(3 - 1))[nextLocation.Index];
+            c3ref = c3;
 
 
             Component<T1>.Initer?.Invoke(this, ref c1ref);
@@ -54,12 +84,14 @@ namespace Alis.Core.Ecs
             if (EntityLocation.HasEventFlag(flags | world.WorldEventFlags, EntityFlags.AddComp | EntityFlags.AddGenericComp))
             {
                 if (world.ComponentAddedEvent.HasListeners)
+                {
                     InvokeComponentWorldEvents<T1, T2, T3>(ref world.ComponentAddedEvent, this);
+                }
 
                 if (EntityLocation.HasEventFlag(flags, EntityFlags.AddComp | EntityFlags.AddGenericComp))
                 {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
-                EventRecord events = world.EventLookup[EntityIdOnly];
+                    EventRecord events = world.EventLookup[EntityIdOnly];
 #else
                     ref EventRecord events = ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
 #endif
@@ -69,9 +101,9 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        /// Removes a component from this <see cref="GameObject"/>
+        ///     Removes a component from this <see cref="GameObject" />
         /// </summary>
-        /// <inheritdoc cref="NeighborCache{T}.Add"/>
+        /// <inheritdoc cref="NeighborCache{T}.Add" />
         [SkipLocalsInit]
         public void Remove<T1, T2, T3>()
         {
@@ -97,15 +129,14 @@ namespace Alis.Core.Ecs
             //world.MoveEntityToArchetypeRemove invokes the events for us
         }
 
-        private static void InvokeComponentWorldEvents<T1, T2, T3>(ref Event<ComponentID> @event, Alis.Core.Ecs.GameObject gameObject)
+        private static void InvokeComponentWorldEvents<T1, T2, T3>(ref Event<ComponentID> @event, GameObject gameObject)
         {
             @event.InvokeInternal(gameObject, Component<T1>.ID);
             @event.InvokeInternal(gameObject, Component<T2>.ID);
             @event.InvokeInternal(gameObject, Component<T3>.ID);
-
         }
 
-        private static void InvokePerEntityEvents<T1, T2, T3>(Alis.Core.Ecs.GameObject gameObject, bool hasGenericEvent, ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3)
+        private static void InvokePerEntityEvents<T1, T2, T3>(GameObject gameObject, bool hasGenericEvent, ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3)
         {
             events.NormalEvent.Invoke(gameObject, Component<T1>.ID);
             events.NormalEvent.Invoke(gameObject, Component<T2>.ID);
@@ -113,12 +144,13 @@ namespace Alis.Core.Ecs
 
 
             if (!hasGenericEvent)
+            {
                 return;
+            }
 
             events.GenericEvent!.Invoke(gameObject, ref component1);
             events.GenericEvent!.Invoke(gameObject, ref component2);
             events.GenericEvent!.Invoke(gameObject, ref component3);
-
         }
 
         private struct NeighborCache<T1, T2, T3> : IArchetypeGraphEdge

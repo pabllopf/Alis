@@ -35,7 +35,6 @@ namespace Alis.Core.Ecs.Components.Body
     {
         public void Update(GameObject self)
         {
-            
         }
     }
 }

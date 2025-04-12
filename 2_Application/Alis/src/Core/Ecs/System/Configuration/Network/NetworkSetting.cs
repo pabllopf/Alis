@@ -29,11 +29,10 @@
 
 namespace Alis.Core.Ecs.System.Configuration.Network
 {
-    
     public record struct NetworkSetting(
         int Port = 8080,
         string Ip = "127.0.0.1",
         string Host = "localhost",
-        string Protocol = "http") : 
+        string Protocol = "http") :
         INetworkSetting;
 }

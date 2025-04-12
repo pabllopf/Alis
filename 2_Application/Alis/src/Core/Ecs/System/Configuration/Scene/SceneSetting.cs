@@ -29,8 +29,7 @@
 
 namespace Alis.Core.Ecs.System.Configuration.Scene
 {
-    
     public record struct SceneSetting(
-       int MaximumEntities = 1000
-        ): ISceneSetting;
+        int MaximumEntities = 1000
+    ) : ISceneSetting;
 }

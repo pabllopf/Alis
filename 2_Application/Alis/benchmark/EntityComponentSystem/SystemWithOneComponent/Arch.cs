@@ -109,7 +109,6 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             ///     Updates the t 0
             /// </summary>
             /// <param name="t0">The </param>
-            
             public void Update(ref Component1 t0)
             {
                 ++t0.Value;

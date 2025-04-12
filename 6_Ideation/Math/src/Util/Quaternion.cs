@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Aspect.Math.Util
@@ -36,7 +35,6 @@ namespace Alis.Core.Aspect.Math.Util
     ///     The quaternion
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    
     public struct Quaternion
     {
         /// <summary>
@@ -286,7 +284,6 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="other">The other quaternion.</param>
         /// <returns><see langword="true" /> if the two quaternions are equal; otherwise, <see langword="false" />.</returns>
         /// <remarks>Two quaternions are equal if each of their corresponding components is equal.</remarks>
-        
         private readonly bool Equals(Quaternion other)
         {
             return SoftwareFallback(in this, other);

@@ -28,12 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Comps;
 
 namespace Alis.Core.Ecs.Components.Render
 {
-    public struct Camera (Vector2F position,  Vector2F resolution) : IInitable, IEntityComponent
+    public struct Camera(Vector2F position, Vector2F resolution) : IInitable, IEntityComponent, IBuild<CameraBuilder>
     {
         /// <summary>
         ///     The position
@@ -44,23 +46,25 @@ namespace Alis.Core.Ecs.Components.Render
         ///     Gets or sets the value of the resolution
         /// </summary>
         public Vector2F Resolution { get; set; } = resolution;
-         
+
         /// <summary>
-        /// Inits the self
+        ///     Inits the self
         /// </summary>
         /// <param name="self">The self</param>
         public void Init(GameObject self)
         {
             Console.WriteLine($"Camera {self.EntityID} created");
         }
-        
+
         /// <summary>
-        /// Updates the self
+        ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         public void Update(GameObject self)
         {
             Console.WriteLine($"Camera {self.EntityID} updated");
         }
+
+        public CameraBuilder Build() => new CameraBuilder();
     }
 }

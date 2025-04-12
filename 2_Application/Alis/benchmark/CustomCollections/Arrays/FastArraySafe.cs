@@ -33,28 +33,28 @@ using System.Runtime.InteropServices;
 namespace Alis.Benchmark.CustomCollections.Arrays
 {
     /// <summary>
-    /// The fast array safe
+    ///     The fast array safe
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct FastArraySafe<T> : IDisposable
     {
         /// <summary>
-        /// The array
+        ///     The array
         /// </summary>
         private T[] _array = [];
 
         /// <summary>
-        /// Obtiene la longitud del array.
+        ///     Obtiene la longitud del array.
         /// </summary>
         public int Length => _array.Length;
 
         /// <summary>
-        /// Permite acceder al elemento en la posición indicada.
+        ///     Permite acceder al elemento en la posición indicada.
         /// </summary>
         public ref T this[int index] => ref _array[index];
 
         /// <summary>
-        /// Inicializa una nueva instancia de FastArraySafe con la longitud especificada.
+        ///     Inicializa una nueva instancia de FastArraySafe con la longitud especificada.
         /// </summary>
         /// <param name="length">La longitud del array.</param>
         public FastArraySafe(int length)
@@ -68,23 +68,20 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Devuelve el array como Span&lt;T&gt; para iteraciones rápidas.
+        ///     Devuelve el array como Span&lt;T&gt; para iteraciones rápidas.
         /// </summary>
-        
         public Span<T> AsSpan() => _array;
 
         /// <summary>
-        /// Limpia el array asignando el valor por defecto a cada elemento.
+        ///     Limpia el array asignando el valor por defecto a cada elemento.
         /// </summary>
-        
         public void Clear() => Array.Clear(_array, 0, _array.Length);
 
         /// <summary>
-        /// Redimensiona el array a la nueva longitud indicada.
-        /// Se copia el contenido existente hasta el menor de ambas longitudes.
+        ///     Redimensiona el array a la nueva longitud indicada.
+        ///     Se copia el contenido existente hasta el menor de ambas longitudes.
         /// </summary>
         /// <param name="newLength">La nueva longitud del array.</param>
-        
         public void Resize(int newLength)
         {
             if (newLength == _array.Length)
@@ -99,12 +96,12 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         }
 
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose() => _array = null;
 
         /// <summary>
-        /// Converts the span len using the specified array size
+        ///     Converts the span len using the specified array size
         /// </summary>
         /// <param name="arraySize">The array size</param>
         /// <returns>A span of t</returns>
