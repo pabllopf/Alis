@@ -36,7 +36,7 @@ namespace Alis.Benchmark.RemoveAtVsRemoveUnnorderAt
     /// <summary>
     ///     The remove at vs remove unnorder at list benchmark class
     /// </summary>
-    [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [ShortRunJob, MemoryDiagnoser(false), Config(typeof(CustomConfig))]
     public class RemoveAtVsRemoveUnnorderAtListBenchmark
     {
         /// <summary>

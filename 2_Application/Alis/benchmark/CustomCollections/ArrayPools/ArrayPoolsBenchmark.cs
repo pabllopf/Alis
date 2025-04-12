@@ -36,7 +36,7 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
     /// <summary>
     ///     The array pools benchmark class
     /// </summary>
-    [MemoryDiagnoser(false), ShortRunJob]
+    [ShortRunJob, MemoryDiagnoser(false), Config(typeof(CustomConfig))]
     public class ArrayPoolsBenchmark
     {
         /// <summary>

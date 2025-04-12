@@ -35,7 +35,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks
     /// <summary>
     ///     The native array unsafe vs native array safe class
     /// </summary>
-    [MemoryDiagnoser(false), ShortRunJob]
+    [ShortRunJob, MemoryDiagnoser(false), Config(typeof(CustomConfig))]
     public class NativeStackVsNativeStackUnsafe
     {
         /// <summary>

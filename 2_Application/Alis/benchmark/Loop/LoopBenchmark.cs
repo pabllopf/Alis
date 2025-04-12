@@ -39,7 +39,7 @@ namespace Alis.Benchmark.Loop
     /// <summary>
     ///     The loop benchmark class
     /// </summary>
-    [MemoryDiagnoser(false), ShortRunJob]
+    [ShortRunJob, MemoryDiagnoser(false), Config(typeof(CustomConfig))]
     public class LoopBenchmark
     {
         /// <summary>
