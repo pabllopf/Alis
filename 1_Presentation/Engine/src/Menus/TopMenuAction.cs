@@ -34,6 +34,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
+using Alis.Core.Aspect.Logging;
 using Alis.Extension.Graphic.ImGui.Native;
 using MonoMac.AppKit;
 
@@ -179,7 +180,7 @@ namespace Alis.App.Engine.Menus
             }
             else
             {
-                Debug.WriteLine($"No logic implemented for {action}");
+                Logger.Log($"No logic implemented for {action}");
             }
         }
 

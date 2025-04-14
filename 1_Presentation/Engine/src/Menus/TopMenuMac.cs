@@ -29,6 +29,7 @@
 
 using System.Diagnostics;
 using Alis.App.Engine.Core;
+using Alis.Core.Aspect.Logging;
 using MonoMac.AppKit;
 
 namespace Alis.App.Engine.Menus
@@ -269,7 +270,7 @@ namespace Alis.App.Engine.Menus
                 {
                     NSMenuItem menuOption = new NSMenuItem(itemName, (sender, e) =>
                     {
-                        Debug.WriteLine($"Clicked on {itemName}");
+                        Logger.Log($"Clicked on {itemName}");
                         TopMenuAction.ExecuteMenuAction(itemName); // Llama a la lógica
                     });
 

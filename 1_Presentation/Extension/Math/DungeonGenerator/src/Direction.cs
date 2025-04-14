@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IEntityComponent.7.cs
+//  File:d.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,18 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.ComponentModel;
-using Alis.Core.Ecs.Comps;
-
-namespace Alis.Core.Ecs.Operations
+namespace Alis.Extension.Math.DungeonGenerator
 {
-    /// <summary>
-    /// The entity component interface
-    /// </summary>
-    /// <seealso cref="IComponentBase"/>
-    public interface IEntityComponent<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> : IComponentBase
+    public enum Direction
     {
-        /// <inheritdoc cref="IComponent.Update" />
-        void Update(GameObject self, ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6, ref TArg7 arg7);
+        /// <summary>
+        ///     The none direction
+        /// </summary>
+        None,
+
+        /// <summary>The north</summary>
+        North,
+
+        /// <summary>The east</summary>
+        East,
+
+        /// <summary>The south</summary>
+        South,
+
+        /// <summary>The west</summary>
+        West
     }
 }

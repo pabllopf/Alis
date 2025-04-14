@@ -32,6 +32,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
@@ -255,8 +256,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                 Transform xfA = new Transform(Vector2F.Zero, aA);
                 Transform xfB = new Transform(Vector2F.Zero, aB);
-                xfA.P = cA - Complex.Multiply(ref localCenterA, ref xfA.Q);
-                xfB.P = cB - Complex.Multiply(ref localCenterB, ref xfB.Q);
+                xfA.Position = cA - Complex.Multiply(ref localCenterA, ref xfA.Rotation);
+                xfB.Position = cB - Complex.Multiply(ref localCenterB, ref xfB.Rotation);
 
                 WorldManifold.Initialize(ref manifold, ref xfA, radiusA, ref xfB, radiusB, out Vector2F normal, out FixedArray2<Vector2F> points);
 
@@ -841,8 +842,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 {
                     Transform xfA = new Transform(Vector2F.Zero, aA);
                     Transform xfB = new Transform(Vector2F.Zero, aB);
-                    xfA.P = cA - Complex.Multiply(ref localCenterA, ref xfA.Q);
-                    xfB.P = cB - Complex.Multiply(ref localCenterB, ref xfB.Q);
+                    xfA.Position = cA - Complex.Multiply(ref localCenterA, ref xfA.Rotation);
+                    xfB.Position = cB - Complex.Multiply(ref localCenterB, ref xfB.Rotation);
 
                     PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out Vector2F normal, out Vector2F point, out float separation);
 
@@ -936,8 +937,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 {
                     Transform xfA = new Transform(Vector2F.Zero, aA);
                     Transform xfB = new Transform(Vector2F.Zero, aB);
-                    xfA.P = cA - Complex.Multiply(ref localCenterA, ref xfA.Q);
-                    xfB.P = cB - Complex.Multiply(ref localCenterB, ref xfB.Q);
+                    xfA.Position = cA - Complex.Multiply(ref localCenterA, ref xfA.Rotation);
+                    xfB.Position = cB - Complex.Multiply(ref localCenterB, ref xfB.Rotation);
 
                     PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out Vector2F normal, out Vector2F point, out float separation);
 
@@ -1041,7 +1042,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     case ManifoldType.FaceA:
                     {
-                        normal = Complex.Multiply(ref manifold.LocalNormal, ref xfA.Q);
+                        normal = Complex.Multiply(ref manifold.LocalNormal, ref xfA.Rotation);
                         Vector2F planePoint = Transform.Multiply(ref manifold.LocalPoint, ref xfA);
 
                         for (int i = 0; i < manifold.PointCount; ++i)
@@ -1056,7 +1057,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     case ManifoldType.FaceB:
                     {
-                        normal = Complex.Multiply(ref manifold.LocalNormal, ref xfB.Q);
+                        normal = Complex.Multiply(ref manifold.LocalNormal, ref xfB.Rotation);
                         Vector2F planePoint = Transform.Multiply(ref manifold.LocalPoint, ref xfB);
 
                         for (int i = 0; i < manifold.PointCount; ++i)
@@ -1115,7 +1116,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     case ManifoldType.FaceA:
                     {
-                        Complex.Multiply(ref pc.LocalNormal, ref xfA.Q, out normal);
+                        Complex.Multiply(ref pc.LocalNormal, ref xfA.Rotation, out normal);
                         Vector2F planePoint = Transform.Multiply(ref pc.LocalPoint, ref xfA);
 
                         Vector2F clipPoint = Transform.Multiply(pc.LocalPoints[index], ref xfB);
@@ -1126,7 +1127,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     case ManifoldType.FaceB:
                     {
-                        Complex.Multiply(ref pc.LocalNormal, ref xfB.Q, out normal);
+                        Complex.Multiply(ref pc.LocalNormal, ref xfB.Rotation, out normal);
                         Vector2F planePoint = Transform.Multiply(ref pc.LocalPoint, ref xfB);
 
                         Vector2F clipPoint = Transform.Multiply(pc.LocalPoints[index], ref xfA);

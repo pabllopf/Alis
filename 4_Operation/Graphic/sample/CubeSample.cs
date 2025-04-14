@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Graphic.GlfwLib;
@@ -131,7 +132,7 @@ namespace Alis.Core.Graphic.Sample
             Glfw.SwapInterval(1);
 
             // Log GLFW version
-            Console.WriteLine($"GLFW VERSION {Glfw.GetVersionString()}");
+            Console.Write($"GLFW VERSION {Glfw.GetVersionString()}");
 
             // Define the vertices for the cube with color information
             float[] vertices =

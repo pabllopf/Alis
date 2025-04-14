@@ -29,11 +29,12 @@
 
 using System;
 using System.Diagnostics;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.ConvexHull;
 using Alis.Core.Physic.Dynamics;
-using Transform = Alis.Core.Physic.Common.Transform;
+using Transform = Alis.Core.Physic.Dynamics.Transform;
 
 
 namespace Alis.Core.Physic.Collision.Shapes
@@ -256,7 +257,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <returns>The bool</returns>
         public override bool TestPoint(ref Transform transform, ref Vector2F point)
         {
-            Vector2F pLocal = Complex.Divide(point - transform.P, ref transform.Q);
+            Vector2F pLocal = Complex.Divide(point - transform.Position, ref transform.Rotation);
 
             for (int i = 0; i < Vertices.Count; ++i)
             {
@@ -283,8 +284,8 @@ namespace Alis.Core.Physic.Collision.Shapes
             output = new RayCastOutput();
 
             // Put the ray into the polygon's frame of reference.
-            Vector2F p1 = Complex.Divide(input.Point1 - transform.P, ref transform.Q);
-            Vector2F p2 = Complex.Divide(input.Point2 - transform.P, ref transform.Q);
+            Vector2F p1 = Complex.Divide(input.Point1 - transform.Position, ref transform.Rotation);
+            Vector2F p2 = Complex.Divide(input.Point2 - transform.Position, ref transform.Rotation);
             Vector2F d = p2 - p1;
 
             float lower = 0.0f, upper = input.MaxFraction;
@@ -342,7 +343,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             if (index >= 0)
             {
                 output.Fraction = lower;
-                output.Normal = Complex.Multiply(Normals[index], ref transform.Q);
+                output.Normal = Complex.Multiply(Normals[index], ref transform.Rotation);
                 return true;
             }
 
@@ -361,16 +362,16 @@ namespace Alis.Core.Physic.Collision.Shapes
 
             // OPT: aabb.LowerBound = Transform.Multiply(Vertices[0], ref transform);
             Vector2F vert = Vertices[0];
-            aabb.LowerBound.X = vert.X * transform.Q.R - vert.Y * transform.Q.I + transform.P.X;
-            aabb.LowerBound.Y = vert.Y * transform.Q.R + vert.X * transform.Q.I + transform.P.Y;
+            aabb.LowerBound.X = vert.X * transform.Rotation.R - vert.Y * transform.Rotation.I + transform.Position.X;
+            aabb.LowerBound.Y = vert.Y * transform.Rotation.R + vert.X * transform.Rotation.I + transform.Position.Y;
             aabb.UpperBound = aabb.LowerBound;
 
             for (int i = 1; i < Vertices.Count; ++i)
             {
                 // OPT: Vector2F v = Transform.Multiply(Vertices[i], ref transform);
                 vert = Vertices[i];
-                float vX = vert.X * transform.Q.R - vert.Y * transform.Q.I + transform.P.X;
-                float vY = vert.Y * transform.Q.R + vert.X * transform.Q.I + transform.P.Y;
+                float vX = vert.X * transform.Rotation.R - vert.Y * transform.Rotation.I + transform.Position.X;
+                float vY = vert.Y * transform.Rotation.R + vert.X * transform.Rotation.I + transform.Position.Y;
 
                 // OPT: Vector2F.Min(ref aabb.LowerBound, ref v, out aabb.LowerBound);
                 // OPT: Vector2F.Max(ref aabb.UpperBound, ref v, out aabb.UpperBound);
@@ -417,8 +418,8 @@ namespace Alis.Core.Physic.Collision.Shapes
             sc = Vector2F.Zero;
 
             //Transform plane into shape co-ordinates
-            Vector2F normalL = Complex.Divide(ref normal, ref xf.Q);
-            float offsetL = offset - Vector2F.Dot(normal, xf.P);
+            Vector2F normalL = Complex.Divide(ref normal, ref xf.Rotation);
+            float offsetL = offset - Vector2F.Dot(normal, xf.Position);
 
             float[] depths = new float[SettingEnv.MaxPolygonVertices];
             int diveCount = 0;

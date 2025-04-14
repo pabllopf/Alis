@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Comps;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Operations;
 
 namespace Alis.Core.Ecs.Components.Collider
@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs.Components.Collider
         /// Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(GameObject self)
+        public void Update(IGameObject self)
         {
         }
     }

@@ -31,7 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Comps;
+using Alis.Core.Aspect.Fluent;
 
 namespace Alis.Core.Ecs.Updating
 {

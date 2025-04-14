@@ -1,32 +1,36 @@
 using System;
-using System.Collections.Generic;
 using Alis.Builder.Core.Ecs.Component;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math;
-using Alis.Core.Ecs;
+using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Components.Render;
-using Alis.Core.Ecs.Comps;
 using Alis.Core.Ecs.Operations;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Builder.Core.Ecs.Entity
 {
    /// <summary>
    ///     The game object builder class
    /// </summary>
-   public class GameObjectBuilder : IBuild<Dictionary<Type, IEntityComponent>>
+   public class GameObjectBuilder : IBuild<TempGameObject>
    {
-       /// <summary>
-       ///     Stores the components as a dictionary
-       /// </summary>
-       private readonly Dictionary<Type, IEntityComponent> components = new Dictionary<Type, IEntityComponent>();
-
+       private TempGameObject tempGameObject = new TempGameObject();
+       
        /// <summary>
        ///     Builds this instance
        /// </summary>
        /// <returns>The dictionary of components</returns>
-       public Dictionary<Type, IEntityComponent> Build() => components;
+       public TempGameObject Build() => tempGameObject;
+
+       public GameObjectBuilder Transform(Action<TransformBuilder> config)
+       {
+           TransformBuilder transformBuilder = new TransformBuilder();
+           config(transformBuilder);
+           Transform transform = transformBuilder.Build();
+           tempGameObject.transform = new Transform(transform.Position, transform.Rotation, transform.Scale);
+           return this;
+       }
        
        /// <summary>
        /// Adds the component using the specified config
@@ -39,7 +43,7 @@ namespace Alis.Builder.Core.Ecs.Entity
            CameraBuilder cameraBuilder = new CameraBuilder();
            config(cameraBuilder);
            Camera camera = cameraBuilder.Build();
-           components[typeof(Camera)] = camera;
+           tempGameObject.components[typeof(Camera)] = camera;
            return this;
        }
 
@@ -54,7 +58,7 @@ namespace Alis.Builder.Core.Ecs.Entity
            SpriteBuilder spriteBuilder = new SpriteBuilder();
            config(spriteBuilder);
            Sprite sprite = spriteBuilder.Build();
-           components[typeof(Sprite)] = sprite;
+           tempGameObject.components[typeof(Sprite)] = sprite;
            return this;
        }
 
@@ -68,7 +72,7 @@ namespace Alis.Builder.Core.Ecs.Entity
        {
            T component = new T();
            config(component);
-           components[typeof(T)] = component;
+           tempGameObject.components[typeof(T)] = component;
            return this;
        }
        
@@ -79,7 +83,7 @@ namespace Alis.Builder.Core.Ecs.Entity
        /// <returns>The game object builder</returns>
        public GameObjectBuilder WithComponent<T>() where T : IEntityComponent, new()
        {
-           components[typeof(T)] = new T();
+           tempGameObject.components[typeof(T)] = new T();
            return this;
        }
 
@@ -91,7 +95,7 @@ namespace Alis.Builder.Core.Ecs.Entity
        /// <returns>The game object builder</returns>
        public GameObjectBuilder WithComponent<T>(T component) where T : IEntityComponent, new()
        {
-           components[typeof(T)] = component;
+           tempGameObject.components[typeof(T)] = component;
            return this;
        }
    }

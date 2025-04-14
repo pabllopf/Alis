@@ -31,13 +31,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.Components.Render;
-using Alis.Core.Ecs.Comps;
-using Alis.Core.Ecs.Events;
+using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Operations;
 using Alis.Core.Ecs.Systems.Scope;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Builder.Core.Ecs.Entity
 {
@@ -74,8 +73,11 @@ namespace Alis.Builder.Core.Ecs.Entity
         {
             GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
             config(gameObjectBuilder);
-            Dictionary<Type, IEntityComponent> components = gameObjectBuilder.Build();
-            
+            TempGameObject tempGameObject = gameObjectBuilder.Build();
+            Transform transform = tempGameObject.transform;
+
+            var components = tempGameObject.components;
+
             if (components.Count == 0)
             {
                 Scene.Create();
@@ -117,6 +119,7 @@ namespace Alis.Builder.Core.Ecs.Entity
             
             return this;
         }
+        
 
         /// <summary>
         ///     Builds this instance

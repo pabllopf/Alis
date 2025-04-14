@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Operations;
 

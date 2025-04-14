@@ -45,6 +45,14 @@
         <DefineConstants>$(DefineConstants);WIN</DefineConstants>
         <IsWindows>true</IsWindows>
     </PropertyGroup>
+    
+    <PropertyGroup Condition="$(Configuration) == 'Debug'">
+        <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(Configuration) == 'Release'">
+        <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
+    </PropertyGroup>
 
 
 </Project>

@@ -30,9 +30,9 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Arch;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Comps;
 using Alis.Core.Ecs.Operations;
 using Alis.Core.Ecs.Updating;
 using Alis.Core.Ecs.Updating.Runners;

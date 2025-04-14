@@ -28,9 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System.ComponentModel;
-using Alis.Core.Ecs.Comps;
 
-namespace Alis.Core.Ecs.Operations
+namespace Alis.Core.Aspect.Fluent
 {
     /// <summary>
     ///     Indicates a component should be updated with itself as an argument
@@ -38,15 +37,6 @@ namespace Alis.Core.Ecs.Operations
     public interface IEntityComponent : IComponentBase
     {
         /// <inheritdoc cref="IComponent.Update" />
-        void Update(GameObject self);
-    }
-
-    /// <summary>
-    ///     Indicates a component should be updated with itself as an argument and the specified components
-    /// </summary>
-    public interface IEntityComponent<TArg> : IComponentBase
-    {
-        /// <inheritdoc cref="IComponent.Update" />
-        void Update(GameObject self, ref TArg arg);
+        void Update(IGameObject self);
     }
 }

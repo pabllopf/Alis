@@ -31,6 +31,7 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Builder.Core.Ecs.Entity
 {
@@ -44,16 +45,17 @@ namespace Alis.Builder.Core.Ecs.Entity
         IRotation<TransformBuilder, float>,
         IScale2D<TransformBuilder, float>
     {
-        /// <summary>
-        ///     The transform
-        /// </summary>
-        private Transform transform = new Transform(new Vector2F(0, 0), 0, new Vector2F(1, 1));
+        private Vector2F position = new Vector2F(0, 0);
+        
+        private Complex rotation = Complex.One;
+        
+        private Vector2F scale = new Vector2F(1, 1);
 
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The transform</returns>
-        public Transform Build() => transform;
+        public Transform Build() => new Transform(position, rotation, scale);
 
         /// <summary>
         ///     Positions the x
@@ -63,7 +65,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <returns>The transform builder</returns>
         public TransformBuilder Position(float x, float y)
         {
-            transform = new Transform(new Vector2F(x, y), transform.Rotation, transform.Scale);
+            position = new Vector2F(x, y);
             return this;
         }
 
@@ -74,7 +76,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <returns>The transform builder</returns>
         public TransformBuilder Rotation(float angle)
         {
-            transform.Rotation = angle;
+            rotation = Complex.FromAngle(angle);
             return this;
         }
 
@@ -86,7 +88,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <returns>The transform builder</returns>
         public TransformBuilder Scale(float x, float y)
         {
-            transform.Scale = new Vector2F(x, y);
+            scale = new Vector2F(x, y);
             return this;
         }
 
@@ -97,7 +99,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <returns>The transform builder</returns>
         public TransformBuilder Position(Vector2F vector)
         {
-            transform.Position = vector;
+            position = vector;
             return this;
         }
     }

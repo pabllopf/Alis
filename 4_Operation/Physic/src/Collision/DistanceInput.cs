@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math;
 using Alis.Core.Physic.Common;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Collision
 {

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Builder.Core.Ecs.Component.Render;
@@ -35,7 +36,6 @@ using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Comps;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Stb;
@@ -346,9 +346,9 @@ namespace Alis.Core.Ecs.Components.Render
         /// <summary>
         /// Updates this instance
         /// </summary>
-        public void Update()
+        public void Update(IGameObject self)
         {
-            Console.WriteLine($"Sprite {NameFile} updated");
+            Console.Write($"Sprite {NameFile} updated");
         }
 
         /// <summary>
@@ -361,7 +361,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// Inits the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(GameObject self)
+        public void Init(IGameObject self)
         {
             
         }

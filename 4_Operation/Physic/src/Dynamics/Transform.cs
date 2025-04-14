@@ -27,25 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Physic.Common
+namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
     ///     A transform contains translation and rotation. It is used to represent
     ///     the position and orientation of rigid frames.
     /// </summary>
-    public struct Transform
+    public struct Transform : IInitable, IEntityComponent
     {
         /// <summary>
         ///     The
         /// </summary>
-        public Complex Q;
+        public Complex Rotation;
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2F P;
+        public Vector2F Position;
+        
+        public Vector2F Scale;
 
         /// <summary>
         ///     Gets the value of the identity
@@ -59,8 +64,18 @@ namespace Alis.Core.Physic.Common
         /// <param name="rotation">The rotation</param>
         public Transform(Vector2F position, Complex rotation)
         {
-            Q = rotation;
-            P = position;
+            Rotation = rotation;
+            Position = position;
+            Logger.Log($"Transform: {Position} {Rotation} {Scale}");
+        }
+        
+        public Transform(Vector2F position, Complex rotation, Vector2F scale)
+        {
+            Rotation = rotation;
+            Position = position;
+            Scale = scale;
+            
+            Logger.Log($"Transform: {position} {rotation} {scale}");
         }
 
         /// <summary>
@@ -71,6 +86,13 @@ namespace Alis.Core.Physic.Common
         public Transform(Vector2F position, float angle)
             : this(position, Complex.FromAngle(angle))
         {
+            Logger.Log($"Transform: {Position} {Rotation} {Scale}");
+        }
+        
+        public Transform(Vector2F position, float angle, Vector2F scale)
+            : this(position, Complex.FromAngle(angle), scale)
+        {
+            Logger.Log($"Transform: {Position} {Rotation} {Scale}");
         }
 
         /// <summary>
@@ -90,8 +112,8 @@ namespace Alis.Core.Physic.Common
         public static Vector2F Multiply(ref Vector2F left, ref Transform right) =>
             // Opt: var result = Complex.Multiply(left, right.q) + right.p;
             new Vector2F(
-                left.X * right.Q.R - left.Y * right.Q.I + right.P.X,
-                left.Y * right.Q.R + left.X * right.Q.I + right.P.Y);
+                left.X * right.Rotation.R - left.Y * right.Rotation.I + right.Position.X,
+                left.Y * right.Rotation.R + left.X * right.Rotation.I + right.Position.Y);
 
         /// <summary>
         ///     Divides the left
@@ -110,11 +132,11 @@ namespace Alis.Core.Physic.Common
         public static Vector2F Divide(ref Vector2F left, ref Transform right)
         {
             // Opt: var result = Complex.Divide(left - right.p, right);
-            float px = left.X - right.P.X;
-            float py = left.Y - right.P.Y;
+            float px = left.X - right.Position.X;
+            float py = left.Y - right.Position.Y;
             return new Vector2F(
-                px * right.Q.R + py * right.Q.I,
-                py * right.Q.R - px * right.Q.I);
+                px * right.Rotation.R + py * right.Rotation.I,
+                py * right.Rotation.R - px * right.Rotation.I);
         }
 
         /// <summary>
@@ -126,11 +148,11 @@ namespace Alis.Core.Physic.Common
         public static void Divide(Vector2F left, ref Transform right, out Vector2F result)
         {
             // Opt: var result = Complex.Divide(left - right.p, right);
-            float px = left.X - right.P.X;
-            float py = left.Y - right.P.Y;
+            float px = left.X - right.Position.X;
+            float py = left.Y - right.Position.Y;
             result = new Vector2F(
-                px * right.Q.R + py * right.Q.I,
-                py * right.Q.R - px * right.Q.I);
+                px * right.Rotation.R + py * right.Rotation.I,
+                py * right.Rotation.R - px * right.Rotation.I);
         }
 
         /// <summary>
@@ -140,8 +162,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="right">The right</param>
         /// <returns>The transform</returns>
         public static Transform Multiply(ref Transform left, ref Transform right) => new Transform(
-            Complex.Multiply(ref left.P, ref right.Q) + right.P,
-            Complex.Multiply(ref left.Q, ref right.Q));
+            Complex.Multiply(ref left.Position, ref right.Rotation) + right.Position,
+            Complex.Multiply(ref left.Rotation, ref right.Rotation));
 
         /// <summary>
         ///     Divides the left
@@ -150,8 +172,8 @@ namespace Alis.Core.Physic.Common
         /// <param name="right">The right</param>
         /// <returns>The transform</returns>
         public static Transform Divide(ref Transform left, ref Transform right) => new Transform(
-            Complex.Divide(left.P - right.P, ref right.Q),
-            Complex.Divide(ref left.Q, ref right.Q));
+            Complex.Divide(left.Position - right.Position, ref right.Rotation),
+            Complex.Divide(ref left.Rotation, ref right.Rotation));
 
         /// <summary>
         ///     Divides the left
@@ -161,8 +183,9 @@ namespace Alis.Core.Physic.Common
         /// <param name="result">The result</param>
         public static void Divide(ref Transform left, ref Transform right, out Transform result)
         {
-            Complex.Divide(left.P - right.P, ref right.Q, out result.P);
-            Complex.Divide(ref left.Q, ref right.Q, out result.Q);
+            Complex.Divide(left.Position - right.Position, ref right.Rotation, out result.Position);
+            Complex.Divide(ref left.Rotation, ref right.Rotation, out result.Rotation);
+            result.Scale = left.Scale / right.Scale;
         }
 
         /// <summary>
@@ -173,8 +196,9 @@ namespace Alis.Core.Physic.Common
         /// <param name="result">The result</param>
         public static void Multiply(ref Transform left, Complex right, out Transform result)
         {
-            result.P = Complex.Multiply(ref left.P, ref right);
-            result.Q = Complex.Multiply(ref left.Q, ref right);
+            result.Position = Complex.Multiply(ref left.Position, ref right);
+            result.Rotation = Complex.Multiply(ref left.Rotation, ref right);
+            result.Scale = Complex.Multiply(ref left.Scale, ref right);
         }
 
         /// <summary>
@@ -185,8 +209,19 @@ namespace Alis.Core.Physic.Common
         /// <param name="result">The result</param>
         public static void Divide(ref Transform left, Complex right, out Transform result)
         {
-            result.P = Complex.Divide(ref left.P, ref right);
-            result.Q = Complex.Divide(ref left.Q, ref right);
+            result.Position = Complex.Divide(ref left.Position, ref right);
+            result.Rotation = Complex.Divide(ref left.Rotation, ref right);
+            result.Scale = Complex.Divide(ref left.Scale, ref right);
+        }
+
+        public void Init(IGameObject self)
+        {
+            
+        }
+
+        public void Update(IGameObject self)
+        {
+            
         }
     }
 }

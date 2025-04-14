@@ -28,8 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.Comps;
 using Alis.Core.Ecs.Operations;
 
 namespace Alis.Sample.Desktop
@@ -49,18 +51,18 @@ namespace Alis.Sample.Desktop
         /// Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(GameObject self)
+        public void Update(IGameObject self)
         {
-            Console.WriteLine("PlayerMovement Update");
+            Logger.Log("PlayerMovement Update");
         }
 
         /// <summary>
         /// Inits the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(GameObject self)
+        public void Init(IGameObject self)
         {
-            Console.WriteLine("PlayerMovement Init");
+            Logger.Log("PlayerMovement Init");
         }
     }
 }

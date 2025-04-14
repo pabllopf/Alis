@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IEntityComponent.2.cs
+//  File:IEntityComponent.5.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,17 +28,16 @@
 //  --------------------------------------------------------------------------
 
 using System.ComponentModel;
-using Alis.Core.Ecs.Comps;
 
-namespace Alis.Core.Ecs.Operations
+namespace Alis.Core.Aspect.Fluent
 {
     /// <summary>
     /// The entity component interface
     /// </summary>
     /// <seealso cref="IComponentBase"/>
-    public interface IEntityComponent<TArg1, TArg2> : IComponentBase
+    public interface IEntityComponent<TArg1, TArg2, TArg3, TArg4, TArg5> : IComponentBase
     {
         /// <inheritdoc cref="IComponent.Update" />
-        void Update(GameObject self, ref TArg1 arg1, ref TArg2 arg2);
+        void Update(IGameObject self, ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5);
     }
 }

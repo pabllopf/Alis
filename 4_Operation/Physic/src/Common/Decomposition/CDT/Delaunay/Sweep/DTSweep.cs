@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Memory.Exceptions;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
@@ -303,7 +304,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
             }
             catch (PointOnEdgeException e)
             {
-                Debug.WriteLine("Skipping Edge: {0}", e.Message);
+                Logger.Log($"Skipping Edge: {e.Message}");
             }
         }
 
@@ -588,7 +589,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     throw new PointOnEdgeException("EdgeEvent - Point on constrained edge not supported yet");
                 }
 
-                Debug.WriteLine("EdgeEvent - Point on constrained edge");
+                Logger.Log("EdgeEvent - Point on constrained edge");
                 return;
             }
 
@@ -610,7 +611,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     throw new PointOnEdgeException("EdgeEvent - Point on constrained edge not supported yet");
                 }
 
-                Debug.WriteLine("EdgeEvent - Point on constrained edge");
+                Logger.Log("EdgeEvent - Point on constrained edge");
                 return;
             }
 
@@ -669,7 +670,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     if ((eq == tcx.EdgeEvent.ConstrainedEdge.Q)
                         && (ep == tcx.EdgeEvent.ConstrainedEdge.P))
                     {
-                        Debug.WriteLine("[FLIP] - constrained edge done");
+                        Logger.Log("[FLIP] - constrained edge done");
                         t.MarkConstrainedEdge(ep, eq);
                         ot.MarkConstrainedEdge(ep, eq);
                         Legalize(tcx, t);
@@ -677,13 +678,13 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
                     }
                     else
                     {
-                        Debug.WriteLine("[FLIP] - subedge done");
+                        Logger.Log("[FLIP] - subedge done");
                         // XXX: I think one of the triangles should be legalized here?
                     }
                 }
                 else
                 {
-                    Debug.WriteLine("[FLIP] - flipping and continuing with triangle still crossing edge");
+                    Logger.Log("[FLIP] - flipping and continuing with triangle still crossing edge");
                     Orientation o = TriangulationUtil.Orient2d(eq, op, ep);
                     t = NextFlipTriangle(tcx, o, t, ot, p, op);
                     FlipEdgeEvent(tcx, ep, eq, t, p);

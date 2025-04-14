@@ -29,7 +29,6 @@
 
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.Comps;
 using Alis.Core.Ecs.Operations;
 
 namespace Alis.Core.Ecs.Components.Render

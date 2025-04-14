@@ -858,7 +858,7 @@ namespace Alis.Core.Physic.Dynamics
 
 
             // Update transform
-            body.SetTransformIgnoreContacts(ref body.Xf.P, body.Rotation);
+            body.SetTransformIgnoreContacts(ref body.Xf.Position, body.Rotation);
 
             // Create proxies
             if (GetEnabled)
@@ -1532,7 +1532,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             foreach (Body b in BodyList)
             {
-                b.Xf.P -= newOrigin;
+                b.Xf.Position -= newOrigin;
                 b.Sweep.C0 -= newOrigin;
                 b.Sweep.C -= newOrigin;
             }
