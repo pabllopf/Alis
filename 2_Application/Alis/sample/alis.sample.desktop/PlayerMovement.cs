@@ -53,7 +53,6 @@ namespace Alis.Sample.Desktop
         /// <param name="self">The self</param>
         public void Update(IGameObject self)
         {
-            Logger.Log("PlayerMovement Update");
         }
 
         /// <summary>
@@ -62,7 +61,6 @@ namespace Alis.Sample.Desktop
         /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
-            Logger.Log("PlayerMovement Init");
         }
     }
 }
