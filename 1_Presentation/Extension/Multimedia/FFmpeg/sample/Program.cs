@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Multimedia.FFmpeg.Sample
 {
@@ -43,7 +44,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.Write("Hello World!");
+            Logger.Log("Hello World!");
         }
     }
 }

@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Graphic.Sample
 {
@@ -43,13 +44,13 @@ namespace Alis.Core.Graphic.Sample
         /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
-            Console.Write("Enter the number of the sample you want to run:");
-            Console.Write("1. Triangle Sample");
-            Console.Write("2. Cube Sample");
-            Console.Write("3. Texture Sample");
-            Console.Write("4. Rotate 3D Object Sample");
-            Console.Write("5. Load BMP Image");
-            Console.Write("6. Render a square unfilled");
+            Logger.Log("Enter the number of the sample you want to run:");
+            Logger.Log("1. Triangle Sample");
+            Logger.Log("2. Cube Sample");
+            Logger.Log("3. Texture Sample");
+            Logger.Log("4. Rotate 3D Object Sample");
+            Logger.Log("5. Load BMP Image");
+            Logger.Log("6. Render a square unfilled");
             int sampleNumber = Convert.ToInt32(Console.ReadLine());
 
             switch (sampleNumber)

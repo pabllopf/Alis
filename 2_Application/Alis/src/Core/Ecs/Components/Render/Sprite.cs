@@ -35,6 +35,7 @@ using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
@@ -348,7 +349,6 @@ namespace Alis.Core.Ecs.Components.Render
         /// </summary>
         public void Update(IGameObject self)
         {
-            Console.Write($"Sprite {NameFile} updated");
         }
 
         /// <summary>

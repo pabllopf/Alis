@@ -30,6 +30,7 @@
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Data.Resource;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Sdl2Ttf;
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -135,7 +136,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -173,7 +174,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -210,7 +211,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -248,7 +249,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -285,7 +286,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -322,7 +323,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -360,7 +361,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -398,7 +399,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -436,7 +437,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -474,7 +475,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -513,7 +514,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -550,7 +551,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -588,7 +589,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -626,7 +627,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -664,7 +665,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -703,7 +704,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -747,7 +748,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -788,7 +789,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -829,7 +830,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -869,7 +870,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -909,7 +910,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -949,7 +950,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -989,7 +990,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1028,7 +1029,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1067,7 +1068,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1106,7 +1107,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1145,7 +1146,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1184,7 +1185,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1222,7 +1223,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1261,7 +1262,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1301,7 +1302,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1341,7 +1342,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1381,7 +1382,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1420,7 +1421,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1459,7 +1460,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1494,7 +1495,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1533,7 +1534,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1572,7 +1573,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1599,7 +1600,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
         }
 
@@ -1621,7 +1622,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
         }
 
@@ -1645,7 +1646,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1675,7 +1676,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
@@ -1708,7 +1709,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
             catch (Exception ex)
             {
-                Console.Write($"No expected exception, but was thrown: {ex}");
+                Logger.Log($"No expected exception, but was thrown: {ex}");
             }
             finally
             {
