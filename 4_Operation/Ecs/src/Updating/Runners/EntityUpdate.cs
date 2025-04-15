@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Threading;
 using Alis.Core.Ecs.Arch;
 using Alis.Core.Ecs.Collections;
@@ -43,31 +44,48 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// <seealso cref="ComponentStorage{TComp}" />
     internal class EntityUpdate<TComp>(int capacity) : ComponentStorage<TComp>(capacity)
     {
-        /// <summary>
-        ///     Runs the world
-        /// </summary>
-        /// <param name="scene">The world</param>
-        /// <param name="b">The </param>
+        [SkipLocalsInit]
         internal override void Run(Scene scene, Archetype b)
         {
             ref EntityIdOnly entityIds = ref b.GetEntityDataReference();
             ref TComp comp = ref GetComponentStorageDataReference();
-
+        
             GameObject gameObject = scene.DefaultWorldGameObject;
-
+        
             int size = b.EntityCount;
-            for (int i = size - 1; i >= 0; i--)
+        
+        #if NET7_0_OR_GREATER
+           // Use MemoryMarshal.CreateSpan for efficient span creation
+           Span<EntityIdOnly> entitySpan = MemoryMarshal.CreateSpan(ref entityIds, size);
+           Span<TComp> compSpan = MemoryMarshal.CreateSpan(ref comp, size);
+           
+           foreach (ref EntityIdOnly currentEntity in entitySpan)
+           {
+               int offset = (int)Unsafe.ByteOffset(ref entitySpan[0], ref currentEntity) / Unsafe.SizeOf<EntityIdOnly>();
+               ref TComp currentComp = ref compSpan[offset];
+           
+               currentEntity.SetEntity(ref gameObject);
+           
+               if (Unsafe.As<object>(currentComp) is IEntityComponent storage)
+               {
+                   storage.Update(gameObject);
+               }
+           }
+        #else
+            // Fallback for older .NET versions
+            for (int i = 0; i < size; i++)
             {
-                entityIds.SetEntity(ref gameObject);
-
-                if (comp is IEntityComponent storage)
+                ref EntityIdOnly currentEntity = ref Unsafe.Add(ref entityIds, i);
+                ref TComp currentComp = ref Unsafe.Add(ref comp, i);
+        
+                currentEntity.SetEntity(ref gameObject);
+        
+                if (Unsafe.As<object>(currentComp) is IEntityComponent storage)
                 {
                     storage.Update(gameObject);
                 }
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
             }
+        #endif
         }
         
     }
