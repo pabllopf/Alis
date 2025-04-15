@@ -31,7 +31,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Ecs.Memory
+namespace Alis.Core.Ecs.Marshalling
 {
     /// <summary>
     ///     The unsafe extensions class

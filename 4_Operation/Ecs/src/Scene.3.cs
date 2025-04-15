@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -30,12 +30,15 @@
 using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Arch;
-using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Marshalling;
 using Alis.Core.Ecs.Operations;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs
 {
+    /// <summary>
+    /// The scene class
+    /// </summary>
     partial class Scene
     {
         /// <summary>

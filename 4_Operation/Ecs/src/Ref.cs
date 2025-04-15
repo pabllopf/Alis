@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Marshalling;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs

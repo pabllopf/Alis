@@ -29,7 +29,7 @@
 
 using System;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Marshalling;
 
 namespace Alis.Core.Ecs.Arch
 {

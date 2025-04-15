@@ -34,6 +34,13 @@ using Alis.Core.Ecs.Operations;
 
 namespace Alis.Core.Ecs.Components.Render
 {
+    /// <summary>
+    /// The sprite interface
+    /// </summary>
+    /// <seealso cref="IInitable"/>
+    /// <seealso cref="IEntityComponent"/>
+    /// <seealso cref="IHasBuilder{SpriteBuilder}"/>
+    /// <seealso cref="IBuild{Sprite}"/>
     public interface ISprite : IInitable, IEntityComponent, IHasBuilder<SpriteBuilder>, IBuild<Sprite>
     {
     }

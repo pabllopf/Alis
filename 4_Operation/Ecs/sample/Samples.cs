@@ -224,11 +224,19 @@ namespace Alis.Core.Ecs.Sample
             /// </summary>
             public readonly int DY = dy;
 
+            /// <summary>
+            /// Inits the self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void Init(GameObject self)
             {
                 Console.WriteLine("Init");
             }
 
+            /// <summary>
+            /// Updates the self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void Update(GameObject self)
             {
                 self.Get<Position>().X += DX;
@@ -246,6 +254,10 @@ namespace Alis.Core.Ecs.Sample
             /// </summary>
             public readonly char Char = c;
 
+            /// <summary>
+            /// Updates the self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void Update(GameObject self)
             {
                 Position pos = self.Get<Position>();
@@ -286,11 +298,19 @@ namespace Alis.Core.Ecs.Sample
 
     internal record struct Vel(float DX) : IInitable, IEntityComponent
     {
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Update(GameObject self)
         {
             Console.WriteLine("entity update:" + self.EntityID);
         }
 
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Init(GameObject self)
         {
             Console.WriteLine("entiti init vel: " + self.EntityID);
@@ -302,6 +322,10 @@ namespace Alis.Core.Ecs.Sample
     /// </summary>
     internal struct ConsoleText(ConsoleColor Color) : IEntityComponent
     {
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Update(GameObject self)
         {
             Console.ForegroundColor = Color;

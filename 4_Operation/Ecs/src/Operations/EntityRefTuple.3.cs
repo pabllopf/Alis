@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -30,6 +30,9 @@
 
 namespace Alis.Core.Ecs.Operations
 {
+    /// <summary>
+    /// The entity ref tuple
+    /// </summary>
     public ref struct EntityRefTuple<T1, T2, T3>
     {
         /// <summary>
@@ -37,8 +40,17 @@ namespace Alis.Core.Ecs.Operations
         /// </summary>
         public GameObject GameObject;
 
+        /// <summary>
+        /// The item
+        /// </summary>
         public Ref<T1> Item1;
+        /// <summary>
+        /// The item
+        /// </summary>
         public Ref<T2> Item2;
+        /// <summary>
+        /// The item
+        /// </summary>
         public Ref<T3> Item3;
 
 

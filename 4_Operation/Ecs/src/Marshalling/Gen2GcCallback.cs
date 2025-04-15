@@ -31,7 +31,7 @@ using System;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Ecs.Memory
+namespace Alis.Core.Ecs.Marshalling
 {
     /// <summary>
     ///     Schedules a callback roughly every gen 2 GC (you may see a Gen 0 an Gen 1 but only once)

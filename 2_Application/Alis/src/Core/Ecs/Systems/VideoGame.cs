@@ -93,6 +93,10 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         public void Exit() => _contextHandler.Exit();
 
+        /// <summary>
+        /// Creates
+        /// </summary>
+        /// <returns>The video game builder</returns>
         public static VideoGameBuilder Create() => new VideoGameBuilder();
     }
 }

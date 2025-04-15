@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -32,6 +32,10 @@ using Alis.Core.Ecs.Comps;
 
 namespace Alis.Core.Ecs.Operations
 {
+    /// <summary>
+    /// The entity component interface
+    /// </summary>
+    /// <seealso cref="IComponentBase"/>
     public interface IEntityComponent<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> : IComponentBase
     {
         /// <inheritdoc cref="IComponent.Update" />

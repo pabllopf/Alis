@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Ecs
 {
+    /// <summary>
+    /// The game object interface
+    /// </summary>
     public interface IGameObject
     {
     }

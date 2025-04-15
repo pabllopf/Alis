@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,6 +31,9 @@ using System;
 
 namespace Alis.Core.Ecs.Operations
 {
+    /// <summary>
+    /// The chunk tuple
+    /// </summary>
     public ref struct ChunkTuple<T1, T2, T3, T4>
     {
         /// <summary>
@@ -38,9 +41,21 @@ namespace Alis.Core.Ecs.Operations
         /// </summary>
         public EntityEnumerator.EntityEnumerable Entities;
 
+        /// <summary>
+        /// The span
+        /// </summary>
         public Span<T1> Span1;
+        /// <summary>
+        /// The span
+        /// </summary>
         public Span<T2> Span2;
+        /// <summary>
+        /// The span
+        /// </summary>
         public Span<T3> Span3;
+        /// <summary>
+        /// The span
+        /// </summary>
         public Span<T4> Span4;
 
 

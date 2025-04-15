@@ -31,7 +31,7 @@ using System;
 using System.Buffers;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Marshalling;
 
 namespace Alis.Core.Ecs.Buffers
 {

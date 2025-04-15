@@ -29,7 +29,6 @@
 
 using System;
 using Alis.Core.Ecs.Arch;
-using Alis.Core.Ecs.Memory;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Marshalling

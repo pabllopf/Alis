@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -33,11 +33,14 @@ using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Arch;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Events;
-using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Marshalling;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs
 {
+    /// <summary>
+    /// The game object
+    /// </summary>
     partial struct GameObject
     {
         /// <summary>
@@ -175,6 +178,23 @@ namespace Alis.Core.Ecs
         }
 
 
+        /// <summary>
+        /// Invokes the component world events using the specified event
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <typeparam name="T11">The 11</typeparam>
+        /// <typeparam name="T12">The 12</typeparam>
+        /// <param name="@event">The event</param>
+        /// <param name="gameObject">The game object</param>
         private static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(ref Event<ComponentID> @event, GameObject gameObject)
         {
             @event.InvokeInternal(gameObject, Component<T1>.ID);
@@ -191,6 +211,36 @@ namespace Alis.Core.Ecs
             @event.InvokeInternal(gameObject, Component<T12>.ID);
         }
 
+        /// <summary>
+        /// Invokes the per entity events using the specified game object
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <typeparam name="T10">The 10</typeparam>
+        /// <typeparam name="T11">The 11</typeparam>
+        /// <typeparam name="T12">The 12</typeparam>
+        /// <param name="gameObject">The game object</param>
+        /// <param name="hasGenericEvent">The has generic event</param>
+        /// <param name="events">The events</param>
+        /// <param name="component1">The component</param>
+        /// <param name="component2">The component</param>
+        /// <param name="component3">The component</param>
+        /// <param name="component4">The component</param>
+        /// <param name="component5">The component</param>
+        /// <param name="component6">The component</param>
+        /// <param name="component7">The component</param>
+        /// <param name="component8">The component</param>
+        /// <param name="component9">The component</param>
+        /// <param name="component10">The component 10</param>
+        /// <param name="component11">The component 11</param>
+        /// <param name="component12">The component 12</param>
         private static void InvokePerEntityEvents<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(GameObject gameObject, bool hasGenericEvent, ref ComponentEvent events, ref T1 component1, ref T2 component2, ref T3 component3, ref T4 component4, ref T5 component5, ref T6 component6, ref T7 component7, ref T8 component8, ref T9 component9, ref T10 component10, ref T11 component11,
             ref T12 component12)
         {
@@ -227,8 +277,16 @@ namespace Alis.Core.Ecs
             events.GenericEvent!.Invoke(gameObject, ref component12);
         }
 
+        /// <summary>
+        /// The neighbor cache
+        /// </summary>
         private struct NeighborCache<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> : IArchetypeGraphEdge
         {
+            /// <summary>
+            /// Modifies the tags using the specified tags
+            /// </summary>
+            /// <param name="tags">The tags</param>
+            /// <param name="add">The add</param>
             public void ModifyTags(ref FastImmutableArray<TagId> tags, bool add)
             {
                 if (add)
@@ -241,6 +299,11 @@ namespace Alis.Core.Ecs
                 }
             }
 
+            /// <summary>
+            /// Modifies the components using the specified components
+            /// </summary>
+            /// <param name="components">The components</param>
+            /// <param name="add">The add</param>
             public void ModifyComponents(ref FastImmutableArray<ComponentID> components, bool add)
             {
                 if (add)
@@ -255,23 +318,47 @@ namespace Alis.Core.Ecs
 
             //separate into individual classes to avoid creating uneccecary static classes.
 
+            /// <summary>
+            /// The add class
+            /// </summary>
             internal static class Add
             {
+                /// <summary>
+                /// The lookup
+                /// </summary>
                 internal static ArchetypeNeighborCache Lookup;
             }
 
+            /// <summary>
+            /// The remove class
+            /// </summary>
             internal static class Remove
             {
+                /// <summary>
+                /// The lookup
+                /// </summary>
                 internal static ArchetypeNeighborCache Lookup;
             }
 
+            /// <summary>
+            /// The tag class
+            /// </summary>
             internal static class Tag
             {
+                /// <summary>
+                /// The lookup
+                /// </summary>
                 internal static ArchetypeNeighborCache Lookup;
             }
 
+            /// <summary>
+            /// The detach class
+            /// </summary>
             internal static class Detach
             {
+                /// <summary>
+                /// The lookup
+                /// </summary>
                 internal static ArchetypeNeighborCache Lookup;
             }
         }

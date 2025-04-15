@@ -38,6 +38,10 @@ namespace Alis.App.Engine.Sample.Assets.Scripts
     /// </summary>
     public class Player : IEntityComponent
     {
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Update(GameObject self)
         {
         }

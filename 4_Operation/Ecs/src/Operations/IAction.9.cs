@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -30,8 +30,23 @@
 
 namespace Alis.Core.Ecs.Operations
 {
+    /// <summary>
+    /// The action interface
+    /// </summary>
     public interface IAction<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>
     {
+        /// <summary>
+        /// Runs the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="arg7">The arg</param>
+        /// <param name="arg8">The arg</param>
+        /// <param name="arg9">The arg</param>
         void Run(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6, ref TArg7 arg7, ref TArg8 arg8, ref TArg9 arg9);
     }
 }

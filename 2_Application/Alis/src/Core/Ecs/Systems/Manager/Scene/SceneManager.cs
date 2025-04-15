@@ -37,16 +37,37 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
     /// <seealso cref="AManager" />
     public class SceneManager : AManager
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SceneManager"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
         public SceneManager(Context context) : base(context) => Scene = new Ecs.Scene();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SceneManager"/> class
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="name">The name</param>
+        /// <param name="tag">The tag</param>
+        /// <param name="isEnable">The is enable</param>
+        /// <param name="context">The context</param>
         public SceneManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context) => Scene = new Ecs.Scene();
 
+        /// <summary>
+        /// Gets or sets the value of the scene
+        /// </summary>
         public Ecs.Scene Scene { get; set; }
 
+        /// <summary>
+        /// Ons the init
+        /// </summary>
         public override void OnInit()
         {
         }
 
+        /// <summary>
+        /// Ons the update
+        /// </summary>
         public override void OnUpdate()
         {
             // Update the world

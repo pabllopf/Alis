@@ -34,7 +34,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Alis.Core.Ecs.Buffers;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Memory;
+using Alis.Core.Ecs.Marshalling;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Arch

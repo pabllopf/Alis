@@ -32,6 +32,11 @@ using Alis.Core.Ecs.Operations;
 
 namespace Alis.Core.Ecs.Components.Render
 {
+    /// <summary>
+    /// The camera interface
+    /// </summary>
+    /// <seealso cref="IInitable"/>
+    /// <seealso cref="IEntityComponent"/>
     public interface ICamera : IInitable, IEntityComponent
     {
 

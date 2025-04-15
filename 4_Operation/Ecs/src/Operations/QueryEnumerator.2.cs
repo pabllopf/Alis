@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -33,15 +33,40 @@ using Alis.Core.Ecs.Arch;
 
 namespace Alis.Core.Ecs.Operations
 {
+    /// <summary>
+    /// The query enumerator
+    /// </summary>
     public ref struct QueryEnumerator<T1, T2>
     {
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
+        /// <summary>
+        /// The component index
+        /// </summary>
         private int _componentIndex;
+        /// <summary>
+        /// The scene
+        /// </summary>
         private readonly Scene scene;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private readonly Span<Archetype> _archetypes;
+        /// <summary>
+        /// The current span
+        /// </summary>
         private Span<T1> _currentSpan1;
+        /// <summary>
+        /// The current span
+        /// </summary>
         private Span<T2> _currentSpan2;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private QueryEnumerator(Query query)
         {
             scene = query.Scene;

@@ -32,8 +32,15 @@ using Alis.Core.Ecs.Operations;
 
 namespace Alis.Core.Ecs.Components.Collider
 {
+    /// <summary>
+    /// The box collider
+    /// </summary>
     public struct BoxCollider : IEntityComponent
     {
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Update(GameObject self)
         {
         }

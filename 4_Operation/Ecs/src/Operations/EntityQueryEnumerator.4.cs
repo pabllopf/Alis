@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -32,18 +32,52 @@ using Alis.Core.Ecs.Arch;
 
 namespace Alis.Core.Ecs.Operations
 {
+    /// <summary>
+    /// The entity query enumerator
+    /// </summary>
     public ref struct EntityQueryEnumerator<T1, T2, T3, T4>
     {
+        /// <summary>
+        /// The archetype index
+        /// </summary>
         private int _archetypeIndex;
+        /// <summary>
+        /// The component index
+        /// </summary>
         private int _componentIndex;
+        /// <summary>
+        /// The scene
+        /// </summary>
         private readonly Scene scene;
+        /// <summary>
+        /// The archetypes
+        /// </summary>
         private readonly Span<Archetype> _archetypes;
+        /// <summary>
+        /// The entity ids
+        /// </summary>
         private Span<EntityIdOnly> _entityIds;
+        /// <summary>
+        /// The current span
+        /// </summary>
         private Span<T1> _currentSpan1;
+        /// <summary>
+        /// The current span
+        /// </summary>
         private Span<T2> _currentSpan2;
+        /// <summary>
+        /// The current span
+        /// </summary>
         private Span<T3> _currentSpan3;
+        /// <summary>
+        /// The current span
+        /// </summary>
         private Span<T4> _currentSpan4;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EntityQueryEnumerator"/> class
+        /// </summary>
+        /// <param name="query">The query</param>
         private EntityQueryEnumerator(Query query)
         {
             scene = query.Scene;

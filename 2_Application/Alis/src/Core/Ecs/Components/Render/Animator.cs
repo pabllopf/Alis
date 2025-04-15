@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Ecs.Components.Render
 {
+    /// <summary>
+    /// The animator
+    /// </summary>
     public struct Animator
     {
     }

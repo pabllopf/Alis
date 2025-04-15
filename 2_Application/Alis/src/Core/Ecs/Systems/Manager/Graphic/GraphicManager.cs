@@ -73,8 +73,14 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         public GraphicManager(Context context) : base(context) => Renderer = IntPtr.Zero;
 
+        /// <summary>
+        /// Gets or sets the value of the window
+        /// </summary>
         public Window Window { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the renderer
+        /// </summary>
         public IntPtr Renderer { get; set; }
 
         /// <summary>

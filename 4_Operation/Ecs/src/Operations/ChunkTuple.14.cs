@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,6 +31,9 @@ using System;
 
 namespace Alis.Core.Ecs.Operations
 {
+    /// <summary>
+    /// The chunk tuple
+    /// </summary>
     public ref struct ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>
     {
         /// <summary>
@@ -38,19 +41,61 @@ namespace Alis.Core.Ecs.Operations
         /// </summary>
         public EntityEnumerator.EntityEnumerable Entities;
 
+        /// <summary>
+        /// The span
+        /// </summary>
         public Span<T1> Span1;
+        /// <summary>
+        /// The span
+        /// </summary>
         public Span<T2> Span2;
+        /// <summary>
+        /// The span
+        /// </summary>
         public Span<T3> Span3;
+        /// <summary>
+        /// The span
+        /// </summary>
         public Span<T4> Span4;
+        /// <summary>
+        /// The span
+        /// </summary>
         public Span<T5> Span5;
+        /// <summary>
+        /// The span
+        /// </summary>
         public Span<T6> Span6;
+        /// <summary>
+        /// The span
+        /// </summary>
         public Span<T7> Span7;
+        /// <summary>
+        /// The span
+        /// </summary>
         public Span<T8> Span8;
+        /// <summary>
+        /// The span
+        /// </summary>
         public Span<T9> Span9;
+        /// <summary>
+        /// The span 10
+        /// </summary>
         public Span<T10> Span10;
+        /// <summary>
+        /// The span 11
+        /// </summary>
         public Span<T11> Span11;
+        /// <summary>
+        /// The span 12
+        /// </summary>
         public Span<T12> Span12;
+        /// <summary>
+        /// The span 13
+        /// </summary>
         public Span<T13> Span13;
+        /// <summary>
+        /// The span 14
+        /// </summary>
         public Span<T14> Span14;
 
 

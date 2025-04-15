@@ -54,6 +54,12 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scenes
         /// <param name="context">The context</param>
         public SceneManagerBuilder(Context context) => sceneManager = new SceneManager(context);
         
+        /// <summary>
+        /// Adds the config
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="config">The config</param>
+        /// <returns>The scene manager builder</returns>
         public SceneManagerBuilder Add<T>(Action<SceneBuilder> config) where T : IScene
         { 
             SceneBuilder sceneBuilder = new SceneBuilder(sceneManager.Context);
