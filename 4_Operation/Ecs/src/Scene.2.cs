@@ -92,26 +92,27 @@ namespace Alis.Core.Ecs
         [SkipLocalsInit]
         public ChunkTuple<T1, T2> CreateMany<T1, T2>(int count)
         {
-            if ((uint) count == 0) 
-            {
+            if ((uint)count == 0) // Efficient validation for non-positive values
                 throw new ArgumentOutOfRangeException(nameof(count));
-            }
-
-            Archetype archetype =  Archetype<T1, T2>.CreateNewOrGetExistingArchetype(this);
+        
+            var archetype = Archetype<T1, T2>.CreateNewOrGetExistingArchetype(this);
             int entityCount = archetype.EntityCount;
-
+        
             EntityTable.EnsureCapacity(EntityCount + count);
-            
+        
+            // Create entity locations directly in a Span
             Span<EntityIdOnly> entityLocations = archetype.CreateEntityLocations(count, this);
-            
+        
+            // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
             {
-                foreach (ref EntityIdOnly entityId in entityLocations)
+                foreach (ref var entityId in entityLocations)
                 {
                     EntityCreatedEvent.Invoke(entityId.ToEntity(this));
                 }
             }
-            
+        
+            // Return the result with calculated spans
             return new ChunkTuple<T1, T2>
             {
                 Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations),

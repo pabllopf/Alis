@@ -117,77 +117,41 @@ namespace Alis.Core.Ecs
             return gameObject;
         }
 
-        /// <summary>Creates a large amount of entities quickly</summary>
-        /// <param name="count">The number of entities to create</param>
-        /// <returns>The entities created and their component spans</returns>
-        [SkipLocalsInit]
-        public ChunkTuple<T1, T2, T3, T4, T5, T6, T7> CreateMany<T1, T2, T3, T4, T5, T6, T7>(int count)
-        {
-            if (count < 0)
-            {
-                throw new ArgumentOutOfRangeException("Must create at least 1 entity!");
-            }
-
-            Archetype existingArchetype = Archetype<T1, T2, T3, T4, T5, T6, T7>.CreateNewOrGetExistingArchetype(this);
-            int entityCount = existingArchetype.EntityCount;
-            EntityTable.EnsureCapacity(EntityCount + count);
-            Span<EntityIdOnly> entityLocations = existingArchetype.CreateEntityLocations(count, this);
-            if (EntityCreatedEvent.HasListeners)
-            {
-                Span<EntityIdOnly> span = entityLocations;
-                for (int index = 0; index < span.Length; ++index)
-                {
-                    EntityCreatedEvent.Invoke(span[index].ToEntity(this));
-                }
-            }
-
-            ChunkTuple<T1, T2, T3, T4, T5, T6, T7> many = new ChunkTuple<T1, T2, T3, T4, T5, T6, T7>
-            {
-                Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations)
-            };
-            ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7> local1 = ref many;
-            Span<T1> componentSpan1 = existingArchetype.GetComponentSpan<T1>();
-            ref Span<T1> local2 = ref componentSpan1;
-            int start1 = entityCount;
-            Span<T1> span1 = local2.Slice(start1, local2.Length - start1);
-            local1.Span1 = span1;
-            ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7> local3 = ref many;
-            Span<T2> componentSpan2 = existingArchetype.GetComponentSpan<T2>();
-            ref Span<T2> local4 = ref componentSpan2;
-            int start2 = entityCount;
-            Span<T2> span2 = local4.Slice(start2, local4.Length - start2);
-            local3.Span2 = span2;
-            ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7> local5 = ref many;
-            Span<T3> componentSpan3 = existingArchetype.GetComponentSpan<T3>();
-            ref Span<T3> local6 = ref componentSpan3;
-            int start3 = entityCount;
-            Span<T3> span3 = local6.Slice(start3, local6.Length - start3);
-            local5.Span3 = span3;
-            ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7> local7 = ref many;
-            Span<T4> componentSpan4 = existingArchetype.GetComponentSpan<T4>();
-            ref Span<T4> local8 = ref componentSpan4;
-            int start4 = entityCount;
-            Span<T4> span4 = local8.Slice(start4, local8.Length - start4);
-            local7.Span4 = span4;
-            ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7> local9 = ref many;
-            Span<T5> componentSpan5 = existingArchetype.GetComponentSpan<T5>();
-            ref Span<T5> local10 = ref componentSpan5;
-            int start5 = entityCount;
-            Span<T5> span5 = local10.Slice(start5, local10.Length - start5);
-            local9.Span5 = span5;
-            ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7> local11 = ref many;
-            Span<T6> componentSpan6 = existingArchetype.GetComponentSpan<T6>();
-            ref Span<T6> local12 = ref componentSpan6;
-            int start6 = entityCount;
-            Span<T6> span6 = local12.Slice(start6, local12.Length - start6);
-            local11.Span6 = span6;
-            ref ChunkTuple<T1, T2, T3, T4, T5, T6, T7> local13 = ref many;
-            Span<T7> componentSpan7 = existingArchetype.GetComponentSpan<T7>();
-            ref Span<T7> local14 = ref componentSpan7;
-            int start7 = entityCount;
-            Span<T7> span7 = local14.Slice(start7, local14.Length - start7);
-            local13.Span7 = span7;
-            return many;
-        }
+      [SkipLocalsInit]
+      public ChunkTuple<T1, T2, T3, T4, T5, T6, T7> CreateMany<T1, T2, T3, T4, T5, T6, T7>(int count)
+      {
+          if ((uint)count == 0) // Efficient validation for non-positive values
+              throw new ArgumentOutOfRangeException(nameof(count));
+      
+          var archetype = Archetype<T1, T2, T3, T4, T5, T6, T7>.CreateNewOrGetExistingArchetype(this);
+          int entityCount = archetype.EntityCount;
+      
+          EntityTable.EnsureCapacity(EntityCount + count);
+      
+          // Create entity locations directly in a Span
+          Span<EntityIdOnly> entityLocations = archetype.CreateEntityLocations(count, this);
+      
+          // Invoke events if listeners are present
+          if (EntityCreatedEvent.HasListeners)
+          {
+              foreach (ref var entityId in entityLocations)
+              {
+                  EntityCreatedEvent.Invoke(entityId.ToEntity(this));
+              }
+          }
+      
+          // Return the result with calculated spans
+          return new ChunkTuple<T1, T2, T3, T4, T5, T6, T7>
+          {
+              Entities = new EntityEnumerator.EntityEnumerable(this, entityLocations),
+              Span1 = archetype.GetComponentSpan<T1>().Slice(entityCount, count),
+              Span2 = archetype.GetComponentSpan<T2>().Slice(entityCount, count),
+              Span3 = archetype.GetComponentSpan<T3>().Slice(entityCount, count),
+              Span4 = archetype.GetComponentSpan<T4>().Slice(entityCount, count),
+              Span5 = archetype.GetComponentSpan<T5>().Slice(entityCount, count),
+              Span6 = archetype.GetComponentSpan<T6>().Slice(entityCount, count),
+              Span7 = archetype.GetComponentSpan<T7>().Slice(entityCount, count)
+          };
+      }
     }
 }
