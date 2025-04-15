@@ -43,6 +43,12 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Network
         /// </summary>
         private readonly NetworkSetting networkSetting = new NetworkSetting();
 
+        
+        public NetworkSettingBuilder Ip(string ip)
+        {
+            return this;
+        }
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>

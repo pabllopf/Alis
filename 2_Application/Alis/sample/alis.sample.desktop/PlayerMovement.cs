@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IScene.cs
+//  File:PlayerMovement.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,18 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Fluent.Words
+using System;
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.Comps;
+
+namespace Alis.Sample.Desktop
 {
-    /// <summary>
-    ///     The scene interface
-    /// </summary>
-    public interface IScene<out TBuilder, in TArgument>
+    public struct PlayerMovement (int velocity) : IInitable, IEntityComponent
     {
-        /// <summary>
-        ///     Scenes the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
-        TBuilder Scene(TArgument value);
+        
+        public int Velocity { get; set; } = velocity;
+        
+        public void Update(GameObject self)
+        {
+            Console.WriteLine("PlayerMovement Update");
+        }
+
+        public void Init(GameObject self)
+        {
+            Console.WriteLine("PlayerMovement Init");
+        }
     }
 }

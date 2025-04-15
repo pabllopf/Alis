@@ -29,13 +29,14 @@
 
 using System;
 using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Builder.Core.Ecs.Entity;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Comps;
 
 namespace Alis.Core.Ecs.Components.Render
 {
-    public struct Camera(Vector2F position, Vector2F resolution) : IInitable, IEntityComponent, IBuild<CameraBuilder>
+    public struct Camera(Vector2F position, Vector2F resolution) : ICamera
     {
         /// <summary>
         ///     The position
@@ -65,6 +66,12 @@ namespace Alis.Core.Ecs.Components.Render
             Console.WriteLine($"Camera {self.EntityID} updated");
         }
 
-        public CameraBuilder Build() => new CameraBuilder();
+        public CameraBuilder CreateBuilder() => new CameraBuilder();
+        public Camera Build() => new Camera(Position, Resolution);
+
+        public void Configure(Action<Camera> configure)
+        {
+            configure(this);
+        }
     }
 }

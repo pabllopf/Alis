@@ -29,9 +29,5 @@
 
 namespace Alis.Core.Ecs.System.Configuration.Input
 {
-    /// <summary>
-    ///     The input setting class
-    /// </summary>
-    /// <seealso cref="IInputSetting" />
-    public record struct InputSetting : IInputSetting;
+    public record struct InputSetting(float MouseSensitivity) : IInputSetting;
 }

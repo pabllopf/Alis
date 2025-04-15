@@ -28,9 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.Components.Render;
+using Alis.Core.Ecs.Comps;
+using Alis.Core.Ecs.Events;
 using Alis.Core.Ecs.System.Scope;
 
 namespace Alis.Builder.Core.Ecs.Entity
@@ -40,9 +45,7 @@ namespace Alis.Builder.Core.Ecs.Entity
     /// </summary>
     /// <seealso cref="IBuild{Scene}" />
     public class SceneBuilder :
-        IBuild<Scene>,
-        IName<SceneBuilder, string>,
-        IAdd<SceneBuilder, Func<GameObjectBuilder, GameObject>>
+        IBuild<Scene>
     {
         /// <summary>
         ///     The context
@@ -59,14 +62,54 @@ namespace Alis.Builder.Core.Ecs.Entity
         ///     Gets the value of the scene
         /// </summary>
         private Scene Scene { get; } = new Scene();
+        
+        public SceneBuilder Add<T>(Action<GameObjectBuilder> config) where T : IGameObject
+        {
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
+            config(gameObjectBuilder);
+            Dictionary<Type, IEntityComponent> components = gameObjectBuilder.Build();
+            
+            if (components.Count == 0)
+            {
+                Scene.Create();
+            }
 
-        /// <summary>
-        ///     Adds the value
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
-        /// <returns>The scene builder</returns>
-        public SceneBuilder Add<T>(Func<GameObjectBuilder, GameObject> value) => this;
+            if (components.Count == 1)
+            {
+              Type componentType = components.Keys.ElementAt(0);
+              object component = Convert.ChangeType(components[componentType], componentType);
+
+              // Obtén el método genérico Scene.Create<T>() con un solo parámetro genérico
+              var createMethod = typeof(Scene).GetMethods()
+                  .First(m => m.Name == "Create" && m.IsGenericMethodDefinition && m.GetGenericArguments().Length == 1);
+
+              // Construye el método genérico con el tipo del componente
+              var genericCreateMethod = createMethod.MakeGenericMethod(componentType);
+
+              // Invoca el método genérico con el componente
+              genericCreateMethod.Invoke(Scene, new[] { component });
+            }
+          
+            if (components.Count == 2)
+            {
+                Type componentType1 = components.Keys.ElementAt(0);
+                Type componentType2 = components.Keys.ElementAt(1);
+                object component1 = Convert.ChangeType(components[componentType1], componentType1);
+                object component2 = Convert.ChangeType(components[componentType2], componentType2);
+
+                // Obtén el método genérico Scene.Create<T, U>() con dos parámetros genéricos
+                var createMethod = typeof(Scene).GetMethods()
+                    .First(m => m.Name == "Create" && m.IsGenericMethodDefinition && m.GetGenericArguments().Length == 2);
+
+                // Construye el método genérico con los tipos de los componentes
+                var genericCreateMethod = createMethod.MakeGenericMethod(componentType1, componentType2);
+
+                // Invoca el método genérico con los componentes
+                genericCreateMethod.Invoke(Scene, new[] { component1, component2 });
+            }
+            
+            return this;
+        }
 
         /// <summary>
         ///     Builds this instance

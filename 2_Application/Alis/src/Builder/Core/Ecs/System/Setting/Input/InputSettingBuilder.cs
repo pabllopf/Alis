@@ -38,15 +38,19 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Input
     public class InputSettingBuilder :
         IBuild<InputSetting>
     {
-        /// <summary>
-        ///     The audio setting
-        /// </summary>
-        private readonly InputSetting inputSetting = new InputSetting();
+
+        private float sensitivity = 1.0f;
+        
+        public InputSettingBuilder MouseSensitivity(float value)
+        {
+            this.sensitivity = value;
+            return this;
+        }
 
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The audio setting</returns>
-        public InputSetting Build() => inputSetting;
+        public InputSetting Build() => new InputSetting(sensitivity);
     }
 }

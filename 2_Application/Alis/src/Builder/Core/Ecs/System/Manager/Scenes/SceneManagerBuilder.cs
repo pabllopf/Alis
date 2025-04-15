@@ -41,8 +41,7 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scenes
     ///     The scene manager builder class
     /// </summary>
     public class SceneManagerBuilder :
-        IBuild<SceneManager>,
-        IAdd<SceneManagerBuilder, Func<SceneBuilder, Scene>>
+        IBuild<SceneManager>
     {
         /// <summary>
         ///     Gets the value of the scene manager
@@ -54,14 +53,15 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scenes
         /// </summary>
         /// <param name="context">The context</param>
         public SceneManagerBuilder(Context context) => sceneManager = new SceneManager(context);
-
-        /// <summary>
-        ///     Adds the value
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
-        /// <returns>The scene builder</returns>
-        public SceneManagerBuilder Add<T>(Func<SceneBuilder, Scene> value) => this;
+        
+        public SceneManagerBuilder Add<T>(Action<SceneBuilder> config) where T : IScene
+        { 
+            SceneBuilder sceneBuilder = new SceneBuilder(sceneManager.Context);
+            config(sceneBuilder);
+            Scene scene = sceneBuilder.Build();
+            sceneManager.Scene = scene;
+            return this;
+        }
 
         /// <summary>
         ///     Builds this instance
