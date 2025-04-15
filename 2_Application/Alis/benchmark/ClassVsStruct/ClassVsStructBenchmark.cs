@@ -36,7 +36,7 @@ namespace Alis.Benchmark.ClassVsStruct
     /// <summary>
     ///     The class vs struct benchmark class
     /// </summary>
-    [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [ShortRunJob, MemoryDiagnoser(false), Config(typeof(CustomConfig))]
     public class ClassVsStructBenchmark
     {
         /// <summary>

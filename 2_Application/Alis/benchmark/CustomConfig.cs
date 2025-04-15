@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Setup.cs
+//  File:CustomConfig.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,34 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
-using BenchmarkDotNet.Attributes;
+using System;
+using Alis.Benchmark.CustomEcs;
+using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Exporters;
+using BenchmarkDotNet.Exporters.Csv;
+using BenchmarkDotNet.Loggers;
 
-namespace Alis.Benchmark.CustomEcs
+namespace Alis.Benchmark
 {
-    /// <summary>
-    ///     The alis ecs benchmark class
-    /// </summary>
-    [ShortRunJob, MemoryDiagnoser(false), Config(typeof(CustomConfig))]
-    public partial class AlisEcsBenchmark
+    internal class CustomConfig : ManualConfig
     {
         /// <summary>
-        ///     Gets or sets the value of the entity count
+        ///     Initializes a new instance of the <see cref="CustomConfig" /> class
         /// </summary>
-        [Params(1_000_000)]
-        public int EntityCount { get; set; }
-
-
-        /// <summary>
-        ///     Setup this instance
-        /// </summary>
-        [IterationSetup]
-        public void Setup()
+        public CustomConfig()
         {
-            SetupAlis();
-            SetupFrent();
-        }
+            Options |= ConfigOptions.DisableLogFile;
 
-       
-       
+            // Especifica la carpeta de salida
+            string outputDirectory = $"../../../../Results/{nameof(AlisEcsBenchmark)}/{DateTime.Now:yyyy-MM-dd_HH-mm-ss}/";
+
+            // Configura la ruta de los artefactos
+            ArtifactsPath = outputDirectory;
+
+            // Desactiva la generación de archivos de log, pero mantiene la consola
+            AddLogger(ConsoleLogger.Default); // Muestra solo en consola sin guardar logs en ficheros
+
+            // Agrega los exportadores
+            AddExporter(MarkdownExporter.GitHub);
+            AddExporter(CsvExporter.Default);
+        }
     }
 }

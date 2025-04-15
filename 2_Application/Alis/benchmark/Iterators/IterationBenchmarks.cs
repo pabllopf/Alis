@@ -39,7 +39,7 @@ namespace Alis.Benchmark.Iterators
     /// <summary>
     ///     The iteration benchmarks class
     /// </summary>
-    [MemoryDiagnoser(false), ShortRunJob, Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [ShortRunJob, MemoryDiagnoser(false), Config(typeof(CustomConfig))]
     public class IterationBenchmarks
     {
         /// <summary>
