@@ -20,6 +20,9 @@
             linux-x64; linux-musl-x64; linux-arm; linux-arm64; linux-musl-arm; linux-musl-arm64;
             osx-x64;osx-arm64;
         </RuntimeIdentifiers>
+        
+        <RuntimeIdentifier>osx-arm64</RuntimeIdentifier>
+        <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
 
 

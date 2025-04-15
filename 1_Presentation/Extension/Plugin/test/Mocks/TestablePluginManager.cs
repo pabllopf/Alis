@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System.Scope;
+using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Extension.Plugin.Test.Mocks
 {

@@ -34,16 +34,8 @@ using Alis.Builder.Core.Ecs.System.Setting.Graphic;
 using Alis.Builder.Core.Ecs.System.Setting.Input;
 using Alis.Builder.Core.Ecs.System.Setting.Network;
 using Alis.Builder.Core.Ecs.System.Setting.Physic;
-using Alis.Builder.Core.Ecs.System.Setting.Scene;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Ecs.System.Configuration.Audio;
-using Alis.Core.Ecs.System.Configuration.General;
-using Alis.Core.Ecs.System.Configuration.Graphic;
-using Alis.Core.Ecs.System.Configuration.Input;
-using Alis.Core.Ecs.System.Configuration.Network;
-using Alis.Core.Ecs.System.Configuration.Physic;
-using Alis.Core.Ecs.System.Configuration.Scene;
 
 namespace Alis.Builder.Core.Ecs.System.Setting
 {
@@ -51,7 +43,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
     ///     Setting builder
     /// </summary>
     public class SettingsBuilder :
-        IBuild<Alis.Core.Ecs.System.Configuration.Setting>,
+        IBuild<Alis.Core.Ecs.Systems.Configuration.Setting>,
         IAudio<SettingsBuilder, Action<AudioSettingBuilder>>,
         IGeneral<SettingsBuilder, Action<GeneralSettingBuilder>>,
         IGraphic<SettingsBuilder, Action<GraphicSettingBuilder>>,
@@ -62,13 +54,13 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         /// <summary>
         ///     The setting base
         /// </summary>
-        private readonly Alis.Core.Ecs.System.Configuration.Setting settingBase = new Alis.Core.Ecs.System.Configuration.Setting();
+        private readonly Alis.Core.Ecs.Systems.Configuration.Setting settingBase = new Alis.Core.Ecs.Systems.Configuration.Setting();
         
         /// <summary>
         ///     Build setting
         /// </summary>
         /// <returns></returns>
-        public Alis.Core.Ecs.System.Configuration.Setting Build() => settingBase;
+        public Alis.Core.Ecs.Systems.Configuration.Setting Build() => settingBase;
 
         /// <summary>
         ///     Generals the value
@@ -145,19 +137,6 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             AudioSettingBuilder audioSettingBuilder = new AudioSettingBuilder();
             value(audioSettingBuilder);
             settingBase.Audio = audioSettingBuilder.Build();
-            return this;
-        }
-
-        /// <summary>
-        ///     Scenes the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The settings builder</returns>
-        public SettingsBuilder Scene(Action<SceneSettingBuilder> value)
-        {
-            SceneSettingBuilder sceneSettingBuilder = new SceneSettingBuilder();
-            value(sceneSettingBuilder);
-            settingBase.Scene = sceneSettingBuilder.Build();
             return this;
         }
     }

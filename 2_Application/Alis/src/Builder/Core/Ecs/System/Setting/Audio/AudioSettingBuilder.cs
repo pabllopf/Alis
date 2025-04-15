@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.System.Configuration.Audio;
+using Alis.Core.Ecs.Systems.Configuration.Audio;
 
 namespace Alis.Builder.Core.Ecs.System.Setting.Audio
 {

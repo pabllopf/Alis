@@ -32,9 +32,9 @@ using Alis.Builder.Core.Ecs.System.Manager.Scenes;
 using Alis.Builder.Core.Ecs.System.Setting;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Ecs.System;
-using Alis.Core.Ecs.System.Manager.Scene;
-using Alis.Core.Ecs.System.Scope;
+using Alis.Core.Ecs.Systems;
+using Alis.Core.Ecs.Systems.Manager.Scene;
+using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Builder.Core.Ecs.System
 {
@@ -48,7 +48,7 @@ namespace Alis.Builder.Core.Ecs.System
     {
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
-        internal readonly Context Context = new Context(new Alis.Core.Ecs.System.Configuration.Setting());
+        internal readonly Context Context = new Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
 
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.System;
+using Alis.Core.Ecs.Systems;
 
 namespace Alis.App.Engine.Sample
 {

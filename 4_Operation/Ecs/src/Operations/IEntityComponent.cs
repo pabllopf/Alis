@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.ComponentModel;
+using Alis.Core.Ecs.Comps;
 
-namespace Alis.Core.Ecs.Comps
+namespace Alis.Core.Ecs.Operations
 {
     /// <summary>
     ///     Indicates a component should be updated with itself as an argument

@@ -33,7 +33,7 @@ using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Render;
-using Alis.Core.Ecs.System;
+using Alis.Core.Ecs.Systems;
 
 namespace Alis.Sample.Desktop
 {

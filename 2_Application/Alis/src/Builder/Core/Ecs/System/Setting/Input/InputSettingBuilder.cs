@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.System.Configuration.Input;
+using Alis.Core.Ecs.Systems.Configuration.Input;
 
 namespace Alis.Builder.Core.Ecs.System.Setting.Input
 {

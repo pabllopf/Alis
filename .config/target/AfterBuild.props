@@ -1,5 +1,5 @@
 <Project>
-    <Target Name="BuildAndCopyEngineOutput" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub'))">
+    <Target Name="BuildAndCopyEngineOutput" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub')) AND $(Configuration) == 'Release'">
         <MSBuild Projects="$(SolutionDir)1_Presentation/Engine/src/Alis.App.Engine.csproj" Targets="Build" Properties="Configuration=$(Configuration)"/>
         <PropertyGroup>
             <EngineOutputDir>$(SolutionDir)1_Presentation/Engine/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/</EngineOutputDir>
@@ -27,7 +27,7 @@
         <Copy SourceFiles="@(InstallerOutputFiles)" DestinationFiles="@(InstallerOutputFiles->'$(DestinationDir)%(RecursiveDir)%(Filename)%(Extension)')"/>
     </Target>
 
-    <Target Name="CreateMacOsBundle" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub')) And '$(IsOSX)' == 'true'">
+    <Target Name="CreateMacOsBundle" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub')) And '$(IsOSX)' == 'true' AND $(Configuration) == 'Release'">
         <PropertyGroup>
             <AppBundleDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/Alis.app/</AppBundleDir>
             <ContentsDir>$(AppBundleDir)Contents/</ContentsDir>
@@ -62,7 +62,7 @@
         <Exec Command="hdiutil create -volname Alis -srcfolder $(AppBundleDir) -ov -format UDZO $(DmgFileName)"/>
     </Target>
 
-    <Target Name="CreateLinuxBundle" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub')) And '$(IsLinux)' == 'true'">
+    <Target Name="CreateLinuxBundle" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub')) And '$(IsLinux)' == 'true' AND $(Configuration) == 'Release'">
         <PropertyGroup>
             <PublishDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/</PublishDir>
             <HubOutputDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/</HubOutputDir>
@@ -91,7 +91,7 @@
         <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(ZipFileName)"/>
     </Target>
 
-    <Target Name="CreateWindowsBundle" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub')) And '$(IsWindows)' == 'true'">
+    <Target Name="CreateWindowsBundle" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub')) And '$(IsWindows)' == 'true' AND $(Configuration) == 'Release'">
         <PropertyGroup>
             <PublishDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/</PublishDir>
             <HubOutputDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/</HubOutputDir>

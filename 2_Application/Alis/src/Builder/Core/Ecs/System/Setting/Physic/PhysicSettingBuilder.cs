@@ -30,7 +30,7 @@
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.System.Configuration.Physic;
+using Alis.Core.Ecs.Systems.Configuration.Physic;
 
 namespace Alis.Builder.Core.Ecs.System.Setting.Physic
 {

@@ -36,7 +36,8 @@ using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Comps;
 using Alis.Core.Ecs.Events;
-using Alis.Core.Ecs.System.Scope;
+using Alis.Core.Ecs.Operations;
+using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Builder.Core.Ecs.Entity
 {
