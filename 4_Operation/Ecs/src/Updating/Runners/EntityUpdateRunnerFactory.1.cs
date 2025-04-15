@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EntityUpdate.cs
+//  File:e.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,48 +27,33 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using Alis.Core.Ecs.Arch;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Comps;
 using Alis.Core.Ecs.Operations;
 
 namespace Alis.Core.Ecs.Updating.Runners
 {
-    /// <summary>
-    ///     The entity update class
-    /// </summary>
-    /// <seealso cref="ComponentStorage{TComp}" />
-    internal class EntityUpdate<TComp>(int capacity) : ComponentStorage<TComp>(capacity)
+    /// <inheritdoc cref="IComponentStorageBaseFactory" />
+    public class EntityUpdateRunnerFactory<TComp, TArg> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
+        where TComp : IEntityComponent<TArg>
     {
         /// <summary>
-        ///     Runs the world
+        ///     Creates the capacity
         /// </summary>
-        /// <param name="scene">The world</param>
-        /// <param name="b">The </param>
-        internal override void Run(Scene scene, Archetype b)
-        {
-            ref EntityIdOnly entityIds = ref b.GetEntityDataReference();
-            ref TComp comp = ref GetComponentStorageDataReference();
+        /// <param name="capacity">The capacity</param>
+        /// <returns>The component storage base</returns>
+        ComponentStorageBase IComponentStorageBaseFactory.Create(int capacity) => new EntityUpdate<TComp, TArg>(capacity);
 
-            GameObject gameObject = scene.DefaultWorldGameObject;
+        /// <summary>
+        ///     Creates the stack
+        /// </summary>
+        /// <returns>The id table</returns>
+        IdTable IComponentStorageBaseFactory.CreateStack() => new IdTable<TComp>();
 
-            int size = b.EntityCount;
-            for (int i = size - 1; i >= 0; i--)
-            {
-                entityIds.SetEntity(ref gameObject);
-
-                if (comp is IEntityComponent storage)
-                {
-                    storage.Update(gameObject);
-                }
-
-                entityIds = ref Unsafe.Add(ref entityIds, 1);
-                comp = ref Unsafe.Add(ref comp, 1);
-            }
-        }
-        
+        /// <summary>
+        ///     Creates the strongly typed using the specified capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
+        /// <returns>A component storage of t comp</returns>
+        ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new EntityUpdate<TComp, TArg>(capacity);
     }
 }
