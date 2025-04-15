@@ -138,13 +138,6 @@ namespace Alis.Core.Ecs.Updating.Runners
             }
         }
 
-        /// <summary>
-        /// Multithreadeds the run using the specified countdown
-        /// </summary>
-        /// <param name="countdown">The countdown</param>
-        /// <param name="scene">The scene</param>
-        /// <param name="b">The </param>
-        internal override void MultithreadedRun(CountdownEvent countdown, Scene scene, Archetype b)
-            => throw new NotImplementedException();
+        
     }
 }

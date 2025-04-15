@@ -322,12 +322,7 @@ namespace Alis.Core.Ecs
         ///     Gets the current number of entities managed by the world.
         /// </summary>
         public int EntityCount => NextEntityID - RecycledEntityIds.Count;
-
-        /// <summary>
-        ///     The current world config.
-        /// </summary>
-        public Config CurrentConfig { get; set; }
-
+        
         /// <summary>
         ///     The default archetype
         /// </summary>
@@ -343,9 +338,8 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="uniformProvider">The initial uniform provider to be used.</param>
         /// <param name="config">The inital config to use. If not provided, <see cref="Config.Singlethreaded" /> is used.</param>
-        public Scene(IUniformProvider uniformProvider = null, Config config = null)
+        public Scene(IUniformProvider uniformProvider = null)
         {
-            CurrentConfig = config ?? Config.Singlethreaded;
             _uniformProvider = uniformProvider ?? NullUniformProvider.Instance;
             ID = _nextWorldID++;
 
@@ -380,19 +374,9 @@ namespace Alis.Core.Ecs
             EnterDisallowState();
             try
             {
-                if (CurrentConfig.MultiThreadedUpdate)
+                foreach (ArchetypeID element in _enabledArchetypes.AsSpan())
                 {
-                    foreach (ArchetypeID element in _enabledArchetypes.AsSpan())
-                    {
-                        element.Archetype(this).MultiThreadedUpdate(_sharedCountdown, this);
-                    }
-                }
-                else
-                {
-                    foreach (ArchetypeID element in _enabledArchetypes.AsSpan())
-                    {
-                        element.Archetype(this).Update(this);
-                    }
+                    element.Archetype(this).Update(this);
                 }
             }
             finally

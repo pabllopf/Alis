@@ -387,25 +387,7 @@ namespace Alis.Core.Ecs.Arch
 
             Components.UnsafeArrayIndex(compIndex).Run(scene, this);
         }
-
-        /// <summary>
-        ///     Multis the threaded update using the specified countdown
-        /// </summary>
-        /// <param name="countdown">The countdown</param>
-        /// <param name="scene">The world</param>
-        internal void MultiThreadedUpdate(CountdownEvent countdown, Scene scene)
-        {
-            if (_nextComponentIndex == 0)
-            {
-                return;
-            }
-
-            foreach (ComponentStorageBase comprunner in Components)
-            {
-                comprunner.MultithreadedRun(countdown, scene, this);
-            }
-        }
-
+        
         /// <summary>
         ///     Releases the arrays
         /// </summary>
