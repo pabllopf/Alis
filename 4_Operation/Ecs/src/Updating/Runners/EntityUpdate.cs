@@ -31,9 +31,9 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Arch;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Comps;
 using Alis.Core.Ecs.Operations;
 
 namespace Alis.Core.Ecs.Updating.Runners

@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Common.PolygonManipulation
@@ -151,7 +152,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                         }
                         else
                         {
-                            Debug.WriteLine("Skipping corrupt poly.");
+                            Logger.Log("Skipping corrupt poly.");
                         }
                     }
 

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IEntityComponent.8.cs
+//  File:IInitable.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,18 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.ComponentModel;
-using Alis.Core.Ecs.Comps;
-
-namespace Alis.Core.Ecs.Operations
+namespace Alis.Core.Aspect.Fluent
 {
     /// <summary>
-    /// The entity component interface
+    ///     Marks a component to have a <see cref="Init(IGameObject)" /> method to be called at the start of a component
+    ///     lifetime.
     /// </summary>
-    /// <seealso cref="IComponentBase"/>
-    public interface IEntityComponent<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> : IComponentBase
+    public interface IInitable
     {
-        /// <inheritdoc cref="IComponent.Update" />
-        void Update(GameObject self, ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6, ref TArg7 arg7, ref TArg8 arg8);
+        /// <summary>
+        ///     This method is called whenever a component begins its lifetime, whether by any
+        ///     <see cref="IGameObject.Add{T}(in T)" />
+        ///     method or any <see cref="Scene.Create{T}(in T)" /> method (but not <see cref="Scene.CreateMany{T}(int)" />).
+        /// </summary>
+        /// <param name="self">The <see cref="IGameObject" /> this component belongs to.</param>
+        void Init(IGameObject self);
     }
 }

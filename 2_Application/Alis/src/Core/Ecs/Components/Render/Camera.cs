@@ -28,11 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Builder.Core.Ecs.Entity;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Comps;
 
 namespace Alis.Core.Ecs.Components.Render
 {
@@ -55,38 +55,18 @@ namespace Alis.Core.Ecs.Components.Render
         ///     Inits the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(GameObject self)
+        public void Init(IGameObject self)
         {
-            Console.WriteLine($"Camera {self.EntityID} created");
+            //Console.Write($"Camera {self.EntityID} created");
         }
 
         /// <summary>
         ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(GameObject self)
+        public void Update(IGameObject self)
         {
-            Console.WriteLine($"Camera {self.EntityID} updated");
-        }
-
-        /// <summary>
-        /// Creates the builder
-        /// </summary>
-        /// <returns>The camera builder</returns>
-        public CameraBuilder CreateBuilder() => new CameraBuilder();
-        /// <summary>
-        /// Builds this instance
-        /// </summary>
-        /// <returns>The camera</returns>
-        public Camera Build() => new Camera(Position, Resolution);
-
-        /// <summary>
-        /// Configures the configure
-        /// </summary>
-        /// <param name="configure">The configure</param>
-        public void Configure(Action<Camera> configure)
-        {
-            configure(this);
+            //Console.Write($"Camera {self.EntityID} updated");
         }
     }
 }

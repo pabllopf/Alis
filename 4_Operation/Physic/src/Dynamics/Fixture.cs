@@ -29,6 +29,7 @@
 
 using System;
 using System.Diagnostics;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
@@ -403,7 +404,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 proxy.Aabb.Combine(ref aabb1, ref aabb2);
 
-                Vector2F displacement = transform2.P - transform1.P;
+                Vector2F displacement = transform2.Position - transform1.Position;
 
                 broadPhase.MoveProxy(proxy.ProxyId, ref proxy.Aabb, displacement);
             }

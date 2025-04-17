@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Arch;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Events;
@@ -70,7 +71,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The entity id
         /// </summary>
-        public int EntityID;
+        public int EntityID { get; set; }
 
         /// <summary>
         ///     The entity version

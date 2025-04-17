@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:IEntityComponent.16.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,23 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Diagnostics;
+using System.ComponentModel;
 
-namespace Alis.Extension.Multimedia.FFmpeg.Sample
+namespace Alis.Core.Aspect.Fluent
 {
     /// <summary>
-    ///     The program class
+    /// The entity component interface
     /// </summary>
-    public static class Program
+    /// <seealso cref="IComponentBase"/>
+    public interface IEntityComponent<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16> : IComponentBase
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.Write("Hello World!");
-        }
+        /// <inheritdoc cref="IComponent.Update" />
+        void Update(IGameObject self, ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6, ref TArg7 arg7, ref TArg8 arg8, ref TArg9 arg9, ref TArg10 arg10, ref TArg11 arg11, ref TArg12 arg12, ref TArg13 arg13, ref TArg14 arg14, ref TArg15 arg15, ref TArg16 arg16);
     }
 }

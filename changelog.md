@@ -2108,7 +2108,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [`ce9368a`](https://github.com/pabllopf/Alis/commit/ce9368abdc4858e2d686ec93d8033588e6965677) - delete .md files of
   compilation when is release mode *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`7baa107`](https://github.com/pabllopf/Alis/commit/7baa10791ad3188ef9ddd47bf871e55dcf7531ef) - delete all
-  Console.WriteLine *(commit by [@pabllopf](https://github.com/pabllopf))*
+  Console.Write *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`0a7466d`](https://github.com/pabllopf/Alis/commit/0a7466daed27b355aa277709e0d3da85042e2f62) - delete console print
   and include logger *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`be2b9e0`](https://github.com/pabllopf/Alis/commit/be2b9e0b3da8699c62456ba0e1328788fe9f81cf) - delete console print

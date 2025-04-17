@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IEntityComponent.6.cs
+//  File:IEntityComponent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,17 +28,15 @@
 //  --------------------------------------------------------------------------
 
 using System.ComponentModel;
-using Alis.Core.Ecs.Comps;
 
-namespace Alis.Core.Ecs.Operations
+namespace Alis.Core.Aspect.Fluent
 {
     /// <summary>
-    /// The entity component interface
+    ///     Indicates a component should be updated with itself as an argument and the specified components
     /// </summary>
-    /// <seealso cref="IComponentBase"/>
-    public interface IEntityComponent<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6> : IComponentBase
+    public interface IEntityComponent<TArg> : IComponentBase
     {
         /// <inheritdoc cref="IComponent.Update" />
-        void Update(GameObject self, ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6);
+        void Update(IGameObject self, ref TArg arg);
     }
 }

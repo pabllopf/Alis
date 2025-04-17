@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Comps;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Operations;
 
 namespace Alis.Core.Ecs.Components.Audio
@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Components.Audio
         /// Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(GameObject self)
+        public void Update(IGameObject self)
         {
         }
     }

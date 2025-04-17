@@ -29,11 +29,13 @@
 
 using System;
 using Alis.Builder.Core.Ecs.Entity;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems;
+using Alis.Core.Physic.Common;
 
 namespace Alis.Sample.Desktop
 {
@@ -70,7 +72,8 @@ namespace Alis.Sample.Desktop
                     .Input(inputSetting => inputSetting
                         .MouseSensitivity(0.1f))
                     .Network(networkSettings => networkSettings
-                        .Ip("localhost")))
+                        .Ip("localhost"))
+                )
                 .World(world => world
                     .Add<Scene>(scene => scene
                         .Add<GameObject>(gameObject => gameObject
@@ -80,6 +83,11 @@ namespace Alis.Sample.Desktop
                             )
                         )
                         .Add<GameObject>(gameObject => gameObject
+                            .Transform(transform => transform
+                                .Position(-6, -2)
+                                .Rotation(0)
+                                .Scale(0.30f, 0.30f)
+                            )
                             .WithComponent<PlayerMovement>()
                             .WithComponent<Sprite>(sprite => sprite
                                 .SetTexture("app.bmp")

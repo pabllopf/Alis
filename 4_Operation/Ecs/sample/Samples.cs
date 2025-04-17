@@ -29,7 +29,7 @@
 
 using System;
 using System.Threading;
-using Alis.Core.Ecs.Comps;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Operations;
 using Alis.Core.Ecs.Sample.Components;
 
@@ -228,7 +228,7 @@ namespace Alis.Core.Ecs.Sample
             /// Inits the self
             /// </summary>
             /// <param name="self">The self</param>
-            public void Init(GameObject self)
+            public void Init(IGameObject self)
             {
                 Console.WriteLine("Init");
             }
@@ -237,7 +237,7 @@ namespace Alis.Core.Ecs.Sample
             /// Updates the self
             /// </summary>
             /// <param name="self">The self</param>
-            public void Update(GameObject self)
+            public void Update(IGameObject self)
             {
                 self.Get<Position>().X += DX;
                 self.Get<Position>().Y += DY;
@@ -258,7 +258,7 @@ namespace Alis.Core.Ecs.Sample
             /// Updates the self
             /// </summary>
             /// <param name="self">The self</param>
-            public void Update(GameObject self)
+            public void Update(IGameObject self)
             {
                 Position pos = self.Get<Position>();
                 Console.SetCursorPosition(pos.X, pos.Y);
@@ -289,8 +289,8 @@ namespace Alis.Core.Ecs.Sample
         /// <summary>
         ///     Updates the entity
         /// </summary>
-        /// <param name="gameObject">The entity</param>
-        public void Update(GameObject gameObject)
+        /// <param name="IGameObject">The entity</param>
+        public void Update(IGameObject gameObject)
         {
             Console.WriteLine(gameObject.Has<Vel>() ? "I have velocity!" : "No velocity here!");
         }
@@ -302,7 +302,7 @@ namespace Alis.Core.Ecs.Sample
         /// Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(GameObject self)
+        public void Update(IGameObject self)
         {
             Console.WriteLine("entity update:" + self.EntityID);
         }
@@ -311,7 +311,7 @@ namespace Alis.Core.Ecs.Sample
         /// Inits the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(GameObject self)
+        public void Init(IGameObject self)
         {
             Console.WriteLine("entiti init vel: " + self.EntityID);
         }
@@ -326,7 +326,7 @@ namespace Alis.Core.Ecs.Sample
         /// Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(GameObject self)
+        public void Update(IGameObject self)
         {
             Console.ForegroundColor = Color;
             Console.Write(self.Get<string>());

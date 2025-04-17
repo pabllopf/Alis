@@ -30,8 +30,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory.Exceptions;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Common
 {

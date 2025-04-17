@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 
 namespace Alis.Core.Graphic.Sample
 {
@@ -42,13 +43,13 @@ namespace Alis.Core.Graphic.Sample
         /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
-            Console.WriteLine("Enter the number of the sample you want to run:");
-            Console.WriteLine("1. Triangle Sample");
-            Console.WriteLine("2. Cube Sample");
-            Console.WriteLine("3. Texture Sample");
-            Console.WriteLine("4. Rotate 3D Object Sample");
-            Console.WriteLine("5. Load BMP Image");
-            Console.WriteLine("6. Render a square unfilled");
+            Console.Write("Enter the number of the sample you want to run:");
+            Console.Write("1. Triangle Sample");
+            Console.Write("2. Cube Sample");
+            Console.Write("3. Texture Sample");
+            Console.Write("4. Rotate 3D Object Sample");
+            Console.Write("5. Load BMP Image");
+            Console.Write("6. Render a square unfilled");
             int sampleNumber = Convert.ToInt32(Console.ReadLine());
 
             switch (sampleNumber)

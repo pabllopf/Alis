@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 
@@ -261,7 +262,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _localAxisC = prismatic.LocalXAxis;
 
                 Vector2F pC = _localAnchorC;
-                Vector2F pA = Complex.Divide(Complex.Multiply(ref _localAnchorA, ref xfA.Q) + (xfA.P - xfC.P), ref xfC.Q);
+                Vector2F pA = Complex.Divide(Complex.Multiply(ref _localAnchorA, ref xfA.Rotation) + (xfA.Position - xfC.Position), ref xfC.Rotation);
                 coordinateA = Vector2F.Dot(pA - pC, _localAxisC);
             }
 
@@ -293,7 +294,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _localAxisD = prismatic.LocalXAxis;
 
                 Vector2F pD = _localAnchorD;
-                Vector2F pB = Complex.Divide(Complex.Multiply(ref _localAnchorB, ref xfB.Q) + (xfB.P - xfD.P), ref xfD.Q);
+                Vector2F pB = Complex.Divide(Complex.Multiply(ref _localAnchorB, ref xfB.Rotation) + (xfB.Position - xfD.Position), ref xfD.Rotation);
                 coordinateB = Vector2F.Dot(pB - pD, _localAxisD);
             }
 

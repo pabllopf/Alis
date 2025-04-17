@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.Comps;
 using Alis.Core.Ecs.Operations;
 
 namespace Alis.App.Engine.Sample.Assets.Scripts
@@ -42,7 +42,7 @@ namespace Alis.App.Engine.Sample.Assets.Scripts
         /// Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(GameObject self)
+        public void Update(IGameObject self)
         {
         }
     }

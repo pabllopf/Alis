@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:IDestroyable.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,23 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Diagnostics;
-
-namespace Alis.Extension.Multimedia.FFmpeg.Sample
+namespace Alis.Core.Aspect.Fluent
 {
     /// <summary>
-    ///     The program class
+    ///     Marks a component to have a <see cref="Destroy" /> method to be called at the end of a component lifetime.
     /// </summary>
-    public static class Program
+    public interface IDestroyable
     {
         /// <summary>
-        ///     Main the args
+        ///     This method is called whenever a component reaches the end of its lifetime, whether by an
+        ///     <see cref="IGameObject.Remove{T}" /> method or <see cref="IGameObject.Delete" />.
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.Write("Hello World!");
-        }
+        void Destroy();
     }
 }

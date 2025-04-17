@@ -30,11 +30,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
-using Transform = Alis.Core.Physic.Common.Transform;
+using Transform = Alis.Core.Physic.Dynamics.Transform;
 
 
 namespace Alis.Core.Physic.Collision
@@ -362,7 +363,7 @@ namespace Alis.Core.Physic.Collision
             Vector2F localNormal = new Vector2F(localTangent.Y, -localTangent.X);
             Vector2F planePoint = 0.5f * (v11 + v12);
 
-            Vector2F tangent = Complex.Multiply(ref localTangent, ref xf1.Q);
+            Vector2F tangent = Complex.Multiply(ref localTangent, ref xf1.Rotation);
 
             float normalx = tangent.Y;
             float normaly = -tangent.X;
@@ -665,7 +666,7 @@ namespace Alis.Core.Physic.Collision
             Debug.Assert((0 <= edge1) && (edge1 < poly1.Vertices.Count));
 
             // Convert normal from poly1's frame into poly2's frame.
-            Vector2F normal1 = Complex.Multiply(normals1[edge1], ref xf1To2.Q);
+            Vector2F normal1 = Complex.Multiply(normals1[edge1], ref xf1To2.Rotation);
 
             // Find support vertex on poly2 for -normal.
             int index = 0;
@@ -804,7 +805,7 @@ namespace Alis.Core.Physic.Collision
             Debug.Assert((0 <= edge1) && (edge1 < poly1.Vertices.Count));
 
             // Get the normal of the reference edge in poly2's frame.
-            Vector2F normal1 = Complex.Divide(Complex.Multiply(normals1[edge1], ref xf1.Q), ref xf2.Q);
+            Vector2F normal1 = Complex.Divide(Complex.Multiply(normals1[edge1], ref xf1.Rotation), ref xf2.Rotation);
 
 
             // Find the incident edge on poly2.
@@ -1078,7 +1079,7 @@ namespace Alis.Core.Physic.Collision
                 for (int i = 0; i < polygonB.Vertices.Count; ++i)
                 {
                     tempPolygonB.Vertices[i] = Transform.Multiply(polygonB.Vertices[i], ref xf);
-                    tempPolygonB.Normals[i] = Complex.Multiply(polygonB.Normals[i], ref xf.Q);
+                    tempPolygonB.Normals[i] = Complex.Multiply(polygonB.Normals[i], ref xf.Rotation);
                 }
 
                 radius = 2.0f * SettingEnv.PolygonRadius;

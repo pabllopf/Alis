@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IDestroyable.cs
+//  File:IEntityComponent.3.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,17 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.Comps
+using System.ComponentModel;
+
+namespace Alis.Core.Aspect.Fluent
 {
     /// <summary>
-    ///     Marks a component to have a <see cref="Destroy" /> method to be called at the end of a component lifetime.
+    /// The entity component interface
     /// </summary>
-    public interface IDestroyable
+    /// <seealso cref="IComponentBase"/>
+    public interface IEntityComponent<TArg1, TArg2, TArg3> : IComponentBase
     {
-        /// <summary>
-        ///     This method is called whenever a component reaches the end of its lifetime, whether by an
-        ///     <see cref="GameObject.Remove{T}" /> method or <see cref="GameObject.Delete" />.
-        /// </summary>
-        void Destroy();
+        /// <inheritdoc cref="IComponent.Update" />
+        void Update(IGameObject self, ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3);
     }
 }

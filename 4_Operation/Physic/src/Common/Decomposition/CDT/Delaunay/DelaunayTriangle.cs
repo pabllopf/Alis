@@ -39,6 +39,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep;
 using Alis.Core.Physic.Common.Decomposition.CDT.Util;
@@ -191,7 +192,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             }
             else
             {
-                Debug.WriteLine("Neighbor error, please report!");
+                Logger.Log("Neighbor error, please report!");
                 // throw new GeneralAlisException("Neighbor error, please report!");
             }
         }
@@ -218,7 +219,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             }
             else
             {
-                Debug.WriteLine("markNeighbor failed");
+                Logger.Log("markNeighbor failed");
             }
         }
 

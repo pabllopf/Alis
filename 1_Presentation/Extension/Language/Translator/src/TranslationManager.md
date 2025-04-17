@@ -29,7 +29,7 @@ Language english = new Language { Name = "English", Code = "EN" };
 translationManager.AddLanguage(english);
 translationManager.SetLanguage(english);
 translationManager.AddTranslation(english, "hello", "Hello");
-Console.WriteLine(translationManager.Translate("hello")); // Outputs: Hello
+Console.Write(translationManager.Translate("hello")); // Outputs: Hello
 ```
 
 In this example, a new `TranslationManager` object is created, a new `Language` object is added, the language is set, a

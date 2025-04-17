@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IInitable.cs
+//  File:IComponentBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,20 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.Comps
+namespace Alis.Core.Aspect.Fluent
 {
+    /*  ALL COMPONENT TYPES                                 |Interface|Storage
+     *  Arbitary data                                           X       X
+     *  Update Only                                             X       X
+     *  Update with N components                                X       X
+     *  Update with N components + uniform                      X       X
+     *  Update with N components + entityid                     X       X
+     *  Update with N components + uniform + entityid           X       X
+     *  Update with uniform                                     X       X
+     *  Update with entityid                                    X       X
+     *  Update with uniform + entityid                          X       X
+     */
+
     /// <summary>
-    ///     Marks a component to have a <see cref="Init(GameObject)" /> method to be called at the start of a component
-    ///     lifetime.
+    ///     Base marker component for all component interfaces
     /// </summary>
-    public interface IInitable
-    {
-        /// <summary>
-        ///     This method is called whenever a component begins its lifetime, whether by any
-        ///     <see cref="GameObject.Add{T}(in T)" />
-        ///     method or any <see cref="Scene.Create{T}(in T)" /> method (but not <see cref="Scene.CreateMany{T}(int)" />).
-        /// </summary>
-        /// <param name="self">The <see cref="GameObject" /> this component belongs to.</param>
-        void Init(GameObject self);
-    }
+    /// <remarks>
+    ///     All components with <see cref="IComponentBase" /> will be auto-registered. This makes it useful for AOT
+    ///     compilation scenarios
+    /// </remarks>
+    public interface IComponentBase;
 }

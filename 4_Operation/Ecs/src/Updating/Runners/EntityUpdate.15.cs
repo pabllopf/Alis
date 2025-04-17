@@ -30,6 +30,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Arch;
 using Alis.Core.Ecs.Operations;
 

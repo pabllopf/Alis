@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Graphic.GlfwLib;
@@ -122,7 +123,7 @@ namespace Alis.Core.Graphic.Sample
             Glfw.SwapInterval(1);
 
             // Log GLFW version
-            Console.WriteLine($"GLFW VERSION {Glfw.GetVersionString()}");
+            Console.Write($"GLFW VERSION {Glfw.GetVersionString()}");
 
             // Define the vertices for the triangle
             float[] vertices =
@@ -196,16 +197,16 @@ namespace Alis.Core.Graphic.Sample
             Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), IntPtr.Zero);
 
             // Print the OpenGL version
-            Console.WriteLine(@$"OpenGL VERSION {Gl.GlGetString(StringName.Version)}");
+            Console.Write(@$"OpenGL VERSION {Gl.GlGetString(StringName.Version)}");
 
             // Print the OpenGL vendor
-            Console.WriteLine(@$"OpenGL VENDOR {Gl.GlGetString(StringName.Vendor)}");
+            Console.Write(@$"OpenGL VENDOR {Gl.GlGetString(StringName.Vendor)}");
 
             // Print the OpenGL renderer
-            Console.WriteLine(@$"OpenGL RENDERER {Gl.GlGetString(StringName.Renderer)}");
+            Console.Write(@$"OpenGL RENDERER {Gl.GlGetString(StringName.Renderer)}");
 
             // Print the OpenGL shading language version
-            Console.WriteLine(@$"OpenGL SHADING LANGUAGE VERSION {Gl.GlGetString(StringName.ShadingLanguageVersion)}");
+            Console.Write(@$"OpenGL SHADING LANGUAGE VERSION {Gl.GlGetString(StringName.ShadingLanguageVersion)}");
 
             while (running)
             {

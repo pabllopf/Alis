@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
@@ -395,7 +396,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                             if (count == simplicies.Count)
                             {
                                 result = new List<Vertices>();
-                                Debug.WriteLine("Undefined error while building result polygon(s).");
+                                Logger.Log("Undefined error while building result polygon(s).");
                                 return PolyClipError.BrokenResult;
                             }
 
@@ -408,7 +409,7 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
                 if (output.Count < 3)
                 {
                     errVal = PolyClipError.DegeneratedOutput;
-                    Debug.WriteLine("Degenerated output polygon produced (vertices < 3).");
+                    Logger.Log("Degenerated output polygon produced (vertices < 3).");
                 }
 
                 result.Add(output);
