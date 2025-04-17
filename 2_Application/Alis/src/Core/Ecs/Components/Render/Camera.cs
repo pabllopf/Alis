@@ -57,7 +57,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
-            //Console.Write($"Camera {self.EntityID} created");
+            //Logger.Log($"Camera {self.EntityID} created");
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void Update(IGameObject self)
         {
-            //Console.Write($"Camera {self.EntityID} updated");
+            //Logger.Log($"Camera {self.EntityID} updated");
         }
     }
 }

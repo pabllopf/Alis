@@ -31,6 +31,7 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Resource;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Operations;
@@ -129,12 +130,12 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             Glfw.SwapInterval(1);
 
             // Log GLFW version
-            Console.WriteLine($"GLFW VERSION {Glfw.GetVersionString()}");
+            Logger.Log($"GLFW VERSION {Glfw.GetVersionString()}");
 
             // Set window icon (skip on macOS)
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                Console.WriteLine("Skipping window icon setting on macOS");
+                Logger.Log("Skipping window icon setting on macOS");
             }
             else
             {
@@ -242,7 +243,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// <param name="height">The height</param>
         private void FramebufferSizeCallback(Window window, int width, int height)
         {
-            Console.WriteLine($"Framebuffer Size: {width}, {height}");
+            Logger.Log($"Framebuffer Size: {width}, {height}");
             Gl.GlViewport(0, 0, width, height);
             Context.Setting.Graphic.WindowSize = new Vector2F(width, height);
         }

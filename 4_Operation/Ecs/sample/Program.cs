@@ -31,6 +31,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Ecs.Sample
 {
@@ -46,21 +47,21 @@ namespace Alis.Core.Ecs.Sample
         private static void Main(string[] args)
         {
             MethodInfo[] methods = typeof(Samples).GetMethods().Where(m => m.GetCustomAttribute<SampleAttribute>() is not null).ToArray();
-            Console.WriteLine($"Pick a sample: 0-{methods.Length + 1}");
+            Logger.Log($"Pick a sample: 0-{methods.Length + 1}");
             for (int i = 0; i < methods.Length; i++)
             {
-                Console.WriteLine($"[{i}] {methods[i].Name.Replace('_', ' ')}");
+                Logger.Log($"[{i}] {methods[i].Name.Replace('_', ' ')}");
             }
 
             int userOption;
             while (!int.TryParse(Console.ReadLine(), out userOption) || userOption > methods.Length + 1 || userOption < 0)
             {
-                Console.WriteLine("Write a valid input");
+                Logger.Log("Write a valid input");
             }
 
             methods[userOption].Invoke(null, []);
 
-            Console.WriteLine("\n\nSample Completed. Press Enter to exit");
+            Logger.Log("\n\nSample Completed. Press Enter to exit");
         }
     }
 }
