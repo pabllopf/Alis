@@ -40,7 +40,7 @@ namespace Alis.Core.Ecs.Components.Render
     /// <seealso cref="IEntityComponent"/>
     /// <seealso cref="IHasBuilder{SpriteBuilder}"/>
     /// <seealso cref="IBuild{Sprite}"/>
-    public interface ISprite : IInitable, IEntityComponent, IHasBuilder<SpriteBuilder>, IBuild<Sprite>
+    public interface ISprite
     {
     }
 }

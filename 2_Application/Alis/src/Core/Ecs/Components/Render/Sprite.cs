@@ -40,20 +40,36 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Stb;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.Components.Render
 {
     /// <summary>
     ///     The sprite
     /// </summary>
-    public struct Sprite(string nameFile, int depth) : ISprite
+    public struct Sprite(string nameFile, int depth) : ISprite, IInitable, IEntityComponent
     {
+
+        private IGameObject GameObject;
+        
         /// <summary>
         ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(GameObject self)
+        public void Init(IGameObject self)
         {
+            Logger.Log("Sprite");
+            GameObject = self;
+        }
+        
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void Update(IGameObject self)
+        {
+            Logger.Log("Sprite");
+            GameObject = self;
             if (!string.IsNullOrEmpty(NameFile))
             {
                 Path = AssetManager.Find(NameFile);
@@ -88,7 +104,7 @@ namespace Alis.Core.Ecs.Components.Render
         ///     Gets or sets the value of the path
         /// </summary>
         [JsonIgnore]
-        public string Path { get; set; }
+        private string Path { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the name file
@@ -100,38 +116,38 @@ namespace Alis.Core.Ecs.Components.Render
         ///     Gets or sets the value of the size
         /// </summary>
         [JsonPropertyName("_Size_")]
-        public Vector2F Size { get; set; }
+        private Vector2F Size { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the shader program
         /// </summary>
-        public uint ShaderProgram { get; private set; }
+        private uint ShaderProgram { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the vao
         /// </summary>
-        public uint Vao { get; private set; }
+        private uint Vao { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the vbo
         /// </summary>
-        public uint Vbo { get; private set; }
+        private uint Vbo { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the ebo
         /// </summary>
-        public uint Ebo { get; private set; }
+        private uint Ebo { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the texture
         /// </summary>
-        public uint Texture { get; private set; }
+        private uint Texture { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the flip
         /// </summary>
         [JsonPropertyName("_Flip_")]
-        public bool Flip { get; set; }
+        private bool Flip { get; set; }
 
         /// <summary>
         ///     Initializes the shaders
@@ -252,10 +268,13 @@ namespace Alis.Core.Ecs.Components.Render
         /// <summary>
         ///     Setup the buffers
         /// </summary>
+        /// <summary>
+        ///     Setup the buffers
+        /// </summary>
         private void SetupBuffers()
         {
-            int windowWidth = 800;
-            int windowHeight = 600;
+            int windowWidth = (int) 800;
+            int windowHeight = (int) 600;
 
             float scaleX = Size.X / windowWidth;
             float scaleY = Size.Y / windowHeight;
@@ -292,17 +311,11 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), new IntPtr(3 * sizeof(float)));
             Gl.EnableVertexAttribArray(1);
         }
-
-        /// <summary>
-        ///     Renders the camera position
-        /// </summary>
-        /// <param name="cameraPosition">The camera position</param>
-        /// <param name="cameraResolution">The camera resolution</param>
-        /// <param name="pixelsPerMeter">The pixels per meter</param>
+        
         public void Render(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
-            Vector2F position = new Vector2F(0, 0);
-            float spriteRotation = 0;
+            Vector2F position = GameObject.Get<Transform>().Position;
+            float spriteRotation = GameObject.Get<Transform>().Rotation.R;
 
             Gl.GlUseProgram(ShaderProgram);
             Gl.GlBindVertexArray(Vao);
@@ -322,7 +335,7 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GlUniform2F(offsetLocation, worldX, worldY);
 
             int scaleLocation = Gl.GlGetUniformLocation(ShaderProgram, "scale");
-            Gl.GlUniform2F(scaleLocation, 1, 1);
+            Gl.GlUniform2F(scaleLocation, GameObject.Get<Transform>().Scale.X, GameObject.Get<Transform>().Scale.Y);
 
             int rotationLocation = Gl.GlGetUniformLocation(ShaderProgram, "rotation");
             Gl.GlUniform1F(rotationLocation, spriteRotation);
@@ -343,39 +356,5 @@ namespace Alis.Core.Ecs.Components.Render
 
             Gl.GlDisable(EnableCap.Blend);
         }
-
-        /// <summary>
-        /// Updates this instance
-        /// </summary>
-        public void Update(IGameObject self)
-        {
-        }
-
-        /// <summary>
-        /// Builders this instance
-        /// </summary>
-        /// <returns>The sprite builder</returns>
-        public SpriteBuilder Builder() => new SpriteBuilder();
-        
-        /// <summary>
-        /// Inits the self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void Init(IGameObject self)
-        {
-            
-        }
-
-        /// <summary>
-        /// Builds this instance
-        /// </summary>
-        /// <returns>The sprite</returns>
-        public Sprite Build() => this;
-
-        /// <summary>
-        /// Creates the builder
-        /// </summary>
-        /// <returns>The sprite builder</returns>
-        public SpriteBuilder CreateBuilder() => new SpriteBuilder();
     }
 }
