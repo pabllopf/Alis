@@ -27,30 +27,94 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.Operations;
+using Alis.Core.Audio;
 
 namespace Alis.Core.Ecs.Components.Audio
 {
     /// <summary>
     /// The audio clip
     /// </summary>
-    public struct AudioClip(string nameFile, float volume, bool isMute) : IEntityComponent
+    public struct AudioClip(string nameFile = "", float volume = 100, bool isMute = false,  bool playOnAwake = false)
     {
         /// <summary>
-        /// Gets or sets the value of the name file
+        ///     The player
         /// </summary>
-        public string NameFile { get; set; } = nameFile;
+        private readonly Player player = new Player();
+        
+        /// <summary>
+        ///     Gets or sets the value of the is playing
+        /// </summary>
+        public bool IsPlaying => player.Playing;
+        
+        /// <summary>
+        ///     Gets or sets the value of the play on awake
+        /// </summary>
+        public bool PlayOnAwake { get; set; } = playOnAwake;
+ 
+        /// <summary>
+        ///     Gets or sets the value of the is mute
+        /// </summary>
+        public bool IsMute { get; set; } = isMute;
 
         /// <summary>
-        /// Gets or sets the value of the volume
+        ///     Gets or sets the value of the is looping
+        /// </summary>
+        public bool IsLooping { get; set; } 
+
+        /// <summary>
+        ///     Gets or sets the value of the volume
         /// </summary>
         public float Volume { get; set; } = volume;
 
         /// <summary>
-        /// Gets or sets the value of the is mute
+        ///     Gets or sets the value of the name file
         /// </summary>
-        public bool IsMute { get; set; } = isMute;
+        public string NameFile { get; set; } = nameFile;
+
+        /// <summary>
+        ///     Gets or sets the value of the full path audio file
+        /// </summary>
+        private string FullPathAudioFile { get; set; } = AssetManager.Find(nameFile);
+
+        /// <summary>
+        ///     Plays this instance
+        /// </summary>
+        internal void Play()
+        {
+            if (string.IsNullOrEmpty(FullPathAudioFile) && !string.IsNullOrEmpty(NameFile))
+            {
+                FullPathAudioFile = AssetManager.Find(NameFile);
+            }
+
+            if (!string.IsNullOrEmpty(FullPathAudioFile))
+            {
+                _ = player.Play(FullPathAudioFile);
+            }
+        }
+
+        /// <summary>
+        ///     Stops this instance
+        /// </summary>
+        internal void Stop()
+        {
+            if (player.Playing)
+            {
+                _ = player.Stop();
+            }
+        }
+
+        /// <summary>
+        ///     Resumes this instance
+        /// </summary>
+        internal void Resume()
+        {
+            if (!player.Playing)
+            {
+                _ = player.Resume();
+            }
+        }
 
         /// <summary>
         /// Updates the self
@@ -61,3 +125,4 @@ namespace Alis.Core.Ecs.Components.Audio
         }
     }
 }
+

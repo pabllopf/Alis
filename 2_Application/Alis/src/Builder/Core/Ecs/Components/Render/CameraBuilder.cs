@@ -2,7 +2,7 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Render;
 
-namespace Alis.Builder.Core.Ecs.Component.Render
+namespace Alis.Builder.Core.Ecs.Components.Render
 {
     /// <summary>
     /// The camera builder class

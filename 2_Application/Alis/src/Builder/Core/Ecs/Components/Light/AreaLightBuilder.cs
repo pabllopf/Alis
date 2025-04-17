@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ISprite.cs
+//  File:AreaLightBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,18 +28,20 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.Operations;
+using Alis.Core.Ecs.Components.Light;
 
-namespace Alis.Core.Ecs.Components.Render
+namespace Alis.Builder.Core.Ecs.Components.Light
 {
     /// <summary>
-    /// The sprite interface
+    ///     The area light builder class
     /// </summary>
-    /// <seealso cref="IInitable"/>
-    /// <seealso cref="IEntityComponent"/>
-    /// <seealso cref="IHasBuilder{SpriteBuilder}"/>
-    /// <seealso cref="IBuild{Sprite}"/>
-    public interface ISprite
+    public class AreaLightBuilder :
+        IBuild<AreaLight>
     {
+        /// <summary>
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The area light</returns>
+        public AreaLight Build() => new AreaLight();
     }
 }

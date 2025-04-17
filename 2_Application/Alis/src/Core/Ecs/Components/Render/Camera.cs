@@ -29,7 +29,6 @@
 
 using System;
 using System.Diagnostics;
-using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Builder.Core.Ecs.Entity;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
@@ -58,7 +57,6 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
-            Logger.Log($"Camera {self.EntityID} created");
         }
 
         /// <summary>
@@ -67,7 +65,6 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void Update(IGameObject self)
         {
-            Logger.Log($"Camera {self.EntityID} updated");
         }
     }
 }

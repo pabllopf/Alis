@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ISprite.cs
+//  File:RigidBodyBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,18 +28,20 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.Operations;
+using Alis.Core.Ecs.Components.Body;
 
-namespace Alis.Core.Ecs.Components.Render
+namespace Alis.Builder.Core.Ecs.Components.Body
 {
     /// <summary>
-    /// The sprite interface
+    ///     The rigid body builder class
     /// </summary>
-    /// <seealso cref="IInitable"/>
-    /// <seealso cref="IEntityComponent"/>
-    /// <seealso cref="IHasBuilder{SpriteBuilder}"/>
-    /// <seealso cref="IBuild{Sprite}"/>
-    public interface ISprite
+    public class RigidBodyBuilder :
+        IBuild<RigidBody>
     {
+        /// <summary>
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The rigid body</returns>
+        public RigidBody Build() => new RigidBody();
     }
 }

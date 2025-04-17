@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PointLightBuilder.cs
+//  File:SpotLightBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,18 +30,17 @@
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Components.Light;
 
-namespace Alis.Builder.Core.Ecs.Component.Light
+namespace Alis.Builder.Core.Ecs.Components.Light
 {
     /// <summary>
-    ///     The point light builder class
+    ///     The spot light builder class
     /// </summary>
-    public class PointLightBuilder :
-        IBuild<PointLight>
+    public class SpotLightBuilder : IBuild<SpotLight>
     {
         /// <summary>
         ///     Builds this instance
         /// </summary>
-        /// <returns>The point light</returns>
-        public PointLight Build() => new PointLight();
+        /// <returns>The spot light</returns>
+        public SpotLight Build() => new SpotLight();
     }
 }

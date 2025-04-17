@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DirectionalLightBuilder.cs
+//  File:AudioSourceConfig.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.Components.Light;
+using Alis.Builder.Core.Ecs.Entity;
 
-namespace Alis.Builder.Core.Ecs.Component.Light
+namespace Alis.Builder.Core.Ecs.Components.Audio
 {
-    /// <summary>
-    ///     The directional light builder class
-    /// </summary>
-    public class DirectionalLightBuilder :
-        IBuild<DirectionalLight>
-    {
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The directional light builder</returns>
-        public DirectionalLight Build() => new DirectionalLight();
-    }
+    public delegate void AudioSourceConfig<T>(AudioSourceBuilder builder) where T : IAudioSource;
 }

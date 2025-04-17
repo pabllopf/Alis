@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ISprite.cs
+//  File:IBoxCollider.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,19 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.Operations;
-
-namespace Alis.Core.Ecs.Components.Render
+namespace Alis.Core.Ecs.Components.Collider
 {
-    /// <summary>
-    /// The sprite interface
-    /// </summary>
-    /// <seealso cref="IInitable"/>
-    /// <seealso cref="IEntityComponent"/>
-    /// <seealso cref="IHasBuilder{SpriteBuilder}"/>
-    /// <seealso cref="IBuild{Sprite}"/>
-    public interface ISprite
+    public interface IBoxCollider
     {
     }
 }

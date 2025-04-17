@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AreaLightBuilder.cs
+//  File:FrameBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,20 +28,38 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.Components.Light;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Ecs.Components.Render;
 
-namespace Alis.Builder.Core.Ecs.Component.Light
+namespace Alis.Builder.Core.Ecs.Components.Render
 {
     /// <summary>
-    ///     The area light builder class
+    ///     The frame builder class
     /// </summary>
-    public class AreaLightBuilder :
-        IBuild<AreaLight>
+    public class FrameBuilder :
+        IBuild<Frame>,
+        IFilePath<FrameBuilder, string>
     {
+        /// <summary>
+        ///     The frame
+        /// </summary>
+        private Frame frame;
+
         /// <summary>
         ///     Builds this instance
         /// </summary>
-        /// <returns>The area light</returns>
-        public AreaLight Build() => new AreaLight();
+        /// <returns>The frame</returns>
+        public Frame Build() => frame;
+
+        /// <summary>
+        ///     Files the path using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The frame builder</returns>
+        public FrameBuilder FilePath(string value)
+        {
+            frame.NameFile = value;
+            return this;
+        }
     }
 }

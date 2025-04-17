@@ -49,18 +49,18 @@ namespace Alis.Core.Ecs.Sample
         ///     Updates the component
         /// </summary>
         [Sample]
-        public static void Update_Component()
+        public static void Update_Component_Console()
         {
-            using Scene scene = new Scene();
+            using Scene world = new Scene();
 
             //Create three entities
             for (int i = 0; i < 3; i++)
             {
-                scene.Create<ConsoleText>(new(ConsoleColor.Blue));
+                world.Create<string, ConsoleText>("Hello, World!", new ConsoleText(ConsoleColor.Blue));
             }
 
             //Update the three entities
-            scene.Update();
+            world.Update();
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Alis.Core.Ecs.Sample
             //Create three entities
             for (int i = 0; i < 100_000; i++)
             {
-                scene.Create<ConsoleText>(new(ConsoleColor.Blue));
+                scene.Create(new ConsoleText(ConsoleColor.Blue));
             }
         }
 
@@ -178,7 +178,7 @@ namespace Alis.Core.Ecs.Sample
             Scene scene = new Scene();
 
             //create
-            GameObject gameObject = scene.Create<Position, Velocity, Character>(new(4, 6), new(2, 0), new('@'));
+            GameObject gameObject = scene.Create(new Position(4, 6), new Velocity(2, 0), new Character('@'));
 
             //simulate 20 frames
             for (int i = 0; i < 20; i++)
@@ -329,7 +329,7 @@ namespace Alis.Core.Ecs.Sample
         public void Update(IGameObject self)
         {
             Console.ForegroundColor = Color;
-            Console.Write(self.Get<string>());
+            Console.WriteLine(self.Get<string>());
         }
     }
 

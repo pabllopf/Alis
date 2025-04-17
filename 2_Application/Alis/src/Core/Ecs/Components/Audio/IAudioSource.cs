@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TempGameObject.cs
+//  File:IAudioSource.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,23 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Math;
-using Alis.Core.Ecs.Components;
-using Alis.Core.Ecs.Operations;
-using Alis.Core.Physic.Dynamics;
-
 namespace Alis.Builder.Core.Ecs.Entity
 {
-    public class TempGameObject
+    public interface IAudioSource
     {
-        /// <summary>
-        ///     Stores the components as a dictionary
-        /// </summary>
-        public readonly Dictionary<Type, IEntityComponent> components = new Dictionary<Type, IEntityComponent>();
-       
-        public Transform transform = new Transform();
     }
 }

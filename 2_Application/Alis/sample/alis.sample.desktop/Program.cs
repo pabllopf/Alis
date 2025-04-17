@@ -79,7 +79,7 @@ namespace Alis.Sample.Desktop
                         .Add<GameObject>(gameObject => gameObject
                             .WithComponent<Camera>(camera => camera
                                 .Position(0, 0)
-                                .Resolution(640, 480)
+                                .Resolution(800, 480)
                             )
                         )
                         .Add<GameObject>(gameObject => gameObject

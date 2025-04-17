@@ -211,30 +211,29 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
 
             // Clear the screen
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
-
-            Ecs.Scene scene = Context.SceneManager.Scene;
-
-            foreach (ChunkTuple<Camera> chunk in scene.Query<With<Camera>>().EnumerateChunks<Camera>())
-            {
-                Span<Camera> cameras = chunk.Span;
-                foreach (Camera camera in cameras)
-                {
-                    foreach (ChunkTuple<Sprite> chunkSprites in scene.Query<With<Sprite>>().EnumerateChunks<Sprite>())
-                    {
-                        Span<Sprite> sprites = chunkSprites.Span;
-                        foreach (Sprite sprite in sprites)
-                        {
-                            // Render sprite with OpenGL:
-                            sprite.Render(camera.Position, camera.Resolution, pixelsPerMeter);
-                        }
-                    }
-                }
-            }
-
+            
+           EntityQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.Scene
+               .Query<With<Sprite>>()
+               .EnumerateWithEntities();
+           
+           foreach (RefTuple<Camera> camera in Context.SceneManager.Scene
+                       .Query<With<Camera>>()
+                       .Enumerate<Camera>())
+           {
+               foreach (GameObject spriteGameobject in spriteGameObjects)
+               {
+                   if (spriteGameobject.Has<Sprite>())
+                   {
+                       ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
+                       sprite.Render(spriteGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
+                   }
+               }
+           }
+            
             // Swap the buffers to display the triangle
             Glfw.SwapBuffers(Window);
         }
-
+        
         /// <summary>
         ///     Framebuffers the size callback using the specified window
         /// </summary>

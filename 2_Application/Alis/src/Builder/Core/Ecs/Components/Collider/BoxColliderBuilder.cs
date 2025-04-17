@@ -32,7 +32,7 @@ using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Builder.Core.Ecs.Component.Collider
+namespace Alis.Builder.Core.Ecs.Components.Collider
 {
     /// <summary>
     ///     The box collider builder class

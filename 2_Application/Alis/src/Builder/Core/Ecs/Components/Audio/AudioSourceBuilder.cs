@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CircleColliderBuilder.cs
+//  File:AudioSourceBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.Components.Collider;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Ecs.Components.Audio;
 
-namespace Alis.Builder.Core.Ecs.Component.Collider
+namespace Alis.Builder.Core.Ecs.Components.Audio
 {
     /// <summary>
-    ///     The circle collider builder class
+    ///     The audio source builder class
     /// </summary>
-    public class CircleColliderBuilder :
-        IBuild<CircleCollider>
+    /// <seealso cref="IBuild{AudioSource}" />
+    public class AudioSourceBuilder :
+        IBuild<AudioSource>,
+        ISetAudioClip<AudioSourceBuilder, Action<AudioClipBuilder>>
     {
+        private AudioClip audioClip = new AudioClip();
+
         /// <summary>
         ///     Builds this instance
         /// </summary>
-        /// <returns>The circle collider</returns>
-        public CircleCollider Build() => new CircleCollider();
+        /// <returns>The audio source</returns>
+        public AudioSource Build() => new AudioSource(audioClip);
+        
+        public AudioSourceBuilder SetAudioClip(Action<AudioClipBuilder> config)
+        {
+            AudioClipBuilder audioClipBuilder = new AudioClipBuilder();
+            config(audioClipBuilder);
+            AudioClip build = audioClipBuilder.Build();
+            this.audioClip = build;
+            return this;
+        }
     }
 }
