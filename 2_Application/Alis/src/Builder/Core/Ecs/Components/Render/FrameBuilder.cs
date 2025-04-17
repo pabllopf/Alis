@@ -56,7 +56,7 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The frame builder</returns>
-        public FrameBuilder FilePath(string value)
+        public FrameBuilder File(string value)
         {
             frame.NameFile = value;
             return this;

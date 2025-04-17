@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioSourceBuilder.cs
+//  File:AudioClipBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Components.Audio;
@@ -35,27 +34,73 @@ using Alis.Core.Ecs.Components.Audio;
 namespace Alis.Builder.Core.Ecs.Components.Audio
 {
     /// <summary>
-    ///     The audio source builder class
+    ///     The audio clip builder class
     /// </summary>
-    /// <seealso cref="IBuild{AudioSource}" />
+    /// <seealso cref="IBuild{AudioClip}" />
     public class AudioSourceBuilder :
         IBuild<AudioSource>,
-        ISetAudioClip<AudioSourceBuilder, Action<AudioClipBuilder>>
+        IFilePath<AudioSourceBuilder, string>,
+        IVolume<AudioSourceBuilder, float>,
+        IMute<AudioSourceBuilder, bool>
     {
-        private AudioClip audioClip = new AudioClip();
+        private string nameFile = string.Empty;
+        
+        private bool isMute = false;
+        
+        private float volume = 100;
 
+        private bool playOnAwake = false;
+
+        private bool loop = false;
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
-        /// <returns>The audio source</returns>
-        public AudioSource Build() => new AudioSource(audioClip);
-        
-        public AudioSourceBuilder SetAudioClip(Action<AudioClipBuilder> config)
+        /// <returns>The audio clip</returns>
+        public AudioSource Build() => new AudioSource(nameFile, volume, isMute, playOnAwake, loop);
+
+        /// <summary>
+        ///     Files the path using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The audio clip builder</returns>
+        public AudioSourceBuilder File(string value)
         {
-            AudioClipBuilder audioClipBuilder = new AudioClipBuilder();
-            config(audioClipBuilder);
-            AudioClip build = audioClipBuilder.Build();
-            this.audioClip = build;
+            nameFile = value;
+            return this;
+        }
+
+        public AudioSourceBuilder PlayOnAwake(bool value)
+        {
+            playOnAwake = value;
+            return this;
+        }
+
+        public AudioSourceBuilder Loop(bool value)
+        {
+            loop = value;
+            return this;
+        }
+
+        /// <summary>
+        ///     Mutes the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The audio clip builder</returns>
+        public AudioSourceBuilder Mute(bool value)
+        {
+            isMute = value;
+            return this;
+        }
+
+        /// <summary>
+        ///     Volumes the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The audio clip builder</returns>
+        public AudioSourceBuilder Volume(float value)
+        {
+            volume = value;
             return this;
         }
     }
