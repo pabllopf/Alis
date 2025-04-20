@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioSource.cs
+//  File:AudioClip.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,65 +29,99 @@
 
 using System.Threading;
 using Alis.Builder.Core.Ecs.Entity;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Audio;
 
 namespace Alis.Core.Ecs.Components.Audio
 {
-    public struct AudioSource(AudioClip audioClip) : IAudioSource, IInitable, IEntityComponent
+    /// <summary>
+    /// The audio clip
+    /// </summary>
+    public struct AudioSource(string nameFile = "", float volume = 100, bool isMute = false, bool playOnAwake = false, bool loop = false) : IAudioSource, IInitable, IEntityComponent
     {
-        public AudioClip AudioClip { get; set; } = audioClip;
+        /// <summary>
+        ///     The player
+        /// </summary>
+        private readonly Player player = new Player();
         
         /// <summary>
-        ///     Gets the value of the is playing
+        ///     Gets or sets the value of the is playing
         /// </summary>
-        public bool IsPlaying => AudioClip.IsPlaying;
+        public bool IsPlaying => player.Playing;
         
         /// <summary>
-        ///     Gets or sets the value of the mute
+        ///     Gets or sets the value of the play on awake
         /// </summary>
-        public bool Mute
-        {
-            get => AudioClip.IsMute;
-            set => AudioClip = AudioClip with {IsMute = value};
-        }
+        public bool PlayOnAwake { get; set; } = playOnAwake;
+ 
+        /// <summary>
+        ///     Gets or sets the value of the is mute
+        /// </summary>
+        public bool IsMute { get; set; } = isMute;
 
         /// <summary>
-        ///     Gets or sets the value of the loop
+        ///     Gets or sets the value of the is looping
         /// </summary>
-        public bool Loop
-        {
-            get => AudioClip.IsLooping;
-            set => AudioClip = AudioClip with {IsLooping = value};
-        }
+        public bool IsLooping { get; set; } 
 
         /// <summary>
         ///     Gets or sets the value of the volume
         /// </summary>
-        public float Volume
-        {
-            get => AudioClip.Volume;
-            set => AudioClip = AudioClip with {Volume = value};
-        }
-        
+        public float Volume { get; set; } = volume;
+
+        /// <summary>
+        ///     Gets or sets the value of the name file
+        /// </summary>
+        public string NameFile { get; set; } = nameFile;
+
+        /// <summary>
+        ///     Gets or sets the value of the full path audio file
+        /// </summary>
+        private string FullPathAudioFile { get; set; } = AssetManager.Find(nameFile);
+
         /// <summary>
         ///     Plays this instance
         /// </summary>
-        public void Play() => AudioClip.Play();
+        internal void Play()
+        {
+            if (string.IsNullOrEmpty(FullPathAudioFile) && !string.IsNullOrEmpty(NameFile))
+            {
+                FullPathAudioFile = AssetManager.Find(NameFile);
+            }
+
+            if (!string.IsNullOrEmpty(FullPathAudioFile))
+            {
+                _ = player.Play(FullPathAudioFile);
+            }
+        }
 
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        public void Stop() => AudioClip.Stop();
+        internal void Stop()
+        {
+            if (player.Playing)
+            {
+                _ = player.Stop();
+            }
+        }
 
         /// <summary>
         ///     Resumes this instance
         /// </summary>
-        public void Resume() => AudioClip.Resume();
-        
+        internal void Resume()
+        {
+            if (!player.Playing)
+            {
+                _ = player.Resume();
+            }
+        }
+
         public void Init(IGameObject self)
         {
             ThreadPool.SetMinThreads(200, 200);
-            if (AudioClip.PlayOnAwake)
+            if (PlayOnAwake)
             {
                 Play();
             }
@@ -95,10 +129,11 @@ namespace Alis.Core.Ecs.Components.Audio
 
         public void Update(IGameObject self)
         {
-            if (AudioClip.IsLooping && !IsPlaying)
+            if (IsLooping && !IsPlaying)
             {
                 Play();
             }
         }
     }
 }
+

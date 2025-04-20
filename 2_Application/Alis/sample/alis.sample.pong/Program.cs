@@ -72,22 +72,22 @@ namespace Alis.Sample.Pong
                                 .Resolution(1024, 640)
                                 .Position(0, 0)
                             )
-                            .Build())
+                        )
                         .Add<GameObject>(soundTrack => soundTrack
                             .WithComponent<AudioSource>(audioSource => audioSource
-                                .SetAudioClip(audioClip => audioClip
-                                    .FilePath("soundtrack.wav")
-                                    .PlayOnAwake(true)
-                                    .Volume(100.0f)
-                                    .Build())
-                                .Build())
-                            .Build())
+                                .File("soundtrack.wav")
+                                .Loop(true)
+                                .Mute(false)
+                                .PlayOnAwake(true)
+                                .Volume(100.0f)
+                            )
+                        )
                         .Add<GameObject>(player => player
                             .Transform(transform => transform
                                 .Position(-15, 0)
                                 .Scale(1, 1)
                                 .Rotation(0)
-                                .Build())
+                            )
                             .WithComponent<BoxCollider>(boxCollider => boxCollider
                                 .IsActive(true)
                                 .BodyType(BodyType.Kinematic)
@@ -100,7 +100,8 @@ namespace Alis.Sample.Pong
                                 .Restitution(1f)
                                 .Friction(0f)
                                 .FixedRotation(true)
-                                .IgnoreGravity(true))
+                                .IgnoreGravity(true)
+                            )
                             .WithComponent(new PlayerController(1))
                         )
                         .Add<GameObject>(player => player
@@ -144,8 +145,8 @@ namespace Alis.Sample.Pong
                                 .Friction(0f)
                                 .FixedRotation(true)
                                 .IgnoreGravity(true)
-                                .Build())
-                            .Build())
+                               )
+                           )
                         .Add<GameObject>(downWall => downWall
                             .Transform(transform => transform
                                 .Position(0, -10)
@@ -201,8 +202,8 @@ namespace Alis.Sample.Pong
                                 .Friction(0.1f)
                                 .FixedRotation(true)
                                 .IgnoreGravity(true)
-                                .Build())
-                            .Build())
+                               )
+                           )
                         .Add<GameObject>(rightWall => rightWall
                             .Transform(transform => transform
                                 .Position(16, 0)

@@ -46,14 +46,17 @@ namespace Alis.Core.Ecs.Components.Render
     /// <summary>
     ///     The sprite
     /// </summary>
-    public struct Sprite(string nameFile, int depth) : ISprite, IInitable, IEntityComponent
+    public record struct Sprite(string NameFile, int Depth) : ISprite, IInitable, IEntityComponent
     {
+        private IGameObject gameObject;
+        
         /// <summary>
         ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
+            gameObject = self;
         }
         
         /// <summary>
@@ -62,6 +65,10 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void Update(IGameObject self)
         {
+            if (gameObject != null)
+            {
+                Console.WriteLine($"Sprite updated successfully for {gameObject.Get<Transform>().Position}");
+            }
         }
 
         /// <summary>
@@ -83,7 +90,7 @@ namespace Alis.Core.Ecs.Components.Render
         ///     Gets or sets the value of the depth
         /// </summary>
         [JsonPropertyName("_Depth_")]
-        public int Depth { get; set; } = depth;
+        public int Depth { get; set; } = Depth;
 
         /// <summary>
         ///     Gets or sets the value of the path
@@ -95,7 +102,7 @@ namespace Alis.Core.Ecs.Components.Render
         ///     Gets or sets the value of the name file
         /// </summary>
         [JsonPropertyName("_NameFile_")]
-        public string NameFile { get; set; } = nameFile;
+        public string NameFile { get; set; } = NameFile;
 
         /// <summary>
         ///     Gets or sets the value of the size

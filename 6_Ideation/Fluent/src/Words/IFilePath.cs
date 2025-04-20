@@ -39,6 +39,6 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        TBuilder FilePath(TArgument value);
+        TBuilder File(TArgument value);
     }
 }
