@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FrameBuilder.cs
+//  File:DirectionalLightBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,38 +28,20 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Ecs.Components.Render;
+using Alis.Core.Ecs.Components.Light;
 
-namespace Alis.Builder.Core.Ecs.Component.Render
+namespace Alis.Builder.Core.Ecs.Components.Light
 {
     /// <summary>
-    ///     The frame builder class
+    ///     The directional light builder class
     /// </summary>
-    public class FrameBuilder :
-        IBuild<Frame>,
-        IFilePath<FrameBuilder, string>
+    public class DirectionalLightBuilder :
+        IBuild<DirectionalLight>
     {
-        /// <summary>
-        ///     The frame
-        /// </summary>
-        private Frame frame;
-
         /// <summary>
         ///     Builds this instance
         /// </summary>
-        /// <returns>The frame</returns>
-        public Frame Build() => frame;
-
-        /// <summary>
-        ///     Files the path using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The frame builder</returns>
-        public FrameBuilder FilePath(string value)
-        {
-            frame.NameFile = value;
-            return this;
-        }
+        /// <returns>The directional light builder</returns>
+        public DirectionalLight Build() => new DirectionalLight();
     }
 }

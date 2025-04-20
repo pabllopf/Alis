@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SpriteBuilder.cs
+//  File:CanvasBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,51 +28,25 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Ecs.Components.Render;
+using Alis.Core.Ecs.Components.Ui;
 
-namespace Alis.Builder.Core.Ecs.Component.Render
+namespace Alis.Builder.Core.Ecs.Components.Ui
 {
     /// <summary>
-    ///     The sprite builder class
+    ///     The canvas builder class
     /// </summary>
-    /// <seealso cref="IBuild{Sprite}" />
-    public class SpriteBuilder :
-        IBuild<Sprite>,
-        IDepth<SpriteBuilder, int>,
-        ISetTexture<SpriteBuilder, string>
+    /// <seealso cref="IBuild{Canvas}" />
+    public class CanvasBuilder : IBuild<Canvas>
     {
         /// <summary>
-        ///     The sprite
+        ///     The canvas
         /// </summary>
-        private Sprite sprite;
+        private readonly Canvas canvas = new Canvas();
 
         /// <summary>
         ///     Builds this instance
         /// </summary>
-        /// <returns>The sprite</returns>
-        public Sprite Build() => sprite;
-
-        /// <summary>
-        ///     Depths the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The sprite builder</returns>
-        public SpriteBuilder Depth(int value)
-        {
-            sprite.Depth = value;
-            return this;
-        }
-
-        /// <summary>
-        ///     Textures the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The sprite builder</returns>
-        public SpriteBuilder SetTexture(string value)
-        {
-            sprite.NameFile = value;
-            return this;
-        }
+        /// <returns>The canvas</returns>
+        public Canvas Build() => canvas;
     }
 }

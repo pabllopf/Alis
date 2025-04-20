@@ -32,7 +32,7 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Components.Render;
 
-namespace Alis.Builder.Core.Ecs.Component.Render
+namespace Alis.Builder.Core.Ecs.Components.Render
 {
     /// <summary>
     ///     The animation builder class

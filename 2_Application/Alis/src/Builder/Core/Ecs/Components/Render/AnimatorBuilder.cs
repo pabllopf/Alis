@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RigidBodyBuilder.cs
+//  File:AnimatorBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.Components.Body;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Ecs.Components.Render;
 
-namespace Alis.Builder.Core.Ecs.Component.Body
+namespace Alis.Builder.Core.Ecs.Components.Render
 {
     /// <summary>
-    ///     The rigid body builder class
+    ///     The animator builder class
     /// </summary>
-    public class RigidBodyBuilder :
-        IBuild<RigidBody>
+    public class AnimatorBuilder :
+        IBuild<Animator>,
+        IAddAnimation<AnimatorBuilder, Func<AnimationBuilder, Animation>>
     {
+        /// <summary>
+        ///     The animator
+        /// </summary>
+        private readonly Animator animator = new Animator();
+
+        /// <summary>
+        ///     Adds the animation using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The animator builder</returns>
+        public AnimatorBuilder AddAnimation(Func<AnimationBuilder, Animation> value) => this;
+
         /// <summary>
         ///     Builds this instance
         /// </summary>
-        /// <returns>The rigid body</returns>
-        public RigidBody Build() => new RigidBody();
+        /// <returns>The animator</returns>
+        public Animator Build() => animator;
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AnimatorBuilder.cs
+//  File:CircleColliderBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,36 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Ecs.Components.Render;
+using Alis.Core.Ecs.Components.Collider;
 
-namespace Alis.Builder.Core.Ecs.Component.Render
+namespace Alis.Builder.Core.Ecs.Components.Collider
 {
     /// <summary>
-    ///     The animator builder class
+    ///     The circle collider builder class
     /// </summary>
-    public class AnimatorBuilder :
-        IBuild<Animator>,
-        IAddAnimation<AnimatorBuilder, Func<AnimationBuilder, Animation>>
+    public class CircleColliderBuilder :
+        IBuild<CircleCollider>
     {
-        /// <summary>
-        ///     The animator
-        /// </summary>
-        private readonly Animator animator = new Animator();
-
-        /// <summary>
-        ///     Adds the animation using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The animator builder</returns>
-        public AnimatorBuilder AddAnimation(Func<AnimationBuilder, Animation> value) => this;
-
         /// <summary>
         ///     Builds this instance
         /// </summary>
-        /// <returns>The animator</returns>
-        public Animator Build() => animator;
+        /// <returns>The circle collider</returns>
+        public CircleCollider Build() => new CircleCollider();
     }
 }

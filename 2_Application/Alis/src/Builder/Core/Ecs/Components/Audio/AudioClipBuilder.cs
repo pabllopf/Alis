@@ -31,7 +31,7 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Components.Audio;
 
-namespace Alis.Builder.Core.Ecs.Component.Audio
+namespace Alis.Builder.Core.Ecs.Components.Audio
 {
     /// <summary>
     ///     The audio clip builder class
@@ -43,36 +43,57 @@ namespace Alis.Builder.Core.Ecs.Component.Audio
         IVolume<AudioClipBuilder, float>,
         IMute<AudioClipBuilder, bool>
     {
-        /// <summary>
-        ///     The audio clip
-        /// </summary>
-        private readonly AudioClip audioClip = new AudioClip();
+        private string nameFile = string.Empty;
+        
+        private bool isMute = false;
+        
+        private float volume = 100;
 
+        private bool playOnAwake = false;
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The audio clip</returns>
-        public AudioClip Build() => audioClip;
+        public AudioClip Build() => new AudioClip(nameFile, volume, isMute, playOnAwake);
 
         /// <summary>
         ///     Files the path using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The audio clip builder</returns>
-        public AudioClipBuilder FilePath(string value) => this;
+        public AudioClipBuilder FilePath(string value)
+        {
+            nameFile = value;
+            return this;
+        }
+
+        public AudioClipBuilder PlayOnAwake(bool value)
+        {
+            playOnAwake = value;
+            return this;
+        }
 
         /// <summary>
         ///     Mutes the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The audio clip builder</returns>
-        public AudioClipBuilder Mute(bool value) => this;
+        public AudioClipBuilder Mute(bool value)
+        {
+            isMute = value;
+            return this;
+        }
 
         /// <summary>
         ///     Volumes the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The audio clip builder</returns>
-        public AudioClipBuilder Volume(float value) => this;
+        public AudioClipBuilder Volume(float value)
+        {
+            volume = value;
+            return this;
+        }
     }
 }

@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Alis.Builder.Core.Ecs.Component;
-using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Builder.Core.Ecs.Components.Audio;
+using Alis.Builder.Core.Ecs.Components.Collider;
+using Alis.Builder.Core.Ecs.Components.Render;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Math;
-using Alis.Core.Ecs.Components;
+using Alis.Core.Ecs.Components.Audio;
+using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
-using Alis.Core.Ecs.Operations;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Builder.Core.Ecs.Entity
@@ -77,6 +76,24 @@ namespace Alis.Builder.Core.Ecs.Entity
            config(spriteBuilder);
            Sprite sprite = spriteBuilder.Build();
               components.Add(typeof(Sprite), sprite);
+           return this;
+       }
+       
+       public GameObjectBuilder WithComponent<T>(AudioSourceConfig<T> config) where T : IAudioSource, new()
+       {
+           AudioSourceBuilder audioBuilder = new AudioSourceBuilder();
+           config(audioBuilder);
+           AudioSource audio = audioBuilder.Build();
+           components.Add(typeof(AudioSource), audio);
+           return this;
+       }
+       
+       public GameObjectBuilder WithComponent<T>(BoxColliderConfig<T> config) where T : IBoxCollider, new()
+       {
+           BoxColliderBuilder boxColliderBuilder = new BoxColliderBuilder();
+           config(boxColliderBuilder);
+           BoxCollider boxCollider = boxColliderBuilder.Build();
+           components.Add(typeof(BoxCollider), boxCollider);
            return this;
        }
 

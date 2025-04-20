@@ -31,7 +31,6 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
-using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
@@ -49,17 +48,12 @@ namespace Alis.Core.Ecs.Components.Render
     /// </summary>
     public struct Sprite(string nameFile, int depth) : ISprite, IInitable, IEntityComponent
     {
-
-        private IGameObject GameObject;
-        
         /// <summary>
         ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
-            Logger.Log("Sprite");
-            GameObject = self;
         }
         
         /// <summary>
@@ -68,15 +62,6 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void Update(IGameObject self)
         {
-            Logger.Log("Sprite");
-            GameObject = self;
-            if (!string.IsNullOrEmpty(NameFile))
-            {
-                Path = AssetManager.Find(NameFile);
-                InitializeShaders();
-                LoadTexture(Path);
-                SetupBuffers();
-            }
         }
 
         /// <summary>
@@ -104,7 +89,7 @@ namespace Alis.Core.Ecs.Components.Render
         ///     Gets or sets the value of the path
         /// </summary>
         [JsonIgnore]
-        private string Path { get; set; }
+        private string Path { get; set; } = string.Empty;
 
         /// <summary>
         ///     Gets or sets the value of the name file
@@ -312,10 +297,18 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.EnableVertexAttribArray(1);
         }
         
-        public void Render(Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
+        public void Render(GameObject gameobject, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
-            Vector2F position = GameObject.Get<Transform>().Position;
-            float spriteRotation = GameObject.Get<Transform>().Rotation.R;
+            if (!string.IsNullOrEmpty(NameFile) && Path == string.Empty)
+            {
+                Path = AssetManager.Find(NameFile);
+                InitializeShaders();
+                LoadTexture(Path);
+                SetupBuffers();
+            }
+            
+            Vector2F position = gameobject.Get<Transform>().Position;
+            float spriteRotation = gameobject.Get<Transform>().Rotation.R;
 
             Gl.GlUseProgram(ShaderProgram);
             Gl.GlBindVertexArray(Vao);
@@ -335,7 +328,7 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GlUniform2F(offsetLocation, worldX, worldY);
 
             int scaleLocation = Gl.GlGetUniformLocation(ShaderProgram, "scale");
-            Gl.GlUniform2F(scaleLocation, GameObject.Get<Transform>().Scale.X, GameObject.Get<Transform>().Scale.Y);
+            Gl.GlUniform2F(scaleLocation, gameobject.Get<Transform>().Scale.X, gameobject.Get<Transform>().Scale.Y);
 
             int rotationLocation = Gl.GlGetUniformLocation(ShaderProgram, "rotation");
             Gl.GlUniform1F(rotationLocation, spriteRotation);

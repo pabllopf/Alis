@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ISprite.cs
+//  File:SpriteBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,18 +28,50 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.Operations;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Ecs.Components.Render;
 
-namespace Alis.Core.Ecs.Components.Render
+namespace Alis.Builder.Core.Ecs.Components.Render
 {
     /// <summary>
-    /// The sprite interface
+    ///     The sprite builder class
     /// </summary>
-    /// <seealso cref="IInitable"/>
-    /// <seealso cref="IEntityComponent"/>
-    /// <seealso cref="IHasBuilder{SpriteBuilder}"/>
-    /// <seealso cref="IBuild{Sprite}"/>
-    public interface ISprite
+    /// <seealso cref="IBuild{Sprite}" />
+    public class SpriteBuilder :
+        IBuild<Sprite>,
+        IDepth<SpriteBuilder, int>,
+        ISetTexture<SpriteBuilder, string>
     {
+        private int depth = 0;
+        
+        private string nameFile = string.Empty;
+
+        /// <summary>
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The sprite</returns>
+        public Sprite Build() => new Sprite(nameFile, depth);
+
+        /// <summary>
+        ///     Depths the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The sprite builder</returns>
+        public SpriteBuilder Depth(int value)
+        {
+            depth = value;
+            return this;
+        }
+
+        /// <summary>
+        ///     Textures the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The sprite builder</returns>
+        public SpriteBuilder SetTexture(string value)
+        {
+            nameFile = value;
+            return this;
+        }
     }
 }

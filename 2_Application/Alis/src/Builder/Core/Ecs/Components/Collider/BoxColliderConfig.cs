@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CanvasBuilder.cs
+//  File:BoxColliderConfig.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,26 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.Components.Ui;
+using Alis.Core.Ecs.Components.Collider;
 
-namespace Alis.Builder.Core.Ecs.Component.Ui
+namespace Alis.Builder.Core.Ecs.Components.Collider
 {
-    /// <summary>
-    ///     The canvas builder class
-    /// </summary>
-    /// <seealso cref="IBuild{Canvas}" />
-    public class CanvasBuilder : IBuild<Canvas>
-    {
-        /// <summary>
-        ///     The canvas
-        /// </summary>
-        private readonly Canvas canvas = new Canvas();
-
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The canvas</returns>
-        public Canvas Build() => canvas;
-    }
+    public delegate void BoxColliderConfig<T>(BoxColliderBuilder builder) where T : IBoxCollider;
 }

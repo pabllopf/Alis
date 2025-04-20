@@ -1,4 +1,4 @@
-using Alis.Builder.Core.Ecs.Component.Render;
+using Alis.Builder.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Components.Render;
 
 namespace Alis.Builder.Core.Ecs.Entity
