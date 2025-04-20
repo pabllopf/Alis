@@ -34,8 +34,17 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.Components.Collider
 {
+    /// <summary>
+    /// The box collider class
+    /// </summary>
+    /// <seealso cref="IBoxCollider"/>
+    /// <seealso cref="IInitable"/>
+    /// <seealso cref="IEntityComponent"/>
     public class BoxCollider : IBoxCollider, IInitable, IEntityComponent
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BoxCollider"/> class
+        /// </summary>
         public BoxCollider()
         {
             Width = 10;
@@ -223,11 +232,19 @@ namespace Alis.Core.Ecs.Components.Collider
         [JsonIgnore]
         public uint Ebo { get; private set; }
 
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
 
         }
 
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Update(IGameObject self)
         {
         }

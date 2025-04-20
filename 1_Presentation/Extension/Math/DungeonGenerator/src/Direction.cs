@@ -29,6 +29,9 @@
 
 namespace Alis.Extension.Math.DungeonGenerator
 {
+    /// <summary>
+    /// The direction enum
+    /// </summary>
     public enum Direction
     {
         /// <summary>

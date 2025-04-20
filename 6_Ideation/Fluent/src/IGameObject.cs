@@ -31,16 +31,42 @@ using System;
 
 namespace Alis.Core.Aspect.Fluent
 {
+    /// <summary>
+    /// The game object interface
+    /// </summary>
     public interface IGameObject
     {
+        /// <summary>
+        /// Gets the value of the entity id
+        /// </summary>
         public int EntityID{ get; }
         
+        /// <summary>
+        /// Gets this instance
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The ref</returns>
         public ref T Get<T>();
 
+        /// <summary>
+        /// Hases this instance
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The bool</returns>
         public bool Has<T>();
 
+        /// <summary>
+        /// Hases the type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>The bool</returns>
         public bool Has(Type type);
 
+        /// <summary>
+        /// Tries the has
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The bool</returns>
         public bool TryHas<T>();
     }
 }

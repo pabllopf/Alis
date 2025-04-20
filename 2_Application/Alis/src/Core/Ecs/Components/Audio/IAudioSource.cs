@@ -29,6 +29,9 @@
 
 namespace Alis.Builder.Core.Ecs.Entity
 {
+    /// <summary>
+    /// The audio source interface
+    /// </summary>
     public interface IAudioSource
     {
     }

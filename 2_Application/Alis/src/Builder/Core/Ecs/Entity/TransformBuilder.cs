@@ -44,10 +44,19 @@ namespace Alis.Builder.Core.Ecs.Entity
         IRotation<TransformBuilder, float>,
         IScale2D<TransformBuilder, float>
     {
+        /// <summary>
+        /// The vector
+        /// </summary>
         private Vector2F position = new Vector2F(0, 0);
         
+        /// <summary>
+        /// The one
+        /// </summary>
         private Complex rotation = Complex.One;
         
+        /// <summary>
+        /// The vector
+        /// </summary>
         private Vector2F scale = new Vector2F(1, 1);
 
         /// <summary>

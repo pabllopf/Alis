@@ -50,6 +50,9 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public Vector2F Position;
         
+        /// <summary>
+        /// The scale
+        /// </summary>
         public Vector2F Scale;
 
         /// <summary>
@@ -69,6 +72,12 @@ namespace Alis.Core.Physic.Dynamics
             Logger.Log($"Transform: {Position} {Rotation} {Scale}");
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Transform"/> class
+        /// </summary>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="scale">The scale</param>
         public Transform(Vector2F position, Complex rotation, Vector2F scale)
         {
             Rotation = rotation;
@@ -89,6 +98,12 @@ namespace Alis.Core.Physic.Dynamics
             Logger.Log($"Transform: {Position} {Rotation} {Scale}");
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Transform"/> class
+        /// </summary>
+        /// <param name="position">The position</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="scale">The scale</param>
         public Transform(Vector2F position, float angle, Vector2F scale)
             : this(position, Complex.FromAngle(angle), scale)
         {
@@ -214,11 +229,19 @@ namespace Alis.Core.Physic.Dynamics
             result.Scale = Complex.Divide(ref left.Scale, ref right);
         }
 
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
             
         }
 
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Update(IGameObject self)
         {
             

@@ -83,11 +83,19 @@ namespace Alis.Sample.Pong
             /// </summary>
             public int PlayerId { get; set; } = playerId;
 
+            /// <summary>
+            /// Inits the self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void Init(IGameObject self)
             {
                 boxCollider = self.Get<BoxCollider>();
             }
 
+            /// <summary>
+            /// Updates the self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void Update(IGameObject self)
             {
 

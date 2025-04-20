@@ -42,8 +42,14 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         IDepth<SpriteBuilder, int>,
         ISetTexture<SpriteBuilder, string>
     {
+        /// <summary>
+        /// The depth
+        /// </summary>
         private int depth = 0;
         
+        /// <summary>
+        /// The empty
+        /// </summary>
         private string nameFile = string.Empty;
 
         /// <summary>
