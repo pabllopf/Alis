@@ -16,8 +16,14 @@ namespace Alis.Builder.Core.Ecs.Entity
    /// </summary>
    public class GameObjectBuilder : IBuild<Dictionary<Type, IEntityComponent>>
    {
+       /// <summary>
+       /// The entity component
+       /// </summary>
        private Dictionary<Type, IEntityComponent> components = new Dictionary<Type, IEntityComponent>();
 
+       /// <summary>
+       /// The transform
+       /// </summary>
        private Transform transform = new Transform();
 
        /// <summary>
@@ -41,6 +47,11 @@ namespace Alis.Builder.Core.Ecs.Entity
            return temp;
        }
 
+       /// <summary>
+       /// Transforms the config
+       /// </summary>
+       /// <param name="config">The config</param>
+       /// <returns>The game object builder</returns>
        public GameObjectBuilder Transform(Action<TransformBuilder> config)
        {
            TransformBuilder transformBuilder = new TransformBuilder();
@@ -79,6 +90,12 @@ namespace Alis.Builder.Core.Ecs.Entity
            return this;
        }
        
+       /// <summary>
+       /// Adds the component using the specified config
+       /// </summary>
+       /// <typeparam name="T">The </typeparam>
+       /// <param name="config">The config</param>
+       /// <returns>The game object builder</returns>
        public GameObjectBuilder WithComponent<T>(AudioSourceConfig<T> config) where T : IAudioSource, new()
        {
            AudioSourceBuilder audioBuilder = new AudioSourceBuilder();
@@ -88,6 +105,12 @@ namespace Alis.Builder.Core.Ecs.Entity
            return this;
        }
        
+       /// <summary>
+       /// Adds the component using the specified config
+       /// </summary>
+       /// <typeparam name="T">The </typeparam>
+       /// <param name="config">The config</param>
+       /// <returns>The game object builder</returns>
        public GameObjectBuilder WithComponent<T>(BoxColliderConfig<T> config) where T : IBoxCollider, new()
        {
            BoxColliderBuilder boxColliderBuilder = new BoxColliderBuilder();

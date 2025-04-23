@@ -44,6 +44,11 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// <seealso cref="ComponentStorage{TComp}" />
     internal class EntityUpdate<TComp>(int capacity) : ComponentStorage<TComp>(capacity)
     {
+        /// <summary>
+        /// Runs the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="b">The </param>
         [SkipLocalsInit]
         internal override void Run(Scene scene, Archetype b)
         {

@@ -118,6 +118,10 @@ namespace Alis.Core.Ecs.Components.Audio
             }
         }
 
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
             ThreadPool.SetMinThreads(200, 200);
@@ -127,6 +131,10 @@ namespace Alis.Core.Ecs.Components.Audio
             }
         }
 
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Update(IGameObject self)
         {
             if (IsLooping && !IsPlaying)

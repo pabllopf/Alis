@@ -43,14 +43,29 @@ namespace Alis.Builder.Core.Ecs.Components.Audio
         IVolume<AudioSourceBuilder, float>,
         IMute<AudioSourceBuilder, bool>
     {
+        /// <summary>
+        /// The empty
+        /// </summary>
         private string nameFile = string.Empty;
         
+        /// <summary>
+        /// The is mute
+        /// </summary>
         private bool isMute = false;
         
+        /// <summary>
+        /// The volume
+        /// </summary>
         private float volume = 100;
 
+        /// <summary>
+        /// The play on awake
+        /// </summary>
         private bool playOnAwake = false;
 
+        /// <summary>
+        /// The loop
+        /// </summary>
         private bool loop = false;
         
         /// <summary>
@@ -70,12 +85,22 @@ namespace Alis.Builder.Core.Ecs.Components.Audio
             return this;
         }
 
+        /// <summary>
+        /// Plays the on awake using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The audio source builder</returns>
         public AudioSourceBuilder PlayOnAwake(bool value)
         {
             playOnAwake = value;
             return this;
         }
 
+        /// <summary>
+        /// Loops the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The audio source builder</returns>
         public AudioSourceBuilder Loop(bool value)
         {
             loop = value;

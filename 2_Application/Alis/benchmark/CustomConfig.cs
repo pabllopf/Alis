@@ -36,6 +36,10 @@ using BenchmarkDotNet.Loggers;
 
 namespace Alis.Benchmark
 {
+    /// <summary>
+    /// The custom config class
+    /// </summary>
+    /// <seealso cref="ManualConfig"/>
     internal class CustomConfig : ManualConfig
     {
         /// <summary>

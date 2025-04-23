@@ -1040,6 +1040,13 @@ namespace Alis.Core.Ecs
             return concreteGameObject;
         }
 
+        /// <summary>
+        /// Creates the many using the specified count
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="count">The count</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <returns>A chunk tuple of t</returns>
         [SkipLocalsInit]
         public ChunkTuple<T> CreateMany<T>(int count)
         {

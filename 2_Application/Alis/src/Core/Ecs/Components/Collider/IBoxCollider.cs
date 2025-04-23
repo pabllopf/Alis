@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Ecs.Components.Collider
 {
+    /// <summary>
+    /// The box collider interface
+    /// </summary>
     public interface IBoxCollider
     {
     }
