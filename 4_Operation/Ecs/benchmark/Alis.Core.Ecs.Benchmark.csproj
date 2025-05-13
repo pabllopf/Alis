@@ -16,11 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Alis.Core.Ecs\Alis.Core.Ecs.csproj" />
+    <ProjectReference Include="../src/Alis.Core.Ecs.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Alis.Core.Ecs.Generator\Alis.Core.Ecs.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="../generator/Alis.Core.Ecs.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
   
 </Project>

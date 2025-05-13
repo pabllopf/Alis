@@ -10,7 +10,7 @@ using Alis.Core.Ecs.Core.Memory;
 
 namespace Alis.Core.Ecs.Collections
 {
-    internal struct FastStack<T>(int initalComponents) : IEnumerable<T>
+    public struct FastStack<T>(int initalComponents) : IEnumerable<T>
     {
         [DebuggerStepThrough]
         public static FastStack<T> Create(int initalComponents) => new FastStack<T>(initalComponents);
@@ -122,5 +122,7 @@ namespace Alis.Core.Ecs.Collections
             public bool MoveNext() => ++_index < _max;
             public void Reset() => _index = -1;
         }
+
+       
     }
 }

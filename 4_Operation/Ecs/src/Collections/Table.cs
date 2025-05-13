@@ -6,7 +6,7 @@ using Alis.Core.Ecs.Core.Memory;
 
 namespace Alis.Core.Ecs.Collections
 {
-    internal struct Table<T>(int size)
+    public struct Table<T>(int size)
     {
         public static Table<T> Empty => new()
         {

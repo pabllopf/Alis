@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics;
 using Alis.Benchmark.EntityComponentSystem.Contexts;
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.Operations;
+using Alis.Core.Ecs.Systems;
 using BenchmarkDotNet.Attributes;
 using static Alis.Benchmark.EntityComponentSystem.Contexts.AlisBaseContext;
 
@@ -114,14 +114,14 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             {
                 for (int i = 0; i < entityCount; i++)
                 {
-                    Scene.Create(default(Component1));
+                    World.Create(default(Component1));
                     for (int j = 0; j < entityPadding; j++)
                     {
-                        Scene.Create();
+                        World.Create();
                     }
                 }
 
-                Query = Scene.Query<With<Component1>>();
+                Query = World.Query<With<Component1>>();
             }
         }
 

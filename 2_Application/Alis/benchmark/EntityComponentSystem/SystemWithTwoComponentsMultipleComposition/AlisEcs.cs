@@ -32,7 +32,8 @@ using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics;
 using Alis.Benchmark.EntityComponentSystem.Contexts;
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.Operations;
+using Alis.Core.Ecs.Components;
+using Alis.Core.Ecs.Systems;
 using BenchmarkDotNet.Attributes;
 using static Alis.Benchmark.EntityComponentSystem.Contexts.AlisBaseContext;
 
@@ -101,16 +102,16 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             {
                 for (int i = 0; i < entityCount; i++)
                 {
-                    GameObject e = (entityCount % 4) switch
+                    Entity e = (entityCount % 4) switch
                     {
-                        0 => Scene.Create(default(Component1), new Component2 {Value = 1}, default(Padding1)),
-                        1 => Scene.Create(default(Component1), new Component2 {Value = 1}, default(Padding2)),
-                        2 => Scene.Create(default(Component1), new Component2 {Value = 1}, default(Padding3)),
-                        _ => Scene.Create(default(Component1), new Component2 {Value = 1}, default(Padding4))
+                        0 => World.Create(default(Component1), new Component2 {Value = 1}, default(Padding1)),
+                        1 => World.Create(default(Component1), new Component2 {Value = 1}, default(Padding2)),
+                        2 => World.Create(default(Component1), new Component2 {Value = 1}, default(Padding3)),
+                        _ => World.Create(default(Component1), new Component2 {Value = 1}, default(Padding4))
                     };
                 }
 
-                Query = Scene.Query<With<Component1>, With<Component2>>();
+                Query = World.Query<With<Component1>, With<Component2>>();
             }
 
             /// <summary>

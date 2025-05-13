@@ -314,7 +314,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="cameraPosition">The camera position</param>
         /// <param name="cameraResolution">The camera resolution</param>
         /// <param name="pixelsPerMeter">The pixels per meter</param>
-        public void Render(GameObject gameobject, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
+        public void Render(Entity gameobject, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
             if (!string.IsNullOrEmpty(NameFile) && Path == string.Empty)
             {
