@@ -1,11 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(SolutionDir).config/Config.props"/>
     <PropertyGroup>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
         <OutDir Condition="($(AssemblyName.Contains('Sample')) OR $(AssemblyName.Contains('App'))) AND $(AssemblyName.Contains('Test')) == false">bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
     </PropertyGroup>
-    <ItemGroup>
-      <Folder Include="Comps\" />
+
+    <ItemGroup Condition="
+    $(TargetFramework.Equals('net471')) OR 
+    $(TargetFramework.Equals('net472')) OR 
+    $(TargetFramework.Equals('net48')) OR 
+    $(TargetFramework.Equals('net481'))
+    ">
+        <PackageReference Include="System.IO.Compression" Version="4.3.0"/>
+        <PackageReference Include="System.Net.Http" Version="4.3.0"/>
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
+        <PackageReference Include="System.Memory" Version="4.6.2"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="
+    $(TargetFramework.Equals('netcoreapp2.0')) OR
+    $(TargetFramework.Equals('netcoreapp2.1')) OR
+    $(TargetFramework.Equals('netcoreapp2.2')) OR
+    $(TargetFramework.Equals('netcoreapp3.0')) OR
+    $(TargetFramework.Equals('netcoreapp3.1')) 
+    ">
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
+        <PackageReference Include="System.Memory" Version="4.6.2"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="
+    $(TargetFramework.Equals('netstandard2.0')) OR
+    $(TargetFramework.Equals('netstandard2.1'))
+    ">
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
+        <PackageReference Include="System.Memory" Version="4.6.2"/>
+    </ItemGroup>
+
+    <ItemGroup Label="Dependencies">
+        <ProjectReference Include="..\Alis.Core.Ecs.Generator\Alis.Core.Ecs.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     </ItemGroup>
 </Project>
