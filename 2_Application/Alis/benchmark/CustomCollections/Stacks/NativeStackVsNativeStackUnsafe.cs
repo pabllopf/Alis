@@ -138,18 +138,6 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         }
 
         /// <summary>
-        ///     Fastests the stack peek
-        /// </summary>
-        [Benchmark(Description = "[FASTEST] Peek elements")]
-        public void Fastest_Stack_Peek()
-        {
-            for (int i = 0; i < ArraySize; i++)
-            {
-                _ = fastStack.Peek();
-            }
-        }
-
-        /// <summary>
         ///     Pooleds the stack peek
         /// </summary>
         [Benchmark(Description = "[POOLED] Peek elements")]

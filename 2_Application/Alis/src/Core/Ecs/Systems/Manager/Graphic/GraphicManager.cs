@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Render;
-using Alis.Core.Ecs.Operations;
+
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Configuration.Physic;
 using Alis.Core.Ecs.Systems.Scope;
@@ -212,11 +212,11 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             // Clear the screen
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
             
-           EntityQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.Scene
+           EntityQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.World
                .Query<With<Sprite>>()
                .EnumerateWithEntities();
            
-           foreach (RefTuple<Camera> camera in Context.SceneManager.Scene
+           foreach (RefTuple<Camera> camera in Context.SceneManager.World
                        .Query<With<Camera>>()
                        .Enumerate<Camera>())
            {

@@ -29,7 +29,7 @@
 
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.Operations;
+
 
 namespace Alis.App.Engine.Sample.Assets.Scripts
 {

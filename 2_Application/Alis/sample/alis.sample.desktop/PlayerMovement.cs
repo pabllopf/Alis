@@ -32,7 +32,7 @@ using System.Diagnostics;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.Operations;
+
 
 namespace Alis.Sample.Desktop
 {

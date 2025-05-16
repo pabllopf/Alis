@@ -41,12 +41,12 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     Gets the value of the world
         /// </summary>
-        public Scene Scene { get; } = new Scene();
+        public World World { get; } = new World();
 
         /// <summary>
         ///     Disposes this instance
         /// </summary>
-        public void Dispose() => Scene.Dispose();
+        public void Dispose() => World.Dispose();
 
         /// <summary>
         ///     The component

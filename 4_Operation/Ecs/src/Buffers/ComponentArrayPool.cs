@@ -8,7 +8,7 @@ using Alis.Core.Ecs.Core.Memory;
 namespace Alis.Core.Ecs.Buffers
 {
     //super simple arraypool class
-    internal class ComponentArrayPool<T> : ArrayPool<T>
+    public class ComponentArrayPool<T> : ArrayPool<T>
     {
         public ComponentArrayPool()
         {
