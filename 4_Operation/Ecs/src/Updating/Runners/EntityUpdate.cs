@@ -1,97 +1,115 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:EntityUpdate.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
-using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Threading;
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.Arch;
+﻿using System;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Operations;
+using Alis.Core.Ecs.Components;
+using Alis.Core.Ecs.Core;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using Alis.Core.Ecs.Core.Archetype;
 
 namespace Alis.Core.Ecs.Updating.Runners
 {
-    /// <summary>
-    ///     The entity update class
-    /// </summary>
-    /// <seealso cref="ComponentStorage{TComp}" />
     internal class EntityUpdate<TComp>(int capacity) : ComponentStorage<TComp>(capacity)
+        where TComp : IEntityComponent
     {
-        /// <summary>
-        /// Runs the scene
-        /// </summary>
-        /// <param name="scene">The scene</param>
-        /// <param name="b">The </param>
-        [SkipLocalsInit]
-        internal override void Run(Scene scene, Archetype b)
+        internal override void Run(World world, Archetype b)
         {
-            ref EntityIdOnly entityIds = ref b.GetEntityDataReference();
+            ref EntityIDOnly entityIds = ref b.GetEntityDataReference();
             ref TComp comp = ref GetComponentStorageDataReference();
-        
-            GameObject gameObject = scene.DefaultWorldGameObject;
-        
-            int size = b.EntityCount;
-        
-        #if NET7_0_OR_GREATER
-           // Use MemoryMarshal.CreateSpan for efficient span creation
-           Span<EntityIdOnly> entitySpan = MemoryMarshal.CreateSpan(ref entityIds, size);
-           Span<TComp> compSpan = MemoryMarshal.CreateSpan(ref comp, size);
-           
-           foreach (ref EntityIdOnly currentEntity in entitySpan)
-           {
-               int offset = (int)Unsafe.ByteOffset(ref entitySpan[0], ref currentEntity) / Unsafe.SizeOf<EntityIdOnly>();
-               ref TComp currentComp = ref compSpan[offset];
-           
-               currentEntity.SetEntity(ref gameObject);
-           
-               if (Unsafe.As<object>(currentComp) is IEntityComponent storage)
-               {
-                   storage.Update(gameObject);
-               }
-           }
-        #else
-            // Fallback for older .NET versions
-            for (int i = 0; i < size; i++)
+
+            Entity entity = world.DefaultWorldEntity;
+
+            for (int i = b.EntityCount - 1; i >= 0; i--)
             {
-                ref EntityIdOnly currentEntity = ref Unsafe.Add(ref entityIds, i);
-                ref TComp currentComp = ref Unsafe.Add(ref comp, i);
-        
-                currentEntity.SetEntity(ref gameObject);
-        
-                if (Unsafe.As<object>(currentComp) is IEntityComponent storage)
-                {
-                    storage.Update(gameObject);
-                }
+                entityIds.SetEntity(ref entity);
+                comp.Update(entity);
+
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
+                comp = ref Unsafe.Add(ref comp, 1);
             }
-        #endif
         }
-        
+
+        internal override void Run(World world, Archetype b, int start, int length)
+        {
+            ref EntityIDOnly entityIds = ref Unsafe.Add(ref b.GetEntityDataReference(), start);
+            ref TComp comp = ref Unsafe.Add(ref GetComponentStorageDataReference(), start);
+
+            Entity entity = world.DefaultWorldEntity;
+
+            for (int i = length - 1; i >= 0; i--)
+            {
+                entityIds.SetEntity(ref entity);
+                comp.Update(entity);
+
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
+                comp = ref Unsafe.Add(ref comp, 1);
+            }
+        }
+
+        internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype b) =>
+            throw new NotImplementedException();
+    }
+
+    
+    
+    
+    
+    
+    internal class EntityUpdate<TComp, TArg>(int capacity) : ComponentStorage<TComp>(capacity)
+        where TComp : IEntityComponent<TArg>
+    {
+        internal override void Run(World world, Archetype b)
+        {
+            ref EntityIDOnly entityIds = ref b.GetEntityDataReference();
+            ref TComp comp = ref GetComponentStorageDataReference();
+
+            ref TArg arg = ref b.GetComponentDataReference<TArg>();
+
+            Entity entity = world.DefaultWorldEntity;
+
+            for (int i = b.EntityCount - 1; i >= 0; i--)
+            {
+                entityIds.SetEntity(ref entity);
+                comp.Update(entity, ref arg);
+
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
+                comp = ref Unsafe.Add(ref comp, 1);
+
+                arg = ref Unsafe.Add(ref arg, 1);
+            }
+        }
+
+        internal override void Run(World world, Archetype b, int start, int length)
+        {
+            ref EntityIDOnly entityIds = ref Unsafe.Add(ref b.GetEntityDataReference(), start);
+            ref TComp comp = ref Unsafe.Add(ref GetComponentStorageDataReference(), start);
+
+            ref TArg arg = ref Unsafe.Add(ref b.GetComponentDataReference<TArg>(), start);
+
+            Entity entity = world.DefaultWorldEntity;
+
+            for (int i = length - 1; i >= 0; i--)
+            {
+                entityIds.SetEntity(ref entity);
+                comp.Update(entity, ref arg);
+
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
+                comp = ref Unsafe.Add(ref comp, 1);
+
+                arg = ref Unsafe.Add(ref arg, 1);
+            }
+        }
+
+        internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype b)
+            => throw new NotImplementedException();
+    }
+
+    /// <inheritdoc cref="IComponentStorageBaseFactory"/>
+    
+    public class EntityUpdateRunnerFactory<TComp, TArg> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
+        where TComp : IEntityComponent<TArg>
+    {
+        ComponentStorageBase IComponentStorageBaseFactory.Create(int capacity) => new EntityUpdate<TComp, TArg>(capacity);
+        IDTable IComponentStorageBaseFactory.CreateStack() => new IDTable<TComp>();
+        ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new EntityUpdate<TComp, TArg>(capacity);
     }
 }

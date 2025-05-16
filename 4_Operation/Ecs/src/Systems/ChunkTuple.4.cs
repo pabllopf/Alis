@@ -1,0 +1,34 @@
+﻿
+
+
+
+
+using System;
+using Alis.Core.Ecs.Core;
+using Alis.Variadic.Generator;
+
+namespace Alis.Core.Ecs.Systems;
+    public ref struct ChunkTuple<T1, T2, T3, T4>
+    {
+        /// <summary>
+        /// An enumerator that can be used to enumerate individual <see cref="Entity"/> instances.
+        /// </summary>
+        public EntityEnumerator.EntityEnumerable Entities;
+        public Span<T1> Span1;
+    public Span<T2> Span2;
+    public Span<T3> Span3;
+    public Span<T4> Span4;
+
+
+        /// <summary>
+        /// Allows tuple deconstruction syntax to be used.
+        /// </summary>
+        public void Deconstruct(out Span<T1> @comp1, out Span<T2> @comp2, out Span<T3> @comp3, out Span<T4> @comp4)
+        {
+            @comp1 = Span1;
+        @comp2 = Span2;
+        @comp3 = Span3;
+        @comp4 = Span4;
+
+        }
+    }
