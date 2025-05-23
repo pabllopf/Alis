@@ -31,6 +31,7 @@ using System.Globalization;
 using Alis.Benchmark.ClassVsStruct;
 using Alis.Benchmark.CustomCollections.ArrayPools;
 using Alis.Benchmark.CustomCollections.Arrays;
+using Alis.Benchmark.CustomCollections.Frugals;
 using Alis.Benchmark.CustomCollections.Lists;
 using Alis.Benchmark.CustomCollections.Stacks;
 using Alis.Benchmark.CustomCollections.Tables;
@@ -90,8 +91,11 @@ namespace Alis.Benchmark
                 typeof(InterfaceVsAbstractBenchmark),
 
                 typeof(NativeArrayUnsafeVsNativeArraySafe),
-                typeof(NativeStackVsNativeStackUnsafe),
-                typeof(NativeTableUnsafeVsNativeTableSafe),
+                
+                typeof(StacksBenchmarks),
+                typeof(FrugalsBenchmarks),
+                
+                typeof(TablesBenchmarks),
 
                 typeof(RemoveAtVsRemoveUnnorderAtListBenchmark),
 

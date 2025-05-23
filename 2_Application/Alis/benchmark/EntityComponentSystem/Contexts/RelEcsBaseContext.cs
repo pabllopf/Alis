@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         public RelEcsBaseContext() => World = new World();
 
         /// <summary>
-        ///     Gets the value of the world
+        ///     Gets the value of the scene
         /// </summary>
         public World World { get; }
 
@@ -53,7 +53,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// </summary>
         public virtual void Dispose()
         {
-            // World.Destroy();
+            // Scene.Destroy();
         }
 
         /// <summary>

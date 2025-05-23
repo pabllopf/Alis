@@ -59,7 +59,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             /// <summary>
             ///     Initializes a new instance of the <see cref="SveltoECSContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
+            /// <param name="entityCount">The gameObject count</param>
             public SveltoECSContext(int entityCount)
             {
                 Engine = new SveltoEngine();
@@ -128,7 +128,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             }
 
             /// <summary>
-            ///     The entity class
+            ///     The gameObject class
             /// </summary>
             /// <seealso cref="GenericEntityDescriptor{Component1, Component2, Padding1}" />
             private sealed class Entity1 : GenericEntityDescriptor<Component1, Component2, Padding1>
@@ -136,7 +136,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             }
 
             /// <summary>
-            ///     The entity class
+            ///     The gameObject class
             /// </summary>
             /// <seealso cref="GenericEntityDescriptor{Component1, Component2, Padding2}" />
             private sealed class Entity2 : GenericEntityDescriptor<Component1, Component2, Padding2>
@@ -144,7 +144,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             }
 
             /// <summary>
-            ///     The entity class
+            ///     The gameObject class
             /// </summary>
             /// <seealso cref="GenericEntityDescriptor{Component1, Component2, Padding3}" />
             private sealed class Entity3 : GenericEntityDescriptor<Component1, Component2, Padding3>
@@ -152,7 +152,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             }
 
             /// <summary>
-            ///     The entity class
+            ///     The gameObject class
             /// </summary>
             /// <seealso cref="GenericEntityDescriptor{Component1, Component2, Padding4}" />
             private sealed class Entity4 : GenericEntityDescriptor<Component1, Component2, Padding4>
@@ -160,7 +160,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             }
 
             /// <summary>
-            ///     The entity class
+            ///     The gameObject class
             /// </summary>
             /// <seealso cref="GenericEntityDescriptor{Component1, Component2}" />
             private sealed class Entity : GenericEntityDescriptor<Component1, Component2>

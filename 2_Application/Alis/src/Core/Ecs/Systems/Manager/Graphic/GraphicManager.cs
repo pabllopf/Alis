@@ -212,7 +212,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             // Clear the screen
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
             
-           EntityQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.World
+           GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.World
                .Query<With<Sprite>>()
                .EnumerateWithEntities();
            

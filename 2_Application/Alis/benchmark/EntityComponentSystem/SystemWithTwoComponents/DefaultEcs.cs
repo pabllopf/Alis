@@ -67,8 +67,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             /// <summary>
             ///     Initializes a new instance of the <see cref="DefaultEcsContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
-            /// <param name="entityPadding">The entity padding</param>
+            /// <param name="entityCount">The gameObject count</param>
+            /// <param name="entityPadding">The gameObject padding</param>
             public DefaultEcsContext(int entityCount, int entityPadding)
             {
                 Runner = new DefaultParallelRunner(Environment.ProcessorCount);
@@ -104,12 +104,12 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             public IParallelRunner Runner { get; }
 
             /// <summary>
-            ///     Gets the value of the mono thread entity set system
+            ///     Gets the value of the mono thread gameObject set system
             /// </summary>
             public ISystem<int> MonoThreadEntitySetSystem { get; }
 
             /// <summary>
-            ///     Gets the value of the multi thread entity set system
+            ///     Gets the value of the multi thread gameObject set system
             /// </summary>
             public ISystem<int> MultiThreadEntitySetSystem { get; }
 
@@ -124,7 +124,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             }
 
             /// <summary>
-            ///     The entity set system class
+            ///     The gameObject set system class
             /// </summary>
             /// <seealso cref="AEntitySetSystem{int}" />
             private sealed partial class EntitySetSystem : AEntitySetSystem<int>

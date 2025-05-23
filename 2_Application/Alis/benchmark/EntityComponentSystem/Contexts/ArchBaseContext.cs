@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Arch.Core;
 using Arch.Core.Utils;
 using Schedulers;
@@ -39,7 +40,8 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     The component
         /// </summary>
-        internal struct Component1
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Component1
         {
             /// <summary>
             ///     The value
@@ -50,7 +52,8 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     The component
         /// </summary>
-        internal struct Component2
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Component2
         {
             /// <summary>
             ///     The value
@@ -61,7 +64,8 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     The component
         /// </summary>
-        internal struct Component3
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Component3
         {
             /// <summary>
             ///     The value
@@ -107,7 +111,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         }
 
         /// <summary>
-        ///     Gets the value of the world
+        ///     Gets the value of the scene
         /// </summary>
         public World World { get; }
 

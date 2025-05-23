@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Benchmark.EntityComponentSystem.Contexts.FrifloEngine_Components;
 using Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent;
 using Friflo.Engine.ECS;
@@ -39,7 +40,8 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     The component
         /// </summary>
-        internal struct Component1 : IComponent
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Component1 : IComponent
         {
             /// <summary>
             ///     The value
@@ -50,7 +52,8 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     The component
         /// </summary>
-        internal struct Component2 : IComponent
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Component2 : IComponent
         {
             /// <summary>
             ///     The value
@@ -61,7 +64,8 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     The component
         /// </summary>
-        internal struct Component3 : IComponent
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Component3 : IComponent
         {
             /// <summary>
             ///     The value
@@ -155,7 +159,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         }
 
         /// <summary>
-        ///     Gets the value of the entity store
+        ///     Gets the value of the gameObject store
         /// </summary>
         protected EntityStore EntityStore { get; }
 

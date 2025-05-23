@@ -114,7 +114,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             /// <summary>
             ///     Initializes a new instance of the <see cref="FrifloEngineEcsContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
+            /// <param name="entityCount">The gameObject count</param>
             /// <param name="padding">The padding</param>
             public FrifloEngineEcsContext(int entityCount, int padding)
                 : base(entityCount, padding, ComponentTypes.Get<Component1, Component2>())

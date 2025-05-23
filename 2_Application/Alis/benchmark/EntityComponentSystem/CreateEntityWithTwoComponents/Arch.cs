@@ -36,7 +36,7 @@ using BenchmarkDotNet.Attributes;
 namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
 {
     /// <summary>
-    ///     The create entity with two components class
+    ///     The create gameObject with two components class
     /// </summary>
     public partial class CreateEntityWithTwoComponents
     {

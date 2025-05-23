@@ -249,5 +249,9 @@ namespace Alis.Core.Ecs.Components.Collider
         {
         }
 
+        public void Init(GameObject self)
+        {
+            
+        }
     }
 }

@@ -1,21 +1,48 @@
-﻿using System;
+using System;
 using System.Numerics;
-using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Memory;
 
 namespace Alis.Core.Ecs.Collections
 {
-    internal class SparseSet<T>
+    /// <summary>
+    ///     The sparse set class
+    /// </summary>
+    public class SparseSet<T>
     {
-        private int _nextIndex;
+        /// <summary>
+        ///     The dense
+        /// </summary>
         private T[] _dense;
+
+        /// <summary>
+        ///     The next index
+        /// </summary>
+        private int _nextIndex;
+
+        /// <summary>
+        ///     The sparse
+        /// </summary>
         private int[] _sparse;
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SparseSet{T}" /> class
+        /// </summary>
+        public SparseSet()
+        {
+            const int initialCapacity = 4;
+            _dense = new T[initialCapacity];
+            _sparse = new int[initialCapacity];
+            _sparse.AsSpan().Fill(int.MaxValue);
+        }
+
+        /// <summary>
+        ///     The index
+        /// </summary>
         public ref T this[int id]
         {
             get
             {
-                ref var index = ref EnsureSparseCapacityAndGetIndex(id);
+                ref int index = ref EnsureSparseCapacityAndGetIndex(id);
 
                 if (index == int.MaxValue)
                     index = _nextIndex++;
@@ -24,17 +51,14 @@ namespace Alis.Core.Ecs.Collections
             }
         }
 
-        public SparseSet()
-        {
-            const int InitialCapacity = 4;
-            _dense = new T[InitialCapacity];
-            _sparse = new int[InitialCapacity];
-            _sparse.AsSpan().Fill(int.MaxValue);
-        }
-
+        /// <summary>
+        ///     Ensures the sparse capacity and get index using the specified id
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns>The ref int</returns>
         private ref int EnsureSparseCapacityAndGetIndex(int id)
         {
-            var localSparse = _sparse;
+            int[] localSparse = _sparse;
             if (id < localSparse.Length)
                 return ref localSparse[id];
 

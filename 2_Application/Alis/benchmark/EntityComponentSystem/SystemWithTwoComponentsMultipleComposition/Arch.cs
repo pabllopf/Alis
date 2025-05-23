@@ -107,7 +107,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
         /// <summary>
         ///     The for each
         /// </summary>
-        private struct ForEach2 : IForEach<Component1, Component2>
+        public struct ForEach2 : IForEach<Component1, Component2>
         {
             /// <summary>
             ///     Updates the t 0
@@ -129,7 +129,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             /// <summary>
             ///     Initializes a new instance of the <see cref="ArchContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
+            /// <param name="entityCount">The gameObject count</param>
             public ArchContext(int entityCount)
             {
                 JobScheduler = new JobScheduler(new JobScheduler.Config

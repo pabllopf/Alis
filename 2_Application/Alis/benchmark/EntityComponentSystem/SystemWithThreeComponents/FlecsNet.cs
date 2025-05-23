@@ -82,8 +82,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
             /// <summary>
             ///     Initializes a new instance of the <see cref="FlecsContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
-            /// <param name="entityPadding">The entity padding</param>
+            /// <param name="entityCount">The gameObject count</param>
+            /// <param name="entityPadding">The gameObject padding</param>
             public FlecsContext(int entityCount, int entityPadding)
             {
                 for (int i = 0; i < entityCount; ++i)

@@ -60,8 +60,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             /// <summary>
             ///     Initializes a new instance of the <see cref="SveltoECSContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
-            /// <param name="entityPadding">The entity padding</param>
+            /// <param name="entityCount">The gameObject count</param>
+            /// <param name="entityPadding">The gameObject padding</param>
             public SveltoECSContext(int entityCount, int entityPadding)
             {
                 Engine = new SveltoEngine();
@@ -119,7 +119,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             }
 
             /// <summary>
-            ///     The padding entity class
+            ///     The padding gameObject class
             /// </summary>
             /// <seealso cref="IEntityDescriptor" />
             public sealed class PaddingEntity : IEntityDescriptor
@@ -131,7 +131,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             }
 
             /// <summary>
-            ///     The entity class
+            ///     The gameObject class
             /// </summary>
             /// <seealso cref="GenericEntityDescriptor{Component1}" />
             public sealed class Entity : GenericEntityDescriptor<Component1>

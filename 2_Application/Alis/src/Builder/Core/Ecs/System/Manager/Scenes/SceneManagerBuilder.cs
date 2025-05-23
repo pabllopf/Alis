@@ -60,7 +60,7 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scenes
         /// <typeparam name="T">The </typeparam>
         /// <param name="config">The config</param>
         /// <returns>The scene manager builder</returns>
-        public SceneManagerBuilder Add<T>(Action<SceneBuilder> config) where T : IScene
+        public SceneManagerBuilder Add<T>(Action<SceneBuilder> config) where T : Scene
         { 
             SceneBuilder sceneBuilder = new SceneBuilder(sceneManager.Context);
             config(sceneBuilder);

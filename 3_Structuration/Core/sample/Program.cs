@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Ecs;
 
 namespace Alis.Core.Sample
 {
@@ -43,6 +45,18 @@ namespace Alis.Core.Sample
         public static void Main(string[] args)
         {
             Logger.Info("Alis.Core.Sample with " + args.Length + " args");
+            
+            
+            using Scene scene = new Scene();
+
+            //Create three entities
+            for (int i = 0; i < 3; i++)
+            {
+                scene.Create<string, ConsoleText>("Hello, Scene!", new(ConsoleColor.Blue));
+            }
+
+            //Update the three entities
+            scene.Update();
         }
     }
 }

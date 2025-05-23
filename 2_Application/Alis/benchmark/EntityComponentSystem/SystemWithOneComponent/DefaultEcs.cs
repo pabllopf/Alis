@@ -59,13 +59,13 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         public void DefaultEcs_ComponentSystem_MultiThread() => _defaultEcs.MultiThreadComponentSystem.Update(0);
 
         /// <summary>
-        ///     Defaults the ecs entity set system mono thread
+        ///     Defaults the ecs gameObject set system mono thread
         /// </summary>
         [BenchmarkCategory(Categories.DefaultEcs), Benchmark]
         public void DefaultEcs_EntitySetSystem_MonoThread() => _defaultEcs.MonoThreadEntitySetSystem.Update(0);
 
         /// <summary>
-        ///     Defaults the ecs entity set system multi thread
+        ///     Defaults the ecs gameObject set system multi thread
         /// </summary>
         [BenchmarkCategory(Categories.DefaultEcs), Benchmark]
         public void DefaultEcs_EntitySetSystem_MultiThread() => _defaultEcs.MultiThreadEntitySetSystem.Update(0);
@@ -79,8 +79,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             /// <summary>
             ///     Initializes a new instance of the <see cref="DefaultEcsContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
-            /// <param name="entityPadding">The entity padding</param>
+            /// <param name="entityCount">The gameObject count</param>
+            /// <param name="entityPadding">The gameObject padding</param>
             public DefaultEcsContext(int entityCount, int entityPadding)
             {
                 Runner = new DefaultParallelRunner(Environment.ProcessorCount);
@@ -117,12 +117,12 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             public ISystem<int> MultiThreadComponentSystem { get; }
 
             /// <summary>
-            ///     Gets the value of the mono thread entity set system
+            ///     Gets the value of the mono thread gameObject set system
             /// </summary>
             public ISystem<int> MonoThreadEntitySetSystem { get; }
 
             /// <summary>
-            ///     Gets the value of the multi thread entity set system
+            ///     Gets the value of the multi thread gameObject set system
             /// </summary>
             public ISystem<int> MultiThreadEntitySetSystem { get; }
 
@@ -145,7 +145,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
                 /// <summary>
                 ///     Initializes a new instance of the <see cref="ComponentSystem" /> class
                 /// </summary>
-                /// <param name="world">The world</param>
+                /// <param name="world">The scene</param>
                 /// <param name="runner">The runner</param>
                 public ComponentSystem(World world, IParallelRunner runner)
                     : base(world, runner)
@@ -155,7 +155,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
                 /// <summary>
                 ///     Initializes a new instance of the <see cref="ComponentSystem" /> class
                 /// </summary>
-                /// <param name="world">The world</param>
+                /// <param name="world">The scene</param>
                 public ComponentSystem(World world)
                     : base(world)
                 {
@@ -176,7 +176,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             }
 
             /// <summary>
-            ///     The entity set system class
+            ///     The gameObject set system class
             /// </summary>
             /// <seealso cref="AEntitySetSystem{int}" />
             private sealed partial class EntitySetSystem : AEntitySetSystem<int>

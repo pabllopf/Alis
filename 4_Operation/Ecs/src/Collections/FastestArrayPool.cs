@@ -1,0 +1,99 @@
+﻿using System;
+using System.Buffers;
+using System.Numerics;
+using System.Runtime.CompilerServices;
+using Alis.Core.Ecs.Core.Memory;
+
+namespace Alis.Core.Ecs.Collections
+{
+      public sealed class FastestArrayPool<T> : ArrayPool<T>
+    {
+        private const int MinBucketSize = 16;     // 2^4
+        private const int BucketCount = 27;       // Buckets from 2^4 (16) to 2^30 (~1G elements)
+        private readonly T[][] _buckets = new T[BucketCount][];
+
+        public static FastestArrayPool<T> Instance { get; } = new();
+
+        public FastestArrayPool()
+        {
+            Gen2GcCallback.Gen2CollectionOccured += ClearBuckets;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void ResizeArrayFromPool(ref T[] arr, int len)
+        {
+            var finalArr = Instance.Rent(len);
+            arr.AsSpan().CopyTo(finalArr.AsSpan(0, Math.Min(arr.Length, finalArr.Length)));
+            Instance.Return(arr);
+            arr = finalArr;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public override T[] Rent(int minimumLength)
+        {
+            if (minimumLength < MinBucketSize)
+                return new T[minimumLength];
+
+            int bucketIndex = GetBucketIndex(minimumLength);
+            if (bucketIndex == -1)
+                return new T[minimumLength]; // fallback for oversized arrays
+
+            ref T[] slot = ref _buckets[bucketIndex];
+            if (slot is not null)
+            {
+                var arr = slot;
+                slot = null!;
+                return arr!;
+            }
+
+#if NET6_0_OR_GREATER
+            return GC.AllocateUninitializedArray<T>(1 << (bucketIndex + 4));
+#else
+            return new T[1 << (bucketIndex + 4)];
+#endif
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public override void Return(T[] array, bool clearArray = false)
+        {
+            int bucketIndex = GetBucketIndex(array.Length);
+            if (bucketIndex == -1)
+                return;
+
+            if (clearArray && RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+                array.AsSpan().Clear();
+
+            _buckets[bucketIndex] = array;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static int GetBucketIndex(int size)
+        {
+            if (size < MinBucketSize)
+                return -1;
+
+            int log2;
+#if NET6_0_OR_GREATER
+            log2 = BitOperations.Log2((uint)size - 1) + 1;
+#else
+            log2 = 0;
+            int n = size - 1;
+            if ((n & 0xFFFF0000) != 0) { n >>= 16; log2 += 16; }
+            if ((n & 0xFF00) != 0) { n >>= 8; log2 += 8; }
+            if ((n & 0xF0) != 0) { n >>= 4; log2 += 4; }
+            if ((n & 0xC) != 0) { n >>= 2; log2 += 2; }
+            if ((n & 0x2) != 0) log2 += 1;
+            log2 += 1; // since we rounded down
+#endif
+
+            int index = log2 - 4;
+            return (index >= 0 && index < BucketCount) ? index : -1;
+        }
+
+        private void ClearBuckets()
+        {
+            for (int i = 0; i < BucketCount; i++)
+                _buckets[i] = null;
+        }
+    }
+}

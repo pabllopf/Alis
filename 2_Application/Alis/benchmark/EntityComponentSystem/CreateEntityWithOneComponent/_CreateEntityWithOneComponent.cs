@@ -33,7 +33,7 @@ using BenchmarkDotNet.Order;
 namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
 {
     /// <summary>
-    ///     The create entity with one component class
+    ///     The create gameObject with one component class
     /// </summary>
     [BenchmarkCategory(Categories.CreateEntity), MemoryDiagnoser(false), Orderer(SummaryOrderPolicy.FastestToSlowest)]
 #if CHECK_CACHE_MISSES
@@ -42,7 +42,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
     public partial class CreateEntityWithOneComponent
     {
         /// <summary>
-        ///     Gets or sets the value of the entity count
+        ///     Gets or sets the value of the gameObject count
         /// </summary>
         [Params(1_000)]
         public int EntityCount { get; set; }

@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
     public partial class SystemWithTwoComponentsMultipleComposition
     {
         /// <summary>
-        ///     The frent
+        ///     The alis
         /// </summary>
         [Context] private readonly FrentContext _frent;
 
@@ -83,7 +83,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
         }
 
         /// <summary>
-        ///     The frent context class
+        ///     The alis context class
         /// </summary>
         /// <seealso cref="FrentBaseContext" />
         internal sealed class FrentContext : FrentBaseContext
@@ -96,7 +96,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             /// <summary>
             ///     Initializes a new instance of the <see cref="FrentContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
+            /// <param name="entityCount">The gameObject count</param>
             public FrentContext(int entityCount)
             {
                 for (int i = 0; i < entityCount; i++)
@@ -116,28 +116,29 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             /// <summary>
             ///     The padding
             /// </summary>
-            private struct Padding1;
+            public struct Padding1;
 
             /// <summary>
             ///     The padding
             /// </summary>
-            private struct Padding2;
+            public struct Padding2;
 
             /// <summary>
             ///     The padding
             /// </summary>
-            private struct Padding3;
+            public struct Padding3;
 
             /// <summary>
             ///     The padding
             /// </summary>
-            private struct Padding4;
+            public struct Padding4;
         }
 
         /// <summary>
         ///     The sum
         /// </summary>
-        internal struct Sum : IAction<Component1, Component2>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Sum : IAction<Component1, Component2>
         {
             /// <summary>
             ///     Runs the t 0

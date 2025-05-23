@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Alis.Benchmark.CustomCollections.Frugals.FrugalsBenchmarks-20250524-192848</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.14.0, macOS Sequoia 15.5 (24F74) [Darwin 24.5.0]
+Apple M3 Max, 1 CPU, 16 logical and 16 physical cores
+.NET SDK 9.0.100
+  [Host]   : .NET 8.0.11 (8.0.1124.51707), Arm64 RyuJIT AdvSIMD
+  ShortRun : .NET 8.0.11 (8.0.1124.51707), Arm64 RyuJIT AdvSIMD
+</code></pre>
+<pre><code>Job=ShortRun  IterationCount=3  LaunchCount=1  
+WarmupCount=3  
+</code></pre>
+
+<table>
+<thead><tr><th>Method                 </th><th>ArraySize</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Gen0</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>&#39;[PooledStack]_Initialize()&#39;</td><td>10</td><td>8.0513 ns</td><td>2.2093 ns</td><td>0.1211 ns</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;[FrugalStack]_Initialize()&#39;</td><td>10</td><td>7.3612 ns</td><td>8.1275 ns</td><td>0.4455 ns</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;[FastestStack]_Initialize()&#39;</td><td>10</td><td>7.5685 ns</td><td>1.8993 ns</td><td>0.1041 ns</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;[POOLED] Pop elements&#39;</td><td>10</td><td>30.2747 ns</td><td>0.5919 ns</td><td>0.0324 ns</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;[FRUGAL] Pop elements&#39;</td><td>10</td><td>8.8660 ns</td><td>0.1505 ns</td><td>0.0083 ns</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;[FASTEST] Pop elements&#39;</td><td>10</td><td>8.8913 ns</td><td>0.3571 ns</td><td>0.0196 ns</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;[POOLED] Push elements&#39;</td><td>10</td><td>19.5357 ns</td><td>0.9525 ns</td><td>0.0522 ns</td><td>0.0172</td><td>144 B</td>
+</tr><tr><td>&#39;[FRUGAL] Push elements&#39;</td><td>10</td><td>11.2043 ns</td><td>0.1834 ns</td><td>0.0101 ns</td><td>0.0076</td><td>64 B</td>
+</tr><tr><td>&#39;[FASTEST] Push elements&#39;</td><td>10</td><td>11.1495 ns</td><td>0.6429 ns</td><td>0.0352 ns</td><td>0.0076</td><td>64 B</td>
+</tr><tr><td>&#39;[POOLED]Remove elements&#39;</td><td>10</td><td>22.5412 ns</td><td>0.7443 ns</td><td>0.0408 ns</td><td>0.0172</td><td>144 B</td>
+</tr><tr><td>&#39;[FRUGAL]Remove elements&#39;</td><td>10</td><td>13.8014 ns</td><td>4.1750 ns</td><td>0.2288 ns</td><td>0.0076</td><td>64 B</td>
+</tr><tr><td>&#39;[FASTEST]Remove elements&#39;</td><td>10</td><td>33.8960 ns</td><td>3.1540 ns</td><td>0.1729 ns</td><td>0.0076</td><td>64 B</td>
+</tr><tr><td>&#39;[POOLED]ASSPAN&#39;</td><td>10</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;[FRUGAL]ASSPAN&#39;</td><td>10</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;[FASTEST]ASSPAN&#39;</td><td>10</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>-</td><td>-</td>
+</tr></tbody></table>
+</body>
+</html>

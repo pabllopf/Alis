@@ -1,11 +1,18 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 
 namespace Alis.Core.Ecs.Sample
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     internal class Program
     {
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         static void Main(string[] args)
         {
             MethodInfo[] methods = typeof(Samples).GetMethods().Where(m => m.GetCustomAttribute<SampleAttribute>() is not null).ToArray();

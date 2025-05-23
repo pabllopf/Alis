@@ -1,14 +1,14 @@
-﻿namespace Alis.Core.Ecs.Core.Events
+namespace Alis.Core.Ecs.Core.Events
 {
     /// <summary>
-    /// An generic action with known parameter
+    ///     An generic action with known parameter
     /// </summary>
     /// <remarks>Since delegates cannot be unbound generics, we use an interface instead</remarks>
     /// <typeparam name="TParam">The first parameter, which is normally bound</typeparam>
     public interface IGenericAction<TParam>
     {
         /// <summary>
-        /// Runs the arbitrary generic method that this <see cref="IGenericAction{TParam}"/> represents
+        ///     Runs the arbitrary generic method that this <see cref="IGenericAction{TParam}" /> represents
         /// </summary>
         /// <typeparam name="T">The unbound generic parameter</typeparam>
         /// <param name="param">The first parameter</param>
@@ -17,13 +17,13 @@
     }
 
     /// <summary>
-    /// An generic action with known parameter
+    ///     An generic action with known parameter
     /// </summary>
     /// <remarks>Since delegates cannot be unbound generics, we use an interface instead</remarks>
     public interface IGenericAction
     {
         /// <summary>
-        /// Runs the arbitrary generic method that this <see cref="IGenericAction"/> represents
+        ///     Runs the arbitrary generic method that this <see cref="IGenericAction" /> represents
         /// </summary>
         /// <typeparam name="T">The unbound generic parameter</typeparam>
         /// <param name="type">The generic parameter</param>

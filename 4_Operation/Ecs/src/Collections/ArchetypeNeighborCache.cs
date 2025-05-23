@@ -1,47 +1,60 @@
-﻿using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Collections
 {
     //160 bits, 20 bytes
+    /// <summary>
+    ///     The archetype neighbor cache
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct ArchetypeNeighborCache
     {
         //128 bits
+        /// <summary>
+        ///     The keys and values
+        /// </summary>
         private InlineArray8<ushort> _keysAndValues;
+
         //32
+        /// <summary>
+        ///     The next index
+        /// </summary>
         private int _nextIndex;
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        /// <summary>
+        ///     Traverses the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The int</returns>
         public int Traverse(ushort value)
         {
-            //my simd code is garbage
-            //#if NET7_0_OR_GREATER
-            //        if(Vector256.IsHardwareAccelerated)
-            //        {
-            //            Vector256<ushort> bits = Vector256.Equals(Vector256.LoadUnsafe(ref _keysAndValues._0), Vector256.Create(value));
-            //            int index = BitOperations.TrailingZeroCount(bits.ExtractMostSignificantBits());
-            //            return index;
-            //        }
-            //#endif
-            //TODO: better impl
-            if (value == _keysAndValues._0)
-                return 0;
-            if (value == _keysAndValues._1)
-                return 1;
-            if (value == _keysAndValues._2)
-                return 2;
-            if (value == _keysAndValues._3)
-                return 3;
+            if (value == _keysAndValues._0) return 0;
+
+            if (value == _keysAndValues._1) return 1;
+
+            if (value == _keysAndValues._2) return 2;
+
+            if (value == _keysAndValues._3) return 3;
 
             return 32;
         }
 
+        /// <summary>
+        ///     Lookups the index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The ushort</returns>
         public ushort Lookup(int index)
         {
-            Debug.Assert(index < 4);
             return Unsafe.Add(ref _keysAndValues._4, index);
         }
 
+        /// <summary>
+        ///     Sets the key
+        /// </summary>
+        /// <param name="key">The key</param>
+        /// <param name="value">The value</param>
         public void Set(ushort key, ushort value)
         {
             Unsafe.Add(ref _keysAndValues._4, _nextIndex) = value;

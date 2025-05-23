@@ -1,27 +1,35 @@
-﻿
-
-
-
-
-using System;
-using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Core;
-using Alis.Variadic.Generator;
-using System.Collections.Immutable;
-
-namespace Alis.Core.Ecs.Systems;
+namespace Alis.Core.Ecs.Systems
+{
+    /// <summary>
+    ///     The query class
+    /// </summary>
     partial class Query
     {
         /// <summary>
-        /// Enumerates component references for all entities in this query. Intended for use in foreach loops.
+        ///     Enumerates component references for all entities in this query. Intended for use in foreach loops.
         /// </summary>
-        public QueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable Enumerate<T1, T2, T3, T4, T5, T6, T7>() => new(this);
+        public QueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable Enumerate<T1, T2, T3, T4, T5, T6, T7>()
+        {
+            return new QueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable(this);
+        }
+
         /// <summary>
-        /// Enumerates component references and <see cref="Entity"/> instances for all entities in this query. Intended for use in foreach loops.
+        ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended for
+        ///     use in foreach loops.
         /// </summary>
-        public EntityQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable EnumerateWithEntities<T1, T2, T3, T4, T5, T6, T7>() => new(this);
+        public GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable EnumerateWithEntities<T1, T2, T3, T4, T5,
+            T6, T7>()
+        {
+            return new GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable(this);
+        }
+
         /// <summary>
-        /// Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
+        ///     Enumerates component chunks for all entities in this query. Intended for use in foreach loops.
         /// </summary>
-        public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable EnumerateChunks<T1, T2, T3, T4, T5, T6, T7>() => new(this);
+        public ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable
+            EnumerateChunks<T1, T2, T3, T4, T5, T6, T7>()
+        {
+            return new ChunkQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>.QueryEnumerable(this);
+        }
     }
+}

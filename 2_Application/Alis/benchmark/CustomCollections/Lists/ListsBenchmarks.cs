@@ -48,11 +48,6 @@ namespace Alis.Benchmark.CustomCollections.Lists
         /// </summary>
         private List<int> fastList;
 
-        /// <summary>
-        ///     The pooled list
-        /// </summary>
-        private PooledList<int> pooledList;
-
         // Inicialización
         /// <summary>
         ///     Setup this instance
@@ -64,12 +59,6 @@ namespace Alis.Benchmark.CustomCollections.Lists
             for (int i = 0; i < ArraySize; i++)
             {
                 fastList.Add(i);
-            }
-
-            pooledList = new PooledList<int>();
-            for (int i = 0; i < ArraySize; i++)
-            {
-                pooledList.Add(i);
             }
         }
 
@@ -84,18 +73,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
                 _ = fastList[i];
             }
         }
-
-        /// <summary>
-        ///     Pooleds the list array iterate
-        /// </summary>
-        [Benchmark(Description = "[POOLED] Iterate List")]
-        public void Pooled_List_ArrayIterate()
-        {
-            for (int i = 1; i < ArraySize - 1; i++)
-            {
-                _ = pooledList[i];
-            }
-        }
+        
 
         /// <summary>
         ///     Fastests the list add
@@ -108,18 +86,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
                 fastList.Add(i);
             }
         }
-
-        /// <summary>
-        ///     Pooleds the list add
-        /// </summary>
-        [Benchmark(Description = "[POOLED] Add List")]
-        public void Pooled_List_Add()
-        {
-            for (int i = 1; i < ArraySize - 1; i++)
-            {
-                pooledList.Add(i);
-            }
-        }
+        
 
         /// <summary>
         ///     Fastests the list remove
@@ -137,23 +104,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
                 fastList.RemoveAt(i);
             }
         }
-
-        /// <summary>
-        ///     Pooleds the list remove
-        /// </summary>
-        [Benchmark(Description = "[POOLED] Remove List")]
-        public void Pooled_List_Remove()
-        {
-            for (int i = 1; i < ArraySize - 1; i++)
-            {
-                pooledList.Add(i);
-            }
-
-            for (int i = 1; i < ArraySize - 1; i++)
-            {
-                pooledList.RemoveAt(i);
-            }
-        }
+        
 
         /// <summary>
         ///     Fastests the list clear
@@ -165,15 +116,6 @@ namespace Alis.Benchmark.CustomCollections.Lists
         }
 
         /// <summary>
-        ///     Pooleds the list clear
-        /// </summary>
-        [Benchmark(Description = "[POOLED] Clear List")]
-        public void Pooled_List_Clear()
-        {
-            pooledList.Clear();
-        }
-
-        /// <summary>
         ///     Fastests the list contains
         /// </summary>
         [Benchmark(Description = "[NORMAL] Contains List")]
@@ -182,18 +124,6 @@ namespace Alis.Benchmark.CustomCollections.Lists
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 _ = fastList.Contains(i);
-            }
-        }
-
-        /// <summary>
-        ///     Pooleds the list contains
-        /// </summary>
-        [Benchmark(Description = "[POOLED] Contains List")]
-        public void Pooled_List_Contains()
-        {
-            for (int i = 1; i < ArraySize - 1; i++)
-            {
-                _ = pooledList.Contains(i);
             }
         }
 
@@ -209,19 +139,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
                 _ = fastList.IndexOf(i);
             }
         }
-
-        /// <summary>
-        ///     Pooleds the list index of
-        /// </summary>
-        [Benchmark(Description = "[POOLED] IndexOf List")]
-        public void Pooled_List_IndexOf()
-        {
-            for (int i = 1; i < ArraySize - 1; i++)
-            {
-                _ = pooledList.IndexOf(i);
-            }
-        }
-
+        
         /// <summary>
         ///     Fastests the list insert
         /// </summary>
@@ -231,18 +149,6 @@ namespace Alis.Benchmark.CustomCollections.Lists
             for (int i = 1; i < ArraySize - 1; i++)
             {
                 fastList.Insert(i, i);
-            }
-        }
-
-        /// <summary>
-        ///     Pooleds the list insert
-        /// </summary>
-        [Benchmark(Description = "[POOLED] Insert List")]
-        public void Pooled_List_Insert()
-        {
-            for (int i = 1; i < ArraySize - 1; i++)
-            {
-                pooledList.Insert(i, i);
             }
         }
     }

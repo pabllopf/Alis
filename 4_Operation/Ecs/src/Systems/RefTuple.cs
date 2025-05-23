@@ -3,21 +3,20 @@ using Alis.Core.Ecs.Core;
 
 namespace Alis.Core.Ecs.Systems
 {
- // for Item1 fields
+    // for Item1 fields
 
     /// <summary>
-    /// A tuple of multiple references.
+    ///     A tuple of multiple references.
     /// </summary>
-    
-    
-    
-    
     public ref struct RefTuple<T>
     {
+        /// <summary>
+        ///     The item
+        /// </summary>
         public Ref<T> Item1;
 
         /// <summary>
-        /// Allows tuple deconstruction syntax to be used.
+        ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
         public void Deconstruct(out Ref<T> @ref)
         {
@@ -26,51 +25,26 @@ namespace Alis.Core.Ecs.Systems
     }
 
     /// <summary>
-    /// A tuple of multiple references with an <see cref="Entity"/>.
+    ///     A tuple of a chunk of entities and their components.
     /// </summary>
-    
-    
-    
-    
-    public ref struct EntityRefTuple<T>
-    {
-        /// <summary>
-        /// The current <see cref="Entity"/>; the components in this tuple belong to this <see cref="Entity"/>.
-        /// </summary>
-        public Entity Entity;
-        public Ref<T> Item1;
-
-        /// <summary>
-        /// Allows tuple deconstruction syntax to be used.
-        /// </summary>
-        public void Deconstruct(out Entity entity, out Ref<T> @ref)
-        {
-            entity = Entity;
-            @ref = Item1;
-        }
-    }
-
-    /// <summary>
-    /// A tuple of a chunk of entities and their components.
-    /// </summary>
-    
-    
-    
-    
     public ref struct ChunkTuple<T>
     {
         /// <summary>
-        /// An enumerator that can be used to enumerate individual <see cref="Entity"/> instances.
+        ///     An enumerator that can be used to enumerate individual <see cref="GameObject" /> instances.
         /// </summary>
-        public EntityEnumerator.EntityEnumerable Entities;
+        public GameObjectEnumerator.EntityEnumerable Entities;
+
+        /// <summary>
+        ///     The span
+        /// </summary>
         public Span<T> Span;
 
         /// <summary>
-        /// Allows tuple deconstruction syntax to be used.
+        ///     Allows tuple deconstruction syntax to be used.
         /// </summary>
-        public void Deconstruct(out Span<T> @comp1)
+        public void Deconstruct(out Span<T> comp1)
         {
-            @comp1 = Span;
+            comp1 = Span;
         }
     }
 }

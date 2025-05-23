@@ -1,29 +1,67 @@
-﻿using System.Collections.Immutable;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Memory.Collections;
 
 namespace Alis.Core.Ecs.Systems
 {
-    internal struct QueryHash
+    /// <summary>
+    ///     The query hash
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    
+    public struct QueryHash
     {
-        public QueryHash() { }
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="QueryHash" /> class
+        /// </summary>
+        public QueryHash()
+        {
+        }
+
+        /// <summary>
+        ///     The state
+        /// </summary>
         private int _state = 12582917;
 
-        public static QueryHash New() => new QueryHash();
-        public static QueryHash New(ImmutableArray<Rule> rules)
+        /// <summary>
+        ///     News
+        /// </summary>
+        /// <returns>The query hash</returns>
+        public static QueryHash New()
         {
-            var hash = new QueryHash();
-            foreach (var rule in rules)
-            {
-                hash.AddRule(rule);
-            }
+            return new QueryHash();
+        }
+
+        /// <summary>
+        ///     News the rules
+        /// </summary>
+        /// <param name="rules">The rules</param>
+        /// <returns>The hash</returns>
+        public static QueryHash New(FastImmutableArray<Rule> rules)
+        {
+            QueryHash hash = new QueryHash();
+            foreach (Rule rule in rules) hash.AddRule(rule);
             return hash;
         }
 
+        /// <summary>
+        ///     Adds the rule using the specified rule
+        /// </summary>
+        /// <param name="rule">The rule</param>
+        /// <returns>The query hash</returns>
         public QueryHash AddRule(Rule rule)
         {
             _state *= rule.GetHashCode();
             return this;
         }
 
-        public int ToHashCode() => _state;
+        /// <summary>
+        ///     Returns the hash code
+        /// </summary>
+        /// <returns>The int</returns>
+        public int ToHashCode()
+        {
+            return _state;
+        }
     }
 }

@@ -314,7 +314,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="cameraPosition">The camera position</param>
         /// <param name="cameraResolution">The camera resolution</param>
         /// <param name="pixelsPerMeter">The pixels per meter</param>
-        public void Render(Entity gameobject, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
+        public void Render(GameObject gameobject, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
             if (!string.IsNullOrEmpty(NameFile) && Path == string.Empty)
             {
@@ -365,6 +365,11 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
 
             Gl.GlDisable(EnableCap.Blend);
+        }
+
+        public void Init(GameObject self)
+        {
+            
         }
     }
 }

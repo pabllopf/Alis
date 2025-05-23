@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Linq;
@@ -12,15 +12,29 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Alis.Core.Ecs.Generator
 {
+    /// <summary>
+    /// The component update type registry generator class
+    /// </summary>
+    /// <seealso cref="IIncrementalGenerator"/>
     [Generator(LanguageNames.CSharp)]
     public class ComponentUpdateTypeRegistryGenerator : IIncrementalGenerator
     {
+        /// <summary>
+        /// The symbol display format
+        /// </summary>
         private static SymbolDisplayFormat? _symbolDisplayFormat;
+        /// <summary>
+        /// Gets the value of the fully qualified type name format
+        /// </summary>
         private static SymbolDisplayFormat FullyQualifiedTypeNameFormat => _symbolDisplayFormat ??= new(
             genericsOptions: SymbolDisplayGenericsOptions.IncludeTypeParameters,
             typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypesAndNamespaces
         );
 
+        /// <summary>
+        /// Initializes the context
+        /// </summary>
+        /// <param name="context">The context</param>
         public void Initialize(IncrementalGeneratorInitializationContext context)
         {
             var models = context.SyntaxProvider.CreateSyntaxProvider(
@@ -49,6 +63,12 @@ namespace Alis.Core.Ecs.Generator
             }
         }
     
+        /// <summary>
+        /// Generates the component update model using the specified gsc
+        /// </summary>
+        /// <param name="gsc">The gsc</param>
+        /// <param name="ct">The ct</param>
+        /// <returns>The component update item model</returns>
         private static ComponentUpdateItemModel GenerateComponentUpdateModel(GeneratorSyntaxContext gsc, CancellationToken ct)
         {
             if (gsc.SemanticModel.GetDeclaredSymbol(gsc.Node, ct) is not INamedTypeSymbol componentTypeSymbol)
@@ -189,6 +209,12 @@ namespace Alis.Core.Ecs.Generator
             }
         }
 
+        /// <summary>
+        /// Pushes the update type attributes using the specified attributes
+        /// </summary>
+        /// <param name="attributes">The attributes</param>
+        /// <param name="node">The node</param>
+        /// <param name="semanticModel">The semantic model</param>
         private static void PushUpdateTypeAttributes(ref Stack<string> attributes,  SyntaxNode node, SemanticModel semanticModel)
         {
             foreach (var item in ((TypeDeclarationSyntax)node).Members)
@@ -212,6 +238,12 @@ namespace Alis.Core.Ecs.Generator
             }
         }
 
+        /// <summary>
+        /// Generates the monolithic registration file using the specified models
+        /// </summary>
+        /// <param name="models">The models</param>
+        /// <param name="ct">The ct</param>
+        /// <returns>The source output</returns>
         private static SourceOutput GenerateMonolithicRegistrationFile(ImmutableArray<ComponentUpdateItemModel> models, CancellationToken ct)
         {
             if (models.Length == 0)
@@ -258,6 +290,11 @@ namespace Alis.Core.Ecs.Generator
             return new("AlisComponentRegistry.g.cs", source);
         }
     
+        /// <summary>
+        /// Appends the initalization method body using the specified cb
+        /// </summary>
+        /// <param name="cb">The cb</param>
+        /// <param name="model">The model</param>
         private static void AppendInitalizationMethodBody(CodeBuilder cb, in ComponentUpdateItemModel model)
         {
             var span = ExtractUpdaterName(model.ImplInterface);
@@ -307,6 +344,13 @@ namespace Alis.Core.Ecs.Generator
             }
         }
 
+        /// <summary>
+        /// Generates the register generic type using the specified model
+        /// </summary>
+        /// <param name="model">The model</param>
+        /// <param name="ct">The ct</param>
+        /// <exception cref="NotImplementedException"></exception>
+        /// <returns>The source output</returns>
         private static SourceOutput GenerateRegisterGenericType(ComponentUpdateItemModel model, CancellationToken ct)
         {
             //NOTE:
@@ -367,6 +411,12 @@ namespace Alis.Core.Ecs.Generator
             }
         }
 
+        /// <summary>
+        /// Inheritses the from base using the specified type symbol
+        /// </summary>
+        /// <param name="typeSymbol">The type symbol</param>
+        /// <param name="baseTypeName">The base type name</param>
+        /// <returns>The bool</returns>
         private static bool InheritsFromBase(INamedTypeSymbol? typeSymbol, string baseTypeName)
         {
             while (typeSymbol != null)

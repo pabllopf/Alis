@@ -1,34 +1,63 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using Alis.Core.Ecs.Buffers;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Collections
 {
-    internal struct FrugalStack<T>()
+    /// <summary>
+    ///     The frugal stack
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    
+    public struct FrugalStack<T>()
     {
+        /// <summary>
+        ///     The buffer
+        /// </summary>
         private T[] _buffer = [];
+
+        /// <summary>
+        ///     The next index
+        /// </summary>
         private int _nextIndex = 0;
 
+        /// <summary>
+        ///     Gets the value of the any
+        /// </summary>
         public bool Any => _nextIndex != 0;
 
 
+        /// <summary>
+        ///     Pushes the comp
+        /// </summary>
+        /// <param name="comp">The comp</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Push(T comp)
         {
-            var buffer = _buffer;
+            T[] buffer = _buffer;
             if ((uint)_nextIndex < (uint)buffer.Length)
                 buffer[_nextIndex++] = comp;
             else
                 ResizeAndPush(comp);
         }
 
+        /// <summary>
+        ///     Resizes the and push using the specified comp
+        /// </summary>
+        /// <param name="comp">The comp</param>
         private void ResizeAndPush(in T comp)
         {
-            FastStackArrayPool<T>.ResizeArrayFromPool(ref _buffer, _buffer.Length > 16 ? _buffer.Length << 1 : _buffer.Length + 2);
+            FastestArrayPool<T>.ResizeArrayFromPool(ref _buffer,
+                _buffer.Length > 16 ? _buffer.Length << 1 : _buffer.Length + 2);
             _buffer[_nextIndex++] = comp;
         }
 
+        /// <summary>
+        ///     Tries the pop using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The bool</returns>
         public bool TryPop(out T value)
         {
             if (_nextIndex == 0)
@@ -41,10 +70,14 @@ namespace Alis.Core.Ecs.Collections
             return true;
         }
 
+        /// <summary>
+        ///     Pops this instance
+        /// </summary>
+        /// <returns>The next</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public T Pop()
         {
-            var next = _buffer[--_nextIndex];
+            T next = _buffer[--_nextIndex];
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
                 _buffer[_nextIndex] = default!;
             return next;
@@ -52,22 +85,21 @@ namespace Alis.Core.Ecs.Collections
 
         public void Remove(T item)
         {
-            int nextIndex = _nextIndex;
-            Span<T> items = _buffer.AsSpan()[..nextIndex];
-            for (int i = 0; i < nextIndex; i++)
-            {
-                if (EqualityComparer<T>.Default.Equals(items[i], item))
+            for (int i = 0; i < _nextIndex; i++)
+                if (EqualityComparer<T>.Default.Equals(_buffer[i], item))
                 {
-                    items[i] = Pop();
+                    _buffer[i] = Pop();
                     break;
                 }
-            }
         }
 
 
         /// <summary>
-        /// DO NOT ALTER WHILE SPAN IS IN USE
+        ///     DO NOT ALTER WHILE SPAN IS IN USE
         /// </summary>
-        public readonly Span<T> AsSpan() => _buffer.AsSpan(0, _nextIndex);
+        public readonly Span<T> AsSpan()
+        {
+            return _buffer.AsSpan(0, _nextIndex);
+        }
     }
 }

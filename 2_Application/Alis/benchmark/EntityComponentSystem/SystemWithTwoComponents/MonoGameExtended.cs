@@ -65,8 +65,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             /// <summary>
             ///     Initializes a new instance of the <see cref="MonoGameExtendedContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
-            /// <param name="entityPadding">The entity padding</param>
+            /// <param name="entityCount">The gameObject count</param>
+            /// <param name="entityPadding">The gameObject padding</param>
             public MonoGameExtendedContext(int entityCount, int entityPadding)
             {
                 _system = new UpdateSystem();
@@ -97,7 +97,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             }
 
             /// <summary>
-            ///     Gets the value of the world
+            ///     Gets the value of the scene
             /// </summary>
             public new World World { get; }
 

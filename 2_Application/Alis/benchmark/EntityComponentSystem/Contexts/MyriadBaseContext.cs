@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Myriad.ECS;
 using Myriad.ECS.Worlds;
 
@@ -38,7 +39,8 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     The component
         /// </summary>
-        internal struct Component1
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Component1
             : IComponent
         {
             /// <summary>
@@ -50,7 +52,8 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     The component
         /// </summary>
-        internal struct Component2
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Component2
             : IComponent
         {
             /// <summary>
@@ -62,7 +65,8 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     The component
         /// </summary>
-        internal struct Component3
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Component3
             : IComponent
         {
             /// <summary>
@@ -74,7 +78,8 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     The padding
         /// </summary>
-        internal struct Padding1
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Padding1
             : IComponent
         {
         }
@@ -82,7 +87,8 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     The padding
         /// </summary>
-        internal struct Padding2
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Padding2
             : IComponent
         {
         }
@@ -90,7 +96,8 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     The padding
         /// </summary>
-        internal struct Padding3
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Padding3
             : IComponent
         {
         }
@@ -98,7 +105,8 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     The padding
         /// </summary>
-        internal struct Padding4
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Padding4
             : IComponent
         {
         }
@@ -117,7 +125,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         public MyriadBaseContext() => World = new WorldBuilder().Build();
 
         /// <summary>
-        ///     Gets the value of the world
+        ///     Gets the value of the scene
         /// </summary>
         public World World { get; }
 

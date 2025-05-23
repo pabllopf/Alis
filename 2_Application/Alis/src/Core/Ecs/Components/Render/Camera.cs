@@ -66,5 +66,10 @@ namespace Alis.Core.Ecs.Components.Render
         public void Update(IGameObject self)
         {
         }
+
+        public void Init(GameObject self)
+        {
+            
+        }
     }
 }

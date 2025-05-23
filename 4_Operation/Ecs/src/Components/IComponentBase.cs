@@ -1,4 +1,4 @@
-﻿namespace Alis.Core.Ecs.Components
+namespace Alis.Core.Ecs.Components
 {
     /*  ALL COMPONENT TYPES                                 |Interface|Storage
      *  Arbitary data                                           X       X
@@ -13,8 +13,11 @@
      */
 
     /// <summary>
-    /// Base marker component for all component interfaces
+    ///     Base marker component for all component interfaces
     /// </summary>
-    /// <remarks>All components with <see cref="IComponentBase"/> will be auto-registered. This makes it useful for AOT compilation scenarios</remarks>
+    /// <remarks>
+    ///     All components with <see cref="IComponentBase" /> will be auto-registered. This makes it useful for AOT
+    ///     compilation scenarios
+    /// </remarks>
     public interface IComponentBase;
 }

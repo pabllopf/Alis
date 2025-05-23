@@ -49,6 +49,7 @@ namespace Alis.Sample.Pong
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            /*
             VideoGame
                 .Create()
                 .Settings(setting => setting
@@ -225,7 +226,7 @@ namespace Alis.Sample.Pong
                         )
                     )
                 )
-                .Run();
+                .Run();*/
         }
     }
 }

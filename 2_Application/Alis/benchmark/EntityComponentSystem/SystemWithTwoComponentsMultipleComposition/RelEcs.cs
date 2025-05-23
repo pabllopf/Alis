@@ -58,7 +58,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             /// <summary>
             ///     Initializes a new instance of the <see cref="RelEcsContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
+            /// <param name="entityCount">The gameObject count</param>
             public RelEcsContext(int entityCount)
             {
                 for (int i = 0; i < entityCount; ++i)
@@ -120,9 +120,9 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             private sealed class MonoThreadRunSystem : ISystem
             {
                 /// <summary>
-                ///     Runs the world
+                ///     Runs the scene
                 /// </summary>
-                /// <param name="world">The world</param>
+                /// <param name="world">The scene</param>
                 public void Run(World world)
                 {
                     Query<Component1, Component2> query = world.Query<Component1, Component2>().Build();

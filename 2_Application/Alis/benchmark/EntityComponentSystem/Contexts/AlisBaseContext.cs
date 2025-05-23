@@ -28,30 +28,32 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs;
 
 namespace Alis.Benchmark.EntityComponentSystem.Contexts
 {
     /// <summary>
-    ///     The frent base context class
+    ///     The alis base context class
     /// </summary>
     /// <seealso cref="IDisposable" />
-    internal class AlisBaseContext : IDisposable
+    public class AlisBaseContext : IDisposable
     {
         /// <summary>
-        ///     Gets the value of the world
+        ///     Gets the value of the scene
         /// </summary>
-        public World World { get; } = new World();
+        public Scene Scene { get; } = new Scene();
 
         /// <summary>
         ///     Disposes this instance
         /// </summary>
-        public void Dispose() => World.Dispose();
+        public void Dispose() => Scene.Dispose();
 
         /// <summary>
         ///     The component
         /// </summary>
-        internal struct Component1
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Component1
         {
             /// <summary>
             ///     The value
@@ -62,7 +64,8 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     The component
         /// </summary>
-        internal struct Component2
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Component2
         {
             /// <summary>
             ///     The value
@@ -73,7 +76,8 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// <summary>
         ///     The component
         /// </summary>
-        internal struct Component3
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Component3
         {
             /// <summary>
             ///     The value

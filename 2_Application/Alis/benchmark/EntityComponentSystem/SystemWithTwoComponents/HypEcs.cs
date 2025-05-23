@@ -64,8 +64,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             /// <summary>
             ///     Initializes a new instance of the <see cref="HypEcsContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
-            /// <param name="entityPadding">The entity padding</param>
+            /// <param name="entityCount">The gameObject count</param>
+            /// <param name="entityPadding">The gameObject padding</param>
             public HypEcsContext(int entityCount, int entityPadding)
             {
                 for (int i = 0; i < entityCount; ++i)
@@ -108,9 +108,9 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             private sealed class MonoThreadRunSystem : ISystem
             {
                 /// <summary>
-                ///     Runs the world
+                ///     Runs the scene
                 /// </summary>
-                /// <param name="world">The world</param>
+                /// <param name="world">The scene</param>
                 public void Run(World world)
                 {
                     Query<Component1, Component2> query = world.Query<Component1, Component2>().Build();
@@ -131,9 +131,9 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             private sealed class MultiThreadRunSystem : ISystem
             {
                 /// <summary>
-                ///     Runs the world
+                ///     Runs the scene
                 /// </summary>
-                /// <param name="world">The world</param>
+                /// <param name="world">The scene</param>
                 public void Run(World world)
                 {
                     Query<Component1, Component2> query = world.Query<Component1, Component2>().Build();

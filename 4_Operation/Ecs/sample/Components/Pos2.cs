@@ -5,20 +5,31 @@ using Alis.Core.Ecs.Components;
 
 namespace Alis.Core.Ecs.Sample.Components
 {
-    record struct Pos2(float X = 0) : IInitable, IEntityComponent
+    record struct Pos2(float X = 0) : IInitable, IGameObjectComponent
     {
-        private Entity entity;
+        /// <summary>
+        /// The gameObject
+        /// </summary>
+        private GameObject _gameObject;
     
-        public void Update(Entity self)
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void Update(GameObject self)
         {
-            Console.WriteLine(entity.Has<Vel2>() ?
+            Console.WriteLine(_gameObject.Has<Vel2>() ?
                 "I have velocity!" :
                 "No velocity here!");
         }
 
-        public void Init(Entity self)
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void Init(GameObject self)
         {
-            entity = self;
+            _gameObject = self;
             Console.WriteLine("I am initialized!");
         }
     }
