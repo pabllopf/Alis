@@ -6,6 +6,9 @@ using Alis.Core.Ecs.Core.Archetype;
 
 namespace Alis.Core.Ecs.Systems
 {
+    /// <summary>
+    /// The query enumerator
+    /// </summary>
     public ref struct QueryEnumerator<T>
     {
         /// <summary>

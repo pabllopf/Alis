@@ -83,6 +83,10 @@ namespace Alis.Core.Ecs.Collections
             return next;
         }
 
+        /// <summary>
+        /// Removes the item
+        /// </summary>
+        /// <param name="item">The item</param>
         public void Remove(T item)
         {
             for (int i = 0; i < _nextIndex; i++)

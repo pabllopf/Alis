@@ -106,6 +106,21 @@ namespace Alis.Core.Ecs
         }
 
 
+        /// <summary>
+        /// Creates the many using the specified count
+        /// </summary>
+        /// <typeparam name="T1">The </typeparam>
+        /// <typeparam name="T2">The </typeparam>
+        /// <typeparam name="T3">The </typeparam>
+        /// <typeparam name="T4">The </typeparam>
+        /// <typeparam name="T5">The </typeparam>
+        /// <typeparam name="T6">The </typeparam>
+        /// <typeparam name="T7">The </typeparam>
+        /// <typeparam name="T8">The </typeparam>
+        /// <typeparam name="T9">The </typeparam>
+        /// <param name="count">The count</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <returns>A chunk tuple of t 1 and t 2 and t 3 and t 4 and t 5 and t 6 and t 7 and t 8 and t 9</returns>
         public ChunkTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9> CreateMany<T1, T2, T3, T4, T5, T6, T7, T8, T9>(int count)
         {
             if ((uint)count == 0) // Efficient validation for non-positive values

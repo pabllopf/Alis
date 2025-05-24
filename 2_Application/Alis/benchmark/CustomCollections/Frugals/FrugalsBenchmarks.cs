@@ -49,8 +49,14 @@ namespace Alis.Benchmark.CustomCollections.Frugals
         /// </summary>
         private PooledStack<int> _pooledStack;
         
+        /// <summary>
+        /// The frugal stack
+        /// </summary>
         private FrugalStack<int> _frugalStack;
         
+        /// <summary>
+        /// The fastest frugal stack
+        /// </summary>
         private FastestFrugalStack<int> _fastestFrugalStack;
 
         // Inicialización
@@ -77,6 +83,9 @@ namespace Alis.Benchmark.CustomCollections.Frugals
             }
         }
         
+        /// <summary>
+        /// Frugals the stack array iterate
+        /// </summary>
         [Benchmark(Description = "[FrugalStack]_Initialize()")]
         public void Frugal_Stack_ArrayIterate()
         {
@@ -86,6 +95,9 @@ namespace Alis.Benchmark.CustomCollections.Frugals
             }
         }
         
+        /// <summary>
+        /// Fastests the stack array iterate fastest
+        /// </summary>
         [Benchmark(Description = "[FastestStack]_Initialize()")]
         public void Fastest_Stack_ArrayIterate_Fastest()
         {
@@ -112,6 +124,9 @@ namespace Alis.Benchmark.CustomCollections.Frugals
             }
         }
         
+        /// <summary>
+        /// Frugals the stack pop
+        /// </summary>
         [Benchmark(Description = "[FRUGAL] Pop elements")]
         public void Frugal_Stack_Pop()
         {
@@ -126,6 +141,9 @@ namespace Alis.Benchmark.CustomCollections.Frugals
             }
         }
         
+        /// <summary>
+        /// Fastests the stack pop fastest
+        /// </summary>
         [Benchmark(Description = "[FASTEST] Pop elements")]
         public void Fastest_Stack_Pop_Fastest()
         {
@@ -153,6 +171,9 @@ namespace Alis.Benchmark.CustomCollections.Frugals
             }
         }
        
+       /// <summary>
+       /// Frugals the stack push
+       /// </summary>
        [Benchmark(Description = "[FRUGAL] Push elements")]
        public void Frugal_Stack_Push()
         {
@@ -163,6 +184,9 @@ namespace Alis.Benchmark.CustomCollections.Frugals
             }
         }
         
+        /// <summary>
+        /// Fastests the stack push fastest
+        /// </summary>
         [Benchmark(Description = "[FASTEST] Push elements")]
         public void Fastest_Stack_Push_Fastest()
         {
@@ -173,6 +197,9 @@ namespace Alis.Benchmark.CustomCollections.Frugals
             }
         }
         
+        /// <summary>
+        /// Pooleds the stack peek
+        /// </summary>
         [Benchmark(Description = "[POOLED]Remove elements")]
         public void Pooled_Stack_Peek()
         {
@@ -188,6 +215,9 @@ namespace Alis.Benchmark.CustomCollections.Frugals
             }
         }
         
+        /// <summary>
+        /// Frugals the stack peek
+        /// </summary>
         [Benchmark(Description = "[FRUGAL]Remove elements")]
         public void Frugal_Stack_Peek()
         {
@@ -221,18 +251,27 @@ namespace Alis.Benchmark.CustomCollections.Frugals
             }
         }
         
+        /// <summary>
+        /// Pooleds the stack as span
+        /// </summary>
         [Benchmark(Description = "[POOLED]ASSPAN")]
         public void Pooled_Stack_AsSpan()
         {
             Span<int> span = _pooledStack.AsSpan();
         }
         
+        /// <summary>
+        /// Frugals the stack as span
+        /// </summary>
         [Benchmark(Description = "[FRUGAL]ASSPAN")]
         public void Frugal_Stack_AsSpan()
         {
             Span<int> span = _frugalStack.AsSpan();
         }
         
+        /// <summary>
+        /// Fastests the stack as span fastest
+        /// </summary>
         [Benchmark(Description = "[FASTEST]ASSPAN")]
         public void Fastest_Stack_AsSpan_Fastest()
         {

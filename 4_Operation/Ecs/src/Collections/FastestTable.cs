@@ -12,10 +12,20 @@ namespace Alis.Core.Ecs.Collections
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct FastestTable<T>
     {
+        /// <summary>
+        /// The buffer
+        /// </summary>
         public T[] _buffer;
 
+        /// <summary>
+        /// Gets the value of the empty
+        /// </summary>
         public static FastestTable<T> Empty => new() { _buffer = Array.Empty<T>() };
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FastestTable"/> class
+        /// </summary>
+        /// <param name="size">The size</param>
         public FastestTable(int size)
         {
 #if NET6_0_OR_GREATER
@@ -25,6 +35,9 @@ namespace Alis.Core.Ecs.Collections
 #endif
         }
 
+        /// <summary>
+        /// The index
+        /// </summary>
         public ref T this[int index]
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -47,6 +60,11 @@ namespace Alis.Core.Ecs.Collections
             return ref _buffer.UnsafeArrayIndex(index);
         }
 
+        /// <summary>
+        /// Unsafes the index no resize using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The ref</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public ref T UnsafeIndexNoResize(int index)
         {
@@ -54,6 +72,10 @@ namespace Alis.Core.Ecs.Collections
             return ref Unsafe.Add(ref r0, index);
         }
 
+        /// <summary>
+        /// Ensures the capacity using the specified size
+        /// </summary>
+        /// <param name="size">The size</param>
         public void EnsureCapacity(int size)
         {
             if (_buffer.Length >= size)
@@ -61,6 +83,10 @@ namespace Alis.Core.Ecs.Collections
             FastestArrayPool<T>.ResizeArrayFromPool(ref _buffer, size);
         }
 
+        /// <summary>
+        /// Converts the span
+        /// </summary>
+        /// <returns>A span of t</returns>
         public Span<T> AsSpan()
         {
 #if NET6_0_OR_GREATER
@@ -71,6 +97,9 @@ namespace Alis.Core.Ecs.Collections
         }
 
 
+        /// <summary>
+        /// Gets the value of the length
+        /// </summary>
         public int Length => _buffer.Length;
     }
 }

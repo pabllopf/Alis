@@ -6,19 +6,43 @@ using Alis.Benchmark.CustomCollections.ArrayPools.Elements;
 
 namespace Alis.Benchmark.CustomCollections.Frugals.Elements.Tests;
 
+/// <summary>
+/// The test array pool class
+/// </summary>
+/// <seealso cref="ArrayPool{T}"/>
 public sealed class TestArrayPool<T> : ArrayPool<T>
     {
+        /// <summary>
+        /// The min bucket size
+        /// </summary>
         private const int MinBucketSize = 16;     // 2^4
+        /// <summary>
+        /// The bucket count
+        /// </summary>
         private const int BucketCount = 27;       // Buckets from 2^4 (16) to 2^30 (~1G elements)
+        /// <summary>
+        /// The bucket count
+        /// </summary>
         private readonly T[][] _buckets = new T[BucketCount][];
 
+        /// <summary>
+        /// Gets the value of the instance
+        /// </summary>
         public static FastTestArrayPool<T> Instance { get; } = new();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestArrayPool{T}"/> class
+        /// </summary>
         public TestArrayPool()
         {
             Gen2GcCallback.Gen2CollectionOccured += ClearBuckets;
         }
 
+        /// <summary>
+        /// Resizes the array from pool using the specified arr
+        /// </summary>
+        /// <param name="arr">The arr</param>
+        /// <param name="len">The len</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void ResizeArrayFromPool(ref T[] arr, int len)
         {
@@ -28,6 +52,11 @@ public sealed class TestArrayPool<T> : ArrayPool<T>
             arr = finalArr;
         }
 
+        /// <summary>
+        /// Rents the minimum length
+        /// </summary>
+        /// <param name="minimumLength">The minimum length</param>
+        /// <returns>The array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override T[] Rent(int minimumLength)
         {
@@ -53,6 +82,11 @@ public sealed class TestArrayPool<T> : ArrayPool<T>
 #endif
         }
 
+        /// <summary>
+        /// Returns the array
+        /// </summary>
+        /// <param name="array">The array</param>
+        /// <param name="clearArray">The clear array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override void Return(T[] array, bool clearArray = false)
         {
@@ -66,6 +100,11 @@ public sealed class TestArrayPool<T> : ArrayPool<T>
             _buckets[bucketIndex] = array;
         }
 
+        /// <summary>
+        /// Gets the bucket index using the specified size
+        /// </summary>
+        /// <param name="size">The size</param>
+        /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static int GetBucketIndex(int size)
         {
@@ -90,6 +129,9 @@ public sealed class TestArrayPool<T> : ArrayPool<T>
             return (index >= 0 && index < BucketCount) ? index : -1;
         }
 
+        /// <summary>
+        /// Clears the buckets
+        /// </summary>
         private void ClearBuckets()
         {
             for (int i = 0; i < BucketCount; i++)

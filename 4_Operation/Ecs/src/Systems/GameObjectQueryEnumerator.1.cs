@@ -4,6 +4,9 @@ using Alis.Core.Ecs.Core.Archetype;
 
 namespace Alis.Core.Ecs.Systems;
 
+/// <summary>
+/// The game object query enumerator
+/// </summary>
 public ref struct GameObjectQueryEnumerator<T>
 {
     /// <summary>

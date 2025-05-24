@@ -22,12 +22,19 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         /// </summary>
         private int _nextIndex = 0;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FrugalStack"/> class
+        /// </summary>
         public FrugalStack()
         {
             _buffer = Array.Empty<T>();
             _nextIndex = 0;
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FrugalStack"/> class
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
         public FrugalStack(int capacity)
         {
             if (capacity == 0)
@@ -100,6 +107,10 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
             return next;
         }
 
+        /// <summary>
+        /// Removes the item
+        /// </summary>
+        /// <param name="item">The item</param>
         public void Remove(T item)
         {
             for (int i = 0; i < _nextIndex; i++)
@@ -119,6 +130,9 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
             return _buffer.AsSpan(0, _nextIndex);
         }
 
+        /// <summary>
+        /// The value
+        /// </summary>
         public T this[int i]
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]

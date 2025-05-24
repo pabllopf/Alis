@@ -9,6 +9,9 @@ using Alis.Core.Ecs.Updating;
 namespace Alis.Core.Ecs
 {
     //it just so happens Archetype and Create both end with "e"
+    /// <summary>
+    /// The scene class
+    /// </summary>
     partial class Scene
     {
         /// <summary>
@@ -59,6 +62,13 @@ namespace Alis.Core.Ecs
         }
 
 
+        /// <summary>
+        /// Creates the many using the specified count
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="count">The count</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <returns>A chunk tuple of t</returns>
         public ChunkTuple<T> CreateMany<T>(int count)
         {
             if ((uint)count == 0) // Efficient validation for non-positive values

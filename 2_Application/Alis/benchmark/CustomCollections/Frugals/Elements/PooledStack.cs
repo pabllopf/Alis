@@ -921,6 +921,10 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
             _size = span.Length;
         }
         
+        /// <summary>
+        /// Converts the span
+        /// </summary>
+        /// <returns>A span of t</returns>
         public Span<T> AsSpan() => _array.AsSpan();
     }
 }

@@ -60,6 +60,9 @@ namespace Alis.Benchmark.CustomCollections.Tables
         /// </summary>
         private NormalTable<int> _normalTable;
         
+        /// <summary>
+        /// The fastest table
+        /// </summary>
         private FastestTable<int> fastestTable;
 
         // Inicialización
@@ -111,6 +114,9 @@ namespace Alis.Benchmark.CustomCollections.Tables
             }
         }
         
+        /// <summary>
+        /// Benchmarks the fastest
+        /// </summary>
         [Benchmark(Description = "[FASTEST]_Iterate")]
         public void BenchmarkFastest()
         {
@@ -147,6 +153,9 @@ namespace Alis.Benchmark.CustomCollections.Tables
             fastTable.EnsureCapacity(ArraySize * 2);
         }
         
+        /// <summary>
+        /// Benchmarks the ensure capacity fastest
+        /// </summary>
         [Benchmark(Description = "[FASTEST]_EnsureCapacity()")]
         public void BenchmarkEnsureCapacityFastest()
         {
@@ -180,6 +189,9 @@ namespace Alis.Benchmark.CustomCollections.Tables
             Span<int> span = fastTable.AsSpan();
         }
         
+        /// <summary>
+        /// Benchmarks the convert to span fastest
+        /// </summary>
         [Benchmark(Description = "[FASTEST]_AsSpan()")]
         public void BenchmarkConvertToSpanFastest()
         {
@@ -222,6 +234,9 @@ namespace Alis.Benchmark.CustomCollections.Tables
             }
         }
         
+        /// <summary>
+        /// Benchmarks the unsafe index no resize fastest
+        /// </summary>
         [Benchmark(Description = "[FASTEST]_UnsafeIndexNoResize")]
         public void BenchmarkUnsafeIndexNoResizeFastest()
         {

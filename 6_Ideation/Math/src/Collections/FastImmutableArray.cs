@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Math.Collections;
 /// <typeparam name="T">The type of element stored by the array.</typeparam>
 /// <devremarks>
 ///     This type has a documented contract of being exactly one reference-type field in size.
-///     Our own <see cref="System.Collections.Immutable.ImmutableInterlocked" /> class depends on it, as well as others
+///     Our own <see /> class depends on it, as well as others
 ///     externally.
 ///     IMPORTANT NOTICE FOR MAINTAINERS AND REVIEWERS:
 ///     This type should be thread-safe. As a struct, it cannot protect its own fields
@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Math.Collections;
 public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableArray<T>>, IFastImmutableArray
 {
     /// <summary>
-    ///     A writable array accessor that can be converted into an <see cref="FastImmutableArray" />
+    ///     A writable array accessor that can be converted into an <see />
     ///     instance without allocating memory.
     /// </summary>
     [DebuggerDisplay("Count = {Count}")]
@@ -133,7 +133,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         /// <remarks>
         ///     If the value is decreased, the array contents are truncated.
         ///     If the value is increased, the added elements are initialized to the default value of type
-        ///     <typeparamref name="T" />.
+        ///     <typeparamref />.
         /// </remarks>
         public int Count
         {
@@ -759,7 +759,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
 
 
             equalityComparer ??= EqualityComparer<T>.Default;
-            if (equalityComparer == EqualityComparer<T>.Default)
+            if (Equals(equalityComparer, EqualityComparer<T>.Default))
             {
                 return Array.IndexOf(_elements, item, startIndex, count);
             }
@@ -845,7 +845,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
 
 
             equalityComparer ??= EqualityComparer<T>.Default;
-            if (equalityComparer == EqualityComparer<T>.Default)
+            if (Equals(equalityComparer, EqualityComparer<T>.Default))
             {
                 return Array.LastIndexOf(_elements, item, startIndex, count);
             }
@@ -1192,20 +1192,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     ///     Gets an untyped reference to the array.
     /// </summary>
     Array IFastImmutableArray.Array => array;
-
-    /// <summary>
-    ///     Gets the string to display in the debugger watches window for this instance.
-    /// </summary>
-    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private string DebuggerDisplay
-    {
-        get
-        {
-            FastImmutableArray<T> self = this;
-            return self.IsDefault ? "Uninitialized" : $"Length = {self.Length}";
-        }
-    }
-
+    
     /// <summary>
     ///     Copies the contents of this array to the specified array.
     /// </summary>
@@ -1295,7 +1282,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     ///     <see cref="FastImmutableArray{T}.As{TOther}" />  or <see cref="FastImmutableArray{T}.CastArray{TOther}" />method.
     /// </remarks>
     public static FastImmutableArray<T> CastUp<TDerived>(FastImmutableArray<TDerived> items)
-        where TDerived : class?, T
+        where TDerived : class, T
     {
         return new FastImmutableArray<T>(items.array);
     }
@@ -1307,7 +1294,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     ///     .
     /// </summary>
     /// <exception cref="InvalidCastException">Thrown if the cast is illegal.</exception>
-    public FastImmutableArray<TOther> CastArray<TOther>() where TOther : class?
+    public FastImmutableArray<TOther> CastArray<TOther>() where TOther : class
     {
         return new FastImmutableArray<TOther>((TOther[]) (object) array!);
     }
@@ -1327,7 +1314,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     ///     element types to their derived types. However, downcasting is only successful
     ///     when it reverses a prior upcasting operation.
     /// </remarks>
-    public FastImmutableArray<TOther> As<TOther>() where TOther : class?
+    public FastImmutableArray<TOther> As<TOther>() where TOther : class
     {
         return new FastImmutableArray<TOther>(array as TOther[]);
     }
@@ -1445,7 +1432,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         /// <summary>
         ///     A shareable singleton for enumerating empty arrays.
         /// </summary>
-        private static readonly IEnumerator<T> s_EmptyEnumerator =
+        private static readonly IEnumerator<T> SEmptyEnumerator =
             new EnumeratorObject(Empty.array!);
 
         /// <summary>
@@ -1544,7 +1531,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
                 return new EnumeratorObject(array);
             }
 
-            return s_EmptyEnumerator;
+            return SEmptyEnumerator;
         }
     }
 }

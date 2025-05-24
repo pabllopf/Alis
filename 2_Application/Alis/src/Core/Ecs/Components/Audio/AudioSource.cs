@@ -130,6 +130,10 @@ namespace Alis.Core.Ecs.Components.Audio
             }
         }
 
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Init(GameObject self)
         {
             ThreadPool.SetMinThreads(200, 200);

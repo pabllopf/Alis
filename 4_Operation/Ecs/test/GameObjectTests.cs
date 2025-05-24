@@ -15,6 +15,9 @@ using System;
     /// </summary>
     public class GameObjectTests
                 {
+                    /// <summary>
+                    /// Tests that ctor creates null
+                    /// </summary>
                     [Fact]
                     public void Ctor_CreatesNull()
                     {
@@ -22,6 +25,9 @@ using System;
                         Assert.Equal(default(GameObject), new GameObject());
                     }
             
+                    /// <summary>
+                    /// Tests that on component added generic invoked
+                    /// </summary>
                     [Fact]
                     public void OnComponentAddedGeneric_Invoked()
                     {
@@ -41,6 +47,9 @@ using System;
                         Assert.True(passed);
                     }
             
+                    /// <summary>
+                    /// Tests that on component removed generic invoked
+                    /// </summary>
                     [Fact]
                     public void OnComponentRemovedGeneric_Invoked()
                     {
@@ -60,6 +69,9 @@ using System;
                         Assert.True(passed);
                     }
             
+                    /// <summary>
+                    /// Tests that on component added invoked
+                    /// </summary>
                     [Fact]
                     public void OnComponentAdded_Invoked()
                     {
@@ -79,6 +91,9 @@ using System;
                         Assert.True(passed);
                     }
             
+                    /// <summary>
+                    /// Tests that on component removed invoked
+                    /// </summary>
                     [Fact]
                     public void OnComponentRemoved_Invoked()
                     {
@@ -97,6 +112,9 @@ using System;
                         Assert.True(passed);
                     }
             
+                    /// <summary>
+                    /// Tests that on tagged invoked
+                    /// </summary>
                     [Fact]
                     public void OnTagged_Invoked()
                     {
@@ -109,6 +127,9 @@ using System;
                         Assert.True(passed);
                     }
             
+                    /// <summary>
+                    /// Tests that on detach invoked
+                    /// </summary>
                     [Fact]
                     public void OnDetach_Invoked()
                     {
@@ -122,6 +143,9 @@ using System;
                         Assert.True(passed);
                     }
             
+                    /// <summary>
+                    /// Tests that on delete invoked
+                    /// </summary>
                     [Fact]
                     public void OnDelete_Invoked()
                     {
@@ -134,6 +158,9 @@ using System;
                         Assert.True(passed);
                     }
             
+                    /// <summary>
+                    /// Tests that world is world
+                    /// </summary>
                     [Fact]
                     public void World_IsWorld()
                     {
@@ -142,6 +169,9 @@ using System;
                         Assert.Equal(scene, e.Scene);
                     }
             
+                    /// <summary>
+                    /// Tests that add as adds as
+                    /// </summary>
                     [Fact]
                     public void AddAs_AddsAs()
                     {
@@ -153,6 +183,9 @@ using System;
                         Assert.Throws<InvalidCastException>(() => e.AddAs(Component<ChildClass>.Id, new BaseClass()));
                     }
             
+                    /// <summary>
+                    /// Tests that add default type
+                    /// </summary>
                     [Fact]
                     public void Add_DefaultType()
                     {
@@ -164,6 +197,9 @@ using System;
                         Assert.Equal(1, e.Get<int>());
                     }
             
+                    /// <summary>
+                    /// Tests that add as type adds as type
+                    /// </summary>
                     [Fact]
                     public void AddAsType_AddsAsType()
                     {
@@ -179,6 +215,9 @@ using System;
                         Assert.Throws<InvalidCastException>(() => e.AddAs(typeof(Class1), new Class2()));
                     }
             
+                    /// <summary>
+                    /// Tests that delete no longer is alive
+                    /// </summary>
                     [Fact]
                     public void Delete_NoLongerIsAlive()
                     {
@@ -190,6 +229,9 @@ using System;
                         Assert.False(e.IsAlive);
                     }
             
+                    /// <summary>
+                    /// Tests that detach removes tag
+                    /// </summary>
                     [Fact]
                     public void Detach_RemovesTag()
                     {
@@ -206,6 +248,9 @@ using System;
                         Assert.Empty(e.TagTypes);
                     }
             
+                    /// <summary>
+                    /// Tests that tag adds tag
+                    /// </summary>
                     [Fact]
                     public void Tag_AddsTag()
                     {
@@ -221,6 +266,9 @@ using System;
                         Assert.Contains(Tag<Struct3>.Id, e.TagTypes);
                     }
             
+                    /// <summary>
+                    /// Tests that enumerate components iterates all components
+                    /// </summary>
                     [Fact]
                     public void EnumerateComponents_IteratesAllComponents()
                     {
@@ -234,6 +282,9 @@ using System;
                         Assert.Equal(e.ComponentTypes.Select(t => t.Type), types);
                     }
             
+                    /// <summary>
+                    /// Tests that get generic returns reference
+                    /// </summary>
                     [Fact]
                     public void GetGeneric_ReturnsReference()
                     {
@@ -247,6 +298,9 @@ using System;
                         Assert.Equal(20, e.Get<int>());
                     }
             
+                    /// <summary>
+                    /// Tests that get returns component
+                    /// </summary>
                     [Fact]
                     public void Get_ReturnsComponent()
                     {
@@ -257,6 +311,9 @@ using System;
                         Assert.Equal(10, e.Get(Component<int>.Id));
                     }
             
+                    /// <summary>
+                    /// Tests that has returns true if has component
+                    /// </summary>
                     [Fact]
                     public void Has_ReturnsTrueIfHasComponent()
                     {
@@ -274,6 +331,9 @@ using System;
                         Assert.True(e.Has<Class1>());
                     }
             
+                    /// <summary>
+                    /// Tests that remove removes component
+                    /// </summary>
                     [Fact]
                     public void Remove_RemovesComponent()
                     {
@@ -286,6 +346,9 @@ using System;
                         Assert.Equal(1, e.ComponentTypes.Length);
                     }
             
+                    /// <summary>
+                    /// Tests that remove many retain value
+                    /// </summary>
                     [Fact]
                     public void RemoveMany_RetainValue()
                     {
@@ -298,6 +361,9 @@ using System;
                         Assert.Equal(1, e.ComponentTypes.Length);
                     }
             
+                    /// <summary>
+                    /// Tests that set changes object value
+                    /// </summary>
                     [Fact]
                     public void Set_ChangesObjectValue()
                     {
@@ -314,6 +380,9 @@ using System;
                         Assert.Equal(1, e.Get<Struct1>().Value);
                     }
             
+                    /// <summary>
+                    /// Tests that tagged checks tag
+                    /// </summary>
                     [Fact]
                     public void Tagged_ChecksTag()
                     {
@@ -340,6 +409,9 @@ using System;
                         Assert.False(e.TryGet<int>(out var value));
                     }
             
+                    /// <summary>
+                    /// Tests that try get returns correct ref
+                    /// </summary>
                     [Fact]
                     public void TryGet_ReturnsCorrectRef()
                     {
@@ -354,6 +426,9 @@ using System;
                         Assert.Equal(1, e.Get<Struct1>().Value);
                     }
             
+                    /// <summary>
+                    /// Tests that try get doesnt throw
+                    /// </summary>
                     [Fact]
                     public void TryGet_DoesntThrow()
                     {
@@ -365,6 +440,9 @@ using System;
                         Assert.False(e.TryGet<Struct1>(out _));
                     }
             
+                    /// <summary>
+                    /// Tests that try has doesnt throw
+                    /// </summary>
                     [Fact]
                     public void TryHas_DoesntThrow()
                     {
@@ -376,6 +454,9 @@ using System;
                         Assert.False(e.TryHas<Struct1>());
                     }
             
+                    /// <summary>
+                    /// Tests that try has returns true
+                    /// </summary>
                     [Fact]
                     public void TryHas_ReturnsTrue()
                     {
@@ -386,14 +467,37 @@ using System;
                         Assert.True(e.TryHas<Struct1>());
                     }
             
+                    /// <summary>
+                    /// The generic action class
+                    /// </summary>
+                    /// <seealso cref="IGenericAction{GameObject}"/>
+                    /// <seealso cref="IGenericAction"/>
                     public class GenericAction : IGenericAction<GameObject>, IGenericAction
                     {
+                        /// <summary>
+                        /// The on action
+                        /// </summary>
                         private readonly Action<Type, object?> onAction;
             
+                        /// <summary>
+                        /// Initializes a new instance of the <see cref="GenericAction"/> class
+                        /// </summary>
+                        /// <param name="onAction">The on action</param>
                         public GenericAction(Action<Type, object?> onAction) => this.onAction = onAction;
             
+                        /// <summary>
+                        /// Invokes the e
+                        /// </summary>
+                        /// <typeparam name="T">The </typeparam>
+                        /// <param name="e">The </param>
+                        /// <param name="type">The type</param>
                         public void Invoke<T>(GameObject e, ref T type) => onAction(typeof(T), type);
             
+                        /// <summary>
+                        /// Invokes the type
+                        /// </summary>
+                        /// <typeparam name="T">The </typeparam>
+                        /// <param name="type">The type</param>
                         public void Invoke<T>(ref T type) => onAction(typeof(T), type);
                     }
                 }

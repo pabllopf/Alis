@@ -48,6 +48,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         /// </summary>
         private PooledStack<int> _pooledStack;
         
+        /// <summary>
+        /// The fastest stack
+        /// </summary>
         private FastestStack<int> _fastestStack;
 
         // Inicialización
@@ -73,6 +76,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             }
         }
         
+        /// <summary>
+        /// Fastests the stack array iterate fastest
+        /// </summary>
         [Benchmark(Description = "[FastestStack]_Initialize()")]
         public void Fastest_Stack_ArrayIterate_Fastest()
         {
@@ -99,6 +105,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             }
         }
         
+        /// <summary>
+        /// Fastests the stack pop fastest
+        /// </summary>
         [Benchmark(Description = "[FASTEST] Pop elements")]
         public void Fastest_Stack_Pop_Fastest()
         {
@@ -126,6 +135,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             }
         }
         
+        /// <summary>
+        /// Fastests the stack push fastest
+        /// </summary>
         [Benchmark(Description = "[FASTEST] Push elements")]
         public void Fastest_Stack_Push_Fastest()
         {
