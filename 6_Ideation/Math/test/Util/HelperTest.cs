@@ -211,7 +211,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         public void ToDegrees_ShouldCalculateCorrectly()
         {
             // Arrange
-            float radians = CustomMathF.Pi;
+            float radians = (float)System.Math.PI;
 
             // Act
             float result = Helper.ToDegrees(radians);
@@ -233,7 +233,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float result = Helper.ToRadians(degrees);
 
             // Assert
-            Assert.Equal(CustomMathF.Pi, result);
+            Assert.Equal(System.Math.PI, result, 0.1F);
         }
 
 

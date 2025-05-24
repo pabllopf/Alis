@@ -22,8 +22,7 @@ namespace Alis.Core.Ecs.Benchmark
         /// The component types
         /// </summary>
         private Type[] _componentTypes;
-
-
+        
         /// <summary>
         /// Setup this instance
         /// </summary>

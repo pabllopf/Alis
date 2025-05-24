@@ -139,14 +139,14 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [Fact]
         public void TestCreateRotationZ()
         {
-            float radians = CustomMathF.Pi / 4; // 45 degrees
+            float radians = (float)(System.Math.PI / 4); // 45 degrees
             Matrix4X4 matrix = Matrix4X4.CreateRotationZ(radians);
 
             // Expected values were calculated manually
-            Assert.Equal(CustomMathF.Cos(radians), matrix.M11, 5);
-            Assert.Equal(CustomMathF.Sin(radians), matrix.M12, 5);
-            Assert.Equal(-CustomMathF.Sin(radians), matrix.M21, 5);
-            Assert.Equal(CustomMathF.Cos(radians), matrix.M22, 5);
+            Assert.Equal(System.Math.Cos(radians), matrix.M11, 5);
+            Assert.Equal(System.Math.Sin(radians), matrix.M12, 5);
+            Assert.Equal(-System.Math.Sin(radians), matrix.M21, 5);
+            Assert.Equal(System.Math.Cos(radians), matrix.M22, 5);
 
             Assert.Equal(0f, matrix.M13);
             Assert.Equal(0f, matrix.M14);
@@ -265,11 +265,11 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         public void CreateRotationX_WithNonZeroRadians_ReturnsCorrectMatrix()
         {
             // Arrange
-            float radians = CustomMathF.Pi / 4; // 45 degrees
+            float radians = (float)(System.Math.PI / 4); // 45 degrees
             Matrix4X4 expected = new Matrix4X4(
                 1f, 0f, 0f, 0f,
-                0f, CustomMathF.Cos(radians), CustomMathF.Sin(radians), 0f,
-                0f, -CustomMathF.Sin(radians), CustomMathF.Cos(radians), 0f,
+                0f, (float)System.Math.Cos(radians), (float)System.Math.Sin(radians), 0f,
+                0f, (float)-System.Math.Sin(radians), (float)System.Math.Cos(radians), 0f,
                 0f, 0f, 0f, 1f);
 
             // Act

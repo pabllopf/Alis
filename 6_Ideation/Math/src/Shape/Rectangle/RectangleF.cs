@@ -30,54 +30,53 @@
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Aspect.Math.Shape.Rectangle
+namespace Alis.Core.Aspect.Math.Shape.Rectangle;
+
+/// <summary>
+///     The sdl f rect
+/// </summary>
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct RectangleF : IShape
 {
     /// <summary>
-    ///     The sdl f rect
+    ///     The
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct RectangleF : IShape
+    public float X { get; set; }
+
+    /// <summary>
+    ///     The
+    /// </summary>
+    public float Y { get; set; }
+
+    /// <summary>
+    ///     The
+    /// </summary>
+    public float W { get; set; }
+
+    /// <summary>
+    ///     The
+    /// </summary>
+    public float H { get; set; }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="RectangleF" /> class
+    /// </summary>
+    /// <param name="x">The </param>
+    /// <param name="y">The </param>
+    /// <param name="w">The </param>
+    /// <param name="h">The </param>
+    public RectangleF(float x, float y, float w, float h)
     {
-        /// <summary>
-        ///     The
-        /// </summary>
-        public float X { get; set; }
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public float Y { get; set; }
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public float W { get; set; }
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public float H { get; set; }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="RectangleF" /> class
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        public RectangleF(float x, float y, float w, float h)
-        {
-            X = x;
-            Y = y;
-            W = w;
-            H = h;
-        }
-
-        /// <summary>
-        ///     Describes whether this instance contains
-        /// </summary>
-        /// <param name="pos">The pos</param>
-        /// <returns>The bool</returns>
-        public bool Contains(Vector2F pos) => (pos.X >= X) && (pos.X <= X + W) && (pos.Y >= Y) && (pos.Y <= Y + H);
+        X = x;
+        Y = y;
+        W = w;
+        H = h;
     }
+
+    /// <summary>
+    ///     Describes whether this instance contains
+    /// </summary>
+    /// <param name="pos">The pos</param>
+    /// <returns>The bool</returns>
+    public bool Contains(Vector2F pos) => (pos.X >= X) && (pos.X <= X + W) && (pos.Y >= Y) && (pos.Y <= Y + H);
 }

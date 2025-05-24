@@ -35,298 +35,297 @@ using System.Text;
 using HashCode = Alis.Core.Aspect.Math.Util.HashCode;
 
 
-namespace Alis.Core.Aspect.Math.Vector
+namespace Alis.Core.Aspect.Math.Vector;
+
+/// <summary>
+///     The vector
+/// </summary>
+[StructLayout(LayoutKind.Sequential), Serializable]
+public struct Vector3F : IEquatable<Vector3F>, IFormattable, ISerializable
 {
     /// <summary>
-    ///     The vector
+    ///     The hash code
     /// </summary>
-    [StructLayout(LayoutKind.Sequential), Serializable]
-    public struct Vector3F : IEquatable<Vector3F>, IFormattable, ISerializable
+    private readonly int hashCode;
+
+    /// <summary>The X component of the vector.</summary>
+    public float X { get; set; }
+
+    /// <summary>The Y component of the vector.</summary>
+    public float Y { get; set; }
+
+    /// <summary>The Z component of the vector.</summary>
+    public float Z { get; set; }
+
+    /// <summary>Creates a new <see cref="Vector3F" /> object whose three elements have the same value.</summary>
+    /// <param name="value">The value to assign to all three elements.</param>
+    private Vector3F(float value) : this(value, value, value)
     {
-        /// <summary>
-        ///     The hash code
-        /// </summary>
-        private readonly int hashCode;
+    }
 
-        /// <summary>The X component of the vector.</summary>
-        public float X { get; set; }
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="Vector3F" /> class
+    /// </summary>
+    /// <param name="value">The value</param>
+    /// <param name="z">The </param>
+    public Vector3F(Vector2F value, float z) : this(value.X, value.Y, z)
+    {
+    }
 
-        /// <summary>The Y component of the vector.</summary>
-        public float Y { get; set; }
+    /// <summary>Creates a vector whose elements have the specified values.</summary>
+    /// <param name="x">The value to assign to the <see cref="Vector3F.X" /> field.</param>
+    /// <param name="y">The value to assign to the <see cref="Vector3F.Y" /> field.</param>
+    /// <param name="z">The value to assign to the <see cref="Vector3F.Z" /> field.</param>
+    public Vector3F(float x, float y, float z)
+    {
+        X = x;
+        Y = y;
+        Z = z;
 
-        /// <summary>The Z component of the vector.</summary>
-        public float Z { get; set; }
+        HashCode hash = new HashCode();
+        hash.Add(x);
+        hash.Add(y);
+        hash.Add(z);
+        hashCode = hash.ToHashCode();
+    }
 
-        /// <summary>Creates a new <see cref="Vector3F" /> object whose three elements have the same value.</summary>
-        /// <param name="value">The value to assign to all three elements.</param>
-        private Vector3F(float value) : this(value, value, value)
-        {
-        }
+    /// <summary>Gets a vector whose 3 elements are equal to zero.</summary>
+    /// <value>A vector whose three elements are equal to zero (that is, it returns the vector <c>(0,0,0)</c>.</value>
+    public static Vector3F Zero => default(Vector3F);
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Vector3F" /> class
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <param name="z">The </param>
-        public Vector3F(Vector2F value, float z) : this(value.X, value.Y, z)
-        {
-        }
+    /// <summary>Gets a vector whose 3 elements are equal to one.</summary>
+    /// <value>A vector whose three elements are equal to one (that is, it returns the vector <c>(1,1,1)</c>.</value>
+    public static Vector3F One => new Vector3F(1.0f);
 
-        /// <summary>Creates a vector whose elements have the specified values.</summary>
-        /// <param name="x">The value to assign to the <see cref="Vector3F.X" /> field.</param>
-        /// <param name="y">The value to assign to the <see cref="Vector3F.Y" /> field.</param>
-        /// <param name="z">The value to assign to the <see cref="Vector3F.Z" /> field.</param>
-        public Vector3F(float x, float y, float z)
-        {
-            X = x;
-            Y = y;
-            Z = z;
+    /// <summary>Gets the vector (1,0,0).</summary>
+    /// <value>The vector <c>(1,0,0)</c>.</value>
+    public static Vector3F UnitX => new Vector3F(1.0f, 0.0f, 0.0f);
 
-            HashCode hash = new HashCode();
-            hash.Add(x);
-            hash.Add(y);
-            hash.Add(z);
-            hashCode = hash.ToHashCode();
-        }
+    /// <summary>Gets the vector (0,1,0).</summary>
+    /// <value>The vector <c>(0,1,0)</c>.</value>
+    public static Vector3F UnitY => new Vector3F(0.0f, 1.0f, 0.0f);
 
-        /// <summary>Gets a vector whose 3 elements are equal to zero.</summary>
-        /// <value>A vector whose three elements are equal to zero (that is, it returns the vector <c>(0,0,0)</c>.</value>
-        public static Vector3F Zero => default(Vector3F);
+    /// <summary>Gets the vector (0,0,1).</summary>
+    /// <value>The vector <c>(0,0,1)</c>.</value>
+    public static Vector3F UnitZ => new Vector3F(0.0f, 0.0f, 1.0f);
 
-        /// <summary>Gets a vector whose 3 elements are equal to one.</summary>
-        /// <value>A vector whose three elements are equal to one (that is, it returns the vector <c>(1,1,1)</c>.</value>
-        public static Vector3F One => new Vector3F(1.0f);
+    /// <summary>Adds two vectors together.</summary>
+    /// <param name="left">The first vector to add.</param>
+    /// <param name="right">The second vector to add.</param>
+    /// <returns>The summed vector.</returns>
+    /// <remarks>
+    ///     The <see cref="Vector3F.op_Addition" /> method defines the addition operation for <see cref="Vector3F" />
+    ///     objects.
+    /// </remarks>
+    public static Vector3F operator +(Vector3F left, Vector3F right) => new Vector3F(
+        left.X + right.X,
+        left.Y + right.Y,
+        left.Z + right.Z
+    );
 
-        /// <summary>Gets the vector (1,0,0).</summary>
-        /// <value>The vector <c>(1,0,0)</c>.</value>
-        public static Vector3F UnitX => new Vector3F(1.0f, 0.0f, 0.0f);
+    /// <summary>Divides the first vector by the second.</summary>
+    /// <param name="left">The first vector.</param>
+    /// <param name="right">The second vector.</param>
+    /// <returns>The vector that results from dividing <paramref name="left" /> by <paramref name="right" />.</returns>
+    public static Vector3F operator /(Vector3F left, Vector3F right) => new Vector3F(
+        left.X / right.X,
+        left.Y / right.Y,
+        left.Z / right.Z
+    );
 
-        /// <summary>Gets the vector (0,1,0).</summary>
-        /// <value>The vector <c>(0,1,0)</c>.</value>
-        public static Vector3F UnitY => new Vector3F(0.0f, 1.0f, 0.0f);
+    /// <summary>Divides the specified vector by a specified scalar value.</summary>
+    /// <param name="value1">The vector.</param>
+    /// <param name="value2">The scalar value.</param>
+    /// <returns>The result of the division.</returns>
+    public static Vector3F operator /(Vector3F value1, float value2) => value1 / new Vector3F(value2);
 
-        /// <summary>Gets the vector (0,0,1).</summary>
-        /// <value>The vector <c>(0,0,1)</c>.</value>
-        public static Vector3F UnitZ => new Vector3F(0.0f, 0.0f, 1.0f);
+    /// <summary>Returns a value that indicates whether each pair of elements in two specified vectors is equal.</summary>
+    /// <param name="left">The first vector to compare.</param>
+    /// <param name="right">The second vector to compare.</param>
+    /// <returns>
+    ///     <see langword="true" /> if <paramref name="left" /> and <paramref name="right" /> are equal; otherwise,
+    ///     <see langword="false" />.
+    /// </returns>
+    /// <remarks>
+    ///     Two <see cref="Vector3F" /> objects are equal if each element in <paramref name="right" /> is equal to the
+    ///     corresponding element in <paramref name="right" />.
+    /// </remarks>
+    public static bool operator ==(Vector3F left, Vector3F right) => (System.Math.Abs(left.X - right.X) < 0.1f)
+                                                                     && (System.Math.Abs(left.Y - right.Y) < 0.1f)
+                                                                     && (System.Math.Abs(left.Z - right.Z) < 0.1f);
 
-        /// <summary>Adds two vectors together.</summary>
-        /// <param name="left">The first vector to add.</param>
-        /// <param name="right">The second vector to add.</param>
-        /// <returns>The summed vector.</returns>
-        /// <remarks>
-        ///     The <see cref="Vector3F.op_Addition" /> method defines the addition operation for <see cref="Vector3F" />
-        ///     objects.
-        /// </remarks>
-        public static Vector3F operator +(Vector3F left, Vector3F right) => new Vector3F(
-            left.X + right.X,
-            left.Y + right.Y,
-            left.Z + right.Z
-        );
+    /// <summary>Returns a value that indicates whether two specified vectors are not equal.</summary>
+    /// <param name="left">The first vector to compare.</param>
+    /// <param name="right">The second vector to compare.</param>
+    /// <returns>
+    ///     <see langword="true" /> if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise,
+    ///     <see langword="false" />.
+    /// </returns>
+    public static bool operator !=(Vector3F left, Vector3F right) => !(left == right);
 
-        /// <summary>Divides the first vector by the second.</summary>
-        /// <param name="left">The first vector.</param>
-        /// <param name="right">The second vector.</param>
-        /// <returns>The vector that results from dividing <paramref name="left" /> by <paramref name="right" />.</returns>
-        public static Vector3F operator /(Vector3F left, Vector3F right) => new Vector3F(
-            left.X / right.X,
-            left.Y / right.Y,
-            left.Z / right.Z
-        );
+    /// <summary>Returns a new vector whose values are the product of each pair of elements in two specified vectors.</summary>
+    /// <param name="left">The first vector.</param>
+    /// <param name="right">The second vector.</param>
+    /// <returns>The element-wise product vector.</returns>
+    public static Vector3F operator *(Vector3F left, Vector3F right) => new Vector3F(
+        left.X * right.X,
+        left.Y * right.Y,
+        left.Z * right.Z
+    );
 
-        /// <summary>Divides the specified vector by a specified scalar value.</summary>
-        /// <param name="value1">The vector.</param>
-        /// <param name="value2">The scalar value.</param>
-        /// <returns>The result of the division.</returns>
-        public static Vector3F operator /(Vector3F value1, float value2) => value1 / new Vector3F(value2);
+    /// <summary>Multiplies the specified vector by the specified scalar value.</summary>
+    /// <param name="left">The vector.</param>
+    /// <param name="right">The scalar value.</param>
+    /// <returns>The scaled vector.</returns>
+    public static Vector3F operator *(Vector3F left, float right) => left * new Vector3F(right);
 
-        /// <summary>Returns a value that indicates whether each pair of elements in two specified vectors is equal.</summary>
-        /// <param name="left">The first vector to compare.</param>
-        /// <param name="right">The second vector to compare.</param>
-        /// <returns>
-        ///     <see langword="true" /> if <paramref name="left" /> and <paramref name="right" /> are equal; otherwise,
-        ///     <see langword="false" />.
-        /// </returns>
-        /// <remarks>
-        ///     Two <see cref="Vector3F" /> objects are equal if each element in <paramref name="right" /> is equal to the
-        ///     corresponding element in <paramref name="right" />.
-        /// </remarks>
-        public static bool operator ==(Vector3F left, Vector3F right) => (System.Math.Abs(left.X - right.X) < 0.1f)
-                                                                         && (System.Math.Abs(left.Y - right.Y) < 0.1f)
-                                                                         && (System.Math.Abs(left.Z - right.Z) < 0.1f);
+    /// <summary>Multiplies the scalar value by the specified vector.</summary>
+    /// <param name="left">The vector.</param>
+    /// <param name="right">The scalar value.</param>
+    /// <returns>The scaled vector.</returns>
+    public static Vector3F operator *(float left, Vector3F right) => right * left;
 
-        /// <summary>Returns a value that indicates whether two specified vectors are not equal.</summary>
-        /// <param name="left">The first vector to compare.</param>
-        /// <param name="right">The second vector to compare.</param>
-        /// <returns>
-        ///     <see langword="true" /> if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise,
-        ///     <see langword="false" />.
-        /// </returns>
-        public static bool operator !=(Vector3F left, Vector3F right) => !(left == right);
+    /// <summary>Subtracts the second vector from the first.</summary>
+    /// <param name="left">The first vector.</param>
+    /// <param name="right">The second vector.</param>
+    /// <returns>The vector that results from subtracting <paramref name="right" /> from <paramref name="left" />.</returns>
+    /// <remarks>
+    ///     The <see cref="Vector3F.op_Subtraction" /> method defines the subtraction operation for
+    ///     <see cref="Vector3F" /> objects.
+    /// </remarks>
+    public static Vector3F operator -(Vector3F left, Vector3F right) => new Vector3F(
+        left.X - right.X,
+        left.Y - right.Y,
+        left.Z - right.Z
+    );
 
-        /// <summary>Returns a new vector whose values are the product of each pair of elements in two specified vectors.</summary>
-        /// <param name="left">The first vector.</param>
-        /// <param name="right">The second vector.</param>
-        /// <returns>The element-wise product vector.</returns>
-        public static Vector3F operator *(Vector3F left, Vector3F right) => new Vector3F(
-            left.X * right.X,
-            left.Y * right.Y,
-            left.Z * right.Z
-        );
+    /// <summary>Negates the specified vector.</summary>
+    /// <param name="value">The vector to negate.</param>
+    /// <returns>The negated vector.</returns>
+    /// <remarks>
+    ///     The <see cref="Vector3F.op_UnaryNegation" /> method defines the unary negation operation for
+    ///     <see cref="Vector3F" /> objects.
+    /// </remarks>
+    public static Vector3F operator -(Vector3F value) => Zero - value;
 
-        /// <summary>Multiplies the specified vector by the specified scalar value.</summary>
-        /// <param name="left">The vector.</param>
-        /// <param name="right">The scalar value.</param>
-        /// <returns>The scaled vector.</returns>
-        public static Vector3F operator *(Vector3F left, float right) => left * new Vector3F(right);
+    /// <summary>Computes the cross product of two vectors.</summary>
+    /// <param name="vector1">The first vector.</param>
+    /// <param name="vector2">The second vector.</param>
+    /// <returns>The cross product.</returns>
+    public static Vector3F Cross(Vector3F vector1, Vector3F vector2) => new Vector3F(
+        vector1.Y * vector2.Z - vector1.Z * vector2.Y,
+        vector1.Z * vector2.X - vector1.X * vector2.Z,
+        vector1.X * vector2.Y - vector1.Y * vector2.X
+    );
 
-        /// <summary>Multiplies the scalar value by the specified vector.</summary>
-        /// <param name="left">The vector.</param>
-        /// <param name="right">The scalar value.</param>
-        /// <returns>The scaled vector.</returns>
-        public static Vector3F operator *(float left, Vector3F right) => right * left;
+    /// <summary>Returns the dot product of two vectors.</summary>
+    /// <param name="vector1">The first vector.</param>
+    /// <param name="vector2">The second vector.</param>
+    /// <returns>The dot product.</returns>
+    public static float Dot(Vector3F vector1, Vector3F vector2) => vector1.X * vector2.X
+                                                                   + vector1.Y * vector2.Y
+                                                                   + vector1.Z * vector2.Z;
 
-        /// <summary>Subtracts the second vector from the first.</summary>
-        /// <param name="left">The first vector.</param>
-        /// <param name="right">The second vector.</param>
-        /// <returns>The vector that results from subtracting <paramref name="right" /> from <paramref name="left" />.</returns>
-        /// <remarks>
-        ///     The <see cref="Vector3F.op_Subtraction" /> method defines the subtraction operation for
-        ///     <see cref="Vector3F" /> objects.
-        /// </remarks>
-        public static Vector3F operator -(Vector3F left, Vector3F right) => new Vector3F(
-            left.X - right.X,
-            left.Y - right.Y,
-            left.Z - right.Z
-        );
+    /// <summary>Returns a vector with the same direction as the specified vector, but with a length of one.</summary>
+    /// <param name="value">The vector to normalize.</param>
+    /// <returns>The normalized vector.</returns>
+    public static Vector3F Normalize(Vector3F value) => value / value.Length();
 
-        /// <summary>Negates the specified vector.</summary>
-        /// <param name="value">The vector to negate.</param>
-        /// <returns>The negated vector.</returns>
-        /// <remarks>
-        ///     The <see cref="Vector3F.op_UnaryNegation" /> method defines the unary negation operation for
-        ///     <see cref="Vector3F" /> objects.
-        /// </remarks>
-        public static Vector3F operator -(Vector3F value) => Zero - value;
+    /// <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
+    /// <param name="obj">The object to compare with the current instance.</param>
+    /// <returns>
+    ///     <see langword="true" /> if the current instance and <paramref name="obj" /> are equal; otherwise,
+    ///     <see langword="false" />. If <paramref name="obj" /> is <see langword="null" />, the method returns
+    ///     <see langword="false" />.
+    /// </returns>
+    /// <remarks>
+    ///     The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a
+    ///     <see cref="Vector3F" /> object and their corresponding elements are equal.
+    /// </remarks>
+    public readonly override bool Equals(object obj) => obj is Vector3F other && Equals(other);
 
-        /// <summary>Computes the cross product of two vectors.</summary>
-        /// <param name="vector1">The first vector.</param>
-        /// <param name="vector2">The second vector.</param>
-        /// <returns>The cross product.</returns>
-        public static Vector3F Cross(Vector3F vector1, Vector3F vector2) => new Vector3F(
-            vector1.Y * vector2.Z - vector1.Z * vector2.Y,
-            vector1.Z * vector2.X - vector1.X * vector2.Z,
-            vector1.X * vector2.Y - vector1.Y * vector2.X
-        );
+    /// <summary>Returns a value that indicates whether this instance and another vector are equal.</summary>
+    /// <param name="other">The other vector.</param>
+    /// <returns><see langword="true" /> if the two vectors are equal; otherwise, <see langword="false" />.</returns>
+    /// <remarks>
+    ///     Two vectors are equal if their <see cref="Vector3F.X" />, <see cref="Vector3F.Y" />, and
+    ///     <see cref="Vector3F.Z" /> elements are equal.
+    /// </remarks>
+    public readonly bool Equals(Vector3F other) => this == other;
 
-        /// <summary>Returns the dot product of two vectors.</summary>
-        /// <param name="vector1">The first vector.</param>
-        /// <param name="vector2">The second vector.</param>
-        /// <returns>The dot product.</returns>
-        public static float Dot(Vector3F vector1, Vector3F vector2) => vector1.X * vector2.X
-                                                                       + vector1.Y * vector2.Y
-                                                                       + vector1.Z * vector2.Z;
+    /// <summary>Returns the hash code for this instance.</summary>
+    /// <returns>The hash code.</returns>
+    public readonly override int GetHashCode() => hashCode;
 
-        /// <summary>Returns a vector with the same direction as the specified vector, but with a length of one.</summary>
-        /// <param name="value">The vector to normalize.</param>
-        /// <returns>The normalized vector.</returns>
-        public static Vector3F Normalize(Vector3F value) => value / value.Length();
+    /// <summary>Returns the length of this vector object.</summary>
+    /// <returns>The vector's length.</returns>
+    /// <altmember cref="Vector3F.LengthSquared" />
+    public readonly float Length()
+    {
+        float lengthSquared = LengthSquared();
+        return (float)System.Math.Sqrt(lengthSquared);
+    }
 
-        /// <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
-        /// <param name="obj">The object to compare with the current instance.</param>
-        /// <returns>
-        ///     <see langword="true" /> if the current instance and <paramref name="obj" /> are equal; otherwise,
-        ///     <see langword="false" />. If <paramref name="obj" /> is <see langword="null" />, the method returns
-        ///     <see langword="false" />.
-        /// </returns>
-        /// <remarks>
-        ///     The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a
-        ///     <see cref="Vector3F" /> object and their corresponding elements are equal.
-        /// </remarks>
-        public readonly override bool Equals(object obj) => obj is Vector3F other && Equals(other);
+    /// <summary>Returns the length of the vector squared.</summary>
+    /// <returns>The vector's length squared.</returns>
+    /// <remarks>This operation offers better performance than a call to the <see cref="Vector3F.Length" /> method.</remarks>
+    /// <altmember cref="Vector3F.Length" />
+    public readonly float LengthSquared() => Dot(this, this);
 
-        /// <summary>Returns a value that indicates whether this instance and another vector are equal.</summary>
-        /// <param name="other">The other vector.</param>
-        /// <returns><see langword="true" /> if the two vectors are equal; otherwise, <see langword="false" />.</returns>
-        /// <remarks>
-        ///     Two vectors are equal if their <see cref="Vector3F.X" />, <see cref="Vector3F.Y" />, and
-        ///     <see cref="Vector3F.Z" /> elements are equal.
-        /// </remarks>
-        public readonly bool Equals(Vector3F other) => this == other;
+    /// <summary>Returns the string representation of the current instance using default formatting.</summary>
+    /// <returns>The string representation of the current instance.</returns>
+    /// <remarks>
+    ///     This method returns a string in which each element of the vector is formatted using the "G" (general) format
+    ///     string and the formatting conventions of the current thread culture. The "&lt;" and "&gt;" characters are used to
+    ///     begin and end the string, and the current culture's
+    ///     <see cref="System.Globalization.NumberFormatInfo.NumberGroupSeparator" /> property followed by a space is used to
+    ///     separate each element.
+    /// </remarks>
+    public readonly override string ToString() => ToString("G", CultureInfo.CurrentCulture);
 
-        /// <summary>Returns the hash code for this instance.</summary>
-        /// <returns>The hash code.</returns>
-        public readonly override int GetHashCode() => hashCode;
+    /// <summary>
+    ///     Gets the object data using the specified info
+    /// </summary>
+    /// <param name="info">The info</param>
+    /// <param name="context">The context</param>
+    public void GetObjectData(SerializationInfo info, StreamingContext context)
+    {
+        info.AddValue("x", X);
+        info.AddValue("y", Y);
+        info.AddValue("z", Z);
+    }
 
-        /// <summary>Returns the length of this vector object.</summary>
-        /// <returns>The vector's length.</returns>
-        /// <altmember cref="Vector3F.LengthSquared" />
-        public readonly float Length()
-        {
-            float lengthSquared = LengthSquared();
-            return CustomMathF.Sqrt(lengthSquared);
-        }
-
-        /// <summary>Returns the length of the vector squared.</summary>
-        /// <returns>The vector's length squared.</returns>
-        /// <remarks>This operation offers better performance than a call to the <see cref="Vector3F.Length" /> method.</remarks>
-        /// <altmember cref="Vector3F.Length" />
-        public readonly float LengthSquared() => Dot(this, this);
-
-        /// <summary>Returns the string representation of the current instance using default formatting.</summary>
-        /// <returns>The string representation of the current instance.</returns>
-        /// <remarks>
-        ///     This method returns a string in which each element of the vector is formatted using the "G" (general) format
-        ///     string and the formatting conventions of the current thread culture. The "&lt;" and "&gt;" characters are used to
-        ///     begin and end the string, and the current culture's
-        ///     <see cref="System.Globalization.NumberFormatInfo.NumberGroupSeparator" /> property followed by a space is used to
-        ///     separate each element.
-        /// </remarks>
-        public readonly override string ToString() => ToString("G", CultureInfo.CurrentCulture);
-
-        /// <summary>
-        ///     Gets the object data using the specified info
-        /// </summary>
-        /// <param name="info">The info</param>
-        /// <param name="context">The context</param>
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            info.AddValue("x", X);
-            info.AddValue("y", Y);
-            info.AddValue("z", Z);
-        }
-
-        /// <summary>
-        ///     Returns the string representation of the current instance using the specified format string to format
-        ///     individual elements and the specified format provider to define culture-specific formatting.
-        /// </summary>
-        /// <param name="format">A standard or custom numeric format string that defines the format of individual elements.</param>
-        /// <param name="formatProvider">A format provider that supplies culture-specific formatting information.</param>
-        /// <returns>The string representation of the current instance.</returns>
-        /// <remarks>
-        ///     This method returns a string in which each element of the vector is formatted using <paramref name="format" />
-        ///     and <paramref name="formatProvider" />. The "&lt;" and "&gt;" characters are used to begin and end the string, and
-        ///     the format provider's <see cref="System.Globalization.NumberFormatInfo.NumberGroupSeparator" /> property followed
-        ///     by a space is used to separate each element.
-        /// </remarks>
-        /// <related type="Article" href="/dotnet/standard/base-types/standard-numeric-format-strings">
-        ///     Standard Numeric Format
-        ///     Strings
-        /// </related>
-        /// <related type="Article" href="/dotnet/standard/base-types/custom-numeric-format-strings">Custom Numeric Format Strings</related>
-        public readonly string ToString(string format, IFormatProvider formatProvider)
-        {
-            StringBuilder sb = new StringBuilder();
-            string separator = NumberFormatInfo.GetInstance(formatProvider).NumberGroupSeparator;
-            sb.Append('<');
-            sb.Append(X.ToString(format, formatProvider));
-            sb.Append(separator);
-            sb.Append(' ');
-            sb.Append(Y.ToString(format, formatProvider));
-            sb.Append(separator);
-            sb.Append(' ');
-            sb.Append(Z.ToString(format, formatProvider));
-            sb.Append('>');
-            return sb.ToString();
-        }
+    /// <summary>
+    ///     Returns the string representation of the current instance using the specified format string to format
+    ///     individual elements and the specified format provider to define culture-specific formatting.
+    /// </summary>
+    /// <param name="format">A standard or custom numeric format string that defines the format of individual elements.</param>
+    /// <param name="formatProvider">A format provider that supplies culture-specific formatting information.</param>
+    /// <returns>The string representation of the current instance.</returns>
+    /// <remarks>
+    ///     This method returns a string in which each element of the vector is formatted using <paramref name="format" />
+    ///     and <paramref name="formatProvider" />. The "&lt;" and "&gt;" characters are used to begin and end the string, and
+    ///     the format provider's <see cref="System.Globalization.NumberFormatInfo.NumberGroupSeparator" /> property followed
+    ///     by a space is used to separate each element.
+    /// </remarks>
+    /// <related type="Article" href="/dotnet/standard/base-types/standard-numeric-format-strings">
+    ///     Standard Numeric Format
+    ///     Strings
+    /// </related>
+    /// <related type="Article" href="/dotnet/standard/base-types/custom-numeric-format-strings">Custom Numeric Format Strings</related>
+    public readonly string ToString(string format, IFormatProvider formatProvider)
+    {
+        StringBuilder sb = new StringBuilder();
+        string separator = NumberFormatInfo.GetInstance(formatProvider).NumberGroupSeparator;
+        sb.Append('<');
+        sb.Append(X.ToString(format, formatProvider));
+        sb.Append(separator);
+        sb.Append(' ');
+        sb.Append(Y.ToString(format, formatProvider));
+        sb.Append(separator);
+        sb.Append(' ');
+        sb.Append(Z.ToString(format, formatProvider));
+        sb.Append('>');
+        return sb.ToString();
     }
 }

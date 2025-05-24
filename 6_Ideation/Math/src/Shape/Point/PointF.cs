@@ -29,53 +29,52 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math.Shape.Point
+namespace Alis.Core.Aspect.Math.Shape.Point;
+
+/// <summary>
+///     The f point
+/// </summary>
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct PointF : IShape
 {
     /// <summary>
-    ///     The f point
+    ///     Initializes a new instance of the <see cref="PointF" /> class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct PointF : IShape
+    /// <param name="value">The value</param>
+    public PointF(float value)
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="PointF" /> class
-        /// </summary>
-        /// <param name="value">The value</param>
-        public PointF(float value)
-        {
-            X = value;
-            Y = value;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="PointF" /> class
-        /// </summary>
-        /// <param name="point">The point</param>
-        public PointF(PointF point)
-        {
-            X = point.X;
-            Y = point.Y;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="PointF" /> class
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        public PointF(float x, float y)
-        {
-            X = x;
-            Y = y;
-        }
-
-        /// <summary>
-        ///     The X
-        /// </summary>
-        public float X { get; set; }
-
-        /// <summary>
-        ///     The Y
-        /// </summary>
-        public float Y { get; set; }
+        X = value;
+        Y = value;
     }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="PointF" /> class
+    /// </summary>
+    /// <param name="point">The point</param>
+    public PointF(PointF point)
+    {
+        X = point.X;
+        Y = point.Y;
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="PointF" /> class
+    /// </summary>
+    /// <param name="x">The </param>
+    /// <param name="y">The </param>
+    public PointF(float x, float y)
+    {
+        X = x;
+        Y = y;
+    }
+
+    /// <summary>
+    ///     The X
+    /// </summary>
+    public float X { get; set; }
+
+    /// <summary>
+    ///     The Y
+    /// </summary>
+    public float Y { get; set; }
 }

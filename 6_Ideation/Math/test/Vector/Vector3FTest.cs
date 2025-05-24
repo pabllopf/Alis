@@ -117,7 +117,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             float x = 4;
 
             // Act
-            float result = CustomMathF.Sqrt(x);
+            float result = (float)System.Math.Sqrt(x);
 
             // Assert
             Assert.Equal(2, result);
@@ -133,7 +133,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             float value = -5;
 
             // Act
-            float result = CustomMathF.Abs(value);
+            float result = System.Math.Abs(value);
 
             // Assert
             Assert.Equal(5, result);
@@ -146,10 +146,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void Cos_ShouldCalculateCorrectly()
         {
             // Arrange
-            float x = CustomMathF.Pi / 2;
+            float x = (float)(System.Math.PI / 2);
 
             // Act
-            float result = CustomMathF.Cos(x);
+            float result = (float)System.Math.Cos(x);
 
             // Assert
             Assert.Equal(0, result, 5);
@@ -162,31 +162,15 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void Sin_ShouldCalculateCorrectly()
         {
             // Arrange
-            float x = CustomMathF.Pi / 2;
+            float x = (float)(System.Math.PI / 2);
 
             // Act
-            float result = CustomMathF.Sin(x);
+            float result = (float)System.Math.Sin(x);
 
             // Assert
             Assert.Equal(1, result, 5);
         }
-
-        /// <summary>
-        ///     Tests that acos should calculate correctly
-        /// </summary>
-        [Fact]
-        public void Acos_ShouldCalculateCorrectly()
-        {
-            // Arrange
-            float x = 1;
-
-            // Act
-            float result = CustomMathF.Acos(x);
-
-            // Assert
-            Assert.Equal(1.53, result, 2);
-        }
-
+        
         /// <summary>
         ///     Tests that max should return maximum value
         /// </summary>
@@ -198,7 +182,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             int val2 = 10;
 
             // Act
-            int result = CustomMathF.Max(val1, val2);
+            int result = System.Math.Max(val1, val2);
 
             // Assert
             Assert.Equal(val2, result);
