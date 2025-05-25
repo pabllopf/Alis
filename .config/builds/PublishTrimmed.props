@@ -1,10 +1,5 @@
 <Project>
     <PropertyGroup Condition="$(TargetFramework.Equals('net6.0')) or $(TargetFramework.Equals('net7.0')) or $(TargetFramework.Equals('net8.0')) or $(TargetFramework.Equals('net9.0'))">
-        <PublishTrimmed>true</PublishTrimmed>
-        <TrimMode>Link</TrimMode>
-        <TrimmerRootAssembly>Alis</TrimmerRootAssembly>
-        <TrimmerDefaultAction>Link</TrimmerDefaultAction>
-        <TrimmerIgnoreUnresolvedAssemblies>true</TrimmerIgnoreUnresolvedAssemblies>
-        <TrimmerWarnOnUnresolvedAssemblies>true</TrimmerWarnOnUnresolvedAssemblies>
+        <PublishTrimmed>false</PublishTrimmed>
     </PropertyGroup>
 </Project>

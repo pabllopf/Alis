@@ -49,7 +49,6 @@ namespace Alis.Core.Ecs.Benchmark
         /// <returns>A func of gameObject array</returns>
         private Func<GameObject>[] BuildEntityCreationDelegates(Random random)
         {
-            throw new NotImplementedException();
             var x = typeof(Scene).GetMethods();
             MethodInfo[] method = typeof(Scene).GetMethods().Where(m => m.Name == "CreateNoArgs").ToArray();
             Type[] componentTypes = _componentTypes;

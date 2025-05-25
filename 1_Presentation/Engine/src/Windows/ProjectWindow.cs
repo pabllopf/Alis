@@ -49,16 +49,6 @@ namespace Alis.App.Engine.Windows
         private static readonly string NameWindow = $"{FontAwesome5.Stream} Project";
 
         /// <summary>
-        ///     The group by
-        /// </summary>
-        private string _groupBy = "None";
-
-        /// <summary>
-        ///     The command ptr
-        /// </summary>
-        private IntPtr commandPtr;
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="ProjectWindow" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>

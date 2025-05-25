@@ -245,8 +245,6 @@ namespace Alis.Core.Ecs.Core.Archetype
         /// </summary>
         private void ResizeCreateComponentBuffers()
         {
-#if DEBUG
-#endif
             int newLen = checked(Math.Max(1, _entities.Length) * 2);
             //we only need to resize the EntityIDOnly array when future total gameObject count is greater than capacity
             Array.Resize(ref _entities, newLen);
@@ -292,7 +290,12 @@ namespace Alis.Core.Ecs.Core.Archetype
 
             DeleteComponentData args = new(index, NextComponentIndex);
 
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+            ref ComponentStorageBase first = ref Components[0];
+#else
             ref ComponentStorageBase first = ref MemoryMarshal.GetArrayDataReference(Components);
+#endif
+            
 
             switch (Components.Length)
             {
@@ -435,6 +438,16 @@ namespace Alis.Core.Ecs.Core.Archetype
 #endif
         }
 
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+        /// <summary>
+        ///     Gets the gameObject data reference
+        /// </summary>
+        /// <returns>The ref gameObject id only</returns>
+        internal ref GameObjectIdOnly GetEntityDataReference()
+        {
+            return ref _entities[0];
+        }
+#else
         /// <summary>
         ///     Gets the gameObject data reference
         /// </summary>
@@ -443,7 +456,7 @@ namespace Alis.Core.Ecs.Core.Archetype
         {
             return ref MemoryMarshal.GetArrayDataReference(_entities);
         }
-
+#endif
         /// <summary>
         ///     The fields
         /// </summary>

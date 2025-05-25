@@ -41,6 +41,8 @@ namespace Alis.Sample.Desktop
     /// </summary>
     public struct PlayerMovement (int velocity) : IInitable, IEntityComponent
     {
+        public int Velocity { get; } = velocity;
+
         /// <summary>
         /// Updates the self
         /// </summary>

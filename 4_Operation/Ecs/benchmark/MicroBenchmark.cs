@@ -44,19 +44,11 @@ namespace Alis.Core.Ecs.Benchmark
         /// The gameObject
         /// </summary>
         private GameObject _gameObject;
-        /// <summary>
-        /// The query
-        /// </summary>
-        private Query _query;
 
         /// <summary>
         /// The entities
         /// </summary>
         private GameObject[] _entities;
-        /// <summary>
-        /// The raw
-        /// </summary>
-        private int[] _raw;
 
         //[Params(1, 100, 10_000, 100_000)]
         /// <summary>

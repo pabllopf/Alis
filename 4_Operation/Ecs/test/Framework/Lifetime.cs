@@ -107,7 +107,7 @@ using System;
                 /// The lifetime component
                 /// </summary>
                 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-                public struct LifetimeComponent(Action<GameObject>? init, Action<GameObject>? destroy) : IInitable, IDestroyable
+                public struct LifetimeComponent(Action<GameObject> init, Action<GameObject> destroy) : IInitable, IDestroyable
                 {
                     /// <summary>
                     /// The self

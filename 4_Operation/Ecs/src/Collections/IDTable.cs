@@ -145,7 +145,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     Gets the value of the buffer
         /// </summary>
-        public ref T[] Buffer => ref Unsafe.As<Array, T[]>(ref base.Buffer);
+        public new ref T[] Buffer => ref Unsafe.As<Array, T[]>(ref base.Buffer);
 
         /// <summary>
         ///     Creates the index

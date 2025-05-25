@@ -16,7 +16,24 @@ namespace System.Numerics
             19, 27, 23, 06, 26, 05, 04, 31
         ];
 
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
         public static int Log2(uint value)
+        {
+            value |= value >> 01;
+            value |= value >> 02;
+            value |= value >> 04;
+            value |= value >> 08;
+            value |= value >> 16;
+
+            // uint.MaxValue >> 27 is always in range [0 - 31] so we use Unsafe.AddByteOffset to avoid bounds check
+            return Unsafe.AddByteOffset(
+                // Using deBruijn sequence, k=2, n=5 (2^5=32) : 0b_0000_0111_1100_0100_1010_1100_1101_1101u
+                ref Log2DeBruijn[0],
+                // uint|long -> IntPtr cast on 32-bit platforms does expensive overflow checks not needed here
+                (IntPtr)(int)((value * 0x07C4ACDDu) >> 27));
+        }
+#else
+      public static int Log2(uint value)
         {
             value |= value >> 01;
             value |= value >> 02;
@@ -31,6 +48,7 @@ namespace System.Numerics
                 // uint|long -> IntPtr cast on 32-bit platforms does expensive overflow checks not needed here
                 (IntPtr)(int)((value * 0x07C4ACDDu) >> 27));
         }
+#endif
 
         public static uint RoundUpToPowerOf2(uint value)
         {

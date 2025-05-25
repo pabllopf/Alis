@@ -824,7 +824,6 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
             {
                 case null:
                     throw new ArgumentNullException(nameof(enumerable));
-                    break;
 
                 case ICollection<T> collection:
                     if (collection.Count == 0)

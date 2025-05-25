@@ -3,4 +3,9 @@
     <PropertyGroup>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
+
+
+    <PropertyGroup Condition="$(AssemblyName.Contains('Generator')) == true" >
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    </PropertyGroup>
 </Project>

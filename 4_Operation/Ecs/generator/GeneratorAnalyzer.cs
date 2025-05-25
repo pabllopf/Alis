@@ -109,7 +109,7 @@ namespace Alis.Core.Ecs.Generator
                 Report(MultipleComponentInterfaces, current);
             }
 
-            void Report(DiagnosticDescriptor diagnosticDescriptor, ISymbol location, params object?[] args)
+            void Report(DiagnosticDescriptor diagnosticDescriptor, ISymbol location, params object[] args)
             {
                 context.ReportDiagnostic(Diagnostic.Create(diagnosticDescriptor, location.Locations.First(), args));
             }

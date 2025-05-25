@@ -1032,7 +1032,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <typeparam name="T">The </typeparam>
         /// <param name="typesLength">The types length</param>
         /// <returns>The builder</returns>
-        public static Builder CreateBuilder<T>(int typesLength) => new Builder {Capacity = typesLength};
+        public static Builder CreateBuilder<T1>(int typesLength) => new Builder {Capacity = typesLength};
 
         /// <summary>
         ///     Converts the span
@@ -1046,7 +1046,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <typeparam name="T">The </typeparam>
         /// <param name="typeId">The type id</param>
         /// <returns>The int</returns>
-        public int IndexOf<T>(T typeId) => Array.IndexOf(array, typeId, 0, Length);
+        public int IndexOf<T1>(T typeId) => Array.IndexOf(array, typeId, 0, Length);
 
         /// <summary>
         ///     Removes the at using the specified index
@@ -1055,7 +1055,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <param name="index">The index</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         /// <returns>A fast immutable array of t</returns>
-        public FastImmutableArray<T> RemoveAt<T>(int index)
+        public FastImmutableArray<T> RemoveAt<T1>(int index)
         {
             if (index < 0 || index >= Length)
             {
@@ -1295,7 +1295,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         ///     <see cref="FastImmutableArray{T}.As{TOther}" />  or <see cref="FastImmutableArray{T}.CastArray{TOther}" />method.
         /// </remarks>
         public static FastImmutableArray<T> CastUp<TDerived>(FastImmutableArray<TDerived> items)
-            where TDerived : class?, T
+            where TDerived : class, T
         {
             return new FastImmutableArray<T>(items.array);
         }
@@ -1307,7 +1307,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         ///     .
         /// </summary>
         /// <exception cref="InvalidCastException">Thrown if the cast is illegal.</exception>
-        public FastImmutableArray<TOther> CastArray<TOther>() where TOther : class?
+        public FastImmutableArray<TOther> CastArray<TOther>() where TOther : class
         {
             return new FastImmutableArray<TOther>((TOther[]) (object) array!);
         }
@@ -1327,7 +1327,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         ///     element types to their derived types. However, downcasting is only successful
         ///     when it reverses a prior upcasting operation.
         /// </remarks>
-        public FastImmutableArray<TOther> As<TOther>() where TOther : class?
+        public FastImmutableArray<TOther> As<TOther>() where TOther : class
         {
             return new FastImmutableArray<TOther>(array as TOther[]);
         }

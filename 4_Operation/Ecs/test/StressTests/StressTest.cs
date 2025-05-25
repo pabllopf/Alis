@@ -252,7 +252,7 @@ namespace Alis.Core.Ecs.Test.StressTests
        {
            Type[] types = objects.Select(o => o.GetType()).ToArray();
            MethodInfo m = _create[objects.Length - 1].MakeGenericMethod(types);
-           object? boxedEntity = m.Invoke(_syncedScene, objects);
+           object boxedEntity = m.Invoke(_syncedScene, objects);
            Assert.NotNull(boxedEntity);
            var entity = (GameObject)boxedEntity!;
        
