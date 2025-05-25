@@ -193,7 +193,10 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
             _version++;
         }
 
-        /// <internalonly />
+        /// <summary>
+        ///     Returns an enumerator that iterates through the collection.
+        /// </summary>
+        /// <returns></returns>
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
             => new Enumerator(this);
 
