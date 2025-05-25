@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Color4f.cs
+//  File:Delegates.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,13 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Graphic.GlfwLib.Enums;
 
-namespace Alis.Core.Graphic.OpenGL.Delegates
+namespace Alis.Core.Graphic.GlfwLib
 {
     /// <summary>
-    ///     The color 4f
+    ///     Function signature for receiving error callbacks.
     /// </summary>
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void Color4F(float red, float green, float blue, float alpha);
+    /// <param name="code">The error code.</param>
+    /// <param name="message">A pointer to the UTF-8 encoded (null-terminated) error message.</param>
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate void ErrorCallback(ErrorCode code, IntPtr message);
 }

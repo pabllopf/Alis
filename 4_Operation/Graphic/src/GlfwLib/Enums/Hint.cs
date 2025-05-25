@@ -240,7 +240,7 @@ namespace Alis.Core.Graphic.GlfwLib.Enums
         /// <summary>
         ///     Specifies which client API to create the context for.
         ///     <para>This is a hard constraint.</para>
-        ///     <para>Default Value: <see cref="Enums.ClientApi.OpenGL" /></para>
+        ///     <para>Default Value: <see cref="Enums.ClientApi.OpenGl" /></para>
         ///     <para>Possible Values: Any of <see cref="Enums.ClientApi" /> values.</para>
         /// </summary>
         ClientApi = 0x00022001,

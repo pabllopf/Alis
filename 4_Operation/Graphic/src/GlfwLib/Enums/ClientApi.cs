@@ -42,11 +42,11 @@ namespace Alis.Core.Graphic.GlfwLib.Enums
         /// <summary>
         ///     OpenGL
         /// </summary>
-        OpenGL = 0x00030001,
+        OpenGl = 0x00030001,
 
         /// <summary>
         ///     OpenGL ES
         /// </summary>
-        OpenGLES = 0x00030002
+        OpenGles = 0x00030002
     }
 }

@@ -95,7 +95,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     The color 4f
         /// </summary>
-        public static Color4f GlColor4f => GetCommand<Color4f>("glColor4f");
+        public static Color4F GlColor4F => GetCommand<Color4F>("glColor4f");
 
 
         /// <summary>
@@ -251,12 +251,12 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     The uniform 3fv
         /// </summary>
-        private static Uniform3Fv _glUniform3Fv => GetCommand<Uniform3Fv>("glUniform3fv");
+        private static Uniform3Fv GlUniform3Fv => GetCommand<Uniform3Fv>("glUniform3fv");
 
         /// <summary>
         ///     The uniform 4fv
         /// </summary>
-        private static Uniform4Fv _glUniform4Fv => GetCommand<Uniform4Fv>("glUniform4fv");
+        private static Uniform4Fv GlUniform4Fv => GetCommand<Uniform4Fv>("glUniform4fv");
 
         /// <summary>
         ///     The uniform matrix 3fv del
@@ -286,7 +286,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     The vertex 2f
         /// </summary>
-        public static Vertex2f GlVertex2f => GetCommand<Vertex2f>("glVertex2f");
+        public static Vertex2F GlVertex2F => GetCommand<Vertex2F>("glVertex2f");
 
         /// <summary>
         ///     The enable vertex attrib array del

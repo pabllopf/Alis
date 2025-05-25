@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Color4f.cs
+//  File:StbiResultInfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,11 +29,27 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.OpenGL.Delegates
+namespace Alis.Core.Graphic.Stb
 {
     /// <summary>
-    ///     The color 4f
+    ///     The stbi result info
     /// </summary>
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void Color4F(float red, float green, float blue, float alpha);
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct StbiResultInfo
+    {
+        /// <summary>
+        ///     The bits per channel
+        /// </summary>
+        public int bits_per_channel;
+
+        /// <summary>
+        ///     The num channels
+        /// </summary>
+        public int num_channels;
+
+        /// <summary>
+        ///     The channel order
+        /// </summary>
+        public int channel_order;
+    }
 }

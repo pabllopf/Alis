@@ -66,11 +66,6 @@ namespace Alis.Core.Ecs.Benchmark
             {
                 JitTest(disasmCall);
             }
-            else
-            {
-                BenchmarkRunner.Run<T>();
-                JitTest(disasmCall);
-            }
         }
 
         /// <summary>

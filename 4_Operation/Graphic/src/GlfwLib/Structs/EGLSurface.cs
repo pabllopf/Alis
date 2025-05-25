@@ -36,12 +36,12 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
     ///     Wrapper around a EGL surface pointer.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct EGLSurface : IEquatable<EGLSurface>
+    public struct EglSurface : IEquatable<EglSurface>
     {
         /// <summary>
         ///     Describes a default/null instance.
         /// </summary>
-        public static readonly EGLSurface None;
+        public static readonly EglSurface None;
 
         /// <summary>
         ///     Internal pointer.
@@ -49,13 +49,13 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         private readonly IntPtr handle;
 
         /// <summary>
-        ///     Performs an implicit conversion from <see cref="EGLSurface" /> to <see cref="IntPtr" />.
+        ///     Performs an implicit conversion from <see cref="EglSurface" /> to <see cref="IntPtr" />.
         /// </summary>
         /// <param name="surface">The surface.</param>
         /// <returns>
         ///     The result of the conversion.
         /// </returns>
-        public static implicit operator IntPtr(EGLSurface surface) => surface.handle;
+        public static implicit operator IntPtr(EglSurface surface) => surface.handle;
 
         /// <summary>
         ///     Returns a <see cref="System.String" /> that represents this instance.
@@ -66,13 +66,13 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         public override string ToString() => handle.ToString();
 
         /// <summary>
-        ///     Determines whether the specified <see cref="EGLSurface" />, is equal to this instance.
+        ///     Determines whether the specified <see cref="EglSurface" />, is equal to this instance.
         /// </summary>
-        /// <param name="other">The <see cref="EGLSurface" /> to compare with this instance.</param>
+        /// <param name="other">The <see cref="EglSurface" /> to compare with this instance.</param>
         /// <returns>
-        ///     <c>true</c> if the specified <see cref="EGLSurface" /> is equal to this instance; otherwise, <c>false</c>.
+        ///     <c>true</c> if the specified <see cref="EglSurface" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
-        public bool Equals(EGLSurface other) => handle.Equals(other.handle);
+        public bool Equals(EglSurface other) => handle.Equals(other.handle);
 
         /// <summary>
         ///     Determines whether the specified <see cref="System.Object" />, is equal to this instance.
@@ -83,7 +83,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (obj is EGLSurface surface)
+            if (obj is EglSurface surface)
             {
                 return Equals(surface);
             }
@@ -107,7 +107,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         /// <returns>
         ///     The result of the operator.
         /// </returns>
-        public static bool operator ==(EGLSurface left, EGLSurface right) => left.Equals(right);
+        public static bool operator ==(EglSurface left, EglSurface right) => left.Equals(right);
 
         /// <summary>
         ///     Implements the operator !=.
@@ -117,6 +117,6 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         /// <returns>
         ///     The result of the operator.
         /// </returns>
-        public static bool operator !=(EGLSurface left, EGLSurface right) => !left.Equals(right);
+        public static bool operator !=(EglSurface left, EglSurface right) => !left.Equals(right);
     }
 }

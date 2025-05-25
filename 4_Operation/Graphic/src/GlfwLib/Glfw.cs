@@ -53,12 +53,12 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     The native library name,
         ///     <para>For Unix users using an installed version of GLFW, this needs refactored to <c>glfw</c>.</para>
         /// </summary>
-        public const string LIBRARY = "glfw";
+        public const string Library = "glfw";
 
         /// <summary>
         ///     The glfw error
         /// </summary>
-        private static readonly ErrorCallback errorCallback = GlfwError;
+        private static readonly ErrorCallback ErrorCallback = GlfwError;
 
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Alis.Core.Graphic.GlfwLib
         {
             EmbeddedDllClass.ExtractEmbeddedDlls("glfw", DllType.Lib, GlfwDlls.GlfwDllBytes, Assembly.GetAssembly(typeof(GlfwDlls)));
             Init();
-            SetErrorCallback(errorCallback);
+            SetErrorCallback(ErrorCallback);
         }
 
 
@@ -200,7 +200,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="monitor">The monitor to query.</param>
         /// <param name="xScale">The scale on the x-axis.</param>
         /// <param name="yScale">The scale on the y-axis.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetMonitorContentScale", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetMonitorContentScale", CallingConvention = CallingConvention.Cdecl)]
         public static extern void GetMonitorContentScale(IntPtr monitor, out float xScale, out float yScale);
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="monitor">The monitor whose pointer to return.</param>
         /// <returns>The user-pointer, or <see cref="IntPtr.Zero" /> if none is defined.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetMonitorUserPointer", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetMonitorUserPointer", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetMonitorUserPointer(IntPtr monitor);
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="monitor">The monitor whose pointer to set.</param>
         /// <param name="pointer">The user-defined pointer value.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetMonitorUserPointer", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetMonitorUserPointer", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetMonitorUserPointer(IntPtr monitor, IntPtr pointer);
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="window">The window to query.</param>
         /// <returns>The opacity value of the specified window, a value between <c>0.0</c> and <c>1.0</c> inclusive.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetWindowOpacity", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetWindowOpacity", CallingConvention = CallingConvention.Cdecl)]
         public static extern float GetWindowOpacity(IntPtr window);
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="window">The window to set the opacity for.</param>
         /// <param name="opacity">The desired opacity of the specified window.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowOpacity", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowOpacity", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetWindowOpacity(IntPtr window, float opacity);
 
         /// <summary>
@@ -251,7 +251,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="hint">The window hit to set.</param>
         /// <param name="value">The new value of the window hint.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwWindowHintString", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwWindowHintString", CallingConvention = CallingConvention.Cdecl)]
         public static extern void WindowHintString(Hint hint, byte[] value);
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">The window to query.</param>
         /// <param name="xScale">The content scale on the x-axis.</param>
         /// <param name="yScale">The content scale on the y-axis.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetWindowContentScale", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetWindowContentScale", CallingConvention = CallingConvention.Cdecl)]
         public static extern void GetWindowContentScale(IntPtr window, out float xScale, out float yScale);
 
         /// <summary>
@@ -303,7 +303,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     </para>
         /// </summary>
         /// <param name="window">The window to request user attention to.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwRequestWindowAttention", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwRequestWindowAttention", CallingConvention = CallingConvention.Cdecl)]
         public static extern void RequestWindowAttention(IntPtr window);
 
         /// <summary>
@@ -314,7 +314,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     </para>
         /// </summary>
         /// <returns><c>true</c> if raw mouse motion is supported on the current machine, or <c>false</c> otherwise.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwRawMouseMotionSupported", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwRawMouseMotionSupported", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool RawMouseMotionSupported();
 
         /// <summary>
@@ -324,7 +324,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">The window whose callback to set.</param>
         /// <param name="cb">The new callback, or <c>null</c> to remove the currently set callback.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowMaximizeCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowMaximizeCallback", CallingConvention = CallingConvention.Cdecl)]
         public static extern WindowMaximizedCallback SetWindowMaximizeCallback(IntPtr window,
             WindowMaximizedCallback cb);
 
@@ -335,7 +335,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">The window whose callback to set.</param>
         /// <param name="cb">The new callback, or <c>null</c> to remove the currently set callback</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowContentScaleCallback",
+        [DllImport(Library, EntryPoint = "glfwSetWindowContentScaleCallback",
             CallingConvention = CallingConvention.Cdecl)]
         public static extern WindowContentsScaleCallback SetWindowContentScaleCallback(IntPtr window,
             WindowContentsScaleCallback cb);
@@ -346,7 +346,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="key">The named key to query.</param>
         /// <returns>The platform-specific scan-code for the key, or -1 if an error occurred.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetKeyScancode", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetKeyScancode", CallingConvention = CallingConvention.Cdecl)]
         public static extern int GetKeyScanCode(Keys key);
 
         /// <summary>
@@ -373,7 +373,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </param>
         /// <param name="attr">A supported window attribute.</param>
         /// <param name="value">The value to set.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowAttrib", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowAttrib", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetWindowAttribute(IntPtr window, WindowAttribute attr, bool value);
 
         /// <summary>
@@ -382,7 +382,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="joystickId">The joystick id</param>
         /// <param name="count">The count</param>
         /// <returns>The int ptr</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickHats", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetJoystickHats", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetJoystickHats(int joystickId, out int count);
 
         /// <summary>
@@ -408,7 +408,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="joystickId">The joystick id</param>
         /// <returns>The int ptr</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickGUID", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetJoystickGUID", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetJoystickGuidPrivate(int joystickId);
 
         /// <summary>
@@ -431,7 +431,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="joystickId">The joystick whose pointer to return.</param>
         /// <returns>The user-defined pointer, or <see cref="IntPtr.Zero" /> if never defined.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickUserPointer", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetJoystickUserPointer", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetJoystickUserPointer(int joystickId);
 
         /// <summary>
@@ -440,7 +440,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="joystickId">The joystick whose pointer to set.</param>
         /// <param name="pointer">The new value.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetJoystickUserPointer", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetJoystickUserPointer", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetJoystickUserPointer(int joystickId, IntPtr pointer);
 
         /// <summary>
@@ -448,7 +448,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="joystickId">The joystick to query.</param>
         /// <returns><c>true</c> if a joystick is both present and has a gamepad mapping, or <c>false</c> otherwise.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwJoystickIsGamepad", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwJoystickIsGamepad", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool JoystickIsGamepad(int joystickId);
 
         /// <summary>
@@ -456,7 +456,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="mappings">The mappings</param>
         /// <returns>The bool</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwUpdateGamepadMappings", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwUpdateGamepadMappings", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool UpdateGamepadMappings(byte[] mappings);
 
         /// <summary>
@@ -475,7 +475,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="gamepadId">The gamepad id</param>
         /// <returns>The int ptr</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetGamepadName", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetGamepadName", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetGamepadNamePrivate(int gamepadId);
 
         /// <summary>
@@ -501,7 +501,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     <c>true</c> if successful, or <c>false</c> if no joystick is connected, it has no gamepad mapping or an error
         ///     occurred.
         /// </returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetGamepadState", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetGamepadState", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool GetGamepadState(int id, out GamePadState state);
 
 
@@ -518,7 +518,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     <see cref="Hint.CocoaMenuBar" />, and <see cref="Hint.CocoaChDirResources" />.
         /// </param>
         /// <param name="value">The value of the hint.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwInitHint", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwInitHint", CallingConvention = CallingConvention.Cdecl)]
         public static extern void InitHint(Hint hint, bool value);
 
         /// <summary>
@@ -535,7 +535,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     </para>
         /// </summary>
         /// <returns><c>true</c> if successful, or <c>false</c> if an error occurred.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwInit", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwInit", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool Init();
 
         /// <summary>
@@ -550,7 +550,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     The contexts of any remaining windows must not be current on any other thread when this function
         ///     is called.
         /// </note>
-        [DllImport(LIBRARY, EntryPoint = "glfwTerminate", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwTerminate", CallingConvention = CallingConvention.Cdecl)]
         public static extern void Terminate();
 
         /// <summary>
@@ -559,7 +559,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="errorHandler">The callback function, or <c>null</c> to unbind this callback.</param>
         /// <returns>The previously set callback function, or <c>null</c> if no callback was already set.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetErrorCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetErrorCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(ErrorCallback))]
         public static extern ErrorCallback SetErrorCallback(ErrorCallback errorHandler);
 
@@ -572,7 +572,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="monitor">The monitor</param>
         /// <param name="share">The share</param>
         /// <returns>The window</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwCreateWindow", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwCreateWindow", CallingConvention = CallingConvention.Cdecl)]
         private static extern Window CreateWindow(int width, int height, byte[] title, Monitor monitor, Window share);
 
         /// <summary>
@@ -581,7 +581,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     <para>If the context of the specified window is current on the main thread, it is detached before being destroyed.</para>
         /// </summary>
         /// <param name="window">A window instance.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwDestroyWindow", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwDestroyWindow", CallingConvention = CallingConvention.Cdecl)]
         public static extern void DestroyWindow(Window window);
 
         /// <summary>
@@ -589,7 +589,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     is in full screen mode, this function does nothing.
         /// </summary>
         /// <param name="window">A window instance.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwShowWindow", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwShowWindow", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ShowWindow(Window window);
 
         /// <summary>
@@ -597,7 +597,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     full screen mode, this function does nothing.
         /// </summary>
         /// <param name="window">A window instance.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwHideWindow", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwHideWindow", CallingConvention = CallingConvention.Cdecl)]
         public static extern void HideWindow(Window window);
 
         /// <summary>
@@ -607,7 +607,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="x">The x-coordinate of the upper-left corner of the client area.</param>
         /// <param name="y">The y-coordinate of the upper-left corner of the client area.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetWindowPos", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetWindowPos", CallingConvention = CallingConvention.Cdecl)]
         public static extern void GetWindowPosition(Window window, out int x, out int y);
 
         /// <summary>
@@ -626,7 +626,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     The window manager may put limits on what positions are allowed. GLFW cannot and should not override these
         ///     limits.
         /// </remarks>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowPos", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowPos", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetWindowPosition(Window window, int x, int y);
 
         /// <summary>
@@ -639,7 +639,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="width">The width, in screen coordinates.</param>
         /// <param name="height">The height, in screen coordinates.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetWindowSize", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetWindowSize", CallingConvention = CallingConvention.Cdecl)]
         public static extern void GetWindowSize(Window window, out int width, out int height);
 
         /// <summary>
@@ -654,7 +654,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="width">The desired width, in screen coordinates, of the window client area.</param>
         /// <param name="height">The desired height, in screen coordinates, of the window client area.</param>
         /// <remarks>The window manager may put limits on what sizes are allowed. GLFW cannot and should not override these limits.</remarks>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowSize", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowSize", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetWindowSize(Window window, int width, int height);
 
         /// <summary>
@@ -664,7 +664,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="width">The width, in pixels, of the framebuffer.</param>
         /// <param name="height">The height, in pixels, of the framebuffer.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetFramebufferSize", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetFramebufferSize", CallingConvention = CallingConvention.Cdecl)]
         public static extern void GetFramebufferSize(Window window, out int width, out int height);
 
         /// <summary>
@@ -674,7 +674,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="positionCallback">The position callback to be invoked on position changes.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowPosCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowPosCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(PositionCallback))]
         public static extern PositionCallback SetWindowPositionCallback(Window window,
             PositionCallback positionCallback);
@@ -686,7 +686,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="sizeCallback">The size callback to be invoked on size changes.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowSizeCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowSizeCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(SizeCallback))]
         public static extern SizeCallback SetWindowSizeCallback(Window window, SizeCallback sizeCallback);
 
@@ -695,7 +695,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <param name="title">The title as an array of UTF-8 encoded bytes.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowTitle", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowTitle", CallingConvention = CallingConvention.Cdecl)]
         private static extern void SetWindowTitle(Window window, byte[] title);
 
         /// <summary>
@@ -703,7 +703,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     not iconified.
         /// </summary>
         /// <param name="window">The window.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwFocusWindow", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwFocusWindow", CallingConvention = CallingConvention.Cdecl)]
         public static extern void FocusWindow(Window window);
 
         /// <summary>
@@ -716,7 +716,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <param name="focusCallback">The new callback, or <c>null</c> to remove the currently set callback.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowFocusCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowFocusCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(FocusCallback))]
         public static extern FocusCallback SetWindowFocusCallback(Window window, FocusCallback focusCallback);
 
@@ -731,7 +731,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="minor">The minor.</param>
         /// <param name="revision">The revision.</param>
         /// <seealso cref="Version" />
-        [DllImport(LIBRARY, EntryPoint = "glfwGetVersion", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetVersion", CallingConvention = CallingConvention.Cdecl)]
         public static extern void GetVersion(out int major, out int minor, out int revision);
 
         /// <summary>
@@ -740,35 +740,35 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <returns>A pointer to the null-terminated UTF-8 encoded version string.</returns>
         /// <seealso cref="VersionString" />
-        [DllImport(LIBRARY, EntryPoint = "glfwGetVersionString", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetVersionString", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetVersionString();
 
         /// <summary>
         ///     Gets the time
         /// </summary>
         /// <returns>The double</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetTime", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetTime", CallingConvention = CallingConvention.Cdecl)]
         private static extern double GetTime();
 
         /// <summary>
         ///     Sets the time using the specified time
         /// </summary>
         /// <param name="time">The time</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetTime", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetTime", CallingConvention = CallingConvention.Cdecl)]
         private static extern void SetTime(double time);
 
         /// <summary>
         ///     Gets the timer frequency
         /// </summary>
         /// <returns>The ulong</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetTimerFrequency", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetTimerFrequency", CallingConvention = CallingConvention.Cdecl)]
         private static extern ulong GetTimerFrequency();
 
         /// <summary>
         ///     Gets the timer value
         /// </summary>
         /// <returns>The ulong</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetTimerValue", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetTimerValue", CallingConvention = CallingConvention.Cdecl)]
         private static extern ulong GetTimerValue();
 
         /// <summary>
@@ -787,7 +787,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="top">The size, in screen coordinates, of the top edge of the window frame</param>
         /// <param name="right">The size, in screen coordinates, of the right edge of the window frame.</param>
         /// <param name="bottom">The size, in screen coordinates, of the bottom edge of the window frame</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetWindowFrameSize", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetWindowFrameSize", CallingConvention = CallingConvention.Cdecl)]
         public static extern void GetWindowFrameSize(Window window, out int left, out int top, out int right,
             out int bottom);
 
@@ -797,7 +797,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     <para>If the specified window is a full screen window, this function does nothing.</para>
         /// </summary>
         /// <param name="window">A window instance.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwMaximizeWindow", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwMaximizeWindow", CallingConvention = CallingConvention.Cdecl)]
         public static extern void MaximizeWindow(Window window);
 
         /// <summary>
@@ -805,7 +805,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     <para>If the window is already iconified, this function does nothing.</para>
         /// </summary>
         /// <param name="window">A window instance.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwIconifyWindow", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwIconifyWindow", CallingConvention = CallingConvention.Cdecl)]
         public static extern void IconifyWindow(Window window);
 
         /// <summary>
@@ -817,7 +817,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     </para>
         /// </summary>
         /// <param name="window">A window instance.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwRestoreWindow", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwRestoreWindow", CallingConvention = CallingConvention.Cdecl)]
         public static extern void RestoreWindow(Window window);
 
         /// <summary>
@@ -829,7 +829,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     <para>By default, making a context non-current implicitly forces a pipeline flush.</para>
         /// </summary>
         /// <param name="window">A window instance.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwMakeContextCurrent", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwMakeContextCurrent", CallingConvention = CallingConvention.Cdecl)]
         public static extern void MakeContextCurrent(Window window);
 
         /// <summary>
@@ -841,7 +841,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     <para>This function does not apply to Vulkan.</para>
         /// </summary>
         /// <param name="window">A window instance.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSwapBuffers", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSwapBuffers", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SwapBuffers(Window window);
 
         /// <summary>
@@ -861,7 +861,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     The minimum number of screen updates to wait for until the buffers are swapped by
         ///     <see cref="SwapBuffers" />.
         /// </param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSwapInterval", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSwapInterval", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SwapInterval(int interval);
 
         /// <summary>
@@ -870,13 +870,13 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="extension">The extension name as an array of ASCII encoded bytes.</param>
         /// <returns><c>true</c> if the extension is supported; otherwise <c>false</c>.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwExtensionSupported", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwExtensionSupported", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool GetExtensionSupported(byte[] extension);
 
         /// <summary>
         ///     This function resets all window hints to their default values.
         /// </summary>
-        [DllImport(LIBRARY, EntryPoint = "glfwDefaultWindowHints", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwDefaultWindowHints", CallingConvention = CallingConvention.Cdecl)]
         public static extern void DefaultWindowHints();
 
         /// <summary>
@@ -884,7 +884,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns><c>true</c> if close flag is present; otherwise <c>false</c>.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwWindowShouldClose", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwWindowShouldClose", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool WindowShouldClose(Window window);
 
         /// <summary>
@@ -893,7 +893,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <param name="close"><c>true</c> to set close flag, or <c>false</c> to cancel flag.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowShouldClose", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowShouldClose", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetWindowShouldClose(Window window, bool close);
 
         /// <summary>
@@ -907,7 +907,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="count">The number of images in <paramref name="images" />.</param>
         /// <param name="images">An array of icon images.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowIcon", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowIcon", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetWindowIcon(Window window, int count, Image[] images);
 
         /// <summary>
@@ -925,7 +925,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///         contents of your window when necessary during such operations.
         ///     </para>
         /// </summary>
-        [DllImport(LIBRARY, EntryPoint = "glfwWaitEvents", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwWaitEvents", CallingConvention = CallingConvention.Cdecl)]
         public static extern void WaitEvents();
 
         /// <summary>
@@ -941,14 +941,14 @@ namespace Alis.Core.Graphic.GlfwLib
         ///         causing callbacks to be called outside of a call to one of the event processing functions.
         ///     </para>
         /// </summary>
-        [DllImport(LIBRARY, EntryPoint = "glfwPollEvents", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwPollEvents", CallingConvention = CallingConvention.Cdecl)]
         public static extern void PollEvents();
 
         /// <summary>
         ///     This function posts an empty event from the current thread to the event queue, causing <see cref="WaitEvents" /> or
         ///     <see cref="WaitEventsTimeout " /> to return.
         /// </summary>
-        [DllImport(LIBRARY, EntryPoint = "glfwPostEmptyEvent", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwPostEmptyEvent", CallingConvention = CallingConvention.Cdecl)]
         public static extern void PostEmptyEvent();
 
         /// <summary>
@@ -968,7 +968,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     </para>
         /// </summary>
         /// <param name="timeout">The maximum amount of time, in seconds, to wait.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwWaitEventsTimeout", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwWaitEventsTimeout", CallingConvention = CallingConvention.Cdecl)]
         public static extern void WaitEventsTimeout(double timeout);
 
         /// <summary>
@@ -978,7 +978,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="closeCallback">The new callback, or <c>null</c> to remove the currently set callback.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowCloseCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowCloseCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(WindowCallback))]
         public static extern WindowCallback SetCloseCallback(Window window, WindowCallback closeCallback);
 
@@ -986,7 +986,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     Gets the primary monitor
         /// </summary>
         /// <returns>The monitor</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetPrimaryMonitor", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetPrimaryMonitor", CallingConvention = CallingConvention.Cdecl)]
         private static extern Monitor GetPrimaryMonitor();
 
         /// <summary>
@@ -994,7 +994,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="monitor">The monitor</param>
         /// <returns>The int ptr</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetVideoMode", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetVideoMode", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetVideoModeInternal(Monitor monitor);
 
         /// <summary>
@@ -1003,7 +1003,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="monitor">The monitor</param>
         /// <param name="count">The count</param>
         /// <returns>The int ptr</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetVideoModes", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetVideoModes", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetVideoModes(Monitor monitor, out int count);
 
         /// <summary>
@@ -1011,7 +1011,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>The monitor, or <see cref="Monitor.None" /> if the window is in windowed mode or an error occurred.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetWindowMonitor", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetWindowMonitor", CallingConvention = CallingConvention.Cdecl)]
         public static extern Monitor GetWindowMonitor(Window window);
 
         /// <summary>
@@ -1041,7 +1041,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="width">The desired width, in screen coordinates, of the client area or video mode.</param>
         /// <param name="height">The desired height, in screen coordinates, of the client area or video mode.</param>
         /// <param name="refreshRate">The desired refresh rate, in Hz, of the video mode, or <see cref="Constants.Default" />.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowMonitor", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowMonitor", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetWindowMonitor(Window window, Monitor monitor, int x, int y, int width, int height,
             int refreshRate);
 
@@ -1050,7 +1050,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="monitor">The monitor</param>
         /// <returns>The int ptr</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetGammaRamp", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetGammaRamp", CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr GetGammaRampInternal(Monitor monitor);
 
         /// <summary>
@@ -1063,7 +1063,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="monitor">The monitor whose gamma ramp to set.</param>
         /// <param name="gammaRamp">The gamma ramp to use.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetGammaRamp", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetGammaRamp", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetGammaRamp(Monitor monitor, GammaRamp gammaRamp);
 
         /// <summary>
@@ -1073,7 +1073,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="monitor">The monitor whose gamma ramp to set.</param>
         /// <param name="gamma">The desired exponent.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetGamma", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetGamma", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetGamma(Monitor monitor, float gamma);
 
         /// <summary>
@@ -1081,7 +1081,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The int ptr</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetClipboardString", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetClipboardString", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetClipboardStringInternal(Window window);
 
         /// <summary>
@@ -1089,7 +1089,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="bytes">The bytes</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetClipboardString", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetClipboardString", CallingConvention = CallingConvention.Cdecl)]
         private static extern void SetClipboardString(Window window, byte[] bytes);
 
         /// <summary>
@@ -1104,7 +1104,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">The window whose callback to set.</param>
         /// <param name="dropCallback">The new file drop callback, or <c>null</c> to remove the currently set callback.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetDropCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetDropCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(FileDropCallback))]
         public static extern FileDropCallback SetDropCallback(Window window, FileDropCallback dropCallback);
 
@@ -1113,7 +1113,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="monitor">The monitor</param>
         /// <returns>The int ptr</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetMonitorName", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetMonitorName", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetMonitorNameInternal(Monitor monitor);
 
         /// <summary>
@@ -1135,7 +1135,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="xHotspot">The x hotspot.</param>
         /// <param name="yHotspot">The y hotspot.</param>
         /// <returns>The created cursor.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwCreateCursor", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwCreateCursor", CallingConvention = CallingConvention.Cdecl)]
         public static extern Cursor CreateCursor(Image image, int xHotspot, int yHotspot);
 
         /// <summary>
@@ -1143,7 +1143,7 @@ namespace Alis.Core.Graphic.GlfwLib
         ///     destroyed by <see cref="Terminate" />.
         /// </summary>
         /// <param name="cursor">The cursor object to destroy.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwDestroyCursor", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwDestroyCursor", CallingConvention = CallingConvention.Cdecl)]
         public static extern void DestroyCursor(Cursor cursor);
 
         /// <summary>
@@ -1152,7 +1152,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <param name="cursor">The cursor to set, or <see cref="Cursor.None" /> to switch back to the default arrow cursor.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetCursor", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetCursor", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetCursor(Window window, Cursor cursor);
 
         /// <summary>
@@ -1160,7 +1160,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="type">The type of cursor to create.</param>
         /// <returns>A new cursor ready to use or <see cref="Cursor.None" /> if an error occurred.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwCreateStandardCursor", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwCreateStandardCursor", CallingConvention = CallingConvention.Cdecl)]
         public static extern Cursor CreateStandardCursor(CursorType type);
 
         /// <summary>
@@ -1178,7 +1178,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="x">The cursor x-coordinate, relative to the left edge of the client area.</param>
         /// <param name="y">The cursor y-coordinate, relative to the left edge of the client area.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetCursorPos", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetCursorPos", CallingConvention = CallingConvention.Cdecl)]
         public static extern void GetCursorPosition(Window window, out double x, out double y);
 
         /// <summary>
@@ -1193,7 +1193,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="x">The desired x-coordinate, relative to the left edge of the client area.</param>
         /// <param name="y">The desired y-coordinate, relative to the left edge of the client area.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetCursorPos", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetCursorPos", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetCursorPosition(Window window, double x, double y);
 
         /// <summary>
@@ -1206,7 +1206,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="mouseCallback">The new callback, or <c>null</c> to remove the currently set callback.</param>
         /// <returns>The previously set callback, or<c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetCursorPosCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetCursorPosCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(MouseCallback))]
         public static extern MouseCallback SetCursorPositionCallback(Window window, MouseCallback mouseCallback);
 
@@ -1217,7 +1217,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="mouseCallback">The new callback, or <c>null</c> to remove the currently set callback.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetCursorEnterCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetCursorEnterCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(MouseEnterCallback))]
         public static extern MouseEnterCallback SetCursorEnterCallback(Window window, MouseEnterCallback mouseCallback);
 
@@ -1233,7 +1233,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="mouseCallback">The new callback, or <c>null</c> to remove the currently set callback.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetMouseButtonCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetMouseButtonCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(MouseButtonCallback))]
         public static extern MouseButtonCallback SetMouseButtonCallback(Window window,
             MouseButtonCallback mouseCallback);
@@ -1246,7 +1246,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="mouseCallback">	The new scroll callback, or <c>null</c> to remove the currently set callback.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetScrollCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetScrollCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(MouseCallback))]
         public static extern MouseCallback SetScrollCallback(Window window, MouseCallback mouseCallback);
 
@@ -1261,7 +1261,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="button">The desired mouse button.</param>
         /// <returns>The input state of the <paramref name="button" />.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetMouseButton", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetMouseButton", CallingConvention = CallingConvention.Cdecl)]
         public static extern InputState GetMouseButton(Window window, MouseButton button);
 
         /// <summary>
@@ -1270,7 +1270,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <param name="userPointer">The user pointer value.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowUserPointer", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowUserPointer", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetWindowUserPointer(Window window, IntPtr userPointer);
 
         /// <summary>
@@ -1279,7 +1279,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="window">A window instance.</param>
         /// <returns>The user-defined pointer.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetWindowUserPointer", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetWindowUserPointer", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr GetWindowUserPointer(Window window);
 
         /// <summary>
@@ -1296,7 +1296,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="minHeight">The minimum height of the client area.</param>
         /// <param name="maxWidth">The maximum width of the client area.</param>
         /// <param name="maxHeight">The maximum height of the client area.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowSizeLimits", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowSizeLimits", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetWindowSizeLimits(Window window, int minWidth, int minHeight, int maxWidth,
             int maxHeight);
 
@@ -1317,14 +1317,14 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="numerator">The numerator of the desired aspect ratio.</param>
         /// <param name="denominator">The denominator of the desired aspect ratio.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowAspectRatio", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowAspectRatio", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetWindowAspectRatio(Window window, int numerator, int denominator);
 
         /// <summary>
         ///     Gets the current context
         /// </summary>
         /// <returns>The window</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetCurrentContext", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetCurrentContext", CallingConvention = CallingConvention.Cdecl)]
         private static extern Window GetCurrentContext();
 
         /// <summary>
@@ -1333,7 +1333,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="monitor">The monitor to query.</param>
         /// <param name="width">The width, in millimeters, of the monitor's display area.</param>
         /// <param name="height">The height, in millimeters, of the monitor's display area.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetMonitorPhysicalSize", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetMonitorPhysicalSize", CallingConvention = CallingConvention.Cdecl)]
         public static extern void GetMonitorPhysicalSize(Monitor monitor, out int width, out int height);
 
         /// <summary>
@@ -1342,7 +1342,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="monitor">The monitor to query.</param>
         /// <param name="x">The monitor x-coordinate.</param>
         /// <param name="y">The monitor y-coordinate.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetMonitorPos", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetMonitorPos", CallingConvention = CallingConvention.Cdecl)]
         public static extern void GetMonitorPosition(Monitor monitor, out int x, out int y);
 
         /// <summary>
@@ -1350,7 +1350,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="count">The count</param>
         /// <returns>The int ptr</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetMonitors", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetMonitors", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetMonitors(out int count);
 
         /// <summary>
@@ -1371,7 +1371,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="charCallback">The new callback, or <c>null</c> to remove the currently set callback.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetCharCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetCharCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(CharCallback))]
         public static extern CharCallback SetCharCallback(Window window, CharCallback charCallback);
 
@@ -1389,7 +1389,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="charCallback">The new callback, or <c>null</c> to remove the currently set callback.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or an error occurred.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetCharModsCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetCharModsCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(CharModsCallback))]
         public static extern CharModsCallback SetCharModsCallback(Window window, CharModsCallback charCallback);
 
@@ -1408,7 +1408,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="key">The key to query.</param>
         /// <returns>Either <see cref="InputState.Press" /> or <see cref="InputState.Release" />.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetKey", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetKey", CallingConvention = CallingConvention.Cdecl)]
         public static extern InputState GetKey(Window window, Keys key);
 
         /// <summary>
@@ -1417,7 +1417,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="key">The key</param>
         /// <param name="scanCode">The scan code</param>
         /// <returns>The int ptr</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetKeyName", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetKeyName", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetKeyNameInternal(Keys key, int scanCode);
 
         /// <summary>
@@ -1427,7 +1427,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="sizeCallback">The new callback, or <c>null</c> to remove the currently set callback.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetFramebufferSizeCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetFramebufferSizeCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(SizeCallback))]
         public static extern SizeCallback SetFramebufferSizeCallback(Window window, SizeCallback sizeCallback);
 
@@ -1442,7 +1442,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="callback">The new callback, or <c>null</c> to remove the currently set callback.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowRefreshCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowRefreshCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(WindowCallback))]
         public static extern WindowCallback SetWindowRefreshCallback(Window window, WindowCallback callback);
 
@@ -1468,7 +1468,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">The new key callback, or <c>null</c> to remove the currently set callback.</param>
         /// <param name="keyCallback">The key callback.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetKeyCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetKeyCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(KeyCallback))]
         public static extern KeyCallback SetKeyCallback(Window window, KeyCallback keyCallback);
 
@@ -1477,7 +1477,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="joystick">The joystick to query.</param>
         /// <returns><c>true</c> if the joystick is present, or <c>false</c> otherwise.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwJoystickPresent", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwJoystickPresent", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool JoystickPresent(Joystick joystick);
 
@@ -1486,7 +1486,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The int ptr</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickName", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetJoystickName", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetJoystickNameInternal(Joystick joystick);
 
         /// <summary>
@@ -1495,7 +1495,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="joystic">The joystic</param>
         /// <param name="count">The count</param>
         /// <returns>The int ptr</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickAxes", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetJoystickAxes", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetJoystickAxes(Joystick joystic, out int count);
 
         /// <summary>
@@ -1504,7 +1504,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="joystick">The joystick</param>
         /// <param name="count">The count</param>
         /// <returns>The int ptr</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetJoystickButtons", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetJoystickButtons", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetJoystickButtons(Joystick joystick, out int count);
 
         /// <summary>
@@ -1513,7 +1513,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="callback">The new callback, or <c>null</c> to remove the currently set callback.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetJoystickCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetJoystickCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(JoystickCallback))]
         public static extern JoystickCallback SetJoystickCallback(JoystickCallback callback);
 
@@ -1523,7 +1523,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="monitorCallback">The new callback, or <c>null</c> to remove the currently set callback.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetMonitorCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetMonitorCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(MonitorCallback))]
         public static extern MonitorCallback SetMonitorCallback(MonitorCallback monitorCallback);
 
@@ -1534,7 +1534,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="callback">The new callback, or <c>null</c> to remove the currently set callback.</param>
         /// <returns>The previously set callback, or <c>null</c> if no callback was set or the library had not been initialized.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetWindowIconifyCallback", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetWindowIconifyCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.FunctionPtr, MarshalTypeRef = typeof(IconifyCallback))]
         public static extern IconifyCallback SetWindowIconifyCallback(Window window, IconifyCallback callback);
 
@@ -1544,7 +1544,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="mode">The mode to set a new value for.</param>
         /// <param name="value">The new value of the specified input mode.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwSetInputMode", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwSetInputMode", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetInputMode(Window window, InputMode mode, int value);
 
         /// <summary>
@@ -1553,7 +1553,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="mode">The mode to query.</param>
         /// <returns>Dependent on mode being queried.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetInputMode", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetInputMode", CallingConvention = CallingConvention.Cdecl)]
         public static extern int GetInputMode(Window window, InputMode mode);
 
         /// <summary>
@@ -1570,7 +1570,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="y">The y-coordinate.</param>
         /// <param name="width">The monitor width.</param>
         /// <param name="height">The monitor height.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetMonitorWorkarea", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetMonitorWorkarea", CallingConvention = CallingConvention.Cdecl)]
         public static extern void GetMonitorWorkArea(IntPtr monitor, out int x, out int y, out int width,
             out int height);
 
@@ -1579,7 +1579,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="procName">The proc name</param>
         /// <returns>The int ptr</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetProcAddress", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetProcAddress", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr GetProcAddress(byte[] procName);
 
         /// <summary>
@@ -1594,7 +1594,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="hint">The hint.</param>
         /// <param name="value">The value.</param>
-        [DllImport(LIBRARY, EntryPoint = "glfwWindowHint", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwWindowHint", CallingConvention = CallingConvention.Cdecl)]
         public static extern void WindowHint(Hint hint, int value);
 
         /// <summary>
@@ -1603,7 +1603,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="window">A window instance.</param>
         /// <param name="attribute">The attribute to retrieve.</param>
         /// <returns>The value of the <paramref name="attribute" />.</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetWindowAttrib", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetWindowAttrib", CallingConvention = CallingConvention.Cdecl)]
         private static extern int GetWindowAttribute(Window window, int attribute);
 
         /// <summary>
@@ -1611,7 +1611,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <param name="description">The description</param>
         /// <returns>The error code</returns>
-        [DllImport(LIBRARY, EntryPoint = "glfwGetError", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Library, EntryPoint = "glfwGetError", CallingConvention = CallingConvention.Cdecl)]
         private static extern ErrorCode GetErrorPrivate(out IntPtr description);
 
 

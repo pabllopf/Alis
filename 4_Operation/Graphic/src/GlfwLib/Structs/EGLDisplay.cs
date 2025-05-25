@@ -36,12 +36,12 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
     ///     Wrapper around a EGL display pointer.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct EGLDisplay : IEquatable<EGLDisplay>
+    public struct EglDisplay : IEquatable<EglDisplay>
     {
         /// <summary>
         ///     Describes a default/null instance.
         /// </summary>
-        public static readonly EGLDisplay None;
+        public static readonly EglDisplay None;
 
         /// <summary>
         ///     Internal pointer.
@@ -49,13 +49,13 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         private readonly IntPtr handle;
 
         /// <summary>
-        ///     Performs an implicit conversion from <see cref="EGLDisplay" /> to <see cref="IntPtr" />.
+        ///     Performs an implicit conversion from <see cref="EglDisplay" /> to <see cref="IntPtr" />.
         /// </summary>
         /// <param name="display">The display.</param>
         /// <returns>
         ///     The result of the conversion.
         /// </returns>
-        public static implicit operator IntPtr(EGLDisplay display) => display.handle;
+        public static implicit operator IntPtr(EglDisplay display) => display.handle;
 
         /// <summary>
         ///     Returns a <see cref="System.String" /> that represents this instance.
@@ -66,13 +66,13 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         public override string ToString() => handle.ToString();
 
         /// <summary>
-        ///     Determines whether the specified <see cref="EGLDisplay" />, is equal to this instance.
+        ///     Determines whether the specified <see cref="EglDisplay" />, is equal to this instance.
         /// </summary>
-        /// <param name="other">The <see cref="EGLDisplay" /> to compare with this instance.</param>
+        /// <param name="other">The <see cref="EglDisplay" /> to compare with this instance.</param>
         /// <returns>
-        ///     <c>true</c> if the specified <see cref="EGLDisplay" /> is equal to this instance; otherwise, <c>false</c>.
+        ///     <c>true</c> if the specified <see cref="EglDisplay" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
-        public bool Equals(EGLDisplay other) => handle.Equals(other.handle);
+        public bool Equals(EglDisplay other) => handle.Equals(other.handle);
 
         /// <summary>
         ///     Determines whether the specified <see cref="System.Object" />, is equal to this instance.
@@ -83,7 +83,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (obj is EGLDisplay display)
+            if (obj is EglDisplay display)
             {
                 return Equals(display);
             }
@@ -107,7 +107,7 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         /// <returns>
         ///     The result of the operator.
         /// </returns>
-        public static bool operator ==(EGLDisplay left, EGLDisplay right) => left.Equals(right);
+        public static bool operator ==(EglDisplay left, EglDisplay right) => left.Equals(right);
 
         /// <summary>
         ///     Implements the operator !=.
@@ -117,6 +117,6 @@ namespace Alis.Core.Graphic.GlfwLib.Structs
         /// <returns>
         ///     The result of the operator.
         /// </returns>
-        public static bool operator !=(EGLDisplay left, EGLDisplay right) => !left.Equals(right);
+        public static bool operator !=(EglDisplay left, EglDisplay right) => !left.Equals(right);
     }
 }

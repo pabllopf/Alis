@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Color4f.cs
+//  File:StbiPngchunk.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,11 +29,22 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.OpenGL.Delegates
+namespace Alis.Core.Graphic.Stb
 {
     /// <summary>
-    ///     The color 4f
+    ///     The stbi pngchunk
     /// </summary>
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void Color4F(float red, float green, float blue, float alpha);
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct StbiPngchunk
+    {
+        /// <summary>
+        ///     The length
+        /// </summary>
+        public uint length;
+
+        /// <summary>
+        ///     The type
+        /// </summary>
+        public uint type;
+    }
 }
