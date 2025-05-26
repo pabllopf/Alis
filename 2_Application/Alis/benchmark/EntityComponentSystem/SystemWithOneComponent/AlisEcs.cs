@@ -108,20 +108,20 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             /// <summary>
             ///     Initializes a new instance of the <see cref="AlisContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
-            /// <param name="entityPadding">The entity padding</param>
+            /// <param name="entityCount">The gameObject count</param>
+            /// <param name="entityPadding">The gameObject padding</param>
             public AlisContext(int entityCount, int entityPadding)
             {
                 for (int i = 0; i < entityCount; i++)
                 {
-                    World.Create(default(Component1));
+                    Scene.Create(default(Component1));
                     for (int j = 0; j < entityPadding; j++)
                     {
-                        World.Create();
+                        Scene.Create();
                     }
                 }
 
-                Query = World.Query<With<Component1>>();
+                Query = Scene.Query<With<Component1>>();
             }
         }
 
@@ -129,7 +129,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         /// <summary>
         ///     The increment alis
         /// </summary>
-        internal struct IncrementAlis : IAction<Component1>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct IncrementAlis : IAction<Component1>
         {
             /// <summary>
             ///     Runs the t 0

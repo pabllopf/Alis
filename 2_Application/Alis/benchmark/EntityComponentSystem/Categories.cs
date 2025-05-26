@@ -45,7 +45,7 @@ namespace Alis.Benchmark.EntityComponentSystem
         public const string DefaultEcs = "DefaultEcs";
 
         /// <summary>
-        ///     The frent
+        ///     The alis
         /// </summary>
         public const string Frent = "Frent";
 
@@ -115,7 +115,7 @@ namespace Alis.Benchmark.EntityComponentSystem
         public const string TinyEcs = "TinyEcs";
 
         /// <summary>
-        ///     The create entity
+        ///     The create gameObject
         /// </summary>
         public const string CreateEntity = "CreateEntity";
 

@@ -95,8 +95,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             /// <summary>
             ///     Initializes a new instance of the <see cref="FennecsContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
-            /// <param name="entityPadding">The entity padding</param>
+            /// <param name="entityCount">The gameObject count</param>
+            /// <param name="entityPadding">The gameObject padding</param>
             public FennecsContext(int entityCount, int entityPadding)
             {
                 query = World.Query<Component1, Component2>().Build();

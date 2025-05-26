@@ -121,7 +121,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         /// <returns>A span of t</returns>
         public Span<T> AsSpanLen(int len)
         {
-            Debug.Assert(len <= _length);
+
             return AsSpan().Slice(0, len);
         }
     }

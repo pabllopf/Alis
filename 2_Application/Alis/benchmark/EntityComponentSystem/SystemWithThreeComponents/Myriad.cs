@@ -117,13 +117,13 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         /// <summary>
         ///     The myriad for each
         /// </summary>
-        private struct MyriadForEach3
+        public struct MyriadForEach3
             : IQuery<Component1, Component2, Component3>, IChunkQuery<Component1, Component2, Component3>
         {
             /// <summary>
-            ///     Executes the entity
+            ///     Executes the gameObject
             /// </summary>
-            /// <param name="entity">The entity</param>
+            /// <param name="entity">The gameObject</param>
             /// <param name="t0">The </param>
             /// <param name="t1">The </param>
             /// <param name="t2">The </param>
@@ -156,12 +156,12 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         private sealed class MyriadContext : MyriadBaseContext
         {
             // Myriad stores components as arrays of structs, so all structs of the same type are 
-            // always sequential in memory no matter what else is attached to the entity. So no need to respect
+            // always sequential in memory no matter what else is attached to the gameObject. So no need to respect
             // the padding input
             /// <summary>
             ///     Initializes a new instance of the <see cref="MyriadContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
+            /// <param name="entityCount">The gameObject count</param>
             /// <param name="_">The </param>
             public MyriadContext(int entityCount, int _)
             {

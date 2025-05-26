@@ -43,6 +43,7 @@ namespace Alis.Sample.Egg
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            /*
             VideoGame
                 .Create()
                 .Settings(setting => setting
@@ -69,7 +70,7 @@ namespace Alis.Sample.Egg
                         .Build())
                     .Build())
                 .Build()
-                .Run();
+                .Run();*/
         }
     }
 }

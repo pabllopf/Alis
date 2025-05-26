@@ -50,7 +50,7 @@ namespace Alis.Benchmark
             Options |= ConfigOptions.DisableLogFile;
 
             // Especifica la carpeta de salida
-            string outputDirectory = $"../../../../Results/{DateTime.Now:yyyy-MM-dd}/";
+            string outputDirectory = $"../../../Results/{DateTime.Now:yyyy-MM-dd}/";
 
             // Configura la ruta de los artefactos
             ArtifactsPath = outputDirectory;

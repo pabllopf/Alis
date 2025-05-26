@@ -65,7 +65,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             /// <summary>
             ///     Initializes a new instance of the <see cref="MonoGameExtendedContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
+            /// <param name="entityCount">The gameObject count</param>
             public MonoGameExtendedContext(int entityCount)
             {
                 _system = new UpdateSystem();
@@ -100,7 +100,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             }
 
             /// <summary>
-            ///     Gets the value of the world
+            ///     Gets the value of the scene
             /// </summary>
             public new World World { get; }
 

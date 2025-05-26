@@ -65,8 +65,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             /// <summary>
             ///     Initializes a new instance of the <see cref="MorpehContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
-            /// <param name="entityPadding">The entity padding</param>
+            /// <param name="entityCount">The gameObject count</param>
+            /// <param name="entityPadding">The gameObject padding</param>
             public MorpehContext(int entityCount, int entityPadding)
             {
                 MonoThreadDirectSystem = new DirectSystem {World = World};
@@ -122,7 +122,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
                 private Filter _filter;
 
                 /// <summary>
-                ///     Gets or sets the value of the world
+                ///     Gets or sets the value of the scene
                 /// </summary>
                 public World World { get; set; }
 
@@ -176,7 +176,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
                 private Stash<Component2> _stash2;
 
                 /// <summary>
-                ///     Gets or sets the value of the world
+                ///     Gets or sets the value of the scene
                 /// </summary>
                 public World World { get; set; }
 

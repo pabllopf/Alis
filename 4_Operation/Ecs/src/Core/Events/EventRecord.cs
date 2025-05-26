@@ -1,16 +1,43 @@
-﻿using System;
+using System;
 using Alis.Core.Ecs.Collections;
 
 namespace Alis.Core.Ecs.Core.Events
 {
-    internal class EventRecord
+    /// <summary>
+    ///     The event record class
+    /// </summary>
+    public class EventRecord
     {
-        internal TagEvent Tag;
-        internal TagEvent Detach;
+        /// <summary>
+        ///     The add
+        /// </summary>
         internal ComponentEvent Add;
-        internal ComponentEvent Remove;
-        internal FrugalStack<Action<Entity>> Delete;
 
+        /// <summary>
+        ///     The delete
+        /// </summary>
+        internal FrugalStack<Action<GameObject>> Delete;
+
+        /// <summary>
+        ///     The detach
+        /// </summary>
+        internal TagEvent Detach;
+
+        /// <summary>
+        ///     The remove
+        /// </summary>
+        internal ComponentEvent Remove;
+
+        /// <summary>
+        ///     The tag
+        /// </summary>
+        internal TagEvent Tag;
+
+        /// <summary>
+        ///     Initalizes the exists
+        /// </summary>
+        /// <param name="exists">The exists</param>
+        /// <param name="record">The record</param>
         public static void Initalize(bool exists, ref EventRecord record)
         {
             if (!exists)
@@ -20,7 +47,7 @@ namespace Alis.Core.Ecs.Core.Events
                 record.Detach = new TagEvent();
                 record.Add = new ComponentEvent();
                 record.Remove = new ComponentEvent();
-                record.Delete = new FrugalStack<Action<Entity>>();
+                record.Delete = new FrugalStack<Action<GameObject>>();
             }
         }
     }

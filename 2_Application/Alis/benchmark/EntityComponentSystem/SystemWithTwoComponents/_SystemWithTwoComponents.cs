@@ -41,13 +41,13 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
     public partial class SystemWithTwoComponents
     {
         /// <summary>
-        ///     Gets or sets the value of the entity count
+        ///     Gets or sets the value of the gameObject count
         /// </summary>
         [Params(1_000)]
         public int EntityCount { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the entity padding
+        ///     Gets or sets the value of the gameObject padding
         /// </summary>
         [Params(0, 10)]
         public int EntityPadding { get; set; }

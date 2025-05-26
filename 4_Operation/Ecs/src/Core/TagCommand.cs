@@ -1,3 +1,9 @@
-namespace Alis.Core.Ecs.Core;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
-internal record struct TagCommand(EntityIDOnly Entity, TagID TagID);
+namespace Alis.Core.Ecs.Core
+{
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    
+    public record struct TagCommand(GameObjectIdOnly Entity, TagId TagId);
+}

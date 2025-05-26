@@ -1,0 +1,129 @@
+using System;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using Alis.Core.Ecs.Components;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Core.Archetype;
+
+namespace Alis.Core.Ecs.Updating.Runners
+{
+    /// <summary>
+    ///     The gameObject update class
+    /// </summary>
+    /// <seealso cref="ComponentStorage{TComp}" />
+    public class GameObjectUpdate<TComp>(int capacity) : ComponentStorage<TComp>(capacity)
+        where TComp : IGameObjectComponent
+    {
+        /// <summary>
+        ///     Runs the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="b">The </param>
+        internal override void Run(Scene scene, Archetype b)
+        {
+            ref GameObjectIdOnly entityIds = ref b.GetEntityDataReference();
+            ref TComp comp = ref GetComponentStorageDataReference();
+
+            GameObject gameObject = scene.DefaultWorldGameObject;
+
+            for (int i = b.EntityCount - 1; i >= 0; i--)
+            {
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject);
+
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
+                comp = ref Unsafe.Add(ref comp, 1);
+            }
+        }
+
+        /// <summary>
+        ///     Runs the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="b">The </param>
+        /// <param name="start">The start</param>
+        /// <param name="length">The length</param>
+        internal override void Run(Scene scene, Archetype b, int start, int length)
+        {
+            ref GameObjectIdOnly entityIds = ref Unsafe.Add(ref b.GetEntityDataReference(), start);
+            ref TComp comp = ref Unsafe.Add(ref GetComponentStorageDataReference(), start);
+
+            GameObject gameObject = scene.DefaultWorldGameObject;
+
+            for (int i = length - 1; i >= 0; i--)
+            {
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject);
+
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
+                comp = ref Unsafe.Add(ref comp, 1);
+            }
+        }
+
+        
+    }
+
+    /// <summary>
+    ///     The gameObject update class
+    /// </summary>
+    /// <seealso cref="ComponentStorage{TComp}" />
+    public class GameObjectUpdate<TComp, TArg>(int capacity) : ComponentStorage<TComp>(capacity)
+        where TComp : IGameObjectComponent<TArg>
+    {
+        /// <summary>
+        ///     Runs the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="b">The </param>
+        internal override void Run(Scene scene, Archetype b)
+        {
+            ref GameObjectIdOnly entityIds = ref b.GetEntityDataReference();
+            ref TComp comp = ref GetComponentStorageDataReference();
+
+            ref TArg arg = ref b.GetComponentDataReference<TArg>();
+
+            GameObject gameObject = scene.DefaultWorldGameObject;
+
+            for (int i = b.EntityCount - 1; i >= 0; i--)
+            {
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject, ref arg);
+
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
+                comp = ref Unsafe.Add(ref comp, 1);
+
+                arg = ref Unsafe.Add(ref arg, 1);
+            }
+        }
+
+        /// <summary>
+        ///     Runs the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="b">The </param>
+        /// <param name="start">The start</param>
+        /// <param name="length">The length</param>
+        internal override void Run(Scene scene, Archetype b, int start, int length)
+        {
+            ref GameObjectIdOnly entityIds = ref Unsafe.Add(ref b.GetEntityDataReference(), start);
+            ref TComp comp = ref Unsafe.Add(ref GetComponentStorageDataReference(), start);
+
+            ref TArg arg = ref Unsafe.Add(ref b.GetComponentDataReference<TArg>(), start);
+
+            GameObject gameObject = scene.DefaultWorldGameObject;
+
+            for (int i = length - 1; i >= 0; i--)
+            {
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject, ref arg);
+
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
+                comp = ref Unsafe.Add(ref comp, 1);
+
+                arg = ref Unsafe.Add(ref arg, 1);
+            }
+        }
+
+        
+    }
+}

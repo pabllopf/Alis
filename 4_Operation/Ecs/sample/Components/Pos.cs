@@ -5,11 +5,15 @@ using Alis.Core.Ecs.Components;
 
 namespace Alis.Core.Ecs.Sample.Components
 {
-    record struct Pos(float X) : IEntityComponent
+    record struct Pos(float X) : IGameObjectComponent
     {
-        public void Update(Entity entity)
+        /// <summary>
+        /// Updates the gameObject
+        /// </summary>
+        /// <param name="gameObjecte gameObject</param>
+        public void Update(GameObject gameObject)
         {
-            Console.WriteLine(entity.Has<Vel>() ?
+            Console.WriteLine(gameObject.Has<Vel>() ?
                 "I have velocity!" :
                 "No velocity here!");
         }

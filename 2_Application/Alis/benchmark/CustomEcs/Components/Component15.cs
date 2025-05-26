@@ -27,12 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
+
 namespace Alis.Benchmark.CustomEcs.Components
 {
     /// <summary>
     ///     The component 15
     /// </summary>
-    internal struct Component15
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Component15
     {
         /// <summary>
         ///     The value

@@ -37,7 +37,7 @@ using static Alis.Benchmark.EntityComponentSystem.Contexts.FrentBaseContext;
 namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents
 {
     /// <summary>
-    ///     The create entity with three components class
+    ///     The create gameObject with three components class
     /// </summary>
     public partial class CreateEntityWithThreeComponents
     {
@@ -47,7 +47,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents
         private static readonly EntityType _entityType = Entity.EntityTypeOf([Component<Component1>.ID, Component<Component2>.ID, Component<Component3>.ID], []);
 
         /// <summary>
-        ///     The frent
+        ///     The alis
         /// </summary>
         [Context] private readonly FrentBaseContext _frent;
 

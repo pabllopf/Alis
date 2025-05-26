@@ -45,7 +45,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
     public partial class SystemWithThreeComponents
     {
         /// <summary>
-        ///     The frent
+        ///     The alis
         /// </summary>
         [Context] private readonly AlisContext _alis;
 
@@ -94,7 +94,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         }
 
         /// <summary>
-        ///     The frent context class
+        ///     The alis context class
         /// </summary>
         /// <seealso cref="FrentBaseContext" />
         private sealed class AlisContext : AlisBaseContext
@@ -107,23 +107,24 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
             /// <summary>
             ///     Initializes a new instance of the <see cref="FrentContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
+            /// <param name="entityCount">The gameObject count</param>
             /// <param name="_">The </param>
             public AlisContext(int entityCount, int _)
             {
                 for (int i = 0; i < entityCount; i++)
                 {
-                    World.Create(default(Component1), new Component2 {Value = 1}, new Component3 {Value = 1});
+                    Scene.Create(default(Component1), new Component2 {Value = 1}, new Component3 {Value = 1});
                 }
 
-                Query = World.Query<With<Component1>, With<Component2>, With<Component3>>();
+                Query = Scene.Query<With<Component1>, With<Component2>, With<Component3>>();
             }
         }
 
         /// <summary>
         ///     The sum
         /// </summary>
-        internal struct SumAlis : IAction<Component1, Component2, Component3>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct SumAlis : IAction<Component1, Component2, Component3>
         {
             /// <summary>
             ///     Runs the t 0

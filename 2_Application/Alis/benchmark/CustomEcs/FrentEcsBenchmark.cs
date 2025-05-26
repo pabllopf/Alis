@@ -54,13 +54,13 @@ namespace Alis.Benchmark.CustomEcs
         public Query QueryFrent;
 
         /// <summary>
-        ///     Gets the value of the world
+        ///     Gets the value of the scene
         /// </summary>
         public World WorldFrent { get; set; }
 
 
         /// <summary>
-        ///     Setup the frent
+        ///     Setup the alis
         /// </summary>
         private void SetupFrent()
         {
@@ -903,9 +903,10 @@ namespace Alis.Benchmark.CustomEcs
         }
 
         /// <summary>
-        ///     The increment frent
+        ///     The increment alis
         /// </summary>
-        internal struct IncrementFrent : IAction<Component1>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct IncrementFrent : IAction<Component1>
         {
             /// <summary>
             ///     Runs the t 0

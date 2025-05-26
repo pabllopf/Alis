@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Runtime.InteropServices;
 using System.Threading;
 using Alis.Core.Ecs.Sample.Components;
 using Alis;
@@ -8,37 +9,46 @@ using Alis.Core.Ecs.Systems;
 
 namespace Alis.Core.Ecs.Sample
 {
+    /// <summary>
+    /// The samples class
+    /// </summary>
     internal class Samples
     {
     
+        /// <summary>
+        /// Updates the component
+        /// </summary>
         [Sample]
         public static void Update_Component()
         {
-            using World world = new World();
+            using Scene scene = new Scene();
 
             //Create three entities
             for (int i = 0; i < 3; i++)
             {
-                world.Create<string, ConsoleText>("Hello, World!", new(ConsoleColor.Blue));
+                scene.Create<string, ConsoleText>("Hello, Scene!", new(ConsoleColor.Blue));
             }
 
             //Update the three entities
-            world.Update();
+            scene.Update();
         }
     
     
+        /// <summary>
+        /// Updates the systems
+        /// </summary>
         [Sample]
         public static void Update_Systems()
         {
-            using World world = new World();
+            using Scene scene = new Scene();
 
             //Create three entities
             for (int i = 0; i < 3; i++)
             {
-                world.Create<string, ConsoleText>("Hello, World!", new(ConsoleColor.Blue));
+                scene.Create<string, ConsoleText>("Hello, Scene!", new(ConsoleColor.Blue));
             }
 
-            foreach (RefTuple<string> stringsRefTuple in world.Query<With<string>>().Enumerate<string>())
+            foreach (RefTuple<string> stringsRefTuple in scene.Query<With<string>>().Enumerate<string>())
             {
                 //Get the string reference
                 Ref<string> strRef = stringsRefTuple.Item1;
@@ -47,92 +57,105 @@ namespace Alis.Core.Ecs.Sample
                 strRef.Value += "!!!!! <> !!!!!";
             }
         
-            world.Update();
+            scene.Update();
         }
   
 
 
+        /// <summary>
+        /// Uniformses the and entities
+        /// </summary>
         [Sample]
         public static void Uniforms_And_Entities()
         {
-            DefaultUniformProvider uniforms = new DefaultUniformProvider();
-            //add delta time as a float
-            uniforms.Add(0.5f);
+            using Scene scene = new Scene();
 
-            using World world = new World(uniforms);
+            scene.Create<Vel, Pos>(default, default);
+            scene.Create<Pos>(default);
 
-            world.Create<Vel, Pos>(default, default);
-            world.Create<Pos>(default);
-
-            world.Update();
+            scene.Update();
         }
     
+        /// <summary>
+        /// Uniformses the and entities initeable
+        /// </summary>
         [Sample]
         public static void Uniforms_And_Entities_initeable()
         {
-            DefaultUniformProvider uniforms = new DefaultUniformProvider();
-            //add delta time as a float
-            uniforms.Add(0.5f);
-    
-            using World world = new World(uniforms);
+            using Scene scene = new Scene();
         
-            world.Create<Pos2>(default);
-            world.Create<Pos2, Vel2>(default, default);
+            scene.Create<Pos2>(default);
+            scene.Create<Pos2, Vel2>(default, default);
     
-            world.Update();
+            scene.Update();
         }
     
+        /// <summary>
+        /// Simples the game
+        /// </summary>
         [Sample]
         public static void Simple_Game()
         {
-            World world = new World();
+            Scene scene = new Scene();
 
             //create
-            Entity entity = world.Create<Position, Velocity, Character>(new(4, 6), new(2, 0), new('@'));
+            GameObject gameObject = scene.Create<Position, Velocity, Character>(new(4, 6), new(2, 0), new('@'));
 
             //simulate 20 frames
             for (int i = 0; i < 20; i++)
             {
-                world.Update();
+                scene.Update();
                 Thread.Sleep(100);
                 Console.Clear();
             }
 
-            Position finalPos = entity.Get<Position>();
+            Position finalPos = gameObject.Get<Position>();
             Console.WriteLine($"Position: X: {finalPos.X} Y: {finalPos.Y}");
         }
     
     
     
+        /// <summary>
+        /// Querieses
+        /// </summary>
         [Sample]
         public static void Queries()
         {
-            DefaultUniformProvider provider = new DefaultUniformProvider();
-            provider.Add<byte>(5);
-            using World world = new World(provider);
+            using Scene scene = new Scene();
 
             for (int i = 0; i < 5; i++)
-                world.Create<int>(i);
+                scene.Create<int>(i);
 
-            world.Query<With<int>>().Delegate((ref int x) => Console.Write($"{x++}, "));
+            scene.Query<With<int>>().Delegate((ref int x) => Console.Write($"{x++}, "));
             Console.WriteLine();
         
-            world.Query<With<int>>().Inline<WriteAction, int>(default);
+            scene.Query<With<int>>().Inline<WriteAction, int>(default);
         }
 
-        internal struct WriteAction : IAction<int>
+        /// <summary>
+        /// The write action
+        /// </summary>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct WriteAction : IAction<int>
         {
+            /// <summary>
+            /// Runs the arg
+            /// </summary>
+            /// <param name="arg">The arg</param>
             public void Run(ref int arg)
             {
                 Console.Write($"{arg} ");
             }
         }
         
+        /// <summary>
+        /// Entitieses
+        /// </summary>
         [Sample]
         public static void Entities()
         {
-            using World world = new World();
-            Entity ent = world.Create<int, double, float>(69, 3.14, 2.71f);
+            using Scene scene = new Scene();
+            GameObject ent = scene.Create<int, double, float>(69, 3.14, 2.71f);
             //true
             Console.WriteLine(ent.IsAlive);
             //true
@@ -140,22 +163,22 @@ namespace Alis.Core.Ecs.Sample
             //false
             Console.WriteLine(ent.Has<bool>());
             //You can also add and remove components
-            ent.Add<string>("I like Frent");
+            ent.Add<string>("I like Alis");
 
             if (ent.TryGet<string>(out Ref<string> strRef))
             {
                 Console.WriteLine(strRef);
                 //reassign the string value
-                strRef.Value = "Do you like Frent?";
+                strRef.Value = "Do you like Alis?";
             }
 
             //If we didn't add a string earlier, this would throw instead
             Console.WriteLine(ent.Get<string>());
 
-            //You can also deconstruct components from the entity to reassign many at once
+            //You can also deconstruct components from the gameObject to reassign many at once
             ent.Deconstruct(out Ref<double> d, out Ref<int> i, out Ref<float> f, out Ref<string> str);
             d.Value = 4;
-            str.Value = "Hello, World!";
+            str.Value = "Hello, Scene!";
         
             Console.WriteLine(str);
         }

@@ -1,5 +1,6 @@
-﻿using System.Collections.Immutable;
+using System.Collections.Immutable;
 using System.Linq;
+using Alis.Core.Ecs.Generator.Collections;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -7,15 +8,29 @@ using Microsoft.CodeAnalysis.Diagnostics;
 
 namespace Alis.Core.Ecs.Generator
 {
+    /// <summary>
+    /// The generator analyzer class
+    /// </summary>
+    /// <seealso cref="DiagnosticAnalyzer"/>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     internal class GeneratorAnalyzer : DiagnosticAnalyzer
     {
-        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => _supportedDiagnostics;
-        private static readonly ImmutableArray<DiagnosticDescriptor> _supportedDiagnostics;
+       /// <summary>
+       /// Gets the value of the supported diagnostics
+       /// </summary>
+       public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => _supportedDiagnostics.ToImmutableArray();
+       
+        /// <summary>
+        /// The supported diagnostics
+        /// </summary>
+        private static readonly FastImmutableArray<DiagnosticDescriptor> _supportedDiagnostics;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GeneratorAnalyzer"/> class
+        /// </summary>
         static GeneratorAnalyzer()
         {
-            var b = ImmutableArray.CreateBuilder<DiagnosticDescriptor>(4);
+            var b = FastImmutableArray<DiagnosticDescriptor>.CreateBuilder<DiagnosticDescriptor>(4);
             b.Add(NonPartialGenericComponent);
             b.Add(NonPartialOuterInaccessibleType);
             b.Add(NonPartialNestedInaccessibleType);
@@ -23,6 +38,10 @@ namespace Alis.Core.Ecs.Generator
             _supportedDiagnostics = b.MoveToImmutable();
         }
 
+        /// <summary>
+        /// Initializes the context
+        /// </summary>
+        /// <param name="context">The context</param>
         public override void Initialize(AnalysisContext context)
         {
             context.EnableConcurrentExecution();
@@ -31,6 +50,10 @@ namespace Alis.Core.Ecs.Generator
             context.RegisterSyntaxNodeAction(AnalyzeTypeDeclaration, SyntaxKind.ClassDeclaration, SyntaxKind.StructDeclaration, SyntaxKind.InterfaceDeclaration);
         }
     
+        /// <summary>
+        /// Analyzes the type declaration using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
         private static void AnalyzeTypeDeclaration(SyntaxNodeAnalysisContext context)
         {
             TypeDeclarationSyntax typeDeclarationSyntax = (TypeDeclarationSyntax)context.Node;
@@ -93,6 +116,9 @@ namespace Alis.Core.Ecs.Generator
         }
 
 #pragma warning disable RS2008 // Enable analyzer release tracking
+        /// <summary>
+        /// The is enabled by default
+        /// </summary>
         public static readonly DiagnosticDescriptor NonPartialGenericComponent = new(
             id: "FR0000",
             title: "Non-partial Generic Component Type",
@@ -101,6 +127,9 @@ namespace Alis.Core.Ecs.Generator
             DiagnosticSeverity.Error,
             isEnabledByDefault: true);
 
+        /// <summary>
+        /// The is enabled by default
+        /// </summary>
         public static readonly DiagnosticDescriptor NonPartialOuterInaccessibleType = new(
             id: "FR0001",
             title: "Non-partial Outer Inaccessible Type",
@@ -109,6 +138,9 @@ namespace Alis.Core.Ecs.Generator
             DiagnosticSeverity.Error,
             isEnabledByDefault: true);
 
+        /// <summary>
+        /// The is enabled by default
+        /// </summary>
         public static readonly DiagnosticDescriptor NonPartialNestedInaccessibleType = new(
             id: "FR0002",
             title: "Non-partial Nested Inaccessible Component Type",
@@ -117,6 +149,9 @@ namespace Alis.Core.Ecs.Generator
             DiagnosticSeverity.Error,
             isEnabledByDefault: true);
 
+        /// <summary>
+        /// The is enabled by default
+        /// </summary>
         public static readonly DiagnosticDescriptor MultipleComponentInterfaces = new(
             id: "FR0003",
             title: "Multiple Component Interface Implementations",

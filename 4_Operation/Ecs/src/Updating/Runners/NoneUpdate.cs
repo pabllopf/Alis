@@ -1,13 +1,32 @@
-﻿using System.Threading;
-using Alis.Core.Ecs.Core;
+using System.Threading;
 using Alis.Core.Ecs.Core.Archetype;
 
 namespace Alis.Core.Ecs.Updating.Runners
 {
-    internal class NoneUpdate<TComp>(int cap) : ComponentStorage<TComp>(cap)
+    /// <summary>
+    ///     The none update class
+    /// </summary>
+    /// <seealso cref="ComponentStorage{TComp}" />
+    public class NoneUpdate<TComp>(int cap) : ComponentStorage<TComp>(cap)
     {
-        internal override void MultithreadedRun(CountdownEvent countdown, World world, Archetype b) { }
-        internal override void Run(World world, Archetype b) { }
-        internal override void Run(World world, Archetype b, int start, int length) { }
+        /// <summary>
+        ///     Runs the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="b">The </param>
+        internal override void Run(Scene scene, Archetype b)
+        {
+        }
+
+        /// <summary>
+        ///     Runs the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="b">The </param>
+        /// <param name="start">The start</param>
+        /// <param name="length">The length</param>
+        internal override void Run(Scene scene, Archetype b, int start, int length)
+        {
+        }
     }
 }

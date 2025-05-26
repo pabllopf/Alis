@@ -1,3 +1,9 @@
-namespace Alis.Core.Ecs.Core;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
-internal record struct AddComponent(EntityIDOnly Entity, ComponentHandle ComponentHandle);
+namespace Alis.Core.Ecs.Core
+{
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    
+    public record struct AddComponent(GameObjectIdOnly Entity, ComponentHandle ComponentHandle);
+}

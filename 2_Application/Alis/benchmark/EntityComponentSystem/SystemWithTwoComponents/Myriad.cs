@@ -129,13 +129,13 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         /// <summary>
         ///     The myriad for each
         /// </summary>
-        private struct MyriadForEach2
+        public struct MyriadForEach2
             : IQuery<Component1, Component2>, IChunkQuery<Component1, Component2>
         {
             /// <summary>
-            ///     Executes the entity
+            ///     Executes the gameObject
             /// </summary>
-            /// <param name="entity">The entity</param>
+            /// <param name="entity">The gameObject</param>
             /// <param name="t0">The </param>
             /// <param name="t1">The </param>
             public void Execute(Entity entity, ref Component1 t0, ref Component2 t1)
@@ -162,7 +162,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         /// <summary>
         ///     The myriad vector for each
         /// </summary>
-        private struct MyriadVectorForEach2
+        public struct MyriadVectorForEach2
             : IVectorChunkQuery<int, int>
         {
             /// <summary>
@@ -188,12 +188,12 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         private sealed class MyriadContext : MyriadBaseContext
         {
             // Myriad stores components as arrays of structs, so all structs of the same type are 
-            // always sequential in memory no matter what else is attached to the entity. So no need to respect
+            // always sequential in memory no matter what else is attached to the gameObject. So no need to respect
             // the padding input
             /// <summary>
             ///     Initializes a new instance of the <see cref="MyriadContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
+            /// <param name="entityCount">The gameObject count</param>
             /// <param name="_">The </param>
             public MyriadContext(int entityCount, int _)
             {

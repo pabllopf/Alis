@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -6,8 +6,17 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Alis.Core.Ecs.Generator
 {
+    /// <summary>
+    /// The registry helpers class
+    /// </summary>
     public static class RegistryHelpers
     {
+        /// <summary>
+        /// Appends the namespace using the specified sb
+        /// </summary>
+        /// <param name="sb">The sb</param>
+        /// <param name="@namespace">The namespace</param>
+        /// <returns>The string builder</returns>
         public static StringBuilder AppendNamespace(this StringBuilder sb, string @namespace)
         {
             if (@namespace == string.Empty)
@@ -15,11 +24,22 @@ namespace Alis.Core.Ecs.Generator
             return sb.Append(@namespace).Append('.');
         }
 
+        /// <summary>
+        /// Appends the full type name using the specified sb
+        /// </summary>
+        /// <param name="sb">The sb</param>
+        /// <param name="typeName">The type name</param>
+        /// <returns>The string builder</returns>
         public static StringBuilder AppendFullTypeName(this StringBuilder sb, string typeName)
         {
             return sb.Append("global::").Append(typeName);
         }
 
+        /// <summary>
+        /// Ises the partial using the specified named type symbol
+        /// </summary>
+        /// <param name="namedTypeSymbol">The named type symbol</param>
+        /// <returns>The bool</returns>
         public static bool IsPartial(this INamedTypeSymbol namedTypeSymbol)
         {
             return namedTypeSymbol.DeclaringSyntaxReferences
@@ -27,6 +47,11 @@ namespace Alis.Core.Ecs.Generator
                 .Any(syntax => syntax?.Modifiers.Any(SyntaxKind.PartialKeyword) ?? false);
         }
 
+        /// <summary>
+        /// Ises the or extends i component base using the specified symbol
+        /// </summary>
+        /// <param name="symbol">The symbol</param>
+        /// <returns>The bool</returns>
         public static bool IsOrExtendsIComponentBase(this INamedTypeSymbol symbol)
         {
             if (symbol.IsIComponentBase())
@@ -41,6 +66,11 @@ namespace Alis.Core.Ecs.Generator
             return false;
         }
 
+        /// <summary>
+        /// Ises the i component base using the specified symbol
+        /// </summary>
+        /// <param name="symbol">The symbol</param>
+        /// <returns>The bool</returns>
         public static bool IsIComponentBase(this INamedTypeSymbol symbol) => symbol is
         {
             Name: TargetInterfaceName,
@@ -63,6 +93,11 @@ namespace Alis.Core.Ecs.Generator
             }
         };
 
+        /// <summary>
+        /// Ises the special component interface using the specified named type symbol
+        /// </summary>
+        /// <param name="namedTypeSymbol">The named type symbol</param>
+        /// <returns>The bool</returns>
         public static bool IsSpecialComponentInterface(this INamedTypeSymbol namedTypeSymbol) => namedTypeSymbol is
         {
             Name: TargetInterfaceName or InitableInterfaceName or DestroyableInterfaceName,
@@ -85,6 +120,11 @@ namespace Alis.Core.Ecs.Generator
             }
         };
 
+        /// <summary>
+        /// Ises the alis component interface using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>The bool</returns>
         public static bool IsAlisComponentInterface(this INamedTypeSymbol type) => type is
         {
          ContainingNamespace:
@@ -106,14 +146,38 @@ namespace Alis.Core.Ecs.Generator
          }
         };
 
+        /// <summary>
+        /// The update type attribute name
+        /// </summary>
         public const string UpdateTypeAttributeName = "Alis.Core.Ecs.Updating.UpdateTypeAttribute";
+        /// <summary>
+        /// The update method name
+        /// </summary>
         public const string UpdateMethodName = "Update";
+        /// <summary>
+        /// The fully qualified target interface name
+        /// </summary>
         public const string FullyQualifiedTargetInterfaceName = "Alis.Core.Ecs.Components.IComponentBase";
+        /// <summary>
+        /// The fully qualified initable interface name
+        /// </summary>
         public const string FullyQualifiedInitableInterfaceName = "Alis.Core.Ecs.Components.IInitable";
+        /// <summary>
+        /// The fully qualified destroyable interface name
+        /// </summary>
         public const string FullyQualifiedDestroyableInterfaceName = "Alis.Core.Ecs.Components.IDestroyable";
 
+        /// <summary>
+        /// The target interface name
+        /// </summary>
         public const string TargetInterfaceName = "IComponentBase";
+        /// <summary>
+        /// The initable interface name
+        /// </summary>
         public const string InitableInterfaceName = "IInitable";
+        /// <summary>
+        /// The destroyable interface name
+        /// </summary>
         public const string DestroyableInterfaceName = "IDestroyable";
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections.Immutable;
+using System.Collections.Immutable;
 
 namespace Alis.Core.Ecs.Benchmark
 {
@@ -6,8 +6,14 @@ namespace Alis.Core.Ecs.Benchmark
 //and incrementing 4 bytes at a time
 //1005 unique dummy component types
 
+/// <summary>
+/// The benchmarked component helper class
+/// </summary>
 internal class BenchmarkedComponentHelper
     {
+        /// <summary>
+        /// The component names
+        /// </summary>
         public static readonly ImmutableArray<string> ComponentNames = [
             "Component8b_0",
             "Component8b_1",

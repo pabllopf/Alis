@@ -1,50 +1,75 @@
-﻿using System.Collections.Immutable;
 using System.Runtime.CompilerServices;
+using Alis.Core.Aspect.Memory.Collections;
 using Alis.Core.Ecs.Core.Memory;
 using Alis.Core.Ecs.Updating;
 
-namespace Alis.Core.Ecs.Core.Archetype;
+namespace Alis.Core.Ecs.Core.Archetype
+{
+    /// <summary>
+    ///     The archetype class
+    /// </summary>
     internal static class Archetype<T1, T2>
     {
-        public static readonly ImmutableArray<ComponentID> ArchetypeComponentIDs = new ComponentID[] { Component<T1>.ID, Component<T2>.ID }.ToImmutableArray();
+        /// <summary>
+        ///     The to immutable array
+        /// </summary>
+        public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
+            new FastImmutableArray<ComponentId>(new[] { Component<T1>.Id, Component<T2>.Id });
 
         //ArchetypeTypes init first, then ID
-        public static readonly ArchetypeID ID = Archetype.GetArchetypeID(ArchetypeComponentIDs.AsSpan(), [], ArchetypeComponentIDs, ImmutableArray<TagID>.Empty);
+        /// <summary>
+        ///     The empty
+        /// </summary>
+        public static readonly ArchetypeID Id = Archetype.GetArchetypeId(ArchetypeComponentIDs.AsSpan(), [],
+            ArchetypeComponentIDs, FastImmutableArray<TagId>.Empty);
 
-        internal static World.WorldArchetypeTableItem CreateNewOrGetExistingArchetypes(World world)
+        /// <summary>
+        ///     Creates the new or get existing archetypes using the specified scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <returns>The archetypes</returns>
+        internal static WorldArchetypeTableItem CreateNewOrGetExistingArchetypes(Scene scene)
         {
-            var index = ID.RawIndex;
-            ref World.WorldArchetypeTableItem archetypes = ref world.WorldArchetypeTable.UnsafeArrayIndex(index);
-            if(archetypes.Archetype is null)
-            {
-                archetypes = CreateArchetypes(world);
-            }
+            ushort index = Id.RawIndex;
+            ref WorldArchetypeTableItem archetypes = ref scene.WorldArchetypeTable.UnsafeArrayIndex(index);
+            if (archetypes.Archetype is null) archetypes = CreateArchetypes(scene);
             return archetypes;
 
-            //this method is literally only called once per world
+            //this method is literally only called once per scene
             [MethodImpl(MethodImplOptions.NoInlining)]
-            static World.WorldArchetypeTableItem CreateArchetypes(World world)
+            static WorldArchetypeTableItem CreateArchetypes(Scene scene)
             {
                 ComponentStorageBase[] runners = new ComponentStorageBase[ArchetypeComponentIDs.Length + 1];
                 ComponentStorageBase[] tmpStorages = new ComponentStorageBase[runners.Length];
-                byte[] map = GlobalWorldTables.ComponentTagLocationTable[ID.RawIndex];
+                byte[] map = GlobalWorldTables.ComponentTagLocationTable[Id.RawIndex];
 
                 int i;
 
-                i = map.UnsafeArrayIndex(Component<T1>.ID.RawIndex) & GlobalWorldTables.IndexBits; runners[i] = Component<T1>.CreateInstance(1); tmpStorages[i] = Component<T1>.CreateInstance(0);
-            i = map.UnsafeArrayIndex(Component<T2>.ID.RawIndex) & GlobalWorldTables.IndexBits; runners[i] = Component<T2>.CreateInstance(1); tmpStorages[i] = Component<T2>.CreateInstance(0);
+                i = map.UnsafeArrayIndex(Component<T1>.Id.RawIndex) & GlobalWorldTables.IndexBits;
+                runners[i] = Component<T1>.CreateInstance(1);
+                tmpStorages[i] = Component<T1>.CreateInstance(0);
+                i = map.UnsafeArrayIndex(Component<T2>.Id.RawIndex) & GlobalWorldTables.IndexBits;
+                runners[i] = Component<T2>.CreateInstance(1);
+                tmpStorages[i] = Component<T2>.CreateInstance(0);
 
 
-                Archetype archetype = new Archetype(ID, runners, false);
-                Archetype tempCreateArchetype = new Archetype(ID, tmpStorages, true);
+                Archetype archetype = new Archetype(Id, runners, false);
+                Archetype tempCreateArchetype = new Archetype(Id, tmpStorages, true);
 
-                world.ArchetypeAdded(archetype, tempCreateArchetype);
-                return new World.WorldArchetypeTableItem(archetype, tempCreateArchetype);
+                scene.ArchetypeAdded(archetype, tempCreateArchetype);
+                return new WorldArchetypeTableItem(archetype, tempCreateArchetype);
             }
         }
 
-        internal static class OfComponent<C>
+        /// <summary>
+        ///     The of component class
+        /// </summary>
+        internal static class OfComponent<TC>
         {
-            public static readonly int Index = GlobalWorldTables.ComponentIndex(ID, Component<C>.ID);
+            /// <summary>
+            ///     The id
+            /// </summary>
+            public static readonly int Index = GlobalWorldTables.ComponentIndex(Id, Component<TC>.Id);
         }
     }
+}

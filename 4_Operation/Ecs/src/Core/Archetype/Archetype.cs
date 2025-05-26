@@ -1,119 +1,180 @@
-﻿using System;
-using System.Collections.Immutable;
-using System.Diagnostics;
+using System;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Alis.Core.Ecs.Buffers;
+using Alis.Core.Aspect.Memory.Collections;
+using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Core.Archetype
 {
-    [DebuggerDisplay(AttributeHelpers.DebuggerDisplay)]
-    internal partial class Archetype
+    /// <summary>
+    ///     The archetype class
+    /// </summary>
+    public partial class Archetype
     {
-        internal ArchetypeID ID => _archetypeID;
-        internal ImmutableArray<ComponentID> ArchetypeTypeArray => _archetypeID.Types;
-        internal ImmutableArray<TagID> ArchetypeTagArray => _archetypeID.Tags;
-        internal string DebuggerDisplayString => $"Archetype Count: {EntityCount} Types: {string.Join(", ", ArchetypeTypeArray.Select(t => t.Type.Name))} Tags: {string.Join(", ", ArchetypeTagArray.Select(t => t.Type.Name))}";
+        /// <summary>
+        ///     Gets the value of the id
+        /// </summary>
+        internal ArchetypeID Id => _archetypeId;
+
+        /// <summary>
+        ///     Gets the value of the archetype type array
+        /// </summary>
+        internal FastImmutableArray<ComponentId> ArchetypeTypeArray => _archetypeId.Types;
+
+        /// <summary>
+        ///     Gets the value of the archetype tag array
+        /// </summary>
+        internal FastImmutableArray<TagId> ArchetypeTagArray => _archetypeId.Tags;
+
+        /// <summary>
+        ///     Gets the value of the debugger display string
+        /// </summary>
+        internal string DebuggerDisplayString =>
+            $"Archetype Count: {EntityCount} Types: {string.Join(", ", ArchetypeTypeArray.Select(t => t.Type.Name))} Tags: {string.Join(", ", ArchetypeTagArray.Select(t => t.Type.Name))}";
+
+        /// <summary>
+        ///     Gets the value of the gameObject count
+        /// </summary>
         internal int EntityCount => NextComponentIndex;
+
+        /// <summary>
+        ///     Gets the value of the data
+        /// </summary>
+        internal Fields Data => new Fields
+        {
+            Map = ComponentTagTable,
+            Components = Components
+        };
+
+        /// <summary>
+        ///     Gets the component span
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>A span of t</returns>
         internal Span<T> GetComponentSpan<T>()
         {
-            var components = Components;
+            ComponentStorageBase[] components = Components;
             int index = GetComponentIndex<T>();
-            if (index == 0)
-            {
-                FrentExceptions.Throw_ComponentNotFoundException<T>();
-            }
-            return UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(components.UnsafeArrayIndex(index)).AsSpanLength(NextComponentIndex);
+            if (index == 0) throw new ComponentNotFoundException(typeof(T));
+            return UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(components.UnsafeArrayIndex(index))
+                .AsSpanLength(NextComponentIndex);
         }
 
+        /// <summary>
+        ///     Gets the component data reference
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The ref</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal ref T GetComponentDataReference<T>()
         {
             int index = GetComponentIndex<T>();
-            return ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(Components.UnsafeArrayIndex(index)).GetComponentStorageDataReference();
+            return ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(Components.UnsafeArrayIndex(index))
+                .GetComponentStorageDataReference();
         }
 
 
+        /// <summary>
+        ///     Creates the gameObject location using the specified flags
+        /// </summary>
+        /// <param name="flags">The flags</param>
+        /// <param name="gameObjectLocation">The gameObject location</param>
+        /// <returns>The ref gameObject id only</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal ref EntityIDOnly CreateEntityLocation(EntityFlags flags, out EntityLocation entityLocation)
+        internal ref GameObjectIdOnly CreateEntityLocation(GameObjectFlags flags, out GameObjectLocation gameObjectLocation)
         {
             if (_entities.Length == NextComponentIndex)
                 Resize(_entities.Length * 2);
 
-            entityLocation.Archetype = this;
-            entityLocation.Index = NextComponentIndex;
-            entityLocation.Flags = flags;
-            Unsafe.SkipInit(out entityLocation.Version);
+            gameObjectLocation.Archetype = this;
+            gameObjectLocation.Index = NextComponentIndex;
+            gameObjectLocation.Flags = flags;
+            Unsafe.SkipInit(out gameObjectLocation.Version);
             //poison prolly isnt needed since archetype forces clear anyways
-            MemoryHelpers.Poison(ref entityLocation.Version);
+            MemoryHelpers.Poison(ref gameObjectLocation.Version);
 
             return ref _entities.UnsafeArrayIndex(NextComponentIndex++);
         }
 
         /// <summary>
-        /// Note! Entity location version is not set! 
+        ///     Note! GameObject location version is not set!
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal ref EntityIDOnly CreateDeferredEntityLocation(World world, Archetype deferredCreationArchetype, scoped ref EntityLocation entityLocation, out ComponentStorageBase[] writeStorage)
+        internal ref GameObjectIdOnly CreateDeferredEntityLocation(Scene scene, Archetype deferredCreationArchetype,
+            scoped ref GameObjectLocation gameObjectLocation, out ComponentStorageBase[] writeStorage)
         {
             if (deferredCreationArchetype.DeferredEntityCount == 0)
-                world.DeferredCreationArchetypes.Push(new(this, deferredCreationArchetype, EntityCount));
+                scene.DeferredCreationArchetypes.Push(new(this, deferredCreationArchetype, EntityCount));
 
             int futureSlot = NextComponentIndex + deferredCreationArchetype.DeferredEntityCount++;
 
             if (futureSlot < _entities.Length)
-            {//hot path: we have space and can directly place into existing array
+            {
+                //hot path: we have space and can directly place into existing array
                 writeStorage = Components;
-                entityLocation.Index = futureSlot;
-                entityLocation.Archetype = this;
+                gameObjectLocation.Index = futureSlot;
+                gameObjectLocation.Archetype = this;
                 return ref _entities.UnsafeArrayIndex(futureSlot);
             }
 
-            return ref CreateDeferredEntityLocationTempBuffers(deferredCreationArchetype, futureSlot, ref entityLocation, out writeStorage);
+            return ref CreateDeferredEntityLocationTempBuffers(deferredCreationArchetype, futureSlot, ref gameObjectLocation,
+                out writeStorage);
         }
 
         // Only to be called by CreateDeferredEntityLocation
         // Allow the jit to inline that method more easily
-        private ref EntityIDOnly CreateDeferredEntityLocationTempBuffers(Archetype deferredCreationArchetype, int futureSlot, scoped ref EntityLocation entityLocation, out ComponentStorageBase[] writeStorage)
+        /// <summary>
+        ///     Creates the deferred gameObject location temp buffers using the specified deferred creation archetype
+        /// </summary>
+        /// <param name="deferredCreationArchetype">The deferred creation archetype</param>
+        /// <param name="futureSlot">The future slot</param>
+        /// <param name="gameObjectLocation">The gameObject location</param>
+        /// <param name="writeStorage">The write storage</param>
+        /// <returns>The ref gameObject id only</returns>
+        private ref GameObjectIdOnly CreateDeferredEntityLocationTempBuffers(Archetype deferredCreationArchetype,
+            int futureSlot, scoped ref GameObjectLocation gameObjectLocation, out ComponentStorageBase[] writeStorage)
         {
             //we need to place into temp buffers
-            entityLocation.Index = futureSlot - _entities.Length;
-            entityLocation.Archetype = deferredCreationArchetype;
+            gameObjectLocation.Index = futureSlot - _entities.Length;
+            gameObjectLocation.Archetype = deferredCreationArchetype;
 
-            Debug.Assert(entityLocation.Index >= 0);
-            if (entityLocation.Index >= deferredCreationArchetype._entities.Length)
-            {
+
+            if (gameObjectLocation.Index >= deferredCreationArchetype._entities.Length)
                 deferredCreationArchetype.ResizeCreateComponentBuffers();
-            }
 
             writeStorage = deferredCreationArchetype.Components;
 
-            return ref deferredCreationArchetype._entities.UnsafeArrayIndex(entityLocation.Index);
+            return ref deferredCreationArchetype._entities.UnsafeArrayIndex(gameObjectLocation.Index);
         }
 
-        internal void ResolveDeferredEntityCreations(World world, Archetype deferredCreationArchetype)
+        /// <summary>
+        ///     Resolves the deferred gameObject creations using the specified scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="deferredCreationArchetype">The deferred creation archetype</param>
+        internal void ResolveDeferredEntityCreations(Scene scene, Archetype deferredCreationArchetype)
         {
-            Debug.Assert(deferredCreationArchetype._archetypeID == _archetypeID);
-            Debug.Assert(deferredCreationArchetype.DeferredEntityCount != 0);
-            int deltaFromMaxDeferredInPlace = -(_entities.Length - (NextComponentIndex + deferredCreationArchetype.DeferredEntityCount));
+            int deltaFromMaxDeferredInPlace =
+                -(_entities.Length - (NextComponentIndex + deferredCreationArchetype.DeferredEntityCount));
             int previousComponentCount = NextComponentIndex;
 
             if (!(deltaFromMaxDeferredInPlace <= 0))
-            {//components overflowed into temp storage
+            {
+                //components overflowed into temp storage
 
                 int oldEntitiesLen = _entities.Length;
                 int totalCapacityRequired = previousComponentCount + deferredCreationArchetype.DeferredEntityCount;
-                Debug.Assert(totalCapacityRequired >= oldEntitiesLen);
 
                 //we should always have to resize here - after all, no space is left
                 Resize((int)BitOperations.RoundUpToPowerOf2((uint)totalCapacityRequired));
-                var destination = Components;
-                var source = deferredCreationArchetype.Components;
+                ComponentStorageBase[] destination = Components;
+                ComponentStorageBase[] source = deferredCreationArchetype.Components;
                 for (int i = 1; i < destination.Length; i++)
                     Array.Copy(source[i].Buffer, 0, destination[i].Buffer, oldEntitiesLen, deltaFromMaxDeferredInPlace);
                 Array.Copy(deferredCreationArchetype._entities, 0, _entities, oldEntitiesLen, deltaFromMaxDeferredInPlace);
@@ -121,39 +182,45 @@ namespace Alis.Core.Ecs.Core.Archetype
 
             NextComponentIndex += deferredCreationArchetype.DeferredEntityCount;
 
-            var entities = _entities;
-            var table = world.EntityTable._buffer;
+            GameObjectIdOnly[] entities = _entities;
+            GameObjectLocation[] table = scene.EntityTable._buffer;
             for (int i = previousComponentCount; i < entities.Length && i < NextComponentIndex; i++)
             {
-                ref var entityLocationToResolve = ref table.UnsafeArrayIndex(entities[i].ID);
-                entityLocationToResolve.Archetype = this;
-                entityLocationToResolve.Index = i;
+                ref GameObjectLocation gameObjectLocationToResolve = ref table.UnsafeArrayIndex(entities[i].ID);
+                gameObjectLocationToResolve.Archetype = this;
+                gameObjectLocationToResolve.Index = i;
             }
 
             deferredCreationArchetype.DeferredEntityCount = 0;
         }
 
-        internal Span<EntityIDOnly> CreateEntityLocations(int count, World world)
+        /// <summary>
+        ///     Creates the gameObject locations using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
+        /// <param name="scene">The scene</param>
+        /// <returns>The gameObject span</returns>
+        internal Span<GameObjectIdOnly> CreateEntityLocations(int count, Scene scene)
         {
             int newLen = NextComponentIndex + count;
             EnsureCapacity(newLen);
 
-            Span<EntityIDOnly> entitySpan = _entities.AsSpan(NextComponentIndex, count);
+            Span<GameObjectIdOnly> entitySpan = _entities.AsSpan(NextComponentIndex, count);
 
             int componentIndex = NextComponentIndex;
-            ref var recycled = ref world.RecycledEntityIds;
+            ref FastestStack<GameObjectIdOnly> recycled = ref scene.RecycledEntityIds;
             for (int i = 0; i < entitySpan.Length; i++)
             {
-                ref EntityIDOnly archetypeEntity = ref entitySpan[i];
+                ref GameObjectIdOnly archetypeEntity = ref entitySpan[i];
 
-                archetypeEntity = recycled.CanPop() ? recycled.PopUnsafe() : new EntityIDOnly(world.NextEntityID++, 0);
+                archetypeEntity = recycled.CanPop() ? recycled.Pop() : new GameObjectIdOnly(scene.NextEntityId++, 0);
 
-                ref EntityLocation lookup = ref world.EntityTable.UnsafeIndexNoResize(archetypeEntity.ID);
+                ref GameObjectLocation lookup = ref scene.EntityTable.UnsafeIndexNoResize(archetypeEntity.ID);
 
                 lookup.Version = archetypeEntity.Version;
                 lookup.Archetype = this;
                 lookup.Index = componentIndex++;
-                lookup.Flags = EntityFlags.None;
+                lookup.Flags = GameObjectFlags.None;
             }
 
             NextComponentIndex = componentIndex;
@@ -161,58 +228,68 @@ namespace Alis.Core.Ecs.Core.Archetype
             return entitySpan;
         }
 
+        /// <summary>
+        ///     Resizes the new len
+        /// </summary>
+        /// <param name="newLen">The new len</param>
         private void Resize(int newLen)
         {
             Array.Resize(ref _entities, newLen);
-            var runners = Components;
+            ComponentStorageBase[] runners = Components;
             for (int i = 1; i < runners.Length; i++)
                 runners[i].ResizeBuffer(newLen);
-        }
-
-        private void ResizeCreateComponentBuffers()
-        {
-#if DEBUG
-        Debug.Assert(_isTempCreationArchetype);
-#endif
-            int newLen = checked(Math.Max(1, _entities.Length) * 2);
-            //we only need to resize the EntityIDOnly array when future total entity count is greater than capacity
-            Array.Resize(ref _entities, newLen);
-            var runners = Components;
-            for (int i = 1; i < runners.Length; i++)
-                runners[i].ResizeBuffer(newLen);
-        }
-
-        public void EnsureCapacity(int count)
-        {
-            if (_entities.Length >= count)
-            {
-                return;
-            }
-
-            FastStackArrayPool<EntityIDOnly>.ResizeArrayFromPool(ref _entities, count);
-            var runners = Components;
-            for (int i = 1; i < runners.Length; i++)
-            {
-                runners[i].ResizeBuffer(count);
-            }
         }
 
         /// <summary>
-        /// This method doesn't modify component storages
+        ///     Resizes the create component buffers
         /// </summary>
-        internal EntityIDOnly DeleteEntityFromStorage(int index, out int deletedIndex)
+        private void ResizeCreateComponentBuffers()
         {
-            Debug.Assert(NextComponentIndex > 0);
+#if DEBUG
+#endif
+            int newLen = checked(Math.Max(1, _entities.Length) * 2);
+            //we only need to resize the EntityIDOnly array when future total gameObject count is greater than capacity
+            Array.Resize(ref _entities, newLen);
+            ComponentStorageBase[] runners = Components;
+            for (int i = 1; i < runners.Length; i++)
+                runners[i].ResizeBuffer(newLen);
+        }
+
+        /// <summary>
+        ///     Ensures the capacity using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
+        public void EnsureCapacity(int count)
+        {
+            if (_entities.Length >= count) return;
+
+            FastestArrayPool<GameObjectIdOnly>.ResizeArrayFromPool(ref _entities, count);
+            ComponentStorageBase[] runners = Components;
+            for (int i = 1; i < runners.Length; i++) runners[i].ResizeBuffer(count);
+        }
+
+        /// <summary>
+        ///     This method doesn't modify component storages
+        /// </summary>
+        internal GameObjectIdOnly DeleteEntityFromStorage(int index, out int deletedIndex)
+        {
             deletedIndex = --NextComponentIndex;
             return _entities.UnsafeArrayIndex(index) = _entities.UnsafeArrayIndex(NextComponentIndex);
         }
 
-        internal EntityIDOnly DeleteEntity(int index)
+        /// <summary>
+        ///     Deletes the gameObject using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The gameObject id only</returns>
+        internal GameObjectIdOnly DeleteEntity(int index)
         {
             NextComponentIndex--;
-            Debug.Assert(NextComponentIndex >= 0);
-            //TODO: args
-            #region Unroll
+
+
+
+
+
             DeleteComponentData args = new(index, NextComponentIndex);
 
             ref ComponentStorageBase first = ref MemoryMarshal.GetArrayDataReference(Components);
@@ -232,13 +309,10 @@ namespace Alis.Core.Ecs.Core.Archetype
             }
 
             @long:
-            var comps = Components;
-            for (int i = 9; i < comps.Length; i++)
-            {
-                comps[i].Delete(args);
-            }
+            ComponentStorageBase[] comps = Components;
+            for (int i = 9; i < comps.Length; i++) comps[i].Delete(args);
 
-            //TODO: figure out the distribution of component counts
+
             len9:
             Unsafe.Add(ref first, 8).Delete(args);
             len8:
@@ -255,101 +329,149 @@ namespace Alis.Core.Ecs.Core.Archetype
             Unsafe.Add(ref first, 2).Delete(args);
             len2:
             Unsafe.Add(ref first, 1).Delete(args);
-            #endregion
+
+
 
             end:
 
             return _entities.UnsafeArrayIndex(args.ToIndex) = _entities.UnsafeArrayIndex(args.FromIndex);
         }
 
-        internal void Update(World world)
+        /// <summary>
+        ///     Updates the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        internal void Update(Scene scene)
         {
             if (NextComponentIndex == 0)
                 return;
-            var comprunners = Components;
+            ComponentStorageBase[] comprunners = Components;
             for (int i = 1; i < comprunners.Length; i++)
-                comprunners[i].Run(world, this);
+                comprunners[i].Run(scene, this);
         }
 
-        internal void Update(World world, int start, int length)
+        /// <summary>
+        ///     Updates the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="start">The start</param>
+        /// <param name="length">The length</param>
+        internal void Update(Scene scene, int start, int length)
         {
             if (NextComponentIndex == 0)
                 return;
-            var comprunners = Components;
+            ComponentStorageBase[] comprunners = Components;
             for (int i = 1; i < comprunners.Length; i++)
-                comprunners[i].Run(world, this, start, length);
+                comprunners[i].Run(scene, this, start, length);
         }
 
-        internal void MultiThreadedUpdate(CountdownEvent countdown, World world)
-        {
-            if (NextComponentIndex == 0)
-                return;
-            foreach (var comprunner in Components)
-                comprunner.MultithreadedRun(countdown, world, this);
-        }
-
+        /// <summary>
+        ///     Releases the arrays
+        /// </summary>
         internal void ReleaseArrays()
         {
             _entities = [];
-            var comprunners = Components;
+            ComponentStorageBase[] comprunners = Components;
             for (int i = 1; i < comprunners.Length; i++)
                 comprunners[i].Trim(0);
         }
 
+        /// <summary>
+        ///     Gets the component index
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal int GetComponentIndex<T>()
         {
-            var index = Component<T>.ID.RawIndex;
+            ushort index = Component<T>.Id.RawIndex;
             return ComponentTagTable.UnsafeArrayIndex(index) & GlobalWorldTables.IndexBits;
         }
 
+        /// <summary>
+        ///     Gets the component index using the specified component
+        /// </summary>
+        /// <param name="component">The component</param>
+        /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal int GetComponentIndex(ComponentID component)
+        internal int GetComponentIndex(ComponentId component)
         {
             return ComponentTagTable.UnsafeArrayIndex(component.RawIndex) & GlobalWorldTables.IndexBits;
         }
 
+        /// <summary>
+        ///     Hases the tag
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal bool HasTag<T>()
         {
-            var index = Tag<T>.ID.RawValue;
-            return (ComponentTagTable.UnsafeArrayIndex(index) << 7) != 0;
+            ushort index = Tag<T>.Id.RawValue;
+            return ComponentTagTable.UnsafeArrayIndex(index) << 7 != 0;
         }
 
+        /// <summary>
+        ///     Hases the tag using the specified tag id
+        /// </summary>
+        /// <param name="tagId">The tag id</param>
+        /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal bool HasTag(TagID tagID)
+        internal bool HasTag(TagId tagId)
         {
-            return (ComponentTagTable.UnsafeArrayIndex(tagID.RawValue) << 7) != 0;
+            return ComponentTagTable.UnsafeArrayIndex(tagId.RawValue) << 7 != 0;
         }
 
-        internal Fields Data => new Fields()
+        /// <summary>
+        ///     Gets the gameObject span
+        /// </summary>
+        /// <returns>A span of gameObject id only</returns>
+        internal Span<GameObjectIdOnly> GetEntitySpan()
         {
-            Map = ComponentTagTable,
-            Components = Components,
-        };
-
-        internal Span<EntityIDOnly> GetEntitySpan()
-        {
-            Debug.Assert(NextComponentIndex <= _entities.Length);
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-        return _entities.AsSpan(0, NextComponentIndex);
+            return _entities.AsSpan(0, NextComponentIndex);
 #else
-            return MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(_entities), NextComponentIndex);
+        return MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(_entities), NextComponentIndex);
 #endif
         }
 
-        internal ref EntityIDOnly GetEntityDataReference() => ref MemoryMarshal.GetArrayDataReference(_entities);
-
-        internal struct Fields
+        /// <summary>
+        ///     Gets the gameObject data reference
+        /// </summary>
+        /// <returns>The ref gameObject id only</returns>
+        internal ref GameObjectIdOnly GetEntityDataReference()
         {
+            return ref MemoryMarshal.GetArrayDataReference(_entities);
+        }
+
+        /// <summary>
+        ///     The fields
+        /// </summary>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+        
+        public struct Fields
+        {
+            /// <summary>
+            ///     The map
+            /// </summary>
             internal byte[] Map;
+
+            /// <summary>
+            ///     The components
+            /// </summary>
             internal ComponentStorageBase[] Components;
 
+            /// <summary>
+            ///     Gets the component data reference
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <returns>The ref</returns>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             internal ref T GetComponentDataReference<T>()
             {
-                int index = Map.UnsafeArrayIndex(Component<T>.ID.RawIndex);
-                return ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(Components.UnsafeArrayIndex(index)).GetComponentStorageDataReference();
+                int index = Map.UnsafeArrayIndex(Component<T>.Id.RawIndex);
+                return ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(Components.UnsafeArrayIndex(index))
+                    .GetComponentStorageDataReference();
             }
         }
     }

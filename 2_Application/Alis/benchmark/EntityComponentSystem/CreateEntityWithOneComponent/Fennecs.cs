@@ -35,7 +35,7 @@ using fennecs;
 namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
 {
     /// <summary>
-    ///     The create entity with one component class
+    ///     The create gameObject with one component class
     /// </summary>
     public partial class CreateEntityWithOneComponent
     {

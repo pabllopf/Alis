@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
     public partial class SystemWithOneComponent
     {
         /// <summary>
-        ///     The frent
+        ///     The alis
         /// </summary>
         [Context] private readonly FrentContext _frent;
 
@@ -90,7 +90,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         }
 
         /// <summary>
-        ///     The frent context class
+        ///     The alis context class
         /// </summary>
         /// <seealso cref="FrentBaseContext" />
         private sealed class FrentContext : FrentBaseContext
@@ -103,8 +103,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
             /// <summary>
             ///     Initializes a new instance of the <see cref="FrentContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
-            /// <param name="entityPadding">The entity padding</param>
+            /// <param name="entityCount">The gameObject count</param>
+            /// <param name="entityPadding">The gameObject padding</param>
             public FrentContext(int entityCount, int entityPadding)
             {
                 for (int i = 0; i < entityCount; i++)
@@ -123,7 +123,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         /// <summary>
         ///     The increment
         /// </summary>
-        internal struct Increment : IAction<Component1>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Increment : IAction<Component1>
         {
             /// <summary>
             ///     Runs the t 0

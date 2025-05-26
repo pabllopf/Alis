@@ -51,12 +51,12 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// <param name="tag">The tag</param>
         /// <param name="isEnable">The is enable</param>
         /// <param name="context">The context</param>
-        public SceneManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context) => World = new World();
+        public SceneManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context) => World = new Ecs.Scene();
 
         /// <summary>
         /// Gets or sets the value of the scene
         /// </summary>
-        public World World { get; set; }
+        public Ecs.Scene World { get; set; }
 
         /// <summary>
         /// Ons the init

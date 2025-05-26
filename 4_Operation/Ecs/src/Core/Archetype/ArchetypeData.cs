@@ -1,6 +1,13 @@
-﻿using System.Collections.Immutable;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Memory.Collections;
 
 namespace Alis.Core.Ecs.Core.Archetype
 {
-    internal record struct ArchetypeData(ArchetypeID ID, ImmutableArray<ComponentID> ComponentTypes, ImmutableArray<TagID> TagTypes);
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    
+    public record struct ArchetypeData(
+        ArchetypeID Id,
+        FastImmutableArray<ComponentId> ComponentTypes,
+        FastImmutableArray<TagId> TagTypes);
 }

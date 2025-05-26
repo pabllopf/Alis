@@ -34,7 +34,7 @@ using Svelto.ECS;
 namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
 {
     /// <summary>
-    ///     The create entity with two components class
+    ///     The create gameObject with two components class
     /// </summary>
     public partial class CreateEntityWithTwoComponents
     {
@@ -58,7 +58,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
         }
 
         /// <summary>
-        ///     The svelto entity class
+        ///     The svelto gameObject class
         /// </summary>
         /// <seealso cref="GenericEntityDescriptor{SveltoECSBaseContext}.Component1, SveltoECSBaseContext.Component2}" />
         private sealed class SveltoEntity : GenericEntityDescriptor<SveltoECSBaseContext.Component1, SveltoECSBaseContext.Component2>

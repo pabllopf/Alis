@@ -58,7 +58,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             /// <summary>
             ///     Initializes a new instance of the <see cref="LeopotamEcsLiteContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
+            /// <param name="entityCount">The gameObject count</param>
             public LeopotamEcsLiteContext(int entityCount)
             {
                 MonoThreadSystem = new EcsSystems(World).Add(new MonoThreadRunSystem());

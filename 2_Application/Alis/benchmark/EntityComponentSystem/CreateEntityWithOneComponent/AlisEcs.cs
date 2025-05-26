@@ -37,17 +37,17 @@ using static Alis.Benchmark.EntityComponentSystem.Contexts.AlisBaseContext;
 namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
 {
     /// <summary>
-    ///     The create entity with one component class
+    ///     The create gameObject with one component class
     /// </summary>
     public partial class CreateEntityWithOneComponent
     {
         /// <summary>
         ///     The id
         /// </summary>
-        private static readonly EntityType _entityAlisType = Entity.EntityTypeOf([Component<Component1>.ID], []);
+        private static readonly GameObjectType _entityAlisType = GameObject.EntityTypeOf([Component<Component1>.Id], []);
 
         /// <summary>
-        ///     The frent
+        ///     The alis
         /// </summary>
         [Context] private readonly AlisBaseContext _alis;
 
@@ -57,7 +57,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis()
         {
-            World scene = _alis.World;
+            Scene scene = _alis.Scene;
             scene.EnsureCapacity(_entityAlisType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
@@ -72,7 +72,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis_Bulk()
         {
-            World scene = _alis.World;
+            Scene scene = _alis.Scene;
             ChunkTuple<Component1> chunks = scene.CreateMany<Component1>(EntityCount);
 
             for (int i = 0; i < chunks.Span.Length; i++)

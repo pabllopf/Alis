@@ -1,337 +1,286 @@
 using System;
-using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Updating;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Core.Events;
 using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Core
 {
     /// <summary>
-    /// Stores a set of structual changes that can be applied to a <see cref="World"/>.
+    ///     Stores a set of structual changes that can be applied to a <see cref="Scene" />.
     /// </summary>
     public class CommandBuffer
     {
-        internal FastStack<EntityIDOnly> _deleteEntityBuffer = FastStack<EntityIDOnly>.Create(2);
-        internal FastStack<AddComponent> _addComponentBuffer = FastStack<AddComponent>.Create(2);
-        internal FastStack<DeleteComponent> _removeComponentBuffer = FastStack<DeleteComponent>.Create(2);
-        internal FastStack<CreateCommand> _createEntityBuffer = FastStack<CreateCommand>.Create(2);
-        internal FastStack<TagCommand> _tagEntityBuffer = FastStack<TagCommand>.Create(2);
-        internal FastStack<TagCommand> _detachTagEntityBuffer = FastStack<TagCommand>.Create(2);
-        internal FastStack<ComponentHandle> _createEntityComponents = FastStack<ComponentHandle>.Create(2);
-        private readonly ComponentStorageBase[] _componentRunnerBuffer = new ComponentStorageBase[MemoryHelpers.MaxComponentCount];
+        /// <summary>
+        ///     The max component count
+        /// </summary>
+        private readonly ComponentStorageBase[] _componentRunnerBuffer =
+            new ComponentStorageBase[MemoryHelpers.MaxComponentCount];
 
-        internal World _world;
+        /// <summary>
+        ///     The create
+        /// </summary>
+        internal FastestStack<AddComponent> AddComponentBuffer = FastestStack<AddComponent>.Create(2);
+
+        /// <summary>
+        ///     The create
+        /// </summary>
+        internal FastestStack<CreateCommand> CreateEntityBuffer = FastestStack<CreateCommand>.Create(2);
+
+        /// <summary>
+        ///     The create
+        /// </summary>
+        internal FastestStack<ComponentHandle> CreateEntityComponents = FastestStack<ComponentHandle>.Create(2);
+
+        /// <summary>
+        ///     The create
+        /// </summary>
+        internal FastestStack<GameObjectIdOnly> DeleteEntityBuffer = FastestStack<GameObjectIdOnly>.Create(2);
+
+        /// <summary>
+        ///     The create
+        /// </summary>
+        internal FastestStack<TagCommand> DetachTagEntityBuffer = FastestStack<TagCommand>.Create(2);
+
+        /// <summary>
+        ///     The is inactive
+        /// </summary>
+        internal bool IsInactive;
+
         //-1 indicates normal state
-        internal int _lastCreateEntityComponentsBufferIndex = -1;
-        internal bool _isInactive;
+        /// <summary>
+        ///     The last create gameObject components buffer index
+        /// </summary>
+        internal int LastCreateEntityComponentsBufferIndex = -1;
 
         /// <summary>
-        /// Whether or not the buffer currently has items to be played back.
+        ///     The create
         /// </summary>
-        public bool HasBufferItems => !_isInactive;
+        internal FastestStack<DeleteComponent> RemoveComponentBuffer = FastestStack<DeleteComponent>.Create(2);
 
         /// <summary>
-        /// Creates a command buffer, which stores changes to a world without directly applying them.
+        ///     The scene
         /// </summary>
-        /// <param name="world">The world to apply things to.</param>
-        public CommandBuffer(World world)
+        internal Scene Scene;
+
+        /// <summary>
+        ///     The create
+        /// </summary>
+        internal FastestStack<TagCommand> TagEntityBuffer = FastestStack<TagCommand>.Create(2);
+
+        /// <summary>
+        ///     Creates a command buffer, which stores changes to a scene without directly applying them.
+        /// </summary>
+        /// <param name="scene">The scene to apply things to.</param>
+        public CommandBuffer(Scene scene)
         {
-            _world = world;
-            _isInactive = true;
+            Scene = scene;
+            IsInactive = true;
         }
 
         /// <summary>
-        /// Deletes a component from when <see cref="Playback"/> is called.
+        ///     Whether or not the buffer currently has items to be played back.
         /// </summary>
-        /// <param name="entity">The entity that will be deleted on playback.</param>
-        public void DeleteEntity(Entity entity)
+        public bool HasBufferItems => !IsInactive;
+
+        /// <summary>
+        ///     Deletes a component from when <see cref="Playback" /> is called.
+        /// </summary>
+        /// <param name="gameObject">The gameObject that will be deleted on playback.</param>
+        public void DeleteEntity(GameObject gameObject)
         {
             SetIsActive();
-            _deleteEntityBuffer.Push(entity.EntityIDOnly);
+            DeleteEntityBuffer.Push(gameObject.EntityIdOnly);
         }
 
         /// <summary>
-        /// Removes a component from when <see cref="Playback"/> is called.
+        ///     Removes a component from when <see cref="Playback" /> is called.
         /// </summary>
-        /// <param name="entity">The entity to remove a component from.</param>
+        /// <param name="gameObject">The gameObject to remove a component from.</param>
         /// <param name="component">The component to remove.</param>
-        public void RemoveComponent(Entity entity, ComponentID component)
+        public void RemoveComponent(GameObject gameObject, ComponentId component)
         {
             SetIsActive();
-            _removeComponentBuffer.Push(new DeleteComponent(entity.EntityIDOnly, component));
+            RemoveComponentBuffer.Push(new DeleteComponent(gameObject.EntityIdOnly, component));
         }
 
         /// <summary>
-        /// Removes a component from when <see cref="Playback"/> is called.
+        ///     Removes a component from when <see cref="Playback" /> is called.
         /// </summary>
         /// <typeparam name="T">The component type to remove.</typeparam>
-        /// <param name="entity">The entity to remove a component from.</param>
-        public void RemoveComponent<T>(Entity entity) => RemoveComponent(entity, Component<T>.ID);
+        /// <param name="gameObject">The gameObject to remove a component from.</param>
+        public void RemoveComponent<T>(GameObject gameObject)
+        {
+            RemoveComponent(gameObject, Component<T>.Id);
+        }
 
         /// <summary>
-        /// Removes a component from when <see cref="Playback"/> is called.
+        ///     Removes a component from when <see cref="Playback" /> is called.
         /// </summary>
-        /// <param name="entity">The entity to remove a component from.</param>
+        /// <param name="gameObject">The gameObject to remove a component from.</param>
         /// <param name="type">The type of component to remove.</param>
-        public void RemoveComponent(Entity entity, Type type) => RemoveComponent(entity, Component.GetComponentID(type));
+        public void RemoveComponent(GameObject gameObject, Type type)
+        {
+            RemoveComponent(gameObject, Component.GetComponentId(type));
+        }
 
         /// <summary>
-        /// Adds a component to an entity when <see cref="Playback"/> is called.
+        ///     Adds a component to an gameObject when <see cref="Playback" /> is called.
         /// </summary>
         /// <typeparam name="T">The component type to add.</typeparam>
-        /// <param name="entity">The entity to add to.</param>
+        /// <param name="gameObject">The gameObject to add to.</param>
         /// <param name="component">The component to add.</param>
-        public void AddComponent<T>(Entity entity, in T component)
+        public void AddComponent<T>(GameObject gameObject, in T component)
         {
             SetIsActive();
-            _addComponentBuffer.Push(new AddComponent(entity.EntityIDOnly, ComponentHandle.Create(component)));
+            AddComponentBuffer.Push(new AddComponent(gameObject.EntityIdOnly, ComponentHandle.Create(component)));
         }
 
         /// <summary>
-        /// Adds a component to an entity when <see cref="Playback"/> is called.
+        ///     Adds a component to an gameObject when <see cref="Playback" /> is called.
         /// </summary>
-        /// <param name="entity">The entity to add to.</param>
+        /// <param name="gameObject">The gameObject to add to.</param>
         /// <param name="component">The component to add.</param>
-        /// <param name="componentID">The ID of the component type to add as.</param>
-        /// <remarks><paramref name="component"/> must be assignable to <see cref="ComponentID.Type"/>.</remarks>
-        public void AddComponent(Entity entity, ComponentID componentID, object component)
+        /// <param name="componentId">The ID of the component type to add as.</param>
+        /// <remarks><paramref name="component" /> must be assignable to <see cref="ComponentId.Type" />.</remarks>
+        public void AddComponent(GameObject gameObject, ComponentId componentId, object component)
         {
             SetIsActive();
-            _addComponentBuffer.Push(new AddComponent(entity.EntityIDOnly, ComponentHandle.CreateFromBoxed(componentID, component)));
+            AddComponentBuffer.Push(new AddComponent(gameObject.EntityIdOnly,
+                ComponentHandle.CreateFromBoxed(componentId, component)));
         }
 
         /// <summary>
-        /// Adds a component to an entity when <see cref="Playback"/> is called.
+        ///     Adds a component to an gameObject when <see cref="Playback" /> is called.
         /// </summary>
-        /// <param name="entity">The entity to add to.</param>
+        /// <param name="gameObject">The gameObject to add to.</param>
         /// <param name="component">The component to add.</param>
         /// <param name="componentType">The type to add the component as.</param>
-        /// <remarks><paramref name="component"/> must be assignable to <paramref name="componentType"/>.</remarks>
-        public void AddComponent(Entity entity, Type componentType, object component) => AddComponent(entity, Component.GetComponentID(componentType), component);
+        /// <remarks><paramref name="component" /> must be assignable to <paramref name="componentType" />.</remarks>
+        public void AddComponent(GameObject gameObject, Type componentType, object component)
+        {
+            AddComponent(gameObject, Component.GetComponentId(componentType), component);
+        }
 
         /// <summary>
-        /// Adds a component to an entity when <see cref="Playback"/> is called.
+        ///     Adds a component to an gameObject when <see cref="Playback" /> is called.
         /// </summary>
-        /// <param name="entity">The entity to add to.</param>
+        /// <param name="gameObject">The gameObject to add to.</param>
         /// <param name="component">The component to add.</param>
-        public void AddComponent(Entity entity, object component) => AddComponent(entity, component.GetType(), component);
-
-        #region Tags
-        /// <summary>
-        /// Tags an entity with a tag when <see cref="Playback"/> is called.
-        /// </summary>
-        /// <typeparam name="T">The type to tag the entity with.</typeparam>
-        /// <param name="entity">The entity to tag.</param>
-
-        public void Tag<T>(Entity entity) => Tag(entity, Core.Tag<T>.ID);
-        /// <summary>
-        /// Tags an entity with a tag when <see cref="Playback"/> is called.
-        /// </summary>
-        /// <param name="tagID">The ID of the tag type to tag.</param>
-        /// <param name="entity">The entity to tag.</param>
-        public void Tag(Entity entity, TagID tagID)
+        public void AddComponent(GameObject gameObject, object component)
         {
-            SetIsActive();
-            _tagEntityBuffer.Push(new(entity.EntityIDOnly, tagID));
+            AddComponent(gameObject, component.GetType(), component);
         }
 
         /// <summary>
-        /// Detaches a tag from an entity when <see cref="Playback"/> is called.
-        /// </summary>
-        /// <typeparam name="T">The type of tag to detach.</typeparam>
-        /// <param name="entity">The entity to detach from.</param>
-        public void Detach<T>(Entity entity) => Detach(entity, Core.Tag<T>.ID);
-        /// <summary>
-        /// Detaches a tag from an entity when <see cref="Playback"/> is called.
-        /// </summary>
-        /// <param name="entity">The entity to detach from.</param>
-        /// <param name="tagID">The ID of the tag type to detach from the entity.</param>
-        public void Detach(Entity entity, TagID tagID)
-        {
-            SetIsActive();
-            _detachTagEntityBuffer.Push(new(entity.EntityIDOnly, tagID));
-        }
-        #endregion
-
-        #region Create
-        /// <summary>
-        /// Begins to create an entity, which will be resolved when <see cref="Playback"/> is called.
-        /// </summary>
-        /// <returns><see langword="this"/> instance, for method chaining.</returns>
-        /// <exception cref="InvalidOperationException">An entity is already being created.</exception>
-        public CommandBuffer Entity()
-        {
-            SetIsActive();
-            if (_lastCreateEntityComponentsBufferIndex >= 0)
-            {
-                throw new InvalidOperationException("An entity is currently being created! Use 'End' to finish an entity creation!");
-            }
-            _lastCreateEntityComponentsBufferIndex = _createEntityComponents.Count;
-            return this;
-        }
-
-        /// <summary>
-        /// Records <paramref name="component"/> to be part of the entity created when resolved.
-        /// </summary>
-        /// <returns><see langword="this"/> instance, for method chaining.</returns>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> has not been called."/></exception>
-        public CommandBuffer With<T>(T component)
-        {
-            AssertCreatingEntity();
-            _createEntityComponents.Push(ComponentHandle.Create(in component));
-            return this;
-        }
-
-        /// <summary>
-        /// Records <paramref name="component"/> to be part of the entity created when resolved as a component type represented by <paramref name="componentID"/>.
-        /// </summary>
-        /// <returns><see langword="this"/> instance, for method chaining.</returns>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> has not been called."/></exception>
-        public CommandBuffer WithBoxed(ComponentID componentID, object component)
-        {
-            AssertCreatingEntity();
-            //we don't check IsAssignableTo - reason is perf - InvalidCastException anyways
-            int index = Component.ComponentTable[componentID.RawIndex].Storage.CreateBoxed(component);
-            _createEntityComponents.Push(new ComponentHandle(index, componentID));
-            return this;
-        }
-
-        /// <summary>
-        /// Records <paramref name="component"/> to be part of the entity created when resolved.
-        /// </summary>
-        /// <returns><see langword="this"/> instance, for method chaining.</returns>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> has not been called."/></exception>
-        public CommandBuffer WithBoxed(object component) => WithBoxed(component.GetType(), component);
-
-        /// <summary>
-        /// Records <paramref name="component"/> to be part of the entity created when resolved as a component type of <paramref name="type"/>.
-        /// </summary>
-        /// <returns><see langword="this"/> instance, for method chaining.</returns>
-        /// <exception cref="InvalidOperationException"><see cref="Entity"/> has not been called."/></exception>
-        public CommandBuffer WithBoxed(Type type, object component) => WithBoxed(Component.GetComponentID(type), component);
-
-        /// <summary>
-        /// Finishes recording entity creation and returns an entity with zero components. Recorded components will be added on playback.
-        /// </summary>
-        /// <returns>The created entity ID</returns>
-        public Entity End()
-        {
-            //CreateCommand points to a segment of the _createEntityComponents stack
-            var e = _world.CreateEntityWithoutEvent();
-            _createEntityBuffer.Push(new CreateCommand(
-                e.EntityIDOnly,
-                _lastCreateEntityComponentsBufferIndex,
-                _createEntityComponents.Count - _lastCreateEntityComponentsBufferIndex));
-            _lastCreateEntityComponentsBufferIndex = -1;
-            return e;
-        }
-        #endregion
-
-        /// <summary>
-        /// Removes all commands without playing them back.
+        ///     Removes all commands without playing them back.
         /// </summary>
         /// <remarks>This command also removes all empty entities (without events) that have been created by this command buffer.</remarks>
         public void Clear()
         {
-            _isInactive = true;
+            IsInactive = true;
 
-            while (_createEntityBuffer.TryPop(out CreateCommand createCommand))
+            while (CreateEntityBuffer.TryPop(out CreateCommand createCommand))
             {
-                var item = createCommand.Entity;
-                ref var record = ref _world.EntityTable[item.ID];
-                if (record.Version == item.Version)
-                {
-                    _world.DeleteEntityWithoutEvents(item.ToEntity(_world), ref record);
-                }
+                GameObjectIdOnly item = createCommand.Entity;
+                ref GameObjectLocation record = ref Scene.EntityTable[item.ID];
+                if (record.Version == item.Version) Scene.DeleteEntityWithoutEvents(item.ToEntity(Scene), ref record);
             }
 
-            _removeComponentBuffer.Clear();
-            _deleteEntityBuffer.Clear();
+            RemoveComponentBuffer.Clear();
+            DeleteEntityBuffer.Clear();
         }
 
         /// <summary>
-        /// Plays all the queued commands, applying them to a world.
+        ///     Plays all the queued commands, applying them to a scene.
         /// </summary>
-        /// <returns><see langword="true"/> when at least one change was made; <see langword="false"/> when this command buffer is empty and not active.</returns>
+        /// <returns>
+        ///     <see langword="true" /> when at least one change was made; <see langword="false" /> when this command buffer
+        ///     is empty and not active.
+        /// </returns>
         public bool Playback()
         {
-            if (!_world.AllowStructualChanges)
-                FrentExceptions.Throw_InvalidOperationException("The world currently does not allow structural changes!");
+            if (!Scene.AllowStructualChanges)
+                throw new InvalidOperationException("The scene currently does not allow structural changes!");
             return PlaybackInternal();
         }
 
+        /// <summary>
+        ///     Playbacks the internal
+        /// </summary>
+        /// <returns>The has items</returns>
         internal bool PlaybackInternal()
         {
-            bool hasItems = _deleteEntityBuffer.Count > 0 | _createEntityBuffer.Count > 0 | _removeComponentBuffer.Count > 0 | _addComponentBuffer.Count > 0;
+            bool hasItems = (DeleteEntityBuffer.Count > 0) | (CreateEntityBuffer.Count > 0) |
+                            (RemoveComponentBuffer.Count > 0) | (AddComponentBuffer.Count > 0);
 
             if (!hasItems)
                 return hasItems;
 
-            while (_createEntityBuffer.TryPop(out CreateCommand createCommand))
+            while (CreateEntityBuffer.TryPop(out CreateCommand createCommand))
             {
-                Entity concrete = createCommand.Entity.ToEntity(_world);
-                ref EntityLocation lookup = ref _world.EntityTable.UnsafeIndexNoResize(concrete.EntityID);
+                GameObject concrete = createCommand.Entity.ToEntity(Scene);
+                ref GameObjectLocation lookup = ref Scene.EntityTable.UnsafeIndexNoResize(concrete.EntityID);
 
                 if (createCommand.BufferLength > 0)
                 {
                     Span<ComponentStorageBase> runners = _componentRunnerBuffer.AsSpan(0, createCommand.BufferLength);
 
-                    ArchetypeID id = _world.DefaultArchetype.ID;
-                    Span<ComponentHandle> handles = _createEntityComponents.AsSpan().Slice(createCommand.BufferIndex, createCommand.BufferLength);
+                    ArchetypeID id = Scene.DefaultArchetype.Id;
+                    Span<ComponentHandle> handles = CreateEntityComponents.AsSpan()
+                        .Slice(createCommand.BufferIndex, createCommand.BufferLength);
                     for (int i = 0; i < handles.Length; i++)
-                    {
-                        id = _world.AddComponentLookup.FindAdjacentArchetypeID(handles[i].ComponentID, id, _world, ArchetypeEdgeType.AddComponent);
-                    }
+                        id = Scene.AddComponentLookup.FindAdjacentArchetypeId(handles[i].ComponentId, id, Scene,
+                            ArchetypeEdgeType.AddComponent);
 
-                    _world.MoveEntityToArchetypeAdd(runners, concrete, ref lookup, out EntityLocation location, id.Archetype(_world)!);
+                    Scene.MoveEntityToArchetypeAdd(runners, concrete, ref lookup, out GameObjectLocation location,
+                        id.Archetype(Scene)!);
                 }
 
-                _world.InvokeEntityCreated(concrete);
+                Scene.InvokeEntityCreated(concrete);
             }
 
-            while (_deleteEntityBuffer.TryPop(out var item))
+            while (DeleteEntityBuffer.TryPop(out GameObjectIdOnly item))
             {
                 //double check that its alive
-                ref var record = ref _world.EntityTable[item.ID];
-                if (record.Version == item.Version)
-                {
-                    _world.DeleteEntity(item.ToEntity(_world), ref record);
-                }
+                ref GameObjectLocation record = ref Scene.EntityTable[item.ID];
+                if (record.Version == item.Version) Scene.DeleteEntity(item.ToEntity(Scene), ref record);
             }
 
-            while (_removeComponentBuffer.TryPop(out var item))
+            while (RemoveComponentBuffer.TryPop(out DeleteComponent item))
             {
-                var id = item.Entity.ID;
-                ref var record = ref _world.EntityTable[id];
+                int id = item.Entity.ID;
+                ref GameObjectLocation record = ref Scene.EntityTable[id];
                 if (record.Version == item.Entity.Version)
-                {
-                    _world.RemoveComponent(item.Entity.ToEntity(_world), ref record, item.ComponentID);
-                }
+                    Scene.RemoveComponent(item.Entity.ToEntity(Scene), ref record, item.ComponentId);
             }
 
-            while (_addComponentBuffer.TryPop(out var command))
+            while (AddComponentBuffer.TryPop(out AddComponent command))
             {
-                var id = command.Entity.ID;
-                ref var record = ref _world.EntityTable[id];
+                int id = command.Entity.ID;
+                ref GameObjectLocation record = ref Scene.EntityTable[id];
                 if (record.Version == command.Entity.Version)
                 {
-                    Entity concrete = command.Entity.ToEntity(_world);
+                    GameObject concrete = command.Entity.ToEntity(Scene);
 
                     ComponentStorageBase runner = null!;
-                    _world.AddComponent(concrete, ref record, command.ComponentHandle.ComponentID, ref runner, out var location);
+                    Scene.AddComponent(concrete, ref record, command.ComponentHandle.ComponentId, ref runner,
+                        out GameObjectLocation location);
 
-                    runner.PullComponentFrom(command.ComponentHandle.ParentTable, location.Index, command.ComponentHandle.Index);
+                    runner.PullComponentFrom(command.ComponentHandle.ParentTable, location.Index,
+                        command.ComponentHandle.Index);
 
-                    if (record.HasEvent(EntityFlags.AddComp))
+                    if (record.HasEvent(GameObjectFlags.AddComp))
                     {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-                    var events = _world.EventLookup[command.Entity];
+                        EventRecord events = Scene.EventLookup[command.Entity];
 #else
-                        ref var events = ref CollectionsMarshal.GetValueRefOrNullRef(_world.EventLookup, command.Entity);
+                    ref EventRecord events =
+                        ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrNullRef(Scene.EventLookup, command.Entity);
 #endif
-                        events.Add.NormalEvent.Invoke(concrete, command.ComponentHandle.ComponentID);
+                        events.Add.NormalEvent.Invoke(concrete, command.ComponentHandle.ComponentId);
                         runner.InvokeGenericActionWith(events.Add.GenericEvent, concrete, location.Index);
                     }
 
@@ -339,45 +288,180 @@ namespace Alis.Core.Ecs.Core
                 }
             }
 
-            while (_tagEntityBuffer.TryPop(out var command))
+            while (TagEntityBuffer.TryPop(out TagCommand command))
             {
-                ref var record = ref _world.EntityTable[command.Entity.ID];
+                ref GameObjectLocation record = ref Scene.EntityTable[command.Entity.ID];
                 if (record.Version == command.Entity.Version)
-                {
-                    _world.MoveEntityToArchetypeIso(command.Entity.ToEntity(_world), ref record,
-                        Archetype.Archetype.GetAdjacentArchetypeLookup(_world, ArchetypeEdgeKey.Tag(command.TagID, record.Archetype.ID, ArchetypeEdgeType.AddTag)));
-                }
+                    Scene.MoveEntityToArchetypeIso(command.Entity.ToEntity(Scene), ref record,
+                        Archetype.Archetype.GetAdjacentArchetypeLookup(Scene,
+                            ArchetypeEdgeKey.Tag(command.TagId, record.Archetype.Id, ArchetypeEdgeType.AddTag)));
             }
 
-            while (_detachTagEntityBuffer.TryPop(out var command))
+            while (DetachTagEntityBuffer.TryPop(out TagCommand command))
             {
-                ref var record = ref _world.EntityTable[command.Entity.ID];
+                ref GameObjectLocation record = ref Scene.EntityTable[command.Entity.ID];
                 if (record.Version == command.Entity.Version)
-                {
-                    _world.MoveEntityToArchetypeIso(command.Entity.ToEntity(_world), ref record,
-                        Archetype.Archetype.GetAdjacentArchetypeLookup(_world, ArchetypeEdgeKey.Tag(command.TagID, record.Archetype.ID, ArchetypeEdgeType.RemoveTag)));
-                }
+                    Scene.MoveEntityToArchetypeIso(command.Entity.ToEntity(Scene), ref record,
+                        Archetype.Archetype.GetAdjacentArchetypeLookup(Scene,
+                            ArchetypeEdgeKey.Tag(command.TagId, record.Archetype.Id, ArchetypeEdgeType.RemoveTag)));
             }
 
-            _isInactive = true;
+            IsInactive = true;
 
             return hasItems;
         }
 
+        /// <summary>
+        ///     Asserts the creating gameObject
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Use CommandBuffer.GameObject() to begin creating an gameObject!</exception>
         private void AssertCreatingEntity()
         {
-            if (_lastCreateEntityComponentsBufferIndex < 0)
-            {
-                Throw();
-            }
+            if (LastCreateEntityComponentsBufferIndex < 0) Throw();
 
             [MethodImpl(MethodImplOptions.NoInlining)]
-            static void Throw() => throw new InvalidOperationException("Use CommandBuffer.Entity() to begin creating an entity!");
+            static void Throw()
+            {
+                throw new InvalidOperationException("Use CommandBuffer.GameObject() to begin creating an gameObject!");
+            }
         }
 
+        /// <summary>
+        ///     Sets the is active
+        /// </summary>
         private void SetIsActive()
         {
-            _isInactive = false;
+            IsInactive = false;
         }
+
+
+
+        /// <summary>
+        ///     Tags an gameObject with a tag when <see cref="Playback" /> is called.
+        /// </summary>
+        /// <typeparam name="T">The type to tag the gameObject with.</typeparam>
+        /// <param name="gameObject">The gameObject to tag.</param>
+        public void Tag<T>(GameObject gameObject)
+        {
+            Tag(gameObject, Core.Tag<T>.Id);
+        }
+
+        /// <summary>
+        ///     Tags an gameObject with a tag when <see cref="Playback" /> is called.
+        /// </summary>
+        /// <param name="tagId">The ID of the tag type to tag.</param>
+        /// <param name="gameObject">The gameObject to tag.</param>
+        public void Tag(GameObject gameObject, TagId tagId)
+        {
+            SetIsActive();
+            TagEntityBuffer.Push(new(gameObject.EntityIdOnly, tagId));
+        }
+
+        /// <summary>
+        ///     Detaches a tag from an gameObject when <see cref="Playback" /> is called.
+        /// </summary>
+        /// <typeparam name="T">The type of tag to detach.</typeparam>
+        /// <param name="gameObject">The gameObject to detach from.</param>
+        public void Detach<T>(GameObject gameObject)
+        {
+            Detach(gameObject, Core.Tag<T>.Id);
+        }
+
+        /// <summary>
+        ///     Detaches a tag from an gameObject when <see cref="Playback" /> is called.
+        /// </summary>
+        /// <param name="gameObject">The gameObject to detach from.</param>
+        /// <param name="tagId">The ID of the tag type to detach from the gameObject.</param>
+        public void Detach(GameObject gameObject, TagId tagId)
+        {
+            SetIsActive();
+            DetachTagEntityBuffer.Push(new(gameObject.EntityIdOnly, tagId));
+        }
+
+
+
+
+
+        /// <summary>
+        ///     Begins to create an gameObject, which will be resolved when <see cref="Playback" /> is called.
+        /// </summary>
+        /// <returns><see langword="this" /> instance, for method chaining.</returns>
+        /// <exception cref="InvalidOperationException">An gameObject is already being created.</exception>
+        public CommandBuffer Entity()
+        {
+            SetIsActive();
+            if (LastCreateEntityComponentsBufferIndex >= 0)
+                throw new InvalidOperationException(
+                    "An gameObject is currently being created! Use 'End' to finish an gameObject creation!");
+            LastCreateEntityComponentsBufferIndex = CreateEntityComponents.Count;
+            return this;
+        }
+
+        /// <summary>
+        ///     Records <paramref name="component" /> to be part of the gameObject created when resolved.
+        /// </summary>
+        /// <returns><see langword="this" /> instance, for method chaining.</returns>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> has not been called."/></exception>
+        public CommandBuffer With<T>(T component)
+        {
+            AssertCreatingEntity();
+            CreateEntityComponents.Push(ComponentHandle.Create(in component));
+            return this;
+        }
+
+        /// <summary>
+        ///     Records <paramref name="component" /> to be part of the gameObject created when resolved as a component type
+        ///     represented by <paramref name="componentId" />.
+        /// </summary>
+        /// <returns><see langword="this" /> instance, for method chaining.</returns>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> has not been called."/></exception>
+        public CommandBuffer WithBoxed(ComponentId componentId, object component)
+        {
+            AssertCreatingEntity();
+            //we don't check IsAssignableTo - reason is perf - InvalidCastException anyways
+            int index = Component.ComponentTable[componentId.RawIndex].Storage.CreateBoxed(component);
+            CreateEntityComponents.Push(new ComponentHandle(index, componentId));
+            return this;
+        }
+
+        /// <summary>
+        ///     Records <paramref name="component" /> to be part of the gameObject created when resolved.
+        /// </summary>
+        /// <returns><see langword="this" /> instance, for method chaining.</returns>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> has not been called."/></exception>
+        public CommandBuffer WithBoxed(object component)
+        {
+            return WithBoxed(component.GetType(), component);
+        }
+
+        /// <summary>
+        ///     Records <paramref name="component" /> to be part of the gameObject created when resolved as a component type of
+        ///     <paramref name="type" />.
+        /// </summary>
+        /// <returns><see langword="this" /> instance, for method chaining.</returns>
+        /// <exception cref="InvalidOperationException"><see cref="Entity" /> has not been called."/></exception>
+        public CommandBuffer WithBoxed(Type type, object component)
+        {
+            return WithBoxed(Component.GetComponentId(type), component);
+        }
+
+        /// <summary>
+        ///     Finishes recording gameObject creation and returns an gameObject with zero components. Recorded components will be added on
+        ///     playback.
+        /// </summary>
+        /// <returns>The created gameObject ID</returns>
+        public GameObject End()
+        {
+            //CreateCommand points to a segment of the _createEntityComponents stack
+            GameObject e = Scene.CreateEntityWithoutEvent();
+            CreateEntityBuffer.Push(new CreateCommand(
+                e.EntityIdOnly,
+                LastCreateEntityComponentsBufferIndex,
+                CreateEntityComponents.Count - LastCreateEntityComponentsBufferIndex));
+            LastCreateEntityComponentsBufferIndex = -1;
+            return e;
+        }
+
+
     }
 }

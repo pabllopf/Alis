@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Alis.Benchmark.CustomCollections.Tables.TablesBenchmarks-20250524-181325</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.14.0, macOS Sequoia 15.5 (24F74) [Darwin 24.5.0]
+Apple M3 Max, 1 CPU, 16 logical and 16 physical cores
+.NET SDK 9.0.100
+  [Host]   : .NET 8.0.11 (8.0.1124.51707), Arm64 RyuJIT AdvSIMD
+  ShortRun : .NET 8.0.11 (8.0.1124.51707), Arm64 RyuJIT AdvSIMD
+</code></pre>
+<pre><code>Job=ShortRun  IterationCount=3  LaunchCount=1  
+WarmupCount=3  
+</code></pre>
+
+<table>
+<thead><tr><th>Method                   </th><th>ArraySize</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>&#39;[UNSAFE]_Iterate&#39;</td><td>32</td><td>9.3662 ns</td><td>0.7328 ns</td><td>0.0402 ns</td><td>-</td>
+</tr><tr><td>&#39;[NORMAL]_Iterate&#39;</td><td>32</td><td>9.3688 ns</td><td>0.1929 ns</td><td>0.0106 ns</td><td>-</td>
+</tr><tr><td>&#39;[FAST]_Iterate&#39;</td><td>32</td><td>11.5285 ns</td><td>0.1507 ns</td><td>0.0083 ns</td><td>-</td>
+</tr><tr><td>&#39;[FASTEST]_Iterate&#39;</td><td>32</td><td>11.5400 ns</td><td>0.0659 ns</td><td>0.0036 ns</td><td>-</td>
+</tr><tr><td>&#39;[UNSAFE]_EnsureCapacity()&#39;</td><td>32</td><td>13.1411 ns</td><td>1.2559 ns</td><td>0.0688 ns</td><td>-</td>
+</tr><tr><td>&#39;[NORMAL]_EnsureCapacity()&#39;</td><td>32</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>-</td>
+</tr><tr><td>&#39;[FAST]_EnsureCapacity()&#39;</td><td>32</td><td>0.6034 ns</td><td>0.1194 ns</td><td>0.0065 ns</td><td>-</td>
+</tr><tr><td>&#39;[FASTEST]_EnsureCapacity()&#39;</td><td>32</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>-</td>
+</tr><tr><td>&#39;[UNSAFE]_AsSpan()&#39;</td><td>32</td><td>0.3547 ns</td><td>0.0927 ns</td><td>0.0051 ns</td><td>-</td>
+</tr><tr><td>&#39;[NORMAL]_AsSpan()&#39;</td><td>32</td><td>0.3116 ns</td><td>0.1619 ns</td><td>0.0089 ns</td><td>-</td>
+</tr><tr><td>&#39;[FAST]_AsSpan()&#39;</td><td>32</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>-</td>
+</tr><tr><td>&#39;[FASTEST]_AsSpan()&#39;</td><td>32</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>-</td>
+</tr><tr><td>&#39;[UNSAFE]_UnsafeIndexNoResize&#39;</td><td>32</td><td>9.5091 ns</td><td>1.0908 ns</td><td>0.0598 ns</td><td>-</td>
+</tr><tr><td>&#39;[NORMAL]_UnsafeIndexNoResize&#39;</td><td>32</td><td>9.5385 ns</td><td>3.7635 ns</td><td>0.2063 ns</td><td>-</td>
+</tr><tr><td>&#39;[FAST]_UnsafeIndexNoResize&#39;</td><td>32</td><td>9.6030 ns</td><td>2.2724 ns</td><td>0.1246 ns</td><td>-</td>
+</tr><tr><td>&#39;[FASTEST]_UnsafeIndexNoResize&#39;</td><td>32</td><td>9.4755 ns</td><td>0.7898 ns</td><td>0.0433 ns</td><td>-</td>
+</tr></tbody></table>
+</body>
+</html>

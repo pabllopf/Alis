@@ -5,50 +5,83 @@ using Alis.Core.Ecs.Core.Memory;
 
 namespace Alis.Core.Ecs.Updating
 {
-    internal class SingleComponentUpdateFilter : IComponentUpdateFilter
+    /// <summary>
+    ///     The single component update filter class
+    /// </summary>
+    /// <seealso cref="IComponentUpdateFilter" />
+    public class SingleComponentUpdateFilter : IComponentUpdateFilter
     {
+        /// <summary>
+        ///     The component id
+        /// </summary>
+        private readonly ComponentId _componentId;
+
+        /// <summary>
+        ///     The scene
+        /// </summary>
+        private readonly Scene _scene;
+
+        /// <summary>
+        ///     The archetypes
+        /// </summary>
         private (Archetype Archetype, ComponentStorageBase Storage)[] _archetypes = [];
+
+        /// <summary>
+        ///     The count
+        /// </summary>
         private int _count;
-        private readonly ComponentID _componentID;
-        private readonly World _world;
 
-        public SingleComponentUpdateFilter(World world, ComponentID component)
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SingleComponentUpdateFilter" /> class
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="component">The component</param>
+        public SingleComponentUpdateFilter(Scene scene, ComponentId component)
         {
-            _world = world;
-            _componentID = component;
+            _scene = scene;
+            _componentId = component;
 
-            foreach (var archetype in world.EnabledArchetypes.AsSpan())
-                ArchetypeAdded(archetype.Archetype(world)!);
+            foreach (ArchetypeID archetype in scene.EnabledArchetypes.AsSpan())
+                ArchetypeAdded(archetype.Archetype(scene)!);
         }
 
-
-        public void Update()
-        {
-            var world = _world;
-            foreach(var (archetype, storage) in _archetypes.AsSpan(0, _count))
-                storage.Run(world, archetype);
-        }
-
-        public void ArchetypeAdded(Archetype archetype)
-        {
-            int index = archetype.GetComponentIndex(_componentID);
-            if(index != 0)
-            {
-                MemoryHelpers.GetValueOrResize(ref _archetypes, _count++) = (archetype, archetype.Components[index]);
-            }
-        }
-
+        /// <summary>
+        ///     Updates the subset using the specified archetypes
+        /// </summary>
+        /// <param name="archetypes">The archetypes</param>
         public void UpdateSubset(ReadOnlySpan<ArchetypeDeferredUpdateRecord> archetypes)
         {
-            var world = _world;
-            foreach ((var archetype, _, int initalEntityCount) in archetypes)
+            Scene scene = _scene;
+            foreach ((Archetype archetype, _, int initalEntityCount) in archetypes)
             {
-                int componentIndex = archetype.GetComponentIndex(_componentID);
-                if(componentIndex != 0)
-                {//this archetype has this component type
-                    archetype.Components[componentIndex].Run(world, archetype, initalEntityCount, archetype.EntityCount - initalEntityCount);
-                }
+                int componentIndex = archetype.GetComponentIndex(_componentId);
+                if (componentIndex != 0)
+                    //this archetype has this component type
+                    archetype.Components[componentIndex].Run(scene, archetype, initalEntityCount,
+                        archetype.EntityCount - initalEntityCount);
             }
+        }
+
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        public void Update()
+        {
+            Scene scene = _scene;
+            foreach ((Archetype archetype, ComponentStorageBase storage) in _archetypes.AsSpan(0, _count))
+                storage.Run(scene, archetype);
+        }
+
+        /// <summary>
+        ///     Archetypes the added using the specified archetype
+        /// </summary>
+        /// <param name="archetype">The archetype</param>
+        public void ArchetypeAdded(Archetype archetype)
+        {
+            int index = archetype.GetComponentIndex(_componentId);
+            if (index != 0)
+                MemoryHelpers.GetValueOrResize(ref _archetypes, _count++) = (archetype, archetype.Components[index]);
         }
     }
 }

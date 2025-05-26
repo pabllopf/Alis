@@ -44,7 +44,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
     public partial class SystemWithTwoComponents
     {
         /// <summary>
-        ///     The frent
+        ///     The alis
         /// </summary>
         [Context] private readonly FrentContext _frent;
 
@@ -92,7 +92,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         }
 
         /// <summary>
-        ///     The frent context class
+        ///     The alis context class
         /// </summary>
         /// <seealso cref="FrentBaseContext" />
         internal sealed class FrentContext : FrentBaseContext
@@ -105,7 +105,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
             /// <summary>
             ///     Initializes a new instance of the <see cref="FrentContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
+            /// <param name="entityCount">The gameObject count</param>
             /// <param name="padding">The padding</param>
             public FrentContext(int entityCount, int padding)
             {
@@ -125,7 +125,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
         /// <summary>
         ///     The sum
         /// </summary>
-        internal struct Sum : IAction<Component1, Component2>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Sum : IAction<Component1, Component2>
         {
             /// <summary>
             ///     Runs the t 0

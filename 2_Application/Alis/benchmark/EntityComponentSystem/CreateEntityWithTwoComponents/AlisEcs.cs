@@ -37,17 +37,17 @@ using static Alis.Benchmark.EntityComponentSystem.Contexts.AlisBaseContext;
 namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
 {
     /// <summary>
-    ///     The create entity with two components class
+    ///     The create gameObject with two components class
     /// </summary>
     public partial class CreateEntityWithTwoComponents
     {
         /// <summary>
         ///     The id
         /// </summary>
-        private static readonly EntityType _entityAlisType = Entity.EntityTypeOf([Component<Component1>.ID, Component<Component2>.ID], []);
+        private static readonly GameObjectType _entityAlisType = GameObject.EntityTypeOf([Component<Component1>.Id, Component<Component2>.Id], []);
 
         /// <summary>
-        ///     The frent
+        ///     The alis
         /// </summary>
         [Context] private readonly AlisBaseContext _alis;
 
@@ -57,7 +57,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis()
         {
-            World scene = _alis.World;
+            Scene scene = _alis.Scene;
             scene.EnsureCapacity(_entityAlisType, EntityCount);
 
             for (int i = 0; i < EntityCount; i++)
@@ -72,7 +72,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
         [BenchmarkCategory(Categories.Alis), Benchmark]
         public void Alis_Bulk()
         {
-            World scene = _alis.World;
+            Scene scene = _alis.Scene;
             ChunkTuple<Component1, Component2> chunks = scene.CreateMany<Component1, Component2>(EntityCount);
 
             chunks.Span2 = chunks.Span2[..chunks.Span1.Length];

@@ -34,7 +34,7 @@ using Scellecs.Morpeh;
 namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithThreeComponents
 {
     /// <summary>
-    ///     The create entity with three components class
+    ///     The create gameObject with three components class
     /// </summary>
     public partial class CreateEntityWithThreeComponents
     {

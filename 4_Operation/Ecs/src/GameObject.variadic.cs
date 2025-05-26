@@ -1,0 +1,388 @@
+using System;
+using System.Runtime.CompilerServices;
+using Alis.Core.Aspect.Memory.Collections;
+using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Core.Events;
+using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Updating;
+
+namespace Alis.Core.Ecs
+{
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+#else
+#endif
+
+
+    partial struct GameObject
+    {
+        // traversing archetype graph strategy:
+        //1. hit small & fast static per type cache - 1 branch
+        //2. dictionary lookup
+        //3. find existing archetype
+        //4. create new archetype
+
+        /// <summary>
+        ///     Adds a component to this <see cref="GameObject" />.
+        /// </summary>
+        /// <remarks>If the scene is being updated, changed are deffered to the end of the scene update.</remarks>
+        public void Add<T>(in T c1)
+        {
+            ref GameObjectLocation thisLookup = ref AssertIsAlive(out Scene world);
+
+            if (!world.AllowStructualChanges)
+            {
+                world.WorldUpdateCommandBuffer.AddComponent(this, c1);
+                return;
+            }
+
+            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T>>(
+                world,
+                ref NeighborCache<T>.Add.Lookup,
+                ref thisLookup,
+                true);
+
+            Span<ComponentStorageBase> buff = [null!];
+            world.MoveEntityToArchetypeAdd(buff, this, ref thisLookup, out GameObjectLocation nextLocation, to);
+
+            ref T c1Ref = ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(buff.UnsafeSpanIndex(0))[nextLocation.Index];
+            c1Ref = c1;
+
+            Component<T>.Initer?.Invoke(this, ref c1Ref);
+
+            GameObjectFlags flags = thisLookup.Flags;
+            if (GameObjectLocation.HasEventFlag(flags | world.WorldEventFlags,
+                    GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
+            {
+                if (world.ComponentAddedEvent.HasListeners)
+                    InvokeComponentWorldEvents<T>(ref world.ComponentAddedEvent, this);
+
+                if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
+                {
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+                    EventRecord events = world.EventLookup[EntityIdOnly];
+#else
+                ref EventRecord events =
+                    ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
+#endif
+                    InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
+                        ref events.Add, ref c1Ref);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Removes a component from this <see cref="GameObject" />
+        /// </summary>
+        /// <inheritdoc cref="Add{T}(in T)" />
+        public void Remove<T>()
+        {
+            ref GameObjectLocation thisLookup = ref AssertIsAlive(out Scene world);
+
+            if (!world.AllowStructualChanges)
+            {
+                world.WorldUpdateCommandBuffer.RemoveComponent(this, Component<T>.Id);
+                return;
+            }
+
+            Archetype to = TraverseThroughCacheOrCreate<ComponentId, NeighborCache<T>>(
+                world,
+                ref NeighborCache<T>.Remove.Lookup,
+                ref thisLookup,
+                false);
+
+            Span<ComponentHandle> runners = stackalloc ComponentHandle[1];
+            world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
+            //scene.MoveEntityToArchetypeRemove invokes the events for us
+        }
+
+        /// <summary>
+        ///     Adds a tag to this <see cref="GameObject" />
+        /// </summary>
+        /// <inheritdoc cref="Add{T}(in T)" />
+        public void Tag<T>()
+        {
+            ref GameObjectLocation thisLookup = ref AssertIsAlive(out Scene world);
+
+            if (!world.AllowStructualChanges)
+            {
+                world.WorldUpdateCommandBuffer.Tag<T>(this);
+                return;
+            }
+
+            Archetype to = TraverseThroughCacheOrCreate<TagId, NeighborCache<T>>(
+                world,
+                ref NeighborCache<T>.Tag.Lookup,
+                ref thisLookup,
+                true);
+
+            world.MoveEntityToArchetypeIso(this, ref thisLookup, to);
+
+            GameObjectFlags flags = thisLookup.Flags | world.WorldEventFlags;
+            if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Tagged))
+            {
+                if (world.Tagged.HasListeners)
+                    InvokeTagWorldEvents<T>(ref world.Tagged, this);
+
+                if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Tagged))
+                {
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+                    EventRecord events = world.EventLookup[EntityIdOnly];
+#else
+                ref EventRecord events =
+                    ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
+#endif
+                    InvokePerEntityTagEvents<T>(this, ref events.Tag);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Removes a tag from this <see cref="GameObject" />
+        /// </summary>
+        /// <inheritdoc cref="Add{T}(in T)" />
+        public void Detach<T>()
+        {
+            ref GameObjectLocation thisLookup = ref AssertIsAlive(out Scene world);
+
+            if (!world.AllowStructualChanges)
+            {
+                world.WorldUpdateCommandBuffer.Detach<T>(this);
+                return;
+            }
+
+            Archetype to = TraverseThroughCacheOrCreate<TagId, NeighborCache<T>>(
+                world,
+                ref NeighborCache<T>.Detach.Lookup,
+                ref thisLookup,
+                false);
+
+            world.MoveEntityToArchetypeIso(this, ref thisLookup, to);
+
+            GameObjectFlags flags = thisLookup.Flags | world.WorldEventFlags;
+            if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Detach))
+            {
+                if (world.Detached.HasListeners)
+                    InvokeTagWorldEvents<T>(ref world.Detached, this);
+
+                if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Detach))
+                {
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+                    EventRecord events = world.EventLookup[EntityIdOnly];
+#else
+                ref EventRecord events =
+                    ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
+#endif
+                    InvokePerEntityTagEvents<T>(this, ref events.Detach);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Invokes the component scene events using the specified event
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="@event">The event</param>
+        /// <param name="gameObject">The gameObject</param>
+        private static void InvokeComponentWorldEvents<T>(ref Event<ComponentId> @event, GameObject gameObject)
+        {
+            @event.InvokeInternal(gameObject, Component<T>.Id);
+        }
+
+        /// <summary>
+        ///     Invokes the per gameObject events using the specified gameObject
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="gameObject">The gameObject</param>
+        /// <param name="hasGenericEvent">The has generic event</param>
+        /// <param name="events">The events</param>
+        /// <param name="component">The component</param>
+        private static void InvokePerEntityEvents<T>(GameObject gameObject, bool hasGenericEvent, ref ComponentEvent events,
+            ref T component)
+        {
+            events.NormalEvent.Invoke(gameObject, Component<T>.Id);
+
+            if (!hasGenericEvent)
+                return;
+
+            events.GenericEvent!.Invoke(gameObject, ref component);
+        }
+
+        /// <summary>
+        ///     Invokes the tag scene events using the specified event
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="@event">The event</param>
+        /// <param name="gameObject">The gameObject</param>
+        private static void InvokeTagWorldEvents<T>(ref TagEvent @event, GameObject gameObject)
+        {
+            @event.InvokeInternal(gameObject, Core.Tag<T>.Id);
+        }
+
+        /// <summary>
+        ///     Invokes the per gameObject tag events using the specified gameObject
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="gameObject">The gameObject</param>
+        /// <param name="events">The events</param>
+        private static void InvokePerEntityTagEvents<T>(GameObject gameObject, ref TagEvent events)
+        {
+            events.Invoke(gameObject, Core.Tag<T>.Id);
+        }
+
+        /// <summary>
+        ///     The neighbor cache
+        /// </summary>
+        public struct NeighborCache<T> : IArchetypeGraphEdge
+        {
+            /// <summary>
+            ///     Modifies the tags using the specified tags
+            /// </summary>
+            /// <param name="tags">The tags</param>
+            /// <param name="add">The add</param>
+            public void ModifyTags(ref FastImmutableArray<TagId> tags, bool add)
+            {
+                if (add)
+                    tags = MemoryHelpers.Concat(tags, Core.Tag<T>.Id);
+                else
+                    tags = MemoryHelpers.Remove(tags, Core.Tag<T>.Id);
+            }
+
+            /// <summary>
+            ///     Modifies the components using the specified components
+            /// </summary>
+            /// <param name="components">The components</param>
+            /// <param name="add">The add</param>
+            public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
+            {
+                if (add)
+                    components = MemoryHelpers.Concat(components, Component<T>.Id);
+                else
+                    components = MemoryHelpers.Remove(components, Component<T>.Id);
+            }
+
+            //separate into individual classes to avoid creating uneccecary static classes.
+
+            /// <summary>
+            ///     The add class
+            /// </summary>
+            internal static class Add
+            {
+                /// <summary>
+                ///     The lookup
+                /// </summary>
+                internal static ArchetypeNeighborCache Lookup;
+            }
+
+            /// <summary>
+            ///     The remove class
+            /// </summary>
+            internal static class Remove
+            {
+                /// <summary>
+                ///     The lookup
+                /// </summary>
+                internal static ArchetypeNeighborCache Lookup;
+            }
+
+            /// <summary>
+            ///     The tag class
+            /// </summary>
+            internal static class Tag
+            {
+                /// <summary>
+                ///     The lookup
+                /// </summary>
+                internal static ArchetypeNeighborCache Lookup;
+            }
+
+            /// <summary>
+            ///     The detach class
+            /// </summary>
+            internal static class Detach
+            {
+                /// <summary>
+                ///     The lookup
+                /// </summary>
+                internal static ArchetypeNeighborCache Lookup;
+            }
+        }
+    }
+
+    /// <summary>
+    ///     The gameObject
+    /// </summary>
+    partial struct GameObject
+    {
+        /// <summary>
+        ///     Traverses the through cache or create using the specified scene
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <typeparam name="TEdge">The edge</typeparam>
+        /// <param name="scene">The scene</param>
+        /// <param name="cache">The cache</param>
+        /// <param name="currentLookup">The current lookup</param>
+        /// <param name="add">The add</param>
+        /// <returns>The archetype</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static Archetype TraverseThroughCacheOrCreate<T, TEdge>(
+            Scene scene,
+            ref ArchetypeNeighborCache cache,
+            ref GameObjectLocation currentLookup,
+            bool add)
+            where T : ITypeId
+            where TEdge : struct, IArchetypeGraphEdge
+        {
+            ArchetypeID archetypeFromId = currentLookup.ArchetypeId;
+            int index = cache.Traverse(archetypeFromId.RawIndex);
+
+            if (index == 32) return NotInCache(scene, ref cache, archetypeFromId, add);
+
+            return Archetype.CreateOrGetExistingArchetype(new GameObjectType(cache.Lookup(index)), scene);
+
+            static Archetype NotInCache(Scene scene, ref ArchetypeNeighborCache cache, ArchetypeID archetypeFromId,
+                bool add)
+            {
+                FastImmutableArray<ComponentId> componentIDs = archetypeFromId.Types;
+                FastImmutableArray<TagId> tagIDs = archetypeFromId.Tags;
+
+                if (typeof(T) == typeof(ComponentId))
+                    default(TEdge).ModifyComponents(ref componentIDs, add);
+                else
+                    default(TEdge).ModifyTags(ref tagIDs, add);
+
+                Archetype archetype = Archetype.CreateOrGetExistingArchetype(
+                    componentIDs.AsSpan(),
+                    tagIDs.AsSpan(),
+                    scene,
+                    componentIDs,
+                    tagIDs);
+
+                cache.Set(archetypeFromId.RawIndex, archetype.Id.RawIndex);
+
+                return archetype;
+            }
+        }
+
+        /// <summary>
+        ///     The archetype graph edge interface
+        /// </summary>
+        internal interface IArchetypeGraphEdge
+        {
+            /// <summary>
+            ///     Modifies the tags using the specified tags
+            /// </summary>
+            /// <param name="tags">The tags</param>
+            /// <param name="add">The add</param>
+            void ModifyTags(ref FastImmutableArray<TagId> tags, bool add);
+
+            /// <summary>
+            ///     Modifies the components using the specified components
+            /// </summary>
+            /// <param name="components">The components</param>
+            /// <param name="add">The add</param>
+            void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add);
+        }
+    }
+}

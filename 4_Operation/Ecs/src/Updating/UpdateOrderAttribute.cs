@@ -1,10 +1,15 @@
-﻿using System;
+using System;
 
 namespace Alis.Core.Ecs.Updating
 {
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
+    /// <summary>
+    ///     The update order attribute class
+    /// </summary>
+    /// <seealso cref="Attribute" />
+    /// <seealso cref="IComponentUpdateOrderAttribute" />
+    [AttributeUsage(AttributeTargets.Method)]
     [Obsolete("Unused")]
 #pragma warning disable CS9113 // Parameter is unread.
-    internal class UpdateOrderAttribute(int order) : Attribute, IComponentUpdateOrderAttribute;
+    public class UpdateOrderAttribute(int order) : Attribute, IComponentUpdateOrderAttribute;
 #pragma warning restore CS9113 // Parameter is unread.
 }

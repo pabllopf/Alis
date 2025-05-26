@@ -1,4 +1,7 @@
-﻿namespace Alis.Core.Ecs.Generator.Models
+using System.Runtime.InteropServices;
+
+namespace Alis.Core.Ecs.Generator.Models
 {
-    internal record struct SourceOutput(string? Name, string Source);
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public record struct SourceOutput(string? Name, string Source);
 }

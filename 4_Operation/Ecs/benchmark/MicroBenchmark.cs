@@ -1,41 +1,81 @@
-﻿using BenchmarkDotNet.Attributes;
+using System.Runtime.InteropServices;
+using BenchmarkDotNet.Attributes;
 using Alis;
 using Alis.Core.Ecs.Systems;
 using static Alis.Core.Ecs.Benchmark.Program;
 
 namespace Alis.Core.Ecs.Benchmark
 {
+    /// <summary>
+    /// The micro benchmark class
+    /// </summary>
     [ShortRunJob]
     [MemoryDiagnoser]
     public class MicroBenchmark
     {
-        private class Categories
+        /// <summary>
+        /// The categories class
+        /// </summary>
+        public class Categories
         {
+            /// <summary>
+            /// The create
+            /// </summary>
             public const string Create = "Create";
+            /// <summary>
+            /// The has
+            /// </summary>
             public const string Has = "Has";
+            /// <summary>
+            /// The get
+            /// </summary>
             public const string Get = "Get";
+            /// <summary>
+            /// The add
+            /// </summary>
             public const string Add = "Add";
         }
 
-        private World _world;
-        private Entity _entity;
+        /// <summary>
+        /// The scene
+        /// </summary>
+        private Scene _scene;
+        /// <summary>
+        /// The gameObject
+        /// </summary>
+        private GameObject _gameObject;
+        /// <summary>
+        /// The query
+        /// </summary>
         private Query _query;
 
-        private Entity[] _entities;
+        /// <summary>
+        /// The entities
+        /// </summary>
+        private GameObject[] _entities;
+        /// <summary>
+        /// The raw
+        /// </summary>
         private int[] _raw;
 
         //[Params(1, 100, 10_000, 100_000)]
+        /// <summary>
+        /// Gets or sets the value of the count
+        /// </summary>
         public int Count { get; set; } = 100_000;
 
+        /// <summary>
+        /// Setup this instance
+        /// </summary>
         [GlobalSetup]
         public void Setup()
         {
-            _world = new World();
-            _entity = _world.Create<Component1, Component2, Component3>(default, default, default);
-            _entities = new Entity[Count];
+            _scene = new Scene();
+            _gameObject = _scene.Create<Component1, Component2, Component3>(default, default, default);
+            _entities = new GameObject[Count];
             for (int i = 0; i < _entities.Length; i++)
             {
-                _entities[i] = _world.Create<Component1, Component2, Component3>(default, default, default);
+                _entities[i] = _scene.Create<Component1, Component2, Component3>(default, default, default);
             }
 
             foreach (var entity in _entities)
@@ -45,6 +85,9 @@ namespace Alis.Core.Ecs.Benchmark
             }
         }
 
+        /// <summary>
+        /// Decons this instance
+        /// </summary>
         [Benchmark]
         public void Decon()
         {
@@ -53,21 +96,14 @@ namespace Alis.Core.Ecs.Benchmark
                 entity.Deconstruct<Component1, Component2, Component3>(out var _, out var _, out var _);
             }
         }
-
-        [Benchmark]
-        public void Norm()
-        {
-
-        }
-
-        /*
+        
         [Benchmark]
         [BenchmarkCategory(Categories.Add)]
         public void Create()
         {
             for(int i = 0; i < 100; i++)
             {
-                _world.Create(0);
+                _scene.Create(0);
             }
         }
 
@@ -80,19 +116,27 @@ namespace Alis.Core.Ecs.Benchmark
                 entity.Remove<int>();
                 entity.Add(0);
             }
-        }*/
+        }
 
-        /*
+        
         [Benchmark]
         [BenchmarkCategory(Categories.Has)]
         public void Has()
         {
-            //_entity.Has<int>();
+            _gameObject.Has<int>();
         }
-        */
+        
 
-        internal struct Increment : IAction<Program.Component1>
+        /// <summary>
+        /// The increment
+        /// </summary>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Increment : IAction<Program.Component1>
         {
+            /// <summary>
+            /// Runs the arg
+            /// </summary>
+            /// <param name="arg">The arg</param>
             public void Run(ref Component1 arg) => arg.Value++;
         }
     }

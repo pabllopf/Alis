@@ -39,7 +39,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
     public partial class SystemWithTwoComponentsMultipleComposition
     {
         /// <summary>
-        ///     Gets or sets the value of the entity count
+        ///     Gets or sets the value of the gameObject count
         /// </summary>
         [Params(1_000)]
         public int EntityCount { get; set; }

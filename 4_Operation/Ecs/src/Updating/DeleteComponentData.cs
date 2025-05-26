@@ -1,3 +1,9 @@
-namespace Alis.Core.Ecs.Updating;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
-internal record struct DeleteComponentData(int ToIndex, int FromIndex);
+namespace Alis.Core.Ecs.Updating
+{
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    
+    public record struct DeleteComponentData(int ToIndex, int FromIndex);
+}

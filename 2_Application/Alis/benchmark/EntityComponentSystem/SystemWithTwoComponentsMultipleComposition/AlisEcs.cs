@@ -45,7 +45,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
     public partial class SystemWithTwoComponentsMultipleComposition
     {
         /// <summary>
-        ///     The frent
+        ///     The alis
         /// </summary>
         [Context] private readonly AlisContext _alis;
 
@@ -84,7 +84,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
         }
 
         /// <summary>
-        ///     The frent context class
+        ///     The alis context class
         /// </summary>
         /// <seealso cref="FrentBaseContext" />
         internal sealed class AlisContext : AlisBaseContext
@@ -97,48 +97,49 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             /// <summary>
             ///     Initializes a new instance of the <see cref="FrentContext" /> class
             /// </summary>
-            /// <param name="entityCount">The entity count</param>
+            /// <param name="entityCount">The gameObject count</param>
             public AlisContext(int entityCount)
             {
                 for (int i = 0; i < entityCount; i++)
                 {
-                    Entity e = (entityCount % 4) switch
+                    GameObject e = (entityCount % 4) switch
                     {
-                        0 => World.Create(default(Component1), new Component2 {Value = 1}, default(Padding1)),
-                        1 => World.Create(default(Component1), new Component2 {Value = 1}, default(Padding2)),
-                        2 => World.Create(default(Component1), new Component2 {Value = 1}, default(Padding3)),
-                        _ => World.Create(default(Component1), new Component2 {Value = 1}, default(Padding4))
+                        0 => Scene.Create(default(Component1), new Component2 {Value = 1}, default(Padding1)),
+                        1 => Scene.Create(default(Component1), new Component2 {Value = 1}, default(Padding2)),
+                        2 => Scene.Create(default(Component1), new Component2 {Value = 1}, default(Padding3)),
+                        _ => Scene.Create(default(Component1), new Component2 {Value = 1}, default(Padding4))
                     };
                 }
 
-                Query = World.Query<With<Component1>, With<Component2>>();
+                Query = Scene.Query<With<Component1>, With<Component2>>();
             }
 
             /// <summary>
             ///     The padding
             /// </summary>
-            private struct Padding1;
+            public struct Padding1;
 
             /// <summary>
             ///     The padding
             /// </summary>
-            private struct Padding2;
+            public struct Padding2;
 
             /// <summary>
             ///     The padding
             /// </summary>
-            private struct Padding3;
+            public struct Padding3;
 
             /// <summary>
             ///     The padding
             /// </summary>
-            private struct Padding4;
+            public struct Padding4;
         }
 
         /// <summary>
         ///     The sum
         /// </summary>
-        internal struct SumAlis : IAction<Component1, Component2>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct SumAlis : IAction<Component1, Component2>
         {
             /// <summary>
             ///     Runs the t 0
