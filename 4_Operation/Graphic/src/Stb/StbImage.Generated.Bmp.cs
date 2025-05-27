@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
@@ -59,176 +60,182 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="reqComp">The req comp</param>
         /// <param name="ri">The ri</param>
         /// <returns>The out</returns>
-     public static byte[] Stbibmpload(StbiContext s, out int x, out int y, out int comp, int reqComp, out StbiResultInfo ri)
-{
-    x = 0;
-    y = 0;
-    comp = 0;
-    ri = new StbiResultInfo();
-
-    byte[] output = null;
-    byte[][] pal = Utility.CreateArray<byte>(256, 4);
-    int psize = 0;
-    int width = 0;
-    int pad = 0;
-    int target = 0;
-    int z = 0;
-
-    StbiBmpData info = new StbiBmpData { all_a = 255 };
-    if (Stbibmpparseheader(s, ref info) == IntPtr.Zero)
-        return null;
-
-    int flipVertically = s.ImgY > 0 ? 1 : 0;
-    s.ImgY = (uint)Math.Abs((int)s.ImgY);
-    if (s.ImgY > (1 << 24) || s.ImgX > (1 << 24))
-        return null;
-
-    if (info.hsz == 12 && info.bpp < 24)
-        psize = (info.offset - info.extra_read - 24) / 3;
-    else if (info.bpp < 16)
-        psize = (info.offset - info.extra_read - info.hsz) >> 2;
-
-    int bytesReadSoFar = (int)s.Stream.Position;
-    if (psize == 0)
-    {
-        if (bytesReadSoFar <= 0 || bytesReadSoFar > 1024)
-            return null;
-        if (info.offset < bytesReadSoFar || info.offset - bytesReadSoFar > 1024)
-            return null;
-        stbi__skip(s, info.offset - bytesReadSoFar);
-    }
-
-    s.ImgN = (info.bpp == 24 && info.ma == 0xff000000) ? 3 : (info.ma != 0 ? 4 : 3);
-    target = (reqComp != 0 && reqComp >= 3) ? reqComp : s.ImgN;
-
-    if (Stbimad3Sizesvalid(target, (int)s.ImgX, (int)s.ImgY, 0) == 0)
-        return null;
-
-    output = new byte[target * (int)s.ImgX * (int)s.ImgY];
-    if (output == null)
-        return null;
-
-    if (info.bpp < 16)
-    {
-        if (psize == 0 || psize > 256)
-            return null;
-
-        for (int i = 0; i < psize; ++i)
+        public static IntPtr Stbibmpload(StbiContext s, out int x, out int y, out int comp, int reqComp, out StbiResultInfo ri)
         {
-            pal[i][2] = stbi__get8(s);
-            pal[i][1] = stbi__get8(s);
-            pal[i][0] = stbi__get8(s);
-            if (info.hsz != 12) stbi__get8(s);
-            pal[i][3] = 255;
-        }
+            x = 0;
+            y = 0;
+            comp = 0;
+            ri = new StbiResultInfo();
 
-        stbi__skip(s, info.offset - info.extra_read - info.hsz - psize * (info.hsz == 12 ? 3 : 4));
+            byte[] output = null;
+            byte[][] pal = Utility.CreateArray<byte>(256, 4);
+            int psize = 0;
+            int width = 0;
+            int pad = 0;
+            int target = 0;
+            int z = 0;
 
-        if (info.bpp == 1)
-            width = ((int)s.ImgX + 7) >> 3;
-        else if (info.bpp == 4)
-            width = ((int)s.ImgX + 1) >> 1;
-        else if (info.bpp == 8)
-            width = (int)s.ImgX;
-        else
-            return null;
+            StbiBmpData info = new StbiBmpData {all_a = 255};
+            if (Stbibmpparseheader(s, ref info) == IntPtr.Zero)
+                return IntPtr.Zero;
+            ;
 
-        pad = -width & 3;
+            int flipVertically = s.ImgY > 0 ? 1 : 0;
+            s.ImgY = (uint) Math.Abs((int) s.ImgY);
+            if (s.ImgY > (1 << 24) || s.ImgX > (1 << 24))
+                return IntPtr.Zero;
 
-        for (int j = 0; j < (int)s.ImgY; ++j)
-        {
-            int i = 0;
-            if (info.bpp == 1)
+            if (info.hsz == 12 && info.bpp < 24)
+                psize = (info.offset - info.extra_read - 24) / 3;
+            else if (info.bpp < 16)
+                psize = (info.offset - info.extra_read - info.hsz) >> 2;
+
+            int bytesReadSoFar = (int) s.Stream.Position;
+            if (psize == 0)
             {
-                int bitOffset = 7;
-                int v = stbi__get8(s);
-                for (; i < (int)s.ImgX; ++i)
+                if (bytesReadSoFar <= 0 || bytesReadSoFar > 1024)
+                    return IntPtr.Zero;
+                if (info.offset < bytesReadSoFar || info.offset - bytesReadSoFar > 1024)
+                    return IntPtr.Zero;
+                stbi__skip(s, info.offset - bytesReadSoFar);
+            }
+
+            s.ImgN = (info.bpp == 24 && info.ma == 0xff000000) ? 3 : (info.ma != 0 ? 4 : 3);
+            target = (reqComp != 0 && reqComp >= 3) ? reqComp : s.ImgN;
+
+            if (Stbimad3Sizesvalid(target, (int) s.ImgX, (int) s.ImgY, 0) == 0)
+                return IntPtr.Zero;
+
+            output = new byte[target * (int) s.ImgX * (int) s.ImgY];
+            if (output == null)
+                return IntPtr.Zero;
+
+            if (info.bpp < 16)
+            {
+                if (psize == 0 || psize > 256)
+                    return IntPtr.Zero;
+
+                for (int i = 0; i < psize; ++i)
                 {
-                    int color = (v >> bitOffset) & 0x1;
-                    Array.Copy(pal[color], 0, output, z, 3);
-                    z += 3;
-                    if (target == 4) output[z++] = 255;
-                    if (--bitOffset < 0 && i + 1 < (int)s.ImgX)
+                    pal[i][2] = stbi__get8(s);
+                    pal[i][1] = stbi__get8(s);
+                    pal[i][0] = stbi__get8(s);
+                    if (info.hsz != 12) stbi__get8(s);
+                    pal[i][3] = 255;
+                }
+
+                stbi__skip(s, info.offset - info.extra_read - info.hsz - psize * (info.hsz == 12 ? 3 : 4));
+
+                if (info.bpp == 1)
+                    width = ((int) s.ImgX + 7) >> 3;
+                else if (info.bpp == 4)
+                    width = ((int) s.ImgX + 1) >> 1;
+                else if (info.bpp == 8)
+                    width = (int) s.ImgX;
+                else
+                    return IntPtr.Zero;
+
+                pad = -width & 3;
+
+                for (int j = 0; j < (int) s.ImgY; ++j)
+                {
+                    int i = 0;
+                    if (info.bpp == 1)
                     {
-                        bitOffset = 7;
-                        v = stbi__get8(s);
+                        int bitOffset = 7;
+                        int v = stbi__get8(s);
+                        for (; i < (int) s.ImgX; ++i)
+                        {
+                            int color = (v >> bitOffset) & 0x1;
+                            Array.Copy(pal[color], 0, output, z, 3);
+                            z += 3;
+                            if (target == 4) output[z++] = 255;
+                            if (--bitOffset < 0 && i + 1 < (int) s.ImgX)
+                            {
+                                bitOffset = 7;
+                                v = stbi__get8(s);
+                            }
+                        }
                     }
+                    else
+                    {
+                        for (; i < (int) s.ImgX; i += 2)
+                        {
+                            int v = stbi__get8(s);
+                            int v2 = 0;
+                            if (info.bpp == 4)
+                            {
+                                v2 = v & 15;
+                                v >>= 4;
+                            }
+
+                            Array.Copy(pal[v], 0, output, z, 3);
+                            z += 3;
+                            if (target == 4) output[z++] = 255;
+
+                            if (i + 1 == (int) s.ImgX) break;
+
+                            v = info.bpp == 8 ? stbi__get8(s) : v2;
+                            Array.Copy(pal[v], 0, output, z, 3);
+                            z += 3;
+                            if (target == 4) output[z++] = 255;
+                        }
+                    }
+
+                    stbi__skip(s, pad);
                 }
             }
             else
             {
-                for (; i < (int)s.ImgX; i += 2)
+                stbi__skip(s, info.offset - info.extra_read - info.hsz);
+                width = info.bpp == 24 ? 3 * (int) s.ImgX : 2 * (int) s.ImgX;
+                pad = -width & 3;
+
+                for (int j = 0; j < (int) s.ImgY; ++j)
                 {
-                    int v = stbi__get8(s);
-                    int v2 = 0;
-                    if (info.bpp == 4)
+                    for (int i = 0; i < (int) s.ImgX; ++i)
                     {
-                        v2 = v & 15;
-                        v >>= 4;
+                        byte r, g, b, a = 255;
+                        if (info.bpp == 24 || info.bpp == 32)
+                        {
+                            b = stbi__get8(s);
+                            g = stbi__get8(s);
+                            r = stbi__get8(s);
+                            if (info.bpp == 32) a = stbi__get8(s);
+                        }
+                        else if (info.bpp == 16)
+                        {
+                            int val = Stbiget16Le(s);
+                            r = (byte) (((val & info.mr) >> Stbihighbit(info.mr)) << 3);
+                            g = (byte) (((val & info.mg) >> Stbihighbit(info.mg)) << 3);
+                            b = (byte) (((val & info.mb) >> Stbihighbit(info.mb)) << 3);
+                            a = (info.ma != 0) ? (byte) (((val & info.ma) >> Stbihighbit(info.ma)) << 3) : (byte) 255;
+                        }
+                        else
+                        {
+                            return IntPtr.Zero;
+                        }
+
+                        output[z++] = r;
+                        output[z++] = g;
+                        output[z++] = b;
+                        if (target == 4) output[z++] = a;
                     }
 
-                    Array.Copy(pal[v], 0, output, z, 3);
-                    z += 3;
-                    if (target == 4) output[z++] = 255;
-
-                    if (i + 1 == (int)s.ImgX) break;
-
-                    v = info.bpp == 8 ? stbi__get8(s) : v2;
-                    Array.Copy(pal[v], 0, output, z, 3);
-                    z += 3;
-                    if (target == 4) output[z++] = 255;
+                    stbi__skip(s, pad);
                 }
             }
 
-            stbi__skip(s, pad);
+            x = (int) s.ImgX;
+            y = (int) s.ImgY;
+            comp = s.ImgN;
+            
+            // Asignar memoria no administrada y copiar los datos
+            IntPtr unmanagedOutput = Marshal.AllocHGlobal(output.Length);
+            Marshal.Copy(output, 0, unmanagedOutput, output.Length);
+
+            return unmanagedOutput;
         }
-    }
-    else
-    {
-        stbi__skip(s, info.offset - info.extra_read - info.hsz);
-        width = info.bpp == 24 ? 3 * (int)s.ImgX : 2 * (int)s.ImgX;
-        pad = -width & 3;
-
-        for (int j = 0; j < (int)s.ImgY; ++j)
-        {
-            for (int i = 0; i < (int)s.ImgX; ++i)
-            {
-                byte r, g, b, a = 255;
-                if (info.bpp == 24 || info.bpp == 32)
-                {
-                    b = stbi__get8(s);
-                    g = stbi__get8(s);
-                    r = stbi__get8(s);
-                    if (info.bpp == 32) a = stbi__get8(s);
-                }
-                else if (info.bpp == 16)
-                {
-                    int val = Stbiget16Le(s);
-                    r = (byte)(((val & info.mr) >> Stbihighbit(info.mr)) << 3);
-                    g = (byte)(((val & info.mg) >> Stbihighbit(info.mg)) << 3);
-                    b = (byte)(((val & info.mb) >> Stbihighbit(info.mb)) << 3);
-                    a = (info.ma != 0) ? (byte)(((val & info.ma) >> Stbihighbit(info.ma)) << 3) : (byte)255;
-                }
-                else
-                {
-                    return null;
-                }
-
-                output[z++] = r;
-                output[z++] = g;
-                output[z++] = b;
-                if (target == 4) output[z++] = a;
-            }
-
-            stbi__skip(s, pad);
-        }
-    }
-
-    x = (int)s.ImgX;
-    y = (int)s.ImgY;
-    comp = s.ImgN;
-    return output;
-}
 
 
         /// <summary>

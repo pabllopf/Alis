@@ -40,16 +40,16 @@ namespace Alis.Core.Graphic.Stb
         /// <summary>
         ///     The bits per channel
         /// </summary>
-        public int bits_per_channel;
+        public int BitsPerChannel;
 
         /// <summary>
         ///     The num channels
         /// </summary>
-        public int num_channels;
+        public int NumChannels;
 
         /// <summary>
         ///     The channel order
         /// </summary>
-        public int channel_order;
+        public int ChanneLorder;
     }
 }

@@ -519,24 +519,16 @@ public static IntPtr Stbimalloc(ulong size) => CRuntime.Malloc((long)size);
     comp = 0;
     ri = new StbiResultInfo
     {
-        bits_per_channel = 8,
-        channel_order = StbiOrderRgb,
-        num_channels = 0
+        BitsPerChannel = 8,
+        ChanneLorder = StbiOrderRgb,
+        NumChannels = 0
     };
 
-    if (stbi__png_test(s) != 0)
-    {
-        return stbi__png_load(s, ref x, ref y, ref comp, reqComp, ref ri);
-    }
 
-    if (stbi__bmp_test(s) != 0)
-    {
-        return Stbibmpload(s, ref x, ref y, ref comp, reqComp, ref ri);
-    }
 
-    if (stbi__jpeg_test(s) != 0)
+    if (Stbibmptest(s) != 0)
     {
-        return Stbijpegload(s, ref x, ref y, ref comp, reqComp, ref ri);
+        return Stbibmpload(s, out x, out y, out comp, reqComp, out ri);
     }
 
     throw new InvalidOperationException("unknown image type");
@@ -549,7 +541,7 @@ public static IntPtr Stbimalloc(ulong size) => CRuntime.Malloc((long)size);
         /// <param name="h">The </param>
         /// <param name="channels">The channels</param>
         /// <returns>The reduced</returns>
-       public static byte[] Stbiconvert16To8(IntPtr orig, int w, int h, int channels)
+       public static IntPtr Stbiconvert16To8(IntPtr orig, int w, int h, int channels)
        {
            int imgLen = w * h * channels;
            byte[] reduced = new byte[imgLen];
@@ -566,7 +558,14 @@ public static IntPtr Stbimalloc(ulong size) => CRuntime.Malloc((long)size);
            }
        
            CRuntime.Free(orig);
-           return reduced;
+           
+           
+           
+           // Asignar memoria no administrada y copiar los datos
+           IntPtr unmanagedOutput = Marshal.AllocHGlobal(reduced.Length);
+           Marshal.Copy(reduced, 0, unmanagedOutput, reduced.Length);
+
+           return unmanagedOutput;
        }
         /// <summary>
         ///     Stbis the convert 8 to 16 using the specified orig
@@ -576,25 +575,25 @@ public static IntPtr Stbimalloc(ulong size) => CRuntime.Malloc((long)size);
         /// <param name="h">The </param>
         /// <param name="channels">The channels</param>
         /// <returns>The enlarged</returns>
-       public static ushort[] StbiConvert8To16(IntPtr orig, int w, int h, int channels)
-       {
-           int imgLen = w * h * channels;
-           ushort[] enlarged = new ushort[imgLen];
-       
-           if (orig == IntPtr.Zero)
-           {
-               throw new OutOfMemoryException("outofmem");
-           }
-       
-           for (int i = 0; i < imgLen; ++i)
-           {
-               byte value = Marshal.ReadByte(orig, i);
-               enlarged[i] = (ushort)((value << 8) + value);
-           }
-       
-           CRuntime.Free(orig);
-           return enlarged;
-       }
+      public static IntPtr StbiConvert8To16(IntPtr orig, int w, int h, int channels)
+      {
+          int imgLen = w * h * channels;
+          IntPtr enlargedPtr = Marshal.AllocHGlobal(imgLen * sizeof(ushort));
+      
+          if (orig == IntPtr.Zero)
+          {
+              throw new OutOfMemoryException("outofmem");
+          }
+      
+          for (int i = 0; i < imgLen; ++i)
+          {
+            byte value = Marshal.ReadByte(orig, i);
+            Marshal.WriteInt16(enlargedPtr, i * sizeof(ushort), (short)((value << 8) + value));
+          }
+      
+          CRuntime.Free(orig);
+          return enlargedPtr;
+      }
        public static void StbiVerticalFlip(IntPtr image, int w, int h, int bytesPerPixel)
         {
             int bytesPerRow = w * bytesPerPixel;
@@ -640,15 +639,15 @@ public static IntPtr Stbimalloc(ulong size) => CRuntime.Malloc((long)size);
             IntPtr result = Stbiloadmain(s, out x, out y, out comp, reqComp, out ri, 8);
             if (result == IntPtr.Zero)
             {
-                return null;
+                return IntPtr.Zero;
             }
         
             try
             {
-                if (ri.bits_per_channel != 8)
+                if (ri.BitsPerChannel != 8)
                 {
                     result = Stbiconvert16To8(result, x, y, reqComp == 0 ? comp : reqComp);
-                    ri.bits_per_channel = 8;
+                    ri.BitsPerChannel = 8;
                 }
         
                 if ((StbiVerticallyFlipOnLoadSet != 0
@@ -663,7 +662,11 @@ public static IntPtr Stbimalloc(ulong size) => CRuntime.Malloc((long)size);
                 byte[] data = new byte[dataSize];
                 Marshal.Copy(result, data, 0, dataSize);
         
-                return data;
+                // Asignar memoria no administrada y copiar los datos
+                IntPtr unmanagedOutput = Marshal.AllocHGlobal(data.Length);
+                Marshal.Copy(data, 0, unmanagedOutput, data.Length);
+
+                return unmanagedOutput;
             }
             finally
             {
@@ -689,10 +692,10 @@ public static IntPtr Stbimalloc(ulong size) => CRuntime.Malloc((long)size);
         
             try
             {
-                if (ri.bits_per_channel != 16)
+                if (ri.BitsPerChannel != 16)
                 {
                     result = StbiConvert8To16(result, x, y, reqComp == 0 ? comp : reqComp);
-                    ri.bits_per_channel = 16;
+                    ri.BitsPerChannel = 16;
                 }
         
                 if ((StbiVerticallyFlipOnLoadSet != 0
@@ -703,11 +706,15 @@ public static IntPtr Stbimalloc(ulong size) => CRuntime.Malloc((long)size);
                     StbiVerticalFlip(result, x, y, channels * sizeof(ushort));
                 }
         
-                int dataSize = x * y * (reqComp != 0 ? reqComp : comp);
-                ushort[] data = new ushort[dataSize];
-                Marshal.Copy(result, data, 0, dataSize);
-        
-                return data;
+             int dataSize = x * y * (reqComp != 0 ? reqComp : comp);
+             ushort[] data = new ushort[dataSize];
+             
+             for (int i = 0; i < dataSize; i++)
+             {
+                 data[i] = (ushort)Marshal.ReadInt16(result, i * sizeof(ushort));
+             }
+             
+             return data;
             }
             finally
             {
@@ -945,22 +952,11 @@ public static IntPtr StbiLoadfMain(StbiContext s, ref int x, ref int y, ref int 
         
                     switch (imgN * 8 + reqComp)
                     {
-                        case 1 * 8 + 2:
-                            Marshal.WriteInt16(good, destOffset, Marshal.ReadInt16(data, srcOffset));
-                            Marshal.WriteInt16(good, destOffset + sizeof(ushort), 0xffff);
-                            break;
                         case 1 * 8 + 3:
                             short value1 = Marshal.ReadInt16(data, srcOffset);
                             Marshal.WriteInt16(good, destOffset, value1);
                             Marshal.WriteInt16(good, destOffset + sizeof(ushort), value1);
                             Marshal.WriteInt16(good, destOffset + 2 * sizeof(ushort), value1);
-                            break;
-                        case 1 * 8 + 4:
-                            value1 = Marshal.ReadInt16(data, srcOffset);
-                            Marshal.WriteInt16(good, destOffset, value1);
-                            Marshal.WriteInt16(good, destOffset + sizeof(ushort), value1);
-                            Marshal.WriteInt16(good, destOffset + 2 * sizeof(ushort), value1);
-                            Marshal.WriteInt16(good, destOffset + 3 * sizeof(ushort), 0xffff);
                             break;
                         case 2 * 8 + 1:
                             Marshal.WriteInt16(good, destOffset, Marshal.ReadInt16(data, srcOffset));
@@ -974,38 +970,6 @@ public static IntPtr StbiLoadfMain(StbiContext s, ref int x, ref int y, ref int 
                         case 2 * 8 + 4:
                             Marshal.WriteInt16(good, destOffset, Marshal.ReadInt16(data, srcOffset));
                             Marshal.WriteInt16(good, destOffset + 3 * sizeof(ushort), Marshal.ReadInt16(data, srcOffset + sizeof(ushort)));
-                            break;
-                        case 3 * 8 + 4:
-                            Marshal.WriteInt16(good, destOffset, Marshal.ReadInt16(data, srcOffset));
-                            Marshal.WriteInt16(good, destOffset + sizeof(ushort), Marshal.ReadInt16(data, srcOffset + sizeof(ushort)));
-                            Marshal.WriteInt16(good, destOffset + 2 * sizeof(ushort), Marshal.ReadInt16(data, srcOffset + 2 * sizeof(ushort)));
-                            Marshal.WriteInt16(good, destOffset + 3 * sizeof(ushort), 0xffff);
-                            break;
-                        case 3 * 8 + 1:
-                            Marshal.WriteInt16(good, destOffset, Stbicomputey16(
-                                Marshal.ReadInt16(data, srcOffset),
-                                Marshal.ReadInt16(data, srcOffset + sizeof(ushort)),
-                                Marshal.ReadInt16(data, srcOffset + 2 * sizeof(ushort))));
-                            break;
-                        case 3 * 8 + 2:
-                            Marshal.WriteInt16(good, destOffset, Stbicomputey16(
-                                Marshal.ReadInt16(data, srcOffset),
-                                Marshal.ReadInt16(data, srcOffset + sizeof(ushort)),
-                                Marshal.ReadInt16(data, srcOffset + 2 * sizeof(ushort))));
-                            Marshal.WriteInt16(good, destOffset + sizeof(ushort), 0xffff);
-                            break;
-                        case 4 * 8 + 1:
-                            Marshal.WriteInt16(good, destOffset, Stbicomputey16(
-                                Marshal.ReadInt16(data, srcOffset),
-                                Marshal.ReadInt16(data, srcOffset + sizeof(ushort)),
-                                Marshal.ReadInt16(data, srcOffset + 2 * sizeof(ushort))));
-                            break;
-                        case 4 * 8 + 2:
-                            Marshal.WriteInt16(good, destOffset, Stbicomputey16(
-                                Marshal.ReadInt16(data, srcOffset),
-                                Marshal.ReadInt16(data, srcOffset + sizeof(ushort)),
-                                Marshal.ReadInt16(data, srcOffset + 2 * sizeof(ushort))));
-                            Marshal.WriteInt16(good, destOffset + sizeof(ushort), Marshal.ReadInt16(data, srcOffset + 3 * sizeof(ushort)));
                             break;
                         case 4 * 8 + 3:
                             Marshal.WriteInt16(good, destOffset, Marshal.ReadInt16(data, srcOffset));
@@ -1176,17 +1140,7 @@ public static IntPtr StbiLoadfMain(StbiContext s, ref int x, ref int y, ref int 
        x = 0;
        y = 0;
        comp = 0;
-   
-       if (stbijpeginfo(s, out x, out y, out comp) != 0)
-       {
-           return 1;
-       }
-   
-       if (stbi__png_info(s, out x, out y, out comp) != 0)
-       {
-           return 1;
-       }
-   
+       
        if (Stbibmpinfo(s, out x, out y, out comp) != 0)
        {
            return 1;
@@ -1202,11 +1156,6 @@ public static IntPtr StbiLoadfMain(StbiContext s, ref int x, ref int y, ref int 
         /// <returns>The int</returns>
         public static int Stbiis16Main(StbiContext s)
         {
-            if (stbi__png_is16(s) != 0)
-            {
-                return 1;
-            }
-
             return 0;
         }
     }

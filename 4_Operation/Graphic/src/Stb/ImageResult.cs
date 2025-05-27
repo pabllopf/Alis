@@ -15,11 +15,6 @@ using System;
         
                 internal static ImageResult FromResult(IntPtr result, int width, int height, ColorComponents comp, ColorComponents reqComp)
                 {
-                    if (result == IntPtr.Zero)
-                    {
-                        throw new InvalidOperationException(StbImage.StbiGFailureReason);
-                    }
-        
                     ImageResult image = new ImageResult
                     {
                         Width = width,
