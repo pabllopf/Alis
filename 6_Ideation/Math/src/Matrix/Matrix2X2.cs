@@ -30,153 +30,152 @@
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Aspect.Math.Matrix
+namespace Alis.Core.Aspect.Math.Matrix;
+
+/// <summary>
+///     A 2-by-2 matrix. Stored in column-major order.
+/// </summary>
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Matrix2X2
 {
     /// <summary>
-    ///     A 2-by-2 matrix. Stored in column-major order.
+    ///     The col
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct Matrix2X2
+    public Vector2F Ex { get; set; }
+
+    /// <summary>
+    ///     The col
+    /// </summary>
+    public Vector2F Ey { get; set; }
+
+    /// <summary>
+    ///     Construct this matrix using scalars.
+    /// </summary>
+    public Matrix2X2(float a11, float a12, float a21, float a22)
     {
-        /// <summary>
-        ///     The col
-        /// </summary>
-        public Vector2F Ex { get; set; }
+        Ex = new Vector2F(a11, a21);
+        Ey = new Vector2F(a12, a22);
+    }
 
-        /// <summary>
-        ///     The col
-        /// </summary>
-        public Vector2F Ey { get; set; }
+    /// <summary>
+    ///     Construct this matrix using an angle.
+    ///     This matrix becomes an orthonormal rotation matrix.
+    /// </summary>
+    public Matrix2X2(float angle)
+    {
+        float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
+        Ex = new Vector2F(c, -s);
+        Ey = new Vector2F(s, c);
+    }
 
-        /// <summary>
-        ///     Construct this matrix using scalars.
-        /// </summary>
-        public Matrix2X2(float a11, float a12, float a21, float a22)
+    /// <summary>
+    ///     Initialize this matrix using columns.
+    /// </summary>
+    public void Set(Vector2F c1, Vector2F c2)
+    {
+        Ex = c1;
+        Ey = c2;
+    }
+
+    /// <summary>
+    ///     Set this to the identity matrix.
+    /// </summary>
+    public void SetIdentity()
+    {
+        Ex = new Vector2F(1.0f, 0.0f);
+        Ey = new Vector2F(0.0f, 1.0f);
+    }
+
+    /// <summary>
+    ///     Set this matrix to all zeros.
+    /// </summary>
+    public void SetZero()
+    {
+        Ex = new Vector2F(0.0f, 0.0f);
+        Ey = new Vector2F(0.0f, 0.0f);
+    }
+
+    /// <summary>
+    ///     Extract the angle from this matrix (assumed to be a rotation matrix).
+    /// </summary>
+    public float GetAngle() => (float) System.Math.Atan2(Ex.Y, Ex.X);
+
+    /// <summary>
+    ///     Compute the inverse of this matrix, such that inv(A) * A = identity.
+    /// </summary>
+    public Matrix2X2 GetInverse()
+    {
+        float col1X = Ex.X;
+        float col2X = Ey.X;
+        float col1Y = Ex.Y;
+        float col2Y = Ey.Y;
+
+        float det = col1X * col2Y - col2X * col1Y;
+        //Box2DxDebug.Assert(det != 0.0f);
+        det = 1.0f / det;
+
+        Matrix2X2 matrix2X2 = new Matrix2X2(
+            det * col2Y,
+            -det * col2X,
+            -det * col1Y,
+            det * col1X
+        );
+        return matrix2X2;
+    }
+
+    /// <summary>
+    ///     Solve A * x = b, where b is a column vector. This is more efficient
+    ///     than computing the inverse in one-shot cases.
+    /// </summary>
+    public Vector2F Solve(Vector2F b)
+    {
+        float col1X = Ex.X;
+        float col2X = Ey.X;
+        float col1Y = Ex.Y;
+        float col2Y = Ey.Y;
+        float det = col1X * col2Y - col2X * col1Y;
+        //Box2DxDebug.Assert(det != 0.0f);
+        det = 1.0f / det;
+        Vector2F x = new Vector2F(
+            det * (col2Y * b.X - col2X * b.Y),
+            det * (col1X * b.Y - col1Y * b.X)
+        );
+        return x;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
+    public static Matrix2X2 operator +(Matrix2X2 a, Matrix2X2 b)
+    {
+        Matrix2X2 c = new Matrix2X2();
+        c.Set(a.Ex + b.Ex, a.Ey + b.Ey);
+        return c;
+    }
+
+    /// <summary>
+    ///     Gets the value of the inverse
+    /// </summary>
+    public Matrix2X2 Inverse
+    {
+        get
         {
-            Ex = new Vector2F(a11, a21);
-            Ey = new Vector2F(a12, a22);
-        }
-
-        /// <summary>
-        ///     Construct this matrix using an angle.
-        ///     This matrix becomes an orthonormal rotation matrix.
-        /// </summary>
-        public Matrix2X2(float angle)
-        {
-            float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
-            Ex = new Vector2F(c, -s);
-            Ey = new Vector2F(s, c);
-        }
-
-        /// <summary>
-        ///     Initialize this matrix using columns.
-        /// </summary>
-        public void Set(Vector2F c1, Vector2F c2)
-        {
-            Ex = c1;
-            Ey = c2;
-        }
-
-        /// <summary>
-        ///     Set this to the identity matrix.
-        /// </summary>
-        public void SetIdentity()
-        {
-            Ex = new Vector2F(1.0f, 0.0f);
-            Ey = new Vector2F(0.0f, 1.0f);
-        }
-
-        /// <summary>
-        ///     Set this matrix to all zeros.
-        /// </summary>
-        public void SetZero()
-        {
-            Ex = new Vector2F(0.0f, 0.0f);
-            Ey = new Vector2F(0.0f, 0.0f);
-        }
-
-        /// <summary>
-        ///     Extract the angle from this matrix (assumed to be a rotation matrix).
-        /// </summary>
-        public float GetAngle() => (float) System.Math.Atan2(Ex.Y, Ex.X);
-
-        /// <summary>
-        ///     Compute the inverse of this matrix, such that inv(A) * A = identity.
-        /// </summary>
-        public Matrix2X2 GetInverse()
-        {
-            float col1X = Ex.X;
-            float col2X = Ey.X;
-            float col1Y = Ex.Y;
-            float col2Y = Ey.Y;
-
-            float det = col1X * col2Y - col2X * col1Y;
-            //Box2DxDebug.Assert(det != 0.0f);
-            det = 1.0f / det;
-
-            Matrix2X2 matrix2X2 = new Matrix2X2(
-                det * col2Y,
-                -det * col2X,
-                -det * col1Y,
-                det * col1X
-            );
-            return matrix2X2;
-        }
-
-        /// <summary>
-        ///     Solve A * x = b, where b is a column vector. This is more efficient
-        ///     than computing the inverse in one-shot cases.
-        /// </summary>
-        public Vector2F Solve(Vector2F b)
-        {
-            float col1X = Ex.X;
-            float col2X = Ey.X;
-            float col1Y = Ex.Y;
-            float col2Y = Ey.Y;
-            float det = col1X * col2Y - col2X * col1Y;
-            //Box2DxDebug.Assert(det != 0.0f);
-            det = 1.0f / det;
-            Vector2F x = new Vector2F(
-                det * (col2Y * b.X - col2X * b.Y),
-                det * (col1X * b.Y - col1Y * b.X)
-            );
-            return x;
-        }
-
-        /// <summary>
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
-        public static Matrix2X2 operator +(Matrix2X2 a, Matrix2X2 b)
-        {
-            Matrix2X2 c = new Matrix2X2();
-            c.Set(a.Ex + b.Ex, a.Ey + b.Ey);
-            return c;
-        }
-
-        /// <summary>
-        ///     Gets the value of the inverse
-        /// </summary>
-        public Matrix2X2 Inverse
-        {
-            get
+            float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
+            float det = a * d - b * c;
+            if (System.Math.Abs(det) > float.Epsilon || System.Math.Abs(det) < -float.Epsilon)
             {
-                float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
-                float det = a * d - b * c;
-                if (CustomMathF.Abs(det) > float.Epsilon || CustomMathF.Abs(det) < -float.Epsilon)
-                {
-                    det = 1.0f / det;
-                }
-
-                Matrix2X2 result = new Matrix2X2(
-                    det * d,
-                    -det * c,
-                    -det * b,
-                    det * a
-                );
-                return result;
+                det = 1.0f / det;
             }
+
+            Matrix2X2 result = new Matrix2X2(
+                det * d,
+                -det * c,
+                -det * b,
+                det * a
+            );
+            return result;
         }
     }
 }

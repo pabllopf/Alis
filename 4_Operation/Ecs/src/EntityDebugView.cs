@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Alis.Core.Aspect.Memory.Collections;
+using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Core;
 
 namespace Alis.Core.Ecs;

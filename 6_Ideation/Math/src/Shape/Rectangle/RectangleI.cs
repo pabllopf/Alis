@@ -31,60 +31,59 @@ using System;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
-namespace Alis.Core.Aspect.Math.Shape.Rectangle
+namespace Alis.Core.Aspect.Math.Shape.Rectangle;
+
+/// <summary>
+///     The sdl rect
+/// </summary>
+[StructLayout(LayoutKind.Sequential), Serializable]
+public struct RectangleI : IShape, ISerializable
 {
     /// <summary>
-    ///     The sdl rect
+    ///     The
     /// </summary>
-    [StructLayout(LayoutKind.Sequential), Serializable]
-    public struct RectangleI : IShape, ISerializable
+    public int X { get; set; }
+
+    /// <summary>
+    ///     The
+    /// </summary>
+    public int Y { get; set; }
+
+    /// <summary>
+    ///     The
+    /// </summary>
+    public int W { get; set; }
+
+    /// <summary>
+    ///     The
+    /// </summary>
+    public int H { get; set; }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="RectangleI" /> class
+    /// </summary>
+    /// <param name="x">The </param>
+    /// <param name="y">The </param>
+    /// <param name="w">The </param>
+    /// <param name="h">The </param>
+    public RectangleI(int x, int y, int w, int h)
     {
-        /// <summary>
-        ///     The
-        /// </summary>
-        public int X { get; set; }
+        X = x;
+        Y = y;
+        H = h;
+        W = w;
+    }
 
-        /// <summary>
-        ///     The
-        /// </summary>
-        public int Y { get; set; }
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public int W { get; set; }
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public int H { get; set; }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="RectangleI" /> class
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        public RectangleI(int x, int y, int w, int h)
-        {
-            X = x;
-            Y = y;
-            H = h;
-            W = w;
-        }
-
-        /// <summary>
-        ///     Gets the object data using the specified info
-        /// </summary>
-        /// <param name="info">The info</param>
-        /// <param name="context">The context</param>
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            info.AddValue("x", X);
-            info.AddValue("y", Y);
-            info.AddValue("w", W);
-            info.AddValue("h", H);
-        }
+    /// <summary>
+    ///     Gets the object data using the specified info
+    /// </summary>
+    /// <param name="info">The info</param>
+    /// <param name="context">The context</param>
+    public void GetObjectData(SerializationInfo info, StreamingContext context)
+    {
+        info.AddValue("x", X);
+        info.AddValue("y", Y);
+        info.AddValue("w", W);
+        info.AddValue("h", H);
     }
 }

@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Memory.Collections;
+using Alis.Core.Aspect.Math.Collections;
 
 namespace Alis.Core.Ecs.Core.Archetype
 {

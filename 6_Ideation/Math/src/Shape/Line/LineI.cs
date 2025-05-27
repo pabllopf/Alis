@@ -29,32 +29,31 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math.Shape.Line
+namespace Alis.Core.Aspect.Math.Shape.Line;
+
+/// <summary>
+///     The line
+/// </summary>
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct LineI : IShape
 {
     /// <summary>
-    ///     The line
+    ///     The x1
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct LineI : IShape
-    {
-        /// <summary>
-        ///     The x1
-        /// </summary>
-        public int X1 { get; set; }
+    public int X1 { get; set; }
 
-        /// <summary>
-        ///     The y1
-        /// </summary>
-        public int Y1 { get; set; }
+    /// <summary>
+    ///     The y1
+    /// </summary>
+    public int Y1 { get; set; }
 
-        /// <summary>
-        ///     The x2
-        /// </summary>
-        public int X2 { get; set; }
+    /// <summary>
+    ///     The x2
+    /// </summary>
+    public int X2 { get; set; }
 
-        /// <summary>
-        ///     The y2
-        /// </summary>
-        public int Y2 { get; set; }
-    }
+    /// <summary>
+    ///     The y2
+    /// </summary>
+    public int Y2 { get; set; }
 }

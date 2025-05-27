@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Alis.Core.Aspect.Memory.Collections;
+using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Core.Memory;
 using Alis.Core.Ecs.Updating;
-using HashCode = Alis.Core.Aspect.Memory.HashCode;
+using HashCode = Alis.Core.Aspect.Math.HashCode;
 
 namespace Alis.Core.Ecs.Core.Archetype
 {

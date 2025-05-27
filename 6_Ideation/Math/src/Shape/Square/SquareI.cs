@@ -29,27 +29,26 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math.Shape.Square
+namespace Alis.Core.Aspect.Math.Shape.Square;
+
+/// <summary>
+///     The sdl rect
+/// </summary>
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct SquareI : IShape
 {
     /// <summary>
-    ///     The sdl rect
+    ///     The
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct SquareI : IShape
-    {
-        /// <summary>
-        ///     The
-        /// </summary>
-        public int X { get; set; }
+    public int X { get; set; }
 
-        /// <summary>
-        ///     The
-        /// </summary>
-        public int Y { get; set; }
+    /// <summary>
+    ///     The
+    /// </summary>
+    public int Y { get; set; }
 
-        /// <summary>
-        ///     The
-        /// </summary>
-        public int W { get; set; }
-    }
+    /// <summary>
+    ///     The
+    /// </summary>
+    public int W { get; set; }
 }

@@ -31,70 +31,69 @@ using System;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
-namespace Alis.Core.Aspect.Math.Vector
+namespace Alis.Core.Aspect.Math.Vector;
+
+/// <summary>
+///     The vector
+/// </summary>
+[StructLayout(LayoutKind.Sequential), Serializable]
+public struct Vector4F : ISerializable
 {
     /// <summary>
-    ///     The vector
+    ///     Initializes a new instance of the <see cref="Vector4F" /> class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential), Serializable]
-    public struct Vector4F : ISerializable
+    /// <param name="x">The </param>
+    /// <param name="y">The </param>
+    /// <param name="z">The </param>
+    /// <param name="w">The </param>
+    public Vector4F(float x, float y, float z, float w)
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Vector4F" /> class
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="z">The </param>
-        /// <param name="w">The </param>
-        public Vector4F(float x, float y, float z, float w)
+        X = x;
+        Y = y;
+        Z = z;
+        W = w;
+    }
+
+    /// <summary>
+    ///     Gets the v
+    /// </summary>
+    /// <param name="v">The </param>
+    /// <param name="index">The index</param>
+    /// <returns>The float</returns>
+    public static float Get(Vector4F v, int index)
+    {
+        switch (index)
         {
-            X = x;
-            Y = y;
-            Z = z;
-            W = w;
+            case 0: return v.X;
+            case 1: return v.Y;
+            case 2: return v.Z;
+            case 3: return v.W;
+            default: return 0; // error case
         }
+    }
 
-        /// <summary>
-        ///     Gets the v
-        /// </summary>
-        /// <param name="v">The </param>
-        /// <param name="index">The index</param>
-        /// <returns>The float</returns>
-        public static float Get(Vector4F v, int index)
-        {
-            switch (index)
-            {
-                case 0: return v.X;
-                case 1: return v.Y;
-                case 2: return v.Z;
-                case 3: return v.W;
-                default: return 0; // error case
-            }
-        }
+    /// <summary>Horizontal component of the vector</summary>
+    public float X { get; set; }
 
-        /// <summary>Horizontal component of the vector</summary>
-        public float X { get; set; }
+    /// <summary>Vertical component of the vector</summary>
+    public float Y { get; set; }
 
-        /// <summary>Vertical component of the vector</summary>
-        public float Y { get; set; }
+    /// <summary>Depth component of the vector</summary>
+    public float Z { get; set; }
 
-        /// <summary>Depth component of the vector</summary>
-        public float Z { get; set; }
+    /// <summary>Projective/Homogenous component of the vector</summary>
+    public float W { get; set; }
 
-        /// <summary>Projective/Homogenous component of the vector</summary>
-        public float W { get; set; }
-
-        /// <summary>
-        ///     Gets the object data using the specified info
-        /// </summary>
-        /// <param name="info">The info</param>
-        /// <param name="context">The context</param>
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            info.AddValue("x", X);
-            info.AddValue("y", Y);
-            info.AddValue("z", Z);
-            info.AddValue("w", W);
-        }
+    /// <summary>
+    ///     Gets the object data using the specified info
+    /// </summary>
+    /// <param name="info">The info</param>
+    /// <param name="context">The context</param>
+    public void GetObjectData(SerializationInfo info, StreamingContext context)
+    {
+        info.AddValue("x", X);
+        info.AddValue("y", Y);
+        info.AddValue("z", Z);
+        info.AddValue("w", W);
     }
 }

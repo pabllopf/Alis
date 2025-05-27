@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Core;
-using HashCode = Alis.Core.Aspect.Memory.HashCode;
+using HashCode = Alis.Core.Aspect.Math.HashCode;
 
 namespace Alis.Core.Ecs.Systems
 {

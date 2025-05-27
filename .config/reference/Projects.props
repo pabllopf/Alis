@@ -76,6 +76,7 @@
         $(AssemblyName.Contains('Sample')) == False AND
         $(AssemblyName.Contains('Template')) == False AND 
         $(AssemblyName.Contains('Benchmark')) == False AND 
+        $(AssemblyName.Contains('Generator')) == False AND
         $(Configuration) == 'Release'">
 
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) AND $(ProjectDir.Contains('Extension')) == False"
@@ -84,6 +85,8 @@
                           $(SolutionDir)1_Presentation/**/Extension/**/**/*.csproj;"
                           Exclude="
                           $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
+                          $(SolutionDir)**/**/*generator*/**/*.cs;
+                          $(SolutionDir)**/**/*benchmark*/**/*.cs;  
                           $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
                            $(SolutionDir)1_Presentation/**/Extension/**/**/*Sample.csproj;
                            $(SolutionDir)1_Presentation/**/Extension/**/**/*Benchmark.csproj;
@@ -98,6 +101,8 @@
                           $(SolutionDir)2_Application/**/Alis.csproj;"
                           Exclude="
                           $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
+                          $(SolutionDir)**/**/*Generator*/**/*.cs;  
+                          $(SolutionDir)**/**/*benchmark*/**/*.cs;  
                           $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
                           $(SolutionDir)1_Presentation/**/Extension/**/**/*Sample.csproj;
                           $(SolutionDir)1_Presentation/**/Extension/**/**/*Benchmark.csproj;
@@ -114,6 +119,8 @@
                            $(SolutionDir)**/Extension/**/*;
                           $(SolutionDir)3_Structuration/**/obj/**/**;
                           $(SolutionDir)3_Structuration/**/bin/**/**;
+                          $(SolutionDir)**/**/*benchmark*/**/*.cs;  
+                          $(SolutionDir)**/**/*generator*/**/*.cs; 
                           $(SolutionDir)3_Structuration/**/*sample/**/**;
                           $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
                           $(SolutionDir)3_Structuration/**/*test/**/*.cs;  
@@ -130,6 +137,8 @@
                           $(SolutionDir)4_Operation/**/bin/**/**;
                           $(SolutionDir)4_Operation/**/*sample/**/**;
                           $(SolutionDir)4_Operation/**/*test/**/*.cs; 
+                          $(SolutionDir)**/**/*benchmark*/**/*.cs;  
+                          $(SolutionDir)**/**/*generator*/**/*.cs; 
                           $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
                           $(SolutionDir)4_Operation/**/*.Designer.cs "
                  Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
@@ -143,6 +152,8 @@
                  Exclude="
                           $(SolutionDir)5_Declaration/**/obj/**/**;
                           $(SolutionDir)5_Declaration/**/bin/**/**;
+                          $(SolutionDir)**/**/*generator*/**/*.cs; 
+                          $(SolutionDir)**/**/*benchmark*/**/*.cs;  
                           $(SolutionDir)5_Declaration/**/*sample/**/**;
                           $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
                           $(SolutionDir)5_Declaration/**/*test/**/*.cs; 
@@ -158,6 +169,8 @@
                           $(SolutionDir)6_Ideation/**/obj/**/**;
                           $(SolutionDir)6_Ideation/**/bin/**/**;
                           $(SolutionDir)6_Ideation/**/*sample/**/**;
+                          $(SolutionDir)**/**/*generator*/**/*.cs; 
+                          $(SolutionDir)**/**/*benchmark*/**/*.cs;  
                           $(SolutionDir)6_Ideation/**/*test/**/*.cs;  
                           $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
                           $(SolutionDir)6_Ideation/**/*.Designer.cs"
@@ -170,6 +183,8 @@
                  Exclude="
                           $(SolutionDir)4_Operation/**/obj/**/**;
                           $(SolutionDir)4_Operation/**/bin/**/**;
+                          $(SolutionDir)**/**/*generator*/**/*.cs; 
+                          $(SolutionDir)**/**/*benchmark*/**/*.cs;  
                           $(SolutionDir)4_Operation/**/*sample/**/**;
                           $(SolutionDir)4_Operation/**/*test/**/*.cs; 
                           $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
@@ -183,6 +198,8 @@
                  Exclude="
                           $(SolutionDir)5_Declaration/**/obj/**/**;
                           $(SolutionDir)5_Declaration/**/bin/**/**;
+                          $(SolutionDir)**/**/*generator*/**/*.cs; 
+                          $(SolutionDir)**/**/*benchmark*/**/*.cs;  
                           $(SolutionDir)5_Declaration/**/*sample/**/**;
                           $(SolutionDir)5_Declaration/**/*test/**/*.cs; $(SolutionDir)5_Declaration/**/Resources.Designer.cs"
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
@@ -193,6 +210,8 @@
                  Exclude="
                           $(SolutionDir)6_Ideation/**/obj/**/**;
                           $(SolutionDir)6_Ideation/**/bin/**/**;
+                          $(SolutionDir)**/**/*generator*/**/*.cs; 
+                          $(SolutionDir)**/**/*benchmark*/**/*.cs;  
                           $(SolutionDir)6_Ideation/**/*sample/**/**;
                           $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
                           $(SolutionDir)6_Ideation/**/*test/**/*.cs; $(SolutionDir)6_Ideation/**/Resources.Designer.cs"
@@ -205,6 +224,8 @@
                  Exclude="
                           $(SolutionDir)6_Ideation/**/obj/**/**;
                           $(SolutionDir)6_Ideation/**/bin/**/**;
+                          $(SolutionDir)**/**/*generator*/**/*.cs; 
+                          $(SolutionDir)**/**/*benchmark*/**/*.cs;  
                           $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
                           $(SolutionDir)6_Ideation/**/*sample/**/**;
                           $(SolutionDir)6_Ideation/**/*test/**/*.cs;  $(SolutionDir)6_Ideation/**/Resources.Designer.cs"
