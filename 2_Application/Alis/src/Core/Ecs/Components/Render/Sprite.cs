@@ -367,6 +367,10 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GlDisable(EnableCap.Blend);
         }
 
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Init(GameObject self)
         {
             

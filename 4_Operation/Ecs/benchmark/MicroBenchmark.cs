@@ -97,6 +97,9 @@ namespace Alis.Core.Ecs.Benchmark
             }
         }
         
+        /// <summary>
+        /// Creates this instance
+        /// </summary>
         [Benchmark]
         [BenchmarkCategory(Categories.Add)]
         public void Create()
@@ -107,6 +110,9 @@ namespace Alis.Core.Ecs.Benchmark
             }
         }
 
+        /// <summary>
+        /// Adds the rem
+        /// </summary>
         [Benchmark]
         [BenchmarkCategory(Categories.Add)]
         public void AddRem()
@@ -119,6 +125,9 @@ namespace Alis.Core.Ecs.Benchmark
         }
 
         
+        /// <summary>
+        /// Hases this instance
+        /// </summary>
         [Benchmark]
         [BenchmarkCategory(Categories.Has)]
         public void Has()

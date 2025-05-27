@@ -16,6 +16,9 @@ using System;
     /// </summary>
     public class SceneTests
             {
+                /// <summary>
+                /// Tests that ctor new id
+                /// </summary>
                 [Fact]
                 public void Ctor_NewID()
                 {
@@ -28,6 +31,9 @@ using System;
                     }
                 }
         
+                /// <summary>
+                /// Tests that create empty creates entity
+                /// </summary>
                 [Fact]
                 public void CreateEmpty_CreatesEntity()
                 {
@@ -40,6 +46,9 @@ using System;
                     Assert.Empty(entity.ComponentTypes);
                 }
         
+                /// <summary>
+                /// Tests that create from objects creates entity
+                /// </summary>
                 [Fact]
                 public void CreateFromObjects_CreatesEntity()
                 {
@@ -49,12 +58,18 @@ using System;
                     CreateEntityTest(w => w.CreateFromObjects(new object[] { 6, new Class1(), new Struct1() }));
                 }
         
+                /// <summary>
+                /// Tests that create generic creates entity
+                /// </summary>
                 [Fact]
                 public void CreateGeneric_CreatesEntity()
                 {
                     CreateEntityTest(w => w.Create(6, new Class1(), new Struct1()));
                 }
         
+                /// <summary>
+                /// Tests that custom query custom rule applies
+                /// </summary>
                 [Fact]
                 public void CustomQuery_CustomRuleApplies()
                 {
@@ -70,6 +85,9 @@ using System;
                     query.AssertEntitiesNotDefault();
                 }
         
+                /// <summary>
+                /// Tests that custom query rule applies
+                /// </summary>
                 [Fact]
                 public void CustomQuery_RuleApplies()
                 {
@@ -88,6 +106,9 @@ using System;
                     query.AssertEntitiesNotDefault();
                 }
         
+                /// <summary>
+                /// Tests that custom query over empty archetype
+                /// </summary>
                 [Fact]
                 public void CustomQuery_OverEmptyArchetype()
                 {
@@ -103,6 +124,9 @@ using System;
                     query.AssertEntitiesNotDefault();
                 }
         
+                /// <summary>
+                /// Tests that query includes components
+                /// </summary>
                 [Fact]
                 public void Query_IncludesComponents()
                 {
@@ -120,6 +144,9 @@ using System;
                     Assert.Equal(3, query.EntityCount());
                 }
         
+                /// <summary>
+                /// Tests that component added invoked
+                /// </summary>
                 [Fact]
                 public void ComponentAdded_Invoked()
                 {
@@ -133,6 +160,9 @@ using System;
                     Assert.True(invoked);
                 }
         
+                /// <summary>
+                /// Tests that component removed invoked
+                /// </summary>
                 [Fact]
                 public void ComponentRemoved_Invoked()
                 {
@@ -146,6 +176,9 @@ using System;
                     Assert.True(invoked);
                 }
         
+                /// <summary>
+                /// Tests that entity delete invoked
+                /// </summary>
                 [Fact]
                 public void EntityDelete_Invoked()
                 {
@@ -159,6 +192,9 @@ using System;
                     Assert.True(invoked);
                 }
         
+                /// <summary>
+                /// Tests that entity created invoked
+                /// </summary>
                 [Fact]
                 public void EntityCreated_Invoked()
                 {
@@ -228,6 +264,9 @@ using System;
                     scene.Update();
                 }
         
+                /// <summary>
+                /// Tests that entity create during system acsess components
+                /// </summary>
                 [Fact]
                 public void EntityCreate_DuringSystem_AcsessComponents()
                 {
@@ -259,6 +298,10 @@ using System;
                     Assert.All(newEntities, e => Assert.Equal(42f, e.Get<float>()));
                 }
         
+                /// <summary>
+                /// Creates the entity test using the specified create
+                /// </summary>
+                /// <param name="create">The create</param>
                 private static void CreateEntityTest(Func<Scene, GameObject> create)
                 {
                     using Scene scene = new();

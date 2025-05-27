@@ -67,6 +67,10 @@ namespace Alis.Core.Ecs.Components.Render
         {
         }
 
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Init(GameObject self)
         {
             

@@ -3,6 +3,9 @@ using Alis.Core.Ecs.Core.Archetype;
 
 namespace Alis.Core.Ecs.Systems
 {
+    /// <summary>
+    /// The chunk query enumerator
+    /// </summary>
     public ref struct ChunkQueryEnumerator<T>
     {
         /// <summary>

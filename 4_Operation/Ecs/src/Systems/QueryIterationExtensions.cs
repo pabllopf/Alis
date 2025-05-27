@@ -3,6 +3,9 @@ using Alis.Core.Ecs.Core.Archetype;
 
 namespace Alis.Core.Ecs.Systems
 {
+    /// <summary>
+    /// The query iteration extensions class
+    /// </summary>
     public static partial class QueryIterationExtensions
     {
         /// <summary>

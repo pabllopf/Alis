@@ -249,6 +249,10 @@ namespace Alis.Core.Ecs.Components.Collider
         {
         }
 
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Init(GameObject self)
         {
             

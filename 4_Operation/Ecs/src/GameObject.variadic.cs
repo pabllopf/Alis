@@ -15,6 +15,9 @@ namespace Alis.Core.Ecs
 #endif
 
 
+    /// <summary>
+    /// The game object
+    /// </summary>
     partial struct GameObject
     {
         // traversing archetype graph strategy:
