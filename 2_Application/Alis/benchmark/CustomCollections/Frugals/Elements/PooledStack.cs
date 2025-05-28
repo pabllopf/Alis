@@ -193,7 +193,10 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
             _version++;
         }
 
-        /// <internalonly />
+       /// <summary>
+       /// Gets the enumerator
+       /// </summary>
+       /// <returns></returns>
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
             => new Enumerator(this);
 

@@ -11,6 +11,9 @@
         
         <!-- Suppresses the warning CS0436 : conflicting types; -->
         <NoWarn>$(NoWarn);CS0436;CS1685;</NoWarn>
+        
+        <!-- Components should only implement one update component interface -->
+        <NoWarn>$(NoWarn);FR0003;</NoWarn>
 
         <!-- Suppresses the warning IL2072: Dinamic type -->
         <NoWarn>$(NoWarn);IL2072;</NoWarn>

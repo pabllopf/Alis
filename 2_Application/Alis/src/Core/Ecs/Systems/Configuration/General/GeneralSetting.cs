@@ -40,7 +40,7 @@ namespace Alis.Core.Ecs.Systems.Configuration.General
         string version = "0.0.0",
         string author = "Pablo Perdomo Falcón",
         string license = "GPL-3.0 license",
-        string icon = "app.bmp") : IGeneralSetting
+        string icon = "app.jpeg") : IGeneralSetting
     {
         /// <summary>
         /// Gets or sets the value of the debug
