@@ -63,27 +63,27 @@ namespace Alis.Core.Graphic.Stb
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The image info</returns>
-        public static unsafe ImageInfo? FromStream(Stream stream)
+        public static ImageInfo? FromStream(Stream stream)
         {
-            int width, height, comp;
-            StbImage.stbi__context context = new StbImage.stbi__context(stream);
-
-            bool is16Bit = StbImage.stbi__is_16_main(context) == 1;
-            StbImage.stbi__rewind(context);
-
-            int infoResult = StbImage.stbi__info_main(context, &width, &height, &comp);
-            StbImage.stbi__rewind(context);
-
+            int width = 0, height = 0, comp = 0;
+            StbImage.StbiContext context = new StbImage.StbiContext(stream);
+        
+            bool is16Bit = StbImage.Stbiis16Main(context) == 1;
+            StbImage.Stbirewind(context);
+        
+            int infoResult = StbImage.Stbiinfomain(context, out width, out height, out comp);
+            StbImage.Stbirewind(context);
+        
             if (infoResult == 0)
             {
                 return null;
             }
-
+        
             return new ImageInfo
             {
                 Width = width,
                 Height = height,
-                ColorComponents = (ColorComponents) comp,
+                ColorComponents = (ColorComponents)comp,
                 BitsPerChannel = is16Bit ? 16 : 8
             };
         }

@@ -35,5 +35,5 @@ namespace Alis.Core.Graphic.OpenGL.Delegates
     ///     The vertex 2f
     /// </summary>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void Vertex2f(float x, float y);
+    public delegate void Vertex2F(float x, float y);
 }

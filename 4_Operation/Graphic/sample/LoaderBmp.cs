@@ -49,10 +49,10 @@ namespace Alis.Core.Graphic.Sample
         {
             using (FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
-                StbImage.stbi__context stbiContext = new StbImage.stbi__context(stream);
+                StbImage.StbiContext stbiContext = new StbImage.StbiContext(stream);
                 fixed (int* pWidth = &width, pHeight = &height, pNrChannels = &nrChannels)
                 {
-                    return StbImage.stbi__bmp_load(stbiContext, pWidth, pHeight, pNrChannels, 0, null);
+                    return StbImage.Stbibmpload(stbiContext, pWidth, pHeight, pNrChannels, 0, null);
                 }
             }
         }
