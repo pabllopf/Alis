@@ -215,58 +215,6 @@ namespace Alis.Core.Ecs.Test.Generator
     }
 
     /// <summary>
-    /// The derived class
-    /// </summary>
-    /// <seealso cref="InGlobalNamespace"/>
-    public partial class Derived : InGlobalNamespace
-    {
-        /// <summary>
-        /// The derived inner class
-        /// </summary>
-        /// <seealso cref="Derived"/>
-        /// <seealso cref="IInitable"/>
-        public partial class DerivedInner : Derived, IInitable
-        {
-            /// <summary>
-            /// Inits the self
-            /// </summary>
-            /// <param name="self">The self</param>
-            /// <exception cref="InitalizeException"></exception>
-            public void Init(GameObject self)
-            {
-                throw new InitalizeException();
-            }
-        }
-
-        /// <summary>
-        /// The warning class
-        /// </summary>
-        /// <seealso cref="IComponent"/>
-        /// <seealso cref="IUniformComponent{int}"/>
-        protected partial class Warning : IComponent, IComponent<int>
-        {
-            /// <summary>
-            /// Updates this instance
-            /// </summary>
-            /// <exception cref="UpdateException"></exception>
-            public void Update()
-            {
-                throw new UpdateException();
-            }
-
-            /// <summary>
-            /// Updates the uniform
-            /// </summary>
-            /// <param name="uniform">The uniform</param>
-            /// <exception cref="UpdateException"></exception>
-            public void Update(ref int uniform)
-            {
-                throw new UpdateException();
-            }
-        }
-    }
-
-    /// <summary>
     /// The lifetime interface interface
     /// </summary>
     /// <seealso cref="IComponent"/>

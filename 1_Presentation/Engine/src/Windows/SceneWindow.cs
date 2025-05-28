@@ -52,13 +52,7 @@ namespace Alis.App.Engine.Windows
         ///     The hashtag
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Hashtag} Scene";
-
-        /// <summary>
-        ///     The hand spock
-        /// </summary>
-        private readonly ActiveButton activeButton = ActiveButton.HandSpock;
-
-
+        
         // Crear un HashSet para almacenar los botones activos
         /// <summary>
         ///     The active button
@@ -71,11 +65,6 @@ namespace Alis.App.Engine.Windows
         private float heightTexture;
 
         /// <summary>
-        ///     The is dragging
-        /// </summary>
-        private bool isDragging;
-
-        /// <summary>
         ///     The offset texture
         /// </summary>
         private Vector2F offsetTexture;
@@ -84,11 +73,6 @@ namespace Alis.App.Engine.Windows
         ///     The pixel ptr
         /// </summary>
         private IntPtr pixelPtr;
-
-        /// <summary>
-        ///     The previous mouse position
-        /// </summary>
-        private Vector2F previousMousePosition;
 
 
         /// <summary>

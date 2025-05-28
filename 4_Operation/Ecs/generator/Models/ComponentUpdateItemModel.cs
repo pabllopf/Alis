@@ -8,7 +8,7 @@ namespace Alis.Core.Ecs.Generator.Models
 public record struct ComponentUpdateItemModel(
         UpdateModelFlags Flags,
         string FullName, // Alis.Generator.Model.ComponentUpdateItemModel
-        string? Namespace, // Alis.Generator.Model
+        string Namespace, // Alis.Generator.Model
         string ImplInterface, // IComponent
         string HintName, // Alis.Generator.Model.ComponentUpdateItemModel
         string MinimallyQualifiedName, // ComponentUpdateItemModel

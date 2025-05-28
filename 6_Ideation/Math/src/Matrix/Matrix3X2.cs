@@ -136,7 +136,7 @@ public struct Matrix3X2
             return false;
         }
 
-        if (ReferenceEquals(this, obj))
+        if (Equals(this, obj))
         {
             return true;
         }

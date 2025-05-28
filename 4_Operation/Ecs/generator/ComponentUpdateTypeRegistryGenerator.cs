@@ -22,7 +22,7 @@ namespace Alis.Core.Ecs.Generator
         /// <summary>
         /// The symbol display format
         /// </summary>
-        private static SymbolDisplayFormat? _symbolDisplayFormat;
+        private static SymbolDisplayFormat _symbolDisplayFormat;
         /// <summary>
         /// Gets the value of the fully qualified type name format
         /// </summary>
@@ -78,7 +78,7 @@ namespace Alis.Core.Ecs.Generator
 
             UpdateModelFlags flags = UpdateModelFlags.None;
             Stack<Diagnostic> diagnostics = new Stack<Diagnostic>(1);
-            INamedTypeSymbol? @interface = null;
+            INamedTypeSymbol @interface = null;
 
             string[] genericArguments = [];
             bool needsRegistering = false;
@@ -142,7 +142,7 @@ namespace Alis.Core.Ecs.Generator
 
             Debug.Assert(genericArguments is not null);
 
-            string? @namespace = null;
+            string @namespace = null;
 
             if(!componentTypeSymbol.ContainingNamespace.IsGlobalNamespace)
                 @namespace = componentTypeSymbol.ContainingNamespace.ToString();
@@ -358,7 +358,7 @@ namespace Alis.Core.Ecs.Generator
 
             CodeBuilder cb = CodeBuilder.ThreadShared;
 
-            string? @namespace = model.Namespace;
+            string @namespace = model.Namespace;
 
             cb
                 .AppendLine("")
@@ -417,7 +417,7 @@ namespace Alis.Core.Ecs.Generator
         /// <param name="typeSymbol">The type symbol</param>
         /// <param name="baseTypeName">The base type name</param>
         /// <returns>The bool</returns>
-        private static bool InheritsFromBase(INamedTypeSymbol? typeSymbol, string baseTypeName)
+        private static bool InheritsFromBase(INamedTypeSymbol typeSymbol, string baseTypeName)
         {
             while (typeSymbol != null)
             {

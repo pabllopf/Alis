@@ -18,7 +18,7 @@ namespace Alis.Core.Ecs.Generator
         /// The shared
         /// </summary>
         [ThreadStatic]
-        private static CodeBuilder? _shared;
+        private static CodeBuilder _shared;
         /// <summary>
         /// Gets the value of the thread shared
         /// </summary>

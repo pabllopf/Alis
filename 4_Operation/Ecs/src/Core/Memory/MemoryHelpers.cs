@@ -91,7 +91,7 @@ namespace Alis.Core.Ecs.Core.Memory
             for (int i = 0; i < span.Length; i++)
             {
                 T t = span[i];
-                if (start.IndexOf(t) != -1)
+                if (start.IndexOf<object>(t) != -1)
                     throw new InvalidOperationException(
                         $"This gameObject already has a component of type {t.Type.Name}");
                 builder.Add(t);
@@ -110,7 +110,7 @@ namespace Alis.Core.Ecs.Core.Memory
         public static FastImmutableArray<T> Concat<T>(FastImmutableArray<T> types, T type)
             where T : ITypeId
         {
-            if (types.IndexOf(type) != -1)
+            if (types.IndexOf<object>(type) != -1)
                 throw new InvalidOperationException(
                     $"This gameObject already has a component of type {type.Type.Name}");
 
@@ -132,7 +132,7 @@ namespace Alis.Core.Ecs.Core.Memory
         public static FastImmutableArray<T> Remove<T>(FastImmutableArray<T> types, T type)
             where T : ITypeId
         {
-            int index = types.IndexOf(type);
+            int index = types.IndexOf<object>(type);
             if (index == -1)
                 throw new ComponentNotFoundException(type.Type);
             FastImmutableArray<T> result = types.RemoveAt<T>(index);

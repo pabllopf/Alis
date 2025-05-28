@@ -86,12 +86,7 @@ namespace Alis.App.Engine.Windows
         ///     The zero
         /// </summary>
         private IntPtr commandBufferTag = IntPtr.Zero;
-
-        /// <summary>
-        ///     The search query
-        /// </summary>
-        private string searchQuery = "";
-
+        
         /// <summary>
         ///     The zero
         /// </summary>

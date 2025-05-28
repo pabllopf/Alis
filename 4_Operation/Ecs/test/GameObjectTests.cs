@@ -477,13 +477,13 @@ using System;
                         /// <summary>
                         /// The on action
                         /// </summary>
-                        private readonly Action<Type, object?> onAction;
+                        private readonly Action<Type, object> onAction;
             
                         /// <summary>
                         /// Initializes a new instance of the <see cref="GenericAction"/> class
                         /// </summary>
                         /// <param name="onAction">The on action</param>
-                        public GenericAction(Action<Type, object?> onAction) => this.onAction = onAction;
+                        public GenericAction(Action<Type, object> onAction) => this.onAction = onAction;
             
                         /// <summary>
                         /// Invokes the e

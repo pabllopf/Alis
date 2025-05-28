@@ -56,7 +56,7 @@ namespace Alis.Core.Aspect.Math.Collections;
 ///     This effectively copies the one field in the struct to a local variable so that
 ///     it is insulated from other threads.
 /// </devremarks>
-public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableArray<T>>, IFastImmutableArray
+public readonly struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableArray<T>>, IFastImmutableArray
 {
     /// <summary>
     ///     A writable array accessor that can be converted into an <see />
@@ -114,14 +114,14 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
                         var temp = new T[value];
                         if (_count > 0)
                         {
-                            Array.Copy(_elements, temp, _count);
+                            System.Array.Copy(_elements, temp, _count);
                         }
 
                         _elements = temp;
                     }
                     else
                     {
-                        _elements = Empty.array!;
+                        _elements = Empty.Array!;
                     }
                 }
             }
@@ -150,7 +150,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
                     //       but may have too much overhead with small ones (which is the common case here)
                     if (_count - value > 64)
                     {
-                        Array.Clear(_elements, value, _count - value);
+                        System.Array.Clear(_elements, value, _count - value);
                     }
                     else
                     {
@@ -227,7 +227,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
 
             if (index < Count)
             {
-                Array.Copy(_elements, index, _elements, index + 1, Count - index);
+                System.Array.Copy(_elements, index, _elements, index + 1, Count - index);
             }
 
             _count++;
@@ -272,7 +272,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         {
             if (index < Count - 1)
             {
-                Array.Copy(_elements, index + 1, _elements, index, Count - index - 1);
+                System.Array.Copy(_elements, index + 1, _elements, index, Count - index - 1);
             }
 
             Count--;
@@ -294,7 +294,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         /// <param name="index">The starting index of the target array.</param>
         public void CopyTo(T[] array, int index)
         {
-            Array.Copy(_elements, 0, array, index, Count);
+            System.Array.Copy(_elements, 0, array, index, Count);
         }
 
         /// <summary>
@@ -362,7 +362,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
             }
 
             T[] temp = _elements;
-            _elements = Empty.array!;
+            _elements = Empty.Array!;
             _count = 0;
             return new FastImmutableArray<T>(temp);
         }
@@ -386,7 +386,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
                 result = ToArray();
             }
 
-            _elements = Empty.array!;
+            _elements = Empty.Array!;
             _count = 0;
 
             return new FastImmutableArray<T>(result);
@@ -408,10 +408,10 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
 
             if (index != Count)
             {
-                Array.Copy(_elements, index, _elements, index + items.Length, _count - index);
+                System.Array.Copy(_elements, index, _elements, index + items.Length, _count - index);
             }
 
-            Array.Copy(items.array!, 0, _elements, index, items.Length);
+            System.Array.Copy(items.Array!, 0, _elements, index, items.Length);
 
             _count += items.Length;
         }
@@ -425,7 +425,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
             int offset = Count;
             Count += items.Length;
 
-            Array.Copy(items, 0, _elements, offset, items.Length);
+            System.Array.Copy(items, 0, _elements, offset, items.Length);
         }
 
         /// <summary>
@@ -438,7 +438,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
             int offset = Count;
             Count += items.Length;
 
-            Array.Copy(items, 0, _elements, offset, items.Length);
+            System.Array.Copy(items, 0, _elements, offset, items.Length);
         }
 
         /// <summary>
@@ -451,7 +451,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
             int offset = Count;
             Count += length;
 
-            Array.Copy(items, 0, _elements, offset, length);
+            System.Array.Copy(items, 0, _elements, offset, length);
         }
 
         /// <summary>
@@ -470,9 +470,9 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         /// <param name="length">The number of elements from the source array to add.</param>
         public void AddRange(FastImmutableArray<T> items, int length)
         {
-            if (items.array != null)
+            if (items.Array != null)
             {
-                AddRange(items.array, length);
+                AddRange(items.Array, length);
             }
         }
 
@@ -512,9 +512,9 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         /// <param name="items">The items to add at the end of the array.</param>
         public void AddRange<TDerived>(FastImmutableArray<TDerived> items) where TDerived : T
         {
-            if (items.array != null)
+            if (items.Array != null)
             {
-                AddRange(items.array);
+                AddRange(items.Array);
             }
         }
 
@@ -603,10 +603,10 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
 #if NET
                     if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
                     {
-                        Array.Clear(_elements, index, length); // Clear the elements so that the gc can reclaim the references.
+                        System.Array.Clear(_elements, index, length); // Clear the elements so that the gc can reclaim the references.
                     }
 #endif
-                Array.Copy(_elements, index + length, _elements, index, Count - index - length);
+                System.Array.Copy(_elements, index + length, _elements, index, Count - index - length);
             }
 
             _count -= length;
@@ -680,11 +680,11 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         {
             if (Count == 0)
             {
-                return Empty.array!;
+                return Empty.Array!;
             }
 
             T[] result = new T[Count];
-            Array.Copy(_elements, result, Count);
+            System.Array.Copy(_elements, result, Count);
             return result;
         }
 
@@ -694,7 +694,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         /// <param name="destination">The array to copy to.</param>
         public void CopyTo(T[] destination)
         {
-            Array.Copy(_elements, 0, destination, 0, Count);
+            System.Array.Copy(_elements, 0, destination, 0, Count);
         }
 
         /// <summary>
@@ -706,7 +706,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         /// <param name="length">The number of elements to copy.</param>
         public void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length)
         {
-            Array.Copy(_elements, sourceIndex, destination, destinationIndex, length);
+            System.Array.Copy(_elements, sourceIndex, destination, destinationIndex, length);
         }
 
         /// <summary>
@@ -718,7 +718,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
             if (_elements.Length < capacity)
             {
                 int newCapacity = System.Math.Max(_elements.Length * 2, capacity);
-                Array.Resize(ref _elements, newCapacity);
+                System.Array.Resize(ref _elements, newCapacity);
             }
         }
 
@@ -761,7 +761,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
             equalityComparer ??= EqualityComparer<T>.Default;
             if (Equals(equalityComparer, EqualityComparer<T>.Default))
             {
-                return Array.IndexOf(_elements, item, startIndex, count);
+                return System.Array.IndexOf(_elements, item, startIndex, count);
             }
 
             for (int i = startIndex; i < startIndex + count; i++)
@@ -847,7 +847,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
             equalityComparer ??= EqualityComparer<T>.Default;
             if (Equals(equalityComparer, EqualityComparer<T>.Default))
             {
-                return Array.LastIndexOf(_elements, item, startIndex, count);
+                return System.Array.LastIndexOf(_elements, item, startIndex, count);
             }
 
             for (int i = startIndex; i >= startIndex - count + 1; i--)
@@ -867,7 +867,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         public void Reverse()
         {
 #if NET || NETSTANDARD2_1_OR_GREATER
-                Array.Reverse(_elements, 0, _count);
+                System.Array.Reverse(_elements, 0, _count);
 #else
             // The non-generic Array.Reverse is not used because it does not perform
             // well for non-primitive value types.
@@ -876,9 +876,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
             T[] array = _elements;
             while (i < j)
             {
-                T temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
+                (array[i], array[j]) = (array[j], array[i]);
                 i++;
                 j--;
             }
@@ -892,7 +890,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         {
             if (Count > 1)
             {
-                Array.Sort(_elements, 0, Count, Comparer<T>.Default);
+                System.Array.Sort(_elements, 0, Count, Comparer<T>.Default);
             }
         }
 
@@ -917,7 +915,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
                 // We could special case _count == _elements.Length in order to try to avoid
                 // the IComparer allocation, but the Array.Sort overload that takes a Comparison
                 // allocates such an IComparer internally, anyway.
-                Array.Sort(_elements, 0, _count, Comparer<T>.Create(comparison));
+                System.Array.Sort(_elements, 0, _count, Comparer<T>.Create(comparison));
 #endif
             }
         }
@@ -930,7 +928,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         {
             if (Count > 1)
             {
-                Array.Sort(_elements, 0, _count, comparer);
+                System.Array.Sort(_elements, 0, _count, comparer);
             }
         }
 
@@ -948,7 +946,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
 
             if (count > 1)
             {
-                Array.Sort(_elements, index, count, comparer);
+                System.Array.Sort(_elements, index, count, comparer);
             }
         }
 
@@ -1011,51 +1009,54 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
             {
 
                 int copyLength = lastIndexRemoved == -1 ? indexToRemove : indexToRemove - lastIndexRemoved - 1;
-                Array.Copy(_elements, copied + removed, _elements, copied, copyLength);
+                System.Array.Copy(_elements, copied + removed, _elements, copied, copyLength);
                 removed++;
                 copied += copyLength;
                 lastIndexRemoved = indexToRemove;
             }
 
-            Array.Copy(_elements, copied + removed, _elements, copied, _elements.Length - (copied + removed));
+            System.Array.Copy(_elements, copied + removed, _elements, copied, _elements.Length - (copied + removed));
 
             _count -= indicesToRemove.Count;
         }
 
         /// <summary>Gets a <see cref="Memory{T}" /> for the filled portion of the backing array.</summary>
-        internal Memory<T> AsMemory() => new(_elements, 0, _count);
+        internal Memory<T> AsMemory() => new Memory<T>(_elements, 0, _count);
     }
 
     /// <summary>
     ///     Creates the builder using the specified types length
     /// </summary>
     /// <typeparam name="T">The </typeparam>
+    /// <typeparam name="T1"></typeparam>
     /// <param name="typesLength">The types length</param>
     /// <returns>The builder</returns>
-    public static Builder CreateBuilder<T>(int typesLength) => new Builder {Capacity = typesLength};
+    public static Builder CreateBuilder<T1>(int typesLength) => new Builder {Capacity = typesLength};
 
     /// <summary>
     ///     Converts the span
     /// </summary>
     /// <returns>A read only span of t</returns>
-    public ReadOnlySpan<T> AsSpan() => array.AsSpan();
+    public ReadOnlySpan<T> AsSpan() => Array.AsSpan();
 
     /// <summary>
     ///     Indexes the of using the specified type id
     /// </summary>
     /// <typeparam name="T">The </typeparam>
+    /// <typeparam name="T1"></typeparam>
     /// <param name="typeId">The type id</param>
     /// <returns>The int</returns>
-    public int IndexOf<T>(T typeId) => Array.IndexOf(array, typeId, 0, Length);
+    public int IndexOf<T1>(T typeId) => System.Array.IndexOf(Array, typeId, 0, Length);
 
     /// <summary>
     ///     Removes the at using the specified index
     /// </summary>
     /// <typeparam name="T">The </typeparam>
+    /// <typeparam name="T1"></typeparam>
     /// <param name="index">The index</param>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
     /// <returns>A fast immutable array of t</returns>
-    public FastImmutableArray<T> RemoveAt<T>(int index)
+    public FastImmutableArray<T> RemoveAt<T1>(int index)
     {
         if (index < 0 || index >= Length)
         {
@@ -1063,15 +1064,15 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         }
 
         T[] newArray = new T[Length - 1];
-        Array.Copy(array, 0, newArray, 0, index);
-        Array.Copy(array, index + 1, newArray, index, Length - index - 1);
+        System.Array.Copy(Array, 0, newArray, 0, index);
+        System.Array.Copy(Array, index + 1, newArray, index, Length - index - 1);
         return new FastImmutableArray<T>(newArray);
     }
         
     /// <summary>
     ///     An empty (initialized) instance of <see cref="FastImmutableArray{T}" />.
     /// </summary>
-    public static readonly FastImmutableArray<T> Empty = new FastImmutableArray<T>(new T[0]);
+    public static readonly FastImmutableArray<T> Empty = new FastImmutableArray<T>([]);
 
     /// <summary>
     ///     The backing field for this instance. References to this value should never be shared with outside code.
@@ -1080,14 +1081,14 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     ///     This would be private, but we make it internal so that our own extension methods can access it.
     /// </remarks>
     [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-    internal readonly T[] array;
+    internal readonly T[] Array;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="FastImmutableArray{T}" /> struct
     ///     *without making a defensive copy*.
     /// </summary>
     /// <param name="items">The array to use. May be null for "default" arrays.</param>
-    public FastImmutableArray(T[] items) => array = items;
+    public FastImmutableArray(T[] items) => Array = items;
 
 
 
@@ -1136,7 +1137,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         // The reason for this is perf.
         // Length and the indexer must be absolutely trivially implemented for the JIT optimization
         // of removing array bounds checking to work.
-        array![index];
+        Array![index];
 
     /// <summary>
     ///     Gets a read-only reference to the element at the specified index in the read-only list.
@@ -1149,13 +1150,13 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         // The reason for this is perf.
         // Length and the indexer must be absolutely trivially implemented for the JIT optimization
         // of removing array bounds checking to work.
-        ref array![index];
+        ref Array![index];
 
     /// <summary>
     ///     Gets a value indicating whether this collection is empty.
     /// </summary>
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    public bool IsEmpty => array!.Length == 0;
+    public bool IsEmpty => Array!.Length == 0;
 
     /// <summary>
     ///     Gets the number of elements in the array.
@@ -1167,13 +1168,13 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         // The reason for this is perf.
         // Length and the indexer must be absolutely trivially implemented for the JIT optimization
         // of removing array bounds checking to work.
-        array!.Length;
+        Array!.Length;
 
     /// <summary>
     ///     Gets a value indicating whether this struct was initialized without an actual array instance.
     /// </summary>
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    public bool IsDefault => array == null;
+    public bool IsDefault => Array == null;
 
     /// <summary>
     ///     Gets a value indicating whether this struct is empty or uninitialized.
@@ -1184,14 +1185,14 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         get
         {
             FastImmutableArray<T> self = this;
-            return self.array == null || self.array.Length == 0;
+            return self.Array == null || self.Array.Length == 0;
         }
     }
 
     /// <summary>
     ///     Gets an untyped reference to the array.
     /// </summary>
-    Array IFastImmutableArray.Array => array;
+    Array IFastImmutableArray.Array => Array;
     
     /// <summary>
     ///     Copies the contents of this array to the specified array.
@@ -1201,7 +1202,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     {
         FastImmutableArray<T> self = this;
         self.ThrowNullRefIfNotInitialized();
-        Array.Copy(self.array!, destination, self.Length);
+        System.Array.Copy(self.Array!, destination, self.Length);
     }
 
     /// <summary>
@@ -1213,7 +1214,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     {
         FastImmutableArray<T> self = this;
         self.ThrowNullRefIfNotInitialized();
-        Array.Copy(self.array!, 0, destination, destinationIndex, self.Length);
+        System.Array.Copy(self.Array!, 0, destination, destinationIndex, self.Length);
     }
 
     /// <summary>
@@ -1227,7 +1228,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     {
         FastImmutableArray<T> self = this;
         self.ThrowNullRefIfNotInitialized();
-        Array.Copy(self.array!, sourceIndex, destination, destinationIndex, length);
+        System.Array.Copy(self.Array!, sourceIndex, destination, destinationIndex, length);
     }
 
     /// <summary>
@@ -1239,7 +1240,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     {
         FastImmutableArray<T> self = this;
         self.ThrowNullRefIfNotInitialized();
-        return new Enumerator(self.array!);
+        return new Enumerator(self.Array!);
     }
 
     /// <summary>
@@ -1251,7 +1252,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     public override int GetHashCode()
     {
         FastImmutableArray<T> self = this;
-        return self.array == null ? 0 : self.array.GetHashCode();
+        return self.Array == null ? 0 : self.Array.GetHashCode();
     }
 
     /// <summary>
@@ -1261,7 +1262,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     /// <returns>
     ///     <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
     /// </returns>
-    public override bool Equals(object obj) => obj is IFastImmutableArray other && (array == other.Array);
+    public override bool Equals(object obj) => obj is IFastImmutableArray other && (Array == other.Array);
 
     /// <summary>
     ///     Indicates whether the current object is equal to another object of the same type.
@@ -1270,7 +1271,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     /// <returns>
     ///     true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
     /// </returns>
-    public bool Equals(FastImmutableArray<T> other) => array == other.array;
+    public bool Equals(FastImmutableArray<T> other) => Array == other.Array;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="FastImmutableArray{T}" /> struct based on the contents
@@ -1284,7 +1285,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     public static FastImmutableArray<T> CastUp<TDerived>(FastImmutableArray<TDerived> items)
         where TDerived : class, T
     {
-        return new FastImmutableArray<T>(items.array);
+        return new FastImmutableArray<T>(items.Array);
     }
 
     /// <summary>
@@ -1296,7 +1297,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     /// <exception cref="InvalidCastException">Thrown if the cast is illegal.</exception>
     public FastImmutableArray<TOther> CastArray<TOther>() where TOther : class
     {
-        return new FastImmutableArray<TOther>((TOther[]) (object) array!);
+        return new FastImmutableArray<TOther>((TOther[]) (object) Array!);
     }
 
     /// <summary>
@@ -1311,12 +1312,12 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     ///     Arrays of derived elements types can be cast to arrays of base element types
     ///     without reallocating the array.
     ///     These upcasts can be reversed via this same method, casting an array of base
-    ///     element types to their derived types. However, downcasting is only successful
+    ///     element types to their derived types. However, down casting is only successful
     ///     when it reverses a prior upcasting operation.
     /// </remarks>
     public FastImmutableArray<TOther> As<TOther>() where TOther : class
     {
-        return new FastImmutableArray<TOther>(array as TOther[]);
+        return new FastImmutableArray<TOther>(Array as TOther[]);
     }
 
     /// <summary>
@@ -1328,7 +1329,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     {
         FastImmutableArray<T> self = this;
         self.ThrowInvalidOperationIfNotInitialized();
-        return EnumeratorObject.Create(self.array!);
+        return EnumeratorObject.Create(self.Array!);
     }
 
     /// <summary>
@@ -1340,7 +1341,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
     {
         FastImmutableArray<T> self = this;
         self.ThrowInvalidOperationIfNotInitialized();
-        return EnumeratorObject.Create(self.array!);
+        return EnumeratorObject.Create(self.Array!);
     }
 
     /// <summary>
@@ -1353,14 +1354,14 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         // and not having any conditions/branches.
         // In a faulting scenario we are relying on hardware to generate the fault.
         // And in the non-faulting scenario (most common) the check is virtually free since
-        // if we are going to do anything with the array, we will need Length anyways
+        // if we are going to do anything with the array, we will need Length anyway
         // so touching it, and potentially causing a cache miss, is not going to be an
         // extra expense.
-        _ = array!.Length;
+        _ = Array!.Length;
     }
 
     /// <summary>
-    ///     Throws an <see cref="InvalidOperationException" /> if the <see cref="array" /> field is null, i.e. the
+    ///     Throws an <see cref="InvalidOperationException" /> if the <see cref="Array" /> field is null, i.e. the
     ///     <see cref="IsDefault" /> property returns true.  The
     ///     <see cref="InvalidOperationException" /> message specifies that the operation cannot be performed
     ///     on a default instance of <see cref="FastImmutableArray{T}" />.
@@ -1433,7 +1434,7 @@ public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableAr
         ///     A shareable singleton for enumerating empty arrays.
         /// </summary>
         private static readonly IEnumerator<T> SEmptyEnumerator =
-            new EnumeratorObject(Empty.array!);
+            new EnumeratorObject(Empty.Array!);
 
         /// <summary>
         ///     The array being enumerated.

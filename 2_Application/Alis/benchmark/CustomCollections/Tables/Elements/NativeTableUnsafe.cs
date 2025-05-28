@@ -37,7 +37,7 @@ namespace Alis.Benchmark.CustomCollections.Tables.Elements
     /// <summary>
     ///     The native table unsafe
     /// </summary>
-    public unsafe struct NativeTableUnsafe<T> : IDisposable where T : struct
+    public unsafe struct NativeTableUnsafe<T> : IDisposable where T : unmanaged
     {
         /// <summary>
         ///     The

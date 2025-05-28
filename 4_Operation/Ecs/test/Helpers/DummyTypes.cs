@@ -43,7 +43,7 @@ public record struct Struct3(int Value);
     /// <seealso cref="IComponent"/>
     /// <seealso cref="IInitable"/>
     /// <seealso cref="IDestroyable"/>
-    public class FilteredBehavior1(Action onUpdate, Action<GameObject>? onInit = null, Action? onDestroy = null) : IComponent, IInitable, IDestroyable
+    public class FilteredBehavior1(Action onUpdate, Action<GameObject> onInit = null, Action onDestroy = null) : IComponent, IInitable, IDestroyable
     {
         /// <summary>
         /// Inits the self
@@ -97,7 +97,7 @@ public record struct Struct3(int Value);
         /// <summary>
         /// The value
         /// </summary>
-        public T? Value;
+        public T Value;
         /// <summary>
         /// The called count
         /// </summary>
