@@ -22,6 +22,15 @@ using System;
                 Marshal.FreeHGlobal(ptr);
                 MemoryStats.Freed();
             }
+            
+            
+            /// <summary>
+            ///     Lrotls the x
+            /// </summary>
+            /// <param name="x">The </param>
+            /// <param name="y">The </param>
+            /// <returns>The uint</returns>
+            public static uint Lrotl(uint x, int y) => (x << y) | (x >> (32 - y));
     
             public static void Memcpy(IntPtr dest, IntPtr src, long size)
             {
@@ -74,6 +83,16 @@ using System;
     
                 IntPtr newPtr = Marshal.ReAllocHGlobal(ptr, new IntPtr(newSize));
                 return newPtr;
+            }
+
+            public static IntPtr Alloc(int outputLength)
+            {
+                IntPtr ptr = Malloc(outputLength);
+                if (ptr == IntPtr.Zero)
+                {
+                    throw new OutOfMemoryException("Failed to allocate memory.");
+                }
+                return ptr;
             }
         }
     }

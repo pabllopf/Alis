@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.IO;
 using Alis.Core.Graphic.Stb;
 
@@ -45,15 +46,14 @@ namespace Alis.Core.Graphic.Sample
         /// <param name="height">The height</param>
         /// <param name="nrChannels">The nr channels</param>
         /// <returns>The void</returns>
-        public static unsafe void* LoadImage(string filePath, ref int width, ref int height, ref int nrChannels)
+        public static IntPtr LoadImage(string filePath, ref int width, ref int height, ref int nrChannels)
         {
             using (FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
                 StbImage.StbiContext stbiContext = new StbImage.StbiContext(stream);
-                fixed (int* pWidth = &width, pHeight = &height, pNrChannels = &nrChannels)
-                {
-                    return StbImage.Stbibmpload(stbiContext, pWidth, pHeight, pNrChannels, 0, null);
-                }
+
+                // Llamada al método con referencias en lugar de punteros
+                return StbImage.Stbibmpload(stbiContext, out width, out height, out nrChannels, 0, out StbiResultInfo output);
             }
         }
     }
