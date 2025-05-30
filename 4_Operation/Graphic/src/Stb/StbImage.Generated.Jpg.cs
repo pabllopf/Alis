@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.Stb
     /// <summary>
     ///     The stb image class
     /// </summary>
-    unsafe partial class StbImage
+    partial class StbImage
     {
         /// <summary>
         ///     The delegate
