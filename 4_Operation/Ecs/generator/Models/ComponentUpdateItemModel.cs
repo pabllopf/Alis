@@ -19,7 +19,7 @@ public record struct ComponentUpdateItemModel(
         /// <summary>
         /// The empty
         /// </summary>
-        public static readonly ComponentUpdateItemModel Default = new(default, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, [], [], []);
+        public static readonly ComponentUpdateItemModel Default = new(default, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, new EquatableArray<TypeDeclarationModel> { }, new EquatableArray<string> { }, new EquatableArray<string> { });
         /// <summary>
         /// Hases the flag using the specified update model flags
         /// </summary>
