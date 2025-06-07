@@ -27,10 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Graphic.Stb
 {
     /// <summary>
     ///     The delegate
     /// </summary>
-    public unsafe delegate void Delegate1(byte* arg0, byte* arg1, byte* arg2, byte* arg3, int arg4, int arg5);
+    public  delegate void Delegate1(IntPtr arg0, IntPtr arg1, IntPtr arg2, IntPtr arg3, int arg4, int arg5);
 }
