@@ -1856,7 +1856,7 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="w">The </param>
         /// <param name="hs">The hs</param>
         /// <returns>The in near</returns>
-        public static byte* Resamplerow1(byte* @out, byte* innear, byte* infar, int w, int hs) => innear;
+        public static byte* Resamplerow1(IntPtr @out, IntPtr innear, IntPtr infar, int w, int hs) => (byte*)innear;
 
         /// <summary>
         ///     Stbis the resample row v 2 using the specified  @out
@@ -1867,8 +1867,12 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="w">The </param>
         /// <param name="hs">The hs</param>
         /// <returns>The @out</returns>
-        public static byte* Stbiresamplerowv2(byte* @out, byte* innear, byte* infar, int w, int hs)
+        public static byte* Stbiresamplerowv2(IntPtr @outPtr, IntPtr innearPtr, IntPtr infarPtr, int w, int hs)
         {
+            byte* @out = (byte*)@outPtr;
+            byte* @innear = (byte*)innearPtr;
+            byte* infar = (byte*)infarPtr;
+            
             int i = 0;
             for (i = 0; i < w; ++i)
             {
@@ -1887,8 +1891,12 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="w">The </param>
         /// <param name="hs">The hs</param>
         /// <returns>The @out</returns>
-        public static byte* Stbiresamplerowh2(byte* @out, byte* innear, byte* infar, int w, int hs)
+        public static byte* Stbiresamplerowh2(IntPtr @outPtr, IntPtr innearPtr, IntPtr infarPtr, int w, int hs)
         {
+            byte* @out = (byte*)@outPtr;
+            byte* innear = (byte*)innearPtr;
+            byte* infar = (byte*)infarPtr;
+            
             int i = 0;
             byte* input = innear;
             if (w == 1)
@@ -1920,8 +1928,12 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="w">The </param>
         /// <param name="hs">The hs</param>
         /// <returns>The @out</returns>
-        public static byte* Stbiresamplerowhv2(byte* @out, byte* innear, byte* infar, int w, int hs)
+        public static byte* Stbiresamplerowhv2(IntPtr @outPtr, IntPtr innearPtr, IntPtr infarPtr, int w, int hs)
         {
+            byte* @out = (byte*)@outPtr;
+            byte* innear = (byte*)innearPtr;
+            byte* infar = (byte*)infarPtr;
+            
             int i = 0;
             int t0 = 0;
             int t1 = 0;
@@ -1954,8 +1966,13 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="w">The </param>
         /// <param name="hs">The hs</param>
         /// <returns>The @out</returns>
-        public static byte* Stbiresamplerowgeneric(byte* @out, byte* innear, byte* infar, int w, int hs)
+        public static byte* Stbiresamplerowgeneric(IntPtr @outPtr, IntPtr innearPtr, IntPtr infarPtr, int w, int hs)
         {
+            byte* @out = (byte*)@outPtr;
+            byte* @innear = (byte*)innearPtr;
+            byte* @infar = (byte*)infarPtr;
+            
+            
             int i = 0;
             int j = 0;
             for (i = 0; i < w; ++i)
@@ -2164,8 +2181,8 @@ namespace Alis.Core.Graphic.Stb
                     {
                         Stbiresample r = rescomp[k];
                         int ybot = r.Ystep >= r.Vs >> 1 ? 1 : 0;
-                        coutput[k] = r.Resample((byte*)z.Imgcomp[k].linebuf, (byte*)(ybot != 0 ? r.Line1 : r.Line0),
-                            (byte*)(ybot != 0 ? r.Line0 : r.Line1), r.Wlores, r.Hs);
+                        coutput[k] = r.Resample((IntPtr)z.Imgcomp[k].linebuf, (IntPtr)(ybot != 0 ? r.Line1 : r.Line0),
+                            (IntPtr)(ybot != 0 ? r.Line0 : r.Line1), r.Wlores, r.Hs);
                         if (++r.Ystep >= r.Vs)
                         {
                             r.Ystep = 0;
