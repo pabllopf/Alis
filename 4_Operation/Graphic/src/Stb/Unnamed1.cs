@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.Stb
 {
@@ -6,7 +7,7 @@ namespace Alis.Core.Graphic.Stb
     ///     The unnamed
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct Unnamed1
+    public struct Unnamed1
     {
         /// <summary>
         ///     The id
@@ -66,27 +67,27 @@ namespace Alis.Core.Graphic.Stb
         /// <summary>
         ///     The data
         /// </summary>
-        public byte* data;
+        public IntPtr data;
 
         /// <summary>
         ///     The raw data
         /// </summary>
-        public void* rawdata;
+        public IntPtr rawdata;
 
         /// <summary>
         ///     The raw coeff
         /// </summary>
-        public void* rawcoeff;
+        public IntPtr rawcoeff;
 
         /// <summary>
         ///     The linebuf
         /// </summary>
-        public byte* linebuf;
+        public IntPtr linebuf;
 
         /// <summary>
         ///     The coeff
         /// </summary>
-        public short* coeff;
+        public IntPtr coeff;
 
         /// <summary>
         ///     The coeff

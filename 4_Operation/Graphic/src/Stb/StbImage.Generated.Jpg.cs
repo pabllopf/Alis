@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
@@ -984,8 +985,8 @@ namespace Alis.Core.Graphic.Stb
                             }
                         }
 
-                        z.Idctblockkernel(z.Imgcomp[n].data + z.Imgcomp[n].w2 * j * 8 + i * 8, z.Imgcomp[n].w2,
-                            data);
+                        z.Idctblockkernel((byte*)(z.Imgcomp[n].data + z.Imgcomp[n].w2 * j * 8 + i * 8), z.Imgcomp[n].w2, data);
+                        
                         if (--z.Todo <= 0)
                         {
                             if (z.Codebits < 24)
@@ -1035,7 +1036,7 @@ namespace Alis.Core.Graphic.Stb
                                     }
                                 }
 
-                                z.Idctblockkernel(z.Imgcomp[n].data + z.Imgcomp[n].w2 * y2 + x2, z.Imgcomp[n].w2,
+                                z.Idctblockkernel((byte*)(z.Imgcomp[n].data + z.Imgcomp[n].w2 * y2 + x2), z.Imgcomp[n].w2,
                                     data);
                             }
                         }
@@ -1070,7 +1071,8 @@ namespace Alis.Core.Graphic.Stb
                 for (j = 0; j < h; ++j)
                 for (i = 0; i < w; ++i)
                 {
-                    short* data = z.Imgcomp[n].coeff + 64 * (i + j * z.Imgcomp[n].coeffw);
+                    short* data = (short*)(z.Imgcomp[n].coeff + 64 * (i + j * z.Imgcomp[n].coeffw));
+                    
                     if (z.Specstart == 0)
                     {
                         fixed (Stbihuffman* dptr = &z.Huffdc[z.Imgcomp[n].hd])
@@ -1129,7 +1131,7 @@ namespace Alis.Core.Graphic.Stb
                         {
                             int x2 = i * z.Imgcomp[n].h + x;
                             int y2 = j * z.Imgcomp[n].v + y;
-                            short* data = z.Imgcomp[n].coeff + 64 * (x2 + y2 * z.Imgcomp[n].coeffw);
+                            short* data = (short*)(z.Imgcomp[n].coeff + 64 * (x2 + y2 * z.Imgcomp[n].coeffw));
 
 
                             fixed (Stbihuffman* dptr = &z.Huffdc[z.Imgcomp[n].hd])
@@ -1194,9 +1196,9 @@ namespace Alis.Core.Graphic.Stb
                     for (j = 0; j < h; ++j)
                     for (i = 0; i < w; ++i)
                     {
-                        short* data = z.Imgcomp[n].coeff + 64 * (i + j * z.Imgcomp[n].coeffw);
+                        short* data = (short*)(z.Imgcomp[n].coeff + 64 * (i + j * z.Imgcomp[n].coeffw));
                         Stbijpegdequantize(data, z.Dequant[z.Imgcomp[n].tq]);
-                        z.Idctblockkernel(z.Imgcomp[n].data + z.Imgcomp[n].w2 * j * 8 + i * 8, z.Imgcomp[n].w2,
+                        z.Idctblockkernel((byte*)(z.Imgcomp[n].data + z.Imgcomp[n].w2 * j * 8 + i * 8), z.Imgcomp[n].w2,
                             data);
                     }
                 }
@@ -1488,24 +1490,24 @@ namespace Alis.Core.Graphic.Stb
             int i = 0;
             for (i = 0; i < ncomp; ++i)
             {
-                if (z.Imgcomp[i].rawdata != null)
+                if (z.Imgcomp[i].rawdata != IntPtr.Zero)
                 {
-                    CRuntime.Free(z.Imgcomp[i].rawdata);
-                    z.Imgcomp[i].rawdata = null;
-                    z.Imgcomp[i].data = null;
+                    CRuntime.Free((void*)z.Imgcomp[i].rawdata);
+                    z.Imgcomp[i].rawdata = IntPtr.Zero;
+                    z.Imgcomp[i].data = IntPtr.Zero;
                 }
 
-                if (z.Imgcomp[i].rawcoeff != null)
+                if (z.Imgcomp[i].rawcoeff != IntPtr.Zero)
                 {
-                    CRuntime.Free(z.Imgcomp[i].rawcoeff);
-                    z.Imgcomp[i].rawcoeff = null;
-                    z.Imgcomp[i].coeff = null;
+                    CRuntime.Free((void*)z.Imgcomp[i].rawcoeff);
+                    z.Imgcomp[i].rawcoeff = IntPtr.Zero;
+                    z.Imgcomp[i].coeff = IntPtr.Zero;
                 }
 
-                if (z.Imgcomp[i].linebuf != null)
+                if (z.Imgcomp[i].linebuf != IntPtr.Zero)
                 {
-                    CRuntime.Free(z.Imgcomp[i].linebuf);
-                    z.Imgcomp[i].linebuf = null;
+                    CRuntime.Free((void*)z.Imgcomp[i].linebuf);
+                    z.Imgcomp[i].linebuf = IntPtr.Zero;
                 }
             }
 
@@ -1571,8 +1573,8 @@ namespace Alis.Core.Graphic.Stb
             s.Imgn = c;
             for (i = 0; i < c; ++i)
             {
-                z.Imgcomp[i].data = null;
-                z.Imgcomp[i].linebuf = null;
+                z.Imgcomp[i].data = IntPtr.Zero;
+                z.Imgcomp[i].linebuf = IntPtr.Zero;
             }
 
             if (lf != 8 + 3 * s.Imgn)
@@ -1657,27 +1659,27 @@ namespace Alis.Core.Graphic.Stb
                 z.Imgcomp[i].y = (int) ((s.Imgy * z.Imgcomp[i].v + vmax - 1) / vmax);
                 z.Imgcomp[i].w2 = z.Imgmcux * z.Imgcomp[i].h * 8;
                 z.Imgcomp[i].h2 = z.Imgmcuy * z.Imgcomp[i].v * 8;
-                z.Imgcomp[i].coeff = null;
-                z.Imgcomp[i].rawcoeff = null;
-                z.Imgcomp[i].linebuf = null;
-                z.Imgcomp[i].rawdata = Stbimallocmad2(z.Imgcomp[i].w2, z.Imgcomp[i].h2, 15);
-                if (z.Imgcomp[i].rawdata == null)
+                z.Imgcomp[i].coeff = IntPtr.Zero;
+                z.Imgcomp[i].rawcoeff = IntPtr.Zero;
+                z.Imgcomp[i].linebuf = IntPtr.Zero;
+                z.Imgcomp[i].rawdata = (IntPtr)Stbimallocmad2(z.Imgcomp[i].w2, z.Imgcomp[i].h2, 15);
+                if (z.Imgcomp[i].rawdata == IntPtr.Zero)
                 {
                     return Stbifreejpegcomponents(z, i + 1, Stbierr("outofmem"));
                 }
 
-                z.Imgcomp[i].data = (byte*) (((long) z.Imgcomp[i].rawdata + 15) & ~15);
+                z.Imgcomp[i].data = (IntPtr)(((long) z.Imgcomp[i].rawdata + 15) & ~15);
                 if (z.Progressive != 0)
                 {
                     z.Imgcomp[i].coeffw = z.Imgcomp[i].w2 / 8;
                     z.Imgcomp[i].coeffh = z.Imgcomp[i].h2 / 8;
-                    z.Imgcomp[i].rawcoeff = Stbimallocmad3(z.Imgcomp[i].w2, z.Imgcomp[i].h2, sizeof(short), 15);
-                    if (z.Imgcomp[i].rawcoeff == null)
+                    z.Imgcomp[i].rawcoeff = (IntPtr)Stbimallocmad3(z.Imgcomp[i].w2, z.Imgcomp[i].h2, sizeof(short), 15);
+                    if (z.Imgcomp[i].rawcoeff == IntPtr.Zero)
                     {
                         return Stbifreejpegcomponents(z, i + 1, Stbierr("outofmem"));
                     }
 
-                    z.Imgcomp[i].coeff = (short*) (((long) z.Imgcomp[i].rawcoeff + 15) & ~15);
+                    z.Imgcomp[i].coeff = (IntPtr)(((long) z.Imgcomp[i].rawcoeff + 15) & ~15);
                 }
             }
 
@@ -1774,8 +1776,8 @@ namespace Alis.Core.Graphic.Stb
             int m = 0;
             for (m = 0; m < 4; m++)
             {
-                j.Imgcomp[m].rawdata = null;
-                j.Imgcomp[m].rawcoeff = null;
+                j.Imgcomp[m].rawdata = IntPtr.Zero;
+                j.Imgcomp[m].rawcoeff = IntPtr.Zero;
             }
 
             j.Restartinterval = 0;
@@ -2113,8 +2115,8 @@ namespace Alis.Core.Graphic.Stb
                 for (k = 0; k < decoden; ++k)
                 {
                     Stbiresample r = rescomp[k];
-                    z.Imgcomp[k].linebuf = (byte*) Stbimalloc(z.S.Imgx + 3);
-                    if (z.Imgcomp[k].linebuf == null)
+                    z.Imgcomp[k].linebuf = (IntPtr)Stbimalloc(z.S.Imgx + 3);
+                    if (z.Imgcomp[k].linebuf == IntPtr.Zero)
                     {
                         Stbicleanupjpeg(z);
                         return (byte*) (ulong) (Stbierr("outofmem") != 0 ? 0 : 0);
@@ -2125,7 +2127,7 @@ namespace Alis.Core.Graphic.Stb
                     r.Ystep = r.Vs >> 1;
                     r.Wlores = (int) ((z.S.Imgx + r.Hs - 1) / r.Hs);
                     r.Ypos = 0;
-                    r.Line0 = r.Line1 = z.Imgcomp[k].data;
+                    r.Line0 = r.Line1 = (byte*)z.Imgcomp[k].data;
                     if ((r.Hs == 1) && (r.Vs == 1))
                     {
                         r.Resample = Resamplerow1;
@@ -2162,7 +2164,7 @@ namespace Alis.Core.Graphic.Stb
                     {
                         Stbiresample r = rescomp[k];
                         int ybot = r.Ystep >= r.Vs >> 1 ? 1 : 0;
-                        coutput[k] = r.Resample(z.Imgcomp[k].linebuf, ybot != 0 ? r.Line1 : r.Line0,
+                        coutput[k] = r.Resample((byte*)z.Imgcomp[k].linebuf, ybot != 0 ? r.Line1 : r.Line0,
                             ybot != 0 ? r.Line0 : r.Line1, r.Wlores, r.Hs);
                         if (++r.Ystep >= r.Vs)
                         {
