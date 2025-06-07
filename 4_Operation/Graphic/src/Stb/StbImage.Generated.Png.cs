@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
@@ -260,8 +261,8 @@ namespace Alis.Core.Graphic.Stb
             int outputbytes = outn * bytes;
             int filterbytes = imgn * bytes;
             int width = (int) x;
-            a.@out = (byte*) Stbimallocmad3((int) x, (int) y, outputbytes, 0);
-            if (a.@out == null)
+            a.@out = (IntPtr)Stbimallocmad3((int) x, (int) y, outputbytes, 0);
+            if (a.@out == IntPtr.Zero)
             {
                 return Stbierr("outofmem");
             }
@@ -299,7 +300,7 @@ namespace Alis.Core.Graphic.Stb
             {
                 byte* cur = filterbuf + (j & 1) * imgwidthbytes;
                 byte* prior = filterbuf + (~j & 1) * imgwidthbytes;
-                byte* dest = a.@out + stride * j;
+                byte* dest = (byte*)(a.@out + (int)(stride * j));
                 int nk = width * filterbytes;
                 int filter = *raw++;
                 if (filter > 4)
@@ -536,16 +537,16 @@ namespace Alis.Core.Graphic.Stb
                         int outy = j * yspc[p] + yorig[p];
                         int outx = i * xspc[p] + xorig[p];
                         CRuntime.Memcpy(final + outy * a.S.Imgx * outbytes + outx * outbytes,
-                            a.@out + (j * x + i) * outbytes, (ulong) outbytes);
+                            (void*)(a.@out + (j * x + i) * outbytes), (ulong) outbytes);
                     }
 
-                    CRuntime.Free(a.@out);
+                    CRuntime.Free((void*)a.@out);
                     imagedata += imglen;
                     imagedatalen -= imglen;
                 }
             }
 
-            a.@out = final;
+            a.@out = (IntPtr)final;
             return 1;
         }
 
@@ -561,7 +562,7 @@ namespace Alis.Core.Graphic.Stb
             Stbicontext s = z.S;
             uint i = 0;
             uint pixelcount = s.Imgx * s.Imgy;
-            byte* p = z.@out;
+            byte* p = (byte*)z.@out;
             if (outn == 2)
             {
                 for (i = 0; i < pixelcount; ++i)
@@ -637,7 +638,7 @@ namespace Alis.Core.Graphic.Stb
             uint pixelcount = a.S.Imgx * a.S.Imgy;
             byte* p;
             byte* tempout;
-            byte* orig = a.@out;
+            byte* orig = (byte*)a.@out;
             p = (byte*) Stbimallocmad2((int) pixelcount, palimgn, 0);
             if (p == null)
             {
@@ -669,8 +670,8 @@ namespace Alis.Core.Graphic.Stb
                 }
             }
 
-            CRuntime.Free(a.@out);
-            a.@out = tempout;
+            CRuntime.Free((void*)a.@out);
+            a.@out = (IntPtr)tempout;
             return 1;
         }
 
@@ -683,7 +684,7 @@ namespace Alis.Core.Graphic.Stb
             Stbicontext s = z.S;
             uint i = 0;
             uint pixelcount = s.Imgx * s.Imgy;
-            byte* p = z.@out;
+            byte* p = (byte*)z.@out;
             if (s.Imgoutn == 3)
             {
                 for (i = 0; i < pixelcount; ++i)
@@ -757,9 +758,9 @@ namespace Alis.Core.Graphic.Stb
             int color = 0;
             int isiphone = 0;
             Stbicontext s = z.S;
-            z.Expanded = null;
-            z.Idata = null;
-            z.@out = null;
+            z.Expanded = IntPtr.Zero;
+            z.Idata = IntPtr.Zero;
+            z.@out = IntPtr.Zero;
             if (Stbicheckpngheader(s) == 0)
             {
                 return 0;
@@ -911,7 +912,7 @@ namespace Alis.Core.Graphic.Stb
                             return Stbierr("first not IHDR");
                         }
 
-                        if (z.Idata != null)
+                        if (z.Idata != IntPtr.Zero)
                         {
                             return Stbierr("tRNS after IDAT");
                         }
@@ -1024,16 +1025,16 @@ namespace Alis.Core.Graphic.Stb
                                 idatalimit *= 2;
                             }
 
-                            p = (byte*) CRuntime.Realloc(z.Idata, (ulong) idatalimit);
+                            p = (byte*) CRuntime.Realloc((void*)z.Idata, (ulong) idatalimit);
                             if (p == null)
                             {
                                 return Stbierr("outofmem");
                             }
 
-                            z.Idata = p;
+                            z.Idata = (IntPtr)p;
                         }
 
-                        if (Stbigetn(s, z.Idata + ioff, (int) c.length) == 0)
+                        if (Stbigetn(s, (byte*)(z.Idata + (int)ioff), (int) c.length) == 0)
                         {
                             return Stbierr("outofdata");
                         }
@@ -1055,18 +1056,18 @@ namespace Alis.Core.Graphic.Stb
                             return 1;
                         }
 
-                        if (z.Idata == null)
+                        if (z.Idata == IntPtr.Zero)
                         {
                             return Stbierr("no IDAT");
                         }
 
-                        if (z.Expanded == null)
+                        if (z.Expanded == IntPtr.Zero)
                         {
                             return 0;
                         }
 
-                        CRuntime.Free(z.Idata);
-                        z.Idata = null;
+                        CRuntime.Free((void*)z.Idata);
+                        z.Idata = IntPtr.Zero;
                         if (((reqcomp == s.Imgn + 1) && (reqcomp != 3) && (palimgn == 0)) || hastrans != 0)
                         {
                             s.Imgoutn = s.Imgn + 1;
@@ -1076,7 +1077,7 @@ namespace Alis.Core.Graphic.Stb
                             s.Imgoutn = s.Imgn;
                         }
 
-                        if (Stbicreatepngimage(z, z.Expanded, rawlen, s.Imgoutn, z.Depth, color, interlace) == 0)
+                        if (Stbicreatepngimage(z, (byte*)z.Expanded, rawlen, s.Imgoutn, z.Depth, color, interlace) == 0)
                         {
                             return 0;
                         }
@@ -1126,8 +1127,8 @@ namespace Alis.Core.Graphic.Stb
                             ++s.Imgn;
                         }
 
-                        CRuntime.Free(z.Expanded);
-                        z.Expanded = null;
+                        CRuntime.Free((void*)z.Expanded);
+                        z.Expanded = IntPtr.Zero;
                         Stbiget32Be(s);
                         return 1;
                     }
@@ -1188,8 +1189,8 @@ namespace Alis.Core.Graphic.Stb
                     return (byte*) (ulong) (Stbierr("bad bitsperchannel") != 0 ? 0 : 0);
                 }
 
-                result = p.@out;
-                p.@out = null;
+                result = (void*)p.@out;
+                p.@out = IntPtr.Zero;
                 if ((reqcomp != 0) && (reqcomp != p.S.Imgoutn))
                 {
                     if (ri->bitsperchannel == 8)
@@ -1216,12 +1217,12 @@ namespace Alis.Core.Graphic.Stb
                 }
             }
 
-            CRuntime.Free(p.@out);
-            p.@out = null;
-            CRuntime.Free(p.Expanded);
-            p.Expanded = null;
-            CRuntime.Free(p.Idata);
-            p.Idata = null;
+            CRuntime.Free((void*)p.@out);
+            p.@out = IntPtr.Zero;
+            CRuntime.Free((void*)p.Expanded);
+            p.Expanded = IntPtr.Zero;
+            CRuntime.Free((void*)p.Idata);
+            p.Idata = IntPtr.Zero;
             return result;
         }
 

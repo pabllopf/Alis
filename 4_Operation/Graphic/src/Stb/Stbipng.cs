@@ -1,9 +1,11 @@
-﻿namespace Alis.Core.Graphic.Stb
+﻿using System;
+
+namespace Alis.Core.Graphic.Stb
 {
     /// <summary>
     ///     The stbi png class
     /// </summary>
-    public unsafe class Stbipng
+    public class Stbipng
     {
         /// <summary>
         ///     The depth
@@ -13,17 +15,17 @@
         /// <summary>
         ///     The expanded
         /// </summary>
-        public byte* Expanded;
+        public IntPtr Expanded;
 
         /// <summary>
         ///     The idata
         /// </summary>
-        public byte* Idata;
+        public IntPtr Idata;
 
         /// <summary>
         ///     The @out
         /// </summary>
-        public byte* @out;
+        public IntPtr @out;
 
         /// <summary>
         ///     The
