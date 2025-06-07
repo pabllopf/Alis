@@ -2127,7 +2127,7 @@ namespace Alis.Core.Graphic.Stb
                     r.Ystep = r.Vs >> 1;
                     r.Wlores = (int) ((z.S.Imgx + r.Hs - 1) / r.Hs);
                     r.Ypos = 0;
-                    r.Line0 = r.Line1 = (byte*)z.Imgcomp[k].data;
+                    r.Line0 = r.Line1 = z.Imgcomp[k].data;
                     if ((r.Hs == 1) && (r.Vs == 1))
                     {
                         r.Resample = Resamplerow1;
@@ -2164,8 +2164,8 @@ namespace Alis.Core.Graphic.Stb
                     {
                         Stbiresample r = rescomp[k];
                         int ybot = r.Ystep >= r.Vs >> 1 ? 1 : 0;
-                        coutput[k] = r.Resample((byte*)z.Imgcomp[k].linebuf, ybot != 0 ? r.Line1 : r.Line0,
-                            ybot != 0 ? r.Line0 : r.Line1, r.Wlores, r.Hs);
+                        coutput[k] = r.Resample((byte*)z.Imgcomp[k].linebuf, (byte*)(ybot != 0 ? r.Line1 : r.Line0),
+                            (byte*)(ybot != 0 ? r.Line0 : r.Line1), r.Wlores, r.Hs);
                         if (++r.Ystep >= r.Vs)
                         {
                             r.Ystep = 0;
