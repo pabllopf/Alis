@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.Stb.Hebron.Runtime
@@ -35,7 +36,7 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
     /// <summary>
     ///     The runtime class
     /// </summary>
-    internal static unsafe class CRuntime
+    internal static class CRuntime
     {
         /// <summary>
         ///     The numbers
@@ -47,34 +48,33 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
         /// </summary>
         /// <param name="size">The size</param>
         /// <returns>The void</returns>
-        public static void* Malloc(ulong size) => Malloc((long) size);
+        public static IntPtr Malloc(ulong size) => Malloc((long) size);
 
         /// <summary>
         ///     Mallocs the size
         /// </summary>
         /// <param name="size">The size</param>
         /// <returns>The void</returns>
-        public static void* Malloc(long size)
+        public static IntPtr Malloc(long size)
         {
             IntPtr ptr = Marshal.AllocHGlobal((int) size);
 
             MemoryStats.Allocated();
 
-            return ptr.ToPointer();
+            return ptr;
         }
 
         /// <summary>
         ///     Frees the a
         /// </summary>
-        /// <param name="a">The </param>
-        public static void Free(void* a)
+        /// <param name="ptr">The </param>
+        public static void Free(IntPtr ptr)
         {
-            if (a == null)
+            if (ptr == IntPtr.Zero)
             {
                 return;
             }
-
-            IntPtr ptr = new IntPtr(a);
+            
             Marshal.FreeHGlobal(ptr);
             MemoryStats.Freed();
         }
@@ -85,21 +85,25 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <param name="size">The size</param>
-        public static void Memcpy(void* a, void* b, long size)
+        public static void Memcpy(IntPtr a, IntPtr b, long size)
         {
-            Buffer.MemoryCopy(b, a, size, size);
+            byte[] buffer = new byte[size];
+            Marshal.Copy(b, buffer, 0, (int)size);
+            Marshal.Copy(buffer, 0, a, (int)size);
         }
 
-        /// <summary>
-        ///     Memcpies the a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <param name="size">The size</param>
-        public static void Memcpy(void* a, void* b, ulong size)
-        {
-            Memcpy(a, b, (long) size);
-        }
+       /// <summary>
+       ///     Memcpies the a
+       /// </summary>
+       /// <param name="a">The </param>
+       /// <param name="b">The </param>
+       /// <param name="size">The size</param>
+       public static void Memcpy(IntPtr a, IntPtr b, ulong size)
+       {
+           byte[] buffer = new byte[size];
+           Marshal.Copy(b, buffer, 0, (int)size);
+           Marshal.Copy(buffer, 0, a, (int)size);
+       }
 
         /// <summary>
         ///     Memmoves the a
@@ -107,26 +111,13 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <param name="size">The size</param>
-        public static void Memmove(void* a, void* b, long size)
+        public static void Memmove(IntPtr a, IntPtr b, long size)
         {
-            void* temp = null;
-
-            try
-            {
-                temp = Malloc(size);
-                Memcpy(temp, b, size);
-                Memcpy(a, temp, size);
-            }
-
-            finally
-            {
-                if (temp != null)
-                {
-                    Free(temp);
-                }
-            }
+            byte[] buffer = new byte[size];
+            Marshal.Copy(b, buffer, 0, (int)size);
+            Marshal.Copy(buffer, 0, a, (int)size);
         }
-
+        
         /// <summary>
         ///     Memcmps the a
         /// </summary>
@@ -134,22 +125,22 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
         /// <param name="b">The </param>
         /// <param name="size">The size</param>
         /// <returns>The result</returns>
-        public static int Memcmp(void* a, void* b, long size)
+        public static int Memcmp(IntPtr a, IntPtr b, long size)
         {
+            byte[] bufferA = new byte[size];
+            byte[] bufferB = new byte[size];
+            Marshal.Copy(a, bufferA, 0, (int)size);
+            Marshal.Copy(b, bufferB, 0, (int)size);
+        
             int result = 0;
-            byte* ap = (byte*) a;
-            byte* bp = (byte*) b;
             for (long i = 0; i < size; ++i)
             {
-                if (*ap != *bp)
+                if (bufferA[i] != bufferB[i])
                 {
                     result += 1;
                 }
-
-                ap++;
-                bp++;
             }
-
+        
             return result;
         }
 
@@ -159,14 +150,15 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
         /// <param name="ptr">The ptr</param>
         /// <param name="value">The value</param>
         /// <param name="size">The size</param>
-        public static void Memset(void* ptr, int value, long size)
+        public static void Memset(IntPtr ptr, int value, long size)
         {
-            byte* bptr = (byte*) ptr;
-            byte bval = (byte) value;
+            byte[] buffer = new byte[size];
+            byte bval = (byte)value;
             for (long i = 0; i < size; ++i)
             {
-                *bptr++ = bval;
+                buffer[i] = bval;
             }
+            Marshal.Copy(buffer, 0, ptr, (int)size);
         }
 
         /// <summary>
@@ -175,9 +167,15 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
         /// <param name="ptr">The ptr</param>
         /// <param name="value">The value</param>
         /// <param name="size">The size</param>
-        public static void Memset(void* ptr, int value, ulong size)
+        public static void Memset(IntPtr ptr, int value, ulong size)
         {
-            Memset(ptr, value, (long) size);
+            byte[] buffer = new byte[size];
+            byte bval = (byte)value;
+            for (ulong i = 0; i < size; ++i)
+            {
+                buffer[i] = bval;
+            }
+            Marshal.Copy(buffer, 0, ptr, (int)size);
         }
 
         /// <summary>
@@ -194,26 +192,18 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
         /// <param name="a">The </param>
         /// <param name="newSize">The new size</param>
         /// <returns>The void</returns>
-        public static void* Realloc(void* a, long newSize)
+        public static IntPtr Realloc(IntPtr a, long newSize)
         {
-            if (a == null)
+            if (a == IntPtr.Zero)
             {
                 return Malloc(newSize);
             }
-
-            IntPtr ptr = new IntPtr(a);
-            IntPtr result = Marshal.ReAllocHGlobal(ptr, new IntPtr(newSize));
-
-            return result.ToPointer();
+        
+            IntPtr result = Marshal.ReAllocHGlobal(a, new IntPtr(newSize));
+            return result;
         }
 
-        /// <summary>
-        ///     Reallocs the a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="newSize">The new size</param>
-        /// <returns>The void</returns>
-        public static void* Realloc(void* a, ulong newSize) => Realloc(a, (long) newSize);
+        public static IntPtr Realloc(IntPtr a, ulong newSize) => Realloc(a, (long)newSize);
 
         /// <summary>
         ///     Abses the v
@@ -244,20 +234,23 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
         /// <param name="src">The src</param>
         /// <param name="token">The token</param>
         /// <returns>The result</returns>
-        public static int Strcmp(sbyte* src, string token)
-        {
-            int result = 0;
-
-            for (int i = 0; i < token.Length; ++i)
-            {
-                if (src[i] != token[i])
-                {
-                    ++result;
-                }
-            }
-
-            return result;
-        }
+       public static int Strcmp(IntPtr src, string token)
+       {
+           byte[] srcBuffer = new byte[token.Length];
+           Marshal.Copy(src, srcBuffer, 0, token.Length);
+       
+           int result = 0;
+       
+           for (int i = 0; i < token.Length; ++i)
+           {
+               if (srcBuffer[i] != (byte)token[i])
+               {
+                   ++result;
+               }
+           }
+       
+           return result;
+       }
 
         /// <summary>
         ///     Strncmps the src
@@ -266,58 +259,45 @@ namespace Alis.Core.Graphic.Stb.Hebron.Runtime
         /// <param name="token">The token</param>
         /// <param name="size">The size</param>
         /// <returns>The result</returns>
-        public static int Strncmp(sbyte* src, string token, ulong size)
+       public static int Strncmp(IntPtr src, string token, ulong size)
+       {
+           byte[] srcBuffer = new byte[size];
+           Marshal.Copy(src, srcBuffer, 0, (int)size);
+       
+           int result = 0;
+       
+           for (int i = 0; i < Math.Min(token.Length, (int)size); ++i)
+           {
+               if (srcBuffer[i] != (byte)token[i])
+               {
+                   ++result;
+               }
+           }
+       
+           return result;
+       }
+
+        public static long Strtol(IntPtr start, out IntPtr end, int radix)
         {
-            int result = 0;
-
-            for (int i = 0; i < Math.Min(token.Length, (int) size); ++i)
-            {
-                if (src[i] != token[i])
-                {
-                    ++result;
-                }
-            }
-
-            return result;
-        }
-
-        /// <summary>
-        ///     Strtols the start
-        /// </summary>
-        /// <param name="start">The start</param>
-        /// <param name="end">The end</param>
-        /// <param name="radix">The radix</param>
-        /// <returns>The result</returns>
-        public static long Strtol(sbyte* start, sbyte** end, int radix)
-        {
-            // First step - determine length
+            string input = Marshal.PtrToStringAnsi(start);
             int length = 0;
-            sbyte* ptr = start;
-            while (Numbers.IndexOf((char) *ptr) != -1)
-            {
-                ++ptr;
-                ++length;
-            }
 
+            Debug.Assert(input != null, nameof(input) + " != null");
+            
+            while (length < input.Length && Numbers.IndexOf(input[length]) != -1)
+            {
+                length++;
+            }
+        
             long result = 0;
-
-            // Now build up the number
-            ptr = start;
-            while (length > 0)
+            for (int i = 0; i < length; i++)
             {
-                long num = Numbers.IndexOf((char) *ptr);
-                long pow = (long) Math.Pow(10, length - 1);
+                long num = Numbers.IndexOf(input[i]);
+                long pow = (long)Math.Pow(10, length - i - 1);
                 result += num * pow;
-
-                ++ptr;
-                --length;
             }
-
-            if (end != null)
-            {
-                *end = ptr;
-            }
-
+        
+            end = start + length;
             return result;
         }
     }
