@@ -1034,7 +1034,7 @@ namespace Alis.Core.Graphic.Stb
                             z.Idata = (IntPtr)p;
                         }
 
-                        if (Stbigetn(s, (byte*)(z.Idata + (int)ioff), (int) c.length) == 0)
+                        if (Stbigetn(s, (IntPtr)(z.Idata + (int)ioff), (int) c.length) == 0)
                         {
                             return Stbierr("outofdata");
                         }
