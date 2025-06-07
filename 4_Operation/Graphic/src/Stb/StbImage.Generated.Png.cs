@@ -122,11 +122,11 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="y">The </param>
         /// <param name="comp">The comp</param>
         /// <returns>The int</returns>
-        public static int Stbipnginfo(Stbicontext s, int* x, int* y, int* comp)
+        public static int Stbipnginfo(Stbicontext s, ref int x, ref int y, ref int comp)
         {
             Stbipng p = new Stbipng();
             p.S = s;
-            return Stbipnginforaw(p, x, y, comp);
+            return Stbipnginforaw(p, ref x, ref y, ref comp);
         }
 
         /// <summary>
@@ -138,7 +138,10 @@ namespace Alis.Core.Graphic.Stb
         {
             Stbipng p = new Stbipng();
             p.S = s;
-            if (Stbipnginforaw(p, null, null, null) == 0)
+            int i = 0;
+            int i1 = 0;
+            int comp = 0;
+            if (Stbipnginforaw(p, ref i, ref i1, ref comp) == 0)
             {
                 return 0;
             }
@@ -1234,29 +1237,18 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="y">The </param>
         /// <param name="comp">The comp</param>
         /// <returns>The int</returns>
-        public static int Stbipnginforaw(Stbipng p, int* x, int* y, int* comp)
+        public static int Stbipnginforaw(Stbipng p, ref int x, ref int y, ref int comp)
         {
             if (Stbiparsepngfile(p, StbiscaNheader, 0) == 0)
             {
                 Stbirewind(p.S);
                 return 0;
             }
-
-            if (x != null)
-            {
-                *x = (int) p.S.Imgx;
-            }
-
-            if (y != null)
-            {
-                *y = (int) p.S.Imgy;
-            }
-
-            if (comp != null)
-            {
-                *comp = p.S.Imgn;
-            }
-
+        
+            x = (int)p.S.Imgx;
+            y = (int)p.S.Imgy;
+            comp = p.S.Imgn;
+        
             return 1;
         }
     }
