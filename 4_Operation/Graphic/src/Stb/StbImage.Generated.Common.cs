@@ -1244,19 +1244,19 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="y">The </param>
         /// <param name="comp">The comp</param>
         /// <returns>The int</returns>
-        public static int Stbiinfomain(Stbicontext s, int* x, int* y, int* comp)
+        public static int Stbiinfomain(Stbicontext s, ref int x, ref int y, ref int comp)
         {
-            if (Stbijpeginfo(s, x, y, comp) != 0)
+            if (Stbijpeginfo(s, (int*)x, (int*)y, (int*)comp) != 0)
             {
                 return 1;
             }
 
-            if (Stbipnginfo(s, x, y, comp) != 0)
+            if (Stbipnginfo(s, (int*)x, (int*)y, (int*)comp) != 0)
             {
                 return 1;
             }
 
-            if (Stbibmpinfo(s, x, y, comp) != 0)
+            if (Stbibmpinfo(s, (int*)x, (int*)y, (int*)comp) != 0)
             {
                 return 1;
             }
