@@ -427,11 +427,10 @@
     </ItemGroup>
 
 
-
     <PropertyGroup Condition="$(AssemblyName.Contains('Test'))">
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Test[^*]*', ''))</NameTest>
     </PropertyGroup>
-    
+
     <ItemGroup Condition="$(AssemblyName.Contains('Test'))">
         <ProjectReference
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == True"
@@ -441,7 +440,7 @@
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
 
-        
+
         <ProjectReference
             Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
             Include="$(ProjectDir)/../generator/$(NameTest).Generator.csproj"
@@ -452,8 +451,8 @@
             Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == False"
             Include="$(ProjectDir)/../../generator/$(NameTest).Generator.csproj"
             OutputItemType="Analyzer"
-            ReferenceOutputAssembly="false"/> 
-            
+            ReferenceOutputAssembly="false"/>
+
     </ItemGroup>
 
     <PropertyGroup Condition="$(AssemblyName.Contains('Sample'))">
@@ -469,7 +468,7 @@
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
 
-        
+
         <ProjectReference
             Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
             Include="$(ProjectDir)/../generator/$(NameTest).Generator.csproj"
@@ -480,7 +479,7 @@
             Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == False"
             Include="$(ProjectDir)/../../generator/$(NameTest).Generator.csproj"
             OutputItemType="Analyzer"
-            ReferenceOutputAssembly="false"/> 
+            ReferenceOutputAssembly="false"/>
     </ItemGroup>
 
     <PropertyGroup Condition="$(AssemblyName.Contains('Benchmark'))">
@@ -496,7 +495,7 @@
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
 
-        
+
         <ProjectReference
             Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
             Include="$(ProjectDir)/../generator/$(NameTest).Generator.csproj"
@@ -508,6 +507,6 @@
             Include="$(ProjectDir)/../../generator/$(NameTest).Generator.csproj"
             OutputItemType="Analyzer"
             ReferenceOutputAssembly="false"/>
-        
+
     </ItemGroup>
 </Project>

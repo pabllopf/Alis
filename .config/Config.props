@@ -9,7 +9,7 @@
             netstandard2.0;netstandard2.1;
             net471;net472;net48;net481;
         </TargetFrameworks>
-        
+
         <TargetFrameworks Condition="$(AssemblyName.Contains('App')) == true">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Generator')) == true">netstandard2.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Extension')) == true">netstandard2.0;</TargetFrameworks>
@@ -55,7 +55,7 @@
 
     <!-- Import all the props files in the nuget folder -->
     <Import Project="$(SolutionDir).config/nuget/Packable.props"/>
-    
+
     <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Authors.props"/>
     <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Copyright.props"/>
     <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Description.props"/>

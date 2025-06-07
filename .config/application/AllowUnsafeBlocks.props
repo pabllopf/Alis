@@ -4,12 +4,12 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
-    <PropertyGroup Condition="$(AssemblyName.Contains('Benchmark')) == true" >
+    <PropertyGroup Condition="$(AssemblyName.Contains('Benchmark')) == true">
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
 
-    <PropertyGroup Condition="$(AssemblyName.Contains('Generator')) == true" >
+    <PropertyGroup Condition="$(AssemblyName.Contains('Generator')) == true">
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     </PropertyGroup>
 </Project>

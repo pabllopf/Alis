@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
 using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
@@ -675,58 +674,6 @@ namespace Alis.Core.Graphic.Stb
             }
 
             return (void*) 1;
-        }
-
-        /// <summary>
-        ///     The stbi bmp data
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        public struct Stbibmpdata
-        {
-            /// <summary>
-            ///     The bpp
-            /// </summary>
-            public int bpp;
-
-            /// <summary>
-            ///     The offset
-            /// </summary>
-            public int offset;
-
-            /// <summary>
-            ///     The hsz
-            /// </summary>
-            public int hsz;
-
-            /// <summary>
-            ///     The mr
-            /// </summary>
-            public uint mr;
-
-            /// <summary>
-            ///     The mg
-            /// </summary>
-            public uint mg;
-
-            /// <summary>
-            ///     The mb
-            /// </summary>
-            public uint mb;
-
-            /// <summary>
-            ///     The ma
-            /// </summary>
-            public uint ma;
-
-            /// <summary>
-            ///     The all
-            /// </summary>
-            public uint alla;
-
-            /// <summary>
-            ///     The extra read
-            /// </summary>
-            public int extraread;
         }
     }
 }

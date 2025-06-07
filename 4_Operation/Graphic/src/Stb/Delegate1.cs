@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ErrorCallback.cs
+//  File:Delegate1.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,17 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.GlfwLib.Enums;
-
-namespace Alis.Core.Graphic.GlfwLib
+namespace Alis.Core.Graphic.Stb
 {
     /// <summary>
-    ///     Function signature for receiving error callbacks.
+    ///     The delegate
     /// </summary>
-    /// <param name="code">The error code.</param>
-    /// <param name="message">A pointer to the UTF-8 encoded (null-terminated) error message.</param>
-    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void ErrorCallback(ErrorCode code, IntPtr message);
+    public unsafe delegate void Delegate1(byte* arg0, byte* arg1, byte* arg2, byte* arg3, int arg4, int arg5);
 }

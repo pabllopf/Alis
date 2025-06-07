@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
 using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
@@ -333,7 +332,7 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="add">The add</param>
         /// <returns>The int</returns>
         public static int Stbimad3Sizesvalid(int a, int b, int c, int add) => (Stbimul2Sizesvalid(a, b) != 0) && (Stbimul2Sizesvalid(a * b, c) != 0) &&
-                                                                                 (Stbiaddsizesvalid(a * b * c, add) != 0)
+                                                                              (Stbiaddsizesvalid(a * b * c, add) != 0)
             ? 1
             : 0;
 
@@ -347,7 +346,7 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="add">The add</param>
         /// <returns>The int</returns>
         public static int Stbimad4Sizesvalid(int a, int b, int c, int d, int add) => (Stbimul2Sizesvalid(a, b) != 0) && (Stbimul2Sizesvalid(a * b, c) != 0) &&
-                                                                                        (Stbimul2Sizesvalid(a * b * c, d) != 0) && (Stbiaddsizesvalid(a * b * c * d, add) != 0)
+                                                                                     (Stbimul2Sizesvalid(a * b * c, d) != 0) && (Stbiaddsizesvalid(a * b * c * d, add) != 0)
             ? 1
             : 0;
 
@@ -1278,28 +1277,6 @@ namespace Alis.Core.Graphic.Stb
             }
 
             return 0;
-        }
-
-        /// <summary>
-        ///     The stbi result info
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        public struct Stbiresultinfo
-        {
-            /// <summary>
-            ///     The bits per channel
-            /// </summary>
-            public int bitsperchannel;
-
-            /// <summary>
-            ///     The num channels
-            /// </summary>
-            public int numchannels;
-
-            /// <summary>
-            ///     The channel order
-            /// </summary>
-            public int channelorder;
         }
     }
 }

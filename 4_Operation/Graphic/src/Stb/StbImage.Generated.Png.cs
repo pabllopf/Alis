@@ -17,7 +17,7 @@
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
-//  This program is distributed @in the hope that it will be useful,
+//  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
 using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
@@ -1258,54 +1257,6 @@ namespace Alis.Core.Graphic.Stb
             }
 
             return 1;
-        }
-
-        /// <summary>
-        ///     The stbi png class
-        /// </summary>
-        public class Stbipng
-        {
-            /// <summary>
-            ///     The @out
-            /// </summary>
-            public byte* @out;
-
-            /// <summary>
-            ///     The depth
-            /// </summary>
-            public int Depth;
-
-            /// <summary>
-            ///     The expanded
-            /// </summary>
-            public byte* Expanded;
-
-            /// <summary>
-            ///     The idata
-            /// </summary>
-            public byte* Idata;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public Stbicontext S;
-        }
-
-        /// <summary>
-        ///     The stbi pngchunk
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        public struct Stbipngchunk
-        {
-            /// <summary>
-            ///     The length
-            /// </summary>
-            public uint length;
-
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public uint type;
         }
     }
 }

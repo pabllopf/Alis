@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ErrorCallback.cs
+//  File:Stbiresultinfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,17 +27,29 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.GlfwLib.Enums;
 
-namespace Alis.Core.Graphic.GlfwLib
+namespace Alis.Core.Graphic.Stb
 {
     /// <summary>
-    ///     Function signature for receiving error callbacks.
+    ///     The stbi result info
     /// </summary>
-    /// <param name="code">The error code.</param>
-    /// <param name="message">A pointer to the UTF-8 encoded (null-terminated) error message.</param>
-    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void ErrorCallback(ErrorCode code, IntPtr message);
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct Stbiresultinfo
+    {
+        /// <summary>
+        ///     The bits per channel
+        /// </summary>
+        public int bitsperchannel;
+
+        /// <summary>
+        ///     The num channels
+        /// </summary>
+        public int numchannels;
+
+        /// <summary>
+        ///     The channel order
+        /// </summary>
+        public int channelorder;
+    }
 }
