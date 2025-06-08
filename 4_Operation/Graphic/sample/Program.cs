@@ -51,6 +51,7 @@ namespace Alis.Core.Graphic.Sample
             Logger.Log("4. Rotate 3D Object Sample");
             Logger.Log("5. Load BMP Image");
             Logger.Log("6. Render a square unfilled");
+            Logger.Log("7. Texture Sample PNG");
             int sampleNumber = Convert.ToInt32(Console.ReadLine());
 
             switch (sampleNumber)
@@ -59,14 +60,17 @@ namespace Alis.Core.Graphic.Sample
                     TriangleSample triangleSample = new TriangleSample();
                     triangleSample.Run();
                     break;
+                
                 case 2:
                     CubeSample cubeSample = new CubeSample();
                     cubeSample.Run();
                     break;
+                
                 case 3:
                     TextureSample textureSample = new TextureSample();
                     textureSample.Run();
                     break;
+                
                 case 4:
                     Rotate3DObjectSample rotate3DObjectSampleSample = new Rotate3DObjectSample();
                     rotate3DObjectSampleSample.Run();
@@ -80,6 +84,11 @@ namespace Alis.Core.Graphic.Sample
                 case 6:
                     RenderSquareUnfilled unfilled = new RenderSquareUnfilled();
                     unfilled.Run();
+                    break;
+                
+                case 7:
+                    TextureSamplePng textureSamplePng = new TextureSamplePng();
+                    textureSamplePng.Run();
                     break;
             }
         }

@@ -5,4 +5,11 @@
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
         <OutDir Condition="($(AssemblyName.Contains('Sample')) OR $(AssemblyName.Contains('App'))) AND $(AssemblyName.Contains('Test')) == false">bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
     </PropertyGroup>
+    <ItemGroup>
+      <None Update="Assets\tile000.png">
+        <LinkBase>Assets\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+    </ItemGroup>
 </Project>
