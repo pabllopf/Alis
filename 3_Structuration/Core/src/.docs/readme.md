@@ -19,6 +19,7 @@
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/pabllopf)
 
 
+
 > Unify and optimize game development with Alis.Core, the heart of the Alis framework. 💯 free for Windows, macOS, and
 > Linux!
 
