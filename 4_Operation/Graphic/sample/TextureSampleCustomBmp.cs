@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Resource;
@@ -10,16 +10,43 @@ using Alis.Core.Graphic.OpenGL.Enums;
 
 namespace Alis.Core.Graphic.Sample
 {
+    /// <summary>
+    /// The texture sample custom bmp class
+    /// </summary>
     public class TextureSampleCustomBmp
     {
+        /// <summary>
+        /// The ebo
+        /// </summary>
         private uint ebo;
+        /// <summary>
+        /// The running
+        /// </summary>
         private bool running = true;
+        /// <summary>
+        /// The shader program
+        /// </summary>
         private uint shaderProgram;
+        /// <summary>
+        /// The texture
+        /// </summary>
         private uint texture;
+        /// <summary>
+        /// The vao
+        /// </summary>
         private uint vao;
+        /// <summary>
+        /// The vbo
+        /// </summary>
         private uint vbo;
+        /// <summary>
+        /// The window
+        /// </summary>
         private Window window;
 
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
         public void Draw()
         {
             Gl.GlUseProgram(shaderProgram);
@@ -27,6 +54,13 @@ namespace Alis.Core.Graphic.Sample
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
         }
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
+        /// <exception cref="Exception">Failed to create GLFW window</exception>
+        /// <exception cref="Exception">Failed to initialize GLFW</exception>
+        /// <exception cref="Exception">Invalid BMP file</exception>
+        /// <exception cref="FileNotFoundException">Texture file not found </exception>
         public void Run()
         {
             if (!Glfw.Init()) throw new Exception("Failed to initialize GLFW");

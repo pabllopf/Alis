@@ -1,13 +1,31 @@
-﻿using System.IO;
+using System.IO;
 
 namespace Alis.Core.Graphic.Sample
 {
+    /// <summary>
+    /// The sprite class
+    /// </summary>
     public class Sprite
     {
+        /// <summary>
+        /// Gets the value of the width
+        /// </summary>
         public int Width { get; }
+        /// <summary>
+        /// Gets the value of the height
+        /// </summary>
         public int Height { get; }
+        /// <summary>
+        /// Gets the value of the data
+        /// </summary>
         public byte[] Data { get; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="data">The data</param>
         private Sprite(int width, int height, byte[] data)
         {
             Width = width;
@@ -15,6 +33,11 @@ namespace Alis.Core.Graphic.Sample
             Data = data;
         }
 
+        /// <summary>
+        /// Loads the path
+        /// </summary>
+        /// <param name="path">The path</param>
+        /// <returns>The sprite</returns>
         public static Sprite Load(string path)
         {
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
@@ -41,7 +64,7 @@ namespace Alis.Core.Graphic.Sample
 
                 for (int y = 0; y < height; y++)
                 {
-                    int row = height - 1 - y;
+                    int row =  y;
                     for (int x = 0; x < width; x++)
                     {
                         byte blue = reader.ReadByte();
