@@ -1,22 +1,21 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
-namespace Alis.Core.Graphic.Utility.Image
+namespace Alis.Core.Graphic.Sample
 {
-    public class BmpImage
+    public class Sprite
     {
         public int Width { get; }
         public int Height { get; }
         public byte[] Data { get; }
 
-        private BmpImage(int width, int height, byte[] data)
+        private Sprite(int width, int height, byte[] data)
         {
             Width = width;
             Height = height;
             Data = data;
         }
 
-        public static BmpImage Load(string path)
+        public static Sprite Load(string path)
         {
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
             using (var reader = new BinaryReader(stream))
@@ -64,7 +63,7 @@ namespace Alis.Core.Graphic.Utility.Image
                     }
                 }
 
-                return new BmpImage(width, height, rawData);
+                return new Sprite(width, height, rawData);
             }
         }
     }

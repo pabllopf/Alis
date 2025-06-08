@@ -7,7 +7,6 @@ using Alis.Core.Graphic.GlfwLib.Enums;
 using Alis.Core.Graphic.GlfwLib.Structs;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Graphic.Utility.Image;
 
 namespace Alis.Core.Graphic.Sample
 {
@@ -125,7 +124,7 @@ namespace Alis.Core.Graphic.Sample
             string imagePath = AssetManager.Find("tile000.bmp");
             if (!File.Exists(imagePath)) throw new FileNotFoundException("Texture file not found", imagePath);
 
-            BmpImage bmp = BmpImage.Load(imagePath);
+            Sprite bmp = Sprite.Load(imagePath);
             if (bmp == null) throw new Exception("Invalid BMP file");
 
             texture = Gl.GenTexture();
