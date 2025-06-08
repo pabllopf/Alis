@@ -37,7 +37,8 @@ namespace Alis.Core.Graphic.Stb
     /// <summary>
     ///     The stb image class
     /// </summary>
-    public static partial class StbImage
+    public
+        static unsafe partial class StbImage
     {
         /// <summary>
         ///     The stbi failure reason
@@ -114,7 +115,7 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="buf">The buf</param>
         /// <param name="size">The size</param>
         /// <returns>The result</returns>
-        public static int Stbigetn(Stbicontext s, IntPtr buf, int size)
+        public static int Stbigetn(Stbicontext s, byte* buf, int size)
         {
             if (s.TempBuffer == null ||
                 s.TempBuffer.Length < size)
@@ -123,7 +124,7 @@ namespace Alis.Core.Graphic.Stb
             }
 
             int result = s.Stream.Read(s.TempBuffer, 0, size);
-            Marshal.Copy(s.TempBuffer, 0, buf, result);
+            Marshal.Copy(s.TempBuffer, 0, new IntPtr(buf), result);
 
             return result;
         }
