@@ -158,7 +158,7 @@ namespace Alis.Core.Graphic.Sample
             string imagePath = AssetManager.Find("tile000.bmp");
             if (!File.Exists(imagePath)) throw new FileNotFoundException("Texture file not found", imagePath);
 
-            Sprite bmp = Sprite.Load(imagePath);
+            Image bmp = Image.Load(imagePath);
             if (bmp == null) throw new Exception("Invalid BMP file");
 
             texture = Gl.GenTexture();

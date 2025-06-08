@@ -43,7 +43,6 @@ using Alis.Core.Graphic.GlfwLib.Enums;
 using Alis.Core.Graphic.GlfwLib.Structs;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Graphic.Stb;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
 
 namespace Alis.Core.Ecs.Systems.Manager.Graphic
@@ -142,8 +141,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                 string iconPath = Context.Setting.General.Icon;
                 if (!string.IsNullOrEmpty(iconPath))
                 {
-                    Image icon = LoadIcon(AssetManager.Find(iconPath));
-                    Glfw.SetWindowIcon(Window, 1, new[] {icon});
+                    //Image icon = LoadIcon(AssetManager.Find(iconPath));
+                    //Glfw.SetWindowIcon(Window, 1, new[] {icon});
                 }
             }
 
@@ -164,6 +163,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                 throw new FileNotFoundException("Icon file not found", iconPath);
             }
 
+            /*
             using (FileStream stream = File.OpenRead(iconPath))
             {
                 ImageResult image = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
@@ -176,7 +176,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                 handle.Free();
 
                 return icon;
-            }
+            }*/
+            
+            return Image.Load(iconPath);
         }
 
 
