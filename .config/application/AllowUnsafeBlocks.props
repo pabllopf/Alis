@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <PropertyGroup>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     </PropertyGroup>
-
-    <PropertyGroup Condition="$(AssemblyName.Contains('Benchmark')) == true">
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    </PropertyGroup>
-
-
+    
     <PropertyGroup Condition="$(AssemblyName.Contains('Generator')) == true">
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     </PropertyGroup>
