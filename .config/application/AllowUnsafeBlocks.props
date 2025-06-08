@@ -3,7 +3,7 @@
     <PropertyGroup>
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     </PropertyGroup>
-    
+
     <PropertyGroup Condition="$(AssemblyName.Contains('Generator')) == true">
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     </PropertyGroup>
