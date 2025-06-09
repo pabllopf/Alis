@@ -42,16 +42,9 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        runtime: [
-          win-x64, win-x86, win-arm64,
-          linux-x64, linux-musl-x64,
-          linux-arm, linux-arm64,
-          linux-musl-arm, linux-musl-arm64,
-          osx-x64, osx-arm64
-        ]
         framework: [
           net5.0, net8.0
-          netstandard2.0, netstandard2.1,
+          netstandard2.0,
           net471
         ]
     steps:
@@ -60,11 +53,11 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.x.x
-      - name: Build EXTENSIONS - ${{ matrix.runtime }} | ${{ matrix.framework }}
+      - name: Build ALIS.EXTENSIONS - ${{ matrix.framework }}
         run: |
           for project in $(find . -name "*.csproj" -type f); do
             if [[ $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator."* ]]; then
-              echo "Compiling $project for  ${{ matrix.framework }}, ${{ matrix.runtime }}"
-              dotnet build "$project" -r "${{ matrix.runtime }}" -f  ${{ matrix.framework }} -c Release
+              echo "Compiling $project for  ${{ matrix.framework }}"
+              dotnet build "$project" -f ${{ matrix.framework }} -c Release
             fi
           done

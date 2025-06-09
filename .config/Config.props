@@ -12,8 +12,8 @@
 
         <TargetFrameworks Condition="$(AssemblyName.Contains('App')) == true">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Generator')) == true">netstandard2.0;</TargetFrameworks>
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Generator')) == true AND $(Configuration) == 'Release'">net5.0;net8.0;netstandard2.0;netstandard2.1</TargetFrameworks>
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Extension')) == true AND $(Configuration) == 'Release'">net471;net5.0;net8.0;netstandard2.0;netstandard2.1</TargetFrameworks>
+        <TargetFrameworks Condition="$(AssemblyName.Contains('Generator')) == true AND $(Configuration) == 'Release'">net5.0;net8.0;netstandard2.0</TargetFrameworks>
+        <TargetFrameworks Condition="$(AssemblyName.Contains('Extension')) == true AND $(Configuration) == 'Release'">net471;net5.0;net8.0;netstandard2.0</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Benchmark')) == true">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Test')) == true">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Sample')) == true">net8.0;</TargetFrameworks>
