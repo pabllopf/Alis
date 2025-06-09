@@ -75,10 +75,10 @@ jobs:
           linux-musl-arm, linux-musl-arm64,
           osx-x64, osx-arm64
         ]
-        framework: [
-          net5.0, net6.0, net7.0, net8.0, net9.0,
-          netstandard2.0, netstandard2.1,
-          net471, net472, net48, net481
+        framework: [net8.0
+          #net5.0, net6.0, net7.0, net8.0, net9.0,
+          #netstandard2.0, netstandard2.1,
+          #net471, net472, net48, net481
         ]
     steps:
       - name: Checkout
