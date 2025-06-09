@@ -89,6 +89,6 @@
     <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/SonarQubeExclude.props"/>
 
     <!-- Import all the props files in the target folder -->
-    <Import Condition="'$(IsPublish)' == 'true'" Project="$(SolutionDir).config/target/BeforeBuild.props"/>
-    <Import Condition="'$(IsPublish)' == 'true'" Project="$(SolutionDir).config/target/AfterBuild.props"/>
+    <Import Condition="'$(Configuration)' == 'Release'" Project="$(SolutionDir).config/target/BeforeBuild.props"/>
+    <Import Condition="'$(Configuration)' == 'Release'" Project="$(SolutionDir).config/target/AfterBuild.props"/>
 </Project>
