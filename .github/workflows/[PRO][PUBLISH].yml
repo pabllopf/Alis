@@ -57,7 +57,7 @@ jobs:
       - name: Build EXTENSIONS - ${{ matrix.framework }}
         run: |
           for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator."* ]]; then
+            if [[ $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
               echo "Compiling $project for ${{ matrix.framework }}"
               dotnet build "$project" -f ${{ matrix.framework }} -c Release
             fi
@@ -95,15 +95,48 @@ jobs:
       - name: Build CORE - ${{ matrix.framework }} / ${{ matrix.runtime }}
         run: |
           for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator."* ]]; then
+            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
               echo "Compiling $project for ${{ matrix.framework }}, ${{ matrix.runtime }}"
               dotnet build "$project" -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
             fi
           done
 
+  build_apps:
+    needs: [prepare]
+    runs-on: macos-13
+    strategy:
+      matrix:
+        runtime: [
+          osx-arm64, osx-x64,
+          win-x64, win-arm64, win-x86,
+          linux-x64, linux-arm64, linux-arm,
+          linux-musl-x64, linux-musl-arm
+        ]
+        framework: [ net8.0 ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 1
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.301
+          
+      - name: Publish INTALLER - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r ${{ matrix.runtime }} -f ${{ matrix.framework }}
+
+      - name: Publish ENGINE - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r ${{ matrix.runtime }} -f ${{ matrix.framework }}
+                   
+      - name: Publish HUB - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r ${{ matrix.runtime }} -f ${{ matrix.framework }}
+
   publish_packages:
     name: Publish NuGet Packages
-    needs: [prepare, build_extensions, build_core]
+    needs: [prepare, build_extensions, build_core, build_apps]
     runs-on: macos-13
     steps:
       - name: Checkout
@@ -134,12 +167,13 @@ jobs:
           fi
           versionfinal="$major.$minor.$patch"
           sed -i "" "s/$version/$versionfinal/" "$file"
+          echo "version=$versionfinal" >> $GITHUB_OUTPUT
 
       - name: Create packages
         run: |
           mkdir -p ./.publish/${{ needs.prepare.outputs.version }}
           for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator."* ]]; then
+            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Test."* && $project != *".Benchmark"* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* && $project != *".Generator."* ]]; then
               echo "Packing $project"
               dotnet pack "$project" -c Release -o "./.publish/${{ needs.prepare.outputs.version }}/"
             fi
@@ -192,7 +226,7 @@ jobs:
           git_commit_gpgsign: true
 
       - name: git tag
-        run: git tag -s "v${{ env.VERSIONFINAL }}" -m "v${{ env.VERSIONFINAL }}"
+        run: git tag -s "v${{ needs.prepare.outputs.version }}" -m "v${{ needs.prepare.outputs.version }}"
         env:
           GITHUB_TOKEN: ${{ secrets.OSLASH_BOT_GITHUB_TOKEN }}
           GIT_AUTHOR_NAME: ${{ secrets.USER_NAME }}
@@ -214,7 +248,7 @@ jobs:
         uses: Requarks/changelog-action@v1
         with:
           token: ${{ github.token }}
-          tag: "v${{ env.VERSIONFINAL }}"
+          tag: "v${{ needs.prepare.outputs.version }}"
           writeToFile: true
           excludeTypes: chore, perf
 
@@ -223,8 +257,8 @@ jobs:
           body: ${{ steps.changelog.outputs.changes }}
           token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
-          name: "v${{ env.VERSIONFINAL }} has arrived !!!"
-          tag_name: "v${{ env.VERSIONFINAL }}"
+          name: "v${{ needs.prepare.outputs.version }} has arrived !!!"
+          tag_name: "v${{ needs.prepare.outputs.version }}"
           generate_release_notes: true
           append_body: true
           files: |
