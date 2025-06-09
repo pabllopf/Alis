@@ -5,18 +5,18 @@ on:
     branches: [ master ]
 
 jobs:
-  
-  Create_Packages:
+  prepare:
     if: "contains(github.event.head_commit.message, 'release:')"
     runs-on: macos-13
+    outputs:
+      version: ${{ steps.get-version.outputs.version }}
     steps:
-      - name: Check
+      - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: master
-          fetch: 0
+          fetch-depth: 1
 
-      - name: setup
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
@@ -28,339 +28,135 @@ jobs:
             8.0.202
             9.x.x
 
-      - name: Define file name to update version
-        run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
-
-      - name: Print the file name to update version
-        run: echo $FILENAME
-
-      - name: Get the current version
-        run: echo "VERSION=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ${{ env.FILENAME }} )" >> $GITHUB_ENV
-
-      - name: Print the current version
-        run: echo $VERSION
-
-      - name: Get mayor version
-        run: echo "MAYOR=$(echo ${{ env.VERSION }} | cut -f1 -d.)" >> $GITHUB_ENV
-
-      - name: Print mayor version
-        run: echo $MAYOR
-
-      - name: Get minor version
-        run: echo "MINOR=$(echo ${{ env.VERSION }} | cut -f2 -d.)" >> $GITHUB_ENV
-
-      - name: Print minor version
-        run: echo $MINOR
-
-      - name: Get alpha version
-        run: echo "ALPHA=$(echo ${{ env.VERSION }} | cut -f3 -d.)" >> $GITHUB_ENV
-
-      - name: Print current alpha version
-        run: echo $ALPHA
-
-      - name: Increment version
-        run: echo "ALPHA=$(((ALPHA=ALPHA+1)))" >> $GITHUB_ENV
-
-      - name: Alpha version incremented
-        run: echo $ALPHA
-
-      - name: Check alpha version
-        run: if [[ "$ALPHA" -gt 9 ]]; then echo "MINOR=$(((MINOR=MINOR+1)))" >> $GITHUB_ENV ; echo "ALPHA=$(((ALPHA=0)))" >> $GITHUB_ENV ; fi
-
-      - name: Check minor version
-        run: if [[ "$MINOR" -gt 9 ]]; then echo "MAYOR=$(((MAYOR=MAYOR+1)))" >> $GITHUB_ENV; echo "MINOR=$(((MINOR=0)))" >> $GITHUB_ENV; fi
-
-      - name: Create the next version
-        run: echo "VERSIONFINAL=$(echo '${{env.MAYOR}}.${{env.MINOR}}.${{env.ALPHA}}')" >> $GITHUB_ENV
-
-      - name: Print the next version
-        run: echo $VERSIONFINAL
-
-      - name: Write in filename the next version
-        run: sed -i "" "s/$VERSION/$VERSIONFINAL/" Directory.Build.props
-
-      - name: Get the current version
-        run: echo "CURRENTVERSION=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ${{ env.FILENAME }} )" >> $GITHUB_ENV
-
-      - name: Print the next version
-        run: echo $CURRENTVERSION
-
-      - name: Build all platforms Standard EXTENSIONS
+      - name: Get current version
+        id: get-version
         run: |
-          runtimes=(
-            "win-x64"
-            "win-x86"
-            "win-arm64"
-            "linux-x64"
-            "linux-musl-x64"
-            "linux-arm"
-            "linux-arm64"
-            "linux-musl-arm"
-            "linux-musl-arm64"
-            "osx-x64"
-            "osx-arm64"
-          )
-          
-          targetFrameworks=(
-            "netstandard2.0"
-          )
-          
+          file=Directory.Build.props
+          version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file")
+          IFS='.' read -r major minor patch <<< "$version"
+          patch=$((patch + 1))
+          if [[ "$patch" -gt 9 ]]; then
+            patch=0
+            minor=$((minor + 1))
+          fi
+          if [[ "$minor" -gt 9 ]]; then
+            minor=0
+            major=$((major + 1))
+          fi
+          versionfinal="$major.$minor.$patch"
+          sed -i "" "s/$version/$versionfinal/" "$file"
+          echo "version=$versionfinal" >> $GITHUB_OUTPUT
+
+  build_extensions:
+    needs: prepare
+    runs-on: macos-13
+    strategy:
+      matrix:
+        runtime: [
+          win-x64, win-x86, win-arm64,
+          linux-x64, linux-musl-x64,
+          linux-arm, linux-arm64,
+          linux-musl-arm, linux-musl-arm64,
+          osx-x64, osx-arm64
+        ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.202
+      - name: Build EXTENSIONS - ${{ matrix.runtime }}
+        run: |
           for project in $(find . -name "*.csproj" -type f); do
             if [[ $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* ]]; then
-              echo "Compiling project: $project"
-              for targetFramework in "${targetFrameworks[@]}"; do
-                for runtime in "${runtimes[@]}"; do
-                  echo "  - Compiling $project for TargetFramework: $targetFramework, Runtime: $runtime"
-                  dotnet build "$project" -r "$runtime" -f "$targetFramework" -c Release
-                  if [[ $? -ne 0 ]]; then
-                    echo "Error compiling $project for $targetFramework and $runtime. Stopping..."
-                    exit 1
-                  fi
-                done
-              done
+              echo "Compiling $project for netstandard2.0, ${{ matrix.runtime }}"
+              dotnet build "$project" -r "${{ matrix.runtime }}" -f netstandard2.0 -c Release
             fi
           done
 
-      - name: Build all platforms Standard
+  build_standard:
+    needs: prepare
+    runs-on: macos-13
+    strategy:
+      matrix:
+        runtime: [
+          win-x64, win-x86, win-arm64,
+          linux-x64, linux-musl-x64,
+          linux-arm, linux-arm64,
+          linux-musl-arm, linux-musl-arm64,
+          osx-x64, osx-arm64
+        ]
+        framework: [
+          net6.0, net7.0, net8.0, net9.0,
+          netstandard2.0, netstandard2.1,
+          net471, net472, net48, net481
+        ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.202
+      - name: Build STANDARD - ${{ matrix.framework }} / ${{ matrix.runtime }}
         run: |
-          runtimes=(
-            "win-x64"
-            "win-x86"
-            "win-arm64"
-            "linux-x64"
-            "linux-musl-x64"
-            "linux-arm"
-            "linux-arm64"
-            "linux-musl-arm"
-            "linux-musl-arm64"
-            "osx-x64"
-            "osx-arm64"
-          )
-          
-          targetFrameworks=(
-            "net6.0"
-            "net7.0"
-            "net8.0"
-            "net9.0"
-            "netstandard2.0"
-            "netstandard2.1"
-            "net471"
-            "net472"
-            "net48"
-            "net481"
-          )
-          
           for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project == *".Template."* || $project == *".App."* || $project == *".Extension."* || $project == *".Test."* || $project == *".Benchmark."* || $project == *".Sample."* ]]; then
-              echo "Skip project $project"
-            else
-              echo "Compiling project: $project"
-              for targetFramework in "${targetFrameworks[@]}"; do
-                for runtime in "${runtimes[@]}"; do
-                  echo "  - Compiling $project for TargetFramework: $targetFramework, Runtime: $runtime"
-                  dotnet build "$project" -r "$runtime" -f "$targetFramework" -c Release
-                  if [[ $? -ne 0 ]]; then
-                    echo "Error compiling $project for $targetFramework and $runtime. Stopping..."
-                    exit 1
-                  fi
-                done
-              done
+            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* ]]; then
+              echo "Compiling $project for ${{ matrix.framework }}, ${{ matrix.runtime }}"
+              dotnet build "$project" -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
             fi
           done
 
-      - name: Build all platforms Especials
+  build_especials:
+    needs: prepare
+    runs-on: macos-13
+    strategy:
+      matrix:
+        runtime: [ win-x64, win-x86, linux-x64, linux-musl-x64, osx-x64 ]
+        framework: [ netcoreapp2.0, netcoreapp2.1, netcoreapp2.2, netcoreapp3.0, netcoreapp3.1, net5.0 ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 5.0.408
+      - name: Build ESPECIALS - ${{ matrix.framework }} / ${{ matrix.runtime }}
         run: |
-          runtimes=(
-            "win-x64"
-            "win-x86"
-            "linux-x64"
-            "linux-musl-x64"
-            "osx-x64"
-          )
-          
-          targetFrameworks=(
-            "netcoreapp2.0"
-            "netcoreapp2.1"
-            "netcoreapp2.2"
-            "netcoreapp3.0"
-            "netcoreapp3.1"
-            "net5.0"
-          )
-          
           for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project == *".Template."* || $project == *".App."* || $project == *".Extension."* || $project == *".Test."* || $project == *".Benchmark."* || $project == *".Sample."* ]]; then
-              echo "Skip project $project"
-            else
-              echo "Compiling project: $project"
-              for targetFramework in "${targetFrameworks[@]}"; do
-                for runtime in "${runtimes[@]}"; do
-                  echo "  - Compiling $project for TargetFramework: $targetFramework, Runtime: $runtime"
-                  dotnet build "$project" -r "$runtime" -f "$targetFramework" -c Release
-                  if [[ $? -ne 0 ]]; then
-                    echo "Error compiling $project for $targetFramework and $runtime. Stopping..."
-                    exit 1
-                  fi
-                done
-              done
+            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* ]]; then
+              echo "Compiling $project for ${{ matrix.framework }}, ${{ matrix.runtime }}"
+              dotnet build "$project" -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
             fi
           done
 
-      - name: build installer
-        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -f net8.0
-
-      - name: build engine
-        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -f net8.0
-
-      - name: publish osx-arm64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r osx-arm64 -f net8.0
-
-      - name: publish osx-x64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r osx-x64 -f net8.0
-
-      - name: publish win-x64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-x64 -f net8.0
-
-      - name: publish win-arm64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-arm64 -f net8.0
-
-      - name: publish win-x86
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-x86 -f net8.0
-
-      - name: publish linux-x64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-x64 -f net8.0
-
-      - name: publish linux-arm64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-arm64 -f net8.0
-
-      - name: publish linux-arm
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-arm -f net8.0
-
-      - name: publish linux-musl-x64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-musl-x64 -f net8.0
-
-      - name: publish linux-musl-arm
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-musl-arm -f net8.0
-
-      - name: publish linux-musl-arm64
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-musl-arm64 -f net8.0
-
-      - name: Create packages
-        run: |
-          for i in $(find . -name "*.csproj" -type f); do
-            if [[ $i == *".Template."* || $i == *".App."* || $i == *".Test."* || $i == *".Benchmark."* || $i == *".Sample."* ]]; then
-              echo "Skip project $i"
-            else
-              dotnet pack -c Release "$i" -o "./.publish/$VERSIONFINAL/"
-            fi
-          done
-
-      - name: Publish nugets TO nuget
-        run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
-
-      - name: Publish nugets TO github
-        run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{secrets.GITHUB_TOKEN}} --skip-duplicate
-
-      - name: git config --global user.name github-actions
-        run: git config --global user.name "${{ secrets.USER_NAME }}"
-
-      - name: git config --global user.email github-actions@github.com
-        run: git config --global user.email "${{ secrets.USER_EMAIL }}"
-
-      - name: git config user.name
-        run: git config user.name
-
-      - name: git config user.email
-        run: git config user.email
-
-      - name: Find common ancestor
-        run: git merge-base --fork-point origin/master
-
-      - name: Import bot's GPG key for signing commits
-        id: import-gpg
-        uses: crazy-max/ghaction-import-gpg@v6
+  build_apps:
+    needs: prepare
+    runs-on: macos-13
+    strategy:
+      matrix:
+        project:
+          - ./1_Presentation/Installer/src/Alis.App.Installer.csproj
+          - ./1_Presentation/Engine/src/Alis.App.Engine.csproj
+        framework: [ net8.0 ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
         with:
-          gpg_private_key: ${{ secrets.BOT_GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.BOT_GPG_PASSPHRASE }}
-          git_config_global: true
-          git_user_signingkey: true
-          git_commit_gpgsign: true
+          dotnet-version: 8.0.202
+      - name: Build APP - ${{ matrix.project }}
+        run: dotnet build "${{ matrix.project }}" -c Release -f ${{ matrix.framework }}
 
-      - name: git tag
-        run: git tag -s "v${{ env.VERSIONFINAL }}" -m "v${{ env.VERSIONFINAL }}"
-        env:
-          GITHUB_TOKEN: ${{ secrets.OSLASH_BOT_GITHUB_TOKEN }}
-          GIT_AUTHOR_NAME: ${{ secrets.USER_NAME }}
-          GIT_AUTHOR_EMAIL: ${{ secrets.USER_EMAIL }}
-          GIT_COMMITTER_NAME: ${{ secrets.USER_NAME }}
-          GIT_COMMITTER_EMAIL: ${{ secrets.USER_EMAIL }}
-
-      - name: git push --tags
-        run: git push --tags
-        env:
-          GITHUB_TOKEN: ${{ secrets.OSLASH_BOT_GITHUB_TOKEN }}
-          GIT_AUTHOR_NAME: ${{ secrets.USER_NAME }}
-          GIT_AUTHOR_EMAIL: ${{ secrets.USER_EMAIL }}
-          GIT_COMMITTER_NAME: ${{ secrets.USER_NAME }}
-          GIT_COMMITTER_EMAIL: ${{ secrets.USER_EMAIL }}
-
-      - name: Update CHANGELOG
-        id: changelog
-        uses: Requarks/changelog-action@v1
+  publish_hub:
+    needs: prepare
+    runs-on: macos-13
+    strategy:
+      matrix:
+        runtime: [
+          osx-arm64, osx-x64,
+          win-x64, win-arm64, win-x86,
+          linux-x64, linux-arm64, linux-arm,
+          linux-musl-x64, linux-musl-arm
+        ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
         with:
-          token: ${{ github.token }}
-          tag: "v${{ env.VERSIONFINAL }}"
-          writeToFile: true
-          excludeTypes: chore, perf
-
-      - uses: softprops/action-gh-release@v2
-        with:
-          body: ${{ steps.changelog.outputs.changes }}
-          token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          name: "v${{ env.VERSIONFINAL }} has arrived !!!"
-          tag_name: "v${{ env.VERSIONFINAL }}"
-          generate_release_notes: true
-          append_body: true
-          files: |
-            licence.md
-            ./1_Presentation/Hub/src/bin/Release/**/osx-arm64/**/*.dmg
-            ./1_Presentation/Hub/src/bin/Release/**/osx-x64/**/*.dmg
-            ./1_Presentation/Hub/src/bin/Release/**/win-x64/**/*.zip
-            ./1_Presentation/Hub/src/bin/Release/**/win-arm64/**/*.zip
-            ./1_Presentation/Hub/src/bin/Release/**/win-x86/**/*.zip
-            ./1_Presentation/Hub/src/bin/Release/**/linux-x64/**/*.zip
-            ./1_Presentation/Hub/src/bin/Release/**/linux-arm/**/*.zip
-            ./1_Presentation/Hub/src/bin/Release/**/linux-arm64/**/*.zip
-            ./1_Presentation/Hub/src/bin/Release/**/linux-musl-x64/**/*.zip
-            ./1_Presentation/Hub/src/bin/Release/**/linux-musl-arm/**/*.zip
-            ./1_Presentation/Hub/src/bin/Release/**/linux-musl-arm64/**/*.zip
-
-      - name: git fetch
-        run: git fetch
-
-      - name: git checkout master
-        run: git checkout master
-
-      - name: git pull
-        run: git pull
-
-      - name: git add .
-        run: git add .
-
-      - name: git commit -S -m "Create the packages of version '$VERSIONFINAL'."
-        run: git commit -S -m "Create the packages of version '$VERSIONFINAL'."
-        env:
-          GITHUB_TOKEN: ${{ secrets.OSLASH_BOT_GITHUB_TOKEN }}
-          GIT_AUTHOR_NAME: ${{ secrets.USER_NAME }}
-          GIT_AUTHOR_EMAIL: ${{ secrets.USER_EMAIL }}
-          GIT_COMMITTER_NAME: ${{ secrets.USER_NAME }}
-          GIT_COMMITTER_EMAIL: ${{ secrets.USER_EMAIL }}
-
-      - name: git push
-        run: git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.OSLASH_BOT_GITHUB_TOKEN }}
-          GIT_AUTHOR_NAME: ${{ secrets.USER_NAME }}
-          GIT_AUTHOR_EMAIL: ${{ secrets.USER_EMAIL }}
-          GIT_COMMITTER_NAME: ${{ secrets.USER_NAME }}
-          GIT_COMMITTER_EMAIL: ${{ secrets.USER_EMAIL }}
+          dotnet-version: 8.0.202
+      - name: Publish HUB - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r ${{ matrix.runtime }} -f net8.0
