@@ -14,20 +14,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: |
-            3.0.103
-            3.1.426
-            5.0.408
-            6.0.420
-            7.0.408
-            8.0.202
-            9.x.x
-
+          ref : master
+          fetch-depth: 0
+          
       - name: Get current version
         id: get-version
         run: |
@@ -59,32 +48,6 @@ jobs:
           linux-musl-arm, linux-musl-arm64,
           osx-x64, osx-arm64
         ]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.202
-      - name: Build EXTENSIONS - ${{ matrix.runtime }}
-        run: |
-          for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* ]]; then
-              echo "Compiling $project for netstandard2.0, ${{ matrix.runtime }}"
-              dotnet build "$project" -r "${{ matrix.runtime }}" -f netstandard2.0 -c Release
-            fi
-          done
-
-  build_standard:
-    needs: prepare
-    runs-on: macos-13
-    strategy:
-      matrix:
-        runtime: [
-          win-x64, win-x86, win-arm64,
-          linux-x64, linux-musl-x64,
-          linux-arm, linux-arm64,
-          linux-musl-arm, linux-musl-arm64,
-          osx-x64, osx-arm64
-        ]
         framework: [
           net6.0, net7.0, net8.0, net9.0,
           netstandard2.0, netstandard2.1,
@@ -92,71 +55,15 @@ jobs:
         ]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.202
-      - name: Build STANDARD - ${{ matrix.framework }} / ${{ matrix.runtime }}
+          dotnet-version: 9.x.x
+      - name: Build EXTENSIONS - ${{ matrix.runtime }} | ${{ matrix.framework }}
         run: |
           for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* ]]; then
-              echo "Compiling $project for ${{ matrix.framework }}, ${{ matrix.runtime }}"
-              dotnet build "$project" -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
+            if [[ $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator."* ]]; then
+              echo "Compiling $project for  ${{ matrix.framework }}, ${{ matrix.runtime }}"
+              dotnet build "$project" -r "${{ matrix.runtime }}" -f  ${{ matrix.framework }} -c Release
             fi
           done
-
-  build_especials:
-    needs: prepare
-    runs-on: macos-13
-    strategy:
-      matrix:
-        runtime: [ win-x64, win-x86, linux-x64, linux-musl-x64, osx-x64 ]
-        framework: [ netcoreapp2.0, netcoreapp2.1, netcoreapp2.2, netcoreapp3.0, netcoreapp3.1, net5.0 ]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 5.0.408
-      - name: Build ESPECIALS - ${{ matrix.framework }} / ${{ matrix.runtime }}
-        run: |
-          for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* ]]; then
-              echo "Compiling $project for ${{ matrix.framework }}, ${{ matrix.runtime }}"
-              dotnet build "$project" -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
-            fi
-          done
-
-  build_apps:
-    needs: prepare
-    runs-on: macos-13
-    strategy:
-      matrix:
-        project:
-          - ./1_Presentation/Installer/src/Alis.App.Installer.csproj
-          - ./1_Presentation/Engine/src/Alis.App.Engine.csproj
-        framework: [ net8.0 ]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.202
-      - name: Build APP - ${{ matrix.project }}
-        run: dotnet build "${{ matrix.project }}" -c Release -f ${{ matrix.framework }}
-
-  publish_hub:
-    needs: prepare
-    runs-on: macos-13
-    strategy:
-      matrix:
-        runtime: [
-          osx-arm64, osx-x64,
-          win-x64, win-arm64, win-x86,
-          linux-x64, linux-arm64, linux-arm,
-          linux-musl-x64, linux-musl-arm
-        ]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.202
-      - name: Publish HUB - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r ${{ matrix.runtime }} -f net8.0
