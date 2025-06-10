@@ -41,7 +41,15 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        framework: [ net5.0, net8.0, netstandard2.0, net471 ]
+        #framework: [ net5.0, net8.0, netstandard2.0, net471 ]
+        framework: [net8.0]
+        runtime: [
+          win-x64, win-x86, win-arm64,
+          linux-x64, linux-musl-x64,
+          linux-arm, linux-arm64,
+          linux-musl-arm, linux-musl-arm64,
+          osx-x64, osx-arm64
+        ]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -58,15 +66,15 @@ jobs:
         run: |
           for project in $(find . -name "*.csproj" -type f); do
             if [[ $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
-              echo "Compiling $project for ${{ matrix.framework }}"
-              dotnet build "$project" -f ${{ matrix.framework }} -c Release
+              echo "Compiling $project for ${{ matrix.framework }}, ${{ matrix.runtime }}"
+              dotnet build "$project" -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
             fi
           done
         
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-extensions-${{ matrix.framework }}
+          name: build-extensions-${{ matrix.framework }}-${{ matrix.runtime }}
           path: |
             **/bin/Release/**/*.dll
             **/bin/Release/**/*.pdb
@@ -186,7 +194,16 @@ jobs:
       - name: Download all build artifacts
         uses: actions/download-artifact@v4
         with:
-          path: ./artifacts
+          path: ./restored-artifacts
+          
+      - name: Restore artifacts to original locations
+        run: |
+          cd restored-artifacts
+          find . -type f | while read file; do
+            target_path="../$(dirname "$file")"
+            mkdir -p "$target_path"
+            cp "$file" "$target_path/"
+          done
           
       - name: Get current version
         id: get-version
