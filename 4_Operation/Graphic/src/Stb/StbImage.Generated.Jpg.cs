@@ -767,13 +767,13 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="@out">The @out</param>
         /// <param name="outstride">The @out stride</param>
         /// <param name="data">The data</param>
-        public static void Stbiidctblock(byte* @out, int outstride, short* data)
+        public static void Stbiidctblock(IntPtr @out, int outstride, IntPtr data)
         {
             int i = 0;
             int* val = stackalloc int[64];
             int* v = val;
             byte* o;
-            short* d = data;
+            short* d = (short*)data;
             for (i = 0; i < 8; ++i, ++d, ++v)
             {
                 if ((d[8] == 0) && (d[16] == 0) && (d[24] == 0) && (d[32] == 0) && (d[40] == 0) && (d[48] == 0) && (d[56] == 0))
@@ -845,7 +845,7 @@ namespace Alis.Core.Graphic.Stb
                 }
             }
 
-            for (i = 0, v = val, o = @out; i < 8; ++i, v += 8, o += outstride)
+            for (i = 0, v = val, o = (byte*)@out; i < 8; ++i, v += 8, o += outstride)
             {
                 int t0 = 0;
                 int t1 = 0;
@@ -985,7 +985,7 @@ namespace Alis.Core.Graphic.Stb
                             }
                         }
 
-                        z.Idctblockkernel((byte*)(z.Imgcomp[n].data + z.Imgcomp[n].w2 * j * 8 + i * 8), z.Imgcomp[n].w2, data);
+                        z.Idctblockkernel((IntPtr)(z.Imgcomp[n].data + z.Imgcomp[n].w2 * j * 8 + i * 8), z.Imgcomp[n].w2, (IntPtr)data);
                         
                         if (--z.Todo <= 0)
                         {
@@ -1036,8 +1036,8 @@ namespace Alis.Core.Graphic.Stb
                                     }
                                 }
 
-                                z.Idctblockkernel((byte*)(z.Imgcomp[n].data + z.Imgcomp[n].w2 * y2 + x2), z.Imgcomp[n].w2,
-                                    data);
+                                z.Idctblockkernel((IntPtr)(z.Imgcomp[n].data + z.Imgcomp[n].w2 * y2 + x2), z.Imgcomp[n].w2,
+                                    (IntPtr)data);
                             }
                         }
 
@@ -1198,8 +1198,8 @@ namespace Alis.Core.Graphic.Stb
                     {
                         short* data = (short*)(z.Imgcomp[n].coeff + 64 * (i + j * z.Imgcomp[n].coeffw));
                         Stbijpegdequantize(data, z.Dequant[z.Imgcomp[n].tq]);
-                        z.Idctblockkernel((byte*)(z.Imgcomp[n].data + z.Imgcomp[n].w2 * j * 8 + i * 8), z.Imgcomp[n].w2,
-                            data);
+                        z.Idctblockkernel((IntPtr)(z.Imgcomp[n].data + z.Imgcomp[n].w2 * j * 8 + i * 8), z.Imgcomp[n].w2,
+                            (IntPtr)data);
                     }
                 }
             }
