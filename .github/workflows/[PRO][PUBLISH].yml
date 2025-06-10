@@ -75,43 +75,7 @@ jobs:
             **/bin/Release/**/*.xml
             **/bin/Release/**/*.deps.json
             **/bin/Release/**/*.runtimeconfig.json
-            
-  build_extensions_coreapp:
-    needs: prepare
-    runs-on: macos-13
-    strategy:
-      matrix:
-        framework: [ netcoreapp2.0 ]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: master
-          fetch-depth: 1
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 9.0.301
-
-      - name: Build Alis.Extension.Graphic.Sdl2 - ${{ matrix.framework }}
-        run: dotnet build ./1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj -f "${{ matrix.framework }}" -c Release
-
-      - name: Build Alis.Extension.Graphic.ImGui - ${{ matrix.framework }}
-        run: dotnet build ./1_Presentation/Extension/Graphic/ImGui/src/Alis.Extension.Graphic.ImGui.csproj -f "${{ matrix.framework }}" -c Release
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-extensions-coreapp-${{ matrix.framework }}
-          path: |
-            **/bin/Release/**/*.dll
-            **/bin/Release/**/*.pdb
-            **/bin/Release/**/*.xml
-            **/bin/Release/**/*.deps.json
-            **/bin/Release/**/*.runtimeconfig.json
-            
-            
+                
   build_core:
     needs: prepare
     runs-on: macos-13
@@ -160,44 +124,6 @@ jobs:
             **/bin/Release/**/*.deps.json
             **/bin/Release/**/*.runtimeconfig.json
 
-  build_core_app:
-    needs: prepare
-    runs-on: macos-13
-    strategy:
-      matrix:
-        framework: [netcoreapp2.0,netcoreapp2.1,netcoreapp2.2,netcoreapp3.0,netcoreapp3.1]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref : master
-          fetch-depth: 1
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 9.0.301
-
-      - name: Build ALIS.CORE.GRAPHIC - ${{ matrix.framework }} 
-        run: dotnet build ./4_Operation/Graphic/src/Alis.Core.Graphic.csproj -f "${{ matrix.framework }}" -c Release
-
-      - name: Build ALIS.CORE - ${{ matrix.framework }} 
-        run: dotnet build ./3_Structuration/Core/src/Alis.Core.csproj -f "${{ matrix.framework }}" -c Release
-
-      - name: Build ALIS - ${{ matrix.framework }} 
-        run: dotnet build ./2_Application/Alis/src/Alis.csproj -f "${{ matrix.framework }}" -c Release
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-core-output-app-${{ matrix.framework }}
-          path: |
-            **/bin/Release/**/*.dll
-            **/bin/Release/**/*.pdb
-            **/bin/Release/**/*.xml
-            **/bin/Release/**/*.deps.json
-            **/bin/Release/**/*.runtimeconfig.json
-  
   build_apps:
     needs: [prepare]
     runs-on: macos-13
@@ -249,7 +175,7 @@ jobs:
   
   publish_packages:
     name: Publish NuGet Packages
-    needs: [prepare, build_extensions, build_extensions_coreapp, build_core, build_core_app, build_apps]
+    needs: [prepare, build_extensions, build_core, build_apps]
     runs-on: macos-13
     steps:
       - name: Checkout
