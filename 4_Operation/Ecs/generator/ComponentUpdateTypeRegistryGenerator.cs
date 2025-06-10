@@ -80,7 +80,7 @@ namespace Alis.Core.Ecs.Generator
             Stack<Diagnostic> diagnostics = new Stack<Diagnostic>(1);
             INamedTypeSymbol @interface = null;
 
-            string[] genericArguments = [];
+            string[] genericArguments = new string[0];
             bool needsRegistering = false;
 
             foreach (var potentialInterface in componentTypeSymbol.AllInterfaces)

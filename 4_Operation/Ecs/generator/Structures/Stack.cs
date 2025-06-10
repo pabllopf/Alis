@@ -22,7 +22,8 @@ namespace Alis.Core.Ecs.Generator.Structures
         /// <param name="len">The len</param>
         public Stack(int len)
         {
-            _array = len == 0 ? [] : new T[len];
+            _array = len == 0 ? new T[0] : new T[len];
+            _index = 0;
         }
 
         /// <summary>

@@ -475,36 +475,7 @@ namespace Alis.Core.Ecs.Generator.Collections
                     AddRange(items.array, length);
                 }
             }
-
-            /// <summary>
-            ///     Adds the specified items to the end of the array.
-            /// </summary>
-            /// <param name="items">The items to add at the end of the array.</param>
-            public void AddRange(params ReadOnlySpan<T> items)
-            {
-                int offset = Count;
-                Count += items.Length;
-
-                items.CopyTo(new Span<T>(_elements, offset, items.Length));
-            }
-
-            /// <summary>
-            ///     Adds the specified items to the end of the array.
-            /// </summary>
-            /// <typeparam name="TDerived">The type that derives from the type of item already in the array.</typeparam>
-            /// <param name="items">The items to add at the end of the array.</param>
-            public void AddRange<TDerived>(params ReadOnlySpan<TDerived> items) where TDerived : T
-            {
-                int offset = Count;
-                Count += items.Length;
-
-                var elements = new Span<T>(_elements, offset, items.Length);
-                for (int i = 0; i < items.Length; i++)
-                {
-                    elements[i] = items[i];
-                }
-            }
-
+            
             /// <summary>
             ///     Adds the specified items to the end of the array.
             /// </summary>

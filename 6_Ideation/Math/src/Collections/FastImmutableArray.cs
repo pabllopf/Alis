@@ -475,36 +475,7 @@ public readonly struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastIm
                 AddRange(items.Array, length);
             }
         }
-
-        /// <summary>
-        ///     Adds the specified items to the end of the array.
-        /// </summary>
-        /// <param name="items">The items to add at the end of the array.</param>
-        public void AddRange(params ReadOnlySpan<T> items)
-        {
-            int offset = Count;
-            Count += items.Length;
-
-            items.CopyTo(new Span<T>(_elements, offset, items.Length));
-        }
-
-        /// <summary>
-        ///     Adds the specified items to the end of the array.
-        /// </summary>
-        /// <typeparam name="TDerived">The type that derives from the type of item already in the array.</typeparam>
-        /// <param name="items">The items to add at the end of the array.</param>
-        public void AddRange<TDerived>(params ReadOnlySpan<TDerived> items) where TDerived : T
-        {
-            int offset = Count;
-            Count += items.Length;
-
-            var elements = new Span<T>(_elements, offset, items.Length);
-            for (int i = 0; i < items.Length; i++)
-            {
-                elements[i] = items[i];
-            }
-        }
-
+        
         /// <summary>
         ///     Adds the specified items to the end of the array.
         /// </summary>
@@ -1072,7 +1043,7 @@ public readonly struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastIm
     /// <summary>
     ///     An empty (initialized) instance of <see cref="FastImmutableArray{T}" />.
     /// </summary>
-    public static readonly FastImmutableArray<T> Empty = new FastImmutableArray<T>([]);
+    public static readonly FastImmutableArray<T> Empty = new FastImmutableArray<T>(new T[0]);
 
     /// <summary>
     ///     The backing field for this instance. References to this value should never be shared with outside code.

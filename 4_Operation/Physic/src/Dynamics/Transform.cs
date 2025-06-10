@@ -69,6 +69,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             Rotation = rotation;
             Position = position;
+            Scale = Vector2F.One; // Default scale is 1,1
             Logger.Log($"Transform: {Position} {Rotation} {Scale}");
         }
         

@@ -48,5 +48,8 @@ namespace Alis.Core.Aspect.Fluent
     ///     All components with <see cref="IComponentBase" /> will be auto-registered. This makes it useful for AOT
     ///     compilation scenarios
     /// </remarks>
-    public interface IComponentBase;
+    public interface IComponentBase
+    {
+        
+    }
 }
