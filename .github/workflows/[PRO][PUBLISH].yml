@@ -221,6 +221,7 @@ jobs:
           append_body: true
           files: |
             licence.md
+            ./.publish/**/*.nupkg
             ./1_Presentation/Hub/src/bin/Release/**/osx-arm64/**/*.dmg
             ./1_Presentation/Hub/src/bin/Release/**/osx-x64/**/*.dmg
             ./1_Presentation/Hub/src/bin/Release/**/win-x64/**/*.zip
