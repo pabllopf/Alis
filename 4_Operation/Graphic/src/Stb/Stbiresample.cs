@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ErrorCallback.cs
+//  File:Stbiresample.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,17 +27,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.GlfwLib.Enums;
-
-namespace Alis.Core.Graphic.GlfwLib
+namespace Alis.Core.Graphic.Stb
 {
     /// <summary>
-    ///     Function signature for receiving error callbacks.
+    ///     The stbi resample class
     /// </summary>
-    /// <param name="code">The error code.</param>
-    /// <param name="message">A pointer to the UTF-8 encoded (null-terminated) error message.</param>
-    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void ErrorCallback(ErrorCode code, IntPtr message);
+    public unsafe class Stbiresample
+    {
+        /// <summary>
+        ///     The hs
+        /// </summary>
+        public int Hs;
+
+        /// <summary>
+        ///     The line
+        /// </summary>
+        public byte* Line0;
+
+        /// <summary>
+        ///     The line
+        /// </summary>
+        public byte* Line1;
+
+        /// <summary>
+        ///     The resample
+        /// </summary>
+        public Delegate2 Resample;
+
+        /// <summary>
+        ///     The vs
+        /// </summary>
+        public int Vs;
+
+        /// <summary>
+        ///     The lores
+        /// </summary>
+        public int Wlores;
+
+        /// <summary>
+        ///     The ypos
+        /// </summary>
+        public int Ypos;
+
+        /// <summary>
+        ///     The ystep
+        /// </summary>
+        public int Ystep;
+    }
 }

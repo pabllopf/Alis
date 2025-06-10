@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ErrorCallback.cs
+//  File:Stbibmpdata.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,17 +27,59 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.GlfwLib.Enums;
 
-namespace Alis.Core.Graphic.GlfwLib
+namespace Alis.Core.Graphic.Stb
 {
     /// <summary>
-    ///     Function signature for receiving error callbacks.
+    ///     The stbi bmp data
     /// </summary>
-    /// <param name="code">The error code.</param>
-    /// <param name="message">A pointer to the UTF-8 encoded (null-terminated) error message.</param>
-    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void ErrorCallback(ErrorCode code, IntPtr message);
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct Stbibmpdata
+    {
+        /// <summary>
+        ///     The bpp
+        /// </summary>
+        public int bpp;
+
+        /// <summary>
+        ///     The offset
+        /// </summary>
+        public int offset;
+
+        /// <summary>
+        ///     The hsz
+        /// </summary>
+        public int hsz;
+
+        /// <summary>
+        ///     The mr
+        /// </summary>
+        public uint mr;
+
+        /// <summary>
+        ///     The mg
+        /// </summary>
+        public uint mg;
+
+        /// <summary>
+        ///     The mb
+        /// </summary>
+        public uint mb;
+
+        /// <summary>
+        ///     The ma
+        /// </summary>
+        public uint ma;
+
+        /// <summary>
+        ///     The all
+        /// </summary>
+        public uint alla;
+
+        /// <summary>
+        ///     The extra read
+        /// </summary>
+        public int extraread;
+    }
 }

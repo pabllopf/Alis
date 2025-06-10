@@ -8,10 +8,10 @@
 
         <!-- Suppresses the warning NETSDK1140:The target framework 'net9.0' is out of support and will not receive security updates in the future. -->
         <NoWarn>$(NoWarn);NETSDK1140;CS0433;CS0246;CS0738;SYSLIB0050;</NoWarn>
-        
+
         <!-- Suppresses the warning CS0436 : conflicting types; -->
         <NoWarn>$(NoWarn);CS0436;CS1685;</NoWarn>
-        
+
         <!-- Components should only implement one update component interface -->
         <NoWarn>$(NoWarn);FR0003;</NoWarn>
 

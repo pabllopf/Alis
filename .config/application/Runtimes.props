@@ -45,7 +45,7 @@
         <DefineConstants>$(DefineConstants);WIN</DefineConstants>
         <IsWindows>true</IsWindows>
     </PropertyGroup>
-    
+
     <PropertyGroup Condition="$(Configuration) == 'Debug'">
         <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
     </PropertyGroup>
