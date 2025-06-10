@@ -42,11 +42,6 @@ jobs:
     strategy:
       matrix:
         framework: [ net5.0, netstandard2.0, net471 ]
-        runtime: [
-          win-x64, win-x86, win-arm64,
-          linux-x64, linux-arm, linux-arm64,
-          osx-x64, osx-arm64
-        ]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -60,15 +55,57 @@ jobs:
           dotnet-version: 9.0.301
 
       - name: Build Alis.Extension.Graphic.Sdl2 - ${{ matrix.framework }}
-        run: dotnet build ./1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
+        run: dotnet build ./1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj -r win-x64 -f "${{ matrix.framework }}" -c Release
           
       - name: Build Alis.Extension.Graphic.ImGui - ${{ matrix.framework }}
-        run: dotnet build ./1_Presentation/Extension/Graphic/ImGui/src/Alis.Extension.Graphic.ImGui.csproj -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
+        run: dotnet build ./1_Presentation/Extension/Graphic/ImGui/src/Alis.Extension.Graphic.ImGui.csproj -r win-x64 -f "${{ matrix.framework }}" -c Release
+        
+      - name: Build Alis.Extension.Graphic.Sdl2 - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj -r win-x86 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build Alis.Extension.Graphic.ImGui - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/ImGui/src/Alis.Extension.Graphic.ImGui.csproj -r win-x86 -f "${{ matrix.framework }}" -c Release
+        
+      - name: Build Alis.Extension.Graphic.Sdl2 - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj -r win-arm64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build Alis.Extension.Graphic.ImGui - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/ImGui/src/Alis.Extension.Graphic.ImGui.csproj -r win-arm64 -f "${{ matrix.framework }}" -c Release
+        
+      - name: Build Alis.Extension.Graphic.Sdl2 - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj -r linux-x64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build Alis.Extension.Graphic.ImGui - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/ImGui/src/Alis.Extension.Graphic.ImGui.csproj -r linux-x64 -f "${{ matrix.framework }}" -c Release
+        
+      - name: Build Alis.Extension.Graphic.Sdl2 - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj -r linux-arm -f "${{ matrix.framework }}" -c Release
+
+      - name: Build Alis.Extension.Graphic.ImGui - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/ImGui/src/Alis.Extension.Graphic.ImGui.csproj -r linux-arm -f "${{ matrix.framework }}" -c Release
+        
+      - name: Build Alis.Extension.Graphic.Sdl2 - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj -r linux-arm64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build Alis.Extension.Graphic.ImGui - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/ImGui/src/Alis.Extension.Graphic.ImGui.csproj -r linux-arm64 -f "${{ matrix.framework }}" -c Release
+        
+      - name: Build Alis.Extension.Graphic.Sdl2 - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj -r osx-x64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build Alis.Extension.Graphic.ImGui - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/ImGui/src/Alis.Extension.Graphic.ImGui.csproj -r osx-x64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build Alis.Extension.Graphic.Sdl2 - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj -r osx-arm64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build Alis.Extension.Graphic.ImGui - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/ImGui/src/Alis.Extension.Graphic.ImGui.csproj -r osx-arm64 -f "${{ matrix.framework }}" -c Release
         
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-extensions-${{ matrix.framework }}-${{ matrix.runtime }}
+          name: build-extensions-${{ matrix.framework }}
           path: |
             **/bin/Release/**/*.dll
             **/bin/Release/**/*.pdb
@@ -81,11 +118,6 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        runtime: [
-          win-x64, win-x86, win-arm64,
-          linux-x64, linux-arm, linux-arm64,
-          osx-x64, osx-arm64
-        ]
         framework: [
           net5.0, net6.0, net7.0, net8.0, net9.0,
           netstandard2.0, netstandard2.1,
@@ -104,19 +136,87 @@ jobs:
           dotnet-version: 9.0.301
           
 
-      - name: Build ALIS.CORE.GRAPHIC - ${{ matrix.framework }} / ${{ matrix.runtime }}
-        run: dotnet build ./4_Operation/Graphic/src/Alis.Core.Graphic.csproj -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release 
+      - name: Build ALIS.CORE.GRAPHIC - ${{ matrix.framework }}
+        run: dotnet build ./4_Operation/Graphic/src/Alis.Core.Graphic.csproj -r win-x64 -f "${{ matrix.framework }}" -c Release 
 
-      - name: Build ALIS.CORE - ${{ matrix.framework }} / ${{ matrix.runtime }}
-        run: dotnet build ./3_Structuration/Core/src/Alis.Core.csproj -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
+      - name: Build ALIS.CORE - ${{ matrix.framework }} 
+        run: dotnet build ./3_Structuration/Core/src/Alis.Core.csproj -r win-x64 -f "${{ matrix.framework }}" -c Release
 
-      - name: Build ALIS - ${{ matrix.framework }} / ${{ matrix.runtime }}
-        run: dotnet build ./2_Application/Alis/src/Alis.csproj -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
+      - name: Build ALIS - ${{ matrix.framework }} 
+        run: dotnet build ./2_Application/Alis/src/Alis.csproj -r win-x64 -f "${{ matrix.framework }}" -c Release
+        
+      - name: Build ALIS.CORE.GRAPHIC - ${{ matrix.framework }}
+        run: dotnet build ./4_Operation/Graphic/src/Alis.Core.Graphic.csproj -r win-x86 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS.CORE - ${{ matrix.framework }}
+        run: dotnet build ./3_Structuration/Core/src/Alis.Core.csproj -r win-x86 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS - ${{ matrix.framework }}
+        run: dotnet build ./2_Application/Alis/src/Alis.csproj -r win-x86 -f "${{ matrix.framework }}" -c Release
+        
+      - name: Build ALIS.CORE.GRAPHIC - ${{ matrix.framework }}
+        run: dotnet build ./4_Operation/Graphic/src/Alis.Core.Graphic.csproj -r win-arm64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS.CORE - ${{ matrix.framework }}
+        run: dotnet build ./3_Structuration/Core/src/Alis.Core.csproj -r win-arm64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS - ${{ matrix.framework }}
+        run: dotnet build ./2_Application/Alis/src/Alis.csproj -r win-arm64 -f "${{ matrix.framework }}" -c Release
+        
+
+      - name: Build ALIS.CORE.GRAPHIC - ${{ matrix.framework }}
+        run: dotnet build ./4_Operation/Graphic/src/Alis.Core.Graphic.csproj -r linux-x64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS.CORE - ${{ matrix.framework }}
+        run: dotnet build ./3_Structuration/Core/src/Alis.Core.csproj -r linux-x64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS - ${{ matrix.framework }}
+        run: dotnet build ./2_Application/Alis/src/Alis.csproj -r linux-x64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS.CORE.GRAPHIC - ${{ matrix.framework }}
+        run: dotnet build ./4_Operation/Graphic/src/Alis.Core.Graphic.csproj -r linux-arm64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS.CORE - ${{ matrix.framework }}
+        run: dotnet build ./3_Structuration/Core/src/Alis.Core.csproj -r linux-arm64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS - ${{ matrix.framework }}
+        run: dotnet build ./2_Application/Alis/src/Alis.csproj -r linux-arm64 -f "${{ matrix.framework }}" -c Release
+        
+      - name: Build ALIS.CORE.GRAPHIC - ${{ matrix.framework }}
+        run: dotnet build ./4_Operation/Graphic/src/Alis.Core.Graphic.csproj -r linux-arm -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS.CORE - ${{ matrix.framework }}
+        run: dotnet build ./3_Structuration/Core/src/Alis.Core.csproj -r linux-arm -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS - ${{ matrix.framework }}
+        run: dotnet build ./2_Application/Alis/src/Alis.csproj -r linux-arm -f "${{ matrix.framework }}" -c Release
+        
+
+
+      - name: Build ALIS.CORE.GRAPHIC - ${{ matrix.framework }}
+        run: dotnet build ./4_Operation/Graphic/src/Alis.Core.Graphic.csproj -r osx-x64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS.CORE - ${{ matrix.framework }}
+        run: dotnet build ./3_Structuration/Core/src/Alis.Core.csproj -r osx-x64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS - ${{ matrix.framework }}
+        run: dotnet build ./2_Application/Alis/src/Alis.csproj -r osx-x64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS.CORE.GRAPHIC - ${{ matrix.framework }}
+        run: dotnet build ./4_Operation/Graphic/src/Alis.Core.Graphic.csproj -r osx-arm64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS.CORE - ${{ matrix.framework }}
+        run: dotnet build ./3_Structuration/Core/src/Alis.Core.csproj -r osx-arm64 -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS - ${{ matrix.framework }}
+        run: dotnet build ./2_Application/Alis/src/Alis.csproj -r osx-arm64 -f "${{ matrix.framework }}" -c Release
+
+
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-core-output-${{ matrix.framework }}-${{ matrix.runtime }}
+          name: build-core-output-${{ matrix.framework }}
           path: |
             **/bin/Release/**/*.dll
             **/bin/Release/**/*.pdb
