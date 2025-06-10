@@ -1,5 +1,5 @@
 <Project>
-    <ItemGroup Condition="$(IsPackable) == 'true' AND '$(GeneratePackageOnBuild)' == 'true'">
+    <ItemGroup Condition="$(Configuration) == 'Release'">
 
         <None
             Condition="
