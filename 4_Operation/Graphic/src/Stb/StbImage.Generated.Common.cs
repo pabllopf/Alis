@@ -1251,7 +1251,7 @@ namespace Alis.Core.Graphic.Stb
                 return 1;
             }
 
-            if (Stbipnginfo(s, (int*)x, (int*)y, (int*)comp) != 0)
+            if (Stbipnginfo(s, ref x, ref y, ref comp) != 0)
             {
                 return 1;
             }
