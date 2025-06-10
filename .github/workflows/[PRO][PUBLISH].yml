@@ -43,13 +43,14 @@ jobs:
       matrix:
         #framework: [ net5.0, net8.0, netstandard2.0, net471 ]
         framework: [net8.0]
-        runtime: [
-          win-x64, win-x86, win-arm64,
-          linux-x64, linux-musl-x64,
-          linux-arm, linux-arm64,
-          linux-musl-arm, linux-musl-arm64,
-          osx-x64, osx-arm64
-        ]
+        runtime: [win-x64]
+        #runtime: [
+        #  win-x64, win-x86, win-arm64,
+        #  linux-x64, linux-musl-x64,
+        #  linux-arm, linux-arm64,
+        #  linux-musl-arm, linux-musl-arm64,
+        #  osx-x64, osx-arm64
+        #]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -106,15 +107,20 @@ jobs:
           
       - name: Restore artifacts to original locations
         run: |
-          echo "Restaurando artefactos a sus ubicaciones originales..."
+          echo "📂 Restaurando artefactos a sus ubicaciones originales..."
           cd restored-artifacts
+          
           find . -type f | while read file; do
-            target_path="../$(dirname "$file")"
+            # Elimina el primer componente del path: "./algo/..." -> "..."
+            cleaned_path=$(echo "$file" | cut -d/ -f3-)
+            target_path="../$(dirname "$cleaned_path")"
+          
             echo "📄 Copiando: $file -> $target_path/"
             mkdir -p "$target_path"
             cp "$file" "$target_path/"
           done
-          echo "Restauración completada."
+          
+          echo "✅ Restauración completada."
       
       - name: Get current version
         id: get-version
