@@ -229,11 +229,6 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        runtime: [
-          win-x64, win-x86, win-arm64,
-          linux-x64, linux-arm, linux-arm64,
-          osx-x64, osx-arm64
-        ]
         framework: [ net8.0 ]
     steps:
       - name: Checkout
@@ -248,18 +243,83 @@ jobs:
           dotnet-version: 9.0.301
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r ${{ matrix.runtime }} -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r win-x64 -f ${{ matrix.framework }}
 
       - name: Publish ENGINE - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r ${{ matrix.runtime }} -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r win-x64 -f ${{ matrix.framework }}
 
       - name: Publish HUB - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r ${{ matrix.runtime }} -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-x64 -f ${{ matrix.framework }}
+
+      - name: Publish INTALLER - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r win-x86 -f ${{ matrix.framework }}
+
+      - name: Publish ENGINE - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r win-x86 -f ${{ matrix.framework }}
+
+      - name: Publish HUB - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-x86 -f ${{ matrix.framework }}
+        
+      - name: Publish INTALLER - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r win-arm64 -f ${{ matrix.framework }}
+
+      - name: Publish ENGINE - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r win-arm64 -f ${{ matrix.framework }}
+
+      - name: Publish HUB - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-arm64 -f ${{ matrix.framework }}
+        
+
+      - name: Publish INTALLER - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r linux-x64 -f ${{ matrix.framework }}
+
+      - name: Publish ENGINE - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r linux-x64 -f ${{ matrix.framework }}
+
+      - name: Publish HUB - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-x64 -f ${{ matrix.framework }}
+
+      - name: Publish INTALLER - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r linux-arm64 -f ${{ matrix.framework }}
+
+      - name: Publish ENGINE - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r linux-arm64 -f ${{ matrix.framework }}
+
+      - name: Publish HUB - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-arm64 -f ${{ matrix.framework }}
+        
+      - name: Publish INTALLER - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r linux-arm -f ${{ matrix.framework }}
+
+      - name: Publish ENGINE - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r linux-arm -f ${{ matrix.framework }}
+
+      - name: Publish HUB - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-arm -f ${{ matrix.framework }}
+        
+        
+      - name: Publish INTALLER - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r osx-x64 -f ${{ matrix.framework }}
+
+      - name: Publish ENGINE - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r osx-x64 -f ${{ matrix.framework }}
+
+      - name: Publish HUB - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r osx-x64 -f ${{ matrix.framework }}
+
+      - name: Publish INTALLER - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r osx-arm64 -f ${{ matrix.framework }}
+
+      - name: Publish ENGINE - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r osx-arm64 -f ${{ matrix.framework }}
+
+      - name: Publish HUB - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r osx-arm64 -f ${{ matrix.framework }}
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-apps-output-${{ matrix.framework }}-${{ matrix.runtime }}
+          name: build-apps-output-${{ matrix.framework }}
           path: |
             **/bin/Release/**/*.dll
             **/bin/Release/**/*.exe
