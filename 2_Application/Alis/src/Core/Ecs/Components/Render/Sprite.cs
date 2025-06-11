@@ -36,9 +36,10 @@ using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Graphic.GlfwLib.Structs;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Graphic.Stb;
+
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.Components.Render
@@ -218,46 +219,22 @@ namespace Alis.Core.Ecs.Components.Render
                 throw new FileNotFoundException("Texture file not found", imagePath);
             }
 
-            using (FileStream stream = File.OpenRead(imagePath))
-            {
-                ImageResult image = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
+            Image image = Image.Load(imagePath);
 
-                Size = new Vector2F(image.Width, image.Height);
+            Size = new Vector2F(image.Width, image.Height);
+            Texture = Gl.GenTexture();
+            Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
 
-                byte r = image.Data[0];
-                byte g = image.Data[1];
-                byte b = image.Data[2];
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, TextureParameter.ClampToEdge);
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, TextureParameter.ClampToEdge);
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Nearest);
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Nearest);
 
-                for (int i = 0; i < image.Data.Length; i += 4)
-                {
-                    if ((image.Data[i] == r) && (image.Data[i + 1] == g) && (image.Data[i + 2] == b))
-                    {
-                        image.Data[i + 3] = 0;
-                    }
-                }
+            imageHandle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
+            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, image.Width, image.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, imageHandle.AddrOfPinnedObject());
+            imageHandle.Free();
 
-                for (int y = 0; y < image.Height / 2; y++)
-                {
-                    for (int x = 0; x < image.Width * 4; x++)
-                    {
-                        (image.Data[y * image.Width * 4 + x], image.Data[(image.Height - 1 - y) * image.Width * 4 + x]) = (image.Data[(image.Height - 1 - y) * image.Width * 4 + x], image.Data[y * image.Width * 4 + x]);
-                    }
-                }
-
-                Texture = Gl.GenTexture();
-                Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
-
-                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, TextureParameter.ClampToEdge);
-                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, TextureParameter.ClampToEdge);
-                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Nearest);
-                Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Nearest);
-
-                imageHandle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
-                Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, image.Width, image.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, imageHandle.AddrOfPinnedObject());
-                imageHandle.Free();
-
-                Gl.GenerateMipmap(TextureTarget.Texture2D);
-            }
+            Gl.GenerateMipmap(TextureTarget.Texture2D);
         }
 
         /// <summary>
