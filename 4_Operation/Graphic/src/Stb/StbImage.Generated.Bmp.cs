@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Graphic.Stb.Hebron.Runtime;
 
 namespace Alis.Core.Graphic.Stb
@@ -77,7 +78,7 @@ namespace Alis.Core.Graphic.Stb
             int target = 0;
             Stbibmpdata info = new Stbibmpdata();
             info.alla = 255;
-            if (Stbibmpparseheader(s, &info) == null)
+            if (Stbibmpparseheader(s, &info) == IntPtr.Zero)
             {
                 return null;
             }
@@ -433,11 +434,11 @@ namespace Alis.Core.Graphic.Stb
         /// <returns>The int</returns>
         public static int Stbibmpinfo(Stbicontext s, int* x, int* y, int* comp)
         {
-            void* p;
+            IntPtr p;
             Stbibmpdata info = new Stbibmpdata();
             info.alla = 255;
             p = Stbibmpparseheader(s, &info);
-            if (p == null)
+            if (p == IntPtr.Zero)
             {
                 Stbirewind(s);
                 return 0;
@@ -542,12 +543,12 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="s">The </param>
         /// <param name="info">The info</param>
         /// <returns>The void</returns>
-        public static void* Stbibmpparseheader(Stbicontext s, Stbibmpdata* info)
+        public static IntPtr Stbibmpparseheader(Stbicontext s, Stbibmpdata* info)
         {
             int hsz = 0;
             if (Stbiget8(s) != 66 || Stbiget8(s) != 77)
             {
-                return (byte*) (ulong) (Stbierr("not BMP") != 0 ? 0 : 0);
+                return  (IntPtr) (ulong) (Stbierr("not BMP") != 0 ? 0 : 0);
             }
 
             Stbiget32Le(s);
@@ -559,12 +560,12 @@ namespace Alis.Core.Graphic.Stb
             info->extraread = 14;
             if (info->offset < 0)
             {
-                return (byte*) (ulong) (Stbierr("bad BMP") != 0 ? 0 : 0);
+                return  (IntPtr)(ulong) (Stbierr("bad BMP") != 0 ? 0 : 0);
             }
 
             if ((hsz != 12) && (hsz != 40) && (hsz != 56) && (hsz != 108) && (hsz != 124))
             {
-                return (byte*) (ulong) (Stbierr("unknown BMP") != 0 ? 0 : 0);
+                return (IntPtr)(ulong) (Stbierr("unknown BMP") != 0 ? 0 : 0);
             }
 
             if (hsz == 12)
@@ -580,7 +581,7 @@ namespace Alis.Core.Graphic.Stb
 
             if (Stbiget16Le(s) != 1)
             {
-                return (byte*) (ulong) (Stbierr("bad BMP") != 0 ? 0 : 0);
+                return (IntPtr)(ulong) (Stbierr("bad BMP") != 0 ? 0 : 0);
             }
 
             info->bpp = Stbiget16Le(s);
@@ -589,17 +590,17 @@ namespace Alis.Core.Graphic.Stb
                 int compress = (int) Stbiget32Le(s);
                 if (compress == 1 || compress == 2)
                 {
-                    return (byte*) (ulong) (Stbierr("BMP RLE") != 0 ? 0 : 0);
+                    return (IntPtr)(ulong) (Stbierr("BMP RLE") != 0 ? 0 : 0);
                 }
 
                 if (compress >= 4)
                 {
-                    return (byte*) (ulong) (Stbierr("BMP JPEG/PNG") != 0 ? 0 : 0);
+                    return  (IntPtr)(ulong)(Stbierr("BMP JPEG/PNG") != 0 ? 0 : 0);
                 }
 
                 if ((compress == 3) && (info->bpp != 16) && (info->bpp != 32))
                 {
-                    return (byte*) (ulong) (Stbierr("bad BMP") != 0 ? 0 : 0);
+                    return (IntPtr)(ulong) (Stbierr("bad BMP") != 0 ? 0 : 0);
                 }
 
                 Stbiget32Le(s);
@@ -631,12 +632,12 @@ namespace Alis.Core.Graphic.Stb
                             info->extraread += 12;
                             if ((info->mr == info->mg) && (info->mg == info->mb))
                             {
-                                return (byte*) (ulong) (Stbierr("bad BMP") != 0 ? 0 : 0);
+                                return  (IntPtr)(ulong) (Stbierr("bad BMP") != 0 ? 0 : 0);
                             }
                         }
                         else
                         {
-                            return (byte*) (ulong) (Stbierr("bad BMP") != 0 ? 0 : 0);
+                            return  (IntPtr)(ulong) (Stbierr("bad BMP") != 0 ? 0 : 0);
                         }
                     }
                 }
@@ -645,7 +646,7 @@ namespace Alis.Core.Graphic.Stb
                     int i = 0;
                     if ((hsz != 108) && (hsz != 124))
                     {
-                        return (byte*) (ulong) (Stbierr("bad BMP") != 0 ? 0 : 0);
+                        return  (IntPtr)(ulong) (Stbierr("bad BMP") != 0 ? 0 : 0);
                     }
 
                     info->mr = Stbiget32Le(s);
@@ -673,7 +674,7 @@ namespace Alis.Core.Graphic.Stb
                 }
             }
 
-            return (void*) 1;
+            return (IntPtr) (ulong) 1;
         }
     }
 }
