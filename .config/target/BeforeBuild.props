@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Project>
     <Target Name="CustomBeforeBuild" BeforeTargets="Build">
+        <Exec 
+            Condition="!Exists('$(SolutionDir)4_Operation/Ecs/generator/bin/release/lib/netstandard2.0/Alis.Core.Ecs.Generator.dll')" 
+            Command="dotnet build $(SolutionDir)4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj -c Release" />
     </Target>
 </Project>
