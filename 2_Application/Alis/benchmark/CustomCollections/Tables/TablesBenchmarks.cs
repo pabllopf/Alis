@@ -51,11 +51,6 @@ namespace Alis.Benchmark.CustomCollections.Tables
         private FastTable<int> fastTable;
 
         /// <summary>
-        ///     The tabla unsafe
-        /// </summary>
-        private NativeTableUnsafe<int> nativeTableUnsafe;
-
-        /// <summary>
         ///     The _normalTable
         /// </summary>
         private NormalTable<int> _normalTable;
@@ -64,31 +59,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
         /// The fastest table
         /// </summary>
         private FastestTable<int> fastestTable;
-
-        // Inicialización
-        /// <summary>
-        ///     Setup this instance
-        /// </summary>
-        [GlobalSetup]
-        public void Setup()
-        {
-            nativeTableUnsafe = new NativeTableUnsafe<int>(ArraySize);
-            _normalTable = new NormalTable<int>(ArraySize);
-            fastTable = new FastTable<int>(ArraySize);
-            fastestTable = new FastestTable<int>(ArraySize);
-        }
-
-        /// <summary>
-        ///     Benchmarks the native array safe
-        /// </summary>
-        [Benchmark(Description = "[UNSAFE]_Iterate")]
-        public void BenchmarkNativeArraySafe()
-        {
-            for (int i = 0; i < ArraySize; i++)
-            {
-                int value = nativeTableUnsafe[i];
-            }
-        }
+        
 
         /// <summary>
         ///     Benchmarks the NORMAL
@@ -125,15 +96,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
                 int value = fastestTable[i];
             }
         }
-
-        /// <summary>
-        ///     Ensures the capacity of the unsafe _normalTable
-        /// </summary>
-        [Benchmark(Description = "[UNSAFE]_EnsureCapacity()")]
-        public void BenchmarkEnsureCapacityUnsafe()
-        {
-            nativeTableUnsafe.EnsureCapacity(ArraySize * 2);
-        }
+        
 
         /// <summary>
         ///     Benchmarks the ensure capacity NORMAL
@@ -161,16 +124,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
         {
             fastestTable.EnsureCapacity(ArraySize * 2);
         }
-
-        /// <summary>
-        ///     Converts the unsafe _normalTable to Span
-        /// </summary>
-        [Benchmark(Description = "[UNSAFE]_AsSpan()")]
-        public void BenchmarkConvertToSpanUnsafe()
-        {
-            Span<int> span = nativeTableUnsafe.AsSpan();
-        }
-
+        
         /// <summary>
         ///     Benchmarks the convert to span NORMAL
         /// </summary>
@@ -197,18 +151,7 @@ namespace Alis.Benchmark.CustomCollections.Tables
         {
             Span<int> span = fastestTable.AsSpan();
         }
-
-        /// <summary>
-        ///     Benchmarks the unsafe index no resize
-        /// </summary>
-        [Benchmark(Description = "[UNSAFE]_UnsafeIndexNoResize")]
-        public void BenchmarkUnsafeIndexNoResize()
-        {
-            for (int i = 0; i < ArraySize; i++)
-            {
-                int value = nativeTableUnsafe.UnsafeIndexNoResize(i);
-            }
-        }
+        
 
         /// <summary>
         ///     Benchmarks the unsafe index no resize NORMAL
