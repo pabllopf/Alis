@@ -45,13 +45,10 @@ namespace Alis.Core.Graphic.Sample
         private static void Main(string[] args)
         {
             Logger.Log("Enter the number of the sample you want to run:");
-            Logger.Log("1. Triangle Sample");
-            Logger.Log("2. Cube Sample");
-            Logger.Log("3. Texture Sample");
-            Logger.Log("4. Rotate 3D Object Sample");
-            Logger.Log("5. Load BMP Image");
-            Logger.Log("6. Render a square unfilled");
-            Logger.Log("7. Texture Sample PNG");
+            Logger.Log("1 - Triangle Sample");
+            Logger.Log("2 - Cube Sample");
+            Logger.Log("3 - Render Square Unfilled");
+            Logger.Log("4 - Texture Sample Custom Bmp");
             int sampleNumber = Convert.ToInt32(Console.ReadLine());
 
             switch (sampleNumber)
@@ -65,30 +62,15 @@ namespace Alis.Core.Graphic.Sample
                     CubeSample cubeSample = new CubeSample();
                     cubeSample.Run();
                     break;
-                
+
                 case 3:
-                    TextureSample textureSample = new TextureSample();
-                    textureSample.Run();
-                    break;
-                
-                case 4:
-                    Rotate3DObjectSample rotate3DObjectSampleSample = new Rotate3DObjectSample();
-                    rotate3DObjectSampleSample.Run();
-                    break;
-
-                case 5:
-                    LoadBmpImagenSample loadBmpImagen = new LoadBmpImagenSample();
-                    loadBmpImagen.Run();
-                    break;
-
-                case 6:
                     RenderSquareUnfilled unfilled = new RenderSquareUnfilled();
                     unfilled.Run();
                     break;
                 
-                case 7:
-                    TextureSamplePng textureSamplePng = new TextureSamplePng();
-                    textureSamplePng.Run();
+                case 4:
+                    TextureSampleCustomBmp textureSampleCustomBmp = new TextureSampleCustomBmp();
+                    textureSampleCustomBmp.Run();
                     break;
             }
         }
