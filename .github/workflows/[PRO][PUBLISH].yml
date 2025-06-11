@@ -11,6 +11,15 @@ jobs:
     outputs:
       version: ${{ steps.get-version.outputs.version }}
     steps:
+
+      - name: Limpiar entorno
+        run: |
+          echo "Limpiando entorno..."
+          rm -rf /Users/runner/.dotnet
+          rm -rf /Users/runner/.nuget
+          rm -rf /Users/runner/work/_actions/actions/setup-dotnet/v4/externals/
+          echo "Entorno limpio."
+        
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -43,6 +52,15 @@ jobs:
       matrix:
         framework: [ net5.0, netstandard2.0, net471 ]
     steps:
+
+      - name: Limpiar entorno
+        run: |
+          echo "Limpiando entorno..."
+          rm -rf /Users/runner/.dotnet
+          rm -rf /Users/runner/.nuget
+          rm -rf /Users/runner/work/_actions/actions/setup-dotnet/v4/externals/
+          echo "Entorno limpio."
+          
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -125,6 +143,15 @@ jobs:
           net471, net472, net48, net481
         ]
     steps:
+
+      - name: Limpiar entorno
+        run: |
+          echo "Limpiando entorno..."
+          rm -rf /Users/runner/.dotnet
+          rm -rf /Users/runner/.nuget
+          rm -rf /Users/runner/work/_actions/actions/setup-dotnet/v4/externals/
+          echo "Entorno limpio."
+        
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -232,6 +259,15 @@ jobs:
       matrix:
         framework: [ net8.0 ]
     steps:
+
+      - name: Limpiar entorno
+        run: |
+          echo "Limpiando entorno..."
+          rm -rf /Users/runner/.dotnet
+          rm -rf /Users/runner/.nuget
+          rm -rf /Users/runner/work/_actions/actions/setup-dotnet/v4/externals/
+          echo "Entorno limpio."
+        
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -339,6 +375,15 @@ jobs:
     needs: [prepare, build_extensions, build_core, build_apps]
     runs-on: macos-13
     steps:
+
+      - name: Limpiar entorno
+        run: |
+          echo "Limpiando entorno..."
+          rm -rf /Users/runner/.dotnet
+          rm -rf /Users/runner/.nuget
+          rm -rf /Users/runner/work/_actions/actions/setup-dotnet/v4/externals/
+          echo "Entorno limpio."
+          
       - name: Checkout
         uses: actions/checkout@v4
         with:
