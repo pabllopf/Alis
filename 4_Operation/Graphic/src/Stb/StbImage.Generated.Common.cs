@@ -1246,7 +1246,7 @@ namespace Alis.Core.Graphic.Stb
         /// <returns>The int</returns>
         public static int Stbiinfomain(Stbicontext s, ref int x, ref int y, ref int comp)
         {
-            if (Stbijpeginfo(s, (int*)x, (int*)y, (int*)comp) != 0)
+            if (Stbijpeginfo(s, (int*) x, (int*) y, (int*) comp) != 0)
             {
                 return 1;
             }
@@ -1256,7 +1256,7 @@ namespace Alis.Core.Graphic.Stb
                 return 1;
             }
 
-            if (Stbibmpinfo(s, (int*)x, (int*)y, (int*)comp) != 0)
+            if (Stbibmpinfo(s, (int*) x, (int*) y, (int*) comp) != 0)
             {
                 return 1;
             }

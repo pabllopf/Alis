@@ -773,7 +773,7 @@ namespace Alis.Core.Graphic.Stb
             int* val = stackalloc int[64];
             int* v = val;
             byte* o;
-            short* d = (short*)data;
+            short* d = (short*) data;
             for (i = 0; i < 8; ++i, ++d, ++v)
             {
                 if ((d[8] == 0) && (d[16] == 0) && (d[24] == 0) && (d[32] == 0) && (d[40] == 0) && (d[48] == 0) && (d[56] == 0))
@@ -845,7 +845,7 @@ namespace Alis.Core.Graphic.Stb
                 }
             }
 
-            for (i = 0, v = val, o = (byte*)@out; i < 8; ++i, v += 8, o += outstride)
+            for (i = 0, v = val, o = (byte*) @out; i < 8; ++i, v += 8, o += outstride)
             {
                 int t0 = 0;
                 int t1 = 0;
@@ -985,8 +985,8 @@ namespace Alis.Core.Graphic.Stb
                             }
                         }
 
-                        z.Idctblockkernel((IntPtr)(z.Imgcomp[n].data + z.Imgcomp[n].w2 * j * 8 + i * 8), z.Imgcomp[n].w2, (IntPtr)data);
-                        
+                        z.Idctblockkernel(z.Imgcomp[n].data + z.Imgcomp[n].w2 * j * 8 + i * 8, z.Imgcomp[n].w2, (IntPtr) data);
+
                         if (--z.Todo <= 0)
                         {
                             if (z.Codebits < 24)
@@ -1036,8 +1036,8 @@ namespace Alis.Core.Graphic.Stb
                                     }
                                 }
 
-                                z.Idctblockkernel((IntPtr)(z.Imgcomp[n].data + z.Imgcomp[n].w2 * y2 + x2), z.Imgcomp[n].w2,
-                                    (IntPtr)data);
+                                z.Idctblockkernel(z.Imgcomp[n].data + z.Imgcomp[n].w2 * y2 + x2, z.Imgcomp[n].w2,
+                                    (IntPtr) data);
                             }
                         }
 
@@ -1071,8 +1071,8 @@ namespace Alis.Core.Graphic.Stb
                 for (j = 0; j < h; ++j)
                 for (i = 0; i < w; ++i)
                 {
-                    short* data = (short*)(z.Imgcomp[n].coeff + 64 * (i + j * z.Imgcomp[n].coeffw));
-                    
+                    short* data = (short*) (z.Imgcomp[n].coeff + 64 * (i + j * z.Imgcomp[n].coeffw));
+
                     if (z.Specstart == 0)
                     {
                         fixed (Stbihuffman* dptr = &z.Huffdc[z.Imgcomp[n].hd])
@@ -1131,7 +1131,7 @@ namespace Alis.Core.Graphic.Stb
                         {
                             int x2 = i * z.Imgcomp[n].h + x;
                             int y2 = j * z.Imgcomp[n].v + y;
-                            short* data = (short*)(z.Imgcomp[n].coeff + 64 * (x2 + y2 * z.Imgcomp[n].coeffw));
+                            short* data = (short*) (z.Imgcomp[n].coeff + 64 * (x2 + y2 * z.Imgcomp[n].coeffw));
 
 
                             fixed (Stbihuffman* dptr = &z.Huffdc[z.Imgcomp[n].hd])
@@ -1196,10 +1196,10 @@ namespace Alis.Core.Graphic.Stb
                     for (j = 0; j < h; ++j)
                     for (i = 0; i < w; ++i)
                     {
-                        short* data = (short*)(z.Imgcomp[n].coeff + 64 * (i + j * z.Imgcomp[n].coeffw));
+                        short* data = (short*) (z.Imgcomp[n].coeff + 64 * (i + j * z.Imgcomp[n].coeffw));
                         Stbijpegdequantize(data, z.Dequant[z.Imgcomp[n].tq]);
-                        z.Idctblockkernel((IntPtr)(z.Imgcomp[n].data + z.Imgcomp[n].w2 * j * 8 + i * 8), z.Imgcomp[n].w2,
-                            (IntPtr)data);
+                        z.Idctblockkernel(z.Imgcomp[n].data + z.Imgcomp[n].w2 * j * 8 + i * 8, z.Imgcomp[n].w2,
+                            (IntPtr) data);
                     }
                 }
             }
@@ -1492,21 +1492,21 @@ namespace Alis.Core.Graphic.Stb
             {
                 if (z.Imgcomp[i].rawdata != IntPtr.Zero)
                 {
-                    CRuntime.Free((void*)z.Imgcomp[i].rawdata);
+                    CRuntime.Free((void*) z.Imgcomp[i].rawdata);
                     z.Imgcomp[i].rawdata = IntPtr.Zero;
                     z.Imgcomp[i].data = IntPtr.Zero;
                 }
 
                 if (z.Imgcomp[i].rawcoeff != IntPtr.Zero)
                 {
-                    CRuntime.Free((void*)z.Imgcomp[i].rawcoeff);
+                    CRuntime.Free((void*) z.Imgcomp[i].rawcoeff);
                     z.Imgcomp[i].rawcoeff = IntPtr.Zero;
                     z.Imgcomp[i].coeff = IntPtr.Zero;
                 }
 
                 if (z.Imgcomp[i].linebuf != IntPtr.Zero)
                 {
-                    CRuntime.Free((void*)z.Imgcomp[i].linebuf);
+                    CRuntime.Free((void*) z.Imgcomp[i].linebuf);
                     z.Imgcomp[i].linebuf = IntPtr.Zero;
                 }
             }
@@ -1662,24 +1662,24 @@ namespace Alis.Core.Graphic.Stb
                 z.Imgcomp[i].coeff = IntPtr.Zero;
                 z.Imgcomp[i].rawcoeff = IntPtr.Zero;
                 z.Imgcomp[i].linebuf = IntPtr.Zero;
-                z.Imgcomp[i].rawdata = (IntPtr)Stbimallocmad2(z.Imgcomp[i].w2, z.Imgcomp[i].h2, 15);
+                z.Imgcomp[i].rawdata = (IntPtr) Stbimallocmad2(z.Imgcomp[i].w2, z.Imgcomp[i].h2, 15);
                 if (z.Imgcomp[i].rawdata == IntPtr.Zero)
                 {
                     return Stbifreejpegcomponents(z, i + 1, Stbierr("outofmem"));
                 }
 
-                z.Imgcomp[i].data = (IntPtr)(((long) z.Imgcomp[i].rawdata + 15) & ~15);
+                z.Imgcomp[i].data = (IntPtr) (((long) z.Imgcomp[i].rawdata + 15) & ~15);
                 if (z.Progressive != 0)
                 {
                     z.Imgcomp[i].coeffw = z.Imgcomp[i].w2 / 8;
                     z.Imgcomp[i].coeffh = z.Imgcomp[i].h2 / 8;
-                    z.Imgcomp[i].rawcoeff = (IntPtr)Stbimallocmad3(z.Imgcomp[i].w2, z.Imgcomp[i].h2, sizeof(short), 15);
+                    z.Imgcomp[i].rawcoeff = (IntPtr) Stbimallocmad3(z.Imgcomp[i].w2, z.Imgcomp[i].h2, sizeof(short), 15);
                     if (z.Imgcomp[i].rawcoeff == IntPtr.Zero)
                     {
                         return Stbifreejpegcomponents(z, i + 1, Stbierr("outofmem"));
                     }
 
-                    z.Imgcomp[i].coeff = (IntPtr)(((long) z.Imgcomp[i].rawcoeff + 15) & ~15);
+                    z.Imgcomp[i].coeff = (IntPtr) (((long) z.Imgcomp[i].rawcoeff + 15) & ~15);
                 }
             }
 
@@ -1867,19 +1867,19 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="w">The </param>
         /// <param name="hs">The hs</param>
         /// <returns>The @out</returns>
-        public static IntPtr Stbiresamplerowv2(IntPtr @outPtr, IntPtr innearPtr, IntPtr infarPtr, int w, int hs)
+        public static IntPtr Stbiresamplerowv2(IntPtr outPtr, IntPtr innearPtr, IntPtr infarPtr, int w, int hs)
         {
-            byte* @out = (byte*)@outPtr;
-            byte* @innear = (byte*)innearPtr;
-            byte* infar = (byte*)infarPtr;
-            
+            byte* @out = (byte*) outPtr;
+            byte* innear = (byte*) innearPtr;
+            byte* infar = (byte*) infarPtr;
+
             int i = 0;
             for (i = 0; i < w; ++i)
             {
                 @out[i] = (byte) ((3 * innear[i] + infar[i] + 2) >> 2);
             }
 
-            return (IntPtr)@out;
+            return (IntPtr) @out;
         }
 
         /// <summary>
@@ -1891,18 +1891,18 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="w">The </param>
         /// <param name="hs">The hs</param>
         /// <returns>The @out</returns>
-        public static IntPtr Stbiresamplerowh2(IntPtr @outPtr, IntPtr innearPtr, IntPtr infarPtr, int w, int hs)
+        public static IntPtr Stbiresamplerowh2(IntPtr outPtr, IntPtr innearPtr, IntPtr infarPtr, int w, int hs)
         {
-            byte* @out = (byte*)@outPtr;
-            byte* innear = (byte*)innearPtr;
-            byte* infar = (byte*)infarPtr;
-            
+            byte* @out = (byte*) outPtr;
+            byte* innear = (byte*) innearPtr;
+            byte* infar = (byte*) infarPtr;
+
             int i = 0;
             byte* input = innear;
             if (w == 1)
             {
                 @out[0] = @out[1] = input[0];
-                return (IntPtr)@out;
+                return (IntPtr) @out;
             }
 
             @out[0] = input[0];
@@ -1916,7 +1916,7 @@ namespace Alis.Core.Graphic.Stb
 
             @out[i * 2 + 0] = (byte) ((input[w - 2] * 3 + input[w - 1] + 2) >> 2);
             @out[i * 2 + 1] = input[w - 1];
-            return (IntPtr)@out;
+            return (IntPtr) @out;
         }
 
         /// <summary>
@@ -1928,19 +1928,19 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="w">The </param>
         /// <param name="hs">The hs</param>
         /// <returns>The @out</returns>
-        public static IntPtr Stbiresamplerowhv2(IntPtr @outPtr, IntPtr innearPtr, IntPtr infarPtr, int w, int hs)
+        public static IntPtr Stbiresamplerowhv2(IntPtr outPtr, IntPtr innearPtr, IntPtr infarPtr, int w, int hs)
         {
-            byte* @out = (byte*)@outPtr;
-            byte* innear = (byte*)innearPtr;
-            byte* infar = (byte*)infarPtr;
-            
+            byte* @out = (byte*) outPtr;
+            byte* innear = (byte*) innearPtr;
+            byte* infar = (byte*) infarPtr;
+
             int i = 0;
             int t0 = 0;
             int t1 = 0;
             if (w == 1)
             {
                 @out[0] = @out[1] = (byte) ((3 * innear[0] + infar[0] + 2) >> 2);
-                return (IntPtr)@out;
+                return (IntPtr) @out;
             }
 
             t1 = 3 * innear[0] + infar[0];
@@ -1954,7 +1954,7 @@ namespace Alis.Core.Graphic.Stb
             }
 
             @out[w * 2 - 1] = (byte) ((t1 + 2) >> 2);
-            return (IntPtr)@out;
+            return (IntPtr) @out;
         }
 
         /// <summary>
@@ -1966,13 +1966,13 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="w">The </param>
         /// <param name="hs">The hs</param>
         /// <returns>The @out</returns>
-        public static IntPtr Stbiresamplerowgeneric(IntPtr @outPtr, IntPtr innearPtr, IntPtr infarPtr, int w, int hs)
+        public static IntPtr Stbiresamplerowgeneric(IntPtr outPtr, IntPtr innearPtr, IntPtr infarPtr, int w, int hs)
         {
-            byte* @out = (byte*)@outPtr;
-            byte* @innear = (byte*)innearPtr;
-            byte* @infar = (byte*)infarPtr;
-            
-            
+            byte* @out = (byte*) outPtr;
+            byte* innear = (byte*) innearPtr;
+            byte* infar = (byte*) infarPtr;
+
+
             int i = 0;
             int j = 0;
             for (i = 0; i < w; ++i)
@@ -1981,7 +1981,7 @@ namespace Alis.Core.Graphic.Stb
                 @out[i * hs + j] = innear[i];
             }
 
-            return (IntPtr)@out;
+            return (IntPtr) @out;
         }
 
         /// <summary>
@@ -1993,13 +1993,13 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="pcr">The pcr</param>
         /// <param name="count">The count</param>
         /// <param name="step">The step</param>
-        public static void StbiYCbCrtoRgBrow(IntPtr @outPtr, IntPtr yPtr, IntPtr pcbPtr, IntPtr pcrPtr, int count, int step)
+        public static void StbiYCbCrtoRgBrow(IntPtr outPtr, IntPtr yPtr, IntPtr pcbPtr, IntPtr pcrPtr, int count, int step)
         {
-            byte* @out = (byte*)@outPtr;
-            int* y = (int*)yPtr;
-            byte* pcb = (byte*)pcbPtr;
-            byte* pcr = (byte*)pcrPtr;
-            
+            byte* @out = (byte*) outPtr;
+            int* y = (int*) yPtr;
+            byte* pcb = (byte*) pcbPtr;
+            byte* pcr = (byte*) pcrPtr;
+
             int i = 0;
             for (i = 0; i < count; ++i)
             {
@@ -2137,7 +2137,7 @@ namespace Alis.Core.Graphic.Stb
                 for (k = 0; k < decoden; ++k)
                 {
                     Stbiresample r = rescomp[k];
-                    z.Imgcomp[k].linebuf = (IntPtr)Stbimalloc(z.S.Imgx + 3);
+                    z.Imgcomp[k].linebuf = (IntPtr) Stbimalloc(z.S.Imgx + 3);
                     if (z.Imgcomp[k].linebuf == IntPtr.Zero)
                     {
                         Stbicleanupjpeg(z);
@@ -2186,8 +2186,8 @@ namespace Alis.Core.Graphic.Stb
                     {
                         Stbiresample r = rescomp[k];
                         int ybot = r.Ystep >= r.Vs >> 1 ? 1 : 0;
-                        coutput[k] = (byte*)r.Resample((IntPtr)z.Imgcomp[k].linebuf, (IntPtr)(ybot != 0 ? r.Line1 : r.Line0),
-                            (IntPtr)(ybot != 0 ? r.Line0 : r.Line1), r.Wlores, r.Hs);
+                        coutput[k] = (byte*) r.Resample(z.Imgcomp[k].linebuf, ybot != 0 ? r.Line1 : r.Line0,
+                            ybot != 0 ? r.Line0 : r.Line1, r.Wlores, r.Hs);
                         if (++r.Ystep >= r.Vs)
                         {
                             r.Ystep = 0;
@@ -2217,7 +2217,7 @@ namespace Alis.Core.Graphic.Stb
                             }
                             else
                             {
-                                z.YCbCrtoRgBkernel((IntPtr)@out, (IntPtr)y, (IntPtr)coutput[1], (IntPtr)coutput[2], (int) z.S.Imgx, n);
+                                z.YCbCrtoRgBkernel((IntPtr) @out, (IntPtr) y, (IntPtr) coutput[1], (IntPtr) coutput[2], (int) z.S.Imgx, n);
                             }
                         }
                         else if (z.S.Imgn == 4)
@@ -2236,7 +2236,7 @@ namespace Alis.Core.Graphic.Stb
                             }
                             else if (z.App14Colortransform == 2)
                             {
-                                z.YCbCrtoRgBkernel((IntPtr)@out, (IntPtr)y, (IntPtr)coutput[1], (IntPtr)coutput[2], (int) z.S.Imgx, n);
+                                z.YCbCrtoRgBkernel((IntPtr) @out, (IntPtr) y, (IntPtr) coutput[1], (IntPtr) coutput[2], (int) z.S.Imgx, n);
                                 for (i = 0; i < z.S.Imgx; ++i)
                                 {
                                     byte m = coutput[3][i];
@@ -2248,7 +2248,7 @@ namespace Alis.Core.Graphic.Stb
                             }
                             else
                             {
-                                z.YCbCrtoRgBkernel((IntPtr)@out, (IntPtr)y, (IntPtr)coutput[1], (IntPtr)coutput[2], (int) z.S.Imgx, n);
+                                z.YCbCrtoRgBkernel((IntPtr) @out, (IntPtr) y, (IntPtr) coutput[1], (IntPtr) coutput[2], (int) z.S.Imgx, n);
                             }
                         }
                         else

@@ -34,5 +34,5 @@ namespace Alis.Core.Graphic.Stb
     /// <summary>
     ///     The delegate
     /// </summary>
-    public  delegate void Delegate1(IntPtr arg0, IntPtr arg1, IntPtr arg2, IntPtr arg3, int arg4, int arg5);
+    public delegate void Delegate1(IntPtr arg0, IntPtr arg1, IntPtr arg2, IntPtr arg3, int arg4, int arg5);
 }
