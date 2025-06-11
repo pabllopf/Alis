@@ -1993,13 +1993,8 @@ namespace Alis.Core.Graphic.Stb
         /// <param name="pcr">The pcr</param>
         /// <param name="count">The count</param>
         /// <param name="step">The step</param>
-        public static void StbiYCbCrtoRgBrow(IntPtr outPtr, IntPtr yPtr, IntPtr pcbPtr, IntPtr pcrPtr, int count, int step)
+        public static void StbiYCbCrtoRgBrow(byte* @out, byte* y, byte* pcb, byte* pcr, int count, int step)
         {
-            byte* @out = (byte*) outPtr;
-            int* y = (int*) yPtr;
-            byte* pcb = (byte*) pcbPtr;
-            byte* pcr = (byte*) pcrPtr;
-
             int i = 0;
             for (i = 0; i < count; ++i)
             {
@@ -2217,7 +2212,7 @@ namespace Alis.Core.Graphic.Stb
                             }
                             else
                             {
-                                z.YCbCrtoRgBkernel((IntPtr) @out, (IntPtr) y, (IntPtr) coutput[1], (IntPtr) coutput[2], (int) z.S.Imgx, n);
+                                z.YCbCrtoRgBkernel((byte*)@out, (byte*)y, (byte*)coutput[1], (byte*)coutput[2], (int) z.S.Imgx, n);
                             }
                         }
                         else if (z.S.Imgn == 4)
@@ -2236,7 +2231,7 @@ namespace Alis.Core.Graphic.Stb
                             }
                             else if (z.App14Colortransform == 2)
                             {
-                                z.YCbCrtoRgBkernel((IntPtr) @out, (IntPtr) y, (IntPtr) coutput[1], (IntPtr) coutput[2], (int) z.S.Imgx, n);
+                                z.YCbCrtoRgBkernel((byte*)@out, (byte*)y, (byte*)coutput[1], (byte*)coutput[2], (int) z.S.Imgx, n);
                                 for (i = 0; i < z.S.Imgx; ++i)
                                 {
                                     byte m = coutput[3][i];
@@ -2248,7 +2243,7 @@ namespace Alis.Core.Graphic.Stb
                             }
                             else
                             {
-                                z.YCbCrtoRgBkernel((IntPtr) @out, (IntPtr) y, (IntPtr) coutput[1], (IntPtr) coutput[2], (int) z.S.Imgx, n);
+                                z.YCbCrtoRgBkernel((byte*)@out, (byte*)y, (byte*)coutput[1], (byte*)coutput[2], (int) z.S.Imgx, n);
                             }
                         }
                         else
