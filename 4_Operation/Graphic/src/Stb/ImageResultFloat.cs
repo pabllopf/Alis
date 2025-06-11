@@ -37,7 +37,8 @@ namespace Alis.Core.Graphic.Stb
     /// <summary>
     ///     The image result float class
     /// </summary>
-    public class ImageResultFloat
+    public
+        class ImageResultFloat
     {
         /// <summary>
         ///     Gets or sets the value of the width

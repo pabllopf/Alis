@@ -34,7 +34,8 @@ namespace Alis.Core.Graphic.Stb
     /// <summary>
     ///     The image info
     /// </summary>
-    public struct ImageInfo
+    public
+        struct ImageInfo
     {
         /// <summary>
         ///     The width
@@ -62,15 +63,15 @@ namespace Alis.Core.Graphic.Stb
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The image info</returns>
-        public static ImageInfo? FromStream(Stream stream)
+        public static unsafe ImageInfo? FromStream(Stream stream)
         {
-            int width = 0, height = 0, comp = 0;
+            int width, height, comp;
             Stbicontext context = new Stbicontext(stream);
 
             bool is16Bit = StbImage.Stbiis16Main(context) == 1;
             StbImage.Stbirewind(context);
 
-            int infoResult = StbImage.Stbiinfomain(context, ref width, ref height, ref comp);
+            int infoResult = StbImage.Stbiinfomain(context, &width, &height, &comp);
             StbImage.Stbirewind(context);
 
             if (infoResult == 0)

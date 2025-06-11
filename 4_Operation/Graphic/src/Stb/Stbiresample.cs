@@ -27,14 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Core.Graphic.Stb
 {
     /// <summary>
     ///     The stbi resample class
     /// </summary>
-    public class Stbiresample
+    public unsafe class Stbiresample
     {
         /// <summary>
         ///     The hs
@@ -44,12 +42,12 @@ namespace Alis.Core.Graphic.Stb
         /// <summary>
         ///     The line
         /// </summary>
-        public IntPtr Line0;
+        public byte* Line0;
 
         /// <summary>
         ///     The line
         /// </summary>
-        public IntPtr Line1;
+        public byte* Line1;
 
         /// <summary>
         ///     The resample
