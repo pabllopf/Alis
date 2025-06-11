@@ -40,6 +40,9 @@ namespace Alis.Core.Ecs.Components.Audio
     /// </summary>
     public struct AudioSource(string nameFile = "", float volume = 100, bool isMute = false, bool playOnAwake = false, bool loop = false) : IAudioSource, IInitable, IEntityComponent
     {
+        /// <summary>
+        /// The loop
+        /// </summary>
         private readonly bool loop = loop;
 
         /// <summary>
