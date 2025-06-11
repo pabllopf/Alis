@@ -1,6 +1,7 @@
 <Project>
     <ItemGroup Condition="$(Configuration) == 'Release'">
-
+<!--
+        
         <None
             Condition="
                 $(AssemblyName.Contains('Test')) == False AND
@@ -13,7 +14,7 @@
                     $(AssemblyName.Equals('Alis.Core')) == True OR 
                     $(AssemblyName.Equals('Alis.Core.Ecs')) == True
                 )"
-            Include="$(SolutionDir)4_Operation/Ecs/generator/**/release/**/Alis.Core.Ecs.Generator.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="true"/>
+            Include="$(SolutionDir)4_Operation/Ecs/generator/**/release/**/Alis.Core.Ecs.Generator.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="true"/>-->
         
         <!-- Include all the .md files in the output -->
         <Content Include="$(ProjectDir)bin/Release/lib/net5.0/*.md" Visible="false" PackagePath="lib/net5.0/"/>
