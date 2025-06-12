@@ -69,7 +69,7 @@ namespace Alis.Core.Ecs.Core.Memory
         public static void Register(Func<bool> callback)
         {
             // Create a unreachable object that remembers the callback function and target object.
-            new Gen2GcCallback(callback);
+            Gen2GcCallback gcCallback = new Gen2GcCallback(callback);
         }
 
         /// <summary>
