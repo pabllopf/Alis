@@ -6,7 +6,7 @@ on:
 
 jobs:
   prepare:
-    if: "contains(github.event.head_commit.message, 'release:')"
+    if: contains(github.event.head_commit.message, 'release:')
     runs-on: macos-13
     outputs:
       version: ${{ steps.get-version.outputs.version }}
@@ -14,14 +14,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref : master
           fetch-depth: 0
-          
+
       - name: Get current version
         id: get-version
         run: |
           file=Directory.Build.props
-          version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file")
+          version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
           IFS='.' read -r major minor patch <<< "$version"
           patch=$((patch + 1))
           if [[ "$patch" -gt 9 ]]; then
@@ -36,55 +35,74 @@ jobs:
           sed -i "" "s/$version/$versionfinal/" "$file"
           echo "version=$versionfinal" >> $GITHUB_OUTPUT
 
-  
   build_extensions:
     needs: prepare
     runs-on: macos-13
     strategy:
       matrix:
         framework: [ net5.0, net8.0, netstandard2.0, net471 ]
-        
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: master
           fetch-depth: 1
-          
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
-          
+
       - name: Build ALIS.EXTENSIONS - ${{ matrix.framework }}
         run: |
           for project in $(find . -name "*.csproj" -type f); do
             if [[ $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator."* ]]; then
-              echo "Compiling $project for  ${{ matrix.framework }}"
+              echo "Compiling $project for ${{ matrix.framework }}"
               dotnet build "$project" -f ${{ matrix.framework }} -c Release
             fi
           done
-          
+
+  publish_packages:
+    name: Publish NuGet Packages
+    needs: [prepare, build_extensions]
+    runs-on: macos-13
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.301
+
       - name: Create packages
         run: |
-          for i in $(find . -name "*.csproj" -type f); do
-            if [[ $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator."* ]]; then
-              echo "Skip project $i"
-            else
-              dotnet pack -c Release "$i" -o "./.publish/$VERSIONFINAL/"
+          mkdir -p ./.publish/${{ needs.prepare.outputs.version }}
+          for project in $(find . -name "*.csproj" -type f); do
+            if [[ $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator."* && $project == *".Extension."* ]]; then
+              echo "Packing $project"
+              dotnet pack "$project" -c Release -o "./.publish/${{ needs.prepare.outputs.version }}/"
             fi
           done
-          
-      - name: Upload packages
-        run: | 
-          echo "Uploading packages..."
-          for file in ./.publish/$VERSIONFINAL/*.nupkg; do
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ needs.prepare.outputs.version }}" --title "v${{ needs.prepare.outputs.version }}" --notes "Automatic release"
+
+      - name: Upload packages to GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for file in ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg; do
             echo "Uploading $file"
-            gh release upload "$VERSIONFINAL" "$file" --clobber
+            gh release upload "${{ needs.prepare.outputs.version }}" "$file" --clobber
           done
 
-      - name: Publish nugets TO nuget
-        run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
+      - name: Publish to NuGet
+        run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET }} --skip-duplicate
 
-      - name: Publish nugets TO github
-        run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{secrets.GITHUB_TOKEN}} --skip-duplicate
+      - name: Publish to GitHub NuGet Feed
+        run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
