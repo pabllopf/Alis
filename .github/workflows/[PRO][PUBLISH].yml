@@ -75,6 +75,24 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
+          
+      - name: Get current version
+        id: get-version
+        run: |
+          file=Directory.Build.props
+          version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
+          IFS='.' read -r major minor patch <<< "$version"
+          patch=$((patch + 1))
+          if [[ "$patch" -gt 9 ]]; then
+            patch=0
+            minor=$((minor + 1))
+          fi
+          if [[ "$minor" -gt 9 ]]; then
+            minor=0
+            major=$((major + 1))
+          fi
+          versionfinal="$major.$minor.$patch"
+          sed -i "" "s/$version/$versionfinal/" "$file"
 
       - name: Create packages
         run: |
