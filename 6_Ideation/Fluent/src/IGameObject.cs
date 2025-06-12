@@ -37,11 +37,6 @@ namespace Alis.Core.Aspect.Fluent
     public interface IGameObject
     {
         /// <summary>
-        /// Gets the value of the entity id
-        /// </summary>
-        public int EntityID{ get; }
-        
-        /// <summary>
         /// Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>

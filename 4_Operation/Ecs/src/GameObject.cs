@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
 using Alis.Core.Ecs.Core.Memory;
@@ -13,7 +14,7 @@ namespace Alis.Core.Ecs
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 2)]
     
-    public partial struct GameObject : IEquatable<GameObject>
+    public partial struct GameObject : IEquatable<GameObject>, IGameObject
     {
 
 
@@ -219,5 +220,5 @@ namespace Alis.Core.Ecs
         {
             return PackedValue.GetHashCode();
         }
-    }
+    } 
 }
