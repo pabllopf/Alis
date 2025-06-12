@@ -36,23 +36,26 @@ jobs:
           sed -i "" "s/$version/$versionfinal/" "$file"
           echo "version=$versionfinal" >> $GITHUB_OUTPUT
 
-
+  
   build_extensions:
     needs: prepare
     runs-on: macos-13
     strategy:
       matrix:
-        framework: [
-          net5.0, net8.0,
-          netstandard2.0,
-          net471
-        ]
+        framework: [ net5.0, net8.0, netstandard2.0, net471 ]
+        
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 1
+          
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 9.x.x
+          dotnet-version: 9.0.301
+          
       - name: Build ALIS.EXTENSIONS - ${{ matrix.framework }}
         run: |
           for project in $(find . -name "*.csproj" -type f); do
@@ -61,3 +64,27 @@ jobs:
               dotnet build "$project" -f ${{ matrix.framework }} -c Release
             fi
           done
+          
+      - name: Create packages
+        run: |
+          for i in $(find . -name "*.csproj" -type f); do
+            if [[ $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator."* ]]; then
+              echo "Skip project $i"
+            else
+              dotnet pack -c Release "$i" -o "./.publish/$VERSIONFINAL/"
+            fi
+          done
+          
+      - name: Upload packages
+        run: | 
+          echo "Uploading packages..."
+          for file in ./.publish/$VERSIONFINAL/*.nupkg; do
+            echo "Uploading $file"
+            gh release upload "$VERSIONFINAL" "$file" --clobber
+          done
+
+      - name: Publish nugets TO nuget
+        run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
+
+      - name: Publish nugets TO github
+        run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{secrets.GITHUB_TOKEN}} --skip-duplicate
