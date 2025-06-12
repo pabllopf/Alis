@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Systems.Scope;
 

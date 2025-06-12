@@ -27,10 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Data.Mapping;
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Collider;
 

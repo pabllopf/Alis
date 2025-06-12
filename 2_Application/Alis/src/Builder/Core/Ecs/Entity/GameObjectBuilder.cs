@@ -4,6 +4,7 @@ using Alis.Builder.Core.Ecs.Components.Audio;
 using Alis.Builder.Core.Ecs.Components.Collider;
 using Alis.Builder.Core.Ecs.Components.Render;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Components.Audio;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;

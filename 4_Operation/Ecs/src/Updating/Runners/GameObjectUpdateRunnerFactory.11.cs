@@ -1,5 +1,5 @@
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Components;
 
 namespace Alis.Core.Ecs.Updating.Runners
 {
@@ -10,7 +10,8 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class GameObjectUpdateRunnerFactory<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10,
         TArg11> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
-        where TComp : IGameObjectComponent<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11>
+        where TComp : IGameObjectComponent<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9,
+            TArg10, TArg11>
     {
         /// <summary>
         ///     Creates the capacity

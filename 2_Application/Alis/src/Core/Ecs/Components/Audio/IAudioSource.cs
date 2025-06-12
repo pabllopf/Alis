@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Builder.Core.Ecs.Entity
+namespace Alis.Core.Ecs.Components.Audio
 {
     /// <summary>
     /// The audio source interface

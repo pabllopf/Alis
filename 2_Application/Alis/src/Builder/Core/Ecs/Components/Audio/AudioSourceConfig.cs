@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.Entity;
+using Alis.Core.Ecs.Components.Audio;
 
 namespace Alis.Builder.Core.Ecs.Components.Audio
 {

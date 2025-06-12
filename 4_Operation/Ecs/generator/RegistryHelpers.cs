@@ -79,20 +79,24 @@ namespace Alis.Core.Ecs.Generator
                 Name: "Components",
                 ContainingNamespace:
                 {
-                    Name: "Ecs",
+                    Name: "Fluent",
                     ContainingNamespace:
                     {
-                        Name: "Core",
+                        Name: "Aspect",
                         ContainingNamespace:
                         {
-                            Name: "Alis",
-                            ContainingNamespace.IsGlobalNamespace: true
+                            Name: "Core",
+                            ContainingNamespace:
+                            {
+                                Name: "Alis",
+                                ContainingNamespace.IsGlobalNamespace: true
+                            }
                         }
                     }
                 }
             }
         };
-
+        
         /// <summary>
         /// Ises the special component interface using the specified named type symbol
         /// </summary>
@@ -106,14 +110,18 @@ namespace Alis.Core.Ecs.Generator
                 Name: "Components",
                 ContainingNamespace:
                 {
-                    Name: "Ecs",
+                    Name: "Fluent",
                     ContainingNamespace:
                     {
-                        Name: "Core",
+                        Name: "Aspect",
                         ContainingNamespace:
                         {
-                            Name: "Alis",
-                            ContainingNamespace.IsGlobalNamespace: true
+                            Name: "Core",
+                            ContainingNamespace:
+                            {
+                                Name: "Alis",
+                                ContainingNamespace.IsGlobalNamespace: true
+                            }
                         }
                     }
                 }
@@ -132,14 +140,18 @@ namespace Alis.Core.Ecs.Generator
              Name: "Components",
              ContainingNamespace:
              {
-                 Name: "Ecs",
+                 Name: "Fluent",
                  ContainingNamespace:
                  {
-                     Name: "Core",
+                     Name: "Aspect",
                      ContainingNamespace:
                      {
-                         Name: "Alis",
-                         ContainingNamespace.IsGlobalNamespace: true
+                         Name: "Core",
+                         ContainingNamespace:
+                         {
+                             Name: "Alis",
+                             ContainingNamespace.IsGlobalNamespace: true
+                         }
                      }
                  }
              }
@@ -157,15 +169,15 @@ namespace Alis.Core.Ecs.Generator
         /// <summary>
         /// The fully qualified target interface name
         /// </summary>
-        public const string FullyQualifiedTargetInterfaceName = "Alis.Core.Ecs.Components.IComponentBase";
+        public const string FullyQualifiedTargetInterfaceName = "Alis.Core.Aspect.Fluent.Components.IComponentBase";
         /// <summary>
         /// The fully qualified initable interface name
         /// </summary>
-        public const string FullyQualifiedInitableInterfaceName = "Alis.Core.Ecs.Components.IInitable";
+        public const string FullyQualifiedInitableInterfaceName = "Alis.Core.Aspect.Fluent.Components.IInitable";
         /// <summary>
         /// The fully qualified destroyable interface name
         /// </summary>
-        public const string FullyQualifiedDestroyableInterfaceName = "Alis.Core.Ecs.Components.IDestroyable";
+        public const string FullyQualifiedDestroyableInterfaceName = "Alis.Core.Aspect.Fluent.Components.IDestroyable";
 
         /// <summary>
         /// The target interface name

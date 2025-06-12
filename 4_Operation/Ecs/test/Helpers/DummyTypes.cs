@@ -1,8 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis;
-
-using Alis.Core.Ecs.Components;
+using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Core.Ecs.Test.Helpers
 {
@@ -43,13 +42,13 @@ public record struct Struct3(int Value);
     /// <seealso cref="IComponent"/>
     /// <seealso cref="IInitable"/>
     /// <seealso cref="IDestroyable"/>
-    public class FilteredBehavior1(Action onUpdate, Action<GameObject> onInit = null, Action onDestroy = null) : IComponent, IInitable, IDestroyable
+    public class FilteredBehavior1(Action onUpdate, Action<IGameObject> onInit = null, Action onDestroy = null) : IComponent, IInitable, IDestroyable
     {
         /// <summary>
         /// Inits the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(GameObject self) => onInit?.Invoke(self);
+        public void Init(IGameObject self) => onInit?.Invoke(self);
         /// <summary>
         /// Destroys this instance
         /// </summary>

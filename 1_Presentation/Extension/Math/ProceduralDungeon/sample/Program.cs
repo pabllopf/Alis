@@ -28,10 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using Alis.Core.Aspect.Logging;
 
-namespace Alis.Extension.Math.DungeonGenerator.Sample
+namespace Alis.Extension.Math.ProceduralDungeon.Sample
 {
     /// <summary>
     ///     The program class

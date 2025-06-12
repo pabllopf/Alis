@@ -3,7 +3,7 @@ using System;
         using System.Runtime.InteropServices;
         using Alis.Core.Ecs.Test.Helpers;
         using Alis;
-        using Alis.Core.Ecs.Components;
+        using Alis.Core.Aspect.Fluent.Components;
         using Xunit;
         
         namespace Alis.Core.Ecs.Test.Framework
@@ -48,7 +48,7 @@ using System;
         
                     for (int i = 0; i < 10; i++)
                     {
-                        GameObject e1 = default;
+                        IGameObject e1 = default;
         
                         var entity = scene.Create<int, float, FilteredBehavior1>(default, default, new FilteredBehavior1(() => { }, e => e1 = e));
         
@@ -107,18 +107,18 @@ using System;
                 /// The lifetime component
                 /// </summary>
                 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-                public struct LifetimeComponent(Action<GameObject> init, Action<GameObject> destroy) : IInitable, IDestroyable
+                public struct LifetimeComponent(Action<IGameObject> init, Action<IGameObject> destroy) : IInitable, IDestroyable
                 {
                     /// <summary>
                     /// The self
                     /// </summary>
-                    private GameObject _self;
+                    private IGameObject _self;
         
                     /// <summary>
                     /// Inits the self
                     /// </summary>
                     /// <param name="self">The self</param>
-                    public void Init(GameObject self) => init?.Invoke(_self = self);
+                    public void Init(IGameObject self) => init?.Invoke(_self = self);
         
                     /// <summary>
                     /// Destroys this instance

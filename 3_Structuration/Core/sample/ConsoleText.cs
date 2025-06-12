@@ -1,5 +1,5 @@
 using System;
-using Alis.Core.Ecs.Components;
+using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Core.Sample
 {
