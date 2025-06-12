@@ -77,11 +77,6 @@ namespace Alis.Core.Ecs
         internal readonly GameObject DefaultWorldGameObject;
 
         /// <summary>
-        ///     The is disposed
-        /// </summary>
-        private bool _isDisposed;
-
-        /// <summary>
         ///     The query cache
         /// </summary>
         internal Dictionary<int, Query> QueryCache = [];
@@ -588,9 +583,6 @@ namespace Alis.Core.Ecs
         /// </summary>
         public void Dispose()
         {
-            if (_isDisposed)
-                throw new InvalidOperationException("Scene is already disposed!");
-
             GlobalWorldTables.Worlds[Id] = null!;
 
             foreach (ref WorldArchetypeTableItem item in WorldArchetypeTable.AsSpan())
@@ -601,9 +593,6 @@ namespace Alis.Core.Ecs
                 }
 
             _sharedCountdown.Dispose();
-
-            _isDisposed = true;
-
             RecycledEntityIds.Dispose();
             //EntityTable.Dispose();
         }
