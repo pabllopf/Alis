@@ -36,6 +36,7 @@ jobs:
           sed -i "" "s/$version/$versionfinal/" "$file"
           echo "version=$versionfinal" >> $GITHUB_OUTPUT
 
+
   build_extensions:
     needs: prepare
     runs-on: macos-13
