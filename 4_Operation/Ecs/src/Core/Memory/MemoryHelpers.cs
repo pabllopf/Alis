@@ -211,21 +211,8 @@ namespace Alis.Core.Ecs.Core.Memory
             Array.Resize(ref arr, newSize);
             return ref arr[index];
         }
-
-        /// <summary>
-        ///     Copies the block using the specified destination
-        /// </summary>
-        /// <typeparam name="TBlock">The block</typeparam>
-        /// <param name="destination">The destination</param>
-        /// <param name="source">The source</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void CopyBlock<TBlock>(ref byte destination, ref byte source)
-            where TBlock : struct
-        {
-            Unsafe.As<byte, TBlock>(ref destination) = Unsafe.As<byte, TBlock>(ref destination);
-        }
-
-
+        
+        
         // catch bugs with Unsafe.SkipInit
         /// <summary>
         ///     Poisons the item
