@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:HashCode.cs
+//  File:CustomHashCode.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Generator
     ///     The hash code
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct HashCode
+    public struct CustomHashCode
     {
         /// <summary>
         ///     The generate global seed
