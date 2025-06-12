@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Components.Render
     /// The sprite interface
     /// </summary>
     /// <seealso cref="IInitable"/>
-    /// <seealso cref="IEntityComponent"/>
+    /// <seealso cref="IGameObjectComponent"/>
     /// <seealso cref="IHasBuilder{SpriteBuilder}"/>
     /// <seealso cref="IBuild{Sprite}"/>
     public interface ISprite

@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Components.Body
     /// <summary>
     /// The rigid body
     /// </summary>
-    public struct RigidBody : IEntityComponent
+    public struct RigidBody : IGameObjectComponent
     {
         /// <summary>
         /// Updates the self

@@ -70,7 +70,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         {
             GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
             config(gameObjectBuilder);
-            Dictionary<Type, IEntityComponent> components = gameObjectBuilder.Build();
+            Dictionary<Type, IGameObjectComponent> components = gameObjectBuilder.Build();
             
             if (components.Count == 0)
             {

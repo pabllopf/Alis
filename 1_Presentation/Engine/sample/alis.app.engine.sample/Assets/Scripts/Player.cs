@@ -37,7 +37,7 @@ namespace Alis.App.Engine.Sample.Assets.Scripts
     /// <summary>
     ///     The player class
     /// </summary>
-    public class Player : IEntityComponent
+    public class Player : IGameObjectComponent
     {
         /// <summary>
         /// Updates the self

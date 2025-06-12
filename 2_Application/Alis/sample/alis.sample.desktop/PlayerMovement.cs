@@ -40,7 +40,7 @@ namespace Alis.Sample.Desktop
     /// <summary>
     /// The player movement
     /// </summary>
-    public struct PlayerMovement (int velocity) : IInitable, IEntityComponent
+    public struct PlayerMovement (int velocity) : IInitable, IGameObjectComponent
     {
         /// <summary>
         /// Gets the value of the velocity

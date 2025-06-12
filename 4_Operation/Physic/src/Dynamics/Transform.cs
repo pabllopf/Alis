@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Dynamics
     ///     A transform contains translation and rotation. It is used to represent
     ///     the position and orientation of rigid frames.
     /// </summary>
-    public struct Transform : IInitable, IEntityComponent
+    public struct Transform : IInitable, IGameObjectComponent
     {
         /// <summary>
         ///     The
