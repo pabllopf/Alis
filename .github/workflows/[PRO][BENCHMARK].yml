@@ -7,7 +7,7 @@ on:
 jobs:
   
   Create_Packages:
-    if: "contains(github.event.head_commit.message, 'release:')"
+    if: "contains(github.event.head_commit.message, 'benchmark:')"
     runs-on: macos-13
     steps:
       - name: Check
