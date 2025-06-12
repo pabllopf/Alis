@@ -28,10 +28,6 @@ jobs:
             8.0.202
             9.x.x
 
-      - name: Install dependencies with Homebrew
-        run: |
-          brew install sdl2 sdl2_image sdl2_ttf ffmpeg 
-
       - name: Define file name to update version
         run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
 
