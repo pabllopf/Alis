@@ -75,7 +75,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Name("Main Scene")
                         .Add<GameObject>(gameObject => gameObject
                             .Transform(transform => transform
-                                .Position(0, 0)
+                                .Position(2, 2)
                             )
                         )
                     )
