@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PooledStack.cs
+//  File:PooledStackWithIndex.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -44,7 +44,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
     ///     so Push can be O(n).  Pop is O(1).
     /// </summary>
     [Serializable]
-    public class PooledStack<T> : IEnumerable<T>, ICollection, IReadOnlyCollection<T>, IDisposable, IDeserializationCallback
+    public class PooledStack<T> : ICollection, IReadOnlyCollection<T>, IDisposable, IDeserializationCallback
     {
         /// <summary>
         ///     The default capacity
@@ -342,7 +342,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         }
 
         /// <summary>
-        ///     Returns an IEnumerator for this PooledStack.
+        ///     Returns an IEnumerator for this PooledStackWithIndex.
         /// </summary>
         /// <returns></returns>
         public Enumerator GetEnumerator()

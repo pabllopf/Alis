@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PooledStack.cs
+//  File:PooledStackWithIndex.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -44,7 +44,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
     ///     so Push can be O(n).  Pop is O(1).
     /// </summary>
     [Serializable]
-    public class PooledStack<T> : IEnumerable<T>, ICollection, IReadOnlyCollection<T>, IDisposable, IDeserializationCallback
+    public class PooledStackWithIndex<T> : ICollection, IReadOnlyCollection<T>, IDisposable, IDeserializationCallback
     {
         /// <summary>
         ///     The default capacity
@@ -342,7 +342,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         }
 
         /// <summary>
-        ///     Returns an IEnumerator for this PooledStack.
+        ///     Returns an IEnumerator for this PooledStackWithIndex.
         /// </summary>
         /// <returns></returns>
         public Enumerator GetEnumerator()
@@ -586,9 +586,9 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         public struct Enumerator : IEnumerator<T>, IEnumerator
         {
             /// <summary>
-            ///     The stack
+            ///     The stackWithIndex
             /// </summary>
-            private readonly PooledStack<T> _stack;
+            private readonly PooledStackWithIndex<T> stackWithIndex;
 
             /// <summary>
             ///     The version
@@ -608,11 +608,11 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
             /// <summary>
             ///     Initializes a new instance of the <see cref="Enumerator" /> class
             /// </summary>
-            /// <param name="stack">The stack</param>
-            internal Enumerator(PooledStack<T> stack)
+            /// <param name="stackWithIndex">The stackWithIndex</param>
+            internal Enumerator(PooledStackWithIndex<T> stackWithIndex)
             {
-                _stack = stack;
-                _version = stack._version;
+                this.stackWithIndex = stackWithIndex;
+                _version = stackWithIndex._version;
                 _index = -2;
                 _currentElement = default(T);
             }
@@ -633,7 +633,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
             public bool MoveNext()
             {
                 bool retval;
-                if (_version != _stack._version)
+                if (_version != stackWithIndex._version)
                 {
                     throw new InvalidOperationException("Collection was modified during enumeration.");
                 }
@@ -641,11 +641,11 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
                 if (_index == -2)
                 {
                     // First call to enumerator.
-                    _index = _stack._size - 1;
+                    _index = stackWithIndex._size - 1;
                     retval = _index >= 0;
                     if (retval)
                     {
-                        _currentElement = _stack._array[_index];
+                        _currentElement = stackWithIndex._array[_index];
                     }
 
                     return retval;
@@ -660,7 +660,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
                 retval = --_index >= 0;
                 if (retval)
                 {
-                    _currentElement = _stack._array[_index];
+                    _currentElement = stackWithIndex._array[_index];
                 }
                 else
                 {
@@ -707,7 +707,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
             /// <exception cref="InvalidOperationException">Collection was modified during enumeration.</exception>
             void IEnumerator.Reset()
             {
-                if (_version != _stack._version)
+                if (_version != stackWithIndex._version)
                 {
                     throw new InvalidOperationException("Collection was modified during enumeration.");
                 }
@@ -722,28 +722,28 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         /// <summary>
         ///     Create a stack with the default initial capacity.
         /// </summary>
-        public PooledStack() : this(ClearMode.Auto, ArrayPool<T>.Shared)
+        public PooledStackWithIndex() : this(ClearMode.Auto, ArrayPool<T>.Shared)
         {
         }
 
         /// <summary>
         ///     Create a stack with the default initial capacity.
         /// </summary>
-        public PooledStack(ClearMode clearMode) : this(clearMode, ArrayPool<T>.Shared)
+        public PooledStackWithIndex(ClearMode clearMode) : this(clearMode, ArrayPool<T>.Shared)
         {
         }
 
         /// <summary>
         ///     Create a stack with the default initial capacity.
         /// </summary>
-        public PooledStack(ArrayPool<T> customPool) : this(ClearMode.Auto, customPool)
+        public PooledStackWithIndex(ArrayPool<T> customPool) : this(ClearMode.Auto, customPool)
         {
         }
 
         /// <summary>
         ///     Create a stack with the default initial capacity and a custom ArrayPool.
         /// </summary>
-        public PooledStack(ClearMode clearMode, ArrayPool<T> customPool)
+        public PooledStackWithIndex(ClearMode clearMode, ArrayPool<T> customPool)
         {
             _pool = customPool ?? ArrayPool<T>.Shared;
             _array = Array.Empty<T>();
@@ -754,7 +754,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Create a stack with a specific initial capacity.  The initial capacity
         ///     must be a non-negative number.
         /// </summary>
-        public PooledStack(int capacity) : this(capacity, ClearMode.Auto, ArrayPool<T>.Shared)
+        public PooledStackWithIndex(int capacity) : this(capacity, ClearMode.Auto, ArrayPool<T>.Shared)
         {
         }
 
@@ -762,7 +762,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Create a stack with a specific initial capacity.  The initial capacity
         ///     must be a non-negative number.
         /// </summary>
-        public PooledStack(int capacity, ClearMode clearMode) : this(capacity, clearMode, ArrayPool<T>.Shared)
+        public PooledStackWithIndex(int capacity, ClearMode clearMode) : this(capacity, clearMode, ArrayPool<T>.Shared)
         {
         }
 
@@ -770,7 +770,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Create a stack with a specific initial capacity.  The initial capacity
         ///     must be a non-negative number.
         /// </summary>
-        public PooledStack(int capacity, ArrayPool<T> customPool) : this(capacity, ClearMode.Auto, customPool)
+        public PooledStackWithIndex(int capacity, ArrayPool<T> customPool) : this(capacity, ClearMode.Auto, customPool)
         {
         }
 
@@ -778,7 +778,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Create a stack with a specific initial capacity.  The initial capacity
         ///     must be a non-negative number.
         /// </summary>
-        public PooledStack(int capacity, ClearMode clearMode, ArrayPool<T> customPool)
+        public PooledStackWithIndex(int capacity, ClearMode clearMode, ArrayPool<T> customPool)
         {
             if (capacity < 0)
             {
@@ -794,7 +794,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Fills a Stack with the contents of a particular collection.  The items are
         ///     pushed onto the stack in the same order they are read by the enumerator.
         /// </summary>
-        public PooledStack(IEnumerable<T> enumerable) : this(enumerable, ClearMode.Auto, ArrayPool<T>.Shared)
+        public PooledStackWithIndex(IEnumerable<T> enumerable) : this(enumerable, ClearMode.Auto, ArrayPool<T>.Shared)
         {
         }
 
@@ -802,7 +802,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Fills a Stack with the contents of a particular collection.  The items are
         ///     pushed onto the stack in the same order they are read by the enumerator.
         /// </summary>
-        public PooledStack(IEnumerable<T> enumerable, ClearMode clearMode) : this(enumerable, clearMode, ArrayPool<T>.Shared)
+        public PooledStackWithIndex(IEnumerable<T> enumerable, ClearMode clearMode) : this(enumerable, clearMode, ArrayPool<T>.Shared)
         {
         }
 
@@ -810,7 +810,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Fills a Stack with the contents of a particular collection.  The items are
         ///     pushed onto the stack in the same order they are read by the enumerator.
         /// </summary>
-        public PooledStack(IEnumerable<T> enumerable, ArrayPool<T> customPool) : this(enumerable, ClearMode.Auto, customPool)
+        public PooledStackWithIndex(IEnumerable<T> enumerable, ArrayPool<T> customPool) : this(enumerable, ClearMode.Auto, customPool)
         {
         }
 
@@ -818,7 +818,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Fills a Stack with the contents of a particular collection.  The items are
         ///     pushed onto the stack in the same order they are read by the enumerator.
         /// </summary>
-        public PooledStack(IEnumerable<T> enumerable, ClearMode clearMode, ArrayPool<T> customPool)
+        public PooledStackWithIndex(IEnumerable<T> enumerable, ClearMode clearMode, ArrayPool<T> customPool)
         {
             _pool = customPool ?? ArrayPool<T>.Shared;
             _clearOnFree = ShouldClear(clearMode);
@@ -858,7 +858,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Fills a Stack with the contents of a particular collection.  The items are
         ///     pushed onto the stack in the same order they are read by the enumerator.
         /// </summary>
-        public PooledStack(T[] array) : this(array.AsSpan(), ClearMode.Auto, ArrayPool<T>.Shared)
+        public PooledStackWithIndex(T[] array) : this(array.AsSpan(), ClearMode.Auto, ArrayPool<T>.Shared)
         {
         }
 
@@ -866,7 +866,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Fills a Stack with the contents of a particular collection.  The items are
         ///     pushed onto the stack in the same order they are read by the enumerator.
         /// </summary>
-        public PooledStack(T[] array, ClearMode clearMode) : this(array.AsSpan(), clearMode, ArrayPool<T>.Shared)
+        public PooledStackWithIndex(T[] array, ClearMode clearMode) : this(array.AsSpan(), clearMode, ArrayPool<T>.Shared)
         {
         }
 
@@ -874,7 +874,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Fills a Stack with the contents of a particular collection.  The items are
         ///     pushed onto the stack in the same order they are read by the enumerator.
         /// </summary>
-        public PooledStack(T[] array, ArrayPool<T> customPool) : this(array.AsSpan(), ClearMode.Auto, customPool)
+        public PooledStackWithIndex(T[] array, ArrayPool<T> customPool) : this(array.AsSpan(), ClearMode.Auto, customPool)
         {
         }
 
@@ -882,7 +882,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Fills a Stack with the contents of a particular collection.  The items are
         ///     pushed onto the stack in the same order they are read by the enumerator.
         /// </summary>
-        public PooledStack(T[] array, ClearMode clearMode, ArrayPool<T> customPool) : this(array.AsSpan(), clearMode, customPool)
+        public PooledStackWithIndex(T[] array, ClearMode clearMode, ArrayPool<T> customPool) : this(array.AsSpan(), clearMode, customPool)
         {
         }
 
@@ -890,7 +890,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Fills a Stack with the contents of a particular collection.  The items are
         ///     pushed onto the stack in the same order they are read by the enumerator.
         /// </summary>
-        public PooledStack(ReadOnlySpan<T> span) : this(span, ClearMode.Auto, ArrayPool<T>.Shared)
+        public PooledStackWithIndex(ReadOnlySpan<T> span) : this(span, ClearMode.Auto, ArrayPool<T>.Shared)
         {
         }
 
@@ -898,7 +898,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Fills a Stack with the contents of a particular collection.  The items are
         ///     pushed onto the stack in the same order they are read by the enumerator.
         /// </summary>
-        public PooledStack(ReadOnlySpan<T> span, ClearMode clearMode) : this(span, clearMode, ArrayPool<T>.Shared)
+        public PooledStackWithIndex(ReadOnlySpan<T> span, ClearMode clearMode) : this(span, clearMode, ArrayPool<T>.Shared)
         {
         }
 
@@ -906,7 +906,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Fills a Stack with the contents of a particular collection.  The items are
         ///     pushed onto the stack in the same order they are read by the enumerator.
         /// </summary>
-        public PooledStack(ReadOnlySpan<T> span, ArrayPool<T> customPool) : this(span, ClearMode.Auto, customPool)
+        public PooledStackWithIndex(ReadOnlySpan<T> span, ArrayPool<T> customPool) : this(span, ClearMode.Auto, customPool)
         {
         }
 
@@ -914,7 +914,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         ///     Fills a Stack with the contents of a particular collection.  The items are
         ///     pushed onto the stack in the same order they are read by the enumerator.
         /// </summary>
-        public PooledStack(ReadOnlySpan<T> span, ClearMode clearMode, ArrayPool<T> customPool)
+        public PooledStackWithIndex(ReadOnlySpan<T> span, ClearMode clearMode, ArrayPool<T> customPool)
         {
             _pool = customPool ?? ArrayPool<T>.Shared;
             _clearOnFree = ShouldClear(clearMode);

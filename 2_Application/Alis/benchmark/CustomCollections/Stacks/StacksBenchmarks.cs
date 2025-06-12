@@ -68,7 +68,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks
         /// <summary>
         ///     Pooleds the stack array iterate
         /// </summary>
-        [Benchmark(Description = "[PooledStack]_Initialize()")]
+        [Benchmark(Description = "[PooledStackWithIndex]_Initialize()")]
         public void Pooled_Stack_ArrayIterate()
         {
             for (int i = 0; i < ArraySize; i++)
