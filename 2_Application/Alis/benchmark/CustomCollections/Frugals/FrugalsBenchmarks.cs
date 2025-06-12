@@ -37,7 +37,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals
     ///     The native array unsafe vs native array safe class
     /// </summary>
     [ShortRunJob, MemoryDiagnoser, Config(typeof(CustomConfig))]
-    public class FrugalsBenchmarks
+    public class FrugalsBenchmarks : IDisposable
     {
         /// <summary>
         ///     The array size
@@ -276,6 +276,11 @@ namespace Alis.Benchmark.CustomCollections.Frugals
         public void Fastest_Stack_AsSpan_Fastest()
         {
             Span<int> span = _fastestFrugalStack.AsSpan();
+        }
+
+        public void Dispose()
+        {
+            _pooledStack?.Dispose();
         }
     }
 }

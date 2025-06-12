@@ -12,7 +12,7 @@ namespace Alis.Core.Ecs.Benchmark
     /// </summary>
     [MemoryDiagnoser]
     [DisassemblyDiagnoser(5)]
-    internal class HollisticBenchmark
+    internal class HollisticBenchmark : IDisposable
     {
         /// <summary>
         /// The scene
@@ -90,6 +90,11 @@ namespace Alis.Core.Ecs.Benchmark
             /// The get component
             /// </summary>
             public const string GetComponent = "GetComponent";
+        }
+
+        public void Dispose()
+        {
+            _scene?.Dispose();
         }
     }
 }

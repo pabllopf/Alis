@@ -105,9 +105,11 @@ namespace Alis.Core.Ecs.Benchmark
                 .FirstOrDefault(m => m.GetCustomAttribute<GlobalSetupAttribute>() is not null)
                 ?.Invoke(t, []);
 
-            while(true)
+            int warmupCount = 5;
+            while(warmupCount > 0)
             {
                 call(t);
+                warmupCount--;
             }
         }
 

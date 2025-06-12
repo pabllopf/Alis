@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Benchmark.CustomCollections.Stacks.Elements;
 using BenchmarkDotNet.Attributes;
 
@@ -36,7 +37,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks
     ///     The native array unsafe vs native array safe class
     /// </summary>
     [ShortRunJob, MemoryDiagnoser, Config(typeof(CustomConfig))]
-    public class StacksBenchmarks
+    public class StacksBenchmarks : IDisposable
     {
         /// <summary>
         ///     The array size
@@ -182,6 +183,12 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             {
                 _ = _fastestStack.Peek();
             }
+        }
+
+        public void Dispose()
+        {
+            _pooledStack?.Dispose();
+            _fastestStack.Dispose();
         }
     }
 }
