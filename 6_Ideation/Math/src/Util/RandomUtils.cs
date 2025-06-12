@@ -30,56 +30,57 @@
 using System;
 using System.Security.Cryptography;
 
-namespace Alis.Core.Aspect.Math.Util;
-
-/// <summary>
-///     The random utils class
-/// </summary>
-public static class RandomUtils
+namespace Alis.Core.Aspect.Math.Util
 {
     /// <summary>
-    ///     The create
+    ///     The random utils class
     /// </summary>
-    private static readonly RandomNumberGenerator Rng = RandomNumberGenerator.Create();
-
-    /// <summary>
-    ///     Gets the int 32 using the specified min value
-    /// </summary>
-    /// <param name="minValue">The min value</param>
-    /// <param name="maxValue">The max value</param>
-    /// <exception cref="ArgumentException">minValue must be less than or equal to maxValue.</exception>
-    /// <returns>The int</returns>
-    public static int GetInt32(int minValue, int maxValue)
+    public static class RandomUtils
     {
-        if (minValue > maxValue)
+        /// <summary>
+        ///     The create
+        /// </summary>
+        private static readonly RandomNumberGenerator Rng = RandomNumberGenerator.Create();
+
+        /// <summary>
+        ///     Gets the int 32 using the specified min value
+        /// </summary>
+        /// <param name="minValue">The min value</param>
+        /// <param name="maxValue">The max value</param>
+        /// <exception cref="ArgumentException">minValue must be less than or equal to maxValue.</exception>
+        /// <returns>The int</returns>
+        public static int GetInt32(int minValue, int maxValue)
         {
-            throw new ArgumentException("minValue must be less than or equal to maxValue.");
+            if (minValue > maxValue)
+            {
+                throw new ArgumentException("minValue must be less than or equal to maxValue.");
+            }
+
+            byte[] buffer = new byte[4];
+            Rng.GetBytes(buffer);
+            int randomValue = BitConverter.ToInt32(buffer, 0);
+
+            return (int) (System.Math.Abs(randomValue % (maxValue - minValue + 1)) + minValue);
         }
 
-        byte[] buffer = new byte[4];
-        Rng.GetBytes(buffer);
-        int randomValue = BitConverter.ToInt32(buffer, 0);
-
-        return (int) (System.Math.Abs(randomValue % (maxValue - minValue + 1)) + minValue);
-    }
-
-    /// <summary>
-    ///     Gets the int 32 using the specified value
-    /// </summary>
-    /// <param name="value">The value</param>
-    /// <exception cref="ArgumentException">value must be greater than or equal to 0.</exception>
-    /// <returns>The int</returns>
-    public static int GetInt32(int value)
-    {
-        if (value < 0)
+        /// <summary>
+        ///     Gets the int 32 using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <exception cref="ArgumentException">value must be greater than or equal to 0.</exception>
+        /// <returns>The int</returns>
+        public static int GetInt32(int value)
         {
-            throw new ArgumentException("value must be greater than or equal to 0.");
+            if (value < 0)
+            {
+                throw new ArgumentException("value must be greater than or equal to 0.");
+            }
+
+            byte[] buffer = new byte[4];
+            Rng.GetBytes(buffer);
+            int randomValue = BitConverter.ToInt32(buffer, 0);
+
+            return (int) System.Math.Abs(randomValue % (value + 1));
         }
-
-        byte[] buffer = new byte[4];
-        Rng.GetBytes(buffer);
-        int randomValue = BitConverter.ToInt32(buffer, 0);
-
-        return (int) System.Math.Abs(randomValue % (value + 1));
     }
 }

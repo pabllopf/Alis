@@ -27,11 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Math.Shape;
-
-/// <summary>
-///     The figure interface
-/// </summary>
-public interface IShape
+namespace Alis.Core.Aspect.Math.Shape
 {
+    /// <summary>
+    ///     The figure interface
+    /// </summary>
+    public interface IShape
+    {
+    }
 }

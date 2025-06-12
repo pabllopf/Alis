@@ -1,27 +1,28 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Ecs;
-
-/// <summary>
-///     The gameObject data
-/// </summary>
-[StructLayout(LayoutKind.Sequential, Pack = 1)]
-
-public struct EntityData
+namespace Alis.Core.Ecs
 {
     /// <summary>
-    ///     The gameObject id
+    ///     The gameObject data
     /// </summary>
-    internal int EntityID;
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
 
-    /// <summary>
-    ///     The gameObject version
-    /// </summary>
-    internal ushort EntityVersion;
+    public struct EntityData
+    {
+        /// <summary>
+        ///     The gameObject id
+        /// </summary>
+        internal int EntityID;
 
-    /// <summary>
-    ///     The scene id
-    /// </summary>
-    internal ushort WorldID;
+        /// <summary>
+        ///     The gameObject version
+        /// </summary>
+        internal ushort EntityVersion;
+
+        /// <summary>
+        ///     The scene id
+        /// </summary>
+        internal ushort WorldID;
+    }
 }

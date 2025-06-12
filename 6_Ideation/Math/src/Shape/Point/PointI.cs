@@ -29,21 +29,22 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math.Shape.Point;
-
-/// <summary>
-///     The sdl point
-/// </summary>
-[StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct PointI : IShape
+namespace Alis.Core.Aspect.Math.Shape.Point
 {
     /// <summary>
-    ///     The
+    ///     The sdl point
     /// </summary>
-    public int X { get; set; }
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct PointI : IShape
+    {
+        /// <summary>
+        ///     The
+        /// </summary>
+        public int X { get; set; }
 
-    /// <summary>
-    ///     The
-    /// </summary>
-    public int Y { get; set; }
+        /// <summary>
+        ///     The
+        /// </summary>
+        public int Y { get; set; }
+    }
 }
