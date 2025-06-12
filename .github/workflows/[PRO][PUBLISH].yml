@@ -14,7 +14,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: master
+          fetch-depth: 1
 
       - name: Get current version
         id: get-version
@@ -45,6 +46,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          ref: master
           fetch-depth: 1
 
       - name: Setup .NET
@@ -52,7 +54,7 @@ jobs:
         with:
           dotnet-version: 9.0.301
 
-      - name: Build ALIS.EXTENSIONS - ${{ matrix.framework }}
+      - name: Build EXTENSIONS - ${{ matrix.framework }}
         run: |
           for project in $(find . -name "*.csproj" -type f); do
             if [[ $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator."* ]]; then
@@ -60,15 +62,54 @@ jobs:
               dotnet build "$project" -f ${{ matrix.framework }} -c Release
             fi
           done
+          
+  build_core:
+    needs: prepare
+    runs-on: macos-13
+    strategy:
+      matrix:
+        runtime: [
+          win-x64, win-x86, win-arm64,
+          linux-x64, linux-musl-x64,
+          linux-arm, linux-arm64,
+          linux-musl-arm, linux-musl-arm64,
+          osx-x64, osx-arm64
+        ]
+        framework: [
+          net5.0, net6.0, net7.0, net8.0, net9.0,
+          netstandard2.0, netstandard2.1,
+          net471, net472, net48, net481
+        ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref : master
+          fetch-depth: 1
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.301
+
+      - name: Build CORE - ${{ matrix.framework }} / ${{ matrix.runtime }}
+        run: |
+          for project in $(find . -name "*.csproj" -type f); do
+            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator."* ]]; then
+              echo "Compiling $project for ${{ matrix.framework }}, ${{ matrix.runtime }}"
+              dotnet build "$project" -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
+            fi
+          done
 
   publish_packages:
     name: Publish NuGet Packages
-    needs: [prepare, build_extensions]
+    needs: [prepare, build_extensions, build_core]
     runs-on: macos-13
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          ref: master
           fetch-depth: 1
 
       - name: Setup .NET
@@ -98,7 +139,7 @@ jobs:
         run: |
           mkdir -p ./.publish/${{ needs.prepare.outputs.version }}
           for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator."* && $project == *".Extension."* ]]; then
+            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator."* ]]; then
               echo "Packing $project"
               dotnet pack "$project" -c Release -o "./.publish/${{ needs.prepare.outputs.version }}/"
             fi
