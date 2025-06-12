@@ -278,6 +278,9 @@ namespace Alis.Benchmark.CustomCollections.Frugals
             Span<int> span = _fastestFrugalStack.AsSpan();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             pooledStackWithIndex?.Dispose();

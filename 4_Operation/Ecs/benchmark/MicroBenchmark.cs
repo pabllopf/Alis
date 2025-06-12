@@ -142,6 +142,9 @@ public struct Increment : IAction<Program.Component1>
             public void Run(ref Component1 arg) => arg.Value++;
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _scene?.Dispose();

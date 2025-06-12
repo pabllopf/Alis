@@ -185,6 +185,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             }
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _pooledStack?.Dispose();

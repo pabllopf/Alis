@@ -92,6 +92,9 @@ namespace Alis.Core.Ecs.Benchmark
             public const string GetComponent = "GetComponent";
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _scene?.Dispose();

@@ -128,6 +128,9 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         protected abstract void Double();
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             Recycled.Dispose();
