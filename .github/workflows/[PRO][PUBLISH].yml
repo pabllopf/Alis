@@ -44,9 +44,7 @@ jobs:
         framework: [ net5.0, netstandard2.0, net471 ]
         runtime: [
           win-x64, win-x86, win-arm64,
-          linux-x64, linux-musl-x64,
-          linux-arm, linux-arm64,
-          linux-musl-arm, linux-musl-arm64,
+          linux-x64, linux-arm, linux-arm64,
           osx-x64, osx-arm64
         ]
     steps:
@@ -61,14 +59,11 @@ jobs:
         with:
           dotnet-version: 9.0.301
 
-      - name: Build EXTENSIONS - ${{ matrix.framework }}
-        run: |
-          for project in $(find . -name "*.csproj" -type f); do
-             if [[ ( $project == *"Alis.Extension.Graphic.Sdl2"* || $project == *"Alis.Extension.Graphic.ImGui"* ) && $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
-              echo "Compiling $project for ${{ matrix.framework }}, ${{ matrix.runtime }}"
-              dotnet build "$project" -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
-            fi
-          done
+      - name: Build Alis.Extension.Graphic.Sdl2 - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
+          
+      - name: Build Alis.Extension.Graphic.ImGui - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/ImGui/src/Alis.Extension.Graphic.ImGui.csproj -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
         
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -99,14 +94,11 @@ jobs:
         with:
           dotnet-version: 9.0.301
 
-      - name: Build EXTENSIONS - ${{ matrix.framework }}
-        run: |
-          for project in $(find . -name "*.csproj" -type f); do
-            if [[ ( $project == *"Alis.Extension.Graphic.Sdl2"* || $project == *"Alis.Extension.Graphic.ImGui"* ) && $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
-              echo "Compiling $project for ${{ matrix.framework }}"
-              dotnet build "$project" -f "${{ matrix.framework }}" -c Release
-            fi
-          done
+      - name: Build Alis.Extension.Graphic.Sdl2 - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj -f "${{ matrix.framework }}" -c Release
+
+      - name: Build Alis.Extension.Graphic.ImGui - ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Extension/Graphic/ImGui/src/Alis.Extension.Graphic.ImGui.csproj -f "${{ matrix.framework }}" -c Release
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -127,9 +119,7 @@ jobs:
       matrix:
         runtime: [
           win-x64, win-x86, win-arm64,
-          linux-x64, linux-musl-x64,
-          linux-arm, linux-arm64,
-          linux-musl-arm, linux-musl-arm64,
+          linux-x64, linux-arm, linux-arm64,
           osx-x64, osx-arm64
         ]
         framework: [
@@ -148,15 +138,16 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
+          
 
-      - name: Build CORE - ${{ matrix.framework }} / ${{ matrix.runtime }}
-        run: |
-          for project in $(find . -name "*.csproj" -type f); do
-            if [[ ( $project == *"Alis.Core.Graphic"* || $project == *"Alis.Core"* || $project == *"Alis"* ) && $project != *".Template."* && $project != *".App."* && $project != *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
-              echo "Compiling $project for ${{ matrix.framework }}, ${{ matrix.runtime }}"
-              dotnet build "$project" -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
-            fi
-          done
+      - name: Build ALIS.CORE.GRAPHIC - ${{ matrix.framework }} / ${{ matrix.runtime }}
+        run: dotnet build ./4_Operation/Graphic/src/Alis.Core.Graphic.csproj -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release 
+
+      - name: Build ALIS.CORE - ${{ matrix.framework }} / ${{ matrix.runtime }}
+        run: dotnet build ./3_Structuration/Core/src/Alis.Core.csproj -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS - ${{ matrix.framework }} / ${{ matrix.runtime }}
+        run: dotnet build ./2_Application/Alis/src/Alis.csproj -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -187,14 +178,14 @@ jobs:
         with:
           dotnet-version: 9.0.301
 
-      - name: Build CORE - ${{ matrix.framework }}
-        run: |
-          for project in $(find . -name "*.csproj" -type f); do
-            if [[ ( $project == *"Alis.Core.Graphic"* || $project == *"Alis.Core"* || $project == *"Alis"* ) && $project != *".Template."* && $project != *".App."* && $project != *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
-              echo "Compiling $project for ${{ matrix.framework }}"
-              dotnet build "$project" -f "${{ matrix.framework }}" -c Release
-            fi
-          done
+      - name: Build ALIS.CORE.GRAPHIC - ${{ matrix.framework }} 
+        run: dotnet build ./4_Operation/Graphic/src/Alis.Core.Graphic.csproj -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS.CORE - ${{ matrix.framework }} 
+        run: dotnet build ./3_Structuration/Core/src/Alis.Core.csproj -f "${{ matrix.framework }}" -c Release
+
+      - name: Build ALIS - ${{ matrix.framework }} 
+        run: dotnet build ./2_Application/Alis/src/Alis.csproj -f "${{ matrix.framework }}" -c Release
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -213,10 +204,9 @@ jobs:
     strategy:
       matrix:
         runtime: [
-          osx-arm64, osx-x64,
-          win-x64, win-arm64, win-x86,
-          linux-x64, linux-arm64, linux-arm,
-          linux-musl-x64, linux-musl-arm
+          win-x64, win-x86, win-arm64,
+          linux-x64, linux-arm, linux-arm64,
+          osx-x64, osx-arm64
         ]
         framework: [ net8.0 ]
     steps:
