@@ -64,7 +64,7 @@ jobs:
       - name: Build EXTENSIONS - ${{ matrix.framework }}
         run: |
           for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
+             if [[ ( $project == *"Alis.Extension.Graphic.Sdl2"* || $project == *"Alis.Extension.Graphic.ImGui"* ) && $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
               echo "Compiling $project for ${{ matrix.framework }}, ${{ matrix.runtime }}"
               dotnet build "$project" -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
             fi
@@ -102,7 +102,7 @@ jobs:
       - name: Build EXTENSIONS - ${{ matrix.framework }}
         run: |
           for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
+            if [[ ( $project == *"Alis.Extension.Graphic.Sdl2"* || $project == *"Alis.Extension.Graphic.ImGui"* ) && $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
               echo "Compiling $project for ${{ matrix.framework }}"
               dotnet build "$project" -f "${{ matrix.framework }}" -c Release
             fi
@@ -152,7 +152,7 @@ jobs:
       - name: Build CORE - ${{ matrix.framework }} / ${{ matrix.runtime }}
         run: |
           for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
+            if [[ ( $project == *"Alis.Core.Graphic"* || $project == *"Alis.Core"* || $project == *"Alis"* ) && $project != *".Template."* && $project != *".App."* && $project != *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
               echo "Compiling $project for ${{ matrix.framework }}, ${{ matrix.runtime }}"
               dotnet build "$project" -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
             fi
@@ -190,7 +190,7 @@ jobs:
       - name: Build CORE - ${{ matrix.framework }}
         run: |
           for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
+            if [[ ( $project == *"Alis.Core.Graphic"* || $project == *"Alis.Core"* || $project == *"Alis"* ) && $project != *".Template."* && $project != *".App."* && $project != *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
               echo "Compiling $project for ${{ matrix.framework }}"
               dotnet build "$project" -f "${{ matrix.framework }}" -c Release
             fi
