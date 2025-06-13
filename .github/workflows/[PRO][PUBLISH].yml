@@ -113,7 +113,7 @@ jobs:
           find . -type f | while read file; do
             # Elimina sólo el prefijo "./build-*" pero mantiene el resto
             cleaned_path=$(echo "$file" | sed -E 's|^\./[^/]+/||')
-            target_path="../Alis/$(dirname "$cleaned_path")"
+            target_path="/Users/runner/work/Alis/Alis/$(dirname "$cleaned_path")"
 
             echo "📄 Copiando: $file -> $target_path/"
             mkdir -p "$target_path"
