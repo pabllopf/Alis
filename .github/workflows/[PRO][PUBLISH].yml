@@ -41,16 +41,14 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        #framework: [ net5.0, net8.0, netstandard2.0, net471 ]
-        framework: [net8.0]
-        runtime: [win-x64]
-        #runtime: [
-        #  win-x64, win-x86, win-arm64,
-        #  linux-x64, linux-musl-x64,
-        #  linux-arm, linux-arm64,
-        #  linux-musl-arm, linux-musl-arm64,
-        #  osx-x64, osx-arm64
-        #]
+        framework: [ netcoreapp2.0, net5.0, netstandard2.0, net471 ]
+        runtime: [
+          win-x64, win-x86, win-arm64,
+          linux-x64, linux-musl-x64,
+          linux-arm, linux-arm64,
+          linux-musl-arm, linux-musl-arm64,
+          osx-x64, osx-arm64
+        ]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -78,6 +76,105 @@ jobs:
           name: build-extensions-${{ matrix.framework }}-${{ matrix.runtime }}
           path: |
             **/bin/Release/**/*.dll
+            **/bin/Release/**/*.pdb
+            **/bin/Release/**/*.xml
+            **/bin/Release/**/*.deps.json
+            **/bin/Release/**/*.runtimeconfig.json
+            
+            
+  build_core:
+    needs: prepare
+    runs-on: macos-13
+    strategy:
+      matrix:
+        runtime: [
+          win-x64, win-x86, win-arm64,
+          linux-x64, linux-musl-x64,
+          linux-arm, linux-arm64,
+          linux-musl-arm, linux-musl-arm64,
+          osx-x64, osx-arm64
+        ]
+        framework: [
+          net5.0, net6.0, net7.0, net8.0, net9.0,
+          netstandard2.0, netstandard2.1,
+          net471, net472, net48, net481
+        ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref : master
+          fetch-depth: 1
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.301
+
+      - name: Build CORE - ${{ matrix.framework }} / ${{ matrix.runtime }}
+        run: |
+          for project in $(find . -name "*.csproj" -type f); do
+            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
+              echo "Compiling $project for ${{ matrix.framework }}, ${{ matrix.runtime }}"
+              dotnet build "$project" -r "${{ matrix.runtime }}" -f "${{ matrix.framework }}" -c Release
+            fi
+          done
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-core-output-${{ matrix.framework }}-${{ matrix.runtime }}
+          path: |
+            **/bin/Release/**/*.dll
+            **/bin/Release/**/*.pdb
+            **/bin/Release/**/*.xml
+            **/bin/Release/**/*.deps.json
+            **/bin/Release/**/*.runtimeconfig.json
+
+  build_apps:
+    needs: [prepare]
+    runs-on: macos-13
+    strategy:
+      matrix:
+        runtime: [
+          osx-arm64, osx-x64,
+          win-x64, win-arm64, win-x86,
+          linux-x64, linux-arm64, linux-arm,
+          linux-musl-x64, linux-musl-arm
+        ]
+        framework: [ net8.0 ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 1
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.301
+
+      - name: Publish INTALLER - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r ${{ matrix.runtime }} -f ${{ matrix.framework }}
+
+      - name: Publish ENGINE - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r ${{ matrix.runtime }} -f ${{ matrix.framework }}
+
+      - name: Publish HUB - ${{ matrix.runtime }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r ${{ matrix.runtime }} -f ${{ matrix.framework }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-apps-output-${{ matrix.framework }}-${{ matrix.runtime }}
+          path: |
+            **/bin/Release/**/*.dll
+            **/bin/Release/**/*.exe
+            **/bin/Release/**/*.app
+            **/bin/Release/**/*.dmg
+            **/bin/Release/**/*.zip
+            **/bin/Release/**/*.msi
             **/bin/Release/**/*.pdb
             **/bin/Release/**/*.xml
             **/bin/Release/**/*.deps.json
