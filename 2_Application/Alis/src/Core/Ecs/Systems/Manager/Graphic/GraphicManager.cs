@@ -33,6 +33,7 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
 
 using Alis.Core.Ecs.Systems.Configuration;
@@ -218,6 +219,10 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                .Query<With<Sprite>>()
                .EnumerateWithEntities();
            
+           GameObjectQueryEnumerator.QueryEnumerable boxColliderGameObjects = Context.SceneManager.World
+               .Query<With<BoxCollider>>()
+               .EnumerateWithEntities();
+           
            foreach (RefTuple<Camera> camera in Context.SceneManager.World
                        .Query<With<Camera>>()
                        .Enumerate<Camera>())
@@ -228,6 +233,15 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                    {
                        ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
                        sprite.Render(spriteGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
+                   }
+               }
+               
+               foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
+               {
+                   if (boxColliderGameobject.Has<BoxCollider>())
+                   {
+                       ref BoxCollider boxCollider = ref boxColliderGameobject.Get<BoxCollider>();
+                       boxCollider.Render(boxColliderGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
                    }
                }
            }

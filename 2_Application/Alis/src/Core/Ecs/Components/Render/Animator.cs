@@ -27,12 +27,24 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Logging;
+
 namespace Alis.Core.Ecs.Components.Render
 {
     /// <summary>
     /// The animator
     /// </summary>
-    public struct Animator
+    public struct Animator : IInitable, IGameObjectComponent
     {
+        public void Update(IGameObject self)
+        {
+            
+        }
+
+        public void Init(IGameObject self)
+        {
+            Logger.Log("Animator component initialized.");
+        }
     }
 }
