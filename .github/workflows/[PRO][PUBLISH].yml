@@ -41,7 +41,7 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        framework: [ netcoreapp2.0, net5.0, netstandard2.0, net471 ]
+        framework: [ net5.0, netstandard2.0, net471 ]
         runtime: [
           win-x64, win-x86, win-arm64,
           linux-x64, linux-musl-x64,
@@ -74,6 +74,44 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-extensions-${{ matrix.framework }}-${{ matrix.runtime }}
+          path: |
+            **/bin/Release/**/*.dll
+            **/bin/Release/**/*.pdb
+            **/bin/Release/**/*.xml
+            **/bin/Release/**/*.deps.json
+            **/bin/Release/**/*.runtimeconfig.json
+            
+  build_extensions_coreapp:
+    needs: prepare
+    runs-on: macos-13
+    strategy:
+      matrix:
+        framework: [ netcoreapp2.0 ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 1
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.301
+
+      - name: Build EXTENSIONS - ${{ matrix.framework }}
+        run: |
+          for project in $(find . -name "*.csproj" -type f); do
+            if [[ $project == *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
+              echo "Compiling $project for ${{ matrix.framework }}"
+              dotnet build "$project" -f "${{ matrix.framework }}" -c Release
+            fi
+          done
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-extensions-coreapp-${{ matrix.framework }}
           path: |
             **/bin/Release/**/*.dll
             **/bin/Release/**/*.pdb
@@ -131,6 +169,44 @@ jobs:
             **/bin/Release/**/*.deps.json
             **/bin/Release/**/*.runtimeconfig.json
 
+  build_core_app:
+    needs: prepare
+    runs-on: macos-13
+    strategy:
+      matrix:
+        framework: [netcoreapp2.0,netcoreapp2.1,netcoreapp2.2,netcoreapp3.0,netcoreapp3.1]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref : master
+          fetch-depth: 1
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.301
+
+      - name: Build CORE - ${{ matrix.framework }}
+        run: |
+          for project in $(find . -name "*.csproj" -type f); do
+            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Extension."* && $project != *".Test."* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* ]]; then
+              echo "Compiling $project for ${{ matrix.framework }}"
+              dotnet build "$project" -f "${{ matrix.framework }}" -c Release
+            fi
+          done
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-core-output-app-${{ matrix.framework }}
+          path: |
+            **/bin/Release/**/*.dll
+            **/bin/Release/**/*.pdb
+            **/bin/Release/**/*.xml
+            **/bin/Release/**/*.deps.json
+            **/bin/Release/**/*.runtimeconfig.json
+  
   build_apps:
     needs: [prepare]
     runs-on: macos-13
@@ -183,7 +259,7 @@ jobs:
   
   publish_packages:
     name: Publish NuGet Packages
-    needs: [prepare, build_extensions]
+    needs: [prepare, build_extensions, build_extensions_coreapp, build_core, build_core_app, build_apps]
     runs-on: macos-13
     steps:
       - name: Checkout
