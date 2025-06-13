@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.6.6] - 2025-06-13
+### :bug: Bug Fixes
+- [`2f10e53`](https://github.com/pabllopf/Alis/commit/2f10e539387a985a85663fc2f89e69b547bcce66) - spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.6.4] - 2025-06-13
 ### :sparkles: New Features
 - [`5dc1816`](https://github.com/pabllopf/Alis/commit/5dc1816b23c3274855cfc313e0eb432e1803a431) - new module to do benchmarks and implement the best solutions on engine *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4626,3 +4631,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v0.6.3]: https://github.com/pabllopf/Alis/compare/v0.6.2...v0.6.3
 [v0.6.4]: https://github.com/pabllopf/Alis/compare/v0.6.3...v0.6.4
+[v0.6.6]: https://github.com/pabllopf/Alis/compare/v0.6.5...v0.6.6
