@@ -178,22 +178,7 @@ jobs:
               dotnet pack "$project" -c Release -o "./.publish/${{ needs.prepare.outputs.version }}/"
             fi
           done
-
-      - name: Create GitHub Release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release create "${{ needs.prepare.outputs.version }}" --title "v${{ needs.prepare.outputs.version }}" --notes "Automatic release"
-
-      - name: Upload packages to GitHub Release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          for file in ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg; do
-            echo "Uploading $file"
-            gh release upload "${{ needs.prepare.outputs.version }}" "$file" --clobber
-          done
-
+          
       - name: Publish to NuGet
         run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET }} --skip-duplicate
 
