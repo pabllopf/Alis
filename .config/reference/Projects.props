@@ -507,6 +507,7 @@
             Include="$(ProjectDir)/../../generator/$(NameTest).Generator.csproj"
             OutputItemType="Analyzer"
             ReferenceOutputAssembly="false"/>
-
     </ItemGroup>
+    
+    
 </Project>
