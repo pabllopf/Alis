@@ -45,13 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [v0.6.6] - 2025-06-13
 ### :bug: Bug Fixes
 - [`2f10e53`](https://github.com/pabllopf/Alis/commit/2f10e539387a985a85663fc2f89e69b547bcce66) - spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
-
-
-## [v0.6.4] - 2025-06-13
-
-
-### :bug: Bug Fixes
-- [`b822b55`](https://github.com/pabllopf/Alis/commit/b822b55cc5b1989fb968f07fa6708780516838d5) - refactor params of benchmarks [Params(10, 100, 1000)] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- - [`b822b55`](https://github.com/pabllopf/Alis/commit/b822b55cc5b1989fb968f07fa6708780516838d5) - refactor params of benchmarks [Params(10, 100, 1000)] *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`dc1cc89`](https://github.com/pabllopf/Alis/commit/dc1cc8956a9b3fa8e1ea4bece0652984600abdca) - add image of benchmark *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`272a16f`](https://github.com/pabllopf/Alis/commit/272a16fae1321988745cf5436e6bcb62b235f2cd) - namespace of benchmarks *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`fc15389`](https://github.com/pabllopf/Alis/commit/fc15389fb2e5747df948f030416134d9a967d49f) - namespace of all *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -109,6 +103,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [`9b35523`](https://github.com/pabllopf/Alis/commit/9b3552394039efbdf67d4f62c03012ce1ef03d37) - delete range and index *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`bacdf61`](https://github.com/pabllopf/Alis/commit/bacdf61a930e9e058698dd5c7dfa066c31f390b1) - optimice the performance *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`d75dbff`](https://github.com/pabllopf/Alis/commit/d75dbfff45786c6b5e9e7ba0c709cbcded965eb0) - nuget config *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+## [v0.6.5] - 2025-06-13
+### :bug: Bug Fixes
 - [`7e3b2e2`](https://github.com/pabllopf/Alis/commit/7e3b2e29e720b29122e6e98044ca7eecd2c2bb43) - new implementation for save benchmarks *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`ad2394d`](https://github.com/pabllopf/Alis/commit/ad2394d7b556f0f2205d7bd152bc4c470701cf63) - optimice code *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`3e83185`](https://github.com/pabllopf/Alis/commit/3e83185cd18abe5e82cb3e4396152cafabb25c1a) - null propagation *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -158,6 +155,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [`edc4197`](https://github.com/pabllopf/Alis/commit/edc4197a35fc2441e690d52126652fa155086d3e) - bmp *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`42be839`](https://github.com/pabllopf/Alis/commit/42be83927f8930eec18486d2f6a486c6b7f65f9d) - delete all stb dependencies *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`64d858e`](https://github.com/pabllopf/Alis/commit/64d858e9b73e75b10924f687900d9db77db130af) - icon load *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
+## [v0.6.4] - 2025-06-13
 
 ### :white_check_mark: Tests
 - [`999f0e3`](https://github.com/pabllopf/Alis/commit/999f0e326f759d9c5ee6db863b9b23e32dce15cc) - pro check all platforms *(commit by [@pabllopf](https://github.com/pabllopf))*
