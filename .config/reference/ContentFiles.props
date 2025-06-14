@@ -1,20 +1,14 @@
 <Project>
     <ItemGroup Condition="$(Configuration) == 'Release'">
-<!--
-        
         <None
-            Condition="
-                $(AssemblyName.Contains('Test')) == False AND
-                $(AssemblyName.Contains('Sample')) == False AND
-                $(AssemblyName.Contains('Template')) == False AND 
-                $(AssemblyName.Contains('Benchmark')) == False AND
-                $(AssemblyName.Contains('Generator')) == False AND
-                (
-                    $(AssemblyName.Equals('Alis')) == True OR 
-                    $(AssemblyName.Equals('Alis.Core')) == True OR 
-                    $(AssemblyName.Equals('Alis.Core.Ecs')) == True
-                )"
-            Include="$(SolutionDir)4_Operation/Ecs/generator/**/release/**/Alis.Core.Ecs.Generator.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="true"/>-->
+            Condition="$(AssemblyName.Equals('Alis')) OR $(AssemblyName.Equals('Alis.Core')) OR $(AssemblyName.Equals('Alis.Core.Ecs'))"
+            Include="$(SolutionDir)4_Operation/Ecs/generator/bin/release/lib/netstandard2.0/Alis.Core.Ecs.Generator.dll"
+            Pack="true" 
+            Link="analyzers/dotnet/cs/Alis.Core.Ecs.Generator.dll"
+            CopyToOutputDirectory="PreserveNewest"
+            CopyToPublishDirectory="PreserveNewest"
+            PackagePath="analyzers/dotnet/cs" 
+            Visible="false"/>
         
         <!-- Include all the .md files in the output -->
         <Content Include="$(ProjectDir)bin/Release/lib/net5.0/*.md" Visible="false" PackagePath="lib/net5.0/"/>
