@@ -25,6 +25,7 @@
         </RuntimeIdentifiers>
     </PropertyGroup>
 
+    
     <!-- Import all the props files in the target folder -->
     <Import Condition="'$(Configuration)' == 'Release'" Project="$(SolutionDir).config/target/BeforeBuild.props"/>
     
