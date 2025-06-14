@@ -17,7 +17,6 @@ jobs:
           echo "Limpiando entorno..."
           rm -rf /Users/runner/.dotnet
           rm -rf /Users/runner/.nuget
-          rm -rf /Users/runner/work/_actions/actions/setup-dotnet/v4/externals/
           echo "Entorno limpio."
         
       - name: Checkout
@@ -58,7 +57,7 @@ jobs:
           echo "Limpiando entorno..."
           rm -rf /Users/runner/.dotnet
           rm -rf /Users/runner/.nuget
-          rm -rf /Users/runner/work/_actions/actions/setup-dotnet/v4/externals/
+          
           echo "Entorno limpio."
           
       - name: Checkout
@@ -149,7 +148,7 @@ jobs:
           echo "Limpiando entorno..."
           rm -rf /Users/runner/.dotnet
           rm -rf /Users/runner/.nuget
-          rm -rf /Users/runner/work/_actions/actions/setup-dotnet/v4/externals/
+          
           echo "Entorno limpio."
         
       - name: Checkout
@@ -265,7 +264,7 @@ jobs:
           echo "Limpiando entorno..."
           rm -rf /Users/runner/.dotnet
           rm -rf /Users/runner/.nuget
-          rm -rf /Users/runner/work/_actions/actions/setup-dotnet/v4/externals/
+          
           echo "Entorno limpio."
         
       - name: Checkout
@@ -381,7 +380,7 @@ jobs:
           echo "Limpiando entorno..."
           rm -rf /Users/runner/.dotnet
           rm -rf /Users/runner/.nuget
-          rm -rf /Users/runner/work/_actions/actions/setup-dotnet/v4/externals/
+          
           echo "Entorno limpio."
           
       - name: Checkout
