@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.6.8] - 2025-06-14
+### :bug: Bug Fixes
+- [`86f6dfa`](https://github.com/pabllopf/Alis/commit/86f6dfa5f713fecebe38fdd891837c11dc7532ed) - docs folder on generator *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cd7f7f5`](https://github.com/pabllopf/Alis/commit/cd7f7f52429186dc0814b5eb9e399caf306180d6) - the generator *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`eee8af2`](https://github.com/pabllopf/Alis/commit/eee8af24026b4401ed4e2cf1e02eacc54e5c6c07) - compilation check *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`967bc66`](https://github.com/pabllopf/Alis/commit/967bc6628d084fe8936d6453f8ef962369e9f4ca) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.6.7] - 2025-06-14
 
 ### :sparkles: New Features
@@ -4642,3 +4652,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.6.6]: https://github.com/pabllopf/Alis/compare/v0.6.5...v0.6.6
 
 [v0.6.7]: https://github.com/pabllopf/Alis/compare/v0.6.6...v0.6.7
+[v0.6.8]: https://github.com/pabllopf/Alis/compare/v0.6.7...v0.6.8
