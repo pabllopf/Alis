@@ -5,12 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v0.6.6] - 2025-06-13
-### :bug: Bug Fixes
-- [`2f10e53`](https://github.com/pabllopf/Alis/commit/2f10e539387a985a85663fc2f89e69b547bcce66) - spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
+## [v0.6.7] - 2025-06-14
 
-
-## [v0.6.4] - 2025-06-13
 ### :sparkles: New Features
 - [`5dc1816`](https://github.com/pabllopf/Alis/commit/5dc1816b23c3274855cfc313e0eb432e1803a431) - new module to do benchmarks and implement the best solutions on engine *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`2a2cef7`](https://github.com/pabllopf/Alis/commit/2a2cef7348d711b0dee180f2628c39b31cf692f1) - new benchmark to show diference of use ids *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -45,6 +41,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [`309dcb5`](https://github.com/pabllopf/Alis/commit/309dcb555f9c87ab4f31e145b6666928840e0cce) - add public ref struct ChunkTuple *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`9eb4848`](https://github.com/pabllopf/Alis/commit/9eb4848dcfcc5f5fa8fdda9ac736c6d548952c08) - add iactions *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`fefa435`](https://github.com/pabllopf/Alis/commit/fefa4358e774f9629a8681dc4aa2a59f9be429a8) - add audiosource with new ecs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+## [v0.6.6] - 2025-06-13
+### :bug: Bug Fixes
+- [`2f10e53`](https://github.com/pabllopf/Alis/commit/2f10e539387a985a85663fc2f89e69b547bcce66) - spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
+## [v0.6.4] - 2025-06-13
+
 
 ### :bug: Bug Fixes
 - [`b822b55`](https://github.com/pabllopf/Alis/commit/b822b55cc5b1989fb968f07fa6708780516838d5) - refactor params of benchmarks [Params(10, 100, 1000)] *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4630,5 +4634,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.6.2]: https://github.com/pabllopf/Alis/compare/v0.6.1...v0.6.2
 
 [v0.6.3]: https://github.com/pabllopf/Alis/compare/v0.6.2...v0.6.3
+
 [v0.6.4]: https://github.com/pabllopf/Alis/compare/v0.6.3...v0.6.4
+
+[v0.6.5]: https://github.com/pabllopf/Alis/compare/v0.6.5...v0.6.6
+
 [v0.6.6]: https://github.com/pabllopf/Alis/compare/v0.6.5...v0.6.6
+
+[v0.6.7]: https://github.com/pabllopf/Alis/compare/v0.6.6...v0.6.7
