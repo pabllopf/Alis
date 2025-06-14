@@ -71,6 +71,9 @@ jobs:
         with:
           dotnet-version: 9.0.301
 
+      - name: Build Alis.Core.Ecs.Generator
+        run: dotnet build ./4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj -f netstandard2.0 -c Release
+
       - name: Build Alis.Extension.Graphic.Sdl2 - ${{ matrix.framework }}
         run: dotnet build ./1_Presentation/Extension/Graphic/Sdl2/src/Alis.Extension.Graphic.Sdl2.csproj -r win-x64 -f "${{ matrix.framework }}" -c Release
           
@@ -162,6 +165,8 @@ jobs:
         with:
           dotnet-version: 9.0.301
           
+      - name: Build Alis.Core.Ecs.Generator
+        run: dotnet build ./4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj -f netstandard2.0 -c Release
 
       - name: Build ALIS.CORE.GRAPHIC - ${{ matrix.framework }}
         run: dotnet build ./4_Operation/Graphic/src/Alis.Core.Graphic.csproj -r win-x64 -f "${{ matrix.framework }}" -c Release 
@@ -277,6 +282,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
+          
+      - name: Build Alis.Core.Ecs.Generator
+        run: dotnet build ./4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj -f netstandard2.0 -c Release
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r win-x64 -f ${{ matrix.framework }}
@@ -415,6 +423,9 @@ jobs:
           done
 
           echo "✅ Restauración completada."
+          
+      - name: Build Alis.Core.Ecs.Generator
+        run: dotnet build ./4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj -f netstandard2.0 -c Release
       
       - name: Get current version
         id: get-version
