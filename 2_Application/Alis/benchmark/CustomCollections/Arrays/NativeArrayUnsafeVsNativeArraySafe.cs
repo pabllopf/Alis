@@ -36,7 +36,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
     ///     The native array unsafe vs native array safe class
     /// </summary>
     [ShortRunJob, MemoryDiagnoser(false), Config(typeof(CustomConfig))]
-    public class NativeArrayUnsafeVsNativeArraySafe
+    public class NativeArrayUnsafeVsNativeArraySafe : IDisposable
     {
         /// <summary>
         ///     The array size
@@ -365,6 +365,12 @@ namespace Alis.Benchmark.CustomCollections.Arrays
             {
                 int value = span[i];
             }
+        }
+
+        public void Dispose()
+        {
+            fastArraySafe.Dispose();
+            nativeArray?.Dispose();
         }
     }
 }

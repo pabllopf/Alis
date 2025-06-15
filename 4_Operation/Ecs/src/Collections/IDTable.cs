@@ -7,7 +7,7 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     The id table class
     /// </summary>
-    public abstract class IdTable
+    public abstract class IdTable : IDisposable
     {
         /// <summary>
         ///     The has gc references
@@ -127,6 +127,11 @@ namespace Alis.Core.Ecs.Collections
         ///     Doubles this instance
         /// </summary>
         protected abstract void Double();
+
+        public void Dispose()
+        {
+            Recycled.Dispose();
+        }
     }
 
     /// <summary>

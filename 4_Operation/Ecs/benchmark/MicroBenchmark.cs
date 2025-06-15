@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.InteropServices;
 using BenchmarkDotNet.Attributes;
 using Alis;
@@ -11,7 +12,7 @@ namespace Alis.Core.Ecs.Benchmark
     /// </summary>
     [ShortRunJob]
     [MemoryDiagnoser]
-    public class MicroBenchmark
+    public class MicroBenchmark :IDisposable
     {
         /// <summary>
         /// The categories class
@@ -139,6 +140,11 @@ public struct Increment : IAction<Program.Component1>
             /// </summary>
             /// <param name="arg">The arg</param>
             public void Run(ref Component1 arg) => arg.Value++;
+        }
+
+        public void Dispose()
+        {
+            _scene?.Dispose();
         }
     }
 }
