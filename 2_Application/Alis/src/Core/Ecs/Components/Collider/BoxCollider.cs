@@ -40,8 +40,8 @@ namespace Alis.Core.Ecs.Components.Collider
     /// </summary>
     /// <seealso cref="IBoxCollider"/>
     /// <seealso cref="IInitable"/>
-    /// <seealso cref="IEntityComponent"/>
-    public class BoxCollider : IBoxCollider, IInitable, IEntityComponent
+    /// <seealso cref="IGameObjectComponent"/>
+    public class BoxCollider : IBoxCollider, IInitable, IGameObjectComponent
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BoxCollider"/> class

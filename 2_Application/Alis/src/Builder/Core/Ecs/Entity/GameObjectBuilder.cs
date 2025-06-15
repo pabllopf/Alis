@@ -15,12 +15,12 @@ namespace Alis.Builder.Core.Ecs.Entity
    /// <summary>
    ///     The game object builder class
    /// </summary>
-   public class GameObjectBuilder : IBuild<Dictionary<Type, IEntityComponent>>
+   public class GameObjectBuilder : IBuild<Dictionary<Type, IGameObjectComponent>>
    {
        /// <summary>
        /// The entity component
        /// </summary>
-       private Dictionary<Type, IEntityComponent> components = new Dictionary<Type, IEntityComponent>();
+       private Dictionary<Type, IGameObjectComponent> components = new Dictionary<Type, IGameObjectComponent>();
 
        /// <summary>
        /// The transform
@@ -31,11 +31,11 @@ namespace Alis.Builder.Core.Ecs.Entity
        ///     Builds this instance
        /// </summary>
        /// <returns>The dictionary of components</returns>
-       public Dictionary<Type, IEntityComponent> Build()
+       public Dictionary<Type, IGameObjectComponent> Build()
        {
-           Dictionary<Type, IEntityComponent> temp = new Dictionary<Type, IEntityComponent>();
+           Dictionary<Type, IGameObjectComponent> temp = new Dictionary<Type, IGameObjectComponent>();
            temp.Add(typeof(Transform), transform);
-           foreach (KeyValuePair<Type, IEntityComponent> component in components)
+           foreach (KeyValuePair<Type, IGameObjectComponent> component in components)
            {
                if (component.Key == typeof(Transform))
                {
@@ -127,7 +127,7 @@ namespace Alis.Builder.Core.Ecs.Entity
        /// <typeparam name="T">The </typeparam>
        /// <param name="config">The config</param>
        /// <returns>The game object builder</returns>
-       public GameObjectBuilder WithComponent<T>(Action<T> config) where T : IEntityComponent, new()
+       public GameObjectBuilder WithComponent<T>(Action<T> config) where T : IGameObjectComponent, new()
        {
            T component = new T();
            config(component);
@@ -140,7 +140,7 @@ namespace Alis.Builder.Core.Ecs.Entity
        /// </summary>
        /// <typeparam name="T">The </typeparam>
        /// <returns>The game object builder</returns>
-       public GameObjectBuilder WithComponent<T>() where T : IEntityComponent, new()
+       public GameObjectBuilder WithComponent<T>() where T : IGameObjectComponent, new()
        {
               T component = new T();
               components.Add(typeof(T), component);
@@ -153,7 +153,7 @@ namespace Alis.Builder.Core.Ecs.Entity
        /// <typeparam name="T">The </typeparam>
        /// <param name="component">The component</param>
        /// <returns>The game object builder</returns>
-       public GameObjectBuilder WithComponent<T>(T component) where T : IEntityComponent, new()
+       public GameObjectBuilder WithComponent<T>(T component) where T : IGameObjectComponent, new()
        {
            components.Add(typeof(T), component);
            return this;
