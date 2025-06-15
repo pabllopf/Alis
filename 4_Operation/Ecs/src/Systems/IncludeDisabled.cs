@@ -1,12 +1,13 @@
-namespace Alis.Core.Ecs.Systems;
-
-/// <summary>
-///     Specifies a query should include all entities
-/// </summary>
-public struct IncludeDisabled : IRuleProvider
+namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
-    ///     The rule.
+    ///     Specifies a query should include all entities
     /// </summary>
-    public Rule Rule => Rule.IncludeDisabledRule;
+    public struct IncludeDisabled : IRuleProvider
+    {
+        /// <summary>
+        ///     The rule.
+        /// </summary>
+        public Rule Rule => Rule.IncludeDisabledRule;
+    }
 }

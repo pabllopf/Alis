@@ -30,32 +30,33 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Alis.Core.Aspect.Math.Definition;
-
-/// <summary>
-///     The depth
-/// </summary>
-[Serializable]
-public struct Depth : ISerializable
+namespace Alis.Core.Aspect.Math.Definition
 {
     /// <summary>
-    ///     The value
+    ///     The depth
     /// </summary>
-    public int Value { get; set; }
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="Depth" /> class
-    /// </summary>
-    /// <param name="value">The value</param>
-    public Depth(int value) => Value = value;
-
-    /// <summary>
-    ///     Gets the object data using the specified info
-    /// </summary>
-    /// <param name="info">The info</param>
-    /// <param name="context">The context</param>
-    public void GetObjectData(SerializationInfo info, StreamingContext context)
+    [Serializable]
+    public struct Depth : ISerializable
     {
-        info.AddValue("value", Value);
+        /// <summary>
+        ///     The value
+        /// </summary>
+        public int Value { get; set; }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Depth" /> class
+        /// </summary>
+        /// <param name="value">The value</param>
+        public Depth(int value) => Value = value;
+
+        /// <summary>
+        ///     Gets the object data using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <param name="context">The context</param>
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("value", Value);
+        }
     }
 }

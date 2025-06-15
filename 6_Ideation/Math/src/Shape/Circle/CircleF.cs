@@ -29,26 +29,27 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math.Shape.Circle;
-
-/// <summary>
-///     The circle
-/// </summary>
-[StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct CircleF : IShape
+namespace Alis.Core.Aspect.Math.Shape.Circle
 {
     /// <summary>
-    ///     The x
+    ///     The circle
     /// </summary>
-    public float X { get; set; }
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct CircleF : IShape
+    {
+        /// <summary>
+        ///     The x
+        /// </summary>
+        public float X { get; set; }
 
-    /// <summary>
-    ///     The y
-    /// </summary>
-    public float Y { get; set; }
+        /// <summary>
+        ///     The y
+        /// </summary>
+        public float Y { get; set; }
 
-    /// <summary>
-    ///     The r
-    /// </summary>
-    public float R { get; set; }
+        /// <summary>
+        ///     The r
+        /// </summary>
+        public float R { get; set; }
+    }
 }

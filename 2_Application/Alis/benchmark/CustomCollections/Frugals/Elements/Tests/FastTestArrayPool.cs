@@ -5,13 +5,13 @@ using System.Runtime.CompilerServices;
 using Alis.Benchmark.CustomCollections.ArrayPools.Elements;
 using Alis.Core.Ecs.Core.Memory;
 
-namespace Alis.Benchmark.CustomCollections.Frugals.Elements.Tests;
-
-/// <summary>
-/// The fast test array pool class
-/// </summary>
-/// <seealso cref="ArrayPool{T}"/>
-public sealed class FastTestArrayPool<T> : ArrayPool<T>
+namespace Alis.Benchmark.CustomCollections.Frugals.Elements.Tests
+{
+    /// <summary>
+    /// The fast test array pool class
+    /// </summary>
+    /// <seealso cref="ArrayPool{T}"/>
+    public sealed class FastTestArrayPool<T> : ArrayPool<T>
     {
         /// <summary>
         /// The min bucket size
@@ -139,3 +139,4 @@ public sealed class FastTestArrayPool<T> : ArrayPool<T>
                 _buckets[i] = null;
         }
     }
+}
