@@ -2,6 +2,7 @@ using System;
 using System.Buffers;
 using System.Numerics;
 using System.Runtime.CompilerServices;
+using Alis.Core.Ecs.Core.Memory;
 
 namespace Alis.Benchmark.CustomCollections.ArrayPools.Elements
 {
