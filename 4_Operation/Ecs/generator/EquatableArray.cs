@@ -75,12 +75,12 @@ public struct EquatableArray<T> : IEquatable<EquatableArray<T>>, IEnumerable<T>
         /// <returns>The int</returns>
         public override int GetHashCode()
         {
-            HashCode hashCode = new();
+            CustomHashCode customHashCode = new();
             foreach (ref var value in Items.AsSpan())
             {
-                hashCode.Add(value);
+                customHashCode.Add(value);
             }
-            return hashCode.ToHashCode();
+            return customHashCode.ToHashCode();
         }
 
         /// <summary>
