@@ -367,6 +367,9 @@ namespace Alis.Benchmark.CustomCollections.Arrays
             }
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             fastArraySafe.Dispose();
