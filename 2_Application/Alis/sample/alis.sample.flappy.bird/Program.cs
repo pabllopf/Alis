@@ -29,6 +29,7 @@
 
 
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems;
 
 namespace Alis.Sample.Flappy.Bird
@@ -44,9 +45,44 @@ namespace Alis.Sample.Flappy.Bird
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            VideoGame
+            var game = VideoGame
                 .Create()
-                .Run();
+                .Settings(settings => settings
+                    .General(general => general
+                        .Name("Flappy Bird")
+                        .Author("Pablo Perdomo Falcón")
+                        .Icon("app.bmp")
+                        .Debug(true)
+                    )
+                    .Audio(audio => audio
+                        .Volume(100)
+                    )
+                    .Graphic(graphic => graphic
+                        .Resolution(800, 600)
+                    )
+                    .Network(network => network
+                        .Ip("localhost")
+                    )
+                    .Physic(physic => physic
+                        .Gravity(0, 9.8f)
+                    )
+                    .Input(input => input
+                        .MouseSensitivity(1)
+                    )
+                )
+                .World(world => world
+                    .Add<Scene>(mainScene => mainScene
+                        .Name("Main Scene")
+                        .Add<GameObject>(gameObject => gameObject
+                            .Transform(transform => transform
+                                .Position(0, 0)
+                            )
+                        )
+                    )
+                )
+                .Build();
+            
+            game.Run();
         }
     }
 }
