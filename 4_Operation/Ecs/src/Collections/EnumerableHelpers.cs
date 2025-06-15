@@ -7,7 +7,7 @@ namespace Alis.Core.Ecs.Collections
     /// <summary>
     ///     Internal helper functions for working with enumerables.
     /// </summary>
-    internal static class EnumerableHelpers
+    public static class EnumerableHelpers
     {
         /// <summary>Calls Reset on an enumerator instance.</summary>
         /// <remarks>Enables Reset to be called without boxing on a struct enumerator that lacks a public Reset.</remarks>
@@ -17,7 +17,7 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>Gets an enumerator singleton for an empty collection.</summary>
-        internal static IEnumerator<T> GetEmptyEnumerator<T>()
+        public static IEnumerator<T> GetEmptyEnumerator<T>()
         {
             return ((IEnumerable<T>)Array.Empty<T>()).GetEnumerator();
         }
@@ -29,7 +29,7 @@ namespace Alis.Core.Ecs.Collections
         ///     The resulting array.  The length of the array may be greater than <paramref name="length" />,
         ///     which is the actual number of elements in the array.
         /// </returns>
-        internal static T[] ToArray<T>(IEnumerable<T> source, out int length)
+        public static T[] ToArray<T>(IEnumerable<T> source, out int length)
         {
             // Copied from Array.MaxLength in System.Private.CoreLib/src/libraries/System.Private.CoreLib/src/System/Array.cs
             const int arrayMaxLength = 0X7FFFFFC7;
