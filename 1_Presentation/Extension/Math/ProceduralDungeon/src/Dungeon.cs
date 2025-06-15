@@ -29,7 +29,7 @@
 
 using System.Collections.Generic;
 
-namespace Alis.Extension.Math.DungeonGenerator
+namespace Alis.Extension.Math.ProceduralDungeon
 {
     /// <summary>Random dungeon generator.</summary>
     public class Dungeon

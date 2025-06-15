@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis;
-using Alis.Core.Ecs.Components;
+using Alis.Core.Aspect.Fluent.Components;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Generator
@@ -116,7 +116,7 @@ namespace Alis.Core.Ecs.Test.Generator
                 /// </summary>
                 /// <param name="self">The self</param>
                 /// <exception cref="InitalizeException"></exception>
-                public void Init(GameObject self)
+                public void Init(IGameObject self)
                 {
                     throw new InitalizeException();
                 }
@@ -158,7 +158,7 @@ namespace Alis.Core.Ecs.Test.Generator
             /// </summary>
             /// <param name="self">The self</param>
             /// <exception cref="InitalizeException"></exception>
-            public void Init(GameObject self)
+            public void Init(IGameObject self)
             {
                 throw new InitalizeException();
             }

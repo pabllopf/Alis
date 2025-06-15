@@ -1,7 +1,6 @@
 using System;
 using Alis;
-
-using Alis.Core.Ecs.Components;
+using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Core.Ecs.Sample.Components
 {
@@ -10,13 +9,13 @@ namespace Alis.Core.Ecs.Sample.Components
         /// <summary>
         /// The gameObject
         /// </summary>
-        private GameObject _gameObject;
+        private IGameObject _gameObject;
     
         /// <summary>
         /// Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(GameObject self)
+        public void Update(IGameObject self)
         {
             Console.WriteLine(_gameObject.Has<Vel2>() ?
                 "I have velocity!" :
@@ -27,7 +26,7 @@ namespace Alis.Core.Ecs.Sample.Components
         /// Inits the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(GameObject self)
+        public void Init(IGameObject self)
         {
             _gameObject = self;
             Console.WriteLine("I am initialized!");

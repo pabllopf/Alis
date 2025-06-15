@@ -31,6 +31,7 @@ using System.Threading;
 using Alis.Builder.Core.Ecs.Entity;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Audio;
 
 namespace Alis.Core.Ecs.Components.Audio
@@ -139,7 +140,7 @@ namespace Alis.Core.Ecs.Components.Audio
         /// Inits the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(GameObject self)
+        public void Init(IGameObject self)
         {
             ThreadPool.SetMinThreads(200, 200);
             if (PlayOnAwake)

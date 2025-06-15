@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 

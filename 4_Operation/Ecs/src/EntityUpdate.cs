@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using Alis.Core.Ecs.Components;
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
 using Alis.Core.Ecs.Updating;

@@ -29,9 +29,8 @@
 
 using System;
 using Alis.Core.Aspect.Data.Json;
-using Alis.Core.Aspect.Math;
 
-namespace Alis.Extension.Math.DungeonGenerator
+namespace Alis.Extension.Math.ProceduralDungeon
 {
     /// <summary>Generate a room of the dungeon.</summary>
     [Serializable]

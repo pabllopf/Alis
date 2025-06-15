@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Alis.Core.Ecs.Components;
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Core;
 
 namespace Alis.Core.Ecs.Updating

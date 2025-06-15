@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using Alis.Core.Ecs.Components;
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Core.Archetype;
 using Alis.Core.Ecs.Updating;
 
@@ -13,8 +13,8 @@ namespace Alis.Core.Ecs.Systems
     /// <seealso cref="ComponentStorage{TComp}" />
     public class Update<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
         TArg13>(int cap) : ComponentStorage<TComp>(cap)
-        where TComp : IComponent<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
-            TArg13>
+        where TComp : IComponent<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10,
+            TArg11, TArg12, TArg13>
     {
         /// <summary>
         ///     Runs the scene

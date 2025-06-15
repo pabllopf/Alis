@@ -30,9 +30,8 @@
 using System;
 using System.Security.Cryptography;
 using Alis.Core.Aspect.Data.Json;
-using Alis.Core.Aspect.Math;
 
-namespace Alis.Extension.Math.DungeonGenerator
+namespace Alis.Extension.Math.ProceduralDungeon
 {
     /// <summary>
     ///     The corridor class

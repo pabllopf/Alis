@@ -34,7 +34,6 @@ using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Physic.Dynamics;
-using Alis.Sample.Pong.Alis.Sample.Pong;
 
 namespace Alis.Sample.Pong
 {

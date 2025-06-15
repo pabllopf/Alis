@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math;
 using Xunit;
 
-namespace Alis.Extension.Math.DungeonGenerator.Test
+namespace Alis.Extension.Math.ProceduralDungeon.Test
 {
     /// <summary>
     ///     The board square test class

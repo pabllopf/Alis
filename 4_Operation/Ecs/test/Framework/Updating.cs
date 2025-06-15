@@ -4,7 +4,7 @@ using System;
             using Alis;
             
             using Alis.Core;
-            using Alis.Core.Ecs.Components;
+            using Alis.Core.Aspect.Fluent.Components;
             using Alis.Core.Ecs.Core;
             using Xunit;
             

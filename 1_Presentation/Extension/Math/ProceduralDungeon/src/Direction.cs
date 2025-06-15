@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Math.DungeonGenerator
+namespace Alis.Extension.Math.ProceduralDungeon
 {
     /// <summary>
     /// The direction enum

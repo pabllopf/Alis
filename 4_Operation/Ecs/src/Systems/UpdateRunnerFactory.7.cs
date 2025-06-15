@@ -1,5 +1,5 @@
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Systems

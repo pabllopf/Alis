@@ -1,5 +1,5 @@
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Systems
@@ -11,8 +11,8 @@ namespace Alis.Core.Ecs.Systems
     /// <seealso cref="IComponentStorageBaseFactory{TComp}" />
     public class UpdateRunnerFactory<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11,
         TArg12, TArg13, TArg14> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
-        where TComp : IComponent<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
-            TArg13, TArg14>
+        where TComp : IComponent<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11,
+            TArg12, TArg13, TArg14>
     {
         /// <summary>
         ///     Creates the capacity

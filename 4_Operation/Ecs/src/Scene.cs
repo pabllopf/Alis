@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Core.Archetype;
 using Alis.Core.Ecs.Core.Events;
@@ -327,7 +327,7 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Updates all component instances in the scene that implement a component interface, e.g., <see cref="IComponent" />
+        ///     Updates all component instances in the scene that implement a component interface, e.g., <see cref="IComponent{TArg1,TArg2,TArg3,TArg4,TArg5,TArg6,TArg7,TArg8,TArg9,TArg10,TArg11}" />
         /// </summary>
         public void Update()
         {
