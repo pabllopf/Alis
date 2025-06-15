@@ -30,6 +30,7 @@
 using System;
 using System.Buffers;
 using Alis.Benchmark.CustomCollections.ArrayPools.Elements;
+using Alis.Core.Ecs.Collections;
 using BenchmarkDotNet.Attributes;
 
 namespace Alis.Benchmark.CustomCollections.ArrayPools
