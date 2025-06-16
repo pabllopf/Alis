@@ -142,8 +142,8 @@ namespace Alis.Builder.Core.Ecs.Entity
        /// <returns>The game object builder</returns>
        public GameObjectBuilder WithComponent<T>() where T : IGameObjectComponent, new()
        {
-              T component = new T();
-              components.Add(typeof(T), component);
+           T component = new T();
+           components.Add(typeof(T), component);
            return this;
        }
 

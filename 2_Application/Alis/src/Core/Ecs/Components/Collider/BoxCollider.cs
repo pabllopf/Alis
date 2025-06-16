@@ -27,10 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.Components.Collider
@@ -203,6 +207,8 @@ namespace Alis.Core.Ecs.Components.Collider
         [JsonPropertyName("_AngularVelocity_")]
         public float AngularVelocity { get; set; }
 
+        private bool IsInit { get; set; } = false;
+
         /// <summary>
         ///     Gets or sets the value of the shader program
         /// </summary>
@@ -239,7 +245,6 @@ namespace Alis.Core.Ecs.Components.Collider
         /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
-
         }
 
         /// <summary>
@@ -249,14 +254,145 @@ namespace Alis.Core.Ecs.Components.Collider
         public void Update(IGameObject self)
         {
         }
-
-        /// <summary>
-        /// Inits the self
+        
+                /// <summary>
+        ///     Initializes the shaders
         /// </summary>
-        /// <param name="self">The self</param>
-        public void Init(GameObject self)
+        private void InitializeShaders()
         {
-            
+             float[] vertices =
+            {
+                -0.5f, 0.5f, 0.0f, // Top-left
+                0.5f, 0.5f, 0.0f, // Top-right
+                0.5f, -0.5f, 0.0f, // Bottom-right
+                -0.5f, -0.5f, 0.0f // Bottom-left
+            };
+
+            uint[] indices =
+            {
+                0, 1, 2, // First triangle
+                2, 3, 0 // Second triangle
+            };
+
+            Vbo = Gl.GenBuffer();
+            Vao = Gl.GenVertexArray();
+            uint ebo = Gl.GenBuffer();
+
+            Gl.GlBindVertexArray(Vao);
+
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
+            GCHandle handle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
+            try
+            {
+                IntPtr pointer = handle.AddrOfPinnedObject();
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), pointer, BufferUsageHint.StaticDraw);
+            }
+            finally
+            {
+                if (handle.IsAllocated)
+                {
+                    handle.Free();
+                }
+            }
+
+            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, ebo);
+            handle = GCHandle.Alloc(indices, GCHandleType.Pinned);
+            try
+            {
+                IntPtr pointer = handle.AddrOfPinnedObject();
+                Gl.GlBufferData(BufferTarget.ElementArrayBuffer, new IntPtr(indices.Length * sizeof(uint)), pointer, BufferUsageHint.StaticDraw);
+            }
+            finally
+            {
+                if (handle.IsAllocated)
+                {
+                    handle.Free();
+                }
+            }
+
+            string vertexShaderSource = @"
+              #version 330 core
+              layout (location = 0) in vec3 aPos;
+              void main()
+              {
+                  gl_Position = vec4(aPos, 1.0);
+              }
+          ";
+
+            string fragmentShaderSource = @"
+              #version 330 core
+              out vec4 FragColor;
+              void main()
+              {
+                  FragColor = vec4(1.0f, 0.0f, 0.0f, 1.0f); // Red color
+              }
+          ";
+
+            uint vertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
+            Gl.ShaderSource(vertexShader, vertexShaderSource);
+            Gl.GlCompileShader(vertexShader);
+
+            uint fragmentShader = Gl.GlCreateShader(ShaderType.FragmentShader);
+            Gl.ShaderSource(fragmentShader, fragmentShaderSource);
+            Gl.GlCompileShader(fragmentShader);
+
+            ShaderProgram = Gl.GlCreateProgram();
+            Gl.GlAttachShader(ShaderProgram, vertexShader);
+            Gl.GlAttachShader(ShaderProgram, fragmentShader);
+            Gl.GlLinkProgram(ShaderProgram);
+
+            Gl.GlBindVertexArray(Vao);
+            Gl.GlUseProgram(ShaderProgram);
+
+            Gl.EnableVertexAttribArray(0);
+            Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), IntPtr.Zero);
         }
+
+        public void Render(GameObject boxColliderGameobject, Vector2F valuePosition, Vector2F valueResolution, float pixelsPerMeter)
+        {
+            if (!IsInit)
+            {
+                InitializeShaders();
+                IsInit = true;
+            }
+            
+            Gl.GlUseProgram(ShaderProgram);
+            Gl.GlBindVertexArray(Vao);
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
+            
+            Vector2F pos = new Vector2F(0, 0);
+            Vector2F size = new Vector2F(1, 1);
+            
+            
+            // Update the vertex positions based on the given position and size
+            float[] vertices =
+            {
+                pos.X - size.X / 2, pos.Y + size.Y / 2, 0.0f, // Top-left
+                pos.X + size.X / 2, pos.Y + size.Y / 2, 0.0f, // Top-right
+                pos.X + size.X / 2, pos.Y - size.Y / 2, 0.0f, // Bottom-right
+                pos.X - size.X / 2, pos.Y - size.Y / 2, 0.0f // Bottom-left
+            };
+
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
+            GCHandle handle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
+            try
+            {
+                IntPtr pointer = handle.AddrOfPinnedObject();
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * sizeof(float)), pointer, BufferUsageHint.StaticDraw);
+            }
+            finally
+            {
+                if (handle.IsAllocated)
+                {
+                    handle.Free();
+                }
+            }
+
+            Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Line);
+            Gl.GlDrawElements(PrimitiveType.LineLoop, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
+            Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Fill);
+        }
+
+       
     }
 }
