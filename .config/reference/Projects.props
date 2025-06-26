@@ -369,8 +369,11 @@
         (
             $(AssemblyName.Contains('Sample')) OR 
             $(AssemblyName.Equals('Alis')) OR 
+            $(AssemblyName.Equals('Alis.Test')) OR 
             $(AssemblyName.Equals('Alis.Core')) OR 
-            $(AssemblyName.Equals('Alis.Core.Ecs'))
+            $(AssemblyName.Equals('Alis.Core.Test')) OR 
+            $(AssemblyName.Equals('Alis.Core.Ecs')) OR
+            $(AssemblyName.Equals('Alis.Core.Ecs.Test'))
         )
     ">
         <ProjectReference
