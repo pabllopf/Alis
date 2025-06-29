@@ -26,7 +26,7 @@
 
     
     <!-- Import all the props files in the target folder -->
-    <Import Condition="'$(Configuration)' == 'Release'" Project="$(SolutionDir).config/target/BeforeBuild.props"/>
+    <Import Project="$(SolutionDir).config/target/BeforeBuild.props"/>
     
     <!-- Import all the props files in the application folder -->
     <Import Project="$(SolutionDir).config/application/Runtimes.props"/>
@@ -90,5 +90,5 @@
     <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/ParallelExe.props"/>
     <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/SonarQubeExclude.props"/>
     
-    <Import Condition="'$(Configuration)' == 'Release'" Project="$(SolutionDir).config/target/AfterBuild.props"/>
+    <Import Project="$(SolutionDir).config/target/AfterBuild.props"/>
 </Project>
