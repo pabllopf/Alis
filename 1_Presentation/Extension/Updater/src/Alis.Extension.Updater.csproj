@@ -3,6 +3,6 @@
     <Import Project="$(SolutionDir).config/Config.props"/>
     <PropertyGroup>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
-        <OutDir Condition="($(AssemblyName.Contains('Sample')) OR $(AssemblyName.Contains('App'))) AND $(AssemblyName.Contains('Test')) == false">bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
+        <OutDir Condition="($(AssemblyName.Contains('Sample')) OR $(AssemblyName.Contains('App')) OR $(AssemblyName.Contains('Benchmark'))) AND $(AssemblyName.Contains('Test')) == false">bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
     </PropertyGroup>
 </Project>

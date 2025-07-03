@@ -1,6 +1,6 @@
 using System;
 using System.Numerics;
-using Alis.Core.Ecs.Kernel.Memory;
+using Alis.Core.Ecs.Redifinition;
 
 namespace Alis.Core.Ecs.Collections
 {

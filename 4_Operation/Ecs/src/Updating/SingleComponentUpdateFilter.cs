@@ -1,7 +1,7 @@
 using System;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetype;
-using Alis.Core.Ecs.Kernel.Memory;
+using Alis.Core.Ecs.Redifinition;
 
 namespace Alis.Core.Ecs.Updating
 {
