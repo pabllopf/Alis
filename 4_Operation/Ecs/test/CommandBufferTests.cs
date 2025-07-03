@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using Alis.Core.Ecs.Test.Helpers;
 using Alis;
 using Alis.Core;
-using Alis.Core.Ecs.Core;
+
+using Alis.Core.Ecs.Kernel;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test

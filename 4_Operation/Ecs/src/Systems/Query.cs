@@ -1,7 +1,8 @@
 using System;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Archetype;
 
 namespace Alis.Core.Ecs.Systems
 {
@@ -74,7 +75,7 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The bool</returns>
-        private bool ArchetypeSatisfiesQuery(ArchetypeID id)
+        private bool ArchetypeSatisfiesQuery(GameObjectType id)
         {
             foreach (Rule rule in _rules)
                 if (!rule.RuleApplies(id))

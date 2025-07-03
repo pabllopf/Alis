@@ -6,10 +6,10 @@ using System.Threading;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Core;
-using Alis.Core.Ecs.Core.Archetype;
-using Alis.Core.Ecs.Core.Events;
-using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Kernel.Events;
+using Alis.Core.Ecs.Kernel.Memory;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Updating;
 
@@ -94,7 +94,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The create
         /// </summary>
-        internal FastestStack<ArchetypeID> EnabledArchetypes = FastestStack<ArchetypeID>.Create(16);
+        internal FastestStack<GameObjectType> EnabledArchetypes = FastestStack<GameObjectType>.Create(16);
 
         // -1: normal state
         // 0: some kind of transition in End/Enter
@@ -132,12 +132,12 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The tag event
         /// </summary>
-        internal TagEvent Tagged = new TagEvent();
+        internal Event<TagId> Tagged = new Event<TagId>();
 
         /// <summary>
         ///     The tag event
         /// </summary>
-        internal TagEvent Detached = new TagEvent();
+        internal Event<TagId> Detached = new Event<TagId>();
 
         //these lookups exists for programmical api optimization
         //normal <T1, T2...> methods use a shared global static cache
@@ -334,7 +334,7 @@ namespace Alis.Core.Ecs
             EnterDisallowState();
             try
             {
-                foreach (ArchetypeID element in EnabledArchetypes.AsSpan())
+                foreach (GameObjectType element in EnabledArchetypes.AsSpan())
                     element.Archetype(this)!.Update(this);
             }
             finally
@@ -667,7 +667,7 @@ namespace Alis.Core.Ecs
         /// <param name="entityType">The types of the gameObject to allocate for</param>
         /// <param name="count">Number of gameObject spaces to allocate</param>
         /// <remarks>Use this method when creating a large number of entities</remarks>
-        public void EnsureCapacity(ArchetypeID entityType, int count)
+        public void EnsureCapacity(GameObjectType entityType, int count)
         {
             if (count < 1)
                 return;

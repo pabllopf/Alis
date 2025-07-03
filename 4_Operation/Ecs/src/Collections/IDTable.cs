@@ -1,6 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
-using Alis.Core.Ecs.Core.Events;
+using Alis.Core.Ecs.Kernel.Events;
 
 namespace Alis.Core.Ecs.Collections
 {

@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Kernel;
 using HashCode = Alis.Core.Aspect.Math.HashCode;
 
 namespace Alis.Core.Ecs.Systems
@@ -22,7 +22,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The custom
         /// </summary>
-        private Func<ArchetypeID, bool> _custom;
+        private Func<GameObjectType, bool> _custom;
 
         /// <summary>
         ///     The comp id
@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         /// <param name="archetypeId">The archetype id</param>
         /// <returns>The bool</returns>
-        internal bool RuleApplies(ArchetypeID archetypeId)
+        internal bool RuleApplies(GameObjectType archetypeId)
         {
             return _ruleState switch
             {
@@ -58,7 +58,7 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         /// <param name="rule">The custom delegate to determine rule applicability.</param>
         /// <returns>A <see cref="Rule" /> configured with the custom delegate.</returns>
-        public static Rule Delegate(Func<ArchetypeID, bool> rule)
+        public static Rule Delegate(Func<GameObjectType, bool> rule)
         {
             return new Rule
             {

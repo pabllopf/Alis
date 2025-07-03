@@ -1,6 +1,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Archetype;
 
 namespace Alis.Core.Ecs
 {
@@ -35,7 +36,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets the value of the archetype id
         /// </summary>
-        internal readonly ArchetypeID ArchetypeId => Archetype.Id;
+        internal readonly GameObjectType ArchetypeId => Archetype.Id;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameObjectLocation" /> class

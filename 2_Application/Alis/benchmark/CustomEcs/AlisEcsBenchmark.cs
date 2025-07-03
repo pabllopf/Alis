@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics;
 using Alis.Benchmark.CustomEcs.Components;
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using BenchmarkDotNet.Attributes;
 

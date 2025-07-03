@@ -6,7 +6,8 @@ using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Test.Helpers;
 using Alis;
 using Alis.Core;
-using Alis.Core.Ecs.Core;
+
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Xunit;
 

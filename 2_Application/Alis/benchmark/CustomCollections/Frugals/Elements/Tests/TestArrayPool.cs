@@ -3,7 +3,7 @@ using System.Buffers;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using Alis.Benchmark.CustomCollections.ArrayPools.Elements;
-using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Kernel.Memory;
 
 namespace Alis.Benchmark.CustomCollections.Frugals.Elements.Tests
 {
