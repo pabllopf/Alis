@@ -1,10 +1,10 @@
 using System;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Archetype;
-using Alis.Core.Ecs.Kernel.Events;
-using Alis.Core.Ecs.Kernel.Memory;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Core.Events;
+using Alis.Core.Ecs.Core.Memory;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs
@@ -235,10 +235,10 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T2">The </typeparam>
         /// <param name="@event">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeTagWorldEvents<T1, T2>(ref Event<TagId> @event, GameObject gameObject)
+        private static void InvokeTagWorldEvents<T1, T2>(ref TagEvent @event, GameObject gameObject)
         {
-            @event.InvokeInternal(gameObject, Kernel.Tag<T1>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T2>.Id);
+            @event.InvokeInternal(gameObject, Core.Tag<T1>.Id);
+            @event.InvokeInternal(gameObject, Core.Tag<T2>.Id);
         }
 
         /// <summary>
@@ -248,10 +248,10 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T2">The </typeparam>
         /// <param name="gameObject">The gameObject</param>
         /// <param name="events">The events</param>
-        private static void InvokePerEntityTagEvents<T1, T2>(GameObject gameObject, ref Event<TagId> events)
+        private static void InvokePerEntityTagEvents<T1, T2>(GameObject gameObject, ref TagEvent events)
         {
-            events.Invoke(gameObject, Kernel.Tag<T1>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T2>.Id);
+            events.Invoke(gameObject, Core.Tag<T1>.Id);
+            events.Invoke(gameObject, Core.Tag<T2>.Id);
         }
 
         /// <summary>
@@ -267,9 +267,9 @@ namespace Alis.Core.Ecs
             public void ModifyTags(ref FastImmutableArray<TagId> tags, bool add)
             {
                 if (add)
-                    tags = MemoryHelpers.Concat(tags, [Kernel.Tag<T1>.Id, Kernel.Tag<T2>.Id]);
+                    tags = MemoryHelpers.Concat(tags, [Core.Tag<T1>.Id, Core.Tag<T2>.Id]);
                 else
-                    tags = MemoryHelpers.Remove(tags, [Kernel.Tag<T1>.Id, Kernel.Tag<T2>.Id]);
+                    tags = MemoryHelpers.Remove(tags, [Core.Tag<T1>.Id, Core.Tag<T2>.Id]);
             }
 
             /// <summary>

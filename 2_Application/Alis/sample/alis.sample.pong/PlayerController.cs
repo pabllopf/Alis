@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Collider;
 
 namespace Alis.Sample.Pong

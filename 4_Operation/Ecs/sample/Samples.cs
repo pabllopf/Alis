@@ -4,7 +4,7 @@ using System.Threading;
 using Alis.Core.Ecs.Sample.Components;
 using Alis;
 using Alis.Core;
-using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Systems;
 
 namespace Alis.Core.Ecs.Sample

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Core.Archetype;
 
 namespace Alis.Core.Ecs.Updating
 {
@@ -65,7 +65,7 @@ namespace Alis.Core.Ecs.Updating
             _attributeType = attributeType;
             _scene = scene;
 
-            foreach (GameObjectType archetype in scene.EnabledArchetypes.AsSpan())
+            foreach (ArchetypeID archetype in scene.EnabledArchetypes.AsSpan())
                 ArchetypeAdded(archetype.Archetype(scene)!);
         }
 

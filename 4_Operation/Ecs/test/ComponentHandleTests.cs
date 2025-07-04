@@ -2,7 +2,7 @@ using System;
         using System.Linq;
         using Alis.Core.Ecs.Test.Helpers;
         using Alis.Core;
-        using Alis.Core.Ecs.Kernel;
+        using Alis.Core.Ecs.Core;
         using Xunit;
         
         namespace Alis.Core.Ecs.Test

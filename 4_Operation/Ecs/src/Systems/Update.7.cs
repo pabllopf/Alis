@@ -2,7 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Core.Archetype;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Systems
