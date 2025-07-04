@@ -2,10 +2,10 @@ using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Core;
-using Alis.Core.Ecs.Core.Archetype;
-using Alis.Core.Ecs.Core.Events;
-using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Kernel.Events;
+using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs
@@ -218,9 +218,9 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T">The </typeparam>
         /// <param name="@event">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeTagWorldEvents<T>(ref TagEvent @event, GameObject gameObject)
+        private static void InvokeTagWorldEvents<T>(ref Event<TagId> @event, GameObject gameObject)
         {
-            @event.InvokeInternal(gameObject, Core.Tag<T>.Id);
+            @event.InvokeInternal(gameObject, Kernel.Tag<T>.Id);
         }
 
         /// <summary>
@@ -229,9 +229,9 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T">The </typeparam>
         /// <param name="gameObject">The gameObject</param>
         /// <param name="events">The events</param>
-        private static void InvokePerEntityTagEvents<T>(GameObject gameObject, ref TagEvent events)
+        private static void InvokePerEntityTagEvents<T>(GameObject gameObject, ref Event<TagId> events)
         {
-            events.Invoke(gameObject, Core.Tag<T>.Id);
+            events.Invoke(gameObject, Kernel.Tag<T>.Id);
         }
 
         /// <summary>
@@ -247,9 +247,9 @@ namespace Alis.Core.Ecs
             public void ModifyTags(ref FastImmutableArray<TagId> tags, bool add)
             {
                 if (add)
-                    tags = MemoryHelpers.Concat(tags, Core.Tag<T>.Id);
+                    tags = MemoryHelpers.Concat(tags, Kernel.Tag<T>.Id);
                 else
-                    tags = MemoryHelpers.Remove(tags, Core.Tag<T>.Id);
+                    tags = MemoryHelpers.Remove(tags, Kernel.Tag<T>.Id);
             }
 
             /// <summary>
@@ -337,14 +337,14 @@ namespace Alis.Core.Ecs
             where T : ITypeId
             where TEdge : struct, IArchetypeGraphEdge
         {
-            ArchetypeID archetypeFromId = currentLookup.ArchetypeId;
+            GameObjectType archetypeFromId = currentLookup.ArchetypeId;
             int index = cache.Traverse(archetypeFromId.RawIndex);
 
             if (index == 32) return NotInCache(scene, ref cache, archetypeFromId, add);
 
             return Archetype.CreateOrGetExistingArchetype(new GameObjectType(cache.Lookup(index)), scene);
 
-            static Archetype NotInCache(Scene scene, ref ArchetypeNeighborCache cache, ArchetypeID archetypeFromId,
+            static Archetype NotInCache(Scene scene, ref ArchetypeNeighborCache cache, GameObjectType archetypeFromId,
                 bool add)
             {
                 FastImmutableArray<ComponentId> componentIDs = archetypeFromId.Types;

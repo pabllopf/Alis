@@ -2,7 +2,7 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Redifinition;
 
 namespace Alis.Core.Ecs.Collections
 {

@@ -1,4 +1,4 @@
-using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Systems;
 
 namespace Alis.Core.Ecs

@@ -1,10 +1,10 @@
 using System;
 using Alis.Core.Aspect.Math.Collections;
-using Alis.Core.Ecs.Core;
-using Alis.Core.Ecs.Core.Archetype;
-using Alis.Core.Ecs.Core.Events;
-using Alis.Core.Ecs.Core.Memory;
 using Alis.Core.Ecs.Exceptions;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Kernel.Events;
+using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs
@@ -367,7 +367,7 @@ namespace Alis.Core.Ecs
         /// <exception cref="InvalidOperationException">Thrown if the <see cref="GameObject" /> is not alive.</exception>
         public bool Tagged<T>()
         {
-            return Tagged(Core.Tag<T>.Id);
+            return Tagged(Kernel.Tag<T>.Id);
         }
 
         /// <summary>
@@ -375,7 +375,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <remarks>
         ///     Prefer the <see cref="Tagged(TagId)" /> or <see cref="Tagged{T}()" /> overloads. Use
-        ///     <see cref="Core.Tag{T}.Id" /> to get a <see cref="TagId" /> instance
+        ///     <see cref="Kernel.Tag{T}.Id" /> to get a <see cref="TagId" /> instance
         /// </remarks>
         /// <param name="type">The <see cref="Type" /> representing the tag to check.</param>
         /// <returns>
@@ -385,7 +385,7 @@ namespace Alis.Core.Ecs
         /// <exception cref="InvalidOperationException">Thrown if the <see cref="GameObject" /> not alive.</exception>
         public bool Tagged(Type type)
         {
-            return Tagged(Core.Tag.GetTagId(type));
+            return Tagged(Kernel.Tag.GetTagId(type));
         }
 
         /// <summary>
@@ -395,14 +395,14 @@ namespace Alis.Core.Ecs
         /// <param name="type">The type to use as a tag</param>
         public bool Tag(Type type)
         {
-            return Tag(Core.Tag.GetTagId(type));
+            return Tag(Kernel.Tag.GetTagId(type));
         }
 
         /// <summary>
         ///     Adds a tag to this <see cref="GameObject" />. Tags are like components but do not take up extra memory.
         /// </summary>
         /// <remarks>
-        ///     Prefer the <see cref="Tag(TagId)" /> or <see cref="Tag{T}()" /> overloads. Use <see cref="Core.Tag{T}.Id" />
+        ///     Prefer the <see cref="Tag(TagId)" /> or <see cref="Tag{T}()" /> overloads. Use <see cref="Kernel.Tag{T}.Id" />
         ///     to get a <see cref="TagId" /> instance
         /// </remarks>
         /// <exception cref="InvalidOperationException"><see cref="GameObject" /> is dead.</exception>
@@ -413,7 +413,7 @@ namespace Alis.Core.Ecs
             if (lookup.Archetype.HasTag(tagId))
                 return false;
 
-            ArchetypeID archetype =
+            GameObjectType archetype =
                 w.AddTagLookup.FindAdjacentArchetypeId(tagId, lookup.Archetype.Id, Scene, ArchetypeEdgeType.AddTag);
             w.MoveEntityToArchetypeIso(this, ref lookup, archetype.Archetype(w));
 
@@ -435,7 +435,7 @@ namespace Alis.Core.Ecs
         /// <param name="type">The type of tag to remove.</param>
         public bool Detach(Type type)
         {
-            return Detach(Core.Tag.GetTagId(type));
+            return Detach(Kernel.Tag.GetTagId(type));
         }
 
         /// <summary>
@@ -453,7 +453,7 @@ namespace Alis.Core.Ecs
             if (!lookup.Archetype.HasTag(tagId))
                 return false;
 
-            ArchetypeID archetype =
+            GameObjectType archetype =
                 w.AddTagLookup.FindAdjacentArchetypeId(tagId, lookup.Archetype.Id, Scene, ArchetypeEdgeType.RemoveTag);
             w.MoveEntityToArchetypeIso(this, ref lookup, archetype.Archetype(w));
 

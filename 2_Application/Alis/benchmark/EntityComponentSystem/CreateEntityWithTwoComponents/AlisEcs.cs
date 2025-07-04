@@ -29,7 +29,7 @@
 
 using Alis.Benchmark.EntityComponentSystem.Contexts;
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using BenchmarkDotNet.Attributes;
 using static Alis.Benchmark.EntityComponentSystem.Contexts.AlisBaseContext;

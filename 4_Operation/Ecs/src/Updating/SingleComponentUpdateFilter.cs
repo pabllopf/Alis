@@ -1,7 +1,7 @@
 using System;
-using Alis.Core.Ecs.Core;
-using Alis.Core.Ecs.Core.Archetype;
-using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Redifinition;
 
 namespace Alis.Core.Ecs.Updating
 {
@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs.Updating
             _scene = scene;
             _componentId = component;
 
-            foreach (ArchetypeID archetype in scene.EnabledArchetypes.AsSpan())
+            foreach (GameObjectType archetype in scene.EnabledArchetypes.AsSpan())
                 ArchetypeAdded(archetype.Archetype(scene)!);
         }
 

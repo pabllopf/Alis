@@ -1,5 +1,5 @@
 using System;
-using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Kernel;
 
 namespace Alis.Core.Ecs.Systems
 {
