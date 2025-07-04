@@ -9,7 +9,7 @@ using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetype;
 using Alis.Core.Ecs.Kernel.Events;
-using Alis.Core.Ecs.Redifinition;
+using Alis.Core.Ecs.Kernel.Memory;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Updating;
 
