@@ -49,11 +49,11 @@ namespace Alis.Core.Ecs
 
             //1x array lookup per component
             ref T1 ref1 =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(
+                ref  Unsafe.As<ComponentStorage<T1>>(
                     components.UnsafeArrayIndex(Archetype<T1, T2>.OfComponent<T1>.Index))[eloc.Index];
             ref1 = comp1;
             ref T2 ref2 =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(
+                ref  Unsafe.As<ComponentStorage<T2>>(
                     components.UnsafeArrayIndex(Archetype<T1, T2>.OfComponent<T2>.Index))[eloc.Index];
             ref2 = comp2;
 

@@ -61,7 +61,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
             ComponentStorageBase[] components = Components;
             int index = GetComponentIndex<T>();
             if (index == 0) throw new ComponentNotFoundException(typeof(T));
-            return UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(components.UnsafeArrayIndex(index))
+            return  Unsafe.As<ComponentStorage<T>>(components.UnsafeArrayIndex(index))
                 .AsSpanLength(NextComponentIndex);
         }
 
@@ -74,7 +74,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         internal ref T GetComponentDataReference<T>()
         {
             int index = GetComponentIndex<T>();
-            return ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(Components.UnsafeArrayIndex(index))
+            return ref  Unsafe.As<ComponentStorage<T>>(Components.UnsafeArrayIndex(index))
                 .GetComponentStorageDataReference();
         }
 
@@ -482,7 +482,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
             internal ref T GetComponentDataReference<T>()
             {
                 int index = Map.UnsafeArrayIndex(Component<T>.Id.RawIndex);
-                return ref UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(Components.UnsafeArrayIndex(index))
+                return ref  Unsafe.As<ComponentStorage<T>>(Components.UnsafeArrayIndex(index))
                     .GetComponentStorageDataReference();
             }
         }

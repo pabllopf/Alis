@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
@@ -57,37 +58,37 @@ namespace Alis.Core.Ecs
             world.MoveEntityToArchetypeAdd(buff, this, ref thisLookup, out GameObjectLocation nextLocation, to);
 
             ref T1 c1Ref =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(buff.UnsafeSpanIndex(0))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T1>>(buff.UnsafeSpanIndex(0))[nextLocation.Index];
             c1Ref = c1;
             ref T2 c2Ref =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(buff.UnsafeSpanIndex(1))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T2>>(buff.UnsafeSpanIndex(1))[nextLocation.Index];
             c2Ref = c2;
             ref T3 c3Ref =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(buff.UnsafeSpanIndex(2))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T3>>(buff.UnsafeSpanIndex(2))[nextLocation.Index];
             c3Ref = c3;
             ref T4 c4Ref =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(buff.UnsafeSpanIndex(3))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T4>>(buff.UnsafeSpanIndex(3))[nextLocation.Index];
             c4Ref = c4;
             ref T5 c5Ref =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(buff.UnsafeSpanIndex(4))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T5>>(buff.UnsafeSpanIndex(4))[nextLocation.Index];
             c5Ref = c5;
             ref T6 c6Ref =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>(buff.UnsafeSpanIndex(5))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T6>>(buff.UnsafeSpanIndex(5))[nextLocation.Index];
             c6Ref = c6;
             ref T7 c7Ref =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>(buff.UnsafeSpanIndex(6))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T7>>(buff.UnsafeSpanIndex(6))[nextLocation.Index];
             c7Ref = c7;
             ref T8 c8Ref =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>(buff.UnsafeSpanIndex(7))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T8>>(buff.UnsafeSpanIndex(7))[nextLocation.Index];
             c8Ref = c8;
             ref T9 c9Ref =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T9>>(buff.UnsafeSpanIndex(8))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T9>>(buff.UnsafeSpanIndex(8))[nextLocation.Index];
             c9Ref = c9;
             ref T10 c10Ref =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T10>>(buff.UnsafeSpanIndex(9))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T10>>(buff.UnsafeSpanIndex(9))[nextLocation.Index];
             c10Ref = c10;
             ref T11 c11Ref =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T11>>(buff.UnsafeSpanIndex(10))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T11>>(buff.UnsafeSpanIndex(10))[nextLocation.Index];
             c11Ref = c11;
 
 

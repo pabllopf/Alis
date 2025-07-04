@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Kernel;
@@ -131,7 +132,7 @@ namespace Alis.Core.Ecs
             //2x
             //hardware trap
             ComponentStorage<T> storage =
-                UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(archetype.Components.UnsafeArrayIndex(compIndex));
+                 Unsafe.As<ComponentStorage<T>>(archetype.Components.UnsafeArrayIndex(compIndex));
             return ref storage[lookup.Index];
         } //2, 0
 
