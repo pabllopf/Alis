@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         /// <returns>The int</returns>
         public static int ComponentIndex(GameObjectType archetype, ComponentId component)
         {
-            return ComponentTagLocationTable.UnsafeArrayIndex(archetype.RawIndex).UnsafeArrayIndex(component.RawIndex) &
+            return ComponentTagLocationTable.XxUnsafeArrayIndex(archetype.RawIndex).XxUnsafeArrayIndex(component.RawIndex) &
                    IndexBits;
         }
 
@@ -111,7 +111,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         /// <returns>The bool</returns>
         public static bool HasTag(GameObjectType archetype, TagId tag)
         {
-            return (ComponentTagLocationTable.UnsafeArrayIndex(archetype.RawIndex).UnsafeArrayIndex(tag.RawValue) &
+            return (ComponentTagLocationTable.XxUnsafeArrayIndex(archetype.RawIndex).XxUnsafeArrayIndex(tag.RawValue) &
                     HasTagMask) != 0;
         }
     }

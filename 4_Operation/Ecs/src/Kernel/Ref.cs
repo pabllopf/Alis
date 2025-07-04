@@ -14,8 +14,8 @@ namespace Alis.Core.Ecs.Kernel
     public ref struct Ref<T>
     {
 #if NET7_0_OR_GREATER
-    internal Ref(T[] compArr, int index) => _comp = ref compArr.UnsafeArrayIndex(index);
-    internal Ref(Span<T> compSpan, int index) => _comp = ref compSpan.UnsafeSpanIndex(index);
+    internal Ref(T[] compArr, int index) => _comp = ref compArr.XxUnsafeArrayIndex(index);
+    internal Ref(Span<T> compSpan, int index) => _comp = ref compSpan.XxUnsafeSpanIndex(index);
     internal Ref(Alis.Core.Ecs.Updating.ComponentStorage<T> compSpan, int index) => _comp = ref compSpan[index];
 
     private ref T _comp;
@@ -60,7 +60,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The wrapped reference to <typeparamref name="T" />
         /// </summary>
-        public readonly ref T Value => ref _data.UnsafeSpanIndex(_offset);
+        public readonly ref T Value => ref _data.XxUnsafeSpanIndex(_offset);
 
         /// <summary>
         ///     Extracts the wrapped <typeparamref name="T" /> from this <see cref="Ref{T}" />

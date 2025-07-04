@@ -48,7 +48,7 @@ namespace Alis.Benchmark.CustomCollections.Tables.Elements
         private ref T ResizeGet(int index)
         {
             FastArrayPool<T>.ResizeArrayFromPool(ref Buffer, (int)BitOperations.RoundUpToPowerOf2((uint)(index + 1)));
-            return ref Buffer.UnsafeArrayIndex(index);
+            return ref Buffer.XxUnsafeArrayIndex(index);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Alis.Benchmark.CustomCollections.Tables.Elements
         /// <returns>The ref</returns>
         public ref T UnsafeIndexNoResize(int index)
         {
-            return ref Buffer.UnsafeArrayIndex(index);
+            return ref Buffer.XxUnsafeArrayIndex(index);
         }
 
         /// <summary>

@@ -15,7 +15,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         /// The 
         /// </summary>
-        public ref TData this[int i] => ref Buffer.UnsafeArrayIndex(i);
+        public ref TData this[int i] => ref Buffer.XxUnsafeArrayIndex(i);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Chunk"/> class

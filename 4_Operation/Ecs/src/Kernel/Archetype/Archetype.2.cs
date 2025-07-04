@@ -31,7 +31,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         internal static WorldArchetypeTableItem CreateNewOrGetExistingArchetypes(Scene scene)
         {
             ushort index = Id.RawIndex;
-            ref WorldArchetypeTableItem archetypes = ref scene.WorldArchetypeTable.UnsafeArrayIndex(index);
+            ref WorldArchetypeTableItem archetypes = ref scene.WorldArchetypeTable.XxUnsafeArrayIndex(index);
             if (archetypes.Archetype is null) archetypes = CreateArchetypes(scene);
             return archetypes;
 
@@ -45,10 +45,10 @@ namespace Alis.Core.Ecs.Kernel.Archetype
 
                 int i;
 
-                i = map.UnsafeArrayIndex(Component<T1>.Id.RawIndex) & GlobalWorldTables.IndexBits;
+                i = map.XxUnsafeArrayIndex(Component<T1>.Id.RawIndex) & GlobalWorldTables.IndexBits;
                 runners[i] = Component<T1>.CreateInstance(1);
                 tmpStorages[i] = Component<T1>.CreateInstance(0);
-                i = map.UnsafeArrayIndex(Component<T2>.Id.RawIndex) & GlobalWorldTables.IndexBits;
+                i = map.XxUnsafeArrayIndex(Component<T2>.Id.RawIndex) & GlobalWorldTables.IndexBits;
                 runners[i] = Component<T2>.CreateInstance(1);
                 tmpStorages[i] = Component<T2>.CreateInstance(0);
 

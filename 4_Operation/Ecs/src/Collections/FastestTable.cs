@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.Collections
         private ref T ResizeGet(int index)
         {
             FastestArrayPool<T>.ResizeArrayFromPool(ref _buffer, (int)BitOperations.RoundUpToPowerOf2((uint)(index + 1)));
-            return ref _buffer.UnsafeArrayIndex(index);
+            return ref _buffer.XxUnsafeArrayIndex(index);
         }
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
