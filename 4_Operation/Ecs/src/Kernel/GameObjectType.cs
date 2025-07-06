@@ -1,5 +1,6 @@
 global using ArchetypeID = Alis.Core.Ecs.Kernel.GameObjectType;
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Kernel.Archetype;
@@ -134,7 +135,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <returns>The ref archetype archetype</returns>
         internal readonly ref Archetype.Archetype Archetype(Scene context)
         {
-            return ref context.WorldArchetypeTable.XxUnsafeArrayIndex(RawIndex).Archetype!;
+            return ref Unsafe.Add(ref context.WorldArchetypeTable[0], RawIndex).Archetype!;
         }
     }
 }

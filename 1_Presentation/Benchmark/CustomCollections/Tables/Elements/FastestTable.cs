@@ -2,9 +2,10 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Alis.Benchmark.CustomCollections.ArrayPools.Elements;
 using Alis.Core.Ecs.Redifinition;
 
-namespace Alis.Core.Ecs.Collections
+namespace Alis.Benchmark.CustomCollections.Tables.Elements
 {
     /// <summary>
     ///     The fastest table combining optimal performance traits, safe version.
@@ -35,22 +36,7 @@ namespace Alis.Core.Ecs.Collections
 #endif
         }
 
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
         /// <summary>
-        /// The index
-        /// </summary>
-        public ref T this[int index]
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get
-            {
-                if (index >= _buffer.Length) return ref ResizeGet(index);
-                ref T r0 = ref _buffer[0];
-                return ref Unsafe.Add(ref r0, index);
-            }
-        }
-        #else
-             /// <summary>
         /// The index
         /// </summary>
         public ref T this[int index]
@@ -63,7 +49,6 @@ namespace Alis.Core.Ecs.Collections
                 return ref Unsafe.Add(ref r0, index);
             }
         }
-        #endif
         
         /// <summary>
         ///     Resizes the get using the specified index
@@ -72,25 +57,11 @@ namespace Alis.Core.Ecs.Collections
         /// <returns>The ref</returns>
         private ref T ResizeGet(int index)
         {
-            FastestArrayPool<T>.ResizeArrayFromPool(ref _buffer, (int)BitOperations.RoundUpToPowerOf2((uint)(index + 1)));
+            FastArrayPool<T>.ResizeArrayFromPool(ref _buffer, (int)BitOperations.RoundUpToPowerOf2((uint)(index + 1)));
             return ref Unsafe.Add(ref _buffer[0], index);
         }
 
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
         /// <summary>
-        /// Unsafes the index no resize using the specified index
-        /// </summary>
-        /// <param name="index">The index</param>
-        /// <returns>The ref</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public ref T UnsafeIndexNoResize(int index)
-        {
-            ref T r0 = ref _buffer[0];
-            return ref Unsafe.Add(ref r0, index);
-        }
-        
-#else
-/// <summary>
         /// Unsafes the index no resize using the specified index
         /// </summary>
         /// <param name="index">The index</param>
@@ -102,7 +73,6 @@ namespace Alis.Core.Ecs.Collections
             return ref Unsafe.Add(ref r0, index);
         }
 
-#endif
         /// <summary>
         /// Ensures the capacity using the specified size
         /// </summary>
@@ -111,7 +81,7 @@ namespace Alis.Core.Ecs.Collections
         {
             if (_buffer.Length >= size)
                 return;
-            FastestArrayPool<T>.ResizeArrayFromPool(ref _buffer, size);
+            FastArrayPool<T>.ResizeArrayFromPool(ref _buffer, size);
         }
 
         /// <summary>

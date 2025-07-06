@@ -15,7 +15,7 @@ namespace Alis.Core.Ecs.Kernel
     public ref struct Ref<T>
     {
 #if NET7_0_OR_GREATER
-    internal Ref(T[] compArr, int index) => _comp = ref compArr.XxUnsafeArrayIndex(index);
+    internal Ref(T[] compArr, int index) => _comp = ref Unsafe.Add(ref compArr[0], index);
     internal Ref(Span<T> compSpan, int index) => _comp = ref Unsafe.Add(ref MemoryMarshal.GetReference(compSpan), index);
     internal Ref(Alis.Core.Ecs.Updating.ComponentStorage<T> compSpan, int index) => _comp = ref compSpan[index];
 
