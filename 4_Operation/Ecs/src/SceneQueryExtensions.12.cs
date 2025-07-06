@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Kernel.Memory;
 using Alis.Core.Ecs.Systems;
 
 namespace Alis.Core.Ecs
