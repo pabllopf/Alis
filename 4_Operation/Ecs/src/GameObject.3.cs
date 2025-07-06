@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
@@ -48,13 +49,13 @@ namespace Alis.Core.Ecs
             world.MoveEntityToArchetypeAdd(buff, this, ref thisLookup, out GameObjectLocation nextLocation, to);
 
             ref T1 c1Ref =
-                ref  Unsafe.As<ComponentStorage<T1>>(buff.XxUnsafeSpanIndex(0))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T1>>(Unsafe.Add(ref MemoryMarshal.GetReference(buff), 0))[nextLocation.Index];
             c1Ref = c1;
             ref T2 c2Ref =
-                ref  Unsafe.As<ComponentStorage<T2>>(buff.XxUnsafeSpanIndex(1))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T2>>(Unsafe.Add(ref MemoryMarshal.GetReference(buff), 1))[nextLocation.Index];
             c2Ref = c2;
             ref T3 c3Ref =
-                ref  Unsafe.As<ComponentStorage<T3>>(buff.XxUnsafeSpanIndex(2))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T3>>(Unsafe.Add(ref MemoryMarshal.GetReference(buff), 2))[nextLocation.Index];
             c3Ref = c3;
 
 

@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Updating;
@@ -15,7 +16,7 @@ namespace Alis.Core.Ecs.Kernel
     {
 #if NET7_0_OR_GREATER
     internal Ref(T[] compArr, int index) => _comp = ref compArr.XxUnsafeArrayIndex(index);
-    internal Ref(Span<T> compSpan, int index) => _comp = ref compSpan.XxUnsafeSpanIndex(index);
+    internal Ref(Span<T> compSpan, int index) => _comp = ref Unsafe.Add(ref MemoryMarshal.GetReference(compSpan), index);
     internal Ref(Alis.Core.Ecs.Updating.ComponentStorage<T> compSpan, int index) => _comp = ref compSpan[index];
 
     private ref T _comp;

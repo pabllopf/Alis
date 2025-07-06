@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
@@ -55,31 +56,31 @@ namespace Alis.Core.Ecs
             world.MoveEntityToArchetypeAdd(buff, this, ref thisLookup, out GameObjectLocation nextLocation, to);
 
             ref T1 c1Ref =
-                ref  Unsafe.As<ComponentStorage<T1>>(buff.XxUnsafeSpanIndex(0))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T1>>(Unsafe.Add(ref MemoryMarshal.GetReference(buff), 0))[nextLocation.Index];
             c1Ref = c1;
             ref T2 c2Ref =
-                ref  Unsafe.As<ComponentStorage<T2>>(buff.XxUnsafeSpanIndex(1))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T2>>(Unsafe.Add(ref MemoryMarshal.GetReference(buff), 1))[nextLocation.Index];
             c2Ref = c2;
             ref T3 c3Ref =
-                ref  Unsafe.As<ComponentStorage<T3>>(buff.XxUnsafeSpanIndex(2))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T3>>(Unsafe.Add(ref MemoryMarshal.GetReference(buff), 2))[nextLocation.Index];
             c3Ref = c3;
             ref T4 c4Ref =
-                ref  Unsafe.As<ComponentStorage<T4>>(buff.XxUnsafeSpanIndex(3))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T4>>(Unsafe.Add(ref MemoryMarshal.GetReference(buff), 3))[nextLocation.Index];
             c4Ref = c4;
             ref T5 c5Ref =
-                ref  Unsafe.As<ComponentStorage<T5>>(buff.XxUnsafeSpanIndex(4))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T5>>(Unsafe.Add(ref MemoryMarshal.GetReference(buff), 4))[nextLocation.Index];
             c5Ref = c5;
             ref T6 c6Ref =
-                ref  Unsafe.As<ComponentStorage<T6>>(buff.XxUnsafeSpanIndex(5))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T6>>(Unsafe.Add(ref MemoryMarshal.GetReference(buff), 5))[nextLocation.Index];
             c6Ref = c6;
             ref T7 c7Ref =
-                ref  Unsafe.As<ComponentStorage<T7>>(buff.XxUnsafeSpanIndex(6))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T7>>(Unsafe.Add(ref MemoryMarshal.GetReference(buff), 6))[nextLocation.Index];
             c7Ref = c7;
             ref T8 c8Ref =
-                ref  Unsafe.As<ComponentStorage<T8>>(buff.XxUnsafeSpanIndex(7))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T8>>(Unsafe.Add(ref MemoryMarshal.GetReference(buff), 7))[nextLocation.Index];
             c8Ref = c8;
             ref T9 c9Ref =
-                ref  Unsafe.As<ComponentStorage<T9>>(buff.XxUnsafeSpanIndex(8))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T9>>(Unsafe.Add(ref MemoryMarshal.GetReference(buff), 8))[nextLocation.Index];
             c9Ref = c9;
 
 

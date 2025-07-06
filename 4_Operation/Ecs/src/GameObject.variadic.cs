@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
@@ -49,7 +50,7 @@ namespace Alis.Core.Ecs
             Span<ComponentStorageBase> buff = [null!];
             world.MoveEntityToArchetypeAdd(buff, this, ref thisLookup, out GameObjectLocation nextLocation, to);
 
-            ref T c1Ref = ref  Unsafe.As<ComponentStorage<T>>(buff.XxUnsafeSpanIndex(0))[nextLocation.Index];
+            ref T c1Ref = ref  Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref MemoryMarshal.GetReference(buff), 0))[nextLocation.Index];
             c1Ref = c1;
 
             Component<T>.Initer?.Invoke(this, ref c1Ref);
