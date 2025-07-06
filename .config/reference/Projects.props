@@ -77,10 +77,23 @@
         $(AssemblyName.Contains('Generator')) == False AND
         $(Configuration) == 'Release'">
 
-        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) AND $(ProjectDir.Contains('Extension')) == False"
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) AND $(ProjectDir.Contains('Extension')) == False AND $(ProjectDir.Contains('Benchmark')) == False" 
                           Include="
                           $(SolutionDir)2_Application/**/Alis.csproj;
                           $(SolutionDir)1_Presentation/**/Extension/**/**/*.csproj;"
+                          Exclude="
+                          $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
+                          $(SolutionDir)**/**/*generator*/**/*.cs;
+                          $(SolutionDir)**/**/*benchmark*/**/*.cs;  
+                          $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
+                           $(SolutionDir)1_Presentation/**/Extension/**/**/*Sample.csproj;
+                           $(SolutionDir)1_Presentation/**/Extension/**/**/*Benchmark.csproj;
+                           $(SolutionDir)1_Presentation/**/Extension/**/**/*Test.csproj;
+                          $(SolutionDir)**/Extension/**/**/*.Test.csproj;"/>
+
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) AND $(ProjectDir.Contains('Extension')) == False AND $(ProjectDir.Contains('Benchmark')) == True"
+                          Include="
+                          $(SolutionDir)2_Application/**/Alis.csproj;"
                           Exclude="
                           $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
                           $(SolutionDir)**/**/*generator*/**/*.cs;

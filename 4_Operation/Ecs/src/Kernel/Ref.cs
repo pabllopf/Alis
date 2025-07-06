@@ -1,7 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Kernel
@@ -11,7 +10,6 @@ namespace Alis.Core.Ecs.Kernel
     /// </summary>
     /// <typeparam name="T">The type this <see cref="Ref{T}" /> wraps over</typeparam>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    
     public ref struct Ref<T>
     {
 #if NET7_0_OR_GREATER
@@ -36,7 +34,7 @@ namespace Alis.Core.Ecs.Kernel
     /// </summary>
     /// <returns>A string representation of the wrapped <typeparamref name="T"/>'s</returns>
     public readonly override string ToString() => Value?.ToString();
-#elif (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
+#elif (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET7_0_OR_GREATER
         internal Ref(T[] compArr, int index)
         {
             _data = compArr;
@@ -61,7 +59,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The wrapped reference to <typeparamref name="T" />
         /// </summary>
-        public readonly ref T Value => ref _data.XxUnsafeSpanIndex(_offset);
+        public readonly ref T Value => ref Unsafe.Add(ref _data[0], _offset); 
 
         /// <summary>
         ///     Extracts the wrapped <typeparamref name="T" /> from this <see cref="Ref{T}" />
@@ -79,51 +77,6 @@ namespace Alis.Core.Ecs.Kernel
         {
             return Value?.ToString();
         }
-#else
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Ref"/> class
-    /// </summary>
-    /// <param name="compArr">The comp arr</param>
-    /// <param name="index">The index</param>
-    internal Ref(T[] compArr, int index) => _comp =
-        MemoryMarshal.CreateSpan(ref compArr.UnsafeArrayIndex(index), 1);
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Ref"/> class
-    /// </summary>
-    /// <param name="compSpan">The comp span</param>
-    /// <param name="index">The index</param>
-    internal Ref(Span<T> compSpan, int index) => _comp =
-        MemoryMarshal.CreateSpan(ref compSpan.UnsafeSpanIndex(index), 1);
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Ref"/> class
-    /// </summary>
-    /// <param name="compSpan">The comp span</param>
-    /// <param name="index">The index</param>
-    internal Ref(Alis.Core.Ecs.Updating.ComponentStorage<T> compSpan, int index) => _comp =
-        MemoryMarshal.CreateSpan(ref compSpan[index], 1);
-
-    /// <summary>
-    /// The comp
-    /// </summary>
-    private Span<T> _comp;
-
-    /// <summary>
-    /// The wrapped reference to <typeparamref name="T"/>
-    /// </summary>
-    public readonly ref T Value => ref MemoryMarshal.GetReference(_comp);
-
-    /// <summary>
-    /// Extracts the wrapped <typeparamref name="T"/> from this <see cref="Ref{T}"/>
-    /// /// </summary>
-    public static implicit operator T(Ref<T> @ref) => @ref.Value;
-
-    /// <summary>
-    /// Calls the wrapped <typeparamref name="T"/>'s ToString() function, or returns null.
-    /// </summary>
-    /// <returns>A string representation of the wrapped <typeparamref name="T"/>'s</returns>
-    public readonly override string ToString() => Value?.ToString();
 #endif
     }
 }
