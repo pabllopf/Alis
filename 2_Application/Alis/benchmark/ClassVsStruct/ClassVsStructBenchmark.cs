@@ -36,13 +36,13 @@ namespace Alis.Benchmark.ClassVsStruct
     /// <summary>
     ///     The class vs struct benchmark class
     /// </summary>
-    [ShortRunJob, MemoryDiagnoser(false), Config(typeof(CustomConfig))]
+    [ShortRunJob, MemoryDiagnoser, Config(typeof(CustomConfig))]
     public class ClassVsStructBenchmark
     {
         /// <summary>
         ///     The iterations
         /// </summary>
-        private const int Iterations = 1_000_000;
+        private const int Iterations = 1_000;
 
         /// <summary>
         ///     Usings this instance
@@ -69,6 +69,37 @@ namespace Alis.Benchmark.ClassVsStruct
         public int UsingStruct()
         {
             StructPoint obj = new StructPoint(1, 2);
+            int sum = 0;
+            for (int i = 0; i < Iterations; i++)
+            {
+                sum += obj.X + obj.Y;
+            }
+
+            return sum;
+        }
+        
+        
+        /// <summary>
+        ///     Usings the struct
+        /// </summary>
+        /// <returns>The sum</returns>
+        [Benchmark]
+        public int UsingRefStruct()
+        {
+            StructRefPoint obj = new StructRefPoint(1, 2);
+            int sum = 0;
+            for (int i = 0; i < Iterations; i++)
+            {
+                sum += obj.X + obj.Y;
+            }
+
+            return sum;
+        }
+        
+        [Benchmark]
+        public int UsingRecord()
+        {
+            RecordPoint obj = new RecordPoint(1, 2);
             int sum = 0;
             for (int i = 0; i < Iterations; i++)
             {
