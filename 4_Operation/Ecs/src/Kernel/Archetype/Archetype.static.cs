@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Math.Collections;
+using Alis.Core.Aspect.Memory;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Kernel.Memory;
+using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Updating;
 using HashCode = Alis.Core.Aspect.Math.HashCode;
 

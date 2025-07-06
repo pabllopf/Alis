@@ -1,9 +1,10 @@
 <Project>
+    <!--
     <Target Name="CustomBeforeBuild" BeforeTargets="Build">
         <Message Text="Verificando si se necesita compilar el generador..." Importance="High" />
         <Exec 
             Condition="$(AssemblyName.Equals('Alis')) OR $(AssemblyName.Equals('Alis.Core')) OR $(AssemblyName.Equals('Alis.Core.Ecs'))" 
             Command="dotnet build $(SolutionDir)4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj -c Release" />
         <Message Text="Generador compilado correctamente." Importance="High" Condition="$(AssemblyName.Equals('Alis')) OR $(AssemblyName.Equals('Alis.Core')) OR $(AssemblyName.Equals('Alis.Core.Ecs'))"  />
-    </Target>
+    </Target>-->
 </Project>

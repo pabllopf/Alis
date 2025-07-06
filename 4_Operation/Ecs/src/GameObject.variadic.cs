@@ -1,11 +1,12 @@
 using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Math.Collections;
+using Alis.Core.Aspect.Memory;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetype;
 using Alis.Core.Ecs.Kernel.Events;
-using Alis.Core.Ecs.Kernel.Memory;
+using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs
