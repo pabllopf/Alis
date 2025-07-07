@@ -2,9 +2,8 @@ global using ArchetypeID = Alis.Core.Ecs.Kernel.GameObjectType;
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Collections;
-using Alis.Core.Aspect.Memory;
 using Alis.Core.Ecs.Kernel.Archetype;
-using Alis.Core.Ecs.Redifinition;
+using Alis.Core.Ecs.Kernel.Memory;
 
 namespace Alis.Core.Ecs.Kernel
 {

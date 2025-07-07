@@ -4,10 +4,9 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Collections;
-using Alis.Core.Aspect.Memory;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Exceptions;
-using Alis.Core.Ecs.Redifinition;
+using Alis.Core.Ecs.Kernel.Memory;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Kernel.Archetype

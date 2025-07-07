@@ -1,7 +1,6 @@
 using System;
-using Alis.Core.Aspect.Memory;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Redifinition;
+using Alis.Core.Ecs.Kernel.Memory;
 
 namespace Alis.Core.Ecs.Kernel.Archetype
 {

@@ -2,11 +2,10 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Memory;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Events;
-using Alis.Core.Ecs.Redifinition;
+using Alis.Core.Ecs.Kernel.Memory;
 
 namespace Alis.Core.Ecs.Updating
 {

@@ -1,7 +1,6 @@
 using System;
-using Alis.Core.Aspect.Memory;
 using Alis.Core.Ecs.Kernel.Archetype;
-using Alis.Core.Ecs.Redifinition;
+using Alis.Core.Ecs.Kernel.Memory;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Marshalling
