@@ -3,9 +3,9 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Core;
-using Alis.Core.Ecs.Core.Events;
-using Alis.Core.Ecs.Core.Memory;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Events;
+using Alis.Core.Ecs.Redifinition;
 
 namespace Alis.Core.Ecs.Updating
 {

@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Ecs.Core;
-using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Archetype;
 #if NET7_0_OR_GREATER
 using System.Runtime.Intrinsics;
 #endif
@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="scene">The world</param>
         /// <param name="edgeType">The edge type</param>
         /// <returns>The gameObject type</returns>
-        public ArchetypeID FindAdjacentArchetypeId<T>(T id, ArchetypeID archetype, Scene scene, ArchetypeEdgeType edgeType)
+        public GameObjectType FindAdjacentArchetypeId<T>(T id, GameObjectType archetype, Scene scene, ArchetypeEdgeType edgeType)
             where T : ITypeId
         {
             uint key = GetKey(id.Value, archetype);
