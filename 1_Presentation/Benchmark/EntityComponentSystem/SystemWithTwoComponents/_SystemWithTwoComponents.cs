@@ -34,7 +34,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponents
     /// <summary>
     ///     The system with two components class
     /// </summary>
-    [BenchmarkCategory(Categories.System), MemoryDiagnoser]
+    [BenchmarkCategory(Categories.System)]
+    [Config(typeof(CustomConfig))]
 #if CHECK_CACHE_MISSES
     [HardwareCounters(BenchmarkDotNet.Diagnosers.HardwareCounter.CacheMisses)]
 #endif

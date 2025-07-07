@@ -30,6 +30,8 @@
 using System;
 using Alis.Benchmark.CustomEcs;
 using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Diagnosers;
+using BenchmarkDotNet.Engines;
 using BenchmarkDotNet.Environments;
 using BenchmarkDotNet.Exporters;
 using BenchmarkDotNet.Exporters.Csv;
@@ -51,40 +53,25 @@ namespace Alis.Benchmark
         public CustomConfig()
         {
             Options |= ConfigOptions.DisableLogFile;
-
-            // Especifica la carpeta de salida
+            
             string outputDirectory = $"../../../Results/{DateTime.Now:yyyy-MM-dd}/";
-
-            // Configura la ruta de los artefactos
+            
             ArtifactsPath = outputDirectory;
 
-            // Desactiva la generación de archivos de log, pero mantiene la consola
-            AddLogger(ConsoleLogger.Default); // Muestra solo en consola sin guardar logs en ficheros
+            AddLogger(ConsoleLogger.Default);
 
-            // Agrega los exportadores
             AddExporter(MarkdownExporter.GitHub);
             AddExporter(CsvExporter.Default);
 
-
-#if DEBUG
-            AddJob(Job.Dry
-                .WithId("Debug")
-                .WithJit(Jit.RyuJit)
-                .WithGcServer(true)
-                .WithGcConcurrent(true)
-                .WithGcForce(true)
-                .WithCustomBuildConfiguration("Debug"));
-#else
-            AddJob(Job.Dry
+            Job debugJob = Job.InProcess
                 .WithId("Release")
-                .WithJit(Jit.RyuJit)
-                .WithGcServer(true)
-                .WithGcConcurrent(true)
+                .WithCustomBuildConfiguration("Release")
+                .WithRuntime(CoreRuntime.Core80)
                 .WithGcForce(true)
-                .WithCustomBuildConfiguration("Release"));
+                .WithGcServer(true);
 
-#endif
-            
+            AddJob(debugJob);
+            AddDiagnoser(MemoryDiagnoser.Default);
         }
     }
 }

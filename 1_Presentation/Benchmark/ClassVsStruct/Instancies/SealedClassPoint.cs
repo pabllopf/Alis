@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:_SystemWithOneComponent.cs
+//  File:SealedClass.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,43 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Order;
-
-namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
+namespace Alis.Benchmark.ClassVsStruct.Instancies
 {
-    /// <summary>
-    ///     The system with one component class
-    /// </summary>
-    [BenchmarkCategory(Categories.System), Orderer(SummaryOrderPolicy.FastestToSlowest)]
-    [Config(typeof(CustomConfig))]
-#if CHECK_CACHE_MISSES
-    [HardwareCounters(BenchmarkDotNet.Diagnosers.HardwareCounter.CacheMisses)]
-#endif
-    public partial class SystemWithOneComponent
+    public sealed class SealedClassPoint
     {
         /// <summary>
-        ///     Gets or sets the value of the gameObject count
+        ///     Initializes a new instance of the <see cref="ClassPoint" /> class
         /// </summary>
-        [Params(1_000)]
-        public int EntityCount { get; set; }
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        public SealedClassPoint(int x, int y) => (X, Y) = (x, y);
 
         /// <summary>
-        ///     Gets or sets the value of the gameObject padding
+        ///     Gets the value of the x
         /// </summary>
-        [Params(0)]
-        public int EntityPadding { get; set; }
+        public int X { get; }
 
         /// <summary>
-        ///     Setup this instance
+        ///     Gets the value of the y
         /// </summary>
-        [GlobalSetup]
-        public void Setup() => BenchmarkOperations.SetupContexts(this, EntityCount, EntityPadding);
-
-        /// <summary>
-        ///     Cleanups this instance
-        /// </summary>
-        [GlobalCleanup]
-        public void Cleanup() => BenchmarkOperations.CleanupContexts(this);
+        public int Y { get; }
     }
 }

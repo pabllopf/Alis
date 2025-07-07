@@ -35,7 +35,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
     /// <summary>
     ///     The system with three components class
     /// </summary>
-    [BenchmarkCategory(Categories.System), MemoryDiagnoser(false), ShortRunJob, Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [BenchmarkCategory(Categories.System), Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [Config(typeof(CustomConfig))]
 #if CHECK_CACHE_MISSES
     [HardwareCounters(BenchmarkDotNet.Diagnosers.HardwareCounter.CacheMisses)]
 #endif

@@ -108,8 +108,7 @@ namespace Alis.Benchmark
                 typeof(AlisEcsBenchmark)
             });
 
-            IConfig configuration = DefaultConfig.Instance
-                .WithOptions(ConfigOptions.DisableOptimizationsValidator);
+            IConfig configuration = DefaultConfig.Instance;
 
             if (args.Length > 0)
             {
