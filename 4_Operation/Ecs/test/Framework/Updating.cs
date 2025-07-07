@@ -5,8 +5,7 @@ using System;
             
             using Alis.Core;
             using Alis.Core.Aspect.Fluent.Components;
-            
-            using Alis.Core.Ecs.Kernel;
+            using Alis.Core.Ecs.Core;
             using Xunit;
             
             namespace Alis.Core.Ecs.Test.Framework

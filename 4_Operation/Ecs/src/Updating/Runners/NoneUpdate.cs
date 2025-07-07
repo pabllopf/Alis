@@ -1,5 +1,5 @@
 using System.Threading;
-using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Core.Archetype;
 
 namespace Alis.Core.Ecs.Updating.Runners
 {

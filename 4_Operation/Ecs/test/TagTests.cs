@@ -1,7 +1,7 @@
 using System;
         using System.Collections.Generic;
         using System.Linq;
-        using Alis.Core.Ecs.Kernel;
+        using Alis.Core.Ecs.Core;
         using Alis.Core.Ecs.Test.Helpers;
         using Xunit;
         

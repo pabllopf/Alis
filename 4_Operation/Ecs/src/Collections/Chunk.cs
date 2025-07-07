@@ -1,5 +1,5 @@
 using System;
-using Alis.Core.Ecs.Kernel.Memory;
+using Alis.Core.Ecs.Core.Memory;
 
 namespace Alis.Core.Ecs.Collections
 {

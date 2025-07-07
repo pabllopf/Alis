@@ -1,10 +1,10 @@
 using System;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Archetype;
-using Alis.Core.Ecs.Kernel.Events;
-using Alis.Core.Ecs.Kernel.Memory;
+using Alis.Core.Ecs.Core;
+using Alis.Core.Ecs.Core.Archetype;
+using Alis.Core.Ecs.Core.Events;
+using Alis.Core.Ecs.Core.Memory;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs
@@ -377,20 +377,20 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T11">The 11</typeparam>
         /// <param name="@event">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeTagWorldEvents<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(ref Event<TagId> @event,
+        private static void InvokeTagWorldEvents<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(ref TagEvent @event,
             GameObject gameObject)
         {
-            @event.InvokeInternal(gameObject, Kernel.Tag<T1>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T2>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T3>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T4>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T5>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T6>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T7>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T8>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T9>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T10>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T11>.Id);
+            @event.InvokeInternal(gameObject, Core.Tag<T1>.Id);
+            @event.InvokeInternal(gameObject, Core.Tag<T2>.Id);
+            @event.InvokeInternal(gameObject, Core.Tag<T3>.Id);
+            @event.InvokeInternal(gameObject, Core.Tag<T4>.Id);
+            @event.InvokeInternal(gameObject, Core.Tag<T5>.Id);
+            @event.InvokeInternal(gameObject, Core.Tag<T6>.Id);
+            @event.InvokeInternal(gameObject, Core.Tag<T7>.Id);
+            @event.InvokeInternal(gameObject, Core.Tag<T8>.Id);
+            @event.InvokeInternal(gameObject, Core.Tag<T9>.Id);
+            @event.InvokeInternal(gameObject, Core.Tag<T10>.Id);
+            @event.InvokeInternal(gameObject, Core.Tag<T11>.Id);
         }
 
         /// <summary>
@@ -410,19 +410,19 @@ namespace Alis.Core.Ecs
         /// <param name="gameObject">The gameObject</param>
         /// <param name="events">The events</param>
         private static void InvokePerEntityTagEvents<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(GameObject gameObject,
-            ref Event<TagId> events)
+            ref TagEvent events)
         {
-            events.Invoke(gameObject, Kernel.Tag<T1>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T2>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T3>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T4>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T5>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T6>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T7>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T8>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T9>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T10>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T11>.Id);
+            events.Invoke(gameObject, Core.Tag<T1>.Id);
+            events.Invoke(gameObject, Core.Tag<T2>.Id);
+            events.Invoke(gameObject, Core.Tag<T3>.Id);
+            events.Invoke(gameObject, Core.Tag<T4>.Id);
+            events.Invoke(gameObject, Core.Tag<T5>.Id);
+            events.Invoke(gameObject, Core.Tag<T6>.Id);
+            events.Invoke(gameObject, Core.Tag<T7>.Id);
+            events.Invoke(gameObject, Core.Tag<T8>.Id);
+            events.Invoke(gameObject, Core.Tag<T9>.Id);
+            events.Invoke(gameObject, Core.Tag<T10>.Id);
+            events.Invoke(gameObject, Core.Tag<T11>.Id);
         }
 
         /// <summary>
@@ -440,12 +440,16 @@ namespace Alis.Core.Ecs
                 if (add)
                     tags = MemoryHelpers.Concat(tags,
                     [
-                        Kernel.Tag<T1>.Id, Kernel.Tag<T2>.Id, Kernel.Tag<T3>.Id, Kernel.Tag<T4>.Id, Kernel.Tag<T5>.Id, Kernel.Tag<T6>.Id, Kernel.Tag<T7>.Id, Kernel.Tag<T8>.Id, Kernel.Tag<T9>.Id, Kernel.Tag<T10>.Id, Kernel.Tag<T11>.Id
+                        Core.Tag<T1>.Id, Core.Tag<T2>.Id, Core.Tag<T3>.Id, Core.Tag<T4>.Id, Core.Tag<T5>.Id,
+                        Core.Tag<T6>.Id, Core.Tag<T7>.Id, Core.Tag<T8>.Id, Core.Tag<T9>.Id, Core.Tag<T10>.Id,
+                        Core.Tag<T11>.Id
                     ]);
                 else
                     tags = MemoryHelpers.Remove(tags,
                     [
-                        Kernel.Tag<T1>.Id, Kernel.Tag<T2>.Id, Kernel.Tag<T3>.Id, Kernel.Tag<T4>.Id, Kernel.Tag<T5>.Id, Kernel.Tag<T6>.Id, Kernel.Tag<T7>.Id, Kernel.Tag<T8>.Id, Kernel.Tag<T9>.Id, Kernel.Tag<T10>.Id, Kernel.Tag<T11>.Id
+                        Core.Tag<T1>.Id, Core.Tag<T2>.Id, Core.Tag<T3>.Id, Core.Tag<T4>.Id, Core.Tag<T5>.Id,
+                        Core.Tag<T6>.Id, Core.Tag<T7>.Id, Core.Tag<T8>.Id, Core.Tag<T9>.Id, Core.Tag<T10>.Id,
+                        Core.Tag<T11>.Id
                     ]);
             }
 

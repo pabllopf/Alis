@@ -3,7 +3,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Benchmark.CustomCollections.ArrayPools.Elements;
-using Alis.Core.Ecs.Kernel.Memory;
+using Alis.Core.Ecs.Core.Memory;
 
 namespace Alis.Benchmark.CustomCollections.Tables.Elements
 {

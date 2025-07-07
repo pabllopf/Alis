@@ -4,8 +4,8 @@ using System;
             using Alis.Core.Ecs.Test.Helpers;
             using Alis;
             using Alis.Core;
-            using Alis.Core.Ecs.Kernel;
-            using Alis.Core.Ecs.Kernel.Events;
+            using Alis.Core.Ecs.Core;
+            using Alis.Core.Ecs.Core.Events;
             using Xunit;
             
             namespace Alis.Core.Ecs.Test

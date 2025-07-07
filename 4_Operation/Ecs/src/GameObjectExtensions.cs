@@ -1,6 +1,6 @@
 using System;
+using Alis.Core.Ecs.Core;
 using Alis.Core.Ecs.Exceptions;
-using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs
