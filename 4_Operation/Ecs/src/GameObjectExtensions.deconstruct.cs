@@ -23,7 +23,7 @@ namespace Alis.Core.Ecs
         private static Ref<TC> GetComp<TC>(byte[] archetypeTable, ComponentStorageBase[] comps, int index)
         {
             int compIndex = archetypeTable.UnsafeArrayIndex(Component<TC>.Id.RawIndex) & GlobalWorldTables.IndexBits;
-            return new Ref<TC>(UnsafeExtensions.UnsafeCast<ComponentStorage<TC>>(comps.UnsafeArrayIndex(compIndex)), index);
+            return new Ref<TC>( Unsafe.As<ComponentStorage<TC>>(comps.UnsafeArrayIndex(compIndex)), index);
         }
     }
 }

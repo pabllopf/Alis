@@ -128,7 +128,7 @@ namespace Alis.Core.Ecs
                 goto doesntExist;
 
             exists = true;
-            ComponentStorage<T> storage = UnsafeExtensions.UnsafeCast<ComponentStorage<T>>(
+            ComponentStorage<T> storage =  Unsafe.As<ComponentStorage<T>>(
                 entityLocation.Archetype.Components.UnsafeArrayIndex(compIndex));
 
             return new Ref<T>(storage, entityLocation.Index);

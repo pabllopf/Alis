@@ -93,7 +93,7 @@ namespace Alis.Core.Ecs.Updating
             int otherRemoveIndex)
         {
             ComponentStorage<TComponent> componentRunner =
-                UnsafeExtensions.UnsafeCast<ComponentStorage<TComponent>>(otherRunner);
+                 Unsafe.As<ComponentStorage<TComponent>>(otherRunner);
 
             // see comment in ComponentStorageBase.PullComponentFromAndClearTryDevirt
             ref TComponent item = ref componentRunner[other];

@@ -51,42 +51,42 @@ namespace Alis.Core.Ecs
 
             //1x array lookup per component
             ref T1 ref1 =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T1>>(
+                ref  Unsafe.As<ComponentStorage<T1>>(
                     components.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T1>.Index))[
                     eloc.Index];
             ref1 = comp1;
             ref T2 ref2 =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T2>>(
+                ref  Unsafe.As<ComponentStorage<T2>>(
                     components.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T2>.Index))[
                     eloc.Index];
             ref2 = comp2;
             ref T3 ref3 =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T3>>(
+                ref  Unsafe.As<ComponentStorage<T3>>(
                     components.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T3>.Index))[
                     eloc.Index];
             ref3 = comp3;
             ref T4 ref4 =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T4>>(
+                ref  Unsafe.As<ComponentStorage<T4>>(
                     components.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T4>.Index))[
                     eloc.Index];
             ref4 = comp4;
             ref T5 ref5 =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T5>>(
+                ref  Unsafe.As<ComponentStorage<T5>>(
                     components.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T5>.Index))[
                     eloc.Index];
             ref5 = comp5;
             ref T6 ref6 =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T6>>(
+                ref  Unsafe.As<ComponentStorage<T6>>(
                     components.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T6>.Index))[
                     eloc.Index];
             ref6 = comp6;
             ref T7 ref7 =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T7>>(
+                ref  Unsafe.As<ComponentStorage<T7>>(
                     components.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T7>.Index))[
                     eloc.Index];
             ref7 = comp7;
             ref T8 ref8 =
-                ref UnsafeExtensions.UnsafeCast<ComponentStorage<T8>>(
+                ref  Unsafe.As<ComponentStorage<T8>>(
                     components.UnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5, T6, T7, T8>.OfComponent<T8>.Index))[
                     eloc.Index];
             ref8 = comp8;

@@ -106,17 +106,5 @@ namespace Alis.Core.Ecs.Redifinition
         {
             return ref Unsafe.Add(ref MemoryMarshal.GetReference(arr), index);
         }
-
-
-        /// <summary>
-        ///     Unsafes the cast using the specified o
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="o">The </param>
-        /// <returns>The</returns>
-        public static T UnsafeCast<T>(object o) where T : class
-        {
-            return Unsafe.As<T>(o);
-        }
     }
 }
