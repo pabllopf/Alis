@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Marshalling
             GameObjectLocation location = scene.EntityTable.UnsafeIndexNoResize(gameObject.EntityID);
             index = location.Index;
             return  Unsafe.As<ComponentStorage<T>>(
-                    location.Archetype.Components.UnsafeArrayIndex(location.Archetype.GetComponentIndex<T>())).AsSpan();
+                    location.Archetype.Components.XxUnsafeArrayIndex(location.Archetype.GetComponentIndex<T>())).AsSpan();
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Alis.Core.Ecs.Marshalling
 
             //Components[0] null; trap
             ComponentStorage<T> storage =
-                 Unsafe.As<ComponentStorage<T>>(archetype.Components.UnsafeArrayIndex(compIndex));
+                 Unsafe.As<ComponentStorage<T>>(archetype.Components.XxUnsafeArrayIndex(compIndex));
             return ref storage[location.Index];
         }
     }

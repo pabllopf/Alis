@@ -95,16 +95,16 @@ namespace Alis.Core.Ecs
             for (int i = 0; i < destinationComponents.Length;)
             {
                 ComponentId componentToMove = destinationComponents[i];
-                int fromIndex = fromMap.UnsafeArrayIndex(componentToMove.RawIndex) & GlobalWorldTables.IndexBits;
+                int fromIndex = fromMap.XxUnsafeArrayIndex(componentToMove.RawIndex) & GlobalWorldTables.IndexBits;
 
                 //index for dest is offset by one for hardware trap
                 i++;
 
                 if (fromIndex == 0)
-                    writeTo.UnsafeSpanIndex(writeToIndex++) = destRunners[i];
+                    writeTo.XxUnsafeSpanIndex(writeToIndex++) = destRunners[i];
                 else
-                    destRunners.UnsafeArrayIndex(i).PullComponentFromAndClearTryDevirt(
-                        fromRunners.UnsafeArrayIndex(fromIndex), nextLocation.Index, currentLookup.Index, deletedIndex);
+                    destRunners.XxUnsafeArrayIndex(i).PullComponentFromAndClearTryDevirt(
+                        fromRunners.XxUnsafeArrayIndex(fromIndex), nextLocation.Index, currentLookup.Index, deletedIndex);
             }
 
             ref GameObjectLocation displacedGameObjectLocation = ref EntityTable.UnsafeIndexNoResize(movedDown.ID);
@@ -148,14 +148,14 @@ namespace Alis.Core.Ecs
             for (int i = 0; i < fromComponents.Length;)
             {
                 ComponentId componentToMoveFromFromToTo = fromComponents[i];
-                int toIndex = destMap.UnsafeArrayIndex(componentToMoveFromFromToTo.RawIndex);
+                int toIndex = destMap.XxUnsafeArrayIndex(componentToMoveFromFromToTo.RawIndex);
 
                 i++;
 
                 if (toIndex == 0)
                 {
-                    ComponentStorageBase runner = fromRunners.UnsafeArrayIndex(i);
-                    ref ComponentHandle writeTo = ref componentHandles.UnsafeSpanIndex(writeToIndex++);
+                    ComponentStorageBase runner = fromRunners.XxUnsafeArrayIndex(i);
+                    ref ComponentHandle writeTo = ref componentHandles.XxUnsafeSpanIndex(writeToIndex++);
                     if (hasGenericRemoveEvent)
                         writeTo = runner.Store(currentLookup.Index);
                     else //kinda illegal but whatever
@@ -164,8 +164,8 @@ namespace Alis.Core.Ecs
                 }
                 else
                 {
-                    destRunners.UnsafeArrayIndex(toIndex).PullComponentFromAndClearTryDevirt(
-                        fromRunners.UnsafeArrayIndex(i), nextLocation.Index, currentLookup.Index, deletedIndex);
+                    destRunners.XxUnsafeArrayIndex(toIndex).PullComponentFromAndClearTryDevirt(
+                        fromRunners.XxUnsafeArrayIndex(i), nextLocation.Index, currentLookup.Index, deletedIndex);
                 }
             }
 
@@ -232,7 +232,7 @@ namespace Alis.Core.Ecs
 
             for (int i = 0; i < fromComponents.Length;)
             {
-                int toIndex = destMap.UnsafeArrayIndex(fromComponents[i].RawIndex) & GlobalWorldTables.IndexBits;
+                int toIndex = destMap.XxUnsafeArrayIndex(fromComponents[i].RawIndex) & GlobalWorldTables.IndexBits;
 
                 i++;
 

@@ -61,7 +61,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
             ComponentStorageBase[] components = Components;
             int index = GetComponentIndex<T>();
             if (index == 0) throw new ComponentNotFoundException(typeof(T));
-            return  Unsafe.As<ComponentStorage<T>>(components.UnsafeArrayIndex(index))
+            return  Unsafe.As<ComponentStorage<T>>(components.XxUnsafeArrayIndex(index))
                 .AsSpanLength(NextComponentIndex);
         }
 
@@ -74,7 +74,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         internal ref T GetComponentDataReference<T>()
         {
             int index = GetComponentIndex<T>();
-            return ref  Unsafe.As<ComponentStorage<T>>(Components.UnsafeArrayIndex(index))
+            return ref  Unsafe.As<ComponentStorage<T>>(Components.XxUnsafeArrayIndex(index))
                 .GetComponentStorageDataReference();
         }
 
@@ -98,7 +98,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
             //poison prolly isnt needed since archetype forces clear anyways
             MemoryHelpers.Poison(ref gameObjectLocation.Version);
 
-            return ref _entities.UnsafeArrayIndex(NextComponentIndex++);
+            return ref _entities.XxUnsafeArrayIndex(NextComponentIndex++);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
                 writeStorage = Components;
                 gameObjectLocation.Index = futureSlot;
                 gameObjectLocation.Archetype = this;
-                return ref _entities.UnsafeArrayIndex(futureSlot);
+                return ref _entities.XxUnsafeArrayIndex(futureSlot);
             }
 
             return ref CreateDeferredEntityLocationTempBuffers(deferredCreationArchetype, futureSlot, ref gameObjectLocation,
@@ -149,7 +149,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
 
             writeStorage = deferredCreationArchetype.Components;
 
-            return ref deferredCreationArchetype._entities.UnsafeArrayIndex(gameObjectLocation.Index);
+            return ref deferredCreationArchetype._entities.XxUnsafeArrayIndex(gameObjectLocation.Index);
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
             GameObjectLocation[] table = scene.EntityTable._buffer;
             for (int i = previousComponentCount; i < entities.Length && i < NextComponentIndex; i++)
             {
-                ref GameObjectLocation gameObjectLocationToResolve = ref table.UnsafeArrayIndex(entities[i].ID);
+                ref GameObjectLocation gameObjectLocationToResolve = ref table.XxUnsafeArrayIndex(entities[i].ID);
                 gameObjectLocationToResolve.Archetype = this;
                 gameObjectLocationToResolve.Index = i;
             }
@@ -271,7 +271,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         internal GameObjectIdOnly DeleteEntityFromStorage(int index, out int deletedIndex)
         {
             deletedIndex = --NextComponentIndex;
-            return _entities.UnsafeArrayIndex(index) = _entities.UnsafeArrayIndex(NextComponentIndex);
+            return _entities.XxUnsafeArrayIndex(index) = _entities.XxUnsafeArrayIndex(NextComponentIndex);
         }
 
         /// <summary>
@@ -336,7 +336,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
 
             end:
 
-            return _entities.UnsafeArrayIndex(args.ToIndex) = _entities.UnsafeArrayIndex(args.FromIndex);
+            return _entities.XxUnsafeArrayIndex(args.ToIndex) = _entities.XxUnsafeArrayIndex(args.FromIndex);
         }
 
         /// <summary>
@@ -387,7 +387,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         internal int GetComponentIndex<T>()
         {
             ushort index = Component<T>.Id.RawIndex;
-            return ComponentTagTable.UnsafeArrayIndex(index) & GlobalWorldTables.IndexBits;
+            return ComponentTagTable.XxUnsafeArrayIndex(index) & GlobalWorldTables.IndexBits;
         }
 
         /// <summary>
@@ -398,7 +398,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal int GetComponentIndex(ComponentId component)
         {
-            return ComponentTagTable.UnsafeArrayIndex(component.RawIndex) & GlobalWorldTables.IndexBits;
+            return ComponentTagTable.XxUnsafeArrayIndex(component.RawIndex) & GlobalWorldTables.IndexBits;
         }
 
         /// <summary>
@@ -410,7 +410,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         internal bool HasTag<T>()
         {
             ushort index = Tag<T>.Id.RawValue;
-            return ComponentTagTable.UnsafeArrayIndex(index) << 7 != 0;
+            return ComponentTagTable.XxUnsafeArrayIndex(index) << 7 != 0;
         }
 
         /// <summary>
@@ -421,7 +421,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal bool HasTag(TagId tagId)
         {
-            return ComponentTagTable.UnsafeArrayIndex(tagId.RawValue) << 7 != 0;
+            return ComponentTagTable.XxUnsafeArrayIndex(tagId.RawValue) << 7 != 0;
         }
 
         /// <summary>
@@ -481,8 +481,8 @@ namespace Alis.Core.Ecs.Kernel.Archetype
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             internal ref T GetComponentDataReference<T>()
             {
-                int index = Map.UnsafeArrayIndex(Component<T>.Id.RawIndex);
-                return ref  Unsafe.As<ComponentStorage<T>>(Components.UnsafeArrayIndex(index))
+                int index = Map.XxUnsafeArrayIndex(Component<T>.Id.RawIndex);
+                return ref  Unsafe.As<ComponentStorage<T>>(Components.XxUnsafeArrayIndex(index))
                     .GetComponentStorageDataReference();
             }
         }

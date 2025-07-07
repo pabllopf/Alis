@@ -166,7 +166,7 @@ namespace Alis.Core.Ecs.Updating
         public ref TComponent this[int index]
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => ref TypedBuffer.UnsafeArrayIndex(index);
+            get => ref TypedBuffer.XxUnsafeArrayIndex(index);
         }
 
         /// <summary>

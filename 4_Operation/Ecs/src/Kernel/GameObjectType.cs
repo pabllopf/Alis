@@ -134,7 +134,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <returns>The ref archetype archetype</returns>
         internal readonly ref Archetype.Archetype Archetype(Scene context)
         {
-            return ref context.WorldArchetypeTable.UnsafeArrayIndex(RawIndex).Archetype!;
+            return ref context.WorldArchetypeTable.XxUnsafeArrayIndex(RawIndex).Archetype!;
         }
     }
 }

@@ -49,16 +49,16 @@ namespace Alis.Core.Ecs
             world.MoveEntityToArchetypeAdd(buff, this, ref thisLookup, out GameObjectLocation nextLocation, to);
 
             ref T1 c1Ref =
-                ref  Unsafe.As<ComponentStorage<T1>>(buff.UnsafeSpanIndex(0))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T1>>(buff.XxUnsafeSpanIndex(0))[nextLocation.Index];
             c1Ref = c1;
             ref T2 c2Ref =
-                ref  Unsafe.As<ComponentStorage<T2>>(buff.UnsafeSpanIndex(1))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T2>>(buff.XxUnsafeSpanIndex(1))[nextLocation.Index];
             c2Ref = c2;
             ref T3 c3Ref =
-                ref  Unsafe.As<ComponentStorage<T3>>(buff.UnsafeSpanIndex(2))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T3>>(buff.XxUnsafeSpanIndex(2))[nextLocation.Index];
             c3Ref = c3;
             ref T4 c4Ref =
-                ref  Unsafe.As<ComponentStorage<T4>>(buff.UnsafeSpanIndex(3))[nextLocation.Index];
+                ref  Unsafe.As<ComponentStorage<T4>>(buff.XxUnsafeSpanIndex(3))[nextLocation.Index];
             c4Ref = c4;
 
 

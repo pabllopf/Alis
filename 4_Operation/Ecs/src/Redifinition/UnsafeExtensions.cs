@@ -16,7 +16,7 @@ namespace Alis.Core.Ecs.Redifinition
         /// <param name="arr">The arr</param>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        public static ref T UnsafeArrayIndex<T>(this T[] arr, int index)
+        public static ref T XxUnsafeArrayIndex<T>(this T[] arr, int index)
         {
             return ref Unsafe.Add(ref arr[0], index);
         }
@@ -28,7 +28,7 @@ namespace Alis.Core.Ecs.Redifinition
         /// <param name="arr">The arr</param>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        public static ref T UnsafeSpanIndex<T>(this Span<T> arr, int index)
+        public static ref T XxUnsafeSpanIndex<T>(this Span<T> arr, int index)
         {
             return ref Unsafe.Add(ref MemoryMarshal.GetReference(arr), index);
         }
