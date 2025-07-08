@@ -54,8 +54,11 @@ namespace Alis.Benchmark
         {
             Options |= ConfigOptions.DisableLogFile;
             
-            string outputDirectory = $"../../../Results/{DateTime.Now:yyyy-MM-dd}/";
-            
+#if RELEASE
+            string outputDirectory = $"../../../Release/Results/{DateTime.Now:yyyy-MM-dd}/";
+#else
+             string outputDirectory = $"../../../Debug/Results/{DateTime.Now:yyyy-MM-dd}/";
+#endif
             ArtifactsPath = outputDirectory;
 
             AddLogger(ConsoleLogger.Default);
@@ -63,12 +66,23 @@ namespace Alis.Benchmark
             AddExporter(MarkdownExporter.GitHub);
             AddExporter(CsvExporter.Default);
 
+        #if RELEASE
             Job debugJob = Job.InProcess
                 .WithId("Release")
                 .WithCustomBuildConfiguration("Release")
                 .WithRuntime(CoreRuntime.Core80)
                 .WithGcForce(true)
                 .WithGcServer(true);
+            
+        #else
+            Job debugJob = Job.InProcess
+                .WithId("Debug")
+                .WithCustomBuildConfiguration("Debug")
+                .WithRuntime(CoreRuntime.Core80)
+                .WithGcForce(true)
+                .WithGcServer(true);
+        
+        #endif
 
             AddJob(debugJob);
             AddDiagnoser(MemoryDiagnoser.Default);

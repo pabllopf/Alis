@@ -66,20 +66,25 @@ namespace Alis.App.Hub.Utils
                 throw new GeneralAlisException($"Failed to load image: {Sdl.GetError()}");
             }
 
-            // Get image dimensions
-            Surface sdlSurface = Marshal.PtrToStructure<Surface>(surface);
-            int width = sdlSurface.w;
-            int height = sdlSurface.h;
-
-            // Generate OpenGL texture
-            uint textureId = Gl.GenTexture();
-            Gl.GlBindTexture(TextureTarget.Texture2D, textureId);
-            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, width, height, 0, PixelFormat.Bgra, PixelType.UnsignedByte, sdlSurface.Pixels);
-            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
-            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
-            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, TextureParameter.ClampToEdge);
-            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, TextureParameter.ClampToEdge);
-            Gl.GlBindTexture(TextureTarget.Texture2D, 0);
+             // Obtener la estructura Surface
+             Surface sdlSurface = Marshal.PtrToStructure<Surface>(surface);
+             int width = sdlSurface.w;
+             int height = sdlSurface.h;
+             
+             // Obtener el puntero a los píxeles de forma segura
+             IntPtr pixelsPtr = sdlSurface.Pixels;
+             if (pixelsPtr == IntPtr.Zero)
+                 throw new GeneralAlisException("El puntero de píxeles es nulo.");
+             
+             // Generar textura OpenGL
+             uint textureId = Gl.GenTexture();
+             Gl.GlBindTexture(TextureTarget.Texture2D, textureId);
+             Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, width, height, 0, PixelFormat.Bgra, PixelType.UnsignedByte, pixelsPtr);
+             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
+             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
+             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, TextureParameter.ClampToEdge);
+             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, TextureParameter.ClampToEdge);
+             Gl.GlBindTexture(TextureTarget.Texture2D, 0);
 
             return (IntPtr) textureId;
         }
