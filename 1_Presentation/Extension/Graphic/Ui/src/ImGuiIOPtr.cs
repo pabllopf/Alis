@@ -210,7 +210,17 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the value of the font global scale
         /// </summary>
-        public float FontGlobalScale => Marshal.PtrToStructure<ImGuiIo>(NativePtr).FontGlobalScale;
+        public float FontGlobalScale
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).FontGlobalScale;
+            set
+            {
+                // Write x and y values to the DisplaySize field
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.FontGlobalScale = value;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
 
         /// <summary>
         ///     Gets the value of the font allow user scaling
