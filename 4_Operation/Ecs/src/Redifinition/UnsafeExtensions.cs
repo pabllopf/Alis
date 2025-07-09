@@ -20,17 +20,5 @@ namespace Alis.Core.Ecs.Redifinition
         {
             return ref Unsafe.Add(ref arr[0], index);
         }
-        
-        /// <summary>
-        ///     Unsafes the span index using the specified arr
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="arr">The arr</param>
-        /// <param name="index">The index</param>
-        /// <returns>The ref</returns>
-        public static ref T XxUnsafeSpanIndex<T>(this Span<T> arr, int index)
-        {
-            return ref Unsafe.Add(ref MemoryMarshal.GetReference(arr), index);
-        }
     }
 }

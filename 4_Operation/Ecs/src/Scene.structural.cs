@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetype;
@@ -101,7 +102,7 @@ namespace Alis.Core.Ecs
                 i++;
 
                 if (fromIndex == 0)
-                    writeTo.XxUnsafeSpanIndex(writeToIndex++) = destRunners[i];
+                    Unsafe.Add(ref MemoryMarshal.GetReference(writeTo), writeToIndex++) = destRunners[i];
                 else
                     destRunners.XxUnsafeArrayIndex(i).PullComponentFromAndClearTryDevirt(
                         fromRunners.XxUnsafeArrayIndex(fromIndex), nextLocation.Index, currentLookup.Index, deletedIndex);
@@ -155,7 +156,7 @@ namespace Alis.Core.Ecs
                 if (toIndex == 0)
                 {
                     ComponentStorageBase runner = fromRunners.XxUnsafeArrayIndex(i);
-                    ref ComponentHandle writeTo = ref componentHandles.XxUnsafeSpanIndex(writeToIndex++);
+                    ref ComponentHandle writeTo = ref Unsafe.Add(ref MemoryMarshal.GetReference(componentHandles), writeToIndex++);
                     if (hasGenericRemoveEvent)
                         writeTo = runner.Store(currentLookup.Index);
                     else //kinda illegal but whatever
