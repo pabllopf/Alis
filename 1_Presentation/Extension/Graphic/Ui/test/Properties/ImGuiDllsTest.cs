@@ -153,7 +153,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Properties
         [Fact]
         public void ImGuiDllBytes_WinX86_ShouldHaveCorrectPath()
         {
-            string expectedPath = "Alis.Extension.Graphic.ImGui.resources.win_x86.win-x86_cimgui.zip";
+            string expectedPath = "Alis.Extension.Graphic.Ui.resources.win_x86.win-x86_cimgui.zip";
             Assert.Equal(expectedPath, ImGuiDlls.ImGuiDllBytes[new PlatformInfo(OSPlatform.Windows, Architecture.X86)]);
         }
 
@@ -163,7 +163,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Properties
         [Fact]
         public void ImGuiDllBytes_WinX64_ShouldHaveCorrectPath()
         {
-            string expectedPath = "Alis.Extension.Graphic.ImGui.resources.win_x64.win-x64_cimgui.zip";
+            string expectedPath = "Alis.Extension.Graphic.Ui.resources.win_x64.win-x64_cimgui.zip";
             Assert.Equal(expectedPath, ImGuiDlls.ImGuiDllBytes[new PlatformInfo(OSPlatform.Windows, Architecture.X64)]);
         }
 
@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Properties
         [Fact]
         public void ImGuiDllBytes_WinArm_ShouldHaveCorrectPath()
         {
-            string expectedPath = "Alis.Extension.Graphic.ImGui.resources.win_arm.win-arm_cimgui.zip";
+            string expectedPath = "Alis.Extension.Graphic.Ui.resources.win_arm.win-arm_cimgui.zip";
             Assert.Equal(expectedPath, ImGuiDlls.ImGuiDllBytes[new PlatformInfo(OSPlatform.Windows, Architecture.Arm)]);
         }
 
@@ -183,7 +183,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Properties
         [Fact]
         public void ImGuiDllBytes_WinArm64_ShouldHaveCorrectPath()
         {
-            string expectedPath = "Alis.Extension.Graphic.ImGui.resources.win_arm64.win-arm64_cimgui.zip";
+            string expectedPath = "Alis.Extension.Graphic.Ui.resources.win_arm64.win-arm64_cimgui.zip";
             Assert.Equal(expectedPath, ImGuiDlls.ImGuiDllBytes[new PlatformInfo(OSPlatform.Windows, Architecture.Arm64)]);
         }
 
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Properties
         [Fact]
         public void ImGuiDllBytes_LinuxX86_ShouldHaveCorrectPath()
         {
-            string expectedPath = "Alis.Extension.Graphic.ImGui.resources.linux_x86.linux-x86_cimgui.zip";
+            string expectedPath = "Alis.Extension.Graphic.Ui.resources.linux_x86.linux-x86_cimgui.zip";
             Assert.Equal(expectedPath, ImGuiDlls.ImGuiDllBytes[new PlatformInfo(OSPlatform.Linux, Architecture.X86)]);
         }
 
@@ -203,7 +203,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Properties
         [Fact]
         public void ImGuiDllBytes_LinuxX64_ShouldHaveCorrectPath()
         {
-            string expectedPath = "Alis.Extension.Graphic.ImGui.resources.linux_x64.linux-x64_cimgui.zip";
+            string expectedPath = "Alis.Extension.Graphic.Ui.resources.linux_x64.linux-x64_cimgui.zip";
             Assert.Equal(expectedPath, ImGuiDlls.ImGuiDllBytes[new PlatformInfo(OSPlatform.Linux, Architecture.X64)]);
         }
 
@@ -213,7 +213,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Properties
         [Fact]
         public void ImGuiDllBytes_LinuxArm_ShouldHaveCorrectPath()
         {
-            string expectedPath = "Alis.Extension.Graphic.ImGui.resources.linux_arm.linux-arm_cimgui.zip";
+            string expectedPath = "Alis.Extension.Graphic.Ui.resources.linux_arm.linux-arm_cimgui.zip";
             Assert.Equal(expectedPath, ImGuiDlls.ImGuiDllBytes[new PlatformInfo(OSPlatform.Linux, Architecture.Arm)]);
         }
 
@@ -223,7 +223,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Properties
         [Fact]
         public void ImGuiDllBytes_LinuxArm64_ShouldHaveCorrectPath()
         {
-            string expectedPath = "Alis.Extension.Graphic.ImGui.resources.linux_arm64.linux-arm64_cimgui.zip";
+            string expectedPath = "Alis.Extension.Graphic.Ui.resources.linux_arm64.linux-arm64_cimgui.zip";
             Assert.Equal(expectedPath, ImGuiDlls.ImGuiDllBytes[new PlatformInfo(OSPlatform.Linux, Architecture.Arm64)]);
         }
 
@@ -233,7 +233,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Properties
         [Fact]
         public void ImGuiDllBytes_OsxX86_ShouldHaveCorrectPath()
         {
-            string expectedPath = "Alis.Extension.Graphic.ImGui.resources.osx_x86.osx-x86_cimgui.zip";
+            string expectedPath = "Alis.Extension.Graphic.Ui.resources.osx_x86.osx-x86_cimgui.zip";
             Assert.Equal(expectedPath, ImGuiDlls.ImGuiDllBytes[new PlatformInfo(OSPlatform.OSX, Architecture.X86)]);
         }
 
@@ -243,7 +243,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Properties
         [Fact]
         public void ImGuiDllBytes_OsxX64_ShouldHaveCorrectPath()
         {
-            string expectedPath = "Alis.Extension.Graphic.ImGui.resources.osx_x64.osx-x64_cimgui.zip";
+            string expectedPath = "Alis.Extension.Graphic.Ui.resources.osx_x64.osx-x64_cimgui.zip";
             Assert.Equal(expectedPath, ImGuiDlls.ImGuiDllBytes[new PlatformInfo(OSPlatform.OSX, Architecture.X64)]);
         }
 
@@ -253,7 +253,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Properties
         [Fact]
         public void ImGuiDllBytes_OsxArm_ShouldHaveCorrectPath()
         {
-            string expectedPath = "Alis.Extension.Graphic.ImGui.resources.osx_arm.osx-arm_cimgui.zip";
+            string expectedPath = "Alis.Extension.Graphic.Ui.resources.osx_arm.osx-arm_cimgui.zip";
             Assert.Equal(expectedPath, ImGuiDlls.ImGuiDllBytes[new PlatformInfo(OSPlatform.OSX, Architecture.Arm)]);
         }
 
@@ -263,7 +263,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Properties
         [Fact]
         public void ImGuiDllBytes_OsxArm64_ShouldHaveCorrectPath()
         {
-            string expectedPath = "Alis.Extension.Graphic.ImGui.resources.osx_arm64.osx-arm64_cimgui.zip";
+            string expectedPath = "Alis.Extension.Graphic.Ui.resources.osx_arm64.osx-arm64_cimgui.zip";
             Assert.Equal(expectedPath, ImGuiDlls.ImGuiDllBytes[new PlatformInfo(OSPlatform.OSX, Architecture.Arm64)]);
         }
     }
