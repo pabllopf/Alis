@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
@@ -776,17 +777,43 @@ namespace Alis.Extension.Graphic.Ui.Sample
             }
         }
         
-        private static void OnPollEventsImGui()
-        {
-            ImGuiIoPtr io = ImGui.GetIo();
+      private static void OnPollEventsImGui()
+      {
+          ImGuiIoPtr io = ImGui.GetIo();
+      
+          // Mouse
+          io.MouseDown[0] = Glfw.GetMouseButton(_window, MouseButton.Left) == InputState.Press;
+          io.MouseDown[1] = Glfw.GetMouseButton(_window, MouseButton.Right) == InputState.Press;
+          io.MouseDown[2] = Glfw.GetMouseButton(_window, MouseButton.Middle) == InputState.Press;
+          Glfw.GetCursorPosition(_window, out double mouseX, out double mouseY);
+          io.MousePos = new Vector2F((float)mouseX, (float)mouseY);
+      
+          // Teclado (solo teclas válidas del enum)
+          foreach (Keys key in Enum.GetValues(typeof(Keys)))
+          {
+              if (key == Keys.Unknown)
+              {
+                  continue;
+              }
 
-            io.MouseDown[0] = Glfw.GetMouseButton(_window, MouseButton.Left) == InputState.Press;
-            io.MouseDown[1] = Glfw.GetMouseButton(_window, MouseButton.Right) == InputState.Press;
-            io.MouseDown[2] = Glfw.GetMouseButton(_window, MouseButton.Middle) == InputState.Press;
-
-            Glfw.GetCursorPosition(_window, out double mouseX, out double mouseY);
-            io.MousePos = new Vector2F((float)mouseX, (float)mouseY);
-        }
+              int idx = (int)key;
+              
+              if (Glfw.GetKey(_window, key) == InputState.Press)
+              {
+                  io.KeysDown[idx] = true;
+                  Logger.Info($"Key pressed: {key}");
+              }
+              else
+              {
+                  io.KeysDown[idx] = false;
+              }
+          }
+      
+          io.KeyCtrl = io.KeysDown[(int)Keys.LeftControl] || io.KeysDown[(int)Keys.RightControl];
+          io.KeyShift = io.KeysDown[(int)Keys.LeftShift] || io.KeysDown[(int)Keys.RightShift];
+          io.KeyAlt = io.KeysDown[(int)Keys.LeftAlt] || io.KeysDown[(int)Keys.RightAlt];
+          io.KeySuper = io.KeysDown[(int)Keys.LeftSuper] || io.KeysDown[(int)Keys.RightSuper];
+      }
 
 
         public static void OnStartFrame()
