@@ -28,9 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
-using Alis.Extension.Graphic.ImGui.Extras.Plot;
-using Alis.Extension.Graphic.ImGui.Extras.Plot.Native;
-using Alis.Extension.Graphic.ImGui.Native;
+using Alis.Extension.Graphic.Ui;
+using Alis.Extension.Graphic.Ui.Extras.Plot;
 
 namespace Alis.App.Engine.Demos
 {

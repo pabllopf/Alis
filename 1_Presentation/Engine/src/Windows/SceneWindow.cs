@@ -37,9 +37,8 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Extension.Graphic.ImGui;
-using Alis.Extension.Graphic.ImGui.Native;
 using Alis.Extension.Graphic.Sdl2;
+using Alis.Extension.Graphic.Ui;
 
 namespace Alis.App.Engine.Windows
 {

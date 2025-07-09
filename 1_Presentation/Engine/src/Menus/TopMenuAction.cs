@@ -35,7 +35,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.Core.Aspect.Logging;
-using Alis.Extension.Graphic.ImGui.Native;
+using Alis.Extension.Graphic.Ui;
 using MonoMac.AppKit;
 
 namespace Alis.App.Engine.Menus
