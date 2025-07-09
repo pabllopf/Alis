@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.GlfwLib;
 using Alis.Core.Graphic.GlfwLib.Enums;
@@ -111,6 +112,16 @@ namespace Alis.Extension.Graphic.Ui.Sample
         private static int _attribLocationColor;
         
         
+       
+        // PREVIEW WINDOWS:
+        private static uint shaderProgram;
+        private static uint vao;
+        private static uint vbo;
+
+        private static uint _previewTexture;
+        private static int _previewWidth = 512, _previewHeight = 512;
+        
+        
         // IMGUIZNO SAMPLE: 
         private static float[] cameraProjection = new float[16]
         {
@@ -157,54 +168,111 @@ namespace Alis.Extension.Graphic.Ui.Sample
             {
                 OnPollEvents();
                 
-                // Docking
-                ImGuiViewportPtr viewport = ImGui.GetMainViewport();
-                ImGui.SetNextWindowPos(viewport.Pos);
-                ImGui.SetNextWindowSize(viewport.Size);
-                ImGui.SetNextWindowViewport(viewport.Id);
-                
-                Glfw.GetWindowSize(_window, out int w, out int h);
-                if (w != _widthMainWindow || h != _heightMainWindow)
-                {
-                    _widthMainWindow = w;
-                    _heightMainWindow = h;
-                    SetPerFrameImGuiData(FrameRate);
-                }
-
-                ImGui.NewFrame();
-                ImGuizMo.BeginFrame();
-
-                ImGui.SetNextWindowPos(ViewportHub.WorkPos);
-                ImGui.SetNextWindowSize(ViewportHub.Size);
-                ImGui.Begin(DockSpaceTitle, _windowDockSpaceFlags);
-
-                Vector2F dockSize = ViewportHub.Size - new Vector2F(5, 85);
-                uint dockSpaceId = ImGui.GetId(DockSpaceId);
-                ImGui.DockSpace(dockSpaceId, dockSize);
-                
-                
+                OnStartFrame();
                 OnRenderFrame();
-                
-                
-                ImGui.End();
-
-                ImGui.Render();
-
-                ImGuiIoPtr io = ImGui.GetIo();
-                Gl.GlViewport(0, 0, (int) io.DisplaySize.X, (int) io.DisplaySize.Y);
-                Gl.GlClear(ClearBufferMask.ColorBufferBit);
-            
-                RenderImDrawData(ImGui.GetDrawData());
-                Glfw.SwapBuffers(_window);
+                OnEndFrame();
             }
             
             OnExit();
         }
-
+        
         private static void OnInit()
         {
             OnInitGlfw();
             OnInitImGui();
+            InitializePreviewResources();
+        }
+
+        private static void InitializePreviewResources()
+        {
+           // Define the vertices for the triangle
+            float[] vertices =
+            {
+                0.0f, 0.5f, 0.0f, // Top
+                -0.5f, -0.5f, 0.0f, // Bottom Left
+                0.5f, -0.5f, 0.0f // Bottom Right
+            };
+
+            // Create a vertex buffer object (VBO) and a vertex array object (VAO)
+            vbo = Gl.GenBuffer();
+            vao = Gl.GenVertexArray();
+
+            // Bind the VAO and VBO
+            Gl.GlBindVertexArray(vao);
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, vbo);
+
+            GCHandle handle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
+            try
+            {
+                IntPtr pointer = handle.AddrOfPinnedObject();
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), pointer, BufferUsageHint.StaticDraw);
+            }
+            finally
+            {
+                if (handle.IsAllocated)
+                {
+                    handle.Free();
+                }
+            }
+            
+            _previewTexture = Gl.GenTexture();
+            Gl.GlBindTexture(TextureTarget.Texture2D, _previewTexture);
+            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, _previewWidth, _previewHeight, 0, PixelFormat.Rgba, PixelType.UnsignedByte, IntPtr.Zero);
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
+            Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
+            
+            // Update vertex shader source code
+            string vertexShaderSource = @"
+                #version 330 core
+                layout (location = 0) in vec3 aPos;
+                uniform mat4 transform;
+                void main()
+                {
+                    gl_Position = transform * vec4(aPos.x, aPos.y, aPos.z, 1.0);
+                }
+                ";
+
+            string fragmentShaderSource = @"
+                #version 330 core
+                out vec4 FragColor;
+                void main()
+                {
+                    FragColor = vec4(1.0f, 1.0f, 1.0f, 1.0f); // white color
+                }
+            ";
+
+            uint vertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
+            Gl.ShaderSource(vertexShader, vertexShaderSource);
+            Gl.GlCompileShader(vertexShader);
+
+            uint fragmentShader = Gl.GlCreateShader(ShaderType.FragmentShader);
+            Gl.ShaderSource(fragmentShader, fragmentShaderSource);
+            Gl.GlCompileShader(fragmentShader);
+
+            shaderProgram = Gl.GlCreateProgram();
+            Gl.GlAttachShader(shaderProgram, vertexShader);
+            Gl.GlAttachShader(shaderProgram, fragmentShader);
+            Gl.GlLinkProgram(shaderProgram);
+
+            // Bind the VAO and shader program
+            Gl.GlBindVertexArray(vao);
+            Gl.GlUseProgram(shaderProgram);
+
+            // Enable the vertex attribute array
+            Gl.EnableVertexAttribArray(0);
+            Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), IntPtr.Zero);
+
+            // Print the OpenGL version
+            Logger.Log(@$"OpenGL VERSION {Gl.GlGetString(StringName.Version)}");
+
+            // Print the OpenGL vendor
+            Logger.Log(@$"OpenGL VENDOR {Gl.GlGetString(StringName.Vendor)}");
+
+            // Print the OpenGL renderer
+            Logger.Log(@$"OpenGL RENDERER {Gl.GlGetString(StringName.Renderer)}");
+
+            // Print the OpenGL shading language version
+            Logger.Log(@$"OpenGL SHADING LANGUAGE VERSION {Gl.GlGetString(StringName.ShadingLanguageVersion)}");
         }
 
         private static void OnInitGlfw()
@@ -225,6 +293,11 @@ namespace Alis.Extension.Graphic.Ui.Sample
         
             Glfw.WindowHint(Hint.OpenglForwardCompatible, OpenglForwardCompatible);
             Logger.Info($"Setting GLFW OpenGL forward compatible to {OpenglForwardCompatible}");
+            
+            Glfw.WindowHint(Hint.Doublebuffer, true);
+            Glfw.WindowHint(Hint.DepthBits, 24);
+            Glfw.WindowHint(Hint.AlphaBits, 8);
+            Glfw.WindowHint(Hint.StencilBits, 8);
         
               // Obtener el monitor principal
               Monitor primaryMonitor = Glfw.GetPrimaryMonitor();
@@ -721,6 +794,8 @@ namespace Alis.Extension.Graphic.Ui.Sample
             
             Logger.Info("ImGui style set to dark");
         }
+        
+        
 
 
         private static void SetupRenderer()
@@ -914,16 +989,108 @@ namespace Alis.Extension.Graphic.Ui.Sample
           _mousePressed[0] = _mousePressed[1] = _mousePressed[2] = false;
           io.MouseDown = mouseDown;
       }
-      
-        private static void OnRenderFrame()
+
+      private static void OnStartFrame()
+      {
+          // Docking
+          ImGuiViewportPtr viewport = ImGui.GetMainViewport();
+          ImGui.SetNextWindowPos(viewport.Pos);
+          ImGui.SetNextWindowSize(viewport.Size);
+          ImGui.SetNextWindowViewport(viewport.Id);
+                
+          Glfw.GetWindowSize(_window, out int w, out int h);
+          if (w != _widthMainWindow || h != _heightMainWindow)
+          {
+              _widthMainWindow = w;
+              _heightMainWindow = h;
+              SetPerFrameImGuiData(FrameRate);
+          }
+
+          ImGui.NewFrame();
+          ImGuizMo.BeginFrame();
+
+          ImGui.SetNextWindowPos(ViewportHub.WorkPos);
+          ImGui.SetNextWindowSize(ViewportHub.Size);
+          ImGui.Begin(DockSpaceTitle, _windowDockSpaceFlags);
+
+          Vector2F dockSize = ViewportHub.Size - new Vector2F(5, 85);
+          uint dockSpaceId = ImGui.GetId(DockSpaceId);
+          ImGui.DockSpace(dockSpaceId, dockSize);
+      }
+
+      private static void OnRenderFrame()
         {
             ImGui.ShowDemoWindow();
             ImPlot.ShowDemoWindow();
             ShowDemoImGuizMo();
             ShowDemoImNode();
             ShowDemoIcon();
-        }
 
+            RenderTriangleDirectly();
+            ShowPreviewImage();
+        }
+      
+      // Renderiza un triángulo con fondo rojo en la textura _previewTexture
+     private static void RenderTriangleDirectly()
+     {
+         // Configura el viewport para la ventana principal
+         Gl.GlViewport(0, 0, _previewWidth, _previewHeight);
+     
+         // Limpia el color de fondo
+         Gl.GlClearColor(0.8f, 0.1f, 0.1f, 1.0f); // Fondo rojo
+         Gl.GlClear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+     
+         // Usa el programa de shaders y el VAO
+         Gl.GlUseProgram(shaderProgram);
+         Gl.GlBindVertexArray(vao);
+     
+         // Aplica la transformación al triángulo
+         Matrix4X4 transform = Matrix4X4.CreateRotationZ((float)DateTime.Now.TimeOfDay.TotalSeconds);
+         int transformLocation = Gl.GlGetUniformLocation(shaderProgram, "transform");
+         Gl.UniformMatrix4Fv(transformLocation, transform);
+     
+         // Dibuja el triángulo
+         Gl.GlDrawArrays(PrimitiveType.Triangles, 0, 3);
+     
+         // Desactiva el VAO y el programa de shaders
+         Gl.GlBindVertexArray(0);
+         Gl.GlUseProgram(0);
+     }
+        // Muestra la textura en ImGui
+        private static void ShowPreviewImage()
+        {
+            
+            // Copia el framebuffer a una textura para ImGui
+            byte[] pixelBuffer = new byte[_previewWidth * _previewHeight * 4];
+            
+            GCHandle handle2 = GCHandle.Alloc(pixelBuffer, GCHandleType.Pinned);
+            try
+            {
+                Gl.GlReadPixels(0, 0, _previewWidth, _previewHeight, PixelFormat.Rgba, PixelType.UnsignedByte, handle2.AddrOfPinnedObject());
+            }
+            finally
+            {
+                handle2.Free();
+            }
+            
+            Gl.GlBindTexture(TextureTarget.Texture2D, _previewTexture);
+            GCHandle handle = GCHandle.Alloc(pixelBuffer, GCHandleType.Pinned);
+            try
+            {
+                Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, _previewWidth, _previewHeight, 0, PixelFormat.Rgba, PixelType.UnsignedByte, handle.AddrOfPinnedObject());
+            }
+            finally
+            {
+                handle.Free();
+            }
+            Gl.GlBindTexture(TextureTarget.Texture2D, 0);
+
+            // Muestra la textura en ImGui
+            ImGui.Begin("OpenGL Preview");
+            ImGui.Image((IntPtr)_previewTexture, ImGui.GetContentRegionAvail());
+            ImGui.End();
+        }
+        
         private static void ShowDemoIcon()
         {
             if (ImGui.Begin("Icon Demo"))
@@ -1104,6 +1271,20 @@ namespace Alis.Extension.Graphic.Ui.Sample
             m.M31, m.M32, m.M33, m.M34,
             m.M41, m.M42, m.M43, m.M44
         };
+        
+        private static void OnEndFrame()
+        {
+            ImGui.End();
+
+            ImGui.Render();
+
+            ImGuiIoPtr io = ImGui.GetIo();
+            Gl.GlViewport(0, 0, (int) io.DisplaySize.X, (int) io.DisplaySize.Y);
+            Gl.GlClear(ClearBufferMask.ColorBufferBit);
+            
+            RenderImDrawData(ImGui.GetDrawData());
+            Glfw.SwapBuffers(_window);
+        }
         
         private static void OnExit()
         {
