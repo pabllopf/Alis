@@ -61,7 +61,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
             ComponentStorageBase[] components = Components;
             int index = GetComponentIndex<T>();
             if (index == 0) throw new ComponentNotFoundException(typeof(T));
-            return  Unsafe.As<ComponentStorage<T>>(components.XxUnsafeArrayIndex(index))
+            return  Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref components[0], index))
                 .AsSpanLength(NextComponentIndex);
         }
 
@@ -74,7 +74,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         internal ref T GetComponentDataReference<T>()
         {
             int index = GetComponentIndex<T>();
-            return ref  Unsafe.As<ComponentStorage<T>>(Components.XxUnsafeArrayIndex(index))
+            return ref  Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref Components[0], index))
                 .GetComponentStorageDataReference();
         }
 
@@ -98,7 +98,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
             //poison prolly isnt needed since archetype forces clear anyways
             MemoryHelpers.Poison(ref gameObjectLocation.Version);
 
-            return ref _entities.XxUnsafeArrayIndex(NextComponentIndex++);
+            return ref Unsafe.Add(ref _entities[0], NextComponentIndex++);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
                 writeStorage = Components;
                 gameObjectLocation.Index = futureSlot;
                 gameObjectLocation.Archetype = this;
-                return ref _entities.XxUnsafeArrayIndex(futureSlot);
+                return ref Unsafe.Add(ref _entities[0], futureSlot);
             }
 
             return ref CreateDeferredEntityLocationTempBuffers(deferredCreationArchetype, futureSlot, ref gameObjectLocation,
@@ -149,7 +149,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
 
             writeStorage = deferredCreationArchetype.Components;
 
-            return ref deferredCreationArchetype._entities.XxUnsafeArrayIndex(gameObjectLocation.Index);
+            return ref Unsafe.Add(ref deferredCreationArchetype._entities[0], gameObjectLocation.Index);
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
             GameObjectLocation[] table = scene.EntityTable._buffer;
             for (int i = previousComponentCount; i < entities.Length && i < NextComponentIndex; i++)
             {
-                ref GameObjectLocation gameObjectLocationToResolve = ref table.XxUnsafeArrayIndex(entities[i].ID);
+                ref GameObjectLocation gameObjectLocationToResolve = ref Unsafe.Add(ref table[0], entities[i].ID);
                 gameObjectLocationToResolve.Archetype = this;
                 gameObjectLocationToResolve.Index = i;
             }
@@ -271,7 +271,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         internal GameObjectIdOnly DeleteEntityFromStorage(int index, out int deletedIndex)
         {
             deletedIndex = --NextComponentIndex;
-            return _entities.XxUnsafeArrayIndex(index) = _entities.XxUnsafeArrayIndex(NextComponentIndex);
+            return Unsafe.Add(ref _entities[0], index) = Unsafe.Add(ref _entities[0], NextComponentIndex);
         }
 
         /// <summary>
@@ -282,11 +282,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         internal GameObjectIdOnly DeleteEntity(int index)
         {
             NextComponentIndex--;
-
-
-
-
-
+            
             DeleteComponentData args = new(index, NextComponentIndex);
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
@@ -336,7 +332,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
 
             end:
 
-            return _entities.XxUnsafeArrayIndex(args.ToIndex) = _entities.XxUnsafeArrayIndex(args.FromIndex);
+            return Unsafe.Add(ref _entities[0], args.ToIndex) = Unsafe.Add(ref _entities[0], args.FromIndex);
         }
 
         /// <summary>
@@ -387,7 +383,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         internal int GetComponentIndex<T>()
         {
             ushort index = Component<T>.Id.RawIndex;
-            return ComponentTagTable.XxUnsafeArrayIndex(index) & GlobalWorldTables.IndexBits;
+            return Unsafe.Add(ref ComponentTagTable[0], index) & GlobalWorldTables.IndexBits;
         }
 
         /// <summary>
@@ -398,7 +394,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal int GetComponentIndex(ComponentId component)
         {
-            return ComponentTagTable.XxUnsafeArrayIndex(component.RawIndex) & GlobalWorldTables.IndexBits;
+            return  Unsafe.Add(ref ComponentTagTable[0], component.RawIndex) & GlobalWorldTables.IndexBits;
         }
 
         /// <summary>
@@ -410,7 +406,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         internal bool HasTag<T>()
         {
             ushort index = Tag<T>.Id.RawValue;
-            return ComponentTagTable.XxUnsafeArrayIndex(index) << 7 != 0;
+            return Unsafe.Add(ref ComponentTagTable[0], index) << 7 != 0;
         }
 
         /// <summary>
@@ -421,7 +417,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal bool HasTag(TagId tagId)
         {
-            return ComponentTagTable.XxUnsafeArrayIndex(tagId.RawValue) << 7 != 0;
+            return Unsafe.Add(ref ComponentTagTable[0], tagId.RawValue) << 7 != 0;
         }
 
         /// <summary>
@@ -481,8 +477,8 @@ namespace Alis.Core.Ecs.Kernel.Archetype
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             internal ref T GetComponentDataReference<T>()
             {
-                int index = Map.XxUnsafeArrayIndex(Component<T>.Id.RawIndex);
-                return ref  Unsafe.As<ComponentStorage<T>>(Components.XxUnsafeArrayIndex(index))
+                int index = Unsafe.Add(ref Map[0], Component<T>.Id.RawIndex);
+                return ref  Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref Components[0], index))
                     .GetComponentStorageDataReference();
             }
         }

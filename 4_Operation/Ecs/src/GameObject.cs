@@ -129,7 +129,7 @@ namespace Alis.Core.Ecs
 
             exists = true;
             ComponentStorage<T> storage =  Unsafe.As<ComponentStorage<T>>(
-                entityLocation.Archetype.Components.XxUnsafeArrayIndex(compIndex));
+                Unsafe.Add(ref entityLocation.Archetype.Components[0], compIndex));
 
             return new Ref<T>(storage, entityLocation.Index);
 

@@ -132,7 +132,7 @@ namespace Alis.Core.Ecs
             //2x
             //hardware trap
             ComponentStorage<T> storage =
-                 Unsafe.As<ComponentStorage<T>>(archetype.Components.XxUnsafeArrayIndex(compIndex));
+                 Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref archetype.Components[0], compIndex));
             return ref storage[lookup.Index];
         } //2, 0
 

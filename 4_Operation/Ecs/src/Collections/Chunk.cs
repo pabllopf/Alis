@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Redifinition;
 
 namespace Alis.Core.Ecs.Collections
@@ -15,7 +16,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         /// The 
         /// </summary>
-        public ref TData this[int i] => ref Buffer.XxUnsafeArrayIndex(i);
+        public ref TData this[int i] => ref Unsafe.Add(ref Buffer[0], i);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Chunk"/> class

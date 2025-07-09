@@ -48,9 +48,8 @@ namespace Alis.Core.Ecs
             EntityTable[id] = eloc;
 
             //1x array lookup per component
-            ref T ref1 =
-                ref  Unsafe.As<ComponentStorage<T>>(
-                    components.XxUnsafeArrayIndex(Archetype<T>.OfComponent<T>.Index))[eloc.Index];
+            ref T ref1 = ref  Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref components[0], Archetype<T>.OfComponent<T>.Index))[eloc.Index];
+            
             ref1 = comp;
 
             GameObject concreteGameObject = new GameObject(Id, version, id);

@@ -50,23 +50,23 @@ namespace Alis.Core.Ecs
             //1x array lookup per component
             ref T1 ref1 =
                 ref  Unsafe.As<ComponentStorage<T1>>(
-                    components.XxUnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5>.OfComponent<T1>.Index))[eloc.Index];
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5>.OfComponent<T1>.Index))[eloc.Index];
             ref1 = comp1;
             ref T2 ref2 =
                 ref  Unsafe.As<ComponentStorage<T2>>(
-                    components.XxUnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5>.OfComponent<T2>.Index))[eloc.Index];
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5>.OfComponent<T2>.Index))[eloc.Index];
             ref2 = comp2;
             ref T3 ref3 =
                 ref  Unsafe.As<ComponentStorage<T3>>(
-                    components.XxUnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5>.OfComponent<T3>.Index))[eloc.Index];
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5>.OfComponent<T3>.Index))[eloc.Index];
             ref3 = comp3;
             ref T4 ref4 =
                 ref  Unsafe.As<ComponentStorage<T4>>(
-                    components.XxUnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5>.OfComponent<T4>.Index))[eloc.Index];
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5>.OfComponent<T4>.Index))[eloc.Index];
             ref4 = comp4;
             ref T5 ref5 =
                 ref  Unsafe.As<ComponentStorage<T5>>(
-                    components.XxUnsafeArrayIndex(Archetype<T1, T2, T3, T4, T5>.OfComponent<T5>.Index))[eloc.Index];
+                    Unsafe.Add(ref components[0], Archetype<T1, T2, T3, T4, T5>.OfComponent<T5>.Index))[eloc.Index];
             ref5 = comp5;
 
 

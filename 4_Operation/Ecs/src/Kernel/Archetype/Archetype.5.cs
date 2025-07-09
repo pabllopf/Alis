@@ -32,7 +32,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         internal static WorldArchetypeTableItem CreateNewOrGetExistingArchetypes(Scene scene)
         {
             ushort index = Id.RawIndex;
-            ref WorldArchetypeTableItem archetypes = ref scene.WorldArchetypeTable.XxUnsafeArrayIndex(index);
+            ref WorldArchetypeTableItem archetypes = ref Unsafe.Add(ref scene.WorldArchetypeTable[0], index);
             if (archetypes.Archetype is null) archetypes = CreateArchetypes(scene);
             return archetypes;
 
@@ -46,19 +46,19 @@ namespace Alis.Core.Ecs.Kernel.Archetype
 
                 int i;
 
-                i = map.XxUnsafeArrayIndex(Component<T1>.Id.RawIndex) & GlobalWorldTables.IndexBits;
+                i = Unsafe.Add(ref map[0], Component<T1>.Id.RawIndex) & GlobalWorldTables.IndexBits;
                 runners[i] = Component<T1>.CreateInstance(1);
                 tmpStorages[i] = Component<T1>.CreateInstance(0);
-                i = map.XxUnsafeArrayIndex(Component<T2>.Id.RawIndex) & GlobalWorldTables.IndexBits;
+                i = Unsafe.Add(ref map[0], Component<T2>.Id.RawIndex) & GlobalWorldTables.IndexBits;
                 runners[i] = Component<T2>.CreateInstance(1);
                 tmpStorages[i] = Component<T2>.CreateInstance(0);
-                i = map.XxUnsafeArrayIndex(Component<T3>.Id.RawIndex) & GlobalWorldTables.IndexBits;
+                i = Unsafe.Add(ref map[0], Component<T3>.Id.RawIndex) & GlobalWorldTables.IndexBits;
                 runners[i] = Component<T3>.CreateInstance(1);
                 tmpStorages[i] = Component<T3>.CreateInstance(0);
-                i = map.XxUnsafeArrayIndex(Component<T4>.Id.RawIndex) & GlobalWorldTables.IndexBits;
+                i = Unsafe.Add(ref map[0], Component<T4>.Id.RawIndex) & GlobalWorldTables.IndexBits;
                 runners[i] = Component<T4>.CreateInstance(1);
                 tmpStorages[i] = Component<T4>.CreateInstance(0);
-                i = map.XxUnsafeArrayIndex(Component<T5>.Id.RawIndex) & GlobalWorldTables.IndexBits;
+                i = Unsafe.Add(ref map[0], Component<T5>.Id.RawIndex) & GlobalWorldTables.IndexBits;
                 runners[i] = Component<T5>.CreateInstance(1);
                 tmpStorages[i] = Component<T5>.CreateInstance(0);
 
