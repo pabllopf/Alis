@@ -34,7 +34,7 @@ namespace Alis.Benchmark.CustomEcs
     /// <summary>
     ///     The alis ecs benchmark class
     /// </summary>
-    [ShortRunJob, MemoryDiagnoser(false), Config(typeof(CustomConfig))]
+    [ Config(typeof(CustomConfig))]
     public partial class AlisEcsBenchmark
     {
         /// <summary>

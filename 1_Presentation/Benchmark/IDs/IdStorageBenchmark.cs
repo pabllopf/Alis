@@ -36,7 +36,7 @@ namespace Alis.Benchmark.IDs
     ///     This class demonstrates the performance and memory usage differences
     ///     when using different data types (byte, uint, and string) to store a unique identifier (ID).
     /// </summary>
-    [ShortRunJob, MemoryDiagnoser(false), Config(typeof(CustomConfig))]
+    [ Config(typeof(CustomConfig))]
     public class IdStorageBenchmark
     {
         // Number of iterations to run for the benchmark

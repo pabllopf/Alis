@@ -8,10 +8,20 @@
         $(AssemblyName.Contains('Generator')) == False AND
         $(Configuration) == 'Debug'">
         
-        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) AND $(ProjectDir.Contains('Extension')) == False"
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) AND $(ProjectDir.Contains('Extension')) == False AND $(ProjectDir.Contains('Benchmark')) == False"
                           Include="
                           $(SolutionDir)2_Application/**/Alis.csproj;
                           $(SolutionDir)**/Extension/**/src/**/*.csproj;"
+                          Exclude="
+                          $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
+                          $(SolutionDir)**/**/*Generator*.csproj; 
+                          $(SolutionDir)**/**/*.Benchmark.csproj; 
+                          $(SolutionDir)**/**/*Benchmark*.csproj; 
+                          $(SolutionDir)**/Extension/**/**/*.Test.csproj;"/>
+
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) AND $(ProjectDir.Contains('Extension')) == False AND $(ProjectDir.Contains('Benchmark')) == True"
+                          Include="
+                          $(SolutionDir)2_Application/**/Alis.csproj;"
                           Exclude="
                           $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
                           $(SolutionDir)**/**/*Generator*.csproj; 
@@ -95,6 +105,10 @@
                           Include="
                           $(SolutionDir)2_Application/**/Alis.csproj;"
                           Exclude="
+                          $(SolutionDir)3_Structuration/**/*.csproj;
+                          $(SolutionDir)4_Operation/**/*.csproj;
+                          $(SolutionDir)5_Declaration/**/*.csproj;
+                          $(SolutionDir)6_Ideation/**/*.csproj;
                           $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
                           $(SolutionDir)**/**/*generator*/**/*.cs;
                           $(SolutionDir)**/**/*benchmark*/**/*.cs;  

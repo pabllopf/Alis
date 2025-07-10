@@ -148,7 +148,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [`f79925f`](https://github.com/pabllopf/Alis/commit/f79925f08f5456c73cc65c431fdcb5617c3ae663) - delete MultithreadedRun *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`7e1e5a3`](https://github.com/pabllopf/Alis/commit/7e1e5a3cc26614c97cb5f3def37362c2ac2314ee) - move files ti custom files *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`9e80da6`](https://github.com/pabllopf/Alis/commit/9e80da6230bad1187e30b66e31e0bd4fb3ec8320) - internal override void Run *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`586c52d`](https://github.com/pabllopf/Alis/commit/586c52d2fb3c15c03eef439a7fc84bdf64580036) - [ShortRunJob, MemoryDiagnoser(false), Config(typeof(CustomConfig))] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`586c52d`](https://github.com/pabllopf/Alis/commit/586c52d2fb3c15c03eef439a7fc84bdf64580036) - [ Config(typeof(CustomConfig))] *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`5437423`](https://github.com/pabllopf/Alis/commit/5437423199fa428a7abc5fa1729e5e151275c051) - benchamarks names *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`8252cb0`](https://github.com/pabllopf/Alis/commit/8252cb056edf3ca888d1ac899b760c34905b484c) - generation of results *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`eb021cd`](https://github.com/pabllopf/Alis/commit/eb021cd7871cd592266ded236cc64e5ce265712d) - the creation of scene *(commit by [@pabllopf](https://github.com/pabllopf))*

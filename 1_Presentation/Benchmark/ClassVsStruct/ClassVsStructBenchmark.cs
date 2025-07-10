@@ -36,7 +36,7 @@ namespace Alis.Benchmark.ClassVsStruct
     /// <summary>
     ///     The class vs struct benchmark class
     /// </summary>
-    [ShortRunJob, MemoryDiagnoser, Config(typeof(CustomConfig))]
+    [Config(typeof(CustomConfig))]
     public class ClassVsStructBenchmark
     {
         /// <summary>
@@ -52,6 +52,19 @@ namespace Alis.Benchmark.ClassVsStruct
         public int UsingClass()
         {
             ClassPoint obj = new ClassPoint(1, 2);
+            int sum = 0;
+            for (int i = 0; i < Iterations; i++)
+            {
+                sum += obj.X + obj.Y;
+            }
+
+            return sum;
+        }
+        
+        [Benchmark]
+        public int UsingSealedClass()
+        {
+            SealedClassPoint obj = new SealedClassPoint(1, 2);
             int sum = 0;
             for (int i = 0; i < Iterations; i++)
             {

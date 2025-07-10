@@ -35,7 +35,8 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
     /// <summary>
     ///     The system with two components multiple composition class
     /// </summary>
-    [BenchmarkCategory(Categories.System), MemoryDiagnoser(false), ShortRunJob, Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [BenchmarkCategory(Categories.System), Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [Config(typeof(CustomConfig))]
     public partial class SystemWithTwoComponentsMultipleComposition
     {
         /// <summary>
