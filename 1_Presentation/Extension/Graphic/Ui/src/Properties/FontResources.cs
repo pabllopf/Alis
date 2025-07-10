@@ -103,7 +103,25 @@ namespace Alis.Extension.Graphic.Ui.Properties
         /// <summary>
         ///     The arm
         /// </summary>
-        internal static readonly Dictionary<PlatformInfo, string> FontsDllBytes = new Dictionary<PlatformInfo, string>
+        internal static readonly Dictionary<PlatformInfo, string> FontsJetBrainDllBytes = new Dictionary<PlatformInfo, string>
+        {
+            {WinX86, $"{ResourcePath}.fonts.jetbrains.zip"},
+            {WinX64, $"{ResourcePath}.fonts.jetbrains.zip"},
+            {WinArm, $"{ResourcePath}.fonts.jetbrains.zip"},
+            {WinArm64, $"{ResourcePath}.fonts.jetbrains.zip"},
+
+            {LinuxX86, $"{ResourcePath}.fonts.jetbrains.zip"},
+            {LinuxX64, $"{ResourcePath}.fonts.jetbrains.zip"},
+            {LinuxArm, $"{ResourcePath}.fonts.jetbrains.zip"},
+            {LinuxArm64, $"{ResourcePath}.fonts.jetbrains.zip"},
+
+            {OsxX86, $"{ResourcePath}.fonts.jetbrains.zip"},
+            {OsxX64, $"{ResourcePath}.fonts.jetbrains.zip"},
+            {OsxArm64, $"{ResourcePath}.fonts.jetbrains.zip"},
+            {OsxArm, $"{ResourcePath}.fonts.jetbrains.zip"}
+        };
+        
+        internal static readonly Dictionary<PlatformInfo, string> FontAwesomeDllBytes = new Dictionary<PlatformInfo, string>
         {
             {WinX86, $"{ResourcePath}.fonts.fontawesome.zip"},
             {WinX64, $"{ResourcePath}.fonts.fontawesome.zip"},
