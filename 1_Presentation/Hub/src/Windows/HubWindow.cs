@@ -157,9 +157,9 @@ namespace Alis.App.Hub.Windows
             if (File.Exists(AssetManager.Find("Hub_logo.bmp")))
             {
                 // Cargar y mostrar la imagen a una resolución más alta
-                IntPtr textureId = ImageLoader.LoadTextureFromFile(AssetManager.Find("Hub_logo.bmp"));
+                //IntPtr textureId = ImageLoader.LoadTextureFromFile(AssetManager.Find("Hub_logo.bmp"));
                 float iconSize = 50; // Aumenta el tamaño de la imagen
-                ImGui.Image(textureId, new Vector2F(iconSize, iconSize)); // Mostrar imagen más grande
+                //ImGui.Image(textureId, new Vector2F(iconSize, iconSize)); // Mostrar imagen más grande
                 ImGui.SameLine();
 
                 // Cambiar el tamaño de la fuente para que el texto sea más grande

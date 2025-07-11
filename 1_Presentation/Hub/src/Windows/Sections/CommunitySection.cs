@@ -129,7 +129,8 @@ namespace Alis.App.Hub.Windows.Sections
 
                     // Columna de la imagen
                     ImGui.TableSetColumnIndex(0);
-                    ImGui.Image(ImageLoader.LoadTextureFromFile(item.ImagePath), new Vector2F(100, 100));
+                    //ImGui.Image(ImageLoader.LoadTextureFromFile(item.ImagePath), new Vector2F(100, 100));
+                    ImGui.Text("image");
 
                     // Columna del nombre
                     ImGui.TableSetColumnIndex(1);
