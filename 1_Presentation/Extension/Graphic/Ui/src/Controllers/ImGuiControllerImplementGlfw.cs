@@ -34,7 +34,7 @@ namespace Alis.Extension.Graphic.Ui.Controllers
         private IntPtr _context;
 
 
-        public ImGuiViewportPtr ViewportHub;
+        public ImGuiViewportPtr Viewport;
 
 
         // Variables globales para el estado del ratón y la rueda
@@ -284,8 +284,8 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             // REBUILD ATLAS
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
-            float fontSize = 14;
-            float fontSizeIcon = 13.5f;
+            float fontSize = 16;
+            float fontSizeIcon = 14.5f;
 
             string fontFileSolid = AssetManager.Find(JetBrains.NameSolid);
             FontLoaded16Solid = fonts.AddFontFromFileTtf(fontFileSolid, fontSize);
@@ -449,10 +449,10 @@ namespace Alis.Extension.Graphic.Ui.Controllers
 
         public void ConfigDockSpace()
         {
-            ViewportHub = ImGui.GetMainViewport();
-            ImGui.SetNextWindowPos(ViewportHub.WorkPos);
-            ImGui.SetNextWindowSize(ViewportHub.WorkSize);
-            ImGui.SetNextWindowViewport(ViewportHub.Id);
+            Viewport = ImGui.GetMainViewport();
+            ImGui.SetNextWindowPos(Viewport.WorkPos);
+            ImGui.SetNextWindowSize(Viewport.WorkSize);
+            ImGui.SetNextWindowViewport(Viewport.Id);
         }
 
         public void SetStyle()
@@ -614,25 +614,25 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             style.WindowRounding = 0.0f;
 
             // ChildRounding
-            style.ChildRounding = 3.0f;
+            style.ChildRounding = 4.0f;
 
             // FrameRounding
-            style.FrameRounding = 3.0f;
+            style.FrameRounding = 4.0f;
 
             // PopupRounding
-            style.PopupRounding = 1.0f;
+            style.PopupRounding = 4.0f;
 
             // ScrollbarRounding
-            style.ScrollbarRounding = 2.0f;
+            style.ScrollbarRounding = 4.0f;
 
             // GrabRounding
-            style.GrabRounding = 1.0f;
+            style.GrabRounding = 4.0f;
 
             // logSliderDeadzone
             style.LogSliderDeadzone = 4.0f;
 
             // TabRounding
-            style.TabRounding = 3.0f;
+            style.TabRounding = 4.0f;
 
             // Window border size
             style.WindowBorderSize = 1.0f;
@@ -647,16 +647,16 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             style.FrameBorderSize = 1.0f;
 
             // Tab border size
-            style.TabBorderSize = 0.0f;
+            style.TabBorderSize = 1.0f;
 
             // Window padding
-            style.WindowPadding = new Vector2F(4, 4);
+            style.WindowPadding = new Vector2F(10, 10);
 
             // Frame padding
-            style.FramePadding = new Vector2F(7, 7);
+            style.FramePadding = new Vector2F(10, 10);
 
             // Item spacing
-            style.ItemSpacing = new Vector2F(6, 6);
+            style.ItemSpacing = new Vector2F(12, 12);
 
             // Inner item spacing
             style.ItemInnerSpacing = new Vector2F(6, 6);
@@ -671,10 +671,10 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             style.IndentSpacing = 21;
 
             // Scrollbar size
-            style.ScrollbarSize = 12;
+            style.ScrollbarSize = 20;
 
             // Minimum grab size
-            style.GrabMinSize = 12;
+            style.GrabMinSize = 20;
 
             // Window title alignment
             style.WindowTitleAlign = new Vector2F(0.5f, 0.5f);
@@ -849,7 +849,7 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             // Usa el tamaño real de la ventana GLFW
             ImGui.SetNextWindowPos(new Vector2F(0, 0));
             ImGui.SetNextWindowSize(new Vector2F(_glfwController._widthMainWindow, _glfwController._heightMainWindow));
-            ImGui.SetNextWindowViewport(ViewportHub.Id);
+            ImGui.SetNextWindowViewport(Viewport.Id);
         
             Glfw.GetWindowSize(_glfwController._window, out int w, out int h);
             if (w != _glfwController._widthMainWindow || h != _glfwController._heightMainWindow)
@@ -862,11 +862,11 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             ImGui.NewFrame();
             ImGuizMo.BeginFrame();
         
-            ImGui.SetNextWindowPos(ViewportHub.WorkPos);
-            ImGui.SetNextWindowSize(ViewportHub.Size);
+            ImGui.SetNextWindowPos(Viewport.WorkPos);
+            ImGui.SetNextWindowSize(Viewport.Size);
             ImGui.Begin(DockSpaceTitle, _windowDockSpaceFlags);
         
-            Vector2F dockSize = ViewportHub.Size - new Vector2F(5, 85);
+            Vector2F dockSize = Viewport.Size - new Vector2F(5, 180);
             uint dockSpaceId = ImGui.GetId(DockSpaceId);
             ImGui.DockSpace(dockSpaceId, dockSize);
         }

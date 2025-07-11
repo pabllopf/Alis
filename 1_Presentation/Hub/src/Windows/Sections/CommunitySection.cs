@@ -28,10 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
-using Alis.App.Hub.Core;
 using Alis.App.Hub.Entity;
-using Alis.App.Hub.Utils;
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 
 namespace Alis.App.Hub.Windows.Sections
@@ -51,7 +48,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Initializes a new instance of the <see cref="CommunitySection" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public CommunitySection(SpaceWork spaceWork) : base(spaceWork)
+        public CommunitySection()
         {
         }
 
