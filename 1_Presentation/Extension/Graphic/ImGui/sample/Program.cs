@@ -1,50 +1,97 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Program.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
-using System;
-using Alis.Core.Aspect.Logging;
+﻿using System;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Graphic.GlfwLib;
+using Alis.Core.Graphic.GlfwLib.Enums;
+using Alis.Core.Graphic.GlfwLib.Structs;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Enums;
+using Exception = System.Exception;
 
 namespace Alis.Extension.Graphic.ImGui.Sample
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    internal static class Program
+    class Program
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        private static void Main(string[] args)
+        private static bool running = true;
+        private static Window window;
+        private static ImGuiController imguiController;
+
+        static void Main(string[] args)
         {
-            Logger.Info("Press any key to exit.");
-            Console.ReadKey();
+            Console.WriteLine("Initializing GLFW...");
+            if (!Glfw.Init()) throw new Exception("GLFW init failed");
+
+            Glfw.WindowHint(Hint.ContextVersionMajor, 3);
+            Glfw.WindowHint(Hint.ContextVersionMinor, 2);
+            Glfw.WindowHint(Hint.OpenglProfile, Profile.Core);
+            Glfw.WindowHint(Hint.OpenglForwardCompatible, true);
+
+            window = Glfw.CreateWindow(1280, 720, "ImGui.NET + GLFW + OpenGL", Monitor.None, Window.None);
+            if (window == Window.None) throw new Exception("GLFW window creation failed");
+
+            Glfw.MakeContextCurrent(window);
+            Glfw.SwapInterval(1); // Enable vsync
+
+            Gl.GlClearColor(0.45f, 0.55f, 0.60f, 1f);
+            imguiController = new ImGuiController(window, 1280, 720);
+
+            Console.WriteLine("Setup complete. Running main loop...");
+
+            while (running)
+            {
+                Glfw.PollEvents();
+                if (Glfw.WindowShouldClose(window))
+                    running = false;
+
+                imguiController.NewFrame();
+
+                // Docking
+                ImGuiViewportPtr viewport = Native.ImGui.GetMainViewport();
+                Native.ImGui.SetNextWindowPos(viewport.Pos);
+                Native.ImGui.SetNextWindowSize(viewport.Size);
+                Native.ImGui.SetNextWindowViewport(viewport.Id);
+
+                Native.ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
+                Native.ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
+
+                ImGuiWindowFlags windowFlags =
+                    ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize |
+                    ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus |
+                    ImGuiWindowFlags.MenuBar;
+
+                Native.ImGui.Begin("DockSpace", windowFlags);
+                Native.ImGui.PopStyleVar(2);
+
+                uint dockspaceId = Native.ImGui.GetId("MyDockSpace");
+                Native.ImGui.DockSpace(dockspaceId, Vector2F.Zero, ImGuiDockNodeFlags.None);
+
+                // Menu bar
+                if (Native.ImGui.BeginMenuBar())
+                {
+                    if (Native.ImGui.BeginMenu("File"))
+                    {
+                        if (Native.ImGui.MenuItem("Exit"))
+                            running = false;
+                        Native.ImGui.EndMenu();
+                    }
+                    Native.ImGui.EndMenuBar();
+                }
+
+                Native.ImGui.End();
+
+                // Sample windows
+                Native.ImGui.ShowDemoWindow();
+
+                Native.ImGui.Begin("Hello");
+                Native.ImGui.Text("Hello, world!");
+                Native.ImGui.End();
+
+                Gl.GlClear(ClearBufferMask.ColorBufferBit);
+                imguiController.Render();
+                Glfw.SwapBuffers(window);
+            }
+
+            imguiController.Dispose();
+            Glfw.Terminate();
         }
     }
 }
