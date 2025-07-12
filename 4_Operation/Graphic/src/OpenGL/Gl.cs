@@ -253,6 +253,16 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         private static Uniform3Fv GlUniform3Fv => GetCommand<Uniform3Fv>("glUniform3fv");
 
+        // En Gl.cs
+        public delegate void ReadPixels(int x, int y, int width, int height, PixelFormat format, PixelType type, IntPtr pixels);
+        public static ReadPixels GlReadPixels => GetCommand<ReadPixels>("glReadPixels");
+        
+        public delegate uint GenFramebuffer();
+        public static GenFramebuffer GlGenFramebuffer => GetCommand<GenFramebuffer>("glGenFramebuffers");
+
+        public delegate void FramebufferTexture2D(FramebufferTarget target, FramebufferAttachment attachment, TextureTarget texTarget, uint texture, int level);
+        public static FramebufferTexture2D GlFramebufferTexture2D => GetCommand<FramebufferTexture2D>("glFramebufferTexture2D");
+
         /// <summary>
         ///     The uniform 4fv
         /// </summary>
@@ -303,6 +313,12 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         public static VertexAttribPointerDel GlVertexAttribPointer => GetCommand<VertexAttribPointerDel>("glVertexAttribPointer");
 
+        // Enum para FramebufferTarget
+
+        public delegate void BindFramebuffer(FramebufferTarget target, uint framebuffer);
+
+        public static BindFramebuffer GlBindFramebuffer => GetCommand<BindFramebuffer>("glBindFramebuffer");
+        
         /// <summary>
         ///     The bind texture
         /// </summary>
