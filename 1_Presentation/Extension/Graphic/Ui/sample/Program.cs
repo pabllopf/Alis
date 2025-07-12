@@ -226,17 +226,22 @@ namespace Alis.Extension.Graphic.Ui.Sample
             Glfw.WindowHint(Hint.OpenglForwardCompatible, OpenglForwardCompatible);
             Logger.Info($"Setting GLFW OpenGL forward compatible to {OpenglForwardCompatible}");
         
-            // Obtener el monitor principal
-            Monitor primaryMonitor = Glfw.GetPrimaryMonitor();
-            Glfw.GetMonitorWorkArea(primaryMonitor, out int monitorX, out int monitorY, out int monitorWidth, out int monitorHeight);
-            
-            // Crear la ventana en pantalla completa
-            _window = Glfw.CreateWindow(monitorWidth, monitorHeight, TitleMainWindow, primaryMonitor, Window.None);
-            if (_window == Window.None)
-            {
-                ErrorCode errorCode = Glfw.GetError(out string description);
-                Logger.Exception($"GLFW window creation failed: ErrorCode: {errorCode} - Description: {description}");
-            }
+              // Obtener el monitor principal
+              Monitor primaryMonitor = Glfw.GetPrimaryMonitor();
+              Glfw.GetMonitorWorkArea(primaryMonitor, out int monitorX, out int monitorY, out int monitorWidth, out int monitorHeight);
+              
+              // Crear la ventana en modo ventana (no pantalla completa)
+              _window = Glfw.CreateWindow(monitorWidth, monitorHeight, TitleMainWindow, Monitor.None, Window.None);
+              if (_window == Window.None)
+              {
+                  ErrorCode errorCode = Glfw.GetError(out string description);
+                  Logger.Exception($"GLFW window creation failed: ErrorCode: {errorCode} - Description: {description}");
+              }
+              else
+              {
+                  // Maximizar la ventana
+                  Glfw.MaximizeWindow(_window);
+              }
         
             Glfw.MakeContextCurrent(_window);
             Logger.Info($"Created GLFW window with title '{TitleMainWindow}' and size {monitorWidth}x{monitorHeight}");
