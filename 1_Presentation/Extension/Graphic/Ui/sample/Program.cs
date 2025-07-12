@@ -62,7 +62,10 @@ namespace Alis.Extension.Graphic.Ui.Sample
 
 
         private static Window _window;
-        private static ImGuiWindowFlags _windowDockSpaceFlags = ImGuiWindowFlags.NoDocking | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
+        private static ImGuiWindowFlags _windowDockSpaceFlags = ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize |
+                                                                ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus |
+                                                                ImGuiWindowFlags.MenuBar;  
+        
         private static ImGuiConfigFlags _configFlags = ImGuiConfigFlags.DockingEnable | ImGuiConfigFlags.NavEnableKeyboard;
         
         
@@ -72,6 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
         
         
         private static IntPtr _context;
+        
         
         
         public static ImGuiViewportPtr ViewportHub;
@@ -153,9 +157,45 @@ namespace Alis.Extension.Graphic.Ui.Sample
             {
                 OnPollEvents();
                 
-                OnStartFrame();
+                // Docking
+                ImGuiViewportPtr viewport = ImGui.GetMainViewport();
+                ImGui.SetNextWindowPos(viewport.Pos);
+                ImGui.SetNextWindowSize(viewport.Size);
+                ImGui.SetNextWindowViewport(viewport.Id);
+                
+                Glfw.GetWindowSize(_window, out int w, out int h);
+                if (w != _widthMainWindow || h != _heightMainWindow)
+                {
+                    _widthMainWindow = w;
+                    _heightMainWindow = h;
+                    SetPerFrameImGuiData(FrameRate);
+                }
+
+                ImGui.NewFrame();
+                ImGuizMo.BeginFrame();
+
+                ImGui.SetNextWindowPos(ViewportHub.WorkPos);
+                ImGui.SetNextWindowSize(ViewportHub.Size);
+                ImGui.Begin(DockSpaceTitle, _windowDockSpaceFlags);
+
+                Vector2F dockSize = ViewportHub.Size - new Vector2F(5, 85);
+                uint dockSpaceId = ImGui.GetId(DockSpaceId);
+                ImGui.DockSpace(dockSpaceId, dockSize);
+                
+                
                 OnRenderFrame();
-                OnEndFrame();
+                
+                
+                ImGui.End();
+
+                ImGui.Render();
+
+                ImGuiIoPtr io = ImGui.GetIo();
+                Gl.GlViewport(0, 0, (int) io.DisplaySize.X, (int) io.DisplaySize.Y);
+                Gl.GlClear(ClearBufferMask.ColorBufferBit);
+            
+                RenderImDrawData(ImGui.GetDrawData());
+                Glfw.SwapBuffers(_window);
             }
             
             OnExit();
@@ -233,9 +273,6 @@ namespace Alis.Extension.Graphic.Ui.Sample
             SetupRenderer();
 
             SetPerFrameImGuiData(FrameRate);
-            
-            ImGui.NewFrame();
-            Logger.Info("ImGui new frame started");
             
             Logger.Info("ImGui initialized successfully");
         }
@@ -784,11 +821,16 @@ namespace Alis.Extension.Graphic.Ui.Sample
             }
         }
         
+      // Agrega estos callbacks en SetupGlfwImGuiCallbacks
       private static void SetupGlfwImGuiCallbacks()
       {
           Glfw.SetKeyCallback(_window, KeyCallback);
+          Glfw.SetCharCallback(_window, CharCallback);
+          Glfw.SetMouseButtonCallback(_window, MouseButtonCallback);
+          Glfw.SetScrollCallback(_window, ScrollCallback);
       }
       
+      // Callback de teclado
       private static void KeyCallback(Window window, Keys key, int scancode, InputState action, ModifierKeys mods)
       {
           ImGuiIoPtr io = ImGui.GetIo();
@@ -798,50 +840,71 @@ namespace Alis.Extension.Graphic.Ui.Sample
           bool pressed = action == InputState.Press || action == InputState.Repeat;
           io.KeysDown[idx] = pressed;
       
-          // Modificadores
           io.KeyCtrl = io.KeysDown[(int)Keys.LeftControl] || io.KeysDown[(int)Keys.RightControl];
           io.KeyShift = io.KeysDown[(int)Keys.LeftShift] || io.KeysDown[(int)Keys.RightShift];
           io.KeyAlt = io.KeysDown[(int)Keys.LeftAlt] || io.KeysDown[(int)Keys.RightAlt];
           io.KeySuper = io.KeysDown[(int)Keys.LeftSuper] || io.KeysDown[(int)Keys.RightSuper];
           
-          Console.WriteLine($"Key pressed: {key}, Action: {action}, Mods: {mods}");
+          Console.WriteLine($"Key: {key}, Action: {action}, Pressed: {pressed}");
       }
       
+      // Callback para caracteres (texto)
+      private static void CharCallback(Window window, uint codepoint)
+      {
+          ImGuiIoPtr io = ImGui.GetIo();
+          io.AddInputCharacter(codepoint);
+          
+            Console.WriteLine($"Char: {codepoint}");
+      }
+      
+      // Callback de botones de ratón
+      private static void MouseButtonCallback(Window window, MouseButton button, InputState action, ModifierKeys mods)
+      {
+          ImGuiIoPtr io = ImGui.GetIo();
+          if (button >= MouseButton.Left && button <= MouseButton.Middle)
+          {
+              int idx = (int)button;
+              io.MouseDown[idx] = action == InputState.Press;
+          }
+          
+          Console.WriteLine($"Mouse Button: {button}, Action: {action}, Pressed: {io.MouseDown[(int)button]}");
+      }
+      
+      // Callback de scroll
+      private static void ScrollCallback(Window window, double xoffset, double yoffset)
+      {
+          ImGuiIoPtr io = ImGui.GetIo();
+          io.MouseWheel += (float)yoffset;
+          io.MouseWheelH += (float)xoffset;
+          
+          Console.WriteLine($"Scroll: XOffset: {xoffset}, YOffset: {yoffset}, MouseWheel: {io.MouseWheel}, MouseWheelH: {io.MouseWheelH}");
+      }
+      
+
       private static void OnPollEventsImGui()
       {
           ImGuiIoPtr io = ImGui.GetIo();
-          
-          io.MouseDown[0] = Glfw.GetMouseButton(_window, MouseButton.Left) == InputState.Press;
-          io.MouseDown[1] = Glfw.GetMouseButton(_window, MouseButton.Right) == InputState.Press;
-          io.MouseDown[2] = Glfw.GetMouseButton(_window, MouseButton.Middle) == InputState.Press;
-
-          Glfw.GetCursorPosition(_window, out double mouseX, out double mouseY);
-          io.MousePos = new Vector2F((float) mouseX, (float) mouseY);
+      
+          // Actualiza la posición del mouse solo si la ventana está enfocada
+          if (Glfw.GetWindowAttribute(_window, WindowAttribute.Focused))
+          {
+              Glfw.GetCursorPosition(_window, out double mouseX, out double mouseY);
+              io.MousePos = new Vector2F((float)mouseX, (float)mouseY);
+          }
+          else
+          {
+              io.MousePos = new Vector2F(float.MinValue, float.MinValue);
+          }
+      
+          // Actualiza el estado de los botones del mouse
+          var mouseDown = io.MouseDown;
+          mouseDown[0] = _mousePressed[0] || Glfw.GetMouseButton(_window, MouseButton.Left) == InputState.Press;
+          mouseDown[1] = _mousePressed[1] || Glfw.GetMouseButton(_window, MouseButton.Right) == InputState.Press;
+          mouseDown[2] = _mousePressed[2] || Glfw.GetMouseButton(_window, MouseButton.Middle) == InputState.Press;
+          _mousePressed[0] = _mousePressed[1] = _mousePressed[2] = false;
+          io.MouseDown = mouseDown;
       }
-
-      public static void OnStartFrame()
-        {
-            Gl.GlClear(ClearBufferMask.ColorBufferBit); 
-            
-            Glfw.GetWindowSize(_window, out int w, out int h);
-            if (w != _widthMainWindow || h != _heightMainWindow)
-            {
-                _widthMainWindow = w;
-                _heightMainWindow = h;
-                SetPerFrameImGuiData(FrameRate);
-            }
-
-            ImGui.NewFrame();
-
-            ImGui.SetNextWindowPos(ViewportHub.WorkPos);
-            ImGui.SetNextWindowSize(ViewportHub.Size);
-            ImGui.Begin(DockSpaceTitle, _windowDockSpaceFlags);
-
-            Vector2F dockSize = ViewportHub.Size - new Vector2F(5, 85);
-            uint dockSpaceId = ImGui.GetId(DockSpaceId);
-            ImGui.DockSpace(dockSpaceId, dockSize);
-        }
-
+      
         private static void OnRenderFrame()
         {
             ImGui.ShowDemoWindow();
@@ -950,15 +1013,6 @@ namespace Alis.Extension.Graphic.Ui.Sample
 
             ImGui.End();
             ImGui.PopStyleColor();
-        }
-
-        private static void OnEndFrame()
-        {
-            ImGui.End();
-
-            ImGui.Render();
-            RenderImDrawData(ImGui.GetDrawData());
-            Glfw.SwapBuffers(_window);
         }
         
         private static void RenderImDrawData(ImDrawData drawData)
