@@ -77,6 +77,11 @@ namespace Alis.Extension.Graphic.Ui.Sample
         public static ImGuiViewportPtr ViewportHub;
         
         
+        // Variables globales para el estado del ratón y la rueda
+        private static readonly bool[] _mousePressed = new bool[3];
+        private static readonly bool[] _mouseJustPressed = new bool[3];
+        
+        
         // FONTS:
         public static uint FontTextureId;
         public static ImFontPtr FontLoaded16Solid;
@@ -193,6 +198,8 @@ namespace Alis.Extension.Graphic.Ui.Sample
             
             Glfw.SwapInterval(VSync);
             Logger.Info($"V-Sync is active = {(VSync == 1 ? "Yes" : "No")}");
+
+            SetupGlfwImGuiCallbacks();
             
             Logger.Log("GLFW initialized successfully");
         }
@@ -777,46 +784,42 @@ namespace Alis.Extension.Graphic.Ui.Sample
             }
         }
         
-      private static void OnPollEventsImGui()
+      private static void SetupGlfwImGuiCallbacks()
+      {
+          Glfw.SetKeyCallback(_window, KeyCallback);
+      }
+      
+      private static void KeyCallback(Window window, Keys key, int scancode, InputState action, ModifierKeys mods)
       {
           ImGuiIoPtr io = ImGui.GetIo();
+          int idx = (int)key;
+          if (key == Keys.Unknown) return;
       
-          // Mouse
-          io.MouseDown[0] = Glfw.GetMouseButton(_window, MouseButton.Left) == InputState.Press;
-          io.MouseDown[1] = Glfw.GetMouseButton(_window, MouseButton.Right) == InputState.Press;
-          io.MouseDown[2] = Glfw.GetMouseButton(_window, MouseButton.Middle) == InputState.Press;
-          Glfw.GetCursorPosition(_window, out double mouseX, out double mouseY);
-          io.MousePos = new Vector2F((float)mouseX, (float)mouseY);
+          bool pressed = action == InputState.Press || action == InputState.Repeat;
+          io.KeysDown[idx] = pressed;
       
-          // Teclado (solo teclas válidas del enum)
-          foreach (Keys key in Enum.GetValues(typeof(Keys)))
-          {
-              if (key == Keys.Unknown)
-              {
-                  continue;
-              }
-
-              int idx = (int)key;
-              
-              if (Glfw.GetKey(_window, key) == InputState.Press)
-              {
-                  io.KeysDown[idx] = true;
-                  Logger.Info($"Key pressed: {key}");
-              }
-              else
-              {
-                  io.KeysDown[idx] = false;
-              }
-          }
-      
+          // Modificadores
           io.KeyCtrl = io.KeysDown[(int)Keys.LeftControl] || io.KeysDown[(int)Keys.RightControl];
           io.KeyShift = io.KeysDown[(int)Keys.LeftShift] || io.KeysDown[(int)Keys.RightShift];
           io.KeyAlt = io.KeysDown[(int)Keys.LeftAlt] || io.KeysDown[(int)Keys.RightAlt];
           io.KeySuper = io.KeysDown[(int)Keys.LeftSuper] || io.KeysDown[(int)Keys.RightSuper];
+          
+          Console.WriteLine($"Key pressed: {key}, Action: {action}, Mods: {mods}");
+      }
+      
+      private static void OnPollEventsImGui()
+      {
+          ImGuiIoPtr io = ImGui.GetIo();
+          
+          io.MouseDown[0] = Glfw.GetMouseButton(_window, MouseButton.Left) == InputState.Press;
+          io.MouseDown[1] = Glfw.GetMouseButton(_window, MouseButton.Right) == InputState.Press;
+          io.MouseDown[2] = Glfw.GetMouseButton(_window, MouseButton.Middle) == InputState.Press;
+
+          Glfw.GetCursorPosition(_window, out double mouseX, out double mouseY);
+          io.MousePos = new Vector2F((float) mouseX, (float) mouseY);
       }
 
-
-        public static void OnStartFrame()
+      public static void OnStartFrame()
         {
             Gl.GlClear(ClearBufferMask.ColorBufferBit); 
             
