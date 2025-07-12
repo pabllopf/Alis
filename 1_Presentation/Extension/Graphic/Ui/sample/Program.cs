@@ -213,34 +213,39 @@ namespace Alis.Extension.Graphic.Ui.Sample
             if (!Glfw.Init())
             {
                 ErrorCode errorCode = Glfw.GetError(out string description);
-                 Logger.Exception($"GLFW init failed: ErrorCode: {errorCode} - Description: {description}");
+                Logger.Exception($"GLFW init failed: ErrorCode: {errorCode} - Description: {description}");
             }
-
+        
             Glfw.WindowHint(Hint.ContextVersionMajor, ContextVersionMajor);
             Glfw.WindowHint(Hint.ContextVersionMinor, ContextVersionMinor);
             Logger.Info($"Setting GLFW context version to {ContextVersionMajor}.{ContextVersionMinor}");
-            
+        
             Glfw.WindowHint(Hint.OpenglProfile, OpenglProfile);
             Logger.Info($"Setting GLFW OpenGL profile to {OpenglProfile}");
-            
+        
             Glfw.WindowHint(Hint.OpenglForwardCompatible, OpenglForwardCompatible);
             Logger.Info($"Setting GLFW OpenGL forward compatible to {OpenglForwardCompatible}");
-
-            _window = Glfw.CreateWindow(_widthMainWindow, _heightMainWindow, TitleMainWindow, Monitor.None, Window.None);
+        
+            // Obtener el monitor principal
+            Monitor primaryMonitor = Glfw.GetPrimaryMonitor();
+            Glfw.GetMonitorWorkArea(primaryMonitor, out int monitorX, out int monitorY, out int monitorWidth, out int monitorHeight);
+            
+            // Crear la ventana en pantalla completa
+            _window = Glfw.CreateWindow(monitorWidth, monitorHeight, TitleMainWindow, primaryMonitor, Window.None);
             if (_window == Window.None)
             {
                 ErrorCode errorCode = Glfw.GetError(out string description);
                 Logger.Exception($"GLFW window creation failed: ErrorCode: {errorCode} - Description: {description}");
             }
-
+        
             Glfw.MakeContextCurrent(_window);
-            Logger.Info($"Created GLFW window with title '{TitleMainWindow}' and size {_widthMainWindow}x{_heightMainWindow}");
-            
+            Logger.Info($"Created GLFW window with title '{TitleMainWindow}' and size {monitorWidth}x{monitorHeight}");
+        
             Glfw.SwapInterval(VSync);
             Logger.Info($"V-Sync is active = {(VSync == 1 ? "Yes" : "No")}");
-
+        
             SetupGlfwImGuiCallbacks();
-            
+        
             Logger.Log("GLFW initialized successfully");
         }
         

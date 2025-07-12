@@ -987,7 +987,7 @@ namespace Alis.Core.Graphic.GlfwLib
         /// </summary>
         /// <returns>The monitor</returns>
         [DllImport(Library, EntryPoint = "glfwGetPrimaryMonitor", CallingConvention = CallingConvention.Cdecl)]
-        private static extern Monitor GetPrimaryMonitor();
+        public static extern Monitor GetPrimaryMonitor();
 
         /// <summary>
         ///     Gets the video mode internal using the specified monitor
@@ -1570,6 +1570,10 @@ namespace Alis.Core.Graphic.GlfwLib
         /// <param name="y">The y-coordinate.</param>
         /// <param name="width">The monitor width.</param>
         /// <param name="height">The monitor height.</param>
+        [DllImport(Library, EntryPoint = "glfwGetMonitorWorkarea", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void GetMonitorWorkArea(Monitor monitor, out int x, out int y, out int width,
+            out int height);
+        
         [DllImport(Library, EntryPoint = "glfwGetMonitorWorkarea", CallingConvention = CallingConvention.Cdecl)]
         public static extern void GetMonitorWorkArea(IntPtr monitor, out int x, out int y, out int width,
             out int height);
