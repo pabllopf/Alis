@@ -15,7 +15,6 @@ using Alis.Extension.Graphic.Ui.Controllers;
 using Alis.Extension.Graphic.Ui.Extras.GuizMo;
 using Alis.Extension.Graphic.Ui.Extras.Node;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
-using Alis.Extension.Graphic.Ui.Sample.Fonts;
 using Exception = System.Exception;
 
 namespace Alis.Extension.Graphic.Ui.Sample

@@ -49,17 +49,30 @@ namespace Alis.Core.Aspect.Data.Dll
         /// <param name="dllType"></param>
         /// <param name="dllBytes">The dll bytes</param>
         /// <param name="assembly">The assembly</param>
-        public static void ExtractEmbeddedDlls(string dllName, DllType dllType, Dictionary<PlatformInfo, string> dllBytes, Assembly assembly)
+        /// <param name="additionalPath"></param>
+        public static void ExtractEmbeddedDlls(string dllName, DllType dllType, Dictionary<PlatformInfo, string> dllBytes, Assembly assembly, string additionalPath = "")
         {
-            string extension = GetDllExtension(dllType);
-            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string currentDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, additionalPath);
             string dllPath = Path.Combine(currentDirectory);
 
-            if (!File.Exists(dllPath + "/" + dllName + extension))
+            if (dllType == DllType.File)
             {
                 OSPlatform currentPlatform = GetCurrentPlatform();
                 Architecture currentArchitecture = RuntimeInformation.ProcessArchitecture;
+                PlatformInfo platformInfo = new PlatformInfo(currentPlatform, currentArchitecture);
 
+                if (dllBytes.TryGetValue(platformInfo, out string resourceName))
+                {
+                    ExtractZipFile(dllPath, LoadResource(resourceName, assembly));
+                }
+
+                return;
+            }
+            
+            if (!File.Exists(dllPath + "/" + dllName +  GetDllExtension(dllType)))
+            {
+                OSPlatform currentPlatform = GetCurrentPlatform();
+                Architecture currentArchitecture = RuntimeInformation.ProcessArchitecture;
                 PlatformInfo platformInfo = new PlatformInfo(currentPlatform, currentArchitecture);
 
                 if (dllBytes.TryGetValue(platformInfo, out string resourceName))
