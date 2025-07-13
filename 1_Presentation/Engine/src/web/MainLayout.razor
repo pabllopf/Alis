@@ -1,0 +1,18 @@
+﻿@inherits LayoutComponentBase
+@inject IJSRuntime JS
+
+<main>
+    <div class="main">
+        @Body
+    </div>
+</main>
+
+@code {
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            ImGui.Init(JS);
+        }
+    }
+}
