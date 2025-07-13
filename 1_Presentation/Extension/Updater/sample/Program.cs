@@ -29,6 +29,7 @@
 
 using System;
 using System.IO;
+using System.Threading;
 using Alis.Core.Aspect.Logging;
 using Alis.Extension.Updater.Services.Api;
 using Alis.Extension.Updater.Services.Files;
@@ -54,7 +55,8 @@ namespace Alis.Extension.Updater.Sample
             string pathProgram = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
             UpdateManager updateManager = new UpdateManager(gitHubApiService, "latest", fileService, pathProgram);
 
-            updateManager.Start().Wait();
+            CancellationToken cancellationTokenSource = CancellationToken.None;
+            updateManager.Start(cancellationTokenSource).Wait();
 
             Logger.Log("End sample program");
         }

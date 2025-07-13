@@ -64,7 +64,7 @@ namespace Alis.Extension.Updater
         /// <summary>
         ///     The threshold ratio
         /// </summary>
-        private const double ThresholdRatio = 10.0; // Compression ratio threshold
+        private const double ThresholdRatio = 70.0; // Compression ratio threshold
 
         /// <summary>
         ///     The file service
@@ -131,11 +131,18 @@ namespace Alis.Extension.Updater
         /// <summary>
         ///     Updates the game
         /// </summary>
+        /// <param name="ctsToken"></param>
         /// <returns>A task containing the bool</returns>
-        public async Task<bool> Start()
+        public async Task<bool> Start(CancellationToken ctsToken)
         {
             try
-            {
+            { 
+                if (ctsToken.IsCancellationRequested)
+                {
+                    Logger.Info("Exiting update process due to cancellation request.");
+                    return false;
+                }
+                
                 Dictionary<string, object> latestRelease = await GetLatestReleaseAsync();
                 if (latestRelease == null)
                 {
