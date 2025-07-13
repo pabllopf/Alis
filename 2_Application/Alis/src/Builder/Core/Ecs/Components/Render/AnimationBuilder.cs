@@ -48,14 +48,20 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         /// <summary>
         ///     The animation
         /// </summary>
-        private readonly Animation animation = new Animation();
+        private Animation animation = new Animation();
 
         /// <summary>
         ///     Adds the frame using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The animation builder</returns>
-        public AnimationBuilder AddFrame(Func<FrameBuilder, Frame> value) => this;
+        public AnimationBuilder AddFrame(Func<FrameBuilder, Frame> value)
+        {
+            FrameBuilder frameBuilder = new FrameBuilder();
+            Frame frame = value(frameBuilder);
+            animation.AddFrame(frame);
+            return this;
+        }
 
         /// <summary>
         ///     Builds this instance
@@ -68,20 +74,32 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The animation builder</returns>
-        public AnimationBuilder Name(string value) => this;
+        public AnimationBuilder Name(string value)
+        {
+            animation.Name = value;
+            return this;
+        }
 
         /// <summary>
         ///     Orders the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The animation builder</returns>
-        public AnimationBuilder Order(int value) => this;
+        public AnimationBuilder Order(int value)
+        {
+            animation.Order = value;
+            return this;
+        }
 
         /// <summary>
         ///     Speeds the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The animation builder</returns>
-        public AnimationBuilder Speed(float value) => this;
+        public AnimationBuilder Speed(float value)
+        {
+            animation.Speed = value;
+            return this;
+        }
     }
 }

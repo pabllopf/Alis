@@ -47,7 +47,7 @@ namespace Alis.Sample.King.Platform
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            VideoGame
+            var game = VideoGame
                 .Create()
                 .Settings(setting => setting
                     .General(general => general
@@ -81,49 +81,23 @@ namespace Alis.Sample.King.Platform
                                 .Depth(1)
                                 .SetTexture("tile023.bmp")
                                 .Build())
-                            .WithComponent<Animator>(
-                                /*Ç.AddAnimation(animation => animation
-                                    .Name("Idle")
-                                    .Order(0)
-                                    .Speed(1f)
-                                    .AddFrame(frame1 => frame1
-                                        .FilePath("tile023.bmp")
-                                        .Build())
-                                    .AddFrame(frame2 => frame2
-                                        .FilePath("tile025.bmp")
-                                        .Build())
-                                    .Build())
-                                .AddAnimation(animation2 => animation2
+                            .WithComponent<Animator>(animator => animator
+                                .AddAnimation(animation => animation
                                     .Name("Run")
-                                    .Order(1)
+                                    .Order(0)
                                     .Speed(0.25f)
                                     .AddFrame(frame => frame
-                                        .FilePath("tile036.bmp")
+                                        .File("tile036.bmp")
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath("tile038.bmp")
+                                        .File("tile038.bmp")
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath("tile039.bmp")
+                                        .File("tile039.bmp")
                                         .Build())
                                     .Build())
-                                .AddAnimation(animation2 => animation2
-                                    .Name("Jump")
-                                    .Order(2)
-                                    .Speed(0.35f)
-                                    .AddFrame(frame => frame
-                                        .FilePath("tile027.bmp")
-                                        .Build())
-                                    .AddFrame(frame => frame
-                                        .FilePath("tile030.bmp")
-                                        .Build())
-                                    .AddFrame(frame => frame
-                                        .FilePath("tile025.bmp")
-                                        .Build())
-                                    .Build())*/
-                                )
+                                .Build())
                             .WithComponent<BoxCollider>(boxCollider => boxCollider
-                                
                                 .IsActive(true)
                                 .BodyType(BodyType.Dynamic)
                                 .IsTrigger(false)
@@ -165,8 +139,9 @@ namespace Alis.Sample.King.Platform
                             .Build())
                         .Build())
                     .Build())
-                .Build()
-                .Run();
+                .Build();
+            
+            game.Run();
         }
     }
 }
