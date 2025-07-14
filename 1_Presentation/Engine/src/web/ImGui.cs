@@ -1,121 +1,49 @@
-﻿using Microsoft.JSInterop;
+﻿// ImGui.cs
+using System.Collections.Generic;
+using System.Text;
 
 namespace Alis.App.Engine.Web
 {
     public static class ImGui
     {
-        private static IJSRuntime? _jsRuntime;
+        private static List<string> _commands = new List<string>();
 
-        public static void Init(IJSRuntime jsRuntime)
+        public static void SetNextWindowPos(float x, float y, string cond = "ImGui.Cond.Once")
         {
-            _jsRuntime = jsRuntime;
-        }
-    
-        public static async Task<Dictionary<string, float>> Process(Action<ImGuiFrameBuilder> build)
-        {
-            ImGuiFrameBuilder builder = new ImGuiFrameBuilder();
-            build(builder);
-
-            if (_jsRuntime is not null)
-            {
-                Dictionary<string, float> result = await _jsRuntime.InvokeAsync<Dictionary<string, float>>(
-                    "ImGuiInterop.processFrame", builder.Commands
-                );
-                return result;
-            }
-
-            return new();
+            _commands.Add($"ImGui.SetNextWindowPos(new ImVec2({x}, {y}), {cond});");
         }
 
-
-        public static ValueTask<bool> Begin(string name)
+        public static void SetNextWindowSize(float w, float h, string cond = "ImGui.Cond.Once")
         {
-            if (_jsRuntime is not null)
-                return _jsRuntime.InvokeAsync<bool>("ImGuiInterop.begin", name);
-
-            return ValueTask.FromResult(false);
+            _commands.Add($"ImGui.SetNextWindowSize(new ImVec2({w}, {h}), {cond});");
         }
 
-        public static ValueTask Text(string text)
+        public static void Begin(string title)
         {
-            if (_jsRuntime is not null)
-                return _jsRuntime.InvokeVoidAsync("ImGuiInterop.text", text);
-
-            return ValueTask.CompletedTask;
-        }
-    
-        public static ValueTask<bool> Checkbox(string label, bool value)
-        {
-            if (_jsRuntime is not null)
-                return _jsRuntime.InvokeAsync<bool>("ImGuiInterop.checkbox", label, value);
-
-            return ValueTask.FromResult(value);
+            _commands.Add($"ImGui.Begin(\"{title}\");");
         }
 
-        public static ValueTask End()
+        public static void Text(string text)
         {
-            if (_jsRuntime is not null)
-                return _jsRuntime.InvokeVoidAsync("ImGuiInterop.end");
-
-            return ValueTask.CompletedTask;
+            _commands.Add($"ImGui.Text(\"{text}\");");
         }
 
-        public static ValueTask<bool> Button(string clickMe)
+        public static void End()
         {
-            if (_jsRuntime is not null)
-                return _jsRuntime.InvokeAsync<bool>("ImGuiInterop.button", clickMe);
-
-            return ValueTask.FromResult(false);
-        }
-    
-        public static ValueTask<float> SliderFloat(string label, float value, float min, float max)
-        {
-            if (_jsRuntime is not null)
-                return _jsRuntime.InvokeAsync<float>("ImGuiInterop.sliderfloat", label, value, min, max);
-
-            return ValueTask.FromResult(value);
+            _commands.Add("ImGui.End();");
         }
 
-    }
-
-    public class ImGuiCommand
-    {
-        public string Command { get; set; } = string.Empty;
-        public Dictionary<string, object> Args { get; set; } = new();
-    }
-
-    public class ImGuiFrameBuilder
-    {
-        public List<ImGuiCommand> Commands { get; } = new();
-
-        public void Begin(string name) => Commands.Add(new ImGuiCommand
+        internal static string GetCode()
         {
-            Command = "begin",
-            Args = { ["name"] = name }
-        });
+            var sb = new StringBuilder();
+            foreach (var cmd in _commands)
+                sb.AppendLine(cmd);
+            return sb.ToString();
+        }
 
-        public void End() => Commands.Add(new ImGuiCommand { Command = "end" });
-
-        public void Text(string text) => Commands.Add(new ImGuiCommand
+        internal static void Clear()
         {
-            Command = "text",
-            Args = { ["text"] = text }
-        });
-
-        public float SliderFloat(string label, float value, float min, float max)
-        {
-            Commands.Add(new ImGuiCommand
-            {
-                Command = "sliderfloat",
-                Args =
-                {
-                    ["label"] = label,
-                    ["value"] = value,
-                    ["min"] = min,
-                    ["max"] = max
-                }
-            });
-            return value;
+            _commands.Clear();
         }
     }
 }

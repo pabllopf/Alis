@@ -209,7 +209,7 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             try
             {
                 IntPtr pointer = handle.AddrOfPinnedObject();
-                Gl.GlBufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), pointer, BufferUsageHint.StaticDraw);
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), pointer, BufferUsageHint.StaticDraw);
             }
             finally
             {
@@ -1144,10 +1144,10 @@ namespace Alis.Extension.Graphic.Ui.Controllers
                 int indexSize = cmdList.IdxBuffer.Size * sizeof(ushort);
 
                 Gl.GlBindBuffer(BufferTarget.ArrayBuffer, _vertexBuffer);
-                Gl.GlBufferData(BufferTarget.ArrayBuffer, vertexSize, cmdList.VtxBuffer.Data, BufferUsageHint.StreamDraw);
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertexSize), cmdList.VtxBuffer.Data, BufferUsageHint.StreamDraw);
 
                 Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, _indexBuffer);
-                Gl.GlBufferData(BufferTarget.ElementArrayBuffer, indexSize, cmdList.IdxBuffer.Data, BufferUsageHint.StreamDraw);
+                Gl.GlBufferData(BufferTarget.ElementArrayBuffer, new IntPtr(indexSize), cmdList.IdxBuffer.Data, BufferUsageHint.StreamDraw);
 
                 int idxOffset = 0;
                 for (int cmdi = 0; cmdi < cmdList.CmdBuffer.Size; cmdi++)
