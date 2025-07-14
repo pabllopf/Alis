@@ -30,7 +30,6 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using Alis.App.Engine.Demos;
 using Alis.App.Engine.Entity;
 using Alis.App.Engine.Menus;
 using Alis.App.Engine.Windows;
@@ -38,6 +37,7 @@ using Alis.App.Engine.Windows.Settings;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Extension.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.Ui;
+using Alis.Extension.Graphic.Ui.Controllers;
 
 namespace Alis.App.Engine.Core
 {
@@ -47,100 +47,19 @@ namespace Alis.App.Engine.Core
     public class SpaceWork
     {
         /// <summary>
-        ///     The icon demo
-        /// </summary>
-        public readonly IconDemo IconDemo = new IconDemo();
-
-        /// <summary>
-        ///     The im gui demo
-        /// </summary>
-        public readonly ImGuiDemo ImGuiDemo = new ImGuiDemo();
-
-        /// <summary>
-        ///     The im guizmo demo
-        /// </summary>
-        public readonly ImGuizmoDemo ImGuizmoDemo = new ImGuizmoDemo();
-
-        /// <summary>
-        ///     The im node demo
-        /// </summary>
-        public readonly ImNodeDemo ImNodeDemo = new ImNodeDemo();
-
-        /// <summary>
-        ///     The im plot demo
-        /// </summary>
-        public readonly ImPlotDemo ImPlotDemo = new ImPlotDemo();
-
-        /// <summary>
         ///     The settings window
         /// </summary>
         public readonly SettingsWindow SettingsWindow;
 
-        /// <summary>
-        ///     The context
-        /// </summary>
-        public IntPtr ContextGui;
-
-        /// <summary>
-        ///     The font loaded 10 solid
-        /// </summary>
-        public ImFontPtr FontLoaded10Solid;
-
-        /// <summary>
-        ///     The font loaded 16 light
-        /// </summary>
-        public ImFontPtr FontLoaded16Light;
-
-        /// <summary>
-        ///     The font loaded 16 solid
-        /// </summary>
-        public ImFontPtr FontLoaded16Solid;
-
-        /// <summary>
-        ///     The font loaded 30 bold
-        /// </summary>
-        public ImFontPtr FontLoaded30Bold;
-
-        /// <summary>
-        ///     The font loaded 30 bold
-        /// </summary>
-        public ImFontPtr FontLoaded45Bold;
-
-        /// <summary>
-        ///     The io
-        /// </summary>
-        public ImGuiIoPtr Io;
-
-        /// <summary>
-        ///     The quit
-        /// </summary>
-        public bool Quit = false;
-
-        /// <summary>
-        ///     The renderer game
-        /// </summary>
-        public IntPtr RendererGame;
-
-        /// <summary>
-        ///     The style
-        /// </summary>
-        public ImGuiStyle Style;
-
-        /// <summary>
-        ///     Gets or sets the value of the viewport
-        /// </summary>
-        public ImGuiViewportPtr Viewport;
-
-        /// <summary>
-        ///     The window
-        /// </summary>
-        public IntPtr Window;
+        public ImGuiControllerImplementGlfw ImGuiController;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SpaceWork" /> class
         /// </summary>
-        public SpaceWork()
+        public SpaceWork(ImGuiControllerImplementGlfw imGuiController)
         {
+            ImGuiController = imGuiController;
+            
             DockSpaceMenu = new DockSpaceMenu(this);
             ConsoleWindow = new ConsoleWindow(this);
             GameWindow = new GameWindow(this);
@@ -225,31 +144,15 @@ namespace Alis.App.Engine.Core
         internal AssetsWindow AssetsWindow { get; }
 
         /// <summary>
-        ///     Gets or sets the value of the fps
-        /// </summary>
-        public int Fps { get; set; } = 60;
-
-        /// <summary>
         ///     Gets or sets the value of the project
         /// </summary>
         public Project Project { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the event
-        /// </summary>
-        public Event Event { get; set; }
 
         /// <summary>
         ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
-            ImGuiDemo.Initialize();
-            ImPlotDemo.Initialize();
-            ImGuizmoDemo.Initialize();
-            ImNodeDemo.Initialize();
-            IconDemo.Initialize();
-
             // if is macos system:
             if (!IsMacOs)
             {
@@ -278,11 +181,6 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public void Start()
         {
-            ImGuiDemo.Start();
-            ImPlotDemo.Start();
-            ImGuizmoDemo.Start();
-            ImNodeDemo.Start();
-            IconDemo.Start();
 
             // if is macos system:
             if (!IsMacOs)
@@ -312,12 +210,6 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public void Update()
         {
-            ImGuiDemo.Run();
-            ImPlotDemo.Run();
-            ImGuizmoDemo.Run();
-            ImNodeDemo.Run();
-            IconDemo.Run();
-
             // if is macos system:
             if (!IsMacOs)
             {

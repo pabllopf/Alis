@@ -35,13 +35,12 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Alis.App.Engine.Fonts;
-using Alis.App.Hub.Core;
 using Alis.App.Hub.Entity;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
+using Alis.Extension.Graphic.Ui.Fonts;
 using Alis.Extension.Io.FileDialog;
 
 namespace Alis.App.Hub.Windows.Sections
@@ -99,7 +98,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Initializes a new instance of the <see cref="ProjectsSection" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public ProjectsSection(SpaceWork spaceWork) : base(spaceWork)
+        public ProjectsSection()
         {
         }
 

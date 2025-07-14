@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using Alis.App.Engine.Core;
-using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
+using Alis.Extension.Graphic.Ui.Fonts;
 
 namespace Alis.App.Engine.Menus
 {
@@ -41,12 +41,6 @@ namespace Alis.App.Engine.Menus
     /// <seealso cref="IMenu" />
     public class BottomMenu : IMenu
     {
-        // Variable que controla la altura del menú inferior
-        /// <summary>
-        ///     The bottom menu height
-        /// </summary>
-        private readonly float bottomMenuHeight = 10.0f;
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="BottomMenu" /> class
         /// </summary>
@@ -84,29 +78,21 @@ namespace Alis.App.Engine.Menus
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 3));
 
 
-            if (!SpaceWork.IsMacOs)
-            {
-                Vector2F dockSize = SpaceWork.Viewport.Size - new Vector2F(5, 90);
+            int posY = 170;
+            int sizeMenu = 31;
+            float bottomMenuHeight = 60;
+            
+            Vector2F dockSize = SpaceWork.ImGuiController.Viewport.Size - new Vector2F(5, posY);
 
-                // Menú inferior
-                Vector2F menuSize = new Vector2F(SpaceWork.Viewport.Size.X, bottomMenuHeight);
-                ImGui.SetNextWindowPos(new Vector2F(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 31 + bottomMenuHeight / 2));
-                ImGui.SetNextWindowSize(menuSize);
-            }
-            else
-            {
-                Vector2F dockSize = SpaceWork.Viewport.Size - new Vector2F(5, 35);
-
-                // Menú inferior
-                Vector2F menuSize = new Vector2F(SpaceWork.Viewport.Size.X, bottomMenuHeight);
-                ImGui.SetNextWindowPos(new Vector2F(SpaceWork.Viewport.WorkPos.X, SpaceWork.Viewport.WorkPos.Y + dockSize.Y + 8));
-                ImGui.SetNextWindowSize(menuSize);
-            }
+            // Menú inferior
+            Vector2F menuSize = new Vector2F(SpaceWork.ImGuiController.Viewport.Size.X, bottomMenuHeight);
+            ImGui.SetNextWindowPos(new Vector2F(SpaceWork.ImGuiController.Viewport.WorkPos.X, SpaceWork.ImGuiController.Viewport.WorkPos.Y + dockSize.Y + sizeMenu + bottomMenuHeight / 2));
+            ImGui.SetNextWindowSize(menuSize);
 
 
             // Configuración de estilo
-            //ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2F(0, 0));
-            //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0));
+            //ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2F(5, 5));
+            //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(5, 5));
 
             if (ImGui.Begin("Bottom Menu", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoScrollbar))
             {
@@ -125,7 +111,7 @@ namespace Alis.App.Engine.Menus
                 ImGui.SameLine();
 
                 // Selector de rama Git
-                ImGui.SetNextItemWidth(90);
+                ImGui.SetNextItemWidth(180);
                 if (ImGui.BeginCombo("##branchSelector", $"{FontAwesome5.CodeBranch}Master", ImGuiComboFlags.HeightLarge))
                 {
                     if (ImGui.Selectable("master"))
@@ -238,19 +224,20 @@ namespace Alis.App.Engine.Menus
 
                 //ImGui.EndTooltip();
 
-
-                ImGui.PopStyleVar(2);
+                
                 ImGui.NextColumn();
 
                 // Barra de carga alineada a la derecha
                 ImGui.SetCursorPosX(ImGui.GetContentRegionMax().X - 150); // Ajustar según el tamaño de la barra
-                ImGui.ProgressBar(0.65f, new Vector2F(150, 20), "3/15"); // Ejemplo de barra al 65%
+                ImGui.ProgressBar(1f, new Vector2F(150, ImGui.GetContentRegionMax().Y - 10), "3/15"); // Ejemplo de barra al 65%
 
+                ImGui.PopStyleVar(2);
+                
                 ImGui.End();
             }
 
             // Restaurar el estilo
-            //ImGui.PopStyleVar(1);
+            //ImGui.PopStyleVar(2);
             ImGui.PopStyleColor(2);
         }
 

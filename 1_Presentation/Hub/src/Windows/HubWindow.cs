@@ -29,13 +29,12 @@
 
 using System;
 using System.IO;
-using Alis.App.Engine.Fonts;
-using Alis.App.Hub.Core;
-using Alis.App.Hub.Utils;
 using Alis.App.Hub.Windows.Sections;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
+using Alis.Extension.Graphic.Ui.Controllers;
+using Alis.Extension.Graphic.Ui.Fonts;
 
 namespace Alis.App.Hub.Windows
 {
@@ -74,38 +73,30 @@ namespace Alis.App.Hub.Windows
         ///     The projects section
         /// </summary>
         public readonly ProjectsSection ProjectsSection;
-
-        /// <summary>
-        ///     The space work
-        /// </summary>
-        private readonly SpaceWork spaceWork;
-
+        
         /// <summary>
         ///     The selected menu item
         /// </summary>
         private int selectedMenuItem;
 
-        //private string searchQuery = " ";  // Variable para el buscador
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="HubWindow" /> class
-        /// </summary>
-        /// <param name="spaceWork">The space work</param>
-        public HubWindow(SpaceWork spaceWork) : base(spaceWork)
+        private ImGuiControllerImplementGlfw imGuiController;
+        
+        public HubWindow(ImGuiControllerImplementGlfw imGuiController)
         {
-            this.spaceWork = spaceWork;
-
-            CommunitySection = new CommunitySection(spaceWork);
-            ProjectsSection = new ProjectsSection(spaceWork);
-            EditorInstallationSection = new EditorInstallationSection(spaceWork);
-            LearnSection = new LearnSection(spaceWork);
+            this.imGuiController = imGuiController;
+            CommunitySection = new CommunitySection();
+            ProjectsSection = new ProjectsSection();
+            EditorInstallationSection = new EditorInstallationSection();
+            LearnSection = new LearnSection();
         }
 
         /// <summary>
         ///     Ons the init
         /// </summary>
+        /// <param name="imGuiController"></param>
         public override void OnInit()
         {
+            
             ProjectsSection.OnInit();
             EditorInstallationSection.OnInit();
             LearnSection.OnInit();
@@ -162,7 +153,7 @@ namespace Alis.App.Hub.Windows
                 ImGui.SameLine();
 
                 // Cambiar el tamaño de la fuente para que el texto sea más grande
-                ImGui.PushFont(spaceWork.FontLoaded45Bold); // Asegúrate de usar una fuente adecuada
+                ImGui.PushFont(imGuiController.FontLoaded45Bold); // Asegúrate de usar una fuente adecuada
 
                 // Centrar el texto "ALIS" vertical y horizontalmente con la imagen
                 Vector2F textSize = ImGui.CalcTextSize("ALIS");

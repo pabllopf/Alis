@@ -33,7 +33,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Alis.App.Hub.Core;
 using Alis.App.Hub.Entity;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
@@ -73,7 +72,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Initializes a new instance of the <see cref="EditorInstallationSection" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public EditorInstallationSection(SpaceWork spaceWork) : base(spaceWork)
+        public EditorInstallationSection()
         {
         }
 

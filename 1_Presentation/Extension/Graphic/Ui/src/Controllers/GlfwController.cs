@@ -52,6 +52,18 @@ namespace Alis.Extension.Graphic.Ui.Controllers
         private const Profile OpenglProfile = Profile.Core;
         private const bool OpenglForwardCompatible = true;
         private const int VSync = 1;
+        private const bool ScaleToMonitor = true;
+        private const int Antialiasing = 4; 
+        private const bool DecoratedWindow = true;
+        
+        private const bool FocusedOnInit = true;
+        
+        private const bool TransparentFramebuffer = false;
+        
+        private KeyCallback _keyCallbackDelegate;
+        private CharCallback _charCallbackDelegate;
+        private MouseButtonCallback _mouseButtonCallbackDelegate;
+        private MouseCallback _scrollCallbackDelegate;
         
         public GlfwController(string titleMainWindow = "GLFW Window", int width = 800, int height = 600, int windowsDefault = 0)
         {
@@ -84,10 +96,34 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             Glfw.WindowHint(Hint.DepthBits, 24);
             Glfw.WindowHint(Hint.AlphaBits, 8);
             Glfw.WindowHint(Hint.StencilBits, 8);
+            
+            Glfw.WindowHint(Hint.ScaleToMonitor, ScaleToMonitor); 
+            Logger.Info($"Setting GLFW to scale to monitor = {(ScaleToMonitor == true ? "Yes" : "No")}");
 
+            Glfw.WindowHint(Hint.Samples, Antialiasing);
+            Logger.Info($"Setting GLFW antialiasing to {Antialiasing} samples");
+            
+            Glfw.WindowHint(Hint.Decorated, DecoratedWindow); 
+            Logger.Info($"Setting GLFW window decorated = {(DecoratedWindow == true ? "Yes" : "No")}");
+            
+            Glfw.WindowHint(Hint.TransparentFramebuffer, TransparentFramebuffer);
+            Logger.Info($"Setting GLFW transparent framebuffer = {(TransparentFramebuffer ? "Yes" : "No")}");
+            
+            Glfw.WindowHint(Hint.Focused, FocusedOnInit);
+            Logger.Info($"Setting GLFW window focused on init = {(FocusedOnInit == true ? "Yes" : "No")}");
+            
+            // Configure color bits for the window
+            Glfw.WindowHint(Hint.RedBits, 8);
+            Glfw.WindowHint(Hint.GreenBits, 8);
+            Glfw.WindowHint(Hint.BlueBits, 8);
+            
+            
+            
             // Obtener el monitor principal
             if (_windowsDefault == 0)
             {
+                Glfw.WindowHint(Hint.Resizable, true);
+                
                 Monitor primaryMonitor = Glfw.GetPrimaryMonitor();
                 Glfw.GetMonitorWorkArea(primaryMonitor, out int monitorX, out int monitorY, out int monitorWidth, out int monitorHeight);
                 
@@ -98,20 +134,25 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             }
             else
             {
+                
+                Glfw.WindowHint(Hint.Resizable, false);
+                Glfw.WindowHint(Hint.Maximized, false);
+                
+                // Crea la ventana
+                _window = Glfw.CreateWindow(_widthMainWindow, _heightMainWindow, TitleMainWindow, Monitor.None, Window.None);
+                
                 // Obtén el área de trabajo del monitor principal
                 Monitor primaryMonitor = Glfw.GetPrimaryMonitor();
                 Glfw.GetMonitorWorkArea(primaryMonitor, out int monitorX, out int monitorY, out int monitorWidth, out int monitorHeight);
-
+                
+                // Obtén el tamaño real de la ventana (puede variar por DPI)
+                Glfw.GetWindowSize(_window, out int winWidth, out int winHeight);
+                
                 // Calcula la posición centrada
-                int posX = monitorX + (monitorWidth - _widthMainWindow) / 2;
-                int posY = monitorY + (monitorHeight - _heightMainWindow) / 2;
-
-                // Crea la ventana
-                Glfw.WindowHint(Hint.Resizable, false);
-                Glfw.WindowHint(Hint.Maximized, false);
-                _window = Glfw.CreateWindow(_widthMainWindow, _heightMainWindow, TitleMainWindow, Monitor.None, Window.None);
-
-                // Centra la ventana
+                int posX = monitorX + (monitorWidth - winWidth) / 2;
+                int posY = monitorY + (monitorHeight - winHeight) / 2;
+                
+                // Mueve la ventana al centro
                 Glfw.SetWindowPosition(_window, posX, posY);
             }
             
@@ -126,7 +167,7 @@ namespace Alis.Extension.Graphic.Ui.Controllers
 
             Glfw.SwapInterval(VSync);
             Logger.Info($"V-Sync is active = {(VSync == 1 ? "Yes" : "No")}");
-
+            
             SetupGlfwImGuiCallbacks();
 
             Logger.Log("GLFW initialized successfully");
@@ -134,10 +175,15 @@ namespace Alis.Extension.Graphic.Ui.Controllers
 
         private void SetupGlfwImGuiCallbacks()
         {
-            Glfw.SetKeyCallback(_window, KeyCallback);
-            Glfw.SetCharCallback(_window, CharCallback);
-            Glfw.SetMouseButtonCallback(_window, MouseButtonCallback);
-            Glfw.SetScrollCallback(_window, ScrollCallback);
+            _keyCallbackDelegate = KeyCallback;
+            _charCallbackDelegate = CharCallback;
+            _mouseButtonCallbackDelegate = MouseButtonCallback;
+            _scrollCallbackDelegate = ScrollCallback;
+
+            Glfw.SetKeyCallback(_window, _keyCallbackDelegate);
+            Glfw.SetCharCallback(_window, _charCallbackDelegate);
+            Glfw.SetMouseButtonCallback(_window, _mouseButtonCallbackDelegate);
+            Glfw.SetScrollCallback(_window, _scrollCallbackDelegate);
         }
 
         // Callback de teclado
