@@ -2,9 +2,9 @@
     <ItemGroup Condition="$(AssemblyName.Contains('Test')) == true">
 
         <!-- Test packs -->
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1"/>
-        <PackageReference Include="xunit" Version="2.6.6"/>
-        <PackageReference Include="Xunit.StaFact" Version="1.1.11"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
+        <PackageReference Include="xunit" Version="2.6.6" />
+        <PackageReference Include="Xunit.StaFact" Version="1.1.11" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
@@ -17,91 +17,76 @@
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Contains('Generator'))">
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.3.0" PrivateAssets="all"/>
-        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.3.0" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Payment.Stripe'))">
-        <PackageReference Include="Stripe.net" Version="47.1.0"/>
+        <PackageReference Include="Stripe.net" Version="47.1.0" />
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Ads.GoogleAds'))">
-        <PackageReference Include="Google.Ads.Common" Version="9.5.3"/>
+        <PackageReference Include="Google.Ads.Common" Version="9.5.3" />
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Cloud.GoogleDrive'))">
-        <PackageReference Include="Google.Apis.Drive.v3" Version="1.68.0.3601"/>
+        <PackageReference Include="Google.Apis.Drive.v3" Version="1.68.0.3601" />
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Cloud.DropBox'))">
-        <PackageReference Include="Dropbox.Api" Version="7.0.0"/>
+        <PackageReference Include="Dropbox.Api" Version="7.0.0" />
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Contains('App')) == true">
-        <PackageReference Include="MonoMac.NetStandard" Version="0.0.4"/>
+        <PackageReference Include="MonoMac.NetStandard" Version="0.0.4" />
     </ItemGroup>
 
     
 
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Benchmark')) == true">
-        <PackageReference Include="BenchmarkDotNet" Version="0.14.0"/>
+        <PackageReference Include="BenchmarkDotNet" Version="0.14.0" />
         
-        <PackageReference Include="Arch.System" Version="1.0.5"/>
-        <PackageReference Include="Arch.System.SourceGenerator" Version="1.2.1"/>
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0" PrivateAssets="all"/>
-        <PackageReference Include="Myriad.ECS" Version="34.6.0"/>
-        <PackageReference Include="Roslynator.Analyzers" Version="4.13.1" PrivateAssets="all"/>
-        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.13.1" PrivateAssets="all"/>
-        <PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.13.1" PrivateAssets="all"/>
+        <PackageReference Include="Arch.System" Version="1.0.5" />
+        <PackageReference Include="Arch.System.SourceGenerator" Version="1.2.1" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0" PrivateAssets="all" />
+        <PackageReference Include="Myriad.ECS" Version="34.6.0" />
+        <PackageReference Include="Roslynator.Analyzers" Version="4.13.1" PrivateAssets="all" />
+        <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.13.1" PrivateAssets="all" />
+        <PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.13.1" PrivateAssets="all" />
 
-        <PackageReference Include="Arch" Version="1.2.8"/>
-        <PackageReference Include="Frent" Version="0.5.4.3-beta"/>
-        <PackageReference Include="DefaultEcs" Version="0.17.2"/>
-        <PackageReference Include="DefaultEcs.Analyzer" Version="0.17.0" PrivateAssets="all"/>
-        <PackageReference Include="fennecs" Version="0.1.1-beta"/>
-        <PackageReference Include="Friflo.Engine.ECS" Version="3.2.3"/>
-        <PackageReference Include="HypEcs" Version="1.2.1"/>
-        <PackageReference Include="MonoGame.Extended.Entities" Version="3.8.0"/>
-        <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.2.1105"/>
-        <PackageReference Include="Leopotam.Ecs" Version="1.0.1"/>
-        <PackageReference Include="Leopotam.EcsLite" Version="1.0.1"/>
-        <PackageReference Include="RelEcs" Version="1.5.1"/>
-        <PackageReference Include="Scellecs.Morpeh" Version="2024.1.0"/>
-        <PackageReference Include="Svelto.ECS" Version="3.5.2"/>
-        <PackageReference Include="Svelto.Common" Version="3.5.2"/>
-        <PackageReference Include="Flecs.NET.Release" Version="3.2.11"/>
+        <PackageReference Include="Arch" Version="1.2.8" />
+        <PackageReference Include="Frent" Version="0.5.4.3-beta" />
+        <PackageReference Include="DefaultEcs" Version="0.17.2" />
+        <PackageReference Include="DefaultEcs.Analyzer" Version="0.17.0" PrivateAssets="all" />
+        <PackageReference Include="fennecs" Version="0.1.1-beta" />
+        <PackageReference Include="Friflo.Engine.ECS" Version="3.2.3" />
+        <PackageReference Include="HypEcs" Version="1.2.1" />
+        <PackageReference Include="MonoGame.Extended.Entities" Version="3.8.0" />
+        <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.2.1105" />
+        <PackageReference Include="Leopotam.Ecs" Version="1.0.1" />
+        <PackageReference Include="Leopotam.EcsLite" Version="1.0.1" />
+        <PackageReference Include="RelEcs" Version="1.5.1" />
+        <PackageReference Include="Scellecs.Morpeh" Version="2024.1.0" />
+        <PackageReference Include="Svelto.ECS" Version="3.5.2" />
+        <PackageReference Include="Svelto.Common" Version="3.5.2" />
+        <PackageReference Include="Flecs.NET.Release" Version="3.2.11" />
     </ItemGroup>
 
-    <ItemGroup Condition="
-    $(TargetFramework.Equals('net471')) OR 
-    $(TargetFramework.Equals('net472')) OR 
-    $(TargetFramework.Equals('net48')) OR 
-    $(TargetFramework.Equals('net481'))
-    ">
-        <PackageReference Include="System.IO.Compression" Version="4.3.0"/>
-        <PackageReference Include="System.Net.Http" Version="4.3.0"/>
-        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
-        <PackageReference Include="System.Memory" Version="4.6.2"/>
+    <ItemGroup Condition="     $(TargetFramework.Equals('net471')) OR      $(TargetFramework.Equals('net472')) OR      $(TargetFramework.Equals('net48')) OR      $(TargetFramework.Equals('net481'))     ">
+        <PackageReference Include="System.IO.Compression" Version="4.3.0" />
+        <PackageReference Include="System.Net.Http" Version="4.3.0" />
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1" />
+        <PackageReference Include="System.Memory" Version="4.6.2" />
     </ItemGroup>
 
-    <ItemGroup Condition="
-    $(TargetFramework.Equals('netcoreapp2.0')) OR
-    $(TargetFramework.Equals('netcoreapp2.1')) OR
-    $(TargetFramework.Equals('netcoreapp2.2')) OR
-    $(TargetFramework.Equals('netcoreapp3.0')) OR
-    $(TargetFramework.Equals('netcoreapp3.1')) 
-    ">
-        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
-        <PackageReference Include="System.Memory" Version="4.6.2"/>
+    <ItemGroup Condition="     $(TargetFramework.Equals('netcoreapp2.0')) OR     $(TargetFramework.Equals('netcoreapp2.1')) OR     $(TargetFramework.Equals('netcoreapp2.2')) OR     $(TargetFramework.Equals('netcoreapp3.0')) OR     $(TargetFramework.Equals('netcoreapp3.1'))      ">
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1" />
+        <PackageReference Include="System.Memory" Version="4.6.2" />
     </ItemGroup>
 
-    <ItemGroup Condition="
-    $(AssemblyName.Contains('Generator')) == False AND
-    ($(TargetFramework.Equals('netstandard2.0')) OR
-    $(TargetFramework.Equals('netstandard2.1')))
-    ">
-        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
-        <PackageReference Include="System.Memory" Version="4.6.2"/>
+    <ItemGroup Condition="     $(AssemblyName.Contains('Generator')) == False AND     ($(TargetFramework.Equals('netstandard2.0')) OR     $(TargetFramework.Equals('netstandard2.1')))     ">
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1" />
+        <PackageReference Include="System.Memory" Version="4.6.2" />
     </ItemGroup>
 
 

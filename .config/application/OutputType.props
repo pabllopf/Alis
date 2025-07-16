@@ -1,26 +1,13 @@
 <Project>
-    <PropertyGroup Condition="
-    $(AssemblyName.Contains('Test')) == true OR
-    $(AssemblyName.Contains('Benchmark')) == true OR
-    $(AssemblyName.Contains('Sample')) == true OR
-    $(AssemblyName.Contains('App')) == true OR
-    $(AssemblyName.Contains('Template')) == true">
+    <PropertyGroup Condition="     $(AssemblyName.Contains('Test')) == true OR     $(AssemblyName.Contains('Benchmark')) == true OR     $(AssemblyName.Contains('Sample')) == true OR     $(AssemblyName.Contains('App')) == true OR     $(AssemblyName.Contains('Template')) == true">
         <OutputType>Exe</OutputType>
     </PropertyGroup>
 
-    <PropertyGroup Condition="
-    ($(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Sample')) == true) AND
-    $(AssemblyName.Contains('Test')) == false AND
-    $(IsWindows) == true">
+    <PropertyGroup Condition="     ($(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Sample')) == true) AND     $(AssemblyName.Contains('Test')) == false AND     $(IsWindows) == true">
         <OutputType>WinExe</OutputType>
     </PropertyGroup>
 
-    <PropertyGroup Condition="
-    $(AssemblyName.Contains('Test')) == false AND
-     $(AssemblyName.Contains('Benchmark')) == false AND 
-    $(AssemblyName.Contains('App')) == false AND
-    $(AssemblyName.Contains('Template')) == false AND
-    $(AssemblyName.Contains('Sample')) == false">
+    <PropertyGroup Condition="     $(AssemblyName.Contains('Test')) == false AND      $(AssemblyName.Contains('Benchmark')) == false AND      $(AssemblyName.Contains('App')) == false AND     $(AssemblyName.Contains('Template')) == false AND     $(AssemblyName.Contains('Sample')) == false">
         <OutputType>Library</OutputType>
     </PropertyGroup>
 

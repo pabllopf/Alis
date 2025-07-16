@@ -1,10 +1,6 @@
 <Project>
     <ItemGroup Condition="Exists('$(ProjectDir)Assets/') == True">
-        <None
-            Update="$(ProjectDir)Assets/**"
-            LinkBase="Assets"
-            CopyToOutputDirectory="Always"
-            CopyToPublishDirectory="Always"/>
+        <None Update="$(ProjectDir)Assets/**" LinkBase="Assets" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
     </ItemGroup>
 
     <PropertyGroup Condition="Exists('$(ProjectDir)Assets/icon/app.ico') == True">

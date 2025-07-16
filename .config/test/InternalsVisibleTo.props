@@ -1,13 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <Project>
     <ItemGroup Condition="$(AssemblyName.Contains('Test')) == False">
-        <InternalsVisibleTo Include="$(AssemblyName).Test"/>
+        <InternalsVisibleTo Include="$(AssemblyName).Test" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Condition="$(AssemblyName.Contains('Test')) == True"
-              Update="$(ProjectDir)**/*.dll"
-              CopyToOutputDirectory="Always"
-              CopyToPublishDirectory="Always"/>
+        <None Condition="$(AssemblyName.Contains('Test')) == True" Update="$(ProjectDir)**/*.dll" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
     </ItemGroup>
 </Project>
