@@ -1,9 +1,5 @@
 <Project>
     <ItemGroup Condition="Exists('$(ProjectDir)Data/') == True">
-        <None
-            Update="$(ProjectDir)Data/**"
-            LinkBase="Data"
-            CopyToOutputDirectory="Always"
-            CopyToPublishDirectory="Always"/>
+        <None Update="$(ProjectDir)Data/**" LinkBase="Data" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
     </ItemGroup>
 </Project>

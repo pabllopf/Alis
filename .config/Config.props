@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <Project>
     <PropertyGroup>
         <TargetFrameworks>net8.0;</TargetFrameworks>
@@ -26,69 +26,69 @@
 
     
     <!-- Import all the props files in the target folder -->
-    <Import Project="$(SolutionDir).config/target/BeforeBuild.props"/>
+    <Import Project="$(SolutionDir).config/target/BeforeBuild.props" />
     
     <!-- Import all the props files in the application folder -->
-    <Import Project="$(SolutionDir).config/application/Runtimes.props"/>
-    <Import Project="$(SolutionDir).config/application/LangVersion.props"/>
-    <Import Project="$(SolutionDir).config/application/OutputType.props"/>
-    <Import Project="$(SolutionDir).config/application/Optimize.props"/>
-    <Import Project="$(SolutionDir).config/application/AllowUnsafeBlocks.props"/>
-    <Import Project="$(SolutionDir).config/application/Nullable.props"/>
-    <Import Project="$(SolutionDir).config/application/SelfContained.props"/>
+    <Import Project="$(SolutionDir).config/application/Runtimes.props" />
+    <Import Project="$(SolutionDir).config/application/LangVersion.props" />
+    <Import Project="$(SolutionDir).config/application/OutputType.props" />
+    <Import Project="$(SolutionDir).config/application/Optimize.props" />
+    <Import Project="$(SolutionDir).config/application/AllowUnsafeBlocks.props" />
+    <Import Project="$(SolutionDir).config/application/Nullable.props" />
+    <Import Project="$(SolutionDir).config/application/SelfContained.props" />
 
     <!-- Import all the props files in the assembly folder -->
-    <Import Project="$(SolutionDir).config/assembly/Company.props"/>
-    <Import Project="$(SolutionDir).config/assembly/FileVersion.props"/>
-    <Import Project="$(SolutionDir).config/assembly/InternalsVisibleTo.props"/>
-    <Import Project="$(SolutionDir).config/assembly/NeutralLanguage.props"/>
-    <Import Project="$(SolutionDir).config/assembly/Product.props"/>
+    <Import Project="$(SolutionDir).config/assembly/Company.props" />
+    <Import Project="$(SolutionDir).config/assembly/FileVersion.props" />
+    <Import Project="$(SolutionDir).config/assembly/InternalsVisibleTo.props" />
+    <Import Project="$(SolutionDir).config/assembly/NeutralLanguage.props" />
+    <Import Project="$(SolutionDir).config/assembly/Product.props" />
 
     <!-- Import all the props files in the build folder -->
-    <Import Project="$(SolutionDir).config/builds/NoWarn.props"/>
-    <Import Project="$(SolutionDir).config/builds/PublishTrimmed.props"/>
-    <Import Project="$(SolutionDir).config/builds/SuppressTfmSupportBuildWarnings.props"/>
-    <Import Project="$(SolutionDir).config/builds/TreatWarningsAsErrors.props"/>
-    <Import Project="$(SolutionDir).config/builds/WarningLevel.props"/>
-    <Import Project="$(SolutionDir).config/builds/WarningsAsErrors.props"/>
+    <Import Project="$(SolutionDir).config/builds/NoWarn.props" />
+    <Import Project="$(SolutionDir).config/builds/PublishTrimmed.props" />
+    <Import Project="$(SolutionDir).config/builds/SuppressTfmSupportBuildWarnings.props" />
+    <Import Project="$(SolutionDir).config/builds/TreatWarningsAsErrors.props" />
+    <Import Project="$(SolutionDir).config/builds/WarningLevel.props" />
+    <Import Project="$(SolutionDir).config/builds/WarningsAsErrors.props" />
 
     <!-- Import all the props files in the code folder -->
-    <Import Project="$(SolutionDir).config/docs/Docs.props"/>
+    <Import Project="$(SolutionDir).config/docs/Docs.props" />
 
     <!-- Import all the props files in the nuget folder -->
-    <Import Project="$(SolutionDir).config/nuget/Packable.props"/>
+    <Import Project="$(SolutionDir).config/nuget/Packable.props" />
 
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Authors.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Copyright.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Description.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/DocumentationFile.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/FileVersion.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/InformationalVersion.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageIcon.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageLicenseFile.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageProjectUrl.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageReleaseNotes.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageRequireLicenseAcceptance.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageTags.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageVersion.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/RepositoryType.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/RepositoryUrl.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Title.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Version.props"/>
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Authors.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Copyright.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Description.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/DocumentationFile.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/FileVersion.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/InformationalVersion.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageIcon.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageLicenseFile.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageProjectUrl.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageReleaseNotes.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageRequireLicenseAcceptance.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageTags.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageVersion.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/RepositoryType.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/RepositoryUrl.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Title.props" />
+    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Version.props" />
 
     <!-- Import all the props files in the reference folder -->
-    <Import Project="$(SolutionDir).config/reference/AssetFolder.props"/>
-    <Import Project="$(SolutionDir).config/reference/DataFolder.props"/>
-    <Import Project="$(SolutionDir).config/reference/ContentFiles.props"/>
-    <Import Project="$(SolutionDir).config/reference/EmbeddedResources.props"/>
-    <Import Project="$(SolutionDir).config/reference/Projects.props"/>
-    <Import Project="$(SolutionDir).config/reference/Packages.props"/>
+    <Import Project="$(SolutionDir).config/reference/AssetFolder.props" />
+    <Import Project="$(SolutionDir).config/reference/DataFolder.props" />
+    <Import Project="$(SolutionDir).config/reference/ContentFiles.props" />
+    <Import Project="$(SolutionDir).config/reference/EmbeddedResources.props" />
+    <Import Project="$(SolutionDir).config/reference/Projects.props" />
+    <Import Project="$(SolutionDir).config/reference/Packages.props" />
 
     <!-- Import all the props files in the test folder -->
-    <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/ExcludeFromCodeCoverage.props"/>
-    <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/InternalsVisibleTo.props"/>
-    <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/ParallelExe.props"/>
-    <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/SonarQubeExclude.props"/>
+    <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/ExcludeFromCodeCoverage.props" />
+    <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/InternalsVisibleTo.props" />
+    <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/ParallelExe.props" />
+    <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/SonarQubeExclude.props" />
     
-    <Import Project="$(SolutionDir).config/target/AfterBuild.props"/>
+    <Import Project="$(SolutionDir).config/target/AfterBuild.props" />
 </Project>

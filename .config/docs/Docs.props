@@ -1,13 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <Project>
-    <ItemGroup Condition="
-        ($(IsPackable) == 'true') AND
-        ($(AssemblyName.Contains('Test')) == false AND 
-        $(AssemblyName.Contains('Benchmark')) == false AND
-        $(AssemblyName.Contains('Sample')) == false AND
-        $(AssemblyName.Contains('Template')) == false)">
-        <None Include="$(SolutionDir)license.md" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="."/>
-        <None Include="$(ProjectDir).docs/readme.md" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="."/>
-        <None Include="$(SolutionDir)docs/logo/logo.png" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="."/>
+    <ItemGroup Condition="         ($(IsPackable) == 'true') AND         ($(AssemblyName.Contains('Test')) == false AND          $(AssemblyName.Contains('Benchmark')) == false AND         $(AssemblyName.Contains('Sample')) == false AND         $(AssemblyName.Contains('Template')) == false)">
+        <None Include="$(SolutionDir)license.md" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="." />
+        <None Include="$(ProjectDir).docs/readme.md" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="." />
+        <None Include="$(SolutionDir)docs/logo/logo.png" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="." />
     </ItemGroup>
 </Project>
