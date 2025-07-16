@@ -44,14 +44,20 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         /// <summary>
         ///     The animator
         /// </summary>
-        private readonly Animator animator = new Animator();
+        private Animator animator = new Animator();
 
         /// <summary>
         ///     Adds the animation using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The animator builder</returns>
-        public AnimatorBuilder AddAnimation(Func<AnimationBuilder, Animation> value) => this;
+        public AnimatorBuilder AddAnimation(Func<AnimationBuilder, Animation> value)
+        {
+            AnimationBuilder animationBuilder = new AnimationBuilder();
+            Animation animation = value.Invoke(animationBuilder);
+            animator.AddAnimation(animation);
+            return this;
+        }
 
         /// <summary>
         ///     Builds this instance

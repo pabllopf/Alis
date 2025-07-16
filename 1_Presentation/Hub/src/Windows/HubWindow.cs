@@ -138,7 +138,7 @@ namespace Alis.App.Hub.Windows
 
             ImGui.Begin("##MainWindow", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove);
 
-            ImGui.BeginChild("Sidebar", new Vector2F(220, screenSize.Y - 20), true);
+            ImGui.BeginChild("Sidebar", new Vector2F(320, screenSize.Y - 20), true);
 
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(10, 10));
             ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10, 10));
@@ -172,8 +172,8 @@ namespace Alis.App.Hub.Windows
 
             ButtonsLeftMenu();
 
-            ImGui.SetCursorPosY(screenSize.Y - 70);
-            if (ImGui.Button($"{FontAwesome5.Cog} Preferences", new Vector2F(200, 40)))
+            ImGui.SetCursorPosY(screenSize.Y - 120);
+            if (ImGui.Button($"{FontAwesome5.Cog} Preferences", new Vector2F(300, 80)))
             {
                 OpenPreferences();
             }
@@ -263,7 +263,7 @@ namespace Alis.App.Hub.Windows
                 ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2F(0, 0.5f));
 
                 // Crear el botón con la alineación adecuada
-                if (ImGui.Button(menuItems[i], new Vector2F(200, 40)))
+                if (ImGui.Button(menuItems[i], new Vector2F(300, 80)))
                 {
                     selectedMenuItem = i; // Establecer el botón como seleccionado
                 }

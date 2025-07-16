@@ -67,6 +67,21 @@ namespace Alis.Builder.Core.Ecs.Entity
        /// <typeparam name="T">The </typeparam>
        /// <param name="config">The config</param>
        /// <returns>The game object builder</returns>
+       public GameObjectBuilder WithComponent<T>(AnimatorConfig<T> config) where T : IAnimator, new()
+       {
+           AnimatorBuilder builder = new AnimatorBuilder();
+           config(builder);
+           Animator animator = builder.Build();
+           components.Add(typeof(Animator), animator);
+           return this;
+       }
+       
+       /// <summary>
+       /// Adds the component using the specified config
+       /// </summary>
+       /// <typeparam name="T">The </typeparam>
+       /// <param name="config">The config</param>
+       /// <returns>The game object builder</returns>
        public GameObjectBuilder WithComponent<T>(CameraConfig<T> config) where T : ICamera, new()
        {
            CameraBuilder cameraBuilder = new CameraBuilder();

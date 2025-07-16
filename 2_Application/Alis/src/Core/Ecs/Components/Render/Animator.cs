@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 
@@ -35,16 +37,35 @@ namespace Alis.Core.Ecs.Components.Render
     /// <summary>
     /// The animator
     /// </summary>
-    public struct Animator : IInitable, IGameObjectComponent
+    public struct Animator : IAnimator
     {
+        public List<Animation> Animations { get; set; }
+        
+        public int CurrentAnimationIndex { get; set; }
+
+        public Animator()
+        {
+            Animations = new List<Animation>();
+            CurrentAnimationIndex = 0;
+        }
+
+        public Animator(List<Animation> animations)
+        {
+            Animations = animations;
+            CurrentAnimationIndex = 0;
+        }
+        
         public void Update(IGameObject self)
         {
-            
         }
 
         public void Init(IGameObject self)
         {
-            Logger.Log("Animator component initialized.");
+        }
+
+        public void AddAnimation(Animation animation)
+        {
+            Animations.Add(animation);
         }
     }
 }

@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Animation.cs
+//  File:AnimatorConfig.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,30 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Alis.Builder.Core.Ecs.Components.Render;
+using Alis.Core.Ecs.Components.Render;
 
-namespace Alis.Core.Ecs.Components.Render
+namespace Alis.Builder.Core.Ecs.Entity
 {
-    /// <summary>
-    /// The animation
-    /// </summary>
-    public struct Animation (string name = "Default", int order = 0, float speed = 0.5f) : IAnimation
-    {
-        public string Name { get; set; } = name;
-        
-        public int Order { get; set; } = order;
-        
-        public float Speed { get; set;  } = speed;
-        
-        public List<Frame> Frames { get; set;  } = new List<Frame>();
-
-        public void AddFrame(Frame frame)
-        {
-            Frames?.Add(frame);
-        }
-    }
-
-    public interface IAnimation
-    {
-    }
+    public delegate void AnimatorConfig<T>(AnimatorBuilder builder) where T : IAnimator;
 }

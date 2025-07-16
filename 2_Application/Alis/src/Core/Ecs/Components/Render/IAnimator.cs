@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Animation.cs
+//  File:IAnimator.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,30 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Core.Ecs.Components.Render
 {
-    /// <summary>
-    /// The animation
-    /// </summary>
-    public struct Animation (string name = "Default", int order = 0, float speed = 0.5f) : IAnimation
+    public interface IAnimator :  IInitable, IGameObjectComponent
     {
-        public string Name { get; set; } = name;
         
-        public int Order { get; set; } = order;
-        
-        public float Speed { get; set;  } = speed;
-        
-        public List<Frame> Frames { get; set;  } = new List<Frame>();
-
-        public void AddFrame(Frame frame)
-        {
-            Frames?.Add(frame);
-        }
-    }
-
-    public interface IAnimation
-    {
     }
 }
