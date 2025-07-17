@@ -21,6 +21,16 @@
     <_ContentIncludedByDefault Remove="wwwroot\src\imgui_impl.ts" />
     <_ContentIncludedByDefault Remove="wwwroot\src\imgui_memory_editor.ts" />
     <_ContentIncludedByDefault Remove="wwwroot\src\main.ts" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\imgui\emscripten.d.ts" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\imgui\imconfig.d.ts" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\imgui\imconfig.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\imgui\imconfig.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\imgui\imgui.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\imgui\imgui.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\imgui\imgui_demo.umd.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\imgui\imgui_impl.umd.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\imgui\imgui_memory_editor.umd.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\app.css" />
   </ItemGroup>
 
 </Project>
