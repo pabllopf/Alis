@@ -31,6 +31,8 @@ namespace Alis.App.Engine.Web
 {
     public interface IRender
     {
-        public void Render();
+        public void Render(ImGuiFrameBuilder imgui);
+        
+        void ProcessEvent(string kvpKey, object kvpValue);
     }
 }
