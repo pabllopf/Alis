@@ -33,12 +33,13 @@ namespace Alis.App.Engine.Web
 {
     internal class MainRender : IRender
     {
-        private static float[] color1 = new float[3] { 0.0f, 0.5f, 0.5f };
-        private static float[] color1Temp = new float[3] { 0.0f, 0.5f, 0.5f };
-
+        private float R = 1.0f;
+        private float G = 0.0f;
+        private float B = 0.0f;
+        
         public void Render()
         {
-            ImGui.SetNextWindowPos(0, 0, "ImGui.Cond.Once");
+           /* ImGui.SetNextWindowPos(0, 0, "ImGui.Cond.Once");
             ImGui.SetNextWindowSize(800, 600, "ImGui.Cond.Once");
             ImGui.Begin("Main Window");
             ImGui.Text("Hello, World!");
@@ -48,29 +49,22 @@ namespace Alis.App.Engine.Web
             float[] values = { 0.0f, 1.0f, 2.0f, 3.0f, 4.0f };
             ImGui.PlotLines("Line Plot", values, values.Length, 0, "Overlay Text", 0.0f, 5.0f, 200.0f, 200.0f);
             ImGui.PlotHistogram("Histogram Plot", values, values.Length, 0, "Overlay Text", 0.0f, 5.0f, 400.0f, 200.0f);
-
-            color1Temp = color1;
-            ImGui.ColorEdit3("Color Picker", color1Temp);
+            
+            ImGui.ColorEdit3("Color Picker", [R, G, B], ChangeColor);
             
             
             ImGui.Text("This is a simple ImGui window rendered in Blazor WebAssembly.");
             
-            ImGui.End();
+            ImGui.End();*/
         }
 
-        public static void SetColor(float f, float f1, float f2)
+        private void ChangeColor(float arg1, float arg2, float arg3)
         {
-            if (color1.Length == 3)
-            {
-                color1[0] = f;
-                color1[1] = f1;
-                color1[2] = f2;
-                Console.WriteLine($"Color set to: {f}, {f1}, {f2}");
-            }
-            else
-            {
-                throw new ArgumentException("Color array must have exactly 3 elements for RGB.");
-            }
+            R = arg1;
+            G = arg2;
+            B = arg3;
+            Console.WriteLine($"Color set to: R={arg1}, G={arg2}, B={arg3}");
         }
+
     }
 }
