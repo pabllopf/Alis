@@ -50,22 +50,16 @@ namespace Alis.App.Engine.Web
             imgui.End();
         }
 
-        public void ProcessEvent(string name, object value)
+        public void ProcessEvent(string name, object? value)
         {
             if (name == "Slider")
             {
-                if (value is float floatValue)
-                {
-                    _checkboxValue = floatValue;
-                }
+                _checkboxValue = Convert.ToSingle(value);
             }
             
             if (name == "Slider22")
             {
-                if (value is float floatValue)
-                {
-                    _checkboxValue2 = floatValue;
-                }
+                _checkboxValue2 = Convert.ToSingle(value);
             }
         }
     }
