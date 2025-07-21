@@ -18,10 +18,10 @@ namespace Alis.App.Engine.Web
 
             if (_jsRuntime is not null)
             {
-                Dictionary<string, object?> result = await _jsRuntime.InvokeAsync<Dictionary<string, object>>(
+                Dictionary<string, object> result = await _jsRuntime.InvokeAsync<Dictionary<string, object>>(
                     "ImGuiInterop.processFrame", builder.Commands
                 );
-                return result;
+                return result!;
             }
 
             return new();
