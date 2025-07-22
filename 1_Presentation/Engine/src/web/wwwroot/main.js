@@ -225,16 +225,33 @@ async function frame() {
     ImGui.PushStyleColor(ImGui.Col.Text,                 0xFFFFFFFF);
 
     
+    
     ImGui.ShowDemoWindow(showDemo);
     
+    // Ventana principal simulando dockspace (sin DockSpace real)
+    ImGui.SetNextWindowPos(new ImVec2(0, 0));
+    ImGui.SetNextWindowSize(new ImVec2(canvas.width, canvas.height));
+    ImGui.PushStyleVar(ImGui.StyleVar.WindowRounding, 0.0);
+    ImGui.PushStyleVar(ImGui.StyleVar.WindowBorderSize, 0.0);
+    ImGui.Begin("MainDockspace", null,
+        ImGui.WindowFlags.MenuBar |
+        ImGui.WindowFlags.NoTitleBar |
+        ImGui.WindowFlags.NoCollapse |
+        ImGui.WindowFlags.NoResize |
+        ImGui.WindowFlags.NoMove |
+        ImGui.WindowFlags.NoBringToFrontOnFocus |
+        ImGui.WindowFlags.NoNavFocus
+    );
+
+    // Menú principal y menú inferior dentro de la ventana principal
     renderMainMenuBar();
-    
     await DotNet.invokeMethodAsync("Alis.App.Engine.Web", "RenderUi");
-
-    
-
     renderBottomMenu();
-    
+
+    ImGui.End();
+    ImGui.PopStyleVar(2);
+
+
     ImGui.PopStyleColor(48);
     context.clearColor(color[0], color[1], color[2], 1.0);
     context.clear(context.COLOR_BUFFER_BIT);
