@@ -55,7 +55,7 @@ namespace Alis.App.Installer
         /// <summary>
         ///     The height window
         /// </summary>
-        private readonly int heightWindow = 50;
+        private readonly int heightWindow = 70;
 
         /// <summary>
         ///     The width window
@@ -176,7 +176,7 @@ namespace Alis.App.Installer
                 if (ImGui.Begin("MainWindow", ref isOpenMain, ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse))
                 {
                     ImGui.Separator();
-                    ImGui.ProgressBar(manager.Progress, new Vector2F(-1, 60), $"{Math.Round(manager.Progress * 100)}%");
+                    ImGui.ProgressBar(manager.Progress, new Vector2F(-1, 30), $"{Math.Round(manager.Progress * 100)}%");
                     ImGui.Separator();
                     ImGui.Text($"{animationSymbol} {manager.Message}");
                     ImGui.Separator();
