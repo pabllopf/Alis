@@ -213,6 +213,47 @@ async function frame() {
 
     
     ImGui.ShowDemoWindow(showDemo);
+
+
+    
+    // Ajusta la posición y tamaño del menú inferior
+    const bottomMenuHeight = 40;
+    const sizeMenu = 30;
+    const posY = 150; // Puedes ajustar según plataforma
+    const menuSize = new ImVec2(canvas.width, bottomMenuHeight);
+    ImGui.SetNextWindowPos(new ImVec2(0, canvas.height - bottomMenuHeight));
+    ImGui.SetNextWindowSize(menuSize);
+
+    if (ImGui.Begin("Bottom Menu", true, ImGui.WindowFlags.NoTitleBar | ImGui.WindowFlags.NoResize | ImGui.WindowFlags.NoMove | ImGui.WindowFlags.NoScrollbar | ImGui.WindowFlags.NoSavedSettings)) 
+    {
+        ImGui.Columns(6, "MenuColumns", false);
+
+        // Botón de notificaciones (sin funcionalidad)
+        ImGui.Button("🔔##notifications");
+        ImGui.SameLine();
+        if (ImGui.BeginCombo("##branchSelector", "master")) {
+            ImGui.Selectable("master");
+            ImGui.Selectable("develop");
+            ImGui.Selectable("feature/new-feature");
+            ImGui.EndCombo();
+        }
+        
+        ImGui.NextColumn();
+        ImGui.NextColumn();
+        ImGui.NextColumn();
+        ImGui.NextColumn();
+        ImGui.NextColumn();
+
+        // Barra de progreso alineada a la derecha
+        ImGui.ProgressBar(0.2, new ImVec2(150, 20), "3/15");
+    }
+
+    ImGui.End();
+    
+    
+    
+    
+    
     
     
     await DotNet.invokeMethodAsync("Alis.App.Engine.Web", "RenderUi");
