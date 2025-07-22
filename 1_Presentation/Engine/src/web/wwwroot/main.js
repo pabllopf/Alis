@@ -225,10 +225,7 @@ async function frame() {
     ImGui.PushStyleColor(ImGui.Col.Text,                 0xFFFFFFFF);
 
     
-    
-    ImGui.ShowDemoWindow(showDemo);
-    
-    // Ventana principal simulando dockspace (sin DockSpace real)
+   
     ImGui.SetNextWindowPos(new ImVec2(0, 0));
     ImGui.SetNextWindowSize(new ImVec2(canvas.width, canvas.height));
     ImGui.PushStyleVar(ImGui.StyleVar.WindowRounding, 0.0);
@@ -246,6 +243,7 @@ async function frame() {
     // Menú principal y menú inferior dentro de la ventana principal
     renderMainMenuBar();
     await DotNet.invokeMethodAsync("Alis.App.Engine.Web", "RenderUi");
+    ImGui.ShowDemoWindow(showDemo);
     renderBottomMenu();
 
     ImGui.End();
