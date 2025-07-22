@@ -164,6 +164,7 @@ namespace Alis.App.Engine.Core
             }
 
 
+            DockSpaceMenu.Initialize();
             BottomMenu.Initialize();
             ConsoleWindow.Initialize();
             GameWindow.Initialize();
@@ -192,6 +193,7 @@ namespace Alis.App.Engine.Core
                 TopMenuMac.Start();
             }
 
+            
 
             BottomMenu.Start();
             ConsoleWindow.Start();
@@ -220,6 +222,7 @@ namespace Alis.App.Engine.Core
                 TopMenuMac.Render();
             }
 
+            DockSpaceMenu.Update();
             SettingsWindow.Render();
             BottomMenu.Render();
             ConsoleWindow.Render();

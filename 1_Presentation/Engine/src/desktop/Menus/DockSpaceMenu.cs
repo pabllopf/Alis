@@ -93,7 +93,7 @@ namespace Alis.App.Engine.Menus
                 {
                     // Lógica para retroceder
                     Logger.Info("Retrocediendo...");
-                    ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
+                    //ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
                 }
 
                 ImGui.SameLine();
@@ -102,7 +102,7 @@ namespace Alis.App.Engine.Menus
                 {
                     // Lógica para avanzar
                     Logger.Info("Avanzando...");
-                    ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_tall_config.ini"));
+                    //ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_tall_config.ini"));
                 }
 
                 ImGui.SameLine();
