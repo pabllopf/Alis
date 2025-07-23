@@ -11,6 +11,38 @@ canvas.height = canvas.clientHeight * devicePixelRatio;
 
 await ImGuiImplWeb.InitWebGL(canvas);
 
+
+window.ImGuiInterop = {
+    processFrame: function(commands) {
+        const updatedValues = {};
+
+        for (const cmd of commands) {
+            switch (cmd.command) {
+                case "begin":
+                    ImGui.Begin(cmd.args.name);
+                    break;
+
+                case "end":
+                    ImGui.End();
+                    break;
+
+                case "text":
+                    ImGui.Text(cmd.args.text);
+                    break;
+
+                case "sliderfloat":
+                    const refVal = [cmd.args.value];
+                    const changed = ImGui.SliderFloat(cmd.args.label, refVal, cmd.args.min, cmd.args.max);
+                    updatedValues[cmd.args.label] = refVal[0];
+                    break;
+            }
+        }
+
+        return updatedValues;
+    }
+};
+
+
 const color = [0.0, 0.5, 0.5];
 const showDemo = [true];
 const docking = [false];
@@ -89,6 +121,7 @@ async function frame() {
         ImGui.PlotHistogram("My Histogram", values, values.length, 0, "", 0, 4, new ImVec2(0, 80));
     }
 
+    /*
     // 🔄 Llamada al método C# que devuelve el código
     const newCode = await DotNet.invokeMethodAsync("Alis.App.Engine.Web", "GetImGuiCode");
     code[0] = newCode;
@@ -99,7 +132,9 @@ async function frame() {
         eval(evalCode);
     } catch (e) {
         console.error("Error al ejecutar código desde Blazor:", e);
-    }
+    }*/
+
+    await DotNet.invokeMethodAsync("Alis.App.Engine.Web", "RenderUI");
 
     ImGui.End();
 

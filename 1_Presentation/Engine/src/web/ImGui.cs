@@ -1,87 +1,80 @@
-﻿// ImGui.cs
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.JSInterop;
 
 namespace Alis.App.Engine.Web
 {
     public static class ImGui
     {
-        private static List<string> _commands = new List<string>();
+        private static IJSRuntime? _jsRuntime;
 
-        public static void SetNextWindowPos(float x, float y, string cond = "ImGui.Cond.Once")
+        public static void Init(IJSRuntime jsRuntime)
         {
-            _commands.Add($"ImGui.SetNextWindowPos(new ImVec2({x}, {y}), {cond});");
+            _jsRuntime = jsRuntime;
         }
-
-        public static void SetNextWindowSize(float w, float h, string cond = "ImGui.Cond.Once")
+    
+        public static async Task<Dictionary<string, float>> Process(Action<ImGuiFrameBuilder> build)
         {
-            _commands.Add($"ImGui.SetNextWindowSize(new ImVec2({w}, {h}), {cond});");
-        }
+            ImGuiFrameBuilder builder = new ImGuiFrameBuilder();
+            build(builder);
 
-        public static void Begin(string title)
-        {
-            _commands.Add($"ImGui.Begin(\"{title}\");");
-        }
+            if (_jsRuntime is not null)
+            {
+                Dictionary<string, float> result = await _jsRuntime.InvokeAsync<Dictionary<string, float>>(
+                    "ImGuiInterop.processFrame", builder.Commands
+                );
+                return result;
+            }
 
-        public static void Text(string text)
-        {
-            _commands.Add($"ImGui.Text(\"{text}\");");
-        }
-
-
-        public static void ColorEdit3(string label, float[] colorVar)
-        {
-            if (colorVar.Length != 3)
-                throw new ArgumentException("Color array must have exactly 3 elements for RGB.");
-
-            string jsArray = "[" + string.Join(", ", colorVar) + "]";
-            string safeLabel = label.Replace("\"", "\\\"");
-
-            _commands.Add($"(function() {{ let color = {jsArray}; if (ImGui.ColorEdit3(\"{safeLabel}\", color)) {{ DotNet.invokeMethodAsync('Alis.App.Engine.Web', 'SetColorFromJs', color[0], color[1], color[2]); }} }})();");
+            return new();
         }
 
 
-
-        public static void PlotLines(string label, float[] valuesVar, int valuesLength, int offset, string overlayText, float scaleMin, float scaleMax, float sizeX, float sizeY)
+        public static ValueTask<bool> Begin(string name)
         {
-            string jsArray = "[" + string.Join(", ", valuesVar) + "]";
-            _commands.Add($"ImGui.PlotLines(\"{label}\", {jsArray}, {valuesLength}, {offset}, \"{overlayText}\", {scaleMin}, {scaleMax}, new ImVec2({sizeX}, {sizeY}));");
+            if (_jsRuntime is not null)
+                return _jsRuntime.InvokeAsync<bool>("ImGuiInterop.begin", name);
+
+            return ValueTask.FromResult(false);
         }
 
+        public static ValueTask Text(string text)
+        {
+            if (_jsRuntime is not null)
+                return _jsRuntime.InvokeVoidAsync("ImGuiInterop.text", text);
 
-        public static void PlotHistogram(string label, float[] valuesVar, int valuesLength, int offset, string overlayText, float scaleMin, float scaleMax, float sizeX, float sizeY)
-        {
-            string jsArray = "[" + string.Join(", ", valuesVar) + "]";
-            _commands.Add($"ImGui.PlotHistogram(\"{label}\", {jsArray}, {valuesLength}, {offset}, \"{overlayText}\", {scaleMin}, {scaleMax}, new ImVec2({sizeX}, {sizeY}));");
+            return ValueTask.CompletedTask;
         }
-        
-        
-        public static void TextColored(float r, float g, float b, float a, string text)
+    
+        public static ValueTask<bool> Checkbox(string label, bool value)
         {
-            _commands.Add($"ImGui.TextColored(new ImVec4({r}, {g}, {b}, {a}), \"{text}\");");
-        }
+            if (_jsRuntime is not null)
+                return _jsRuntime.InvokeAsync<bool>("ImGuiInterop.checkbox", label, value);
 
-        public static void TextDisabled(string text)
-        {
-            _commands.Add($"ImGui.TextDisabled(\"{text}\");");
+            return ValueTask.FromResult(value);
         }
 
-        public static void End()
+        public static ValueTask End()
         {
-            _commands.Add("ImGui.End();");
+            if (_jsRuntime is not null)
+                return _jsRuntime.InvokeVoidAsync("ImGuiInterop.end");
+
+            return ValueTask.CompletedTask;
         }
 
-        internal static string GetCode()
+        public static ValueTask<bool> Button(string clickMe)
         {
-            var sb = new StringBuilder();
-            foreach (var cmd in _commands)
-                sb.AppendLine(cmd);
-            return sb.ToString();
+            if (_jsRuntime is not null)
+                return _jsRuntime.InvokeAsync<bool>("ImGuiInterop.button", clickMe);
+
+            return ValueTask.FromResult(false);
+        }
+    
+        public static ValueTask<float> SliderFloat(string label, float value, float min, float max)
+        {
+            if (_jsRuntime is not null)
+                return _jsRuntime.InvokeAsync<float>("ImGuiInterop.sliderfloat", label, value, min, max);
+
+            return ValueTask.FromResult(value);
         }
 
-        internal static void Clear()
-        {
-            _commands.Clear();
-        }
     }
 }
