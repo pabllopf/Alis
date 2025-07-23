@@ -9,40 +9,22 @@ namespace Alis.App.Engine.Web
             new MainRender()
         };
         
-        
-        private static float _checkboxValue = 0.5f;
-
-        
         [JSInvokable]
-        public static async Task RenderUI()
+        public static async Task RenderUi()
         {
-            
             Dictionary<string, float> values = await ImGui.Process(imgui =>
+            _renderers.ForEach(render =>
             {
-                imgui.Begin("Hola");
-                imgui.Text("Texto");
-                imgui.SliderFloat("Slider", _checkboxValue, 0.0f, 1.0f);
-                imgui.End();
-                
-                imgui.Begin("Hola mundo 2");
-                imgui.Text("Texto 3332");
-                imgui.SliderFloat("Slider22", _checkboxValue, 0.0f, 1.0f);
-                imgui.End();
-            });
-
-            if (values.TryGetValue("Slider", out float newValue))
-            {
-                _checkboxValue = newValue;
-            }
+                render.Render(imgui);
+            }));
             
-            if (values.TryGetValue("Slider22", out float newValue2))
+            foreach (IRender render in _renderers)
             {
-                _checkboxValue = newValue2;
+                foreach (KeyValuePair<string, float> kvp in values)
+                {
+                    render.ProcessEvent(kvp.Key, kvp.Value);
+                }
             }
-
-            
         }
-
-
     }
 }

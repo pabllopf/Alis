@@ -134,7 +134,7 @@ async function frame() {
         console.error("Error al ejecutar código desde Blazor:", e);
     }*/
 
-    await DotNet.invokeMethodAsync("Alis.App.Engine.Web", "RenderUI");
+    await DotNet.invokeMethodAsync("Alis.App.Engine.Web", "RenderUi");
 
     ImGui.End();
 
