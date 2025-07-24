@@ -11,14 +11,14 @@ namespace Alis.App.Engine.Web
             _jsRuntime = jsRuntime;
         }
     
-        public static async Task<Dictionary<string, float>> Process(Action<ImGuiFrameBuilder> build)
+        public static async Task<Dictionary<string, object?>> Process(Action<ImGuiFrameBuilder> build)
         {
             ImGuiFrameBuilder builder = new ImGuiFrameBuilder();
             build(builder);
 
             if (_jsRuntime is not null)
             {
-                Dictionary<string, float> result = await _jsRuntime.InvokeAsync<Dictionary<string, float>>(
+                Dictionary<string, object?> result = await _jsRuntime.InvokeAsync<Dictionary<string, object>>(
                     "ImGuiInterop.processFrame", builder.Commands
                 );
                 return result;

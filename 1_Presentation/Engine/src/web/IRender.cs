@@ -33,6 +33,6 @@ namespace Alis.App.Engine.Web
     {
         public void Render(ImGuiFrameBuilder imgui);
         
-        void ProcessEvent(string kvpKey, object kvpValue);
+        void ProcessEvent(string kvpKey, object? kvpValue);
     }
 }
