@@ -42,73 +42,69 @@ namespace Alis.App.Engine.Web
         
         private float[] _colorValue = new float[] { 1.0f, 0.0f, 0.0f }; // Default color red
 
-        public void Render(ImGuiFrameBuilder imgui)
+        public void Render()
         {
-            imgui.Begin("Hola");
-            
-            imgui.Text("Texto");
-            
-            
-            imgui.SliderFloat("Slider", _checkboxValue, 0.0f, 1.0f);
-            imgui.SliderFloat("Slider22", _checkboxValue2, 0.0f, 1.0f);
-            
-            imgui.TextColored(new float[] { 1.0f, 0.0f, 0.0f }, "Texto rojo");
-            imgui.TextColored(new float[] { 0.0f, 0.0f, 1.0f }, "Texto azul");
-            imgui.TextColored(new float[] { 0.0f, 1.0f, 0.0f }, "Texto verde");
-            
-            imgui.TextDisabled("Texto deshabilitado");
-            
-            imgui.Separator();
-            
-            imgui.Text("Texto normal");
-            
-            imgui.Text("Texto normal 2");
-            
-            imgui.Checkbox("Checkbox", checkboxValue3);
-            imgui.Checkbox("Checkbox 2", checkboxValue4);
-            
-            imgui.Button("Button");
-            
-            imgui.ColorEdit3("ColorEdit3", _colorValue);
-            
-            
-            imgui.PlotHistogram("histogram", new float[] { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f }, 5, "Histogram", 0.0f, 1.0f, new float[] { 0, 80 });
-            
-            imgui.PlotLines("lines", new float[] { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f }, 5, "Lines", 0.0f, 1.0f, new float[] { 0, 80 });
-            
-            imgui.End();
-            
-        }
-
-        public void ProcessEvent(string name, object? value)
-        {
-            if (name == "Slider")
+            ImGui.Begin("Hola", value =>
             {
-                _checkboxValue = Convert.ToSingle(value);
-            }
+                Console.WriteLine($"Window is now {(value ? "open" : "closed")}");
+            });
             
-            if (name == "Slider22")
-            {
-                _checkboxValue2 = Convert.ToSingle(value);
-            }
-
-            if (name == "Checkbox")
-            {
-                checkboxValue3 = Convert.ToBoolean(value);
-            }
+            ImGui.Text("Texto");
             
-            if (name == "Checkbox 2")
+            
+            ImGui.SliderFloat("Slider", _checkboxValue, 0.0f, 1.0f, value =>
             {
-                checkboxValue4 = Convert.ToBoolean(value);
-            }
-
-            if (name == "ColorEdit3")
+                _checkboxValue = value;
+                Console.WriteLine($"Slider value changed: {_checkboxValue}");
+            });
+            
+            ImGui.SliderFloat("Slider22", _checkboxValue2, 0.0f, 1.0f, value =>
             {
-                if (value is System.Text.Json.JsonElement elem && elem.ValueKind == System.Text.Json.JsonValueKind.Array)
-                {
-                    _colorValue = elem.EnumerateArray().Select(x => x.GetSingle()).ToArray();
-                }
-            }
+                _checkboxValue2 = value;
+                Console.WriteLine($"Slider22 value changed: {_checkboxValue2}");
+            });
+            
+            ImGui.TextColored(new float[] { 1.0f, 0.0f, 0.0f }, "Texto rojo");
+            ImGui.TextColored(new float[] { 0.0f, 0.0f, 1.0f }, "Texto azul");
+            ImGui.TextColored(new float[] { 0.0f, 1.0f, 0.0f }, "Texto verde");
+            
+            ImGui.TextDisabled("Texto deshabilitado");
+            
+            ImGui.Separator();
+            
+            ImGui.Text("Texto normal");
+            
+            ImGui.Text("Texto normal 2");
+            
+            ImGui.Checkbox("Checkbox", checkboxValue3, value =>
+            {
+                checkboxValue3 = value;
+                Console.WriteLine($"Checkbox 1 value changed: {checkboxValue3}");
+            });
+            
+            ImGui.Checkbox("Checkbox 2", checkboxValue4 , value =>
+            {
+                checkboxValue4 = value;
+                Console.WriteLine($"Checkbox 2 value changed: {checkboxValue4}");
+            });
+            
+            ImGui.Button("Button");
+            
+            ImGui.ColorEdit3("ColorEdit3", _colorValue , value =>
+            {
+                _colorValue = value;
+                Console.WriteLine($"ColorEdit3 value changed: {_colorValue[0]}, {_colorValue[1]}, {_colorValue[2]}");
+            });
+            
+            
+            ImGui.PlotHistogram("histogram", new float[] { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f }, 5, "Histogram", 0.0f, 1.0f, new float[] { 0, 80 });
+            
+            ImGui.PlotLines("lines", new float[] { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f }, 5, "Lines", 0.0f, 1.0f, new float[] { 0, 80 });
+            
+            
+            
+            ImGui.End();
+            
         }
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IRender.cs
+//  File:ImguiEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,8 +29,10 @@
 
 namespace Alis.App.Engine.Web
 {
-    public interface IRender
+    public class ImGuiEvent
     {
-        public void Render();
+        public string Name { get; set; } = string.Empty;
+        
+        public Action<object> Callback { get; set; } = null!;
     }
 }
