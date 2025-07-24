@@ -150,9 +150,8 @@ namespace Alis.App.Engine.Desktop.Menus
             MenuActions.Add("Console", ConsoleWindow);
             MenuActions.Add("Layout:Default", LayoutDefault);
             MenuActions.Add("Layout:2 by 3", Layout2by3);
-            MenuActions.Add("Layout:4Split", Layout4Split);
+            MenuActions.Add("Layout:4 Split", Layout4Split);
             MenuActions.Add("Layout:Wide", LayoutWide);
-            MenuActions.Add("Layout:Tall", LayoutTall); 
             
 
             MenuActions.Add("Alis Manual", AlisManual);
@@ -160,24 +159,79 @@ namespace Alis.App.Engine.Desktop.Menus
             MenuActions.Add("Report Bug", ReportBug);
         }
 
-        private static void LayoutTall()
-        {
-            Logger.Info("Layout Tall selected");
-        }
-
         private static void LayoutWide()
         {
             Logger.Info("Layout Wide selected");
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("LayoutWideOsx.ini"));
+                return;
+            }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("LayoutWideWin.ini"));
+                return;
+            }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("LayoutWideLinux.ini"));
+                return;
+            }
+            
+            Logger.Error("Unsupported OS for layout wide");
         }
 
         private static void Layout4Split()
         {
             Logger.Info("Layout 4 Split selected");
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Layout4SplitOsx.ini"));
+                return;
+            }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Layout4SplitWin.ini"));
+                return;
+            }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Layout4SplitLinux.ini"));
+                return;
+            }
+            
+            Logger.Error("Unsupported OS for layout 4 split");
         }
         
         private static void Layout2by3()
         {
             Logger.Info("Layout 2 by 3 selected");
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Layout2by3Osx.ini"));
+                return;
+            }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Layout2by3Win.ini"));
+                return;
+            }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Layout2by3Linux.ini"));
+                return;
+            }
+            
+            Logger.Error("Unsupported OS for layout 2 by 3");
         }
 
         private static void LayoutDefault()
