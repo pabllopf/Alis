@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Diagnostics;
 using Alis.App.Engine.Desktop.Core;
 using Alis.Core.Aspect.Logging;
@@ -227,9 +228,19 @@ namespace Alis.App.Engine.Desktop.Menus
                 "Scene View",
                 "Game View",
                 "Inspector",
-                "Hierarchy",
-                "Console"
+                "Console",
+                "-"
             });
+
+            // Ejemplo de uso para "Layouts"
+            AddSubMenu(
+                mainMenu,
+                "Window",
+                "Layouts",
+                new[] { "Default", "2 by 3", "4 Split", "Wide", "Tall" },
+                new Action<object>(layout => TopMenuAction.ExecuteMenuAction($"Layout:{layout}"))
+            );
+
 
             AddMenu(mainMenu, "Help", new[]
             {
@@ -287,5 +298,38 @@ namespace Alis.App.Engine.Desktop.Menus
             menuItem.Submenu = submenu;
             mainMenu.AddItem(menuItem);
         }
+        
+       // Añadir submenú genérico
+        [Conditional("OSX")]
+        private static void AddSubMenu(NSMenu mainMenu, string parentMenuTitle, string subMenuTitle, string[] options, Action<string> onOptionSelected)
+        {
+            NSMenuItem subMenuItem = new NSMenuItem(subMenuTitle);
+            NSMenu subMenu = new NSMenu(subMenuTitle);
+        
+            foreach (string option in options)
+            {
+                NSMenuItem optionItem = new NSMenuItem(option, (sender, e) =>
+                {
+                    Logger.Log($"{subMenuTitle} opción seleccionada: {option}");
+                    onOptionSelected(option);
+                });
+                subMenu.AddItem(optionItem);
+            }
+        
+            subMenuItem.Submenu = subMenu;
+        
+            // Buscar el menú padre y añadir el submenú
+            for (int i = 0; i < mainMenu.Count; i++)
+            {
+                NSMenuItem item = mainMenu.ItemAt(i);
+                if (item.Title == parentMenuTitle)
+                {
+                    item.Submenu.AddItem(subMenuItem);
+                    break;
+                }
+            }
+        }
+        
+       
     }
 }
