@@ -33,8 +33,8 @@ using System.Runtime.InteropServices;
 using Alis.App.Engine.Desktop.Entity;
 using Alis.App.Engine.Desktop.Menus;
 using Alis.App.Engine.Desktop.Windows;
-using Alis.App.Engine.Desktop.Windows.Settings;
 using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Ecs.Systems;
 using Alis.Extension.Graphic.Ui.Controllers;
 
 namespace Alis.App.Engine.Desktop.Core
@@ -140,6 +140,8 @@ namespace Alis.App.Engine.Desktop.Core
         ///     Gets or sets the value of the project
         /// </summary>
         public Project Project { get; set; }
+
+        public VideoGame VideoGame { get; set; } = new VideoGame();
 
         /// <summary>
         ///     Initializes this instance
