@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.App.Engine.Core;
+using Alis.App.Engine.Desktop.Core;
 
-namespace Alis.App.Engine.Windows
+namespace Alis.App.Engine.Desktop.Windows
 {
     /// <summary>
     ///     The window interface

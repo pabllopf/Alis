@@ -27,21 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using Alis.App.Engine.Core;
-
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Shape.Rectangle;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.OpenGL;
-using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Extension.Graphic.Sdl2;
+using Alis.App.Engine.Desktop.Core;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
 
-namespace Alis.App.Engine.Windows
+namespace Alis.App.Engine.Desktop.Windows
 {
     /// <summary>
     ///     The scene window class
@@ -52,6 +42,8 @@ namespace Alis.App.Engine.Windows
         ///     The hashtag
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Hashtag} Scene";
+        
+        private bool _isOpen = true;
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneWindow" /> class
@@ -77,12 +69,17 @@ namespace Alis.App.Engine.Windows
 
         public void Render()
         {
-            if (ImGui.Begin(NameWindow, ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar))
+            if (!_isOpen)
+            {
+                return;
+            }
+            
+            if (ImGui.Begin(NameWindow, ref _isOpen, ImGuiWindowFlags.NoCollapse))
             {
                 ImGui.Text("Scene Window");
-                
-                ImGui.End();
             }
+            
+            ImGui.End();
         }
     }
 }

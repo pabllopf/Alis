@@ -27,19 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.App.Engine.Core;
+using Alis.App.Engine.Desktop.Core;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
 
-namespace Alis.App.Engine.Menus
+namespace Alis.App.Engine.Desktop.Menus
 {
     /// <summary>
     ///     The bottom menu class
     /// </summary>
     /// <seealso cref="IMenu" />
-    public class BottomMenu : IMenu
+    public class BottomMenu : IRenderable, IHasSpaceWork
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="BottomMenu" /> class

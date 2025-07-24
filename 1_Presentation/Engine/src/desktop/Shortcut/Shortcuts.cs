@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.App.Engine.Shortcut
+namespace Alis.App.Engine.Desktop.Shortcut
 {
     /// <summary>
     ///     The shortcuts class

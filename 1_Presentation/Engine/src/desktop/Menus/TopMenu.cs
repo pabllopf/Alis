@@ -27,18 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.App.Engine.Core;
-using Alis.App.Engine.Shortcut;
+using Alis.App.Engine.Desktop.Core;
+using Alis.App.Engine.Desktop.Shortcut;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 
-namespace Alis.App.Engine.Menus
+namespace Alis.App.Engine.Desktop.Menus
 {
     /// <summary>
     ///     The top menu class
     /// </summary>
     /// <seealso cref="IMenu" />
-    public class TopMenu : IMenu
+    public class TopMenu :  IRenderable, IHasSpaceWork
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="TopMenu" /> class

@@ -32,14 +32,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using Alis.App.Engine.Core;
-
+using Alis.App.Engine.Desktop.Core;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
 
-namespace Alis.App.Engine.Windows
+namespace Alis.App.Engine.Desktop.Windows
 {
     /// <summary>
     ///     The assets window class
@@ -337,9 +336,12 @@ namespace Alis.App.Engine.Windows
                 RenderAssets();
 
                 //ImGui.EndColumns(); // Finalizar las columnas
+                
+             
             }
 
             ImGui.End();
+            
         }
 
 

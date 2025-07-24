@@ -27,30 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
-using Alis.App.Engine.Entity;
-using Alis.App.Engine.Menus;
-using Alis.App.Engine.Windows;
-using Alis.App.Engine.Windows.Settings;
+using Alis.App.Engine.Desktop.Entity;
+using Alis.App.Engine.Desktop.Menus;
+using Alis.App.Engine.Desktop.Windows;
+using Alis.App.Engine.Desktop.Windows.Settings;
 using Alis.Core.Aspect.Data.Json;
-using Alis.Extension.Graphic.Sdl2.Structs;
-using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Controllers;
 
-namespace Alis.App.Engine.Core
+namespace Alis.App.Engine.Desktop.Core
 {
     /// <summary>
     ///     The space work class
     /// </summary>
     public class SpaceWork
     {
-        /// <summary>
-        ///     The settings window
-        /// </summary>
-        public readonly SettingsWindow SettingsWindow;
-
         public ImGuiControllerImplementGlfw ImGuiController;
 
         /// <summary>
@@ -61,19 +54,22 @@ namespace Alis.App.Engine.Core
             ImGuiController = imGuiController;
             
             DockSpaceMenu = new DockSpaceMenu(this);
+            TopMenu = new TopMenu(this);
+            TopMenuMac = new TopMenuMac(this);
+            BottomMenu = new BottomMenu(this);
+            
+            
+            
             ConsoleWindow = new ConsoleWindow(this);
             GameWindow = new GameWindow(this);
             SettingsWindow = new SettingsWindow(this);
             InspectorWindow = new InspectorWindow(this);
-            SolutionWindow = new SolutionWindow(this);
-            //SceneWindow = new SceneWindow(this);
+            SceneWindow = new SceneWindow(this);
             ProjectWindow = new ProjectWindow(this);
             AudioPlayerWindow = new AudioPlayerWindow(this);
             AssetsWindow = new AssetsWindow(this);
 
-            TopMenu = new TopMenu(this);
-            TopMenuMac = new TopMenuMac(this);
-            BottomMenu = new BottomMenu(this);
+          
 
             Project = JsonSerializer.Deserialize<Project>(File.ReadAllText(Path.Combine(Path.GetTempPath(), "projectConfig.json")));
         }
@@ -92,6 +88,8 @@ namespace Alis.App.Engine.Core
         ///     Gets the value of the console window
         /// </summary>
         internal ConsoleWindow ConsoleWindow { get; }
+        
+        internal SettingsWindow SettingsWindow { get; }
 
         /// <summary>
         ///     Gets the value of the game window
@@ -102,11 +100,6 @@ namespace Alis.App.Engine.Core
         ///     Gets the value of the inspector window
         /// </summary>
         internal InspectorWindow InspectorWindow { get; }
-
-        /// <summary>
-        ///     Gets the value of the solution window
-        /// </summary>
-        internal SolutionWindow SolutionWindow { get; }
 
         /// <summary>
         ///     Gets the value of the scene window
@@ -153,7 +146,6 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public void Initialize()
         {
-            // if is macos system:
             if (!IsMacOs)
             {
                 TopMenu.Initialize();
@@ -166,11 +158,12 @@ namespace Alis.App.Engine.Core
 
             DockSpaceMenu.Initialize();
             BottomMenu.Initialize();
+            
+            
             ConsoleWindow.Initialize();
             GameWindow.Initialize();
             InspectorWindow.Initialize();
-            //SolutionWindow.Initialize();
-            //SceneWindow.Initialize();
+            SceneWindow.Initialize();
             ProjectWindow.Initialize();
             AudioPlayerWindow.Initialize();
             AssetsWindow.Initialize();
@@ -192,15 +185,15 @@ namespace Alis.App.Engine.Core
             {
                 TopMenuMac.Start();
             }
-
             
-
             BottomMenu.Start();
+            DockSpaceMenu.Start();
+            
+            
             ConsoleWindow.Start();
             GameWindow.Start();
             InspectorWindow.Start();
-            //SolutionWindow.Start();
-            //SceneWindow.Start();
+            SceneWindow.Start();
             ProjectWindow.Start();
             AudioPlayerWindow.Start();
             AssetsWindow.Start();
@@ -222,15 +215,16 @@ namespace Alis.App.Engine.Core
                 TopMenuMac.Render();
             }
 
-            DockSpaceMenu.Update();
-            SettingsWindow.Render();
+            DockSpaceMenu.Render();
             BottomMenu.Render();
+            
+            
+            SettingsWindow.Render();
             ConsoleWindow.Render();
-            //GameWindow.Render();
-            //InspectorWindow.Render();
-            //SolutionWindow.Render();
-            //SceneWindow.Render();
-            //ProjectWindow.Render();
+            GameWindow.Render();
+            InspectorWindow.Render();
+            SceneWindow.Render();
+            ProjectWindow.Render();
             AudioPlayerWindow.Render();
             AssetsWindow.Render();
         }

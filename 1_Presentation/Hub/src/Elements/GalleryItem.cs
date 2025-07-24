@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Hub.Entity
+namespace Alis.App.Hub.Elements
 {
     /// <summary>
     ///     The gallery item class

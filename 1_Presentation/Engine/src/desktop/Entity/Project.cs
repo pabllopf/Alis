@@ -29,7 +29,7 @@
 
 using Alis.Core.Aspect.Data.Json;
 
-namespace Alis.App.Engine.Entity
+namespace Alis.App.Engine.Desktop.Entity
 {
     /// <summary>
     ///     The project class

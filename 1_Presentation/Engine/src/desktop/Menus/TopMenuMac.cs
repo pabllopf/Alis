@@ -28,17 +28,17 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
-using Alis.App.Engine.Core;
+using Alis.App.Engine.Desktop.Core;
 using Alis.Core.Aspect.Logging;
 using MonoMac.AppKit;
 
-namespace Alis.App.Engine.Menus
+namespace Alis.App.Engine.Desktop.Menus
 {
     /// <summary>
     ///     The top menu mac class
     /// </summary>
     /// <seealso cref="IMenu" />
-    public class TopMenuMac : IMenu
+    public class TopMenuMac :  IRenderable, IHasSpaceWork
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="TopMenuMac" /> class

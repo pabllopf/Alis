@@ -28,14 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.App.Engine.Core;
-
+using Alis.App.Engine.Desktop.Core;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
 
-namespace Alis.App.Engine.Windows
+namespace Alis.App.Engine.Desktop.Windows
 {
     /// <summary>
     ///     The audio player window class
@@ -136,8 +135,9 @@ namespace Alis.App.Engine.Windows
                 {
                     ImGui.ProgressBar(progress, new Vector2F(-10, 0), $"{currentTime} / {totalTime} ");
                 }
+                
             }
-
+            
             ImGui.End();
         }
     }

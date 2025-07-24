@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine
+namespace Alis.App.Engine.Desktop
 {
     /// <summary>
     ///     The program class

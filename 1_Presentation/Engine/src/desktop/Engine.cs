@@ -1,8 +1,7 @@
-
-using Alis.App.Engine.Core;
+using Alis.App.Engine.Desktop.Core;
 using Alis.Extension.Graphic.Ui.Controllers;
 
-namespace Alis.App.Engine
+namespace Alis.App.Engine.Desktop
 {
     /// <summary>
     ///     The engine class
@@ -26,7 +25,7 @@ namespace Alis.App.Engine
                 768,
                 0,
 #if DEBUG
-                true
+                false
 #else
                     false
 #endif
