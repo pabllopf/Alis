@@ -34,6 +34,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Desktop.Core;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Extension.Graphic.Ui;
 using MonoMac.AppKit;
@@ -161,27 +162,47 @@ namespace Alis.App.Engine.Desktop.Menus
 
         private static void LayoutTall()
         {
-            Console.WriteLine("Layout Tall selected");
+            Logger.Info("Layout Tall selected");
         }
 
         private static void LayoutWide()
         {
-            Console.WriteLine("Layout Wide selected");
+            Logger.Info("Layout Wide selected");
         }
 
         private static void Layout4Split()
         {
-            Console.WriteLine("Layout 4 Split selected");
+            Logger.Info("Layout 4 Split selected");
         }
         
         private static void Layout2by3()
         {
-            Console.WriteLine("Layout 2 by 3 selected");
+            Logger.Info("Layout 2 by 3 selected");
         }
 
         private static void LayoutDefault()
         {
-            Console.WriteLine("Layout Default selected");
+            Logger.Info("Layout Default selected");
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("LayoutDefaultOsx.ini"));
+                return;
+            }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("LayoutDefaultWin.ini"));
+                return;
+            }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("LayoutDefaultLinux.ini"));
+                return;
+            }
+            
+            Logger.Error("Unsupported OS for layout default");
         }
 
         /// <summary>

@@ -1,4 +1,10 @@
+using System;
+using System.IO;
+using System.Runtime.InteropServices;
 using Alis.App.Engine.Desktop.Core;
+using Alis.Core.Aspect.Data.Resource;
+using Alis.Core.Aspect.Logging;
+using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Controllers;
 
 namespace Alis.App.Engine.Desktop
@@ -39,6 +45,11 @@ namespace Alis.App.Engine.Desktop
             
             spaceWork.Initialize();
             spaceWork.Start();
+
+            if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "imgui.ini")))
+            {
+                LayoutDefault();
+            }
             
             while (imguiController.IsRunning)
             {
@@ -55,6 +66,32 @@ namespace Alis.App.Engine.Desktop
             
             
             imguiController.OnExit();
+        }
+        
+        
+        private static void LayoutDefault()
+        {
+            Logger.Info("Layout Default selected");
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("LayoutDefaultOsx.ini"));
+                return;
+            }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("LayoutDefaultWin.ini"));
+                return;
+            }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("LayoutDefaultLinux.ini"));
+                return;
+            }
+            
+            Logger.Error("Unsupported OS for layout default");
         }
     }
 }
