@@ -28,10 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Desktop.Core;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Extension.Graphic.Ui;
@@ -57,6 +59,13 @@ namespace Alis.App.Engine.Desktop.Windows
         private  uint vbo;
         private  uint _previewTexture;
         private  int _previewWidth = 512, _previewHeight = 512;
+        
+        // Crear un HashSet para almacenar los botones activos
+        /// <summary>
+        ///     The active button
+        /// </summary>
+        private readonly HashSet<ActiveButton> activeButtons = new HashSet<ActiveButton>();
+
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneWindow" /> class
@@ -95,8 +104,131 @@ namespace Alis.App.Engine.Desktop.Windows
             // Show the preview image in ImGui
             ShowPreviewImage();
             
-            if (ImGui.Begin(NameWindow, ref _isOpen, ImGuiWindowFlags.NoCollapse))
+            if (ImGui.Begin(NameWindow, ref _isOpen, ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.MenuBar))
             {
+                if (ImGui.BeginMenuBar())
+                {
+                    // Botón HandSpock
+                    if (activeButtons.Contains(ActiveButton.HandSpock))
+                    {
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        if (ImGui.Button($"{FontAwesome5.HandSpock}"))
+                        {
+                            activeButtons.Remove(ActiveButton.HandSpock);
+                        }
+
+                        ImGui.PopStyleColor();
+                    }
+                    else
+                    {
+                        if (ImGui.Button($"{FontAwesome5.HandSpock}"))
+                        {
+                            activeButtons.Add(ActiveButton.HandSpock);
+                        }
+                    }
+
+                    
+                    // Botón ArrowsAlt
+                    if (activeButtons.Contains(ActiveButton.ArrowsAlt))
+                    {
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        if (ImGui.Button($"{FontAwesome5.ArrowsAlt}"))
+                        {
+                            activeButtons.Remove(ActiveButton.ArrowsAlt);
+                        }
+
+                        ImGui.PopStyleColor();
+                    }
+                    else
+                    {
+                        if (ImGui.Button($"{FontAwesome5.ArrowsAlt}"))
+                        {
+                            activeButtons.Add(ActiveButton.ArrowsAlt);
+                        }
+                    }
+
+                    
+                    // Botón Cogs
+                    if (activeButtons.Contains(ActiveButton.Cogs))
+                    {
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        if (ImGui.Button($"{FontAwesome5.Cogs}"))
+                        {
+                            activeButtons.Remove(ActiveButton.Cogs);
+                        }
+
+                        ImGui.PopStyleColor();
+                    }
+                    else
+                    {
+                        if (ImGui.Button($"{FontAwesome5.Cogs}"))
+                        {
+                            activeButtons.Add(ActiveButton.Cogs);
+                        }
+                    }
+
+                    // Botón InfoCircle
+                    if (activeButtons.Contains(ActiveButton.InfoCircle))
+                    {
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        if (ImGui.Button($"{FontAwesome5.InfoCircle}"))
+                        {
+                            activeButtons.Remove(ActiveButton.InfoCircle);
+                        }
+
+                        ImGui.PopStyleColor();
+                    }
+                    else
+                    {
+                        if (ImGui.Button($"{FontAwesome5.InfoCircle}"))
+                        {
+                            activeButtons.Add(ActiveButton.InfoCircle);
+                        }
+                    }
+
+                    // Botón Grid
+                    if (activeButtons.Contains(ActiveButton.Grid))
+                    {
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        if (ImGui.Button($"{FontAwesome5.Th}"))
+                        {
+                            activeButtons.Remove(ActiveButton.Grid);
+                        }
+
+                        ImGui.PopStyleColor();
+                    }
+                    else
+                    {
+                        if (ImGui.Button($"{FontAwesome5.Th}"))
+                        {
+                            activeButtons.Add(ActiveButton.Grid);
+                        }
+                    }
+
+                    
+                    // Botó User
+                    if (activeButtons.Contains(ActiveButton.User))
+                    {
+                        ImGui.PushStyleColor(ImGuiCol.Text, new Vector4F(0.2f, 0.5f, 0.8f, 1.0f)); // Color azul claro
+                        if (ImGui.Button($"{FontAwesome5.User}"))
+                        {
+                            activeButtons.Remove(ActiveButton.User);
+                        }
+
+                        ImGui.PopStyleColor();
+                    }
+                    else
+                    {
+                        if (ImGui.Button($"{FontAwesome5.User}"))
+                        {
+                            activeButtons.Add(ActiveButton.User);
+                        }
+                    }
+
+                    ImGui.EndMenuBar();
+                }
+
+                
                 ImGui.Image((IntPtr) _previewTexture, ImGui.GetContentRegionAvail());
             }
             
@@ -250,5 +382,43 @@ namespace Alis.App.Engine.Desktop.Windows
 
             Gl.GlBindTexture(TextureTarget.Texture2D, 0);
         }
+    }
+    
+    internal enum ActiveButton
+    {
+        /// <summary>
+        ///     The none active button
+        /// </summary>
+        None,
+
+        /// <summary>
+        ///     The hand spock active button
+        /// </summary>
+        HandSpock,
+
+        /// <summary>
+        ///     The arrows alt active button
+        /// </summary>
+        ArrowsAlt,
+
+        /// <summary>
+        ///     The cogs active button
+        /// </summary>
+        Cogs,
+
+        /// <summary>
+        ///     The info circle active button
+        /// </summary>
+        InfoCircle,
+
+        /// <summary>
+        ///     The tools active button
+        /// </summary>
+        Grid,
+
+        /// <summary>
+        ///     The user active button
+        /// </summary>
+        User
     }
 }
