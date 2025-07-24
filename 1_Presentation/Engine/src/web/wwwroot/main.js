@@ -30,10 +30,55 @@ window.ImGuiInterop = {
                     ImGui.Text(cmd.args.text);
                     break;
 
+                case "textcolored":
+                    const colorArr = cmd.args.color.length === 3 ? [...cmd.args.color, 1.0] : cmd.args.color;
+                    ImGui.TextColored(new ImVec4(...colorArr), cmd.args.text);
+                    break;
+
+                case "textdisabled":
+                    ImGui.TextDisabled(cmd.args.text);
+                    break;
+
+                case "separator":
+                    ImGui.Separator();
+                    break;
+
+                case "button":
+                    if (ImGui.Button(cmd.args.label)) {
+                        updatedValues[cmd.args.label] = true;
+                    }
+                    break;
+
+                case "checkbox":
+                    const boolRef = [cmd.args.value];
+                    if (ImGui.Checkbox(cmd.args.label, boolRef)) {
+                        updatedValues[cmd.args.label] = boolRef[0];
+                    }
+                    break;
+
                 case "sliderfloat":
                     const refVal = [cmd.args.value];
                     const changed = ImGui.SliderFloat(cmd.args.label, refVal, cmd.args.min, cmd.args.max);
                     updatedValues[cmd.args.label] = refVal[0];
+                    break;
+
+                case "coloredit3":
+                    const colorRef = [...cmd.args.value];
+                    if (ImGui.ColorEdit3(cmd.args.label, colorRef)) {
+                        updatedValues[cmd.args.label] = colorRef;
+                    }
+                    break;
+
+                case "plotlines":
+                    ImGui.PlotLines(cmd.args.label, cmd.args.values, cmd.args.values.length, cmd.args.offset, cmd.args.overlayText, cmd.args.scaleMin, cmd.args.scaleMax, new ImVec2(...cmd.args.size));
+                    break;
+
+                case "plothistogram":
+                    ImGui.PlotHistogram(cmd.args.label, cmd.args.values, cmd.args.values.length, cmd.args.offset, cmd.args.overlayText, cmd.args.scaleMin, cmd.args.scaleMax, new ImVec2(...cmd.args.size));
+                    break;
+
+                case "image":
+                    ImGui.Image(new ImTextureRef(cmd.args.texture), new ImVec2(...cmd.args.size));
                     break;
             }
         }
