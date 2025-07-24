@@ -2,7 +2,7 @@
     <Target Name="BuildAndCopyEngineOutput" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub'))">
         <MSBuild Projects="$(SolutionDir)1_Presentation/Engine/src/desktop/Alis.App.Engine.Desktop.csproj" Targets="Build" Properties="Configuration=$(Configuration)"/>
         <PropertyGroup>
-            <EngineOutputDir>$(SolutionDir)1_Presentation/Engine/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/</EngineOutputDir>
+            <EngineOutputDir>$(SolutionDir)1_Presentation/Engine/src/desktop/bin/$(Configuration)/$(RuntimeIdentifier)/lib/</EngineOutputDir>
             <DestinationDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/Editor/v$(AssemblyVersion)/</DestinationDir>
         </PropertyGroup>
         <ItemGroup>
