@@ -53,7 +53,7 @@ namespace Alis.App.Engine.Desktop.Menus
         public void Initialize()
         {
         }
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -66,208 +66,174 @@ namespace Alis.App.Engine.Desktop.Menus
         /// </summary>
         public void Render()
         {
-             // Establece el padding de la ventana
-            //ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);  // Igual padding arriba y abajo
-            //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 4f));
-            //ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(4, 4));
+            // Set button and frame background colors
+            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
+            ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
 
-            // Set height of the menu bar
-            //ImGui.SetWindowSize(new Vector2F(0, 5), ImGuiCond.Always);
-
-
-            // Crear barra de menú
             if (ImGui.BeginMenuBar())
             {
-                // Elementos centrados dinámicamente
-                //float contentHeight = ImGui.GetContentRegionAvail().Y;  // Obtiene el espacio disponible en la ventana
-                //float centerOffsetY = contentHeight * 0.5f;  // Calcula el centro vertical
-
-
-                // Establece la posición de la ventana de manera que se centre verticalmente
-                //ImGui.SetCursorPosY(2.5f); // Ajuste para alinear mejor el contenido
-                //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 5f)); // Ajustar el espaciado si es necesario
-
-                // Establecer el color de fondo de los botones
-                ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
-                ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
-                // quit border:
-                ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
-
-                // Primer conjunto de botones: izquierda
-                if (ImGui.Button($"{FontAwesome5.ArrowLeft}"))
-                {
-                    // Lógica para retroceder
-                    Logger.Info("Retrocediendo...");
-                    //ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
-                }
-
-                ImGui.SameLine();
-
-                if (ImGui.Button($"{FontAwesome5.ArrowRight}"))
-                {
-                    // Lógica para avanzar
-                    Logger.Info("Avanzando...");
-                    //ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_tall_config.ini"));
-                }
-
-                ImGui.SameLine();
-
-
-                // Selector de solución
-                ImGui.SetNextItemWidth(100);
-                if (ImGui.BeginCombo("##Solution Name", $"{FontAwesome5.Font} Sample", ImGuiComboFlags.HeightLarge))
-                {
-                    ImGui.Separator();
-                    if (ImGui.Selectable($"{FontAwesome5.Plus} New Solution"))
-                    {
-                    }
-
-                    if (ImGui.Selectable($"{FontAwesome5.FolderOpen} Open Solution"))
-                    {
-                    }
-
-                    ImGui.Separator();
-                    ImGui.TextDisabled("Recent Solutions");
-                    if (ImGui.Selectable("Sample Solution"))
-                    {
-                    }
-
-                    ImGui.EndCombo();
-                }
-
-                ImGui.SameLine();
-                
-                ImGui.SetNextItemWidth(180);
-                if (ImGui.BeginCombo("##branchSelector", $"{FontAwesome5.CodeBranch}Master", ImGuiComboFlags.HeightLarge))
-                {
-                    if (ImGui.Selectable("master"))
-                    {
-                        Logger.Info("Switching to branch master...");
-                    }
-                    if (ImGui.Selectable("develop"))
-                    {
-                        Logger.Info("Switching to branch develop...");
-                    }
-                    if (ImGui.Selectable("feature/new-feature"))
-                    {
-                        Logger.Info("Switching to branch feature/new-feature...");
-                    }
-                    ImGui.EndCombo();
-                }
-                
-                ImGui.SameLine();
-
-
-                // Segundo conjunto de botones: en el centro
-
-                /*
-                Scene scene = SpaceWork.VideoGame.Context.SceneManager.CurrentScene;
-                List<Scene> scenes = SpaceWork.VideoGame.Context.SceneManager.Scenes;
-
-                int numberCharsName = scene.Name.Length + 1;
-                ImGui.SetNextItemWidth(32 + numberCharsName * 10);
-
-                if (ImGui.BeginCombo($"##{scene.Id}", $"{FontAwesome5.Cube} {scene.Name}"))
-                {
-                    // Show the scenes of game:
-                    for (int i = 0; i < scenes.Count; i++)
-                    {
-                        Scene s = scenes[i];
-                        if (ImGui.Selectable($"{FontAwesome5.Cube} {s.Name}"))
-                        {
-                            SpaceWork.VideoGame.Context.SceneManager.LoadScene(i);
-                        }
-                    }
-
-                    ImGui.EndCombo();
-                }*/
-
-
-                ImGui.SameLine();
-
-                // Botones de control: Play, Pause, Stop
-                float controlOffset = ImGui.GetWindowWidth() * 0.5f - 65;
-                ImGui.SameLine(controlOffset);
-                if (ImGui.Button($"{FontAwesome5.Play}"))
-                {
-                    Logger.Info("Ejecutando juego...");
-                }
-
-                ImGui.SameLine();
-                if (ImGui.Button($"{FontAwesome5.Pause}"))
-                {
-                    Logger.Info("Pausando juego...");
-                }
-
-                ImGui.SameLine();
-                if (ImGui.Button($"{FontAwesome5.Stop}"))
-                {
-                    Logger.Info("Deteniendo juego...");
-                }
-
-                ImGui.SameLine();
-
-                // Botón de compilación
-                float compileOffset = ImGui.GetWindowWidth() - 295;
-                ImGui.SameLine(compileOffset);
-                if (ImGui.Button($"{FontAwesome5.Hammer}"))
-                {
-                    Logger.Info("Compilando proyecto...");
-                }
-
-                // Selector de plataforma y modo de compilación
-                ImGui.SetNextItemWidth(170);
-                if (ImGui.BeginCombo("##Build Mode", $"{FontAwesome5.Edit} Release | Any CPU", ImGuiComboFlags.HeightSmall))
-                {
-                    if (ImGui.Selectable("Debug | Any CPU"))
-                    {
-                    }
-
-                    if (ImGui.Selectable("Release | Any CPU"))
-                    {
-                    }
-
-                    ImGui.EndCombo();
-                }
-
-                /*
-                ImGui.SameLine();
-                ImGui.SetNextItemWidth(100);
-                if (ImGui.BeginCombo("##platform", $"{FontAwesome5.LaptopCode} MacOS", ImGuiComboFlags.HeightLarge))
-                {
-                    if (ImGui.Selectable("Windows"))
-                    {
-                    }
-
-                    if (ImGui.Selectable("MacOS"))
-                    {
-                    }
-
-                    ImGui.EndCombo();
-                }*/
-
-                // Espaciado y botones finales (Buscar y Configuración)
-                //ImGui.Spacing();
-                //ImGui.Spacing();
-                //ImGui.Spacing();
-
-
-                if (ImGui.Button($"{FontAwesome5.Search}"))
-                {
-                    Logger.Info("Abriendo buscador...");
-                }
-
-                ImGui.SameLine();
-                if (ImGui.Button($"{FontAwesome5.Cog}"))
-                {
-                    Logger.Info("Abriendo ajustes...");
-                }
+                RenderNavigationButtons();
+                RenderSolutionSelector();
+                RenderBranchSelector();
+                RenderControlButtons();
+                RenderBuildOptions();
+                RenderUtilityButtons();
 
                 ImGui.PopStyleColor(2);
                 ImGui.PopStyleVar();
-
-                //ImGui.PopStyleVar();
                 ImGui.EndMenuBar();
+            }
+        }
+
+        /// <summary>
+        ///     Renders navigation buttons (e.g., back and forward)
+        /// </summary>
+        private void RenderNavigationButtons()
+        {
+            if (ImGui.Button($"{FontAwesome5.ArrowLeft}"))
+            {
+                Logger.Info("Navigating back...");
+            }
+
+            ImGui.SameLine();
+
+            if (ImGui.Button($"{FontAwesome5.ArrowRight}"))
+            {
+                Logger.Info("Navigating forward...");
+            }
+
+            ImGui.SameLine();
+        }
+
+        /// <summary>
+        ///     Renders the solution selector dropdown
+        /// </summary>
+        private void RenderSolutionSelector()
+        {
+            ImGui.SetNextItemWidth(100);
+            if (ImGui.BeginCombo("##Solution Name", $"{FontAwesome5.Font} Sample", ImGuiComboFlags.HeightLarge))
+            {
+                ImGui.Separator();
+                if (ImGui.Selectable($"{FontAwesome5.Plus} New Solution"))
+                {
+                }
+
+                if (ImGui.Selectable($"{FontAwesome5.FolderOpen} Open Solution"))
+                {
+                }
+
+                ImGui.Separator();
+                ImGui.TextDisabled("Recent Solutions");
+                if (ImGui.Selectable("Sample Solution"))
+                {
+                }
+
+                ImGui.EndCombo();
+            }
+
+            ImGui.SameLine();
+        }
+
+        /// <summary>
+        ///     Renders the branch selector dropdown
+        /// </summary>
+        private void RenderBranchSelector()
+        {
+            ImGui.SetNextItemWidth(180);
+            if (ImGui.BeginCombo("##branchSelector", $"{FontAwesome5.CodeBranch}Master", ImGuiComboFlags.HeightLarge))
+            {
+                if (ImGui.Selectable("master"))
+                {
+                    Logger.Info("Switching to branch master...");
+                }
+                if (ImGui.Selectable("develop"))
+                {
+                    Logger.Info("Switching to branch develop...");
+                }
+                if (ImGui.Selectable("feature/new-feature"))
+                {
+                    Logger.Info("Switching to branch feature/new-feature...");
+                }
+                ImGui.EndCombo();
+            }
+
+            ImGui.SameLine();
+        }
+
+        /// <summary>
+        ///     Renders control buttons (e.g., Play, Pause, Stop)
+        /// </summary>
+        private void RenderControlButtons()
+        {
+            float controlOffset = ImGui.GetWindowWidth() * 0.5f - 65;
+            ImGui.SameLine(controlOffset);
+
+            if (ImGui.Button($"{FontAwesome5.Play}"))
+            {
+                Logger.Info("Starting game...");
+            }
+
+            ImGui.SameLine();
+
+            if (ImGui.Button($"{FontAwesome5.Pause}"))
+            {
+                Logger.Info("Pausing game...");
+            }
+
+            ImGui.SameLine();
+
+            if (ImGui.Button($"{FontAwesome5.Stop}"))
+            {
+                Logger.Info("Stopping game...");
+            }
+
+            ImGui.SameLine();
+        }
+
+        /// <summary>
+        ///     Renders build options (e.g., build mode selector)
+        /// </summary>
+        private void RenderBuildOptions()
+        {
+            float compileOffset = ImGui.GetWindowWidth() - 295;
+            ImGui.SameLine(compileOffset);
+
+            if (ImGui.Button($"{FontAwesome5.Hammer}"))
+            {
+                Logger.Info("Building project...");
+            }
+
+            ImGui.SetNextItemWidth(170);
+            if (ImGui.BeginCombo("##Build Mode", $"{FontAwesome5.Edit} Release | Any CPU", ImGuiComboFlags.HeightSmall))
+            {
+                if (ImGui.Selectable("Debug | Any CPU"))
+                {
+                }
+
+                if (ImGui.Selectable("Release | Any CPU"))
+                {
+                }
+
+                ImGui.EndCombo();
+            }
+        }
+
+        /// <summary>
+        ///     Renders utility buttons (e.g., Search and Settings)
+        /// </summary>
+        private void RenderUtilityButtons()
+        {
+            if (ImGui.Button($"{FontAwesome5.Search}"))
+            {
+                Logger.Info("Opening search...");
+            }
+
+            ImGui.SameLine();
+
+            if (ImGui.Button($"{FontAwesome5.Cog}"))
+            {
+                Logger.Info("Opening settings...");
             }
         }
 
