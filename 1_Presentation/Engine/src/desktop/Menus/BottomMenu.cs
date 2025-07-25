@@ -78,19 +78,25 @@ namespace Alis.App.Engine.Menus
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 3));
 
 
+#if OSX
+            int posY = 72;
+            int sizeMenu = 30;
+            float bottomMenuHeight = 30;
+#else
             int posY = 170;
             int sizeMenu = 31;
             float bottomMenuHeight = 60;
+#endif
+           
             
             Vector2F dockSize = SpaceWork.ImGuiController.Viewport.Size - new Vector2F(5, posY);
 
-            // Menú inferior
+            // BOTTON MENU
             Vector2F menuSize = new Vector2F(SpaceWork.ImGuiController.Viewport.Size.X, bottomMenuHeight);
             ImGui.SetNextWindowPos(new Vector2F(SpaceWork.ImGuiController.Viewport.WorkPos.X, SpaceWork.ImGuiController.Viewport.WorkPos.Y + dockSize.Y + sizeMenu + bottomMenuHeight / 2));
             ImGui.SetNextWindowSize(menuSize);
 
 
-            // Configuración de estilo
             //ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2F(5, 5));
             //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(5, 5));
 

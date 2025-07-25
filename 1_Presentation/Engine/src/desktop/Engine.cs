@@ -19,12 +19,19 @@ namespace Alis.App.Engine
         /// <returns>The int</returns>
         public void Run()
         {
+            
             imguiController = new ImGuiControllerImplementGlfw(
                 "Welcome to Alis Engine by @pabllopf",
                 1024,
                 768,
                 0,
-                true);
+#if DEBUG
+                true
+#else
+                    false
+#endif
+                
+                );
             
             spaceWork = new SpaceWork(imguiController);
             

@@ -284,8 +284,8 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             // REBUILD ATLAS
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
-            float fontSize = 16;
-            float fontSizeIcon = 14.5f;
+            float fontSize = 14;
+            float fontSizeIcon = 13.5f;
 
             string fontFileSolid = AssetManager.Find(JetBrains.NameSolid);
             FontLoaded16Solid = fonts.AddFontFromFileTtf(fontFileSolid, fontSize);
@@ -461,7 +461,7 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             ImGui.StyleColorsDark();
 
             ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
-            imGuiIoPtr.FontGlobalScale = 2f;
+            //imGuiIoPtr.FontGlobalScale = 2f;
 
             ref ImGuiStyle style = ref ImGui.GetStyle();
 
@@ -614,25 +614,25 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             style.WindowRounding = 0.0f;
 
             // ChildRounding
-            style.ChildRounding = 4.0f;
+            style.ChildRounding = 3.0f;
 
             // FrameRounding
-            style.FrameRounding = 4.0f;
+            style.FrameRounding = 3.0f;
 
             // PopupRounding
-            style.PopupRounding = 4.0f;
+            style.PopupRounding = 1.0f;
 
             // ScrollbarRounding
-            style.ScrollbarRounding = 4.0f;
+            style.ScrollbarRounding = 2.0f;
 
             // GrabRounding
-            style.GrabRounding = 4.0f;
+            style.GrabRounding = 1.0f;
 
             // logSliderDeadzone
             style.LogSliderDeadzone = 4.0f;
 
             // TabRounding
-            style.TabRounding = 4.0f;
+            style.TabRounding = 3.0f;
 
             // Window border size
             style.WindowBorderSize = 1.0f;
@@ -647,16 +647,16 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             style.FrameBorderSize = 1.0f;
 
             // Tab border size
-            style.TabBorderSize = 1.0f;
+            style.TabBorderSize = 0.0f;
 
             // Window padding
-            style.WindowPadding = new Vector2F(10, 10);
+            style.WindowPadding = new Vector2F(4, 4);
 
             // Frame padding
-            style.FramePadding = new Vector2F(10, 10);
+            style.FramePadding = new Vector2F(7, 7);
 
             // Item spacing
-            style.ItemSpacing = new Vector2F(12, 12);
+            style.ItemSpacing = new Vector2F(6, 6);
 
             // Inner item spacing
             style.ItemInnerSpacing = new Vector2F(6, 6);
@@ -671,10 +671,10 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             style.IndentSpacing = 21;
 
             // Scrollbar size
-            style.ScrollbarSize = 20;
+            style.ScrollbarSize = 12;
 
             // Minimum grab size
-            style.GrabMinSize = 20;
+            style.GrabMinSize = 12;
 
             // Window title alignment
             style.WindowTitleAlign = new Vector2F(0.5f, 0.5f);
@@ -866,7 +866,11 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             ImGui.SetNextWindowSize(Viewport.Size);
             ImGui.Begin(DockSpaceTitle, _windowDockSpaceFlags);
         
-            Vector2F dockSize = Viewport.Size - new Vector2F(5, 180);
+            #if OSX
+                Vector2F dockSize = Viewport.Size - new Vector2F(5, 60);
+            #else
+                Vector2F dockSize = Viewport.Size - new Vector2F(5, 180);
+            #endif
             uint dockSpaceId = ImGui.GetId(DockSpaceId);
             ImGui.DockSpace(dockSpaceId, dockSize);
         }
