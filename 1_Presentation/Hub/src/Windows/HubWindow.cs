@@ -133,47 +133,51 @@ namespace Alis.App.Hub.Windows
             ImGuiIoPtr io = ImGui.GetIo();
             Vector2F screenSize = io.DisplaySize;
 
+            // Proporciones responsivas
+            float sidebarWidth = screenSize.X * 0.22f; // 22% del ancho
+            float sidebarPadding = screenSize.X * 0.01f; // 1% padding
+            float sidebarHeight = screenSize.Y - (2 * sidebarPadding);
+            float buttonWidth = sidebarWidth - (2 * sidebarPadding);
+            float buttonHeight = screenSize.Y * 0.09f; // 9% del alto
+            float iconSize = sidebarWidth * 0.16f; // 16% del ancho de la barra lateral
+            float preferencesButtonHeight = buttonHeight * 0.85f;
+            float preferencesButtonY = screenSize.Y - (preferencesButtonHeight + preferencesButtonHeight / 3 + sidebarPadding * 1.5f);
+
             ImGui.SetNextWindowPos(Vector2F.Zero);
             ImGui.SetNextWindowSize(screenSize);
 
-            ImGui.Begin("##MainWindow", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove);
+            ImGui.Begin("##MainWindow", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse);
 
-            ImGui.BeginChild("Sidebar", new Vector2F(320, screenSize.Y - 20), true);
+            ImGui.BeginChild("Sidebar", new Vector2F(sidebarWidth, sidebarHeight), true);
 
-            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(10, 10));
-            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10, 10));
+            // Padding simétrico para los botones
+            float buttonPaddingX = sidebarPadding;
+            float buttonPaddingY = sidebarPadding;
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(buttonPaddingX, buttonPaddingY));
+            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(sidebarPadding, sidebarPadding));
 
             // Mostrar el logo y el texto "ALIS"
             if (File.Exists(AssetManager.Find("Hub_logo.bmp")))
             {
-                // Cargar y mostrar la imagen a una resolución más alta
                 //IntPtr textureId = ImageLoader.LoadTextureFromFile(AssetManager.Find("Hub_logo.bmp"));
-                float iconSize = 50; // Aumenta el tamaño de la imagen
-                //ImGui.Image(textureId, new Vector2F(iconSize, iconSize)); // Mostrar imagen más grande
+                //ImGui.Image(textureId, new Vector2F(iconSize, iconSize));
                 ImGui.SameLine();
 
-                // Cambiar el tamaño de la fuente para que el texto sea más grande
-                ImGui.PushFont(imGuiController.FontLoaded45Bold); // Asegúrate de usar una fuente adecuada
-
-                // Centrar el texto "ALIS" vertical y horizontalmente con la imagen
+                ImGui.PushFont(imGuiController.FontLoaded45Bold);
                 Vector2F textSize = ImGui.CalcTextSize("ALIS");
-                float textX = (iconSize - textSize.X) / 2; // Centrado horizontal
-                float textY = (iconSize - textSize.Y) / 2; // Centrado vertical
-
-                //ImGui.SetCursorPosX(ImGui.GetCursorPosX() + textX); // Centrar en el eje X
-                ImGui.SetCursorPosY(ImGui.GetCursorPosY() + textY); // Centrar en el eje Y
+                float textY = (iconSize - textSize.Y) / 2;
+                ImGui.SetCursorPosY(ImGui.GetCursorPosY() + textY);
                 ImGui.Text("ALIS");
-
-                ImGui.PopFont(); // Restaurar la fuente predeterminada
+                ImGui.PopFont();
             }
 
             ImGui.Separator();
             ImGui.PopStyleVar(2);
 
-            ButtonsLeftMenu();
+            ButtonsLeftMenu(buttonWidth, buttonHeight, buttonPaddingX, buttonPaddingY, sidebarPadding);
 
-            ImGui.SetCursorPosY(screenSize.Y - 120);
-            if (ImGui.Button($"{FontAwesome5.Cog} Preferences", new Vector2F(300, 80)))
+            ImGui.SetCursorPosY(preferencesButtonY);
+            if (ImGui.Button($"{FontAwesome5.Cog} Preferences", new Vector2F(buttonWidth, preferencesButtonHeight)))
             {
                 OpenPreferences();
             }
@@ -183,7 +187,7 @@ namespace Alis.App.Hub.Windows
             ImGui.EndChild();
 
             ImGui.SameLine();
-            ImGui.BeginChild("MainContent", new Vector2F(screenSize.X - 220, screenSize.Y - 20), false);
+            ImGui.BeginChild("MainContent", new Vector2F(screenSize.X - sidebarWidth - sidebarPadding, screenSize.Y - (2 * sidebarPadding)), false);
             RenderMainContent();
             ImGui.EndChild();
 
@@ -253,23 +257,21 @@ namespace Alis.App.Hub.Windows
         /// <summary>
         ///     Buttonses the left menu
         /// </summary>
-        private void ButtonsLeftMenu()
+        private void ButtonsLeftMenu(float buttonWidth, float buttonHeight, float buttonPaddingX, float buttonPaddingY, float sidebarPadding)
         {
             for (int i = 0; i < menuItems.Length; i++)
             {
-                // Definir los estilos antes de cada botón
-                ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 5.0f); // Redondear las esquinas
-                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10, 10)); // Espaciado entre los items
+                ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 5.0f);
+                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(sidebarPadding, sidebarPadding));
                 ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2F(0, 0.5f));
+                ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(buttonPaddingX, buttonPaddingY));
 
-                // Crear el botón con la alineación adecuada
-                if (ImGui.Button(menuItems[i], new Vector2F(300, 80)))
+                if (ImGui.Button(menuItems[i], new Vector2F(buttonWidth, buttonHeight)))
                 {
-                    selectedMenuItem = i; // Establecer el botón como seleccionado
+                    selectedMenuItem = i;
                 }
 
-                // Restaurar los estilos después de cada botón
-                ImGui.PopStyleVar(3); // Restaurar ItemSpacing y FrameRounding
+                ImGui.PopStyleVar(4);
             }
         }
 
