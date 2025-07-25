@@ -125,8 +125,6 @@ namespace Alis.App.Engine.Desktop.Menus
         {
             ImGui.Columns(6, "MenuColumns", false);
             RenderNotificationButton();
-            ImGui.SameLine();
-            RenderBranchSelector();
             ImGui.NextColumn();
             ImGui.NextColumn();
             ImGui.NextColumn();
@@ -143,26 +141,7 @@ namespace Alis.App.Engine.Desktop.Menus
             }
         }
 
-        private void RenderBranchSelector()
-        {
-            ImGui.SetNextItemWidth(180);
-            if (ImGui.BeginCombo("##branchSelector", $"{FontAwesome5.CodeBranch}Master", ImGuiComboFlags.HeightLarge))
-            {
-                if (ImGui.Selectable("master"))
-                {
-                    Logger.Info("Switching to branch master...");
-                }
-                if (ImGui.Selectable("develop"))
-                {
-                    Logger.Info("Switching to branch develop...");
-                }
-                if (ImGui.Selectable("feature/new-feature"))
-                {
-                    Logger.Info("Switching to branch feature/new-feature...");
-                }
-                ImGui.EndCombo();
-            }
-        }
+        
 
         private void RenderProgressBar()
         {
