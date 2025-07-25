@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Systems;
-
 namespace Alis.App.Engine.Sample
 {
     /// <summary>
@@ -40,6 +38,9 @@ namespace Alis.App.Engine.Sample
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        public static void Main(string[] args) => VideoGame.Create().Build().Run();
+        public static void Main(string[] args)
+        {
+            
+        }
     }
 }
