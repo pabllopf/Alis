@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,6 +31,11 @@ using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Core.Ecs.Components.Render
 {
+    /// <summary>
+    /// The animator interface
+    /// </summary>
+    /// <seealso cref="IInitable"/>
+    /// <seealso cref="IGameObjectComponent"/>
     public interface IAnimator :  IInitable, IGameObjectComponent
     {
         

@@ -39,30 +39,55 @@ namespace Alis.Core.Ecs.Components.Render
     /// </summary>
     public struct Animator : IAnimator
     {
+        /// <summary>
+        /// Gets or sets the value of the animations
+        /// </summary>
         public List<Animation> Animations { get; set; }
         
+        /// <summary>
+        /// Gets or sets the value of the current animation index
+        /// </summary>
         public int CurrentAnimationIndex { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Animator"/> class
+        /// </summary>
         public Animator()
         {
             Animations = new List<Animation>();
             CurrentAnimationIndex = 0;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Animator"/> class
+        /// </summary>
+        /// <param name="animations">The animations</param>
         public Animator(List<Animation> animations)
         {
             Animations = animations;
             CurrentAnimationIndex = 0;
         }
         
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Update(IGameObject self)
         {
         }
 
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
         }
 
+        /// <summary>
+        /// Adds the animation using the specified animation
+        /// </summary>
+        /// <param name="animation">The animation</param>
         public void AddAnimation(Animation animation)
         {
             Animations.Add(animation);

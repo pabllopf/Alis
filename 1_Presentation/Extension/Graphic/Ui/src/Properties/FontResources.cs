@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -33,6 +33,9 @@ using Alis.Core.Aspect.Data.Dll;
 
 namespace Alis.Extension.Graphic.Ui.Properties
 {
+    /// <summary>
+    /// The font resources class
+    /// </summary>
     public static class FontResources
     {
          /// <summary>
@@ -121,6 +124,9 @@ namespace Alis.Extension.Graphic.Ui.Properties
             {OsxArm, $"{ResourcePath}.fonts.jetbrains.zip"}
         };
         
+        /// <summary>
+        /// The resource path
+        /// </summary>
         internal static readonly Dictionary<PlatformInfo, string> FontAwesomeDllBytes = new Dictionary<PlatformInfo, string>
         {
             {WinX86, $"{ResourcePath}.fonts.fontawesome.zip"},

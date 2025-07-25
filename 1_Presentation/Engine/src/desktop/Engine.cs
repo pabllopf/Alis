@@ -14,8 +14,14 @@ namespace Alis.App.Engine.Desktop
     /// </summary>
     public class Engine
     {
+        /// <summary>
+        /// The imgui controller
+        /// </summary>
         private ImGuiControllerImplementGlfw imguiController;
         
+        /// <summary>
+        /// The space work
+        /// </summary>
         private SpaceWork spaceWork;
         
         /// <summary>
@@ -69,6 +75,9 @@ namespace Alis.App.Engine.Desktop
         }
         
         
+        /// <summary>
+        /// Layouts the default
+        /// </summary>
         private static void LayoutDefault()
         {
             Logger.Info("Layout Default selected");

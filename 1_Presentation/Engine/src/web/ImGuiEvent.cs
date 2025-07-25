@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -29,10 +29,19 @@
 
 namespace Alis.App.Engine.Web
 {
+    /// <summary>
+    /// The im gui event class
+    /// </summary>
     public class ImGuiEvent
     {
+        /// <summary>
+        /// Gets or sets the value of the name
+        /// </summary>
         public string Name { get; set; } = string.Empty;
         
+        /// <summary>
+        /// Gets or sets the value of the callback
+        /// </summary>
         public Action<object> Callback { get; set; } = null!;
     }
 }

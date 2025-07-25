@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,17 +31,39 @@ using Microsoft.JSInterop;
 
 namespace Alis.App.Engine.Web
 {
+    /// <summary>
+    /// The main render class
+    /// </summary>
+    /// <seealso cref="IRender"/>
     internal class MainRender : IRender
     {
+        /// <summary>
+        /// The checkbox value
+        /// </summary>
         private float _checkboxValue = 0.5f;
         
+        /// <summary>
+        /// The checkbox value
+        /// </summary>
         private float _checkboxValue2 = 0.5f;
         
+        /// <summary>
+        /// The checkbox value
+        /// </summary>
         private bool checkboxValue3 = false;
+        /// <summary>
+        /// The checkbox value
+        /// </summary>
         private bool checkboxValue4 = false;
         
+        /// <summary>
+        /// The color value
+        /// </summary>
         private float[] _colorValue = new float[] { 1.0f, 0.0f, 0.0f }; // Default color red
 
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         public void Render()
         {
             ImGui.Begin("Hola", value =>

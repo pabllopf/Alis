@@ -36,20 +36,39 @@ namespace Alis.Core.Ecs.Components.Render
     /// </summary>
     public struct Animation (string name = "Default", int order = 0, float speed = 0.5f) : IAnimation
     {
+        /// <summary>
+        /// Gets or sets the value of the name
+        /// </summary>
         public string Name { get; set; } = name;
         
+        /// <summary>
+        /// Gets or sets the value of the order
+        /// </summary>
         public int Order { get; set; } = order;
         
+        /// <summary>
+        /// Gets or sets the value of the speed
+        /// </summary>
         public float Speed { get; set;  } = speed;
         
+        /// <summary>
+        /// Gets or sets the value of the frames
+        /// </summary>
         public List<Frame> Frames { get; set;  } = new List<Frame>();
 
+        /// <summary>
+        /// Adds the frame using the specified frame
+        /// </summary>
+        /// <param name="frame">The frame</param>
         public void AddFrame(Frame frame)
         {
             Frames?.Add(frame);
         }
     }
 
+    /// <summary>
+    /// The animation interface
+    /// </summary>
     public interface IAnimation
     {
     }

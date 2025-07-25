@@ -29,6 +29,9 @@
 
 namespace Alis.Benchmark.ClassVsStruct.Instancies
 {
+    /// <summary>
+    /// The record point
+    /// </summary>
     public record RecordPoint
     {
         /// <summary>
@@ -41,6 +44,11 @@ namespace Alis.Benchmark.ClassVsStruct.Instancies
         /// </summary>
         public int Y { get; init; }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RecordPoint"/> class
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
         public RecordPoint(int x, int y)
         {
             X = x;

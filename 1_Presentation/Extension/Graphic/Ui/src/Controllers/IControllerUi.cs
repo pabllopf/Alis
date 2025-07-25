@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -29,20 +29,44 @@
 
 namespace Alis.Extension.Graphic.Ui.Controllers
 {
+    /// <summary>
+    /// The controller ui interface
+    /// </summary>
     public interface IControllerUi
     {
+        /// <summary>
+        /// Ons the init
+        /// </summary>
         public void OnInit();
         
+        /// <summary>
+        /// Ons the start
+        /// </summary>
         public void OnStart();
         
+        /// <summary>
+        /// Ons the poll events
+        /// </summary>
         public void OnPollEvents();
         
+        /// <summary>
+        /// Ons the start frame
+        /// </summary>
         public void OnStartFrame();
         
+        /// <summary>
+        /// Ons the render frame
+        /// </summary>
         public void OnRenderFrame();
         
+        /// <summary>
+        /// Ons the end frame
+        /// </summary>
         public void OnEndFrame();
         
+        /// <summary>
+        /// Ons the exit
+        /// </summary>
         public void OnExit();
     }
 }

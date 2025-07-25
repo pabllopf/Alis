@@ -4,8 +4,14 @@ using Alis.Extension.Graphic.Ui.Properties;
 
 namespace Alis.Extension.Graphic.Ui.Fonts
 {
+    /// <summary>
+    /// The jet brains class
+    /// </summary>
     public static class JetBrains
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JetBrains"/> class
+        /// </summary>
         static JetBrains()
         {
             EmbeddedDllClass.ExtractEmbeddedDlls("jetbrains", DllType.File, FontResources.FontsJetBrainDllBytes, Assembly.GetExecutingAssembly(), "Assets");

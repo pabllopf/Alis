@@ -9,6 +9,9 @@ namespace Alis.Extension.Graphic.Ui.Fonts
     /// </summary>
     public static class FontAwesome5
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FontAwesome5"/> class
+        /// </summary>
         static FontAwesome5()
         {
             EmbeddedDllClass.ExtractEmbeddedDlls("fontawesome", DllType.File, FontResources.FontAwesomeDllBytes, Assembly.GetExecutingAssembly(), "Assets");

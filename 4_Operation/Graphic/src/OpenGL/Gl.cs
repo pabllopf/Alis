@@ -254,13 +254,31 @@ namespace Alis.Core.Graphic.OpenGL
         private static Uniform3Fv GlUniform3Fv => GetCommand<Uniform3Fv>("glUniform3fv");
 
         // En Gl.cs
+        /// <summary>
+        /// The read pixels
+        /// </summary>
         public delegate void ReadPixels(int x, int y, int width, int height, PixelFormat format, PixelType type, IntPtr pixels);
+        /// <summary>
+        /// Gets the value of the gl read pixels
+        /// </summary>
         public static ReadPixels GlReadPixels => GetCommand<ReadPixels>("glReadPixels");
         
+        /// <summary>
+        /// The gen framebuffer
+        /// </summary>
         public delegate uint GenFramebuffer();
+        /// <summary>
+        /// Gets the value of the gl gen framebuffer
+        /// </summary>
         public static GenFramebuffer GlGenFramebuffer => GetCommand<GenFramebuffer>("glGenFramebuffers");
 
+        /// <summary>
+        /// The framebuffer texture
+        /// </summary>
         public delegate void FramebufferTexture2D(FramebufferTarget target, FramebufferAttachment attachment, TextureTarget texTarget, uint texture, int level);
+        /// <summary>
+        /// Gets the value of the gl framebuffer texture 2 d
+        /// </summary>
         public static FramebufferTexture2D GlFramebufferTexture2D => GetCommand<FramebufferTexture2D>("glFramebufferTexture2D");
 
         /// <summary>
@@ -315,8 +333,14 @@ namespace Alis.Core.Graphic.OpenGL
 
         // Enum para FramebufferTarget
 
+        /// <summary>
+        /// The bind framebuffer
+        /// </summary>
         public delegate void BindFramebuffer(FramebufferTarget target, uint framebuffer);
 
+        /// <summary>
+        /// Gets the value of the gl bind framebuffer
+        /// </summary>
         public static BindFramebuffer GlBindFramebuffer => GetCommand<BindFramebuffer>("glBindFramebuffer");
         
         /// <summary>

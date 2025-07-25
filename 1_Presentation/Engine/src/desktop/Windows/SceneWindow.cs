@@ -51,13 +51,31 @@ namespace Alis.App.Engine.Desktop.Windows
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Hashtag} Scene";
         
+        /// <summary>
+        /// The is open
+        /// </summary>
         private bool _isOpen = true;
         
         // PREVIEW WINDOWS:
+        /// <summary>
+        /// The shader program
+        /// </summary>
         private  uint shaderProgram;
+        /// <summary>
+        /// The vao
+        /// </summary>
         private  uint vao;
+        /// <summary>
+        /// The vbo
+        /// </summary>
         private  uint vbo;
+        /// <summary>
+        /// The preview texture
+        /// </summary>
         private  uint _previewTexture;
+        /// <summary>
+        /// The preview height
+        /// </summary>
         private  int _previewWidth = 512, _previewHeight = 512;
         
         // Crear un HashSet para almacenar los botones activos
@@ -85,12 +103,18 @@ namespace Alis.App.Engine.Desktop.Windows
         {
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start()
         {
             // Initialize OpenGL resources for the preview
             InitializePreviewResources();
         }
 
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         public void Render()
         {
             if (!_isOpen)
@@ -235,6 +259,9 @@ namespace Alis.App.Engine.Desktop.Windows
             ImGui.End();
         }
         
+          /// <summary>
+          /// Initializes the preview resources
+          /// </summary>
           private void InitializePreviewResources()
         {
             // Define the vertices for the triangle
@@ -327,6 +354,9 @@ namespace Alis.App.Engine.Desktop.Windows
             Logger.Log(@$"OpenGL SHADING LANGUAGE VERSION {Gl.GlGetString(StringName.ShadingLanguageVersion)}");
         }
         
+         /// <summary>
+         /// Renders the triangle directly
+         /// </summary>
          private  void RenderTriangleDirectly()
         {
             // Configura el viewport para la ventana principal
@@ -353,6 +383,9 @@ namespace Alis.App.Engine.Desktop.Windows
             Gl.GlUseProgram(0);
         }
 
+        /// <summary>
+        /// Shows the preview image
+        /// </summary>
         private  void ShowPreviewImage()
         {
 
@@ -384,6 +417,9 @@ namespace Alis.App.Engine.Desktop.Windows
         }
     }
     
+    /// <summary>
+    /// The active button enum
+    /// </summary>
     internal enum ActiveButton
     {
         /// <summary>

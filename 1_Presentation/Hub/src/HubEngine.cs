@@ -37,8 +37,14 @@ namespace Alis.App.Hub
     /// </summary>
     public class HubEngine
     {
+        /// <summary>
+        /// The hub window
+        /// </summary>
         private HubWindow hubWindow;
 
+        /// <summary>
+        /// The im gui controller
+        /// </summary>
         private ImGuiControllerImplementGlfw imGuiController;
 
         /// <summary>
