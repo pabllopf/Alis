@@ -226,8 +226,13 @@ async function frame() {
 
     
    
-    ImGui.SetNextWindowPos(new ImVec2(0, 0));
-    ImGui.SetNextWindowSize(new ImVec2(canvas.width, canvas.height));
+    // Calcula la altura del menú superior y del menú inferior
+    const menuBarHeight = ImGui.GetFrameHeight(); // Altura de la barra de menú superior
+    const bottomMenuHeight = 40; // Altura fija del menú inferior
+
+    // Ajusta la posición y el tamaño de la ventana principal para no solaparse con los menús
+    ImGui.SetNextWindowPos(new ImVec2(0, menuBarHeight));
+    ImGui.SetNextWindowSize(new ImVec2(canvas.width, canvas.height - menuBarHeight - bottomMenuHeight));
     ImGui.PushStyleVar(ImGui.StyleVar.WindowRounding, 0.0);
     ImGui.PushStyleVar(ImGui.StyleVar.WindowBorderSize, 0.0);
     ImGui.Begin("MainDockspace", null,
