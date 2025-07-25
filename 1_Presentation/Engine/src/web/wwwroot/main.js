@@ -263,8 +263,6 @@ async function frame() {
    ImGui.PushStyleColor(ImGui.Col.ModalWindowDimBg,     0x99333333);
 
     ImGui.PushStyleColor(ImGui.Col.Text,                 0xFFFFFFFF);
-
-    
    
     // Calcula la altura del menú superior y del menú inferior
     const menuBarHeight = ImGui.GetFrameHeight(); // Altura de la barra de menú superior
@@ -290,10 +288,17 @@ async function frame() {
 
 
     // Posiciona y dimensiona la ventana settings
-    ImGui.SetNextWindowPos(new ImVec2(windowPosX + windowWidth * 1, windowPosY), ImGui.Cond.Always);
+    ImGui.SetNextWindowPos(new ImVec2(windowPosX + windowWidth, windowPosY), ImGui.Cond.Always);
     ImGui.SetNextWindowSize(new ImVec2(windowWidth, height), ImGui.Cond.Always);
     ImGui.Begin("Render");
     ImGui.Text("Contenido del Render");
+    ImGui.End();
+
+    // Posiciona y dimensiona la ventana settings
+    ImGui.SetNextWindowPos(new ImVec2(windowPosX + windowWidth, windowPosY), ImGui.Cond.Always);
+    ImGui.SetNextWindowSize(new ImVec2(windowWidth, height), ImGui.Cond.Always);
+    ImGui.Begin("Preview");
+    ImGui.Text("Contenido de Preview");
     ImGui.End();
     
 
