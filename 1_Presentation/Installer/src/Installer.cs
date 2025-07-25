@@ -117,8 +117,8 @@ namespace Alis.App.Installer
             Logger.Info(@$"DIR: {dirProject}");
             Logger.Info(@"Starting UpdateManager");
             UpdateManager manager = new UpdateManager(new GitHubApiService(api), versionToInstall, new FileService(), dirProject);
-           
-            var cts = new CancellationTokenSource();
+
+            using CancellationTokenSource cts = new CancellationTokenSource();
             Task<bool> task = manager.Start(cts.Token);
             
             // Definir la variable de estado fuera del bucle principal
@@ -174,7 +174,7 @@ namespace Alis.App.Installer
 
                 ImGui.PushFont(_imguiController.FontLoaded16Solid);
                 ImGui.SetNextWindowPos(new Vector2F(0, 0));
-                var viewportSize = ImGui.GetMainViewport().Size;
+                Vector2F viewportSize = ImGui.GetMainViewport().Size;
                 ImGui.SetNextWindowSize(new Vector2F(viewportSize.X, viewportSize.Y));
                 if (ImGui.Begin("MainWindow", ref isOpenMain, ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse))
                 {
