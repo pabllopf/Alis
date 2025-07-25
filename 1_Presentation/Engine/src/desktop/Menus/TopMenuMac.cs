@@ -229,6 +229,7 @@ namespace Alis.App.Engine.Desktop.Menus
                 "Game View",
                 "Inspector",
                 "Console",
+                "Style Editor",
                 "-"
             });
 

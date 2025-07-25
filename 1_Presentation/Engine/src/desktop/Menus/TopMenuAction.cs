@@ -148,6 +148,8 @@ namespace Alis.App.Engine.Desktop.Menus
             MenuActions.Add("Inspector", InspectorWindow);
             MenuActions.Add("Hierarchy", HierarchyWindow);
             MenuActions.Add("Console", ConsoleWindow);
+            MenuActions.Add("Style Editor", StyleEditorWindow);
+            
             MenuActions.Add("Layout:Default", LayoutDefault);
             MenuActions.Add("Layout:2 by 3", Layout2by3);
             MenuActions.Add("Layout:4 Split", Layout4Split);
@@ -157,6 +159,12 @@ namespace Alis.App.Engine.Desktop.Menus
             MenuActions.Add("Alis Manual", AlisManual);
             MenuActions.Add("API Reference", ApiReference);
             MenuActions.Add("Report Bug", ReportBug);
+        }
+
+        private static void StyleEditorWindow()
+        {
+            
+            _spaceWork.ImGuiController.OpenEditorStyleWindow();
         }
 
         /// <summary>

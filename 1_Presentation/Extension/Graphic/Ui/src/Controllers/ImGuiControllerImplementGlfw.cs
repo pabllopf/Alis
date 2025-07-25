@@ -36,6 +36,8 @@ namespace Alis.Extension.Graphic.Ui.Controllers
         /// The frame rate
         /// </summary>
         private const float FrameRate = 1.0f / 60.0f;
+        
+        private bool IsOpenEditorStyleWindow = false;
 
         /// <summary>
         /// The menu bar
@@ -1083,6 +1085,14 @@ namespace Alis.Extension.Graphic.Ui.Controllers
                 RenderTriangleDirectly();
                 ShowPreviewImage();
             }
+
+            if (IsOpenEditorStyleWindow)
+            {
+                ref ImGuiStyle style = ref ImGui.GetStyle();
+                ImGui.Begin($"{FontAwesome5.Cogs} Style Editor", ref IsOpenEditorStyleWindow, ImGuiWindowFlags.AlwaysAutoResize);
+                ImGui.ShowStyleEditor(style);
+                ImGui.End();
+            }
         }
         
          /// <summary>
@@ -1412,5 +1422,10 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             m.M31, m.M32, m.M33, m.M34,
             m.M41, m.M42, m.M43, m.M44
         };
+
+        public void OpenEditorStyleWindow()
+        {
+            IsOpenEditorStyleWindow = true;
+        }
     }
 }
