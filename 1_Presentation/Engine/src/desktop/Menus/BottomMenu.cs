@@ -173,21 +173,28 @@ namespace Alis.App.Engine.Desktop.Menus
             }
 
             float progress = (float)_completedProcesses / TotalProcesses;
-            // Acortar el mensaje si es muy largo
+
+            // Calcular el tiempo total transcurrido desde el inicio del primer proceso
+            double totalTime = 0;
+            lock (_lock)
+            {
+                foreach (var process in ProcessQueue)
+                {
+                    if (process.StartTime.HasValue)
+                    {
+                        totalTime += (DateTime.UtcNow - process.StartTime.Value).TotalSeconds;
+                    }
+                }
+            }
+
             string processLabel = _currentProcess;
             int maxLabelLength = 15; // Puedes ajustar este valor según el espacio disponible
             if (!string.IsNullOrEmpty(processLabel) && processLabel.Length > maxLabelLength)
             {
                 processLabel = processLabel.Substring(0, maxLabelLength) + "...";
             }
-            string label = $"{_completedProcesses}/{TotalProcesses} {processLabel}"; // Sin guion ni enumerado
-            if (_processStartTime.HasValue && _currentProcessDuration > 0)
-            {
-                double elapsed = (DateTime.UtcNow - _processStartTime.Value).TotalMilliseconds;
-                double percent = Math.Min(1.0, elapsed / _currentProcessDuration);
-                progress = ((float)_completedProcesses + (float)percent) / TotalProcesses;
-                label += $" ({Math.Max(0, (_currentProcessDuration - elapsed) / 1000.0):0.0}s)";
-            }
+            string label = $"{_completedProcesses}/{TotalProcesses} {processLabel} ({totalTime:0.0}s)";
+
             ImGui.SetCursorPosX(ImGui.GetContentRegionMax().X - 200);
             ImGui.ProgressBar(progress, new Vector2F(200, ImGui.GetContentRegionMax().Y - 10), label);
             if (ImGui.IsItemHovered() && ImGui.IsMouseClicked(0))
@@ -204,8 +211,8 @@ namespace Alis.App.Engine.Desktop.Menus
                 foreach (var process in ProcessQueue)
                 {
                     string extra = process.Status == ProcessStatus.Running && process.StartTime.HasValue
-                        ? $" ({Math.Max(0, (process.DurationMs - (DateTime.UtcNow - process.StartTime.Value).TotalMilliseconds) / 1000.0):0.0}s)"
-                        : "";
+                        ? $" ({(DateTime.UtcNow - process.StartTime.Value).TotalSeconds:0.0}s)"
+                        : process.Status == ProcessStatus.Completed ? " (Completed)" : "";
                     float processProgress = process.Status == ProcessStatus.Running && process.StartTime.HasValue
                         ? (float)(DateTime.UtcNow - process.StartTime.Value).TotalMilliseconds / process.DurationMs
                         : process.Status == ProcessStatus.Completed ? 1.0f : 0.0f;
@@ -219,9 +226,9 @@ namespace Alis.App.Engine.Desktop.Menus
                 }
                 ImGui.EndPopup();
             }
-            
+
             // if i click outside the popup, close it
-            if( ImGui.IsMouseClicked(0) && ImGui.IsPopupOpen("ProcessQueuePopup"))
+            if (ImGui.IsMouseClicked(0) && ImGui.IsPopupOpen("ProcessQueuePopup"))
             {
                 _showProcessPopup = false;
                 ImGui.CloseCurrentPopup();
