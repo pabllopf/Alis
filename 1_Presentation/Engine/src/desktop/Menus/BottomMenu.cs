@@ -198,12 +198,19 @@ namespace Alis.App.Engine.Desktop.Menus
             if (ImGui.BeginPopup("ProcessQueuePopup"))
             {
                 ImGui.Text("Process Queue:");
+                int displayedProcesses = 0;
                 foreach (var process in ProcessQueue)
                 {
                     string extra = process.Status == ProcessStatus.Running && process.StartTime.HasValue
-                        ? $" ({Math.Max(0, (process.DurationMs - (DateTime.UtcNow - process.StartTime.Value).TotalMilliseconds) / 1000.0):0.0}s left)"
+                        ? $" ({Math.Max(0, (process.DurationMs - (DateTime.UtcNow - process.StartTime.Value).TotalMilliseconds) / 1000.0):0.0}s)"
                         : "";
                     ImGui.BulletText($"{process.Name} - {process.Status}{extra}");
+                    displayedProcesses++;
+                }
+                // Rellenar con huecos vacíos si hay menos de 10 procesos
+                for (int i = displayedProcesses; i < 10; i++)
+                {
+                    ImGui.NewLine();
                 }
                 ImGui.EndPopup();
             }
