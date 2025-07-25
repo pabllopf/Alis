@@ -150,6 +150,46 @@ let code = [
 ];
 let evalCode = "";
 
+let consoleMessages = [];
+
+// Redefinir console.log, console.warn, console.error para capturar mensajes
+const originalLog = console.log;
+const originalWarn = console.warn;
+const originalError = console.error;
+console.log = function(...args) {
+    consoleMessages.push({ type: "log", message: args.map(String).join(" ") });
+    originalLog.apply(console, args);
+};
+console.warn = function(...args) {
+    consoleMessages.push({ type: "warn", message: args.map(String).join(" ") });
+    originalWarn.apply(console, args);
+};
+console.error = function(...args) {
+    consoleMessages.push({ type: "error", message: args.map(String).join(" ") });
+    originalError.apply(console, args);
+};
+
+function renderConsole() {
+    ImGui.Begin("Consola", null, ImGui.WindowFlags.NoCollapse | ImGui.WindowFlags.NoResize);
+    ImGui.Text("Mensajes de la consola del navegador:");
+    ImGui.Separator();
+    ImGui.BeginChild("ConsoleScroll", new ImVec2(0, 300), true);
+    for (let i = 0; i < consoleMessages.length; i++) {
+        const msg = consoleMessages[i];
+        if (msg.type === "error") {
+            ImGui.TextColored(new ImVec4(1,0.2,0.2,1), msg.message);
+        } else if (msg.type === "warn") {
+            ImGui.TextColored(new ImVec4(1,1,0.2,1), msg.message);
+        } else {
+            ImGui.Text(msg.message);
+        }
+    }
+    ImGui.EndChild();
+    if (ImGui.Button("Limpiar")) {
+        consoleMessages = [];
+    }
+    ImGui.End();
+}
 
 
 // Variables globales para controlar el estado de los menús
@@ -249,6 +289,7 @@ async function frame() {
     renderMainMenuBar();
     await DotNet.invokeMethodAsync("Alis.App.Engine.Web", "RenderUi");
     ImGui.ShowDemoWindow(showDemo);
+    renderConsole();
     renderBottomMenu();
 
     ImGui.End();
@@ -263,6 +304,7 @@ async function frame() {
 
     requestAnimationFrame(frame);
 }
+
 
 function renderMainMenuBar() {
     ImGui.BeginMainMenuBar();
