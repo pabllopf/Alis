@@ -74,6 +74,7 @@ namespace Alis.App.Engine.Desktop.Core
             
             GitWindow = new GitWindow(this);
             PreferencesWindow = new PreferencesWindow(this);
+            SearchAdvanceWindow = new SearchAdvanceWindow(this);
 
           
 
@@ -153,6 +154,8 @@ namespace Alis.App.Engine.Desktop.Core
         public GitWindow GitWindow { get; set; }
         
         public PreferencesWindow PreferencesWindow { get; set; }
+        
+        public SearchAdvanceWindow SearchAdvanceWindow { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the video game
@@ -189,6 +192,7 @@ namespace Alis.App.Engine.Desktop.Core
             
             GitWindow.Initialize();
             PreferencesWindow.Initialize();
+            SearchAdvanceWindow.Initialize();
         }
 
         /// <summary>
@@ -222,6 +226,7 @@ namespace Alis.App.Engine.Desktop.Core
             
             GitWindow.Start();
             PreferencesWindow.Start();
+            SearchAdvanceWindow.Start();
         }
 
         /// <summary>
@@ -254,6 +259,7 @@ namespace Alis.App.Engine.Desktop.Core
             
             GitWindow.Render();
             PreferencesWindow.Render();
+            SearchAdvanceWindow.Render();
         }
     }
 }

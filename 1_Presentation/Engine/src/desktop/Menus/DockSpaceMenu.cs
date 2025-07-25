@@ -214,6 +214,7 @@ namespace Alis.App.Engine.Desktop.Menus
             if (ImGui.Button($"{FontAwesome5.Search}##SearchButton-{nameof(DockSpaceMenu)}"))
             {
                 Logger.Info("Opening search...");
+                SpaceWork.SearchAdvanceWindow.Open();
             }
 
             ImGui.SameLine();
