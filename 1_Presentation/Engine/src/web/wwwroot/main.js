@@ -269,31 +269,48 @@ async function frame() {
     // Calcula la altura del menú superior y del menú inferior
     const menuBarHeight = ImGui.GetFrameHeight(); // Altura de la barra de menú superior
     const bottomMenuHeight = 40; // Altura fija del menú inferior
+    const menuBarBottomHeight = 30; // Altura del menú inferior de la barra de menú
 
-    // Ajusta la posición y el tamaño de la ventana principal para no solaparse con los menús
-    ImGui.SetNextWindowPos(new ImVec2(0, menuBarHeight));
-    ImGui.SetNextWindowSize(new ImVec2(canvas.width, canvas.height - menuBarHeight - bottomMenuHeight));
-    ImGui.PushStyleVar(ImGui.StyleVar.WindowRounding, 0.0);
-    ImGui.PushStyleVar(ImGui.StyleVar.WindowBorderSize, 0.0);
-    ImGui.Begin("MainDockspace", null,
-        ImGui.WindowFlags.MenuBar |
-        ImGui.WindowFlags.NoTitleBar |
-        ImGui.WindowFlags.NoCollapse |
-        ImGui.WindowFlags.NoResize |
-        ImGui.WindowFlags.NoMove |
-        ImGui.WindowFlags.NoBringToFrontOnFocus |
-        ImGui.WindowFlags.NoNavFocus
-    );
-
-    // Menú principal y menú inferior dentro de la ventana principal
-    renderMainMenuBar();
-    await DotNet.invokeMethodAsync("Alis.App.Engine.Web", "RenderUi");
-    ImGui.ShowDemoWindow(showDemo);
-    renderConsole();
-    renderBottomMenu();
-
+    // Calcula las áreas
+    const width = canvas.width;
+    const height = canvas.height - menuBarHeight - bottomMenuHeight;
+  
+    // Calcula el área disponible quitando menú superior e inferior
+    const style = ImGui.GetStyle();
+    const windowWidth = width / 3;
+    const windowPosX = 0;
+    const windowPosY = menuBarHeight;
+    
+    // Posiciona y dimensiona la ventana "Inspector"
+    ImGui.SetNextWindowPos(new ImVec2(windowPosX, windowPosY), ImGui.Cond.Always);
+    ImGui.SetNextWindowSize(new ImVec2(windowWidth, height), ImGui.Cond.Always);
+    ImGui.Begin("Inspector");
+    ImGui.Text("Contenido del Inspector");
     ImGui.End();
-    ImGui.PopStyleVar(2);
+
+
+    // Posiciona y dimensiona la ventana settings
+    ImGui.SetNextWindowPos(new ImVec2(windowPosX + windowWidth * 1, windowPosY), ImGui.Cond.Always);
+    ImGui.SetNextWindowSize(new ImVec2(windowWidth, height), ImGui.Cond.Always);
+    ImGui.Begin("Render");
+    ImGui.Text("Contenido del Render");
+    ImGui.End();
+    
+
+    // Posiciona y dimensiona la ventana settings
+    ImGui.SetNextWindowPos(new ImVec2(windowPosX + windowWidth * 2, windowPosY), ImGui.Cond.Always);
+    ImGui.SetNextWindowSize(new ImVec2(windowWidth, height), ImGui.Cond.Always);
+    ImGui.Begin("Settings");
+    ImGui.Text("Contenido de Settings");
+    ImGui.End();
+    
+
+    // Menús
+    renderConsole();
+    ImGui.ShowDemoWindow();
+    renderMainMenuBar();
+    renderBottomMenu();
+    await DotNet.invokeMethodAsync("Alis.App.Engine.Web", "RenderUi");
 
 
     ImGui.PopStyleColor(48);
@@ -309,142 +326,9 @@ async function frame() {
 function renderMainMenuBar() {
     ImGui.BeginMainMenuBar();
     // File Menu
-    if (ImGui.BeginMenu("File")) {
+    if (ImGui.BeginMenu("File", true)) {
         if (ImGui.MenuItem("New Scene")) { menuState.file = "New Scene"; }
         if (ImGui.MenuItem("Open Scene...")) { menuState.file = "Open Scene..."; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Save")) { menuState.file = "Save"; }
-        if (ImGui.MenuItem("Save As...")) { menuState.file = "Save As..."; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("New Project")) { menuState.file = "New Project"; }
-        if (ImGui.MenuItem("Open Project")) { menuState.file = "Open Project"; }
-        if (ImGui.MenuItem("Save Project")) { menuState.file = "Save Project"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Build Profiles")) { menuState.file = "Build Profiles"; }
-        if (ImGui.MenuItem("Build And Run")) { menuState.file = "Build And Run"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Close")) { menuState.file = "Close"; }
-        ImGui.EndMenu();
-    }
-    // Edit Menu
-    if (ImGui.BeginMenu("Edit")) {
-        if (ImGui.MenuItem("Undo")) { menuState.edit = "Undo"; }
-        if (ImGui.MenuItem("Redo")) { menuState.edit = "Redo"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Undo History")) { menuState.edit = "Undo History"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Select All")) { menuState.edit = "Select All"; }
-        if (ImGui.MenuItem("Deselect All")) { menuState.edit = "Deselect All"; }
-        if (ImGui.MenuItem("Select Children")) { menuState.edit = "Select Children"; }
-        if (ImGui.MenuItem("Select Prefab Root")) { menuState.edit = "Select Prefab Root"; }
-        if (ImGui.MenuItem("Invert Selection")) { menuState.edit = "Invert Selection"; }
-        if (ImGui.MenuItem("Selection Groups")) { menuState.edit = "Selection Groups"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Cut")) { menuState.edit = "Cut"; }
-        if (ImGui.MenuItem("Copy")) { menuState.edit = "Copy"; }
-        if (ImGui.MenuItem("Paste")) { menuState.edit = "Paste"; }
-        if (ImGui.MenuItem("Paste Special")) { menuState.edit = "Paste Special"; }
-        if (ImGui.MenuItem("Duplicate")) { menuState.edit = "Duplicate"; }
-        if (ImGui.MenuItem("Rename")) { menuState.edit = "Rename"; }
-        if (ImGui.MenuItem("Delete")) { menuState.edit = "Delete"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Frame Selected in Scene")) { menuState.edit = "Frame Selected in Scene"; }
-        if (ImGui.MenuItem("Frame Selected in Window under Cursor")) { menuState.edit = "Frame Selected in Window under Cursor"; }
-        if (ImGui.MenuItem("Lock View to Selected")) { menuState.edit = "Lock View to Selected"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Search")) { menuState.edit = "Search"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Play")) { menuState.edit = "Play"; }
-        if (ImGui.MenuItem("Pause")) { menuState.edit = "Pause"; }
-        if (ImGui.MenuItem("Step")) { menuState.edit = "Step"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Project Settings...")) { menuState.edit = "Project Settings..."; }
-        if (ImGui.MenuItem("Clear All PlayerPrefs")) { menuState.edit = "Clear All PlayerPrefs"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Lighting")) { menuState.edit = "Lighting"; }
-        if (ImGui.MenuItem("Graphics Tier")) { menuState.edit = "Graphics Tier"; }
-        if (ImGui.MenuItem("Rendering")) { menuState.edit = "Rendering"; }
-        ImGui.EndMenu();
-    }
-    // Assets Menu
-    if (ImGui.BeginMenu("Assets")) {
-        if (ImGui.MenuItem("Create")) { menuState.assets = "Create"; }
-        if (ImGui.MenuItem("Import New Asset...")) { menuState.assets = "Import New Asset..."; }
-        if (ImGui.MenuItem("Import Package...")) { menuState.assets = "Import Package..."; }
-        if (ImGui.MenuItem("Export Package...")) { menuState.assets = "Export Package..."; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Find References In Scene")) { menuState.assets = "Find References In Scene"; }
-        if (ImGui.MenuItem("Open Asset...")) { menuState.assets = "Open Asset..."; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Reimport")) { menuState.assets = "Reimport"; }
-        if (ImGui.MenuItem("Reimport All")) { menuState.assets = "Reimport All"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Refresh")) { menuState.assets = "Refresh"; }
-        if (ImGui.MenuItem("Remove Unused Assets")) { menuState.assets = "Remove Unused Assets"; }
-        ImGui.EndMenu();
-    }
-    // GameObject Menu
-    if (ImGui.BeginMenu("GameObject")) {
-        if (ImGui.MenuItem("Create Empty")) { menuState.gameObject = "Create Empty"; }
-        if (ImGui.MenuItem("Create Empty Child")) { menuState.gameObject = "Create Empty Child"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("2D Object")) { menuState.gameObject = "2D Object"; }
-        if (ImGui.MenuItem("UI")) { menuState.gameObject = "UI"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Light")) { menuState.gameObject = "Light"; }
-        if (ImGui.MenuItem("Audio")) { menuState.gameObject = "Audio"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Tilemap")) { menuState.gameObject = "Tilemap"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Align With View")) { menuState.gameObject = "Align With View"; }
-        if (ImGui.MenuItem("Align View to Selected")) { menuState.gameObject = "Align View to Selected"; }
-        if (ImGui.MenuItem("Move to View")) { menuState.gameObject = "Move to View"; }
-        if (ImGui.MenuItem("Rename")) { menuState.gameObject = "Rename"; }
-        if (ImGui.MenuItem("Duplicate")) { menuState.gameObject = "Duplicate"; }
-        if (ImGui.MenuItem("Delete")) { menuState.gameObject = "Delete"; }
-        ImGui.EndMenu();
-    }
-    // Component Menu
-    if (ImGui.BeginMenu("Component")) {
-        if (ImGui.MenuItem("Add Component")) { menuState.component = "Add Component"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Physics 2D")) { menuState.component = "Physics 2D"; }
-        if (ImGui.MenuItem("Rendering 2D")) { menuState.component = "Rendering 2D"; }
-        if (ImGui.MenuItem("Audio")) { menuState.component = "Audio"; }
-        if (ImGui.MenuItem("UI")) { menuState.component = "UI"; }
-        if (ImGui.MenuItem("Scripts")) { menuState.component = "Scripts"; }
-        ImGui.EndMenu();
-    }
-    // Tools Menu
-    if (ImGui.BeginMenu("Tools")) {
-        if (ImGui.MenuItem("Sprite Editor")) { menuState.tools = "Sprite Editor"; }
-        if (ImGui.MenuItem("Tilemap Editor")) { menuState.tools = "Tilemap Editor"; }
-        if (ImGui.MenuItem("Animation Editor")) { menuState.tools = "Animation Editor"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Custom Tools...")) { menuState.tools = "Custom Tools..."; }
-        ImGui.EndMenu();
-    }
-    // Window Menu
-    if (ImGui.BeginMenu("Window")) {
-        if (ImGui.MenuItem("General")) { menuState.window = "General"; }
-        if (ImGui.MenuItem("Scene View")) { menuState.window = "Scene View"; }
-        if (ImGui.MenuItem("Game View")) { menuState.window = "Game View"; }
-        if (ImGui.MenuItem("Inspector")) { menuState.window = "Inspector"; }
-        if (ImGui.MenuItem("Hierarchy")) { menuState.window = "Hierarchy"; }
-        if (ImGui.MenuItem("Console")) { menuState.window = "Console"; }
-        ImGui.EndMenu();
-    }
-    // Help Menu
-    if (ImGui.BeginMenu("Help")) {
-        if (ImGui.MenuItem("About Alis")) { menuState.help = "About Alis"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Preferences")) { menuState.help = "Preferences"; }
-        if (ImGui.MenuItem("Alis Manual")) { menuState.help = "Alis Manual"; }
-        if (ImGui.MenuItem("API Reference")) { menuState.help = "API Reference"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Report Bug")) { menuState.help = "Report Bug"; }
-        ImGui.Separator();
-        if (ImGui.MenuItem("Quit Alis")) { menuState.help = "Quit Alis"; }
         ImGui.EndMenu();
     }
     ImGui.EndMainMenuBar();
