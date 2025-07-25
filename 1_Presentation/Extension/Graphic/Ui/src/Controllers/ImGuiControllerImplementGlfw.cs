@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
@@ -1007,9 +1008,36 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             {
                 IsRunning = false;
             }
-            
+
             ImGuiIoPtr io = ImGui.GetIo();
-      
+
+            io.KeyMap[(int)ImGuiKey.Tab] = Glfw.GetKey(_glfwController._window, Keys.Tab) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.LeftCtrl] = Glfw.GetKey(_glfwController._window, Keys.LeftControl) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.RightCtrl] = Glfw.GetKey(_glfwController._window, Keys.RightControl) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.LeftArrow] = Glfw.GetKey(_glfwController._window, Keys.Left) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.RightArrow] = Glfw.GetKey(_glfwController._window, Keys.Right) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.UpArrow] = Glfw.GetKey(_glfwController._window, Keys.Up) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.DownArrow] = Glfw.GetKey(_glfwController._window, Keys.Down) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.PageUp] = Glfw.GetKey(_glfwController._window, Keys.PageUp) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.PageDown] = Glfw.GetKey(_glfwController._window, Keys.PageDown) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.Home] = Glfw.GetKey(_glfwController._window, Keys.Home) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.End] = Glfw.GetKey(_glfwController._window, Keys.End) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.Insert] = Glfw.GetKey(_glfwController._window, Keys.Insert) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.Delete] = Glfw.GetKey(_glfwController._window, Keys.Delete) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.Backspace] = Glfw.GetKey(_glfwController._window, Keys.Backspace) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.Space] = Glfw.GetKey(_glfwController._window, Keys.Space) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.Enter] = Glfw.GetKey(_glfwController._window, Keys.Enter) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.Escape] = Glfw.GetKey(_glfwController._window, Keys.Escape) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.KeypadEnter] = Glfw.GetKey(_glfwController._window, Keys.Enter) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.A] = Glfw.GetKey(_glfwController._window, Keys.A) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.C] = Glfw.GetKey(_glfwController._window, Keys.C) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.V] = Glfw.GetKey(_glfwController._window, Keys.V) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.X] = Glfw.GetKey(_glfwController._window, Keys.X) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.Y] = Glfw.GetKey(_glfwController._window, Keys.Y) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int)ImGuiKey.Z] = Glfw.GetKey(_glfwController._window, Keys.Z) == InputState.Press ? 1 : 0;
+
+
+
             // Actualiza la posición del mouse solo si la ventana está enfocada
             if (Glfw.GetWindowAttribute(_glfwController._window, WindowAttribute.Focused))
             {
@@ -1020,7 +1048,7 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             {
                 io.MousePos = new Vector2F(float.MinValue, float.MinValue);
             }
-      
+
             // Actualiza el estado de los botones del mouse
             var mouseDown = io.MouseDown;
             mouseDown[0] = _mousePressed[0] || Glfw.GetMouseButton(_glfwController._window, MouseButton.Left) == InputState.Press;
@@ -1028,9 +1056,133 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             mouseDown[2] = _mousePressed[2] || Glfw.GetMouseButton(_glfwController._window, MouseButton.Middle) == InputState.Press;
             _mousePressed[0] = _mousePressed[1] = _mousePressed[2] = false;
             io.MouseDown = mouseDown;
+
+            if (Glfw.GetKey(_glfwController._window, Keys.LeftShift) == InputState.Press ||
+                Glfw.GetKey(_glfwController._window, Keys.RightShift) == InputState.Press)
+            {
+                io.KeyShift = true;
+            }
+            else
+            {
+                io.KeyShift = false;
+            }
+
+            if (Glfw.GetKey(_glfwController._window, Keys.LeftControl) == InputState.Press ||
+                Glfw.GetKey(_glfwController._window, Keys.RightControl) == InputState.Press)
+            {
+                io.KeyCtrl = true;
+            }
+            else
+            {
+                io.KeyCtrl = false;
+            }
+
+            if (Glfw.GetKey(_glfwController._window, Keys.LeftAlt) == InputState.Press ||
+                Glfw.GetKey(_glfwController._window, Keys.RightAlt) == InputState.Press)
+            {
+                io.KeyAlt = true;
+            }
+            else
+            {
+                io.KeyAlt = false;
+            }
+
+            if (Glfw.GetKey(_glfwController._window, Keys.LeftSuper) == InputState.Press ||
+                Glfw.GetKey(_glfwController._window, Keys.RightSuper) == InputState.Press)
+            {
+                io.KeySuper = true;
+            }
+            else
+            {
+                io.KeySuper = false;
+            }
+
+            if (Glfw.GetKey(_glfwController._window, Keys.Backspace) == InputState.Press)
+            {
+                io.AddKeyEvent(ImGuiKey.Backspace, true);
+            }
+
+            if (Glfw.GetKey(_glfwController._window, Keys.Delete) == InputState.Press)
+            {
+                io.AddKeyEvent(ImGuiKey.Delete, true);
+            }
+
+            if (Glfw.GetKey(_glfwController._window, Keys.Enter) == InputState.Press)
+            {
+                io.AddKeyEvent(ImGuiKey.Enter, true);
+            }
+
+            if (Glfw.GetKey(_glfwController._window, Keys.Escape) == InputState.Press)
+            {
+                io.AddKeyEvent(ImGuiKey.Escape, true);
+            }
+
+            if (Glfw.GetKey(_glfwController._window, Keys.Tab) == InputState.Press)
+            {
+                io.AddKeyEvent(ImGuiKey.Tab, true);
+            }
+
+            if (Glfw.GetKey(_glfwController._window, Keys.Space) == InputState.Press)
+            {
+                io.AddKeyEvent(ImGuiKey.Space, true);
+            }
+
+            if (Glfw.GetKey(_glfwController._window, Keys.LeftControl) == InputState.Press ||
+                Glfw.GetKey(_glfwController._window, Keys.RightControl) == InputState.Press)
+            {
+                io.AddKeyEvent(ImGuiKey.LeftCtrl, true);
+                io.AddKeyEvent(ImGuiKey.RightCtrl, true);
+            }
+            else
+            {
+                io.AddKeyEvent(ImGuiKey.LeftCtrl, false);
+                io.AddKeyEvent(ImGuiKey.RightCtrl, false);
+            }
+
+
+            if (Glfw.GetKey(_glfwController._window, Keys.LeftShift) == InputState.Press ||
+                Glfw.GetKey(_glfwController._window, Keys.RightShift) == InputState.Press)
+            {
+                io.AddKeyEvent(ImGuiKey.LeftShift, true);
+                io.AddKeyEvent(ImGuiKey.RightShift, true);
+            }
+            else
+            {
+                io.AddKeyEvent(ImGuiKey.LeftShift, false);
+                io.AddKeyEvent(ImGuiKey.RightShift, false);
+            }
+
+            if (Glfw.GetKey(_glfwController._window, Keys.LeftAlt) == InputState.Press ||
+                Glfw.GetKey(_glfwController._window, Keys.RightAlt) == InputState.Press)
+            {
+                io.AddKeyEvent(ImGuiKey.LeftAlt, true);
+                io.AddKeyEvent(ImGuiKey.RightAlt, true);
+            }
+            else
+            {
+                io.AddKeyEvent(ImGuiKey.LeftAlt, false);
+                io.AddKeyEvent(ImGuiKey.RightAlt, false);
+            }
+
+            if (Glfw.GetKey(_glfwController._window, Keys.LeftSuper) == InputState.Press ||
+                Glfw.GetKey(_glfwController._window, Keys.RightSuper) == InputState.Press)
+            {
+                io.AddKeyEvent(ImGuiKey.LeftSuper, true);
+                io.AddKeyEvent(ImGuiKey.RightSuper, true);
+            }
+            else
+            {
+                io.AddKeyEvent(ImGuiKey.LeftSuper, false);
+                io.AddKeyEvent(ImGuiKey.RightSuper, false);
+            }
+
+
+
+
+
         }
 
-     
+
         /// <summary>
         /// Ons the start frame
         /// </summary>
@@ -1429,3 +1581,4 @@ namespace Alis.Extension.Graphic.Ui.Controllers
         }
     }
 }
+
