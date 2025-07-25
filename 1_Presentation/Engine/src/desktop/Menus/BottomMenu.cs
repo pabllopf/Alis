@@ -166,19 +166,20 @@ namespace Alis.App.Engine.Desktop.Menus
 
         private void RenderProgressBar()
         {
-            float progress = TotalProcesses == 0 ? 1f : (float)_completedProcesses / TotalProcesses;
+            // Si no hay procesos, no mostrar la barra
+            if (TotalProcesses == 0 || _completedProcesses >= TotalProcesses)
+                return;
+            float progress = (float)_completedProcesses / TotalProcesses;
             string label = $"{_completedProcesses}/{TotalProcesses} - {_currentProcess}";
             if (_processStartTime.HasValue && _currentProcessDuration > 0)
             {
                 double elapsed = (DateTime.UtcNow - _processStartTime.Value).TotalMilliseconds;
                 double percent = Math.Min(1.0, elapsed / _currentProcessDuration);
-                progress = (TotalProcesses == 0 ? 1f : ((float)_completedProcesses + (float)percent) / TotalProcesses);
+                progress = ((float)_completedProcesses + (float)percent) / TotalProcesses;
                 label += $" ({Math.Max(0, (_currentProcessDuration - elapsed) / 1000.0):0.0}s)";
             }
             ImGui.SetCursorPosX(ImGui.GetContentRegionMax().X - 150);
-            // Dibuja la ProgressBar
             ImGui.ProgressBar(progress, new Vector2F(150, ImGui.GetContentRegionMax().Y - 10), label);
-            // En vez de mover el cursor, usa IsItemHovered y IsMouseClicked para detectar el click
             if (ImGui.IsItemHovered() && ImGui.IsMouseClicked(0))
             {
                 _showProcessPopup = true;
