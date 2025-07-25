@@ -121,6 +121,7 @@ namespace Alis.App.Installer
             using CancellationTokenSource cts = new CancellationTokenSource();
             Task<bool> task = manager.Start(cts.Token);
             
+            
             // Definir la variable de estado fuera del bucle principal
             int animationState = 0;
 
