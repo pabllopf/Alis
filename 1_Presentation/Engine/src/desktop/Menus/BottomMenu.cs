@@ -170,7 +170,14 @@ namespace Alis.App.Engine.Desktop.Menus
             if (TotalProcesses == 0 || _completedProcesses >= TotalProcesses)
                 return;
             float progress = (float)_completedProcesses / TotalProcesses;
-            string label = $"{_completedProcesses}/{TotalProcesses} - {_currentProcess}";
+            // Acortar el mensaje si es muy largo
+            string processLabel = _currentProcess;
+            int maxLabelLength = 15; // Puedes ajustar este valor según el espacio disponible
+            if (!string.IsNullOrEmpty(processLabel) && processLabel.Length > maxLabelLength)
+            {
+                processLabel = processLabel.Substring(0, maxLabelLength) + "...";
+            }
+            string label = $"{_completedProcesses}/{TotalProcesses} {processLabel}"; // Sin guion ni enumerado
             if (_processStartTime.HasValue && _currentProcessDuration > 0)
             {
                 double elapsed = (DateTime.UtcNow - _processStartTime.Value).TotalMilliseconds;
@@ -178,8 +185,8 @@ namespace Alis.App.Engine.Desktop.Menus
                 progress = ((float)_completedProcesses + (float)percent) / TotalProcesses;
                 label += $" ({Math.Max(0, (_currentProcessDuration - elapsed) / 1000.0):0.0}s)";
             }
-            ImGui.SetCursorPosX(ImGui.GetContentRegionMax().X - 150);
-            ImGui.ProgressBar(progress, new Vector2F(150, ImGui.GetContentRegionMax().Y - 10), label);
+            ImGui.SetCursorPosX(ImGui.GetContentRegionMax().X - 200);
+            ImGui.ProgressBar(progress, new Vector2F(200, ImGui.GetContentRegionMax().Y - 10), label);
             if (ImGui.IsItemHovered() && ImGui.IsMouseClicked(0))
             {
                 _showProcessPopup = true;
@@ -191,13 +198,12 @@ namespace Alis.App.Engine.Desktop.Menus
             if (ImGui.BeginPopup("ProcessQueuePopup"))
             {
                 ImGui.Text("Process Queue:");
-                int i = 1;
                 foreach (var process in ProcessQueue)
                 {
                     string extra = process.Status == ProcessStatus.Running && process.StartTime.HasValue
                         ? $" ({Math.Max(0, (process.DurationMs - (DateTime.UtcNow - process.StartTime.Value).TotalMilliseconds) / 1000.0):0.0}s left)"
                         : "";
-                    ImGui.BulletText($"{i++}. {process.Name} - {process.Status}{extra}");
+                    ImGui.BulletText($"{process.Name} - {process.Status}{extra}");
                 }
                 if (ImGui.Button("Close"))
                 {
