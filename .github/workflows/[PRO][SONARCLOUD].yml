@@ -25,6 +25,7 @@ jobs:
       # 2. Install SDL2 and ffmpeg dependencies
       - name: install
         run: |
+          brew install glew glfw
           brew install sdl2 sdl2_image sdl2_ttf ffmpeg
           brew link ffmpeg
 
