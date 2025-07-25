@@ -71,6 +71,8 @@ namespace Alis.App.Engine.Desktop.Core
             ProjectWindow = new ProjectWindow(this);
             AudioPlayerWindow = new AudioPlayerWindow(this);
             AssetsWindow = new AssetsWindow(this);
+            
+            GitWindow = new GitWindow(this);
 
           
 
@@ -146,6 +148,8 @@ namespace Alis.App.Engine.Desktop.Core
         ///     Gets or sets the value of the project
         /// </summary>
         public Project Project { get; set; }
+        
+        public GitWindow GitWindow { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the video game
@@ -179,6 +183,8 @@ namespace Alis.App.Engine.Desktop.Core
             AudioPlayerWindow.Initialize();
             AssetsWindow.Initialize();
             SettingsWindow.Initialize();
+            
+            GitWindow.Initialize();
         }
 
         /// <summary>
@@ -209,6 +215,8 @@ namespace Alis.App.Engine.Desktop.Core
             AudioPlayerWindow.Start();
             AssetsWindow.Start();
             SettingsWindow.Start();
+            
+            GitWindow.Start();
         }
 
         /// <summary>
@@ -238,6 +246,8 @@ namespace Alis.App.Engine.Desktop.Core
             ProjectWindow.Render();
             AudioPlayerWindow.Render();
             AssetsWindow.Render();
+            
+            GitWindow.Render();
         }
     }
 }
