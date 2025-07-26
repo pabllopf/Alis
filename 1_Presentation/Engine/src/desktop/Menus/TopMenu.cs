@@ -518,6 +518,34 @@ namespace Alis.App.Engine.Desktop.Menus
                 {
                     TopMenuAction.ExecuteMenuAction("Console");
                 }
+                
+                if (ImGui.MenuItem("Style Editor"))
+                {
+                    TopMenuAction.ExecuteMenuAction("Style Editor");
+                }
+                
+                ImGui.Separator();
+                
+               if (ImGui.BeginMenu("Layouts"))
+               {
+                   if (ImGui.MenuItem("Default"))
+                   {
+                       TopMenuAction.ExecuteMenuAction("Layout:Default");
+                   }
+                   if (ImGui.MenuItem("2 by 3"))
+                   {
+                       TopMenuAction.ExecuteMenuAction("Layout:2 by 3");
+                   }
+                   if (ImGui.MenuItem("4 Split"))
+                   {
+                       TopMenuAction.ExecuteMenuAction("Layout:4 Split");
+                   }
+                   if (ImGui.MenuItem("Wide"))
+                   {
+                       TopMenuAction.ExecuteMenuAction("Layout:Wide");
+                   }
+                   ImGui.EndMenu();
+               }
 
                 ImGui.EndMenu();
             }

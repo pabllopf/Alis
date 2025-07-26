@@ -9,6 +9,7 @@ using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.GlfwLib;
 using Alis.Core.Graphic.GlfwLib.Enums;
+using Alis.Core.Graphic.GlfwLib.Structs;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Extension.Graphic.Ui.Extras.GuizMo;
@@ -285,6 +286,8 @@ namespace Alis.Extension.Graphic.Ui.Controllers
         /// </summary>
         private bool _modeDebug = modeDebug;
 
+        private float dpiScale;
+
         /// <summary>
         /// Gets or sets the value of the is running
         /// </summary>
@@ -327,6 +330,16 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             
             
             InitializePreviewResources();
+            
+            // 1. Obtener el factor de escala del monitor principal
+            Monitor monitor = Glfw.GetWindowMonitor(_glfwController._window);
+            if (monitor == Monitor.None)
+            {
+                monitor = Glfw.GetPrimaryMonitor();
+            }
+            
+            dpiScale = Math.Max(monitor.ContentScale.X, monitor.ContentScale.Y);
+
             
 
             Logger.Info("ImGui initialized successfully");
@@ -625,9 +638,7 @@ namespace Alis.Extension.Graphic.Ui.Controllers
         {
             Logger.Info("Setting ImGui style...");
             ImGui.StyleColorsDark();
-
-            ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
-            //imGuiIoPtr.FontGlobalScale = 2f;
+            
 
             ref ImGuiStyle style = ref ImGui.GetStyle();
 
@@ -984,9 +995,9 @@ namespace Alis.Extension.Graphic.Ui.Controllers
         public void SetPerFrameImGuiData(float deltaSeconds)
         {
             ImGuiIoPtr io = ImGui.GetIo();
-            io.DisplaySize = new Vector2F(_glfwController._widthMainWindow, _glfwController._heightMainWindow);
-            io.DisplayFramebufferScale = new Vector2F(1f, 1f);
             io.DeltaTime = deltaSeconds;
+            io.DisplayFramebufferScale = new Vector2F(dpiScale, dpiScale);
+            io.FontGlobalScale = dpiScale;
         }
 
         /// <summary>
@@ -1110,6 +1121,10 @@ namespace Alis.Extension.Graphic.Ui.Controllers
         public void OnRenderFrame()
         {
             _glfwController.OnRenderFrame();
+            
+            var io = ImGui.GetIo();
+            io.DisplaySize = new Vector2F(_glfwController._widthMainWindow, _glfwController._heightMainWindow);
+            io.DisplayFramebufferScale = new Vector2F(1f, 1f);
 
             if (_modeDebug)
             {
