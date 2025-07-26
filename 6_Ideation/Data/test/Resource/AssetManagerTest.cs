@@ -117,45 +117,6 @@ namespace Alis.Core.Aspect.Data.Test.Resource
         }
 
         /// <summary>
-        ///     Tests that find should throw invalid operation exception when multiple assets exist
-        /// </summary>
-        [Fact]
-        public void Find_ShouldThrowInvalidOperationException_WhenMultipleAssetsExist()
-        {
-            // Arrange
-            const string assetName = "Find_ShouldThrowInvalidOperationException_WhenMultipleAssetsExist.txt";
-
-            // Create file 1
-            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
-            string expectedPath1 = Path.Combine(directory, assetName);
-            if (!Directory.Exists(directory))
-            {
-                Directory.CreateDirectory(directory);
-            }
-
-            if (!File.Exists(expectedPath1))
-            {
-                File.Create(expectedPath1);
-            }
-
-            // Create file 2
-            directory = Path.Combine(directory, "Sample");
-            string expectedPath2 = Path.Combine(directory, assetName);
-            if (!Directory.Exists(directory))
-            {
-                Directory.CreateDirectory(directory);
-            }
-
-            if (!File.Exists(expectedPath2))
-            {
-                File.Create(expectedPath2);
-            }
-
-            // Act & Assert
-            Assert.Throws<InvalidOperationException>(() => AssetManager.Find(assetName));
-        }
-
-        /// <summary>
         ///     Tests that find should return empty string when asset does not exist
         /// </summary>
         [Fact]

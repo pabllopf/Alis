@@ -48,7 +48,6 @@ namespace Alis.Core.Aspect.Data.Resource
             ValidateAssetName(assetName);
             string[] assetsDirectory = GetAssetsDirectory();
             string[] files = GetFilesInAssetsDirectory(assetsDirectory, assetName);
-            ValidateFileCount(files, assetName);
             return GetFilePath(files);
         }
 
@@ -69,7 +68,7 @@ namespace Alis.Core.Aspect.Data.Resource
         /// </summary>
         /// <param name="assetName">The asset name</param>
         /// <exception cref="ArgumentNullException"></exception>
-        internal static void ValidateAssetNameIsNotNull(string assetName)
+        private static void ValidateAssetNameIsNotNull(string assetName)
         {
             if (assetName == null)
             {
@@ -82,7 +81,7 @@ namespace Alis.Core.Aspect.Data.Resource
         /// </summary>
         /// <param name="assetName">The asset name</param>
         /// <exception cref="ArgumentException">The asset name cannot be empty. </exception>
-        internal static void ValidateAssetNameIsNotEmpty(string assetName)
+        private static void ValidateAssetNameIsNotEmpty(string assetName)
         {
             if (string.IsNullOrWhiteSpace(assetName))
             {
@@ -175,29 +174,12 @@ namespace Alis.Core.Aspect.Data.Resource
 
             return files.ToArray();
         }
-
-        /// <summary>
-        ///     Validates the file count using the specified files
-        /// </summary>
-        /// <param name="files">The files</param>
-        /// <param name="assetName">The asset name</param>
-        /// <exception cref="InvalidOperationException">
-        ///     Multiple files with the name '{assetName}' were found. Unable to determine
-        ///     the correct file.
-        /// </exception>
-        internal static void ValidateFileCount(string[] files, string assetName)
-        {
-            if (files.Length > 1)
-            {
-                throw new InvalidOperationException($"Multiple files with the name '{assetName}' were found. Unable to determine the correct file.");
-            }
-        }
-
+        
         /// <summary>
         ///     Gets the file path using the specified files
         /// </summary>
         /// <param name="files">The files</param>
         /// <returns>The string</returns>
-        internal static string GetFilePath(string[] files) => files.Length == 1 ? files[0] : string.Empty;
+        private static string GetFilePath(string[] files) => files.Length >= 1 ? files[0] : string.Empty;
     }
 }

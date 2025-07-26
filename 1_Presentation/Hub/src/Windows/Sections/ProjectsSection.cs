@@ -142,7 +142,7 @@ namespace Alis.App.Hub.Windows.Sections
         {
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string editorPath = Path.Combine(basePath, "Editor", editorVersion);
-            string searchPattern = OperatingSystem.IsWindows() ? "Alis.App.Engine.exe" : "Alis.App.Engine";
+            string searchPattern = OperatingSystem.IsWindows() ? "Alis.App.Engine.Desktop.exe" : "Alis.App.Engine.Desktop";
 
             string[] files = Directory.GetFiles(editorPath, searchPattern, SearchOption.AllDirectories);
             if (files.Length == 0)
