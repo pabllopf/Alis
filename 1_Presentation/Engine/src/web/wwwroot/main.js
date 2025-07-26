@@ -192,18 +192,6 @@ function renderConsole() {
 }
 
 
-// Variables globales para controlar el estado de los menús
-let menuState = {
-    file: "",
-    edit: "",
-    assets: "",
-    gameObject: "",
-    component: "",
-    tools: "",
-    window: "",
-    help: ""
-};
-
 
 async function frame() {
     ImGuiImplWeb.BeginRenderWebGL();
@@ -265,9 +253,9 @@ async function frame() {
     ImGui.PushStyleColor(ImGui.Col.Text,                 0xFFFFFFFF);
    
     // Calcula la altura del menú superior y del menú inferior
-    const menuBarHeight = ImGui.GetFrameHeight(); // Altura de la barra de menú superior
+    const menuDockHeight = 27;
+    const menuBarHeight = ImGui.GetFrameHeight() + menuDockHeight; // Altura de la barra de menú superior
     const bottomMenuHeight = 40; // Altura fija del menú inferior
-    const menuBarBottomHeight = 30; // Altura del menú inferior de la barra de menú
 
     // Calcula las áreas
     const width = canvas.width;
@@ -280,42 +268,69 @@ async function frame() {
     const windowPosY = menuBarHeight;
     
     // Posiciona y dimensiona la ventana "Inspector"
-    ImGui.SetNextWindowPos(new ImVec2(windowPosX, windowPosY), ImGui.Cond.Always);
-    ImGui.SetNextWindowSize(new ImVec2(windowWidth, height), ImGui.Cond.Always);
+    ImGui.SetNextWindowPos(new ImVec2(windowPosX, windowPosY), ImGui.Cond.FirstUseEver);
+    ImGui.SetNextWindowSize(new ImVec2(windowWidth / 2, height - (height / 3)), ImGui.Cond.FirstUseEver);
+    ImGui.Begin("Hierarchy");
+    ImGui.Text("Contenido de la Jerarquía");
+    ImGui.End();
+
+    ImGui.SetNextWindowPos(new ImVec2(windowPosX, windowPosY + (height / 3) * 2), ImGui.Cond.FirstUseEver);
+    ImGui.SetNextWindowSize(new ImVec2(windowWidth / 2, (height / 3)), ImGui.Cond.FirstUseEver);
+    ImGui.Begin("Plugin");
+    ImGui.Text("Contenido del Plugin");
+    ImGui.End();
+    
+    // Posiciona y dimensiona la ventana settings
+    ImGui.SetNextWindowPos(new ImVec2(windowPosX + (windowWidth / 2), windowPosY), ImGui.Cond.FirstUseEver);
+    ImGui.SetNextWindowSize(new ImVec2(windowWidth, height - (height / 3)), ImGui.Cond.FirstUseEver);
+    ImGui.Begin("Scene");
+    ImGui.Text("Contenido de la Escena");
+    ImGui.End();
+
+    // Posiciona y dimensiona la ventana settings
+    ImGui.SetNextWindowPos(new ImVec2(windowPosX + (windowWidth / 2) * 3, windowPosY), ImGui.Cond.FirstUseEver);
+    ImGui.SetNextWindowSize(new ImVec2(windowWidth, height - (height / 3)), ImGui.Cond.FirstUseEver);
+    ImGui.Begin("Game");
+    ImGui.Text("Contenido del Juego");
+    ImGui.End();
+
+
+    // Posiciona y dimensiona la ventana settings
+    ImGui.SetNextWindowPos(new ImVec2(windowPosX + (windowWidth / 2) * 3, windowPosY + (height / 3) * 2), ImGui.Cond.FirstUseEver);
+    ImGui.SetNextWindowSize(new ImVec2(windowWidth, height / 3), ImGui.Cond.FirstUseEver);
+    ImGui.Begin("Asset Browser");
+    ImGui.Text("Contenido del Navegador de Recursos");
+    ImGui.End();
+
+    // Posiciona y dimensiona la ventana settings
+    ImGui.SetNextWindowPos(new ImVec2(windowPosX + (windowWidth / 2), windowPosY + (height / 3) * 2), ImGui.Cond.FirstUseEver);
+    ImGui.SetNextWindowSize(new ImVec2(windowWidth, height / 3), ImGui.Cond.FirstUseEver);
+    ImGui.Begin("Console");
+    ImGui.Text("Contenido de la Consola");
+    ImGui.End();
+    
+
+    // Posiciona y dimensiona la ventana "Inspector"
+    ImGui.SetNextWindowPos(new ImVec2(windowPosX + (windowWidth * 2) + (windowWidth / 2), windowPosY), ImGui.Cond.FirstUseEver);
+    ImGui.SetNextWindowSize(new ImVec2((windowWidth / 2), height - (height / 3)), ImGui.Cond.FirstUseEver);
     ImGui.Begin("Inspector");
     ImGui.Text("Contenido del Inspector");
     ImGui.End();
 
-
-    // Posiciona y dimensiona la ventana settings
-    ImGui.SetNextWindowPos(new ImVec2(windowPosX + windowWidth, windowPosY), ImGui.Cond.Always);
-    ImGui.SetNextWindowSize(new ImVec2(windowWidth, height), ImGui.Cond.Always);
-    ImGui.Begin("Render");
-    ImGui.Text("Contenido del Render");
-    ImGui.End();
-
-    // Posiciona y dimensiona la ventana settings
-    ImGui.SetNextWindowPos(new ImVec2(windowPosX + windowWidth, windowPosY), ImGui.Cond.Always);
-    ImGui.SetNextWindowSize(new ImVec2(windowWidth, height), ImGui.Cond.Always);
-    ImGui.Begin("Preview");
-    ImGui.Text("Contenido de Preview");
-    ImGui.End();
-    
-
-    // Posiciona y dimensiona la ventana settings
-    ImGui.SetNextWindowPos(new ImVec2(windowPosX + windowWidth * 2, windowPosY), ImGui.Cond.Always);
-    ImGui.SetNextWindowSize(new ImVec2(windowWidth, height), ImGui.Cond.Always);
-    ImGui.Begin("Settings");
-    ImGui.Text("Contenido de Settings");
+    ImGui.SetNextWindowPos(new ImVec2(windowPosX + (windowWidth * 2) + (windowWidth / 2), windowPosY + (height / 3) * 2), ImGui.Cond.FirstUseEver);
+    ImGui.SetNextWindowSize(new ImVec2(windowWidth / 2, (height / 3)), ImGui.Cond.FirstUseEver);
+    ImGui.Begin("Audio Player");
+    ImGui.Text("Contenido del Reproductor de Audio");
     ImGui.End();
     
 
     // Menús
-    renderConsole();
-    ImGui.ShowDemoWindow();
+   
+    //ImGui.ShowDemoWindow();
     renderMainMenuBar();
+    renderMenuBar();
     renderBottomMenu();
-    await DotNet.invokeMethodAsync("Alis.App.Engine.Web", "RenderUi");
+    //await DotNet.invokeMethodAsync("Alis.App.Engine.Web", "RenderUi");
 
 
     ImGui.PopStyleColor(48);
@@ -327,16 +342,89 @@ async function frame() {
     requestAnimationFrame(frame);
 }
 
+function renderMenuBar() {
+    const style = ImGui.GetStyle();
+    const menuBarHeight = 25;
+    ImGui.SetNextWindowPos(new ImVec2(0, 25), ImGui.Cond.FirstUseEver);
+    ImGui.SetNextWindowSize(new ImVec2(canvas.width, menuBarHeight), ImGui.Cond.FirstUseEver);
+
+    // Parámetros de estilo
+    style.WindowRounding = 0.0;
+    style.ChildRounding = 0.0;
+    style.FrameRounding = 0.0;
+
+    style.WindowPadding = new ImVec2(0, 0);
+    //style.FramePadding = new ImVec2(0, 0);
+    //style.ItemSpacing = new ImVec2(0, 0);
+    //style.ItemInnerSpacing = new ImVec2(0, 0);
+    
+    
+    if (ImGui.Begin("MenuBarWindow", null,
+        ImGui.WindowFlags.NoTitleBar |
+        ImGui.WindowFlags.NoResize |
+        ImGui.WindowFlags.NoMove |
+        ImGui.WindowFlags.NoScrollbar |
+        ImGui.WindowFlags.NoSavedSettings |
+        ImGui.WindowFlags.NoCollapse |
+        ImGui.WindowFlags.NoBringToFrontOnFocus
+    )) {
+        // Botones de navegación izquierda
+        if (ImGui.Button("⏪")) { /* Acción volver atrás */ }
+        ImGui.SameLine();
+        if (ImGui.Button("⏩")) { /* Acción adelante */ }
+
+        // Centrar los botones de control
+        const windowWidth = ImGui.GetWindowSize().x;
+        const buttonWidth = 40 * 3 + 20 * 2; // 3 botones + 2 espacios
+        const centerPos = (windowWidth - buttonWidth) / 2;
+        ImGui.SameLine(centerPos);
+
+        if (ImGui.Button("▶️")) { /* Acción play */ }
+        ImGui.SameLine();
+        if (ImGui.Button("⏸️")) { /* Acción pausa */ }
+        ImGui.SameLine();
+        if (ImGui.Button("⏹️")) { /* Acción stop */ }
+    }
+    ImGui.End();
+
+   
+
+    // Parámetros de estilo
+    style.WindowRounding = 0.0;
+    style.ChildRounding = 4.0;
+    style.FrameRounding = 4.0;
+
+    style.WindowPadding = new ImVec2(10, 10);
+    style.FramePadding = new ImVec2(6, 6);
+    style.ItemSpacing = new ImVec2(6, 6);
+    style.ItemInnerSpacing = new ImVec2(6, 6);
+}
 
 function renderMainMenuBar() {
-    ImGui.BeginMainMenuBar();
-    // File Menu
-    if (ImGui.BeginMenu("File", true)) {
-        if (ImGui.MenuItem("New Scene")) { menuState.file = "New Scene"; }
-        if (ImGui.MenuItem("Open Scene...")) { menuState.file = "Open Scene..."; }
-        ImGui.EndMenu();
+    
+    const labelMenu = "File";
+    const labelNew = "New";
+    const labelOpen = "Open";
+    const labelSave = "Save";
+    
+    
+    if(ImGui.BeginMainMenuBar()) 
+    {
+        // File Menu
+        if (ImGui.BeginMenu(labelMenu)) {
+            if (ImGui.MenuItem(labelNew, "ctrl+n")) {
+                console.log("New file created");
+            }
+            if (ImGui.MenuItem(labelOpen, "ctrl+o")) {
+                console.log("Open file dialog");
+            }
+            if (ImGui.MenuItem(labelSave, "ctrl+s")) {
+                console.log("Save file");
+            }
+            ImGui.EndMenu();
+        }
+        ImGui.EndMainMenuBar();
     }
-    ImGui.EndMainMenuBar();
 }
 
 function renderBottomMenu() {
