@@ -136,80 +136,12 @@ window.ImGuiInterop = {
     }
 };
 
-// Inicializa el framebuffer y la textura solo una vez
-let fbo = null;
-let fboTexture = null;
-function initFBO(gl, width, height) {
-    fbo = gl.createFramebuffer();
-    gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
-
-    fboTexture = gl.createTexture();
-    gl.bindTexture(gl.TEXTURE_2D, fboTexture);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-
-    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, fboTexture, 0);
-
-    gl.bindTexture(gl.TEXTURE_2D, null);
-    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-}
-
 
 const color = [0.0, 0.5, 0.5];
-const showDemo = [true];
-const docking = [false];
-
 const imgJsLogo = new Image();
 imgJsLogo.src = "javascript.png";
 const jsLogo = await ImGuiImplWeb.LoadImageWebGL(canvas, imgJsLogo);
 
-let code = [
-    ``,
-];
-let evalCode = "";
-
-let consoleMessages = [];
-
-// Redefinir console.log, console.warn, console.error para capturar mensajes
-const originalLog = console.log;
-const originalWarn = console.warn;
-const originalError = console.error;
-console.log = function(...args) {
-    consoleMessages.push({ type: "log", message: args.map(String).join(" ") });
-    originalLog.apply(console, args);
-};
-console.warn = function(...args) {
-    consoleMessages.push({ type: "warn", message: args.map(String).join(" ") });
-    originalWarn.apply(console, args);
-};
-console.error = function(...args) {
-    consoleMessages.push({ type: "error", message: args.map(String).join(" ") });
-    originalError.apply(console, args);
-};
-
-function renderConsole() {
-    ImGui.Begin("Consola", null, ImGui.WindowFlags.NoCollapse | ImGui.WindowFlags.NoResize);
-    ImGui.Text("Mensajes de la consola del navegador:");
-    ImGui.Separator();
-    ImGui.BeginChild("ConsoleScroll", new ImVec2(0, 300), true);
-    for (let i = 0; i < consoleMessages.length; i++) {
-        const msg = consoleMessages[i];
-        if (msg.type === "error") {
-            ImGui.TextColored(new ImVec4(1,0.2,0.2,1), msg.message);
-        } else if (msg.type === "warn") {
-            ImGui.TextColored(new ImVec4(1,1,0.2,1), msg.message);
-        } else {
-            ImGui.Text(msg.message);
-        }
-    }
-    ImGui.EndChild();
-    if (ImGui.Button("Limpiar")) {
-        consoleMessages = [];
-    }
-    ImGui.End();
-}
-
-initFBO(context, 500, 500);
 
 async function frame() {
     ImGuiImplWeb.BeginRenderWebGL();
@@ -363,73 +295,6 @@ async function frame() {
     ImGuiImplWeb.EndRenderWebGL();
 
     requestAnimationFrame(frame);
-}
-
-// Renderiza el triángulo en la textura del FBO
-function renderTriangleToTexture(gl, width, height) {
-    if (!fbo) initFBO(gl, width, height);
-
-    gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
-    gl.viewport(0, 0, width, height);
-
-    // Shaders
-    const vertSrc = `
-        attribute vec2 aPosition;
-        void main() {
-            gl_Position = vec4(aPosition, 0.0, 1.0);
-        }
-    `;
-    const fragSrc = `
-        precision mediump float;
-        void main() {
-            gl_FragColor = vec4(0.2, 0.8, 0.4, 1.0);
-        }
-    `;
-
-    // Compilar shaders
-    function compileShader(type, src) {
-        const shader = gl.createShader(type);
-        gl.shaderSource(shader, src);
-        gl.compileShader(shader);
-        return shader;
-    }
-    const vertShader = compileShader(gl.VERTEX_SHADER, vertSrc);
-    const fragShader = compileShader(gl.FRAGMENT_SHADER, fragSrc);
-
-    // Programa
-    const program = gl.createProgram();
-    gl.attachShader(program, vertShader);
-    gl.attachShader(program, fragShader);
-    gl.linkProgram(program);
-
-    // Buffer de vértices
-    const vertices = new Float32Array([
-        0.0,  0.8,
-        -0.8, -0.8,
-        0.8, -0.8
-    ]);
-    const vbo = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
-    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
-
-    // Usar programa y dibujar
-    gl.useProgram(program);
-    const posLoc = gl.getAttribLocation(program, "aPosition");
-    gl.enableVertexAttribArray(posLoc);
-    gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
-
-    gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.drawArrays(gl.TRIANGLES, 0, 3);
-
-    // Limpiar
-    gl.disableVertexAttribArray(posLoc);
-    gl.useProgram(null);
-    gl.deleteBuffer(vbo);
-    gl.deleteProgram(program);
-    gl.deleteShader(vertShader);
-    gl.deleteShader(fragShader);
-    
-    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
 }
 
 function renderMenuBar() {
