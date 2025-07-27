@@ -201,7 +201,7 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             io.KeyAlt = io.KeysDown[(int) Keys.LeftAlt] || io.KeysDown[(int) Keys.RightAlt];
             io.KeySuper = io.KeysDown[(int) Keys.LeftSuper] || io.KeysDown[(int) Keys.RightSuper];
 
-            Logger.Info($"Key: {key}, Action: {action}, Pressed: {pressed}");
+            //Logger.Info($"Key: {key}, Action: {action}, Pressed: {pressed}");
         }
 
         // Callback para caracteres (texto)
@@ -210,7 +210,7 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             ImGuiIoPtr io = ImGui.GetIo();
             io.AddInputCharacter(codepoint);
 
-            Logger.Info($"Char: {codepoint}");
+            //Logger.Info($"Char: {codepoint}");
         }
         
         private static void MouseButtonCallback(Window window, MouseButton button, InputState action, ModifierKeys mods)
@@ -222,7 +222,7 @@ namespace Alis.Extension.Graphic.Ui.Controllers
                 io.MouseDown[idx] = action == InputState.Press;
             }
           
-            Console.WriteLine($"Mouse Button: {button}, Action: {action}, Pressed: {io.MouseDown[(int)button]}");
+            //Console.WriteLine($"Mouse Button: {button}, Action: {action}, Pressed: {io.MouseDown[(int)button]}");
         }
       
         // Callback de scroll
@@ -232,7 +232,7 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             io.MouseWheel += (float)yoffset;
             io.MouseWheelH += (float)xoffset;
           
-            Console.WriteLine($"Scroll: XOffset: {xoffset}, YOffset: {yoffset}, MouseWheel: {io.MouseWheel}, MouseWheelH: {io.MouseWheelH}");
+            //Console.WriteLine($"Scroll: XOffset: {xoffset}, YOffset: {yoffset}, MouseWheel: {io.MouseWheel}, MouseWheelH: {io.MouseWheelH}");
         }
 
 

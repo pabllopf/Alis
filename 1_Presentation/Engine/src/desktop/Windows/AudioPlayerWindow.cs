@@ -70,7 +70,7 @@ namespace Alis.App.Engine.Desktop.Windows
         /// <summary>
         ///     The is open
         /// </summary>
-        private bool isOpen = true;
+        private bool isOpen = false;
 
         /// <summary>
         ///     The is playing
@@ -118,7 +118,6 @@ namespace Alis.App.Engine.Desktop.Windows
         {
             if (!isOpen)
             {
-                Logger.Info("Audio Player Window is closed");
                 return;
             }
 

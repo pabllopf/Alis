@@ -54,7 +54,7 @@ namespace Alis.App.Engine.Desktop.Windows.Settings
         /// <summary>
         ///     The is open
         /// </summary>
-        private bool isOpen = true;
+        private bool isOpen = false;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SettingsWindow" /> class
@@ -98,6 +98,11 @@ namespace Alis.App.Engine.Desktop.Windows.Settings
             }
             
             ImGui.End();
+        }
+
+        public void Open()
+        {
+            isOpen = true;
         }
     }
 }

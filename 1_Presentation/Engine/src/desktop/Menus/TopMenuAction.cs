@@ -147,10 +147,41 @@ namespace Alis.App.Engine.Desktop.Menus
             MenuActions.Add("Inspector", InspectorWindow);
             MenuActions.Add("Hierarchy", HierarchyWindow);
             MenuActions.Add("Console", ConsoleWindow);
+            MenuActions.Add("Layout:Default", LayoutDefault);
+            MenuActions.Add("Layout:2 by 3", Layout2by3);
+            MenuActions.Add("Layout:4Split", Layout4Split);
+            MenuActions.Add("Layout:Wide", LayoutWide);
+            MenuActions.Add("Layout:Tall", LayoutTall); 
+            
 
             MenuActions.Add("Alis Manual", AlisManual);
             MenuActions.Add("API Reference", ApiReference);
             MenuActions.Add("Report Bug", ReportBug);
+        }
+
+        private static void LayoutTall()
+        {
+            Console.WriteLine("Layout Tall selected");
+        }
+
+        private static void LayoutWide()
+        {
+            Console.WriteLine("Layout Wide selected");
+        }
+
+        private static void Layout4Split()
+        {
+            Console.WriteLine("Layout 4 Split selected");
+        }
+        
+        private static void Layout2by3()
+        {
+            Console.WriteLine("Layout 2 by 3 selected");
+        }
+
+        private static void LayoutDefault()
+        {
+            Console.WriteLine("Layout Default selected");
         }
 
         /// <summary>
@@ -166,6 +197,8 @@ namespace Alis.App.Engine.Desktop.Menus
             }
 
             ImGui.SaveIniSettingsToDisk(file);
+            
+            Logger.Log($"Settings saved to {file}");
         }
 
         /// <summary>
@@ -224,6 +257,7 @@ namespace Alis.App.Engine.Desktop.Menus
         /// </summary>
         private static void Preferences()
         {
+            _spaceWork.SettingsWindow.Open();
         }
 
         /// <summary>
@@ -231,6 +265,7 @@ namespace Alis.App.Engine.Desktop.Menus
         /// </summary>
         private static void QuitAlis()
         {
+            _spaceWork.ImGuiController.IsRunning = false;
         }
 
         /// <summary>
