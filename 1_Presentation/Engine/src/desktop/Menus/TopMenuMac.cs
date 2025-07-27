@@ -237,7 +237,7 @@ namespace Alis.App.Engine.Desktop.Menus
                 mainMenu,
                 "Window",
                 "Layouts",
-                new[] { "Default", "2 by 3", "4 Split", "Wide", "Tall" },
+                new[] { "Default", "2 by 3", "4 Split", "Wide" },
                 new Action<object>(layout => TopMenuAction.ExecuteMenuAction($"Layout:{layout}"))
             );
 
