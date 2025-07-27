@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Alis.App.Engine.Desktop.Core;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
@@ -45,8 +48,12 @@ namespace Alis.App.Engine.Desktop.Windows
         ///     The stream
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Stream} Project";
-        
+
         private bool _isOpen = true;
+
+        private IntPtr commandPtr;
+
+        private string _groupBy;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ProjectWindow" /> class
@@ -67,6 +74,7 @@ namespace Alis.App.Engine.Desktop.Windows
         public void Start()
         {
         }
+
         /// <summary>
         ///     Gets the value of the space work
         /// </summary>
@@ -78,13 +86,102 @@ namespace Alis.App.Engine.Desktop.Windows
             {
                 return;
             }
-            
-            if(ImGui.Begin(NameWindow, ref _isOpen, ImGuiWindowFlags.NoCollapse))
+
+            if (ImGui.Begin(NameWindow, ref _isOpen, ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.MenuBar))
             {
-                ImGui.Text("Project Window");
+                ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0, 0, 0, 0)); // Set background to transparent
+                ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0); // Remove border
+
+                if (ImGui.BeginMenuBar())
+                {
+                    ImGui.Text($"{FontAwesome5.Cube}");
+
+                    ImGui.SameLine();
+
+                    commandPtr = Marshal.StringToHGlobalAnsi(SpaceWork.VideoGame.Context.SceneManager.Name);
+                    if (ImGui.InputText("##SceneName", commandPtr, 125, ImGuiInputTextFlags.AlwaysOverwrite))
+                    {
+                        SpaceWork.VideoGame.Context.SceneManager.Name = Marshal.PtrToStringAnsi(commandPtr);
+                        //SpaceWork.VideoGame.Save();
+                    }
+
+                    ImGui.SameLine();
+                    // move to the right:
+                    ImGui.SetCursorPosX(ImGui.GetWindowWidth() - 55);
+
+                    if (ImGui.BeginMenu($"{FontAwesome5.Plus}## Add {NameWindow}"))
+                    {
+                        if (ImGui.MenuItem("Add GameObject"))
+                        {
+                            //SpaceWork.VideoGame.Context.SceneManager.CurrentScene.Add(new GameObject().Builder()
+                            //    .Name($"New GameObject ({SpaceWork.VideoGame.Context.SceneManager.CurrentScene.GameObjects.Count})")
+                            //    .Build());
+                        }
+                        
+                        ImGui.EndMenu();
+                    }
+                    
+                    
+                    if (ImGui.BeginMenu($"{FontAwesome5.Eye}## Options {NameWindow}"))
+                    {
+                        if (ImGui.MenuItem("Filter by Name"))
+                        {
+                            _groupBy = "Name";
+                        }
+
+                        if (ImGui.MenuItem("Group by Tag"))
+                        {
+                            _groupBy = "Tag";
+                        }
+
+                        if (ImGui.MenuItem("Group by Layer"))
+                        {
+                            _groupBy = "Layer";
+                        }
+
+                        ImGui.EndMenu();
+                    }
+
+                    
+
+                    ImGui.EndMenuBar();
+                }
+
+                ImGui.PopStyleVar();
+                ImGui.PopStyleColor();
+
+                List<GameObject> gameObjects = new List<GameObject>();
+
+                switch (_groupBy)
+                {
+                    case "Tag":
+                        RenderGroupedByTag(gameObjects);
+                        break;
+                    case "Layer":
+                        RenderGroupedByLayer(gameObjects);
+                        break;
+                    default:
+                        RenderGameObjects(gameObjects);
+                        break;
+                }
             }
             
             ImGui.End();
+        }
+
+        private void RenderGameObjects(List<GameObject> gameObjects)
+        {
+            
+        }
+
+        private void RenderGroupedByLayer(List<GameObject> gameObjects)
+        {
+          
+        }
+
+        private void RenderGroupedByTag(List<GameObject> gameObjects)
+        {
+            
         }
     }
 }
