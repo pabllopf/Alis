@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Physic.Dynamics;
 
@@ -63,21 +64,33 @@ namespace Alis.Builder.Core.Ecs.Components.Collider
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder AngularVelocity(float value) => this;
+        public BoxColliderBuilder AngularVelocity(float value)
+        {
+            boxCollider.AngularVelocity = value;
+            return this;
+        }
 
         /// <summary>
         ///     Auto the tilling using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder AutoTilling(bool value) => this;
+        public BoxColliderBuilder AutoTilling(bool value)
+        {
+            boxCollider.AutoTilling = value;
+            return this;
+        }
 
         /// <summary>
         ///     Bodies the type using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder BodyType(BodyType value) => this;
+        public BoxColliderBuilder BodyType(BodyType value)
+        {
+            boxCollider.BodyType = value;
+            return this;
+        }
 
 
         /// <summary>
@@ -91,21 +104,32 @@ namespace Alis.Builder.Core.Ecs.Components.Collider
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder FixedRotation(bool value) => this;
+        public BoxColliderBuilder FixedRotation(bool value)
+        {
+            boxCollider.FixedRotation = value;
+            return this;
+        }
 
         /// <summary>
         ///     Frictions the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder Friction(float value) => this;
+        public BoxColliderBuilder Friction(float value)
+        {
+            boxCollider.Friction = value;
+            return this;
+        }
 
         /// <summary>
         ///     Is the active using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder IsActive(bool value) => this;
+        public BoxColliderBuilder IsActive(bool value)
+        {
+            return this;
+        }
 
         /// <summary>
         ///     Is the trigger
@@ -126,14 +150,22 @@ namespace Alis.Builder.Core.Ecs.Components.Collider
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder LinearVelocity(float x, float y) => this;
+        public BoxColliderBuilder LinearVelocity(float x, float y)
+        {
+            boxCollider.LinearVelocity = new Vector2F(x, y);
+            return this;
+        }
 
         /// <summary>
         ///     Masses the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder Mass(float value) => this;
+        public BoxColliderBuilder Mass(float value)
+        {
+            boxCollider.Mass = value;
+            return this;
+        }
 
         /// <summary>
         ///     Relatives the position using the specified x
@@ -141,21 +173,33 @@ namespace Alis.Builder.Core.Ecs.Components.Collider
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder RelativePosition(float x, float y) => this;
+        public BoxColliderBuilder RelativePosition(float x, float y)
+        {
+            boxCollider.RelativePosition = new Vector2F(x, y);
+            return this;
+        }
 
         /// <summary>
         ///     Restitutions the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder Restitution(float value) => this;
+        public BoxColliderBuilder Restitution(float value)
+        {
+            boxCollider.Restitution = value;
+            return this;
+        }
 
         /// <summary>
         ///     Rotations the angle
         /// </summary>
         /// <param name="angle">The angle</param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder Rotation(float angle) => this;
+        public BoxColliderBuilder Rotation(float angle)
+        {
+            boxCollider.Rotation = angle;
+            return this;
+        }
 
         /// <summary>
         ///     Sizes the x
@@ -163,7 +207,11 @@ namespace Alis.Builder.Core.Ecs.Components.Collider
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder Size(float x, float y) => this;
+        public BoxColliderBuilder Size(float x, float y)
+        {
+            boxCollider.SizeOfTexture = new Vector2F(x, y);
+            return this;
+        }
 
 
         /// <summary>
@@ -171,6 +219,10 @@ namespace Alis.Builder.Core.Ecs.Components.Collider
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder IgnoreGravity(bool value) => this;
+        public BoxColliderBuilder IgnoreGravity(bool value)
+        {
+            boxCollider.IgnoreGravity = value;
+            return this;
+        }
     }
 }

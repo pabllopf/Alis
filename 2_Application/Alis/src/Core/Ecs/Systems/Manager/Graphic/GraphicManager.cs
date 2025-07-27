@@ -241,7 +241,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                    if (boxColliderGameobject.Has<BoxCollider>())
                    {
                        ref BoxCollider boxCollider = ref boxColliderGameobject.Get<BoxCollider>();
-                       boxCollider.Render(boxColliderGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
+                       boxCollider.Render(boxColliderGameobject,  camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
                    }
                }
            }
