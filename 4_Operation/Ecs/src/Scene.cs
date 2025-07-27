@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
@@ -20,81 +21,90 @@ namespace Alis.Core.Ecs
     /// </summary>
     public partial class Scene : IDisposable
     {
-
-
         /// <summary>
         ///     The next scene id
         /// </summary>
         private static ushort _nextWorldId = 1;
-
-
-
+        
         //entityID -> gameObject metadata
         /// <summary>
         ///     The gameObject location
         /// </summary>
-        internal FastestTable<GameObjectLocation> EntityTable = new FastestTable<GameObjectLocation>(256);
+        [JsonPropertyName(Name = "EntityTable")]
+        public FastestTable<GameObjectLocation> EntityTable = new FastestTable<GameObjectLocation>(256);
 
         //archetype ID -> Archetype?
         /// <summary>
         ///     The scene archetype table
         /// </summary>
-        internal WorldArchetypeTableItem[] WorldArchetypeTable;
+        [JsonPropertyName(Name = "WorldArchetypeTable")]
+        public WorldArchetypeTableItem[] WorldArchetypeTable;
 
         /// <summary>
         ///     The archetype graph edges
         /// </summary>
-        internal Dictionary<ArchetypeEdgeKey, Archetype> ArchetypeGraphEdges = [];
+        [JsonPropertyName(Name = "ArchetypeGraphEdges")]
+        public Dictionary<ArchetypeEdgeKey, Archetype> ArchetypeGraphEdges = [];
 
         /// <summary>
         ///     The gameObject id only
         /// </summary>
-        internal FastestStack<GameObjectIdOnly> RecycledEntityIds = new FastestStack<GameObjectIdOnly>(256);
+        [JsonPropertyName(Name = "RecycledEntityIds")]
+        public FastestStack<GameObjectIdOnly> RecycledEntityIds = new FastestStack<GameObjectIdOnly>(256);
 
         /// <summary>
         ///     The updates by attributes
         /// </summary>
+        [JsonIgnore]
         private readonly Dictionary<Type, SceneUpdateFilter> _updatesByAttributes = [];
 
         /// <summary>
         ///     The single component updates
         /// </summary>
+        [JsonIgnore]
         private readonly Dictionary<ComponentId, SingleComponentUpdateFilter> _singleComponentUpdates = [];
 
         /// <summary>
         ///     The next gameObject id
         /// </summary>
-        internal int NextEntityId;
+        [JsonPropertyName(Name = "NextEntityId")]
+        public int NextEntityId;
 
         /// <summary>
         ///     The id
         /// </summary>
-        internal readonly ushort Id;
+        [JsonIgnore]
+        public readonly ushort Id;
 
         /// <summary>
         ///     The default scene gameObject
         /// </summary>
-        internal readonly GameObject DefaultWorldGameObject;
+        [JsonIgnore]
+        public readonly GameObject DefaultWorldGameObject;
 
         /// <summary>
         ///     The query cache
         /// </summary>
-        internal Dictionary<int, Query> QueryCache = [];
+        [JsonIgnore]
+        public Dictionary<int, Query> QueryCache = [];
 
         /// <summary>
         ///     Gets the value of the shared countdown
         /// </summary>
-        internal CountdownEvent SharedCountdown => _sharedCountdown;
+        [JsonIgnore]
+        public CountdownEvent SharedCountdown => _sharedCountdown;
 
         /// <summary>
         ///     The shared countdown
         /// </summary>
+        [JsonIgnore]
         private readonly CountdownEvent _sharedCountdown = new(0);
 
         /// <summary>
         ///     The create
         /// </summary>
-        internal FastestStack<GameObjectType> EnabledArchetypes = FastestStack<GameObjectType>.Create(16);
+        [JsonPropertyName(Name = "EnabledArchetypes")]
+        public FastestStack<GameObjectType> EnabledArchetypes = FastestStack<GameObjectType>.Create(16);
 
         // -1: normal state
         // 0: some kind of transition in End/Enter
@@ -102,75 +112,79 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The allow structural changes
         /// </summary>
+        [JsonIgnore]
         private int _allowStructuralChanges = -1;
 
         /// <summary>
         ///     The scene update command buffer
         /// </summary>
-        internal CommandBuffer WorldUpdateCommandBuffer;
+        [JsonPropertyName (Name = "WorldUpdateCommandBuffer")]
+        public CommandBuffer WorldUpdateCommandBuffer;
 
         /// <summary>
         ///     The gameObject only event
         /// </summary>
-        internal GameObjectOnlyEvent EntityCreatedEvent = new GameObjectOnlyEvent();
+        public GameObjectOnlyEvent EntityCreatedEvent = new GameObjectOnlyEvent();
 
         /// <summary>
         ///     The gameObject only event
         /// </summary>
-        internal GameObjectOnlyEvent EntityDeletedEvent = new GameObjectOnlyEvent();
+        public GameObjectOnlyEvent EntityDeletedEvent = new GameObjectOnlyEvent();
 
         /// <summary>
         ///     The component id
         /// </summary>
-        internal Event<ComponentId> ComponentAddedEvent = new Event<ComponentId>();
+        public Event<ComponentId> ComponentAddedEvent = new Event<ComponentId>();
 
         /// <summary>
         ///     The component id
         /// </summary>
-        internal Event<ComponentId> ComponentRemovedEvent = new Event<ComponentId>();
+        public Event<ComponentId> ComponentRemovedEvent = new Event<ComponentId>();
 
         /// <summary>
         ///     The tag event
         /// </summary>
-        internal Event<TagId> Tagged = new Event<TagId>();
+        public Event<TagId> Tagged = new Event<TagId>();
 
         /// <summary>
         ///     The tag event
         /// </summary>
-        internal Event<TagId> Detached = new Event<TagId>();
+        public Event<TagId> Detached = new Event<TagId>();
 
         //these lookups exists for programmical api optimization
         //normal <T1, T2...> methods use a shared global static cache
         /// <summary>
         ///     The add component lookup
         /// </summary>
-        internal FastLookup AddComponentLookup = new();
+        [JsonIgnore]
+        public FastLookup AddComponentLookup = new();
 
         /// <summary>
         ///     The remove component lookup
         /// </summary>
-        internal FastLookup RemoveComponentLookup = new();
+        [JsonIgnore]
+        public FastLookup RemoveComponentLookup = new();
 
         /// <summary>
         ///     The add tag lookup
         /// </summary>
-        internal FastLookup AddTagLookup = new();
+        public FastLookup AddTagLookup = new();
 
         /// <summary>
         ///     The remove tag lookup
         /// </summary>
-        internal FastLookup RemoveTagLookup = new();
+        public FastLookup RemoveTagLookup = new();
 
 
         /// <summary>
         ///     The scene event flags
         /// </summary>
-        internal GameObjectFlags WorldEventFlags;
+        public GameObjectFlags WorldEventFlags;
 
         /// <summary>
         ///     The create
         /// </summary>
-        internal FastestStack<ArchetypeDeferredUpdateRecord> DeferredCreationArchetypes =
+        public FastestStack<ArchetypeDeferredUpdateRecord> DeferredCreationArchetypes =
             FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
 
         /// <summary>
@@ -187,12 +201,12 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The event lookup
         /// </summary>
-        internal Dictionary<GameObjectIdOnly, EventRecord> EventLookup = [];
+        public Dictionary<GameObjectIdOnly, EventRecord> EventLookup = [];
 
         /// <summary>
         ///     The default archetype
         /// </summary>
-        internal readonly Archetype DefaultArchetype;
+        public readonly Archetype DefaultArchetype;
 
         /// <summary>
         ///     Invoked whenever an gameObject is created on this scene.
@@ -317,7 +331,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="gameObjectLocation">The gameObject location</param>
         /// <returns>The gameObject</returns>
-        internal GameObject CreateEntityFromLocation(GameObjectLocation gameObjectLocation)
+        public GameObject CreateEntityFromLocation(GameObjectLocation gameObjectLocation)
         {
             (int id, ushort version) =
                 RecycledEntityIds.TryPop(out GameObjectIdOnly v) ? v : new GameObjectIdOnly(NextEntityId++, 0);
@@ -425,7 +439,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="archetype">The archetype</param>
         /// <param name="temporaryCreationArchetype">The temporary creation archetype</param>
-        internal void ArchetypeAdded(Archetype archetype, Archetype temporaryCreationArchetype)
+        public void ArchetypeAdded(Archetype archetype, Archetype temporaryCreationArchetype)
         {
             if (!GlobalWorldTables.HasTag(archetype.Id, Tag<Disable>.Id))
                 EnabledArchetypes.Push(archetype.Id);
@@ -442,7 +456,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="rules">The rules</param>
         /// <returns>The </returns>
-        internal Query CreateQuery(FastImmutableArray<Rule> rules)
+        public Query CreateQuery(FastImmutableArray<Rule> rules)
         {
             Query q = new Query(this, rules);
             foreach (ref WorldArchetypeTableItem element in WorldArchetypeTable.AsSpan())
@@ -456,7 +470,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="rules">The rules</param>
         /// <returns>The query</returns>
-        internal Query CreateQueryFromSpan(ReadOnlySpan<Rule> rules)
+        public Query CreateQueryFromSpan(ReadOnlySpan<Rule> rules)
         {
             return CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray(rules));
         }
@@ -465,7 +479,7 @@ namespace Alis.Core.Ecs
         ///     Updates the archetype table using the specified new size
         /// </summary>
         /// <param name="newSize">The new size</param>
-        internal void UpdateArchetypeTable(int newSize)
+        public void UpdateArchetypeTable(int newSize)
         {
             Array.Resize(ref WorldArchetypeTable, newSize);
         }
@@ -473,7 +487,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Enters the disallow state
         /// </summary>
-        internal void EnterDisallowState()
+        public void EnterDisallowState()
         {
             if (Interlocked.Increment(ref _allowStructuralChanges) == 0) Interlocked.Increment(ref _allowStructuralChanges);
         }
@@ -488,7 +502,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="filterUsed">The filter used</param>
         /// <param name="updateDeferredEntities">The update deferred entities</param>
-        internal void ExitDisallowState(IComponentUpdateFilter filterUsed, bool updateDeferredEntities = false)
+        public void ExitDisallowState(IComponentUpdateFilter filterUsed, bool updateDeferredEntities = false)
         {
             if (Interlocked.Decrement(ref _allowStructuralChanges) == 0)
             {
@@ -559,7 +573,7 @@ namespace Alis.Core.Ecs
     /// <param name="exists">The exists</param>
     /// <returns>The ref event record</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal ref EventRecord TryGetEventData(GameObjectLocation gameObjectLocation, GameObjectIdOnly gameObject, GameObjectFlags eventType, out bool exists)
+    public ref EventRecord TryGetEventData(GameObjectLocation gameObjectLocation, GameObjectIdOnly gameObject, GameObjectFlags eventType, out bool exists)
     {
         if (gameObjectLocation.HasEvent(eventType))
         {
@@ -576,7 +590,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets the value of the allow structual changes
         /// </summary>
-        internal bool AllowStructualChanges => _allowStructuralChanges == -1;
+        public bool AllowStructualChanges => _allowStructuralChanges == -1;
 
         /// <summary>
         ///     Disposes of the <see cref="Scene" />.
@@ -640,7 +654,7 @@ namespace Alis.Core.Ecs
         ///     Creates the gameObject without event
         /// </summary>
         /// <returns>The gameObject</returns>
-        internal GameObject CreateEntityWithoutEvent()
+        public GameObject CreateEntityWithoutEvent()
         {
             ref GameObjectIdOnly entity = ref DefaultArchetype.CreateEntityLocation(GameObjectFlags.None, out GameObjectLocation eloc);
 
@@ -656,7 +670,7 @@ namespace Alis.Core.Ecs
         ///     Invokes the gameObject created using the specified gameObject
         /// </summary>
         /// <param name="gameObject">The gameObject</param>
-        internal void InvokeEntityCreated(GameObject gameObject)
+        public void InvokeEntityCreated(GameObject gameObject)
         {
             EntityCreatedEvent.Invoke(gameObject);
         }
@@ -681,7 +695,7 @@ namespace Alis.Core.Ecs
         /// <param name="archetype">The archetype</param>
         /// <param name="count">The count</param>
         /// <exception cref="ArgumentOutOfRangeException">Count must be positive </exception>
-        internal void EnsureCapacityCore(Archetype archetype, int count)
+        public void EnsureCapacityCore(Archetype archetype, int count)
         {
             if (count < 1)
                 throw new ArgumentOutOfRangeException("Count must be positive", nameof(count));

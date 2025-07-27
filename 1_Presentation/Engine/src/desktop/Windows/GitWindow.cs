@@ -41,10 +41,20 @@ namespace Alis.App.Engine.Desktop.Windows
     /// <seealso cref="IWindow" />
     public class GitWindow : IWindow
     {
+        /// <summary>
+        /// The code
+        /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Code} Git";
 
+        /// <summary>
+        /// The is open
+        /// </summary>
         private bool _isOpen = true;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GitWindow"/> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
         public GitWindow(SpaceWork spaceWork)
         {
             this.SpaceWork = spaceWork;

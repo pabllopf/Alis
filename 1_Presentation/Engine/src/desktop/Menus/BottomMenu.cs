@@ -28,14 +28,41 @@ namespace Alis.App.Engine.Desktop.Menus
         public SpaceWork SpaceWork { get; }
 
         // Static process queue accessible from anywhere
+        /// <summary>
+        /// The process queue
+        /// </summary>
         public static readonly ConcurrentQueue<ProcessInfo> ProcessQueue = new();
+        /// <summary>
+        /// Gets the value of the total processes
+        /// </summary>
         public static int TotalProcesses => _totalProcesses;
+        /// <summary>
+        /// The total processes
+        /// </summary>
         private static int _totalProcesses = 0;
+        /// <summary>
+        /// The completed processes
+        /// </summary>
         private static int _completedProcesses = 0;
+        /// <summary>
+        /// The current process
+        /// </summary>
         private static string _currentProcess = "Idle";
+        /// <summary>
+        /// The lock
+        /// </summary>
         private static readonly object _lock = new();
+        /// <summary>
+        /// The show process popup
+        /// </summary>
         private bool _showProcessPopup = false;
+        /// <summary>
+        /// The process start time
+        /// </summary>
         private DateTime? _processStartTime = null;
+        /// <summary>
+        /// The current process duration
+        /// </summary>
         private int _currentProcessDuration = 0;
 
         /// <summary>
@@ -83,6 +110,9 @@ namespace Alis.App.Engine.Desktop.Menus
             UpdateProcessStatus();
         }
 
+        /// <summary>
+        /// Applies the menu styles
+        /// </summary>
         private void ApplyMenuStyles()
         {
             ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
@@ -91,12 +121,19 @@ namespace Alis.App.Engine.Desktop.Menus
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 3));
         }
 
+        /// <summary>
+        /// Removes the menu styles
+        /// </summary>
         private void RemoveMenuStyles()
         {
             ImGui.PopStyleVar(2);
             ImGui.PopStyleColor(2);
         }
 
+        /// <summary>
+        /// Calculates the menu layout
+        /// </summary>
+        /// <returns>The vector dock size vector menu size int pos int size menu float bottom menu height</returns>
         private (Vector2F dockSize, Vector2F menuSize, int posY, int sizeMenu, float bottomMenuHeight) CalculateMenuLayout()
         {
 #if OSX
@@ -113,6 +150,13 @@ namespace Alis.App.Engine.Desktop.Menus
             return (dockSize, menuSize, posY, sizeMenu, bottomMenuHeight);
         }
 
+        /// <summary>
+        /// Sets the menu window position and size using the specified dock size
+        /// </summary>
+        /// <param name="dockSize">The dock size</param>
+        /// <param name="menuSize">The menu size</param>
+        /// <param name="sizeMenu">The size menu</param>
+        /// <param name="bottomMenuHeight">The bottom menu height</param>
         private void SetMenuWindowPositionAndSize(Vector2F dockSize, Vector2F menuSize, int sizeMenu, float bottomMenuHeight)
         {
             ImGui.SetNextWindowPos(new Vector2F(
@@ -121,6 +165,9 @@ namespace Alis.App.Engine.Desktop.Menus
             ImGui.SetNextWindowSize(menuSize);
         }
 
+        /// <summary>
+        /// Renders the menu columns
+        /// </summary>
         private void RenderMenuColumns()
         {
             ImGui.Columns(6, "MenuColumns", false);
@@ -135,6 +182,9 @@ namespace Alis.App.Engine.Desktop.Menus
             RenderProgressBar();
         }
 
+        /// <summary>
+        /// Renders the notification button
+        /// </summary>
         private void RenderNotificationButton()
         {
             if (ImGui.Button($"{FontAwesome5.Bell}##notifications"))
@@ -172,6 +222,9 @@ namespace Alis.App.Engine.Desktop.Menus
 
         
 
+        /// <summary>
+        /// Renders the progress bar
+        /// </summary>
         private void RenderProgressBar()
         {
             // Si no hay procesos, no mostrar la barra
@@ -244,6 +297,9 @@ namespace Alis.App.Engine.Desktop.Menus
         }
 
         // Call this in Update or a background thread to update process status
+        /// <summary>
+        /// Updates the process status
+        /// </summary>
         public void UpdateProcessStatus()
         {
             lock (_lock)
@@ -281,6 +337,11 @@ namespace Alis.App.Engine.Desktop.Menus
         }
 
         // Method to add a process from anywhere
+        /// <summary>
+        /// Enqueues the process using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="durationMs">The duration ms</param>
         public static void EnqueueProcess(string name, int durationMs)
         {
             ProcessQueue.Enqueue(new ProcessInfo { Name = name, Status = ProcessStatus.Pending, DurationMs = durationMs });
@@ -288,24 +349,54 @@ namespace Alis.App.Engine.Desktop.Menus
         }
 
         // Call this to mark a process as completed
+        /// <summary>
+        /// Completes the process
+        /// </summary>
         public static void CompleteProcess()
         {
             Interlocked.Increment(ref _completedProcesses);
         }
     }
 
+    /// <summary>
+    /// The process info class
+    /// </summary>
     public class ProcessInfo
     {
+        /// <summary>
+        /// Gets or sets the value of the name
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the status
+        /// </summary>
         public ProcessStatus Status { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the duration ms
+        /// </summary>
         public int DurationMs { get; set; } // Duration in milliseconds
+        /// <summary>
+        /// Gets or sets the value of the start time
+        /// </summary>
         public DateTime? StartTime { get; set; }
     }
 
+    /// <summary>
+    /// The process status enum
+    /// </summary>
     public enum ProcessStatus
     {
+        /// <summary>
+        /// The pending process status
+        /// </summary>
         Pending,
+        /// <summary>
+        /// The running process status
+        /// </summary>
         Running,
+        /// <summary>
+        /// The completed process status
+        /// </summary>
         Completed
     }
 }

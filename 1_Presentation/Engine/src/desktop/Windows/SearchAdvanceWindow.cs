@@ -53,7 +53,13 @@ namespace Alis.App.Engine.Desktop.Windows
         /// </summary>
         private bool _isOpen = false;
 
+        /// <summary>
+        /// The search text
+        /// </summary>
         private string searchText;
+        /// <summary>
+        /// The command ptr
+        /// </summary>
         private IntPtr commandPtr;
 
         /// <summary>
@@ -144,6 +150,10 @@ namespace Alis.App.Engine.Desktop.Windows
             
         }
 
+        /// <summary>
+        /// Handles the search result click using the specified result
+        /// </summary>
+        /// <param name="result">The result</param>
         private void HandleSearchResultClick(string result)
         {
             if (result.StartsWith("Asset:"))
@@ -164,6 +174,9 @@ namespace Alis.App.Engine.Desktop.Windows
             }
         }
 
+        /// <summary>
+        /// Opens this instance
+        /// </summary>
         public void Open() => _isOpen = true;
     }
 }

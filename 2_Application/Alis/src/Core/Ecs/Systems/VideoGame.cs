@@ -98,5 +98,10 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         /// <returns>The video game builder</returns>
         public static VideoGameBuilder Create() => new VideoGameBuilder();
+
+        /// <summary>
+        /// Saves this instance
+        /// </summary>
+        public void Save() => _contextHandler.Save();
     }
 }

@@ -33,48 +33,12 @@ namespace Alis.Core.Ecs.Systems.Configuration.General
     /// The general setting class
     /// </summary>
     /// <seealso cref="IGeneralSetting"/>
-    public class GeneralSetting(
-        bool debug = false,
-        string name = "Default Name",
-        string description = "Default Description",
-        string version = "0.0.0",
-        string author = "Pablo Perdomo Falcón",
-        string license = "GPL-3.0 license",
-        string icon = "app.jpeg") : IGeneralSetting
-    {
-        /// <summary>
-        /// Gets or sets the value of the debug
-        /// </summary>
-        public bool Debug { get; set; } = debug;
-
-        /// <summary>
-        /// Gets or sets the value of the name
-        /// </summary>
-        public string Name { get; set; } = name;
-
-        /// <summary>
-        /// Gets or sets the value of the description
-        /// </summary>
-        public string Description { get; set; } = description;
-
-        /// <summary>
-        /// Gets or sets the value of the version
-        /// </summary>
-        public string Version { get; set; } = version;
-
-        /// <summary>
-        /// Gets or sets the value of the author
-        /// </summary>
-        public string Author { get; set; } = author;
-
-        /// <summary>
-        /// Gets or sets the value of the license
-        /// </summary>
-        public string License { get; set; } = license;
-
-        /// <summary>
-        /// Gets or sets the value of the icon
-        /// </summary>
-        public string Icon { get; set; } = icon;
-    }
+    public record struct GeneralSetting(
+        bool Debug = false,
+        string Name = "Default Name",
+        string Description = "Default Description",
+        string Version = "0.0.0",
+        string Author = "Pablo Perdomo Falcón",
+        string License = "GPL-3.0 license",
+        string Icon = "app.jpeg") : IGeneralSetting;
 }
