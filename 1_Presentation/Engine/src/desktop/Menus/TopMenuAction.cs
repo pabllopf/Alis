@@ -33,12 +33,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Alis.App.Engine.Core;
+using Alis.App.Engine.Desktop.Core;
 using Alis.Core.Aspect.Logging;
 using Alis.Extension.Graphic.Ui;
 using MonoMac.AppKit;
 
-namespace Alis.App.Engine.Menus
+namespace Alis.App.Engine.Desktop.Menus
 {
     /// <summary>
     ///     The top menu action class

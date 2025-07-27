@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ActiveButton.cs
+//  File:SettingsWindow.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,46 +27,77 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.Windows
+using System;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using Alis.App.Engine.Desktop.Core;
+using Alis.Core.Aspect.Data.Json;
+using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui;
+using Alis.Extension.Graphic.Ui.Fonts;
+
+namespace Alis.App.Engine.Desktop.Windows.Settings
 {
     /// <summary>
-    ///     The active button enum
+    ///     The settings window class
     /// </summary>
-    internal enum ActiveButton
+    /// <seealso cref="IWindow" />
+    public class SettingsWindow : IWindow
     {
         /// <summary>
-        ///     The none active button
+        ///     The music
         /// </summary>
-        None,
+        private static readonly string WindowName = $"{FontAwesome5.Wrench} Settings";
 
         /// <summary>
-        ///     The hand spock active button
+        ///     The is open
         /// </summary>
-        HandSpock,
+        private bool isOpen = true;
 
         /// <summary>
-        ///     The arrows alt active button
+        ///     Initializes a new instance of the <see cref="SettingsWindow" /> class
         /// </summary>
-        ArrowsAlt,
+        /// <param name="spaceWork">The space work</param>
+        public SettingsWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
         /// <summary>
-        ///     The cogs active button
+        ///     Gets the value of the space work
         /// </summary>
-        Cogs,
+        public SpaceWork SpaceWork { get; }
 
         /// <summary>
-        ///     The info circle active button
+        ///     Initializes this instance
         /// </summary>
-        InfoCircle,
+        public void Initialize()
+        {
+        }
 
         /// <summary>
-        ///     The tools active button
+        ///     Starts this instance
         /// </summary>
-        Grid,
+        public void Start()
+        {
+        }
+
 
         /// <summary>
-        ///     The user active button
+        ///     Renders this instance
         /// </summary>
-        User
+        public void Render()
+        {
+            if (!isOpen)
+            {
+                return;
+            }
+
+            if (ImGui.Begin(WindowName, ref isOpen, ImGuiWindowFlags.NoCollapse))
+            {
+                ImGui.Text("Settings");
+            }
+            
+            ImGui.End();
+        }
     }
 }

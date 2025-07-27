@@ -30,7 +30,7 @@
 using System.Collections.Generic;
 using Alis.Core.Aspect.Data.Resource;
 
-namespace Alis.App.Hub.Entity
+namespace Alis.App.Hub.Elements
 {
     /// <summary>
     ///     The gallery class

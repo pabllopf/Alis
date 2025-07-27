@@ -27,15 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Diagnostics.CodeAnalysis;
-using Alis.App.Engine.Core;
-
-using Alis.Core.Aspect.Math.Vector;
+using Alis.App.Engine.Desktop.Core;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
 
-namespace Alis.App.Engine.Windows
+namespace Alis.App.Engine.Desktop.Windows
 {
     /// <summary>
     ///     The inspector window class
@@ -47,6 +43,8 @@ namespace Alis.App.Engine.Windows
         ///     The info circle
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.InfoCircle} Inspector";
+        
+        private bool _isOpen = true;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="InspectorWindow" /> class
@@ -56,6 +54,8 @@ namespace Alis.App.Engine.Windows
         {
             this.SpaceWork = spaceWork;
         }
+        
+        public SpaceWork SpaceWork { get; }
 
         /// <summary>
         ///     Initializes this instance
@@ -73,9 +73,18 @@ namespace Alis.App.Engine.Windows
 
         public void Render()
         {
-            
-        }
+            if (!_isOpen)
+            {
+                return;
+            }
 
-        public SpaceWork SpaceWork { get; }
+            if(ImGui.Begin(NameWindow, ref _isOpen, ImGuiWindowFlags.NoCollapse))
+            {
+                ImGui.Text("Inspector Window");
+                ImGui.Text("This is a placeholder for the inspector functionality.");
+            }
+            
+            ImGui.End();
+        }
     }
 }

@@ -27,21 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.App.Engine.Core;
-
-using Alis.Core.Aspect.Data.Resource;
+using Alis.App.Engine.Desktop.Core;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
 
-namespace Alis.App.Engine.Menus
+namespace Alis.App.Engine.Desktop.Menus
 {
     /// <summary>
     ///     The dock space menu class
     /// </summary>
     /// <seealso cref="IMenu" />
-    internal class DockSpaceMenu : IMenu
+    internal class DockSpaceMenu : IRenderable, IHasSpaceWork
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="DockSpaceMenu" /> class
@@ -55,13 +53,20 @@ namespace Alis.App.Engine.Menus
         public void Initialize()
         {
         }
+        
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        public void Start()
+        {
+        }
 
         /// <summary>
-        ///     Updates this instance
+        ///     Renders this instance
         /// </summary>
-        public void Update()
+        public void Render()
         {
-            // Establece el padding de la ventana
+             // Establece el padding de la ventana
             //ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);  // Igual padding arriba y abajo
             //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 4f));
             //ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(4, 4));
@@ -244,32 +249,6 @@ namespace Alis.App.Engine.Menus
                 //ImGui.PopStyleVar();
                 ImGui.EndMenuBar();
             }
-
-            // Restaurar los valores de estilo anteriores
-            //ImGui.PopStyleVar(2);
-            //ImGui.PopStyleVar();
-        }
-
-
-        /// <summary>
-        ///     Renders this instance
-        /// </summary>
-        void IRuntime.Render()
-        {
-        }
-
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public void Start()
-        {
-        }
-
-        /// <summary>
-        ///     Renders this instance
-        /// </summary>
-        void IRenderable.Render()
-        {
         }
 
         /// <summary>
