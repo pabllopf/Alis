@@ -46,10 +46,7 @@ namespace Alis.Core.Aspect.Time.Sample
             // Create a new Clock instance
             Clock clock = new Clock();
             clock.Start();
-
-            // Create a new TimeConfiguration instance
-            TimeConfiguration timeConfig = new TimeConfiguration();
-
+            
             int i = 0;
             while (i < 1000)
             {
