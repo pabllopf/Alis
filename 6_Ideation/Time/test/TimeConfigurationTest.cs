@@ -48,7 +48,10 @@ namespace Alis.Core.Aspect.Time.Test
             const float expectedTimeScale = 1.00f;
 
             // Act
-            TimeConfiguration timeConfig = new TimeConfiguration();
+            TimeConfiguration timeConfig = new TimeConfiguration(expectedFixedTimeStep, expectedMaximumAllowedTimeStep, expectedTimeScale)
+            {
+                LogOutput = true
+            };
 
             // Assert
             Assert.Equal(expectedFixedTimeStep, timeConfig.FixedTimeStep);
