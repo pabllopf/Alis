@@ -37,7 +37,7 @@ namespace Alis.App.Engine.Desktop
                 768,
                 0,
 #if DEBUG
-                false
+                true
 #else
                     false
 #endif
