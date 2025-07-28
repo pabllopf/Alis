@@ -4,7 +4,10 @@
         $(AssemblyName.Contains('Benchmark')) == true OR
         $(AssemblyName.Contains('Sample')) == true OR
         $(AssemblyName.Contains('Test')) == true OR
-        $(AssemblyName.Equals('Alis.App.Engine.Sample')) == true
+        $(AssemblyName.Equals('Alis.App.Engine.Sample')) == true OR
+        $(AssemblyName.Equals('Alis.App.Engine.Benchmark')) == true OR
+        $(AssemblyName.Equals('Alis.App.Engine.Test')) == true OR
+        $(AssemblyName.Equals('Alis.App.Engine.Web')) == true 
         ">
         <SonarQubeExclude>true</SonarQubeExclude>
     </PropertyGroup>
