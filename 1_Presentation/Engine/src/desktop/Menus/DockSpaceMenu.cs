@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.App.Engine.Desktop.Core;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
@@ -75,7 +76,6 @@ namespace Alis.App.Engine.Desktop.Menus
             {
                 RenderNavigationButtons();
                 RenderSolutionSelector();
-                RenderBranchSelector();
                 RenderControlButtons();
                 RenderBuildOptions();
                 RenderUtilityButtons();
@@ -111,22 +111,34 @@ namespace Alis.App.Engine.Desktop.Menus
         /// </summary>
         private void RenderSolutionSelector()
         {
-            ImGui.SetNextItemWidth(100);
-            if (ImGui.BeginCombo("##Solution Name", $"{FontAwesome5.Font} Sample", ImGuiComboFlags.HeightLarge))
+            // Get the current project name (placeholder logic, replace with actual implementation)
+            string currentProjectName = "Sample Project"; // Replace with logic to fetch the actual project name
+
+            // Get the list of recent projects (placeholder logic, replace with actual implementation)
+            List<string> recentProjects = new List<string> { "Project A", "Project B", "Project C" }; // Replace with logic to fetch recent projects
+
+            ImGui.SetNextItemWidth(150);
+            if (ImGui.BeginCombo("##Solution Name", currentProjectName, ImGuiComboFlags.HeightLarge))
             {
                 ImGui.Separator();
                 if (ImGui.Selectable($"{FontAwesome5.Plus} New Solution"))
                 {
+                    // Logic to create a new solution
                 }
 
                 if (ImGui.Selectable($"{FontAwesome5.FolderOpen} Open Solution"))
                 {
+                    // Logic to open an existing solution
                 }
 
                 ImGui.Separator();
                 ImGui.TextDisabled("Recent Solutions");
-                if (ImGui.Selectable("Sample Solution"))
+                foreach (var project in recentProjects)
                 {
+                    if (ImGui.Selectable(project))
+                    {
+                        // Logic to load the selected recent project
+                    }
                 }
 
                 ImGui.EndCombo();
@@ -135,32 +147,7 @@ namespace Alis.App.Engine.Desktop.Menus
             ImGui.SameLine();
         }
 
-        /// <summary>
-        ///     Renders the branch selector dropdown
-        /// </summary>
-        private void RenderBranchSelector()
-        {
-            ImGui.SetNextItemWidth(180);
-            if (ImGui.BeginCombo("##branchSelector", $"{FontAwesome5.CodeBranch}Master", ImGuiComboFlags.HeightLarge))
-            {
-                if (ImGui.Selectable("master"))
-                {
-                    Logger.Info("Switching to branch master...");
-                }
-                if (ImGui.Selectable("develop"))
-                {
-                    Logger.Info("Switching to branch develop...");
-                }
-                if (ImGui.Selectable("feature/new-feature"))
-                {
-                    Logger.Info("Switching to branch feature/new-feature...");
-                }
-                ImGui.EndCombo();
-            }
-
-            ImGui.SameLine();
-        }
-
+       
         /// <summary>
         ///     Renders control buttons (e.g., Play, Pause, Stop)
         /// </summary>
