@@ -95,6 +95,12 @@ namespace Alis.App.Engine.Desktop.Windows
                 return;
             }
 
+            // get color from ImGui
+            // Set the style color for the window background without pushstyle
+            ref ImGuiStyle style = ref ImGui.GetStyle();
+            style[(int) ImGuiCol.WindowBg] = new Vector4F(0.13f, 0.14f, 0.15f, 1.0f);
+
+
             // Set the window to be fixed in size and centered
             Vector2F windowSize = new Vector2F(600, 400);
             Vector2F windowPos = ImGui.GetIo().DisplaySize * 0.5f - windowSize * 0.5f;
@@ -104,8 +110,8 @@ namespace Alis.App.Engine.Desktop.Windows
             if (ImGui.Begin(NameWindow, ref _isOpen, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoDocking | ImGuiWindowFlags.NoSavedSettings))
             {
                 // Search bar
-                ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 30);
-                if (ImGui.InputText($"{FontAwesome5.Search}##SearchButton-{nameof(PreferencesWindow)}", commandPtr, 256, ImGuiInputTextFlags.AlwaysOverwrite))
+                ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 30); // Adjust width to fit the window
+                if (ImGui.InputText($"{FontAwesome5.Search}##SearchButton-{nameof(SearchAdvanceWindow)}", commandPtr, 256, ImGuiInputTextFlags.AlwaysOverwrite))
                 {
                     searchText = Marshal.PtrToStringAnsi(commandPtr);
                     Logger.Info(searchText);
@@ -129,6 +135,13 @@ namespace Alis.App.Engine.Desktop.Windows
             }
 
             ImGui.End();
+            
+            if (_isOpen)
+            {
+                style[(int) ImGuiCol.WindowBg] = new Vector4F(0.5f, 0.5f, 0.5f, 1.0f);
+            }
+           
+            
         }
 
         private void HandleSearchResultClick(string result)
