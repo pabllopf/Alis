@@ -211,16 +211,17 @@ namespace Alis.App.Engine.Desktop.Menus
         /// </summary>
         private void RenderUtilityButtons()
         {
-            if (ImGui.Button($"{FontAwesome5.Search}"))
+            if (ImGui.Button($"{FontAwesome5.Search}##SearchButton-{nameof(DockSpaceMenu)}"))
             {
                 Logger.Info("Opening search...");
             }
 
             ImGui.SameLine();
 
-            if (ImGui.Button($"{FontAwesome5.Cog}"))
+            if (ImGui.Button($"{FontAwesome5.Cog}##SettingsButton-{nameof(DockSpaceMenu)}"))
             {
                 Logger.Info("Opening settings...");
+                SpaceWork.PreferencesWindow.Open();
             }
         }
 
