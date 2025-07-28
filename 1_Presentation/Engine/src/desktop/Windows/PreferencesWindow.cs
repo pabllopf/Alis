@@ -27,8 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Alis.App.Engine.Desktop.Core;
+using Alis.Core.Aspect.Logging;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
 
@@ -56,6 +59,9 @@ namespace Alis.App.Engine.Desktop.Windows
             { "Plugins", new List<string>() },
             { "Advanced", new List<string> { "Scripting", "Debugging" } }
         };
+        
+        private IntPtr commandPtr;
+        private string searchText = string.Empty;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="InspectorWindow" /> class
@@ -64,6 +70,7 @@ namespace Alis.App.Engine.Desktop.Windows
         public PreferencesWindow(SpaceWork spaceWork)
         {
             this.SpaceWork = spaceWork;
+            commandPtr = Marshal.AllocHGlobal(256);
         }
 
         /// <summary>
@@ -99,7 +106,8 @@ namespace Alis.App.Engine.Desktop.Windows
             {
                 ImGui.Columns(2, "PreferencesColumns", true);
 
-                // Render the tree menu on the left
+                // Render the search bar and tree menu on the left
+                RenderSearchBar();
                 RenderTreeMenu();
 
                 ImGui.NextColumn();
@@ -113,25 +121,42 @@ namespace Alis.App.Engine.Desktop.Windows
             ImGui.End();
         }
 
+        private void RenderSearchBar()
+        {
+            ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 30);
+            if (ImGui.InputText($"{FontAwesome5.Search}##SearchButton-{nameof(PreferencesWindow)}", commandPtr, 256, ImGuiInputTextFlags.AlwaysOverwrite))
+            {
+                searchText = Marshal.PtrToStringAnsi(commandPtr);
+                Logger.Info(searchText);
+            }
+            ImGui.Separator();
+        }
+
         private void RenderTreeMenu()
         {
             foreach (var category in _menuTree)
             {
-                if (ImGui.TreeNode(category.Key))
+                if (string.IsNullOrEmpty(searchText) || category.Key.ToLower().Contains(searchText.ToLower()))
                 {
-                    foreach (var subItem in category.Value)
+                    if (ImGui.TreeNodeEx(category.Key, ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.Framed))
                     {
-                        if (ImGui.Selectable(subItem, _selectedNode == subItem))
+                        foreach (var subItem in category.Value)
                         {
-                            _selectedNode = subItem;
+                            if (string.IsNullOrEmpty(searchText) || subItem.ToLower().Contains(searchText.ToLower()))
+                            {
+                                if (ImGui.Selectable(subItem, _selectedNode == subItem))
+                                {
+                                    _selectedNode = subItem;
+                                }
+                            }
                         }
-                    }
 
-                    ImGui.TreePop();
-                }
-                else if (ImGui.Selectable(category.Key, _selectedNode == category.Key))
-                {
-                    _selectedNode = category.Key;
+                        ImGui.TreePop();
+                    }
+                    else if (ImGui.Selectable(category.Key, _selectedNode == category.Key))
+                    {
+                        _selectedNode = category.Key;
+                    }
                 }
             }
         }
