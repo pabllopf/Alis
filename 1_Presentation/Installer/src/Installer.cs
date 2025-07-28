@@ -130,8 +130,7 @@ namespace Alis.App.Installer
             Clock clock = new Clock();
             clock.Start();
             Logger.Info(@$"Starting {NameEngine}");
-
-          
+            
             while (_imguiController.IsRunning)
             {
                 _imguiController.OnPollEvents();
