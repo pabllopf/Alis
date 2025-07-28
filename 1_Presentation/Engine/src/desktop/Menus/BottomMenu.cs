@@ -168,7 +168,10 @@ namespace Alis.App.Engine.Desktop.Menus
         {
             // Si no hay procesos, no mostrar la barra
             if (TotalProcesses == 0 || _completedProcesses >= TotalProcesses)
+            {
                 return;
+            }
+
             float progress = (float)_completedProcesses / TotalProcesses;
             // Acortar el mensaje si es muy largo
             string processLabel = _currentProcess;
@@ -197,14 +200,16 @@ namespace Alis.App.Engine.Desktop.Menus
             }
             if (ImGui.BeginPopup("ProcessQueuePopup"))
             {
-                ImGui.Text("Process Queue:");
                 int displayedProcesses = 0;
                 foreach (var process in ProcessQueue)
                 {
                     string extra = process.Status == ProcessStatus.Running && process.StartTime.HasValue
                         ? $" ({Math.Max(0, (process.DurationMs - (DateTime.UtcNow - process.StartTime.Value).TotalMilliseconds) / 1000.0):0.0}s)"
                         : "";
-                    ImGui.BulletText($"{process.Name} - {process.Status}{extra}");
+                    float processProgress = process.Status == ProcessStatus.Running && process.StartTime.HasValue
+                        ? (float)(DateTime.UtcNow - process.StartTime.Value).TotalMilliseconds / process.DurationMs
+                        : process.Status == ProcessStatus.Completed ? 1.0f : 0.0f;
+                    ImGui.ProgressBar(processProgress, new Vector2F(190, 17), $"{process.Name}{extra}");
                     displayedProcesses++;
                 }
                 // Rellenar con huecos vacíos si hay menos de 10 procesos
@@ -289,4 +294,3 @@ namespace Alis.App.Engine.Desktop.Menus
         Completed
     }
 }
-
