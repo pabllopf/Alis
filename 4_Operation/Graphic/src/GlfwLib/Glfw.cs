@@ -1574,6 +1574,14 @@ namespace Alis.Core.Graphic.GlfwLib
         public static extern void GetMonitorWorkArea(Monitor monitor, out int x, out int y, out int width,
             out int height);
         
+        /// <summary>
+        /// Gets the monitor work area using the specified monitor
+        /// </summary>
+        /// <param name="monitor">The monitor</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         [DllImport(Library, EntryPoint = "glfwGetMonitorWorkarea", CallingConvention = CallingConvention.Cdecl)]
         public static extern void GetMonitorWorkArea(IntPtr monitor, out int x, out int y, out int width,
             out int height);

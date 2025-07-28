@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Collider;
@@ -6,6 +6,9 @@ using Alis.Core.Ecs.Components.Render;
 
 namespace Alis.Sample.King.Platform
 {
+    /// <summary>
+    /// The player movement
+    /// </summary>
     public struct PlayerMovement : IInitable, IGameObjectComponent
     {
         /// <summary>
@@ -38,6 +41,9 @@ namespace Alis.Sample.King.Platform
         /// </summary>
         private Sprite sprite;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PlayerMovement"/> class
+        /// </summary>
         public PlayerMovement()
         {
             animator = default;
@@ -45,6 +51,14 @@ namespace Alis.Sample.King.Platform
             sprite = default;
         }
 
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <exception cref="ArgumentNullException">GameObject cannot be null</exception>
+        /// <exception cref="InvalidOperationException">GameObject must have a BoxCollider component</exception>
+        /// <exception cref="InvalidOperationException">GameObject must have a Sprite component</exception>
+        /// <exception cref="InvalidOperationException">GameObject must have an Animator component</exception>
         public void Init(IGameObject self)
         {
             if (self == null)
@@ -72,6 +86,10 @@ namespace Alis.Sample.King.Platform
             sprite = self.Get<Sprite>();
         }
 
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Update(IGameObject self)
         {
             

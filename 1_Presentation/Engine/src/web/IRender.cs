@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -29,8 +29,14 @@
 
 namespace Alis.App.Engine.Web
 {
+    /// <summary>
+    /// The render interface
+    /// </summary>
     public interface IRender
     {
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         public void Render();
     }
 }

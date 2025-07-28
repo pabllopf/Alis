@@ -29,8 +29,14 @@
 
 namespace Alis.App.Hub.Windows.Sections
 {
+    /// <summary>
+    /// The section class
+    /// </summary>
     public abstract class ASection
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASection"/> class
+        /// </summary>
         public ASection()
         {
             

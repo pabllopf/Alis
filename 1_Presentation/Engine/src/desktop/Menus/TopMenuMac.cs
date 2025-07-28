@@ -300,6 +300,14 @@ namespace Alis.App.Engine.Desktop.Menus
         }
         
        // Añadir submenú genérico
+        /// <summary>
+        /// Adds the sub menu using the specified main menu
+        /// </summary>
+        /// <param name="mainMenu">The main menu</param>
+        /// <param name="parentMenuTitle">The parent menu title</param>
+        /// <param name="subMenuTitle">The sub menu title</param>
+        /// <param name="options">The options</param>
+        /// <param name="onOptionSelected">The on option selected</param>
         [Conditional("OSX")]
         private static void AddSubMenu(NSMenu mainMenu, string parentMenuTitle, string subMenuTitle, string[] options, Action<string> onOptionSelected)
         {

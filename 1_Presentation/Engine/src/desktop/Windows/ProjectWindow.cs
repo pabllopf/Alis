@@ -49,10 +49,19 @@ namespace Alis.App.Engine.Desktop.Windows
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Stream} Project";
 
+        /// <summary>
+        /// The is open
+        /// </summary>
         private bool _isOpen = true;
 
+        /// <summary>
+        /// The command ptr
+        /// </summary>
         private IntPtr commandPtr;
 
+        /// <summary>
+        /// The group by
+        /// </summary>
         private string _groupBy;
 
         /// <summary>
@@ -80,6 +89,9 @@ namespace Alis.App.Engine.Desktop.Windows
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         public void Render()
         {
             if (!_isOpen)
@@ -169,16 +181,28 @@ namespace Alis.App.Engine.Desktop.Windows
             ImGui.End();
         }
 
+        /// <summary>
+        /// Renders the game objects using the specified game objects
+        /// </summary>
+        /// <param name="gameObjects">The game objects</param>
         private void RenderGameObjects(List<GameObject> gameObjects)
         {
             
         }
 
+        /// <summary>
+        /// Renders the grouped by layer using the specified game objects
+        /// </summary>
+        /// <param name="gameObjects">The game objects</param>
         private void RenderGroupedByLayer(List<GameObject> gameObjects)
         {
           
         }
 
+        /// <summary>
+        /// Renders the grouped by tag using the specified game objects
+        /// </summary>
+        /// <param name="gameObjects">The game objects</param>
         private void RenderGroupedByTag(List<GameObject> gameObjects)
         {
             

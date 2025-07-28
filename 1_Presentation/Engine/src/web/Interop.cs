@@ -1,14 +1,23 @@
-﻿using Microsoft.JSInterop;
+using Microsoft.JSInterop;
 
 namespace Alis.App.Engine.Web
 {
+    /// <summary>
+    /// The interop class
+    /// </summary>
     public static class Interop
     {
+        /// <summary>
+        /// The main render
+        /// </summary>
         private static List<IRender> _renderers = new List<IRender>()
         {
             new MainRender()
         };
 
+        /// <summary>
+        /// Renders the ui
+        /// </summary>
         [JSInvokable]
         public static async Task RenderUi()
         {

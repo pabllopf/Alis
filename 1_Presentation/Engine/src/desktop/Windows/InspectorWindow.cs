@@ -44,6 +44,9 @@ namespace Alis.App.Engine.Desktop.Windows
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.InfoCircle} Inspector";
         
+        /// <summary>
+        /// The is open
+        /// </summary>
         private bool _isOpen = true;
 
         /// <summary>
@@ -55,6 +58,9 @@ namespace Alis.App.Engine.Desktop.Windows
             this.SpaceWork = spaceWork;
         }
         
+        /// <summary>
+        /// Gets the value of the space work
+        /// </summary>
         public SpaceWork SpaceWork { get; }
 
         /// <summary>
@@ -71,6 +77,9 @@ namespace Alis.App.Engine.Desktop.Windows
         {
         }
 
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         public void Render()
         {
             if (!_isOpen)

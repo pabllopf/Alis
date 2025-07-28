@@ -67,6 +67,9 @@ namespace Alis.App.Installer
         /// </summary>
         private string[] arguments;
         
+        /// <summary>
+        /// The imgui controller
+        /// </summary>
         private ImGuiControllerImplementGlfw _imguiController;
         
         /// <summary>

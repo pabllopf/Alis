@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -29,6 +29,9 @@
 
 namespace Alis.Benchmark.ClassVsStruct.Instancies
 {
+    /// <summary>
+    /// The sealed class point class
+    /// </summary>
     public sealed class SealedClassPoint
     {
         /// <summary>

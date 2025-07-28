@@ -79,8 +79,15 @@ namespace Alis.App.Hub.Windows
         /// </summary>
         private int selectedMenuItem;
 
+        /// <summary>
+        /// The im gui controller
+        /// </summary>
         private ImGuiControllerImplementGlfw imGuiController;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HubWindow"/> class
+        /// </summary>
+        /// <param name="imGuiController">The im gui controller</param>
         public HubWindow(ImGuiControllerImplementGlfw imGuiController)
         {
             this.imGuiController = imGuiController;

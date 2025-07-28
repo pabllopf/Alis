@@ -28,6 +28,9 @@
 //  --------------------------------------------------------------------------
 namespace Alis.App.Hub.Windows
 {
+    /// <summary>
+    /// The window class
+    /// </summary>
     public abstract class AWindow
     {
         /// <summary>

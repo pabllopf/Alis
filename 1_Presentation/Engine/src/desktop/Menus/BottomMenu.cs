@@ -6,15 +6,39 @@ using Alis.Extension.Graphic.Ui.Fonts;
 
 namespace Alis.App.Engine.Desktop.Menus
 {
+    /// <summary>
+    /// The bottom menu class
+    /// </summary>
+    /// <seealso cref="IRenderable"/>
+    /// <seealso cref="IHasSpaceWork"/>
     public class BottomMenu : IRenderable, IHasSpaceWork
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BottomMenu"/> class
+        /// </summary>
+        /// <param name="spaceWork">The space work</param>
         public BottomMenu(SpaceWork spaceWork) => SpaceWork = spaceWork;
+        /// <summary>
+        /// Gets the value of the space work
+        /// </summary>
         public SpaceWork SpaceWork { get; }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize() { }
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public void Update() { }
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start() { }
 
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         public void Render()
         {
             ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));

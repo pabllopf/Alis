@@ -44,6 +44,9 @@ namespace Alis.App.Engine.Desktop.Core
     /// </summary>
     public class SpaceWork
     {
+        /// <summary>
+        /// The im gui controller
+        /// </summary>
         public ImGuiControllerImplementGlfw ImGuiController;
 
         /// <summary>
@@ -89,6 +92,9 @@ namespace Alis.App.Engine.Desktop.Core
         /// </summary>
         internal ConsoleWindow ConsoleWindow { get; }
         
+        /// <summary>
+        /// Gets the value of the settings window
+        /// </summary>
         internal SettingsWindow SettingsWindow { get; }
 
         /// <summary>
@@ -141,6 +147,9 @@ namespace Alis.App.Engine.Desktop.Core
         /// </summary>
         public Project Project { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the video game
+        /// </summary>
         public VideoGame VideoGame { get; set; } = new VideoGame();
 
         /// <summary>

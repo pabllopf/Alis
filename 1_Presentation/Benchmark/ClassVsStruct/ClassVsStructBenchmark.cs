@@ -61,6 +61,10 @@ namespace Alis.Benchmark.ClassVsStruct
             return sum;
         }
         
+        /// <summary>
+        /// Usings the sealed
+        /// </summary>
+        /// <returns>The sum</returns>
         [Benchmark]
         public int UsingSealedClass()
         {
@@ -109,6 +113,10 @@ namespace Alis.Benchmark.ClassVsStruct
             return sum;
         }
         
+        /// <summary>
+        /// Usings the record
+        /// </summary>
+        /// <returns>The sum</returns>
         [Benchmark]
         public int UsingRecord()
         {

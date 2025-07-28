@@ -43,6 +43,9 @@ namespace Alis.App.Engine.Desktop.Windows
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Gamepad} Game";
         
+        /// <summary>
+        /// The is open
+        /// </summary>
         private bool _isOpen = true;
 
         /// <summary>

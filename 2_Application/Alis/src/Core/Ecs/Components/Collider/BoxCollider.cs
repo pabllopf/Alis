@@ -207,6 +207,9 @@ namespace Alis.Core.Ecs.Components.Collider
         [JsonPropertyName("_AngularVelocity_")]
         public float AngularVelocity { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the is init
+        /// </summary>
         private bool IsInit { get; set; } = false;
 
         /// <summary>
@@ -348,6 +351,13 @@ namespace Alis.Core.Ecs.Components.Collider
             Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), IntPtr.Zero);
         }
 
+        /// <summary>
+        /// Renders the box collider gameobject
+        /// </summary>
+        /// <param name="boxColliderGameobject">The box collider gameobject</param>
+        /// <param name="valuePosition">The value position</param>
+        /// <param name="valueResolution">The value resolution</param>
+        /// <param name="pixelsPerMeter">The pixels per meter</param>
         public void Render(GameObject boxColliderGameobject, Vector2F valuePosition, Vector2F valueResolution, float pixelsPerMeter)
         {
             if (!IsInit)

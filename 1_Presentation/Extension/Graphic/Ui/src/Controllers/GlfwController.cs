@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -36,35 +36,103 @@ using Alis.Core.Graphic.GlfwLib.Structs;
 
 namespace Alis.Extension.Graphic.Ui.Controllers
 {
+    /// <summary>
+    /// The glfw controller class
+    /// </summary>
+    /// <seealso cref="IControllerUi"/>
     public class GlfwController : IControllerUi
     {
+        /// <summary>
+        /// The title main window
+        /// </summary>
         private string TitleMainWindow;
 
+        /// <summary>
+        /// The window
+        /// </summary>
         public Window _window;
 
+        /// <summary>
+        /// The width main window
+        /// </summary>
         public int _widthMainWindow;
+        /// <summary>
+        /// The height main window
+        /// </summary>
         public int _heightMainWindow;
 
+        /// <summary>
+        /// The windows default
+        /// </summary>
         private int _windowsDefault;
         
+        /// <summary>
+        /// The context version major
+        /// </summary>
         private const int ContextVersionMajor = 3;
+        /// <summary>
+        /// The context version minor
+        /// </summary>
         private const int ContextVersionMinor = 2;
+        /// <summary>
+        /// The core
+        /// </summary>
         private const Profile OpenglProfile = Profile.Core;
+        /// <summary>
+        /// The opengl forward compatible
+        /// </summary>
         private const bool OpenglForwardCompatible = true;
+        /// <summary>
+        /// The sync
+        /// </summary>
         private const int VSync = 1;
+        /// <summary>
+        /// The scale to monitor
+        /// </summary>
         private const bool ScaleToMonitor = true;
+        /// <summary>
+        /// The antialiasing
+        /// </summary>
         private const int Antialiasing = 4; 
+        /// <summary>
+        /// The decorated window
+        /// </summary>
         private const bool DecoratedWindow = true;
         
+        /// <summary>
+        /// The focused on init
+        /// </summary>
         private const bool FocusedOnInit = true;
         
+        /// <summary>
+        /// The transparent framebuffer
+        /// </summary>
         private const bool TransparentFramebuffer = false;
         
+        /// <summary>
+        /// The key callback delegate
+        /// </summary>
         private KeyCallback _keyCallbackDelegate;
+        /// <summary>
+        /// The char callback delegate
+        /// </summary>
         private CharCallback _charCallbackDelegate;
+        /// <summary>
+        /// The mouse button callback delegate
+        /// </summary>
         private MouseButtonCallback _mouseButtonCallbackDelegate;
+        /// <summary>
+        /// The scroll callback delegate
+        /// </summary>
         private MouseCallback _scrollCallbackDelegate;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GlfwController"/> class
+        /// </summary>
+        /// <param name="titleMainWindow">The title main window</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="windowsDefault">The windows default</param>
         public GlfwController(string titleMainWindow = "GLFW Window", int width = 800, int height = 600, int windowsDefault = 0)
         {
             TitleMainWindow = titleMainWindow;
@@ -73,6 +141,9 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             _windowsDefault = windowsDefault;
         }
         
+        /// <summary>
+        /// Ons the init
+        /// </summary>
         public void OnInit()
         {
             Logger.Info($"Initializing GLFW with OpenGL");
@@ -173,6 +244,9 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             Logger.Log("GLFW initialized successfully");
         }
 
+        /// <summary>
+        /// Setup the glfw im gui callbacks
+        /// </summary>
         private void SetupGlfwImGuiCallbacks()
         {
             _keyCallbackDelegate = KeyCallback;
@@ -187,6 +261,14 @@ namespace Alis.Extension.Graphic.Ui.Controllers
         }
 
         // Callback de teclado
+        /// <summary>
+        /// Keys the callback using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="key">The key</param>
+        /// <param name="scancode">The scancode</param>
+        /// <param name="action">The action</param>
+        /// <param name="mods">The mods</param>
         private void KeyCallback(Window window, Keys key, int scancode, InputState action, ModifierKeys mods)
         {
             ImGuiIoPtr io = ImGui.GetIo();
@@ -205,6 +287,11 @@ namespace Alis.Extension.Graphic.Ui.Controllers
         }
 
         // Callback para caracteres (texto)
+        /// <summary>
+        /// Chars the callback using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="codepoint">The codepoint</param>
         private void CharCallback(Window window, uint codepoint)
         {
             ImGuiIoPtr io = ImGui.GetIo();
@@ -213,6 +300,13 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             //Logger.Info($"Char: {codepoint}");
         }
         
+        /// <summary>
+        /// Mouses the button callback using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="button">The button</param>
+        /// <param name="action">The action</param>
+        /// <param name="mods">The mods</param>
         private static void MouseButtonCallback(Window window, MouseButton button, InputState action, ModifierKeys mods)
         {
             ImGuiIoPtr io = ImGui.GetIo();
@@ -226,6 +320,12 @@ namespace Alis.Extension.Graphic.Ui.Controllers
         }
       
         // Callback de scroll
+        /// <summary>
+        /// Scrolls the callback using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="xoffset">The xoffset</param>
+        /// <param name="yoffset">The yoffset</param>
         private static void ScrollCallback(Window window, double xoffset, double yoffset)
         {
             ImGuiIoPtr io = ImGui.GetIo();
@@ -237,31 +337,49 @@ namespace Alis.Extension.Graphic.Ui.Controllers
 
 
         
+        /// <summary>
+        /// Ons the start
+        /// </summary>
         public void OnStart()
         {
 
         }
 
+        /// <summary>
+        /// Ons the poll events
+        /// </summary>
         public void OnPollEvents()
         {
             Glfw.PollEvents();
         }
 
+        /// <summary>
+        /// Ons the start frame
+        /// </summary>
         public void OnStartFrame()
         {
 
         }
 
+        /// <summary>
+        /// Ons the render frame
+        /// </summary>
         public void OnRenderFrame()
         {
 
         }
 
+        /// <summary>
+        /// Ons the end frame
+        /// </summary>
         public void OnEndFrame()
         {
             Glfw.SwapBuffers(_window);
         }
 
+        /// <summary>
+        /// Ons the exit
+        /// </summary>
         public void OnExit()
         {
             
@@ -279,16 +397,33 @@ namespace Alis.Extension.Graphic.Ui.Controllers
         }
 
 
+        /// <summary>
+        /// Ises the window focused
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool IsWindowFocused() => Glfw.GetWindowAttribute(_window, WindowAttribute.Focused);
 
+        /// <summary>
+        /// Gets the cursor position
+        /// </summary>
+        /// <returns>The double double</returns>
         public (double X, double Y) GetCursorPosition()
         {
             Glfw.GetCursorPosition(_window, out double x, out double y);
             return (x, y);
         }
         
+        /// <summary>
+        /// Ises the mouse button pressed using the specified button
+        /// </summary>
+        /// <param name="button">The button</param>
+        /// <returns>The bool</returns>
         public bool IsMouseButtonPressed(int button) => Glfw.GetMouseButton(_window, (MouseButton)button) == InputState.Press;
 
+        /// <summary>
+        /// Checks the if window should close
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool CheckIfWindowShouldClose()
         {
             return Glfw.WindowShouldClose(_window);

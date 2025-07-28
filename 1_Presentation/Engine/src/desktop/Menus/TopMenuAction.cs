@@ -159,6 +159,9 @@ namespace Alis.App.Engine.Desktop.Menus
             MenuActions.Add("Report Bug", ReportBug);
         }
 
+        /// <summary>
+        /// Layouts the wide
+        /// </summary>
         private static void LayoutWide()
         {
             Logger.Info("Layout Wide selected");
@@ -184,6 +187,9 @@ namespace Alis.App.Engine.Desktop.Menus
             Logger.Error("Unsupported OS for layout wide");
         }
 
+        /// <summary>
+        /// Layouts the 4 split
+        /// </summary>
         private static void Layout4Split()
         {
             Logger.Info("Layout 4 Split selected");
@@ -209,6 +215,9 @@ namespace Alis.App.Engine.Desktop.Menus
             Logger.Error("Unsupported OS for layout 4 split");
         }
         
+        /// <summary>
+        /// Layouts the 2by 3
+        /// </summary>
         private static void Layout2by3()
         {
             Logger.Info("Layout 2 by 3 selected");
@@ -234,6 +243,9 @@ namespace Alis.App.Engine.Desktop.Menus
             Logger.Error("Unsupported OS for layout 2 by 3");
         }
 
+        /// <summary>
+        /// Layouts the default
+        /// </summary>
         private static void LayoutDefault()
         {
             Logger.Info("Layout Default selected");

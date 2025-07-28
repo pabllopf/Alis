@@ -110,11 +110,18 @@ namespace Alis.App.Engine.Desktop.Windows
             ImGui.End();
         }
         
+        /// <summary>
+        /// Opens this instance
+        /// </summary>
         public void Open()
         {
             isOpen = true;
         }
 
+        /// <summary>
+        /// Renders the settings using the specified settings
+        /// </summary>
+        /// <param name="settings">The settings</param>
         private void RenderSettings(object[] settings)
         {
             foreach (object setting in settings)
