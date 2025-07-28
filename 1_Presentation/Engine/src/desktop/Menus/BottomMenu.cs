@@ -45,7 +45,7 @@ namespace Alis.App.Engine.Desktop.Menus
 
                 if (ImGui.Button($"{FontAwesome5.Bell}##notifications"))
                 {
-                    Logger.Info("Abriendo notificaciones...");
+                    Logger.Info("Opening notifications...");
                 }
 
                 ImGui.SameLine();
@@ -55,17 +55,17 @@ namespace Alis.App.Engine.Desktop.Menus
                 {
                     if (ImGui.Selectable("master"))
                     {
-                        Logger.Info("Cambiando a la rama master...");
+                        Logger.Info("Switching to branch master...");
                     }
 
                     if (ImGui.Selectable("develop"))
                     {
-                        Logger.Info("Cambiando a la rama develop...");
+                        Logger.Info("Switching to branch develop...");
                     }
 
                     if (ImGui.Selectable("feature/new-feature"))
                     {
-                        Logger.Info("Cambiando a la rama feature/new-feature...");
+                        Logger.Info("Switching to branch feature/new-feature...");
                     }
 
                     ImGui.EndCombo();
