@@ -205,12 +205,14 @@ namespace Alis.App.Engine.Desktop.Menus
                         : "";
                     ImGui.BulletText($"{process.Name} - {process.Status}{extra}");
                 }
-                if (ImGui.Button("Close"))
-                {
-                    _showProcessPopup = false;
-                    ImGui.CloseCurrentPopup();
-                }
                 ImGui.EndPopup();
+            }
+            
+            // if i click outside the popup, close it
+            if( ImGui.IsMouseClicked(0) && ImGui.IsPopupOpen("ProcessQueuePopup"))
+            {
+                _showProcessPopup = false;
+                ImGui.CloseCurrentPopup();
             }
         }
 
