@@ -29,9 +29,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Desktop.Core;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
 
@@ -102,9 +104,15 @@ namespace Alis.App.Engine.Desktop.Windows
                 return;
             }
 
+            // Center the window and set its initial size
+            ImGui.SetNextWindowSize(new Vector2F(800, 400), ImGuiCond.FirstUseEver);
+            ImGui.SetNextWindowPos(new Vector2F((ImGui.GetIo().DisplaySize.X - 800) / 2, (ImGui.GetIo().DisplaySize.Y - 400) / 2), ImGuiCond.FirstUseEver);
+            
             if (ImGui.Begin(NameWindow, ref _isOpen, ImGuiWindowFlags.NoCollapse))
             {
+                // Set the left column to occupy 1/4 of the window width
                 ImGui.Columns(2, "PreferencesColumns", true);
+                ImGui.SetColumnWidth(0, ImGui.GetWindowWidth() * 0.25f);
 
                 // Render the search bar and tree menu on the left
                 RenderSearchBar();
