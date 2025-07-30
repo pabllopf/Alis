@@ -30,7 +30,7 @@
 namespace Alis.Core.Aspect.Time
 {
     /// <summary>This is an internal class.</summary>
-    public class TimeStep
+    public class TimeStep 
     {
         /// <summary>Time step (Delta time)</summary>
         public float DeltaTime { get; set; }
