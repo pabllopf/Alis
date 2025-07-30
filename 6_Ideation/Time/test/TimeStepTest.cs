@@ -43,11 +43,7 @@ namespace Alis.Core.Aspect.Time.Test
         public void DeltaTime_GetSet_ShouldGetAndSetCorrectly()
         {
             // Arrange
-            TimeStep timeStep = new TimeStep
-            {
-                // Act
-                DeltaTime = 0.5f
-            };
+            TimeStep timeStep = new TimeStep(deltaTime: 0.5f);
 
             // Assert
             Assert.Equal(0.5f, timeStep.DeltaTime);
@@ -60,11 +56,7 @@ namespace Alis.Core.Aspect.Time.Test
         public void DeltaTimeRatio_GetSet_ShouldGetAndSetCorrectly()
         {
             // Arrange
-            TimeStep timeStep = new TimeStep
-            {
-                // Act
-                DeltaTimeRatio = 2.0f
-            };
+            TimeStep timeStep = new TimeStep(deltaTimeRatio: 2.0f);
 
             // Assert
             Assert.Equal(2.0f, timeStep.DeltaTimeRatio);
@@ -77,11 +69,9 @@ namespace Alis.Core.Aspect.Time.Test
         public void InvertedDeltaTime_GetSet_ShouldGetAndSetCorrectly()
         {
             // Arrange
-            TimeStep timeStep = new TimeStep
-            {
-                // Act
-                InvertedDeltaTime = 0.1f
-            };
+            TimeStep timeStep = new TimeStep(
+                invertedDeltaTime: 0.1f
+            );
 
             // Assert
             Assert.Equal(0.1f, timeStep.InvertedDeltaTime);
@@ -94,11 +84,9 @@ namespace Alis.Core.Aspect.Time.Test
         public void InvertedDeltaTimeZero_GetSet_ShouldGetAndSetCorrectly()
         {
             // Arrange
-            TimeStep timeStep = new TimeStep
-            {
-                // Act
-                InvertedDeltaTimeZero = 0.05f
-            };
+            TimeStep timeStep = new TimeStep (
+                invertedDeltaTimeZero: 0.05f
+            );
 
             // Assert
             Assert.Equal(0.05f, timeStep.InvertedDeltaTimeZero);
@@ -111,11 +99,9 @@ namespace Alis.Core.Aspect.Time.Test
         public void PositionIterations_GetSet_ShouldGetAndSetCorrectly()
         {
             // Arrange
-            TimeStep timeStep = new TimeStep
-            {
-                // Act
-                PositionIterations = 3
-            };
+            TimeStep timeStep = new TimeStep( 
+                positionIterations: 3
+            );
 
             // Assert
             Assert.Equal(3, timeStep.PositionIterations);
@@ -128,11 +114,9 @@ namespace Alis.Core.Aspect.Time.Test
         public void VelocityIterations_GetSet_ShouldGetAndSetCorrectly()
         {
             // Arrange
-            TimeStep timeStep = new TimeStep
-            {
-                // Act
-                VelocityIterations = 5
-            };
+            TimeStep timeStep = new TimeStep( 
+                velocityIterations: 5
+            );
 
             // Assert
             Assert.Equal(5, timeStep.VelocityIterations);
@@ -145,11 +129,9 @@ namespace Alis.Core.Aspect.Time.Test
         public void WarmStarting_GetSet_ShouldGetAndSetCorrectly()
         {
             // Arrange
-            TimeStep timeStep = new TimeStep
-            {
-                // Act
-                WarmStarting = true
-            };
+            TimeStep timeStep = new TimeStep (
+                warmStarting: true
+            );
 
             // Assert
             Assert.True(timeStep.WarmStarting);

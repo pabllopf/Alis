@@ -1,42 +1,60 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:TimeStep.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Aspect.Time
 {
-    /// <summary>This is an internal class.</summary>
-    public record struct TimeStep(
-        float DeltaTime,
-        float DeltaTimeRatio,
-        float InvertedDeltaTime,
-        float InvertedDeltaTimeZero,
-        int PositionIterations,
-        int VelocityIterations,
-        bool WarmStarting
-    );
+    /// <summary>
+    /// The time step
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public readonly struct TimeStep(
+        float deltaTime = 0.016f,
+        float deltaTimeRatio = 1.0f,
+        float invertedDeltaTime = 62.5f,
+        float invertedDeltaTimeZero = 62.5f,
+        int positionIterations = 8,
+        int velocityIterations = 3, 
+        bool warmStarting = true)
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TimeStep"/> class
+        /// </summary>
+        public TimeStep() : this(deltaTime: 0.016f, deltaTimeRatio: 1.0f, invertedDeltaTime: 62.5f, invertedDeltaTimeZero: 62.5f, positionIterations: 8, velocityIterations: 3, warmStarting: true)
+        {
+        }
+
+        /// <summary>
+        /// The delta time
+        /// </summary>
+        public readonly float DeltaTime  = deltaTime;
+        
+        /// <summary>
+        /// The delta time ratio
+        /// </summary>
+        public readonly float DeltaTimeRatio = deltaTimeRatio;
+        
+        /// <summary>
+        /// The inverted delta time
+        /// </summary>
+        public readonly float InvertedDeltaTime = invertedDeltaTime;
+        
+        /// <summary>
+        /// The inverted delta time zero
+        /// </summary>
+        public readonly float InvertedDeltaTimeZero = invertedDeltaTimeZero;
+        
+        /// <summary>
+        /// The position iterations
+        /// </summary>
+        public readonly int PositionIterations = positionIterations;
+        
+        /// <summary>
+        /// The velocity iterations
+        /// </summary>
+        public readonly int VelocityIterations  = velocityIterations;
+        
+        /// <summary>
+        /// The warm starting
+        /// </summary>
+        public readonly bool WarmStarting  = warmStarting;
+    }
 }

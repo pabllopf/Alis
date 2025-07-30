@@ -46,6 +46,14 @@ namespace Alis.Core.Aspect.Time.Sample
             // Create a new Clock instance
             Clock clock = new Clock();
             clock.Start();
+
+            TimeStep timeStep = new TimeStep();
+            
+            Console.WriteLine($"timeStep DeltaTime: {timeStep.DeltaTime}");
+
+            TimeConfiguration timeConfiguration = new TimeConfiguration();
+
+            Console.WriteLine($"{timeConfiguration.FixedTimeStep}");
             
             int i = 0;
             while (i < 1000)

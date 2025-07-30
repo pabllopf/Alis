@@ -37,29 +37,6 @@ namespace Alis.Core.Aspect.Time.Test
     public class TimeConfigurationTest
     {
         /// <summary>
-        ///     Tests that constructor should set properties correctly
-        /// </summary>
-        [Fact]
-        public void Constructor_ShouldSetPropertiesCorrectly()
-        {
-            // Arrange
-            const float expectedFixedTimeStep = 0.016f;
-            const float expectedMaximumAllowedTimeStep = 0.10f;
-            const float expectedTimeScale = 1.00f;
-
-            // Act
-            TimeConfiguration timeConfig = new TimeConfiguration(expectedFixedTimeStep, expectedMaximumAllowedTimeStep, expectedTimeScale)
-            {
-                LogOutput = true
-            };
-
-            // Assert
-            Assert.Equal(expectedFixedTimeStep, timeConfig.FixedTimeStep);
-            Assert.Equal(expectedMaximumAllowedTimeStep, timeConfig.MaximumAllowedTimeStep);
-            Assert.Equal(expectedTimeScale, timeConfig.TimeScale);
-        }
-
-        /// <summary>
         ///     Tests that constructor should set properties correctly with custom values
         /// </summary>
         [Fact]
@@ -72,16 +49,12 @@ namespace Alis.Core.Aspect.Time.Test
 
 
             // Act
-            TimeConfiguration timeConfig = new TimeConfiguration(expectedFixedTimeStep, expectedMaximumAllowedTimeStep, expectedTimeScale)
-            {
-                LogOutput = false
-            };
+            TimeConfiguration timeConfig = new TimeConfiguration(expectedFixedTimeStep, expectedMaximumAllowedTimeStep, expectedTimeScale);
 
             // Assert
             Assert.Equal(expectedFixedTimeStep, timeConfig.FixedTimeStep);
             Assert.Equal(expectedMaximumAllowedTimeStep, timeConfig.MaximumAllowedTimeStep);
             Assert.Equal(expectedTimeScale, timeConfig.TimeScale);
-            Assert.False(timeConfig.LogOutput);
         }
     }
 }
