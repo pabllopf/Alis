@@ -151,10 +151,19 @@ namespace Alis.App.Engine.Desktop.Core
         /// </summary>
         public Project Project { get; set; }
         
+        /// <summary>
+        /// Gets or sets the value of the git window
+        /// </summary>
         public GitWindow GitWindow { get; set; }
         
+        /// <summary>
+        /// Gets or sets the value of the preferences window
+        /// </summary>
         public PreferencesWindow PreferencesWindow { get; set; }
         
+        /// <summary>
+        /// Gets or sets the value of the search advance window
+        /// </summary>
         public SearchAdvanceWindow SearchAdvanceWindow { get; set; }
 
         /// <summary>

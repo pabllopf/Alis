@@ -45,13 +45,25 @@ namespace Alis.App.Engine.Desktop.Windows
     /// <seealso cref="IWindow" />
     public class PreferencesWindow : IWindow
     {
+        /// <summary>
+        /// The cog
+        /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Cog} Preferences";
+        /// <summary>
+        /// The is open
+        /// </summary>
         private bool _isOpen = false;
 
         // Current selected node in the tree menu
+        /// <summary>
+        /// The selected node
+        /// </summary>
         private string _selectedNode = "General";
 
         // Tree menu structure
+        /// <summary>
+        /// The list
+        /// </summary>
         private readonly Dictionary<string, List<string>> _menuTree = new Dictionary<string, List<string>>
         {
             { "General", new List<string>() },
@@ -62,7 +74,13 @@ namespace Alis.App.Engine.Desktop.Windows
             { "Advanced", new List<string> { "Scripting", "Debugging" } }
         };
         
+        /// <summary>
+        /// The command ptr
+        /// </summary>
         private IntPtr commandPtr;
+        /// <summary>
+        /// The empty
+        /// </summary>
         private string searchText = string.Empty;
 
         /// <summary>
@@ -129,6 +147,9 @@ namespace Alis.App.Engine.Desktop.Windows
             ImGui.End();
         }
 
+        /// <summary>
+        /// Renders the search bar
+        /// </summary>
         private void RenderSearchBar()
         {
             ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 30);
@@ -140,6 +161,9 @@ namespace Alis.App.Engine.Desktop.Windows
             ImGui.Separator();
         }
 
+        /// <summary>
+        /// Renders the tree menu
+        /// </summary>
         private void RenderTreeMenu()
         {
             foreach (var category in _menuTree)
@@ -169,6 +193,9 @@ namespace Alis.App.Engine.Desktop.Windows
             }
         }
 
+        /// <summary>
+        /// Renders the content
+        /// </summary>
         private void RenderContent()
         {
             ImGui.Text($"Settings for: {_selectedNode}");
@@ -208,46 +235,73 @@ namespace Alis.App.Engine.Desktop.Windows
             }
         }
 
+        /// <summary>
+        /// Renders the general settings
+        /// </summary>
         private void RenderGeneralSettings()
         {
             ImGui.Text("General settings go here.");
         }
 
+        /// <summary>
+        /// Renders the rendering settings
+        /// </summary>
         private void RenderRenderingSettings()
         {
             ImGui.Text("Rendering settings go here.");
         }
 
+        /// <summary>
+        /// Renders the quality settings
+        /// </summary>
         private void RenderQualitySettings()
         {
             ImGui.Text("Quality settings go here.");
         }
 
+        /// <summary>
+        /// Renders the key bindings settings
+        /// </summary>
         private void RenderKeyBindingsSettings()
         {
             ImGui.Text("Key bindings settings go here.");
         }
 
+        /// <summary>
+        /// Renders the controller settings
+        /// </summary>
         private void RenderControllerSettings()
         {
             ImGui.Text("Controller settings go here.");
         }
 
+        /// <summary>
+        /// Renders the volume settings
+        /// </summary>
         private void RenderVolumeSettings()
         {
             ImGui.Text("Volume settings go here.");
         }
 
+        /// <summary>
+        /// Renders the output device settings
+        /// </summary>
         private void RenderOutputDeviceSettings()
         {
             ImGui.Text("Output device settings go here.");
         }
 
+        /// <summary>
+        /// Renders the scripting settings
+        /// </summary>
         private void RenderScriptingSettings()
         {
             ImGui.Text("Scripting settings go here.");
         }
 
+        /// <summary>
+        /// Renders the debugging settings
+        /// </summary>
         private void RenderDebuggingSettings()
         {
             ImGui.Text("Debugging settings go here.");

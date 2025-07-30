@@ -5,7 +5,7 @@ namespace Alis.Core.Ecs.Updating
     /// <summary>
     ///     The component update filter interface
     /// </summary>
-    internal interface IComponentUpdateFilter
+    public interface IComponentUpdateFilter
     {
         /// <summary>
         ///     Updates the subset using the specified archetypes

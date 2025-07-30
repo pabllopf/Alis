@@ -392,6 +392,13 @@ namespace Alis.Core.Ecs.Components.Collider
         }
 
 
+        /// <summary>
+        /// Renders the gameobject
+        /// </summary>
+        /// <param name="gameobject">The gameobject</param>
+        /// <param name="cameraPosition">The camera position</param>
+        /// <param name="cameraResolution">The camera resolution</param>
+        /// <param name="pixelsPerMeter">The pixels per meter</param>
         public void Render(GameObject gameobject, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
             if (!IsInit)

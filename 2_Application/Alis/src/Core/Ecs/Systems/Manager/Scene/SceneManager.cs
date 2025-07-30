@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.IO;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Core.Ecs.Systems.Manager.Scene
@@ -41,7 +44,10 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// Initializes a new instance of the <see cref="SceneManager"/> class
         /// </summary>
         /// <param name="context">The context</param>
-        public SceneManager(Context context) : base(context) => World = new Ecs.Scene();
+        public SceneManager(Context context) : base(context)
+        {
+            World = new Ecs.Scene();
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SceneManager"/> class
@@ -51,7 +57,10 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// <param name="tag">The tag</param>
         /// <param name="isEnable">The is enable</param>
         /// <param name="context">The context</param>
-        public SceneManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context) => World = new Ecs.Scene();
+        public SceneManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
+        {
+            World = new Ecs.Scene();
+        }
 
         /// <summary>
         /// Gets or sets the value of the scene
@@ -63,6 +72,28 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// </summary>
         public override void OnInit()
         {
+        }
+
+        public override void OnSave()
+        {
+            Console.WriteLine($"Saving scene: {World.EntityCount}");
+            
+            string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Game");
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            string fileWorld = Path.Combine(directory, "World.json");
+            File.WriteAllText(fileWorld, JsonSerializer.Serialize(World, new JsonOptions
+            {
+                DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
+                SerializationOptions = JsonSerializationOptions.Default
+            }));
+            
+            Console.WriteLine($"Scene saved to: {fileWorld}");
+
+            
         }
 
         /// <summary>

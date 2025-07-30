@@ -12,8 +12,7 @@ namespace Alis.Core.Ecs.Collections
     ///     The fast lookup
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    
-    internal struct FastLookup()
+    public struct FastLookup()
     {
         /// <summary>
         ///     The data

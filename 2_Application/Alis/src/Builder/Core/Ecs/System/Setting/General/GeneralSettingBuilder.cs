@@ -50,7 +50,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
         /// <summary>
         ///     The general setting
         /// </summary>
-        private readonly GeneralSetting generalSetting = new GeneralSetting();
+        private GeneralSetting generalSetting = new GeneralSetting();
 
         /// <summary>
         ///     Authors the value

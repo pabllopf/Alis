@@ -39,6 +39,9 @@ namespace Alis.Extension.Graphic.Ui.Controllers
         /// </summary>
         private const float FrameRate = 1.0f / 60.0f;
         
+        /// <summary>
+        /// The is open editor style window
+        /// </summary>
         private bool IsOpenEditorStyleWindow = false;
 
         /// <summary>
@@ -286,6 +289,9 @@ namespace Alis.Extension.Graphic.Ui.Controllers
         /// </summary>
         private bool _modeDebug = modeDebug;
 
+        /// <summary>
+        /// The dpi scale
+        /// </summary>
         private float dpiScale;
 
         /// <summary>
@@ -1044,12 +1050,22 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             MapKeys(io);
         }
         
+        /// <summary>
+        /// Processes the key event using the specified io
+        /// </summary>
+        /// <param name="io">The io</param>
+        /// <param name="imguikey">The imguikey</param>
+        /// <param name="key">The key</param>
         public void ProcessKeyEvent(ImGuiIoPtr io, ImGuiKey imguikey, Keys key)
         {
             io.KeyMap[(int)imguikey] = Glfw.GetKey(_glfwController._window, key) == InputState.Press ? 1 : 0;
             io.AddKeyEvent(imguikey, Glfw.GetKey(_glfwController._window, key) == InputState.Press);
         }
 
+        /// <summary>
+        /// Maps the keys using the specified io
+        /// </summary>
+        /// <param name="io">The io</param>
         public void MapKeys(ImGuiIoPtr io)
         {
             ProcessKeyEvent(io, ImGuiKey.Tab, Keys.Tab);
@@ -1475,6 +1491,9 @@ namespace Alis.Extension.Graphic.Ui.Controllers
             m.M41, m.M42, m.M43, m.M44
         };
 
+        /// <summary>
+        /// Opens the editor style window
+        /// </summary>
         public void OpenEditorStyleWindow()
         {
             IsOpenEditorStyleWindow = true;

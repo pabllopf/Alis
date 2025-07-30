@@ -161,6 +161,9 @@ namespace Alis.App.Engine.Desktop.Menus
             MenuActions.Add("Report Bug", ReportBug);
         }
 
+        /// <summary>
+        /// Styles the editor window
+        /// </summary>
         private static void StyleEditorWindow()
         {
             

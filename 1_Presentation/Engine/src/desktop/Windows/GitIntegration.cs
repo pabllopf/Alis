@@ -4,6 +4,9 @@ using System.IO;
 
 namespace Alis.App.Engine.Desktop.Windows
 {
+    /// <summary>
+    /// The git integration class
+    /// </summary>
     public class GitIntegration
     {
         /// <summary>
