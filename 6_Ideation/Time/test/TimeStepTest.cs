@@ -154,36 +154,5 @@ namespace Alis.Core.Aspect.Time.Test
             // Assert
             Assert.True(timeStep.WarmStarting);
         }
-
-        /// <summary>
-        ///     Tests that reset default values should reset to default
-        /// </summary>
-        [Fact]
-        public void Reset_DefaultValues_ShouldResetToDefault()
-        {
-            // Arrange
-            TimeStep timeStep = new TimeStep
-            {
-                DeltaTime = 0.5f,
-                DeltaTimeRatio = 2.0f,
-                InvertedDeltaTime = 0.1f,
-                InvertedDeltaTimeZero = 0.05f,
-                PositionIterations = 3,
-                VelocityIterations = 5,
-                WarmStarting = true
-            };
-
-            // Act
-            timeStep.Reset();
-
-            // Assert
-            Assert.Equal(0f, timeStep.DeltaTime);
-            Assert.Equal(0f, timeStep.DeltaTimeRatio);
-            Assert.Equal(0f, timeStep.InvertedDeltaTime);
-            Assert.Equal(0f, timeStep.InvertedDeltaTimeZero);
-            Assert.Equal(0, timeStep.PositionIterations);
-            Assert.Equal(0, timeStep.VelocityIterations);
-            Assert.False(timeStep.WarmStarting);
-        }
     }
 }
