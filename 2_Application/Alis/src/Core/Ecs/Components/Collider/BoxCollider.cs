@@ -33,9 +33,12 @@ using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Systems.Manager.Physic;
+using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Contacts;
 
 namespace Alis.Core.Ecs.Components.Collider
 {
@@ -248,7 +251,34 @@ namespace Alis.Core.Ecs.Components.Collider
         /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
+            if (self.Has<Transform>())
+            {
+                ref Transform transform = ref self.Get<Transform>();
+
+                Body = PhysicManager.WorldPhysic.CreateRectangle(
+                    SizeOfTexture.X * transform.Scale.X,
+                    SizeOfTexture.Y * transform.Scale.Y,
+                    1.0f,
+                    new Vector2F(transform.Position.X + RelativePosition.X, transform.Position.Y + RelativePosition.Y),
+                    Rotation,
+                    BodyType);
+
+                Body.SetRestitution(Restitution);
+                Body.SetFriction(Friction);
+                Body.FixedRotation = FixedRotation;
+                Body.Mass = Mass;
+                Body.SleepingAllowed = false;
+                Body.IsBullet = true;
+                Body.IgnoreGravity = IgnoreGravity;
+                Body.LinearVelocity = LinearVelocity;
+                Body.Awake = true;
+                Body.SetIsSensor(IsTrigger);
+                
+                //Body.OnCollision += OnCollision;
+                //Body.OnSeparation += OnSeparation;
+            }
         }
+        
 
         /// <summary>
         /// Updates the self
@@ -256,6 +286,16 @@ namespace Alis.Core.Ecs.Components.Collider
         /// <param name="self">The self</param>
         public void Update(IGameObject self)
         {
+            if (self.Has<Transform>())
+            {
+                ref Transform transform = ref self.Get<Transform>();
+
+                if (Body is not null)
+                {
+                    transform.Position = Body.Position;
+                    transform.Rotation.Phase = Body.Rotation;
+                }
+            }
         }
         
                 /// <summary>
@@ -351,14 +391,8 @@ namespace Alis.Core.Ecs.Components.Collider
             Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), IntPtr.Zero);
         }
 
-        /// <summary>
-        /// Renders the box collider gameobject
-        /// </summary>
-        /// <param name="boxColliderGameobject">The box collider gameobject</param>
-        /// <param name="valuePosition">The value position</param>
-        /// <param name="valueResolution">The value resolution</param>
-        /// <param name="pixelsPerMeter">The pixels per meter</param>
-        public void Render(GameObject boxColliderGameobject, Vector2F valuePosition, Vector2F valueResolution, float pixelsPerMeter)
+
+        public void Render(GameObject gameobject, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
             if (!IsInit)
             {
@@ -366,21 +400,43 @@ namespace Alis.Core.Ecs.Components.Collider
                 IsInit = true;
             }
             
+            ref Transform transform = ref gameobject.Get<Transform>();
+            
+            Vector2F colliderPosition = transform.Position;
+            Vector2F colliderScale = transform.Scale;
+            Complex colliderRotation = transform.Rotation;
+            
+            float posX = colliderPosition.X * pixelsPerMeter;
+            float posY = colliderPosition.Y * pixelsPerMeter;
+            float width = SizeOfTexture.X * pixelsPerMeter * colliderScale.X;
+            float height = SizeOfTexture.Y * pixelsPerMeter * colliderScale.Y;
+        
+            
+            int x = (int) (posX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2);
+            int y = (int) (posY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2);
+            
+            float rectangleX = (int) (x - width / 2);
+            float rectangleY = (int) (y - height / 2);
+            float rectangleW = (int) width;
+            float rectangleH = (int) height;
+
             Gl.GlUseProgram(ShaderProgram);
             Gl.GlBindVertexArray(Vao);
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
+
             
-            Vector2F pos = new Vector2F(0, 0);
-            Vector2F size = new Vector2F(1, 1);
-            
-            
-            // Update the vertex positions based on the given position and size
+            // Calcular los vértices en NDC usando rectangleX, rectangleY, rectangleW, rectangleH
+            float left = (rectangleX / cameraResolution.X) * 2.0f - 1.0f;
+            float right = ((rectangleX + rectangleW) / cameraResolution.X) * 2.0f - 1.0f;
+            float top = (rectangleY / cameraResolution.Y) * 2.0f - 1.0f;
+            float bottom = ((rectangleY + rectangleH) / cameraResolution.Y) * 2.0f - 1.0f;
+
             float[] vertices =
             {
-                pos.X - size.X / 2, pos.Y + size.Y / 2, 0.0f, // Top-left
-                pos.X + size.X / 2, pos.Y + size.Y / 2, 0.0f, // Top-right
-                pos.X + size.X / 2, pos.Y - size.Y / 2, 0.0f, // Bottom-right
-                pos.X - size.X / 2, pos.Y - size.Y / 2, 0.0f // Bottom-left
+                left,    top,    0.0f, // Top-left
+                right,   top,    0.0f, // Top-right
+                right,   bottom, 0.0f, // Bottom-right
+                left,    bottom, 0.0f  // Bottom-left
             };
 
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
@@ -399,7 +455,7 @@ namespace Alis.Core.Ecs.Components.Collider
             }
 
             Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Line);
-            Gl.GlDrawElements(PrimitiveType.LineLoop, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
+            Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
             Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Fill);
         }
 

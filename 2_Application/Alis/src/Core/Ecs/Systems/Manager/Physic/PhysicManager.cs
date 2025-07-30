@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// <summary>
         ///     The vector
         /// </summary>
-        public WorldPhysic WorldPhysic = new WorldPhysic();
+        public static WorldPhysic WorldPhysic = new WorldPhysic();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicManager" /> class
@@ -79,7 +79,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// </summary>
         public override void OnInit()
         {
-            WorldPhysic = new WorldPhysic(Context.Setting.Physic.Gravity);
         }
 
         /// <summary>
