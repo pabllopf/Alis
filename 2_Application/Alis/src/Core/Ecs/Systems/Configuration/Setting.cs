@@ -29,7 +29,7 @@
 
 using System;
 using System.IO;
-using Alis.Core.Aspect.Data.Json;
+
 using Alis.Core.Ecs.Systems.Configuration.Audio;
 using Alis.Core.Ecs.Systems.Configuration.General;
 using Alis.Core.Ecs.Systems.Configuration.Graphic;
@@ -68,7 +68,7 @@ namespace Alis.Core.Ecs.Systems.Configuration
         /// <param name="network">The network</param>
         /// <param name="physic">The physic</param>
         /// <param name="scene">The scene</param>
-        [JsonConstructor]
+        
         public Setting(GeneralSetting general, AudioSetting audio, GraphicSetting graphic, InputSetting input, NetworkSetting network, PhysicSetting physic)
         {
             General = general;
@@ -82,37 +82,37 @@ namespace Alis.Core.Ecs.Systems.Configuration
         /// <summary>
         ///     Gets or sets the value of the general
         /// </summary>
-        [JsonPropertyName("_General_")]
+        
         public GeneralSetting General { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the audio
         /// </summary>
-        [JsonPropertyName("_Audio_")]
+        
         public AudioSetting Audio { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the graphic
         /// </summary>
-        [JsonPropertyName("_Graphic_")]
+        
         public GraphicSetting Graphic { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the input
         /// </summary>
-        [JsonPropertyName("_Input_")]
+        
         public InputSetting Input { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the network
         /// </summary>
-        [JsonPropertyName("_Network_")]
+        
         public NetworkSetting Network { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the physic
         /// </summary>
-        [JsonPropertyName("_Physic_")]
+        
         public PhysicSetting Physic { get; set; }
 
         /// <summary>
@@ -120,6 +120,7 @@ namespace Alis.Core.Ecs.Systems.Configuration
         /// </summary>
         public void OnLoad()
         {
+            /*
             string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Setting");
             if (!Directory.Exists(directory))
             {
@@ -184,7 +185,7 @@ namespace Alis.Core.Ecs.Systems.Configuration
                     DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                     SerializationOptions = JsonSerializationOptions.Default
                 });
-            }
+            }*/
         }
 
         /// <summary>
@@ -192,6 +193,7 @@ namespace Alis.Core.Ecs.Systems.Configuration
         /// </summary>
         public void OnSave()
         {
+            /*
             string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Setting");
             if (!Directory.Exists(directory))
             {
@@ -239,7 +241,7 @@ namespace Alis.Core.Ecs.Systems.Configuration
                 DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                 SerializationOptions = JsonSerializationOptions.Default
             }));
-            
+            */
         }
 
         /// <summary>
@@ -248,6 +250,7 @@ namespace Alis.Core.Ecs.Systems.Configuration
         /// <param name="path">The path</param>
         public void OnLoad(string path)
         {
+            /*
             string directory = Path.Combine(path, "Data", "Setting");
             if (!Directory.Exists(directory))
             {
@@ -313,6 +316,8 @@ namespace Alis.Core.Ecs.Systems.Configuration
                     SerializationOptions = JsonSerializationOptions.Default
                 });
             }
+            
+            */
         }
     }
 }

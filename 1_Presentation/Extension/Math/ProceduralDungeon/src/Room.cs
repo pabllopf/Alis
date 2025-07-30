@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Data.Json;
+
 
 namespace Alis.Extension.Math.ProceduralDungeon
 {
@@ -59,7 +59,7 @@ namespace Alis.Extension.Math.ProceduralDungeon
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
         /// <param name="direction">The direction</param>
-        [JsonConstructor]
+        
         public Room(int xPos, int yPos, int width, int height, Direction direction)
         {
             XPos = xPos;
@@ -72,31 +72,31 @@ namespace Alis.Extension.Math.ProceduralDungeon
         /// <summary>
         ///     Gets the value of the x pos
         /// </summary>
-        [JsonPropertyName("XPos:")]
+        
         public int XPos { get; }
 
         /// <summary>
         ///     Gets the value of the y pos
         /// </summary>
-        [JsonPropertyName("YPos:")]
+        
         public int YPos { get; }
 
         /// <summary>
         ///     Gets the value of the width
         /// </summary>
-        [JsonPropertyName("Width:")]
+        
         public int Width { get; }
 
         /// <summary>
         ///     Gets the value of the height
         /// </summary>
-        [JsonPropertyName("Height:")]
+        
         public int Height { get; }
 
         /// <summary>
         ///     Gets the value of the direction
         /// </summary>
-        [JsonPropertyName("Direction:")]
+        
         public Direction Direction { get; }
 
         /// <summary>

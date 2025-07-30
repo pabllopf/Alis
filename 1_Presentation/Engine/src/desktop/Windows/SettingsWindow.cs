@@ -32,7 +32,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Desktop.Core;
-using Alis.Core.Aspect.Data.Json;
+
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
@@ -139,9 +139,13 @@ namespace Alis.App.Engine.Desktop.Windows
                             object value = property.GetValue(setting);
                             string uniqueId = $"{property.Name}##{headerName}";
 
-                            bool isJsonIgnored = property.GetCustomAttributes(typeof(JsonIgnoreAttribute), true).Any();
+                            // TODO: ignore the load data og settings: 
+                            
+                            //bool isJsonIgnored = property.GetCustomAttributes(typeof(JsonIgnoreAttribute), true).Any();
 
-                            if (property.CanWrite || isJsonIgnored)
+                            bool isJsonIgnored = false;
+                            
+                            if (property.CanWrite)
                             {
                                 ImGui.AlignTextToFramePadding();
                                 ImGui.Text(property.Name);
@@ -149,10 +153,10 @@ namespace Alis.App.Engine.Desktop.Windows
 
                                 ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X); // Adjust the width as needed
 
-                                if (isJsonIgnored)
+                                /*if (isJsonIgnored)
                                 {
                                     ImGui.BeginDisabled();
-                                }
+                                }*/
 
                                 switch (value)
                                 {

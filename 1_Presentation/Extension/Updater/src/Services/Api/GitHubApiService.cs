@@ -31,7 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Alis.Core.Aspect.Data.Json;
+
 
 namespace Alis.Extension.Updater.Services.Api
 {
@@ -72,7 +72,11 @@ namespace Alis.Extension.Updater.Services.Api
         {
             _httpClient.DefaultRequestHeaders.Add("User-Agent", "request");
             string response = await _httpClient.GetStringAsync(ApiUrl);
-            return JsonSerializer.Deserialize<Dictionary<string, object>>(response);
+            //return JsonSerializer.Deserialize<Dictionary<string, object>>(response);
+            return new Dictionary<string, object>
+            {
+                { "response", response }
+            };
         }
 
         /// <summary>

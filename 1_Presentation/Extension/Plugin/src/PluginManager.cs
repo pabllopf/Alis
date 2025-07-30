@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -214,7 +215,9 @@ namespace Alis.Extension.Plugin
         /// <returns>The loaded assembly</returns>
         internal Assembly LoadAssembly(string pluginFile)
         {
+#pragma warning disable IL2026
             Assembly assembly = Assembly.LoadFrom(pluginFile);
+#pragma warning restore IL2026
             Logger.Info($"Loaded assembly: {assembly.FullName}");
             LoadedAssemblies.Add(assembly);
             return assembly;
@@ -242,7 +245,9 @@ namespace Alis.Extension.Plugin
         /// <returns>An array of plugin types</returns>
         internal Type[] GetPluginTypes(Assembly assembly)
         {
+#pragma warning disable IL2026
             return assembly.GetTypes()
+#pragma warning restore IL2026
                 .Where(type => typeof(IPlugin).IsAssignableFrom(type))
                 .ToArray();
         }
@@ -252,7 +257,9 @@ namespace Alis.Extension.Plugin
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>A plugin instance</returns>
+#pragma warning disable IL2067
         internal IPlugin CreatePluginInstance(Type type) => (IPlugin) Activator.CreateInstance(type);
+#pragma warning restore IL2067
 
 
         /// <summary>

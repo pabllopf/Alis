@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 using Alis.App.Engine.Desktop.Entity;
 using Alis.App.Engine.Desktop.Menus;
 using Alis.App.Engine.Desktop.Windows;
-using Alis.Core.Aspect.Data.Json;
+
 using Alis.Core.Ecs.Systems;
 using Alis.Extension.Graphic.Ui.Controllers;
 
@@ -78,7 +78,10 @@ namespace Alis.App.Engine.Desktop.Core
 
           
 
-            Project = JsonSerializer.Deserialize<Project>(File.ReadAllText(Path.Combine(Path.GetTempPath(), "projectConfig.json")));
+            //Project = JsonSerializer.Deserialize<Project>(File.ReadAllText(Path.Combine(Path.GetTempPath(), "projectConfig.json")));
+
+            // TODO: Load project from file or create a new one
+            Project = new Project("Alis", "Not Set", "Not Synced", "Never", "1.0.0");
         }
 
         /// <summary>

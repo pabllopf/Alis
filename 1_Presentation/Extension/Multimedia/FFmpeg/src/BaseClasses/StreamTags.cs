@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Data.Json;
+
 
 namespace Alis.Extension.Multimedia.FFmpeg.BaseClasses
 {
@@ -39,19 +39,19 @@ namespace Alis.Extension.Multimedia.FFmpeg.BaseClasses
         /// <summary>
         ///     Gets or sets the value of the creation time
         /// </summary>
-        [JsonPropertyName("creation_time")]
+        
         public string CreationTime { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the language
         /// </summary>
-        [JsonPropertyName("language")]
+        
         public string Language { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the handler name
         /// </summary>
-        [JsonPropertyName("handler_name")]
+        
         public string HandlerName { get; set; }
     }
 }

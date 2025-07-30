@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 
@@ -49,7 +50,7 @@ namespace Alis.Benchmark.EntityComponentSystem
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>An enumerable of field info</returns>
-        private static IEnumerable<FieldInfo> GetContextFields<T>() => typeof(T).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.GetCustomAttribute<ContextAttribute>() != null);
+        private static IEnumerable<FieldInfo> GetContextFields<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.NonPublicFields)] T>() => typeof(T).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.GetCustomAttribute<ContextAttribute>() != null);
 
         /// <summary>
         ///     Setup the contexts using the specified benchmark
@@ -57,7 +58,7 @@ namespace Alis.Benchmark.EntityComponentSystem
         /// <typeparam name="T">The </typeparam>
         /// <param name="benchmark">The benchmark</param>
         /// <param name="args">The args</param>
-        public static void SetupContexts<T>(T benchmark, params object[] args)
+        public static void SetupContexts<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.NonPublicFields)] T>(T benchmark, params object[] args)
         {
             foreach (FieldInfo field in GetContextFields<T>())
             {
@@ -70,7 +71,7 @@ namespace Alis.Benchmark.EntityComponentSystem
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="benchmark">The benchmark</param>
-        public static void CleanupContexts<T>(T benchmark)
+        public static void CleanupContexts<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.NonPublicFields)] T>(T benchmark)
         {
             foreach (FieldInfo field in GetContextFields<T>())
             {

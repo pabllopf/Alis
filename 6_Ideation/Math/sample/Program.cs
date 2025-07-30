@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -50,6 +51,9 @@ namespace Alis.Core.Aspect.Math.Sample
 
             Matrix4X4 matrix = Matrix4X4.Identity;
             Matrix4X4 translated = matrix * Matrix4X4.CreateTranslation(new Vector3F(1, 2, 3));
+            
+            Console.WriteLine($"Vector Result: {result}");
+            Console.WriteLine($"Matrix Translated: {translated}");
         }
     }
 }

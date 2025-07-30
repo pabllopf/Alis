@@ -29,7 +29,7 @@
 
 using System;
 using System.IO;
-using Alis.Core.Aspect.Data.Json;
+
 using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Core.Ecs.Systems.Manager.Scene
@@ -79,6 +79,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// </summary>
         public override void OnSave()
         {
+            /*
             Console.WriteLine($"Saving scene: {World.EntityCount}");
             
             string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Game");
@@ -95,7 +96,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             }));
             
             Console.WriteLine($"Scene saved to: {fileWorld}");
-
+*/
             
         }
 
