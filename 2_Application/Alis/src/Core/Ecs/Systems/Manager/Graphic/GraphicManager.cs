@@ -114,7 +114,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             // Create a GLFW window
             if (Context.Setting.Graphic.WindowSize == new Vector2F(0, 0))
             {
-                Context.Setting.Graphic.WindowSize = new Vector2F(1280, 720);
+                Context.Setting.Graphic = Context.Setting.Graphic with {WindowSize = new Vector2F(1280, 720)};
             }
 
             Window = Glfw.CreateWindow((int) Context.Setting.Graphic.WindowSize.X, (int) Context.Setting.Graphic.WindowSize.Y, Context.Setting.General.Name, Monitor.None, Window.None);
@@ -271,7 +271,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         {
             Logger.Log($"Framebuffer Size: {width}, {height}");
             Gl.GlViewport(0, 0, width, height);
-            Context.Setting.Graphic.WindowSize = new Vector2F(width, height);
+            Context.Setting.Graphic = Context.Setting.Graphic with {WindowSize = new Vector2F(width, height)};
         }
     }
 }

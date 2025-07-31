@@ -35,6 +35,8 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems;
+using Alis.Core.Ecs.Systems.Configuration;
+using Alis.Core.Ecs.Systems.Configuration.General;
 using Alis.Core.Physic.Common;
 
 namespace Alis.Sample.Desktop
@@ -50,7 +52,36 @@ namespace Alis.Sample.Desktop
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            VideoGame.Create().Run();
+            //var game = VideoGame.Create().Build();
+            //game.Save();
+
+            Setting setting = new Setting();
+            setting.General = setting.General with {Debug = true};
+            setting.General = setting.General with {Name = "en-US"};
+            setting.OnSave();
+            
+            Console.WriteLine("Setting saved successfully.");
+            Console.WriteLine($"Debug: {setting.General.Debug}");
+            Console.WriteLine($"Name: {setting.General.Name}");
+            Console.WriteLine($"Description: {setting.General.Description}");
+            Console.WriteLine($"Version: {setting.General.Version}");
+            Console.WriteLine($"Author: {setting.General.Author}");
+            Console.WriteLine($"License: {setting.General.License}");
+            Console.WriteLine($"Icon: {setting.General.Icon}");
+            
+            
+            
+            setting.OnLoad();
+            
+            Console.WriteLine("General Setting:");
+            Console.WriteLine($"Debug: {setting.General.Debug}");
+            Console.WriteLine($"Name: {setting.General.Name}");
+            Console.WriteLine($"Description: {setting.General.Description}");
+            Console.WriteLine($"Version: {setting.General.Version}");
+            Console.WriteLine($"Author: {setting.General.Author}");
+            Console.WriteLine($"License: {setting.General.License}");
+            Console.WriteLine($"Icon: {setting.General.Icon}");
+            //game.Run();
         }
     }
 }

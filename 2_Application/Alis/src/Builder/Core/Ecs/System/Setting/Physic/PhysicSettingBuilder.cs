@@ -45,7 +45,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
         /// <summary>
         ///     The physic setting
         /// </summary>
-        private PhysicSetting physicSetting;
+        private PhysicSetting physicSetting = new PhysicSetting();
 
         /// <summary>
         ///     Builds this instance

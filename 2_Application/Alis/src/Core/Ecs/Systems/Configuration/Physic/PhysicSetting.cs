@@ -27,11 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Ecs.Systems.Configuration.Physic
 {
-    public record struct PhysicSetting(
-        Vector2F Gravity = default(Vector2F)) :
-        IPhysicSetting;
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct PhysicSetting(
+        Vector2F gravity = default(Vector2F)) : IPhysicSetting
+    {
+        public PhysicSetting() : this(gravity: new Vector2F(0, -9.81f))
+        {
+        }
+        
+        public Vector2F Gravity { get; set; } = gravity;
+    }
 }

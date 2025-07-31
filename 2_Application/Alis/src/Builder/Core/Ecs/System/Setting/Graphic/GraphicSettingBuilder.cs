@@ -43,7 +43,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
         /// <summary>
         ///     The graphic setting
         /// </summary>
-        private readonly GraphicSetting graphicSetting = new GraphicSetting();
+        private GraphicSetting graphicSetting = new GraphicSetting();
 
         /// <summary>
         ///     Builds this instance

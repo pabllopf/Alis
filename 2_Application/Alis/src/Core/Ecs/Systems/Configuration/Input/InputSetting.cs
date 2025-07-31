@@ -27,7 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
+
 namespace Alis.Core.Ecs.Systems.Configuration.Input
 {
-    public record struct InputSetting(float MouseSensitivity) : IInputSetting;
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct InputSetting(float mouseSensitivity) : IInputSetting
+    {
+        public InputSetting() : this(mouseSensitivity: 0.1f)
+        {
+        }
+
+        public float MouseSensitivity { get; set; } = mouseSensitivity;
+    }
 }
