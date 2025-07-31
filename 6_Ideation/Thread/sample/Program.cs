@@ -66,11 +66,11 @@ namespace Alis.Core.Aspect.Thread.Sample
             threadManager.StartThread(task1);
             threadManager.StartThread(task2);
 
-            Console.ReadKey();
+     
 
             threadManager.StopAllThreads();
 
-            Console.ReadKey();
+            
         }
     }
 }
