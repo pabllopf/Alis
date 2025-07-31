@@ -88,7 +88,6 @@ namespace Alis.Sample.Desktop
                                 .Rotation(0)
                                 .Scale(0.30f, 0.30f)
                             )
-                            .WithComponent<PlayerMovement>()
                             .WithComponent<Sprite>(sprite => sprite
                                 .SetTexture("app.bmp")
                                 .Depth(0)

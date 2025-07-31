@@ -149,6 +149,13 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
 
             framebufferSizeCallback = FramebufferSizeCallback;
             Glfw.SetFramebufferSizeCallback(Window, framebufferSizeCallback);
+            
+            Glfw.SetCloseCallback(Window, CloseWindowCallback);
+        }
+
+        private void CloseWindowCallback(Window window)
+        {
+            Context.Exit();
         }
 
         /// <summary>
