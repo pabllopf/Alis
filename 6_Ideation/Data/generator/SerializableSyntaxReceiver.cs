@@ -21,7 +21,7 @@ namespace Alis.Core.Aspect.Data.Generator
                     foreach (AttributeSyntax attribute in attributeList.Attributes)
                     {
                         string attributeName = attribute.Name.ToString();
-                        if (attributeName == "Serializable" || attributeName == "SerializableAttribute")
+                        if (attributeName is "Serializable" or "SerializableAttribute")
                         {
                             CandidateTypes.Add(typeDeclaration);
                             break;

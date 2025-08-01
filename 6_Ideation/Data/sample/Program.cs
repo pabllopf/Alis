@@ -48,17 +48,40 @@ namespace Alis.Core.Aspect.Data.Sample
                 Name = "Prince Charming",
                 Artist = "Metallica",
                 Genre = "Rock and Metal",
-                Album = "Reload"
+                Album = "Reload",
+                MusicId = Guid.NewGuid(),
+                ReleaseDate = DateTime.Now,
             };
+            
+            Console.WriteLine("Music Information:");
             
             string json = musicInfo2.ToJson();
             Console.WriteLine(json);
+            
+            Console.WriteLine("----------------------------------------");
             
             Music deserialized = Music.FromJson(json);
             Console.WriteLine(deserialized.Name);
             Console.WriteLine(deserialized.Artist);
             Console.WriteLine(deserialized.Genre);
             Console.WriteLine(deserialized.Album);
+            Console.WriteLine(deserialized.IsFavorite);
+            Console.WriteLine(deserialized.Rating);
+            Console.WriteLine(deserialized.TrackNumber);
+            Console.WriteLine(deserialized.DiscNumber);
+            Console.WriteLine(deserialized.Year);
+            Console.WriteLine(deserialized.Week);
+            Console.WriteLine(deserialized.PlayCount);
+            Console.WriteLine(deserialized.Listeners);
+            Console.WriteLine(deserialized.Duration);
+            Console.WriteLine(deserialized.FileSize);
+            Console.WriteLine(deserialized.Tempo);
+            Console.WriteLine(deserialized.Loudness);
+            Console.WriteLine(deserialized.Price);
+            Console.WriteLine(deserialized.ReleaseDate);
+            Console.WriteLine(deserialized.MusicId);
+            
+            Console.WriteLine("----------------------------------------");
         }
     }
 }
