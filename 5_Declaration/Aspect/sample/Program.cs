@@ -32,7 +32,7 @@ using System.Threading;
 
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Aspect.Sample.Data;
+using Alis.Core.Aspect.Sample.Entities;
 using Alis.Core.Aspect.Sample.Fluent;
 using Alis.Core.Aspect.Thread;
 using Alis.Core.Aspect.Time;
@@ -77,15 +77,18 @@ namespace Alis.Core.Aspect.Sample
                 Album = "Reload"
             };
 
-            // This will produce a JSON String
-            /*string serialized2 = JsonSerializer.Serialize(musicInfo2);
+            
+            // Serialize the musicInfo2 object to JSON
+            string json = musicInfo2.ToJson();
 
-            Logger.Info(serialized2);
-
-            // This will produce a copy of the instance you created earlier
-            JsonSerializer.Deserialize<Music>(serialized2);
-
-            Logger.Info("deserialized 2");*/
+            Logger.Info($"Serialized Music: {json}");
+            
+            // Load the musicInfo2 object from JSON
+            Music musicInfo = Music.FromJson(json);
+            Logger.Info($"Deserialized Music: Name={musicInfo.Name}, Artist={musicInfo.Artist}, Genre={musicInfo.Genre}, Album={musicInfo.Album}");
+            
+            
+            Logger.Info("deserialized 2");
 
             // SAMPLE ASPECT MATH
             Logger.Info("--------------------------");
@@ -148,8 +151,8 @@ namespace Alis.Core.Aspect.Sample
             threadManager.StartThread(task1);
             threadManager.StartThread(task2);
 
-            Logger.Info("Press any key to stop threads...");
-            Console.ReadKey();
+            // Wait for a while before stopping the threads:
+            System.Threading.Thread.Sleep(5000);
 
             threadManager.StopAllThreads();
 

@@ -35,7 +35,7 @@ namespace Alis.Core.Network.Exceptions
     ///     The entity too large exception class
     /// </summary>
     /// <seealso cref="Exception" />
-    [Serializable]
+    
     public class EntityTooLargeException : Exception
     {
         /// <summary>

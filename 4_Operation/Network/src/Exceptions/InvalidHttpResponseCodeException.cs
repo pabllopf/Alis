@@ -35,7 +35,7 @@ namespace Alis.Core.Network.Exceptions
     ///     The invalid http response code exception class
     /// </summary>
     /// <seealso cref="Exception" />
-    [Serializable]
+    
     public class InvalidHttpResponseCodeException : Exception
     {
         /// <summary>

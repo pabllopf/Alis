@@ -35,7 +35,7 @@ namespace Alis.Core.Network.Exceptions
     ///     The web socket handshake failed exception class
     /// </summary>
     /// <seealso cref="Exception" />
-    [Serializable]
+    
     public class WebSocketHandshakeFailedException : Exception
     {
         /// <summary>
