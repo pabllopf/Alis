@@ -82,6 +82,35 @@ namespace Alis.Core.Aspect.Data.Sample
             Console.WriteLine(deserialized.MusicId);
             
             Console.WriteLine("----------------------------------------");
+            
+            
+            Singer singerInfo = new Singer
+            {
+                Name = "Freddie Mercury",
+                Genre = "Rock",
+                Age = 45,
+                Country = "United Kingdom",
+                IsActive = false,
+                DebutDate = new DateTime(2021, 1, 1),
+                SingerId = Guid.NewGuid()
+            };
+            
+            Console.WriteLine("Singer Information:");
+            string singerJson = singerInfo.ToJson();
+            Console.WriteLine(singerJson);
+            Console.WriteLine("----------------------------------------");
+            
+            Singer deserializedSinger = Singer.FromJson(singerJson);
+            Console.WriteLine(deserializedSinger.Name);
+            Console.WriteLine(deserializedSinger.Genre);
+            Console.WriteLine(deserializedSinger.Age);
+            Console.WriteLine(deserializedSinger.Country);
+            Console.WriteLine(deserializedSinger.IsActive);
+            Console.WriteLine(deserializedSinger.DebutDate);
+            Console.WriteLine(deserializedSinger.SingerId);
+            
+            Console.WriteLine("----------------------------------------");
+            
         }
     }
 }

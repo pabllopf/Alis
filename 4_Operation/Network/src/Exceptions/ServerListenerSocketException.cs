@@ -35,8 +35,8 @@ namespace Alis.Core.Network.Exceptions
     ///     The server listener socket exception class
     /// </summary>
     /// <seealso cref="Exception" />
-    
-    public class ServerListenerSocketException : Exception
+    [Serializable]
+    public partial class ServerListenerSocketException : Exception
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="ServerListenerSocketException" /> class

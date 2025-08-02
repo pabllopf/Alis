@@ -3,16 +3,13 @@
     <PropertyGroup>
         <Optimize>true</Optimize>
     </PropertyGroup>
-    
-    <PropertyGroup Condition="$(Configuration) == 'Release'">
-        <DebugType>none</DebugType>
-        <DebugSymbols>false</DebugSymbols>
-    </PropertyGroup>
 
     <PropertyGroup Condition="
     ($(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Sample')) == true) AND
     $(AssemblyName.Contains('Test')) == false AND
     $(Configuration) == 'Release'">
+        <DebugType>none</DebugType>
+        <DebugSymbols>false</DebugSymbols>
         <UseNativeAot>true</UseNativeAot>
         <PublishAot>true</PublishAot>
         <PublishTrimmed>true</PublishTrimmed>

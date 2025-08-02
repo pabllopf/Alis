@@ -83,7 +83,6 @@ namespace Alis.Core.Network.Sample
             }
 
             Logger.Warning("Press any key to quit...");
-            Console.ReadKey();
 
             // Stop the server
             cts.Cancel();

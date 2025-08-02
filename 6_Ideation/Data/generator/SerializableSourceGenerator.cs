@@ -41,10 +41,11 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("using System.Collections.Generic;");
             sb.AppendLine("using Alis.Core.Aspect.Data.Json;");
             sb.AppendLine($"namespace {typeSymbol.ContainingNamespace}");
+           
             sb.AppendLine("{");
-            sb.AppendLine($"    public partial struct {typeSymbol.Name} : IJsonSerializable, IJsonDesSerializable<{typeSymbol.Name}>");
+            sb.AppendLine($"    public partial {(typeSymbol.TypeKind == TypeKind.Struct ? "struct" : "class")} {typeSymbol.Name} : IJsonSerializable, IJsonDesSerializable<{typeSymbol.Name}>");
             sb.AppendLine("    {");
-        
+           
             // Implementación de GetSerializableProperties
             sb.AppendLine("        IEnumerable<(string PropertyName, string Value)> IJsonSerializable.GetSerializableProperties()");
             sb.AppendLine("        {");
@@ -55,6 +56,18 @@ namespace Alis.Core.Aspect.Data.Generator
                     sb.AppendLine($"            yield return (nameof({property.Name}), {property.Name}.ToString());");
                 }
             }
+            
+            // En GenerateSerializationCode, dentro del foreach de propiedades:
+            if (typeSymbol.BaseType?.ToDisplayString() == "System.Exception")
+            {
+                sb.AppendLine($"            yield return (nameof(Message), Message);");
+                sb.AppendLine($"            yield return (nameof(StackTrace), StackTrace);");
+                sb.AppendLine($"            yield return (nameof(Source), Source);");
+                sb.AppendLine($"            yield return (nameof(HResult), HResult.ToString());");
+                sb.AppendLine($"            yield return (nameof(HelpLink), HelpLink);");
+                sb.AppendLine($"            yield return (nameof(InnerException), InnerException?.Message);");
+            }
+            
             sb.AppendLine("        }");
         
             // Implementación de CreateFromProperties
@@ -133,6 +146,9 @@ namespace Alis.Core.Aspect.Data.Generator
                     }
                 }
             }
+            
+            
+            
             sb.AppendLine("            };");
             sb.AppendLine("        }");
         

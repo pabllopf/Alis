@@ -35,8 +35,8 @@ namespace Alis.Core.Network.Exceptions
     ///     The sec web socket key missing exception class
     /// </summary>
     /// <seealso cref="Exception" />
-    
-    public class SecWebSocketKeyMissingException : Exception
+    [Serializable]
+    public partial class SecWebSocketKeyMissingException : Exception
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="SecWebSocketKeyMissingException" /> class
