@@ -153,6 +153,10 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             Glfw.SetCloseCallback(Window, CloseWindowCallback);
         }
 
+        /// <summary>
+        /// Closes the window callback using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
         private void CloseWindowCallback(Window window)
         {
             Context.Exit();

@@ -36,6 +36,9 @@ namespace Alis.Core.Aspect.Time
     /// </summary>
     public class Clock : Stopwatch
     {
+        /// <summary>
+        /// Gets the value of the elapsed seconds
+        /// </summary>
         public long ElapsedSeconds => (ElapsedMilliseconds / 1000);
     }
 }

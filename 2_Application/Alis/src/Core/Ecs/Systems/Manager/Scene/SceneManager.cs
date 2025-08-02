@@ -74,6 +74,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         {
         }
 
+        /// <summary>
+        /// Ons the save
+        /// </summary>
         public override void OnSave()
         {
             Console.WriteLine($"Saving scene: {World.EntityCount}");
