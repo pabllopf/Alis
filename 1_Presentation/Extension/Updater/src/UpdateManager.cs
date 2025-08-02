@@ -37,7 +37,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Alis.Core.Aspect.Data.Json;
+
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Extension.Updater.Events;
@@ -346,8 +346,13 @@ namespace Alis.Extension.Updater
 
             httpClient.DefaultRequestHeaders.Add("User-Agent", "request");
             string response = await httpClient.GetStringAsync(GitHubApiService.ApiUrl);
-            List<Dictionary<string, object>> releases = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(response);
+            //List<Dictionary<string, object>> releases = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(response);
 
+            List<Dictionary<string, object>> releases = new List<Dictionary<string, object>>()
+            {
+                
+            };
+            
             foreach (Dictionary<string, object> release in releases)
             {
                 string version = release["tag_name"]?.ToString();

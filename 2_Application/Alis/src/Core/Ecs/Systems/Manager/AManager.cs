@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Data.Json;
+
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Systems.Scope;
 
@@ -65,7 +65,7 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// <param name="tag">The tag</param>
         /// <param name="isEnable">The is enable</param>
         /// <param name="context"></param>
-        [JsonConstructor]
+        
         protected AManager(string id, string name, string tag, bool isEnable, Context context)
         {
             Id = id;
@@ -78,31 +78,31 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// <summary>
         ///     Gets or sets the value of the context
         /// </summary>
-        [JsonPropertyName("_Context_", true, true)]
+        
         public Context Context => _context;
 
         /// <summary>
         ///     Gets or sets the value of the is enable
         /// </summary>
-        [JsonPropertyName("_IsEnable_")]
+        
         public bool IsEnable { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
-        [JsonPropertyName("_Name_")]
+        
         public string Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the id
         /// </summary>
-        [JsonPropertyName("_Id_")]
+        
         public string Id { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the tag
         /// </summary>
-        [JsonPropertyName("_Tag_")]
+        
         public string Tag { get; set; }
 
         /// <summary>

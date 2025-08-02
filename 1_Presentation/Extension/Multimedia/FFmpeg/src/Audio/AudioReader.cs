@@ -32,7 +32,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Alis.Core.Aspect.Data.Json;
+
 using Alis.Extension.Multimedia.FFmpeg.Audio.Models;
 using Alis.Extension.Multimedia.FFmpeg.BaseClasses;
 
@@ -121,8 +121,12 @@ namespace Alis.Extension.Multimedia.FFmpeg.Audio
             try
             {
                 string json = await r.ReadToEndAsync();
-                AudioMetadata metadata = JsonSerializer.Deserialize<AudioMetadata>(json);
+                // TODO: fix this when we have a proper JSON parser
+                
+                //AudioMetadata metadata = JsonSerializer.Deserialize<AudioMetadata>(json);
 
+                AudioMetadata metadata = new AudioMetadata();
+                
                 try
                 {
                     MediaStream audioStream = metadata.Streams.Where(x => x.CodecType.ToLower().Trim() == "audio").FirstOrDefault();
@@ -180,7 +184,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Audio
                 MetadataLoaded = true;
                 Metadata = metadata;
             }
-            catch (JsonException ex)
+            catch (Exception ex)
             {
                 throw new InvalidOperationException("Failed to interpret ffprobe audio metadata output! " + ex.Message);
             }

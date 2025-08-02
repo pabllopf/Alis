@@ -31,7 +31,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data.Json;
+
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
@@ -94,25 +94,25 @@ namespace Alis.Core.Ecs.Components.Render
         /// <summary>
         ///     Gets or sets the value of the depth
         /// </summary>
-        [JsonPropertyName("_Depth_")]
+        
         public int Depth { get; set; } = Depth;
 
         /// <summary>
         ///     Gets or sets the value of the path
         /// </summary>
-        [JsonIgnore]
+        
         private string Path { get; set; } = string.Empty;
 
         /// <summary>
         ///     Gets or sets the value of the name file
         /// </summary>
-        [JsonPropertyName("_NameFile_")]
+        
         public string NameFile { get; set; } = NameFile;
 
         /// <summary>
         ///     Gets or sets the value of the size
         /// </summary>
-        [JsonPropertyName("_Size_")]
+        
         private Vector2F Size { get; set; }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// <summary>
         ///     Gets or sets the value of the flip
         /// </summary>
-        [JsonPropertyName("_Flip_")]
+        
         private bool Flip { get; set; }
 
         /// <summary>

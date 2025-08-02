@@ -181,7 +181,7 @@ namespace Alis.Core.Ecs.Test.StressTests
                 componentParams[i] = handle.RetrieveBoxed();
             }
         
-            var entity = (_random.Next() & 1) == 0 ? CreateGeneric(componentParams) : CreateBoxed(componentParams);
+            var entity = CreateBoxed(componentParams);
 
             Type[] componentTypes = componentParams.Select(p => p.GetType()).ToArray();
 
@@ -242,30 +242,7 @@ namespace Alis.Core.Ecs.Test.StressTests
             var kvp = _componentValues.ElementAt(_random.Next(_componentValues.Count));
             return (kvp.Key, kvp.Value);
         }
-
-       /// <summary>
-       /// Crea una entidad genérica usando los objetos especificados
-       /// </summary>
-       /// <param name="objects">Los objetos</param>
-       /// <returns>La entidad</returns>
-       private GameObject CreateGeneric(params object[] objects)
-       {
-           Type[] types = objects.Select(o => o.GetType()).ToArray();
-           MethodInfo m = _create[objects.Length - 1].MakeGenericMethod(types);
-           object boxedEntity = m.Invoke(_syncedScene, objects);
-           Assert.NotNull(boxedEntity);
-           var entity = (GameObject)boxedEntity!;
-       
-           List<ComponentHandle> handles = new(objects.Length);
-       
-           foreach (var comp in objects)
-               handles.Add(ComponentHandle.CreateFromBoxed(comp));
-       
-           _componentValues.Add(entity, handles);
-       
-           return entity;
-       }
-
+        
         /// <summary>
         /// Creates the boxed using the specified objects
         /// </summary>

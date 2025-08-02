@@ -33,7 +33,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Alis.Core.Aspect.Data.Json;
+
 using Alis.Extension.Multimedia.FFmpeg.BaseClasses;
 using Alis.Extension.Multimedia.FFmpeg.Video.Models;
 
@@ -122,8 +122,13 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
             try
             {
                 string metadataJson = await r.ReadToEndAsync();
-                VideoMetadata metadata = JsonSerializer.Deserialize<VideoMetadata>(metadataJson);
+                
+                // TODO: fix this to use a more robust JSON parser
+                
+                //VideoMetadata metadata = JsonSerializer.Deserialize<VideoMetadata>(metadataJson);
 
+                VideoMetadata metadata = new VideoMetadata();
+                
                 try
                 {
                     MediaStream videoStream = metadata.Streams.Where(x => x.CodecType.ToLower().Trim() == "video").FirstOrDefault();
@@ -159,7 +164,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
                 LoadedMetadata = true;
                 Metadata = metadata;
             }
-            catch (JsonException ex)
+            catch (Exception ex)
             {
                 throw new InvalidOperationException("Failed to interpret ffprobe video metadata output! " + ex.Message);
             }

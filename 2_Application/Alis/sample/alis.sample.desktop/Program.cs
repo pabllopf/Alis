@@ -50,51 +50,7 @@ namespace Alis.Sample.Desktop
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            VideoGame.Create()
-                .Settings(settings => settings
-                    .General(general => general
-                        .Name("Sample")
-                        .Author("Pablo Perdomo Falcón")
-                        .Icon("app.bmp")
-                        .Debug(true)
-                        .License("GNU General Public License v3.0")
-                        .Description("Sample game")
-                        .Version("0.0.1"))
-                    .Audio(audioSettings => audioSettings
-                        .Volume(100)
-                        .IsMute(false))
-                    .Graphic(graphicSettings => graphicSettings
-                        .Resolution(640, 480)
-                        .IsResizable(true)
-                        .FrameRate(60))
-                    .Physic(physic => physic
-                        .Gravity(9.8f, 0))
-                    .Input(inputSetting => inputSetting
-                        .MouseSensitivity(0.1f))
-                    .Network(networkSettings => networkSettings
-                        .Ip("localhost"))
-                )
-                .World(world => world
-                    .Add<Scene>(scene => scene
-                        .Add<GameObject>(gameObject => gameObject
-                            .WithComponent<Camera>(camera => camera
-                                .Position(0, 0)
-                                .Resolution(800, 480)
-                            )
-                        )
-                        .Add<GameObject>(gameObject => gameObject
-                            .Transform(transform => transform
-                                .Position(-6, -2)
-                                .Rotation(0)
-                                .Scale(0.30f, 0.30f)
-                            )
-                            .WithComponent<Sprite>(sprite => sprite
-                                .SetTexture("app.bmp")
-                                .Depth(0)
-                            )
-                        )
-                    )
-                ).Run();
+            VideoGame.Create().Run();
         }
     }
 }

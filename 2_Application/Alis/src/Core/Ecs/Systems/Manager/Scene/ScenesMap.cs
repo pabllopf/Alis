@@ -30,7 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Alis.Core.Aspect.Data.Json;
+
 
 namespace Alis.Core.Ecs.Systems.Manager.Scene
 {
@@ -42,7 +42,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// <summary>
         ///     Gets or sets the value of the scenes
         /// </summary>
-        [JsonPropertyName("_Scenes_")]
+        
         public List<int> Scenes { get; set; } = new List<int>();
 
         /// <summary>
@@ -68,6 +68,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// <returns>The scenes map</returns>
         public ScenesMap Load()
         {
+            /*
             string pathFile = Path.Combine(Environment.CurrentDirectory, "Data", "ScenesMap.json");
             if (!File.Exists(pathFile))
             {
@@ -91,7 +92,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             {
                 DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                 SerializationOptions = JsonSerializationOptions.Default
-            });
+            });*/
+
+            return new ScenesMap();
         }
 
         /// <summary>
@@ -99,6 +102,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// </summary>
         public void Save()
         {
+            /*
             string pathFile = Path.Combine(Environment.CurrentDirectory, "Data", "ScenesMap.json");
 
             if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, "Data")))
@@ -112,7 +116,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
                 SerializationOptions = JsonSerializationOptions.Default
             });
 
-            File.WriteAllText(pathFile, json);
+            File.WriteAllText(pathFile, json);*/
         }
     }
 }

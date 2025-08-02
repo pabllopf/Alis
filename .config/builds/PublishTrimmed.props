@@ -1,5 +1,5 @@
 <Project>
     <PropertyGroup Condition="$(TargetFramework.Equals('net6.0')) or $(TargetFramework.Equals('net7.0')) or $(TargetFramework.Equals('net8.0')) or $(TargetFramework.Equals('net9.0'))">
-        <PublishTrimmed>false</PublishTrimmed>
+        <PublishTrimmed>true</PublishTrimmed>
     </PropertyGroup>
 </Project>

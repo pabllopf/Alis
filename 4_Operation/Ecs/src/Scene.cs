@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Alis.Core.Aspect.Data.Json;
+
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
@@ -30,80 +30,80 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The gameObject location
         /// </summary>
-        [JsonPropertyName(Name = "EntityTable")]
+        
         public FastestTable<GameObjectLocation> EntityTable = new FastestTable<GameObjectLocation>(256);
 
         //archetype ID -> Archetype?
         /// <summary>
         ///     The scene archetype table
         /// </summary>
-        [JsonPropertyName(Name = "WorldArchetypeTable")]
+        
         public WorldArchetypeTableItem[] WorldArchetypeTable;
 
         /// <summary>
         ///     The archetype graph edges
         /// </summary>
-        [JsonPropertyName(Name = "ArchetypeGraphEdges")]
+        
         public Dictionary<ArchetypeEdgeKey, Archetype> ArchetypeGraphEdges = [];
 
         /// <summary>
         ///     The gameObject id only
         /// </summary>
-        [JsonPropertyName(Name = "RecycledEntityIds")]
+        
         public FastestStack<GameObjectIdOnly> RecycledEntityIds = new FastestStack<GameObjectIdOnly>(256);
 
         /// <summary>
         ///     The updates by attributes
         /// </summary>
-        [JsonIgnore]
+        
         private readonly Dictionary<Type, SceneUpdateFilter> _updatesByAttributes = [];
 
         /// <summary>
         ///     The single component updates
         /// </summary>
-        [JsonIgnore]
+        
         private readonly Dictionary<ComponentId, SingleComponentUpdateFilter> _singleComponentUpdates = [];
 
         /// <summary>
         ///     The next gameObject id
         /// </summary>
-        [JsonPropertyName(Name = "NextEntityId")]
+        
         public int NextEntityId;
 
         /// <summary>
         ///     The id
         /// </summary>
-        [JsonIgnore]
+        
         public readonly ushort Id;
 
         /// <summary>
         ///     The default scene gameObject
         /// </summary>
-        [JsonIgnore]
+        
         public readonly GameObject DefaultWorldGameObject;
 
         /// <summary>
         ///     The query cache
         /// </summary>
-        [JsonIgnore]
+        
         public Dictionary<int, Query> QueryCache = [];
 
         /// <summary>
         ///     Gets the value of the shared countdown
         /// </summary>
-        [JsonIgnore]
+        
         public CountdownEvent SharedCountdown => _sharedCountdown;
 
         /// <summary>
         ///     The shared countdown
         /// </summary>
-        [JsonIgnore]
+        
         private readonly CountdownEvent _sharedCountdown = new(0);
 
         /// <summary>
         ///     The create
         /// </summary>
-        [JsonPropertyName(Name = "EnabledArchetypes")]
+        
         public FastestStack<GameObjectType> EnabledArchetypes = FastestStack<GameObjectType>.Create(16);
 
         // -1: normal state
@@ -112,13 +112,13 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The allow structural changes
         /// </summary>
-        [JsonIgnore]
+        
         private int _allowStructuralChanges = -1;
 
         /// <summary>
         ///     The scene update command buffer
         /// </summary>
-        [JsonPropertyName (Name = "WorldUpdateCommandBuffer")]
+        
         public CommandBuffer WorldUpdateCommandBuffer;
 
         /// <summary>
@@ -156,13 +156,13 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The add component lookup
         /// </summary>
-        [JsonIgnore]
+        
         public FastLookup AddComponentLookup = new();
 
         /// <summary>
         ///     The remove component lookup
         /// </summary>
-        [JsonIgnore]
+        
         public FastLookup RemoveComponentLookup = new();
 
         /// <summary>

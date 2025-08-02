@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Linq;
-using Alis.Core.Aspect.Data.Json;
+
 using Alis.Extension.Multimedia.FFmpeg.BaseClasses;
 
 namespace Alis.Extension.Multimedia.FFmpeg.Video.Models
@@ -105,13 +105,13 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video.Models
         /// <summary>
         ///     Media streams inside the file. Can contain non-video streams as well.
         /// </summary>
-        [JsonPropertyName("streams")]
+        
         public MediaStream[] Streams { get; set; }
 
         /// <summary>
         ///     File format information.
         /// </summary>
-        [JsonPropertyName("format")]
+        
         public VideoFormat Format { get; set; }
 
         /// <summary>

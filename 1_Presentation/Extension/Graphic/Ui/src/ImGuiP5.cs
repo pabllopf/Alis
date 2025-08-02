@@ -66,17 +66,7 @@ namespace Alis.Extension.Graphic.Ui
             {
                 return;
             }
-
-            Assembly currentAssembly = Assembly.GetExecutingAssembly();
-            IEnumerable<Assembly> callerAssemblies = new StackTrace().GetFrames()
-                .Select(x => x.GetMethod().ReflectedType.Assembly).Distinct()
-                .Where(x => x.GetReferencedAssemblies().Any(y => y.FullName == currentAssembly.FullName));
-            Assembly initialAssembly = callerAssemblies.Last();
-            if (initialAssembly.FullName.Contains("Test"))
-            {
-                return;
-            }
-
+            
             EmbeddedDllClass.ExtractEmbeddedDlls("cimgui", DllType.Lib, ImGuiDlls.ImGuiDllBytes, Assembly.GetExecutingAssembly());
         }
 

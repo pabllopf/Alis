@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel.Archetype;
@@ -176,7 +177,7 @@ namespace Alis.Core.Ecs.Kernel
                         (ComponentDelegates<T>.InitDelegate)ComponentTable[value.RawIndex].Initer,
                         (ComponentDelegates<T>.DestroyDelegate)ComponentTable[value.RawIndex].Destroyer);
 
-                EnsureTypeInit(type);
+                //EnsureTypeInit(type);
 
                 int nextIdInt = ++_nextComponentId;
 
@@ -218,7 +219,7 @@ namespace Alis.Core.Ecs.Kernel
             {
                 if (_existingComponentIDs.TryGetValue(t, out ComponentId value)) return value;
 
-                EnsureTypeInit(t);
+                //EnsureTypeInit(t);
 
                 int nextIdInt = ++_nextComponentId;
 
@@ -236,24 +237,6 @@ namespace Alis.Core.Ecs.Kernel
 
                 return id;
             }
-        }
-
-        /// <summary>
-        ///     Ensures the type init using the specified t
-        /// </summary>
-        /// <param name="t">The </param>
-        private static void EnsureTypeInit(Type t)
-        {
-            if (GenerationServices.UserGeneratedTypeMap.ContainsKey(t))
-                return;
-            if (!typeof(IComponentBase).IsAssignableFrom(t))
-                return;
-            //it needs init!!
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-            t.TypeInitializer?.Invoke(null, []);
-#else
-        System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(t.TypeHandle);
-#endif
         }
 
         /// <summary>

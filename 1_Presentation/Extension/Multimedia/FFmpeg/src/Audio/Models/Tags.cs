@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Data.Json;
+
 
 namespace Alis.Extension.Multimedia.FFmpeg.Audio.Models
 {
@@ -39,7 +39,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Audio.Models
         /// <summary>
         ///     Gets or sets the value of the encoder
         /// </summary>
-        [JsonPropertyName("encoder")]
+        
         public string Encoder { get; set; }
     }
 }

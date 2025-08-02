@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.System;
-using Alis.Core.Aspect.Data.Json;
+
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Scope;
@@ -74,13 +74,13 @@ namespace Alis.Core.Ecs.Systems
         ///     Initializes a new instance of the <see cref="VideoGame" /> class.
         /// </summary>
         /// <param name="contextHandler">The context handler.</param>
-        [JsonConstructor]
+        
         public VideoGame(IContextHandler<Context> contextHandler) => _contextHandler = contextHandler;
 
         /// <summary>
         ///     Gets the current context.
         /// </summary>
-        [JsonPropertyName("_Context_")]
+        
         public Context Context => _contextHandler.Context;
 
         /// <summary>

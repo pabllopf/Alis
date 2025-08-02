@@ -29,7 +29,7 @@
 
 using System;
 using System.Threading;
-using Alis.Core.Aspect.Data.Json;
+
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Sample.Data;
@@ -78,14 +78,14 @@ namespace Alis.Core.Aspect.Sample
             };
 
             // This will produce a JSON String
-            string serialized2 = JsonSerializer.Serialize(musicInfo2);
+            /*string serialized2 = JsonSerializer.Serialize(musicInfo2);
 
             Logger.Info(serialized2);
 
             // This will produce a copy of the instance you created earlier
             JsonSerializer.Deserialize<Music>(serialized2);
 
-            Logger.Info("deserialized 2");
+            Logger.Info("deserialized 2");*/
 
             // SAMPLE ASPECT MATH
             Logger.Info("--------------------------");
