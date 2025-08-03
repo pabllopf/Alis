@@ -27,12 +27,24 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
+
 namespace Alis.Core.Ecs.Systems.Configuration.Network
 {
-    public record struct NetworkSetting(
-        int Port = 8080,
-        string Ip = "127.0.0.1",
-        string Host = "localhost",
-        string Protocol = "http") :
-        INetworkSetting;
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct NetworkSetting(
+        int port = 8080,
+        string ip = "127.0.0.1",
+        string host = "localhost",
+        string protocol = "http") : INetworkSetting
+    {
+        public NetworkSetting() : this(port: 8080, ip: "127.0.0.1", host: "localhost", protocol: "http")
+        {
+        }
+        
+        public int Port { get; set; } = port;
+        public string Ip { get; set; } = ip;
+        public string Host { get; set; } = host;
+        public string Protocol { get; set; } = protocol;
+    }
 }

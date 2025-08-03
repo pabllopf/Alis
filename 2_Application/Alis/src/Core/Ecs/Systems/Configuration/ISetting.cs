@@ -27,6 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Systems.Configuration.Audio;
+using Alis.Core.Ecs.Systems.Configuration.General;
+using Alis.Core.Ecs.Systems.Configuration.Graphic;
+using Alis.Core.Ecs.Systems.Configuration.Input;
+using Alis.Core.Ecs.Systems.Configuration.Network;
+using Alis.Core.Ecs.Systems.Configuration.Physic;
+
 namespace Alis.Core.Ecs.Systems.Configuration
 {
     /// <summary>
@@ -34,5 +41,37 @@ namespace Alis.Core.Ecs.Systems.Configuration
     /// </summary>
     public interface ISetting
     {
+        public GeneralSetting General { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the audio
+        /// </summary>
+        
+        public AudioSetting Audio { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the graphic
+        /// </summary>
+        
+        public GraphicSetting Graphic { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the input
+        /// </summary>
+        
+        public InputSetting Input { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the network
+        /// </summary>
+        
+        public NetworkSetting Network { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the physic
+        /// </summary>
+        
+        public PhysicSetting Physic { get; set; }
+
     }
 }

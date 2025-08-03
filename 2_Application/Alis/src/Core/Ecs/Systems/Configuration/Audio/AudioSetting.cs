@@ -27,10 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
+
 namespace Alis.Core.Ecs.Systems.Configuration.Audio
 {
     /// <summary>
     ///     The audio setting
     /// </summary>
-    public record struct AudioSetting(int Volume = 100, bool Mute = false) : IAudioSetting;
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct AudioSetting(int volume = 100, bool mute = false) : IAudioSetting
+    {
+        public AudioSetting() : this(volume: 100, mute: false)
+        {
+        }
+        
+        public int Volume { get; set; } = volume;
+        
+        public bool Mute { get; set; } = mute;
+    }
 }

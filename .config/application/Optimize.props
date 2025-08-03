@@ -11,7 +11,8 @@
 
     <PropertyGroup Condition="
     ($(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Sample')) == true) AND
-    $(AssemblyName.Contains('Test')) == false">
+    $(AssemblyName.Contains('Test')) == false AND
+    $(Configuration) == 'Release'">
         <UseNativeAot>true</UseNativeAot>
         <PublishAot>true</PublishAot>
         <PublishTrimmed>true</PublishTrimmed>
