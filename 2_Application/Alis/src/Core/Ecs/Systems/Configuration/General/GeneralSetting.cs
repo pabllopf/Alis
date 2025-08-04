@@ -27,12 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
+using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Core.Ecs.Systems.Configuration.General
 {
@@ -68,11 +66,11 @@ namespace Alis.Core.Ecs.Systems.Configuration.General
         
         public string Icon { get; set; } = icon;
 
-        internal void OnSave() => TinyJson.SerializeToFile(this, nameof(GeneralSetting), "Data");
+        internal void OnSave() => JsonNativeAot.SerializeToFile(this, nameof(GeneralSetting), "Data");
         
-        internal GeneralSetting OnLoad() => TinyJson.DeserializeFromFile<GeneralSetting>(nameof(GeneralSetting), "Data");
-        
-        public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
+        internal GeneralSetting OnLoad() => JsonNativeAot.DeserializeFromFile<GeneralSetting>(nameof(GeneralSetting), "Data");
+
+        IEnumerable<(string PropertyName, string Value)> IJsonSerializable.GetSerializableProperties()
         {
             yield return (nameof(Debug), Debug.ToString());
             yield return (nameof(Name), Name);
@@ -82,8 +80,8 @@ namespace Alis.Core.Ecs.Systems.Configuration.General
             yield return (nameof(License), License);
             yield return (nameof(Icon), Icon);
         }
-        
-        public GeneralSetting CreateFromProperties(Dictionary<string, string> properties)
+
+        GeneralSetting IJsonDesSerializable<GeneralSetting>.CreateFromProperties(Dictionary<string, string> properties)
         {
             return new GeneralSetting(
                 debug: properties.TryGetValue(nameof(Debug), out string debugValue) && bool.TryParse(debugValue, out bool debug) && debug,
@@ -94,96 +92,6 @@ namespace Alis.Core.Ecs.Systems.Configuration.General
                 license: properties.TryGetValue(nameof(License), out string license) ? license : "GPL-3.0 license",
                 icon: properties.TryGetValue(nameof(Icon), out string icon) ? icon : "app.jpeg"
             );
-        }
-    }
-
-    public interface IJsonDesSerializable<out T>
-    {
-        T CreateFromProperties(Dictionary<string, string> properties);
-    }
-
-    public interface IJsonSerializable
-    {
-        IEnumerable<(string PropertyName, string Value)> GetSerializableProperties();
-    }
-
-
-    public static class TinyJson
-    {
-        public static string Serialize<T>(T instance) where T : IJsonSerializable
-        {
-            StringBuilder jsonBuilder = new StringBuilder();
-            jsonBuilder.Append("{");
-
-            foreach ((string propertyName, string value) in instance.GetSerializableProperties())
-            {
-                jsonBuilder.Append($"\"{propertyName}\":\"{value}\",");
-            }
-
-            if (jsonBuilder.Length > 1)
-            {
-                jsonBuilder.Length--;
-            }
-
-            jsonBuilder.Append("}");
-            return jsonBuilder.ToString();
-        }
-        
-        public static void SerializeToFile<T>(T instance, string nameFile, string relativePath) where T : IJsonSerializable
-        {
-            StringBuilder jsonBuilder = new StringBuilder();
-            jsonBuilder.Append("{");
-
-            foreach ((string propertyName, string value) in instance.GetSerializableProperties())
-            {
-                jsonBuilder.Append($"\"{propertyName}\":\"{value}\",");
-            }
-
-            if (jsonBuilder.Length > 1)
-            {
-                jsonBuilder.Length--;
-            }
-
-            jsonBuilder.Append("}");
-            string json = jsonBuilder.ToString();
-            string path = Path.Combine(Environment.CurrentDirectory, relativePath);
-            string filePath = Path.Combine(path, $"{nameFile}.json");
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-            File.WriteAllText(filePath, json);
-            Console.WriteLine($"Serialized {typeof(T).Name} to {filePath}");
-        }
-
-        public static T Deserialize<T>(string json) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
-        {
-            T instance = new T();
-            Dictionary<string, string> properties = new Dictionary<string, string>();
-            string[] parts = json.Trim('{', '}').Split(',');
-
-            foreach (string part in parts)
-            {
-                string[] keyValue = part.Split(':');
-                string key = keyValue[0].Trim('"');
-                string value = keyValue[1].Trim('"');
-                properties[key] = value;
-            }
-            
-            return instance.CreateFromProperties(properties);
-        }
-
-        public static T DeserializeFromFile<T>(string generalSettingName, string data) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
-        {
-            string path = Path.Combine(Environment.CurrentDirectory, data);
-            string filePath = Path.Combine(path, $"{generalSettingName}.json");
-            if (!File.Exists(filePath))
-            {
-                throw new FileNotFoundException($"File {filePath} not found.");
-            }
-
-            string json = File.ReadAllText(filePath);
-            return Deserialize<T>(json);
         }
     }
 }
