@@ -43,7 +43,6 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
     ///     A simple stack of objects.  Internally it is implemented as an array,
     ///     so Push can be O(n).  Pop is O(1).
     /// </summary>
-    [Serializable]
     public class PooledStack<T> : ICollection, IReadOnlyCollection<T>, IDisposable, IDeserializationCallback
     {
         /// <summary>

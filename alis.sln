@@ -500,6 +500,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.App.Engine.Web", "1_Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.App.Engine.Desktop", "1_Presentation\Engine\src\desktop\Alis.App.Engine.Desktop.csproj", "{36204D53-05AA-4B68-9CD3-394B472F8C90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Aspect.Data.Generator", "6_Ideation\Data\generator\Alis.Core.Aspect.Data.Generator.csproj", "{20DE993D-8D53-47EF-971A-A944998C20E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1854,6 +1856,18 @@ Global
 		{36204D53-05AA-4B68-9CD3-394B472F8C90}.Release|x64.Build.0 = Release|Any CPU
 		{36204D53-05AA-4B68-9CD3-394B472F8C90}.Release|x86.ActiveCfg = Release|Any CPU
 		{36204D53-05AA-4B68-9CD3-394B472F8C90}.Release|x86.Build.0 = Release|Any CPU
+		{20DE993D-8D53-47EF-971A-A944998C20E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20DE993D-8D53-47EF-971A-A944998C20E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20DE993D-8D53-47EF-971A-A944998C20E7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{20DE993D-8D53-47EF-971A-A944998C20E7}.Debug|x64.Build.0 = Debug|Any CPU
+		{20DE993D-8D53-47EF-971A-A944998C20E7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{20DE993D-8D53-47EF-971A-A944998C20E7}.Debug|x86.Build.0 = Debug|Any CPU
+		{20DE993D-8D53-47EF-971A-A944998C20E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20DE993D-8D53-47EF-971A-A944998C20E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20DE993D-8D53-47EF-971A-A944998C20E7}.Release|x64.ActiveCfg = Release|Any CPU
+		{20DE993D-8D53-47EF-971A-A944998C20E7}.Release|x64.Build.0 = Release|Any CPU
+		{20DE993D-8D53-47EF-971A-A944998C20E7}.Release|x86.ActiveCfg = Release|Any CPU
+		{20DE993D-8D53-47EF-971A-A944998C20E7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -2030,6 +2044,7 @@ Global
 		{E2871133-4659-45DA-A5EF-BC36916995DF} = {D848B41B-A5C3-4CD2-88B4-C1E0D666BF45}
 		{6D4E0750-5C0E-42CE-B950-C5891075AF02} = {38E1A463-4591-4EDC-B3F3-F4676093025D}
 		{36204D53-05AA-4B68-9CD3-394B472F8C90} = {38E1A463-4591-4EDC-B3F3-F4676093025D}
+		{20DE993D-8D53-47EF-971A-A944998C20E7} = {7C3C6761-B1CE-48C1-B50F-C4391C177E7D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}

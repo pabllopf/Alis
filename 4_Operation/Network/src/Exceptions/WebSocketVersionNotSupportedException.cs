@@ -35,7 +35,7 @@ namespace Alis.Core.Network.Exceptions
     ///     The web socket version not supported exception class
     /// </summary>
     /// <seealso cref="Exception" />
-    [Serializable]
+    
     public class WebSocketVersionNotSupportedException : Exception
     {
         /// <summary>

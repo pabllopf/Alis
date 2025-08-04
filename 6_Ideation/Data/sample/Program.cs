@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
+using System;
 
 namespace Alis.Core.Aspect.Data.Sample
 {
@@ -49,12 +50,15 @@ namespace Alis.Core.Aspect.Data.Sample
                 Genre = "Rock and Metal",
                 Album = "Reload"
             };
-
-            // This will produce a JSON String
-            //string serialized2 = JsonSerializer.Serialize(musicInfo2);
-
-            // This will produce a copy of the instance you created earlier
-            //JsonSerializer.Deserialize<Music>(serialized2);
+            
+            string json = musicInfo2.ToJson();
+            Console.WriteLine(json);
+            
+            Music deserialized = Music.FromJson(json);
+            Console.WriteLine(deserialized.Name);
+            Console.WriteLine(deserialized.Artist);
+            Console.WriteLine(deserialized.Genre);
+            Console.WriteLine(deserialized.Album);
         }
     }
 }

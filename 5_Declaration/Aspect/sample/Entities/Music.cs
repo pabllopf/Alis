@@ -27,12 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Sample.Data
+
+using System;
+
+namespace Alis.Core.Aspect.Sample.Entities
 {
     /// <summary>
     ///     The music class
     /// </summary>
-    public class Music
+    [Serializable]
+    public partial struct Music
     {
         /// <summary>
         ///     Gets or sets the value of the name
@@ -55,22 +59,5 @@ namespace Alis.Core.Aspect.Sample.Data
         ///     Gets or sets the value of the album
         /// </summary>
         public string Album { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the album image
-        /// </summary>
-        public string AlbumImage { get; set; }
-
-
-        /// <summary>
-        ///     Gets or sets the value of the link
-        /// </summary>
-        public string Link { get; set; }
-
-
-        /// <summary>
-        ///     Gets or sets the value of the other
-        /// </summary>
-        public int Other { get; set; } = 1;
     }
 }
