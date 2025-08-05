@@ -35,8 +35,8 @@ namespace Alis.Core.Network.Exceptions
     ///     The web socket buffer overflow exception class
     /// </summary>
     /// <seealso cref="Exception" />
-    
-    public class WebSocketBufferOverflowException : Exception
+    [Serializable]
+    public partial class WebSocketBufferOverflowException : Exception
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="WebSocketBufferOverflowException" /> class

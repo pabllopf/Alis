@@ -35,8 +35,8 @@ namespace Alis.Core.Network.Exceptions
     ///     The web socket handshake failed exception class
     /// </summary>
     /// <seealso cref="Exception" />
-    
-    public class WebSocketHandshakeFailedException : Exception
+    [Serializable]
+    public partial class WebSocketHandshakeFailedException : Exception
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="WebSocketHandshakeFailedException" /> class
