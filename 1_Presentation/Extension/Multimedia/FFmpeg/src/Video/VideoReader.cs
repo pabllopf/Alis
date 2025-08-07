@@ -33,7 +33,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
+using Alis.Core.Aspect.Data.Json;
 using Alis.Extension.Multimedia.FFmpeg.BaseClasses;
 using Alis.Extension.Multimedia.FFmpeg.Video.Models;
 
@@ -122,20 +122,15 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video
             try
             {
                 string metadataJson = await r.ReadToEndAsync();
-                
-                // TODO: fix this to use a more robust JSON parser
-                
-                //VideoMetadata metadata = JsonSerializer.Deserialize<VideoMetadata>(metadataJson);
+                VideoMetadata metadata = JsonNativeAot.Deserialize<VideoMetadata>(metadataJson);
 
-                VideoMetadata metadata = new VideoMetadata();
-                
                 try
                 {
                     MediaStream videoStream = metadata.Streams.Where(x => x.CodecType.ToLower().Trim() == "video").FirstOrDefault();
                     if (videoStream != null)
                     {
-                        metadata.Width = videoStream.Width!.Value;
-                        metadata.Height = videoStream.Height!.Value;
+                        metadata.Width = videoStream.Width;
+                        metadata.Height = videoStream.Height;
                         metadata.PixelFormat = videoStream.PixFmt;
                         metadata.Codec = videoStream.CodecName;
                         metadata.CodecLongName = videoStream.CodecLongName;

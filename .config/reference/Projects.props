@@ -424,7 +424,8 @@
             $(AssemblyName.Equals('Alis.Core.Aspect.Test')) OR
             $(AssemblyName.Equals('Alis.Core.Aspect.Data')) OR 
             $(AssemblyName.Equals('Alis.Core.Aspect.Data.Sample')) OR
-            $(AssemblyName.Equals('Alis.Core.Aspect.Data.Test'))
+            $(AssemblyName.Equals('Alis.Core.Aspect.Data.Test')) OR
+            $(AssemblyName.Contains('Alis.Extension')) 
         )
     ">
         <ProjectReference
