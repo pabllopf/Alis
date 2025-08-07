@@ -47,7 +47,7 @@ namespace Alis.Core.Network.Sample.Client.Simple
         public async Task Run()
         {
             WebSocketClientFactory factory = new WebSocketClientFactory();
-            Uri uri = new Uri("ws://localhost:27416/chat");
+            Uri uri = new Uri("ws://127.0.0.1:27416/chat");
             using WebSocket webSocket = await factory.ConnectAsync(uri);
             // receive loop
             Task readTask = Receive(webSocket);

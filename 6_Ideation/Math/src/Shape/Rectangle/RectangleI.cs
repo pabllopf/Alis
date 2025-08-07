@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
     /// <summary>
     ///     The sdl rect
     /// </summary>
-    [StructLayout(LayoutKind.Sequential), Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct RectangleI : IShape, ISerializable
     {
         /// <summary>
