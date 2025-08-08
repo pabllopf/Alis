@@ -1,5 +1,6 @@
 ﻿
 
+using System;
 using System.Linq;
 using System.Text;
 using Microsoft.CodeAnalysis;
@@ -65,12 +66,7 @@ namespace Alis.Core.Aspect.Data.Generator
                         : property.Name;
 
                     var type = property.Type;
-                    if (type.SpecialType != Microsoft.CodeAnalysis.SpecialType.None)
-                    {
-                        // Tipo primitivo
-                        sb.AppendLine($"            yield return (\"{jsonName}\", {property.Name}.ToString());");
-                    }
-                    else if (type is IArrayTypeSymbol arrayType && arrayType.Rank == 1)
+                    if (type is IArrayTypeSymbol arrayType && arrayType.Rank == 1)
                     {
                         // Array simple
                         string elemType = arrayType.ElementType.ToDisplayString();
@@ -80,7 +76,8 @@ namespace Alis.Core.Aspect.Data.Generator
                     {
                         // Array 2D
                         string elemType = arrayType2D.ElementType.ToDisplayString();
-                        sb.AppendLine($"            yield return (\"{jsonName}\", {property.Name} != null ? \"[\" + string.Join(\",\", Enumerable.Range(0, {property.Name}.GetLength(0)).Select(i => \"[\" + string.Join(\",\", Enumerable.Range(0, {property.Name}.GetLength(1)).Select(j => {property.Name}[i,j] is IJsonSerializable js ? JsonNativeAot.Serialize(js) : {property.Name}[i,j].ToString())) + \"]\")) + \"]\" : null);");
+                        sb.AppendLine(
+                            $"            yield return (\"{jsonName}\", {property.Name} != null ? \"[\" + string.Join(\",\", Enumerable.Range(0, {property.Name}.GetLength(0)).Select(i => \"[\" + string.Join(\",\", Enumerable.Range(0, {property.Name}.GetLength(1)).Select(j => {property.Name}[i,j] is IJsonSerializable js ? JsonNativeAot.Serialize(js) : {property.Name}[i,j].ToString())) + \"]\")) + \"]\" : null);");
                     }
                     else if (type.AllInterfaces.Any(i => i.ToDisplayString().StartsWith("System.Collections.Generic.IEnumerable"))
                              && type is INamedTypeSymbol namedType && namedType.TypeArguments.Length == 1)
@@ -94,14 +91,24 @@ namespace Alis.Core.Aspect.Data.Generator
                         // Diccionario genérico
                         sb.AppendLine($"            yield return (\"{jsonName}\", {property.Name} != null ? \"{{\" + string.Join(\",\", {property.Name}.Select(kv => $\"\\\"{{kv.Key}}\\\":{{(kv.Value is IJsonSerializable js ? JsonNativeAot.Serialize(js) : kv.Value.ToString())}}\")) + \"}}\" : null);");
                     }
-                    else if (type.AllInterfaces.Any(i => i.Name == "IJsonSerializable"))
+                    else if (type.GetAttributes().Any(a => a.AttributeClass?.ToDisplayString() == "System.SerializableAttribute"))
                     {
                         // Tipo complejo serializable
-                        sb.AppendLine($"            yield return (\"{jsonName}\", {property.Name} != null ? JsonNativeAot.Serialize({property.Name}) : null);");
+                        sb.AppendLine($"            yield return (\"{jsonName}\", {property.Name} != null ? {property.Name}.ToJson() : null);");
+                    }
+                    else if (type.TypeKind == TypeKind.Enum)
+                    {
+                        // Enum
+                        sb.AppendLine($"            yield return (\"{jsonName}\", {property.Name}.ToString());");
+                    }
+                    else if (type is INamedTypeSymbol namedTypeSymbol && namedTypeSymbol.TypeArguments.Length > 0)
+                    {
+                        // Tipo complejo serializable
+                       sb.AppendLine($"            yield return (\"{jsonName}\", {property.Name} != null ? \"[\" + string.Join(\",\", {property.Name}.Select(x => x is IJsonSerializable js ? js.ToJson() : x.ToString())) + \"]\" : null);");
                     }
                     else
                     {
-                        // Otro tipo no soportado
+                        // Tipo primitivo
                         sb.AppendLine($"            yield return (\"{jsonName}\", {property.Name}.ToString());");
                     }
                 }
@@ -147,12 +154,13 @@ namespace Alis.Core.Aspect.Data.Generator
                     {
                         sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && Enum.TryParse<{typeName}>(v_{name}, out var e_{name}) ? e_{name} : default,");
                     }
-          else if (type.AllInterfaces.Any(i => i.ToDisplayString().StartsWith("System.Collections.Generic.IEnumerable"))
-                   && type is INamedTypeSymbol namedType && namedType.TypeArguments.Length == 1)
-          {
-              string itemType = namedType.TypeArguments[0].ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
-              sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && !string.IsNullOrEmpty(v_{name}) ? System.Text.RegularExpressions.Regex.Matches(v_{name}, \"{{[^{{}}]*}}\", System.Text.RegularExpressions.RegexOptions.Singleline).Cast<System.Text.RegularExpressions.Match>().Select(m => JsonNativeAot.Deserialize<{itemType}>(m.Value)).ToList() : new List<{itemType}>(),");
-          }
+                    else if (type.AllInterfaces.Any(i => i.ToDisplayString().StartsWith("System.Collections.Generic.IEnumerable"))
+                             && type is INamedTypeSymbol namedType && namedType.TypeArguments.Length == 1)
+                    {
+                        string itemType = namedType.TypeArguments[0].ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
+                        sb.AppendLine(
+                            $"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && !string.IsNullOrEmpty(v_{name}) ? System.Text.RegularExpressions.Regex.Matches(v_{name}, \"{{[^{{}}]*}}\", System.Text.RegularExpressions.RegexOptions.Singleline).Cast<System.Text.RegularExpressions.Match>().Select(m => JsonNativeAot.Deserialize<{itemType}>(m.Value)).ToList() : new List<{itemType}>(),");
+                    }
                     else if (type is IArrayTypeSymbol arrayType && arrayType.Rank == 1)
                     {
                         // Array simple
@@ -191,11 +199,6 @@ namespace Alis.Core.Aspect.Data.Generator
                         sb.AppendLine($"                                typeof({valueType}) == typeof(double) ? double.Parse(arr[1]) :");
                         sb.AppendLine($"                                typeof({valueType}) == typeof(bool) ? bool.Parse(arr[1]) :");
                         sb.AppendLine($"                                Activator.CreateInstance(typeof({valueType}), arr[1])").AppendLine($") : new Dictionary<{keyType},{valueType}>(),");
-                    }
-                    else if (type.AllInterfaces.Any(i => i.Name == "IJsonDesSerializable"))
-                    {
-                        // Tipo complejo serializable
-                        sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && !string.IsNullOrEmpty(v_{name}) ? {typeName}.FromJson(v_{name}) : default,");
                     }
                     else
                     {
@@ -241,6 +244,8 @@ namespace Alis.Core.Aspect.Data.Generator
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && decimal.TryParse(v_{name}, out var dec_{name}) ? dec_{name} : 0m,");
                                 break;
                             case Microsoft.CodeAnalysis.SpecialType.System_String:
+                                
+                                
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) ? v_{name} : null,");
                                 break;
                             default:
@@ -259,7 +264,11 @@ namespace Alis.Core.Aspect.Data.Generator
                                 }
                                 else
                                 {
-                                    sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) ? v_{name} : null, // tipo no soportado, usar conversión personalizada");
+                                    sb.AppendLine($@"                {name} = properties.TryGetValue(""{jsonName}"", out var v_{name}) && !string.IsNullOrEmpty(v_{name}) 
+                                    ? (v_{name}.TrimStart().StartsWith(""{{"") || v_{name}.TrimStart().StartsWith(""["") 
+                                        ? {typeName}.FromJson(v_{name}) 
+                                        : {typeName}.FromJson(v_{name}))
+                                    : null,");
                                 }
 
                                 break;
@@ -273,8 +282,8 @@ namespace Alis.Core.Aspect.Data.Generator
 
             sb.AppendLine("            };");
             sb.AppendLine("        }");
-            
-           sb.AppendLine(@"
+
+            sb.AppendLine(@"
                    private static T[,] Parse2DArrayInline<T>(string json)
                    {
                        // Elimina corchetes exteriores

@@ -38,6 +38,20 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video.Models
     [Serializable]
     public partial class VideoFormatTags
     {
+        
+        public VideoFormatTags() : this(string.Empty, string.Empty, string.Empty, string.Empty, string.Empty)
+        {
+        }
+        
+        public VideoFormatTags(string majorBrand, string minorVersion, string compatibleBrands, string creationTime, string encoder)
+        {
+            MajorBrand = majorBrand;
+            MinorVersion = minorVersion;
+            CompatibleBrands = compatibleBrands;
+            CreationTime = creationTime;
+            Encoder = encoder;
+        }
+        
         /// <summary>
         ///     Gets or sets the value of the major brand
         /// </summary>
