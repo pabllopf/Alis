@@ -29,6 +29,7 @@
 
 using System;
 using System.Security.Cryptography;
+using Alis.Core.Aspect.Data.Json;
 
 
 namespace Alis.Extension.Math.ProceduralDungeon
@@ -37,8 +38,17 @@ namespace Alis.Extension.Math.ProceduralDungeon
     ///     The corridor class
     /// </summary>
     [Serializable]
-    public class Corridor
+    public partial class Corridor
     {
+        public Corridor()
+        {
+            XPos = 0;
+            YPos = 0;
+            Width = 0;
+            Height = 0;
+            Direction = Direction.None;
+        }
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Corridor" /> class
         /// </summary>
@@ -60,32 +70,32 @@ namespace Alis.Extension.Math.ProceduralDungeon
         /// <summary>
         ///     Gets the value of the x pos
         /// </summary>
-        
-        public int XPos { get; }
+        [JsonNativePropertyName("xPos")]
+        public int XPos { get; set; }
 
         /// <summary>
         ///     Gets the value of the y pos
         /// </summary>
-        
-        public int YPos { get; }
+        [JsonNativePropertyName("yPos")]
+        public int YPos { get; set; }
 
         /// <summary>
         ///     Gets the value of the width
         /// </summary>
-        
-        public int Width { get; }
+        [JsonNativePropertyName("width")]
+        public int Width { get; set; }
 
         /// <summary>
         ///     Gets the value of the height
         /// </summary>
-        
-        public int Height { get; }
+        [JsonNativePropertyName("height")]
+        public int Height { get;set;  }
 
         /// <summary>
         ///     Gets the value of the direction
         /// </summary>
-        
-        public Direction Direction { get; }
+        [JsonNativePropertyName("direction")]
+        public Direction Direction { get; set; }
 
         /// <summary>
         ///     Sets the up first corridor using the specified width

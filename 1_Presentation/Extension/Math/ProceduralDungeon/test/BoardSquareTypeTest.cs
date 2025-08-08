@@ -34,7 +34,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
     /// <summary>
     ///     The board square test class
     /// </summary>
-    public class BoardSquareTest
+    public class BoardSquareTypeTest
     {
         /// <summary>
         ///     Tests that set up first room should initialize room with given parameters

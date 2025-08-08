@@ -207,7 +207,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
                 {
                     for (int y = room.YPos; y < room.YPos + room.Height; y++)
                     {
-                        Assert.Equal(BoardSquare.Floor, dungeon.Board[x, y]);
+                        Assert.Equal(BoardSquareType.Floor, dungeon.Board[x, y].Type);
                     }
                 }
             }
@@ -218,7 +218,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
                 {
                     for (int y = corridor.YPos; y < corridor.YPos + corridor.Height; y++)
                     {
-                        Assert.Equal(BoardSquare.Floor, dungeon.Board[x, y]);
+                        Assert.Equal(BoardSquareType.Floor, dungeon.Board[x, y].Type);
                     }
                 }
             }
@@ -294,26 +294,26 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
             {
                 for (int y = 0; y < Dungeon.BoardHeight; y++)
                 {
-                    if (dungeon.Board[x, y] == BoardSquare.Floor)
+                    if (dungeon.Board[x, y].Type == BoardSquareType.Floor)
                     {
-                        if (dungeon.Board[x, y - 1] == BoardSquare.Empty)
+                        if (dungeon.Board[x, y - 1].Type == BoardSquareType.Empty)
                         {
-                            Assert.Equal(BoardSquare.WallDown, dungeon.Board[x, y]);
+                            Assert.Equal(BoardSquareType.WallDown, dungeon.Board[x, y].Type);
                         }
 
-                        if (dungeon.Board[x - 1, y] == BoardSquare.Empty)
+                        if (dungeon.Board[x - 1, y].Type == BoardSquareType.Empty)
                         {
-                            Assert.Equal(BoardSquare.WallLeft, dungeon.Board[x, y]);
+                            Assert.Equal(BoardSquareType.WallLeft, dungeon.Board[x, y].Type);
                         }
 
-                        if (dungeon.Board[x + 1, y] == BoardSquare.Empty)
+                        if (dungeon.Board[x + 1, y].Type == BoardSquareType.Empty)
                         {
-                            Assert.Equal(BoardSquare.WallRight, dungeon.Board[x, y]);
+                            Assert.Equal(BoardSquareType.WallRight, dungeon.Board[x, y].Type);
                         }
 
-                        if (dungeon.Board[x, y + 1] == BoardSquare.Empty)
+                        if (dungeon.Board[x, y + 1].Type == BoardSquareType.Empty)
                         {
-                            Assert.Equal(BoardSquare.WallTop, dungeon.Board[x, y]);
+                            Assert.Equal(BoardSquareType.WallTop, dungeon.Board[x, y].Type);
                         }
                     }
                 }
