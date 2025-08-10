@@ -38,7 +38,7 @@ namespace Alis.Core.Network.Exceptions
     [Serializable]
     public partial class MaskKeyLengthException : Exception
     {
-        public MaskKeyLengthException()
+        public MaskKeyLengthException() : base("Mask key length must be 4 bytes.")
         {
         }
         
@@ -47,10 +47,6 @@ namespace Alis.Core.Network.Exceptions
         /// </summary>
         /// <param name="message">The message</param>
         public MaskKeyLengthException(string message) : base(message)
-        {
-        }
-        
-        public MaskKeyLengthException(string message, Exception inner) : base(message, inner)
         {
         }
     }

@@ -260,7 +260,8 @@ namespace Alis.Core.Network.Sample.Server
         {
             try
             {
-                IPAddress localAddress = IPAddress.Any;
+                //set ip 127.0.0.1:
+                IPAddress localAddress = IPAddress.Loopback;
                 _listener = new TcpListener(localAddress, port);
                 _listener.Start();
                 Debug.Print($"Server started listening on port {port}");

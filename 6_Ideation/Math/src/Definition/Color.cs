@@ -36,7 +36,6 @@ namespace Alis.Core.Aspect.Math.Definition
     /// <summary>
     ///     The color
     /// </summary>
-    [Serializable, StructLayout(LayoutKind.Sequential)]
     public struct Color : ISerializable
     {
         /// <summary>

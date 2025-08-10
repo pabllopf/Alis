@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Math.Vector
     /// <summary>
     ///     The vector
     /// </summary>
-    [StructLayout(LayoutKind.Sequential), Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Vector2F : IEquatable<Vector2F>, IFormattable, ISerializable
     {
         /// <summary>The X component of the vector.</summary>

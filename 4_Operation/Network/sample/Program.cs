@@ -63,27 +63,19 @@ namespace Alis.Core.Network.Sample
 
             Logger.Info("Server is running");
 
-            if (args.Length == 0)
-            {
-                Logger.Log("Running test 'RunLoadTest'");
-                RunLoadTest().Wait(cts.Token);
+            Logger.Log("Running test 'RunLoadTest'");
+            RunLoadTest().Wait(cts.Token);
 
-                Logger.Log("Running test 'RunSimpleTest'");
-                RunSimpleTest().Wait(cts.Token);
+            Logger.Log("Running test 'RunSimpleTest'");
+            RunSimpleTest().Wait(cts.Token);
 
-                Logger.Log("Running test 'RunComplexTest'");
-                RunComplexTest(args);
-            }
-            else
-            {
-                Logger.Log("Wrong number of arguments. 0 for simple test. 5 for complex test.");
-                Logger.Log(
-                    "Complex Test: uri numThreads numItemsPerThread minNumBytesPerMessage maxNumBytesPerMessage");
-                Logger.Log("e.g: ws://localhost:27416/chat/echo 5 100 4 4");
-            }
+            Logger.Log("Running test 'RunComplexTest'");
+            RunComplexTest(args);
 
             Logger.Warning("Press any key to quit...");
 
+            Thread.Sleep(10000);
+            
             // Stop the server
             cts.Cancel();
 
@@ -105,7 +97,7 @@ namespace Alis.Core.Network.Sample
         /// <param name="args">The args</param>
         private static void RunComplexTest(string[] args)
         {
-            Uri uri = new Uri("ws://localhost:27416/chat");
+            Uri uri = new Uri("ws://127.0.0.1:27416/chat");
             int.TryParse("3", out int numThreads);
             int.TryParse("4", out int numItemsPerThread);
             int.TryParse("256", out int minNumBytesPerMessage);

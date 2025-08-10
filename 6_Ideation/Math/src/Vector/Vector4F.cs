@@ -36,7 +36,7 @@ namespace Alis.Core.Aspect.Math.Vector
     /// <summary>
     ///     The vector
     /// </summary>
-    [StructLayout(LayoutKind.Sequential), Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Vector4F : ISerializable
     {
         /// <summary>

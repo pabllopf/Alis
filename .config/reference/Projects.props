@@ -364,7 +364,10 @@
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Sample[^*]*', ''))</NameTest>
     </PropertyGroup>
 
-    <ItemGroup Condition="$(AssemblyName.Contains('Sample'))">
+    <ItemGroup Condition="
+    $(AssemblyName.Contains('Sample')) AND 
+    $(AssemblyName.Contains('Test')) == False AND
+    $(AssemblyName.Contains('Engine.Sample')) == False">
         <ProjectReference
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == True"
             Include="$(ProjectDir)/../src/$(NameTest).csproj"/>

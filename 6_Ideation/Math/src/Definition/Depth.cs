@@ -35,7 +35,6 @@ namespace Alis.Core.Aspect.Math.Definition
     /// <summary>
     ///     The depth
     /// </summary>
-    [Serializable]
     public struct Depth : ISerializable
     {
         /// <summary>
