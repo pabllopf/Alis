@@ -1,5 +1,6 @@
 ﻿
 
+using System.Linq;
 using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -53,7 +54,17 @@ namespace Alis.Core.Aspect.Data.Generator
             {
                 if (member is IPropertySymbol property)
                 {
-                    sb.AppendLine($"            yield return (nameof({property.Name}), {property.Name}.ToString());");
+                    if (property.GetAttributes().Any(a => a.AttributeClass?.Name.Contains("JsonNativeIgnore") ?? false))
+                        continue;
+                    
+                    // Detectar el nombre personalizado
+                    var propNameAttr = property.GetAttributes()
+                        .FirstOrDefault(a => a.AttributeClass?.Name == "JsonNativePropertyNameAttribute");
+                    var jsonName = propNameAttr != null
+                        ? propNameAttr.ConstructorArguments[0].Value?.ToString()
+                        : property.Name;
+                    
+                    sb.AppendLine($"            yield return (\"{jsonName}\", {property.Name}.ToString());");
                 }
             }
             
@@ -77,8 +88,18 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("            {");
             foreach (ISymbol member in typeSymbol.GetMembers())
             {
-               if (member is IPropertySymbol property)
+                if (member is IPropertySymbol property)
                 {
+                    // Ignorar propiedades con el atributo JsonNativeIgnore
+                    if (property.GetAttributes().Any(a => a.AttributeClass?.Name.Contains("JsonNativeIgnore") ?? false))
+                        continue;
+                    
+                    var propNameAttr = property.GetAttributes()
+                        .FirstOrDefault(a => a.AttributeClass?.Name == "JsonNativePropertyNameAttribute");
+                    var jsonName = propNameAttr != null
+                        ? propNameAttr.ConstructorArguments[0].Value?.ToString()
+                        : property.Name;
+                    
                     ITypeSymbol type = property.Type;
                     string name = property.Name;
                     string typeName = type.ToDisplayString();
@@ -86,60 +107,64 @@ namespace Alis.Core.Aspect.Data.Generator
                     switch (type.SpecialType)
                     {
                        case Microsoft.CodeAnalysis.SpecialType.System_Boolean:
-                           sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) && bool.TryParse(v_{name}, out var b_{name}) ? b_{name} : false,");
+                           sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && bool.TryParse(v_{name}, out var b_{name}) ? b_{name} : false,");
                            break;
                        case Microsoft.CodeAnalysis.SpecialType.System_Char:
-                           sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) && char.TryParse(v_{name}, out var c_{name}) ? c_{name} : '\\0',");
+                           sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && char.TryParse(v_{name}, out var c_{name}) ? c_{name} : '\\0',");
                            break;
                        case Microsoft.CodeAnalysis.SpecialType.System_Byte:
-                           sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) && byte.TryParse(v_{name}, out var b_{name}) ? b_{name} : (byte)0,");
+                           sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && byte.TryParse(v_{name}, out var b_{name}) ? b_{name} : (byte)0,");
                            break;
                        case Microsoft.CodeAnalysis.SpecialType.System_SByte:
-                           sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) && sbyte.TryParse(v_{name}, out var sb_{name}) ? sb_{name} : (sbyte)0,");
+                           sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && sbyte.TryParse(v_{name}, out var sb_{name}) ? sb_{name} : (sbyte)0,");
                            break;
                        case Microsoft.CodeAnalysis.SpecialType.System_Int16:
-                           sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) && short.TryParse(v_{name}, out var s_{name}) ? s_{name} : (short)0,");
+                           sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && short.TryParse(v_{name}, out var s_{name}) ? s_{name} : (short)0,");
                            break;
                        case Microsoft.CodeAnalysis.SpecialType.System_UInt16:
-                           sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) && ushort.TryParse(v_{name}, out var us_{name}) ? us_{name} : (ushort)0,");
+                           sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && ushort.TryParse(v_{name}, out var us_{name}) ? us_{name} : (ushort)0,");
                            break;
                        case Microsoft.CodeAnalysis.SpecialType.System_Int32:
-                           sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) && int.TryParse(v_{name}, out var i_{name}) ? i_{name} : 0,");
+                           sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && int.TryParse(v_{name}, out var i_{name}) ? i_{name} : 0,");
                            break;
                        case Microsoft.CodeAnalysis.SpecialType.System_UInt32:
-                           sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) && uint.TryParse(v_{name}, out var ui_{name}) ? ui_{name} : 0u,");
+                           sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && uint.TryParse(v_{name}, out var ui_{name}) ? ui_{name} : 0u,");
                            break;
                        case Microsoft.CodeAnalysis.SpecialType.System_Int64:
-                           sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) && long.TryParse(v_{name}, out var l_{name}) ? l_{name} : 0L,");
+                           sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && long.TryParse(v_{name}, out var l_{name}) ? l_{name} : 0L,");
                            break;
                        case Microsoft.CodeAnalysis.SpecialType.System_UInt64:
-                           sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) && ulong.TryParse(v_{name}, out var ul_{name}) ? ul_{name} : 0UL,");
+                           sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && ulong.TryParse(v_{name}, out var ul_{name}) ? ul_{name} : 0UL,");
                            break;
                        case Microsoft.CodeAnalysis.SpecialType.System_Single:
-                           sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) && float.TryParse(v_{name}, out var f_{name}) ? f_{name} : 0f,");
+                           sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && float.TryParse(v_{name}, out var f_{name}) ? f_{name} : 0f,");
                            break;
                        case Microsoft.CodeAnalysis.SpecialType.System_Double:
-                           sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) && double.TryParse(v_{name}, out var d_{name}) ? d_{name} : 0d,");
+                           sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && double.TryParse(v_{name}, out var d_{name}) ? d_{name} : 0d,");
                            break;
                        case Microsoft.CodeAnalysis.SpecialType.System_Decimal:
-                           sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) && decimal.TryParse(v_{name}, out var dec_{name}) ? dec_{name} : 0m,");
+                           sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && decimal.TryParse(v_{name}, out var dec_{name}) ? dec_{name} : 0m,");
                            break;
                        case Microsoft.CodeAnalysis.SpecialType.System_String:
-                           sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) ? v_{name} : null,");
+                           sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) ? v_{name} : null,");
                            break;
                        default:
                        {
                            if (typeName == "System.DateTime")
                            {
-                               sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) && DateTime.TryParse(v_{name}, out var dt_{name}) ? dt_{name} : default,");
+                               sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && DateTime.TryParse(v_{name}, out var dt_{name}) ? dt_{name} : default,");
                            }
                            else if (typeName == "System.Guid")
                            {
-                               sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) && Guid.TryParse(v_{name}, out var g_{name}) ? g_{name} : Guid.Empty,");
+                               sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && Guid.TryParse(v_{name}, out var g_{name}) ? g_{name} : Guid.Empty,");
+                           }
+                           else if (typeName == "System.Int32")
+                           {
+                               sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && int.TryParse(v_{name}, out var i_{name}) ? i_{name} : 0,");
                            }
                            else
                            {
-                               sb.AppendLine($"                {name} = properties.TryGetValue(nameof({name}), out var v_{name}) ? v_{name} : null, // tipo no soportado, usar conversión personalizada");
+                               sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) ? v_{name} : null, // tipo no soportado, usar conversión personalizada");
                            }
                            break;
                        }

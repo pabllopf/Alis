@@ -1,6 +1,7 @@
 using System;
         using System.Runtime.InteropServices;
-        
+        using Alis.Core.Aspect.Data.Json;
+
         namespace Alis.Core.Aspect.Data.Sample
         {
             [Serializable]
@@ -33,7 +34,10 @@ using System;
                 {
                 }
         
+                [JsonNativeIgnore]
                 public string Name { get; set; } = name;
+                
+                [JsonNativePropertyName("Artist_name")]
                 public string Artist { get; set; } = artist;
                 public string Genre { get; set; } = genre;
                 public string Album { get; set; } = album;

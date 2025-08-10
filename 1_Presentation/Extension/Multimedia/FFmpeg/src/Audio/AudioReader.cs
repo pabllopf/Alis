@@ -32,7 +32,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Alis.Core.Aspect.Data.Json;
 using Alis.Extension.Multimedia.FFmpeg.Audio.Models;
 using Alis.Extension.Multimedia.FFmpeg.BaseClasses;
 
@@ -121,18 +121,14 @@ namespace Alis.Extension.Multimedia.FFmpeg.Audio
             try
             {
                 string json = await r.ReadToEndAsync();
-                // TODO: fix this when we have a proper JSON parser
-                
-                //AudioMetadata metadata = JsonSerializer.Deserialize<AudioMetadata>(json);
+                AudioMetadata metadata = JsonNativeAot.Deserialize<AudioMetadata>(json);
 
-                AudioMetadata metadata = new AudioMetadata();
-                
                 try
                 {
                     MediaStream audioStream = metadata.Streams.Where(x => x.CodecType.ToLower().Trim() == "audio").FirstOrDefault();
                     if (audioStream != null)
                     {
-                        metadata.Channels = audioStream.Channels!.Value;
+                        metadata.Channels = audioStream.Channels;
                         metadata.Codec = audioStream.CodecName;
                         metadata.CodecLongName = audioStream.CodecLongName;
                         metadata.SampleFormat = audioStream.SampleFmt;
@@ -143,7 +139,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Audio
 
                         metadata.BitRate = audioStream.BitRate == null ? -1 : int.Parse(audioStream.BitRate);
 
-                        metadata.BitDepth = audioStream.BitsPerSample!.Value;
+                        metadata.BitDepth = audioStream.BitsPerSample;
                         metadata.PredictedSampleCount = (int) Math.Round(metadata.Duration * metadata.SampleRate);
 
                         if (metadata.BitDepth == 0)
