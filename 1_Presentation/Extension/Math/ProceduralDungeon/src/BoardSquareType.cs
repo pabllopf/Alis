@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -27,19 +27,53 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Data.Json;
-
 namespace Alis.Extension.Math.ProceduralDungeon
 {
-    [Serializable]
-    public partial class BoardSquare(BoardSquareType type)
+    /// <summary>
+    ///     The type cell box enum
+    /// </summary>
+    public enum BoardSquareType
     {
-        public BoardSquare() : this(BoardSquareType.Empty)
-        {
-        }
+        /// <summary>The empty</summary>
+        Empty,
 
-        [JsonNativePropertyName("type")]
-        public BoardSquareType Type { get; set; } = type;
+        /// <summary>The floor</summary>
+        Floor,
+
+        /// <summary>The wall down</summary>
+        WallDown,
+
+        /// <summary>The wall left</summary>
+        WallLeft,
+
+        /// <summary>The wall right</summary>
+        WallRight,
+
+        /// <summary>The wall top</summary>
+        WallTop,
+
+        /// <summary>The corner left up</summary>
+        CornerLeftUp,
+
+        /// <summary>The corner right up</summary>
+        CornerRightUp,
+
+        /// <summary>The corner left down</summary>
+        CornerLeftDown,
+
+        /// <summary>The corner right down</summary>
+        CornerRightDown,
+
+        /// <summary>The corner internal left down</summary>
+        CornerInternalLeftDown,
+
+        /// <summary>The corner internal left up</summary>
+        CornerInternalLeftUp,
+
+        /// <summary>The corner internal right down</summary>
+        CornerInternalRightDown,
+
+        /// <summary>The corner internal right up</summary>
+        CornerInternalRightUp
     }
 }

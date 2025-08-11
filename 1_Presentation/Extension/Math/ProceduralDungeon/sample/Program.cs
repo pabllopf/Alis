@@ -45,6 +45,11 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
             Logger.Log("Starting dungeon generation");
             Dungeon dungeon = new Dungeon();
             dungeon.Start();
+            
+            string json = dungeon.ToJson();
+            Logger.Log("Dungeon generated successfully");
+            
+            Dungeon dungeonLoaded = Dungeon.FromJson(json);
 
             // print the dungeon into the console
             BoardSquare[,] map = dungeon.Board;
@@ -52,79 +57,79 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
             {
                 for (int x = 0; x < map.GetLength(0); x++)
                 {
-                    if (map[x, y] == BoardSquare.Floor)
+                    if (map[x, y].Type == BoardSquareType.Floor)
                     {
                         Console.Write(" ");
                         continue;
                     }
 
-                    if (map[x, y] == BoardSquare.WallTop)
+                    if (map[x, y].Type == BoardSquareType.WallTop)
                     {
                         Console.Write("─");
                         continue;
                     }
 
-                    if (map[x, y] == BoardSquare.WallDown)
+                    if (map[x, y].Type == BoardSquareType.WallDown)
                     {
                         Console.Write("─");
                         continue;
                     }
 
-                    if (map[x, y] == BoardSquare.WallLeft)
+                    if (map[x, y].Type == BoardSquareType.WallLeft)
                     {
                         Console.Write("│");
                         continue;
                     }
 
-                    if (map[x, y] == BoardSquare.WallRight)
+                    if (map[x, y].Type == BoardSquareType.WallRight)
                     {
                         Console.Write("│");
                         continue;
                     }
 
-                    if (map[x, y] == BoardSquare.CornerLeftUp)
+                    if (map[x, y].Type == BoardSquareType.CornerLeftUp)
                     {
                         Console.Write("└");
                         continue;
                     }
 
-                    if (map[x, y] == BoardSquare.CornerRightUp)
+                    if (map[x, y].Type == BoardSquareType.CornerRightUp)
                     {
                         Console.Write("┘");
                         continue;
                     }
 
-                    if (map[x, y] == BoardSquare.CornerLeftDown)
+                    if (map[x, y].Type == BoardSquareType.CornerLeftDown)
                     {
                         Console.Write("┌");
                         continue;
                     }
 
-                    if (map[x, y] == BoardSquare.CornerRightDown)
+                    if (map[x, y].Type == BoardSquareType.CornerRightDown)
                     {
                         Console.Write("┐");
                         continue;
                     }
 
-                    if (map[x, y] == BoardSquare.CornerInternalLeftDown)
+                    if (map[x, y].Type == BoardSquareType.CornerInternalLeftDown)
                     {
                         Console.Write("┘");
                         continue;
                     }
 
-                    if (map[x, y] == BoardSquare.CornerInternalLeftUp)
+                    if (map[x, y].Type == BoardSquareType.CornerInternalLeftUp)
                     {
                         Console.Write("┐");
                         continue;
                     }
 
-                    if (map[x, y] == BoardSquare.CornerInternalRightDown)
+                    if (map[x, y].Type == BoardSquareType.CornerInternalRightDown)
                     {
                         Console.Write("└");
                         continue;
                     }
 
-                    if (map[x, y] == BoardSquare.CornerInternalRightUp)
+                    if (map[x, y].Type == BoardSquareType.CornerInternalRightUp)
                     {
                         Console.Write("┌");
                         continue;
@@ -132,11 +137,99 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
 
                     Console.Write("█");
                 }
-
-                Logger.Info();
+                
+                Console.WriteLine();
             }
+            
+            
+            map = dungeonLoaded.Board;
+            for (int y = 0; y < map.GetLength(1); y++)
+            {
+                for (int x = 0; x < map.GetLength(0); x++)
+                {
+                    if (map[x, y].Type == BoardSquareType.Floor)
+                    {
+                        Console.Write(" ");
+                        continue;
+                    }
 
-            Logger.Log("Dungeon generated");
+                    if (map[x, y].Type == BoardSquareType.WallTop)
+                    {
+                        Console.Write("─");
+                        continue;
+                    }
+
+                    if (map[x, y].Type == BoardSquareType.WallDown)
+                    {
+                        Console.Write("─");
+                        continue;
+                    }
+
+                    if (map[x, y].Type == BoardSquareType.WallLeft)
+                    {
+                        Console.Write("│");
+                        continue;
+                    }
+
+                    if (map[x, y].Type == BoardSquareType.WallRight)
+                    {
+                        Console.Write("│");
+                        continue;
+                    }
+
+                    if (map[x, y].Type == BoardSquareType.CornerLeftUp)
+                    {
+                        Console.Write("└");
+                        continue;
+                    }
+
+                    if (map[x, y].Type == BoardSquareType.CornerRightUp)
+                    {
+                        Console.Write("┘");
+                        continue;
+                    }
+
+                    if (map[x, y].Type == BoardSquareType.CornerLeftDown)
+                    {
+                        Console.Write("┌");
+                        continue;
+                    }
+
+                    if (map[x, y].Type == BoardSquareType.CornerRightDown)
+                    {
+                        Console.Write("┐");
+                        continue;
+                    }
+
+                    if (map[x, y].Type == BoardSquareType.CornerInternalLeftDown)
+                    {
+                        Console.Write("┘");
+                        continue;
+                    }
+
+                    if (map[x, y].Type == BoardSquareType.CornerInternalLeftUp)
+                    {
+                        Console.Write("┐");
+                        continue;
+                    }
+
+                    if (map[x, y].Type == BoardSquareType.CornerInternalRightDown)
+                    {
+                        Console.Write("└");
+                        continue;
+                    }
+
+                    if (map[x, y].Type == BoardSquareType.CornerInternalRightUp)
+                    {
+                        Console.Write("┌");
+                        continue;
+                    }
+
+                    Console.Write("█");
+                }
+                
+                Console.WriteLine();
+            }
         }
     }
 }

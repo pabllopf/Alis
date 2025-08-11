@@ -28,14 +28,19 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Data.Json;
 
 
 namespace Alis.Extension.Math.ProceduralDungeon
 {
     /// <summary>Generate a room of the dungeon.</summary>
     [Serializable]
-    public class Room
+    public partial class Room
     {
+        public Room() : this(0, 0, 0, 0)
+        {
+        }
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Room" /> class
         /// </summary>
@@ -43,7 +48,7 @@ namespace Alis.Extension.Math.ProceduralDungeon
         /// <param name="yPos">The pos</param>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
-        public Room(int xPos, int yPos, int width, int height)
+        public Room(int xPos, int yPos, int width, int height): this (xPos, yPos, width, height, Direction.North)
         {
             XPos = xPos;
             YPos = yPos;
@@ -72,32 +77,32 @@ namespace Alis.Extension.Math.ProceduralDungeon
         /// <summary>
         ///     Gets the value of the x pos
         /// </summary>
-        
-        public int XPos { get; }
+        [JsonNativePropertyName("xPos")]
+        public int XPos { get; set; }
 
         /// <summary>
         ///     Gets the value of the y pos
         /// </summary>
-        
-        public int YPos { get; }
+        [JsonNativePropertyName("yPos")]
+        public int YPos { get; set;}
 
         /// <summary>
         ///     Gets the value of the width
         /// </summary>
-        
-        public int Width { get; }
+        [JsonNativePropertyName("width")]
+        public int Width { get; set;}
 
         /// <summary>
         ///     Gets the value of the height
         /// </summary>
-        
-        public int Height { get; }
+        [JsonNativePropertyName("height")]
+        public int Height { get; set;}
 
         /// <summary>
         ///     Gets the value of the direction
         /// </summary>
-        
-        public Direction Direction { get; }
+        [JsonNativePropertyName("direction")]
+        public Direction Direction { get; set; }
 
         /// <summary>
         ///     Sets the up first room using the specified x pos

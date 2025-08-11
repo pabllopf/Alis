@@ -27,12 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Extension.Math.ProceduralDungeon
 {
     /// <summary>Random dungeon generator.</summary>
-    public class Dungeon
+    [Serializable]
+    public partial class Dungeon
     {
         /// <summary>The board width</summary>
         public const int BoardWidth = 150;
@@ -67,17 +70,39 @@ namespace Alis.Extension.Math.ProceduralDungeon
         /// <summary>The corridor height</summary>
         public const int CorridorHeight = 4;
 
+        public Dungeon()
+        {
+            Board = new BoardSquare[BoardWidth, BoardHeight];
+            
+            for (int x = 0; x < BoardWidth; x++)
+            {
+                for (int y = 0; y < BoardHeight; y++)
+                {
+                    if (Board[x, y] is null)
+                    {
+                        Board[x, y] = new BoardSquare { Type = BoardSquareType.Empty };
+                    }
+                }
+            }
+            
+            Rooms = new List<Room>(NumOfRooms);
+            Corridors = new List<Corridor>(NumOfRooms - 1);
+        }
+
         /// <summary>Gets or sets the board.</summary>
         /// <value>The board.</value>
-        public BoardSquare[,] Board { get; } = new BoardSquare[BoardWidth, BoardHeight];
+        [JsonNativePropertyName("board")]
+        public BoardSquare[,] Board { get; set; }
 
         /// <summary>Gets or sets the rooms.</summary>
         /// <value>The rooms.</value>
-        public List<Room> Rooms { get; } = new List<Room>();
+        [JsonNativePropertyName("rooms")]
+        public List<Room> Rooms { get; set; } 
 
         /// <summary>Gets or sets the corridors.</summary>
         /// <value>The corridors.</value>
-        public List<Corridor> Corridors { get; } = new List<Corridor>();
+        [JsonNativePropertyName("corridors")]
+        public List<Corridor> Corridors { get; set; }
 
         /// <summary>Starts this instance.</summary>
         public void Start()
@@ -118,7 +143,7 @@ namespace Alis.Extension.Math.ProceduralDungeon
                 {
                     for (int y = room.YPos; y < room.YPos + room.Height; y++)
                     {
-                        Board[x, y] = BoardSquare.Floor;
+                        Board[x, y].Type = BoardSquareType.Floor;
                     }
                 }
             });
@@ -129,7 +154,7 @@ namespace Alis.Extension.Math.ProceduralDungeon
                 {
                     for (int y = corridor.YPos; y < corridor.YPos + corridor.Height; y++)
                     {
-                        Board[x, y] = BoardSquare.Floor;
+                        Board[x, y].Type = BoardSquareType.Floor;
                     }
                 }
             });
@@ -142,20 +167,20 @@ namespace Alis.Extension.Math.ProceduralDungeon
             {
                 for (int y = 0; y < BoardHeight; y++)
                 {
-                    Board[x, y] = Board[x, y].Equals(BoardSquare.Floor) && Board[x, y - 1].Equals(BoardSquare.Empty) ? BoardSquare.WallDown : Board[x, y];
-                    Board[x, y] = Board[x, y].Equals(BoardSquare.Floor) && Board[x - 1, y].Equals(BoardSquare.Empty) ? BoardSquare.WallLeft : Board[x, y];
-                    Board[x, y] = Board[x, y].Equals(BoardSquare.Floor) && Board[x + 1, y].Equals(BoardSquare.Empty) ? BoardSquare.WallRight : Board[x, y];
-                    Board[x, y] = Board[x, y].Equals(BoardSquare.Floor) && Board[x, y + 1].Equals(BoardSquare.Empty) ? BoardSquare.WallTop : Board[x, y];
+                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x, y - 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.WallDown : Board[x, y].Type;
+                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x - 1, y].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.WallLeft : Board[x, y].Type;
+                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x + 1, y].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.WallRight : Board[x, y].Type;
+                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x, y + 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.WallTop : Board[x, y].Type;
 
-                    Board[x, y] = !Board[x, y].Equals(BoardSquare.Empty) && Board[x - 1, y].Equals(BoardSquare.Empty) && Board[x, y - 1].Equals(BoardSquare.Empty) ? BoardSquare.CornerLeftDown : Board[x, y];
-                    Board[x, y] = !Board[x, y].Equals(BoardSquare.Empty) && Board[x + 1, y].Equals(BoardSquare.Empty) && Board[x, y - 1].Equals(BoardSquare.Empty) ? BoardSquare.CornerRightDown : Board[x, y];
-                    Board[x, y] = !Board[x, y].Equals(BoardSquare.Empty) && Board[x - 1, y].Equals(BoardSquare.Empty) && Board[x, y + 1].Equals(BoardSquare.Empty) ? BoardSquare.CornerLeftUp : Board[x, y];
-                    Board[x, y] = !Board[x, y].Equals(BoardSquare.Empty) && Board[x + 1, y].Equals(BoardSquare.Empty) && Board[x, y + 1].Equals(BoardSquare.Empty) ? BoardSquare.CornerRightUp : Board[x, y];
+                    Board[x, y].Type = !Board[x, y].Type.Equals(BoardSquareType.Empty) && Board[x - 1, y].Type.Equals(BoardSquareType.Empty) && Board[x, y - 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerLeftDown : Board[x, y].Type;
+                    Board[x, y].Type = !Board[x, y].Type.Equals(BoardSquareType.Empty) && Board[x + 1, y].Type.Equals(BoardSquareType.Empty) && Board[x, y - 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerRightDown : Board[x, y].Type;
+                    Board[x, y].Type = !Board[x, y].Type.Equals(BoardSquareType.Empty) && Board[x - 1, y].Type.Equals(BoardSquareType.Empty) && Board[x, y + 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerLeftUp : Board[x, y].Type;
+                    Board[x, y].Type = !Board[x, y].Type.Equals(BoardSquareType.Empty) && Board[x + 1, y].Type.Equals(BoardSquareType.Empty) && Board[x, y + 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerRightUp : Board[x, y].Type;
 
-                    Board[x, y] = Board[x, y].Equals(BoardSquare.Floor) && Board[x - 1, y - 1].Equals(BoardSquare.Empty) ? BoardSquare.CornerInternalLeftDown : Board[x, y];
-                    Board[x, y] = Board[x, y].Equals(BoardSquare.Floor) && Board[x + 1, y - 1].Equals(BoardSquare.Empty) ? BoardSquare.CornerInternalRightDown : Board[x, y];
-                    Board[x, y] = Board[x, y].Equals(BoardSquare.Floor) && Board[x - 1, y + 1].Equals(BoardSquare.Empty) ? BoardSquare.CornerInternalLeftUp : Board[x, y];
-                    Board[x, y] = Board[x, y].Equals(BoardSquare.Floor) && Board[x + 1, y + 1].Equals(BoardSquare.Empty) ? BoardSquare.CornerInternalRightUp : Board[x, y];
+                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x - 1, y - 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerInternalLeftDown : Board[x, y].Type;
+                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x + 1, y - 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerInternalRightDown : Board[x, y].Type;
+                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x - 1, y + 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerInternalLeftUp : Board[x, y].Type;
+                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x + 1, y + 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerInternalRightUp : Board[x, y].Type;
                 }
             }
         }
