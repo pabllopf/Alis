@@ -77,7 +77,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
                 await audio.LoadMetadataAsync();
 
                 Assert.True(audio.Metadata.Channels == 2);
-                Assert.True(audio.Metadata.Streams.Length == 1);
+                Assert.True(audio.Metadata.Streams.Count == 1);
                 Assert.True(Math.Abs(audio.Metadata.Duration - 1.515102) < 0.2);
 
                 audio.Dispose();

@@ -55,7 +55,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
             Assert.True(audio.Metadata.SampleFormat == "fltp");
             Assert.True(audio.Metadata.SampleRate == 44100);
             Assert.True(audio.Metadata.Channels == 2);
-            Assert.True(audio.Metadata.Streams.Length == 1);
+            Assert.True(audio.Metadata.Streams.Count == 1);
             Assert.True(Math.Abs(audio.Metadata.Duration - 1.549187) < 0.01);
         }
 
@@ -74,7 +74,7 @@ namespace Alis.Extension.Multimedia.FFmpeg.Test
             Assert.True(audio.Metadata.SampleFormat == "fltp");
             Assert.True(audio.Metadata.SampleRate == 11025);
             Assert.True(audio.Metadata.Channels == 2);
-            Assert.True(audio.Metadata.Streams.Length == 1);
+            Assert.True(audio.Metadata.Streams.Count == 1);
             Assert.True(Math.Abs(audio.Metadata.Duration - 1.515102) < 0.01);
         }
     }

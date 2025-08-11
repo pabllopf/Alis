@@ -36,11 +36,29 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video.Models
     /// <summary>
     ///     The video format class
     /// </summary>
-    public partial class VideoFormat : IJsonSerializable, IJsonDesSerializable<VideoFormat>
+    [Serializable]
+    public partial class VideoFormat 
     {
-        public string ToJson() => JsonNativeAot.Serialize(this);
-        public static VideoFormat FromJson(string json) => JsonNativeAot.Deserialize<VideoFormat>(json);
-    
+        public VideoFormat() : this(string.Empty, 0, 0, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, 0, new VideoFormatTags())
+        {
+            
+        }
+        
+        public VideoFormat(string filename, long nbStreams, long nbPrograms, string formatName, string formatLongName, string startTime, string duration, string size, string bitRate, long probeScore, VideoFormatTags tags)
+        {
+            Filename = filename;
+            NbStreams = nbStreams;
+            NbPrograms = nbPrograms;
+            FormatName = formatName;
+            FormatLongName = formatLongName;
+            StartTime = startTime;
+            Duration = duration;
+            Size = size;
+            BitRate = bitRate;
+            ProbeScore = probeScore;
+            Tags = tags;
+        }
+
         /// <summary>
         ///     Gets or sets the value of the filename
         /// </summary>
@@ -106,37 +124,5 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video.Models
         /// </summary>
         [JsonNativePropertyName("tags")]
         public VideoFormatTags Tags { get; set; }
-        
-        IEnumerable<(string PropertyName, string Value)> IJsonSerializable.GetSerializableProperties()
-        {
-            yield return (nameof(Filename), Filename.ToString());
-            yield return (nameof(NbStreams), NbStreams.ToString());
-            yield return (nameof(NbPrograms), NbPrograms.ToString());
-            yield return (nameof(FormatName), FormatName.ToString());
-            yield return (nameof(FormatLongName), FormatLongName.ToString());
-            yield return (nameof(StartTime), StartTime.ToString());
-            yield return (nameof(Duration), Duration.ToString());
-            yield return (nameof(Size), Size.ToString());
-            yield return (nameof(BitRate), BitRate.ToString());
-            yield return (nameof(ProbeScore), ProbeScore.ToString());
-            yield return (nameof(Tags), Tags.ToJson());
-        }
-        VideoFormat IJsonDesSerializable<VideoFormat>.CreateFromProperties(Dictionary<string, string> properties)
-        {
-            return new VideoFormat
-            {
-                Filename = properties.TryGetValue("filename", out var v_Filename) ? v_Filename : null,
-                NbStreams = properties.TryGetValue("nb_streams", out var v_NbStreams) && long.TryParse(v_NbStreams, out var l_NbStreams) ? l_NbStreams : 0L,
-                NbPrograms = properties.TryGetValue("nb_programs", out var v_NbPrograms) && long.TryParse(v_NbPrograms, out var l_NbPrograms) ? l_NbPrograms : 0L,
-                FormatName = properties.TryGetValue("format_name", out var v_FormatName) ? v_FormatName : null,
-                FormatLongName = properties.TryGetValue("format_long_name", out var v_FormatLongName) ? v_FormatLongName : null,
-                StartTime = properties.TryGetValue("start_time", out var v_StartTime) ? v_StartTime : null,
-                Duration = properties.TryGetValue("duration", out var v_Duration) ? v_Duration : null,
-                Size = properties.TryGetValue("size", out var v_Size) ? v_Size : null,
-                BitRate = properties.TryGetValue("bit_rate", out var v_BitRate) ? v_BitRate : null,
-                ProbeScore = properties.TryGetValue("probe_score", out var v_ProbeScore) && long.TryParse(v_ProbeScore, out var l_ProbeScore) ? l_ProbeScore : 0L,
-                Tags = properties.TryGetValue("tags", out var v_Tags) ? JsonNativeAot.Deserialize<VideoFormatTags>(v_Tags) : null, // tipo no soportado, usar conversión personalizada
-            };
-        }
     }
 }

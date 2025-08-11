@@ -38,83 +38,97 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video.Models
     /// <summary>
     ///     The video metadata class
     /// </summary>
-    public class VideoMetadata : IJsonSerializable, IJsonDesSerializable<VideoMetadata>
+    [Serializable]
+    public partial class VideoMetadata 
     {
-        
-        public string ToJson() => JsonNativeAot.Serialize(this);
-        public static VideoMetadata FromJson(string json) => JsonNativeAot.Deserialize<VideoMetadata>(json);
-    
         /// <summary>
         ///     Initializes a new instance of the <see cref="VideoMetadata" /> class
         /// </summary>
-        public VideoMetadata()
+        public VideoMetadata() : this (string.Empty, string.Empty, string.Empty, 0, 0, 0.0, 0.0, 0, 0, string.Empty, 0, Array.Empty<MediaStream>(), new VideoFormat())
         {
+        }
+        
+        public VideoMetadata(string pixelFormat, string codecLongName, string codec, int width, int height, double duration, double avgFramerate, int bitRate, int bitDepth, string sampleAspectRatio, int predictedFrameCount, MediaStream[] streams, VideoFormat format)
+        {
+            PixelFormat = pixelFormat;
+            CodecLongName = codecLongName;
+            Codec = codec;
+            Width = width;
+            Height = height;
+            Duration = duration;
+            AvgFramerate = avgFramerate;
+            BitRate = bitRate;
+            BitDepth = bitDepth;
+            SampleAspectRatio = sampleAspectRatio;
+            PredictedFrameCount = predictedFrameCount;
+            Streams = streams;
+            Format = format;
         }
 
         /// <summary>
         ///     Video pixel format
         /// </summary>
-        [JsonNativeIgnore]
+        [JsonNativePropertyName("pix_fmt")]
         public string PixelFormat { get; set; }
 
         /// <summary>
         ///     Video codec (long name)
         /// </summary>
-        [JsonNativeIgnore]
+        [JsonNativePropertyName("codec_long_name")]
         public string CodecLongName { get; set; }
 
         /// <summary>
         ///     Video codec
         /// </summary>
-        [JsonNativeIgnore]
+        [JsonNativePropertyName("codec_name")]
         public string Codec { get; set; }
 
         /// <summary>
         ///     Video width
         /// </summary>
-        [JsonNativeIgnore]
+        [JsonNativePropertyName("width")]
         public int Width { get; set; }
 
         /// <summary>
         ///     Video height
         /// </summary>
-        [JsonNativeIgnore]
+        [JsonNativePropertyName("height")]
         public int Height { get; set; }
 
         /// <summary>
         ///     Video duration in seconds
         /// </summary>
-        [JsonNativeIgnore]
+        [JsonNativePropertyName("duration")]
         public double Duration { get; set; }
 
         /// <summary>
         ///     Average video framerate
         /// </summary>
-        [JsonNativeIgnore]
+        [JsonNativePropertyName("avg_frame_rate")]
         public double AvgFramerate { get; set; }
 
         /// <summary>
         ///     Average video bitrate
         /// </summary>
-        [JsonNativeIgnore]
+        [JsonNativePropertyName("bit_rate")]
         public int BitRate { get; set; }
 
         /// <summary>
         ///     Bits per sample
         /// </summary>
-        [JsonNativeIgnore]
+        [JsonNativePropertyName("bit_depth")]
         public int BitDepth { get; set; }
 
         /// <summary>
         ///     Pixel aspect ratio
         /// </summary>
-        [JsonNativeIgnore]
+        [JsonNativePropertyName("sample_aspect_ratio")]
         public string SampleAspectRatio { get; set; }
 
         /// <summary>
         ///     Predicted frame count based on average framerate and duration
         /// </summary>
-        [JsonNativeIgnore]
+        [JsonNativePropertyName("predicted_frame_count")]
         public int PredictedFrameCount { get; set; }
 
         /// <summary>
@@ -140,45 +154,5 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video.Models
         /// </summary>
         [JsonNativeIgnore]
         public MediaStream GetFirstAudioStream() => Streams.Where(x => x.IsAudio).FirstOrDefault();
-        
-        
-        IEnumerable<(string PropertyName, string Value)> IJsonSerializable.GetSerializableProperties()
-        {
-            // Serialización en GetSerializableProperties
-            yield return (
-                nameof(Streams),
-                Streams == null
-                    ? "[]"
-                    : "[" + string.Join(",", Streams.Select(s => s.ToJson())) + "]"
-            );
-            
-            yield return (nameof(Format), Format.ToJson());
-        }
-        VideoMetadata IJsonDesSerializable<VideoMetadata>.CreateFromProperties(Dictionary<string, string> properties)
-        {
-            return new VideoMetadata
-            {
-                // Deserialización en CreateFromProperties
-                Streams = properties.TryGetValue("streams", out var v_Streams)
-                    ? ParseMediaStreamArrayJson(v_Streams)
-                    : null,
-                
-                
-                Format = properties.TryGetValue("format", out string v_Format) ? JsonNativeAot.Deserialize<VideoFormat>(v_Format) : null, // tipo no soportado, usar conversión personalizada
-            };
-        }
-        
-        
-            
-        // Método auxiliar para parsear el array JSON simple
-        private static MediaStream[] ParseMediaStreamArrayJson(string json)
-        {
-            if (string.IsNullOrWhiteSpace(json) || json == "[]") return Array.Empty<MediaStream>();
-            // Quita corchetes y separa objetos por '},{'
-            var items = json.Trim('[', ']').Split(new[] { "},{" }, StringSplitOptions.None);
-            for (int i = 1; i < items.Length; i++) items[i] = "{" + items[i];
-            items[0] = items[0].StartsWith("{") ? items[0] : "{" + items[0];
-            return items.Select(MediaStream.FromJson).ToArray();
-        }
     }
 }

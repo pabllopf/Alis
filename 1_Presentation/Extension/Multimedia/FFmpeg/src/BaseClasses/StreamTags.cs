@@ -38,6 +38,17 @@ namespace Alis.Extension.Multimedia.FFmpeg.BaseClasses
     [Serializable]
     public partial class StreamTags
     {
+        public StreamTags() : this(string.Empty, string.Empty, string.Empty)
+        {
+        }
+        
+        public StreamTags(string creationTime, string language, string handlerName)
+        {
+            CreationTime = creationTime;
+            Language = language;
+            HandlerName = handlerName;
+        }
+        
         /// <summary>
         ///     Gets or sets the value of the creation time
         /// </summary>
