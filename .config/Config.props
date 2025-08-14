@@ -22,8 +22,39 @@
             linux-x64; linux-arm; linux-arm64;
             osx-x64;osx-arm64;
         </RuntimeIdentifiers>
+
+        <Configurations>Debug;Release</Configurations>
+        <Platforms>AnyCPU;OsxArm64;x64;x86;arm;arm64</Platforms>
     </PropertyGroup>
 
+    
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|OsxArm64'">
+        <Configuration>Release</Configuration>
+        <Platform>OsxArm64</Platform>
+        <RuntimeIdentifier>osx-arm64</RuntimeIdentifier>
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+        <Configuration>Release</Configuration>
+        <Platform>x64</Platform>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+        <Configuration>Release</Configuration>
+        <Platform>x86</Platform>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|arm'">
+        <Configuration>Release</Configuration>
+        <Platform>arm</Platform>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|arm64'">
+        <Configuration>Release</Configuration>
+        <Platform>arm64</Platform>
+    </PropertyGroup>
+    
     
     <!-- Import all the props files in the target folder -->
     <Import Project="$(SolutionDir).config/target/BeforeBuild.props"/>

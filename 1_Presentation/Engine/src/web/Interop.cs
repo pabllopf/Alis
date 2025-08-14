@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Microsoft.JSInterop;
 
 namespace Alis.App.Engine.Web
@@ -24,8 +25,9 @@ namespace Alis.App.Engine.Web
             Dictionary<string, object?> values = await ImGui.Process(imgui =>
                 _renderers.ForEach(render => { render.Render(); }));
 
-            
-            List<ImGuiEvent> events = ImGui._builder.Events;
+
+            Debug.Assert(ImGui._builder?.Events != null, "ImGui._builder?.Events != null");
+            List<ImGuiEvent> events = ImGui._builder?.Events ?? new List<ImGuiEvent>();
             foreach (KeyValuePair<string, object?> kvp in values)
             {
                 object? value = kvp.Value;

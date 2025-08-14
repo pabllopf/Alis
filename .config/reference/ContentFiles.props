@@ -1,13 +1,41 @@
 <Project>
     <ItemGroup Condition="$(Configuration) == 'Release'">
         <None
-            Condition="$(AssemblyName.Equals('Alis')) OR $(AssemblyName.Equals('Alis.Core')) OR $(AssemblyName.Equals('Alis.Core.Ecs'))"
-            Include="$(SolutionDir)4_Operation/Ecs/generator/bin/release/lib/netstandard2.0/Alis.Core.Ecs.Generator.dll"
+            Condition="
+            $(AssemblyName.Contains('Generator')) == false AND 
+            $(AssemblyName.Contains('App')) == false AND 
+            $(AssemblyName.Contains('Sample')) == false AND 
+            $(AssemblyName.Contains('Test')) == false AND
+            (
+            $(AssemblyName.Equals('Alis')) OR 
+            $(AssemblyName.Equals('Alis.Core')) OR 
+            $(AssemblyName.Equals('Alis.Core.Ecs'))
+            )"
+            Include="$(SolutionDir)4_Operation/Ecs/generator/bin/Release/lib/netstandard2.0/Alis.Core.Ecs.Generator.dll"
             Pack="true" 
             Link="analyzers/dotnet/cs/Alis.Core.Ecs.Generator.dll"
             CopyToOutputDirectory="PreserveNewest"
             CopyToPublishDirectory="PreserveNewest"
             PackagePath="analyzers/dotnet/cs" 
+            Visible="false"/>
+
+        <None
+            Condition=" 
+            $(AssemblyName.Contains('Generator')) == false AND 
+            $(AssemblyName.Contains('App')) == false AND 
+            $(AssemblyName.Contains('Sample')) == false AND 
+            $(AssemblyName.Contains('Test')) == false AND 
+            (
+                $(AssemblyName.Equals('Alis')) OR 
+                $(AssemblyName.Contains('Alis.Core')) OR 
+                $(AssemblyName.Contains('Alis.Core.Aspect'))
+            )"          
+            Include="$(SolutionDir)6_Ideation/Data/generator/bin/Release/lib/netstandard2.0/Alis.Core.Aspect.Data.Generator.dll"
+            Pack="true"
+            Link="analyzers/dotnet/cs/Alis.Core.Aspect.Data.Generator.dll"
+            CopyToOutputDirectory="PreserveNewest"
+            CopyToPublishDirectory="PreserveNewest"
+            PackagePath="analyzers/dotnet/cs"
             Visible="false"/>
         
         <!-- Include all the .md files in the output -->
