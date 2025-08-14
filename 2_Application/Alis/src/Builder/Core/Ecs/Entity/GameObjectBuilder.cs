@@ -5,6 +5,7 @@ using Alis.Builder.Core.Ecs.Components.Collider;
 using Alis.Builder.Core.Ecs.Components.Render;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Audio;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
@@ -15,37 +16,25 @@ namespace Alis.Builder.Core.Ecs.Entity
    /// <summary>
    ///     The game object builder class
    /// </summary>
-   public class GameObjectBuilder : IBuild<Dictionary<Type, IGameObjectComponent>>
+   public class GameObjectBuilder : IBuild<GameObject>
    {
-       /// <summary>
-       /// The entity component
-       /// </summary>
-       private Dictionary<Type, IGameObjectComponent> components = new Dictionary<Type, IGameObjectComponent>();
+       private readonly Scene scene;
 
-       /// <summary>
-       /// The transform
-       /// </summary>
-       private Transform transform = new Transform();
-
+       private GameObject gameObject;
+       
+       public GameObjectBuilder(Scene scene)
+       {
+           this.scene = scene;
+           this.gameObject = scene.Create();
+       }
+       
        /// <summary>
        ///     Builds this instance
        /// </summary>
        /// <returns>The dictionary of components</returns>
-       public Dictionary<Type, IGameObjectComponent> Build()
+       public GameObject Build()
        {
-           Dictionary<Type, IGameObjectComponent> temp = new Dictionary<Type, IGameObjectComponent>();
-           temp.Add(typeof(Transform), transform);
-           foreach (KeyValuePair<Type, IGameObjectComponent> component in components)
-           {
-               if (component.Key == typeof(Transform))
-               {
-                   continue;
-               }
-
-               temp.Add(component.Key, component.Value);
-           }
-
-           return temp;
+           return gameObject;
        }
 
        /// <summary>
@@ -57,7 +46,7 @@ namespace Alis.Builder.Core.Ecs.Entity
        {
            TransformBuilder transformBuilder = new TransformBuilder();
            config(transformBuilder);
-           this.transform = transformBuilder.Build();
+           gameObject.Add<Transform>(transformBuilder.Build());
            return this;
        }
        
@@ -71,8 +60,7 @@ namespace Alis.Builder.Core.Ecs.Entity
        {
            AnimatorBuilder builder = new AnimatorBuilder();
            config(builder);
-           Animator animator = builder.Build();
-           components.Add(typeof(Animator), animator);
+           gameObject.Add<Animator>(builder.Build());
            return this;
        }
        
@@ -86,8 +74,7 @@ namespace Alis.Builder.Core.Ecs.Entity
        {
            CameraBuilder cameraBuilder = new CameraBuilder();
            config(cameraBuilder);
-           Camera camera = cameraBuilder.Build();
-           components.Add(typeof(Camera), camera);
+           gameObject.Add<Camera>( cameraBuilder.Build());
            return this;
        }
 
@@ -101,8 +88,7 @@ namespace Alis.Builder.Core.Ecs.Entity
        {
            SpriteBuilder spriteBuilder = new SpriteBuilder();
            config(spriteBuilder);
-           Sprite sprite = spriteBuilder.Build();
-              components.Add(typeof(Sprite), sprite);
+           gameObject.Add<Sprite>( spriteBuilder.Build());
            return this;
        }
        
@@ -117,7 +103,7 @@ namespace Alis.Builder.Core.Ecs.Entity
            AudioSourceBuilder audioBuilder = new AudioSourceBuilder();
            config(audioBuilder);
            AudioSource audio = audioBuilder.Build();
-           components.Add(typeof(AudioSource), audio);
+           gameObject.Add<AudioSource>(audio);
            return this;
        }
        
@@ -132,7 +118,7 @@ namespace Alis.Builder.Core.Ecs.Entity
            BoxColliderBuilder boxColliderBuilder = new BoxColliderBuilder();
            config(boxColliderBuilder);
            BoxCollider boxCollider = boxColliderBuilder.Build();
-           components.Add(typeof(BoxCollider), boxCollider);
+              gameObject.Add<BoxCollider>(boxCollider);
            return this;
        }
 
@@ -146,7 +132,7 @@ namespace Alis.Builder.Core.Ecs.Entity
        {
            T component = new T();
            config(component);
-           components.Add(typeof(T), component);
+           gameObject.Add<T>(component);
            return this;
        }
        
@@ -158,7 +144,7 @@ namespace Alis.Builder.Core.Ecs.Entity
        public GameObjectBuilder WithComponent<T>() where T : IGameObjectComponent, new()
        {
            T component = new T();
-           components.Add(typeof(T), component);
+           gameObject.Add<T>(component);
            return this;
        }
 
@@ -170,7 +156,7 @@ namespace Alis.Builder.Core.Ecs.Entity
        /// <returns>The game object builder</returns>
        public GameObjectBuilder WithComponent<T>(T component) where T : IGameObjectComponent, new()
        {
-           components.Add(typeof(T), component);
+           gameObject.Add<T>(component);
            return this;
        }
    }
