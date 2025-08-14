@@ -387,7 +387,9 @@
             $(AssemblyName.Equals('Alis.Core')) OR 
             $(AssemblyName.Equals('Alis.Core.Test')) OR 
             $(AssemblyName.Equals('Alis.Core.Ecs')) OR
-            $(AssemblyName.Equals('Alis.Core.Ecs.Test'))
+            $(AssemblyName.Equals('Alis.Core.Ecs.Test')) OR
+            $(AssemblyName.Contains('Alis.Extension')) OR
+            $(AssemblyName.Contains('Alis.Sample'))
         )
     ">
         <ProjectReference
@@ -425,7 +427,8 @@
             $(AssemblyName.Equals('Alis.Core.Aspect.Data')) OR 
             $(AssemblyName.Equals('Alis.Core.Aspect.Data.Sample')) OR
             $(AssemblyName.Equals('Alis.Core.Aspect.Data.Test')) OR
-            $(AssemblyName.Contains('Alis.Extension')) 
+            $(AssemblyName.Contains('Alis.Extension')) OR
+            $(AssemblyName.Contains('Alis.Sample'))
         )
     ">
         <ProjectReference
