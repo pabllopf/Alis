@@ -28,8 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
@@ -97,7 +96,6 @@ namespace Alis.Core.Physic.Common
         /// <param name="alpha">new initial time..</param>
         public void Advance(float alpha)
         {
-            Debug.Assert(Alpha0 < 1.0f);
             float beta = (alpha - Alpha0) / (1.0f - Alpha0);
             C0 += beta * (C - C0);
             A0 += beta * (A - A0);

@@ -28,8 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 
@@ -189,8 +188,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             set
             {
                 _localCenterA = value;
-                Debug.Assert(false, "You can't set the world anchor on this joint type.");
-            }
+                }
         }
 
         /// <summary>
@@ -202,8 +200,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             set
             {
                 _localCenterA = value;
-                Debug.Assert(false, "You can't set the world anchor on this joint type.");
-            }
+                }
         }
 
         /// <summary>

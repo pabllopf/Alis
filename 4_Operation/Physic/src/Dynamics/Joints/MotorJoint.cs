@@ -28,8 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 
@@ -182,8 +181,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             set
             {
                 _linearError = value;
-                Debug.Assert(false, "You can't set the world anchor on this joint type.");
-            }
+                }
         }
 
         /// <summary>
@@ -195,8 +193,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             set
             {
                 _linearError = value;
-                Debug.Assert(false, "You can't set the world anchor on this joint type.");
-            }
+                }
         }
 
         /// <summary>
@@ -206,7 +203,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             set
             {
-                Debug.Assert(MathUtils.IsValid(value) && (value >= 0.0f));
                 _maxForce = value;
             }
             get => _maxForce;
@@ -219,7 +215,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             set
             {
-                Debug.Assert(MathUtils.IsValid(value) && (value >= 0.0f));
                 _maxTorque = value;
             }
             get => _maxTorque;

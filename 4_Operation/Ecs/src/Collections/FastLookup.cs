@@ -1,9 +1,7 @@
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetype;
 #if NET7_0_OR_GREATER
-using System.Runtime.Intrinsics;
 #endif
 
 namespace Alis.Core.Ecs.Collections

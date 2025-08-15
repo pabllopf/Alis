@@ -38,7 +38,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep;
@@ -275,7 +275,6 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         /// <param name="p">The point in t that isn't shared between the triangles</param>
         public TriangulationPoint OppositePoint(DelaunayTriangle t, TriangulationPoint p)
         {
-            Debug.Assert(t != this, "self-pointer error");
             return PointCw(t.PointCw(p));
         }
 

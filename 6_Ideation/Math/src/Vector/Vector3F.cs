@@ -31,8 +31,6 @@ using System;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
-using System.Text;
-
 
 namespace Alis.Core.Aspect.Math.Vector
 {
@@ -314,18 +312,13 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <related type="Article" href="/dotnet/standard/base-types/custom-numeric-format-strings">Custom Numeric Format Strings</related>
         public readonly string ToString(string format, IFormatProvider formatProvider)
         {
-            StringBuilder sb = new StringBuilder();
-            string separator = NumberFormatInfo.GetInstance(formatProvider).NumberGroupSeparator;
-            sb.Append('<');
-            sb.Append(X.ToString(format, formatProvider));
-            sb.Append(separator);
-            sb.Append(' ');
-            sb.Append(Y.ToString(format, formatProvider));
-            sb.Append(separator);
-            sb.Append(' ');
-            sb.Append(Z.ToString(format, formatProvider));
-            sb.Append('>');
-            return sb.ToString();
+            return string.Format(
+                formatProvider,
+                "<{0}, {1}, {2}>",
+                X.ToString(format, formatProvider),
+                Y.ToString(format, formatProvider),
+                Z.ToString(format, formatProvider)
+            );
         }
     }
 }

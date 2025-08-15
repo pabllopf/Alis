@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
+
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Dynamics.Joints
@@ -82,7 +82,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorA
         {
             get => BodyA.Position;
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            set
+            {
+            }
         }
 
         /// <summary>
@@ -91,7 +93,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorB
         {
             get => BodyB.Position;
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            set => throw new NotSupportedException("AngleJoint does not support setting WorldAnchorB directly.");
         }
 
         /// <summary>

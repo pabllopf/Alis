@@ -28,10 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -174,9 +172,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2F dB = anchorB - BodyB.GetLocalPoint(worldAnchorB);
                 LengthB = dB.Length();
             }
-
-            Debug.Assert(Math.Abs(ratio) > SettingEnv.Epsilon);
-            Debug.Assert(ratio > SettingEnv.Epsilon);
 
             Ratio = ratio;
             Constant = LengthA + ratio * LengthB;

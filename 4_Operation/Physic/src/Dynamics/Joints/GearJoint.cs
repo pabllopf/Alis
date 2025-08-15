@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
+using System;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -228,9 +227,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _typeA = jointA.JointType;
             _typeB = jointB.JointType;
 
-            Debug.Assert(_typeA == JointType.Revolute || _typeA == JointType.Prismatic || _typeA == JointType.FixedRevolute || _typeA == JointType.FixedPrismatic);
-            Debug.Assert(_typeB == JointType.Revolute || _typeB == JointType.Prismatic || _typeB == JointType.FixedRevolute || _typeB == JointType.FixedPrismatic);
-
             float coordinateA, coordinateB;
 
 
@@ -309,8 +305,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorA
         {
             get => _bodyA.GetWorldPoint(_localAnchorA);
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
-        }
+            set => throw new NotSupportedException("GearJoint does not support setting WorldAnchorA directly.");
+    }
 
         /// <summary>
         ///     Gets or sets the value of the world anchor b
@@ -318,7 +314,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorB
         {
             get => _bodyB.GetWorldPoint(_localAnchorB);
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            set => throw new NotSupportedException("GearJoint does not support setting WorldAnchorB directly.");
         }
 
         /// <summary>
@@ -329,7 +325,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => _ratio;
             set
             {
-                Debug.Assert(MathUtils.IsValid(value));
                 _ratio = value;
             }
         }

@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common.Decomposition.Seidel;
 using Point = Alis.Core.Physic.Common.Decomposition.Seidel.Point;
@@ -63,8 +63,6 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <returns>A list of triangles</returns>
         public static List<Vertices> ConvexPartition(Vertices vertices, float sheer = 0.001f)
         {
-            Debug.Assert(vertices.Count > 3);
-
             List<Point> compatList = new List<Point>(vertices.Count);
 
             foreach (Vector2F vertex in vertices)

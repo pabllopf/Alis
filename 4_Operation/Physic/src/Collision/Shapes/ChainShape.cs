@@ -27,8 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
@@ -98,8 +97,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             ShapeType = ShapeType.Chain;
             Radius = SettingEnv.PolygonRadius;
 
-            Debug.Assert((vertices != null) && (vertices.Count >= 3));
-            Debug.Assert(vertices[0] != vertices[vertices.Count - 1]); // FPE. See http://www.box2d.org/forum/viewtopic.php?f=4&t=7973&p=35363
+            // FPE. See http://www.box2d.org/forum/viewtopic.php?f=4&t=7973&p=35363
 
             for (int i = 1; i < vertices.Count; ++i)
             {
@@ -107,8 +105,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 Vector2F v2 = vertices[i];
 
                 // If the code crashes here, it means your vertices are too close together.
-                Debug.Assert(Vector2F.DistanceSquared(v1, v2) > SettingEnv.LinearSlop * SettingEnv.LinearSlop);
-            }
+                }
 
             Vertices = new Vertices(vertices);
 
@@ -136,8 +133,6 @@ namespace Alis.Core.Physic.Collision.Shapes
             get => _prevVertex;
             set
             {
-                Debug.Assert(value != null);
-
                 _prevVertex = value;
                 _hasPrevVertex = true;
             }
@@ -152,8 +147,6 @@ namespace Alis.Core.Physic.Collision.Shapes
             get => _nextVertex;
             set
             {
-                Debug.Assert(value != null);
-
                 _nextVertex = value;
                 _hasNextVertex = true;
             }
@@ -166,9 +159,6 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="index">The index.</param>
         internal void GetChildEdge(EdgeShape edge, int index)
         {
-            Debug.Assert((0 <= index) && (index < Vertices.Count - 1));
-            Debug.Assert(edge != null);
-
             edge.ShapeType = ShapeType.Edge;
             edge.Radius = Radius;
 
@@ -227,8 +217,6 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <returns>The bool</returns>
         public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref Transform transform, int childIndex)
         {
-            Debug.Assert(childIndex < Vertices.Count);
-
             int i1 = childIndex;
             int i2 = childIndex + 1;
             if (i2 == Vertices.Count)
@@ -250,8 +238,6 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="childIndex">The child index</param>
         public override void ComputeAabb(out Aabb aabb, ref Transform transform, int childIndex)
         {
-            Debug.Assert(childIndex < Vertices.Count);
-
             int i1 = childIndex;
             int i2 = childIndex + 1;
             if (i2 == Vertices.Count)

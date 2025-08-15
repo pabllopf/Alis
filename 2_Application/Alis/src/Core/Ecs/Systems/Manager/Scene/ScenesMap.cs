@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.IO;
 
 
 namespace Alis.Core.Ecs.Systems.Manager.Scene

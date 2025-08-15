@@ -28,8 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
 
@@ -101,8 +100,6 @@ namespace Alis.Core.Physic.Collision
             float totalRadius = input.ProxyA.Radius + input.ProxyB.Radius;
             float target = Math.Max(SettingEnv.LinearSlop, totalRadius - 3.0f * SettingEnv.LinearSlop);
             const float tolerance = 0.25f * SettingEnv.LinearSlop;
-            Debug.Assert(target > tolerance);
-
             float t1 = 0.0f;
             const int kMaxIterations = 20;
             int iter = 0;

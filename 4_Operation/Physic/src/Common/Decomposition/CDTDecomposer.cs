@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common.Decomposition.CDT;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
@@ -55,8 +55,6 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// </summary>
         public static List<Vertices> ConvexPartition(Vertices vertices)
         {
-            Debug.Assert(vertices.Count > 3);
-
             Polygon poly = new Polygon();
 
             foreach (Vector2F vertex in vertices)

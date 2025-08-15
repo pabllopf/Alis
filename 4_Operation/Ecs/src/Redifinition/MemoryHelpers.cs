@@ -8,7 +8,6 @@ using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Redifinition
 {

@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
+
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Aspect.Time;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Joints;
 
@@ -58,7 +59,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The stopwatch
         /// </summary>
-        private readonly Stopwatch _watch = new Stopwatch();
+        private readonly Clock _watch = new Clock();
 
         /// <summary>
         ///     The contact manager
@@ -451,9 +452,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="toiIndexB">The toi index</param>
         internal void SolveToi(ref TimeStep subStep, int toiIndexA, int toiIndexB)
         {
-            Debug.Assert(toiIndexA < BodyCount);
-            Debug.Assert(toiIndexB < BodyCount);
-
             // Initialize the body state.
             for (int i = 0; i < BodyCount; ++i)
             {
@@ -548,7 +546,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="body">The body</param>
         public void Add(Body body)
         {
-            Debug.Assert(BodyCount < BodyCapacity);
             body.GetIslandIndex = BodyCount;
             Bodies[BodyCount++] = body;
         }
@@ -559,7 +556,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="contact">The contact</param>
         public void Add(Contact contact)
         {
-            Debug.Assert(ContactCount < ContactCapacity);
             _contacts[ContactCount++] = contact;
         }
 
@@ -569,7 +565,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="joint">The joint</param>
         public void Add(Joint joint)
         {
-            Debug.Assert(JointCount < JointCapacity);
             _joints[JointCount++] = joint;
         }
 

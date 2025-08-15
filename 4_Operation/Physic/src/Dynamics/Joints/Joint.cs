@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
+
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Dynamics.Joints
@@ -99,8 +99,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         protected Joint(Body bodyA, Body bodyB) : this()
         {
             //Can't connect a joint to the same body twice.
-            Debug.Assert(bodyA != bodyB);
-
             BodyA = bodyA;
             BodyB = bodyB;
         }

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Common;
@@ -96,7 +96,6 @@ namespace Alis.Core.Physic.Collision
                 case ShapeType.Chain:
                 {
                     ChainShape chain = (ChainShape) shape;
-                    Debug.Assert((0 <= index) && (index < chain.Vertices.Count));
                     if (Vertices.Count > 0)
                     {
                         Vertices.Clear();
@@ -125,7 +124,6 @@ namespace Alis.Core.Physic.Collision
 
                 default:
                     Radius = 0;
-                    Debug.Assert(false);
                     break;
             }
         }

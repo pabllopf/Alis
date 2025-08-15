@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Core.Physic.Common;
@@ -62,8 +62,6 @@ namespace Alis.Core.Physic.Collision
         /// <param name="transformB">The transform</param>
         internal void ReadCache(ref SimplexCache cache, ref DistanceProxy proxyA, ref Transform transformA, ref DistanceProxy proxyB, ref Transform transformB)
         {
-            Debug.Assert(cache.Count <= 3);
-
             // Copy data from cache.
             Count = cache.Count;
             for (int i = 0; i < Count; ++i)
@@ -151,7 +149,6 @@ namespace Alis.Core.Physic.Collision
                 }
 
                 default:
-                    Debug.Assert(false);
                     return Vector2F.Zero;
             }
         }
@@ -165,7 +162,6 @@ namespace Alis.Core.Physic.Collision
             switch (Count)
             {
                 case 0:
-                    Debug.Assert(false);
                     return Vector2F.Zero;
 
                 case 1:
@@ -178,7 +174,6 @@ namespace Alis.Core.Physic.Collision
                     return Vector2F.Zero;
 
                 default:
-                    Debug.Assert(false);
                     return Vector2F.Zero;
             }
         }
@@ -196,7 +191,6 @@ namespace Alis.Core.Physic.Collision
                 case 0:
                     pA = Vector2F.Zero;
                     pB = Vector2F.Zero;
-                    Debug.Assert(false);
                     break;
 
                 case 1:
@@ -228,7 +222,6 @@ namespace Alis.Core.Physic.Collision
             switch (Count)
             {
                 case 0:
-                    Debug.Assert(false);
                     return 0.0f;
                 case 1:
                     return 0.0f;
@@ -240,7 +233,6 @@ namespace Alis.Core.Physic.Collision
                     return MathUtils.Cross(V[1].W - V[0].W, V[2].W - V[0].W);
 
                 default:
-                    Debug.Assert(false);
                     return 0.0f;
             }
         }

@@ -30,7 +30,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using System.Runtime.CompilerServices;
 
 namespace Alis.Core.Ecs.Generator.Collections
@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         ///     A writable array accessor that can be converted into an <see cref="FastImmutableArray" />
         ///     instance without allocating memory.
         /// </summary>
-        [DebuggerDisplay("Count = {Count}")]
+        
         public sealed class Builder : IList<T>, IReadOnlyList<T>
         {
             /// <summary>
@@ -1050,7 +1050,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <remarks>
         ///     This would be private, but we make it internal so that our own extension methods can access it.
         /// </remarks>
-        [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
+        
         internal readonly T[] array;
 
         /// <summary>
@@ -1125,13 +1125,13 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <summary>
         ///     Gets a value indicating whether this collection is empty.
         /// </summary>
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        
         public bool IsEmpty => array!.Length == 0;
 
         /// <summary>
         ///     Gets the number of elements in the array.
         /// </summary>
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        
         public int Length =>
             // We intentionally do not check this.array != null, and throw NullReferenceException
             // if this is called while uninitialized.
@@ -1143,13 +1143,13 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <summary>
         ///     Gets a value indicating whether this struct was initialized without an actual array instance.
         /// </summary>
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        
         public bool IsDefault => array == null;
 
         /// <summary>
         ///     Gets a value indicating whether this struct is empty or uninitialized.
         /// </summary>
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        
         public bool IsDefaultOrEmpty
         {
             get
@@ -1167,7 +1167,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <summary>
         ///     Gets the string to display in the debugger watches window for this instance.
         /// </summary>
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        
         private string DebuggerDisplay
         {
             get

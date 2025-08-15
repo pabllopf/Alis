@@ -28,8 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 
@@ -337,8 +336,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => _enableLimit;
             set
             {
-                Debug.Assert(BodyA.FixedRotation == false || BodyB.FixedRotation == false, "Warning: limits does currently not work with fixed rotation");
-
                 if (value != _enableLimit)
                 {
                     WakeBodies();

@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using Alis.Core.Physic.Common.ConvexHull;
 
 namespace Alis.Core.Physic.Common.Decomposition
@@ -58,8 +58,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 case TriangulationAlgorithm.Earclip:
                     if (skipSanityChecks)
                     {
-                        Debug.Assert(!vertices.IsCounterClockWise(), "The Earclip algorithm expects the polygon to be clockwise.");
-                    }
+                        }
                     else if (vertices.IsCounterClockWise())
                     {
                         Vertices temp = new Vertices(vertices);
@@ -72,8 +71,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 case TriangulationAlgorithm.Bayazit:
                     if (skipSanityChecks)
                     {
-                        Debug.Assert(vertices.IsCounterClockWise(), "The polygon is not counter clockwise. This is needed for Bayazit to work correctly.");
-                    }
+                        }
                     else if (!vertices.IsCounterClockWise())
                     {
                         Vertices temp = new Vertices(vertices);
@@ -86,8 +84,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 case TriangulationAlgorithm.Flipcode:
                     if (skipSanityChecks)
                     {
-                        Debug.Assert(vertices.IsCounterClockWise(), "The polygon is not counter clockwise. This is needed for Bayazit to work correctly.");
-                    }
+                        }
                     else if (!vertices.IsCounterClockWise())
                     {
                         Vertices temp = new Vertices(vertices);

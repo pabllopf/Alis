@@ -5,7 +5,6 @@ using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Events;
-using Alis.Core.Ecs.Redifinition;
 
 namespace Alis.Core.Ecs.Updating
 {

@@ -436,14 +436,14 @@ namespace Alis.Core.Graphic.OpenGL
             {
                 throw new InvalidOperationException("Inicialize called before Initialize");
             }
-
+        
             IntPtr ptr = _getProcAddress(command);
             if (ptr == IntPtr.Zero)
             {
                 throw new ExternalException($"{command} from {typeof(T).Name}");
             }
-
-            return Marshal.GetDelegateForFunctionPointer(ptr, typeof(T)) as T;
+        
+            return Marshal.GetDelegateForFunctionPointer<T>(ptr);
         }
 
         /// <summary>

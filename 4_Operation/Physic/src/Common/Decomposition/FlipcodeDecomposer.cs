@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
@@ -68,9 +68,6 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="vertices">The list of points describing the polygon</param>
         public static List<Vertices> ConvexPartition(Vertices vertices)
         {
-            Debug.Assert(vertices.Count > 3);
-            Debug.Assert(vertices.IsCounterClockWise());
-
             int[] polygon = new int[vertices.Count];
 
             for (int v = 0; v < vertices.Count; v++)

@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
@@ -41,7 +41,6 @@ namespace Alis.Core.Physic.Common
     ///     The vertices class
     /// </summary>
     /// <seealso cref="List{Vector2F}" />
-    [DebuggerDisplay("Count = {Count} Vertices = {ToString()}")]
     public class Vertices : List<Vector2F>
     {
         /// <summary>
@@ -232,8 +231,6 @@ namespace Alis.Core.Physic.Common
         /// <param name="value">The vector.</param>
         public void Translate(ref Vector2F value)
         {
-            Debug.Assert(!AttachedToBody, "Translating vertices that are used by a Body can result in unstable behavior. Use Body.Position instead.");
-
             for (int i = 0; i < Count; i++)
             {
                 this[i] = this[i] + value;
@@ -263,8 +260,6 @@ namespace Alis.Core.Physic.Common
         /// <param name="value">The Value.</param>
         public void Scale(ref Vector2F value)
         {
-            Debug.Assert(!AttachedToBody, "Scaling vertices that are used by a Body can result in unstable behavior.");
-
             for (int i = 0; i < Count; i++)
             {
                 this[i] = this[i] * value;
@@ -287,8 +282,6 @@ namespace Alis.Core.Physic.Common
         /// <param name="value">The amount to rotate by in radians.</param>
         public void Rotate(float value)
         {
-            Debug.Assert(!AttachedToBody, "Rotating vertices that are used by a Body can result in unstable behavior.");
-
             float num1 = (float) Math.Cos(value);
             float num2 = (float) Math.Sin(value);
 

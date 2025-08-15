@@ -30,7 +30,6 @@
 using System;
 using Alis.Builder.Core.Ecs.Entity;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Systems.Manager.Scene;
 using Alis.Core.Ecs.Systems.Scope;

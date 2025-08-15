@@ -28,8 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.ConvexHull;
@@ -71,8 +70,6 @@ namespace Alis.Core.Physic.Collision.Shapes
         public PolygonShape(float density)
             : base(density)
         {
-            Debug.Assert(density >= 0f);
-
             ShapeType = ShapeType.Polygon;
             Radius = SettingEnv.PolygonRadius;
             _vertices = new Vertices(SettingEnv.MaxPolygonVertices);
@@ -104,8 +101,6 @@ namespace Alis.Core.Physic.Collision.Shapes
             {
                 _vertices = new Vertices(value);
 
-                Debug.Assert((_vertices.Count >= 3) && (_vertices.Count <= SettingEnv.MaxPolygonVertices));
-
                 if (SettingEnv.UseConvexHullPolygons)
                 {
                     //FPE note: This check is required as the GiftWrap algorithm early exits on triangles
@@ -127,8 +122,6 @@ namespace Alis.Core.Physic.Collision.Shapes
                 {
                     int next = i + 1 < _vertices.Count ? i + 1 : 0;
                     Vector2F edge = _vertices[next] - _vertices[i];
-                    Debug.Assert(edge.LengthSquared() > SettingEnv.Epsilon * SettingEnv.Epsilon);
-
                     //FPE optimization: Normals.Add(MathUtils.Cross(edge, 1.0f));
                     Vector2F temp = new Vector2F(edge.Y, -edge.X);
                     temp.Normalize();
@@ -179,8 +172,6 @@ namespace Alis.Core.Physic.Collision.Shapes
             //
             // The rest of the derivation is handled by computer algebra.
 
-            Debug.Assert(Vertices.Count >= 3);
-
             //FPE optimization: Early exit as polygons with 0 density does not have any properties.
             if (Density <= 0)
             {
@@ -230,8 +221,6 @@ namespace Alis.Core.Physic.Collision.Shapes
             }
 
             //The area is too small for the engine to handle.
-            Debug.Assert(area > SettingEnv.Epsilon);
-
             // We save the area
             MassData.Area = area;
 
@@ -338,8 +327,6 @@ namespace Alis.Core.Physic.Collision.Shapes
                 }
             }
 
-            Debug.Assert((0.0f <= lower) && (lower <= input.MaxFraction));
-
             if (index >= 0)
             {
                 output.Fraction = lower;
@@ -375,7 +362,6 @@ namespace Alis.Core.Physic.Collision.Shapes
 
                 // OPT: Vector2F.Min(ref aabb.LowerBound, ref v, out aabb.LowerBound);
                 // OPT: Vector2F.Max(ref aabb.UpperBound, ref v, out aabb.UpperBound);
-                Debug.Assert(aabb.LowerBound.X <= aabb.UpperBound.X);
                 if (vX < aabb.LowerBound.X)
                 {
                     aabb.LowerBound.X = vX;
@@ -385,7 +371,6 @@ namespace Alis.Core.Physic.Collision.Shapes
                     aabb.UpperBound.X = vX;
                 }
 
-                Debug.Assert(aabb.LowerBound.Y <= aabb.UpperBound.Y);
                 if (vY < aabb.LowerBound.Y)
                 {
                     aabb.LowerBound.Y = vY;

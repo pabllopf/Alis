@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
-
 namespace Alis.Core.Ecs.Components.Render
 {
     /// <summary>
