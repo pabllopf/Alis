@@ -7,6 +7,7 @@
     <PropertyGroup Condition="
     ($(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Sample')) == true) AND
     $(AssemblyName.Contains('Test')) == false AND
+    $(AssemblyName.Contains('Web')) == false AND
     $(Configuration) == 'Release'">
         <DebugType>none</DebugType>
         <DebugSymbols>false</DebugSymbols>
