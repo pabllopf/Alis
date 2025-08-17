@@ -85,7 +85,7 @@ namespace Alis.Sample.King.Platform
                                 .AddAnimation(animation => animation
                                     .Name("Run")
                                     .Order(0)
-                                    .Speed(0.25f)
+                                    .Speed(0.125f)
                                     .AddFrame(frame => frame
                                         .File("tile036.bmp")
                                         .Build())

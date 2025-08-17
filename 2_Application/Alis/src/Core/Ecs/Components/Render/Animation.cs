@@ -34,23 +34,39 @@ namespace Alis.Core.Ecs.Components.Render
     /// <summary>
     /// The animation
     /// </summary>
-    public struct Animation (string name = "Default", int order = 0, float speed = 0.5f) : IAnimation
+    public struct Animation : IAnimation
     {
+        public Animation() : this(string.Empty, 0, 0f)
+        {
+        }
+        
+        public Animation(string name, int order, float speed) : this(name, order, speed, new List<Frame>())
+        {
+        }
+        
+        public Animation(string name, int order, float speed, List<Frame> frames)
+        {
+            Name = name;
+            Order = order;
+            Speed = speed;
+            Frames = frames ?? new List<Frame>();
+        }
+
         /// <summary>
         /// Gets or sets the value of the name
         /// </summary>
-        public string Name { get; set; } = name;
-        
+        public string Name { get; set; } = null;
+
         /// <summary>
         /// Gets or sets the value of the order
         /// </summary>
-        public int Order { get; set; } = order;
-        
+        public int Order { get; set; } = 0;
+
         /// <summary>
         /// Gets or sets the value of the speed
         /// </summary>
-        public float Speed { get; set;  } = speed;
-        
+        public float Speed { get; set;  } = 0;
+
         /// <summary>
         /// Gets or sets the value of the frames
         /// </summary>
@@ -62,7 +78,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="frame">The frame</param>
         public void AddFrame(Frame frame)
         {
-            Frames?.Add(frame);
+            Frames.Add(frame);
         }
     }
 

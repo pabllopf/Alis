@@ -240,6 +240,13 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
            {
                foreach (GameObject spriteGameobject in spriteGameObjects)
                {
+                   if (spriteGameobject.Has<Animator>() && spriteGameobject.Has<Sprite>())
+                   {
+                       ref Animator animator = ref spriteGameobject.Get<Animator>();
+                       ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
+                       animator.DrawAnimation(ref sprite);
+                   }
+                   
                    if (spriteGameobject.Has<Sprite>())
                    {
                        ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
