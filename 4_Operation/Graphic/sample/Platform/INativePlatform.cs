@@ -73,6 +73,11 @@ namespace Alis.Core.Graphic.Sample.Platform
         /// <param name="procName">The proc name</param>
         /// <returns>The int ptr</returns>
         IntPtr GetProcAddress(string procName);
+        /// <summary>
+        /// Devuelve la última tecla pulsada, si existe
+        /// </summary>
+        /// <param name="key">La tecla pulsada</param>
+        /// <returns>true si hay tecla, false si no</returns>
+        bool TryGetLastKeyPressed(out ConsoleKey key);
     }
 }
-

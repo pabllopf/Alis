@@ -2,6 +2,7 @@ using System;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Sample.Platform;
+using Alis.Core.Graphic.Sample.Platform.OSX;
 using Alis.Core.Graphic.Sample.Samples;
 
 namespace Alis.Core.Graphic.Sample
@@ -17,8 +18,17 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         static void Main()
         {
-            INativePlatform platform = new MacNativePlatform();
-            platform.Initialize(800, 600, "C# + Cocoa + OpenGL (Apple Silicon)");
+            INativePlatform platform;
+#if OSX
+            platform = new MacNativePlatform();
+#elif WIN
+            platform = new Win32NativePlatform();
+#elif LINUX
+            platform = new LinuxNativePlatform();
+#else
+            throw new PlatformNotSupportedException("Sistema operativo no soportado");
+#endif
+            platform.Initialize(800, 600, "C# + OpenGL Platform");
             platform.MakeContextCurrent();
             Gl.Initialize(platform.GetProcAddress);
             Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
@@ -42,6 +52,10 @@ namespace Alis.Core.Graphic.Sample
             while (running)
             {
                 running = platform.PollEvents();
+                if (platform.TryGetLastKeyPressed(out var key))
+                {
+                    Console.WriteLine($"Tecla pulsada: {key}");
+                }
                 example.Draw();
                 platform.SwapBuffers();
                 var glError = Gl.GlGetError();
