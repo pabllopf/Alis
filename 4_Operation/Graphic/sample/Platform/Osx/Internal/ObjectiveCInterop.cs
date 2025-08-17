@@ -48,11 +48,11 @@ namespace Alis.Core.Graphic.Sample.Platform.OSX.Internal
         public static IntPtr Sel(string n) => sel_registerName(n);
         public static IntPtr NsString(string s)
         {
-            var bytes = Encoding.UTF8.GetBytes(s);
-            var mem = Marshal.AllocHGlobal(bytes.Length + 1);
+            byte[] bytes = Encoding.UTF8.GetBytes(s);
+            IntPtr mem = Marshal.AllocHGlobal(bytes.Length + 1);
             Marshal.Copy(bytes, 0, mem, bytes.Length);
             Marshal.WriteByte(mem, bytes.Length, 0);
-            var str = objc_msgSend_IntPtr(Class("NSString"), Sel("stringWithUTF8String:"), mem);
+            IntPtr str = objc_msgSend_IntPtr(Class("NSString"), Sel("stringWithUTF8String:"), mem);
             Marshal.FreeHGlobal(mem);
             return str;
         }

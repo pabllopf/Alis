@@ -39,7 +39,7 @@ namespace Alis.Core.Graphic.Sample
             Console.WriteLine("2: Cubo (vacío)");
             Console.Write("Opción: ");
             int option = 0;
-            var input = Console.ReadLine();
+            string input = Console.ReadLine();
             int.TryParse(input, out option);
             IExample example = option switch {
                 1 => new TriangleExample(),
@@ -52,13 +52,13 @@ namespace Alis.Core.Graphic.Sample
             while (running)
             {
                 running = platform.PollEvents();
-                if (platform.TryGetLastKeyPressed(out var key))
+                if (platform.TryGetLastKeyPressed(out ConsoleKey key))
                 {
                     Console.WriteLine($"Tecla pulsada: {key}");
                 }
                 example.Draw();
                 platform.SwapBuffers();
-                var glError = Gl.GlGetError();
+                int glError = Gl.GlGetError();
                 if (glError != 0)
                 {
                     Console.WriteLine($"OpenGL error tras flushBuffer: 0x{glError:X}");

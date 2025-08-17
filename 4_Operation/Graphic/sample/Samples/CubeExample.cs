@@ -103,9 +103,9 @@ void main()
             Gl.GlUseProgram(shaderProgram);
             // Matriz de rotación animada
             float time = (float)DateTime.Now.TimeOfDay.TotalSeconds;
-            var rotZ = Matrix4x4.CreateRotationZ(time);
-            var rotX = Matrix4x4.CreateRotationX(time);
-            var transform = rotZ * rotX;
+            Matrix4x4 rotZ = Matrix4x4.CreateRotationZ(time);
+            Matrix4x4 rotX = Matrix4x4.CreateRotationX(time);
+            Matrix4x4 transform = rotZ * rotX;
             int transformLocation = Gl.GlGetUniformLocation(shaderProgram, "transform");
             // Enviar la matriz al shader
             float[] mat = new float[16];
