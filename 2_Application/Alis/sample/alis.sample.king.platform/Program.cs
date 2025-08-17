@@ -110,7 +110,7 @@ namespace Alis.Sample.King.Platform
                                 .FixedRotation(true)
                                 .IgnoreGravity(false)
                                 .Build())
-                            .WithComponent(new PlayerMovement())
+                            .WithComponent<PlayerMovement>(new PlayerMovement())
                             .WithComponent<Camera>(camera => camera
                                 .Resolution(640, 480))
                             .Build())

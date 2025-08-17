@@ -58,6 +58,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
+            Console.WriteLine("Camera initialized with position: " + Position + " and resolution: " + Resolution);
         }
 
         /// <summary>

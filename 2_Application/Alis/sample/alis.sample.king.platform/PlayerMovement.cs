@@ -92,7 +92,7 @@ namespace Alis.Sample.King.Platform
         /// <param name="self">The self</param>
         public void Update(IGameObject self)
         {
-            
+            Console.WriteLine("sample");
         }
     }
 }
