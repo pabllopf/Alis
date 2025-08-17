@@ -253,7 +253,8 @@ static class Program
        
         // Configurar el contexto OpenGL
         Gl.GlClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        while (true)
+        bool running = true;
+        while (running)
         {
             IntPtr evt = objc_msgSend_UL_IntPtr_IntPtr_Bool(app,
                 SEL("nextEventMatchingMask:untilDate:inMode:dequeue:"),
@@ -261,17 +262,56 @@ static class Program
 
             if (evt != IntPtr.Zero)
             {
+                ulong evtType = GetEventType(evt);
+                if (evtType == NSKeyDown)
+                {
+                    string chars = GetCharacters(evt);
+                    Console.WriteLine($"Tecla pulsada: {chars}");
+                }
                 objc_msgSend_void_IntPtr(app, SEL("sendEvent:"), evt);
                 objc_msgSend_void(app, SEL("updateWindows"));
             }
 
-            // Render loop usando Gl
+            // Salir si la ventana se ha cerrado
+            if (!IsWindowVisible(window))
+            {
+                Console.WriteLine("Ventana cerrada, saliendo...");
+                running = false;
+                break;
+            }
+
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
-            
             objc_msgSend_void(ctx, SEL("flushBuffer"));
             System.Threading.Thread.Sleep(10);
         }
-        // Liberar el pool al salir (nunca se llega aquí por el while true, pero es buena práctica)
-        // objc_msgSend_void(pool, SEL("release"));
+        // Liberar el pool al salir
+        objc_msgSend_void(pool, SEL("release"));
+    }
+
+    // Constantes para tipos de evento NSEvent
+    const ulong NSKeyDown = 10;
+    const ulong NSKeyUp = 11;
+    const ulong NSAppKitDefined = 13;
+    const ulong NSWindowWillClose = 22; // No existe como tipo, pero se puede detectar por selector
+
+    static ulong GetEventType(IntPtr evt)
+    {
+        return (ulong)objc_msgSend(evt, SEL("type"));
+    }
+
+    static string GetCharacters(IntPtr evt)
+    {
+        IntPtr strPtr = objc_msgSend(evt, SEL("characters"));
+        if (strPtr == IntPtr.Zero) return "";
+        int len = (int)objc_msgSend(strPtr, SEL("length"));
+        if (len == 0) return "";
+        var buffer = new byte[len];
+        Marshal.Copy(objc_msgSend(strPtr, SEL("UTF8String")), buffer, 0, len);
+        return Encoding.UTF8.GetString(buffer);
+    }
+
+    static bool IsWindowVisible(IntPtr window)
+    {
+        return objc_msgSend(window, SEL("isVisible")) != IntPtr.Zero;
     }
 }
