@@ -33,7 +33,9 @@ using System.Linq;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems.Scope;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Builder.Core.Ecs.Entity
 {
@@ -68,15 +70,9 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <returns>The scene builder</returns>
         public SceneBuilder Add<T>(Action<GameObjectBuilder> config) where T : IGameObject
         {
-            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder();
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(Scene);
             config(gameObjectBuilder);
-            Dictionary<Type, IGameObjectComponent> components = gameObjectBuilder.Build();
-            
-            if (components.Count == 0)
-            {
-                Scene.Create();
-            }
-            
+            gameObjectBuilder.Build();
             return this;
         }
         

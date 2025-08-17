@@ -77,6 +77,9 @@ namespace Alis.Sample.Flappy.Bird
                             .Transform(transform => transform
                                 .Position(2, 2)
                             )
+                            .WithComponent<Sprite>(sprite => sprite
+                                .Depth(0)
+                            )
                         )
                     )
                 )
