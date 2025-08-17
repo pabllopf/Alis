@@ -30,9 +30,8 @@
 using System;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Graphic.GlfwLib;
-using Alis.Core.Graphic.GlfwLib.Enums;
-using Alis.Core.Graphic.GlfwLib.Structs;
+
+
 
 namespace Alis.Extension.Graphic.Ui.Controllers
 {

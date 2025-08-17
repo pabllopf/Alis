@@ -33,7 +33,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
-using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Audio.Interfaces;
 
@@ -235,7 +234,7 @@ namespace Alis.Core.Audio.Players
                 mciGetErrorString(result, sb2, 128);
                 errorSb.Append($" Message: {sb2}");
 
-                throw new GeneralAlisException(errorSb.ToString());
+                throw new Exception(errorSb.ToString());
             }
 
             if (commandString.ToLower().StartsWith("status") && int.TryParse(sb.ToString(), out int length))

@@ -1,7 +1,7 @@
 #if OSX
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.Sample.Platform.OSX.Internal
+namespace Alis.Core.Graphic.Sample.Platform.Osx.Internal
 {
     [StructLayout(LayoutKind.Sequential)]
     internal struct NsRect

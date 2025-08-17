@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Memory.Exceptions;
+
 using Alis.Core.Network.Exceptions;
 using Xunit;
 

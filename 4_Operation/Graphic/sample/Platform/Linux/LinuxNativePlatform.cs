@@ -1,6 +1,6 @@
 using System;
 
-namespace Alis.Core.Graphic.Sample.Platform.LINUX
+namespace Alis.Core.Graphic.Sample.Platform.Linux
 {
     public class LinuxNativePlatform : INativePlatform
     {

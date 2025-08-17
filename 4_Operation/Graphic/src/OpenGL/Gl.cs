@@ -701,6 +701,17 @@ namespace Alis.Core.Graphic.OpenGL
         {
             GlLineWidthDelegate(width);
         }
+
+        /// <summary>
+        ///     Activates the specified texture unit
+        /// </summary>
+        /// <param name="texture">The texture unit</param>
+        public delegate void ActiveTexture(TextureUnit texture);
+        public static ActiveTexture GlActiveTextureDelegate => GetCommand<ActiveTexture>("glActiveTexture");
+        public static void GlActiveTexture(TextureUnit texture)
+        {
+            GlActiveTextureDelegate(texture);
+        }
     }
 }
 

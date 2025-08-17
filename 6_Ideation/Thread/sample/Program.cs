@@ -43,34 +43,6 @@ namespace Alis.Core.Aspect.Thread.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            ThreadManager threadManager = new ThreadManager();
-
-            CancellationTokenSource cts1 = new CancellationTokenSource();
-            ThreadTask task1 = new ThreadTask(token =>
-            {
-                for (int i = 0; (i < 10) && !token.IsCancellationRequested; i++)
-                {
-                    System.Threading.Thread.Sleep(1000);
-                }
-            }, cts1.Token);
-
-            CancellationTokenSource cts2 = new CancellationTokenSource();
-            ThreadTask task2 = new ThreadTask(token =>
-            {
-                for (int i = 0; (i < 10) && !token.IsCancellationRequested; i++)
-                {
-                    System.Threading.Thread.Sleep(1000);
-                }
-            }, cts2.Token);
-
-            threadManager.StartThread(task1);
-            threadManager.StartThread(task2);
-
-     
-
-            threadManager.StopAllThreads();
-
-            
         }
     }
 }

@@ -7,9 +7,8 @@ using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.GlfwLib;
-using Alis.Core.Graphic.GlfwLib.Enums;
-using Alis.Core.Graphic.GlfwLib.Structs;
+
+
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Extension.Graphic.Ui.Extras.GuizMo;
