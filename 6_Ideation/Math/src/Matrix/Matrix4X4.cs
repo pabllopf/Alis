@@ -449,5 +449,21 @@ namespace Alis.Core.Aspect.Math.Matrix
 
             return result;
         }
+
+        public static Matrix4X4 CreatePerspectiveFieldOfView(float pi, float aspect, float f, float f1)
+        {
+            Matrix4X4 result = Identity;
+
+            float yScale = 1.0f / (float)MathF.Tan(pi / 2.0f);
+            float xScale = yScale / aspect;
+
+            result.M11 = xScale;
+            result.M22 = yScale;
+            result.M33 = f1 / (f - f1);
+            result.M34 = -f * f1 / (f - f1);
+            result.M43 = -1.0f;
+
+            return result;
+        }
     }
 }

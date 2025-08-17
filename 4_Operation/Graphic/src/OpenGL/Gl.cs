@@ -267,6 +267,8 @@ namespace Alis.Core.Graphic.OpenGL
         /// The gen framebuffer
         /// </summary>
         public delegate uint GenFramebuffer();
+        
+        
         /// <summary>
         /// Gets the value of the gl gen framebuffer
         /// </summary>
@@ -671,5 +673,23 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         /// <param name="texture2D">The texture</param>
         public static void GenerateMipmap(TextureTarget texture2D) => GetCommand<GetString>("glGenerateMipmap");
+
+        /// <summary>
+        ///     The get error
+        /// </summary>
+        public delegate int GetError();
+        /// <summary>
+        ///     Gets the value of glGetError
+        /// </summary>
+        public static GetError GlGetErrorDelegate => GetCommand<GetError>("glGetError");
+        /// <summary>
+        ///     Gets the last error from OpenGL
+        /// </summary>
+        /// <returns>Error code</returns>
+        public static int GlGetError()
+        {
+            return GlGetErrorDelegate();
+        }
     }
 }
+
