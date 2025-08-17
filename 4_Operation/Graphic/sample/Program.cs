@@ -37,6 +37,7 @@ namespace Alis.Core.Graphic.Sample
             Console.WriteLine("0: Fondo rojo");
             Console.WriteLine("1: Triángulo blanco");
             Console.WriteLine("2: Cubo (vacío)");
+            Console.WriteLine("3: Cuadrado sin rellenar");
             Console.Write("Opción: ");
             int option = 0;
             string input = Console.ReadLine();
@@ -44,6 +45,7 @@ namespace Alis.Core.Graphic.Sample
             IExample example = option switch {
                 1 => new TriangleExample(),
                 2 => new CubeExample(),
+                3 => new SquareUnfilledExample(),
                 _ => new SimpleRedExample()
             };
             example.Initialize();
@@ -63,7 +65,6 @@ namespace Alis.Core.Graphic.Sample
                 {
                     Console.WriteLine($"OpenGL error tras flushBuffer: 0x{glError:X}");
                 }
-                System.Threading.Thread.Sleep(10);
             }
             example.Cleanup();
             platform.Cleanup();

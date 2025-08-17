@@ -690,6 +690,17 @@ namespace Alis.Core.Graphic.OpenGL
         {
             return GlGetErrorDelegate();
         }
+        
+        /// <summary>
+        ///     Sets the width of lines to be rasterized
+        /// </summary>
+        /// <param name="width">The width of the line</param>
+        public delegate void LineWidth(float width);
+        public static LineWidth GlLineWidthDelegate => GetCommand<LineWidth>("glLineWidth");
+        public static void GlLineWidth(float width)
+        {
+            GlLineWidthDelegate(width);
+        }
     }
 }
 
