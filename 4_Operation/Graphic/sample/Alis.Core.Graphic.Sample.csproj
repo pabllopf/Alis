@@ -2,7 +2,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(SolutionDir).config/Config.props"/>
     <PropertyGroup>
+        <RuntimeIdentifier>osx-arm64</RuntimeIdentifier>
+        <TargetFramework>net8.0</TargetFramework>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
         <OutDir Condition="($(AssemblyName.Contains('Sample')) OR $(AssemblyName.Contains('App'))) AND $(AssemblyName.Contains('Test')) == false">bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
+        <UseAppHost>true</UseAppHost>
+        <IsCocoaApp>true</IsCocoaApp>
+        <ApplicationManifest>Info.plist</ApplicationManifest>
     </PropertyGroup>
+    <ItemGroup>
+      <None Update="Info.plist">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
 </Project>
