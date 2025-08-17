@@ -232,5 +232,24 @@ namespace Alis.Core.Aspect.Math
 
             return value;
         }
+
+        public static float Tan(float pi)
+        {
+            if (float.IsNaN(pi) || float.IsInfinity(pi))
+            {
+                return float.NaN;
+            }
+
+            // Normalize the angle to the range [-π/2, π/2]
+            pi %= Pi;
+
+            // Handle the case where pi is close to ±π/2
+            if (System.Math.Abs(pi - Pi / 2) < 0.01f || System.Math.Abs(pi - -Pi / 2) < 0.01f)
+            {
+                return float.PositiveInfinity; // or float.NaN, depending on your preference
+            }
+
+            return Sin(pi) / Cos(pi);
+        }
     }
 }

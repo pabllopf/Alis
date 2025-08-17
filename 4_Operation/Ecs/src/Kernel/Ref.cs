@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.Kernel
             _offset = index;
         }
 
-        internal Ref(ComponentStorage<T> compSpan, int index)
+        internal Ref(Alis.Core.Ecs.Updating.ComponentStorage<T> compSpan, int index)
         {
             _data = compSpan.AsSpan();
             _offset = index;

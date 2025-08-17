@@ -259,7 +259,7 @@ namespace Alis.Core.Ecs.Redifinition
         [ThreadStatic] internal static readonly ComponentHandle[] SharedTempComponentHandleBuffer = new ComponentHandle[8];
 
         [ThreadStatic]
-        internal static readonly ComponentStorageBase[] SharedTempComponentStorageBuffer = new ComponentStorageBase[8];
+        internal static readonly Alis.Core.Ecs.Updating.ComponentStorageBase[] SharedTempComponentStorageBuffer = new Alis.Core.Ecs.Updating.ComponentStorageBase[8];
 #endif
     }
 

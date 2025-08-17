@@ -454,7 +454,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         {
             Matrix4X4 result = Identity;
 
-            float yScale = 1.0f / (float)MathF.Tan(pi / 2.0f);
+            float yScale = 1.0f / (float)CustomMathF.Tan(pi / 2.0f);
             float xScale = yScale / aspect;
 
             result.M11 = xScale;
