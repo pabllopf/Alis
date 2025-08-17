@@ -40,6 +40,9 @@ namespace Alis.Extension.Math.ProceduralDungeon
     [Serializable]
     public partial class Corridor
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Corridor"/> class
+        /// </summary>
         public Corridor()
         {
             XPos = 0;

@@ -450,6 +450,14 @@ namespace Alis.Core.Aspect.Math.Matrix
             return result;
         }
 
+        /// <summary>
+        /// Creates the perspective field of view using the specified pi
+        /// </summary>
+        /// <param name="pi">The pi</param>
+        /// <param name="aspect">The aspect</param>
+        /// <param name="f">The </param>
+        /// <param name="f1">The </param>
+        /// <returns>The result</returns>
         public static Matrix4X4 CreatePerspectiveFieldOfView(float pi, float aspect, float f, float f1)
         {
             Matrix4X4 result = Identity;

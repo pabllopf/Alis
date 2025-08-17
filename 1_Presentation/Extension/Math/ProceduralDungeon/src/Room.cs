@@ -37,6 +37,9 @@ namespace Alis.Extension.Math.ProceduralDungeon
     [Serializable]
     public partial class Room
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Room"/> class
+        /// </summary>
         public Room() : this(0, 0, 0, 0)
         {
         }

@@ -31,10 +31,21 @@ using System;
 
 namespace Alis.Core.Aspect.Data.Json
 {
+    /// <summary>
+    /// The json native property name attribute class
+    /// </summary>
+    /// <seealso cref="Attribute"/>
     public class JsonNativePropertyNameAttribute : Attribute
     {
+        /// <summary>
+        /// Gets the value of the name
+        /// </summary>
         public string Name { get; }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JsonNativePropertyNameAttribute"/> class
+        /// </summary>
+        /// <param name="name">The name</param>
         public JsonNativePropertyNameAttribute(string name)
         {
             Name = name;

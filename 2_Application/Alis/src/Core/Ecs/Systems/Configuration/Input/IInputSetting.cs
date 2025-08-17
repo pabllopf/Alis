@@ -34,6 +34,9 @@ namespace Alis.Core.Ecs.Systems.Configuration.Input
     /// </summary>
     public interface IInputSetting
     {
+        /// <summary>
+        /// Gets or sets the value of the mouse sensitivity
+        /// </summary>
         public float MouseSensitivity { get; set; }
     }
 }

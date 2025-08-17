@@ -48,6 +48,22 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video.Models
         {
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoMetadata"/> class
+        /// </summary>
+        /// <param name="pixelFormat">The pixel format</param>
+        /// <param name="codecLongName">The codec long name</param>
+        /// <param name="codec">The codec</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="duration">The duration</param>
+        /// <param name="avgFramerate">The avg framerate</param>
+        /// <param name="bitRate">The bit rate</param>
+        /// <param name="bitDepth">The bit depth</param>
+        /// <param name="sampleAspectRatio">The sample aspect ratio</param>
+        /// <param name="predictedFrameCount">The predicted frame count</param>
+        /// <param name="streams">The streams</param>
+        /// <param name="format">The format</param>
         public VideoMetadata(string pixelFormat, string codecLongName, string codec, int width, int height, double duration, double avgFramerate, int bitRate, int bitDepth, string sampleAspectRatio, int predictedFrameCount, MediaStream[] streams, VideoFormat format)
         {
             PixelFormat = pixelFormat;

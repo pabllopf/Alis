@@ -17,10 +17,20 @@ namespace Alis.Builder.Core.Ecs.Entity
    /// </summary>
    public class GameObjectBuilder : IBuild<GameObject>
    {
+       /// <summary>
+       /// The scene
+       /// </summary>
        private readonly Scene scene;
 
+       /// <summary>
+       /// The game object
+       /// </summary>
        private GameObject gameObject;
        
+       /// <summary>
+       /// Initializes a new instance of the <see cref="GameObjectBuilder"/> class
+       /// </summary>
+       /// <param name="scene">The scene</param>
        public GameObjectBuilder(Scene scene)
        {
            this.scene = scene;

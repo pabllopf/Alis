@@ -39,10 +39,21 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video.Models
     public partial class VideoFormatTags
     {
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoFormatTags"/> class
+        /// </summary>
         public VideoFormatTags() : this(string.Empty, string.Empty, string.Empty, string.Empty, string.Empty)
         {
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoFormatTags"/> class
+        /// </summary>
+        /// <param name="majorBrand">The major brand</param>
+        /// <param name="minorVersion">The minor version</param>
+        /// <param name="compatibleBrands">The compatible brands</param>
+        /// <param name="creationTime">The creation time</param>
+        /// <param name="encoder">The encoder</param>
         public VideoFormatTags(string majorBrand, string minorVersion, string compatibleBrands, string creationTime, string encoder)
         {
             MajorBrand = majorBrand;

@@ -47,28 +47,63 @@ namespace Alis.Core.Ecs.Systems.Configuration.General
         string license = "GPL-3.0 license",
         string icon = "app.jpeg") : IGeneralSetting, IJsonSerializable, IJsonDesSerializable<GeneralSetting>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GeneralSetting"/> class
+        /// </summary>
         public GeneralSetting() : this(false, "Default Name", "Default Description", "0.0.0", "Pablo Perdomo Falcón", "GPL-3.0 license", "app.jpeg")
         {
         }
         
+        /// <summary>
+        /// Gets or sets the value of the debug
+        /// </summary>
         public bool Debug { get; set; } = debug;
         
+        /// <summary>
+        /// Gets or sets the value of the name
+        /// </summary>
         public string Name { get; set; } = name;
         
+        /// <summary>
+        /// Gets or sets the value of the description
+        /// </summary>
         public string Description { get; set; } = description;
         
+        /// <summary>
+        /// Gets or sets the value of the version
+        /// </summary>
         public string Version { get; set; } = version;
         
+        /// <summary>
+        /// Gets or sets the value of the author
+        /// </summary>
         public string Author { get; set; } = author;
         
+        /// <summary>
+        /// Gets or sets the value of the license
+        /// </summary>
         public string License { get; set; } = license;
         
+        /// <summary>
+        /// Gets or sets the value of the icon
+        /// </summary>
         public string Icon { get; set; } = icon;
 
+        /// <summary>
+        /// Ons the save
+        /// </summary>
         internal void OnSave() => JsonNativeAot.SerializeToFile(this, nameof(GeneralSetting), "Data");
         
+        /// <summary>
+        /// Ons the load
+        /// </summary>
+        /// <returns>The general setting</returns>
         internal GeneralSetting OnLoad() => JsonNativeAot.DeserializeFromFile<GeneralSetting>(nameof(GeneralSetting), "Data");
 
+        /// <summary>
+        /// Gets the serializable properties
+        /// </summary>
+        /// <returns>An enumerable of string property name and string value</returns>
         IEnumerable<(string PropertyName, string Value)> IJsonSerializable.GetSerializableProperties()
         {
             yield return (nameof(Debug), Debug.ToString());
@@ -80,6 +115,11 @@ namespace Alis.Core.Ecs.Systems.Configuration.General
             yield return (nameof(Icon), Icon);
         }
 
+        /// <summary>
+        /// Creates the from properties using the specified properties
+        /// </summary>
+        /// <param name="properties">The properties</param>
+        /// <returns>The general setting</returns>
         GeneralSetting IJsonDesSerializable<GeneralSetting>.CreateFromProperties(Dictionary<string, string> properties)
         {
             return new GeneralSetting(
