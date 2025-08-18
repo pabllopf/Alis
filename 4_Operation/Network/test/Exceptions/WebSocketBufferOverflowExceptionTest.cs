@@ -66,7 +66,7 @@ namespace Alis.Core.Network.Test.Exceptions
         [Fact]
         public void WebSocketBufferOverflowException_ConstructorWithMessageAndInnerException()
         {
-            Exception innerException = new GeneralAlisException("Inner exception");
+            Exception innerException = new Exception("Inner exception");
             WebSocketBufferOverflowException exception = new WebSocketBufferOverflowException("Test message", innerException);
             Assert.NotNull(exception);
             Assert.Equal("Test message", exception.Message);

@@ -66,7 +66,7 @@ namespace Alis.Core.Network.Test.Exceptions
         [Fact]
         public void SecWebSocketKeyMissingException_ConstructorWithMessageAndInnerException()
         {
-            Exception innerException = new GeneralAlisException("Inner exception");
+            Exception innerException = new Exception("Inner exception");
             SecWebSocketKeyMissingException exception = new SecWebSocketKeyMissingException("Test message", innerException);
             Assert.NotNull(exception);
             Assert.Equal("Test message", exception.Message);

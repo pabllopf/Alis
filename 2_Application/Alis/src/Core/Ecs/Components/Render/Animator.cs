@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Time;
-using Alis.Core.Ecs.Components.Render;
+
+namespace Alis.Core.Ecs.Components.Render;
 
 /// <summary>
 /// The animator

@@ -44,8 +44,6 @@ namespace Alis.Core.Physic.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Logger.SetDetailLevel(DetailLevel.Minimal);
-            Logger.SetLogLevel(LogLevel.Trace);
             Logger.Info($"Run {nameof(Alis)}.{nameof(Core)}.{nameof(Physic)}.{nameof(Sample)}");
 
             Vector2F gravity = new Vector2F(0.0f, -9.8f);

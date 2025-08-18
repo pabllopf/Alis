@@ -54,9 +54,6 @@ namespace Alis.Core.Network.Sample
         /// <param name="args">The args</param>
         public static Task Main(string[] args)
         {
-            Logger.LogLevel = LogLevel.Trace;
-            Logger.SetDetailLevel(DetailLevel.Minimal);
-
             CancellationTokenSource cts = new CancellationTokenSource();
             _webSocketServerFactory = new WebSocketServerFactory();
             StartWebServer(cts.Token);

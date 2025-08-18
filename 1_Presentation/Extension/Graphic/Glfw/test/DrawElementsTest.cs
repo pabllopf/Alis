@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IControllerUi.cs
+//  File:DrawElementsTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,46 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Graphic.Ui.Controllers
+namespace Alis.Extension.Graphic.Glfw.Test
 {
     /// <summary>
-    /// The controller ui interface
+    ///     The draw elements test class
     /// </summary>
-    public interface IControllerUi
+    public class DrawElementsTest
     {
-        /// <summary>
-        /// Ons the init
-        /// </summary>
-        public void OnInit();
-        
-        /// <summary>
-        /// Ons the start
-        /// </summary>
-        public void OnStart();
-        
-        /// <summary>
-        /// Ons the poll events
-        /// </summary>
-        public void OnPollEvents();
-        
-        /// <summary>
-        /// Ons the start frame
-        /// </summary>
-        public void OnStartFrame();
-        
-        /// <summary>
-        /// Ons the render frame
-        /// </summary>
-        public void OnRenderFrame();
-        
-        /// <summary>
-        /// Ons the end frame
-        /// </summary>
-        public void OnEndFrame();
-        
-        /// <summary>
-        /// Ons the exit
-        /// </summary>
-        public void OnExit();
     }
 }

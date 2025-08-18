@@ -71,7 +71,7 @@ namespace Alis.Core.Audio.Sample
                 }
                 catch (Exception ex)
                 {
-                    Logger.Exception(ex);
+                    throw new Exception("Error while playing audio", ex);
                 }
             }
         }
