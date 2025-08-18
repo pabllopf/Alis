@@ -27,11 +27,7 @@ namespace Alis.Core.Graphic.Sample
 #else
             throw new PlatformNotSupportedException("Sistema operativo no soportado");
 #endif
-            platform.Initialize(800, 600, "C# + OpenGL Platform");
-            platform.MakeContextCurrent();
-            Gl.Initialize(platform.GetProcAddress);
-            Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
-            Gl.GlEnable(EnableCap.DepthTest);
+            
             Console.WriteLine("Elige el ejemplo a mostrar:");
             Console.WriteLine("0: Fondo rojo");
             Console.WriteLine("1: Triángulo blanco");
@@ -49,6 +45,13 @@ namespace Alis.Core.Graphic.Sample
                 4 => new TextureSampleCustomBmpExample(),
                 _ => new SimpleRedExample()
             };
+            
+            platform.Initialize(800, 600, "C# + OpenGL Platform");
+            platform.MakeContextCurrent();
+            Gl.Initialize(platform.GetProcAddress);
+            Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
+            Gl.GlEnable(EnableCap.DepthTest);
+            
             example.Initialize();
             platform.ShowWindow();
             bool running = true;
