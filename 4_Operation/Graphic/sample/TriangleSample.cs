@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
+
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;

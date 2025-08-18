@@ -28,11 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using Alis.Builder.Core.Ecs.Entity;
-using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Ecs.Components.Render

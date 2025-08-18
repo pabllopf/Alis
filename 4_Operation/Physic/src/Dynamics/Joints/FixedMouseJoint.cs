@@ -28,8 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 
@@ -141,8 +140,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             DampingRatio = 0.7f;
             MaxForce = 1000 * body.Mass;
 
-            Debug.Assert(worldAnchor.IsValid());
-
             _worldAnchor = worldAnchor;
             LocalAnchorA = Transform.Divide(ref worldAnchor, ref BodyA.Xf);
         }
@@ -184,7 +181,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => _maxForce;
             set
             {
-                Debug.Assert(MathUtils.IsValid(value) && (value >= 0.0f));
                 _maxForce = value;
             }
         }
@@ -197,7 +193,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => _frequency;
             set
             {
-                Debug.Assert(MathUtils.IsValid(value) && (value >= 0.0f));
                 _frequency = value;
             }
         }
@@ -210,7 +205,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => _dampingRatio;
             set
             {
-                Debug.Assert(MathUtils.IsValid(value) && (value >= 0.0f));
                 _dampingRatio = value;
             }
         }
@@ -262,7 +256,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // gamma has units of inverse mass.
             // beta has units of inverse time.
             float h = data.Step.Dt;
-            Debug.Assert(d + h * kKk > SettingEnv.Epsilon);
             _gamma = h * (d + h * kKk);
             if (Math.Abs(_gamma) > SettingEnv.Epsilon)
             {

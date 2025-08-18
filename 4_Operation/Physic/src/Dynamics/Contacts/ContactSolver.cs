@@ -29,10 +29,9 @@
 
 using System;
 using System.Collections.Concurrent;
-using System.Diagnostics;
+
 using System.Threading;
 using System.Threading.Tasks;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
@@ -158,8 +157,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 Manifold manifold = contact.Manifold;
 
                 int pointCount = manifold.PointCount;
-                Debug.Assert(pointCount > 0);
-
                 ContactVelocityConstraint vc = VelocityConstraints[i];
                 vc.Friction = contact.Friction;
                 vc.Restitution = contact.Restitution;
@@ -251,8 +248,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 float aB = Positions[indexB].A;
                 Vector2F vB = Velocities[indexB].V;
                 float wB = Velocities[indexB].W;
-
-                Debug.Assert(manifold.PointCount > 0);
 
                 Transform xfA = new Transform(Vector2F.Zero, aA);
                 Transform xfB = new Transform(Vector2F.Zero, aB);
@@ -465,8 +460,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 Vector2F tangent = MathUtils.Rot270(ref normal);
                 float friction = vc.Friction;
 
-                Debug.Assert(pointCount == 1 || pointCount == 2);
-
                 // Solve tangent constraints first because non-penetration is more important
                 // than friction.
                 for (int j = 0; j < pointCount; ++j)
@@ -560,8 +553,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     VelocityConstraintPoint cp2 = vc.Points[1];
 
                     Vector2F a = new Vector2F(cp1.NormalImpulse, cp2.NormalImpulse);
-                    Debug.Assert((a.X >= 0.0f) && (a.Y >= 0.0f));
-
                     // Relative velocity at contact
                     Vector2F dv1 = vB + MathUtils.Cross(wB, ref cp1.Rb) - vA - MathUtils.Cross(wA, ref cp1.Ra);
                     Vector2F dv2 = vB + MathUtils.Cross(wB, ref cp2.Rb) - vA - MathUtils.Cross(wA, ref cp2.Ra);
@@ -1093,8 +1084,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             /// <param name="separation">The separation</param>
             public static void Initialize(ContactPositionConstraint pc, ref Transform xfA, ref Transform xfB, int index, out Vector2F normal, out Vector2F point, out float separation)
             {
-                Debug.Assert(pc.PointCount > 0);
-
                 switch (pc.Type)
                 {
                     case ManifoldType.Circles:

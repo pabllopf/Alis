@@ -29,8 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Common;
@@ -544,7 +543,6 @@ namespace Alis.Core.Physic.Collision
 
             // Region AB
             Vector2F.Dot(ref e, ref e, out float den);
-            Debug.Assert(den > 0.0f);
             p = 1.0f / den * (u * a + v * b);
             d = q - p;
             Vector2F.Dot(ref d, ref d, out float dd2);
@@ -662,8 +660,6 @@ namespace Alis.Core.Physic.Collision
 
             int count2 = poly2.Vertices.Count;
             List<Vector2F> vertices2 = poly2.Vertices;
-
-            Debug.Assert((0 <= edge1) && (edge1 < poly1.Vertices.Count));
 
             // Convert normal from poly1's frame into poly2's frame.
             Vector2F normal1 = Complex.Multiply(normals1[edge1], ref xf1To2.Rotation);
@@ -801,8 +797,6 @@ namespace Alis.Core.Physic.Collision
             int count2 = poly2.Vertices.Count;
             Vertices vertices2 = poly2.Vertices;
             Vertices normals2 = poly2.Normals;
-
-            Debug.Assert((0 <= edge1) && (edge1 < poly1.Vertices.Count));
 
             // Get the normal of the reference edge in poly2's frame.
             Vector2F normal1 = Complex.Divide(Complex.Multiply(normals1[edge1], ref xf1.Rotation), ref xf2.Rotation);

@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
@@ -174,8 +174,6 @@ namespace Alis.Core.Physic.Collision
                         continue;
                     }
 
-                    Debug.Assert(_nodes[i].IsLeaf() == false);
-
                     int child1 = _nodes[i].Child1;
                     int child2 = _nodes[i].Child2;
                     int balance = Math.Abs(_nodes[child2].Height - _nodes[child1].Height);
@@ -216,9 +214,6 @@ namespace Alis.Core.Physic.Collision
         /// <param name="proxyId">The proxy id.</param>
         public void RemoveProxy(int proxyId)
         {
-            Debug.Assert((0 <= proxyId) && (proxyId < _nodeCapacity));
-            Debug.Assert(_nodes[proxyId].IsLeaf());
-
             RemoveLeaf(proxyId);
             FreeNode(proxyId);
         }
@@ -234,10 +229,6 @@ namespace Alis.Core.Physic.Collision
         /// <returns>true if the proxy was re-inserted.</returns>
         public bool MoveProxy(int proxyId, ref Aabb aabb, Vector2F displacement)
         {
-            Debug.Assert((0 <= proxyId) && (proxyId < _nodeCapacity));
-
-            Debug.Assert(_nodes[proxyId].IsLeaf());
-
             if (_nodes[proxyId].Aabb.Contains(ref aabb))
             {
                 return false;
@@ -297,7 +288,6 @@ namespace Alis.Core.Physic.Collision
         /// <returns>the proxy user data or 0 if the id is invalid.</returns>
         public TNode GetUserData(int proxyId)
         {
-            Debug.Assert((0 <= proxyId) && (proxyId < _nodeCapacity));
             return _nodes[proxyId].UserData;
         }
 
@@ -308,7 +298,6 @@ namespace Alis.Core.Physic.Collision
         /// <param name="fatAabb">The fat AABB.</param>
         public void GetFatAabb(int proxyId, out Aabb fatAabb)
         {
-            Debug.Assert((0 <= proxyId) && (proxyId < _nodeCapacity));
             fatAabb = _nodes[proxyId].Aabb;
         }
 
@@ -319,7 +308,6 @@ namespace Alis.Core.Physic.Collision
         /// <returns>The fat AABB.</returns>
         public Aabb GetFatAabb(int proxyId)
         {
-            Debug.Assert((0 <= proxyId) && (proxyId < _nodeCapacity));
             return _nodes[proxyId].Aabb;
         }
 
@@ -330,8 +318,6 @@ namespace Alis.Core.Physic.Collision
         /// <param name="proxyIdB">The proxy id B.</param>
         public bool TestFatAabbOverlap(int proxyIdA, int proxyIdB)
         {
-            Debug.Assert((0 <= proxyIdA) && (proxyIdA < _nodeCapacity));
-            Debug.Assert((0 <= proxyIdB) && (proxyIdB < _nodeCapacity));
             return Aabb.TestOverlap(ref _nodes[proxyIdA].Aabb, ref _nodes[proxyIdB].Aabb);
         }
 
@@ -389,7 +375,6 @@ namespace Alis.Core.Physic.Collision
             Vector2F p1 = input.Point1;
             Vector2F p2 = input.Point2;
             Vector2F r = p2 - p1;
-            Debug.Assert(r.LengthSquared() > 0.0f);
             r.Normalize();
 
             // v is perpendicular to the segment.
@@ -477,8 +462,6 @@ namespace Alis.Core.Physic.Collision
             // Expand the node pool as needed.
             if (_freeList == NullNode)
             {
-                Debug.Assert(_nodeCount == _nodeCapacity);
-
                 // The free list is empty. Rebuild a bigger pool.
                 TreeNode<TNode>[] oldNodes = _nodes;
                 _nodeCapacity *= 2;
@@ -517,8 +500,6 @@ namespace Alis.Core.Physic.Collision
         /// <param name="nodeId">The node id</param>
         private void FreeNode(int nodeId)
         {
-            Debug.Assert((0 <= nodeId) && (nodeId < _nodeCapacity));
-            Debug.Assert(0 < _nodeCount);
             _nodes[nodeId].Next = _freeList;
             _nodes[nodeId].Height = -1;
             _freeList = nodeId;
@@ -655,9 +636,6 @@ namespace Alis.Core.Physic.Collision
                 int child1 = _nodes[index].Child1;
                 int child2 = _nodes[index].Child2;
 
-                Debug.Assert(child1 != NullNode);
-                Debug.Assert(child2 != NullNode);
-
                 _nodes[index].Height = 1 + Math.Max(_nodes[child1].Height, _nodes[child2].Height);
                 _nodes[index].Aabb.Combine(ref _nodes[child1].Aabb, ref _nodes[child2].Aabb);
 
@@ -738,8 +716,6 @@ namespace Alis.Core.Physic.Collision
         /// <returns>the new root index.</returns>
         private int Balance(int iN)
         {
-            Debug.Assert(iN != NullNode);
-
             //TreeNode<T>* N = &_nodes[iN];
             if (_nodes[iN].IsLeaf() || _nodes[iN].Height < 2)
             {
@@ -748,9 +724,6 @@ namespace Alis.Core.Physic.Collision
 
             int iA = _nodes[iN].Child1;
             int iB = _nodes[iN].Child2;
-            Debug.Assert((0 <= iA) && (iA < _nodeCapacity));
-            Debug.Assert((0 <= iB) && (iB < _nodeCapacity));
-
             //TreeNode<T>* A = &_nodes[iA];
             //TreeNode<T>* B = &_nodes[iB];
 
@@ -765,9 +738,6 @@ namespace Alis.Core.Physic.Collision
                 //TreeNode<T>* P  = &_nodes[iN->Parent];
                 //TreeNode<T>* BA = &_nodes[iBA];
                 //TreeNode<T>* BB = &_nodes[iBB];
-                Debug.Assert((0 <= iBa) && (iBa < _nodeCapacity));
-                Debug.Assert((0 <= iBb) && (iBb < _nodeCapacity));
-
                 // Swap N and B
                 _nodes[iB].Child1 = iN;
                 _nodes[iB].Parent = _nodes[iN].Parent;
@@ -782,7 +752,6 @@ namespace Alis.Core.Physic.Collision
                     }
                     else
                     {
-                        Debug.Assert(_nodes[iP].Child2 == iN);
                         _nodes[iP].Child2 = iB;
                     }
                 }
@@ -827,9 +796,6 @@ namespace Alis.Core.Physic.Collision
                 //TreeNode<T>* P  = &_nodes[iN->Parent];
                 //TreeNode<T>* AA = &_nodes[iAA];
                 //TreeNode<T>* AB = &_nodes[iAB];
-                Debug.Assert((0 <= iAa) && (iAa < _nodeCapacity));
-                Debug.Assert((0 <= iAb) && (iAb < _nodeCapacity));
-
                 // Swap N and A
                 _nodes[iA].Child1 = iN;
                 _nodes[iA].Parent = _nodes[iN].Parent;
@@ -844,7 +810,6 @@ namespace Alis.Core.Physic.Collision
                     }
                     else
                     {
-                        Debug.Assert(_nodes[iP].Child2 == iN);
                         _nodes[iP].Child2 = iA;
                     }
                 }
@@ -890,7 +855,6 @@ namespace Alis.Core.Physic.Collision
         /// <returns>The height of the tree.</returns>
         public int ComputeHeight(int nodeId)
         {
-            Debug.Assert((0 <= nodeId) && (nodeId < _nodeCapacity));
             //TreeNode<T>* node = &_nodes[nodeId];
 
             if (_nodes[nodeId].IsLeaf())
@@ -926,8 +890,7 @@ namespace Alis.Core.Physic.Collision
 
             if (index == _root)
             {
-                Debug.Assert(_nodes[index].Parent == NullNode);
-            }
+                }
 
             //TreeNode<T>* node = &_nodes[index];
 
@@ -936,17 +899,8 @@ namespace Alis.Core.Physic.Collision
 
             if (_nodes[index].IsLeaf())
             {
-                Debug.Assert(child1 == NullNode);
-                Debug.Assert(child2 == NullNode);
-                Debug.Assert(_nodes[index].Height == 0);
                 return;
             }
-
-            Debug.Assert((0 <= child1) && (child1 < _nodeCapacity));
-            Debug.Assert((0 <= child2) && (child2 < _nodeCapacity));
-
-            Debug.Assert(_nodes[child1].Parent == index);
-            Debug.Assert(_nodes[child2].Parent == index);
 
             ValidateStructure(child1);
             ValidateStructure(child2);
@@ -970,25 +924,14 @@ namespace Alis.Core.Physic.Collision
 
             if (_nodes[index].IsLeaf())
             {
-                Debug.Assert(child1 == NullNode);
-                Debug.Assert(child2 == NullNode);
-                Debug.Assert(_nodes[index].Height == 0);
                 return;
             }
-
-            Debug.Assert((0 <= child1) && (child1 < _nodeCapacity));
-            Debug.Assert((0 <= child2) && (child2 < _nodeCapacity));
 
             int height1 = _nodes[child1].Height;
             int height2 = _nodes[child2].Height;
             int height = 1 + Math.Max(height1, height2);
-            Debug.Assert(_nodes[index].Height == height);
-
             Aabb aabb = new Aabb();
             aabb.Combine(ref _nodes[child1].Aabb, ref _nodes[child2].Aabb);
-
-            Debug.Assert(aabb.LowerBound == _nodes[index].Aabb.LowerBound);
-            Debug.Assert(aabb.UpperBound == _nodes[index].Aabb.UpperBound);
 
             ValidateMetrics(child1);
             ValidateMetrics(child2);
@@ -1006,15 +949,11 @@ namespace Alis.Core.Physic.Collision
             int freeIndex = _freeList;
             while (freeIndex != NullNode)
             {
-                Debug.Assert((0 <= freeIndex) && (freeIndex < _nodeCapacity));
                 freeIndex = _nodes[freeIndex].Next;
                 ++freeCount;
             }
 
-            Debug.Assert(Height == ComputeHeight());
-
-            Debug.Assert(_nodeCount + freeCount == _nodeCapacity);
-        }
+            }
 
         /// <summary>
         ///     Build an optimal tree. Very expensive. For testing.

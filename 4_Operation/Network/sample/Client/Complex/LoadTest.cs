@@ -28,11 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
+
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Time;
 
 namespace Alis.Core.Network.Sample.Client.Complex
 {
@@ -114,7 +115,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
         /// <param name="webSocket">The web socket</param>
         private async Task Receive(WebSocket webSocket)
         {
-            Stopwatch stopwatch = Stopwatch.StartNew();
+            Clock stopwatch = Clock.StartNew();
             long len = await ReadAll(webSocket);
             Logger.Info($"Read {len:#,##0} bytes in {stopwatch.Elapsed.TotalMilliseconds:#,##0} ms");
         }

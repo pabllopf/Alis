@@ -28,8 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
@@ -528,9 +527,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         {
             ShapeType type1 = fixtureA.GetShape.ShapeType;
             ShapeType type2 = fixtureB.GetShape.ShapeType;
-
-            Debug.Assert((ShapeType.Unknown < type1) && (type1 < ShapeType.TypeCount));
-            Debug.Assert((ShapeType.Unknown < type2) && (type2 < ShapeType.TypeCount));
 
             Contact c = null;
             ContactListHead contactPoolList = contactManager.ContactPoolList;

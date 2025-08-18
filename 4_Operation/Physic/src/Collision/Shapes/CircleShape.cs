@@ -28,8 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
@@ -54,9 +53,6 @@ namespace Alis.Core.Physic.Collision.Shapes
         public CircleShape(float radius, float density)
             : base(density)
         {
-            Debug.Assert(radius >= 0);
-            Debug.Assert(density >= 0);
-
             ShapeType = ShapeType.Circle;
             PositionInternal = Vector2F.Zero;
             GetRadius = radius; // The Radius property cache 2radius and calls ComputeProperties(). So no need to call ComputeProperties() here.

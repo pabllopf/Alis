@@ -1,4 +1,3 @@
-using System.Threading;
 using Alis.Core.Ecs.Kernel.Archetype;
 
 namespace Alis.Core.Ecs.Updating.Runners

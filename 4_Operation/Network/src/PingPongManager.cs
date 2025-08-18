@@ -28,10 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
+
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Time;
 using Alis.Core.Network.Internal;
 
 namespace Alis.Core.Network
@@ -59,7 +60,7 @@ namespace Alis.Core.Network
         /// <summary>
         ///     The stopwatch
         /// </summary>
-        internal readonly Stopwatch Stopwatch;
+        internal readonly Clock Stopwatch;
 
         /// <summary>
         ///     The web socket
@@ -97,7 +98,7 @@ namespace Alis.Core.Network
             KeepAliveInterval = keepAliveInterval;
             CancellationToken = cancellationToken;
             webSocketImpl.Pong += WebSocketImplPong;
-            Stopwatch = Stopwatch.StartNew();
+            Stopwatch = Clock.StartNew();
 
             if (keepAliveInterval == TimeSpan.Zero)
             {

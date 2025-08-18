@@ -28,8 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
@@ -283,8 +282,6 @@ namespace Alis.Core.Physic.Dynamics
         {
             set
             {
-                Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
-
                 if (_bodyType == BodyType.Static)
                 {
                     return;
@@ -308,8 +305,6 @@ namespace Alis.Core.Physic.Dynamics
         {
             set
             {
-                Debug.Assert(!float.IsNaN(value));
-
                 if (_bodyType == BodyType.Static)
                 {
                     return;
@@ -334,8 +329,6 @@ namespace Alis.Core.Physic.Dynamics
             get => _linearDamping;
             set
             {
-                Debug.Assert(!float.IsNaN(value));
-
                 _linearDamping = value;
             }
         }
@@ -349,8 +342,6 @@ namespace Alis.Core.Physic.Dynamics
             get => _angularDamping;
             set
             {
-                Debug.Assert(!float.IsNaN(value));
-
                 _angularDamping = value;
             }
         }
@@ -508,8 +499,6 @@ namespace Alis.Core.Physic.Dynamics
             get => Xf.Position;
             set
             {
-                Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
-
                 if (GetWorldPhysic == null)
                 {
                     Xf.Position = value;
@@ -530,8 +519,6 @@ namespace Alis.Core.Physic.Dynamics
             get => Sweep.A;
             set
             {
-                Debug.Assert(!float.IsNaN(value));
-
                 if (GetWorldPhysic == null)
                 {
                     Sweep.A = value;
@@ -603,8 +590,6 @@ namespace Alis.Core.Physic.Dynamics
                     throw new InvalidOperationException("The World is locked.");
                 }
 
-                Debug.Assert(!float.IsNaN(value));
-
                 if (_bodyType != BodyType.Dynamic) //Make an assert
                 {
                     return;
@@ -637,8 +622,6 @@ namespace Alis.Core.Physic.Dynamics
                     throw new InvalidOperationException("The World is locked.");
                 }
 
-                Debug.Assert(!float.IsNaN(value));
-
                 if (_bodyType != BodyType.Dynamic) //Make an assert
                 {
                     return;
@@ -647,7 +630,6 @@ namespace Alis.Core.Physic.Dynamics
                 if ((value > 0.0f) && !_fixedRotation) //Make an assert
                 {
                     _inertia = value - Mass * Vector2F.Dot(LocalCenter, LocalCenter);
-                    Debug.Assert(_inertia > 0.0f);
                     InvI = 1.0f / _inertia;
                 }
             }
@@ -882,7 +864,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <exception cref="System.InvalidOperationException">Thrown when the world is Locked/Stepping.</exception>
         public void SetTransformIgnoreContacts(ref Vector2F position, float angle)
         {
-            Debug.Assert(GetWorldPhysic != null);
             if (GetWorldPhysic.GetIsLocked)
             {
                 throw new InvalidOperationException("The World is locked.");
@@ -958,11 +939,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="point">The world position of the point of application.</param>
         public void ApplyForce(ref Vector2F force, ref Vector2F point)
         {
-            Debug.Assert(!float.IsNaN(force.X));
-            Debug.Assert(!float.IsNaN(force.Y));
-            Debug.Assert(!float.IsNaN(point.X));
-            Debug.Assert(!float.IsNaN(point.Y));
-
             if (_bodyType == BodyType.Dynamic)
             {
                 if (Awake == false)
@@ -983,8 +959,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="torque">The torque about the z-axis (out of the screen), usually in N-m.</param>
         public void ApplyTorque(float torque)
         {
-            Debug.Assert(!float.IsNaN(torque));
-
             if (_bodyType == BodyType.Dynamic)
             {
                 if (Awake == false)
@@ -1105,8 +1079,6 @@ namespace Alis.Core.Physic.Dynamics
                 return;
             }
 
-            Debug.Assert(GetBodyType == BodyType.Dynamic || GetBodyType == BodyType.Static);
-
             // Accumulate mass over all fixtures.
             Vector2F localCenter = Vector2F.Zero;
             foreach (Fixture f in FixtureList)
@@ -1147,7 +1119,6 @@ namespace Alis.Core.Physic.Dynamics
                 // Center the inertia about the center of mass.
                 _inertia -= _mass * Vector2F.Dot(localCenter, localCenter);
 
-                Debug.Assert(_inertia > 0.0f);
                 InvI = 1.0f / _inertia;
             }
             else

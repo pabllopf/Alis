@@ -27,10 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Collision.Shapes
@@ -98,8 +96,6 @@ namespace Alis.Core.Physic.Collision.Shapes
             get => Density;
             set
             {
-                Debug.Assert(value >= 0);
-
                 Density = value;
                 ComputeProperties();
             }
@@ -114,8 +110,6 @@ namespace Alis.Core.Physic.Collision.Shapes
             get => Radius;
             set
             {
-                Debug.Assert(value >= 0);
-
                 Radius = value;
                 _2radius = Radius * Radius;
 

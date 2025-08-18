@@ -28,8 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory.Exceptions;
 using Alis.Core.Physic.Dynamics;
@@ -104,8 +103,6 @@ namespace Alis.Core.Physic.Common
             }
 
             //We need at least 8 vertices to create a rounded rectangle
-            Debug.Assert(SettingEnv.MaxPolygonVertices >= 8);
-
             Vertices vertices = new Vertices();
             if (segments == 0)
             {
@@ -206,10 +203,6 @@ namespace Alis.Core.Physic.Common
         /// <returns>The vertices</returns>
         public static Vertices CreateArc(float radians, int sides, float radius)
         {
-            Debug.Assert(radians > 0, "The arc needs to be larger than 0");
-            Debug.Assert(sides > 1, "The arc needs to have more than 1 sides");
-            Debug.Assert(radius > 0, "The arc needs to have a radius larger than 0");
-
             Vertices vertices = new Vertices();
 
             float stepSize = radians / sides;

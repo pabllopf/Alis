@@ -30,6 +30,7 @@
 using System;
 using System.Diagnostics;
 
+
 namespace Alis.Core.Aspect.Logging
 {
     /// <summary>

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Alis.Builder.Core.Ecs.Components.Audio;
 using Alis.Builder.Core.Ecs.Components.Collider;
 using Alis.Builder.Core.Ecs.Components.Render;

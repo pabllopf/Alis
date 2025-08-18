@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
@@ -98,8 +98,6 @@ namespace Alis.Core.Physic.Common.PolygonManipulation
         /// </returns>
         private static List<Vertices> Execute(Vertices subject, Vertices clip, PolyClipType clipType, out PolyClipError error)
         {
-            Debug.Assert(subject.IsSimple() && clip.IsSimple(), "Non simple input! Input polygons must be simple (cannot intersect themselves).");
-
             // Copy polygons
             // Calculate the intersection and touch points between
             // subject and clip and add them to both

@@ -2,7 +2,6 @@ using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetype;
-using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Updating;
 

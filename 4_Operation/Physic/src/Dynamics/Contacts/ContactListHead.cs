@@ -29,7 +29,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
@@ -105,7 +105,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             /// <returns>The bool</returns>
             public bool MoveNext()
             {
-                Debug.Assert(Current != null, nameof(Current) + " != null");
                 Current = Current.Next;
                 return Current != _head;
             }

@@ -28,12 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
+
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using Alis.Core.Aspect.Memory.Exceptions;
+using Alis.Core.Aspect.Time;
 using Alis.Core.Audio.Interfaces;
 
 namespace Alis.Core.Audio.Players
@@ -57,7 +58,7 @@ namespace Alis.Core.Audio.Players
         /// <summary>
         ///     The play stopwatch
         /// </summary>
-        private Stopwatch _playStopwatch;
+        private Clock _playStopwatch;
 
         /// <summary>
         ///     Disposes this instance
@@ -91,7 +92,7 @@ namespace Alis.Core.Audio.Players
             {
                 AutoReset = false
             };
-            _playStopwatch = new Stopwatch();
+            _playStopwatch = new Clock();
             //ExecuteMsiCommand("Close All");
             ExecuteMsiCommand($"Status {_fileName} Length");
             ExecuteMsiCommand($"Play {_fileName}");

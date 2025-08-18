@@ -28,8 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
@@ -86,8 +85,6 @@ namespace Alis.Core.Physic.Collision
             _proxyA = proxyA;
             _proxyB = proxyB;
             int count = cache.Count;
-            Debug.Assert((0 < count) && (count < 3));
-
             _sweepA = sweepA;
             _sweepB = sweepB;
 
@@ -221,7 +218,6 @@ namespace Alis.Core.Physic.Collision
                 }
 
                 default:
-                    Debug.Assert(false);
                     indexA = -1;
                     indexB = -1;
                     return 0.0f;
@@ -276,7 +272,6 @@ namespace Alis.Core.Physic.Collision
                     return separation;
                 }
                 default:
-                    Debug.Assert(false);
                     return 0.0f;
             }
         }

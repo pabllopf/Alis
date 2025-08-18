@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
@@ -54,9 +54,6 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// </summary>
         public static List<Vertices> ConvexPartition(Vertices vertices)
         {
-            Debug.Assert(vertices.Count > 3);
-            Debug.Assert(vertices.IsCounterClockWise());
-
             return TriangulatePolygon(vertices);
         }
 

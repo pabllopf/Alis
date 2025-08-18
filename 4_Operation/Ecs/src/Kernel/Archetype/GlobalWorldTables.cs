@@ -1,7 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Redifinition;
 
 namespace Alis.Core.Ecs.Kernel.Archetype
 {

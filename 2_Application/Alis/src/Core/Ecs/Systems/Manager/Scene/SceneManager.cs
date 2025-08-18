@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.IO;
-
 using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Core.Ecs.Systems.Manager.Scene

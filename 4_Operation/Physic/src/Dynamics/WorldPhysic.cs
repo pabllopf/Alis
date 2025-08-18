@@ -29,8 +29,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Aspect.Time;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Common;
@@ -71,7 +72,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The stopwatch
         /// </summary>
-        private readonly Stopwatch _watch = new Stopwatch();
+        private readonly Clock _watch = new Clock();
 
         /// <summary>
         ///     Get the world body list.
@@ -379,7 +380,6 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     // Grab the next body off the stack and add it to the island.
                     Body b = _stack[--stackCount];
-                    Debug.Assert(b.Enabled);
                     GetIsland.Add(b);
 
                     // Make sure the body is awake.
@@ -428,7 +428,7 @@ namespace Alis.Core.Physic.Dynamics
                             continue;
                         }
 
-                        Debug.Assert(stackCount < stackSize);
+                        
                         _stack[stackCount++] = other;
 
                         other.Island = true;
@@ -462,7 +462,7 @@ namespace Alis.Core.Physic.Dynamics
                                 continue;
                             }
 
-                            Debug.Assert(stackCount < stackSize);
+                           
                             _stack[stackCount++] = other;
 
                             other.Island = true;
@@ -581,8 +581,7 @@ namespace Alis.Core.Physic.Dynamics
 
                         BodyType typeA = bA.GetBodyType;
                         BodyType typeB = bB.GetBodyType;
-                        Debug.Assert(typeA == BodyType.Dynamic || typeB == BodyType.Dynamic);
-
+                     
                         bool activeA = bA.Awake && (typeA != BodyType.Static);
                         bool activeB = bB.Awake && (typeB != BodyType.Static);
 
@@ -615,9 +614,7 @@ namespace Alis.Core.Physic.Dynamics
                             alpha0 = bA.Sweep.Alpha0;
                             bB.Sweep.Advance(alpha0);
                         }
-
-                        Debug.Assert(alpha0 < 1.0f);
-
+                        
                         // Compute the time of impact in interval [0, minTOI]
                         _input.ProxyA = new DistanceProxy(fA.GetShape, c.ChildIndexA);
                         _input.ProxyB = new DistanceProxy(fB.GetShape, c.ChildIndexB);
@@ -1891,8 +1888,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public Path CreateChain(Vector2F start, Vector2F end, float linkWidth, float linkHeight, int numberOfLinks, float linkDensity, bool attachRopeJoint)
         {
-            Debug.Assert(numberOfLinks >= 2);
-
             //Chain start / end
             Path path = new Path();
             path.Add(start);

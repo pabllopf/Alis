@@ -28,12 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
-using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics.Contacts;
 
 namespace Alis.Core.Physic.Dynamics
@@ -244,7 +242,6 @@ namespace Alis.Core.Physic.Dynamics
             get => _friction;
             set
             {
-                Debug.Assert(!float.IsNaN(value));
                 _friction = value;
             }
         }
@@ -259,7 +256,6 @@ namespace Alis.Core.Physic.Dynamics
             get => _restitution;
             set
             {
-                Debug.Assert(!float.IsNaN(value));
                 _restitution = value;
             }
         }
@@ -336,7 +332,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="childIndex">Index of the child.</param>
         public void GetAabb(out Aabb aabb, int childIndex)
         {
-            Debug.Assert((0 <= childIndex) && (childIndex < ProxyCount));
             aabb = Proxies[childIndex].Aabb;
         }
 

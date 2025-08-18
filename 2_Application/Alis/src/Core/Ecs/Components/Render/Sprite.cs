@@ -28,14 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 
 using Alis.Core.Aspect.Data.Resource;
-using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.GlfwLib.Structs;
 using Alis.Core.Graphic.OpenGL;

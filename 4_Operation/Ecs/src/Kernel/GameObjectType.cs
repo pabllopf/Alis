@@ -4,7 +4,6 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Kernel.Archetype;
-using Alis.Core.Ecs.Redifinition;
 
 namespace Alis.Core.Ecs.Kernel
 {

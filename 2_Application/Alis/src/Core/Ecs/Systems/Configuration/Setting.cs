@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.IO;
-
 using Alis.Core.Ecs.Systems.Configuration.Audio;
 using Alis.Core.Ecs.Systems.Configuration.General;
 using Alis.Core.Ecs.Systems.Configuration.Graphic;

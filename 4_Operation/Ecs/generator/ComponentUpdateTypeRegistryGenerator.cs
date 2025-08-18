@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Immutable;
-using System.Diagnostics;
+
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -139,9 +139,7 @@ namespace Alis.Core.Ecs.Generator
             PushUpdateTypeAttributes(ref attributes, gsc.Node, gsc.SemanticModel);
 
             AddMiscFlags();
-
-            Debug.Assert(genericArguments is not null);
-
+            
             string @namespace = null;
 
             if(!componentTypeSymbol.ContainingNamespace.IsGlobalNamespace)

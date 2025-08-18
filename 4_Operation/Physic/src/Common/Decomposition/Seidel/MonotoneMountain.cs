@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
@@ -209,8 +209,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                 }
             }
 
-            Debug.Assert(_size <= 3, "Triangulation bug, please report");
-        }
+            }
 
         /// <summary>
         ///     Describes whether this instance valid

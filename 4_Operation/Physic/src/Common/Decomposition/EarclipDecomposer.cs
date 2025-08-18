@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
@@ -55,9 +55,6 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="tolerance">The tolerance.</param>
         public static List<Vertices> ConvexPartition(Vertices vertices, float tolerance = 0.001f)
         {
-            Debug.Assert(vertices.Count > 3);
-            Debug.Assert(!vertices.IsCounterClockWise());
-
             return TriangulatePolygon(vertices, tolerance);
         }
 
