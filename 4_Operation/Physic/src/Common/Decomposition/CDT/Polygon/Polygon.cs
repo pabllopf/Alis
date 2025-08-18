@@ -27,18 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-// Changes from the Java version
-//   Polygon constructors sprused up, checks for 3+ polys
-//   Naming of everything
-//   getTriangulationMode() -> TriangulationMode { get; }
-//   Exceptions replaced
-// Future possibilities
-//   We have a lot of Add/Clear methods -- we may prefer to just expose the container
-//   Some self-explanitory methods may deserve commenting anyways
-
 using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
@@ -99,7 +90,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
         ///     Create a polygon from a list of at least 3 points with no duplicates.
         /// </summary>
         /// <param name="points">A list of unique points.</param>
-        public Polygon(IEnumerable<PolygonPoint> points) : this(points as IList<PolygonPoint> ?? points.ToArray())
+        public Polygon(IEnumerable<PolygonPoint> points) : this(points is IList<PolygonPoint> list ? list : new List<PolygonPoint>(points))
         {
         }
 

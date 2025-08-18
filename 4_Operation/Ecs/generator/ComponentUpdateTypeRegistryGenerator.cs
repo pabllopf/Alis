@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Immutable;
-
 using System.Linq;
+
 using System.Reflection;
 using System.Threading;
 using Alis.Core.Ecs.Generator.Models;

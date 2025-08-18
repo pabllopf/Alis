@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
@@ -292,10 +292,10 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                     return fr;
                 }, p1, p2);
 
-                //draws radius points
+                // Sustituye el bloque seleccionado así:
                 if (hitClosest && (fixture.GetBody.GetBodyType == BodyType.Dynamic))
                 {
-                    if (_data.Any() && (_data.Last().Body == fixture.GetBody) && !rayMissed)
+                    if (ListAny(_data) && (ListLast(_data).Body == fixture.GetBody) && !rayMissed)
                     {
                         int laPos = _data.Count - 1;
                         ShapeData la = _data[laPos];
@@ -314,14 +314,14 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
 
                     if ((_data.Count > 1)
                         && (i == valIndex - 1)
-                        && (_data.Last().Body == _data.First().Body)
-                        && (Math.Abs(_data.Last().Max - _data.First().Min) < float.Epsilon))
+                        && (ListLast(_data).Body == ListFirst(_data).Body)
+                        && (Math.Abs(ListLast(_data).Max - ListFirst(_data).Min) < float.Epsilon))
                     {
                         ShapeData fi = _data[0];
-                        fi.Min = _data.Last().Min;
+                        fi.Min = ListLast(_data).Min;
                         _data.RemoveAt(_data.Count - 1);
                         _data[0] = fi;
-                        while (_data.First().Min >= _data.First().Max)
+                        while (ListFirst(_data).Min >= ListFirst(_data).Max)
                         {
                             fi.Min -= Constant.Pi * 2;
                             _data[0] = fi;
@@ -331,9 +331,9 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
                     int lastPos = _data.Count - 1;
                     ShapeData last = _data[lastPos];
                     while ((_data.Count > 0)
-                           && (_data.Last().Min >= _data.Last().Max)) // just making sure min<max
+                           && (ListLast(_data).Min >= ListLast(_data).Max)) // just making sure min<max
                     {
-                        last.Min = _data.Last().Min - 2 * Constant.Pi;
+                        last.Min = ListLast(_data).Min - 2 * Constant.Pi;
                         _data[lastPos] = last;
                     }
 
@@ -452,5 +452,11 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
 
             return exploded;
         }
+        
+        // Métodos auxiliares
+        private bool ListAny<T>(List<T> list) => list.Count > 0;
+        private T ListFirst<T>(List<T> list) => list[0];
+        private T ListLast<T>(List<T> list) => list[list.Count - 1];
+
     }
 }

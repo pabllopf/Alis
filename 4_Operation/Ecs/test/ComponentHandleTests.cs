@@ -1,6 +1,6 @@
 using System;
-        using System.Linq;
-        using Alis.Core.Ecs.Test.Helpers;
+using System.Linq;
+using Alis.Core.Ecs.Test.Helpers;
         using Alis.Core;
         using Alis.Core.Ecs.Kernel;
         using Xunit;

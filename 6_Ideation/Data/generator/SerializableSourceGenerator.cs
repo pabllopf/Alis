@@ -1,8 +1,9 @@
 
 
 using System;
-using System.Linq;
+
 using System.Text;
+using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
@@ -57,8 +58,9 @@ namespace Alis.Core.Aspect.Data.Generator
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("using System;");
-            sb.AppendLine("using System.Collections.Generic;");
             sb.AppendLine("using System.Linq;");
+            sb.AppendLine("using System.Collections.Generic;");
+            sb.AppendLine("");
             sb.AppendLine("using Alis.Core.Aspect.Data.Json;");
             sb.AppendLine($"namespace {typeSymbol.ContainingNamespace}");
 
@@ -87,7 +89,7 @@ namespace Alis.Core.Aspect.Data.Generator
                     {
                         // Array simple
                         string elemType = arrayType.ElementType.ToDisplayString();
-                        sb.AppendLine($"            yield return (\"{jsonName}\", {property.Name} != null ? \"[\" + string.Join(\",\", {property.Name}.Select(x => x is IJsonSerializable js ? JsonNativeAot.Serialize(js) : x.ToString())) + \"]\" : null);");
+                        sb.AppendLine($"            yield return (\"{jsonName}\", JoinJsonSerializableArray({property.Name}));");
                     }
                     else if (type is IArrayTypeSymbol arrayType2D && arrayType2D.Rank == 2)
                     {
@@ -300,6 +302,24 @@ namespace Alis.Core.Aspect.Data.Generator
             sb.AppendLine("            };");
             sb.AppendLine("        }");
 
+            sb.AppendLine(@"
+                    private static string JoinJsonSerializableArray(System.Array array)
+                    {
+                        if (array == null) return null;
+                        var sb = new System.Text.StringBuilder();
+                        sb.Append(""["");
+                        bool first = true;
+                        foreach (var x in array)
+                        {
+                            if (!first) sb.Append("",""); 
+                            sb.Append(x is IJsonSerializable js ? JsonNativeAot.Serialize(js) : x.ToString());
+                            first = false;
+                        }
+                        sb.Append(""]"");
+                        return sb.ToString();
+                    }
+            ");
+            
             sb.AppendLine(@"
                    private static T[,] Parse2DArrayInline<T>(string json)
                    {
