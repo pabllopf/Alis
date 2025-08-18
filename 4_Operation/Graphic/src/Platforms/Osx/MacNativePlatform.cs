@@ -1,9 +1,9 @@
 #if OSX
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.Sample.Platform.Osx.Internal;
+using Alis.Core.Graphic.Platforms.Osx.Internal;
 
-namespace Alis.Core.Graphic.Sample.Platform.Osx
+namespace Alis.Core.Graphic.Platforms.Osx
 {
     /// <summary>
     /// Plataforma nativa para macOS, coordinando ventana y contexto OpenGL

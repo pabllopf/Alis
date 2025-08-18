@@ -1,9 +1,9 @@
-﻿#if WIN
+#if WIN
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Alis.Core.Graphic.Sample.Platform.Win.Native
+namespace Alis.Core.Graphic.Platforms.Win.Native
 {
     internal static class User32
     {

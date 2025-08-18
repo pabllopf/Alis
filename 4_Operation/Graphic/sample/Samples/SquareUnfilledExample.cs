@@ -11,10 +11,22 @@ namespace Alis.Core.Graphic.Sample.Samples
     /// </summary>
     public class SquareUnfilledExample : IExample
     {
+        /// <summary>
+        /// The shader program
+        /// </summary>
         private uint shaderProgram;
+        /// <summary>
+        /// The vao
+        /// </summary>
         private uint vao;
+        /// <summary>
+        /// The vbo
+        /// </summary>
         private uint vbo;
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
             float[] vertices =
@@ -86,6 +98,9 @@ namespace Alis.Core.Graphic.Sample.Samples
             Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), IntPtr.Zero);
         }
 
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
         public void Draw()
         {
             Gl.GlDisable(EnableCap.DepthTest); // Desactiva el buffer de profundidad
@@ -97,6 +112,9 @@ namespace Alis.Core.Graphic.Sample.Samples
             Gl.GlDrawArrays(PrimitiveType.LineLoop, 0, 4); // Dibuja el contorno del cuadrado
         }
 
+        /// <summary>
+        /// Cleanups this instance
+        /// </summary>
         public void Cleanup()
         {
             Gl.DeleteVertexArray(vao);

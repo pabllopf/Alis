@@ -29,9 +29,16 @@
 
 namespace Alis.Core.Aspect.Logging.Sample
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     public class Program
     {
         
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
             // Log a message

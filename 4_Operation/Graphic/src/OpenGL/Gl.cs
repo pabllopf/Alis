@@ -696,7 +696,14 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         /// <param name="width">The width of the line</param>
         public delegate void LineWidth(float width);
+        /// <summary>
+        /// Gets the value of the gl line width delegate
+        /// </summary>
         public static LineWidth GlLineWidthDelegate => GetCommand<LineWidth>("glLineWidth");
+        /// <summary>
+        /// Gls the line width using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
         public static void GlLineWidth(float width)
         {
             GlLineWidthDelegate(width);
@@ -707,7 +714,14 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         /// <param name="texture">The texture unit</param>
         public delegate void ActiveTexture(TextureUnit texture);
+        /// <summary>
+        /// Gets the value of the gl active texture delegate
+        /// </summary>
         public static ActiveTexture GlActiveTextureDelegate => GetCommand<ActiveTexture>("glActiveTexture");
+        /// <summary>
+        /// Gls the active texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
         public static void GlActiveTexture(TextureUnit texture)
         {
             GlActiveTextureDelegate(texture);

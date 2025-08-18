@@ -13,7 +13,13 @@ namespace Alis.Core.Graphic.Sample.Samples
     /// <seealso cref="IExample"/>
     class CubeExample : IExample
     {
+        /// <summary>
+        /// The shader program
+        /// </summary>
         private uint vao, vbo, ebo, shaderProgram;
+        /// <summary>
+        /// The vertices
+        /// </summary>
         private float[] vertices = {
             // positions          // colors
             -0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f,
@@ -25,6 +31,9 @@ namespace Alis.Core.Graphic.Sample.Samples
              0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f,
             -0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 0.0f
         };
+        /// <summary>
+        /// The indices
+        /// </summary>
         private uint[] indices = {
             0, 1, 3, 1, 2, 3,
             1, 5, 2, 5, 6, 2,
@@ -33,6 +42,9 @@ namespace Alis.Core.Graphic.Sample.Samples
             3, 2, 7, 2, 6, 7,
             4, 5, 0, 5, 1, 0
         };
+        /// <summary>
+        /// The vertex shader source
+        /// </summary>
         private string vertexShaderSource = @"#version 150 core
 in vec3 aPos;
 in vec3 aColor;
@@ -43,6 +55,9 @@ void main()
     gl_Position = transform * vec4(aPos, 1.0);
     ourColor = aColor;
 }";
+        /// <summary>
+        /// The fragment shader source
+        /// </summary>
         private string fragmentShaderSource = @"#version 150 core
 in vec3 ourColor;
 out vec4 FragColor;

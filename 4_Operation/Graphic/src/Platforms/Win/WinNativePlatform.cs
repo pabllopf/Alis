@@ -1,34 +1,38 @@
+// --------------------------------------------------------------------------
+// Win32NativePlatform.cs
+// Platform abstraction for Win32 window and OpenGL context management
+// --------------------------------------------------------------------------
 #if WIN
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.Sample.Platform.Win.Native;
+using Alis.Core.Graphic.Platforms.Win.Native;
 
-namespace Alis.Core.Graphic.Sample.Platform.Win
+namespace Alis.Core.Graphic.Platforms.Win
 {
-    public class Win32NativePlatform : INativePlatform
+    /// <summary>
+    /// Provides a Win32 implementation for native platform window and OpenGL context management.
+    /// Designed for scalability and maintainability.
+    /// </summary>
+    public class WinNativePlatform : INativePlatform
     {
-        // Win32 constants
+        // ------------------------------------------------------------------
+        // CONSTANTS
+        // ------------------------------------------------------------------
         private const string WindowClassName = "AlisWin32GLWindow";
-        private const int WsOverlappedwindow = 0x00CF0000;
-        private const int WsVisible = 0x10000000;
         private const int CwUsedefault = unchecked((int)0x80000000);
-        private const int WmClose = 0x0010;
-        private const int WmDestroy = 0x0002;
-        private const int WmKeydown = 0x0100;
-        private const int WmSize = 0x0005;
-        private const int SwShow = 5;
-        private const int SwHide = 0;
-        private const int CsOwndc = 0x0020;
-        private const int PfdDrawToWindow = 0x00000004;
-        private const int PfdSupportOpengl = 0x00000020;
-        private const int PfdDoublebuffer = 0x00000001;
-        private const int PfdTypeRgba = 0;
-        private const int PfdMainPlane = 0;
+        private const uint SwpNomove = 0x0040;
 
-        // Win32 types
+        // ------------------------------------------------------------------
+        // DELEGATES
+        // ------------------------------------------------------------------
+        /// <summary>
+        /// Delegate for window procedure callback.
+        /// </summary>
         private delegate IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 
-        // Win32 fields
+        // ------------------------------------------------------------------
+        // FIELDS
+        // ------------------------------------------------------------------
         private IntPtr hInstance;
         private IntPtr hWnd;
         private IntPtr hDc;
@@ -37,21 +41,26 @@ namespace Alis.Core.Graphic.Sample.Platform.Win
         private string title;
         private ConsoleKey? lastKeyPressed = null;
         private bool running = true;
-        
         private WndProc wndProcDelegate;
         private IntPtr wndProcPtr;
 
+        // ------------------------------------------------------------------
+        // PUBLIC METHODS
+        // ------------------------------------------------------------------
+        /// <summary>
+        /// Initializes the Win32 window and OpenGL context.
+        /// </summary>
         public void Initialize(int w, int h, string t)
         {
             width = w;
             height = h;
             title = t;
-            hInstance = Marshal.GetHINSTANCE(typeof(Win32NativePlatform).Module);
+            hInstance = Marshal.GetHINSTANCE(typeof(WinNativePlatform).Module);
             wndProcDelegate = WindowProc;
             wndProcPtr = Marshal.GetFunctionPointerForDelegate(wndProcDelegate);
             var wc = new Wndclass
             {
-                style = CsOwndc,
+                style = (uint)ClassStyles.OwnDC,
                 lpfnWndProc = wndProcPtr,
                 cbClsExtra = 0,
                 cbWndExtra = 0,
@@ -63,40 +72,52 @@ namespace Alis.Core.Graphic.Sample.Platform.Win
                 lpszClassName = WindowClassName
             };
             User32.RegisterClass(ref wc);
-            hWnd = User32.CreateWindowEx(0, WindowClassName, title, WsOverlappedwindow | WsVisible, CwUsedefault, CwUsedefault, width, height, IntPtr.Zero, IntPtr.Zero, hInstance, IntPtr.Zero);
+            hWnd = User32.CreateWindowEx((int)WindowExStyles.None, WindowClassName, title,
+                (int)(WindowStyles.OverlappedWindow | WindowStyles.Visible),
+                CwUsedefault, CwUsedefault, width, height,
+                IntPtr.Zero, IntPtr.Zero, hInstance, IntPtr.Zero);
             hDc = User32.GetDC(hWnd);
             var pfd = new Pixelformatdescriptor
             {
                 nSize = (ushort)Marshal.SizeOf(typeof(Pixelformatdescriptor)),
                 nVersion = 1,
-                dwFlags = PfdDrawToWindow | PfdSupportOpengl | PfdDoublebuffer,
-                iPixelType = PfdTypeRgba,
+                dwFlags = (uint)(PixelFormatFlags.DrawToWindow | PixelFormatFlags.SupportOpenGL | PixelFormatFlags.DoubleBuffer),
+                iPixelType = (byte)PixelType.RGBA,
                 cColorBits = 32,
                 cDepthBits = 24,
-                iLayerType = PfdMainPlane
+                iLayerType = (byte)LayerType.MainPlane
             };
             int pixelFormat = Gdi32.ChoosePixelFormat(hDc, ref pfd);
             Gdi32.SetPixelFormat(hDc, pixelFormat, ref pfd);
             hGlrc = Opengl32.wglCreateContext(hDc);
         }
 
+        /// <summary>
+        /// Shows the window.
+        /// </summary>
         public void ShowWindow()
         {
             if (hWnd != IntPtr.Zero)
             {
-                User32.ShowWindow(hWnd, SwShow);
+                User32.ShowWindow(hWnd, (int)ShowWindowCommand.Show);
                 User32.UpdateWindow(hWnd);
             }
         }
 
+        /// <summary>
+        /// Hides the window.
+        /// </summary>
         public void HideWindow()
         {
             if (hWnd != IntPtr.Zero)
             {
-                User32.ShowWindow(hWnd, SwHide);
+                User32.ShowWindow(hWnd, (int)ShowWindowCommand.Hide);
             }
         }
 
+        /// <summary>
+        /// Sets the window title.
+        /// </summary>
         public void SetTitle(string t)
         {
             if (hWnd != IntPtr.Zero)
@@ -106,16 +127,22 @@ namespace Alis.Core.Graphic.Sample.Platform.Win
             }
         }
 
+        /// <summary>
+        /// Sets the window size.
+        /// </summary>
         public void SetSize(int w, int h)
         {
             if (hWnd != IntPtr.Zero)
             {
-                User32.SetWindowPos(hWnd, IntPtr.Zero, 0, 0, w, h, 0x0040); // SWP_NOMOVE
+                User32.SetWindowPos(hWnd, IntPtr.Zero, 0, 0, w, h, SwpNomove); // SWP_NOMOVE
                 width = w;
                 height = h;
             }
         }
 
+        /// <summary>
+        /// Makes the OpenGL context current.
+        /// </summary>
         public void MakeContextCurrent()
         {
             if (hDc != IntPtr.Zero && hGlrc != IntPtr.Zero)
@@ -124,6 +151,9 @@ namespace Alis.Core.Graphic.Sample.Platform.Win
             }
         }
 
+        /// <summary>
+        /// Swaps the front and back buffers.
+        /// </summary>
         public void SwapBuffers()
         {
             if (hDc != IntPtr.Zero)
@@ -132,21 +162,27 @@ namespace Alis.Core.Graphic.Sample.Platform.Win
             }
         }
 
+        /// <summary>
+        /// Returns whether the window is visible.
+        /// </summary>
         public bool IsWindowVisible()
         {
             return hWnd != IntPtr.Zero && User32.IsWindowVisible(hWnd);
         }
 
+        /// <summary>
+        /// Polls and processes window events.
+        /// </summary>
         public bool PollEvents()
         {
             Msg msg;
             while (User32.PeekMessage(out msg, hWnd, 0, 0, 1))
             {
-                if (msg.message == WmKeydown)
+                if (msg.message == (uint)WindowMessage.KeyDown)
                 {
                     lastKeyPressed = (ConsoleKey)msg.wParam.ToInt32();
                 }
-                if (msg.message == WmClose)
+                if (msg.message == (uint)WindowMessage.Close)
                 {
                     running = false;
                     User32.DestroyWindow(hWnd);
@@ -158,6 +194,9 @@ namespace Alis.Core.Graphic.Sample.Platform.Win
             return running && IsWindowVisible();
         }
 
+        /// <summary>
+        /// Cleans up resources and destroys the window and OpenGL context.
+        /// </summary>
         public void Cleanup()
         {
             if (hGlrc != IntPtr.Zero)
@@ -178,6 +217,9 @@ namespace Alis.Core.Graphic.Sample.Platform.Win
             }
         }
 
+        /// <summary>
+        /// Gets the current window width.
+        /// </summary>
         public int GetWindowWidth()
         {
             if (hWnd != IntPtr.Zero)
@@ -189,6 +231,9 @@ namespace Alis.Core.Graphic.Sample.Platform.Win
             return width;
         }
 
+        /// <summary>
+        /// Gets the current window height.
+        /// </summary>
         public int GetWindowHeight()
         {
             if (hWnd != IntPtr.Zero)
@@ -200,6 +245,9 @@ namespace Alis.Core.Graphic.Sample.Platform.Win
             return height;
         }
 
+        /// <summary>
+        /// Gets the address of an OpenGL function.
+        /// </summary>
         public IntPtr GetProcAddress(string name)
         {
             IntPtr addr = Opengl32.wglGetProcAddress(name);
@@ -211,6 +259,9 @@ namespace Alis.Core.Graphic.Sample.Platform.Win
             return addr;
         }
 
+        /// <summary>
+        /// Tries to get the last key pressed.
+        /// </summary>
         public bool TryGetLastKeyPressed(out ConsoleKey key)
         {
             if (lastKeyPressed.HasValue)
@@ -223,23 +274,28 @@ namespace Alis.Core.Graphic.Sample.Platform.Win
             return false;
         }
 
-        // Window procedure
+        // ------------------------------------------------------------------
+        // PRIVATE METHODS
+        // ------------------------------------------------------------------
+        /// <summary>
+        /// Window procedure callback for handling window messages.
+        /// </summary>
         private IntPtr WindowProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
         {
-            switch (msg)
+            switch ((WindowMessage)msg)
             {
-                case WmClose:
+                case WindowMessage.Close:
                     running = false;
                     User32.DestroyWindow(hWnd);
                     return IntPtr.Zero;
-                case WmKeydown:
+                case WindowMessage.KeyDown:
                     lastKeyPressed = (ConsoleKey)wParam.ToInt32();
                     break;
-                case WmSize:
+                case WindowMessage.Size:
                     width = lParam.ToInt32() & 0xFFFF;
                     height = (lParam.ToInt32() >> 16) & 0xFFFF;
                     break;
-                case WmDestroy:
+                case WindowMessage.Destroy:
                     running = false;
                     break;
             }
@@ -248,3 +304,6 @@ namespace Alis.Core.Graphic.Sample.Platform.Win
     }
 }
 #endif
+// --------------------------------------------------------------------------
+// End of Win32NativePlatform.cs
+// --------------------------------------------------------------------------

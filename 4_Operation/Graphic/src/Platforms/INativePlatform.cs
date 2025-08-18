@@ -1,6 +1,6 @@
 using System;
 
-namespace Alis.Core.Graphic.Sample.Platform
+namespace Alis.Core.Graphic.Platforms
 {
     /// <summary>
     /// The native platform interface

@@ -1,5 +1,5 @@
 #if OSX
-namespace Alis.Core.Graphic.Sample.Platform.Osx.Internal
+namespace Alis.Core.Graphic.Platforms.Osx.Internal
 {
     /// <summary>
     /// Constantes y structs para la plataforma Mac
