@@ -17,8 +17,8 @@ using Alis.Core.Ecs.Test.Helpers;
                 {
                     using Scene scene = new Scene();
         
-                    var e1 = scene.Create<GenericComponent<int>>(default);
-                    var e2 = scene.Create<GenericComponent<object>>(default);
+                    GameObject e1 = scene.Create<GenericComponent<int>>(default);
+                    GameObject e2 = scene.Create<GenericComponent<object>>(default);
         
                     scene.Update();
         

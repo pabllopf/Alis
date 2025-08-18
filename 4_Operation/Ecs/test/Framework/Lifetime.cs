@@ -26,11 +26,11 @@ using System;
         
                     for (int i = 0; i < 10; i++)
                     {
-                        var entity = scene.Create<int, float, FilteredBehavior1>(default, default, new FilteredBehavior1(() => { }, null, () => destroyCount++));
+                        GameObject entity = scene.Create<int, float, FilteredBehavior1>(default, default, new FilteredBehavior1(() => { }, null, () => destroyCount++));
                         entities.Add(entity);
                     }
         
-                    foreach (var entity in entities)
+                    foreach (GameObject entity in entities)
                     {
                         entity.Delete();
                     }
@@ -50,7 +50,7 @@ using System;
                     {
                         IGameObject e1 = default;
         
-                        var entity = scene.Create<int, float, FilteredBehavior1>(default, default, new FilteredBehavior1(() => { }, e => e1 = e));
+                        GameObject entity = scene.Create<int, float, FilteredBehavior1>(default, default, new FilteredBehavior1(() => { }, e => e1 = e));
         
                         Assert.Equal(e1, entity);
                     }
