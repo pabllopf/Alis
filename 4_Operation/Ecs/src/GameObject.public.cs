@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Kernel.Events;
 using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Updating;

@@ -35,7 +35,6 @@ using System.Text;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Util;
 
-
 namespace Alis.Core.Aspect.Math.Vector
 {
     /// <summary>

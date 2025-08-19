@@ -32,6 +32,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Extension.Multimedia.FFmpeg.Audio.Models;
 using Alis.Extension.Multimedia.FFmpeg.BaseClasses;

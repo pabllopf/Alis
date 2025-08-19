@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Ecs.Systems;
 
 namespace Alis.Sample.SplitCamera

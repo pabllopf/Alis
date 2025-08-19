@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Updating;
 using Alis.Core.Ecs.Updating.Runners;
 

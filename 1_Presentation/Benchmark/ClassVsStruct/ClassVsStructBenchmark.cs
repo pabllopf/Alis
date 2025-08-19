@@ -29,7 +29,6 @@
 
 using Alis.Benchmark.ClassVsStruct.Instancies;
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.ClassVsStruct
 {

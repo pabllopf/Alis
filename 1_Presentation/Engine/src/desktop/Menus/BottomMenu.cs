@@ -1,12 +1,12 @@
 using System;
 using Alis.App.Engine.Desktop.Core;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Threading;
+using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.App.Engine.Desktop.Menus
 {

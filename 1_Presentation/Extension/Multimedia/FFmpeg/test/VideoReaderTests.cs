@@ -29,6 +29,7 @@
 
 using System;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Extension.Multimedia.FFmpeg.Video;
 using Xunit;

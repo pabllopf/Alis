@@ -30,6 +30,7 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Extension.Multimedia.FFmpeg.Encoding.Builders;
 using Alis.Extension.Multimedia.FFmpeg.Video;

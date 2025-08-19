@@ -32,7 +32,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.Iterators
 {

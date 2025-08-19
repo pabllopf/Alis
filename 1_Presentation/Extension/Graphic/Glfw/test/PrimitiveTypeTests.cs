@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Graphic;
 using Alis.Core.Graphic.OpenGL;
 using Xunit;
 

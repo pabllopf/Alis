@@ -29,8 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Extension.Multimedia.FFmpeg.BaseClasses
