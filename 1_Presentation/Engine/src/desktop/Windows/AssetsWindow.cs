@@ -34,6 +34,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Desktop.Core;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;

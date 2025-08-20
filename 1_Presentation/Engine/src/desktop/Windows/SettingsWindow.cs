@@ -32,7 +32,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Desktop.Core;
-
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;

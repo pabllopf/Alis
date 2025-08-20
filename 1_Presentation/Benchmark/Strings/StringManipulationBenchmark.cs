@@ -29,7 +29,6 @@
 
 using System.Text;
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.Strings
 {

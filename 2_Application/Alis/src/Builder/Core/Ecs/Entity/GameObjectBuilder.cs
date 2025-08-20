@@ -8,6 +8,7 @@ using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Audio;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
+using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Builder.Core.Ecs.Entity

@@ -31,7 +31,6 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
-
 namespace Alis.Core.Aspect.Math.Matrix
 {
     /// <summary>

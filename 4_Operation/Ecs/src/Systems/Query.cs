@@ -2,7 +2,7 @@ using System;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Kernel.Archetypes;
 
 namespace Alis.Core.Ecs.Systems
 {

@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Multimedia.FFmpeg.Sample

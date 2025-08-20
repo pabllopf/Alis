@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs.Systems.Scope;
+using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.Systems.Manager.Physic

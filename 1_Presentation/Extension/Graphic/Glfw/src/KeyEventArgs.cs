@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Extension.Graphic.Glfw.Enums;
 

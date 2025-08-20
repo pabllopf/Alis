@@ -1,5 +1,5 @@
 using System.Runtime.CompilerServices;
-using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Kernel.Archetypes;
 
 namespace Alis.Core.Ecs.Systems
 {

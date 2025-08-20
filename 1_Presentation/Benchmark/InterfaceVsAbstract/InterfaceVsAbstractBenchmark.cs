@@ -29,7 +29,6 @@
 
 using Alis.Benchmark.InterfaceVsAbstract.Instancies;
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.InterfaceVsAbstract
 {

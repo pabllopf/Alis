@@ -29,6 +29,7 @@
 
 using System;
 using System.Security.Cryptography;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Json;
 
 
