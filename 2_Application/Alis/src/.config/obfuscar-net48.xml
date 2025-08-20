@@ -25,7 +25,10 @@
     <Var name="SuppressIldasm" value="true" />
     <Var name="ControlFlow" value="true" />
     <Var name="RemoveUnused" value="true" />
-    <Var name="SimplifyMethods" value="true" />
+     <Var name="SimplifyMethods" value="true" />
+    <Var name="RemoveAttributes" value="true" />
+    <Var name="CompressResources" value="true" />
+    <Var name="ExcludeResources" value="true" />
 
     <!-- Sobrescribir siempre la salida -->
     <Var name="Overwrite" value="true" />
