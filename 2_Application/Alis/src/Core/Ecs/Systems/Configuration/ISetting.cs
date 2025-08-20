@@ -41,6 +41,9 @@ namespace Alis.Core.Ecs.Systems.Configuration
     /// </summary>
     public interface ISetting
     {
+        /// <summary>
+        /// Gets or sets the value of the general
+        /// </summary>
         public GeneralSetting General { get; set; }
 
         /// <summary>

@@ -70,6 +70,9 @@ namespace Alis.Extension.Math.ProceduralDungeon
         /// <summary>The corridor height</summary>
         public const int CorridorHeight = 4;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Dungeon"/> class
+        /// </summary>
         public Dungeon()
         {
             Board = new BoardSquare[BoardWidth, BoardHeight];

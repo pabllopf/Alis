@@ -1,12 +1,21 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
 namespace Alis.Core.Aspect.Data.Json
 {
+    /// <summary>
+    /// The json native aot class
+    /// </summary>
     public static class JsonNativeAot
     {
+        /// <summary>
+        /// Serializes the instance
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="instance">The instance</param>
+        /// <returns>The string</returns>
         public static string Serialize<T>(T instance) where T : IJsonSerializable
         {
             StringBuilder jsonBuilder = new StringBuilder();
@@ -30,6 +39,13 @@ namespace Alis.Core.Aspect.Data.Json
             return jsonBuilder.ToString();
         }
         
+        /// <summary>
+        /// Serializes the to file using the specified instance
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="instance">The instance</param>
+        /// <param name="nameFile">The name file</param>
+        /// <param name="relativePath">The relative path</param>
         public static void SerializeToFile<T>(T instance, string nameFile, string relativePath) where T : IJsonSerializable
         {
             StringBuilder jsonBuilder = new StringBuilder();
@@ -57,6 +73,12 @@ namespace Alis.Core.Aspect.Data.Json
             Console.WriteLine($"Serialized {typeof(T).Name} to {filePath}");
         }
 
+    /// <summary>
+    /// Deserializes the json
+    /// </summary>
+    /// <typeparam name="T">The </typeparam>
+    /// <param name="json">The json</param>
+    /// <returns>The</returns>
     public static T Deserialize<T>(string json)
     where T : IJsonSerializable, IJsonDesSerializable<T>, new()
 {
@@ -64,6 +86,11 @@ namespace Alis.Core.Aspect.Data.Json
     return new T().CreateFromProperties(properties);
 }
 
+/// <summary>
+/// Parses the json to dictionary using the specified json
+/// </summary>
+/// <param name="json">The json</param>
+/// <returns>The dict</returns>
 public static Dictionary<string, string> ParseJsonToDictionary(string json)
     {
         var dict = new Dictionary<string, string>();
@@ -125,11 +152,22 @@ public static Dictionary<string, string> ParseJsonToDictionary(string json)
         return dict;
     }
 
+    /// <summary>
+    /// Skips the whitespace using the specified s
+    /// </summary>
+    /// <param name="s">The </param>
+    /// <param name="i">The </param>
     private static void SkipWhitespace(string s, ref int i)
     {
         while (i < s.Length && char.IsWhiteSpace(s[i])) i++;
     }
 
+    /// <summary>
+    /// Ises the escaped using the specified s
+    /// </summary>
+    /// <param name="s">The </param>
+    /// <param name="pos">The pos</param>
+    /// <returns>The bool</returns>
     private static bool IsEscaped(string s, int pos)
     {
         // cuenta backslashes justo antes de pos
@@ -139,6 +177,13 @@ public static Dictionary<string, string> ParseJsonToDictionary(string json)
         return (cnt % 2) == 1;
     }
 
+    /// <summary>
+    /// Reads the json string using the specified s
+    /// </summary>
+    /// <param name="s">The </param>
+    /// <param name="i">The </param>
+    /// <exception cref="InvalidOperationException">Expected '"' at start of JSON string.</exception>
+    /// <returns>The string</returns>
     private static string ReadJsonString(string s, ref int i)
     {
         if (s[i] != '"') throw new InvalidOperationException("Expected '\"' at start of JSON string.");
@@ -197,6 +242,12 @@ public static Dictionary<string, string> ParseJsonToDictionary(string json)
         return sb.ToString();
     }
 
+    /// <summary>
+    /// Reads the raw json value using the specified s
+    /// </summary>
+    /// <param name="s">The </param>
+    /// <param name="i">The </param>
+    /// <returns>The string</returns>
     private static string ReadRawJsonValue(string s, ref int i)
     {
         // s[i] == '{' or '['
@@ -238,6 +289,14 @@ public static Dictionary<string, string> ParseJsonToDictionary(string json)
         return "";
     }
 
+        /// <summary>
+        /// Deserializes the from file using the specified general setting name
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="generalSettingName">The general setting name</param>
+        /// <param name="data">The data</param>
+        /// <exception cref="FileNotFoundException">File {filePath} not found.</exception>
+        /// <returns>The</returns>
         public static T DeserializeFromFile<T>(string generalSettingName, string data) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
         {
             string path = Path.Combine(Environment.CurrentDirectory, data);

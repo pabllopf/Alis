@@ -31,6 +31,10 @@ using System;
 
 namespace Alis.Core.Aspect.Data.Json
 {
+    /// <summary>
+    /// The json native ignore attribute class
+    /// </summary>
+    /// <seealso cref="Attribute"/>
     public class JsonNativeIgnoreAttribute : Attribute
     {
     }

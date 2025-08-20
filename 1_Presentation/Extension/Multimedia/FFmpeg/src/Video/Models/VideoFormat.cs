@@ -39,11 +39,28 @@ namespace Alis.Extension.Multimedia.FFmpeg.Video.Models
     [Serializable]
     public partial class VideoFormat 
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoFormat"/> class
+        /// </summary>
         public VideoFormat() : this(string.Empty, 0, 0, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, 0, new VideoFormatTags())
         {
             
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoFormat"/> class
+        /// </summary>
+        /// <param name="filename">The filename</param>
+        /// <param name="nbStreams">The nb streams</param>
+        /// <param name="nbPrograms">The nb programs</param>
+        /// <param name="formatName">The format name</param>
+        /// <param name="formatLongName">The format long name</param>
+        /// <param name="startTime">The start time</param>
+        /// <param name="duration">The duration</param>
+        /// <param name="size">The size</param>
+        /// <param name="bitRate">The bit rate</param>
+        /// <param name="probeScore">The probe score</param>
+        /// <param name="tags">The tags</param>
         public VideoFormat(string filename, long nbStreams, long nbPrograms, string formatName, string formatLongName, string startTime, string duration, string size, string bitRate, long probeScore, VideoFormatTags tags)
         {
             Filename = filename;

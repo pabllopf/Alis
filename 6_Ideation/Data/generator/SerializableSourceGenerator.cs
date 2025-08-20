@@ -1,4 +1,4 @@
-﻿
+
 
 using System;
 using System.Linq;
@@ -8,15 +8,27 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Alis.Core.Aspect.Data.Generator
 {
+    /// <summary>
+    /// The serializable source generator class
+    /// </summary>
+    /// <seealso cref="ISourceGenerator"/>
     [Generator]
     public class SerializableSourceGenerator : ISourceGenerator
     {
+        /// <summary>
+        /// Initializes the context
+        /// </summary>
+        /// <param name="context">The context</param>
         public void Initialize(GeneratorInitializationContext context)
         {
             // Registrar el análisis de sintaxis
             context.RegisterForSyntaxNotifications(() => new SerializableSyntaxReceiver());
         }
 
+        /// <summary>
+        /// Executes the context
+        /// </summary>
+        /// <param name="context">The context</param>
         public void Execute(GeneratorExecutionContext context)
         {
             if (context.SyntaxReceiver is not SerializableSyntaxReceiver receiver)
@@ -36,6 +48,11 @@ namespace Alis.Core.Aspect.Data.Generator
             }
         }
 
+        /// <summary>
+        /// Generates the serialization code using the specified type symbol
+        /// </summary>
+        /// <param name="typeSymbol">The type symbol</param>
+        /// <returns>The string</returns>
         private string GenerateSerializationCode(INamedTypeSymbol typeSymbol)
         {
             StringBuilder sb = new StringBuilder();

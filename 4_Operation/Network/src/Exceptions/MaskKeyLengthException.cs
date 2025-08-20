@@ -38,6 +38,9 @@ namespace Alis.Core.Network.Exceptions
     [Serializable]
     public partial class MaskKeyLengthException : Exception
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MaskKeyLengthException"/> class
+        /// </summary>
         public MaskKeyLengthException() : base("Mask key length must be 4 bytes.")
         {
         }

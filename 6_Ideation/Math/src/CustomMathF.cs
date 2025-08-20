@@ -233,6 +233,11 @@ namespace Alis.Core.Aspect.Math
             return value;
         }
 
+        /// <summary>
+        /// Tans the pi
+        /// </summary>
+        /// <param name="pi">The pi</param>
+        /// <returns>The float</returns>
         public static float Tan(float pi)
         {
             if (float.IsNaN(pi) || float.IsInfinity(pi))

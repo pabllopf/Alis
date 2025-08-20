@@ -41,18 +41,39 @@ namespace Alis.Core.Aspect.Time
         /// </summary>
         public long ElapsedSeconds => (ElapsedMilliseconds / 1000);
 
+        /// <summary>
+        /// The ticks per millisecond
+        /// </summary>
         private const long TicksPerMillisecond = 10000;
+        /// <summary>
+        /// The ticks per millisecond
+        /// </summary>
         private const long TicksPerSecond = TicksPerMillisecond * 1000;
 
+        /// <summary>
+        /// The elapsed
+        /// </summary>
         private TimeSpan _elapsed;
+        /// <summary>
+        /// The start time
+        /// </summary>
         private DateTime _startTime;
+        /// <summary>
+        /// The is running
+        /// </summary>
         private bool _isRunning;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Clock"/> class
+        /// </summary>
         public Clock()
         {
             Reset();
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public void Start()
         {
             // Calling start on a running Stopwatch is a no-op.
@@ -63,6 +84,10 @@ namespace Alis.Core.Aspect.Time
             }
         }
 
+        /// <summary>
+        /// Starts the new
+        /// </summary>
+        /// <returns>The </returns>
         public static Clock StartNew()
         {
             Clock s = new Clock();
@@ -70,6 +95,9 @@ namespace Alis.Core.Aspect.Time
             return s;
         }
 
+        /// <summary>
+        /// Stops this instance
+        /// </summary>
         public void Stop()
         {
             // Calling stop on a stopped Stopwatch is a no-op.
@@ -80,6 +108,9 @@ namespace Alis.Core.Aspect.Time
             }
         }
 
+        /// <summary>
+        /// Resets this instance
+        /// </summary>
         public void Reset()
         {
             _elapsed = TimeSpan.Zero;
@@ -88,6 +119,9 @@ namespace Alis.Core.Aspect.Time
         }
 
         // Convenience method for replacing {sw.Reset(); sw.Start();} with a single sw.Restart()
+        /// <summary>
+        /// Restarts this instance
+        /// </summary>
         public void Restart()
         {
             _elapsed = TimeSpan.Zero;
@@ -103,26 +137,41 @@ namespace Alis.Core.Aspect.Time
         /// </returns>
         public override string ToString() => Elapsed.ToString();
 
+        /// <summary>
+        /// Gets the value of the is running
+        /// </summary>
         public bool IsRunning
         {
             get { return _isRunning; }
         }
 
+        /// <summary>
+        /// Gets the value of the elapsed
+        /// </summary>
         public TimeSpan Elapsed
         {
             get { return _isRunning ? _elapsed + (DateTime.UtcNow - _startTime) : _elapsed; }
         }
 
+        /// <summary>
+        /// Gets the value of the elapsed milliseconds
+        /// </summary>
         public long ElapsedMilliseconds
         {
             get { return (long)Elapsed.TotalMilliseconds; }
         }
 
+        /// <summary>
+        /// Gets the value of the elapsed ticks
+        /// </summary>
         public long ElapsedTicks
         {
             get { return Elapsed.Ticks; }
         }
 
+        /// <summary>
+        /// Gets the value of the debugger display
+        /// </summary>
         private string DebuggerDisplay => $"{Elapsed} (IsRunning = {_isRunning})";
     }
 }
