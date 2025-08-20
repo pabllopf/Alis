@@ -1,5 +1,5 @@
 <Project>
-    <ItemGroup Condition="Exists('$(ProjectDir)Assets/') == True">
+    <ItemGroup Condition="Exists('$(ProjectDir)Assets/')">
         <None
             Update="$(ProjectDir)Assets/**"
             LinkBase="Assets"
@@ -7,6 +7,10 @@
             CopyToPublishDirectory="Always"/>
     </ItemGroup>
 
+    <ItemGroup Condition="Exists('$(ProjectDir).config/')">
+        <None Include=".config/*.xml" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" LinkBase=".config" Visible="true"  />
+    </ItemGroup>
+    
     <PropertyGroup Condition="Exists('$(ProjectDir)Assets/icon/app.ico') == True">
         <ApplicationIcon>$(ProjectDir)Assets/icon/app.ico</ApplicationIcon>
     </PropertyGroup>

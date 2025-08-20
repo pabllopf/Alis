@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Configuración avanzada de Obfuscar para máxima ofuscación y reducción de tamaño -->
+<Obfuscator>
+    <!-- Variables genéricas -->
+    <Var name="NameDll" value="Alis.dll" />
+    <Var name="TargetFramework" value="netcoreapp3.1" />
+
+
+    <Var name="InPath" value="./bin/Release/lib/$(TargetFramework)" />
+    <Var name="OutPath" value="./bin/Release/lib/$(TargetFramework)/obfuscated" />
+    <Var name="LogFile" value="./bin/Release/lib/$(TargetFramework)/obfuscated/ofuscacion-log.txt" />
+
+    <!-- Opciones de ofuscación -->
+    <Var name="RenameProperties" value="false" />
+    <Var name="RenameEvents" value="false" />
+    <Var name="RenameFields" value="true" />
+    <Var name="RenameParameters" value="false" />
+    <Var name="RenameMethods" value="false" />
+    <Var name="RenameNamespaces" value="false" />
+    <Var name="KeepPublicApi" value="false" />
+    <Var name="HidePrivateApi" value="true" />
+    <Var name="UseUnicodeNames" value="true" />
+    <Var name="HideStrings" value="true" />
+    <Var name="OptimizeMethods" value="true" />
+    <Var name="SuppressIldasm" value="true" />
+    <Var name="ControlFlow" value="true" />
+    <Var name="RemoveUnused" value="true" />
+    <Var name="SimplifyMethods" value="true" />
+
+    <!-- Sobrescribir siempre la salida -->
+    <Var name="Overwrite" value="true" />
+
+
+    <Module file="$(InPath)/$(NameDll)" />
+</Obfuscator>
