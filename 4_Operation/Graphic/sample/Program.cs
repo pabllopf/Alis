@@ -3,6 +3,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
+using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
 
 static class Program
 {
@@ -121,6 +123,82 @@ static class Program
             }
         }
         return dlsym(openGLHandle, name);
+    }
+
+    // --- TriangleRenderer para renderizar un triángulo blanco ---
+    class TriangleRenderer
+    {
+        private uint vao, vbo, shaderProgram;
+        private float width, height;
+        private float[] vertices = {
+            // posiciones
+            -0.5f, -0.5f, 0.0f,
+             0.5f, -0.5f, 0.0f,
+             0.0f,  0.5f, 0.0f
+        };
+        private string vertexShaderSource = @"
+#version 150 core
+in vec3 aPos;
+void main() {
+    gl_Position = vec4(aPos, 1.0);
+}
+";
+        private string fragmentShaderSource = @"
+#version 150 core
+out vec4 FragColor;
+void main() {
+    FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+}
+";
+
+        public TriangleRenderer(float w, float h) { width = w; height = h; }
+
+        public void Initialize()
+        {
+            vao = Gl.GenVertexArray();
+            vbo = Gl.GenBuffer();
+            Gl.GlBindVertexArray(vao);
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, vbo);
+            GCHandle vHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
+            Gl.GlBufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+            vHandle.Free();
+            uint vertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
+            Gl.ShaderSource(vertexShader, vertexShaderSource);
+            Gl.GlCompileShader(vertexShader);
+            if (!Gl.GetShaderCompileStatus(vertexShader))
+                Console.WriteLine("Vertex shader error: " + Gl.GetShaderInfoLog(vertexShader));
+            uint fragmentShader = Gl.GlCreateShader(ShaderType.FragmentShader);
+            Gl.ShaderSource(fragmentShader, fragmentShaderSource);
+            Gl.GlCompileShader(fragmentShader);
+            if (!Gl.GetShaderCompileStatus(fragmentShader))
+                Console.WriteLine("Fragment shader error: " + Gl.GetShaderInfoLog(fragmentShader));
+            shaderProgram = Gl.GlCreateProgram();
+            Gl.GlAttachShader(shaderProgram, vertexShader);
+            Gl.GlAttachShader(shaderProgram, fragmentShader);
+            Gl.GlLinkProgram(shaderProgram);
+            if (!Gl.GetProgramLinkStatus(shaderProgram))
+                Console.WriteLine("Program link error: " + Gl.GetProgramInfoLog(shaderProgram));
+            Gl.GlDeleteShader(vertexShader);
+            Gl.GlDeleteShader(fragmentShader);
+            Gl.GlBindVertexArray(vao);
+            Gl.GlUseProgram(shaderProgram);
+            Gl.EnableVertexAttribArray(0);
+            Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), IntPtr.Zero);
+        }
+
+        public void Draw()
+        {
+            Gl.GlBindVertexArray(vao);
+            Gl.GlUseProgram(shaderProgram);
+            Gl.GlDrawArrays(PrimitiveType.Triangles, 0, 3);
+        }
+
+        public void Cleanup()
+        {
+            Gl.DeleteVertexArray(vao);
+            Gl.DeleteBuffer(vbo);
+            Gl.GlDeleteProgram(shaderProgram);
+        }
     }
 
     static void Main()
@@ -249,17 +327,19 @@ static class Program
 
         // Inicializar Gl con el delegado correcto
         Gl.Initialize(GetProcAddress);
-
-       
-        // Configurar el contexto OpenGL
+        // Ajustar el viewport al tamaño de la ventana
+        Gl.GlViewport(0, 0, (int)windowFrame.width, (int)windowFrame.height);
+        // Habilitar el test de profundidad para 3D
+        Gl.GlEnable(EnableCap.DepthTest);
         Gl.GlClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        TriangleRenderer triangle = new TriangleRenderer((float)windowFrame.width, (float)windowFrame.height);
+        triangle.Initialize();
         bool running = true;
         while (running)
         {
             IntPtr evt = objc_msgSend_UL_IntPtr_IntPtr_Bool(app,
                 SEL("nextEventMatchingMask:untilDate:inMode:dequeue:"),
                 ulong.MaxValue, distantPast, runLoopMode, true);
-
             if (evt != IntPtr.Zero)
             {
                 ulong evtType = GetEventType(evt);
@@ -271,20 +351,25 @@ static class Program
                 objc_msgSend_void_IntPtr(app, SEL("sendEvent:"), evt);
                 objc_msgSend_void(app, SEL("updateWindows"));
             }
-
-            // Salir si la ventana se ha cerrado
             if (!IsWindowVisible(window))
             {
                 Console.WriteLine("Ventana cerrada, saliendo...");
                 running = false;
                 break;
             }
-
-            Gl.GlClear(ClearBufferMask.ColorBufferBit);
+            // Limpiar color y profundidad
+            Gl.GlClear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            triangle.Draw();
             objc_msgSend_void(ctx, SEL("flushBuffer"));
+            // Comprobación de errores de OpenGL tras el swap
+            var glError = Gl.GlGetError();
+            if (glError != 0)
+            {
+                Console.WriteLine($"OpenGL error tras flushBuffer: 0x{glError:X}");
+            }
             System.Threading.Thread.Sleep(10);
         }
-        // Liberar el pool al salir
+        triangle.Cleanup();
         objc_msgSend_void(pool, SEL("release"));
     }
 
