@@ -30,7 +30,7 @@
 using System;
 
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Aspect.Memory.Exceptions;
+
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Common
@@ -94,12 +94,12 @@ namespace Alis.Core.Physic.Common
         {
             if (yRadius > height / 2 || xRadius > width / 2)
             {
-                throw new GeneralAlisException("Rounding amount can't be more than half the height and width respectively.");
+                throw new Exception("Rounding amount can't be more than half the height and width respectively.");
             }
 
             if (segments < 0)
             {
-                throw new GeneralAlisException("Segments must be zero or more.");
+                throw new Exception("Segments must be zero or more.");
             }
 
             //We need at least 8 vertices to create a rounded rectangle

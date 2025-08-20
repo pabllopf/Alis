@@ -30,7 +30,7 @@
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Aspect.Memory.Exceptions;
+
 using Alis.Core.Physic.Collision;
 
 namespace Alis.Core.Physic.Common.TextureTools
@@ -615,7 +615,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                     }
                     else
                     {
-                        throw new GeneralAlisException("preb is null");
+                        throw new Exception("preb is null");
                     }
 
                     return;

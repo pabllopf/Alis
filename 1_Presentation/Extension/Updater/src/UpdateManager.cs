@@ -39,7 +39,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Memory.Exceptions;
+
 using Alis.Extension.Updater.Events;
 using Alis.Extension.Updater.Services.Api;
 using Alis.Extension.Updater.Services.Files;

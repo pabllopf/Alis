@@ -1,6 +1,6 @@
 using System;
 
-namespace Alis.Core.Graphic.Sample.Platform.WIN
+namespace Alis.Core.Graphic.Sample.Platform.Win
 {
     public class Win32NativePlatform : INativePlatform
     {

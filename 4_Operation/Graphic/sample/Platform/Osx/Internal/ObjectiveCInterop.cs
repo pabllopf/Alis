@@ -3,7 +3,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Alis.Core.Graphic.Sample.Platform.OSX.Internal
+namespace Alis.Core.Graphic.Sample.Platform.Osx.Internal
 {
     /// <summary>
     /// Utilidades para interoperar con Objective-C

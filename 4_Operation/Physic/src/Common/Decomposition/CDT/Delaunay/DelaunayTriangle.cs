@@ -40,7 +40,7 @@ using System;
 using System.Collections.Generic;
 
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Memory.Exceptions;
+
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep;
 using Alis.Core.Physic.Common.Decomposition.CDT.Util;
 
@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             int i = Points.IndexOf(p);
             if (i == -1)
             {
-                throw new GeneralAlisException("Calling index with a point that doesn't exist in triangle");
+                throw new Exception("Calling index with a point that doesn't exist in triangle");
             }
 
             return i;
@@ -193,7 +193,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
             else
             {
                 Logger.Log("Neighbor error, please report!");
-                // throw new GeneralAlisException("Neighbor error, please report!");
+                // throw new Exception("Neighbor error, please report!");
             }
         }
 

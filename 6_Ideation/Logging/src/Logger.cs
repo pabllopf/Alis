@@ -27,179 +27,61 @@
 // 
 //  --------------------------------------------------------------------------
 
+#if DEBUG
 using System;
-using System.Diagnostics;
-
+#endif
 
 namespace Alis.Core.Aspect.Logging
 {
-    /// <summary>
-    ///     The logger class
-    /// </summary>
     public static class Logger
     {
-        /// <summary>
-        ///     The normal
-        /// </summary>
-        public static LogLevel LogLevel { get; set; } = LogLevel.Info;
-
-        /// <summary>
-        ///     Gets or sets the value of the detail level
-        /// </summary>
-        public static DetailLevel DetailLevel { get; set; } = DetailLevel.Minimal;
-
-        /// <summary>
-        ///     Traces the message
-        /// </summary>
-        [Conditional("DEBUG")]
-        public static void Trace()
-        {
-            if (LogLevel.Trace >= LogLevel)
-            {
-                ConsoleController.Print(new Message(MessageType.Trace), DetailLevel);
-            }
-        }
-
-        /// <summary>
-        ///     Traces the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        [Conditional("DEBUG")]
+        [System.Diagnostics.Conditional("DEBUG")]
         public static void Trace(string message)
         {
-            if (LogLevel.Trace >= LogLevel)
-            {
-                ConsoleController.Print(new Message(MessageType.Trace, message), DetailLevel);
-            }
+#if DEBUG
+            Console.WriteLine($"[TRACE] {message}");
+#endif
         }
-
-        /// <summary>
-        ///     Info
-        /// </summary>
-        [Conditional("DEBUG")]
-        public static void Info()
-        {
-            if (LogLevel.Info >= LogLevel)
-            {
-                ConsoleController.Print(new Message(MessageType.Info, "Info method called with no message."), DetailLevel);
-            }
-        }
-
-        /// <summary>
-        ///     Info the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        [Conditional("DEBUG")]
+        
+        [System.Diagnostics.Conditional("DEBUG")]
         public static void Info(string message)
         {
-            if (LogLevel.Info >= LogLevel)
-            {
-                ConsoleController.Print(new Message(MessageType.Info, message), DetailLevel);
-            }
+#if DEBUG
+            Console.WriteLine($"[INFO] {message}");
+#endif
         }
 
-        /// <summary>
-        ///     Logs the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        [Conditional("DEBUG")]
+        [System.Diagnostics.Conditional("DEBUG")]
         public static void Log(string message)
         {
-            if (LogLevel.Log >= LogLevel)
-            {
-                ConsoleController.Print(new Message(MessageType.Log, message), DetailLevel);
-            }
+#if DEBUG
+            Console.WriteLine($"[LOG] {message}");
+#endif
         }
 
-        /// <summary>
-        ///     Events the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        [Conditional("DEBUG")]
-        public static void Event(string message)
-        {
-            if (LogLevel.Event >= LogLevel)
-            {
-                ConsoleController.Print(new Message(MessageType.Event, message), DetailLevel);
-            }
-        }
-
-        /// <summary>
-        ///     Events
-        /// </summary>
-        [Conditional("DEBUG")]
-        public static void Event()
-        {
-            if (LogLevel.Event >= LogLevel)
-            {
-                ConsoleController.Print(new Message(MessageType.Event, "Event method called with no message."), DetailLevel);
-            }
-        }
-
-        /// <summary>
-        ///     Warnings the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        [Conditional("DEBUG")]
+        [System.Diagnostics.Conditional("DEBUG")]
         public static void Warning(string message)
         {
-            if (LogLevel.Warning >= LogLevel)
-            {
-                ConsoleController.Print(new Message(MessageType.Warning, message), DetailLevel);
-            }
+#if DEBUG
+            Console.WriteLine($"[WARNING] {message}");
+            #endif
         }
 
-        /// <summary>
-        ///     Errors the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        [Conditional("DEBUG")]
+        [System.Diagnostics.Conditional("DEBUG")]
         public static void Error(string message)
         {
-            if (LogLevel.Critical >= LogLevel)
-            {
-                ConsoleController.Print(new Message(MessageType.Error, message), DetailLevel);
-            }
+#if DEBUG
+            Console.WriteLine($"[ERROR] {message}");
+#endif
         }
 
-        /// <summary>
-        ///     Exceptions the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        [Conditional("DEBUG")]
-        public static void Exception(string message)
+        [System.Diagnostics.Conditional("DEBUG")]
+        public static void Debug(string message)
         {
-            if (LogLevel.Critical >= LogLevel)
-            {
-                ConsoleController.Print(new Message(MessageType.Exception, message), DetailLevel);
-            }
+#if DEBUG
+            Console.WriteLine($"[DEBUG] {message}");
+#endif
         }
-
-        /// <summary>
-        ///     Exceptions the exception
-        /// </summary>
-        /// <param name="exception">The exception</param>
-        [Conditional("DEBUG")]
-        public static void Exception(Exception exception)
-        {
-            if (LogLevel.Critical >= LogLevel)
-            {
-                ConsoleController.Print(new Message(MessageType.Exception, exception.Message), DetailLevel);
-            }
-        }
-
-        /// <summary>
-        ///     Sets the detail level using the specified detail level
-        /// </summary>
-        /// <param name="detailLevel">The detail level</param>
-        [Conditional("DEBUG")]
-        public static void SetDetailLevel(DetailLevel detailLevel) => DetailLevel = detailLevel;
-
-        /// <summary>
-        ///     Sets the log level using the specified trace
-        /// </summary>
-        /// <param name="trace">The trace</param>
-        [Conditional("DEBUG")]
-        public static void SetLogLevel(LogLevel trace) => LogLevel = trace;
     }
 }
+

@@ -38,9 +38,7 @@ using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Configuration.Physic;
 using Alis.Core.Ecs.Systems.Scope;
-using Alis.Core.Graphic.GlfwLib;
-using Alis.Core.Graphic.GlfwLib.Enums;
-using Alis.Core.Graphic.GlfwLib.Structs;
+using Alis.Core.Graphic;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
@@ -57,12 +55,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         ///     The pixels per meter
         /// </summary>
         private const float PixelsPerMeter = 32.0f;
-
-        /// <summary>
-        ///     The framebuffer size callback
-        /// </summary>
-        private SizeCallback framebufferSizeCallback;
-
+        
         /// <summary>
         ///     The world position
         /// </summary>
@@ -76,7 +69,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// <summary>
         /// Gets or sets the value of the window
         /// </summary>
-        public Window Window { get; set; }
+        //public Window Window { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the renderer
@@ -88,6 +81,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         public override void OnInit()
         {
+            /*
             // Initialize GLFW
             Glfw.Init();
 
@@ -149,17 +143,10 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             framebufferSizeCallback = FramebufferSizeCallback;
             Glfw.SetFramebufferSizeCallback(Window, framebufferSizeCallback);
             
-            Glfw.SetCloseCallback(Window, CloseWindowCallback);
+            Glfw.SetCloseCallback(Window, CloseWindowCallback);*/
         }
 
-        /// <summary>
-        /// Closes the window callback using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        private void CloseWindowCallback(Window window)
-        {
-            Context.Exit();
-        }
+
 
         /// <summary>
         ///     Loads the icon using the specified icon path
@@ -217,7 +204,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             PhysicSetting physicSettings = contextSetting.Physic;
             Color backgrounColor = contextSetting.Graphic.BackgroundColor;
 
-            Glfw.PollEvents();
+            //Glfw.PollEvents();
 
             // Set the clear color (convert from 0-255 range to 0.0-1.0 range)
             Gl.GlClearColor(backgrounColor.R / 255.0f, backgrounColor.G / 255.0f, backgrounColor.B / 255.0f, backgrounColor.A / 255.0f);
@@ -264,20 +251,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
            }
             
             // Swap the buffers to display the triangle
-            Glfw.SwapBuffers(Window);
-        }
-        
-        /// <summary>
-        ///     Framebuffers the size callback using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        private void FramebufferSizeCallback(Window window, int width, int height)
-        {
-            Logger.Log($"Framebuffer Size: {width}, {height}");
-            Gl.GlViewport(0, 0, width, height);
-            Context.Setting.Graphic = Context.Setting.Graphic with {WindowSize = new Vector2F(width, height)};
+            //Glfw.SwapBuffers(Window);
         }
     }
 }

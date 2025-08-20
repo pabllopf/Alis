@@ -2,7 +2,7 @@ using System;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Sample.Platform;
-using Alis.Core.Graphic.Sample.Platform.OSX;
+using Alis.Core.Graphic.Sample.Platform.Osx;
 using Alis.Core.Graphic.Sample.Samples;
 
 namespace Alis.Core.Graphic.Sample
@@ -38,6 +38,7 @@ namespace Alis.Core.Graphic.Sample
             Console.WriteLine("1: Triángulo blanco");
             Console.WriteLine("2: Cubo (vacío)");
             Console.WriteLine("3: Cuadrado sin rellenar");
+            Console.WriteLine("4: Textura personalizada (BMP)");
             Console.Write("Opción: ");
             int option = 0;
             string input = Console.ReadLine();
@@ -46,6 +47,7 @@ namespace Alis.Core.Graphic.Sample
                 1 => new TriangleExample(),
                 2 => new CubeExample(),
                 3 => new SquareUnfilledExample(),
+                4 => new TextureSampleCustomBmpExample(),
                 _ => new SimpleRedExample()
             };
             example.Initialize();

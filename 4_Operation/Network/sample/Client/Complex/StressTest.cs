@@ -32,7 +32,7 @@ using System.Net.WebSockets;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
-using Alis.Core.Aspect.Memory.Exceptions;
+
 
 namespace Alis.Core.Network.Sample.Client.Complex
 {

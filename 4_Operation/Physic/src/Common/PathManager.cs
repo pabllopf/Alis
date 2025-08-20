@@ -27,9 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Aspect.Memory.Exceptions;
+
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Common.Decomposition;
 using Alis.Core.Physic.Dynamics;
@@ -98,7 +99,7 @@ namespace Alis.Core.Physic.Common
         {
             if (!path.Closed)
             {
-                throw new GeneralAlisException("The path must be closed to convert to a polygon.");
+                throw new Exception("The path must be closed to convert to a polygon.");
             }
 
             List<Vector2F> verts = path.GetVertices(subdivisions);

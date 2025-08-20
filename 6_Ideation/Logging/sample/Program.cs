@@ -27,43 +27,24 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Core.Aspect.Logging.Sample
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public static class Program
+    public class Program
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
+        
         public static void Main(string[] args)
         {
-            Logger.LogLevel = LogLevel.Trace;
-            Logger.Trace();
-            Logger.Info();
+            // Log a message
+           Logger.Log("Hello, world!");
 
-            Logger.Trace("Sample");
+            // Log an error
+            Logger.Error("This is an error message.");
 
-            Logger.Log("Sample");
-            Logger.Info("Sample");
+            // Log a warning
+            Logger.Warning("This is a warning message.");
 
-            Logger.Event("Sample");
-
-            Logger.Warning("Sample");
-            Logger.Error("Sample");
-
-            try
-            {
-                throw new NullReferenceException();
-            }
-            catch (Exception exception)
-            {
-                Logger.Exception(exception);
-            }
+            // Log an information message
+            Logger.Info("This is an info message.");
         }
     }
 }

@@ -34,7 +34,6 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Sample.Entities;
 using Alis.Core.Aspect.Sample.Fluent;
-using Alis.Core.Aspect.Thread;
 using Alis.Core.Aspect.Time;
 
 namespace Alis.Core.Aspect.Sample
@@ -103,10 +102,7 @@ namespace Alis.Core.Aspect.Sample
             Logger.Info("--------------------------\n");
             Clock clock = new Clock();
             clock.Start();
-
-            // Create a new TimeConfiguration instance
-            TimeConfiguration timeConfig = new TimeConfiguration();
-
+            
             int i = 0;
             while (i < 1000)
             {
@@ -117,45 +113,7 @@ namespace Alis.Core.Aspect.Sample
             // Stop the clock and print the elapsed time
             clock.Stop();
             Logger.Info($"Elapsed time: {clock.ElapsedMilliseconds} ms");
-
-            // Print some TimeManager properties
-            Logger.Info($"TimeScale: {timeConfig.TimeScale}");
-
-
-            // SAMPLE ASPECT THREAD
-            Logger.Info("--------------------------");
-            Logger.Info("Thread sample");
-            Logger.Info("--------------------------\n");
-            ThreadManager threadManager = new ThreadManager();
-
-            CancellationTokenSource cts1 = new CancellationTokenSource();
-            ThreadTask task1 = new ThreadTask(token =>
-            {
-                for (int i = 0; (i < 3) && !token.IsCancellationRequested; i++)
-                {
-                    Logger.Info($"Task 1 - Count: {i}");
-                    System.Threading.Thread.Sleep(1000);
-                }
-            }, cts1.Token);
-
-            CancellationTokenSource cts2 = new CancellationTokenSource();
-            ThreadTask task2 = new ThreadTask(token =>
-            {
-                for (int i = 0; (i < 3) && !token.IsCancellationRequested; i++)
-                {
-                    Logger.Info($"Task 2 - Count: {i}");
-                    System.Threading.Thread.Sleep(1000);
-                }
-            }, cts2.Token);
-
-            threadManager.StartThread(task1);
-            threadManager.StartThread(task2);
-
-            // Wait for a while before stopping the threads:
-            System.Threading.Thread.Sleep(5000);
-
-            threadManager.StopAllThreads();
-
+            
             // SAMPLE ASPECT MEMORY
             Logger.Info("--------------------------");
             Logger.Info("Memory sample");
@@ -165,28 +123,16 @@ namespace Alis.Core.Aspect.Sample
             Logger.Info("--------------------------");
             Logger.Info("Logging sample");
             Logger.Info("--------------------------\n");
-            Logger.LogLevel = LogLevel.Trace;
-            Logger.Trace();
-            Logger.Info();
 
             Logger.Trace("Sample");
 
             Logger.Log("Sample");
             Logger.Info("Sample");
 
-            Logger.Event("Sample");
+
 
             Logger.Warning("Sample");
             Logger.Error("Sample");
-
-            try
-            {
-                throw new NullReferenceException();
-            }
-            catch (Exception exception)
-            {
-                Logger.Exception(exception);
-            }
         }
     }
 }
