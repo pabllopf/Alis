@@ -29,8 +29,8 @@
 
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data;
-using Alis.Core.Aspect.Data.Mapping;
 using Alis.Extension.Graphic.Sdl2.Enums;
+using Alis.Extension.Graphic.Sdl2.Mapping;
 
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {

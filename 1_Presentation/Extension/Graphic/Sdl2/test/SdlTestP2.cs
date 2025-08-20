@@ -30,13 +30,13 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using Alis.Core.Aspect.Data;
-using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Point;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Extension.Graphic.Sdl2.Enums;
+using Alis.Extension.Graphic.Sdl2.Mapping;
 using Alis.Extension.Graphic.Sdl2.Structs;
 using Xunit;
 

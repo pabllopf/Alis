@@ -32,7 +32,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data;
-using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Point;
@@ -40,6 +39,7 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sdl2.Delegates;
 using Alis.Extension.Graphic.Sdl2.Enums;
+using Alis.Extension.Graphic.Sdl2.Mapping;
 using Alis.Extension.Graphic.Sdl2.Structs;
 using Version = Alis.Extension.Graphic.Sdl2.Structs.Version;
 
