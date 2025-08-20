@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Matrix;
-using Alis.Core.Graphic.GlfwLib;
 using Alis.Core.Graphic.OpenGL.Delegates;
 using Alis.Core.Graphic.OpenGL.Enums;
 
@@ -50,7 +50,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     The get proc address
         /// </summary>
-        private static GetProcAddressDelegate _getProcAddress = Glfw.GetProcAddress;
+        private static GetProcAddressDelegate _getProcAddress;
 
         /// <summary>
         ///     The uint

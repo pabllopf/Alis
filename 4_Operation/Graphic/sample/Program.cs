@@ -1,78 +1,253 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Program.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
 using System;
+using System.Runtime.InteropServices;
+using System.Text;
 
-using Alis.Core.Aspect.Logging;
-
-namespace Alis.Core.Graphic.Sample
+static class Program
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    internal class Program
+    const string OBJC = "/usr/lib/libobjc.A.dylib";
+
+    [DllImport(OBJC, EntryPoint = "objc_getClass", CallingConvention = CallingConvention.Cdecl)]
+    static extern IntPtr objc_getClass(string name);
+
+    [DllImport(OBJC, EntryPoint = "sel_registerName", CallingConvention = CallingConvention.Cdecl)]
+    static extern IntPtr sel_registerName(string name);
+
+    [DllImport(OBJC, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
+    static extern IntPtr objc_msgSend(IntPtr recv, IntPtr sel);
+
+    [DllImport(OBJC, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
+    static extern IntPtr objc_msgSend_IntPtr(IntPtr recv, IntPtr sel, IntPtr arg1);
+
+    [DllImport(OBJC, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
+    static extern void objc_msgSend_void(IntPtr recv, IntPtr sel);
+
+    [DllImport(OBJC, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
+    static extern void objc_msgSend_void_IntPtr(IntPtr recv, IntPtr sel, IntPtr arg1);
+
+    [DllImport(OBJC, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
+    static extern void objc_msgSend_void_Bool(IntPtr recv, IntPtr sel, bool arg1);
+
+    [DllImport(OBJC, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
+    static extern void objc_msgSend_void_Long(IntPtr recv, IntPtr sel, long value);
+
+    // Para ARM64: descomponemos el NSRect
+    [DllImport(OBJC, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
+    static extern IntPtr objc_msgSend_NSRect_UL_UL_Bool(
+        IntPtr recv, IntPtr sel,
+        double x, double y, double w, double h,
+        ulong styleMask, ulong backing, bool defer);
+
+    [DllImport(OBJC, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
+    static extern IntPtr objc_msgSend_NSRect_IntPtr(
+        IntPtr recv, IntPtr sel,
+        double x, double y, double w, double h,
+        IntPtr arg1);
+
+    [DllImport(OBJC, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
+    static extern IntPtr objc_msgSend_UL_IntPtr_IntPtr_Bool(
+        IntPtr recv, IntPtr sel, ulong mask, IntPtr untilDate, IntPtr inMode, bool dequeue);
+
+    [DllImport("/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation")]
+    static extern IntPtr CFStringCreateWithCString(IntPtr alloc, string str, uint enc);
+    const uint kCFStringEncodingUTF8 = 0x08000100;
+
+    [DllImport("/System/Library/Frameworks/OpenGL.framework/OpenGL")]
+    static extern void glClearColor(float r, float g, float b, float a);
+
+    [DllImport("/System/Library/Frameworks/OpenGL.framework/OpenGL")]
+    static extern void glClear(uint mask);
+
+    const uint GL_COLOR_BUFFER_BIT = 0x00004000;
+
+    const ulong NSWindowStyleMaskTitled         = 1UL << 0;
+    const ulong NSWindowStyleMaskClosable       = 1UL << 1;
+    const ulong NSWindowStyleMaskMiniaturizable = 1UL << 2;
+    const ulong NSWindowStyleMaskResizable      = 1UL << 3;
+
+    const ulong NSBackingStoreBuffered = 2;
+    const long NSApplicationActivationPolicyRegular = 0;
+
+    const int NSOpenGLPFAOpenGLProfile = 99;
+    const int NSOpenGLProfileVersion3_2Core = 0x3200;
+    const int NSOpenGLPFADoubleBuffer = 5;
+    const int NSOpenGLPFAColorSize    = 8;
+    const int NSOpenGLPFADepthSize    = 12;
+
+    static IntPtr CLASS(string n) => objc_getClass(n);
+    static IntPtr SEL(string n) => sel_registerName(n);
+
+    static IntPtr NSString(string s)
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        private static void Main(string[] args)
+        var bytes = Encoding.UTF8.GetBytes(s);
+        var mem = Marshal.AllocHGlobal(bytes.Length + 1);
+        Marshal.Copy(bytes, 0, mem, bytes.Length);
+        Marshal.WriteByte(mem, bytes.Length, 0);
+        var str = objc_msgSend_IntPtr(CLASS("NSString"), SEL("stringWithUTF8String:"), mem);
+        Marshal.FreeHGlobal(mem);
+        return str;
+    }
+
+    [DllImport("/System/Library/Frameworks/AppKit.framework/AppKit")]
+    static extern void NSApplicationLoad();
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct NSRect
+    {
+        public double x;
+        public double y;
+        public double width;
+        public double height;
+    }
+
+    static NSRect GetWindowFrame(IntPtr window)
+    {
+        IntPtr framePtr = objc_msgSend(window, SEL("frame"));
+        return Marshal.PtrToStructure<NSRect>(framePtr);
+    }
+
+    static void Main()
+    {
+        NSApplicationLoad(); // Fuerza la carga de AppKit
+        var pool = objc_msgSend(CLASS("NSAutoreleasePool"), SEL("new"));
+        if (pool == IntPtr.Zero)
         {
-            Logger.Log("Enter the number of the sample you want to run:");
-            Logger.Log("1 - Triangle Sample");
-            Logger.Log("2 - Cube Sample");
-            Logger.Log("3 - Render Square Unfilled");
-            Logger.Log("4 - Texture Sample Custom Bmp");
-            int sampleNumber = Convert.ToInt32(Console.ReadLine());
-
-            switch (sampleNumber)
-            {
-                case 1:
-                    TriangleSample triangleSample = new TriangleSample();
-                    triangleSample.Run();
-                    break;
-                
-                case 2:
-                    CubeSample cubeSample = new CubeSample();
-                    cubeSample.Run();
-                    break;
-
-                case 3:
-                    RenderSquareUnfilled unfilled = new RenderSquareUnfilled();
-                    unfilled.Run();
-                    break;
-                
-                case 4:
-                    TextureSampleCustomBmp textureSampleCustomBmp = new TextureSampleCustomBmp();
-                    textureSampleCustomBmp.Run();
-                    break;
-            }
+            Console.WriteLine("❌ NSAutoreleasePool no se creó");
+            return;
         }
+
+        IntPtr nsWindowClass = CLASS("NSWindow");
+        if (nsWindowClass == IntPtr.Zero)
+        {
+            Console.WriteLine("❌ NSWindow class no encontrada");
+            objc_msgSend_void(pool, SEL("release"));
+            return;
+        }
+
+        IntPtr app = objc_msgSend(CLASS("NSApplication"), SEL("sharedApplication"));
+        if (app == IntPtr.Zero)
+        {
+            Console.WriteLine("❌ NSApplication no se creó");
+            objc_msgSend_void(pool, SEL("release"));
+            return;
+        }
+        objc_msgSend_void_Long(app, SEL("setActivationPolicy:"), NSApplicationActivationPolicyRegular);
+        objc_msgSend_void_Bool(app, SEL("activateIgnoringOtherApps:"), true);
+        objc_msgSend_void(app, SEL("finishLaunching")); // <-- Asegura que la app está lanzada
+
+        // Crear NSWindow correctamente
+        IntPtr window = objc_msgSend(CLASS("NSWindow"), SEL("alloc"));
+        if (window == IntPtr.Zero)
+        {
+            Console.WriteLine("❌ NSWindow alloc falló");
+            objc_msgSend_void(pool, SEL("release"));
+            return;
+        }
+        window = objc_msgSend_NSRect_UL_UL_Bool(
+            window, SEL("initWithContentRect:styleMask:backing:defer:"),
+            100.0, 100.0, 800.0, 600.0,
+            NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable,
+            NSBackingStoreBuffered, false);
+
+        if (window == IntPtr.Zero)
+        {
+            Console.WriteLine("❌ NSWindow no se creó (problema ABI ARM64)");
+            Console.WriteLine($"Parámetros: x=100, y=100, w=800, h=600, styleMask={NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable}, backing={NSBackingStoreBuffered}, defer=false");
+            // Prueba de ventana básica Cocoa sin OpenGL
+            IntPtr simpleWindow = objc_msgSend(CLASS("NSWindow"), SEL("alloc"));
+            simpleWindow = objc_msgSend_NSRect_UL_UL_Bool(
+                simpleWindow, SEL("initWithContentRect:styleMask:backing:defer:"),
+                200.0, 200.0, 400.0, 300.0,
+                NSWindowStyleMaskTitled,
+                NSBackingStoreBuffered, false);
+            if (simpleWindow == IntPtr.Zero)
+            {
+                Console.WriteLine("❌ Prueba de ventana básica Cocoa también falló");
+            }
+            else
+            {
+                objc_msgSend_void_IntPtr(simpleWindow, SEL("setTitle:"), NSString("Ventana Cocoa básica"));
+                objc_msgSend_void_IntPtr(simpleWindow, SEL("makeKeyAndOrderFront:"), IntPtr.Zero);
+                Console.WriteLine("✅ Ventana básica Cocoa creada correctamente");
+                objc_msgSend_void(app, SEL("run"));
+            }
+            objc_msgSend_void(pool, SEL("release"));
+            return;
+        }
+
+        objc_msgSend_void_IntPtr(window, SEL("setTitle:"), NSString("C# + Cocoa + OpenGL (Apple Silicon)"));
+        objc_msgSend_void(window, SEL("center")); // Centra la ventana en pantalla
+
+        // PixelFormat
+        int[] attrs = {
+            NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion3_2Core,
+            NSOpenGLPFADoubleBuffer,
+            NSOpenGLPFAColorSize, 24,
+            NSOpenGLPFADepthSize, 24,
+            0
+        };
+        IntPtr fmt = objc_msgSend(CLASS("NSOpenGLPixelFormat"), SEL("alloc"));
+        GCHandle pin = GCHandle.Alloc(attrs, GCHandleType.Pinned);
+        try
+        {
+            fmt = objc_msgSend_IntPtr(fmt, SEL("initWithAttributes:"), pin.AddrOfPinnedObject());
+        }
+        finally { pin.Free(); }
+        if (fmt == IntPtr.Zero) {
+            Console.WriteLine("❌ PixelFormat fail");
+            objc_msgSend_void(pool, SEL("release"));
+            return;
+        }
+
+        IntPtr view = objc_msgSend(CLASS("NSOpenGLView"), SEL("alloc"));
+        if (view == IntPtr.Zero)
+        {
+            Console.WriteLine("❌ NSOpenGLView fail");
+            objc_msgSend_void(pool, SEL("release"));
+            return;
+        }
+
+        // Obtener el frame de la ventana
+        NSRect windowFrame = GetWindowFrame(window);
+
+        // Inicializar el NSOpenGLView con el frame de la ventana
+        view = objc_msgSend(CLASS("NSOpenGLView"), SEL("alloc"));
+        view = objc_msgSend_NSRect_IntPtr(view, SEL("initWithFrame:pixelFormat:"),
+            windowFrame.x, windowFrame.y, windowFrame.width, windowFrame.height, fmt);
+
+        objc_msgSend_void_IntPtr(window, SEL("setContentView:"), view);
+        objc_msgSend_void_IntPtr(window, SEL("makeKeyAndOrderFront:"), IntPtr.Zero);
+
+        IntPtr ctx = objc_msgSend(view, SEL("openGLContext"));
+        if (ctx == IntPtr.Zero)
+        {
+            Console.WriteLine("❌ openGLContext fail");
+            objc_msgSend_void(pool, SEL("release"));
+            return;
+        }
+        objc_msgSend_void(ctx, SEL("makeCurrentContext"));
+
+        IntPtr distantPast = objc_msgSend(CLASS("NSDate"), SEL("distantPast"));
+        IntPtr runLoopMode = CFStringCreateWithCString(IntPtr.Zero, "kCFRunLoopDefaultMode", kCFStringEncodingUTF8);
+
+        glClearColor(1f, 0f, 0f, 1f);
+
+        while (true)
+        {
+            IntPtr evt = objc_msgSend_UL_IntPtr_IntPtr_Bool(app,
+                SEL("nextEventMatchingMask:untilDate:inMode:dequeue:"),
+                ulong.MaxValue, distantPast, runLoopMode, true);
+
+            if (evt != IntPtr.Zero)
+            {
+                objc_msgSend_void_IntPtr(app, SEL("sendEvent:"), evt);
+                objc_msgSend_void(app, SEL("updateWindows"));
+            }
+
+            glClear(GL_COLOR_BUFFER_BIT);
+            objc_msgSend_void(ctx, SEL("flushBuffer"));
+            System.Threading.Thread.Sleep(10); // Pequeño retardo para evitar saturar el ciclo
+        }
+        // Liberar el pool al salir (nunca se llega aquí por el while true, pero es buena práctica)
+        // objc_msgSend_void(pool, SEL("release"));
     }
 }

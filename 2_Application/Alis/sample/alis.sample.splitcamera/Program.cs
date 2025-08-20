@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs;
+using System;
 using Alis.Core.Ecs.Systems;
 
 namespace Alis.Sample.SplitCamera
@@ -43,9 +43,7 @@ namespace Alis.Sample.SplitCamera
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            VideoGame
-                .Create()
-                .Run();
+            VideoGame.Create().Run();
         }
     }
 }
