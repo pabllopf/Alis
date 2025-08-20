@@ -68,7 +68,7 @@ namespace Alis.Core.Graphic.Sample.Platform.OSX
                             if (!string.IsNullOrEmpty(chars))
                             {
                                 char c = chars[0];
-                                if (Enum.TryParse<ConsoleKey>(c.ToString(), true, out var key))
+                                if (Enum.TryParse<ConsoleKey>(c.ToString(), true, out ConsoleKey key))
                                 {
                                     lastKeyPressed = key;
                                 }

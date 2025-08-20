@@ -36,7 +36,7 @@ namespace Alis.Core.Graphic.Sample.Platform.OSX.Internal
             }
             finally { pin.Free(); }
             View = ObjectiveCInterop.objc_msgSend(ObjectiveCInterop.Class("NSOpenGLView"), ObjectiveCInterop.Sel("alloc"));
-            var frame = window.GetFrame();
+            NsRect frame = window.GetFrame();
             View = ObjectiveCInterop.objc_msgSend_NSRect_IntPtr(View, ObjectiveCInterop.Sel("initWithFrame:pixelFormat:"),
                 frame.x, frame.y, frame.width, frame.height, PixelFormat);
             ObjectiveCInterop.objc_msgSend_void_IntPtr(window.Handle, ObjectiveCInterop.Sel("setContentView:"), View);
