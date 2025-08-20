@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Enums;
 
 static class Program
 {
@@ -51,12 +53,6 @@ static class Program
     static extern IntPtr CFStringCreateWithCString(IntPtr alloc, string str, uint enc);
     const uint kCFStringEncodingUTF8 = 0x08000100;
 
-    [DllImport("/System/Library/Frameworks/OpenGL.framework/OpenGL")]
-    static extern void glClearColor(float r, float g, float b, float a);
-
-    [DllImport("/System/Library/Frameworks/OpenGL.framework/OpenGL")]
-    static extern void glClear(uint mask);
-
     const uint GL_COLOR_BUFFER_BIT = 0x00004000;
 
     const ulong NSWindowStyleMaskTitled         = 1UL << 0;
@@ -103,6 +99,28 @@ static class Program
     {
         IntPtr framePtr = objc_msgSend(window, SEL("frame"));
         return Marshal.PtrToStructure<NSRect>(framePtr);
+    }
+
+    [DllImport("/usr/lib/libSystem.B.dylib")]
+    static extern IntPtr dlsym(IntPtr handle, string symbol);
+    [DllImport("/usr/lib/libSystem.B.dylib")]
+    static extern IntPtr dlopen(string path, int mode);
+    const int RTLD_DEFAULT = 0;
+
+    static IntPtr openGLHandle = IntPtr.Zero;
+
+    static IntPtr GetProcAddress(string name)
+    {
+        if (openGLHandle == IntPtr.Zero)
+        {
+            openGLHandle = dlopen("/System/Library/Frameworks/OpenGL.framework/OpenGL", 0);
+            if (openGLHandle == IntPtr.Zero)
+            {
+                Console.WriteLine("❌ No se pudo abrir la librería OpenGL");
+                return IntPtr.Zero;
+            }
+        }
+        return dlsym(openGLHandle, name);
     }
 
     static void Main()
@@ -229,8 +247,12 @@ static class Program
         IntPtr distantPast = objc_msgSend(CLASS("NSDate"), SEL("distantPast"));
         IntPtr runLoopMode = CFStringCreateWithCString(IntPtr.Zero, "kCFRunLoopDefaultMode", kCFStringEncodingUTF8);
 
-        glClearColor(1f, 0f, 0f, 1f);
+        // Inicializar Gl con el delegado correcto
+        Gl.Initialize(GetProcAddress);
 
+       
+        // Configurar el contexto OpenGL
+        Gl.GlClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         while (true)
         {
             IntPtr evt = objc_msgSend_UL_IntPtr_IntPtr_Bool(app,
@@ -243,9 +265,11 @@ static class Program
                 objc_msgSend_void(app, SEL("updateWindows"));
             }
 
-            glClear(GL_COLOR_BUFFER_BIT);
+            // Render loop usando Gl
+            Gl.GlClear(ClearBufferMask.ColorBufferBit);
+            
             objc_msgSend_void(ctx, SEL("flushBuffer"));
-            System.Threading.Thread.Sleep(10); // Pequeño retardo para evitar saturar el ciclo
+            System.Threading.Thread.Sleep(10);
         }
         // Liberar el pool al salir (nunca se llega aquí por el while true, pero es buena práctica)
         // objc_msgSend_void(pool, SEL("release"));
