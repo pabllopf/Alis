@@ -22,6 +22,12 @@
            OverwriteReadOnlyFiles="true" 
        />
    </Target>
+    
+    <!-- remove the obfuscated folder after copying the obfuscated dll -->
+    <Target Name="CleanObfuscatedFolder" AfterTargets="ReplaceWithObfuscatedDll"
+        Condition="Exists('$(ProjectDir)bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/obfuscated/') And $(Configuration) == 'Release'">
+        <RemoveDir Directories="$(ProjectDir)bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/obfuscated/"/>
+    </Target>
   
     <Target Name="BuildAndCopyEngineOutput" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub'))">
         <MSBuild Projects="$(SolutionDir)1_Presentation/Engine/src/desktop/Alis.App.Engine.Desktop.csproj" Targets="Build" Properties="Configuration=$(Configuration)"/>

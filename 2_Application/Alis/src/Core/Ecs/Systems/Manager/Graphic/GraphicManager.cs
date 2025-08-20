@@ -91,8 +91,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             platform.Initialize(800, 600, "C# + OpenGL Platform");
             platform.MakeContextCurrent();
             Gl.Initialize(platform.GetProcAddress);
-            Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
-            Gl.GlEnable(EnableCap.DepthTest);
+            //Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
+            //Gl.GlEnable(EnableCap.DepthTest);
             
             platform.ShowWindow();
            
