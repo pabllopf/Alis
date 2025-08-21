@@ -1,5 +1,5 @@
 using System;
-using System.Linq;
+
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -30,13 +30,7 @@ namespace Alis.Core.Ecs.Kernel.Archetype
         ///     Gets the value of the archetype tag array
         /// </summary>
         internal FastImmutableArray<TagId> ArchetypeTagArray => _archetypeId.Tags;
-
-        /// <summary>
-        ///     Gets the value of the debugger display string
-        /// </summary>
-        internal string DebuggerDisplayString =>
-            $"Archetype Count: {EntityCount} Types: {string.Join(", ", ArchetypeTypeArray.Select(t => t.Type.Name))} Tags: {string.Join(", ", ArchetypeTagArray.Select(t => t.Type.Name))}";
-
+        
         /// <summary>
         ///     Gets the value of the gameObject count
         /// </summary>

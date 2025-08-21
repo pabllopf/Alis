@@ -30,7 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -177,9 +177,13 @@ namespace Alis.Core.Network
 
                 // extract a csv list of sub protocols (in order of highest preference first)
                 string csv = match.Groups["protocols"].Value.Trim();
-                return csv.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
-                    .Select(x => x.Trim())
-                    .ToList();
+                string[] items = csv.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries);
+                List<string> result = new List<string>();
+                foreach (string item in items)
+                {
+                    result.Add(item.Trim());
+                }
+                return result;
             }
 
             return new List<string>();

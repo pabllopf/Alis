@@ -64,7 +64,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
                         IntPtr utf8Ptr = ObjectiveCInterop.objc_msgSend(nsString, ObjectiveCInterop.Sel("UTF8String"));
                         if (utf8Ptr != IntPtr.Zero)
                         {
-                            string chars = Marshal.PtrToStringUTF8(utf8Ptr);
+                            string chars = Marshal.PtrToStringAuto(utf8Ptr);
                             if (!string.IsNullOrEmpty(chars))
                             {
                                 char c = chars[0];

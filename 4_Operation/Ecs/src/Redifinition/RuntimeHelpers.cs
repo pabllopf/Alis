@@ -1,5 +1,5 @@
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-using System.Linq;
+
 using System.Reflection;
 
 // ReSharper disable once CheckNamespace
@@ -15,11 +15,16 @@ namespace System.Runtime.CompilerServices
         private static bool IsReferenceOrContainsReferences(Type type)
         {
             if (!type.IsValueType) return true;
-
-            if (type.IsPrimitive || type.IsPointer || type.IsPointer) return false;
-
-            return type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
-                .Any(f => IsReferenceOrContainsReferences(f.FieldType));
+        
+            if (type.IsPrimitive || type.IsPointer) return false;
+        
+            var fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            for (int i = 0; i < fields.Length; i++)
+            {
+                if (IsReferenceOrContainsReferences(fields[i].FieldType))
+                    return true;
+            }
+            return false;
         }
 
         private static class Cache<T>
