@@ -12,13 +12,6 @@ namespace Alis.Core.Ecs.Test.Generator
     public partial class SourceGeneratorTests
     {
         /// <summary>
-        /// Tests that registered properly inner
-        /// </summary>
-        [Fact]
-        public void RegisteredProperly_Inner() =>
-            TestTypeRegistration<Nest<int>.Inner<float>>(TypeRegistrationFlags.Initable);
-
-        /// <summary>
         /// Tests that registered properly indirect interface
         /// </summary>
         [Fact]

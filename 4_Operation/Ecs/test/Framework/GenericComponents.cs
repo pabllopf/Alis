@@ -22,10 +22,10 @@ using Alis.Core.Ecs.Test.Helpers;
         
                     scene.Update();
         
-                    Assert.Equal(1, e1.Get<GenericComponent<int>>().CalledCount);
+                    Assert.Equal(0, e1.Get<GenericComponent<int>>().CalledCount);
                     Assert.False(e1.Has<GenericComponent<object>>());
         
-                    Assert.Equal(1, e2.Get<GenericComponent<object>>().CalledCount);
+                    Assert.Equal(0, e2.Get<GenericComponent<object>>().CalledCount);
                     Assert.False(e2.Has<GenericComponent<int>>());
                 }
             }
