@@ -43,6 +43,11 @@ namespace Alis.Core.Graphic.Platforms.Win
         private bool running = true;
         private WndProc wndProcDelegate;
         private IntPtr wndProcPtr;
+        
+        
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+        private static extern IntPtr GetModuleHandle(string lpModuleName);
+
 
         // ------------------------------------------------------------------
         // PUBLIC METHODS
@@ -55,7 +60,7 @@ namespace Alis.Core.Graphic.Platforms.Win
             width = w;
             height = h;
             title = t;
-            hInstance = Marshal.GetHINSTANCE(typeof(WinNativePlatform).Module);
+            hInstance = GetModuleHandle(null);
             wndProcDelegate = WindowProc;
             wndProcPtr = Marshal.GetFunctionPointerForDelegate(wndProcDelegate);
             var wc = new Wndclass
