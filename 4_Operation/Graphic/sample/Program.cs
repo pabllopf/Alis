@@ -1,7 +1,7 @@
 using System;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Graphic.Sample.Platform;
+using Alis.Core.Graphic.Platforms;
 using Alis.Core.Graphic.Sample.Samples;
 
 namespace Alis.Core.Graphic.Sample
@@ -19,13 +19,13 @@ namespace Alis.Core.Graphic.Sample
         {
             INativePlatform platform;
 #if OSX
-            platform = new Alis.Core.Graphic.Sample.Platform.Osx.MacNativePlatform();
+            platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
 #elif WIN
-            platform = new Alis.Core.Graphic.Sample.Platform.Win.Win32NativePlatform();
+            platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
 #elif LINUX
-            platform = new LinuxNativePlatform();
+            platform = new Alis.Core.Graphic.Platforms.LinuxNativePlatform();
 #else
-            throw new PlatformNotSupportedException("Sistema operativo no soportado");
+            throw new Exception("Sistema operativo no soportado");
 #endif
             
             Console.WriteLine("Elige el ejemplo a mostrar:");

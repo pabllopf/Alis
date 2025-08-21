@@ -1,4 +1,4 @@
-﻿#if WIN
+#if WIN
 
 // --------------------------------------------------------------------------
 // 
@@ -7,7 +7,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Msg.cs
+//  File:Wndclass.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,18 +32,21 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.Sample.Platform.Win.Native
+namespace Alis.Core.Graphic.Platforms.Win.Native
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal struct Msg
+    internal struct Wndclass
     {
-        public IntPtr hwnd;
-        public uint message;
-        public IntPtr wParam;
-        public IntPtr lParam;
-        public uint time;
-        public int pt_x;
-        public int pt_y;
+        public uint style;
+        public IntPtr lpfnWndProc;
+        public int cbClsExtra;
+        public int cbWndExtra;
+        public IntPtr hInstance;
+        public IntPtr hIcon;
+        public IntPtr hCursor;
+        public IntPtr hbrBackground;
+        public string lpszMenuName;
+        public string lpszClassName;
     }
 }
 #endif

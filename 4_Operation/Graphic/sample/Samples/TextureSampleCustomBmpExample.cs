@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Graphic.Sample.Platform;
 
 namespace Alis.Core.Graphic.Sample.Samples
 {
@@ -13,12 +12,32 @@ namespace Alis.Core.Graphic.Sample.Samples
     /// </summary>
     public class TextureSampleCustomBmpExample : IExample
     {
+        /// <summary>
+        /// The texture
+        /// </summary>
         private uint vao, vbo, ebo, shaderProgram, texture;
+        /// <summary>
+        /// The window width
+        /// </summary>
         private int windowWidth = 800;
+        /// <summary>
+        /// The window height
+        /// </summary>
         private int windowHeight = 600;
+        /// <summary>
+        /// The image width
+        /// </summary>
         private int imageWidth = 16;
+        /// <summary>
+        /// The image height
+        /// </summary>
         private int imageHeight = 32;
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
+        /// <exception cref="Exception">Invalid BMP file</exception>
+        /// <exception cref="FileNotFoundException">Texture file not found </exception>
         public void Initialize()
         {
             float scaleX = (float)imageWidth / windowWidth;
@@ -117,6 +136,9 @@ namespace Alis.Core.Graphic.Sample.Samples
             Gl.GlUniform1I(Gl.GlGetUniformLocation(shaderProgram, "texture1"), 0); // Usar entero para sampler2D
         }
 
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
         public void Draw()
         {
             Gl.GlClearColor(0f, 0f, 0f, 1f);
@@ -128,6 +150,9 @@ namespace Alis.Core.Graphic.Sample.Samples
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
         }
 
+        /// <summary>
+        /// Cleanups this instance
+        /// </summary>
         public void Cleanup()
         {
             Gl.DeleteVertexArray(vao);

@@ -33,8 +33,15 @@ using System;
 
 namespace Alis.Core.Aspect.Logging
 {
+    /// <summary>
+    /// The logger class
+    /// </summary>
     public static class Logger
     {
+        /// <summary>
+        /// Traces the message
+        /// </summary>
+        /// <param name="message">The message</param>
         [System.Diagnostics.Conditional("DEBUG")]
         public static void Trace(string message)
         {
@@ -43,6 +50,10 @@ namespace Alis.Core.Aspect.Logging
 #endif
         }
         
+        /// <summary>
+        /// Infoes the message
+        /// </summary>
+        /// <param name="message">The message</param>
         [System.Diagnostics.Conditional("DEBUG")]
         public static void Info(string message)
         {
@@ -51,6 +62,10 @@ namespace Alis.Core.Aspect.Logging
 #endif
         }
 
+        /// <summary>
+        /// Logs the message
+        /// </summary>
+        /// <param name="message">The message</param>
         [System.Diagnostics.Conditional("DEBUG")]
         public static void Log(string message)
         {
@@ -59,6 +74,10 @@ namespace Alis.Core.Aspect.Logging
 #endif
         }
 
+        /// <summary>
+        /// Warnings the message
+        /// </summary>
+        /// <param name="message">The message</param>
         [System.Diagnostics.Conditional("DEBUG")]
         public static void Warning(string message)
         {
@@ -67,6 +86,10 @@ namespace Alis.Core.Aspect.Logging
             #endif
         }
 
+        /// <summary>
+        /// Errors the message
+        /// </summary>
+        /// <param name="message">The message</param>
         [System.Diagnostics.Conditional("DEBUG")]
         public static void Error(string message)
         {
@@ -75,6 +98,10 @@ namespace Alis.Core.Aspect.Logging
 #endif
         }
 
+        /// <summary>
+        /// Debugs the message
+        /// </summary>
+        /// <param name="message">The message</param>
         [System.Diagnostics.Conditional("DEBUG")]
         public static void Debug(string message)
         {
@@ -83,6 +110,10 @@ namespace Alis.Core.Aspect.Logging
 #endif
         }
 
+        /// <summary>
+        /// Exceptions the to string
+        /// </summary>
+        /// <param name="toString">The to string</param>
         [System.Diagnostics.Conditional("DEBUG")]
         public static void Exception(string toString)
         {
