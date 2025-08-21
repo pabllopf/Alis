@@ -27,13 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Extension.Graphic.Glfw;
+using Alis.Extension.Graphic.Glfw.Enums;
+using Alis.Extension.Graphic.Glfw.Structs;
+using Alis.Extension.Graphic.Ui;
 
-
-
-namespace Alis.Extension.Graphic.Ui.Controllers
+namespace Alis.App.Engine.Desktop.Controllers
 {
     /// <summary>
     /// The glfw controller class
@@ -145,12 +147,16 @@ namespace Alis.Extension.Graphic.Ui.Controllers
         /// </summary>
         public void OnInit()
         {
+            
+            
             Logger.Info($"Initializing GLFW with OpenGL");
             if (!Glfw.Init())
             {
                 ErrorCode errorCode = Glfw.GetError(out string description);
                 Logger.Exception($"GLFW init failed: ErrorCode: {errorCode} - Description: {description}");
             }
+            
+            Gl.Initialize(Glfw.GetProcAddress);
 
             Glfw.WindowHint(Hint.ContextVersionMajor, ContextVersionMajor);
             Glfw.WindowHint(Hint.ContextVersionMinor, ContextVersionMinor);

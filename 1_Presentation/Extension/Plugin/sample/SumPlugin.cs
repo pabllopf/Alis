@@ -50,7 +50,7 @@ namespace Alis.Extension.Plugin.Sample
         /// </summary>
         public void Update()
         {
-            Logger.Trace();
+            Logger.Trace("Update called");
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Alis.Extension.Plugin.Sample
         /// </summary>
         public void Render()
         {
-            Logger.Trace();
+            Logger.Trace("Render called");
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Alis.Extension.Plugin.Sample
         /// </summary>
         public void Shutdown()
         {
-            Logger.Trace();
+            Logger.Trace("Shutdown called");
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Plugin.Sample
         /// </summary>
         public void Dispose()
         {
-            Logger.Trace();
+            Logger.Trace("Dispose called");
         }
 
         /// <summary>

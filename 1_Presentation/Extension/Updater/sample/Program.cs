@@ -46,7 +46,6 @@ namespace Alis.Extension.Updater.Sample
         /// </summary>
         public static void Main()
         {
-            Logger.LogLevel = LogLevel.Trace;
             Logger.Log("Start sample program");
 
             string api = "https://api.github.com/repos/pabllopf/alis/releases";

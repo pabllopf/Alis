@@ -2,7 +2,6 @@ using System;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Sample.Platform;
-using Alis.Core.Graphic.Sample.Platform.Osx;
 using Alis.Core.Graphic.Sample.Samples;
 
 namespace Alis.Core.Graphic.Sample
@@ -20,9 +19,9 @@ namespace Alis.Core.Graphic.Sample
         {
             INativePlatform platform;
 #if OSX
-            platform = new MacNativePlatform();
+            platform = new Alis.Core.Graphic.Sample.Platform.Osx.MacNativePlatform();
 #elif WIN
-            platform = new Win32NativePlatform();
+            platform = new Alis.Core.Graphic.Sample.Platform.Win.Win32NativePlatform();
 #elif LINUX
             platform = new LinuxNativePlatform();
 #else

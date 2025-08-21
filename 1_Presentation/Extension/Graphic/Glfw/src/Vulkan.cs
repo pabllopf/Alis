@@ -1,0 +1,149 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Vulkan.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security;
+using System.Text;
+
+namespace Alis.Extension.Graphic.Glfw
+{
+    /// <summary>
+    ///     Implements the Vulkan specific functions of GLFW.
+    ///     <para>See http://www.glfw.org/docs/latest/vulkan_guide.html for detailed documentation.</para>
+    /// </summary>
+    [SuppressUnmanagedCodeSecurity]
+    public static class Vulkan
+    {
+        /// <summary>
+        ///     Gets whether the Vulkan loader has been found. This check is performed by <see cref="Glfw.Init" />.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if Vulkan is supported; otherwise <c>false</c>.
+        /// </value>
+        public static bool IsSupported => VulkanSupported();
+
+
+        /// <summary>
+        ///     This function creates a Vulkan surface for the specified window.
+        /// </summary>
+        /// <param name="vulkan">A pointer to the Vulkan instance.</param>
+        /// <param name="window">The window handle.</param>
+        /// <param name="allocator">A pointer to the allocator to use, or <see cref="IntPtr.Zero" /> to use default allocator.</param>
+        /// <param name="surface">The handle to the created Vulkan surface.</param>
+        /// <returns>VK_SUCCESS if successful, or a Vulkan error code if an error occurred.</returns>
+        [DllImport(Glfw.Library, EntryPoint = "glfwCreateWindowSurface", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int
+            CreateWindowSurface(IntPtr vulkan, IntPtr window, IntPtr allocator, out ulong surface);
+
+        /// <summary>
+        ///     This function returns whether the specified queue family of the specified physical device supports presentation to
+        ///     the platform GLFW was built for.
+        /// </summary>
+        /// <param name="instance">The instance that the physical device belongs to.</param>
+        /// <param name="device">The physical device that the queue family belongs to.</param>
+        /// <param name="family">The index of the queue family to query.</param>
+        /// <returns><c>true</c> if the queue family supports presentation, or <c>false</c> otherwise.</returns>
+        [DllImport(Glfw.Library, EntryPoint = "glfwGetPhysicalDevicePresentationSupport",
+            CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool GetPhysicalDevicePresentationSupport(IntPtr instance, IntPtr device, uint family);
+
+        /// <summary>
+        ///     Gets the instance proc address using the specified vulkan
+        /// </summary>
+        /// <param name="vulkan">The vulkan</param>
+        /// <param name="procName">The proc name</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(Glfw.Library, EntryPoint = "glfwGetInstanceProcAddress",
+            CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr GetInstanceProcAddress(IntPtr vulkan, byte[] procName);
+
+        /// <summary>
+        ///     Gets the required instance extensions using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(Glfw.Library, EntryPoint = "glfwGetRequiredInstanceExtensions",
+            CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr GetRequiredInstanceExtensions(out uint count);
+
+        /// <summary>
+        ///     Vulkans the supported
+        /// </summary>
+        /// <returns>The bool</returns>
+        [DllImport(Glfw.Library, EntryPoint = "glfwVulkanSupported", CallingConvention = CallingConvention.Cdecl)]
+        private static extern bool VulkanSupported();
+
+
+        /// <summary>
+        ///     This function returns the address of the specified Vulkan core or extension function for the specified instance. If
+        ///     instance is set to <see cref="IntPtr.Zero" /> it can return any function exported from the Vulkan loader.
+        ///     <para>
+        ///         If Vulkan is not available on the machine, this function returns <see cref="IntPtr.Zero" /> and generates an
+        ///         error. Use <see cref="IsSupported" /> to check whether Vulkan is available.
+        ///     </para>
+        /// </summary>
+        /// <param name="vulkan">The vulkan instance.</param>
+        /// <param name="procName">Name of the function.</param>
+        /// <returns>The address of the function, or <see cref="IntPtr.Zero" /> if an error occurred.</returns>
+        public static IntPtr GetInstanceProcAddress(IntPtr vulkan, string procName) => GetInstanceProcAddress(vulkan, Encoding.ASCII.GetBytes(procName));
+
+        /// <summary>
+        ///     This function returns an array of names of Vulkan instance extensions required by GLFW for creating Vulkan surfaces
+        ///     for GLFW windows. If successful, the list will always contains VK_KHR_surface, so if you don't require any
+        ///     additional extensions you can pass this list directly to the VkInstanceCreateInfo struct.
+        ///     <para>
+        ///         If Vulkan is not available on the machine, this function returns generates an error, use
+        ///         <see cref="IsSupported" /> to first check if supported.
+        ///     </para>
+        ///     <para>
+        ///         If Vulkan is available but no set of extensions allowing window surface creation was found, this function
+        ///         returns an empty array. You may still use Vulkan for off-screen rendering and compute work.
+        ///     </para>
+        /// </summary>
+        /// <returns>An array of extension names.</returns>
+        public static string[] GetRequiredInstanceExtensions()
+        {
+            IntPtr ptr = GetRequiredInstanceExtensions(out uint count);
+            string[] extensions = new string[count];
+            if ((count > 0) && (ptr != IntPtr.Zero))
+            {
+                int offset = 0;
+                for (int i = 0; i < count; i++, offset += IntPtr.Size)
+                {
+                    IntPtr p = Marshal.ReadIntPtr(ptr, offset);
+                    extensions[i] = Marshal.PtrToStringAnsi(p);
+                }
+            }
+
+            return extensions.Where(s => !string.IsNullOrWhiteSpace(s)).ToArray();
+        }
+    }
+}

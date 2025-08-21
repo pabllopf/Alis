@@ -82,6 +82,15 @@ namespace Alis.Core.Aspect.Logging
             Console.WriteLine($"[DEBUG] {message}");
 #endif
         }
+
+        [System.Diagnostics.Conditional("DEBUG")]
+        public static void Exception(string toString)
+        {
+#if DEBUG
+            Console.WriteLine($"[EXCEPTION] {toString}");
+            throw new Exception(toString);
+#endif
+        }
     }
 }
 

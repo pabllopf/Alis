@@ -274,7 +274,7 @@ namespace Alis.Core.Network.Test.Samples
             }
             catch (SocketException ex)
             {
-                throw new GeneralAlisException(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
     }

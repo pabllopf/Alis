@@ -79,7 +79,7 @@ namespace Alis.Core.Network.Test.Exceptions
         [Fact]
         public void InvalidHttpResponseCodeException_ConstructorWithMessageAndInnerException()
         {
-            Exception innerException = new GeneralAlisException("Inner exception");
+            Exception innerException = new Exception("Inner exception");
             InvalidHttpResponseCodeException exception = new InvalidHttpResponseCodeException("Test message", innerException);
             Assert.NotNull(exception);
             Assert.Equal("Test message", exception.Message);

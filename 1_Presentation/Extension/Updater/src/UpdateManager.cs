@@ -227,7 +227,7 @@ namespace Alis.Extension.Updater
             }
             catch (Exception ex)
             {
-                throw new GeneralAlisException($"Error updating program: {ex.Message}");
+                throw new Exception($"Error updating program: {ex.Message}");
             }
         }
 
