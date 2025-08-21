@@ -1,11 +1,11 @@
 <Project>
-    <Target Name="BuildEcsGenerator" BeforeTargets="Restore;Build;Publish" Condition="$(Configuration) == 'Release' AND !Exists('$(SolutionDir)4_Operation/Ecs/generator/bin/Release/lib/netstandard2.0/Alis.Core.Ecs.Generator.dll')">
+    <Target Name="BuildEcsGenerator" BeforeTargets="Build;Publish" Condition="$(Configuration) == 'Release' AND !Exists('$(SolutionDir)4_Operation/Ecs/generator/bin/Release/lib/netstandard2.0/Alis.Core.Ecs.Generator.dll')">
         <Message Importance="high" Text="Building Alis.Core.Ecs.Generator.dll..." />
         <Exec Command="dotnet build $(SolutionDir)4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj -c Release" />
         <Message Importance="high" Text="Alis.Core.Ecs.Generator.dll built successfully." />
     </Target>
     
-    <Target Name="BuildDataGenerator" BeforeTargets="Restore;Build;Publish" Condition="$(Configuration) == 'Release' AND !Exists('$(SolutionDir)6_Ideation/Data/generator/bin/Release/lib/netstandard2.0/Alis.Core.Aspect.Data.Generator.dll')" >
+    <Target Name="BuildDataGenerator" BeforeTargets="Build;Publish" Condition="$(Configuration) == 'Release' AND !Exists('$(SolutionDir)6_Ideation/Data/generator/bin/Release/lib/netstandard2.0/Alis.Core.Aspect.Data.Generator.dll')" >
         <Message Importance="high" Text="Building Alis.Core.Aspect.Data.Generator.dll..." />
         <Exec Command="dotnet build $(SolutionDir)6_Ideation/Data/generator/Alis.Core.Aspect.Data.Generator.csproj -c Release" />
         <Message Importance="high" Text="Alis.Core.Aspect.Data.Generator.dll built successfully." />
