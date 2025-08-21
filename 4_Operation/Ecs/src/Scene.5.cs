@@ -110,7 +110,9 @@ namespace Alis.Core.Ecs
             // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
                 foreach (ref GameObjectIdOnly entityId in entityLocations)
+                {
                     EntityCreatedEvent.Invoke(entityId.ToEntity(this));
+                }
 
             // Return the result with calculated spans
             return new ChunkTuple<T1, T2, T3, T4, T5>

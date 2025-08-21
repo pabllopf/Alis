@@ -78,6 +78,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
                     //update scene archetypes
                     foreach (Scene world in worlds)
+                    {
                         if (world is not null)
                         {
                             ref WorldArchetypeTableItem tableItem = ref world.WorldArchetypeTable[i];
@@ -87,6 +88,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                                 tableItem.DeferredCreationArchetype.ComponentTagTable = componentsForArchetype;
                             }
                         }
+                    }
                 }
             }
         }

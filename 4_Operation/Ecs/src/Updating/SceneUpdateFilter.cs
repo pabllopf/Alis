@@ -66,7 +66,9 @@ namespace Alis.Core.Ecs.Updating
             _scene = scene;
 
             foreach (GameObjectType archetype in scene.EnabledArchetypes.AsSpan())
+            {
                 ArchetypeAdded(archetype.Archetype(scene)!);
+            }
         }
 
         /// <summary>
@@ -81,7 +83,9 @@ namespace Alis.Core.Ecs.Updating
                 (Archetype current, int start, int end) = _archetypes[archetype.Id.RawIndex];
 
                 foreach (ComponentStorageBase storage in componentStorages.Slice(start, end))
+                {
                     storage.Run(_scene, current, count, current.EntityCount - count);
+                }
             }
         }
 
@@ -97,7 +101,10 @@ namespace Alis.Core.Ecs.Updating
             {
                 (Archetype current, int start, int count) = archetypes[i];
                 Span<ComponentStorageBase> storages = componentStorages.Slice(start, count);
-                foreach (ComponentStorageBase storage in storages) storage.Run(scene, current);
+                foreach (ComponentStorageBase storage in storages)
+                {
+                    storage.Run(scene, current);
+                }
             }
         }
 

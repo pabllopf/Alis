@@ -184,7 +184,9 @@ namespace Alis.Core.Ecs
             {
                 if (ComponentRemovedEvent.HasListeners)
                     foreach (ComponentHandle handle in componentHandles)
+                    {
                         ComponentRemovedEvent.Invoke(gameObject, handle.ComponentId);
+                    }
 
                 if (GameObjectLocation.HasEventFlag(currentLookup.Flags,
                         GameObjectFlags.RemoveComp | GameObjectFlags.RemoveGenericComp))
@@ -205,7 +207,9 @@ namespace Alis.Core.Ecs
                     else
                         //no need to dispose here, as they were never created
                         foreach (ComponentHandle handle in componentHandles)
+                        {
                             lookup.Remove.NormalEvent.Invoke(gameObject, handle.ComponentId);
+                        }
                 }
             }
         }
@@ -278,7 +282,9 @@ namespace Alis.Core.Ecs
             EntityDeletedEvent.Invoke(gameObject);
             if (gameObjectLocation.HasEvent(GameObjectFlags.OnDelete))
                 foreach (Action<GameObject> @event in EventLookup[gameObject.EntityIdOnly].Delete.AsSpan())
+                {
                     @event.Invoke(gameObject);
+                }
 
             EventLookup.Remove(gameObject.EntityIdOnly);
         }

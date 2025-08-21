@@ -71,7 +71,9 @@ namespace Alis.Core.Ecs.Kernel.Events
             {
                 _first.Invoke(gameObject, ref arg);
                 foreach (IGenericAction<GameObject> item in _invokationList.AsSpan())
+                {
                     item.Invoke(gameObject, ref arg);
+                }
             }
         }
 
