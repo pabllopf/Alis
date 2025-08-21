@@ -24,7 +24,7 @@
         </RuntimeIdentifiers>
 
         <Configurations>Debug;Release</Configurations>
-        <Platforms>AnyCPU;OsxArm64;x64;x86;arm;arm64</Platforms>
+        <Platforms>AnyCPU;OsxArm64;x64;Winx64;x86;arm;arm64</Platforms>
     </PropertyGroup>
 
     
@@ -38,6 +38,13 @@
     <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
         <Configuration>Release</Configuration>
         <Platform>x64</Platform>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Winx64'">
+        <Configuration>Release</Configuration>
+        <Platform>Winx64</Platform>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
     
     <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
