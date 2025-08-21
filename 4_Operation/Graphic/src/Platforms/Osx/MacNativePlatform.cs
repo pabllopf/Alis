@@ -1,7 +1,7 @@
 #if OSX
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.Platforms.Osx.Internal;
+using Alis.Core.Graphic.Platforms.Osx.Native;
 
 namespace Alis.Core.Graphic.Platforms.Osx
 {

@@ -69,6 +69,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         public IntPtr Renderer { get; set; }
         
+        /// <summary>
+        /// The platform
+        /// </summary>
         private  INativePlatform platform;
 
         /// <summary>
