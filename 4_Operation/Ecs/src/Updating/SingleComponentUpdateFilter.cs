@@ -42,7 +42,9 @@ namespace Alis.Core.Ecs.Updating
             _componentId = component;
 
             foreach (GameObjectType archetype in scene.EnabledArchetypes.AsSpan())
+            {
                 ArchetypeAdded(archetype.Archetype(scene)!);
+            }
         }
 
         /// <summary>
@@ -70,7 +72,9 @@ namespace Alis.Core.Ecs.Updating
         {
             Scene scene = _scene;
             foreach ((Archetype archetype, ComponentStorageBase storage) in _archetypes.AsSpan(0, _count))
+            {
                 storage.Run(scene, archetype);
+            }
         }
 
         /// <summary>
