@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using Alis.Core.Aspect.Fluent.Words;
 
 namespace Alis.Core.Aspect.Fluent.Sample

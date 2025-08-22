@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;

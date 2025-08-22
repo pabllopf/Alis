@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using Alis.Core.Aspect.Math.Shape.Circle;
 using Xunit;
 

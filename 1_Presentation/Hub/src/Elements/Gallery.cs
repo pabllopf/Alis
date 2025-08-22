@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Resource;
 
 namespace Alis.App.Hub.Elements

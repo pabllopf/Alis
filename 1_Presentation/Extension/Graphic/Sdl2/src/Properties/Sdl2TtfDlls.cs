@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Dll;
 
 namespace Alis.Extension.Graphic.Sdl2.Properties

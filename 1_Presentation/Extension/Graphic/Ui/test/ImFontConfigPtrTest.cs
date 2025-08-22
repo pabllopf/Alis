@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 

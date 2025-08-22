@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using Alis.Core.Aspect.Math.Shape.Square;
 using Xunit;
 

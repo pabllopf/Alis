@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Kernel.Events;
 using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Updating;
@@ -293,7 +293,7 @@ namespace Alis.Core.Ecs.Kernel
                 ref GameObjectLocation record = ref Scene.EntityTable[command.Entity.ID];
                 if (record.Version == command.Entity.Version)
                     Scene.MoveEntityToArchetypeIso(command.Entity.ToEntity(Scene), ref record,
-                        Archetype.Archetype.GetAdjacentArchetypeLookup(Scene,
+                        Archetype.GetAdjacentArchetypeLookup(Scene,
                             ArchetypeEdgeKey.Tag(command.TagId, record.Archetype.Id, ArchetypeEdgeType.AddTag)));
             }
 
@@ -302,7 +302,7 @@ namespace Alis.Core.Ecs.Kernel
                 ref GameObjectLocation record = ref Scene.EntityTable[command.Entity.ID];
                 if (record.Version == command.Entity.Version)
                     Scene.MoveEntityToArchetypeIso(command.Entity.ToEntity(Scene), ref record,
-                        Archetype.Archetype.GetAdjacentArchetypeLookup(Scene,
+                        Archetype.GetAdjacentArchetypeLookup(Scene,
                             ArchetypeEdgeKey.Tag(command.TagId, record.Archetype.Id, ArchetypeEdgeType.RemoveTag)));
             }
 

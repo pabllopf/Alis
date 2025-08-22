@@ -29,7 +29,9 @@
 
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Builder.Core.Ecs.Entity

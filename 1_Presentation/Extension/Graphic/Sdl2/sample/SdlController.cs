@@ -30,6 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Dll;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Core.Aspect.Data.Resource;

@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Ecs.Components.Render

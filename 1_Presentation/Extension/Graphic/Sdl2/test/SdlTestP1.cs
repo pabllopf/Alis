@@ -29,7 +29,9 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Resource;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Shape.Point;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;

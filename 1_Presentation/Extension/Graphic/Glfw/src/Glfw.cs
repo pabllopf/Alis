@@ -32,6 +32,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Dll;
 using Alis.Core.Aspect.Data.Mapping;
 using Alis.Extension.Graphic.Glfw.Enums;

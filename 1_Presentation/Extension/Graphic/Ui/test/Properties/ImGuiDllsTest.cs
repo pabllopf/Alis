@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Dll;
 using Alis.Extension.Graphic.Ui.Properties;
 using Xunit;

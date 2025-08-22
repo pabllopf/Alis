@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
-
 
 namespace Alis.Core.Ecs.Components.Body
 {

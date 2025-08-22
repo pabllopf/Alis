@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Extension.Multimedia.FFmpeg.Video.Models

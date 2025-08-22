@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Dll;
 
 namespace Alis.Extension.Io.FileDialog

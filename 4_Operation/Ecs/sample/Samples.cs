@@ -18,7 +18,7 @@ namespace Alis.Core.Ecs.Sample
         /// <summary>
         /// Updates the component
         /// </summary>
-        [Sample]
+        
         public static void Update_Component()
         {
             using Scene scene = new Scene();
@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Sample
         /// <summary>
         /// Updates the systems
         /// </summary>
-        [Sample]
+        
         public static void Update_Systems()
         {
             using Scene scene = new Scene();
@@ -65,7 +65,7 @@ namespace Alis.Core.Ecs.Sample
         /// <summary>
         /// Uniformses the and entities
         /// </summary>
-        [Sample]
+        
         public static void Uniforms_And_Entities()
         {
             using Scene scene = new Scene();
@@ -79,7 +79,7 @@ namespace Alis.Core.Ecs.Sample
         /// <summary>
         /// Uniformses the and entities initeable
         /// </summary>
-        [Sample]
+        
         public static void Uniforms_And_Entities_initeable()
         {
             using Scene scene = new Scene();
@@ -93,7 +93,7 @@ namespace Alis.Core.Ecs.Sample
         /// <summary>
         /// Simples the game
         /// </summary>
-        [Sample]
+        
         public static void Simple_Game()
         {
             Scene scene = new Scene();
@@ -106,7 +106,6 @@ namespace Alis.Core.Ecs.Sample
             {
                 scene.Update();
                 Thread.Sleep(100);
-                Console.Clear();
             }
 
             Position finalPos = gameObject.Get<Position>();
@@ -118,7 +117,7 @@ namespace Alis.Core.Ecs.Sample
         /// <summary>
         /// Querieses
         /// </summary>
-        [Sample]
+        
         public static void Queries()
         {
             using Scene scene = new Scene();
@@ -151,7 +150,7 @@ public struct WriteAction : IAction<int>
         /// <summary>
         /// Entitieses
         /// </summary>
-        [Sample]
+        
         public static void Entities()
         {
             using Scene scene = new Scene();
