@@ -71,9 +71,6 @@ jobs:
         with:
           dotnet-version: 9.0.301
 
-      - name: Build Alis.sln
-        run: dotnet build alis.sln -c Release
-
       - name: Build extensiones automáticamente
         run: |
           echo "Buscando proyectos..."
@@ -130,9 +127,6 @@ jobs:
         with:
           dotnet-version: 9.0.301
 
-      - name: Build Alis.sln
-        run: dotnet build alis.sln -c Release
-      
       - name: Build Core automáticamente
         run: |
           runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
@@ -187,9 +181,6 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
-      
-      - name: Build Alis.sln
-        run: dotnet build alis.sln -c Release
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r win-x64 -f ${{ matrix.framework }}
@@ -328,10 +319,7 @@ jobs:
           done
 
           echo "✅ Restauración completada."
-          
-      - name: Build Alis.sln
-        run: dotnet build alis.sln -c Release
-      
+        
       - name: Get current version
         id: get-version
         run: |
