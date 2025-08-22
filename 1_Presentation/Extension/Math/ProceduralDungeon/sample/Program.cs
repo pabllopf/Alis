@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Math.ProceduralDungeon.Sample
@@ -45,11 +46,11 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
             Logger.Log("Starting dungeon generation");
             Dungeon dungeon = new Dungeon();
             dungeon.Start();
-            
-            string json = dungeon.ToJson();
+
+            string json = JsonNativeAot.Serialize(dungeon);
             Logger.Log("Dungeon generated successfully");
-            
-            Dungeon dungeonLoaded = Dungeon.FromJson(json);
+
+            Dungeon dungeonLoaded = JsonNativeAot.Deserialize<Dungeon>(json);
 
             // print the dungeon into the console
             BoardSquare[,] map = dungeon.Board;

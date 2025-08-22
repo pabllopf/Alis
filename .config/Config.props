@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-
+    
     <PropertyGroup>
         <TargetFrameworks Condition="$(Configuration) == 'Debug'">
             net8.0;netstandard2.0;
@@ -24,7 +24,7 @@
         </RuntimeIdentifiers>
 
         <TargetFrameworks Condition="$(AssemblyName.Contains('App'))">net8.0;</TargetFrameworks>
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Generator'))">netstandard2.0;</TargetFrameworks>
+        <TargetFrameworks Condition="$(AssemblyName.Contains('Generator'))">net8.0;netstandard2.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Benchmark'))">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Test'))">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Sample'))">net8.0;</TargetFrameworks>
