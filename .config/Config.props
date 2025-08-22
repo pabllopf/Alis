@@ -14,10 +14,11 @@
         </TargetFrameworks>
         
         <TargetFrameworks Condition="$(AssemblyName.Contains('Extension')) AND $(Configuration) == 'Release'">
-            netcoreapp2.0;net461;net5.0;net8.0;netstandard2.0
+            net461;net5.0;net8.0;netstandard2.0
         </TargetFrameworks>
         
-        <RuntimeIdentifiers Condition="$(Configuration) == 'Release' AND $(AssemblyName.Contains('Generator')) == False">
+        <RuntimeIdentifiers 
+            Condition="$(Configuration) == 'Release' AND $(AssemblyName.Contains('App'))">
             win-x64; win-x86; win-arm64;
             linux-x64; linux-arm; linux-arm64;
             osx-x64;osx-arm64;

@@ -49,7 +49,7 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        framework: [net5.0, net8.0, netstandard2.0, net461, netcoreapp2.0]
+        framework: [net5.0, net8.0, netstandard2.0, net461]
     steps:
 
       - name: Limpiar entorno
@@ -126,24 +126,18 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
-
-      - name: Build Core automáticamente
+          
+      - name: Build Core 
         run: |
-          runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
-      
-          echo "Buscando proyectos core..."
           for proj in $(find . -name "*.csproj" \
             | grep -viE "sample|template|app|extension|test"); do
-            for rt in "${runtimes[@]}"; do
               echo "Compilando $proj -> fw=${{ matrix.framework }}, rt=$rt"
               dotnet build "$proj" \
                 -c Release \
                 -f "${{ matrix.framework }}" \
                 -r "$rt" || exit 1
-            done
           done
-
-
+          
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
