@@ -358,6 +358,13 @@
         <ProjectReference
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
+
+        <ProjectReference
+            Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
+            Include="$(ProjectDir)/../generator/$(NameTest).Generator.csproj"
+            OutputItemType="Analyzer"
+            ReferenceOutputAssembly="false"/>
+        
     </ItemGroup>
 
     <PropertyGroup Condition="$(AssemblyName.Contains('Sample'))">
@@ -375,6 +382,13 @@
         <ProjectReference
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
+        
+        <ProjectReference 
+            Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
+            Include="$(ProjectDir)/../generator/$(NameTest).Generator.csproj"
+            OutputItemType="Analyzer"
+            ReferenceOutputAssembly="false"/>
+        
     </ItemGroup>
     
     

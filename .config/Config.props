@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-
     <!-- Configuración general -->
     <PropertyGroup>
         <Configurations>Debug;Release</Configurations>
@@ -12,23 +11,16 @@
         </RuntimeIdentifiers>
     </PropertyGroup>
 
-    <!-- Proyectos Release modernos -->
-    <PropertyGroup Condition="'$(Configuration)'=='Release'">
-        <TargetFrameworks>
-            net5.0;net6.0;net7.0;net8.0;net9.0;
-            netstandard2.0;netstandard2.1
-        </TargetFrameworks>
-    </PropertyGroup>
-
-    <!-- TargetFramework según tipo de proyecto -->
+    <!-- Generator: siempre netstandard2.0 -->
     <PropertyGroup Condition="$(AssemblyName.Contains('Generator'))">
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
 
+    <!-- Aplicaciones principales -->
     <PropertyGroup Condition="$(AssemblyName.Contains('App'))">
         <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
-    
+
     <PropertyGroup Condition="$(AssemblyName.Contains('Test'))">
         <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
@@ -45,9 +37,27 @@
         <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
 
+    <!-- Proyectos Release modernos (excepto Generator y Apps especiales) -->
+    <PropertyGroup Condition="
+        '$(Configuration)'=='Release' AND 
+        !$(AssemblyName.Contains('Generator')) AND
+        !$(AssemblyName.Contains('App')) AND
+        !$(AssemblyName.Contains('Test')) AND
+        !$(AssemblyName.Contains('Sample')) AND
+        !$(AssemblyName.Contains('Web')) AND
+        !$(AssemblyName.Contains('Benchmark'))
+        ">
+        <TargetFrameworks>
+            net5.0;net6.0;net7.0;net8.0;net9.0;
+            netstandard2.0;netstandard2.1
+        </TargetFrameworks>
+    </PropertyGroup>
+
+    <!-- Extension: subset especial -->
     <PropertyGroup Condition="$(AssemblyName.Contains('Extension')) AND '$(Configuration)'=='Release'">
         <TargetFrameworks>net5.0;net8.0;netstandard2.0</TargetFrameworks>
     </PropertyGroup>
+
     
     <!-- Import all the props files in the target folder -->
     <Import Project="$(SolutionDir).config/target/BeforeBuild.props"/>
