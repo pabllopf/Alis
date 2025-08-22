@@ -42,6 +42,9 @@ jobs:
         with:
           dotnet-version: 9.0.301
 
+      - name: Build Alis.sln
+        run: dotnet build alis.sln -c Release
+
       - name: SonarQube Scan
         run: |
           dotnet tool install --global coverlet.console --version 6.0.3
