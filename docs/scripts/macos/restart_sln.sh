@@ -31,13 +31,9 @@ select yn in "Yes" "No"; do
           cp ./.config/default.sln  ./Alis.sln
           
           skip="Template"
-          skip2="Web"
           for i in `find . -name "*.csproj" -type f`; do
               if [[ $i == *$skip* ]] ; then
                   echo "Skip project $i"
-              elif [[ $i == *$skip2* ]] ; then
-                  echo "Write default value of csproj = $i"
-                  cat ./.config/default_web_csproj.props > $i
               else
                   echo "Write default value of csproj = $i"
                   cat ./.config/default_csproj.props > $i
