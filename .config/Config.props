@@ -17,13 +17,6 @@
             net461;net5.0;net8.0;netstandard2.0
         </TargetFrameworks>
         
-        <RuntimeIdentifiers 
-            Condition="$(Configuration) == 'Release'">
-            win-x64; win-x86; win-arm64;
-            linux-x64; linux-arm; linux-arm64;
-            osx-x64;osx-arm64;
-        </RuntimeIdentifiers>
-
         <TargetFrameworks Condition="$(AssemblyName.Contains('App'))">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Generator'))">net8.0;netstandard2.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Benchmark'))">net8.0;</TargetFrameworks>

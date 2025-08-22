@@ -74,18 +74,13 @@ jobs:
       - name: Build extensiones automáticamente
         run: |
           echo "Buscando proyectos..."
-  
-          runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
-  
+          
           for proj in $(find 1_Presentation/Extension -name "*.csproj" \
             | grep -viE "sample|template|generator|test|app"); do
-            for rt in "${runtimes[@]}"; do
-              echo "Compilando $proj -> fw=${{ matrix.framework }}, rt=$rt"
+            echo "Compilando $proj -> fw=${{ matrix.framework }}"
               dotnet build "$proj" \
                 -c Release \
-                -f "${{ matrix.framework }}" \
-                -r "$rt" || exit 1
-            done
+                -f "${{ matrix.framework }}" 
           done
         
       - name: Upload build artifacts
@@ -131,11 +126,10 @@ jobs:
         run: |
           for proj in $(find . -name "*.csproj" \
             | grep -viE "sample|template|app|extension|test"); do
-              echo "Compilando $proj -> fw=${{ matrix.framework }}, rt=$rt"
+              echo "Compilando $proj -> fw=${{ matrix.framework }}"
               dotnet build "$proj" \
                 -c Release \
-                -f "${{ matrix.framework }}" \
-                -r "$rt" || exit 1
+                -f "${{ matrix.framework }}" 
           done
           
       - name: Upload build artifacts
