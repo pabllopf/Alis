@@ -88,6 +88,7 @@
         <Exec Command="hdiutil create -volname Alis -srcfolder $(AppBundleDir) -ov -format UDZO $(DmgFileName)"/>
     </Target>
 
+    
     <Target Name="CreateLinuxBundle" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub')) And '$(IsLinux)' == 'true' AND $(Configuration) == 'Release'">
         <PropertyGroup>
             <PublishDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/</PublishDir>
