@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
+
+    <!-- Configuración general -->
     <PropertyGroup>
-        <!-- Configuración general -->
         <Configurations>Debug;Release</Configurations>
-        <Platforms>AnyCPU;OsxArm64;x64;Winx64;x86;arm;arm64</Platforms>
+        <Platforms>AnyCPU;x64;x86;arm;arm64</Platforms>
         <RuntimeIdentifiers Condition="'$(Configuration)'=='Release'">
             win-x64;win-x86;win-arm64;
             linux-x64;linux-arm;linux-arm64;
@@ -11,7 +12,15 @@
         </RuntimeIdentifiers>
     </PropertyGroup>
 
-    <!-- TargetFrameworks según tipo de proyecto -->
+    <!-- Proyectos Release modernos -->
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <TargetFrameworks>
+            net5.0;net6.0;net7.0;net8.0;net9.0;
+            netstandard2.0;netstandard2.1
+        </TargetFrameworks>
+    </PropertyGroup>
+
+    <!-- TargetFramework según tipo de proyecto -->
     <PropertyGroup Condition="$(AssemblyName.Contains('Generator'))">
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
@@ -19,11 +28,7 @@
     <PropertyGroup Condition="$(AssemblyName.Contains('App'))">
         <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
-
-    <PropertyGroup Condition="$(AssemblyName.Contains('Benchmark'))">
-        <TargetFramework>net8.0</TargetFramework>
-    </PropertyGroup>
-
+    
     <PropertyGroup Condition="$(AssemblyName.Contains('Test'))">
         <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
@@ -32,56 +37,17 @@
         <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
 
+    <PropertyGroup Condition="$(AssemblyName.Contains('Web'))">
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(AssemblyName.Contains('Benchmark'))">
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+
     <PropertyGroup Condition="$(AssemblyName.Contains('Extension')) AND '$(Configuration)'=='Release'">
-        <TargetFrameworks>netcoreapp2.0;net461;net5.0;net8.0;netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>net5.0;net8.0;netstandard2.0</TargetFrameworks>
     </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)'=='Release'">
-        <TargetFrameworks>
-            netcoreapp2.0;netcoreapp2.1;netcoreapp2.2;
-            netcoreapp3.0;netcoreapp3.1;
-            net5.0;net6.0;net7.0;net8.0;net9.0;
-            netstandard2.0;netstandard2.1;
-            net461;net471;net472;net48;net481
-        </TargetFrameworks>
-    </PropertyGroup>
-
-
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|OsxArm64'">
-        <Configuration>Release</Configuration>
-        <Platform>OsxArm64</Platform>
-        <RuntimeIdentifier>osx-arm64</RuntimeIdentifier>
-        <TargetFramework>net8.0</TargetFramework>
-    </PropertyGroup>
-    
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-        <Configuration>Release</Configuration>
-        <Platform>x64</Platform>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Winx64'">
-        <Configuration>Release</Configuration>
-        <Platform>Winx64</Platform>
-        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-        <TargetFramework>net8.0</TargetFramework>
-    </PropertyGroup>
-    
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-        <Configuration>Release</Configuration>
-        <Platform>x86</Platform>
-    </PropertyGroup>
-    
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|arm'">
-        <Configuration>Release</Configuration>
-        <Platform>arm</Platform>
-    </PropertyGroup>
-    
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|arm64'">
-        <Configuration>Release</Configuration>
-        <Platform>arm64</Platform>
-    </PropertyGroup>
-    
     
     <!-- Import all the props files in the target folder -->
     <Import Project="$(SolutionDir).config/target/BeforeBuild.props"/>

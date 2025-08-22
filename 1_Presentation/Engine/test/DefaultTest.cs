@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:DefaultTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,20 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.Sample
+using Xunit;
+
+namespace Alis.App.Hub.Test
 {
     /// <summary>
-    ///     The program class
+    ///     The default test class
     /// </summary>
-    public static class Program
+    public class DefaultTest
     {
         /// <summary>
-        ///     Main the args
+        ///     Tests that test
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        [Fact]
+        public void Test()
         {
-            
+            Assert.True(true);
         }
     }
 }
