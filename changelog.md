@@ -5,6 +5,103 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.6.9] - 2025-08-25
+### :sparkles: New Features
+- [`189ce72`](https://github.com/pabllopf/Alis/commit/189ce72937a57dd6461a2ad93aa88572df38ded1) - create custom hascode to generator *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8faec0a`](https://github.com/pabllopf/Alis/commit/8faec0a3d2fc99a300bf4585666b17eed79d1df1) - move ecs components to aspect fluent *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`70fda89`](https://github.com/pabllopf/Alis/commit/70fda8916e4013e9d93fcab17dcb3cb79189375e) - add square render *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`22782d2`](https://github.com/pabllopf/Alis/commit/22782d25e3a12a6ab2929d825716a60a6b58126b) - big refactor to delete imgui module and move to Ui extension *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`04c3403`](https://github.com/pabllopf/Alis/commit/04c340303ad35094fd754aa4ee29522c12e92df6) - include preview render of opnegl on imgui sample *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`505213c`](https://github.com/pabllopf/Alis/commit/505213c0cfbf652a7c6b22705cec6a6f2584ccd8) - add simple sample engine on web blazor *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`728185e`](https://github.com/pabllopf/Alis/commit/728185e4da7b64b17feb4729bca9932f6ad65829) - add web docking management *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e694599`](https://github.com/pabllopf/Alis/commit/e6945995767f122d9a9b42f0fd88462c2810b0a7) - add new commands to imgui web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5151c01`](https://github.com/pabllopf/Alis/commit/5151c01acfa4cca82cd4767919e6bdc74c450599) - functional progress bar botton menu *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4fc2c8b`](https://github.com/pabllopf/Alis/commit/4fc2c8b11fc793b2e50b202aa262b4a50a0c8495) - add new config to build on mode aot the samples and app modules. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d9703ba`](https://github.com/pabllopf/Alis/commit/d9703babe6f15817a53103cdedbb6e9fc94b6b6b) - create json parser compatible with native aot *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e07060a`](https://github.com/pabllopf/Alis/commit/e07060a2906e4ca60496b0854b2698adc762c46b) - add generator to aot json generation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3158a9e`](https://github.com/pabllopf/Alis/commit/3158a9eecbc7d8aee60e856b404aefd20c77955e) - add new tipes to conversion *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2c86373`](https://github.com/pabllopf/Alis/commit/2c863735670f7c47559fb619ecf2712a2eb795db) - serialice class, struct and expecions *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8b87ee5`](https://github.com/pabllopf/Alis/commit/8b87ee5aba65107fd4ab7e81cb320de473aa66be) - new json serialicer with list diccionary and other elements *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`712bd43`](https://github.com/pabllopf/Alis/commit/712bd43414b99816640d401ab919f4bdf9391f6a) - basic animations on sprite *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`27a3145`](https://github.com/pabllopf/Alis/commit/27a3145f16ea06d9f57fa5010a3fc928d008239d) - add new configurations to build *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7328f36`](https://github.com/pabllopf/Alis/commit/7328f369734f6295f1ab831d81c7248a6774c97f) - change to my custom clock the system *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`90c99cf`](https://github.com/pabllopf/Alis/commit/90c99cf84991377c1f4c600cdfd363c31ceb3a2c) - create glfw extension of graphics *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0ac3196`](https://github.com/pabllopf/Alis/commit/0ac31961489272a71600d7d08988d96ef66da921) - win implementaion of win32 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6177891`](https://github.com/pabllopf/Alis/commit/6177891e9ed4945e0760644858ecc6012bb2c88a) - win32 implementation with native windows *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`164a4ab`](https://github.com/pabllopf/Alis/commit/164a4ab791b7ad85bf6f92f887bebf1a3d341d24) - big refactor to create new extensions and reduce size of main dll *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9e5adc2`](https://github.com/pabllopf/Alis/commit/9e5adc2732cadd4c0864a3825c4546d4224e07c9) - add net61 and net10 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7f35a10`](https://github.com/pabllopf/Alis/commit/7f35a101fd5d74e28d48c44292a24815e18091ea) - add extension of sfml *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`d4fd91d`](https://github.com/pabllopf/Alis/commit/d4fd91d4d8c1b37a975f6d78fceea044d6bbd2aa) - 7 bug criticals *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9e500eb`](https://github.com/pabllopf/Alis/commit/9e500ebf006b8f56fd80d1ba82ed17d9334ffcda) - 4 low bugs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c7a4bc7`](https://github.com/pabllopf/Alis/commit/c7a4bc748bb210345eb9c57d32022fd0af5371c0) - 4 bugs medium *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f1d5174`](https://github.com/pabllopf/Alis/commit/f1d51744c81fc77748908b4d96d6852277873f41) - gameobjects calculation of T *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c8c7fa1`](https://github.com/pabllopf/Alis/commit/c8c7fa1364f81d3fbace77693b039db4881eacaf) - config with .net8.0 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9f26dce`](https://github.com/pabllopf/Alis/commit/9f26dce0cd09cdd38ebe35bc567e21853812638d) - delete duplication Gen2GcCallback *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b76d90f`](https://github.com/pabllopf/Alis/commit/b76d90f6c8ee7a7c8f0998b79e1ba49885796dbe) - PooledStack.cs duplication *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ab57a8a`](https://github.com/pabllopf/Alis/commit/ab57a8ac88a9cc9784ca86f17ef4430848ef5535) - delete FastestArrayPool.cs duplication *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3a921c7`](https://github.com/pabllopf/Alis/commit/3a921c76a0dc40c2e53e73397dbe63b6941ff815) - move to block namespaces *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f5fab19`](https://github.com/pabllopf/Alis/commit/f5fab19e702d8972d3c9058dfd8ff7012e1e428b) - delete duplication EnumerableHelpers.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bb51b08`](https://github.com/pabllopf/Alis/commit/bb51b082256c0296668840b6131a6c3c7287e329) - add new sample with new api fluent *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`700de2b`](https://github.com/pabllopf/Alis/commit/700de2b59b17efefe09e1bb67ec4d360f6b81f80) - the samples and IGameObjectComponent *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a68dc92`](https://github.com/pabllopf/Alis/commit/a68dc9279554f17c52c4a380a5746ccdd90ba404) - creation hub config *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6dcc45c`](https://github.com/pabllopf/Alis/commit/6dcc45c5786037e0776933aa330ba35d6d27a5b5) - move core to kernel files on ecs module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3dc0852`](https://github.com/pabllopf/Alis/commit/3dc085228e0f67de9fd8d76adc16834f6d72a463) - the benchmark module and move to presentation layer *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d5e7188`](https://github.com/pabllopf/Alis/commit/d5e7188b504743ea7010bb6f84e3e59257b4d104) - warning *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9df4edd`](https://github.com/pabllopf/Alis/commit/9df4edd55c58a21329172752634978985f258f48) - delete unsafe extension and fix benchmarks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ebccb78`](https://github.com/pabllopf/Alis/commit/ebccb789d7e1c10bf9227c24e4932bc244a6745d) - kernel ref *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7be7be3`](https://github.com/pabllopf/Alis/commit/7be7be35bd11cc414ad998ff904059f8f2d43fcb) - monitor data *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0ce1f12`](https://github.com/pabllopf/Alis/commit/0ce1f12db791c3b0c2d5ae9033ab7f46eaa2bb37) - add new installer style and config using glfw *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cb1f970`](https://github.com/pabllopf/Alis/commit/cb1f9708db28a334477b0d6d28d9a1fa45f5409f) - paralle exec tests imgui *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3195429`](https://github.com/pabllopf/Alis/commit/3195429df8cd15ac38e6294e7fdb20e02c9a4e5d) - engine application with glfw backend *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`280cfb2`](https://github.com/pabllopf/Alis/commit/280cfb2c0a949bc06f35b1599b6a0fa22dc5f2bc) - add animator build *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`981dcfd`](https://github.com/pabllopf/Alis/commit/981dcfd3811d37cc6e9aa542a20953c4a8c006ad) - render color *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5bec517`](https://github.com/pabllopf/Alis/commit/5bec517c40527f9f830e023d7a3832a257403cfd) - render ui *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d403966`](https://github.com/pabllopf/Alis/commit/d40396663bbb3a6b7c03c743c1d57c72cb1059b5) - add new form to process imgui module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b0411ea`](https://github.com/pabllopf/Alis/commit/b0411eaefa788f1bc21c197d36039e19261bbe56) - process events and new callbacks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f6b7333`](https://github.com/pabllopf/Alis/commit/f6b733319255aaeb7f2abecef92015f45d7a6e24) - custom style  web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7581f09`](https://github.com/pabllopf/Alis/commit/7581f093d3eb8e8f419e12144f69539d5f670a72) - style and config of engine desktop on macos *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5f4c4e9`](https://github.com/pabllopf/Alis/commit/5f4c4e9f5ce8da8a8e27615720fa72cdc3e3396f) - style of installer on macos *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a6edc07`](https://github.com/pabllopf/Alis/commit/a6edc071c08dc17d728fb03dbf6b9ceecc8b69d7) - assets with same name *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3bb1167`](https://github.com/pabllopf/Alis/commit/3bb1167dc23c92aaf238cb967ab9077da34ff646) - sample of engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3026424`](https://github.com/pabllopf/Alis/commit/302642402c79241c3b08fe4f21b98c7c193d9c3f) - implement new functions on botton menu *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`668c15f`](https://github.com/pabllopf/Alis/commit/668c15f291f4f38bf3de85349344529f54f85c66) - when finish all elements to process on progressbar of bottonmenu, disable the component *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8a782f7`](https://github.com/pabllopf/Alis/commit/8a782f7618bb7cbd3b10e2b8f1bce08b39ca1dd5) - input lag on engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`72c48df`](https://github.com/pabllopf/Alis/commit/72c48dfcf8505f7fa21b6ab2bdf1f4bf144905b3) - the input lag and input map on engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a64905c`](https://github.com/pabllopf/Alis/commit/a64905c1625655c622a8389c294bd85f9454b5b2) - cts dispose error *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`33718c7`](https://github.com/pabllopf/Alis/commit/33718c7004d295b9982b6c7c0aa8f6875cbb8d7d) - spaces and tabs on installer *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0bc6e84`](https://github.com/pabllopf/Alis/commit/0bc6e846a4d5b56ff00d46e64d20ce9d3693c2a7) - the installer spaces *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`18d95a0`](https://github.com/pabllopf/Alis/commit/18d95a01c9382e7184d06a954a86ab49cefed7d6) - sample crash on sonar *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9fff5f5`](https://github.com/pabllopf/Alis/commit/9fff5f5e5777cbd290b3becfffdb70b60a5dac2d) - sonarcloud with web engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`760342e`](https://github.com/pabllopf/Alis/commit/760342e52ecaef0b3adc97dad563d33dfba2896e) - .net version on web app *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9cd6963`](https://github.com/pabllopf/Alis/commit/9cd6963fe58d2682c75ceaadf2d77d5cbe559806) - remove the imgui libs on app web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`077f6c3`](https://github.com/pabllopf/Alis/commit/077f6c30d1c21053d7ac88219fbf4fe4f170690d) - struct timestep *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f4f34e6`](https://github.com/pabllopf/Alis/commit/f4f34e6f232594c5146133c9815779179589f11b) - simple time module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`706fbac`](https://github.com/pabllopf/Alis/commit/706fbacce8f13557274f1b8d47a518145bba9ec1) - spaces *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`842ff07`](https://github.com/pabllopf/Alis/commit/842ff0721edd0a5b175d0545a1cdea81e33c0783) - time module and optimice structs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6f49caa`](https://github.com/pabllopf/Alis/commit/6f49caa261f180d2349b2d8f93ac89c8894d2ecf) - serializable elements *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ec3ceea`](https://github.com/pabllopf/Alis/commit/ec3ceeac74ee81ec29a42fe51faea9c90b350fd0) - new json procesor *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1f3f261`](https://github.com/pabllopf/Alis/commit/1f3f26178e4d3087280313a86499aff35a547b27) - generation of components *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f56abc8`](https://github.com/pabllopf/Alis/commit/f56abc8755654810fd04bded717fa70470b60fec) - the creation of elements on api fluent *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`02d58c9`](https://github.com/pabllopf/Alis/commit/02d58c96699fd75d7ca7b59b21d30729bb3afa05) - delete all system.linq of main projects *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`89978eb`](https://github.com/pabllopf/Alis/commit/89978ebadcf63ca9ddf410c0f52cd57de2af0c50) - reduce size ecs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`acf50f6`](https://github.com/pabllopf/Alis/commit/acf50f68b7e0d8098105f98b70cb5530af502820) - config genertor on release mode *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f7fa5ec`](https://github.com/pabllopf/Alis/commit/f7fa5ec2028be3d62b36c11920e6234a913dca2d) - unit test of all sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4e0224f`](https://github.com/pabllopf/Alis/commit/4e0224f7b83d7fbfc8c4f4cb030bc2c38ff3d713) - Add build step for Alis.sln in workflow *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9274a8a`](https://github.com/pabllopf/Alis/commit/9274a8a23ad828d115e10937b1febba9ba35bb85) - generators *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`8c81e14`](https://github.com/pabllopf/Alis/commit/8c81e14829a812939971ac56351fe835a3765e6a) - pro Update [PRO][TEST].yml *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`94548da`](https://github.com/pabllopf/Alis/commit/94548da86d043f7fabf65c7fd9a79068139dbdcb) - add new comments *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5aaf3e5`](https://github.com/pabllopf/Alis/commit/5aaf3e5875345c8b3bb8ce9458f4666c10d6ce60) - add new comments to all code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b5aa243`](https://github.com/pabllopf/Alis/commit/b5aa243473bc00c067e7405fd6dc817369e96db0) - add simple docs to new structs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`76028d2`](https://github.com/pabllopf/Alis/commit/76028d21f47223e6ddb7cb350de739bab57ab7bd) - add new diagram *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`277862c`](https://github.com/pabllopf/Alis/commit/277862c39d9dc866e1f895cb81703d3361c36525) - api doc of ghahic *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.6.8] - 2025-06-14
 ### :bug: Bug Fixes
 - [`86f6dfa`](https://github.com/pabllopf/Alis/commit/86f6dfa5f713fecebe38fdd891837c11dc7532ed) - docs folder on generator *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4653,3 +4750,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v0.6.7]: https://github.com/pabllopf/Alis/compare/v0.6.6...v0.6.7
 [v0.6.8]: https://github.com/pabllopf/Alis/compare/v0.6.7...v0.6.8
+[v0.6.9]: https://github.com/pabllopf/Alis/compare/v0.6.8...v0.6.9
