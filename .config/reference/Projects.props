@@ -362,7 +362,7 @@
 
         <Analyzer
             Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
-            Include="$(ProjectDir)/../**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;"
+            Include="$(ProjectDir)/../**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
             OutputItemType="Analyzer"
             ReferenceOutputAssembly="false"/>
         
@@ -386,7 +386,7 @@
         
         <Analyzer 
             Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
-            Include="$(ProjectDir)/../**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;"
+            Include="$(ProjectDir)/../**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
             OutputItemType="Analyzer"
             ReferenceOutputAssembly="false"/>
         
@@ -400,42 +400,98 @@
       <!-- Capa 1: importa generators de 2, 3, 4, 5, 6 -->
       <Analyzer Condition="$(ProjectDir.Contains('1_Presentation'))"
         Include="
-          $(SolutionDir)2_Application/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)3_Structuration/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)4_Operation/**/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)5_Declaration/**/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)6_Ideation/**/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;"
+          $(SolutionDir)2_Application/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)4_Operation/**/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)5_Declaration/**/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)6_Ideation/**/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
       />
+        
+        <None Condition="$(ProjectDir.Contains('1_Presentation'))" 
+                Include="$(SolutionDir)2_Application/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+                         $(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+                         $(SolutionDir)4_Operation/**/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+                         $(SolutionDir)5_Declaration/**/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+                         $(SolutionDir)6_Ideation/**/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
+            Pack="true"
+            Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
+            CopyToOutputDirectory="PreserveNewest"
+            CopyToPublishDirectory="PreserveNewest"
+            PackagePath="analyzers/dotnet/cs"
+            Visible="false"/>
     
       <!-- Capa 2: importa generators de 3, 4, 5, 6 -->
       <Analyzer Condition="$(ProjectDir.Contains('2_Application'))"
         Include="
-          $(SolutionDir)3_Structuration/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)4_Operation/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)5_Declaration/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)6_Ideation/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;"
+          $(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
        />
+        
+        <None Condition="$(ProjectDir.Contains('2_Application'))" 
+                Include="$(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+                         $(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+                         $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+                         $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
+            Pack="true"
+            Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
+            CopyToOutputDirectory="PreserveNewest"
+            CopyToPublishDirectory="PreserveNewest"
+            PackagePath="analyzers/dotnet/cs"
+            Visible="false"/>
     
       <!-- Capa 3: importa generators de 4, 5, 6 -->
       <Analyzer Condition="$(ProjectDir.Contains('3_Structuration'))"
         Include="
-          $(SolutionDir)4_Operation/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)5_Declaration/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)6_Ideation/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;"
+          $(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
         />
+        
+        <None Condition="$(ProjectDir.Contains('3_Structuration'))" 
+                Include="$(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+                         $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+                         $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
+            Pack="true"
+            Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
+            CopyToOutputDirectory="PreserveNewest"
+            CopyToPublishDirectory="PreserveNewest"
+            PackagePath="analyzers/dotnet/cs"
+            Visible="false"/>
     
       <!-- Capa 4: importa generators de 5, 6 -->
       <Analyzer Condition="$(ProjectDir.Contains('4_Operation'))"
         Include="   
-          $(SolutionDir)5_Declaration/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)6_Ideation/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;"
+          $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
         />
+        
+        <None Condition="$(ProjectDir.Contains('4_Operation'))" 
+              Include="$(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
+                       $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
+          Pack="true"
+          Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
+          CopyToOutputDirectory="PreserveNewest"
+          CopyToPublishDirectory="PreserveNewest"
+          PackagePath="analyzers/dotnet/cs"
+          Visible="false"/>
+        
     
       <!-- Capa 5: importa generators de 6 -->
       <Analyzer Condition="$(ProjectDir.Contains('5_Declaration'))"
         Include="
-          $(SolutionDir)6_Ideation/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;"
+          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
         />
+
+       <None Condition="$(ProjectDir.Contains('5_Declaration'))" 
+           Include="$(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
+           Pack="true"
+           Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
+           CopyToOutputDirectory="PreserveNewest"
+           CopyToPublishDirectory="PreserveNewest"
+           PackagePath="analyzers/dotnet/cs"
+           Visible="false"/>
         
     </ItemGroup>
     
