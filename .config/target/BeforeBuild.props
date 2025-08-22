@@ -9,19 +9,18 @@
         </GeneratorProjects>
     </ItemGroup>
 
+    <!-- Compilar solo si faltan las DLLs o si las fuentes cambiaron -->
     <Target Name="BuildAllGenerators"
             BeforeTargets="Build;Publish"
-            Condition="'$(Configuration)' == 'Release' AND $(AssemblyName.Contains('Generator')) == false"
-            Inputs="@(GeneratorProjects)"
+            Condition="'$(Configuration)' == 'Release' 
+                     AND $(AssemblyName.Contains('Generator')) == false"
+            Inputs="@(GeneratorProjects);@(GeneratorProjects->'%(RootDir)%(Directory)/**/*.cs')"
             Outputs="@(GeneratorProjects->'%(OutputAssembly)')">
-
-        <Message Importance="high" Text="Checking if generator DLLs need to be built..." />
 
         <MSBuild
             Projects="@(GeneratorProjects)"
             Properties="Configuration=Release;TargetFramework=netstandard2.0"
             Targets="Build" />
 
-        <Message Importance="high" Text="All generators built successfully." />
     </Target>
 </Project>
