@@ -1,152 +1,26 @@
 <Project>
+    <ItemGroup>
+        <GeneratorProjects Include="$(SolutionDir)4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj">
+            <OutputAssembly>$(SolutionDir)4_Operation/Ecs/generator/bin/Release/netstandard2.0/Alis.Core.Ecs.Generator.dll</OutputAssembly>
+        </GeneratorProjects>
 
-    
-   <Target Name="EnsureObfuscarTool" BeforeTargets="Obfuscar" Condition="Exists('$(ProjectDir).config/obfuscar-$(TargetFramework).xml') AND $(Configuration) == 'Release'">
-       <Exec Command="dotnet tool install --global Obfuscar.GlobalTool --version 2.2.49" />
-   </Target>
-    
-   <Target Name="Obfuscar" AfterTargets="Build;Publish" Condition="$(Configuration) == 'Release' AND Exists('$(ProjectDir).config/obfuscar-$(TargetFramework).xml')">
-       <Exec Command="obfuscar.console $(ProjectDir).config/obfuscar-$(TargetFramework).xml" />
-   </Target>
-    
-   <Target Name="ReplaceWithObfuscatedDll" AfterTargets="Obfuscar" Condition="$(Configuration) == 'Release' AND Exists('$(ProjectDir).config/obfuscar-$(TargetFramework).xml')">
-       <PropertyGroup>
-           <ObfuscatedDir>$(ProjectDir)bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/obfuscated/</ObfuscatedDir>
-           <OutputDir>$(ProjectDir)bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutputDir>
-           <DllName>$(AssemblyName).dll</DllName>
-       </PropertyGroup>
-       <Copy 
-           Condition="Exists('$(ObfuscatedDir)$(DllName)')" 
-           SourceFiles="$(ObfuscatedDir)$(DllName)" 
-           DestinationFiles="$(OutputDir)$(DllName)" 
-           OverwriteReadOnlyFiles="true" 
-       />
-   </Target>
-    
-    <!-- remove the obfuscated folder after copying the obfuscated dll -->
-    <Target Name="CleanObfuscatedFolder" AfterTargets="ReplaceWithObfuscatedDll"
-        Condition="Exists('$(ProjectDir)bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/obfuscated/') And $(Configuration) == 'Release'">
-        <RemoveDir Directories="$(ProjectDir)bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/obfuscated/"/>
-    </Target>
-  
-    <Target Name="BuildAndCopyEngineOutput" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub'))">
-        <MSBuild Projects="$(SolutionDir)1_Presentation/Engine/src/desktop/Alis.App.Engine.Desktop.csproj" Targets="Build" Properties="Configuration=$(Configuration)"/>
-        <PropertyGroup>
-            <EngineOutputDir>$(SolutionDir)1_Presentation/Engine/src/desktop/bin/$(Configuration)/$(RuntimeIdentifier)/lib/</EngineOutputDir>
-            <DestinationDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/Editor/v$(AssemblyVersion)/</DestinationDir>
-        </PropertyGroup>
-        <ItemGroup>
-            <EngineOutputFiles Include="$(EngineOutputDir)**/*"/>
-        </ItemGroup>
-        <RemoveDir Directories="$(DestinationDir)"/>
-        <MakeDir Directories="$(DestinationDir)"/>
-        <Copy SourceFiles="@(EngineOutputFiles)" DestinationFiles="@(EngineOutputFiles->'$(DestinationDir)%(RecursiveDir)%(Filename)%(Extension)')"/>
-    </Target>
+        <GeneratorProjects Include="$(SolutionDir)6_Ideation/Data/generator/Alis.Core.Aspect.Data.Generator.csproj">
+            <OutputAssembly>$(SolutionDir)6_Ideation/Data/generator/bin/Release/netstandard2.0/Alis.Core.Aspect.Data.Generator.dll</OutputAssembly>
+        </GeneratorProjects>
+    </ItemGroup>
 
-    <Target Name="BuildAndCopyInstallerOutput" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub'))">
-        <MSBuild Projects="$(SolutionDir)1_Presentation/Installer/src/Alis.App.Installer.csproj" Targets="Build" Properties="Configuration=$(Configuration)"/>
-        <PropertyGroup>
-            <InstallerOutputDir>$(SolutionDir)1_Presentation/Installer/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/</InstallerOutputDir>
-            <DestinationDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/Installer/</DestinationDir>
-        </PropertyGroup>
-        <ItemGroup>
-            <InstallerOutputFiles Include="$(InstallerOutputDir)**/*"/>
-        </ItemGroup>
-        <RemoveDir Directories="$(DestinationDir)"/>
-        <MakeDir Directories="$(DestinationDir)"/>
-        <Copy SourceFiles="@(InstallerOutputFiles)" DestinationFiles="@(InstallerOutputFiles->'$(DestinationDir)%(RecursiveDir)%(Filename)%(Extension)')"/>
-    </Target>
+    <!-- Compilar solo si faltan las DLLs o si las fuentes cambiaron -->
+    <Target Name="BuildAllGenerators"
+            BeforeTargets="Build;Publish"
+            Condition="'$(Configuration)' == 'Release' 
+                     AND $(AssemblyName.Contains('Generator')) == false"
+            Inputs="@(GeneratorProjects);@(GeneratorProjects->'%(RootDir)%(Directory)/**/*.cs')"
+            Outputs="@(GeneratorProjects->'%(OutputAssembly)')">
+        
+        <MSBuild
+            Projects="@(GeneratorProjects)"
+            Properties="Configuration=Release;TargetFramework=netstandard2.0"
+            Targets="Build" />
 
-    <Target Name="CreateMacOsBundle" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub')) And '$(IsOSX)' == 'true' AND $(Configuration) == 'Release'">
-        <PropertyGroup>
-            <AppBundleDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/Alis.app/</AppBundleDir>
-            <ContentsDir>$(AppBundleDir)Contents/</ContentsDir>
-            <MacOSDir>$(ContentsDir)MacOS/</MacOSDir>
-            <ResourcesDir>$(ContentsDir)Resources/</ResourcesDir>
-            <HubOutputDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/</HubOutputDir>
-            <DmgFileName>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/Alis_$(RuntimeIdentifier).dmg</DmgFileName>
-        </PropertyGroup>
-        <ItemGroup>
-            <HubOutputFiles Include="$(HubOutputDir)**/*" Exclude="$(AppBundleDir)**/*"/>
-        </ItemGroup>
-        <RemoveDir Directories="$(AppBundleDir)"/>
-        <MakeDir Directories="$(MacOSDir)"/>
-        <MakeDir Directories="$(ResourcesDir)"/>
-        <CreateItem Include="@(EngineOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
-            <Output TaskParameter="Include" ItemName="EngineOutputFilesWithMyRecursiveDir"/>
-        </CreateItem>
-        <CreateItem Include="@(InstallerOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
-            <Output TaskParameter="Include" ItemName="InstallerOutputFilesWithMyRecursiveDir"/>
-        </CreateItem>
-        <CreateItem Include="@(HubOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
-            <Output TaskParameter="Include" ItemName="HubOutputFilesWithMyRecursiveDir"/>
-        </CreateItem>
-        <Copy SourceFiles="$(SolutionDir)1_Presentation/Hub/src/Properties/Info.plist" DestinationFolder="$(ContentsDir)"/>
-        <Copy SourceFiles="$(SolutionDir)1_Presentation/Hub/src/Properties/logo.png" DestinationFolder="$(ResourcesDir)"/>
-        <Copy SourceFiles="@(HubOutputFilesWithMyRecursiveDir)" DestinationFiles="@(HubOutputFilesWithMyRecursiveDir->'$(MacOSDir)%(MyRecursiveDir)%(Filename)%(Extension)')"/>
-        <ItemGroup>
-            <EditorFiles Include="$(HubOutputDir)Editor/**/*"/>
-        </ItemGroup>
-        <Copy SourceFiles="@(EditorFiles)" DestinationFiles="@(EditorFiles->'$(MacOSDir)Editor/%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('$(HubOutputDir)Editor')"/>
-        <Delete Files="$(DmgFileName)"/>
-        <Exec Command="hdiutil create -volname Alis -srcfolder $(AppBundleDir) -ov -format UDZO $(DmgFileName)"/>
-    </Target>
-
-    <Target Name="CreateLinuxBundle" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub')) And '$(IsLinux)' == 'true' AND $(Configuration) == 'Release'">
-        <PropertyGroup>
-            <PublishDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/</PublishDir>
-            <HubOutputDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/</HubOutputDir>
-            <ZipFileName>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/Alis_$(RuntimeIdentifier).zip</ZipFileName>
-        </PropertyGroup>
-        <ItemGroup>
-            <HubOutputFiles Include="$(HubOutputDir)**/*" Exclude="$(PublishDir)**/*;$(HubOutputDir)**/*.zip"/>
-        </ItemGroup>
-        <RemoveDir Directories="$(PublishDir)"/>
-        <MakeDir Directories="$(PublishDir)"/>
-        <CreateItem Include="@(EngineOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
-            <Output TaskParameter="Include" ItemName="EngineOutputFilesWithMyRecursiveDir"/>
-        </CreateItem>
-        <CreateItem Include="@(InstallerOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
-            <Output TaskParameter="Include" ItemName="InstallerOutputFilesWithMyRecursiveDir"/>
-        </CreateItem>
-        <CreateItem Include="@(HubOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
-            <Output TaskParameter="Include" ItemName="HubOutputFilesWithMyRecursiveDir"/>
-        </CreateItem>
-        <Copy SourceFiles="@(HubOutputFilesWithMyRecursiveDir)" DestinationFiles="@(HubOutputFilesWithMyRecursiveDir->'$(PublishDir)%(MyRecursiveDir)%(Filename)%(Extension)')"/>
-        <ItemGroup>
-            <EditorFiles Include="$(HubOutputDir)Editor/**/*"/>
-        </ItemGroup>
-        <Copy SourceFiles="@(EditorFiles)" DestinationFiles="@(EditorFiles->'$(PublishDir)Editor/%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('$(HubOutputDir)Editor')"/>
-        <Delete Files="$(ZipFileName)"/>
-        <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(ZipFileName)"/>
-    </Target>
-
-    <Target Name="CreateWindowsBundle" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub')) And '$(IsWindows)' == 'true' AND $(Configuration) == 'Release'">
-        <PropertyGroup>
-            <PublishDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/</PublishDir>
-            <HubOutputDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/</HubOutputDir>
-            <ZipFileName>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/Alis_$(RuntimeIdentifier).zip</ZipFileName>
-        </PropertyGroup>
-        <ItemGroup>
-            <HubOutputFiles Include="$(HubOutputDir)**/*" Exclude="$(PublishDir)**/*;$(HubOutputDir)**/*.zip"/>
-        </ItemGroup>
-        <RemoveDir Directories="$(PublishDir)"/>
-        <MakeDir Directories="$(PublishDir)"/>
-        <CreateItem Include="@(EngineOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
-            <Output TaskParameter="Include" ItemName="EngineOutputFilesWithMyRecursiveDir"/>
-        </CreateItem>
-        <CreateItem Include="@(InstallerOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
-            <Output TaskParameter="Include" ItemName="InstallerOutputFilesWithMyRecursiveDir"/>
-        </CreateItem>
-        <CreateItem Include="@(HubOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
-            <Output TaskParameter="Include" ItemName="HubOutputFilesWithMyRecursiveDir"/>
-        </CreateItem>
-        <Copy SourceFiles="@(HubOutputFilesWithMyRecursiveDir)" DestinationFiles="@(HubOutputFilesWithMyRecursiveDir->'$(PublishDir)%(MyRecursiveDir)%(Filename)%(Extension)')"/>
-        <ItemGroup>
-            <EditorFiles Include="$(HubOutputDir)Editor/**/*"/>
-        </ItemGroup>
-        <Copy SourceFiles="@(EditorFiles)" DestinationFiles="@(EditorFiles->'$(PublishDir)Editor/%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('$(HubOutputDir)Editor')"/>
-        <Delete Files="$(ZipFileName)"/>
-        <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(ZipFileName)"/>
     </Target>
 </Project>
