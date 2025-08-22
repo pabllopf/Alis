@@ -1,40 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <PropertyGroup>
-        <TargetFrameworks>net8.0;netstandard2.0;</TargetFrameworks>
-        
-        
-        <TargetFrameworks Condition="$(Configuration) == 'Release'">
-            netcoreapp2.0;netcoreapp2.1;netcoreapp2.2;netcoreapp3.0;netcoreapp3.1;
-            net5.0;net6.0;net7.0;net8.0;net9.0;
-            netstandard2.0;netstandard2.1;
-            net461;net471;net472;net48;net481;
-        </TargetFrameworks>
-
-        <TargetFrameworks Condition="$(AssemblyName.Contains('App')) == true">net8.0;</TargetFrameworks>
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Extension')) == true AND $(Configuration) == 'Release'">netcoreapp2.0;net461;net5.0;net8.0;netstandard2.0</TargetFrameworks>
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Benchmark')) == true">net8.0;</TargetFrameworks>
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Test')) == true">net8.0;</TargetFrameworks>
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Sample')) == true">net8.0;</TargetFrameworks>
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Generator')) == true">netstandard2.0;</TargetFrameworks>
-
-        <TargetFramework Condition="$(AssemblyName.Contains('App'))">net8.0</TargetFramework>
-        <TargetFramework Condition="$(AssemblyName.Contains('Benchmark'))">net8.0</TargetFramework>
-        <TargetFramework Condition="$(AssemblyName.Contains('Test'))">net8.0</TargetFramework>
-        <TargetFramework Condition="$(AssemblyName.Contains('Sample'))">net8.0</TargetFramework>
-        <TargetFramework Condition="$(AssemblyName.Contains('Generator'))">netstandard2.0</TargetFramework>
-
-        <RuntimeIdentifiers Condition="$(Configuration) == 'Release'">
-            win-x64; win-x86; win-arm64;
-            linux-x64; linux-arm; linux-arm64;
-            osx-x64;osx-arm64;
-        </RuntimeIdentifiers>
-
+        <!-- Configuración general -->
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU;OsxArm64;x64;Winx64;x86;arm;arm64</Platforms>
+        <RuntimeIdentifiers Condition="'$(Configuration)'=='Release'">
+            win-x64;win-x86;win-arm64;
+            linux-x64;linux-arm;linux-arm64;
+            osx-x64;osx-arm64
+        </RuntimeIdentifiers>
     </PropertyGroup>
 
-    
+    <!-- TargetFrameworks según tipo de proyecto -->
+    <PropertyGroup Condition="$(AssemblyName.Contains('Generator'))">
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(AssemblyName.Contains('App'))">
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(AssemblyName.Contains('Benchmark'))">
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(AssemblyName.Contains('Test'))">
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(AssemblyName.Contains('Sample'))">
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(AssemblyName.Contains('Extension')) AND '$(Configuration)'=='Release'">
+        <TargetFrameworks>netcoreapp2.0;net461;net5.0;net8.0;netstandard2.0</TargetFrameworks>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <TargetFrameworks>
+            netcoreapp2.0;netcoreapp2.1;netcoreapp2.2;
+            netcoreapp3.0;netcoreapp3.1;
+            net5.0;net6.0;net7.0;net8.0;net9.0;
+            netstandard2.0;netstandard2.1;
+            net461;net471;net472;net48;net481
+        </TargetFrameworks>
+    </PropertyGroup>
+
+
+
     <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|OsxArm64'">
         <Configuration>Release</Configuration>
         <Platform>OsxArm64</Platform>
