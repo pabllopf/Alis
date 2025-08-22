@@ -1,8 +1,9 @@
 <Project>
+
+    <ItemGroup Condition="$(Configuration) == 'Release'">
+   <!--
     
    
-    
-    <ItemGroup Condition="$(Configuration) == 'Release'">
         <None
             Condition="
             Exists('$(SolutionDir)4_Operation/Ecs/generator/bin/Release/lib/netstandard2.0/Alis.Core.Ecs.Generator.dll') AND
@@ -43,7 +44,7 @@
             CopyToOutputDirectory="PreserveNewest"
             CopyToPublishDirectory="PreserveNewest"
             PackagePath="analyzers/dotnet/cs"
-            Visible="false"/>
+            Visible="false"/>-->
         
         <!-- Include all the .md files in the output -->
         <Content Include="$(ProjectDir)bin/Release/lib/net5.0/*.md" Visible="false" PackagePath="lib/net5.0/"/>
