@@ -28,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Data;
-using Alis.Core.Aspect.Data.Mapping;
 using Alis.Extension.Graphic.Sdl2.Enums;
+using Alis.Extension.Graphic.Sdl2.Mapping;
 using Alis.Extension.Graphic.Sdl2.Structs;
 using Xunit;
 

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Data.Mapping
+namespace Alis.Extension.Graphic.Sdl2.Mapping
 {
     /// <summary>
     ///     The sdl input const class
