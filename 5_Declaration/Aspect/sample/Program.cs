@@ -27,10 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Threading;
-
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Sample.Entities;
 using Alis.Core.Aspect.Sample.Fluent;

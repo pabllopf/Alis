@@ -28,16 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Builder.Core.Ecs.Entity;
-using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs;
-using Alis.Core.Ecs.Components.Render;
-using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Systems.Configuration;
-using Alis.Core.Ecs.Systems.Configuration.General;
-using Alis.Core.Physic.Common;
 
 namespace Alis.Sample.Desktop
 {

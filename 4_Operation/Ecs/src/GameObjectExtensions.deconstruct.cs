@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs

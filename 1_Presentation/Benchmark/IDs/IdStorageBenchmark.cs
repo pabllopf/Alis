@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Order;
 
 namespace Alis.Benchmark.IDs
 {

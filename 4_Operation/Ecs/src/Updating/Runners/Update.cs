@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Kernel.Archetypes;
 
 namespace Alis.Core.Ecs.Updating.Runners
 {

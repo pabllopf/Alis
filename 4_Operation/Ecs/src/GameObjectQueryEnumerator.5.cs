@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Systems;
 
 namespace Alis.Core.Ecs

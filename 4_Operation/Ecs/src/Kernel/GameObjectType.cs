@@ -3,7 +3,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Collections;
-using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Kernel.Archetypes;
 
 namespace Alis.Core.Ecs.Kernel
 {
@@ -33,12 +33,12 @@ namespace Alis.Core.Ecs.Kernel
         ///     The component types
         /// </summary>
         public readonly FastImmutableArray<ComponentId> Types =>
-            Kernel.Archetype.Archetype.ArchetypeTable[RawIndex].ComponentTypes;
+            Archetypes.Archetype.ArchetypeTable[RawIndex].ComponentTypes;
 
         /// <summary>
         ///     The tag types
         /// </summary>
-        public readonly FastImmutableArray<TagId> Tags => Kernel.Archetype.Archetype.ArchetypeTable[RawIndex].TagTypes;
+        public readonly FastImmutableArray<TagId> Tags => Archetypes.Archetype.ArchetypeTable[RawIndex].TagTypes;
 
         /// <summary>
         ///     Checks if this <see cref="GameObjectType" /> has a component represented by a <see cref="ComponentId" />
@@ -124,7 +124,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <param name="tags">The tags the <see cref="GameObjectType" /> should have.</param>
         public static GameObjectType EntityTypeOf(ReadOnlySpan<ComponentId> components, ReadOnlySpan<TagId> tags)
         {
-            return Kernel.Archetype.Archetype.GetArchetypeId(components, tags);
+            return Archetypes.Archetype.GetArchetypeId(components, tags);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         /// <param name="context">The context</param>
         /// <returns>The ref archetype archetype</returns>
-        internal readonly ref Archetype.Archetype Archetype(Scene context)
+        internal readonly ref Archetype Archetype(Scene context)
         {
             return ref Unsafe.Add(ref context.WorldArchetypeTable[0], RawIndex).Archetype!;
         }

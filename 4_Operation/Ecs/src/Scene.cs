@@ -8,7 +8,7 @@ using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Kernel.Events;
 using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Systems;

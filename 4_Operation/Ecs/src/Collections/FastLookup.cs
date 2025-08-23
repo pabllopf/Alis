@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Archetype;
+using Alis.Core.Ecs.Kernel.Archetypes;
 #if NET7_0_OR_GREATER
 #endif
 

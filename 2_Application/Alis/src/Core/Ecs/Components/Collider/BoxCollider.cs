@@ -29,11 +29,15 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Systems.Manager.Physic;
+using Alis.Core.Graphic;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
+using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.Components.Collider

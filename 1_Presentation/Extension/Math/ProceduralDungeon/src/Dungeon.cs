@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Extension.Math.ProceduralDungeon
