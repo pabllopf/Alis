@@ -209,7 +209,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
             }
             return null;
         }
-        public void Initialize(int w, int h, string t)
+        public bool Initialize(int w, int h, string t)
         {
             Console.WriteLine("[Init] Starting LinuxNativePlatform initialization...");
             width = w;
@@ -274,6 +274,8 @@ namespace Alis.Core.Graphic.Platforms.Linux
             }
             windowVisible = true;
             running = true;
+
+            return true;
         }
         public void ShowWindow()
         {

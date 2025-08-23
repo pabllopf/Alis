@@ -16,7 +16,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
         private static IntPtr _openGlHandle = IntPtr.Zero;
         private ConsoleKey? lastKeyPressed = null;
 
-        public void Initialize(int w, int h, string t)
+        public bool Initialize(int w, int h, string t)
         {
             ObjectiveCInterop.NSApplicationLoad();
             pool = ObjectiveCInterop.objc_msgSend(ObjectiveCInterop.Class("NSAutoreleasePool"), ObjectiveCInterop.Sel("new"));
@@ -29,6 +29,8 @@ namespace Alis.Core.Graphic.Platforms.Osx
             ObjectiveCInterop.objc_msgSend_void_IntPtr(window.Handle, ObjectiveCInterop.Sel("makeKeyAndOrderFront:"), IntPtr.Zero);
             distantPast = ObjectiveCInterop.objc_msgSend(ObjectiveCInterop.Class("NSDate"), ObjectiveCInterop.Sel("distantPast"));
             runLoopMode = ObjectiveCInterop.CFStringCreateWithCString(IntPtr.Zero, "kCFRunLoopDefaultMode", MacConstants.KCfStringEncodingUtf8);
+
+            return true;
         }
 
         public void ShowWindow() => window?.Show();
