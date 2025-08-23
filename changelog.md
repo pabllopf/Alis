@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.7.1] - 2025-08-26
+### :bug: Bug Fixes
+- [`37b38fc`](https://github.com/pabllopf/Alis/commit/37b38fca09e2590d4b781e16cc8691231c856a68) - delete ofuscar module *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.7.0] - 2025-08-26
 ### :bug: Bug Fixes
 - [`59543f0`](https://github.com/pabllopf/Alis/commit/59543f0c76e174f61821c49e4874ad1363450fe9) - check all *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4757,3 +4762,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.6.8]: https://github.com/pabllopf/Alis/compare/v0.6.7...v0.6.8
 [v0.6.9]: https://github.com/pabllopf/Alis/compare/v0.6.8...v0.6.9
 [v0.7.0]: https://github.com/pabllopf/Alis/compare/v0.6.9...v0.7.0
+[v0.7.1]: https://github.com/pabllopf/Alis/compare/v0.7.0...v0.7.1
