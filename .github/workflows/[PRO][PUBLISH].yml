@@ -73,6 +73,9 @@ jobs:
       
       - name: Build extensiones automáticamente
         run: |
+        
+          dotnet build alis.sln -c Release
+        
           echo "Buscando proyectos..."
           
           if [[ "${{ matrix.framework }}" == netcoreapp* ]]; then
@@ -138,6 +141,8 @@ jobs:
       - name: Build Core 
         run: |
          
+         dotnet build alis.sln -c Release
+         
          if [[ "${{ matrix.framework }}" == netcoreapp* ]]; then
            runtimes=("win-x64" "linux-x64" "osx-x64")
          else
@@ -198,6 +203,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
+
+      - name: Build Alis
+        run: dotnet build alis.sln -c Release
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r win-x64 -f ${{ matrix.framework }}
