@@ -82,7 +82,11 @@ jobs:
           fi
           
           for proj in $(find 1_Presentation/Extension -name "*.csproj" \
-            | grep -viE "sample|generator|benchmark|template|app|test"); do
+            | grep -viE "sample|generator|benchmark|template|Alis.App|test"); do
+            
+            echo "Compilando $proj ->  -c Release"
+            dotnet build "$proj" -c Release
+          
             for rt in "${runtimes[@]}"; do
               echo "Compilando $proj -> fw=${{ matrix.framework }}, rt=$rt"
               dotnet build "$proj" \
@@ -141,8 +145,13 @@ jobs:
          fi
           
           echo "Buscando proyectos core..."
+          
           for proj in $(find . -name "*.csproj" \
-            | grep -viE "sample|generator|benchmark|template|app|extension|test"); do
+          | grep -viE "sample|generator|benchmark|template|Alis.App|extension|test"); do
+          
+          echo "Compilando $proj ->  -c Release"
+          dotnet build "$proj" -c Release
+          
             for rt in "${runtimes[@]}"; do
               echo "Compilando $proj -> fw=${{ matrix.framework }}, rt=$rt"
               dotnet build "$proj" \
