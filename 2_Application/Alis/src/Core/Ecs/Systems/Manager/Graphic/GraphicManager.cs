@@ -40,6 +40,7 @@ using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Graphic;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
+using Alis.Core.Graphic.Platforms;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
 
 namespace Alis.Core.Ecs.Systems.Manager.Graphic
@@ -54,130 +55,49 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         ///     The pixels per meter
         /// </summary>
         private const float PixelsPerMeter = 32.0f;
-        
-        /// <summary>
-        ///     The world position
-        /// </summary>
-        public Vector2F WorldPosition;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
-        public GraphicManager(Context context) : base(context) => Renderer = IntPtr.Zero;
-
-        /// <summary>
-        /// Gets or sets the value of the window
-        /// </summary>
-        //public Window Window { get; set; }
-
+        public GraphicManager(Context context) : base(context)
+        {
+            
+        }
+        
         /// <summary>
         /// Gets or sets the value of the renderer
         /// </summary>
         public IntPtr Renderer { get; set; }
+        
+        private  INativePlatform platform;
 
         /// <summary>
         ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
-            /*
-            // Initialize GLFW
-            Glfw.Init();
-
-            // Set GLFW window hints for OpenGL context
-            Glfw.WindowHint(Hint.ContextVersionMajor, 3);
-            Glfw.WindowHint(Hint.ContextVersionMinor, 2);
-            Glfw.WindowHint(Hint.OpenglProfile, Profile.Core);
-            Glfw.WindowHint(Hint.OpenglForwardCompatible, true);
-            Glfw.WindowHint(Hint.Doublebuffer, true);
-            Glfw.WindowHint(Hint.DepthBits, 24);
-            Glfw.WindowHint(Hint.AlphaBits, 8);
-            Glfw.WindowHint(Hint.StencilBits, 8);
-
-            if (Context.Setting.Graphic.IsResizable)
-            {
-                Glfw.WindowHint(Hint.Resizable, true);
-            }
-            else
-            {
-                Glfw.WindowHint(Hint.Resizable, false);
-            }
-
-            // Create a GLFW window
-            if (Context.Setting.Graphic.WindowSize == new Vector2F(0, 0))
-            {
-                Context.Setting.Graphic = Context.Setting.Graphic with {WindowSize = new Vector2F(1280, 720)};
-            }
-
-            Window = Glfw.CreateWindow((int) Context.Setting.Graphic.WindowSize.X, (int) Context.Setting.Graphic.WindowSize.Y, Context.Setting.General.Name, Monitor.None, Window.None);
-            if (Window == Window.None)
-            {
-                throw new Exception("Failed to create GLFW window");
-            }
-
-            // Make the OpenGL context current
-            Glfw.MakeContextCurrent(Window);
-
-            // Enable v-sync
-            Glfw.SwapInterval(1);
-
-            // Log GLFW version
-            Logger.Log($"GLFW VERSION {Glfw.GetVersionString()}");
-
-            // Set window icon (skip on macOS)
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                Logger.Log("Skipping window icon setting on macOS");
-            }
-            else
-            {
-                string iconPath = Context.Setting.General.Icon;
-                if (!string.IsNullOrEmpty(iconPath))
-                {
-                    //Image icon = LoadIcon(AssetManager.Find(iconPath));
-                    //Glfw.SetWindowIcon(Window, 1, new[] {icon});
-                }
-            }
-
-            framebufferSizeCallback = FramebufferSizeCallback;
-            Glfw.SetFramebufferSizeCallback(Window, framebufferSizeCallback);
             
-            Glfw.SetCloseCallback(Window, CloseWindowCallback);*/
-        }
-
-
-
-        /// <summary>
-        ///     Loads the icon using the specified icon path
-        /// </summary>
-        /// <param name="iconPath">The icon path</param>
-        /// <exception cref="FileNotFoundException">Icon file not found </exception>
-        /// <returns>The image</returns>
-        private Image LoadIcon(string iconPath)
-        {
-            if (!File.Exists(iconPath))
-            {
-                throw new FileNotFoundException("Icon file not found", iconPath);
-            }
-
-            /*
-            using (FileStream stream = File.OpenRead(iconPath))
-            {
-                ImageResult image = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);
-
-                GCHandle handle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
-                IntPtr dataPtr = handle.AddrOfPinnedObject();
-
-                Image icon = new Image(image.Width, image.Height, dataPtr);
-
-                handle.Free();
-
-                return icon;
-            }*/
+#if OSX
+            platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
+#elif WIN
+            platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
+#elif LINUX
+            platform = new Alis.Core.Graphic.Platforms.LinuxNativePlatform();
+#else
+            throw new Exception("Sistema operativo no soportado");
+#endif
             
-            return Image.Load(iconPath);
+            
+            platform.Initialize(800, 600, "C# + OpenGL Platform");
+            platform.MakeContextCurrent();
+            Gl.Initialize(platform.GetProcAddress);
+            Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
+            Gl.GlEnable(EnableCap.DepthTest);
+            
+            platform.ShowWindow();
+           
         }
-
+        
 
         /// <summary>
         ///     Ons the start
@@ -198,6 +118,12 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         public override void OnDraw()
         {
+            bool running = platform.PollEvents();
+            if (platform.TryGetLastKeyPressed(out ConsoleKey key))
+            {
+                Console.WriteLine($"Tecla pulsada: {key}");
+            }
+            
             float pixelsPerMeter = PixelsPerMeter;
             Setting contextSetting = Context.Setting;
             PhysicSetting physicSettings = contextSetting.Physic;
@@ -251,6 +177,13 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             
             // Swap the buffers to display the triangle
             //Glfw.SwapBuffers(Window);
+            
+            platform.SwapBuffers();
+            int glError = Gl.GlGetError();
+            if (glError != 0)
+            {
+                Console.WriteLine($"OpenGL error tras flushBuffer: 0x{glError:X}");
+            }
         }
     }
 }

@@ -15,7 +15,7 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
-
+    
     <ItemGroup  Condition="$(AssemblyName.Contains('Engine.Web'))">
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.18" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.18" PrivateAssets="all" />

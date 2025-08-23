@@ -1,4 +1,7 @@
 <Project>
+    
+   
+    
     <ItemGroup Condition="$(Configuration) == 'Release'">
         <None
             Condition="
@@ -231,4 +234,5 @@
         <Content Include="$(ProjectDir)bin/Release/win-x86/lib/netstandard2.0/*.dll" Visible="false" PackagePath="runtimes/win-x86/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-x86/lib/netstandard2.1/*.dll" Visible="false" PackagePath="runtimes/win-x86/lib/netstandard2.1/"/>
     </ItemGroup>
+    
 </Project>

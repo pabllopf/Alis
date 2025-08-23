@@ -1,4 +1,28 @@
 <Project>
+
+    
+   <Target Name="EnsureObfuscarTool" BeforeTargets="Obfuscar">
+       <Exec Command="dotnet tool list --global | grep -q '^obfuscar.console ' || dotnet tool install --global Obfuscar.GlobalTool --version 2.2.49" />
+   </Target>
+    
+   <Target Name="Obfuscar" AfterTargets="Build;Publish" Condition="$(Configuration) == 'Release'">
+       <Exec Condition="Exists('$(ProjectDir).config/obfuscar-$(TargetFramework).xml')" Command="obfuscar.console $(ProjectDir).config/obfuscar-$(TargetFramework).xml" />
+   </Target>
+    
+   <Target Name="ReplaceWithObfuscatedDll" AfterTargets="Obfuscar" Condition="$(Configuration) == 'Release'">
+       <PropertyGroup>
+           <ObfuscatedDir>$(ProjectDir)bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/obfuscated/</ObfuscatedDir>
+           <OutputDir>$(ProjectDir)bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutputDir>
+           <DllName>$(AssemblyName).dll</DllName>
+       </PropertyGroup>
+       <Copy 
+           Condition="Exists('$(ObfuscatedDir)$(DllName)')" 
+           SourceFiles="$(ObfuscatedDir)$(DllName)" 
+           DestinationFiles="$(OutputDir)$(DllName)" 
+           OverwriteReadOnlyFiles="true" 
+       />
+   </Target>
+  
     <Target Name="BuildAndCopyEngineOutput" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub'))">
         <MSBuild Projects="$(SolutionDir)1_Presentation/Engine/src/desktop/Alis.App.Engine.Desktop.csproj" Targets="Build" Properties="Configuration=$(Configuration)"/>
         <PropertyGroup>
