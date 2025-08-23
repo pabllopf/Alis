@@ -61,6 +61,10 @@ namespace Alis.Core.Graphic.Platforms.Linux
         private static extern void glXDestroyContext(IntPtr display, IntPtr ctx);
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
         private static extern IntPtr glXGetProcAddress(byte[] name);
+        [System.Runtime.InteropServices.DllImport("libGL.so.1")]
+        private static extern IntPtr glXChooseFBConfig(IntPtr display, int screen, int[] attribList, out int nitems);
+        [System.Runtime.InteropServices.DllImport("libGL.so.1")]
+        private static extern IntPtr glXGetVisualFromFBConfig(IntPtr display, IntPtr fbConfig);
 
         // Estructuras X11
         private struct XEvent
@@ -98,6 +102,50 @@ namespace Alis.Core.Graphic.Platforms.Linux
         private const int KeyPress = 2;
         private const int DestroyNotify = 17;
 
+        private IntPtr GetBestVisual(IntPtr display, int screen)
+        {
+            // Try several attribute sets for maximum compatibility
+            int[][] fbAttribSets = new int[][] {
+                new int[] { 0x8010, 1, 0x8011, 1, 0x6, 1, 0x8012, 1, 0x8, 24, 0 }, // Modern
+                new int[] { 0x6, 1, 0x8, 24, 0x8010, 1, 0 }, // Legacy
+                new int[] { 0x8010, 1, 0x8012, 1, 0x8, 16, 0 }, // 16-bit depth
+                new int[] { 0x8010, 1, 0x8012, 1, 0 } // Minimal
+            };
+            foreach (var fbAttribs in fbAttribSets)
+            {
+                int nitems;
+                IntPtr fbConfigs = glXChooseFBConfig(display, screen, fbAttribs, out nitems);
+                if (fbConfigs != IntPtr.Zero && nitems > 0)
+                {
+                    IntPtr fbConfig = System.Runtime.InteropServices.Marshal.ReadIntPtr(fbConfigs);
+                    IntPtr visual = glXGetVisualFromFBConfig(display, fbConfig);
+                    if (visual != IntPtr.Zero)
+                    {
+                        Console.WriteLine("GLX visual obtained via FBConfig");
+                        return visual;
+                    }
+                }
+            }
+            // Try several attribute sets for glXChooseVisual
+            int[][] visualAttribSets = new int[][] {
+                new int[] { 0x6, 1, 0x8, 24, 0x8010, 1, 0 },
+                new int[] { 0x6, 1, 0x8, 16, 0 },
+                new int[] { 0x6, 1, 0 }
+            };
+            foreach (var attribs in visualAttribSets)
+            {
+                IntPtr visual = glXChooseVisual(display, screen, attribs);
+                if (visual != IntPtr.Zero)
+                {
+                    Console.WriteLine("GLX visual obtained via glXChooseVisual");
+                    return visual;
+                }
+            }
+            // If all fail, print diagnostics
+            Console.Error.WriteLine("No se pudo obtener un visual GLX válido (ni FBConfig ni Visual)");
+            return IntPtr.Zero;
+        }
+
         public void Initialize(int w, int h, string t)
         {
             width = w;
@@ -108,10 +156,11 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 throw new Exception("No se pudo abrir el display X11");
             int screen = XDefaultScreen(display);
             IntPtr root = XRootWindow(display, screen);
-            int[] attribs = { 0x6, 1, 0x8, 24, 0x8010, 1, 0 }; // GLX_RGBA, GLX_DOUBLEBUFFER, GLX_DEPTH_SIZE, 24, GLX_RENDER_TYPE, GLX_RGBA_BIT, None
-            IntPtr visual = glXChooseVisual(display, screen, attribs);
+            IntPtr visual = GetBestVisual(display, screen);
             if (visual == IntPtr.Zero)
-                throw new Exception("No se pudo obtener un visual GLX válido");
+            {
+                throw new Exception("No se pudo obtener un visual GLX válido (ni FBConfig ni Visual). Verifica que tienes instalado libgl1-mesa-glx, libgl1-mesa-dev, libx11-dev y que estás usando X11, no Wayland.");
+            }
             window = XCreateSimpleWindow(display, root, 0, 0, (uint)width, (uint)height, 1, 0, 0);
             XStoreName(display, window, title);
             XSelectInput(display, window, ExposureMask | KeyPressMask | StructureNotifyMask);
