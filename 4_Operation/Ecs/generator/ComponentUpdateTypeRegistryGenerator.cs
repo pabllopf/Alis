@@ -254,23 +254,23 @@ namespace Alis.Core.Ecs.Generator
             cb
                 .AppendLine("")
                 .AppendLine("// This file was auto generated using Alis's source generator")
-                .AppendLine("using global::Alis.Core.Ecs.Updating;")
-                .AppendLine("using global::Alis.Core.Ecs.Updating.Runners;")
-                .AppendLine("using global::System.Runtime.CompilerServices;")
+                .AppendLine("using Alis.Core.Ecs.Updating;")
+                .AppendLine("using Alis.Core.Ecs.Updating.Runners;")
+                .AppendLine("using System.Runtime.CompilerServices;")
                 .AppendLine()
                 .AppendLine("namespace Alis.Core.Ecs.Generator")
                 .Scope()
                 .AppendLine()
-                .Append("[global::System.CodeDom.Compiler.GeneratedCode(\"Alis.Core.Ecs.Generator\", \"").Append(version).AppendLine("\")]")
-                .AppendLine("[global::System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]")
+                .Append("[System.CodeDom.Compiler.GeneratedCode(\"Alis.Core.Ecs.Generator\", \"").Append(version).AppendLine("\")]")
+                .AppendLine("[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]")
                 .AppendLine("internal static class AlisComponentRegistry")
                 .Scope()
 #if UNITY
-                    .AppendLine("[global::UnityEngine.RuntimeInitializeOnLoadMethod]")
+                    .AppendLine("[UnityEngine.RuntimeInitializeOnLoadMethod]")
 #else
-                .AppendLine("[global::System.Runtime.CompilerServices.ModuleInitializer]")
+                .AppendLine("[System.Runtime.CompilerServices.ModuleInitializer]")
 #endif
-                .AppendLine("[global::System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]")
+                .AppendLine("[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]")
                 .AppendLine("internal static void RegisterAll()")
                 .Scope()
                 .Foreach(models.AsSpan(), ct, static (in ComponentUpdateItemModel model, CodeBuilder builder, CancellationToken ct) =>
@@ -299,13 +299,13 @@ namespace Alis.Core.Ecs.Generator
         
             cb
                 .Append("GenerationServices.RegisterType(typeof(")
-                .Append("global::").Append(model.FullName)
+                .Append("").Append(model.FullName)
                 .Append("), new ");
 
             (model.ImplInterface == RegistryHelpers.TargetInterfaceName ? cb.Append("None") : cb.Append(model.ImplInterface, span.Start, span.Count))
                 .Append("UpdateRunnerFactory")
                 .Append('<')
-                .Append("global::").Append(model.FullName);
+                .Append("").Append(model.FullName);
 
             foreach (var item in model.GenericArguments)
                 cb.Append(", ").Append(item);
@@ -316,21 +316,21 @@ namespace Alis.Core.Ecs.Generator
             {
                 cb.Append("GenerationServices.RegisterUpdateMethodAttribute(")
                     .Append("typeof(")
-                    .Append("global::").Append(attrType)
+                    .Append("").Append(attrType)
                     .Append("), typeof(")
-                    .Append("global::").Append(model.FullName)
+                    .Append("").Append(model.FullName)
                     .AppendLine("));");
             }
             if (model.HasFlag(UpdateModelFlags.Initable))
             {
                 cb.Append("GenerationServices.RegisterInit<")
-                    .Append("global::").Append(model.FullName)
+                    .Append("").Append(model.FullName)
                     .AppendLine(">();");
             }
             if (model.HasFlag(UpdateModelFlags.Destroyable))
             {
                 cb.Append("GenerationServices.RegisterDestroy<")
-                    .Append("global::").Append(model.FullName)
+                    .Append("").Append(model.FullName)
                     .AppendLine(">();");
             }
 
@@ -361,9 +361,9 @@ namespace Alis.Core.Ecs.Generator
             cb
                 .AppendLine("")
                 .AppendLine("// This file was auto generated using Alis's source generator")
-                .AppendLine("using global::Alis.Core.Ecs.Updating;")
-                .AppendLine("using global::Alis.Core.Ecs.Updating.Runners;")
-                .AppendLine("using global::System.Runtime.CompilerServices;")
+                .AppendLine("using Alis.Core.Ecs.Updating;")
+                .AppendLine("using Alis.Core.Ecs.Updating.Runners;")
+                .AppendLine("using System.Runtime.CompilerServices;")
                 .AppendLine()
                 .If(@namespace is not null, @namespace, (ns, c) => c.Append("namespace ").AppendLine(ns).Scope())
 

@@ -13,22 +13,22 @@
     <!-- Opciones de ofuscación -->
     <Var name="RenameProperties" value="false" />
     <Var name="RenameEvents" value="false" />
-    <Var name="RenameFields" value="true" />
+    <Var name="RenameFields" value="false" />
     <Var name="RenameParameters" value="false" />
     <Var name="RenameMethods" value="false" />
     <Var name="RenameNamespaces" value="false" />
-    <Var name="KeepPublicApi" value="false" />
-    <Var name="HidePrivateApi" value="true" />
-    <Var name="UseUnicodeNames" value="true" />
-    <Var name="HideStrings" value="true" />
-    <Var name="OptimizeMethods" value="true" />
-    <Var name="SuppressIldasm" value="true" />
-    <Var name="ControlFlow" value="true" />
-    <Var name="RemoveUnused" value="true" />
-     <Var name="SimplifyMethods" value="true" />
-    <Var name="RemoveAttributes" value="true" />
-    <Var name="CompressResources" value="true" />
-    <Var name="ExcludeResources" value="true" />
+    <Var name="KeepPublicApi" value="true" />
+    <Var name="HidePrivateApi" value="false" />
+    <Var name="UseUnicodeNames" value="false" />
+    <Var name="HideStrings" value="false" />
+    <Var name="OptimizeMethods" value="false" />
+    <Var name="SuppressIldasm" value="false" />
+    <Var name="ControlFlow" value="false" />
+    <Var name="RemoveUnused" value="false" />
+     <Var name="SimplifyMethods" value="false" />
+    <Var name="RemoveAttributes" value="false" />
+    <Var name="CompressResources" value="false" />
+    <Var name="ExcludeResources" value="false" />
 
     <!-- Sobrescribir siempre la salida -->
     <Var name="Overwrite" value="true" />

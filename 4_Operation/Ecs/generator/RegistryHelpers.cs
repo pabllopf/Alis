@@ -33,7 +33,7 @@ namespace Alis.Core.Ecs.Generator
         /// <returns>The string builder</returns>
         public static StringBuilder AppendFullTypeName(this StringBuilder sb, string typeName)
         {
-            return sb.Append("global::").Append(typeName);
+            return sb.Append("").Append(typeName);
         }
 
         /// <summary>

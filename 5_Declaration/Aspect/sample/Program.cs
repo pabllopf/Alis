@@ -28,9 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Aspect.Sample.Entities;
 using Alis.Core.Aspect.Sample.Fluent;
 using Alis.Core.Aspect.Time;
 
@@ -66,26 +64,8 @@ namespace Alis.Core.Aspect.Sample
             Logger.Info("Data sample");
             Logger.Info("--------------------------\n");
 
-            Music musicInfo2 = new Music
-            {
-                Name = "Prince Charming",
-                Artist = "Metallica",
-                Genre = "Rock and Metal",
-                Album = "Reload"
-            };
-
+          
             
-            // Serialize the musicInfo2 object to JSON
-            string json = musicInfo2.ToJson();
-
-            Logger.Info($"Serialized Music: {json}");
-            
-            // Load the musicInfo2 object from JSON
-            Music musicInfo = Music.FromJson(json);
-            Logger.Info($"Deserialized Music: Name={musicInfo.Name}, Artist={musicInfo.Artist}, Genre={musicInfo.Genre}, Album={musicInfo.Album}");
-            
-            
-            Logger.Info("deserialized 2");
 
             // SAMPLE ASPECT MATH
             Logger.Info("--------------------------");

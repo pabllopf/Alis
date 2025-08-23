@@ -384,7 +384,6 @@
             $(AssemblyName.Equals('Alis')) OR 
             $(AssemblyName.Equals('Alis.Benchmark')) OR 
             $(AssemblyName.Equals('Alis.Test')) OR 
-            $(AssemblyName.Equals('Alis.Core')) OR 
             $(AssemblyName.Equals('Alis.Core.Test')) OR 
             $(AssemblyName.Equals('Alis.Core.Ecs')) OR
             $(AssemblyName.Equals('Alis.Core.Ecs.Test')) OR
@@ -393,9 +392,15 @@
         )
     ">
         <ProjectReference
-            Include="$(SolutionDir)4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj"
-            OutputItemType="Analyzer"
-            ReferenceOutputAssembly="false"/>
+          Condition="$(Configuration) == 'Debug'"
+          Include="$(SolutionDir)4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj"
+          OutputItemType="Analyzer"
+          ReferenceOutputAssembly="false"/>
+        
+        <Analyzer
+          Condition="$(Configuration) == 'Release' AND Exists('$(SolutionDir)4_Operation/Ecs/generator/bin/Release/lib/netstandard2.0/Alis.Core.Ecs.Generator.dll')"
+          Include="$(SolutionDir)4_Operation/Ecs/generator/bin/Release/lib/netstandard2.0/Alis.Core.Ecs.Generator.dll"
+          />
     </ItemGroup>
 
     <ItemGroup  Condition="
@@ -432,9 +437,14 @@
         )
     ">
         <ProjectReference
+            Condition="$(Configuration) == 'Debug'"
             Include="$(SolutionDir)6_Ideation/Data/generator/Alis.Core.Aspect.Data.Generator.csproj"
             OutputItemType="Analyzer"
             ReferenceOutputAssembly="false"/>
+        
+      <Analyzer
+        Condition="$(Configuration) == 'Release' AND Exists('$(SolutionDir)6_Ideation/Data/generator/bin/Release/lib/netstandard2.0/Alis.Core.Aspect.Data.Generator.dll')"
+        Include="$(SolutionDir)6_Ideation/Data/generator/bin/Release/lib/netstandard2.0/Alis.Core.Aspect.Data.Generator.dll"/>
     </ItemGroup>
     
     
