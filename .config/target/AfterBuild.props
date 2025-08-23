@@ -1,44 +1,5 @@
 
 <Project>
-    
-        <!-- Solo si hay configuración de obfuscación -->
-        <PropertyGroup Condition="'$(Configuration)' == 'Release' 
-                            And Exists('$(ProjectDir).config/obfuscar-$(TargetFramework).xml')">
-            <ObfuscarConfig>$(ProjectDir).config/obfuscar-$(TargetFramework).xml</ObfuscarConfig>
-            <ObfuscatedDir>$(ProjectDir)bin\$(Configuration)\$(RuntimeIdentifier)\lib\$(TargetFramework)\obfuscated\</ObfuscatedDir>
-            <OutputDir>$(ProjectDir)bin\$(Configuration)\$(RuntimeIdentifier)\lib\$(TargetFramework)\</OutputDir>
-            <DllName>$(AssemblyName).dll</DllName>
-        </PropertyGroup>
-
-        <!-- Garantizar instalación de Obfuscar (solo si no existe ya) -->
-        <Target Name="EnsureObfuscarTool" BeforeTargets="RunObfuscation"
-                Condition="'$(ObfuscarConfig)' != ''">
-            <Exec Command="dotnet tool update --global Obfuscar.GlobalTool --version 2.2.49" />
-        </Target>
-
-        <!-- Ejecutar Obfuscación -->
-        <Target Name="RunObfuscation" AfterTargets="Build;Publish"
-                Condition="'$(ObfuscarConfig)' != ''">
-            <Message Importance="high" Text="Running Obfuscar with $(ObfuscarConfig)..." />
-            <Exec Command="obfuscar.console &quot;$(ObfuscarConfig)&quot;" />
-        </Target>
-
-        <!-- Sustituir DLL con la versión ofuscada -->
-        <Target Name="ReplaceWithObfuscatedDll" AfterTargets="RunObfuscation"
-                Condition="Exists('$(ObfuscatedDir)$(DllName)')">
-            <Message Importance="high" Text="Replacing $(DllName) with obfuscated version..." />
-            <Copy SourceFiles="$(ObfuscatedDir)$(DllName)"
-                  DestinationFiles="$(OutputDir)$(DllName)"
-                  OverwriteReadOnlyFiles="true" />
-        </Target>
-
-        <!-- Limpiar carpeta de obfuscación -->
-        <Target Name="CleanObfuscatedFolder" AfterTargets="ReplaceWithObfuscatedDll"
-                Condition="Exists('$(ObfuscatedDir)')">
-            <RemoveDir Directories="$(ObfuscatedDir)" />
-        </Target>
-   
-    
     <Target Name="BuildAndCopyInstallerOutput" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub'))">
         <MSBuild Projects="$(SolutionDir)1_Presentation/Installer/src/Alis.App.Installer.csproj" Targets="Build" Properties="Configuration=$(Configuration)"/>
         <PropertyGroup>
