@@ -13,7 +13,7 @@ namespace Alis.Core.Graphic.Platforms
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
         /// <param name="title">The title</param>
-        void Initialize(int width, int height, string title);
+        bool Initialize(int width, int height, string title);
         /// <summary>
         /// Shows the window
         /// </summary>

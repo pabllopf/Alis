@@ -55,7 +55,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// <summary>
         /// Initializes the Win32 window and OpenGL context.
         /// </summary>
-        public void Initialize(int w, int h, string t)
+        public bool Initialize(int w, int h, string t)
         {
             width = w;
             height = h;
@@ -63,7 +63,8 @@ namespace Alis.Core.Graphic.Platforms.Win
             hInstance = GetModuleHandle(null);
             wndProcDelegate = WindowProc;
             wndProcPtr = Marshal.GetFunctionPointerForDelegate(wndProcDelegate);
-            var wc = new Wndclass
+            string className = WindowClassName + Guid.NewGuid().ToString("N"); // Nombre único para evitar conflictos
+            Wndclass wc = new Wndclass
             {
                 style = (uint)ClassStyles.OwnDC,
                 lpfnWndProc = wndProcPtr,
@@ -74,27 +75,149 @@ namespace Alis.Core.Graphic.Platforms.Win
                 hCursor = IntPtr.Zero,
                 hbrBackground = IntPtr.Zero,
                 lpszMenuName = null,
-                lpszClassName = WindowClassName
+                lpszClassName = className
             };
-            User32.RegisterClass(ref wc);
-            hWnd = User32.CreateWindowEx((int)WindowExStyles.None, WindowClassName, title,
-                (int)(WindowStyles.OverlappedWindow | WindowStyles.Visible),
-                CwUsedefault, CwUsedefault, width, height,
-                IntPtr.Zero, IntPtr.Zero, hInstance, IntPtr.Zero);
-            hDc = User32.GetDC(hWnd);
-            var pfd = new Pixelformatdescriptor
+            ushort regResult = User32.RegisterClass(ref wc);
+            if (regResult == 0)
             {
-                nSize = (ushort)Marshal.SizeOf(typeof(Pixelformatdescriptor)),
-                nVersion = 1,
-                dwFlags = (uint)(PixelFormatFlags.DrawToWindow | PixelFormatFlags.SupportOpenGL | PixelFormatFlags.DoubleBuffer),
-                iPixelType = (byte)PixelType.RGBA,
-                cColorBits = 32,
-                cDepthBits = 24,
-                iLayerType = (byte)LayerType.MainPlane
+                Console.WriteLine($"No se pudo registrar la clase de ventana (RegisterClass devolvió 0x0), error: {Marshal.GetLastWin32Error()}");
+                return false;
+            }
+            // Probar varias combinaciones de estilos
+            var styleCombos = new[] {
+                (WindowStyles.OverlappedWindow | WindowStyles.Visible),
+                (WindowStyles.OverlappedWindow),
+                (WindowStyles.Visible),
+                (WindowStyles.Visible)
             };
-            int pixelFormat = Gdi32.ChoosePixelFormat(hDc, ref pfd);
-            Gdi32.SetPixelFormat(hDc, pixelFormat, ref pfd);
-            hGlrc = Opengl32.wglCreateContext(hDc);
+            hWnd = IntPtr.Zero;
+            foreach (var style in styleCombos)
+            {
+                hWnd = User32.CreateWindowEx((int)WindowExStyles.None, className, title,
+                    (int)style,
+                    CwUsedefault, CwUsedefault, width, height,
+                    IntPtr.Zero, IntPtr.Zero, hInstance, IntPtr.Zero);
+                if (hWnd != IntPtr.Zero)
+                {
+                    Console.WriteLine($"Ventana creada correctamente con estilo: 0x{(int)style:X}");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine($"Fallo al crear ventana con estilo: 0x{(int)style:X}, error: {Marshal.GetLastWin32Error()}");
+                }
+            }
+            if (hWnd == IntPtr.Zero)
+            {
+                Console.WriteLine("No se pudo crear la ventana Win32 (CreateWindowEx devolvió 0x0) tras varios intentos");
+                return false;
+            }
+            hDc = User32.GetDC(hWnd);
+            if (hDc == IntPtr.Zero)
+            {
+                Console.WriteLine("No se pudo obtener el HDC de la ventana (GetDC devolvió 0x0)");
+                return false;
+            }
+
+            // Lista de configuraciones a probar
+            Pixelformatdescriptor[] configs = new[] {
+                new Pixelformatdescriptor {
+                    nSize = (ushort)Marshal.SizeOf(typeof(Pixelformatdescriptor)),
+                    nVersion = 1,
+                    dwFlags = (uint)(PixelFormatFlags.DrawToWindow | PixelFormatFlags.SupportOpenGL | PixelFormatFlags.DoubleBuffer),
+                    iPixelType = (byte)PixelType.RGBA,
+                    cColorBits = 32,
+                    cRedBits = 8,
+                    cGreenBits = 8,
+                    cBlueBits = 8,
+                    cAlphaBits = 8,
+                    cDepthBits = 24,
+                    cStencilBits = 8,
+                    iLayerType = (byte)LayerType.MainPlane
+                },
+                new Pixelformatdescriptor {
+                    nSize = (ushort)Marshal.SizeOf(typeof(Pixelformatdescriptor)),
+                    nVersion = 1,
+                    dwFlags = (uint)(PixelFormatFlags.DrawToWindow | PixelFormatFlags.SupportOpenGL),
+                    iPixelType = (byte)PixelType.RGBA,
+                    cColorBits = 24,
+                    cRedBits = 8,
+                    cGreenBits = 8,
+                    cBlueBits = 8,
+                    cAlphaBits = 0,
+                    cDepthBits = 0,
+                    cStencilBits = 0,
+                    iLayerType = (byte)LayerType.MainPlane
+                },
+                new Pixelformatdescriptor {
+                    nSize = (ushort)Marshal.SizeOf(typeof(Pixelformatdescriptor)),
+                    nVersion = 1,
+                    dwFlags = (uint)(PixelFormatFlags.DrawToWindow | PixelFormatFlags.SupportOpenGL | PixelFormatFlags.DoubleBuffer),
+                    iPixelType = (byte)PixelType.RGBA,
+                    cColorBits = 16,
+                    cRedBits = 5,
+                    cGreenBits = 6,
+                    cBlueBits = 5,
+                    cAlphaBits = 0,
+                    cDepthBits = 16,
+                    cStencilBits = 0,
+                    iLayerType = (byte)LayerType.MainPlane
+                }
+            };
+            bool contextOk = false;
+            for (int i = 0; i < configs.Length; i++)
+            {
+                var pfd = configs[i];
+                int pixelFormat = Gdi32.ChoosePixelFormat(hDc, ref pfd);
+                if (pixelFormat == 0) continue;
+                if (!Gdi32.SetPixelFormat(hDc, pixelFormat, ref pfd)) continue;
+                IntPtr dummyContext = Opengl32.wglCreateContext(hDc);
+                if (dummyContext == IntPtr.Zero) continue;
+                if (!Opengl32.wglMakeCurrent(hDc, dummyContext))
+                {
+                    Opengl32.wglDeleteContext(dummyContext);
+                    continue;
+                }
+                // Intentar contexto moderno
+                IntPtr procAttribs = Opengl32.wglGetProcAddress("wglCreateContextAttribsARB");
+                if (procAttribs != IntPtr.Zero)
+                {
+                    WglCreateContextAttribsARB wglCreateContextAttribsARB = Marshal.GetDelegateForFunctionPointer<WglCreateContextAttribsARB>(procAttribs);
+                    int[] attribs = new int[] {
+                        0x2091, 3, // WGL_CONTEXT_MAJOR_VERSION_ARB, 3
+                        0x2092, 3, // WGL_CONTEXT_MINOR_VERSION_ARB, 3
+                        0x9126, 0x00000001, // WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB
+                        0 // End
+                    };
+                    IntPtr modernContext = wglCreateContextAttribsARB(hDc, IntPtr.Zero, attribs);
+                    if (modernContext != IntPtr.Zero)
+                    {
+                        Opengl32.wglMakeCurrent(IntPtr.Zero, IntPtr.Zero);
+                        Opengl32.wglDeleteContext(dummyContext);
+                        hGlrc = modernContext;
+                        if (Opengl32.wglMakeCurrent(hDc, hGlrc))
+                        {
+                            contextOk = true;
+                            break;
+                        }
+                        else
+                        {
+                            Opengl32.wglDeleteContext(hGlrc);
+                            hGlrc = IntPtr.Zero;
+                        }
+                    }
+                }
+                // Si no hay contexto moderno, usar dummy
+                hGlrc = dummyContext;
+                contextOk = true;
+                break;
+            }
+            if (!contextOk)
+            {
+                Console.WriteLine("No se pudo crear el contexto OpenGL con ninguna configuración. Verifica drivers y compatibilidad OpenGL en tu sistema.");
+                return false;
+            }
+            return true;
         }
 
         /// <summary>
@@ -306,6 +429,10 @@ namespace Alis.Core.Graphic.Platforms.Win
             }
             return User32.DefWindowProc(hWnd, msg, wParam, lParam);
         }
+
+        // Definición del delegado para wglCreateContextAttribsARB
+        [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+        private delegate IntPtr WglCreateContextAttribsARB(IntPtr hdc, IntPtr hShareContext, int[] attribs);
     }
 }
 #endif
