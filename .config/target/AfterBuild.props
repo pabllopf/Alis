@@ -1,15 +1,15 @@
 <Project>
 
     
-   <Target Name="EnsureObfuscarTool" BeforeTargets="Obfuscar">
+   <Target Name="EnsureObfuscarTool" BeforeTargets="Obfuscar" Condition="Exists('$(ProjectDir).config/obfuscar-$(TargetFramework).xml') AND $(Configuration) == 'Release'">
        <Exec Command="dotnet tool install --global Obfuscar.GlobalTool --version 2.2.49" />
    </Target>
     
-   <Target Name="Obfuscar" AfterTargets="Build;Publish" Condition="$(Configuration) == 'Release'">
-       <Exec Condition="Exists('$(ProjectDir).config/obfuscar-$(TargetFramework).xml')" Command="obfuscar.console $(ProjectDir).config/obfuscar-$(TargetFramework).xml" />
+   <Target Name="Obfuscar" AfterTargets="Build;Publish" Condition="$(Configuration) == 'Release' AND Exists('$(ProjectDir).config/obfuscar-$(TargetFramework).xml')">
+       <Exec Command="obfuscar.console $(ProjectDir).config/obfuscar-$(TargetFramework).xml" />
    </Target>
     
-   <Target Name="ReplaceWithObfuscatedDll" AfterTargets="Obfuscar" Condition="$(Configuration) == 'Release'">
+   <Target Name="ReplaceWithObfuscatedDll" AfterTargets="Obfuscar" Condition="$(Configuration) == 'Release' AND Exists('$(ProjectDir).config/obfuscar-$(TargetFramework).xml')">
        <PropertyGroup>
            <ObfuscatedDir>$(ProjectDir)bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/obfuscated/</ObfuscatedDir>
            <OutputDir>$(ProjectDir)bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutputDir>
