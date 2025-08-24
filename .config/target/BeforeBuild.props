@@ -1,6 +1,6 @@
 <Project>
 
-    <Target Name="BuildGenerators" BeforeTargets="Build">
+    <Target Name="BuildGenerators" BeforeTargets="Restore;Build;Publish">
         <ItemGroup>
             <GeneratorProjects Include="
       $(SolutionDir)2_Application/**/generator/**/*Generator*.csproj;
@@ -13,7 +13,6 @@
                  Targets="Build"
                  Properties="Configuration=Release;TargetFramework=netstandard2.0"
                  Condition="Exists('%(GeneratorProjects.Identity)') AND 
-                 '$(Configuration)' == 'Release' AND 
                  $(AssemblyName.Contains('Generator')) == false" />
     </Target>
     
@@ -31,7 +30,7 @@
     <!-- Compilar siempre antes de cualquier Build/Publish, solo si falta la DLL -->
     <Target Name="BuildAllGenerators"
             BeforeTargets="Restore;Build;Publish"
-            Condition="'$(Configuration)' == 'Release' AND $(AssemblyName.Contains('Generator')) == false">
+            Condition="$(AssemblyName.Contains('Generator')) == false">
 
         <Message Condition="!Exists('%(GeneratorProjects.OutputAssembly)')" Importance="high" Text="Checking generator DLLs..." />
 
