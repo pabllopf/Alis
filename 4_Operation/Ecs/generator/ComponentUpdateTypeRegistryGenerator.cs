@@ -308,7 +308,9 @@ namespace Alis.Core.Ecs.Generator
                 .Append("").Append(model.FullName);
 
             foreach (var item in model.GenericArguments)
+            {
                 cb.Append(", ").Append(item);
+            }
 
             //sb.Append(">(), ").Append(model.UpdateOrder).AppendLine(");");
             cb.AppendLine(">());");

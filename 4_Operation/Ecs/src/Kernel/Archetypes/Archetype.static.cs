@@ -288,8 +288,10 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 int size = Math.Max(id << 1, 1);
                 Array.Resize(ref GlobalWorldTables.ComponentTagLocationTable, size);
                 foreach (Scene world in GlobalWorldTables.Worlds.AsSpan())
+                {
                     if (world is Scene w)
                         w.UpdateArchetypeTable(size);
+                }
             }
 
             //for (int i = 0; i < archetypeTypes.Length; i++)

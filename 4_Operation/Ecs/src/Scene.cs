@@ -349,7 +349,9 @@ namespace Alis.Core.Ecs
             try
             {
                 foreach (GameObjectType element in EnabledArchetypes.AsSpan())
+                {
                     element.Archetype(this)!.Update(this);
+                }
             }
             finally
             {
@@ -424,7 +426,9 @@ namespace Alis.Core.Ecs
         {
             QueryHash queryHash = QueryHash.New();
             foreach (Rule rule in rules)
+            {
                 queryHash.AddRule(rule);
+            }
 
             int hashCode = queryHash.ToHashCode();
 
@@ -444,11 +448,19 @@ namespace Alis.Core.Ecs
             if (!GlobalWorldTables.HasTag(archetype.Id, Tag<Disable>.Id))
                 EnabledArchetypes.Push(archetype.Id);
             foreach (KeyValuePair<int, Query> qkvp in QueryCache)
+            {
                 qkvp.Value.TryAttachArchetype(archetype);
+            }
+
             foreach (KeyValuePair<Type, SceneUpdateFilter> fkvp in _updatesByAttributes)
+            {
                 fkvp.Value.ArchetypeAdded(archetype);
+            }
+
             foreach (KeyValuePair<ComponentId, SingleComponentUpdateFilter> fkvp in _singleComponentUpdates)
+            {
                 fkvp.Value.ArchetypeAdded(archetype);
+            }
         }
 
         /// <summary>
@@ -460,8 +472,11 @@ namespace Alis.Core.Ecs
         {
             Query q = new Query(this, rules);
             foreach (ref WorldArchetypeTableItem element in WorldArchetypeTable.AsSpan())
+            {
                 if (element.Archetype is not null)
                     q.TryAttachArchetype(element.Archetype);
+            }
+
             return q;
         }
 
@@ -512,7 +527,9 @@ namespace Alis.Core.Ecs
                         ResolveUpdateDeferredCreationEntities(filterUsed);
                     else
                         foreach ((Archetype archetype, Archetype tmp, int _) in DeferredCreationArchetypes.AsSpan())
+                        {
                             archetype.ResolveDeferredEntityCreations(this, tmp);
+                        }
                 }
 
                 DeferredCreationArchetypes.Clear();
@@ -540,7 +557,9 @@ namespace Alis.Core.Ecs
             while (resolveArchetypes.Length != 0)
             {
                 foreach ((Archetype archetype, Archetype tmp, int _) in resolveArchetypes)
+                {
                     archetype.ResolveDeferredEntityCreations(this, tmp);
+                }
 
                 (_altDeferredCreationArchetypes, DeferredCreationArchetypes) =
                     (DeferredCreationArchetypes, _altDeferredCreationArchetypes);
@@ -550,7 +569,9 @@ namespace Alis.Core.Ecs
                     filterUsed?.UpdateSubset(resolveArchetypes);
                 else
                     foreach ((Archetype archetype, Archetype _, int start) in resolveArchetypes)
+                    {
                         archetype.Update(this, start, archetype.EntityCount - start);
+                    }
 
                 resolveArchetypes = DeferredCreationArchetypes.AsSpan();
 
@@ -600,11 +621,13 @@ namespace Alis.Core.Ecs
             GlobalWorldTables.Worlds[Id] = null!;
 
             foreach (ref WorldArchetypeTableItem item in WorldArchetypeTable.AsSpan())
+            {
                 if (item.Archetype is not null)
                 {
                     item.Archetype.ReleaseArrays();
                     item.DeferredCreationArchetype.ReleaseArrays();
                 }
+            }
 
             _sharedCountdown.Dispose();
             RecycledEntityIds.Dispose();

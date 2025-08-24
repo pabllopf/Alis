@@ -90,7 +90,9 @@ namespace Alis.Core.Ecs.Kernel.Events
             {
                 _second.Invoke(gameObject);
                 foreach (Action<GameObject> item in _invokationList.AsSpan())
+                {
                     item.Invoke(gameObject);
+                }
             }
         }
     }

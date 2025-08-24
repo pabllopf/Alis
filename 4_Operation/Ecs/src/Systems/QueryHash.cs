@@ -39,7 +39,11 @@ namespace Alis.Core.Ecs.Systems
         public static QueryHash New(FastImmutableArray<Rule> rules)
         {
             QueryHash hash = new QueryHash();
-            foreach (Rule rule in rules) hash.AddRule(rule);
+            foreach (Rule rule in rules)
+            {
+                hash.AddRule(rule);
+            }
+
             return hash;
         }
 

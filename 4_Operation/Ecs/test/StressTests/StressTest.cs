@@ -158,7 +158,9 @@ namespace Alis.Core.Ecs.Test.StressTests
                 entity.Delete();
                 _allDeletedEntities.Add(entity);
                 foreach(var handle in handles)
+                {
                     handle.Dispose();
+                }
 
                 _componentValues.Remove(entity);
 
@@ -254,8 +256,10 @@ namespace Alis.Core.Ecs.Test.StressTests
             List<ComponentHandle> handles = new(objects.Length);
 
             foreach(var comp in objects)
+            {
                 handles.Add(ComponentHandle.CreateFromBoxed(comp));
-        
+            }
+
             _componentValues.Add(entity, handles);
             return entity;
         }

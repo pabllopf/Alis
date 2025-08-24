@@ -31,11 +31,13 @@ namespace Alis.Core.Ecs.Systems
             Scene = scene;
             _rules = rules;
             foreach (Rule rule in rules)
+            {
                 if (rule == Rule.IncludeDisabledRule)
                 {
                     IncludeDisabled = true;
                     break;
                 }
+            }
         }
 
         /// <summary>
@@ -78,8 +80,10 @@ namespace Alis.Core.Ecs.Systems
         private bool ArchetypeSatisfiesQuery(GameObjectType id)
         {
             foreach (Rule rule in _rules)
+            {
                 if (!rule.RuleApplies(id))
                     return false;
+            }
 
             return true;
         }
