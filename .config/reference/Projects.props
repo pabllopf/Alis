@@ -270,22 +270,15 @@
 
     <ItemGroup Condition="$(AssemblyName.Contains('Test'))">
         <ProjectReference
-            Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == True"
-            Include="$(ProjectDir)/../src/$(NameTest).csproj"/>
+            Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == True"
+            Include="$(ProjectDir)../src/$(NameTest).csproj"/>
 
         <ProjectReference
-            Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
-            Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
-
-        <!--
-        <ProjectReference
-            Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
-            Include="$(ProjectDir)/../generator/$(NameTest).Generator.csproj"
-            ReferenceOutputAssembly="false"/>-->
+            Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False"
+            Include="$(ProjectDir)../../src/$(NameTest).csproj"/>
 
         <Analyzer
-            Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
-            Include="$(ProjectDir)/../generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll"
+            Include="$(ProjectDir)../generator/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll"
         />
         
     </ItemGroup>
@@ -298,12 +291,12 @@
     $(AssemblyName.Contains('Sample')) AND 
     $(AssemblyName.Contains('Test')) == False">
         <ProjectReference
-            Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == True"
-            Include="$(ProjectDir)/../src/$(NameTest).csproj"/>
+            Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == True"
+            Include="$(ProjectDir)../src/$(NameTest).csproj"/>
 
         <ProjectReference
-            Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
-            Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
+            Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False"
+            Include="$(ProjectDir)../../src/$(NameTest).csproj"/>
         
         <!--
         <ProjectReference 
@@ -312,8 +305,7 @@
             ReferenceOutputAssembly="false"/>-->
 
         <Analyzer
-            Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
-            Include="$(ProjectDir)/../generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll"
+            Include="$(ProjectDir)../generator/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll"
         />
         
     </ItemGroup>
