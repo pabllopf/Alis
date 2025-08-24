@@ -1,83 +1,16 @@
 <Project>
-
-    <ItemGroup Condition="
-        $(AssemblyName.Contains('Generator')) == False AND
-        $(AssemblyName.Contains('Sample')) == False AND
-        $(AssemblyName.Contains('Test')) == False AND
-        $(AssemblyName.Contains('App')) == False AND
-        $(AssemblyName.Contains('Template')) == False
-    ">
-
-
-        <None Condition="$(ProjectDir.Contains('1_Presentation'))"
-              Include="$(SolutionDir)2_Application/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)4_Operation/**/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)5_Declaration/**/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)6_Ideation/**/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator*.dll;"
-              Pack="true"
-              Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
-              CopyToOutputDirectory="PreserveNewest"
-              CopyToPublishDirectory="PreserveNewest"
-              PackagePath="analyzers/dotnet/cs"
-              Visible="false"/>
-
-        <None Condition="$(ProjectDir.Contains('2_Application'))"
-              Include="$(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator*.dll;"
-              Pack="true"
-              Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
-              CopyToOutputDirectory="PreserveNewest"
-              CopyToPublishDirectory="PreserveNewest"
-              PackagePath="analyzers/dotnet/cs"
-              Visible="false"/>
-
-        <None Condition="$(ProjectDir.Contains('3_Structuration'))"
-              Include="$(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator*.dll;"
-              Pack="true"
-              Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
-              CopyToOutputDirectory="PreserveNewest"
-              CopyToPublishDirectory="PreserveNewest"
-              PackagePath="analyzers/dotnet/cs"
-              Visible="false"/>
-
-
-        <None Condition="$(ProjectDir.Contains('4_Operation'))"
-              Include="$(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator*.dll;
-                       $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator*.dll;"
-              Pack="true"
-              Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
-              CopyToOutputDirectory="PreserveNewest"
-              CopyToPublishDirectory="PreserveNewest"
-              PackagePath="analyzers/dotnet/cs"
-              Visible="false"/>
-
-
-        <None Condition="$(ProjectDir.Contains('5_Declaration'))"
-              Include="$(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator*.dll;"
-              Pack="true"
-              Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
-              CopyToOutputDirectory="PreserveNewest"
-              CopyToPublishDirectory="PreserveNewest"
-              PackagePath="analyzers/dotnet/cs"
-              Visible="false"/>
-
-    </ItemGroup>
-
-    
     <ItemGroup Condition="$(Configuration) == 'Release'">
 
-        <Content 
-          Condition="Exists('$(ProjectDir)bin/Release/lib/netstandard2.0/analyzers')"
-          Include="$(ProjectDir)bin/Release/lib/netstandard2.0/analyzers/dotnet/cs/*.dll" 
-          Visible="false" 
-          Pack="true"
-          Link="%(Filename)%(Extension)"
-          PackagePath="analyzers/dotnet/cs" />
+
+        <Content
+            Condition="$(AssemblyName.Contains('Generator')) == false"
+            Include="$(SolutionDir)**/**/generator/bin/Release/lib/netstandard2.0/*.dll"
+            Pack="true"
+            Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
+            CopyToOutputDirectory="PreserveNewest"
+            CopyToPublishDirectory="PreserveNewest"
+            PackagePath="analyzers/dotnet/cs"
+            Visible="false"/>
         
         <!-- Include all the .md files in the output -->
         <Content Include="$(ProjectDir)bin/Release/lib/net5.0/*.md" Visible="false" PackagePath="lib/net5.0/"/>

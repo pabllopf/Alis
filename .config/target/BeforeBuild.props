@@ -1,7 +1,8 @@
 <Project>
-
-    <Target Name="BuildGenerators" BeforeTargets="Restore;Build;Publish">
-        <ItemGroup>
+<!--
+    <Target Name="BuildGenerators" BeforeTargets="Restore;Build;Publish" 
+            Condition="$(AssemblyName.Contains('Generator')) == false">
+    <ItemGroup>
             <GeneratorProjects Include="
       $(SolutionDir)2_Application/**/generator/**/*Generator*.csproj;
       $(SolutionDir)3_Structuration/**/generator/**/*Generator*.csproj;
@@ -11,41 +12,8 @@
         </ItemGroup>
         <MSBuild Projects="@(GeneratorProjects)"
                  Targets="Build"
-                 Properties="Configuration=Release;TargetFramework=netstandard2.0"
+                 Properties="Configuration=$(Configuration);TargetFramework=netstandard2.0"
                  Condition="Exists('%(GeneratorProjects.Identity)') AND 
                  $(AssemblyName.Contains('Generator')) == false" />
-    </Target>
-    
-    
-    <ItemGroup>
-        <GeneratorProjects Include="$(SolutionDir)4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj">
-            <OutputAssembly>$(SolutionDir)4_Operation/Ecs/generator/bin/Release/netstandard2.0/Alis.Core.Ecs.Generator.dll</OutputAssembly>
-        </GeneratorProjects>
-
-        <GeneratorProjects Include="$(SolutionDir)6_Ideation/Data/generator/Alis.Core.Aspect.Data.Generator.csproj">
-            <OutputAssembly>$(SolutionDir)6_Ideation/Data/generator/bin/Release/netstandard2.0/Alis.Core.Aspect.Data.Generator.dll</OutputAssembly>
-        </GeneratorProjects>
-    </ItemGroup>
-
-    <!-- Compilar siempre antes de cualquier Build/Publish, solo si falta la DLL -->
-    <Target Name="BuildAllGenerators"
-            BeforeTargets="Restore;Build;Publish"
-            Condition="$(AssemblyName.Contains('Generator')) == false">
-
-        <Message Condition="!Exists('%(GeneratorProjects.OutputAssembly)')" Importance="high" Text="Checking generator DLLs..." />
-
-        <!-- Restaurar si falta la DLL -->
-        <MSBuild Projects="@(GeneratorProjects)"
-                 Properties="Configuration=Release;TargetFramework=netstandard2.0"
-                 Targets="Restore"
-                 Condition="!Exists('%(GeneratorProjects.OutputAssembly)')" />
-
-        <!-- Compilar si falta la DLL -->
-        <MSBuild Projects="@(GeneratorProjects)"
-                 Properties="Configuration=Release;TargetFramework=netstandard2.0"
-                 Targets="Build"
-                 Condition="!Exists('%(GeneratorProjects.OutputAssembly)')" />
-
-        <Message Condition="!Exists('%(GeneratorProjects.OutputAssembly)')" Importance="high" Text="Generator DLLs built if needed." />
-    </Target>
+    </Target>-->
 </Project>
