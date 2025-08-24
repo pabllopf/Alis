@@ -329,7 +329,7 @@
             Include="$(ProjectDir)../../src/$(NameTest).csproj"/>
 
         <ProjectReference
-            Condition="Exists('$(ProjectDir)../src/$(NameTest).Generator.csproj') == False"
+            Condition="Exists('$(ProjectDir)../src/$(NameTest).Generator.csproj')"
             Include="$(ProjectDir)../../src/$(NameTest).Generator.csproj"
             OutputItemType="Analyzer"
             ReferenceOutputAssembly="false"/>
@@ -349,7 +349,7 @@
             Include="$(ProjectDir)../../src/$(NameTest).csproj"/>
 
         <ProjectReference
-        Condition="Exists('$(ProjectDir)../src/$(NameTest).Generator.csproj') == False"
+        Condition="Exists('$(ProjectDir)../src/$(NameTest).Generator.csproj')"
         Include="$(ProjectDir)../../src/$(NameTest).Generator.csproj"
         OutputItemType="Analyzer"
         ReferenceOutputAssembly="false"/>
