@@ -2,7 +2,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.Platforms.Osx.Internal
+namespace Alis.Core.Graphic.Platforms.Osx.Native
 {
     /// <summary>
     /// Representa una ventana nativa de macOS

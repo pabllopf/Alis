@@ -2,7 +2,7 @@
 
     
    <Target Name="EnsureObfuscarTool" BeforeTargets="Obfuscar">
-       <Exec Command="dotnet tool list --global | grep -q '^obfuscar.console ' || dotnet tool install --global Obfuscar.GlobalTool --version 2.2.49" />
+       <Exec Command="dotnet tool install --global Obfuscar.GlobalTool --version 2.2.49" />
    </Target>
     
    <Target Name="Obfuscar" AfterTargets="Build;Publish" Condition="$(Configuration) == 'Release'">
