@@ -277,11 +277,11 @@
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
 
-        
+        <!--
         <ProjectReference
             Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
             Include="$(ProjectDir)/../generator/$(NameTest).Generator.csproj"
-            ReferenceOutputAssembly="false"/>
+            ReferenceOutputAssembly="false"/>-->
 
         <Analyzer
             Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
@@ -305,10 +305,11 @@
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
         
+        <!--
         <ProjectReference 
             Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
             Include="$(ProjectDir)/../generator/$(NameTest).Generator.csproj"
-            ReferenceOutputAssembly="false"/>
+            ReferenceOutputAssembly="false"/>-->
 
         <Analyzer
             Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
@@ -492,7 +493,7 @@
         
     </ItemGroup>-->
 
-
+<!--
     <ItemGroup Condition="$(AssemblyName.Contains('Generator')) == False">
         
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
@@ -534,7 +535,7 @@
           $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
                           ReferenceOutputAssembly="false"/>
 
-    </ItemGroup>
+    </ItemGroup>-->
 
 
 
