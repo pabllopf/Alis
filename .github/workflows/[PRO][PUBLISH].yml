@@ -72,7 +72,7 @@ jobs:
           dotnet-version: 9.0.301
 
       - name: Build Alis.sln
-        run: dotnet build alis.sln -c Release -f netstandard2.0
+        run: dotnet build alis.sln -c Release
 
       - name: Build extensiones automáticamente
         run: |
@@ -131,7 +131,7 @@ jobs:
           dotnet-version: 9.0.301
 
       - name: Build Alis.sln
-        run: dotnet build alis.sln -c Release -f netstandard2.0
+        run: dotnet build alis.sln -c Release
       
       - name: Build Core automáticamente
         run: |
@@ -189,7 +189,7 @@ jobs:
           dotnet-version: 9.0.301
       
       - name: Build Alis.sln
-        run: dotnet build alis.sln -c Release -f netstandard2.0
+        run: dotnet build alis.sln -c Release
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r win-x64 -f ${{ matrix.framework }}
