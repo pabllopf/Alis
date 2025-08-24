@@ -342,14 +342,6 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         
         public override void Destroy(bool disposing)
         {
-            if (disposing)
-            {
-                if (myStream != null)
-                {
-                    myStream.Dispose();
-                }
-            }
-
             sfMusic_destroy(CPointer);
         }
 
