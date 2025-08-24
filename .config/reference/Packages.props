@@ -76,8 +76,12 @@
         <PackageReference Include="Svelto.Common" Version="3.5.2"/>
         <PackageReference Include="Flecs.NET.Release" Version="3.2.11"/>
     </ItemGroup>
-
+    
     <ItemGroup Condition="
+    $(TargetFramework.Equals('net461')) OR
+    $(TargetFramework.Equals('net462')) OR 
+    $(TargetFramework.Equals('net463')) OR 
+    $(TargetFramework.Equals('net47')) OR 
     $(TargetFramework.Equals('net471')) OR 
     $(TargetFramework.Equals('net472')) OR 
     $(TargetFramework.Equals('net48')) OR 
