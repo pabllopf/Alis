@@ -485,7 +485,7 @@
         
     </ItemGroup>-->
 
-<!--
+
     <ItemGroup Condition="$(AssemblyName.Contains('Generator')) == False">
         
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
@@ -527,7 +527,7 @@
           $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
                           ReferenceOutputAssembly="false"/>
 
-    </ItemGroup>-->
+    </ItemGroup>
 
 
 
