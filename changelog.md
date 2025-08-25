@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.7.2] - 2025-08-27
+### :bug: Bug Fixes
+- [`63a6f0c`](https://github.com/pabllopf/Alis/commit/63a6f0c25ec1667b81de497471e1b2f108437163) - spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`39f227d`](https://github.com/pabllopf/Alis/commit/39f227d0a4e2c9cc39127ed54a4cdbd323767c16) - analizers on nuget pack *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`977cb9d`](https://github.com/pabllopf/Alis/commit/977cb9d11e9444135dacf31956aa3590b037116e) - the config files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e9999f7`](https://github.com/pabllopf/Alis/commit/e9999f77b051794a2fb6c2f9562d96f3bbcc85ab) - the nuget generation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5f7816e`](https://github.com/pabllopf/Alis/commit/5f7816ea6f62568526d79bd5c39f004d4894f06c) - 5 critical bugs *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.7.1] - 2025-08-26
 ### :bug: Bug Fixes
 - [`37b38fc`](https://github.com/pabllopf/Alis/commit/37b38fca09e2590d4b781e16cc8691231c856a68) - delete ofuscar module *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4763,3 +4772,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.6.9]: https://github.com/pabllopf/Alis/compare/v0.6.8...v0.6.9
 [v0.7.0]: https://github.com/pabllopf/Alis/compare/v0.6.9...v0.7.0
 [v0.7.1]: https://github.com/pabllopf/Alis/compare/v0.7.0...v0.7.1
+[v0.7.2]: https://github.com/pabllopf/Alis/compare/v0.7.1...v0.7.2
