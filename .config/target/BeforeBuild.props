@@ -1,9 +1,5 @@
 <Project>
-
-    <PropertyGroup Condition="$(AssemblyName.Contains('Generator'))">
-        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    </PropertyGroup>
-
+    
     <Target Name="RestoreGenerators" BeforeTargets="Build;Publish"
             Condition="
       $(AssemblyName.Contains('Generator')) == false AND
@@ -49,7 +45,7 @@
         <!-- Compilar los generators -->
         <MSBuild Projects="@(GeneratorProjects)"
                  Targets="Build"
-                 Properties="Configuration=$(Configuration);TargetFramework=netstandard2.0"
+                 Properties="Configuration=$(Configuration)"
                  Condition="Exists('%(GeneratorProjects.Identity)')" />
 
         <!-- Definir las DLL generadas -->
