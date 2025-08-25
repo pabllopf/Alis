@@ -75,12 +75,17 @@ jobs:
         run: |
           echo "Buscando proyectos..."
           
+          runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
+          
           for proj in $(find 1_Presentation/Extension -name "*.csproj" \
             | grep -viE "sample|generator|benchmark|template|app|test"); do
-            echo "Compilando $proj -> fw=${{ matrix.framework }}"
+            for rt in "${runtimes[@]}"; do
+              echo "Compilando $proj -> fw=${{ matrix.framework }}, rt=$rt"
               dotnet build "$proj" \
                 -c Release \
-                -f "${{ matrix.framework }}" 
+                -f "${{ matrix.framework }}" \
+                -r "$rt"
+            done
           done
         
       - name: Upload build artifacts
@@ -124,12 +129,18 @@ jobs:
           
       - name: Build Core 
         run: |
+          runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
+          
+          echo "Buscando proyectos core..."
           for proj in $(find . -name "*.csproj" \
             | grep -viE "sample|generator|benchmark|template|app|extension|test"); do
-              echo "Compilando $proj -> fw=${{ matrix.framework }}"
+            for rt in "${runtimes[@]}"; do
+              echo "Compilando $proj -> fw=${{ matrix.framework }}, rt=$rt"
               dotnet build "$proj" \
                 -c Release \
-                -f "${{ matrix.framework }}" 
+                -f "${{ matrix.framework }}" \
+                -r "$rt" || exit 1
+            done
           done
           
       - name: Upload build artifacts
