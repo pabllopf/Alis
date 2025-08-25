@@ -378,63 +378,53 @@
     </ItemGroup>
     
     
-    <ItemGroup  Condition="
-        $(AssemblyName.Contains('Generator')) == False AND
-        (
-            $(AssemblyName.Equals('Alis')) OR 
-            $(AssemblyName.Equals('Alis.Benchmark')) OR 
-            $(AssemblyName.Equals('Alis.Test')) OR 
-            $(AssemblyName.Equals('Alis.Core.Test')) OR 
-            $(AssemblyName.Equals('Alis.Core.Ecs')) OR
-            $(AssemblyName.Equals('Alis.Core.Ecs.Test')) OR
-            $(AssemblyName.Contains('Alis.Extension')) OR
-            $(AssemblyName.Contains('Alis.Sample'))
-        )
-    ">
-        <ProjectReference
-          Include="$(SolutionDir)4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj"
-          OutputItemType="Analyzer"
-          ReferenceOutputAssembly="false"/>
-
-    </ItemGroup>
-
-    <ItemGroup  Condition="
-        $(AssemblyName.Contains('Generator')) == False AND
-        (
-            $(AssemblyName.Equals('Alis')) OR 
-            $(AssemblyName.Equals('Alis.Benchmark')) OR 
-            $(AssemblyName.Equals('Alis.Test')) OR 
-            $(AssemblyName.Equals('Alis.Core')) OR 
-            $(AssemblyName.Equals('Alis.Core.Test')) OR 
-            $(AssemblyName.Equals('Alis.Core.Ecs')) OR
-            $(AssemblyName.Equals('Alis.Core.Ecs.Sample')) OR
-            $(AssemblyName.Equals('Alis.Core.Ecs.Test')) OR
-            $(AssemblyName.Equals('Alis.Core.Audio')) OR
-            $(AssemblyName.Equals('Alis.Core.Audio.Sample')) OR
-            $(AssemblyName.Equals('Alis.Core.Audio.Test')) OR
-            $(AssemblyName.Equals('Alis.Core.Physic')) OR
-            $(AssemblyName.Equals('Alis.Core.Physic.Sample')) OR
-            $(AssemblyName.Equals('Alis.Core.Physic.Test')) OR
-            $(AssemblyName.Equals('Alis.Core.Network')) OR
-            $(AssemblyName.Equals('Alis.Core.Network.Sample')) OR
-            $(AssemblyName.Equals('Alis.Core.Network.Test')) OR
-            $(AssemblyName.Equals('Alis.Core.Graphic')) OR
-            $(AssemblyName.Equals('Alis.Core.Graphic.Sample')) OR
-            $(AssemblyName.Equals('Alis.Core.Graphic.Test')) OR
-            $(AssemblyName.Equals('Alis.Core.Aspect')) OR
-            $(AssemblyName.Equals('Alis.Core.Aspect.Sample')) OR
-            $(AssemblyName.Equals('Alis.Core.Aspect.Test')) OR
-            $(AssemblyName.Equals('Alis.Core.Aspect.Data')) OR 
-            $(AssemblyName.Equals('Alis.Core.Aspect.Data.Sample')) OR
-            $(AssemblyName.Equals('Alis.Core.Aspect.Data.Test')) OR
-            $(AssemblyName.Contains('Alis.Extension')) OR
-            $(AssemblyName.Contains('Alis.Sample'))
-        )
-    ">
-        <ProjectReference
-            Include="$(SolutionDir)6_Ideation/Data/generator/Alis.Core.Aspect.Data.Generator.csproj"
-            OutputItemType="Analyzer"
-            ReferenceOutputAssembly="false"/>
+    <ItemGroup Condition="$(AssemblyName.Contains('Generator')) == False">
+        
+      <!-- Capa 1: importa generators de 2, 3, 4, 5, 6 -->
+      <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
+        Include="
+          $(SolutionDir)2_Application/**/*Generator*.csproj;
+          $(SolutionDir)3_Structuration/**/*Generator*.csproj;
+          $(SolutionDir)4_Operation/**/*Generator*.csproj;
+          $(SolutionDir)5_Declaration/**/*Generator*.csproj;
+          $(SolutionDir)6_Ideation/**/*Generator*.csproj;"
+        OutputItemType="Analyzer"
+        ReferenceOutputAssembly="false"/>
+    
+      <!-- Capa 2: importa generators de 3, 4, 5, 6 -->
+      <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
+        Include="
+          $(SolutionDir)3_Structuration/**/*Generator*.csproj;
+          $(SolutionDir)4_Operation/**/*Generator*.csproj;
+          $(SolutionDir)5_Declaration/**/*Generator*.csproj;
+          $(SolutionDir)6_Ideation/**/*Generator*.csproj;"
+        OutputItemType="Analyzer"
+        ReferenceOutputAssembly="false"/>
+    
+      <!-- Capa 3: importa generators de 4, 5, 6 -->
+      <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
+        Include="
+          $(SolutionDir)4_Operation/**/*Generator*.csproj;
+          $(SolutionDir)5_Declaration/**/*Generator*.csproj;
+          $(SolutionDir)6_Ideation/**/*Generator*.csproj;"
+        OutputItemType="Analyzer"
+        ReferenceOutputAssembly="false"/>
+    
+      <!-- Capa 4: importa generators de 5, 6 -->
+      <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
+        Include="   
+          $(SolutionDir)5_Declaration/**/*Generator*.csproj;
+          $(SolutionDir)6_Ideation/**/*Generator*.csproj;"
+        OutputItemType="Analyzer"
+        ReferenceOutputAssembly="false"/>
+    
+      <!-- Capa 5: importa generators de 6 -->
+      <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
+        Include="
+          $(SolutionDir)6_Ideation/**/*Generator*.csproj;"
+        OutputItemType="Analyzer"
+        ReferenceOutputAssembly="false"/>
+        
     </ItemGroup>
     
 </Project>
