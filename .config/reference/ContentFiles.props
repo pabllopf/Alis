@@ -23,6 +23,8 @@
             PackagePath="analyzers/dotnet/cs" 
             Visible="false"/>
 
+        
+        
         <None
             Condition=" 
             Exists('$(SolutionDir)6_Ideation/Data/generator/bin/Release/lib/netstandard2.0/Alis.Core.Aspect.Data.Generator.dll') AND
