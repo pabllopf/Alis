@@ -76,7 +76,7 @@ jobs:
           echo "Buscando proyectos..."
           
           for proj in $(find 1_Presentation/Extension -name "*.csproj" \
-            | grep -viE "sample|template|generator|test|app"); do
+            | grep -viE "sample|generator|benchmark|template|app|test"); do
             echo "Compilando $proj -> fw=${{ matrix.framework }}"
               dotnet build "$proj" \
                 -c Release \
@@ -125,7 +125,7 @@ jobs:
       - name: Build Core 
         run: |
           for proj in $(find . -name "*.csproj" \
-            | grep -viE "sample|generator|template|app|extension|test"); do
+            | grep -viE "sample|generator|benchmark|template|app|extension|test"); do
               echo "Compilando $proj -> fw=${{ matrix.framework }}"
               dotnet build "$proj" \
                 -c Release \
