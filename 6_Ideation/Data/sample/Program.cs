@@ -29,6 +29,7 @@
 
 
 using System;
+using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Core.Aspect.Data.Sample
 {
@@ -55,12 +56,12 @@ namespace Alis.Core.Aspect.Data.Sample
             
             Console.WriteLine("Music Information:");
             
-            string json = musicInfo2.ToJson();
+            string json = JsonNativeAot.Serialize(musicInfo2);
             Console.WriteLine(json);
             
             Console.WriteLine("----------------------------------------");
             
-            Music deserialized = Music.FromJson(json);
+            Music deserialized = JsonNativeAot.Deserialize<Music>(json);
             Console.WriteLine(deserialized.Name);
             Console.WriteLine(deserialized.Artist);
             Console.WriteLine(deserialized.Genre);
@@ -96,11 +97,11 @@ namespace Alis.Core.Aspect.Data.Sample
             };
             
             Console.WriteLine("Singer Information:");
-            string singerJson = singerInfo.ToJson();
+            string singerJson = JsonNativeAot.Serialize<Singer>(singerInfo);
             Console.WriteLine(singerJson);
             Console.WriteLine("----------------------------------------");
             
-            Singer deserializedSinger = Singer.FromJson(singerJson);
+            Singer deserializedSinger = JsonNativeAot.Deserialize<Singer>(singerJson);
             Console.WriteLine(deserializedSinger.Name);
             Console.WriteLine(deserializedSinger.Genre);
             Console.WriteLine(deserializedSinger.Age);

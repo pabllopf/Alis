@@ -70,29 +70,6 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
-
-      - name: Build Generator Projects
-        run: |
-          set -e
-
-          # Directorio raíz de la solución
-          SOLUTION_DIR="${GITHUB_WORKSPACE}"
-
-          # Buscar todos los proyectos .csproj dentro de carpetas que contengan "generator"
-          find "$SOLUTION_DIR" -type f -path "*/generator/*.csproj" | while read -r PROJECT; do
-            # Ruta de la DLL de salida esperada
-            OUTPUT_DLL="${PROJECT%/*}/bin/Release/netstandard2.0/$(basename "${PROJECT%.*}.dll")"
-
-            # Verificar si la DLL ya existe
-            if [ ! -f "$OUTPUT_DLL" ]; then
-              echo "🚀 Compilando generador: $PROJECT"
-              dotnet build "$PROJECT" -c Release
-              echo "✅ Generador compilado: $OUTPUT_DLL"
-            else
-              echo "⚡ DLL ya existe: $OUTPUT_DLL. Saltando compilación."
-            fi
-          done
-      
       
       - name: Build extensiones automáticamente
         run: |

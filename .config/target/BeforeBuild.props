@@ -1,5 +1,4 @@
 <Project>
-    
     <ItemGroup>
         <GeneratorProjects Include="$(SolutionDir)4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj">
             <OutputAssembly>$(SolutionDir)4_Operation/Ecs/generator/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/Alis.Core.Ecs.Generator.dll</OutputAssembly>
@@ -10,15 +9,20 @@
         </GeneratorProjects>
     </ItemGroup>
 
-    <!-- Compilar siempre antes de cualquier Build/Publish, solo si falta la DLL -->
+    <!-- Asegurar que se construyen los generadores antes de compilar -->
     <Target Name="BuildAllGenerators"
-            BeforeTargets="Build;Publish"
-            Condition="$(AssemblyName.Contains('Generator')) == false">
-        
+            BeforeTargets="CoreCompile"
+            Condition="$(AssemblyName.Contains('Generator')) == false"
+            Inputs="@(GeneratorProjects)"
+            Outputs="%(GeneratorProjects.OutputAssembly)">
+
         <Message Condition="!Exists('%(GeneratorProjects.OutputAssembly)')" Importance="high" Text="Checking generator DLLs..." />
 
-        <Exec Command="dotnet build &quot;%(GeneratorProjects.Identity)&quot; -c $(Configuration)" 
-              Condition="!Exists('%(GeneratorProjects.OutputAssembly)')" />
+        <MSBuild Projects="@(GeneratorProjects)"
+                 Targets="Build"
+                 Condition="!Exists('%(GeneratorProjects.OutputAssembly)')"
+                 Properties="Configuration=$(Configuration);
+                       TargetFramework=netstandard2.0" />
 
         <Message Condition="!Exists('%(GeneratorProjects.OutputAssembly)')" Importance="high" Text="Generator DLLs built if needed." />
     </Target>
