@@ -28,7 +28,7 @@
 
         <!-- Definir las DLL generadas -->
         <ItemGroup>
-            <GeneratorOutputs Include="@(GeneratorProjects->'%(RootDir)%(Directory)bin/$(Configuration)/**/%(Filename).dll')" />
+            <GeneratorOutputs Include="@(GeneratorProjects->'%(RootDir)%(Directory)bin/$(Configuration)/lib/netstandard2.0/%(Filename).dll')" />
         </ItemGroup>
 
         <!-- Copiar a la salida del proyecto actual -->
