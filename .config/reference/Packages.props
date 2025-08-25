@@ -41,6 +41,16 @@
         <PackageReference Include="MonoMac.NetStandard" Version="0.0.4"/>
     </ItemGroup>
 
+
+    <ItemGroup
+        Condition="
+    $(AssemblyName.Contains('Test')) == false AND
+     $(AssemblyName.Contains('Benchmark')) == false AND 
+    $(AssemblyName.Contains('App')) == false AND
+    $(AssemblyName.Contains('Template')) == false AND
+    $(AssemblyName.Contains('Sample')) == false">
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
+    </ItemGroup>
     
 
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Benchmark')) == true">
