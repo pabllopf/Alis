@@ -3,15 +3,15 @@
     <PropertyGroup Condition="$(AssemblyName.Contains('Generator'))">
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     </PropertyGroup>
-    
-    <Target Name="BuildGenerators" BeforeTargets="Restore;Build;Publish"
+
+    <Target Name="RestoreGenerators" BeforeTargets="Build;Publish"
             Condition="
-        $(AssemblyName.Contains('Generator')) == false AND
-        $(AssemblyName.Contains('Test')) == false AND
-        $(AssemblyName.Contains('Benchmark')) == false AND 
-        $(AssemblyName.Contains('App')) == false AND
-        $(AssemblyName.Contains('Template')) == false AND
-        $(AssemblyName.Contains('Sample')) == false">
+      $(AssemblyName.Contains('Generator')) == false AND
+      $(AssemblyName.Contains('Test')) == false AND
+      $(AssemblyName.Contains('Benchmark')) == false AND 
+      $(AssemblyName.Contains('App')) == false AND
+      $(AssemblyName.Contains('Template')) == false AND
+      $(AssemblyName.Contains('Sample')) == false">
 
         <ItemGroup>
             <GeneratorProjects Include="
@@ -22,9 +22,33 @@
         $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;" />
         </ItemGroup>
 
-        <!-- Restaurar y compilar los generators -->
+        <!-- Solo restaurar los generators -->
         <MSBuild Projects="@(GeneratorProjects)"
-                 Targets="Restore;Build"
+                 Targets="Restore"
+                 Condition="Exists('%(GeneratorProjects.Identity)')" />
+    </Target>
+
+    <Target Name="BuildGenerators" AfterTargets="RestoreGenerators;Build;Publish"
+            Condition="
+      $(AssemblyName.Contains('Generator')) == false AND
+      $(AssemblyName.Contains('Test')) == false AND
+      $(AssemblyName.Contains('Benchmark')) == false AND 
+      $(AssemblyName.Contains('App')) == false AND
+      $(AssemblyName.Contains('Template')) == false AND
+      $(AssemblyName.Contains('Sample')) == false">
+
+        <ItemGroup>
+            <GeneratorProjects Include="
+        $(SolutionDir)2_Application/**/generator/**/*Generator*.csproj;
+        $(SolutionDir)3_Structuration/**/generator/**/*Generator*.csproj;
+        $(SolutionDir)4_Operation/**/generator/**/*Generator*.csproj;
+        $(SolutionDir)5_Declaration/**/generator/**/*Generator*.csproj;
+        $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;" />
+        </ItemGroup>
+
+        <!-- Compilar los generators -->
+        <MSBuild Projects="@(GeneratorProjects)"
+                 Targets="Build"
                  Properties="Configuration=$(Configuration);TargetFramework=netstandard2.0"
                  Condition="Exists('%(GeneratorProjects.Identity)')" />
 
@@ -38,4 +62,5 @@
               DestinationFolder="bin/$(Configuration)/analyzers/dotnet/cs/"
               SkipUnchangedFiles="true"/>
     </Target>
+
 </Project>
