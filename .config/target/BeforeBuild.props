@@ -1,5 +1,10 @@
 <Project>
-    <Target Name="BuildGenerators" BeforeTargets="Build;Publish"
+
+    <PropertyGroup Condition="$(AssemblyName.Contains('Generator'))">
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
+    
+    <Target Name="BuildGenerators" BeforeTargets="Restore;Build;Publish"
             Condition="
         $(AssemblyName.Contains('Generator')) == false AND
         $(AssemblyName.Contains('Test')) == false AND
