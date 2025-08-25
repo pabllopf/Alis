@@ -21,26 +21,7 @@
         <!-- Restaurar los generators con dotnet restore -->
         <Exec Command='dotnet restore "%(GeneratorProjects.Identity)"'
               Condition="Exists('%(GeneratorProjects.Identity)')" />
-    </Target>
-
-    <Target Name="BuildGenerators" AfterTargets="RestoreGenerators"
-            Condition="
-      $(AssemblyName.Contains('Generator')) == false AND
-      $(AssemblyName.Contains('Test')) == false AND
-      $(AssemblyName.Contains('Benchmark')) == false AND 
-      $(AssemblyName.Contains('App')) == false AND
-      $(AssemblyName.Contains('Template')) == false AND
-      $(AssemblyName.Contains('Sample')) == false">
-
-        <ItemGroup>
-            <GeneratorProjects Include="
-        $(SolutionDir)2_Application/**/generator/**/*Generator*.csproj;
-        $(SolutionDir)3_Structuration/**/generator/**/*Generator*.csproj;
-        $(SolutionDir)4_Operation/**/generator/**/*Generator*.csproj;
-        $(SolutionDir)5_Declaration/**/generator/**/*Generator*.csproj;
-        $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;" />
-        </ItemGroup>
-
+        
         <!-- Compilar los generators con dotnet build -->
         <Exec Command='dotnet build "%(GeneratorProjects.Identity)" -c $(Configuration) -f netstandard2.0'
               Condition="Exists('%(GeneratorProjects.Identity)')" />
@@ -55,5 +36,6 @@
               DestinationFolder="bin/$(Configuration)/analyzers/dotnet/cs/"
               SkipUnchangedFiles="true"/>
     </Target>
+
 
 </Project>
