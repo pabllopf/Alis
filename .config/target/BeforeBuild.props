@@ -1,29 +1,2 @@
 <Project>
-    <ItemGroup>
-        <GeneratorProjects Include="$(SolutionDir)4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj">
-            <OutputAssembly>$(SolutionDir)4_Operation/Ecs/generator/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/Alis.Core.Ecs.Generator.dll</OutputAssembly>
-        </GeneratorProjects>
-
-        <GeneratorProjects Include="$(SolutionDir)6_Ideation/Data/generator/Alis.Core.Aspect.Data.Generator.csproj">
-            <OutputAssembly>$(SolutionDir)6_Ideation/Data/generator/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/Alis.Core.Aspect.Data.Generator.dll</OutputAssembly>
-        </GeneratorProjects>
-    </ItemGroup>
-
-    <!-- Asegurar que se construyen los generadores antes de compilar -->
-    <Target Name="BuildAllGenerators"
-            BeforeTargets="CoreCompile"
-            Condition="$(AssemblyName.Contains('Generator')) == false"
-            Inputs="@(GeneratorProjects)"
-            Outputs="%(GeneratorProjects.OutputAssembly)">
-
-        <Message Condition="!Exists('%(GeneratorProjects.OutputAssembly)')" Importance="high" Text="Checking generator DLLs..." />
-
-        <MSBuild Projects="@(GeneratorProjects)"
-                 Targets="Build"
-                 Condition="!Exists('%(GeneratorProjects.OutputAssembly)')"
-                 Properties="Configuration=$(Configuration);
-                       TargetFramework=netstandard2.0" />
-
-        <Message Condition="!Exists('%(GeneratorProjects.OutputAssembly)')" Importance="high" Text="Generator DLLs built if needed." />
-    </Target>
 </Project>
