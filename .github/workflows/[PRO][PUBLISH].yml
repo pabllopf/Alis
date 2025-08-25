@@ -75,7 +75,11 @@ jobs:
         run: |
           echo "Buscando proyectos..."
           
-          runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
+          if [[ "${{ matrix.framework }}" == netcoreapp* ]]; then
+           runtimes=("win-x64" "linux-x64" "osx-x64")
+          else
+           runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
+          fi
           
           for proj in $(find 1_Presentation/Extension -name "*.csproj" \
             | grep -viE "sample|generator|benchmark|template|app|test"); do
@@ -129,7 +133,12 @@ jobs:
           
       - name: Build Core 
         run: |
-          runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
+         
+         if [[ "${{ matrix.framework }}" == netcoreapp* ]]; then
+           runtimes=("win-x64" "linux-x64" "osx-x64")
+         else
+           runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
+         fi
           
           echo "Buscando proyectos core..."
           for proj in $(find . -name "*.csproj" \
