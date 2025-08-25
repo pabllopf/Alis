@@ -329,8 +329,8 @@ jobs:
 
           echo "✅ Restauración completada."
           
-      - name: Build Alis.Core.Ecs.Generator
-        run: dotnet build ./4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj -f netstandard2.0 -c Release
+      - name: Build Alis.sln
+        run: dotnet build alis.sln -c Release
       
       - name: Get current version
         id: get-version
