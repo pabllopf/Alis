@@ -1,6 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-    <PropertyGroup Condition="$(AssemblyName.Contains('Generator')) == False AND '$(Configuration)'=='Release'">
+    <PropertyGroup Condition="
+    $(TargetFramework.Equals('net5.0')) AND
+    $(TargetFramework.Equals('net6.0')) AND
+    $(TargetFramework.Equals('net7.0')) AND
+    $(TargetFramework.Equals('net8.0')) AND
+    $(TargetFramework.Equals('net9.0')) AND
+    $(AssemblyName.Contains('Test')) == false AND
+    $(AssemblyName.Contains('Generator')) == false AND
+    '$(Configuration)' == 'Release'">
         <Optimize>true</Optimize>
+        <DebugType>none</DebugType>
+        <DebugSymbols>false</DebugSymbols>
+        <DebuggerSupport>false</DebuggerSupport>
+        <XmlResolverIsNetworkingEnabledByDefault>false</XmlResolverIsNetworkingEnabledByDefault>
+        <MetricsSupport>false</MetricsSupport>
+        <HttpActivityPropagationSupport>false</HttpActivityPropagationSupport>
+        <Http3Support>false</Http3Support>
+        <EnableUnsafeUTF7Encoding>false</EnableUnsafeUTF7Encoding>
+        <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
+        <EventSourceSupport>false</EventSourceSupport>
+        <MetadataUpdaterSupport>false</MetadataUpdaterSupport>
+        <TrimUnusedDependencies>true</TrimUnusedDependencies>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <DebugType>none</DebugType>
+        <EnableSinglStackTraceSupporteFile>false</EnableSinglStackTraceSupporteFile>
+        <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+        <StripSymbols>true</StripSymbols>
+        <OptimizationPreference>Size</OptimizationPreference>
+        <StackTraceSupport>false</StackTraceSupport>
+        <UseSystemResourceKeys>false</UseSystemResourceKeys>
+        <EnableNETAnalyzers>false</EnableNETAnalyzers>
+        <EnableRoslynAnalyzers>false</EnableRoslynAnalyzers>
+        <EnableDefaultItems>true</EnableDefaultItems>
+        <NoWarn>NU1605;NU1608;NU1701;NU1702</NoWarn>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+        <RunAnalyzers>false</RunAnalyzers>
+        <IncludeNativeDebugSymbols>false</IncludeNativeDebugSymbols>
+        <ExcludeAnalyzers>true</ExcludeAnalyzers>
+        <EnableAnalyzer>false</EnableAnalyzer>
+        <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
+        <DisableImplicitFrameworkReferences>false</DisableImplicitFrameworkReferences>
+        <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
+    </PropertyGroup>
+
+
+    <PropertyGroup Condition="
+    ($(AssemblyName.Contains('App')) == true OR $(AssemblyName.Contains('Sample')) == true) AND
+    $(AssemblyName.Contains('Test')) == false AND
+    $(AssemblyName.Contains('Web')) == false AND
+    '$(Configuration)' == 'Release'">
+        <DebugType>none</DebugType>
+        <DebugSymbols>false</DebugSymbols>
+        <UseNativeAot>true</UseNativeAot>
+        <PublishAot>true</PublishAot>
+        <PublishTrimmed>true</PublishTrimmed>
+        <TrimMode>Full</TrimMode>
+        <AutoreleasePoolSupport>false</AutoreleasePoolSupport>
+        <DebuggerSupport>false</DebuggerSupport>
+        <XmlResolverIsNetworkingEnabledByDefault>false</XmlResolverIsNetworkingEnabledByDefault>
+        <MetricsSupport>false</MetricsSupport>
+        <HttpActivityPropagationSupport>false</HttpActivityPropagationSupport>
+        <Http3Support>false</Http3Support>
+        <EnableUnsafeUTF7Encoding>false</EnableUnsafeUTF7Encoding>
+        <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
+        <EventSourceSupport>false</EventSourceSupport>
+        <MetadataUpdaterSupport>false</MetadataUpdaterSupport>
+        <TrimUnusedDependencies>true</TrimUnusedDependencies>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <DebugType>none</DebugType>
+        <EnableSinglStackTraceSupporteFile>false</EnableSinglStackTraceSupporteFile>
+        <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+        <StripSymbols>true</StripSymbols>
+        <OptimizationPreference>Size</OptimizationPreference>
+        <StackTraceSupport>false</StackTraceSupport>
+        <UseSystemResourceKeys>false</UseSystemResourceKeys>
+        <EnableNETAnalyzers>false</EnableNETAnalyzers>
+        <EnableRoslynAnalyzers>false</EnableRoslynAnalyzers>
+        <EnableDefaultItems>true</EnableDefaultItems>
+        <NoWarn>NU1605;NU1608;NU1701;NU1702</NoWarn>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+        <RunAnalyzers>false</RunAnalyzers>
+        <IncludeNativeDebugSymbols>false</IncludeNativeDebugSymbols>
+        <ExcludeAnalyzers>true</ExcludeAnalyzers>
+        <EnableAnalyzer>false</EnableAnalyzer>
+        <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
+        <DisableImplicitFrameworkReferences>false</DisableImplicitFrameworkReferences>
+        <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
     </PropertyGroup>
 </Project>

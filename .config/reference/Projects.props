@@ -208,6 +208,7 @@
                  Exclude="
                           $(SolutionDir)4_Operation/**/obj/**/**;
                           $(SolutionDir)4_Operation/**/bin/**/**;
+                          $(SolutionDir)4_Operation/**/obj/**/*.cs;
                           $(SolutionDir)**/**/*generator*/**/*.cs; 
                           $(SolutionDir)**/**/*benchmark*/**/*.cs;  
                           $(SolutionDir)4_Operation/**/*sample/**/**;
@@ -359,9 +360,9 @@
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
 
-        <ProjectReference
+        <Analyzer
             Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
-            Include="$(ProjectDir)/../generator/$(NameTest).Generator.csproj"
+            Include="$(ProjectDir)/../**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;"
             OutputItemType="Analyzer"
             ReferenceOutputAssembly="false"/>
         
@@ -383,61 +384,58 @@
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
         
-        <ProjectReference 
+        <Analyzer 
             Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
-            Include="$(ProjectDir)/../generator/$(NameTest).Generator.csproj"
+            Include="$(ProjectDir)/../**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;"
             OutputItemType="Analyzer"
             ReferenceOutputAssembly="false"/>
         
     </ItemGroup>
     
     
-    <ItemGroup Condition="$(AssemblyName.Contains('Generator')) == False">
+    <ItemGroup Condition="
+        $(AssemblyName.Contains('Generator')) == False 
+    ">
         
       <!-- Capa 1: importa generators de 2, 3, 4, 5, 6 -->
-      <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
+      <Analyzer Condition="$(ProjectDir.Contains('1_Presentation'))"
         Include="
-          $(SolutionDir)2_Application/**/*Generator*.csproj;
-          $(SolutionDir)3_Structuration/**/*Generator*.csproj;
-          $(SolutionDir)4_Operation/**/*Generator*.csproj;
-          $(SolutionDir)5_Declaration/**/*Generator*.csproj;
-          $(SolutionDir)6_Ideation/**/*Generator*.csproj;"
-        OutputItemType="Analyzer"
-        ReferenceOutputAssembly="false"/>
+          $(SolutionDir)2_Application/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)3_Structuration/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)4_Operation/**/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)5_Declaration/**/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)6_Ideation/**/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;"
+      />
     
       <!-- Capa 2: importa generators de 3, 4, 5, 6 -->
-      <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
+      <Analyzer Condition="$(ProjectDir.Contains('2_Application'))"
         Include="
-          $(SolutionDir)3_Structuration/**/*Generator*.csproj;
-          $(SolutionDir)4_Operation/**/*Generator*.csproj;
-          $(SolutionDir)5_Declaration/**/*Generator*.csproj;
-          $(SolutionDir)6_Ideation/**/*Generator*.csproj;"
-        OutputItemType="Analyzer"
-        ReferenceOutputAssembly="false"/>
+          $(SolutionDir)3_Structuration/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)4_Operation/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)5_Declaration/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)6_Ideation/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;"
+       />
     
       <!-- Capa 3: importa generators de 4, 5, 6 -->
-      <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
+      <Analyzer Condition="$(ProjectDir.Contains('3_Structuration'))"
         Include="
-          $(SolutionDir)4_Operation/**/*Generator*.csproj;
-          $(SolutionDir)5_Declaration/**/*Generator*.csproj;
-          $(SolutionDir)6_Ideation/**/*Generator*.csproj;"
-        OutputItemType="Analyzer"
-        ReferenceOutputAssembly="false"/>
+          $(SolutionDir)4_Operation/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)5_Declaration/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)6_Ideation/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;"
+        />
     
       <!-- Capa 4: importa generators de 5, 6 -->
-      <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
+      <Analyzer Condition="$(ProjectDir.Contains('4_Operation'))"
         Include="   
-          $(SolutionDir)5_Declaration/**/*Generator*.csproj;
-          $(SolutionDir)6_Ideation/**/*Generator*.csproj;"
-        OutputItemType="Analyzer"
-        ReferenceOutputAssembly="false"/>
+          $(SolutionDir)5_Declaration/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;
+          $(SolutionDir)6_Ideation/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;"
+        />
     
       <!-- Capa 5: importa generators de 6 -->
-      <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
+      <Analyzer Condition="$(ProjectDir.Contains('5_Declaration'))"
         Include="
-          $(SolutionDir)6_Ideation/**/*Generator*.csproj;"
-        OutputItemType="Analyzer"
-        ReferenceOutputAssembly="false"/>
+          $(SolutionDir)6_Ideation/**/generator/**/bin/**/$(Configuration)/**/netstandard2.0/*Generator*.dll;"
+        />
         
     </ItemGroup>
     
