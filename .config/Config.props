@@ -12,13 +12,13 @@
         </TargetFrameworks>
 
         <TargetFrameworks Condition="$(AssemblyName.Contains('App')) == true">net8.0;</TargetFrameworks>
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Generator')) == true AND $(Configuration) == 'Release'">net8.0;netstandard2.0</TargetFrameworks>
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Extension')) == true AND $(Configuration) == 'Release'">netcoreapp2.0;net461;net5.0;net8.0;netstandard2.0</TargetFrameworks>
+        <TargetFrameworks Condition="$(AssemblyName.Contains('Generator')) == true AND $(Configuration) == 'Release'">netstandard2.0;</TargetFrameworks>
+        <TargetFrameworks Condition="$(AssemblyName.Contains('Extension')) == true AND $(Configuration) == 'Release'">net5.0;net8.0;netstandard2.0</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Benchmark')) == true">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Test')) == true">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Sample')) == true">net8.0;</TargetFrameworks>
 
-        <RuntimeIdentifiers Condition="$(Configuration) == 'Release' AND $(AssemblyName.Contains('Generator')) == False">
+        <RuntimeIdentifiers Condition="$(Configuration) == 'Release'">
             win-x64; win-x86; win-arm64;
             linux-x64; linux-arm; linux-arm64;
             osx-x64;osx-arm64;
