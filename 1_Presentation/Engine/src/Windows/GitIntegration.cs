@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 
-namespace Alis.App.Engine.Desktop.Windows
+namespace Alis.App.Engine.Windows
 {
     /// <summary>
     /// The git integration class

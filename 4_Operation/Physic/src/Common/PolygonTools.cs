@@ -67,12 +67,12 @@ namespace Alis.Core.Physic.Common
         {
             Vertices vertices = CreateRectangle(hx, hy);
 
-            Transform xf = new Transform(center, angle);
+            ControllerTransform xf = new ControllerTransform(center, angle);
 
             // Transform vertices
             for (int i = 0; i < 4; ++i)
             {
-                vertices[i] = Transform.Multiply(vertices[i], ref xf);
+                vertices[i] = ControllerTransform.Multiply(vertices[i], ref xf);
             }
 
             return vertices;

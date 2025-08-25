@@ -27,13 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.App.Engine.Desktop.Core;
-using Alis.App.Engine.Desktop.Shortcut;
-using Alis.Core.Aspect.Math;
+using Alis.App.Engine.Core;
+using Alis.App.Engine.Shortcut;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 
-namespace Alis.App.Engine.Desktop.Menus
+namespace Alis.App.Engine.Menus
 {
     /// <summary>
     ///     The top menu class

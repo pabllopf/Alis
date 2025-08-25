@@ -141,7 +141,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             MaxForce = 1000 * body.Mass;
 
             _worldAnchor = worldAnchor;
-            LocalAnchorA = Transform.Divide(ref worldAnchor, ref BodyA.Xf);
+            LocalAnchorA = ControllerTransform.Divide(ref worldAnchor, ref BodyA.Xf);
         }
 
         /// <summary>

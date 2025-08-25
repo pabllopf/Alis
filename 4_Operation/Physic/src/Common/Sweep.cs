@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         /// <param name="xfb">The transform.</param>
         /// <param name="beta">beta is a factor in [0,1], where 0 indicates alpha0.</param>
-        public void GetTransform(out Transform xfb, float beta)
+        public void GetTransform(out ControllerTransform xfb, float beta)
         {
             xfb.Position = new Vector2F((1.0f - beta) * C0.X + beta * C.X, (1.0f - beta) * C0.Y + beta * C.Y);
             float angle = (1.0f - beta) * A0 + beta * A;

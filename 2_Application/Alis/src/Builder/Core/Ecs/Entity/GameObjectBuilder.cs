@@ -56,7 +56,7 @@ namespace Alis.Builder.Core.Ecs.Entity
        {
            TransformBuilder transformBuilder = new TransformBuilder();
            config(transformBuilder);
-           gameObject.Add<Transform>(transformBuilder.Build());
+           gameObject.Add<Alis.Core.Ecs.Components.Transform>(transformBuilder.Build());
            return this;
        }
        

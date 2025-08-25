@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.Desktop.Core
+namespace Alis.App.Engine.Core
 {
     /// <summary>
     ///     The has space work interface

@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Collision
 
             // Initialize the simplex.
             Simplex simplex = new Simplex();
-            simplex.ReadCache(ref cache, ref input.ProxyA, ref input.TransformA, ref input.ProxyB, ref input.TransformB);
+            simplex.ReadCache(ref cache, ref input.ProxyA, ref input.ControllerTransformA, ref input.ProxyB, ref input.ControllerTransformB);
 
             // These store the vertices of the last simplex so that we
             // can check for duplicates and prevent cycling.
@@ -145,11 +145,11 @@ namespace Alis.Core.Physic.Collision
 
                 // Compute a tentative new simplex vertex using support points.
                 SimplexVertex vertex = simplex.V[simplex.Count];
-                vertex.IndexA = input.ProxyA.GetSupport(-Complex.Divide(ref d, ref input.TransformA.Rotation));
-                vertex.Wa = Transform.Multiply(input.ProxyA.Vertices[vertex.IndexA], ref input.TransformA);
+                vertex.IndexA = input.ProxyA.GetSupport(-Complex.Divide(ref d, ref input.ControllerTransformA.Rotation));
+                vertex.Wa = ControllerTransform.Multiply(input.ProxyA.Vertices[vertex.IndexA], ref input.ControllerTransformA);
 
-                vertex.IndexB = input.ProxyB.GetSupport(Complex.Divide(ref d, ref input.TransformB.Rotation));
-                vertex.Wb = Transform.Multiply(input.ProxyB.Vertices[vertex.IndexB], ref input.TransformB);
+                vertex.IndexB = input.ProxyB.GetSupport(Complex.Divide(ref d, ref input.ControllerTransformB.Rotation));
+                vertex.Wb = ControllerTransform.Multiply(input.ProxyB.Vertices[vertex.IndexB], ref input.ControllerTransformB);
                 vertex.W = vertex.Wb - vertex.Wa;
                 simplex.V[simplex.Count] = vertex;
 

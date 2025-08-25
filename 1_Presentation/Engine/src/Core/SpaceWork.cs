@@ -28,14 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
-using Alis.App.Engine.Desktop.Controllers;
-using Alis.App.Engine.Desktop.Entity;
-using Alis.App.Engine.Desktop.Menus;
-using Alis.App.Engine.Desktop.Windows;
-
+using Alis.App.Engine.Controllers;
+using Alis.App.Engine.Entity;
+using Alis.App.Engine.Menus;
+using Alis.App.Engine.Windows;
 using Alis.Core.Ecs.Systems;
 
-namespace Alis.App.Engine.Desktop.Core
+namespace Alis.App.Engine.Core
 {
     /// <summary>
     ///     The space work class

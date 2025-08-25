@@ -50,12 +50,12 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The transform
         /// </summary>
-        public Transform TransformA;
+        public ControllerTransform ControllerTransformA;
 
         /// <summary>
         ///     The transform
         /// </summary>
-        public Transform TransformB;
+        public ControllerTransform ControllerTransformB;
 
         /// <summary>
         ///     The use radii

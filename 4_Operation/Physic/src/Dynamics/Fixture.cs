@@ -342,7 +342,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="broadPhase">The broad phase</param>
         /// <param name="xf">The xf</param>
         /// <exception cref="InvalidOperationException">Proxies allready created for this Fixture.</exception>
-        internal void CreateProxies(IBroadPhase broadPhase, ref Transform xf)
+        internal void CreateProxies(IBroadPhase broadPhase, ref ControllerTransform xf)
         {
             if (ProxyCount != 0)
             {
@@ -387,7 +387,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="broadPhase">The broad phase</param>
         /// <param name="transform1">The transform</param>
         /// <param name="transform2">The transform</param>
-        internal void Synchronize(IBroadPhase broadPhase, ref Transform transform1, ref Transform transform2)
+        internal void Synchronize(IBroadPhase broadPhase, ref ControllerTransform transform1, ref ControllerTransform transform2)
         {
             for (int i = 0; i < ProxyCount; ++i)
             {

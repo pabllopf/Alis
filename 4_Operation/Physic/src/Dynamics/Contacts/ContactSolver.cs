@@ -249,8 +249,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 Vector2F vB = Velocities[indexB].V;
                 float wB = Velocities[indexB].W;
 
-                Transform xfA = new Transform(Vector2F.Zero, aA);
-                Transform xfB = new Transform(Vector2F.Zero, aB);
+                ControllerTransform xfA = new ControllerTransform(Vector2F.Zero, aA);
+                ControllerTransform xfB = new ControllerTransform(Vector2F.Zero, aB);
                 xfA.Position = cA - Complex.Multiply(ref localCenterA, ref xfA.Rotation);
                 xfB.Position = cB - Complex.Multiply(ref localCenterB, ref xfB.Rotation);
 
@@ -831,8 +831,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 // Solve normal constraints
                 for (int j = 0; j < pointCount; ++j)
                 {
-                    Transform xfA = new Transform(Vector2F.Zero, aA);
-                    Transform xfB = new Transform(Vector2F.Zero, aB);
+                    ControllerTransform xfA = new ControllerTransform(Vector2F.Zero, aA);
+                    ControllerTransform xfB = new ControllerTransform(Vector2F.Zero, aB);
                     xfA.Position = cA - Complex.Multiply(ref localCenterA, ref xfA.Rotation);
                     xfB.Position = cB - Complex.Multiply(ref localCenterB, ref xfB.Rotation);
 
@@ -926,8 +926,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 // Solve normal constraints
                 for (int j = 0; j < pointCount; ++j)
                 {
-                    Transform xfA = new Transform(Vector2F.Zero, aA);
-                    Transform xfB = new Transform(Vector2F.Zero, aB);
+                    ControllerTransform xfA = new ControllerTransform(Vector2F.Zero, aA);
+                    ControllerTransform xfB = new ControllerTransform(Vector2F.Zero, aB);
                     xfA.Position = cA - Complex.Multiply(ref localCenterA, ref xfA.Rotation);
                     xfB.Position = cB - Complex.Multiply(ref localCenterB, ref xfB.Rotation);
 
@@ -1002,7 +1002,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             /// <param name="radiusB">The radius for B.</param>
             /// <param name="normal">World vector pointing from A to B</param>
             /// <param name="points">Torld contact point (point of intersection).</param>
-            public static void Initialize(ref Manifold manifold, ref Transform xfA, float radiusA, ref Transform xfB, float radiusB, out Vector2F normal, out FixedArray2<Vector2F> points)
+            public static void Initialize(ref Manifold manifold, ref ControllerTransform xfA, float radiusA, ref ControllerTransform xfB, float radiusB, out Vector2F normal, out FixedArray2<Vector2F> points)
             {
                 normal = Vector2F.Zero;
                 points = new FixedArray2<Vector2F>();
@@ -1017,8 +1017,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     case ManifoldType.Circles:
                     {
                         normal = new Vector2F(1.0f, 0.0f);
-                        Vector2F pointA = Transform.Multiply(ref manifold.LocalPoint, ref xfA);
-                        Vector2F pointB = Transform.Multiply(manifold.Points[0].LocalPoint, ref xfB);
+                        Vector2F pointA = ControllerTransform.Multiply(ref manifold.LocalPoint, ref xfA);
+                        Vector2F pointB = ControllerTransform.Multiply(manifold.Points[0].LocalPoint, ref xfB);
                         if (Vector2F.DistanceSquared(pointA, pointB) > SettingEnv.Epsilon * SettingEnv.Epsilon)
                         {
                             normal = pointB - pointA;
@@ -1034,11 +1034,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     case ManifoldType.FaceA:
                     {
                         normal = Complex.Multiply(ref manifold.LocalNormal, ref xfA.Rotation);
-                        Vector2F planePoint = Transform.Multiply(ref manifold.LocalPoint, ref xfA);
+                        Vector2F planePoint = ControllerTransform.Multiply(ref manifold.LocalPoint, ref xfA);
 
                         for (int i = 0; i < manifold.PointCount; ++i)
                         {
-                            Vector2F clipPoint = Transform.Multiply(manifold.Points[i].LocalPoint, ref xfB);
+                            Vector2F clipPoint = ControllerTransform.Multiply(manifold.Points[i].LocalPoint, ref xfB);
                             Vector2F cA = clipPoint + (radiusA - Vector2F.Dot(clipPoint - planePoint, normal)) * normal;
                             Vector2F cB = clipPoint - radiusB * normal;
                             points[i] = 0.5f * (cA + cB);
@@ -1049,11 +1049,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     case ManifoldType.FaceB:
                     {
                         normal = Complex.Multiply(ref manifold.LocalNormal, ref xfB.Rotation);
-                        Vector2F planePoint = Transform.Multiply(ref manifold.LocalPoint, ref xfB);
+                        Vector2F planePoint = ControllerTransform.Multiply(ref manifold.LocalPoint, ref xfB);
 
                         for (int i = 0; i < manifold.PointCount; ++i)
                         {
-                            Vector2F clipPoint = Transform.Multiply(manifold.Points[i].LocalPoint, ref xfA);
+                            Vector2F clipPoint = ControllerTransform.Multiply(manifold.Points[i].LocalPoint, ref xfA);
                             Vector2F cB = clipPoint + (radiusB - Vector2F.Dot(clipPoint - planePoint, normal)) * normal;
                             Vector2F cA = clipPoint - radiusA * normal;
                             points[i] = 0.5f * (cA + cB);
@@ -1082,14 +1082,14 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             /// <param name="normal">The normal</param>
             /// <param name="point">The point</param>
             /// <param name="separation">The separation</param>
-            public static void Initialize(ContactPositionConstraint pc, ref Transform xfA, ref Transform xfB, int index, out Vector2F normal, out Vector2F point, out float separation)
+            public static void Initialize(ContactPositionConstraint pc, ref ControllerTransform xfA, ref ControllerTransform xfB, int index, out Vector2F normal, out Vector2F point, out float separation)
             {
                 switch (pc.Type)
                 {
                     case ManifoldType.Circles:
                     {
-                        Vector2F pointA = Transform.Multiply(ref pc.LocalPoint, ref xfA);
-                        Vector2F pointB = Transform.Multiply(pc.LocalPoints[0], ref xfB);
+                        Vector2F pointA = ControllerTransform.Multiply(ref pc.LocalPoint, ref xfA);
+                        Vector2F pointB = ControllerTransform.Multiply(pc.LocalPoints[0], ref xfB);
                         normal = pointB - pointA;
 
                         // Handle zero normalization
@@ -1106,9 +1106,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     case ManifoldType.FaceA:
                     {
                         Complex.Multiply(ref pc.LocalNormal, ref xfA.Rotation, out normal);
-                        Vector2F planePoint = Transform.Multiply(ref pc.LocalPoint, ref xfA);
+                        Vector2F planePoint = ControllerTransform.Multiply(ref pc.LocalPoint, ref xfA);
 
-                        Vector2F clipPoint = Transform.Multiply(pc.LocalPoints[index], ref xfB);
+                        Vector2F clipPoint = ControllerTransform.Multiply(pc.LocalPoints[index], ref xfB);
                         separation = Vector2F.Dot(clipPoint - planePoint, normal) - pc.RadiusA - pc.RadiusB;
                         point = clipPoint;
                     }
@@ -1117,9 +1117,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     case ManifoldType.FaceB:
                     {
                         Complex.Multiply(ref pc.LocalNormal, ref xfB.Rotation, out normal);
-                        Vector2F planePoint = Transform.Multiply(ref pc.LocalPoint, ref xfB);
+                        Vector2F planePoint = ControllerTransform.Multiply(ref pc.LocalPoint, ref xfB);
 
-                        Vector2F clipPoint = Transform.Multiply(pc.LocalPoints[index], ref xfA);
+                        Vector2F clipPoint = ControllerTransform.Multiply(pc.LocalPoints[index], ref xfA);
                         separation = Vector2F.Dot(clipPoint - planePoint, normal) - pc.RadiusA - pc.RadiusB;
                         point = clipPoint;
 

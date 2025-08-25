@@ -234,9 +234,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _bodyA = JointA.BodyB;
 
             // Get geometry of joint1
-            Transform xfA = _bodyA.Xf;
+            ControllerTransform xfA = _bodyA.Xf;
             float aA = _bodyA.Sweep.A;
-            Transform xfC = _bodyC.Xf;
+            ControllerTransform xfC = _bodyC.Xf;
             float aC = _bodyC.Sweep.A;
 
             if (_typeA == JointType.Revolute)
@@ -266,9 +266,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
             _bodyB = JointB.BodyB;
 
             // Get geometry of joint2
-            Transform xfB = _bodyB.Xf;
+            ControllerTransform xfB = _bodyB.Xf;
             float aB = _bodyB.Sweep.A;
-            Transform xfD = _bodyD.Xf;
+            ControllerTransform xfD = _bodyD.Xf;
             float aD = _bodyD.Sweep.A;
 
             if (_typeB == JointType.Revolute)

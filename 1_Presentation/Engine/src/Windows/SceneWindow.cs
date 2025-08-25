@@ -30,18 +30,16 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Alis.App.Engine.Desktop.Core;
+using Alis.App.Engine.Core;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
 
-namespace Alis.App.Engine.Desktop.Windows
+namespace Alis.App.Engine.Windows
 {
     /// <summary>
     ///     The scene window class

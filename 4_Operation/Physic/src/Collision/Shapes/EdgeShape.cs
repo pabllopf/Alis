@@ -30,7 +30,6 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
-using Transform = Alis.Core.Physic.Dynamics.Transform;
 
 
 namespace Alis.Core.Physic.Collision.Shapes
@@ -144,20 +143,20 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Describes whether this instance test point
         /// </summary>
-        /// <param name="transform">The transform</param>
+        /// <param name="controllerTransform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2F point) => false;
+        public override bool TestPoint(ref ControllerTransform controllerTransform, ref Vector2F point) => false;
 
         /// <summary>
         ///     Describes whether this instance ray cast
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>
-        /// <param name="transform">The transform</param>
+        /// <param name="controllerTransform">The transform</param>
         /// <param name="childIndex">The child index</param>
         /// <returns>The bool</returns>
-        public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref Transform transform, int childIndex)
+        public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref ControllerTransform controllerTransform, int childIndex)
         {
             // p = p1 + t * d
             // v = v1 + s * e
@@ -167,8 +166,8 @@ namespace Alis.Core.Physic.Collision.Shapes
             output = new RayCastOutput();
 
             // Put the ray into the edge's frame of reference.
-            Vector2F p1 = Complex.Divide(input.Point1 - transform.Position, ref transform.Rotation);
-            Vector2F p2 = Complex.Divide(input.Point2 - transform.Position, ref transform.Rotation);
+            Vector2F p1 = Complex.Divide(input.Point1 - controllerTransform.Position, ref controllerTransform.Rotation);
+            Vector2F p2 = Complex.Divide(input.Point2 - controllerTransform.Position, ref controllerTransform.Rotation);
             Vector2F d = p2 - p1;
 
             Vector2F v1 = Vertex11;
@@ -228,19 +227,19 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     Computes the aabb using the specified aabb
         /// </summary>
         /// <param name="aabb">The aabb</param>
-        /// <param name="transform">The transform</param>
+        /// <param name="controllerTransform">The transform</param>
         /// <param name="childIndex">The child index</param>
-        public override void ComputeAabb(out Aabb aabb, ref Transform transform, int childIndex)
+        public override void ComputeAabb(out Aabb aabb, ref ControllerTransform controllerTransform, int childIndex)
         {
             // Initialize aabb
             aabb = new Aabb();
 
             // OPT: Vector2F v1 = Transform.Multiply(ref _vertex1, ref transform);
-            float v1X = Vertex11.X * transform.Rotation.R - Vertex11.Y * transform.Rotation.I + transform.Position.X;
-            float v1Y = Vertex11.Y * transform.Rotation.R + Vertex11.X * transform.Rotation.I + transform.Position.Y;
+            float v1X = Vertex11.X * controllerTransform.Rotation.R - Vertex11.Y * controllerTransform.Rotation.I + controllerTransform.Position.X;
+            float v1Y = Vertex11.Y * controllerTransform.Rotation.R + Vertex11.X * controllerTransform.Rotation.I + controllerTransform.Position.Y;
             // OPT: Vector2F v2 = Transform.Multiply(ref _vertex2, ref transform);
-            float v2X = Vertex22.X * transform.Rotation.R - Vertex22.Y * transform.Rotation.I + transform.Position.X;
-            float v2Y = Vertex22.Y * transform.Rotation.R + Vertex22.X * transform.Rotation.I + transform.Position.Y;
+            float v2X = Vertex22.X * controllerTransform.Rotation.R - Vertex22.Y * controllerTransform.Rotation.I + controllerTransform.Position.X;
+            float v2Y = Vertex22.Y * controllerTransform.Rotation.R + Vertex22.X * controllerTransform.Rotation.I + controllerTransform.Position.Y;
 
             // OPT: aabb.LowerBound = Vector2F.Min(v1, v2);
             // OPT: aabb.UpperBound = Vector2F.Max(v1, v2);
@@ -291,7 +290,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="xf">The xf</param>
         /// <param name="sc">The sc</param>
         /// <returns>The float</returns>
-        public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref Transform xf, out Vector2F sc)
+        public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref ControllerTransform xf, out Vector2F sc)
         {
             sc = Vector2F.Zero;
             return 0;

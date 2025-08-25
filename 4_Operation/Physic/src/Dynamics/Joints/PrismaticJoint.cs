@@ -307,8 +307,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             get
             {
-                Transform xf1 = BodyA.GetTransform();
-                Transform xf2 = BodyB.GetTransform();
+                ControllerTransform xf1 = BodyA.GetTransform();
+                ControllerTransform xf2 = BodyB.GetTransform();
 
                 Vector2F r1 = Complex.Multiply(LocalAnchorA - BodyA.LocalCenter, ref xf1.Rotation);
                 Vector2F r2 = Complex.Multiply(LocalAnchorB - BodyB.LocalCenter, ref xf2.Rotation);

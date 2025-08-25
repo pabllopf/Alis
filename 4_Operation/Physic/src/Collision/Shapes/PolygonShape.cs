@@ -33,7 +33,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.ConvexHull;
 using Alis.Core.Physic.Dynamics;
-using Transform = Alis.Core.Physic.Dynamics.Transform;
 
 
 namespace Alis.Core.Physic.Collision.Shapes
@@ -241,12 +240,12 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Describes whether this instance test point
         /// </summary>
-        /// <param name="transform">The transform</param>
+        /// <param name="controllerTransform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2F point)
+        public override bool TestPoint(ref ControllerTransform controllerTransform, ref Vector2F point)
         {
-            Vector2F pLocal = Complex.Divide(point - transform.Position, ref transform.Rotation);
+            Vector2F pLocal = Complex.Divide(point - controllerTransform.Position, ref controllerTransform.Rotation);
 
             for (int i = 0; i < Vertices.Count; ++i)
             {
@@ -265,16 +264,16 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>
-        /// <param name="transform">The transform</param>
+        /// <param name="controllerTransform">The transform</param>
         /// <param name="childIndex">The child index</param>
         /// <returns>The bool</returns>
-        public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref Transform transform, int childIndex)
+        public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref ControllerTransform controllerTransform, int childIndex)
         {
             output = new RayCastOutput();
 
             // Put the ray into the polygon's frame of reference.
-            Vector2F p1 = Complex.Divide(input.Point1 - transform.Position, ref transform.Rotation);
-            Vector2F p2 = Complex.Divide(input.Point2 - transform.Position, ref transform.Rotation);
+            Vector2F p1 = Complex.Divide(input.Point1 - controllerTransform.Position, ref controllerTransform.Rotation);
+            Vector2F p2 = Complex.Divide(input.Point2 - controllerTransform.Position, ref controllerTransform.Rotation);
             Vector2F d = p2 - p1;
 
             float lower = 0.0f, upper = input.MaxFraction;
@@ -330,7 +329,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             if (index >= 0)
             {
                 output.Fraction = lower;
-                output.Normal = Complex.Multiply(Normals[index], ref transform.Rotation);
+                output.Normal = Complex.Multiply(Normals[index], ref controllerTransform.Rotation);
                 return true;
             }
 
@@ -341,24 +340,24 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     Given a transform, compute the associated axis aligned bounding box for a child shape.
         /// </summary>
         /// <param name="aabb">The aabb results.</param>
-        /// <param name="transform">The world transform of the shape.</param>
+        /// <param name="controllerTransform">The world transform of the shape.</param>
         /// <param name="childIndex">The child shape index.</param>
-        public override void ComputeAabb(out Aabb aabb, ref Transform transform, int childIndex)
+        public override void ComputeAabb(out Aabb aabb, ref ControllerTransform controllerTransform, int childIndex)
         {
             aabb = new Aabb();
 
             // OPT: aabb.LowerBound = Transform.Multiply(Vertices[0], ref transform);
             Vector2F vert = Vertices[0];
-            aabb.LowerBound.X = vert.X * transform.Rotation.R - vert.Y * transform.Rotation.I + transform.Position.X;
-            aabb.LowerBound.Y = vert.Y * transform.Rotation.R + vert.X * transform.Rotation.I + transform.Position.Y;
+            aabb.LowerBound.X = vert.X * controllerTransform.Rotation.R - vert.Y * controllerTransform.Rotation.I + controllerTransform.Position.X;
+            aabb.LowerBound.Y = vert.Y * controllerTransform.Rotation.R + vert.X * controllerTransform.Rotation.I + controllerTransform.Position.Y;
             aabb.UpperBound = aabb.LowerBound;
 
             for (int i = 1; i < Vertices.Count; ++i)
             {
                 // OPT: Vector2F v = Transform.Multiply(Vertices[i], ref transform);
                 vert = Vertices[i];
-                float vX = vert.X * transform.Rotation.R - vert.Y * transform.Rotation.I + transform.Position.X;
-                float vY = vert.Y * transform.Rotation.R + vert.X * transform.Rotation.I + transform.Position.Y;
+                float vX = vert.X * controllerTransform.Rotation.R - vert.Y * controllerTransform.Rotation.I + controllerTransform.Position.X;
+                float vY = vert.Y * controllerTransform.Rotation.R + vert.X * controllerTransform.Rotation.I + controllerTransform.Position.Y;
 
                 // OPT: Vector2F.Min(ref aabb.LowerBound, ref v, out aabb.LowerBound);
                 // OPT: Vector2F.Max(ref aabb.UpperBound, ref v, out aabb.UpperBound);
@@ -398,7 +397,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="xf">The xf</param>
         /// <param name="sc">The sc</param>
         /// <returns>The area</returns>
-        public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref Transform xf, out Vector2F sc)
+        public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref ControllerTransform xf, out Vector2F sc)
         {
             sc = Vector2F.Zero;
 
@@ -446,7 +445,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                     if (lastSubmerged)
                     {
                         //Completely submerged
-                        sc = Transform.Multiply(MassData.Centroid, ref xf);
+                        sc = ControllerTransform.Multiply(MassData.Centroid, ref xf);
                         return MassData.Mass / GetDensity;
                     }
 
@@ -517,7 +516,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             //Normalize and transform centroid
             center *= 1.0f / area;
 
-            sc = Transform.Multiply(ref center, ref xf);
+            sc = ControllerTransform.Multiply(ref center, ref xf);
 
             return area;
         }
