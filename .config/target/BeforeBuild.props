@@ -5,7 +5,7 @@
       $(AssemblyName.Contains('Generator')) == false AND
       $(AssemblyName.Contains('Test')) == false AND
       $(AssemblyName.Contains('Benchmark')) == false AND 
-      $(AssemblyName.Contains('App')) == false AND
+      $(AssemblyName.Contains('Alis.App')) == false AND
       $(AssemblyName.Contains('Template')) == false AND
       $(AssemblyName.Contains('Sample')) == false">
 
