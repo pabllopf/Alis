@@ -68,6 +68,7 @@
 
     </ItemGroup>
 
+    
     <ItemGroup Condition="$(Configuration) == 'Release'">
 
         <Content 
