@@ -495,7 +495,7 @@
     </ItemGroup>-->
 
 
-    <ItemGroup Condition="$(AssemblyName.Contains('Generator')) == False AND $(Configuration) == 'Debug'">
+    <ItemGroup Condition="$(AssemblyName.Contains('Generator')) == False">
         
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
                           Include="
@@ -504,7 +504,6 @@
           $(SolutionDir)4_Operation/**/**/generator/**/*Generator*.csproj;
           $(SolutionDir)5_Declaration/**/**/generator/**/*Generator*.csproj;
           $(SolutionDir)6_Ideation/**/**/generator/**/*Generator*.csproj;"
-                          OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false"/>
 
 
@@ -514,7 +513,6 @@
           $(SolutionDir)4_Operation/**/generator/**/*Generator*.csproj;
           $(SolutionDir)5_Declaration/**/generator/**/*Generator*.csproj;
           $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;"
-                          OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false"/>
 
 
@@ -523,7 +521,6 @@
           $(SolutionDir)4_Operation/**/generator/**/*Generator*.csproj;
           $(SolutionDir)5_Declaration/**/generator/**/*Generator*.csproj;
           $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;"
-                          OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false"/>
 
 
@@ -531,14 +528,12 @@
                           Include="   
           $(SolutionDir)5_Declaration/**/generator/**/*Generator*.csproj;
           $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;"
-                          OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false"/>
 
 
         <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
                           Include="
           $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;"
-                          OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false"/>
 
     </ItemGroup>
@@ -547,7 +542,6 @@
 
     
     <ItemGroup Condition="
-        $(Configuration) == 'Release' AND
         $(AssemblyName.Contains('Generator')) == False AND
         $(AssemblyName.Contains('Sample')) == False AND
         $(AssemblyName.Contains('Test')) == False AND
