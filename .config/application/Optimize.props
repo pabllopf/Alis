@@ -2,15 +2,16 @@
 <Project>
     
     <PropertyGroup Condition="
-    $(TargetFramework.Equals('net5.0')) AND
-    $(TargetFramework.Equals('net6.0')) AND
-    $(TargetFramework.Equals('net7.0')) AND
-    $(TargetFramework.Equals('net8.0')) AND
-    $(TargetFramework.Equals('net9.0')) AND
-    $(AssemblyName.Contains('Test')) == false AND
-    $(AssemblyName.Contains('App')) == false AND
-    $(AssemblyName.Contains('Generator')) == false AND
-    '$(Configuration)' == 'Release'">
+    $(AssemblyName.Contains('Sample')) == true AND
+    '$(Configuration)' == 'Release' AND
+    (
+        $(TargetFramework.Equals('net5.0')) OR
+        $(TargetFramework.Equals('net6.0')) OR
+        $(TargetFramework.Equals('net7.0')) OR
+        $(TargetFramework.Equals('net8.0')) OR
+        $(TargetFramework.Equals('net9.0')) 
+    )
+    ">
         <Optimize>true</Optimize>
         <DebugType>none</DebugType>
         <DebugSymbols>false</DebugSymbols>
