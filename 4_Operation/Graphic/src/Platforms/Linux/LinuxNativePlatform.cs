@@ -1,3 +1,5 @@
+#if LINUX
+
 using System;
 
 namespace Alis.Core.Graphic.Platforms.Linux
@@ -84,4 +86,6 @@ namespace Alis.Core.Graphic.Platforms.Linux
         public bool TryGetLastKeyPressed(out ConsoleKey key) => throw new NotImplementedException();
     }
 }
+
+#endif
 

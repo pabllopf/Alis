@@ -23,7 +23,7 @@ namespace Alis.Core.Graphic.Sample
 #elif WIN
             platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
 #elif LINUX
-            platform = new Alis.Core.Graphic.Platforms.LinuxNativePlatform();
+            platform = new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();
 #else
             throw new Exception("Sistema operativo no soportado");
 #endif
