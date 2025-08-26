@@ -277,6 +277,7 @@
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
 
+        
         <ProjectReference
             Condition="$(Configuration) == 'Debug' AND Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
             Include="$(ProjectDir)/../generator/$(NameTest).Generator.csproj"
