@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     
+    <!--
     <PropertyGroup Condition="
     $(AssemblyName.Contains('Sample')) == true AND
     '$(Configuration)' == 'Release' AND
@@ -47,5 +48,5 @@
         <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
         <DisableImplicitFrameworkReferences>false</DisableImplicitFrameworkReferences>
         <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
-    </PropertyGroup>
+    </PropertyGroup>-->
 </Project>

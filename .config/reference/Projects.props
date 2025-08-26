@@ -279,13 +279,12 @@
 
         
         <ProjectReference
-            Condition="$(Configuration) == 'Debug' AND Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
+            Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
             Include="$(ProjectDir)/../generator/$(NameTest).Generator.csproj"
-            OutputItemType="Analyzer"
             ReferenceOutputAssembly="false"/>
 
         <Analyzer
-            Condition="$(Configuration) == 'Release' AND Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
+            Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
             Include="$(ProjectDir)/../generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll"
         />
         
@@ -307,13 +306,12 @@
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
         
         <ProjectReference 
-            Condition="$(Configuration) == 'Debug' AND Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
+            Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
             Include="$(ProjectDir)/../generator/$(NameTest).Generator.csproj"
-            OutputItemType="Analyzer"
             ReferenceOutputAssembly="false"/>
 
         <Analyzer
-            Condition="$(Configuration) == 'Release' AND Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
+            Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
             Include="$(ProjectDir)/../generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll"
         />
         
