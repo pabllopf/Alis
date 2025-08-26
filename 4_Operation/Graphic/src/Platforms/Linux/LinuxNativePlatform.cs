@@ -94,6 +94,46 @@ namespace Alis.Core.Graphic.Platforms.Linux
             public IntPtr pad22;
             public IntPtr pad23;
         }
+        [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
+        private struct XVisualInfo
+        {
+            public IntPtr visual;
+            public IntPtr visualid;
+            public int screen;
+            public int depth;
+            public int cclass;
+            public ulong red_mask;
+            public ulong green_mask;
+            public ulong blue_mask;
+            public int colormap_size;
+            public int bits_per_rgb;
+        }
+        [System.Runtime.InteropServices.DllImport("libX11.so.6")]
+        private static extern IntPtr XCreateColormap(IntPtr display, IntPtr window, IntPtr visual, int alloc);
+        [System.Runtime.InteropServices.DllImport("libX11.so.6")]
+        private static extern IntPtr XCreateWindow(IntPtr display, IntPtr parent, int x, int y, uint width, uint height, uint border_width, int depth, uint class_, IntPtr visual, ulong valuemask, ref XSetWindowAttributes attributes);
+        [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
+        private struct XSetWindowAttributes
+        {
+            public IntPtr background_pixmap;
+            public ulong background_pixel;
+            public IntPtr border_pixmap;
+            public ulong border_pixel;
+            public int bit_gravity;
+            public int win_gravity;
+            public int backing_store;
+            public ulong backing_planes;
+            public ulong backing_pixel;
+            public int save_under;
+            public IntPtr event_mask;
+            public IntPtr do_not_propagate_mask;
+            public int override_redirect;
+            public IntPtr colormap;
+            public IntPtr cursor;
+        }
+        [System.Runtime.InteropServices.DllImport("libX11.so.6")]
+        private static extern IntPtr XGetVisualInfo(IntPtr display, long vinfo_mask, ref XVisualInfo vinfo_template, ref int nitems);
+        private const long VisualIDMask = 0x2;
 
         // Constantes de eventos X11
         private const long ExposureMask = 0x00008000L;
@@ -102,14 +142,22 @@ namespace Alis.Core.Graphic.Platforms.Linux
         private const int KeyPress = 2;
         private const int DestroyNotify = 17;
 
-        private IntPtr GetBestVisual(IntPtr display, int screen)
+        private struct VisualSelectionResult {
+            public IntPtr VisualPtr;
+            public XVisualInfo VisualInfo;
+            public string Source;
+        }
+        private void PrintXVisualInfo(string prefix, XVisualInfo info, IntPtr ptr)
         {
-            // Try several attribute sets for maximum compatibility
+            Console.WriteLine($"{prefix} visual: ptr=0x{ptr.ToInt64():X}, visualid={info.visualid}, depth={info.depth}, class={info.cclass}, screen={info.screen}, colormap_size={info.colormap_size}, bits_per_rgb={info.bits_per_rgb}, red_mask=0x{info.red_mask:X}, green_mask=0x{info.green_mask:X}, blue_mask=0x{info.blue_mask:X}");
+        }
+        private VisualSelectionResult? GetValidVisualInfo(IntPtr display, int screen)
+        {
             int[][] fbAttribSets = new int[][] {
-                new int[] { 0x8010, 1, 0x8011, 1, 0x6, 1, 0x8012, 1, 0x8, 24, 0 }, // Modern
-                new int[] { 0x6, 1, 0x8, 24, 0x8010, 1, 0 }, // Legacy
-                new int[] { 0x8010, 1, 0x8012, 1, 0x8, 16, 0 }, // 16-bit depth
-                new int[] { 0x8010, 1, 0x8012, 1, 0 } // Minimal
+                new int[] { 0x8010, 1, 0x8011, 1, 0x6, 1, 0x8012, 1, 0x8, 24, 0 },
+                new int[] { 0x6, 1, 0x8, 24, 0x8010, 1, 0 },
+                new int[] { 0x8010, 1, 0x8012, 1, 0x8, 16, 0 },
+                new int[] { 0x8010, 1, 0x8012, 1, 0 }
             };
             foreach (var fbAttribs in fbAttribSets)
             {
@@ -118,15 +166,24 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 if (fbConfigs != IntPtr.Zero && nitems > 0)
                 {
                     IntPtr fbConfig = System.Runtime.InteropServices.Marshal.ReadIntPtr(fbConfigs);
-                    IntPtr visual = glXGetVisualFromFBConfig(display, fbConfig);
-                    if (visual != IntPtr.Zero)
+                    IntPtr visualPtr = glXGetVisualFromFBConfig(display, fbConfig);
+                    if (visualPtr != IntPtr.Zero)
                     {
-                        Console.WriteLine("GLX visual obtained via FBConfig");
-                        return visual;
+                        XVisualInfo info = System.Runtime.InteropServices.Marshal.PtrToStructure<XVisualInfo>(visualPtr);
+                        PrintXVisualInfo("FBConfig", info, visualPtr);
+                        // Get canonical XVisualInfo from XGetVisualInfo
+                        int nitems2 = 0;
+                        IntPtr canonicalPtr = XGetVisualInfo(display, VisualIDMask, ref info, ref nitems2);
+                        if (canonicalPtr != IntPtr.Zero && nitems2 > 0)
+                        {
+                            XVisualInfo canonicalInfo = System.Runtime.InteropServices.Marshal.PtrToStructure<XVisualInfo>(canonicalPtr);
+                            PrintXVisualInfo("Canonical", canonicalInfo, canonicalPtr);
+                            if (canonicalInfo.cclass == 4)
+                                return new VisualSelectionResult { VisualPtr = canonicalPtr, VisualInfo = canonicalInfo, Source = "FBConfig+Canonical" };
+                        }
                     }
                 }
             }
-            // Try several attribute sets for glXChooseVisual
             int[][] visualAttribSets = new int[][] {
                 new int[] { 0x6, 1, 0x8, 24, 0x8010, 1, 0 },
                 new int[] { 0x6, 1, 0x8, 16, 0 },
@@ -134,41 +191,87 @@ namespace Alis.Core.Graphic.Platforms.Linux
             };
             foreach (var attribs in visualAttribSets)
             {
-                IntPtr visual = glXChooseVisual(display, screen, attribs);
-                if (visual != IntPtr.Zero)
+                IntPtr visualPtr = glXChooseVisual(display, screen, attribs);
+                if (visualPtr != IntPtr.Zero)
                 {
-                    Console.WriteLine("GLX visual obtained via glXChooseVisual");
-                    return visual;
+                    XVisualInfo info = System.Runtime.InteropServices.Marshal.PtrToStructure<XVisualInfo>(visualPtr);
+                    PrintXVisualInfo("Legacy", info, visualPtr);
+                    int nitems2 = 0;
+                    IntPtr canonicalPtr = XGetVisualInfo(display, VisualIDMask, ref info, ref nitems2);
+                    if (canonicalPtr != IntPtr.Zero && nitems2 > 0)
+                    {
+                        XVisualInfo canonicalInfo = System.Runtime.InteropServices.Marshal.PtrToStructure<XVisualInfo>(canonicalPtr);
+                        PrintXVisualInfo("Canonical", canonicalInfo, canonicalPtr);
+                        if (canonicalInfo.cclass == 4)
+                            return new VisualSelectionResult { VisualPtr = canonicalPtr, VisualInfo = canonicalInfo, Source = "Legacy+Canonical" };
+                    }
                 }
             }
-            // If all fail, print diagnostics
-            Console.Error.WriteLine("No se pudo obtener un visual GLX válido (ni FBConfig ni Visual)");
-            return IntPtr.Zero;
+            return null;
         }
-
         public void Initialize(int w, int h, string t)
         {
+            Console.WriteLine("[Init] Starting LinuxNativePlatform initialization...");
             width = w;
             height = h;
             title = t;
             display = XOpenDisplay(IntPtr.Zero);
             if (display == IntPtr.Zero)
-                throw new Exception("No se pudo abrir el display X11");
+                throw new Exception("[Init] No se pudo abrir el display X11");
             int screen = XDefaultScreen(display);
             IntPtr root = XRootWindow(display, screen);
-            IntPtr visual = GetBestVisual(display, screen);
-            if (visual == IntPtr.Zero)
+            Console.WriteLine($"[Init] Display opened, screen={screen}, root=0x{root.ToInt64():X}");
+            var visualResult = GetValidVisualInfo(display, screen);
+            if (!visualResult.HasValue)
             {
-                throw new Exception("No se pudo obtener un visual GLX válido (ni FBConfig ni Visual). Verifica que tienes instalado libgl1-mesa-glx, libgl1-mesa-dev, libx11-dev y que estás usando X11, no Wayland.");
+                throw new Exception("[Init] No se pudo obtener un visual GLX válido (ni FBConfig ni Visual). Verifica que tienes instalado libgl1-mesa-glx, libgl1-mesa-dev, libx11-dev y que estás usando X11, no Wayland.");
             }
-            window = XCreateSimpleWindow(display, root, 0, 0, (uint)width, (uint)height, 1, 0, 0);
+            var visualPtr = visualResult.Value.VisualPtr;
+            var visualInfo = visualResult.Value.VisualInfo;
+            PrintXVisualInfo("[Init] Selected", visualInfo, visualPtr);
+            IntPtr colormap = XCreateColormap(display, root, visualInfo.visual, 0);
+            if (colormap == IntPtr.Zero)
+                throw new Exception("[Init] Error creando el colormap");
+            Console.WriteLine($"[Init] Colormap creado: 0x{colormap.ToInt64():X}");
+            XSetWindowAttributes attrs = new XSetWindowAttributes();
+            attrs.colormap = colormap;
+            attrs.event_mask = (IntPtr)(ExposureMask | KeyPressMask | StructureNotifyMask);
+            ulong CWColormap = 0x00000010;
+            ulong CWEventMask = 0x00000080;
+            ulong valuemask = CWColormap | CWEventMask;
+            window = XCreateWindow(display, root, 0, 0, (uint)width, (uint)height, 0, visualInfo.depth, 1 /*InputOutput*/, visualInfo.visual, valuemask, ref attrs);
+            if (window == IntPtr.Zero)
+                throw new Exception("[Init] Error creando la ventana X11 (BadMatch): revisa el visual y el colormap");
+            Console.WriteLine($"[Init] Ventana creada: 0x{window.ToInt64():X}");
             XStoreName(display, window, title);
-            XSelectInput(display, window, ExposureMask | KeyPressMask | StructureNotifyMask);
-            glxContext = glXCreateContext(display, visual, IntPtr.Zero, 1);
-            if (glxContext == IntPtr.Zero)
-                throw new Exception("No se pudo crear el contexto GLX");
-            glXMakeCurrent(display, window, glxContext);
             XMapWindow(display, window);
+            Console.WriteLine("[Init] Ventana mapeada");
+            Console.WriteLine($"[Init] glXCreateContext params: display=0x{display.ToInt64():X}, visualPtr=0x{visualPtr.ToInt64():X}, window=0x{window.ToInt64():X}");
+            glxContext = glXCreateContext(display, visualPtr, IntPtr.Zero, 1);
+            if (glxContext == IntPtr.Zero)
+            {
+                Console.WriteLine("[Init] glXCreateContext failed, trying legacy visual fallback...");
+                // Try legacy visual fallback
+                var legacyVisual = GetValidVisualInfo(display, screen);
+                if (legacyVisual.HasValue)
+                {
+                    glxContext = glXCreateContext(display, legacyVisual.Value.VisualPtr, IntPtr.Zero, 1);
+                    if (glxContext != IntPtr.Zero)
+                        Console.WriteLine("[Init] Legacy visual context created");
+                }
+            }
+            if (glxContext == IntPtr.Zero)
+                throw new Exception("[Init] No se pudo crear el contexto GLX");
+            Console.WriteLine($"[Init] GLX context creado: 0x{glxContext.ToInt64():X}");
+            glXMakeCurrent(display, window, glxContext);
+            Console.WriteLine("[Init] GLX context activado");
+            // Print OpenGL version
+            try {
+                var glVersion = Alis.Core.Graphic.OpenGL.Gl.GlGetString(Alis.Core.Graphic.OpenGL.Enums.StringName.Version);
+                Console.WriteLine($"[Init] OpenGL version: {glVersion}");
+            } catch (Exception ex) {
+                Console.WriteLine($"[Init] Error obteniendo la versión de OpenGL: {ex.Message}");
+            }
             windowVisible = true;
             running = true;
         }
