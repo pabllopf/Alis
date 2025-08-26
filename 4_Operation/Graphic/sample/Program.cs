@@ -46,7 +46,13 @@ namespace Alis.Core.Graphic.Sample
                 _ => new SimpleRedExample()
             };
             
-            platform.Initialize(800, 600, "C# + OpenGL Platform");
+            bool ok = platform.Initialize(800, 600, "C# + OpenGL Platform");
+            if (!ok)
+            {
+                Console.WriteLine("No se pudo inicializar la ventana ni el contexto OpenGL. El programa se cerrará.");
+                platform.Cleanup();
+                return;
+            }
             platform.MakeContextCurrent();
             Gl.Initialize(platform.GetProcAddress);
             Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
