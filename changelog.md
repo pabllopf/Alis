@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.7.0] - 2025-08-26
+### :bug: Bug Fixes
+- [`59543f0`](https://github.com/pabllopf/Alis/commit/59543f0c76e174f61821c49e4874ad1363450fe9) - check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.6.9] - 2025-08-25
 ### :sparkles: New Features
 - [`189ce72`](https://github.com/pabllopf/Alis/commit/189ce72937a57dd6461a2ad93aa88572df38ded1) - create custom hascode to generator *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4751,3 +4756,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.6.7]: https://github.com/pabllopf/Alis/compare/v0.6.6...v0.6.7
 [v0.6.8]: https://github.com/pabllopf/Alis/compare/v0.6.7...v0.6.8
 [v0.6.9]: https://github.com/pabllopf/Alis/compare/v0.6.8...v0.6.9
+[v0.7.0]: https://github.com/pabllopf/Alis/compare/v0.6.9...v0.7.0
