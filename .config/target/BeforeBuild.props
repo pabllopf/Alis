@@ -1,4 +1,23 @@
 <Project>
+
+    <Target Name="BuildGenerators" BeforeTargets="Build">
+        <ItemGroup>
+            <GeneratorProjects Include="
+      $(SolutionDir)2_Application/**/generator/**/*Generator*.csproj;
+      $(SolutionDir)3_Structuration/**/generator/**/*Generator*.csproj;
+      $(SolutionDir)4_Operation/**/generator/**/*Generator*.csproj;
+      $(SolutionDir)5_Declaration/**/generator/**/*Generator*.csproj;
+      $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;" />
+        </ItemGroup>
+        <MSBuild Projects="@(GeneratorProjects)"
+                 Targets="Build"
+                 Properties="Configuration=Release;TargetFramework=netstandard2.0"
+                 Condition="Exists('%(GeneratorProjects.Identity)') AND 
+                 '$(Configuration)' == 'Release' AND 
+                 $(AssemblyName.Contains('Generator')) == false" />
+    </Target>
+    
+    
     <ItemGroup>
         <GeneratorProjects Include="$(SolutionDir)4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj">
             <OutputAssembly>$(SolutionDir)4_Operation/Ecs/generator/bin/Release/netstandard2.0/Alis.Core.Ecs.Generator.dll</OutputAssembly>
