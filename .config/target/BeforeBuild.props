@@ -17,6 +17,12 @@
         $(SolutionDir)5_Declaration/**/generator/**/*Generator*.csproj;
         $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;" />
         </ItemGroup>
+
+        <Exec Command='dotnet restore "%(GeneratorProjects.Identity)"'
+              Condition="Exists('%(GeneratorProjects.Identity)')" />
+        
+        <Exec Command='dotnet build "%(GeneratorProjects.Identity)" -c $(Configuration) -f netstandard2.0'
+              Condition="Exists('%(GeneratorProjects.Identity)')" />
   
         <ItemGroup>
             <GeneratorOutputs Include="@(GeneratorProjects->'%(RootDir)%(Directory)bin/$(Configuration)/lib/netstandard2.0/%(Filename).dll')" />
