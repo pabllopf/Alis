@@ -14,7 +14,7 @@
                           $(SolutionDir)**/Extension/**/src/**/*.csproj;"
                           Exclude="
                           $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
-                          $(SolutionDir)**/**/*Generator*.csproj; 
+                          $(SolutionDir)**/**/*Generator.csproj; 
                           $(SolutionDir)**/**/*.Benchmark.csproj; 
                           $(SolutionDir)**/**/*Benchmark*.csproj; 
                           $(SolutionDir)**/Extension/**/**/*.Test.csproj;"/>
@@ -24,7 +24,7 @@
                           $(SolutionDir)2_Application/**/Alis.csproj;"
                           Exclude="
                           $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
-                          $(SolutionDir)**/**/*Generator*.csproj; 
+                          $(SolutionDir)**/**/*Generator.csproj; 
                           $(SolutionDir)**/**/*.Benchmark.csproj; 
                           $(SolutionDir)**/**/*Benchmark*.csproj; 
                           $(SolutionDir)**/Extension/**/**/*.Test.csproj;"/>
@@ -33,7 +33,7 @@
                           Include="$(SolutionDir)2_Application/**/src/**/Alis.csproj;"
                           Exclude="
                           $(SolutionDir)**/Extension/**/**/*.Sample.csproj; 
-                          $(SolutionDir)**/**/*Generator*.csproj; 
+                          $(SolutionDir)**/**/*Generator.csproj; 
                           $(SolutionDir)**/**/*.Benchmark.csproj; 
                           $(SolutionDir)**/**/*Benchmark*.csproj; 
                           $(SolutionDir)**/Extension/**/**/*.Test.csproj;"/>
@@ -42,7 +42,7 @@
                           Include="$(SolutionDir)3_Structuration/**/*.csproj"
                           Exclude="
                           $(SolutionDir)3_Structuration/**/*.Sample.csproj; 
-                          $(SolutionDir)**/**/*Generator*.csproj; 
+                          $(SolutionDir)**/**/*Generator.csproj; 
                           $(SolutionDir)3_Structuration/**/*.Test.csproj;
                           $(SolutionDir)**/**/*.Benchmark.csproj; 
                           $(SolutionDir)**/**/*Benchmark*.csproj; 
@@ -52,7 +52,7 @@
                           Include="$(SolutionDir)4_Operation/**/*.csproj"
                           Exclude="
                           $(SolutionDir)4_Operation/**/*.Sample.csproj; 
-                          $(SolutionDir)**/**/*Generator*.csproj; 
+                          $(SolutionDir)**/**/*Generator.csproj; 
                           $(SolutionDir)4_Operation/**/*.Test.csproj;
                           $(SolutionDir)**/**/*.Benchmark.csproj; 
                           $(SolutionDir)**/**/*Benchmark*.csproj; 
@@ -62,7 +62,7 @@
                           Include="$(SolutionDir)5_Declaration/**/*.csproj"
                           Exclude="
                           $(SolutionDir)5_Declaration/**/*.Sample.csproj; 
-                          $(SolutionDir)**/**/*Generator*.csproj; 
+                          $(SolutionDir)**/**/*Generator.csproj; 
                           $(SolutionDir)5_Declaration/**/*.Test.csproj;
                           $(SolutionDir)**/Extension/**/**/*.Benchmark.csproj; 
                           $(SolutionDir)**/Extension/**/**/*Benchmark*.csproj; 
@@ -72,7 +72,7 @@
                           Include="$(SolutionDir)6_Ideation/**/*.csproj"
                           Exclude="
                           $(SolutionDir)6_Ideation/**/*.Sample.csproj; 
-                          $(SolutionDir)**/**/*Generator*.csproj; 
+                          $(SolutionDir)**/**/*Generator.csproj; 
                           $(SolutionDir)6_Ideation/**/*.Test.csproj;
                           $(SolutionDir)**/**/*.Benchmark.csproj; 
                           $(SolutionDir)**/**/*Benchmark*.csproj; 
@@ -285,7 +285,7 @@
 
         <Analyzer
             Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
-            Include="$(ProjectDir)/../generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll"
+            Include="$(ProjectDir)/../generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll"
         />
         
     </ItemGroup>
@@ -312,7 +312,7 @@
 
         <Analyzer
             Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
-            Include="$(ProjectDir)/../generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll"
+            Include="$(ProjectDir)/../generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll"
         />
         
     </ItemGroup>
@@ -448,45 +448,45 @@
        
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
                   Include="
-          $(SolutionDir)2_Application/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)3_Structuration/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)4_Operation/**/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator*.csproj;"
+          $(SolutionDir)2_Application/**/generator/**/*Generator.csproj;
+          $(SolutionDir)3_Structuration/**/generator/**/*Generator.csproj;
+          $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
+          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false"/>
 
   
         <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
                   Include="
-          $(SolutionDir)3_Structuration/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)4_Operation/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)5_Declaration/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;"
+          $(SolutionDir)3_Structuration/**/generator/**/*Generator.csproj;
+          $(SolutionDir)4_Operation/**/generator/**/*Generator.csproj;
+          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false"/>
 
        
         <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
                   Include="
-          $(SolutionDir)4_Operation/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)5_Declaration/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;"
+          $(SolutionDir)4_Operation/**/generator/**/*Generator.csproj;
+          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false"/>
 
         
         <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
                   Include="   
-          $(SolutionDir)5_Declaration/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;"
+          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false"/>
         
      
         <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
                   Include="
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;"
+          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false"/>
         
@@ -497,41 +497,41 @@
         
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
                           Include="
-          $(SolutionDir)2_Application/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)3_Structuration/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)4_Operation/**/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator*.csproj;"
+          $(SolutionDir)2_Application/**/generator/**/*Generator.csproj;
+          $(SolutionDir)3_Structuration/**/generator/**/*Generator.csproj;
+          $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
+          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
                           ReferenceOutputAssembly="false"/>
 
 
         <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
                           Include="
-          $(SolutionDir)3_Structuration/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)4_Operation/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)5_Declaration/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;"
+          $(SolutionDir)3_Structuration/**/generator/**/*Generator.csproj;
+          $(SolutionDir)4_Operation/**/generator/**/*Generator.csproj;
+          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
                           ReferenceOutputAssembly="false"/>
 
 
         <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
                           Include="
-          $(SolutionDir)4_Operation/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)5_Declaration/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;"
+          $(SolutionDir)4_Operation/**/generator/**/*Generator.csproj;
+          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
                           ReferenceOutputAssembly="false"/>
 
 
         <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
                           Include="   
-          $(SolutionDir)5_Declaration/**/generator/**/*Generator*.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;"
+          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
                           ReferenceOutputAssembly="false"/>
 
 
         <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
                           Include="
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;"
+          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
                           ReferenceOutputAssembly="false"/>
 
     </ItemGroup>
@@ -546,39 +546,39 @@
      
       <Analyzer Condition="$(ProjectDir.Contains('1_Presentation'))"
         Include="
-          $(SolutionDir)2_Application/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)4_Operation/**/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)5_Declaration/**/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)6_Ideation/**/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
+          $(SolutionDir)2_Application/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
+          $(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
+          $(SolutionDir)4_Operation/**/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
+          $(SolutionDir)5_Declaration/**/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
+          $(SolutionDir)6_Ideation/**/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;"
       />
       
       <Analyzer Condition="$(ProjectDir.Contains('2_Application'))"
         Include="
-          $(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
+          $(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
+          $(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
+          $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
+          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;"
        />
       
       <Analyzer Condition="$(ProjectDir.Contains('3_Structuration'))"
         Include="
-          $(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
+          $(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
+          $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
+          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;"
         />
     
       
       <Analyzer Condition="$(ProjectDir.Contains('4_Operation'))"
         Include="   
-          $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
+          $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
+          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;"
         />
     
    
       <Analyzer Condition="$(ProjectDir.Contains('5_Declaration'))"
         Include="
-          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
+          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;"
         />
         
     </ItemGroup>
