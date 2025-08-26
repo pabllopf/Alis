@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.7.3] - 2025-08-29
+### :sparkles: New Features
+- [`e826c05`](https://github.com/pabllopf/Alis/commit/e826c055f83c2b52495d7ccd53927104295ebdec) - check all Source Link:Valid *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`f141d78`](https://github.com/pabllopf/Alis/commit/f141d7842fa5498987a5f7fac0379c120f747969) - generators on nuget *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e51bad5`](https://github.com/pabllopf/Alis/commit/e51bad5d105c235a43a17710e87fef1e8d1eb278) - all samples on sln to compile on mode release and mode debug *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.7.2] - 2025-08-27
 ### :bug: Bug Fixes
 - [`63a6f0c`](https://github.com/pabllopf/Alis/commit/63a6f0c25ec1667b81de497471e1b2f108437163) - spaces and tabs *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4773,3 +4782,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.7.0]: https://github.com/pabllopf/Alis/compare/v0.6.9...v0.7.0
 [v0.7.1]: https://github.com/pabllopf/Alis/compare/v0.7.0...v0.7.1
 [v0.7.2]: https://github.com/pabllopf/Alis/compare/v0.7.1...v0.7.2
+[v0.7.3]: https://github.com/pabllopf/Alis/compare/v0.7.2...v0.7.3
