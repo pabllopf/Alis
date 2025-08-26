@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.7.4] - 2025-08-29
+### :sparkles: New Features
+- [`ea6b07a`](https://github.com/pabllopf/Alis/commit/ea6b07a042a590061bb0b873be324f1a609e9907) - create nuget packages for nugets *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`d93027c`](https://github.com/pabllopf/Alis/commit/d93027cf78c97f717242a08e96b6a185c68fd166) - Remove obsolete analyzer DLLs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`de12486`](https://github.com/pabllopf/Alis/commit/de124867b088f85581b1d269233033775b02b01f) - msbuild compilation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0285053`](https://github.com/pabllopf/Alis/commit/0285053ad8a275f0429cbc3c09c535385590db28) - copy after compilation *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.7.3] - 2025-08-29
 ### :sparkles: New Features
 - [`e826c05`](https://github.com/pabllopf/Alis/commit/e826c055f83c2b52495d7ccd53927104295ebdec) - check all Source Link:Valid *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4783,3 +4793,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.7.1]: https://github.com/pabllopf/Alis/compare/v0.7.0...v0.7.1
 [v0.7.2]: https://github.com/pabllopf/Alis/compare/v0.7.1...v0.7.2
 [v0.7.3]: https://github.com/pabllopf/Alis/compare/v0.7.2...v0.7.3
+[v0.7.4]: https://github.com/pabllopf/Alis/compare/v0.7.3...v0.7.4
