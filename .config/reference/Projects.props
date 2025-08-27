@@ -329,8 +329,8 @@
             Include="$(ProjectDir)../../src/$(NameTest).csproj"/>
 
         <ProjectReference
-            Condition="Exists('$(ProjectDir)../src/$(NameTest).Generator.csproj')"
-            Include="$(ProjectDir)../../src/$(NameTest).Generator.csproj"
+            Condition="Exists('$(ProjectDir)../generator/$(NameTest).Generator.csproj')"
+            Include="$(ProjectDir)../../generator/$(NameTest).Generator.csproj"
             OutputItemType="Analyzer"
             ReferenceOutputAssembly="false"/>
     </ItemGroup>
@@ -349,8 +349,8 @@
             Include="$(ProjectDir)../../src/$(NameTest).csproj"/>
 
         <ProjectReference
-        Condition="Exists('$(ProjectDir)../src/$(NameTest).Generator.csproj')"
-        Include="$(ProjectDir)../../src/$(NameTest).Generator.csproj"
+        Condition="Exists('$(ProjectDir)../generator/$(NameTest).Generator.csproj')"
+        Include="$(ProjectDir)../../generator/$(NameTest).Generator.csproj"
         OutputItemType="Analyzer"
         ReferenceOutputAssembly="false"/>
     </ItemGroup>
