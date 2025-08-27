@@ -330,7 +330,7 @@
 
         <ProjectReference
             Condition="Exists('$(ProjectDir)../generator/$(NameTest).Generator.csproj')"
-            Include="$(ProjectDir)../../generator/$(NameTest).Generator.csproj"
+            Include="$(ProjectDir)../generator/$(NameTest).Generator.csproj"
             OutputItemType="Analyzer"
             ReferenceOutputAssembly="false"/>
     </ItemGroup>
@@ -350,7 +350,7 @@
 
         <ProjectReference
         Condition="Exists('$(ProjectDir)../generator/$(NameTest).Generator.csproj')"
-        Include="$(ProjectDir)../../generator/$(NameTest).Generator.csproj"
+        Include="$(ProjectDir)../generator/$(NameTest).Generator.csproj"
         OutputItemType="Analyzer"
         ReferenceOutputAssembly="false"/>
     </ItemGroup>
