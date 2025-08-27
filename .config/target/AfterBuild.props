@@ -14,42 +14,66 @@
         <Copy SourceFiles="@(InstallerOutputFiles)" DestinationFiles="@(InstallerOutputFiles->'$(DestinationDir)%(RecursiveDir)%(Filename)%(Extension)')"/>
     </Target>
 
-    <Target Name="CreateMacOsBundle" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub')) And '$(IsOSX)' == 'true' AND $(Configuration) == 'Release'">
+    <Target Name="CreateMacOsBundle"
+            AfterTargets="Build;Publish"
+            Condition="$(AssemblyName.Equals('Alis.App.Hub')) 
+                   And '$(IsOSX)' == 'true' 
+                   And $(Configuration) == 'Release'">
+
         <PropertyGroup>
             <AppBundleDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/Alis.app/</AppBundleDir>
             <ContentsDir>$(AppBundleDir)Contents/</ContentsDir>
             <MacOSDir>$(ContentsDir)MacOS/</MacOSDir>
             <ResourcesDir>$(ContentsDir)Resources/</ResourcesDir>
             <HubOutputDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/</HubOutputDir>
-            <DmgFileName>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/Alis_$(RuntimeIdentifier).dmg</DmgFileName>
+            <DmgFileName>$(HubOutputDir)publish/Alis_$(RuntimeIdentifier).dmg</DmgFileName>
         </PropertyGroup>
+
+        <!-- Limpiar bundle anterior -->
+        <RemoveDir Directories="$(AppBundleDir)" />
+
+        <!-- Crear estructura de carpetas -->
+        <MakeDir Directories="$(MacOSDir)" />
+        <MakeDir Directories="$(ResourcesDir)" />
+
+        <!-- Archivos del Hub (excepto el .app) -->
         <ItemGroup>
-            <HubOutputFiles Include="$(HubOutputDir)**/*" Exclude="$(AppBundleDir)**/*"/>
+            <HubOutputFiles Include="$(HubOutputDir)**/*" Exclude="$(AppBundleDir)**/*" />
         </ItemGroup>
-        <RemoveDir Directories="$(AppBundleDir)"/>
-        <MakeDir Directories="$(MacOSDir)"/>
-        <MakeDir Directories="$(ResourcesDir)"/>
-        <CreateItem Include="@(EngineOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
-            <Output TaskParameter="Include" ItemName="EngineOutputFilesWithMyRecursiveDir"/>
-        </CreateItem>
-        <CreateItem Include="@(InstallerOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
-            <Output TaskParameter="Include" ItemName="InstallerOutputFilesWithMyRecursiveDir"/>
-        </CreateItem>
-        <CreateItem Include="@(HubOutputFiles)" AdditionalMetadata="MyRecursiveDir=%(RecursiveDir)">
-            <Output TaskParameter="Include" ItemName="HubOutputFilesWithMyRecursiveDir"/>
-        </CreateItem>
-        <Copy SourceFiles="$(SolutionDir)1_Presentation/Hub/src/Properties/Info.plist" DestinationFolder="$(ContentsDir)"/>
-        <Copy SourceFiles="$(SolutionDir)1_Presentation/Hub/src/Properties/logo.png" DestinationFolder="$(ResourcesDir)"/>
-        <Copy SourceFiles="@(HubOutputFilesWithMyRecursiveDir)" DestinationFiles="@(HubOutputFilesWithMyRecursiveDir->'$(MacOSDir)%(MyRecursiveDir)%(Filename)%(Extension)')"/>
+
+        <Copy SourceFiles="$(SolutionDir)1_Presentation/Hub/src/Properties/Info.plist"
+              DestinationFolder="$(ContentsDir)" />
+        <Copy SourceFiles="$(SolutionDir)1_Presentation/Hub/src/Properties/logo.png"
+              DestinationFolder="$(ResourcesDir)" />
+
+        <Copy SourceFiles="@(HubOutputFiles)"
+              DestinationFiles="@(HubOutputFiles->'$(MacOSDir)%(RecursiveDir)%(Filename)%(Extension)')" />
+
+        <!-- Copiar Editor si existe -->
         <ItemGroup>
-            <EditorFiles Include="$(HubOutputDir)Editor/**/*"/>
+            <EditorFiles Include="$(HubOutputDir)Editor/**/*" />
         </ItemGroup>
-        <Copy SourceFiles="@(EditorFiles)" DestinationFiles="@(EditorFiles->'$(MacOSDir)Editor/%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('$(HubOutputDir)Editor')"/>
-        <Delete Files="$(DmgFileName)"/>
-        <Exec Command="hdiutil create -volname Alis -srcfolder $(AppBundleDir) -ov -format UDZO $(DmgFileName)"/>
+        <Copy SourceFiles="@(EditorFiles)"
+              DestinationFiles="@(EditorFiles->'$(MacOSDir)Editor/%(RecursiveDir)%(Filename)%(Extension)')"
+              Condition="Exists('$(HubOutputDir)Editor')" />
+
+        <!-- Borrar dmg previo -->
+        <Delete Files="$(DmgFileName)" />
+
+        <!-- Desmontar volumen previo si quedó montado -->
+        <Exec Command="hdiutil detach /Volumes/Alis || true" IgnoreExitCode="true" />
+
+        <!-- Crear dmg con reintento por si Spotlight bloquea -->
+        <Exec Command="bash -c '
+      for i in {1..3}; do
+        hdiutil create -volname Alis -srcfolder &quot;$(AppBundleDir)&quot; -ov -format UDZO &quot;$(DmgFileName)&quot; &amp;&amp; exit 0
+        echo &quot;Retrying dmg creation in 5s...&quot;
+        sleep 5
+      done
+      exit 1
+    '" />
     </Target>
 
-    
     <Target Name="CreateLinuxBundle" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub')) And '$(IsLinux)' == 'true' AND $(Configuration) == 'Release'">
         <PropertyGroup>
             <PublishDir>$(SolutionDir)1_Presentation/Hub/src/bin/$(Configuration)/$(RuntimeIdentifier)/lib/publish/</PublishDir>
