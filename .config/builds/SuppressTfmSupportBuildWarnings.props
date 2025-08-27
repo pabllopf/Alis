@@ -2,4 +2,8 @@
     <PropertyGroup>
         <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
     </PropertyGroup>
+
+    <PropertyGroup>
+        <SuppressLongPathWarning>true</SuppressLongPathWarning>
+    </PropertyGroup>
 </Project>
