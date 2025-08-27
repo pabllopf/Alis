@@ -263,7 +263,58 @@
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
     </ItemGroup>
 
+
+    <ItemGroup
+        Condition="
+            $(AssemblyName.Contains('Generator')) == false
+        "
+    >
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
+                          Include="
+          $(SolutionDir)2_Application/**/generator/**/*Generator.csproj;
+          $(SolutionDir)3_Structuration/**/generator/**/*Generator.csproj;
+          $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
+          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"/>
+
+
+        <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
+                          Include="
+          $(SolutionDir)3_Structuration/**/generator/**/*Generator.csproj;
+          $(SolutionDir)4_Operation/**/generator/**/*Generator.csproj;
+          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"/>
+
+
+        <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
+                          Include="
+          $(SolutionDir)4_Operation/**/generator/**/*Generator.csproj;
+          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"/>
+
+
+        <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
+                          Include="   
+          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"/>
+
+
+        <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
+                          Include="
+          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"/>
+    </ItemGroup>
     
+
     <PropertyGroup Condition="$(AssemblyName.Contains('Test'))">
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Test[^*]*', ''))</NameTest>
     </PropertyGroup>
@@ -277,19 +328,18 @@
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)../../src/$(NameTest).csproj"/>
 
-        <Analyzer
-            Include="$(ProjectDir)../generator/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll"
-        />
-        
+        <ProjectReference
+            Condition="Exists('$(ProjectDir)../src/$(NameTest).Generator.csproj') == False"
+            Include="$(ProjectDir)../../src/$(NameTest).Generator.csproj"
+            OutputItemType="Analyzer"
+            ReferenceOutputAssembly="false"/>
     </ItemGroup>
 
     <PropertyGroup Condition="$(AssemblyName.Contains('Sample'))">
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Sample[^*]*', ''))</NameTest>
     </PropertyGroup>
 
-    <ItemGroup Condition="
-    $(AssemblyName.Contains('Sample')) AND 
-    $(AssemblyName.Contains('Test')) == False">
+    <ItemGroup Condition="$(AssemblyName.Contains('Sample'))">
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == True"
             Include="$(ProjectDir)../src/$(NameTest).csproj"/>
@@ -297,284 +347,14 @@
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)../../src/$(NameTest).csproj"/>
-        
-        <!--
-        <ProjectReference 
-            Condition="Exists('$(ProjectDir)/../generator/$(NameTest).Generator.csproj') == True"
-            Include="$(ProjectDir)/../generator/$(NameTest).Generator.csproj"
-            ReferenceOutputAssembly="false"/>-->
 
-        <Analyzer
-            Include="$(ProjectDir)../generator/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll"
-        />
-        
+        <ProjectReference
+        Condition="Exists('$(ProjectDir)../src/$(NameTest).Generator.csproj') == False"
+        Include="$(ProjectDir)../../src/$(NameTest).Generator.csproj"
+        OutputItemType="Analyzer"
+        ReferenceOutputAssembly="false"/>
     </ItemGroup>
-
-
-    <!--
-    <ItemGroup Condition="
-        $(AssemblyName.Contains('Generator')) == False AND
-        $(AssemblyName.Contains('Sample')) == False AND
-        $(AssemblyName.Contains('Test')) == False AND
-        $(AssemblyName.Contains('App')) == False AND
-        $(AssemblyName.Contains('Template')) == False
-    ">
-        
-     
-      <Analyzer Condition="$(ProjectDir.Contains('1_Presentation'))"
-        Include="
-          $(SolutionDir)2_Application/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)4_Operation/**/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)5_Declaration/**/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)6_Ideation/**/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
-      />
-        
-        <None Condition="$(ProjectDir.Contains('1_Presentation'))" 
-                Include="$(SolutionDir)2_Application/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)4_Operation/**/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)5_Declaration/**/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)6_Ideation/**/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
-            Pack="true"
-            Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
-            CopyToOutputDirectory="PreserveNewest"
-            CopyToPublishDirectory="PreserveNewest"
-            PackagePath="analyzers/dotnet/cs"
-            Visible="false"/>
-    
-      
-      <Analyzer Condition="$(ProjectDir.Contains('2_Application'))"
-        Include="
-          $(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
-       />
-        
-        <None Condition="$(ProjectDir.Contains('2_Application'))" 
-                Include="$(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
-            Pack="true"
-            Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
-            CopyToOutputDirectory="PreserveNewest"
-            CopyToPublishDirectory="PreserveNewest"
-            PackagePath="analyzers/dotnet/cs"
-            Visible="false"/>
-    
-      
-      <Analyzer Condition="$(ProjectDir.Contains('3_Structuration'))"
-        Include="
-          $(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
-        />
-        
-        <None Condition="$(ProjectDir.Contains('3_Structuration'))" 
-                Include="$(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-                         $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
-            Pack="true"
-            Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
-            CopyToOutputDirectory="PreserveNewest"
-            CopyToPublishDirectory="PreserveNewest"
-            PackagePath="analyzers/dotnet/cs"
-            Visible="false"/>
-    
-      
-      <Analyzer Condition="$(ProjectDir.Contains('4_Operation'))"
-        Include="   
-          $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
-        />
-        
-        <None Condition="$(ProjectDir.Contains('4_Operation'))" 
-              Include="$(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;
-                       $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
-          Pack="true"
-          Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
-          CopyToOutputDirectory="PreserveNewest"
-          CopyToPublishDirectory="PreserveNewest"
-          PackagePath="analyzers/dotnet/cs"
-          Visible="false"/>
-        
-    
    
-      <Analyzer Condition="$(ProjectDir.Contains('5_Declaration'))"
-        Include="
-          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
-        />
-
-       <None Condition="$(ProjectDir.Contains('5_Declaration'))" 
-           Include="$(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/$(RuntimeIdentifier)/lib/netstandard2.0/*Generator*.dll;"
-           Pack="true"
-           Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
-           CopyToOutputDirectory="PreserveNewest"
-           CopyToPublishDirectory="PreserveNewest"
-           PackagePath="analyzers/dotnet/cs"
-           Visible="false"/>
-        
-    </ItemGroup>-->
-
-
-    
-
-<!--
-    <ItemGroup Condition="
-        $(AssemblyName.Contains('Generator')) == False AND
-        $(AssemblyName.Equals('Alis')) == False AND
-        $(AssemblyName.Equals('Alis.Core')) == False AND
-        $(AssemblyName.Equals('Alis.Core.Ecs')) == False AND
-        $(AssemblyName.Equals('Alis.Core.Audio')) == False AND
-        $(AssemblyName.Equals('Alis.Core.Graphics')) == False AND
-        $(AssemblyName.Equals('Alis.Core.Physic')) == False AND
-        (
-        $(AssemblyName.Contains('Sample')) == True OR
-        $(AssemblyName.Contains('App')) == True OR
-        $(AssemblyName.Contains('Test')) == True OR
-        $(AssemblyName.Contains('Template')) == True
-        )
-    ">
-
-       
-        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
-                  Include="
-          $(SolutionDir)2_Application/**/generator/**/*Generator.csproj;
-          $(SolutionDir)3_Structuration/**/generator/**/*Generator.csproj;
-          $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
-          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
-                          OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"/>
-
-  
-        <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
-                  Include="
-          $(SolutionDir)3_Structuration/**/generator/**/*Generator.csproj;
-          $(SolutionDir)4_Operation/**/generator/**/*Generator.csproj;
-          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
-                          OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"/>
-
-       
-        <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
-                  Include="
-          $(SolutionDir)4_Operation/**/generator/**/*Generator.csproj;
-          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
-                          OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"/>
-
-        
-        <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
-                  Include="   
-          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
-                          OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"/>
-        
-     
-        <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
-                  Include="
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
-                          OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"/>
-        
-    </ItemGroup>-->
-
-
-    <ItemGroup Condition="$(AssemblyName.Contains('Generator')) == False">
-        
-        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
-                          Include="
-          $(SolutionDir)2_Application/**/generator/**/*Generator.csproj;
-          $(SolutionDir)3_Structuration/**/generator/**/*Generator.csproj;
-          $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
-          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
-                          ReferenceOutputAssembly="false"/>
-
-
-        <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
-                          Include="
-          $(SolutionDir)3_Structuration/**/generator/**/*Generator.csproj;
-          $(SolutionDir)4_Operation/**/generator/**/*Generator.csproj;
-          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
-                          ReferenceOutputAssembly="false"/>
-
-
-        <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
-                          Include="
-          $(SolutionDir)4_Operation/**/generator/**/*Generator.csproj;
-          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
-                          ReferenceOutputAssembly="false"/>
-
-
-        <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
-                          Include="   
-          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
-                          ReferenceOutputAssembly="false"/>
-
-
-        <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
-                          Include="
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
-                          ReferenceOutputAssembly="false"/>
-
-    </ItemGroup>
-
-
-
-    
-    <ItemGroup Condition="
-        $(AssemblyName.Contains('Generator')) == False
-    ">
-        
-     
-      <Analyzer Condition="$(ProjectDir.Contains('1_Presentation'))"
-        Include="
-          $(SolutionDir)2_Application/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
-          $(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
-          $(SolutionDir)4_Operation/**/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
-          $(SolutionDir)5_Declaration/**/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
-          $(SolutionDir)6_Ideation/**/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;"
-      />
-      
-      <Analyzer Condition="$(ProjectDir.Contains('2_Application'))"
-        Include="
-          $(SolutionDir)3_Structuration/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
-          $(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
-          $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
-          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;"
-       />
-      
-      <Analyzer Condition="$(ProjectDir.Contains('3_Structuration'))"
-        Include="
-          $(SolutionDir)4_Operation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
-          $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
-          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;"
-        />
-    
-      
-      <Analyzer Condition="$(ProjectDir.Contains('4_Operation'))"
-        Include="   
-          $(SolutionDir)5_Declaration/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;
-          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;"
-        />
-    
-   
-      <Analyzer Condition="$(ProjectDir.Contains('5_Declaration'))"
-        Include="
-          $(SolutionDir)6_Ideation/**/generator/**/bin/$(Configuration)/lib/netstandard2.0/*Generator.dll;"
-        />
-        
-    </ItemGroup>
 
 
 
