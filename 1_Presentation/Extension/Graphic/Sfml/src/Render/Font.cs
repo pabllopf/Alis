@@ -170,19 +170,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
 
             sfFont_destroy(CPointer);
 
-            if (disposing)
-            {
-                foreach (Texture texture in myTextures.Values)
-                {
-                    texture.Dispose();
-                }
-
-                if (myStream != null)
-                {
-                    myStream.Dispose();
-                }
-            }
-
             if (!disposing)
             {
                 Context.Global.SetActive(false);

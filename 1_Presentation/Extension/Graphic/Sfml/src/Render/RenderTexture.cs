@@ -512,12 +512,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
 
             sfRenderTexture_destroy(CPointer);
 
-            if (disposing)
-            {
-                myDefaultView.Dispose();
-                myTexture.Dispose();
-            }
-
             if (!disposing)
             {
                 Context.Global.SetActive(false);
