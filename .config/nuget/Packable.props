@@ -17,5 +17,11 @@
     $(AssemblyName.Contains('Benchmark')) == false
     ">
         <IsPackable>true</IsPackable>
+        <IncludeSymbols>false</IncludeSymbols> <!-- evita el .symbols.nupkg -->
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat> <!-- usa nuevo formato -->
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <DebugType>embedded</DebugType> <!-- mete los pdb en el propio dll -->
+        <Deterministic>true</Deterministic>
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     </PropertyGroup>
 </Project>
