@@ -198,6 +198,9 @@ jobs:
         with:
           dotnet-version: 9.0.301
 
+      - name: build alis
+        run: dotnet build alis.sln -c Release
+
       - name: Publish INTALLER - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r win-x64 -f ${{ matrix.framework }}
 
