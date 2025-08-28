@@ -1,5 +1,5 @@
 <Project>
-    
+
     <Target Name="RestoreGenerators" BeforeTargets="Build;Publish"
             Condition="
       $(AssemblyName.Contains('Generator')) == false AND
@@ -18,10 +18,9 @@
         $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;" />
         </ItemGroup>
 
-        <!-- Solo restaurar los generators -->
-        <MSBuild Projects="@(GeneratorProjects)"
-                 Targets="Restore"
-                 Condition="Exists('%(GeneratorProjects.Identity)')" />
+        <!-- Restaurar los generators con dotnet restore -->
+        <Exec Command='dotnet restore "%(GeneratorProjects.Identity)" --configfile NuGet.config'
+              Condition="Exists('%(GeneratorProjects.Identity)')" />
     </Target>
 
     <Target Name="BuildGenerators" AfterTargets="RestoreGenerators;Build;Publish"
@@ -42,15 +41,13 @@
         $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;" />
         </ItemGroup>
 
-        <!-- Compilar los generators -->
-        <MSBuild Projects="@(GeneratorProjects)"
-                 Targets="Build"
-                 Properties="Configuration=$(Configuration)"
-                 Condition="Exists('%(GeneratorProjects.Identity)')" />
+        <!-- Compilar los generators con dotnet build -->
+        <Exec Command='dotnet build "%(GeneratorProjects.Identity)" -c $(Configuration)'
+              Condition="Exists('%(GeneratorProjects.Identity)')" />
 
         <!-- Definir las DLL generadas -->
         <ItemGroup>
-            <GeneratorOutputs Include="@(GeneratorProjects->'%(RootDir)%(Directory)bin/$(Configuration)/netstandard2.0/%(Filename).dll')" />
+            <GeneratorOutputs Include="@(GeneratorProjects->'%(RootDir)%(Directory)bin/$(Configuration)/**/%(Filename).dll')" />
         </ItemGroup>
 
         <!-- Copiar a la salida del proyecto actual -->
