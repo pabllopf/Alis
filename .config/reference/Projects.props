@@ -266,7 +266,14 @@
 
     <ItemGroup
         Condition="
-            $(AssemblyName.Contains('Generator')) == false
+            $(AssemblyName.Contains('Generator')) == false AND
+            (
+                $(AssemblyName.Contains('Test')) == true OR
+                $(AssemblyName.Contains('Benchmark')) == true OR 
+                $(AssemblyName.Contains('App')) == true OR
+                $(AssemblyName.Contains('Template')) == true OR
+                $(AssemblyName.Contains('Sample')) == true
+            )
         "
     >
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
@@ -348,6 +355,7 @@
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)../../src/$(NameTest).csproj"/>
 
+        
         <ProjectReference
         Condition="Exists('$(ProjectDir)../generator/$(NameTest).Generator.csproj')"
         Include="$(ProjectDir)../generator/$(NameTest).Generator.csproj"
