@@ -1,5 +1,6 @@
 <Project>
 
+    
     <Target Name="RestoreGenerators" BeforeTargets="Restore;Build;Publish"
             Condition="
       $(AssemblyName.Contains('Generator')) == false AND
