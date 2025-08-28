@@ -47,7 +47,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
             Dungeon dungeon = new Dungeon();
             dungeon.Start();
 
-            string json = JsonNativeAot.Serialize(dungeon);
+            string json = dungeon.ToJson();
             Logger.Log("Dungeon generated successfully");
 
             Dungeon dungeonLoaded = JsonNativeAot.Deserialize<Dungeon>(json);
