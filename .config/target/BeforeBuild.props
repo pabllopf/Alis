@@ -17,9 +17,9 @@
         $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;" />
         </ItemGroup>
 
-        <!-- Compilar los generators -->
+        <!-- Restaurar y compilar los generators -->
         <MSBuild Projects="@(GeneratorProjects)"
-                 Targets="Build"
+                 Targets="Restore;Build"
                  Properties="Configuration=$(Configuration);TargetFramework=netstandard2.0"
                  Condition="Exists('%(GeneratorProjects.Identity)')" />
 
