@@ -1,6 +1,6 @@
 <Project>
 
-    <Target Name="RestoreGenerators" BeforeTargets="Build;Publish"
+    <Target Name="RestoreGenerators" BeforeTargets="Restore;Build;Publish"
             Condition="
       $(AssemblyName.Contains('Generator')) == false AND
       $(AssemblyName.Contains('Test')) == false AND
@@ -19,11 +19,11 @@
         </ItemGroup>
 
         <!-- Restaurar los generators con dotnet restore -->
-        <Exec Command='dotnet restore "%(GeneratorProjects.Identity)" --configfile NuGet.config'
+        <Exec Command='dotnet restore "%(GeneratorProjects.Identity)"'
               Condition="Exists('%(GeneratorProjects.Identity)')" />
     </Target>
 
-    <Target Name="BuildGenerators" AfterTargets="RestoreGenerators;Build;Publish"
+    <Target Name="BuildGenerators" AfterTargets="RestoreGenerators"
             Condition="
       $(AssemblyName.Contains('Generator')) == false AND
       $(AssemblyName.Contains('Test')) == false AND
@@ -42,7 +42,7 @@
         </ItemGroup>
 
         <!-- Compilar los generators con dotnet build -->
-        <Exec Command='dotnet build "%(GeneratorProjects.Identity)" -c $(Configuration)'
+        <Exec Command='dotnet build "%(GeneratorProjects.Identity)" -c $(Configuration) -f netstandard2.0'
               Condition="Exists('%(GeneratorProjects.Identity)')" />
 
         <!-- Definir las DLL generadas -->
