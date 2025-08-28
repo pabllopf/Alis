@@ -29,11 +29,11 @@
 
 using System;
 using System.Diagnostics;
-using Alis.App.Engine.Desktop.Core;
+using Alis.App.Engine.Core;
 using Alis.Core.Aspect.Logging;
 using MonoMac.AppKit;
 
-namespace Alis.App.Engine.Desktop.Menus
+namespace Alis.App.Engine.Menus
 {
     /// <summary>
     ///     The top menu mac class

@@ -114,13 +114,13 @@ namespace Alis.Core.Physic.Collision
             // This loop terminates when an axis is repeated (no progress is made).
             for (;;)
             {
-                sweepA.GetTransform(out Transform xfA, t1);
-                sweepB.GetTransform(out Transform xfB, t1);
+                sweepA.GetTransform(out ControllerTransform xfA, t1);
+                sweepB.GetTransform(out ControllerTransform xfB, t1);
 
                 // Get the distance between shapes. We can also use the results
                 // to get a separating axis.
-                distanceInput.TransformA = xfA;
-                distanceInput.TransformB = xfB;
+                distanceInput.ControllerTransformA = xfA;
+                distanceInput.ControllerTransformB = xfB;
                 Distance.ComputeDistance(out DistanceOutput distanceOutput, out SimplexCache cache, distanceInput);
 
                 // If the shapes are overlapped, we give up on continuous collision.

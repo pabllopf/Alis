@@ -29,7 +29,7 @@
 
 using Xunit;
 
-namespace Alis.App.Hub.Test
+namespace Alis.App.Engine.Test
 {
     /// <summary>
     ///     The default test class

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.Desktop.Controllers
+namespace Alis.App.Engine.Controllers
 {
     /// <summary>
     /// The controller ui interface

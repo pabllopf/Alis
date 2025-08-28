@@ -33,7 +33,6 @@ using Alis.Core.Aspect.Math.Vector;
 
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
-using Transform = Alis.Core.Physic.Dynamics.Transform;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -57,10 +56,10 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="cache">The cache</param>
         /// <param name="proxyA">The proxy</param>
-        /// <param name="transformA">The transform</param>
+        /// <param name="controllerTransformA">The transform</param>
         /// <param name="proxyB">The proxy</param>
-        /// <param name="transformB">The transform</param>
-        internal void ReadCache(ref SimplexCache cache, ref DistanceProxy proxyA, ref Transform transformA, ref DistanceProxy proxyB, ref Transform transformB)
+        /// <param name="controllerTransformB">The transform</param>
+        internal void ReadCache(ref SimplexCache cache, ref DistanceProxy proxyA, ref ControllerTransform controllerTransformA, ref DistanceProxy proxyB, ref ControllerTransform controllerTransformB)
         {
             // Copy data from cache.
             Count = cache.Count;
@@ -71,8 +70,8 @@ namespace Alis.Core.Physic.Collision
                 v.IndexB = cache.IndexB[i];
                 Vector2F wALocal = proxyA.Vertices[v.IndexA];
                 Vector2F wBLocal = proxyB.Vertices[v.IndexB];
-                v.Wa = Transform.Multiply(ref wALocal, ref transformA);
-                v.Wb = Transform.Multiply(ref wBLocal, ref transformB);
+                v.Wa = ControllerTransform.Multiply(ref wALocal, ref controllerTransformA);
+                v.Wb = ControllerTransform.Multiply(ref wBLocal, ref controllerTransformB);
                 v.W = v.Wb - v.Wa;
                 v.A = 0.0f;
                 V[i] = v;
@@ -99,8 +98,8 @@ namespace Alis.Core.Physic.Collision
                 v.IndexB = 0;
                 Vector2F wALocal = proxyA.Vertices[0];
                 Vector2F wBLocal = proxyB.Vertices[0];
-                v.Wa = Transform.Multiply(ref wALocal, ref transformA);
-                v.Wb = Transform.Multiply(ref wBLocal, ref transformB);
+                v.Wa = ControllerTransform.Multiply(ref wALocal, ref controllerTransformA);
+                v.Wb = ControllerTransform.Multiply(ref wBLocal, ref controllerTransformB);
                 v.W = v.Wb - v.Wa;
                 v.A = 1.0f;
                 V[0] = v;

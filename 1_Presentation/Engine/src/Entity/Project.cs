@@ -29,7 +29,7 @@
 
 
 
-namespace Alis.App.Engine.Desktop.Entity
+namespace Alis.App.Engine.Entity
 {
     /// <summary>
     ///     The project class

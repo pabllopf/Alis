@@ -34,7 +34,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
-using Transform = Alis.Core.Physic.Dynamics.Transform;
 
 
 namespace Alis.Core.Physic.Collision
@@ -54,13 +53,13 @@ namespace Alis.Core.Physic.Collision
         /// <param name="xfA">The transform for the first shape.</param>
         /// <param name="xfB">The transform for the seconds shape.</param>
         /// <returns></returns>
-        public static bool TestOverlap(Shape shapeA, int indexA, Shape shapeB, int indexB, ref Transform xfA, ref Transform xfB)
+        public static bool TestOverlap(Shape shapeA, int indexA, Shape shapeB, int indexB, ref ControllerTransform xfA, ref ControllerTransform xfB)
         {
             DistanceInput input = new DistanceInput();
             input.ProxyA = new DistanceProxy(shapeA, indexA);
             input.ProxyB = new DistanceProxy(shapeB, indexB);
-            input.TransformA = xfA;
-            input.TransformB = xfB;
+            input.ControllerTransformA = xfA;
+            input.ControllerTransformB = xfB;
             input.UseRadii = true;
 
             Distance.ComputeDistance(out DistanceOutput output, out SimplexCache _, input);
@@ -118,12 +117,12 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     Compute the collision manifold between two circles.
         /// </summary>
-        public static void CollideCircles(ref Manifold manifold, CircleShape circleA, ref Transform xfA, CircleShape circleB, ref Transform xfB)
+        public static void CollideCircles(ref Manifold manifold, CircleShape circleA, ref ControllerTransform xfA, CircleShape circleB, ref ControllerTransform xfB)
         {
             manifold.PointCount = 0;
 
-            Vector2F pA = Transform.Multiply(ref circleA.PositionInternal, ref xfA);
-            Vector2F pB = Transform.Multiply(ref circleB.PositionInternal, ref xfB);
+            Vector2F pA = ControllerTransform.Multiply(ref circleA.PositionInternal, ref xfA);
+            Vector2F pB = ControllerTransform.Multiply(ref circleB.PositionInternal, ref xfB);
 
             Vector2F d = pB - pA;
             float distSqr = Vector2F.Dot(d, d);
@@ -154,13 +153,13 @@ namespace Alis.Core.Physic.Collision
         /// <param name="xfA">The transform of A.</param>
         /// <param name="circleB">The circle B.</param>
         /// <param name="xfB">The transform of B.</param>
-        public static void CollidePolygonAndCircle(ref Manifold manifold, PolygonShape polygonA, ref Transform xfA, CircleShape circleB, ref Transform xfB)
+        public static void CollidePolygonAndCircle(ref Manifold manifold, PolygonShape polygonA, ref ControllerTransform xfA, CircleShape circleB, ref ControllerTransform xfB)
         {
             manifold.PointCount = 0;
 
             // Compute circle position in the frame of the polygon.
-            Vector2F c = Transform.Multiply(ref circleB.PositionInternal, ref xfB);
-            Vector2F cLocal = Transform.Divide(ref c, ref xfA);
+            Vector2F c = ControllerTransform.Multiply(ref circleB.PositionInternal, ref xfB);
+            Vector2F cLocal = ControllerTransform.Divide(ref c, ref xfA);
 
             // Find the min separating edge.
             int normalIndex = 0;
@@ -297,21 +296,21 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="manifold">The manifold.</param>
         /// <param name="polyA">The poly A.</param>
-        /// <param name="transformA">The transform A.</param>
+        /// <param name="controllerTransformA">The transform A.</param>
         /// <param name="polyB">The poly B.</param>
-        /// <param name="transformB">The transform B.</param>
-        public static void CollidePolygons(ref Manifold manifold, PolygonShape polyA, ref Transform transformA, PolygonShape polyB, ref Transform transformB)
+        /// <param name="controllerTransformB">The transform B.</param>
+        public static void CollidePolygons(ref Manifold manifold, PolygonShape polyA, ref ControllerTransform controllerTransformA, PolygonShape polyB, ref ControllerTransform controllerTransformB)
         {
             manifold.PointCount = 0;
             float totalRadius = polyA.GetRadius + polyB.GetRadius;
 
-            float separationA = FindMaxSeparation(out int edgeA, polyA, ref transformA, polyB, ref transformB);
+            float separationA = FindMaxSeparation(out int edgeA, polyA, ref controllerTransformA, polyB, ref controllerTransformB);
             if (separationA > totalRadius)
             {
                 return;
             }
 
-            float separationB = FindMaxSeparation(out int edgeB, polyB, ref transformB, polyA, ref transformA);
+            float separationB = FindMaxSeparation(out int edgeB, polyB, ref controllerTransformB, polyA, ref controllerTransformA);
             if (separationB > totalRadius)
             {
                 return;
@@ -319,7 +318,7 @@ namespace Alis.Core.Physic.Collision
 
             PolygonShape poly1; // reference polygon
             PolygonShape poly2; // incident polygon
-            Transform xf1, xf2;
+            ControllerTransform xf1, xf2;
             int edge1; // reference edge
             bool flip;
             const float kRelativeTol = 0.98f;
@@ -329,8 +328,8 @@ namespace Alis.Core.Physic.Collision
             {
                 poly1 = polyB;
                 poly2 = polyA;
-                xf1 = transformB;
-                xf2 = transformA;
+                xf1 = controllerTransformB;
+                xf2 = controllerTransformA;
                 edge1 = edgeB;
                 manifold.Type = ManifoldType.FaceB;
                 flip = true;
@@ -339,8 +338,8 @@ namespace Alis.Core.Physic.Collision
             {
                 poly1 = polyA;
                 poly2 = polyB;
-                xf1 = transformA;
-                xf2 = transformB;
+                xf1 = controllerTransformA;
+                xf2 = controllerTransformB;
                 edge1 = edgeA;
                 manifold.Type = ManifoldType.FaceA;
                 flip = false;
@@ -367,8 +366,8 @@ namespace Alis.Core.Physic.Collision
             float normalx = tangent.Y;
             float normaly = -tangent.X;
 
-            v11 = Transform.Multiply(ref v11, ref xf1);
-            v12 = Transform.Multiply(ref v12, ref xf1);
+            v11 = ControllerTransform.Multiply(ref v11, ref xf1);
+            v12 = ControllerTransform.Multiply(ref v12, ref xf1);
 
             // Face offset.
             float frontOffset = normalx * v11.X + normaly * v11.Y;
@@ -408,7 +407,7 @@ namespace Alis.Core.Physic.Collision
                 if (separation <= totalRadius)
                 {
                     ManifoldPoint cp = manifold.Points[pointCount];
-                    Transform.Divide(clipPoints2[i].V, ref xf2, out cp.LocalPoint);
+                    ControllerTransform.Divide(clipPoints2[i].V, ref xf2, out cp.LocalPoint);
                     cp.Id = clipPoints2[i].Id;
 
                     if (flip)
@@ -436,15 +435,15 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="manifold">The manifold.</param>
         /// <param name="edgeA">The edge A.</param>
-        /// <param name="transformA">The transform A.</param>
+        /// <param name="controllerTransformA">The transform A.</param>
         /// <param name="circleB">The circle B.</param>
-        /// <param name="transformB">The transform B.</param>
-        public static void CollideEdgeAndCircle(ref Manifold manifold, EdgeShape edgeA, ref Transform transformA, CircleShape circleB, ref Transform transformB)
+        /// <param name="controllerTransformB">The transform B.</param>
+        public static void CollideEdgeAndCircle(ref Manifold manifold, EdgeShape edgeA, ref ControllerTransform controllerTransformA, CircleShape circleB, ref ControllerTransform controllerTransformB)
         {
             manifold.PointCount = 0;
 
             // Compute circle in frame of edge
-            Vector2F q = Transform.Divide(Transform.Multiply(ref circleB.PositionInternal, ref transformB), ref transformA);
+            Vector2F q = ControllerTransform.Divide(ControllerTransform.Multiply(ref circleB.PositionInternal, ref controllerTransformB), ref controllerTransformA);
 
             Vector2F a = edgeA.Vertex1, b = edgeA.Vertex2;
             Vector2F e = b - a;
@@ -580,7 +579,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="xfA">The xf A.</param>
         /// <param name="polygonB">The polygon B.</param>
         /// <param name="xfB">The xf B.</param>
-        public static void CollideEdgeAndPolygon(ref Manifold manifold, EdgeShape edgeA, ref Transform xfA, PolygonShape polygonB, ref Transform xfB)
+        public static void CollideEdgeAndPolygon(ref Manifold manifold, EdgeShape edgeA, ref ControllerTransform xfA, PolygonShape polygonB, ref ControllerTransform xfB)
         {
             EpCollider.Collide(ref manifold, edgeA, ref xfA, polygonB, ref xfB);
         }
@@ -653,7 +652,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="poly2">The poly2.</param>
         /// <param name="xf2">The XF2.</param>
         /// <returns></returns>
-        private static float EdgeSeparation(PolygonShape poly1, ref Transform xf1To2, int edge1, PolygonShape poly2)
+        private static float EdgeSeparation(PolygonShape poly1, ref ControllerTransform xf1To2, int edge1, PolygonShape poly2)
         {
             List<Vector2F> vertices1 = poly1.Vertices;
             List<Vector2F> normals1 = poly1.Normals;
@@ -678,7 +677,7 @@ namespace Alis.Core.Physic.Collision
                 }
             }
 
-            Vector2F v1 = Transform.Multiply(vertices1[edge1], ref xf1To2);
+            Vector2F v1 = ControllerTransform.Multiply(vertices1[edge1], ref xf1To2);
             Vector2F v2 = vertices2[index];
             float separation = MathUtils.Dot(v2 - v1, ref normal1);
 
@@ -694,15 +693,15 @@ namespace Alis.Core.Physic.Collision
         /// <param name="poly2">The poly2.</param>
         /// <param name="xf2">The XF2.</param>
         /// <returns></returns>
-        private static float FindMaxSeparation(out int edgeIndex, PolygonShape poly1, ref Transform xf1, PolygonShape poly2, ref Transform xf2)
+        private static float FindMaxSeparation(out int edgeIndex, PolygonShape poly1, ref ControllerTransform xf1, PolygonShape poly2, ref ControllerTransform xf2)
         {
             int count1 = poly1.Vertices.Count;
             List<Vector2F> normals1 = poly1.Normals;
 
-            Transform xf1To2 = Transform.Divide(ref xf1, ref xf2);
+            ControllerTransform xf1To2 = ControllerTransform.Divide(ref xf1, ref xf2);
 
             // Vector pointing from the centroid of poly1 to the centroid of poly2.
-            Vector2F c2Local = Transform.Divide(poly2.MassData.Centroid, ref xf1To2);
+            Vector2F c2Local = ControllerTransform.Divide(poly2.MassData.Centroid, ref xf1To2);
             Vector2F dLocal1 = c2Local - poly1.MassData.Centroid;
 
             // Find edge normal on poly1 that has the largest projection onto d.
@@ -789,7 +788,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="edge1">The edge</param>
         /// <param name="poly2">The poly</param>
         /// <param name="xf2">The xf</param>
-        private static void FindIncidentEdge(out FixedArray2<ClipVertex> c, PolygonShape poly1, ref Transform xf1, int edge1, PolygonShape poly2, ref Transform xf2)
+        private static void FindIncidentEdge(out FixedArray2<ClipVertex> c, PolygonShape poly1, ref ControllerTransform xf1, int edge1, PolygonShape poly2, ref ControllerTransform xf2)
         {
             c = new FixedArray2<ClipVertex>();
             Vertices normals1 = poly1.Normals;
@@ -821,7 +820,7 @@ namespace Alis.Core.Physic.Collision
 
             ClipVertex cv0 = c[0];
 
-            cv0.V = Transform.Multiply(vertices2[i1], ref xf2);
+            cv0.V = ControllerTransform.Multiply(vertices2[i1], ref xf2);
             cv0.Id.Features.IndexA = (byte) edge1;
             cv0.Id.Features.IndexB = (byte) i1;
             cv0.Id.Features.TypeA = (byte) ContactFeatureType.Face;
@@ -830,7 +829,7 @@ namespace Alis.Core.Physic.Collision
             c[0] = cv0;
 
             ClipVertex cv1 = c[1];
-            cv1.V = Transform.Multiply(vertices2[i2], ref xf2);
+            cv1.V = ControllerTransform.Multiply(vertices2[i2], ref xf2);
             cv1.Id.Features.IndexA = (byte) edge1;
             cv1.Id.Features.IndexB = (byte) i2;
             cv1.Id.Features.TypeA = (byte) ContactFeatureType.Face;
@@ -852,7 +851,7 @@ namespace Alis.Core.Physic.Collision
             /// <param name="xfA">The xf</param>
             /// <param name="polygonB">The polygon</param>
             /// <param name="xfB">The xf</param>
-            public static void Collide(ref Manifold manifold, EdgeShape edgeA, ref Transform xfA, PolygonShape polygonB, ref Transform xfB)
+            public static void Collide(ref Manifold manifold, EdgeShape edgeA, ref ControllerTransform xfA, PolygonShape polygonB, ref ControllerTransform xfB)
             {
                 // Algorithm:
                 // 1. Classify v1 and v2
@@ -874,9 +873,9 @@ namespace Alis.Core.Physic.Collision
                 float radius;
                 bool front;
 
-                Transform.Divide(ref xfB, ref xfA, out Transform xf);
+                ControllerTransform.Divide(ref xfB, ref xfA, out ControllerTransform xf);
 
-                centroidB = Transform.Multiply(polygonB.MassData.Centroid, ref xf);
+                centroidB = ControllerTransform.Multiply(polygonB.MassData.Centroid, ref xf);
 
                 Vector2F v0 = edgeA.Vertex0;
                 Vector2F v1 = edgeA.Vertex11;
@@ -1072,7 +1071,7 @@ namespace Alis.Core.Physic.Collision
                 tempPolygonB.Count = polygonB.Vertices.Count;
                 for (int i = 0; i < polygonB.Vertices.Count; ++i)
                 {
-                    tempPolygonB.Vertices[i] = Transform.Multiply(polygonB.Vertices[i], ref xf);
+                    tempPolygonB.Vertices[i] = ControllerTransform.Multiply(polygonB.Vertices[i], ref xf);
                     tempPolygonB.Normals[i] = Complex.Multiply(polygonB.Normals[i], ref xf.Rotation);
                 }
 
@@ -1245,7 +1244,7 @@ namespace Alis.Core.Physic.Collision
 
                         if (primaryAxis.Type == EpAxisType.EdgeA)
                         {
-                            Transform.Divide(clipPoints2[i].V, ref xf, out cp.LocalPoint);
+                            ControllerTransform.Divide(clipPoints2[i].V, ref xf, out cp.LocalPoint);
                             cp.Id = clipPoints2[i].Id;
                         }
                         else

@@ -202,20 +202,20 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Describes whether this instance test point
         /// </summary>
-        /// <param name="transform">The transform</param>
+        /// <param name="controllerTransform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2F point) => false;
+        public override bool TestPoint(ref ControllerTransform controllerTransform, ref Vector2F point) => false;
 
         /// <summary>
         ///     Describes whether this instance ray cast
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>
-        /// <param name="transform">The transform</param>
+        /// <param name="controllerTransform">The transform</param>
         /// <param name="childIndex">The child index</param>
         /// <returns>The bool</returns>
-        public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref Transform transform, int childIndex)
+        public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref ControllerTransform controllerTransform, int childIndex)
         {
             int i1 = childIndex;
             int i2 = childIndex + 1;
@@ -227,16 +227,16 @@ namespace Alis.Core.Physic.Collision.Shapes
             EdgeShape.Vertex1 = Vertices[i1];
             EdgeShape.Vertex2 = Vertices[i2];
 
-            return EdgeShape.RayCast(out output, ref input, ref transform, 0);
+            return EdgeShape.RayCast(out output, ref input, ref controllerTransform, 0);
         }
 
         /// <summary>
         ///     Computes the aabb using the specified aabb
         /// </summary>
         /// <param name="aabb">The aabb</param>
-        /// <param name="transform">The transform</param>
+        /// <param name="controllerTransform">The transform</param>
         /// <param name="childIndex">The child index</param>
-        public override void ComputeAabb(out Aabb aabb, ref Transform transform, int childIndex)
+        public override void ComputeAabb(out Aabb aabb, ref ControllerTransform controllerTransform, int childIndex)
         {
             int i1 = childIndex;
             int i2 = childIndex + 1;
@@ -245,8 +245,8 @@ namespace Alis.Core.Physic.Collision.Shapes
                 i2 = 0;
             }
 
-            Vector2F v1 = Transform.Multiply(Vertices[i1], ref transform);
-            Vector2F v2 = Transform.Multiply(Vertices[i2], ref transform);
+            Vector2F v1 = ControllerTransform.Multiply(Vertices[i1], ref controllerTransform);
+            Vector2F v2 = ControllerTransform.Multiply(Vertices[i2], ref controllerTransform);
 
             Vector2F.Min(ref v1, ref v2, out aabb.LowerBound);
             Vector2F.Max(ref v1, ref v2, out aabb.UpperBound);
@@ -268,7 +268,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="xf">The xf</param>
         /// <param name="sc">The sc</param>
         /// <returns>The float</returns>
-        public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref Transform xf, out Vector2F sc)
+        public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref ControllerTransform xf, out Vector2F sc)
         {
             sc = Vector2F.Zero;
             return 0;

@@ -28,13 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.App.Engine.Desktop.Core;
-using Alis.Core.Aspect.Math;
+using Alis.App.Engine.Core;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
 
-namespace Alis.App.Engine.Desktop.Windows
+namespace Alis.App.Engine.Windows
 {
     /// <summary>
     ///     The audio player window class

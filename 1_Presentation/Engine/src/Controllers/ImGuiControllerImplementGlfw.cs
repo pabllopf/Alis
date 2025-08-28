@@ -1,13 +1,10 @@
 using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Extension.Graphic.Glfw;
@@ -19,7 +16,7 @@ using Alis.Extension.Graphic.Ui.Extras.Node;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
 using Alis.Extension.Graphic.Ui.Fonts;
 
-namespace Alis.App.Engine.Desktop.Controllers
+namespace Alis.App.Engine.Controllers
 {
     /// <summary>
     /// The im gui controller implement glfw class

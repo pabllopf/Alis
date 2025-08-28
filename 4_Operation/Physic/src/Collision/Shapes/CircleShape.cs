@@ -90,12 +90,12 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Describes whether this instance test point
         /// </summary>
-        /// <param name="transform">The transform</param>
+        /// <param name="controllerTransform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2F point)
+        public override bool TestPoint(ref ControllerTransform controllerTransform, ref Vector2F point)
         {
-            Vector2F center = transform.Position + Complex.Multiply(ref PositionInternal, ref transform.Rotation);
+            Vector2F center = controllerTransform.Position + Complex.Multiply(ref PositionInternal, ref controllerTransform.Rotation);
             Vector2F d = point - center;
             return Vector2F.Dot(d, d) <= _2radius;
         }
@@ -105,10 +105,10 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>
-        /// <param name="transform">The transform</param>
+        /// <param name="controllerTransform">The transform</param>
         /// <param name="childIndex">The child index</param>
         /// <returns>The bool</returns>
-        public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref Transform transform, int childIndex)
+        public override bool RayCast(out RayCastOutput output, ref RayCastInput input, ref ControllerTransform controllerTransform, int childIndex)
         {
             // Collision Detection in Interactive 3D Environments by Gino van den Bergen
             // From Section 3.1.2
@@ -117,7 +117,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 
             output = new RayCastOutput();
 
-            Vector2F position = transform.Position + Complex.Multiply(ref PositionInternal, ref transform.Rotation);
+            Vector2F position = controllerTransform.Position + Complex.Multiply(ref PositionInternal, ref controllerTransform.Rotation);
             Vector2F s = input.Point1 - position;
             float b = Vector2F.Dot(s, s) - _2radius;
 
@@ -155,13 +155,13 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     Computes the aabb using the specified aabb
         /// </summary>
         /// <param name="aabb">The aabb</param>
-        /// <param name="transform">The transform</param>
+        /// <param name="controllerTransform">The transform</param>
         /// <param name="childIndex">The child index</param>
-        public override void ComputeAabb(out Aabb aabb, ref Transform transform, int childIndex)
+        public override void ComputeAabb(out Aabb aabb, ref ControllerTransform controllerTransform, int childIndex)
         {
             // OPT: Vector2F p = transform.p + Complex.Multiply(ref _position, ref transform.q);
-            float pX = PositionInternal.X * transform.Rotation.R - PositionInternal.Y * transform.Rotation.I + transform.Position.X;
-            float pY = PositionInternal.Y * transform.Rotation.R + PositionInternal.X * transform.Rotation.I + transform.Position.Y;
+            float pX = PositionInternal.X * controllerTransform.Rotation.R - PositionInternal.Y * controllerTransform.Rotation.I + controllerTransform.Position.X;
+            float pY = PositionInternal.Y * controllerTransform.Rotation.R + PositionInternal.X * controllerTransform.Rotation.I + controllerTransform.Position.Y;
 
             // OPT: aabb.LowerBound = new Vector2F(p.X - Radius, p.Y - Radius);
             // OPT: aabb.UpperBound = new Vector2F(p.X + Radius, p.Y + Radius);
@@ -192,11 +192,11 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="xf">The xf</param>
         /// <param name="sc">The sc</param>
         /// <returns>The area</returns>
-        public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref Transform xf, out Vector2F sc)
+        public override float ComputeSubmergedArea(ref Vector2F normal, float offset, ref ControllerTransform xf, out Vector2F sc)
         {
             sc = Vector2F.Zero;
 
-            Vector2F p = Transform.Multiply(ref PositionInternal, ref xf);
+            Vector2F p = ControllerTransform.Multiply(ref PositionInternal, ref xf);
             float l = -(Vector2F.Dot(normal, p) - offset);
             if (l < -GetRadius + SettingEnv.Epsilon)
             {

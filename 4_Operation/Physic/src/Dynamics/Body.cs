@@ -164,7 +164,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The xf
         /// </summary>
-        internal Transform Xf; // the body origin transform
+        internal ControllerTransform Xf; // the body origin transform
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Body" /> class
@@ -566,7 +566,7 @@ namespace Alis.Core.Physic.Dynamics
                 // Move center of mass.
                 Vector2F oldCenter = Sweep.C;
                 Sweep.LocalCenter = value;
-                Sweep.C0 = Sweep.C = Transform.Multiply(ref Sweep.LocalCenter, ref Xf);
+                Sweep.C0 = Sweep.C = ControllerTransform.Multiply(ref Sweep.LocalCenter, ref Xf);
 
                 // Update center of mass velocity.
                 Vector2F a = Sweep.C - oldCenter;
@@ -872,7 +872,7 @@ namespace Alis.Core.Physic.Dynamics
             Xf.Rotation.Phase = angle;
             Xf.Position = position;
 
-            Sweep.C = Transform.Multiply(ref Sweep.LocalCenter, ref Xf);
+            Sweep.C = ControllerTransform.Multiply(ref Sweep.LocalCenter, ref Xf);
             Sweep.A = angle;
 
             Sweep.C0 = Sweep.C;
@@ -889,15 +889,15 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the body transform for the body's origin.
         /// </summary>
         /// <param name="transform">The transform of the body's origin.</param>
-        public Transform GetTransform() => Xf;
+        public ControllerTransform GetTransform() => Xf;
 
         /// <summary>
         ///     Get the body transform for the body's origin.
         /// </summary>
-        /// <param name="transform">The transform of the body's origin.</param>
-        public void GetTransform(out Transform transform)
+        /// <param name="controllerTransform">The transform of the body's origin.</param>
+        public void GetTransform(out ControllerTransform controllerTransform)
         {
-            transform = Xf;
+            controllerTransform = Xf;
         }
 
         /// <summary>
@@ -1130,7 +1130,7 @@ namespace Alis.Core.Physic.Dynamics
             // Move center of mass.
             Vector2F oldCenter = Sweep.C;
             Sweep.LocalCenter = localCenter;
-            Sweep.C0 = Sweep.C = Transform.Multiply(ref Sweep.LocalCenter, ref Xf);
+            Sweep.C0 = Sweep.C = ControllerTransform.Multiply(ref Sweep.LocalCenter, ref Xf);
 
             // Update center of mass velocity.
             Vector2F a = Sweep.C - oldCenter;
@@ -1142,7 +1142,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="localPoint">A point on the body measured relative the the body's origin.</param>
         /// <returns>The same point expressed in world coordinates.</returns>
-        public Vector2F GetWorldPoint(ref Vector2F localPoint) => Transform.Multiply(ref localPoint, ref Xf);
+        public Vector2F GetWorldPoint(ref Vector2F localPoint) => ControllerTransform.Multiply(ref localPoint, ref Xf);
 
         /// <summary>
         ///     Get the world coordinates of a point given the local coordinates.
@@ -1172,7 +1172,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The corresponding local point relative to the body's origin.</returns>
-        public Vector2F GetLocalPoint(ref Vector2F worldPoint) => Transform.Divide(ref worldPoint, ref Xf);
+        public Vector2F GetLocalPoint(ref Vector2F worldPoint) => ControllerTransform.Divide(ref worldPoint, ref Xf);
 
         /// <summary>
         ///     Gets a local point relative to the body's origin given a world point.
@@ -1232,7 +1232,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void SynchronizeFixtures()
         {
-            Transform xf1 = new Transform(Vector2F.Zero, Sweep.A0);
+            ControllerTransform xf1 = new ControllerTransform(Vector2F.Zero, Sweep.A0);
             xf1.Position = Sweep.C0 - Complex.Multiply(ref Sweep.LocalCenter, ref xf1.Rotation);
 
             IBroadPhase broadPhase = GetWorldPhysic.ContactManager.BroadPhase;

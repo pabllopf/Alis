@@ -480,36 +480,36 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         ///     Evaluate this contact with your own manifold and transforms.
         /// </summary>
         /// <param name="manifold">The manifold.</param>
-        /// <param name="transformA">The first transform.</param>
-        /// <param name="transformB">The second transform.</param>
-        private void Evaluate(ref Manifold manifold, ref Transform transformA, ref Transform transformB)
+        /// <param name="controllerTransformA">The first transform.</param>
+        /// <param name="controllerTransformB">The second transform.</param>
+        private void Evaluate(ref Manifold manifold, ref ControllerTransform controllerTransformA, ref ControllerTransform controllerTransformB)
         {
             switch (_type)
             {
                 case ContactType.Polygon:
-                    Collision.Collision.CollidePolygons(ref manifold, (PolygonShape) FixtureA.GetShape, ref transformA, (PolygonShape) FixtureB.GetShape, ref transformB);
+                    Collision.Collision.CollidePolygons(ref manifold, (PolygonShape) FixtureA.GetShape, ref controllerTransformA, (PolygonShape) FixtureB.GetShape, ref controllerTransformB);
                     break;
                 case ContactType.PolygonAndCircle:
-                    Collision.Collision.CollidePolygonAndCircle(ref manifold, (PolygonShape) FixtureA.GetShape, ref transformA, (CircleShape) FixtureB.GetShape, ref transformB);
+                    Collision.Collision.CollidePolygonAndCircle(ref manifold, (PolygonShape) FixtureA.GetShape, ref controllerTransformA, (CircleShape) FixtureB.GetShape, ref controllerTransformB);
                     break;
                 case ContactType.EdgeAndCircle:
-                    Collision.Collision.CollideEdgeAndCircle(ref manifold, (EdgeShape) FixtureA.GetShape, ref transformA, (CircleShape) FixtureB.GetShape, ref transformB);
+                    Collision.Collision.CollideEdgeAndCircle(ref manifold, (EdgeShape) FixtureA.GetShape, ref controllerTransformA, (CircleShape) FixtureB.GetShape, ref controllerTransformB);
                     break;
                 case ContactType.EdgeAndPolygon:
-                    Collision.Collision.CollideEdgeAndPolygon(ref manifold, (EdgeShape) FixtureA.GetShape, ref transformA, (PolygonShape) FixtureB.GetShape, ref transformB);
+                    Collision.Collision.CollideEdgeAndPolygon(ref manifold, (EdgeShape) FixtureA.GetShape, ref controllerTransformA, (PolygonShape) FixtureB.GetShape, ref controllerTransformB);
                     break;
                 case ContactType.ChainAndCircle:
                     ChainShape chain = (ChainShape) FixtureA.GetShape;
                     chain.GetChildEdge(Edge, ChildIndexA);
-                    Collision.Collision.CollideEdgeAndCircle(ref manifold, Edge, ref transformA, (CircleShape) FixtureB.GetShape, ref transformB);
+                    Collision.Collision.CollideEdgeAndCircle(ref manifold, Edge, ref controllerTransformA, (CircleShape) FixtureB.GetShape, ref controllerTransformB);
                     break;
                 case ContactType.ChainAndPolygon:
                     ChainShape loop2 = (ChainShape) FixtureA.GetShape;
                     loop2.GetChildEdge(Edge, ChildIndexA);
-                    Collision.Collision.CollideEdgeAndPolygon(ref manifold, Edge, ref transformA, (PolygonShape) FixtureB.GetShape, ref transformB);
+                    Collision.Collision.CollideEdgeAndPolygon(ref manifold, Edge, ref controllerTransformA, (PolygonShape) FixtureB.GetShape, ref controllerTransformB);
                     break;
                 case ContactType.Circle:
-                    Collision.Collision.CollideCircles(ref manifold, (CircleShape) FixtureA.GetShape, ref transformA, (CircleShape) FixtureB.GetShape, ref transformB);
+                    Collision.Collision.CollideCircles(ref manifold, (CircleShape) FixtureA.GetShape, ref controllerTransformA, (CircleShape) FixtureB.GetShape, ref controllerTransformB);
                     break;
             }
         }

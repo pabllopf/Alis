@@ -127,28 +127,28 @@ namespace Alis.Core.Physic.Collision.Shapes
         ///     Test a point for containment in this shape.
         ///     Note: This only works for convex shapes.
         /// </summary>
-        /// <param name="transform">The shape world transform.</param>
+        /// <param name="controllerTransform">The shape world transform.</param>
         /// <param name="point">A point in world coordinates.</param>
         /// <returns>True if the point is inside the shape</returns>
-        public abstract bool TestPoint(ref Transform transform, ref Vector2F point);
+        public abstract bool TestPoint(ref ControllerTransform controllerTransform, ref Vector2F point);
 
         /// <summary>
         ///     Cast a ray against a child shape.
         /// </summary>
         /// <param name="output">The ray-cast results.</param>
         /// <param name="input">The ray-cast input parameters.</param>
-        /// <param name="transform">The transform to be applied to the shape.</param>
+        /// <param name="controllerTransform">The transform to be applied to the shape.</param>
         /// <param name="childIndex">The child shape index.</param>
         /// <returns>True if the ray-cast hits the shape</returns>
-        public abstract bool RayCast(out RayCastOutput output, ref RayCastInput input, ref Transform transform, int childIndex);
+        public abstract bool RayCast(out RayCastOutput output, ref RayCastInput input, ref ControllerTransform controllerTransform, int childIndex);
 
         /// <summary>
         ///     Given a transform, compute the associated axis aligned bounding box for a child shape.
         /// </summary>
         /// <param name="aabb">The aabb results.</param>
-        /// <param name="transform">The world transform of the shape.</param>
+        /// <param name="controllerTransform">The world transform of the shape.</param>
         /// <param name="childIndex">The child shape index.</param>
-        public abstract void ComputeAabb(out Aabb aabb, ref Transform transform, int childIndex);
+        public abstract void ComputeAabb(out Aabb aabb, ref ControllerTransform controllerTransform, int childIndex);
 
         /// <summary>
         ///     Compute the mass properties of this shape using its dimensions and density.
@@ -159,6 +159,6 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Used for the buoyancy controller
         /// </summary>
-        public abstract float ComputeSubmergedArea(ref Vector2F normal, float offset, ref Transform xf, out Vector2F sc);
+        public abstract float ComputeSubmergedArea(ref Vector2F normal, float offset, ref ControllerTransform xf, out Vector2F sc);
     }
 }

@@ -29,9 +29,7 @@
 
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Builder.Core.Ecs.Entity
@@ -41,7 +39,7 @@ namespace Alis.Builder.Core.Ecs.Entity
     /// </summary>
     /// <seealso cref="IBuild{Transform}" />
     public class TransformBuilder :
-        IBuild<Transform>,
+        IBuild<Alis.Core.Ecs.Components.Transform>,
         IPosition2D<TransformBuilder, float>,
         IRotation<TransformBuilder, float>,
         IScale2D<TransformBuilder, float>
@@ -65,7 +63,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         ///     Builds this instance
         /// </summary>
         /// <returns>The transform</returns>
-        public Transform Build() => new Transform(position, rotation, scale);
+        public Alis.Core.Ecs.Components.Transform Build() => new Alis.Core.Ecs.Components.Transform(position, rotation, scale);
 
         /// <summary>
         ///     Positions the x

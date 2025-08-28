@@ -27,16 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Graphic;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Extension.Graphic.Glfw;
 using Alis.Extension.Graphic.Glfw.Enums;
 using Alis.Extension.Graphic.Glfw.Structs;
 using Alis.Extension.Graphic.Ui;
 
-namespace Alis.App.Engine.Desktop.Controllers
+namespace Alis.App.Engine.Controllers
 {
     /// <summary>
     /// The glfw controller class

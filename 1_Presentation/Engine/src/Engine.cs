@@ -1,14 +1,13 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using Alis.App.Engine.Desktop.Controllers;
-using Alis.App.Engine.Desktop.Core;
-using Alis.Core.Aspect.Data;
+using Alis.App.Engine.Controllers;
+using Alis.App.Engine.Core;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Extension.Graphic.Ui;
 
-namespace Alis.App.Engine.Desktop
+namespace Alis.App.Engine
 {
     /// <summary>
     ///     The engine class
