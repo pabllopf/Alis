@@ -12,17 +12,18 @@ namespace Alis.Core.Ecs.Generator
     /// </summary>
     public static class RegistryHelpers
     {
+      
         /// <summary>
-        /// Appends the namespace using the specified sb
+        /// 
         /// </summary>
-        /// <param name="sb">The sb</param>
-        /// <param name="@namespace">The namespace</param>
-        /// <returns>The string builder</returns>
-        public static StringBuilder AppendNamespace(this StringBuilder sb, string @namespace)
+        /// <param name="sb"></param>
+        /// <param name="names"></param>
+        /// <returns></returns>
+        public static StringBuilder AppendNamespace(this StringBuilder sb, string names)
         {
-            if (@namespace == string.Empty)
+            if (names == string.Empty)
                 return sb;
-            return sb.Append(@namespace).Append('.');
+            return sb.Append(names).Append('.');
         }
 
         /// <summary>
