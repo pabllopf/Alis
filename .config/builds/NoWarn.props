@@ -11,7 +11,7 @@
         
         <NoWarn>$(NoWarn);CS0121;</NoWarn>
 
-        <NoWarn>$(NoWarn);NU5123;MSB5029</NoWarn>
+        <NoWarn>$(NoWarn);NU5123;MSB5029;NU5100</NoWarn>
 
         <!-- Suppresses the warning CS0436 : conflicting types; -->
         <NoWarn>$(NoWarn);CS0436;CS1685;</NoWarn>
