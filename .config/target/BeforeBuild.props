@@ -1,6 +1,6 @@
 <Project>
     
-    <Target Name="RestoreGenerators" BeforeTargets="Build;Publish"
+    <Target Name="RestoreGenerators" AfterTargets="Build"
             Condition="
       $(AssemblyName.Contains('Generator')) == false AND
       $(AssemblyName.Contains('Test')) == false AND
@@ -10,33 +10,34 @@
       $(AssemblyName.Contains('Sample')) == false">
 
         <ItemGroup>
+            <!-- Lista todos los proyectos generadores -->
             <GeneratorProjects Include="
-        $(SolutionDir)2_Application/**/generator/**/*Generator*.csproj;
-        $(SolutionDir)3_Structuration/**/generator/**/*Generator*.csproj;
-        $(SolutionDir)4_Operation/**/generator/**/*Generator*.csproj;
-        $(SolutionDir)5_Declaration/**/generator/**/*Generator*.csproj;
-        $(SolutionDir)6_Ideation/**/generator/**/*Generator*.csproj;" />
+        $(SolutionDir)2_Application/**/generator/**/*Generator.csproj;
+        $(SolutionDir)3_Structuration/**/generator/**/*Generator.csproj;
+        $(SolutionDir)4_Operation/**/generator/**/*Generator.csproj;
+        $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
+        $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj" />
         </ItemGroup>
 
-        <!-- Restaurar los generators con dotnet restore -->
+        <!-- Restaurar solo si la DLL no existe -->
         <Exec Command='dotnet restore "%(GeneratorProjects.Identity)"'
-              Condition="Exists('%(GeneratorProjects.Identity)')" />
+              Condition="Exists('%(GeneratorProjects.Identity)') AND !Exists('%(RootDir)%(Directory)bin/$(Configuration)/lib/netstandard2.0/%(Filename).dll')" />
 
-        <!-- Compilar los generators con dotnet build -->
+        <!-- Compilar solo si la DLL no existe -->
         <Exec Command='dotnet build "%(GeneratorProjects.Identity)" -c $(Configuration) -f netstandard2.0'
-              Condition="Exists('%(GeneratorProjects.Identity)')" />
-  
+              Condition="Exists('%(GeneratorProjects.Identity)') AND !Exists('%(RootDir)%(Directory)bin/$(Configuration)/lib/netstandard2.0/%(Filename).dll')" />
+
+        <!-- Definir solo las DLL que existen -->
         <ItemGroup>
-            <GeneratorOutputs Include="@(GeneratorProjects->'%(RootDir)%(Directory)bin/$(Configuration)/lib/netstandard2.0/%(Filename).dll')" />
+            <GeneratorOutputs Include="@(GeneratorProjects->'%(RootDir)%(Directory)bin/$(Configuration)/lib/netstandard2.0/%(Filename).dll')"
+                              Condition="Exists('%(RootDir)%(Directory)bin/$(Configuration)/lib/netstandard2.0/%(Filename).dll')" />
         </ItemGroup>
 
-        <ItemGroup>
-          <FilesToCopy Include="@(GeneratorOutputs)"
-                       Condition="!Exists('bin/$(Configuration)/analyzers/dotnet/cs/%(Filename)%(Extension)')" />
-        </ItemGroup>
-        <Copy SourceFiles="@(FilesToCopy)"
+        <!-- Copiar a la carpeta de salida solo los que existen -->
+        <Copy SourceFiles="@(GeneratorOutputs)"
               DestinationFolder="bin/$(Configuration)/analyzers/dotnet/cs/"
               SkipUnchangedFiles="true"/>
+
     </Target>
 
 
