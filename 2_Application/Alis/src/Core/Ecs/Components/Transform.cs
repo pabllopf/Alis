@@ -34,19 +34,39 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.Components
 {
+    /// <summary>
+    /// The transform
+    /// </summary>
     public struct Transform : IInitable, IGameObjectComponent
     {
+        /// <summary>
+        /// The position
+        /// </summary>
         public Vector2F Position;
 
+        /// <summary>
+        /// The rotation
+        /// </summary>
         public Complex Rotation;
 
+        /// <summary>
+        /// The scale
+        /// </summary>
         public Vector2F Scale;
         
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
             
         }
 
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void Update(IGameObject self)
         {
             

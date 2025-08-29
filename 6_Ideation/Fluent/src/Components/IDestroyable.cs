@@ -5,6 +5,9 @@ namespace Alis.Core.Aspect.Fluent.Components
     /// </summary>
     public interface IDestroyable : IComponentBase
     {
+        /// <summary>
+        /// Destroys this instance
+        /// </summary>
         void Destroy();
     }
 }
