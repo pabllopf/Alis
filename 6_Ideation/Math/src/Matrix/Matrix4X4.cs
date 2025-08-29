@@ -107,12 +107,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="m34">The value to assign to the fourth element in the third row.</param>
         /// <param name="m41">The value to assign to the first element in the fourth row.</param>
         /// <param name="m42">The value to assign to the second element in the fourth row.</param>
-        /// <param name="m43">
-        ///     The value to assign to the third eleme<>nt in the fourth row<>.
-        /// </param>
-        /// <param name="m44">
-        ///     The value <><><><><><><><><><><><><><><><>to assign to the fourth element in the fourth row.
-        /// </param>
+        /// <param name="m43"></param>
+        /// <param name="m44"></param>
         public Matrix4X4(float m11, float m12, float m13, float m14,
             float m21, float m22, float m23, float m24,
             float m31, float m32, float m33, float m34,

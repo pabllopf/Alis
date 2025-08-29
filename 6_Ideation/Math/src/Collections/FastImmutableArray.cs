@@ -992,36 +992,35 @@ namespace Alis.Core.Aspect.Math.Collections
             /// <summary>Gets a <see cref="Memory{T}" /> for the filled portion of the backing array.</summary>
             internal Memory<T> AsMemory() => new Memory<T>(_elements, 0, _count);
         }
-
+        
         /// <summary>
-        ///     Creates the builder using the specified types length
+        /// Creates the builder using the specified types length
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T1">The </typeparam>
         /// <param name="typesLength">The types length</param>
         /// <returns>The builder</returns>
         public static Builder CreateBuilder<T1>(int typesLength) => new Builder {Capacity = typesLength};
 
+
         /// <summary>
-        ///     Converts the span
+        /// Converts the span
         /// </summary>
         /// <returns>A read only span of t</returns>
         public ReadOnlySpan<T> AsSpan() => Array.AsSpan();
 
         /// <summary>
-        ///     Indexes the of using the specified type id
+        /// Indexes the of using the specified type id
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T1">The </typeparam>
         /// <param name="typeId">The type id</param>
         /// <returns>The int</returns>
         public int IndexOf<T1>(T typeId) => System.Array.IndexOf(Array, typeId, 0, Length);
 
+
         /// <summary>
-        ///     Removes the at using the specified index
+        /// Removes the at using the specified index
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T1">The </typeparam>
         /// <param name="index">The index</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         /// <returns>A fast immutable array of t</returns>
