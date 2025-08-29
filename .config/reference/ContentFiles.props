@@ -1,24 +1,19 @@
 <Project>
 
-
-    <ItemGroup Condition="
-    $(AssemblyName.Contains('Generator')) == false AND
-    $(AssemblyName.Contains('Test')) == false AND
-     $(AssemblyName.Contains('Benchmark')) == false AND 
-    $(AssemblyName.Contains('App')) == false AND
-    $(AssemblyName.Contains('Template')) == false AND
-    $(AssemblyName.Contains('Sample')) == false">
-        
-        <Content
-            Include="$(ProjectDir)bin/$(Configuration)/analyzers/dotnet/cs/*.dll"
-            Pack="true"
-            Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
-            PackagePath="analyzers/dotnet/cs/"
-            Visible="true" />
-    </ItemGroup>
     
     
     <ItemGroup Condition="$(Configuration) == 'Release'">
+
+        <Content
+            Condition="$(AssemblyName.Contains('Generator')) == false"
+            Include="$(SolutionDir)**/**/generator/bin/Release/lib/netstandard2.0/*.dll"
+            Pack="true"
+            Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
+            CopyToOutputDirectory="PreserveNewest"
+            CopyToPublishDirectory="PreserveNewest"
+            PackagePath="analyzers/dotnet/cs"
+            Visible="false"/>
+        
         <!-- Include all the .md files in the output -->
         <Content Include="$(ProjectDir)bin/Release/lib/net5.0/*.md" Visible="false" PackagePath="lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/lib/net6.0/*.md" Visible="false" PackagePath="lib/net6.0/"/>
