@@ -19,7 +19,7 @@ namespace Alis.Core.Ecs.Collections
         public ref TData this[int i] => ref Unsafe.Add(ref Buffer[0], i);
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Chunk"/> class
+        /// Initializes a new instance of the class
         /// </summary>
         /// <param name="len">The len</param>
         public Chunk(int len)

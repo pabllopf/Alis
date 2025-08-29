@@ -17,7 +17,7 @@ namespace Alis.Core.Ecs.Generator.Structures
         private int _index;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Stack"/> class
+        /// Initializes a new instance of the  class
         /// </summary>
         /// <param name="len">The len</param>
         public Stack(int len)
