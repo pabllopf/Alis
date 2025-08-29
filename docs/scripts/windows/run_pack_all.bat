@@ -1,5 +1,16 @@
 cd ../../../
 
+
+rd /s /q .nuget
+rd /s /q .build
+
+FOR /d /r . %%d IN (bin) DO @IF EXIST "%%d" rd /s /q "%%d"
+
+FOR /d /r . %%d IN (obj) DO @IF EXIST "%%d" rd /s /q "%%d"
+
+for /r %%i in (*.csproj) do dotnet build %%i -c Release
+
+
 set "version=6.0.0"
 set "publishDir=.\.publish\%version%"
 
