@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.7.5] - 2025-09-01
+### :bug: Bug Fixes
+- [`e7ebaa1`](https://github.com/pabllopf/Alis/commit/e7ebaa1acd7c385aa800368a3d79a0a97a367487) - reset the sample king *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`39f686a`](https://github.com/pabllopf/Alis/commit/39f686a9cd36108e483d19574871447d4c47b89a) - the reuntime generator for fix the current version of dlls *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f340c2a`](https://github.com/pabllopf/Alis/commit/f340c2a504caddd8f09369e869536eaee244f719) - the pack of generators *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0da09eb`](https://github.com/pabllopf/Alis/commit/0da09ebd4e61ca30360fe36a4884b9b49d3c1b9e) - remove the restored-artifacts *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`151d83e`](https://github.com/pabllopf/Alis/commit/151d83e64d71526b94b8cf19c311a19f775d1955) - the NU5100 warning *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.7.4] - 2025-08-29
 ### :sparkles: New Features
 - [`ea6b07a`](https://github.com/pabllopf/Alis/commit/ea6b07a042a590061bb0b873be324f1a609e9907) - create nuget packages for nugets *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4794,3 +4803,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.7.2]: https://github.com/pabllopf/Alis/compare/v0.7.1...v0.7.2
 [v0.7.3]: https://github.com/pabllopf/Alis/compare/v0.7.2...v0.7.3
 [v0.7.4]: https://github.com/pabllopf/Alis/compare/v0.7.3...v0.7.4
+[v0.7.5]: https://github.com/pabllopf/Alis/compare/v0.7.4...v0.7.5
