@@ -31,18 +31,10 @@ using System;
 
 namespace Alis.Core.Ecs.Generator.Collections
 {
+    
     /// <summary>
-    ///     An internal non-generic interface implemented by <see cref="FastImmutableArray" />
-    ///     that allows for recognition of an <see cref="FastImmutableArray{T}" /> instance and access
-    ///     to its underlying array, without actually knowing the type of value
-    ///     stored in it.
+    /// The fast immutable array interface
     /// </summary>
-    /// <remarks>
-    ///     Casting to this interface requires a boxed instance of the <see cref="FastImmutableArray{T}" /> struct,
-    ///     and as such should be avoided. This interface is useful, however, where the value
-    ///     is already boxed and we want to try to reuse immutable arrays instead of copying them.
-    ///     ** This interface is INTENTIONALLY INTERNAL, as it gives access to the inner array.  **
-    /// </remarks>
     internal interface IFastImmutableArray
     {
         /// <summary>
