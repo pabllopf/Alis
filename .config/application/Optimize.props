@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
+    <PropertyGroup Condition="
+            $(AssemblyName.Contains('Sample')) == false AND
+            $(AssemblyName.Contains('Test')) == false AND
+            $(AssemblyName.Contains('Alis.App')) == false AND 
+            $(AssemblyName.Contains('Benchmark')) == false"
+    >     
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <DebugType>embedded</DebugType>
+        <Deterministic>true</Deterministic>
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+        
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+        <CopyDebugSymbolFilesFromPackages>true</CopyDebugSymbolFilesFromPackages>
+        <CopyDocumentationFilesFromPackages>true</CopyDocumentationFilesFromPackages>
+    </PropertyGroup>
+    
     
     <!--
     <PropertyGroup Condition="

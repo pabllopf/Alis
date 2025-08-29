@@ -5,10 +5,6 @@ namespace Alis.Core.Aspect.Fluent.Components
     /// </summary>
     public interface IDestroyable : IComponentBase
     {
-        /// <summary>
-        ///     This method is called whenever a component reaches the end of its lifetime, whether by an
-        ///     <see cref="GameObject.Remove{T}()" /> method or <see cref="GameObject.Delete" />.
-        /// </summary>
         void Destroy();
     }
 }
