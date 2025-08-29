@@ -3,18 +3,20 @@
     
     
     <ItemGroup Condition="$(Configuration) == 'Release'">
-        <Content Include="$(SolutionDir)**/**/generator/bin/Release/netstandard2.0/*"
-                 CopyToOutputDirectory="Always"
-                 CopyToPublishDirectory="Always"
-                 Link="analyzers/dotnet/cs/%(Filename)%(Extension)" />
-
-        <!-- Incluir en el paquete nuget -->
-        <None Include="$(SolutionDir)**/**/generator/bin/Release/netstandard2.0/*"
-              CopyToOutputDirectory="Always"
-              CopyToPublishDirectory="Always"
-              Pack="true"
-              PackagePath="analyzers/dotnet/cs" />
         
+    <Content
+        Condition="$(AssemblyName.Contains('Generator')) == false"
+        Include="$(SolutionDir)**/**/generator/bin/Release/lib/netstandard2.0/*.dll"
+        Exclude="$(SolutionDir)**/**/restored-artifacts/**/*"
+        Pack="true"
+        TargetPath="$(ProjectDir)bin/$(Configuration)/analyzers/dotnet/cs/%(Filename)%(Extension)"
+        Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
+        CopyToPublishDirectory="PreserveNewest"
+        CopyToOutputDirectory="PreserveNewest"
+        PackagePath="analyzers/dotnet/cs/"
+        Visible="true"/>
+
+
         <!-- Include all the .md files in the output -->
         <Content Include="$(ProjectDir)bin/Release/lib/net5.0/*.md" Visible="false" PackagePath="lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/lib/net6.0/*.md" Visible="false" PackagePath="lib/net6.0/"/>
@@ -279,9 +281,6 @@
         
         <Content Include="$(ProjectDir)bin/Release/win-x86/lib/netstandard2.0/*" Visible="false" PackagePath="runtimes/win-x86/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-x86/lib/netstandard2.1/*" Visible="false" PackagePath="runtimes/win-x86/lib/netstandard2.1/"/>
-
-
-        <Remove Include="$(SolutionDir)**/**/restored-artifacts/**/*" />
     </ItemGroup>
     
 </Project>
