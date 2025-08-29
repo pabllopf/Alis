@@ -6,6 +6,9 @@ using System.Runtime.InteropServices;
 // ReSharper disable once CheckNamespace
 namespace System.Numerics
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class BitOperations
     {
         private static readonly byte[] Log2DeBruijn =
@@ -17,6 +20,12 @@ namespace System.Numerics
         ];
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static int Log2(uint value)
         {
             value |= value >> 01;
@@ -33,6 +42,12 @@ namespace System.Numerics
                 (IntPtr)(int)((value * 0x07C4ACDDu) >> 27));
         }
 #else
+
+       /// <summary>
+        /// rounds up to the next highest power of 2.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
       public static int Log2(uint value)
         {
             value |= value >> 01;
