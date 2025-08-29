@@ -336,6 +336,12 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </remarks>
         public override bool Equals(object obj) => obj is Matrix4X4 other && Equals(other);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static Matrix4X4 operator *(Matrix4X4 a, Matrix4X4 b)
         {
             // Implement the matrix multiplication logic here

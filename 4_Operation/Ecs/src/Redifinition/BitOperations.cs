@@ -50,6 +50,11 @@ namespace System.Numerics
         }
 #endif
 
+        /// <summary>
+        /// rounds up to the next highest power of 2.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static uint RoundUpToPowerOf2(uint value)
         {
             --value;
@@ -61,7 +66,11 @@ namespace System.Numerics
             return value + 1;
         }
 
-
+        
+        /// <summary>Performs a left bitwise rotation on a 32-bit unsigned integer.</summary>
+        /// <param name="value">The value to rotate.</param>
+        /// <param name="offset">The number of bits to rotate by.</param>
+        /// <returns>The result of rotating <paramref name="value" /> left by <paramref name="offset" /> bits.</returns>
         public static uint RotateLeft(uint value, int offset)
         {
             return (value << offset) | (value >> (32 - offset));
