@@ -27,7 +27,11 @@
             <GeneratorOutputs Include="@(GeneratorProjects->'%(RootDir)%(Directory)bin/$(Configuration)/lib/netstandard2.0/%(Filename).dll')" />
         </ItemGroup>
 
-        <Copy SourceFiles="@(GeneratorOutputs)"
+        <ItemGroup>
+          <FilesToCopy Include="@(GeneratorOutputs)"
+                       Condition="!Exists('bin/$(Configuration)/analyzers/dotnet/cs/%(Filename)%(Extension)')" />
+        </ItemGroup>
+        <Copy SourceFiles="@(FilesToCopy)"
               DestinationFolder="bin/$(Configuration)/analyzers/dotnet/cs/"
               SkipUnchangedFiles="true"/>
     </Target>
