@@ -7,10 +7,15 @@
             $(AssemblyName.Contains('Benchmark')) == false"
     >     
         <IncludeSymbols>true</IncludeSymbols>
+        
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        
         <DebugType>embedded</DebugType>
+        
         <Deterministic>true</Deterministic>
+        
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
         
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -20,6 +25,7 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
         <CopyDebugSymbolFilesFromPackages>true</CopyDebugSymbolFilesFromPackages>
+        
         <CopyDocumentationFilesFromPackages>true</CopyDocumentationFilesFromPackages>
     </PropertyGroup>
     
