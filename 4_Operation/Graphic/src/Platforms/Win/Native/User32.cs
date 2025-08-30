@@ -5,10 +5,32 @@ using System.Text;
 
 namespace Alis.Core.Graphic.Platforms.Win.Native
 {
+    /// <summary>
+    /// 
+    /// </summary>
     internal static class User32
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private const string DllName = "user32.dll";
 
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="dwExStyle"></param>
+       /// <param name="lpClassName"></param>
+       /// <param name="lpWindowName"></param>
+       /// <param name="dwStyle"></param>
+       /// <param name="x"></param>
+       /// <param name="y"></param>
+       /// <param name="nWidth"></param>
+       /// <param name="nHeight"></param>
+       /// <param name="hWndParent"></param>
+       /// <param name="hMenu"></param>
+       /// <param name="hInstance"></param>
+       /// <param name="lpParam"></param>
+       /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "CreateWindowExW")]
         public static extern IntPtr CreateWindowEx(
             int dwExStyle,
@@ -24,51 +46,153 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
             IntPtr hInstance,
             IntPtr lpParam);
 
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="hWnd"></param>
+       /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "DestroyWindow")]
         public static extern bool DestroyWindow(IntPtr hWnd);
 
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="hWnd"></param>
+       /// <param name="nCmdShow"></param>
+       /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "ShowWindow")]
         public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "UpdateWindow")]
         public static extern bool UpdateWindow(IntPtr hWnd);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="lpString"></param>
+        /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "SetWindowTextW")]
         public static extern bool SetWindowText(IntPtr hWnd, string lpString);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="hWndInsertAfter"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="cx"></param>
+        /// <param name="cy"></param>
+        /// <param name="uFlags"></param>
+        /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "SetWindowPos")]
         public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="msg"></param>
+        /// <param name="wParam"></param>
+        /// <param name="lParam"></param>
+        /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "DefWindowProcW")]
         public static extern IntPtr DefWindowProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lpWndClass"></param>
+        /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "RegisterClassW")]
         public static extern ushort RegisterClass(ref Wndclass lpWndClass);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "GetDC")]
         public static extern IntPtr GetDC(IntPtr hWnd);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="hDc"></param>
+        /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "ReleaseDC")]
         public static extern int ReleaseDC(IntPtr hWnd, IntPtr hDc);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lpMsg"></param>
+        /// <param name="hWnd"></param>
+        /// <param name="wMsgFilterMin"></param>
+        /// <param name="wMsgFilterMax"></param>
+        /// <param name="wRemoveMsg"></param>
+        /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "PeekMessageW")]
         public static extern bool PeekMessage(out Msg lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax, uint wRemoveMsg);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lpMsg"></param>
+        /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "TranslateMessage")]
         public static extern bool TranslateMessage(ref Msg lpMsg);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lpMsg"></param>
+        /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "DispatchMessageW")]
         public static extern IntPtr DispatchMessage(ref Msg lpMsg);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lpMsg"></param>
+        /// <param name="hWnd"></param>
+        /// <param name="wMsgFilterMin"></param>
+        /// <param name="wMsgFilterMax"></param>
+        /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "GetMessageW")]
         public static extern int GetMessage(out Msg lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="lpString"></param>
+        /// <param name="nMaxCount"></param>
+        /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "GetWindowTextW")]
         public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
 
+        /// <summary>
+        /// /
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="lpRect"></param>
+        /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "GetWindowRect")]
         public static extern int GetWindowRect(IntPtr hWnd, out Rect lpRect);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "IsWindowVisible")]
         public static extern bool IsWindowVisible(IntPtr hWnd);
     }

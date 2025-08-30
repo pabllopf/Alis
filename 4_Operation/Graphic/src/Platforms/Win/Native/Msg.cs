@@ -34,6 +34,9 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.Platforms.Win.Native
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     internal struct Msg
     {

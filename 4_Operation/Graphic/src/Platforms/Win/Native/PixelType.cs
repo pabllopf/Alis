@@ -7,6 +7,9 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
     /// </summary>
     public enum PixelType : byte
     {
+        /// <summary>
+        /// 
+        /// </summary>
         RGBA = 0
     }
 }

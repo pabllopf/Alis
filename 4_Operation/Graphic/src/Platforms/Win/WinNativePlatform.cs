@@ -18,8 +18,19 @@ namespace Alis.Core.Graphic.Platforms.Win
         // ------------------------------------------------------------------
         // CONSTANTS
         // ------------------------------------------------------------------
+        /// <summary>
+        /// 
+        /// </summary>
         private const string WindowClassName = "AlisWin32GLWindow";
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private const int CwUsedefault = unchecked((int)0x80000000);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private const uint SwpNomove = 0x0040;
 
         // ------------------------------------------------------------------
@@ -33,18 +44,67 @@ namespace Alis.Core.Graphic.Platforms.Win
         // ------------------------------------------------------------------
         // FIELDS
         // ------------------------------------------------------------------
+        /// <summary>
+        /// 
+        /// </summary>
         private IntPtr hInstance;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private IntPtr hWnd;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private IntPtr hDc;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private IntPtr hGlrc;
-        private int width, height;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        private int width;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private int height;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private string title;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private ConsoleKey? lastKeyPressed = null;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private bool running = true;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private WndProc wndProcDelegate;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private IntPtr wndProcPtr;
         
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lpModuleName"></param>
+        /// <returns></returns>
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
         private static extern IntPtr GetModuleHandle(string lpModuleName);
 
@@ -52,9 +112,14 @@ namespace Alis.Core.Graphic.Platforms.Win
         // ------------------------------------------------------------------
         // PUBLIC METHODS
         // ------------------------------------------------------------------
+      
         /// <summary>
-        /// Initializes the Win32 window and OpenGL context.
+        /// 
         /// </summary>
+        /// <param name="w"></param>
+        /// <param name="h"></param>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public bool Initialize(int w, int h, string t)
         {
             width = w;
@@ -430,7 +495,9 @@ namespace Alis.Core.Graphic.Platforms.Win
             return User32.DefWindowProc(hWnd, msg, wParam, lParam);
         }
 
-        // Definición del delegado para wglCreateContextAttribsARB
+        /// <summary>
+        /// 
+        /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
         private delegate IntPtr WglCreateContextAttribsARB(IntPtr hdc, IntPtr hShareContext, int[] attribs);
     }

@@ -10,6 +10,9 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
     [Flags]
     public enum ClassStyles : uint
     {
+        /// <summary>
+        /// 
+        /// </summary>
         OwnDC = 0x0020
     }
 }

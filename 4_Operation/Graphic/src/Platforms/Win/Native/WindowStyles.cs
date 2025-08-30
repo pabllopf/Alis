@@ -9,7 +9,14 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
     [Flags]
     public enum WindowStyles : int
     {
+        /// <summary>
+        /// 
+        /// </summary>
         OverlappedWindow = 0x00CF0000,
+        
+        /// <summary>
+        /// 
+        /// </summary>
         Visible = 0x10000000
     }
 }
