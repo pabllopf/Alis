@@ -14,11 +14,10 @@
             CopyToOutputDirectory="PreserveNewest"
             Visible="true"/>
 
-        <Content Include="$(ProjectDir)bin/Release/analyzers/dotnet/cs/*.dll" Visible="false" PackagePath="analyzers/dotnet/cs/"/>
-
-        <Content Include="$(ProjectDir)bin/Release/lib/**/*" Visible="false" PackagePath="lib/"/>
+        <Content
+            Condition="$(AssemblyName.Contains('Generator')) == false"
+            Include="$(ProjectDir)bin/Release/analyzers/dotnet/cs/*.dll" Visible="false" PackagePath="analyzers/dotnet/cs/"/>
         
-
         <!-- Include all the .md files in the output -->
         <Content Include="$(ProjectDir)bin/Release/lib/net5.0/*" Visible="false" PackagePath="lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/lib/net6.0/*" Visible="false" PackagePath="lib/net6.0/"/>
