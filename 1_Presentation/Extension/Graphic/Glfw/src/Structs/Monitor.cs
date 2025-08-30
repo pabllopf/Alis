@@ -115,8 +115,6 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         /// <summary>
         ///     Gets the position, in screen coordinates of the valid work are for the monitor.
         /// </summary>
-        /// <seealso cref="Glfw.GetMonitorWorkArea" />
-
         public Rectangle WorkArea
         {
             get

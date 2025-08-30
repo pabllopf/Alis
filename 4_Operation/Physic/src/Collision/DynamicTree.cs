@@ -185,14 +185,10 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        ///     Create a proxy in the tree as a leaf node. We return the index
-        ///     of the node instead of a pointer so that we can grow
-        ///     the node pool.
-        ///     ///
+        /// 
         /// </summary>
-        /// <param name="aabb">The aabb.</param>
-        /// <param name="userData">The user data.</param>
-        /// <returns>Index of the created proxy</returns>
+        /// <param name="aabb"></param>
+        /// <returns></returns>
         public int AddProxy(ref Aabb aabb)
         {
             int proxyId = AllocateNode();
@@ -269,12 +265,11 @@ namespace Alis.Core.Physic.Collision
             return true;
         }
 
-        /// <summary>
-        ///     Set proxy user data.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="proxyId">The proxy id.</param>
-        /// <param name="userData">The proxy user data.</param>
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="proxyId"></param>
+      /// <param name="userData"></param>
         public void SetUserData(int proxyId, TNode userData)
         {
             _nodes[proxyId].UserData = userData;
@@ -283,7 +278,6 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     Get proxy user data.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="proxyId">The proxy id.</param>
         /// <returns>the proxy user data or 0 if the id is invalid.</returns>
         public TNode GetUserData(int proxyId)

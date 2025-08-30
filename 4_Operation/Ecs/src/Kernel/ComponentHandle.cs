@@ -104,10 +104,10 @@ namespace Alis.Core.Ecs.Kernel
         ///     Invokes the component event and consume using the specified gameObject
         /// </summary>
         /// <param name="gameObject">The gameObject</param>
-        /// <param name="event">The event</param>
-        internal void InvokeComponentEventAndConsume(GameObject gameObject, GenericEvent @event)
+        /// <param name="e">The event</param>
+        internal void InvokeComponentEventAndConsume(GameObject gameObject, GenericEvent e)
         {
-            Component.ComponentTable[_componentType.RawIndex].Storage.InvokeEventWithAndConsume(@event, gameObject, _index);
+            Component.ComponentTable[_componentType.RawIndex].Storage.InvokeEventWithAndConsume(e, gameObject, _index);
         }
 
         /// <summary>

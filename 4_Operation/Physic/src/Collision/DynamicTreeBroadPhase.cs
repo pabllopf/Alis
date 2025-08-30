@@ -139,10 +139,9 @@ namespace Alis.Core.Physic.Collision
         public int ProxyCount { get; private set; }
 
         /// <summary>
-        ///     Create a proxy with an initial AABB. Pairs are not reported until
-        ///     UpdatePairs is called.
+        /// 
         /// </summary>
-        /// <param name="proxy">The user data.</param>
+        /// <param name="aabb"></param>
         /// <returns></returns>
         public int AddProxy(ref Aabb aabb)
         {

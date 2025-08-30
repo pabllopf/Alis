@@ -10,12 +10,40 @@ namespace Alis.Core.Graphic.Platforms.Osx
     /// </summary>
     public class MacNativePlatform : INativePlatform
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private MacWindow window;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private MacOpenGLContext glContext;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private IntPtr pool, app, distantPast, runLoopMode;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private static IntPtr _openGlHandle = IntPtr.Zero;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private ConsoleKey? lastKeyPressed = null;
 
+        
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="w"></param>
+        /// <param name="h"></param>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public bool Initialize(int w, int h, string t)
         {
             ObjectiveCInterop.NSApplicationLoad();
@@ -33,20 +61,69 @@ namespace Alis.Core.Graphic.Platforms.Osx
             return true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void ShowWindow() => window?.Show();
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public void HideWindow() => window?.Hide();
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t"></param>
         public void SetTitle(string t) => window?.SetTitle(t);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="w"></param>
+        /// <param name="h"></param>
         public void SetSize(int w, int h) => window?.SetSize(w, h);
+        /// <summary>
+        /// 
+        /// </summary>
         public void MakeContextCurrent() => glContext?.MakeCurrent();
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public void SwapBuffers() => glContext?.SwapBuffers();
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool IsWindowVisible() => window?.IsVisible() ?? false;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public int GetWindowWidth() => window?.Width ?? 0;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public int GetWindowHeight() => window?.Height ?? 0;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public void Cleanup()
         {
             if (pool != IntPtr.Zero)
                 ObjectiveCInterop.objc_msgSend_void(pool, ObjectiveCInterop.Sel("release"));
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool PollEvents()
         {
             IntPtr evt = ObjectiveCInterop.objc_msgSend_UL_IntPtr_IntPtr_Bool(app,
@@ -83,6 +160,12 @@ namespace Alis.Core.Graphic.Platforms.Osx
             }
             return IsWindowVisible();
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public bool TryGetLastKeyPressed(out ConsoleKey key)
         {
             if (lastKeyPressed.HasValue)
@@ -94,6 +177,12 @@ namespace Alis.Core.Graphic.Platforms.Osx
             key = default;
             return false;
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public IntPtr GetProcAddress(string name)
         {
             // OpenGL dynamic loading
@@ -110,9 +199,22 @@ namespace Alis.Core.Graphic.Platforms.Osx
             }
             return Dlsym(_openGlHandle, name);
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="symbol"></param>
+        /// <returns></returns>
         [System.Runtime.InteropServices.DllImport("/usr/lib/libSystem.B.dylib", EntryPoint = "dlsym", CallingConvention = System.Runtime.InteropServices.CallingConvention.Cdecl)]
         private static extern IntPtr Dlsym(IntPtr handle, string symbol);
        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="mode"></param>
+        /// <returns></returns>
         [System.Runtime.InteropServices.DllImport("/usr/lib/libSystem.B.dylib", EntryPoint = "dlopen", CallingConvention = System.Runtime.InteropServices.CallingConvention.Cdecl)]
         private static extern IntPtr Dlopen(string path, int mode);
     }

@@ -105,6 +105,7 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
         ///     CRF is increased when [max_bitrate] is exceeded.
         /// </summary>
         /// <param name="crf">Number from 0 to 63 (Lower = higher quality)</param>
+        /// <param name="maxBitrate"></param>
         public void SetCvbr(int crf, string maxBitrate)
         {
             CurrentQualitySettings = $"-crf {crf} -b:v {maxBitrate}";

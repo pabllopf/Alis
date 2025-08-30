@@ -184,11 +184,21 @@ namespace Alis.Core.Ecs.Updating
 
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="length"></param>
+        /// <returns></returns>
         public Span<TComponent> AsSpanLength(int length)
         {
             return TypedBuffer.AsSpan(0, length);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public Span<TComponent> AsSpan()
         {
             return TypedBuffer;

@@ -281,9 +281,9 @@ namespace Alis.Core.Ecs
         {
             EntityDeletedEvent.Invoke(gameObject);
             if (gameObjectLocation.HasEvent(GameObjectFlags.OnDelete))
-                foreach (Action<GameObject> @event in EventLookup[gameObject.EntityIdOnly].Delete.AsSpan())
+                foreach (Action<GameObject> e in EventLookup[gameObject.EntityIdOnly].Delete.AsSpan())
                 {
-                    @event.Invoke(gameObject);
+                    e.Invoke(gameObject);
                 }
 
             EventLookup.Remove(gameObject.EntityIdOnly);

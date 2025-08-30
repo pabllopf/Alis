@@ -45,14 +45,13 @@ namespace Alis.Extension.Graphic.Sfml.Render
         }
 
         
+
         /// <summary>
-        /// Create the render-texture with the given dimensions and
-        /// a ContextSettings.
+        /// Initializes a new instance of the <see cref="RenderTexture"/> class
         /// </summary>
-        /// <param name="width">Width of the render-texture</param>
-        /// <param name="height">Height of the render-texture</param>
-        /// <param name="settings">A ContextSettings struct representing settings for the RenderTexture</param>
-        
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="contextSettings">The context settings</param>
         public RenderTexture(uint width, uint height, ContextSettings contextSettings) :
             base(sfRenderTexture_createWithSettings(width, height, contextSettings))
         {

@@ -49,9 +49,9 @@ namespace Alis.Core.Ecs.Systems.Execution
         private readonly List<T> runtimes;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Runtime" /> class
+        /// 
         /// </summary>
-        /// <param name="array">The array</param>
+        /// <param name="array"></param>
         public Runtime(params T[] array)
         {
             runtimes = new List<T>(array);

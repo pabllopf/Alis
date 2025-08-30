@@ -243,18 +243,18 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T5">The </typeparam>
         /// <typeparam name="T6">The </typeparam>
         /// <typeparam name="T7">The </typeparam>
-        /// <param name="@event">The event</param>
+        /// <param name="e">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7>(ref Event<ComponentId> @event,
+        private static void InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7>(ref Event<ComponentId> e,
             GameObject gameObject)
         {
-            @event.InvokeInternal(gameObject, Component<T1>.Id);
-            @event.InvokeInternal(gameObject, Component<T2>.Id);
-            @event.InvokeInternal(gameObject, Component<T3>.Id);
-            @event.InvokeInternal(gameObject, Component<T4>.Id);
-            @event.InvokeInternal(gameObject, Component<T5>.Id);
-            @event.InvokeInternal(gameObject, Component<T6>.Id);
-            @event.InvokeInternal(gameObject, Component<T7>.Id);
+            e.InvokeInternal(gameObject, Component<T1>.Id);
+            e.InvokeInternal(gameObject, Component<T2>.Id);
+            e.InvokeInternal(gameObject, Component<T3>.Id);
+            e.InvokeInternal(gameObject, Component<T4>.Id);
+            e.InvokeInternal(gameObject, Component<T5>.Id);
+            e.InvokeInternal(gameObject, Component<T6>.Id);
+            e.InvokeInternal(gameObject, Component<T7>.Id);
         }
 
         /// <summary>
@@ -312,17 +312,17 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T5">The </typeparam>
         /// <typeparam name="T6">The </typeparam>
         /// <typeparam name="T7">The </typeparam>
-        /// <param name="@event">The event</param>
+        /// <param name="e">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeTagWorldEvents<T1, T2, T3, T4, T5, T6, T7>(ref Event<TagId> @event, GameObject gameObject)
+        private static void InvokeTagWorldEvents<T1, T2, T3, T4, T5, T6, T7>(ref Event<TagId> e, GameObject gameObject)
         {
-            @event.InvokeInternal(gameObject, Kernel.Tag<T1>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T2>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T3>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T4>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T5>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T6>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T7>.Id);
+            e.InvokeInternal(gameObject, Kernel.Tag<T1>.Id);
+            e.InvokeInternal(gameObject, Kernel.Tag<T2>.Id);
+            e.InvokeInternal(gameObject, Kernel.Tag<T3>.Id);
+            e.InvokeInternal(gameObject, Kernel.Tag<T4>.Id);
+            e.InvokeInternal(gameObject, Kernel.Tag<T5>.Id);
+            e.InvokeInternal(gameObject, Kernel.Tag<T6>.Id);
+            e.InvokeInternal(gameObject, Kernel.Tag<T7>.Id);
         }
 
         /// <summary>

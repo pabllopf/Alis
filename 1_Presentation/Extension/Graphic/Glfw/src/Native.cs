@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.Glfw
         ///     Returns the CGDirectDisplayID of the specified monitor.
         /// </summary>
         /// <param name="monitor">The monitor to query.</param>
-        /// <returns>The CGDirectDisplayID of the specified monitor, or <see cref="nint.Zero" /> if an error occurred.</returns>
+        /// <returns>The CGDirectDisplayID of the specified monitor, or if an error occurred.</returns>
         [DllImport(Glfw.Library, EntryPoint = "glfwGetCocoaMonitor", CallingConvention = CallingConvention.Cdecl)]
         public static extern uint GetCocoaMonitor(Monitor monitor);
 
