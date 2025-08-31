@@ -2,7 +2,13 @@
 
     
     
-    <ItemGroup Condition="$(Configuration) == 'Release'">
+    <ItemGroup Condition="
+    $(Configuration) == 'Release' AND
+    $(AssemblyName.Contains('Sample')) == false AND
+    $(AssemblyName.Contains('Test')) == false AND
+    $(AssemblyName.Contains('Alis.App')) == false AND
+    $(AssemblyName.Contains('Benchmark')) == false"
+    >
         
         <None
             Condition="$(AssemblyName.Contains('Generator')) == false"
@@ -14,10 +20,38 @@
             CopyToOutputDirectory="PreserveNewest"
             Visible="true"/>
 
+        <None
+            Condition="$(AssemblyName.Contains('Generator')) == false"
+            Include="$(SolutionDir)**/**/generator/bin/Release/lib/netstandard2.0/*Generator.pdb"
+            Pack="false"
+            TargetPath="../../analyzers/dotnet/cs/%(Filename)%(Extension)"
+            Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
+            CopyToPublishDirectory="PreserveNewest"
+            CopyToOutputDirectory="PreserveNewest"
+            Visible="true"/>
+
+        <None
+            Condition="$(AssemblyName.Contains('Generator')) == false"
+            Include="$(SolutionDir)**/**/generator/bin/Release/lib/netstandard2.0/*Generator.deps.json"
+            Pack="false"
+            TargetPath="../../analyzers/dotnet/cs/%(Filename)%(Extension)"
+            Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
+            CopyToPublishDirectory="PreserveNewest"
+            CopyToOutputDirectory="PreserveNewest"
+            Visible="true"/>
+
         
         <Content
             Condition="$(AssemblyName.Contains('Generator')) == false"
             Include="$(ProjectDir)bin/Release/analyzers/dotnet/cs/*.dll" Visible="false" PackagePath="analyzers/dotnet/cs/"/>
+
+        <Content
+            Condition="$(AssemblyName.Contains('Generator')) == false"
+            Include="$(ProjectDir)bin/Release/analyzers/dotnet/cs/*.pdb" Visible="false" PackagePath="analyzers/dotnet/cs/"/>
+
+        <Content
+            Condition="$(AssemblyName.Contains('Generator')) == false"
+            Include="$(ProjectDir)bin/Release/analyzers/dotnet/cs/*.deps.json" Visible="false" PackagePath="analyzers/dotnet/cs/"/>
         
         <!-- Include all the .json files in the output -->
         <Content Include="$(ProjectDir)bin/Release/lib/net5.0/*.deps.json" Visible="false" PackagePath="lib/net5.0/"/>
