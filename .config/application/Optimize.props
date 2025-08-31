@@ -5,77 +5,20 @@
             $(AssemblyName.Contains('Test')) == false AND
             $(AssemblyName.Contains('Alis.App')) == false AND 
             $(AssemblyName.Contains('Benchmark')) == false"
-    >     
+    >
+        <DebugSymbols>true</DebugSymbols>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IncludeSource>true</IncludeSource>
         <IncludeSymbols>true</IncludeSymbols>
-        
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        
-        <DebugType>embedded</DebugType>
-        
+        <DebugType>portable</DebugType>
         <Deterministic>true</Deterministic>
-        
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-        
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
-
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
-
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-
         <CopyDebugSymbolFilesFromPackages>true</CopyDebugSymbolFilesFromPackages>
-        
         <CopyDocumentationFilesFromPackages>true</CopyDocumentationFilesFromPackages>
     </PropertyGroup>
-    
-    
-    <!--
-    <PropertyGroup Condition="
-    $(AssemblyName.Contains('Sample')) == true AND
-    '$(Configuration)' == 'Release' AND
-    (
-        $(TargetFramework.Equals('net5.0')) OR
-        $(TargetFramework.Equals('net6.0')) OR
-        $(TargetFramework.Equals('net7.0')) OR
-        $(TargetFramework.Equals('net8.0')) OR
-        $(TargetFramework.Equals('net9.0')) 
-    )
-    ">
-        <Optimize>true</Optimize>
-        <DebugType>none</DebugType>
-        <DebugSymbols>false</DebugSymbols>
-        <DebuggerSupport>false</DebuggerSupport>
-        <XmlResolverIsNetworkingEnabledByDefault>false</XmlResolverIsNetworkingEnabledByDefault>
-        <MetricsSupport>false</MetricsSupport>
-        <HttpActivityPropagationSupport>false</HttpActivityPropagationSupport>
-        <Http3Support>false</Http3Support>
-        <EnableUnsafeUTF7Encoding>false</EnableUnsafeUTF7Encoding>
-        <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
-        <EventSourceSupport>false</EventSourceSupport>
-        <MetadataUpdaterSupport>false</MetadataUpdaterSupport>
-        <TrimUnusedDependencies>true</TrimUnusedDependencies>
-        <InvariantGlobalization>true</InvariantGlobalization>
-        <DebugType>none</DebugType>
-        <EnableSinglStackTraceSupporteFile>false</EnableSinglStackTraceSupporteFile>
-        <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
-        <StripSymbols>true</StripSymbols>
-        <OptimizationPreference>Size</OptimizationPreference>
-        <StackTraceSupport>false</StackTraceSupport>
-        <UseSystemResourceKeys>false</UseSystemResourceKeys>
-        <EnableNETAnalyzers>false</EnableNETAnalyzers>
-        <EnableRoslynAnalyzers>false</EnableRoslynAnalyzers>
-        <EnableDefaultItems>true</EnableDefaultItems>
-        <NoWarn>NU1605;NU1608;NU1701;NU1702</NoWarn>
-        <GenerateDocumentationFile>false</GenerateDocumentationFile>
-        <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
-        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
-        <RunAnalyzers>false</RunAnalyzers>
-        <IncludeNativeDebugSymbols>false</IncludeNativeDebugSymbols>
-        <ExcludeAnalyzers>true</ExcludeAnalyzers>
-        <EnableAnalyzer>false</EnableAnalyzer>
-        <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
-        <DisableImplicitFrameworkReferences>false</DisableImplicitFrameworkReferences>
-        <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
-    </PropertyGroup>-->
 </Project>
