@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="$(SolutionDir).config/Config.props"/>
     <PropertyGroup>
-        <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
-        <OutDir Condition="($(AssemblyName.Contains('Sample')) OR $(AssemblyName.Contains('App'))) AND $(AssemblyName.Contains('Test')) == false">bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
+        <TargetFramework>net8.0</TargetFramework>
+        <OutputType>exe</OutputType>
     </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Alis" Version="0.7.5" />
+    </ItemGroup>
+
+    <ItemGroup Condition="Exists('$(ProjectDir)Assets/')">
+        <None
+            Update="$(ProjectDir)Assets/**"
+            LinkBase="Assets"
+            CopyToOutputDirectory="Always"
+            CopyToPublishDirectory="Always"/>
+    </ItemGroup>
     
 </Project>
