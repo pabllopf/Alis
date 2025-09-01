@@ -198,12 +198,12 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
-        /// <param name="@event">The event</param>
+        /// <param name="e">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeComponentWorldEvents<T1, T2>(ref Event<ComponentId> @event, GameObject gameObject)
+        private static void InvokeComponentWorldEvents<T1, T2>(ref Event<ComponentId> e, GameObject gameObject)
         {
-            @event.InvokeInternal(gameObject, Component<T1>.Id);
-            @event.InvokeInternal(gameObject, Component<T2>.Id);
+            e.InvokeInternal(gameObject, Component<T1>.Id);
+            e.InvokeInternal(gameObject, Component<T2>.Id);
         }
 
         /// <summary>

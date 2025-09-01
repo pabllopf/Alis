@@ -144,7 +144,7 @@ namespace Alis.Core.Ecs.Collections
     public class IdTable<T> : IdTable
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="IdTableww{T}" /> class
+        ///     Initializes a new instance of the class
         /// </summary>
         public IdTable() : base(Array.Empty<T>(), RuntimeHelpers.IsReferenceOrContainsReferences<T>())
         {

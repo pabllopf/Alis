@@ -22,7 +22,7 @@ namespace Alis.Core.Ecs.Collections
         public static FastestTable<T> Empty => new() { _buffer = Array.Empty<T>() };
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FastestTable"/> class
+        /// Initializes a new instance of the  class
         /// </summary>
         /// <param name="size">The size</param>
         public FastestTable(int size)
