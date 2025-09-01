@@ -1113,6 +1113,14 @@ namespace Alis.Extension.Graphic.Sfml.Render
         static extern void sfRenderWindow_drawPrimitives(IntPtr CPointer, Vertex vertexPtr, uint vertexCount, PrimitiveType type, ref RenderStates.MarshalData renderStates);
 
         
+        /// <summary>
+        /// Sfs the render window draw primitives using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <param name="vertexPtr">The vertex ptr</param>
+        /// <param name="vertexCount">The vertex count</param>
+        /// <param name="type">The type</param>
+        /// <param name="renderStates">The render states</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfRenderWindow_drawPrimitives(IntPtr CPointer, IntPtr vertexPtr, uint vertexCount, PrimitiveType type, ref RenderStates.MarshalData renderStates);
 

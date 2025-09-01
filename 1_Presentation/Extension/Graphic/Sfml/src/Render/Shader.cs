@@ -970,6 +970,13 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfShader_setFloatUniformArray(IntPtr shader, string name, float data, uint length);
         
+        /// <summary>
+        /// Sfs the shader set float uniform array using the specified shader
+        /// </summary>
+        /// <param name="shader">The shader</param>
+        /// <param name="name">The name</param>
+        /// <param name="data">The data</param>
+        /// <param name="length">The length</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfShader_setFloatUniformArray(IntPtr shader, string name, IntPtr data, uint length);
 
@@ -983,6 +990,13 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfShader_setVec2UniformArray(IntPtr shader, string name, Vec2 data, uint length);
         
+        /// <summary>
+        /// Sfs the shader set vec 2 uniform array using the specified shader
+        /// </summary>
+        /// <param name="shader">The shader</param>
+        /// <param name="name">The name</param>
+        /// <param name="data">The data</param>
+        /// <param name="length">The length</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfShader_setVec2UniformArray(IntPtr shader, string name, IntPtr data, uint length);
 
@@ -996,6 +1010,13 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfShader_setVec3UniformArray(IntPtr shader, string name, Vec3 data, uint length);
         
+        /// <summary>
+        /// Sfs the shader set vec 3 uniform array using the specified shader
+        /// </summary>
+        /// <param name="shader">The shader</param>
+        /// <param name="name">The name</param>
+        /// <param name="data">The data</param>
+        /// <param name="length">The length</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfShader_setVec3UniformArray(IntPtr shader, string name, IntPtr data, uint length);
 
@@ -1009,6 +1030,13 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfShader_setVec4UniformArray(IntPtr shader, string name, Vec4 data, uint length);
 
+        /// <summary>
+        /// Sfs the shader set vec 4 uniform array using the specified shader
+        /// </summary>
+        /// <param name="shader">The shader</param>
+        /// <param name="name">The name</param>
+        /// <param name="data">The data</param>
+        /// <param name="length">The length</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfShader_setVec4UniformArray(IntPtr shader, string name, IntPtr data, uint length);
 
@@ -1022,6 +1050,13 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfShader_setMat3UniformArray(IntPtr shader, string name, Matrix3X3 data, uint length);
         
+        /// <summary>
+        /// Sfs the shader set mat 3 uniform array using the specified shader
+        /// </summary>
+        /// <param name="shader">The shader</param>
+        /// <param name="name">The name</param>
+        /// <param name="data">The data</param>
+        /// <param name="length">The length</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfShader_setMat3UniformArray(IntPtr shader, string name, IntPtr data, uint length);
 
@@ -1035,6 +1070,13 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfShader_setMat4UniformArray(IntPtr shader, string name, Matrix4X4 data, uint length);
         
+        /// <summary>
+        /// Sfs the shader set mat 4 uniform array using the specified shader
+        /// </summary>
+        /// <param name="shader">The shader</param>
+        /// <param name="name">The name</param>
+        /// <param name="data">The data</param>
+        /// <param name="length">The length</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfShader_setMat4UniformArray(IntPtr shader, string name, IntPtr data, uint length);
 
