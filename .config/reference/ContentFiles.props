@@ -4,17 +4,17 @@
     
     <ItemGroup Condition="$(Configuration) == 'Release'">
         
-    <Content
-        Condition="$(AssemblyName.Contains('Generator')) == false"
-        Include="$(SolutionDir)**/**/generator/bin/Release/lib/netstandard2.0/*.dll"
-        Exclude="$(SolutionDir)**/**/restored-artifacts/**/*"
-        Pack="true"
-        TargetPath="$(ProjectDir)bin/$(Configuration)/analyzers/dotnet/cs/%(Filename)%(Extension)"
-        Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
-        CopyToPublishDirectory="PreserveNewest"
-        CopyToOutputDirectory="PreserveNewest"
-        PackagePath="analyzers/dotnet/cs/"
-        Visible="true"/>
+        <None
+            Condition="$(AssemblyName.Contains('Generator')) == false"
+            Include="$(SolutionDir)**/**/generator/bin/Release/lib/netstandard2.0/*Generator.dll"
+            Pack="false"
+            TargetPath="../../analyzers/dotnet/cs/%(Filename)%(Extension)"
+            Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
+            CopyToPublishDirectory="PreserveNewest"
+            CopyToOutputDirectory="PreserveNewest"
+            Visible="true"/>
+
+        <Content Include="$(ProjectDir)bin/Release/analyzers/dotnet/cs/*.dll" Visible="false" PackagePath="analyzers/dotnet/cs/"/>
 
 
         <!-- Include all the .md files in the output -->
