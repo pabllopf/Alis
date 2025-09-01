@@ -3,16 +3,16 @@
     
     
     <ItemGroup Condition="$(Configuration) == 'Release'">
-
         <Content Include="$(SolutionDir)**/**/generator/bin/Release/netstandard2.0/*"
-                 CopyToOutputDirectory="PreserveNewest"
-                 Exclude="$(SolutionDir)**/restored-artifacts/**/**;"
+                 CopyToOutputDirectory="Always"
+                 CopyToPublishDirectory="Always"
                  Link="analyzers/dotnet/cs/%(Filename)%(Extension)" />
 
         <!-- Incluir en el paquete nuget -->
         <None Include="$(SolutionDir)**/**/generator/bin/Release/netstandard2.0/*"
+              CopyToOutputDirectory="Always"
+              CopyToPublishDirectory="Always"
               Pack="true"
-              Exclude="$(SolutionDir)**/restored-artifacts/**/**;"
               PackagePath="analyzers/dotnet/cs" />
         
         <!-- Include all the .md files in the output -->
@@ -279,6 +279,9 @@
         
         <Content Include="$(ProjectDir)bin/Release/win-x86/lib/netstandard2.0/*" Visible="false" PackagePath="runtimes/win-x86/lib/netstandard2.0/"/>
         <Content Include="$(ProjectDir)bin/Release/win-x86/lib/netstandard2.1/*" Visible="false" PackagePath="runtimes/win-x86/lib/netstandard2.1/"/>
+
+
+        <Remove Include="$(SolutionDir)**/**/restored-artifacts/**/*" />
     </ItemGroup>
     
 </Project>
