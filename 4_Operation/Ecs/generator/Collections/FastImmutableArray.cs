@@ -58,11 +58,11 @@ namespace Alis.Core.Ecs.Generator.Collections
     /// </devremarks>
     public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableArray<T>>, IFastImmutableArray
     {
-         /// <summary>
-        ///     A writable array accessor that can be converted into an <see cref="FastImmutableArray" />
-        ///     instance without allocating memory.
+        /// <summary>
+        /// The builder class
         /// </summary>
-        
+        /// <seealso cref="IList{T}"/>
+        /// <seealso cref="IReadOnlyList{T}"/>
         public sealed class Builder : IList<T>, IReadOnlyList<T>
         {
             /// <summary>
@@ -1005,16 +1005,18 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <returns>The builder</returns>
         public static Builder CreateBuilder<T1>(int typesLength) => new Builder {Capacity = typesLength};
 
+
         /// <summary>
-        ///     Converts the span
+        /// Converts the span
         /// </summary>
         /// <returns>A read only span of t</returns>
         public ReadOnlySpan<T> AsSpan() => array.AsSpan();
 
+
         /// <summary>
-        ///     Indexes the of using the specified type id
+        /// Indexes the of using the specified type id
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
+        /// <typeparam name="T1">The </typeparam>
         /// <param name="typeId">The type id</param>
         /// <returns>The int</returns>
         public int IndexOf<T1>(T typeId) => Array.IndexOf(array, typeId, 0, Length);
