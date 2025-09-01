@@ -21,8 +21,10 @@ public struct EquatableArray<T> : IEquatable<EquatableArray<T>>, IEnumerable<T>
         /// </summary>
         public readonly int Length => Items.Length;
 
+        
+     
         /// <summary>
-        /// Initializes a new instance of the <see cref="EquatableArray"/> class
+        /// Initializes a new instance of the class
         /// </summary>
         /// <param name="items">The items</param>
         /// <exception cref="ArgumentNullException"></exception>
@@ -32,17 +34,31 @@ public struct EquatableArray<T> : IEquatable<EquatableArray<T>>, IEnumerable<T>
                 throw new ArgumentNullException(nameof(items));
             Items = items;
         }
+      
         /// <summary>
-        /// Initializes a new instance of the <see cref="EquatableArray"/> class
+        /// Initializes a new instance of the class
         /// </summary>
         /// <param name="len">The len</param>
         public EquatableArray(int len) : this(new T[len]) { }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator ==(EquatableArray<T> a, EquatableArray<T> b)
             => a.Equals(b);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static bool operator !=(EquatableArray<T> a, EquatableArray<T> b)
             => !a.Equals(b);
+        
         /// <summary>
         /// Equalses the obj
         /// </summary>
@@ -146,6 +162,11 @@ public struct EquatableArray<T> : IEquatable<EquatableArray<T>>, IEnumerable<T>
             public void Dispose() { }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
         public static implicit operator ReadOnlySpan<T>(EquatableArray<T> values) => values.Items;
     }
 }

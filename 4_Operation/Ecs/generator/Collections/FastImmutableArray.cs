@@ -1000,7 +1000,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <summary>
         ///     Creates the builder using the specified types length
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
+        /// <typeparam name="T1">The </typeparam>
         /// <param name="typesLength">The types length</param>
         /// <returns>The builder</returns>
         public static Builder CreateBuilder<T1>(int typesLength) => new Builder {Capacity = typesLength};
@@ -1021,10 +1021,11 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <returns>The int</returns>
         public int IndexOf<T1>(T typeId) => Array.IndexOf(array, typeId, 0, Length);
 
+      
         /// <summary>
-        ///     Removes the at using the specified index
+        /// Removes the at using the specified index
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
+        /// <typeparam name="T1">The </typeparam>
         /// <param name="index">The index</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         /// <returns>A fast immutable array of t</returns>

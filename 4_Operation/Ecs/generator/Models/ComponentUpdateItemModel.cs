@@ -4,6 +4,18 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Generator.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="Flags"></param>
+    /// <param name="FullName"></param>
+    /// <param name="Namespace"></param>
+    /// <param name="ImplInterface"></param>
+    /// <param name="HintName"></param>
+    /// <param name="MinimallyQualifiedName"></param>
+    /// <param name="NestedTypes"></param>
+    /// <param name="GenericArguments"></param>
+    /// <param name="Attributes"></param>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
 public record struct ComponentUpdateItemModel(
         UpdateModelFlags Flags,
