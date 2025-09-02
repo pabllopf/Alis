@@ -14,31 +14,32 @@
             CopyToOutputDirectory="PreserveNewest"
             Visible="true"/>
 
+        
         <Content
             Condition="$(AssemblyName.Contains('Generator')) == false"
             Include="$(ProjectDir)bin/Release/analyzers/dotnet/cs/*.dll" Visible="false" PackagePath="analyzers/dotnet/cs/"/>
         
-        <!-- Include all the .md files in the output -->
-        <Content Include="$(ProjectDir)bin/Release/lib/net5.0/*" Visible="false" PackagePath="lib/net5.0/"/>
-        <Content Include="$(ProjectDir)bin/Release/lib/net6.0/*" Visible="false" PackagePath="lib/net6.0/"/>
-        <Content Include="$(ProjectDir)bin/Release/lib/net7.0/*" Visible="false" PackagePath="lib/net7.0/"/>
-        <Content Include="$(ProjectDir)bin/Release/lib/net8.0/*" Visible="false" PackagePath="lib/net8.0/"/>
-        <Content Include="$(ProjectDir)bin/Release/lib/net9.0/*" Visible="false" PackagePath="lib/net9.0/"/>
+        <!-- Include all the .json files in the output -->
+        <Content Include="$(ProjectDir)bin/Release/lib/net5.0/*.deps.json" Visible="false" PackagePath="lib/net5.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/lib/net6.0/*.deps.json" Visible="false" PackagePath="lib/net6.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/lib/net7.0/*.deps.json" Visible="false" PackagePath="lib/net7.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/lib/net8.0/*.deps.json" Visible="false" PackagePath="lib/net8.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/lib/net9.0/*.deps.json" Visible="false" PackagePath="lib/net9.0/"/>
 
-        <Content Include="$(ProjectDir)bin/Release/lib/netcoreapp2.0/*" Visible="false" PackagePath="lib/netcoreapp2.0/"/>
-        <Content Include="$(ProjectDir)bin/Release/lib/netcoreapp2.1/*" Visible="false" PackagePath="lib/netcoreapp2.1/"/>
-        <Content Include="$(ProjectDir)bin/Release/lib/netcoreapp2.2/*" Visible="false" PackagePath="lib/netcoreapp2.2/"/>
-        <Content Include="$(ProjectDir)bin/Release/lib/netcoreapp3.0/*" Visible="false" PackagePath="lib/netcoreapp3.0/"/>
-        <Content Include="$(ProjectDir)bin/Release/lib/netcoreapp3.1/*" Visible="false" PackagePath="lib/netcoreapp3.1/"/>
+        <Content Include="$(ProjectDir)bin/Release/lib/netcoreapp2.0/*.deps.json" Visible="false" PackagePath="lib/netcoreapp2.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/lib/netcoreapp2.1/*.deps.json" Visible="false" PackagePath="lib/netcoreapp2.1/"/>
+        <Content Include="$(ProjectDir)bin/Release/lib/netcoreapp2.2/*.deps.json" Visible="false" PackagePath="lib/netcoreapp2.2/"/>
+        <Content Include="$(ProjectDir)bin/Release/lib/netcoreapp3.0/*.deps.json" Visible="false" PackagePath="lib/netcoreapp3.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/lib/netcoreapp3.1/*.deps.json" Visible="false" PackagePath="lib/netcoreapp3.1/"/>
+
+        <Content  Include="$(ProjectDir)bin/Release/lib/net461/*.deps.json" Visible="false" PackagePath="lib/net461/"/>
+        <Content  Include="$(ProjectDir)bin/Release/lib/net471/*.deps.json" Visible="false" PackagePath="lib/net471/"/>
+        <Content  Include="$(ProjectDir)bin/Release/lib/net472/*.deps.json" Visible="false" PackagePath="lib/net472/"/>
+        <Content  Include="$(ProjectDir)bin/Release/lib/net48/*.deps.json" Visible="false" PackagePath="lib/net48/"/>
+        <Content  Include="$(ProjectDir)bin/Release/lib/net481/*.deps.json" Visible="false" PackagePath="lib/net481/"/>
         
-        <Content  Include="$(ProjectDir)bin/Release/lib/net461/*" Visible="false" PackagePath="lib/net461/"/>
-        <Content  Include="$(ProjectDir)bin/Release/lib/net471/*" Visible="false" PackagePath="lib/net471/"/>
-        <Content  Include="$(ProjectDir)bin/Release/lib/net472/*" Visible="false" PackagePath="lib/net472/"/>
-        <Content  Include="$(ProjectDir)bin/Release/lib/net48/*" Visible="false" PackagePath="lib/net48/"/>
-        <Content  Include="$(ProjectDir)bin/Release/lib/net481/*" Visible="false" PackagePath="lib/net481/"/>
-        
-        <Content Include="$(ProjectDir)bin/Release/lib/netstandard2.0/*" Visible="false" PackagePath="lib/netstandard2.0/"/>
-        <Content Include="$(ProjectDir)bin/Release/lib/netstandard2.1/*" Visible="false" PackagePath="lib/netstandard2.1/"/>
+        <Content Include="$(ProjectDir)bin/Release/lib/netstandard2.0/*.deps.json" Visible="false" PackagePath="lib/netstandard2.0/"/>
+        <Content Include="$(ProjectDir)bin/Release/lib/netstandard2.1/*.deps.json" Visible="false" PackagePath="lib/netstandard2.1/"/>
 
         <!-- Include all the .dll runtimes of /lib/linux-arm64/lib/runtime -->
         <Content Include="$(ProjectDir)bin/Release/linux-arm64/lib/net5.0/*" Visible="false" PackagePath="runtimes/linux-arm64/lib/net5.0/"/>
