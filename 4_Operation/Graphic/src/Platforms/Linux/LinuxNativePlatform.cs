@@ -10,147 +10,390 @@ namespace Alis.Core.Graphic.Platforms.Linux
     /// <seealso cref="INativePlatform"/>
     public class LinuxNativePlatform : INativePlatform
     {
-        // Campos nativos
+        /// <summary>
+                /// 
+                /// </summary>
         private IntPtr display = IntPtr.Zero;
+        /// <summary>
+                /// 
+                /// </summary>
         private IntPtr window = IntPtr.Zero;
+        /// <summary>
+                /// 
+                /// </summary>
         private IntPtr glxContext = IntPtr.Zero;
-        private int width, height;
+        
+        /// <summary>
+                /// 
+                /// </summary>
+        private int width;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private int height;
+
+        /// <summary>
+                /// 
+                /// </summary>
         private string title;
+        
+        /// <summary>
+                /// 
+                /// </summary>
         private bool windowVisible = false;
+        
+        /// <summary>
+                /// 
+                /// </summary>
         private ConsoleKey? lastKeyPressed = null;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         private bool running = true;
 
-        // DllImports X11 y GLX
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="display"></param>
+        /// <returns></returns>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern IntPtr XOpenDisplay(IntPtr display);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern int XDefaultScreen(IntPtr display);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern IntPtr XRootWindow(IntPtr display, int screen);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern IntPtr XCreateSimpleWindow(IntPtr display, IntPtr parent, int x, int y, uint width, uint height, uint border_width, ulong border, ulong background);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern void XMapWindow(IntPtr display, IntPtr window);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern void XUnmapWindow(IntPtr display, IntPtr window);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern void XStoreName(IntPtr display, IntPtr window, string name);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern void XResizeWindow(IntPtr display, IntPtr window, uint width, uint height);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern void XDestroyWindow(IntPtr display, IntPtr window);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern void XCloseDisplay(IntPtr display);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern void XSelectInput(IntPtr display, IntPtr window, long eventMask);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern int XPending(IntPtr display);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern int XNextEvent(IntPtr display, ref XEvent xevent);
 
-        // GLX
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
         private static extern IntPtr glXChooseVisual(IntPtr display, int screen, int[] attribList);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
         private static extern IntPtr glXCreateContext(IntPtr display, IntPtr visual, IntPtr shareList, int direct);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
         private static extern void glXMakeCurrent(IntPtr display, IntPtr drawable, IntPtr ctx);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
         private static extern void glXSwapBuffers(IntPtr display, IntPtr drawable);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
         private static extern void glXDestroyContext(IntPtr display, IntPtr ctx);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
         private static extern IntPtr glXGetProcAddress(byte[] name);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
         private static extern IntPtr glXChooseFBConfig(IntPtr display, int screen, int[] attribList, out int nitems);
+        
+        /// <summary>
+        /// 
+        /// </summary>
         [System.Runtime.InteropServices.DllImport("libGL.so.1")]
         private static extern IntPtr glXGetVisualFromFBConfig(IntPtr display, IntPtr fbConfig);
 
         // Estructuras X11
-        private struct XEvent
-        {
-            public int type;
-            public IntPtr pad1;
-            public IntPtr pad2;
-            public IntPtr pad3;
-            public IntPtr pad4;
-            public IntPtr pad5;
-            public IntPtr pad6;
-            public IntPtr pad7;
-            public IntPtr pad8;
-            public IntPtr pad9;
-            public IntPtr pad10;
-            public IntPtr pad11;
-            public IntPtr pad12;
-            public IntPtr pad13;
-            public IntPtr pad14;
-            public IntPtr pad15;
-            public IntPtr pad16;
-            public IntPtr pad17;
-            public IntPtr pad18;
-            public IntPtr pad19;
-            public IntPtr pad20;
-            public IntPtr pad21;
-            public IntPtr pad22;
-            public IntPtr pad23;
-        }
+        /// <summary>
+        /// The visual info
+        /// </summary>
         [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
         private struct XVisualInfo
         {
+            /// <summary>
+            /// The visual
+            /// </summary>
             public IntPtr visual;
+            /// <summary>
+            /// The visualid
+            /// </summary>
             public IntPtr visualid;
+            /// <summary>
+            /// The screen
+            /// </summary>
             public int screen;
+            /// <summary>
+            /// The depth
+            /// </summary>
             public int depth;
+            /// <summary>
+            /// The cclass
+            /// </summary>
             public int cclass;
+            /// <summary>
+            /// The red mask
+            /// </summary>
             public ulong red_mask;
+            /// <summary>
+            /// The green mask
+            /// </summary>
             public ulong green_mask;
+            /// <summary>
+            /// The blue mask
+            /// </summary>
             public ulong blue_mask;
+            /// <summary>
+            /// The colormap size
+            /// </summary>
             public int colormap_size;
+            /// <summary>
+            /// The bits per rgb
+            /// </summary>
             public int bits_per_rgb;
         }
+        /// <summary>
+        /// Xes the create colormap using the specified display
+        /// </summary>
+        /// <param name="display">The display</param>
+        /// <param name="window">The window</param>
+        /// <param name="visual">The visual</param>
+        /// <param name="alloc">The alloc</param>
+        /// <returns>The int ptr</returns>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern IntPtr XCreateColormap(IntPtr display, IntPtr window, IntPtr visual, int alloc);
+        /// <summary>
+        /// Xes the create window using the specified display
+        /// </summary>
+        /// <param name="display">The display</param>
+        /// <param name="parent">The parent</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="border_width">The border width</param>
+        /// <param name="depth">The depth</param>
+        /// <param name="class_">The class</param>
+        /// <param name="visual">The visual</param>
+        /// <param name="valuemask">The valuemask</param>
+        /// <param name="attributes">The attributes</param>
+        /// <returns>The int ptr</returns>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern IntPtr XCreateWindow(IntPtr display, IntPtr parent, int x, int y, uint width, uint height, uint border_width, int depth, uint class_, IntPtr visual, ulong valuemask, ref XSetWindowAttributes attributes);
+        /// <summary>
+        /// The set window attributes
+        /// </summary>
         [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
         private struct XSetWindowAttributes
         {
+            /// <summary>
+            /// The background pixmap
+            /// </summary>
             public IntPtr background_pixmap;
+            /// <summary>
+            /// The background pixel
+            /// </summary>
             public ulong background_pixel;
+            /// <summary>
+            /// The border pixmap
+            /// </summary>
             public IntPtr border_pixmap;
+            /// <summary>
+            /// The border pixel
+            /// </summary>
             public ulong border_pixel;
+            /// <summary>
+            /// The bit gravity
+            /// </summary>
             public int bit_gravity;
+            /// <summary>
+            /// The win gravity
+            /// </summary>
             public int win_gravity;
+            /// <summary>
+            /// The backing store
+            /// </summary>
             public int backing_store;
+            /// <summary>
+            /// The backing planes
+            /// </summary>
             public ulong backing_planes;
+            /// <summary>
+            /// The backing pixel
+            /// </summary>
             public ulong backing_pixel;
+            /// <summary>
+            /// The save under
+            /// </summary>
             public int save_under;
+            /// <summary>
+            /// The event mask
+            /// </summary>
             public IntPtr event_mask;
+            /// <summary>
+            /// The do not propagate mask
+            /// </summary>
             public IntPtr do_not_propagate_mask;
+            /// <summary>
+            /// The override redirect
+            /// </summary>
             public int override_redirect;
+            /// <summary>
+            /// The colormap
+            /// </summary>
             public IntPtr colormap;
+            /// <summary>
+            /// The cursor
+            /// </summary>
             public IntPtr cursor;
         }
+        /// <summary>
+        /// Xes the get visual info using the specified display
+        /// </summary>
+        /// <param name="display">The display</param>
+        /// <param name="vinfo_mask">The vinfo mask</param>
+        /// <param name="vinfo_template">The vinfo template</param>
+        /// <param name="nitems">The nitems</param>
+        /// <returns>The int ptr</returns>
         [System.Runtime.InteropServices.DllImport("libX11.so.6")]
         private static extern IntPtr XGetVisualInfo(IntPtr display, long vinfo_mask, ref XVisualInfo vinfo_template, ref int nitems);
+        /// <summary>
+        /// The visual id mask
+        /// </summary>
         private const long VisualIDMask = 0x2;
 
         // Constantes de eventos X11
+        /// <summary>
+        /// The exposure mask
+        /// </summary>
         private const long ExposureMask = 0x00008000L;
+        /// <summary>
+        /// The key press mask
+        /// </summary>
         private const long KeyPressMask = 0x00000001L;
+        /// <summary>
+        /// The structure notify mask
+        /// </summary>
         private const long StructureNotifyMask = 0x00020000L;
+        /// <summary>
+        /// The key press
+        /// </summary>
         private const int KeyPress = 2;
+        /// <summary>
+        /// The destroy notify
+        /// </summary>
         private const int DestroyNotify = 17;
 
+        /// <summary>
+        /// The visual selection result
+        /// </summary>
         private struct VisualSelectionResult {
+            /// <summary>
+            /// The visual ptr
+            /// </summary>
             public IntPtr VisualPtr;
+            /// <summary>
+            /// The visual info
+            /// </summary>
             public XVisualInfo VisualInfo;
+            /// <summary>
+            /// The source
+            /// </summary>
             public string Source;
         }
+        /// <summary>
+        /// Prints the x visual info using the specified prefix
+        /// </summary>
+        /// <param name="prefix">The prefix</param>
+        /// <param name="info">The info</param>
+        /// <param name="ptr">The ptr</param>
         private void PrintXVisualInfo(string prefix, XVisualInfo info, IntPtr ptr)
         {
             Console.WriteLine($"{prefix} visual: ptr=0x{ptr.ToInt64():X}, visualid={info.visualid}, depth={info.depth}, class={info.cclass}, screen={info.screen}, colormap_size={info.colormap_size}, bits_per_rgb={info.bits_per_rgb}, red_mask=0x{info.red_mask:X}, green_mask=0x{info.green_mask:X}, blue_mask=0x{info.blue_mask:X}");
         }
+        /// <summary>
+        /// Gets the valid visual info using the specified display
+        /// </summary>
+        /// <param name="display">The display</param>
+        /// <param name="screen">The screen</param>
+        /// <returns>The visual selection result</returns>
         private VisualSelectionResult? GetValidVisualInfo(IntPtr display, int screen)
         {
             int[][] fbAttribSets = new int[][] {
@@ -209,6 +452,18 @@ namespace Alis.Core.Graphic.Platforms.Linux
             }
             return null;
         }
+        /// <summary>
+        /// Initializes the w
+        /// </summary>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        /// <param name="t">The </param>
+        /// <exception cref="Exception">[Init] Error creando el colormap</exception>
+        /// <exception cref="Exception">[Init] Error creando la ventana X11 (BadMatch): revisa el visual y el colormap</exception>
+        /// <exception cref="Exception">[Init] No se pudo abrir el display X11</exception>
+        /// <exception cref="Exception">[Init] No se pudo crear el contexto GLX</exception>
+        /// <exception cref="Exception">[Init] No se pudo obtener un visual GLX válido (ni FBConfig ni Visual). Verifica que tienes instalado libgl1-mesa-glx, libgl1-mesa-dev, libx11-dev y que estás usando X11, no Wayland.</exception>
+        /// <returns>The bool</returns>
         public bool Initialize(int w, int h, string t)
         {
             Console.WriteLine("[Init] Starting LinuxNativePlatform initialization...");
@@ -277,6 +532,9 @@ namespace Alis.Core.Graphic.Platforms.Linux
 
             return true;
         }
+        /// <summary>
+        /// Shows the window
+        /// </summary>
         public void ShowWindow()
         {
             if (display != IntPtr.Zero && window != IntPtr.Zero)
@@ -285,6 +543,9 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 windowVisible = true;
             }
         }
+        /// <summary>
+        /// Hides the window
+        /// </summary>
         public void HideWindow()
         {
             if (display != IntPtr.Zero && window != IntPtr.Zero)
@@ -293,6 +554,10 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 windowVisible = false;
             }
         }
+        /// <summary>
+        /// Sets the title using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
         public void SetTitle(string t)
         {
             if (display != IntPtr.Zero && window != IntPtr.Zero)
@@ -301,6 +566,11 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 title = t;
             }
         }
+        /// <summary>
+        /// Sets the size using the specified w
+        /// </summary>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
         public void SetSize(int w, int h)
         {
             if (display != IntPtr.Zero && window != IntPtr.Zero)
@@ -310,6 +580,9 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 height = h;
             }
         }
+        /// <summary>
+        /// Makes the context current
+        /// </summary>
         public void MakeContextCurrent()
         {
             if (display != IntPtr.Zero && window != IntPtr.Zero && glxContext != IntPtr.Zero)
@@ -317,6 +590,9 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 glXMakeCurrent(display, window, glxContext);
             }
         }
+        /// <summary>
+        /// Swaps the buffers
+        /// </summary>
         public void SwapBuffers()
         {
             if (display != IntPtr.Zero && window != IntPtr.Zero)
@@ -324,10 +600,18 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 glXSwapBuffers(display, window);
             }
         }
+        /// <summary>
+        /// Ises the window visible
+        /// </summary>
+        /// <returns>The window visible</returns>
         public bool IsWindowVisible()
         {
             return windowVisible;
         }
+        /// <summary>
+        /// Polls the events
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool PollEvents()
         {
             if (display == IntPtr.Zero || window == IntPtr.Zero)
@@ -348,6 +632,9 @@ namespace Alis.Core.Graphic.Platforms.Linux
             }
             return running && windowVisible;
         }
+        /// <summary>
+        /// Cleanups this instance
+        /// </summary>
         public void Cleanup()
         {
             if (display != IntPtr.Zero)
@@ -367,13 +654,31 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 display = IntPtr.Zero;
             }
         }
+        /// <summary>
+        /// Gets the window width
+        /// </summary>
+        /// <returns>The int</returns>
         public int GetWindowWidth() => width;
+        /// <summary>
+        /// Gets the window height
+        /// </summary>
+        /// <returns>The int</returns>
         public int GetWindowHeight() => height;
+        /// <summary>
+        /// Gets the proc address using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The int ptr</returns>
         public IntPtr GetProcAddress(string name)
         {
             byte[] bytes = System.Text.Encoding.ASCII.GetBytes(name + "\0");
             return glXGetProcAddress(bytes);
         }
+        /// <summary>
+        /// Tries the get last key pressed using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        /// <returns>The bool</returns>
         public bool TryGetLastKeyPressed(out ConsoleKey key)
         {
             if (lastKeyPressed.HasValue)

@@ -7,6 +7,9 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
     /// </summary>
     public enum LayerType : byte
     {
+        /// <summary>
+        /// 
+        /// </summary>
         MainPlane = 0
     }
 }

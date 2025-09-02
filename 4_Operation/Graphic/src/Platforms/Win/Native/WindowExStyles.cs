@@ -7,6 +7,9 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
     /// </summary>
     public enum WindowExStyles : int
     {
+        /// <summary>
+        /// 
+        /// </summary>
         None = 0
     }
 }
