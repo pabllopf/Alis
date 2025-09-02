@@ -425,6 +425,9 @@ jobs:
       - name: Publish to NuGet
         run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET }} --skip-duplicate
 
+      - name: Publish to NuGet
+        run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.snupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET }} --skip-duplicate
+
       - name: Publish to GitHub NuGet Feed
         run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
         
