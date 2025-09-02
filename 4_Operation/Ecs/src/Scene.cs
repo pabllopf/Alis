@@ -284,12 +284,12 @@ namespace Alis.Core.Ecs
         ///     Adds the event using the specified event
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="@event">The event</param>
+        /// <param name="e">The event</param>
         /// <param name="action">The action</param>
         /// <param name="flag">The flag</param>
-        private void AddEvent<T>(ref Event<T> @event, Action<GameObject, T> action, GameObjectFlags flag)
+        private void AddEvent<T>(ref Event<T> e, Action<GameObject, T> action, GameObjectFlags flag)
         {
-            @event.Add(action);
+            e.Add(action);
             WorldEventFlags |= flag;
         }
 
@@ -297,21 +297,19 @@ namespace Alis.Core.Ecs
         ///     Removes the event using the specified event
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="@event">The event</param>
+        /// <param name="e">The event</param>
         /// <param name="action">The action</param>
         /// <param name="flag">The flag</param>
-        private void RemoveEvent<T>(ref Event<T> @event, Action<GameObject, T> action, GameObjectFlags flag)
+        private void RemoveEvent<T>(ref Event<T> e, Action<GameObject, T> action, GameObjectFlags flag)
         {
-            @event.Remove(action);
-            if (!@event.HasListeners)
+            e.Remove(action);
+            if (!e.HasListeners)
                 WorldEventFlags &= ~flag;
         }
-
+        
         /// <summary>
-        ///     Creates a scene with zero entities and a uniform provider.
+        /// Initializes a new instance of the <see cref="Scene"/> class
         /// </summary>
-        /// <param name="uniformProvider">The initial uniform provider to be used.</param>
-        /// <param name="config">The inital config to use. If not provided, <see cref="Config.Singlethreaded" /> is used.</param>
         public Scene()
         {
             Id = _nextWorldId++;

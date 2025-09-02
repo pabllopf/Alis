@@ -243,23 +243,21 @@ namespace Alis.Extension.Graphic.Sfml.Windows
             sfWindow_setMouseCursorGrabbed(CPointer, grabbed);
         }
 
-        ////////////////////////////////////////////////////////////
+
         /// <summary>
-        /// Set the displayed cursor to a native system cursor
+        /// Sets the mouse cursor using the specified cursor
         /// </summary>
-        /// <param name="enable">True to enable v-sync, false to deactivate</param>
-        ////////////////////////////////////////////////////////////
+        /// <param name="cursor">The cursor</param>
         public virtual void SetMouseCursor(Cursor cursor)
         {
             sfWindow_setMouseCursor(CPointer, cursor.CPointer);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
-        /// Enable / disable vertical synchronization
+        /// Sets the vertical sync enabled using the specified enable
         /// </summary>
-        /// <param name="enable">True to enable v-sync, false to deactivate</param>
-        ////////////////////////////////////////////////////////////
+        /// <param name="enable">The enable</param>
         public virtual void SetVerticalSyncEnabled(bool enable)
         {
             sfWindow_setVerticalSyncEnabled(CPointer, enable);

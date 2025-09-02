@@ -187,11 +187,11 @@ namespace Alis.Core.Ecs
         ///     Invokes the component scene events using the specified event
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="@event">The event</param>
+        /// <param name="e">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeComponentWorldEvents<T>(ref Event<ComponentId> @event, GameObject gameObject)
+        private static void InvokeComponentWorldEvents<T>(ref Event<ComponentId> e, GameObject gameObject)
         {
-            @event.InvokeInternal(gameObject, Component<T>.Id);
+            e.InvokeInternal(gameObject, Component<T>.Id);
         }
 
         /// <summary>
@@ -217,11 +217,11 @@ namespace Alis.Core.Ecs
         ///     Invokes the tag scene events using the specified event
         /// </summary>
         /// <typeparam name="T">The </typeparam>
-        /// <param name="@event">The event</param>
+        /// <param name="e">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeTagWorldEvents<T>(ref Event<TagId> @event, GameObject gameObject)
+        private static void InvokeTagWorldEvents<T>(ref Event<TagId> e, GameObject gameObject)
         {
-            @event.InvokeInternal(gameObject, Kernel.Tag<T>.Id);
+            e.InvokeInternal(gameObject, Kernel.Tag<T>.Id);
         }
 
         /// <summary>

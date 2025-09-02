@@ -885,10 +885,10 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
-        /// <summary>
-        ///     Get the body transform for the body's origin.
-        /// </summary>
-        /// <param name="transform">The transform of the body's origin.</param>
+     /// <summary>
+     /// 
+     /// </summary>
+     /// <returns></returns>
         public ControllerTransform GetTransform() => Xf;
 
         /// <summary>

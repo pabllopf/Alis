@@ -361,9 +361,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     OnCollisionEventHandler onFixtureCollisionHandlerA = FixtureA.OnCollision;
                     if (onFixtureCollisionHandlerA != null)
                     {
-                        foreach (Delegate @delegate in onFixtureCollisionHandlerA.GetInvocationList())
+                        foreach (Delegate d in onFixtureCollisionHandlerA.GetInvocationList())
                         {
-                            OnCollisionEventHandler handler = (OnCollisionEventHandler) @delegate;
+                            OnCollisionEventHandler handler = (OnCollisionEventHandler) d;
                             enabledA = handler(FixtureA, FixtureB, this) && enabledA;
                         }
                     }
@@ -373,9 +373,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     OnCollisionEventHandler onFixtureCollisionHandlerB = FixtureB.OnCollision;
                     if (onFixtureCollisionHandlerB != null)
                     {
-                        foreach (Delegate @delegate in onFixtureCollisionHandlerB.GetInvocationList())
+                        foreach (Delegate d in onFixtureCollisionHandlerB.GetInvocationList())
                         {
-                            OnCollisionEventHandler handler = (OnCollisionEventHandler) @delegate;
+                            OnCollisionEventHandler handler = (OnCollisionEventHandler) d;
                             enabledB = handler(FixtureB, FixtureA, this) && enabledB;
                         }
                     }
@@ -384,9 +384,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     OnCollisionEventHandler onBodyCollisionHandlerA = bodyA.OnCollisionEventHandler;
                     if (onBodyCollisionHandlerA != null)
                     {
-                        foreach (Delegate @delegate in onBodyCollisionHandlerA.GetInvocationList())
+                        foreach (Delegate d in onBodyCollisionHandlerA.GetInvocationList())
                         {
-                            OnCollisionEventHandler handler = (OnCollisionEventHandler) @delegate;
+                            OnCollisionEventHandler handler = (OnCollisionEventHandler) d;
                             enabledA = handler(FixtureA, FixtureB, this) && enabledA;
                         }
                     }
@@ -396,9 +396,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     OnCollisionEventHandler onBodyCollisionHandlerB = bodyB.OnCollisionEventHandler;
                     if (onBodyCollisionHandlerB != null)
                     {
-                        foreach (Delegate @delegate in onBodyCollisionHandlerB.GetInvocationList())
+                        foreach (Delegate d in onBodyCollisionHandlerB.GetInvocationList())
                         {
-                            OnCollisionEventHandler handler = (OnCollisionEventHandler) @delegate;
+                            OnCollisionEventHandler handler = (OnCollisionEventHandler) d;
                             enabledB = handler(FixtureB, FixtureA, this) && enabledB;
                         }
                     }

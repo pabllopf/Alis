@@ -412,12 +412,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The cloned fixture.</returns>
         public Fixture CloneOnto(Body body) => CloneOnto(body, GetShape);
 
-        /// <summary>
-        ///     Clones the fixture and attached shape onto the specified body.
-        ///     Note: This is used only by Deserialization.
-        /// </summary>
-        /// <param name="body">The body you wish to clone the fixture onto.</param>
-        /// <returns>The cloned fixture.</returns>
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="body"></param>
+      /// <param name="shape"></param>
+      /// <returns></returns>
         internal Fixture CloneOnto(Body body, Shape shape)
         {
             Fixture fixture = new Fixture(shape.Clone());

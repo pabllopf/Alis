@@ -157,7 +157,6 @@ namespace Alis.Core.Ecs.Systems.Execution
         /// <summary>
         ///     Ons the save
         /// </summary>
-        /// <param name="path"></param>
         public void OnSave();
 
         /// <summary>

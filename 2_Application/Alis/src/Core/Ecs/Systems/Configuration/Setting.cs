@@ -55,16 +55,15 @@ namespace Alis.Core.Ecs.Systems.Configuration
             Physic = new PhysicSetting();
         }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Setting" /> class
-        /// </summary>
-        /// <param name="general">The general</param>
-        /// <param name="audio">The audio</param>
-        /// <param name="graphic">The graphic</param>
-        /// <param name="input">The input</param>
-        /// <param name="network">The network</param>
-        /// <param name="physic">The physic</param>
-        /// <param name="scene">The scene</param>
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="general"></param>
+      /// <param name="audio"></param>
+      /// <param name="graphic"></param>
+      /// <param name="input"></param>
+      /// <param name="network"></param>
+      /// <param name="physic"></param>
         
         public Setting(GeneralSetting general, AudioSetting audio, GraphicSetting graphic, InputSetting input, NetworkSetting network, PhysicSetting physic)
         {

@@ -43,13 +43,9 @@ namespace Alis.Core.Physic.Dynamics
     public partial class Body
     {
         /// <summary>
-        ///     Creates a fixture and attach it to this body.
-        ///     If the density is non-zero, this function automatically updates the mass of the body.
-        ///     Contacts are not created until the next time step.
-        ///     Warning: This method is locked during callbacks.
+        /// 
         /// </summary>
-        /// <param name="shape">The shape.</param>
-        /// <param name="userData">Application specific data</param>
+        /// <param name="shape"></param>
         /// <returns></returns>
         public virtual Fixture CreateFixture(Shape shape)
         {

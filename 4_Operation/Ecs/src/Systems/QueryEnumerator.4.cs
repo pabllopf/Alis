@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.Systems
         private Span<T4> _currentSpan4;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="QueryEnumerator" /> class
+        ///     Initializes a new instance of the  class
         /// </summary>
         /// <param name="query">The query</param>
         private QueryEnumerator(Query query)

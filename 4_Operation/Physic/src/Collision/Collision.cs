@@ -643,14 +643,14 @@ namespace Alis.Core.Physic.Collision
             return numOut;
         }
 
+     
         /// <summary>
-        ///     Find the separation between poly1 and poly2 for a give edge normal on poly1.
+        /// 
         /// </summary>
-        /// <param name="poly1">The poly1.</param>
-        /// <param name="xf1">The XF1.</param>
-        /// <param name="edge1">The edge1.</param>
-        /// <param name="poly2">The poly2.</param>
-        /// <param name="xf2">The XF2.</param>
+        /// <param name="poly1"></param>
+        /// <param name="xf1To2"></param>
+        /// <param name="edge1"></param>
+        /// <param name="poly2"></param>
         /// <returns></returns>
         private static float EdgeSeparation(PolygonShape poly1, ref ControllerTransform xf1To2, int edge1, PolygonShape poly2)
         {

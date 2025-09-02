@@ -91,6 +91,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         ///     Play audio
         /// </summary>
         /// <param name="extraInputParameters">Extra FFmpeg input parameters to be passed (example: -probesize 32)</param>
+        /// <param name="showWindow"></param>
         public void Play(string extraInputParameters = "", bool showWindow = false)
         {
             if (OpenedForWriting)
@@ -209,7 +210,9 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         /// </summary>
         /// <param name="format">Custom audio format</param>
         /// <param name="arguments">Custom FFmpeg arguments for the specified audio format</param>
+        /// <param name="ffplayProcess"></param>
         /// <param name="showFFplayOutput">Show FFplay output for debugging purposes.</param>
+        /// <param name="ffplayExecutable"></param>
         public static Stream GetStreamForWriting(string format, string arguments, out Process ffplayProcess,
             bool showFFplayOutput = false, string ffplayExecutable = "ffplay")
         {

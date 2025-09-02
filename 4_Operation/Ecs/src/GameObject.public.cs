@@ -600,12 +600,12 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Initalizes the event record using the specified delegate
         /// </summary>
-        /// <param name="@delegate">The delegate</param>
+        /// <param name="d">The delegate</param>
         /// <param name="flag">The flag</param>
         /// <param name="isGenericEvent">The is generic event</param>
-        private void InitalizeEventRecord(object @delegate, GameObjectFlags flag, bool isGenericEvent = false)
+        private void InitalizeEventRecord(object d, GameObjectFlags flag, bool isGenericEvent = false)
         {
-            if (@delegate is null || !InternalIsAlive(out Scene world, out GameObjectLocation entityLocation))
+            if (d is null || !InternalIsAlive(out Scene world, out GameObjectLocation entityLocation))
                 return;
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
             bool exists = entityLocation.HasEvent(flag);
@@ -621,24 +621,24 @@ namespace Alis.Core.Ecs
             {
                 case GameObjectFlags.AddComp:
                     if (isGenericEvent)
-                        record.Add.GenericEvent = (GenericEvent)@delegate;
+                        record.Add.GenericEvent = (GenericEvent)d;
                     else
-                        record.Add.NormalEvent.Add((Action<GameObject, ComponentId>)@delegate);
+                        record.Add.NormalEvent.Add((Action<GameObject, ComponentId>)d);
                     break;
                 case GameObjectFlags.RemoveComp:
                     if (isGenericEvent)
-                        record.Remove.GenericEvent = (GenericEvent)@delegate;
+                        record.Remove.GenericEvent = (GenericEvent)d;
                     else
-                        record.Remove.NormalEvent.Add((Action<GameObject, ComponentId>)@delegate);
+                        record.Remove.NormalEvent.Add((Action<GameObject, ComponentId>)d);
                     break;
                 case GameObjectFlags.Tagged:
-                    record.Tag.Add((Action<GameObject, TagId>)@delegate);
+                    record.Tag.Add((Action<GameObject, TagId>)d);
                     break;
                 case GameObjectFlags.Detach:
-                    record.Detach.Add((Action<GameObject, TagId>)@delegate);
+                    record.Detach.Add((Action<GameObject, TagId>)d);
                     break;
                 case GameObjectFlags.OnDelete:
-                    record.Delete.Push((Action<GameObject>)@delegate);
+                    record.Delete.Push((Action<GameObject>)d);
                     break;
             }
         }

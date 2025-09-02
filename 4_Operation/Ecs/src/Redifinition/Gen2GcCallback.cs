@@ -84,6 +84,9 @@ namespace Alis.Core.Ecs.Redifinition
             Gen2GcCallback gcCallback = new Gen2GcCallback(callback, targetObj);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         ~Gen2GcCallback()
         {
             if (_weakTargetObj.IsAllocated)

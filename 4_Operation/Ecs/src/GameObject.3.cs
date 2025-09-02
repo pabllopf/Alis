@@ -207,13 +207,13 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
         /// <typeparam name="T3">The </typeparam>
-        /// <param name="@event">The event</param>
+        /// <param name="e">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeComponentWorldEvents<T1, T2, T3>(ref Event<ComponentId> @event, GameObject gameObject)
+        private static void InvokeComponentWorldEvents<T1, T2, T3>(ref Event<ComponentId> e, GameObject gameObject)
         {
-            @event.InvokeInternal(gameObject, Component<T1>.Id);
-            @event.InvokeInternal(gameObject, Component<T2>.Id);
-            @event.InvokeInternal(gameObject, Component<T3>.Id);
+            e.InvokeInternal(gameObject, Component<T1>.Id);
+            e.InvokeInternal(gameObject, Component<T2>.Id);
+            e.InvokeInternal(gameObject, Component<T3>.Id);
         }
 
         /// <summary>
@@ -250,13 +250,13 @@ namespace Alis.Core.Ecs
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
         /// <typeparam name="T3">The </typeparam>
-        /// <param name="@event">The event</param>
+        /// <param name="e">The event</param>
         /// <param name="gameObject">The gameObject</param>
-        private static void InvokeTagWorldEvents<T1, T2, T3>(ref Event<TagId> @event, GameObject gameObject)
+        private static void InvokeTagWorldEvents<T1, T2, T3>(ref Event<TagId> e, GameObject gameObject)
         {
-            @event.InvokeInternal(gameObject, Kernel.Tag<T1>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T2>.Id);
-            @event.InvokeInternal(gameObject, Kernel.Tag<T3>.Id);
+            e.InvokeInternal(gameObject, Kernel.Tag<T1>.Id);
+            e.InvokeInternal(gameObject, Kernel.Tag<T2>.Id);
+            e.InvokeInternal(gameObject, Kernel.Tag<T3>.Id);
         }
 
         /// <summary>

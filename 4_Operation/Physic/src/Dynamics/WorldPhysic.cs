@@ -1871,21 +1871,17 @@ namespace Alis.Core.Physic.Dynamics
             return body;
         }
 
-        /// <summary>
-        ///     Creates a chain.
-        /// </summary>
-        /// <param name="world">The world.</param>
-        /// <param name="start">The start.</param>
-        /// <param name="end">The end.</param>
-        /// <param name="linkWidth">The width.</param>
-        /// <param name="linkHeight">The height.</param>
-        /// <param name="numberOfLinks">The number of links.</param>
-        /// <param name="linkDensity">The link density.</param>
-        /// <param name="attachRopeJoint">
-        ///     Creates a rope joint between start and end. This enforces the length of the rope. Said in
-        ///     another way: it makes the rope less bouncy.
-        /// </param>
-        /// <returns></returns>
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="start"></param>
+       /// <param name="end"></param>
+       /// <param name="linkWidth"></param>
+       /// <param name="linkHeight"></param>
+       /// <param name="numberOfLinks"></param>
+       /// <param name="linkDensity"></param>
+       /// <param name="attachRopeJoint"></param>
+       /// <returns></returns>
         public Path CreateChain(Vector2F start, Vector2F end, float linkWidth, float linkHeight, int numberOfLinks, float linkDensity, bool attachRopeJoint)
         {
             //Chain start / end

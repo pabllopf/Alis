@@ -34,7 +34,6 @@ namespace Alis.Extension.Plugin
     /// <summary>
     ///     The plugin manager interface
     /// </summary>
-    /// <seealso cref="IManager" />
     public interface IPluginSetting : ISetting
     {
     }

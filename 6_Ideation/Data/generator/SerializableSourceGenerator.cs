@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
+
 namespace Alis.Core.Aspect.Data.Generator
 {
     /// <summary>
@@ -53,6 +54,7 @@ namespace Alis.Core.Aspect.Data.Generator
         private string GenerateSerializationCode(INamedTypeSymbol typeSymbol)
         {
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine("#pragma warning disable CS1591 // Deshabilitar advertencia de comentario XML");
             sb.AppendLine("using System;");
             sb.AppendLine("using System.Linq;");
             sb.AppendLine("using System.Collections.Generic;");
@@ -366,7 +368,11 @@ namespace Alis.Core.Aspect.Data.Generator
 
             sb.AppendLine("    }");
             sb.AppendLine("}");
+            
+            sb.AppendLine("#pragma warning restore CS1591 // Restaurar advertencia de comentario XML");
+
             return sb.ToString();
         }
     }
 }
+
