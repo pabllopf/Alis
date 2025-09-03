@@ -283,16 +283,16 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <summary>
         /// Sfs the keyboard is key pressed using the specified key
         /// </summary>
-        /// <param name="Key">The key</param>
+        /// <param name="key">The key</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern bool sfKeyboard_isKeyPressed(Key Key);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern bool sfKeyboard_isKeyPressed(Key key);
 
         /// <summary>
         /// Sfs the keyboard set virtual keyboard visible using the specified visible
         /// </summary>
         /// <param name="visible">The visible</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         static extern void sfKeyboard_setVirtualKeyboardVisible(bool visible);
         #endregion
     }

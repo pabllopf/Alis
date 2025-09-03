@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Audios
@@ -154,7 +155,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// The default position of a sound is (0, 0, 0).
         /// </summary>
         
-        public Vector3f Position
+        public Vector3F Position
         {
             get { return sfSoundStream_getPosition(CPointer); }
             set { sfSoundStream_setPosition(CPointer, value); }
@@ -342,13 +343,13 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// The get data callback type
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate bool GetDataCallbackType(ref Chunk dataChunk, IntPtr UserData);
+        private delegate bool GetDataCallbackType(ref Chunk dataChunk, IntPtr userData);
 
         /// <summary>
         /// The seek callback type
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate void SeekCallbackType(Time timeOffset, IntPtr UserData);
+        private delegate void SeekCallbackType(Time timeOffset, IntPtr userData);
 
         /// <summary>
         /// The my get data callback
@@ -367,194 +368,194 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <summary>
         /// Sfs the sound stream create using the specified on get data
         /// </summary>
-        /// <param name="OnGetData">The on get data</param>
-        /// <param name="OnSeek">The on seek</param>
-        /// <param name="ChannelCount">The channel count</param>
-        /// <param name="SampleRate">The sample rate</param>
-        /// <param name="UserData">The user data</param>
+        /// <param name="onGetData">The on get data</param>
+        /// <param name="onSeek">The on seek</param>
+        /// <param name="channelCount">The channel count</param>
+        /// <param name="sampleRate">The sample rate</param>
+        /// <param name="userData">The user data</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern IntPtr sfSoundStream_create(GetDataCallbackType OnGetData, SeekCallbackType OnSeek, uint ChannelCount, uint SampleRate, IntPtr UserData);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern IntPtr sfSoundStream_create(GetDataCallbackType onGetData, SeekCallbackType onSeek, uint channelCount, uint sampleRate, IntPtr userData);
 
         /// <summary>
         /// Sfs the sound stream destroy using the specified sound stream stream
         /// </summary>
-        /// <param name="SoundStreamStream">The sound stream stream</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundStream_destroy(IntPtr SoundStreamStream);
+        /// <param name="soundStreamStream">The sound stream stream</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern void sfSoundStream_destroy(IntPtr soundStreamStream);
 
         /// <summary>
         /// Sfs the sound stream play using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundStream_play(IntPtr SoundStream);
+        /// <param name="soundStream">The sound stream</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern void sfSoundStream_play(IntPtr soundStream);
 
         /// <summary>
         /// Sfs the sound stream pause using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundStream_pause(IntPtr SoundStream);
+        /// <param name="soundStream">The sound stream</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern void sfSoundStream_pause(IntPtr soundStream);
 
         /// <summary>
         /// Sfs the sound stream stop using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundStream_stop(IntPtr SoundStream);
+        /// <param name="soundStream">The sound stream</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern void sfSoundStream_stop(IntPtr soundStream);
 
         /// <summary>
         /// Sfs the sound stream get status using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
+        /// <param name="soundStream">The sound stream</param>
         /// <returns>The sound status</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern SoundStatus sfSoundStream_getStatus(IntPtr SoundStream);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern SoundStatus sfSoundStream_getStatus(IntPtr soundStream);
 
         /// <summary>
         /// Sfs the sound stream get channel count using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
+        /// <param name="soundStream">The sound stream</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern uint sfSoundStream_getChannelCount(IntPtr SoundStream);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern uint sfSoundStream_getChannelCount(IntPtr soundStream);
 
         /// <summary>
         /// Sfs the sound stream get sample rate using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
+        /// <param name="soundStream">The sound stream</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern uint sfSoundStream_getSampleRate(IntPtr SoundStream);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern uint sfSoundStream_getSampleRate(IntPtr soundStream);
 
         /// <summary>
         /// Sfs the sound stream set loop using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
-        /// <param name="Loop">The loop</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundStream_setLoop(IntPtr SoundStream, bool Loop);
+        /// <param name="soundStream">The sound stream</param>
+        /// <param name="loop">The loop</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern void sfSoundStream_setLoop(IntPtr soundStream, bool loop);
 
         /// <summary>
         /// Sfs the sound stream set pitch using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
-        /// <param name="Pitch">The pitch</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundStream_setPitch(IntPtr SoundStream, float Pitch);
+        /// <param name="soundStream">The sound stream</param>
+        /// <param name="pitch">The pitch</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern void sfSoundStream_setPitch(IntPtr soundStream, float pitch);
 
         /// <summary>
         /// Sfs the sound stream set volume using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
-        /// <param name="Volume">The volume</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundStream_setVolume(IntPtr SoundStream, float Volume);
+        /// <param name="soundStream">The sound stream</param>
+        /// <param name="volume">The volume</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern void sfSoundStream_setVolume(IntPtr soundStream, float volume);
 
         /// <summary>
         /// Sfs the sound stream set position using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
+        /// <param name="soundStream">The sound stream</param>
         /// <param name="position">The position</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundStream_setPosition(IntPtr SoundStream, Vector3f position);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern void sfSoundStream_setPosition(IntPtr soundStream, Vector3F position);
 
         /// <summary>
         /// Sfs the sound stream set relative to listener using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
-        /// <param name="Relative">The relative</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundStream_setRelativeToListener(IntPtr SoundStream, bool Relative);
+        /// <param name="soundStream">The sound stream</param>
+        /// <param name="relative">The relative</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern void sfSoundStream_setRelativeToListener(IntPtr soundStream, bool relative);
 
         /// <summary>
         /// Sfs the sound stream set min distance using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
-        /// <param name="MinDistance">The min distance</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundStream_setMinDistance(IntPtr SoundStream, float MinDistance);
+        /// <param name="soundStream">The sound stream</param>
+        /// <param name="minDistance">The min distance</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern void sfSoundStream_setMinDistance(IntPtr soundStream, float minDistance);
 
         /// <summary>
         /// Sfs the sound stream set attenuation using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
-        /// <param name="Attenuation">The attenuation</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundStream_setAttenuation(IntPtr SoundStream, float Attenuation);
+        /// <param name="soundStream">The sound stream</param>
+        /// <param name="attenuation">The attenuation</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern void sfSoundStream_setAttenuation(IntPtr soundStream, float attenuation);
 
         /// <summary>
         /// Sfs the sound stream set playing offset using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
-        /// <param name="TimeOffset">The time offset</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundStream_setPlayingOffset(IntPtr SoundStream, Time TimeOffset);
+        /// <param name="soundStream">The sound stream</param>
+        /// <param name="timeOffset">The time offset</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern void sfSoundStream_setPlayingOffset(IntPtr soundStream, Time timeOffset);
 
         /// <summary>
         /// Sfs the sound stream get loop using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
+        /// <param name="soundStream">The sound stream</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern bool sfSoundStream_getLoop(IntPtr SoundStream);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern bool sfSoundStream_getLoop(IntPtr soundStream);
 
         /// <summary>
         /// Sfs the sound stream get pitch using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
+        /// <param name="soundStream">The sound stream</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern float sfSoundStream_getPitch(IntPtr SoundStream);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern float sfSoundStream_getPitch(IntPtr soundStream);
 
         /// <summary>
         /// Sfs the sound stream get volume using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
+        /// <param name="soundStream">The sound stream</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern float sfSoundStream_getVolume(IntPtr SoundStream);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern float sfSoundStream_getVolume(IntPtr soundStream);
 
         /// <summary>
         /// Sfs the sound stream get position using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
+        /// <param name="soundStream">The sound stream</param>
         /// <returns>The vector 3f</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern Vector3f sfSoundStream_getPosition(IntPtr SoundStream);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern Vector3F sfSoundStream_getPosition(IntPtr soundStream);
 
         /// <summary>
         /// Sfs the sound stream is relative to listener using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
+        /// <param name="soundStream">The sound stream</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern bool sfSoundStream_isRelativeToListener(IntPtr SoundStream);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern bool sfSoundStream_isRelativeToListener(IntPtr soundStream);
 
         /// <summary>
         /// Sfs the sound stream get min distance using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
+        /// <param name="soundStream">The sound stream</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern float sfSoundStream_getMinDistance(IntPtr SoundStream);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern float sfSoundStream_getMinDistance(IntPtr soundStream);
 
         /// <summary>
         /// Sfs the sound stream get attenuation using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
+        /// <param name="soundStream">The sound stream</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern float sfSoundStream_getAttenuation(IntPtr SoundStream);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern float sfSoundStream_getAttenuation(IntPtr soundStream);
 
         /// <summary>
         /// Sfs the sound stream get playing offset using the specified sound stream
         /// </summary>
-        /// <param name="SoundStream">The sound stream</param>
+        /// <param name="soundStream">The sound stream</param>
         /// <returns>The time</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern Time sfSoundStream_getPlayingOffset(IntPtr SoundStream);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        static extern Time sfSoundStream_getPlayingOffset(IntPtr soundStream);
         #endregion
     }
 }

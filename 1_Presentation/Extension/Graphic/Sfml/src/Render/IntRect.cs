@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Render
@@ -22,7 +23,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="width">Width of the rectangle</param>
         /// <param name="height">Height of the rectangle</param>
         
-        public IntRect(int left, int top, int width, int height)
+        public IntRect(float left, float top, float width, float height)
         {
             Left = left;
             Top = top;
@@ -37,7 +38,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="position">Position of the top-left corner of the rectangle</param>
         /// <param name="size">Size of the rectangle</param>
         
-        public IntRect(Vector2i position, Vector2i size)
+        public IntRect(Vector2F position, Vector2F size)
             : this(position.X, position.Y, size.X, size.Y)
         {
         }
@@ -52,10 +53,10 @@ namespace Alis.Extension.Graphic.Sfml.Render
         
         public bool Contains(int x, int y)
         {
-            int minX = Math.Min(Left, Left + Width);
-            int maxX = Math.Max(Left, Left + Width);
-            int minY = Math.Min(Top, Top + Height);
-            int maxY = Math.Max(Top, Top + Height);
+            float minX = Math.Min(Left, Left + Width);
+            float maxX = Math.Max(Left, Left + Width);
+            float minY = Math.Min(Top, Top + Height);
+            float maxY = Math.Max(Top, Top + Height);
 
             return ( x >= minX ) && ( x < maxX ) && ( y >= minY ) && ( y < maxY );
         }
@@ -86,22 +87,22 @@ namespace Alis.Extension.Graphic.Sfml.Render
             // Rectangles with negative dimensions are allowed, so we must handle them correctly
 
             // Compute the min and max of the first rectangle on both axes
-            int r1MinX = Math.Min(Left, Left + Width);
-            int r1MaxX = Math.Max(Left, Left + Width);
-            int r1MinY = Math.Min(Top, Top + Height);
-            int r1MaxY = Math.Max(Top, Top + Height);
+            float r1MinX = Math.Min(Left, Left + Width);
+            float r1MaxX = Math.Max(Left, Left + Width);
+            float r1MinY = Math.Min(Top, Top + Height);
+            float r1MaxY = Math.Max(Top, Top + Height);
 
             // Compute the min and max of the second rectangle on both axes
-            int r2MinX = Math.Min(rect.Left, rect.Left + rect.Width);
-            int r2MaxX = Math.Max(rect.Left, rect.Left + rect.Width);
-            int r2MinY = Math.Min(rect.Top, rect.Top + rect.Height);
-            int r2MaxY = Math.Max(rect.Top, rect.Top + rect.Height);
+            float r2MinX = Math.Min(rect.Left, rect.Left + rect.Width);
+            float r2MaxX = Math.Max(rect.Left, rect.Left + rect.Width);
+            float r2MinY = Math.Min(rect.Top, rect.Top + rect.Height);
+            float r2MaxY = Math.Max(rect.Top, rect.Top + rect.Height);
 
             // Compute the intersection boundaries
-            int interLeft = Math.Max(r1MinX, r2MinX);
-            int interTop = Math.Max(r1MinY, r2MinY);
-            int interRight = Math.Min(r1MaxX, r2MaxX);
-            int interBottom = Math.Min(r1MaxY, r2MaxY);
+            float interLeft = Math.Max(r1MinX, r2MinX);
+            float interTop = Math.Max(r1MinY, r2MinY);
+            float interRight = Math.Min(r1MaxX, r2MaxX);
+            float interBottom = Math.Min(r1MaxY, r2MaxY);
 
             // If the intersection is valid (positive non zero area), then there is an intersection
             if (( interLeft < interRight ) && ( interTop < interBottom ))
@@ -207,16 +208,16 @@ namespace Alis.Extension.Graphic.Sfml.Render
         }
 
         /// <summary>Left coordinate of the rectangle</summary>
-        public int Left;
+        public float Left;
 
         /// <summary>Top coordinate of the rectangle</summary>
-        public int Top;
+        public float Top;
 
         /// <summary>Width of the rectangle</summary>
-        public int Width;
+        public float Width;
 
         /// <summary>Height of the rectangle</summary>
-        public int Height;
+        public float Height;
     }
 
     

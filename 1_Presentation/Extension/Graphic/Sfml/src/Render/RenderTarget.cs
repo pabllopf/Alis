@@ -8,14 +8,14 @@ namespace Alis.Extension.Graphic.Sfml.Render
     /// Abstract base class for render targets (renderwindow, renderimage)
     /// </summary>
     
-    public interface RenderTarget
+    public interface IRenderTarget
     {
         
         /// <summary>
         /// Size of the rendering region of the target
         /// </summary>
         ////////////////////////////////////////////////////////////
-        Vector2u Size { get; }
+        Vector2F Size { get; }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="point">Pixel to convert</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         ////////////////////////////////////////////////////////////
-        Vector2F MapPixelToCoords(Vector2i point);
+        Vector2F MapPixelToCoords(Vector2F point);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -90,7 +90,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         ////////////////////////////////////////////////////////////
-        Vector2F MapPixelToCoords(Vector2i point, View view);
+        Vector2F MapPixelToCoords(Vector2F point, View view);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="point">Point to convert</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         ////////////////////////////////////////////////////////////
-        Vector2i MapCoordsToPixel(Vector2F point);
+        Vector2F MapCoordsToPixel(Vector2F point);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -129,7 +129,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         ////////////////////////////////////////////////////////////
-        Vector2i MapCoordsToPixel(Vector2F point, View view);
+        Vector2F MapCoordsToPixel(Vector2F point, View view);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -152,7 +152,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="drawable">Object to draw</param>
         ////////////////////////////////////////////////////////////
-        void Draw(Drawable drawable);
+        void Draw(IDrawable drawable);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -161,7 +161,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="drawable">Object to draw</param>
         /// <param name="states">Render states to use for drawing</param>
         ////////////////////////////////////////////////////////////
-        void Draw(Drawable drawable, RenderStates states);
+        void Draw(IDrawable drawable, RenderStates states);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -235,7 +235,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// function if you do so.
         /// </summary>
         ////////////////////////////////////////////////////////////
-        void PushGLStates();
+        void PushGlStates();
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// description of these functions.
         /// </summary>
         ////////////////////////////////////////////////////////////
-        void PopGLStates();
+        void PopGlStates();
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -268,6 +268,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// // OpenGL code here...
         /// </summary>
         ////////////////////////////////////////////////////////////
-        void ResetGLStates();
+        void ResetGlStates();
     }
 }
