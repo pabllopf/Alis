@@ -29,10 +29,8 @@
 
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Collider;
-using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Builder.Core.Ecs.Components.Collider
@@ -128,10 +126,7 @@ namespace Alis.Builder.Core.Ecs.Components.Collider
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder IsActive(bool value)
-        {
-            return this;
-        }
+        public BoxColliderBuilder IsActive(bool value) => this;
 
         /// <summary>
         ///     Is the trigger

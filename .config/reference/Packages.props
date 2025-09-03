@@ -51,11 +51,11 @@
     $(AssemblyName.Contains('Sample')) == false">
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
     </ItemGroup>
-    
+
 
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Benchmark')) == true">
         <PackageReference Include="BenchmarkDotNet" Version="0.14.0"/>
-        
+
         <PackageReference Include="Arch.System" Version="1.0.5"/>
         <PackageReference Include="Arch.System.SourceGenerator" Version="1.2.1"/>
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0" PrivateAssets="all"/>
@@ -81,7 +81,7 @@
         <PackageReference Include="Svelto.Common" Version="3.5.2"/>
         <PackageReference Include="Flecs.NET.Release" Version="3.2.11"/>
     </ItemGroup>
-    
+
     <ItemGroup Condition="
     $(TargetFramework.Equals('net461')) OR
     $(TargetFramework.Equals('net462')) OR 
@@ -118,6 +118,5 @@
         <PackageReference Include="System.Memory" Version="4.6.2"/>
     </ItemGroup>
 
-    
 
 </Project>

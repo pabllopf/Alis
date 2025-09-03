@@ -49,18 +49,9 @@ namespace Alis.App.Engine.Menus
         public DockSpaceMenu(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
         /// <summary>
-        ///     Initializes this instance
+        ///     Gets the value of the space work
         /// </summary>
-        public void Initialize()
-        {
-        }
-
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public void Start()
-        {
-        }
+        public SpaceWork SpaceWork { get; }
 
         /// <summary>
         ///     Renders this instance
@@ -84,6 +75,20 @@ namespace Alis.App.Engine.Menus
                 ImGui.PopStyleVar();
                 ImGui.EndMenuBar();
             }
+        }
+
+        /// <summary>
+        ///     Initializes this instance
+        /// </summary>
+        public void Initialize()
+        {
+        }
+
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        public void Start()
+        {
         }
 
         /// <summary>
@@ -115,7 +120,7 @@ namespace Alis.App.Engine.Menus
             string currentProjectName = "Sample Project"; // Replace with logic to fetch the actual project name
 
             // Get the list of recent projects (placeholder logic, replace with actual implementation)
-            List<string> recentProjects = new List<string> { "Project A", "Project B", "Project C" }; // Replace with logic to fetch recent projects
+            List<string> recentProjects = new List<string> {"Project A", "Project B", "Project C"}; // Replace with logic to fetch recent projects
 
             ImGui.SetNextItemWidth(150);
             if (ImGui.BeginCombo("##Solution Name", currentProjectName, ImGuiComboFlags.HeightLarge))
@@ -147,7 +152,7 @@ namespace Alis.App.Engine.Menus
             ImGui.SameLine();
         }
 
-       
+
         /// <summary>
         ///     Renders control buttons (e.g., Play, Pause, Stop)
         /// </summary>
@@ -225,10 +230,5 @@ namespace Alis.App.Engine.Menus
                 SpaceWork.PreferencesWindow.Open();
             }
         }
-
-        /// <summary>
-        ///     Gets the value of the space work
-        /// </summary>
-        public SpaceWork SpaceWork { get; }
     }
 }

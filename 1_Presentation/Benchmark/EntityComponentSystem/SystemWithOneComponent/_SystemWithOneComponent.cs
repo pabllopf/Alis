@@ -35,8 +35,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
     /// <summary>
     ///     The system with one component class
     /// </summary>
-    [BenchmarkCategory(Categories.System), Orderer(SummaryOrderPolicy.FastestToSlowest)]
-    [Config(typeof(CustomConfig))]
+    [BenchmarkCategory(Categories.System), Orderer(SummaryOrderPolicy.FastestToSlowest), Config(typeof(CustomConfig))]
 #if CHECK_CACHE_MISSES
     [HardwareCounters(BenchmarkDotNet.Diagnosers.HardwareCounter.CacheMisses)]
 #endif

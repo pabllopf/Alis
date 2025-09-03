@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Dynamics.Joints
@@ -82,9 +81,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorA
         {
             get => BodyA.Position;
-            set
-            {
-            }
+            set { }
         }
 
         /// <summary>

@@ -234,7 +234,7 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        /// Tans the pi
+        ///     Tans the pi
         /// </summary>
         /// <param name="pi">The pi</param>
         /// <returns>The float</returns>

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common.Decomposition.Seidel;
 using Point = Alis.Core.Physic.Common.Decomposition.Seidel.Point;

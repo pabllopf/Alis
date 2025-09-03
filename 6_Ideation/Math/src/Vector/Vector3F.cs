@@ -260,7 +260,7 @@ namespace Alis.Core.Aspect.Math.Vector
         public readonly float Length()
         {
             float lengthSquared = LengthSquared();
-            return (float)System.Math.Sqrt(lengthSquared);
+            return (float) System.Math.Sqrt(lengthSquared);
         }
 
         /// <summary>Returns the length of the vector squared.</summary>
@@ -310,15 +310,12 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     Strings
         /// </related>
         /// <related type="Article" href="/dotnet/standard/base-types/custom-numeric-format-strings">Custom Numeric Format Strings</related>
-        public readonly string ToString(string format, IFormatProvider formatProvider)
-        {
-            return string.Format(
-                formatProvider,
-                "<{0}, {1}, {2}>",
-                X.ToString(format, formatProvider),
-                Y.ToString(format, formatProvider),
-                Z.ToString(format, formatProvider)
-            );
-        }
+        public readonly string ToString(string format, IFormatProvider formatProvider) => string.Format(
+            formatProvider,
+            "<{0}, {1}, {2}>",
+            X.ToString(format, formatProvider),
+            Y.ToString(format, formatProvider),
+            Z.ToString(format, formatProvider)
+        );
     }
 }

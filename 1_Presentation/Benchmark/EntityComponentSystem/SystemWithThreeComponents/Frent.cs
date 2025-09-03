@@ -123,7 +123,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         ///     The sum
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct Sum : IAction<Component1, Component2, Component3>
+        public struct Sum : IAction<Component1, Component2, Component3>
         {
             /// <summary>
             ///     Runs the t 0

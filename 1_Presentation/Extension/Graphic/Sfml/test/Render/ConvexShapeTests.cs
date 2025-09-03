@@ -1,37 +1,66 @@
-using Xunit;
-using Alis.Extension.Graphic.Sfml.Render;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ConvexShapeTests.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Sfml.Render;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
     /// <summary>
-    /// The convex shape tests class
+    ///     The convex shape tests class
     /// </summary>
     public class ConvexShapeTests
     {
         /// <summary>
-        /// Tests that constructor sets point count
+        ///     Tests that constructor sets point count
         /// </summary>
         [Fact]
         public void Constructor_SetsPointCount()
         {
             ConvexShape shape = new ConvexShape(3);
-            Assert.Equal((uint)3, shape.GetPointCount());
+            Assert.Equal((uint) 3, shape.GetPointCount());
         }
 
         /// <summary>
-        /// Tests that set point count changes point count
+        ///     Tests that set point count changes point count
         /// </summary>
         [Fact]
         public void SetPointCount_ChangesPointCount()
         {
             ConvexShape shape = new ConvexShape(2);
             shape.SetPointCount(5);
-            Assert.Equal((uint)5, shape.GetPointCount());
+            Assert.Equal((uint) 5, shape.GetPointCount());
         }
 
         /// <summary>
-        /// Tests that set and get point works
+        ///     Tests that set and get point works
         /// </summary>
         [Fact]
         public void SetAndGetPoint_Works()
@@ -43,7 +72,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        /// Tests that copy constructor copies points
+        ///     Tests that copy constructor copies points
         /// </summary>
         [Fact]
         public void CopyConstructor_CopiesPoints()
@@ -58,4 +87,3 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
     }
 }
-

@@ -43,9 +43,9 @@ namespace Alis.App.Engine.Windows
         ///     The info circle
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.InfoCircle} Inspector";
-        
+
         /// <summary>
-        /// The is open
+        ///     The is open
         /// </summary>
         private bool _isOpen = true;
 
@@ -53,13 +53,10 @@ namespace Alis.App.Engine.Windows
         ///     Initializes a new instance of the <see cref="InspectorWindow" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public InspectorWindow(SpaceWork spaceWork)
-        {
-            this.SpaceWork = spaceWork;
-        }
-        
+        public InspectorWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
+
         /// <summary>
-        /// Gets the value of the space work
+        ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
@@ -78,7 +75,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
@@ -87,12 +84,12 @@ namespace Alis.App.Engine.Windows
                 return;
             }
 
-            if(ImGui.Begin(NameWindow, ref _isOpen, ImGuiWindowFlags.NoCollapse))
+            if (ImGui.Begin(NameWindow, ref _isOpen, ImGuiWindowFlags.NoCollapse))
             {
                 ImGui.Text("Inspector Window");
                 ImGui.Text("This is a placeholder for the inspector functionality.");
             }
-            
+
             ImGui.End();
         }
     }

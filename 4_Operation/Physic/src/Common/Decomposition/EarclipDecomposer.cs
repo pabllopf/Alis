@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
@@ -53,10 +52,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// </summary>
         /// <param name="vertices">The vertices.</param>
         /// <param name="tolerance">The tolerance.</param>
-        public static List<Vertices> ConvexPartition(Vertices vertices, float tolerance = 0.001f)
-        {
-            return TriangulatePolygon(vertices, tolerance);
-        }
+        public static List<Vertices> ConvexPartition(Vertices vertices, float tolerance = 0.001f) => TriangulatePolygon(vertices, tolerance);
 
         /// <summary>
         ///     Triangulates a polygon using simple ear-clipping algorithm. Returns

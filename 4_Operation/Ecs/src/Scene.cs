@@ -1,9 +1,37 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Scene.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
-
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
@@ -22,89 +50,44 @@ namespace Alis.Core.Ecs
     public partial class Scene : IDisposable
     {
         /// <summary>
+        ///     The deferred gameObject operation recursion limit
+        /// </summary>
+        private const int DeferredEntityOperationRecursionLimit = 200;
+
+        /// <summary>
         ///     The next scene id
         /// </summary>
         private static ushort _nextWorldId = 1;
-        
-        //entityID -> gameObject metadata
-        /// <summary>
-        ///     The gameObject location
-        /// </summary>
-        
-        public FastestTable<GameObjectLocation> EntityTable = new FastestTable<GameObjectLocation>(256);
-
-        //archetype ID -> Archetype?
-        /// <summary>
-        ///     The scene archetype table
-        /// </summary>
-        
-        public WorldArchetypeTableItem[] WorldArchetypeTable;
-
-        /// <summary>
-        ///     The archetype graph edges
-        /// </summary>
-        
-        public Dictionary<ArchetypeEdgeKey, Archetype> ArchetypeGraphEdges = [];
-
-        /// <summary>
-        ///     The gameObject id only
-        /// </summary>
-        
-        public FastestStack<GameObjectIdOnly> RecycledEntityIds = new FastestStack<GameObjectIdOnly>(256);
-
-        /// <summary>
-        ///     The updates by attributes
-        /// </summary>
-        
-        private readonly Dictionary<Type, SceneUpdateFilter> _updatesByAttributes = [];
-
-        /// <summary>
-        ///     The single component updates
-        /// </summary>
-        
-        private readonly Dictionary<ComponentId, SingleComponentUpdateFilter> _singleComponentUpdates = [];
-
-        /// <summary>
-        ///     The next gameObject id
-        /// </summary>
-        
-        public int NextEntityId;
-
-        /// <summary>
-        ///     The id
-        /// </summary>
-        
-        public readonly ushort Id;
-
-        /// <summary>
-        ///     The default scene gameObject
-        /// </summary>
-        
-        public readonly GameObject DefaultWorldGameObject;
-
-        /// <summary>
-        ///     The query cache
-        /// </summary>
-        
-        public Dictionary<int, Query> QueryCache = [];
-
-        /// <summary>
-        ///     Gets the value of the shared countdown
-        /// </summary>
-        
-        public CountdownEvent SharedCountdown => _sharedCountdown;
 
         /// <summary>
         ///     The shared countdown
         /// </summary>
-        
         private readonly CountdownEvent _sharedCountdown = new(0);
 
         /// <summary>
-        ///     The create
+        ///     The single component updates
         /// </summary>
-        
-        public FastestStack<GameObjectType> EnabledArchetypes = FastestStack<GameObjectType>.Create(16);
+        private readonly Dictionary<ComponentId, SingleComponentUpdateFilter> _singleComponentUpdates = [];
+
+        /// <summary>
+        ///     The updates by attributes
+        /// </summary>
+        private readonly Dictionary<Type, SceneUpdateFilter> _updatesByAttributes = [];
+
+        /// <summary>
+        ///     The default archetype
+        /// </summary>
+        public readonly Archetype DefaultArchetype;
+
+        /// <summary>
+        ///     The default scene gameObject
+        /// </summary>
+        public readonly GameObject DefaultWorldGameObject;
+
+        /// <summary>
+        ///     The id
+        /// </summary>
+        public readonly ushort Id;
 
         // -1: normal state
         // 0: some kind of transition in End/Enter
@@ -112,24 +95,30 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The allow structural changes
         /// </summary>
-        
         private int _allowStructuralChanges = -1;
 
         /// <summary>
-        ///     The scene update command buffer
+        ///     The create
         /// </summary>
-        
-        public CommandBuffer WorldUpdateCommandBuffer;
+        private FastestStack<ArchetypeDeferredUpdateRecord> _altDeferredCreationArchetypes =
+            FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
+
+        //these lookups exists for programmical api optimization
+        //normal <T1, T2...> methods use a shared global static cache
+        /// <summary>
+        ///     The add component lookup
+        /// </summary>
+        public FastLookup AddComponentLookup = new();
 
         /// <summary>
-        ///     The gameObject only event
+        ///     The add tag lookup
         /// </summary>
-        public GameObjectOnlyEvent EntityCreatedEvent = new GameObjectOnlyEvent();
+        public FastLookup AddTagLookup = new();
 
         /// <summary>
-        ///     The gameObject only event
+        ///     The archetype graph edges
         /// </summary>
-        public GameObjectOnlyEvent EntityDeletedEvent = new GameObjectOnlyEvent();
+        public Dictionary<ArchetypeEdgeKey, Archetype> ArchetypeGraphEdges = [];
 
         /// <summary>
         ///     The component id
@@ -142,38 +131,77 @@ namespace Alis.Core.Ecs
         public Event<ComponentId> ComponentRemovedEvent = new Event<ComponentId>();
 
         /// <summary>
-        ///     The tag event
+        ///     The create
         /// </summary>
-        public Event<TagId> Tagged = new Event<TagId>();
+        public FastestStack<ArchetypeDeferredUpdateRecord> DeferredCreationArchetypes =
+            FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
 
         /// <summary>
         ///     The tag event
         /// </summary>
         public Event<TagId> Detached = new Event<TagId>();
 
-        //these lookups exists for programmical api optimization
-        //normal <T1, T2...> methods use a shared global static cache
         /// <summary>
-        ///     The add component lookup
+        ///     The create
         /// </summary>
-        
-        public FastLookup AddComponentLookup = new();
+        public FastestStack<GameObjectType> EnabledArchetypes = FastestStack<GameObjectType>.Create(16);
+
+        /// <summary>
+        ///     The gameObject only event
+        /// </summary>
+        public GameObjectOnlyEvent EntityCreatedEvent = new GameObjectOnlyEvent();
+
+        /// <summary>
+        ///     The gameObject only event
+        /// </summary>
+        public GameObjectOnlyEvent EntityDeletedEvent = new GameObjectOnlyEvent();
+
+        //entityID -> gameObject metadata
+        /// <summary>
+        ///     The gameObject location
+        /// </summary>
+        public FastestTable<GameObjectLocation> EntityTable = new FastestTable<GameObjectLocation>(256);
+
+        /// <summary>
+        ///     The event lookup
+        /// </summary>
+        public Dictionary<GameObjectIdOnly, EventRecord> EventLookup = [];
+
+        /// <summary>
+        ///     The next gameObject id
+        /// </summary>
+        public int NextEntityId;
+
+        /// <summary>
+        ///     The query cache
+        /// </summary>
+        public Dictionary<int, Query> QueryCache = [];
+
+        /// <summary>
+        ///     The gameObject id only
+        /// </summary>
+        public FastestStack<GameObjectIdOnly> RecycledEntityIds = new FastestStack<GameObjectIdOnly>(256);
 
         /// <summary>
         ///     The remove component lookup
         /// </summary>
-        
         public FastLookup RemoveComponentLookup = new();
-
-        /// <summary>
-        ///     The add tag lookup
-        /// </summary>
-        public FastLookup AddTagLookup = new();
 
         /// <summary>
         ///     The remove tag lookup
         /// </summary>
         public FastLookup RemoveTagLookup = new();
+
+        /// <summary>
+        ///     The tag event
+        /// </summary>
+        public Event<TagId> Tagged = new Event<TagId>();
+
+        //archetype ID -> Archetype?
+        /// <summary>
+        ///     The scene archetype table
+        /// </summary>
+        public WorldArchetypeTableItem[] WorldArchetypeTable;
 
 
         /// <summary>
@@ -182,31 +210,63 @@ namespace Alis.Core.Ecs
         public GameObjectFlags WorldEventFlags;
 
         /// <summary>
-        ///     The create
+        ///     The scene update command buffer
         /// </summary>
-        public FastestStack<ArchetypeDeferredUpdateRecord> DeferredCreationArchetypes =
-            FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
+        public CommandBuffer WorldUpdateCommandBuffer;
 
         /// <summary>
-        ///     The create
+        ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
-        private FastestStack<ArchetypeDeferredUpdateRecord> _altDeferredCreationArchetypes =
-            FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
+        public Scene()
+        {
+            Id = _nextWorldId++;
+
+            GlobalWorldTables.Worlds[Id] = this;
+
+            WorldArchetypeTable = new WorldArchetypeTableItem[GlobalWorldTables.ComponentTagLocationTable.Length];
+
+            WorldUpdateCommandBuffer = new CommandBuffer(this);
+            DefaultWorldGameObject = new GameObject(Id, default(ushort), default(int));
+            DefaultArchetype = Archetype.CreateOrGetExistingArchetype([], [], this, FastImmutableArray<ComponentId>.Empty,
+                FastImmutableArray<TagId>.Empty);
+        }
+
+        /// <summary>
+        ///     Gets the value of the shared countdown
+        /// </summary>
+
+        public CountdownEvent SharedCountdown => _sharedCountdown;
 
         /// <summary>
         ///     Gets the current number of entities managed by the scene.
         /// </summary>
         public int EntityCount => NextEntityId - RecycledEntityIds.Count;
-        
-        /// <summary>
-        ///     The event lookup
-        /// </summary>
-        public Dictionary<GameObjectIdOnly, EventRecord> EventLookup = [];
 
         /// <summary>
-        ///     The default archetype
+        ///     Gets the value of the allow structual changes
         /// </summary>
-        public readonly Archetype DefaultArchetype;
+        public bool AllowStructualChanges => _allowStructuralChanges == -1;
+
+        /// <summary>
+        ///     Disposes of the <see cref="Scene" />.
+        /// </summary>
+        public void Dispose()
+        {
+            GlobalWorldTables.Worlds[Id] = null!;
+
+            foreach (ref WorldArchetypeTableItem item in WorldArchetypeTable.AsSpan())
+            {
+                if (item.Archetype is not null)
+                {
+                    item.Archetype.ReleaseArrays();
+                    item.DeferredCreationArchetype.ReleaseArrays();
+                }
+            }
+
+            _sharedCountdown.Dispose();
+            RecycledEntityIds.Dispose();
+            //EntityTable.Dispose();
+        }
 
         /// <summary>
         ///     Invoked whenever an gameObject is created on this scene.
@@ -222,7 +282,9 @@ namespace Alis.Core.Ecs
             {
                 EntityCreatedEvent.Remove(value);
                 if (!EntityCreatedEvent.HasListeners)
+                {
                     WorldEventFlags &= ~GameObjectFlags.WorldCreate;
+                }
             }
         }
 
@@ -240,7 +302,9 @@ namespace Alis.Core.Ecs
             {
                 EntityDeletedEvent.Remove(value);
                 if (!EntityDeletedEvent.HasListeners)
+                {
                     WorldEventFlags &= ~GameObjectFlags.OnDelete;
+                }
             }
         }
 
@@ -304,24 +368,9 @@ namespace Alis.Core.Ecs
         {
             e.Remove(action);
             if (!e.HasListeners)
+            {
                 WorldEventFlags &= ~flag;
-        }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Scene"/> class
-        /// </summary>
-        public Scene()
-        {
-            Id = _nextWorldId++;
-
-            GlobalWorldTables.Worlds[Id] = this;
-
-            WorldArchetypeTable = new WorldArchetypeTableItem[GlobalWorldTables.ComponentTagLocationTable.Length];
-
-            WorldUpdateCommandBuffer = new CommandBuffer(this);
-            DefaultWorldGameObject = new GameObject(Id, default, default);
-            DefaultArchetype = Archetype.CreateOrGetExistingArchetype([], [], this, FastImmutableArray<ComponentId>.Empty,
-                FastImmutableArray<TagId>.Empty);
+            }
         }
 
         /// <summary>
@@ -339,7 +388,8 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Updates all component instances in the scene that implement a component interface, e.g., <see cref="IComponent{TArg1,TArg2,TArg3,TArg4,TArg5,TArg6,TArg7,TArg8,TArg9,TArg10,TArg11}" />
+        ///     Updates all component instances in the scene that implement a component interface, e.g.,
+        ///     <see cref="IComponent{TArg1,TArg2,TArg3,TArg4,TArg5,TArg6,TArg7,TArg8,TArg9,TArg10,TArg11}" />
         /// </summary>
         public void Update()
         {
@@ -375,11 +425,14 @@ namespace Alis.Core.Ecs
         public void Update(Type attributeType)
         {
             EnterDisallowState();
-            SceneUpdateFilter appliesTo = default;
+            SceneUpdateFilter appliesTo = default(SceneUpdateFilter);
             try
             {
                 if (!_updatesByAttributes.TryGetValue(attributeType, out appliesTo))
+                {
                     _updatesByAttributes[attributeType] = appliesTo = new SceneUpdateFilter(this, attributeType);
+                }
+
                 appliesTo.Update();
             }
             finally
@@ -403,8 +456,8 @@ namespace Alis.Core.Ecs
                 if (!_singleComponentUpdates.TryGetValue(componentType, out singleComponent))
                     _singleComponentUpdates[componentType] = singleComponent = new(this, componentType);
 #else
-            singleComponent =
-                CollectionsMarshal.GetValueRefOrAddDefault(_singleComponentUpdates, componentType, out _) ??= new(this, componentType);
+                singleComponent =
+                    CollectionsMarshal.GetValueRefOrAddDefault(_singleComponentUpdates, componentType, out _) ??= new(this, componentType);
 #endif
 
                 singleComponent.Update();
@@ -431,7 +484,9 @@ namespace Alis.Core.Ecs
             int hashCode = queryHash.ToHashCode();
 
             if (!QueryCache.TryGetValue(hashCode, out Query query))
+            {
                 QueryCache[hashCode] = query = CreateQueryFromSpan([.. rules]);
+            }
 
             return query;
         }
@@ -444,7 +499,10 @@ namespace Alis.Core.Ecs
         public void ArchetypeAdded(Archetype archetype, Archetype temporaryCreationArchetype)
         {
             if (!GlobalWorldTables.HasTag(archetype.Id, Tag<Disable>.Id))
+            {
                 EnabledArchetypes.Push(archetype.Id);
+            }
+
             foreach (KeyValuePair<int, Query> qkvp in QueryCache)
             {
                 qkvp.Value.TryAttachArchetype(archetype);
@@ -472,7 +530,9 @@ namespace Alis.Core.Ecs
             foreach (ref WorldArchetypeTableItem element in WorldArchetypeTable.AsSpan())
             {
                 if (element.Archetype is not null)
+                {
                     q.TryAttachArchetype(element.Archetype);
+                }
             }
 
             return q;
@@ -483,10 +543,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="rules">The rules</param>
         /// <returns>The query</returns>
-        public Query CreateQueryFromSpan(ReadOnlySpan<Rule> rules)
-        {
-            return CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray(rules));
-        }
+        public Query CreateQueryFromSpan(ReadOnlySpan<Rule> rules) => CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray(rules));
 
         /// <summary>
         ///     Updates the archetype table using the specified new size
@@ -502,13 +559,11 @@ namespace Alis.Core.Ecs
         /// </summary>
         public void EnterDisallowState()
         {
-            if (Interlocked.Increment(ref _allowStructuralChanges) == 0) Interlocked.Increment(ref _allowStructuralChanges);
+            if (Interlocked.Increment(ref _allowStructuralChanges) == 0)
+            {
+                Interlocked.Increment(ref _allowStructuralChanges);
+            }
         }
-
-        /// <summary>
-        ///     The deferred gameObject operation recursion limit
-        /// </summary>
-        private const int DeferredEntityOperationRecursionLimit = 200;
 
         /// <summary>
         ///     Exits the disallow state using the specified filter used
@@ -522,12 +577,16 @@ namespace Alis.Core.Ecs
                 if (DeferredCreationArchetypes.Count > 0)
                 {
                     if (updateDeferredEntities)
+                    {
                         ResolveUpdateDeferredCreationEntities(filterUsed);
+                    }
                     else
+                    {
                         foreach ((Archetype archetype, Archetype tmp, int _) in DeferredCreationArchetypes.AsSpan())
                         {
                             archetype.ResolveDeferredEntityCreations(this, tmp);
                         }
+                    }
                 }
 
                 DeferredCreationArchetypes.Clear();
@@ -535,9 +594,13 @@ namespace Alis.Core.Ecs
 
                 int count = 0;
                 while (WorldUpdateCommandBuffer.Playback())
+                {
                     if (++count > DeferredEntityOperationRecursionLimit)
+                    {
                         throw new InvalidOperationException(
                             "Deferred gameObject creation recursion limit exceeded! Are your component events creating command buffer items? (which create more command buffer items...)?");
+                    }
+                }
             }
         }
 
@@ -564,18 +627,24 @@ namespace Alis.Core.Ecs
                 DeferredCreationArchetypes.Clear();
 
                 if (filterUsed is not null)
+                {
                     filterUsed?.UpdateSubset(resolveArchetypes);
+                }
                 else
+                {
                     foreach ((Archetype archetype, Archetype _, int start) in resolveArchetypes)
                     {
                         archetype.Update(this, start, archetype.EntityCount - start);
                     }
+                }
 
                 resolveArchetypes = DeferredCreationArchetypes.AsSpan();
 
                 if (++createRecursionCount > DeferredEntityOperationRecursionLimit)
+                {
                     throw new InvalidOperationException(
                         "Deferred gameObject creation recursion limit exceeded! Are your components creating entities (which create more entities...)?");
+                }
             }
 
             DeferredCreationArchetypes.Clear();
@@ -583,54 +652,28 @@ namespace Alis.Core.Ecs
         }
 
 #if (!NETSTANDARD && !NETFRAMEWORK && !NETCOREAPP) || (NET6_0_OR_GREATER)
-    /// <summary>
-    /// Tries the get event data using the specified gameObject location
-    /// </summary>
-    /// <param name="gameObjectLocation">The gameObject location</param>
-    /// <param name="gameObject">The gameObject</param>
-    /// <param name="eventType">The event type</param>
-    /// <param name="exists">The exists</param>
-    /// <returns>The ref event record</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public ref EventRecord TryGetEventData(GameObjectLocation gameObjectLocation, GameObjectIdOnly gameObject, GameObjectFlags eventType, out bool exists)
-    {
-        if (gameObjectLocation.HasEvent(eventType))
-        {
-            exists = true;
-            return ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrNullRef(EventLookup, gameObject);
-        }
-
-
-        exists = false;
-        return ref Unsafe.NullRef<EventRecord>();
-    }
-#endif
-
         /// <summary>
-        ///     Gets the value of the allow structual changes
+        ///     Tries the get event data using the specified gameObject location
         /// </summary>
-        public bool AllowStructualChanges => _allowStructuralChanges == -1;
-
-        /// <summary>
-        ///     Disposes of the <see cref="Scene" />.
-        /// </summary>
-        public void Dispose()
+        /// <param name="gameObjectLocation">The gameObject location</param>
+        /// <param name="gameObject">The gameObject</param>
+        /// <param name="eventType">The event type</param>
+        /// <param name="exists">The exists</param>
+        /// <returns>The ref event record</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public ref EventRecord TryGetEventData(GameObjectLocation gameObjectLocation, GameObjectIdOnly gameObject, GameObjectFlags eventType, out bool exists)
         {
-            GlobalWorldTables.Worlds[Id] = null!;
-
-            foreach (ref WorldArchetypeTableItem item in WorldArchetypeTable.AsSpan())
+            if (gameObjectLocation.HasEvent(eventType))
             {
-                if (item.Archetype is not null)
-                {
-                    item.Archetype.ReleaseArrays();
-                    item.DeferredCreationArchetype.ReleaseArrays();
-                }
+                exists = true;
+                return ref CollectionsMarshal.GetValueRefOrNullRef(EventLookup, gameObject);
             }
 
-            _sharedCountdown.Dispose();
-            RecycledEntityIds.Dispose();
-            //EntityTable.Dispose();
+
+            exists = false;
+            return ref Unsafe.NullRef<EventRecord>();
         }
+#endif
 
         /// <summary>
         ///     Creates an <see cref="GameObject" />
@@ -640,11 +683,16 @@ namespace Alis.Core.Ecs
         public GameObject CreateFromObjects(ReadOnlySpan<object> components)
         {
             if (components.Length > MemoryHelpers.MaxComponentCount)
+            {
                 throw new ArgumentException("Max 127 components on an gameObject", nameof(components));
+            }
+
             Span<ComponentId> types = stackalloc ComponentId[components.Length];
 
             for (int i = 0; i < components.Length; i++)
+            {
                 types[i] = Component.GetComponentId(components[i].GetType());
+            }
 
             Archetype archetype = Archetype.CreateOrGetExistingArchetype(types!, [], this);
 
@@ -654,7 +702,10 @@ namespace Alis.Core.Ecs
             entityId.Version = gameObject.EntityVersion;
 
             Span<ComponentStorageBase> archetypeComponents = archetype.Components.AsSpan();
-            for (int i = 1; i < archetypeComponents.Length; i++) archetypeComponents[i].SetAt(components[i - 1], loc.Index);
+            for (int i = 1; i < archetypeComponents.Length; i++)
+            {
+                archetypeComponents[i].SetAt(components[i - 1], loc.Index);
+            }
 
             EntityCreatedEvent.Invoke(gameObject);
             return gameObject;
@@ -705,7 +756,10 @@ namespace Alis.Core.Ecs
         public void EnsureCapacity(GameObjectType entityType, int count)
         {
             if (count < 1)
+            {
                 return;
+            }
+
             Archetype archetype = Archetype.CreateOrGetExistingArchetype(entityType, this);
             EnsureCapacityCore(archetype, count);
         }
@@ -719,7 +773,10 @@ namespace Alis.Core.Ecs
         public void EnsureCapacityCore(Archetype archetype, int count)
         {
             if (count < 1)
+            {
                 throw new ArgumentOutOfRangeException("Count must be positive", nameof(count));
+            }
+
             archetype.EnsureCapacity(count);
             EntityTable.EnsureCapacity(count + EntityCount);
         }

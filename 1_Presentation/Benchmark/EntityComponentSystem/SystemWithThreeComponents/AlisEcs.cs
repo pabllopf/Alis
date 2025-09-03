@@ -31,7 +31,6 @@ using System;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics;
 using Alis.Benchmark.EntityComponentSystem.Contexts;
-using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Systems;
@@ -125,7 +124,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithThreeComponents
         ///     The sum
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct SumAlis : IAction<Component1, Component2, Component3>
+        public struct SumAlis : IAction<Component1, Component2, Component3>
         {
             /// <summary>
             ///     Runs the t 0

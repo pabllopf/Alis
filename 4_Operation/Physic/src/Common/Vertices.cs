@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;

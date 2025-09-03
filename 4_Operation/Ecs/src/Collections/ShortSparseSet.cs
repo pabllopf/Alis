@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ShortSparseSet.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -61,7 +90,9 @@ namespace Alis.Core.Ecs.Collections
                 ref ushort index = ref EnsureSparseCapacityAndGetIndex(id);
 
                 if (index == ushort.MaxValue)
-                    index = (ushort)_nextIndex++;
+                {
+                    index = (ushort) _nextIndex++;
+                }
 
                 return ref EnsureDenseCapacityAndGetSlot(index);
             }
@@ -77,11 +108,17 @@ namespace Alis.Core.Ecs.Collections
             ushort[] localSparse = _sparse;
             if (!(id < localSparse.Length))
                 //out of range
+            {
                 throw new ArgumentOutOfRangeException(InvalidId);
+            }
+
             ushort index = localSparse[id];
 
             T[] localDense = _dense;
-            if (!(index < localDense.Length)) throw new ArgumentOutOfRangeException(InvalidId);
+            if (!(index < localDense.Length))
+            {
+                throw new ArgumentOutOfRangeException(InvalidId);
+            }
 
             return ref localDense[index];
         }
@@ -96,20 +133,24 @@ namespace Alis.Core.Ecs.Collections
         {
             ushort[] localSparse = _sparse;
             if (!(id < localSparse.Length))
+            {
                 goto doesntExist;
+            }
 
             ushort index = localSparse[id];
 
             T[] localDense = _dense;
             if (!(index < localDense.Length))
+            {
                 goto doesntExist;
+            }
 
             value = localDense[index];
             return false;
 
             //saves a bit of code size
             doesntExist:
-            value = default;
+            value = default(T);
             return false;
         }
 
@@ -125,20 +166,26 @@ namespace Alis.Core.Ecs.Collections
             ushort[] localSparse = _sparse;
 
             if (!(id < localSparse.Length))
+            {
                 return false;
+            }
 
             int moveIntoIndex = localSparse[id];
 
             T[] localDense = _dense;
             if (!(moveIntoIndex < localDense.Length))
+            {
                 return
                     false; //here, moveIntoIndex should really only ever be ushort.MaxValue. We check against len to elide bounds check
+            }
 
             ref T from = ref localDense[moveDownIndex];
             localDense[moveIntoIndex] = from;
 
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
-                from = default!;
+            {
+                from = default(T)!;
+            }
 
             return true;
         }
@@ -151,8 +198,11 @@ namespace Alis.Core.Ecs.Collections
         public bool Has(int id)
         {
             ushort[] sparse = _sparse;
-            if (!((uint)id < (uint)sparse.Length))
+            if (!((uint) id < (uint) sparse.Length))
+            {
                 return false;
+            }
+
             return sparse[id] != ushort.MaxValue;
         }
 
@@ -162,16 +212,16 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="capacity">The capacity</param>
         public void EnsureCapacity(ushort capacity)
         {
-            if (_dense.Length < capacity) Array.Resize(ref _dense, capacity);
+            if (_dense.Length < capacity)
+            {
+                Array.Resize(ref _dense, capacity);
+            }
         }
 
         /// <summary>
         ///     Note: this span will become invalid on resize or add
         /// </summary>
-        public Span<T> AsSpan()
-        {
-            return _dense.AsSpan(0, _nextIndex);
-        }
+        public Span<T> AsSpan() => _dense.AsSpan(0, _nextIndex);
 
         /// <summary>
         ///     Clears this instance
@@ -181,7 +231,9 @@ namespace Alis.Core.Ecs.Collections
             _nextIndex = 0;
             _sparse.AsSpan().Fill(ushort.MaxValue);
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 _dense.AsSpan().Clear();
+            }
         }
 
         /// <summary>
@@ -192,14 +244,17 @@ namespace Alis.Core.Ecs.Collections
         private ref ushort EnsureSparseCapacityAndGetIndex(ushort id)
         {
             ushort[] localSparse = _sparse;
-            if (id < localSparse.Length) return ref localSparse[id];
+            if (id < localSparse.Length)
+            {
+                return ref localSparse[id];
+            }
 
             return ref ResizeArrayAndGet(ref _sparse, id);
 
             static ref ushort ResizeArrayAndGet(ref ushort[] arr, int index)
             {
                 int prevLen = arr.Length;
-                Array.Resize(ref arr, (int)BitOperations.RoundUpToPowerOf2((uint)index + 1));
+                Array.Resize(ref arr, (int) BitOperations.RoundUpToPowerOf2((uint) index + 1));
                 arr.AsSpan(prevLen).Fill(ushort.MaxValue);
                 return ref arr[index];
             }
@@ -213,13 +268,16 @@ namespace Alis.Core.Ecs.Collections
         private ref T EnsureDenseCapacityAndGetSlot(ushort index)
         {
             T[] localDense = _dense;
-            if (index < localDense.Length) return ref localDense[index];
+            if (index < localDense.Length)
+            {
+                return ref localDense[index];
+            }
 
             return ref ResizeArrayAndGet(ref _dense, index);
 
             static ref T ResizeArrayAndGet(ref T[] arr, int index)
             {
-                Array.Resize(ref arr, (int)BitOperations.RoundUpToPowerOf2((uint)index + 1));
+                Array.Resize(ref arr, (int) BitOperations.RoundUpToPowerOf2((uint) index + 1));
                 return ref arr[index];
             }
         }

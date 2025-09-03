@@ -1,6 +1,36 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Archetype.static.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Redifinition;
@@ -18,7 +48,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     The to immutable array
         /// </summary>
         public static readonly FastImmutableArray<ComponentId> ArchetypeComponentIDs =
-            new FastImmutableArray<ComponentId>(new[] { Component<T>.Id });
+            new FastImmutableArray<ComponentId>(new[] {Component<T>.Id});
 
         //ArchetypeTypes init first, then ID
         /// <summary>
@@ -36,7 +66,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         {
             ushort index = Id.RawIndex;
             ref WorldArchetypeTableItem archetypes = ref Unsafe.Add(ref scene.WorldArchetypeTable[0], index);
-            if (archetypes.Archetype is null) archetypes = CreateArchetypes(scene);
+            if (archetypes.Archetype is null)
+            {
+                archetypes = CreateArchetypes(scene);
+            }
+
             return archetypes;
 
             //this method is literally only called once per scene
@@ -49,7 +83,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
                 int i;
 
-                i = Unsafe.Add(ref map[0], Component<T>.Id.RawIndex)& GlobalWorldTables.IndexBits;
+                i = Unsafe.Add(ref map[0], Component<T>.Id.RawIndex) & GlobalWorldTables.IndexBits;
                 runners[i] = Component<T>.CreateInstance(1);
                 tmpStorages[i] = Component<T>.CreateInstance(0);
 
@@ -101,16 +135,12 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     Initializes a new instance of the <see cref="Archetype" /> class
         /// </summary>
-        static Archetype()
-        {
-            Null = GetArchetypeId([Component.GetComponentId(typeof(void))], [Tag.GetTagId(typeof(Disable))]);
+        static Archetype() => Null = GetArchetypeId([Component.GetComponentId(typeof(void))], [Tag.GetTagId(typeof(Disable))]);
 
-            //Deferred creation entities fully supported
-            ////this archetype exists only so that "GameObjectLocation"s of deferred archetypes have something to point to
-            ////disable so less overhead
-            //DeferredCreate = GetArchetypeID([], [Tag.GetTagID(typeof(DeferredCreate)), Tag.GetTagID(typeof(Disable))]);
-        }
-
+        //Deferred creation entities fully supported
+        ////this archetype exists only so that "GameObjectLocation"s of deferred archetypes have something to point to
+        ////disable so less overhead
+        //DeferredCreate = GetArchetypeID([], [Tag.GetTagID(typeof(DeferredCreate)), Tag.GetTagID(typeof(Disable))]);
         /// <summary>
         ///     Creates the or get existing archetype using the specified types
         /// </summary>
@@ -138,7 +168,9 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         {
             ref WorldArchetypeTableItem archetype = ref scene.WorldArchetypeTable[id.RawIndex];
             if (archetype.Archetype is not null)
+            {
                 return archetype.Archetype;
+            }
 
             FastImmutableArray<ComponentId> types = id.Types;
             ComponentStorageBase[] componentRunners = new ComponentStorageBase[types.Length + 1];
@@ -168,7 +200,10 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         internal static Archetype GetAdjacentArchetypeLookup(Scene scene, ArchetypeEdgeKey edge)
         {
             if (scene.ArchetypeGraphEdges.TryGetValue(edge, out Archetype archetype))
+            {
                 return archetype;
+            }
+
             return GetAdjacentArchetypeCold(scene, edge);
         }
 
@@ -222,7 +257,10 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             FastImmutableArray<ComponentId>? typesArray = null, FastImmutableArray<TagId>? tagTypesArray = null)
         {
             if (types.Length > MemoryHelpers.MaxComponentCount)
+            {
                 throw new InvalidOperationException("Entities can have a max of 127 components!");
+            }
+
             lock (GlobalWorldTables.BufferChangeLock)
             {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
@@ -232,7 +270,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 int nextIdInt = ++NextArchetypeId;
                 if (nextIdInt == ushort.MaxValue)
                     throw new InvalidOperationException("Exceeded maximum unique archetype count of 65535");
-                ArchetypeID finalId = new ArchetypeID((ushort)nextIdInt);
+                ArchetypeID finalId = new ArchetypeID((ushort) nextIdInt);
 
                 FastImmutableArray<ComponentId> arr = typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);
                 FastImmutableArray<TagId> tagArr = tagTypesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(tagTypes);
@@ -243,31 +281,34 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
                 ExistingArchetypes[key] = slot;
 #else
-            ref ArchetypeData slot =
-                ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrAddDefault(ExistingArchetypes, GetHash(types, tagTypes), out bool exists);
-            GameObjectType finalId;
+                ref ArchetypeData slot =
+                    ref CollectionsMarshal.GetValueRefOrAddDefault(ExistingArchetypes, GetHash(types, tagTypes), out bool exists);
+                GameObjectType finalId;
 
-            if (exists)
-            {
-                //can't be null if entry exists
-                finalId = slot!.Id;
-            }
-            else
-            {
-                int nextIdInt = ++NextArchetypeId;
-                if (nextIdInt == ushort.MaxValue)
-                    throw new InvalidOperationException($"Exceeded maximum unique archetype count of 65535");
-                finalId = new GameObjectType((ushort)nextIdInt);
+                if (exists)
+                {
+                    //can't be null if entry exists
+                    finalId = slot!.Id;
+                }
+                else
+                {
+                    int nextIdInt = ++NextArchetypeId;
+                    if (nextIdInt == ushort.MaxValue)
+                    {
+                        throw new InvalidOperationException("Exceeded maximum unique archetype count of 65535");
+                    }
 
-                FastImmutableArray<ComponentId> arr =
-                    typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);
-                FastImmutableArray<TagId> tagArr =
-                    tagTypesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(tagTypes);
+                    finalId = new GameObjectType((ushort) nextIdInt);
 
-                slot = new ArchetypeData(finalId, arr, tagArr);
-                ArchetypeTable.Push(slot);
-                ModifyComponentLocationTable(arr, tagArr, finalId.RawIndex);
-            }
+                    FastImmutableArray<ComponentId> arr =
+                        typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);
+                    FastImmutableArray<TagId> tagArr =
+                        tagTypesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(tagTypes);
+
+                    slot = new ArchetypeData(finalId, arr, tagArr);
+                    ArchetypeTable.Push(slot);
+                    ModifyComponentLocationTable(arr, tagArr, finalId.RawIndex);
+                }
 #endif
 
                 return finalId;
@@ -290,7 +331,9 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 foreach (Scene world in GlobalWorldTables.Worlds.AsSpan())
                 {
                     if (world is Scene w)
+                    {
                         w.UpdateArchetypeTable(size);
+                    }
                 }
             }
 
@@ -305,10 +348,14 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             for (int i = 0; i < archetypeTypes.Length; i++)
                 //add 1 so zero is null always
-                componentTable[archetypeTypes[i].RawIndex] = (byte)(i + 1);
+            {
+                componentTable[archetypeTypes[i].RawIndex] = (byte) (i + 1);
+            }
 
             for (int i = 0; i < archetypeTags.Length; i++)
+            {
                 componentTable[archetypeTags[i].RawValue] |= GlobalWorldTables.HasTagMask;
+            }
         }
 
         /// <summary>
@@ -323,7 +370,10 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             HashCode h2 = new();
 
             int i;
-            for (i = 0; i < types.Length >> 1; i++) h1.Add(types[i]);
+            for (i = 0; i < types.Length >> 1; i++)
+            {
+                h1.Add(types[i]);
+            }
 
 
             uint hash1 = 0U;
@@ -337,9 +387,12 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             h1.Add(HashCode.Combine(hash1, hash2));
 
-            for (; i < types.Length; i++) h2.Add(types[i]);
+            for (; i < types.Length; i++)
+            {
+                h2.Add(types[i]);
+            }
 
-            long hash = (long)h1.ToHashCode() * 1610612741 + h2.ToHashCode();
+            long hash = (long) h1.ToHashCode() * 1610612741 + h2.ToHashCode();
 
             return hash;
         }

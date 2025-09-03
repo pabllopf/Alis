@@ -38,6 +38,6 @@ namespace Alis.Core.Aspect.Fluent
         ///     Builders
         /// </summary>
         /// <returns>The</returns>
-        public TOut Builder();
+        TOut Builder();
     }
 }

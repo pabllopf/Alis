@@ -473,7 +473,7 @@ namespace Alis.Core.Aspect.Math.Collections
                     AddRange(items.Array, length);
                 }
             }
-        
+
             /// <summary>
             ///     Adds the specified items to the end of the array.
             /// </summary>
@@ -976,7 +976,6 @@ namespace Alis.Core.Aspect.Math.Collections
                 int lastIndexRemoved = -1;
                 foreach (int indexToRemove in indicesToRemove)
                 {
-
                     int copyLength = lastIndexRemoved == -1 ? indexToRemove : indexToRemove - lastIndexRemoved - 1;
                     System.Array.Copy(_elements, copied + removed, _elements, copied, copyLength);
                     removed++;
@@ -992,9 +991,9 @@ namespace Alis.Core.Aspect.Math.Collections
             /// <summary>Gets a <see cref="Memory{T}" /> for the filled portion of the backing array.</summary>
             internal Memory<T> AsMemory() => new Memory<T>(_elements, 0, _count);
         }
-        
+
         /// <summary>
-        /// Creates the builder using the specified types length
+        ///     Creates the builder using the specified types length
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <param name="typesLength">The types length</param>
@@ -1003,13 +1002,13 @@ namespace Alis.Core.Aspect.Math.Collections
 
 
         /// <summary>
-        /// Converts the span
+        ///     Converts the span
         /// </summary>
         /// <returns>A read only span of t</returns>
         public ReadOnlySpan<T> AsSpan() => Array.AsSpan();
 
         /// <summary>
-        /// Indexes the of using the specified type id
+        ///     Indexes the of using the specified type id
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <param name="typeId">The type id</param>
@@ -1018,7 +1017,7 @@ namespace Alis.Core.Aspect.Math.Collections
 
 
         /// <summary>
-        /// Removes the at using the specified index
+        ///     Removes the at using the specified index
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <param name="index">The index</param>
@@ -1036,7 +1035,7 @@ namespace Alis.Core.Aspect.Math.Collections
             System.Array.Copy(Array, index + 1, newArray, index, Length - index - 1);
             return new FastImmutableArray<T>(newArray);
         }
-        
+
         /// <summary>
         ///     An empty (initialized) instance of <see cref="FastImmutableArray{T}" />.
         /// </summary>
@@ -1048,7 +1047,6 @@ namespace Alis.Core.Aspect.Math.Collections
         /// <remarks>
         ///     This would be private, but we make it internal so that our own extension methods can access it.
         /// </remarks>
-        
         internal readonly T[] Array;
 
         /// <summary>
@@ -1057,7 +1055,6 @@ namespace Alis.Core.Aspect.Math.Collections
         /// </summary>
         /// <param name="items">The array to use. May be null for "default" arrays.</param>
         public FastImmutableArray(T[] items) => Array = items;
-
 
 
         /// <summary>
@@ -1093,7 +1090,6 @@ namespace Alis.Core.Aspect.Math.Collections
         public static bool operator !=(FastImmutableArray<T>? left, FastImmutableArray<T>? right) => !left.GetValueOrDefault().Equals(right.GetValueOrDefault());
 
 
-
         /// <summary>
         ///     Gets the element at the specified index in the read-only list.
         /// </summary>
@@ -1123,13 +1119,13 @@ namespace Alis.Core.Aspect.Math.Collections
         /// <summary>
         ///     Gets a value indicating whether this collection is empty.
         /// </summary>
-        
+
         public bool IsEmpty => Array!.Length == 0;
 
         /// <summary>
         ///     Gets the number of elements in the array.
         /// </summary>
-        
+
         public int Length =>
             // We intentionally do not check this.array != null, and throw NullReferenceException
             // if this is called while uninitialized.
@@ -1141,13 +1137,13 @@ namespace Alis.Core.Aspect.Math.Collections
         /// <summary>
         ///     Gets a value indicating whether this struct was initialized without an actual array instance.
         /// </summary>
-        
+
         public bool IsDefault => Array == null;
 
         /// <summary>
         ///     Gets a value indicating whether this struct is empty or uninitialized.
         /// </summary>
-        
+
         public bool IsDefaultOrEmpty
         {
             get
@@ -1161,7 +1157,7 @@ namespace Alis.Core.Aspect.Math.Collections
         ///     Gets an untyped reference to the array.
         /// </summary>
         Array IFastImmutableArray.Array => Array;
-    
+
         /// <summary>
         ///     Copies the contents of this array to the specified array.
         /// </summary>
@@ -1252,9 +1248,7 @@ namespace Alis.Core.Aspect.Math.Collections
         /// </remarks>
         public static FastImmutableArray<T> CastUp<TDerived>(FastImmutableArray<TDerived> items)
             where TDerived : class, T
-        {
-            return new FastImmutableArray<T>(items.Array);
-        }
+            => new FastImmutableArray<T>(items.Array);
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="FastImmutableArray{T}" /> struct by casting the underlying
@@ -1263,10 +1257,7 @@ namespace Alis.Core.Aspect.Math.Collections
         ///     .
         /// </summary>
         /// <exception cref="InvalidCastException">Thrown if the cast is illegal.</exception>
-        public FastImmutableArray<TOther> CastArray<TOther>() where TOther : class
-        {
-            return new FastImmutableArray<TOther>((TOther[]) (object) Array!);
-        }
+        public FastImmutableArray<TOther> CastArray<TOther>() where TOther : class => new FastImmutableArray<TOther>((TOther[]) (object) Array!);
 
         /// <summary>
         ///     Creates an immutable array for this array, cast to a different element type.
@@ -1283,10 +1274,7 @@ namespace Alis.Core.Aspect.Math.Collections
         ///     element types to their derived types. However, down casting is only successful
         ///     when it reverses a prior upcasting operation.
         /// </remarks>
-        public FastImmutableArray<TOther> As<TOther>() where TOther : class
-        {
-            return new FastImmutableArray<TOther>(Array as TOther[]);
-        }
+        public FastImmutableArray<TOther> As<TOther>() where TOther : class => new FastImmutableArray<TOther>(Array as TOther[]);
 
         /// <summary>
         ///     Returns an enumerator for the contents of the array.

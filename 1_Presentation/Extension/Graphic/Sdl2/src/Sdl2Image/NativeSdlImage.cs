@@ -30,7 +30,6 @@
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Dll;
 using Alis.Extension.Graphic.Sdl2.Properties;
 

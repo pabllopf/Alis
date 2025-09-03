@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InspectorWindow.cs
+//  File:GitWindow.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -42,26 +42,23 @@ namespace Alis.App.Engine.Windows
     public class GitWindow : IWindow
     {
         /// <summary>
-        /// The code
+        ///     The code
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Code} Git";
 
         /// <summary>
-        /// The is open
+        ///     The is open
         /// </summary>
         private bool _isOpen = true;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GitWindow"/> class
+        ///     Initializes a new instance of the <see cref="GitWindow" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public GitWindow(SpaceWork spaceWork)
-        {
-            this.SpaceWork = spaceWork;
-        }
+        public GitWindow(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
         /// <summary>
-        /// Gets the value of the space work
+        ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
@@ -80,7 +77,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {

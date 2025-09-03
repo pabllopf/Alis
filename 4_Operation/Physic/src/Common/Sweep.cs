@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
@@ -86,7 +85,7 @@ namespace Alis.Core.Physic.Common
 
             // Shift to origin
             xfb.Position -= Complex.Multiply(ref LocalCenter, ref xfb.Rotation);
-            
+
             xfb.Scale = new Vector2F(1, 1);
         }
 

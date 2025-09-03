@@ -28,12 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.ConvexHull;
 using Alis.Core.Physic.Dynamics;
-
 
 namespace Alis.Core.Physic.Collision.Shapes
 {

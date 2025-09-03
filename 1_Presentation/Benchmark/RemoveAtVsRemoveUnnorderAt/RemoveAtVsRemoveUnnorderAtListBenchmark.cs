@@ -35,7 +35,7 @@ namespace Alis.Benchmark.RemoveAtVsRemoveUnnorderAt
     /// <summary>
     ///     The remove at vs remove unnorder at list benchmark class
     /// </summary>
-    [ Config(typeof(CustomConfig))]
+    [Config(typeof(CustomConfig))]
     public class RemoveAtVsRemoveUnnorderAtListBenchmark
     {
         /// <summary>

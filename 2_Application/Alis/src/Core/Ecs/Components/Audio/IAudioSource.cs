@@ -30,7 +30,7 @@
 namespace Alis.Core.Ecs.Components.Audio
 {
     /// <summary>
-    /// The audio source interface
+    ///     The audio source interface
     /// </summary>
     public interface IAudioSource
     {

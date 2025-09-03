@@ -30,16 +30,15 @@
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 
-
 namespace Alis.Core.Ecs.Components.Render
 {
     /// <summary>
-    /// The sprite interface
+    ///     The sprite interface
     /// </summary>
-    /// <seealso cref="IInitable"/>
-    /// <seealso cref="IGameObjectComponent"/>
-    /// <seealso cref="IHasBuilder{SpriteBuilder}"/>
-    /// <seealso cref="IBuild{Sprite}"/>
+    /// <seealso cref="IInitable" />
+    /// <seealso cref="IGameObjectComponent" />
+    /// <seealso cref="IHasBuilder{SpriteBuilder}" />
+    /// <seealso cref="IBuild{Sprite}" />
     public interface ISprite
     {
     }

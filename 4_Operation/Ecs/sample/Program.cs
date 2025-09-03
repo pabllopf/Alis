@@ -1,20 +1,47 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Program.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
-using System.Linq;
-using System.Reflection;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Ecs.Sample
 {
     /// <summary>
-    /// The program class
+    ///     The program class
     /// </summary>
     internal class Program
     {
         /// <summary>
-        /// Main the args
+        ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Logger.Info("Seleccione un ejemplo para ejecutar:");
             Logger.Info("1. Update_Component");
@@ -31,6 +58,7 @@ namespace Alis.Core.Ecs.Sample
                 Logger.Info("Entrada inválida. Debe ser un número entre 1 y 6.");
                 return;
             }
+
             switch (opcion)
             {
                 case 1:

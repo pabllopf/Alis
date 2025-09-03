@@ -457,12 +457,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _motorMass = 1.0f / _motorMass;
             }
 
-            if (_enableMotor == false || fixedRotation)
+            if (!_enableMotor || fixedRotation)
             {
                 _motorImpulse = 0.0f;
             }
 
-            if (_enableLimit && (fixedRotation == false))
+            if (_enableLimit && !fixedRotation)
             {
                 float jointAngle = aB - aA - ReferenceAngle;
                 if (Math.Abs(_upperAngle - _lowerAngle) < 2.0f * SettingEnv.AngularSlop)
@@ -541,7 +541,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             bool fixedRotation = iA + Math.Abs(iB) < float.Epsilon;
 
             // Solve motor constraint.
-            if (_enableMotor && (_limitState != LimitState.Equal) && (fixedRotation == false))
+            if (_enableMotor && (_limitState != LimitState.Equal) && !fixedRotation)
             {
                 float cdot = wB - wA - _motorSpeed;
                 float impulse = _motorMass * -cdot;
@@ -555,7 +555,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
 
             // Solve limit constraint.
-            if (_enableLimit && (_limitState != LimitState.Inactive) && (fixedRotation == false))
+            if (_enableLimit && (_limitState != LimitState.Inactive) && !fixedRotation)
             {
                 Vector2F cdot1 = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
                 float cdot2 = wB - wA;
@@ -655,7 +655,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             bool fixedRotation = invIa + Math.Abs(invIb) < float.Epsilon;
 
             // Solve angular limit constraint.
-            if (_enableLimit && (_limitState != LimitState.Inactive) && (fixedRotation == false))
+            if (_enableLimit && (_limitState != LimitState.Inactive) && !fixedRotation)
             {
                 float angle = aB - aA - ReferenceAngle;
                 float limitImpulse = 0.0f;

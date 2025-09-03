@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 
@@ -628,7 +627,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 _impulse.Z = 0.0f;
             }
 
-            if (_enableMotor == false)
+            if (!_enableMotor)
             {
                 MotorImpulse = 0.0f;
             }

@@ -307,8 +307,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <returns>The rotation matrix.</returns>
         public static Matrix4X4 CreateRotationZ(float radians)
         {
-            float c = (float)System.Math.Cos(radians);
-            float s = (float)System.Math.Sin(radians);
+            float c = (float) System.Math.Cos(radians);
+            float s = (float) System.Math.Sin(radians);
 
             // [  c  s  0  0 ]
             // [ -s  c  0  0 ]
@@ -337,7 +337,6 @@ namespace Alis.Core.Aspect.Math.Matrix
         public override bool Equals(object obj) => obj is Matrix4X4 other && Equals(other);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
@@ -393,8 +392,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <returns>The result</returns>
         public static Matrix4X4 CreateRotationX(float radians)
         {
-            float c = (float)System.Math.Cos(radians);
-            float s = (float)System.Math.Sin(radians);
+            float c = (float) System.Math.Cos(radians);
+            float s = (float) System.Math.Sin(radians);
 
             // [  1  0  0  0 ]
             // [  0  c  s  0 ]
@@ -452,7 +451,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         }
 
         /// <summary>
-        /// Creates the perspective field of view using the specified pi
+        ///     Creates the perspective field of view using the specified pi
         /// </summary>
         /// <param name="pi">The pi</param>
         /// <param name="aspect">The aspect</param>
@@ -463,7 +462,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         {
             Matrix4X4 result = Identity;
 
-            float yScale = 1.0f / (float)CustomMathF.Tan(pi / 2.0f);
+            float yScale = 1.0f / CustomMathF.Tan(pi / 2.0f);
             float xScale = yScale / aspect;
 
             result.M11 = xScale;

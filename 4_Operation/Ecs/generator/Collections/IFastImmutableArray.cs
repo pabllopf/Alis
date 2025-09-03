@@ -31,9 +31,8 @@ using System;
 
 namespace Alis.Core.Ecs.Generator.Collections
 {
-    
     /// <summary>
-    /// The fast immutable array interface
+    ///     The fast immutable array interface
     /// </summary>
     internal interface IFastImmutableArray
     {

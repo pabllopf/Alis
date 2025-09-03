@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Scene.2.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Kernel;
@@ -22,7 +51,7 @@ namespace Alis.Core.Ecs
             WorldArchetypeTableItem archetypes = Archetype<T1, T2>.CreateNewOrGetExistingArchetypes(this);
 
             ref GameObjectIdOnly entity = ref Unsafe.NullRef<GameObjectIdOnly>();
-            GameObjectLocation eloc = default;
+            GameObjectLocation eloc = default(GameObjectLocation);
 
             ComponentStorageBase[] components;
 
@@ -48,11 +77,11 @@ namespace Alis.Core.Ecs
 
             //1x array lookup per component
             ref T1 ref1 =
-                ref  Unsafe.As<ComponentStorage<T1>>(
+                ref Unsafe.As<ComponentStorage<T1>>(
                     Unsafe.Add(ref components[0], Archetype<T1, T2>.OfComponent<T1>.Index))[eloc.Index];
             ref1 = comp1;
             ref T2 ref2 =
-                ref  Unsafe.As<ComponentStorage<T2>>(
+                ref Unsafe.As<ComponentStorage<T2>>(
                     Unsafe.Add(ref components[0], Archetype<T1, T2>.OfComponent<T2>.Index))[eloc.Index];
             ref2 = comp2;
 
@@ -69,7 +98,7 @@ namespace Alis.Core.Ecs
 
 
         /// <summary>
-        /// Creates the many using the specified count
+        ///     Creates the many using the specified count
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
@@ -78,8 +107,10 @@ namespace Alis.Core.Ecs
         /// <returns>A chunk tuple of t 1 and t 2</returns>
         public ChunkTuple<T1, T2> CreateMany<T1, T2>(int count)
         {
-            if ((uint)count == 0) // Efficient validation for non-positive values
+            if ((uint) count == 0) // Efficient validation for non-positive values
+            {
                 throw new ArgumentOutOfRangeException(nameof(count));
+            }
 
             WorldArchetypeTableItem archetype = Archetype<T1, T2>.CreateNewOrGetExistingArchetypes(this);
             int entityCount = archetype.Archetype.EntityCount;
@@ -91,10 +122,12 @@ namespace Alis.Core.Ecs
 
             // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
+            {
                 foreach (ref GameObjectIdOnly entityId in entityLocations)
                 {
                     EntityCreatedEvent.Invoke(entityId.ToEntity(this));
                 }
+            }
 
             // Return the result with calculated spans
             return new ChunkTuple<T1, T2>

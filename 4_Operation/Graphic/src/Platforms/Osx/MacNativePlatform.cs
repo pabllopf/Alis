@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:MacNativePlatform.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 #if OSX
 using System;
 using System.Runtime.InteropServices;
@@ -7,39 +36,32 @@ using Alis.Core.Graphic.Platforms.Osx.Native;
 namespace Alis.Core.Graphic.Platforms.Osx
 {
     /// <summary>
-    /// Plataforma nativa para macOS, coordinando ventana y contexto OpenGL
+    ///     Plataforma nativa para macOS, coordinando ventana y contexto OpenGL
     /// </summary>
     public class MacNativePlatform : INativePlatform
     {
         /// <summary>
-        /// 
-        /// </summary>
-        private MacWindow window;
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        private MacOpenGLContext glContext;
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        private IntPtr pool, app, distantPast, runLoopMode;
-        
-        /// <summary>
-        /// 
         /// </summary>
         private static IntPtr _openGlHandle = IntPtr.Zero;
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        private ConsoleKey? lastKeyPressed = null;
 
-        
-        
         /// <summary>
-        /// 
+        /// </summary>
+        private MacOpenGLContext glContext;
+
+        /// <summary>
+        /// </summary>
+        private ConsoleKey? lastKeyPressed;
+
+        /// <summary>
+        /// </summary>
+        private IntPtr pool, app, distantPast, runLoopMode;
+
+        /// <summary>
+        /// </summary>
+        private MacWindow window;
+
+
+        /// <summary>
         /// </summary>
         /// <param name="w"></param>
         /// <param name="h"></param>
@@ -63,66 +85,58 @@ namespace Alis.Core.Graphic.Platforms.Osx
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public void ShowWindow() => window?.Show();
-        
+
         /// <summary>
-        /// 
         /// </summary>
         public void HideWindow() => window?.Hide();
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="t"></param>
         public void SetTitle(string t) => window?.SetTitle(t);
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="w"></param>
         /// <param name="h"></param>
         public void SetSize(int w, int h) => window?.SetSize(w, h);
+
         /// <summary>
-        /// 
         /// </summary>
         public void MakeContextCurrent() => glContext?.MakeCurrent();
-        
+
         /// <summary>
-        /// 
         /// </summary>
         public void SwapBuffers() => glContext?.SwapBuffers();
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
         public bool IsWindowVisible() => window?.IsVisible() ?? false;
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
         public int GetWindowWidth() => window?.Width ?? 0;
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
         public int GetWindowHeight() => window?.Height ?? 0;
-        
+
         /// <summary>
-        /// 
         /// </summary>
         public void Cleanup()
         {
             if (pool != IntPtr.Zero)
+            {
                 ObjectiveCInterop.objc_msgSend_void(pool, ObjectiveCInterop.Sel("release"));
+            }
         }
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
         public bool PollEvents()
@@ -148,7 +162,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
                             if (!string.IsNullOrEmpty(chars))
                             {
                                 char c = chars[0];
-                                if (Enum.TryParse<ConsoleKey>(c.ToString(), true, out ConsoleKey key))
+                                if (Enum.TryParse(c.ToString(), true, out ConsoleKey key))
                                 {
                                     lastKeyPressed = key;
                                 }
@@ -156,14 +170,15 @@ namespace Alis.Core.Graphic.Platforms.Osx
                         }
                     }
                 }
+
                 ObjectiveCInterop.objc_msgSend_void_IntPtr(app, ObjectiveCInterop.Sel("sendEvent:"), evt);
                 ObjectiveCInterop.objc_msgSend_void(app, ObjectiveCInterop.Sel("updateWindows"));
             }
+
             return IsWindowVisible();
         }
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -175,12 +190,12 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 lastKeyPressed = null;
                 return true;
             }
-            key = default;
+
+            key = default(ConsoleKey);
             return false;
         }
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -198,25 +213,24 @@ namespace Alis.Core.Graphic.Platforms.Osx
                     return IntPtr.Zero;
                 }
             }
+
             return Dlsym(_openGlHandle, name);
         }
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="handle"></param>
         /// <param name="symbol"></param>
         /// <returns></returns>
-        [System.Runtime.InteropServices.DllImport("/usr/lib/libSystem.B.dylib", EntryPoint = "dlsym", CallingConvention = System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        [DllImport("/usr/lib/libSystem.B.dylib", EntryPoint = "dlsym", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr Dlsym(IntPtr handle, string symbol);
-       
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="path"></param>
         /// <param name="mode"></param>
         /// <returns></returns>
-        [System.Runtime.InteropServices.DllImport("/usr/lib/libSystem.B.dylib", EntryPoint = "dlopen", CallingConvention = System.Runtime.InteropServices.CallingConvention.Cdecl)]
+        [DllImport("/usr/lib/libSystem.B.dylib", EntryPoint = "dlopen", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr Dlopen(string path, int mode);
     }
 }

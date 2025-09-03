@@ -35,7 +35,7 @@ namespace Alis.Benchmark.Strings
     /// <summary>
     ///     The string manipulation benchmark class
     /// </summary>
-    [ Config(typeof(CustomConfig))]
+    [Config(typeof(CustomConfig))]
     public class StringManipulationBenchmark
     {
         /// <summary>

@@ -57,9 +57,16 @@ namespace Alis.Builder.Core.Ecs.Entity
         ///     Gets the value of the scene
         /// </summary>
         private Scene Scene { get; } = new Scene();
-        
+
+
         /// <summary>
-        /// Adds the config
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The scene</returns>
+        public Scene Build() => Scene;
+
+        /// <summary>
+        ///     Adds the config
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="config">The config</param>
@@ -71,13 +78,6 @@ namespace Alis.Builder.Core.Ecs.Entity
             gameObjectBuilder.Build();
             return this;
         }
-        
-
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The scene</returns>
-        public Scene Build() => Scene;
 
         /// <summary>
         ///     Names the value

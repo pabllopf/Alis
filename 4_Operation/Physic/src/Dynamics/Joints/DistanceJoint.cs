@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 
@@ -185,10 +184,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public sealed override Vector2F WorldAnchorA
         {
             get => BodyA.GetWorldPoint(LocalAnchorA);
-            set
-            {
-                _localCenterA = value;
-                }
+            set => _localCenterA = value;
         }
 
         /// <summary>
@@ -197,10 +193,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public sealed override Vector2F WorldAnchorB
         {
             get => BodyB.GetWorldPoint(LocalAnchorB);
-            set
-            {
-                _localCenterA = value;
-                }
+            set => _localCenterA = value;
         }
 
         /// <summary>

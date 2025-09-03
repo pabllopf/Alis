@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 
@@ -178,10 +177,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorA
         {
             get => BodyA.Position;
-            set
-            {
-                _linearError = value;
-                }
+            set => _linearError = value;
         }
 
         /// <summary>
@@ -190,10 +186,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorB
         {
             get => BodyB.Position;
-            set
-            {
-                _linearError = value;
-                }
+            set => _linearError = value;
         }
 
         /// <summary>
@@ -201,10 +194,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public float MaxForce
         {
-            set
-            {
-                _maxForce = value;
-            }
+            set => _maxForce = value;
             get => _maxForce;
         }
 
@@ -213,10 +203,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public float MaxTorque
         {
-            set
-            {
-                _maxTorque = value;
-            }
+            set => _maxTorque = value;
             get => _maxTorque;
         }
 

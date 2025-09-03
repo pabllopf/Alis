@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -41,12 +40,12 @@ namespace Alis.Extension.Graphic.Sdl2
         /// <summary>
         ///     Gets or sets the value of the background
         /// </summary>
-        public Color Background { get; set; }
+        Color Background { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the resolution
         /// </summary>
-        public Vector2F Resolution { get; set; }
+        Vector2F Resolution { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the is window resizable

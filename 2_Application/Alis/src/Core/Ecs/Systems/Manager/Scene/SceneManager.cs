@@ -38,47 +38,41 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
     public class SceneManager : AManager
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SceneManager"/> class
+        ///     Initializes a new instance of the <see cref="SceneManager" /> class
         /// </summary>
         /// <param name="context">The context</param>
-        public SceneManager(Context context) : base(context)
-        {
-            World = new Ecs.Scene();
-        }
+        public SceneManager(Context context) : base(context) => World = new Ecs.Scene();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SceneManager"/> class
+        ///     Initializes a new instance of the <see cref="SceneManager" /> class
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="name">The name</param>
         /// <param name="tag">The tag</param>
         /// <param name="isEnable">The is enable</param>
         /// <param name="context">The context</param>
-        public SceneManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
-        {
-            World = new Ecs.Scene();
-        }
+        public SceneManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context) => World = new Ecs.Scene();
 
         /// <summary>
-        /// Gets or sets the value of the scene
+        ///     Gets or sets the value of the scene
         /// </summary>
         public Ecs.Scene World { get; set; }
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
         }
 
         /// <summary>
-        /// Ons the save
+        ///     Ons the save
         /// </summary>
         public override void OnSave()
         {
             /*
             Logger.Info($"Saving scene: {World.EntityCount}");
-            
+
             string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Game");
             if (!Directory.Exists(directory))
             {
@@ -91,14 +85,13 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
                 DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                 SerializationOptions = JsonSerializationOptions.Default
             }));
-            
+
             Logger.Info($"Scene saved to: {fileWorld}");
 */
-            
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {

@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
@@ -185,7 +184,6 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="aabb"></param>
         /// <returns></returns>
@@ -265,11 +263,10 @@ namespace Alis.Core.Physic.Collision
             return true;
         }
 
-      /// <summary>
-      /// 
-      /// </summary>
-      /// <param name="proxyId"></param>
-      /// <param name="userData"></param>
+        /// <summary>
+        /// </summary>
+        /// <param name="proxyId"></param>
+        /// <param name="userData"></param>
         public void SetUserData(int proxyId, TNode userData)
         {
             _nodes[proxyId].UserData = userData;
@@ -280,10 +277,7 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="proxyId">The proxy id.</param>
         /// <returns>the proxy user data or 0 if the id is invalid.</returns>
-        public TNode GetUserData(int proxyId)
-        {
-            return _nodes[proxyId].UserData;
-        }
+        public TNode GetUserData(int proxyId) => _nodes[proxyId].UserData;
 
         /// <summary>
         ///     Get the fat AABB for a proxy.
@@ -300,20 +294,14 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="proxyId">The proxy id.</param>
         /// <returns>The fat AABB.</returns>
-        public Aabb GetFatAabb(int proxyId)
-        {
-            return _nodes[proxyId].Aabb;
-        }
+        public Aabb GetFatAabb(int proxyId) => _nodes[proxyId].Aabb;
 
         /// <summary>
         ///     Test overlap of fat AABBs.
         /// </summary>
         /// <param name="proxyIdA">The proxy id A.</param>
         /// <param name="proxyIdB">The proxy id B.</param>
-        public bool TestFatAabbOverlap(int proxyIdA, int proxyIdB)
-        {
-            return Aabb.TestOverlap(ref _nodes[proxyIdA].Aabb, ref _nodes[proxyIdB].Aabb);
-        }
+        public bool TestFatAabbOverlap(int proxyIdA, int proxyIdB) => Aabb.TestOverlap(ref _nodes[proxyIdA].Aabb, ref _nodes[proxyIdB].Aabb);
 
         /// <summary>
         ///     Query an AABB for overlapping proxies. The callback class
@@ -341,7 +329,7 @@ namespace Alis.Core.Physic.Collision
                     if (_nodes[nodeId].IsLeaf())
                     {
                         bool proceed = callback(nodeId);
-                        if (proceed == false)
+                        if (!proceed)
                         {
                             return;
                         }
@@ -400,7 +388,7 @@ namespace Alis.Core.Physic.Collision
 
                 //TreeNode<T>* node = &_nodes[nodeId];
 
-                if (Aabb.TestOverlap(ref _nodes[nodeId].Aabb, ref segmentAabb) == false)
+                if (!Aabb.TestOverlap(ref _nodes[nodeId].Aabb, ref segmentAabb))
                 {
                     continue;
                 }
@@ -516,7 +504,7 @@ namespace Alis.Core.Physic.Collision
             // Find the best sibling for this node
             Aabb leafAabb = _nodes[leaf].Aabb;
             int index = _root;
-            while (_nodes[index].IsLeaf() == false)
+            while (!_nodes[index].IsLeaf())
             {
                 int child1 = _nodes[index].Child1;
                 int child2 = _nodes[index].Child2;
@@ -884,7 +872,7 @@ namespace Alis.Core.Physic.Collision
 
             if (index == _root)
             {
-                }
+            }
 
             //TreeNode<T>* node = &_nodes[index];
 
@@ -946,8 +934,7 @@ namespace Alis.Core.Physic.Collision
                 freeIndex = _nodes[freeIndex].Next;
                 ++freeCount;
             }
-
-            }
+        }
 
         /// <summary>
         ///     Build an optimal tree. Very expensive. For testing.

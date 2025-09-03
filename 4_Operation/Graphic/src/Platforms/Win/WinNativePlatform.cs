@@ -1,7 +1,32 @@
 // --------------------------------------------------------------------------
-// Win32NativePlatform.cs
-// Platform abstraction for Win32 window and OpenGL context management
-// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:WinNativePlatform.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 #if WIN
 using System;
 using System.Runtime.InteropServices;
@@ -22,12 +47,12 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// 
         /// </summary>
         private const string WindowClassName = "AlisWin32GLWindow";
-        
+
         /// <summary>
         /// 
         /// </summary>
-        private const int CwUsedefault = unchecked((int)0x80000000);
-        
+        private const int CwUsedefault = unchecked((int) 0x80000000);
+
         /// <summary>
         /// 
         /// </summary>
@@ -48,22 +73,22 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// 
         /// </summary>
         private IntPtr hInstance;
-        
+
         /// <summary>
         /// 
         /// </summary>
         private IntPtr hWnd;
-        
+
         /// <summary>
         /// 
         /// </summary>
         private IntPtr hDc;
-        
+
         /// <summary>
         /// 
         /// </summary>
         private IntPtr hGlrc;
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -78,28 +103,28 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// 
         /// </summary>
         private string title;
-        
+
         /// <summary>
         /// 
         /// </summary>
         private ConsoleKey? lastKeyPressed = null;
-        
+
         /// <summary>
         /// 
         /// </summary>
         private bool running = true;
-        
+
         /// <summary>
         /// 
         /// </summary>
         private WndProc wndProcDelegate;
-        
+
         /// <summary>
         /// 
         /// </summary>
         private IntPtr wndProcPtr;
-        
-        
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -112,7 +137,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         // ------------------------------------------------------------------
         // PUBLIC METHODS
         // ------------------------------------------------------------------
-      
+
         /// <summary>
         /// 
         /// </summary>
@@ -131,7 +156,7 @@ namespace Alis.Core.Graphic.Platforms.Win
             string className = WindowClassName + Guid.NewGuid().ToString("N"); // Nombre único para evitar conflictos
             Wndclass wc = new Wndclass
             {
-                style = (uint)ClassStyles.OwnDC,
+                style = (uint) ClassStyles.OwnDC,
                 lpfnWndProc = wndProcPtr,
                 cbClsExtra = 0,
                 cbWndExtra = 0,
@@ -148,8 +173,10 @@ namespace Alis.Core.Graphic.Platforms.Win
                 Logger.Info($"No se pudo registrar la clase de ventana (RegisterClass devolvió 0x0), error: {Marshal.GetLastWin32Error()}");
                 return false;
             }
+
             // Probar varias combinaciones de estilos
-            var styleCombos = new[] {
+            var styleCombos = new[]
+            {
                 (WindowStyles.OverlappedWindow | WindowStyles.Visible),
                 (WindowStyles.OverlappedWindow),
                 (WindowStyles.Visible),
@@ -158,25 +185,27 @@ namespace Alis.Core.Graphic.Platforms.Win
             hWnd = IntPtr.Zero;
             foreach (var style in styleCombos)
             {
-                hWnd = User32.CreateWindowEx((int)WindowExStyles.None, className, title,
-                    (int)style,
+                hWnd = User32.CreateWindowEx((int) WindowExStyles.None, className, title,
+                    (int) style,
                     CwUsedefault, CwUsedefault, width, height,
                     IntPtr.Zero, IntPtr.Zero, hInstance, IntPtr.Zero);
                 if (hWnd != IntPtr.Zero)
                 {
-                    Logger.Info($"Ventana creada correctamente con estilo: 0x{(int)style:X}");
+                    Logger.Info($"Ventana creada correctamente con estilo: 0x{(int) style:X}");
                     break;
                 }
                 else
                 {
-                    Logger.Info($"Fallo al crear ventana con estilo: 0x{(int)style:X}, error: {Marshal.GetLastWin32Error()}");
+                    Logger.Info($"Fallo al crear ventana con estilo: 0x{(int) style:X}, error: {Marshal.GetLastWin32Error()}");
                 }
             }
+
             if (hWnd == IntPtr.Zero)
             {
                 Logger.Info("No se pudo crear la ventana Win32 (CreateWindowEx devolvió 0x0) tras varios intentos");
                 return false;
             }
+
             hDc = User32.GetDC(hWnd);
             if (hDc == IntPtr.Zero)
             {
@@ -185,12 +214,14 @@ namespace Alis.Core.Graphic.Platforms.Win
             }
 
             // Lista de configuraciones a probar
-            Pixelformatdescriptor[] configs = new[] {
-                new Pixelformatdescriptor {
-                    nSize = (ushort)Marshal.SizeOf(typeof(Pixelformatdescriptor)),
+            Pixelformatdescriptor[] configs = new[]
+            {
+                new Pixelformatdescriptor
+                {
+                    nSize = (ushort) Marshal.SizeOf(typeof(Pixelformatdescriptor)),
                     nVersion = 1,
-                    dwFlags = (uint)(PixelFormatFlags.DrawToWindow | PixelFormatFlags.SupportOpenGL | PixelFormatFlags.DoubleBuffer),
-                    iPixelType = (byte)PixelType.RGBA,
+                    dwFlags = (uint) (PixelFormatFlags.DrawToWindow | PixelFormatFlags.SupportOpenGL | PixelFormatFlags.DoubleBuffer),
+                    iPixelType = (byte) PixelType.RGBA,
                     cColorBits = 32,
                     cRedBits = 8,
                     cGreenBits = 8,
@@ -198,13 +229,14 @@ namespace Alis.Core.Graphic.Platforms.Win
                     cAlphaBits = 8,
                     cDepthBits = 24,
                     cStencilBits = 8,
-                    iLayerType = (byte)LayerType.MainPlane
+                    iLayerType = (byte) LayerType.MainPlane
                 },
-                new Pixelformatdescriptor {
-                    nSize = (ushort)Marshal.SizeOf(typeof(Pixelformatdescriptor)),
+                new Pixelformatdescriptor
+                {
+                    nSize = (ushort) Marshal.SizeOf(typeof(Pixelformatdescriptor)),
                     nVersion = 1,
-                    dwFlags = (uint)(PixelFormatFlags.DrawToWindow | PixelFormatFlags.SupportOpenGL),
-                    iPixelType = (byte)PixelType.RGBA,
+                    dwFlags = (uint) (PixelFormatFlags.DrawToWindow | PixelFormatFlags.SupportOpenGL),
+                    iPixelType = (byte) PixelType.RGBA,
                     cColorBits = 24,
                     cRedBits = 8,
                     cGreenBits = 8,
@@ -212,13 +244,14 @@ namespace Alis.Core.Graphic.Platforms.Win
                     cAlphaBits = 0,
                     cDepthBits = 0,
                     cStencilBits = 0,
-                    iLayerType = (byte)LayerType.MainPlane
+                    iLayerType = (byte) LayerType.MainPlane
                 },
-                new Pixelformatdescriptor {
-                    nSize = (ushort)Marshal.SizeOf(typeof(Pixelformatdescriptor)),
+                new Pixelformatdescriptor
+                {
+                    nSize = (ushort) Marshal.SizeOf(typeof(Pixelformatdescriptor)),
                     nVersion = 1,
-                    dwFlags = (uint)(PixelFormatFlags.DrawToWindow | PixelFormatFlags.SupportOpenGL | PixelFormatFlags.DoubleBuffer),
-                    iPixelType = (byte)PixelType.RGBA,
+                    dwFlags = (uint) (PixelFormatFlags.DrawToWindow | PixelFormatFlags.SupportOpenGL | PixelFormatFlags.DoubleBuffer),
+                    iPixelType = (byte) PixelType.RGBA,
                     cColorBits = 16,
                     cRedBits = 5,
                     cGreenBits = 6,
@@ -226,7 +259,7 @@ namespace Alis.Core.Graphic.Platforms.Win
                     cAlphaBits = 0,
                     cDepthBits = 16,
                     cStencilBits = 0,
-                    iLayerType = (byte)LayerType.MainPlane
+                    iLayerType = (byte) LayerType.MainPlane
                 }
             };
             bool contextOk = false;
@@ -243,12 +276,14 @@ namespace Alis.Core.Graphic.Platforms.Win
                     Opengl32.wglDeleteContext(dummyContext);
                     continue;
                 }
+
                 // Intentar contexto moderno
                 IntPtr procAttribs = Opengl32.wglGetProcAddress("wglCreateContextAttribsARB");
                 if (procAttribs != IntPtr.Zero)
                 {
                     WglCreateContextAttribsARB wglCreateContextAttribsARB = Marshal.GetDelegateForFunctionPointer<WglCreateContextAttribsARB>(procAttribs);
-                    int[] attribs = new int[] {
+                    int[] attribs = new int[]
+                    {
                         0x2091, 3, // WGL_CONTEXT_MAJOR_VERSION_ARB, 3
                         0x2092, 3, // WGL_CONTEXT_MINOR_VERSION_ARB, 3
                         0x9126, 0x00000001, // WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB
@@ -272,16 +307,19 @@ namespace Alis.Core.Graphic.Platforms.Win
                         }
                     }
                 }
+
                 // Si no hay contexto moderno, usar dummy
                 hGlrc = dummyContext;
                 contextOk = true;
                 break;
             }
+
             if (!contextOk)
             {
                 Logger.Info("No se pudo crear el contexto OpenGL con ninguna configuración. Verifica drivers y compatibilidad OpenGL en tu sistema.");
                 return false;
             }
+
             return true;
         }
 
@@ -292,7 +330,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         {
             if (hWnd != IntPtr.Zero)
             {
-                User32.ShowWindow(hWnd, (int)ShowWindowCommand.Show);
+                User32.ShowWindow(hWnd, (int) ShowWindowCommand.Show);
                 User32.UpdateWindow(hWnd);
             }
         }
@@ -304,7 +342,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         {
             if (hWnd != IntPtr.Zero)
             {
-                User32.ShowWindow(hWnd, (int)ShowWindowCommand.Hide);
+                User32.ShowWindow(hWnd, (int) ShowWindowCommand.Hide);
             }
         }
 
@@ -371,19 +409,22 @@ namespace Alis.Core.Graphic.Platforms.Win
             Msg msg;
             while (User32.PeekMessage(out msg, hWnd, 0, 0, 1))
             {
-                if (msg.message == (uint)WindowMessage.KeyDown)
+                if (msg.message == (uint) WindowMessage.KeyDown)
                 {
-                    lastKeyPressed = (ConsoleKey)msg.wParam.ToInt32();
+                    lastKeyPressed = (ConsoleKey) msg.wParam.ToInt32();
                 }
-                if (msg.message == (uint)WindowMessage.Close)
+
+                if (msg.message == (uint) WindowMessage.Close)
                 {
                     running = false;
                     User32.DestroyWindow(hWnd);
                     hWnd = IntPtr.Zero;
                 }
+
                 User32.TranslateMessage(ref msg);
                 User32.DispatchMessage(ref msg);
             }
+
             return running && IsWindowVisible();
         }
 
@@ -398,11 +439,13 @@ namespace Alis.Core.Graphic.Platforms.Win
                 Opengl32.wglDeleteContext(hGlrc);
                 hGlrc = IntPtr.Zero;
             }
+
             if (hWnd != IntPtr.Zero)
             {
                 User32.DestroyWindow(hWnd);
                 hWnd = IntPtr.Zero;
             }
+
             if (hDc != IntPtr.Zero)
             {
                 User32.ReleaseDC(hWnd, hDc);
@@ -421,6 +464,7 @@ namespace Alis.Core.Graphic.Platforms.Win
                 User32.GetWindowRect(hWnd, out rect);
                 return rect.Right - rect.Left;
             }
+
             return width;
         }
 
@@ -435,6 +479,7 @@ namespace Alis.Core.Graphic.Platforms.Win
                 User32.GetWindowRect(hWnd, out rect);
                 return rect.Bottom - rect.Top;
             }
+
             return height;
         }
 
@@ -449,6 +494,7 @@ namespace Alis.Core.Graphic.Platforms.Win
                 IntPtr module = Kernel32.LoadLibrary("opengl32.dll");
                 addr = Kernel32.GetProcAddress(module, name);
             }
+
             return addr;
         }
 
@@ -463,6 +509,7 @@ namespace Alis.Core.Graphic.Platforms.Win
                 lastKeyPressed = null;
                 return true;
             }
+
             key = default;
             return false;
         }
@@ -475,14 +522,14 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// </summary>
         private IntPtr WindowProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
         {
-            switch ((WindowMessage)msg)
+            switch ((WindowMessage) msg)
             {
                 case WindowMessage.Close:
                     running = false;
                     User32.DestroyWindow(hWnd);
                     return IntPtr.Zero;
                 case WindowMessage.KeyDown:
-                    lastKeyPressed = (ConsoleKey)wParam.ToInt32();
+                    lastKeyPressed = (ConsoleKey) wParam.ToInt32();
                     break;
                 case WindowMessage.Size:
                     width = lParam.ToInt32() & 0xFFFF;
@@ -492,6 +539,7 @@ namespace Alis.Core.Graphic.Platforms.Win
                     running = false;
                     break;
             }
+
             return User32.DefWindowProc(hWnd, msg, wParam, lParam);
         }
 

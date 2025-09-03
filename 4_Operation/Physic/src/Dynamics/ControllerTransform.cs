@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Transform.cs
+//  File:ControllerTransform.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -48,9 +47,9 @@ namespace Alis.Core.Physic.Dynamics
         ///     The
         /// </summary>
         public Vector2F Position;
-        
+
         /// <summary>
-        /// The scale
+        ///     The scale
         /// </summary>
         public Vector2F Scale;
 
@@ -71,9 +70,9 @@ namespace Alis.Core.Physic.Dynamics
             Scale = Vector2F.One; // Default scale is 1,1
             Logger.Log($"Transform: {Position} {Rotation} {Scale}");
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="ControllerTransform"/> class
+        ///     Initializes a new instance of the <see cref="ControllerTransform" /> class
         /// </summary>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
@@ -83,7 +82,7 @@ namespace Alis.Core.Physic.Dynamics
             Rotation = rotation;
             Position = position;
             Scale = scale;
-            
+
             Logger.Log($"Transform: {position} {rotation} {scale}");
         }
 
@@ -97,9 +96,9 @@ namespace Alis.Core.Physic.Dynamics
         {
             Logger.Log($"Transform: {Position} {Rotation} {Scale}");
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="ControllerTransform"/> class
+        ///     Initializes a new instance of the <see cref="ControllerTransform" /> class
         /// </summary>
         /// <param name="position">The position</param>
         /// <param name="angle">The angle</param>
@@ -228,7 +227,5 @@ namespace Alis.Core.Physic.Dynamics
             result.Rotation = Complex.Divide(ref left.Rotation, ref right);
             result.Scale = Complex.Divide(ref left.Scale, ref right);
         }
-
-        
     }
 }

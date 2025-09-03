@@ -37,7 +37,7 @@ namespace Alis.Extension.Media.FFmpeg.BaseClasses
     ///     The media stream class
     /// </summary>
     [Serializable]
-    public partial class MediaStream 
+    public partial class MediaStream
     {
         /// <summary>
         ///     The avgfpsnum
@@ -222,13 +222,7 @@ namespace Alis.Extension.Media.FFmpeg.BaseClasses
         ///     Gets the value of the avg frame rate number
         /// </summary>
         [JsonNativeIgnore]
-        public double AvgFrameRateNumber
-        {
-            get
-            {
-                return avgfpsnum;
-            }
-        }
+        public double AvgFrameRateNumber => avgfpsnum;
 
 
         /// <summary>

@@ -1,6 +1,6 @@
 ---
-triple:          'arm64-apple-darwin'
-binary-path:     'bin/release/net8.0/osx-arm64/native/Alis.Core.Aspect.Math.Sample'
+triple: 'arm64-apple-darwin'
+binary-path: 'bin/release/net8.0/osx-arm64/native/Alis.Core.Aspect.Math.Sample'
 relocations:
   - { offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100005180, symSize: 0xD4 }
   - { offset: 0x3F, size: 0x8, addend: 0x0, symName: __ZL19c_classlibFunctions, symObjAddr: 0xD8, symBinAddr: 0x100144630, symSize: 0x0 }

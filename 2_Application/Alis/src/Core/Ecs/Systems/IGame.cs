@@ -37,11 +37,11 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Runs this instance
         /// </summary>
-        public void Run();
+        void Run();
 
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public void Exit();
+        void Exit();
     }
 }

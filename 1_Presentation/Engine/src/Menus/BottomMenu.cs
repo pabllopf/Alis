@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:BottomMenu.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Concurrent;
 using System.Threading;
@@ -10,87 +39,71 @@ using Alis.Extension.Graphic.Ui.Fonts;
 namespace Alis.App.Engine.Menus
 {
     /// <summary>
-    /// The bottom menu class
+    ///     The bottom menu class
     /// </summary>
-    /// <seealso cref="IRenderable"/>
-    /// <seealso cref="IHasSpaceWork"/>
+    /// <seealso cref="IRenderable" />
+    /// <seealso cref="IHasSpaceWork" />
     public class BottomMenu : IRenderable, IHasSpaceWork
     {
+        // Static process queue accessible from anywhere
         /// <summary>
-        /// Initializes a new instance of the <see cref="BottomMenu"/> class
+        ///     The process queue
+        /// </summary>
+        public static readonly ConcurrentQueue<ProcessInfo> ProcessQueue = new();
+
+        /// <summary>
+        ///     The total processes
+        /// </summary>
+        private static int _totalProcesses;
+
+        /// <summary>
+        ///     The completed processes
+        /// </summary>
+        private static int _completedProcesses;
+
+        /// <summary>
+        ///     The current process
+        /// </summary>
+        private static string _currentProcess = "Idle";
+
+        /// <summary>
+        ///     The lock
+        /// </summary>
+        private static readonly object _lock = new();
+
+        /// <summary>
+        ///     The current process duration
+        /// </summary>
+        private int _currentProcessDuration;
+
+        /// <summary>
+        ///     The process start time
+        /// </summary>
+        private DateTime? _processStartTime;
+
+        /// <summary>
+        ///     The show process popup
+        /// </summary>
+        private bool _showProcessPopup;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BottomMenu" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
         public BottomMenu(SpaceWork spaceWork) => SpaceWork = spaceWork;
+
         /// <summary>
-        /// Gets the value of the space work
+        ///     Gets the value of the total processes
+        /// </summary>
+        public static int TotalProcesses => _totalProcesses;
+
+        /// <summary>
+        ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
-        // Static process queue accessible from anywhere
         /// <summary>
-        /// The process queue
-        /// </summary>
-        public static readonly ConcurrentQueue<ProcessInfo> ProcessQueue = new();
-        /// <summary>
-        /// Gets the value of the total processes
-        /// </summary>
-        public static int TotalProcesses => _totalProcesses;
-        /// <summary>
-        /// The total processes
-        /// </summary>
-        private static int _totalProcesses = 0;
-        /// <summary>
-        /// The completed processes
-        /// </summary>
-        private static int _completedProcesses = 0;
-        /// <summary>
-        /// The current process
-        /// </summary>
-        private static string _currentProcess = "Idle";
-        /// <summary>
-        /// The lock
-        /// </summary>
-        private static readonly object _lock = new();
-        /// <summary>
-        /// The show process popup
-        /// </summary>
-        private bool _showProcessPopup = false;
-        /// <summary>
-        /// The process start time
-        /// </summary>
-        private DateTime? _processStartTime = null;
-        /// <summary>
-        /// The current process duration
-        /// </summary>
-        private int _currentProcessDuration = 0;
-
-        /// <summary>
-        /// Initializes this instance
-        /// </summary>
-        public void Initialize() 
-        { 
-#if DEBUG
-            // Add 10 demo processes with different durations and names for debug/testing
-            EnqueueProcess("Loading assets", 2000);
-            EnqueueProcess("Connecting to server", 1000);
-            EnqueueProcess("Initializing UI", 500);
-            EnqueueProcess("Syncing data", 3000);
-            EnqueueProcess("Compiling shaders", 1500);
-            EnqueueProcess("Checking updates", 700);
-            EnqueueProcess("Loading user profile", 1200);
-            EnqueueProcess("Preparing workspace", 2500);
-            EnqueueProcess("Verifying license", 800);
-            EnqueueProcess("Finalizing startup", 1100);
-#endif
-        }
-        
-        /// <summary>
-        /// Starts this instance
-        /// </summary>
-        public void Start() { }
-
-        /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
@@ -105,12 +118,39 @@ namespace Alis.App.Engine.Menus
             }
 
             RemoveMenuStyles();
-            
+
             UpdateProcessStatus();
         }
 
         /// <summary>
-        /// Applies the menu styles
+        ///     Initializes this instance
+        /// </summary>
+        public void Initialize()
+        {
+#if DEBUG
+            // Add 10 demo processes with different durations and names for debug/testing
+            EnqueueProcess("Loading assets", 2000);
+            EnqueueProcess("Connecting to server", 1000);
+            EnqueueProcess("Initializing UI", 500);
+            EnqueueProcess("Syncing data", 3000);
+            EnqueueProcess("Compiling shaders", 1500);
+            EnqueueProcess("Checking updates", 700);
+            EnqueueProcess("Loading user profile", 1200);
+            EnqueueProcess("Preparing workspace", 2500);
+            EnqueueProcess("Verifying license", 800);
+            EnqueueProcess("Finalizing startup", 1100);
+#endif
+        }
+
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        public void Start()
+        {
+        }
+
+        /// <summary>
+        ///     Applies the menu styles
         /// </summary>
         private void ApplyMenuStyles()
         {
@@ -121,7 +161,7 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        /// Removes the menu styles
+        ///     Removes the menu styles
         /// </summary>
         private void RemoveMenuStyles()
         {
@@ -130,7 +170,7 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        /// Calculates the menu layout
+        ///     Calculates the menu layout
         /// </summary>
         /// <returns>The vector dock size vector menu size int pos int size menu float bottom menu height</returns>
         private (Vector2F dockSize, Vector2F menuSize, int posY, int sizeMenu, float bottomMenuHeight) CalculateMenuLayout()
@@ -150,7 +190,7 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        /// Sets the menu window position and size using the specified dock size
+        ///     Sets the menu window position and size using the specified dock size
         /// </summary>
         /// <param name="dockSize">The dock size</param>
         /// <param name="menuSize">The menu size</param>
@@ -165,7 +205,7 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        /// Renders the menu columns
+        ///     Renders the menu columns
         /// </summary>
         private void RenderMenuColumns()
         {
@@ -182,7 +222,7 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
-        /// Renders the notification button
+        ///     Renders the notification button
         /// </summary>
         private void RenderNotificationButton()
         {
@@ -192,7 +232,7 @@ namespace Alis.App.Engine.Menus
             }
         }
 
-        
+
         /// <summary>
         ///     Renders the branch selector dropdown
         /// </summary>
@@ -205,24 +245,26 @@ namespace Alis.App.Engine.Menus
                 {
                     Logger.Info("Switching to branch master...");
                 }
+
                 if (ImGui.Selectable("develop"))
                 {
                     Logger.Info("Switching to branch develop...");
                 }
+
                 if (ImGui.Selectable("feature/new-feature"))
                 {
                     Logger.Info("Switching to branch feature/new-feature...");
                 }
+
                 ImGui.EndCombo();
             }
 
             ImGui.SameLine();
         }
 
-        
 
         /// <summary>
-        /// Renders the progress bar
+        ///     Renders the progress bar
         /// </summary>
         private void RenderProgressBar()
         {
@@ -232,7 +274,7 @@ namespace Alis.App.Engine.Menus
                 return;
             }
 
-            float progress = (float)_completedProcesses / TotalProcesses;
+            float progress = (float) _completedProcesses / TotalProcesses;
 
             // Calcular el tiempo total transcurrido desde el inicio del primer proceso
             double totalTime = 0;
@@ -249,10 +291,11 @@ namespace Alis.App.Engine.Menus
 
             string processLabel = _currentProcess;
             int maxLabelLength = 15; // Puedes ajustar este valor según el espacio disponible
-            if (!string.IsNullOrEmpty(processLabel) && processLabel.Length > maxLabelLength)
+            if (!string.IsNullOrEmpty(processLabel) && (processLabel.Length > maxLabelLength))
             {
                 processLabel = processLabel.Substring(0, maxLabelLength) + "...";
             }
+
             string label = $"{_completedProcesses}/{TotalProcesses} {processLabel} ({totalTime:0.0}s)";
 
             ImGui.SetCursorPosX(ImGui.GetContentRegionMax().X - 200);
@@ -261,29 +304,37 @@ namespace Alis.App.Engine.Menus
             {
                 _showProcessPopup = true;
             }
+
             if (_showProcessPopup)
             {
                 ImGui.OpenPopup("ProcessQueuePopup");
             }
+
             if (ImGui.BeginPopup("ProcessQueuePopup"))
             {
                 int displayedProcesses = 0;
                 foreach (ProcessInfo process in ProcessQueue)
                 {
-                    string extra = process.Status == ProcessStatus.Running && process.StartTime.HasValue
+                    string extra = (process.Status == ProcessStatus.Running) && process.StartTime.HasValue
                         ? $" ({(DateTime.UtcNow - process.StartTime.Value).TotalSeconds:0.0}s)"
-                        : process.Status == ProcessStatus.Completed ? " (Completed)" : "";
-                    float processProgress = process.Status == ProcessStatus.Running && process.StartTime.HasValue
-                        ? (float)(DateTime.UtcNow - process.StartTime.Value).TotalMilliseconds / process.DurationMs
-                        : process.Status == ProcessStatus.Completed ? 1.0f : 0.0f;
+                        : process.Status == ProcessStatus.Completed
+                            ? " (Completed)"
+                            : "";
+                    float processProgress = (process.Status == ProcessStatus.Running) && process.StartTime.HasValue
+                        ? (float) (DateTime.UtcNow - process.StartTime.Value).TotalMilliseconds / process.DurationMs
+                        : process.Status == ProcessStatus.Completed
+                            ? 1.0f
+                            : 0.0f;
                     ImGui.ProgressBar(processProgress, new Vector2F(190, 17), $"{process.Name}{extra}");
                     displayedProcesses++;
                 }
+
                 // Rellenar con huecos vacíos si hay menos de 10 procesos
                 for (int i = displayedProcesses; i < 10; i++)
                 {
                     ImGui.NewLine();
                 }
+
                 ImGui.EndPopup();
             }
 
@@ -297,7 +348,7 @@ namespace Alis.App.Engine.Menus
 
         // Call this in Update or a background thread to update process status
         /// <summary>
-        /// Updates the process status
+        ///     Updates the process status
         /// </summary>
         public void UpdateProcessStatus()
         {
@@ -315,7 +366,7 @@ namespace Alis.App.Engine.Menus
                     }
                     else if (process.Status == ProcessStatus.Running)
                     {
-                        if (_processStartTime.HasValue && (DateTime.UtcNow - _processStartTime.Value).TotalMilliseconds >= _currentProcessDuration)
+                        if (_processStartTime.HasValue && ((DateTime.UtcNow - _processStartTime.Value).TotalMilliseconds >= _currentProcessDuration))
                         {
                             process.Status = ProcessStatus.Completed;
                             ProcessQueue.TryDequeue(out _);
@@ -337,19 +388,19 @@ namespace Alis.App.Engine.Menus
 
         // Method to add a process from anywhere
         /// <summary>
-        /// Enqueues the process using the specified name
+        ///     Enqueues the process using the specified name
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="durationMs">The duration ms</param>
         public static void EnqueueProcess(string name, int durationMs)
         {
-            ProcessQueue.Enqueue(new ProcessInfo { Name = name, Status = ProcessStatus.Pending, DurationMs = durationMs });
+            ProcessQueue.Enqueue(new ProcessInfo {Name = name, Status = ProcessStatus.Pending, DurationMs = durationMs});
             Interlocked.Increment(ref _totalProcesses);
         }
 
         // Call this to mark a process as completed
         /// <summary>
-        /// Completes the process
+        ///     Completes the process
         /// </summary>
         public static void CompleteProcess()
         {
@@ -358,43 +409,48 @@ namespace Alis.App.Engine.Menus
     }
 
     /// <summary>
-    /// The process info class
+    ///     The process info class
     /// </summary>
     public class ProcessInfo
     {
         /// <summary>
-        /// Gets or sets the value of the name
+        ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the status
+        ///     Gets or sets the value of the status
         /// </summary>
         public ProcessStatus Status { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the duration ms
+        ///     Gets or sets the value of the duration ms
         /// </summary>
         public int DurationMs { get; set; } // Duration in milliseconds
+
         /// <summary>
-        /// Gets or sets the value of the start time
+        ///     Gets or sets the value of the start time
         /// </summary>
         public DateTime? StartTime { get; set; }
     }
 
     /// <summary>
-    /// The process status enum
+    ///     The process status enum
     /// </summary>
     public enum ProcessStatus
     {
         /// <summary>
-        /// The pending process status
+        ///     The pending process status
         /// </summary>
         Pending,
+
         /// <summary>
-        /// The running process status
+        ///     The running process status
         /// </summary>
         Running,
+
         /// <summary>
-        /// The completed process status
+        ///     The completed process status
         /// </summary>
         Completed
     }

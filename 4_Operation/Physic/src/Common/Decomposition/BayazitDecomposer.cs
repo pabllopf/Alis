@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
@@ -52,10 +51,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         ///     If the polygon is already convex, it will return the original polygon, unless it is over
         ///     Settings.MaxPolygonVertices.
         /// </summary>
-        public static List<Vertices> ConvexPartition(Vertices vertices)
-        {
-            return TriangulatePolygon(vertices);
-        }
+        public static List<Vertices> ConvexPartition(Vertices vertices) => TriangulatePolygon(vertices);
 
         /// <summary>
         ///     Triangulates the polygon using the specified vertices

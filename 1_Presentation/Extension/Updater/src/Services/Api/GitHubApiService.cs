@@ -32,7 +32,6 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-
 namespace Alis.Extension.Updater.Services.Api
 {
     /// <summary>
@@ -75,7 +74,7 @@ namespace Alis.Extension.Updater.Services.Api
             //return JsonSerializer.Deserialize<Dictionary<string, object>>(response);
             return new Dictionary<string, object>
             {
-                { "response", response }
+                {"response", response}
             };
         }
 

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioClip.cs
+//  File:AudioSource.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,21 +28,19 @@
 //  --------------------------------------------------------------------------
 
 using System.Threading;
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Resource;
-using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Audio;
 
 namespace Alis.Core.Ecs.Components.Audio
 {
     /// <summary>
-    /// The audio clip
+    ///     The audio clip
     /// </summary>
     public struct AudioSource(string nameFile = "", float volume = 100, bool isMute = false, bool playOnAwake = false, bool loop = false) : IAudioSource, IInitable, IGameObjectComponent
     {
         /// <summary>
-        /// The loop
+        ///     The loop
         /// </summary>
         private readonly bool loop = loop;
 
@@ -50,17 +48,17 @@ namespace Alis.Core.Ecs.Components.Audio
         ///     The player
         /// </summary>
         private readonly Player player = new Player();
-        
+
         /// <summary>
         ///     Gets or sets the value of the is playing
         /// </summary>
         public bool IsPlaying => player.Playing;
-        
+
         /// <summary>
         ///     Gets or sets the value of the play on awake
         /// </summary>
         public bool PlayOnAwake { get; set; } = playOnAwake;
- 
+
         /// <summary>
         ///     Gets or sets the value of the is mute
         /// </summary>
@@ -69,7 +67,7 @@ namespace Alis.Core.Ecs.Components.Audio
         /// <summary>
         ///     Gets or sets the value of the is looping
         /// </summary>
-        public bool IsLooping { get; set; } 
+        public bool IsLooping { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the volume
@@ -123,9 +121,9 @@ namespace Alis.Core.Ecs.Components.Audio
                 _ = player.Resume();
             }
         }
-        
+
         /// <summary>
-        /// Updates the self
+        ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         public void Update(IGameObject self)
@@ -137,7 +135,7 @@ namespace Alis.Core.Ecs.Components.Audio
         }
 
         /// <summary>
-        /// Inits the self
+        ///     Inits the self
         /// </summary>
         /// <param name="self">The self</param>
         public void Init(IGameObject self)
@@ -150,4 +148,3 @@ namespace Alis.Core.Ecs.Components.Audio
         }
     }
 }
-

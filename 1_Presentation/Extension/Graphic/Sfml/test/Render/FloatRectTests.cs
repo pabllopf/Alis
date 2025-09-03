@@ -1,16 +1,45 @@
-using Xunit;
-using Alis.Extension.Graphic.Sfml.Render;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:FloatRectTests.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Sfml.Render;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
     /// <summary>
-    /// The float rect tests class
+    ///     The float rect tests class
     /// </summary>
     public class FloatRectTests
     {
         /// <summary>
-        /// Tests that constructor sets fields correctly
+        ///     Tests that constructor sets fields correctly
         /// </summary>
         [Fact]
         public void Constructor_SetsFieldsCorrectly()
@@ -23,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        /// Tests that constructor from position and size sets fields correctly
+        ///     Tests that constructor from position and size sets fields correctly
         /// </summary>
         [Fact]
         public void Constructor_FromPositionAndSize_SetsFieldsCorrectly()
@@ -38,7 +67,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        /// Tests that contains returns true for point inside
+        ///     Tests that contains returns true for point inside
         /// </summary>
         [Fact]
         public void Contains_ReturnsTrueForPointInside()
@@ -48,7 +77,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        /// Tests that contains returns false for point outside
+        ///     Tests that contains returns false for point outside
         /// </summary>
         [Fact]
         public void Contains_ReturnsFalseForPointOutside()
@@ -58,7 +87,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        /// Tests that intersects returns true for overlapping rects
+        ///     Tests that intersects returns true for overlapping rects
         /// </summary>
         [Fact]
         public void Intersects_ReturnsTrueForOverlappingRects()
@@ -69,7 +98,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        /// Tests that intersects returns false for non overlapping rects
+        ///     Tests that intersects returns false for non overlapping rects
         /// </summary>
         [Fact]
         public void Intersects_ReturnsFalseForNonOverlappingRects()
@@ -80,7 +109,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        /// Tests that intersects out overlap is correct
+        ///     Tests that intersects out overlap is correct
         /// </summary>
         [Fact]
         public void Intersects_OutOverlapIsCorrect()
@@ -95,7 +124,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        /// Tests that to string returns expected format
+        ///     Tests that to string returns expected format
         /// </summary>
         [Fact]
         public void ToString_ReturnsExpectedFormat()
@@ -109,7 +138,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        /// Tests that equality operators work
+        ///     Tests that equality operators work
         /// </summary>
         [Fact]
         public void Equality_Operators_Work()
@@ -124,7 +153,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        /// Tests that get hash code is consistent
+        ///     Tests that get hash code is consistent
         /// </summary>
         [Fact]
         public void GetHashCode_IsConsistent()
@@ -135,4 +164,3 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
     }
 }
-

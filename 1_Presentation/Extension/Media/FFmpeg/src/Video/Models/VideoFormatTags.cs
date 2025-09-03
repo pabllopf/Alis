@@ -38,16 +38,15 @@ namespace Alis.Extension.Media.FFmpeg.Video.Models
     [Serializable]
     public partial class VideoFormatTags
     {
-        
         /// <summary>
-        /// Initializes a new instance of the <see cref="VideoFormatTags"/> class
+        ///     Initializes a new instance of the <see cref="VideoFormatTags" /> class
         /// </summary>
         public VideoFormatTags() : this(string.Empty, string.Empty, string.Empty, string.Empty, string.Empty)
         {
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="VideoFormatTags"/> class
+        ///     Initializes a new instance of the <see cref="VideoFormatTags" /> class
         /// </summary>
         /// <param name="majorBrand">The major brand</param>
         /// <param name="minorVersion">The minor version</param>
@@ -62,7 +61,7 @@ namespace Alis.Extension.Media.FFmpeg.Video.Models
             CreationTime = creationTime;
             Encoder = encoder;
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the major brand
         /// </summary>

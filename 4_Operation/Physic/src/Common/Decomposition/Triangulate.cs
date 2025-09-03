@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-
 using Alis.Core.Physic.Common.ConvexHull;
 
 namespace Alis.Core.Physic.Common.Decomposition
@@ -40,7 +39,6 @@ namespace Alis.Core.Physic.Common.Decomposition
     public static class Triangulate
     {
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="vertices"></param>
         /// <param name="algorithm"></param>
@@ -63,7 +61,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 case TriangulationAlgorithm.Earclip:
                     if (skipSanityChecks)
                     {
-                        }
+                    }
                     else if (vertices.IsCounterClockWise())
                     {
                         Vertices temp = new Vertices(vertices);
@@ -76,7 +74,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 case TriangulationAlgorithm.Bayazit:
                     if (skipSanityChecks)
                     {
-                        }
+                    }
                     else if (!vertices.IsCounterClockWise())
                     {
                         Vertices temp = new Vertices(vertices);
@@ -89,7 +87,7 @@ namespace Alis.Core.Physic.Common.Decomposition
                 case TriangulationAlgorithm.Flipcode:
                     if (skipSanityChecks)
                     {
-                        }
+                    }
                     else if (!vertices.IsCounterClockWise())
                     {
                         Vertices temp = new Vertices(vertices);

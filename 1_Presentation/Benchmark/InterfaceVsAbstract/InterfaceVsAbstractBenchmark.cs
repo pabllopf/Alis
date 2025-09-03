@@ -35,7 +35,7 @@ namespace Alis.Benchmark.InterfaceVsAbstract
     /// <summary>
     ///     The interface vs abstract benchmark class
     /// </summary>
-    [ Config(typeof(CustomConfig))]
+    [Config(typeof(CustomConfig))]
     public class InterfaceVsAbstractBenchmark
     {
         /// <summary>

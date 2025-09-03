@@ -31,8 +31,6 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Point;
 using Alis.Core.Aspect.Math.Shape.Rectangle;

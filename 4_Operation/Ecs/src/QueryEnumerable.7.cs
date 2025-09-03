@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:QueryEnumerable.cs
+//  File:QueryEnumerable.7.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -37,15 +37,11 @@ namespace Alis.Core.Ecs
     /// </summary>
     /// <param name="query">The query to wrap.</param>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        
     public readonly struct QueryEnumerable<T1, T2, T3, T4, T5, T6, T7>(Query query)
     {
         /// <summary>
         ///     Gets the enumerator over a query.
         /// </summary>
-        public GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7> GetEnumerator()
-        {
-            return new GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>(query);
-        }
+        public GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7> GetEnumerator() => new GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7>(query);
     }
 }

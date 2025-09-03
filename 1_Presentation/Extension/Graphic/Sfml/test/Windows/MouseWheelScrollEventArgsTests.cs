@@ -33,17 +33,17 @@ using Xunit;
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
     /// <summary>
-    /// The mouse wheel scroll event args tests class
+    ///     The mouse wheel scroll event args tests class
     /// </summary>
     public class MouseWheelScrollEventArgsTests
     {
         /// <summary>
-        /// Tests that constructor sets properties correctly
+        ///     Tests that constructor sets properties correctly
         /// </summary>
         [Fact]
         public void Constructor_SetsPropertiesCorrectly()
         {
-            MouseWheelScrollEvent evt = new MouseWheelScrollEvent { Wheel = Mouse.Wheel.HorizontalWheel, Delta = -2.0f, X = 5, Y = 15 };
+            MouseWheelScrollEvent evt = new MouseWheelScrollEvent {Wheel = Mouse.Wheel.HorizontalWheel, Delta = -2.0f, X = 5, Y = 15};
             MouseWheelScrollEventArgs args = new MouseWheelScrollEventArgs(evt);
             Assert.Equal(Mouse.Wheel.HorizontalWheel, args.Wheel);
             Assert.Equal(-2.0f, args.Delta);
@@ -52,12 +52,12 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         }
 
         /// <summary>
-        /// Tests that to string returns expected format
+        ///     Tests that to string returns expected format
         /// </summary>
         [Fact]
         public void ToString_ReturnsExpectedFormat()
         {
-            MouseWheelScrollEvent evt = new MouseWheelScrollEvent { Wheel = Mouse.Wheel.VerticalWheel, Delta = 3.3f, X = -5, Y = 99 };
+            MouseWheelScrollEvent evt = new MouseWheelScrollEvent {Wheel = Mouse.Wheel.VerticalWheel, Delta = 3.3f, X = -5, Y = 99};
             MouseWheelScrollEventArgs args = new MouseWheelScrollEventArgs(evt);
             string str = args.ToString();
             Assert.Contains("Wheel(VerticalWheel)", str);

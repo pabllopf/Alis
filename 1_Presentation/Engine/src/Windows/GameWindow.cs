@@ -42,9 +42,9 @@ namespace Alis.App.Engine.Windows
         ///     The gamepad
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Gamepad} Game";
-        
+
         /// <summary>
-        /// The is open
+        ///     The is open
         /// </summary>
         private bool _isOpen = true;
 
@@ -77,7 +77,7 @@ namespace Alis.App.Engine.Windows
             {
                 ImGui.Text("Game Window");
             }
-            
+
             ImGui.End();
         }
 

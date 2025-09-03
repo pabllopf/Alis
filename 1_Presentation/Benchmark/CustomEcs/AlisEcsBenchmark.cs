@@ -369,10 +369,6 @@ namespace Alis.Benchmark.CustomEcs
         }
 
 
-      
-        
-      
-
         /// <summary>
         ///     Alises the query inline
         /// </summary>
@@ -506,7 +502,7 @@ namespace Alis.Benchmark.CustomEcs
         ///     The increment alis
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct IncrementAlis : IAction<Component1>
+        public struct IncrementAlis : IAction<Component1>
         {
             /// <summary>
             ///     Runs the t 0

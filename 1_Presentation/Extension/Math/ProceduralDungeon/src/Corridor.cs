@@ -29,9 +29,7 @@
 
 using System;
 using System.Security.Cryptography;
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Json;
-
 
 namespace Alis.Extension.Math.ProceduralDungeon
 {
@@ -42,7 +40,7 @@ namespace Alis.Extension.Math.ProceduralDungeon
     public partial class Corridor
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Corridor"/> class
+        ///     Initializes a new instance of the <see cref="Corridor" /> class
         /// </summary>
         public Corridor()
         {
@@ -52,7 +50,7 @@ namespace Alis.Extension.Math.ProceduralDungeon
             Height = 0;
             Direction = Direction.None;
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Corridor" /> class
         /// </summary>
@@ -61,7 +59,6 @@ namespace Alis.Extension.Math.ProceduralDungeon
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
         /// <param name="direction">The direction</param>
-        
         internal Corridor(int xPos, int yPos, int width, int height, Direction direction)
         {
             XPos = xPos;
@@ -93,7 +90,7 @@ namespace Alis.Extension.Math.ProceduralDungeon
         ///     Gets the value of the height
         /// </summary>
         [JsonNativePropertyName("height")]
-        public int Height { get;set;  }
+        public int Height { get; set; }
 
         /// <summary>
         ///     Gets the value of the direction

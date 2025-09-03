@@ -30,43 +30,43 @@
 namespace Alis.App.Engine.Controllers
 {
     /// <summary>
-    /// The controller ui interface
+    ///     The controller ui interface
     /// </summary>
     public interface IControllerUi
     {
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
-        public void OnInit();
-        
+        void OnInit();
+
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
-        public void OnStart();
-        
+        void OnStart();
+
         /// <summary>
-        /// Ons the poll events
+        ///     Ons the poll events
         /// </summary>
-        public void OnPollEvents();
-        
+        void OnPollEvents();
+
         /// <summary>
-        /// Ons the start frame
+        ///     Ons the start frame
         /// </summary>
-        public void OnStartFrame();
-        
+        void OnStartFrame();
+
         /// <summary>
-        /// Ons the render frame
+        ///     Ons the render frame
         /// </summary>
-        public void OnRenderFrame();
-        
+        void OnRenderFrame();
+
         /// <summary>
-        /// Ons the end frame
+        ///     Ons the end frame
         /// </summary>
-        public void OnEndFrame();
-        
+        void OnEndFrame();
+
         /// <summary>
-        /// Ons the exit
+        ///     Ons the exit
         /// </summary>
-        public void OnExit();
+        void OnExit();
     }
 }

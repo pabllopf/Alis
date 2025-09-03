@@ -139,7 +139,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [Fact]
         public void TestCreateRotationZ()
         {
-            float radians = (float)(System.Math.PI / 4); // 45 degrees
+            float radians = (float) (System.Math.PI / 4); // 45 degrees
             Matrix4X4 matrix = Matrix4X4.CreateRotationZ(radians);
 
             // Expected values were calculated manually
@@ -265,11 +265,11 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         public void CreateRotationX_WithNonZeroRadians_ReturnsCorrectMatrix()
         {
             // Arrange
-            float radians = (float)(System.Math.PI / 4); // 45 degrees
+            float radians = (float) (System.Math.PI / 4); // 45 degrees
             Matrix4X4 expected = new Matrix4X4(
                 1f, 0f, 0f, 0f,
-                0f, (float)System.Math.Cos(radians), (float)System.Math.Sin(radians), 0f,
-                0f, (float)-System.Math.Sin(radians), (float)System.Math.Cos(radians), 0f,
+                0f, (float) System.Math.Cos(radians), (float) System.Math.Sin(radians), 0f,
+                0f, (float) -System.Math.Sin(radians), (float) System.Math.Cos(radians), 0f,
                 0f, 0f, 0f, 1f);
 
             // Act

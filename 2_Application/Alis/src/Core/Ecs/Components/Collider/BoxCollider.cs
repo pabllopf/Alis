@@ -29,29 +29,25 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Systems.Manager.Physic;
-using Alis.Core.Graphic;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.Components.Collider
 {
     /// <summary>
-    /// The box collider class
+    ///     The box collider class
     /// </summary>
-    /// <seealso cref="IBoxCollider"/>
-    /// <seealso cref="IInitable"/>
-    /// <seealso cref="IGameObjectComponent"/>
+    /// <seealso cref="IBoxCollider" />
+    /// <seealso cref="IInitable" />
+    /// <seealso cref="IGameObjectComponent" />
     public class BoxCollider : IBoxCollider, IInitable, IGameObjectComponent
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BoxCollider"/> class
+        ///     Initializes a new instance of the <see cref="BoxCollider" /> class
         /// </summary>
         public BoxCollider()
         {
@@ -87,7 +83,6 @@ namespace Alis.Core.Ecs.Components.Collider
         /// <param name="ignoreGravity">The ignore gravity</param>
         /// <param name="linearVelocity">The linear velocity</param>
         /// <param name="angularVelocity">The angular velocity</param>
-        
         public BoxCollider(
             bool isTrigger,
             float width,
@@ -123,130 +118,149 @@ namespace Alis.Core.Ecs.Components.Collider
         /// <summary>
         ///     Gets or sets the value of the is trigger
         /// </summary>
-        
+
         public bool IsTrigger { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the width
         /// </summary>
-        
+
         public float Width { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the height
         /// </summary>
-        
+
         public float Height { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the rotation
         /// </summary>
-        
+
         public float Rotation { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the relative position
         /// </summary>
-        
+
         public Vector2F RelativePosition { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the body
         /// </summary>
-        
+
         public Physic.Dynamics.Body Body { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the auto tilling
         /// </summary>
-        
+
         public bool AutoTilling { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the body type
         /// </summary>
-        
+
         public BodyType BodyType { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the restitution
         /// </summary>
-        
+
         public float Restitution { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the friction
         /// </summary>
-        
+
         public float Friction { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the fixed rotation
         /// </summary>
-        
+
         public bool FixedRotation { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the mass
         /// </summary>
-        
+
         public float Mass { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the gravity scale
         /// </summary>
-        
+
         public bool IgnoreGravity { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the linear velocity
         /// </summary>
-        
+
         public Vector2F LinearVelocity { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the angular velocity
         /// </summary>
-        
+
         public float AngularVelocity { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the is init
+        ///     Gets or sets the value of the is init
         /// </summary>
-        private bool IsInit { get; set; } = false;
+        private bool IsInit { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the shader program
         /// </summary>
-        
+
         public uint ShaderProgram { get; private set; }
 
         /// <summary>
         ///     Gets or sets the value of the size
         /// </summary>
-        
+
         public Vector2F SizeOfTexture { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the vao
         /// </summary>
-        
+
         public uint Vao { get; private set; }
 
         /// <summary>
         ///     Gets or sets the value of the vbo
         /// </summary>
-        
+
         public uint Vbo { get; private set; }
 
         /// <summary>
         ///     Gets or sets the value of the ebo
         /// </summary>
-        
+
         public uint Ebo { get; private set; }
 
+
         /// <summary>
-        /// Inits the self
+        ///     Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void Update(IGameObject self)
+        {
+            if (self.Has<Transform>())
+            {
+                ref Transform transform = ref self.Get<Transform>();
+
+                if (Body is not null)
+                {
+                    transform.Position = Body.Position;
+                    transform.Rotation.Phase = Body.Rotation;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Inits the self
         /// </summary>
         /// <param name="self">The self</param>
         public void Init(IGameObject self)
@@ -273,37 +287,18 @@ namespace Alis.Core.Ecs.Components.Collider
                 Body.LinearVelocity = LinearVelocity;
                 Body.Awake = true;
                 Body.SetIsSensor(IsTrigger);
-                
+
                 //Body.OnCollision += OnCollision;
                 //Body.OnSeparation += OnSeparation;
             }
         }
-        
 
         /// <summary>
-        /// Updates the self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void Update(IGameObject self)
-        {
-            if (self.Has<Transform>())
-            {
-                ref Transform transform = ref self.Get<Transform>();
-
-                if (Body is not null)
-                {
-                    transform.Position = Body.Position;
-                    transform.Rotation.Phase = Body.Rotation;
-                }
-            }
-        }
-        
-                /// <summary>
         ///     Initializes the shaders
         /// </summary>
         private void InitializeShaders()
         {
-             float[] vertices =
+            float[] vertices =
             {
                 -0.5f, 0.5f, 0.0f, // Top-left
                 0.5f, 0.5f, 0.0f, // Top-right
@@ -393,7 +388,7 @@ namespace Alis.Core.Ecs.Components.Collider
 
 
         /// <summary>
-        /// Renders the gameobject
+        ///     Renders the gameobject
         /// </summary>
         /// <param name="gameobject">The gameobject</param>
         /// <param name="cameraPosition">The camera position</param>
@@ -406,22 +401,22 @@ namespace Alis.Core.Ecs.Components.Collider
                 InitializeShaders();
                 IsInit = true;
             }
-            
+
             ref Transform transform = ref gameobject.Get<Transform>();
-            
+
             Vector2F colliderPosition = transform.Position;
             Vector2F colliderScale = transform.Scale;
             Complex colliderRotation = transform.Rotation;
-            
+
             float posX = colliderPosition.X * pixelsPerMeter;
             float posY = colliderPosition.Y * pixelsPerMeter;
             float width = SizeOfTexture.X * pixelsPerMeter * colliderScale.X;
             float height = SizeOfTexture.Y * pixelsPerMeter * colliderScale.Y;
-        
-            
+
+
             int x = (int) (posX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2);
             int y = (int) (posY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2);
-            
+
             float rectangleX = (int) (x - width / 2);
             float rectangleY = (int) (y - height / 2);
             float rectangleW = (int) width;
@@ -431,19 +426,19 @@ namespace Alis.Core.Ecs.Components.Collider
             Gl.GlBindVertexArray(Vao);
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
 
-            
+
             // Calcular los vértices en NDC usando rectangleX, rectangleY, rectangleW, rectangleH
-            float left = (rectangleX / cameraResolution.X) * 2.0f - 1.0f;
-            float right = ((rectangleX + rectangleW) / cameraResolution.X) * 2.0f - 1.0f;
-            float top = (rectangleY / cameraResolution.Y) * 2.0f - 1.0f;
-            float bottom = ((rectangleY + rectangleH) / cameraResolution.Y) * 2.0f - 1.0f;
+            float left = rectangleX / cameraResolution.X * 2.0f - 1.0f;
+            float right = (rectangleX + rectangleW) / cameraResolution.X * 2.0f - 1.0f;
+            float top = rectangleY / cameraResolution.Y * 2.0f - 1.0f;
+            float bottom = (rectangleY + rectangleH) / cameraResolution.Y * 2.0f - 1.0f;
 
             float[] vertices =
             {
-                left,    top,    0.0f, // Top-left
-                right,   top,    0.0f, // Top-right
-                right,   bottom, 0.0f, // Bottom-right
-                left,    bottom, 0.0f  // Bottom-left
+                left, top, 0.0f, // Top-left
+                right, top, 0.0f, // Top-right
+                right, bottom, 0.0f, // Bottom-right
+                left, bottom, 0.0f // Bottom-left
             };
 
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
@@ -451,7 +446,7 @@ namespace Alis.Core.Ecs.Components.Collider
             try
             {
                 IntPtr pointer = handle.AddrOfPinnedObject();
-                Gl.GlBufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * sizeof(float)), pointer, BufferUsageHint.StaticDraw);
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), pointer, BufferUsageHint.StaticDraw);
             }
             finally
             {
@@ -465,7 +460,5 @@ namespace Alis.Core.Ecs.Components.Collider
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
             Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Fill);
         }
-
-       
     }
 }

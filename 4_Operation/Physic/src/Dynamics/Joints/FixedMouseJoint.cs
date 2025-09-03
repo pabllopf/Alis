@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 
@@ -179,10 +178,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public float MaxForce
         {
             get => _maxForce;
-            set
-            {
-                _maxForce = value;
-            }
+            set => _maxForce = value;
         }
 
         /// <summary>
@@ -191,10 +187,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public float Frequency
         {
             get => _frequency;
-            set
-            {
-                _frequency = value;
-            }
+            set => _frequency = value;
         }
 
         /// <summary>
@@ -203,10 +196,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public float DampingRatio
         {
             get => _dampingRatio;
-            set
-            {
-                _dampingRatio = value;
-            }
+            set => _dampingRatio = value;
         }
 
         /// <summary>

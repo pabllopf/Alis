@@ -38,7 +38,7 @@ namespace Alis.Benchmark.Iterators
     /// <summary>
     ///     The iteration benchmarks class
     /// </summary>
-    [ Config(typeof(CustomConfig))]
+    [Config(typeof(CustomConfig))]
     public class IterationBenchmarks
     {
         /// <summary>

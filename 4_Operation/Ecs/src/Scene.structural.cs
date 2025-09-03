@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Scene.structural.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -12,8 +41,9 @@ namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     This file contains all core functions related to structual changes on the scene
-    /// The only core structual change function not here is the normal create function, since it needs to be source generated
-    /// These functions take all the data it needs, with no validation that an gameObject is alive
+    ///     The only core structual change function not here is the normal create function, since it needs to be source
+    ///     generated
+    ///     These functions take all the data it needs, with no validation that an gameObject is alive
     /// </summary>
     partial class Scene
     {
@@ -30,11 +60,11 @@ namespace Alis.Core.Ecs
                 .Archetype(this);
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-        MoveEntityToArchetypeRemove(MemoryHelpers.SharedTempComponentHandleBuffer.AsSpan(0, 1), gameObject, ref lookup, destination);
+            MoveEntityToArchetypeRemove(MemoryHelpers.SharedTempComponentHandleBuffer.AsSpan(0, 1), gameObject, ref lookup, destination);
 #else
             Unsafe.SkipInit(out ComponentHandle tmpHandle);
             MemoryHelpers.Poison(ref tmpHandle);
-            MoveEntityToArchetypeRemove(System.Runtime.InteropServices.MemoryMarshal.CreateSpan(ref tmpHandle, 1), gameObject, ref lookup, destination);
+            MoveEntityToArchetypeRemove(MemoryMarshal.CreateSpan(ref tmpHandle, 1), gameObject, ref lookup, destination);
 #endif
         }
 
@@ -53,11 +83,11 @@ namespace Alis.Core.Ecs
                 .FindAdjacentArchetypeId(componentId, lookup.ArchetypeId, this, ArchetypeEdgeType.AddComponent)
                 .Archetype(this);
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-        MoveEntityToArchetypeAdd(MemoryHelpers.SharedTempComponentStorageBuffer.AsSpan(0, 1), gameObject, ref lookup,
-            out gameObjectLocation, destination);
-        runner = MemoryHelpers.SharedTempComponentStorageBuffer[0];
+            MoveEntityToArchetypeAdd(MemoryHelpers.SharedTempComponentStorageBuffer.AsSpan(0, 1), gameObject, ref lookup,
+                out gameObjectLocation, destination);
+            runner = MemoryHelpers.SharedTempComponentStorageBuffer[0];
 #else
-            MoveEntityToArchetypeAdd(System.Runtime.InteropServices.MemoryMarshal.CreateSpan(ref runner, 1), gameObject, ref lookup, out gameObjectLocation, destination);
+            MoveEntityToArchetypeAdd(MemoryMarshal.CreateSpan(ref runner, 1), gameObject, ref lookup, out gameObjectLocation, destination);
 #endif
         }
 
@@ -95,11 +125,14 @@ namespace Alis.Core.Ecs
                 i++;
 
                 if (fromIndex == 0)
+                {
                     Unsafe.Add(ref MemoryMarshal.GetReference(writeTo), writeToIndex++) = destRunners[i];
+                }
                 else
+                {
                     Unsafe.Add(ref destRunners[0], i).PullComponentFromAndClearTryDevirt(
                         Unsafe.Add(ref fromRunners[0], fromIndex), nextLocation.Index, currentLookup.Index, deletedIndex);
-                
+                }
             }
 
             ref GameObjectLocation displacedGameObjectLocation = ref EntityTable.UnsafeIndexNoResize(movedDown.ID);
@@ -152,14 +185,19 @@ namespace Alis.Core.Ecs
                     ComponentStorageBase runner = Unsafe.Add(ref fromRunners[0], i);
                     ref ComponentHandle writeTo = ref Unsafe.Add(ref MemoryMarshal.GetReference(componentHandles), writeToIndex++);
                     if (hasGenericRemoveEvent)
+                    {
                         writeTo = runner.Store(currentLookup.Index);
+                    }
                     else //kinda illegal but whatever
+                    {
                         writeTo = new ComponentHandle(0, componentToMoveFromFromToTo);
+                    }
+
                     runner.Delete(deleteData);
                 }
                 else
                 {
-                     Unsafe.Add(ref destRunners[0], toIndex).PullComponentFromAndClearTryDevirt(
+                    Unsafe.Add(ref destRunners[0], toIndex).PullComponentFromAndClearTryDevirt(
                         Unsafe.Add(ref fromRunners[0], i), nextLocation.Index, currentLookup.Index, deletedIndex);
                 }
             }
@@ -176,33 +214,39 @@ namespace Alis.Core.Ecs
                     GameObjectFlags.RemoveComp | GameObjectFlags.RemoveGenericComp))
             {
                 if (ComponentRemovedEvent.HasListeners)
+                {
                     foreach (ComponentHandle handle in componentHandles)
                     {
                         ComponentRemovedEvent.Invoke(gameObject, handle.ComponentId);
                     }
+                }
 
                 if (GameObjectLocation.HasEventFlag(currentLookup.Flags,
                         GameObjectFlags.RemoveComp | GameObjectFlags.RemoveGenericComp))
                 {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-                EventRecord lookup = EventLookup[gameObject.EntityIdOnly];
+                    EventRecord lookup = EventLookup[gameObject.EntityIdOnly];
 #else
                     ref EventRecord lookup =
-                        ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrNullRef(EventLookup, gameObject.EntityIdOnly);
+                        ref CollectionsMarshal.GetValueRefOrNullRef(EventLookup, gameObject.EntityIdOnly);
 #endif
 
                     if (hasGenericRemoveEvent)
+                    {
                         foreach (ComponentHandle handle in componentHandles)
                         {
                             lookup.Remove.NormalEvent.Invoke(gameObject, handle.ComponentId);
                             handle.InvokeComponentEventAndConsume(gameObject, lookup.Remove.GenericEvent);
                         }
+                    }
                     else
                         //no need to dispose here, as they were never created
+                    {
                         foreach (ComponentHandle handle in componentHandles)
                         {
                             lookup.Remove.NormalEvent.Invoke(gameObject, handle.ComponentId);
                         }
+                    }
                 }
             }
         }
@@ -248,7 +292,6 @@ namespace Alis.Core.Ecs
         }
 
 
-
         //Delete
         /// <summary>
         ///     Deletes the gameObject using the specified gameObject
@@ -260,7 +303,10 @@ namespace Alis.Core.Ecs
         {
             GameObjectFlags check = gameObjectLocation.Flags | WorldEventFlags;
             if ((check & GameObjectFlags.Events) != 0)
+            {
                 InvokeDeleteEvents(gameObject, gameObjectLocation);
+            }
+
             DeleteEntityWithoutEvents(gameObject, ref gameObjectLocation);
         }
 
@@ -274,10 +320,12 @@ namespace Alis.Core.Ecs
         {
             EntityDeletedEvent.Invoke(gameObject);
             if (gameObjectLocation.HasEvent(GameObjectFlags.OnDelete))
+            {
                 foreach (Action<GameObject> e in EventLookup[gameObject.EntityIdOnly].Delete.AsSpan())
                 {
                     e.Invoke(gameObject);
                 }
+            }
 
             EventLookup.Remove(gameObject.EntityIdOnly);
         }
@@ -306,7 +354,5 @@ namespace Alis.Core.Ecs
                 RecycledEntityIds.Push(id);
             }
         }
-
-
     }
 }

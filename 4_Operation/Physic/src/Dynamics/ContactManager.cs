@@ -31,7 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Dynamics.Contacts;
 
@@ -189,13 +188,13 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             // Does a joint override collision? Is at least one body dynamic?
-            if (bodyB.ShouldCollide(bodyA) == false)
+            if (!bodyB.ShouldCollide(bodyA))
             {
                 return;
             }
 
             //Check default filter
-            if (ShouldCollide(fixtureA, fixtureB) == false)
+            if (!ShouldCollide(fixtureA, fixtureB))
             {
                 return;
             }
@@ -204,7 +203,7 @@ namespace Alis.Core.Physic.Dynamics
             CollisionFilterDelegate contactFilterHandler = ContactFilter;
             if (contactFilterHandler != null)
             {
-                if (contactFilterHandler(fixtureA, fixtureB) == false)
+                if (!contactFilterHandler(fixtureA, fixtureB))
                 {
                     return;
                 }
@@ -214,7 +213,7 @@ namespace Alis.Core.Physic.Dynamics
             BeforeCollisionEventHandler beforeCollisionHandlerA = fixtureA.BeforeCollision;
             if (beforeCollisionHandlerA != null)
             {
-                if (beforeCollisionHandlerA(fixtureA, fixtureB) == false)
+                if (!beforeCollisionHandlerA(fixtureA, fixtureB))
                 {
                     return;
                 }
@@ -223,7 +222,7 @@ namespace Alis.Core.Physic.Dynamics
             BeforeCollisionEventHandler beforeCollisionHandlerB = fixtureB.BeforeCollision;
             if (beforeCollisionHandlerB != null)
             {
-                if (beforeCollisionHandlerB(fixtureB, fixtureA) == false)
+                if (!beforeCollisionHandlerB(fixtureB, fixtureA))
                 {
                     return;
                 }
@@ -280,7 +279,7 @@ namespace Alis.Core.Physic.Dynamics
             bodyB.ContactList = c.NodeB;
 
             // Wake up the bodies
-            if ((fixtureA.GetIsSensor == false) && (fixtureB.GetIsSensor == false))
+            if (!fixtureA.GetIsSensor && !fixtureB.GetIsSensor)
             {
                 bodyA.Awake = true;
                 bodyB.Awake = true;
@@ -424,7 +423,7 @@ namespace Alis.Core.Physic.Dynamics
                 if (c.FilterFlag)
                 {
                     // Should these bodies collide?
-                    if (bodyB.ShouldCollide(bodyA) == false)
+                    if (!bodyB.ShouldCollide(bodyA))
                     {
                         Contact cNuke = c;
                         c = c.Next;
@@ -433,7 +432,7 @@ namespace Alis.Core.Physic.Dynamics
                     }
 
                     // Check default filtering
-                    if (ShouldCollide(fixtureA, fixtureB) == false)
+                    if (!ShouldCollide(fixtureA, fixtureB))
                     {
                         Contact cNuke = c;
                         c = c.Next;
@@ -445,7 +444,7 @@ namespace Alis.Core.Physic.Dynamics
                     CollisionFilterDelegate contactFilterHandler = ContactFilter;
                     if (contactFilterHandler != null)
                     {
-                        if (contactFilterHandler(fixtureA, fixtureB) == false)
+                        if (!contactFilterHandler(fixtureA, fixtureB))
                         {
                             Contact cNuke = c;
                             c = c.Next;
@@ -462,7 +461,7 @@ namespace Alis.Core.Physic.Dynamics
                 bool activeB = bodyB.Awake && (bodyB.GetBodyType != BodyType.Static);
 
                 // At least one body must be awake and it must be dynamic or kinematic.
-                if ((activeA == false) && (activeB == false))
+                if (!activeA && !activeB)
                 {
                     c = c.Next;
                     continue;
@@ -474,7 +473,7 @@ namespace Alis.Core.Physic.Dynamics
                 bool overlap = BroadPhase.TestOverlap(proxyIdA, proxyIdB);
 
                 // Here we destroy contacts that cease to overlap in the broad-phase.
-                if (overlap == false)
+                if (!overlap)
                 {
                     Contact cNuke = c;
                     c = c.Next;
@@ -519,7 +518,7 @@ namespace Alis.Core.Physic.Dynamics
                 if (c.FilterFlag)
                 {
                     // Should these bodies collide?
-                    if (bodyB.ShouldCollide(bodyA) == false)
+                    if (!bodyB.ShouldCollide(bodyA))
                     {
                         Contact cNuke = c;
                         c = c.Next;
@@ -528,7 +527,7 @@ namespace Alis.Core.Physic.Dynamics
                     }
 
                     // Check default filtering
-                    if (ShouldCollide(fixtureA, fixtureB) == false)
+                    if (!ShouldCollide(fixtureA, fixtureB))
                     {
                         Contact cNuke = c;
                         c = c.Next;
@@ -540,7 +539,7 @@ namespace Alis.Core.Physic.Dynamics
                     CollisionFilterDelegate contactFilterHandler = ContactFilter;
                     if (contactFilterHandler != null)
                     {
-                        if (contactFilterHandler(fixtureA, fixtureB) == false)
+                        if (!contactFilterHandler(fixtureA, fixtureB))
                         {
                             Contact cNuke = c;
                             c = c.Next;
@@ -557,7 +556,7 @@ namespace Alis.Core.Physic.Dynamics
                 bool activeB = bodyB.Awake && (bodyB.GetBodyType != BodyType.Static);
 
                 // At least one body must be awake and it must be dynamic or kinematic.
-                if ((activeA == false) && (activeB == false))
+                if (!activeA && !activeB)
                 {
                     c = c.Next;
                     continue;
@@ -569,7 +568,7 @@ namespace Alis.Core.Physic.Dynamics
                 bool overlap = BroadPhase.TestOverlap(proxyIdA, proxyIdB);
 
                 // Here we destroy contacts that cease to overlap in the broad-phase.
-                if (overlap == false)
+                if (!overlap)
                 {
                     Contact cNuke = c;
                     c = c.Next;

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TinyJsonPropertyNameAttribute.cs
+//  File:JsonNativePropertyNameAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,23 +32,20 @@ using System;
 namespace Alis.Core.Aspect.Data.Json
 {
     /// <summary>
-    /// The json native property name attribute class
+    ///     The json native property name attribute class
     /// </summary>
-    /// <seealso cref="Attribute"/>
+    /// <seealso cref="Attribute" />
     public class JsonNativePropertyNameAttribute : Attribute
     {
         /// <summary>
-        /// Gets the value of the name
-        /// </summary>
-        public string Name { get; }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JsonNativePropertyNameAttribute"/> class
+        ///     Initializes a new instance of the <see cref="JsonNativePropertyNameAttribute" /> class
         /// </summary>
         /// <param name="name">The name</param>
-        public JsonNativePropertyNameAttribute(string name)
-        {
-            Name = name;
-        }
+        public JsonNativePropertyNameAttribute(string name) => Name = name;
+
+        /// <summary>
+        ///     Gets the value of the name
+        /// </summary>
+        public string Name { get; }
     }
 }

@@ -35,7 +35,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
     /// <summary>
     ///     The native array unsafe vs native array safe class
     /// </summary>
-    [ Config(typeof(CustomConfig))]
+    [Config(typeof(CustomConfig))]
     public class ListsBenchmarks
     {
         /// <summary>
@@ -73,7 +73,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
                 _ = fastList[i];
             }
         }
-        
+
 
         /// <summary>
         ///     Fastests the list add
@@ -86,7 +86,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
                 fastList.Add(i);
             }
         }
-        
+
 
         /// <summary>
         ///     Fastests the list remove
@@ -104,7 +104,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
                 fastList.RemoveAt(i);
             }
         }
-        
+
 
         /// <summary>
         ///     Fastests the list clear
@@ -139,7 +139,7 @@ namespace Alis.Benchmark.CustomCollections.Lists
                 _ = fastList.IndexOf(i);
             }
         }
-        
+
         /// <summary>
         ///     Fastests the list insert
         /// </summary>

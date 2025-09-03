@@ -30,7 +30,6 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.Ui.Extras.Node

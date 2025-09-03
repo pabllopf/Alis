@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ComponentStorage.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -26,7 +55,7 @@ namespace Alis.Core.Ecs.Updating
         /// <param name="index">The index</param>
         internal override void Trim(int index)
         {
-            Resize((int)BitOperations.RoundUpToPowerOf2((uint)index));
+            Resize((int) BitOperations.RoundUpToPowerOf2((uint) index));
         }
 
 
@@ -47,7 +76,7 @@ namespace Alis.Core.Ecs.Updating
         /// <param name="index">The index</param>
         internal override void SetAt(object component, int index)
         {
-            this[index] = (TComponent)component;
+            this[index] = (TComponent) component;
         }
 
         /// <summary>
@@ -55,10 +84,7 @@ namespace Alis.Core.Ecs.Updating
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The object</returns>
-        internal override object GetAt(int index)
-        {
-            return this[index]!;
-        }
+        internal override object GetAt(int index) => this[index]!;
 
         /// <summary>
         ///     Invokes the generic action with using the specified action
@@ -92,7 +118,7 @@ namespace Alis.Core.Ecs.Updating
             int otherRemoveIndex)
         {
             ComponentStorage<TComponent> componentRunner =
-                 Unsafe.As<ComponentStorage<TComponent>>(otherRunner);
+                Unsafe.As<ComponentStorage<TComponent>>(otherRunner);
 
             // see comment in ComponentStorageBase.PullComponentFromAndClearTryDevirt
             ref TComponent item = ref componentRunner[other];
@@ -101,7 +127,10 @@ namespace Alis.Core.Ecs.Updating
             ref TComponent downItem = ref componentRunner[otherRemoveIndex];
             item = downItem;
 
-            if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>()) downItem = default;
+            if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
+            {
+                downItem = default(TComponent);
+            }
         }
 
         /// <summary>
@@ -112,11 +141,13 @@ namespace Alis.Core.Ecs.Updating
         /// <param name="other">The other</param>
         internal override void PullComponentFrom(IdTable storage, int me, int other)
         {
-            ref TComponent item = ref ((IdTable<TComponent>)storage).Buffer[other];
+            ref TComponent item = ref ((IdTable<TComponent>) storage).Buffer[other];
             this[me] = item;
 
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
-                item = default;
+            {
+                item = default(TComponent);
+            }
         }
 
         /// <summary>
@@ -131,7 +162,9 @@ namespace Alis.Core.Ecs.Updating
 
 
             if (RuntimeHelpers.IsReferenceOrContainsReferences<TComponent>())
-                from = default;
+            {
+                from = default(TComponent);
+            }
         }
 
         /// <summary>
@@ -151,7 +184,7 @@ namespace Alis.Core.Ecs.Updating
             return new ComponentHandle(stackIndex, Component<TComponent>.Id);
         }
     }
-    
+
     /// <summary>
     ///     The component storage class
     /// </summary>
@@ -184,7 +217,6 @@ namespace Alis.Core.Ecs.Updating
 
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-        
         /// <summary>
         /// 
         /// </summary>
@@ -203,40 +235,36 @@ namespace Alis.Core.Ecs.Updating
         {
             return TypedBuffer;
         }
-        
-          /// <summary>
-          ///     Obtiene la referencia de datos de almacenamiento del componente
-          /// </summary>
-          /// <returns>La referencia al componente</returns>
-          public ref TComponent GetComponentStorageDataReference()
-          {
-              return ref TypedBuffer[0];
-          }
-#else
-    /// <summary>
-    /// Converts the span length using the specified length
-    /// </summary>
-    /// <param name="length">The length</param>
-    /// <returns>A span of t component</returns>
-    public Span<TComponent> AsSpanLength(int length) => MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(TypedBuffer), length);
 
-    /// <summary>
-    /// Converts the span
-    /// </summary>
-    /// <returns>A span of t component</returns>
-    public Span<TComponent> AsSpan() => MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(TypedBuffer), TypedBuffer.Length);
-        
-/// <summary>
+        /// <summary>
+        ///     Obtiene la referencia de datos de almacenamiento del componente
+        /// </summary>
+        /// <returns>La referencia al componente</returns>
+        public ref TComponent GetComponentStorageDataReference()
+        {
+            return ref TypedBuffer[0];
+        }
+#else
+        /// <summary>
+        ///     Converts the span length using the specified length
+        /// </summary>
+        /// <param name="length">The length</param>
+        /// <returns>A span of t component</returns>
+        public Span<TComponent> AsSpanLength(int length) => MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(TypedBuffer), length);
+
+        /// <summary>
+        ///     Converts the span
+        /// </summary>
+        /// <returns>A span of t component</returns>
+        public Span<TComponent> AsSpan() => MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(TypedBuffer), TypedBuffer.Length);
+
+        /// <summary>
         ///     Gets the component storage data reference
         /// </summary>
         /// <returns>The ref component</returns>
-        public ref TComponent GetComponentStorageDataReference()
-        {
-            return ref MemoryMarshal.GetArrayDataReference(TypedBuffer);
-        }
+        public ref TComponent GetComponentStorageDataReference() => ref MemoryMarshal.GetArrayDataReference(TypedBuffer);
 #endif
 
-     
 
         /// <summary>
         ///     Disposes this instance

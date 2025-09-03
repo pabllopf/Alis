@@ -50,41 +50,50 @@ namespace Alis.App.Engine.Windows
         ///     The hashtag
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Hashtag} Scene";
-        
+
         /// <summary>
-        /// The is open
+        ///     The preview height
         /// </summary>
-        private bool _isOpen = true;
-        
-        // PREVIEW WINDOWS:
+        private readonly int _previewHeight = 512;
+
         /// <summary>
-        /// The shader program
+        ///     The preview height
         /// </summary>
-        private  uint shaderProgram;
-        /// <summary>
-        /// The vao
-        /// </summary>
-        private  uint vao;
-        /// <summary>
-        /// The vbo
-        /// </summary>
-        private  uint vbo;
-        /// <summary>
-        /// The preview texture
-        /// </summary>
-        private  uint _previewTexture;
-        /// <summary>
-        /// The preview height
-        /// </summary>
-        private  int _previewWidth = 512, _previewHeight = 512;
-        
+        private readonly int _previewWidth = 512;
+
         // Crear un HashSet para almacenar los botones activos
         /// <summary>
         ///     The active button
         /// </summary>
         private readonly HashSet<ActiveButton> activeButtons = new HashSet<ActiveButton>();
 
-        
+        /// <summary>
+        ///     The is open
+        /// </summary>
+        private bool _isOpen = true;
+
+        /// <summary>
+        ///     The preview texture
+        /// </summary>
+        private uint _previewTexture;
+
+        // PREVIEW WINDOWS:
+        /// <summary>
+        ///     The shader program
+        /// </summary>
+        private uint shaderProgram;
+
+        /// <summary>
+        ///     The vao
+        /// </summary>
+        private uint vao;
+
+        /// <summary>
+        ///     The vbo
+        /// </summary>
+        private uint vbo;
+
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneWindow" /> class
         /// </summary>
@@ -104,7 +113,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public void Start()
         {
@@ -113,7 +122,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
@@ -121,13 +130,13 @@ namespace Alis.App.Engine.Windows
             {
                 return;
             }
-            
+
             // Render the triangle directly to the OpenGL context
             RenderTriangleDirectly();
-            
+
             // Show the preview image in ImGui
             ShowPreviewImage();
-            
+
             if (ImGui.Begin(NameWindow, ref _isOpen, ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.MenuBar))
             {
                 if (ImGui.BeginMenuBar())
@@ -151,7 +160,7 @@ namespace Alis.App.Engine.Windows
                         }
                     }
 
-                    
+
                     // Botón ArrowsAlt
                     if (activeButtons.Contains(ActiveButton.ArrowsAlt))
                     {
@@ -171,7 +180,7 @@ namespace Alis.App.Engine.Windows
                         }
                     }
 
-                    
+
                     // Botón Cogs
                     if (activeButtons.Contains(ActiveButton.Cogs))
                     {
@@ -229,7 +238,7 @@ namespace Alis.App.Engine.Windows
                         }
                     }
 
-                    
+
                     // Botó User
                     if (activeButtons.Contains(ActiveButton.User))
                     {
@@ -252,17 +261,17 @@ namespace Alis.App.Engine.Windows
                     ImGui.EndMenuBar();
                 }
 
-                
+
                 ImGui.Image((IntPtr) _previewTexture, ImGui.GetContentRegionAvail());
             }
-            
+
             ImGui.End();
         }
-        
-          /// <summary>
-          /// Initializes the preview resources
-          /// </summary>
-          private void InitializePreviewResources()
+
+        /// <summary>
+        ///     Initializes the preview resources
+        /// </summary>
+        private void InitializePreviewResources()
         {
             // Define the vertices for the triangle
             float[] vertices =
@@ -353,11 +362,11 @@ namespace Alis.App.Engine.Windows
             // Print the OpenGL shading language version
             Logger.Log(@$"OpenGL SHADING LANGUAGE VERSION {Gl.GlGetString(StringName.ShadingLanguageVersion)}");
         }
-        
-         /// <summary>
-         /// Renders the triangle directly
-         /// </summary>
-         private  void RenderTriangleDirectly()
+
+        /// <summary>
+        ///     Renders the triangle directly
+        /// </summary>
+        private void RenderTriangleDirectly()
         {
             // Configura el viewport para la ventana principal
             Gl.GlViewport(0, 0, _previewWidth, _previewHeight);
@@ -384,11 +393,10 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Shows the preview image
+        ///     Shows the preview image
         /// </summary>
-        private  void ShowPreviewImage()
+        private void ShowPreviewImage()
         {
-
             // Copia el framebuffer a una textura para ImGui
             byte[] pixelBuffer = new byte[_previewWidth * _previewHeight * 4];
 
@@ -416,9 +424,9 @@ namespace Alis.App.Engine.Windows
             Gl.GlBindTexture(TextureTarget.Texture2D, 0);
         }
     }
-    
+
     /// <summary>
-    /// The active button enum
+    ///     The active button enum
     /// </summary>
     internal enum ActiveButton
     {

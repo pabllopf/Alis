@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:MemoryHelpers.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Buffers;
 using System.Collections.Generic;
@@ -26,40 +55,28 @@ namespace Alis.Core.Ecs.Redifinition
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
-        public static uint RoundDownToPowerOfTwo(uint value)
-        {
-            return BitOperations.RoundUpToPowerOf2((value >> 1) + 1);
-        }
+        public static uint RoundDownToPowerOfTwo(uint value) => BitOperations.RoundUpToPowerOf2((value >> 1) + 1);
 
         /// <summary>
         ///     Rounds the up to next multiple of 16 using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
-        public static int RoundUpToNextMultipleOf16(int value)
-        {
-            return (value + 15) & ~15;
-        }
+        public static int RoundUpToNextMultipleOf16(int value) => (value + 15) & ~15;
 
         /// <summary>
         ///     Rounds the down to next multiple of 16 using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
-        public static int RoundDownToNextMultipleOf16(int value)
-        {
-            return value & ~15;
-        }
+        public static int RoundDownToNextMultipleOf16(int value) => value & ~15;
 
         /// <summary>
         ///     Bools the to byte using the specified b
         /// </summary>
         /// <param name="b">The </param>
         /// <returns>The byte</returns>
-        public static byte BoolToByte(bool b)
-        {
-            return Unsafe.As<bool, byte>(ref b);
-        }
+        public static byte BoolToByte(bool b) => Unsafe.As<bool, byte>(ref b);
 
         /// <summary>
         ///     Reads the only span to immutable array using the specified span
@@ -71,7 +88,10 @@ namespace Alis.Core.Ecs.Redifinition
         {
             FastImmutableArray<T>.Builder builder = FastImmutableArray<T>.CreateBuilder<T>(span.Length);
             for (int i = 0; i < span.Length; i++)
+            {
                 builder.Add(span[i]);
+            }
+
             return builder.MoveToImmutable();
         }
 
@@ -87,13 +107,19 @@ namespace Alis.Core.Ecs.Redifinition
         {
             FastImmutableArray<T>.Builder builder = FastImmutableArray<T>.CreateBuilder<T>(start.Length + span.Length);
             for (int i = 0; i < start.Length; i++)
+            {
                 builder.Add(start[i]);
+            }
+
             for (int i = 0; i < span.Length; i++)
             {
                 T t = span[i];
                 if (start.IndexOf<object>(t) != -1)
+                {
                     throw new InvalidOperationException(
                         $"This gameObject already has a component of type {t.Type.Name}");
+                }
+
                 builder.Add(t);
             }
 
@@ -111,8 +137,10 @@ namespace Alis.Core.Ecs.Redifinition
             where T : ITypeId
         {
             if (types.IndexOf<object>(type) != -1)
+            {
                 throw new InvalidOperationException(
                     $"This gameObject already has a component of type {type.Type.Name}");
+            }
 
             FastImmutableArray<T>.Builder builder = FastImmutableArray<T>.CreateBuilder<T>(types.Length + 1);
             builder.AddRange(types);
@@ -134,7 +162,10 @@ namespace Alis.Core.Ecs.Redifinition
         {
             int index = types.IndexOf<object>(type);
             if (index == -1)
+            {
                 throw new ComponentNotFoundException(type.Type);
+            }
+
             FastImmutableArray<T> result = types.RemoveAt<T>(index);
             return result;
         }
@@ -156,7 +187,10 @@ namespace Alis.Core.Ecs.Redifinition
             {
                 int index = builder.IndexOf(type);
                 if (index == -1)
+                {
                     throw new ComponentNotFoundException(type.Type);
+                }
+
                 builder.RemoveAt(index);
             }
 
@@ -179,8 +213,8 @@ namespace Alis.Core.Ecs.Redifinition
             if (dictionary.TryGetValue(key, out TValue value)) return value;
             return dictionary[key] = new();
 #else
-        ref TValue res = ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrAddDefault(dictionary, key, out bool _);
-        return res ??= new();
+            ref TValue res = ref CollectionsMarshal.GetValueRefOrAddDefault(dictionary, key, out bool _);
+            return res ??= new();
 #endif
         }
 
@@ -193,8 +227,11 @@ namespace Alis.Core.Ecs.Redifinition
         /// <returns>The ref</returns>
         public static ref T GetValueOrResize<T>(ref T[] arr, int index)
         {
-            if ((uint)index < (uint)arr.Length)
+            if ((uint) index < (uint) arr.Length)
+            {
                 return ref arr[index];
+            }
+
             return ref ResizeAndGet(ref arr, index);
         }
 
@@ -207,12 +244,12 @@ namespace Alis.Core.Ecs.Redifinition
         /// <returns>The ref</returns>
         private static ref T ResizeAndGet<T>(ref T[] arr, int index)
         {
-            int newSize = (int)BitOperations.RoundUpToPowerOf2((uint)(index + 1));
+            int newSize = (int) BitOperations.RoundUpToPowerOf2((uint) (index + 1));
             Array.Resize(ref arr, newSize);
             return ref arr[index];
         }
-        
-        
+
+
         // catch bugs with Unsafe.SkipInit
         /// <summary>
         ///     Poisons the item
@@ -223,11 +260,13 @@ namespace Alis.Core.Ecs.Redifinition
         public static void Poison<T>(ref T item)
         {
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 throw new NotSupportedException("Cleared anyways");
+            }
 
 #if NET6_0_OR_GREATER
-        Span<byte> raw = MemoryMarshal.CreateSpan(ref Unsafe.As<T, byte>(ref item), Unsafe.SizeOf<T>());
-        raw.Fill(93);
+            Span<byte> raw = MemoryMarshal.CreateSpan(ref Unsafe.As<T, byte>(ref item), Unsafe.SizeOf<T>());
+            raw.Fill(93);
 #endif
         }
 
@@ -258,8 +297,7 @@ namespace Alis.Core.Ecs.Redifinition
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
         [ThreadStatic] internal static readonly ComponentHandle[] SharedTempComponentHandleBuffer = new ComponentHandle[8];
 
-        [ThreadStatic]
-        internal static readonly Alis.Core.Ecs.Updating.ComponentStorageBase[] SharedTempComponentStorageBuffer = new Alis.Core.Ecs.Updating.ComponentStorageBase[8];
+        [ThreadStatic] internal static readonly Alis.Core.Ecs.Updating.ComponentStorageBase[] SharedTempComponentStorageBuffer = new Alis.Core.Ecs.Updating.ComponentStorageBase[8];
 #endif
     }
 

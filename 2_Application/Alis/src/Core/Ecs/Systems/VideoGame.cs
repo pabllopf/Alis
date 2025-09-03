@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Ecs.System;
-
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Scope;
@@ -74,13 +73,12 @@ namespace Alis.Core.Ecs.Systems
         ///     Initializes a new instance of the <see cref="VideoGame" /> class.
         /// </summary>
         /// <param name="contextHandler">The context handler.</param>
-        
         public VideoGame(IContextHandler<Context> contextHandler) => _contextHandler = contextHandler;
 
         /// <summary>
         ///     Gets the current context.
         /// </summary>
-        
+
         public Context Context => _contextHandler.Context;
 
         /// <summary>
@@ -94,13 +92,13 @@ namespace Alis.Core.Ecs.Systems
         public void Exit() => _contextHandler.Exit();
 
         /// <summary>
-        /// Creates
+        ///     Creates
         /// </summary>
         /// <returns>The video game builder</returns>
         public static VideoGameBuilder Create() => new VideoGameBuilder();
 
         /// <summary>
-        /// Saves this instance
+        ///     Saves this instance
         /// </summary>
         public void Save() => _contextHandler.Save();
     }

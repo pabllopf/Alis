@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
@@ -105,8 +104,6 @@ namespace Alis.Core.Physic.Collision
                         break;
                     case 3:
                         simplex.Solve3();
-                        break;
-                    default:
                         break;
                 }
 

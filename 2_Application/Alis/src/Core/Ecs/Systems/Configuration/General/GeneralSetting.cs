@@ -29,15 +29,14 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Core.Ecs.Systems.Configuration.General
 {
     /// <summary>
-    /// The general setting class
+    ///     The general setting class
     /// </summary>
-    /// <seealso cref="IGeneralSetting"/>
+    /// <seealso cref="IGeneralSetting" />
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct GeneralSetting(
         bool debug = false,
@@ -49,60 +48,60 @@ namespace Alis.Core.Ecs.Systems.Configuration.General
         string icon = "app.jpeg") : IGeneralSetting, IJsonSerializable, IJsonDesSerializable<GeneralSetting>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GeneralSetting"/> class
+        ///     Initializes a new instance of the <see cref="GeneralSetting" /> class
         /// </summary>
-        public GeneralSetting() : this(false, "Default Name", "Default Description", "0.0.0", "Pablo Perdomo Falcón", "GPL-3.0 license", "app.jpeg")
+        public GeneralSetting() : this(false)
         {
         }
-        
+
         /// <summary>
-        /// Gets or sets the value of the debug
+        ///     Gets or sets the value of the debug
         /// </summary>
         public bool Debug { get; set; } = debug;
-        
+
         /// <summary>
-        /// Gets or sets the value of the name
+        ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; } = name;
-        
+
         /// <summary>
-        /// Gets or sets the value of the description
+        ///     Gets or sets the value of the description
         /// </summary>
         public string Description { get; set; } = description;
-        
+
         /// <summary>
-        /// Gets or sets the value of the version
+        ///     Gets or sets the value of the version
         /// </summary>
         public string Version { get; set; } = version;
-        
+
         /// <summary>
-        /// Gets or sets the value of the author
+        ///     Gets or sets the value of the author
         /// </summary>
         public string Author { get; set; } = author;
-        
+
         /// <summary>
-        /// Gets or sets the value of the license
+        ///     Gets or sets the value of the license
         /// </summary>
         public string License { get; set; } = license;
-        
+
         /// <summary>
-        /// Gets or sets the value of the icon
+        ///     Gets or sets the value of the icon
         /// </summary>
         public string Icon { get; set; } = icon;
 
         /// <summary>
-        /// Ons the save
+        ///     Ons the save
         /// </summary>
         internal void OnSave() => JsonNativeAot.SerializeToFile(this, nameof(GeneralSetting), "Data");
-        
+
         /// <summary>
-        /// Ons the load
+        ///     Ons the load
         /// </summary>
         /// <returns>The general setting</returns>
         internal GeneralSetting OnLoad() => JsonNativeAot.DeserializeFromFile<GeneralSetting>(nameof(GeneralSetting), "Data");
 
         /// <summary>
-        /// Gets the serializable properties
+        ///     Gets the serializable properties
         /// </summary>
         /// <returns>An enumerable of string property name and string value</returns>
         IEnumerable<(string PropertyName, string Value)> IJsonSerializable.GetSerializableProperties()
@@ -117,21 +116,18 @@ namespace Alis.Core.Ecs.Systems.Configuration.General
         }
 
         /// <summary>
-        /// Creates the from properties using the specified properties
+        ///     Creates the from properties using the specified properties
         /// </summary>
         /// <param name="properties">The properties</param>
         /// <returns>The general setting</returns>
-        GeneralSetting IJsonDesSerializable<GeneralSetting>.CreateFromProperties(Dictionary<string, string> properties)
-        {
-            return new GeneralSetting(
-                debug: properties.TryGetValue(nameof(Debug), out string debugValue) && bool.TryParse(debugValue, out bool debug) && debug,
-                name: properties.TryGetValue(nameof(Name), out string name) ? name : "Default Name",
-                description: properties.TryGetValue(nameof(Description), out string description) ? description : "Default Description",
-                version: properties.TryGetValue(nameof(Version), out string version) ? version : "0.0.0", 
-                author: properties.TryGetValue(nameof(Author), out string author) ? author : "Pablo Perdomo Falcón", 
-                license: properties.TryGetValue(nameof(License), out string license) ? license : "GPL-3.0 license",
-                icon: properties.TryGetValue(nameof(Icon), out string icon) ? icon : "app.jpeg"
-            );
-        }
+        GeneralSetting IJsonDesSerializable<GeneralSetting>.CreateFromProperties(Dictionary<string, string> properties) => new GeneralSetting(
+            properties.TryGetValue(nameof(Debug), out string debugValue) && bool.TryParse(debugValue, out bool debug) && debug,
+            properties.TryGetValue(nameof(Name), out string name) ? name : "Default Name",
+            properties.TryGetValue(nameof(Description), out string description) ? description : "Default Description",
+            properties.TryGetValue(nameof(Version), out string version) ? version : "0.0.0",
+            properties.TryGetValue(nameof(Author), out string author) ? author : "Pablo Perdomo Falcón",
+            properties.TryGetValue(nameof(License), out string license) ? license : "GPL-3.0 license",
+            properties.TryGetValue(nameof(Icon), out string icon) ? icon : "app.jpeg"
+        );
     }
 }

@@ -1,5 +1,35 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:GameObject.public.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Kernel;
@@ -15,10 +45,6 @@ namespace Alis.Core.Ecs
     /// </summary>
     partial struct GameObject
     {
-
-
-
-
         /// <summary>
         ///     Checks of this <see cref="GameObject" /> has a component specified by <paramref name="componentId" />.
         /// </summary>
@@ -41,10 +67,7 @@ namespace Alis.Core.Ecs
         ///     <see langword="true" /> if the gameObject has a component of <typeparamref name="T" />, otherwise
         ///     <see langword="false" />.
         /// </returns>
-        public bool Has<T>()
-        {
-            return Has(Component<T>.Id);
-        }
+        public bool Has<T>() => Has(Component<T>.Id);
 
         /// <summary>
         ///     Checks to see if this <see cref="GameObject" /> has a component of Type <paramref name="type" />.
@@ -54,13 +77,11 @@ namespace Alis.Core.Ecs
         ///     <see langword="true" /> if the gameObject has a component of <paramref name="type" />, otherwise
         ///     <see langword="false" />.
         /// </returns>
-        public bool Has(Type type)
-        {
-            return Has(Component.GetComponentId(type));
-        }
+        public bool Has(Type type) => Has(Component.GetComponentId(type));
 
         /// <summary>
-        ///     Checks of this <see cref="GameObject" /> has a component specified by <paramref name="componentId" /> without throwing
+        ///     Checks of this <see cref="GameObject" /> has a component specified by <paramref name="componentId" /> without
+        ///     throwing
         ///     when dead.
         /// </summary>
         /// <param name="componentId">The component ID of the component type to check.</param>
@@ -68,14 +89,12 @@ namespace Alis.Core.Ecs
         ///     <see langword="true" /> if the gameObject is alive and has a component of <paramref name="componentId" />,
         ///     otherwise <see langword="false" />.
         /// </returns>
-        public bool TryHas(ComponentId componentId)
-        {
-            return InternalIsAlive(out _, out GameObjectLocation entityLocation) &&
-                   entityLocation.Archetype.GetComponentIndex(componentId) != 0;
-        }
+        public bool TryHas(ComponentId componentId) => InternalIsAlive(out _, out GameObjectLocation entityLocation) &&
+                                                       (entityLocation.Archetype.GetComponentIndex(componentId) != 0);
 
         /// <summary>
-        ///     Checks of this <see cref="GameObject" /> has a component specified by <typeparamref name="T" /> without throwing when
+        ///     Checks of this <see cref="GameObject" /> has a component specified by <typeparamref name="T" /> without throwing
+        ///     when
         ///     dead.
         /// </summary>
         /// <typeparam name="T">The type of component to check.</typeparam>
@@ -83,13 +102,11 @@ namespace Alis.Core.Ecs
         ///     <see langword="true" /> if the gameObject is alive and has a component of <typeparamref name="T" />, otherwise
         ///     <see langword="false" />.
         /// </returns>
-        public bool TryHas<T>()
-        {
-            return TryHas(Component<T>.Id);
-        }
+        public bool TryHas<T>() => TryHas(Component<T>.Id);
 
         /// <summary>
-        ///     Checks of this <see cref="GameObject" /> has a component specified by <paramref name="type" /> without throwing when
+        ///     Checks of this <see cref="GameObject" /> has a component specified by <paramref name="type" /> without throwing
+        ///     when
         ///     dead.
         /// </summary>
         /// <param name="type">The type of the component type to check.</param>
@@ -97,13 +114,7 @@ namespace Alis.Core.Ecs
         ///     <see langword="true" /> if the gameObject is alive and has a component of <paramref name="type" />, otherwise
         ///     <see langword="false" />.
         /// </returns>
-        public bool TryHas(Type type)
-        {
-            return TryHas(Component.GetComponentId(type));
-        }
-
-
-
+        public bool TryHas(Type type) => TryHas(Component.GetComponentId(type));
 
 
         /// <summary>
@@ -132,7 +143,7 @@ namespace Alis.Core.Ecs
             //2x
             //hardware trap
             ComponentStorage<T> storage =
-                 Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref archetype.Components[0], compIndex));
+                Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref archetype.Components[0], compIndex));
             return ref storage[lookup.Index];
         } //2, 0
 
@@ -153,7 +164,9 @@ namespace Alis.Core.Ecs
             int compIndex = lookup.Archetype.GetComponentIndex(id);
 
             if (compIndex == 0)
+            {
                 throw new ComponentNotFoundException(id.Type);
+            }
 
             return lookup.Archetype.Components[compIndex].GetAt(lookup.Index);
         }
@@ -168,10 +181,7 @@ namespace Alis.Core.Ecs
         ///     <paramref name="type" />.
         /// </exception>
         /// <returns>The component of type <paramref name="type" /></returns>
-        public object Get(Type type)
-        {
-            return Get(Component.GetComponentId(type));
-        }
+        public object Get(Type type) => Get(Component.GetComponentId(type));
 
         /// <summary>
         ///     Gets this <see cref="GameObject" />'s component of type <paramref name="id" />.
@@ -191,7 +201,10 @@ namespace Alis.Core.Ecs
             int compIndex = lookup.Archetype.GetComponentIndex(id);
 
             if (compIndex == 0)
+            {
                 throw new ComponentNotFoundException(id.Type);
+            }
+
             //3x
             lookup.Archetype.Components[compIndex].SetAt(obj, lookup.Index);
         }
@@ -211,9 +224,6 @@ namespace Alis.Core.Ecs
         {
             Set(Component.GetComponentId(type), obj);
         }
-
-
-
 
 
         /// <summary>
@@ -256,9 +266,6 @@ namespace Alis.Core.Ecs
             value = lookup.Archetype.Components[compIndex].GetAt(lookup.Index);
             return true;
         }
-
-
-
 
 
         /// <summary>
@@ -308,9 +315,6 @@ namespace Alis.Core.Ecs
         }
 
 
-
-
-
         /// <summary>
         ///     Removes a component from this gameObject
         /// </summary>
@@ -319,9 +323,13 @@ namespace Alis.Core.Ecs
         {
             ref GameObjectLocation lookup = ref AssertIsAlive(out Scene w);
             if (w.AllowStructualChanges)
+            {
                 w.RemoveComponent(this, ref lookup, componentId);
+            }
             else
+            {
                 w.WorldUpdateCommandBuffer.RemoveComponent(this, componentId);
+            }
         }
 
         /// <summary>
@@ -339,11 +347,9 @@ namespace Alis.Core.Ecs
         }
 
 
-
-
-
         /// <summary>
-        ///     Checks whether this <see cref="GameObject" /> has a specific tag, using a <see cref="TagId" /> to represent the tag.
+        ///     Checks whether this <see cref="GameObject" /> has a specific tag, using a <see cref="TagId" /> to represent the
+        ///     tag.
         /// </summary>
         /// <param name="tagId">The identifier of the tag to check.</param>
         /// <returns>
@@ -358,7 +364,8 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Checks whether this <see cref="GameObject" /> has a specific tag, using a generic type parameter to represent the tag.
+        ///     Checks whether this <see cref="GameObject" /> has a specific tag, using a generic type parameter to represent the
+        ///     tag.
         /// </summary>
         /// <typeparam name="T">The type used as the tag.</typeparam>
         /// <returns>
@@ -366,10 +373,7 @@ namespace Alis.Core.Ecs
         ///     <see langword="false" />.
         /// </returns>
         /// <exception cref="InvalidOperationException">Thrown if the <see cref="GameObject" /> is not alive.</exception>
-        public bool Tagged<T>()
-        {
-            return Tagged(Kernel.Tag<T>.Id);
-        }
+        public bool Tagged<T>() => Tagged(Kernel.Tag<T>.Id);
 
         /// <summary>
         ///     Checks whether this <see cref="GameObject" /> has a specific tag, using a <see cref="Type" /> to represent the tag.
@@ -384,20 +388,14 @@ namespace Alis.Core.Ecs
         ///     otherwise, <see langword="false" />.
         /// </returns>
         /// <exception cref="InvalidOperationException">Thrown if the <see cref="GameObject" /> not alive.</exception>
-        public bool Tagged(Type type)
-        {
-            return Tagged(Kernel.Tag.GetTagId(type));
-        }
+        public bool Tagged(Type type) => Tagged(Kernel.Tag.GetTagId(type));
 
         /// <summary>
         ///     Adds a tag to this <see cref="GameObject" />. Tags are like components but do not take up extra memory.
         /// </summary>
         /// <exception cref="InvalidOperationException"><see cref="GameObject" /> is dead.</exception>
         /// <param name="type">The type to use as a tag</param>
-        public bool Tag(Type type)
-        {
-            return Tag(Kernel.Tag.GetTagId(type));
-        }
+        public bool Tag(Type type) => Tag(Kernel.Tag.GetTagId(type));
 
         /// <summary>
         ///     Adds a tag to this <see cref="GameObject" />. Tags are like components but do not take up extra memory.
@@ -412,7 +410,9 @@ namespace Alis.Core.Ecs
         {
             ref GameObjectLocation lookup = ref AssertIsAlive(out Scene w);
             if (lookup.Archetype.HasTag(tagId))
+            {
                 return false;
+            }
 
             GameObjectType archetype =
                 w.AddTagLookup.FindAdjacentArchetypeId(tagId, lookup.Archetype.Id, Scene, ArchetypeEdgeType.AddTag);
@@ -420,9 +420,6 @@ namespace Alis.Core.Ecs
 
             return true;
         }
-
-
-
 
 
         /// <summary>
@@ -434,10 +431,7 @@ namespace Alis.Core.Ecs
         ///     <see cref="GameObject" /> doesn't have the component
         /// </returns>
         /// <param name="type">The type of tag to remove.</param>
-        public bool Detach(Type type)
-        {
-            return Detach(Kernel.Tag.GetTagId(type));
-        }
+        public bool Detach(Type type) => Detach(Kernel.Tag.GetTagId(type));
 
         /// <summary>
         ///     Removes a tag from this <see cref="GameObject" />. Tags are like components but do not take up extra memory.
@@ -452,7 +446,9 @@ namespace Alis.Core.Ecs
         {
             ref GameObjectLocation lookup = ref AssertIsAlive(out Scene w);
             if (!lookup.Archetype.HasTag(tagId))
+            {
                 return false;
+            }
 
             GameObjectType archetype =
                 w.AddTagLookup.FindAdjacentArchetypeId(tagId, lookup.Archetype.Id, Scene, ArchetypeEdgeType.RemoveTag);
@@ -460,9 +456,6 @@ namespace Alis.Core.Ecs
 
             return true;
         }
-
-
-
 
 
         /// <summary>
@@ -504,7 +497,10 @@ namespace Alis.Core.Ecs
             get
             {
                 if (!InternalIsAlive(out Scene world, out _))
+                {
                     return null;
+                }
+
                 world.EntityTable[EntityID].Flags |= GameObjectFlags.AddGenericComp;
                 return world.EventLookup.GetOrAddNew(EntityIdOnly).Add.GenericEvent ??= new();
             }
@@ -522,7 +518,10 @@ namespace Alis.Core.Ecs
             get
             {
                 if (!InternalIsAlive(out Scene world, out _))
+                {
                     return null;
+                }
+
                 world.EntityTable[EntityID].Flags |= GameObjectFlags.RemoveGenericComp;
                 return world.EventLookup.GetOrAddNew(EntityIdOnly).Remove.GenericEvent ??= new();
             }
@@ -554,13 +553,15 @@ namespace Alis.Core.Ecs
         private void UnsubscribeEvent(object value, GameObjectFlags flag)
         {
             if (value is null || !InternalIsAlive(out Scene world, out GameObjectLocation entityLocation))
+            {
                 return;
+            }
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
             bool exists = entityLocation.HasEvent(flag);
             EventRecord events = exists ? Scene.EventLookup[EntityIdOnly] : default;
 #else
-        ref EventRecord events = ref Scene.TryGetEventData(entityLocation, EntityIdOnly, flag, out bool exists);
+            ref EventRecord events = ref Scene.TryGetEventData(entityLocation, EntityIdOnly, flag, out bool exists);
 #endif
 
 
@@ -571,29 +572,31 @@ namespace Alis.Core.Ecs
                 switch (flag)
                 {
                     case GameObjectFlags.AddComp:
-                        events!.Add.NormalEvent.Remove((Action<GameObject, ComponentId>)value);
+                        events!.Add.NormalEvent.Remove((Action<GameObject, ComponentId>) value);
                         removeFlags = !events.Add.HasListeners;
                         break;
                     case GameObjectFlags.RemoveComp:
-                        events!.Remove.NormalEvent.Remove((Action<GameObject, ComponentId>)value);
+                        events!.Remove.NormalEvent.Remove((Action<GameObject, ComponentId>) value);
                         removeFlags = !events.Remove.HasListeners;
                         break;
                     case GameObjectFlags.Tagged:
-                        events!.Tag.Remove((Action<GameObject, TagId>)value);
+                        events!.Tag.Remove((Action<GameObject, TagId>) value);
                         removeFlags = !events.Tag.HasListeners;
                         break;
                     case GameObjectFlags.Detach:
-                        events!.Detach.Remove((Action<GameObject, TagId>)value);
+                        events!.Detach.Remove((Action<GameObject, TagId>) value);
                         removeFlags = !events.Detach.HasListeners;
                         break;
                     case GameObjectFlags.OnDelete:
-                        events!.Delete.Remove((Action<GameObject>)value);
+                        events!.Delete.Remove((Action<GameObject>) value);
                         removeFlags = !events.Delete.Any;
                         break;
                 }
 
                 if (removeFlags)
+                {
                     world.EntityTable[EntityID].Flags &= ~flag;
+                }
             }
         }
 
@@ -606,13 +609,15 @@ namespace Alis.Core.Ecs
         private void InitalizeEventRecord(object d, GameObjectFlags flag, bool isGenericEvent = false)
         {
             if (d is null || !InternalIsAlive(out Scene world, out GameObjectLocation entityLocation))
+            {
                 return;
+            }
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
             bool exists = entityLocation.HasEvent(flag);
             EventRecord record = exists ? Scene.EventLookup[EntityIdOnly] : default;
 #else
-        ref EventRecord record =
-            ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrAddDefault(Scene.EventLookup, EntityIdOnly, out bool exists);
+            ref EventRecord record =
+                ref CollectionsMarshal.GetValueRefOrAddDefault(Scene.EventLookup, EntityIdOnly, out bool exists);
 #endif
             world.EntityTable[EntityID].Flags |= flag;
             EventRecord.Initalize(exists, ref record!);
@@ -621,30 +626,37 @@ namespace Alis.Core.Ecs
             {
                 case GameObjectFlags.AddComp:
                     if (isGenericEvent)
-                        record.Add.GenericEvent = (GenericEvent)d;
+                    {
+                        record.Add.GenericEvent = (GenericEvent) d;
+                    }
                     else
-                        record.Add.NormalEvent.Add((Action<GameObject, ComponentId>)d);
+                    {
+                        record.Add.NormalEvent.Add((Action<GameObject, ComponentId>) d);
+                    }
+
                     break;
                 case GameObjectFlags.RemoveComp:
                     if (isGenericEvent)
-                        record.Remove.GenericEvent = (GenericEvent)d;
+                    {
+                        record.Remove.GenericEvent = (GenericEvent) d;
+                    }
                     else
-                        record.Remove.NormalEvent.Add((Action<GameObject, ComponentId>)d);
+                    {
+                        record.Remove.NormalEvent.Add((Action<GameObject, ComponentId>) d);
+                    }
+
                     break;
                 case GameObjectFlags.Tagged:
-                    record.Tag.Add((Action<GameObject, TagId>)d);
+                    record.Tag.Add((Action<GameObject, TagId>) d);
                     break;
                 case GameObjectFlags.Detach:
-                    record.Detach.Add((Action<GameObject, TagId>)d);
+                    record.Detach.Add((Action<GameObject, TagId>) d);
                     break;
                 case GameObjectFlags.OnDelete:
-                    record.Delete.Push((Action<GameObject>)d);
+                    record.Delete.Push((Action<GameObject>) d);
                     break;
             }
         }
-
-
-
 
 
         /// <summary>
@@ -657,12 +669,18 @@ namespace Alis.Core.Ecs
             ref GameObjectLocation lookup = ref scene.EntityTable.UnsafeIndexNoResize(EntityID);
 
             if (lookup.Version != EntityVersion)
+            {
                 return;
+            }
 
             if (scene.AllowStructualChanges)
+            {
                 scene.DeleteEntity(this, ref lookup);
+            }
             else
+            {
                 scene.WorldUpdateCommandBuffer.DeleteEntity(this);
+            }
         }
 
         /// <summary>
@@ -732,13 +750,16 @@ namespace Alis.Core.Ecs
         {
             ref GameObjectLocation lookup = ref AssertIsAlive(out Scene _);
             ComponentStorageBase[] runners = lookup.Archetype.Components;
-            for (int i = 1; i < runners.Length; i++) runners[i].InvokeGenericActionWith(onEach, lookup.Index);
+            for (int i = 1; i < runners.Length; i++)
+            {
+                runners[i].InvokeGenericActionWith(onEach, lookup.Index);
+            }
         }
 
         /// <summary>
         ///     The null gameObject
         /// </summary>
-        public static GameObject Null => default;
+        public static GameObject Null => default(GameObject);
 
         /// <summary>
         ///     Gets an <see cref="GameObjectType" /> without needing an <see cref="GameObject" /> of the specific type.
@@ -746,13 +767,6 @@ namespace Alis.Core.Ecs
         /// <param name="components">The components the <see cref="GameObjectType" /> should have.</param>
         /// <param name="tags">The tags the <see cref="GameObjectType" /> should have.</param>
         [Obsolete("Use ArchetypeID.EntityTypeOf instead")]
-        public static GameObjectType EntityTypeOf(ReadOnlySpan<ComponentId> components, ReadOnlySpan<TagId> tags)
-        {
-            return Archetype.GetArchetypeId(components, tags);
-        }
-
-
-
-
+        public static GameObjectType EntityTypeOf(ReadOnlySpan<ComponentId> components, ReadOnlySpan<TagId> tags) => Archetype.GetArchetypeId(components, tags);
     }
 }

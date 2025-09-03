@@ -28,27 +28,26 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Ecs.Systems.Configuration.Physic
 {
     /// <summary>
-    /// The physic setting
+    ///     The physic setting
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct PhysicSetting(
         Vector2F gravity = default(Vector2F)) : IPhysicSetting
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PhysicSetting"/> class
+        ///     Initializes a new instance of the <see cref="PhysicSetting" /> class
         /// </summary>
-        public PhysicSetting() : this(gravity: new Vector2F(0, -9.81f))
+        public PhysicSetting() : this(new Vector2F(0, -9.81f))
         {
         }
-        
+
         /// <summary>
-        /// Gets or sets the value of the gravity
+        ///     Gets or sets the value of the gravity
         /// </summary>
         public Vector2F Gravity { get; set; } = gravity;
     }

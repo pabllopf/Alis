@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Physic.Collision;
@@ -357,7 +356,7 @@ namespace Alis.Core.Physic.Dynamics
                     continue;
                 }
 
-                if (seed.Awake == false || seed.Enabled == false)
+                if (!seed.Awake || !seed.Enabled)
                 {
                     continue;
                 }
@@ -404,7 +403,7 @@ namespace Alis.Core.Physic.Dynamics
                         }
 
                         // Is this contact solid and touching?
-                        if (ce.Contact.Enabled == false || ce.Contact.IsTouching == false)
+                        if (!ce.Contact.Enabled || !ce.Contact.IsTouching)
                         {
                             continue;
                         }
@@ -428,7 +427,7 @@ namespace Alis.Core.Physic.Dynamics
                             continue;
                         }
 
-                        
+
                         _stack[stackCount++] = other;
 
                         other.Island = true;
@@ -449,7 +448,7 @@ namespace Alis.Core.Physic.Dynamics
                         if (other != null)
                         {
                             // Don't simulate joints connected to inactive bodies.
-                            if (other.Enabled == false)
+                            if (!other.Enabled)
                             {
                                 continue;
                             }
@@ -462,7 +461,7 @@ namespace Alis.Core.Physic.Dynamics
                                 continue;
                             }
 
-                           
+
                             _stack[stackCount++] = other;
 
                             other.Island = true;
@@ -548,7 +547,7 @@ namespace Alis.Core.Physic.Dynamics
                 for (Contact c = ContactManager.ContactList.Next; c != ContactManager.ContactList; c = c.Next)
                 {
                     // Is this contact disabled?
-                    if (c.Enabled == false)
+                    if (!c.Enabled)
                     {
                         continue;
                     }
@@ -581,12 +580,12 @@ namespace Alis.Core.Physic.Dynamics
 
                         BodyType typeA = bA.GetBodyType;
                         BodyType typeB = bB.GetBodyType;
-                     
+
                         bool activeA = bA.Awake && (typeA != BodyType.Static);
                         bool activeB = bB.Awake && (typeB != BodyType.Static);
 
                         // Is at least one body active (awake and dynamic or kinematic)?
-                        if ((activeA == false) && (activeB == false))
+                        if (!activeA && !activeB)
                         {
                             continue;
                         }
@@ -595,7 +594,7 @@ namespace Alis.Core.Physic.Dynamics
                         bool collideB = (bB.IsBullet || typeB != BodyType.Dynamic) && !bB.IgnoreCcd;
 
                         // Are these two non-bullet dynamic bodies?
-                        if ((collideA == false) && (collideB == false))
+                        if (!collideA && !collideB)
                         {
                             continue;
                         }
@@ -614,7 +613,7 @@ namespace Alis.Core.Physic.Dynamics
                             alpha0 = bA.Sweep.Alpha0;
                             bB.Sweep.Advance(alpha0);
                         }
-                        
+
                         // Compute the time of impact in interval [0, minTOI]
                         _input.ProxyA = new DistanceProxy(fA.GetShape, c.ChildIndexA);
                         _input.ProxyB = new DistanceProxy(fB.GetShape, c.ChildIndexB);
@@ -672,7 +671,7 @@ namespace Alis.Core.Physic.Dynamics
                 ++minContact.ToiCount;
 
                 // Is the contact solid?
-                if (minContact.Enabled == false || minContact.IsTouching == false)
+                if (!minContact.Enabled || !minContact.IsTouching)
                 {
                     // Restore the sweeps.
                     minContact.Enabled = false;
@@ -726,7 +725,7 @@ namespace Alis.Core.Physic.Dynamics
                             // Only add static, kinematic, or bullet bodies.
                             Body other = ce.Other;
                             if ((other.GetBodyType == BodyType.Dynamic) &&
-                                (body.IsBullet == false) && (other.IsBullet == false))
+                                !body.IsBullet && !other.IsBullet)
                             {
                                 continue;
                             }
@@ -748,7 +747,7 @@ namespace Alis.Core.Physic.Dynamics
                             contact.Update(ContactManager);
 
                             // Was the contact disabled by the user?
-                            if (contact.Enabled == false)
+                            if (!contact.Enabled)
                             {
                                 other.Sweep = backup;
                                 other.SynchronizeTransform();
@@ -756,7 +755,7 @@ namespace Alis.Core.Physic.Dynamics
                             }
 
                             // Are there contact points?
-                            if (contact.IsTouching == false)
+                            if (!contact.IsTouching)
                             {
                                 other.Sweep = backup;
                                 other.SynchronizeTransform();
@@ -1022,7 +1021,7 @@ namespace Alis.Core.Physic.Dynamics
                 Body bodyB = joint.BodyB;
 
                 // If the joint prevents collisions, then flag any contacts for filtering.
-                if (joint.CollideConnected == false)
+                if (!joint.CollideConnected)
                 {
                     ContactEdge edge = bodyB.ContactList;
                     while (edge != null)
@@ -1137,7 +1136,7 @@ namespace Alis.Core.Physic.Dynamics
             if (!joint.IsFixedType())
             {
                 // If the joint prevents collisions, then flag any contacts for filtering.
-                if (collideConnected == false)
+                if (!collideConnected)
                 {
                     ContactEdge edge = bodyB.ContactList;
                     while (edge != null)
@@ -1871,17 +1870,16 @@ namespace Alis.Core.Physic.Dynamics
             return body;
         }
 
-       /// <summary>
-       /// 
-       /// </summary>
-       /// <param name="start"></param>
-       /// <param name="end"></param>
-       /// <param name="linkWidth"></param>
-       /// <param name="linkHeight"></param>
-       /// <param name="numberOfLinks"></param>
-       /// <param name="linkDensity"></param>
-       /// <param name="attachRopeJoint"></param>
-       /// <returns></returns>
+        /// <summary>
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <param name="linkWidth"></param>
+        /// <param name="linkHeight"></param>
+        /// <param name="numberOfLinks"></param>
+        /// <param name="linkDensity"></param>
+        /// <param name="attachRopeJoint"></param>
+        /// <returns></returns>
         public Path CreateChain(Vector2F start, Vector2F end, float linkWidth, float linkHeight, int numberOfLinks, float linkDensity, bool attachRopeJoint)
         {
             //Chain start / end

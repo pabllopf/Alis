@@ -33,7 +33,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Alis.App.Installer.Controllers;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
 using Alis.Extension.Graphic.Ui;
@@ -52,7 +51,7 @@ namespace Alis.App.Installer
         ///     The name engine
         /// </summary>
         private const string NameEngine = "Alis Installer by @pabllopf";
-        
+
         /// <summary>
         ///     The height window
         /// </summary>
@@ -62,22 +61,22 @@ namespace Alis.App.Installer
         ///     The width window
         /// </summary>
         private readonly int widthWindow = 600;
-        
+
+        /// <summary>
+        ///     The imgui controller
+        /// </summary>
+        private ImGuiControllerImplementGlfw _imguiController;
+
         /// <summary>
         ///     The arguments
         /// </summary>
         private string[] arguments;
-        
-        /// <summary>
-        /// The imgui controller
-        /// </summary>
-        private ImGuiControllerImplementGlfw _imguiController;
-        
+
         /// <summary>
         ///     The is open main
         /// </summary>
         private bool isOpenMain = true;
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -110,8 +109,8 @@ namespace Alis.App.Installer
 
             _imguiController = new ImGuiControllerImplementGlfw(NameEngine, widthWindow, heightWindow, 1, false);
             _imguiController.OnInit();
-            
-            
+
+
             string api = "https://api.github.com/repos/pabllopf/alis/releases";
             string dirProject = Path.Combine(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.FullName)!.FullName, "Editor", $"{versionToInstall}");
             Logger.Info(@$"API: {api}");
@@ -121,8 +120,8 @@ namespace Alis.App.Installer
 
             using CancellationTokenSource cts = new CancellationTokenSource();
             Task<bool> task = manager.Start(cts.Token);
-            
-            
+
+
             // Definir la variable de estado fuera del bucle principal
             int animationState = 0;
 
@@ -131,12 +130,12 @@ namespace Alis.App.Installer
             Clock clock = new Clock();
             clock.Start();
             Logger.Info(@$"Starting {NameEngine}");
-            
+
             while (_imguiController.IsRunning)
             {
                 _imguiController.OnPollEvents();
 
-                if (_imguiController.IsRunning == false)
+                if (!_imguiController.IsRunning)
                 {
                     cts.Cancel();
                     Logger.Info(@$"Closing {NameEngine}");
@@ -150,7 +149,7 @@ namespace Alis.App.Installer
 
                 _imguiController.OnStartFrame();
                 _imguiController.OnRenderFrame();
-                
+
                 if (clock.ElapsedMilliseconds - lastUpdateTime >= 250) // Si ha pasado al menos 1 segundo
                 {
                     // Actualizar el estado de la animación
@@ -185,20 +184,21 @@ namespace Alis.App.Installer
                     ImGui.Text($"{animationSymbol} {manager.Message}");
                     ImGui.Separator();
                 }
+
                 ImGui.End();
                 ImGui.PopFont();
-                
+
                 _imguiController.OnEndFrame();
             }
 
-            if (_imguiController.IsRunning == false && !cts.IsCancellationRequested)
+            if (!_imguiController.IsRunning && !cts.IsCancellationRequested)
             {
-                task.Wait(); 
+                task.Wait();
             }
-            
-            
+
+
             Logger.Info(@$"Closing {NameEngine}");
-            
+
             _imguiController.OnExit();
         }
     }

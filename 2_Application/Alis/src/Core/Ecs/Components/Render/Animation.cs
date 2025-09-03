@@ -32,19 +32,19 @@ using System.Collections.Generic;
 namespace Alis.Core.Ecs.Components.Render
 {
     /// <summary>
-    /// The animation
+    ///     The animation
     /// </summary>
     public struct Animation : IAnimation
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Animation"/> class
+        ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
         public Animation() : this(string.Empty, 0, 0f)
         {
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Animation"/> class
+        ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="order">The order</param>
@@ -52,9 +52,9 @@ namespace Alis.Core.Ecs.Components.Render
         public Animation(string name, int order, float speed) : this(name, order, speed, new List<Frame>())
         {
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Animation"/> class
+        ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="order">The order</param>
@@ -69,27 +69,27 @@ namespace Alis.Core.Ecs.Components.Render
         }
 
         /// <summary>
-        /// Gets or sets the value of the name
+        ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; } = null;
 
         /// <summary>
-        /// Gets or sets the value of the order
+        ///     Gets or sets the value of the order
         /// </summary>
         public int Order { get; set; } = 0;
 
         /// <summary>
-        /// Gets or sets the value of the speed
+        ///     Gets or sets the value of the speed
         /// </summary>
-        public float Speed { get; set;  } = 0;
+        public float Speed { get; set; } = 0;
 
         /// <summary>
-        /// Gets or sets the value of the frames
+        ///     Gets or sets the value of the frames
         /// </summary>
-        public List<Frame> Frames { get; set;  } = new List<Frame>();
+        public List<Frame> Frames { get; set; } = new List<Frame>();
 
         /// <summary>
-        /// Adds the frame using the specified frame
+        ///     Adds the frame using the specified frame
         /// </summary>
         /// <param name="frame">The frame</param>
         public void AddFrame(Frame frame)
@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Components.Render
     }
 
     /// <summary>
-    /// The animation interface
+    ///     The animation interface
     /// </summary>
     public interface IAnimation
     {

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Dynamics
@@ -61,24 +62,24 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public float Phase
         {
-            get => (float) System.Math.Atan2(I, R);
+            get => (float) Math.Atan2(I, R);
             set
             {
-                if (System.Math.Abs(value) < float.Epsilon)
+                if (Math.Abs(value) < float.Epsilon)
                 {
                     this = One;
                     return;
                 }
 
-                R = (float) System.Math.Cos(value);
-                I = (float) System.Math.Sin(value);
+                R = (float) Math.Cos(value);
+                I = (float) Math.Sin(value);
             }
         }
 
         /// <summary>
         ///     Gets the value of the magnitude
         /// </summary>
-        public float Magnitude => (float) System.Math.Sqrt(MagnitudeSquared());
+        public float Magnitude => (float) Math.Sqrt(MagnitudeSquared());
 
 
         /// <summary>
@@ -99,14 +100,14 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The complex</returns>
         public static Complex FromAngle(float angle)
         {
-            if (System.Math.Abs(angle) < float.Epsilon)
+            if (Math.Abs(angle) < float.Epsilon)
             {
                 return One;
             }
 
             return new Complex(
-                (float) System.Math.Cos(angle),
-                (float) System.Math.Sin(angle));
+                (float) Math.Cos(angle),
+                (float) Math.Sin(angle));
         }
 
         /// <summary>

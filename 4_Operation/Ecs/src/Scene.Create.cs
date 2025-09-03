@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Scene.Create.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Kernel;
@@ -9,7 +38,7 @@ namespace Alis.Core.Ecs
 {
     //it just so happens Archetype and Create both end with "e"
     /// <summary>
-    /// The scene class
+    ///     The scene class
     /// </summary>
     partial class Scene
     {
@@ -22,7 +51,7 @@ namespace Alis.Core.Ecs
             WorldArchetypeTableItem archetypes = Archetype<T>.CreateNewOrGetExistingArchetypes(this);
 
             ref GameObjectIdOnly entity = ref Unsafe.NullRef<GameObjectIdOnly>();
-            GameObjectLocation eloc = default;
+            GameObjectLocation eloc = default(GameObjectLocation);
 
             ComponentStorageBase[] components;
 
@@ -47,8 +76,8 @@ namespace Alis.Core.Ecs
             EntityTable[id] = eloc;
 
             //1x array lookup per component
-            ref T ref1 = ref  Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref components[0], Archetype<T>.OfComponent<T>.Index))[eloc.Index];
-            
+            ref T ref1 = ref Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref components[0], Archetype<T>.OfComponent<T>.Index))[eloc.Index];
+
             ref1 = comp;
 
             GameObject concreteGameObject = new GameObject(Id, version, id);
@@ -61,7 +90,7 @@ namespace Alis.Core.Ecs
 
 
         /// <summary>
-        /// Creates the many using the specified count
+        ///     Creates the many using the specified count
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="count">The count</param>
@@ -69,8 +98,10 @@ namespace Alis.Core.Ecs
         /// <returns>A chunk tuple of t</returns>
         public ChunkTuple<T> CreateMany<T>(int count)
         {
-            if ((uint)count == 0) // Efficient validation for non-positive values
+            if ((uint) count == 0) // Efficient validation for non-positive values
+            {
                 throw new ArgumentOutOfRangeException(nameof(count));
+            }
 
             WorldArchetypeTableItem archetype = Archetype<T>.CreateNewOrGetExistingArchetypes(this);
             int initialEntityCount = archetype.Archetype.EntityCount;
@@ -82,10 +113,12 @@ namespace Alis.Core.Ecs
 
             // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
+            {
                 foreach (ref GameObjectIdOnly entityId in entityLocations)
                 {
                     EntityCreatedEvent.Invoke(entityId.ToEntity(this));
                 }
+            }
 
             // Return the result with calculated spans
             return new ChunkTuple<T>

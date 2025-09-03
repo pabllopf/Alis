@@ -139,7 +139,6 @@ namespace Alis.Core.Physic.Collision
         public int ProxyCount { get; private set; }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="aabb"></param>
         /// <returns></returns>

@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:GameObjectOnlyEvent.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
@@ -8,7 +37,6 @@ namespace Alis.Core.Ecs.Kernel.Events
     ///     The gameObject only event
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    
     public struct GameObjectOnlyEvent()
     {
         /// <summary>
@@ -38,11 +66,17 @@ namespace Alis.Core.Ecs.Kernel.Events
         public void Add(Action<GameObject> action)
         {
             if (_first is null)
+            {
                 _first = action;
+            }
             else if (_second is null)
+            {
                 _second = action;
+            }
             else
+            {
                 _invokationList.Push(action);
+            }
         }
 
         /// <summary>
@@ -55,13 +89,17 @@ namespace Alis.Core.Ecs.Kernel.Events
             {
                 _first = null;
                 if (_invokationList.TryPop(out Action<GameObject> v))
+                {
                     _first = v;
+                }
             }
             else if (_second == action)
             {
                 _second = null;
                 if (_invokationList.TryPop(out Action<GameObject> v))
+                {
                     _second = v;
+                }
             }
             else
             {
@@ -76,7 +114,9 @@ namespace Alis.Core.Ecs.Kernel.Events
         public readonly void Invoke(GameObject gameObject)
         {
             if (_first is not null)
+            {
                 Execute(gameObject);
+            }
         }
 
         /// <summary>

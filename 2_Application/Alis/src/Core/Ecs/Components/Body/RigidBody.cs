@@ -27,18 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Core.Ecs.Components.Body
 {
     /// <summary>
-    /// The rigid body
+    ///     The rigid body
     /// </summary>
     public struct RigidBody : IGameObjectComponent
     {
         /// <summary>
-        /// Updates the self
+        ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         public void Update(IGameObject self)

@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Extension.Math.ProceduralDungeon
@@ -72,23 +71,23 @@ namespace Alis.Extension.Math.ProceduralDungeon
         public const int CorridorHeight = 4;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Dungeon"/> class
+        ///     Initializes a new instance of the <see cref="Dungeon" /> class
         /// </summary>
         public Dungeon()
         {
             Board = new BoardSquare[BoardWidth, BoardHeight];
-            
+
             for (int x = 0; x < BoardWidth; x++)
             {
                 for (int y = 0; y < BoardHeight; y++)
                 {
                     if (Board[x, y] is null)
                     {
-                        Board[x, y] = new BoardSquare { Type = BoardSquareType.Empty };
+                        Board[x, y] = new BoardSquare {Type = BoardSquareType.Empty};
                     }
                 }
             }
-            
+
             Rooms = new List<Room>(NumOfRooms);
             Corridors = new List<Corridor>(NumOfRooms - 1);
         }
@@ -101,7 +100,7 @@ namespace Alis.Extension.Math.ProceduralDungeon
         /// <summary>Gets or sets the rooms.</summary>
         /// <value>The rooms.</value>
         [JsonNativePropertyName("rooms")]
-        public List<Room> Rooms { get; set; } 
+        public List<Room> Rooms { get; set; }
 
         /// <summary>Gets or sets the corridors.</summary>
         /// <value>The corridors.</value>

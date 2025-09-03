@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Diagnostics;
 using Alis.Core.Aspect.Logging;
 

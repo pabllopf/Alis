@@ -27,18 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Core.Ecs.Components.Render
 {
     /// <summary>
-    /// The camera interface
+    ///     The camera interface
     /// </summary>
-    /// <seealso cref="IInitable"/>
-    /// <seealso cref="IGameObjectComponent"/>
+    /// <seealso cref="IInitable" />
+    /// <seealso cref="IGameObjectComponent" />
     public interface ICamera : IInitable, IGameObjectComponent
     {
-
     }
 }

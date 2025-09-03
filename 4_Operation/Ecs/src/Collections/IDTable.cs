@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:IDTable.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Kernel.Events;
@@ -42,6 +71,14 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            Recycled.Dispose();
+        }
+
+        /// <summary>
         ///     Creates the boxed using the specified to store
         /// </summary>
         /// <param name="toStore">The to store</param>
@@ -57,7 +94,9 @@ namespace Alis.Core.Ecs.Collections
             {
                 index = NextIndex++;
                 if (index == Buffer.Length)
+                {
                     Double();
+                }
             }
 
             SetValue(toStore, index);
@@ -70,20 +109,14 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The object</returns>
-        public object GetValueBoxed(int index)
-        {
-            return GetValue(index);
-        }
+        public object GetValueBoxed(int index) => GetValue(index);
 
         /// <summary>
         ///     Takes the boxed using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The object</returns>
-        public object TakeBoxed(int index)
-        {
-            return GetValue(index);
-        }
+        public object TakeBoxed(int index) => GetValue(index);
 
         /// <summary>
         ///     Consumes the index
@@ -92,7 +125,10 @@ namespace Alis.Core.Ecs.Collections
         public void Consume(int index)
         {
             Recycled.Push(index);
-            if (_hasGcReferences) ClearValue(index);
+            if (_hasGcReferences)
+            {
+                ClearValue(index);
+            }
         }
 
         /// <summary>
@@ -127,14 +163,6 @@ namespace Alis.Core.Ecs.Collections
         ///     Doubles this instance
         /// </summary>
         protected abstract void Double();
-
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            Recycled.Dispose();
-        }
     }
 
     /// <summary>
@@ -170,7 +198,9 @@ namespace Alis.Core.Ecs.Collections
             {
                 index = NextIndex++;
                 if (index == base.Buffer.Length)
+                {
                     Double();
+                }
             }
 
             return ref Buffer[index];
@@ -193,10 +223,7 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        public ref T Take(int index)
-        {
-            return ref Buffer[index];
-        }
+        public ref T Take(int index) => ref Buffer[index];
 
         /// <summary>
         ///     Doubles this instance
@@ -211,10 +238,7 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The object</returns>
-        protected override object GetValue(int index)
-        {
-            return Buffer[index]!;
-        }
+        protected override object GetValue(int index) => Buffer[index]!;
 
         /// <summary>
         ///     Sets the value using the specified value
@@ -223,7 +247,7 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="index">The index</param>
         protected override void SetValue(object value, int index)
         {
-            Buffer[index] = (T)value;
+            Buffer[index] = (T) value;
         }
 
         /// <summary>
@@ -232,7 +256,7 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="index">The index</param>
         protected override void ClearValue(int index)
         {
-            Buffer[index] = default!;
+            Buffer[index] = default(T)!;
         }
     }
 }

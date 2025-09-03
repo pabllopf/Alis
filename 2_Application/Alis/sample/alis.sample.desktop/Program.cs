@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Systems.Configuration;
 
@@ -51,7 +50,7 @@ namespace Alis.Sample.Desktop
             setting.General = setting.General with {Debug = true};
             setting.General = setting.General with {Name = "en-US"};
             setting.OnSave();
-            
+
             Logger.Info("Setting saved successfully.");
             Logger.Info($"Debug: {setting.General.Debug}");
             Logger.Info($"Name: {setting.General.Name}");
@@ -60,11 +59,10 @@ namespace Alis.Sample.Desktop
             Logger.Info($"Author: {setting.General.Author}");
             Logger.Info($"License: {setting.General.License}");
             Logger.Info($"Icon: {setting.General.Icon}");
-            
-            
-            
+
+
             setting.OnLoad();
-            
+
             Logger.Info("General Setting:");
             Logger.Info($"Debug: {setting.General.Debug}");
             Logger.Info($"Name: {setting.General.Name}");

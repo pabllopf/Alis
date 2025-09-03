@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:d.cs
+//  File:PlayerController.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -80,7 +80,7 @@ namespace Alis.Sample.Pong
             public int PlayerId { get; set; } = playerId;
 
             /// <summary>
-            /// Inits the self
+            ///     Inits the self
             /// </summary>
             /// <param name="self">The self</param>
             public void Init(IGameObject self)
@@ -89,12 +89,11 @@ namespace Alis.Sample.Pong
             }
 
             /// <summary>
-            /// Updates the self
+            ///     Updates the self
             /// </summary>
             /// <param name="self">The self</param>
             public void Update(IGameObject self)
             {
-
             }
         }
     }

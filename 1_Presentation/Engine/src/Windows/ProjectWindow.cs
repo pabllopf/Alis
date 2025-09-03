@@ -50,19 +50,19 @@ namespace Alis.App.Engine.Windows
         private static readonly string NameWindow = $"{FontAwesome5.Stream} Project";
 
         /// <summary>
-        /// The is open
+        ///     The group by
+        /// </summary>
+        private string _groupBy;
+
+        /// <summary>
+        ///     The is open
         /// </summary>
         private bool _isOpen = true;
 
         /// <summary>
-        /// The command ptr
+        ///     The command ptr
         /// </summary>
         private IntPtr commandPtr;
-
-        /// <summary>
-        /// The group by
-        /// </summary>
-        private string _groupBy;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ProjectWindow" /> class
@@ -90,7 +90,7 @@ namespace Alis.App.Engine.Windows
         public SpaceWork SpaceWork { get; }
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
@@ -129,11 +129,11 @@ namespace Alis.App.Engine.Windows
                             //    .Name($"New GameObject ({SpaceWork.VideoGame.Context.SceneManager.CurrentScene.GameObjects.Count})")
                             //    .Build());
                         }
-                        
+
                         ImGui.EndMenu();
                     }
-                    
-                    
+
+
                     if (ImGui.BeginMenu($"{FontAwesome5.Eye}## Options {NameWindow}"))
                     {
                         if (ImGui.MenuItem("Filter by Name"))
@@ -154,7 +154,6 @@ namespace Alis.App.Engine.Windows
                         ImGui.EndMenu();
                     }
 
-                    
 
                     ImGui.EndMenuBar();
                 }
@@ -177,35 +176,32 @@ namespace Alis.App.Engine.Windows
                         break;
                 }
             }
-            
+
             ImGui.End();
         }
 
         /// <summary>
-        /// Renders the game objects using the specified game objects
+        ///     Renders the game objects using the specified game objects
         /// </summary>
         /// <param name="gameObjects">The game objects</param>
         private void RenderGameObjects(List<GameObject> gameObjects)
         {
-            
         }
 
         /// <summary>
-        /// Renders the grouped by layer using the specified game objects
+        ///     Renders the grouped by layer using the specified game objects
         /// </summary>
         /// <param name="gameObjects">The game objects</param>
         private void RenderGroupedByLayer(List<GameObject> gameObjects)
         {
-          
         }
 
         /// <summary>
-        /// Renders the grouped by tag using the specified game objects
+        ///     Renders the grouped by tag using the specified game objects
         /// </summary>
         /// <param name="gameObjects">The game objects</param>
         private void RenderGroupedByTag(List<GameObject> gameObjects)
         {
-            
         }
     }
 }

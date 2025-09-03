@@ -38,11 +38,10 @@ using BenchmarkDotNet.Loggers;
 
 namespace Alis.Benchmark
 {
-    
     /// <summary>
-    /// The custom config class
+    ///     The custom config class
     /// </summary>
-    /// <seealso cref="ManualConfig"/>
+    /// <seealso cref="ManualConfig" />
     internal class CustomConfig : ManualConfig
     {
         /// <summary>
@@ -51,11 +50,11 @@ namespace Alis.Benchmark
         public CustomConfig()
         {
             Options |= ConfigOptions.DisableLogFile;
-            
+
 #if RELEASE
             string outputDirectory = $"../../../Release/Results/{DateTime.Now:yyyy-MM-dd}/";
 #else
-             string outputDirectory = $"../../../Debug/Results/{DateTime.Now:yyyy-MM-dd}/";
+            string outputDirectory = $"../../../Debug/Results/{DateTime.Now:yyyy-MM-dd}/";
 #endif
             ArtifactsPath = outputDirectory;
 
@@ -64,23 +63,23 @@ namespace Alis.Benchmark
             AddExporter(MarkdownExporter.GitHub);
             AddExporter(CsvExporter.Default);
 
-        #if RELEASE
+#if RELEASE
             Job debugJob = Job.InProcess
                 .WithId("Release")
                 .WithCustomBuildConfiguration("Release")
                 .WithRuntime(CoreRuntime.Core80)
                 .WithGcForce(true)
                 .WithGcServer(true);
-            
-        #else
+
+#else
             Job debugJob = Job.InProcess
                 .WithId("Debug")
                 .WithCustomBuildConfiguration("Debug")
                 .WithRuntime(CoreRuntime.Core80)
                 .WithGcForce(true)
                 .WithGcServer(true);
-        
-        #endif
+
+#endif
 
             AddJob(debugJob);
             AddDiagnoser(MemoryDiagnoser.Default);

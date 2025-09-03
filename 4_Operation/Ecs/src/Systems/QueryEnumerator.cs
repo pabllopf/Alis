@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:QueryEnumerator.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
@@ -6,7 +35,7 @@ using Alis.Core.Ecs.Kernel.Archetypes;
 namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
-    /// The query enumerator
+    ///     The query enumerator
     /// </summary>
     public ref struct QueryEnumerator<T>
     {
@@ -70,18 +99,23 @@ namespace Alis.Core.Ecs.Systems
         /// <returns><see langword="true" /> when its possible to enumerate further, otherwise <see langword="false" />.</returns>
         public bool MoveNext()
         {
-            if (++_componentIndex < _currentSpan1.Length) return true;
+            if (++_componentIndex < _currentSpan1.Length)
+            {
+                return true;
+            }
 
             _componentIndex = 0;
             _archetypeIndex++;
 
-            while ((uint)_archetypeIndex < (uint)_archetypes.Length)
+            while ((uint) _archetypeIndex < (uint) _archetypes.Length)
             {
                 Archetype cur = _archetypes[_archetypeIndex];
                 _currentSpan1 = cur.GetComponentSpan<T>();
 
                 if (!_currentSpan1.IsEmpty)
+                {
                     return true;
+                }
 
                 _archetypeIndex++;
             }
@@ -94,16 +128,12 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         /// <param name="query"></param>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        
         public readonly struct QueryEnumerable(Query query)
         {
             /// <summary>
             ///     Gets the enumerator over a query.
             /// </summary>
-            public QueryEnumerator<T> GetEnumerator()
-            {
-                return new QueryEnumerator<T>(query);
-            }
+            public QueryEnumerator<T> GetEnumerator() => new QueryEnumerator<T>(query);
         }
     }
 }

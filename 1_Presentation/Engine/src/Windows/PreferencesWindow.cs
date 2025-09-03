@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InspectorWindow.cs
+//  File:PreferencesWindow.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -45,40 +45,42 @@ namespace Alis.App.Engine.Windows
     public class PreferencesWindow : IWindow
     {
         /// <summary>
-        /// The cog
+        ///     The cog
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Cog} Preferences";
-        /// <summary>
-        /// The is open
-        /// </summary>
-        private bool _isOpen = false;
-
-        // Current selected node in the tree menu
-        /// <summary>
-        /// The selected node
-        /// </summary>
-        private string _selectedNode = "General";
 
         // Tree menu structure
         /// <summary>
-        /// The list
+        ///     The list
         /// </summary>
         private readonly Dictionary<string, List<string>> _menuTree = new Dictionary<string, List<string>>
         {
-            { "General", new List<string>() },
-            { "Graphics", new List<string> { "Rendering", "Quality" } },
-            { "Input", new List<string> { "Key Bindings", "Controllers" } },
-            { "Audio", new List<string> { "Volume", "Output Devices" } },
-            { "Plugins", new List<string>() },
-            { "Advanced", new List<string> { "Scripting", "Debugging" } }
+            {"General", new List<string>()},
+            {"Graphics", new List<string> {"Rendering", "Quality"}},
+            {"Input", new List<string> {"Key Bindings", "Controllers"}},
+            {"Audio", new List<string> {"Volume", "Output Devices"}},
+            {"Plugins", new List<string>()},
+            {"Advanced", new List<string> {"Scripting", "Debugging"}}
         };
-        
+
         /// <summary>
-        /// The command ptr
+        ///     The command ptr
         /// </summary>
-        private IntPtr commandPtr;
+        private readonly IntPtr commandPtr;
+
         /// <summary>
-        /// The empty
+        ///     The is open
+        /// </summary>
+        private bool _isOpen;
+
+        // Current selected node in the tree menu
+        /// <summary>
+        ///     The selected node
+        /// </summary>
+        private string _selectedNode = "General";
+
+        /// <summary>
+        ///     The empty
         /// </summary>
         private string searchText = string.Empty;
 
@@ -88,12 +90,12 @@ namespace Alis.App.Engine.Windows
         /// <param name="spaceWork">The space work</param>
         public PreferencesWindow(SpaceWork spaceWork)
         {
-            this.SpaceWork = spaceWork;
+            SpaceWork = spaceWork;
             commandPtr = Marshal.AllocHGlobal(256);
         }
 
         /// <summary>
-        /// Gets the value of the space work
+        ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
@@ -112,7 +114,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
@@ -124,7 +126,7 @@ namespace Alis.App.Engine.Windows
             // Center the window and set its initial size
             ImGui.SetNextWindowSize(new Vector2F(800, 400), ImGuiCond.FirstUseEver);
             ImGui.SetNextWindowPos(new Vector2F((ImGui.GetIo().DisplaySize.X - 800) / 2, (ImGui.GetIo().DisplaySize.Y - 400) / 2), ImGuiCond.FirstUseEver);
-            
+
             if (ImGui.Begin(NameWindow, ref _isOpen, ImGuiWindowFlags.NoCollapse))
             {
                 // Set the left column to occupy 1/4 of the window width
@@ -147,7 +149,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders the search bar
+        ///     Renders the search bar
         /// </summary>
         private void RenderSearchBar()
         {
@@ -157,11 +159,12 @@ namespace Alis.App.Engine.Windows
                 searchText = Marshal.PtrToStringAnsi(commandPtr);
                 Logger.Info(searchText);
             }
+
             ImGui.Separator();
         }
 
         /// <summary>
-        /// Renders the tree menu
+        ///     Renders the tree menu
         /// </summary>
         private void RenderTreeMenu()
         {
@@ -193,7 +196,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders the content
+        ///     Renders the content
         /// </summary>
         private void RenderContent()
         {
@@ -235,7 +238,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders the general settings
+        ///     Renders the general settings
         /// </summary>
         private void RenderGeneralSettings()
         {
@@ -243,7 +246,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders the rendering settings
+        ///     Renders the rendering settings
         /// </summary>
         private void RenderRenderingSettings()
         {
@@ -251,7 +254,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders the quality settings
+        ///     Renders the quality settings
         /// </summary>
         private void RenderQualitySettings()
         {
@@ -259,7 +262,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders the key bindings settings
+        ///     Renders the key bindings settings
         /// </summary>
         private void RenderKeyBindingsSettings()
         {
@@ -267,7 +270,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders the controller settings
+        ///     Renders the controller settings
         /// </summary>
         private void RenderControllerSettings()
         {
@@ -275,7 +278,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders the volume settings
+        ///     Renders the volume settings
         /// </summary>
         private void RenderVolumeSettings()
         {
@@ -283,7 +286,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders the output device settings
+        ///     Renders the output device settings
         /// </summary>
         private void RenderOutputDeviceSettings()
         {
@@ -291,7 +294,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders the scripting settings
+        ///     Renders the scripting settings
         /// </summary>
         private void RenderScriptingSettings()
         {
@@ -299,7 +302,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders the debugging settings
+        ///     Renders the debugging settings
         /// </summary>
         private void RenderDebuggingSettings()
         {
@@ -307,7 +310,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// The open
+        ///     The open
         /// </summary>
         public void Open() => _isOpen = true;
     }

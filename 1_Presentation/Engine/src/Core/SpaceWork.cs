@@ -42,7 +42,7 @@ namespace Alis.App.Engine.Core
     public class SpaceWork
     {
         /// <summary>
-        /// The im gui controller
+        ///     The im gui controller
         /// </summary>
         public ImGuiControllerImplementGlfw ImGuiController;
 
@@ -52,14 +52,13 @@ namespace Alis.App.Engine.Core
         public SpaceWork(ImGuiControllerImplementGlfw imGuiController)
         {
             ImGuiController = imGuiController;
-            
+
             DockSpaceMenu = new DockSpaceMenu(this);
             TopMenu = new TopMenu(this);
             TopMenuMac = new TopMenuMac(this);
             BottomMenu = new BottomMenu(this);
-            
-            
-            
+
+
             ConsoleWindow = new ConsoleWindow(this);
             GameWindow = new GameWindow(this);
             SettingsWindow = new SettingsWindow(this);
@@ -68,12 +67,11 @@ namespace Alis.App.Engine.Core
             ProjectWindow = new ProjectWindow(this);
             AudioPlayerWindow = new AudioPlayerWindow(this);
             AssetsWindow = new AssetsWindow(this);
-            
+
             GitWindow = new GitWindow(this);
             PreferencesWindow = new PreferencesWindow(this);
             SearchAdvanceWindow = new SearchAdvanceWindow(this);
 
-          
 
             //Project = JsonSerializer.Deserialize<Project>(File.ReadAllText(Path.Combine(Path.GetTempPath(), "projectConfig.json")));
 
@@ -95,9 +93,9 @@ namespace Alis.App.Engine.Core
         ///     Gets the value of the console window
         /// </summary>
         internal ConsoleWindow ConsoleWindow { get; }
-        
+
         /// <summary>
-        /// Gets the value of the settings window
+        ///     Gets the value of the settings window
         /// </summary>
         internal SettingsWindow SettingsWindow { get; }
 
@@ -150,24 +148,24 @@ namespace Alis.App.Engine.Core
         ///     Gets or sets the value of the project
         /// </summary>
         public Project Project { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the git window
+        ///     Gets or sets the value of the git window
         /// </summary>
         public GitWindow GitWindow { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the preferences window
+        ///     Gets or sets the value of the preferences window
         /// </summary>
         public PreferencesWindow PreferencesWindow { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the search advance window
+        ///     Gets or sets the value of the search advance window
         /// </summary>
         public SearchAdvanceWindow SearchAdvanceWindow { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the video game
+        ///     Gets or sets the value of the video game
         /// </summary>
         public VideoGame VideoGame { get; set; } = new VideoGame();
 
@@ -188,8 +186,8 @@ namespace Alis.App.Engine.Core
 
             DockSpaceMenu.Initialize();
             BottomMenu.Initialize();
-            
-            
+
+
             ConsoleWindow.Initialize();
             GameWindow.Initialize();
             InspectorWindow.Initialize();
@@ -198,7 +196,7 @@ namespace Alis.App.Engine.Core
             AudioPlayerWindow.Initialize();
             AssetsWindow.Initialize();
             SettingsWindow.Initialize();
-            
+
             GitWindow.Initialize();
             PreferencesWindow.Initialize();
             SearchAdvanceWindow.Initialize();
@@ -209,7 +207,6 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public void Start()
         {
-
             // if is macos system:
             if (!IsMacOs)
             {
@@ -219,11 +216,11 @@ namespace Alis.App.Engine.Core
             {
                 TopMenuMac.Start();
             }
-            
+
             BottomMenu.Start();
             DockSpaceMenu.Start();
-            
-            
+
+
             ConsoleWindow.Start();
             GameWindow.Start();
             InspectorWindow.Start();
@@ -232,7 +229,7 @@ namespace Alis.App.Engine.Core
             AudioPlayerWindow.Start();
             AssetsWindow.Start();
             SettingsWindow.Start();
-            
+
             GitWindow.Start();
             PreferencesWindow.Start();
             SearchAdvanceWindow.Start();
@@ -255,8 +252,8 @@ namespace Alis.App.Engine.Core
 
             DockSpaceMenu.Render();
             BottomMenu.Render();
-            
-            
+
+
             SettingsWindow.Render();
             ConsoleWindow.Render();
             GameWindow.Render();
@@ -265,7 +262,7 @@ namespace Alis.App.Engine.Core
             ProjectWindow.Render();
             AudioPlayerWindow.Render();
             AssetsWindow.Render();
-            
+
             GitWindow.Render();
             PreferencesWindow.Render();
             SearchAdvanceWindow.Render();

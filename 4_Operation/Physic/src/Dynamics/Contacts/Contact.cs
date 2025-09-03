@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
@@ -350,7 +349,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             IsTouching = touching;
 
-            if (wasTouching == false)
+            if (!wasTouching)
             {
                 if (touching)
                 {
@@ -424,7 +423,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             }
             else
             {
-                if (touching == false)
+                if (!touching)
                 {
                     //Report the separation to both participants:
                     OnSeparationEventHandler onFixtureSeparationHandlerA = FixtureA.OnSeparation;
@@ -574,7 +573,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         internal void Destroy()
         {
-            if ((Manifold.PointCount > 0) && (FixtureA.GetIsSensor == false) && (FixtureB.GetIsSensor == false))
+            if ((Manifold.PointCount > 0) && !FixtureA.GetIsSensor && !FixtureB.GetIsSensor)
             {
                 FixtureA.GetBody.Awake = true;
                 FixtureB.GetBody.Awake = true;

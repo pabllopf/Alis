@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ComponentUpdateTypeRegistryGenerator.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Immutable;
 using System.Diagnostics;
@@ -13,18 +42,19 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace Alis.Core.Ecs.Generator
 {
     /// <summary>
-    /// The component update type registry generator class
+    ///     The component update type registry generator class
     /// </summary>
-    /// <seealso cref="IIncrementalGenerator"/>
+    /// <seealso cref="IIncrementalGenerator" />
     [Generator(LanguageNames.CSharp)]
     public class ComponentUpdateTypeRegistryGenerator : IIncrementalGenerator
     {
         /// <summary>
-        /// The symbol display format
+        ///     The symbol display format
         /// </summary>
         private static SymbolDisplayFormat _symbolDisplayFormat;
+
         /// <summary>
-        /// Gets the value of the fully qualified type name format
+        ///     Gets the value of the fully qualified type name format
         /// </summary>
         private static SymbolDisplayFormat FullyQualifiedTypeNameFormat => _symbolDisplayFormat ??= new(
             genericsOptions: SymbolDisplayGenericsOptions.IncludeTypeParameters,
@@ -32,20 +62,19 @@ namespace Alis.Core.Ecs.Generator
         );
 
         /// <summary>
-        /// Initializes the context
+        ///     Initializes the context
         /// </summary>
         /// <param name="context">The context</param>
         public void Initialize(IncrementalGeneratorInitializationContext context)
         {
             IncrementalValuesProvider<ComponentUpdateItemModel> models = context.SyntaxProvider.CreateSyntaxProvider(
-                static (n, _) => n is TypeDeclarationSyntax { BaseList: { } } typeDec,
+                static (n, _) => n is TypeDeclarationSyntax {BaseList: not null} typeDec,
                 GenerateComponentUpdateModel);
 
             IncrementalValueProvider<ImmutableArray<ComponentUpdateItemModel>> allModels = models.Where(m => !m.IsDefault).Collect();
 
-            IncrementalValueProvider<SourceOutput> mainRegistrationFile = allModels.Select(
-                (im, ct) => 
-                    GenerateMonolithicRegistrationFile(im.Where(c => !c.HasFlag(UpdateModelFlags.IsSelfInit)).ToImmutableArray(), ct)
+            IncrementalValueProvider<SourceOutput> mainRegistrationFile = allModels.Select((im, ct) =>
+                GenerateMonolithicRegistrationFile(im.Where(c => !c.HasFlag(UpdateModelFlags.IsSelfInit)).ToImmutableArray(), ct)
             );
 
             context.RegisterImplementationSourceOutput(mainRegistrationFile, RegisterSource);
@@ -53,18 +82,20 @@ namespace Alis.Core.Ecs.Generator
             IncrementalValuesProvider<SourceOutput> genericComponentFiles = models
                 .Where(c => c.HasFlag(UpdateModelFlags.IsSelfInit))
                 .Select(GenerateRegisterGenericType);
-        
+
             context.RegisterImplementationSourceOutput(genericComponentFiles, RegisterSource);
 
             static void RegisterSource(SourceProductionContext context, SourceOutput output)
             {
                 if (output.Name is not null)
+                {
                     context.AddSource(output.Name, output.Source);
+                }
             }
         }
-    
+
         /// <summary>
-        /// Generates the component update model using the specified gsc
+        ///     Generates the component update model using the specified gsc
         /// </summary>
         /// <param name="gsc">The gsc</param>
         /// <param name="ct">The ct</param>
@@ -72,9 +103,14 @@ namespace Alis.Core.Ecs.Generator
         private static ComponentUpdateItemModel GenerateComponentUpdateModel(GeneratorSyntaxContext gsc, CancellationToken ct)
         {
             if (gsc.SemanticModel.GetDeclaredSymbol(gsc.Node, ct) is not INamedTypeSymbol componentTypeSymbol)
+            {
                 return ComponentUpdateItemModel.Default;
+            }
+
             if (componentTypeSymbol.TypeKind is not (TypeKind.Class or TypeKind.Struct))
+            {
                 return ComponentUpdateItemModel.Default;
+            }
 
             UpdateModelFlags flags = UpdateModelFlags.None;
             Stack<Diagnostic> diagnostics = new Stack<Diagnostic>(1);
@@ -88,7 +124,9 @@ namespace Alis.Core.Ecs.Generator
                 ct.ThrowIfCancellationRequested();
 
                 if (!potentialInterface.IsOrExtendsIComponentBase())
+                {
                     continue;
+                }
                 //potentialInterface is some kind of IComponentBase
 
                 string name = potentialInterface.ToString();
@@ -97,13 +135,13 @@ namespace Alis.Core.Ecs.Generator
 
                 if (potentialInterface.IsSpecialComponentInterface())
                 {
-                    if(name != RegistryHelpers.FullyQualifiedTargetInterfaceName)
+                    if (name != RegistryHelpers.FullyQualifiedTargetInterfaceName)
                     {
                         flags |= name switch
                         {
                             RegistryHelpers.FullyQualifiedInitableInterfaceName => UpdateModelFlags.Initable,
                             RegistryHelpers.FullyQualifiedDestroyableInterfaceName => UpdateModelFlags.Destroyable,
-                            _ => UpdateModelFlags.None,
+                            _ => UpdateModelFlags.None
                         };
                     }
                     else
@@ -111,11 +149,11 @@ namespace Alis.Core.Ecs.Generator
                         @interface ??= potentialInterface;
                     }
                 }
-                else if(potentialInterface.IsAlisComponentInterface())
+                else if (potentialInterface.IsAlisComponentInterface())
                 {
                     @interface = potentialInterface;
 
-                    if(@interface.TypeArguments.Length != 0)
+                    if (@interface.TypeArguments.Length != 0)
                     {
                         genericArguments = new string[@interface.TypeArguments.Length];
 
@@ -130,7 +168,9 @@ namespace Alis.Core.Ecs.Generator
 
             //this path is still hot!
             if (!needsRegistering || @interface is null)
+            {
                 return ComponentUpdateItemModel.Default;
+            }
 
             //only components here
 
@@ -144,43 +184,53 @@ namespace Alis.Core.Ecs.Generator
 
             string @namespace = null;
 
-            if(!componentTypeSymbol.ContainingNamespace.IsGlobalNamespace)
+            if (!componentTypeSymbol.ContainingNamespace.IsGlobalNamespace)
+            {
                 @namespace = componentTypeSymbol.ContainingNamespace.ToString();
+            }
 
             TypeDeclarationModel[] nestTypes = GetContainingTypes(ref diagnostics);
 
             bool isAcc =
                 componentTypeSymbol.DeclaredAccessibility == Accessibility.Public ||
                 componentTypeSymbol.DeclaredAccessibility == Accessibility.Internal;
-            if ((nestTypes.Length != 0 && !isAcc) || flags.HasFlag(UpdateModelFlags.IsGeneric))
+            if (((nestTypes.Length != 0) && !isAcc) || flags.HasFlag(UpdateModelFlags.IsGeneric))
+            {
                 flags |= UpdateModelFlags.IsSelfInit;
+            }
 
             return new ComponentUpdateItemModel(
-
-                Flags: flags,
-                FullName: componentTypeSymbol.ToString(),
-                Namespace: @namespace,
-                ImplInterface:  @interface.Name,
-                HintName: componentTypeSymbol.Name,
-                MinimallyQualifiedName: componentTypeSymbol.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat),
-
-                NestedTypes: new EquatableArray<TypeDeclarationModel>(nestTypes),
-                GenericArguments: new EquatableArray<string>(genericArguments!),
-                Attributes: new EquatableArray<string>(attributes.ToArray())
+                flags,
+                componentTypeSymbol.ToString(),
+                @namespace,
+                @interface.Name,
+                componentTypeSymbol.Name,
+                componentTypeSymbol.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat),
+                new EquatableArray<TypeDeclarationModel>(nestTypes),
+                new EquatableArray<string>(genericArguments!),
+                new EquatableArray<string>(attributes.ToArray())
             );
 
             void AddMiscFlags()
             {
                 if (componentTypeSymbol.IsGenericType)
+                {
                     flags |= UpdateModelFlags.IsGeneric;
+                }
 
                 if (componentTypeSymbol.TypeKind == TypeKind.Class)
+                {
                     flags |= UpdateModelFlags.IsClass;
+                }
                 else if (componentTypeSymbol.TypeKind == TypeKind.Struct)
+                {
                     flags |= UpdateModelFlags.IsStruct;
+                }
 
                 if (componentTypeSymbol.IsRecord)
+                {
                     flags |= UpdateModelFlags.IsRecord;
+                }
             }
 
             TypeDeclarationModel[] GetContainingTypes(ref Stack<Diagnostic> diags)
@@ -192,34 +242,36 @@ namespace Alis.Core.Ecs.Generator
                     current = current.ContainingType;
                     nestedTypeCount++;
                 }
+
                 TypeDeclarationModel[] nestedTypeSymbols = new TypeDeclarationModel[nestedTypeCount];
                 current = componentTypeSymbol;
                 int index = 0;
                 while (current.ContainingType is not null)
                 {
-                    current = current.ContainingType;    
+                    current = current.ContainingType;
                     nestedTypeSymbols[index++] = new TypeDeclarationModel(
                         current.IsRecord,
                         current.TypeKind,
                         current.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat)
                     );
                 }
+
                 nestedTypeSymbols.AsSpan().Reverse();
                 return nestedTypeSymbols;
             }
         }
 
         /// <summary>
-        /// Pushes the update type attributes using the specified attributes
+        ///     Pushes the update type attributes using the specified attributes
         /// </summary>
         /// <param name="attributes">The attributes</param>
         /// <param name="node">The node</param>
         /// <param name="semanticModel">The semantic model</param>
-        private static void PushUpdateTypeAttributes(ref Stack<string> attributes,  SyntaxNode node, SemanticModel semanticModel)
+        private static void PushUpdateTypeAttributes(ref Stack<string> attributes, SyntaxNode node, SemanticModel semanticModel)
         {
-            foreach (MemberDeclarationSyntax item in ((TypeDeclarationSyntax)node).Members)
+            foreach (MemberDeclarationSyntax item in ((TypeDeclarationSyntax) node).Members)
             {
-                if (item is MethodDeclarationSyntax method && method.AttributeLists.Count != 0 && method.Identifier.ToString() == RegistryHelpers.UpdateMethodName)
+                if (item is MethodDeclarationSyntax method && (method.AttributeLists.Count != 0) && (method.Identifier.ToString() == RegistryHelpers.UpdateMethodName))
                 {
                     foreach (AttributeListSyntax attrList in method.AttributeLists)
                     {
@@ -239,7 +291,7 @@ namespace Alis.Core.Ecs.Generator
         }
 
         /// <summary>
-        /// Generates the monolithic registration file using the specified models
+        ///     Generates the monolithic registration file using the specified models
         /// </summary>
         /// <param name="models">The models</param>
         /// <param name="ct">The ct</param>
@@ -247,12 +299,14 @@ namespace Alis.Core.Ecs.Generator
         private static SourceOutput GenerateMonolithicRegistrationFile(ImmutableArray<ComponentUpdateItemModel> models, CancellationToken ct)
         {
             if (models.Length == 0)
-                return new(default, string.Empty);
+            {
+                return new(default(string), string.Empty);
+            }
 
             CodeBuilder cb = CodeBuilder.ThreadShared;
 
             string version = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion ?? "0.0.0";
-            
+
             cb
                 .AppendLine("")
                 .AppendLine("// This file was auto generated using Alis's source generator")
@@ -268,7 +322,7 @@ namespace Alis.Core.Ecs.Generator
                 .AppendLine("internal static class AlisComponentRegistry")
                 .Scope()
 #if UNITY
-                    .AppendLine("[global::UnityEngine.RuntimeInitializeOnLoadMethod]")
+                .AppendLine("[global::UnityEngine.RuntimeInitializeOnLoadMethod]")
 #else
                 .AppendLine("[global::System.Runtime.CompilerServices.ModuleInitializer]")
 #endif
@@ -289,16 +343,16 @@ namespace Alis.Core.Ecs.Generator
 
             return new("AlisComponentRegistry.g.cs", source);
         }
-    
+
         /// <summary>
-        /// Appends the initalization method body using the specified cb
+        ///     Appends the initalization method body using the specified cb
         /// </summary>
         /// <param name="cb">The cb</param>
         /// <param name="model">The model</param>
         private static void AppendInitalizationMethodBody(CodeBuilder cb, in ComponentUpdateItemModel model)
         {
             (int Start, int Count) span = ExtractUpdaterName(model.ImplInterface);
-        
+
             cb
                 .Append("GenerationServices.RegisterType(typeof(")
                 .Append("global::").Append(model.FullName)
@@ -310,7 +364,9 @@ namespace Alis.Core.Ecs.Generator
                 .Append("global::").Append(model.FullName);
 
             foreach (string item in model.GenericArguments)
+            {
                 cb.Append(", ").Append(item);
+            }
 
             //sb.Append(">(), ").Append(model.UpdateOrder).AppendLine(");");
             cb.AppendLine(">());");
@@ -323,12 +379,14 @@ namespace Alis.Core.Ecs.Generator
                     .Append("global::").Append(model.FullName)
                     .AppendLine("));");
             }
+
             if (model.HasFlag(UpdateModelFlags.Initable))
             {
                 cb.Append("GenerationServices.RegisterInit<")
                     .Append("global::").Append(model.FullName)
                     .AppendLine(">();");
             }
+
             if (model.HasFlag(UpdateModelFlags.Destroyable))
             {
                 cb.Append("GenerationServices.RegisterDestroy<")
@@ -338,14 +396,11 @@ namespace Alis.Core.Ecs.Generator
 
             cb.AppendLine();
 
-            static (int Start, int Count) ExtractUpdaterName(string interfaceName)
-            {
-                return (1, interfaceName.Length - "IComponent".Length);
-            }
+            static (int Start, int Count) ExtractUpdaterName(string interfaceName) => (1, interfaceName.Length - "IComponent".Length);
         }
 
         /// <summary>
-        /// Generates the register generic type using the specified model
+        ///     Generates the register generic type using the specified model
         /// </summary>
         /// <param name="model">The model</param>
         /// <param name="ct">The ct</param>
@@ -368,9 +423,8 @@ namespace Alis.Core.Ecs.Generator
                 .AppendLine("using global::System.Runtime.CompilerServices;")
                 .AppendLine()
                 .If(@namespace is not null, @namespace, (ns, c) => c.Append("namespace ").AppendLine(ns).Scope())
-
-                .Foreach((ReadOnlySpan<TypeDeclarationModel>)model.NestedTypes, ct, 
-                    (in TypeDeclarationModel typeInfo, CodeBuilder cb, CancellationToken _) => 
+                .Foreach(model.NestedTypes, ct,
+                    (in TypeDeclarationModel typeInfo, CodeBuilder cb, CancellationToken _) =>
                         cb.Append("partial ").If(typeInfo.IsRecord, c => c.Append("record")).Append(typeInfo.TypeKind switch
                         {
                             TypeKind.Struct => "struct ",
@@ -378,7 +432,6 @@ namespace Alis.Core.Ecs.Generator
                             TypeKind.Interface => "interface ",
                             _ => throw new NotImplementedException()
                         }).AppendLine(typeInfo.Name).Scope())
-
                 .Append("partial ").If(model.IsRecord, c => c.Append("record ")).Append(model.IsStruct ? "struct " : "class ").Append(model.MinimallyQualifiedName).AppendLine()
                 .Scope()
                 .Append("static ").Append(model.HintName).AppendLine("()")
@@ -386,9 +439,7 @@ namespace Alis.Core.Ecs.Generator
                 .Execute(in model, ct, (in ComponentUpdateItemModel model, CodeBuilder builder, CancellationToken ct) => AppendInitalizationMethodBody(cb, in model))
                 .Unscope()
                 .Unscope()
-
-                .Foreach((ReadOnlySpan<TypeDeclarationModel>)model.NestedTypes, ct, (in TypeDeclarationModel s, CodeBuilder cb, CancellationToken _) => cb.Unscope())
-
+                .Foreach(model.NestedTypes, ct, (in TypeDeclarationModel s, CodeBuilder cb, CancellationToken _) => cb.Unscope())
                 .If(@namespace is not null, c => c.Unscope());
 
             return new(SanitizeNameForFile(model.FullName), cb.ToString());
@@ -397,14 +448,15 @@ namespace Alis.Core.Ecs.Generator
             {
                 const string FileEnd = ".g.cs";
                 Span<char> newName = stackalloc char[name.Length + FileEnd.Length];
-                for(int i = 0; i < name.Length; i++)
+                for (int i = 0; i < name.Length; i++)
                 {
                     newName[i] = name[i] switch
                     {
                         '<' or '>' => '_',
-                        _ => name[i],
+                        _ => name[i]
                     };
                 }
+
                 FileEnd.AsSpan().CopyTo(newName.Slice(name.Length));
                 string res = newName.ToString();
                 return res;
@@ -412,7 +464,7 @@ namespace Alis.Core.Ecs.Generator
         }
 
         /// <summary>
-        /// Inheritses the from base using the specified type symbol
+        ///     Inheritses the from base using the specified type symbol
         /// </summary>
         /// <param name="typeSymbol">The type symbol</param>
         /// <param name="baseTypeName">The base type name</param>
@@ -422,9 +474,13 @@ namespace Alis.Core.Ecs.Generator
             while (typeSymbol != null)
             {
                 if (typeSymbol.ToDisplayString() == baseTypeName)
+                {
                     return true;
+                }
+
                 typeSymbol = typeSymbol.BaseType;
             }
+
             return false;
         }
     }

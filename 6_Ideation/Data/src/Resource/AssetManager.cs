@@ -174,7 +174,7 @@ namespace Alis.Core.Aspect.Data.Resource
 
             return files.ToArray();
         }
-        
+
         /// <summary>
         ///     Gets the file path using the specified files
         /// </summary>

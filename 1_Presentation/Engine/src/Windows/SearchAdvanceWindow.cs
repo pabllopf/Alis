@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InspectorWindow.cs
+//  File:SearchAdvanceWindow.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.Core.Aspect.Logging;
@@ -47,20 +48,21 @@ namespace Alis.App.Engine.Windows
         ///     The info circle
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Search} Search Advance";
-        
-        /// <summary>
-        /// The is open
-        /// </summary>
-        private bool _isOpen = false;
 
         /// <summary>
-        /// The search text
+        ///     The command ptr
+        /// </summary>
+        private readonly IntPtr commandPtr;
+
+        /// <summary>
+        ///     The is open
+        /// </summary>
+        private bool _isOpen;
+
+        /// <summary>
+        ///     The search text
         /// </summary>
         private string searchText;
-        /// <summary>
-        /// The command ptr
-        /// </summary>
-        private IntPtr commandPtr;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="InspectorWindow" /> class
@@ -68,12 +70,12 @@ namespace Alis.App.Engine.Windows
         /// <param name="spaceWork">The space work</param>
         public SearchAdvanceWindow(SpaceWork spaceWork)
         {
-            this.SpaceWork = spaceWork;
+            SpaceWork = spaceWork;
             commandPtr = Marshal.AllocHGlobal(256); // Allocate memory for the command input
         }
-        
+
         /// <summary>
-        /// Gets the value of the space work
+        ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
 
@@ -92,7 +94,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
@@ -129,7 +131,7 @@ namespace Alis.App.Engine.Windows
                 ImGui.Text("Results:");
 
                 // Simulate search results (replace with actual search logic)
-                string[] results = { "Asset: Player.prefab", "Config: Graphics Settings", "Documentation: How to use Alis Engine" };
+                string[] results = {"Asset: Player.prefab", "Config: Graphics Settings", "Documentation: How to use Alis Engine"};
 
                 foreach (string result in results)
                 {
@@ -141,17 +143,15 @@ namespace Alis.App.Engine.Windows
             }
 
             ImGui.End();
-            
+
             if (_isOpen)
             {
                 style[(int) ImGuiCol.WindowBg] = new Vector4F(0.5f, 0.5f, 0.5f, 1.0f);
             }
-           
-            
         }
 
         /// <summary>
-        /// Handles the search result click using the specified result
+        ///     Handles the search result click using the specified result
         /// </summary>
         /// <param name="result">The result</param>
         private void HandleSearchResultClick(string result)
@@ -170,12 +170,12 @@ namespace Alis.App.Engine.Windows
             {
                 string url = "https://www.alisengine.com/";
                 Logger.Info($"Redirecting to documentation: {url}");
-                System.Diagnostics.Process.Start(url);
+                Process.Start(url);
             }
         }
 
         /// <summary>
-        /// Opens this instance
+        ///     Opens this instance
         /// </summary>
         public void Open() => _isOpen = true;
     }

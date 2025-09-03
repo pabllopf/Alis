@@ -1,4 +1,34 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Archetype.fields.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
+using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Kernel.Archetypes
@@ -46,25 +76,26 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <remarks>
         ///     You can think of this as a discrimminated union. Next component index is the non-deferred count of a normal
         ///     archetype.
-        ///     Deferred gameObject count is the total number of deferred entities, some of which may be stored directly on the normal
+        ///     Deferred gameObject count is the total number of deferred entities, some of which may be stored directly on the
+        ///     normal
         ///     archetype.
         /// </remarks>
         private int _nextComponentIndexOrDeferredEntityCount;
 
 #if DEBUG
-    private ref int NextComponentIndex
-    {
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        get { return ref _nextComponentIndexOrDeferredEntityCount; }
-    }
+        private ref int NextComponentIndex
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => ref _nextComponentIndexOrDeferredEntityCount;
+        }
 
-    private ref int DeferredEntityCount
-    {
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        get { return ref _nextComponentIndexOrDeferredEntityCount; }
-    }
+        private ref int DeferredEntityCount
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => ref _nextComponentIndexOrDeferredEntityCount;
+        }
 
-    private readonly bool _isTempCreationArchetype = isTempCreateArchetype;
+        private readonly bool _isTempCreationArchetype = isTempCreateArchetype;
 #else
         /// <summary>
         ///     Gets the value of the next component index

@@ -39,12 +39,12 @@ namespace Alis.Extension.Network.Exceptions
     public partial class MaskKeyLengthException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MaskKeyLengthException"/> class
+        ///     Initializes a new instance of the <see cref="MaskKeyLengthException" /> class
         /// </summary>
         public MaskKeyLengthException() : base("Mask key length must be 4 bytes.")
         {
         }
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="MaskKeyLengthException" /> class
         /// </summary>

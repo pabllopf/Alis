@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioClipBuilder.cs
+//  File:AudioSourceBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -44,30 +44,30 @@ namespace Alis.Builder.Core.Ecs.Components.Audio
         IMute<AudioSourceBuilder, bool>
     {
         /// <summary>
-        /// The empty
+        ///     The is mute
+        /// </summary>
+        private bool isMute;
+
+        /// <summary>
+        ///     The loop
+        /// </summary>
+        private bool loop;
+
+        /// <summary>
+        ///     The empty
         /// </summary>
         private string nameFile = string.Empty;
-        
+
         /// <summary>
-        /// The is mute
+        ///     The play on awake
         /// </summary>
-        private bool isMute = false;
-        
+        private bool playOnAwake;
+
         /// <summary>
-        /// The volume
+        ///     The volume
         /// </summary>
         private float volume = 100;
 
-        /// <summary>
-        /// The play on awake
-        /// </summary>
-        private bool playOnAwake = false;
-
-        /// <summary>
-        /// The loop
-        /// </summary>
-        private bool loop = false;
-        
         /// <summary>
         ///     Builds this instance
         /// </summary>
@@ -82,28 +82,6 @@ namespace Alis.Builder.Core.Ecs.Components.Audio
         public AudioSourceBuilder File(string value)
         {
             nameFile = value;
-            return this;
-        }
-
-        /// <summary>
-        /// Plays the on awake using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The audio source builder</returns>
-        public AudioSourceBuilder PlayOnAwake(bool value)
-        {
-            playOnAwake = value;
-            return this;
-        }
-
-        /// <summary>
-        /// Loops the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The audio source builder</returns>
-        public AudioSourceBuilder Loop(bool value)
-        {
-            loop = value;
             return this;
         }
 
@@ -126,6 +104,28 @@ namespace Alis.Builder.Core.Ecs.Components.Audio
         public AudioSourceBuilder Volume(float value)
         {
             volume = value;
+            return this;
+        }
+
+        /// <summary>
+        ///     Plays the on awake using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The audio source builder</returns>
+        public AudioSourceBuilder PlayOnAwake(bool value)
+        {
+            playOnAwake = value;
+            return this;
+        }
+
+        /// <summary>
+        ///     Loops the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The audio source builder</returns>
+        public AudioSourceBuilder Loop(bool value)
+        {
+            loop = value;
             return this;
         }
     }

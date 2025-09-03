@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+
+using System.Diagnostics;
 #if DEBUG
 using System;
 #endif
@@ -34,27 +36,27 @@ using System;
 namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
-    /// The logger class
+    ///     The logger class
     /// </summary>
     public static class Logger
     {
         /// <summary>
-        /// Traces the message
+        ///     Traces the message
         /// </summary>
         /// <param name="message">The message</param>
-        [System.Diagnostics.Conditional("DEBUG")]
+        [Conditional("DEBUG")]
         public static void Trace(string message)
         {
 #if DEBUG
             Console.WriteLine($"[TRACE] {message}");
 #endif
         }
-        
+
         /// <summary>
-        /// Infoes the message
+        ///     Infoes the message
         /// </summary>
         /// <param name="message">The message</param>
-        [System.Diagnostics.Conditional("DEBUG")]
+        [Conditional("DEBUG")]
         public static void Info(string message)
         {
 #if DEBUG
@@ -63,10 +65,10 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        /// Logs the message
+        ///     Logs the message
         /// </summary>
         /// <param name="message">The message</param>
-        [System.Diagnostics.Conditional("DEBUG")]
+        [Conditional("DEBUG")]
         public static void Log(string message)
         {
 #if DEBUG
@@ -75,22 +77,22 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        /// Warnings the message
+        ///     Warnings the message
         /// </summary>
         /// <param name="message">The message</param>
-        [System.Diagnostics.Conditional("DEBUG")]
+        [Conditional("DEBUG")]
         public static void Warning(string message)
         {
 #if DEBUG
             Console.WriteLine($"[WARNING] {message}");
-            #endif
+#endif
         }
 
         /// <summary>
-        /// Errors the message
+        ///     Errors the message
         /// </summary>
         /// <param name="message">The message</param>
-        [System.Diagnostics.Conditional("DEBUG")]
+        [Conditional("DEBUG")]
         public static void Error(string message)
         {
 #if DEBUG
@@ -99,10 +101,10 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        /// Debugs the message
+        ///     Debugs the message
         /// </summary>
         /// <param name="message">The message</param>
-        [System.Diagnostics.Conditional("DEBUG")]
+        [Conditional("DEBUG")]
         public static void Debug(string message)
         {
 #if DEBUG
@@ -111,10 +113,10 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        /// Exceptions the to string
+        ///     Exceptions the to string
         /// </summary>
         /// <param name="toString">The to string</param>
-        [System.Diagnostics.Conditional("DEBUG")]
+        [Conditional("DEBUG")]
         public static void Exception(string toString)
         {
 #if DEBUG
@@ -124,4 +126,3 @@ namespace Alis.Core.Aspect.Logging
         }
     }
 }
-

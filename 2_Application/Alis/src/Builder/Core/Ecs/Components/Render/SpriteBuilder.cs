@@ -43,12 +43,12 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         ISetTexture<SpriteBuilder, string>
     {
         /// <summary>
-        /// The depth
+        ///     The depth
         /// </summary>
-        private int depth = 0;
-        
+        private int depth;
+
         /// <summary>
-        /// The empty
+        ///     The empty
         /// </summary>
         private string nameFile = string.Empty;
 

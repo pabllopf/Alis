@@ -18,7 +18,7 @@ jobs:
           rm -rf /Users/runner/.dotnet
           rm -rf /Users/runner/.nuget
           echo "Entorno limpio."
-        
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -49,7 +49,7 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        framework: [net5.0, net8.0, netstandard2.0, net461, netcoreapp2.0]
+        framework: [ net5.0, net8.0, netstandard2.0, net461, netcoreapp2.0 ]
     steps:
 
       - name: Limpiar entorno
@@ -59,7 +59,7 @@ jobs:
           rm -rf /Users/runner/.nuget
           
           echo "Entorno limpio."
-          
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -89,9 +89,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
-      
+
       - name: Build extensiones automáticamente
-        run: |        
+        run: |
           echo "Buscando proyectos..."
           
           if [[ "${{ matrix.framework }}" == netcoreapp* ]]; then
@@ -102,7 +102,7 @@ jobs:
           
           for proj in $(find 1_Presentation/Extension -name "*.csproj" \
             | grep -viE "sample|generator|benchmark|template|Alis.App|test"); do
-            
+          
             echo "Compilando $proj ->  -c Release"
             dotnet build "$proj" -c Release
           
@@ -114,7 +114,7 @@ jobs:
                 -r "$rt"
             done
           done
-        
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -126,14 +126,14 @@ jobs:
             **/bin/Release/**/*.deps.json
              **/bin/Release/**/*.json
             **/bin/Release/**/*.runtimeconfig.json
-                
-                
+  
+  
   build_core:
     needs: prepare
     runs-on: macos-13
     strategy:
       matrix:
-        framework: [net5.0, net6.0, net7.0, net8.0, net9.0, netstandard2.0, netstandard2.1, net461, net471, net472, net48, net481, netcoreapp2.0, netcoreapp2.1, netcoreapp2.2, netcoreapp3.0, netcoreapp3.1]
+        framework: [ net5.0, net6.0, net7.0, net8.0, net9.0, netstandard2.0, netstandard2.1, net461, net471, net472, net48, net481, netcoreapp2.0, netcoreapp2.1, netcoreapp2.2, netcoreapp3.0, netcoreapp3.1 ]
     steps:
 
       - name: Limpiar entorno
@@ -143,11 +143,11 @@ jobs:
           rm -rf /Users/runner/.nuget
           
           echo "Entorno limpio."
-        
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref : master
+          ref: master
           fetch-depth: 1
 
       - name: Get current version
@@ -173,32 +173,32 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
-          
-      - name: Build Core 
+
+      - name: Build Core
         run: |
-         if [[ "${{ matrix.framework }}" == netcoreapp* ]]; then
-           runtimes=("win-x64" "linux-x64" "osx-x64")
-         else
-           runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
-         fi
+          if [[ "${{ matrix.framework }}" == netcoreapp* ]]; then
+            runtimes=("win-x64" "linux-x64" "osx-x64")
+          else
+            runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
+          fi
           
-          echo "Buscando proyectos core..."
+           echo "Buscando proyectos core..."
           
-          for proj in $(find . -name "*.csproj" \
-          | grep -viE "sample|generator|benchmark|template|Alis.App|extension|test"); do
+           for proj in $(find . -name "*.csproj" \
+           | grep -viE "sample|generator|benchmark|template|Alis.App|extension|test"); do
           
-          echo "Compilando $proj ->  -c Release"
-          dotnet build "$proj" -c Release
+           echo "Compilando $proj ->  -c Release"
+           dotnet build "$proj" -c Release
           
-            for rt in "${runtimes[@]}"; do
-              echo "Compilando $proj -> fw=${{ matrix.framework }}, rt=$rt"
-              dotnet build "$proj" \
-                -c Release \
-                -f "${{ matrix.framework }}" \
-                -r "$rt" || exit 1
-            done
-          done
-          
+             for rt in "${runtimes[@]}"; do
+               echo "Compilando $proj -> fw=${{ matrix.framework }}, rt=$rt"
+               dotnet build "$proj" \
+                 -c Release \
+                 -f "${{ matrix.framework }}" \
+                 -r "$rt" || exit 1
+             done
+           done
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -212,7 +212,7 @@ jobs:
             **/bin/Release/**/*.runtimeconfig.json
 
   build_apps:
-    needs: [prepare]
+    needs: [ prepare ]
     runs-on: macos-13
     strategy:
       matrix:
@@ -226,7 +226,7 @@ jobs:
           rm -rf /Users/runner/.nuget
           
           echo "Entorno limpio."
-        
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -274,7 +274,7 @@ jobs:
 
       - name: Publish HUB - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-x86 -f ${{ matrix.framework }}
-        
+
       - name: Publish INTALLER - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r win-arm64 -f ${{ matrix.framework }}
 
@@ -283,7 +283,7 @@ jobs:
 
       - name: Publish HUB - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-arm64 -f ${{ matrix.framework }}
-        
+
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r linux-x64 -f ${{ matrix.framework }}
@@ -302,7 +302,7 @@ jobs:
 
       - name: Publish HUB - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-arm64 -f ${{ matrix.framework }}
-        
+
       - name: Publish INTALLER - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r linux-arm -f ${{ matrix.framework }}
 
@@ -311,8 +311,8 @@ jobs:
 
       - name: Publish HUB - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-arm -f ${{ matrix.framework }}
-        
-        
+
+
       - name: Publish INTALLER - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r osx-x64 -f ${{ matrix.framework }}
 
@@ -347,11 +347,11 @@ jobs:
             **/bin/Release/**/*.deps.json
             **/bin/Release/**/*.json
             **/bin/Release/**/*.runtimeconfig.json
-          
+  
   
   publish_packages:
     name: Publish NuGet Packages
-    needs: [prepare, build_extensions, build_core, build_apps]
+    needs: [ prepare, build_extensions, build_core, build_apps ]
     runs-on: macos-13
     steps:
 
@@ -362,7 +362,7 @@ jobs:
           rm -rf /Users/runner/.nuget
           
           echo "Entorno limpio."
-          
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -373,12 +373,12 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
-          
+
       - name: Download all build artifacts
         uses: actions/download-artifact@v4
         with:
           path: ./restored-artifacts
-          
+
       - name: Restore artifacts to original locations
         run: |
           echo "📂 Restaurando artefactos a sus ubicaciones originales..."
@@ -395,7 +395,7 @@ jobs:
           done
 
           echo "✅ Restauración completada."
-        
+
       - name: Get current version
         id: get-version
         run: |
@@ -424,7 +424,7 @@ jobs:
               dotnet pack --include-symbols --include-source "$project" -c Release -o "./.publish/${{ needs.prepare.outputs.version }}/"
             fi
           done
-          
+
       - name: Publish to NuGet
         run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET }} --skip-duplicate
 
@@ -433,7 +433,7 @@ jobs:
 
       - name: Publish to GitHub NuGet Feed
         run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
-        
+
       - name: git config --global user.name github-actions
         run: git config --global user.name "${{ secrets.USER_NAME }}"
 

@@ -31,7 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
-
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Common

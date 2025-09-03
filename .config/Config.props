@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-    
-    
+
+
     <PropertyGroup>
         <TargetFrameworks Condition="$(Configuration) == 'Debug'">
             net8.0;netstandard2.0;
@@ -13,14 +13,14 @@
             netstandard2.0;netstandard2.1;
             net461;net471;net472;net48;net481;
         </TargetFrameworks>
-        
+
         <TargetFrameworks Condition="$(AssemblyName.Contains('Extension')) AND $(Configuration) == 'Release'">
             netcoreapp2.0;
             net461;
             net5.0;net8.0;
             netstandard2.0;
         </TargetFrameworks>
-        
+
         <TargetFrameworks Condition="$(AssemblyName.Contains('App'))">net8.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Generator'))">net8.0;netstandard2.0;</TargetFrameworks>
         <TargetFrameworks Condition="$(AssemblyName.Contains('Benchmark'))">net8.0;</TargetFrameworks>
@@ -32,15 +32,15 @@
             linux-x64; linux-arm; linux-arm64;
             osx-x64;osx-arm64;
         </RuntimeIdentifiers>
-        
+
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU;x64;x86;arm;arm64</Platforms>
     </PropertyGroup>
-    
+
 
     <!-- Import all the props files in the target folder -->
     <Import Project="$(SolutionDir).config/target/BeforeBuild.props"/>
-    
+
     <!-- Import all the props files in the application folder -->
     <Import Project="$(SolutionDir).config/application/Runtimes.props"/>
     <Import Project="$(SolutionDir).config/application/LangVersion.props"/>
@@ -102,6 +102,6 @@
     <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/InternalsVisibleTo.props"/>
     <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/ParallelExe.props"/>
     <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/SonarQubeExclude.props"/>
-    
+
     <Import Project="$(SolutionDir).config/target/AfterBuild.props"/>
 </Project>

@@ -30,7 +30,6 @@
 using System.Collections;
 using System.Collections.Generic;
 
-
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
     /// <summary>
