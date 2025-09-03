@@ -6,7 +6,8 @@
         $(AssemblyName.Contains('Graphic.Test')) == True OR
         $(AssemblyName.Contains('Audio.Test')) == True OR
         $(AssemblyName.Contains('Network.Test')) == True OR
-        $(AssemblyName.Contains('FFmpeg.Test')) == True 
+        $(AssemblyName.Contains('FFmpeg.Test')) == True  OR
+        $(AssemblyName.Contains('Ecs.Test')) == True 
     ">
         <Content Include="$(SolutionDir).config/xunit.runner.json" LinkBase="." Pack="true" Visible="true" PackagePath=".">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
