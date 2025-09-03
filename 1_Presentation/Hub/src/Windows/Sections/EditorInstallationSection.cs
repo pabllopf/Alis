@@ -233,9 +233,31 @@ namespace Alis.App.Hub.Windows.Sections
                 // TODO: Fix deserialization
                 //List<Dictionary<string, object>> releases = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(response);
 
-                List<Dictionary<string, object>> releases = new List<Dictionary<string, object>>();
+                List<Dictionary<string, object>> releases = new List<Dictionary<string, object>>()
+                {
+                    new Dictionary<string, object>
+                    {
+                        {"tag_name", "v1.0.0"}
+                    },
+                    new Dictionary<string, object>
+                    {
+                        {"tag_name", "v0.9.1"}
+                    }
+                };
+
+                List<string> versionList = new List<string>()
+                {
+                    "v0.9.0",
+                    "v0.8.0",
+                    "v0.7.0",
+                    "v0.6.0",
+                    "v0.5.0",
+                    "v0.4.0",
+                    "v0.3.0",
+                    "v0.2.0",
+                    "v0.1.0"
+                };
                 
-                List<string> versionList = new List<string>();
                 foreach (Dictionary<string, object> release in releases)
                 {
                     string version = release["tag_name"]?.ToString();
