@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -56,7 +57,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
-            Console.WriteLine("Camera initialized with position: " + Position + " and resolution: " + Resolution);
+            Logger.Info("Camera initialized with position: " + Position + " and resolution: " + Resolution);
         }
 
         /// <summary>

@@ -57,7 +57,7 @@ Here is an example of how to use the `TimeManager` class:
 ```csharp
 TimeManager timeManager = new TimeManager();
 // Do some work
-Console.WriteLine($"Elapsed time: {timeManager.Clock.ElapsedMilliseconds} ms");
+Logger.Info($"Elapsed time: {timeManager.Clock.ElapsedMilliseconds} ms");
 ```
 
 In this example, a new `TimeManager` object is created and started. After some work is done, the elapsed time is printed

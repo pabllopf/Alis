@@ -4,6 +4,7 @@ using System.Threading;
 using Alis.Core.Ecs.Sample.Components;
 using Alis;
 using Alis.Core;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 
@@ -109,7 +110,7 @@ namespace Alis.Core.Ecs.Sample
             }
 
             Position finalPos = gameObject.Get<Position>();
-            Console.WriteLine($"Position: X: {finalPos.X} Y: {finalPos.Y}");
+            Logger.Info($"Position: X: {finalPos.X} Y: {finalPos.Y}");
         }
     
     
@@ -126,7 +127,7 @@ namespace Alis.Core.Ecs.Sample
                 scene.Create<int>(i);
 
             scene.Query<With<int>>().Delegate((ref int x) => Console.Write($"{x++}, "));
-            Console.WriteLine();
+            Logger.Trace("");
         
             scene.Query<With<int>>().Inline<WriteAction, int>(default);
         }
@@ -156,30 +157,30 @@ public struct WriteAction : IAction<int>
             using Scene scene = new Scene();
             GameObject ent = scene.Create<int, double, float>(69, 3.14, 2.71f);
             //true
-            Console.WriteLine(ent.IsAlive);
+            Logger.Info(ent.IsAlive.ToString());
             //true
-            Console.WriteLine(ent.Has<int>());
+            Logger.Info(ent.Has<int>().ToString());
             //false
-            Console.WriteLine(ent.Has<bool>());
+            Logger.Info(ent.Has<bool>().ToString());
             //You can also add and remove components
             ent.Add<string>("I like Alis");
 
             if (ent.TryGet<string>(out Ref<string> strRef))
             {
-                Console.WriteLine(strRef);
+                Logger.Info(strRef);
                 //reassign the string value
                 strRef.Value = "Do you like Alis?";
             }
 
             //If we didn't add a string earlier, this would throw instead
-            Console.WriteLine(ent.Get<string>());
+            Logger.Info(ent.Get<string>());
 
             //You can also deconstruct components from the gameObject to reassign many at once
             ent.Deconstruct(out Ref<double> d, out Ref<int> i, out Ref<float> f, out Ref<string> str);
             d.Value = 4;
             str.Value = "Hello, Scene!";
         
-            Console.WriteLine(str);
+            Logger.Info(str);
         }
     }
 }

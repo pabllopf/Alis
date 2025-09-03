@@ -29,6 +29,7 @@
 
 using System;
 using System.IO;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Collider;
@@ -129,7 +130,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             
             if (platform.TryGetLastKeyPressed(out ConsoleKey key))
             {
-                Console.WriteLine($"Tecla pulsada: {key}");
+                Logger.Info($"Tecla pulsada: {key}");
             }
             
             float pixelsPerMeter = PixelsPerMeter;
@@ -190,7 +191,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             int glError = Gl.GlGetError();
             if (glError != 0)
             {
-                Console.WriteLine($"OpenGL error tras flushBuffer: 0x{glError:X}");
+                Logger.Info($"OpenGL error tras flushBuffer: 0x{glError:X}");
             }
         }
     }

@@ -1,4 +1,6 @@
 using System;
+using System.Reflection;
+using Alis.Core.Aspect.Data.Dll;
 
 namespace Alis.Extension.Graphic.Sfml.Systems
 {
@@ -10,6 +12,11 @@ namespace Alis.Extension.Graphic.Sfml.Systems
     
     public abstract class ObjectBase : IDisposable
     {
+        static ObjectBase() 
+        {
+            EmbeddedDllClass.ExtractEmbeddedDlls("sfml", DllType.File, Properties.SfmlDlls.SfmlDllBytes, Assembly.GetAssembly(typeof(Properties.SfmlDlls)));
+        }
+        
         
         /// <summary>
         /// Construct the object from a pointer to the C library object

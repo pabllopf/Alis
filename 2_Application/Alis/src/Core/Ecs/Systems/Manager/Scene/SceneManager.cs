@@ -77,7 +77,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         public override void OnSave()
         {
             /*
-            Console.WriteLine($"Saving scene: {World.EntityCount}");
+            Logger.Info($"Saving scene: {World.EntityCount}");
             
             string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Game");
             if (!Directory.Exists(directory))
@@ -92,7 +92,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
                 SerializationOptions = JsonSerializationOptions.Default
             }));
             
-            Console.WriteLine($"Scene saved to: {fileWorld}");
+            Logger.Info($"Scene saved to: {fileWorld}");
 */
             
         }

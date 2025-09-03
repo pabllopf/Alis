@@ -158,18 +158,18 @@ namespace Alis.App.Engine.Windows
         {
             if (result.StartsWith("Asset:"))
             {
-                Console.WriteLine($"Opening asset: {result.Substring(7)}");
+                Logger.Info($"Opening asset: {result.Substring(7)}");
                 // Logic to open the asset
             }
             else if (result.StartsWith("Config:"))
             {
-                Console.WriteLine($"Navigating to config: {result.Substring(8)}");
+                Logger.Info($"Navigating to config: {result.Substring(8)}");
                 // Logic to navigate to the configuration
             }
             else if (result.StartsWith("Documentation:"))
             {
                 string url = "https://www.alisengine.com/";
-                Console.WriteLine($"Redirecting to documentation: {url}");
+                Logger.Info($"Redirecting to documentation: {url}");
                 System.Diagnostics.Process.Start(url);
             }
         }

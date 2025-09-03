@@ -1,4 +1,5 @@
 using System;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Graphic.Ui.Sample
 {
@@ -13,7 +14,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.WriteLine("Starting ImGui Sample...");
+            Logger.Info("Starting ImGui Sample...");
         }
     }
 }

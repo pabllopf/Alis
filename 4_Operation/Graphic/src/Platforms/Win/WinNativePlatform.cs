@@ -145,7 +145,7 @@ namespace Alis.Core.Graphic.Platforms.Win
             ushort regResult = User32.RegisterClass(ref wc);
             if (regResult == 0)
             {
-                Console.WriteLine($"No se pudo registrar la clase de ventana (RegisterClass devolvió 0x0), error: {Marshal.GetLastWin32Error()}");
+                Logger.Info($"No se pudo registrar la clase de ventana (RegisterClass devolvió 0x0), error: {Marshal.GetLastWin32Error()}");
                 return false;
             }
             // Probar varias combinaciones de estilos
@@ -164,23 +164,23 @@ namespace Alis.Core.Graphic.Platforms.Win
                     IntPtr.Zero, IntPtr.Zero, hInstance, IntPtr.Zero);
                 if (hWnd != IntPtr.Zero)
                 {
-                    Console.WriteLine($"Ventana creada correctamente con estilo: 0x{(int)style:X}");
+                    Logger.Info($"Ventana creada correctamente con estilo: 0x{(int)style:X}");
                     break;
                 }
                 else
                 {
-                    Console.WriteLine($"Fallo al crear ventana con estilo: 0x{(int)style:X}, error: {Marshal.GetLastWin32Error()}");
+                    Logger.Info($"Fallo al crear ventana con estilo: 0x{(int)style:X}, error: {Marshal.GetLastWin32Error()}");
                 }
             }
             if (hWnd == IntPtr.Zero)
             {
-                Console.WriteLine("No se pudo crear la ventana Win32 (CreateWindowEx devolvió 0x0) tras varios intentos");
+                Logger.Info("No se pudo crear la ventana Win32 (CreateWindowEx devolvió 0x0) tras varios intentos");
                 return false;
             }
             hDc = User32.GetDC(hWnd);
             if (hDc == IntPtr.Zero)
             {
-                Console.WriteLine("No se pudo obtener el HDC de la ventana (GetDC devolvió 0x0)");
+                Logger.Info("No se pudo obtener el HDC de la ventana (GetDC devolvió 0x0)");
                 return false;
             }
 
@@ -279,7 +279,7 @@ namespace Alis.Core.Graphic.Platforms.Win
             }
             if (!contextOk)
             {
-                Console.WriteLine("No se pudo crear el contexto OpenGL con ninguna configuración. Verifica drivers y compatibilidad OpenGL en tu sistema.");
+                Logger.Info("No se pudo crear el contexto OpenGL con ninguna configuración. Verifica drivers y compatibilidad OpenGL en tu sistema.");
                 return false;
             }
             return true;

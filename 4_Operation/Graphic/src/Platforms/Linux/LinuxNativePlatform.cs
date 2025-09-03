@@ -386,7 +386,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <param name="ptr">The ptr</param>
         private void PrintXVisualInfo(string prefix, XVisualInfo info, IntPtr ptr)
         {
-            Console.WriteLine($"{prefix} visual: ptr=0x{ptr.ToInt64():X}, visualid={info.visualid}, depth={info.depth}, class={info.cclass}, screen={info.screen}, colormap_size={info.colormap_size}, bits_per_rgb={info.bits_per_rgb}, red_mask=0x{info.red_mask:X}, green_mask=0x{info.green_mask:X}, blue_mask=0x{info.blue_mask:X}");
+            Logger.Info($"{prefix} visual: ptr=0x{ptr.ToInt64():X}, visualid={info.visualid}, depth={info.depth}, class={info.cclass}, screen={info.screen}, colormap_size={info.colormap_size}, bits_per_rgb={info.bits_per_rgb}, red_mask=0x{info.red_mask:X}, green_mask=0x{info.green_mask:X}, blue_mask=0x{info.blue_mask:X}");
         }
         /// <summary>
         /// Gets the valid visual info using the specified display
@@ -466,7 +466,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <returns>The bool</returns>
         public bool Initialize(int w, int h, string t)
         {
-            Console.WriteLine("[Init] Starting LinuxNativePlatform initialization...");
+            Logger.Info("[Init] Starting LinuxNativePlatform initialization...");
             width = w;
             height = h;
             title = t;
@@ -475,7 +475,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 throw new Exception("[Init] No se pudo abrir el display X11");
             int screen = XDefaultScreen(display);
             IntPtr root = XRootWindow(display, screen);
-            Console.WriteLine($"[Init] Display opened, screen={screen}, root=0x{root.ToInt64():X}");
+            Logger.Info($"[Init] Display opened, screen={screen}, root=0x{root.ToInt64():X}");
             var visualResult = GetValidVisualInfo(display, screen);
             if (!visualResult.HasValue)
             {
@@ -487,7 +487,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
             IntPtr colormap = XCreateColormap(display, root, visualInfo.visual, 0);
             if (colormap == IntPtr.Zero)
                 throw new Exception("[Init] Error creando el colormap");
-            Console.WriteLine($"[Init] Colormap creado: 0x{colormap.ToInt64():X}");
+            Logger.Info($"[Init] Colormap creado: 0x{colormap.ToInt64():X}");
             XSetWindowAttributes attrs = new XSetWindowAttributes();
             attrs.colormap = colormap;
             attrs.event_mask = (IntPtr)(ExposureMask | KeyPressMask | StructureNotifyMask);
@@ -497,35 +497,35 @@ namespace Alis.Core.Graphic.Platforms.Linux
             window = XCreateWindow(display, root, 0, 0, (uint)width, (uint)height, 0, visualInfo.depth, 1 /*InputOutput*/, visualInfo.visual, valuemask, ref attrs);
             if (window == IntPtr.Zero)
                 throw new Exception("[Init] Error creando la ventana X11 (BadMatch): revisa el visual y el colormap");
-            Console.WriteLine($"[Init] Ventana creada: 0x{window.ToInt64():X}");
+            Logger.Info($"[Init] Ventana creada: 0x{window.ToInt64():X}");
             XStoreName(display, window, title);
             XMapWindow(display, window);
-            Console.WriteLine("[Init] Ventana mapeada");
-            Console.WriteLine($"[Init] glXCreateContext params: display=0x{display.ToInt64():X}, visualPtr=0x{visualPtr.ToInt64():X}, window=0x{window.ToInt64():X}");
+            Logger.Info("[Init] Ventana mapeada");
+            Logger.Info($"[Init] glXCreateContext params: display=0x{display.ToInt64():X}, visualPtr=0x{visualPtr.ToInt64():X}, window=0x{window.ToInt64():X}");
             glxContext = glXCreateContext(display, visualPtr, IntPtr.Zero, 1);
             if (glxContext == IntPtr.Zero)
             {
-                Console.WriteLine("[Init] glXCreateContext failed, trying legacy visual fallback...");
+                Logger.Info("[Init] glXCreateContext failed, trying legacy visual fallback...");
                 // Try legacy visual fallback
                 var legacyVisual = GetValidVisualInfo(display, screen);
                 if (legacyVisual.HasValue)
                 {
                     glxContext = glXCreateContext(display, legacyVisual.Value.VisualPtr, IntPtr.Zero, 1);
                     if (glxContext != IntPtr.Zero)
-                        Console.WriteLine("[Init] Legacy visual context created");
+                        Logger.Info("[Init] Legacy visual context created");
                 }
             }
             if (glxContext == IntPtr.Zero)
                 throw new Exception("[Init] No se pudo crear el contexto GLX");
-            Console.WriteLine($"[Init] GLX context creado: 0x{glxContext.ToInt64():X}");
+            Logger.Info($"[Init] GLX context creado: 0x{glxContext.ToInt64():X}");
             glXMakeCurrent(display, window, glxContext);
-            Console.WriteLine("[Init] GLX context activado");
+            Logger.Info("[Init] GLX context activado");
             // Print OpenGL version
             try {
                 var glVersion = Alis.Core.Graphic.OpenGL.Gl.GlGetString(Alis.Core.Graphic.OpenGL.Enums.StringName.Version);
-                Console.WriteLine($"[Init] OpenGL version: {glVersion}");
+                Logger.Info($"[Init] OpenGL version: {glVersion}");
             } catch (Exception ex) {
-                Console.WriteLine($"[Init] Error obteniendo la versión de OpenGL: {ex.Message}");
+                Logger.Info($"[Init] Error obteniendo la versión de OpenGL: {ex.Message}");
             }
             windowVisible = true;
             running = true;

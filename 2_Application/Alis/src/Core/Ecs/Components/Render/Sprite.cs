@@ -34,6 +34,7 @@ using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic;
@@ -71,7 +72,7 @@ namespace Alis.Core.Ecs.Components.Render
         {
             if (gameObject != null)
             {
-                Console.WriteLine($"Sprite updated successfully for {gameObject.Get<Transform>().Position}");
+                Logger.Info($"Sprite updated successfully for {gameObject.Get<Transform>().Position}");
             }
         }
 
