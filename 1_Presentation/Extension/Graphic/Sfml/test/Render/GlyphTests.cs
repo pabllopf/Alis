@@ -14,9 +14,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void CanSetAndGetFields()
         {
-            var rect = new FloatRect(1, 2, 3, 4);
-            var intRect = new IntRect(5, 6, 7, 8);
-            var glyph = new Glyph
+            FloatRect rect = new FloatRect(1, 2, 3, 4);
+            IntRect intRect = new IntRect(5, 6, 7, 8);
+            Glyph glyph = new Glyph
             {
                 Advance = 9.5f,
                 Bounds = rect,

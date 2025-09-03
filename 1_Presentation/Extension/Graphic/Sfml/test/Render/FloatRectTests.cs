@@ -15,7 +15,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Constructor_SetsFieldsCorrectly()
         {
-            var rect = new FloatRect(1.1f, 2.2f, 3.3f, 4.4f);
+            FloatRect rect = new FloatRect(1.1f, 2.2f, 3.3f, 4.4f);
             Assert.Equal(1.1f, rect.Left);
             Assert.Equal(2.2f, rect.Top);
             Assert.Equal(3.3f, rect.Width);
@@ -28,9 +28,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Constructor_FromPositionAndSize_SetsFieldsCorrectly()
         {
-            var pos = new Vector2F(5, 6);
-            var size = new Vector2F(7, 8);
-            var rect = new FloatRect(pos, size);
+            Vector2F pos = new Vector2F(5, 6);
+            Vector2F size = new Vector2F(7, 8);
+            FloatRect rect = new FloatRect(pos, size);
             Assert.Equal(5, rect.Left);
             Assert.Equal(6, rect.Top);
             Assert.Equal(7, rect.Width);
@@ -43,7 +43,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Contains_ReturnsTrueForPointInside()
         {
-            var rect = new FloatRect(0, 0, 10, 10);
+            FloatRect rect = new FloatRect(0, 0, 10, 10);
             Assert.True(rect.Contains(5, 5));
         }
 
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Contains_ReturnsFalseForPointOutside()
         {
-            var rect = new FloatRect(0, 0, 10, 10);
+            FloatRect rect = new FloatRect(0, 0, 10, 10);
             Assert.False(rect.Contains(15, 5));
         }
 
@@ -63,8 +63,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Intersects_ReturnsTrueForOverlappingRects()
         {
-            var r1 = new FloatRect(0, 0, 10, 10);
-            var r2 = new FloatRect(5, 5, 10, 10);
+            FloatRect r1 = new FloatRect(0, 0, 10, 10);
+            FloatRect r2 = new FloatRect(5, 5, 10, 10);
             Assert.True(r1.Intersects(r2));
         }
 
@@ -74,8 +74,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Intersects_ReturnsFalseForNonOverlappingRects()
         {
-            var r1 = new FloatRect(0, 0, 10, 10);
-            var r2 = new FloatRect(20, 20, 5, 5);
+            FloatRect r1 = new FloatRect(0, 0, 10, 10);
+            FloatRect r2 = new FloatRect(20, 20, 5, 5);
             Assert.False(r1.Intersects(r2));
         }
 
@@ -85,9 +85,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Intersects_OutOverlapIsCorrect()
         {
-            var r1 = new FloatRect(0, 0, 10, 10);
-            var r2 = new FloatRect(5, 5, 10, 10);
-            Assert.True(r1.Intersects(r2, out var overlap));
+            FloatRect r1 = new FloatRect(0, 0, 10, 10);
+            FloatRect r2 = new FloatRect(5, 5, 10, 10);
+            Assert.True(r1.Intersects(r2, out FloatRect overlap));
             Assert.Equal(5, overlap.Left);
             Assert.Equal(5, overlap.Top);
             Assert.Equal(5, overlap.Width);
@@ -100,8 +100,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void ToString_ReturnsExpectedFormat()
         {
-            var rect = new FloatRect(1, 2, 3, 4);
-            var str = rect.ToString();
+            FloatRect rect = new FloatRect(1, 2, 3, 4);
+            string str = rect.ToString();
             Assert.Contains("Left(1)", str);
             Assert.Contains("Top(2)", str);
             Assert.Contains("Width(3)", str);
@@ -114,9 +114,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Equality_Operators_Work()
         {
-            var a = new FloatRect(1, 2, 3, 4);
-            var b = new FloatRect(1, 2, 3, 4);
-            var c = new FloatRect(5, 6, 7, 8);
+            FloatRect a = new FloatRect(1, 2, 3, 4);
+            FloatRect b = new FloatRect(1, 2, 3, 4);
+            FloatRect c = new FloatRect(5, 6, 7, 8);
             Assert.True(a == b);
             Assert.False(a != b);
             Assert.False(a == c);
@@ -129,8 +129,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void GetHashCode_IsConsistent()
         {
-            var a = new FloatRect(1, 2, 3, 4);
-            var b = new FloatRect(1, 2, 3, 4);
+            FloatRect a = new FloatRect(1, 2, 3, 4);
+            FloatRect b = new FloatRect(1, 2, 3, 4);
             Assert.Equal(a.GetHashCode(), b.GetHashCode());
         }
     }

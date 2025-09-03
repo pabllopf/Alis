@@ -14,7 +14,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Constructor_SetsFieldsCorrectly()
         {
-            var mode = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha, BlendMode.Equation.Add,
+            BlendMode mode = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha, BlendMode.Equation.Add,
                                      BlendMode.Factor.One, BlendMode.Factor.Zero, BlendMode.Equation.Subtract);
             Assert.Equal(BlendMode.Factor.SrcAlpha, mode.ColorSrcFactor);
             Assert.Equal(BlendMode.Factor.OneMinusSrcAlpha, mode.ColorDstFactor);
@@ -30,7 +30,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void PredefinedModes_AreCorrect()
         {
-            var alpha = BlendMode.Alpha;
+            BlendMode alpha = BlendMode.Alpha;
             Assert.Equal(BlendMode.Factor.SrcAlpha, alpha.ColorSrcFactor);
             Assert.Equal(BlendMode.Factor.OneMinusSrcAlpha, alpha.ColorDstFactor);
             Assert.Equal(BlendMode.Equation.Add, alpha.ColorEquation);
@@ -45,9 +45,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Equality_Operators_Work()
         {
-            var a = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
-            var b = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
-            var c = new BlendMode(BlendMode.Factor.Zero, BlendMode.Factor.One);
+            BlendMode a = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
+            BlendMode b = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
+            BlendMode c = new BlendMode(BlendMode.Factor.Zero, BlendMode.Factor.One);
             Assert.True(a == b);
             Assert.False(a != b);
             Assert.False(a == c);
@@ -60,8 +60,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void GetHashCode_IsConsistent()
         {
-            var a = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
-            var b = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
+            BlendMode a = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
+            BlendMode b = new BlendMode(BlendMode.Factor.One, BlendMode.Factor.Zero);
             Assert.Equal(a.GetHashCode(), b.GetHashCode());
         }
     }

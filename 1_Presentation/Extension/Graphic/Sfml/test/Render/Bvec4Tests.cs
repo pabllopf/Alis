@@ -14,7 +14,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Constructor_SetsFieldsCorrectly()
         {
-            var bvec = new Bvec4(true, false, true, false);
+            Bvec4 bvec = new Bvec4(true, false, true, false);
             Assert.True(bvec.X);
             Assert.False(bvec.Y);
             Assert.True(bvec.Z);
@@ -27,7 +27,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void CanSetFields()
         {
-            var bvec = new Bvec4();
+            Bvec4 bvec = new Bvec4();
             bvec.X = false;
             bvec.Y = true;
             bvec.Z = false;

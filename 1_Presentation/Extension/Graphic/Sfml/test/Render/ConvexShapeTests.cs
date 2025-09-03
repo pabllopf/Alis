@@ -15,7 +15,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Constructor_SetsPointCount()
         {
-            var shape = new ConvexShape(3);
+            ConvexShape shape = new ConvexShape(3);
             Assert.Equal((uint)3, shape.GetPointCount());
         }
 
@@ -25,7 +25,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void SetPointCount_ChangesPointCount()
         {
-            var shape = new ConvexShape(2);
+            ConvexShape shape = new ConvexShape(2);
             shape.SetPointCount(5);
             Assert.Equal((uint)5, shape.GetPointCount());
         }
@@ -48,10 +48,10 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void CopyConstructor_CopiesPoints()
         {
-            var shape1 = new ConvexShape(2);
+            ConvexShape shape1 = new ConvexShape(2);
             shape1.SetPoint(0, new Vector2F(1, 2));
             shape1.SetPoint(1, new Vector2F(3, 4));
-            var shape2 = new ConvexShape(shape1);
+            ConvexShape shape2 = new ConvexShape(shape1);
             Assert.Equal(shape1.GetPointCount(), shape2.GetPointCount());
             Assert.Equal(shape1.GetPoint(0), shape2.GetPoint(0));
             Assert.Equal(shape1.GetPoint(1), shape2.GetPoint(1));
