@@ -4,8 +4,14 @@ using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Systems
 {
+    /// <summary>
+    /// The input stream tests class
+    /// </summary>
     public class InputStreamTests
     {
+        /// <summary>
+        /// Tests that can assign and invoke callbacks
+        /// </summary>
         [Fact]
         public void CanAssignAndInvokeCallbacks()
         {

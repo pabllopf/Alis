@@ -3,8 +3,14 @@ using Alis.Extension.Graphic.Sfml.Windows;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The event tests class
+    /// </summary>
     public class EventTests
     {
+        /// <summary>
+        /// Tests that can set and get fields
+        /// </summary>
         [Fact]
         public void CanSetAndGetFields()
         {

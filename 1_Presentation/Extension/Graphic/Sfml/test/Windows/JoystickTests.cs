@@ -3,8 +3,14 @@ using Alis.Extension.Graphic.Sfml.Windows;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The joystick tests class
+    /// </summary>
     public class JoystickTests
     {
+        /// <summary>
+        /// Tests that axis enum values are unique
+        /// </summary>
         [Fact]
         public void Axis_Enum_Values_AreUnique()
         {
@@ -12,6 +18,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(values.Length, new System.Collections.Generic.HashSet<int>(values).Count);
         }
 
+        /// <summary>
+        /// Tests that identification struct can set fields
+        /// </summary>
         [Fact]
         public void Identification_Struct_CanSetFields()
         {

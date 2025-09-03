@@ -3,8 +3,14 @@ using Alis.Extension.Graphic.Sfml.Windows;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The mouse wheel scroll event tests class
+    /// </summary>
     public class MouseWheelScrollEventTests
     {
+        /// <summary>
+        /// Tests that can set fields
+        /// </summary>
         [Fact]
         public void CanSetFields()
         {

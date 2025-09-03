@@ -4,8 +4,14 @@ using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The cursor tests class
+    /// </summary>
     public class CursorTests
     {
+        /// <summary>
+        /// Tests that constructor system cursor type does not throw
+        /// </summary>
         [Fact(Skip = "Cannot test Cursor without native SFML dependencies.")]
         public void Constructor_SystemCursorType_DoesNotThrow()
         {
@@ -13,6 +19,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(cursor);
         }
 
+        /// <summary>
+        /// Tests that constructor pixels does not throw
+        /// </summary>
         [Fact(Skip = "Cannot test Cursor without native SFML dependencies.")]
         public void Constructor_Pixels_DoesNotThrow()
         {
@@ -23,6 +32,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(cursor);
         }
 
+        /// <summary>
+        /// Tests that destroy does not throw
+        /// </summary>
         [Fact(Skip = "Cannot test Cursor without native SFML dependencies.")]
         public void Destroy_DoesNotThrow()
         {

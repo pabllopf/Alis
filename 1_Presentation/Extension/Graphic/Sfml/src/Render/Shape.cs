@@ -1,6 +1,8 @@
 using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
+using Alis.Core.Aspect.Data.Dll;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 
@@ -13,6 +15,13 @@ namespace Alis.Extension.Graphic.Sfml.Render
     
     public abstract class Shape : Transformable, IDrawable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Shape"/> class
+        /// </summary>
+        static Shape() 
+        {
+            EmbeddedDllClass.ExtractEmbeddedDlls("sfml", DllType.File, Properties.SfmlDlls.SfmlDllBytes, Assembly.GetAssembly(typeof(Properties.SfmlDlls)));
+        }
         
         /// <summary>
         /// Source texture of the shape

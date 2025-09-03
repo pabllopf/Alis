@@ -3,8 +3,14 @@ using Alis.Extension.Graphic.Sfml.Windows;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The mouse move event tests class
+    /// </summary>
     public class MouseMoveEventTests
     {
+        /// <summary>
+        /// Tests that can set fields
+        /// </summary>
         [Fact]
         public void CanSetFields()
         {
@@ -14,8 +20,14 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         }
     }
 
+    /// <summary>
+    /// The mouse move event args tests class
+    /// </summary>
     public class MouseMoveEventArgsTests
     {
+        /// <summary>
+        /// Tests that constructor sets properties correctly
+        /// </summary>
         [Fact]
         public void Constructor_SetsPropertiesCorrectly()
         {
@@ -25,6 +37,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(20, args.Y);
         }
 
+        /// <summary>
+        /// Tests that to string returns expected format
+        /// </summary>
         [Fact]
         public void ToString_ReturnsExpectedFormat()
         {

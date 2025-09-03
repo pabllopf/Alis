@@ -4,14 +4,23 @@ using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Systems
 {
+    /// <summary>
+    /// The time tests class
+    /// </summary>
     public class TimeTests
     {
+        /// <summary>
+        /// Tests that zero is zero
+        /// </summary>
         [Fact]
         public void Zero_IsZero()
         {
             Assert.Equal(0, Time.Zero.AsMicroseconds());
         }
 
+        /// <summary>
+        /// Tests that from seconds creates correct time
+        /// </summary>
         [Fact]
         public void FromSeconds_CreatesCorrectTime()
         {
@@ -19,6 +28,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.True(Math.Abs(t.AsSeconds() - 2.5f) < 0.001);
         }
 
+        /// <summary>
+        /// Tests that from milliseconds creates correct time
+        /// </summary>
         [Fact]
         public void FromMilliseconds_CreatesCorrectTime()
         {
@@ -26,6 +38,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal(1500, t.AsMilliseconds());
         }
 
+        /// <summary>
+        /// Tests that from microseconds creates correct time
+        /// </summary>
         [Fact]
         public void FromMicroseconds_CreatesCorrectTime()
         {
@@ -33,6 +48,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal(1234567, t.AsMicroseconds());
         }
 
+        /// <summary>
+        /// Tests that equality operators work
+        /// </summary>
         [Fact]
         public void Equality_Operators_Work()
         {
@@ -42,6 +60,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.False(t1 != t2);
         }
 
+        /// <summary>
+        /// Tests that comparison operators work
+        /// </summary>
         [Fact]
         public void Comparison_Operators_Work()
         {
@@ -53,6 +74,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.True(t2 >= t1);
         }
 
+        /// <summary>
+        /// Tests that arithmetic operators work
+        /// </summary>
         [Fact]
         public void Arithmetic_Operators_Work()
         {
@@ -64,6 +88,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal(250, (t1 / 4).AsMilliseconds());
         }
 
+        /// <summary>
+        /// Tests that modulo operator works
+        /// </summary>
         [Fact]
         public void Modulo_Operator_Works()
         {
@@ -72,6 +99,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal(50, (t1 % t2).AsMilliseconds());
         }
 
+        /// <summary>
+        /// Tests that get hash code is consistent
+        /// </summary>
         [Fact]
         public void GetHashCode_IsConsistent()
         {

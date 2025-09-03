@@ -6,8 +6,14 @@ using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Systems
 {
+    /// <summary>
+    /// The stream adaptor tests class
+    /// </summary>
     public class StreamAdaptorTests
     {
+        /// <summary>
+        /// Tests that input stream ptr is not zero
+        /// </summary>
         [Fact]
         public void InputStreamPtr_IsNotZero()
         {
@@ -16,6 +22,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.NotEqual(IntPtr.Zero, adaptor.InputStreamPtr);
         }
 
+        /// <summary>
+        /// Tests that read seek tell get size work correctly
+        /// </summary>
         [Fact]
         public void Read_Seek_Tell_GetSize_WorkCorrectly()
         {

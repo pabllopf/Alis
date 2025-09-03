@@ -3,8 +3,14 @@ using Alis.Extension.Graphic.Sfml.Windows;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The context settings tests class
+    /// </summary>
     public class ContextSettingsTests
     {
+        /// <summary>
+        /// Tests that constructor sets depth and stencil bits
+        /// </summary>
         [Fact]
         public void Constructor_SetsDepthAndStencilBits()
         {
@@ -13,6 +19,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal((uint)8, settings.StencilBits);
         }
 
+        /// <summary>
+        /// Tests that constructor sets antialiasing level
+        /// </summary>
         [Fact]
         public void Constructor_SetsAntialiasingLevel()
         {
@@ -22,6 +31,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal((uint)2, settings.AntialiasingLevel);
         }
 
+        /// <summary>
+        /// Tests that constructor sets all properties
+        /// </summary>
         [Fact]
         public void Constructor_SetsAllProperties()
         {
@@ -35,6 +47,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.True(settings.SRgbCapable);
         }
 
+        /// <summary>
+        /// Tests that to string returns expected format
+        /// </summary>
         [Fact]
         public void ToString_ReturnsExpectedFormat()
         {

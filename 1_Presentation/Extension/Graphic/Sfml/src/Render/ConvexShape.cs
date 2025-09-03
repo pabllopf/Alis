@@ -101,6 +101,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         /// The my points
         /// </summary>
-        private Vector2F[] myPoints;
+        private Vector2F[] myPoints = new Vector2F[0];
     }
 }
