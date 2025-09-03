@@ -2,6 +2,8 @@
 <Project>
     <ItemGroup Condition="
         $(AssemblyName.Contains('Graphic.Sdl2.Test')) == True OR
+        $(AssemblyName.Contains('Graphic.Glfw.Test')) == True OR
+        $(AssemblyName.Contains('Graphic.Sfml.Test')) == True OR
         $(AssemblyName.Contains('Graphic.Ui.Test')) == True OR
         $(AssemblyName.Contains('Graphic.Test')) == True OR
         $(AssemblyName.Contains('Audio.Test')) == True OR
