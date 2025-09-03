@@ -82,7 +82,7 @@ namespace Alis.Core.Ecs
 
             // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
-                foreach (ref var entityId in entityLocations)
+                foreach (ref GameObjectIdOnly entityId in entityLocations)
                 {
                     EntityCreatedEvent.Invoke(entityId.ToEntity(this));
                 }

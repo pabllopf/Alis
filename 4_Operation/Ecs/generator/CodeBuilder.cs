@@ -111,7 +111,7 @@ namespace Alis.Core.Ecs.Generator
         /// <returns>The code builder</returns>
         public CodeBuilder Foreach<T>(ReadOnlySpan<T> items, CancellationToken ct, CodeBuilderDelegate<T> onEach)
         {
-            foreach(ref readonly var i in items)
+            foreach(ref readonly T i in items)
             {
                 onEach(in i, this, ct);
             }

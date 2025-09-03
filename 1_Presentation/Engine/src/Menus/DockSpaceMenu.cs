@@ -133,7 +133,7 @@ namespace Alis.App.Engine.Menus
 
                 ImGui.Separator();
                 ImGui.TextDisabled("Recent Solutions");
-                foreach (var project in recentProjects)
+                foreach (string project in recentProjects)
                 {
                     if (ImGui.Selectable(project))
                     {

@@ -165,13 +165,13 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         private void RenderTreeMenu()
         {
-            foreach (var category in _menuTree)
+            foreach (KeyValuePair<string, List<string>> category in _menuTree)
             {
                 if (string.IsNullOrEmpty(searchText) || category.Key.ToLower().Contains(searchText.ToLower()))
                 {
                     if (ImGui.TreeNodeEx(category.Key, ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.Framed))
                     {
-                        foreach (var subItem in category.Value)
+                        foreach (string subItem in category.Value)
                         {
                             if (string.IsNullOrEmpty(searchText) || subItem.ToLower().Contains(searchText.ToLower()))
                             {

@@ -362,7 +362,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
             int threshold = (int) (_array.Length * 0.9);
             if (_size < threshold)
             {
-                var newArray = _pool.Rent(_size);
+                T[] newArray = _pool.Rent(_size);
                 if (newArray.Length < _array.Length)
                 {
                     Array.Copy(_array, newArray, _size);
@@ -500,7 +500,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         [MethodImpl(MethodImplOptions.NoInlining)]
         private void PushWithResize(T item)
         {
-            var newArray = _pool.Rent(_array.Length == 0 ? DefaultCapacity : 2 * _array.Length);
+            T[] newArray = _pool.Rent(_array.Length == 0 ? DefaultCapacity : 2 * _array.Length);
             Array.Copy(_array, newArray, _size);
             ReturnArray(newArray);
             _array[_size] = item;
@@ -842,7 +842,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
                     break;
 
                 default:
-                    using (var list = new PooledList<T>(enumerable))
+                    using (PooledList<T> list = new PooledList<T>(enumerable))
                     {
                         _array = _pool.Rent(list.Count);
                         list.Span.CopyTo(_array);

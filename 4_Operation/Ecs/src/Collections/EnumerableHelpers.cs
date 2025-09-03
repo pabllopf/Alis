@@ -53,7 +53,7 @@ namespace Alis.Core.Ecs.Collections
             }
             else
             {
-                using (var en = source.GetEnumerator())
+                using (IEnumerator<T> en = source.GetEnumerator())
                 {
                     if (en.MoveNext())
                     {

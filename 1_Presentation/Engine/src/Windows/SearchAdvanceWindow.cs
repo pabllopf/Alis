@@ -131,7 +131,7 @@ namespace Alis.App.Engine.Windows
                 // Simulate search results (replace with actual search logic)
                 string[] results = { "Asset: Player.prefab", "Config: Graphics Settings", "Documentation: How to use Alis Engine" };
 
-                foreach (var result in results)
+                foreach (string result in results)
                 {
                     if (ImGui.Selectable(result))
                     {

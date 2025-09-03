@@ -111,7 +111,7 @@ namespace Alis.Core.Ecs.Generator.Collections
                     {
                         if (value > 0)
                         {
-                            var temp = new T[value];
+                            T[] temp = new T[value];
                             if (_count > 0)
                             {
                                 Array.Copy(_elements, temp, _count);
@@ -602,7 +602,7 @@ namespace Alis.Core.Ecs.Generator.Collections
             /// </param>
             public void RemoveRange(IEnumerable<T> items, IEqualityComparer<T> equalityComparer)
             {
-                var indicesToRemove = new SortedSet<int>();
+                SortedSet<int> indicesToRemove = new SortedSet<int>();
                 foreach (T item in items)
                 {
                     int index = IndexOf(item, 0, _count, equalityComparer);

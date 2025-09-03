@@ -34,7 +34,7 @@ namespace Alis.Core.Ecs.Generator.Structures
         {
             if (_index >= _array.Length)
             {
-                var newArr = new T[Math.Max(_array.Length * 2, 1)];
+                T[] newArr = new T[Math.Max(_array.Length * 2, 1)];
                 _array.CopyTo(newArr.AsSpan());
                 _array = newArr;
             }

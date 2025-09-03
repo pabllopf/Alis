@@ -260,7 +260,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         {
             unchecked
             {
-                var hashCode = m00.GetHashCode();
+                int hashCode = m00.GetHashCode();
                 hashCode = (hashCode * 397) ^ m01.GetHashCode();
                 hashCode = (hashCode * 397) ^ m02.GetHashCode();
                 hashCode = (hashCode * 397) ^ m10.GetHashCode();

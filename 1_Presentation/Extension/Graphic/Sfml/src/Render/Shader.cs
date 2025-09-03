@@ -394,7 +394,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="array">array of <c>float</c> values</param>
        public void SetUniformArray(string name, float[] array)
        {
-           var handle = GCHandle.Alloc(array, GCHandleType.Pinned);
+           GCHandle handle = GCHandle.Alloc(array, GCHandleType.Pinned);
            try
            {
                IntPtr ptr = handle.AddrOfPinnedObject();
@@ -415,7 +415,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         
         public void SetUniformArray(string name, Vec2[] array)
         {
-            var handle = GCHandle.Alloc(array, GCHandleType.Pinned);
+            GCHandle handle = GCHandle.Alloc(array, GCHandleType.Pinned);
             try
             {
                 IntPtr ptr = handle.AddrOfPinnedObject();
@@ -435,7 +435,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="array">array of <c>vec3</c> values</param>
         public void SetUniformArray(string name, Vec3[] array)
         {
-            var handle = GCHandle.Alloc(array, GCHandleType.Pinned);
+            GCHandle handle = GCHandle.Alloc(array, GCHandleType.Pinned);
             try
             {
                 IntPtr ptr = handle.AddrOfPinnedObject();
@@ -455,7 +455,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="array">array of <c>vec4</c> values</param>
         public void SetUniformArray(string name, Vec4[] array)
         {
-            var handle = GCHandle.Alloc(array, GCHandleType.Pinned);
+            GCHandle handle = GCHandle.Alloc(array, GCHandleType.Pinned);
             try
             {
                 IntPtr ptr = handle.AddrOfPinnedObject();
@@ -477,7 +477,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
       
        public void SetUniformArray(string name, Matrix3X3[] array)
        {
-           var handle = GCHandle.Alloc(array, GCHandleType.Pinned);
+           GCHandle handle = GCHandle.Alloc(array, GCHandleType.Pinned);
            try
            {
                IntPtr ptr = handle.AddrOfPinnedObject();
@@ -499,7 +499,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
        
        public void SetUniformArray(string name, Matrix4X4[] array)
        {
-           var handle = GCHandle.Alloc(array, GCHandleType.Pinned);
+           GCHandle handle = GCHandle.Alloc(array, GCHandleType.Pinned);
            try
            {
                IntPtr ptr = handle.AddrOfPinnedObject();

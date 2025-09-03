@@ -82,7 +82,7 @@ namespace Alis.Core.Aspect.Data.Json
     public static T Deserialize<T>(string json)
     where T : IJsonSerializable, IJsonDesSerializable<T>, new()
 {
-    var properties = ParseJsonToDictionary(json);
+    Dictionary<string, string> properties = ParseJsonToDictionary(json);
     return new T().CreateFromProperties(properties);
 }
 
@@ -93,7 +93,7 @@ namespace Alis.Core.Aspect.Data.Json
 /// <returns>The dict</returns>
 public static Dictionary<string, string> ParseJsonToDictionary(string json)
     {
-        var dict = new Dictionary<string, string>();
+        Dictionary<string, string> dict = new Dictionary<string, string>();
         if (string.IsNullOrEmpty(json)) return dict;
 
         int i = 0;
@@ -188,7 +188,7 @@ public static Dictionary<string, string> ParseJsonToDictionary(string json)
     {
         if (s[i] != '"') throw new InvalidOperationException("Expected '\"' at start of JSON string.");
         i++; // skip opening quote
-        var sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         int n = s.Length;
 
         while (i < n)

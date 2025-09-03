@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Resource;
@@ -1039,7 +1040,7 @@ namespace Alis.App.Engine.Controllers
             }
 
             // Actualiza el estado de los botones del mouse
-            var mouseDown = io.MouseDown;
+            List<bool> mouseDown = io.MouseDown;
             mouseDown[0] = _mousePressed[0] || Glfw.GetMouseButton(_glfwController._window, MouseButton.Left) == InputState.Press;
             mouseDown[1] = _mousePressed[1] || Glfw.GetMouseButton(_glfwController._window, MouseButton.Right) == InputState.Press;
             mouseDown[2] = _mousePressed[2] || Glfw.GetMouseButton(_glfwController._window, MouseButton.Middle) == InputState.Press;
@@ -1137,7 +1138,7 @@ namespace Alis.App.Engine.Controllers
         {
             _glfwController.OnRenderFrame();
             
-            var io = ImGui.GetIo();
+            ImGuiIoPtr io = ImGui.GetIo();
             io.DisplaySize = new Vector2F(_glfwController._widthMainWindow, _glfwController._heightMainWindow);
             io.DisplayFramebufferScale = new Vector2F(1f, 1f);
 

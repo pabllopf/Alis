@@ -40,8 +40,8 @@ namespace Alis.Core.Graphic
         /// <returns>The sprite</returns>
         public static Image Load(string path)
         {
-            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-            using (var reader = new BinaryReader(stream))
+            using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+            using (BinaryReader reader = new BinaryReader(stream))
             {
                 if (reader.ReadByte() != 'B' || reader.ReadByte() != 'M') return null;
 

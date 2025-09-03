@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.Collections
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void ResizeArrayFromPool(ref T[] arr, int len)
         {
-            var finalArr = Instance.Rent(len);
+            T[] finalArr = Instance.Rent(len);
             arr.AsSpan().CopyTo(finalArr.AsSpan(0, Math.Min(arr.Length, finalArr.Length)));
             Instance.Return(arr);
             arr = finalArr;
@@ -70,7 +70,7 @@ namespace Alis.Core.Ecs.Collections
             ref T[] slot = ref _buckets[bucketIndex];
             if (slot is not null)
             {
-                var arr = slot;
+                T[] arr = slot;
                 slot = null!;
                 return arr!;
             }

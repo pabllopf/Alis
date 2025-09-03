@@ -92,7 +92,7 @@ public struct EquatableArray<T> : IEquatable<EquatableArray<T>>, IEnumerable<T>
         public override int GetHashCode()
         {
             CustomHashCode customHashCode = new();
-            foreach (ref var value in Items.AsSpan())
+            foreach (ref T value in Items.AsSpan())
             {
                 customHashCode.Add(value);
             }

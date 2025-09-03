@@ -82,7 +82,7 @@ namespace Alis.Core.Aspect.Data.Generator
                         ? propNameAttr.ConstructorArguments[0].Value?.ToString()
                         : property.Name;
 
-                    var type = property.Type;
+                    ITypeSymbol type = property.Type;
                     if (type is IArrayTypeSymbol arrayType && arrayType.Rank == 1)
                     {
                         // Array simple
