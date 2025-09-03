@@ -12,6 +12,9 @@ namespace Alis.Extension.Graphic.Sfml.Systems
     
     public abstract class ObjectBase : IDisposable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ObjectBase"/> class
+        /// </summary>
         static ObjectBase() 
         {
             EmbeddedDllClass.ExtractEmbeddedDlls("sfml", DllType.File, Properties.SfmlDlls.SfmlDllBytes, Assembly.GetAssembly(typeof(Properties.SfmlDlls)));

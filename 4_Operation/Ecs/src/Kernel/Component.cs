@@ -275,6 +275,9 @@ namespace Alis.Core.Ecs.Kernel
                 $"{t.FullName} is not initalized. (Did you initalize T with Component.RegisterComponent<T>()?)");
         }
 
+        /// <summary>
+        /// Resets the for tests
+        /// </summary>
         internal static void ResetForTests()
         {
             lock (GlobalWorldTables.BufferChangeLock)
