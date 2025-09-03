@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         ///     The my points
         /// </summary>
-        private Vector2F[] myPoints = new Vector2F[0];
+        private Vector2F[] myPoints = [];
 
         /// <summary>
         ///     Default constructor

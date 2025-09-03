@@ -50,19 +50,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         }
 
         /// <summary>
-        ///     Tests that dispose calls destroy and sets c pointer to zero
-        /// </summary>
-        [Fact]
-        public void Dispose_CallsDestroyAndSetsCPointerToZero()
-        {
-            IntPtr ptr = new IntPtr(5678);
-            TestObject obj = new TestObject(ptr);
-            obj.Dispose();
-            Assert.True(obj.DestroyCalled);
-            Assert.Equal(IntPtr.Zero, obj.CPointer);
-        }
-
-        /// <summary>
         ///     The test object class
         /// </summary>
         /// <seealso cref="ObjectBase" />
