@@ -4,6 +4,7 @@ namespace Alis.Core.Aspect.Fluent.Components
     ///     The component interface
     /// </summary>
     /// <seealso cref="IComponentBase" />
+    // ReSharper disable once PartialTypeWithSinglePart
     public partial interface IComponent<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6> : IComponentBase
     {
         /// <inheritdoc cref="IComponent.Update" />

@@ -33,9 +33,19 @@ namespace Alis.Core.Aspect.Fluent.Components
     ///     The component interface
     /// </summary>
     /// <seealso cref="IComponentBase" />
-    public interface IComponent<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> : IComponentBase
+    // ReSharper disable once PartialTypeWithSinglePart
+    public partial interface IComponent<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> : IComponentBase
     {
-        /// <inheritdoc cref="IComponent.Update" />
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="arg1"></param>
+       /// <param name="arg2"></param>
+       /// <param name="arg3"></param>
+       /// <param name="arg4"></param>
+       /// <param name="arg5"></param>
+       /// <param name="arg6"></param>
+       /// <param name="arg7"></param>
         void Update(ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5, ref TArg6 arg6,
             ref TArg7 arg7);
     }

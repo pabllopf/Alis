@@ -33,7 +33,8 @@ namespace Alis.Core.Aspect.Fluent.Components
     ///     Indicates a component should be updated with zero arguments
     /// </summary>
     /// <remarks>Components should only implement one "Update" method.</remarks>
-    public interface IComponent : IComponentBase
+    // ReSharper disable once PartialTypeWithSinglePart
+    public partial interface IComponent : IComponentBase
     {
         /// <summary>
         ///     Updates this component
