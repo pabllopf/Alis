@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Render
@@ -87,7 +88,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="index">Index of the point to get, in range [0 .. PointCount - 1]</param>
         /// <returns>index-th point of the shape</returns>
         
-        public abstract Vector2f GetPoint(uint index);
+        public abstract Vector2F GetPoint(uint index);
 
         
         /// <summary>
@@ -225,7 +226,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// Callback passed to the C API
         /// </summary>
         
-        private Vector2f InternalGetPoint(uint index, IntPtr userData)
+        private Vector2F InternalGetPoint(uint index, IntPtr userData)
         {
             return GetPoint(index);
         }
@@ -240,7 +241,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// The get point callback type
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate Vector2f GetPointCallbackType(uint index, IntPtr UserData);
+        private delegate Vector2F GetPointCallbackType(uint index, IntPtr UserData);
 
         /// <summary>
         /// The my get point count callback

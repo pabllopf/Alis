@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Render
@@ -64,9 +65,9 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="y">Y coordinate of the point to transform</param>
         /// <returns>Transformed point</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2f TransformPoint(float x, float y)
+        public Vector2F TransformPoint(float x, float y)
         {
-            return TransformPoint(new Vector2f(x, y));
+            return TransformPoint(new Vector2F(x, y));
         }
 
         ////////////////////////////////////////////////////////////
@@ -76,7 +77,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="point">Point to transform</param>
         /// <returns>Transformed point</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2f TransformPoint(Vector2f point)
+        public Vector2F TransformPoint(Vector2F point)
         {
             return sfTransform_transformPoint(ref this, point);
         }
@@ -132,7 +133,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="offset">Translation offset to apply</param>
         ////////////////////////////////////////////////////////////
-        public void Translate(Vector2f offset)
+        public void Translate(Vector2F offset)
         {
             Translate(offset.X, offset.Y);
         }
@@ -178,7 +179,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="angle">Rotation angle, in degrees</param>
         /// <param name="center">Center of rotation</param>
         ////////////////////////////////////////////////////////////
-        public void Rotate(float angle, Vector2f center)
+        public void Rotate(float angle, Vector2F center)
         {
             Rotate(angle, center.X, center.Y);
         }
@@ -220,7 +221,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="factors">Scaling factors</param>
         ////////////////////////////////////////////////////////////
-        public void Scale(Vector2f factors)
+        public void Scale(Vector2F factors)
         {
             Scale(factors.X, factors.Y);
         }
@@ -237,7 +238,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="factors">Scaling factors</param>
         /// <param name="center">Center of scaling</param>
         ////////////////////////////////////////////////////////////
-        public void Scale(Vector2f factors, Vector2f center)
+        public void Scale(Vector2F factors, Vector2F center)
         {
             Scale(factors.X, factors.Y, center.X, center.Y);
         }
@@ -311,7 +312,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="right">Right operand (the point to transform)</param>
         /// <returns>New transformed point</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2f operator *(Transform left, Vector2f right)
+        public static Vector2F operator *(Transform left, Vector2F right)
         {
             return left.TransformPoint(right);
         }
@@ -376,7 +377,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="point">The point</param>
         /// <returns>The vector 2f</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern Vector2f sfTransform_transformPoint(ref Transform transform, Vector2f point);
+        static extern Vector2F sfTransform_transformPoint(ref Transform transform, Vector2F point);
 
         /// <summary>
         /// Sfs the transform transform rect using the specified transform

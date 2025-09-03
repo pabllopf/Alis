@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.Sfml.Systems
 {
@@ -144,7 +145,7 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// <param name="v">Vector being casted</param>
         /// <returns>Casting result</returns>
         
-        public static explicit operator Vector2f(Vector2u v) => new Vector2f(v.X, v.Y);
+        public static explicit operator Vector2F(Vector2u v) => new Vector2F(v.X, v.Y);
 
         /// <summary>X (horizontal) component of the vector</summary>
         public uint X;

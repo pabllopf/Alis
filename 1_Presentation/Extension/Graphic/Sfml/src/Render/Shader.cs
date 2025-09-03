@@ -4,6 +4,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Security;
 using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 using Alis.Extension.Graphic.Sfml.Windows;
 using LoadingFailedException = Alis.Extension.Graphic.Sfml.Windows.LoadingFailedException;
@@ -598,7 +599,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="vector">Vector to assign</param>
         
         [Obsolete("SetParameter is deprecated, please use the corresponding SetUniform")]
-        public void SetParameter(string name, Vector2f vector)
+        public void SetParameter(string name, Vector2F vector)
         {
             SetParameter(name, vector.X, vector.Y);
         }

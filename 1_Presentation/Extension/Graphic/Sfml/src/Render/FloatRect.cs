@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Render
@@ -36,7 +37,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="position">Position of the top-left corner of the rectangle</param>
         /// <param name="size">Size of the rectangle</param>
         
-        public FloatRect(Vector2f position, Vector2f size)
+        public FloatRect(Vector2F position, Vector2F size)
             : this(position.X, position.Y, size.X, size.Y)
         {
         }
@@ -68,8 +69,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         
         public bool Intersects(FloatRect rect)
         {
-            FloatRect overlap;
-            return Intersects(rect, out overlap);
+            return Intersects(rect, out FloatRect _);
         }
 
         
@@ -157,10 +157,10 @@ namespace Alis.Extension.Graphic.Sfml.Render
         
         public bool Equals(FloatRect other)
         {
-            return ( Left == other.Left ) &&
-                   ( Top == other.Top ) &&
-                   ( Width == other.Width ) &&
-                   ( Height == other.Height );
+            return ( Math.Abs(Left - other.Left) < 0.01f ) &&
+                   ( Math.Abs(Top - other.Top) < 0.01f ) &&
+                   ( Math.Abs(Width - other.Width) < 0.01f ) &&
+                   ( Math.Abs(Height - other.Height) < 0.01f );
         }
 
         
