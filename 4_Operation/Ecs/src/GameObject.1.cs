@@ -11,11 +11,6 @@ using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs
 {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-#else
-#endif
-
-
     /// <summary>
     /// The game object
     /// </summary>

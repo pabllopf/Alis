@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Systems
         ///     Initializes a new instance of the <see cref="GameObjectQueryEnumerator" /> class
         /// </summary>
         /// <param name="query">The query</param>
-        private GameObjectQueryEnumerator(Query query)
+        public GameObjectQueryEnumerator(Query query)
         {
             _scene = query.Scene;
             _scene.EnterDisallowState();
@@ -87,7 +87,7 @@ namespace Alis.Core.Ecs.Systems
         ///     Proxy type for foreach syntax
         /// </summary>
         /// <param name="query"></param>
-        public struct QueryEnumerable(Query query)
+        public readonly struct QueryEnumerable(Query query)
         {
             /// <summary>
             ///     Gets the enumerator over a query.

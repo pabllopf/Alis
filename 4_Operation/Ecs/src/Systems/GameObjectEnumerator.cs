@@ -52,7 +52,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     Proxy struct used to get an <see cref="GameObjectEnumerator" />.
         /// </summary>
-        public ref struct EntityEnumerable
+        public readonly ref struct EntityEnumerable
         {
             /// <summary>
             ///     The scene
