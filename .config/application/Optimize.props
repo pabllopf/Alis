@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <PropertyGroup Condition="
-            $(AssemblyName.Contains('Sample')) == false AND
-            $(AssemblyName.Contains('Test')) == false AND
-            $(AssemblyName.Contains('Alis.App')) == false AND 
-            $(AssemblyName.Contains('Benchmark')) == false"
-    >
+    '$(Configuration)' == 'Release' AND
+    $(AssemblyName.Contains('Sample')) == false AND
+    $(AssemblyName.Contains('Test')) == false AND
+    $(AssemblyName.Contains('Alis.App')) == false AND 
+    $(AssemblyName.Contains('Benchmark')) == false">
         <DebugSymbols>true</DebugSymbols>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <IncludeSource>true</IncludeSource>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <DebugType>portable</DebugType>
+        <DebugType>full</DebugType>
         <Deterministic>true</Deterministic>
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
