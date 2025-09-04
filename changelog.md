@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.7.7] - 2025-09-04
+### :sparkles: New Features
+- [`94f64e8`](https://github.com/pabllopf/Alis/commit/94f64e8fb422924c67c7c246f376db9bc1a6190b) - Include .pdb files in package build output *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`15ac26d`](https://github.com/pabllopf/Alis/commit/15ac26de26c4426cb5c0f2f8bf439f8422bffdc3) - Update solution projects and optimize package output *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.7.6] - 2025-09-04
 ### :bug: Bug Fixes
 - [`73d7894`](https://github.com/pabllopf/Alis/commit/73d7894ebb65e1b8f04f8d8472c793650c570043) - the comments of xml to generate document *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4821,3 +4829,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.7.4]: https://github.com/pabllopf/Alis/compare/v0.7.3...v0.7.4
 [v0.7.5]: https://github.com/pabllopf/Alis/compare/v0.7.4...v0.7.5
 [v0.7.6]: https://github.com/pabllopf/Alis/compare/v0.7.5...v0.7.6
+[v0.7.7]: https://github.com/pabllopf/Alis/compare/v0.7.6...v0.7.7
