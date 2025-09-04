@@ -166,6 +166,24 @@ namespace Alis.Core.Graphic.Platforms.Osx
                                 {
                                     lastKeyPressed = key;
                                 }
+                                else
+                                {
+                                    // Mapeo manual para teclas especiales
+                                    switch (c)
+                                    {
+                                        case ' ':
+                                            lastKeyPressed = ConsoleKey.Spacebar;
+                                            break;
+                                        case '\n':
+                                        case '\r':
+                                            lastKeyPressed = ConsoleKey.Enter;
+                                            break;
+                                        case '\t':
+                                            lastKeyPressed = ConsoleKey.Tab;
+                                            break;
+                                        // Agrega más casos según lo necesites
+                                    }
+                                }
                             }
                         }
                     }

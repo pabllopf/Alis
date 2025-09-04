@@ -28,9 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Ecs.Components.Body;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Configuration.Physic;
 using Alis.Core.Ecs.Systems.Scope;
@@ -76,7 +79,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         public override void OnInit()
         {
 #if OSX
-            platform = new MacNativePlatform();
+            platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
 #elif WIN
             platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
 #elif LINUX
@@ -123,7 +126,19 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
 
             if (platform.TryGetLastKeyPressed(out ConsoleKey key))
             {
-                Logger.Info($"Tecla pulsada: {key}");
+                GameObjectQueryEnumerator.QueryEnumerable result = Context.SceneManager.World.Query<Not<RigidBody>>().EnumerateWithEntities();
+                foreach (GameObject gameObject in result)
+                {
+                    foreach (ComponentId component in gameObject.ComponentTypes)
+                    {
+                        Type componentType = component.Type;
+                        if(typeof(IOnPressKey).IsAssignableFrom(componentType))
+                        {
+                            IOnPressKey onPressKey = (IOnPressKey)gameObject.Get(componentType);
+                            onPressKey.OnPressKey(key);
+                        }
+                    }
+                }
             }
 
             float pixelsPerMeter = PixelsPerMeter;
