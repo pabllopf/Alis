@@ -1,5 +1,12 @@
-
 <Project>
+    <!-- https://github.com/dotnet/sdk/issues/1458#issuecomment-1063915490 -->
+    <Target Name="IncludeSymbolFiles" AfterTargets="ResolveAssemblyReferences" Condition="@(ReferenceCopyLocalPaths) != ''">
+        <ItemGroup>
+            <ReferenceCopyLocalPaths Include="%(ReferenceCopyLocalPaths.RelativeDir)%(ReferenceCopyLocalPaths.Filename).pdb;                                %(ReferenceCopyLocalPaths.RelativeDir)%(ReferenceCopyLocalPaths.Filename).xml" />
+            <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths)" Condition="!Exists('%(FullPath)')" />
+        </ItemGroup>
+    </Target>
+    
     <Target Name="BuildAndCopyInstallerOutput" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub'))">
         <MSBuild Projects="$(SolutionDir)1_Presentation/Installer/src/Alis.App.Installer.csproj" Targets="Build" Properties="Configuration=$(Configuration)"/>
         <PropertyGroup>
