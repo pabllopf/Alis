@@ -33,7 +33,8 @@ namespace Alis.Core.Aspect.Fluent.Components
     ///     Indicates a component should be updated with itself as an argument
     /// </summary>
     /// <remarks>Components should only implement one "Update" method.</remarks>
-    public interface IGameObjectComponent : IComponentBase
+    // ReSharper disable once PartialTypeWithSinglePart
+    public partial interface IGameObjectComponent : IComponentBase
     {
         /// <inheritdoc cref="IComponent.Update" />
         void Update(IGameObject self);
