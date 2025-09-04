@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.7.6] - 2025-09-04
+### :bug: Bug Fixes
+- [`73d7894`](https://github.com/pabllopf/Alis/commit/73d7894ebb65e1b8f04f8d8472c793650c570043) - the comments of xml to generate document *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8fb6345`](https://github.com/pabllopf/Alis/commit/8fb6345459fa337f744fa43190021359ac03a532) - param on methods names *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`13e5dfc`](https://github.com/pabllopf/Alis/commit/13e5dfc73991f6c3ccff2c75b4855b000d7f1908) - comments names param on xml files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f3cf70d`](https://github.com/pabllopf/Alis/commit/f3cf70dacfbd7966a1c63a64a17115920c713f8f) - comment on xml files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c2d82ad`](https://github.com/pabllopf/Alis/commit/c2d82ad8681f9e13a9384c0ccae25023b0935755) - all comment xml of files generators *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8191c00`](https://github.com/pabllopf/Alis/commit/8191c00e08b1b25a824a01ca50223d2dc89baf65) - comments of xmls files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3dfa922`](https://github.com/pabllopf/Alis/commit/3dfa9227626484fd8b58712ab558430e057a265d) - all comments of code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d84544d`](https://github.com/pabllopf/Alis/commit/d84544d2b45885adb797ffb9016d4ffd98d16819) - config files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`338890c`](https://github.com/pabllopf/Alis/commit/338890cca44d3e6a92c354fcb1cc188b37ce9b4a) - comments of all xml *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`bcd7d0c`](https://github.com/pabllopf/Alis/commit/bcd7d0c07e9c50b4c79676933db29da0e95147ab) - add simple xml comments *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.7.5] - 2025-09-01
 ### :bug: Bug Fixes
 - [`e7ebaa1`](https://github.com/pabllopf/Alis/commit/e7ebaa1acd7c385aa800368a3d79a0a97a367487) - reset the sample king *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4804,3 +4820,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.7.3]: https://github.com/pabllopf/Alis/compare/v0.7.2...v0.7.3
 [v0.7.4]: https://github.com/pabllopf/Alis/compare/v0.7.3...v0.7.4
 [v0.7.5]: https://github.com/pabllopf/Alis/compare/v0.7.4...v0.7.5
+[v0.7.6]: https://github.com/pabllopf/Alis/compare/v0.7.5...v0.7.6
