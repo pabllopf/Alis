@@ -40,7 +40,6 @@ using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms;
-using Alis.Core.Graphic.Platforms.Osx;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
 
 namespace Alis.Core.Ecs.Systems.Manager.Graphic

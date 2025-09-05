@@ -30,6 +30,7 @@
 #if WIN
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Graphic.Platforms.Win.Native;
 
 namespace Alis.Core.Graphic.Platforms.Win
