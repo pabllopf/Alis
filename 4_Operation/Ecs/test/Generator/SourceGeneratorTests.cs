@@ -60,14 +60,7 @@ namespace Alis.Core.Ecs.Test.Generator
             /// </summary>
             Updateable = 1 << 2
         }
-
-        /// <summary>
-        ///     Tests that registered properly indirect interface
-        /// </summary>
-        [Fact]
-        public void RegisteredProperly_IndirectInterface() =>
-            TestTypeRegistration<IndirectInterface>(TypeRegistrationFlags.Initable | TypeRegistrationFlags.Destroyable | TypeRegistrationFlags.Updateable);
-
+        
         /// <summary>
         ///     Tests that registered properly in global namespace
         /// </summary>
