@@ -1,7 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Render
 {
@@ -70,8 +69,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         
         public bool Intersects(IntRect rect)
         {
-            IntRect overlap;
-            return Intersects(rect, out overlap);
+            return Intersects(rect, out IntRect _);
         }
 
         
@@ -149,10 +147,10 @@ namespace Alis.Extension.Graphic.Sfml.Render
         
         public bool Equals(IntRect other)
         {
-            return ( Left == other.Left ) &&
-                   ( Top == other.Top ) &&
-                   ( Width == other.Width ) &&
-                   ( Height == other.Height );
+            return ( Math.Abs(Left - other.Left) < 0.01f ) &&
+                   ( Math.Abs(Top - other.Top) < 0.01f ) &&
+                   ( Math.Abs(Width - other.Width) < 0.01f ) &&
+                   ( Math.Abs(Height - other.Height) < 0.01f );
         }
 
         

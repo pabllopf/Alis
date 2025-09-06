@@ -14,16 +14,43 @@ using System;
             public class Lifetime
             {
                 // Delegados reutilizables para los tests
+                /// <summary>
+                /// The destroy count
+                /// </summary>
                 private int destroyCount;
+                /// <summary>
+                /// The 
+                /// </summary>
                 private IGameObject e1;
+                /// <summary>
+                /// The init flag
+                /// </summary>
                 private bool initFlag;
+                /// <summary>
+                /// The destroy flag
+                /// </summary>
                 private bool destroyFlag;
 
+                /// <summary>
+                /// The destroy action
+                /// </summary>
                 private readonly Action destroyAction;
+                /// <summary>
+                /// The init action
+                /// </summary>
                 private readonly Action<IGameObject> initAction;
+                /// <summary>
+                /// The destroy component action
+                /// </summary>
                 private readonly Action<IGameObject> destroyComponentAction;
+                /// <summary>
+                /// The init component action
+                /// </summary>
                 private readonly Action<IGameObject> initComponentAction;
 
+                /// <summary>
+                /// Initializes a new instance of the <see cref="Lifetime"/> class
+                /// </summary>
                 public Lifetime()
                 {
                     destroyAction = () => destroyCount++;
