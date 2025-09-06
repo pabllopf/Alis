@@ -336,12 +336,9 @@ namespace Alis.App.Engine.Windows
                 RenderAssets();
 
                 //ImGui.EndColumns(); // Finalizar las columnas
-                
-             
             }
 
             ImGui.End();
-            
         }
 
 

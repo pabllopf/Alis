@@ -1,26 +1,54 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ComponentArrayPool.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Buffers;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Redifinition;
 
 namespace Alis.Benchmark.CustomCollections.ArrayPools.Elements
 {
     //super simple arraypool class
     /// <summary>
-    /// The component array pool class
+    ///     The component array pool class
     /// </summary>
-    /// <seealso cref="ArrayPool{T}"/>
+    /// <seealso cref="ArrayPool{T}" />
     public class ComponentArrayPool<T> : ArrayPool<T>
     {
         /// <summary>
-        /// The buckets
+        ///     The buckets
         /// </summary>
         private T[][] _buckets;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ComponentArrayPool{T}"/> class
+        ///     Initializes a new instance of the <see cref="ComponentArrayPool{T}" /> class
         /// </summary>
         public ComponentArrayPool()
         {
@@ -30,14 +58,14 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools.Elements
 
             _buckets = new T[27][];
         }
-        
+
         /// <summary>
-        /// Gets the value of the instance
+        ///     Gets the value of the instance
         /// </summary>
         public static ComponentArrayPool<T> Instance { get; } = new();
 
         /// <summary>
-        /// Resizes the array from pool using the specified arr
+        ///     Resizes the array from pool using the specified arr
         /// </summary>
         /// <param name="arr">The arr</param>
         /// <param name="len">The len</param>
@@ -50,18 +78,20 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools.Elements
         }
 
         /// <summary>
-        /// Rents the minimum length
+        ///     Rents the minimum length
         /// </summary>
         /// <param name="minimumLength">The minimum length</param>
         /// <returns>The array</returns>
         public override T[] Rent(int minimumLength)
         {
             if (minimumLength < 16)
+            {
                 return new T[minimumLength];
+            }
 
-            int bucketIndex = BitOperations.Log2((uint)minimumLength) - 4;
+            int bucketIndex = BitOperations.Log2((uint) minimumLength) - 4;
 
-            if ((uint)bucketIndex < (uint)_buckets.Length)
+            if ((uint) bucketIndex < (uint) _buckets.Length)
             {
                 ref T[] item = ref _buckets[bucketIndex];
 
@@ -73,11 +103,11 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools.Elements
                 }
             }
 
-            return new T[minimumLength]; 
+            return new T[minimumLength];
         }
 
         /// <summary>
-        /// Returns the array
+        ///     Returns the array
         /// </summary>
         /// <param name="array">The array</param>
         /// <param name="clearArray">The clear array</param>
@@ -85,14 +115,19 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools.Elements
         {
             //easier to deal w/ all logic here
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 array.AsSpan().Clear();
-            int bucketIndex = BitOperations.Log2((uint)array.Length) - 4;
-            if ((uint)bucketIndex < (uint)_buckets.Length)
+            }
+
+            int bucketIndex = BitOperations.Log2((uint) array.Length) - 4;
+            if ((uint) bucketIndex < (uint) _buckets.Length)
+            {
                 _buckets[bucketIndex] = array;
+            }
         }
 
         /// <summary>
-        /// Clears the buckets
+        ///     Clears the buckets
         /// </summary>
         private void ClearBuckets()
         {

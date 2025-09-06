@@ -30,7 +30,6 @@
 using System;
 using System.Collections.Generic;
 
-
 namespace Alis.Core.Physic.Common.Decomposition.Seidel
 {
     /// <summary>
@@ -208,8 +207,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
                     _convexPoints.Add(c);
                 }
             }
-
-            }
+        }
 
         /// <summary>
         ///     Describes whether this instance valid

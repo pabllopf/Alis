@@ -1,3 +1,33 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:FastLookup.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
@@ -41,20 +71,25 @@ namespace Alis.Core.Ecs.Collections
         /// <param name="scene">The world</param>
         /// <param name="edgeType">The edge type</param>
         /// <returns>The gameObject type</returns>
-        public GameObjectType FindAdjacentArchetypeId<T>(T id, GameObjectType archetype, Scene scene, ArchetypeEdgeType edgeType)
+        public ArchetypeID FindAdjacentArchetypeId<T>(T id, GameObjectType archetype, Scene scene, ArchetypeEdgeType edgeType)
             where T : ITypeId
         {
             uint key = GetKey(id.Value, archetype);
             ArchetypeEdgeKey edgeKey;
             int index = LookupIndex(key);
-            if (index != 32) return new GameObjectType(InlineArray8<ushort>.Get(ref _ids, index));
+            if (index != 32)
+            {
+                return new GameObjectType(InlineArray8<ushort>.Get(ref _ids, index));
+            }
 
             if (scene.ArchetypeGraphEdges.TryGetValue(
                     edgeKey = typeof(T) == typeof(ComponentId)
                         ? ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType)
                         : ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out Archetype destination))
                 //warm/cool depending on number of times they add/remove
+            {
                 return destination.Id;
+            }
 
             //cold path
             Archetype dest = Archetype.GetAdjacentArchetypeCold(scene, edgeKey);
@@ -70,7 +105,7 @@ namespace Alis.Core.Ecs.Collections
         /// <returns>The key</returns>
         public uint GetKey(ushort id, GameObjectType archetypeId)
         {
-            uint key = archetypeId.RawIndex | ((uint)id << 16);
+            uint key = archetypeId.RawIndex | ((uint) id << 16);
             return key;
         }
 
@@ -100,14 +135,16 @@ namespace Alis.Core.Ecs.Collections
         public int LookupIndex(uint key)
         {
 #if NET6_0_OR_GREATER
-        System.ReadOnlySpan<uint> span = MemoryMarshal.CreateReadOnlySpan(ref _data._0, 8);
-        for (int i = 0; i < span.Length; i++)
-        {
-            if (span[i] == key)
-                return i;
-        }
+            ReadOnlySpan<uint> span = MemoryMarshal.CreateReadOnlySpan(ref _data._0, 8);
+            for (int i = 0; i < span.Length; i++)
+            {
+                if (span[i] == key)
+                {
+                    return i;
+                }
+            }
 
-        return 32;
+            return 32;
 #else
             if (_data._0 == key) return 0;
 

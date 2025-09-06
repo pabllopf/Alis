@@ -49,7 +49,6 @@ namespace Alis.Core.Ecs.Systems.Execution
         private readonly List<T> runtimes;
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="array"></param>
         public Runtime(params T[] array)

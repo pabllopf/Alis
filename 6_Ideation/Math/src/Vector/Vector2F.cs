@@ -201,7 +201,7 @@ namespace Alis.Core.Aspect.Math.Vector
         public static float Distance(Vector2F value1, Vector2F value2)
         {
             float distanceSquared = DistanceSquared(value1, value2);
-            return (float)System.Math.Sqrt(distanceSquared);
+            return (float) System.Math.Sqrt(distanceSquared);
         }
 
         /// <summary>Returns the Euclidean distance squared between two specified points.</summary>
@@ -305,8 +305,8 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="value">A vector.</param>
         /// <returns>The square root vector.</returns>
         public static Vector2F SquareRoot(Vector2F value) => new Vector2F(
-            (float)System.Math.Sqrt(value.X),
-            (float)System.Math.Sqrt(value.Y)
+            (float) System.Math.Sqrt(value.X),
+            (float) System.Math.Sqrt(value.Y)
         );
 
         /// <summary>Subtracts the second vector from the first.</summary>
@@ -450,7 +450,7 @@ namespace Alis.Core.Aspect.Math.Vector
         public float Length()
         {
             float lengthSquared = LengthSquared();
-            return (float)System.Math.Sqrt(lengthSquared);
+            return (float) System.Math.Sqrt(lengthSquared);
         }
 
         /// <summary>Returns the length of the vector squared.</summary>

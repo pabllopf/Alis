@@ -30,9 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
-using Alis.Core.Graphic;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Extension.Graphic.Glfw.Enums;
@@ -109,7 +107,7 @@ namespace Alis.Extension.Graphic.Glfw.Sample
             {
                 throw new Exception("Failed to initialize GLFW");
             }
-            
+
             Gl.Initialize(Glfw.GetProcAddress);
 
             // Set GLFW window hints for OpenGL context

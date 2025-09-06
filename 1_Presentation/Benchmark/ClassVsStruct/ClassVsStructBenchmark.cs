@@ -59,9 +59,9 @@ namespace Alis.Benchmark.ClassVsStruct
 
             return sum;
         }
-        
+
         /// <summary>
-        /// Usings the sealed
+        ///     Usings the sealed
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]
@@ -93,8 +93,8 @@ namespace Alis.Benchmark.ClassVsStruct
 
             return sum;
         }
-        
-        
+
+
         /// <summary>
         ///     Usings the struct
         /// </summary>
@@ -111,9 +111,9 @@ namespace Alis.Benchmark.ClassVsStruct
 
             return sum;
         }
-        
+
         /// <summary>
-        /// Usings the record
+        ///     Usings the record
         /// </summary>
         /// <returns>The sum</returns>
         [Benchmark]

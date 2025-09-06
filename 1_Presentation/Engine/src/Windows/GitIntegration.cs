@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:GitIntegration.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -5,12 +34,12 @@ using System.IO;
 namespace Alis.App.Engine.Windows
 {
     /// <summary>
-    /// The git integration class
+    ///     The git integration class
     /// </summary>
     public class GitIntegration
     {
         /// <summary>
-        /// Checks if Git is installed on the system.
+        ///     Checks if Git is installed on the system.
         /// </summary>
         /// <returns>True if Git is installed, otherwise false.</returns>
         public static bool IsGitInstalled()
@@ -39,7 +68,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Checks if the current directory is a Git repository.
+        ///     Checks if the current directory is a Git repository.
         /// </summary>
         /// <param name="directory">The directory to check.</param>
         /// <returns>True if the directory is a Git repository, otherwise false.</returns>
@@ -57,7 +86,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Executes a Git command and returns the output.
+        ///     Executes a Git command and returns the output.
         /// </summary>
         /// <param name="arguments">The Git command arguments.</param>
         /// <param name="workingDirectory">The working directory for the command.</param>

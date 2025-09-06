@@ -1,9 +1,36 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:TextureSampleCustomBmp.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Resource;
-using Alis.Core.Graphic;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Extension.Graphic.Glfw.Enums;
@@ -13,41 +40,47 @@ using Image = Alis.Core.Graphic.Image;
 namespace Alis.Extension.Graphic.Glfw.Sample
 {
     /// <summary>
-    /// The texture sample custom bmp class
+    ///     The texture sample custom bmp class
     /// </summary>
     public class TextureSampleCustomBmp
     {
         /// <summary>
-        /// The ebo
+        ///     The ebo
         /// </summary>
         private uint ebo;
+
         /// <summary>
-        /// The running
+        ///     The running
         /// </summary>
         private bool running = true;
+
         /// <summary>
-        /// The shader program
+        ///     The shader program
         /// </summary>
         private uint shaderProgram;
+
         /// <summary>
-        /// The texture
+        ///     The texture
         /// </summary>
         private uint texture;
+
         /// <summary>
-        /// The vao
+        ///     The vao
         /// </summary>
         private uint vao;
+
         /// <summary>
-        /// The vbo
+        ///     The vbo
         /// </summary>
         private uint vbo;
+
         /// <summary>
-        /// The window
+        ///     The window
         /// </summary>
         private Window window;
 
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
         public void Draw()
         {
@@ -57,7 +90,7 @@ namespace Alis.Extension.Graphic.Glfw.Sample
         }
 
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         /// <exception cref="Exception">Failed to create GLFW window</exception>
         /// <exception cref="Exception">Failed to initialize GLFW</exception>
@@ -65,8 +98,11 @@ namespace Alis.Extension.Graphic.Glfw.Sample
         /// <exception cref="FileNotFoundException">Texture file not found </exception>
         public void Run()
         {
-            if (!Glfw.Init()) throw new Exception("Failed to initialize GLFW");
-            
+            if (!Glfw.Init())
+            {
+                throw new Exception("Failed to initialize GLFW");
+            }
+
             Gl.Initialize(Glfw.GetProcAddress);
 
             Glfw.WindowHint(Hint.ContextVersionMajor, 3);
@@ -75,7 +111,10 @@ namespace Alis.Extension.Graphic.Glfw.Sample
             Glfw.WindowHint(Hint.OpenglForwardCompatible, true);
 
             window = Glfw.CreateWindow(800, 600, "OpenGL Window", Monitor.None, Window.None);
-            if (window == Window.None) throw new Exception("Failed to create GLFW window");
+            if (window == Window.None)
+            {
+                throw new Exception("Failed to create GLFW window");
+            }
 
             Glfw.MakeContextCurrent(window);
             Glfw.SwapInterval(1);
@@ -85,8 +124,8 @@ namespace Alis.Extension.Graphic.Glfw.Sample
             int imageWidth = 16;
             int imageHeight = 32;
 
-            float scaleX = (float)imageWidth / windowWidth;
-            float scaleY = (float)imageHeight / windowHeight;
+            float scaleX = (float) imageWidth / windowWidth;
+            float scaleY = (float) imageHeight / windowHeight;
 
             float[] vertices =
             {
@@ -96,7 +135,7 @@ namespace Alis.Extension.Graphic.Glfw.Sample
                 -1 * scaleX, 1 * scaleY, 0.0f, 0.0f, 0.0f
             };
 
-            uint[] indices = { 0, 1, 3, 1, 2, 3 };
+            uint[] indices = {0, 1, 3, 1, 2, 3};
 
             vao = Gl.GenVertexArray();
             vbo = Gl.GenBuffer();
@@ -160,10 +199,16 @@ namespace Alis.Extension.Graphic.Glfw.Sample
             Gl.GlDeleteShader(fragmentShader);
 
             string imagePath = AssetManager.Find("tile000.bmp");
-            if (!File.Exists(imagePath)) throw new FileNotFoundException("Texture file not found", imagePath);
+            if (!File.Exists(imagePath))
+            {
+                throw new FileNotFoundException("Texture file not found", imagePath);
+            }
 
             Image bmp = Image.Load(imagePath);
-            if (bmp == null) throw new Exception("Invalid BMP file");
+            if (bmp == null)
+            {
+                throw new Exception("Invalid BMP file");
+            }
 
             texture = Gl.GenTexture();
             Gl.GlBindTexture(TextureTarget.Texture2D, texture);
@@ -185,7 +230,10 @@ namespace Alis.Extension.Graphic.Glfw.Sample
             while (running)
             {
                 Glfw.PollEvents();
-                if (Glfw.WindowShouldClose(window)) running = false;
+                if (Glfw.WindowShouldClose(window))
+                {
+                    running = false;
+                }
 
                 Gl.GlClear(ClearBufferMask.ColorBufferBit);
                 Draw();

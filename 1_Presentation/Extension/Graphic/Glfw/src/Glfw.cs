@@ -32,7 +32,6 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Dll;
 using Alis.Extension.Graphic.Glfw.Enums;
 using Alis.Extension.Graphic.Glfw.Properties;
@@ -1574,7 +1573,7 @@ namespace Alis.Extension.Graphic.Glfw
         [DllImport(Library, EntryPoint = "glfwGetMonitorWorkarea", CallingConvention = CallingConvention.Cdecl)]
         public static extern void GetMonitorWorkArea(IntPtr monitor, out int x, out int y, out int width,
             out int height);
-        
+
         /// <summary>
         ///     Returns the position, in screen coordinates, of the upper-left corner of the work area of the specified
         ///     monitor along with the work area size in screen coordinates.

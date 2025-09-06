@@ -36,9 +36,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Alis.App.Hub.Elements;
-
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
@@ -112,11 +110,10 @@ namespace Alis.App.Hub.Windows.Sections
             Logger.Info($"Opening project: {project.Name}");
 
             // TODO: fix the save config 
-            
+
             //string projectConfig = JsonSerializer.Serialize(project);
-            
-            
-            
+
+
             string configFilePath = Path.Combine(Path.GetTempPath(), "projectConfig.json");
             //File.WriteAllText(configFilePath, projectConfig);
 

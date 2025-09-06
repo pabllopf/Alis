@@ -30,6 +30,7 @@
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Components;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Builder.Core.Ecs.Entity
@@ -39,23 +40,23 @@ namespace Alis.Builder.Core.Ecs.Entity
     /// </summary>
     /// <seealso cref="IBuild{Transform}" />
     public class TransformBuilder :
-        IBuild<Alis.Core.Ecs.Components.Transform>,
+        IBuild<Transform>,
         IPosition2D<TransformBuilder, float>,
         IRotation<TransformBuilder, float>,
         IScale2D<TransformBuilder, float>
     {
         /// <summary>
-        /// The vector
+        ///     The vector
         /// </summary>
         private Vector2F position = new Vector2F(0, 0);
-        
+
         /// <summary>
-        /// The one
+        ///     The one
         /// </summary>
         private Complex rotation = Complex.One;
-        
+
         /// <summary>
-        /// The vector
+        ///     The vector
         /// </summary>
         private Vector2F scale = new Vector2F(1, 1);
 
@@ -63,7 +64,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         ///     Builds this instance
         /// </summary>
         /// <returns>The transform</returns>
-        public Alis.Core.Ecs.Components.Transform Build() => new Alis.Core.Ecs.Components.Transform(position, rotation, scale);
+        public Transform Build() => new Transform(position, rotation, scale);
 
         /// <summary>
         ///     Positions the x

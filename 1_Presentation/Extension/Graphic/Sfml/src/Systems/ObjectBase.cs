@@ -1,75 +1,101 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ObjectBase.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Reflection;
 using Alis.Core.Aspect.Data.Dll;
+using Alis.Extension.Graphic.Sfml.Properties;
 
 namespace Alis.Extension.Graphic.Sfml.Systems
 {
-    
     /// <summary>
-    /// The ObjectBase class is an abstract base for every
-    /// SFML object. It's meant for internal use only
+    ///     The ObjectBase class is an abstract base for every
+    ///     SFML object. It's meant for internal use only
     /// </summary>
-    
     public abstract class ObjectBase : IDisposable
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ObjectBase"/> class
+        ///     The zero
         /// </summary>
-        static ObjectBase() 
-        {
-            EmbeddedDllClass.ExtractEmbeddedDlls("sfml", DllType.File, Properties.SfmlDlls.SfmlDllBytes, Assembly.GetAssembly(typeof(Properties.SfmlDlls)));
-        }
-        
-        
+        private IntPtr myCPointer = IntPtr.Zero;
+
         /// <summary>
-        /// Construct the object from a pointer to the C library object
+        ///     Initializes a new instance of the <see cref="ObjectBase" /> class
+        /// </summary>
+        static ObjectBase()
+        {
+            EmbeddedDllClass.ExtractEmbeddedDlls("sfml", DllType.File, SfmlDlls.SfmlDllBytes, Assembly.GetAssembly(typeof(SfmlDlls)));
+        }
+
+
+        /// <summary>
+        ///     Construct the object from a pointer to the C library object
         /// </summary>
         /// <param name="cPointer">Internal pointer to the object in the C libraries</param>
-        
-        public ObjectBase(IntPtr cPointer)
-        {
-            myCPointer = cPointer;
-        }
+        public ObjectBase(IntPtr cPointer) => myCPointer = cPointer;
 
-        
-        /// <summary>
-        /// Dispose the object
-        /// </summary>
-        
-        ~ObjectBase()
-        {
-            Dispose(false);
-        }
 
-        
         /// <summary>
-        /// Access to the internal pointer of the object.
-        /// For internal use only
+        ///     Access to the internal pointer of the object.
+        ///     For internal use only
         /// </summary>
-        
+
         public IntPtr CPointer
         {
-            get { return myCPointer; }
-            protected set { myCPointer = value; }
+            get => myCPointer;
+            protected set => myCPointer = value;
         }
 
-        
+
         /// <summary>
-        /// Explicitly dispose the object
+        ///     Explicitly dispose the object
         /// </summary>
-        
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        
+
         /// <summary>
-        /// Destroy the object
+        ///     Dispose the object
+        /// </summary>
+        ~ObjectBase()
+        {
+            Dispose(false);
+        }
+
+
+        /// <summary>
+        ///     Destroy the object
         /// </summary>
         /// <param name="disposing">Is the GC disposing the object, or is it an explicit call?</param>
-        
         private void Dispose(bool disposing)
         {
             if (myCPointer != IntPtr.Zero)
@@ -79,17 +105,11 @@ namespace Alis.Extension.Graphic.Sfml.Systems
             }
         }
 
-        
-        /// <summary>
-        /// Destroy the object (implementation is left to each derived class)
-        /// </summary>
-        /// <param name="disposing">Is the GC disposing the object, or is it an explicit call?</param>
-        
-        public abstract void Destroy(bool disposing);
 
         /// <summary>
-        /// The zero
+        ///     Destroy the object (implementation is left to each derived class)
         /// </summary>
-        private IntPtr myCPointer = IntPtr.Zero;
+        /// <param name="disposing">Is the GC disposing the object, or is it an explicit call?</param>
+        public abstract void Destroy(bool disposing);
     }
 }

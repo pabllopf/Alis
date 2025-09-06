@@ -38,27 +38,26 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Input
     public class InputSettingBuilder :
         IBuild<InputSetting>
     {
-
         /// <summary>
-        /// The sensitivity
+        ///     The sensitivity
         /// </summary>
         private float sensitivity = 1.0f;
-        
-        /// <summary>
-        /// Mouses the sensitivity using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The input setting builder</returns>
-        public InputSettingBuilder MouseSensitivity(float value)
-        {
-            this.sensitivity = value;
-            return this;
-        }
 
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The audio setting</returns>
         public InputSetting Build() => new InputSetting(sensitivity);
+
+        /// <summary>
+        ///     Mouses the sensitivity using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The input setting builder</returns>
+        public InputSettingBuilder MouseSensitivity(float value)
+        {
+            sensitivity = value;
+            return this;
+        }
     }
 }

@@ -30,9 +30,7 @@
 using System;
 using System.Reflection;
 using System.Text;
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Dll;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui.Properties;
 
@@ -65,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui
             {
                 return;
             }
-            
+
             EmbeddedDllClass.ExtractEmbeddedDlls("cimgui", DllType.Lib, ImGuiDlls.ImGuiDllBytes, Assembly.GetExecutingAssembly());
         }
 

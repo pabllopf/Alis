@@ -138,7 +138,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
         ///     The sum
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct Sum : IAction<Component1, Component2>
+        public struct Sum : IAction<Component1, Component2>
         {
             /// <summary>
             ///     Runs the t 0

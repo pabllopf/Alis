@@ -1,42 +1,72 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SquareUnfilledExample.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 
 namespace Alis.Core.Graphic.Sample.Samples
 {
     /// <summary>
-    /// Ejemplo: Renderiza dos cuadrados sin rellenar en rojo
+    ///     Ejemplo: Renderiza dos cuadrados sin rellenar en rojo
     /// </summary>
     public class SquareUnfilledExample : IExample
     {
         /// <summary>
-        /// The shader program
+        ///     The shader program
         /// </summary>
         private uint shaderProgram;
+
         /// <summary>
-        /// The vao
+        ///     The vao
         /// </summary>
         private uint vao;
+
         /// <summary>
-        /// The vbo
+        ///     The vbo
         /// </summary>
         private uint vbo;
 
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
             float[] vertices =
             {
                 // Top-left
-                -0.5f,  0.5f, 0.0f,
+                -0.5f, 0.5f, 0.0f,
                 // Top-right
-                 0.5f,  0.5f, 0.0f,
+                0.5f, 0.5f, 0.0f,
                 // Bottom-right
-                 0.5f, -0.5f, 0.0f,
+                0.5f, -0.5f, 0.0f,
                 // Bottom-left
                 -0.5f, -0.5f, 0.0f
             };
@@ -55,7 +85,9 @@ namespace Alis.Core.Graphic.Sample.Samples
             finally
             {
                 if (handle.IsAllocated)
+                {
                     handle.Free();
+                }
             }
 
             string vertexShaderSource = @"
@@ -99,7 +131,7 @@ namespace Alis.Core.Graphic.Sample.Samples
         }
 
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
         public void Draw()
         {
@@ -113,7 +145,7 @@ namespace Alis.Core.Graphic.Sample.Samples
         }
 
         /// <summary>
-        /// Cleanups this instance
+        ///     Cleanups this instance
         /// </summary>
         public void Cleanup()
         {

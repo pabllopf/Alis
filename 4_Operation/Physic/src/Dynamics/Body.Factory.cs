@@ -43,7 +43,6 @@ namespace Alis.Core.Physic.Dynamics
     public partial class Body
     {
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="shape"></param>
         /// <returns></returns>

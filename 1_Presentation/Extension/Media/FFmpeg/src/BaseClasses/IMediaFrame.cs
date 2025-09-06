@@ -39,12 +39,12 @@ namespace Alis.Extension.Media.FFmpeg.BaseClasses
         /// <summary>
         ///     Contains raw frame data
         /// </summary>
-        public byte[] RawData { get; }
+        byte[] RawData { get; }
 
         /// <summary>
         ///     Loads raw data into memory
         /// </summary>
         /// <param name="stream">Stream containing raw data</param>
-        public bool Load(Stream stream);
+        bool Load(Stream stream);
     }
 }

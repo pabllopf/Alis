@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:QueryEnumerable.cs
+//  File:QueryEnumerable.8.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -42,9 +42,6 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     Gets the enumerator over a query.
         /// </summary>
-        public GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8> GetEnumerator()
-        {
-            return new GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>(query);
-        }
+        public GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8> GetEnumerator() => new GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6, T7, T8>(query);
     }
 }

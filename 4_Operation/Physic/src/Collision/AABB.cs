@@ -237,13 +237,12 @@ namespace Alis.Core.Physic.Collision
             return true;
         }
 
-      /// <summary>
-      /// 
-      /// </summary>
-      /// <param name="output"></param>
-      /// <param name="input"></param>
-      /// <param name="doInteriorCheck"></param>
-      /// <returns></returns>
+        /// <summary>
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="input"></param>
+        /// <param name="doInteriorCheck"></param>
+        /// <returns></returns>
         public bool RayCast(out RayCastOutput output, ref RayCastInput input, bool doInteriorCheck = true)
         {
             // From Real-time Collision Detection, p179.

@@ -69,7 +69,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The is open
         /// </summary>
-        private bool isOpen = false;
+        private bool isOpen;
 
         /// <summary>
         ///     The is playing
@@ -133,9 +133,8 @@ namespace Alis.App.Engine.Windows
                 {
                     ImGui.ProgressBar(progress, new Vector2F(-10, 0), $"{currentTime} / {totalTime} ");
                 }
-                
             }
-            
+
             ImGui.End();
         }
     }

@@ -1,5 +1,35 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:CommandBuffer.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Kernel.Events;
@@ -186,7 +216,10 @@ namespace Alis.Core.Ecs.Kernel
             {
                 GameObjectIdOnly item = createCommand.Entity;
                 ref GameObjectLocation record = ref Scene.EntityTable[item.ID];
-                if (record.Version == item.Version) Scene.DeleteEntityWithoutEvents(item.ToEntity(Scene), ref record);
+                if (record.Version == item.Version)
+                {
+                    Scene.DeleteEntityWithoutEvents(item.ToEntity(Scene), ref record);
+                }
             }
 
             RemoveComponentBuffer.Clear();
@@ -203,7 +236,10 @@ namespace Alis.Core.Ecs.Kernel
         public bool Playback()
         {
             if (!Scene.AllowStructualChanges)
+            {
                 throw new InvalidOperationException("The scene currently does not allow structural changes!");
+            }
+
             return PlaybackInternal();
         }
 
@@ -217,7 +253,9 @@ namespace Alis.Core.Ecs.Kernel
                             (RemoveComponentBuffer.Count > 0) | (AddComponentBuffer.Count > 0);
 
             if (!hasItems)
+            {
                 return hasItems;
+            }
 
             while (CreateEntityBuffer.TryPop(out CreateCommand createCommand))
             {
@@ -232,8 +270,10 @@ namespace Alis.Core.Ecs.Kernel
                     Span<ComponentHandle> handles = CreateEntityComponents.AsSpan()
                         .Slice(createCommand.BufferIndex, createCommand.BufferLength);
                     for (int i = 0; i < handles.Length; i++)
+                    {
                         id = Scene.AddComponentLookup.FindAdjacentArchetypeId(handles[i].ComponentId, id, Scene,
                             ArchetypeEdgeType.AddComponent);
+                    }
 
                     Scene.MoveEntityToArchetypeAdd(runners, concrete, ref lookup, out GameObjectLocation location,
                         id.Archetype(Scene)!);
@@ -246,7 +286,10 @@ namespace Alis.Core.Ecs.Kernel
             {
                 //double check that its alive
                 ref GameObjectLocation record = ref Scene.EntityTable[item.ID];
-                if (record.Version == item.Version) Scene.DeleteEntity(item.ToEntity(Scene), ref record);
+                if (record.Version == item.Version)
+                {
+                    Scene.DeleteEntity(item.ToEntity(Scene), ref record);
+                }
             }
 
             while (RemoveComponentBuffer.TryPop(out DeleteComponent item))
@@ -254,7 +297,9 @@ namespace Alis.Core.Ecs.Kernel
                 int id = item.Entity.ID;
                 ref GameObjectLocation record = ref Scene.EntityTable[id];
                 if (record.Version == item.Entity.Version)
+                {
                     Scene.RemoveComponent(item.Entity.ToEntity(Scene), ref record, item.ComponentId);
+                }
             }
 
             while (AddComponentBuffer.TryPop(out AddComponent command))
@@ -277,8 +322,8 @@ namespace Alis.Core.Ecs.Kernel
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
                         EventRecord events = Scene.EventLookup[command.Entity];
 #else
-                    ref EventRecord events =
-                        ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrNullRef(Scene.EventLookup, command.Entity);
+                        ref EventRecord events =
+                            ref CollectionsMarshal.GetValueRefOrNullRef(Scene.EventLookup, command.Entity);
 #endif
                         events.Add.NormalEvent.Invoke(concrete, command.ComponentHandle.ComponentId);
                         runner.InvokeGenericActionWith(events.Add.GenericEvent, concrete, location.Index);
@@ -292,18 +337,22 @@ namespace Alis.Core.Ecs.Kernel
             {
                 ref GameObjectLocation record = ref Scene.EntityTable[command.Entity.ID];
                 if (record.Version == command.Entity.Version)
+                {
                     Scene.MoveEntityToArchetypeIso(command.Entity.ToEntity(Scene), ref record,
                         Archetype.GetAdjacentArchetypeLookup(Scene,
                             ArchetypeEdgeKey.Tag(command.TagId, record.Archetype.Id, ArchetypeEdgeType.AddTag)));
+                }
             }
 
             while (DetachTagEntityBuffer.TryPop(out TagCommand command))
             {
                 ref GameObjectLocation record = ref Scene.EntityTable[command.Entity.ID];
                 if (record.Version == command.Entity.Version)
+                {
                     Scene.MoveEntityToArchetypeIso(command.Entity.ToEntity(Scene), ref record,
                         Archetype.GetAdjacentArchetypeLookup(Scene,
                             ArchetypeEdgeKey.Tag(command.TagId, record.Archetype.Id, ArchetypeEdgeType.RemoveTag)));
+                }
             }
 
             IsInactive = true;
@@ -317,7 +366,10 @@ namespace Alis.Core.Ecs.Kernel
         /// <exception cref="InvalidOperationException">Use CommandBuffer.GameObject() to begin creating an gameObject!</exception>
         private void AssertCreatingEntity()
         {
-            if (LastCreateEntityComponentsBufferIndex < 0) Throw();
+            if (LastCreateEntityComponentsBufferIndex < 0)
+            {
+                Throw();
+            }
 
             [MethodImpl(MethodImplOptions.NoInlining)]
             static void Throw()
@@ -333,7 +385,6 @@ namespace Alis.Core.Ecs.Kernel
         {
             IsInactive = false;
         }
-
 
 
         /// <summary>
@@ -379,9 +430,6 @@ namespace Alis.Core.Ecs.Kernel
         }
 
 
-
-
-
         /// <summary>
         ///     Begins to create an gameObject, which will be resolved when <see cref="Playback" /> is called.
         /// </summary>
@@ -391,8 +439,11 @@ namespace Alis.Core.Ecs.Kernel
         {
             SetIsActive();
             if (LastCreateEntityComponentsBufferIndex >= 0)
+            {
                 throw new InvalidOperationException(
                     "An gameObject is currently being created! Use 'End' to finish an gameObject creation!");
+            }
+
             LastCreateEntityComponentsBufferIndex = CreateEntityComponents.Count;
             return this;
         }
@@ -429,10 +480,7 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         /// <returns><see langword="this" /> instance, for method chaining.</returns>
         /// <exception cref="InvalidOperationException"><see cref="Entity" /> has not been called."/></exception>
-        public CommandBuffer WithBoxed(object component)
-        {
-            return WithBoxed(component.GetType(), component);
-        }
+        public CommandBuffer WithBoxed(object component) => WithBoxed(component.GetType(), component);
 
         /// <summary>
         ///     Records <paramref name="component" /> to be part of the gameObject created when resolved as a component type of
@@ -440,13 +488,11 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         /// <returns><see langword="this" /> instance, for method chaining.</returns>
         /// <exception cref="InvalidOperationException"><see cref="Entity" /> has not been called."/></exception>
-        public CommandBuffer WithBoxed(Type type, object component)
-        {
-            return WithBoxed(Component.GetComponentId(type), component);
-        }
+        public CommandBuffer WithBoxed(Type type, object component) => WithBoxed(Component.GetComponentId(type), component);
 
         /// <summary>
-        ///     Finishes recording gameObject creation and returns an gameObject with zero components. Recorded components will be added on
+        ///     Finishes recording gameObject creation and returns an gameObject with zero components. Recorded components will be
+        ///     added on
         ///     playback.
         /// </summary>
         /// <returns>The created gameObject ID</returns>
@@ -461,7 +507,5 @@ namespace Alis.Core.Ecs.Kernel
             LastCreateEntityComponentsBufferIndex = -1;
             return e;
         }
-
-
     }
 }

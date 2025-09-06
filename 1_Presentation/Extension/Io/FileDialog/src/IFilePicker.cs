@@ -38,6 +38,6 @@ namespace Alis.Extension.Io.FileDialog
         ///     Chooses the file
         /// </summary>
         /// <returns>The string</returns>
-        public string ChooseFile();
+        string ChooseFile();
     }
 }

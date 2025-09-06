@@ -37,11 +37,11 @@ namespace Alis.Core.Ecs.Systems.Configuration.Audio
         /// <summary>
         ///     Gets or sets the value of the volume
         /// </summary>
-        public int Volume { get; set; }
+        int Volume { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the mute
         /// </summary>
-        public bool Mute { get; set; }
+        bool Mute { get; set; }
     }
 }

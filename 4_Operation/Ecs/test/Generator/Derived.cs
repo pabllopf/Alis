@@ -32,20 +32,20 @@ using Alis.Core.Aspect.Fluent.Components;
 namespace Alis.Core.Ecs.Test.Generator
 {
     /// <summary>
-    /// The derived class
+    ///     The derived class
     /// </summary>
-    /// <seealso cref="InGlobalNamespace"/>
+    /// <seealso cref="InGlobalNamespace" />
     public partial class Derived : InGlobalNamespace
     {
         /// <summary>
-        /// The derived inner class
+        ///     The derived inner class
         /// </summary>
-        /// <seealso cref="Derived"/>
-        /// <seealso cref="IInitable"/>
+        /// <seealso cref="Derived" />
+        /// <seealso cref="IInitable" />
         public class DerivedInner : Derived, IInitable
         {
             /// <summary>
-            /// Inits the self
+            ///     Inits the self
             /// </summary>
             /// <param name="self">The self</param>
             /// <exception cref="InitalizeException"></exception>
@@ -56,14 +56,14 @@ namespace Alis.Core.Ecs.Test.Generator
         }
 
         /// <summary>
-        /// The warning class
+        ///     The warning class
         /// </summary>
-        /// <seealso cref="IComponent"/>
-        /// <seealso cref="IUniformComponent{int}"/>
+        /// <seealso cref="IComponent" />
+        /// <seealso cref="IUniformComponent{int}" />
         protected partial class Warning : IComponent, IComponent<int>
         {
             /// <summary>
-            /// Updates this instance
+            ///     Updates this instance
             /// </summary>
             /// <exception cref="UpdateException"></exception>
             public void Update()
@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs.Test.Generator
             }
 
             /// <summary>
-            /// Updates the uniform
+            ///     Updates the uniform
             /// </summary>
             /// <param name="uniform">The uniform</param>
             /// <exception cref="UpdateException"></exception>

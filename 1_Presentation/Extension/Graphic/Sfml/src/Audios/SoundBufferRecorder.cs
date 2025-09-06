@@ -1,85 +1,101 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SoundBufferRecorder.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System.Collections.Generic;
 
 namespace Alis.Extension.Graphic.Sfml.Audios
 {
-    
     /// <summary>
-    /// Specialized SoundRecorder which saves the captured
-    /// audio data into a sound buffer
+    ///     Specialized SoundRecorder which saves the captured
+    ///     audio data into a sound buffer
     /// </summary>
-    
     public class SoundBufferRecorder : SoundRecorder
     {
-        
         /// <summary>
-        /// Sound buffer containing the captured audio data
-        ///
-        /// The sound buffer is valid only after the capture has ended.
-        /// This function provides a reference to the internal
-        /// sound buffer, but you should make a copy of it if you want
-        /// to make any modifications to it.
+        ///     The list
         /// </summary>
-        
-        public SoundBuffer SoundBuffer
-        {
-            get { return mySoundBuffer; }
-        }
+        private readonly List<short> mySamplesArray = new List<short>();
 
-        
         /// <summary>
-        /// Provide a string describing the object
+        ///     The my sound buffer
+        /// </summary>
+        private SoundBuffer mySoundBuffer;
+
+        /// <summary>
+        ///     Sound buffer containing the captured audio data
+        ///     The sound buffer is valid only after the capture has ended.
+        ///     This function provides a reference to the internal
+        ///     sound buffer, but you should make a copy of it if you want
+        ///     to make any modifications to it.
+        /// </summary>
+
+        public SoundBuffer SoundBuffer => mySoundBuffer;
+
+
+        /// <summary>
+        ///     Provide a string describing the object
         /// </summary>
         /// <returns>String description of the object</returns>
-        
-        public override string ToString()
-        {
-            return "[SoundBufferRecorder]" +
-                   " SampleRate(" + SampleRate + ")" +
-                   " SoundBuffer(" + SoundBuffer + ")";
-        }
+        public override string ToString() => "[SoundBufferRecorder]" +
+                                             " SampleRate(" + SampleRate + ")" +
+                                             " SoundBuffer(" + SoundBuffer + ")";
 
-        
+
         /// <summary>
-        /// Called when a new capture starts
+        ///     Called when a new capture starts
         /// </summary>
         /// <returns>False to abort recording audio data, true to continue</returns>
-        
         public override bool OnStart()
         {
             mySamplesArray.Clear();
             return true;
         }
 
-        
+
         /// <summary>
-        /// Process a new chunk of recorded samples
+        ///     Process a new chunk of recorded samples
         /// </summary>
         /// <param name="samples">Array of samples to process</param>
         /// <returns>False to stop recording audio data, true to continue</returns>
-        
         public override bool OnProcessSamples(short[] samples)
         {
             mySamplesArray.AddRange(samples);
             return true;
         }
 
-        
+
         /// <summary>
-        /// Called when the current capture stops
+        ///     Called when the current capture stops
         /// </summary>
-        
         public override void OnStop()
         {
             mySoundBuffer = new SoundBuffer(mySamplesArray.ToArray(), 1, SampleRate);
         }
-
-        /// <summary>
-        /// The list
-        /// </summary>
-        private List<short> mySamplesArray = new List<short>();
-        /// <summary>
-        /// The my sound buffer
-        /// </summary>
-        private SoundBuffer mySoundBuffer = null;
     }
 }

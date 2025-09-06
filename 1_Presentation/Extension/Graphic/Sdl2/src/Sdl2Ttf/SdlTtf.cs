@@ -29,7 +29,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Definition;
 using Version = Alis.Extension.Graphic.Sdl2.Structs.Version;
 

@@ -29,7 +29,6 @@
 
 using System.Collections.Generic;
 
-
 namespace Alis.Core.Ecs.Systems.Manager.Scene
 {
     /// <summary>
@@ -40,7 +39,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// <summary>
         ///     Gets or sets the value of the scenes
         /// </summary>
-        
+
         public List<int> Scenes { get; set; } = new List<int>();
 
         /// <summary>
@@ -64,8 +63,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         ///     Loads this instance
         /// </summary>
         /// <returns>The scenes map</returns>
-        public ScenesMap Load()
-        {
+        public ScenesMap Load() =>
             /*
             string pathFile = Path.Combine(Environment.CurrentDirectory, "Data", "ScenesMap.json");
             if (!File.Exists(pathFile))
@@ -91,9 +89,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
                 DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                 SerializationOptions = JsonSerializationOptions.Default
             });*/
-
-            return new ScenesMap();
-        }
+            new ScenesMap();
 
         /// <summary>
         ///     Saves this instance

@@ -30,7 +30,6 @@
 using System;
 using System.Text;
 
-
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 {
     /// <summary>

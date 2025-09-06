@@ -40,19 +40,28 @@ namespace Alis.Benchmark.CustomCollections.Stacks
     public class StacksBenchmarks : IDisposable
     {
         /// <summary>
-        ///     The array size
+        ///     The fastest stack
         /// </summary>
-        [Params(10)] public int ArraySize;
-        
+        private FastestStack<int> _fastestStack;
+
         /// <summary>
         ///     The pooled stack
         /// </summary>
         private PooledStack<int> _pooledStack;
-        
+
         /// <summary>
-        /// The fastest stack
+        ///     The array size
         /// </summary>
-        private FastestStack<int> _fastestStack;
+        [Params(10)] public int ArraySize;
+
+        /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            _pooledStack?.Dispose();
+            _fastestStack.Dispose();
+        }
 
         // Inicialización
         /// <summary>
@@ -76,9 +85,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 _pooledStack[i] = i;
             }
         }
-        
+
         /// <summary>
-        /// Fastests the stack array iterate fastest
+        ///     Fastests the stack array iterate fastest
         /// </summary>
         [Benchmark(Description = "[FastestStack]_Initialize()")]
         public void Fastest_Stack_ArrayIterate_Fastest()
@@ -88,7 +97,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 _fastestStack[i] = i;
             }
         }
-        
+
         /// <summary>
         ///     Pooleds the stack pop
         /// </summary>
@@ -99,15 +108,15 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             {
                 _pooledStack.Push(i);
             }
-        
+
             for (int i = 0; i < ArraySize; i++)
             {
                 _ = _pooledStack.Pop();
             }
         }
-        
+
         /// <summary>
-        /// Fastests the stack pop fastest
+        ///     Fastests the stack pop fastest
         /// </summary>
         [Benchmark(Description = "[FASTEST] Pop elements")]
         public void Fastest_Stack_Pop_Fastest()
@@ -116,14 +125,14 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             {
                 _fastestStack.Push(i);
             }
-        
+
             for (int i = 0; i < ArraySize; i++)
             {
                 _ = _fastestStack.Pop();
             }
         }
-        
-       /// <summary>
+
+        /// <summary>
         ///     Pooleds the stack push
         /// </summary>
         [Benchmark(Description = "[POOLED] Push elements")]
@@ -135,9 +144,9 @@ namespace Alis.Benchmark.CustomCollections.Stacks
                 _pooledStack.Push(i);
             }
         }
-        
+
         /// <summary>
-        /// Fastests the stack push fastest
+        ///     Fastests the stack push fastest
         /// </summary>
         [Benchmark(Description = "[FASTEST] Push elements")]
         public void Fastest_Stack_Push_Fastest()
@@ -149,7 +158,7 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             }
         }
 
-      /// <summary>
+        /// <summary>
         ///     Pooleds the stack peek
         /// </summary>
         [Benchmark(Description = "[POOLED] Peek elements")]
@@ -160,13 +169,13 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             {
                 _pooledStack.Push(i); // Inicializa la pila
             }
-        
+
             for (int i = 0; i < ArraySize; i++)
             {
                 _ = _pooledStack.Peek();
             }
         }
-      
+
         /// <summary>
         ///     Fastests the stack peek
         /// </summary>
@@ -178,20 +187,11 @@ namespace Alis.Benchmark.CustomCollections.Stacks
             {
                 _fastestStack.Push(i); // Inicializa la pila
             }
-        
+
             for (int i = 0; i < ArraySize; i++)
             {
                 _ = _fastestStack.Peek();
             }
-        }
-
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            _pooledStack?.Dispose();
-            _fastestStack.Dispose();
         }
     }
 }

@@ -38,30 +38,30 @@ namespace Alis.Extension.Plugin
         ///     Describes whether this instance is windows
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsWindows();
+        bool IsWindows();
 
         /// <summary>
         ///     Describes whether this instance is osx
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsOsx();
+        bool IsOsx();
 
         /// <summary>
         ///     Describes whether this instance is linux
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsLinux();
+        bool IsLinux();
 
         /// <summary>
         ///     Describes whether this instance isi os
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsiOs();
+        bool IsiOs();
 
         /// <summary>
         ///     Describes whether this instance is android
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsAndroid();
+        bool IsAndroid();
     }
 }

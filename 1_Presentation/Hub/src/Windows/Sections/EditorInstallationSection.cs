@@ -34,9 +34,7 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Alis.App.Hub.Elements;
-
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 
@@ -229,11 +227,11 @@ namespace Alis.App.Hub.Windows.Sections
             {
                 client.DefaultRequestHeaders.Add("User-Agent", "request");
                 string response = await client.GetStringAsync("https://api.github.com/repos/pabllopf/alis/releases");
-                
+
                 // TODO: Fix deserialization
                 //List<Dictionary<string, object>> releases = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(response);
 
-                List<Dictionary<string, object>> releases = new List<Dictionary<string, object>>()
+                List<Dictionary<string, object>> releases = new List<Dictionary<string, object>>
                 {
                     new Dictionary<string, object>
                     {
@@ -245,7 +243,7 @@ namespace Alis.App.Hub.Windows.Sections
                     }
                 };
 
-                List<string> versionList = new List<string>()
+                List<string> versionList = new List<string>
                 {
                     "v0.9.0",
                     "v0.8.0",
@@ -257,7 +255,7 @@ namespace Alis.App.Hub.Windows.Sections
                     "v0.2.0",
                     "v0.1.0"
                 };
-                
+
                 foreach (Dictionary<string, object> release in releases)
                 {
                     string version = release["tag_name"]?.ToString();

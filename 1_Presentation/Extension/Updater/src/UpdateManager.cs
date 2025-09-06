@@ -37,9 +37,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-
 using Alis.Core.Aspect.Logging;
-
 using Alis.Extension.Updater.Events;
 using Alis.Extension.Updater.Services.Api;
 using Alis.Extension.Updater.Services.Files;
@@ -136,13 +134,13 @@ namespace Alis.Extension.Updater
         public async Task<bool> Start(CancellationToken ctsToken)
         {
             try
-            { 
+            {
                 if (ctsToken.IsCancellationRequested)
                 {
                     Logger.Info("Exiting update process due to cancellation request.");
                     return false;
                 }
-                
+
                 Dictionary<string, object> latestRelease = await GetLatestReleaseAsync();
                 if (latestRelease == null)
                 {
@@ -348,33 +346,34 @@ namespace Alis.Extension.Updater
             string response = await httpClient.GetStringAsync(GitHubApiService.ApiUrl);
             //List<Dictionary<string, object>> releases = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(response);
 
-            List<Dictionary<string, object>> releases = new List<Dictionary<string, object>>()
+            List<Dictionary<string, object>> releases = new List<Dictionary<string, object>>
             {
                 new Dictionary<string, object>
                 {
-                    { "tag_name", "v0.7.5" },
-                    { "assets", new object[]
+                    {"tag_name", "v0.7.5"},
+                    {
+                        "assets", new object[]
                         {
                             new Dictionary<string, object>
                             {
-                                { "name", "app-win-x64.zip" },
-                                { "browser_download_url", "https://example.com/app-win-x64.zip" }
+                                {"name", "app-win-x64.zip"},
+                                {"browser_download_url", "https://example.com/app-win-x64.zip"}
                             },
                             new Dictionary<string, object>
                             {
-                                { "name", "app-linux-x64.zip" },
-                                { "browser_download_url", "https://example.com/app-linux-x64.zip" }
+                                {"name", "app-linux-x64.zip"},
+                                {"browser_download_url", "https://example.com/app-linux-x64.zip"}
                             },
                             new Dictionary<string, object>
                             {
-                                { "name", "app-osx-x64.dmg" },
-                                { "browser_download_url", "https://example.com/app-osx-x64.dmg" }
+                                {"name", "app-osx-x64.dmg"},
+                                {"browser_download_url", "https://example.com/app-osx-x64.dmg"}
                             }
                         }
                     }
-                },
+                }
             };
-            
+
             foreach (Dictionary<string, object> release in releases)
             {
                 string version = release["tag_name"]?.ToString();

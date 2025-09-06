@@ -28,20 +28,16 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.IO;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
-
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Configuration.Physic;
 using Alis.Core.Ecs.Systems.Scope;
-using Alis.Core.Graphic;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms;
+using Alis.Core.Graphic.Platforms.Osx;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
 
 namespace Alis.Core.Ecs.Systems.Manager.Graphic
@@ -58,31 +54,29 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         private const float PixelsPerMeter = 32.0f;
 
         /// <summary>
+        ///     The platform
+        /// </summary>
+        private INativePlatform platform;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
         public GraphicManager(Context context) : base(context)
         {
-            
         }
-        
+
         /// <summary>
-        /// Gets or sets the value of the renderer
+        ///     Gets or sets the value of the renderer
         /// </summary>
         public IntPtr Renderer { get; set; }
-        
-        /// <summary>
-        /// The platform
-        /// </summary>
-        private  INativePlatform platform;
 
         /// <summary>
         ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
-            
 #if OSX
-            platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
+            platform = new MacNativePlatform();
 #elif WIN
             platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
 #elif LINUX
@@ -90,18 +84,17 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
 #else
             throw new Exception("Sistema operativo no soportado");
 #endif
-            
-            
+
+
             platform.Initialize(800, 600, "C# + OpenGL Platform");
             platform.MakeContextCurrent();
             Gl.Initialize(platform.GetProcAddress);
             //Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
             //Gl.GlEnable(EnableCap.DepthTest);
-            
+
             platform.ShowWindow();
-           
         }
-        
+
 
         /// <summary>
         ///     Ons the start
@@ -116,7 +109,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         public override void OnBeforeDraw()
         {
         }
-        
+
         /// <summary>
         ///     Ons the draw
         /// </summary>
@@ -127,12 +120,12 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             {
                 Context.Exit();
             }
-            
+
             if (platform.TryGetLastKeyPressed(out ConsoleKey key))
             {
                 Logger.Info($"Tecla pulsada: {key}");
             }
-            
+
             float pixelsPerMeter = PixelsPerMeter;
             Setting contextSetting = Context.Setting;
             PhysicSetting physicSettings = contextSetting.Physic;
@@ -145,48 +138,48 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
 
             // Clear the screen
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
-            
-           GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.World
-               .Query<With<Sprite>>()
-               .EnumerateWithEntities();
-           
-           GameObjectQueryEnumerator.QueryEnumerable boxColliderGameObjects = Context.SceneManager.World
-               .Query<With<BoxCollider>>()
-               .EnumerateWithEntities();
-           
-           foreach (RefTuple<Camera> camera in Context.SceneManager.World
-                       .Query<With<Camera>>()
-                       .Enumerate<Camera>())
-           {
-               foreach (GameObject spriteGameobject in spriteGameObjects)
-               {
-                   if (spriteGameobject.Has<Animator>() && spriteGameobject.Has<Sprite>())
-                   {
-                       ref Animator animator = ref spriteGameobject.Get<Animator>();
-                       ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
-                       animator.DrawAnimation(ref sprite);
-                   }
-                   
-                   if (spriteGameobject.Has<Sprite>())
-                   {
-                       ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
-                       sprite.Render(spriteGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
-                   }
-               }
-               
-               foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
-               {
-                   if (boxColliderGameobject.Has<BoxCollider>())
-                   {
-                       ref BoxCollider boxCollider = ref boxColliderGameobject.Get<BoxCollider>();
-                       boxCollider.Render(boxColliderGameobject,  camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
-                   }
-               }
-           }
-            
+
+            GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.World
+                .Query<With<Sprite>>()
+                .EnumerateWithEntities();
+
+            GameObjectQueryEnumerator.QueryEnumerable boxColliderGameObjects = Context.SceneManager.World
+                .Query<With<BoxCollider>>()
+                .EnumerateWithEntities();
+
+            foreach (RefTuple<Camera> camera in Context.SceneManager.World
+                         .Query<With<Camera>>()
+                         .Enumerate<Camera>())
+            {
+                foreach (GameObject spriteGameobject in spriteGameObjects)
+                {
+                    if (spriteGameobject.Has<Animator>() && spriteGameobject.Has<Sprite>())
+                    {
+                        ref Animator animator = ref spriteGameobject.Get<Animator>();
+                        ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
+                        animator.DrawAnimation(ref sprite);
+                    }
+
+                    if (spriteGameobject.Has<Sprite>())
+                    {
+                        ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
+                        sprite.Render(spriteGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
+                    }
+                }
+
+                foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
+                {
+                    if (boxColliderGameobject.Has<BoxCollider>())
+                    {
+                        ref BoxCollider boxCollider = ref boxColliderGameobject.Get<BoxCollider>();
+                        boxCollider.Render(boxColliderGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
+                    }
+                }
+            }
+
             // Swap the buffers to display the triangle
             //Glfw.SwapBuffers(Window);
-            
+
             platform.SwapBuffers();
             int glError = Gl.GlGetError();
             if (glError != 0)

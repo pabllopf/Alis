@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:FastestFrugalStack.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -23,16 +52,16 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         private int _nextIndex = 0;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FastestFrugalStack"/> class
+        ///     Initializes a new instance of the <see cref="FastestFrugalStack" /> class
         /// </summary>
         public FastestFrugalStack()
         {
             _buffer = Array.Empty<T>();
             _nextIndex = 0;
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="FastestFrugalStack"/> class
+        ///     Initializes a new instance of the <see cref="FastestFrugalStack" /> class
         /// </summary>
         /// <param name="capacity">The capacity</param>
         public FastestFrugalStack(int capacity)
@@ -60,10 +89,14 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         public void Push(T comp)
         {
             T[] buffer = _buffer;
-            if ((uint)_nextIndex < (uint)buffer.Length)
+            if ((uint) _nextIndex < (uint) buffer.Length)
+            {
                 buffer[_nextIndex++] = comp;
+            }
             else
+            {
                 ResizeAndPush(comp);
+            }
         }
 
         /// <summary>
@@ -86,7 +119,7 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         {
             if (_nextIndex == 0)
             {
-                value = default!;
+                value = default(T)!;
                 return false;
             }
 
@@ -103,41 +136,43 @@ namespace Alis.Benchmark.CustomCollections.Frugals.Elements
         {
             T next = _buffer[--_nextIndex];
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
-                _buffer[_nextIndex] = default!;
+            {
+                _buffer[_nextIndex] = default(T)!;
+            }
+
             return next;
         }
 
         /// <summary>
-        /// Removes the item
+        ///     Removes the item
         /// </summary>
         /// <param name="item">The item</param>
         public void Remove(T item)
         {
             for (int i = 0; i < _nextIndex; i++)
+            {
                 if (EqualityComparer<T>.Default.Equals(_buffer[i], item))
                 {
                     _buffer[i] = Pop();
                     break;
                 }
-        }
-        
-        /// <summary>
-        /// Converts the span
-        /// </summary>
-        /// <returns>A span of t</returns>
-        public readonly Span<T> AsSpan()
-        {
-            return _buffer.AsSpan(0, _nextIndex);
+            }
         }
 
         /// <summary>
-        /// The value
+        ///     Converts the span
+        /// </summary>
+        /// <returns>A span of t</returns>
+        public readonly Span<T> AsSpan() => _buffer.AsSpan(0, _nextIndex);
+
+        /// <summary>
+        ///     The value
         /// </summary>
         public T this[int i]
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => _buffer[i];
-            
+
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set => _buffer[i] = value;
         }

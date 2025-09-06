@@ -55,7 +55,20 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         ///     The setting base
         /// </summary>
         private readonly Alis.Core.Ecs.Systems.Configuration.Setting settingBase = new Alis.Core.Ecs.Systems.Configuration.Setting();
-        
+
+        /// <summary>
+        ///     Audio the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The settings builder</returns>
+        public SettingsBuilder Audio(Action<AudioSettingBuilder> value)
+        {
+            AudioSettingBuilder audioSettingBuilder = new AudioSettingBuilder();
+            value(audioSettingBuilder);
+            settingBase.Audio = audioSettingBuilder.Build();
+            return this;
+        }
+
         /// <summary>
         ///     Build setting
         /// </summary>
@@ -87,7 +100,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             settingBase.Graphic = graphicSettingBuilder.Build();
             return this;
         }
-        
+
         /// <summary>
         ///     Inputs the value
         /// </summary>
@@ -124,19 +137,6 @@ namespace Alis.Builder.Core.Ecs.System.Setting
             PhysicSettingBuilder physicSettingBuilder = new PhysicSettingBuilder();
             value(physicSettingBuilder);
             settingBase.Physic = physicSettingBuilder.Build();
-            return this;
-        }
-        
-        /// <summary>
-        ///     Audio the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The settings builder</returns>
-        public SettingsBuilder Audio(Action<AudioSettingBuilder> value)
-        {
-            AudioSettingBuilder audioSettingBuilder = new AudioSettingBuilder();
-            value(audioSettingBuilder);
-            settingBase.Audio = audioSettingBuilder.Build();
             return this;
         }
     }

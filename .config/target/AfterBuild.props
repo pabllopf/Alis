@@ -2,11 +2,11 @@
     <!-- https://github.com/dotnet/sdk/issues/1458#issuecomment-1063915490 -->
     <Target Name="IncludeSymbolFiles" AfterTargets="ResolveAssemblyReferences" Condition="@(ReferenceCopyLocalPaths) != ''">
         <ItemGroup>
-            <ReferenceCopyLocalPaths Include="%(ReferenceCopyLocalPaths.RelativeDir)%(ReferenceCopyLocalPaths.Filename).pdb;                                %(ReferenceCopyLocalPaths.RelativeDir)%(ReferenceCopyLocalPaths.Filename).xml" />
-            <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths)" Condition="!Exists('%(FullPath)')" />
+            <ReferenceCopyLocalPaths Include="%(ReferenceCopyLocalPaths.RelativeDir)%(ReferenceCopyLocalPaths.Filename).pdb;                                %(ReferenceCopyLocalPaths.RelativeDir)%(ReferenceCopyLocalPaths.Filename).xml"/>
+            <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths)" Condition="!Exists('%(FullPath)')"/>
         </ItemGroup>
     </Target>
-    
+
     <Target Name="BuildAndCopyInstallerOutput" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub'))">
         <MSBuild Projects="$(SolutionDir)1_Presentation/Installer/src/Alis.App.Installer.csproj" Targets="Build" Properties="Configuration=$(Configuration)"/>
         <PropertyGroup>
@@ -37,38 +37,38 @@
         </PropertyGroup>
 
         <!-- Limpiar bundle anterior -->
-        <RemoveDir Directories="$(AppBundleDir)" />
+        <RemoveDir Directories="$(AppBundleDir)"/>
 
         <!-- Crear estructura de carpetas -->
-        <MakeDir Directories="$(MacOSDir)" />
-        <MakeDir Directories="$(ResourcesDir)" />
+        <MakeDir Directories="$(MacOSDir)"/>
+        <MakeDir Directories="$(ResourcesDir)"/>
 
         <!-- Archivos del Hub (excepto el .app) -->
         <ItemGroup>
-            <HubOutputFiles Include="$(HubOutputDir)**/*" Exclude="$(AppBundleDir)**/*" />
+            <HubOutputFiles Include="$(HubOutputDir)**/*" Exclude="$(AppBundleDir)**/*"/>
         </ItemGroup>
 
         <Copy SourceFiles="$(SolutionDir)1_Presentation/Hub/src/Properties/Info.plist"
-              DestinationFolder="$(ContentsDir)" />
+              DestinationFolder="$(ContentsDir)"/>
         <Copy SourceFiles="$(SolutionDir)1_Presentation/Hub/src/Properties/logo.png"
-              DestinationFolder="$(ResourcesDir)" />
+              DestinationFolder="$(ResourcesDir)"/>
 
         <Copy SourceFiles="@(HubOutputFiles)"
-              DestinationFiles="@(HubOutputFiles->'$(MacOSDir)%(RecursiveDir)%(Filename)%(Extension)')" />
+              DestinationFiles="@(HubOutputFiles->'$(MacOSDir)%(RecursiveDir)%(Filename)%(Extension)')"/>
 
         <!-- Copiar Editor si existe -->
         <ItemGroup>
-            <EditorFiles Include="$(HubOutputDir)Editor/**/*" />
+            <EditorFiles Include="$(HubOutputDir)Editor/**/*"/>
         </ItemGroup>
         <Copy SourceFiles="@(EditorFiles)"
               DestinationFiles="@(EditorFiles->'$(MacOSDir)Editor/%(RecursiveDir)%(Filename)%(Extension)')"
-              Condition="Exists('$(HubOutputDir)Editor')" />
+              Condition="Exists('$(HubOutputDir)Editor')"/>
 
         <!-- Borrar dmg previo -->
-        <Delete Files="$(DmgFileName)" />
+        <Delete Files="$(DmgFileName)"/>
 
         <!-- Desmontar volumen previo si quedó montado -->
-        <Exec Command="hdiutil detach /Volumes/Alis || true" IgnoreExitCode="true" />
+        <Exec Command="hdiutil detach /Volumes/Alis || true" IgnoreExitCode="true"/>
 
         <!-- Crear dmg con reintento por si Spotlight bloquea -->
         <Exec Command="bash -c '
@@ -78,7 +78,7 @@
         sleep 5
       done
       exit 1
-    '" />
+    '"/>
     </Target>
 
     <Target Name="CreateLinuxBundle" AfterTargets="Build;Publish" Condition="$(AssemblyName.Equals('Alis.App.Hub')) And '$(IsLinux)' == 'true' AND $(Configuration) == 'Release'">

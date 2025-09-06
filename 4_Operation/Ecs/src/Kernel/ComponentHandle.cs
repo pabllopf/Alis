@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ComponentHandle.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;
@@ -11,7 +40,6 @@ namespace Alis.Core.Ecs.Kernel
     /// </summary>
     /// <remarks>Must be disposed. The handle must also not be used afterwards.</remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    
     public readonly struct ComponentHandle : IEquatable<ComponentHandle>, IDisposable
     {
         /// <summary>
@@ -71,10 +99,7 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         /// <param name="object">The potentially boxed component to store.</param>
         /// <returns>A <see cref="ComponentHandle" /> instance that can be used to retrieve <paramref name="object" />.</returns>
-        public static ComponentHandle CreateFromBoxed(object @object)
-        {
-            return CreateFromBoxed(Component.GetComponentId(@object.GetType()), @object);
-        }
+        public static ComponentHandle CreateFromBoxed(object @object) => CreateFromBoxed(Component.GetComponentId(@object.GetType()), @object);
 
         /// <summary>
         ///     Gets the value of this component strongly typed.
@@ -87,7 +112,10 @@ namespace Alis.Core.Ecs.Kernel
         public T Retrieve<T>()
         {
             if (_componentType != Component<T>.Id)
+            {
                 throw new InvalidOperationException("Wrong component handle type!");
+            }
+
             return Component<T>.GeneralComponentStorage.Take(_index);
         }
 
@@ -95,10 +123,7 @@ namespace Alis.Core.Ecs.Kernel
         ///     Gets the value of the component represented bu this <see cref="ComponentHandle" />, boxing if needed.
         /// </summary>
         /// <returns>The component value.</returns>
-        public object RetrieveBoxed()
-        {
-            return Component.ComponentTable[_componentType.RawIndex].Storage.TakeBoxed(_index);
-        }
+        public object RetrieveBoxed() => Component.ComponentTable[_componentType.RawIndex].Storage.TakeBoxed(_index);
 
         /// <summary>
         ///     Invokes the component event and consume using the specified gameObject
@@ -127,20 +152,14 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         /// <param name="other">The <see cref="ComponentHandle" /> to compare to.</param>
         /// <returns><see langword="true" /> when they are equal, <see langword="false" /> otherwise.</returns>
-        public bool Equals(ComponentHandle other)
-        {
-            return other.ComponentId == ComponentId && other.Index == Index;
-        }
+        public bool Equals(ComponentHandle other) => (other.ComponentId == ComponentId) && (other.Index == Index);
 
         /// <summary>
         ///     Checks if an object is equal to this component handle and points to the same component.
         /// </summary>
         /// <param name="obj">The object to check.</param>
         /// <returns><see langword="true" /> when they are equal, <see langword="false" /> otherwise.</returns>
-        public override bool Equals(object obj)
-        {
-            return obj is ComponentHandle handle && Equals(handle);
-        }
+        public override bool Equals(object obj) => obj is ComponentHandle handle && Equals(handle);
 
         /// <summary>
         ///     Checks if two component handles point to the same component.
@@ -148,10 +167,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <param name="left">The first component handle.</param>
         /// <param name="right">The second component handle.</param>
         /// <returns><see langword="true" /> when they are equal, <see langword="false" /> otherwise.</returns>
-        public static bool operator ==(ComponentHandle left, ComponentHandle right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(ComponentHandle left, ComponentHandle right) => left.Equals(right);
 
         /// <summary>
         ///     Checks if two component handles do not point to the same component.
@@ -159,10 +175,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <param name="left">The first component handle.</param>
         /// <param name="right">The second component handle.</param>
         /// <returns><see langword="true" /> when they are not equal, <see langword="false" /> otherwise.</returns>
-        public static bool operator !=(ComponentHandle left, ComponentHandle right)
-        {
-            return !left.Equals(right);
-        }
+        public static bool operator !=(ComponentHandle left, ComponentHandle right) => !left.Equals(right);
 
         /// <summary>
         ///     The type of component represented by this <see cref="ComponentHandle" />.
@@ -178,10 +191,7 @@ namespace Alis.Core.Ecs.Kernel
         ///     The hashcode.
         /// </summary>
         /// <returns>The hashcode -_-.</returns>
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(_componentType, _index);
-        }
+        public override int GetHashCode() => HashCode.Combine(_componentType, _index);
 
         /// <summary>
         ///     Gets the value of the index

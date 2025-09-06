@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems;
@@ -84,7 +83,7 @@ namespace Alis.Sample.Flappy.Bird
                     )
                 )
                 .Build();
-            
+
             game.Run();
         }
     }

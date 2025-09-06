@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 namespace Alis.App.Hub.Elements
 {
     /// <summary>
@@ -44,7 +42,6 @@ namespace Alis.App.Hub.Elements
         /// <param name="cloudStatus">The cloud status</param>
         /// <param name="modifiedDate">The modified date</param>
         /// <param name="editorVersion">The editor version</param>
-        
         public Project(string name, string path, string cloudStatus, string modifiedDate, string editorVersion)
         {
             Name = name;
@@ -57,43 +54,43 @@ namespace Alis.App.Hub.Elements
         /// <summary>
         ///     Gets the value of the name
         /// </summary>
-        
+
         public string Name { get; } = "Not Set";
 
         /// <summary>
         ///     Gets the value of the path
         /// </summary>
-        
+
         public string Path { get; } = "Not Set";
 
         /// <summary>
         ///     Gets the value of the cloud status
         /// </summary>
-        
+
         public string CloudStatus { get; } = "Not Synced";
 
         /// <summary>
         ///     Gets the value of the modified date
         /// </summary>
-        
+
         public string ModifiedDate { get; } = "Never";
 
         /// <summary>
         ///     Gets the value of the editor version
         /// </summary>
-        
+
         public string EditorVersion { get; } = "2021.1.0";
 
         /// <summary>
         ///     Gets or sets the value of the version
         /// </summary>
-        
+
         public string Version { get; set; } = "1.0.0";
 
         /// <summary>
         ///     Gets or sets the value of the last modified
         /// </summary>
-        
+
         public string LastModified { get; set; } = "Never";
     }
 }

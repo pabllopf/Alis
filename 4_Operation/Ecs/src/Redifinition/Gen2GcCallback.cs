@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Gen2GcCallback.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
@@ -46,10 +75,7 @@ namespace Alis.Core.Ecs.Redifinition
         ///     Initializes a new instance of the <see cref="Gen2GcCallback" /> class
         /// </summary>
         /// <param name="callback">The callback</param>
-        private Gen2GcCallback(Func<bool> callback)
-        {
-            _callback0 = callback;
-        }
+        private Gen2GcCallback(Func<bool> callback) => _callback0 = callback;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Gen2GcCallback" /> class
@@ -85,7 +111,6 @@ namespace Alis.Core.Ecs.Redifinition
         }
 
         /// <summary>
-        /// 
         /// </summary>
         ~Gen2GcCallback()
         {
@@ -101,40 +126,20 @@ namespace Alis.Core.Ecs.Redifinition
                 }
 
                 // Execute the callback method.
-                try
+                if (!_callback1(targetObj))
                 {
-                    if (!_callback1(targetObj))
-                    {
-                        // If the callback returns false, this callback object is no longer needed.
-                        _weakTargetObj.Free();
-                        return;
-                    }
-                }
-                catch
-                {
-                    // Ensure that we still get a chance to resurrect this object, even if the callback throws an exception.
-#if DEBUG
-                // Except in DEBUG, as we really shouldn't be hitting any exceptions here.
-                throw;
-#endif
+                    // If the callback returns false, this callback object is no longer needed.
+                    _weakTargetObj.Free();
+                    return;
                 }
             }
             else
             {
                 // Execute the callback method.
-                try
+                if (!_callback0())
+                    // If the callback returns false, this callback object is no longer needed.
                 {
-                    if (!_callback0())
-                        // If the callback returns false, this callback object is no longer needed.
-                        return;
-                }
-                catch
-                {
-                    // Ensure that we still get a chance to resurrect this object, even if the callback throws an exception.
-#if DEBUG
-                // Except in DEBUG, as we really shouldn't be hitting any exceptions here.
-                throw;
-#endif
+                    return;
                 }
             }
 

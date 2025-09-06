@@ -37,143 +37,143 @@ namespace Alis.Core.Ecs.Systems.Execution
         /// <summary>
         ///     Ons the enable
         /// </summary>
-        public void OnEnable();
+        void OnEnable();
 
         /// <summary>
         ///     Inits this instance
         /// </summary>
-        public void OnInit();
+        void OnInit();
 
         /// <summary>
         ///     Awakes this instance
         /// </summary>
-        public void OnAwake();
+        void OnAwake();
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public void OnStart();
+        void OnStart();
 
         /// <summary>
         ///     Ons the physic update
         /// </summary>
-        public void OnPhysicUpdate();
+        void OnPhysicUpdate();
 
         /// <summary>
         ///     Before run the update
         /// </summary>
-        public void OnBeforeUpdate();
+        void OnBeforeUpdate();
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public void OnUpdate();
+        void OnUpdate();
 
         /// <summary>
         ///     Afters the update
         /// </summary>
-        public void OnAfterUpdate();
+        void OnAfterUpdate();
 
         /// <summary>
         ///     Ons the process pending changes
         /// </summary>
-        public void OnProcessPendingChanges();
+        void OnProcessPendingChanges();
 
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
-        public void OnBeforeFixedUpdate();
+        void OnBeforeFixedUpdate();
 
         /// <summary>
         ///     Update every frame.
         /// </summary>
-        public void OnFixedUpdate();
+        void OnFixedUpdate();
 
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
-        public void OnAfterFixedUpdate();
+        void OnAfterFixedUpdate();
 
         /// <summary>
         ///     Dispatches the events
         /// </summary>
-        public void OnDispatchEvents();
+        void OnDispatchEvents();
 
         /// <summary>
         ///     Ons the calculate
         /// </summary>
-        public void OnCalculate();
+        void OnCalculate();
 
         /// <summary>
         ///     Ons the before draw
         /// </summary>
-        public void OnBeforeDraw();
+        void OnBeforeDraw();
 
         /// <summary>
         ///     Draws this instance
         /// </summary>
-        public void OnDraw();
+        void OnDraw();
 
         /// <summary>
         ///     Ons the after draw
         /// </summary>
-        public void OnAfterDraw();
+        void OnAfterDraw();
 
         /// <summary>
         ///     Ons the gui
         /// </summary>
-        public void OnGui();
+        void OnGui();
 
         /// <summary>
         ///     Ons the render present
         /// </summary>
-        public void OnRenderPresent();
+        void OnRenderPresent();
 
         /// <summary>
         ///     Ons the disable
         /// </summary>
-        public void OnDisable();
+        void OnDisable();
 
         /// <summary>
         ///     Resets this instance
         /// </summary>
-        public void OnReset();
+        void OnReset();
 
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        public void OnStop();
+        void OnStop();
 
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public void OnExit();
+        void OnExit();
 
         /// <summary>
         ///     Ons the destroy
         /// </summary>
-        public void OnDestroy();
+        void OnDestroy();
 
         /// <summary>
         ///     Ons the save
         /// </summary>
-        public void OnSave();
+        void OnSave();
 
         /// <summary>
         ///     Ons the load
         /// </summary>
-        public void OnLoad();
+        void OnLoad();
 
         /// <summary>
         ///     Ons the save using the specified path
         /// </summary>
         /// <param name="path">The path</param>
-        public void OnSave(string path);
+        void OnSave(string path);
 
         /// <summary>
         ///     Ons the load using the specified path
         /// </summary>
         /// <param name="path">The path</param>
-        public void OnLoad(string path);
+        void OnLoad(string path);
     }
 }

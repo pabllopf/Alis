@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SealedClass.cs
+//  File:SealedClassPoint.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,7 +30,7 @@
 namespace Alis.Benchmark.ClassVsStruct.Instancies
 {
     /// <summary>
-    /// The sealed class point class
+    ///     The sealed class point class
     /// </summary>
     public sealed class SealedClassPoint
     {

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Diagnostics;
 using Alis.Core.Aspect.Logging;
 
@@ -46,8 +45,8 @@ namespace Alis.Extension.Io.FileDialog
         {
             // Start the process to invoke the PowerShell script that opens the file picker dialog
             // Start the process to invoke the PowerShell script that opens the file picker dialog
-            
-            
+
+
             Process process = new Process();
             process.StartInfo = new ProcessStartInfo
             {

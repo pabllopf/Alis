@@ -27,17 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Ecs.Components.Render
 {
     /// <summary>
-    /// The camera
+    ///     The camera
     /// </summary>
     public struct Camera(Vector2F position, Vector2F resolution) : ICamera
     {
@@ -69,12 +66,11 @@ namespace Alis.Core.Ecs.Components.Render
         }
 
         /// <summary>
-        /// Inits the self
+        ///     Inits the self
         /// </summary>
         /// <param name="self">The self</param>
         public void Init(GameObject self)
         {
-            
         }
     }
 }

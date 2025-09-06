@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Threading;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Sample.Fluent;
@@ -64,8 +65,6 @@ namespace Alis.Core.Aspect.Sample
             Logger.Info("Data sample");
             Logger.Info("--------------------------\n");
 
-          
-            
 
             // SAMPLE ASPECT MATH
             Logger.Info("--------------------------");
@@ -80,18 +79,18 @@ namespace Alis.Core.Aspect.Sample
             Logger.Info("--------------------------\n");
             Clock clock = new Clock();
             clock.Start();
-            
+
             int i = 0;
             while (i < 1000)
             {
-                System.Threading.Thread.Sleep(1);
+                Thread.Sleep(1);
                 i++;
             }
 
             // Stop the clock and print the elapsed time
             clock.Stop();
             Logger.Info($"Elapsed time: {clock.ElapsedMilliseconds} ms");
-            
+
             // SAMPLE ASPECT MEMORY
             Logger.Info("--------------------------");
             Logger.Info("Memory sample");
@@ -106,7 +105,6 @@ namespace Alis.Core.Aspect.Sample
 
             Logger.Log("Sample");
             Logger.Info("Sample");
-
 
 
             Logger.Warning("Sample");

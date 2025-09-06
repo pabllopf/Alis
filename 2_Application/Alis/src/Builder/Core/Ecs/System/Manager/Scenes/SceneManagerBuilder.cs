@@ -52,26 +52,26 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Scenes
         /// </summary>
         /// <param name="context">The context</param>
         public SceneManagerBuilder(Context context) => sceneManager = new SceneManager(context);
-        
-        /// <summary>
-        /// Adds the config
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="config">The config</param>
-        /// <returns>The scene manager builder</returns>
-        public SceneManagerBuilder Add<T>(Action<SceneBuilder> config) where T : Scene
-        { 
-            SceneBuilder sceneBuilder = new SceneBuilder(sceneManager.Context);
-            config(sceneBuilder);
-            Scene scene = sceneBuilder.Build();
-            sceneManager.World = scene;
-            return this;
-        }
 
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The scene manager</returns>
         public SceneManager Build() => sceneManager;
+
+        /// <summary>
+        ///     Adds the config
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="config">The config</param>
+        /// <returns>The scene manager builder</returns>
+        public SceneManagerBuilder Add<T>(Action<SceneBuilder> config) where T : Scene
+        {
+            SceneBuilder sceneBuilder = new SceneBuilder(sceneManager.Context);
+            config(sceneBuilder);
+            Scene scene = sceneBuilder.Build();
+            sceneManager.World = scene;
+            return this;
+        }
     }
 }

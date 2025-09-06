@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Matrix;
@@ -43,9 +42,49 @@ namespace Alis.Core.Graphic.OpenGL
     public static class Gl
     {
         /// <summary>
+        ///     Activates the specified texture unit
+        /// </summary>
+        /// <param name="texture">The texture unit</param>
+        public delegate void ActiveTexture(TextureUnit texture);
+
+        // Enum para FramebufferTarget
+
+        /// <summary>
+        ///     The bind framebuffer
+        /// </summary>
+        public delegate void BindFramebuffer(FramebufferTarget target, uint framebuffer);
+
+        /// <summary>
+        ///     The framebuffer texture
+        /// </summary>
+        public delegate void FramebufferTexture2D(FramebufferTarget target, FramebufferAttachment attachment, TextureTarget texTarget, uint texture, int level);
+
+        /// <summary>
+        ///     The gen framebuffer
+        /// </summary>
+        public delegate uint GenFramebuffer();
+
+        /// <summary>
+        ///     The get error
+        /// </summary>
+        public delegate int GetError();
+
+        /// <summary>
         ///     The get proc address delegate
         /// </summary>
         public delegate IntPtr GetProcAddressDelegate(string procName);
+
+        /// <summary>
+        ///     Sets the width of lines to be rasterized
+        /// </summary>
+        /// <param name="width">The width of the line</param>
+        public delegate void LineWidth(float width);
+
+        // En Gl.cs
+        /// <summary>
+        ///     The read pixels
+        /// </summary>
+        public delegate void ReadPixels(int x, int y, int width, int height, PixelFormat format, PixelType type, IntPtr pixels);
 
         /// <summary>
         ///     The get proc address
@@ -253,33 +292,19 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         private static Uniform3Fv GlUniform3Fv => GetCommand<Uniform3Fv>("glUniform3fv");
 
-        // En Gl.cs
         /// <summary>
-        /// The read pixels
-        /// </summary>
-        public delegate void ReadPixels(int x, int y, int width, int height, PixelFormat format, PixelType type, IntPtr pixels);
-        /// <summary>
-        /// Gets the value of the gl read pixels
+        ///     Gets the value of the gl read pixels
         /// </summary>
         public static ReadPixels GlReadPixels => GetCommand<ReadPixels>("glReadPixels");
-        
+
+
         /// <summary>
-        /// The gen framebuffer
-        /// </summary>
-        public delegate uint GenFramebuffer();
-        
-        
-        /// <summary>
-        /// Gets the value of the gl gen framebuffer
+        ///     Gets the value of the gl gen framebuffer
         /// </summary>
         public static GenFramebuffer GlGenFramebuffer => GetCommand<GenFramebuffer>("glGenFramebuffers");
 
         /// <summary>
-        /// The framebuffer texture
-        /// </summary>
-        public delegate void FramebufferTexture2D(FramebufferTarget target, FramebufferAttachment attachment, TextureTarget texTarget, uint texture, int level);
-        /// <summary>
-        /// Gets the value of the gl framebuffer texture 2 d
+        ///     Gets the value of the gl framebuffer texture 2 d
         /// </summary>
         public static FramebufferTexture2D GlFramebufferTexture2D => GetCommand<FramebufferTexture2D>("glFramebufferTexture2D");
 
@@ -333,18 +358,11 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         public static VertexAttribPointerDel GlVertexAttribPointer => GetCommand<VertexAttribPointerDel>("glVertexAttribPointer");
 
-        // Enum para FramebufferTarget
-
         /// <summary>
-        /// The bind framebuffer
-        /// </summary>
-        public delegate void BindFramebuffer(FramebufferTarget target, uint framebuffer);
-
-        /// <summary>
-        /// Gets the value of the gl bind framebuffer
+        ///     Gets the value of the gl bind framebuffer
         /// </summary>
         public static BindFramebuffer GlBindFramebuffer => GetCommand<BindFramebuffer>("glBindFramebuffer");
-        
+
         /// <summary>
         ///     The bind texture
         /// </summary>
@@ -416,6 +434,21 @@ namespace Alis.Core.Graphic.OpenGL
         public static PolygonMode GlPolygonMode => GetCommand<PolygonMode>("glPolygonMode");
 
         /// <summary>
+        ///     Gets the value of glGetError
+        /// </summary>
+        public static GetError GlGetErrorDelegate => GetCommand<GetError>("glGetError");
+
+        /// <summary>
+        ///     Gets the value of the gl line width delegate
+        /// </summary>
+        public static LineWidth GlLineWidthDelegate => GetCommand<LineWidth>("glLineWidth");
+
+        /// <summary>
+        ///     Gets the value of the gl active texture delegate
+        /// </summary>
+        public static ActiveTexture GlActiveTextureDelegate => GetCommand<ActiveTexture>("glActiveTexture");
+
+        /// <summary>
         ///     Initializes the get proc address
         /// </summary>
         /// <param name="getProcAddress">The get proc address</param>
@@ -438,13 +471,13 @@ namespace Alis.Core.Graphic.OpenGL
             {
                 throw new InvalidOperationException("Inicialize called before Initialize");
             }
-        
+
             IntPtr ptr = _getProcAddress(command);
             if (ptr == IntPtr.Zero)
             {
                 throw new ExternalException($"{command} from {typeof(T).Name}");
             }
-        
+
             return Marshal.GetDelegateForFunctionPointer<T>(ptr);
         }
 
@@ -675,33 +708,13 @@ namespace Alis.Core.Graphic.OpenGL
         public static void GenerateMipmap(TextureTarget texture2D) => GetCommand<GetString>("glGenerateMipmap");
 
         /// <summary>
-        ///     The get error
-        /// </summary>
-        public delegate int GetError();
-        /// <summary>
-        ///     Gets the value of glGetError
-        /// </summary>
-        public static GetError GlGetErrorDelegate => GetCommand<GetError>("glGetError");
-        /// <summary>
         ///     Gets the last error from OpenGL
         /// </summary>
         /// <returns>Error code</returns>
-        public static int GlGetError()
-        {
-            return GlGetErrorDelegate();
-        }
-        
+        public static int GlGetError() => GlGetErrorDelegate();
+
         /// <summary>
-        ///     Sets the width of lines to be rasterized
-        /// </summary>
-        /// <param name="width">The width of the line</param>
-        public delegate void LineWidth(float width);
-        /// <summary>
-        /// Gets the value of the gl line width delegate
-        /// </summary>
-        public static LineWidth GlLineWidthDelegate => GetCommand<LineWidth>("glLineWidth");
-        /// <summary>
-        /// Gls the line width using the specified width
+        ///     Gls the line width using the specified width
         /// </summary>
         /// <param name="width">The width</param>
         public static void GlLineWidth(float width)
@@ -710,16 +723,7 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        ///     Activates the specified texture unit
-        /// </summary>
-        /// <param name="texture">The texture unit</param>
-        public delegate void ActiveTexture(TextureUnit texture);
-        /// <summary>
-        /// Gets the value of the gl active texture delegate
-        /// </summary>
-        public static ActiveTexture GlActiveTextureDelegate => GetCommand<ActiveTexture>("glActiveTexture");
-        /// <summary>
-        /// Gls the active texture using the specified texture
+        ///     Gls the active texture using the specified texture
         /// </summary>
         /// <param name="texture">The texture</param>
         public static void GlActiveTexture(TextureUnit texture)
@@ -728,4 +732,3 @@ namespace Alis.Core.Graphic.OpenGL
         }
     }
 }
-

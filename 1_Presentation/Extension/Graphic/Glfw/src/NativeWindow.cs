@@ -32,10 +32,10 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data;
 using Alis.Extension.Graphic.Glfw.Enums;
 using Alis.Extension.Graphic.Glfw.Structs;
 using Microsoft.Win32.SafeHandles;
+using Image = Alis.Core.Graphic.Image;
 
 namespace Alis.Extension.Graphic.Glfw
 {
@@ -777,7 +777,7 @@ namespace Alis.Extension.Graphic.Glfw
         ///     <para>Standard sizes are 16x16, 32x32, and 48x48.</para>
         /// </summary>
         /// <param name="images">One or more images to set as an icon.</param>
-        public void SetIcons(params Core.Graphic.Image[] images)
+        public void SetIcons(params Image[] images)
         {
             Glfw.SetWindowIcon(Window, images.Length, images);
         }

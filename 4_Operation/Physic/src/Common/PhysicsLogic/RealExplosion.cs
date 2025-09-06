@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
@@ -452,29 +451,30 @@ namespace Alis.Core.Physic.Common.PhysicsLogic
 
             return exploded;
         }
-        
+
         // Métodos auxiliares
         /// <summary>
-        /// Lists the any using the specified list
+        ///     Lists the any using the specified list
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="list">The list</param>
         /// <returns>The bool</returns>
         private bool ListAny<T>(List<T> list) => list.Count > 0;
+
         /// <summary>
-        /// Lists the first using the specified list
+        ///     Lists the first using the specified list
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="list">The list</param>
         /// <returns>The</returns>
         private T ListFirst<T>(List<T> list) => list[0];
+
         /// <summary>
-        /// Lists the last using the specified list
+        ///     Lists the last using the specified list
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="list">The list</param>
         /// <returns>The</returns>
         private T ListLast<T>(List<T> list) => list[list.Count - 1];
-
     }
 }

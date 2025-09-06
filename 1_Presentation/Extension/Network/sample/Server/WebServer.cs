@@ -109,7 +109,7 @@ namespace Alis.Extension.Network.Sample.Server
                     Logger.Info(ex.ToString());
                 }
 
-                 Logger.Info("Web Server disposed");
+                Logger.Info("Web Server disposed");
             }
         }
 
@@ -134,7 +134,7 @@ namespace Alis.Extension.Network.Sample.Server
                 // match the first sub protocol that we support (the client should pass the most preferable sub protocols first)
                 if (_supportedSubProtocols.Contains(subProtocol))
                 {
-                     Logger.Info($"Http header has requested sub protocol {subProtocol} which is supported");
+                    Logger.Info($"Http header has requested sub protocol {subProtocol} which is supported");
 
                     return subProtocol;
                 }
@@ -142,7 +142,7 @@ namespace Alis.Extension.Network.Sample.Server
 
             if (requestedSubProtocols.Count > 0)
             {
-                 Logger.Info(
+                Logger.Info(
                     $"Http header has requested the following sub protocols: {string.Join(", ", requestedSubProtocols)}. There are no supported protocols configured that match.");
             }
 
@@ -167,7 +167,7 @@ namespace Alis.Extension.Network.Sample.Server
                 // Client sends a close conection request OR
                 // An unhandled exception is thrown OR
                 // The server is disposed
-                 Logger.Info("Server: Connection opened. Reading Http header from stream");
+                Logger.Info("Server: Connection opened. Reading Http header from stream");
 
                 // get a secure or insecure stream
                 Stream stream = tcpClient.GetStream();
@@ -178,20 +178,20 @@ namespace Alis.Extension.Network.Sample.Server
                     WebSocketServerOptions options =
                         new WebSocketServerOptions(TimeSpan.FromSeconds(30),
                             subProtocol);
-                     Logger.Info(
+                    Logger.Info(
                         "Http header has requested an upgrade to Web Socket protocol. Negotiating Web Socket handshake");
 
                     WebSocket webSocket = await _webSocketServerFactory.AcceptWebSocketAsync(context, options);
 
-                     Logger.Info("Web Socket handshake response sent. Stream ready.");
+                    Logger.Info("Web Socket handshake response sent. Stream ready.");
                     await RespondToWebSocketRequestAsync(webSocket, source.Token);
                 }
                 else
                 {
-                     Logger.Info("Http header contains no web socket upgrade request. Ignoring");
+                    Logger.Info("Http header contains no web socket upgrade request. Ignoring");
                 }
 
-                 Logger.Info("Server: Connection closed");
+                Logger.Info("Server: Connection closed");
             }
             catch (ObjectDisposedException)
             {
@@ -199,7 +199,7 @@ namespace Alis.Extension.Network.Sample.Server
             }
             catch (Exception ex)
             {
-                 Logger.Info(ex.ToString());
+                Logger.Info(ex.ToString());
             }
             finally
             {
@@ -211,7 +211,7 @@ namespace Alis.Extension.Network.Sample.Server
                 }
                 catch (Exception ex)
                 {
-                     Logger.Info($"Failed to close TCP connection: {ex}");
+                    Logger.Info($"Failed to close TCP connection: {ex}");
                 }
             }
         }
@@ -230,7 +230,7 @@ namespace Alis.Extension.Network.Sample.Server
                 WebSocketReceiveResult result = await webSocket.ReceiveAsync(buffer, token);
                 if (result.MessageType == WebSocketMessageType.Close)
                 {
-                     Logger.Info(
+                    Logger.Info(
                         $"Client initiated close. Status: {result.CloseStatus} Description: {result.CloseStatusDescription}");
                     break;
                 }
@@ -263,7 +263,7 @@ namespace Alis.Extension.Network.Sample.Server
                 IPAddress localAddress = IPAddress.Loopback;
                 _listener = new TcpListener(localAddress, port);
                 _listener.Start();
-                 Logger.Info($"Server started listening on port {port}");
+                Logger.Info($"Server started listening on port {port}");
                 while (!ctsToken.IsCancellationRequested)
                 {
                     TcpClient tcpClient = await _listener.AcceptTcpClientAsync();

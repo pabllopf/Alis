@@ -72,7 +72,7 @@ namespace Alis.Extension.Network.Sample
             Logger.Warning("Press any key to quit...");
 
             Thread.Sleep(10000);
-            
+
             // Stop the server
             cts.Cancel();
 

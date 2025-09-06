@@ -30,7 +30,6 @@
 using System;
 using System.Buffers;
 using Alis.Benchmark.CustomCollections.ArrayPools.Elements;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Collections;
 using BenchmarkDotNet.Attributes;
 
@@ -56,9 +55,9 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
         ///     The fast stack array pool
         /// </summary>
         private FastArrayPool<int> _fastArrayPool;
-        
+
         /// <summary>
-        /// The fastest array pool
+        ///     The fastest array pool
         /// </summary>
         private FastestArrayPool<int> _fastestArrayPool;
 
@@ -79,7 +78,7 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
             _componentArrayPool = new ComponentArrayPool<int>();
             _fastestArrayPool = new FastestArrayPool<int>();
         }
-        
+
         /// <summary>
         ///     Creates the array with array pool
         /// </summary>
@@ -109,9 +108,9 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
             int[] array = _componentArrayPool.Rent(ArraySize);
             _componentArrayPool.Return(array);
         }
-        
+
         /// <summary>
-        /// Creates the array with fastest array pool
+        ///     Creates the array with fastest array pool
         /// </summary>
         [Benchmark(Description = "[FastestArrayPool]_Create()")]
         public void CreateArrayWithFastestArrayPool()
@@ -119,10 +118,10 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
             int[] array = _fastestArrayPool.Rent(ArraySize);
             _fastestArrayPool.Return(array);
         }
-        
-            
+
+
         /// <summary>
-        /// Resizes the array from pool with array pool custom
+        ///     Resizes the array from pool with array pool custom
         /// </summary>
         [Benchmark(Description = "[ArrayPool]_ResizeArrayFromPoolWithArrayPool()")]
         public void ResizeArrayFromPoolWithArrayPool_custom()
@@ -132,7 +131,7 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
         }
 
         /// <summary>
-        /// Resizes the array from pool with array pool using the specified arr
+        ///     Resizes the array from pool with array pool using the specified arr
         /// </summary>
         /// <param name="arr">The arr</param>
         /// <param name="len">The len</param>
@@ -153,9 +152,9 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
                 ArrayPool<int>.Shared.Return(arr);
             }
         }
-        
+
         /// <summary>
-        /// Resizes the array from pool with fast stack array pool
+        ///     Resizes the array from pool with fast stack array pool
         /// </summary>
         [Benchmark(Description = "[FastArrayPool]_ResizeArrayFromPoolWithArrayPool()")]
         public void ResizeArrayFromPoolWithFastStackArrayPool()
@@ -164,9 +163,9 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
             FastArrayPool<int>.ResizeArrayFromPool(ref array, ArraySize);
             FastArrayPool<int>.Instance.Return(array);
         }
-        
+
         /// <summary>
-        /// Resizes the array from pool with component array pool
+        ///     Resizes the array from pool with component array pool
         /// </summary>
         [Benchmark(Description = "[ComponentArrayPool]_ResizeArrayFromPoolWithArrayPool()")]
         public void ResizeArrayFromPoolWithComponentArrayPool()
@@ -177,7 +176,7 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools
         }
 
         /// <summary>
-        /// Resizes the array from pool with fastest array pool
+        ///     Resizes the array from pool with fastest array pool
         /// </summary>
         [Benchmark(Description = "[FastestArrayPool]_ResizeArrayFromPoolWithArrayPool()")]
         public void ResizeArrayFromPoolWithFastestArrayPool()

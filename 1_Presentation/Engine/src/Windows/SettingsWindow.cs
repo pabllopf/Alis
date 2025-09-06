@@ -53,7 +53,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The is open
         /// </summary>
-        private bool isOpen = false;
+        private bool isOpen;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SettingsWindow" /> class
@@ -90,7 +90,7 @@ namespace Alis.App.Engine.Windows
             {
                 return;
             }
-            
+
             object[] settings =
             {
                 SpaceWork.VideoGame.Context.Setting.General,
@@ -105,12 +105,12 @@ namespace Alis.App.Engine.Windows
             {
                 RenderSettings(settings);
             }
-            
+
             ImGui.End();
         }
-        
+
         /// <summary>
-        /// Opens this instance
+        ///     Opens this instance
         /// </summary>
         public void Open()
         {
@@ -118,7 +118,7 @@ namespace Alis.App.Engine.Windows
         }
 
         /// <summary>
-        /// Renders the settings using the specified settings
+        ///     Renders the settings using the specified settings
         /// </summary>
         /// <param name="settings">The settings</param>
         private void RenderSettings(object[] settings)
@@ -139,11 +139,11 @@ namespace Alis.App.Engine.Windows
                             string uniqueId = $"{property.Name}##{headerName}";
 
                             // TODO: ignore the load data og settings: 
-                            
+
                             //bool isJsonIgnored = property.GetCustomAttributes(typeof(JsonIgnoreAttribute), true).Any();
 
                             bool isJsonIgnored = false;
-                            
+
                             if (property.CanWrite)
                             {
                                 ImGui.AlignTextToFramePadding();

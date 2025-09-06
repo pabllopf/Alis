@@ -29,17 +29,16 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Dll;
 
 namespace Alis.Extension.Graphic.Ui.Properties
 {
     /// <summary>
-    /// The font resources class
+    ///     The font resources class
     /// </summary>
     public static class FontResources
     {
-         /// <summary>
+        /// <summary>
         ///     The resource path
         /// </summary>
         private static readonly string ResourcePath = "Alis.Extension.Graphic.Ui.resources";
@@ -124,9 +123,9 @@ namespace Alis.Extension.Graphic.Ui.Properties
             {OsxArm64, $"{ResourcePath}.fonts.jetbrains.zip"},
             {OsxArm, $"{ResourcePath}.fonts.jetbrains.zip"}
         };
-        
+
         /// <summary>
-        /// The resource path
+        ///     The resource path
         /// </summary>
         internal static readonly Dictionary<PlatformInfo, string> FontAwesomeDllBytes = new Dictionary<PlatformInfo, string>
         {

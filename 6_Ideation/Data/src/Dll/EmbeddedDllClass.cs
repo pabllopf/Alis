@@ -68,8 +68,8 @@ namespace Alis.Core.Aspect.Data.Dll
 
                 return;
             }
-            
-            if (!File.Exists(dllPath + "/" + dllName +  GetDllExtension(dllType)))
+
+            if (!File.Exists(dllPath + "/" + dllName + GetDllExtension(dllType)))
             {
                 OSPlatform currentPlatform = GetCurrentPlatform();
                 Architecture currentArchitecture = RuntimeInformation.ProcessArchitecture;

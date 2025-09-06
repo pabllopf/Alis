@@ -38,7 +38,7 @@ namespace Alis.App.Engine.Menus
     ///     The top menu class
     /// </summary>
     /// <seealso cref="IMenu" />
-    public class TopMenu :  IRenderable, IHasSpaceWork
+    public class TopMenu : IRenderable, IHasSpaceWork
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="TopMenu" /> class
@@ -47,19 +47,9 @@ namespace Alis.App.Engine.Menus
         public TopMenu(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
         /// <summary>
-        ///     Initializes this instance
+        ///     Gets the value of the space work
         /// </summary>
-        public void Initialize()
-        {
-            TopMenuAction.SetSpaceWork(SpaceWork);
-        }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        public void Update()
-        {
-        }
+        public SpaceWork SpaceWork { get; }
 
         /// <summary>
         ///     Renders this instance
@@ -518,34 +508,38 @@ namespace Alis.App.Engine.Menus
                 {
                     TopMenuAction.ExecuteMenuAction("Console");
                 }
-                
+
                 if (ImGui.MenuItem("Style Editor"))
                 {
                     TopMenuAction.ExecuteMenuAction("Style Editor");
                 }
-                
+
                 ImGui.Separator();
-                
-               if (ImGui.BeginMenu("Layouts"))
-               {
-                   if (ImGui.MenuItem("Default"))
-                   {
-                       TopMenuAction.ExecuteMenuAction("Layout:Default");
-                   }
-                   if (ImGui.MenuItem("2 by 3"))
-                   {
-                       TopMenuAction.ExecuteMenuAction("Layout:2 by 3");
-                   }
-                   if (ImGui.MenuItem("4 Split"))
-                   {
-                       TopMenuAction.ExecuteMenuAction("Layout:4 Split");
-                   }
-                   if (ImGui.MenuItem("Wide"))
-                   {
-                       TopMenuAction.ExecuteMenuAction("Layout:Wide");
-                   }
-                   ImGui.EndMenu();
-               }
+
+                if (ImGui.BeginMenu("Layouts"))
+                {
+                    if (ImGui.MenuItem("Default"))
+                    {
+                        TopMenuAction.ExecuteMenuAction("Layout:Default");
+                    }
+
+                    if (ImGui.MenuItem("2 by 3"))
+                    {
+                        TopMenuAction.ExecuteMenuAction("Layout:2 by 3");
+                    }
+
+                    if (ImGui.MenuItem("4 Split"))
+                    {
+                        TopMenuAction.ExecuteMenuAction("Layout:4 Split");
+                    }
+
+                    if (ImGui.MenuItem("Wide"))
+                    {
+                        TopMenuAction.ExecuteMenuAction("Layout:Wide");
+                    }
+
+                    ImGui.EndMenu();
+                }
 
                 ImGui.EndMenu();
             }
@@ -597,15 +591,25 @@ namespace Alis.App.Engine.Menus
         }
 
         /// <summary>
+        ///     Initializes this instance
+        /// </summary>
+        public void Initialize()
+        {
+            TopMenuAction.SetSpaceWork(SpaceWork);
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        public void Update()
+        {
+        }
+
+        /// <summary>
         ///     Starts this instance
         /// </summary>
         public void Start()
         {
         }
-
-        /// <summary>
-        ///     Gets the value of the space work
-        /// </summary>
-        public SpaceWork SpaceWork { get; }
     }
 }

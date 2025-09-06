@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Diagnostics;
 using Alis.App.Hub.Elements;
 using Alis.Extension.Graphic.Ui;

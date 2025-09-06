@@ -38,9 +38,7 @@
 
 using System;
 using System.Collections.Generic;
-
 using Alis.Core.Aspect.Logging;
-
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep;
 using Alis.Core.Physic.Common.Decomposition.CDT.Util;
 
@@ -273,10 +271,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
 
         /// <param name="t">Opposite triangle</param>
         /// <param name="p">The point in t that isn't shared between the triangles</param>
-        public TriangulationPoint OppositePoint(DelaunayTriangle t, TriangulationPoint p)
-        {
-            return PointCw(t.PointCw(p));
-        }
+        public TriangulationPoint OppositePoint(DelaunayTriangle t, TriangulationPoint p) => PointCw(t.PointCw(p));
 
         /// <summary>
         ///     Neighbors the cw using the specified point

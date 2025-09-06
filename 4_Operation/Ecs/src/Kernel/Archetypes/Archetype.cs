@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Archetype.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -29,7 +58,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     Gets the value of the archetype tag array
         /// </summary>
         internal FastImmutableArray<TagId> ArchetypeTagArray => _archetypeId.Tags;
-        
+
         /// <summary>
         ///     Gets the value of the gameObject count
         /// </summary>
@@ -53,8 +82,12 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         {
             ComponentStorageBase[] components = Components;
             int index = GetComponentIndex<T>();
-            if (index == 0) throw new ComponentNotFoundException(typeof(T));
-            return  Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref components[0], index))
+            if (index == 0)
+            {
+                throw new ComponentNotFoundException(typeof(T));
+            }
+
+            return Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref components[0], index))
                 .AsSpanLength(NextComponentIndex);
         }
 
@@ -67,7 +100,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         internal ref T GetComponentDataReference<T>()
         {
             int index = GetComponentIndex<T>();
-            return ref  Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref Components[0], index))
+            return ref Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref Components[0], index))
                 .GetComponentStorageDataReference();
         }
 
@@ -82,7 +115,9 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         internal ref GameObjectIdOnly CreateEntityLocation(GameObjectFlags flags, out GameObjectLocation gameObjectLocation)
         {
             if (_entities.Length == NextComponentIndex)
+            {
                 Resize(_entities.Length * 2);
+            }
 
             gameObjectLocation.Archetype = this;
             gameObjectLocation.Index = NextComponentIndex;
@@ -102,7 +137,9 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             scoped ref GameObjectLocation gameObjectLocation, out ComponentStorageBase[] writeStorage)
         {
             if (deferredCreationArchetype.DeferredEntityCount == 0)
+            {
                 scene.DeferredCreationArchetypes.Push(new(this, deferredCreationArchetype, EntityCount));
+            }
 
             int futureSlot = NextComponentIndex + deferredCreationArchetype.DeferredEntityCount++;
 
@@ -138,7 +175,9 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
 
             if (gameObjectLocation.Index >= deferredCreationArchetype._entities.Length)
+            {
                 deferredCreationArchetype.ResizeCreateComponentBuffers();
+            }
 
             writeStorage = deferredCreationArchetype.Components;
 
@@ -164,11 +203,14 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
                 int totalCapacityRequired = previousComponentCount + deferredCreationArchetype.DeferredEntityCount;
 
                 //we should always have to resize here - after all, no space is left
-                Resize((int)BitOperations.RoundUpToPowerOf2((uint)totalCapacityRequired));
+                Resize((int) BitOperations.RoundUpToPowerOf2((uint) totalCapacityRequired));
                 ComponentStorageBase[] destination = Components;
                 ComponentStorageBase[] source = deferredCreationArchetype.Components;
                 for (int i = 1; i < destination.Length; i++)
+                {
                     Array.Copy(source[i].Buffer, 0, destination[i].Buffer, oldEntitiesLen, deltaFromMaxDeferredInPlace);
+                }
+
                 Array.Copy(deferredCreationArchetype._entities, 0, _entities, oldEntitiesLen, deltaFromMaxDeferredInPlace);
             }
 
@@ -176,7 +218,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             GameObjectIdOnly[] entities = _entities;
             GameObjectLocation[] table = scene.EntityTable._buffer;
-            for (int i = previousComponentCount; i < entities.Length && i < NextComponentIndex; i++)
+            for (int i = previousComponentCount; (i < entities.Length) && (i < NextComponentIndex); i++)
             {
                 ref GameObjectLocation gameObjectLocationToResolve = ref Unsafe.Add(ref table[0], entities[i].ID);
                 gameObjectLocationToResolve.Archetype = this;
@@ -229,7 +271,9 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             Array.Resize(ref _entities, newLen);
             ComponentStorageBase[] runners = Components;
             for (int i = 1; i < runners.Length; i++)
+            {
                 runners[i].ResizeBuffer(newLen);
+            }
         }
 
         /// <summary>
@@ -242,7 +286,9 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             Array.Resize(ref _entities, newLen);
             ComponentStorageBase[] runners = Components;
             for (int i = 1; i < runners.Length; i++)
+            {
                 runners[i].ResizeBuffer(newLen);
+            }
         }
 
         /// <summary>
@@ -251,11 +297,17 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <param name="count">The count</param>
         public void EnsureCapacity(int count)
         {
-            if (_entities.Length >= count) return;
+            if (_entities.Length >= count)
+            {
+                return;
+            }
 
             FastestArrayPool<GameObjectIdOnly>.ResizeArrayFromPool(ref _entities, count);
             ComponentStorageBase[] runners = Components;
-            for (int i = 1; i < runners.Length; i++) runners[i].ResizeBuffer(count);
+            for (int i = 1; i < runners.Length; i++)
+            {
+                runners[i].ResizeBuffer(count);
+            }
         }
 
         /// <summary>
@@ -275,7 +327,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         internal GameObjectIdOnly DeleteEntity(int index)
         {
             NextComponentIndex--;
-            
+
             DeleteComponentData args = new(index, NextComponentIndex);
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
@@ -283,7 +335,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 #else
             ref ComponentStorageBase first = ref MemoryMarshal.GetArrayDataReference(Components);
 #endif
-            
+
 
             switch (Components.Length)
             {
@@ -301,7 +353,10 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 
             @long:
             ComponentStorageBase[] comps = Components;
-            for (int i = 9; i < comps.Length; i++) comps[i].Delete(args);
+            for (int i = 9; i < comps.Length; i++)
+            {
+                comps[i].Delete(args);
+            }
 
 
             len9:
@@ -322,7 +377,6 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             Unsafe.Add(ref first, 1).Delete(args);
 
 
-
             end:
 
             return Unsafe.Add(ref _entities[0], args.ToIndex) = Unsafe.Add(ref _entities[0], args.FromIndex);
@@ -335,10 +389,15 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         internal void Update(Scene scene)
         {
             if (NextComponentIndex == 0)
+            {
                 return;
+            }
+
             ComponentStorageBase[] comprunners = Components;
             for (int i = 1; i < comprunners.Length; i++)
+            {
                 comprunners[i].Run(scene, this);
+            }
         }
 
         /// <summary>
@@ -350,10 +409,15 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         internal void Update(Scene scene, int start, int length)
         {
             if (NextComponentIndex == 0)
+            {
                 return;
+            }
+
             ComponentStorageBase[] comprunners = Components;
             for (int i = 1; i < comprunners.Length; i++)
+            {
                 comprunners[i].Run(scene, this, start, length);
+            }
         }
 
         /// <summary>
@@ -364,7 +428,9 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             _entities = [];
             ComponentStorageBase[] comprunners = Components;
             for (int i = 1; i < comprunners.Length; i++)
+            {
                 comprunners[i].Trim(0);
+            }
         }
 
         /// <summary>
@@ -385,10 +451,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <param name="component">The component</param>
         /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal int GetComponentIndex(ComponentId component)
-        {
-            return  Unsafe.Add(ref ComponentTagTable[0], component.RawIndex) & GlobalWorldTables.IndexBits;
-        }
+        internal int GetComponentIndex(ComponentId component) => Unsafe.Add(ref ComponentTagTable[0], component.RawIndex) & GlobalWorldTables.IndexBits;
 
         /// <summary>
         ///     Hases the tag
@@ -408,10 +471,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <param name="tagId">The tag id</param>
         /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal bool HasTag(TagId tagId)
-        {
-            return Unsafe.Add(ref ComponentTagTable[0], tagId.RawValue) << 7 != 0;
-        }
+        internal bool HasTag(TagId tagId) => Unsafe.Add(ref ComponentTagTable[0], tagId.RawValue) << 7 != 0;
 
         /// <summary>
         ///     Gets the gameObject span
@@ -422,7 +482,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
             return _entities.AsSpan(0, NextComponentIndex);
 #else
-        return MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(_entities), NextComponentIndex);
+            return MemoryMarshal.CreateSpan(ref MemoryMarshal.GetArrayDataReference(_entities), NextComponentIndex);
 #endif
         }
 
@@ -440,16 +500,12 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     Gets the gameObject data reference
         /// </summary>
         /// <returns>The ref gameObject id only</returns>
-        internal ref GameObjectIdOnly GetEntityDataReference()
-        {
-            return ref MemoryMarshal.GetArrayDataReference(_entities);
-        }
+        internal ref GameObjectIdOnly GetEntityDataReference() => ref MemoryMarshal.GetArrayDataReference(_entities);
 #endif
         /// <summary>
         ///     The fields
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        
         public struct Fields
         {
             /// <summary>
@@ -471,7 +527,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             internal ref T GetComponentDataReference<T>()
             {
                 int index = Unsafe.Add(ref Map[0], Component<T>.Id.RawIndex);
-                return ref  Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref Components[0], index))
+                return ref Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref Components[0], index))
                     .GetComponentStorageDataReference();
             }
         }

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -119,11 +118,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         /// </summary>
         /// <param name="len">The len</param>
         /// <returns>A span of t</returns>
-        public Span<T> AsSpanLen(int len)
-        {
-
-            return AsSpan().Slice(0, len);
-        }
+        public Span<T> AsSpanLen(int len) => AsSpan().Slice(0, len);
     }
 
     /// <summary>

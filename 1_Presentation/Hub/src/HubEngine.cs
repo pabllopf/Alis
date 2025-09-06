@@ -38,12 +38,12 @@ namespace Alis.App.Hub
     public class HubEngine
     {
         /// <summary>
-        /// The hub window
+        ///     The hub window
         /// </summary>
         private HubWindow hubWindow;
 
         /// <summary>
-        /// The im gui controller
+        ///     The im gui controller
         /// </summary>
         private ImGuiControllerImplementGlfw imGuiController;
 
@@ -61,10 +61,10 @@ namespace Alis.App.Hub
                 false);
 
             hubWindow = new HubWindow(imGuiController);
-            
+
             imGuiController.OnInit();
             imGuiController.OnStart();
-            
+
             hubWindow.OnInit();
             hubWindow.OnStart();
 
@@ -73,9 +73,9 @@ namespace Alis.App.Hub
                 imGuiController.OnPollEvents();
 
                 imGuiController.OnStartFrame();
-                
+
                 imGuiController.OnRenderFrame();
-                
+
                 hubWindow.OnRender();
 
                 imGuiController.OnEndFrame();

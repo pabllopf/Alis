@@ -138,11 +138,11 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
 
                     Console.Write("█");
                 }
-                
+
                 Logger.Info("");
             }
-            
-            
+
+
             map = dungeonLoaded.Board;
             for (int y = 0; y < map.GetLength(1); y++)
             {
@@ -228,7 +228,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
 
                     Console.Write("█");
                 }
-                
+
                 Logger.Info("");
             }
         }

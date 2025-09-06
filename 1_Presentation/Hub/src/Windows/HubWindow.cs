@@ -31,9 +31,7 @@ using System;
 using System.IO;
 using Alis.App.Hub.Controllers;
 using Alis.App.Hub.Windows.Sections;
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Resource;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
@@ -56,6 +54,11 @@ namespace Alis.App.Hub.Windows
         public readonly EditorInstallationSection EditorInstallationSection;
 
         /// <summary>
+        ///     The im gui controller
+        /// </summary>
+        private readonly ImGuiControllerImplementGlfw imGuiController;
+
+        /// <summary>
         ///     The learn section
         /// </summary>
         public readonly LearnSection LearnSection;
@@ -75,19 +78,14 @@ namespace Alis.App.Hub.Windows
         ///     The projects section
         /// </summary>
         public readonly ProjectsSection ProjectsSection;
-        
+
         /// <summary>
         ///     The selected menu item
         /// </summary>
         private int selectedMenuItem;
 
         /// <summary>
-        /// The im gui controller
-        /// </summary>
-        private ImGuiControllerImplementGlfw imGuiController;
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="HubWindow"/> class
+        ///     Initializes a new instance of the <see cref="HubWindow" /> class
         /// </summary>
         /// <param name="imGuiController">The im gui controller</param>
         public HubWindow(ImGuiControllerImplementGlfw imGuiController)
@@ -105,7 +103,6 @@ namespace Alis.App.Hub.Windows
         /// <param name="imGuiController"></param>
         public override void OnInit()
         {
-            
             ProjectsSection.OnInit();
             EditorInstallationSection.OnInit();
             LearnSection.OnInit();
@@ -145,8 +142,8 @@ namespace Alis.App.Hub.Windows
             // Proporciones responsivas
             float sidebarWidth = screenSize.X * 0.22f; // 22% del ancho
             float sidebarPadding = screenSize.X * 0.01f; // 1% padding
-            float sidebarHeight = screenSize.Y - (2 * sidebarPadding);
-            float buttonWidth = sidebarWidth - (2 * sidebarPadding);
+            float sidebarHeight = screenSize.Y - 2 * sidebarPadding;
+            float buttonWidth = sidebarWidth - 2 * sidebarPadding;
             float buttonHeight = screenSize.Y * 0.09f; // 9% del alto
             float iconSize = sidebarWidth * 0.16f; // 16% del ancho de la barra lateral
             float preferencesButtonHeight = buttonHeight * 0.85f;
@@ -196,7 +193,7 @@ namespace Alis.App.Hub.Windows
             ImGui.EndChild();
 
             ImGui.SameLine();
-            ImGui.BeginChild("MainContent", new Vector2F(screenSize.X - sidebarWidth - sidebarPadding, screenSize.Y - (2 * sidebarPadding)), false);
+            ImGui.BeginChild("MainContent", new Vector2F(screenSize.X - sidebarWidth - sidebarPadding, screenSize.Y - 2 * sidebarPadding), false);
             RenderMainContent();
             ImGui.EndChild();
 

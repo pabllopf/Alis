@@ -39,14 +39,14 @@ namespace Alis.Extension.Media.FFmpeg.BaseClasses
     public partial class StreamTags
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="StreamTags"/> class
+        ///     Initializes a new instance of the <see cref="StreamTags" /> class
         /// </summary>
         public StreamTags() : this(string.Empty, string.Empty, string.Empty)
         {
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="StreamTags"/> class
+        ///     Initializes a new instance of the <see cref="StreamTags" /> class
         /// </summary>
         /// <param name="creationTime">The creation time</param>
         /// <param name="language">The language</param>
@@ -57,7 +57,7 @@ namespace Alis.Extension.Media.FFmpeg.BaseClasses
             Language = language;
             HandlerName = handlerName;
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the creation time
         /// </summary>

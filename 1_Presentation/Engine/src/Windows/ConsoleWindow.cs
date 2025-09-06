@@ -184,11 +184,9 @@ namespace Alis.App.Engine.Windows
                 ImGui.Separator(); // Opcional: para separar visualmente las secciones
 
                 RenderConsoleOutput();
-                
             }
 
             ImGui.End();
-            
         }
 
         /// <summary>

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Diagnostics;
 
 namespace Alis.Extension.Profile

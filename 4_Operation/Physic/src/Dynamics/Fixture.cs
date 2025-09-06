@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
@@ -240,10 +239,7 @@ namespace Alis.Core.Physic.Dynamics
         public float GetFriction
         {
             get => _friction;
-            set
-            {
-                _friction = value;
-            }
+            set => _friction = value;
         }
 
         /// <summary>
@@ -254,10 +250,7 @@ namespace Alis.Core.Physic.Dynamics
         public float GetRestitution
         {
             get => _restitution;
-            set
-            {
-                _restitution = value;
-            }
+            set => _restitution = value;
         }
 
 
@@ -412,12 +405,11 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The cloned fixture.</returns>
         public Fixture CloneOnto(Body body) => CloneOnto(body, GetShape);
 
-      /// <summary>
-      /// 
-      /// </summary>
-      /// <param name="body"></param>
-      /// <param name="shape"></param>
-      /// <returns></returns>
+        /// <summary>
+        /// </summary>
+        /// <param name="body"></param>
+        /// <param name="shape"></param>
+        /// <returns></returns>
         internal Fixture CloneOnto(Body body, Shape shape)
         {
             Fixture fixture = new Fixture(shape.Clone());

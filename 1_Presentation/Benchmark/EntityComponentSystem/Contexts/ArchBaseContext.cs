@@ -41,7 +41,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         ///     The component
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct Component1
+        public struct Component1
         {
             /// <summary>
             ///     The value
@@ -53,7 +53,7 @@ public struct Component1
         ///     The component
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct Component2
+        public struct Component2
         {
             /// <summary>
             ///     The value
@@ -65,7 +65,7 @@ public struct Component2
         ///     The component
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct Component3
+        public struct Component3
         {
             /// <summary>
             ///     The value

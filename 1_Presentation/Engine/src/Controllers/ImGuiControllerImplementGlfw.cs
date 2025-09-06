@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ImGuiControllerImplementGlfw.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -20,140 +49,41 @@ using Alis.Extension.Graphic.Ui.Fonts;
 namespace Alis.App.Engine.Controllers
 {
     /// <summary>
-    /// The im gui controller implement glfw class
+    ///     The im gui controller implement glfw class
     /// </summary>
-    /// <seealso cref="IControllerUi"/>
+    /// <seealso cref="IControllerUi" />
     public class ImGuiControllerImplementGlfw(string titleMainWindow = "ImGui Window", int width = 800, int height = 600, int windowsDefault = 0, bool modeDebug = true) : IControllerUi
     {
         /// <summary>
-        /// The dock space title
+        ///     The dock space title
         /// </summary>
         private const string DockSpaceTitle = "DockSpace Demo";
+
         /// <summary>
-        /// The dock space id
+        ///     The dock space id
         /// </summary>
         private const string DockSpaceId = "MyDockSpace";
 
         /// <summary>
-        /// The frame rate
+        ///     The frame rate
         /// </summary>
         private const float FrameRate = 1.0f / 60.0f;
-        
-        /// <summary>
-        /// The is open editor style window
-        /// </summary>
-        private bool IsOpenEditorStyleWindow = false;
 
         /// <summary>
-        /// The menu bar
+        ///     The menu bar
         /// </summary>
         private const ImGuiWindowFlags _windowDockSpaceFlags = ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize |
                                                                ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus |
                                                                ImGuiWindowFlags.MenuBar;
 
         /// <summary>
-        /// The nav enable keyboard
+        ///     The nav enable keyboard
         /// </summary>
         private const ImGuiConfigFlags _configFlags = ImGuiConfigFlags.DockingEnable | ImGuiConfigFlags.NavEnableKeyboard;
 
 
         /// <summary>
-        /// The context
-        /// </summary>
-        private IntPtr _context;
-
-
-        /// <summary>
-        /// The viewport
-        /// </summary>
-        public ImGuiViewportPtr Viewport;
-
-
-        // Variables globales para el estado del ratón y la rueda
-        /// <summary>
-        /// The mouse pressed
-        /// </summary>
-        public readonly bool[] _mousePressed = new bool[3];
-        /// <summary>
-        /// The mouse just pressed
-        /// </summary>
-        public readonly bool[] _mouseJustPressed = new bool[3];
-
-
-        // FONTS:
-        /// <summary>
-        /// The font texture id
-        /// </summary>
-        public uint FontTextureId;
-        /// <summary>
-        /// The font loaded 16 solid
-        /// </summary>
-        public ImFontPtr FontLoaded16Solid;
-        /// <summary>
-        /// The font loaded 10 solid
-        /// </summary>
-        public ImFontPtr FontLoaded10Solid;
-        /// <summary>
-        /// The font loaded 45 bold
-        /// </summary>
-        public ImFontPtr FontLoaded45Bold;
-        /// <summary>
-        /// The font loaded 30 bold
-        /// </summary>
-        public ImFontPtr FontLoaded30Bold;
-        /// <summary>
-        /// The font loaded 16 light
-        /// </summary>
-        public ImFontPtr FontLoaded16Light;
-
-
-
-        // Config for ImGui rendering
-        /// <summary>
-        /// The font texture
-        /// </summary>
-        public IntPtr _fontTexture;
-        /// <summary>
-        /// The vertex array
-        /// </summary>
-        public uint _vertexArray;
-        /// <summary>
-        /// The vertex buffer
-        /// </summary>
-        public uint _vertexBuffer;
-        /// <summary>
-        /// The index buffer
-        /// </summary>
-        public uint _indexBuffer;
-        /// <summary>
-        /// The shader program
-        /// </summary>
-        public uint _shaderProgram;
-        /// <summary>
-        /// The attrib location tex
-        /// </summary>
-        public int _attribLocationTex;
-        /// <summary>
-        /// The attrib location proj mtx
-        /// </summary>
-        public int _attribLocationProjMtx;
-        /// <summary>
-        /// The attrib location position
-        /// </summary>
-        public int _attribLocationPosition;
-        /// <summary>
-        /// The attrib location uv
-        /// </summary>
-        public int _attribLocationUv;
-        /// <summary>
-        /// The attrib location color
-        /// </summary>
-        public int _attribLocationColor;
-
-
-
-        /// <summary>
-        /// The vertex shader source
+        ///     The vertex shader source
         /// </summary>
         private const string VertexShaderSource = """
                                                       #version 330 core
@@ -171,7 +101,7 @@ namespace Alis.App.Engine.Controllers
                                                   """;
 
         /// <summary>
-        /// The fragment shader source
+        ///     The fragment shader source
         /// </summary>
         private const string FragmentShaderSource = """
                                                         #version 330 core
@@ -185,10 +115,105 @@ namespace Alis.App.Engine.Controllers
                                                     """;
 
 
+        /// <summary>
+        ///     The windows default
+        /// </summary>
+        private readonly GlfwController _glfwController = new GlfwController(titleMainWindow, width, height, windowsDefault);
+
+        /// <summary>
+        ///     The mode debug
+        /// </summary>
+        private readonly bool _modeDebug = modeDebug;
+
+        /// <summary>
+        ///     The mouse just pressed
+        /// </summary>
+        public readonly bool[] _mouseJustPressed = new bool[3];
+
+
+        // Variables globales para el estado del ratón y la rueda
+        /// <summary>
+        ///     The mouse pressed
+        /// </summary>
+        public readonly bool[] _mousePressed = new bool[3];
+
+        /// <summary>
+        ///     The preview height
+        /// </summary>
+        private readonly int _previewHeight = 512;
+
+        /// <summary>
+        ///     The preview height
+        /// </summary>
+        private readonly int _previewWidth = 512;
+
+        /// <summary>
+        ///     The attrib location color
+        /// </summary>
+        public int _attribLocationColor;
+
+        /// <summary>
+        ///     The attrib location position
+        /// </summary>
+        public int _attribLocationPosition;
+
+        /// <summary>
+        ///     The attrib location proj mtx
+        /// </summary>
+        public int _attribLocationProjMtx;
+
+        /// <summary>
+        ///     The attrib location tex
+        /// </summary>
+        public int _attribLocationTex;
+
+        /// <summary>
+        ///     The attrib location uv
+        /// </summary>
+        public int _attribLocationUv;
+
+
+        /// <summary>
+        ///     The context
+        /// </summary>
+        private IntPtr _context;
+
+
+        // Config for ImGui rendering
+        /// <summary>
+        ///     The font texture
+        /// </summary>
+        public IntPtr _fontTexture;
+
+        /// <summary>
+        ///     The index buffer
+        /// </summary>
+        public uint _indexBuffer;
+
+        /// <summary>
+        ///     The preview texture
+        /// </summary>
+        private uint _previewTexture;
+
+        /// <summary>
+        ///     The shader program
+        /// </summary>
+        public uint _shaderProgram;
+
+        /// <summary>
+        ///     The vertex array
+        /// </summary>
+        public uint _vertexArray;
+
+        /// <summary>
+        ///     The vertex buffer
+        /// </summary>
+        public uint _vertexBuffer;
+
 
         // IMGUIZNO SAMPLE: 
         /// <summary>
-        /// The camera projection
+        ///     The camera projection
         /// </summary>
         public float[] cameraProjection = new float[16]
         {
@@ -199,7 +224,7 @@ namespace Alis.App.Engine.Controllers
         };
 
         /// <summary>
-        /// The camera view
+        ///     The camera view
         /// </summary>
         public float[] cameraView = new float[16]
         {
@@ -210,7 +235,44 @@ namespace Alis.App.Engine.Controllers
         };
 
         /// <summary>
-        /// The identity matrix
+        ///     The dpi scale
+        /// </summary>
+        private float dpiScale;
+
+        /// <summary>
+        ///     The font loaded 10 solid
+        /// </summary>
+        public ImFontPtr FontLoaded10Solid;
+
+        /// <summary>
+        ///     The font loaded 16 light
+        /// </summary>
+        public ImFontPtr FontLoaded16Light;
+
+        /// <summary>
+        ///     The font loaded 16 solid
+        /// </summary>
+        public ImFontPtr FontLoaded16Solid;
+
+        /// <summary>
+        ///     The font loaded 30 bold
+        /// </summary>
+        public ImFontPtr FontLoaded30Bold;
+
+        /// <summary>
+        ///     The font loaded 45 bold
+        /// </summary>
+        public ImFontPtr FontLoaded45Bold;
+
+
+        // FONTS:
+        /// <summary>
+        ///     The font texture id
+        /// </summary>
+        public uint FontTextureId;
+
+        /// <summary>
+        ///     The identity matrix
         /// </summary>
         public float[] identityMatrix = new float[16]
         {
@@ -221,7 +283,12 @@ namespace Alis.App.Engine.Controllers
         };
 
         /// <summary>
-        /// The matrix
+        ///     The is open editor style window
+        /// </summary>
+        private bool IsOpenEditorStyleWindow;
+
+        /// <summary>
+        ///     The matrix
         /// </summary>
         public float[] matrix = new float[16]
         {
@@ -232,75 +299,65 @@ namespace Alis.App.Engine.Controllers
         };
 
         /// <summary>
-        /// The matrix rotation
+        ///     The matrix rotation
         /// </summary>
         public float[] matrixRotation = new float[3];
+
         /// <summary>
-        /// The matrix scale
+        ///     The matrix scale
         /// </summary>
         public float[] matrixScale = new float[3];
+
         /// <summary>
-        /// The matrix translation
+        ///     The matrix translation
         /// </summary>
         public float[] matrixTranslation = new float[3];
+
         /// <summary>
-        /// The rotation
+        ///     The rotation
         /// </summary>
         public Vector3F rotation;
+
         /// <summary>
-        /// The scale
+        ///     The scale
         /// </summary>
         public Vector3F scale;
-        /// <summary>
-        /// The translation
-        /// </summary>
-        public Vector3F translation;
-        
-        
+
+
         // PREVIEW WINDOWS:
         /// <summary>
-        /// The shader program
+        ///     The shader program
         /// </summary>
-        private  uint shaderProgram;
+        private uint shaderProgram;
+
         /// <summary>
-        /// The vao
+        ///     The translation
         /// </summary>
-        private  uint vao;
+        public Vector3F translation;
+
         /// <summary>
-        /// The vbo
+        ///     The vao
         /// </summary>
-        private  uint vbo;
+        private uint vao;
+
         /// <summary>
-        /// The preview texture
+        ///     The vbo
         /// </summary>
-        private  uint _previewTexture;
-        /// <summary>
-        /// The preview height
-        /// </summary>
-        private  int _previewWidth = 512, _previewHeight = 512;
+        private uint vbo;
 
 
         /// <summary>
-        /// The windows default
+        ///     The viewport
         /// </summary>
-        private GlfwController _glfwController = new GlfwController(titleMainWindow, width, height, windowsDefault);
-        /// <summary>
-        /// The mode debug
-        /// </summary>
-        private bool _modeDebug = modeDebug;
+        public ImGuiViewportPtr Viewport;
 
         /// <summary>
-        /// The dpi scale
-        /// </summary>
-        private float dpiScale;
-
-        /// <summary>
-        /// Gets or sets the value of the is running
+        ///     Gets or sets the value of the is running
         /// </summary>
         public bool IsRunning { get; set; } = true;
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public void OnInit()
         {
@@ -333,26 +390,200 @@ namespace Alis.App.Engine.Controllers
             SetupRenderer();
 
             SetPerFrameImGuiData(FrameRate);
-            
-            
+
+
             InitializePreviewResources();
-            
+
             // 1. Obtener el factor de escala del monitor principal
             Monitor monitor = Glfw.GetWindowMonitor(_glfwController._window);
             if (monitor == Monitor.None)
             {
                 monitor = Glfw.GetPrimaryMonitor();
             }
-            
+
             dpiScale = Math.Max(monitor.ContentScale.X, monitor.ContentScale.Y);
 
-            
 
             Logger.Info("ImGui initialized successfully");
         }
 
         /// <summary>
-        /// Initializes the preview resources
+        ///     Ons the start
+        /// </summary>
+        public void OnStart()
+        {
+            _glfwController.OnStart();
+        }
+
+        /// <summary>
+        ///     Ons the poll events
+        /// </summary>
+        public void OnPollEvents()
+        {
+            _glfwController.OnPollEvents();
+
+            if (_glfwController.CheckIfWindowShouldClose())
+            {
+                IsRunning = false;
+            }
+
+            ImGuiIoPtr io = ImGui.GetIo();
+
+            // Actualiza la posición del mouse solo si la ventana está enfocada
+            if (Glfw.GetWindowAttribute(_glfwController._window, WindowAttribute.Focused))
+            {
+                Glfw.GetCursorPosition(_glfwController._window, out double mouseX, out double mouseY);
+                io.MousePos = new Vector2F((float) mouseX, (float) mouseY);
+            }
+            else
+            {
+                io.MousePos = new Vector2F(float.MinValue, float.MinValue);
+            }
+
+            // Actualiza el estado de los botones del mouse
+            List<bool> mouseDown = io.MouseDown;
+            mouseDown[0] = _mousePressed[0] || Glfw.GetMouseButton(_glfwController._window, MouseButton.Left) == InputState.Press;
+            mouseDown[1] = _mousePressed[1] || Glfw.GetMouseButton(_glfwController._window, MouseButton.Right) == InputState.Press;
+            mouseDown[2] = _mousePressed[2] || Glfw.GetMouseButton(_glfwController._window, MouseButton.Middle) == InputState.Press;
+            _mousePressed[0] = _mousePressed[1] = _mousePressed[2] = false;
+            io.MouseDown = mouseDown;
+
+            MapKeys(io);
+        }
+
+
+        /// <summary>
+        ///     Ons the start frame
+        /// </summary>
+        public void OnStartFrame()
+        {
+            _glfwController.OnStartFrame();
+
+            // Usa el tamaño real de la ventana GLFW
+            ImGui.SetNextWindowPos(new Vector2F(0, 0));
+            ImGui.SetNextWindowSize(new Vector2F(_glfwController._widthMainWindow, _glfwController._heightMainWindow));
+            ImGui.SetNextWindowViewport(Viewport.Id);
+
+            Glfw.GetWindowSize(_glfwController._window, out int w, out int h);
+            if (w != _glfwController._widthMainWindow || h != _glfwController._heightMainWindow)
+            {
+                _glfwController._widthMainWindow = w;
+                _glfwController._heightMainWindow = h;
+                SetPerFrameImGuiData(FrameRate);
+            }
+
+            ImGui.NewFrame();
+            ImGuizMo.BeginFrame();
+
+            ImGui.SetNextWindowPos(Viewport.WorkPos);
+            ImGui.SetNextWindowSize(Viewport.Size);
+            ImGui.Begin(DockSpaceTitle, _windowDockSpaceFlags);
+
+#if OSX
+            Vector2F dockSize = Viewport.Size - new Vector2F(5, 60);
+#else
+            Vector2F dockSize = Viewport.Size - new Vector2F(5, 180);
+#endif
+            uint dockSpaceId = ImGui.GetId(DockSpaceId);
+            ImGui.DockSpace(dockSpaceId, dockSize);
+        }
+
+        /// <summary>
+        ///     Ons the render frame
+        /// </summary>
+        public void OnRenderFrame()
+        {
+            _glfwController.OnRenderFrame();
+
+            ImGuiIoPtr io = ImGui.GetIo();
+            io.DisplaySize = new Vector2F(_glfwController._widthMainWindow, _glfwController._heightMainWindow);
+            io.DisplayFramebufferScale = new Vector2F(1f, 1f);
+
+            if (_modeDebug)
+            {
+                ImGui.ShowDemoWindow();
+                ImPlot.ShowDemoWindow();
+                ShowDemoImGuizMo();
+                ShowDemoImNode();
+                ShowDemoIcon();
+
+                RenderTriangleDirectly();
+                ShowPreviewImage();
+            }
+
+            if (IsOpenEditorStyleWindow)
+            {
+                ref ImGuiStyle style = ref ImGui.GetStyle();
+                ImGui.Begin($"{FontAwesome5.Cogs} Style Editor", ref IsOpenEditorStyleWindow, ImGuiWindowFlags.AlwaysAutoResize);
+                ImGui.ShowStyleEditor(style);
+                ImGui.End();
+            }
+        }
+
+
+        /// <summary>
+        ///     Ons the end frame
+        /// </summary>
+        public void OnEndFrame()
+        {
+            ImGui.End();
+
+            ImGui.Render();
+
+            ImGuiIoPtr io = ImGui.GetIo();
+            Gl.GlViewport(0, 0, (int) io.DisplaySize.X, (int) io.DisplaySize.Y);
+            Gl.GlClear(ClearBufferMask.ColorBufferBit);
+
+            RenderImDrawData(ImGui.GetDrawData());
+
+            _glfwController.OnEndFrame();
+        }
+
+        /// <summary>
+        ///     Ons the exit
+        /// </summary>
+        public void OnExit()
+        {
+            Logger.Info("Shutting down ImGui...");
+
+            if (_vertexBuffer != 0)
+            {
+                Gl.DeleteBuffer(_vertexBuffer);
+                Logger.Info("Vertex buffer deleted");
+            }
+
+            if (_indexBuffer != 0)
+            {
+                Gl.DeleteBuffer(_indexBuffer);
+                Logger.Info("Index buffer deleted");
+            }
+
+            if (_vertexArray != 0)
+            {
+                Gl.DeleteVertexArray(_vertexArray);
+                Logger.Info("Vertex array deleted");
+            }
+
+            if (_shaderProgram != 0)
+            {
+                Gl.GlDeleteProgram(_shaderProgram);
+                Logger.Info("Shader program deleted");
+            }
+
+            if (_fontTexture != IntPtr.Zero)
+            {
+                Gl.DeleteTexture((uint) _fontTexture);
+                Logger.Info("Font texture deleted");
+            }
+
+
+            Logger.Info("ImGui terminated successfully");
+
+            _glfwController.OnExit();
+        }
+
+        /// <summary>
+        ///     Initializes the preview resources
         /// </summary>
         private void InitializePreviewResources()
         {
@@ -445,9 +676,9 @@ namespace Alis.App.Engine.Controllers
             // Print the OpenGL shading language version
             Logger.Log(@$"OpenGL SHADING LANGUAGE VERSION {Gl.GlGetString(StringName.ShadingLanguageVersion)}");
         }
-        
+
         /// <summary>
-        /// Loads the fonts
+        ///     Loads the fonts
         /// </summary>
         public void LoadFonts()
         {
@@ -606,7 +837,7 @@ namespace Alis.App.Engine.Controllers
         }
 
         /// <summary>
-        /// Loads the texture using the specified pixel data
+        ///     Loads the texture using the specified pixel data
         /// </summary>
         /// <param name="pixelData">The pixel data</param>
         /// <param name="width">The width</param>
@@ -627,7 +858,7 @@ namespace Alis.App.Engine.Controllers
         }
 
         /// <summary>
-        /// Configs the dock space
+        ///     Configs the dock space
         /// </summary>
         public void ConfigDockSpace()
         {
@@ -638,13 +869,13 @@ namespace Alis.App.Engine.Controllers
         }
 
         /// <summary>
-        /// Sets the style
+        ///     Sets the style
         /// </summary>
         public void SetStyle()
         {
             Logger.Info("Setting ImGui style...");
             ImGui.StyleColorsDark();
-            
+
 
             ref ImGuiStyle style = ref ImGui.GetStyle();
 
@@ -898,10 +1129,8 @@ namespace Alis.App.Engine.Controllers
         }
 
 
-
-
         /// <summary>
-        /// Setup the renderer
+        ///     Setup the renderer
         /// </summary>
         public void SetupRenderer()
         {
@@ -941,17 +1170,17 @@ namespace Alis.App.Engine.Controllers
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, _vertexBuffer);
             int stride = Marshal.SizeOf<ImDrawVert>();
             Gl.GlEnableVertexAttribArray((uint) _attribLocationPosition);
-            Gl.GlVertexAttribPointer((uint) _attribLocationPosition, 2, VertexAttribPointerType.Float, false, stride, (IntPtr) 0);
+            Gl.GlVertexAttribPointer((uint) _attribLocationPosition, 2, VertexAttribPointerType.Float, false, stride, 0);
             Gl.GlEnableVertexAttribArray((uint) _attribLocationUv);
-            Gl.GlVertexAttribPointer((uint) _attribLocationUv, 2, VertexAttribPointerType.Float, false, stride, (IntPtr) 8);
+            Gl.GlVertexAttribPointer((uint) _attribLocationUv, 2, VertexAttribPointerType.Float, false, stride, 8);
             Gl.GlEnableVertexAttribArray((uint) _attribLocationColor);
-            Gl.GlVertexAttribPointer((uint) _attribLocationColor, 4, VertexAttribPointerType.UnsignedByte, true, stride, (IntPtr) 16);
+            Gl.GlVertexAttribPointer((uint) _attribLocationColor, 4, VertexAttribPointerType.UnsignedByte, true, stride, 16);
 
             CreateFontTexture();
         }
 
         /// <summary>
-        /// Creates the font texture
+        ///     Creates the font texture
         /// </summary>
         public void CreateFontTexture()
         {
@@ -970,7 +1199,7 @@ namespace Alis.App.Engine.Controllers
         }
 
         /// <summary>
-        /// Checks the shader compile status using the specified shader
+        ///     Checks the shader compile status using the specified shader
         /// </summary>
         /// <param name="shader">The shader</param>
         public void CheckShaderCompileStatus(uint shader)
@@ -982,7 +1211,7 @@ namespace Alis.App.Engine.Controllers
         }
 
         /// <summary>
-        /// Checks the program link status using the specified program
+        ///     Checks the program link status using the specified program
         /// </summary>
         /// <param name="program">The program</param>
         public void CheckProgramLinkStatus(uint program)
@@ -995,7 +1224,7 @@ namespace Alis.App.Engine.Controllers
 
 
         /// <summary>
-        /// Sets the per frame im gui data using the specified delta seconds
+        ///     Sets the per frame im gui data using the specified delta seconds
         /// </summary>
         /// <param name="deltaSeconds">The delta seconds</param>
         public void SetPerFrameImGuiData(float deltaSeconds)
@@ -1007,63 +1236,19 @@ namespace Alis.App.Engine.Controllers
         }
 
         /// <summary>
-        /// Ons the start
-        /// </summary>
-        public void OnStart()
-        {
-            _glfwController.OnStart();
-        }
-
-        /// <summary>
-        /// Ons the poll events
-        /// </summary>
-        public void OnPollEvents()
-        {
-            _glfwController.OnPollEvents();
-
-            if (_glfwController.CheckIfWindowShouldClose())
-            {
-                IsRunning = false;
-            }
-
-            ImGuiIoPtr io = ImGui.GetIo();
-
-            // Actualiza la posición del mouse solo si la ventana está enfocada
-            if (Glfw.GetWindowAttribute(_glfwController._window, WindowAttribute.Focused))
-            {
-                Glfw.GetCursorPosition(_glfwController._window, out double mouseX, out double mouseY);
-                io.MousePos = new Vector2F((float)mouseX, (float)mouseY);
-            }
-            else
-            {
-                io.MousePos = new Vector2F(float.MinValue, float.MinValue);
-            }
-
-            // Actualiza el estado de los botones del mouse
-            List<bool> mouseDown = io.MouseDown;
-            mouseDown[0] = _mousePressed[0] || Glfw.GetMouseButton(_glfwController._window, MouseButton.Left) == InputState.Press;
-            mouseDown[1] = _mousePressed[1] || Glfw.GetMouseButton(_glfwController._window, MouseButton.Right) == InputState.Press;
-            mouseDown[2] = _mousePressed[2] || Glfw.GetMouseButton(_glfwController._window, MouseButton.Middle) == InputState.Press;
-            _mousePressed[0] = _mousePressed[1] = _mousePressed[2] = false;
-            io.MouseDown = mouseDown;
-
-            MapKeys(io);
-        }
-        
-        /// <summary>
-        /// Processes the key event using the specified io
+        ///     Processes the key event using the specified io
         /// </summary>
         /// <param name="io">The io</param>
         /// <param name="imguikey">The imguikey</param>
         /// <param name="key">The key</param>
         public void ProcessKeyEvent(ImGuiIoPtr io, ImGuiKey imguikey, Keys key)
         {
-            io.KeyMap[(int)imguikey] = Glfw.GetKey(_glfwController._window, key) == InputState.Press ? 1 : 0;
+            io.KeyMap[(int) imguikey] = Glfw.GetKey(_glfwController._window, key) == InputState.Press ? 1 : 0;
             io.AddKeyEvent(imguikey, Glfw.GetKey(_glfwController._window, key) == InputState.Press);
         }
 
         /// <summary>
-        /// Maps the keys using the specified io
+        ///     Maps the keys using the specified io
         /// </summary>
         /// <param name="io">The io</param>
         public void MapKeys(ImGuiIoPtr io)
@@ -1094,79 +1279,10 @@ namespace Alis.App.Engine.Controllers
             ProcessKeyEvent(io, ImGuiKey.Z, Keys.Z);
         }
 
-
         /// <summary>
-        /// Ons the start frame
+        ///     Renders the triangle directly
         /// </summary>
-        public void OnStartFrame()
-        {
-            _glfwController.OnStartFrame();
-        
-            // Usa el tamaño real de la ventana GLFW
-            ImGui.SetNextWindowPos(new Vector2F(0, 0));
-            ImGui.SetNextWindowSize(new Vector2F(_glfwController._widthMainWindow, _glfwController._heightMainWindow));
-            ImGui.SetNextWindowViewport(Viewport.Id);
-        
-            Glfw.GetWindowSize(_glfwController._window, out int w, out int h);
-            if (w != _glfwController._widthMainWindow || h != _glfwController._heightMainWindow)
-            {
-                _glfwController._widthMainWindow = w;
-                _glfwController._heightMainWindow = h;
-                SetPerFrameImGuiData(FrameRate);
-            }
-        
-            ImGui.NewFrame();
-            ImGuizMo.BeginFrame();
-        
-            ImGui.SetNextWindowPos(Viewport.WorkPos);
-            ImGui.SetNextWindowSize(Viewport.Size);
-            ImGui.Begin(DockSpaceTitle, _windowDockSpaceFlags);
-        
-            #if OSX
-                Vector2F dockSize = Viewport.Size - new Vector2F(5, 60);
-            #else
-                Vector2F dockSize = Viewport.Size - new Vector2F(5, 180);
-            #endif
-            uint dockSpaceId = ImGui.GetId(DockSpaceId);
-            ImGui.DockSpace(dockSpaceId, dockSize);
-        }
-
-        /// <summary>
-        /// Ons the render frame
-        /// </summary>
-        public void OnRenderFrame()
-        {
-            _glfwController.OnRenderFrame();
-            
-            ImGuiIoPtr io = ImGui.GetIo();
-            io.DisplaySize = new Vector2F(_glfwController._widthMainWindow, _glfwController._heightMainWindow);
-            io.DisplayFramebufferScale = new Vector2F(1f, 1f);
-
-            if (_modeDebug)
-            {
-                ImGui.ShowDemoWindow();
-                ImPlot.ShowDemoWindow();
-                ShowDemoImGuizMo();
-                ShowDemoImNode();
-                ShowDemoIcon();
-            
-                RenderTriangleDirectly();
-                ShowPreviewImage();
-            }
-
-            if (IsOpenEditorStyleWindow)
-            {
-                ref ImGuiStyle style = ref ImGui.GetStyle();
-                ImGui.Begin($"{FontAwesome5.Cogs} Style Editor", ref IsOpenEditorStyleWindow, ImGuiWindowFlags.AlwaysAutoResize);
-                ImGui.ShowStyleEditor(style);
-                ImGui.End();
-            }
-        }
-        
-         /// <summary>
-         /// Renders the triangle directly
-         /// </summary>
-         private  void RenderTriangleDirectly()
+        private void RenderTriangleDirectly()
         {
             // Configura el viewport para la ventana principal
             Gl.GlViewport(0, 0, _previewWidth, _previewHeight);
@@ -1193,11 +1309,10 @@ namespace Alis.App.Engine.Controllers
         }
 
         /// <summary>
-        /// Shows the preview image
+        ///     Shows the preview image
         /// </summary>
-        private  void ShowPreviewImage()
+        private void ShowPreviewImage()
         {
-
             // Copia el framebuffer a una textura para ImGui
             byte[] pixelBuffer = new byte[_previewWidth * _previewHeight * 4];
 
@@ -1230,7 +1345,7 @@ namespace Alis.App.Engine.Controllers
         }
 
         /// <summary>
-        /// Shows the demo icon
+        ///     Shows the demo icon
         /// </summary>
         private void ShowDemoIcon()
         {
@@ -1245,7 +1360,7 @@ namespace Alis.App.Engine.Controllers
         }
 
         /// <summary>
-        /// Shows the demo im node
+        ///     Shows the demo im node
         /// </summary>
         private void ShowDemoImNode()
         {
@@ -1274,7 +1389,7 @@ namespace Alis.App.Engine.Controllers
         }
 
         /// <summary>
-        /// Shows the demo im guiz mo
+        ///     Shows the demo im guiz mo
         /// </summary>
         private void ShowDemoImGuizMo()
         {
@@ -1341,69 +1456,7 @@ namespace Alis.App.Engine.Controllers
 
 
         /// <summary>
-        /// Ons the end frame
-        /// </summary>
-        public void OnEndFrame()
-        {
-            ImGui.End();
-
-            ImGui.Render();
-
-            ImGuiIoPtr io = ImGui.GetIo();
-            Gl.GlViewport(0, 0, (int) io.DisplaySize.X, (int) io.DisplaySize.Y);
-            Gl.GlClear(ClearBufferMask.ColorBufferBit);
-
-            RenderImDrawData(ImGui.GetDrawData());
-
-            _glfwController.OnEndFrame();
-        }
-
-        /// <summary>
-        /// Ons the exit
-        /// </summary>
-        public void OnExit()
-        {
-            Logger.Info("Shutting down ImGui...");
-
-            if (_vertexBuffer != 0)
-            {
-                Gl.DeleteBuffer(_vertexBuffer);
-                Logger.Info("Vertex buffer deleted");
-            }
-
-            if (_indexBuffer != 0)
-            {
-                Gl.DeleteBuffer(_indexBuffer);
-                Logger.Info("Index buffer deleted");
-            }
-
-            if (_vertexArray != 0)
-            {
-                Gl.DeleteVertexArray(_vertexArray);
-                Logger.Info("Vertex array deleted");
-            }
-
-            if (_shaderProgram != 0)
-            {
-                Gl.GlDeleteProgram(_shaderProgram);
-                Logger.Info("Shader program deleted");
-            }
-
-            if (_fontTexture != IntPtr.Zero)
-            {
-                Gl.DeleteTexture((uint) _fontTexture);
-                Logger.Info("Font texture deleted");
-            }
-
-
-            Logger.Info("ImGui terminated successfully");
-
-            _glfwController.OnExit();
-        }
-
-
-        /// <summary>
-        /// Renders the im draw data using the specified draw data
+        ///     Renders the im draw data using the specified draw data
         /// </summary>
         /// <param name="drawData">The draw data</param>
         /// <exception cref="NotImplementedException">User callbacks not implemented</exception>
@@ -1411,7 +1464,10 @@ namespace Alis.App.Engine.Controllers
         {
             int fbWidth = (int) (drawData.DisplaySize.X * drawData.FramebufferScale.X);
             int fbHeight = (int) (drawData.DisplaySize.Y * drawData.FramebufferScale.Y);
-            if (fbWidth == 0 || fbHeight == 0) return;
+            if (fbWidth == 0 || fbHeight == 0)
+            {
+                return;
+            }
 
             Gl.GlViewport(0, 0, fbWidth, fbHeight);
             Gl.GlEnable(EnableCap.Blend);
@@ -1420,7 +1476,7 @@ namespace Alis.App.Engine.Controllers
             Gl.GlDisable(EnableCap.CullFace);
             Gl.GlDisable(EnableCap.DepthTest);
             Gl.GlEnable(EnableCap.ScissorTest);
-            
+
             float l = drawData.DisplayPos.X;
             float r = drawData.DisplayPos.X + drawData.DisplaySize.X;
             float t = drawData.DisplayPos.Y;
@@ -1456,7 +1512,9 @@ namespace Alis.App.Engine.Controllers
                     ImDrawCmd pcmd = cmdList.CmdBuffer[cmdi];
 
                     if (pcmd.UserCallback != IntPtr.Zero)
+                    {
                         throw new NotImplementedException("User callbacks not implemented");
+                    }
 
                     Gl.GlBindTexture(TextureTarget.Texture2D, (uint) pcmd.TextureId);
                     Gl.GlScissor(
@@ -1466,7 +1524,7 @@ namespace Alis.App.Engine.Controllers
                         (int) (pcmd.ClipRect.W - pcmd.ClipRect.Y));
 
                     Gl.GlDrawElementsBaseVertex(BeginMode.Triangles, (int) pcmd.ElemCount,
-                        DrawElementsType.UnsignedShort, (IntPtr) (idxOffset * sizeof(ushort)), 0);
+                        DrawElementsType.UnsignedShort, idxOffset * sizeof(ushort), 0);
 
                     idxOffset += (int) pcmd.ElemCount;
                 }
@@ -1479,7 +1537,7 @@ namespace Alis.App.Engine.Controllers
         }
 
         /// <summary>
-        /// Matrixes the to array using the specified m
+        ///     Matrixes the to array using the specified m
         /// </summary>
         /// <param name="m">The </param>
         /// <returns>The float array</returns>
@@ -1492,7 +1550,7 @@ namespace Alis.App.Engine.Controllers
         };
 
         /// <summary>
-        /// Opens the editor style window
+        ///     Opens the editor style window
         /// </summary>
         public void OpenEditorStyleWindow()
         {
@@ -1500,4 +1558,3 @@ namespace Alis.App.Engine.Controllers
         }
     }
 }
-

@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:TextureSampleCustomBmpExample.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -8,40 +37,44 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.Core.Graphic.Sample.Samples
 {
     /// <summary>
-    /// Ejemplo: Renderiza una textura BMP personalizada sobre un quad
+    ///     Ejemplo: Renderiza una textura BMP personalizada sobre un quad
     /// </summary>
     public class TextureSampleCustomBmpExample : IExample
     {
         /// <summary>
-        /// The texture
+        ///     The image height
         /// </summary>
-        private uint vao, vbo, ebo, shaderProgram, texture;
-        /// <summary>
-        /// The window width
-        /// </summary>
-        private int windowWidth = 800;
-        /// <summary>
-        /// The window height
-        /// </summary>
-        private int windowHeight = 600;
-        /// <summary>
-        /// The image width
-        /// </summary>
-        private int imageWidth = 16;
-        /// <summary>
-        /// The image height
-        /// </summary>
-        private int imageHeight = 32;
+        private readonly int imageHeight = 32;
 
         /// <summary>
-        /// Initializes this instance
+        ///     The image width
+        /// </summary>
+        private readonly int imageWidth = 16;
+
+        /// <summary>
+        ///     The window height
+        /// </summary>
+        private readonly int windowHeight = 600;
+
+        /// <summary>
+        ///     The window width
+        /// </summary>
+        private readonly int windowWidth = 800;
+
+        /// <summary>
+        ///     The texture
+        /// </summary>
+        private uint vao, vbo, ebo, shaderProgram, texture;
+
+        /// <summary>
+        ///     Initializes this instance
         /// </summary>
         /// <exception cref="Exception">Invalid BMP file</exception>
         /// <exception cref="FileNotFoundException">Texture file not found </exception>
         public void Initialize()
         {
-            float scaleX = (float)imageWidth / windowWidth;
-            float scaleY = (float)imageHeight / windowHeight;
+            float scaleX = (float) imageWidth / windowWidth;
+            float scaleY = (float) imageHeight / windowHeight;
 
             float[] vertices =
             {
@@ -51,7 +84,7 @@ namespace Alis.Core.Graphic.Sample.Samples
                 -1 * scaleX, 1 * scaleY, 0.0f, 0.0f, 0.0f
             };
 
-            uint[] indices = { 0, 1, 3, 1, 2, 3 };
+            uint[] indices = {0, 1, 3, 1, 2, 3};
 
             vao = Gl.GenVertexArray();
             vbo = Gl.GenBuffer();
@@ -113,10 +146,16 @@ namespace Alis.Core.Graphic.Sample.Samples
             Gl.GlDeleteShader(fragmentShader);
 
             string imagePath = AssetManager.Find("tile000.bmp");
-            if (!File.Exists(imagePath)) throw new FileNotFoundException("Texture file not found", imagePath);
+            if (!File.Exists(imagePath))
+            {
+                throw new FileNotFoundException("Texture file not found", imagePath);
+            }
 
             Image bmp = Image.Load(imagePath);
-            if (bmp == null) throw new Exception("Invalid BMP file");
+            if (bmp == null)
+            {
+                throw new Exception("Invalid BMP file");
+            }
 
             texture = Gl.GenTexture();
             Gl.GlBindTexture(TextureTarget.Texture2D, texture);
@@ -137,7 +176,7 @@ namespace Alis.Core.Graphic.Sample.Samples
         }
 
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
         public void Draw()
         {
@@ -151,7 +190,7 @@ namespace Alis.Core.Graphic.Sample.Samples
         }
 
         /// <summary>
-        /// Cleanups this instance
+        ///     Cleanups this instance
         /// </summary>
         public void Cleanup()
         {

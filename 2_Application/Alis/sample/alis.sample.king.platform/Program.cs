@@ -31,7 +31,6 @@ using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems;
-using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.King.Platform
@@ -110,7 +109,7 @@ namespace Alis.Sample.King.Platform
                                 .FixedRotation(true)
                                 .IgnoreGravity(false)
                                 .Build())
-                            .WithComponent<PlayerMovement>(new PlayerMovement())
+                            .WithComponent(new PlayerMovement())
                             .WithComponent<Camera>(camera => camera
                                 .Resolution(640, 480))
                             .Build())
@@ -142,7 +141,7 @@ namespace Alis.Sample.King.Platform
                 .Build();
 
             game.Save();
-            
+
             game.Run();
         }
     }

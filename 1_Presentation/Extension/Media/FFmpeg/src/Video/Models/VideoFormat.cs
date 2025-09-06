@@ -36,18 +36,17 @@ namespace Alis.Extension.Media.FFmpeg.Video.Models
     ///     The video format class
     /// </summary>
     [Serializable]
-    public partial class VideoFormat 
+    public partial class VideoFormat
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="VideoFormat"/> class
+        ///     Initializes a new instance of the <see cref="VideoFormat" /> class
         /// </summary>
         public VideoFormat() : this(string.Empty, 0, 0, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, 0, new VideoFormatTags())
         {
-            
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="VideoFormat"/> class
+        ///     Initializes a new instance of the <see cref="VideoFormat" /> class
         /// </summary>
         /// <param name="filename">The filename</param>
         /// <param name="nbStreams">The nb streams</param>

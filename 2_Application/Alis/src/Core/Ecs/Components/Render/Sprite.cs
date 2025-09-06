@@ -30,18 +30,13 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Resource;
-using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Physic;
-using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.Components.Render
 {
@@ -51,30 +46,9 @@ namespace Alis.Core.Ecs.Components.Render
     public record struct Sprite(string NameFile, int Depth) : ISprite, IInitable, IGameObjectComponent
     {
         /// <summary>
-        /// The game object
+        ///     The game object
         /// </summary>
         private IGameObject gameObject;
-        
-        /// <summary>
-        ///     Updates the self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void Init(IGameObject self)
-        {
-            gameObject = self;
-        }
-        
-        /// <summary>
-        /// Inits the self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void Update(IGameObject self)
-        {
-            if (gameObject != null)
-            {
-                Logger.Info($"Sprite updated successfully for {gameObject.Get<Transform>().Position}");
-            }
-        }
 
         /// <summary>
         ///     The image handle
@@ -94,25 +68,25 @@ namespace Alis.Core.Ecs.Components.Render
         /// <summary>
         ///     Gets or sets the value of the depth
         /// </summary>
-        
+
         public int Depth { get; set; } = Depth;
 
         /// <summary>
         ///     Gets or sets the value of the path
         /// </summary>
-        
+
         private string Path { get; set; } = string.Empty;
 
         /// <summary>
         ///     Gets or sets the value of the name file
         /// </summary>
-        
+
         public string NameFile { get; set; } = NameFile;
 
         /// <summary>
         ///     Gets or sets the value of the size
         /// </summary>
-        
+
         private Vector2F Size { get; set; }
 
         /// <summary>
@@ -143,8 +117,29 @@ namespace Alis.Core.Ecs.Components.Render
         /// <summary>
         ///     Gets or sets the value of the flip
         /// </summary>
-        
+
         private bool Flip { get; set; }
+
+        /// <summary>
+        ///     Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void Update(IGameObject self)
+        {
+            if (gameObject != null)
+            {
+                Logger.Info($"Sprite updated successfully for {gameObject.Get<Transform>().Position}");
+            }
+        }
+
+        /// <summary>
+        ///     Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void Init(IGameObject self)
+        {
+            gameObject = self;
+        }
 
         /// <summary>
         ///     Initializes the shaders
@@ -246,8 +241,8 @@ namespace Alis.Core.Ecs.Components.Render
         /// </summary>
         private void SetupBuffers()
         {
-            int windowWidth = (int) 800;
-            int windowHeight = (int) 600;
+            int windowWidth = 800;
+            int windowHeight = 600;
 
             float scaleX = Size.X / windowWidth;
             float scaleY = Size.Y / windowHeight;
@@ -284,9 +279,9 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), new IntPtr(3 * sizeof(float)));
             Gl.EnableVertexAttribArray(1);
         }
-        
+
         /// <summary>
-        /// Renders the gameobject
+        ///     Renders the gameobject
         /// </summary>
         /// <param name="gameobject">The gameobject</param>
         /// <param name="cameraPosition">The camera position</param>
@@ -294,14 +289,14 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="pixelsPerMeter">The pixels per meter</param>
         public void Render(GameObject gameobject, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
-            if (!string.IsNullOrEmpty(NameFile) && Path == string.Empty)
+            if (!string.IsNullOrEmpty(NameFile) && (Path == string.Empty))
             {
                 Path = AssetManager.Find(NameFile);
                 InitializeShaders();
                 LoadTexture(Path);
                 SetupBuffers();
             }
-            
+
             Vector2F position = gameobject.Get<Transform>().Position;
             float spriteRotation = gameobject.Get<Transform>().Rotation.R;
 
@@ -346,12 +341,11 @@ namespace Alis.Core.Ecs.Components.Render
         }
 
         /// <summary>
-        /// Inits the self
+        ///     Inits the self
         /// </summary>
         /// <param name="self">The self</param>
         public void Init(GameObject self)
         {
-            
         }
     }
 }

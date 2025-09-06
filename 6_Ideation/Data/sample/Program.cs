@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Data.Json;
@@ -52,14 +51,14 @@ namespace Alis.Core.Aspect.Data.Sample
                 Genre = "Rock and Metal",
                 Album = "Reload",
                 MusicId = Guid.NewGuid(),
-                ReleaseDate = DateTime.Now,
+                ReleaseDate = DateTime.Now
             };
-            
+
             string json = JsonNativeAot.Serialize(musicInfo2);
             Debug.Print(json);
-            
+
             Debug.Print("----------------------------------------");
-            
+
             Music deserialized = JsonNativeAot.Deserialize<Music>(json);
             Debug.Print(deserialized.Name);
             Debug.Print(deserialized.Artist);
@@ -80,10 +79,10 @@ namespace Alis.Core.Aspect.Data.Sample
             Debug.Print(deserialized.Price.ToString());
             Debug.Print(deserialized.ReleaseDate.ToString());
             Debug.Print(deserialized.MusicId.ToString());
-            
+
             Debug.Print("----------------------------------------");
-            
-            
+
+
             Singer singerInfo = new Singer
             {
                 Name = "Freddie Mercury",
@@ -94,12 +93,12 @@ namespace Alis.Core.Aspect.Data.Sample
                 DebutDate = new DateTime(2021, 1, 1),
                 SingerId = Guid.NewGuid()
             };
-            
+
             Debug.Print("Singer Information:");
-            string singerJson = JsonNativeAot.Serialize<Singer>(singerInfo);
+            string singerJson = JsonNativeAot.Serialize(singerInfo);
             Debug.Print(singerJson);
             Debug.Print("----------------------------------------");
-            
+
             Singer deserializedSinger = JsonNativeAot.Deserialize<Singer>(singerJson);
             Debug.Print(deserializedSinger.Name);
             Debug.Print(deserializedSinger.Genre);
@@ -108,9 +107,8 @@ namespace Alis.Core.Aspect.Data.Sample
             Debug.Print(deserializedSinger.IsActive.ToString());
             Debug.Print(deserializedSinger.DebutDate.ToString());
             Debug.Print(deserializedSinger.SingerId.ToString());
-            
+
             Debug.Print("----------------------------------------");
-            
         }
     }
 }

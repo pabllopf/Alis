@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Common;
@@ -71,6 +70,7 @@ namespace Alis.Core.Physic.Collision
                     {
                         Vertices.Clear();
                     }
+
                     Vertices.Add(circle.Position);
                     Radius = circle.GetRadius;
                 }
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Collision
                     {
                         Vertices.Clear();
                     }
-                    
+
                     for (int i = 0; i < polygon.Vertices.Count; i++)
                     {
                         Vertices.Add(polygon.Vertices[i]);
@@ -101,7 +101,7 @@ namespace Alis.Core.Physic.Collision
                         Vertices.Clear();
                     }
 
-                    
+
                     Vertices.Add(chain.Vertices[index]);
                     Vertices.Add(index + 1 < chain.Vertices.Count ? chain.Vertices[index + 1] : chain.Vertices[0]);
 
@@ -116,6 +116,7 @@ namespace Alis.Core.Physic.Collision
                     {
                         Vertices.Clear();
                     }
+
                     Vertices.Add(edge.Vertex1);
                     Vertices.Add(edge.Vertex2);
                     Radius = edge.GetRadius;

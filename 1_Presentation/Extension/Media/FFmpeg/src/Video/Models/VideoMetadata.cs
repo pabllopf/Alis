@@ -38,17 +38,17 @@ namespace Alis.Extension.Media.FFmpeg.Video.Models
     ///     The video metadata class
     /// </summary>
     [Serializable]
-    public partial class VideoMetadata 
+    public partial class VideoMetadata
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="VideoMetadata" /> class
         /// </summary>
-        public VideoMetadata() : this (string.Empty, string.Empty, string.Empty, 0, 0, 0.0, 0.0, 0, 0, string.Empty, 0, Array.Empty<MediaStream>(), new VideoFormat())
+        public VideoMetadata() : this(string.Empty, string.Empty, string.Empty, 0, 0, 0.0, 0.0, 0, 0, string.Empty, 0, Array.Empty<MediaStream>(), new VideoFormat())
         {
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="VideoMetadata"/> class
+        ///     Initializes a new instance of the <see cref="VideoMetadata" /> class
         /// </summary>
         /// <param name="pixelFormat">The pixel format</param>
         /// <param name="codecLongName">The codec long name</param>

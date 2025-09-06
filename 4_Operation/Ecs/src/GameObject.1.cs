@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:GameObject.1.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -12,7 +41,7 @@ using Alis.Core.Ecs.Updating;
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    /// The game object
+    ///     The game object
     /// </summary>
     partial struct GameObject
     {
@@ -45,7 +74,7 @@ namespace Alis.Core.Ecs
             Span<ComponentStorageBase> buff = [null!];
             world.MoveEntityToArchetypeAdd(buff, this, ref thisLookup, out GameObjectLocation nextLocation, to);
 
-            ref T c1Ref = ref  Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref MemoryMarshal.GetReference(buff), 0))[nextLocation.Index];
+            ref T c1Ref = ref Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref MemoryMarshal.GetReference(buff), 0))[nextLocation.Index];
             c1Ref = c1;
 
             Component<T>.Initer?.Invoke(this, ref c1Ref);
@@ -55,15 +84,17 @@ namespace Alis.Core.Ecs
                     GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
             {
                 if (world.ComponentAddedEvent.HasListeners)
+                {
                     InvokeComponentWorldEvents<T>(ref world.ComponentAddedEvent, this);
+                }
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
                     EventRecord events = world.EventLookup[EntityIdOnly];
 #else
-                ref EventRecord events =
-                    ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
+                    ref EventRecord events =
+                        ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
 #endif
                     InvokePerEntityEvents(this, GameObjectLocation.HasEventFlag(thisLookup.Flags, GameObjectFlags.AddGenericComp),
                         ref events.Add, ref c1Ref);
@@ -122,15 +153,17 @@ namespace Alis.Core.Ecs
             if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Tagged))
             {
                 if (world.Tagged.HasListeners)
+                {
                     InvokeTagWorldEvents<T>(ref world.Tagged, this);
+                }
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Tagged))
                 {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
                     EventRecord events = world.EventLookup[EntityIdOnly];
 #else
-                ref EventRecord events =
-                    ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
+                    ref EventRecord events =
+                        ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
 #endif
                     InvokePerEntityTagEvents<T>(this, ref events.Tag);
                 }
@@ -163,15 +196,17 @@ namespace Alis.Core.Ecs
             if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Detach))
             {
                 if (world.Detached.HasListeners)
+                {
                     InvokeTagWorldEvents<T>(ref world.Detached, this);
+                }
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Detach))
                 {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
                     EventRecord events = world.EventLookup[EntityIdOnly];
 #else
-                ref EventRecord events =
-                    ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
+                    ref EventRecord events =
+                        ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
 #endif
                     InvokePerEntityTagEvents<T>(this, ref events.Detach);
                 }
@@ -203,7 +238,9 @@ namespace Alis.Core.Ecs
             events.NormalEvent.Invoke(gameObject, Component<T>.Id);
 
             if (!hasGenericEvent)
+            {
                 return;
+            }
 
             events.GenericEvent!.Invoke(gameObject, ref component);
         }
@@ -243,9 +280,13 @@ namespace Alis.Core.Ecs
             public void ModifyTags(ref FastImmutableArray<TagId> tags, bool add)
             {
                 if (add)
+                {
                     tags = MemoryHelpers.Concat(tags, Kernel.Tag<T>.Id);
+                }
                 else
+                {
                     tags = MemoryHelpers.Remove(tags, Kernel.Tag<T>.Id);
+                }
             }
 
             /// <summary>
@@ -256,9 +297,13 @@ namespace Alis.Core.Ecs
             public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             {
                 if (add)
+                {
                     components = MemoryHelpers.Concat(components, Component<T>.Id);
+                }
                 else
+                {
                     components = MemoryHelpers.Remove(components, Component<T>.Id);
+                }
             }
 
             //separate into individual classes to avoid creating uneccecary static classes.
@@ -336,7 +381,10 @@ namespace Alis.Core.Ecs
             GameObjectType archetypeFromId = currentLookup.ArchetypeId;
             int index = cache.Traverse(archetypeFromId.RawIndex);
 
-            if (index == 32) return NotInCache(scene, ref cache, archetypeFromId, add);
+            if (index == 32)
+            {
+                return NotInCache(scene, ref cache, archetypeFromId, add);
+            }
 
             return Archetype.CreateOrGetExistingArchetype(new GameObjectType(cache.Lookup(index)), scene);
 
@@ -347,9 +395,13 @@ namespace Alis.Core.Ecs
                 FastImmutableArray<TagId> tagIDs = archetypeFromId.Tags;
 
                 if (typeof(T) == typeof(ComponentId))
+                {
                     default(TEdge).ModifyComponents(ref componentIDs, add);
+                }
                 else
+                {
                     default(TEdge).ModifyTags(ref tagIDs, add);
+                }
 
                 Archetype archetype = Archetype.CreateOrGetExistingArchetype(
                     componentIDs.AsSpan(),

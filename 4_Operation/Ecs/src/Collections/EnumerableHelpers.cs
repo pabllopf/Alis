@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:EnumerableHelpers.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,10 +46,7 @@ namespace Alis.Core.Ecs.Collections
         }
 
         /// <summary>Gets an enumerator singleton for an empty collection.</summary>
-        public static IEnumerator<T> GetEmptyEnumerator<T>()
-        {
-            return ((IEnumerable<T>)Array.Empty<T>()).GetEnumerator();
-        }
+        public static IEnumerator<T> GetEmptyEnumerator<T>() => ((IEnumerable<T>) Array.Empty<T>()).GetEnumerator();
 
         /// <summary>Converts an enumerable to an array using the same logic as List{T}.</summary>
         /// <param name="source">The enumerable to convert.</param>
@@ -73,8 +99,10 @@ namespace Alis.Core.Ecs.Collections
                                 // constrain the length to be Array.MaxLength (this overflow check works because of the
                                 // cast to uint).
                                 int newLength = count << 1;
-                                if ((uint)newLength > arrayMaxLength)
+                                if ((uint) newLength > arrayMaxLength)
+                                {
                                     newLength = arrayMaxLength <= count ? count + 1 : arrayMaxLength;
+                                }
 
                                 Array.Resize(ref arr, newLength);
                             }

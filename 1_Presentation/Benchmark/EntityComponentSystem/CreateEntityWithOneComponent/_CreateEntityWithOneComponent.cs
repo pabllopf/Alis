@@ -35,8 +35,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
     /// <summary>
     ///     The create gameObject with one component class
     /// </summary>
-    [BenchmarkCategory(Categories.CreateEntity),Orderer(SummaryOrderPolicy.FastestToSlowest)]
-    [Config(typeof(CustomConfig))]
+    [BenchmarkCategory(Categories.CreateEntity), Orderer(SummaryOrderPolicy.FastestToSlowest), Config(typeof(CustomConfig))]
 #if CHECK_CACHE_MISSES
     [HardwareCounters(BenchmarkDotNet.Diagnosers.HardwareCounter.CacheMisses)]
 #endif

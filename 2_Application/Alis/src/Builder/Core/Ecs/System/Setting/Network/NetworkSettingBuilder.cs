@@ -43,21 +43,18 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Network
         /// </summary>
         private readonly NetworkSetting networkSetting = new NetworkSetting();
 
-        
-        /// <summary>
-        /// Ips the ip
-        /// </summary>
-        /// <param name="ip">The ip</param>
-        /// <returns>The network setting builder</returns>
-        public NetworkSettingBuilder Ip(string ip)
-        {
-            return this;
-        }
-        
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The audio setting</returns>
         public NetworkSetting Build() => networkSetting;
+
+
+        /// <summary>
+        ///     Ips the ip
+        /// </summary>
+        /// <param name="ip">The ip</param>
+        /// <returns>The network setting builder</returns>
+        public NetworkSettingBuilder Ip(string ip) => this;
     }
 }

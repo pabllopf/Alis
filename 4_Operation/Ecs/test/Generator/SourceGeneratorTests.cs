@@ -1,53 +1,103 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SourceGeneratorTests.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.InteropServices;
-using Alis;
 using Alis.Core.Aspect.Fluent.Components;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Generator
 {
     /// <summary>
-    /// The source generator tests class
+    ///     The source generator tests class
     /// </summary>
     public partial class SourceGeneratorTests
     {
         /// <summary>
-        /// Tests that registered properly indirect interface
+        ///     The type registration flags enum
+        /// </summary>
+        [Flags]
+        public enum TypeRegistrationFlags
+        {
+            /// <summary>
+            ///     The initable type registration flags
+            /// </summary>
+            Initable = 1 << 0,
+
+            /// <summary>
+            ///     The destroyable type registration flags
+            /// </summary>
+            Destroyable = 1 << 1,
+
+            /// <summary>
+            ///     The updateable type registration flags
+            /// </summary>
+            Updateable = 1 << 2
+        }
+
+        /// <summary>
+        ///     Tests that registered properly indirect interface
         /// </summary>
         [Fact]
         public void RegisteredProperly_IndirectInterface() =>
             TestTypeRegistration<IndirectInterface>(TypeRegistrationFlags.Initable | TypeRegistrationFlags.Destroyable | TypeRegistrationFlags.Updateable);
 
         /// <summary>
-        /// Tests that registered properly in global namespace
+        ///     Tests that registered properly in global namespace
         /// </summary>
         [Fact]
         public void RegisteredProperly_InGlobalNamespace() =>
             TestTypeRegistration<InGlobalNamespace>(TypeRegistrationFlags.Updateable);
 
         /// <summary>
-        /// Tests that registered properly in global namespace inner
+        ///     Tests that registered properly in global namespace inner
         /// </summary>
         [Fact]
         public void RegisteredProperly_InGlobalNamespaceInner() =>
-            TestTypeRegistration<InGlobalNamespace.Inner<object>>(default);
+            TestTypeRegistration<InGlobalNamespace.Inner<object>>(default(TypeRegistrationFlags));
 
         /// <summary>
-        /// Tests that registered properly derived
+        ///     Tests that registered properly derived
         /// </summary>
         [Fact]
         public void RegisteredProperly_Derived() =>
             TestTypeRegistration<Derived>(TypeRegistrationFlags.Updateable);
 
         /// <summary>
-        /// Tests that registered properly derived inner
+        ///     Tests that registered properly derived inner
         /// </summary>
         [Fact]
         public void RegisteredProperly_DerivedInner() =>
             TestTypeRegistration<Derived.DerivedInner>(TypeRegistrationFlags.Initable | TypeRegistrationFlags.Updateable);
 
         /// <summary>
-        /// Tests the type registration using the specified type flags
+        ///     Tests the type registration using the specified type flags
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="typeFlags">The type flags</param>
@@ -58,55 +108,47 @@ namespace Alis.Core.Ecs.Test.Generator
             {
                 GameObject test = scene.Create();
                 if (typeFlags.HasFlag(TypeRegistrationFlags.Initable))
+                {
                     Assert.Throws<InitalizeException>(() => test.Add(new T()));
+                }
                 else
+                {
                     test.Add(new T());
+                }
 
                 if (typeFlags.HasFlag(TypeRegistrationFlags.Updateable))
+                {
                     Assert.Throws<UpdateException>(scene.Update);
+                }
                 else
+                {
                     scene.Update();
+                }
 
                 if (typeFlags.HasFlag(TypeRegistrationFlags.Destroyable))
+                {
                     Assert.Throws<DestroyException>(test.Remove<T>);
+                }
                 else
+                {
                     test.Remove<T>();
+                }
             }
         }
 
         /// <summary>
-        /// The type registration flags enum
-        /// </summary>
-        [Flags]
-        public enum TypeRegistrationFlags
-        {
-            /// <summary>
-            /// The initable type registration flags
-            /// </summary>
-            Initable = 1 << 0,
-            /// <summary>
-            /// The destroyable type registration flags
-            /// </summary>
-            Destroyable = 1 << 1,
-            /// <summary>
-            /// The updateable type registration flags
-            /// </summary>
-            Updateable = 1 << 2,
-        }
-
-        /// <summary>
-        /// The nest class
+        ///     The nest class
         /// </summary>
         public partial class Nest<T>
         {
             /// <summary>
-            /// The inner
+            ///     The inner
             /// </summary>
             [StructLayout(LayoutKind.Sequential, Pack = 1)]
             public partial struct Inner<T1> : IInitable
             {
                 /// <summary>
-                /// Inits the self
+                ///     Inits the self
                 /// </summary>
                 /// <param name="self">The self</param>
                 /// <exception cref="InitalizeException"></exception>
@@ -117,13 +159,13 @@ namespace Alis.Core.Ecs.Test.Generator
             }
 
             /// <summary>
-            /// The inner partially class
+            ///     The inner partially class
             /// </summary>
-            /// <seealso cref="IComponent"/>
+            /// <seealso cref="IComponent" />
             private partial class InnerPartially<T1> : IComponent
             {
                 /// <summary>
-                /// Updates this instance
+                ///     Updates this instance
                 /// </summary>
                 /// <exception cref="UpdateException"></exception>
                 public void Update()
@@ -134,12 +176,12 @@ namespace Alis.Core.Ecs.Test.Generator
         }
 
         /// <summary>
-        /// The indirect interface
+        ///     The indirect interface
         /// </summary>
         private partial struct IndirectInterface : ILifetimeInterface
         {
             /// <summary>
-            /// Destroys this instance
+            ///     Destroys this instance
             /// </summary>
             /// <exception cref="DestroyException"></exception>
             public void Destroy()
@@ -148,7 +190,7 @@ namespace Alis.Core.Ecs.Test.Generator
             }
 
             /// <summary>
-            /// Inits the self
+            ///     Inits the self
             /// </summary>
             /// <param name="self">The self</param>
             /// <exception cref="InitalizeException"></exception>
@@ -158,7 +200,7 @@ namespace Alis.Core.Ecs.Test.Generator
             }
 
             /// <summary>
-            /// Updates this instance
+            ///     Updates this instance
             /// </summary>
             /// <exception cref="UpdateException"></exception>
             public void Update()
@@ -169,13 +211,13 @@ namespace Alis.Core.Ecs.Test.Generator
     }
 
     /// <summary>
-    /// The in global namespace class
+    ///     The in global namespace class
     /// </summary>
-    /// <seealso cref="IComponent"/>
+    /// <seealso cref="IComponent" />
     public partial class InGlobalNamespace : IComponent
     {
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         /// <exception cref="UpdateException"></exception>
         public void Update()
@@ -184,19 +226,19 @@ namespace Alis.Core.Ecs.Test.Generator
         }
 
         /// <summary>
-        /// The inner
+        ///     The inner
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public partial struct Inner<T> : IComponentBase
         {
             /// <summary>
-            /// The unbound
+            ///     The unbound
             /// </summary>
             [StructLayout(LayoutKind.Sequential, Pack = 1)]
             public partial struct Unbound<T1> : IComponent<T1>
             {
                 /// <summary>
-                /// Updates the uniform
+                ///     Updates the uniform
                 /// </summary>
                 /// <param name="uniform">The uniform</param>
                 /// <exception cref="UpdateException"></exception>
@@ -209,30 +251,30 @@ namespace Alis.Core.Ecs.Test.Generator
     }
 
     /// <summary>
-    /// The lifetime interface interface
+    ///     The lifetime interface interface
     /// </summary>
-    /// <seealso cref="IComponent"/>
-    /// <seealso cref="IInitable"/>
-    /// <seealso cref="IDestroyable"/>
+    /// <seealso cref="IComponent" />
+    /// <seealso cref="IInitable" />
+    /// <seealso cref="IDestroyable" />
     internal interface ILifetimeInterface : IComponent, IInitable, IDestroyable
     {
     }
 
     /// <summary>
-    /// The initalize exception class
+    ///     The initalize exception class
     /// </summary>
-    /// <seealso cref="Exception"/>
+    /// <seealso cref="Exception" />
     public class InitalizeException : Exception;
 
     /// <summary>
-    /// The destroy exception class
+    ///     The destroy exception class
     /// </summary>
-    /// <seealso cref="Exception"/>
+    /// <seealso cref="Exception" />
     public class DestroyException : Exception;
 
     /// <summary>
-    /// The update exception class
+    ///     The update exception class
     /// </summary>
-    /// <seealso cref="Exception"/>
+    /// <seealso cref="Exception" />
     public class UpdateException : Exception;
 }

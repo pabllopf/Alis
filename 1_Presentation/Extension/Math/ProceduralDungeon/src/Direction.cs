@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:d.cs
+//  File:Direction.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,7 +30,7 @@
 namespace Alis.Extension.Math.ProceduralDungeon
 {
     /// <summary>
-    /// The direction enum
+    ///     The direction enum
     /// </summary>
     public enum Direction
     {

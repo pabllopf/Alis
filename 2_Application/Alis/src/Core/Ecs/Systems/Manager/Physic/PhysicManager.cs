@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs.Systems.Scope;
-using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.Systems.Manager.Physic
@@ -40,14 +39,14 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
     public class PhysicManager : AManager
     {
         /// <summary>
-        ///     The time step physics
-        /// </summary>
-        private float timeStepPhysics;
-
-        /// <summary>
         ///     The vector
         /// </summary>
         public static WorldPhysic WorldPhysic = new WorldPhysic();
+
+        /// <summary>
+        ///     The time step physics
+        /// </summary>
+        private float timeStepPhysics;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicManager" /> class

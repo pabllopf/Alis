@@ -30,7 +30,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
 using System.Runtime.CompilerServices;
 
 namespace Alis.Core.Ecs.Generator.Collections
@@ -59,10 +58,10 @@ namespace Alis.Core.Ecs.Generator.Collections
     public struct FastImmutableArray<T> : IEnumerable<T>, IEquatable<FastImmutableArray<T>>, IFastImmutableArray
     {
         /// <summary>
-        /// The builder class
+        ///     The builder class
         /// </summary>
-        /// <seealso cref="IList{T}"/>
-        /// <seealso cref="IReadOnlyList{T}"/>
+        /// <seealso cref="IList{T}" />
+        /// <seealso cref="IReadOnlyList{T}" />
         public sealed class Builder : IList<T>, IReadOnlyList<T>
         {
             /// <summary>
@@ -475,7 +474,7 @@ namespace Alis.Core.Ecs.Generator.Collections
                     AddRange(items.array, length);
                 }
             }
-            
+
             /// <summary>
             ///     Adds the specified items to the end of the array.
             /// </summary>
@@ -980,7 +979,6 @@ namespace Alis.Core.Ecs.Generator.Collections
                 int lastIndexRemoved = -1;
                 foreach (int indexToRemove in indicesToRemove)
                 {
-
                     int copyLength = lastIndexRemoved == -1 ? indexToRemove : indexToRemove - lastIndexRemoved - 1;
                     Array.Copy(_elements, copied + removed, _elements, copied, copyLength);
                     removed++;
@@ -1007,23 +1005,23 @@ namespace Alis.Core.Ecs.Generator.Collections
 
 
         /// <summary>
-        /// Converts the span
+        ///     Converts the span
         /// </summary>
         /// <returns>A read only span of t</returns>
         public ReadOnlySpan<T> AsSpan() => array.AsSpan();
 
 
         /// <summary>
-        /// Indexes the of using the specified type id
+        ///     Indexes the of using the specified type id
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <param name="typeId">The type id</param>
         /// <returns>The int</returns>
         public int IndexOf<T1>(T typeId) => Array.IndexOf(array, typeId, 0, Length);
 
-      
+
         /// <summary>
-        /// Removes the at using the specified index
+        ///     Removes the at using the specified index
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <param name="index">The index</param>
@@ -1041,7 +1039,7 @@ namespace Alis.Core.Ecs.Generator.Collections
             Array.Copy(array, index + 1, newArray, index, Length - index - 1);
             return new FastImmutableArray<T>(newArray);
         }
-        
+
         /// <summary>
         ///     An empty (initialized) instance of <see cref="FastImmutableArray{T}" />.
         /// </summary>
@@ -1053,7 +1051,6 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <remarks>
         ///     This would be private, but we make it internal so that our own extension methods can access it.
         /// </remarks>
-        
         internal readonly T[] array;
 
         /// <summary>
@@ -1062,7 +1059,6 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// </summary>
         /// <param name="items">The array to use. May be null for "default" arrays.</param>
         public FastImmutableArray(T[] items) => array = items;
-
 
 
         /// <summary>
@@ -1098,7 +1094,6 @@ namespace Alis.Core.Ecs.Generator.Collections
         public static bool operator !=(FastImmutableArray<T>? left, FastImmutableArray<T>? right) => !left.GetValueOrDefault().Equals(right.GetValueOrDefault());
 
 
-
         /// <summary>
         ///     Gets the element at the specified index in the read-only list.
         /// </summary>
@@ -1128,13 +1123,13 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <summary>
         ///     Gets a value indicating whether this collection is empty.
         /// </summary>
-        
+
         public bool IsEmpty => array!.Length == 0;
 
         /// <summary>
         ///     Gets the number of elements in the array.
         /// </summary>
-        
+
         public int Length =>
             // We intentionally do not check this.array != null, and throw NullReferenceException
             // if this is called while uninitialized.
@@ -1146,13 +1141,13 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <summary>
         ///     Gets a value indicating whether this struct was initialized without an actual array instance.
         /// </summary>
-        
+
         public bool IsDefault => array == null;
 
         /// <summary>
         ///     Gets a value indicating whether this struct is empty or uninitialized.
         /// </summary>
-        
+
         public bool IsDefaultOrEmpty
         {
             get
@@ -1170,7 +1165,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <summary>
         ///     Gets the string to display in the debugger watches window for this instance.
         /// </summary>
-        
+
         private string DebuggerDisplay
         {
             get
@@ -1270,9 +1265,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// </remarks>
         public static FastImmutableArray<T> CastUp<TDerived>(FastImmutableArray<TDerived> items)
             where TDerived : class, T
-        {
-            return new FastImmutableArray<T>(items.array);
-        }
+            => new FastImmutableArray<T>(items.array);
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="FastImmutableArray{T}" /> struct by casting the underlying
@@ -1281,10 +1274,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         ///     .
         /// </summary>
         /// <exception cref="InvalidCastException">Thrown if the cast is illegal.</exception>
-        public FastImmutableArray<TOther> CastArray<TOther>() where TOther : class
-        {
-            return new FastImmutableArray<TOther>((TOther[]) (object) array!);
-        }
+        public FastImmutableArray<TOther> CastArray<TOther>() where TOther : class => new FastImmutableArray<TOther>((TOther[]) (object) array!);
 
         /// <summary>
         ///     Creates an immutable array for this array, cast to a different element type.
@@ -1301,10 +1291,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         ///     element types to their derived types. However, downcasting is only successful
         ///     when it reverses a prior upcasting operation.
         /// </remarks>
-        public FastImmutableArray<TOther> As<TOther>() where TOther : class
-        {
-            return new FastImmutableArray<TOther>(array as TOther[]);
-        }
+        public FastImmutableArray<TOther> As<TOther>() where TOther : class => new FastImmutableArray<TOther>(array as TOther[]);
 
         /// <summary>
         ///     Returns an enumerator for the contents of the array.

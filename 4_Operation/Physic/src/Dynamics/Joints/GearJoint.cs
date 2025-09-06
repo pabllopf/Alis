@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -306,7 +305,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             get => _bodyA.GetWorldPoint(_localAnchorA);
             set => throw new NotSupportedException("GearJoint does not support setting WorldAnchorA directly.");
-    }
+        }
 
         /// <summary>
         ///     Gets or sets the value of the world anchor b
@@ -323,10 +322,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public float Ratio
         {
             get => _ratio;
-            set
-            {
-                _ratio = value;
-            }
+            set => _ratio = value;
         }
 
         /// <summary>

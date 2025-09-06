@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SceneUpdateFilter.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using Alis.Core.Ecs.Collections;
@@ -115,13 +144,18 @@ namespace Alis.Core.Ecs.Updating
         {
             if (_filter is null &&
                 !GenerationServices.TypeAttributeCache.TryGetValue(_attributeType, out _filter))
+            {
                 return;
+            }
 
             for (ref int i = ref _lastRegisteredComponentId; i < Component.ComponentTable.Count; i++)
             {
-                ComponentId thisId = new((ushort)i);
+                ComponentId thisId = new((ushort) i);
 
-                if (_filter.Contains(thisId.Type)) _filteredComponents.Push(thisId);
+                if (_filter.Contains(thisId.Type))
+                {
+                    _filteredComponents.Push(thisId);
+                }
             }
         }
 
@@ -132,7 +166,9 @@ namespace Alis.Core.Ecs.Updating
         internal void ArchetypeAdded(Archetype archetype)
         {
             if (_lastRegisteredComponentId < Component.ComponentTable.Count)
+            {
                 RegisterNewComponents();
+            }
 
             int start = _nextComponentStorageIndex;
             int count = 0;
@@ -144,13 +180,18 @@ namespace Alis.Core.Ecs.Updating
                     count++;
 
                     if (_nextComponentStorageIndex == _allComponents.Length)
+                    {
                         Array.Resize(ref _allComponents, _allComponents.Length * 2);
+                    }
+
                     _allComponents[_nextComponentStorageIndex++] = archetype.Components[index];
                 }
             }
 
             if (count > 0)
+            {
                 _archetypes[archetype.Id.RawIndex] = (archetype, start, count);
+            }
         }
     }
 }

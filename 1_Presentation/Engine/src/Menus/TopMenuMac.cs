@@ -39,7 +39,7 @@ namespace Alis.App.Engine.Menus
     ///     The top menu mac class
     /// </summary>
     /// <seealso cref="IMenu" />
-    public class TopMenuMac :  IRenderable, IHasSpaceWork
+    public class TopMenuMac : IRenderable, IHasSpaceWork
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="TopMenuMac" /> class
@@ -55,6 +55,13 @@ namespace Alis.App.Engine.Menus
         ///     Gets the value of the space work
         /// </summary>
         public SpaceWork SpaceWork { get; }
+
+        /// <summary>
+        ///     Renders this instance
+        /// </summary>
+        public void Render()
+        {
+        }
 
         /// <summary>
         ///     Initializes this instance
@@ -75,13 +82,6 @@ namespace Alis.App.Engine.Menus
         ///     Updates this instance
         /// </summary>
         public void Update()
-        {
-        }
-
-        /// <summary>
-        ///     Renders this instance
-        /// </summary>
-        public void Render()
         {
         }
 
@@ -238,8 +238,8 @@ namespace Alis.App.Engine.Menus
                 mainMenu,
                 "Window",
                 "Layouts",
-                new[] { "Default", "2 by 3", "4 Split", "Wide" },
-                new Action<object>(layout => TopMenuAction.ExecuteMenuAction($"Layout:{layout}"))
+                new[] {"Default", "2 by 3", "4 Split", "Wide"},
+                layout => TopMenuAction.ExecuteMenuAction($"Layout:{layout}")
             );
 
 
@@ -299,10 +299,10 @@ namespace Alis.App.Engine.Menus
             menuItem.Submenu = submenu;
             mainMenu.AddItem(menuItem);
         }
-        
-       // Añadir submenú genérico
+
+        // Añadir submenú genérico
         /// <summary>
-        /// Adds the sub menu using the specified main menu
+        ///     Adds the sub menu using the specified main menu
         /// </summary>
         /// <param name="mainMenu">The main menu</param>
         /// <param name="parentMenuTitle">The parent menu title</param>
@@ -314,7 +314,7 @@ namespace Alis.App.Engine.Menus
         {
             NSMenuItem subMenuItem = new NSMenuItem(subMenuTitle);
             NSMenu subMenu = new NSMenu(subMenuTitle);
-        
+
             foreach (string option in options)
             {
                 NSMenuItem optionItem = new NSMenuItem(option, (sender, e) =>
@@ -324,9 +324,9 @@ namespace Alis.App.Engine.Menus
                 });
                 subMenu.AddItem(optionItem);
             }
-        
+
             subMenuItem.Submenu = subMenu;
-        
+
             // Buscar el menú padre y añadir el submenú
             for (int i = 0; i < mainMenu.Count; i++)
             {
@@ -338,7 +338,5 @@ namespace Alis.App.Engine.Menus
                 }
             }
         }
-        
-       
     }
 }

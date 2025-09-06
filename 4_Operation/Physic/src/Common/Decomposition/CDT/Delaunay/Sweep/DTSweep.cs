@@ -31,7 +31,6 @@ using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging;
 
-
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
 {
     /// <summary>

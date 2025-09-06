@@ -35,44 +35,42 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Core.Ecs.Components
 {
     /// <summary>
-    /// The transform
+    ///     The transform
     /// </summary>
     public struct Transform : IInitable, IGameObjectComponent
     {
         /// <summary>
-        /// The position
+        ///     The position
         /// </summary>
         public Vector2F Position;
 
         /// <summary>
-        /// The rotation
+        ///     The rotation
         /// </summary>
         public Complex Rotation;
 
         /// <summary>
-        /// The scale
+        ///     The scale
         /// </summary>
         public Vector2F Scale;
-        
+
         /// <summary>
-        /// Inits the self
+        ///     Inits the self
         /// </summary>
         /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
-            
         }
 
         /// <summary>
-        /// Updates the self
+        ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         public void Update(IGameObject self)
         {
-            
         }
-        
-        
+
+
         /// <summary>
         ///     Initialize using a position vector and a Complex rotation.
         /// </summary>
@@ -85,9 +83,9 @@ namespace Alis.Core.Ecs.Components
             Scale = Vector2F.One; // Default scale is 1,1
             Logger.Log($"Transform: {Position} {Rotation} {Scale}");
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Transform"/> class
+        ///     Initializes a new instance of the <see cref="Transform" /> class
         /// </summary>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
@@ -97,7 +95,7 @@ namespace Alis.Core.Ecs.Components
             Rotation = rotation;
             Position = position;
             Scale = scale;
-            
+
             Logger.Log($"Transform: {position} {rotation} {scale}");
         }
 
@@ -111,9 +109,9 @@ namespace Alis.Core.Ecs.Components
         {
             Logger.Log($"Transform: {Position} {Rotation} {Scale}");
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Transform"/> class
+        ///     Initializes a new instance of the <see cref="Transform" /> class
         /// </summary>
         /// <param name="position">The position</param>
         /// <param name="angle">The angle</param>

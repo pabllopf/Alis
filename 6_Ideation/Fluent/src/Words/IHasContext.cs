@@ -37,6 +37,6 @@ namespace Alis.Core.Aspect.Fluent.Words
         /// <summary>
         ///     Gets the value of the context
         /// </summary>
-        public T Context { get; }
+        T Context { get; }
     }
 }
