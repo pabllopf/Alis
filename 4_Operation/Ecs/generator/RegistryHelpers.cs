@@ -58,7 +58,7 @@ namespace Alis.Core.Ecs.Generator
         {
             if (symbol.IsIComponentBase())
                 return true;
-            foreach(var @interface in symbol.Interfaces)
+            foreach(INamedTypeSymbol @interface in symbol.Interfaces)
             {
                 if(@interface.IsIComponentBase())
                 {

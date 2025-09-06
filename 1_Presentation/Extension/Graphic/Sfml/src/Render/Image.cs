@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         public Image(Stream stream) :
             base(IntPtr.Zero)
         {
-            using (var adaptor = new StreamAdaptor(stream))
+            using (StreamAdaptor adaptor = new StreamAdaptor(stream))
             {
                 CPointer = sfImage_createFromStream(adaptor.InputStreamPtr);
             }

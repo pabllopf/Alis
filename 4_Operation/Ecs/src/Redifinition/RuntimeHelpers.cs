@@ -32,7 +32,7 @@ namespace System.Runtime.CompilerServices
         
             if (type.IsPrimitive || type.IsPointer) return false;
         
-            var fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            FieldInfo[] fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
             for (int i = 0; i < fields.Length; i++)
             {
                 if (IsReferenceOrContainsReferences(fields[i].FieldType))

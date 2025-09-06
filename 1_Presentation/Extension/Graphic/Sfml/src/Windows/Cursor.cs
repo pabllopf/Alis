@@ -151,7 +151,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         public Cursor(byte[] pixels, Vector2u size, Vector2u hotspot)
             : base((IntPtr)0)
         {
-            var handle = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+            GCHandle handle = GCHandle.Alloc(pixels, GCHandleType.Pinned);
             try
             {
                 IntPtr ptr = handle.AddrOfPinnedObject();

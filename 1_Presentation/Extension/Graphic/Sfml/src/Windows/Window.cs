@@ -189,7 +189,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         ////////////////////////////////////////////////////////////
      public virtual void SetIcon(uint width, uint height, byte[] pixels)
      {
-         var handle = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+         GCHandle handle = GCHandle.Alloc(pixels, GCHandleType.Pinned);
          try
          {
              IntPtr pixelsPtr = handle.AddrOfPinnedObject();

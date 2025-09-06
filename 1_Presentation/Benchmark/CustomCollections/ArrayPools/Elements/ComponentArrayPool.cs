@@ -43,7 +43,7 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools.Elements
         /// <param name="len">The len</param>
         public static void ResizeArrayFromPool(ref T[] arr, int len)
         {
-            var finalArr = Instance.Rent(len);
+            T[] finalArr = Instance.Rent(len);
             arr.AsSpan().CopyTo(finalArr);
             Instance.Return(arr);
             arr = finalArr;
@@ -67,7 +67,7 @@ namespace Alis.Benchmark.CustomCollections.ArrayPools.Elements
 
                 if (item is not null)
                 {
-                    var loc = item;
+                    T[] loc = item;
                     item = null!;
                     return loc;
                 }

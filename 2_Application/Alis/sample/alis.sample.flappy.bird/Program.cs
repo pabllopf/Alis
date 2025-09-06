@@ -45,7 +45,7 @@ namespace Alis.Sample.Flappy.Bird
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            var game = VideoGame
+            VideoGame game = VideoGame
                 .Create()
                 .Settings(settings => settings
                     .General(general => general

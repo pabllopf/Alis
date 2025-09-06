@@ -95,7 +95,7 @@ namespace Alis.App.Engine.Menus
         public void Render()
         {
             ApplyMenuStyles();
-            var (dockSize, menuSize, posY, sizeMenu, bottomMenuHeight) = CalculateMenuLayout();
+            (Vector2F dockSize, Vector2F menuSize, int posY, int sizeMenu, float bottomMenuHeight) = CalculateMenuLayout();
             SetMenuWindowPositionAndSize(dockSize, menuSize, sizeMenu, bottomMenuHeight);
 
             if (ImGui.Begin("Bottom Menu", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoScrollbar))
@@ -238,7 +238,7 @@ namespace Alis.App.Engine.Menus
             double totalTime = 0;
             lock (_lock)
             {
-                foreach (var process in ProcessQueue)
+                foreach (ProcessInfo process in ProcessQueue)
                 {
                     if (process.StartTime.HasValue)
                     {
@@ -268,7 +268,7 @@ namespace Alis.App.Engine.Menus
             if (ImGui.BeginPopup("ProcessQueuePopup"))
             {
                 int displayedProcesses = 0;
-                foreach (var process in ProcessQueue)
+                foreach (ProcessInfo process in ProcessQueue)
                 {
                     string extra = process.Status == ProcessStatus.Running && process.StartTime.HasValue
                         ? $" ({(DateTime.UtcNow - process.StartTime.Value).TotalSeconds:0.0}s)"
@@ -303,7 +303,7 @@ namespace Alis.App.Engine.Menus
         {
             lock (_lock)
             {
-                if (ProcessQueue.TryPeek(out var process))
+                if (ProcessQueue.TryPeek(out ProcessInfo process))
                 {
                     if (process.Status == ProcessStatus.Pending)
                     {
@@ -320,7 +320,7 @@ namespace Alis.App.Engine.Menus
                             process.Status = ProcessStatus.Completed;
                             ProcessQueue.TryDequeue(out _);
                             CompleteProcess();
-                            _currentProcess = ProcessQueue.TryPeek(out var next) ? next.Name : "Idle";
+                            _currentProcess = ProcessQueue.TryPeek(out ProcessInfo next) ? next.Name : "Idle";
                             _processStartTime = null;
                             _currentProcessDuration = 0;
                         }

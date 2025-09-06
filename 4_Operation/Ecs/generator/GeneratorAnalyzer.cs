@@ -30,7 +30,7 @@ namespace Alis.Core.Ecs.Generator
         /// </summary>
         static GeneratorAnalyzer()
         {
-            var b = FastImmutableArray<DiagnosticDescriptor>.CreateBuilder<DiagnosticDescriptor>(4);
+            FastImmutableArray<DiagnosticDescriptor>.Builder b = FastImmutableArray<DiagnosticDescriptor>.CreateBuilder<DiagnosticDescriptor>(4);
             b.Add(NonPartialGenericComponent);
             b.Add(NonPartialOuterInaccessibleType);
             b.Add(NonPartialNestedInaccessibleType);
@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.Generator
             int updateInterfaceCount = 0;
 
 
-            foreach(var @interface in namedTypeSymbol.AllInterfaces)
+            foreach(INamedTypeSymbol @interface in namedTypeSymbol.AllInterfaces)
             {
                 if (!@interface.IsOrExtendsIComponentBase())
                     return;

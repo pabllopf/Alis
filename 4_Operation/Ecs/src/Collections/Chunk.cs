@@ -70,7 +70,7 @@ namespace Alis.Core.Ecs.Collections
             if (newChunkIndex == chunks.Length)
                 Array.Resize(ref chunks, newChunkIndex << 1);
 
-            var nextChunk = new Chunk<TData>(size);
+            Chunk<TData> nextChunk = new Chunk<TData>(size);
             chunks[newChunkIndex] = nextChunk;
         }
 

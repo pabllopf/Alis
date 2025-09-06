@@ -47,7 +47,7 @@ namespace Alis.Sample.King.Platform
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            var game = VideoGame
+            VideoGame game = VideoGame
                 .Create()
                 .Settings(setting => setting
                     .General(general => general

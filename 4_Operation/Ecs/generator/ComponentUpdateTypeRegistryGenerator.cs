@@ -37,20 +37,20 @@ namespace Alis.Core.Ecs.Generator
         /// <param name="context">The context</param>
         public void Initialize(IncrementalGeneratorInitializationContext context)
         {
-            var models = context.SyntaxProvider.CreateSyntaxProvider(
+            IncrementalValuesProvider<ComponentUpdateItemModel> models = context.SyntaxProvider.CreateSyntaxProvider(
                 static (n, _) => n is TypeDeclarationSyntax { BaseList: { } } typeDec,
                 GenerateComponentUpdateModel);
 
             IncrementalValueProvider<ImmutableArray<ComponentUpdateItemModel>> allModels = models.Where(m => !m.IsDefault).Collect();
 
-            var mainRegistrationFile = allModels.Select(
+            IncrementalValueProvider<SourceOutput> mainRegistrationFile = allModels.Select(
                 (im, ct) => 
                     GenerateMonolithicRegistrationFile(im.Where(c => !c.HasFlag(UpdateModelFlags.IsSelfInit)).ToImmutableArray(), ct)
             );
 
             context.RegisterImplementationSourceOutput(mainRegistrationFile, RegisterSource);
 
-            var genericComponentFiles = models
+            IncrementalValuesProvider<SourceOutput> genericComponentFiles = models
                 .Where(c => c.HasFlag(UpdateModelFlags.IsSelfInit))
                 .Select(GenerateRegisterGenericType);
         
@@ -83,7 +83,7 @@ namespace Alis.Core.Ecs.Generator
             string[] genericArguments = new string[0];
             bool needsRegistering = false;
 
-            foreach (var potentialInterface in componentTypeSymbol.AllInterfaces)
+            foreach (INamedTypeSymbol potentialInterface in componentTypeSymbol.AllInterfaces)
             {
                 ct.ThrowIfCancellationRequested();
 
@@ -147,7 +147,7 @@ namespace Alis.Core.Ecs.Generator
             if(!componentTypeSymbol.ContainingNamespace.IsGlobalNamespace)
                 @namespace = componentTypeSymbol.ContainingNamespace.ToString();
 
-            var nestTypes = GetContainingTypes(ref diagnostics);
+            TypeDeclarationModel[] nestTypes = GetContainingTypes(ref diagnostics);
 
             bool isAcc =
                 componentTypeSymbol.DeclaredAccessibility == Accessibility.Public ||
@@ -217,13 +217,13 @@ namespace Alis.Core.Ecs.Generator
         /// <param name="semanticModel">The semantic model</param>
         private static void PushUpdateTypeAttributes(ref Stack<string> attributes,  SyntaxNode node, SemanticModel semanticModel)
         {
-            foreach (var item in ((TypeDeclarationSyntax)node).Members)
+            foreach (MemberDeclarationSyntax item in ((TypeDeclarationSyntax)node).Members)
             {
                 if (item is MethodDeclarationSyntax method && method.AttributeLists.Count != 0 && method.Identifier.ToString() == RegistryHelpers.UpdateMethodName)
                 {
-                    foreach (var attrList in method.AttributeLists)
+                    foreach (AttributeListSyntax attrList in method.AttributeLists)
                     {
-                        foreach (var attr in attrList.Attributes)
+                        foreach (AttributeSyntax attr in attrList.Attributes)
                         {
                             if (semanticModel.GetSymbolInfo(attr).Symbol is IMethodSymbol attrCtor)
                             {
@@ -297,7 +297,7 @@ namespace Alis.Core.Ecs.Generator
         /// <param name="model">The model</param>
         private static void AppendInitalizationMethodBody(CodeBuilder cb, in ComponentUpdateItemModel model)
         {
-            var span = ExtractUpdaterName(model.ImplInterface);
+            (int Start, int Count) span = ExtractUpdaterName(model.ImplInterface);
         
             cb
                 .Append("GenerationServices.RegisterType(typeof(")
@@ -309,12 +309,12 @@ namespace Alis.Core.Ecs.Generator
                 .Append('<')
                 .Append("global::").Append(model.FullName);
 
-            foreach (var item in model.GenericArguments)
+            foreach (string item in model.GenericArguments)
                 cb.Append(", ").Append(item);
 
             //sb.Append(">(), ").Append(model.UpdateOrder).AppendLine(");");
             cb.AppendLine(">());");
-            foreach (var attrType in model.Attributes)
+            foreach (string attrType in model.Attributes)
             {
                 cb.Append("GenerationServices.RegisterUpdateMethodAttribute(")
                     .Append("typeof(")
