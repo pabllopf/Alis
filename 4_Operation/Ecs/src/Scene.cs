@@ -387,10 +387,9 @@ namespace Alis.Core.Ecs
             return new GameObject(Id, version, id);
         }
 
-        /// <summary>
-        ///     Updates all component instances in the scene that implement a component interface, e.g.,
-        ///     <see cref="IComponent{TArg1,TArg2,TArg3,TArg4,TArg5,TArg6,TArg7,TArg8,TArg9,TArg10,TArg11}" />
-        /// </summary>
+       /// <summary>
+       /// 
+       /// </summary>
         public void Update()
         {
             EnterDisallowState();
