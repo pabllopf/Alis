@@ -8,6 +8,9 @@ namespace Alis.Extension.Graphic.Sfml.Systems
     /// </summary>
     public static class Csfml
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Csfml"/> class
+        /// </summary>
         static Csfml() 
         {
             EmbeddedDllClass.ExtractEmbeddedDlls("sfml", DllType.File, Properties.SfmlDlls.SfmlDllBytes, Assembly.GetAssembly(typeof(Properties.SfmlDlls)));

@@ -1,4 +1,6 @@
 using System;
+using System.Reflection;
+using Alis.Core.Aspect.Data.Dll;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 
@@ -24,6 +26,13 @@ namespace Alis.Extension.Graphic.Sfml.Render
     
     public class Transformable : ObjectBase
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ObjectBase"/> class
+        /// </summary>
+        static Transformable() 
+        {
+            EmbeddedDllClass.ExtractEmbeddedDlls("sfml", DllType.File, Properties.SfmlDlls.SfmlDllBytes, Assembly.GetAssembly(typeof(Properties.SfmlDlls)));
+        }
         
         /// <summary>
         /// Default constructor

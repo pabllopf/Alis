@@ -15,6 +15,9 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     //////////////////////////////////////////////////////////////////
     public class Context : CriticalFinalizerObject
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Context"/> class
+        /// </summary>
         static Context() 
         {
             EmbeddedDllClass.ExtractEmbeddedDlls("sfml", DllType.File, Properties.SfmlDlls.SfmlDllBytes, Assembly.GetAssembly(typeof(Properties.SfmlDlls)));

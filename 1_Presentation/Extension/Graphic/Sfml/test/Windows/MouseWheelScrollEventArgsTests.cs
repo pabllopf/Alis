@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The mouse wheel scroll event args tests class
+    /// </summary>
     public class MouseWheelScrollEventArgsTests
     {
+        /// <summary>
+        /// Tests that constructor sets properties correctly
+        /// </summary>
         [Fact]
         public void Constructor_SetsPropertiesCorrectly()
         {
@@ -45,6 +51,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(15, args.Y);
         }
 
+        /// <summary>
+        /// Tests that to string returns expected format
+        /// </summary>
         [Fact]
         public void ToString_ReturnsExpectedFormat()
         {
