@@ -115,13 +115,18 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         public override void OnBeforeDraw()
         {
         }
-
+        
         /// <summary>
         ///     Ons the draw
         /// </summary>
         public override void OnDraw()
         {
             bool running = platform.PollEvents();
+            if (!running)
+            {
+                Context.Exit();
+            }
+            
             if (platform.TryGetLastKeyPressed(out ConsoleKey key))
             {
                 Console.WriteLine($"Tecla pulsada: {key}");

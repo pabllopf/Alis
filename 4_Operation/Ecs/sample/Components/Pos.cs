@@ -9,7 +9,6 @@ namespace Alis.Core.Ecs.Sample.Components
         /// <summary>
         /// Updates the gameObject
         /// </summary>
-        /// <param name="gameObjecte gameObject</param>
         public void Update(IGameObject gameObject)
         {
             Console.WriteLine(gameObject.Has<Vel>() ?

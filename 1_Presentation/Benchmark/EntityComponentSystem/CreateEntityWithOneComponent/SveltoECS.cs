@@ -60,7 +60,6 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithOneComponent
         /// <summary>
         ///     The svelto gameObject class
         /// </summary>
-        /// <seealso cref="GenericEntityDescriptor{SveltoECSBaseContext}.Component1}" />
         private sealed class SveltoEntity : GenericEntityDescriptor<SveltoECSBaseContext.Component1>
         {
         }
