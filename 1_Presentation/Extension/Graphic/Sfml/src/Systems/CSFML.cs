@@ -1,3 +1,6 @@
+using System.Reflection;
+using Alis.Core.Aspect.Data.Dll;
+
 namespace Alis.Extension.Graphic.Sfml.Systems
 {
     /// <summary>
@@ -5,6 +8,11 @@ namespace Alis.Extension.Graphic.Sfml.Systems
     /// </summary>
     public static class Csfml
     {
+        static Csfml() 
+        {
+            EmbeddedDllClass.ExtractEmbeddedDlls("sfml", DllType.File, Properties.SfmlDlls.SfmlDllBytes, Assembly.GetAssembly(typeof(Properties.SfmlDlls)));
+        }
+        
         /// <summary>
         /// The audio
         /// </summary>
