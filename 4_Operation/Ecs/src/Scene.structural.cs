@@ -11,16 +11,12 @@ using Alis.Core.Ecs.Updating;
 namespace Alis.Core.Ecs
 {
     /// <summary>
-    ///     The scene class
+    ///     This file contains all core functions related to structual changes on the scene
+    /// The only core structual change function not here is the normal create function, since it needs to be source generated
+    /// These functions take all the data it needs, with no validation that an gameObject is alive
     /// </summary>
     partial class Scene
     {
-        /*
-         *  This file contains all core functions related to structual changes on the scene
-         *  The only core structual change function not here is the normal create function, since it needs to be source generated
-         *  These functions take all the data it needs, with no validation that an gameObject is alive
-         */
-
         /// <summary>
         ///     Removes the component using the specified gameObject
         /// </summary>
@@ -34,10 +30,7 @@ namespace Alis.Core.Ecs
                 .Archetype(this);
 
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-        //array is allocated
-        //Span<ComponentHandle> tmpHandleSpan = [default!];
-        MoveEntityToArchetypeRemove(MemoryHelpers.SharedTempComponentHandleBuffer.AsSpan(0, 1), gameObject, ref lookup,
-            destination);
+        MoveEntityToArchetypeRemove(MemoryHelpers.SharedTempComponentHandleBuffer.AsSpan(0, 1), gameObject, ref lookup, destination);
 #else
             Unsafe.SkipInit(out ComponentHandle tmpHandle);
             MemoryHelpers.Poison(ref tmpHandle);

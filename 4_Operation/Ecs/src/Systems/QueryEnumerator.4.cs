@@ -117,7 +117,7 @@ namespace Alis.Core.Ecs.Systems
         /// <param name="query"></param>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         
-        public struct QueryEnumerable(Query query)
+        public readonly struct QueryEnumerable(Query query)
         {
             /// <summary>
             ///     Gets the enumerator over a query.

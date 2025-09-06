@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Systems;
@@ -70,7 +69,7 @@ namespace Alis.Core.Ecs
         ///     Initializes a new instance of the <see cref="GameObjectQueryEnumerator" /> class
         /// </summary>
         /// <param name="query">The query</param>
-        private GameObjectQueryEnumerator(Query query)
+        public GameObjectQueryEnumerator(Query query)
         {
             _scene = query.Scene;
             _scene.EnterDisallowState();
@@ -131,23 +130,6 @@ namespace Alis.Core.Ecs
             } while (!(_componentIndex < _currentSpan1.Length));
 
             return true;
-        }
-
-        /// <summary>
-        ///     Proxy type for foreach syntax
-        /// </summary>
-        /// <param name="query">The query to wrap.</param>
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        
-        public struct QueryEnumerable(Query query)
-        {
-            /// <summary>
-            ///     Gets the enumerator over a query.
-            /// </summary>
-            public GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6> GetEnumerator()
-            {
-                return new GameObjectQueryEnumerator<T1, T2, T3, T4, T5, T6>(query);
-            }
         }
     }
 }

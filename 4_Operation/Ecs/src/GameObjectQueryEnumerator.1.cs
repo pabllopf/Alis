@@ -1,13 +1,14 @@
 using System;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
+using Alis.Core.Ecs.Systems;
 
-namespace Alis.Core.Ecs.Systems
+namespace Alis.Core.Ecs
 {
     /// <summary>
-    /// The game object query enumerator
+    ///     The gameObject query enumerator
     /// </summary>
-    public ref struct GameObjectQueryEnumerator<T>
+    public ref struct GameObjectQueryEnumerator<T1>
     {
         /// <summary>
         ///     The archetype index
@@ -37,8 +38,8 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The current span
         /// </summary>
-        private Span<T> _currentSpan1;
-
+        private Span<T1> _currentSpan1;
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameObjectQueryEnumerator" /> class
         /// </summary>
@@ -54,10 +55,10 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The current tuple of component references and the <see cref="GameObject" /> instance.
         /// </summary>
-        public GameObjectRefTuple<T> Current => new()
+        public GameObjectRefTuple<T1> Current => new()
         {
             GameObject = _entityIds[_componentIndex].ToEntity(_scene),
-            Item1 = new Ref<T>(_currentSpan1, _componentIndex)
+            Item1 = new Ref<T1>(_currentSpan1, _componentIndex),
         };
 
         /// <summary>
@@ -85,7 +86,7 @@ namespace Alis.Core.Ecs.Systems
                 {
                     Archetype cur = _archetypes[_archetypeIndex];
                     _entityIds = cur.GetEntitySpan();
-                    _currentSpan1 = cur.GetComponentSpan<T>();
+                    _currentSpan1 = cur.GetComponentSpan<T1>();
                 }
                 else
                 {
@@ -94,21 +95,6 @@ namespace Alis.Core.Ecs.Systems
             } while (!(_componentIndex < _currentSpan1.Length));
 
             return true;
-        }
-
-        /// <summary>
-        ///     Proxy type for foreach syntax
-        /// </summary>
-        /// <param name="query">The query to wrap.</param>
-        public readonly struct QueryEnumerable(Query query)
-        {
-            /// <summary>
-            ///     Gets the enumerator over a query.
-            /// </summary>
-            public GameObjectQueryEnumerator<T> GetEnumerator()
-            {
-                return new GameObjectQueryEnumerator<T>(query);
-            }
         }
     }
 }

@@ -17,9 +17,9 @@ namespace Alis.Core.Ecs.Systems
         ///     Enumerates component references and <see cref="GameObject" /> instances for all entities in this query. Intended for
         ///     use in foreach loops.
         /// </summary>
-        public GameObjectQueryEnumerator<T1, T2>.QueryEnumerable EnumerateWithEntities<T1, T2>()
+        public QueryEnumerable<T1, T2> EnumerateWithEntities<T1, T2>()
         {
-            return new GameObjectQueryEnumerator<T1, T2>.QueryEnumerable(this);
+            return new QueryEnumerable<T1, T2>(this);
         }
 
         /// <summary>

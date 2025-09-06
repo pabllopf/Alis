@@ -77,7 +77,7 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         /// <param name="query">The query to wrap.</param>
         
-        public struct QueryEnumerable(Query query)
+        public readonly struct QueryEnumerable(Query query)
         {
             /// <summary>
             ///     Gets the enumerator over a query.
