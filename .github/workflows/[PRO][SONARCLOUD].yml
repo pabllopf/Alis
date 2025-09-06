@@ -27,6 +27,7 @@ jobs:
         run: |
           brew install glew glfw
           brew install sdl2 sdl2_image sdl2_ttf ffmpeg
+          brew install csfml sfml
           brew link ffmpeg
 
       # 3. Set up JDK 17
