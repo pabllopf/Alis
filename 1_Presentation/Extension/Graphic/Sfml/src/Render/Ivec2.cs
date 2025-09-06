@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Render
@@ -12,9 +13,9 @@ namespace Alis.Extension.Graphic.Sfml.Render
     {
         
         /// <summary>
-        /// Implicit cast from <see cref="Vector2i"/> to <see cref="Ivec2"/>
+        /// Implicit cast from <see cref="Alis.Core.Aspect.Math.Vector.Vector2F"/> to <see cref="Ivec2"/>
         /// </summary>
-        public static implicit operator Ivec2(Vector2i vec) => new Ivec2(vec);
+        public static implicit operator Ivec2(Vector2F vec) => new Ivec2(vec);
 
         
         /// <summary>
@@ -31,20 +32,20 @@ namespace Alis.Extension.Graphic.Sfml.Render
 
         ////////////////////////////////////////////////////////////
         /// <summary>
-        /// Construct the <see cref="Ivec2"/> from a standard SFML <see cref="Vector2i"/>
+        /// Construct the <see cref="Ivec2"/> from a standard SFML <see cref="Alis.Core.Aspect.Math.Vector.Vector2F"/>
         /// </summary>
         /// <param name="vec">A standard SFML 2D integer vector</param>
         ////////////////////////////////////////////////////////////
-        public Ivec2(Vector2i vec)
+        public Ivec2(Vector2F vec)
         {
             X = vec.X;
             Y = vec.Y;
         }
 
         /// <summary>Horizontal component of the vector</summary>
-        public int X;
+        public float X;
 
         /// <summary>Vertical component of the vector</summary>
-        public int Y;
+        public float Y;
     }
 }

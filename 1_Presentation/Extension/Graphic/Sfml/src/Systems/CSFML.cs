@@ -3,24 +3,24 @@ namespace Alis.Extension.Graphic.Sfml.Systems
     /// <summary>
     /// The csfml class
     /// </summary>
-    public static class CSFML
+    public static class Csfml
     {
         /// <summary>
         /// The audio
         /// </summary>
-        public const string audio = "csfml-audio";
+        public const string Audio = "csfml-audio";
         /// <summary>
         /// The graphics
         /// </summary>
-        public const string graphics = "csfml-graphics";
+        public const string Graphics = "csfml-graphics";
         /// <summary>
         /// The system
         /// </summary>
-        public const string system = "csfml-system";
+        public const string System = "csfml-system";
         /// <summary>
         /// The window
         /// </summary>
-        public const string window = "csfml-window";
+        public const string Window = "csfml-window";
 
     }
 }
