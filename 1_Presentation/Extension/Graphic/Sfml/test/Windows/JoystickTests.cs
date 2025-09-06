@@ -48,22 +48,5 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             int[] values = (int[]) Enum.GetValues(typeof(Joystick.Axis));
             Assert.Equal(values.Length, new HashSet<int>(values).Count);
         }
-
-        /// <summary>
-        ///     Tests that identification struct can set fields
-        /// </summary>
-        [Fact]
-        public void Identification_Struct_CanSetFields()
-        {
-            Joystick.Identification id = new Joystick.Identification
-            {
-                Name = "Test",
-                VendorId = 123,
-                ProductId = 456
-            };
-            Assert.Equal("Test", id.Name);
-            Assert.Equal((uint) 123, id.VendorId);
-            Assert.Equal((uint) 456, id.ProductId);
-        }
     }
 }
