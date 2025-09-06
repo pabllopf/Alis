@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Render
@@ -44,7 +45,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="center">Center of the view</param>
         /// <param name="size">Size of the view</param>
         
-        public View(Vector2f center, Vector2f size) :
+        public View(Vector2F center, Vector2F size) :
             base(sfView_create())
         {
             Center = center;
@@ -67,7 +68,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// Center of the view
         /// </summary>
         
-        public Vector2f Center
+        public Vector2F Center
         {
             get { return sfView_getCenter(CPointer); }
             set { sfView_setCenter(CPointer, value); }
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// Half-size of the view
         /// </summary>
         
-        public Vector2f Size
+        public Vector2F Size
         {
             get { return sfView_getSize(CPointer); }
             set { sfView_setSize(CPointer, value); }
@@ -124,7 +125,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="offset">Offset to move the view</param>
         
-        public void Move(Vector2f offset)
+        public void Move(Vector2F offset)
         {
             sfView_move(CPointer, offset);
         }
@@ -234,7 +235,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="View">The view</param>
         /// <param name="center">The center</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfView_setCenter(IntPtr View, Vector2f center);
+        static extern void sfView_setCenter(IntPtr View, Vector2F center);
 
         /// <summary>
         /// Sfs the view set size using the specified view
@@ -242,7 +243,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="View">The view</param>
         /// <param name="size">The size</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfView_setSize(IntPtr View, Vector2f size);
+        static extern void sfView_setSize(IntPtr View, Vector2F size);
 
         /// <summary>
         /// Sfs the view set rotation using the specified view
@@ -274,7 +275,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="View">The view</param>
         /// <returns>The vector 2f</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern Vector2f sfView_getCenter(IntPtr View);
+        static extern Vector2F sfView_getCenter(IntPtr View);
 
         /// <summary>
         /// Sfs the view get size using the specified view
@@ -282,7 +283,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="View">The view</param>
         /// <returns>The vector 2f</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern Vector2f sfView_getSize(IntPtr View);
+        static extern Vector2F sfView_getSize(IntPtr View);
 
         /// <summary>
         /// Sfs the view get rotation using the specified view
@@ -306,7 +307,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="View">The view</param>
         /// <param name="offset">The offset</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfView_move(IntPtr View, Vector2f offset);
+        static extern void sfView_move(IntPtr View, Vector2F offset);
 
         /// <summary>
         /// Sfs the view rotate using the specified view

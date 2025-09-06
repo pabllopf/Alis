@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Render
@@ -14,9 +15,9 @@ namespace Alis.Extension.Graphic.Sfml.Render
     {
         
         /// <summary>
-        /// Implicit cast from <see cref="Vector2f"/> to <see cref="Vec2"/>
+        /// Implicit cast from <see cref="Alis.Core.Aspect.Math.Vector.Vector2F"/> to <see cref="Vec2"/>
         /// </summary>
-        public static implicit operator Vec2(Vector2f vec) => new Vec2(vec);
+        public static implicit operator Vec2(Vector2F vec) => new Vec2(vec);
 
         
         /// <summary>
@@ -33,11 +34,11 @@ namespace Alis.Extension.Graphic.Sfml.Render
 
         ////////////////////////////////////////////////////////////
         /// <summary>
-        /// Construct the <see cref="Vec2"/> from a standard SFML <see cref="Vector2f"/>
+        /// Construct the <see cref="Vec2"/> from a standard SFML <see cref="Alis.Core.Aspect.Math.Vector.Vector2F"/>
         /// </summary>
         /// <param name="vec">A standard SFML 2D vector</param>
         ////////////////////////////////////////////////////////////
-        public Vec2(Vector2f vec)
+        public Vec2(Vector2F vec)
         {
             X = vec.X;
             Y = vec.Y;

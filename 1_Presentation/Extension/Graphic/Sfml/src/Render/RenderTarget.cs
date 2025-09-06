@@ -1,3 +1,4 @@
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Render
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="point">Pixel to convert</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         ////////////////////////////////////////////////////////////
-        Vector2f MapPixelToCoords(Vector2i point);
+        Vector2F MapPixelToCoords(Vector2i point);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         ////////////////////////////////////////////////////////////
-        Vector2f MapPixelToCoords(Vector2i point, View view);
+        Vector2F MapPixelToCoords(Vector2i point, View view);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -104,7 +105,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="point">Point to convert</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         ////////////////////////////////////////////////////////////
-        Vector2i MapCoordsToPixel(Vector2f point);
+        Vector2i MapCoordsToPixel(Vector2F point);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -128,7 +129,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         ////////////////////////////////////////////////////////////
-        Vector2i MapCoordsToPixel(Vector2f point, View view);
+        Vector2i MapCoordsToPixel(Vector2F point, View view);
 
         ////////////////////////////////////////////////////////////
         /// <summary>

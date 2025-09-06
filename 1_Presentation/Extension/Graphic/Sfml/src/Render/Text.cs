@@ -2,6 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Render
@@ -272,7 +273,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="index">Index of the character</param>
         /// <returns>Position of the Index-th character (end of text if Index is out of range)</returns>
         
-        public Vector2f FindCharacterPos(uint index)
+        public Vector2F FindCharacterPos(uint index)
         {
             return sfText_findCharacterPos(CPointer, index);
         }
@@ -585,7 +586,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="Index">The index</param>
         /// <returns>The vector 2f</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern Vector2f sfText_findCharacterPos(IntPtr CPointer, uint Index);
+        static extern Vector2F sfText_findCharacterPos(IntPtr CPointer, uint Index);
 
         /// <summary>
         /// Sfs the text get local bounds using the specified c pointer

@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 using Alis.Extension.Graphic.Sfml.Windows;
 
@@ -157,7 +158,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="point">Pixel to convert</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         
-        public Vector2f MapPixelToCoords(Vector2i point)
+        public Vector2F MapPixelToCoords(Vector2i point)
         {
             return MapPixelToCoords(point, GetView());
         }
@@ -188,7 +189,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         
-        public Vector2f MapPixelToCoords(Vector2i point, View view)
+        public Vector2F MapPixelToCoords(Vector2i point, View view)
         {
             return sfRenderTexture_mapPixelToCoords(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
         }
@@ -206,7 +207,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="point">Point to convert</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         
-        public Vector2i MapCoordsToPixel(Vector2f point)
+        public Vector2i MapCoordsToPixel(Vector2F point)
         {
             return MapCoordsToPixel(point, GetView());
         }
@@ -233,7 +234,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         
-        public Vector2i MapCoordsToPixel(Vector2f point, View view)
+        public Vector2i MapCoordsToPixel(Vector2F point, View view)
         {
             return sfRenderTexture_mapCoordsToPixel(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
         }
@@ -645,7 +646,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="View">The view</param>
         /// <returns>The vector 2i</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern Vector2i sfRenderTexture_mapCoordsToPixel(IntPtr CPointer, Vector2f point, IntPtr View);
+        static extern Vector2i sfRenderTexture_mapCoordsToPixel(IntPtr CPointer, Vector2F point, IntPtr View);
 
         /// <summary>
         /// Sfs the render texture map pixel to coords using the specified c pointer
@@ -655,7 +656,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="View">The view</param>
         /// <returns>The vector 2f</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern Vector2f sfRenderTexture_mapPixelToCoords(IntPtr CPointer, Vector2i point, IntPtr View);
+        static extern Vector2F sfRenderTexture_mapPixelToCoords(IntPtr CPointer, Vector2i point, IntPtr View);
 
         /// <summary>
         /// Sfs the render texture get texture using the specified c pointer

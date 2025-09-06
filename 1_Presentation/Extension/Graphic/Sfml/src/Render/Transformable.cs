@@ -1,4 +1,5 @@
 using System;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Render
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// Position of the object
         /// </summary>
         
-        public Vector2f Position
+        public Vector2F Position
         {
             get
             {
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// Scale of the object
         /// </summary>
         
-        public Vector2f Scale
+        public Vector2F Scale
         {
             get
             {
@@ -114,7 +115,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// transformations (position, scale, rotation).
         /// </summary>
         
-        public Vector2f Origin
+        public Vector2F Origin
         {
             get
             {
@@ -203,11 +204,11 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         /// The vector 2f
         /// </summary>
-        private Vector2f myOrigin = new Vector2f(0, 0);
+        private Vector2F myOrigin = new Vector2F(0, 0);
         /// <summary>
         /// The vector 2f
         /// </summary>
-        private Vector2f myPosition = new Vector2f(0, 0);
+        private Vector2F myPosition = new Vector2F(0, 0);
         /// <summary>
         /// The my rotation
         /// </summary>
@@ -215,7 +216,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         /// The vector 2f
         /// </summary>
-        private Vector2f myScale = new Vector2f(1, 1);
+        private Vector2F myScale = new Vector2F(1, 1);
         /// <summary>
         /// The my transform
         /// </summary>
