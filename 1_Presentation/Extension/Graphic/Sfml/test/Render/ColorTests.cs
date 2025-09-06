@@ -14,7 +14,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Constructor_SetsFieldsCorrectly()
         {
-            var color = new Color(10, 20, 30, 40);
+            Color color = new Color(10, 20, 30, 40);
             Assert.Equal((byte)10, color.R);
             Assert.Equal((byte)20, color.G);
             Assert.Equal((byte)30, color.B);
@@ -27,7 +27,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Constructor_ThreeArgs_SetsAlphaTo255()
         {
-            var color = new Color(1, 2, 3);
+            Color color = new Color(1, 2, 3);
             Assert.Equal((byte)1, color.R);
             Assert.Equal((byte)2, color.G);
             Assert.Equal((byte)3, color.B);
@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Constructor_FromUInt_SetsFieldsCorrectly()
         {
-            var color = new Color(0x0A141E28);
+            Color color = new Color(0x0A141E28);
             Assert.Equal((byte)0x0A, color.R);
             Assert.Equal((byte)0x14, color.G);
             Assert.Equal((byte)0x1E, color.B);
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void ToInteger_ReturnsExpected()
         {
-            var color = new Color(0x0A, 0x14, 0x1E, 0x28);
+            Color color = new Color(0x0A, 0x14, 0x1E, 0x28);
             Assert.Equal(0x0A141E28u, color.ToInteger());
         }
 
@@ -63,8 +63,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void ToString_ReturnsExpectedFormat()
         {
-            var color = new Color(1, 2, 3, 4);
-            var str = color.ToString();
+            Color color = new Color(1, 2, 3, 4);
+            string str = color.ToString();
             Assert.Contains("R(1)", str);
             Assert.Contains("G(2)", str);
             Assert.Contains("B(3)", str);
@@ -77,9 +77,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Equality_Operators_Work()
         {
-            var a = new Color(1, 2, 3, 4);
-            var b = new Color(1, 2, 3, 4);
-            var c = new Color(5, 6, 7, 8);
+            Color a = new Color(1, 2, 3, 4);
+            Color b = new Color(1, 2, 3, 4);
+            Color c = new Color(5, 6, 7, 8);
             Assert.True(a == b);
             Assert.False(a != b);
             Assert.False(a == c);
@@ -92,9 +92,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Addition_Operator_ClampsTo255()
         {
-            var a = new Color(200, 200, 200, 200);
-            var b = new Color(100, 100, 100, 100);
-            var result = a + b;
+            Color a = new Color(200, 200, 200, 200);
+            Color b = new Color(100, 100, 100, 100);
+            Color result = a + b;
             Assert.Equal((byte)255, result.R);
             Assert.Equal((byte)255, result.G);
             Assert.Equal((byte)255, result.B);
@@ -107,9 +107,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Subtraction_Operator_ClampsToZero()
         {
-            var a = new Color(10, 10, 10, 10);
-            var b = new Color(20, 20, 20, 20);
-            var result = a - b;
+            Color a = new Color(10, 10, 10, 10);
+            Color b = new Color(20, 20, 20, 20);
+            Color result = a - b;
             Assert.Equal((byte)0, result.R);
             Assert.Equal((byte)0, result.G);
             Assert.Equal((byte)0, result.B);
@@ -122,9 +122,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Multiplication_Operator_Works()
         {
-            var a = new Color(255, 128, 64, 32);
-            var b = new Color(255, 128, 64, 32);
-            var result = a * b;
+            Color a = new Color(255, 128, 64, 32);
+            Color b = new Color(255, 128, 64, 32);
+            Color result = a * b;
             Assert.Equal((byte)255, result.R);
             Assert.Equal((byte)64, result.G);
             Assert.Equal((byte)16, result.B);
@@ -137,8 +137,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void GetHashCode_IsConsistent()
         {
-            var a = new Color(1, 2, 3, 4);
-            var b = new Color(1, 2, 3, 4);
+            Color a = new Color(1, 2, 3, 4);
+            Color b = new Color(1, 2, 3, 4);
             Assert.Equal(a.GetHashCode(), b.GetHashCode());
         }
 

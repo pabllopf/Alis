@@ -24,7 +24,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact(Skip = "Cannot test Font without native SFML dependencies.")]
         public void Constructor_FromStream_ThrowsIfInvalid()
         {
-            using var ms = new MemoryStream(new byte[] { 1, 2, 3 });
+            using MemoryStream ms = new MemoryStream(new byte[] { 1, 2, 3 });
             Assert.Throws<Alis.Extension.Graphic.Sfml.Windows.LoadingFailedException>(() => new Font(ms));
         }
 
@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void ToString_ReturnsFont()
         {
             // Would require a valid font file and native SFML
-            var font = new Font("somefile.ttf");
+            Font font = new Font("somefile.ttf");
             Assert.Equal("Font", font.ToString());
         }
     }

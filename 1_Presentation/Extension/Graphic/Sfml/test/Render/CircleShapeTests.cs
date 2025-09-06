@@ -15,7 +15,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void DefaultConstructor_SetsRadiusToZero()
         {
-            var shape = new CircleShape();
+            CircleShape shape = new CircleShape();
             Assert.Equal(0, shape.Radius);
         }
 
@@ -25,7 +25,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Constructor_WithRadius_SetsRadius()
         {
-            var shape = new CircleShape(5.5f);
+            CircleShape shape = new CircleShape(5.5f);
             Assert.Equal(5.5f, shape.Radius);
         }
 
@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Constructor_WithRadiusAndPointCount_SetsValues()
         {
-            var shape = new CircleShape(3.3f, 7);
+            CircleShape shape = new CircleShape(3.3f, 7);
             Assert.Equal(3.3f, shape.Radius);
             Assert.Equal((uint)7, shape.GetPointCount());
         }
@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void SetPointCount_ChangesPointCount()
         {
-            var shape = new CircleShape(2.2f, 3);
+            CircleShape shape = new CircleShape(2.2f, 3);
             shape.SetPointCount(10);
             Assert.Equal((uint)10, shape.GetPointCount());
         }
@@ -57,8 +57,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void GetPoint_ReturnsExpectedPosition()
         {
-            var shape = new CircleShape(10, 4);
-            var point = shape.GetPoint(0);
+            CircleShape shape = new CircleShape(10, 4);
+            Vector2F point = shape.GetPoint(0);
             Assert.True(point.X > 0);
             Assert.True(point.Y >= 0);
         }
@@ -69,8 +69,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void CopyConstructor_CopiesRadiusAndPointCount()
         {
-            var shape1 = new CircleShape(7.7f, 8);
-            var shape2 = new CircleShape(shape1);
+            CircleShape shape1 = new CircleShape(7.7f, 8);
+            CircleShape shape2 = new CircleShape(shape1);
             Assert.Equal(shape1.Radius, shape2.Radius);
             Assert.Equal(shape1.GetPointCount(), shape2.GetPointCount());
         }

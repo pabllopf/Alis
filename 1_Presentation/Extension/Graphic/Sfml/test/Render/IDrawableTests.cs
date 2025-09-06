@@ -35,7 +35,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Draw_CanBeCalled()
         {
-            var drawable = new DummyDrawable();
+            DummyDrawable drawable = new DummyDrawable();
             drawable.Draw(null, default);
             Assert.True(drawable.WasDrawn);
         }
