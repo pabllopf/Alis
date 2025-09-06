@@ -1,5 +1,6 @@
 using System;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Ecs.Sample.Components
 {
@@ -15,7 +16,7 @@ namespace Alis.Core.Ecs.Sample.Components
         public void Update(ref string str)
         {
             Console.ForegroundColor = Color;
-            Console.WriteLine(str);
+            Logger.Info(str);
         }
     }
 }

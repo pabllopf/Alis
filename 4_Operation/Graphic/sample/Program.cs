@@ -1,4 +1,5 @@
 using System;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms;
@@ -28,12 +29,12 @@ namespace Alis.Core.Graphic.Sample
             throw new Exception("Sistema operativo no soportado");
 #endif
             
-            Console.WriteLine("Elige el ejemplo a mostrar:");
-            Console.WriteLine("0: Fondo rojo");
-            Console.WriteLine("1: Triángulo blanco");
-            Console.WriteLine("2: Cubo (vacío)");
-            Console.WriteLine("3: Cuadrado sin rellenar");
-            Console.WriteLine("4: Textura personalizada (BMP)");
+            Logger.Info("Elige el ejemplo a mostrar:");
+            Logger.Info("0: Fondo rojo");
+            Logger.Info("1: Triángulo blanco");
+            Logger.Info("2: Cubo (vacío)");
+            Logger.Info("3: Cuadrado sin rellenar");
+            Logger.Info("4: Textura personalizada (BMP)");
             Console.Write("Opción: ");
             int option = 0;
             string input = Console.ReadLine();
@@ -49,7 +50,7 @@ namespace Alis.Core.Graphic.Sample
             bool ok = platform.Initialize(800, 600, "C# + OpenGL Platform");
             if (!ok)
             {
-                Console.WriteLine("No se pudo inicializar la ventana ni el contexto OpenGL. El programa se cerrará.");
+                Logger.Info("No se pudo inicializar la ventana ni el contexto OpenGL. El programa se cerrará.");
                 platform.Cleanup();
                 return;
             }
@@ -66,14 +67,14 @@ namespace Alis.Core.Graphic.Sample
                 running = platform.PollEvents();
                 if (platform.TryGetLastKeyPressed(out ConsoleKey key))
                 {
-                    Console.WriteLine($"Tecla pulsada: {key}");
+                    Logger.Info($"Tecla pulsada: {key}");
                 }
                 example.Draw();
                 platform.SwapBuffers();
                 int glError = Gl.GlGetError();
                 if (glError != 0)
                 {
-                    Console.WriteLine($"OpenGL error tras flushBuffer: 0x{glError:X}");
+                    Logger.Info($"OpenGL error tras flushBuffer: 0x{glError:X}");
                 }
             }
             example.Cleanup();

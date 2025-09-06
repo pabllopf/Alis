@@ -1,6 +1,7 @@
 using System;
 using Alis;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Ecs.Sample.Components
 {
@@ -11,7 +12,7 @@ namespace Alis.Core.Ecs.Sample.Components
         /// </summary>
         public void Update(IGameObject gameObject)
         {
-            Console.WriteLine(gameObject.Has<Vel>() ?
+            Logger.Info(gameObject.Has<Vel>() ?
                 "I have velocity!" :
                 "No velocity here!");
         }

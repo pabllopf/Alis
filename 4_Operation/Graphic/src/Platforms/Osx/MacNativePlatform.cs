@@ -1,6 +1,7 @@
 #if OSX
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Graphic.Platforms.Osx.Native;
 
 namespace Alis.Core.Graphic.Platforms.Osx
@@ -193,7 +194,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 _openGlHandle = Dlopen(OpenGLPath, RtldDefault);
                 if (_openGlHandle == IntPtr.Zero)
                 {
-                    Console.WriteLine("❌ No se pudo abrir la librería OpenGL");
+                    Logger.Info("❌ No se pudo abrir la librería OpenGL");
                     return IntPtr.Zero;
                 }
             }

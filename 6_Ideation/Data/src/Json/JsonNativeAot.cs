@@ -70,7 +70,6 @@ namespace Alis.Core.Aspect.Data.Json
                 Directory.CreateDirectory(path);
             }
             File.WriteAllText(filePath, json);
-            Console.WriteLine($"Serialized {typeof(T).Name} to {filePath}");
         }
 
     /// <summary>

@@ -322,7 +322,7 @@ namespace Alis.App.Hub.Controllers
                 io.MouseDown[idx] = action == InputState.Press;
             }
           
-            //Console.WriteLine($"Mouse Button: {button}, Action: {action}, Pressed: {io.MouseDown[(int)button]}");
+            //Logger.Info($"Mouse Button: {button}, Action: {action}, Pressed: {io.MouseDown[(int)button]}");
         }
       
         // Callback de scroll
@@ -338,7 +338,7 @@ namespace Alis.App.Hub.Controllers
             io.MouseWheel += (float)yoffset;
             io.MouseWheelH += (float)xoffset;
           
-            //Console.WriteLine($"Scroll: XOffset: {xoffset}, YOffset: {yoffset}, MouseWheel: {io.MouseWheel}, MouseWheelH: {io.MouseWheelH}");
+            //Logger.Info($"Scroll: XOffset: {xoffset}, YOffset: {yoffset}, MouseWheel: {io.MouseWheel}, MouseWheelH: {io.MouseWheelH}");
         }
 
 

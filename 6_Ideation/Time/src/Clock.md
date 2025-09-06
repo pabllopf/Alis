@@ -25,7 +25,7 @@ Clock clock = new Clock();
 clock.Start();
 // Do some work
 clock.Stop();
-Console.WriteLine($"Elapsed time: {clock.ElapsedMilliseconds} ms");
+Logger.Info($"Elapsed time: {clock.ElapsedMilliseconds} ms");
 ```
 
 In this example, a new `Clock` object is created and started. After some work is done, the clock is stopped and the

@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using System.Numerics;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 
 namespace Alis.Core.Graphic.Sample.Samples
@@ -86,18 +87,18 @@ void main()
             Gl.ShaderSource(vertexShader, vertexShaderSource);
             Gl.GlCompileShader(vertexShader);
             if (!Gl.GetShaderCompileStatus(vertexShader))
-                Console.WriteLine("Vertex shader error: " + Gl.GetShaderInfoLog(vertexShader));
+                Logger.Info("Vertex shader error: " + Gl.GetShaderInfoLog(vertexShader));
             uint fragmentShader = Gl.GlCreateShader(ShaderType.FragmentShader);
             Gl.ShaderSource(fragmentShader, fragmentShaderSource);
             Gl.GlCompileShader(fragmentShader);
             if (!Gl.GetShaderCompileStatus(fragmentShader))
-                Console.WriteLine("Fragment shader error: " + Gl.GetShaderInfoLog(fragmentShader));
+                Logger.Info("Fragment shader error: " + Gl.GetShaderInfoLog(fragmentShader));
             shaderProgram = Gl.GlCreateProgram();
             Gl.GlAttachShader(shaderProgram, vertexShader);
             Gl.GlAttachShader(shaderProgram, fragmentShader);
             Gl.GlLinkProgram(shaderProgram);
             if (!Gl.GetProgramLinkStatus(shaderProgram))
-                Console.WriteLine("Program link error: " + Gl.GetProgramInfoLog(shaderProgram));
+                Logger.Info("Program link error: " + Gl.GetProgramInfoLog(shaderProgram));
             Gl.GlDeleteShader(vertexShader);
             Gl.GlDeleteShader(fragmentShader);
             Gl.GlBindVertexArray(vao);

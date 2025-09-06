@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Systems.Configuration;
 
 namespace Alis.Sample.Desktop
@@ -51,27 +52,27 @@ namespace Alis.Sample.Desktop
             setting.General = setting.General with {Name = "en-US"};
             setting.OnSave();
             
-            Console.WriteLine("Setting saved successfully.");
-            Console.WriteLine($"Debug: {setting.General.Debug}");
-            Console.WriteLine($"Name: {setting.General.Name}");
-            Console.WriteLine($"Description: {setting.General.Description}");
-            Console.WriteLine($"Version: {setting.General.Version}");
-            Console.WriteLine($"Author: {setting.General.Author}");
-            Console.WriteLine($"License: {setting.General.License}");
-            Console.WriteLine($"Icon: {setting.General.Icon}");
+            Logger.Info("Setting saved successfully.");
+            Logger.Info($"Debug: {setting.General.Debug}");
+            Logger.Info($"Name: {setting.General.Name}");
+            Logger.Info($"Description: {setting.General.Description}");
+            Logger.Info($"Version: {setting.General.Version}");
+            Logger.Info($"Author: {setting.General.Author}");
+            Logger.Info($"License: {setting.General.License}");
+            Logger.Info($"Icon: {setting.General.Icon}");
             
             
             
             setting.OnLoad();
             
-            Console.WriteLine("General Setting:");
-            Console.WriteLine($"Debug: {setting.General.Debug}");
-            Console.WriteLine($"Name: {setting.General.Name}");
-            Console.WriteLine($"Description: {setting.General.Description}");
-            Console.WriteLine($"Version: {setting.General.Version}");
-            Console.WriteLine($"Author: {setting.General.Author}");
-            Console.WriteLine($"License: {setting.General.License}");
-            Console.WriteLine($"Icon: {setting.General.Icon}");
+            Logger.Info("General Setting:");
+            Logger.Info($"Debug: {setting.General.Debug}");
+            Logger.Info($"Name: {setting.General.Name}");
+            Logger.Info($"Description: {setting.General.Description}");
+            Logger.Info($"Version: {setting.General.Version}");
+            Logger.Info($"Author: {setting.General.Author}");
+            Logger.Info($"License: {setting.General.License}");
+            Logger.Info($"Icon: {setting.General.Icon}");
             //game.Run();
         }
     }

@@ -1,4 +1,5 @@
 using System;
+using Alis.Core.Aspect.Logging;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Windows;
 
@@ -15,11 +16,11 @@ namespace Alis.Extension.Graphic.Sfml.Sample
         /// <param name="args">The args</param>
         static void Main(string[] args)
         {
-            Console.WriteLine("Press ESC key to close window");
+            Logger.Info("Press ESC key to close window");
             SimpleWindow window = new SimpleWindow();
             window.Run();
 
-            Console.WriteLine("All done");
+            Logger.Info("All done");
         }
     }
 

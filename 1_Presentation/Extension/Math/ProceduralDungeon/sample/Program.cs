@@ -139,7 +139,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
                     Console.Write("█");
                 }
                 
-                Console.WriteLine();
+                Logger.Info("");
             }
             
             
@@ -229,7 +229,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Sample
                     Console.Write("█");
                 }
                 
-                Console.WriteLine();
+                Logger.Info("");
             }
         }
     }
