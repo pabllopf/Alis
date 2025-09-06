@@ -274,5 +274,18 @@ namespace Alis.Core.Ecs.Kernel
             throw new InvalidOperationException(
                 $"{t.FullName} is not initalized. (Did you initalize T with Component.RegisterComponent<T>()?)");
         }
+
+        internal static void ResetForTests()
+        {
+            lock (GlobalWorldTables.BufferChangeLock)
+            {
+                NoneComponentRunnerTable.Clear();
+                _existingComponentIDs.Clear();
+                _nextComponentId = -1;
+                ComponentTable = FastestStack<ComponentData>.Create(16);
+                // Forzar la inicialización de void para mantener el comportamiento original
+                GetComponentId(typeof(void));
+            }
+        }
     }
 }
