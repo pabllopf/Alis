@@ -24,9 +24,7 @@ jobs:
 
       # 2. Install SDL2 and ffmpeg dependencies
       - name: install
-        run: |
-          brew install glew glfw sdl2 sdl2_image sdl2_ttf ffmpeg csfml sfml
-          brew link glew glfw sdl2 sdl2_image sdl2_ttf ffmpeg csfml sfml
+        run: brew install glew glfw sdl2 sdl2_image sdl2_ttf ffmpeg csfml sfml
 
       # 3. Set up JDK 17
       - name: Set up JDK 17
