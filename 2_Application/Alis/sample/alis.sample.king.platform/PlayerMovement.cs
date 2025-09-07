@@ -11,7 +11,7 @@ namespace Alis.Sample.King.Platform
     /// <summary>
     /// The player movement
     /// </summary>
-    public struct PlayerMovement : IInitable, IGameObjectComponent
+    public struct PlayerMovement : IInitable, IGameObjectComponent, IOnPressKey
     {
         /// <summary>
         /// The jump force
@@ -93,6 +93,31 @@ namespace Alis.Sample.King.Platform
         /// </summary>
         /// <param name="self">The self</param>
         public void Update(IGameObject self)
+        {
+            
+        }
+
+        public void OnPressKey(ConsoleKey key)
+        {
+            if (key == ConsoleKey.A)
+            {
+                directionPlayer.X = -1;
+                boxCollider.Body.ApplyLinearImpulse(new Vector2F(-0.1f, 0));
+            }
+
+            if (key == ConsoleKey.D)
+            {
+                directionPlayer.X = 1;
+                boxCollider.Body.ApplyLinearImpulse(new Vector2F(0.1f, 0));
+            }
+            
+            if (key == ConsoleKey.Spacebar)
+            {
+                 boxCollider.Body.ApplyLinearImpulse(new Vector2F(0, JumpForce));
+            }
+        }
+
+        public void Update()
         {
             
         }
