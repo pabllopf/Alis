@@ -2,6 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
+        <OutputType>Exe</OutputType>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
         <LangVersion>13</LangVersion>
         <Nullable>disable</Nullable>
@@ -23,6 +24,21 @@
 
     <PropertyGroup>
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Sample[^*]*', ''))</NameTest>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="($([MSBuild]::IsOSPlatform('linux')) AND '$(RuntimeIdentifier)' == '') OR $(RuntimeIdentifier.Contains('linux'))">
+        <DefineConstants>$(DefineConstants);LINUX</DefineConstants>
+        <IsLinux>true</IsLinux>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="($([MSBuild]::IsOSPlatform('osx')) AND '$(RuntimeIdentifier)' == '')  OR $(RuntimeIdentifier.Contains('osx'))">
+        <DefineConstants>$(DefineConstants);OSX</DefineConstants>
+        <IsOSX>true</IsOSX>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="($([MSBuild]::IsOSPlatform('windows')) AND '$(RuntimeIdentifier)' == '') OR $(RuntimeIdentifier.Contains('win'))">
+        <DefineConstants>$(DefineConstants);WIN</DefineConstants>
+        <IsWindows>true</IsWindows>
     </PropertyGroup>
 
     <ItemGroup>

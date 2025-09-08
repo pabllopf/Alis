@@ -55,32 +55,32 @@ namespace Alis.Core.Aspect.Data.Sample
             };
 
             string json = JsonNativeAot.Serialize(musicInfo2);
-            Debug.Print(json);
+            Console.WriteLine(json);
 
-            Debug.Print("----------------------------------------");
+            Console.WriteLine("----------------------------------------");
 
             Music deserialized = JsonNativeAot.Deserialize<Music>(json);
-            Debug.Print(deserialized.Name);
-            Debug.Print(deserialized.Artist);
-            Debug.Print(deserialized.Genre);
-            Debug.Print(deserialized.Album);
-            Debug.Print(deserialized.IsFavorite.ToString());
-            Debug.Print(deserialized.Rating.ToString());
-            Debug.Print(deserialized.TrackNumber.ToString());
-            Debug.Print(deserialized.DiscNumber.ToString());
-            Debug.Print(deserialized.Year.ToString());
-            Debug.Print(deserialized.Week.ToString());
-            Debug.Print(deserialized.PlayCount.ToString());
-            Debug.Print(deserialized.Listeners.ToString());
-            Debug.Print(deserialized.Duration.ToString());
-            Debug.Print(deserialized.FileSize.ToString());
-            Debug.Print(deserialized.Tempo.ToString());
-            Debug.Print(deserialized.Loudness.ToString());
-            Debug.Print(deserialized.Price.ToString());
-            Debug.Print(deserialized.ReleaseDate.ToString());
-            Debug.Print(deserialized.MusicId.ToString());
+            Console.WriteLine(deserialized.Name);
+            Console.WriteLine(deserialized.Artist);
+            Console.WriteLine(deserialized.Genre);
+            Console.WriteLine(deserialized.Album);
+            Console.WriteLine(deserialized.IsFavorite.ToString());
+            Console.WriteLine(deserialized.Rating.ToString());
+            Console.WriteLine(deserialized.TrackNumber.ToString());
+            Console.WriteLine(deserialized.DiscNumber.ToString());
+            Console.WriteLine(deserialized.Year.ToString());
+            Console.WriteLine(deserialized.Week.ToString());
+            Console.WriteLine(deserialized.PlayCount.ToString());
+            Console.WriteLine(deserialized.Listeners.ToString());
+            Console.WriteLine(deserialized.Duration.ToString());
+            Console.WriteLine(deserialized.FileSize.ToString());
+            Console.WriteLine(deserialized.Tempo.ToString());
+            Console.WriteLine(deserialized.Loudness.ToString());
+            Console.WriteLine(deserialized.Price.ToString());
+            Console.WriteLine(deserialized.ReleaseDate.ToString());
+            Console.WriteLine(deserialized.MusicId.ToString());
 
-            Debug.Print("----------------------------------------");
+            Console.WriteLine("----------------------------------------");
 
 
             Singer singerInfo = new Singer
@@ -94,21 +94,21 @@ namespace Alis.Core.Aspect.Data.Sample
                 SingerId = Guid.NewGuid()
             };
 
-            Debug.Print("Singer Information:");
+            Console.WriteLine("Singer Information:");
             string singerJson = JsonNativeAot.Serialize(singerInfo);
-            Debug.Print(singerJson);
-            Debug.Print("----------------------------------------");
+            Console.WriteLine(singerJson);
+            Console.WriteLine("----------------------------------------");
 
             Singer deserializedSinger = JsonNativeAot.Deserialize<Singer>(singerJson);
-            Debug.Print(deserializedSinger.Name);
-            Debug.Print(deserializedSinger.Genre);
-            Debug.Print(deserializedSinger.Age.ToString());
-            Debug.Print(deserializedSinger.Country);
-            Debug.Print(deserializedSinger.IsActive.ToString());
-            Debug.Print(deserializedSinger.DebutDate.ToString());
-            Debug.Print(deserializedSinger.SingerId.ToString());
+            Console.WriteLine(deserializedSinger.Name);
+            Console.WriteLine(deserializedSinger.Genre);
+            Console.WriteLine(deserializedSinger.Age.ToString());
+            Console.WriteLine(deserializedSinger.Country);
+            Console.WriteLine(deserializedSinger.IsActive.ToString());
+            Console.WriteLine(deserializedSinger.DebutDate.ToString());
+            Console.WriteLine(deserializedSinger.SingerId.ToString());
 
-            Debug.Print("----------------------------------------");
+            Console.WriteLine("----------------------------------------");
         }
     }
 }
