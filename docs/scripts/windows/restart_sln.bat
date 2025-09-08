@@ -16,10 +16,15 @@ dotnet new sln -o . -n alis --force
 
 for /r %%i in (*.csproj) do (
     echo %%i | findstr /i "sample" >nul
-    if errorlevel 1 (
-        @type .\.config\default_csproj.props > %%i
-    ) else (
+    if not errorlevel 1 (
         @type .\.config\default_sample_csproj.props > %%i
+    ) else (
+        echo %%i | findstr /i "Test" >nul
+        if not errorlevel 1 (
+            @type .\.config\default_test_csproj.props > %%i
+        ) else (
+            @type .\.config\default_csproj.props > %%i
+        )
     )
 )
 

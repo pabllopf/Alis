@@ -9,9 +9,41 @@
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
     </PropertyGroup>
+
+
+    <ItemGroup Condition="$(AssemblyName.Contains('Test')) == true">
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1"/>
+        <PackageReference Include="xunit" Version="2.6.6"/>
+        <PackageReference Include="Xunit.StaFact" Version="1.1.11"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+
+        <PackageReference Include="coverlet.collector" Version="6.0.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
     
     <ItemGroup>
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="
+        $(AssemblyName.Contains('Graphic.Sdl2.Test')) == True OR
+        $(AssemblyName.Contains('Graphic.Glfw.Test')) == True OR
+        $(AssemblyName.Contains('Graphic.Sfml.Test')) == True OR
+        $(AssemblyName.Contains('Graphic.Ui.Test')) == True OR
+        $(AssemblyName.Contains('Graphic.Test')) == True OR
+        $(AssemblyName.Contains('Audio.Test')) == True OR
+        $(AssemblyName.Contains('Network.Test')) == True OR
+        $(AssemblyName.Contains('FFmpeg.Test')) == True  OR
+        $(AssemblyName.Contains('Ecs.Test')) == True 
+    ">
+        <Content Include="$(SolutionDir).config/xunit.runner.json" LinkBase="." Pack="true" Visible="true" PackagePath=".">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
     <ItemGroup Condition="Exists('$(ProjectDir)Assets/')">
@@ -21,10 +53,6 @@
             CopyToOutputDirectory="Always"
             CopyToPublishDirectory="Always"/>
     </ItemGroup>
-
-    <PropertyGroup>
-        <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Sample[^*]*', ''))</NameTest>
-    </PropertyGroup>
 
     <PropertyGroup Condition="($([MSBuild]::IsOSPlatform('linux')) AND '$(RuntimeIdentifier)' == '') OR $(RuntimeIdentifier.Contains('linux'))">
         <DefineConstants>$(DefineConstants);LINUX</DefineConstants>
@@ -41,7 +69,11 @@
         <IsWindows>true</IsWindows>
     </PropertyGroup>
 
-    <ItemGroup>
+    <PropertyGroup Condition="$(AssemblyName.Contains('Test'))">
+        <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Test[^*]*', ''))</NameTest>
+    </PropertyGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Contains('Test'))">
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == True"
             Include="$(ProjectDir)../src/$(NameTest).csproj"/>
@@ -49,7 +81,7 @@
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)../../src/$(NameTest).csproj"/>
-        
+
         <ProjectReference
             Condition="Exists('$(ProjectDir)../generator/$(NameTest).Generator.csproj')"
             Include="$(ProjectDir)../generator/$(NameTest).Generator.csproj"
