@@ -79,7 +79,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         {
 #if OSX
             platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
-#elif WIN
+#elif winx64
             platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
 #elif LINUX
             platform = new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();

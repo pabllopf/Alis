@@ -19,6 +19,12 @@
 
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU;x64;x86;arm;arm64</Platforms>
+
+        <DefineConstants>
+          $(DefineConstants);
+          $(RuntimeIdentifier);
+          $([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));
+        </DefineConstants>
     </PropertyGroup>
     
     <PropertyGroup>
@@ -27,6 +33,9 @@
         <Nullable>disable</Nullable>
         <OutputType>Library</OutputType>
         <NeutralLanguage>en</NeutralLanguage>
+        <WarningsAsErrors>true</WarningsAsErrors>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <NoWarn>$(NoWarn);CS0436;CS1685;</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
