@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-#if OSX
+#if osxarm64
 using System;
 using System.Runtime.InteropServices;
 
