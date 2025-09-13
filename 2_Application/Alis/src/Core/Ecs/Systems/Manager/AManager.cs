@@ -106,143 +106,225 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// <summary>
         ///     Ons the enable
         /// </summary>
-        public virtual void OnEnable() => Logger.Trace("Manager enabled.");
+        public virtual void OnEnable()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the init
         /// </summary>
-        public virtual void OnInit() => Logger.Trace("Manager initialized.");
+        public virtual void OnInit()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the awake
         /// </summary>
-        public virtual void OnAwake() => Logger.Trace("Manager awake.");
+        public virtual void OnAwake()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the start
         /// </summary>
-        public virtual void OnStart() => Logger.Trace("Manager started.");
+        public virtual void OnStart()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the before update
         /// </summary>
-        public virtual void OnBeforeUpdate() => Logger.Trace("Manager before update.");
+        public virtual void OnBeforeUpdate()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the update
         /// </summary>
-        public virtual void OnUpdate() => Logger.Trace("Manager update.");
+        public virtual void OnUpdate()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the after update
         /// </summary>
-        public virtual void OnAfterUpdate() => Logger.Trace("Manager after update.");
+        public virtual void OnAfterUpdate()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the process pending changes
         /// </summary>
-        public virtual void OnProcessPendingChanges() => Logger.Trace("Manager process pending changes.");
+        public virtual void OnProcessPendingChanges()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the before fixed update
         /// </summary>
-        public virtual void OnBeforeFixedUpdate() => Logger.Trace("Manager before fixed update.");
+        public virtual void OnBeforeFixedUpdate()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the fixed update
         /// </summary>
-        public virtual void OnFixedUpdate() => Logger.Trace("Manager fixed update.");
+        public virtual void OnFixedUpdate()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the after fixed update
         /// </summary>
-        public virtual void OnAfterFixedUpdate() => Logger.Trace("Manager after fixed update.");
+        public virtual void OnAfterFixedUpdate()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the dispatch events
         /// </summary>
-        public virtual void OnDispatchEvents() => Logger.Trace("Manager dispatch events.");
+        public virtual void OnDispatchEvents()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the calculate
         /// </summary>
-        public virtual void OnCalculate() => Logger.Trace("Manager calculate.");
+        public virtual void OnCalculate()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the before draw
         /// </summary>
-        public virtual void OnBeforeDraw() => Logger.Trace("Manager before draw.");
+        public virtual void OnBeforeDraw()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the draw
         /// </summary>
-        public virtual void OnDraw() => Logger.Trace("Manager draw.");
+        public virtual void OnDraw()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the after draw
         /// </summary>
-        public virtual void OnAfterDraw() => Logger.Trace("Manager after draw.");
+        public virtual void OnAfterDraw()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the gui
         /// </summary>
-        public virtual void OnGui() => Logger.Trace("Manager GUI.");
+        public virtual void OnGui()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the render present
         /// </summary>
-        public virtual void OnRenderPresent() => Logger.Trace("Manager render present.");
+        public virtual void OnRenderPresent()
+        {
+        }
 
         /// <summary>
         ///     Ons the disable
         /// </summary>
-        public virtual void OnDisable() => Logger.Trace("Manager disabled.");
+        public virtual void OnDisable()
+        {
+        }
 
         /// <summary>
         ///     Ons the reset
         /// </summary>
-        public virtual void OnReset() => Logger.Trace("Manager reset.");
+        public virtual void OnReset()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the stop
         /// </summary>
-        public virtual void OnStop() => Logger.Trace("Manager stopped.");
+        public virtual void OnStop()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the exit
         /// </summary>
-        public virtual void OnExit() => Logger.Trace("Manager exited.");
+        public virtual void OnExit()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the destroy
         /// </summary>
-        public virtual void OnDestroy() => Logger.Trace("Manager destroyed.");
+        public virtual void OnDestroy()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the save
         /// </summary>
-        public virtual void OnSave() => Logger.Trace("Manager saved.");
+        public virtual void OnSave()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the load
         /// </summary>
-        public virtual void OnLoad() => Logger.Trace("Manager loaded.");
+        public virtual void OnLoad()
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the save using the specified path
         /// </summary>
         /// <param name="path">The path</param>
-        public virtual void OnSave(string path) => Logger.Trace("Manager saved.");
+        public virtual void OnSave(string path)
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the load using the specified path
         /// </summary>
         /// <param name="path">The path</param>
-        public virtual void OnLoad(string path) => Logger.Trace("Manager loaded.");
+        public virtual void OnLoad(string path)
+        {
+            
+        }
 
         /// <summary>
         ///     Ons the physics update
         /// </summary>
-        public virtual void OnPhysicUpdate() => Logger.Trace("Manager physics update.");
+        public virtual void OnPhysicUpdate()
+        {
+            
+        }
     }
 }
