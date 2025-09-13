@@ -1,31 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <PropertyGroup>
-        <TargetFrameworks Condition="$(Configuration) == 'Debug'">
+        <TargetFrameworks Condition="'$(Configuration)' == 'Debug'">
             net8.0;netstandard2.0;
         </TargetFrameworks>
-
-        <TargetFrameworks Condition="$(Configuration) == 'Release'">
+        <TargetFrameworks Condition="'$(Configuration)' == 'Release'">
             netcoreapp2.0;netcoreapp2.1;netcoreapp2.2;netcoreapp3.0;netcoreapp3.1;
             net5.0;net6.0;net7.0;net8.0;net9.0;
             netstandard2.0;netstandard2.1;
             net461;net471;net472;net48;net481;
         </TargetFrameworks>
 
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Extension')) AND $(Configuration) == 'Release'">
-            netcoreapp2.0;
-            net461;
-            net5.0;net8.0;
-            netstandard2.0;
-        </TargetFrameworks>
-
-        <TargetFrameworks Condition="$(AssemblyName.Contains('App'))">net8.0;</TargetFrameworks>
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Generator'))">net8.0;netstandard2.0;</TargetFrameworks>
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Benchmark'))">net8.0;</TargetFrameworks>
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Test'))">net8.0;</TargetFrameworks>
-        <TargetFrameworks Condition="$(AssemblyName.Contains('Sample'))">net8.0;</TargetFrameworks>
-
-        <RuntimeIdentifiers Condition="$(Configuration) == 'Release' AND $(AssemblyName.Contains('Generator')) == False">
+        <RuntimeIdentifiers Condition="'$(Configuration)' == 'Release'">
             win-x64; win-x86; win-arm64;
             linux-x64; linux-arm; linux-arm64;
             osx-x64;osx-arm64;
@@ -35,72 +21,102 @@
         <Platforms>AnyCPU;x64;x86;arm;arm64</Platforms>
     </PropertyGroup>
     
+    <PropertyGroup>
+        <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+        <LangVersion>13</LangVersion>
+        <Nullable>disable</Nullable>
+        <OutputType>Library</OutputType>
+        <NeutralLanguage>en</NeutralLanguage>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="$(AssemblyName).Test"/>
+    </ItemGroup>
+    
+    <ItemGroup Condition="
+    $(TargetFramework.Equals('net461')) OR
+    $(TargetFramework.Equals('net462')) OR 
+    $(TargetFramework.Equals('net463')) OR 
+    $(TargetFramework.Equals('net47'))  OR 
+    $(TargetFramework.Equals('net471')) OR 
+    $(TargetFramework.Equals('net472')) OR 
+    $(TargetFramework.Equals('net48'))  OR 
+    $(TargetFramework.Equals('net481'))
+    ">
+        <PackageReference Include="System.IO.Compression" Version="4.3.0"/>
+        <PackageReference Include="System.Net.Http" Version="4.3.0"/>
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
+        <PackageReference Include="System.Memory" Version="4.6.2"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="
+    $(TargetFramework.Equals('netcoreapp2.0')) OR
+    $(TargetFramework.Equals('netcoreapp2.1')) OR
+    $(TargetFramework.Equals('netcoreapp2.2')) OR
+    $(TargetFramework.Equals('netcoreapp3.0')) OR
+    $(TargetFramework.Equals('netcoreapp3.1')) 
+    ">
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
+        <PackageReference Include="System.Memory" Version="4.6.2"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="
+    $(TargetFramework.Equals('netstandard2.0')) OR
+    $(TargetFramework.Equals('netstandard2.1'))
+    ">
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
+        <PackageReference Include="System.Memory" Version="4.6.2"/>
+    </ItemGroup>
+    
+    <PropertyGroup>
+        <FileVersion>$(AssemblyVersion)</FileVersion>
+        <Company>Pablo Perdomo Falcón</Company>
+        <Product>Alis</Product>
+        <Authors>$(Company)</Authors>
+        <Copyright>GNU General Public License v3.0</Copyright>
+        <Description>Videogame cross-platform framework for ios(soon), android(soon), mac, linux and windows.</Description>
+        <FileVersion>$(AssemblyVersion)</FileVersion>
+        <InformationalVersion>$(AssemblyInformationalVersion)</InformationalVersion>
+        <IsPackable>true</IsPackable>
+        <PackageIcon>logo.png</PackageIcon>
+        <PackageLicenseFile>license.md</PackageLicenseFile>
+        <PackageProjectUrl>www.alisengine.com</PackageProjectUrl>
+        <PackageReadmeFile>readme.md</PackageReadmeFile>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageTags>game framework windows macos linux ios android</PackageTags>
+        <PackageVersion>$(AssemblyVersion)</PackageVersion>
+        <RepositoryType>public</RepositoryType>
+        <PackageLicenseUrl>https://github.com/pabllopf/Alis/blob/master/license.md</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/pabllopf/Alis</RepositoryUrl>
+        <Title>$(AssemblyName)</Title>
+        <Version>$(AssemblyVersion)</Version>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <None Include="$(SolutionDir)license.md" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="."/>
+        <None Include="$(ProjectDir).docs/readme.md" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="."/>
+        <None Include="$(SolutionDir)docs/logo/logo.png" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="."/>
+    </ItemGroup>
 
 
-    <!-- Import all the props files in the target folder -->
-    <Import Project="$(SolutionDir).config/target/BeforeBuild.props"/>
 
-    <!-- Import all the props files in the application folder -->
-    <Import Project="$(SolutionDir).config/application/Runtimes.props"/>
-    <Import Project="$(SolutionDir).config/application/LangVersion.props"/>
-    <Import Project="$(SolutionDir).config/application/OutputType.props"/>
-    <Import Project="$(SolutionDir).config/application/Optimize.props"/>
-    <Import Project="$(SolutionDir).config/application/AllowUnsafeBlocks.props"/>
-    <Import Project="$(SolutionDir).config/application/Nullable.props"/>
-    <Import Project="$(SolutionDir).config/application/SelfContained.props"/>
+    <ItemGroup Condition="$(Configuration) == 'Debug'">
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
+                          Include="$(SolutionDir)2_Application/**/src/**/Alis.*.csproj"/>
+        
+        <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
+                          Include="$(SolutionDir)3_Structuration/**/src/**/Alis.*.csproj"/>
 
-    <!-- Import all the props files in the assembly folder -->
-    <Import Project="$(SolutionDir).config/assembly/Company.props"/>
-    <Import Project="$(SolutionDir).config/assembly/FileVersion.props"/>
-    <Import Project="$(SolutionDir).config/assembly/InternalsVisibleTo.props"/>
-    <Import Project="$(SolutionDir).config/assembly/NeutralLanguage.props"/>
-    <Import Project="$(SolutionDir).config/assembly/Product.props"/>
+        <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
+                          Include="$(SolutionDir)4_Operation/**/src/**/Alis.*.csproj"/>
 
-    <!-- Import all the props files in the build folder -->
-    <Import Project="$(SolutionDir).config/builds/NoWarn.props"/>
-    <Import Project="$(SolutionDir).config/builds/PublishTrimmed.props"/>
-    <Import Project="$(SolutionDir).config/builds/SuppressTfmSupportBuildWarnings.props"/>
-    <Import Project="$(SolutionDir).config/builds/TreatWarningsAsErrors.props"/>
-    <Import Project="$(SolutionDir).config/builds/WarningLevel.props"/>
-    <Import Project="$(SolutionDir).config/builds/WarningsAsErrors.props"/>
+        <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
+                          Include="$(SolutionDir)5_Declaration/**/src/**/Alis.*.csproj"/>
 
-    <!-- Import all the props files in the code folder -->
-    <Import Project="$(SolutionDir).config/docs/Docs.props"/>
-
-    <!-- Import all the props files in the nuget folder -->
-    <Import Project="$(SolutionDir).config/nuget/Packable.props"/>
-
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Authors.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Copyright.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Description.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/DocumentationFile.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/FileVersion.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/InformationalVersion.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageIcon.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageLicenseFile.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageProjectUrl.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageReleaseNotes.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageRequireLicenseAcceptance.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageTags.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/PackageVersion.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/RepositoryType.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/RepositoryUrl.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Title.props"/>
-    <Import Condition="$(IsPackable)" Project="$(SolutionDir).config/nuget/Version.props"/>
-
-    <!-- Import all the props files in the reference folder -->
-    <Import Project="$(SolutionDir).config/reference/AssetFolder.props"/>
-    <Import Project="$(SolutionDir).config/reference/DataFolder.props"/>
-    <Import Project="$(SolutionDir).config/reference/ContentFiles.props"/>
-    <Import Project="$(SolutionDir).config/reference/EmbeddedResources.props"/>
-    <Import Project="$(SolutionDir).config/reference/Projects.props"/>
-    <Import Project="$(SolutionDir).config/reference/Packages.props"/>
-
-    <!-- Import all the props files in the test folder -->
-    <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/ExcludeFromCodeCoverage.props"/>
-    <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/InternalsVisibleTo.props"/>
-    <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/ParallelExe.props"/>
-    <Import Condition="$(AssemblyName.Contains('Sample')) == true OR $(AssemblyName.Contains('Test')) == true" Project="$(SolutionDir).config/test/SonarQubeExclude.props"/>
-
-    <Import Project="$(SolutionDir).config/target/AfterBuild.props"/>
+        <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
+                          Include="$(SolutionDir)6_Ideation/**/src/**/Alis.*.csproj"/>
+    </ItemGroup>
+    
+    
+    
 </Project>
