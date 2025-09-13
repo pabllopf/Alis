@@ -372,6 +372,8 @@ namespace Alis.Core.Graphic.Platforms.Win
                 return false;
             }
 
+            SetTitle(WindowClassName);
+            
             return true;
         }
 
@@ -405,7 +407,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         {
             if (hWnd != IntPtr.Zero)
             {
-                User32.SetWindowText(hWnd, t);
+                User32.SetWindowTextA(hWnd, t);
                 title = t;
             }
         }
