@@ -19,11 +19,16 @@ for /r %%i in (*.csproj) do (
     if not errorlevel 1 (
         @type .\.config\default_sample_csproj.props > %%i
     ) else (
-        echo %%i | findstr /i "Test" >nul
+        echo %%i | findstr /i "test" >nul
         if not errorlevel 1 (
             @type .\.config\default_test_csproj.props > %%i
         ) else (
-            @type .\.config\default_csproj.props > %%i
+            echo %%i | findstr /i "generator" >nul
+            if not errorlevel 1 (
+                @type .\.config\default_generator_csproj.props > %%i
+            ) else (
+                @type .\.config\default_csproj.props > %%i
+            )
         )
     )
 )

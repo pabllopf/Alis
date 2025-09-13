@@ -60,51 +60,10 @@
 
 
     <ItemGroup Condition="$(AssemblyName.Contains('Generator')) == false">
-        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
                           Include="
-          $(SolutionDir)2_Application/**/generator/**/*Generator.csproj;
-          $(SolutionDir)3_Structuration/**/generator/**/*Generator.csproj;
           $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
-          $(SolutionDir)5_Declaration/**/**/generator/**/*Generator.csproj;
           $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
-                          OutputItemType="Analyzer"
-                          PrivateAssets="all"
-                          ReferenceOutputAssembly="false"/>
-
-
-        <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
-                          Include="
-          $(SolutionDir)3_Structuration/**/generator/**/*Generator.csproj;
-          $(SolutionDir)4_Operation/**/generator/**/*Generator.csproj;
-          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
-                          OutputItemType="Analyzer"
-                          PrivateAssets="all"
-                          ReferenceOutputAssembly="false"/>
-
-
-        <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
-                          Include="
-          $(SolutionDir)4_Operation/**/generator/**/*Generator.csproj;
-          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
-                          OutputItemType="Analyzer"
-                          PrivateAssets="all"
-                          ReferenceOutputAssembly="false"/>
-
-
-        <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
-                          Include="   
-          $(SolutionDir)5_Declaration/**/generator/**/*Generator.csproj;
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
-                          OutputItemType="Analyzer"
-                          PrivateAssets="all"
-                          ReferenceOutputAssembly="false"/>
-
-
-        <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
-                          Include="
-          $(SolutionDir)6_Ideation/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false"/>
