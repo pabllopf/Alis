@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-#if WIN
+#if winx64
 using System;
 
 namespace Alis.Core.Graphic.Platforms.Win.Native
