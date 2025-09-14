@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-#if OSX
+#if osxarm64
 namespace Alis.Core.Graphic.Platforms.Osx.Native
 {
     /// <summary>
