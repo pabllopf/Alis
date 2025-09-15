@@ -97,6 +97,10 @@ namespace Alis.Sample.King.Platform
             
         }
 
+        /// <summary>
+        /// Ons the press key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
         public void OnPressKey(ConsoleKey key)
         {
             if (key == ConsoleKey.A)
@@ -117,6 +121,9 @@ namespace Alis.Sample.King.Platform
             }
         }
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public void Update()
         {
             

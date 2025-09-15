@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.IO;
 
 namespace Alis.Core.Graphic
@@ -76,11 +77,14 @@ namespace Alis.Core.Graphic
             {
                 if (reader.ReadByte() != 'B' || reader.ReadByte() != 'M')
                 {
-                    return null;
+                    throw new InvalidDataException("Not a valid BMP file (missing BM header)");
                 }
 
                 reader.BaseStream.Seek(10, SeekOrigin.Begin);
                 int pixelDataOffset = reader.ReadInt32();
+
+                reader.BaseStream.Seek(14, SeekOrigin.Begin);
+                int headerSize = reader.ReadInt32();
 
                 reader.BaseStream.Seek(18, SeekOrigin.Begin);
                 int width = reader.ReadInt32();
@@ -88,39 +92,291 @@ namespace Alis.Core.Graphic
 
                 reader.BaseStream.Seek(28, SeekOrigin.Begin);
                 short bitsPerPixel = reader.ReadInt16();
-                if ((bitsPerPixel != 24) && (bitsPerPixel != 32))
-                {
-                    return null;
-                }
+
+                reader.BaseStream.Seek(30, SeekOrigin.Begin);
+                int compression = reader.ReadInt32();
 
                 int bytesPerPixel = bitsPerPixel / 8;
-                int rowPadded = (width * bytesPerPixel + 3) & ~3;
+                int rowPadded = ((width * bitsPerPixel + 31) / 32) * 4;
                 byte[] rawData = new byte[height * width * 4];
 
-                reader.BaseStream.Seek(pixelDataOffset, SeekOrigin.Begin);
-
-                for (int y = 0; y < height; y++)
+                // Leer paleta si existe
+                int paletteSize = 0;
+                byte[][] palette = null;
+                if (bitsPerPixel == 8)
                 {
-                    int row = y;
-                    for (int x = 0; x < width; x++)
+                    paletteSize = 256;
+                }
+                else if (bitsPerPixel == 4)
+                {
+                    paletteSize = 16;
+                }
+                else if (bitsPerPixel == 1)
+                {
+                    paletteSize = 2;
+                }
+                if (paletteSize > 0)
+                {
+                    reader.BaseStream.Seek(headerSize + 14, SeekOrigin.Begin);
+                    palette = new byte[paletteSize][];
+                    for (int i = 0; i < paletteSize; i++)
                     {
                         byte blue = reader.ReadByte();
                         byte green = reader.ReadByte();
                         byte red = reader.ReadByte();
-                        byte alpha = bytesPerPixel == 4 ? reader.ReadByte() : (byte) 255;
-
-                        int index = (row * width + x) * 4;
-                        rawData[index + 0] = red;
-                        rawData[index + 1] = green;
-                        rawData[index + 2] = blue;
-                        rawData[index + 3] = alpha;
+                        byte reserved = reader.ReadByte();
+                        palette[i] = new byte[] { red, green, blue, 255 };
                     }
+                }
 
-                    int padding = rowPadded - width * bytesPerPixel;
-                    if (padding > 0)
+                reader.BaseStream.Seek(pixelDataOffset, SeekOrigin.Begin);
+
+                // Soporte para compresión BI_RGB (0), BI_RLE8 (1), BI_RLE4 (2)
+                if (compression == 0) // BI_RGB (sin compresión)
+                {
+                    for (int y = 0; y < height; y++)
                     {
-                        reader.BaseStream.Seek(padding, SeekOrigin.Current);
+                        int row = height - 1 - y;
+                        if (bitsPerPixel == 24 || bitsPerPixel == 32)
+                        {
+                            for (int x = 0; x < width; x++)
+                            {
+                                byte blue = reader.ReadByte();
+                                byte green = reader.ReadByte();
+                                byte red = reader.ReadByte();
+                                byte alpha = bitsPerPixel == 32 ? reader.ReadByte() : (byte)255;
+                                int index = (row * width + x) * 4;
+                                rawData[index + 0] = red;
+                                rawData[index + 1] = green;
+                                rawData[index + 2] = blue;
+                                rawData[index + 3] = alpha;
+                            }
+                            int padding = rowPadded - width * bytesPerPixel;
+                            if (padding > 0)
+                            {
+                                reader.BaseStream.Seek(padding, SeekOrigin.Current);
+                            }
+                        }
+                        else if (bitsPerPixel == 8 && palette != null)
+                        {
+                            for (int x = 0; x < width; x++)
+                            {
+                                byte colorIndex = reader.ReadByte();
+                                int index = (row * width + x) * 4;
+                                rawData[index + 0] = palette[colorIndex][0];
+                                rawData[index + 1] = palette[colorIndex][1];
+                                rawData[index + 2] = palette[colorIndex][2];
+                                rawData[index + 3] = palette[colorIndex][3];
+                            }
+                            int padding = rowPadded - width;
+                            if (padding > 0)
+                            {
+                                reader.BaseStream.Seek(padding, SeekOrigin.Current);
+                            }
+                        }
+                        else if (bitsPerPixel == 4 && palette != null)
+                        {
+                            int pixels = 0;
+                            for (int x = 0; x < width; x += 2)
+                            {
+                                byte b = reader.ReadByte();
+                                for (int i = 0; i < 2 && (x + i) < width; i++)
+                                {
+                                    byte colorIndex = (byte)((i == 0) ? (b >> 4) : (b & 0x0F));
+                                    int index = (row * width + x + i) * 4;
+                                    rawData[index + 0] = palette[colorIndex][0];
+                                    rawData[index + 1] = palette[colorIndex][1];
+                                    rawData[index + 2] = palette[colorIndex][2];
+                                    rawData[index + 3] = palette[colorIndex][3];
+                                    pixels++;
+                                }
+                            }
+                            int padding = rowPadded - ((width + 1) / 2);
+                            if (padding > 0)
+                            {
+                                reader.BaseStream.Seek(padding, SeekOrigin.Current);
+                            }
+                        }
+                        else if (bitsPerPixel == 1 && palette != null)
+                        {
+                            int pixels = 0;
+                            for (int x = 0; x < width; x += 8)
+                            {
+                                byte b = reader.ReadByte();
+                                for (int i = 0; i < 8 && (x + i) < width; i++)
+                                {
+                                    byte colorIndex = (byte)((b >> (7 - i)) & 0x01);
+                                    int index = (row * width + x + i) * 4;
+                                    rawData[index + 0] = palette[colorIndex][0];
+                                    rawData[index + 1] = palette[colorIndex][1];
+                                    rawData[index + 2] = palette[colorIndex][2];
+                                    rawData[index + 3] = palette[colorIndex][3];
+                                    pixels++;
+                                }
+                            }
+                            int padding = rowPadded - ((width + 7) / 8);
+                            if (padding > 0)
+                            {
+                                reader.BaseStream.Seek(padding, SeekOrigin.Current);
+                            }
+                        }
+                        else
+                        {
+                            throw new NotSupportedException($"Unsupported bits per pixel: {bitsPerPixel}");
+                        }
                     }
+                }
+                else if (compression == 1 && bitsPerPixel == 8) // BI_RLE8
+                {
+                    // Decodificar RLE8
+                    int x = 0, y = height - 1;
+                    while (reader.BaseStream.Position < reader.BaseStream.Length && y >= 0)
+                    {
+                        byte count = reader.ReadByte();
+                        byte value = reader.ReadByte();
+                        if (count > 0)
+                        {
+                            for (int i = 0; i < count; i++)
+                            {
+                                if (x >= width)
+                                {
+                                    x = 0;
+                                    y--;
+                                }
+                                int index = (y * width + x) * 4;
+                                rawData[index + 0] = palette[value][0];
+                                rawData[index + 1] = palette[value][1];
+                                rawData[index + 2] = palette[value][2];
+                                rawData[index + 3] = palette[value][3];
+                                x++;
+                            }
+                        }
+                        else
+                        {
+                            if (value == 0) // End of line
+                            {
+                                x = 0;
+                                y--;
+                            }
+                            else if (value == 1) // End of bitmap
+                            {
+                                break;
+                            }
+                            else if (value == 2) // Delta
+                            {
+                                byte dx = reader.ReadByte();
+                                byte dy = reader.ReadByte();
+                                x += dx;
+                                y -= dy;
+                            }
+                            else // Absolute mode
+                            {
+                                int absCount = value;
+                                for (int i = 0; i < absCount; i++)
+                                {
+                                    byte absValue = reader.ReadByte();
+                                    if (x >= width)
+                                    {
+                                        x = 0;
+                                        y--;
+                                    }
+                                    int index = (y * width + x) * 4;
+                                    rawData[index + 0] = palette[absValue][0];
+                                    rawData[index + 1] = palette[absValue][1];
+                                    rawData[index + 2] = palette[absValue][2];
+                                    rawData[index + 3] = palette[absValue][3];
+                                    x++;
+                                }
+                                if ((absCount & 1) == 1)
+                                {
+                                    reader.ReadByte(); // Padding
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (compression == 2 && bitsPerPixel == 4) // BI_RLE4
+                {
+                    // Decodificar RLE4
+                    int x = 0, y = height - 1;
+                    while (reader.BaseStream.Position < reader.BaseStream.Length && y >= 0)
+                    {
+                        byte count = reader.ReadByte();
+                        byte value = reader.ReadByte();
+                        if (count > 0)
+                        {
+                            byte first = (byte)(value >> 4);
+                            byte second = (byte)(value & 0x0F);
+                            for (int i = 0; i < count; i++)
+                            {
+                                byte colorIndex = (byte)((i % 2 == 0) ? first : second);
+                                if (x >= width)
+                                {
+                                    x = 0;
+                                    y--;
+                                }
+                                int index = (y * width + x) * 4;
+                                rawData[index + 0] = palette[colorIndex][0];
+                                rawData[index + 1] = palette[colorIndex][1];
+                                rawData[index + 2] = palette[colorIndex][2];
+                                rawData[index + 3] = palette[colorIndex][3];
+                                x++;
+                            }
+                        }
+                        else
+                        {
+                            if (value == 0) // End of line
+                            {
+                                x = 0;
+                                y--;
+                            }
+                            else if (value == 1) // End of bitmap
+                            {
+                                break;
+                            }
+                            else if (value == 2) // Delta
+                            {
+                                byte dx = reader.ReadByte();
+                                byte dy = reader.ReadByte();
+                                x += dx;
+                                y -= dy;
+                            }
+                            else // Absolute mode
+                            {
+                                int absCount = value;
+                                int pairs = (absCount + 1) / 2;
+                                for (int i = 0; i < pairs; i++)
+                                {
+                                    byte absValue = reader.ReadByte();
+                                    byte first = (byte)(absValue >> 4);
+                                    byte second = (byte)(absValue & 0x0F);
+                                    for (int j = 0; j < 2 && (i * 2 + j) < absCount; j++)
+                                    {
+                                        byte colorIndex = (j == 0) ? first : second;
+                                        if (x >= width)
+                                        {
+                                            x = 0;
+                                            y--;
+                                        }
+                                        int index = (y * width + x) * 4;
+                                        rawData[index + 0] = palette[colorIndex][0];
+                                        rawData[index + 1] = palette[colorIndex][1];
+                                        rawData[index + 2] = palette[colorIndex][2];
+                                        rawData[index + 3] = palette[colorIndex][3];
+                                        x++;
+                                    }
+                                }
+                                if (((absCount & 3) == 1) || ((absCount & 3) == 2))
+                                {
+                                    reader.ReadByte(); // Padding
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    throw new NotSupportedException($"Unsupported BMP compression type: {compression}");
                 }
 
                 return new Image(width, height, rawData);
