@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-#if OSX
+#if osxarm64
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.Platforms.Osx.Native
