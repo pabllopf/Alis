@@ -76,6 +76,33 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
             IntPtr lpParam);
 
         /// <summary>
+        /// SetWindowTextA (ANSI version)
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="lpString"></param>
+        /// <returns></returns>
+        [DllImport(DllName, SetLastError = true, EntryPoint = "SetWindowTextA")]
+        public static extern bool SetWindowTextA(IntPtr hWnd, string lpString);
+
+        /// <summary>
+        /// CreateWindowExA (ANSI version)
+        /// </summary>
+        [DllImport(DllName, SetLastError = true, EntryPoint = "CreateWindowExA")]
+        public static extern IntPtr CreateWindowExA(
+            int dwExStyle,
+            string lpClassName,
+            string lpWindowName,
+            int dwStyle,
+            int x,
+            int y,
+            int nWidth,
+            int nHeight,
+            IntPtr hWndParent,
+            IntPtr hMenu,
+            IntPtr hInstance,
+            IntPtr lpParam);
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="hWnd"></param>
