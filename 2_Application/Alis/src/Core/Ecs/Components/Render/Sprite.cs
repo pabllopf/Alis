@@ -126,10 +126,6 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void Update(IGameObject self)
         {
-            if (gameObject != null)
-            {
-                Logger.Info($"Sprite updated successfully for {gameObject.Get<Transform>().Position}");
-            }
         }
 
         /// <summary>

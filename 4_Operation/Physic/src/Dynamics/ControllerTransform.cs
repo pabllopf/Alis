@@ -67,8 +67,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             Rotation = rotation;
             Position = position;
-            Scale = Vector2F.One; // Default scale is 1,1
-            Logger.Log($"Transform: {Position} {Rotation} {Scale}");
+            Scale = Vector2F.One; 
         }
 
         /// <summary>
@@ -82,8 +81,6 @@ namespace Alis.Core.Physic.Dynamics
             Rotation = rotation;
             Position = position;
             Scale = scale;
-
-            Logger.Log($"Transform: {position} {rotation} {scale}");
         }
 
         /// <summary>
@@ -94,7 +91,7 @@ namespace Alis.Core.Physic.Dynamics
         public ControllerTransform(Vector2F position, float angle)
             : this(position, Complex.FromAngle(angle))
         {
-            Logger.Log($"Transform: {Position} {Rotation} {Scale}");
+         
         }
 
         /// <summary>
@@ -106,7 +103,7 @@ namespace Alis.Core.Physic.Dynamics
         public ControllerTransform(Vector2F position, float angle, Vector2F scale)
             : this(position, Complex.FromAngle(angle), scale)
         {
-            Logger.Log($"Transform: {Position} {Rotation} {Scale}");
+           
         }
 
         /// <summary>
