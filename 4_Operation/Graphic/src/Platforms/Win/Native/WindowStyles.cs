@@ -36,7 +36,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
     /// Window styles for Win32 window creation.
     /// </summary>
     [Flags]
-    public enum WindowStyles : int
+    public enum WindowStyles : uint
     {
         /// <summary>
         /// 
@@ -46,7 +46,19 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <summary>
         /// 
         /// </summary>
-        Visible = 0x10000000
+        Visible = 0x10000000,
+
+        Popup = 0x80000000,
+
+        Child = 0x40000000,
+
+        Border = 0x00800000,
+
+        AppWindow = 0x00040000,
+
+        Topmost = 0x00000008,
+
+        ToolWindow = 0x00000080,
     }
 }
 

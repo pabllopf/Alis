@@ -154,7 +154,8 @@ namespace Alis.Core.Graphic.Platforms.Win
             hInstance = GetModuleHandle(null);
             wndProcDelegate = WindowProc;
             wndProcPtr = Marshal.GetFunctionPointerForDelegate(wndProcDelegate);
-            string className = WindowClassName + Guid.NewGuid().ToString("N"); // Nombre único para evitar conflictos
+            // Usa un nombre de clase único para evitar conflictos y asegurar el registro correcto
+            string className = WindowClassName + "_" + Guid.NewGuid().ToString("N");
             Wndclass wc = new Wndclass
             {
                 style = (uint) ClassStyles.OwnDC,
@@ -165,45 +166,95 @@ namespace Alis.Core.Graphic.Platforms.Win
                 hIcon = IntPtr.Zero,
                 hCursor = IntPtr.Zero,
                 hbrBackground = IntPtr.Zero,
-                lpszMenuName = null,
+                lpszMenuName = WindowClassName,
                 lpszClassName = className
             };
             ushort regResult = User32.RegisterClass(ref wc);
             if (regResult == 0)
             {
-                Logger.Info($"No se pudo registrar la clase de ventana (RegisterClass devolvió 0x0), error: {Marshal.GetLastWin32Error()}");
+                int win32Err = Marshal.GetLastWin32Error();
+                string meaning = GetWin32ErrorMeaning(win32Err);
+                Logger.Info($"Failed to register window class '{className}' (RegisterClass returned 0x0), Win32 error: {win32Err} - {meaning}");
                 return false;
             }
 
-            // Probar varias combinaciones de estilos
+            // Try all combinations for maximum compatibility
             var styleCombos = new[]
             {
                 (WindowStyles.OverlappedWindow | WindowStyles.Visible),
-                (WindowStyles.OverlappedWindow),
-                (WindowStyles.Visible),
-                (WindowStyles.Visible)
+                //(WindowStyles.OverlappedWindow),
+                //(WindowStyles.Visible),
+                //(WindowStyles.Popup | WindowStyles.Visible),
+                //(WindowStyles.Popup),
+                //(WindowStyles.Child | WindowStyles.Visible),
+                //(WindowStyles.Child),
+                //(WindowStyles.Border | WindowStyles.Visible),
+                //(WindowStyles.Border),
+            };
+            var exStyles = new[]
+            {
+                //(int)WindowExStyles.None,
+                (int)WindowExStyles.AppWindow,
+                /*(int)WindowExStyles.Topmost,
+                (int)WindowExStyles.ToolWindow,
+                (int)WindowExStyles.WindowEdge,
+                (int)WindowExStyles.ClientEdge,
+                (int)WindowExStyles.ContextHelp,
+                (int)WindowExStyles.Layered,
+                (int)WindowExStyles.StaticEdge,
+                (int)WindowExStyles.ControlParent,
+                (int)WindowExStyles.Transparent,
+                (int)WindowExStyles.AcceptFiles,
+                (int)WindowExStyles.NoActivate,
+                (int)WindowExStyles.Composited,
+                (int)WindowExStyles.DlgModalFrame,
+                (int)WindowExStyles.MdiChild,
+                (int)WindowExStyles.NoParentNotify,*/
+            };
+            var sizes = new[]
+            {
+                //(width, height),
+                (800, 600),
+                //(1024, 768),
+                //(640, 480),
             };
             hWnd = IntPtr.Zero;
-            foreach (var style in styleCombos)
+            bool windowCreated = false;
+            string lastErrorMsg = "";
+            foreach (var exStyle in exStyles)
             {
-                hWnd = User32.CreateWindowEx((int) WindowExStyles.None, className, title,
-                    (int) style,
-                    CwUsedefault, CwUsedefault, width, height,
-                    IntPtr.Zero, IntPtr.Zero, hInstance, IntPtr.Zero);
-                if (hWnd != IntPtr.Zero)
+                foreach (var style in styleCombos)
                 {
-                    Logger.Info($"Ventana creada correctamente con estilo: 0x{(int) style:X}");
-                    break;
+                    // Avoid invalid combinations: WS_CHILD with WS_EX_APPWINDOW
+                    if ((style & WindowStyles.Child) != 0 && exStyle == (int)WindowExStyles.AppWindow)
+                        continue;
+                    foreach (var sz in sizes)
+                    {
+                        hWnd = User32.CreateWindowEx(exStyle, className, title,
+                            (int)style,
+                            CwUsedefault, CwUsedefault, sz.Item1, sz.Item2,
+                            IntPtr.Zero, IntPtr.Zero, hInstance, IntPtr.Zero);
+                        if (hWnd != IntPtr.Zero)
+                        {
+                            Logger.Info($"Window created successfully with exStyle: 0x{exStyle:X}, style: 0x{(int)style:X}, size: {sz.Item1}x{sz.Item2}");
+                            windowCreated = true;
+                            break;
+                        }
+                        else
+                        {
+                            int win32Err = Marshal.GetLastWin32Error();
+                            string meaning = GetWin32ErrorMeaning(win32Err);
+                            lastErrorMsg = $"Failed to create window with exStyle: 0x{exStyle:X}, style: 0x{(int)style:X}, size: {sz.Item1}x{sz.Item2}, Win32 error: {win32Err} - {meaning}";
+                            Logger.Info(lastErrorMsg);
+                        }
+                    }
+                    if (windowCreated) break;
                 }
-                else
-                {
-                    Logger.Info($"Fallo al crear ventana con estilo: 0x{(int) style:X}, error: {Marshal.GetLastWin32Error()}");
-                }
+                if (windowCreated) break;
             }
-
-            if (hWnd == IntPtr.Zero)
+            if (!windowCreated)
             {
-                Logger.Info("No se pudo crear la ventana Win32 (CreateWindowEx devolvió 0x0) tras varios intentos");
+                Logger.Info($"Could not create Win32 window after several attempts. Last error: {lastErrorMsg}");
                 return false;
             }
 
@@ -549,6 +600,21 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
         private delegate IntPtr WglCreateContextAttribsARB(IntPtr hdc, IntPtr hShareContext, int[] attribs);
+
+        private string GetWin32ErrorMeaning(int errorCode)
+        {
+            switch (errorCode)
+            {
+                case 1406: return "ERROR_CREATE_FAILED: Cannot create a top-level child window.";
+                case 1407: return "ERROR_NO_WINDOW_CLASS: Cannot find window class.";
+                case 2: return "ERROR_FILE_NOT_FOUND: The system cannot find the file specified.";
+                case 5: return "ERROR_ACCESS_DENIED: Access is denied.";
+                case 87: return "ERROR_INVALID_PARAMETER: The parameter is incorrect.";
+                case 8: return "ERROR_NOT_ENOUGH_MEMORY: Not enough storage is available to process this command.";
+                case 1816: return "ERROR_NOT_ENOUGH_QUOTA: Not enough quota is available to process this command.";
+                default: return "Unknown error.";
+            }
+        }
     }
 }
 #endif
