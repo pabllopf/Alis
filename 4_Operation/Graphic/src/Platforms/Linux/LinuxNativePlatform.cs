@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-#if LINUX
+#if linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
 using System;
 
 namespace Alis.Core.Graphic.Platforms.Linux
