@@ -88,7 +88,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
 #endif
 
 
-            platform.Initialize(800, 600, "C# + OpenGL Platform");
+            platform.Initialize((int) Context.Setting.Graphic.WindowSize.X, (int) Context.Setting.Graphic.WindowSize.Y, Context.Setting.General.Name);
             platform.MakeContextCurrent();
             Gl.Initialize(platform.GetProcAddress);
             //Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());

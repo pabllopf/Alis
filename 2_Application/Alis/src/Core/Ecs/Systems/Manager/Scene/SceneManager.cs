@@ -98,5 +98,10 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             // Update the world
             World.Update();
         }
+
+        public static void LoadScene(string gameScene)
+        {
+           
+        }
     }
 }

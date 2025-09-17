@@ -64,7 +64,6 @@ namespace Alis.Core.Ecs.Systems.Scope
         public void Run()
         {
             Runtime<AManager> runtime = _context.Runtime;
-            TimeManager timeManager = _context.TimeManager;
             Setting setting = _context.Setting;
 
             runtime.OnInit();
@@ -72,9 +71,9 @@ namespace Alis.Core.Ecs.Systems.Scope
             runtime.OnStart();
 
             double targetFrameDuration = 1 / setting.Graphic.TargetFrames;
-            double currentTime = timeManager.Clock.Elapsed.TotalSeconds;
+            double currentTime = TimeManager.Clock.Elapsed.TotalSeconds;
             float accumulator = 0;
-            double lastTime = timeManager.Clock.Elapsed.TotalSeconds;
+            double lastTime = TimeManager.Clock.Elapsed.TotalSeconds;
             double totalTime = 0;
             float lastDeltaTime = 0f;
             float smoothDeltaTimeSum = 0f;
@@ -82,26 +81,26 @@ namespace Alis.Core.Ecs.Systems.Scope
 
             while (_context.IsRunning)
             {
-                double frameStartTime = timeManager.Clock.Elapsed.TotalSeconds;
+                double frameStartTime = TimeManager.Clock.Elapsed.TotalSeconds;
                 double newTime = frameStartTime;
 
-                timeManager.DeltaTime = (float) (newTime - currentTime);
-                timeManager.UnscaledDeltaTime = (float) (newTime - currentTime);
-                timeManager.UnscaledTime += timeManager.UnscaledDeltaTime;
-                timeManager.UnscaledTimeAsDouble += timeManager.UnscaledDeltaTime;
-                timeManager.Time = timeManager.UnscaledTime * timeManager.TimeScale;
-                timeManager.TimeAsDouble = timeManager.UnscaledTimeAsDouble * timeManager.TimeScale;
-                timeManager.MaximumDeltaTime = Math.Max(timeManager.MaximumDeltaTime, timeManager.DeltaTime);
+                TimeManager.DeltaTime = (float) (newTime - currentTime);
+                TimeManager.UnscaledDeltaTime = (float) (newTime - currentTime);
+                TimeManager.UnscaledTime += TimeManager.UnscaledDeltaTime;
+                TimeManager.UnscaledTimeAsDouble += TimeManager.UnscaledDeltaTime;
+                TimeManager.Time = TimeManager.UnscaledTime * TimeManager.TimeScale;
+                TimeManager.TimeAsDouble = TimeManager.UnscaledTimeAsDouble * TimeManager.TimeScale;
+                TimeManager.MaximumDeltaTime = Math.Max(TimeManager.MaximumDeltaTime, TimeManager.DeltaTime);
                 currentTime = newTime;
-                accumulator += timeManager.DeltaTime;
-                timeManager.FrameCount++;
-                timeManager.TotalFrames++;
+                accumulator += TimeManager.DeltaTime;
+                TimeManager.FrameCount++;
+                TimeManager.TotalFrames++;
 
                 if (newTime - lastTime >= TimeManager.OneSecond)
                 {
                     totalTime += newTime - lastTime;
-                    timeManager.AverageFrames = (int) (timeManager.TotalFrames / totalTime);
-                    timeManager.FrameCount = 0;
+                    TimeManager.AverageFrames = (int) (TimeManager.TotalFrames / totalTime);
+                    TimeManager.FrameCount = 0;
                     lastTime = newTime;
                 }
 
@@ -113,20 +112,20 @@ namespace Alis.Core.Ecs.Systems.Scope
                 runtime.OnUpdate();
                 runtime.OnAfterUpdate();
 
-                while (accumulator >= timeManager.Configuration.FixedTimeStep)
+                while (accumulator >= TimeManager.Configuration.FixedTimeStep)
                 {
-                    timeManager.InFixedTimeStep = true;
-                    timeManager.FixedTime += timeManager.Configuration.FixedTimeStep;
-                    timeManager.FixedTimeAsDouble += timeManager.Configuration.FixedTimeStep;
-                    timeManager.FixedDeltaTime = timeManager.Configuration.FixedTimeStep;
-                    timeManager.FixedUnscaledDeltaTime = timeManager.Configuration.FixedTimeStep / timeManager.TimeScale;
-                    timeManager.FixedUnscaledTime += timeManager.FixedUnscaledDeltaTime;
-                    timeManager.FixedUnscaledTimeAsDouble += timeManager.FixedUnscaledDeltaTime;
+                    TimeManager.InFixedTimeStep = true;
+                    TimeManager.FixedTime += TimeManager.Configuration.FixedTimeStep;
+                    TimeManager.FixedTimeAsDouble += TimeManager.Configuration.FixedTimeStep;
+                    TimeManager.FixedDeltaTime = TimeManager.Configuration.FixedTimeStep;
+                    TimeManager.FixedUnscaledDeltaTime = TimeManager.Configuration.FixedTimeStep / TimeManager.TimeScale;
+                    TimeManager.FixedUnscaledTime += TimeManager.FixedUnscaledDeltaTime;
+                    TimeManager.FixedUnscaledTimeAsDouble += TimeManager.FixedUnscaledDeltaTime;
                     runtime.OnBeforeFixedUpdate();
                     runtime.OnFixedUpdate();
                     runtime.OnAfterFixedUpdate();
-                    accumulator %= timeManager.Configuration.FixedTimeStep;
-                    timeManager.InFixedTimeStep = false;
+                    accumulator %= TimeManager.Configuration.FixedTimeStep;
+                    TimeManager.InFixedTimeStep = false;
                 }
 
                 runtime.OnCalculate();
@@ -139,12 +138,12 @@ namespace Alis.Core.Ecs.Systems.Scope
                 runtime.OnRenderPresent();
 
 
-                smoothDeltaTimeSum += timeManager.DeltaTime - lastDeltaTime;
+                smoothDeltaTimeSum += TimeManager.DeltaTime - lastDeltaTime;
                 smoothDeltaTimeCount++;
-                timeManager.SmoothDeltaTime = smoothDeltaTimeSum / smoothDeltaTimeCount;
-                lastDeltaTime = timeManager.DeltaTime;
+                TimeManager.SmoothDeltaTime = smoothDeltaTimeSum / smoothDeltaTimeCount;
+                lastDeltaTime = TimeManager.DeltaTime;
 
-                double frameEndTime = timeManager.Clock.Elapsed.TotalSeconds;
+                double frameEndTime = TimeManager.Clock.Elapsed.TotalSeconds;
                 double frameDuration = frameEndTime - frameStartTime;
                 if (frameDuration < targetFrameDuration)
                 {

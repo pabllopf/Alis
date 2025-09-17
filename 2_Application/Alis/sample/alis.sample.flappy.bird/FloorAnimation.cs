@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PhysicSetting.cs
+//  File:FloorAnimation.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,36 +27,53 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.Components;
+using Alis.Core.Ecs.Systems.Manager.Time;
+using Alis.Core.Ecs.Systems.Scope;
 
-namespace Alis.Core.Ecs.Systems.Configuration.Physic
+namespace Alis.Sample.Flappy.Bird
 {
     /// <summary>
-    ///     The physic setting
+    ///     The floor animation class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct PhysicSetting(
-        Vector2F gravity = default(Vector2F),
-        bool debug = false,
-        Color debugColor = default(Color)
-        
-        ) : IPhysicSetting
+    
+    public class FloorAnimation : IInitable, IGameObjectComponent
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="PhysicSetting" /> class
+        ///     The velocity
         /// </summary>
-        public PhysicSetting() : this(new Vector2F(0, -9.81f) , false , new Color(0,0,0,1))
-        {
-        }
+        private const float Velocity = 2.0f;
 
         /// <summary>
-        ///     Gets or sets the value of the gravity
+        ///     The old
         /// </summary>
-        public Vector2F Gravity { get; set; } = gravity;
+        private float xOld;
 
-        public bool Debug { get; set; }  = debug;
-        public Color DebugColor { get; set; } = debugColor;
+        public void Init(IGameObject self)
+        {
+            xOld = self.Get<Transform>().Position.X;
+        }
+
+        public void Update(IGameObject self)
+        {
+            ref Transform t = ref self.Get<Transform>();
+            
+            // get the x position of game object:
+            float x = t.Position.X;
+
+            // get the y position of game object:
+            float y = t.Position.Y;
+
+            // get the velocity of game object:
+            float displace = Velocity * TimeManager.DeltaTime;
+
+            // if the x position is less than -50.0f, then reset the x position to 0.0f
+            Vector2F newPosition = x < -1.0f ? new Vector2F(xOld, y) : new Vector2F(x - displace, y);
+            
+            t.Position = newPosition;
+        }
     }
 }
