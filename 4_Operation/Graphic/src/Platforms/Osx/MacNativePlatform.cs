@@ -146,7 +146,6 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 ulong.MaxValue, distantPast, runLoopMode, true);
             if (evt != IntPtr.Zero)
             {
-                // Captura de tecla
                 IntPtr eventType = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("type"));
                 int type = eventType.ToInt32();
                 // NSKeyDown = 10
@@ -187,9 +186,13 @@ namespace Alis.Core.Graphic.Platforms.Osx
                             }
                         }
                     }
+                    // No reenviar el evento NSKeyDown para evitar el beep
                 }
-
-                ObjectiveCInterop.objc_msgSend_void_IntPtr(app, ObjectiveCInterop.Sel("sendEvent:"), evt);
+                else
+                {
+                    // Reenviar otros eventos normalmente
+                    ObjectiveCInterop.objc_msgSend_void_IntPtr(app, ObjectiveCInterop.Sel("sendEvent:"), evt);
+                }
                 ObjectiveCInterop.objc_msgSend_void(app, ObjectiveCInterop.Sel("updateWindows"));
             }
 
