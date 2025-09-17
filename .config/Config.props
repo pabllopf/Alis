@@ -30,8 +30,14 @@
         <OutputType>Library</OutputType>
         <NeutralLanguage>en</NeutralLanguage>
         <WarningsAsErrors>true</WarningsAsErrors>
+        <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+    
+    <PropertyGroup>
         <NoWarn>$(NoWarn);CS0436;CS1685;</NoWarn>
+        <NoWarn>$(NoWarn);NU1903;</NoWarn> <!-- Error NU1902 : Warning As Error: Package has high severity vulnerability -->
+        <NoWarn>$(NoWarn);NU1902;</NoWarn> <!-- Error NU1902 : Warning As Error: Package has moderate severity vulnerabilities -->
     </PropertyGroup>
 
     <ItemGroup>
@@ -64,7 +70,7 @@
         <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
         <PackageReference Include="System.Memory" Version="4.6.2"/>
     </ItemGroup>
-
+    
     <ItemGroup Condition="
     $(TargetFramework.Equals('netstandard2.0')) OR
     $(TargetFramework.Equals('netstandard2.1'))
@@ -103,11 +109,10 @@
         <None Include="$(SolutionDir)docs/logo/logo.png" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="."/>
     </ItemGroup>
 
-
-
-    <ItemGroup Condition="$(Configuration) == 'Debug'">
+    
+    <ItemGroup>
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
-                          Include="$(SolutionDir)2_Application/**/src/**/Alis.*.csproj"/>
+                          Include="$(SolutionDir)2_Application/**/src/**/Alis.csproj"/>
         
         <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
                           Include="$(SolutionDir)3_Structuration/**/src/**/Alis.*.csproj"/>
@@ -124,7 +129,7 @@
 
 
 
-    <ItemGroup Condition="$(AssemblyName.Contains('Generator')) == false">
+    <ItemGroup >
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
                           Include="
           $(SolutionDir)2_Application/**/generator/**/*Generator.csproj;
@@ -174,7 +179,28 @@
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false"/>
     </ItemGroup>
+
+
+
+    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Payment.Stripe'))">
+        <PackageReference Include="Stripe.net" Version="47.1.0"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Ads.GoogleAds'))">
+        <PackageReference Include="Google.Ads.Common" Version="9.5.3"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Cloud.GoogleDrive'))">
+        <PackageReference Include="Google.Apis.Drive.v3" Version="1.68.0.3601"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Cloud.DropBox'))">
+        <PackageReference Include="Dropbox.Api" Version="7.0.0"/>
+    </ItemGroup>
     
     
+    <ItemGroup>
+        <EmbeddedResource Include="$(ProjectDir)**/resources/**/*.zip;"/>
+    </ItemGroup>
     
 </Project>

@@ -31,20 +31,7 @@
         <IsX86>true</IsX86>
     </PropertyGroup>
 
-    <PropertyGroup Condition="($([MSBuild]::IsOSPlatform('linux')) AND '$(RuntimeIdentifier)' == '') OR $(RuntimeIdentifier.Contains('linux'))">
-        <DefineConstants>$(DefineConstants);LINUX</DefineConstants>
-        <IsLinux>true</IsLinux>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="($([MSBuild]::IsOSPlatform('osx')) AND '$(RuntimeIdentifier)' == '')  OR $(RuntimeIdentifier.Contains('osx'))">
-        <DefineConstants>$(DefineConstants);OSX</DefineConstants>
-        <IsOSX>true</IsOSX>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="($([MSBuild]::IsOSPlatform('windows')) AND '$(RuntimeIdentifier)' == '') OR $(RuntimeIdentifier.Contains('win'))">
-        <DefineConstants>$(DefineConstants);WIN</DefineConstants>
-        <IsWindows>true</IsWindows>
-    </PropertyGroup>
+   
 
     <PropertyGroup Condition="$(Configuration) == 'Debug'">
         <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>

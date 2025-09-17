@@ -555,7 +555,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="name">Name of the parameter in the shader</param>
         /// <param name="x">Value to assign</param>
-        [Obsolete("SetParameter is deprecated, please use the corresponding SetUniform")]
+        
         public void SetParameter(string name, float x)
         {
             sfShader_setFloatParameter(CPointer, name, x);
@@ -571,7 +571,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">Name of the parameter in the shader</param>
         /// <param name="x">First component of the value to assign</param>
         /// <param name="y">Second component of the value to assign</param>
-        [Obsolete("SetParameter is deprecated, please use the corresponding SetUniform")]
+        
         public void SetParameter(string name, float x, float y)
         {
             sfShader_setFloat2Parameter(CPointer, name, x, y);
@@ -588,7 +588,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="x">First component of the value to assign</param>
         /// <param name="y">Second component of the value to assign</param>
         /// <param name="z">Third component of the value to assign</param>
-        [Obsolete("SetParameter is deprecated, please use the corresponding SetUniform")]
+        
         public void SetParameter(string name, float x, float y, float z)
         {
             sfShader_setFloat3Parameter(CPointer, name, x, y, z);
@@ -606,7 +606,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="y">Second component of the value to assign</param>
         /// <param name="z">Third component of the value to assign</param>
         /// <param name="w">Fourth component of the value to assign</param>
-        [Obsolete("SetParameter is deprecated, please use the corresponding SetUniform")]
+        
         public void SetParameter(string name, float x, float y, float z, float w)
         {
             sfShader_setFloat4Parameter(CPointer, name, x, y, z, w);
@@ -621,7 +621,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="name">Name of the parameter in the shader</param>
         /// <param name="vector">Vector to assign</param>
-        [Obsolete("SetParameter is deprecated, please use the corresponding SetUniform")]
+        
         public void SetParameter(string name, Vector2F vector)
         {
             SetParameter(name, vector.X, vector.Y);
@@ -636,7 +636,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="name">Name of the parameter in the shader</param>
         /// <param name="color">Color to assign</param>
-        [Obsolete("SetParameter is deprecated, please use the corresponding SetUniform")]
+        
         public void SetParameter(string name, Color color)
         {
             sfShader_setColorParameter(CPointer, name, color);
@@ -651,7 +651,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="name">Name of the parameter in the shader</param>
         /// <param name="transform">Transform to assign</param>
-        [Obsolete("SetParameter is deprecated, please use the corresponding SetUniform")]
+        
         public void SetParameter(string name, Transform transform)
         {
             sfShader_setTransformParameter(CPointer, name, transform);
@@ -671,7 +671,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="name">Name of the texture in the shader</param>
         /// <param name="texture">Texture to assign</param>
-        [Obsolete("SetParameter is deprecated, please use the corresponding SetUniform")]
+        
         public void SetParameter(string name, Texture texture)
         {
             // Keep a reference to the Texture so it doesn't get GC'd
@@ -691,7 +691,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="name">Name of the texture in the shader</param>
         /// <param name="current">Always pass the spacial value Shader.CurrentTexture</param>
-        [Obsolete("SetParameter is deprecated, please use the corresponding SetUniform")]
+        
         public void SetParameter(string name, CurrentTextureType current)
         {
             sfShader_setCurrentTextureParameter(CPointer, name);
@@ -1051,7 +1051,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="shader">The shader</param>
         /// <param name="name">The name</param>
         /// <param name="x">The </param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, Obsolete]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShader_setFloatParameter(IntPtr shader, string name, float x);
 
         /// <summary>
@@ -1061,7 +1061,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, Obsolete]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShader_setFloat2Parameter(IntPtr shader, string name, float x, float y);
 
         /// <summary>
@@ -1072,7 +1072,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <param name="z">The </param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, Obsolete]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShader_setFloat3Parameter(IntPtr shader, string name, float x, float y, float z);
 
         /// <summary>
@@ -1084,7 +1084,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="y">The </param>
         /// <param name="z">The </param>
         /// <param name="w">The </param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, Obsolete]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShader_setFloat4Parameter(IntPtr shader, string name, float x, float y, float z, float w);
 
         /// <summary>
@@ -1093,7 +1093,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="shader">The shader</param>
         /// <param name="name">The name</param>
         /// <param name="color">The color</param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, Obsolete]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShader_setColorParameter(IntPtr shader, string name, Color color);
 
         /// <summary>
@@ -1102,7 +1102,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="shader">The shader</param>
         /// <param name="name">The name</param>
         /// <param name="transform">The transform</param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, Obsolete]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShader_setTransformParameter(IntPtr shader, string name, Transform transform);
 
         /// <summary>
@@ -1111,7 +1111,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="shader">The shader</param>
         /// <param name="name">The name</param>
         /// <param name="texture">The texture</param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, Obsolete]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShader_setTextureParameter(IntPtr shader, string name, IntPtr texture);
 
         /// <summary>
@@ -1119,7 +1119,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="shader">The shader</param>
         /// <param name="name">The name</param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, Obsolete]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShader_setCurrentTextureParameter(IntPtr shader, string name);
 
         /// <summary>

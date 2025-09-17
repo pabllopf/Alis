@@ -357,31 +357,31 @@ namespace Alis.Extension.Graphic.Sfml.Windows
             /// <summary>
             ///     The dash key
             /// </summary>
-            [Obsolete("Deprecated: Use Hyphen instead.")]
+            
             Dash = Hyphen,
 
             /// <summary>
             ///     The back space key
             /// </summary>
-            [Obsolete("Deprecated: Use Backspace instead.")]
+            
             BackSpace = Backspace,
 
             /// <summary>
             ///     The return key
             /// </summary>
-            [Obsolete("Deprecated: Use Enter instead.")]
+            
             Return = Enter,
 
             /// <summary>
             ///     The back slash key
             /// </summary>
-            [Obsolete("Deprecated: Use Backslash instead.")]
+            
             BackSlash = Backslash,
 
             /// <summary>
             ///     The semi colon key
             /// </summary>
-            [Obsolete("Deprecated: Use Semicolon instead.")]
+            
             SemiColon = Semicolon
         }
 

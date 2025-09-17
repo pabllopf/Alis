@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="width">Width of the render-texture</param>
         /// <param name="height">Height of the render-texture</param>
         /// <param name="depthBuffer">Do you want a depth-buffer attached?</param>
-        [Obsolete("Creating a RenderTexture with depthBuffer is deprecated. Use RenderTexture(width, height, contextSettings) instead.")]
+        
         public RenderTexture(uint width, uint height, bool depthBuffer) :
             base(sfRenderTexture_create(width, height, depthBuffer))
         {
@@ -481,7 +481,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="height">The height</param>
         /// <param name="depthBuffer">The depth buffer</param>
         /// <returns>The int ptr</returns>
-        [Obsolete("sfRenderTexture_create is obselete. Use sfRenderTexture_createWithSettings instead."), DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfRenderTexture_create(uint width, uint height, bool depthBuffer);
 
         /// <summary>

@@ -40,11 +40,6 @@ namespace Alis.Extension.Media.FFmpeg.BaseClasses
     public partial class MediaStream
     {
         /// <summary>
-        ///     The avgfpsnum
-        /// </summary>
-        private double avgfpsnum;
-
-        /// <summary>
         ///     Gets or sets the value of the index
         /// </summary>
         [JsonNativePropertyName("index")]
@@ -222,9 +217,8 @@ namespace Alis.Extension.Media.FFmpeg.BaseClasses
         ///     Gets the value of the avg frame rate number
         /// </summary>
         [JsonNativeIgnore]
-        public double AvgFrameRateNumber => avgfpsnum;
-
-
+        public double AvgFrameRateNumber { get; set; }
+        
         /// <summary>
         ///     Gets or sets the value of the time base
         /// </summary>

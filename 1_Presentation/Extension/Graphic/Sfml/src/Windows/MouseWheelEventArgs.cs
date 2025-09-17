@@ -34,7 +34,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     /// <summary>
     ///     Mouse wheel event parameters
     /// </summary>
-    [Obsolete("MouseWheelEventArgs is deprecated, please use MouseWheelScrollEventArgs instead")]
+    
     public class MouseWheelEventArgs : EventArgs
     {
         /// <summary>Scroll amount</summary>

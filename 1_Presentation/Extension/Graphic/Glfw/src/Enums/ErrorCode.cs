@@ -39,7 +39,7 @@ namespace Alis.Extension.Graphic.Glfw.Enums
         /// <summary>
         ///     An unknown or undefined error.
         /// </summary>
-        [Obsolete("Use None")] Unknown = 0x00000000,
+         Unknown = 0x00000000,
 
         /// <summary>
         ///     No error has occurred.

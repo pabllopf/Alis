@@ -708,7 +708,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         public event EventHandler<KeyEventArgs> KeyReleased = null;
 
         /// <summary>Event handler for the MouseWheelMoved event</summary>
-        [Obsolete("MouseWheelMoved is deprecated, please use MouseWheelScrolled instead")]
+        
         public event EventHandler<MouseWheelEventArgs> MouseWheelMoved = null;
 
         /// <summary>Event handler for the MouseWheelScrolled event</summary>
