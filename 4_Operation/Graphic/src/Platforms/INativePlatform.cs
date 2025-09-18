@@ -105,6 +105,8 @@ namespace Alis.Core.Graphic.Platforms
         /// </summary>
         /// <returns>The int</returns>
         int GetWindowHeight();
+        
+        
 
         // Otros métodos según necesidades
         /// <summary>
@@ -120,5 +122,7 @@ namespace Alis.Core.Graphic.Platforms
         /// <param name="key">La tecla pulsada</param>
         /// <returns>true si hay tecla, false si no</returns>
         bool TryGetLastKeyPressed(out ConsoleKey key);
+
+        bool IsKeyDown(ConsoleKey consoleKey);
     }
 }

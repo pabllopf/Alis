@@ -29,6 +29,7 @@
 
 #if osxarm64 || osxarm || osxx64 || osx
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Graphic.Platforms.Osx.Native;
@@ -60,6 +61,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// </summary>
         private MacWindow window;
 
+        private HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
 
         /// <summary>
         /// </summary>
@@ -148,8 +150,8 @@ namespace Alis.Core.Graphic.Platforms.Osx
             {
                 IntPtr eventType = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("type"));
                 int type = eventType.ToInt32();
-                // NSKeyDown = 10
-                if (type == 10)
+                // NSKeyDown = 10, NSKeyUp = 11
+                if (type == 10) // NSKeyDown
                 {
                     IntPtr nsString = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("characters"));
                     if (nsString != IntPtr.Zero)
@@ -164,33 +166,69 @@ namespace Alis.Core.Graphic.Platforms.Osx
                                 if (Enum.TryParse(c.ToString(), true, out ConsoleKey key))
                                 {
                                     lastKeyPressed = key;
+                                    pressedKeys.Add(key);
                                 }
                                 else
                                 {
-                                    // Mapeo manual para teclas especiales
                                     switch (c)
                                     {
                                         case ' ':
                                             lastKeyPressed = ConsoleKey.Spacebar;
+                                            pressedKeys.Add(ConsoleKey.Spacebar);
                                             break;
                                         case '\n':
                                         case '\r':
                                             lastKeyPressed = ConsoleKey.Enter;
+                                            pressedKeys.Add(ConsoleKey.Enter);
                                             break;
                                         case '\t':
                                             lastKeyPressed = ConsoleKey.Tab;
+                                            pressedKeys.Add(ConsoleKey.Tab);
                                             break;
-                                        // Agrega más casos según lo necesites
                                     }
                                 }
                             }
                         }
                     }
-                    // No reenviar el evento NSKeyDown para evitar el beep
+                }
+                else if (type == 11) // NSKeyUp
+                {
+                    IntPtr nsString = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("characters"));
+                    if (nsString != IntPtr.Zero)
+                    {
+                        IntPtr utf8Ptr = ObjectiveCInterop.objc_msgSend(nsString, ObjectiveCInterop.Sel("UTF8String"));
+                        if (utf8Ptr != IntPtr.Zero)
+                        {
+                            string chars = Marshal.PtrToStringAuto(utf8Ptr);
+                            if (!string.IsNullOrEmpty(chars))
+                            {
+                                char c = chars[0];
+                                if (Enum.TryParse(c.ToString(), true, out ConsoleKey key))
+                                {
+                                    pressedKeys.Remove(key);
+                                }
+                                else
+                                {
+                                    switch (c)
+                                    {
+                                        case ' ':
+                                            pressedKeys.Remove(ConsoleKey.Spacebar);
+                                            break;
+                                        case '\n':
+                                        case '\r':
+                                            pressedKeys.Remove(ConsoleKey.Enter);
+                                            break;
+                                        case '\t':
+                                            pressedKeys.Remove(ConsoleKey.Tab);
+                                            break;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 else
                 {
-                    // Reenviar otros eventos normalmente
                     ObjectiveCInterop.objc_msgSend_void_IntPtr(app, ObjectiveCInterop.Sel("sendEvent:"), evt);
                 }
                 ObjectiveCInterop.objc_msgSend_void(app, ObjectiveCInterop.Sel("updateWindows"));
@@ -214,6 +252,15 @@ namespace Alis.Core.Graphic.Platforms.Osx
 
             key = default(ConsoleKey);
             return false;
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public bool IsKeyDown(ConsoleKey key)
+        {
+            return pressedKeys.Contains(key);
         }
 
         /// <summary>

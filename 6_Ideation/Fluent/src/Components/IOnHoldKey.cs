@@ -1,4 +1,5 @@
 using System;
+using Alis.Core.Ecs.Components.Render;
 
 namespace Alis.Core.Aspect.Fluent.Components
 {
@@ -7,7 +8,6 @@ namespace Alis.Core.Aspect.Fluent.Components
     /// </summary>
     public interface IOnHoldKey
     {
-        void OnHoldKey(ConsoleKey key);
+        void OnHoldKey(KeyEventInfo info);
     }
 }
-
