@@ -1,6 +1,7 @@
 using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Collider;
@@ -11,7 +12,7 @@ namespace Alis.Sample.King.Platform
     /// <summary>
     /// The player movement
     /// </summary>
-    public struct PlayerMovement : IInitable, IGameObjectComponent, IOnPressKey
+    public struct PlayerMovement : IInitable, IGameObjectComponent, IOnPressKey, IOnHoldKey, IOnReleaseKey
     {
         /// <summary>
         /// The jump force
@@ -119,6 +120,8 @@ namespace Alis.Sample.King.Platform
             {
                  boxCollider.Body.ApplyLinearImpulse(new Vector2F(0, JumpForce));
             }
+            
+            Logger.Info($"Press {key}");
         }
 
         /// <summary>
@@ -127,6 +130,16 @@ namespace Alis.Sample.King.Platform
         public void Update()
         {
             
+        }
+
+        public void OnHoldKey(ConsoleKey key)
+        {
+            Logger.Info($"Hold {key}");
+        }
+
+        public void OnReleaseKey(ConsoleKey key)
+        {
+            Logger.Info($"Release {key}");
         }
     }
 }
