@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CameraBuilder.cs
+//  File:Info.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,66 +27,48 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Components.Render;
-using NotImplementedException = System.NotImplementedException;
+using Alis.Core.Aspect.Fluent.Components;
 
-namespace Alis.Builder.Core.Ecs.Components.Render
+namespace Alis.Core.Ecs.Components
 {
-    /// <summary>
-    ///     The camera builder class
-    /// </summary>
-    /// <seealso cref="IBuild{Camera}" />
-    public class CameraBuilder : IBuild<Camera>
+    public record struct Info : IInitable, IGameObjectComponent
     {
         /// <summary>
-        ///     The vector
+        /// The name
         /// </summary>
-        private Vector2F cameraPosition = new Vector2F(0, 0);
-
+        public string Name;
         /// <summary>
-        ///     The vector
+        /// The tag
         /// </summary>
-        private Vector2F resolution = new Vector2F(1920, 1080);
-        
-        private Color backgroundColor { get; set; } = Color.Black;
-
+        public string Tag;
         /// <summary>
-        ///     Builds this instance
+        /// The id
         /// </summary>
-        /// <returns>The camera</returns>
-        public Camera Build() => new Camera(cameraPosition, resolution);
-
+        public int Id;
         /// <summary>
-        ///     Resolutions the x
+        /// The is active
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <returns>The camera builder</returns>
-        public CameraBuilder Resolution(int x, int y)
+        public bool IsActive;
+        /// <summary>
+        /// The is static
+        /// </summary>
+        public bool IsStatic;
+        /// <summary>
+        /// Inits the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void Init(IGameObject self)
         {
-            resolution = new Vector2F(x, y);
-            return this;
+            
         }
 
         /// <summary>
-        ///     Positions the x
+        /// Updates the self
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <returns>The camera builder</returns>
-        public CameraBuilder Position(float x, float y)
+        /// <param name="self">The self</param>
+        public void Update(IGameObject self)
         {
-            cameraPosition = new Vector2F(x, y);
-            return this;
-        }
-
-        public CameraBuilder BackgroundColor(Color black)
-        {
-            backgroundColor = black;
-            return this;
+            
         }
     }
 }
