@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{0F6E
 		.config\default_sample_csproj.props = .config\default_sample_csproj.props
 		.config\default_test_csproj.props = .config\default_test_csproj.props
 		.config\default_generator_csproj.props = .config\default_generator_csproj.props
+		.config\default_app_csproj.props = .config\default_app_csproj.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "application", "application", "{A1B35FDA-66DC-4C35-B80D-114770163610}"
