@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Systems.Manager.Scene;
 using Alis.Core.Ecs.Systems.Scope;
@@ -51,9 +52,9 @@ namespace Alis.Sample.Flappy.Bird
         {
         }
 
-        public void OnPressKey(ConsoleKey key)
+        public void OnPressKey(KeyEventInfo info)
         {
-            if (key == ConsoleKey.Separator)
+            if (info.Key == ConsoleKey.Separator)
             {
                 Logger.Info("Changing to game scene 'Game_Scene'...");
                 SceneManager.LoadScene("Game_Scene");
