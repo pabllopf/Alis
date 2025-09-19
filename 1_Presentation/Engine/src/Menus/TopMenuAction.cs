@@ -34,8 +34,8 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
+
 using Alis.Extension.Graphic.Ui;
 using MonoMac.AppKit;
 
@@ -148,137 +148,10 @@ namespace Alis.App.Engine.Menus
             MenuActions.Add("Inspector", InspectorWindow);
             MenuActions.Add("Hierarchy", HierarchyWindow);
             MenuActions.Add("Console", ConsoleWindow);
-            MenuActions.Add("Style Editor", StyleEditorWindow);
-
-            MenuActions.Add("Layout:Default", LayoutDefault);
-            MenuActions.Add("Layout:2 by 3", Layout2by3);
-            MenuActions.Add("Layout:4 Split", Layout4Split);
-            MenuActions.Add("Layout:Wide", LayoutWide);
-
 
             MenuActions.Add("Alis Manual", AlisManual);
             MenuActions.Add("API Reference", ApiReference);
             MenuActions.Add("Report Bug", ReportBug);
-        }
-
-        /// <summary>
-        ///     Styles the editor window
-        /// </summary>
-        private static void StyleEditorWindow()
-        {
-            _spaceWork.ImGuiController.OpenEditorStyleWindow();
-        }
-
-        /// <summary>
-        ///     Layouts the wide
-        /// </summary>
-        private static void LayoutWide()
-        {
-            Logger.Info("Layout Wide selected");
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("LayoutWideOsx.ini"));
-                return;
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("LayoutWideWin.ini"));
-                return;
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("LayoutWideLinux.ini"));
-                return;
-            }
-
-            Logger.Error("Unsupported OS for layout wide");
-        }
-
-        /// <summary>
-        ///     Layouts the 4 split
-        /// </summary>
-        private static void Layout4Split()
-        {
-            Logger.Info("Layout 4 Split selected");
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Layout4SplitOsx.ini"));
-                return;
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Layout4SplitWin.ini"));
-                return;
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Layout4SplitLinux.ini"));
-                return;
-            }
-
-            Logger.Error("Unsupported OS for layout 4 split");
-        }
-
-        /// <summary>
-        ///     Layouts the 2by 3
-        /// </summary>
-        private static void Layout2by3()
-        {
-            Logger.Info("Layout 2 by 3 selected");
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Layout2by3Osx.ini"));
-                return;
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Layout2by3Win.ini"));
-                return;
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Layout2by3Linux.ini"));
-                return;
-            }
-
-            Logger.Error("Unsupported OS for layout 2 by 3");
-        }
-
-        /// <summary>
-        ///     Layouts the default
-        /// </summary>
-        private static void LayoutDefault()
-        {
-            Logger.Info("Layout Default selected");
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("LayoutDefaultOsx.ini"));
-                return;
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("LayoutDefaultWin.ini"));
-                return;
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                ImGui.LoadIniSettingsFromDisk(AssetManager.Find("LayoutDefaultLinux.ini"));
-                return;
-            }
-
-            Logger.Error("Unsupported OS for layout default");
         }
 
         /// <summary>
@@ -294,8 +167,6 @@ namespace Alis.App.Engine.Menus
             }
 
             ImGui.SaveIniSettingsToDisk(file);
-
-            Logger.Log($"Settings saved to {file}");
         }
 
         /// <summary>
@@ -354,7 +225,6 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Preferences()
         {
-            _spaceWork.SettingsWindow.Open();
         }
 
         /// <summary>
@@ -362,7 +232,6 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void QuitAlis()
         {
-            _spaceWork.ImGuiController.IsRunning = false;
         }
 
         /// <summary>
@@ -432,7 +301,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Close()
         {
-            _spaceWork.ImGuiController.IsRunning = true;
+            _spaceWork.Quit = true;
         }
 
         /// <summary>

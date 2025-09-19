@@ -28,8 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
-using Alis.App.Hub.Elements;
+using Alis.App.Hub.Core;
+using Alis.App.Hub.Entity;
+using Alis.App.Hub.Utils;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
+
 
 namespace Alis.App.Hub.Windows.Sections
 {
@@ -48,7 +52,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Initializes a new instance of the <see cref="CommunitySection" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public CommunitySection()
+        public CommunitySection(SpaceWork spaceWork) : base(spaceWork)
         {
         }
 
@@ -125,8 +129,7 @@ namespace Alis.App.Hub.Windows.Sections
 
                     // Columna de la imagen
                     ImGui.TableSetColumnIndex(0);
-                    //ImGui.Image(ImageLoader.LoadTextureFromFile(item.ImagePath), new Vector2F(100, 100));
-                    ImGui.Text("image");
+                    ImGui.Image(ImageLoader.LoadTextureFromFile(item.ImagePath), new Vector2F(100, 100));
 
                     // Columna del nombre
                     ImGui.TableSetColumnIndex(1);

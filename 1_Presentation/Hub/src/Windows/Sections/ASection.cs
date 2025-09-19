@@ -27,21 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.App.Hub.Core;
+
 namespace Alis.App.Hub.Windows.Sections
 {
     /// <summary>
-    /// The section class
+    ///     The section class
     /// </summary>
-    public abstract class ASection
+    /// <seealso cref="IRuntime" />
+    public abstract class ASection : IRuntime
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASection"/> class
+        ///     Initializes a new instance of the <see cref="ASection" /> class
         /// </summary>
-        public ASection()
-        {
-            
-        }
-        
+        /// <param name="spaceWork">The space work</param>
+        public ASection(SpaceWork spaceWork) => SpaceWork = spaceWork;
+
+        /// <summary>
+        ///     Gets or sets the value of the space work
+        /// </summary>
+        public SpaceWork SpaceWork { get; set; }
+
         /// <summary>
         ///     Gets or sets the value of the title
         /// </summary>

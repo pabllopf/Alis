@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using Alis.App.Engine.Core;
+using Alis.App.Engine.Fonts;
+
 using Alis.Extension.Graphic.Ui;
-using Alis.Extension.Graphic.Ui.Fonts;
 
 namespace Alis.App.Engine.Windows
 {
@@ -42,11 +43,6 @@ namespace Alis.App.Engine.Windows
         ///     The gamepad
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Gamepad} Game";
-
-        /// <summary>
-        ///     The is open
-        /// </summary>
-        private bool _isOpen = true;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameWindow" /> class
@@ -73,10 +69,7 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public void Render()
         {
-            if (ImGui.Begin(NameWindow, ref _isOpen, ImGuiWindowFlags.NoCollapse))
-            {
-                ImGui.Text("Game Window");
-            }
+            ImGui.Begin(NameWindow);
 
             ImGui.End();
         }

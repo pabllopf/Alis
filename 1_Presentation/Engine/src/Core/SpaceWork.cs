@@ -27,12 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.IO;
 using System.Runtime.InteropServices;
-using Alis.App.Engine.Controllers;
+using System.Text.Json;
+using Alis.App.Engine.Demos;
 using Alis.App.Engine.Entity;
 using Alis.App.Engine.Menus;
 using Alis.App.Engine.Windows;
-using Alis.Core.Ecs.Systems;
+using Alis.App.Engine.Windows.Settings;
+using Alis.Extension.Graphic.Sdl2.Structs;
+using Alis.Extension.Graphic.Ui;
 
 namespace Alis.App.Engine.Core
 {
@@ -42,41 +47,116 @@ namespace Alis.App.Engine.Core
     public class SpaceWork
     {
         /// <summary>
-        ///     The im gui controller
+        ///     The icon demo
         /// </summary>
-        public ImGuiControllerImplementGlfw ImGuiController;
+        public readonly IconDemo IconDemo = new IconDemo();
+
+        /// <summary>
+        ///     The im gui demo
+        /// </summary>
+        public readonly ImGuiDemo ImGuiDemo = new ImGuiDemo();
+
+        /// <summary>
+        ///     The im guizmo demo
+        /// </summary>
+        public readonly ImGuizmoDemo ImGuizmoDemo = new ImGuizmoDemo();
+
+        /// <summary>
+        ///     The im node demo
+        /// </summary>
+        public readonly ImNodeDemo ImNodeDemo = new ImNodeDemo();
+
+        /// <summary>
+        ///     The im plot demo
+        /// </summary>
+        public readonly ImPlotDemo ImPlotDemo = new ImPlotDemo();
+
+        /// <summary>
+        ///     The settings window
+        /// </summary>
+        public readonly SettingsWindow SettingsWindow;
+
+        /// <summary>
+        ///     The context
+        /// </summary>
+        public IntPtr ContextGui;
+
+        /// <summary>
+        ///     The font loaded 10 solid
+        /// </summary>
+        public ImFontPtr FontLoaded10Solid;
+
+        /// <summary>
+        ///     The font loaded 16 light
+        /// </summary>
+        public ImFontPtr FontLoaded16Light;
+
+        /// <summary>
+        ///     The font loaded 16 solid
+        /// </summary>
+        public ImFontPtr FontLoaded16Solid;
+
+        /// <summary>
+        ///     The font loaded 30 bold
+        /// </summary>
+        public ImFontPtr FontLoaded30Bold;
+
+        /// <summary>
+        ///     The font loaded 30 bold
+        /// </summary>
+        public ImFontPtr FontLoaded45Bold;
+
+        /// <summary>
+        ///     The io
+        /// </summary>
+        public ImGuiIoPtr Io;
+
+        /// <summary>
+        ///     The quit
+        /// </summary>
+        public bool Quit = false;
+
+        /// <summary>
+        ///     The renderer game
+        /// </summary>
+        public IntPtr RendererGame;
+
+        /// <summary>
+        ///     The style
+        /// </summary>
+        public ImGuiStyle Style;
+
+        /// <summary>
+        ///     Gets or sets the value of the viewport
+        /// </summary>
+        public ImGuiViewportPtr Viewport;
+
+        /// <summary>
+        ///     The window
+        /// </summary>
+        public IntPtr Window;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SpaceWork" /> class
         /// </summary>
-        public SpaceWork(ImGuiControllerImplementGlfw imGuiController)
+        public SpaceWork()
         {
-            ImGuiController = imGuiController;
-
             DockSpaceMenu = new DockSpaceMenu(this);
-            TopMenu = new TopMenu(this);
-            TopMenuMac = new TopMenuMac(this);
-            BottomMenu = new BottomMenu(this);
-
-
             ConsoleWindow = new ConsoleWindow(this);
             GameWindow = new GameWindow(this);
             SettingsWindow = new SettingsWindow(this);
             InspectorWindow = new InspectorWindow(this);
-            SceneWindow = new SceneWindow(this);
+            SolutionWindow = new SolutionWindow(this);
+            //SceneWindow = new SceneWindow(this);
             ProjectWindow = new ProjectWindow(this);
             AudioPlayerWindow = new AudioPlayerWindow(this);
             AssetsWindow = new AssetsWindow(this);
 
-            GitWindow = new GitWindow(this);
-            PreferencesWindow = new PreferencesWindow(this);
-            SearchAdvanceWindow = new SearchAdvanceWindow(this);
+            TopMenu = new TopMenu(this);
+            TopMenuMac = new TopMenuMac(this);
+            BottomMenu = new BottomMenu(this);
 
-
-            //Project = JsonSerializer.Deserialize<Project>(File.ReadAllText(Path.Combine(Path.GetTempPath(), "projectConfig.json")));
-
-            // TODO: Load project from file or create a new one
-            Project = new Project("Alis", "Not Set", "Not Synced", "Never", "1.0.0");
+            Project = JsonSerializer.Deserialize<Project>(File.ReadAllText(Path.Combine(Path.GetTempPath(), "projectConfig.json")));
         }
 
         /// <summary>
@@ -95,11 +175,6 @@ namespace Alis.App.Engine.Core
         internal ConsoleWindow ConsoleWindow { get; }
 
         /// <summary>
-        ///     Gets the value of the settings window
-        /// </summary>
-        internal SettingsWindow SettingsWindow { get; }
-
-        /// <summary>
         ///     Gets the value of the game window
         /// </summary>
         internal GameWindow GameWindow { get; }
@@ -108,6 +183,11 @@ namespace Alis.App.Engine.Core
         ///     Gets the value of the inspector window
         /// </summary>
         internal InspectorWindow InspectorWindow { get; }
+
+        /// <summary>
+        ///     Gets the value of the solution window
+        /// </summary>
+        internal SolutionWindow SolutionWindow { get; }
 
         /// <summary>
         ///     Gets the value of the scene window
@@ -145,35 +225,32 @@ namespace Alis.App.Engine.Core
         internal AssetsWindow AssetsWindow { get; }
 
         /// <summary>
+        ///     Gets or sets the value of the fps
+        /// </summary>
+        public int Fps { get; set; } = 60;
+
+        /// <summary>
         ///     Gets or sets the value of the project
         /// </summary>
         public Project Project { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the git window
+        ///     Gets or sets the value of the event
         /// </summary>
-        public GitWindow GitWindow { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the preferences window
-        /// </summary>
-        public PreferencesWindow PreferencesWindow { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the search advance window
-        /// </summary>
-        public SearchAdvanceWindow SearchAdvanceWindow { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the video game
-        /// </summary>
-        public VideoGame VideoGame { get; set; } = new VideoGame();
+        public Event Event { get; set; }
 
         /// <summary>
         ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
+            ImGuiDemo.Initialize();
+            ImPlotDemo.Initialize();
+            ImGuizmoDemo.Initialize();
+            ImNodeDemo.Initialize();
+            IconDemo.Initialize();
+
+            // if is macos system:
             if (!IsMacOs)
             {
                 TopMenu.Initialize();
@@ -184,22 +261,16 @@ namespace Alis.App.Engine.Core
             }
 
 
-            DockSpaceMenu.Initialize();
             BottomMenu.Initialize();
-
-
             ConsoleWindow.Initialize();
             GameWindow.Initialize();
             InspectorWindow.Initialize();
-            SceneWindow.Initialize();
+            //SolutionWindow.Initialize();
+            //SceneWindow.Initialize();
             ProjectWindow.Initialize();
             AudioPlayerWindow.Initialize();
             AssetsWindow.Initialize();
             SettingsWindow.Initialize();
-
-            GitWindow.Initialize();
-            PreferencesWindow.Initialize();
-            SearchAdvanceWindow.Initialize();
         }
 
         /// <summary>
@@ -207,6 +278,12 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public void Start()
         {
+            ImGuiDemo.Start();
+            ImPlotDemo.Start();
+            ImGuizmoDemo.Start();
+            ImNodeDemo.Start();
+            IconDemo.Start();
+
             // if is macos system:
             if (!IsMacOs)
             {
@@ -217,22 +294,17 @@ namespace Alis.App.Engine.Core
                 TopMenuMac.Start();
             }
 
+
             BottomMenu.Start();
-            DockSpaceMenu.Start();
-
-
             ConsoleWindow.Start();
             GameWindow.Start();
             InspectorWindow.Start();
-            SceneWindow.Start();
+            //SolutionWindow.Start();
+            //SceneWindow.Start();
             ProjectWindow.Start();
             AudioPlayerWindow.Start();
             AssetsWindow.Start();
             SettingsWindow.Start();
-
-            GitWindow.Start();
-            PreferencesWindow.Start();
-            SearchAdvanceWindow.Start();
         }
 
         /// <summary>
@@ -240,6 +312,12 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public void Update()
         {
+            ImGuiDemo.Run();
+            ImPlotDemo.Run();
+            ImGuizmoDemo.Run();
+            ImNodeDemo.Run();
+            IconDemo.Run();
+
             // if is macos system:
             if (!IsMacOs)
             {
@@ -250,22 +328,16 @@ namespace Alis.App.Engine.Core
                 TopMenuMac.Render();
             }
 
-            DockSpaceMenu.Render();
-            BottomMenu.Render();
-
-
             SettingsWindow.Render();
+            BottomMenu.Render();
             ConsoleWindow.Render();
-            GameWindow.Render();
-            InspectorWindow.Render();
-            SceneWindow.Render();
-            ProjectWindow.Render();
+            //GameWindow.Render();
+            //InspectorWindow.Render();
+            //SolutionWindow.Render();
+            //SceneWindow.Render();
+            //ProjectWindow.Render();
             AudioPlayerWindow.Render();
             AssetsWindow.Render();
-
-            GitWindow.Render();
-            PreferencesWindow.Render();
-            SearchAdvanceWindow.Render();
         }
     }
 }

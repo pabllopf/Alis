@@ -37,6 +37,6 @@ namespace Alis.App.Engine.Core
         /// <summary>
         ///     Gets the value of the space work
         /// </summary>
-        SpaceWork SpaceWork { get; }
+        public SpaceWork SpaceWork { get; }
     }
 }

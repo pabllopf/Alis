@@ -1,0 +1,28 @@
+{
+  "__type": "Alis.Core.Ecs.System.Configuration.Graphic.GraphicSetting",
+  "_Window_": {
+    "__type": "Alis.Core.Graphic.Window",
+    "_Background_": {
+      "__type": "Alis.Core.Aspect.Math.Definition.Color",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 255
+    },
+    "_Resolution_": {
+      "__type": "Alis.Core.Aspect.Math.Vector.Vector2F",
+      "x": 800,
+      "y": 600
+    },
+    "_IsWindowResizable_": true
+  },
+  "_TargetFrames_": 60,
+  "_Target_": "OpenGL",
+  "_GridColor_": {
+    "__type": "Alis.Core.Aspect.Math.Definition.Color",
+    "r": 195,
+    "g": 195,
+    "b": 195,
+    "a": 100
+  }
+}

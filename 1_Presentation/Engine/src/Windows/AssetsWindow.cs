@@ -33,10 +33,12 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
+using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
+
+
 using Alis.Extension.Graphic.Ui;
-using Alis.Extension.Graphic.Ui.Fonts;
 
 namespace Alis.App.Engine.Windows
 {
@@ -404,7 +406,7 @@ namespace Alis.App.Engine.Windows
                     ImGui.TableNextColumn();
                     string folderName = Path.GetFileName(directory);
 
-                    ImGui.PushFont(SpaceWork.ImGuiController.FontLoaded45Bold);
+                    ImGui.PushFont(SpaceWork.FontLoaded45Bold);
                     ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0)); // Transparent background
                     ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0)); // No padding
                     ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f)); // Center text
@@ -422,7 +424,7 @@ namespace Alis.App.Engine.Windows
                     ImGui.PopStyleColor();
                     ImGui.PopFont();
 
-                    ImGui.PushFont(SpaceWork.ImGuiController.FontLoaded10Solid);
+                    ImGui.PushFont(SpaceWork.FontLoaded10Solid);
                     float textWidth = ImGui.CalcTextSize(folderName).X;
                     ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
                     ImGui.TextWrapped(folderName);
@@ -437,7 +439,7 @@ namespace Alis.App.Engine.Windows
                     string extension = Path.GetExtension(file).ToLower();
                     string icon = fileIcons.ContainsKey(extension) ? fileIcons[extension] : FontAwesome5.File;
 
-                    ImGui.PushFont(SpaceWork.ImGuiController.FontLoaded45Bold);
+                    ImGui.PushFont(SpaceWork.FontLoaded45Bold);
                     ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0)); // Transparent background
                     ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0)); // No padding
                     ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f)); // Center text
@@ -455,7 +457,7 @@ namespace Alis.App.Engine.Windows
                     ImGui.PopStyleColor();
                     ImGui.PopFont();
 
-                    ImGui.PushFont(SpaceWork.ImGuiController.FontLoaded10Solid);
+                    ImGui.PushFont(SpaceWork.FontLoaded10Solid);
                     float textWidth = ImGui.CalcTextSize(Path.GetFileName(file)).X;
                     ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
                     ImGui.TextWrapped(Path.GetFileNameWithoutExtension(file));
@@ -702,7 +704,7 @@ namespace Alis.App.Engine.Windows
                         ImGui.TableNextColumn();
                         string folderName = Path.GetFileName(directory);
 
-                        ImGui.PushFont(SpaceWork.ImGuiController.FontLoaded45Bold);
+                        ImGui.PushFont(SpaceWork.FontLoaded45Bold);
                         ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0)); // Transparent background
                         ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0)); // No padding
                         ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f)); // Center text
@@ -720,7 +722,7 @@ namespace Alis.App.Engine.Windows
                         ImGui.PopStyleColor();
                         ImGui.PopFont();
 
-                        ImGui.PushFont(SpaceWork.ImGuiController.FontLoaded10Solid);
+                        ImGui.PushFont(SpaceWork.FontLoaded10Solid);
                         float textWidth = ImGui.CalcTextSize(folderName).X;
                         ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
                         ImGui.TextWrapped(folderName);
@@ -735,7 +737,7 @@ namespace Alis.App.Engine.Windows
                         string extension = Path.GetExtension(file).ToLower();
                         string icon = fileIcons.ContainsKey(extension) ? fileIcons[extension] : FontAwesome5.File;
 
-                        ImGui.PushFont(SpaceWork.ImGuiController.FontLoaded45Bold);
+                        ImGui.PushFont(SpaceWork.FontLoaded45Bold);
                         ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0, 0, 0, 0)); // Transparent background
                         ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(0, 0)); // No padding
                         ImGui.PushStyleVar(ImGuiStyleVar.SelectableTextAlign, new Vector2F(0.5f, 0.5f)); // Center text
@@ -753,7 +755,7 @@ namespace Alis.App.Engine.Windows
                         ImGui.PopStyleColor();
                         ImGui.PopFont();
 
-                        ImGui.PushFont(SpaceWork.ImGuiController.FontLoaded10Solid);
+                        ImGui.PushFont(SpaceWork.FontLoaded10Solid);
                         float textWidth = ImGui.CalcTextSize(Path.GetFileName(file)).X;
                         ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (itemWidth - textWidth) * 0.05f);
                         ImGui.TextWrapped(Path.GetFileNameWithoutExtension(file));
