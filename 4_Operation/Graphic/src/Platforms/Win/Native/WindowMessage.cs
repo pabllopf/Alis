@@ -53,7 +53,9 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <summary>
         /// 
         /// </summary>
-        Size = 0x0005
+        Size = 0x0005,
+        
+        KeyUp = 0x0101,
     }
 }
 
