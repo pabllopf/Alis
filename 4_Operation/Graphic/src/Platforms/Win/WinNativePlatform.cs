@@ -216,7 +216,7 @@ namespace Alis.Core.Graphic.Platforms.Win
             var sizes = new[]
             {
                 //(width, height),
-                (800, 600),
+                (w, h),
                 //(1024, 768),
                 //(640, 480),
             };
