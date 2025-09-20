@@ -47,11 +47,11 @@ namespace Alis.Core.Graphic.Sample
         private static void Main()
         {
             INativePlatform platform;
-#if OSX
+#if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
             platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
-#elif WIN
+#elif winx64 || winx86 || winarm64 || winarm || win
             platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
-#elif LINUX
+#elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
             platform = new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();
 #else
             throw new Exception("Sistema operativo no soportado");

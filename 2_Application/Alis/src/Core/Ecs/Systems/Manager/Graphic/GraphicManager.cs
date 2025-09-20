@@ -77,7 +77,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         public override void OnInit()
         {
-#if osxarm64
+#if osxarm64 || osxarm || osxx64 || osx
             platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
 #elif winx64
             platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
