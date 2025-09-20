@@ -29,8 +29,10 @@
 
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Systems.Configuration.Physic;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Builder.Core.Ecs.System.Setting.Physic
 {
@@ -62,6 +64,18 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
         public PhysicSettingBuilder Gravity(float x, float y)
         {
             physicSetting.Gravity = new Vector2F(x, y);
+            return this;
+        }
+
+        public PhysicSettingBuilder Debug(bool b)
+        {
+            physicSetting.Debug = b;
+            return this;
+        }
+
+        public PhysicSettingBuilder DebugColor(Color color)
+        {
+            physicSetting.DebugColor = color;
             return this;
         }
     }

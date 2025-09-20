@@ -183,17 +183,37 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <summary>
         /// Names the camera
         /// </summary>
-        /// <param name="camera">The camera</param>
+        /// <param name="name">The camera</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder Name(string camera)
+        public GameObjectBuilder Name(string name)
         {
-            info.Name = camera;
+            info.Name = name;
+            
+            if (gameObject.Has<Info>())
+            {
+                ref Info i = ref gameObject.Get<Info>();
+                i.Name = name;
+            }
+            else
+            {
+                gameObject.Add<Info>(info);
+            }
+            
             return this;
         }
 
         public GameObjectBuilder Tag(string tag)
         {
             info.Tag = tag;
+            if (gameObject.Has<Info>())
+            {
+                ref Info i = ref gameObject.Get<Info>();
+                i.Tag = tag;
+            }
+            else
+            {
+                gameObject.Add<Info>(info);
+            }
             return this;
         }
 
@@ -206,24 +226,61 @@ namespace Alis.Builder.Core.Ecs.Entity
         public GameObjectBuilder IsActive(bool isActive)
         {
             info.IsActive = isActive;
+            if (gameObject.Has<Info>())
+            {
+                ref Info i = ref gameObject.Get<Info>();
+                i.IsActive = isActive;
+            }
+            else
+            {
+                gameObject.Add<Info>(info);
+            }
             return this;
         }
         
         public GameObjectBuilder IsActive()
         {
             info.IsActive = true;
+            
+            if (gameObject.Has<Info>())
+            {
+                ref Info i = ref gameObject.Get<Info>();
+                i.IsActive = true;
+            }
+            else
+            {
+                gameObject.Add<Info>(info);
+            }
             return this;
         }
 
         public GameObjectBuilder IsStatic(bool isStatic)
         {
             info.IsStatic = isStatic;
+            if (gameObject.Has<Info>())
+            {
+                ref Info i = ref gameObject.Get<Info>();
+                i.IsStatic = isStatic;
+            }
+            else
+            {
+                gameObject.Add<Info>(info);
+            }
             return this;
         }
         
         public GameObjectBuilder IsStatic()
         {
             info.IsStatic = true;
+            if (gameObject.Has<Info>())
+            {
+                ref Info i = ref gameObject.Get<Info>();
+                i.IsStatic = true;
+            }
+            else
+            {
+                gameObject.Add<Info>(info);
+            }
             return this;
         }
 

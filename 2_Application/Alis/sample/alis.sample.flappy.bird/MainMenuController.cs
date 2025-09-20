@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PhysicSetting.cs
+//  File:MainMenuController.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,36 +27,37 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Aspect.Math.Vector;
+using System;
+using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Logging;
+using Alis.Core.Ecs.Systems;
+using Alis.Core.Ecs.Systems.Manager.Scene;
+using Alis.Core.Ecs.Systems.Scope;
 
-namespace Alis.Core.Ecs.Systems.Configuration.Physic
+namespace Alis.Sample.Flappy.Bird
 {
     /// <summary>
-    ///     The physic setting
+    ///     The main menu controller class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct PhysicSetting(
-        Vector2F gravity = default(Vector2F),
-        bool debug = false,
-        Color debugColor = default(Color)
-        
-        ) : IPhysicSetting
+    
+    public class MainMenuController : IInitable, IGameObjectComponent, IOnPressKey
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="PhysicSetting" /> class
-        /// </summary>
-        public PhysicSetting() : this(new Vector2F(0, -9.81f) , false , new Color(0,0,0,1))
+        public void Init(IGameObject self)
+        {
+            
+        }
+
+        public void Update(IGameObject self)
         {
         }
 
-        /// <summary>
-        ///     Gets or sets the value of the gravity
-        /// </summary>
-        public Vector2F Gravity { get; set; } = gravity;
-
-        public bool Debug { get; set; }  = debug;
-        public Color DebugColor { get; set; } = debugColor;
+        public void OnPressKey(ConsoleKey key)
+        {
+            if (key == ConsoleKey.Separator)
+            {
+                Logger.Info("Changing to game scene 'Game_Scene'...");
+                SceneManager.LoadScene("Game_Scene");
+            }
+        }
     }
 }
