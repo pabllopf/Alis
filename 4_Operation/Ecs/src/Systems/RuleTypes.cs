@@ -34,7 +34,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     Types of rules.
     /// </summary>
-    [Obsolete("This is unused.")]
+    
     public enum RuleTypes
     {
         /// <summary>

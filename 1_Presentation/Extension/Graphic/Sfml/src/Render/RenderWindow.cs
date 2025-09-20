@@ -632,7 +632,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         ///    Image img = texture.CopyToImage();
         ///    </code>
         /// </remarks>
-        [Obsolete("Capture is deprecated, please see remarks for preferred method")]
+        
         public Image Capture() => new Image(sfRenderWindow_capture(CPointer));
 
 

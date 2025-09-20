@@ -78,7 +78,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     Use ComponentHandle.Create instead.
         /// </summary>
-        [Obsolete("Use ComponentHandle.Create instead")]
+        
         public static ComponentHandle StoreComponent(in T component)
         {
             GeneralComponentStorage.Create(out int index) = component;

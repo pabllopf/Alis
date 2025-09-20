@@ -34,7 +34,7 @@ namespace Alis.Core.Ecs.Redifinition
     /// <summary>
     ///     Specifies the level of memory trimming Alis internal buffers should do
     /// </summary>
-    [Obsolete("I may or may not use this in the future.")]
+    
     public enum MemoryTrimming
     {
         /// <summary>

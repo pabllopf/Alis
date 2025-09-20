@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         KeyReleased,
 
         /// <summary>Event triggered when the mouse wheel is scrolled (deprecated)</summary>
-        [Obsolete("MouseWheelMoved is deprecated, please use MouseWheelScrolled instead")]
+        
         MouseWheelMoved,
 
         /// <summary>Event triggered when a mouse wheel is scrolled</summary>

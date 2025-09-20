@@ -38,6 +38,6 @@ namespace Alis.Core.Ecs.Updating
     ///     This is an interface so the user can implement an
     ///     <see cref="UpdateTypeAttribute" /> as also an order attribute
     /// </remarks>
-    [Obsolete("Unused")]
+    
     internal interface IComponentUpdateOrderAttribute;
 }

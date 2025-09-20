@@ -463,6 +463,10 @@ namespace Alis.App.Hub.Controllers
             ImGui.SetNextWindowPos(new Vector2F(0, 0));
             ImGui.SetNextWindowSize(new Vector2F(_glfwController._widthMainWindow, _glfwController._heightMainWindow));
             ImGui.SetNextWindowViewport(Viewport.Id);
+            
+            ImGuiIoPtr io = ImGui.GetIo();
+            io.DisplaySize = new Vector2F(_glfwController._widthMainWindow, _glfwController._heightMainWindow);
+            io.DisplayFramebufferScale = new Vector2F(1f, 1f);
 
             Glfw.GetWindowSize(_glfwController._window, out int w, out int h);
             if (w != _glfwController._widthMainWindow || h != _glfwController._heightMainWindow)
@@ -494,10 +498,6 @@ namespace Alis.App.Hub.Controllers
         public void OnRenderFrame()
         {
             _glfwController.OnRenderFrame();
-
-            ImGuiIoPtr io = ImGui.GetIo();
-            io.DisplaySize = new Vector2F(_glfwController._widthMainWindow, _glfwController._heightMainWindow);
-            io.DisplayFramebufferScale = new Vector2F(1f, 1f);
 
             if (_modeDebug)
             {

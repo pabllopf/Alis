@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Updating
     /// </summary>
     /// <seealso cref="Attribute" />
     /// <seealso cref="IComponentUpdateOrderAttribute" />
-    [AttributeUsage(AttributeTargets.Method), Obsolete("Unused")]
+    [AttributeUsage(AttributeTargets.Method)]
 #pragma warning disable CS9113 // Parameter is unread.
     public class UpdateOrderAttribute(int order) : Attribute, IComponentUpdateOrderAttribute;
 #pragma warning restore CS9113 // Parameter is unread.

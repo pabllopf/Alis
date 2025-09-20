@@ -67,7 +67,6 @@ namespace Alis.Extension.Network
         /// </summary>
         /// <param name="secWebSocketKey">The web socket key to base the accept string on</param>
         /// <returns>A web socket accept string</returns>
-        [Obsolete("Obsolete")]
         public static string ComputeSocketAcceptString(string secWebSocketKey)
         {
             // this is a guid as per the web socket spec
@@ -76,7 +75,9 @@ namespace Alis.Extension.Network
             byte[] concatenatedAsBytes = Encoding.UTF8.GetBytes(concatenated);
 
             // note an instance of SHA1 is not threadsafe so we have to create a new one every time here
+#pragma warning disable SYSLIB0021
             HashAlgorithm hashProvider3 = new SHA512Managed();
+#pragma warning restore SYSLIB0021
             byte[] sha1Hash = hashProvider3.ComputeHash(concatenatedAsBytes);
             string secWebSocketAccept = Convert.ToBase64String(sha1Hash);
             return secWebSocketAccept;
