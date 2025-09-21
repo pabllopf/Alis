@@ -98,48 +98,36 @@ namespace Alis.Sample.King.Platform
             
         }
 
-        /// <summary>
-        /// Ons the press key using the specified key
-        /// </summary>
-        /// <param name="key">The key</param>
-        public void OnPressKey(ConsoleKey key)
+        public void OnPressKey(KeyEventInfo info)
         {
-            if (key == ConsoleKey.A)
+            if (info.Key == ConsoleKey.A)
             {
                 directionPlayer.X = -1;
                 boxCollider.Body.ApplyLinearImpulse(new Vector2F(-0.1f, 0));
             }
 
-            if (key == ConsoleKey.D)
+            if (info.Key == ConsoleKey.D)
             {
                 directionPlayer.X = 1;
                 boxCollider.Body.ApplyLinearImpulse(new Vector2F(0.1f, 0));
             }
             
-            if (key == ConsoleKey.Spacebar)
+            if (info.Key == ConsoleKey.Spacebar)
             {
-                 boxCollider.Body.ApplyLinearImpulse(new Vector2F(0, JumpForce));
+                boxCollider.Body.ApplyLinearImpulse(new Vector2F(0, JumpForce));
             }
             
-            Logger.Info($"Press {key}");
+            Logger.Info($"OnPressKey {info.Key}, {info.HoldDuration}, {info.Timestamp}");
         }
 
-        /// <summary>
-        /// Updates this instance
-        /// </summary>
-        public void Update()
+        public void OnHoldKey(KeyEventInfo info)
         {
-            
+            Logger.Info($"OnHoldKey {info.Key}, {info.HoldDuration}, {info.Timestamp}");
         }
 
-        public void OnHoldKey(ConsoleKey key)
+        public void OnReleaseKey(KeyEventInfo info)
         {
-            Logger.Info($"Hold {key}");
-        }
-
-        public void OnReleaseKey(ConsoleKey key)
-        {
-            Logger.Info($"Release {key}");
+            Logger.Info($"OnReleaseKey {info.Key}, {info.HoldDuration}, {info.Timestamp}");
         }
     }
 }

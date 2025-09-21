@@ -695,6 +695,16 @@ namespace Alis.Core.Graphic.Platforms.Linux
         }
 
         /// <summary>
+        /// Checks if the specified key is currently pressed down.
+        /// </summary>
+        /// <param name="key">The key to check.</param>
+        /// <returns>True if the key is down, false otherwise.</returns>
+        public bool IsKeyDown(ConsoleKey key)
+        {
+            return pressedKeys.Contains(key);
+        }
+
+        /// <summary>
         /// Polls the events
         /// </summary>
         /// <returns>The bool</returns>
@@ -708,9 +718,15 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 XNextEvent(display, ref xev);
                 if (xev.type == KeyPress)
                 {
-                    lastKeyPressed = ConsoleKey.Spacebar; // Solo ejemplo, se puede mapear mejor
+                    // Aquí deberías mapear correctamente la tecla desde xev y añadirla a pressedKeys
+                    lastKeyPressed = ConsoleKey.Spacebar; // Solo ejemplo
+                    // pressedKeys.Add(tecla);
                 }
-
+                else if (xev.type == 3) // XKeyRelease
+                {
+                    // Aquí deberías mapear correctamente la tecla desde xev y eliminarla de pressedKeys
+                    // pressedKeys.Remove(tecla);
+                }
                 if (xev.type == DestroyNotify)
                 {
                     running = false;
@@ -786,6 +802,8 @@ namespace Alis.Core.Graphic.Platforms.Linux
             key = default;
             return false;
         }
+
+        private HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
     }
 }
 

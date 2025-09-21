@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Components.Body;
@@ -59,6 +60,13 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         ///     The platform
         /// </summary>
         private INativePlatform platform;
+
+        // Diccionario para guardar el timestamp de pulsación de cada tecla
+        private Dictionary<ConsoleKey, DateTime> keyDownTimestamps = new Dictionary<ConsoleKey, DateTime>();
+        // Estado actual de teclas presionadas
+        private HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey>();
+        // Estado anterior de teclas presionadas
+        private HashSet<ConsoleKey> previousKeys = new HashSet<ConsoleKey>();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
@@ -123,22 +131,74 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                 Context.Exit();
             }
 
-            if (platform.TryGetLastKeyPressed(out ConsoleKey key))
+            ConsoleKey[] allKeys = (ConsoleKey[])Enum.GetValues(typeof(ConsoleKey));
+            HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>();
+            DateTime now = DateTime.UtcNow;
+            foreach (ConsoleKey k in allKeys)
             {
-                GameObjectQueryEnumerator.QueryEnumerable result = Context.SceneManager.World.Query<Not<RigidBody>>().EnumerateWithEntities();
-                foreach (GameObject gameObject in result)
+                if (platform.IsKeyDown(k))
+                    newKeys.Add(k);
+            }
+            // Detectar eventos
+            HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>(newKeys);
+            pressedKeys.ExceptWith(currentKeys); // Press: nuevas pulsaciones
+            HashSet<ConsoleKey> heldKeys = new HashSet<ConsoleKey>(newKeys);
+            heldKeys.IntersectWith(currentKeys); // Hold: mantenidas
+            HashSet<ConsoleKey> releasedKeys = new HashSet<ConsoleKey>(currentKeys);
+            releasedKeys.ExceptWith(newKeys); // Release: soltadas
+
+            // Actualizar timestamps y crear KeyEventInfo
+            foreach (ConsoleKey k in pressedKeys)
+            {
+                keyDownTimestamps[k] = now;
+            }
+            foreach (ConsoleKey k in releasedKeys)
+            {
+                keyDownTimestamps.TryGetValue(k, out DateTime downTime);
+                keyDownTimestamps.Remove(k);
+            }
+
+            GameObjectQueryEnumerator.QueryEnumerable result = Context.SceneManager.World.Query<Not<RigidBody>>().EnumerateWithEntities();
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
                 {
-                    foreach (ComponentId component in gameObject.ComponentTypes)
+                    Type componentType = component.Type;
+                    if (typeof(IOnPressKey).IsAssignableFrom(componentType))
                     {
-                        Type componentType = component.Type;
-                        if(typeof(IOnPressKey).IsAssignableFrom(componentType))
+                        IOnPressKey onPressKey = (IOnPressKey)gameObject.Get(componentType);
+                        foreach (ConsoleKey k in pressedKeys)
                         {
-                            IOnPressKey onPressKey = (IOnPressKey)gameObject.Get(componentType);
-                            onPressKey.OnPressKey(key);
+                            KeyEventInfo info = new KeyEventInfo(k, now, TimeSpan.Zero);
+                            onPressKey.OnPressKey(info);
+                        }
+                    }
+                    if (typeof(IOnHoldKey).IsAssignableFrom(componentType))
+                    {
+                        IOnHoldKey onHoldKey = (IOnHoldKey)gameObject.Get(componentType);
+                        foreach (ConsoleKey k in heldKeys)
+                        {
+                            keyDownTimestamps.TryGetValue(k, out DateTime downTime);
+                            KeyEventInfo info = new KeyEventInfo(k, now, now - downTime);
+                            onHoldKey.OnHoldKey(info);
+                        }
+                    }
+                    if (typeof(IOnReleaseKey).IsAssignableFrom(componentType))
+                    {
+                        IOnReleaseKey onReleaseKey = (IOnReleaseKey)gameObject.Get(componentType);
+                        foreach (ConsoleKey k in releasedKeys)
+                        {
+                            keyDownTimestamps.TryGetValue(k, out DateTime downTime);
+                            KeyEventInfo info = new KeyEventInfo(k, now, now - downTime);
+                            onReleaseKey.OnReleaseKey(info);
                         }
                     }
                 }
             }
+
+            // Actualizar los estados para el siguiente frame
+            previousKeys = new HashSet<ConsoleKey>(currentKeys);
+            currentKeys = newKeys;
 
             float pixelsPerMeter = PixelsPerMeter;
             Setting contextSetting = Context.Setting;

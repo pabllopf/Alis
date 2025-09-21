@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Ecs.Components.Render;
 
 namespace Alis.Core.Aspect.Fluent.Components
 {
@@ -38,9 +39,8 @@ namespace Alis.Core.Aspect.Fluent.Components
     public interface IOnPressKey 
     {
         /// <summary>
-        /// Ons the press key using the specified key
+        /// Ons the press key usando información extendida
         /// </summary>
-        /// <param name="key">The key</param>
-        void OnPressKey(ConsoleKey key);
+        void OnPressKey(KeyEventInfo info);
     }
 }

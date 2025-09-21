@@ -29,6 +29,7 @@
 
 #if winx64 || winx86 || winarm64 || winarm || win
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Graphic.Platforms.Win.Native;
@@ -125,6 +126,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// </summary>
         private IntPtr wndProcPtr;
 
+        private HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
 
         /// <summary>
         /// 
@@ -466,6 +468,13 @@ namespace Alis.Core.Graphic.Platforms.Win
                 if (msg.message == (uint) WindowMessage.KeyDown)
                 {
                     lastKeyPressed = (ConsoleKey) msg.wParam.ToInt32();
+                    pressedKeys.Add(lastKeyPressed.Value);
+                }
+
+                if (msg.message == (uint) WindowMessage.KeyUp)
+                {
+                    lastKeyPressed = null;
+                    pressedKeys.Remove((ConsoleKey) msg.wParam.ToInt32());
                 }
 
                 if (msg.message == (uint) WindowMessage.Close)
@@ -568,6 +577,11 @@ namespace Alis.Core.Graphic.Platforms.Win
             return false;
         }
 
+        public bool IsKeyDown(ConsoleKey key)
+        {
+            return pressedKeys.Contains(key);
+        }
+
         // ------------------------------------------------------------------
         // PRIVATE METHODS
         // ------------------------------------------------------------------
@@ -584,6 +598,11 @@ namespace Alis.Core.Graphic.Platforms.Win
                     return IntPtr.Zero;
                 case WindowMessage.KeyDown:
                     lastKeyPressed = (ConsoleKey) wParam.ToInt32();
+                    pressedKeys.Add(lastKeyPressed.Value);
+                    break;
+                case WindowMessage.KeyUp:
+                    lastKeyPressed = null;
+                    pressedKeys.Remove((ConsoleKey) wParam.ToInt32());
                     break;
                 case WindowMessage.Size:
                     width = lParam.ToInt32() & 0xFFFF;
