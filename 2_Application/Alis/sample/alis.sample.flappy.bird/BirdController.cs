@@ -34,6 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Audio;
 using Alis.Core.Ecs.Components.Collider;
+using Alis.Core.Ecs.Components.Render;
 
 namespace Alis.Sample.Flappy.Bird
 {
@@ -69,9 +70,9 @@ namespace Alis.Sample.Flappy.Bird
             
         }
 
-        public void OnPressKey(ConsoleKey key)
+        public void OnPressKey(KeyEventInfo info)
         {
-            if (key == ConsoleKey.Spacebar)
+            if (info.Key == ConsoleKey.Spacebar)
             {
                 boxCollider.Body.ApplyLinearImpulse(new Vector2F(0, 7));
                 Logger.Info("Go up!");
