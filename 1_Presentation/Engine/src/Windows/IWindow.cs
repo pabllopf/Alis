@@ -39,11 +39,11 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     Initializes this instance
         /// </summary>
-        void Initialize();
+        public void Initialize();
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        void Start();
+        public void Start();
     }
 }

@@ -37,6 +37,6 @@ namespace Alis.App.Engine.Core
         /// <summary>
         ///     Renders this instance
         /// </summary>
-        void Render();
+        public void Render();
     }
 }

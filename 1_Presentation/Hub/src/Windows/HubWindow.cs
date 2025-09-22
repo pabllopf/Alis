@@ -29,12 +29,14 @@
 
 using System;
 using System.IO;
-using Alis.App.Hub.Controllers;
+using Alis.App.Engine.Fonts;
+using Alis.App.Hub.Core;
+using Alis.App.Hub.Utils;
 using Alis.App.Hub.Windows.Sections;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
-using Alis.Extension.Graphic.Ui.Fonts;
+
 
 namespace Alis.App.Hub.Windows
 {
@@ -52,11 +54,6 @@ namespace Alis.App.Hub.Windows
         ///     The editor installation section
         /// </summary>
         public readonly EditorInstallationSection EditorInstallationSection;
-
-        /// <summary>
-        ///     The im gui controller
-        /// </summary>
-        private readonly ImGuiControllerImplementGlfw imGuiController;
 
         /// <summary>
         ///     The learn section
@@ -80,27 +77,34 @@ namespace Alis.App.Hub.Windows
         public readonly ProjectsSection ProjectsSection;
 
         /// <summary>
+        ///     The space work
+        /// </summary>
+        private readonly SpaceWork spaceWork;
+
+        /// <summary>
         ///     The selected menu item
         /// </summary>
         private int selectedMenuItem;
 
+        //private string searchQuery = " ";  // Variable para el buscador
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="HubWindow" /> class
         /// </summary>
-        /// <param name="imGuiController">The im gui controller</param>
-        public HubWindow(ImGuiControllerImplementGlfw imGuiController)
+        /// <param name="spaceWork">The space work</param>
+        public HubWindow(SpaceWork spaceWork) : base(spaceWork)
         {
-            this.imGuiController = imGuiController;
-            CommunitySection = new CommunitySection();
-            ProjectsSection = new ProjectsSection();
-            EditorInstallationSection = new EditorInstallationSection();
-            LearnSection = new LearnSection();
+            this.spaceWork = spaceWork;
+
+            CommunitySection = new CommunitySection(spaceWork);
+            ProjectsSection = new ProjectsSection(spaceWork);
+            EditorInstallationSection = new EditorInstallationSection(spaceWork);
+            LearnSection = new LearnSection(spaceWork);
         }
 
         /// <summary>
         ///     Ons the init
         /// </summary>
-        /// <param name="imGuiController"></param>
         public override void OnInit()
         {
             ProjectsSection.OnInit();
@@ -139,51 +143,47 @@ namespace Alis.App.Hub.Windows
             ImGuiIoPtr io = ImGui.GetIo();
             Vector2F screenSize = io.DisplaySize;
 
-            // Proporciones responsivas
-            float sidebarWidth = screenSize.X * 0.22f; // 22% del ancho
-            float sidebarPadding = screenSize.X * 0.01f; // 1% padding
-            float sidebarHeight = screenSize.Y - 2 * sidebarPadding;
-            float buttonWidth = sidebarWidth - 2 * sidebarPadding;
-            float buttonHeight = screenSize.Y * 0.09f; // 9% del alto
-            float iconSize = sidebarWidth * 0.16f; // 16% del ancho de la barra lateral
-            float preferencesButtonHeight = buttonHeight * 0.85f;
-            float preferencesButtonY = screenSize.Y - (preferencesButtonHeight + preferencesButtonHeight / 3 + sidebarPadding * 1.5f);
-
             ImGui.SetNextWindowPos(Vector2F.Zero);
             ImGui.SetNextWindowSize(screenSize);
 
-            ImGui.Begin("##MainWindow", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse);
+            ImGui.Begin("##MainWindow", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove);
 
-            ImGui.BeginChild("Sidebar", new Vector2F(sidebarWidth, sidebarHeight), true);
+            ImGui.BeginChild("Sidebar", new Vector2F(220, screenSize.Y - 20), true);
 
-            // Padding simétrico para los botones
-            float buttonPaddingX = sidebarPadding;
-            float buttonPaddingY = sidebarPadding;
-            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(buttonPaddingX, buttonPaddingY));
-            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(sidebarPadding, sidebarPadding));
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(10, 10));
+            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10, 10));
 
             // Mostrar el logo y el texto "ALIS"
             if (File.Exists(AssetManager.Find("Hub_logo.bmp")))
             {
-                //IntPtr textureId = ImageLoader.LoadTextureFromFile(AssetManager.Find("Hub_logo.bmp"));
-                //ImGui.Image(textureId, new Vector2F(iconSize, iconSize));
+                // Cargar y mostrar la imagen a una resolución más alta
+                IntPtr textureId = ImageLoader.LoadTextureFromFile(AssetManager.Find("Hub_logo.bmp"));
+                float iconSize = 50; // Aumenta el tamaño de la imagen
+                ImGui.Image(textureId, new Vector2F(iconSize, iconSize)); // Mostrar imagen más grande
                 ImGui.SameLine();
 
-                ImGui.PushFont(imGuiController.FontLoaded45Bold);
+                // Cambiar el tamaño de la fuente para que el texto sea más grande
+                ImGui.PushFont(spaceWork.FontLoaded45Bold); // Asegúrate de usar una fuente adecuada
+
+                // Centrar el texto "ALIS" vertical y horizontalmente con la imagen
                 Vector2F textSize = ImGui.CalcTextSize("ALIS");
-                float textY = (iconSize - textSize.Y) / 2;
-                ImGui.SetCursorPosY(ImGui.GetCursorPosY() + textY);
+                float textX = (iconSize - textSize.X) / 2; // Centrado horizontal
+                float textY = (iconSize - textSize.Y) / 2; // Centrado vertical
+
+                //ImGui.SetCursorPosX(ImGui.GetCursorPosX() + textX); // Centrar en el eje X
+                ImGui.SetCursorPosY(ImGui.GetCursorPosY() + textY); // Centrar en el eje Y
                 ImGui.Text("ALIS");
-                ImGui.PopFont();
+
+                ImGui.PopFont(); // Restaurar la fuente predeterminada
             }
 
             ImGui.Separator();
             ImGui.PopStyleVar(2);
 
-            ButtonsLeftMenu(buttonWidth, buttonHeight, buttonPaddingX, buttonPaddingY, sidebarPadding);
+            ButtonsLeftMenu();
 
-            ImGui.SetCursorPosY(preferencesButtonY);
-            if (ImGui.Button($"{FontAwesome5.Cog} Preferences", new Vector2F(buttonWidth, preferencesButtonHeight)))
+            ImGui.SetCursorPosY(screenSize.Y - 70);
+            if (ImGui.Button($"{FontAwesome5.Cog} Preferences", new Vector2F(200, 40)))
             {
                 OpenPreferences();
             }
@@ -193,7 +193,7 @@ namespace Alis.App.Hub.Windows
             ImGui.EndChild();
 
             ImGui.SameLine();
-            ImGui.BeginChild("MainContent", new Vector2F(screenSize.X - sidebarWidth - sidebarPadding, screenSize.Y - 2 * sidebarPadding), false);
+            ImGui.BeginChild("MainContent", new Vector2F(screenSize.X - 220, screenSize.Y - 20), false);
             RenderMainContent();
             ImGui.EndChild();
 
@@ -263,21 +263,23 @@ namespace Alis.App.Hub.Windows
         /// <summary>
         ///     Buttonses the left menu
         /// </summary>
-        private void ButtonsLeftMenu(float buttonWidth, float buttonHeight, float buttonPaddingX, float buttonPaddingY, float sidebarPadding)
+        private void ButtonsLeftMenu()
         {
             for (int i = 0; i < menuItems.Length; i++)
             {
-                ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 5.0f);
-                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(sidebarPadding, sidebarPadding));
+                // Definir los estilos antes de cada botón
+                ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 5.0f); // Redondear las esquinas
+                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10, 10)); // Espaciado entre los items
                 ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2F(0, 0.5f));
-                ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(buttonPaddingX, buttonPaddingY));
 
-                if (ImGui.Button(menuItems[i], new Vector2F(buttonWidth, buttonHeight)))
+                // Crear el botón con la alineación adecuada
+                if (ImGui.Button(menuItems[i], new Vector2F(200, 40)))
                 {
-                    selectedMenuItem = i;
+                    selectedMenuItem = i; // Establecer el botón como seleccionado
                 }
 
-                ImGui.PopStyleVar(4);
+                // Restaurar los estilos después de cada botón
+                ImGui.PopStyleVar(3); // Restaurar ItemSpacing y FrameRounding
             }
         }
 

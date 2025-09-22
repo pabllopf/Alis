@@ -32,11 +32,15 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Alis.App.Hub.Elements;
+using Alis.App.Hub.Core;
+using Alis.App.Hub.Entity;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
+
 
 namespace Alis.App.Hub.Windows.Sections
 {
@@ -71,7 +75,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Initializes a new instance of the <see cref="EditorInstallationSection" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public EditorInstallationSection()
+        public EditorInstallationSection(SpaceWork spaceWork) : base(spaceWork)
         {
         }
 
@@ -227,35 +231,9 @@ namespace Alis.App.Hub.Windows.Sections
             {
                 client.DefaultRequestHeaders.Add("User-Agent", "request");
                 string response = await client.GetStringAsync("https://api.github.com/repos/pabllopf/alis/releases");
+                List<Dictionary<string, object>> releases = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(response);
 
-                // TODO: Fix deserialization
-                //List<Dictionary<string, object>> releases = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(response);
-
-                List<Dictionary<string, object>> releases = new List<Dictionary<string, object>>
-                {
-                    new Dictionary<string, object>
-                    {
-                        {"tag_name", "v1.0.0"}
-                    },
-                    new Dictionary<string, object>
-                    {
-                        {"tag_name", "v0.9.1"}
-                    }
-                };
-
-                List<string> versionList = new List<string>
-                {
-                    "v0.9.0",
-                    "v0.8.0",
-                    "v0.7.0",
-                    "v0.6.0",
-                    "v0.5.0",
-                    "v0.4.0",
-                    "v0.3.0",
-                    "v0.2.0",
-                    "v0.1.0"
-                };
-
+                List<string> versionList = new List<string>();
                 foreach (Dictionary<string, object> release in releases)
                 {
                     string version = release["tag_name"]?.ToString();

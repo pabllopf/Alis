@@ -1,0 +1,10 @@
+{
+  "__type": "Alis.Core.Ecs.System.Configuration.General.GeneralSetting",
+  "_Debug_": true,
+  "_Name_": "Rogue Legacy",
+  "_Description_": "Sample of a rogue legacy game",
+  "_Version_": "0.0.1",
+  "_Author_": "Pablo Perdomo Falcón",
+  "_License_": "GNU General Public License v3.0",
+  "_Icon_": "logo.bmp"
+}

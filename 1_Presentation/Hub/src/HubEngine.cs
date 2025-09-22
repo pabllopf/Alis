@@ -27,8 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.App.Hub.Controllers;
-using Alis.App.Hub.Windows;
+using Alis.App.Hub.Core;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Sdl2;
+using Alis.Extension.Graphic.Sdl2.Structs;
+using Alis.Extension.Graphic.Ui;
 
 namespace Alis.App.Hub
 {
@@ -38,14 +41,9 @@ namespace Alis.App.Hub
     public class HubEngine
     {
         /// <summary>
-        ///     The hub window
+        ///     The windows
         /// </summary>
-        private HubWindow hubWindow;
-
-        /// <summary>
-        ///     The im gui controller
-        /// </summary>
-        private ImGuiControllerImplementGlfw imGuiController;
+        private readonly SpaceWork spaceWork = new SpaceWork();
 
         /// <summary>
         ///     Starts this instance
@@ -53,36 +51,35 @@ namespace Alis.App.Hub
         /// <returns>The int</returns>
         public void Run()
         {
-            imGuiController = new ImGuiControllerImplementGlfw(
-                "Welcome to Alis by @pabllopf",
-                1025,
-                575,
-                1,
-                false);
+            spaceWork.OnInit();
+            spaceWork.OnStart();
 
-            hubWindow = new HubWindow(imGuiController);
-
-            imGuiController.OnInit();
-            imGuiController.OnStart();
-
-            hubWindow.OnInit();
-            hubWindow.OnStart();
-
-            while (imGuiController.IsRunning)
+            while (spaceWork.IsRunning)
             {
-                imGuiController.OnPollEvents();
+                while (Sdl.PollEvent(out Event e) != 0)
+                {
+                    spaceWork.OnEvent(e);
+                }
 
-                imGuiController.OnStartFrame();
+                spaceWork.OnStartRender();
 
-                imGuiController.OnRenderFrame();
+                ImGui.SetNextWindowPos(spaceWork.ViewportHub.WorkPos);
+                ImGui.SetNextWindowSize(spaceWork.ViewportHub.Size);
+                ImGui.Begin("DockSpace Demo", spaceWork.Dockspaceflags);
 
-                hubWindow.OnRender();
+                Vector2F dockSize = spaceWork.ViewportHub.Size - new Vector2F(5, 85);
+                uint dockSpaceId = ImGui.GetId("MyDockSpace");
+                ImGui.DockSpace(dockSpaceId, dockSize);
 
-                imGuiController.OnEndFrame();
+                spaceWork.OnUpdate();
+
+                ImGui.End();
+
+
+                spaceWork.OnEndRender();
             }
 
-            hubWindow.OnDestroy();
-            imGuiController.OnExit();
+            spaceWork.OnDestroy();
         }
     }
 }

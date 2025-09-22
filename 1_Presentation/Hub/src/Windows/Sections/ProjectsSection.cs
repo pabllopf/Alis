@@ -34,12 +34,15 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Alis.App.Hub.Elements;
+using Alis.App.Engine.Fonts;
+using Alis.App.Hub.Core;
+using Alis.App.Hub.Entity;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
-using Alis.Extension.Graphic.Ui.Fonts;
 using Alis.Extension.Io.FileDialog;
 
 namespace Alis.App.Hub.Windows.Sections
@@ -97,7 +100,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Initializes a new instance of the <see cref="ProjectsSection" /> class
         /// </summary>
         /// <param name="spaceWork">The space work</param>
-        public ProjectsSection()
+        public ProjectsSection(SpaceWork spaceWork) : base(spaceWork)
         {
         }
 
@@ -109,13 +112,9 @@ namespace Alis.App.Hub.Windows.Sections
         {
             Logger.Info($"Opening project: {project.Name}");
 
-            // TODO: fix the save config 
-
-            //string projectConfig = JsonSerializer.Serialize(project);
-
-
+            string projectConfig = JsonSerializer.Serialize(project);
             string configFilePath = Path.Combine(Path.GetTempPath(), "projectConfig.json");
-            //File.WriteAllText(configFilePath, projectConfig);
+            File.WriteAllText(configFilePath, projectConfig);
 
             string enginePath = GetEnginePath(project.EditorVersion);
 
@@ -145,7 +144,7 @@ namespace Alis.App.Hub.Windows.Sections
         {
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string editorPath = Path.Combine(basePath, "Editor", editorVersion);
-            string searchPattern = OperatingSystem.IsWindows() ? "Alis.App.Engine.Desktop.exe" : "Alis.App.Engine.Desktop";
+            string searchPattern = OperatingSystem.IsWindows() ? "Alis.App.Engine.exe" : "Alis.App.Engine";
 
             string[] files = Directory.GetFiles(editorPath, searchPattern, SearchOption.AllDirectories);
             if (files.Length == 0)
