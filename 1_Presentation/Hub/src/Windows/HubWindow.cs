@@ -153,6 +153,7 @@ namespace Alis.App.Hub.Windows
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(10, 10));
             ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10, 10));
 
+            /*
             // Mostrar el logo y el texto "ALIS"
             if (File.Exists(AssetManager.Find("Hub_logo.bmp")))
             {
@@ -175,7 +176,7 @@ namespace Alis.App.Hub.Windows
                 ImGui.Text("ALIS");
 
                 ImGui.PopFont(); // Restaurar la fuente predeterminada
-            }
+            }*/
 
             ImGui.Separator();
             ImGui.PopStyleVar(2);
