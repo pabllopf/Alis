@@ -28,11 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Systems.Scope;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Flappy.Bird
 {
@@ -40,7 +42,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The bird idle class
     /// </summary>
     
-    public class BirdIdle : IInitable, IUpdateable
+    public class BirdIdle : IInitable, IUpdateable, IHasContext<Context>
     {
         /// <summary>
         ///     The range movement
@@ -84,8 +86,8 @@ namespace Alis.Sample.Flappy.Bird
 
             Vector2F scale = t.Scale;
 
-            /*
-            float rotation  = t.Rotation;
+
+            float rotation = t.Rotation;
 
             // create a new position:
             Vector2F newPosition;
@@ -101,7 +103,7 @@ namespace Alis.Sample.Flappy.Bird
                     Scale = scale
                 };
 
-                GameObject.Transform = transform;
+                self.Get<Transform>() = transform;
             }
             else if (goDown && !goUp)
             {
@@ -114,7 +116,7 @@ namespace Alis.Sample.Flappy.Bird
                     Scale = scale
                 };
 
-                GameObject.Transform = transform;
+                self.Get<Transform>() = transform;
             }
 
             if (y < defaultPosition.Y - RangeMovement)
@@ -127,7 +129,9 @@ namespace Alis.Sample.Flappy.Bird
             {
                 goUp = true;
                 goDown = false;
-            }*/
+            }
         }
+
+        public Context Context { get; set; }
     }
 }

@@ -29,6 +29,8 @@
 
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Core.Ecs.Components.Render
 {
@@ -39,7 +41,10 @@ namespace Alis.Core.Ecs.Components.Render
     /// <seealso cref="IUpdateable" />
     /// <seealso cref="IHasBuilder{SpriteBuilder}" />
     /// <seealso cref="IBuild{Sprite}" />
-    public interface ISprite
+    public interface ISprite:
+        IInitable, 
+        IUpdateable,
+        IHasContext<Context>
     {
     }
 }

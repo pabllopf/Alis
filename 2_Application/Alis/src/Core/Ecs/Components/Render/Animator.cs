@@ -4,6 +4,7 @@ using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Time;
+using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Core.Ecs.Components.Render;
 
@@ -160,4 +161,6 @@ public struct Animator : IAnimator
             sprite.LoadTexture(AssetManager.Find(textureName));
         }
     }
+
+    public Context Context { get; set; }
 }

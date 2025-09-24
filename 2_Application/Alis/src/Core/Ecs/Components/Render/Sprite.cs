@@ -34,6 +34,7 @@ using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Graphic;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
@@ -43,13 +44,8 @@ namespace Alis.Core.Ecs.Components.Render
     /// <summary>
     ///     The sprite
     /// </summary>
-    public record struct Sprite(string NameFile, int Depth) : ISprite, IInitable, IUpdateable
+    public record struct Sprite(Context context, string NameFile, int Depth) : ISprite
     {
-        /// <summary>
-        ///     The game object
-        /// </summary>
-        private IGameObject gameObject;
-
         /// <summary>
         ///     The image handle
         /// </summary>
@@ -134,7 +130,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void Init(IGameObject self)
         {
-            gameObject = self;
+            
         }
 
         /// <summary>
@@ -237,8 +233,8 @@ namespace Alis.Core.Ecs.Components.Render
         /// </summary>
         private void SetupBuffers()
         {
-            int windowWidth = 800;
-            int windowHeight = 600;
+            int windowWidth = (int)Context.Setting.Graphic.WindowSize.X;
+            int windowHeight = (int)Context.Setting.Graphic.WindowSize.Y;
 
             float scaleX = Size.X / windowWidth;
             float scaleY = Size.Y / windowHeight;
@@ -294,7 +290,7 @@ namespace Alis.Core.Ecs.Components.Render
             }
 
             Vector2F position = gameobject.Get<Transform>().Position;
-            float spriteRotation = gameobject.Get<Transform>().Rotation.R;
+            float spriteRotation = gameobject.Get<Transform>().Rotation;
 
             Gl.GlUseProgram(ShaderProgram);
             Gl.GlBindVertexArray(Vao);
@@ -343,5 +339,7 @@ namespace Alis.Core.Ecs.Components.Render
         public void Init(GameObject self)
         {
         }
+
+        public Context Context { get; set; } = context;
     }
 }

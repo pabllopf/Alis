@@ -30,13 +30,14 @@
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Core.Ecs.Components.Render
 {
     /// <summary>
     ///     The camera
     /// </summary>
-    public struct Camera(Vector2F position, Vector2F resolution) : ICamera
+    public struct Camera(Context context, Vector2F position, Vector2F resolution) : ICamera
     {
         /// <summary>
         ///     The position
@@ -72,5 +73,7 @@ namespace Alis.Core.Ecs.Components.Render
         public void Init(GameObject self)
         {
         }
+
+        public Context Context { get; set; } = context;
     }
 }

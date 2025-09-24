@@ -254,7 +254,7 @@ namespace Alis.Core.Ecs.Components.Collider
                 if (Body is not null)
                 {
                     transform.Position = Body.Position;
-                    transform.Rotation.Phase = Body.Rotation;
+                    transform.Rotation = Body.Rotation;
                 }
             }
         }
@@ -406,7 +406,7 @@ namespace Alis.Core.Ecs.Components.Collider
 
             Vector2F colliderPosition = transform.Position;
             Vector2F colliderScale = transform.Scale;
-            Complex colliderRotation = transform.Rotation;
+            float colliderRotation = transform.Rotation;
 
             float posX = colliderPosition.X * pixelsPerMeter;
             float posY = colliderPosition.Y * pixelsPerMeter;

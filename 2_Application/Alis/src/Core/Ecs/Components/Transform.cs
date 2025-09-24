@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs.Components
         /// <summary>
         ///     The rotation
         /// </summary>
-        public Complex Rotation;
+        public float Rotation;
 
         /// <summary>
         ///     The scale
@@ -76,12 +76,11 @@ namespace Alis.Core.Ecs.Components
         /// </summary>
         /// <param name="position">The position.</param>
         /// <param name="rotation">The rotation</param>
-        public Transform(Vector2F position, Complex rotation)
+        public Transform(Vector2F position, float rotation)
         {
             Rotation = rotation;
             Position = position;
             Scale = Vector2F.One; // Default scale is 1,1
-          
         }
 
         /// <summary>
@@ -90,35 +89,11 @@ namespace Alis.Core.Ecs.Components
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
         /// <param name="scale">The scale</param>
-        public Transform(Vector2F position, Complex rotation, Vector2F scale)
+        public Transform(Vector2F position, float rotation, Vector2F scale)
         {
             Rotation = rotation;
             Position = position;
             Scale = scale;
-
-        }
-
-        /// <summary>
-        ///     Initialize using a position vector and a rotation.
-        /// </summary>
-        /// <param name="position">The position.</param>
-        /// <param name="angle">The rotation angle</param>
-        public Transform(Vector2F position, float angle)
-            : this(position, Complex.FromAngle(angle))
-        {
-           
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Transform" /> class
-        /// </summary>
-        /// <param name="position">The position</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="scale">The scale</param>
-        public Transform(Vector2F position, float angle, Vector2F scale)
-            : this(position, Complex.FromAngle(angle), scale)
-        {
-            
         }
     }
 }
