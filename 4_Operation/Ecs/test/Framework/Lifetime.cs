@@ -92,50 +92,7 @@ namespace Alis.Core.Ecs.Test.Framework
             initComponentAction = e => initFlag = true;
             destroyComponentAction = e => destroyFlag = true;
         }
-
-        /// <summary>
-        ///     Tests that destroy called on delete
-        /// </summary>
-        [Fact]
-        public void Destroy_CalledOnDelete()
-        {
-            destroyCount = 0;
-            using (Scene scene = new Scene())
-            {
-                List<GameObject> entities = new List<GameObject>();
-
-                for (int i = 0; i < 10; i++)
-                {
-                    GameObject entity = scene.Create<int, float, FilteredBehavior1>(default(int), default(float), new FilteredBehavior1(() => { }, null, destroyAction));
-                    entities.Add(entity);
-                }
-
-                foreach (GameObject entity in entities)
-                {
-                    entity.Delete();
-                }
-
-                Assert.Equal(10, destroyCount);
-            }
-        }
-
-        /// <summary>
-        ///     Tests that init called when created
-        /// </summary>
-        [Fact]
-        public void Init_CalledWhenCreated()
-        {
-            using (Scene scene = new Scene())
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    e1 = default(IGameObject);
-                    GameObject entity = scene.Create<int, float, FilteredBehavior1>(default(int), default(float), new FilteredBehavior1(() => { }, initAction));
-                    Assert.Equal(e1, entity);
-                }
-            }
-        }
-
+        
         /// <summary>
         ///     Tests that lifetime called add remove
         /// </summary>

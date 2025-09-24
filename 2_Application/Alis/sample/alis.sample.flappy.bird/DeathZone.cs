@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
@@ -45,7 +46,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The death zone class
     /// </summary>
     
-    public class DeathZone : IInitable, IGameObjectComponent
+    public class DeathZone : IInitable, IUpdateable, IHasContext<Context>
     {
         /// <summary>
         ///     The is death
@@ -127,7 +128,7 @@ namespace Alis.Sample.Flappy.Bird
                     Deadthing();
                 }
 
-                CounterTimeDeath -= 1f * TimeManager.DeltaTime;
+                CounterTimeDeath -= 1f * Context.TimeManager.DeltaTime;
                 if (CounterTimeDeath <= 0.0f)
                 {
                     SceneManager.LoadScene("Main_Menu");
@@ -135,5 +136,7 @@ namespace Alis.Sample.Flappy.Bird
                 }
             }
         }
+
+        public Context Context { get; set; }
     }
 }

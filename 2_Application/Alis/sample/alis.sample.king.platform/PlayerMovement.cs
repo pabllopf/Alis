@@ -12,7 +12,7 @@ namespace Alis.Sample.King.Platform
     /// <summary>
     /// The player movement
     /// </summary>
-    public struct PlayerMovement : IInitable, IGameObjectComponent, IOnPressKey, IOnHoldKey, IOnReleaseKey
+    public struct PlayerMovement : IInitable, IUpdateable, IOnPressKey, IOnHoldKey, IOnReleaseKey
     {
         /// <summary>
         /// The jump force

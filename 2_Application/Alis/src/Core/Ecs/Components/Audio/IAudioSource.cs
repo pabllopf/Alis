@@ -27,12 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Ecs.Systems.Scope;
+
 namespace Alis.Core.Ecs.Components.Audio
 {
     /// <summary>
     ///     The audio source interface
     /// </summary>
-    public interface IAudioSource
+    public interface IAudioSource : 
+        IInitable, 
+        IUpdateable,
+        IHasContext<Context>
     {
+        
+        void Play();
+        
+        void Stop();
+        
+        void Resume();
     }
 }

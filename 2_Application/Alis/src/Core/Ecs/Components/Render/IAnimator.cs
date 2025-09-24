@@ -35,8 +35,8 @@ namespace Alis.Core.Ecs.Components.Render
     ///     The animator interface
     /// </summary>
     /// <seealso cref="IInitable" />
-    /// <seealso cref="IGameObjectComponent" />
-    public interface IAnimator : IInitable, IGameObjectComponent
+    /// <seealso cref="IUpdateable" />
+    public interface IAnimator : IInitable, IUpdateable
     {
     }
 }

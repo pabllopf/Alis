@@ -36,7 +36,7 @@ namespace Alis.Sample.Asteroid
     /// The health controller class
     /// </summary>
     
-    public class HealthController : IInitable, IGameObjectComponent
+    public class HealthController : IInitable, IUpdateable
     {
         /*
         /// <summary>

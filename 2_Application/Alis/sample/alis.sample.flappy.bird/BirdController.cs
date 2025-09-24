@@ -42,7 +42,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The bird controller class
     /// </summary>
     
-    public class BirdController : IInitable, IGameObjectComponent, IOnPressKey
+    public class BirdController : IInitable, IUpdateable, IOnPressKey
     {
         /// <summary>
         ///     The audio source

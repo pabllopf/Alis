@@ -358,8 +358,8 @@ namespace Alis.Core.Ecs.Generator
                 .Append("global::").Append(model.FullName)
                 .Append("), new ");
 
-            (model.ImplInterface == RegistryHelpers.TargetInterfaceName ? cb.Append("None") : cb.Append(model.ImplInterface, span.Start, span.Count))
-                .Append("UpdateRunnerFactory")
+            (model.ImplInterface == RegistryHelpers.TargetInterfaceName ? cb.Append("NoneUpdate") : cb.Append("Update"))
+                .Append("RunnerFactory")
                 .Append('<')
                 .Append("global::").Append(model.FullName);
 

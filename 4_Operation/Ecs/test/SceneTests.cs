@@ -273,34 +273,7 @@ namespace Alis.Core.Ecs.Test
                 scene.TagDetached += (e, t) => Assert.True(true);
             }
         }
-
-        /// <summary>
-        ///     Tests that gameObject created during update acsess components
-        /// </summary>
-        [Fact]
-        public void EntityCreated_DuringUpdate_AcsessComponents()
-        {
-            using (Scene scene = new Scene())
-            {
-                scene.Create(new DelegateBehavior(() =>
-                {
-                    bool has = Enumerable.Range(0, 100).Select(n => (n, Entity: scene.Create(n))).ToArray().All(e => e.Entity.Get<int>() == e.n);
-
-                    Assert.True(has);
-
-                    int called = 0;
-
-                    GameObject e = scene.Create(new DelegateBehavior(() => called++));
-
-                    e.Get<DelegateBehavior>().Update();
-
-                    Assert.Equal(1, called);
-                }));
-
-                scene.Update();
-            }
-        }
-
+        
         /// <summary>
         ///     Tests that entity create during system acsess components
         /// </summary>

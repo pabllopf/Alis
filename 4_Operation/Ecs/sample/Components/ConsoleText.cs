@@ -36,13 +36,13 @@ namespace Alis.Core.Ecs.Sample.Components
     /// <summary>
     ///     The console text
     /// </summary>
-    internal struct ConsoleText(ConsoleColor Color) : IComponent<string>
+    internal struct ConsoleText(ConsoleColor Color) : IUpdateable<string>
     {
         /// <summary>
         ///     Updates the str
         /// </summary>
         /// <param name="str">The str</param>
-        public void Update(ref string str)
+        public void Update(IGameObject self, ref string str)
         {
             Console.ForegroundColor = Color;
             Logger.Info(str);

@@ -62,34 +62,6 @@ namespace Alis.Core.Ecs.Test.Generator
         }
         
         /// <summary>
-        ///     Tests that registered properly in global namespace
-        /// </summary>
-        [Fact]
-        public void RegisteredProperly_InGlobalNamespace() =>
-            TestTypeRegistration<InGlobalNamespace>(TypeRegistrationFlags.Updateable);
-
-        /// <summary>
-        ///     Tests that registered properly in global namespace inner
-        /// </summary>
-        [Fact]
-        public void RegisteredProperly_InGlobalNamespaceInner() =>
-            TestTypeRegistration<InGlobalNamespace.Inner<object>>(default(TypeRegistrationFlags));
-
-        /// <summary>
-        ///     Tests that registered properly derived
-        /// </summary>
-        [Fact]
-        public void RegisteredProperly_Derived() =>
-            TestTypeRegistration<Derived>(TypeRegistrationFlags.Updateable);
-
-        /// <summary>
-        ///     Tests that registered properly derived inner
-        /// </summary>
-        [Fact]
-        public void RegisteredProperly_DerivedInner() =>
-            TestTypeRegistration<Derived.DerivedInner>(TypeRegistrationFlags.Initable | TypeRegistrationFlags.Updateable);
-
-        /// <summary>
         ///     Tests the type registration using the specified type flags
         /// </summary>
         /// <typeparam name="T">The </typeparam>
@@ -151,123 +123,24 @@ namespace Alis.Core.Ecs.Test.Generator
                 }
             }
 
-            /// <summary>
-            ///     The inner partially class
-            /// </summary>
-            /// <seealso cref="IComponent" />
-            private partial class InnerPartially<T1> : IComponent
-            {
-                /// <summary>
-                ///     Updates this instance
-                /// </summary>
-                /// <exception cref="UpdateException"></exception>
-                public void Update()
-                {
-                    throw new UpdateException();
-                }
-            }
         }
 
         /// <summary>
-        ///     The indirect interface
+        ///     The initalize exception class
         /// </summary>
-        private partial struct IndirectInterface : ILifetimeInterface
-        {
-            /// <summary>
-            ///     Destroys this instance
-            /// </summary>
-            /// <exception cref="DestroyException"></exception>
-            public void Destroy()
-            {
-                throw new DestroyException();
-            }
-
-            /// <summary>
-            ///     Inits the self
-            /// </summary>
-            /// <param name="self">The self</param>
-            /// <exception cref="InitalizeException"></exception>
-            public void Init(IGameObject self)
-            {
-                throw new InitalizeException();
-            }
-
-            /// <summary>
-            ///     Updates this instance
-            /// </summary>
-            /// <exception cref="UpdateException"></exception>
-            public void Update()
-            {
-                throw new UpdateException();
-            }
-        }
-    }
-
-    /// <summary>
-    ///     The in global namespace class
-    /// </summary>
-    /// <seealso cref="IComponent" />
-    public partial class InGlobalNamespace : IComponent
-    {
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        /// <exception cref="UpdateException"></exception>
-        public void Update()
-        {
-            throw new UpdateException();
-        }
+        /// <seealso cref="Exception" />
+        public class InitalizeException : Exception;
 
         /// <summary>
-        ///     The inner
+        ///     The destroy exception class
         /// </summary>
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        public partial struct Inner<T> : IComponentBase
-        {
-            /// <summary>
-            ///     The unbound
-            /// </summary>
-            [StructLayout(LayoutKind.Sequential, Pack = 1)]
-            public partial struct Unbound<T1> : IComponent<T1>
-            {
-                /// <summary>
-                ///     Updates the uniform
-                /// </summary>
-                /// <param name="uniform">The uniform</param>
-                /// <exception cref="UpdateException"></exception>
-                public void Update(ref T1 uniform)
-                {
-                    throw new UpdateException();
-                }
-            }
-        }
+        /// <seealso cref="Exception" />
+        public class DestroyException : Exception;
+
+        /// <summary>
+        ///     The update exception class
+        /// </summary>
+        /// <seealso cref="Exception" />
+        public class UpdateException : Exception;
     }
-
-    /// <summary>
-    ///     The lifetime interface interface
-    /// </summary>
-    /// <seealso cref="IComponent" />
-    /// <seealso cref="IInitable" />
-    /// <seealso cref="IDestroyable" />
-    internal interface ILifetimeInterface : IComponent, IInitable, IDestroyable
-    {
-    }
-
-    /// <summary>
-    ///     The initalize exception class
-    /// </summary>
-    /// <seealso cref="Exception" />
-    public class InitalizeException : Exception;
-
-    /// <summary>
-    ///     The destroy exception class
-    /// </summary>
-    /// <seealso cref="Exception" />
-    public class DestroyException : Exception;
-
-    /// <summary>
-    ///     The update exception class
-    /// </summary>
-    /// <seealso cref="Exception" />
-    public class UpdateException : Exception;
 }

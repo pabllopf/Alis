@@ -31,7 +31,7 @@ using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Core.Ecs.Components
 {
-    public record struct Info : IInitable, IGameObjectComponent
+    public record struct Info : IInitable, IUpdateable
     {
         /// <summary>
         /// The name

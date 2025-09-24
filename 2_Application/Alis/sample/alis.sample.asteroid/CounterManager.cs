@@ -35,7 +35,7 @@ namespace Alis.Sample.Asteroid
     /// <summary>
     /// The counter manager class
     /// </summary>
-    public class CounterManager : IInitable , IGameObjectComponent
+    public class CounterManager : IInitable , IUpdateable
     {
         /*
         /// <summary>

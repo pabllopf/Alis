@@ -30,6 +30,7 @@
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Components.Audio;
+using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Builder.Core.Ecs.Components.Audio
 {
@@ -43,6 +44,8 @@ namespace Alis.Builder.Core.Ecs.Components.Audio
         IVolume<AudioSourceBuilder, float>,
         IMute<AudioSourceBuilder, bool>
     {
+        private Context context;
+        
         /// <summary>
         ///     The is mute
         /// </summary>
@@ -72,8 +75,13 @@ namespace Alis.Builder.Core.Ecs.Components.Audio
         ///     Builds this instance
         /// </summary>
         /// <returns>The audio clip</returns>
-        public AudioSource Build() => new AudioSource(nameFile, volume, isMute, playOnAwake, loop);
+        public AudioSource Build() => new AudioSource(context, nameFile, volume, isMute, playOnAwake, loop);
 
+        public AudioSourceBuilder(Context context)
+        {
+            this.context = context;
+        }
+        
         /// <summary>
         ///     Files the path using the specified value
         /// </summary>

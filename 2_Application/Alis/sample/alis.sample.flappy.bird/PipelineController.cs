@@ -42,7 +42,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The pipeline controller class
     /// </summary>
     
-    public class PipelineController : IInitable, IGameObjectComponent
+    public class PipelineController : IInitable, IUpdateable
     {
         /// <summary>
         ///     The random height

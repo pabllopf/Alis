@@ -40,7 +40,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The counter controller class
     /// </summary>
     
-    public class CounterController : IInitable, IGameObjectComponent
+    public class CounterController : IInitable, IUpdateable
     {
         /// <summary>
         ///     The audio source

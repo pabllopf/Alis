@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
@@ -40,7 +41,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The floor animation class
     /// </summary>
     
-    public class FloorAnimation : IInitable, IGameObjectComponent
+    public class FloorAnimation : IInitable, IUpdateable, IHasContext<Context>
     {
         /// <summary>
         ///     The velocity
@@ -68,12 +69,14 @@ namespace Alis.Sample.Flappy.Bird
             float y = t.Position.Y;
 
             // get the velocity of game object:
-            float displace = Velocity * TimeManager.DeltaTime;
+            float displace = Velocity * Context.TimeManager.DeltaTime;
 
             // if the x position is less than -50.0f, then reset the x position to 0.0f
             Vector2F newPosition = x < -1.0f ? new Vector2F(xOld, y) : new Vector2F(x - displace, y);
             
             t.Position = newPosition;
         }
+
+        public Context Context { get; set; }
     }
 }

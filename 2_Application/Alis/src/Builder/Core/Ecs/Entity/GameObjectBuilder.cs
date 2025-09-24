@@ -4,11 +4,13 @@ using Alis.Builder.Core.Ecs.Components.Collider;
 using Alis.Builder.Core.Ecs.Components.Render;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Components.Audio;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
+using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 
@@ -28,6 +30,8 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// The game object
         /// </summary>
         private GameObject gameObject;
+        
+        private Context context;
 
         private Info info = new Info
         {
@@ -42,10 +46,11 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// Initializes a new instance of the <see cref="GameObjectBuilder"/> class
         /// </summary>
         /// <param name="scene">The scene</param>
-        public GameObjectBuilder(Scene scene)
+        public GameObjectBuilder(Scene scene, Context context)
         {
             this.scene = scene;
             this.gameObject = scene.Create();
+            this.context = context;
         }
 
         /// <summary>
@@ -120,7 +125,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <returns>The game object builder</returns>
         public GameObjectBuilder WithComponent<T>(AudioSourceConfig<T> config) where T : IAudioSource, new()
         {
-            AudioSourceBuilder audioBuilder = new AudioSourceBuilder();
+            AudioSourceBuilder audioBuilder = new AudioSourceBuilder(context);
             config(audioBuilder);
             AudioSource audio = audioBuilder.Build();
             gameObject.Add<AudioSource>(audio);
@@ -135,7 +140,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <returns>The game object builder</returns>
         public GameObjectBuilder WithComponent<T>(BoxColliderConfig<T> config) where T : IBoxCollider, new()
         {
-            BoxColliderBuilder boxColliderBuilder = new BoxColliderBuilder();
+            BoxColliderBuilder boxColliderBuilder = new BoxColliderBuilder(context);
             config(boxColliderBuilder);
             BoxCollider boxCollider = boxColliderBuilder.Build();
             gameObject.Add<BoxCollider>(boxCollider);
@@ -148,9 +153,16 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <typeparam name="T">The </typeparam>
         /// <param name="config">The config</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder WithComponent<T>(Action<T> config) where T : IGameObjectComponent, new()
+        public GameObjectBuilder WithComponent<T>(Action<T> config) where T : IUpdateable, new()
         {
             T component = new T();
+
+            // if component has interface IHasContext<Context>, set the context:
+            if (component is IHasContext<Context> hasContext)
+            {
+                hasContext.Context = context;
+            }
+            
             config(component);
             gameObject.Add<T>(component);
             return this;
@@ -161,9 +173,16 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder WithComponent<T>() where T : IGameObjectComponent, new()
+        public GameObjectBuilder WithComponent<T>() where T : IUpdateable, new()
         {
             T component = new T();
+            
+            // if component has interface IHasContext<Context>, set the context:
+            if (component is IHasContext<Context> hasContext)
+            {
+                hasContext.Context = context;
+            }
+            
             gameObject.Add<T>(component);
             return this;
         }
@@ -174,8 +193,13 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder WithComponent<T>(T component) where T : IGameObjectComponent, new()
+        public GameObjectBuilder WithComponent<T>(T component) where T : IUpdateable, new()
         {
+            if (component is IHasContext<Context> hasContext)
+            {
+                hasContext.Context = context;
+            }
+            
             gameObject.Add<T>(component);
             return this;
         }

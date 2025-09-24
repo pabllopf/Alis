@@ -41,7 +41,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The main menu controller class
     /// </summary>
     
-    public class MainMenuController : IInitable, IGameObjectComponent, IOnPressKey
+    public class MainMenuController : IInitable, IUpdateable, IOnPressKey
     {
         public void Init(IGameObject self)
         {

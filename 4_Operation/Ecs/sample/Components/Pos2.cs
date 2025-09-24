@@ -32,7 +32,7 @@ using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Ecs.Sample.Components
 {
-    internal record struct Pos2(float X = 0) : IInitable, IGameObjectComponent
+    internal record struct Pos2(float X = 0) : IInitable, IUpdateable
     {
         /// <summary>
         ///     The gameObject

@@ -35,8 +35,8 @@ namespace Alis.Core.Ecs.Components.Render
     ///     The camera interface
     /// </summary>
     /// <seealso cref="IInitable" />
-    /// <seealso cref="IGameObjectComponent" />
-    public interface ICamera : IInitable, IGameObjectComponent
+    /// <seealso cref="IUpdateable" />
+    public interface ICamera : IInitable, IUpdateable
     {
     }
 }

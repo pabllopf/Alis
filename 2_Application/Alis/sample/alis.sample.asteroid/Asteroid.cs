@@ -41,7 +41,7 @@ namespace Alis.Sample.Asteroid
     /// The asteroid class
     /// </summary>
     
-    public class Asteroid : IInitable, IGameObjectComponent
+    public class Asteroid : IInitable, IUpdateable
     {
         /*
         /// <summary>
