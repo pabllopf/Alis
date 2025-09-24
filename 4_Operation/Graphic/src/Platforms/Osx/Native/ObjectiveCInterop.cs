@@ -100,6 +100,12 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
             Marshal.FreeHGlobal(mem);
             return str;
         }
+
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int objc_msgSend_Int(IntPtr recv, IntPtr sel);
+
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
+        public static extern ulong objc_msgSend_UL(IntPtr recv, IntPtr sel);
     }
 }
 #endif

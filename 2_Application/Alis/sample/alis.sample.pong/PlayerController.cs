@@ -27,7 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
 
@@ -72,11 +75,77 @@ namespace Alis.Sample.Pong
 
         public void OnReleaseKey(KeyEventInfo info)
         {
+            Vector2F velocity = boxCollider.Body.LinearVelocity;
+            ConsoleKey key = info.Key;
+            switch (PlayerId)
+            {
+                case 1:
+                    switch (key)
+                    {
+                        case ConsoleKey.W:
+                            velocity = new Vector2F(velocity.X, 0);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            return;
+                        case ConsoleKey.S:
+                            velocity = new Vector2F(velocity.X, 0);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            break;
+                    }
+
+                    break;
+                case 2:
+                    switch (key)
+                    {
+                        case ConsoleKey.UpArrow:
+                            velocity = new Vector2F(velocity.X, 0);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            return;
+                        case ConsoleKey.DownArrow:
+                            velocity = new Vector2F(velocity.X, 0);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            break;
+                    }
+
+                    break;
+            }
         }
 
         public void OnPressKey(KeyEventInfo info)
         {
+            Vector2F velocity = boxCollider.Body.LinearVelocity;
 
+            ConsoleKey key = info.Key;
+            switch (PlayerId)
+            {
+                case 1:
+                    switch (key)
+                    {
+                        case ConsoleKey.W:
+                            velocity = new Vector2F(velocity.X, 3);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            return;
+                        case ConsoleKey.S:
+                            velocity = new Vector2F(velocity.X, -3);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            break;
+                    }
+
+                    break;
+                case 2:
+                    switch (key)
+                    {
+                        case ConsoleKey.UpArrow:
+                            velocity = new Vector2F(velocity.X, 3);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            return;
+                        case ConsoleKey.DownArrow:
+                            velocity = new Vector2F(velocity.X, -3);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            break;
+                    }
+
+                    break;
+            }
         }
     }
 }

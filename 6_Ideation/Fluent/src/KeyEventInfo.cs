@@ -1,6 +1,6 @@
 using System;
 
-namespace Alis.Core.Ecs.Components.Render
+namespace Alis.Core.Aspect.Fluent
 {
     public struct KeyEventInfo
     {

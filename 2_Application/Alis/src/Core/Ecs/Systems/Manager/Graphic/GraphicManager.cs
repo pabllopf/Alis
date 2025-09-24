@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Components.Body;
