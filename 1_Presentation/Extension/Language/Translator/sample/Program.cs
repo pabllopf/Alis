@@ -49,7 +49,7 @@ namespace Alis.Extension.Language.Translator.Sample
 
             manager.AddTranslation("en", "hello", "Hello");
             manager.AddTranslation("es", "hello", "Hola");
-            manager.AddTranslation("en", "world", "World");
+            manager.AddTranslation("en", "world", "CurrentWorld");
             manager.AddTranslation("es", "world", "Mundo");
 
             manager.SetLanguage("Spanish", "es");

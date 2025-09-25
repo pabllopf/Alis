@@ -130,7 +130,7 @@ namespace Alis.App.Engine.Windows
                         .DebugColor(Color.Green)
                         .Build())
                     .Build())
-                .World(sceneManager => sceneManager
+                .CurrentWorld(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
                         .Name("Main Scene")
                         .Add<GameObject>(gameObject => gameObject

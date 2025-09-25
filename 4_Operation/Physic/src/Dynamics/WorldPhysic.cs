@@ -1919,5 +1919,10 @@ namespace Alis.Core.Physic.Dynamics
 
             return path;
         }
+
+        public void SetGravity(Vector2F physicGravity)
+        {
+            _gravity = physicGravity;
+        }
     }
 }

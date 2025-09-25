@@ -135,7 +135,7 @@ namespace Alis.Extension.Language.Translator.Test
             Language language = new Language {Name = "English", Code = "en"};
             translationManager.SetLanguage(language);
             const string key = "greeting";
-            const string value = "Hello, World!";
+            const string value = "Hello, CurrentWorld!";
             translationManager.AddTranslation(language, key, value);
 
             // Act

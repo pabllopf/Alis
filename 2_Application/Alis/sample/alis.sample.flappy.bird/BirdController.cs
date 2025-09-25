@@ -43,7 +43,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The bird controller class
     /// </summary>
     
-    public class BirdController : IInitable, IUpdateable, IOnPressKey
+    public class BirdController : IOnStart, IUpdateable, IOnPressKey
     {
         /// <summary>
         ///     The audio source
@@ -59,11 +59,12 @@ namespace Alis.Sample.Flappy.Bird
         ///     Gets or sets the value of the is dead
         /// </summary>
         public bool IsDead { get; set; } = false;
-
-        public void Init(IGameObject self)
+        
+        public void OnStart(IGameObject self)
         {
             audioSource = self.Get<AudioSource>();
             boxCollider = self.Get<BoxCollider>();
+            boxCollider.Body.Position = new Vector2F(-3, 0);
         }
 
         public void Update(IGameObject self)
@@ -79,5 +80,7 @@ namespace Alis.Sample.Flappy.Bird
                 Logger.Info("Go up!");
             }
         }
+
+       
     }
 }

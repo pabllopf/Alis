@@ -68,7 +68,7 @@ namespace Alis.Extension.Network.Sample.Client.Simple
         /// <param name="webSocket">The web socket</param>
         private async Task Send(WebSocket webSocket)
         {
-            byte[] array = Encoding.UTF8.GetBytes("Hello World");
+            byte[] array = Encoding.UTF8.GetBytes("Hello CurrentWorld");
             ArraySegment<byte> buffer = new ArraySegment<byte>(array);
             await webSocket.SendAsync(buffer, WebSocketMessageType.Text, true, CancellationToken.None);
         }
