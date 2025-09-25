@@ -126,7 +126,7 @@ namespace Alis.Sample.Flappy.Bird
                 if (!_generated)
                 {
                     _generated = true;
-                    _randomHeight = RandomNumberGenerator.GetInt32(0, 3);
+                    _randomHeight = RandomNumberGenerator.GetInt32(0, 2);
                     _randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
                     Logger.Info($"{info.Name} NUM={_randomHeight} Direction={_randomDirection} velocity={Velocity}");
                 }
