@@ -32,6 +32,7 @@ using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Components.Audio;
 
 namespace Alis.Sample.Flappy.Bird
@@ -40,7 +41,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The counter controller class
     /// </summary>
     
-    public class CounterController : IInitable, IUpdateable
+    public class CounterController : IInitable, IUpdateable, IOnCollisionEnter, IOnCollisionExit
     {
         /// <summary>
         ///     The audio source
@@ -81,6 +82,32 @@ namespace Alis.Sample.Flappy.Bird
         /// <returns>The string</returns>
         public override string ToString() => Counter.ToString();
 
+        public void OnCollisionExit(IGameObject other)
+        {
+            Logger.Log($"Collision exit with");
+            Info info = other.Get<Info>();
+            if ((info.Tag == "Player") && isEnter)
+            {
+                isEnter = false;
+                Logger.Info("Player exit");
+            }
+        }
+
+        public void OnCollisionEnter(IGameObject other)
+        {
+            Logger.Log($"Collision enter with");
+            
+            Info info = other.Get<Info>();
+            if ((info.Tag == "Player") && !isEnter)
+            {
+                Increment();
+                audioSource.Play();
+                Logger.Info("Value: " + Counter);
+                isEnter = true;
+            }
+            
+        }
+
         public void Update(IGameObject self)
         {
             
@@ -88,7 +115,7 @@ namespace Alis.Sample.Flappy.Bird
 
         public void Init(IGameObject self)
         {
-            
+            audioSource = self.Get<AudioSource>();
         }
 
         /*

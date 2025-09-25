@@ -30,11 +30,17 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Systems.Manager.Physic;
+using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Contacts;
 
 namespace Alis.Core.Ecs.Components.Collider
 {
@@ -44,7 +50,7 @@ namespace Alis.Core.Ecs.Components.Collider
     /// <seealso cref="IBoxCollider" />
     /// <seealso cref="IInitable" />
     /// <seealso cref="IUpdateable" />
-    public class BoxCollider : IBoxCollider, IInitable, IUpdateable
+    public class BoxCollider : IBoxCollider, IInitable, IUpdateable, IHasContext<Context>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="BoxCollider" /> class
@@ -239,6 +245,8 @@ namespace Alis.Core.Ecs.Components.Collider
         /// </summary>
 
         public uint Ebo { get; private set; }
+        
+        private IGameObject ThisGameObject { get; set; }
 
 
         /// <summary>
@@ -287,9 +295,93 @@ namespace Alis.Core.Ecs.Components.Collider
                 Body.LinearVelocity = LinearVelocity;
                 Body.Awake = true;
                 Body.SetIsSensor(IsTrigger);
+                
+                ThisGameObject = (GameObject)self;
+                Body.Tag = self;
 
-                //Body.OnCollision += OnCollision;
-                //Body.OnSeparation += OnSeparation;
+                Body.OnCollision += OnCollision; 
+                Body.OnSeparation += OnSeparation;
+            }
+        }
+
+       
+        /// <summary>
+        ///     Describes whether this instance on collision
+        /// </summary>
+        /// <param name="fixtureA">The fixture</param>
+        /// <param name="fixtureB">The fixture</param>
+        /// <param name="contact">The contact</param>
+        /// <returns>The bool</returns>
+        private bool OnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
+        {
+            GameObject fixtureGameObject = (GameObject) fixtureA.GetBody.Tag;
+            GameObject fixtureBGameObject = (GameObject) fixtureB.GetBody.Tag;
+
+            if (fixtureGameObject.Equals(ThisGameObject) && fixtureBGameObject.Has<BoxCollider>())
+            {
+                foreach (ComponentId component in fixtureBGameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnCollisionEnter).IsAssignableFrom(componentType))
+                    {
+                        IOnCollisionEnter onPressKey = (IOnCollisionEnter)fixtureBGameObject.Get(componentType);
+                        onPressKey.OnCollisionEnter(ThisGameObject);
+                    }
+                }
+            }
+            else if (fixtureBGameObject.Equals(ThisGameObject) && fixtureGameObject.Has<BoxCollider>())
+            {
+                foreach (ComponentId component in fixtureGameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnCollisionEnter).IsAssignableFrom(componentType))
+                    {
+                        IOnCollisionEnter onPressKey = (IOnCollisionEnter)fixtureGameObject.Get(componentType);
+                        onPressKey.OnCollisionEnter(ThisGameObject);
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        ///     Ons the separation using the specified fixture a
+        /// </summary>
+        /// <param name="fixtureA">The fixture</param>
+        /// <param name="fixtureB">The fixture</param>
+        /// <param name="contact">The contact</param>
+        private void OnSeparation(Fixture fixtureA, Fixture fixtureB, Contact contact)
+        {
+            GameObject fixtureGameObject = (GameObject) fixtureA.GetBody.Tag;
+            GameObject fixtureBGameObject = (GameObject) fixtureB.GetBody.Tag;
+
+            
+            
+            
+            if (fixtureGameObject.Equals(ThisGameObject) && fixtureBGameObject.Has<BoxCollider>())
+            {
+                foreach (ComponentId component in fixtureBGameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnCollisionExit).IsAssignableFrom(componentType))
+                    {
+                        IOnCollisionExit onPressKey = (IOnCollisionExit)fixtureBGameObject.Get(componentType);
+                        onPressKey.OnCollisionExit(ThisGameObject);
+                    }
+                }
+            }
+            else if (fixtureBGameObject.Equals(ThisGameObject) && fixtureGameObject.Has<BoxCollider>())
+            {
+                foreach (ComponentId component in fixtureGameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnCollisionExit).IsAssignableFrom(componentType))
+                    {
+                        IOnCollisionExit onPressKey = (IOnCollisionExit)fixtureGameObject.Get(componentType);
+                        onPressKey.OnCollisionExit(ThisGameObject);
+                    }
+                }
             }
         }
 
@@ -460,5 +552,7 @@ namespace Alis.Core.Ecs.Components.Collider
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
             Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Fill);
         }
+
+        public Context Context { get; set; }
     }
 }
