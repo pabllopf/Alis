@@ -27,6 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.Components.Audio;
+using Alis.Core.Ecs.Components.Collider;
+using Alis.Core.Ecs.Components.Render;
+using Alis.Core.Ecs.Systems;
+using Alis.Core.Physic.Dynamics;
+
 namespace Alis.Sample.Pong
 {
     /// <summary>
@@ -40,7 +47,7 @@ namespace Alis.Sample.Pong
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            /*
+            
             VideoGame
                 .Create()
                 .Settings(setting => setting
@@ -217,7 +224,7 @@ namespace Alis.Sample.Pong
                         )
                     )
                 )
-                .Run();*/
+                .Run();
         }
     }
 }
