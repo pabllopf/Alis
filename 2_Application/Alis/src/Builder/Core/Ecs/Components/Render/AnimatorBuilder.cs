@@ -31,6 +31,7 @@ using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Components.Render;
+using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Builder.Core.Ecs.Components.Render
 {
@@ -45,6 +46,13 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         ///     The animator
         /// </summary>
         private Animator animator = new Animator();
+        
+        private Context context;
+
+        public AnimatorBuilder(Context context)
+        {
+            this.context = context;
+        }
 
         /// <summary>
         ///     Adds the animation using the specified value
@@ -53,7 +61,7 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         /// <returns>The animator builder</returns>
         public AnimatorBuilder AddAnimation(Func<AnimationBuilder, Animation> value)
         {
-            AnimationBuilder animationBuilder = new AnimationBuilder();
+            AnimationBuilder animationBuilder = new AnimationBuilder(context);
             Animation animation = value.Invoke(animationBuilder);
             animator.AddAnimation(animation);
             return this;
@@ -63,6 +71,10 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         ///     Builds this instance
         /// </summary>
         /// <returns>The animator</returns>
-        public Animator Build() => animator;
+        public Animator Build()
+        {
+            animator.Context = context;
+            return animator;
+        }
     }
 }

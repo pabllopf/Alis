@@ -357,13 +357,13 @@ namespace Alis.Sample.Flappy.Bird
                                 .IgnoreGravity(false)
                                 )
                             .WithComponent(new PipelineController())
-                            .WithComponent(new DeathZone())
+                            //.WithComponent(new DeathZone())
                             )
 
                         ////////////////////////////////////////
                         // GAME SCENE: PIPELINE MIDDLE
                         ////////////////////////////////////////
-                        .Add<GameObject>(gameObject => gameObject
+                       /* .Add<GameObject>(gameObject => gameObject
                             .Name("Pipeline Middle")
                             .Transform(transform => transform
                                 .Position(6, 0)
@@ -390,7 +390,7 @@ namespace Alis.Sample.Flappy.Bird
                             )
                             .WithComponent(new PipelineController())
                             .WithComponent(new CounterController())
-                            )
+                            )*/
 
                         ////////////////////////////////////////
                         // GAME SCENE: PIPELINE DOWN
@@ -403,7 +403,6 @@ namespace Alis.Sample.Flappy.Bird
                                 .Scale(1f, 1f)
                                 )
                             .WithComponent<Sprite>(sprite => sprite
-                                
                                 .SetTexture("pipe-green.bmp")
                                 .Depth(1)
                                 )

@@ -31,6 +31,7 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Render;
+using Alis.Core.Ecs.Systems.Scope;
 using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Builder.Core.Ecs.Components.Render
@@ -51,13 +52,20 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         /// </summary>
         private Vector2F resolution = new Vector2F(1920, 1080);
         
+        private Context context;
+
+        public CameraBuilder(Context context)
+        {
+            this.context = context;
+        }
+
         private Color backgroundColor { get; set; } = Color.Black;
 
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The camera</returns>
-        public Camera Build() => new Camera(cameraPosition, resolution);
+        public Camera Build() => new Camera(context, cameraPosition, resolution);
 
         /// <summary>
         ///     Resolutions the x

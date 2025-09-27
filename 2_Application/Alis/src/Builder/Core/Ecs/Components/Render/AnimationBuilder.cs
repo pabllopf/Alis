@@ -31,6 +31,7 @@ using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Components.Render;
+using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Builder.Core.Ecs.Components.Render
 {
@@ -49,6 +50,13 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         ///     The animation
         /// </summary>
         private Animation animation = new Animation();
+
+        private Context context;
+        
+        public AnimationBuilder(Context context)
+        {
+            this.context = context;
+        }
 
         /// <summary>
         ///     Adds the frame using the specified value

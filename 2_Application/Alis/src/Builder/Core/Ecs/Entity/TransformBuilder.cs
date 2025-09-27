@@ -53,7 +53,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <summary>
         ///     The one
         /// </summary>
-        private Complex rotation = Complex.One;
+        private float rotation = 0;
 
         /// <summary>
         ///     The vector
@@ -85,7 +85,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <returns>The transform builder</returns>
         public TransformBuilder Rotation(float angle)
         {
-            rotation = Complex.FromAngle(angle);
+            rotation = angle;
             return this;
         }
 

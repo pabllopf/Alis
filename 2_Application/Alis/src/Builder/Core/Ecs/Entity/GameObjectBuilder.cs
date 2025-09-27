@@ -83,7 +83,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <returns>The game object builder</returns>
         public GameObjectBuilder WithComponent<T>(AnimatorConfig<T> config) where T : IAnimator, new()
         {
-            AnimatorBuilder builder = new AnimatorBuilder();
+            AnimatorBuilder builder = new AnimatorBuilder(context);
             config(builder);
             gameObject.Add<Animator>(builder.Build());
             return this;
@@ -97,7 +97,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <returns>The game object builder</returns>
         public GameObjectBuilder WithComponent<T>(CameraConfig<T> config) where T : ICamera, new()
         {
-            CameraBuilder cameraBuilder = new CameraBuilder();
+            CameraBuilder cameraBuilder = new CameraBuilder(context);
             config(cameraBuilder);
             gameObject.Add<Camera>(cameraBuilder.Build());
             return this;
@@ -111,7 +111,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <returns>The game object builder</returns>
         public GameObjectBuilder WithComponent<T>(SpriteConfig<T> config) where T : ISprite, new()
         {
-            SpriteBuilder spriteBuilder = new SpriteBuilder();
+            SpriteBuilder spriteBuilder = new SpriteBuilder(context);
             config(spriteBuilder);
             gameObject.Add<Sprite>(spriteBuilder.Build());
             return this;

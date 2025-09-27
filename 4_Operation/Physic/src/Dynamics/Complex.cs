@@ -98,18 +98,26 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="angle">The angle</param>
         /// <returns>The complex</returns>
-        public static Complex FromAngle(float angle)
-        {
-            if (Math.Abs(angle) < float.Epsilon)
-            {
-                return One;
-            }
-
-            return new Complex(
-                (float) Math.Cos(angle),
-                (float) Math.Sin(angle));
-        }
-
+       public static Complex FromAngle(float angleDegrees)
+       {
+           float angleRadians = angleDegrees * ((float)Math.PI / 180f);
+           if (Math.Abs(angleRadians) < float.Epsilon)
+           {
+               return One;
+           }
+       
+           return new Complex(
+               (float)Math.Cos(angleRadians),
+               (float)Math.Sin(angleRadians));
+       }
+        
+   public float ToAngle()
+   {
+       float angle = (float)(Math.Atan2(I, R) * (180.0 / Math.PI));
+       return (angle + 360f) % 360f;
+   }
+        
+        
         /// <summary>
         ///     Conjugates this instance
         /// </summary>

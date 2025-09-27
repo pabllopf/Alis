@@ -100,8 +100,7 @@ namespace Alis.Builder.Core.Ecs.Components.Collider
             boxCollider.BodyType = value;
             return this;
         }
-
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
@@ -135,20 +134,31 @@ namespace Alis.Builder.Core.Ecs.Components.Collider
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder IsActive(bool value) => this;
+        public BoxColliderBuilder IsActive(bool value)
+        {
+            return this;
+        }
 
         /// <summary>
         ///     Is the trigger
         /// </summary>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder IsTrigger() => this;
+        public BoxColliderBuilder IsTrigger()
+        {
+            boxCollider.IsTrigger = true;
+            return this;
+        }
 
         /// <summary>
         ///     Is the trigger using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder IsTrigger(bool value) => this;
+        public BoxColliderBuilder IsTrigger(bool value)
+        {
+            boxCollider.IsTrigger = value;
+            return this;
+        }
 
         /// <summary>
         ///     Linear the velocity using the specified x

@@ -30,6 +30,7 @@
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Components.Render;
+using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Builder.Core.Ecs.Components.Render
 {
@@ -51,12 +52,19 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         ///     The empty
         /// </summary>
         private string nameFile = string.Empty;
+        
+        private Context context;
+
+        public SpriteBuilder(Context context)
+        {
+            this.context = context;
+        }
 
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The sprite</returns>
-        public Sprite Build() => new Sprite(nameFile, depth);
+        public Sprite Build() => new Sprite(context, nameFile, depth);
 
         /// <summary>
         ///     Depths the value
