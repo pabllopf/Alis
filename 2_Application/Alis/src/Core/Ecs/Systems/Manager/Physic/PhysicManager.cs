@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// <summary>
         ///     The vector
         /// </summary>
-        public static WorldPhysic WorldPhysic;
+        public WorldPhysic WorldPhysic;
 
         /// <summary>
         ///     The time step physics
@@ -88,6 +88,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// </summary>
         public override void OnInit()
         {
+            WorldPhysic = new WorldPhysic(Context.Setting.Physic.Gravity);
             WorldPhysic.SetGravity(Context.Setting.Physic.Gravity);
         }
 
@@ -151,6 +152,11 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
             if (Context is null)
             {
             }
+        }
+
+        public override void OnExit()
+        {
+           
         }
 
 

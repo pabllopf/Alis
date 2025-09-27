@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Components.Render
     /// </summary>
     /// <seealso cref="IInitable" />
     /// <seealso cref="IUpdateable" />
-    public interface ICamera : IInitable, IUpdateable, IHasContext<Context>
+    public interface ICamera : IOnStart, IUpdateable, IHasContext<Context>
     {
     }
 }

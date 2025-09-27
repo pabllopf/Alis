@@ -41,7 +41,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The floor animation class
     /// </summary>
     
-    public class FloorAnimation : IInitable, IUpdateable, IHasContext<Context>
+    public class FloorAnimation : IOnStart, IUpdateable, IHasContext<Context>
     {
         /// <summary>
         ///     The velocity
@@ -53,10 +53,11 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         private float xOld;
 
-        public void Init(IGameObject self)
+        public void OnStart(IGameObject self)
         {
-            xOld = self.Get<Transform>().Position.X;
+            xOld = self.Get<Transform>().Position.X;    
         }
+        
 
         public void Update(IGameObject self)
         {

@@ -116,7 +116,7 @@ public struct Animator : IAnimator
     /// Inits the self
     /// </summary>
     /// <param name="self">The self</param>
-    public void Init(IGameObject self)
+    public void OnStart(IGameObject self)
     {
         _clock = new Clock();
         _clock.Start();

@@ -43,12 +43,8 @@ namespace Alis.Sample.Flappy.Bird
     ///     The main menu controller class
     /// </summary>
     
-    public class MainMenuController : IInitable, IUpdateable, IOnPressKey, IHasContext<Context>
+    public class MainMenuController : IUpdateable, IOnPressKey, IHasContext<Context>
     {
-        public void Init(IGameObject self)
-        {
-            
-        }
 
         public void Update(IGameObject self)
         {

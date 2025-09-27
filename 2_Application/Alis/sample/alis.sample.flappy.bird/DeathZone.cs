@@ -32,6 +32,7 @@ using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
+using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Components.Audio;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
@@ -46,7 +47,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The death zone class
     /// </summary>
     
-    public class DeathZone : IInitable, IUpdateable, IHasContext<Context>
+    public class DeathZone : IOnStart, IUpdateable, IHasContext<Context>, IOnCollisionEnter
     {
         /// <summary>
         ///     The is death
@@ -91,33 +92,8 @@ namespace Alis.Sample.Flappy.Bird
 
             IsDeadthing = false;*/
         }
-
-        /*
-        /// <summary>
-        ///     Ons the collision enter using the specified game object
-        /// </summary>
-        /// <param name="gameObject">The game object</param>
-        public override void OnCollisionEnter(GameObject gameObject)
-        {
-            if (gameObject.Tag == "Player")
-            {
-                Logger.Info($"Player dead by '{GameObject.Name}'");
-
-                if (gameObject.Contains<BirdController>() && !gameObject.Get<BirdController>().IsDead)
-                {
-                    IsDeath = true;
-                    IsDeadthing = true;
-                    Bird = gameObject;
-                    Logger.Info("DEATH");
-                }
-            }
-        }*/
-
-        public void Init(IGameObject self)
-        {
-            IsDeath = false;
-            CounterTimeDeath = 3.0f;
-        }
+        
+        
 
         public void Update(IGameObject self)
         {
@@ -138,5 +114,27 @@ namespace Alis.Sample.Flappy.Bird
         }
 
         public Context Context { get; set; }
+        
+        public void OnCollisionEnter(IGameObject gameObject)
+        {
+            Info info = gameObject.Get<Info>();
+            if (info.Tag == "Player")
+            {
+                
+                if (gameObject.Has<BirdController>() && !gameObject.Get<BirdController>().IsDead)
+                {
+                    IsDeath = true;
+                    IsDeadthing = true;
+                    Bird = (GameObject)gameObject;
+                    Logger.Info($"Player dead by '{info.Name}'");
+                }
+            }
+        }
+
+        public void OnStart(IGameObject self)
+        {
+            IsDeath = false;
+            CounterTimeDeath = 3.0f;
+        }
     }
 }

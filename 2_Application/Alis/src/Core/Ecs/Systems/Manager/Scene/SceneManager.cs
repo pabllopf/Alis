@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Components.Body;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems.Scope;
@@ -116,9 +117,39 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         
         public void LoadScene(int id)
         {
-            CurrentWorld = LoadedScenes[id];
+            GameObjectQueryEnumerator.QueryEnumerable result2 = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            foreach (GameObject gameObject in result2)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnExit).IsAssignableFrom(componentType))
+                    {
+                        IOnExit onPressKey = (IOnExit) gameObject.Get(componentType);
+                        onPressKey.OnExit(gameObject);
+                    }
+                }
+            }
             
-            GameObjectQueryEnumerator.QueryEnumerable result = Context.SceneManager.CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            
+            
+            CurrentWorld = LoadedScenes[id];
+            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IHasContext<Context>).IsAssignableFrom(componentType))
+                    {
+                        IHasContext<Context> onPressKey = (IHasContext<Context>) gameObject.Get(componentType);
+                        onPressKey.Context = Context;
+                    }
+                }
+            }
+            
+            
             foreach (GameObject gameObject in result)
             {
                 foreach (ComponentId component in gameObject.ComponentTypes)

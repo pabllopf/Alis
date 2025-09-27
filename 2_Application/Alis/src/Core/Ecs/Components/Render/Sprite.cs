@@ -128,7 +128,7 @@ namespace Alis.Core.Ecs.Components.Render
         ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(IGameObject self)
+        public void OnStart(IGameObject self)
         {
             
         }
