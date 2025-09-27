@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Systems.Configuration;
 
 namespace Alis.Sample.Desktop
@@ -43,35 +44,7 @@ namespace Alis.Sample.Desktop
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            //var game = VideoGame.Create().Build();
-            //game.Save();
-
-            Setting setting = new Setting();
-            setting.General = setting.General with {Debug = true};
-            setting.General = setting.General with {Name = "en-US"};
-            setting.OnSave();
-
-            Logger.Info("Setting saved successfully.");
-            Logger.Info($"Debug: {setting.General.Debug}");
-            Logger.Info($"Name: {setting.General.Name}");
-            Logger.Info($"Description: {setting.General.Description}");
-            Logger.Info($"Version: {setting.General.Version}");
-            Logger.Info($"Author: {setting.General.Author}");
-            Logger.Info($"License: {setting.General.License}");
-            Logger.Info($"Icon: {setting.General.Icon}");
-
-
-            setting.OnLoad();
-
-            Logger.Info("General Setting:");
-            Logger.Info($"Debug: {setting.General.Debug}");
-            Logger.Info($"Name: {setting.General.Name}");
-            Logger.Info($"Description: {setting.General.Description}");
-            Logger.Info($"Version: {setting.General.Version}");
-            Logger.Info($"Author: {setting.General.Author}");
-            Logger.Info($"License: {setting.General.License}");
-            Logger.Info($"Icon: {setting.General.Icon}");
-            //game.Run();
+            VideoGame.Create().Run();
         }
     }
 }

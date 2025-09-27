@@ -1,5 +1,4 @@
 using System;
-using Alis.Core.Ecs.Components.Render;
 
 namespace Alis.Core.Aspect.Fluent.Components
 {

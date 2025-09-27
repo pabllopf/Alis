@@ -150,10 +150,12 @@ namespace Alis.Core.Graphic.Platforms.Osx
             {
                 IntPtr eventType = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("type"));
                 int type = eventType.ToInt32();
-                // NSKeyDown = 10, NSKeyUp = 11
                 if (type == 10) // NSKeyDown
                 {
+                    int keyCode = ObjectiveCInterop.objc_msgSend_Int(evt, ObjectiveCInterop.Sel("keyCode"));
+                    ulong modifierFlags = ObjectiveCInterop.objc_msgSend_UL(evt, ObjectiveCInterop.Sel("modifierFlags"));
                     IntPtr nsString = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("characters"));
+                    char c = '\0';
                     if (nsString != IntPtr.Zero)
                     {
                         IntPtr utf8Ptr = ObjectiveCInterop.objc_msgSend(nsString, ObjectiveCInterop.Sel("UTF8String"));
@@ -161,39 +163,92 @@ namespace Alis.Core.Graphic.Platforms.Osx
                         {
                             string chars = Marshal.PtrToStringAuto(utf8Ptr);
                             if (!string.IsNullOrEmpty(chars))
+                                c = chars[0];
+                        }
+                    }
+                    // Mapear por keyCode primero (teclas especiales y flechas)
+                    switch (keyCode)
+                    {
+                        case 123: lastKeyPressed = ConsoleKey.LeftArrow; pressedKeys.Add(ConsoleKey.LeftArrow); break;
+                        case 124: lastKeyPressed = ConsoleKey.RightArrow; pressedKeys.Add(ConsoleKey.RightArrow); break;
+                        case 125: lastKeyPressed = ConsoleKey.DownArrow; pressedKeys.Add(ConsoleKey.DownArrow); break;
+                        case 126: lastKeyPressed = ConsoleKey.UpArrow; pressedKeys.Add(ConsoleKey.UpArrow); break;
+                        case 115: lastKeyPressed = ConsoleKey.Home; pressedKeys.Add(ConsoleKey.Home); break;
+                        case 119: lastKeyPressed = ConsoleKey.End; pressedKeys.Add(ConsoleKey.End); break;
+                        case 116: lastKeyPressed = ConsoleKey.PageUp; pressedKeys.Add(ConsoleKey.PageUp); break;
+                        case 121: lastKeyPressed = ConsoleKey.PageDown; pressedKeys.Add(ConsoleKey.PageDown); break;
+                        case 51: lastKeyPressed = ConsoleKey.Backspace; pressedKeys.Add(ConsoleKey.Backspace); break;
+                        case 117: lastKeyPressed = ConsoleKey.Delete; pressedKeys.Add(ConsoleKey.Delete); break;
+                        case 36: lastKeyPressed = ConsoleKey.Enter; pressedKeys.Add(ConsoleKey.Enter); break;
+                        case 48: lastKeyPressed = ConsoleKey.Tab; pressedKeys.Add(ConsoleKey.Tab); break;
+                        case 53: lastKeyPressed = ConsoleKey.Escape; pressedKeys.Add(ConsoleKey.Escape); break;
+                        case 122: lastKeyPressed = ConsoleKey.F1; pressedKeys.Add(ConsoleKey.F1); break;
+                        case 120: lastKeyPressed = ConsoleKey.F2; pressedKeys.Add(ConsoleKey.F2); break;
+                        case 99: lastKeyPressed = ConsoleKey.F3; pressedKeys.Add(ConsoleKey.F3); break;
+                        case 118: lastKeyPressed = ConsoleKey.F4; pressedKeys.Add(ConsoleKey.F4); break;
+                        case 96: lastKeyPressed = ConsoleKey.F5; pressedKeys.Add(ConsoleKey.F5); break;
+                        case 97: lastKeyPressed = ConsoleKey.F6; pressedKeys.Add(ConsoleKey.F6); break;
+                        case 98: lastKeyPressed = ConsoleKey.F7; pressedKeys.Add(ConsoleKey.F7); break;
+                        case 100: lastKeyPressed = ConsoleKey.F8; pressedKeys.Add(ConsoleKey.F8); break;
+                        case 101: lastKeyPressed = ConsoleKey.F9; pressedKeys.Add(ConsoleKey.F9); break;
+                        case 109: lastKeyPressed = ConsoleKey.F10; pressedKeys.Add(ConsoleKey.F10); break;
+                        case 103: lastKeyPressed = ConsoleKey.F11; pressedKeys.Add(ConsoleKey.F11); break;
+                        case 111: lastKeyPressed = ConsoleKey.F12; pressedKeys.Add(ConsoleKey.F12); break;
+                        //case 57: lastKeyPressed = ConsoleKey.CapsLock; pressedKeys.Add(ConsoleKey.CapsLock); break;
+                        case 55: lastKeyPressed = ConsoleKey.LeftWindows; pressedKeys.Add(ConsoleKey.LeftWindows); break; // Command
+                        //case 56: lastKeyPressed = ConsoleKey.LeftShift; pressedKeys.Add(ConsoleKey.LeftShift); break;
+                        //case 60: lastKeyPressed = ConsoleKey.RightShift; pressedKeys.Add(ConsoleKey.RightShift); break;
+                        //case 59: lastKeyPressed = ConsoleKey.LeftCtrl; pressedKeys.Add(ConsoleKey.LeftCtrl); break;
+                        //case 62: lastKeyPressed = ConsoleKey.RightCtrl; pressedKeys.Add(ConsoleKey.RightCtrl); break;
+                        //case 58: lastKeyPressed = ConsoleKey.LeftAlt; pressedKeys.Add(ConsoleKey.LeftAlt); break; // Option
+                        //case 61: lastKeyPressed = ConsoleKey.RightAlt; pressedKeys.Add(ConsoleKey.RightAlt); break;
+                        default:
+                            // Si es número, letra o símbolo
+                            if (c >= '0' && c <= '9')
                             {
-                                char c = chars[0];
-                                if (Enum.TryParse(c.ToString(), true, out ConsoleKey key))
+                                lastKeyPressed = (ConsoleKey)((int)ConsoleKey.D0 + (c - '0'));
+                                pressedKeys.Add(lastKeyPressed.Value);
+                            }
+                            else if (c >= 'A' && c <= 'Z')
+                            {
+                                lastKeyPressed = (ConsoleKey)((int)ConsoleKey.A + (c - 'A'));
+                                pressedKeys.Add(lastKeyPressed.Value);
+                            }
+                            else if (c >= 'a' && c <= 'z')
+                            {
+                                lastKeyPressed = (ConsoleKey)((int)ConsoleKey.A + (c - 'a'));
+                                pressedKeys.Add(lastKeyPressed.Value);
+                            }
+                            else
+                            {
+                                switch (c)
                                 {
-                                    lastKeyPressed = key;
-                                    pressedKeys.Add(key);
-                                }
-                                else
-                                {
-                                    switch (c)
-                                    {
-                                        case ' ':
-                                            lastKeyPressed = ConsoleKey.Spacebar;
-                                            pressedKeys.Add(ConsoleKey.Spacebar);
-                                            break;
-                                        case '\n':
-                                        case '\r':
-                                            lastKeyPressed = ConsoleKey.Enter;
-                                            pressedKeys.Add(ConsoleKey.Enter);
-                                            break;
-                                        case '\t':
-                                            lastKeyPressed = ConsoleKey.Tab;
-                                            pressedKeys.Add(ConsoleKey.Tab);
-                                            break;
-                                    }
+                                    case ' ': lastKeyPressed = ConsoleKey.Spacebar; pressedKeys.Add(ConsoleKey.Spacebar); break;
+                                    case '\n': case '\r': lastKeyPressed = ConsoleKey.Enter; pressedKeys.Add(ConsoleKey.Enter); break;
+                                    case '\t': lastKeyPressed = ConsoleKey.Tab; pressedKeys.Add(ConsoleKey.Tab); break;
+                                    case (char)27: lastKeyPressed = ConsoleKey.Escape; pressedKeys.Add(ConsoleKey.Escape); break;
+                                    case (char)8: lastKeyPressed = ConsoleKey.Backspace; pressedKeys.Add(ConsoleKey.Backspace); break;
+                                    case (char)127: lastKeyPressed = ConsoleKey.Delete; pressedKeys.Add(ConsoleKey.Delete); break;
+                                    case '-': lastKeyPressed = ConsoleKey.OemMinus; pressedKeys.Add(ConsoleKey.OemMinus); break;
+                                    case '+': lastKeyPressed = ConsoleKey.OemPlus; pressedKeys.Add(ConsoleKey.OemPlus); break;
+                                    case ',': lastKeyPressed = ConsoleKey.OemComma; pressedKeys.Add(ConsoleKey.OemComma); break;
+                                    case '.': lastKeyPressed = ConsoleKey.OemPeriod; pressedKeys.Add(ConsoleKey.OemPeriod); break;
+                                    case '/': lastKeyPressed = ConsoleKey.Oem2; pressedKeys.Add(ConsoleKey.Oem2); break;
+                                    case ';': lastKeyPressed = ConsoleKey.Oem1; pressedKeys.Add(ConsoleKey.Oem1); break;
+                                    case '\\': lastKeyPressed = ConsoleKey.Oem5; pressedKeys.Add(ConsoleKey.Oem5); break;
+                                    case '[': lastKeyPressed = ConsoleKey.Oem4; pressedKeys.Add(ConsoleKey.Oem4); break;
+                                    case ']': lastKeyPressed = ConsoleKey.Oem6; pressedKeys.Add(ConsoleKey.Oem6); break;
+                                    case '`': lastKeyPressed = ConsoleKey.Oem3; pressedKeys.Add(ConsoleKey.Oem3); break;
                                 }
                             }
-                        }
+                            break;
                     }
                 }
                 else if (type == 11) // NSKeyUp
                 {
+                    int keyCode = ObjectiveCInterop.objc_msgSend_Int(evt, ObjectiveCInterop.Sel("keyCode"));
                     IntPtr nsString = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("characters"));
+                    char c = '\0';
                     if (nsString != IntPtr.Zero)
                     {
                         IntPtr utf8Ptr = ObjectiveCInterop.objc_msgSend(nsString, ObjectiveCInterop.Sel("UTF8String"));
@@ -201,30 +256,74 @@ namespace Alis.Core.Graphic.Platforms.Osx
                         {
                             string chars = Marshal.PtrToStringAuto(utf8Ptr);
                             if (!string.IsNullOrEmpty(chars))
+                                c = chars[0];
+                        }
+                    }
+                    switch (keyCode)
+                    {
+                        case 123: pressedKeys.Remove(ConsoleKey.LeftArrow); break;
+                        case 124: pressedKeys.Remove(ConsoleKey.RightArrow); break;
+                        case 125: pressedKeys.Remove(ConsoleKey.DownArrow); break;
+                        case 126: pressedKeys.Remove(ConsoleKey.UpArrow); break;
+                        case 115: pressedKeys.Remove(ConsoleKey.Home); break;
+                        case 119: pressedKeys.Remove(ConsoleKey.End); break;
+                        case 116: pressedKeys.Remove(ConsoleKey.PageUp); break;
+                        case 121: pressedKeys.Remove(ConsoleKey.PageDown); break;
+                        case 51: pressedKeys.Remove(ConsoleKey.Backspace); break;
+                        case 117: pressedKeys.Remove(ConsoleKey.Delete); break;
+                        case 36: pressedKeys.Remove(ConsoleKey.Enter); break;
+                        case 48: pressedKeys.Remove(ConsoleKey.Tab); break;
+                        case 53: pressedKeys.Remove(ConsoleKey.Escape); break;
+                        case 122: pressedKeys.Remove(ConsoleKey.F1); break;
+                        case 120: pressedKeys.Remove(ConsoleKey.F2); break;
+                        case 99: pressedKeys.Remove(ConsoleKey.F3); break;
+                        case 118: pressedKeys.Remove(ConsoleKey.F4); break;
+                        case 96: pressedKeys.Remove(ConsoleKey.F5); break;
+                        case 97: pressedKeys.Remove(ConsoleKey.F6); break;
+                        case 98: pressedKeys.Remove(ConsoleKey.F7); break;
+                        case 100: pressedKeys.Remove(ConsoleKey.F8); break;
+                        case 101: pressedKeys.Remove(ConsoleKey.F9); break;
+                        case 109: pressedKeys.Remove(ConsoleKey.F10); break;
+                        case 103: pressedKeys.Remove(ConsoleKey.F11); break;
+                        case 111: pressedKeys.Remove(ConsoleKey.F12); break;
+                        //case 57: pressedKeys.Remove(ConsoleKey.CapsLock); break;
+                        case 55: pressedKeys.Remove(ConsoleKey.LeftWindows); break;
+                        //case 56: pressedKeys.Remove(ConsoleKey.LeftShift); break;
+                        //case 60: pressedKeys.Remove(ConsoleKey.RightShift); break;
+                        //case 59: pressedKeys.Remove(ConsoleKey.LeftCtrl); break;
+                        //case 62: pressedKeys.Remove(ConsoleKey.RightCtrl); break;
+                        //case 58: pressedKeys.Remove(ConsoleKey.LeftAlt); break;
+                        //case 61: pressedKeys.Remove(ConsoleKey.RightAlt); break;
+                        default:
+                            if (c >= '0' && c <= '9')
+                                pressedKeys.Remove((ConsoleKey)((int)ConsoleKey.D0 + (c - '0')));
+                            else if (c >= 'A' && c <= 'Z')
+                                pressedKeys.Remove((ConsoleKey)((int)ConsoleKey.A + (c - 'A')));
+                            else if (c >= 'a' && c <= 'z')
+                                pressedKeys.Remove((ConsoleKey)((int)ConsoleKey.A + (c - 'a')));
+                            else
                             {
-                                char c = chars[0];
-                                if (Enum.TryParse(c.ToString(), true, out ConsoleKey key))
+                                switch (c)
                                 {
-                                    pressedKeys.Remove(key);
-                                }
-                                else
-                                {
-                                    switch (c)
-                                    {
-                                        case ' ':
-                                            pressedKeys.Remove(ConsoleKey.Spacebar);
-                                            break;
-                                        case '\n':
-                                        case '\r':
-                                            pressedKeys.Remove(ConsoleKey.Enter);
-                                            break;
-                                        case '\t':
-                                            pressedKeys.Remove(ConsoleKey.Tab);
-                                            break;
-                                    }
+                                    case ' ': pressedKeys.Remove(ConsoleKey.Spacebar); break;
+                                    case '\n': case '\r': pressedKeys.Remove(ConsoleKey.Enter); break;
+                                    case '\t': pressedKeys.Remove(ConsoleKey.Tab); break;
+                                    case (char)27: pressedKeys.Remove(ConsoleKey.Escape); break;
+                                    case (char)8: pressedKeys.Remove(ConsoleKey.Backspace); break;
+                                    case (char)127: pressedKeys.Remove(ConsoleKey.Delete); break;
+                                    case '-': pressedKeys.Remove(ConsoleKey.OemMinus); break;
+                                    case '+': pressedKeys.Remove(ConsoleKey.OemPlus); break;
+                                    case ',': pressedKeys.Remove(ConsoleKey.OemComma); break;
+                                    case '.': pressedKeys.Remove(ConsoleKey.OemPeriod); break;
+                                    case '/': pressedKeys.Remove(ConsoleKey.Oem2); break;
+                                    case ';': pressedKeys.Remove(ConsoleKey.Oem1); break;
+                                    case '\\': pressedKeys.Remove(ConsoleKey.Oem5); break;
+                                    case '[': pressedKeys.Remove(ConsoleKey.Oem4); break;
+                                    case ']': pressedKeys.Remove(ConsoleKey.Oem6); break;
+                                    case '`': pressedKeys.Remove(ConsoleKey.Oem3); break;
                                 }
                             }
-                        }
+                            break;
                     }
                 }
                 else
