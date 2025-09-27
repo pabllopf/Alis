@@ -36,7 +36,7 @@ namespace Alis.Sample.Asteroid
     /// The spawn asteroid class
     /// </summary>
     
-    public class SpawnAsteroid : IInitable, IGameObjectComponent
+    public class SpawnAsteroid : IInitable, IUpdateable
     {
         public void Init(IGameObject self)
         {

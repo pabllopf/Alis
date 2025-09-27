@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Components
     /// <summary>
     ///     The transform
     /// </summary>
-    public struct Transform : IInitable, IGameObjectComponent
+    public struct Transform : IInitable, IUpdateable
     {
         /// <summary>
         ///     The position

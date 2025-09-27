@@ -43,7 +43,7 @@ namespace Alis.Core.Ecs.Components.Render
     /// <summary>
     ///     The sprite
     /// </summary>
-    public record struct Sprite(string NameFile, int Depth) : ISprite, IInitable, IGameObjectComponent
+    public record struct Sprite(string NameFile, int Depth) : ISprite, IInitable, IUpdateable
     {
         /// <summary>
         ///     The game object

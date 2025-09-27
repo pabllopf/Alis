@@ -35,7 +35,7 @@ namespace Alis.Core.Ecs.Sample.Components
     /// <summary>
     ///     The character
     /// </summary>
-    internal struct Character(char c) : IComponent<Position>
+    internal struct Character(char c) : IUpdateable<Position>
     {
         /// <summary>
         ///     The
@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.Sample.Components
         ///     Updates the pos
         /// </summary>
         /// <param name="pos">The pos</param>
-        public void Update(ref Position pos)
+        public void Update(IGameObject self, ref Position pos)
         {
             Console.SetCursorPosition(pos.X, pos.Y);
             Console.Write(Char);

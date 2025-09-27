@@ -35,7 +35,7 @@ namespace Alis.Sample.Asteroid
     /// The bullet class
     /// </summary>
     
-    public class Bullet : IInitable , IGameObjectComponent
+    public class Bullet : IInitable , IUpdateable
     {
         /*
         /// <summary>

@@ -3,7 +3,7 @@ using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Sample.Asteroid
 {
-    public class Player : IInitable, IGameObjectComponent
+    public class Player : IInitable, IUpdateable
     {
         /*
         /// <summary>

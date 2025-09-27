@@ -34,7 +34,7 @@ namespace Alis.Core.Ecs.Sample.Components
     /// <summary>
     ///     The velocity
     /// </summary>
-    internal struct Velocity(int dx, int dy) : IComponent<Position>
+    internal struct Velocity(int dx, int dy) : IUpdateable<Position>
     {
         /// <summary>
         ///     The dx
@@ -50,7 +50,7 @@ namespace Alis.Core.Ecs.Sample.Components
         ///     Updates the pos
         /// </summary>
         /// <param name="pos">The pos</param>
-        public void Update(ref Position pos)
+        public void Update(IGameObject self, ref Position pos)
         {
             pos.X += DX;
             pos.Y += DY;

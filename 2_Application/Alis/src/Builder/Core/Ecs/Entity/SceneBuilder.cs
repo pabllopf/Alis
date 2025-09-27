@@ -57,8 +57,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         ///     Gets the value of the scene
         /// </summary>
         private Scene Scene { get; } = new Scene();
-
-
+        
         /// <summary>
         ///     Builds this instance
         /// </summary>
@@ -73,7 +72,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <returns>The scene builder</returns>
         public SceneBuilder Add<T>(Action<GameObjectBuilder> config) where T : IGameObject
         {
-            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(Scene);
+            GameObjectBuilder gameObjectBuilder = new GameObjectBuilder(Scene, context);
             config(gameObjectBuilder);
             gameObjectBuilder.Build();
             return this;

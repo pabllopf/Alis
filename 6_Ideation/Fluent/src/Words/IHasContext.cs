@@ -32,11 +32,11 @@ namespace Alis.Core.Aspect.Fluent.Words
     /// <summary>
     ///     The has context interface
     /// </summary>
-    public interface IHasContext<out T>
+    public interface IHasContext<T>
     {
         /// <summary>
         ///     Gets the value of the context
         /// </summary>
-        T Context { get; }
+        T Context { get; set; }
     }
 }

@@ -29,17 +29,17 @@
 
 using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
 
 namespace Alis.Core.Ecs.Updating.Runners
 {
     /// <summary>
-    ///     The update class
+    ///     The gameObject update class
     /// </summary>
     /// <seealso cref="ComponentStorage{TComp}" />
-    public class Update<TComp>(int cap) : ComponentStorage<TComp>(cap)
-        where TComp : IComponent
+    public class Update<TComp>(int capacity) : ComponentStorage<TComp>(capacity)
+        where TComp : IUpdateable
     {
         /// <summary>
         ///     Runs the scene
@@ -48,12 +48,17 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <param name="b">The </param>
         internal override void Run(Scene scene, Archetype b)
         {
+            ref GameObjectIdOnly entityIds = ref b.GetEntityDataReference();
             ref TComp comp = ref GetComponentStorageDataReference();
+
+            GameObject gameObject = scene.DefaultWorldGameObject;
 
             for (int i = b.EntityCount - 1; i >= 0; i--)
             {
-                comp.Update();
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject);
 
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
                 comp = ref Unsafe.Add(ref comp, 1);
             }
         }
@@ -67,23 +72,28 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <param name="length">The length</param>
         internal override void Run(Scene scene, Archetype b, int start, int length)
         {
+            ref GameObjectIdOnly entityIds = ref Unsafe.Add(ref b.GetEntityDataReference(), start);
             ref TComp comp = ref Unsafe.Add(ref GetComponentStorageDataReference(), start);
+
+            GameObject gameObject = scene.DefaultWorldGameObject;
 
             for (int i = length - 1; i >= 0; i--)
             {
-                comp.Update();
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject);
 
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
                 comp = ref Unsafe.Add(ref comp, 1);
             }
         }
     }
 
     /// <summary>
-    ///     The update class
+    ///     The gameObject update class
     /// </summary>
     /// <seealso cref="ComponentStorage{TComp}" />
-    public class Update<TComp, TArg>(int cap) : ComponentStorage<TComp>(cap)
-        where TComp : IComponent<TArg>
+    public class GameObjectUpdate<TComp, TArg>(int capacity) : ComponentStorage<TComp>(capacity)
+        where TComp : IUpdateable<TArg>
     {
         /// <summary>
         ///     Runs the scene
@@ -92,14 +102,19 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <param name="b">The </param>
         internal override void Run(Scene scene, Archetype b)
         {
+            ref GameObjectIdOnly entityIds = ref b.GetEntityDataReference();
             ref TComp comp = ref GetComponentStorageDataReference();
 
             ref TArg arg = ref b.GetComponentDataReference<TArg>();
 
+            GameObject gameObject = scene.DefaultWorldGameObject;
+
             for (int i = b.EntityCount - 1; i >= 0; i--)
             {
-                comp.Update(ref arg);
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject, ref arg);
 
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
                 comp = ref Unsafe.Add(ref comp, 1);
 
                 arg = ref Unsafe.Add(ref arg, 1);
@@ -115,42 +130,23 @@ namespace Alis.Core.Ecs.Updating.Runners
         /// <param name="length">The length</param>
         internal override void Run(Scene scene, Archetype b, int start, int length)
         {
+            ref GameObjectIdOnly entityIds = ref Unsafe.Add(ref b.GetEntityDataReference(), start);
             ref TComp comp = ref Unsafe.Add(ref GetComponentStorageDataReference(), start);
 
             ref TArg arg = ref Unsafe.Add(ref b.GetComponentDataReference<TArg>(), start);
 
+            GameObject gameObject = scene.DefaultWorldGameObject;
+
             for (int i = length - 1; i >= 0; i--)
             {
-                comp.Update(ref arg);
+                entityIds.SetEntity(ref gameObject);
+                comp.Update(gameObject, ref arg);
 
+                entityIds = ref Unsafe.Add(ref entityIds, 1);
                 comp = ref Unsafe.Add(ref comp, 1);
+
                 arg = ref Unsafe.Add(ref arg, 1);
             }
         }
-    }
-
-    /// <inheritdoc cref="IComponentStorageBaseFactory" />
-    public class UpdateRunnerFactory<TComp, TArg> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
-        where TComp : IComponent<TArg>
-    {
-        /// <summary>
-        ///     Creates the capacity
-        /// </summary>
-        /// <param name="capacity">The capacity</param>
-        /// <returns>The component storage base</returns>
-        ComponentStorageBase IComponentStorageBaseFactory.Create(int capacity) => new Update<TComp, TArg>(capacity);
-
-        /// <summary>
-        ///     Creates the stack
-        /// </summary>
-        /// <returns>The id table</returns>
-        IdTable IComponentStorageBaseFactory.CreateStack() => new IdTable<TComp>();
-
-        /// <summary>
-        ///     Creates the strongly typed using the specified capacity
-        /// </summary>
-        /// <param name="capacity">The capacity</param>
-        /// <returns>A component storage of t comp</returns>
-        ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new Update<TComp, TArg>(capacity);
     }
 }

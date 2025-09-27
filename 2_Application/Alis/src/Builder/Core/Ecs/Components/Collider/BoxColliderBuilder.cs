@@ -31,7 +31,9 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Collider;
+using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Physic.Dynamics;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Builder.Core.Ecs.Components.Collider
 {
@@ -58,6 +60,13 @@ namespace Alis.Builder.Core.Ecs.Components.Collider
         ///     The box collider
         /// </summary>
         private readonly BoxCollider boxCollider = new BoxCollider();
+        
+        private Context context;
+
+        public BoxColliderBuilder(Context context)
+        { 
+            this.context =  context; 
+        }
 
         /// <summary>
         ///     Angular the velocity using the specified value

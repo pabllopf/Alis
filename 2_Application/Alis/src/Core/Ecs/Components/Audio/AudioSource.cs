@@ -27,17 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
 using System.Threading;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Audio;
+using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Core.Ecs.Components.Audio
 {
     /// <summary>
     ///     The audio clip
     /// </summary>
-    public struct AudioSource(string nameFile = "", float volume = 100, bool isMute = false, bool playOnAwake = false, bool loop = false) : IAudioSource, IInitable, IGameObjectComponent
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct AudioSource(Context context, string nameFile = "", float volume = 100, bool isMute = false, bool playOnAwake = false, bool loop = false) : IAudioSource
     {
         /// <summary>
         ///     The loop
@@ -87,7 +91,7 @@ namespace Alis.Core.Ecs.Components.Audio
         /// <summary>
         ///     Plays this instance
         /// </summary>
-        internal void Play()
+        public void Play()
         {
             if (string.IsNullOrEmpty(FullPathAudioFile) && !string.IsNullOrEmpty(NameFile))
             {
@@ -103,7 +107,7 @@ namespace Alis.Core.Ecs.Components.Audio
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        internal void Stop()
+        public void Stop()
         {
             if (player.Playing)
             {
@@ -114,7 +118,7 @@ namespace Alis.Core.Ecs.Components.Audio
         /// <summary>
         ///     Resumes this instance
         /// </summary>
-        internal void Resume()
+        public void Resume()
         {
             if (!player.Playing)
             {
@@ -146,5 +150,7 @@ namespace Alis.Core.Ecs.Components.Audio
                 Play();
             }
         }
+
+        public Context Context { get; set; } = context;
     }
 }

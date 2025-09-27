@@ -56,58 +56,7 @@ namespace Alis.Core.Ecs.Test.Helpers
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public record struct Struct3(int Value);
-
-    /// <summary>
-    ///     The delegate behavior class
-    /// </summary>
-    /// <seealso cref="IComponent" />
-    public class DelegateBehavior(Action onUpdate) : IComponent
-    {
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        public void Update() => onUpdate();
-    }
-
-    /// <summary>
-    ///     The filtered behavior class
-    /// </summary>
-    /// <seealso cref="IComponent" />
-    /// <seealso cref="IInitable" />
-    /// <seealso cref="IDestroyable" />
-    public class FilteredBehavior1(Action onUpdate, Action<IGameObject> onInit = null, Action onDestroy = null) : IComponent, IInitable, IDestroyable
-    {
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        [FilterAttribute1]
-        public void Update() => onUpdate();
-
-        /// <summary>
-        ///     Destroys this instance
-        /// </summary>
-        public void Destroy() => onDestroy?.Invoke();
-
-        /// <summary>
-        ///     Inits the self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void Init(IGameObject self) => onInit?.Invoke(self);
-    }
-
-    /// <summary>
-    ///     The filtered behavior class
-    /// </summary>
-    /// <seealso cref="IComponent" />
-    public class FilteredBehavior2(Action onUpdate) : IComponent
-    {
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        [FilterAttribute2]
-        public void Update() => onUpdate();
-    }
-
+    
     /// <summary>
     ///     The child class
     /// </summary>
@@ -118,30 +67,5 @@ namespace Alis.Core.Ecs.Test.Helpers
     ///     The base class
     /// </summary>
     public class BaseClass;
-
-    /// <summary>
-    ///     The generic component
-    /// </summary>
-    internal partial struct GenericComponent<T> : IComponent
-    {
-        /// <summary>
-        ///     The
-        /// </summary>
-        public static readonly int x;
-
-        /// <summary>
-        ///     The value
-        /// </summary>
-        public T Value;
-
-        /// <summary>
-        ///     The called count
-        /// </summary>
-        public int CalledCount;
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        public void Update() => CalledCount++;
-    }
+    
 }

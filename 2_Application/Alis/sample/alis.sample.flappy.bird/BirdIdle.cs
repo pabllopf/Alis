@@ -40,7 +40,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The bird idle class
     /// </summary>
     
-    public class BirdIdle : IInitable, IGameObjectComponent
+    public class BirdIdle : IInitable, IUpdateable
     {
         /// <summary>
         ///     The range movement

@@ -36,7 +36,7 @@ namespace Alis.Sample.Pong
     /// <summary>
     ///     The player controller class
     /// </summary>
-    public struct PlayerController(int playerId = 0) : IInitable, IGameObjectComponent, IOnHoldKey, IOnReleaseKey, IOnPressKey
+    public struct PlayerController(int playerId = 0) : IInitable, IUpdateable, IOnHoldKey, IOnReleaseKey, IOnPressKey
     {
         /// <summary>
         ///     The box collider
