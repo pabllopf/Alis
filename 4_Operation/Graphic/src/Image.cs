@@ -140,6 +140,9 @@ namespace Alis.Core.Graphic
                     reader.BaseStream.Seek(pixelDataOffset, SeekOrigin.Begin);
                 }
 
+                // Soporte explícito para imágenes BMP de 24 bits (RGB)
+                // Si bitsPerPixel == 24, se procesa como imagen RGB sin canal alfa
+                // El canal alfa se establece en 255 por defecto
                 if (compression == 0 || compression == 3) { // BI_RGB
                     LoadBmpRgb(reader, width, height, bitsPerPixel, rawData, palette, rowPadded, bytesPerPixel);
                 } else if (compression == 1 && bitsPerPixel == 8) { // BI_RLE8
