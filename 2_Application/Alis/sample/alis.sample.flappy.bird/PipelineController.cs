@@ -73,12 +73,7 @@ namespace Alis.Sample.Flappy.Bird
         ///     The data
         /// </summary>
         private byte[] data;
-
-        /// <summary>
-        ///     The factor velocity
-        /// </summary>
-        private float factorVelocity = 0.25f;
-
+        
         /// <summary>
         ///     The pos origin
         /// </summary>
@@ -99,7 +94,6 @@ namespace Alis.Sample.Flappy.Bird
             boxCollider = self.Get<BoxCollider>();
             
             Velocity = 3;
-            factorVelocity = 1.1f;
             boxCollider.Body.LinearVelocity = new Vector2F(-Velocity, 0);
 
             using (RandomNumberGenerator randomGenerator = RandomNumberGenerator.Create())
@@ -123,7 +117,6 @@ namespace Alis.Sample.Flappy.Bird
             if (IsStop && (Velocity != 0))
             {
                 Velocity = 0;
-                factorVelocity = 0;
                 boxCollider.Body.LinearVelocity = new Vector2F(0, 0);
                 return;
             }
@@ -159,7 +152,6 @@ namespace Alis.Sample.Flappy.Bird
             
             if (_generated && !IsStop)
             {
-                Velocity *= factorVelocity;
                 _generated = false;
             }
         }
