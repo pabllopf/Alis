@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:MainMenuController.cs
+//  File:IOnStart.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,42 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Ecs.Components.Render;
-using Alis.Core.Ecs.Systems;
-using Alis.Core.Ecs.Systems.Manager.Scene;
-using Alis.Core.Ecs.Systems.Scope;
-
-namespace Alis.Sample.Flappy.Bird
+namespace Alis.Core.Aspect.Fluent.Components
 {
-    /// <summary>
-    ///     The main menu controller class
-    /// </summary>
-    
-    public class MainMenuController : IInitable, IUpdateable, IOnPressKey, IHasContext<Context>
+    public interface IOnStart
     {
-        public void Init(IGameObject self)
-        {
-            
-        }
-
-        public void Update(IGameObject self)
-        {
-        }
-
-        public void OnPressKey(KeyEventInfo info)
-        {
-            if (info.Key == ConsoleKey.Spacebar)
-            {
-                Logger.Info("Changing to game scene 'Game_Scene'...");
-                Context.SceneManager.LoadScene(1);
-            }
-        }
-
-        public Context Context { get; set; }
+        void OnStart(IGameObject self);
     }
 }

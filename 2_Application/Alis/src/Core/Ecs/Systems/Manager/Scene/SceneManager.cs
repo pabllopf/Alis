@@ -27,6 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Ecs.Components.Body;
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Core.Ecs.Systems.Manager.Scene
@@ -41,28 +47,34 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         ///     Initializes a new instance of the <see cref="SceneManager" /> class
         /// </summary>
         /// <param name="context">The context</param>
-        public SceneManager(Context context) : base(context) => World = new Ecs.Scene();
+        public SceneManager(Context context) : base(context)
+        {
+            LoadedScenes = new List<Ecs.Scene>();
+        }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="SceneManager" /> class
-        /// </summary>
-        /// <param name="id">The id</param>
-        /// <param name="name">The name</param>
-        /// <param name="tag">The tag</param>
-        /// <param name="isEnable">The is enable</param>
-        /// <param name="context">The context</param>
-        public SceneManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context) => World = new Ecs.Scene();
+        public SceneManager(Context context, params Ecs.Scene[] scenes ) : base(context)
+        {
+            LoadedScenes = new List<Ecs.Scene>(scenes);
+            CurrentWorld = LoadedScenes[0];
+        }
+       
 
         /// <summary>
         ///     Gets or sets the value of the scene
         /// </summary>
-        public Ecs.Scene World { get; set; }
-
+        public Ecs.Scene CurrentWorld { get; set; }
+        
+        public List<Ecs.Scene> LoadedScenes;
+        
         /// <summary>
         ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
+            if (CurrentWorld == null)
+            {
+                CurrentWorld = LoadedScenes[0];
+            }
         }
 
         /// <summary>
@@ -71,7 +83,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         public override void OnSave()
         {
             /*
-            Logger.Info($"Saving scene: {World.EntityCount}");
+            Logger.Info($"Saving scene: {CurrentWorld.EntityCount}");
 
             string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Game");
             if (!Directory.Exists(directory))
@@ -79,8 +91,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
                 Directory.CreateDirectory(directory);
             }
 
-            string fileWorld = Path.Combine(directory, "World.json");
-            File.WriteAllText(fileWorld, JsonSerializer.Serialize(World, new JsonOptions
+            string fileWorld = Path.Combine(directory, "CurrentWorld.json");
+            File.WriteAllText(fileWorld, JsonSerializer.Serialize(CurrentWorld, new JsonOptions
             {
                 DateTimeFormat = "yyyy-MM-dd HH:mm:ss",
                 SerializationOptions = JsonSerializationOptions.Default
@@ -95,13 +107,37 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// </summary>
         public override void OnUpdate()
         {
-            // Update the world
-            World.Update();
+            CurrentWorld?.Update();
         }
 
-        public static void LoadScene(string gameScene)
+        public void LoadScene(string gameScene)
         {
-           
+        }
+        
+        public void LoadScene(int id)
+        {
+            CurrentWorld = LoadedScenes[id];
+            
+            GameObjectQueryEnumerator.QueryEnumerable result = Context.SceneManager.CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnStart).IsAssignableFrom(componentType))
+                    {
+                        IOnStart onPressKey = (IOnStart) gameObject.Get(componentType);
+                        onPressKey.OnStart(gameObject);
+                    }
+                }
+            }
+            
+
+        }
+
+        public void AddScene(Ecs.Scene scene)
+        {
+            LoadedScenes.Add(scene);
         }
     }
 }

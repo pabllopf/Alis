@@ -88,10 +88,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [Fact]
         public void ImplicitConversion_Should_ReturnCorrectString()
         {
-            byte[] byteArray = {87, 111, 114, 108, 100}; // "World"
+            byte[] byteArray = {87, 111, 114, 108, 100}; // "CurrentWorld"
             NullTerminatedString nts = new NullTerminatedString(byteArray);
             string result = nts;
-            Assert.Equal("World", result);
+            Assert.Equal("CurrentWorld", result);
         }
 
         /// <summary>

@@ -60,7 +60,7 @@ namespace Alis.Sample.Dino
                         .Gravity(0.0f, -9.8f)
                         .Build())
                     .Build())
-                .World(sceneManager => sceneManager
+                .CurrentWorld(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
                         .Add<GameObject>(soundTrack => soundTrack
                             .Build())

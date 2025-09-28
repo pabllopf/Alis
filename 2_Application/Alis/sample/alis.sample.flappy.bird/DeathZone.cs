@@ -131,7 +131,7 @@ namespace Alis.Sample.Flappy.Bird
                 CounterTimeDeath -= 1f * Context.TimeManager.DeltaTime;
                 if (CounterTimeDeath <= 0.0f)
                 {
-                    SceneManager.LoadScene("Main_Menu");
+                    Context.SceneManager.LoadScene(0);
                     Logger.Info("RESET LEVEL");
                 }
             }

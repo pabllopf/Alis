@@ -159,7 +159,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                 keyDownTimestamps.Remove(k);
             }
 
-            GameObjectQueryEnumerator.QueryEnumerable result = Context.SceneManager.World.Query<Not<RigidBody>>().EnumerateWithEntities();
+            GameObjectQueryEnumerator.QueryEnumerable result = Context.SceneManager.CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
             foreach (GameObject gameObject in result)
             {
                 foreach (ComponentId component in gameObject.ComponentTypes)
@@ -214,15 +214,15 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             // Clear the screen
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
 
-            GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.World
+            GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.CurrentWorld
                 .Query<With<Sprite>>()
                 .EnumerateWithEntities();
 
-            GameObjectQueryEnumerator.QueryEnumerable boxColliderGameObjects = Context.SceneManager.World
+            GameObjectQueryEnumerator.QueryEnumerable boxColliderGameObjects = Context.SceneManager.CurrentWorld
                 .Query<With<BoxCollider>>()
                 .EnumerateWithEntities();
 
-            foreach (RefTuple<Camera> camera in Context.SceneManager.World
+            foreach (RefTuple<Camera> camera in Context.SceneManager.CurrentWorld
                          .Query<With<Camera>>()
                          .Enumerate<Camera>())
             {
@@ -247,7 +247,11 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                     if (boxColliderGameobject.Has<BoxCollider>())
                     {
                         ref BoxCollider boxCollider = ref boxColliderGameobject.Get<BoxCollider>();
-                        boxCollider.Render(boxColliderGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
+                        if (physicSettings.Debug)
+                        {
+                            boxCollider.Render(boxColliderGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
+                        }
+                        
                     }
                 }
             }

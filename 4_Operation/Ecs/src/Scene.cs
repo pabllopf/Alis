@@ -779,5 +779,6 @@ namespace Alis.Core.Ecs
             archetype.EnsureCapacity(count);
             EntityTable.EnsureCapacity(count + EntityCount);
         }
+        
     }
 }

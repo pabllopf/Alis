@@ -42,7 +42,7 @@ namespace Alis.Extension.Media.FFmpeg.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Logger.Log("Hello World!");
+            Logger.Log("Hello CurrentWorld!");
         }
     }
 }

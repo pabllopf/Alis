@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// <summary>
         ///     The vector
         /// </summary>
-        public static WorldPhysic WorldPhysic = new WorldPhysic();
+        public static WorldPhysic WorldPhysic;
 
         /// <summary>
         ///     The time step physics
@@ -54,6 +54,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// <param name="context">The context</param>
         public PhysicManager(Context context) : base(context)
         {
+            WorldPhysic = new WorldPhysic(context.Setting.Physic.Gravity);
         }
 
         /// <summary>
@@ -61,7 +62,11 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// </summary>
         /// <param name="context">The context</param>
         /// <param name="timeStepPhysics">The time step physics</param>
-        public PhysicManager(Context context, float timeStepPhysics) : base(context) => this.timeStepPhysics = timeStepPhysics;
+        public PhysicManager(Context context, float timeStepPhysics) : base(context)
+        {
+            WorldPhysic = new WorldPhysic(context.Setting.Physic.Gravity);
+            this.timeStepPhysics = timeStepPhysics;
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicManager" /> class
@@ -72,13 +77,18 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// <param name="isEnable">The is enable</param>
         /// <param name="context">The context</param>
         /// <param name="timeStepPhysics">The time step physics</param>
-        public PhysicManager(string id, string name, string tag, bool isEnable, Context context, float timeStepPhysics) : base(id, name, tag, isEnable, context) => this.timeStepPhysics = timeStepPhysics;
+        public PhysicManager(string id, string name, string tag, bool isEnable, Context context, float timeStepPhysics) : base(id, name, tag, isEnable, context)
+        {
+            WorldPhysic = new WorldPhysic(context.Setting.Physic.Gravity);
+            this.timeStepPhysics = timeStepPhysics;
+        }
 
         /// <summary>
         ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
+            WorldPhysic.SetGravity(Context.Setting.Physic.Gravity);
         }
 
         /// <summary>
@@ -121,6 +131,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
             {
                 timeStepPhysics = 1f / 5f;
             }
+            
+            
         }
 
         /// <summary>

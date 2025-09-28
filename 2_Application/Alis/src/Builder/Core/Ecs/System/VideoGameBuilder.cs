@@ -77,7 +77,7 @@ namespace Alis.Builder.Core.Ecs.System
             SceneManagerBuilder sceneManagerBuilder = new SceneManagerBuilder(Context);
             config(sceneManagerBuilder);
             SceneManager sceneManager = sceneManagerBuilder.Build();
-            Context.SceneManager.World = sceneManager.World;
+            Context.SceneManager.LoadedScenes = sceneManager.LoadedScenes;
             return this;
         }
 
