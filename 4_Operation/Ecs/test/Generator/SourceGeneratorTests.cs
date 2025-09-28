@@ -110,14 +110,14 @@ namespace Alis.Core.Ecs.Test.Generator
             ///     The inner
             /// </summary>
             [StructLayout(LayoutKind.Sequential, Pack = 1)]
-            public partial struct Inner<T1> : IInitable
+            public partial struct Inner<T1> : IOnInit
             {
                 /// <summary>
                 ///     Inits the self
                 /// </summary>
                 /// <param name="self">The self</param>
                 /// <exception cref="InitalizeException"></exception>
-                public void Init(IGameObject self)
+                public void OnInit(IGameObject self)
                 {
                     throw new InitalizeException();
                 }

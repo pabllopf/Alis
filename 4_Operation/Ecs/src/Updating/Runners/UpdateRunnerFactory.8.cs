@@ -40,7 +40,7 @@ namespace Alis.Core.Ecs.Updating.Runners
     public class UpdateRunnerFactory<TComp, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> :
         IComponentStorageBaseFactory,
         IComponentStorageBaseFactory<TComp>
-        where TComp : IUpdateable<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>
+        where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>
     {
         /// <summary>
         ///     Creates the capacity

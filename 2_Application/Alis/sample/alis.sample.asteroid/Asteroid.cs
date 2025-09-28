@@ -41,7 +41,7 @@ namespace Alis.Sample.Asteroid
     /// The asteroid class
     /// </summary>
     
-    public class Asteroid : IInitable, IUpdateable
+    public class Asteroid : IOnInit, IOnUpdate
     {
         /*
         /// <summary>
@@ -233,12 +233,12 @@ namespace Alis.Sample.Asteroid
             Console.WriteLine("Asteroid health: " + health);
         }*/
 
-        public void Init(IGameObject self)
+        public void OnInit(IGameObject self)
         {
                 
         }
 
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
           
         }

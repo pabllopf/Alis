@@ -51,6 +51,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         public SceneManager(Context context) : base(context)
         {
             LoadedScenes = new List<Ecs.Scene>();
+            CurrentWorld = new Ecs.Scene();
         }
 
         public SceneManager(Context context, params Ecs.Scene[] scenes ) : base(context)
@@ -72,9 +73,72 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// </summary>
         public override void OnInit()
         {
-            if (CurrentWorld == null)
+            CurrentWorld = LoadedScenes[0];
+                
+            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            
+            foreach (GameObject gameObject in result)
             {
-                CurrentWorld = LoadedScenes[0];
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IHasContext<Context>).IsAssignableFrom(componentType))
+                    {
+                        IHasContext<Context> onPressKey = (IHasContext<Context>) gameObject.Get(componentType);
+                        onPressKey.Context = Context;
+                    }
+                }
+            }
+        }
+        
+        public override void OnAwake()
+        {
+            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnAwake).IsAssignableFrom(componentType))
+                    {
+                        IOnAwake onPressKey = (IOnAwake) gameObject.Get(componentType);
+                        onPressKey.OnAwake(gameObject);
+                    }
+                }
+            }
+        }
+
+        public override void OnStart()
+        {
+            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnStart).IsAssignableFrom(componentType))
+                    {
+                        IOnStart onPressKey = (IOnStart) gameObject.Get(componentType);
+                        onPressKey.OnStart(gameObject);
+                    }
+                }
+            }
+        }
+
+        public override void OnPhysicUpdate()
+        {
+            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnPhysicUpdate).IsAssignableFrom(componentType))
+                    {
+                        IOnPhysicUpdate onPressKey = (IOnPhysicUpdate) gameObject.Get(componentType);
+                        onPressKey.OnPhysicUpdate(gameObject);
+                    }
+                }
             }
         }
 
@@ -103,6 +167,23 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
 */
         }
 
+        public override void OnBeforeUpdate()
+        {
+            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnBeforeUpdate).IsAssignableFrom(componentType))
+                    {
+                        IOnBeforeUpdate onPressKey = (IOnBeforeUpdate) gameObject.Get(componentType);
+                        onPressKey.OnBeforeUpdate(gameObject);
+                    }
+                }
+            }
+        }
+        
         /// <summary>
         ///     Ons the update
         /// </summary>
@@ -111,11 +192,144 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             CurrentWorld?.Update();
         }
 
-        public void LoadScene(string gameScene)
+        public override void OnAfterUpdate()
         {
+            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnAfterUpdate).IsAssignableFrom(componentType))
+                    {
+                        IOnAfterUpdate onPressKey = (IOnAfterUpdate) gameObject.Get(componentType);
+                        onPressKey.OnAfterUpdate(gameObject);
+                    }
+                }
+            }
+        }
+
+        public override void OnBeforeFixedUpdate()
+        {
+            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnBeforeFixedUpdate).IsAssignableFrom(componentType))
+                    {
+                        IOnBeforeFixedUpdate onPressKey = (IOnBeforeFixedUpdate) gameObject.Get(componentType);
+                        onPressKey.OnBeforeFixedUpdate(gameObject);
+                    }
+                }
+            }
+        }
+
+        public override void OnFixedUpdate ()
+        {
+            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnFixedUpdate).IsAssignableFrom(componentType))
+                    {
+                        IOnFixedUpdate onPressKey = (IOnFixedUpdate) gameObject.Get(componentType);
+                        onPressKey.OnFixedUpdate(gameObject);
+                    }
+                }
+            }
+        }
+
+        public override void OnAfterFixedUpdate()
+        {
+            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnAfterFixedUpdate).IsAssignableFrom(componentType))
+                    {
+                        IOnAfterFixedUpdate onPressKey = (IOnAfterFixedUpdate) gameObject.Get(componentType);
+                        onPressKey.OnAfterFixedUpdate(gameObject);
+                    }
+                }
+            }
+        }
+
+        public override void OnProcessPendingChanges()
+        {
+            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnProcessPendingChanges).IsAssignableFrom(componentType))
+                    {
+                        IOnProcessPendingChanges onPressKey = (IOnProcessPendingChanges) gameObject.Get(componentType);
+                        onPressKey.OnProcessPendingChanges(gameObject);
+                    }
+                }
+            }
         }
         
-        public void LoadScene(int id)
+        public override void OnBeforeDraw()
+        {
+            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnBeforeDraw).IsAssignableFrom(componentType))
+                    {
+                        IOnBeforeDraw onPressKey = (IOnBeforeDraw) gameObject.Get(componentType);
+                        onPressKey.OnBeforeDraw(gameObject);
+                    }
+                }
+            }
+        }
+
+        public override void OnDraw()
+        {
+            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnDraw).IsAssignableFrom(componentType))
+                    {
+                        IOnDraw onPressKey = (IOnDraw) gameObject.Get(componentType);
+                        onPressKey.OnDraw(gameObject);
+                    }
+                }
+            }
+        }
+
+        public override void OnAfterDraw()
+        {
+            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IOnAfterDraw).IsAssignableFrom(componentType))
+                    {
+                        IOnAfterDraw onPressKey = (IOnAfterDraw) gameObject.Get(componentType);
+                        onPressKey.OnAfterDraw(gameObject);
+                    }
+                }
+            }
+        }
+
+
+        public override void OnExit()
         {
             GameObjectQueryEnumerator.QueryEnumerable result2 = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
             foreach (GameObject gameObject in result2)
@@ -130,38 +344,17 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
                     }
                 }
             }
-            
-            
-            
+        }
+
+
+        public void LoadScene(string gameScene)
+        {
+        }
+        
+        public void LoadScene(int id)
+        {
             CurrentWorld = LoadedScenes[id];
-            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
             
-            foreach (GameObject gameObject in result)
-            {
-                foreach (ComponentId component in gameObject.ComponentTypes)
-                {
-                    Type componentType = component.Type;
-                    if (typeof(IHasContext<Context>).IsAssignableFrom(componentType))
-                    {
-                        IHasContext<Context> onPressKey = (IHasContext<Context>) gameObject.Get(componentType);
-                        onPressKey.Context = Context;
-                    }
-                }
-            }
-            
-            
-            foreach (GameObject gameObject in result)
-            {
-                foreach (ComponentId component in gameObject.ComponentTypes)
-                {
-                    Type componentType = component.Type;
-                    if (typeof(IOnStart).IsAssignableFrom(componentType))
-                    {
-                        IOnStart onPressKey = (IOnStart) gameObject.Get(componentType);
-                        onPressKey.OnStart(gameObject);
-                    }
-                }
-            }
             
 
         }

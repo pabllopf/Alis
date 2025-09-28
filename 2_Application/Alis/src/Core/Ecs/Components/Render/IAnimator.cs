@@ -36,11 +36,11 @@ namespace Alis.Core.Ecs.Components.Render
     /// <summary>
     ///     The animator interface
     /// </summary>
-    /// <seealso cref="IInitable" />
-    /// <seealso cref="IUpdateable" />
+    /// <seealso cref="IOnInit" />
+    /// <seealso cref="IOnUpdate" />
     public interface IAnimator : 
         IOnStart, 
-        IUpdateable,
+        IOnUpdate,
         IHasContext<Context>
     {
     }

@@ -653,7 +653,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        ///     Destroy all proxies.
+        ///     OnDestroy all proxies.
         /// </summary>
         internal void DestroyProxies()
         {
@@ -665,7 +665,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        ///     Destroy the attached contacts.
+        ///     OnDestroy the attached contacts.
         /// </summary>
         private void DestroyContacts()
         {
@@ -756,7 +756,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        ///     Destroy a fixture. This removes the fixture from the broad-phase and
+        ///     OnDestroy a fixture. This removes the fixture from the broad-phase and
         ///     destroys all contacts associated with this fixture. This will
         ///     automatically adjust the mass of the body if the body is dynamic and the
         ///     fixture has positive density.
@@ -782,7 +782,7 @@ namespace Alis.Core.Physic.Dynamics
                 throw new ArgumentException("You are removing a fixture that does not belong to this Body.", "fixture");
             }
 
-            // Destroy any contacts associated with the fixture.
+            // OnDestroy any contacts associated with the fixture.
             ContactEdge edge = ContactList;
             while (edge != null)
             {

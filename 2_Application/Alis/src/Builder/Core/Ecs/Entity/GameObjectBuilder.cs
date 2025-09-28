@@ -153,7 +153,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <typeparam name="T">The </typeparam>
         /// <param name="config">The config</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder WithComponent<T>(Action<T> config) where T : IUpdateable, new()
+        public GameObjectBuilder WithComponent<T>(Action<T> config) where T : IOnUpdate, new()
         {
             T component = new T();
 
@@ -173,7 +173,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder WithComponent<T>() where T : IUpdateable, new()
+        public GameObjectBuilder WithComponent<T>() where T : IOnUpdate, new()
         {
             T component = new T();
             
@@ -193,7 +193,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder WithComponent<T>(T component) where T : IUpdateable, new()
+        public GameObjectBuilder WithComponent<T>(T component) where T : IOnUpdate, new()
         {
             if (component is IHasContext<Context> hasContext)
             {

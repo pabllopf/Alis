@@ -608,7 +608,7 @@ namespace Alis.Core.Graphic.Platforms.Win
                     width = lParam.ToInt32() & 0xFFFF;
                     height = (lParam.ToInt32() >> 16) & 0xFFFF;
                     break;
-                case WindowMessage.Destroy:
+                case WindowMessage.OnDestroy:
                     running = false;
                     break;
             }

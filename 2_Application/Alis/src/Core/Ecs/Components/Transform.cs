@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Components
     /// <summary>
     ///     The transform
     /// </summary>
-    public struct Transform : IInitable, IUpdateable
+    public struct Transform : IOnInit, IOnUpdate
     {
         /// <summary>
         ///     The position
@@ -58,7 +58,7 @@ namespace Alis.Core.Ecs.Components
         ///     Inits the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(IGameObject self)
+        public void OnInit(IGameObject self)
         {
         }
 
@@ -66,7 +66,7 @@ namespace Alis.Core.Ecs.Components
         ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
         }
 

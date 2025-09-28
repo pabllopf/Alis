@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IUpdateable.1.cs
+//  File:IOnProcessPendingChanges.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,14 +29,8 @@
 
 namespace Alis.Core.Aspect.Fluent.Components
 {
-    /// <summary>
-    ///     Indicates a component should be updated with itself as an argument and the specified components
-    /// </summary>
-    /// <remarks>Components should only implement one "Update" method.</remarks>
-    // ReSharper disable once PartialTypeWithSinglePart
-    public partial interface IUpdateable<TArg> : IComponentBase
+    public interface IOnProcessPendingChanges
     {
-        /// <inheritdoc cref="IComponent.Update" />
-        void Update(IGameObject self, ref TArg arg);
+        void OnProcessPendingChanges(IGameObject self);
     }
 }

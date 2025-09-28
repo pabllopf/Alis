@@ -130,7 +130,7 @@ namespace Alis.Core.Ecs.Components.Audio
         ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
             if (IsLooping && !IsPlaying)
             {

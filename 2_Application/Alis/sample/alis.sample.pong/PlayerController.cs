@@ -39,7 +39,7 @@ namespace Alis.Sample.Pong
     /// <summary>
     ///     The player controller class
     /// </summary>
-    public struct PlayerController(int playerId = 0) : IInitable, IUpdateable, IOnHoldKey, IOnReleaseKey, IOnPressKey
+    public struct PlayerController(int playerId = 0) : IOnInit, IOnUpdate, IOnHoldKey, IOnReleaseKey, IOnPressKey
     {
         /// <summary>
         ///     The box collider
@@ -55,7 +55,7 @@ namespace Alis.Sample.Pong
         ///     Inits the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(IGameObject self)
+        public void OnInit(IGameObject self)
         {
             boxCollider = self.Get<BoxCollider>();
         }
@@ -64,7 +64,7 @@ namespace Alis.Sample.Pong
         ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
         }
 

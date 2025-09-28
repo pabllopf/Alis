@@ -43,7 +43,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <summary>
         /// 
         /// </summary>
-        Destroy = 0x0002,
+        OnDestroy = 0x0002,
 
         /// <summary>
         /// 

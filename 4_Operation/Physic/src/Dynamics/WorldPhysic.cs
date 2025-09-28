@@ -884,7 +884,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        ///     Destroy a rigid body.
+        ///     OnDestroy a rigid body.
         ///     Warning: This automatically deletes all associated shapes and joints.
         ///     Warning: This method is locked during callbacks.
         /// </summary>
@@ -1048,7 +1048,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        ///     Destroy a joint. This may cause the connected bodies to begin colliding.
+        ///     OnDestroy a joint. This may cause the connected bodies to begin colliding.
         ///     Warning: This method is locked during callbacks.
         /// </summary>
         /// <param name="joint">The joint.</param>

@@ -43,7 +43,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The bird controller class
     /// </summary>
     
-    public class BirdController : IOnStart, IUpdateable, IOnPressKey
+    public class BirdController : IOnStart, IOnUpdate, IOnPressKey
     {
         /// <summary>
         ///     The audio source
@@ -67,7 +67,7 @@ namespace Alis.Sample.Flappy.Bird
             boxCollider.Body.Position = new Vector2F(-3, 0);
         }
 
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
             
         }

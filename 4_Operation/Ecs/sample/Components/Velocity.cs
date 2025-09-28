@@ -34,7 +34,7 @@ namespace Alis.Core.Ecs.Sample.Components
     /// <summary>
     ///     The velocity
     /// </summary>
-    internal struct Velocity(int dx, int dy) : IUpdateable<Position>
+    internal struct Velocity(int dx, int dy) : IOnUpdate<Position>
     {
         /// <summary>
         ///     The dx

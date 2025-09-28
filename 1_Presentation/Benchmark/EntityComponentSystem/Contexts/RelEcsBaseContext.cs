@@ -53,7 +53,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         /// </summary>
         public virtual void Dispose()
         {
-            // Scene.Destroy();
+            // Scene.OnDestroy();
         }
 
         /// <summary>

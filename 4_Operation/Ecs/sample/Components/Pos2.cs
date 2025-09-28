@@ -32,7 +32,7 @@ using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Ecs.Sample.Components
 {
-    internal record struct Pos2(float X = 0) : IInitable, IUpdateable
+    internal record struct Pos2(float X = 0) : IOnInit, IOnUpdate
     {
         /// <summary>
         ///     The gameObject
@@ -43,7 +43,7 @@ namespace Alis.Core.Ecs.Sample.Components
         ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
             Logger.Info(_gameObject.Has<Vel2>() ? "I have velocity!" : "No velocity here!");
         }
@@ -52,7 +52,7 @@ namespace Alis.Core.Ecs.Sample.Components
         ///     Inits the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(IGameObject self)
+        public void OnInit(IGameObject self)
         {
             _gameObject = self;
             Logger.Info("I am initialized!");

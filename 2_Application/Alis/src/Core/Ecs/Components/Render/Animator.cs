@@ -127,7 +127,7 @@ public struct Animator : IAnimator
     /// Updates the self
     /// </summary>
     /// <param name="self">The self</param>
-    public void Update(IGameObject self)
+    public void OnUpdate(IGameObject self)
     {
         if (_clock == null)
             return;

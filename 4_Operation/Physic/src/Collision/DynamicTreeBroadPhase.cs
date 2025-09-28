@@ -152,7 +152,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        ///     Destroy a proxy. It is up to the client to remove any pairs.
+        ///     OnDestroy a proxy. It is up to the client to remove any pairs.
         /// </summary>
         /// <param name="proxyId">The proxy id.</param>
         public void RemoveProxy(int proxyId)

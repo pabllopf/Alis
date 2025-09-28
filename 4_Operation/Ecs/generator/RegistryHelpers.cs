@@ -58,12 +58,12 @@ namespace Alis.Core.Ecs.Generator
         /// <summary>
         ///     The fully qualified initable interface name
         /// </summary>
-        public const string FullyQualifiedInitableInterfaceName = "Alis.Core.Aspect.Fluent.Components.IInitable";
+        public const string FullyQualifiedInitableInterfaceName = "Alis.Core.Aspect.Fluent.Components.IOnInit";
 
         /// <summary>
         ///     The fully qualified destroyable interface name
         /// </summary>
-        public const string FullyQualifiedDestroyableInterfaceName = "Alis.Core.Aspect.Fluent.Components.IDestroyable";
+        public const string FullyQualifiedDestroyableInterfaceName = "Alis.Core.Aspect.Fluent.Components.IOnDestroy";
 
         /// <summary>
         ///     The target interface name
@@ -73,12 +73,12 @@ namespace Alis.Core.Ecs.Generator
         /// <summary>
         ///     The initable interface name
         /// </summary>
-        public const string InitableInterfaceName = "IInitable";
+        public const string InitableInterfaceName = "IOnInit";
 
         /// <summary>
         ///     The destroyable interface name
         /// </summary>
-        public const string DestroyableInterfaceName = "IDestroyable";
+        public const string DestroyableInterfaceName = "IOnDestroy";
 
         /// <summary>
         /// </summary>

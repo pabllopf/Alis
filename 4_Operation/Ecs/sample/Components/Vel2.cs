@@ -31,7 +31,7 @@ using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Core.Ecs.Sample.Components
 {
-    internal record struct Vel2(float DX) : IUpdateable<Pos2>
+    internal record struct Vel2(float DX) : IOnUpdate<Pos2>
     {
         /// <summary>
         ///     Updates the dt

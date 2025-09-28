@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:UpdateRunnerFactory.1.cs
+//  File:IOnDestroy.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,33 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Ecs.Collections;
-
-namespace Alis.Core.Ecs.Updating.Runners
+namespace Alis.Core.Aspect.Fluent.Components
 {
-    /// <inheritdoc cref="IComponentStorageBaseFactory" />
-    public class UpdateRunnerFactory<TComp, TArg> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
-        where TComp : IOnUpdate<TArg>
+    /// <summary>
+    ///     Marks a component to have a <see cref="OnDestroy" /> method to be called at the end of a component lifetime.
+    /// </summary>
+    public interface IOnDestroy : IComponentBase
     {
         /// <summary>
-        ///     Creates the capacity
+        ///     Destroys this instance
         /// </summary>
-        /// <param name="capacity">The capacity</param>
-        /// <returns>The component storage base</returns>
-        ComponentStorageBase IComponentStorageBaseFactory.Create(int capacity) => new GameObjectUpdate<TComp, TArg>(capacity);
-
-        /// <summary>
-        ///     Creates the stack
-        /// </summary>
-        /// <returns>The id table</returns>
-        IdTable IComponentStorageBaseFactory.CreateStack() => new IdTable<TComp>();
-
-        /// <summary>
-        ///     Creates the strongly typed using the specified capacity
-        /// </summary>
-        /// <param name="capacity">The capacity</param>
-        /// <returns>A component storage of t comp</returns>
-        ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new GameObjectUpdate<TComp, TArg>(capacity);
+        void OnDestroy();
     }
 }

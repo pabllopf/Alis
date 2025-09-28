@@ -144,7 +144,7 @@ namespace Alis.Core.Ecs.Test.Framework
         ///     The lifetime component
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        public struct LifetimeComponent(Action<IGameObject> init, Action<IGameObject> destroy) : IInitable, IDestroyable
+        public struct LifetimeComponent(Action<IGameObject> init, Action<IGameObject> destroy) : IOnInit, IOnDestroy
         {
             /// <summary>
             ///     The self
@@ -155,12 +155,12 @@ namespace Alis.Core.Ecs.Test.Framework
             ///     Inits the self
             /// </summary>
             /// <param name="self">The self</param>
-            public void Init(IGameObject self) => init?.Invoke(_self = self);
+            public void OnInit(IGameObject self) => init?.Invoke(_self = self);
 
             /// <summary>
             ///     Destroys this instance
             /// </summary>
-            public void Destroy() => destroy?.Invoke(_self);
+            public void OnDestroy() => destroy?.Invoke(_self);
         }
     }
 }

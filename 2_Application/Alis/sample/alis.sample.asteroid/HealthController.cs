@@ -36,7 +36,7 @@ namespace Alis.Sample.Asteroid
     /// The health controller class
     /// </summary>
     
-    public class HealthController : IInitable, IUpdateable
+    public class HealthController : IOnInit, IOnUpdate
     {
         /*
         /// <summary>
@@ -127,12 +127,12 @@ namespace Alis.Sample.Asteroid
             health--;
         }*/
 
-        public void Init(IGameObject self)
+        public void OnInit(IGameObject self)
         {
             
         }
 
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
           
         }

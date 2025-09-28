@@ -42,7 +42,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The bird idle class
     /// </summary>
     
-    public class BirdIdle : IOnStart, IUpdateable, IHasContext<Context>
+    public class BirdIdle : IOnStart, IOnUpdate, IHasContext<Context>
     {
         /// <summary>
         ///     The range movement
@@ -74,7 +74,7 @@ namespace Alis.Sample.Flappy.Bird
             defaultPosition = self.Get<Transform>().Position;
         }
 
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
             ref Transform t = ref self.Get<Transform>();
             

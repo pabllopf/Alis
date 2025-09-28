@@ -41,7 +41,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The counter controller class
     /// </summary>
     
-    public class CounterController : IOnStart, IUpdateable, IOnCollisionEnter, IOnCollisionExit
+    public class CounterController : IOnStart, IOnUpdate, IOnCollisionEnter, IOnCollisionExit
     {
         /// <summary>
         ///     The audio source
@@ -108,7 +108,7 @@ namespace Alis.Sample.Flappy.Bird
             
         }
 
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
             
         }

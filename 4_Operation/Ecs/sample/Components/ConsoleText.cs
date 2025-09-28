@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Sample.Components
     /// <summary>
     ///     The console text
     /// </summary>
-    internal struct ConsoleText(ConsoleColor Color) : IUpdateable<string>
+    internal struct ConsoleText(ConsoleColor Color) : IOnUpdate<string>
     {
         /// <summary>
         ///     Updates the str

@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Components.Collider
     /// <summary>
     ///     The box collider interface
     /// </summary>
-    public interface IBoxCollider : IOnStart, IUpdateable, IHasContext<Context>
+    public interface IBoxCollider : IOnStart, IOnUpdate, IHasContext<Context>
     {
     }
 }
