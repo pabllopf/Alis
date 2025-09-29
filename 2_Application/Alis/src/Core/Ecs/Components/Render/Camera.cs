@@ -59,23 +59,16 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void OnStart(IGameObject self)
         {
-            Logger.Info("Camera initialized with position: " + Position.X + "," + Position.Y + " and resolution: " + Resolution.X + "," + Resolution.Y);
+            Logger.Info($"[{GetType()}] Initialized with position: ({Position.X},{Position.Y}) and resolution: ({Resolution.X},{Resolution.Y})");
         }
-
-        /// <summary>
-        ///     Updates the self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void OnUpdate(IGameObject self)
-        {
-        }
-
-        public Context Context { get; set; } = context;
+        
         public void OnExit(IGameObject self)
         {
             Position = new Vector2F(positionOriginal.X, positionOriginal.Y);
             Resolution = new Vector2F(resolutionOriginal.X, resolutionOriginal.Y);
-            Logger.Info("Camera exited and reset to original position and resolution: " + Position.X + "," + Position.Y + " and resolution: " + Resolution.X + "," + Resolution.Y);
+            Logger.Info($"[{GetType()}] Reset position: ({Position.X},{Position.Y}) and resolution: ({Resolution.X},{Resolution.Y})");
         }
+        
+        public Context Context { get; set; } = context;
     }
 }
