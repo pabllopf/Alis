@@ -38,7 +38,7 @@ namespace Alis.Sample.Asteroid
     /// <summary>
     /// The bullet class
     /// </summary>
-    public struct Bullet : IOnCollisionEnter, IHasContext<Context>
+    public struct Bullet : IOnCollisionEnter
     {
         public void OnCollisionEnter(IGameObject other)
         {
@@ -57,7 +57,5 @@ namespace Alis.Sample.Asteroid
                 //this.GameObject.Context.SceneManager.DestroyGameObject(this.GameObject);
             }
         }
-
-        public Context Context { get; set; }
     }
 }
