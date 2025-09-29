@@ -73,8 +73,11 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// </summary>
         public override void OnInit()
         {
-            CurrentWorld = LoadedScenes[0];
-                
+            if (LoadedScenes.Count > 0)
+            {
+                CurrentWorld = LoadedScenes[0];
+            }
+            
             GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
             
             foreach (GameObject gameObject in result)

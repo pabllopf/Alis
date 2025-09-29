@@ -29,6 +29,7 @@
 
 using System;
 using System.Threading;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Thread.Sample
 {
@@ -51,6 +52,7 @@ namespace Alis.Extension.Thread.Sample
                 for (int i = 0; (i < 10) && !token.IsCancellationRequested; i++)
                 {
                     System.Threading.Thread.Sleep(1000);
+                    Logger.Info($"Task 1 - {i}");
                 }
             }, cts1.Token);
 
@@ -60,16 +62,20 @@ namespace Alis.Extension.Thread.Sample
                 for (int i = 0; (i < 10) && !token.IsCancellationRequested; i++)
                 {
                     System.Threading.Thread.Sleep(1000);
+                    Logger.Info($"Task 2 - {i}");
                 }
             }, cts2.Token);
 
             threadManager.StartThread(task1);
             threadManager.StartThread(task2);
 
+            Logger.Info("Press any key to stop all threads...");
             Console.ReadKey();
-
+            
+            
             threadManager.StopAllThreads();
 
+            Logger.Info("Press any key to exit...");
             Console.ReadKey();
         }
     }
