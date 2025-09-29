@@ -331,15 +331,21 @@ namespace Alis.Core.Ecs.Components.Render
 
             Gl.GlDisable(EnableCap.Blend);
         }
-
-        /// <summary>
-        ///     Inits the self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void Init(GameObject self)
-        {
-        }
-
+        
         public Context Context { get; set; } = context;
+        
+        public void OnExit(IGameObject self)
+        {
+            /*Gl.DeleteVertexArray(Vao);
+            Gl.DeleteBuffer(Vbo);
+            Gl.DeleteBuffer(Ebo);
+            Gl.GlDeleteProgram(ShaderProgram);
+            Gl.DeleteTexture(Texture);
+            
+            Path = string.Empty;
+            */
+            
+            Logger.Info("Sprite resources have been released.");
+        }
     }
 }

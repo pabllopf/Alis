@@ -554,5 +554,14 @@ namespace Alis.Core.Ecs.Components.Collider
         }
 
         public Context Context { get; set; }
+        
+        public void OnExit(IGameObject self)
+        {
+            if (Body != null)
+            {
+                Context.PhysicManager.WorldPhysic.Remove(Body);
+                Body = null;
+            }
+        }
     }
 }

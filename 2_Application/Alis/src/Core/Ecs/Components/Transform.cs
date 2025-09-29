@@ -37,8 +37,12 @@ namespace Alis.Core.Ecs.Components
     /// <summary>
     ///     The transform
     /// </summary>
-    public struct Transform : IOnInit, IOnUpdate
+    public struct Transform : IOnExit
     {
+        private readonly Vector2F positionOrigin;
+        private readonly float rotationOrigin;
+        private readonly Vector2F scaleOrigin;
+        
         /// <summary>
         ///     The position
         /// </summary>
@@ -53,24 +57,7 @@ namespace Alis.Core.Ecs.Components
         ///     The scale
         /// </summary>
         public Vector2F Scale;
-
-        /// <summary>
-        ///     Inits the self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void OnInit(IGameObject self)
-        {
-        }
-
-        /// <summary>
-        ///     Updates the self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void OnUpdate(IGameObject self)
-        {
-        }
-
-
+        
         /// <summary>
         ///     Initialize using a position vector and a Complex rotation.
         /// </summary>
@@ -80,7 +67,11 @@ namespace Alis.Core.Ecs.Components
         {
             Rotation = rotation;
             Position = position;
-            Scale = Vector2F.One; // Default scale is 1,1
+            Scale = Vector2F.One; 
+            
+            positionOrigin = position;
+            rotationOrigin = rotation;
+            scaleOrigin = Vector2F.One;
         }
 
         /// <summary>
@@ -94,6 +85,18 @@ namespace Alis.Core.Ecs.Components
             Rotation = rotation;
             Position = position;
             Scale = scale;
+            
+            positionOrigin = position;
+            rotationOrigin = rotation;
+            scaleOrigin = scale;
+        }
+
+        public void OnExit(IGameObject self)
+        {
+            Position = positionOrigin;
+            Rotation = rotationOrigin;
+            Scale = scaleOrigin;
+            Logger.Info($"[Transform] Reset Transform of GameObject '{self.Get<Info>().Name}' to its original state.");
         }
     }
 }
