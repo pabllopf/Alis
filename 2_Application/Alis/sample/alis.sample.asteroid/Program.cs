@@ -64,6 +64,7 @@ namespace Alis.Sample.Asteroid
                         .FrameRate(60)
                     )
                     .Physic(physic => physic
+                        .Debug(true)
                         .Gravity(0.0f, -9.8f)
                     )
                     )
@@ -105,16 +106,18 @@ namespace Alis.Sample.Asteroid
                             )
                         
                         // SOUNDTRACK
+                        /*
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .Tag("Soundtrack")
                             .WithComponent<AudioSource>(audioSource => audioSource
                                 
                                 .PlayOnAwake(true)
+                                .Volume(0)
                                 .Loop(true)
                                 .File("soundtrack.wav")
                                 )
-                            )
+                            )*/
                         
                         // PLAYER
                         .Add<GameObject>(player => player

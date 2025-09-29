@@ -28,41 +28,36 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Aspect.Logging;
+using Alis.Core.Ecs.Components;
+using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Sample.Asteroid
 {
     /// <summary>
     /// The bullet class
     /// </summary>
-    
-    public class Bullet : IOnInit , IOnUpdate
+    public struct Bullet : IOnCollisionEnter, IHasContext<Context>
     {
-        /*
-        /// <summary>
-        /// Ons the collision enter using the specified game object
-        /// </summary>
-        /// <param name="gameObject">The game object</param>
-        public override void OnCollisionEnter(GameObject gameObject)
+        public void OnCollisionEnter(IGameObject other)
         {
+            Info gameObject = other.Get<Info>();
+            
             if (gameObject.Tag == "Asteroid")
             {
-                gameObject.Get<Asteroid>().DecreaseHealth();
-                this.GameObject.Context.SceneManager.DestroyGameObject(this.GameObject);
+                Logger.Info("Bullet hit an asteroid and will decrease its health.");
+                other.Get<Asteroid>().DecreaseHealth();
+                //Context.SceneManager.CurrentWorld.(this.GameObject);
             }
             
             if (gameObject.Tag == "Wall")
             {
-                this.GameObject.Context.SceneManager.DestroyGameObject(this.GameObject);
+                Logger.Info("Bullet hit a wall and will be destroyed.");
+                //this.GameObject.Context.SceneManager.DestroyGameObject(this.GameObject);
             }
-        }*/
-
-        public void OnInit(IGameObject self)
-        {
-            
         }
 
-        public void OnUpdate(IGameObject self)
-        {
-        }
+        public Context Context { get; set; }
     }
 }
