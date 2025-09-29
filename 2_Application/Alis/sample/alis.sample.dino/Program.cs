@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.Systems;
+
 namespace Alis.Sample.Dino
 {
     /// <summary>
@@ -40,7 +43,6 @@ namespace Alis.Sample.Dino
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            /*
             VideoGame
                 .Create()
                 .Settings(setting => setting
@@ -60,14 +62,14 @@ namespace Alis.Sample.Dino
                         .Gravity(0.0f, -9.8f)
                         .Build())
                     .Build())
-                .CurrentWorld(sceneManager => sceneManager
+                .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
                         .Add<GameObject>(soundTrack => soundTrack
                             .Build())
                         .Build())
                     .Build())
                 .Build()
-                .Run();*/
+                .Run();
         }
     }
 }
