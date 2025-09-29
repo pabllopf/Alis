@@ -41,6 +41,7 @@ public struct Animator : IAnimator
     public Animator()
     {
         Animations = new List<Animation>();
+        _clock = new Clock();
         CurrentAnimationIndex = 0;
         CurrentFrameIndex = 0;
     }
@@ -118,7 +119,6 @@ public struct Animator : IAnimator
     /// <param name="self">The self</param>
     public void OnStart(IGameObject self)
     {
-        _clock = new Clock();
         _clock.Start();
         _elapsedTime = 0f;
     }

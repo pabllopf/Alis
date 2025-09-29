@@ -356,8 +356,26 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         
         public void LoadScene(int id)
         {
+            
+            OnExit();
             CurrentWorld = LoadedScenes[id];
             
+            GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
+            
+            foreach (GameObject gameObject in result)
+            {
+                foreach (ComponentId component in gameObject.ComponentTypes)
+                {
+                    Type componentType = component.Type;
+                    if (typeof(IHasContext<Context>).IsAssignableFrom(componentType))
+                    {
+                        IHasContext<Context> onPressKey = (IHasContext<Context>) gameObject.Get(componentType);
+                        onPressKey.Context = Context;
+                    }
+                }
+            }
+            
+            OnStart();
             
 
         }

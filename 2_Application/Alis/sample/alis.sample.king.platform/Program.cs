@@ -64,6 +64,7 @@ namespace Alis.Sample.King.Platform
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
+                        .Debug(true)
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager
