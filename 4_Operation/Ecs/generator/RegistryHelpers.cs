@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Generator
         /// <summary>
         ///     The update method name
         /// </summary>
-        public const string UpdateMethodName = "Update";
+        public const string UpdateMethodName = "OnUpdate";
 
         /// <summary>
         ///     The fully qualified target interface name

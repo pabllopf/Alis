@@ -41,8 +41,7 @@ namespace Alis.Sample.Flappy.Bird
     /// <summary>
     ///     The pipeline controller class
     /// </summary>
-    
-    public class PipelineController : IOnStart, IOnUpdate
+    public class PipelineController() : IOnStart, IOnUpdate, IOnExit
     {
         /// <summary>
         ///     The random height
@@ -85,8 +84,8 @@ namespace Alis.Sample.Flappy.Bird
         public float Velocity = 3;
 
         private Info info;
-        
-        
+
+
         public void OnStart(IGameObject self)
         {
             posOrigin = self.Get<Transform>();
@@ -154,6 +153,14 @@ namespace Alis.Sample.Flappy.Bird
             {
                 _generated = false;
             }
+        }
+
+        public void OnExit(IGameObject self)
+        {
+            Velocity = 0;
+            IsStop = true;
+            _generated = false;
+            Logger.Info($"{info.Name} Exiting...");
         }
     }
 }
