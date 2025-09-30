@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.Components.Render
     /// <seealso cref="IInitable" />
     /// <seealso cref="IUpdateable" />
     public interface IAnimator : 
-        IInitable, 
+        IOnStart, 
         IUpdateable,
         IHasContext<Context>
     {

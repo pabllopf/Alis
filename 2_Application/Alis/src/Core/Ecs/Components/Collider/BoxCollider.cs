@@ -50,7 +50,7 @@ namespace Alis.Core.Ecs.Components.Collider
     /// <seealso cref="IBoxCollider" />
     /// <seealso cref="IInitable" />
     /// <seealso cref="IUpdateable" />
-    public class BoxCollider : IBoxCollider, IInitable, IUpdateable, IHasContext<Context>
+    public class BoxCollider : IBoxCollider
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="BoxCollider" /> class
@@ -271,13 +271,13 @@ namespace Alis.Core.Ecs.Components.Collider
         ///     Inits the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(IGameObject self)
+        public void OnStart(IGameObject self)
         {
             if (self.Has<Transform>())
             {
                 ref Transform transform = ref self.Get<Transform>();
 
-                Body = PhysicManager.WorldPhysic.CreateRectangle(
+                Body = Context.PhysicManager.WorldPhysic.CreateRectangle(
                     SizeOfTexture.X * transform.Scale.X,
                     SizeOfTexture.Y * transform.Scale.Y,
                     1.0f,

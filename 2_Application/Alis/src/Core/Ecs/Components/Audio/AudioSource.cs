@@ -142,7 +142,7 @@ namespace Alis.Core.Ecs.Components.Audio
         ///     Inits the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(IGameObject self)
+        public void OnStart(IGameObject self)
         {
             ThreadPool.SetMinThreads(200, 200);
             if (PlayOnAwake)

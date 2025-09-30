@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IComponentBuilderProvider.cs
+//  File:IOnExit.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,17 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ecs.Components.Render
+namespace Alis.Core.Aspect.Fluent.Components
 {
-    /// <summary>
-    /// The component builder provider interface
-    /// </summary>
-    public interface IComponentBuilderProvider<TBuilder>
+    public interface IOnExit
     {
-        /// <summary>
-        /// Creates the builder
-        /// </summary>
-        /// <returns>The builder</returns>
-        TBuilder CreateBuilder();
+        void OnExit(IGameObject self);
     }
 }
