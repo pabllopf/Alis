@@ -35,7 +35,7 @@ namespace Alis.Sample.Asteroid
     /// <summary>
     /// The counter manager class
     /// </summary>
-    public class CounterManager : IInitable , IUpdateable
+    public class CounterManager : IOnInit , IOnUpdate
     {
         /*
         /// <summary>
@@ -100,12 +100,12 @@ namespace Alis.Sample.Asteroid
         }*/
 
 
-        public void Init(IGameObject self)
+        public void OnInit(IGameObject self)
         {
             
         }
 
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
             
         }

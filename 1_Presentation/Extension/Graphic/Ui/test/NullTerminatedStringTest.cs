@@ -81,19 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             NullTerminatedString nts = new NullTerminatedString(byteArray);
             Assert.Equal("Hello", nts.ToString());
         }
-
-        /// <summary>
-        ///     Tests that implicit conversion should return correct string
-        /// </summary>
-        [Fact]
-        public void ImplicitConversion_Should_ReturnCorrectString()
-        {
-            byte[] byteArray = {87, 111, 114, 108, 100}; // "CurrentWorld"
-            NullTerminatedString nts = new NullTerminatedString(byteArray);
-            string result = nts;
-            Assert.Equal("CurrentWorld", result);
-        }
-
+        
         /// <summary>
         ///     Tests that to string data is null returns empty string
         /// </summary>

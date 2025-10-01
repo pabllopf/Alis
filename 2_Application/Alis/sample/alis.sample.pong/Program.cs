@@ -62,6 +62,7 @@ namespace Alis.Sample.Pong
                     .Graphic(graphic => graphic
                         .Resolution(1024, 640))
                     .Physic(physic => physic
+                        .Debug(true)
                         .Gravity(0.0f, -9.8f))
                 )
                 .World(sceneManager => sceneManager

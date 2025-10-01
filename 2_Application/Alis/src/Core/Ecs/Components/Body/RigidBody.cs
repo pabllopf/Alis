@@ -34,13 +34,13 @@ namespace Alis.Core.Ecs.Components.Body
     /// <summary>
     ///     The rigid body
     /// </summary>
-    public struct RigidBody : IUpdateable
+    public struct RigidBody : IOnUpdate
     {
         /// <summary>
         ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
         }
     }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IUpdateable.4.cs
+//  File:IOnBeforeUpdate.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,14 +29,8 @@
 
 namespace Alis.Core.Aspect.Fluent.Components
 {
-    /// <summary>
-    ///     The gameObject component interface
-    /// </summary>
-    /// <seealso cref="IComponentBase" />
-    // ReSharper disable once PartialTypeWithSinglePart
-    public partial interface IUpdateable<TArg1, TArg2, TArg3, TArg4> : IComponentBase
+    public interface IOnBeforeUpdate
     {
-        /// <inheritdoc cref="IComponent.Update" />
-        void Update(IGameObject self, ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4);
+        void OnBeforeUpdate(IGameObject self);
     }
 }

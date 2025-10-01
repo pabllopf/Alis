@@ -48,8 +48,8 @@ namespace Alis.Core.Ecs.Components.Collider
     ///     The box collider class
     /// </summary>
     /// <seealso cref="IBoxCollider" />
-    /// <seealso cref="IInitable" />
-    /// <seealso cref="IUpdateable" />
+    /// <seealso cref="IOnInit" />
+    /// <seealso cref="IOnUpdate" />
     public class BoxCollider : IBoxCollider
     {
         /// <summary>
@@ -253,7 +253,7 @@ namespace Alis.Core.Ecs.Components.Collider
         ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
             if (self.Has<Transform>())
             {

@@ -203,7 +203,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        ///     Destroy a proxy. This asserts if the id is invalid.
+        ///     OnDestroy a proxy. This asserts if the id is invalid.
         /// </summary>
         /// <param name="proxyId">The proxy id.</param>
         public void RemoveProxy(int proxyId)
@@ -653,7 +653,7 @@ namespace Alis.Core.Physic.Collision
 
             if (grandParent != NullNode)
             {
-                // Destroy parent and connect sibling to grandParent.
+                // OnDestroy parent and connect sibling to grandParent.
                 if (_nodes[grandParent].Child1 == parent)
                 {
                     _nodes[grandParent].Child1 = sibling;

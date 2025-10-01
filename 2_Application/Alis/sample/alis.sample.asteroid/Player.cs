@@ -3,7 +3,7 @@ using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Sample.Asteroid
 {
-    public class Player : IInitable, IUpdateable
+    public class Player : IOnInit, IOnUpdate
     {
         /*
         /// <summary>
@@ -202,12 +202,12 @@ namespace Alis.Sample.Asteroid
         {
         }*/
 
-        public void Init(IGameObject self)
+        public void OnInit(IGameObject self)
         {
             
         }
 
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
            
         }

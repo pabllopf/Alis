@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Components.Render
         ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
         }
 

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IInitable.cs
+//  File:IOnInit.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,12 +33,12 @@ namespace Alis.Core.Aspect.Fluent.Components
     ///     The initable interface
     /// </summary>
     /// <seealso cref="IComponentBase" />
-    public interface IInitable : IComponentBase
+    public interface IOnInit : IComponentBase
     {
         /// <summary>
         ///     Inits the self
         /// </summary>
         /// <param name="self">The self</param>
-        void Init(IGameObject self);
+        void OnInit(IGameObject self);
     }
 }

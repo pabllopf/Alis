@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Components.Audio
     /// </summary>
     public interface IAudioSource : 
         IOnStart, 
-        IUpdateable,
+        IOnUpdate,
         IHasContext<Context>
     {
         

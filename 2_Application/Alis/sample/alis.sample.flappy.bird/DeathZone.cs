@@ -47,7 +47,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The death zone class
     /// </summary>
     
-    public class DeathZone : IOnStart, IUpdateable, IHasContext<Context>, IOnCollisionEnter
+    public class DeathZone : IOnStart, IOnUpdate, IHasContext<Context>, IOnCollisionEnter
     {
         /// <summary>
         ///     The is death
@@ -95,7 +95,7 @@ namespace Alis.Sample.Flappy.Bird
         
         
 
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
             if (IsDeath)
             {

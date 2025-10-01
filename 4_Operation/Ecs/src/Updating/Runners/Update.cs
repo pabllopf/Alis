@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// </summary>
     /// <seealso cref="ComponentStorage{TComp}" />
     public class Update<TComp>(int capacity) : ComponentStorage<TComp>(capacity)
-        where TComp : IUpdateable
+        where TComp : IOnUpdate
     {
         /// <summary>
         ///     Runs the scene
@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Updating.Runners
             for (int i = b.EntityCount - 1; i >= 0; i--)
             {
                 entityIds.SetEntity(ref gameObject);
-                comp.Update(gameObject);
+                comp.OnUpdate(gameObject);
 
                 entityIds = ref Unsafe.Add(ref entityIds, 1);
                 comp = ref Unsafe.Add(ref comp, 1);
@@ -80,7 +80,7 @@ namespace Alis.Core.Ecs.Updating.Runners
             for (int i = length - 1; i >= 0; i--)
             {
                 entityIds.SetEntity(ref gameObject);
-                comp.Update(gameObject);
+                comp.OnUpdate(gameObject);
 
                 entityIds = ref Unsafe.Add(ref entityIds, 1);
                 comp = ref Unsafe.Add(ref comp, 1);
@@ -93,7 +93,7 @@ namespace Alis.Core.Ecs.Updating.Runners
     /// </summary>
     /// <seealso cref="ComponentStorage{TComp}" />
     public class GameObjectUpdate<TComp, TArg>(int capacity) : ComponentStorage<TComp>(capacity)
-        where TComp : IUpdateable<TArg>
+        where TComp : IOnUpdate<TArg>
     {
         /// <summary>
         ///     Runs the scene

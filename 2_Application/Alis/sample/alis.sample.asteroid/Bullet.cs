@@ -35,7 +35,7 @@ namespace Alis.Sample.Asteroid
     /// The bullet class
     /// </summary>
     
-    public class Bullet : IInitable , IUpdateable
+    public class Bullet : IOnInit , IOnUpdate
     {
         /*
         /// <summary>
@@ -56,12 +56,12 @@ namespace Alis.Sample.Asteroid
             }
         }*/
 
-        public void Init(IGameObject self)
+        public void OnInit(IGameObject self)
         {
             
         }
 
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
         }
     }

@@ -34,7 +34,7 @@ namespace Alis.Core.Ecs.Updating.Runners
 {
     /// <inheritdoc cref="IComponentStorageBaseFactory" />
     public class UpdateRunnerFactory<TComp> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
-        where TComp : IUpdateable
+        where TComp : IOnUpdate
     {
         /// <summary>
         ///     Creates the capacity

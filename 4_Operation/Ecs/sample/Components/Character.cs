@@ -35,7 +35,7 @@ namespace Alis.Core.Ecs.Sample.Components
     /// <summary>
     ///     The character
     /// </summary>
-    internal struct Character(char c) : IUpdateable<Position>
+    internal struct Character(char c) : IOnUpdate<Position>
     {
         /// <summary>
         ///     The

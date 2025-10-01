@@ -43,8 +43,8 @@ namespace Alis.Core.Ecs.Kernel
         ///     The
         /// </summary>
         internal static readonly bool IsDestroyable = typeof(T).IsValueType
-            ? default(T) is IDestroyable
-            : typeof(IDestroyable).IsAssignableFrom(typeof(T));
+            ? default(T) is IOnDestroy
+            : typeof(IOnDestroy).IsAssignableFrom(typeof(T));
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Component{T}" /> class

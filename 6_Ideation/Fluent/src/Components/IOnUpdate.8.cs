@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:UpdateRunnerFactory.1.cs
+//  File:IOnUpdate.8.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,33 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Ecs.Collections;
-
-namespace Alis.Core.Ecs.Updating.Runners
+namespace Alis.Core.Aspect.Fluent.Components
 {
-    /// <inheritdoc cref="IComponentStorageBaseFactory" />
-    public class UpdateRunnerFactory<TComp, TArg> : IComponentStorageBaseFactory, IComponentStorageBaseFactory<TComp>
-        where TComp : IOnUpdate<TArg>
+    /// <summary>
+    ///     The gameObject component interface
+    /// </summary>
+    /// <seealso cref="IComponentBase" />
+    // ReSharper disable once PartialTypeWithSinglePart
+    public partial interface IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> : IComponentBase
     {
-        /// <summary>
-        ///     Creates the capacity
-        /// </summary>
-        /// <param name="capacity">The capacity</param>
-        /// <returns>The component storage base</returns>
-        ComponentStorageBase IComponentStorageBaseFactory.Create(int capacity) => new GameObjectUpdate<TComp, TArg>(capacity);
-
-        /// <summary>
-        ///     Creates the stack
-        /// </summary>
-        /// <returns>The id table</returns>
-        IdTable IComponentStorageBaseFactory.CreateStack() => new IdTable<TComp>();
-
-        /// <summary>
-        ///     Creates the strongly typed using the specified capacity
-        /// </summary>
-        /// <param name="capacity">The capacity</param>
-        /// <returns>A component storage of t comp</returns>
-        ComponentStorage<TComp> IComponentStorageBaseFactory<TComp>.CreateStronglyTyped(int capacity) => new GameObjectUpdate<TComp, TArg>(capacity);
+        /// <inheritdoc cref="IComponent.Update" />
+        void Update(IGameObject self, ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4, ref TArg5 arg5,
+            ref TArg6 arg6, ref TArg7 arg7, ref TArg8 arg8);
     }
 }

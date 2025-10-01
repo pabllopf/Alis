@@ -32,12 +32,12 @@ using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Ecs.Sample.Components
 {
-    internal record struct Pos(float X) : IUpdateable
+    internal record struct Pos(float X) : IOnUpdate
     {
         /// <summary>
         ///     Updates the gameObject
         /// </summary>
-        public void Update(IGameObject gameObject)
+        public void OnUpdate(IGameObject gameObject)
         {
             Logger.Info(gameObject.Has<Vel>() ? "I have velocity!" : "No velocity here!");
         }

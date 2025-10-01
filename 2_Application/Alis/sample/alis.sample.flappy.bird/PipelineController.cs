@@ -42,7 +42,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The pipeline controller class
     /// </summary>
     
-    public class PipelineController : IOnStart, IUpdateable
+    public class PipelineController : IOnStart, IOnUpdate
     {
         /// <summary>
         ///     The random height
@@ -110,7 +110,7 @@ namespace Alis.Sample.Flappy.Bird
             IsStop = false;
         }
 
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
             Transform current = self.Get<Transform>();
             

@@ -40,7 +40,7 @@ namespace Alis.Core.Ecs
     /// </summary>
     /// <seealso cref="ComponentStorage{TComp}" />
     public class EntityUpdate<TComp, TArg1, TArg2, TArg3, TArg4, TArg5>(int capacity) : ComponentStorage<TComp>(capacity)
-        where TComp : IUpdateable<TArg1, TArg2, TArg3, TArg4, TArg5>
+        where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5>
     {
         /// <summary>
         ///     Runs the scene

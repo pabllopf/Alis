@@ -41,7 +41,7 @@ namespace Alis.Sample.Flappy.Bird
     ///     The floor animation class
     /// </summary>
     
-    public class FloorAnimation : IOnStart, IUpdateable, IHasContext<Context>
+    public class FloorAnimation : IOnStart, IOnUpdate, IHasContext<Context>
     {
         /// <summary>
         ///     The velocity
@@ -59,7 +59,7 @@ namespace Alis.Sample.Flappy.Bird
         }
         
 
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
             ref Transform t = ref self.Get<Transform>();
             

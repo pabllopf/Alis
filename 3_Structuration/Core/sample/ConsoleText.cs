@@ -8,7 +8,7 @@ namespace Alis.Core.Sample
     /// <summary>
     /// The console text
     /// </summary>
-    struct ConsoleText(ConsoleColor Color) : IUpdateable<string>
+    struct ConsoleText(ConsoleColor Color) : IOnUpdate<string>
     {
         /// <summary>
         /// Updates the str

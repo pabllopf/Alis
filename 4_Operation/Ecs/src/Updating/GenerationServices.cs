@@ -65,18 +65,18 @@ namespace Alis.Core.Ecs.Updating
         ///     Used only for source generation
         /// </summary>
         public static void RegisterInit<T>()
-            where T : IInitable
+            where T : IOnInit
         {
-            TypeIniters[typeof(T)] = (ComponentDelegates<T>.InitDelegate) (static (GameObject e, ref T c) => c.Init(e));
+            TypeIniters[typeof(T)] = (ComponentDelegates<T>.InitDelegate) (static (GameObject e, ref T c) => c.OnInit(e));
         }
 
         /// <summary>
         ///     Used only for source generation
         /// </summary>
         public static void RegisterDestroy<T>()
-            where T : IDestroyable
+            where T : IOnDestroy
         {
-            TypeDestroyers[typeof(T)] = (ComponentDelegates<T>.DestroyDelegate) (static (ref T c) => c.Destroy());
+            TypeDestroyers[typeof(T)] = (ComponentDelegates<T>.DestroyDelegate) (static (ref T c) => c.OnDestroy());
         }
 
         /// <summary>

@@ -36,14 +36,14 @@ namespace Alis.Sample.Asteroid
     /// The spawn asteroid class
     /// </summary>
     
-    public class SpawnAsteroid : IInitable, IUpdateable
+    public class SpawnAsteroid : IOnInit, IOnUpdate
     {
-        public void Init(IGameObject self)
+        public void OnInit(IGameObject self)
         {
             
         }
 
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
            
         }

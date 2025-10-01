@@ -31,7 +31,7 @@ using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Core.Ecs.Components
 {
-    public record struct Info : IInitable, IUpdateable
+    public record struct Info : IOnInit, IOnUpdate
     {
         /// <summary>
         /// The name
@@ -57,7 +57,7 @@ namespace Alis.Core.Ecs.Components
         /// Inits the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Init(IGameObject self)
+        public void OnInit(IGameObject self)
         {
             
         }
@@ -66,7 +66,7 @@ namespace Alis.Core.Ecs.Components
         /// Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
             
         }

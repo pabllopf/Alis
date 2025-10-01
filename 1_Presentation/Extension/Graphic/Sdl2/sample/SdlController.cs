@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sample
             }
             else
             {
-                Logger.Info("Init all");
+                Logger.Info("OnInit all");
             }
 
             // GET VERSION SDL2

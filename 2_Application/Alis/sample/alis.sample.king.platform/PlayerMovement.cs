@@ -12,7 +12,7 @@ namespace Alis.Sample.King.Platform
     /// <summary>
     /// The player movement
     /// </summary>
-    public struct PlayerMovement : IInitable, IUpdateable, IOnPressKey, IOnHoldKey, IOnReleaseKey
+    public struct PlayerMovement : IOnInit, IOnUpdate, IOnPressKey, IOnHoldKey, IOnReleaseKey
     {
         /// <summary>
         /// The jump force
@@ -62,7 +62,7 @@ namespace Alis.Sample.King.Platform
         /// <exception cref="InvalidOperationException">GameObject must have a BoxCollider component</exception>
         /// <exception cref="InvalidOperationException">GameObject must have a Sprite component</exception>
         /// <exception cref="InvalidOperationException">GameObject must have an Animator component</exception>
-        public void Init(IGameObject self)
+        public void OnInit(IGameObject self)
         {
             if (self == null)
             {
@@ -93,7 +93,7 @@ namespace Alis.Sample.King.Platform
         /// Updates the self
         /// </summary>
         /// <param name="self">The self</param>
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
             
         }

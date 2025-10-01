@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IUpdateable.cs
+//  File:IOnUpdate.4.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,13 +30,13 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    ///     Indicates a component should be updated with itself as an argument
+    ///     The gameObject component interface
     /// </summary>
-    /// <remarks>Components should only implement one "Update" method.</remarks>
+    /// <seealso cref="IComponentBase" />
     // ReSharper disable once PartialTypeWithSinglePart
-    public partial interface IUpdateable : IComponentBase
+    public partial interface IOnUpdate<TArg1, TArg2, TArg3, TArg4> : IComponentBase
     {
         /// <inheritdoc cref="IComponent.Update" />
-        void Update(IGameObject self);
+        void Update(IGameObject self, ref TArg1 arg1, ref TArg2 arg2, ref TArg3 arg3, ref TArg4 arg4);
     }
 }

@@ -364,7 +364,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="broadPhase">The broad phase</param>
         internal void DestroyProxies(IBroadPhase broadPhase)
         {
-            // Destroy proxies in the broad-phase.
+            // OnDestroy proxies in the broad-phase.
             for (int i = 0; i < ProxyCount; ++i)
             {
                 broadPhase.RemoveProxy(Proxies[i].ProxyId);
