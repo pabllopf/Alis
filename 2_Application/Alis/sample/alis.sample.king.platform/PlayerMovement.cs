@@ -103,13 +103,13 @@ namespace Alis.Sample.King.Platform
             if (info.Key == ConsoleKey.A)
             {
                 directionPlayer.X = -1;
-                boxCollider.Body.ApplyLinearImpulse(new Vector2F(-0.1f, 0));
+                boxCollider.Body.ApplyLinearImpulse(new Vector2F(-0.5f , 0));
             }
 
             if (info.Key == ConsoleKey.D)
             {
                 directionPlayer.X = 1;
-                boxCollider.Body.ApplyLinearImpulse(new Vector2F(0.1f, 0));
+                boxCollider.Body.ApplyLinearImpulse(new Vector2F(0.5f, 0));
             }
             
             if (info.Key == ConsoleKey.Spacebar)
@@ -117,17 +117,17 @@ namespace Alis.Sample.King.Platform
                 boxCollider.Body.ApplyLinearImpulse(new Vector2F(0, JumpForce));
             }
             
-            Logger.Info($"OnPressKey {info.Key}, {info.HoldDuration}, {info.Timestamp}");
+            //Logger.Info($"OnPressKey {info.Key}, {info.HoldDuration}, {info.Timestamp}");
         }
 
         public void OnHoldKey(KeyEventInfo info)
         {
-            Logger.Info($"OnHoldKey {info.Key}, {info.HoldDuration}, {info.Timestamp}");
+            //Logger.Info($"OnHoldKey {info.Key}, {info.HoldDuration}, {info.Timestamp}");
         }
 
         public void OnReleaseKey(KeyEventInfo info)
         {
-            Logger.Info($"OnReleaseKey {info.Key}, {info.HoldDuration}, {info.Timestamp}");
+            //Logger.Info($"OnReleaseKey {info.Key}, {info.HoldDuration}, {info.Timestamp}");
         }
     }
 }
