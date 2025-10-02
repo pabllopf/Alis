@@ -232,6 +232,12 @@ namespace Alis.Sample.Asteroid
             health -= 1;
             Console.WriteLine("Asteroid health: " + health);
         }*/
+        
+        public void DecreaseHealth()
+        {
+            //health -= 1;
+            //Console.WriteLine("Asteroid health: " + health);
+        }
 
         public void OnInit(IGameObject self)
         {
