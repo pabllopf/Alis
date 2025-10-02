@@ -42,7 +42,7 @@ namespace Alis.Sample.Asteroid
     {
         public void OnCollisionEnter(IGameObject other)
         {
-            Info gameObject = other.Get<Info>();
+            ref Info gameObject = ref other.Get<Info>();
             
             if (gameObject.Tag == "Asteroid")
             {
