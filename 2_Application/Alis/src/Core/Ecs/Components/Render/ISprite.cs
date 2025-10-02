@@ -44,7 +44,8 @@ namespace Alis.Core.Ecs.Components.Render
     public interface ISprite:
         IOnStart, 
         IOnUpdate,
-        IHasContext<Context>
+        IHasContext<Context>,
+        IOnExit
     {
     }
 }

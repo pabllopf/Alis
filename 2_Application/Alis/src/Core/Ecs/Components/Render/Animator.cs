@@ -163,4 +163,10 @@ public struct Animator : IAnimator
     }
 
     public Context Context { get; set; }
+    public void OnExit(IGameObject self)
+    {
+        _clock.Stop();
+        _elapsedTime = 0f;
+        _clock.Reset();
+    }
 }

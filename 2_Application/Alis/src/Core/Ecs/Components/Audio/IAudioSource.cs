@@ -39,7 +39,8 @@ namespace Alis.Core.Ecs.Components.Audio
     public interface IAudioSource : 
         IOnStart, 
         IOnUpdate,
-        IHasContext<Context>
+        IHasContext<Context>,
+        IOnExit
     {
         
         void Play();

@@ -39,6 +39,10 @@ namespace Alis.Core.Ecs.Components.Render
     /// </summary>
     public struct Camera(Context context, Vector2F position, Vector2F resolution) : ICamera
     {
+        private readonly Vector2F positionOriginal = position;
+        
+        private readonly Vector2F resolutionOriginal = resolution;
+        
         /// <summary>
         ///     The position
         /// </summary>
@@ -55,7 +59,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void OnStart(IGameObject self)
         {
-            Logger.Info("Camera initialized with position: " + Position + " and resolution: " + Resolution);
+            Logger.Info("Camera initialized with position: " + Position.X + "," + Position.Y + " and resolution: " + Resolution.X + "," + Resolution.Y);
         }
 
         /// <summary>
@@ -66,14 +70,12 @@ namespace Alis.Core.Ecs.Components.Render
         {
         }
 
-        /// <summary>
-        ///     Inits the self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void Init(GameObject self)
-        {
-        }
-
         public Context Context { get; set; } = context;
+        public void OnExit(IGameObject self)
+        {
+            Position = new Vector2F(positionOriginal.X, positionOriginal.Y);
+            Resolution = new Vector2F(resolutionOriginal.X, resolutionOriginal.Y);
+            Logger.Info("Camera exited and reset to original position and resolution: " + Position.X + "," + Position.Y + " and resolution: " + Resolution.X + "," + Resolution.Y);
+        }
     }
 }

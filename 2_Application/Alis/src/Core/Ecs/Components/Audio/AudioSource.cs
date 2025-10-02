@@ -41,7 +41,8 @@ namespace Alis.Core.Ecs.Components.Audio
     ///     The audio clip
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct AudioSource(Context context, string nameFile = "", float volume = 100, bool isMute = false, bool playOnAwake = false, bool loop = false) : IAudioSource
+    public struct AudioSource(Context context, string nameFile = "", float volume = 100, bool isMute = false, bool playOnAwake = false, bool loop = false) : 
+        IAudioSource
     {
         /// <summary>
         ///     The loop
@@ -152,5 +153,10 @@ namespace Alis.Core.Ecs.Components.Audio
         }
 
         public Context Context { get; set; } = context;
+        
+        public void OnExit(IGameObject self)
+        {
+            Stop();
+        }
     }
 }

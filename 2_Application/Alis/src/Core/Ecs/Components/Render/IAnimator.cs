@@ -41,7 +41,8 @@ namespace Alis.Core.Ecs.Components.Render
     public interface IAnimator : 
         IOnStart, 
         IOnUpdate,
-        IHasContext<Context>
+        IHasContext<Context>,
+        IOnExit
     {
     }
 }
