@@ -239,13 +239,32 @@ namespace Alis.Core.Aspect.Data.Dll
         /// </summary>
         /// <param name="canonicalDestinationPath">The canonical destination path</param>
         /// <param name="entry">The entry</param>
-        internal static void ExtractFileFromEntry(string canonicalDestinationPath, ZipArchiveEntry entry)
+    internal static void ExtractFileFromEntry(string canonicalDestinationPath, ZipArchiveEntry entry)
+    {
+        if (IsFileLocked(canonicalDestinationPath))
+            return;
+    
+        using Stream entryStream = entry.Open();
+        using FileStream fs = File.Create(canonicalDestinationPath);
+        entryStream.CopyTo(fs);
+        SetFileReadPermission(canonicalDestinationPath);
+    }
+    
+    private static bool IsFileLocked(string filePath)
+    {
+        if (!File.Exists(filePath))
+            return false;
+    
+        try
         {
-            using Stream entryStream = entry.Open();
-            using FileStream fs = File.Create(canonicalDestinationPath);
-            entryStream.CopyTo(fs);
-            SetFileReadPermission(canonicalDestinationPath);
+            using FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+            return false;
         }
+        catch (IOException)
+        {
+            return true;
+        }
+    }
 
         /// <summary>
         ///     Sets the file read permission using the specified file path
