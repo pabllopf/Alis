@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Components.Render
     /// </summary>
     /// <seealso cref="IOnInit" />
     /// <seealso cref="IOnUpdate" />
-    public interface ICamera : IOnStart, IOnUpdate, IHasContext<Context>, IOnExit
+    public interface ICamera : IOnStart, IHasContext<Context>, IOnExit
     {
     }
 }

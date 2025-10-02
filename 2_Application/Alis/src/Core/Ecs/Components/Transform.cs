@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Components
     /// <summary>
     ///     The transform
     /// </summary>
-    public struct Transform : IOnExit
+    public struct Transform : IOnStart, IOnExit
     {
         private readonly Vector2F positionOrigin;
         private readonly float rotationOrigin;
@@ -90,13 +90,18 @@ namespace Alis.Core.Ecs.Components
             rotationOrigin = rotation;
             scaleOrigin = scale;
         }
+        
+        public void OnStart(IGameObject self)
+        {
+            Logger.Info($"[{GetType()}] Initialized Transform of GameObject '{self.Get<Info>().Name}' with Position: {Position}, Rotation: {Rotation}, Scale: {Scale}");
+        }
 
         public void OnExit(IGameObject self)
         {
             Position = positionOrigin;
             Rotation = rotationOrigin;
             Scale = scaleOrigin;
-            Logger.Info($"[Transform] Reset Transform of GameObject '{self.Get<Info>().Name}' to its original state.");
+            Logger.Info($"[{GetType()}] Reset Transform of GameObject '{self.Get<Info>().Name}' to Position: {Position} , Rotation: {Rotation}, Scale: {Scale}");
         }
     }
 }
