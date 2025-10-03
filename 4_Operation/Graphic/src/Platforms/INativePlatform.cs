@@ -44,6 +44,8 @@ namespace Alis.Core.Graphic.Platforms
         /// <param name="title">The title</param>
         bool Initialize(int width, int height, string title);
 
+        bool Initialize(int width, int height, string title, string iconPath);
+
         /// <summary>
         ///     Shows the window
         /// </summary>
@@ -124,5 +126,11 @@ namespace Alis.Core.Graphic.Platforms
         bool TryGetLastKeyPressed(out ConsoleKey key);
 
         bool IsKeyDown(ConsoleKey consoleKey);
+
+        /// <summary>
+        /// Sets the window icon from the specified BMP file path
+        /// </summary>
+        /// <param name="iconPath">Full path to the BMP icon file</param>
+        void SetWindowIcon(string iconPath);
     }
 }

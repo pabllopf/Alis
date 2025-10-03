@@ -803,7 +803,78 @@ namespace Alis.Core.Graphic.Platforms.Linux
             return false;
         }
 
+        /// <summary>
+        /// Crea la ventana y le asigna un icono BMP usando el path proporcionado (X11)
+        /// </summary>
+        public bool Initialize(int width, int height, string title, string iconPath)
+        {
+            bool result = Initialize(width, height, title);
+            if (!result)
+                return false;
+            try
+            {
+                // Cargar el BMP en memoria
+                byte[] bmpData = System.IO.File.ReadAllBytes(iconPath);
+                // Extraer ancho, alto y datos de píxeles del BMP (asumiendo formato estándar)
+                int iconWidth = BitConverter.ToInt32(bmpData, 18);
+                int iconHeight = BitConverter.ToInt32(bmpData, 22);
+                int pixelOffset = BitConverter.ToInt32(bmpData, 10);
+                IntPtr iconPixmap = XCreatePixmapFromBitmapData(display, window, bmpData, iconWidth, iconHeight);
+                if (iconPixmap != IntPtr.Zero)
+                {
+                    XWMHints hints = new XWMHints { flags = 2, icon_pixmap = iconPixmap };
+                    XSetWMHints(display, window, ref hints);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Loguear error si ocurre
+            }
+            return true;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        private struct XWMHints
+        {
+            public int flags;
+            public IntPtr input;
+            public IntPtr icon_pixmap;
+            public IntPtr icon_window;
+            public IntPtr icon_x;
+            public IntPtr icon_y;
+            public IntPtr icon_mask;
+            public IntPtr window_group;
+        }
+
+        [DllImport("libX11.so")]
+        private static extern void XSetWMHints(IntPtr display, IntPtr window, ref XWMHints hints);
+
+        [DllImport("libX11.so")]
+        private static extern IntPtr XCreatePixmapFromBitmapData(IntPtr display, IntPtr window, byte[] data, int width, int height);
+
         private HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
+
+        /// <summary>
+        /// Sets the window icon from the specified BMP file path (X11)
+        /// </summary>
+        public void SetWindowIcon(string iconPath)
+        {
+            if (display == IntPtr.Zero || window == IntPtr.Zero)
+                return;
+            try
+            {
+                byte[] bmpData = System.IO.File.ReadAllBytes(iconPath);
+                int iconWidth = BitConverter.ToInt32(bmpData, 18);
+                int iconHeight = BitConverter.ToInt32(bmpData, 22);
+                IntPtr iconPixmap = XCreatePixmapFromBitmapData(display, window, bmpData, iconWidth, iconHeight);
+                if (iconPixmap != IntPtr.Zero)
+                {
+                    XWMHints hints = new XWMHints { flags = 2, icon_pixmap = iconPixmap };
+                    XSetWMHints(display, window, ref hints);
+                }
+            }
+            catch { }
+        }
     }
 }
 

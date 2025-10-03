@@ -582,6 +582,41 @@ namespace Alis.Core.Graphic.Platforms.Win
             return pressedKeys.Contains(key);
         }
 
+        /// <summary>
+        /// Crea la ventana y le asigna un icono BMP usando el path proporcionado (Win32 API)
+        /// </summary>
+        public bool Initialize(int width, int height, string title, string iconPath)
+        {
+            bool result = Initialize(width, height, title);
+            if (!result)
+                return false;
+            try
+            {
+                // Cargar el icono usando Win32 API
+                const uint IMAGE_ICON = 1;
+                const uint LR_LOADFROMFILE = 0x00000010;
+                IntPtr hIcon = LoadImage(IntPtr.Zero, iconPath, IMAGE_ICON, 0, 0, LR_LOADFROMFILE);
+                if (hIcon != IntPtr.Zero)
+                {
+                    // Asignar el icono a la ventana
+                    const int WM_SETICON = 0x0080;
+                    SendMessage(hWnd, WM_SETICON, new IntPtr(0), hIcon); // ICON_SMALL
+                    SendMessage(hWnd, WM_SETICON, new IntPtr(1), hIcon); // ICON_BIG
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"Error asignando icono: {ex.Message}");
+            }
+            return true;
+        }
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern IntPtr LoadImage(IntPtr hInst, string lpszName, uint uType, int cxDesired, int cyDesired, uint fuLoad);
+
         // ------------------------------------------------------------------
         // PRIVATE METHODS
         // ------------------------------------------------------------------
@@ -634,6 +669,24 @@ namespace Alis.Core.Graphic.Platforms.Win
                 case 8: return "ERROR_NOT_ENOUGH_MEMORY: Not enough storage is available to process this command.";
                 case 1816: return "ERROR_NOT_ENOUGH_QUOTA: Not enough quota is available to process this command.";
                 default: return "Unknown error.";
+            }
+        }
+
+        /// <summary>
+        /// Sets the window icon from the specified BMP file path (Win32 API)
+        /// </summary>
+        public void SetWindowIcon(string iconPath)
+        {
+            if (hWnd == IntPtr.Zero)
+                return;
+            const uint IMAGE_ICON = 1;
+            const uint LR_LOADFROMFILE = 0x00000010;
+            IntPtr hIcon = LoadImage(IntPtr.Zero, iconPath, IMAGE_ICON, 0, 0, LR_LOADFROMFILE);
+            if (hIcon != IntPtr.Zero)
+            {
+                const int WM_SETICON = 0x0080;
+                SendMessage(hWnd, WM_SETICON, new IntPtr(0), hIcon); // ICON_SMALL
+                SendMessage(hWnd, WM_SETICON, new IntPtr(1), hIcon); // ICON_BIG
             }
         }
     }

@@ -399,6 +399,82 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// <returns></returns>
         [DllImport("/usr/lib/libSystem.B.dylib", EntryPoint = "dlopen", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr Dlopen(string path, int mode);
+
+        /// <summary>
+        /// Creates the window and sets the icon from the specified BMP file path (Cocoa, using objc_msgSend)
+        /// </summary>
+        public bool Initialize(int width, int height, string title, string iconPath)
+        {
+            bool result = Initialize(width, height, title);
+            if (!result)
+                return false;
+            try
+            {
+                IntPtr nsImageClass = objc_getClass("NSImage");
+                IntPtr allocSel = sel_registerName("alloc");
+                IntPtr initWithContentsSel = sel_registerName("initWithContentsOfFile:");
+                IntPtr nsAppClass = objc_getClass("NSApplication");
+                IntPtr sharedAppSel = sel_registerName("sharedApplication");
+                IntPtr setIconSel = sel_registerName("setApplicationIconImage:");
+
+                IntPtr nsImageAlloc = objc_msgSend(nsImageClass, allocSel);
+                IntPtr nsImage = objc_msgSend(nsImageAlloc, initWithContentsSel, Marshal.StringToHGlobalAuto(iconPath));
+                IntPtr nsApp = objc_msgSend(nsAppClass, sharedAppSel);
+                objc_msgSend(nsApp, setIconSel, nsImage);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"❌ Error to set window icon: {ex.Message}");
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Sets the window icon from the specified BMP file path (Cocoa, safe NSString handling)
+        /// </summary>
+        public void SetWindowIcon(string iconPath)
+        {
+            try
+            {
+                IntPtr nsImageClass = objc_getClass("NSImage");
+                IntPtr allocSel = sel_registerName("alloc");
+                IntPtr initWithContentsSel = sel_registerName("initWithContentsOfFile:");
+                IntPtr nsAppClass = objc_getClass("NSApplication");
+                IntPtr sharedAppSel = sel_registerName("sharedApplication");
+                IntPtr setIconSel = sel_registerName("setApplicationIconImage:");
+                IntPtr nsStringClass = objc_getClass("NSString");
+                IntPtr stringWithUTF8Sel = sel_registerName("stringWithUTF8String:");
+
+                // Crear NSString desde el path
+                IntPtr iconPathUtf8 = Marshal.StringToHGlobalAnsi(iconPath);
+                IntPtr nsString = objc_msgSend(nsStringClass, stringWithUTF8Sel, iconPathUtf8);
+                Marshal.FreeHGlobal(iconPathUtf8);
+                if (nsString == IntPtr.Zero)
+                    return;
+
+                IntPtr nsImageAlloc = objc_msgSend(nsImageClass, allocSel);
+                IntPtr nsImage = objc_msgSend(nsImageAlloc, initWithContentsSel, nsString);
+                if (nsImage == IntPtr.Zero)
+                    return;
+                IntPtr nsApp = objc_msgSend(nsAppClass, sharedAppSel);
+                objc_msgSend(nsApp, setIconSel, nsImage);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"❌ Error to set window icon: {ex.Message}");
+            }
+        }
+
+        [DllImport("/usr/lib/libobjc.A.dylib")]
+        private static extern IntPtr objc_msgSend(IntPtr receiver, IntPtr selector);
+        [DllImport("/usr/lib/libobjc.A.dylib")]
+        private static extern IntPtr objc_msgSend(IntPtr receiver, IntPtr selector, IntPtr arg1);
+        [DllImport("/usr/lib/libobjc.A.dylib")]
+        private static extern IntPtr objc_getClass(string name);
+        [DllImport("/usr/lib/libobjc.A.dylib")]
+        private static extern IntPtr sel_registerName(string name);
     }
 }
 #endif
+
