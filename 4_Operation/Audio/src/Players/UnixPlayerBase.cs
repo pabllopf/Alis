@@ -29,6 +29,10 @@
 
 using System;
 using System.Diagnostics;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Alis.Core.Audio.Interfaces;
 
@@ -70,6 +74,40 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         public bool Paused { get; private set; }
 
+        private static async Task<string> ExtractWavFromResourcesAsync(string wavFileName)
+        {
+            Assembly assembly = Assembly.GetEntryAssembly();
+            if (assembly == null)
+                throw new InvalidOperationException("No entry assembly found.");
+        
+            using (Stream streamPack = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.assets.pak"))
+            {
+                if (streamPack == null)
+                    throw new FileNotFoundException("Resource file 'assets.pak' not found in embedded resources.");
+        
+                using (MemoryStream memPack = new MemoryStream())
+                {
+                    await streamPack.CopyToAsync(memPack);
+                    memPack.Position = 0;
+        
+                    using (ZipArchive zip = new ZipArchive(memPack, ZipArchiveMode.Read))
+                    {
+                        ZipArchiveEntry entry = zip.Entries.FirstOrDefault(e => e.FullName.Contains(wavFileName));
+                        if (entry == null)
+                            throw new FileNotFoundException($"Resource '{wavFileName}' not found in 'assets.pak'.");
+        
+                        string tempFilePath = Path.Combine(Path.GetTempPath(), Path.GetFileName(wavFileName));
+                        using (Stream entryStream = entry.Open())
+                        using (FileStream fileStream = File.Create(tempFilePath))
+                        {
+                            await entryStream.CopyToAsync(fileStream);
+                        }
+                        return tempFilePath;
+                    }
+                }
+            }
+        }
+        
         /// <summary>
         ///     Plays the file name
         /// </summary>
@@ -77,6 +115,19 @@ namespace Alis.Core.Audio.Players
         public async Task Play(string fileName)
         {
             await Stop();
+            
+            if (!File.Exists(fileName))
+            {
+                try
+                {
+                    fileName = await ExtractWavFromResourcesAsync(fileName);
+                }
+                catch (Exception ex)
+                {
+                    throw new FileNotFoundException($"The specified audio file '{fileName}' was not found and could not be extracted from resources.", ex);
+                }
+            }
+            
             string bashToolName = GetBashCommand(fileName);
             _process = StartBashProcess($"{bashToolName} '{fileName}'");
             _process.EnableRaisingEvents = true;

@@ -99,10 +99,7 @@ namespace Alis.Core.Ecs.Components.Audio
                 FullPathAudioFile = AssetManager.Find(NameFile);
             }
 
-            if (!string.IsNullOrEmpty(FullPathAudioFile))
-            {
-                _ = player.Play(FullPathAudioFile);
-            }
+            _ = player.Play(string.IsNullOrEmpty(FullPathAudioFile) ? NameFile : FullPathAudioFile);
         }
 
         /// <summary>

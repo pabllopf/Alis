@@ -29,6 +29,7 @@
 
 using System;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 
@@ -67,16 +68,39 @@ namespace Alis.Core.Graphic
         /// </summary>
         public byte[] Data { get; }
         
-        public static Image LoadImageFromResources(string resourceName)
-        {
-            Assembly assembly = Assembly.GetEntryAssembly();
-            string resourcePath = assembly.GetManifestResourceNames()
-                .FirstOrDefault(r => r.EndsWith(resourceName, StringComparison.OrdinalIgnoreCase));
-            if (resourcePath == null)
-                throw new FileNotFoundException($"Resource not found: {resourceName}");
-            using Stream stream = assembly.GetManifestResourceStream(resourcePath);
-            return stream == null ? throw new FileNotFoundException($"Unable to open resource: {resourceName}") : LoadFromStream(stream);
-        }
+     public static Image LoadImageFromResources(string resourceName)
+     {
+         Assembly assembly = Assembly.GetEntryAssembly();
+         if (assembly == null)
+             throw new InvalidOperationException("No entry assembly found.");
+     
+         using (Stream streamPack = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.assets.pak"))
+         {
+             if (streamPack == null)
+                 throw new FileNotFoundException("Resource file 'assets.pak' not found in embedded resources.");
+     
+             using (MemoryStream memPack = new MemoryStream())
+             {
+                 streamPack.CopyTo(memPack);
+                 memPack.Position = 0;
+     
+                 using (ZipArchive zip = new ZipArchive(memPack, ZipArchiveMode.Read))
+                 {
+                     ZipArchiveEntry entry = zip.Entries.FirstOrDefault(e => e.FullName.Contains(resourceName));
+                     if (entry == null)
+                         throw new FileNotFoundException($"Resource '{resourceName}.bmp' not found in 'assets.pak'.");
+     
+                     using (Stream entryStream = entry.Open())
+                     using (MemoryStream memImage = new MemoryStream())
+                     {
+                         entryStream.CopyTo(memImage);
+                         memImage.Position = 0;
+                         return LoadFromStream(memImage);
+                     }
+                 }
+             }
+         }
+     }
 
         private static Image LoadFromStream(Stream stream)
         {
