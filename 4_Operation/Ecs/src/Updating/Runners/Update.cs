@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Updating.Runners
             for (int i = b.EntityCount - 1; i >= 0; i--)
             {
                 entityIds.SetEntity(ref gameObject);
-                comp.OnUpdate(gameObject);
+                 comp.OnUpdate(gameObject);
 
                 entityIds = ref Unsafe.Add(ref entityIds, 1);
                 comp = ref Unsafe.Add(ref comp, 1);
