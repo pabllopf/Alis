@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.Systems;
+
 namespace Alis.Sample.Egg
 {
     /// <summary>
@@ -40,7 +43,6 @@ namespace Alis.Sample.Egg
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            /*
             VideoGame
                 .Create()
                 .Settings(setting => setting
@@ -50,24 +52,25 @@ namespace Alis.Sample.Egg
                         .Description("T-Rex Dino Game")
                         .License("GNU General Public License v3.0")
                         .Icon("app.bmp")
-                        .Build())
+                    )
                     .Audio(audio => audio
-                        .Build())
+                        .Volume(50)
+                    )
                     .Graphic(graphic => graphic
                         .Resolution(800, 600)
-                        .Build())
+                    )
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
-                        .Build())
-                    .Build())
-                .CurrentWorld(sceneManager => sceneManager
+                    )
+                )
+                .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
                         .Add<GameObject>(soundTrack => soundTrack
-                            .Build())
-                        .Build())
-                    .Build())
-                .Build()
-                .Run();*/
+                            .Name("Sound Track")
+                        )
+                    )
+                )
+                .Run();
         }
     }
 }

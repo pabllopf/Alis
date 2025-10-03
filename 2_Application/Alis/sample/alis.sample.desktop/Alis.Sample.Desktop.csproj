@@ -2,26 +2,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
-        <OutputType>Exe</OutputType>
+        <OutputType>WinExe</OutputType>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
         <LangVersion>13</LangVersion>
         <Nullable>disable</Nullable>
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
+        <AssetsExternal>false</AssetsExternal>
     </PropertyGroup>
-    
+
     <PropertyGroup>
         <DefineConstants>$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
     </PropertyGroup>
-    
+
     <ItemGroup>
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
-    
+
     <PropertyGroup>
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Sample[^*]*', ''))</NameTest>
     </PropertyGroup>
-    
+
     <ItemGroup>
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == True"
@@ -30,7 +31,7 @@
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)../../src/$(NameTest).csproj"/>
-        
+
         <ProjectReference
             Condition="Exists('$(ProjectDir)../generator/$(NameTest).Generator.csproj')"
             Include="$(ProjectDir)../generator/$(NameTest).Generator.csproj"
@@ -38,7 +39,7 @@
             PrivateAssets="all"
             ReferenceOutputAssembly="false"/>
     </ItemGroup>
-    
+
     <ItemGroup>
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
                           Include="
@@ -48,7 +49,7 @@
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false"/>
     </ItemGroup>
-    
+
     <PropertyGroup Condition="'$(Configuration)'=='Release'">
         <!-- Enables Ahead-of-Time (AOT) compilation for maximum performance and smaller binaries. -->
         <PublishAot>true</PublishAot>
@@ -61,7 +62,7 @@
         <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
         <!-- Disables reflection support to allow more aggressive trimming and reduce binary size. -->
         <IlcDisableReflection>false</IlcDisableReflection>
-        
+
         <!-- Disables stack trace support to save space, at the cost of less detailed error information. -->
         <StackTraceSupport>false</StackTraceSupport>
         <!-- Optimizes the build for size rather than speed. -->
@@ -107,14 +108,19 @@
         <!-- Prevents generation of native debug symbols (.dSYM) on macOS. -->
         <DebugSymbols>false</DebugSymbols>
     </PropertyGroup>
-    
-    <!-- Explicitly include all assets for output and publishing. -->
-    <ItemGroup Condition="Exists('$(ProjectDir)Assets/')">
+
+
+    <ItemGroup Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'true'">
         <None
             Update="$(ProjectDir)Assets/**"
             LinkBase="Assets"
             CopyToOutputDirectory="Always"
             CopyToPublishDirectory="Always"/>
     </ItemGroup>
-    
+
+
+    <ItemGroup Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'false'">
+        <EmbeddedResource Include="Assets/**/*" Exclude="Assets/**/*.cs;Assets/**/*.md" />
+    </ItemGroup>
+
 </Project>

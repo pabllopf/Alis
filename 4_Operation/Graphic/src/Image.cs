@@ -29,6 +29,8 @@
 
 using System;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace Alis.Core.Graphic
 {
@@ -64,15 +66,20 @@ namespace Alis.Core.Graphic
         ///     Gets the value of the data
         /// </summary>
         public byte[] Data { get; }
-
-        /// <summary>
-        ///     Loads the path
-        /// </summary>
-        /// <param name="path">The path</param>
-        /// <returns>The sprite</returns>
-        public static Image Load(string path)
+        
+        public static Image LoadImageFromResources(string resourceName)
         {
-            using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+            Assembly assembly = Assembly.GetEntryAssembly();
+            string resourcePath = assembly.GetManifestResourceNames()
+                .FirstOrDefault(r => r.EndsWith(resourceName, StringComparison.OrdinalIgnoreCase));
+            if (resourcePath == null)
+                throw new FileNotFoundException($"Resource not found: {resourceName}");
+            using Stream stream = assembly.GetManifestResourceStream(resourcePath);
+            return stream == null ? throw new FileNotFoundException($"Unable to open resource: {resourceName}") : LoadFromStream(stream);
+        }
+
+        private static Image LoadFromStream(Stream stream)
+        {
             using (BinaryReader reader = new BinaryReader(stream))
             {
                 if (reader.ReadByte() != 'B' || reader.ReadByte() != 'M')
@@ -154,6 +161,19 @@ namespace Alis.Core.Graphic
                 }
 
                 return new Image(width, height, rawData);
+            }
+        }
+
+        /// <summary>
+        ///     Loads the path
+        /// </summary>
+        /// <param name="path">The path</param>
+        /// <returns>The sprite</returns>
+        public static Image Load(string path)
+        {
+            using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+            {
+                return LoadFromStream(stream);
             }
         }
 

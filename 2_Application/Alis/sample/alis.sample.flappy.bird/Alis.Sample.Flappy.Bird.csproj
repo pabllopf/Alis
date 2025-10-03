@@ -2,12 +2,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
-        <OutputType>Exe</OutputType>
+        <OutputType>WinExe</OutputType>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
         <LangVersion>13</LangVersion>
         <Nullable>disable</Nullable>
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
+        <AssetsExternal>false</AssetsExternal>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -108,13 +109,18 @@
         <DebugSymbols>false</DebugSymbols>
     </PropertyGroup>
 
-    <!-- Explicitly include all assets for output and publishing. -->
-    <ItemGroup Condition="Exists('$(ProjectDir)Assets/')">
+    
+    <ItemGroup Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'true'">
         <None
-            Update="$(ProjectDir)Assets/**"
-            LinkBase="Assets"
-            CopyToOutputDirectory="Always"
-            CopyToPublishDirectory="Always"/>
+        Update="$(ProjectDir)Assets/**"
+        LinkBase="Assets"
+        CopyToOutputDirectory="Always"
+        CopyToPublishDirectory="Always"/>
+    </ItemGroup>
+    
+    
+    <ItemGroup Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'false'">
+        <EmbeddedResource Include="Assets/**/*" Exclude="Assets/**/*.cs;Assets/**/*.md" />
     </ItemGroup>
 
 </Project>
