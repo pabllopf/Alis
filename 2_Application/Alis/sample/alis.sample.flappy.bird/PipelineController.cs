@@ -39,7 +39,7 @@ namespace Alis.Sample.Flappy.Bird
     /// <summary>
     ///     The pipeline controller class
     /// </summary>
-    public class PipelineController() : IOnStart, IOnUpdate, IOnExit
+    internal class PipelineController() : IOnStart, IOnUpdate, IOnExit
     {
         /// <summary>
         ///     The random height
@@ -65,11 +65,6 @@ namespace Alis.Sample.Flappy.Bird
         ///     The box collider
         /// </summary>
         private BoxCollider boxCollider;
-
-        /// <summary>
-        ///     The data
-        /// </summary>
-        private byte[] data;
         
         /// <summary>
         ///     The pos origin
@@ -94,7 +89,7 @@ namespace Alis.Sample.Flappy.Bird
             boxCollider.Body.LinearVelocity = new Vector2F(-Velocity, 0);
             
             _randomHeight = (int)(DateTime.Now.Ticks % 4);
-            _randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
+            _randomDirection = Math.Abs((int)(DateTime.Now.Ticks % 4) % 2);
             Logger.Info($"{info.Name} NUM={_randomHeight} Direction={_randomDirection}");
 
             _generated = true;
@@ -118,7 +113,7 @@ namespace Alis.Sample.Flappy.Bird
                 {
                     _generated = true;
                     _randomHeight = (int)(DateTime.Now.Ticks % 2);
-                    _randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
+                    _randomDirection = Math.Abs((int)(DateTime.Now.Ticks % 4) % 2);
                     Logger.Info($"{info.Name} NUM={_randomHeight} Direction={_randomDirection} velocity={Velocity}");
                 }
 

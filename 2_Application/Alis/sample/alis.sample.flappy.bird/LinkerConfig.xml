@@ -1,0 +1,54 @@
+<linker>
+  <!-- Indicamos al linker que *intente* ignorar/incompatibilizar estos assemblies.
+       Dependiendo de la versión del linker, <action>skip</action> evita procesarlos
+       y suele llevar a que no se incluyan en la salida AOT si no son referenciados. -->
+  <assembly fullname="System.Linq">
+    <action>skip</action>
+  </assembly>
+
+  <assembly fullname="System.Linq.Expressions">
+    <action>skip</action>
+  </assembly>
+
+  <assembly fullname="System.Reflection">
+    <action>skip</action>
+  </assembly>
+
+  <assembly fullname="System.Text.Json">
+    <action>skip</action>
+  </assembly>
+
+  <assembly fullname="System.Xml">
+    <action>skip</action>
+  </assembly>
+
+  <assembly fullname="System.Data">
+    <action>skip</action>
+  </assembly>
+
+  <assembly fullname="System.Net.Http">
+    <action>skip</action>
+  </assembly>
+
+  <assembly fullname="System.IO.Compression">
+    <action>skip</action>
+  </assembly>
+
+  <assembly fullname="System.Diagnostics">
+    <action>skip</action>
+  </assembly>
+
+  <assembly fullname="System.Resources.ResourceManager">
+    <action>skip</action>
+  </assembly>
+
+  <assembly fullname="System.Runtime.Serialization">
+    <action>skip</action>
+  </assembly>
+
+  <assembly fullname="System.Security">
+    <action>skip</action>
+  </assembly>
+
+  <!-- añade más <assembly fullname="..." action="skip" />  -->
+</linker>

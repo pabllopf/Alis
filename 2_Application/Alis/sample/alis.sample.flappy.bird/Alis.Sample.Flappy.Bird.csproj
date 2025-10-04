@@ -85,7 +85,7 @@
         <!-- Enables tree trimming to remove unused code and libraries, reducing the final binary size. -->
         <PublishTrimmed>true</PublishTrimmed>
         <!-- Aggressively trims unused assemblies and types; 'link' is the most space-saving mode. -->
-        <TrimMode>link</TrimMode>
+        <TrimMode>full</TrimMode>
         <!-- Suppresses warnings about code that may be unsafe to trim, useful for aggressive size reduction. -->
         <SuppressTrimAnalysisWarnings>true</SuppressTrimAnalysisWarnings>
         <!-- Compresses files in single-file publish mode, further reducing disk footprint. -->
@@ -190,4 +190,36 @@
             Overwrite="true" />
     </Target>
 
+
+    <ItemGroup>
+        <!-- Descriptor de linker (ver LinkerConfig.xml abajo) -->
+        <TrimmerRootDescriptor Include="LinkerConfig.xml" />
+    </ItemGroup>
+
+    <!-- ==== SUGERIR AL TRIMMER QUE PROCESE/RECORTE ESTOS ENSAMBLADOS ==== -->
+    <ItemGroup>
+        <!-- Marcar explícitamente un amplio conjunto de assemblies como recortables -->
+        <TrimmerRootAssembly Include="System.Linq" Trim="true" />
+        <TrimmerRootAssembly Include="System.Linq.Expressions" Trim="true" />
+        <TrimmerRootAssembly Include="System.Reflection" Trim="true" />
+        <TrimmerRootAssembly Include="System.Reflection.Emit" Trim="true" />
+        <TrimmerRootAssembly Include="System.Text.Json" Trim="true" />
+        <TrimmerRootAssembly Include="System.Xml" Trim="true" />
+        <TrimmerRootAssembly Include="System.Data" Trim="true" />
+        <TrimmerRootAssembly Include="System.Net.Http" Trim="true" />
+        <TrimmerRootAssembly Include="System.Net.Primitives" Trim="true" />
+        <TrimmerRootAssembly Include="System.IO.Compression" Trim="true" />
+        <TrimmerRootAssembly Include="System.Diagnostics" Trim="true" />
+        <TrimmerRootAssembly Include="System.Resources" Trim="true" />
+        <TrimmerRootAssembly Include="System.Globalization" Trim="true" />
+        <TrimmerRootAssembly Include="System.ComponentModel" Trim="true" />
+        <TrimmerRootAssembly Include="System.Runtime.Serialization" Trim="true" />
+        <TrimmerRootAssembly Include="System.Security.Cryptography.Algorithms" Trim="true" />
+        <TrimmerRootAssembly Include="System.Security" Trim="true" />
+        <TrimmerRootAssembly Include="System.Drawing.Common" Trim="true" />
+        <TrimmerRootAssembly Include="System.DirectoryServices" Trim="true" />
+        <TrimmerRootAssembly Include="System.Threading.Channels" Trim="true" />
+        <TrimmerRootAssembly Include="System.Text.RegularExpressions" Trim="true" />
+    </ItemGroup>
+    
 </Project>
