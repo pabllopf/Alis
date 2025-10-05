@@ -675,7 +675,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// <summary>
         /// Sets the window icon from the specified BMP file path (Win32 API)
         /// </summary>
-        public void SetWindowIcon(string iconPath)
+       public void SetWindowIcon(string iconPath)
         {
             if (hWnd == IntPtr.Zero)
                 return;
@@ -685,10 +685,18 @@ namespace Alis.Core.Graphic.Platforms.Win
             if (hIcon != IntPtr.Zero)
             {
                 const int WM_SETICON = 0x0080;
-                SendMessage(hWnd, WM_SETICON, new IntPtr(0), hIcon); // ICON_SMALL
-                SendMessage(hWnd, WM_SETICON, new IntPtr(1), hIcon); // ICON_BIG
+                // Libera el icono anterior si existe
+                IntPtr oldSmallIcon = SendMessage(hWnd, WM_SETICON, new IntPtr(0), hIcon);
+                IntPtr oldBigIcon = SendMessage(hWnd, WM_SETICON, new IntPtr(1), hIcon);
+                if (oldSmallIcon != IntPtr.Zero)
+                    DestroyIcon(oldSmallIcon);
+                if (oldBigIcon != IntPtr.Zero)
+                    DestroyIcon(oldBigIcon);
             }
         }
+        
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern bool DestroyIcon(IntPtr hIcon);
     }
 }
 #endif
