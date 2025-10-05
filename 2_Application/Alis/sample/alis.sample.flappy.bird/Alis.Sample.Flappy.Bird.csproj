@@ -9,6 +9,7 @@
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
         <AssetsExternal>false</AssetsExternal>
+        <ApplicationIcon>Config/app.ico</ApplicationIcon>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -66,10 +67,17 @@
         <!-- Disables reflection support to allow more aggressive trimming and reduce binary size. -->
         <IlcDisableReflection>false</IlcDisableReflection>
 
+        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+
+        <IlcTrimMetadata>true</IlcTrimMetadata>
+
+        <IlcGenerateStackTraceData>false</IlcGenerateStackTraceData>
+        
         <!-- Disables stack trace support to save space, at the cost of less detailed error information. -->
         <StackTraceSupport>false</StackTraceSupport>
         <!-- Optimizes the build for size rather than speed. -->
         <OptimizationPreference>Size</OptimizationPreference>
+        <IlcOptimizationPreference>Size</IlcOptimizationPreference>
         <!-- Removes debug information from the output, reducing binary size. -->
         <DebugType>none</DebugType>
 
@@ -82,10 +90,16 @@
         <!-- Dumps generated IL code for inspection; does not affect published size. -->
         <IlcDumpGeneratedIL>true</IlcDumpGeneratedIL>
 
+        <TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
+
+
+        <NoConfig>true</NoConfig>
+        <Optimize>true</Optimize>
+        
         <!-- Enables tree trimming to remove unused code and libraries, reducing the final binary size. -->
         <PublishTrimmed>true</PublishTrimmed>
         <!-- Aggressively trims unused assemblies and types; 'link' is the most space-saving mode. -->
-        <TrimMode>full</TrimMode>
+        <TrimMode>link</TrimMode>
         <!-- Suppresses warnings about code that may be unsafe to trim, useful for aggressive size reduction. -->
         <SuppressTrimAnalysisWarnings>true</SuppressTrimAnalysisWarnings>
         <!-- Compresses files in single-file publish mode, further reducing disk footprint. -->
@@ -189,37 +203,4 @@
             Lines="@(PlistLines->Replace('Alis.Sample.Flappy.Bird', '$(AssemblyName)')->Replace('1.0', '$(Version)')->Replace('com.alis.flappybird', '$(ApplicationId)'))"
             Overwrite="true" />
     </Target>
-
-
-    <ItemGroup>
-        <!-- Descriptor de linker (ver LinkerConfig.xml abajo) -->
-        <TrimmerRootDescriptor Include="LinkerConfig.xml" />
-    </ItemGroup>
-
-    <!-- ==== SUGERIR AL TRIMMER QUE PROCESE/RECORTE ESTOS ENSAMBLADOS ==== -->
-    <ItemGroup>
-        <!-- Marcar explícitamente un amplio conjunto de assemblies como recortables -->
-        <TrimmerRootAssembly Include="System.Linq" Trim="true" />
-        <TrimmerRootAssembly Include="System.Linq.Expressions" Trim="true" />
-        <TrimmerRootAssembly Include="System.Reflection" Trim="true" />
-        <TrimmerRootAssembly Include="System.Reflection.Emit" Trim="true" />
-        <TrimmerRootAssembly Include="System.Text.Json" Trim="true" />
-        <TrimmerRootAssembly Include="System.Xml" Trim="true" />
-        <TrimmerRootAssembly Include="System.Data" Trim="true" />
-        <TrimmerRootAssembly Include="System.Net.Http" Trim="true" />
-        <TrimmerRootAssembly Include="System.Net.Primitives" Trim="true" />
-        <TrimmerRootAssembly Include="System.IO.Compression" Trim="true" />
-        <TrimmerRootAssembly Include="System.Diagnostics" Trim="true" />
-        <TrimmerRootAssembly Include="System.Resources" Trim="true" />
-        <TrimmerRootAssembly Include="System.Globalization" Trim="true" />
-        <TrimmerRootAssembly Include="System.ComponentModel" Trim="true" />
-        <TrimmerRootAssembly Include="System.Runtime.Serialization" Trim="true" />
-        <TrimmerRootAssembly Include="System.Security.Cryptography.Algorithms" Trim="true" />
-        <TrimmerRootAssembly Include="System.Security" Trim="true" />
-        <TrimmerRootAssembly Include="System.Drawing.Common" Trim="true" />
-        <TrimmerRootAssembly Include="System.DirectoryServices" Trim="true" />
-        <TrimmerRootAssembly Include="System.Threading.Channels" Trim="true" />
-        <TrimmerRootAssembly Include="System.Text.RegularExpressions" Trim="true" />
-    </ItemGroup>
-    
 </Project>
