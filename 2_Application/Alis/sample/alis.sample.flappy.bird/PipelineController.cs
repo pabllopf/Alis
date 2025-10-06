@@ -28,11 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Security.Cryptography;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Components.Collider;
 
@@ -94,14 +92,8 @@ namespace Alis.Sample.Flappy.Bird
             
             Velocity = 3;
             boxCollider.Body.LinearVelocity = new Vector2F(-Velocity, 0);
-
-            using (RandomNumberGenerator randomGenerator = RandomNumberGenerator.Create())
-            {
-                data = new byte[16];
-                randomGenerator.GetBytes(data);
-            }
-
-            _randomHeight = RandomNumberGenerator.GetInt32(0, 3);
+            
+            _randomHeight = (int)(DateTime.Now.Ticks % 4);
             _randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
             Logger.Info($"{info.Name} NUM={_randomHeight} Direction={_randomDirection}");
 
@@ -125,7 +117,7 @@ namespace Alis.Sample.Flappy.Bird
                 if (!_generated)
                 {
                     _generated = true;
-                    _randomHeight = RandomNumberGenerator.GetInt32(0, 2);
+                    _randomHeight = (int)(DateTime.Now.Ticks % 2);
                     _randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
                     Logger.Info($"{info.Name} NUM={_randomHeight} Direction={_randomDirection} velocity={Velocity}");
                 }
