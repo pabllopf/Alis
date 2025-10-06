@@ -29,6 +29,7 @@
 
 using System;
 using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent.Components;
@@ -202,12 +203,16 @@ namespace Alis.Core.Ecs.Components.Render
         /// <exception cref="FileNotFoundException">Texture file not found </exception>
         internal void LoadTexture(string imagePath)
         {
-            if (!File.Exists(imagePath))
+            Image image;
+            if (File.Exists(imagePath))
             {
-                throw new FileNotFoundException("Texture file not found", imagePath);
+                image = Image.Load(imagePath);
             }
-
-            Image image = Image.Load(imagePath);
+            else
+            {
+                // get name of resources from imagepath:
+                image = Image.LoadImageFromResources(NameFile);
+            }
 
             Size = new Vector2F(image.Width, image.Height);
             Texture = Gl.GenTexture();
@@ -331,6 +336,9 @@ namespace Alis.Core.Ecs.Components.Render
 
             Gl.GlDisable(EnableCap.Blend);
         }
+        
+
+
         
         public Context Context { get; set; } = context;
         
