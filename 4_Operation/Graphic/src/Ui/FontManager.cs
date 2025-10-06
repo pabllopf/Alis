@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.Ui
         
         public static void RenderText(string text, int x, int y)
         {
-            DefaultFont.RenderText(text, x, y, Color.White,Color.Red);
+            DefaultFont.RenderText(text, x, y, Color.White, Color.Red);
         }
     }
 }
