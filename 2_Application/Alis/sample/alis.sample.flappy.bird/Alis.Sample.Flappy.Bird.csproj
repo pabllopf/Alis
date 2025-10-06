@@ -143,4 +143,37 @@
         <EmbeddedResource Include="$(PackedAssets)" LinkBase="." Link="assets.pak" Visible="false" />
     </ItemGroup>
 
+  <!-- Target para crear el bundle .app en macOS tras publicar -->
+  <Target Name="CreateMacAppBundle" AfterTargets="Publish" Condition=" '$(RuntimeIdentifier)' == 'osx-x64' OR '$(RuntimeIdentifier)' == 'osx-arm64' ">
+    <PropertyGroup>
+      <!-- Nombre de la app y paths -->
+      <AppName>$(AssemblyName)</AppName>
+      <AppBundleDir>$(PublishDir)$(AppName).app/Contents</AppBundleDir>
+      <AppMacOSDir>$(AppBundleDir)/MacOS</AppMacOSDir>
+      <AppResourcesDir>$(AppBundleDir)/Resources</AppResourcesDir>
+      <AppPlistSource>$(ProjectDir)Config/Info.plist</AppPlistSource>
+      <AppPlist>$(AppBundleDir)/Info.plist</AppPlist>
+      <AppIconIco>$(ProjectDir)Config/app.ico</AppIconIco>
+      <AppIconIcns>$(AppResourcesDir)/app.icns</AppIconIcns>
+    </PropertyGroup>
+
+    <!-- Crear estructura de carpetas -->
+    <MakeDir Directories="$(AppMacOSDir);$(AppResourcesDir)" />
+
+    <!-- Copiar el ejecutable -->
+    <Copy SourceFiles="$(PublishDir)$(AppName)" DestinationFolder="$(AppMacOSDir)" />
+
+    <!-- Copiar archivos de contenido (puedes ajustar el patrón si tienes más content) -->
+    <Copy SourceFiles="@(Content)" DestinationFolder="$(AppResourcesDir)" SkipUnchangedFiles="true" Condition="@(Content->Count()) &gt; 0" />
+
+    <!-- Convertir el icono a .icns si es necesario -->
+    <Exec Command="sips -s format icns $(AppIconIco) --out $(AppIconIcns)" Condition="Exists('$(AppIconIco)')" />
+
+    <!-- Copiar Info.plist generado en Config -->
+    <Copy SourceFiles="$(AppPlistSource)" DestinationFiles="$(AppPlist)" />
+
+    <!-- Dar permisos de ejecución al binario -->
+    <Exec Command="chmod +x $(AppMacOSDir)/$(AppName)" />
+  </Target>
+
 </Project>
