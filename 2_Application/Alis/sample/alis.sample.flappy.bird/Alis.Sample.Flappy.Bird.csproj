@@ -51,6 +51,9 @@
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <!-- app.manifest file to use when building the project -->
+        <ApplicationManifest>$(ProjectDir)Config/app.manifest</ApplicationManifest>
+        
         <!-- Enables Ahead-of-Time (AOT) compilation for maximum performance and smaller binaries. -->
         <PublishAot>true</PublishAot>
         <!-- Publishes all dependencies with the app, so it runs independently of the system's .NET installation. -->
@@ -107,6 +110,9 @@
         <EnableSourceLink>false</EnableSourceLink>
         <!-- Prevents generation of native debug symbols (.dSYM) on macOS. -->
         <DebugSymbols>false</DebugSymbols>
+        
+        <!-- Prevents generation of PDB files, which are not needed in production and take up space. -->
+        <GenerateDebugSymbols>false</GenerateDebugSymbols>
     </PropertyGroup>
 
     
