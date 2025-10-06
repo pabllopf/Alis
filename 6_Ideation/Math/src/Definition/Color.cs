@@ -56,6 +56,14 @@ namespace Alis.Core.Aspect.Math.Definition
         /// </summary>
         public byte A { get; set; }
 
+        public static Color Cyan { get; } = new Color(0, 255, 255, 255);
+
+        public static Color Magenta { get; } = new Color(255, 0, 255, 255);
+ 
+        public static Color Yellow { get; } = new Color(255, 255, 0, 255);
+
+        public static Color Blue { get; } = new Color(0, 0, 255, 255);
+
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Color" /> class

@@ -64,6 +64,8 @@ namespace Alis.Core.Graphic.Sample
             Logger.Info("3: Cuadrado sin rellenar");
             Logger.Info("4: Textura personalizada (BMP)");
             Logger.Info("5: Load font with custom bmp");
+            Logger.Info("6: Load font with custom bmp 2");
+            Logger.Info("7: Load font with timer");
             Logger.Info("Opción: ");
             int option = 0;
             string input = Console.ReadLine();
@@ -75,6 +77,8 @@ namespace Alis.Core.Graphic.Sample
                 3 => new SquareUnfilledExample(),
                 4 => new TextureSampleCustomBmpExample(),
                 5 => new LoadFontWithCustomBmpExample(),
+                6 => new LoadFontWithCustomBmpExample2(),
+                7 => new LoadFontwithTimerExample(),
                 _ => new SimpleRedExample()
             };
 
@@ -93,6 +97,8 @@ namespace Alis.Core.Graphic.Sample
 
             example.Initialize();
             platform.ShowWindow();
+            platform.SetTitle("C# + OpenGL Platform - Ejemplo " + option + " : " + example.GetType().Name);
+            
             bool running = true;
             while (running)
             {
