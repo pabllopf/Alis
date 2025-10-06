@@ -28,10 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
@@ -161,8 +163,10 @@ namespace Alis.Core.Graphic.Ui
                 void main()
                 {
                     vec4 texColor = texture(texture1, TexCoord);
-                    // Mezcla el color del texto y el fondo según el alfa de la textura
-                    FragColor = mix(colorBackgroundFont, colorFont, texColor.a) * texColor.a + colorBackgroundFont * (1.0 - texColor.a);
+                    if (texColor.a > 0.0)
+                        FragColor = vec4(colorFont.rgb, colorFont.a * texColor.a);
+                    else
+                        FragColor = colorBackgroundFont;
                 }
             ";
 
@@ -265,6 +269,62 @@ namespace Alis.Core.Graphic.Ui
         }
 
 
+        // Diccionario para las posiciones de cada carácter en el atlas
+        private readonly Dictionary<char, RectangleI> CharacterRects = new();
+
+        // Inicializa el diccionario de rectángulos de caracteres (asume cuadrícula ASCII)
+        private void InitializeCharacterRects(int charWidth, int charHeight)
+        {
+            int atlasCols = (int)(Size.X / charWidth);
+            int atlasRows = (int)(Size.Y / charHeight);
+            for (int i = 0; i < 256; i++) // ASCII básico
+            {
+                int col = i % atlasCols;
+                int row = i / atlasCols;
+                CharacterRects[(char)i] = new RectangleI
+                {
+                    X = col * charWidth,
+                    Y = row * charHeight,
+                    W = charWidth,
+                    H = charHeight
+                };
+            }
+        }
+
+        // Inicializa el diccionario de rectángulos de caracteres usando organización personalizada
+        private void InitializeCharacterRectsCustom(int charWidth, int charHeight, int charsPerRow, int xSpacing, int ySpacing)
+        {
+            CharacterRects.Clear();
+            string lowercase = "abcdefghijklmnopqrstuvwxyz";
+            string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string special = "0123456789";
+
+            // Minúsculas
+            for (int i = 0; i < lowercase.Length; i++)
+            {
+                char c = lowercase[i];
+                int x = (i % charsPerRow) * (charWidth + xSpacing);
+                int y = (i / charsPerRow) * (charHeight + ySpacing);
+                CharacterRects[c] = new RectangleI { X = x, Y = y, W = charWidth, H = charHeight };
+            }
+            // Mayúsculas
+            for (int i = 0; i < uppercase.Length; i++)
+            {
+                char c = uppercase[i];
+                int x = (i % charsPerRow) * (charWidth + xSpacing);
+                int y = ((i / charsPerRow) + 1) * (charHeight + ySpacing); // Siguiente fila
+                CharacterRects[c] = new RectangleI { X = x, Y = y, W = charWidth, H = charHeight };
+            }
+            // Números
+            for (int i = 0; i < special.Length; i++)
+            {
+                char c = special[i];
+                int x = (i % charsPerRow) * (charWidth + xSpacing);
+                int y = ((i / charsPerRow) + 2) * (charHeight + ySpacing); // Siguiente fila
+                CharacterRects[c] = new RectangleI { X = x, Y = y, W = charWidth, H = charHeight };
+            }
+        }
+
         public void RenderText(string text, int xPos, int yPos, Color colorFont, Color colorBackgroundFont)
         {
             if (!string.IsNullOrEmpty(NameFile) && (Path == string.Empty))
@@ -274,59 +334,85 @@ namespace Alis.Core.Graphic.Ui
                 LoadTexture(Path);
                 SetupBuffers();
             }
-            
-            Vector2F position = new Vector2F(xPos, yPos);
-            float spriteRotation = 0.0f; // No rotation for text
-            Vector2F cameraPosition = new  Vector2F(0, 0);
-            Vector2F cameraResolution = new  Vector2F(800, 600);
-            float pixelsPerMeter = 32.0f; // Example conversion factor
-            Vector2F gameobjectScale = new Vector2F(1.0f, 1.0f);
+
+            // Parámetros personalizados del atlas
+            int charWidth = 10; // ancho de cada carácter en la textura BMP
+            int charHeight = 16; // alto de cada carácter en la textura BMP
+            int charsPerRow = 28; // caracteres por fila
+            int xSpacing = 1; // espaciado horizontal
+            int ySpacing = 0; // espaciado vertical
+            if (CharacterRects.Count == 0) InitializeCharacterRectsCustom(charWidth, charHeight, charsPerRow, xSpacing, ySpacing);
+
+            // Tamaño lógico de la fuente en pantalla
+            float fontSize = sizeFont; // valor lógico de la fuente (por ejemplo, 1)
+            float pixelsPerUnit = 32.0f; // 1 unidad lógica equivale a 32 píxeles en pantalla
+            float screenCharWidth = fontSize * pixelsPerUnit;
+            float screenCharHeight = fontSize * pixelsPerUnit * ((float)charHeight / charWidth); // mantiene proporción
+
+            Vector2F cameraPosition = new Vector2F(0, 0);
+            Vector2F cameraResolution = new Vector2F(800, 600);
 
             Gl.GlUseProgram(ShaderProgram);
             Gl.GlBindVertexArray(Vao);
             Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
 
-            // Conversión de metros a píxeles
-            float positionXPixels = (position.X - cameraPosition.X) * pixelsPerMeter;
-            float positionYPixels = (position.Y - cameraPosition.Y) * pixelsPerMeter;
-
-            // Normalizar a coordenadas OpenGL (-1 a 1) usando la resolución de la cámara
-            float worldX = 2.0f * positionXPixels / cameraResolution.X;
-            float worldY = 2.0f * positionYPixels / cameraResolution.Y;
-
-            // Enviar valores normalizados al shader
-            int offsetLocation = Gl.GlGetUniformLocation(ShaderProgram, "offset");
-            Gl.GlUniform2F(offsetLocation, worldX, worldY);
-
-            int scaleLocation = Gl.GlGetUniformLocation(ShaderProgram, "scale");
-            Gl.GlUniform2F(scaleLocation, gameobjectScale.X, gameobjectScale.Y);
-
-            int rotationLocation = Gl.GlGetUniformLocation(ShaderProgram, "rotation");
-            Gl.GlUniform1F(rotationLocation, spriteRotation);
-
-            // Enviar la propiedad Flip al shader
-            int flipLocation = Gl.GlGetUniformLocation(ShaderProgram, "flip");
-            Gl.GlUniform1I(flipLocation, Flip ? 1 : 0);
-
-            // Enviar colorFont y colorBackgroundFont al shader
             int colorFontLocation = Gl.GlGetUniformLocation(ShaderProgram, "colorFont");
-            Gl.GlUniform4F(colorFontLocation, colorFont.R / 255.0f, colorFont.G / 255.0f, colorFont.B / 255.0f, colorFont.A / 255.0f);
             int colorBackgroundLocation = Gl.GlGetUniformLocation(ShaderProgram, "colorBackgroundFont");
-            Gl.GlUniform4F(colorBackgroundLocation, colorBackgroundFont.R / 255.0f, colorBackgroundFont.G / 255.0f, colorBackgroundFont.B / 255.0f, colorBackgroundFont.A / 255.0f);
+            int offsetLocation = Gl.GlGetUniformLocation(ShaderProgram, "offset");
+            int scaleLocation = Gl.GlGetUniformLocation(ShaderProgram, "scale");
+            int rotationLocation = Gl.GlGetUniformLocation(ShaderProgram, "rotation");
+            int flipLocation = Gl.GlGetUniformLocation(ShaderProgram, "flip");
 
-            // Activar blending para manejar transparencias
             Gl.GlEnable(EnableCap.Blend);
             Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-
-            // Vincular la textura antes de dibujar
             Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
 
-            // Dibujar el sprite
-            Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
+            float posX = xPos;
+            foreach (char c in text)
+            {
+                if (!CharacterRects.TryGetValue(c, out RectangleI srcRect)) continue;
 
+                // Coordenadas de textura (UV)
+                float u0 = (float)srcRect.X / Size.X;
+                float v0 = (float)srcRect.Y / Size.Y;
+                float u1 = (float)(srcRect.X + srcRect.W) / Size.X;
+                float v1 = (float)(srcRect.Y + srcRect.H) / Size.Y;
+
+                // Posición en pantalla (en píxeles)
+                float positionXPixels = posX;
+                float positionYPixels = yPos;
+
+                // Normalizar a coordenadas OpenGL (-1 a 1)
+                float worldX = 2.0f * (positionXPixels - cameraPosition.X) / cameraResolution.X;
+                float worldY = 2.0f * (positionYPixels - cameraPosition.Y) / cameraResolution.Y;
+
+                // Escala lógica para cada carácter
+                Vector2F charScale = new Vector2F(screenCharWidth / cameraResolution.X, screenCharHeight / cameraResolution.Y);
+
+                // Enviar colores y parámetros al shader
+                Gl.GlUniform4F(colorFontLocation, colorFont.R / 255.0f, colorFont.G / 255.0f, colorFont.B / 255.0f, colorFont.A / 255.0f);
+                Gl.GlUniform4F(colorBackgroundLocation, colorBackgroundFont.R / 255.0f, colorBackgroundFont.G / 255.0f, colorBackgroundFont.B / 255.0f, colorBackgroundFont.A / 255.0f);
+                Gl.GlUniform2F(offsetLocation, worldX, worldY);
+                Gl.GlUniform2F(scaleLocation, charScale.X, charScale.Y);
+                Gl.GlUniform1F(rotationLocation, 0.0f);
+                Gl.GlUniform1I(flipLocation, Flip ? 1 : 0);
+                float[] vertices =
+                {
+                    1, -1, 0.0f, u1, v0,
+                    1,  1, 0.0f, u1, v1,
+                   -1,  1, 0.0f, u0, v1,
+                   -1, -1, 0.0f, u0, v0
+                };
+                Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
+                verticesHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), verticesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+                verticesHandle.Free();
+                Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
+
+                posX += screenCharWidth + xSpacing; // avanzar según el tamaño lógico en pantalla
+            }
             Gl.GlDisable(EnableCap.Blend);
         }
     }
 }
-
