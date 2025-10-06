@@ -118,9 +118,23 @@
         CopyToPublishDirectory="Always"/>
     </ItemGroup>
     
-    
+    <PropertyGroup Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'false'">
+        <!-- Carpeta donde están los recursos originales -->
+        <ResourceInputDir>Assets</ResourceInputDir>
+        <!-- Archivo empaquetado final, en la carpeta intermedia de build -->
+        <PackedAssets>$(ProjectDir)assets.pak</PackedAssets>
+    </PropertyGroup>
+
+    <!-- Empaquetar los recursos en un ZIP (assets.pak) usando el comando zip de macOS -->
+    <Target Name="PackOptimizedResources" BeforeTargets="Build;Publish" Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'false'">
+        <Message Text="Borrando y empaquetando recursos en $(PackedAssets) desde $(ResourceInputDir)" Importance="high" />
+        <Delete Files="$(PackedAssets)" />
+        <Exec Command="zip -r $(PackedAssets) $(ResourceInputDir)" />
+    </Target>
+
+    <!-- Incluir el .pak como recurso embebido si existe -->
     <ItemGroup Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'false'">
-        <EmbeddedResource Include="Assets/**/*" Exclude="Assets/**/*.cs;Assets/**/*.md" />
+        <EmbeddedResource Include="$(PackedAssets)" Condition="Exists('$(PackedAssets)')" />
     </ItemGroup>
 
 </Project>

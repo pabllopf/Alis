@@ -28,6 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,12 +83,58 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         public bool Paused { get; private set; }
 
+        private static async Task<string> ExtractWavFromResourcesAsync(string wavFileName)
+        {
+            Assembly assembly = Assembly.GetEntryAssembly();
+            if (assembly == null)
+                throw new InvalidOperationException("No entry assembly found.");
+        
+            using (Stream streamPack = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.assets.pak"))
+            {
+                if (streamPack == null)
+                    throw new FileNotFoundException("Resource file 'assets.pak' not found in embedded resources.");
+        
+                using (MemoryStream memPack = new MemoryStream())
+                {
+                    await streamPack.CopyToAsync(memPack);
+                    memPack.Position = 0;
+        
+                    using (ZipArchive zip = new ZipArchive(memPack, ZipArchiveMode.Read))
+                    {
+                        ZipArchiveEntry entry = zip.Entries.FirstOrDefault(e => e.FullName.Contains(wavFileName));
+                        if (entry == null)
+                            throw new FileNotFoundException($"Resource '{wavFileName}' not found in 'assets.pak'.");
+        
+                        string tempFilePath = Path.Combine(Path.GetTempPath(), Path.GetFileName(wavFileName));
+                        using (Stream entryStream = entry.Open())
+                        using (FileStream fileStream = File.Create(tempFilePath))
+                        {
+                            await entryStream.CopyToAsync(fileStream);
+                        }
+                        return tempFilePath;
+                    }
+                }
+            }
+        }
+        
         /// <summary>
         ///     Plays the file name
         /// </summary>
         /// <param name="fileName">The file name</param>
         public Task Play(string fileName)
         {
+            if (!File.Exists(fileName))
+            {
+                try
+                {
+                    fileName = ExtractWavFromResourcesAsync(fileName).GetAwaiter().GetResult();
+                }
+                catch (Exception ex)
+                {
+                    throw new FileNotFoundException($"File '{fileName}' not found.", ex);
+                }
+            }
+            
             _fileName = fileName;
             _playbackTimer = new Timer
             {
