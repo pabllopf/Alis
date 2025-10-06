@@ -139,7 +139,7 @@
     </Target>
 
     <!-- Include .pak as embedded resource if it exists -->
-    <ItemGroup Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'false'">
+    <ItemGroup Condition="Exists('$(ProjectDir)Assets/') AND Exists('$(PackedAssets)') AND '$(AssetsExternal)' == 'false'">
         <EmbeddedResource Include="$(PackedAssets)" LinkBase="." Link="assets.pak" Visible="false" />
     </ItemGroup>
 
