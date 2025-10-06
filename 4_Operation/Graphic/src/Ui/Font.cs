@@ -31,6 +31,7 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Resource;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
@@ -155,9 +156,13 @@ namespace Alis.Core.Graphic.Ui
                 out vec4 FragColor;
                 in vec2 TexCoord;
                 uniform sampler2D texture1;
+                uniform vec4 colorFont;
+                uniform vec4 colorBackgroundFont;
                 void main()
                 {
-                    FragColor = texture(texture1, TexCoord);
+                    vec4 texColor = texture(texture1, TexCoord);
+                    // Mezcla el color del texto y el fondo según el alfa de la textura
+                    FragColor = mix(colorBackgroundFont, colorFont, texColor.a) * texColor.a + colorBackgroundFont * (1.0 - texColor.a);
                 }
             ";
 
@@ -260,7 +265,7 @@ namespace Alis.Core.Graphic.Ui
         }
 
 
-        public void RenderText(string text, int xPos, int yPos)
+        public void RenderText(string text, int xPos, int yPos, Color colorFont, Color colorBackgroundFont)
         {
             if (!string.IsNullOrEmpty(NameFile) && (Path == string.Empty))
             {
@@ -304,6 +309,12 @@ namespace Alis.Core.Graphic.Ui
             int flipLocation = Gl.GlGetUniformLocation(ShaderProgram, "flip");
             Gl.GlUniform1I(flipLocation, Flip ? 1 : 0);
 
+            // Enviar colorFont y colorBackgroundFont al shader
+            int colorFontLocation = Gl.GlGetUniformLocation(ShaderProgram, "colorFont");
+            Gl.GlUniform4F(colorFontLocation, colorFont.R / 255.0f, colorFont.G / 255.0f, colorFont.B / 255.0f, colorFont.A / 255.0f);
+            int colorBackgroundLocation = Gl.GlGetUniformLocation(ShaderProgram, "colorBackgroundFont");
+            Gl.GlUniform4F(colorBackgroundLocation, colorBackgroundFont.R / 255.0f, colorBackgroundFont.G / 255.0f, colorBackgroundFont.B / 255.0f, colorBackgroundFont.A / 255.0f);
+
             // Activar blending para manejar transparencias
             Gl.GlEnable(EnableCap.Blend);
             Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
@@ -318,3 +329,4 @@ namespace Alis.Core.Graphic.Ui
         }
     }
 }
+

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Data.Resource;
+using Alis.Core.Aspect.Math.Definition;
 
 namespace Alis.Core.Graphic.Ui
 {
@@ -37,7 +38,7 @@ namespace Alis.Core.Graphic.Ui
         
         public static void RenderText(string text, int x, int y)
         {
-            DefaultFont.RenderText(text, x, y);
+            DefaultFont.RenderText(text, x, y, Color.White,Color.Red);
         }
     }
 }
