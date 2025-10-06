@@ -121,8 +121,8 @@
     <PropertyGroup Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'false'">
         <!-- Carpeta donde están los recursos originales -->
         <ResourceInputDir>Assets</ResourceInputDir>
-        <!-- Archivo empaquetado final, en la carpeta intermedia de build -->
-        <PackedAssets>$(ProjectDir)assets.pak</PackedAssets>
+        <!-- Archivo empaquetado final, en la carpeta obj de build -->
+        <PackedAssets>$(ProjectDir)obj/assets.pak</PackedAssets>
     </PropertyGroup>
 
     <!-- Empaquetar los recursos en un ZIP (assets.pak) usando el comando zip de macOS -->
@@ -134,7 +134,7 @@
 
     <!-- Incluir el .pak como recurso embebido si existe -->
     <ItemGroup Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'false'">
-        <EmbeddedResource Include="$(PackedAssets)" Condition="Exists('$(PackedAssets)')" />
+        <EmbeddedResource Include="$(PackedAssets)" LinkBase="." Link="assets.pak" Visible="false" />
     </ItemGroup>
 
 </Project>
