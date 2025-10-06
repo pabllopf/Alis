@@ -342,6 +342,8 @@ namespace Alis.Core.Graphic.OpenGL
         ///     The vertex 2f
         /// </summary>
         public static Vertex2F GlVertex2F => GetCommand<Vertex2F>("glVertex2f");
+        
+        public static TexCoord2F GlTexCoord2F => GetCommand<TexCoord2F>("glTexCoord2f");
 
         /// <summary>
         ///     The enable vertex attrib array del
