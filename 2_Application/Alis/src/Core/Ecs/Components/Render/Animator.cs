@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
@@ -158,7 +159,15 @@ public struct Animator : IAnimator
         
         if (sprite.NameFile != textureName)
         {
-            sprite.LoadTexture(AssetManager.Find(textureName));
+            if (File.Exists(AssetManager.Find(textureName)))
+            {
+                sprite.LoadTexture(AssetManager.Find(textureName));
+            }
+            else
+            {
+                sprite.LoadTexture(textureName);
+            }
+            
         }
     }
 

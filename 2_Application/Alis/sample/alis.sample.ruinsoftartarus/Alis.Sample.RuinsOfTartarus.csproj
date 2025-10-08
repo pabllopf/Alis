@@ -8,7 +8,7 @@
         <Nullable>disable</Nullable>
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
-        <AssetsExternal>true</AssetsExternal>
+        <AssetsExternal>false</AssetsExternal>
         <ApplicationIcon>Config/app.ico</ApplicationIcon>
     </PropertyGroup>
 

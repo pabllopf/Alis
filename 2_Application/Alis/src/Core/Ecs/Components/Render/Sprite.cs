@@ -210,12 +210,19 @@ namespace Alis.Core.Ecs.Components.Render
             }
             else
             {
+                string nameToLoadFile = imagePath == string.Empty ? NameFile : imagePath;
+                if (NameFile != string.Empty && imagePath != string.Empty && NameFile != imagePath)
+                {
+                    nameToLoadFile = imagePath;
+                    NameFile = imagePath;
+                }
+                
                 // get name of resources from imagepath:
-                image = Image.LoadImageFromResources(NameFile);
+                image = Image.LoadImageFromResources(nameToLoadFile);
+             
             }
 
-            NameFile = System.IO.Path.GetFileName(imagePath);
-           this.Path = imagePath;
+            
             
             Size = new Vector2F(image.Width, image.Height);
             Texture = Gl.GenTexture();
