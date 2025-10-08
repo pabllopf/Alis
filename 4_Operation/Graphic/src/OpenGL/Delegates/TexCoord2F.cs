@@ -29,7 +29,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.OpenGL
+namespace Alis.Core.Graphic.OpenGL.Delegates
 {
     /// <summary>
     ///     The begin
