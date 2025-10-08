@@ -47,11 +47,11 @@ namespace Alis.Sample.Egg
                 .Create()
                 .Settings(setting => setting
                     .General(general => general
-                        .Name("T-Rex Dino Game")
+                        .Name("The Egg")
                         .Author("Pablo Perdomo Falcón")
                         .Description("T-Rex Dino Game")
                         .License("GNU General Public License v3.0")
-                        .Icon("app.bmp")
+                        .Icon("app.ico")
                     )
                     .Audio(audio => audio
                         .Volume(50)

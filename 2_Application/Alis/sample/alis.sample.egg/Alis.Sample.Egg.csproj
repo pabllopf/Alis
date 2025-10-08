@@ -9,6 +9,7 @@
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
         <AssetsExternal>false</AssetsExternal>
+        <ApplicationIcon>Config/app.ico</ApplicationIcon>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -66,10 +67,17 @@
         <!-- Disables reflection support to allow more aggressive trimming and reduce binary size. -->
         <IlcDisableReflection>false</IlcDisableReflection>
 
+        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+
+        <IlcTrimMetadata>true</IlcTrimMetadata>
+
+        <IlcGenerateStackTraceData>false</IlcGenerateStackTraceData>
+
         <!-- Disables stack trace support to save space, at the cost of less detailed error information. -->
         <StackTraceSupport>false</StackTraceSupport>
         <!-- Optimizes the build for size rather than speed. -->
         <OptimizationPreference>Size</OptimizationPreference>
+        <IlcOptimizationPreference>Size</IlcOptimizationPreference>
         <!-- Removes debug information from the output, reducing binary size. -->
         <DebugType>none</DebugType>
 
@@ -81,6 +89,12 @@
         <IlcGenerateMapFile>true</IlcGenerateMapFile>
         <!-- Dumps generated IL code for inspection; does not affect published size. -->
         <IlcDumpGeneratedIL>true</IlcDumpGeneratedIL>
+
+        <TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
+
+
+        <NoConfig>true</NoConfig>
+        <Optimize>true</Optimize>
 
         <!-- Enables tree trimming to remove unused code and libraries, reducing the final binary size. -->
         <PublishTrimmed>true</PublishTrimmed>
@@ -189,5 +203,4 @@
             Lines="@(PlistLines->Replace('Alis.Sample.Flappy.Bird', '$(AssemblyName)')->Replace('1.0', '$(Version)')->Replace('com.alis.flappybird', '$(ApplicationId)'))"
             Overwrite="true" />
     </Target>
-
 </Project>

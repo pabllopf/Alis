@@ -57,7 +57,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Author("Pablo Perdomo Falcón")
                         .Description("Flappy Bird game.")
                         .License("GNU General Public License v3.0")
-                        .Icon("app.bmp")
+                        .Icon("app.ico")
                         .Version(Assembly.GetExecutingAssembly().GetName().Version?.ToString())
                         )
                     .Audio(audio => audio

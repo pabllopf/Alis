@@ -105,6 +105,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             //Gl.GlEnable(EnableCap.DepthTest);
 
             
+            platform.SetTitle(Context.Setting.General.Name);
             platform.SetWindowIcon(AssetManager.Find(Context.Setting.General.Icon));
             platform.ShowWindow();
         }
