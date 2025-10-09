@@ -63,7 +63,8 @@ namespace Alis.Core.Graphic.Sample
             Logger.Info("2: Cubo (vacío)");
             Logger.Info("3: Cuadrado sin rellenar");
             Logger.Info("4: Textura personalizada (BMP)");
-            Console.Write("Opción: ");
+            Logger.Info("5: Load font with custom bmp");
+            Logger.Info("Opción: ");
             int option = 0;
             string input = Console.ReadLine();
             int.TryParse(input, out option);
@@ -73,6 +74,7 @@ namespace Alis.Core.Graphic.Sample
                 2 => new CubeExample(),
                 3 => new SquareUnfilledExample(),
                 4 => new TextureSampleCustomBmpExample(),
+                5 => new LoadFontWithCustomBmpExample(),
                 _ => new SimpleRedExample()
             };
 
