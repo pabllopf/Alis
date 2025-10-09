@@ -106,7 +106,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Background")
                             .Transform(transform => transform
-                                .Position(0, 0)
+                                .Position(0, -3f)
                                 )
                             .WithComponent<Sprite>(sprite => sprite
                                 .SetTexture("background-day.bmp")
@@ -235,7 +235,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Background")
                             .Transform(transform => transform
-                                .Position(0, 0)
+                                .Position(0, -3f)
                                 )
                             .WithComponent<Sprite>(sprite => sprite
                                 
