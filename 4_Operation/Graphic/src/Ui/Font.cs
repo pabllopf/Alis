@@ -270,7 +270,7 @@ namespace Alis.Core.Graphic.Ui
 
 
         // Diccionario para las posiciones de cada carácter en el atlas
-        private readonly Dictionary<char, RectangleI> CharacterRects = new();
+        private Dictionary<char, RectangleI> CharacterRects = new();
 
         // Inicializa el diccionario de rectángulos de caracteres (asume cuadrícula ASCII)
         private void InitializeCharacterRects(int charWidth, int charHeight)
@@ -325,6 +325,48 @@ namespace Alis.Core.Graphic.Ui
             }
         }
 
+        // Inicializa el diccionario de rectángulos de caracteres siguiendo la lógica exacta del ejemplo proporcionado
+        private void InitializeCharacterRectsFromAtlas(int charWidth, int charHeight, int charsPerRow, int xSpacing, int ySpacing)
+        {
+            CharacterRects.Clear();
+            Dictionary<char, RectangleI> characterRects = new Dictionary<char, RectangleI>();
+            string lowercase = "abcdefghijklmnopqrstuvwxyz";
+            string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string special = "0123456789";
+            
+            // Iterate over lowercase characters
+            for (int i = 0; i < lowercase.Length; i++)
+            {
+                char c = lowercase[i];
+                int x = i % charsPerRow * (charWidth + xSpacing);
+                int y = i / charsPerRow * (charHeight + ySpacing);
+                characterRects[c] = new RectangleI
+                    {X = x, Y = y, W = charWidth, H = charHeight};
+            }
+
+            // Iterate over uppercase characters
+            for (int i = 0; i < uppercase.Length; i++)
+            {
+                char c = uppercase[i];
+                int x = i % charsPerRow * (charWidth + xSpacing);
+                int y = (i / charsPerRow + 1) * (charHeight + ySpacing); // Move to the next row
+                characterRects[c] = new RectangleI
+                    {X = x, Y = y, W = charWidth, H = charHeight};
+            }
+
+            // Iterate over special characters
+            for (int i = 0; i < special.Length; i++)
+            {
+                char c = special[i];
+                int x = i % charsPerRow * (charWidth + xSpacing);
+                int y = (i / charsPerRow + 2) * (charHeight + ySpacing); // Move to the next row
+                characterRects[c] = new RectangleI
+                    {X = x, Y = y, W = charWidth, H = charHeight};
+            }
+            
+            CharacterRects = characterRects;
+        }
+
         public void RenderText(string text, int xPos, int yPos, Color colorFont, Color colorBackgroundFont)
         {
             if (!string.IsNullOrEmpty(NameFile) && (Path == string.Empty))
@@ -341,7 +383,7 @@ namespace Alis.Core.Graphic.Ui
             int charsPerRow = 28; // caracteres por fila
             int xSpacing = 1; // espaciado horizontal
             int ySpacing = 0; // espaciado vertical
-            if (CharacterRects.Count == 0) InitializeCharacterRectsCustom(charWidth, charHeight, charsPerRow, xSpacing, ySpacing);
+            if (CharacterRects.Count == 0) InitializeCharacterRectsFromAtlas(charWidth, charHeight, charsPerRow, xSpacing, ySpacing);
 
             // Tamaño lógico de la fuente en pantalla
             float fontSize = sizeFont; // valor lógico de la fuente (por ejemplo, 1)
