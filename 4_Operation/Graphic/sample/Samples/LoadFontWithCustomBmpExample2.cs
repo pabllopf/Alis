@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FontManager.cs
+//  File:LoadFontWithCustomBmpExample.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,25 +27,38 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Enums;
+using Alis.Core.Graphic.Ui;
 
-namespace Alis.Core.Graphic.Ui
+namespace Alis.Core.Graphic.Sample.Samples
 {
-    public static class FontManager
+    public class LoadFontWithCustomBmpExample2 : IExample
     {
-        public static Font DefaultFont { get; } = new Font("MONO_V5.bmp", 1, 1, AssetManager.Find("MONO_V5.bmp"));
-        
-        public static void RenderText(string text, int x, int y, Color foreColor, Color backColor)
+        public void Initialize()
         {
-            DefaultFont.RenderText(text, x, y, foreColor, backColor);
+            
         }
-        
-        public static void RenderText(string text, int x, int y)
+
+        public void Draw()
         {
-            DefaultFont.RenderText(text, x, y, Color.White, Color.Transparent);
+            Gl.GlClearColor(0f, 0f, 0f, 1f);
+            Gl.GlClear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            
+            
+            FontManager.RenderText("Hola", 0, 0, Color.Red, Color.Green);
+            
+            
+            FontManager.RenderText("Mundo!", 250, 200, Color.Blue, Color.Yellow);
+            
+            
+            FontManager.RenderText("JEJEJ", -300, -200, Color.Cyan, Color.Magenta);
         }
-        
-        
+
+        public void Cleanup()
+        {
+           
+        }
     }
 }

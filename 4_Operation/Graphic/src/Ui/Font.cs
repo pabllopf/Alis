@@ -332,18 +332,19 @@ namespace Alis.Core.Graphic.Ui
             Dictionary<char, RectangleI> characterRects = new Dictionary<char, RectangleI>();
             string lowercase = "abcdefghijklmnopqrstuvwxyz";
             string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string special = "0123456789";
+            string special = "0123456789.:;,(*!?)^#$%{&-+@";
             
-            // Iterate over lowercase characters
-            for (int i = 0; i < lowercase.Length; i++)
+            
+            // Iterate over special characters
+            for (int i = 0; i < special.Length; i++)
             {
-                char c = lowercase[i];
+                char c = special[i];
                 int x = i % charsPerRow * (charWidth + xSpacing);
-                int y = i / charsPerRow * (charHeight + ySpacing);
+                int y = (i / charsPerRow + 0) * (charHeight + ySpacing); // Move to the next row
                 characterRects[c] = new RectangleI
                     {X = x, Y = y, W = charWidth, H = charHeight};
             }
-
+            
             // Iterate over uppercase characters
             for (int i = 0; i < uppercase.Length; i++)
             {
@@ -354,15 +355,19 @@ namespace Alis.Core.Graphic.Ui
                     {X = x, Y = y, W = charWidth, H = charHeight};
             }
 
-            // Iterate over special characters
-            for (int i = 0; i < special.Length; i++)
+            
+            // Iterate over lowercase characters
+            for (int i = 0; i < lowercase.Length; i++)
             {
-                char c = special[i];
+                char c = lowercase[i];
                 int x = i % charsPerRow * (charWidth + xSpacing);
                 int y = (i / charsPerRow + 2) * (charHeight + ySpacing); // Move to the next row
                 characterRects[c] = new RectangleI
                     {X = x, Y = y, W = charWidth, H = charHeight};
             }
+
+          
+           
             
             CharacterRects = characterRects;
         }
@@ -416,10 +421,18 @@ namespace Alis.Core.Graphic.Ui
                 if (!CharacterRects.TryGetValue(c, out RectangleI srcRect)) continue;
 
                 // Coordenadas de textura (UV)
-                float u0 = (float)srcRect.X / Size.X;
+                /*float u0 = (float)srcRect.X / Size.X;
                 float v0 = (float)srcRect.Y / Size.Y;
                 float u1 = (float)(srcRect.X + srcRect.W) / Size.X;
-                float v1 = (float)(srcRect.Y + srcRect.H) / Size.Y;
+                float v1 = (float)(srcRect.Y + srcRect.H) / Size.Y;*/
+
+                int posXx = srcRect.X;
+                int posYy = srcRect.Y;
+                
+                float u0 = posXx / Size.X;
+                float v0 = posYy / Size.Y;
+                float u1 = (posXx + srcRect.W) / Size.X;
+                float v1 = (posYy + srcRect.H) / Size.Y;
 
                 // Posición en pantalla (en píxeles)
                 float positionXPixels = posX;
