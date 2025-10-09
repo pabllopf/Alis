@@ -83,6 +83,11 @@ namespace Alis.Core.Audio
             await _internalPlayer.Play(fileName);
         }
 
+        public async Task PlayLoop(string fileName, bool loop)
+        {
+            await _internalPlayer.PlayLoop(fileName, loop);
+        }
+
         /// <summary>
         ///     Pauses any playback. Sets Paused flag to true. Doesn't modify Playing flag.
         /// </summary>

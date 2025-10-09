@@ -153,6 +153,38 @@ namespace Alis.Core.Audio.Players
             return Task.CompletedTask;
         }
 
+        
+        public Task PlayLoop(string fileName, bool loop)
+        {
+            if (!File.Exists(fileName))
+            {
+                try
+                {
+                    fileName = ExtractWavFromResourcesAsync(fileName).GetAwaiter().GetResult();
+                }
+                catch (Exception ex)
+                {
+                    throw new FileNotFoundException($"File '{fileName}' not found.", ex);
+                }
+            }
+        
+            _fileName = fileName;
+            _playbackTimer = new Timer { AutoReset = false };
+            _playStopwatch = new Clock();
+        
+            ExecuteMsiCommand($"Status {_fileName} Length");
+            string playCommand = loop ? $"Play {_fileName} Repeat" : $"Play {_fileName}";
+            ExecuteMsiCommand(playCommand);
+        
+            Paused = false;
+            Playing = true;
+            _playbackTimer.Elapsed += HandlePlaybackFinished;
+            _playbackTimer.Start();
+            _playStopwatch.Start();
+        
+            return Task.CompletedTask;
+        }
+
         /// <summary>
         ///     Pauses this instance
         /// </summary>
