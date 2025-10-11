@@ -548,6 +548,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "alis.sample.ruinsoftartarus
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.RuinsOfTartarus", "2_Application\Alis\sample\alis.sample.ruinsoftartarus\Alis.Sample.RuinsOfTartarus.csproj", "{4988209D-A51D-47CA-8572-289C386B6399}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "alis.sample.inefable", "alis.sample.inefable", "{B01F0D0F-EC0C-4E59-ABBA-F82F48AE369C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Inefable", "2_Application\Alis\sample\alis.sample.inefable\Alis.Sample.Inefable.csproj", "{99F3CDB7-7110-419C-B89E-161822864AB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -2942,6 +2946,26 @@ Global
 		{4988209D-A51D-47CA-8572-289C386B6399}.Release|OsxArm64.Build.0 = Release|Any CPU
 		{4988209D-A51D-47CA-8572-289C386B6399}.Release|Winx64.ActiveCfg = Release|Any CPU
 		{4988209D-A51D-47CA-8572-289C386B6399}.Release|Winx64.Build.0 = Release|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Debug|x64.Build.0 = Debug|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Debug|x86.Build.0 = Debug|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Debug|OsxArm64.ActiveCfg = Debug|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Debug|OsxArm64.Build.0 = Debug|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Debug|Winx64.ActiveCfg = Debug|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Debug|Winx64.Build.0 = Debug|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Release|x64.ActiveCfg = Release|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Release|x64.Build.0 = Release|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Release|x86.ActiveCfg = Release|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Release|x86.Build.0 = Release|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Release|OsxArm64.ActiveCfg = Release|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Release|OsxArm64.Build.0 = Release|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Release|Winx64.ActiveCfg = Release|Any CPU
+		{99F3CDB7-7110-419C-B89E-161822864AB7}.Release|Winx64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -3138,6 +3162,8 @@ Global
 		{26B9D073-AE33-4A44-B38E-182BF67CAA40} = {33BF1025-FF7D-AD1D-0D92-B7ACD9995B3D}
 		{28B77E42-0DE8-40CF-B78A-F72B0CECAE03} = {CBB02FD4-DD16-B8C1-0416-FC7D0897F8E6}
 		{4988209D-A51D-47CA-8572-289C386B6399} = {28B77E42-0DE8-40CF-B78A-F72B0CECAE03}
+		{B01F0D0F-EC0C-4E59-ABBA-F82F48AE369C} = {CBB02FD4-DD16-B8C1-0416-FC7D0897F8E6}
+		{99F3CDB7-7110-419C-B89E-161822864AB7} = {B01F0D0F-EC0C-4E59-ABBA-F82F48AE369C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}
