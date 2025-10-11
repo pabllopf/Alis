@@ -214,6 +214,9 @@ namespace Alis.Core.Ecs.Components.Render
                 image = Image.LoadImageFromResources(NameFile);
             }
 
+            NameFile = System.IO.Path.GetFileName(imagePath);
+           this.Path = imagePath;
+            
             Size = new Vector2F(image.Width, image.Height);
             Texture = Gl.GenTexture();
             Gl.GlBindTexture(TextureTarget.Texture2D, Texture);

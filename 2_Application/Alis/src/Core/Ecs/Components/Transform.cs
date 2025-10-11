@@ -93,7 +93,6 @@ namespace Alis.Core.Ecs.Components
         
         public void OnStart(IGameObject self)
         {
-            Logger.Info($"[{GetType()}] Initialized Transform of GameObject '{self.Get<Info>().Name}' with Position: {Position}, Rotation: {Rotation}, Scale: {Scale}");
         }
 
         public void OnExit(IGameObject self)

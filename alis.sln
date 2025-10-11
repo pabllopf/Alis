@@ -544,6 +544,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physic.Sample", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physic", "4_Operation\Physic\src\Alis.Core.Physic.csproj", "{26B9D073-AE33-4A44-B38E-182BF67CAA40}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "alis.sample.ruinsoftartarus", "alis.sample.ruinsoftartarus", "{28B77E42-0DE8-40CF-B78A-F72B0CECAE03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.RuinsOfTartarus", "2_Application\Alis\sample\alis.sample.ruinsoftartarus\Alis.Sample.RuinsOfTartarus.csproj", "{4988209D-A51D-47CA-8572-289C386B6399}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -2918,6 +2922,26 @@ Global
 		{26B9D073-AE33-4A44-B38E-182BF67CAA40}.Release|OsxArm64.Build.0 = Release|Any CPU
 		{26B9D073-AE33-4A44-B38E-182BF67CAA40}.Release|Winx64.ActiveCfg = Release|Any CPU
 		{26B9D073-AE33-4A44-B38E-182BF67CAA40}.Release|Winx64.Build.0 = Release|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Debug|x64.Build.0 = Debug|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Debug|x86.Build.0 = Debug|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Debug|OsxArm64.ActiveCfg = Debug|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Debug|OsxArm64.Build.0 = Debug|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Debug|Winx64.ActiveCfg = Debug|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Debug|Winx64.Build.0 = Debug|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Release|x64.ActiveCfg = Release|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Release|x64.Build.0 = Release|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Release|x86.ActiveCfg = Release|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Release|x86.Build.0 = Release|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Release|OsxArm64.ActiveCfg = Release|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Release|OsxArm64.Build.0 = Release|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Release|Winx64.ActiveCfg = Release|Any CPU
+		{4988209D-A51D-47CA-8572-289C386B6399}.Release|Winx64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -3112,6 +3136,8 @@ Global
 		{3AB1FD8C-6608-4863-8707-56227EBAA607} = {33BF1025-FF7D-AD1D-0D92-B7ACD9995B3D}
 		{22348B68-5EA1-4BFB-895F-4B4A301298BE} = {33BF1025-FF7D-AD1D-0D92-B7ACD9995B3D}
 		{26B9D073-AE33-4A44-B38E-182BF67CAA40} = {33BF1025-FF7D-AD1D-0D92-B7ACD9995B3D}
+		{28B77E42-0DE8-40CF-B78A-F72B0CECAE03} = {CBB02FD4-DD16-B8C1-0416-FC7D0897F8E6}
+		{4988209D-A51D-47CA-8572-289C386B6399} = {28B77E42-0DE8-40CF-B78A-F72B0CECAE03}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}
