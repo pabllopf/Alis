@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
 using Alis.Core.Physic.Collision;
 
 namespace Alis.Core.Physic.Dynamics
@@ -34,6 +35,7 @@ namespace Alis.Core.Physic.Dynamics
     /// <summary>
     ///     This proxy is used internally to connect fixtures to the broad-phase.
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct FixtureProxy
     {
         /// <summary>

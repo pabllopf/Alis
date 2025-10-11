@@ -27,12 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 #if winx64 || winx86 || winarm64 || winarm || win
 namespace Alis.Core.Graphic.Platforms.Win.Native
 {
     /// <summary>
     /// ShowWindow commands.
     /// </summary>
+    [Flags]
     public enum ShowWindowCommand : int
     {
         /// <summary>

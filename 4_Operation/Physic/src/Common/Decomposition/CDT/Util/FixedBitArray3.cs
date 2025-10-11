@@ -29,6 +29,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Matrix;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
@@ -36,6 +37,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
     /// <summary>
     ///     The fixed bit array
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct FixedBitArray3 : IEnumerable<bool>
     {
         /// <summary>

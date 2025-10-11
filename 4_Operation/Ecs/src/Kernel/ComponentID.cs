@@ -28,12 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Kernel
 {
     /// <summary>
     ///     A lightweight struct that represents a component type. Used for fast lookups.
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct ComponentId : ITypeId, IEquatable<ComponentId>
     {
         /// <summary>

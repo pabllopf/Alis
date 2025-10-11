@@ -144,7 +144,6 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     Renders the add component button
         /// </summary>
-        [RequiresUnreferencedCode("Calls System.Reflection.Assembly.GetTypes()")]
         private void RenderAddComponentButton()
         {
             if (ImGui.Button("Add Component", new Vector2F(ImGui.GetContentRegionAvail().X, 30)))

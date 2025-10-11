@@ -36,6 +36,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The chunk query enumerator
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkQueryEnumerator<T1, T2, T3, T4>
     {
         /// <summary>

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
 
 namespace Alis.Core.Ecs.Systems
@@ -34,6 +35,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The ref tuple
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct RefTuple<T1, T2>
     {
         /// <summary>
