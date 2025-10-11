@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
 
@@ -36,6 +37,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The game object query enumerator
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct GameObjectQueryEnumerator<T>
     {
         /// <summary>
@@ -132,6 +134,7 @@ namespace Alis.Core.Ecs.Systems
         ///     Proxy type for foreach syntax
         /// </summary>
         /// <param name="query">The query to wrap.</param>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public readonly struct QueryEnumerable(Query query)
         {
             /// <summary>

@@ -272,7 +272,7 @@ namespace Alis.Core.Graphic.Platforms.Win
             {
                 new Pixelformatdescriptor
                 {
-                    nSize = (ushort) Marshal.SizeOf(typeof(Pixelformatdescriptor)),
+                    nSize = (ushort) Marshal.SizeOf<Pixelformatdescriptor>(),
                     nVersion = 1,
                     dwFlags = (uint) (PixelFormatFlags.DrawToWindow | PixelFormatFlags.SupportOpenGL | PixelFormatFlags.DoubleBuffer),
                     iPixelType = (byte) PixelType.RGBA,
@@ -287,7 +287,7 @@ namespace Alis.Core.Graphic.Platforms.Win
                 },
                 new Pixelformatdescriptor
                 {
-                    nSize = (ushort) Marshal.SizeOf(typeof(Pixelformatdescriptor)),
+                    nSize = (ushort) Marshal.SizeOf<Pixelformatdescriptor>(),
                     nVersion = 1,
                     dwFlags = (uint) (PixelFormatFlags.DrawToWindow | PixelFormatFlags.SupportOpenGL),
                     iPixelType = (byte) PixelType.RGBA,
@@ -302,7 +302,7 @@ namespace Alis.Core.Graphic.Platforms.Win
                 },
                 new Pixelformatdescriptor
                 {
-                    nSize = (ushort) Marshal.SizeOf(typeof(Pixelformatdescriptor)),
+                    nSize = (ushort) Marshal.SizeOf<Pixelformatdescriptor>(),
                     nVersion = 1,
                     dwFlags = (uint) (PixelFormatFlags.DrawToWindow | PixelFormatFlags.SupportOpenGL | PixelFormatFlags.DoubleBuffer),
                     iPixelType = (byte) PixelType.RGBA,

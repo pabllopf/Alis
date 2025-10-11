@@ -342,7 +342,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <summary>
         ///     The time span
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct TimeSpan
         {
             /// <summary>

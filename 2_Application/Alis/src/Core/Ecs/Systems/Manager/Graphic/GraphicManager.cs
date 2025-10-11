@@ -62,6 +62,17 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         ///     The platform
         /// </summary>
         private INativePlatform platform;
+        
+        ConsoleKey[] allKeys = new[]
+        {
+            ConsoleKey.A, ConsoleKey.B, ConsoleKey.C, ConsoleKey.D, ConsoleKey.E,
+            ConsoleKey.F, ConsoleKey.G, ConsoleKey.H, ConsoleKey.I, ConsoleKey.J,
+            ConsoleKey.K, ConsoleKey.L, ConsoleKey.M, ConsoleKey.N, ConsoleKey.O,
+            ConsoleKey.P, ConsoleKey.Q, ConsoleKey.R, ConsoleKey.S, ConsoleKey.T,
+            ConsoleKey.U, ConsoleKey.V, ConsoleKey.W, ConsoleKey.X, ConsoleKey.Y,
+            ConsoleKey.Z,
+            ConsoleKey.Spacebar, ConsoleKey.Enter, ConsoleKey.Escape
+        };
 
         // Diccionario para guardar el timestamp de pulsación de cada tecla
         private Dictionary<ConsoleKey, DateTime> keyDownTimestamps = new Dictionary<ConsoleKey, DateTime>();
@@ -135,8 +146,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             {
                 Context.Exit();
             }
-
-            ConsoleKey[] allKeys = (ConsoleKey[])Enum.GetValues(typeof(ConsoleKey));
+            
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>();
             DateTime now = DateTime.UtcNow;
             foreach (ConsoleKey k in allKeys)

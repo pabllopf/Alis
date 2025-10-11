@@ -28,12 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
     ///     The chunk tuple
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct ChunkTuple<T1, T2, T3, T4, T5, T6, T7>
     {
         /// <summary>

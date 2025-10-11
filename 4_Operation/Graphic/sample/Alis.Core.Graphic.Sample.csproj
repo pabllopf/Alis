@@ -65,7 +65,7 @@
         <!-- Folds identical method bodies to reduce code duplication and binary size. -->
         <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
         <!-- Disables reflection support to allow more aggressive trimming and reduce binary size. -->
-        <IlcDisableReflection>false</IlcDisableReflection>
+        <IlcDisableReflection>true</IlcDisableReflection>
 
         <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
 

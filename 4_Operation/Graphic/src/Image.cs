@@ -32,6 +32,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
+using System.Resources;
 
 namespace Alis.Core.Graphic
 {
@@ -68,40 +69,39 @@ namespace Alis.Core.Graphic
         /// </summary>
         public byte[] Data { get; }
         
-     public static Image LoadImageFromResources(string resourceName)
-     {
-         Assembly assembly = Assembly.GetEntryAssembly();
-         if (assembly == null)
-             throw new InvalidOperationException("No entry assembly found.");
-     
-         using (Stream streamPack = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.assets.pak"))
-         {
-             if (streamPack == null)
-                 throw new FileNotFoundException("Resource file 'assets.pak' not found in embedded resources.");
-     
-             using (MemoryStream memPack = new MemoryStream())
-             {
-                 streamPack.CopyTo(memPack);
-                 memPack.Position = 0;
-     
-                 using (ZipArchive zip = new ZipArchive(memPack, ZipArchiveMode.Read))
-                 {
-                     ZipArchiveEntry entry = zip.Entries.FirstOrDefault(e => e.FullName.Contains(resourceName));
-                     if (entry == null)
-                         throw new FileNotFoundException($"Resource '{resourceName}' not found in 'assets.pak'.");
-     
-                     using (Stream entryStream = entry.Open())
-                     using (MemoryStream memImage = new MemoryStream())
-                     {
-                         entryStream.CopyTo(memImage);
-                         memImage.Position = 0;
-                         return LoadFromStream(memImage);
-                     }
-                 }
-             }
-         }
-     }
-
+  public static Image LoadImageFromResources(string resourceName)
+  {
+      var assembly = Assembly.GetExecutingAssembly();
+      if (assembly == null)
+          throw new InvalidOperationException("No assembly found.");
+  
+      using (Stream streamPack = assembly.GetManifestResourceStream($"assets.pak"))
+      {
+          if (streamPack == null)
+              throw new FileNotFoundException("Resource file 'assets.pak' not found in embedded resources.");
+  
+          using (MemoryStream memPack = new MemoryStream())
+          {
+              streamPack.CopyTo(memPack);
+              memPack.Position = 0;
+  
+              using (ZipArchive zip = new ZipArchive(memPack, ZipArchiveMode.Read))
+              {
+                  ZipArchiveEntry entry = zip.Entries.FirstOrDefault(e => e.FullName.Contains(resourceName));
+                  if (entry == null)
+                      throw new FileNotFoundException($"Resource '{resourceName}' not found in 'assets.pak'.");
+  
+                  using (Stream entryStream = entry.Open())
+                  using (MemoryStream memImage = new MemoryStream())
+                  {
+                      entryStream.CopyTo(memImage);
+                      memImage.Position = 0;
+                      return LoadFromStream(memImage);
+                  }
+              }
+          }
+      }
+  }
         private static Image LoadFromStream(Stream stream)
         {
             using (BinaryReader reader = new BinaryReader(stream))

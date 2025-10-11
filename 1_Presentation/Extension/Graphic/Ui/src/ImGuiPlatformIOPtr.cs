@@ -35,6 +35,7 @@ namespace Alis.Extension.Graphic.Ui
     /// <summary>
     ///     The im gui platform io ptr
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct ImGuiPlatformIoPtr
     {
         /// <summary>

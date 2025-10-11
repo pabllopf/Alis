@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
 
 namespace Alis.Core.Ecs
@@ -34,6 +35,7 @@ namespace Alis.Core.Ecs
     /// <summary>
     ///     The gameObject ref tuple
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct GameObjectRefTuple<T1, T2>
     {
         /// <summary>

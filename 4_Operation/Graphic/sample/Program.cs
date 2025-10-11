@@ -97,7 +97,7 @@ namespace Alis.Core.Graphic.Sample
 
             example.Initialize();
             platform.ShowWindow();
-            platform.SetTitle("C# + OpenGL Platform - Ejemplo " + option + " : " + example.GetType().Name);
+            platform.SetTitle("C# + OpenGL Platform - Ejemplo " + option);
             
             bool running = true;
             while (running)
