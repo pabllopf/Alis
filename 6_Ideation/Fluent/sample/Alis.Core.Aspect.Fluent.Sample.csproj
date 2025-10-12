@@ -10,7 +10,7 @@
         <SonarQubeExclude>true</SonarQubeExclude>
         <AssetsExternal>false</AssetsExternal>
         <ApplicationIcon>Config/app.ico</ApplicationIcon>
-        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        
     </PropertyGroup>
 
     <PropertyGroup>
