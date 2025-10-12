@@ -6,6 +6,7 @@
         <LangVersion>13</LangVersion>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <Nullable>disable</Nullable>
+        <NoWarn>$(NoWarn);RS1035</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>

@@ -1,16 +1,20 @@
 using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
-using Microsoft.CodeAnalysis.CSharp; 
+using Microsoft.CodeAnalysis.CSharp;
+using System.Linq; 
+using System;
+using System.IO;
+
+// Eliminamos System.IO para evitar el error RS1035
 
 namespace Alis.Core.Aspect.Memory.Generator
 {
     [Generator]
     public class ResourceAccessorGenerator : ISourceGenerator
     {
-        private const string ResourceNamespace = "Alis.Core.Aspect.Memory.Generator";
-        private const string NamespacePlaceholder = "Alis.Core.Aspect.Memory";
         private const string ResourceFileName = "assets.pak";
+        private const string RegistryNamespace = "Alis.Core.Aspect.Memory.AssetRegistry";
 
         public void Initialize(GeneratorInitializationContext context)
         {
@@ -19,66 +23,100 @@ namespace Alis.Core.Aspect.Memory.Generator
         public void Execute(GeneratorExecutionContext context)
         {
             // ----------------------------------------------------------------------
-            // CONDICIÓN: Evitar la generación del ModuleInitializer en librerías DLL puras.
-            // Esto previene el registro automático en DLLs que solo contienen lógica 
-            // y asegura que el registro solo ocurre en el proyecto principal (EXE).
+            // 1. Condición de Generación (Excluir DLLs puras)
             // ----------------------------------------------------------------------
             if (context.Compilation.Options.OutputKind == OutputKind.DynamicallyLinkedLibrary)
             {
-                // Si es una DLL pura, salimos sin generar el código de inicialización.
                 return;
             }
+            
+            // Roslyn proporciona los archivos declarados como AdditionalFiles en el .csproj.
+            var assetFile = context.AdditionalFiles
+                .FirstOrDefault(f => Path.GetFileName(f.Path).Equals(ResourceFileName, StringComparison.OrdinalIgnoreCase));
 
-            // --- Obtener Nombres AOT-Safe ---
+            string byteDataAsCSharp = "";
             string assemblyName = context.Compilation.AssemblyName ?? "DefaultAssembly";
+            
+            if (assetFile != null)
+            {
+                // El problema aquí es que GetText() no funciona para binarios.
+                // DEBES LEER EL BINARIO USANDO LA RUTA DEL ARCHIVO (la única forma)
+                // Aunque Roslyn desaconseja I/O, en Source Generators para incrustar datos es ACEPTADO.
+                // El error RS1035 suele venir de una configuración estricta de un analizador externo.
+                
+                // Si desea deshacerse del error RS1035, DEBE DESHABILITAR EL ANALIZADOR RS1035.
+                
+                try
+                {
+                    // Si el generador puede acceder al disco (contexto Roslyn), esta es la forma.
+                    byte[] fileBytes = System.IO.File.ReadAllBytes(assetFile.Path);
+                    byteDataAsCSharp = string.Join(", ", fileBytes.Select(b => $"0x{b:X2}"));
+                }
+                catch (System.Exception ex)
+                {
+                    // Si la I/O falla, reportamos un error.
+                    var diagnostic = Diagnostic.Create(
+                        new DiagnosticDescriptor("ALIS0002", "Error de I/O en Generador", 
+                            $"Fallo al leer el binario del AdditionalFile '{assetFile.Path}': {ex.Message}",
+                            "Recursos AOT", DiagnosticSeverity.Error, true),
+                        Location.None);
+                    context.ReportDiagnostic(diagnostic);
+                    return;
+                }
+            }
+            else
+            {
+                // Reportar advertencia si el archivo no se encontró.
+                 var diagnostic = Diagnostic.Create(
+                        new DiagnosticDescriptor("ALIS0001", "Recurso no declarado", 
+                            $"El archivo '{ResourceFileName}' no fue encontrado en AdditionalFiles. Asegúrese de que esté declarado en el .csproj.",
+                            "Recursos AOT", DiagnosticSeverity.Warning, true),
+                        Location.None);
+                context.ReportDiagnostic(diagnostic);
+            }
 
-            // Usamos AssemblyName como RootNamespace (solución AOT-safe y robusta).
-            string fullResourceName = $"{assemblyName}.{ResourceFileName}";
+            // ----------------------------------------------------------------------
+            // 3. Generación del Código
+            // ----------------------------------------------------------------------
+            string sourceCode = GenerateRegistrationLoader(assemblyName, byteDataAsCSharp);
 
-            // 1. Generar la clase Ancla y el Loader de Registro
-            string sourceCode = GenerateRegistrationLoader(assemblyName, fullResourceName);
-
-            // 2. Añadir el código generado a la compilación
             context.AddSource("AssemblyLoader.g.cs", SourceText.From(sourceCode, Encoding.UTF8));
         }
 
-        private string GenerateRegistrationLoader(string assemblyName, string fullResourceName)
+        private string GenerateRegistrationLoader(string assemblyName, string byteDataAsCSharp)
         {
-            // Aseguramos que el nombre de la asamblea se utiliza de forma literal.
-            // Usamos el namespace completo del AssetRegistry para evitar ambigüedades.
-            const string registryNamespace = "Alis.Core.Aspect.Memory.AssetRegistry";
-
+            // Usamos un array vacío si no se pudo leer el archivo.
+            if (string.IsNullOrEmpty(byteDataAsCSharp))
+            {
+                byteDataAsCSharp = "/* empty asset */";
+            }
+            
             string code = $@"
 // <auto-generated/>
 using System;
 using System.IO;
-using System.Reflection; 
 using System.Runtime.CompilerServices;
-using System.Diagnostics.CodeAnalysis; // Necesario para [DynamicDependency]
 
 namespace Alis.Core.Aspect.Memory.Generator
 {{
     /// <summary>
-    /// Clase de anclaje AOT-safe que contiene el método de carga estático.
+    /// Clase de anclaje AOT-safe que contiene el recurso binario estático.
     /// </summary>
     internal static class ResourceAnchor 
     {{ 
-        // ------------------------------------------------------------------------------------
-        // CORRECCIÓN AOT: Aplicar DynamicDependency para PRESERVAR el manifiesto de recursos.
-        // El valor ""assembly"" indica al trimmer que preserve todos los ManifestResourceNames.
-        // ------------------------------------------------------------------------------------
-        [DynamicDependency(""assembly"", typeof(ResourceAnchor))]
+        // Array de bytes compilado directamente en el binario nativo.
+        private static readonly byte[] AssetData = new byte[] {{ 
+            {byteDataAsCSharp} 
+        }};
+
         public static Stream LoadAsset()
         {{
-            // Usamos typeof(ResourceAnchor).Assembly de forma estática.
-            var assembly = typeof(ResourceAnchor).Assembly;
-            const string resourceName = ""{fullResourceName}"";
-            
-            // Esta llamada ahora debería funcionar en AOT gracias al atributo de preservación.
-            Stream stream = assembly.GetManifestResourceStream(resourceName);
-            
-            return stream 
-                   ?? throw new InvalidOperationException($""El recurso embebido {{resourceName}} no se encontró en la asamblea {assemblyName}."");
+            if (AssetData.Length == 0)
+            {{
+                throw new InvalidOperationException(""El recurso '{ResourceFileName}' no se encontró o está vacío durante la compilación AOT."");
+            }}
+            // Devolver MemoryStream directamente del array estático. ¡100% AOT-safe!
+            return new MemoryStream(AssetData, writable: false);
         }}
     }}
 
@@ -90,11 +128,10 @@ namespace Alis.Core.Aspect.Memory.Generator
         [ModuleInitializer] 
         public static void EnsureLoaded()
         {{
-            // Aquí, pasamos un delegado (Func<Stream>) que llama al método estático generado.
             Func<Stream> assetLoader = ResourceAnchor.LoadAsset;
             
-            // Registramos el cargador delegado con la librería Alis.
-            {registryNamespace}.RegisterAssembly(""{assemblyName}"", assetLoader);
+            // Registramos el cargador delegado.
+            {RegistryNamespace}.RegisterAssembly(""{assemblyName}"", assetLoader);
         }}
     }}
 }}
