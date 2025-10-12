@@ -206,6 +206,7 @@ namespace Alis.Sample.Flappy.Bird
                             .Name("Soundtrack")
                             .WithComponent<AudioSource>(audioSource => audioSource
                                 .PlayOnAwake(true)
+                                .Loop(true)
                                 .File("main_theme.wav")
                             ) 
                         ) // end soundtrack

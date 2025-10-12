@@ -108,26 +108,39 @@ namespace Alis.Core.Audio.Players
             }
         }
         
-        /// <summary>
-        ///     Plays the file name
-        /// </summary>
-        /// <param name="fileName">The file name</param>
+        private string _lastPlayedFile;
+        private string _lastExtractedFile;
+        
         public async Task Play(string fileName)
         {
             await Stop();
-            
-            if (!File.Exists(fileName))
+        
+            // Si el archivo es el mismo y ya fue extraído, lo usamos directamente
+            if (_lastPlayedFile == fileName && !string.IsNullOrEmpty(_lastExtractedFile) && File.Exists(_lastExtractedFile))
             {
-                try
-                {
-                    fileName = await ExtractWavFromResourcesAsync(fileName);
-                }
-                catch (Exception ex)
-                {
-                    throw new FileNotFoundException($"The specified audio file '{fileName}' was not found and could not be extracted from resources.", ex);
-                }
+                fileName = _lastExtractedFile;
             }
-            
+            else
+            {
+                if (!File.Exists(fileName))
+                {
+                    try
+                    {
+                        fileName = await ExtractWavFromResourcesAsync(fileName);
+                        _lastExtractedFile = fileName;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new FileNotFoundException($"The specified audio file '{fileName}' was not found and could not be extracted from resources.", ex);
+                    }
+                }
+                else
+                {
+                    _lastExtractedFile = fileName;
+                }
+                _lastPlayedFile = fileName;
+            }
+        
             string bashToolName = GetBashCommand(fileName);
             _process = StartBashProcess($"{bashToolName} '{fileName}'");
             _process.EnableRaisingEvents = true;
@@ -136,7 +149,40 @@ namespace Alis.Core.Audio.Players
             _process.Disposed += HandlePlaybackFinished;
             Playing = true;
         }
-
+        
+      public async Task PlayLoop(string fileName, bool loop)
+      {
+          await Stop();
+      
+          if (_lastPlayedFile == fileName && !string.IsNullOrEmpty(_lastExtractedFile) && File.Exists(_lastExtractedFile))
+          {
+              fileName = _lastExtractedFile;
+          }
+          else
+          {
+              if (!File.Exists(fileName))
+              {
+                  fileName = await ExtractWavFromResourcesAsync(fileName);
+                  _lastExtractedFile = fileName;
+              }
+              else
+              {
+                  _lastExtractedFile = fileName;
+              }
+              _lastPlayedFile = fileName;
+          }
+      
+          string command = loop
+              ? $"while true; do afplay '{fileName}'; done"
+              : $"afplay '{fileName}'";
+          _process = StartBashProcess(command);
+          _process.EnableRaisingEvents = true;
+          _process.Exited += HandlePlaybackFinished;
+          _process.ErrorDataReceived += HandlePlaybackFinished;
+          _process.Disposed += HandlePlaybackFinished;
+          Playing = true;
+      }
+        
         /// <summary>
         ///     Pauses this instance
         /// </summary>

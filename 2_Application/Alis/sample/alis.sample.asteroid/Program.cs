@@ -56,6 +56,7 @@ namespace Alis.Sample.Asteroid
                         .Author("Pablo Perdomo Falcón")
                         .Description("Asteroids game")
                         .License("GNU General Public License v3.0")
+                        .Icon("app.ico")
                     )
                     .Audio(audio => audio
                         .Volume(0)

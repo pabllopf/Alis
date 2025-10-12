@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs.Components.Audio
         /// <summary>
         ///     Gets or sets the value of the is looping
         /// </summary>
-        public bool IsLooping { get; set; }
+        public bool IsLooping { get; set; } = loop;
 
         /// <summary>
         ///     Gets or sets the value of the volume
@@ -99,7 +99,15 @@ namespace Alis.Core.Ecs.Components.Audio
                 FullPathAudioFile = AssetManager.Find(NameFile);
             }
 
-            _ = player.Play(string.IsNullOrEmpty(FullPathAudioFile) ? NameFile : FullPathAudioFile);
+            if (!IsLooping)
+            {
+                _ = player.Play(string.IsNullOrEmpty(FullPathAudioFile) ? NameFile : FullPathAudioFile);
+            }
+            else
+            {
+                _ = player.PlayLoop(string.IsNullOrEmpty(FullPathAudioFile) ? NameFile : FullPathAudioFile, true);
+            }
+           
         }
 
         /// <summary>
@@ -130,10 +138,6 @@ namespace Alis.Core.Ecs.Components.Audio
         /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
-            if (IsLooping && !IsPlaying)
-            {
-                Play();
-            }
         }
 
         /// <summary>
