@@ -60,7 +60,7 @@ namespace {ResourceNamespace}
     /// <summary>
     /// Clase de anclaje para obtener la referencia AOT-safe a la asamblea ""{assemblyName}"".
     /// </summary>
-    public static class ResourceAnchor {{ }}
+    internal static class ResourceAnchor {{ }}
 
     /// <summary>
     /// Inicializador estático para registrar esta asamblea en el cargador central.
