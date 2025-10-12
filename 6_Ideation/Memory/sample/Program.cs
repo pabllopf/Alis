@@ -27,6 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.IO;
+using Alis.Core.Aspect.Memory.Generator;
+
 namespace Alis.Core.Aspect.Memory.Sample
 {
     /// <summary>
@@ -40,6 +44,30 @@ namespace Alis.Core.Aspect.Memory.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            LoadAsset();
+        }
+        
+        public static void LoadAsset()
+        {
+            Console.WriteLine("Intentando cargar 'asset.pak' de forma AOT-compatible...");
+        
+            try
+            {
+                // ¡Acceso directo a un método estático! No hay Reflection.
+                using Stream assetStream = ResourceAccessor.GetAssetStream();
+            
+                // Ejemplo de procesamiento del Stream
+                using StreamReader reader = new(assetStream);
+                string content = reader.ReadToEnd();
+            
+                Console.WriteLine($"✅ Recurso cargado exitosamente (Tamaño: {assetStream.Length} bytes)");
+                Console.WriteLine($"Contenido: \n--- \n{content.Substring(0, Math.Min(100, content.Length))}... \n---");
+            }
+            catch (InvalidOperationException ex)
+            {
+                // Captura la excepción si el recurso no se encontró.
+                Console.WriteLine($"❌ Error AOT al cargar recurso: {ex.Message}");
+            }
         }
     }
 }
