@@ -34,7 +34,7 @@ namespace Alis.Core.Graphic.Ui
 {
     public static class FontManager
     {
-        public static Font DefaultFont { get; } = new Font("MONO_V5.bmp", 1, 1, AssetManager.Find("MONO_V5.bmp"));
+        public static Font DefaultFont { get; } = new Font("mono.bmp", 1, 1, AssetManager.Find("MONO_V5.bmp"));
         
         public static void RenderText(string text, int x, int y, Color foreColor, Color backColor)
         {
