@@ -149,40 +149,85 @@ namespace Alis.Core.Audio.Players
             _process.Disposed += HandlePlaybackFinished;
             Playing = true;
         }
-        
-      public async Task PlayLoop(string fileName, bool loop)
-      {
-          await Stop();
-      
-          if (_lastPlayedFile == fileName && !string.IsNullOrEmpty(_lastExtractedFile) && File.Exists(_lastExtractedFile))
-          {
-              fileName = _lastExtractedFile;
-          }
-          else
-          {
-              if (!File.Exists(fileName))
-              {
-                  fileName = await ExtractWavFromResourcesAsync(fileName);
-                  _lastExtractedFile = fileName;
-              }
-              else
-              {
-                  _lastExtractedFile = fileName;
-              }
-              _lastPlayedFile = fileName;
-          }
-      
-          string command = loop
-              ? $"while true; do afplay '{fileName}'; done"
-              : $"afplay '{fileName}'";
-          _process = StartBashProcess(command);
-          _process.EnableRaisingEvents = true;
-          _process.Exited += HandlePlaybackFinished;
-          _process.ErrorDataReceived += HandlePlaybackFinished;
-          _process.Disposed += HandlePlaybackFinished;
-          Playing = true;
-      }
-        
+
+       public async Task PlayLoop(string fileName, bool loop)
+       {
+           await Stop();
+       
+           if (_lastPlayedFile == fileName && !string.IsNullOrEmpty(_lastExtractedFile) && File.Exists(_lastExtractedFile))
+           {
+               fileName = _lastExtractedFile;
+           }
+           else
+           {
+               if (!File.Exists(fileName))
+               {
+                   fileName = await ExtractWavFromResourcesAsync(fileName);
+                   _lastExtractedFile = fileName;
+               }
+               else
+               {
+                   _lastExtractedFile = fileName;
+               }
+       
+               _lastPlayedFile = fileName;
+           }
+       
+           if (!loop)
+           {
+               _process = StartBashProcess($"afplay '{fileName}'");
+               _process.EnableRaisingEvents = true;
+               _process.Exited += HandlePlaybackFinished;
+               Playing = true;
+               return;
+           }
+       
+           Playing = true;
+           double duration = GetAudioDuration(fileName);
+           _ = Task.Run(async () =>
+           {
+               while (Playing)
+               {
+                   _process = StartBashProcess($"afplay '{fileName}'");
+                   _process.EnableRaisingEvents = true;
+                   // No añadir HandlePlaybackFinished aquí
+                   await Task.Delay(TimeSpan.FromSeconds(duration - 0.1));
+               }
+           });
+       }
+
+        // Utilidad para obtener la duración del audio usando afinfo
+        private double GetAudioDuration(string fileName)
+        {
+            if (!File.Exists(fileName))
+                throw new FileNotFoundException($"El archivo '{fileName}' no existe.");
+
+            var process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "/usr/bin/afinfo",
+                    Arguments = fileName, // Sin comillas simples
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                }
+            };
+            process.Start();
+            string output = process.StandardOutput.ReadToEnd();
+            process.WaitForExit();
+
+            var line = output.Split('\n').FirstOrDefault(l => l.Contains("estimated duration"));
+            if (line != null)
+            {
+                var parts = line.Split(':');
+                if (parts.Length > 1 && double.TryParse(parts[1].Replace(".", ",").Replace("sec", "").Trim(), out double seconds))
+                    return seconds;
+            }
+
+            return 1.0;
+        }
+
         /// <summary>
         ///     Pauses this instance
         /// </summary>
