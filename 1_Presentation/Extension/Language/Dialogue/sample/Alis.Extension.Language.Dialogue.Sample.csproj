@@ -8,28 +8,23 @@
         <Nullable>disable</Nullable>
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
+        <AssetsExternal>false</AssetsExternal>
+        <ApplicationIcon>Config/app.ico</ApplicationIcon>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     </PropertyGroup>
-    
+
     <PropertyGroup>
         <DefineConstants>$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
     </PropertyGroup>
-    
+
     <ItemGroup>
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
-    </ItemGroup>
-
-    <ItemGroup Condition="Exists('$(ProjectDir)Assets/')">
-        <None
-            Update="$(ProjectDir)Assets/**"
-            LinkBase="Assets"
-            CopyToOutputDirectory="Always"
-            CopyToPublishDirectory="Always"/>
     </ItemGroup>
 
     <PropertyGroup>
         <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Sample[^*]*', ''))</NameTest>
     </PropertyGroup>
-    
+
     <ItemGroup>
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == True"
@@ -38,7 +33,7 @@
         <ProjectReference
             Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)../../src/$(NameTest).csproj"/>
-        
+
         <ProjectReference
             Condition="Exists('$(ProjectDir)../generator/$(NameTest).Generator.csproj')"
             Include="$(ProjectDir)../generator/$(NameTest).Generator.csproj"
@@ -46,7 +41,7 @@
             PrivateAssets="all"
             ReferenceOutputAssembly="false"/>
     </ItemGroup>
-    
+
     <ItemGroup>
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
                           Include="
@@ -57,4 +52,229 @@
                           ReferenceOutputAssembly="false"/>
     </ItemGroup>
 
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <!-- app.manifest file to use when building the project -->
+        <ApplicationManifest>$(ProjectDir)Config/app.manifest</ApplicationManifest>
+
+        <!-- Enables Ahead-of-Time (AOT) compilation for maximum performance and smaller binaries. -->
+        <PublishAot>true</PublishAot>
+        <!-- Publishes all dependencies with the app, so it runs independently of the system's .NET installation. -->
+        <SelfContained>true</SelfContained>
+
+        <!-- Uses invariant globalization to reduce the size by excluding culture-specific data. -->
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <!-- Folds identical method bodies to reduce code duplication and binary size. -->
+        <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
+        <!-- Disables reflection support to allow more aggressive trimming and reduce binary size. -->
+        <IlcDisableReflection>true</IlcDisableReflection>
+
+        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+
+        <IlcTrimMetadata>true</IlcTrimMetadata>
+
+        <IlcGenerateStackTraceData>false</IlcGenerateStackTraceData>
+
+        <!-- Disables stack trace support to save space, at the cost of less detailed error information. -->
+        <StackTraceSupport>false</StackTraceSupport>
+        <!-- Optimizes the build for size rather than speed. -->
+        <OptimizationPreference>Size</OptimizationPreference>
+        <IlcOptimizationPreference>Size</IlcOptimizationPreference>
+        <!-- Removes debug information from the output, reducing binary size. -->
+        <DebugType>none</DebugType>
+
+        <!-- Generates a method statistics file for analysis; does not affect published size. -->
+        <IlcGenerateMstatFile>true</IlcGenerateMstatFile>
+        <!-- Generates a DGML graph file for code analysis; does not affect published size. -->
+        <IlcGenerateDgmlFile>true</IlcGenerateDgmlFile>
+        <!-- Generates a map file for code analysis; does not affect published size. -->
+        <IlcGenerateMapFile>true</IlcGenerateMapFile>
+        <!-- Dumps generated IL code for inspection; does not affect published size. -->
+        <IlcDumpGeneratedIL>true</IlcDumpGeneratedIL>
+
+        <TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
+
+
+        <NoConfig>true</NoConfig>
+        <Optimize>true</Optimize>
+
+        <!-- Enables tree trimming to remove unused code and libraries, reducing the final binary size. -->
+        <PublishTrimmed>true</PublishTrimmed>
+        <!-- Aggressively trims unused assemblies and types; 'link' is the most space-saving mode. -->
+        <TrimMode>link</TrimMode>
+        <!-- Suppresses warnings about code that may be unsafe to trim, useful for aggressive size reduction. -->
+        <SuppressTrimAnalysisWarnings>true</SuppressTrimAnalysisWarnings>
+        <!-- Compresses files in single-file publish mode, further reducing disk footprint. -->
+        <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+        <!-- Removes debugging symbols from the output, saving space in the final binary. -->
+        <StripSymbols>true</StripSymbols>
+        <!-- Disables ReadyToRun compilation, which can increase binary size; only enable if startup performance is critical. -->
+        <EnableReadyToRun>false</EnableReadyToRun>
+        <!-- Ensures native libraries are extracted only when needed, reducing initial disk usage. -->
+        <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+        <!-- Allows unloading of unused assemblies, which can help reduce memory and disk usage in some scenarios. -->
+        <EnableAssemblyLoadContextUnload>true</EnableAssemblyLoadContextUnload>
+        <!-- Prevents inclusion of default items (like unnecessary files) in the build output, reducing published size. -->
+        <EnableDefaultItems>true</EnableDefaultItems>
+        <!-- Avoids copying unused satellite assemblies (localization resources), saving space if not needed. -->
+        <CopyUnusedSatelliteAssemblies>false</CopyUnusedSatelliteAssemblies>
+        <!-- Disables generation of XML documentation files, which are not needed for runtime and take extra space. -->
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <!-- Prevents creation of reference assemblies, which are only needed for development, not for deployment. -->
+        <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+        <!-- Disables SourceLink, which embeds source control metadata and can increase output size. -->
+        <EnableSourceLink>false</EnableSourceLink>
+        <!-- Prevents generation of native debug symbols (.dSYM) on macOS. -->
+        <DebugSymbols>false</DebugSymbols>
+
+        <!-- Prevents generation of PDB files, which are not needed in production and take up space. -->
+        <GenerateDebugSymbols>false</GenerateDebugSymbols>
+    </PropertyGroup>
+
+
+    <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+        <!-- app.manifest file to use when building the project -->
+        <ApplicationManifest>$(ProjectDir)Config/app.manifest</ApplicationManifest>
+
+        <!-- Enables Ahead-of-Time (AOT) compilation for maximum performance and smaller binaries. -->
+        <PublishAot>true</PublishAot>
+        <!-- Publishes all dependencies with the app, so it runs independently of the system's .NET installation. -->
+        <SelfContained>true</SelfContained>
+
+        <!-- Uses invariant globalization to reduce the size by excluding culture-specific data. -->
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <!-- Folds identical method bodies to reduce code duplication and binary size. -->
+        <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
+        <!-- Disables reflection support to allow more aggressive trimming and reduce binary size. -->
+        <IlcDisableReflection>true</IlcDisableReflection>
+
+        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+
+        <IlcTrimMetadata>true</IlcTrimMetadata>
+
+        <IlcGenerateStackTraceData>true</IlcGenerateStackTraceData>
+
+        <!-- Disables stack trace support to save space, at the cost of less detailed error information. -->
+        <StackTraceSupport>true</StackTraceSupport>
+        <!-- Optimizes the build for size rather than speed. -->
+        <OptimizationPreference>Size</OptimizationPreference>
+        <IlcOptimizationPreference>Size</IlcOptimizationPreference>
+
+        <!-- Generates a method statistics file for analysis; does not affect published size. -->
+        <IlcGenerateMstatFile>true</IlcGenerateMstatFile>
+        <!-- Generates a DGML graph file for code analysis; does not affect published size. -->
+        <IlcGenerateDgmlFile>true</IlcGenerateDgmlFile>
+        <!-- Generates a map file for code analysis; does not affect published size. -->
+        <IlcGenerateMapFile>true</IlcGenerateMapFile>
+        <!-- Dumps generated IL code for inspection; does not affect published size. -->
+        <IlcDumpGeneratedIL>true</IlcDumpGeneratedIL>
+
+        <Optimize>true</Optimize>
+
+        <!-- Enables tree trimming to remove unused code and libraries, reducing the final binary size. -->
+        <PublishTrimmed>true</PublishTrimmed>
+        <!-- Aggressively trims unused assemblies and types; 'link' is the most space-saving mode. -->
+        <TrimMode>link</TrimMode>
+        <!-- Suppresses warnings about code that may be unsafe to trim, useful for aggressive size reduction. -->
+        <SuppressTrimAnalysisWarnings>false</SuppressTrimAnalysisWarnings>
+
+        <!-- Compresses files in single-file publish mode, further reducing disk footprint. -->
+        <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+
+        <!-- Removes debugging symbols from the output, saving space in the final binary. -->
+        <StripSymbols>true</StripSymbols>
+        <!-- Disables ReadyToRun compilation, which can increase binary size; only enable if startup performance is critical. -->
+        <EnableReadyToRun>false</EnableReadyToRun>
+        <!-- Ensures native libraries are extracted only when needed, reducing initial disk usage. -->
+        <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+        <!-- Allows unloading of unused assemblies, which can help reduce memory and disk usage in some scenarios. -->
+        <EnableAssemblyLoadContextUnload>true</EnableAssemblyLoadContextUnload>
+        <!-- Prevents inclusion of default items (like unnecessary files) in the build output, reducing published size. -->
+        <EnableDefaultItems>true</EnableDefaultItems>
+        <!-- Avoids copying unused satellite assemblies (localization resources), saving space if not needed. -->
+        <CopyUnusedSatelliteAssemblies>false</CopyUnusedSatelliteAssemblies>
+        <!-- Disables generation of XML documentation files, which are not needed for runtime and take extra space. -->
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <!-- Prevents creation of reference assemblies, which are only needed for development, not for deployment. -->
+        <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+        <!-- Disables SourceLink, which embeds source control metadata and can increase output size. -->
+        <EnableSourceLink>false</EnableSourceLink>
+
+        <!-- Prevents generation of PDB files, which are not needed in production and take up space. -->
+        <GenerateDebugSymbols>false</GenerateDebugSymbols>
+    </PropertyGroup>
+
+
+    <ItemGroup Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'true'">
+        <None
+            Update="$(ProjectDir)Assets/**"
+            LinkBase="Assets"
+            CopyToOutputDirectory="Always"
+            CopyToPublishDirectory="Always"/>
+    </ItemGroup>
+
+    <PropertyGroup Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'false'">
+        <!-- Folder containing the original resources -->
+        <ResourceInputDir>Assets</ResourceInputDir>
+        <!-- Final packed file, in the obj build folder -->
+        <PackedAssets>$(ProjectDir)obj/assets.pak</PackedAssets>
+    </PropertyGroup>
+
+    <!-- Pack resources into a ZIP (assets.pak) using macOS zip command -->
+    <Target Name="PackOptimizedResources" BeforeTargets="Build;Publish" Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'false'">
+        <Message Text="Deleting and packing resources into $(PackedAssets) from $(ResourceInputDir)" Importance="high" />
+        <Delete Files="$(PackedAssets)" />
+        <Exec Command="zip -r $(PackedAssets) $(ResourceInputDir)" />
+    </Target>
+
+    <!-- Include .pak as embedded resource if it exists -->
+    <ItemGroup Condition="Exists('$(ProjectDir)Assets/') AND Exists('$(PackedAssets)') AND '$(AssetsExternal)' == 'false'">
+        <EmbeddedResource Include="$(PackedAssets)" LinkBase="." Link="assets.pak" Visible="false" />
+    </ItemGroup>
+
+    <!-- Target to create the .app bundle on macOS after publish -->
+    <Target Name="CreateMacAppBundle" AfterTargets="Publish" Condition=" '$(RuntimeIdentifier)' == 'osx-x64' OR '$(RuntimeIdentifier)' == 'osx-arm64' ">
+        <PropertyGroup>
+            <!-- App name and paths -->
+            <AppName>$(AssemblyName)</AppName>
+            <AppBundleDir>$(PublishDir)$(AppName).app/Contents</AppBundleDir>
+            <AppMacOSDir>$(AppBundleDir)/MacOS</AppMacOSDir>
+            <AppResourcesDir>$(AppBundleDir)/Resources</AppResourcesDir>
+            <AppPlistSource>$(ProjectDir)obj/Info.plist</AppPlistSource>
+            <AppPlist>$(AppBundleDir)/Info.plist</AppPlist>
+            <AppIconIco>$(ProjectDir)Config/app.ico</AppIconIco>
+            <AppIconIcns>$(AppResourcesDir)/app.icns</AppIconIcns>
+        </PropertyGroup>
+
+        <!-- Create folder structure -->
+        <MakeDir Directories="$(AppMacOSDir);$(AppResourcesDir)" />
+
+        <!-- Copy the executable -->
+        <Copy SourceFiles="$(PublishDir)$(AppName)" DestinationFolder="$(AppMacOSDir)" />
+
+        <!-- Copy content files (adjust pattern if you have more content) -->
+        <Copy SourceFiles="@(Content)" DestinationFolder="$(AppResourcesDir)" SkipUnchangedFiles="true" Condition="@(Content->Count()) &gt; 0" />
+
+        <!-- Convert icon to .icns if necessary -->
+        <Exec Command="sips -s format icns $(AppIconIco) --out $(AppIconIcns)" Condition="Exists('$(AppIconIco)')" />
+
+        <!-- Copy Info.plist generated in Config -->
+        <Copy SourceFiles="$(AppPlistSource)" DestinationFiles="$(AppPlist)" />
+
+        <!-- Set executable permissions for the binary -->
+        <Exec Command="chmod +x $(AppMacOSDir)/$(AppName)" />
+    </Target>
+
+    <Target Name="GenerateDynamicInfoPlist" BeforeTargets="Publish">
+        <PropertyGroup>
+            <DynamicPlistTemplate>$(ProjectDir)Config/Info.plist</DynamicPlistTemplate>
+            <DynamicPlistOutput>$(ProjectDir)obj/Info.plist</DynamicPlistOutput>
+        </PropertyGroup>
+        <ReadLinesFromFile File="$(DynamicPlistTemplate)">
+            <Output TaskParameter="Lines" ItemName="PlistLines" />
+        </ReadLinesFromFile>
+        <WriteLinesToFile
+            File="$(DynamicPlistOutput)"
+            Lines="@(PlistLines->Replace('Alis.Sample.Flappy.Bird', '$(AssemblyName)')->Replace('1.0', '$(Version)')->Replace('com.alis.flappybird', '$(ApplicationId)'))"
+            Overwrite="true" />
+    </Target>
 </Project>
