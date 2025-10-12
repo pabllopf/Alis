@@ -88,7 +88,7 @@ namespace Alis.Core.Graphic
                  {
                      ZipArchiveEntry entry = zip.Entries.FirstOrDefault(e => e.FullName.Contains(resourceName));
                      if (entry == null)
-                         throw new FileNotFoundException($"Resource '{resourceName}.bmp' not found in 'assets.pak'.");
+                         throw new FileNotFoundException($"Resource '{resourceName}' not found in 'assets.pak'.");
      
                      using (Stream entryStream = entry.Open())
                      using (MemoryStream memImage = new MemoryStream())
