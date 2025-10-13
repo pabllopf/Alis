@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs;
 
 
@@ -36,14 +37,11 @@ namespace Alis.App.Engine.Sample.Assets.Scripts
     /// <summary>
     ///     The player class
     /// </summary>
-    public class Player : IEntityComponent
+    public class Player : IOnUpdate
     {
-        /// <summary>
-        /// Updates the self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void Update(IGameObject self)
+        public void OnUpdate(IGameObject self)
         {
+            
         }
     }
 }

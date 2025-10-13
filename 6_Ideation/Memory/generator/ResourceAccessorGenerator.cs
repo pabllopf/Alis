@@ -5,8 +5,8 @@ using Microsoft.CodeAnalysis.CSharp;
 using System.Linq; 
 using System;
 using System.IO;
-
-// Eliminamos System.IO para evitar el error RS1035
+using System.IO.Compression; 
+using System.Security.Cryptography; // Nuevo: Necesario para SHA256
 
 namespace Alis.Core.Aspect.Memory.Generator
 {
@@ -18,6 +18,7 @@ namespace Alis.Core.Aspect.Memory.Generator
 
         public void Initialize(GeneratorInitializationContext context)
         {
+            // No se requiere inicialización específica
         }
 
         public void Execute(GeneratorExecutionContext context)
@@ -30,34 +31,54 @@ namespace Alis.Core.Aspect.Memory.Generator
                 return;
             }
             
-            // Roslyn proporciona los archivos declarados como AdditionalFiles en el .csproj.
             var assetFile = context.AdditionalFiles
                 .FirstOrDefault(f => Path.GetFileName(f.Path).Equals(ResourceFileName, StringComparison.OrdinalIgnoreCase));
 
-            string byteDataAsCSharp = "";
+            string compressedByteDataAsCSharp = "";
             string assemblyName = context.Compilation.AssemblyName ?? "DefaultAssembly";
+            string originalHash = string.Empty; // Hash del archivo original
             
             if (assetFile != null)
             {
-                // El problema aquí es que GetText() no funciona para binarios.
-                // DEBES LEER EL BINARIO USANDO LA RUTA DEL ARCHIVO (la única forma)
-                // Aunque Roslyn desaconseja I/O, en Source Generators para incrustar datos es ACEPTADO.
-                // El error RS1035 suele venir de una configuración estricta de un analizador externo.
-                
-                // Si desea deshacerse del error RS1035, DEBE DESHABILITAR EL ANALIZADOR RS1035.
-                
                 try
                 {
-                    // Si el generador puede acceder al disco (contexto Roslyn), esta es la forma.
-                    byte[] fileBytes = System.IO.File.ReadAllBytes(assetFile.Path);
-                    byteDataAsCSharp = string.Join(", ", fileBytes.Select(b => $"0x{b:X2}"));
+                    // Leer el binario original (I/O requerida para incrustación)
+                    byte[] originalFileBytes = File.ReadAllBytes(assetFile.Path);
+
+                    // ----------------------------------------------------------------------
+                    // OPTIMIZACIÓN DE TRAZABILIDAD: Calcular el Hash del archivo original.
+                    // ----------------------------------------------------------------------
+                    originalHash = CalculateSha256Hash(originalFileBytes);
+
+                    // ----------------------------------------------------------------------
+                    // OPTIMIZACIÓN DE VELOCIDAD Y TAMAÑO: Comprimir los datos con GZip.
+                    // ----------------------------------------------------------------------
+                    byte[] compressedBytes = CompressGZip(originalFileBytes);
+
+                    // ----------------------------------------------------------------------
+                    // OPTIMIZACIÓN DE VELOCIDAD: Usar StringBuilder.
+                    // OPTIMIZACIÓN DE TAMAÑO: Usar formato decimal y ELIMINAR ESPACIO tras la coma.
+                    // ----------------------------------------------------------------------
+                    var builder = new StringBuilder();
+                    for (int i = 0; i < compressedBytes.Length; i++)
+                    {
+                        // Añadir el byte en formato decimal (1-3 caracteres)
+                        builder.Append(compressedBytes[i]); 
+
+                        if (i < compressedBytes.Length - 1)
+                        {
+                            // Añadir SOLO la coma, sin espacio. (Ahorra 1 char por byte)
+                            builder.Append(',');
+                        }
+                    }
+                    compressedByteDataAsCSharp = builder.ToString();
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
-                    // Si la I/O falla, reportamos un error.
+                    // Reportar error si falla la I/O
                     var diagnostic = Diagnostic.Create(
                         new DiagnosticDescriptor("ALIS0002", "Error de I/O en Generador", 
-                            $"Fallo al leer el binario del AdditionalFile '{assetFile.Path}': {ex.Message}",
+                            $"Fallo al leer/comprimir el binario del AdditionalFile '{assetFile.Path}': {ex.Message}",
                             "Recursos AOT", DiagnosticSeverity.Error, true),
                         Location.None);
                     context.ReportDiagnostic(diagnostic);
@@ -69,44 +90,78 @@ namespace Alis.Core.Aspect.Memory.Generator
                 // Reportar advertencia si el archivo no se encontró.
                  var diagnostic = Diagnostic.Create(
                         new DiagnosticDescriptor("ALIS0001", "Recurso no declarado", 
-                            $"El archivo '{ResourceFileName}' no fue encontrado en AdditionalFiles. Asegúrese de que esté declarado en el .csproj.",
+                            $"El archivo '{ResourceFileName}' no fue encontrado en AdditionalFiles.",
                             "Recursos AOT", DiagnosticSeverity.Warning, true),
                         Location.None);
                 context.ReportDiagnostic(diagnostic);
             }
 
             // ----------------------------------------------------------------------
-            // 3. Generación del Código
+            // 3. Generación del Código (Ahora con datos comprimidos y hash)
             // ----------------------------------------------------------------------
-            string sourceCode = GenerateRegistrationLoader(assemblyName, byteDataAsCSharp);
+            string sourceCode = GenerateRegistrationLoader(assemblyName, compressedByteDataAsCSharp, originalHash);
 
             context.AddSource("AssemblyLoader.g.cs", SourceText.From(sourceCode, Encoding.UTF8));
         }
 
-        private string GenerateRegistrationLoader(string assemblyName, string byteDataAsCSharp)
+        /// <summary>
+        /// Comprime los datos usando GZip.
+        /// </summary>
+        private static byte[] CompressGZip(byte[] data)
         {
-            // Usamos un array vacío si no se pudo leer el archivo.
-            if (string.IsNullOrEmpty(byteDataAsCSharp))
+            using var output = new MemoryStream();
+            // CompressionLevel.Fastest optimiza la velocidad de compresión, a costa de una tasa de compresión ligeramente menor.
+            using (var compressor = new GZipStream(output, CompressionLevel.Fastest, true))
             {
-                byteDataAsCSharp = "/* empty asset */";
+                compressor.Write(data, 0, data.Length);
+            }
+            return output.ToArray();
+        }
+        
+        /// <summary>
+        /// Calcula el hash SHA256 de los datos binarios.
+        /// </summary>
+        private static string CalculateSha256Hash(byte[] data)
+        {
+            using var sha256 = SHA256.Create();
+            byte[] hashBytes = sha256.ComputeHash(data);
+            // Convertir a string hexadecimal en minúsculas sin guiones.
+            return BitConverter.ToString(hashBytes).Replace("-", "").ToLowerInvariant();
+        }
+
+        private string GenerateRegistrationLoader(string assemblyName, string compressedByteDataAsCSharp, string originalHash)
+        {
+            // Si el archivo no se pudo leer, se usa un array vacío.
+            if (string.IsNullOrEmpty(compressedByteDataAsCSharp))
+            {
+                // Usamos un array vacío sin comentario para una generación más limpia
+                compressedByteDataAsCSharp = "";
             }
             
+            // Usamos $"" para interpolación, que es rápido y legible.
             string code = $@"
 // <auto-generated/>
 using System;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.IO.Compression; 
 
 namespace Alis.Core.Aspect.Memory.Generator
 {{
     /// <summary>
-    /// Clase de anclaje AOT-safe que contiene el recurso binario estático.
+    /// Clase de anclaje AOT-safe que contiene el recurso binario estático (comprimido).
     /// </summary>
     internal static class ResourceAnchor 
     {{ 
-        // Array de bytes compilado directamente en el binario nativo.
+        /// <summary>
+        /// Hash SHA256 del archivo '{ResourceFileName}' original (sin comprimir).
+        /// Utilizado para trazabilidad.
+        /// </summary>
+        private const string OriginalHash = ""{originalHash}"";
+        
+        // Array de bytes COMPRIMIDO (formato decimal y sin espacios).
         private static readonly byte[] AssetData = new byte[] {{ 
-            {byteDataAsCSharp} 
+            {compressedByteDataAsCSharp} 
         }};
 
         public static Stream LoadAsset()
@@ -115,8 +170,26 @@ namespace Alis.Core.Aspect.Memory.Generator
             {{
                 throw new InvalidOperationException(""El recurso '{ResourceFileName}' no se encontró o está vacío durante la compilación AOT."");
             }}
-            // Devolver MemoryStream directamente del array estático. ¡100% AOT-safe!
-            return new MemoryStream(AssetData, writable: false);
+
+            // -------------------------------------------------------------------
+            // Lógica de Descompresión en tiempo de ejecución (AOT-Safe)
+            // -------------------------------------------------------------------
+            
+            // Creamos un MemoryStream de solo lectura a partir del array estático.
+            var compressedStream = new MemoryStream(AssetData, writable: false);
+            
+            // Creamos el stream de descompresión (el constructor de GZipStream maneja el posicionamiento).
+            using var decompressor = new GZipStream(compressedStream, CompressionMode.Decompress);
+            
+            // Creamos el stream de destino y copiamos el contenido.
+            var decompressedStream = new MemoryStream();
+            decompressor.CopyTo(decompressedStream);
+            
+            // Rebobinamos y devolvemos el stream decompressed.
+            decompressedStream.Seek(0, SeekOrigin.Begin);
+            
+            // Devolvemos el MemoryStream. El caller es responsable de disponer de él.
+            return decompressedStream;
         }}
     }}
 
