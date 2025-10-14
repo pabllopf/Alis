@@ -58,7 +58,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Description("Flappy Bird game.")
                         .License("GNU General Public License v3.0")
                         .Icon("app.ico")
-                        .Version(Assembly.GetExecutingAssembly().GetName().Version?.ToString())
+                        .Version("1.0.0")
                         )
                     .Audio(audio => audio
                             .Volume(50)

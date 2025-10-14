@@ -477,7 +477,7 @@ namespace Alis.Core.Graphic.OpenGL
             IntPtr ptr = _getProcAddress(command);
             if (ptr == IntPtr.Zero)
             {
-                throw new ExternalException($"{command} from {typeof(T).Name}");
+                throw new ExternalException($"{command} from {nameof(T)}");
             }
 
             return Marshal.GetDelegateForFunctionPointer<T>(ptr);
