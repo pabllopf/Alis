@@ -132,6 +132,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{CF7DBB5E
 		docs\scripts\macos\run_tests.sh = docs\scripts\macos\run_tests.sh
 		docs\scripts\macos\test_repository_size.sh = docs\scripts\macos\test_repository_size.sh
 		docs\scripts\macos\test_modules_size.sh = docs\scripts\macos\test_modules_size.sh
+		docs\scripts\macos\compress_wav.sh = docs\scripts\macos\compress_wav.sh
+		docs\scripts\macos\convert_to_bmp.sh = docs\scripts\macos\convert_to_bmp.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{020BC1B3-A88C-4938-AF9C-E35A4BEBDF72}"
@@ -153,6 +155,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{015E
 		docs\scripts\windows\restart_permissions.bat = docs\scripts\windows\restart_permissions.bat
 		docs\scripts\windows\restart_sln.bat = docs\scripts\windows\restart_sln.bat
 		docs\scripts\windows\run_tests.bat = docs\scripts\windows\run_tests.bat
+		docs\scripts\windows\run_pack_all.bat = docs\scripts\windows\run_pack_all.bat
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{2D95A184-CC32-4BFE-838E-4A2E1764DAF4}"
@@ -194,6 +197,8 @@ Global
 		Release|x86 = Release|x86
 		Release|OsxArm64 = Release|OsxArm64
 		Release|Winx64 = Release|Winx64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
