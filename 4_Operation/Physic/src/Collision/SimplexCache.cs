@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
 using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Collision
@@ -35,6 +36,7 @@ namespace Alis.Core.Physic.Collision
     ///     Used to warm start ComputeDistance.
     ///     Set count to zero on first call.
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct SimplexCache
     {
         /// <summary>

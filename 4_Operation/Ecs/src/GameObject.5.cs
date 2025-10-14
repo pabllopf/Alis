@@ -351,6 +351,7 @@ namespace Alis.Core.Ecs
         /// <summary>
         ///     The neighbor cache
         /// </summary>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct NeighborCache<T1, T2, T3, T4, T5> : IArchetypeGraphEdge
         {
             /// <summary>

@@ -30,6 +30,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Physic.Dynamics
 {
@@ -180,6 +181,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The fixture enumerator
         /// </summary>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct FixtureEnumerator : IEnumerator<Fixture>
         {
             /// <summary>

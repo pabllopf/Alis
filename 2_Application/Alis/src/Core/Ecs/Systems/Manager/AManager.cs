@@ -51,8 +51,8 @@ namespace Alis.Core.Ecs.Systems.Manager
         {
             _context = context;
             Id = Guid.NewGuid().ToString();
-            Name = GetType().Name;
-            Tag = GetType().Name;
+            Name = "Manager";
+            Tag = "Untagged";
             IsEnable = true;
         }
 

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Collision
@@ -34,6 +35,7 @@ namespace Alis.Core.Physic.Collision
     /// <summary>
     ///     Ray-cast input data.
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct RayCastInput
     {
         /// <summary>

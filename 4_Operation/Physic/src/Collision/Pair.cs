@@ -28,12 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
     ///     The pair
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct Pair : IComparable<Pair>
     {
         /// <summary>

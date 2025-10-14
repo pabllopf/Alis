@@ -37,6 +37,7 @@ namespace Alis.Core.Ecs.Systems
     /// <summary>
     ///     The query enumerator
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public ref struct QueryEnumerator<T1, T2>
     {
         /// <summary>
