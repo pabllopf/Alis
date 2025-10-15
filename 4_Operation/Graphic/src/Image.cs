@@ -33,7 +33,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
-using Alis.Core.Aspect.Memory.Generator;
+using Alis.Core.Aspect.Memory;
 
 namespace Alis.Core.Graphic
 {
@@ -72,7 +72,7 @@ namespace Alis.Core.Graphic
         
   public static Image LoadImageFromResources(string resourceName)
   {
-      using (Stream streamPack = ResourceAccessor.GetAssetStream())
+      using (Stream streamPack = AssetRegistry.GetAssetStreamByBaseName("assets.pak"))
       {
           if (streamPack == null)
               throw new FileNotFoundException("Resource file 'assets.pak' not found in embedded resources.");

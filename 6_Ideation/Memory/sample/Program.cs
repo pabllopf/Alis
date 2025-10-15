@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Memory.Sample
             try
             {
                 // ¡Acceso directo a un método estático! No hay Reflection.
-                using Stream assetStream = ResourceAccessor.GetAssetStream();
+                using Stream assetStream =  AssetRegistry.GetAssetStreamByBaseName("assets.pak");
             
                 // Ejemplo de procesamiento del Stream
                 using StreamReader reader = new(assetStream);
