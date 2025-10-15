@@ -58,7 +58,7 @@ namespace {ResourceNamespace}
         {{
             // Esta llamada a GetManifestResourceStream es AOT-safe
             // porque la asamblea se obtiene estáticamente a través de typeof(T).Assembly.
-            Stream? stream = CurrentAssembly.GetManifestResourceStream(ResourceName);
+            Stream stream = CurrentAssembly.GetManifestResourceStream(ResourceName);
             
             return stream 
                    ?? throw new InvalidOperationException($""El recurso embebido {{ResourceName}} no se encontró en la asamblea."");
