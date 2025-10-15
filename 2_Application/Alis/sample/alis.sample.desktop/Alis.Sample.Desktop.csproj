@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <OutputType>Exe</OutputType>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
         <LangVersion>13</LangVersion>
@@ -158,7 +158,7 @@
         <!-- Optimizes the build for size rather than speed. -->
         <OptimizationPreference>Size</OptimizationPreference>
         <IlcOptimizationPreference>Size</IlcOptimizationPreference>
-        
+
         <!-- Generates a method statistics file for analysis; does not affect published size. -->
         <IlcGenerateMstatFile>true</IlcGenerateMstatFile>
         <!-- Generates a DGML graph file for code analysis; does not affect published size. -->
@@ -167,7 +167,7 @@
         <IlcGenerateMapFile>true</IlcGenerateMapFile>
         <!-- Dumps generated IL code for inspection; does not affect published size. -->
         <IlcDumpGeneratedIL>true</IlcDumpGeneratedIL>
-        
+
         <Optimize>true</Optimize>
 
         <!-- Enables tree trimming to remove unused code and libraries, reducing the final binary size. -->
@@ -176,10 +176,10 @@
         <TrimMode>link</TrimMode>
         <!-- Suppresses warnings about code that may be unsafe to trim, useful for aggressive size reduction. -->
         <SuppressTrimAnalysisWarnings>false</SuppressTrimAnalysisWarnings>
-        
+
         <!-- Compresses files in single-file publish mode, further reducing disk footprint. -->
         <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
-        
+
         <!-- Removes debugging symbols from the output, saving space in the final binary. -->
         <StripSymbols>true</StripSymbols>
         <!-- Disables ReadyToRun compilation, which can increase binary size; only enable if startup performance is critical. -->
@@ -198,7 +198,7 @@
         <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
         <!-- Disables SourceLink, which embeds source control metadata and can increase output size. -->
         <EnableSourceLink>false</EnableSourceLink>
-        
+
         <!-- Prevents generation of PDB files, which are not needed in production and take up space. -->
         <GenerateDebugSymbols>false</GenerateDebugSymbols>
     </PropertyGroup>
