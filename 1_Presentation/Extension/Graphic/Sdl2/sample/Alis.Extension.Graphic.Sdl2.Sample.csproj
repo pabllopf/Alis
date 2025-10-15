@@ -228,7 +228,7 @@
 
     <!-- Include .pak as embedded resource if it exists -->
     <ItemGroup Condition="Exists('$(ProjectDir)Assets/') AND Exists('$(PackedAssets)') AND '$(AssetsExternal)' == 'false'">
-        <EmbeddedResource Include="$(PackedAssets)" LinkBase="." Link="assets.pak" Visible="false" />
+        <AdditionalFiles Include="$(PackedAssets)" LinkBase="." Link="assets.pak" Visible="false" />
     </ItemGroup>
 
     <!-- Target to create the .app bundle on macOS after publish -->
