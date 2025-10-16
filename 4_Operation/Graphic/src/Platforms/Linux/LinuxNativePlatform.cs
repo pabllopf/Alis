@@ -29,6 +29,9 @@
 
 #if linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
 using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Graphic.Platforms.Linux
 {
@@ -828,7 +831,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
             }
             catch (Exception ex)
             {
-                // Loguear error si ocurre
+               throw new Exception($"[OnInit] Error al establecer el icono de la ventana: {ex.Message}");
             }
             return true;
         }
@@ -873,7 +876,10 @@ namespace Alis.Core.Graphic.Platforms.Linux
                     XSetWMHints(display, window, ref hints);
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                throw new Exception($"[SetWindowIcon] Error al establecer el icono de la ventana: {ex.Message}");
+            }
         }
     }
 }
