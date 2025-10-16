@@ -231,6 +231,7 @@
         <AdditionalFiles Include="$(PackedAssets)" LinkBase="." Link="assets.pak" Visible="false" />
     </ItemGroup>
     <ItemGroup>
+      <Folder Include="Assets\icons\" />
       <Folder Include="Docs\" />
     </ItemGroup>
 
