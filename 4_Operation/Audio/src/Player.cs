@@ -83,6 +83,11 @@ namespace Alis.Core.Audio
             await _internalPlayer.Play(fileName);
         }
 
+        /// <summary>
+        /// Plays the loop using the specified file name
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        /// <param name="loop">The loop</param>
         public async Task PlayLoop(string fileName, bool loop)
         {
             await _internalPlayer.PlayLoop(fileName, loop);

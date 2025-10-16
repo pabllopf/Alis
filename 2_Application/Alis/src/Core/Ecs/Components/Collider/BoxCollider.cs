@@ -246,6 +246,9 @@ namespace Alis.Core.Ecs.Components.Collider
 
         public uint Ebo { get; private set; }
         
+        /// <summary>
+        /// Gets or sets the value of the this game object
+        /// </summary>
         private IGameObject ThisGameObject { get; set; }
 
 
@@ -553,8 +556,15 @@ namespace Alis.Core.Ecs.Components.Collider
             Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Fill);
         }
 
+        /// <summary>
+        /// Gets or sets the value of the context
+        /// </summary>
         public Context Context { get; set; }
         
+        /// <summary>
+        /// Ons the exit using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnExit(IGameObject self)
         {
             if (Body != null)

@@ -29,8 +29,15 @@
 
 namespace Alis.Core.Aspect.Fluent.Components
 {
+    /// <summary>
+    /// The on before fixed update interface
+    /// </summary>
     public interface IOnBeforeFixedUpdate
     {
+        /// <summary>
+        /// Ons the before fixed update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         void OnBeforeFixedUpdate(IGameObject self);
     }
 }

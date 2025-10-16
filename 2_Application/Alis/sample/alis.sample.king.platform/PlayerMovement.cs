@@ -98,6 +98,10 @@ namespace Alis.Sample.King.Platform
             
         }
 
+        /// <summary>
+        /// Ons the press key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnPressKey(KeyEventInfo info)
         {
             if (info.Key == ConsoleKey.A)
@@ -120,11 +124,19 @@ namespace Alis.Sample.King.Platform
             //Logger.Info($"OnPressKey {info.Key}, {info.HoldDuration}, {info.Timestamp}");
         }
 
+        /// <summary>
+        /// Ons the hold key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnHoldKey(KeyEventInfo info)
         {
             //Logger.Info($"OnHoldKey {info.Key}, {info.HoldDuration}, {info.Timestamp}");
         }
 
+        /// <summary>
+        /// Ons the release key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnReleaseKey(KeyEventInfo info)
         {
             //Logger.Info($"OnReleaseKey {info.Key}, {info.HoldDuration}, {info.Timestamp}");

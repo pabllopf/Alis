@@ -52,13 +52,23 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         /// </summary>
         private Vector2F resolution = new Vector2F(1920, 1080);
         
+        /// <summary>
+        /// The context
+        /// </summary>
         private Context context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CameraBuilder"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
         public CameraBuilder(Context context)
         {
             this.context = context;
         }
 
+        /// <summary>
+        /// Gets or sets the value of the background color
+        /// </summary>
         private Color backgroundColor { get; set; } = Color.Black;
 
         /// <summary>
@@ -91,6 +101,11 @@ namespace Alis.Builder.Core.Ecs.Components.Render
             return this;
         }
 
+        /// <summary>
+        /// Backgrounds the color using the specified black
+        /// </summary>
+        /// <param name="black">The black</param>
+        /// <returns>The camera builder</returns>
         public CameraBuilder BackgroundColor(Color black)
         {
             backgroundColor = black;

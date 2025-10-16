@@ -350,8 +350,15 @@ namespace Alis.Core.Ecs.Components.Render
 
 
         
+        /// <summary>
+        /// Gets or sets the value of the context
+        /// </summary>
         public Context Context { get; set; } = context;
         
+        /// <summary>
+        /// Ons the exit using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnExit(IGameObject self)
         {
             /*Gl.DeleteVertexArray(Vao);

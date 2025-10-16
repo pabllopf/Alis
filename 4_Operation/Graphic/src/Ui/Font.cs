@@ -50,8 +50,14 @@ namespace Alis.Core.Graphic.Ui
         /// </summary>
         private GCHandle imageHandle;
         
+        /// <summary>
+        /// The size
+        /// </summary>
         private int sizeFont = size;
         
+        /// <summary>
+        /// The full path
+        /// </summary>
         private string fullPathFont = fullPath;
 
         /// <summary>
@@ -270,9 +276,17 @@ namespace Alis.Core.Graphic.Ui
 
 
         // Diccionario para las posiciones de cada carácter en el atlas
+        /// <summary>
+        /// The character rects
+        /// </summary>
         private Dictionary<char, RectangleI> CharacterRects = new();
 
         // Inicializa el diccionario de rectángulos de caracteres (asume cuadrícula ASCII)
+        /// <summary>
+        /// Initializes the character rects using the specified char width
+        /// </summary>
+        /// <param name="charWidth">The char width</param>
+        /// <param name="charHeight">The char height</param>
         private void InitializeCharacterRects(int charWidth, int charHeight)
         {
             int atlasCols = (int)(Size.X / charWidth);
@@ -292,6 +306,14 @@ namespace Alis.Core.Graphic.Ui
         }
 
         // Inicializa el diccionario de rectángulos de caracteres usando organización personalizada
+        /// <summary>
+        /// Initializes the character rects custom using the specified char width
+        /// </summary>
+        /// <param name="charWidth">The char width</param>
+        /// <param name="charHeight">The char height</param>
+        /// <param name="charsPerRow">The chars per row</param>
+        /// <param name="xSpacing">The spacing</param>
+        /// <param name="ySpacing">The spacing</param>
         private void InitializeCharacterRectsCustom(int charWidth, int charHeight, int charsPerRow, int xSpacing, int ySpacing)
         {
             CharacterRects.Clear();
@@ -326,6 +348,14 @@ namespace Alis.Core.Graphic.Ui
         }
 
         // Inicializa el diccionario de rectángulos de caracteres siguiendo la lógica exacta del ejemplo proporcionado
+        /// <summary>
+        /// Initializes the character rects from atlas using the specified char width
+        /// </summary>
+        /// <param name="charWidth">The char width</param>
+        /// <param name="charHeight">The char height</param>
+        /// <param name="charsPerRow">The chars per row</param>
+        /// <param name="xSpacing">The spacing</param>
+        /// <param name="ySpacing">The spacing</param>
         private void InitializeCharacterRectsFromAtlas(int charWidth, int charHeight, int charsPerRow, int xSpacing, int ySpacing)
         {
             CharacterRects.Clear();
@@ -372,6 +402,14 @@ namespace Alis.Core.Graphic.Ui
             CharacterRects = characterRects;
         }
 
+        /// <summary>
+        /// Renders the text using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="xPos">The pos</param>
+        /// <param name="yPos">The pos</param>
+        /// <param name="colorFont">The color font</param>
+        /// <param name="colorBackgroundFont">The color background font</param>
         public void RenderText(string text, int xPos, int yPos, Color colorFont, Color colorBackgroundFont)
         {
             if (!string.IsNullOrEmpty(NameFile) && (Path == string.Empty))

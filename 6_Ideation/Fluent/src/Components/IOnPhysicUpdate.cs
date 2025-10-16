@@ -29,8 +29,15 @@
 
 namespace Alis.Core.Aspect.Fluent.Components
 {
+    /// <summary>
+    /// The on physic update interface
+    /// </summary>
     public interface IOnPhysicUpdate
     {
+        /// <summary>
+        /// Ons the physic update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         void OnPhysicUpdate(IGameObject self);
     }
 }

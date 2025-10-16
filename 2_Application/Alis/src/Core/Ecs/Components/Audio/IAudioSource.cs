@@ -43,10 +43,19 @@ namespace Alis.Core.Ecs.Components.Audio
         IOnExit
     {
         
+        /// <summary>
+        /// Plays this instance
+        /// </summary>
         void Play();
         
+        /// <summary>
+        /// Stops this instance
+        /// </summary>
         void Stop();
         
+        /// <summary>
+        /// Resumes this instance
+        /// </summary>
         void Resume();
     }
 }

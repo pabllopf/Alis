@@ -31,8 +31,14 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// </summary>
         private GameObject gameObject;
         
+        /// <summary>
+        /// The context
+        /// </summary>
         private Context context;
 
+        /// <summary>
+        /// The is static
+        /// </summary>
         private Info info = new Info
         {
             Name = "GameObject",
@@ -226,6 +232,11 @@ namespace Alis.Builder.Core.Ecs.Entity
             return this;
         }
 
+        /// <summary>
+        /// Tags the tag
+        /// </summary>
+        /// <param name="tag">The tag</param>
+        /// <returns>The game object builder</returns>
         public GameObjectBuilder Tag(string tag)
         {
             info.Tag = tag;
@@ -241,12 +252,22 @@ namespace Alis.Builder.Core.Ecs.Entity
             return this;
         }
 
+        /// <summary>
+        /// Ids the id
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns>The game object builder</returns>
         public GameObjectBuilder Id(int id)
         {
             info.Id = id;
             return this;
         }
 
+        /// <summary>
+        /// Ises the active using the specified is active
+        /// </summary>
+        /// <param name="isActive">The is active</param>
+        /// <returns>The game object builder</returns>
         public GameObjectBuilder IsActive(bool isActive)
         {
             info.IsActive = isActive;
@@ -262,6 +283,10 @@ namespace Alis.Builder.Core.Ecs.Entity
             return this;
         }
         
+        /// <summary>
+        /// Ises the active
+        /// </summary>
+        /// <returns>The game object builder</returns>
         public GameObjectBuilder IsActive()
         {
             info.IsActive = true;
@@ -278,6 +303,11 @@ namespace Alis.Builder.Core.Ecs.Entity
             return this;
         }
 
+        /// <summary>
+        /// Ises the static using the specified is static
+        /// </summary>
+        /// <param name="isStatic">The is static</param>
+        /// <returns>The game object builder</returns>
         public GameObjectBuilder IsStatic(bool isStatic)
         {
             info.IsStatic = isStatic;
@@ -293,6 +323,10 @@ namespace Alis.Builder.Core.Ecs.Entity
             return this;
         }
         
+        /// <summary>
+        /// Ises the static
+        /// </summary>
+        /// <returns>The game object builder</returns>
         public GameObjectBuilder IsStatic()
         {
             info.IsStatic = true;

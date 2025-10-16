@@ -16,6 +16,15 @@ using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Asteroid
 {
+    /// <summary>
+    /// The player class
+    /// </summary>
+    /// <seealso cref="IOnStart"/>
+    /// <seealso cref="IOnUpdate"/>
+    /// <seealso cref="IOnReleaseKey"/>
+    /// <seealso cref="IOnPressKey"/>
+    /// <seealso cref="IOnHoldKey"/>
+    /// <seealso cref="IHasContext{Context}"/>
     public class Player : IOnStart, IOnUpdate, IOnReleaseKey, IOnPressKey, IOnHoldKey, IHasContext<Context>
     {
         
@@ -24,8 +33,14 @@ namespace Alis.Sample.Asteroid
         /// </summary>
         private BoxCollider boxCollider;
         
+        /// <summary>
+        /// The audio source
+        /// </summary>
         private AudioSource audioSource;
         
+        /// <summary>
+        /// The game object
+        /// </summary>
         private IGameObject gameObject;
         
         /// <summary>
@@ -188,11 +203,19 @@ namespace Alis.Sample.Asteroid
             }
         }
 
+        /// <summary>
+        /// Ons the release key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnReleaseKey(KeyEventInfo info)
         {
             
         }
 
+        /// <summary>
+        /// Ons the hold key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnHoldKey(KeyEventInfo info)
         {
             ConsoleKey key = info.Key;
@@ -222,6 +245,9 @@ namespace Alis.Sample.Asteroid
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value of the context
+        /// </summary>
         public Context Context { get; set; }
     }
 }

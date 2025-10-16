@@ -67,12 +67,22 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
             return this;
         }
 
+        /// <summary>
+        /// Debugs the b
+        /// </summary>
+        /// <param name="b">The </param>
+        /// <returns>The physic setting builder</returns>
         public PhysicSettingBuilder Debug(bool b)
         {
             physicSetting.Debug = b;
             return this;
         }
 
+        /// <summary>
+        /// Debugs the color using the specified color
+        /// </summary>
+        /// <param name="color">The color</param>
+        /// <returns>The physic setting builder</returns>
         public PhysicSettingBuilder DebugColor(Color color)
         {
             physicSetting.DebugColor = color;

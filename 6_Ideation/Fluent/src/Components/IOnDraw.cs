@@ -29,8 +29,15 @@
 
 namespace Alis.Core.Aspect.Fluent.Components
 {
+    /// <summary>
+    /// The on draw interface
+    /// </summary>
     public interface IOnDraw
     {
+        /// <summary>
+        /// Ons the draw using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         void OnDraw(IGameObject self);
     }
 }

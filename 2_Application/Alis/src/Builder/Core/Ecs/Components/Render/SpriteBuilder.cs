@@ -53,8 +53,15 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         /// </summary>
         private string nameFile = string.Empty;
         
+        /// <summary>
+        /// The context
+        /// </summary>
         private Context context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SpriteBuilder"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
         public SpriteBuilder(Context context)
         {
             this.context = context;

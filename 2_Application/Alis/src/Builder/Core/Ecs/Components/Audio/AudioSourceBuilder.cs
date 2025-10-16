@@ -44,6 +44,9 @@ namespace Alis.Builder.Core.Ecs.Components.Audio
         IVolume<AudioSourceBuilder, float>,
         IMute<AudioSourceBuilder, bool>
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private Context context;
         
         /// <summary>
@@ -77,6 +80,10 @@ namespace Alis.Builder.Core.Ecs.Components.Audio
         /// <returns>The audio clip</returns>
         public AudioSource Build() => new AudioSource(context, nameFile, volume, isMute, playOnAwake, loop);
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioSourceBuilder"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
         public AudioSourceBuilder(Context context)
         {
             this.context = context;

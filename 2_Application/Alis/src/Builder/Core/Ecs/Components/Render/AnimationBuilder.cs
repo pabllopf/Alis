@@ -51,8 +51,15 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         /// </summary>
         private Animation animation = new Animation();
 
+        /// <summary>
+        /// The context
+        /// </summary>
         private Context context;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AnimationBuilder"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
         public AnimationBuilder(Context context)
         {
             this.context = context;

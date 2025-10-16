@@ -171,7 +171,14 @@ namespace Alis.Core.Ecs.Components.Render
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value of the context
+        /// </summary>
         public Context Context { get; set; }
+        /// <summary>
+        /// Ons the exit using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnExit(IGameObject self)
         {
             _clock.Stop();

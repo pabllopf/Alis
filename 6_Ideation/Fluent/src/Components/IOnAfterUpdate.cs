@@ -29,8 +29,15 @@
 
 namespace Alis.Core.Aspect.Fluent.Components
 {
+    /// <summary>
+    /// The on after update interface
+    /// </summary>
     public interface IOnAfterUpdate
     {
+        /// <summary>
+        /// Ons the after update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         void OnAfterUpdate(IGameObject self);
     }
 }

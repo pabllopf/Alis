@@ -32,15 +32,35 @@ using Alis.Core.Aspect.Math.Definition;
 
 namespace Alis.Core.Graphic.Ui
 {
+    /// <summary>
+    /// The font manager class
+    /// </summary>
     public static class FontManager
     {
+        /// <summary>
+        /// Gets the value of the default font
+        /// </summary>
         public static Font DefaultFont { get; } = new Font("mono.bmp", 1, 1, AssetManager.Find("MONO_V5.bmp"));
         
+        /// <summary>
+        /// Renders the text using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="foreColor">The fore color</param>
+        /// <param name="backColor">The back color</param>
         public static void RenderText(string text, int x, int y, Color foreColor, Color backColor)
         {
             DefaultFont.RenderText(text, x, y, foreColor, backColor);
         }
         
+        /// <summary>
+        /// Renders the text using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
         public static void RenderText(string text, int x, int y)
         {
             DefaultFont.RenderText(text, x, y, Color.White, Color.Transparent);

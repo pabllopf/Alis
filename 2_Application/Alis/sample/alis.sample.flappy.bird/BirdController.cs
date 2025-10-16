@@ -60,6 +60,10 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         public bool IsDead { get; set; } = false;
         
+        /// <summary>
+        /// Ons the start using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnStart(IGameObject self)
         {
             audioSource = self.Get<AudioSource>();
@@ -67,11 +71,19 @@ namespace Alis.Sample.Flappy.Bird
             boxCollider.Body.Position = new Vector2F(-3, 0);
         }
 
+        /// <summary>
+        /// Ons the update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
             
         }
 
+        /// <summary>
+        /// Ons the press key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnPressKey(KeyEventInfo info)
         {
             if (info.Key == ConsoleKey.Spacebar)

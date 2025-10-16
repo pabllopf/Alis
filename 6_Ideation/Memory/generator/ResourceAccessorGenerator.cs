@@ -10,17 +10,35 @@ using System.Security.Cryptography; // New: required for SHA256
 
 namespace Alis.Core.Aspect.Memory.Generator
 {
+    /// <summary>
+    /// The resource accessor generator class
+    /// </summary>
+    /// <seealso cref="ISourceGenerator"/>
     [Generator]
     public class ResourceAccessorGenerator : ISourceGenerator
     {
+        /// <summary>
+        /// The resource file name
+        /// </summary>
         private const string ResourceFileName = "assets.pak";
+        /// <summary>
+        /// The registry namespace
+        /// </summary>
         private const string RegistryNamespace = "Alis.Core.Aspect.Memory.AssetRegistry";
 
+        /// <summary>
+        /// Initializes the context
+        /// </summary>
+        /// <param name="context">The context</param>
         public void Initialize(GeneratorInitializationContext context)
         {
             // No specific initialization required
         }
 
+        /// <summary>
+        /// Executes the context
+        /// </summary>
+        /// <param name="context">The context</param>
         public void Execute(GeneratorExecutionContext context)
         {
             // ----------------------------------------------------------------------
@@ -129,6 +147,13 @@ namespace Alis.Core.Aspect.Memory.Generator
             return BitConverter.ToString(hashBytes).Replace("-", "").ToLowerInvariant();
         }
 
+        /// <summary>
+        /// Generates the registration loader using the specified assembly name
+        /// </summary>
+        /// <param name="assemblyName">The assembly name</param>
+        /// <param name="compressedByteDataAsCSharp">The compressed byte data as sharp</param>
+        /// <param name="originalHash">The original hash</param>
+        /// <returns>The code</returns>
         private string GenerateRegistrationLoader(string assemblyName, string compressedByteDataAsCSharp, string originalHash)
         {
             // If the file could not be read, use an empty array.

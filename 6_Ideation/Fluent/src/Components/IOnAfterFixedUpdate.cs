@@ -29,8 +29,15 @@
 
 namespace Alis.Core.Aspect.Fluent.Components
 {
+    /// <summary>
+    /// The on after fixed update interface
+    /// </summary>
     public interface IOnAfterFixedUpdate
     {
+        /// <summary>
+        /// Ons the after fixed update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         void OnAfterFixedUpdate(IGameObject self);
     }
 }

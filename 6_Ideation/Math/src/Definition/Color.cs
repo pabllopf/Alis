@@ -58,12 +58,24 @@ namespace Alis.Core.Aspect.Math.Definition
         /// </summary>
         public byte A { get; set; }
 
+        /// <summary>
+        /// Gets the value of the cyan
+        /// </summary>
         public static Color Cyan { get; } = new Color(0, 255, 255, 255);
 
+        /// <summary>
+        /// Gets the value of the magenta
+        /// </summary>
         public static Color Magenta { get; } = new Color(255, 0, 255, 255);
  
+        /// <summary>
+        /// Gets the value of the yellow
+        /// </summary>
         public static Color Yellow { get; } = new Color(255, 255, 0, 255);
 
+        /// <summary>
+        /// Gets the value of the blue
+        /// </summary>
         public static Color Blue { get; } = new Color(0, 0, 255, 255);
 
 

@@ -69,11 +69,19 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         private bool goUp = true;
         
+        /// <summary>
+        /// Ons the start using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnStart(IGameObject self)
         {
             defaultPosition = self.Get<Transform>().Position;
         }
 
+        /// <summary>
+        /// Ons the update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
             ref Transform t = ref self.Get<Transform>();
@@ -132,6 +140,9 @@ namespace Alis.Sample.Flappy.Bird
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value of the context
+        /// </summary>
         public Context Context { get; set; }
     }
 }

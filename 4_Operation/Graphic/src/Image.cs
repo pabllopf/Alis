@@ -70,6 +70,13 @@ namespace Alis.Core.Graphic
         /// </summary>
         public byte[] Data { get; }
         
+  /// <summary>
+  /// Loads the image from resources using the specified resource name
+  /// </summary>
+  /// <param name="resourceName">The resource name</param>
+  /// <exception cref="FileNotFoundException">Resource '{resourceName}' not found in 'assets.pak'.</exception>
+  /// <exception cref="FileNotFoundException">Resource file 'assets.pak' not found in embedded resources.</exception>
+  /// <returns>The image</returns>
   public static Image LoadImageFromResources(string resourceName)
   {
       using (Stream streamPack = AssetRegistry.GetAssetStreamByBaseName("assets.pak"))
@@ -99,6 +106,13 @@ namespace Alis.Core.Graphic
           }
       }
   }
+        /// <summary>
+        /// Loads the from stream using the specified stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <exception cref="InvalidDataException">Not a valid BMP file (missing BM header)</exception>
+        /// <exception cref="NotSupportedException">Unsupported BMP compression type: {compression}</exception>
+        /// <returns>The image</returns>
         private static Image LoadFromStream(Stream stream)
         {
             using (BinaryReader reader = new BinaryReader(stream))
@@ -199,6 +213,18 @@ namespace Alis.Core.Graphic
         }
 
         // Métodos separados para cada tipo de BMP
+        /// <summary>
+        /// Loads the bmp rgb using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="bitsPerPixel">The bits per pixel</param>
+        /// <param name="rawData">The raw data</param>
+        /// <param name="palette">The palette</param>
+        /// <param name="rowPadded">The row padded</param>
+        /// <param name="bytesPerPixel">The bytes per pixel</param>
+        /// <exception cref="NotSupportedException">Unsupported bits per pixel: {bitsPerPixel}</exception>
         private static void LoadBmpRgb(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel) {
             if (height < 0) {
                 height = -height;
@@ -296,6 +322,17 @@ namespace Alis.Core.Graphic
             }
         }
 
+        /// <summary>
+        /// Loads the bmp rle 8 using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="bitsPerPixel">The bits per pixel</param>
+        /// <param name="rawData">The raw data</param>
+        /// <param name="palette">The palette</param>
+        /// <param name="rowPadded">The row padded</param>
+        /// <param name="bytesPerPixel">The bytes per pixel</param>
         private static void LoadBmpRle8(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel) {
             
             int x = 0, y = 0; // Corregido: empezar desde la primera fila
@@ -365,6 +402,17 @@ namespace Alis.Core.Graphic
             }
         }
 
+        /// <summary>
+        /// Loads the bmp rle 4 using the specified reader
+        /// </summary>
+        /// <param name="reader">The reader</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="bitsPerPixel">The bits per pixel</param>
+        /// <param name="rawData">The raw data</param>
+        /// <param name="palette">The palette</param>
+        /// <param name="rowPadded">The row padded</param>
+        /// <param name="bytesPerPixel">The bytes per pixel</param>
         private static void LoadBmpRle4(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel) {
             if (height < 0) {
                 height = -height;

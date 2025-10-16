@@ -75,6 +75,13 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         public bool Paused { get; private set; }
 
+        /// <summary>
+        /// Extracts the wav from resources using the specified wav file name
+        /// </summary>
+        /// <param name="wavFileName">The wav file name</param>
+        /// <exception cref="FileNotFoundException">Resource '{wavFileName}' not found in 'assets.pak'.</exception>
+        /// <exception cref="FileNotFoundException">Resource file 'assets.pak' not found in embedded resources.</exception>
+        /// <returns>A task containing the string</returns>
         private static async Task<string> ExtractWavFromResourcesAsync(string wavFileName)
         {
          
@@ -107,9 +114,20 @@ namespace Alis.Core.Audio.Players
             }
         }
         
+        /// <summary>
+        /// The last played file
+        /// </summary>
         private string _lastPlayedFile;
+        /// <summary>
+        /// The last extracted file
+        /// </summary>
         private string _lastExtractedFile;
         
+        /// <summary>
+        /// Plays the file name
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        /// <exception cref="FileNotFoundException">The specified audio file '{fileName}' was not found and could not be extracted from resources. </exception>
         public async Task Play(string fileName)
         {
             await Stop();
@@ -149,6 +167,11 @@ namespace Alis.Core.Audio.Players
             Playing = true;
         }
 
+       /// <summary>
+       /// Plays the loop using the specified file name
+       /// </summary>
+       /// <param name="fileName">The file name</param>
+       /// <param name="loop">The loop</param>
        public async Task PlayLoop(string fileName, bool loop)
        {
            await Stop();
@@ -196,6 +219,12 @@ namespace Alis.Core.Audio.Players
        }
 
         // Utilidad para obtener la duración del audio usando afinfo
+        /// <summary>
+        /// Gets the audio duration using the specified file name
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        /// <exception cref="FileNotFoundException">El archivo '{fileName}' no existe.</exception>
+        /// <returns>The double</returns>
         private double GetAudioDuration(string fileName)
         {
             if (!File.Exists(fileName))

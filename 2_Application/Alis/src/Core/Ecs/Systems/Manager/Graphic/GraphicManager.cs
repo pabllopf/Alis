@@ -67,6 +67,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         private INativePlatform platform;
         
+        /// <summary>
+        /// The escape
+        /// </summary>
         ConsoleKey[] allKeys = new[]
         {
             ConsoleKey.A, ConsoleKey.B, ConsoleKey.C, ConsoleKey.D, ConsoleKey.E,
@@ -79,10 +82,19 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         };
 
         // Diccionario para guardar el timestamp de pulsación de cada tecla
+        /// <summary>
+        /// The date time
+        /// </summary>
         private Dictionary<ConsoleKey, DateTime> keyDownTimestamps = new Dictionary<ConsoleKey, DateTime>();
         // Estado actual de teclas presionadas
+        /// <summary>
+        /// The console key
+        /// </summary>
         private HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey>();
         // Estado anterior de teclas presionadas
+        /// <summary>
+        /// The console key
+        /// </summary>
         private HashSet<ConsoleKey> previousKeys = new HashSet<ConsoleKey>();
 
         /// <summary>

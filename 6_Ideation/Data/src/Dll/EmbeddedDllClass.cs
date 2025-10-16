@@ -250,6 +250,11 @@ namespace Alis.Core.Aspect.Data.Dll
         SetFileReadPermission(canonicalDestinationPath);
     }
     
+    /// <summary>
+    /// Ises the file locked using the specified file path
+    /// </summary>
+    /// <param name="filePath">The file path</param>
+    /// <returns>The bool</returns>
     private static bool IsFileLocked(string filePath)
     {
         if (!File.Exists(filePath))

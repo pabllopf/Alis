@@ -76,9 +76,16 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         public float Velocity = 3;
 
+        /// <summary>
+        /// The info
+        /// </summary>
         private Info info;
 
 
+        /// <summary>
+        /// Ons the start using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnStart(IGameObject self)
         {
             posOrigin = self.Get<Transform>();
@@ -96,6 +103,10 @@ namespace Alis.Sample.Flappy.Bird
             IsStop = false;
         }
 
+        /// <summary>
+        /// Ons the update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
             Transform current = self.Get<Transform>();
@@ -142,6 +153,10 @@ namespace Alis.Sample.Flappy.Bird
             }
         }
 
+        /// <summary>
+        /// Ons the exit using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnExit(IGameObject self)
         {
             Velocity = 0;
