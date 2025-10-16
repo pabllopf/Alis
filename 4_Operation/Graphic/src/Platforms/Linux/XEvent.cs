@@ -1,5 +1,3 @@
-
-#if linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
 // --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
@@ -28,6 +26,9 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+
+
+#if linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
 
 using System;
 using System.Collections.Generic;

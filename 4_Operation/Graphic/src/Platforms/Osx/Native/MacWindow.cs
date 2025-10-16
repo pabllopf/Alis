@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 #if osxarm64 || osxarm || osxx64 || osx
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -38,6 +39,12 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
     /// </summary>
     internal class MacWindow
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MacWindow"/> class
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="title">The title</param>
         public MacWindow(int width, int height, string title)
         {
             Width = width;
@@ -46,11 +53,26 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
             CrearVentana();
         }
 
+        /// <summary>
+        /// Gets or sets the value of the handle
+        /// </summary>
         public IntPtr Handle { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the width
+        /// </summary>
         public int Width { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the height
+        /// </summary>
         public int Height { get; private set; }
+        /// <summary>
+        /// Gets or sets the value of the title
+        /// </summary>
         public string Title { get; private set; }
 
+        /// <summary>
+        /// Crears the ventana
+        /// </summary>
         private void CrearVentana()
         {
             Handle = ObjectiveCInterop.objc_msgSend(ObjectiveCInterop.Class("NSWindow"), ObjectiveCInterop.Sel("alloc"));
@@ -63,15 +85,30 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
             ObjectiveCInterop.objc_msgSend_void(Handle, ObjectiveCInterop.Sel("center"));
         }
 
+        /// <summary>
+        /// Shows this instance
+        /// </summary>
         public void Show() => ObjectiveCInterop.objc_msgSend_void_IntPtr(Handle, ObjectiveCInterop.Sel("makeKeyAndOrderFront:"), IntPtr.Zero);
+        /// <summary>
+        /// Hides this instance
+        /// </summary>
         public void Hide() => ObjectiveCInterop.objc_msgSend_void(Handle, ObjectiveCInterop.Sel("orderOut:"));
 
+        /// <summary>
+        /// Sets the title using the specified title
+        /// </summary>
+        /// <param name="title">The title</param>
         public void SetTitle(string title)
         {
             Title = title;
             ObjectiveCInterop.objc_msgSend_void_IntPtr(Handle, ObjectiveCInterop.Sel("setTitle:"), ObjectiveCInterop.NsString(Title));
         }
 
+        /// <summary>
+        /// Sets the size using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         public void SetSize(int width, int height)
         {
             Width = width;
@@ -80,9 +117,17 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
             ObjectiveCInterop.objc_msgSend_void_IntPtr(Handle, ObjectiveCInterop.Sel("setContentSize:"), Marshal.AllocHGlobal(sizeof(double) * 2));
         }
 
+        /// <summary>
+        /// Ises the visible
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool IsVisible() => ObjectiveCInterop.objc_msgSend(Handle, ObjectiveCInterop.Sel("isVisible")) != IntPtr.Zero;
 
      // csharp
+     /// <summary>
+     /// Gets the frame
+     /// </summary>
+     /// <returns>The ns rect</returns>
      public NsRect GetFrame()
      {
          IntPtr framePtr = ObjectiveCInterop.objc_msgSend(Handle, ObjectiveCInterop.Sel("frame"));
@@ -103,4 +148,5 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
      }
     }
 }
+
 #endif
