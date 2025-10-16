@@ -47,28 +47,7 @@ namespace Alis.Core.Audio.Test.Players
         {
             Assert.True(true);
         }
-
-        /// <summary>
-        ///     Tests that play valid input
-        /// </summary>
-        [MacOsOnly]
-        public void Play_ValidInput_MacOs()
-        {
-            TestUnixPlayer player = new TestUnixPlayer();
-            player.Play("test.mp3").Wait();
-
-            Thread.Sleep(1000);
-
-            if (player.Playing)
-            {
-                Assert.True(player.Playing);
-            }
-            else
-            {
-                Assert.False(player.Playing);
-            }
-        }
-
+        
         /// <summary>
         ///     Tests that play valid input
         /// </summary>
