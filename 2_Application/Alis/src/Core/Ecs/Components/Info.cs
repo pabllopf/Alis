@@ -31,6 +31,9 @@ using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Core.Ecs.Components
 {
+    /// <summary>
+    /// Info component
+    /// </summary>
     public record struct Info : IOnInit, IOnUpdate
     {
         /// <summary>

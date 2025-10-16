@@ -48,10 +48,12 @@ namespace Alis.Builder.Core.Ecs.Entity
             IsStatic = false
         };
 
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GameObjectBuilder"/> class
         /// </summary>
         /// <param name="scene">The scene</param>
+        /// <param name="context">The context</param>
         public GameObjectBuilder(Scene scene, Context context)
         {
             this.scene = scene;

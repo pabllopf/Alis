@@ -93,11 +93,12 @@ namespace Alis.Core.Physic.Dynamics
             I = imaginary;
         }
 
-        /// <summary>
-        ///     Creates the angle using the specified angle
-        /// </summary>
-        /// <param name="angle">The angle</param>
-        /// <returns>The complex</returns>
+     
+       /// <summary>
+       /// Creates the angle using the specified angle degrees
+       /// </summary>
+       /// <param name="angleDegrees">The angle degrees</param>
+       /// <returns>The complex</returns>
        public static Complex FromAngle(float angleDegrees)
        {
            float angleRadians = angleDegrees * ((float)Math.PI / 180f);
