@@ -8,7 +8,6 @@
         <Nullable>disable</Nullable>
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
-        <AssetsExternal>false</AssetsExternal>
         <ApplicationIcon>Config/app.ico</ApplicationIcon>
     </PropertyGroup>
 
@@ -49,32 +48,5 @@
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false"/>
-    </ItemGroup>
-    
-    <ItemGroup Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'true'">
-        <None
-            Update="$(ProjectDir)Assets/**"
-            LinkBase="Assets"
-            CopyToOutputDirectory="Always"
-            CopyToPublishDirectory="Always"/>
-    </ItemGroup>
-
-    <PropertyGroup Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'false'">
-        <!-- Folder containing the original resources -->
-        <ResourceInputDir>Assets</ResourceInputDir>
-        <!-- Final packed file, in the obj build folder -->
-        <PackedAssets>$(ProjectDir)obj/assets.pak</PackedAssets>
-    </PropertyGroup>
-
-    <!-- Pack resources into a ZIP (assets.pak) using macOS zip command -->
-    <Target Name="PackOptimizedResources" BeforeTargets="Build;Publish" Condition="Exists('$(ProjectDir)Assets/') AND '$(AssetsExternal)' == 'false'">
-        <Message Text="Deleting and packing resources into $(PackedAssets) from $(ResourceInputDir)" Importance="high" />
-        <Delete Files="$(PackedAssets)" />
-        <Exec Command="zip -r $(PackedAssets) $(ResourceInputDir)" />
-    </Target>
-
-    <!-- Include .pak as embedded resource if it exists -->
-    <ItemGroup Condition="Exists('$(ProjectDir)Assets/') AND Exists('$(PackedAssets)') AND '$(AssetsExternal)' == 'false'">
-        <AdditionalFiles Include="$(PackedAssets)" LinkBase="." Link="assets.pak" Visible="false" />
     </ItemGroup>
 </Project>
