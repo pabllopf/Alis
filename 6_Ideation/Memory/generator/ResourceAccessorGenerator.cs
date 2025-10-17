@@ -306,64 +306,80 @@ namespace Alis.Core.Aspect.Memory.Generator
             sb.AppendLine("namespace Alis.Core.Aspect.Memory.Generator");
             sb.AppendLine("{");
 
-    {{
-        /// <summary>
-        /// SHA256 hash of the original '{ResourceFileName}' file (uncompressed).
-        /// Used for traceability.
-        /// </summary>
-        private const string OriginalHash = ""{originalHash}"";
+            sb.AppendLine("    /// <summary>");
+            sb.AppendLine("    /// AOT-safe anchor class that contains the static binary resource (compressed).\n    /// </summary>");
+            sb.AppendLine("    internal static class ResourceAnchor");
+            sb.AppendLine("    {");
+            sb.Append("        private const string OriginalHash = \"");
+            sb.Append(originalHash ?? string.Empty);
+            sb.AppendLine("\";");
 
-        // COMPRESSED byte array (decimal format, no spaces).
-        private static readonly byte[] AssetData = new byte[] {{
-            {compressedByteDataAsCSharp}
-        }};
+            sb.AppendLine();
+            sb.AppendLine("        // COMPRESSED byte array (decimal format, no spaces).");
+            sb.AppendLine("        private static readonly byte[] AssetData = new byte[] {");
 
-        public static Stream LoadAsset()
-        {{
-            if (AssetData.Length == 0)
-            {{
-                throw new InvalidOperationException(""The resource '{ResourceFileName}' was not found or is empty during AOT compilation."");
-            }}
+            // If there's compressed data, append it directly (already generated as decimal comma-separated list)
+            if (!string.IsNullOrEmpty(compressedByteDataAsCSharp))
+            {
+                // Append the compressed data in one call to minimize StringBuilder reallocations.
+                sb.Append("            ");
+                sb.Append(compressedByteDataAsCSharp);
+                sb.AppendLine();
+            }
 
-            // -------------------------------------------------------------------
-            // Runtime decompression logic (AOT-safe)
-            // -------------------------------------------------------------------
+            sb.AppendLine("        };\n");
 
-            // Create a read-only MemoryStream from the static array.
-            var compressedStream = new MemoryStream(AssetData, writable: false);
+            sb.AppendLine("        public static Stream LoadAsset()");
+            sb.AppendLine("        {");
+            sb.AppendLine("            if (AssetData.Length == 0)");
+            sb.AppendLine("            {");
+            sb.AppendLine("                throw new InvalidOperationException(\"The resource '" + ResourceFileName + "' was not found or is empty during AOT compilation.\");");
+            sb.AppendLine("            }");
+            sb.AppendLine();
+            sb.AppendLine("            // -------------------------------------------------------------------");
+            sb.AppendLine("            // Runtime decompression logic (AOT-safe)");
+            sb.AppendLine("            // -------------------------------------------------------------------");
+            sb.AppendLine();
+            sb.AppendLine("            // Create a read-only MemoryStream from the static array.");
+            sb.AppendLine("            var compressedStream = new MemoryStream(AssetData, writable: false);");
+            sb.AppendLine();
+            sb.AppendLine("            // Create the decompression stream (GZipStream constructor handles positioning).");
+            sb.AppendLine("            using var decompressor = new GZipStream(compressedStream, CompressionMode.Decompress);");
+            sb.AppendLine();
+            sb.AppendLine("            // Create the destination stream and copy the contents.");
+            sb.AppendLine("            var decompressedStream = new MemoryStream();");
+            sb.AppendLine("            decompressor.CopyTo(decompressedStream);");
+            sb.AppendLine();
+            sb.AppendLine("            // Rewind and return the decompressed stream.");
+            sb.AppendLine("            decompressedStream.Seek(0, SeekOrigin.Begin);");
+            sb.AppendLine();
+            sb.AppendLine("            // Return the MemoryStream. Caller is responsible for disposing it.");
+            sb.AppendLine("            return decompressedStream;");
+            sb.AppendLine("        }");
+            sb.AppendLine("    }");
+            sb.AppendLine();
+            sb.AppendLine("    /// <summary>");
+            sb.AppendLine("    /// Static initializer to register this assembly with the central loader.");
+            sb.AppendLine("    /// </summary>");
+            sb.AppendLine("    public static class AssemblyLoader");
+            sb.AppendLine("    {");
+            sb.AppendLine("        [ModuleInitializer]");
+            sb.AppendLine("        public static void EnsureLoaded()");
+            sb.AppendLine("        {");
+            sb.AppendLine("            Func<Stream> assetLoader = ResourceAnchor.LoadAsset;");
 
-            // Create the decompression stream (GZipStream constructor handles positioning).
-            using var decompressor = new GZipStream(compressedStream, CompressionMode.Decompress);
+            // RegisterAssembly call with assemblyName and registry namespace
+            sb.Append("            ");
+            sb.Append(RegistryNamespace);
+            sb.Append(".RegisterAssembly(\"");
+            sb.Append(assemblyName ?? string.Empty);
+            sb.AppendLine("\", assetLoader);");
 
-            // Create the destination stream and copy the contents.
-            var decompressedStream = new MemoryStream();
-            decompressor.CopyTo(decompressedStream);
+            sb.AppendLine("        }");
+            sb.AppendLine("    }");
+            sb.AppendLine("}");
 
-            // Rewind and return the decompressed stream.
-            decompressedStream.Seek(0, SeekOrigin.Begin);
-
-            // Return the MemoryStream. Caller is responsible for disposing it.
-            return decompressedStream;
-        }}
-    }}
-
-    /// <summary>
-    /// Static initializer to register this assembly with the central loader.
-    /// </summary>
-    public static class AssemblyLoader
-    {{
-        [ModuleInitializer]
-        public static void EnsureLoaded()
-        {{
-            Func<Stream> assetLoader = ResourceAnchor.LoadAsset;
-
-            // Register the delegate loader.
-            {RegistryNamespace}.RegisterAssembly(""{assemblyName}"", assetLoader);
-        }}
-    }}
-}}
-";
-            return code;
+            return sb.ToString();
         }
 
         /// <summary>
