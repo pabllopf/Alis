@@ -32,7 +32,6 @@
         <WarningsAsErrors>true</WarningsAsErrors>
         <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
     </PropertyGroup>
     
     <PropertyGroup>

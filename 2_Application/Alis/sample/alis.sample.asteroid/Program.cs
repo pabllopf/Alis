@@ -107,18 +107,18 @@ namespace Alis.Sample.Asteroid
                             )
                         
                         // SOUNDTRACK
-                        /*
+                        
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .Tag("Soundtrack")
                             .WithComponent<AudioSource>(audioSource => audioSource
                                 
                                 .PlayOnAwake(true)
-                                .Volume(0)
+                                .Volume(50)
                                 .Loop(true)
                                 .File("soundtrack.wav")
                                 )
-                            )*/
+                            )
                         
                         // PLAYER
                         .Add<GameObject>(player => player

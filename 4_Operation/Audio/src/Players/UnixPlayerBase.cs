@@ -34,6 +34,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Memory;
 using Alis.Core.Audio.Interfaces;
 
 namespace Alis.Core.Audio.Players
@@ -76,11 +77,9 @@ namespace Alis.Core.Audio.Players
 
         private static async Task<string> ExtractWavFromResourcesAsync(string wavFileName)
         {
-            Assembly assembly = Assembly.GetEntryAssembly();
-            if (assembly == null)
-                throw new InvalidOperationException("No entry assembly found.");
+         
         
-            using (Stream streamPack = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.assets.pak"))
+            using (Stream streamPack = AssetRegistry.GetAssetStreamByBaseName("assets.pak"))
             {
                 if (streamPack == null)
                     throw new FileNotFoundException("Resource file 'assets.pak' not found in embedded resources.");
