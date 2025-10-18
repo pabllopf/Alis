@@ -33,52 +33,59 @@ namespace Alis.Core.Aspect.Memory.Generator
         /// <param name="context">The context</param>
         public void Initialize(IncrementalGeneratorInitializationContext context)
         {
-            // Provider for all additional files
-            IncrementalValuesProvider<AdditionalText> additional = context.AdditionalTextsProvider;
+            // Message: generator initialization
+            context.RegisterPostInitializationOutput(ctx => {
+                // No se puede usar ctx.ReportDiagnostic en .NETStandard2.0, solo en .NET8.0 y Roslyn >=4.x
+                // Si no está disponible, omitir el diagnóstico aquí
+            });
 
-            // Provider for a declared assets.pak AdditionalFile (if any)
+            IncrementalValuesProvider<AdditionalText> additional = context.AdditionalTextsProvider;
             IncrementalValueProvider<ImmutableArray<AdditionalText>> pakProvider = additional
                 .Where(at => Path.GetFileName(at.Path).Equals(ResourceFileName, StringComparison.OrdinalIgnoreCase))
                 .Collect();
-
-            // Provider for all files that look like they belong to an Assets folder
             IncrementalValueProvider<ImmutableArray<AdditionalText>> assetFilesProvider = additional
                 .Where(at => IsUnderAssets(at.Path))
                 .Collect();
-
-            // Combine both providers and the compilation so we can compute a state and only regenerate when something changes
             IncrementalValueProvider<((ImmutableArray<AdditionalText> Left, ImmutableArray<AdditionalText> Right) Left, Compilation Right)> combined = pakProvider.Combine(assetFilesProvider).Combine(context.CompilationProvider);
 
             context.RegisterSourceOutput(combined, (spc, triple) =>
             {
-                // triple.Left is the pair (pakFiles, assets), triple.Right is the Compilation
                 (ImmutableArray<AdditionalText> Left, ImmutableArray<AdditionalText> Right) pair = triple.Left;
                 Compilation compilation = triple.Right;
 
-                // --- NEW: Only generate for executable projects ---
                 if (compilation == null)
+                {
+                    // Mensaje de advertencia solo si está disponible el método
+                    #if NET8_0_OR_GREATER
+                    var desc = new DiagnosticDescriptor("ALIS0001", "Compilación nula", "No se pudo obtener la compilación del proyecto", "AOT Resources", DiagnosticSeverity.Warning, true);
+                    spc.ReportDiagnostic(Diagnostic.Create(desc, Location.None));
+                    #endif
                     return;
+                }
 
                 var kind = compilation.Options.OutputKind;
                 if (kind != OutputKind.ConsoleApplication && kind != OutputKind.WindowsApplication)
                 {
-                    // Do not generate for libraries or other non-executable output kinds
+                    #if NET8_0_OR_GREATER
+                    var desc = new DiagnosticDescriptor("ALIS0003", "Proyecto no ejecutable", "El generador solo se ejecuta en proyectos ejecutables. Tipo detectado: {0}", "AOT Resources", DiagnosticSeverity.Info, true);
+                    spc.ReportDiagnostic(Diagnostic.Create(desc, Location.None, kind.ToString()));
+                    #endif
                     return;
                 }
-                // --- END NEW ---
+                #if NET8_0_OR_GREATER
+                var descStart = new DiagnosticDescriptor("ALIS0004", "Generación iniciada", "Iniciando generación de assets.pak para proyecto ejecutable", "AOT Resources", DiagnosticSeverity.Info, true);
+                spc.ReportDiagnostic(Diagnostic.Create(descStart, Location.None));
+                #endif
 
-                ImmutableArray<AdditionalText> pakFiles = pair.Left; // ImmutableArray<AdditionalText>
-                ImmutableArray<AdditionalText> assets = pair.Right;  // ImmutableArray<AdditionalText>
+                ImmutableArray<AdditionalText> pakFiles = pair.Left;
+                ImmutableArray<AdditionalText> assets = pair.Right;
 
                 try
                 {
                     byte[] originalBytes = null;
                     string originalHash = string.Empty;
-
-                    // Determine assembly name from compilation
                     string assemblyName = compilation.AssemblyName ?? "DefaultAssembly";
 
-                    // Prefer declared assets.pak content if present
                     if (!pakFiles.IsDefaultOrEmpty && pakFiles.Length > 0)
                     {
                         SourceText pakText = pakFiles[0].GetText();
@@ -86,28 +93,41 @@ namespace Alis.Core.Aspect.Memory.Generator
                         {
                             string txt = pakText.ToString();
                             originalBytes = Encoding.UTF8.GetBytes(txt);
+                            #if NET8_0_OR_GREATER
+                            var descPak = new DiagnosticDescriptor("ALIS0005", "Archivo assets.pak detectado", "Se usará el archivo assets.pak proporcionado", "AOT Resources", DiagnosticSeverity.Info, true);
+                            spc.ReportDiagnostic(Diagnostic.Create(descPak, Location.None));
+                            #endif
                         }
                     }
 
-                    // If not present, build a deterministic pak from the AdditionalFiles under Assets
                     if (originalBytes == null)
                     {
                         List<(string Path, string Text)> entries = assets
                             .Select(a => (Path: a.Path.Replace('\\','/'), Text: a.GetText()?.ToString() ?? string.Empty))
                             .OrderBy(e => e.Path, StringComparer.OrdinalIgnoreCase)
                             .ToList();
-
                         originalBytes = CreatePakFromAssetTexts(entries);
+                        #if NET8_0_OR_GREATER
+                        var descGen = new DiagnosticDescriptor("ALIS0006", "Generando assets.pak", $"Generando assets.pak a partir de {entries.Count} archivos de assets", "AOT Resources", DiagnosticSeverity.Info, true);
+                        spc.ReportDiagnostic(Diagnostic.Create(descGen, Location.None));
+                        #endif
                     }
 
                     if (originalBytes != null)
                     {
                         originalHash = CalculateSha256Hash(originalBytes);
+                        #if NET8_0_OR_GREATER
+                        var descHash = new DiagnosticDescriptor("ALIS0007", "Hash calculado", $"Hash SHA256 de assets.pak: {originalHash}", "AOT Resources", DiagnosticSeverity.Info, true);
+                        spc.ReportDiagnostic(Diagnostic.Create(descHash, Location.None));
+                        #endif
                     }
 
                     byte[] compressed = CompressGZip(originalBytes ?? Array.Empty<byte>());
+                    #if NET8_0_OR_GREATER
+                    var descZip = new DiagnosticDescriptor("ALIS0008", "Compresión finalizada", $"Assets.pak comprimido. Tamaño final: {compressed.Length} bytes", "AOT Resources", DiagnosticSeverity.Info, true);
+                    spc.ReportDiagnostic(Diagnostic.Create(descZip, Location.None));
+                    #endif
 
-                    // Convert compressed bytes to comma-separated decimal list
                     StringBuilder sb = new StringBuilder();
                     for (int i = 0; i < compressed.Length; i++)
                     {
@@ -118,11 +138,19 @@ namespace Alis.Core.Aspect.Memory.Generator
 
                     string generated = GenerateRegistrationLoader(assemblyName, sb.ToString(), originalHash);
                     spc.AddSource("AssemblyLoader.g.cs", SourceText.From(generated, Encoding.UTF8));
+                    #if NET8_0_OR_GREATER
+                    var descOk = new DiagnosticDescriptor("ALIS0009", "Generación exitosa", "Archivo AssemblyLoader.g.cs generado correctamente", "AOT Resources", DiagnosticSeverity.Info, true);
+                    spc.ReportDiagnostic(Diagnostic.Create(descOk, Location.None));
+                    #endif
                 }
                 catch (Exception ex)
                 {
+                    #if NET8_0_OR_GREATER
                     DiagnosticDescriptor desc = new DiagnosticDescriptor("ALIS0002", "Generator failure", $"Resource generator failed: {ex.Message}", "AOT Resources", DiagnosticSeverity.Error, true);
                     spc.ReportDiagnostic(Diagnostic.Create(desc, Location.None));
+                    #endif
+                    
+                    throw new InvalidOperationException("ResourceAccessorGenerator failed", ex);
                 }
             });
         }
