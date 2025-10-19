@@ -134,6 +134,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{CF7DBB5E
 		docs\scripts\macos\test_modules_size.sh = docs\scripts\macos\test_modules_size.sh
 		docs\scripts\macos\compress_wav.sh = docs\scripts\macos\compress_wav.sh
 		docs\scripts\macos\convert_to_bmp.sh = docs\scripts\macos\convert_to_bmp.sh
+		docs\scripts\macos\pack_all.sh = docs\scripts\macos\pack_all.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{020BC1B3-A88C-4938-AF9C-E35A4BEBDF72}"
