@@ -53,7 +53,7 @@ namespace Alis.Sample.Flappy.Bird
                 .Create()
                 .Settings(setting => setting
                     .General(general => general
-                        .Name("Flappy Bird 2")
+                        .Name("Flappy Bird")
                         .Author("Pablo Perdomo Falcón")
                         .Description("Flappy Bird game.")
                         .License("GNU General Public License v3.0")
