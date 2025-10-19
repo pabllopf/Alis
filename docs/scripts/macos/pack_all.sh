@@ -9,7 +9,7 @@ select yn in "Yes" "No"; do
     find . -type d -name ".publish" -exec rm -Rf {} \;
                 
     for i in `find . -name "*.csproj" -type f`; 
-      do if [[ $i == *".Template."* || $i == *".App."* || $i == *".Test."* || $i == *".Benchmark."* || $i == *".Sample."* ]] ; 
+      do if [[ $i == *".Template."* || $i == *".App."* || $i == *".Test."* || $i == *".Benchmark."* || $i == *".Generator."* || $i == *".Sample."* ]] ; 
       then 
         echo "Skip project $i"; 
       else 

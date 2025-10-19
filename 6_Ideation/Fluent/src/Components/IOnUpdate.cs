@@ -36,7 +36,11 @@ namespace Alis.Core.Aspect.Fluent.Components
     // ReSharper disable once PartialTypeWithSinglePart
     public partial interface IOnUpdate : IComponentBase
     {
-        /// <inheritdoc cref="IComponent.Update" />
+        
+        /// <summary>
+        /// Ons the update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         void OnUpdate(IGameObject self);
     }
 }

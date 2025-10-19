@@ -30,6 +30,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Logging;
+
 
 namespace Alis.Core.Graphic.Platforms.Linux
 {
