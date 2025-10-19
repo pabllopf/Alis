@@ -230,10 +230,7 @@
     <ItemGroup Condition="Exists('$(ProjectDir)Assets/') AND Exists('$(PackedAssets)') AND '$(AssetsExternal)' == 'false'">
         <AdditionalFiles Include="$(PackedAssets)" LinkBase="." Link="assets.pak" Visible="false" />
     </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Assets\icons\" />
-      <Folder Include="Docs\" />
-    </ItemGroup>
+
 
     <!-- Target to create the .app bundle on macOS after publish -->
     <Target Name="CreateMacAppBundle" AfterTargets="Publish" Condition=" '$(RuntimeIdentifier)' == 'osx-x64' OR '$(RuntimeIdentifier)' == 'osx-arm64' ">
