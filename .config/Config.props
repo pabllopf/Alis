@@ -24,6 +24,7 @@
         <DefineConstants>$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
     </PropertyGroup>
     
+    
     <PropertyGroup>
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <LangVersion>13</LangVersion>
