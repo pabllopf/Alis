@@ -836,25 +836,70 @@ namespace Alis.Core.Graphic.Platforms.Linux
             return true;
         }
 
+        /// <summary>
+        /// The xwm hints
+        /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         private struct XWMHints
         {
+            /// <summary>
+            /// The flags
+            /// </summary>
             public int flags;
+            /// <summary>
+            /// The input
+            /// </summary>
             public IntPtr input;
+            /// <summary>
+            /// The icon pixmap
+            /// </summary>
             public IntPtr icon_pixmap;
+            /// <summary>
+            /// The icon window
+            /// </summary>
             public IntPtr icon_window;
+            /// <summary>
+            /// The icon
+            /// </summary>
             public IntPtr icon_x;
+            /// <summary>
+            /// The icon
+            /// </summary>
             public IntPtr icon_y;
+            /// <summary>
+            /// The icon mask
+            /// </summary>
             public IntPtr icon_mask;
+            /// <summary>
+            /// The window group
+            /// </summary>
             public IntPtr window_group;
         }
 
+        /// <summary>
+        /// Xes the set wm hints using the specified display
+        /// </summary>
+        /// <param name="display">The display</param>
+        /// <param name="window">The window</param>
+        /// <param name="hints">The hints</param>
         [DllImport("libX11.so")]
         private static extern void XSetWMHints(IntPtr display, IntPtr window, ref XWMHints hints);
 
+        /// <summary>
+        /// Xes the create pixmap from bitmap data using the specified display
+        /// </summary>
+        /// <param name="display">The display</param>
+        /// <param name="window">The window</param>
+        /// <param name="data">The data</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <returns>The int ptr</returns>
         [DllImport("libX11.so")]
         private static extern IntPtr XCreatePixmapFromBitmapData(IntPtr display, IntPtr window, byte[] data, int width, int height);
 
+        /// <summary>
+        /// The console key
+        /// </summary>
         private HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
 
         /// <summary>
@@ -884,4 +929,5 @@ namespace Alis.Core.Graphic.Platforms.Linux
     }
 }
 
-#endif
+
+# endif

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 #if winx64 || winx86 || winarm64 || winarm || win
+
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -253,4 +254,5 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern bool IsWindowVisible(IntPtr hWnd);
     }
 }
+
 #endif

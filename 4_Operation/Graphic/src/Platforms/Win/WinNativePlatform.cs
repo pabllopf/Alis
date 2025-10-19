@@ -126,6 +126,9 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// </summary>
         private IntPtr wndProcPtr;
 
+        /// <summary>
+        /// The console key
+        /// </summary>
         private HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
 
         /// <summary>
@@ -577,6 +580,11 @@ namespace Alis.Core.Graphic.Platforms.Win
             return false;
         }
 
+        /// <summary>
+        /// Ises the key down using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        /// <returns>The bool</returns>
         public bool IsKeyDown(ConsoleKey key)
         {
             return pressedKeys.Contains(key);
@@ -611,9 +619,27 @@ namespace Alis.Core.Graphic.Platforms.Win
             return true;
         }
 
+        /// <summary>
+        /// Sends the message using the specified h wnd
+        /// </summary>
+        /// <param name="hWnd">The wnd</param>
+        /// <param name="Msg">The msg</param>
+        /// <param name="wParam">The param</param>
+        /// <param name="lParam">The param</param>
+        /// <returns>The int ptr</returns>
         [DllImport("user32.dll", SetLastError = true)]
         private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
 
+        /// <summary>
+        /// Loads the image using the specified h inst
+        /// </summary>
+        /// <param name="hInst">The inst</param>
+        /// <param name="lpszName">The lpsz name</param>
+        /// <param name="uType">The type</param>
+        /// <param name="cxDesired">The cx desired</param>
+        /// <param name="cyDesired">The cy desired</param>
+        /// <param name="fuLoad">The fu load</param>
+        /// <returns>The int ptr</returns>
         [DllImport("user32.dll", SetLastError = true)]
         private static extern IntPtr LoadImage(IntPtr hInst, string lpszName, uint uType, int cxDesired, int cyDesired, uint fuLoad);
 
@@ -657,6 +683,11 @@ namespace Alis.Core.Graphic.Platforms.Win
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
         private delegate IntPtr WglCreateContextAttribsARB(IntPtr hdc, IntPtr hShareContext, int[] attribs);
 
+        /// <summary>
+        /// Gets the win 32 error meaning using the specified error code
+        /// </summary>
+        /// <param name="errorCode">The error code</param>
+        /// <returns>The string</returns>
         private string GetWin32ErrorMeaning(int errorCode)
         {
             switch (errorCode)
@@ -695,11 +726,14 @@ namespace Alis.Core.Graphic.Platforms.Win
             }
         }
         
+        /// <summary>
+        /// Destroys the icon using the specified h icon
+        /// </summary>
+        /// <param name="hIcon">The icon</param>
+        /// <returns>The bool</returns>
         [DllImport("user32.dll", SetLastError = true)]
         private static extern bool DestroyIcon(IntPtr hIcon);
     }
 }
+
 #endif
-// --------------------------------------------------------------------------
-// End of Win32NativePlatform.cs
-// --------------------------------------------------------------------------

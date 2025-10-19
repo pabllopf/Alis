@@ -27,9 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+#if winx64 || winx86 || winarm64 || winarm || win
+
 using System;
 
-#if winx64 || winx86 || winarm64 || winarm || win
+
 namespace Alis.Core.Graphic.Platforms.Win.Native
 {
     /// <summary>
@@ -58,6 +60,9 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// </summary>
         Size = 0x0005,
         
+        /// <summary>
+        /// The key up window message
+        /// </summary>
         KeyUp = 0x0101,
     }
 }

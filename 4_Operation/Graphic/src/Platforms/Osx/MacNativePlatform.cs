@@ -466,12 +466,38 @@ namespace Alis.Core.Graphic.Platforms.Osx
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="receiver"></param>
+        /// <param name="selector"></param>
+        /// <returns></returns>
         [DllImport("/usr/lib/libobjc.A.dylib")]
         private static extern IntPtr objc_msgSend(IntPtr receiver, IntPtr selector);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="receiver"></param>
+        /// <param name="selector"></param>
+        /// <param name="arg1"></param>
+        /// <returns></returns>
         [DllImport("/usr/lib/libobjc.A.dylib")]
         private static extern IntPtr objc_msgSend(IntPtr receiver, IntPtr selector, IntPtr arg1);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         [DllImport("/usr/lib/libobjc.A.dylib")]
         private static extern IntPtr objc_getClass(string name);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         [DllImport("/usr/lib/libobjc.A.dylib")]
         private static extern IntPtr sel_registerName(string name);
     }
