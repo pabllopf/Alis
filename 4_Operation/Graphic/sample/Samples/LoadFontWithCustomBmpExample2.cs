@@ -34,13 +34,23 @@ using Alis.Core.Graphic.Ui;
 
 namespace Alis.Core.Graphic.Sample.Samples
 {
+    /// <summary>
+    /// The load font with custom bmp example class
+    /// </summary>
+    /// <seealso cref="IExample"/>
     public class LoadFontWithCustomBmpExample2 : IExample
     {
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
             
         }
 
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
         public void Draw()
         {
             Gl.GlClearColor(0f, 0f, 0f, 1f);
@@ -56,6 +66,9 @@ namespace Alis.Core.Graphic.Sample.Samples
             FontManager.RenderText("JEJEJ", -300, -200, Color.Cyan, Color.Magenta);
         }
 
+        /// <summary>
+        /// Cleanups this instance
+        /// </summary>
         public void Cleanup()
         {
            

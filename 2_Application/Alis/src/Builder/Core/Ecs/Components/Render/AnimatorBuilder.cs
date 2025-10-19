@@ -47,8 +47,15 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         /// </summary>
         private Animator animator = new Animator();
         
+        /// <summary>
+        /// The context
+        /// </summary>
         private Context context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AnimatorBuilder"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
         public AnimatorBuilder(Context context)
         {
             this.context = context;

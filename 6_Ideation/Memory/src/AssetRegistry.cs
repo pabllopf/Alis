@@ -1,4 +1,4 @@
-﻿// En Alis.csproj (la librería que accede)
+// En Alis.csproj (la librería que accede)
 
 using System;
 using System.Collections.Generic;
@@ -10,14 +10,28 @@ using System.Reflection;
 
 namespace Alis.Core.Aspect.Memory
 {
+    /// <summary>
+    /// The asset registry class
+    /// </summary>
     public static class AssetRegistry
     {
         
         // Almacena una función lambda que devuelve el Stream (totalmente AOT-safe)
+        /// <summary>
+        /// The registered asset loaders
+        /// </summary>
         private static readonly Dictionary<string, Func<Stream>> RegisteredAssetLoaders = new();
+        /// <summary>
+        /// Gets or sets the value of the active assembly name
+        /// </summary>
         private static string ActiveAssemblyName { get; set; } = null;
 
         // Nuevo método de registro que acepta el cargador delegado (AOT-safe)
+        /// <summary>
+        /// Registers the assembly using the specified assembly name
+        /// </summary>
+        /// <param name="assemblyName">The assembly name</param>
+        /// <param name="assetLoader">The asset loader</param>
         public static void RegisterAssembly(string assemblyName, Func<Stream> assetLoader)
         {
             RegisteredAssetLoaders[assemblyName] = assetLoader;

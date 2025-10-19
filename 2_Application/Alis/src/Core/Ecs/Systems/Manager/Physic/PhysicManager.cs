@@ -154,6 +154,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
             }
         }
 
+        /// <summary>
+        /// Ons the exit
+        /// </summary>
         public override void OnExit()
         {
            

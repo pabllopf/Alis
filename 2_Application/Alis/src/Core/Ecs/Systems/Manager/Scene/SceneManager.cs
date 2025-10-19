@@ -54,6 +54,11 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             CurrentWorld = new Ecs.Scene();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SceneManager"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <param name="scenes">The scenes</param>
         public SceneManager(Context context, params Ecs.Scene[] scenes ) : base(context)
         {
             LoadedScenes = new List<Ecs.Scene>(scenes);
@@ -66,6 +71,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// </summary>
         public Ecs.Scene CurrentWorld { get; set; }
         
+        /// <summary>
+        /// The loaded scenes
+        /// </summary>
         public List<Ecs.Scene> LoadedScenes;
         
         /// <summary>
@@ -94,6 +102,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             }
         }
         
+        /// <summary>
+        /// Ons the awake
+        /// </summary>
         public override void OnAwake()
         {
             GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
@@ -111,6 +122,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             }
         }
 
+        /// <summary>
+        /// Ons the start
+        /// </summary>
         public override void OnStart()
         {
             GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
@@ -128,6 +142,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             }
         }
 
+        /// <summary>
+        /// Ons the physic update
+        /// </summary>
         public override void OnPhysicUpdate()
         {
             GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
@@ -170,6 +187,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
 */
         }
 
+        /// <summary>
+        /// Ons the before update
+        /// </summary>
         public override void OnBeforeUpdate()
         {
             GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
@@ -195,6 +215,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             CurrentWorld?.Update();
         }
 
+        /// <summary>
+        /// Ons the after update
+        /// </summary>
         public override void OnAfterUpdate()
         {
             GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
@@ -212,6 +235,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             }
         }
 
+        /// <summary>
+        /// Ons the before fixed update
+        /// </summary>
         public override void OnBeforeFixedUpdate()
         {
             GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
@@ -229,6 +255,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             }
         }
 
+        /// <summary>
+        /// Ons the fixed update
+        /// </summary>
         public override void OnFixedUpdate ()
         {
             GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
@@ -246,6 +275,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             }
         }
 
+        /// <summary>
+        /// Ons the after fixed update
+        /// </summary>
         public override void OnAfterFixedUpdate()
         {
             GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
@@ -263,6 +295,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             }
         }
 
+        /// <summary>
+        /// Ons the process pending changes
+        /// </summary>
         public override void OnProcessPendingChanges()
         {
             GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
@@ -280,6 +315,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             }
         }
         
+        /// <summary>
+        /// Ons the before draw
+        /// </summary>
         public override void OnBeforeDraw()
         {
             GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
@@ -297,6 +335,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             }
         }
 
+        /// <summary>
+        /// Ons the draw
+        /// </summary>
         public override void OnDraw()
         {
             GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
@@ -314,6 +355,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
             }
         }
 
+        /// <summary>
+        /// Ons the after draw
+        /// </summary>
         public override void OnAfterDraw()
         {
             GameObjectQueryEnumerator.QueryEnumerable result = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
@@ -332,6 +376,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
 
+        /// <summary>
+        /// Ons the exit
+        /// </summary>
         public override void OnExit()
         {
             GameObjectQueryEnumerator.QueryEnumerable result2 = CurrentWorld.Query<Not<RigidBody>>().EnumerateWithEntities();
@@ -350,10 +397,18 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         }
 
 
+        /// <summary>
+        /// Loads the scene using the specified game scene
+        /// </summary>
+        /// <param name="gameScene">The game scene</param>
         public void LoadScene(string gameScene)
         {
         }
         
+        /// <summary>
+        /// Loads the scene using the specified id
+        /// </summary>
+        /// <param name="id">The id</param>
         public void LoadScene(int id)
         {
             
@@ -380,6 +435,10 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
 
         }
 
+        /// <summary>
+        /// Adds the scene using the specified scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
         public void AddScene(Ecs.Scene scene)
         {
             LoadedScenes.Add(scene);

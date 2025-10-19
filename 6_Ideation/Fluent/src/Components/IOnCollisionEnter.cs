@@ -29,8 +29,15 @@
 
 namespace Alis.Core.Aspect.Fluent.Components
 {
+    /// <summary>
+    /// The on collision enter interface
+    /// </summary>
     public interface IOnCollisionEnter
     {
+        /// <summary>
+        /// Ons the collision enter using the specified other
+        /// </summary>
+        /// <param name="other">The other</param>
         void OnCollisionEnter(IGameObject other);
     }
 }

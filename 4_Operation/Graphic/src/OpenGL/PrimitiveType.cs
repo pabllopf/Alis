@@ -69,6 +69,9 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         TriangleFan = 0x0006, // GL_TRIANGLE_FAN
         
+        /// <summary>
+        /// The quads primitive type
+        /// </summary>
         Quads = 0x0007, // GL_QUADS
     }
 }

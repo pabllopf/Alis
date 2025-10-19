@@ -58,6 +58,11 @@ namespace Alis.Core.Audio.Interfaces
         /// <param name="fileName">The file name</param>
         Task Play(string fileName);
 
+        /// <summary>
+        /// Plays the loop using the specified file name
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        /// <param name="loop">The loop</param>
         Task PlayLoop(string fileName, bool loop);
 
         /// <summary>

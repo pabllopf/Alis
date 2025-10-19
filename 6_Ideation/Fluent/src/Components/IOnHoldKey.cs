@@ -7,6 +7,10 @@ namespace Alis.Core.Aspect.Fluent.Components
     /// </summary>
     public interface IOnHoldKey
     {
+        /// <summary>
+        /// Ons the hold key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         void OnHoldKey(KeyEventInfo info);
     }
 }

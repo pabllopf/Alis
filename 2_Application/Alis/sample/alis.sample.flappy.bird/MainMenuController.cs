@@ -46,10 +46,18 @@ namespace Alis.Sample.Flappy.Bird
     public class MainMenuController : IOnUpdate, IOnPressKey, IHasContext<Context>
     {
 
+        /// <summary>
+        /// Ons the update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
         }
 
+        /// <summary>
+        /// Ons the press key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnPressKey(KeyEventInfo info)
         {
             if (info.Key == ConsoleKey.Spacebar)
@@ -59,6 +67,9 @@ namespace Alis.Sample.Flappy.Bird
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value of the context
+        /// </summary>
         public Context Context { get; set; }
     }
 }

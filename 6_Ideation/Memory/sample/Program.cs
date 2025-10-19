@@ -47,6 +47,9 @@ namespace Alis.Core.Aspect.Memory.Sample
             LoadAsset();
         }
         
+        /// <summary>
+        /// Loads the asset
+        /// </summary>
         public static void LoadAsset()
         {
             Console.WriteLine("Intentando cargar 'asset.pak' de forma AOT-compatible...");

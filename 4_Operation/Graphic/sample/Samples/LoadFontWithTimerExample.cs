@@ -6,15 +6,28 @@ using Alis.Core.Graphic.Ui;
 
 namespace Alis.Core.Graphic.Sample.Samples
 {
+    /// <summary>
+    /// The load fontwith timer example class
+    /// </summary>
+    /// <seealso cref="IExample"/>
     public class LoadFontwithTimerExample : IExample
     {
+        /// <summary>
+        /// The clock
+        /// </summary>
         private Clock clock = new Clock();
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
             clock.Restart();
         }
 
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
         public void Draw()
         {
             Gl.GlClearColor(0f, 0f, 0f, 1f);
@@ -31,6 +44,9 @@ namespace Alis.Core.Graphic.Sample.Samples
             FontManager.RenderText(timeText, -90, 0, Color.White, Color.Transparent);
         }
 
+        /// <summary>
+        /// Cleanups this instance
+        /// </summary>
         public void Cleanup()
         {
         }

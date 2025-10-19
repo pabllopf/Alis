@@ -233,17 +233,28 @@ namespace Alis.Sample.Asteroid
             Console.WriteLine("Asteroid health: " + health);
         }*/
         
+        /// <summary>
+        /// Decreases the health
+        /// </summary>
         public void DecreaseHealth()
         {
             //health -= 1;
             //Console.WriteLine("Asteroid health: " + health);
         }
 
+        /// <summary>
+        /// Ons the init using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnInit(IGameObject self)
         {
                 
         }
 
+        /// <summary>
+        /// Ons the update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
           

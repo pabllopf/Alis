@@ -111,6 +111,10 @@ namespace Alis.Core.Physic.Dynamics
                (float)Math.Sin(angleRadians));
        }
         
+   /// <summary>
+   /// Returns the angle
+   /// </summary>
+   /// <returns>The float</returns>
    public float ToAngle()
    {
        float angle = (float)(Math.Atan2(I, R) * (180.0 / Math.PI));

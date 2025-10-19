@@ -44,6 +44,14 @@ namespace Alis.Core.Graphic.Platforms
         /// <param name="title">The title</param>
         bool Initialize(int width, int height, string title);
 
+        /// <summary>
+        /// Initializes the width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="title">The title</param>
+        /// <param name="iconPath">The icon path</param>
+        /// <returns>The bool</returns>
         bool Initialize(int width, int height, string title, string iconPath);
 
         /// <summary>
@@ -125,6 +133,11 @@ namespace Alis.Core.Graphic.Platforms
         /// <returns>true si hay tecla, false si no</returns>
         bool TryGetLastKeyPressed(out ConsoleKey key);
 
+        /// <summary>
+        /// Ises the key down using the specified console key
+        /// </summary>
+        /// <param name="consoleKey">The console key</param>
+        /// <returns>The bool</returns>
         bool IsKeyDown(ConsoleKey consoleKey);
 
         /// <summary>

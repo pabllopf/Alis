@@ -82,6 +82,10 @@ namespace Alis.Sample.Flappy.Bird
         /// <returns>The string</returns>
         public override string ToString() => Counter.ToString();
 
+        /// <summary>
+        /// Ons the collision exit using the specified other
+        /// </summary>
+        /// <param name="other">The other</param>
         public void OnCollisionExit(IGameObject other)
         {
             Logger.Log($"Collision exit with");
@@ -93,6 +97,10 @@ namespace Alis.Sample.Flappy.Bird
             }
         }
 
+        /// <summary>
+        /// Ons the collision enter using the specified other
+        /// </summary>
+        /// <param name="other">The other</param>
         public void OnCollisionEnter(IGameObject other)
         {
             Logger.Log($"Collision enter with");
@@ -108,11 +116,19 @@ namespace Alis.Sample.Flappy.Bird
             
         }
 
+        /// <summary>
+        /// Ons the update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
             
         }
 
+        /// <summary>
+        /// Ons the start using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnStart(IGameObject self)
         {
             audioSource = self.Get<AudioSource>();    

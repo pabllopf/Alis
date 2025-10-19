@@ -95,6 +95,10 @@ namespace Alis.Sample.Flappy.Bird
         
         
 
+        /// <summary>
+        /// Ons the update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
             if (IsDeath)
@@ -113,8 +117,15 @@ namespace Alis.Sample.Flappy.Bird
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value of the context
+        /// </summary>
         public Context Context { get; set; }
         
+        /// <summary>
+        /// Ons the collision enter using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         public void OnCollisionEnter(IGameObject gameObject)
         {
             Info info = gameObject.Get<Info>();
@@ -131,6 +142,10 @@ namespace Alis.Sample.Flappy.Bird
             }
         }
 
+        /// <summary>
+        /// Ons the start using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnStart(IGameObject self)
         {
             IsDeath = false;

@@ -620,6 +620,10 @@ namespace Alis.Core.Aspect.Math.Vector
             result = new Vector2F(left.X * invRight, left.Y * invRight);
         }
 
+        /// <summary>
+        /// Returns the string
+        /// </summary>
+        /// <returns>The string</returns>
         public override string ToString()
         {
             return "{X: " + X + " Y: " + Y + "}";

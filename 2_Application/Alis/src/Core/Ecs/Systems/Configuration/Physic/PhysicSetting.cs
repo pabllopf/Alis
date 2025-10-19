@@ -56,7 +56,13 @@ namespace Alis.Core.Ecs.Systems.Configuration.Physic
         /// </summary>
         public Vector2F Gravity { get; set; } = gravity;
 
+        /// <summary>
+        /// Gets or sets the value of the debug
+        /// </summary>
         public bool Debug { get; set; }  = debug;
+        /// <summary>
+        /// Gets or sets the value of the debug color
+        /// </summary>
         public Color DebugColor { get; set; } = debugColor;
     }
 }

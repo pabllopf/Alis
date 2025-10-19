@@ -68,11 +68,19 @@ namespace Alis.Sample.Pong
         {
         }
 
+        /// <summary>
+        /// Ons the hold key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnHoldKey(KeyEventInfo info)
         {
 
         }
 
+        /// <summary>
+        /// Ons the release key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnReleaseKey(KeyEventInfo info)
         {
             Vector2F velocity = boxCollider.Body.LinearVelocity;
@@ -110,6 +118,10 @@ namespace Alis.Sample.Pong
             }
         }
 
+        /// <summary>
+        /// Ons the press key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnPressKey(KeyEventInfo info)
         {
             Vector2F velocity = boxCollider.Body.LinearVelocity;

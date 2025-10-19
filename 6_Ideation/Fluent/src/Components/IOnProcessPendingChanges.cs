@@ -29,8 +29,15 @@
 
 namespace Alis.Core.Aspect.Fluent.Components
 {
+    /// <summary>
+    /// The on process pending changes interface
+    /// </summary>
     public interface IOnProcessPendingChanges
     {
+        /// <summary>
+        /// Ons the process pending changes using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         void OnProcessPendingChanges(IGameObject self);
     }
 }

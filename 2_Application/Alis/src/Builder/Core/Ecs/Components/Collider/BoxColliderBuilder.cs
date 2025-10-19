@@ -61,8 +61,15 @@ namespace Alis.Builder.Core.Ecs.Components.Collider
         /// </summary>
         private readonly BoxCollider boxCollider = new BoxCollider();
         
+        /// <summary>
+        /// The context
+        /// </summary>
         private Context context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BoxColliderBuilder"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
         public BoxColliderBuilder(Context context)
         { 
             this.context =  context; 
