@@ -29,10 +29,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Memory;
 using Alis.Core.Ecs.Components.Body;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
@@ -117,7 +121,53 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
 
             
             platform.SetTitle(Context.Setting.General.Name);
-            platform.SetWindowIcon(AssetManager.Find(Context.Setting.General.Icon));
+
+            string iconPath = AssetManager.Find(Context.Setting.General.Icon);
+            if (string.IsNullOrEmpty(iconPath))
+            {
+                using (Stream streamPack = AssetRegistry.GetAssetStreamByBaseName("assets.pak"))
+                {
+                    if (streamPack == null)
+                        throw new FileNotFoundException("Resource file 'assets.pak' not found in embedded resources.");
+  
+                    using (MemoryStream memPack = new MemoryStream())
+                    {
+                        streamPack.CopyTo(memPack);
+                        memPack.Position = 0;
+  
+                        using (ZipArchive zip = new ZipArchive(memPack, ZipArchiveMode.Read))
+                        {
+                            ZipArchiveEntry entry = zip.Entries.FirstOrDefault(e => e.FullName.Contains(Context.Setting.General.Icon));
+                            if (entry == null)
+                                throw new FileNotFoundException($"Resource '{Context.Setting.General.Icon}' not found in 'assets.pak'.");
+  
+                            using (Stream entryStream = entry.Open())
+                            using (MemoryStream memImage = new MemoryStream())
+                            {
+                                entryStream.CopyTo(memImage);
+                                memImage.Position = 0;
+                               
+                                // write file on temp path:
+                                string tempPath = Path.GetTempPath();
+                                string tempFile = Path.Combine(tempPath, Context.Setting.General.Icon);
+                                using (FileStream fileStream = new FileStream(tempFile, FileMode.Create, FileAccess.Write))
+                                {
+                                    memImage.CopyTo(fileStream);
+                                }
+                                platform.SetWindowIcon(tempFile);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                platform.SetWindowIcon(iconPath);
+            }
+            
+            
+            
+            
             platform.ShowWindow();
         }
 
