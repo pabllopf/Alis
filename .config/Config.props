@@ -47,6 +47,7 @@
         <CopyDebugSymbolFilesFromPackages>true</CopyDebugSymbolFilesFromPackages>
         <CopyDocumentationFilesFromPackages>true</CopyDocumentationFilesFromPackages>
         <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        
     </PropertyGroup>
     
     <PropertyGroup>
