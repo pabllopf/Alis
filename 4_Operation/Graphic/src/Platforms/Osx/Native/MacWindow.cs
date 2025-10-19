@@ -82,11 +82,25 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
 
         public bool IsVisible() => ObjectiveCInterop.objc_msgSend(Handle, ObjectiveCInterop.Sel("isVisible")) != IntPtr.Zero;
 
-        public NsRect GetFrame()
-        {
-            IntPtr framePtr = ObjectiveCInterop.objc_msgSend(Handle, ObjectiveCInterop.Sel("frame"));
-            return Marshal.PtrToStructure<NsRect>(framePtr);
-        }
+     // csharp
+     public NsRect GetFrame()
+     {
+         IntPtr framePtr = ObjectiveCInterop.objc_msgSend(Handle, ObjectiveCInterop.Sel("frame"));
+     
+         // Leer cuatro doubles (8 bytes cada uno) desde la estructura nativa (x, y, width, height)
+         long v0 = Marshal.ReadInt64(framePtr, 0);
+         long v1 = Marshal.ReadInt64(framePtr, 8);
+         long v2 = Marshal.ReadInt64(framePtr, 16);
+         long v3 = Marshal.ReadInt64(framePtr, 24);
+     
+         return new NsRect
+         {
+             x = BitConverter.Int64BitsToDouble(v0),
+             y = BitConverter.Int64BitsToDouble(v1),
+             width = BitConverter.Int64BitsToDouble(v2),
+             height = BitConverter.Int64BitsToDouble(v3)
+         };
+     }
     }
 }
 #endif

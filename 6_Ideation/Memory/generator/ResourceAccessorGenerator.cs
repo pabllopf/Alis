@@ -6,7 +6,7 @@ using System.Linq;
 using System;
 using System.IO;
 using System.IO.Compression; 
-using System.Security.Cryptography; // Nuevo: Necesario para SHA256
+using System.Security.Cryptography; // New: required for SHA256
 
 namespace Alis.Core.Aspect.Memory.Generator
 {
@@ -18,13 +18,13 @@ namespace Alis.Core.Aspect.Memory.Generator
 
         public void Initialize(GeneratorInitializationContext context)
         {
-            // No se requiere inicialización específica
+            // No specific initialization required
         }
 
         public void Execute(GeneratorExecutionContext context)
         {
             // ----------------------------------------------------------------------
-            // 1. Condición de Generación (Excluir DLLs puras)
+            // 1. Generation condition (exclude pure DLLs)
             // ----------------------------------------------------------------------
             if (context.Compilation.Options.OutputKind == OutputKind.DynamicallyLinkedLibrary)
             {
@@ -36,38 +36,38 @@ namespace Alis.Core.Aspect.Memory.Generator
 
             string compressedByteDataAsCSharp = "";
             string assemblyName = context.Compilation.AssemblyName ?? "DefaultAssembly";
-            string originalHash = string.Empty; // Hash del archivo original
+            string originalHash = string.Empty; // Hash of the original file
             
             if (assetFile != null)
             {
                 try
                 {
-                    // Leer el binario original (I/O requerida para incrustación)
+                    // Read the original binary (I/O required for embedding)
                     byte[] originalFileBytes = File.ReadAllBytes(assetFile.Path);
 
                     // ----------------------------------------------------------------------
-                    // OPTIMIZACIÓN DE TRAZABILIDAD: Calcular el Hash del archivo original.
+                    // TRACEABILITY OPTIMIZATION: Calculate SHA256 hash of original file.
                     // ----------------------------------------------------------------------
                     originalHash = CalculateSha256Hash(originalFileBytes);
 
                     // ----------------------------------------------------------------------
-                    // OPTIMIZACIÓN DE VELOCIDAD Y TAMAÑO: Comprimir los datos con GZip.
+                    // SPEED & SIZE OPTIMIZATION: Compress the data with GZip.
                     // ----------------------------------------------------------------------
                     byte[] compressedBytes = CompressGZip(originalFileBytes);
 
                     // ----------------------------------------------------------------------
-                    // OPTIMIZACIÓN DE VELOCIDAD: Usar StringBuilder.
-                    // OPTIMIZACIÓN DE TAMAÑO: Usar formato decimal y ELIMINAR ESPACIO tras la coma.
+                    // SPEED OPTIMIZATION: Use StringBuilder.
+                    // SIZE OPTIMIZATION: Use decimal format and REMOVE space after comma.
                     // ----------------------------------------------------------------------
                     var builder = new StringBuilder();
                     for (int i = 0; i < compressedBytes.Length; i++)
                     {
-                        // Añadir el byte en formato decimal (1-3 caracteres)
+                        // Append the byte in decimal format (1-3 characters)
                         builder.Append(compressedBytes[i]); 
 
                         if (i < compressedBytes.Length - 1)
                         {
-                            // Añadir SOLO la coma, sin espacio. (Ahorra 1 char por byte)
+                            // Append ONLY the comma, without space. (Saves 1 char per byte)
                             builder.Append(',');
                         }
                     }
@@ -75,11 +75,11 @@ namespace Alis.Core.Aspect.Memory.Generator
                 }
                 catch (Exception ex)
                 {
-                    // Reportar error si falla la I/O
+                    // Report diagnostic if I/O fails
                     var diagnostic = Diagnostic.Create(
-                        new DiagnosticDescriptor("ALIS0002", "Error de I/O en Generador", 
-                            $"Fallo al leer/comprimir el binario del AdditionalFile '{assetFile.Path}': {ex.Message}",
-                            "Recursos AOT", DiagnosticSeverity.Error, true),
+                        new DiagnosticDescriptor("ALIS0002", "I/O Error in Generator", 
+                            $"Failed to read/compress the binary AdditionalFile '{assetFile.Path}': {ex.Message}",
+                            "AOT Resources", DiagnosticSeverity.Error, true),
                         Location.None);
                     context.ReportDiagnostic(diagnostic);
                     return;
@@ -87,17 +87,17 @@ namespace Alis.Core.Aspect.Memory.Generator
             }
             else
             {
-                // Reportar advertencia si el archivo no se encontró.
+                // Report a warning if the file was not found.
                  var diagnostic = Diagnostic.Create(
-                        new DiagnosticDescriptor("ALIS0001", "Recurso no declarado", 
-                            $"El archivo '{ResourceFileName}' no fue encontrado en AdditionalFiles.",
-                            "Recursos AOT", DiagnosticSeverity.Warning, true),
+                        new DiagnosticDescriptor("ALIS0001", "Resource not declared", 
+                            $"The file '{ResourceFileName}' was not found in AdditionalFiles.",
+                            "AOT Resources", DiagnosticSeverity.Warning, true),
                         Location.None);
                 context.ReportDiagnostic(diagnostic);
             }
 
             // ----------------------------------------------------------------------
-            // 3. Generación del Código (Ahora con datos comprimidos y hash)
+            // 3. Code generation (now with compressed data and hash)
             // ----------------------------------------------------------------------
             string sourceCode = GenerateRegistrationLoader(assemblyName, compressedByteDataAsCSharp, originalHash);
 
@@ -105,12 +105,12 @@ namespace Alis.Core.Aspect.Memory.Generator
         }
 
         /// <summary>
-        /// Comprime los datos usando GZip.
+        /// Compress data using GZip.
         /// </summary>
         private static byte[] CompressGZip(byte[] data)
         {
             using var output = new MemoryStream();
-            // CompressionLevel.Fastest optimiza la velocidad de compresión, a costa de una tasa de compresión ligeramente menor.
+            // CompressionLevel.Fastest optimizes compression speed at the cost of slightly lower compression ratio.
             using (var compressor = new GZipStream(output, CompressionLevel.Fastest, true))
             {
                 compressor.Write(data, 0, data.Length);
@@ -119,91 +119,90 @@ namespace Alis.Core.Aspect.Memory.Generator
         }
         
         /// <summary>
-        /// Calcula el hash SHA256 de los datos binarios.
+        /// Calculate SHA256 hash of binary data.
         /// </summary>
         private static string CalculateSha256Hash(byte[] data)
         {
             using var sha256 = SHA256.Create();
             byte[] hashBytes = sha256.ComputeHash(data);
-            // Convertir a string hexadecimal en minúsculas sin guiones.
+            // Convert to lowercase hexadecimal string without dashes.
             return BitConverter.ToString(hashBytes).Replace("-", "").ToLowerInvariant();
         }
 
         private string GenerateRegistrationLoader(string assemblyName, string compressedByteDataAsCSharp, string originalHash)
         {
-            // Si el archivo no se pudo leer, se usa un array vacío.
+            // If the file could not be read, use an empty array.
             if (string.IsNullOrEmpty(compressedByteDataAsCSharp))
             {
-                // Usamos un array vacío sin comentario para una generación más limpia
+                // Use an empty array without comment for a cleaner generation
                 compressedByteDataAsCSharp = "";
             }
-            
-            // Usamos $"" para interpolación, que es rápido y legible.
-            string code = $@"
-// <auto-generated/>
+
+            // Use $"" for interpolation: clear and efficient.
+            string code = $@"// <auto-generated/>
 using System;
 using System.IO;
 using System.Runtime.CompilerServices;
-using System.IO.Compression; 
+using System.IO.Compression;
 
 namespace Alis.Core.Aspect.Memory.Generator
 {{
     /// <summary>
-    /// Clase de anclaje AOT-safe que contiene el recurso binario estático (comprimido).
+    /// AOT-safe anchor class that contains the static binary resource (compressed).
     /// </summary>
-    internal static class ResourceAnchor 
-    {{ 
+    internal static class ResourceAnchor
+    {{
         /// <summary>
-        /// Hash SHA256 del archivo '{ResourceFileName}' original (sin comprimir).
-        /// Utilizado para trazabilidad.
+        /// SHA256 hash of the original '{ResourceFileName}' file (uncompressed).
+        /// Used for traceability.
         /// </summary>
         private const string OriginalHash = ""{originalHash}"";
-        
-        // Array de bytes COMPRIMIDO (formato decimal y sin espacios).
-        private static readonly byte[] AssetData = new byte[] {{ 
-            {compressedByteDataAsCSharp} 
+
+        // COMPRESSED byte array (decimal format, no spaces).
+        private static readonly byte[] AssetData = new byte[] {{
+            {compressedByteDataAsCSharp}
         }};
 
         public static Stream LoadAsset()
         {{
             if (AssetData.Length == 0)
             {{
-                throw new InvalidOperationException(""El recurso '{ResourceFileName}' no se encontró o está vacío durante la compilación AOT."");
+                throw new InvalidOperationException(""The resource '{ResourceFileName}' was not found or is empty during AOT compilation."");
             }}
 
             // -------------------------------------------------------------------
-            // Lógica de Descompresión en tiempo de ejecución (AOT-Safe)
+            // Runtime decompression logic (AOT-safe)
             // -------------------------------------------------------------------
-            
-            // Creamos un MemoryStream de solo lectura a partir del array estático.
+
+            // Create a read-only MemoryStream from the static array.
             var compressedStream = new MemoryStream(AssetData, writable: false);
-            
-            // Creamos el stream de descompresión (el constructor de GZipStream maneja el posicionamiento).
+
+            // Create the decompression stream (GZipStream constructor handles positioning).
             using var decompressor = new GZipStream(compressedStream, CompressionMode.Decompress);
-            
-            // Creamos el stream de destino y copiamos el contenido.
+
+            // Create the destination stream and copy the contents.
             var decompressedStream = new MemoryStream();
             decompressor.CopyTo(decompressedStream);
-            
-            // Rebobinamos y devolvemos el stream decompressed.
+
+            // Rewind and return the decompressed stream.
             decompressedStream.Seek(0, SeekOrigin.Begin);
-            
-            // Devolvemos el MemoryStream. El caller es responsable de disponer de él.
+
+            // Return the MemoryStream. Caller is responsible for disposing it.
             return decompressedStream;
         }}
     }}
 
     /// <summary>
-    /// Inicializador estático para registrar esta asamblea en el cargador central.
+    /// Static initializer to register this assembly with the central loader.
     /// </summary>
     public static class AssemblyLoader
     {{
-        [ModuleInitializer] 
+        [ModuleInitializer]
         public static void EnsureLoaded()
         {{
             Func<Stream> assetLoader = ResourceAnchor.LoadAsset;
-            
-            // Registramos el cargador delegado.
+
+            // Register the delegate loader.
             {RegistryNamespace}.RegisterAssembly(""{assemblyName}"", assetLoader);
         }}
     }}
