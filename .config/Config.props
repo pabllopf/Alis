@@ -343,33 +343,33 @@
     <ItemGroup Condition="'$(Configuration)' == 'Release'">
         <None
             Condition="$(AssemblyName.Contains('Generator')) == false"
-            Include="$(SolutionDir)**/**/generator/bin/Release/lib/netstandard2.0/*Generator.dll"
+            Include="$(SolutionDir)**/**/generator/bin/Release/netstandard2.0/*Generator.dll"
             Pack="false"
             TargetPath="../../analyzers/dotnet/cs/%(Filename)%(Extension)"
             Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
             CopyToPublishDirectory="PreserveNewest"
             CopyToOutputDirectory="PreserveNewest"
-            Visible="true"/>
+            Visible="false"/>
 
         <None
             Condition="$(AssemblyName.Contains('Generator')) == false"
-            Include="$(SolutionDir)**/**/generator/bin/Release/lib/netstandard2.0/*Generator.pdb"
+            Include="$(SolutionDir)**/**/generator/bin/Release/netstandard2.0/*Generator.pdb"
             Pack="false"
             TargetPath="../../analyzers/dotnet/cs/%(Filename)%(Extension)"
             Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
             CopyToPublishDirectory="PreserveNewest"
             CopyToOutputDirectory="PreserveNewest"
-            Visible="true"/>
+            Visible="false"/>
 
         <None
             Condition="$(AssemblyName.Contains('Generator')) == false"
-            Include="$(SolutionDir)**/**/generator/bin/Release/lib/netstandard2.0/*Generator.deps.json"
+            Include="$(SolutionDir)**/**/generator/bin/Release/netstandard2.0/*Generator.deps.json"
             Pack="false"
             TargetPath="../../analyzers/dotnet/cs/%(Filename)%(Extension)"
             Link="analyzers/dotnet/cs/%(Filename)%(Extension)"
             CopyToPublishDirectory="PreserveNewest"
             CopyToOutputDirectory="PreserveNewest"
-            Visible="true"/>
+            Visible="false"/>
         
         <Content
             Condition="$(AssemblyName.Contains('Generator')) == false"
