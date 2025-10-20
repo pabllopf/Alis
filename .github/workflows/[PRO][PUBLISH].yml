@@ -105,7 +105,7 @@ jobs:
               if [[ "$fw" == netcoreapp* ]]; then
                 runtimes=("win-x64" "linux-x64" "osx-x64")
               else
-                runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
+                runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm64" "osx-x64" "osx-arm64")
               fi
   
               for rt in "${runtimes[@]}"; do
@@ -200,7 +200,7 @@ jobs:
               if [[ "$fw" == netcoreapp* ]]; then
                 runtimes=("win-x64" "linux-x64" "osx-x64")
               else
-                runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
+                runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm64" "osx-x64" "osx-arm64")
               fi
   
               for rt in "${runtimes[@]}"; do
@@ -319,16 +319,7 @@ jobs:
 
       - name: Publish HUB - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-arm64 -f ${{ matrix.framework }}
-
-      - name: Publish INTALLER - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r linux-arm -f ${{ matrix.framework }}
-
-      - name: Publish ENGINE - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r linux-arm -f ${{ matrix.framework }}
-
-      - name: Publish HUB - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-arm -f ${{ matrix.framework }}
-
+        
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r osx-x64 -f ${{ matrix.framework }}
@@ -501,12 +492,7 @@ jobs:
             ./1_Presentation/Hub/src/bin/Release/**/win-arm64/**/*.zip
             ./1_Presentation/Hub/src/bin/Release/**/win-x86/**/*.zip
             ./1_Presentation/Hub/src/bin/Release/**/linux-x64/**/*.zip
-            ./1_Presentation/Hub/src/bin/Release/**/linux-arm/**/*.zip
             ./1_Presentation/Hub/src/bin/Release/**/linux-arm64/**/*.zip
-            ./1_Presentation/Hub/src/bin/Release/**/linux-musl-x64/**/*.zip
-            ./1_Presentation/Hub/src/bin/Release/**/linux-musl-arm/**/*.zip
-            ./1_Presentation/Hub/src/bin/Release/**/linux-musl-arm64/**/*.zip
-
 
       - name: git fetch
         run: git fetch
