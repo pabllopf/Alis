@@ -47,9 +47,6 @@ jobs:
   build_extensions:
     needs: prepare
     runs-on: macos-13
-    strategy:
-      matrix:
-        framework: [ net5.0, net8.0, netstandard2.0, net461, netcoreapp2.0 ]
     steps:
 
       - name: Limpiar entorno
@@ -91,49 +88,55 @@ jobs:
           dotnet-version: 9.0.301
 
       - name: Build extensiones automáticamente
+        shell: bash
         run: |
-          echo "Buscando proyectos..."
-          
-          if [[ "${{ matrix.framework }}" == netcoreapp* ]]; then
-           runtimes=("win-x64" "linux-x64" "osx-x64")
-          else
-           runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
-          fi
-          
-          for proj in $(find 1_Presentation/Extension -name "*.csproj" \
-            | grep -viE "sample|generator|benchmark|template|Alis.App|test"); do
-          
-            echo "Compilando $proj ->  -c Release"
-            dotnet build "$proj" -c Release
-          
-            for rt in "${runtimes[@]}"; do
-              echo "Compilando $proj -> fw=${{ matrix.framework }}, rt=$rt"
-              dotnet build "$proj" \
-                -c Release \
-                -f "${{ matrix.framework }}" \
-                -r "$rt"
+          # Lista de frameworks a compilar
+          frameworks=(net5.0 net8.0 netstandard2.0 net461 netcoreapp2.0)
+  
+          echo "🔍 Buscando proyectos de extensión..."
+          for proj in $(find 1_Presentation/Extension -name "*.csproj" | grep -viE "sample|generator|benchmark|template|Alis.App|test"); do
+            echo "🧱 Compilando $proj (Release base)"
+            dotnet build "$proj" -c Release || exit 1
+  
+            for fw in "${frameworks[@]}"; do
+              echo "➡️  Framework: $fw"
+  
+              # Selección de runtimes según tipo de framework
+              if [[ "$fw" == netcoreapp* ]]; then
+                runtimes=("win-x64" "linux-x64" "osx-x64")
+              else
+                runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
+              fi
+  
+              for rt in "${runtimes[@]}"; do
+                echo "⚙️  Compilando $proj -> fw=$fw, rt=$rt"
+                dotnet build "$proj" -c Release -f "$fw" -r "$rt" || exit 1
+              done
             done
+          done
+
+      - name: Create packages
+        run: |
+          mkdir -p ./.publish/${{ needs.prepare.outputs.version }}
+          for project in $(find . -name "*.csproj" -type f); do
+            if [[ $project == *".Extension."* &&  $project != *".Template."* && $project != *".App."* && $project != *".Test."* && $project != *".Benchmark"* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* && $project != *".Generator."* ]]; then
+              echo "Packing $project"
+              dotnet pack --include-symbols --include-source "$project" -c Release -o "./.publish/${{ needs.prepare.outputs.version }}/"
+            fi
           done
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-extensions-${{ matrix.framework }}
+          name: build-core-extensions
           path: |
-            **/bin/Release/**/*.dll
-            **/bin/Release/**/*.pdb
-            **/bin/Release/**/*.xml
-            **/bin/Release/**/*.deps.json
-             **/bin/Release/**/*.json
-            **/bin/Release/**/*.runtimeconfig.json
+            **/.publish/${{ needs.prepare.outputs.version }}/**/*.snupkg
+            **/.publish/${{ needs.prepare.outputs.version }}/**/*.nupkg
   
   
   build_core:
     needs: prepare
     runs-on: macos-13
-    strategy:
-      matrix:
-        framework: [ net5.0, net6.0, net7.0, net8.0, net9.0, netstandard2.0, netstandard2.1, net461, net471, net472, net48, net481, netcoreapp2.0, netcoreapp2.1, netcoreapp2.2, netcoreapp3.0, netcoreapp3.1 ]
     steps:
 
       - name: Limpiar entorno
@@ -174,43 +177,57 @@ jobs:
         with:
           dotnet-version: 9.0.301
 
-      - name: Build Core
+      - name: Build Core (all frameworks)
+        shell: bash
         run: |
-          if [[ "${{ matrix.framework }}" == netcoreapp* ]]; then
-            runtimes=("win-x64" "linux-x64" "osx-x64")
-          else
-            runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
-          fi
-          
-           echo "Buscando proyectos core..."
-          
-           for proj in $(find . -name "*.csproj" \
-           | grep -viE "sample|generator|benchmark|template|Alis.App|extension|test"); do
-          
-           echo "Compilando $proj ->  -c Release"
-           dotnet build "$proj" -c Release
-          
-             for rt in "${runtimes[@]}"; do
-               echo "Compilando $proj -> fw=${{ matrix.framework }}, rt=$rt"
-               dotnet build "$proj" \
-                 -c Release \
-                 -f "${{ matrix.framework }}" \
-                 -r "$rt" || exit 1
-             done
-           done
+          frameworks=(
+            net5.0 net6.0 net7.0 net8.0 net9.0
+            netstandard2.0 netstandard2.1
+            net461 net471 net472 net48 net481
+            netcoreapp2.0 netcoreapp2.1 netcoreapp2.2 netcoreapp3.0 netcoreapp3.1
+          )
+  
+          echo "Buscando proyectos core..."
+  
+          for proj in $(find . -name "*.csproj" | grep -viE "sample|generator|benchmark|template|Alis.App|extension|test"); do
+            echo "🧱 Compilando $proj (base Release)"
+            dotnet build "$proj" -c Release || exit 1
+  
+            for fw in "${frameworks[@]}"; do
+              echo "➡️  Framework: $fw"
+  
+              # Seleccionar runtimes según framework
+              if [[ "$fw" == netcoreapp* ]]; then
+                runtimes=("win-x64" "linux-x64" "osx-x64")
+              else
+                runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm" "linux-arm64" "osx-x64" "osx-arm64")
+              fi
+  
+              for rt in "${runtimes[@]}"; do
+                echo "⚙️  Compilando $proj -> fw=$fw, rt=$rt"
+                dotnet build "$proj" -c Release -f "$fw" -r "$rt" || exit 1
+              done
+            done
+          done
+
+      - name: Create packages
+        run: |
+          mkdir -p ./.publish/${{ needs.prepare.outputs.version }}
+          for project in $(find . -name "*.csproj" -type f); do
+            if [[ $project != *".Extension."* && $project != *".Template."* && $project != *".App."* && $project != *".Test."* && $project != *".Benchmark"* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* && $project != *".Generator."* ]]; then
+              echo "Packing $project"
+              dotnet pack --include-symbols --include-source "$project" -c Release -o "./.publish/${{ needs.prepare.outputs.version }}/"
+            fi
+          done
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-core-output-${{ matrix.framework }}
+          name: build-core-output
           path: |
-            **/bin/Release/**/*.dll
-            **/bin/Release/**/*.pdb
-            **/bin/Release/**/*.xml
-            **/bin/Release/**/*.deps.json
-             **/bin/Release/**/*.json
-            **/bin/Release/**/*.runtimeconfig.json
-
+            **/.publish/${{ needs.prepare.outputs.version }}/**/*.snupkg
+            **/.publish/${{ needs.prepare.outputs.version }}/**/*.nupkg
+            
   build_apps:
     needs: [ prepare ]
     runs-on: macos-13
@@ -336,18 +353,8 @@ jobs:
         with:
           name: build-apps-output-${{ matrix.framework }}
           path: |
-            **/bin/Release/**/*.dll
-            **/bin/Release/**/*.exe
-            **/bin/Release/**/*.app
-            **/bin/Release/**/*.dmg
-            **/bin/Release/**/*.zip
-            **/bin/Release/**/*.msi
-            **/bin/Release/**/*.pdb
-            **/bin/Release/**/*.xml
-            **/bin/Release/**/*.deps.json
-            **/bin/Release/**/*.json
-            **/bin/Release/**/*.runtimeconfig.json
-  
+            **/1_Presentation/Hub/src/**/bin/**/Release/**/*.dmg
+            **/1_Presentation/Hub/src/**/bin/**/Release/**/*.zip
   
   publish_packages:
     name: Publish NuGet Packages
@@ -414,16 +421,6 @@ jobs:
           versionfinal="$major.$minor.$patch"
           sed -i "" "s/$version/$versionfinal/" "$file"
           echo "version=$versionfinal" >> $GITHUB_OUTPUT
-
-      - name: Create packages
-        run: |
-          mkdir -p ./.publish/${{ needs.prepare.outputs.version }}
-          for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Test."* && $project != *".Benchmark"* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* && $project != *".Generator."* ]]; then
-              echo "Packing $project"
-              dotnet pack --include-symbols --include-source "$project" -c Release -o "./.publish/${{ needs.prepare.outputs.version }}/"
-            fi
-          done
 
       - name: Publish to NuGet
         run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET }} --skip-duplicate
