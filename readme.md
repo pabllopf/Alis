@@ -306,13 +306,6 @@ socio-economic status, nationality, personal appearance, race, religion, or sexu
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/pabllopf">
-                    <img src="https://avatars.githubusercontent.com/u/48176121?v=4" width="75;" alt="pabllopf"/>
-                    <br />
-                    <sub><b>Pablo Perdomo Falcón</b></sub>
-                </a>
-            </td>
-            <td align="center">
                 <a href="https://github.com/Chgv99">
                     <img src="https://avatars.githubusercontent.com/u/55676590?v=4" width="75;" alt="Chgv99"/>
                     <br />
@@ -354,13 +347,6 @@ socio-economic status, nationality, personal appearance, race, religion, or sexu
                     <img src="https://avatars.githubusercontent.com/u/82760316?v=4" width="75;" alt="suarez0965"/>
                     <br />
                     <sub><b>Carlos</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/roseralmenar">
-                    <img src="https://avatars.githubusercontent.com/u/118014440?v=4" width="75;" alt="roseralmenar"/>
-                    <br />
-                    <sub><b>Roser Almenar</b></sub>
                 </a>
             </td>
 		</tr>
