@@ -7,6 +7,7 @@ using System.IO;
 using System.IO.Compression; 
 using System.Security.Cryptography; // New: required for SHA256
 using System.Collections.Generic;
+using System.Collections.Immutable;
 
 namespace Alis.Core.Aspect.Memory.Generator
 {
@@ -19,29 +20,29 @@ namespace Alis.Core.Aspect.Memory.Generator
         public void Initialize(IncrementalGeneratorInitializationContext context)
         {
             // Provider for all additional files
-            var additional = context.AdditionalTextsProvider;
+            IncrementalValuesProvider<AdditionalText> additional = context.AdditionalTextsProvider;
 
             // Provider for a declared assets.pak AdditionalFile (if any)
-            var pakProvider = additional
+            IncrementalValueProvider<ImmutableArray<AdditionalText>> pakProvider = additional
                 .Where(at => Path.GetFileName(at.Path).Equals(ResourceFileName, StringComparison.OrdinalIgnoreCase))
                 .Collect();
 
             // Provider for all files that look like they belong to an Assets folder
-            var assetFilesProvider = additional
+            IncrementalValueProvider<ImmutableArray<AdditionalText>> assetFilesProvider = additional
                 .Where(at => IsUnderAssets(at.Path))
                 .Collect();
 
             // Combine both providers and the compilation so we can compute a state and only regenerate when something changes
-            var combined = pakProvider.Combine(assetFilesProvider).Combine(context.CompilationProvider);
+            IncrementalValueProvider<((ImmutableArray<AdditionalText> Left, ImmutableArray<AdditionalText> Right) Left, Compilation Right)> combined = pakProvider.Combine(assetFilesProvider).Combine(context.CompilationProvider);
 
             context.RegisterSourceOutput(combined, (spc, triple) =>
             {
                 // triple.Left is the pair (pakFiles, assets), triple.Right is the Compilation
-                var pair = triple.Left;
-                var compilation = triple.Right;
+                (ImmutableArray<AdditionalText> Left, ImmutableArray<AdditionalText> Right) pair = triple.Left;
+                Compilation compilation = triple.Right;
 
-                var pakFiles = pair.Left; // ImmutableArray<AdditionalText>
-                var assets = pair.Right;  // ImmutableArray<AdditionalText>
+                ImmutableArray<AdditionalText> pakFiles = pair.Left; // ImmutableArray<AdditionalText>
+                ImmutableArray<AdditionalText> assets = pair.Right;  // ImmutableArray<AdditionalText>
 
                 try
                 {
@@ -54,10 +55,10 @@ namespace Alis.Core.Aspect.Memory.Generator
                     // Prefer declared assets.pak content if present
                     if (!pakFiles.IsDefaultOrEmpty && pakFiles.Length > 0)
                     {
-                        var pakText = pakFiles[0].GetText();
+                        SourceText pakText = pakFiles[0].GetText();
                         if (pakText != null)
                         {
-                            var txt = pakText.ToString();
+                            string txt = pakText.ToString();
                             originalBytes = Encoding.UTF8.GetBytes(txt);
                         }
                     }
@@ -65,7 +66,7 @@ namespace Alis.Core.Aspect.Memory.Generator
                     // If not present, build a deterministic pak from the AdditionalFiles under Assets
                     if (originalBytes == null)
                     {
-                        var entries = assets
+                        List<(string Path, string Text)> entries = assets
                             .Select(a => (Path: a.Path.Replace('\\','/'), Text: a.GetText()?.ToString() ?? string.Empty))
                             .OrderBy(e => e.Path, StringComparer.OrdinalIgnoreCase)
                             .ToList();
@@ -78,10 +79,10 @@ namespace Alis.Core.Aspect.Memory.Generator
                         originalHash = CalculateSha256Hash(originalBytes);
                     }
 
-                    var compressed = CompressGZip(originalBytes ?? Array.Empty<byte>());
+                    byte[] compressed = CompressGZip(originalBytes ?? Array.Empty<byte>());
 
                     // Convert compressed bytes to comma-separated decimal list
-                    var sb = new StringBuilder();
+                    StringBuilder sb = new StringBuilder();
                     for (int i = 0; i < compressed.Length; i++)
                     {
                         sb.Append(compressed[i]);
@@ -94,7 +95,7 @@ namespace Alis.Core.Aspect.Memory.Generator
                 }
                 catch (Exception ex)
                 {
-                    var desc = new DiagnosticDescriptor("ALIS0002", "Generator failure", $"Resource generator failed: {ex.Message}", "AOT Resources", DiagnosticSeverity.Error, true);
+                    DiagnosticDescriptor desc = new DiagnosticDescriptor("ALIS0002", "Generator failure", $"Resource generator failed: {ex.Message}", "AOT Resources", DiagnosticSeverity.Error, true);
                     spc.ReportDiagnostic(Diagnostic.Create(desc, Location.None));
                 }
             });
@@ -104,31 +105,31 @@ namespace Alis.Core.Aspect.Memory.Generator
         private static bool IsUnderAssets(string path)
         {
             if (string.IsNullOrEmpty(path)) return false;
-            var p = path.Replace('\\', '/');
+            string p = path.Replace('\\', '/');
             return p.IndexOf("/Assets/", StringComparison.OrdinalIgnoreCase) >= 0 || p.EndsWith("/Assets", StringComparison.OrdinalIgnoreCase);
         }
 
         private static byte[] CreatePakFromAssetTexts(IEnumerable<(string Path, string Text)> entries)
         {
-            using var ms = new MemoryStream();
-            using (var archive = new ZipArchive(ms, ZipArchiveMode.Create, true))
+            using MemoryStream ms = new MemoryStream();
+            using (ZipArchive archive = new ZipArchive(ms, ZipArchiveMode.Create, true))
             {
                 bool any = false;
-                foreach (var e in entries)
+                foreach ((string Path, string Text) e in entries)
                 {
                     any = true;
                     string relative = e.Path.Replace('\\', '/');
-                    var entry = archive.CreateEntry(relative, CompressionLevel.Optimal);
-                    using var es = entry.Open();
+                    ZipArchiveEntry entry = archive.CreateEntry(relative, CompressionLevel.Optimal);
+                    using Stream es = entry.Open();
                     byte[] content = Encoding.UTF8.GetBytes(e.Text ?? string.Empty);
                     es.Write(content, 0, content.Length);
                 }
 
                 if (!any)
                 {
-                    var entry = archive.CreateEntry("placeholder.txt", CompressionLevel.Optimal);
-                    using var es = entry.Open();
-                    var content = Encoding.UTF8.GetBytes($"# Auto-generated placeholder for {ResourceFileName}\n");
+                    ZipArchiveEntry entry = archive.CreateEntry("placeholder.txt", CompressionLevel.Optimal);
+                    using Stream es = entry.Open();
+                    byte[] content = Encoding.UTF8.GetBytes($"# Auto-generated placeholder for {ResourceFileName}\n");
                     es.Write(content, 0, content.Length);
                 }
             }
@@ -139,8 +140,8 @@ namespace Alis.Core.Aspect.Memory.Generator
 
         private static byte[] CompressGZip(byte[] data)
         {
-            using var output = new MemoryStream();
-            using (var compressor = new GZipStream(output, CompressionLevel.Optimal, true))
+            using MemoryStream output = new MemoryStream();
+            using (GZipStream compressor = new GZipStream(output, CompressionLevel.Optimal, true))
             {
                 compressor.Write(data ?? Array.Empty<byte>(), 0, data?.Length ?? 0);
             }
@@ -149,14 +150,14 @@ namespace Alis.Core.Aspect.Memory.Generator
 
         private static string CalculateSha256Hash(byte[] data)
         {
-            using var sha = SHA256.Create();
-            var h = sha.ComputeHash(data ?? Array.Empty<byte>());
+            using SHA256 sha = SHA256.Create();
+            byte[] h = sha.ComputeHash(data ?? Array.Empty<byte>());
             return BitConverter.ToString(h).Replace("-", "").ToLowerInvariant();
         }
 
         private string GenerateRegistrationLoader(string assemblyName, string compressedByteDataAsCSharp, string originalHash)
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("// <auto-generated/>");
             sb.AppendLine("using System;");
