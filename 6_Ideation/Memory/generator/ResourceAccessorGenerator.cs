@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.IO.Compression; 
 using System.Security.Cryptography; // New: required for SHA256
+using System.Collections.Generic;
 
 namespace Alis.Core.Aspect.Memory.Generator
 {
@@ -48,52 +49,108 @@ namespace Alis.Core.Aspect.Memory.Generator
                 return;
             }
             
-            var assetFile = context.AdditionalFiles
+            AdditionalText assetFile = context.AdditionalFiles
                 .FirstOrDefault(f => Path.GetFileName(f.Path).Equals(ResourceFileName, StringComparison.OrdinalIgnoreCase));
 
             string compressedByteDataAsCSharp = "";
             string assemblyName = context.Compilation.AssemblyName ?? "DefaultAssembly";
             string originalHash = string.Empty; // Hash of the original file
-            
+            byte[] originalFileBytes = null;
+
+            // Helper: obtener projectDir razonablemente
+            string projectDir = null;
+            try
+            {
+                if (context.AnalyzerConfigOptions.GlobalOptions.TryGetValue("build_property.ProjectDir", out string projDirValue) && !string.IsNullOrEmpty(projDirValue))
+                {
+                    projectDir = projDirValue;
+                }
+                else if (context.AdditionalFiles.Any())
+                {
+                    projectDir = Path.GetDirectoryName(context.AdditionalFiles.First().Path) ?? Environment.CurrentDirectory;
+                }
+            }
+            catch
+            {
+                // ignore
+            }
+
+            if (string.IsNullOrEmpty(projectDir))
+            {
+                projectDir = Environment.CurrentDirectory;
+            }
+
             if (assetFile != null)
             {
                 try
                 {
-                    // Read the original binary (I/O required for embedding)
-                    byte[] originalFileBytes = File.ReadAllBytes(assetFile.Path);
+                    if (File.Exists(assetFile.Path) && new FileInfo(assetFile.Path).Length > 0)
+                    {
+                        // Read the original binary (I/O required for embedding)
+                        originalFileBytes = File.ReadAllBytes(assetFile.Path);
+                    }
+                    else
+                    {
+                        // El archivo declarado existe pero está vacío: generar a partir de la carpeta Assets
+                        originalFileBytes = CreatePakFromAssets(projectDir);
+
+                        DiagnosticDescriptor infoDescriptor = new DiagnosticDescriptor(
+                            "ALIS0004", "Assets packaged",
+                            $"The declared '{ResourceFileName}' was empty; a package was created from '{Path.Combine(projectDir, "Assets")}'.",
+                            "AOT Resources", DiagnosticSeverity.Info, true);
+                        context.ReportDiagnostic(Diagnostic.Create(infoDescriptor, Location.None));
+
+                        // Intentamos escribir el paquete en el mismo path para compatibilidad si es posible
+                        try
+                        {
+                            File.WriteAllBytes(assetFile.Path, originalFileBytes);
+                        }
+                        catch
+                        {
+                            // ignore write failures to declared AdditionalFile
+                        }
+                    }
 
                     // ----------------------------------------------------------------------
                     // TRACEABILITY OPTIMIZATION: Calculate SHA256 hash of original file.
                     // ----------------------------------------------------------------------
-                    originalHash = CalculateSha256Hash(originalFileBytes);
-
-                    // ----------------------------------------------------------------------
-                    // SPEED & SIZE OPTIMIZATION: Compress the data with GZip.
-                    // ----------------------------------------------------------------------
-                    byte[] compressedBytes = CompressGZip(originalFileBytes);
-
-                    // ----------------------------------------------------------------------
-                    // SPEED OPTIMIZATION: Use StringBuilder.
-                    // SIZE OPTIMIZATION: Use decimal format and REMOVE space after comma.
-                    // ----------------------------------------------------------------------
-                    var builder = new StringBuilder();
-                    for (int i = 0; i < compressedBytes.Length; i++)
+                    if (originalFileBytes != null)
                     {
-                        // Append the byte in decimal format (1-3 characters)
-                        builder.Append(compressedBytes[i]); 
+                        originalHash = CalculateSha256Hash(originalFileBytes);
 
-                        if (i < compressedBytes.Length - 1)
+                        // ----------------------------------------------------------------------
+                        // SPEED & SIZE OPTIMIZATION: Compress the data with GZip.
+                        // ----------------------------------------------------------------------
+                        byte[] compressedBytes = CompressGZip(originalFileBytes);
+
+                        // ----------------------------------------------------------------------
+                        // SPEED OPTIMIZATION: Use StringBuilder.
+                        // SIZE OPTIMIZATION: Use decimal format and REMOVE space after comma.
+                        // ----------------------------------------------------------------------
+                        StringBuilder builder = new StringBuilder();
+                        for (int i = 0; i < compressedBytes.Length; i++)
                         {
-                            // Append ONLY the comma, without space. (Saves 1 char per byte)
-                            builder.Append(',');
+                            // Append the byte in decimal format (1-3 characters)
+                            builder.Append(compressedBytes[i]); 
+
+                            if (i < compressedBytes.Length - 1)
+                            {
+                                // Append ONLY the comma, without space. (Saves 1 char per byte)
+                                builder.Append(',');
+                            }
                         }
+                        compressedByteDataAsCSharp = builder.ToString();
                     }
-                    compressedByteDataAsCSharp = builder.ToString();
+                    else
+                    {
+                        // If still null, leave as empty and diagnostics will mention it later.
+                        compressedByteDataAsCSharp = "";
+                    }
                 }
                 catch (Exception ex)
                 {
                     // Report diagnostic if I/O fails
-                    var diagnostic = Diagnostic.Create(
+                    Diagnostic diagnostic = Diagnostic.Create(
                         new DiagnosticDescriptor("ALIS0002", "I/O Error in Generator", 
                             $"Failed to read/compress the binary AdditionalFile '{assetFile.Path}': {ex.Message}",
                             "AOT Resources", DiagnosticSeverity.Error, true),
@@ -104,55 +161,29 @@ namespace Alis.Core.Aspect.Memory.Generator
             }
             else
             {
-                // Si no existe en AdditionalFiles: intentamos crear el archivo en el directorio del proyecto
-                // Suposición razonable: usar la propiedad MSBuild 'ProjectDir' si está disponible.
-                string projectDir = null;
-                try
-                {
-                    if (context.AnalyzerConfigOptions.GlobalOptions.TryGetValue("build_property.ProjectDir", out var projDirValue) && !string.IsNullOrEmpty(projDirValue))
-                    {
-                        projectDir = projDirValue;
-                    }
-                    else if (context.AdditionalFiles.Any())
-                    {
-                        // Fallback: usar el directorio del primer AdditionalFile disponible
-                        projectDir = Path.GetDirectoryName(context.AdditionalFiles.First().Path);
-                    }
-                }
-                catch
-                {
-                    // ignorar errores al obtener metadatos; usamos Environment.CurrentDirectory abajo
-                }
-
-                if (string.IsNullOrEmpty(projectDir))
-                {
-                    projectDir = Environment.CurrentDirectory;
-                }
-
-                var generatedPath = Path.Combine(projectDir, ResourceFileName);
+                string generatedPath = Path.Combine(Path.Combine(projectDir, "obj"), ResourceFileName);
 
                 try
                 {
-                    // Create a small placeholder binary if the file doesn't already exist.
-                    if (!File.Exists(generatedPath))
-                    {
-                        var placeholderText = $"# Auto-generated placeholder {ResourceFileName}\nGenerated by ResourceAccessorGenerator on {DateTime.UtcNow:O}\n";
-                        File.WriteAllBytes(generatedPath, Encoding.UTF8.GetBytes(placeholderText));
-                    }
+                    // Crear el paquete a partir de Assets (si existe) o un placeholder si no hay archivos.
+                    originalFileBytes = CreatePakFromAssets(projectDir);
+
+                    // Escribir el archivo generado en obj/ para que MSBuild/IDE lo vea si es necesario
+                    Directory.CreateDirectory(Path.GetDirectoryName(generatedPath) ?? projectDir);
+                    File.WriteAllBytes(generatedPath, originalFileBytes);
 
                     // Report an informational diagnostic indicating the file was generated
-                    var infoDescriptor = new DiagnosticDescriptor(
+                    DiagnosticDescriptor infoDescriptor = new DiagnosticDescriptor(
                         "ALIS0003", "Resource generated",
                         $"The file '{ResourceFileName}' was not declared and has been generated at: {generatedPath}",
                         "AOT Resources", DiagnosticSeverity.Info, true);
                     context.ReportDiagnostic(Diagnostic.Create(infoDescriptor, Location.None));
 
-                    // Now read and process the newly created file as if it were provided.
-                    byte[] originalFileBytes = File.ReadAllBytes(generatedPath);
+                    // Now process the newly created file bytes
                     originalHash = CalculateSha256Hash(originalFileBytes);
                     byte[] compressedBytes = CompressGZip(originalFileBytes);
 
-                    var builder = new StringBuilder();
+                    StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < compressedBytes.Length; i++)
                     {
                         builder.Append(compressedBytes[i]);
@@ -165,7 +196,7 @@ namespace Alis.Core.Aspect.Memory.Generator
                 }
                 catch (Exception ex)
                 {
-                    var diagnostic = Diagnostic.Create(
+                    Diagnostic diagnostic = Diagnostic.Create(
                         new DiagnosticDescriptor("ALIS0002", "I/O Error in Generator",
                             $"Failed to generate/read/compress '{generatedPath}': {ex.Message}",
                             "AOT Resources", DiagnosticSeverity.Error, true),
@@ -188,9 +219,9 @@ namespace Alis.Core.Aspect.Memory.Generator
         /// </summary>
         private static byte[] CompressGZip(byte[] data)
         {
-            using var output = new MemoryStream();
-            // CompressionLevel.Fastest optimizes compression speed at the cost of slightly lower compression ratio.
-            using (var compressor = new GZipStream(output, CompressionLevel.Fastest, true))
+            using MemoryStream output = new MemoryStream();
+            // CompressionLevel.Optimal optimizes compression speed at the cost of slightly lower compression ratio.
+            using (GZipStream compressor = new GZipStream(output, CompressionLevel.Optimal, true))
             {
                 compressor.Write(data, 0, data.Length);
             }
@@ -202,10 +233,56 @@ namespace Alis.Core.Aspect.Memory.Generator
         /// </summary>
         private static string CalculateSha256Hash(byte[] data)
         {
-            using var sha256 = SHA256.Create();
+            using SHA256 sha256 = SHA256.Create();
             byte[] hashBytes = sha256.ComputeHash(data);
             // Convert to lowercase hexadecimal string without dashes.
             return BitConverter.ToString(hashBytes).Replace("-", "").ToLowerInvariant();
+        }
+
+        /// <summary>
+        /// Creates a deterministic ZIP package from the project's Assets folder.
+        /// If no assets are found, returns a small placeholder package.
+        /// </summary>
+        private static byte[] CreatePakFromAssets(string projectDir)
+        {
+            string assetsDir = Path.Combine(projectDir, "Assets");
+
+            // Collect files deterministically
+            List<string> files = new List<string>();
+            if (Directory.Exists(assetsDir))
+            {
+                files = Directory.GetFiles(assetsDir, "*", SearchOption.AllDirectories)
+                                 .OrderBy(p => p, StringComparer.OrdinalIgnoreCase)
+                                 .ToList();
+            }
+
+            using MemoryStream ms = new MemoryStream();
+            using (ZipArchive archive = new ZipArchive(ms, ZipArchiveMode.Create, true))
+            {
+                if (files.Count == 0)
+                {
+                    // No files: create a placeholder entry so the pak isn't empty.
+                    ZipArchiveEntry entry = archive.CreateEntry("placeholder.txt", CompressionLevel.Optimal);
+                    using Stream entryStream = entry.Open();
+                    byte[] content = Encoding.UTF8.GetBytes($"# Auto-generated placeholder for {ResourceFileName}\nGenerated on {DateTime.UtcNow:O}\n");
+                    entryStream.Write(content, 0, content.Length);
+                }
+                else
+                {
+                    foreach (string file in files)
+                    {
+                        // Compute a relative path inside the archive
+                        string relative = GetRelativePath(projectDir, file).Replace('\\', '/');
+                        ZipArchiveEntry entry = archive.CreateEntry(relative, CompressionLevel.Optimal);
+                        using Stream entryStream = entry.Open();
+                        using FileStream fs = File.OpenRead(file);
+                        fs.CopyTo(entryStream);
+                    }
+                }
+            }
+
+            ms.Seek(0, SeekOrigin.Begin);
+            return ms.ToArray();
         }
 
         /// <summary>
@@ -217,26 +294,18 @@ namespace Alis.Core.Aspect.Memory.Generator
         /// <returns>The code</returns>
         private string GenerateRegistrationLoader(string assemblyName, string compressedByteDataAsCSharp, string originalHash)
         {
-            // If the file could not be read, use an empty array.
-            if (string.IsNullOrEmpty(compressedByteDataAsCSharp))
-            {
-                // Use an empty array without comment for a cleaner generation
-                compressedByteDataAsCSharp = "";
-            }
+            // Build the generated code using StringBuilder to reduce large temporary strings and copies.
+            var sb = new StringBuilder();
 
-            // Use $"" for interpolation: clear and efficient.
-            string code = $@"// <auto-generated/>
-using System;
-using System.IO;
-using System.Runtime.CompilerServices;
-using System.IO.Compression;
+            sb.AppendLine("// <auto-generated/>");
+            sb.AppendLine("using System;");
+            sb.AppendLine("using System.IO;");
+            sb.AppendLine("using System.Runtime.CompilerServices;");
+            sb.AppendLine("using System.IO.Compression;");
+            sb.AppendLine();
+            sb.AppendLine("namespace Alis.Core.Aspect.Memory.Generator");
+            sb.AppendLine("{");
 
-namespace Alis.Core.Aspect.Memory.Generator
-{{
-    /// <summary>
-    /// AOT-safe anchor class that contains the static binary resource (compressed).
-    /// </summary>
-    internal static class ResourceAnchor
     {{
         /// <summary>
         /// SHA256 hash of the original '{ResourceFileName}' file (uncompressed).
@@ -295,6 +364,48 @@ namespace Alis.Core.Aspect.Memory.Generator
 }}
 ";
             return code;
+        }
+
+        /// <summary>
+        /// Cross-target helper to compute relative paths on platforms that don't have Path.GetRelativePath (e.g. .NET Standard 2.0).
+        /// Returns a relative path from <paramref name="relativeTo"/> to <paramref name="path"/>.
+        /// </summary>
+        private static string GetRelativePath(string relativeTo, string path)
+        {
+            if (string.IsNullOrEmpty(relativeTo))
+            {
+                throw new ArgumentNullException(nameof(relativeTo));
+            }
+
+            if (string.IsNullOrEmpty(path))
+            {
+                throw new ArgumentNullException(nameof(path));
+            }
+
+            // Normalize to full paths to handle .. and . segments
+            string absoluteFrom = Path.GetFullPath(relativeTo);
+            string absoluteTo = Path.GetFullPath(path);
+
+            // If roots are different (different drives on Windows), return absolute path
+            if (!string.Equals(Path.GetPathRoot(absoluteFrom), Path.GetPathRoot(absoluteTo), StringComparison.OrdinalIgnoreCase))
+            {
+                return absoluteTo;
+            }
+
+            // Use URI trick for relative path calculation
+            // Ensure directory sentinel for folders
+            if (!absoluteFrom.EndsWith(Path.DirectorySeparatorChar.ToString()) && !absoluteFrom.EndsWith(Path.AltDirectorySeparatorChar.ToString()))
+            {
+                absoluteFrom = absoluteFrom + Path.DirectorySeparatorChar;
+            }
+
+            Uri fromUri = new Uri(absoluteFrom);
+            Uri toUri = new Uri(absoluteTo);
+            Uri relativeUri = fromUri.MakeRelativeUri(toUri);
+            string relativePath = Uri.UnescapeDataString(relativeUri.ToString());
+
+            // Convert URI separators to platform separators
+            return relativePath.Replace('/', Path.DirectorySeparatorChar);
         }
     }
 }
