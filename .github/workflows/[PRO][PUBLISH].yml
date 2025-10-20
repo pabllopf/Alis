@@ -11,14 +11,6 @@ jobs:
     outputs:
       version: ${{ steps.get-version.outputs.version }}
     steps:
-
-      - name: Limpiar entorno
-        run: |
-          echo "Limpiando entorno..."
-          rm -rf /Users/runner/.dotnet
-          rm -rf /Users/runner/.nuget
-          echo "Entorno limpio."
-
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -48,14 +40,6 @@ jobs:
     needs: prepare
     runs-on: macos-13
     steps:
-
-      - name: Limpiar entorno
-        run: |
-          echo "Limpiando entorno..."
-          rm -rf /Users/runner/.dotnet
-          rm -rf /Users/runner/.nuget
-          
-          echo "Entorno limpio."
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -138,15 +122,7 @@ jobs:
     needs: prepare
     runs-on: macos-13
     steps:
-
-      - name: Limpiar entorno
-        run: |
-          echo "Limpiando entorno..."
-          rm -rf /Users/runner/.dotnet
-          rm -rf /Users/runner/.nuget
-          
-          echo "Entorno limpio."
-
+    
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -235,14 +211,6 @@ jobs:
       matrix:
         framework: [ net8.0 ]
     steps:
-
-      - name: Limpiar entorno
-        run: |
-          echo "Limpiando entorno..."
-          rm -rf /Users/runner/.dotnet
-          rm -rf /Users/runner/.nuget
-          
-          echo "Entorno limpio."
 
       - name: Checkout
         uses: actions/checkout@v4
