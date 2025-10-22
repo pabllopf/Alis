@@ -29,7 +29,8 @@
 
 using System;
 using System.IO;
-using Alis.Core.Aspect.Memory.Generator;
+using System.IO.Compression;
+using System.Linq;
 
 namespace Alis.Core.Aspect.Memory.Sample
 {
@@ -56,15 +57,25 @@ namespace Alis.Core.Aspect.Memory.Sample
         
             try
             {
-                // ¡Acceso directo a un método estático! No hay Reflection.
-                using Stream assetStream =  AssetRegistry.GetAssetStreamByBaseName("assets.pak");
-            
-                // Ejemplo de procesamiento del Stream
-                using StreamReader reader = new(assetStream);
-                string content = reader.ReadToEnd();
-            
-                Console.WriteLine($"✅ Recurso cargado exitosamente (Tamaño: {assetStream.Length} bytes)");
-                Console.WriteLine($"Contenido: \n--- \n{content.Substring(0, Math.Min(100, content.Length))}... \n---");
+                using (Stream streamPack = AssetRegistry.GetAssetStreamByBaseName("assets.pack"))
+                {
+                    if (streamPack == null)
+                        throw new FileNotFoundException("Resource file 'assets.pack' not found in embedded resources.");
+
+                    using (MemoryStream memPack = new MemoryStream())
+                    {
+                        streamPack.CopyTo(memPack);
+                        memPack.Position = 0;
+
+                        using (ZipArchive zip = new ZipArchive(memPack, ZipArchiveMode.Read))
+                        {
+                            foreach (var entry in zip.Entries)
+                            {
+                                Console.WriteLine($"{zip.Entries.IndexOf(entry)}) '{entry.FullName}', Size: {entry.Length} bytes, Size(Kb) : {entry.Length / 1024} Kb");
+                            }
+                        }
+                    }
+                }
             }
             catch (InvalidOperationException ex)
             {

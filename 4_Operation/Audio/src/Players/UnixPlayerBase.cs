@@ -79,17 +79,17 @@ namespace Alis.Core.Audio.Players
         /// Extracts the wav from resources using the specified wav file name
         /// </summary>
         /// <param name="wavFileName">The wav file name</param>
-        /// <exception cref="FileNotFoundException">Resource '{wavFileName}' not found in 'assets.pak'.</exception>
-        /// <exception cref="FileNotFoundException">Resource file 'assets.pak' not found in embedded resources.</exception>
+        /// <exception cref="FileNotFoundException">Resource '{wavFileName}' not found in 'assets.pack'.</exception>
+        /// <exception cref="FileNotFoundException">Resource file 'assets.pack' not found in embedded resources.</exception>
         /// <returns>A task containing the string</returns>
         private static async Task<string> ExtractWavFromResourcesAsync(string wavFileName)
         {
          
         
-            using (Stream streamPack = AssetRegistry.GetAssetStreamByBaseName("assets.pak"))
+            using (Stream streamPack = AssetRegistry.GetAssetStreamByBaseName("assets.pack"))
             {
                 if (streamPack == null)
-                    throw new FileNotFoundException("Resource file 'assets.pak' not found in embedded resources.");
+                    throw new FileNotFoundException("Resource file 'assets.pack' not found in embedded resources.");
         
                 using (MemoryStream memPack = new MemoryStream())
                 {
@@ -100,7 +100,7 @@ namespace Alis.Core.Audio.Players
                     {
                         ZipArchiveEntry entry = zip.Entries.FirstOrDefault(e => e.FullName.Contains(wavFileName));
                         if (entry == null)
-                            throw new FileNotFoundException($"Resource '{wavFileName}' not found in 'assets.pak'.");
+                            throw new FileNotFoundException($"Resource '{wavFileName}' not found in 'assets.pack'.");
         
                         string tempFilePath = Path.Combine(Path.GetTempPath(), Path.GetFileName(wavFileName));
                         using (Stream entryStream = entry.Open())

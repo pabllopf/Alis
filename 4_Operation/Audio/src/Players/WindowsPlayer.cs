@@ -36,6 +36,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using Alis.Core.Aspect.Memory;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Audio.Interfaces;
 
@@ -88,19 +89,22 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="wavFileName">The wav file name</param>
         /// <exception cref="InvalidOperationException">No entry assembly found.</exception>
-        /// <exception cref="FileNotFoundException">Resource '{wavFileName}' not found in 'assets.pak'.</exception>
-        /// <exception cref="FileNotFoundException">Resource file 'assets.pak' not found in embedded resources.</exception>
+        /// <exception cref="FileNotFoundException">Resource '{wavFileName}' not found in 'assets.pack'.</exception>
+        /// <exception cref="FileNotFoundException">Resource file 'assets.pack' not found in embedded resources.</exception>
         /// <returns>A task containing the string</returns>
         private static async Task<string> ExtractWavFromResourcesAsync(string wavFileName)
         {
-            Assembly assembly = Assembly.GetEntryAssembly();
-            if (assembly == null)
-                throw new InvalidOperationException("No entry assembly found.");
+            string tempFilePath = Path.Combine(Path.GetTempPath(), Path.GetFileName(wavFileName));
         
-            using (Stream streamPack = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.assets.pak"))
+            if (File.Exists(tempFilePath))
+            {
+                return tempFilePath;
+            }
+        
+            using (Stream streamPack = AssetRegistry.GetAssetStreamByBaseName("assets.pack"))
             {
                 if (streamPack == null)
-                    throw new FileNotFoundException("Resource file 'assets.pak' not found in embedded resources.");
+                    throw new FileNotFoundException("Resource file 'assets.pack' not found in embedded resources.");
         
                 using (MemoryStream memPack = new MemoryStream())
                 {
@@ -111,9 +115,8 @@ namespace Alis.Core.Audio.Players
                     {
                         ZipArchiveEntry entry = zip.Entries.FirstOrDefault(e => e.FullName.Contains(wavFileName));
                         if (entry == null)
-                            throw new FileNotFoundException($"Resource '{wavFileName}' not found in 'assets.pak'.");
+                            throw new FileNotFoundException($"Resource '{wavFileName}' not found in 'assets.pack'.");
         
-                        string tempFilePath = Path.Combine(Path.GetTempPath(), Path.GetFileName(wavFileName));
                         using (Stream entryStream = entry.Open())
                         using (FileStream fileStream = File.Create(tempFilePath))
                         {

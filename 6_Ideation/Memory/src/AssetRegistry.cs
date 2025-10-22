@@ -44,14 +44,14 @@ namespace Alis.Core.Aspect.Memory
 
         
         /// <summary>
-        /// Obtiene un Stream del recurso "assets.pak" de la asamblea activa o predeterminada.
+        /// Obtiene un Stream del recurso "assets.pack" de la asamblea activa o predeterminada.
         /// </summary>
-        /// <param name="baseResourceName">El nombre base del recurso (debe ser "assets.pak" en este contexto).</param>
+        /// <param name="baseResourceName">El nombre base del recurso (debe ser "assets.pack" en este contexto).</param>
         public static Stream GetAssetStreamByBaseName(string baseResourceName)
         {
-            if (!string.Equals(baseResourceName, "assets.pak", StringComparison.OrdinalIgnoreCase))
+            if (!string.Equals(baseResourceName, "assets.pack", StringComparison.OrdinalIgnoreCase))
             {
-                throw new ArgumentException("Este método solo soporta la búsqueda para 'assets.pak'.", nameof(baseResourceName));
+                throw new ArgumentException("Este método solo soporta la búsqueda para 'assets.pack'.", nameof(baseResourceName));
             }
 
             if (ActiveAssemblyName == null)
@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Memory
             // Usamos el cargador delegado registrado
             if (!RegisteredAssetLoaders.TryGetValue(ActiveAssemblyName, out var loader))
             {
-                throw new InvalidOperationException($"La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pak registrado.");
+                throw new InvalidOperationException($"La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pack registrado.");
             }
 
             // Llamamos a la función lambda generada estáticamente

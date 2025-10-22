@@ -137,10 +137,10 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             string iconPath = AssetManager.Find(Context.Setting.General.Icon);
             if (string.IsNullOrEmpty(iconPath))
             {
-                using (Stream streamPack = AssetRegistry.GetAssetStreamByBaseName("assets.pak"))
+                using (Stream streamPack = AssetRegistry.GetAssetStreamByBaseName("assets.pack"))
                 {
                     if (streamPack == null)
-                        throw new FileNotFoundException("Resource file 'assets.pak' not found in embedded resources.");
+                        throw new FileNotFoundException("Resource file 'assets.pack' not found in embedded resources.");
   
                     using (MemoryStream memPack = new MemoryStream())
                     {
@@ -151,7 +151,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                         {
                             ZipArchiveEntry entry = zip.Entries.FirstOrDefault(e => e.FullName.Contains(Context.Setting.General.Icon));
                             if (entry == null)
-                                throw new FileNotFoundException($"Resource '{Context.Setting.General.Icon}' not found in 'assets.pak'.");
+                                throw new FileNotFoundException($"Resource '{Context.Setting.General.Icon}' not found in 'assets.pack'.");
   
                             using (Stream entryStream = entry.Open())
                             using (MemoryStream memImage = new MemoryStream())
