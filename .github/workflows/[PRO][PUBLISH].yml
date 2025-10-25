@@ -103,7 +103,7 @@ jobs:
           echo "🔍 Buscando proyectos de extensión..."
           for proj in $(find 1_Presentation/Extension -name "*.csproj" | grep -viE "sample|generator|benchmark|template|Alis.App|test"); do
             echo "🧱 Compilando $proj (Release base)"
-            dotnet build "$proj" -c Release --no-restore || exit 1
+            dotnet build "$proj" -c Release  || exit 1
   
             for fw in "${frameworks[@]}"; do
               echo "➡️  Framework: $fw"
@@ -117,7 +117,7 @@ jobs:
   
               for rt in "${runtimes[@]}"; do
                 echo "⚙️  Compilando $proj -> fw=$fw, rt=$rt"
-                dotnet build "$proj" --no-restore -c Release -f "$fw" -r "$rt" || exit 1
+                dotnet build "$proj"  -c Release -f "$fw" -r "$rt" || exit 1
               done
             done
           done
@@ -195,7 +195,7 @@ jobs:
   
           for proj in $(find . -name "*.csproj" | grep -viE "sample|generator|benchmark|template|Alis.App|extension|test"); do
             echo "🧱 Compilando $proj (base Release)"
-            dotnet build "$proj" -c Release --no-restore || exit 1
+            dotnet build "$proj" -c Release  || exit 1
   
             for fw in "${frameworks[@]}"; do
               echo "➡️  Framework: $fw"
@@ -209,7 +209,7 @@ jobs:
   
               for rt in "${runtimes[@]}"; do
                 echo "⚙️  Compilando $proj -> fw=$fw, rt=$rt"
-                dotnet build "$proj" -c Release --no-restore -f "$fw" -r "$rt" || exit 1
+                dotnet build "$proj" -c Release  -f "$fw" -r "$rt" || exit 1
               done
             done
           done
