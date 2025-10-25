@@ -7,7 +7,7 @@ on:
 jobs:
   prepare:
     if: contains(github.event.head_commit.message, 'release:')
-    runs-on: macos-13
+    runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.get-version.outputs.version }}
     steps:
@@ -23,6 +23,7 @@ jobs:
           file=Directory.Build.props
           version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
           IFS='.' read -r major minor patch <<< "$version"
+      
           patch=$((patch + 1))
           if [[ "$patch" -gt 9 ]]; then
             patch=0
@@ -32,13 +33,18 @@ jobs:
             minor=0
             major=$((major + 1))
           fi
+      
           versionfinal="$major.$minor.$patch"
-          sed -i "" "s/$version/$versionfinal/" "$file"
-          echo "version=$versionfinal" >> $GITHUB_OUTPUT
+      
+          # 👇 Diferencia clave: en Ubuntu no se usan comillas vacías con -i
+          sed -i "s/$version/$versionfinal/" "$file"
+      
+          echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
+
 
   build_extensions:
     needs: prepare
-    runs-on: macos-13
+    runs-on: ubuntu-latest
     steps:
 
       - name: Checkout
@@ -47,12 +53,21 @@ jobs:
           ref: master
           fetch-depth: 1
 
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
       - name: Get current version
         id: get-version
         run: |
           file=Directory.Build.props
           version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
           IFS='.' read -r major minor patch <<< "$version"
+      
           patch=$((patch + 1))
           if [[ "$patch" -gt 9 ]]; then
             patch=0
@@ -62,14 +77,22 @@ jobs:
             minor=0
             major=$((major + 1))
           fi
+      
           versionfinal="$major.$minor.$patch"
-          sed -i "" "s/$version/$versionfinal/" "$file"
-          echo "version=$versionfinal"
+      
+          # ✅ GNU sed compatible (Ubuntu)
+          sed -i "s/$version/$versionfinal/" "$file"
+      
+          echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
+
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
+
+      - name: Restore dependencies
+        run: dotnet restore alis.sln
 
       - name: Build extensiones automáticamente
         shell: bash
@@ -80,7 +103,7 @@ jobs:
           echo "🔍 Buscando proyectos de extensión..."
           for proj in $(find 1_Presentation/Extension -name "*.csproj" | grep -viE "sample|generator|benchmark|template|Alis.App|test"); do
             echo "🧱 Compilando $proj (Release base)"
-            dotnet build "$proj" -c Release || exit 1
+            dotnet build "$proj" -c Release  || exit 1
   
             for fw in "${frameworks[@]}"; do
               echo "➡️  Framework: $fw"
@@ -94,7 +117,7 @@ jobs:
   
               for rt in "${runtimes[@]}"; do
                 echo "⚙️  Compilando $proj -> fw=$fw, rt=$rt"
-                dotnet build "$proj" -c Release -f "$fw" -r "$rt" || exit 1
+                dotnet build "$proj"  -c Release -f "$fw" -r "$rt" || exit 1
               done
             done
           done
@@ -108,7 +131,7 @@ jobs:
             
   build_core:
     needs: prepare
-    runs-on: macos-13
+    runs-on: ubuntu-latest
     steps:
     
       - name: Checkout
@@ -123,6 +146,7 @@ jobs:
           file=Directory.Build.props
           version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
           IFS='.' read -r major minor patch <<< "$version"
+      
           patch=$((patch + 1))
           if [[ "$patch" -gt 9 ]]; then
             patch=0
@@ -132,15 +156,31 @@ jobs:
             minor=0
             major=$((major + 1))
           fi
+      
           versionfinal="$major.$minor.$patch"
-          sed -i "" "s/$version/$versionfinal/" "$file"
-          echo "version=$versionfinal"
+      
+          # ✅ GNU sed compatible (Ubuntu)
+          sed -i "s/$version/$versionfinal/" "$file"
+      
+          echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
+
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
 
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Restore dependencies
+        run: dotnet restore alis.sln
+        
       - name: Build Core (all frameworks)
         shell: bash
         run: |
@@ -155,7 +195,7 @@ jobs:
   
           for proj in $(find . -name "*.csproj" | grep -viE "sample|generator|benchmark|template|Alis.App|extension|test"); do
             echo "🧱 Compilando $proj (base Release)"
-            dotnet build "$proj" -c Release || exit 1
+            dotnet build "$proj" -c Release  || exit 1
   
             for fw in "${frameworks[@]}"; do
               echo "➡️  Framework: $fw"
@@ -169,7 +209,7 @@ jobs:
   
               for rt in "${runtimes[@]}"; do
                 echo "⚙️  Compilando $proj -> fw=$fw, rt=$rt"
-                dotnet build "$proj" -c Release -f "$fw" -r "$rt" || exit 1
+                dotnet build "$proj" -c Release  -f "$fw" -r "$rt" || exit 1
               done
             done
           done
@@ -187,7 +227,7 @@ jobs:
             
   build_apps:
     needs: [ prepare ]
-    runs-on: macos-13
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         framework: [ net8.0 ]
@@ -205,6 +245,7 @@ jobs:
           file=Directory.Build.props
           version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
           IFS='.' read -r major minor patch <<< "$version"
+      
           patch=$((patch + 1))
           if [[ "$patch" -gt 9 ]]; then
             patch=0
@@ -214,14 +255,30 @@ jobs:
             minor=0
             major=$((major + 1))
           fi
+      
           versionfinal="$major.$minor.$patch"
-          sed -i "" "s/$version/$versionfinal/" "$file"
-          echo "version=$versionfinal"
+      
+          # ✅ GNU sed compatible (Ubuntu)
+          sed -i "s/$version/$versionfinal/" "$file"
+      
+          echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
+
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Restore dependencies
+        run: dotnet restore alis.sln
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r win-x64 -f ${{ matrix.framework }}
@@ -302,14 +359,6 @@ jobs:
     runs-on: macos-13
     steps:
 
-      - name: Limpiar entorno
-        run: |
-          echo "Limpiando entorno..."
-          rm -rf /Users/runner/.dotnet
-          rm -rf /Users/runner/.nuget
-          
-          echo "Entorno limpio."
-
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -320,6 +369,17 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Restore dependencies
+        run: dotnet restore alis.sln
 
       - name: Download all build artifacts
         uses: actions/download-artifact@v4
@@ -349,6 +409,7 @@ jobs:
           file=Directory.Build.props
           version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
           IFS='.' read -r major minor patch <<< "$version"
+      
           patch=$((patch + 1))
           if [[ "$patch" -gt 9 ]]; then
             patch=0
@@ -358,9 +419,14 @@ jobs:
             minor=0
             major=$((major + 1))
           fi
+      
           versionfinal="$major.$minor.$patch"
-          sed -i "" "s/$version/$versionfinal/" "$file"
-          echo "version=$versionfinal" >> $GITHUB_OUTPUT
+      
+          # ✅ GNU sed compatible (Ubuntu)
+          sed -i "s/$version/$versionfinal/" "$file"
+      
+          echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
+
 
       - name: Create packages
         run: |
