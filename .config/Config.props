@@ -38,7 +38,7 @@
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         
-        
+        <!--
         <DebugSymbols>true</DebugSymbols>
         <IncludeSource>true</IncludeSource>
         <IncludeSymbols>true</IncludeSymbols>
@@ -49,10 +49,10 @@
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <CopyDebugSymbolFilesFromPackages>true</CopyDebugSymbolFilesFromPackages>
-        <CopyDocumentationFilesFromPackages>true</CopyDocumentationFilesFromPackages>
-        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <CopyDebugSymbolFilesFromPackages>false</CopyDebugSymbolFilesFromPackages>
+        <CopyDocumentationFilesFromPackages>false</CopyDocumentationFilesFromPackages>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>-->
         
     </PropertyGroup>
     
