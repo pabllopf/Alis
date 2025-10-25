@@ -92,7 +92,7 @@ jobs:
           dotnet-version: 9.0.301
 
       - name: Restore dependencies
-        run: dotnet restore Alis.sln
+        run: dotnet restore alis.sln
 
       - name: Build extensiones automáticamente
         shell: bash
@@ -179,7 +179,7 @@ jobs:
             ${{ runner.os }}-nuget-
 
       - name: Restore dependencies
-        run: dotnet restore Alis.sln
+        run: dotnet restore alis.sln
         
       - name: Build Core (all frameworks)
         shell: bash
@@ -278,7 +278,7 @@ jobs:
             ${{ runner.os }}-nuget-
 
       - name: Restore dependencies
-        run: dotnet restore Alis.sln
+        run: dotnet restore alis.sln
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r win-x64 -f ${{ matrix.framework }}
@@ -359,14 +359,6 @@ jobs:
     runs-on: macos-13
     steps:
 
-      - name: Limpiar entorno
-        run: |
-          echo "Limpiando entorno..."
-          rm -rf /Users/runner/.dotnet
-          rm -rf /Users/runner/.nuget
-          
-          echo "Entorno limpio."
-
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -377,6 +369,17 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Restore dependencies
+        run: dotnet restore alis.sln
 
       - name: Download all build artifacts
         uses: actions/download-artifact@v4
