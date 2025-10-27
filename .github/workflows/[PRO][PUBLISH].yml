@@ -45,7 +45,7 @@ jobs:
 
   build_extensions:
     needs: prepare
-    runs-on: macos-13
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         framework: [ net5.0, net8.0, netstandard2.0, net461, netcoreapp2.0 ]
