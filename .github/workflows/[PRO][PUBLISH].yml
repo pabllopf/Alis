@@ -378,6 +378,14 @@ jobs:
     runs-on: macos-13
     steps:
 
+      - name: Limpiar entorno
+        run: |
+          echo "Limpiando entorno..."
+          rm -rf /Users/runner/.dotnet
+          rm -rf /Users/runner/.nuget
+          
+          echo "Entorno limpio."
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -388,17 +396,6 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
-
-      - name: Cache NuGet packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget-
-
-      - name: Restore dependencies
-        run: dotnet restore alis.sln
 
       - name: Download all build artifacts
         uses: actions/download-artifact@v4
@@ -428,7 +425,6 @@ jobs:
           file=Directory.Build.props
           version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
           IFS='.' read -r major minor patch <<< "$version"
-      
           patch=$((patch + 1))
           if [[ "$patch" -gt 9 ]]; then
             patch=0
@@ -438,14 +434,9 @@ jobs:
             minor=0
             major=$((major + 1))
           fi
-      
           versionfinal="$major.$minor.$patch"
-      
-          # ✅ GNU sed compatible (Ubuntu)
-          sed -i "s/$version/$versionfinal/" "$file"
-      
-          echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
-
+          sed -i "" "s/$version/$versionfinal/" "$file"
+          echo "version=$versionfinal" >> $GITHUB_OUTPUT
 
       - name: Create packages
         run: |
@@ -453,7 +444,7 @@ jobs:
           for project in $(find . -name "*.csproj" -type f); do
             if [[ $project != *".Template."* && $project != *".App."* && $project != *".Test."* && $project != *".Benchmark"* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* && $project != *".Generator."* ]]; then
               echo "Packing $project"
-              dotnet pack --include-symbols --include-source "$project" -c Release -m:4 --verbosity quiet -o "./.publish/${{ needs.prepare.outputs.version }}/"
+              dotnet pack --include-symbols --include-source "$project" -c Release -o "./.publish/${{ needs.prepare.outputs.version }}/"
             fi
           done
 
