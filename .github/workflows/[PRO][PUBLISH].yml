@@ -84,7 +84,7 @@ jobs:
       
           versionfinal="$major.$minor.$patch"
       
-          # 👇 Diferencia clave: en Ubuntu no se usan comillas vacías con -i
+          # ✅ GNU sed compatible (Ubuntu)
           sed -i "s/$version/$versionfinal/" "$file"
       
           echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
