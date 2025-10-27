@@ -71,6 +71,7 @@ jobs:
           file=Directory.Build.props
           version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
           IFS='.' read -r major minor patch <<< "$version"
+      
           patch=$((patch + 1))
           if [[ "$patch" -gt 9 ]]; then
             patch=0
@@ -80,8 +81,12 @@ jobs:
             minor=0
             major=$((major + 1))
           fi
+      
           versionfinal="$major.$minor.$patch"
+      
+          # 👇 Diferencia clave: en Ubuntu no se usan comillas vacías con -i
           sed -i "s/$version/$versionfinal/" "$file"
+      
           echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
 
       - name: Setup .NET
@@ -143,7 +148,7 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-core-extensions-${{ matrix.framework }}-${{ matrix.runtime }}
+          name: build-core-extensions-${{ matrix.framework }}
           path: |
             **/1_Presentation/**/Extension/**/src/**/bin/**/Release/**/*.dll
 
