@@ -233,10 +233,10 @@
         <PackageReference Include="Dropbox.Api" Version="7.0.0"/>
     </ItemGroup>
     
-    
+    <!--
     <ItemGroup>
         <EmbeddedResource Include="$(ProjectDir)**/resources/**/*.zip;"/>
-    </ItemGroup>
+    </ItemGroup>-->
 
 
     <ItemGroup Condition="$(Configuration) == 'Release'">
