@@ -99,25 +99,13 @@ jobs:
             done
           done
 
-      - name: Create packages
-        run: |
-          mkdir -p ./.publish/${{ needs.prepare.outputs.version }}
-          for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project == *".Extension."* &&  $project != *".Template."* && $project != *".App."* && $project != *".Test."* && $project != *".Benchmark"* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* && $project != *".Generator."* ]]; then
-              echo "Packing $project"
-              dotnet pack --include-symbols --include-source "$project" -c Release -o "./.publish/${{ needs.prepare.outputs.version }}/"
-            fi
-          done
-
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-core-extensions
           path: |
-            **/.publish/${{ needs.prepare.outputs.version }}/**/*.snupkg
-            **/.publish/${{ needs.prepare.outputs.version }}/**/*.nupkg
-  
-  
+            **/1_Presentation/**/Extension/**/src/**/bin/**/Release/**/*.dll
+            
   build_core:
     needs: prepare
     runs-on: macos-13
@@ -186,23 +174,16 @@ jobs:
             done
           done
 
-      - name: Create packages
-        run: |
-          mkdir -p ./.publish/${{ needs.prepare.outputs.version }}
-          for project in $(find . -name "*.csproj" -type f); do
-            if [[ $project != *".Extension."* && $project != *".Template."* && $project != *".App."* && $project != *".Test."* && $project != *".Benchmark"* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* && $project != *".Generator."* ]]; then
-              echo "Packing $project"
-              dotnet pack --include-symbols --include-source "$project" -c Release -o "./.publish/${{ needs.prepare.outputs.version }}/"
-            fi
-          done
-
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-core-output
           path: |
-            **/.publish/${{ needs.prepare.outputs.version }}/**/*.snupkg
-            **/.publish/${{ needs.prepare.outputs.version }}/**/*.nupkg
+            **/2_Application/**/src/**/bin/**/Release/**/*.dll
+            **/3_Structuration/**/src/**/bin/**/Release/**/*.dll
+            **/4_Operation/**/src/**/bin/**/Release/**/*.dll
+            **/5_Declaration/**/src/**/bin/**/Release/**/*.dll
+            **/6_Ideation/**/src/**/bin/**/Release/**/*.dll
             
   build_apps:
     needs: [ prepare ]
@@ -380,6 +361,16 @@ jobs:
           versionfinal="$major.$minor.$patch"
           sed -i "" "s/$version/$versionfinal/" "$file"
           echo "version=$versionfinal" >> $GITHUB_OUTPUT
+
+      - name: Create packages
+        run: |
+          mkdir -p ./.publish/${{ needs.prepare.outputs.version }}
+          for project in $(find . -name "*.csproj" -type f); do
+            if [[ $project != *".Template."* && $project != *".App."* && $project != *".Test."* && $project != *".Benchmark"* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* && $project != *".Generator."* ]]; then
+              echo "Packing $project"
+              dotnet pack --include-symbols --include-source "$project" -c Release -o "./.publish/${{ needs.prepare.outputs.version }}/"
+            fi
+          done
 
       - name: Publish to NuGet
         run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET }} --skip-duplicate
