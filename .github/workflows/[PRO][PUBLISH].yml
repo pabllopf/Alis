@@ -44,7 +44,7 @@ jobs:
 
   build_extensions:
     needs: prepare
-    runs-on: macos-13
+    runs-on: ubuntu-latest
     steps:
 
       - name: Checkout
@@ -131,7 +131,7 @@ jobs:
             
   build_core:
     needs: prepare
-    runs-on: macos-13
+    runs-on: ubuntu-latest
     steps:
     
       - name: Checkout
@@ -227,7 +227,7 @@ jobs:
             
   build_apps:
     needs: [ prepare ]
-    runs-on: macos-13
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         framework: [ net8.0 ]
