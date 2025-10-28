@@ -23,6 +23,7 @@ jobs:
           file=Directory.Build.props
           version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
           IFS='.' read -r major minor patch <<< "$version"
+      
           patch=$((patch + 1))
           if [[ "$patch" -gt 9 ]]; then
             patch=0
@@ -32,9 +33,14 @@ jobs:
             minor=0
             major=$((major + 1))
           fi
+      
           versionfinal="$major.$minor.$patch"
-          sed -i "" "s/$version/$versionfinal/" "$file"
-          echo "version=$versionfinal" >> $GITHUB_OUTPUT
+      
+          # 👇 Diferencia clave: en Ubuntu no se usan comillas vacías con -i
+          sed -i "s/$version/$versionfinal/" "$file"
+      
+          echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
+
 
   build_extensions:
     needs: prepare
@@ -61,6 +67,7 @@ jobs:
           file=Directory.Build.props
           version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
           IFS='.' read -r major minor patch <<< "$version"
+      
           patch=$((patch + 1))
           if [[ "$patch" -gt 9 ]]; then
             patch=0
@@ -70,9 +77,14 @@ jobs:
             minor=0
             major=$((major + 1))
           fi
+      
           versionfinal="$major.$minor.$patch"
-          sed -i "" "s/$version/$versionfinal/" "$file"
-          echo "version=$versionfinal"
+      
+          # ✅ GNU sed compatible (Ubuntu)
+          sed -i "s/$version/$versionfinal/" "$file"
+      
+          echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
+
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -134,6 +146,7 @@ jobs:
           file=Directory.Build.props
           version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
           IFS='.' read -r major minor patch <<< "$version"
+      
           patch=$((patch + 1))
           if [[ "$patch" -gt 9 ]]; then
             patch=0
@@ -143,9 +156,14 @@ jobs:
             minor=0
             major=$((major + 1))
           fi
+      
           versionfinal="$major.$minor.$patch"
-          sed -i "" "s/$version/$versionfinal/" "$file"
-          echo "version=$versionfinal"
+      
+          # ✅ GNU sed compatible (Ubuntu)
+          sed -i "s/$version/$versionfinal/" "$file"
+      
+          echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
+
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -227,6 +245,7 @@ jobs:
           file=Directory.Build.props
           version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
           IFS='.' read -r major minor patch <<< "$version"
+      
           patch=$((patch + 1))
           if [[ "$patch" -gt 9 ]]; then
             patch=0
@@ -236,9 +255,14 @@ jobs:
             minor=0
             major=$((major + 1))
           fi
+      
           versionfinal="$major.$minor.$patch"
-          sed -i "" "s/$version/$versionfinal/" "$file"
-          echo "version=$versionfinal"
+      
+          # ✅ GNU sed compatible (Ubuntu)
+          sed -i "s/$version/$versionfinal/" "$file"
+      
+          echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
+
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -382,6 +406,7 @@ jobs:
           file=Directory.Build.props
           version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
           IFS='.' read -r major minor patch <<< "$version"
+      
           patch=$((patch + 1))
           if [[ "$patch" -gt 9 ]]; then
             patch=0
@@ -391,9 +416,14 @@ jobs:
             minor=0
             major=$((major + 1))
           fi
+      
           versionfinal="$major.$minor.$patch"
-          sed -i "" "s/$version/$versionfinal/" "$file"
-          echo "version=$versionfinal" >> $GITHUB_OUTPUT
+      
+          # ✅ GNU sed compatible (Ubuntu)
+          sed -i "s/$version/$versionfinal/" "$file"
+      
+          echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
+
 
       - name: Create packages
         run: |
