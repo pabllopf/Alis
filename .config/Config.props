@@ -9,6 +9,13 @@
             net461;net471;net472;net48;net481;
         </TargetFrameworks>
 
+        <TargetFrameworks Condition="'$(Configuration)' == 'Release' AND $(AssemblyName.Contains('Extension')) == true">
+            netcoreapp2.0;
+            net5.0;net8.0;
+            netstandard2.0;
+            net461;
+        </TargetFrameworks>
+
         <RuntimeIdentifiers Condition="'$(Configuration)' == 'Release'">
             win-x64; win-x86; win-arm64;
             linux-x64; linux-arm; linux-arm64;
