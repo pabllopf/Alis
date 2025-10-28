@@ -104,7 +104,7 @@ jobs:
           echo "🔍 Buscando proyectos de extensión..."
           for proj in $(find 1_Presentation/Extension -name "*.csproj" | grep -viE "sample|generator|benchmark|template|Alis.App|test"); do
             echo "🧱 Compilando $proj (Release base)"
-            dotnet build "$proj" -c Release  || exit 1
+            dotnet build "$proj" -c Release -m:4 --verbosity quiet  || exit 1
   
             for fw in "${frameworks[@]}"; do
               echo "➡️  Framework: $fw"
@@ -118,7 +118,7 @@ jobs:
   
               for rt in "${runtimes[@]}"; do
                 echo "⚙️  Compilando $proj -> fw=$fw, rt=$rt"
-                dotnet build "$proj"  -c Release -f "$fw" -r "$rt" || exit 1
+                dotnet build "$proj"  -c Release -m:4 --verbosity quiet -f "$fw" -r "$rt" || exit 1
               done
             done
           done
@@ -196,7 +196,7 @@ jobs:
   
           for proj in $(find . -name "*.csproj" | grep -viE "sample|generator|benchmark|template|Alis.App|extension|test"); do
             echo "🧱 Compilando $proj (base Release)"
-            dotnet build "$proj" -c Release  || exit 1
+            dotnet build "$proj" -c Release -m:4 --verbosity quiet  || exit 1
   
             for fw in "${frameworks[@]}"; do
               echo "➡️  Framework: $fw"
@@ -210,7 +210,7 @@ jobs:
   
               for rt in "${runtimes[@]}"; do
                 echo "⚙️  Compilando $proj -> fw=$fw, rt=$rt"
-                dotnet build "$proj" -c Release  -f "$fw" -r "$rt" || exit 1
+                dotnet build "$proj" -c Release -m:4 --verbosity quiet  -f "$fw" -r "$rt" || exit 1
               done
             done
           done
@@ -282,69 +282,69 @@ jobs:
         run: dotnet restore alis.sln
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r win-x64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -m:4 --verbosity quiet -r win-x64 -f ${{ matrix.framework }}
 
       - name: Publish ENGINE - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r win-x64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -m:4 --verbosity quiet -r win-x64 -f ${{ matrix.framework }}
 
       - name: Publish HUB - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-x64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -m:4 --verbosity quiet -r win-x64 -f ${{ matrix.framework }}
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r win-x86 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -m:4 --verbosity quiet -r win-x86 -f ${{ matrix.framework }}
 
       - name: Publish ENGINE - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r win-x86 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -m:4 --verbosity quiet -r win-x86 -f ${{ matrix.framework }}
 
       - name: Publish HUB - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-x86 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -m:4 --verbosity quiet -r win-x86 -f ${{ matrix.framework }}
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r win-arm64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -m:4 --verbosity quiet -r win-arm64 -f ${{ matrix.framework }}
 
       - name: Publish ENGINE - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r win-arm64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -m:4 --verbosity quiet -r win-arm64 -f ${{ matrix.framework }}
 
       - name: Publish HUB - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r win-arm64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -m:4 --verbosity quiet -r win-arm64 -f ${{ matrix.framework }}
 
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r linux-x64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -m:4 --verbosity quiet -r linux-x64 -f ${{ matrix.framework }}
 
       - name: Publish ENGINE - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r linux-x64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -m:4 --verbosity quiet -r linux-x64 -f ${{ matrix.framework }}
 
       - name: Publish HUB - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-x64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -m:4 --verbosity quiet -r linux-x64 -f ${{ matrix.framework }}
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r linux-arm64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -m:4 --verbosity quiet -r linux-arm64 -f ${{ matrix.framework }}
 
       - name: Publish ENGINE - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r linux-arm64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -m:4 --verbosity quiet -r linux-arm64 -f ${{ matrix.framework }}
 
       - name: Publish HUB - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r linux-arm64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -m:4 --verbosity quiet -r linux-arm64 -f ${{ matrix.framework }}
         
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r osx-x64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -m:4 --verbosity quiet -r osx-x64 -f ${{ matrix.framework }}
 
       - name: Publish ENGINE - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r osx-x64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -m:4 --verbosity quiet -r osx-x64 -f ${{ matrix.framework }}
 
       - name: Publish HUB - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r osx-x64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -m:4 --verbosity quiet -r osx-x64 -f ${{ matrix.framework }}
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -r osx-arm64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -m:4 --verbosity quiet -r osx-arm64 -f ${{ matrix.framework }}
 
       - name: Publish ENGINE - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -r osx-arm64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -m:4 --verbosity quiet -r osx-arm64 -f ${{ matrix.framework }}
 
       - name: Publish HUB - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -r osx-arm64 -f ${{ matrix.framework }}
+        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -m:4 --verbosity quiet -r osx-arm64 -f ${{ matrix.framework }}
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -435,7 +435,7 @@ jobs:
           for project in $(find . -name "*.csproj" -type f); do
             if [[ $project != *".Template."* && $project != *".App."* && $project != *".Test."* && $project != *".Benchmark"* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* && $project != *".Generator."* ]]; then
               echo "Packing $project"
-              dotnet pack --include-symbols --include-source "$project" -c Release -o "./.publish/${{ needs.prepare.outputs.version }}/"
+              dotnet pack --include-symbols --include-source "$project" -c Release -m:4 --verbosity quiet -o "./.publish/${{ needs.prepare.outputs.version }}/"
             fi
           done
 
