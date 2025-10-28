@@ -24,8 +24,6 @@
         
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU;x64;x86;arm;arm64</Platforms>
-
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         
         <DefineConstants>$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
     </PropertyGroup>
@@ -231,7 +229,8 @@
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false"/>
-
+        
+        
 
         <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
                           Include="
