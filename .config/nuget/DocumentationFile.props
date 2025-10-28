@@ -1,5 +1,0 @@
-<Project>
-    <PropertyGroup>
-        <!--<DocumentationFile>$(SolutionDir)docs/xmls/$(AssemblyName).xml</DocumentationFile>-->
-    </PropertyGroup>
-</Project>

@@ -1,5 +1,0 @@
-<Project>
-    <PropertyGroup>
-        <PackageVersion>$(AssemblyVersion)</PackageVersion>
-    </PropertyGroup>
-</Project>

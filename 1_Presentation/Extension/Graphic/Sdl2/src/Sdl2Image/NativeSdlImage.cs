@@ -31,7 +31,6 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Dll;
-using Alis.Extension.Graphic.Sdl2.Properties;
 
 namespace Alis.Extension.Graphic.Sdl2.Sdl2Image
 {
@@ -44,12 +43,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Image
         ///     The native lib name
         /// </summary>
         public const string NativeLibName = "sdl2_image";
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="NativeSdlImage" /> class
-        /// </summary>
-        static NativeSdlImage() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_image", DllType.Lib, Sdl2ImageDlls.GlSdlImageDllBytes, Assembly.GetAssembly(typeof(Sdl2ImageDlls)));
-
+        
         /// <summary>
         ///     Internals the img linked version
         /// </summary>

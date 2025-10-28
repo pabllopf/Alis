@@ -38,7 +38,6 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Extension.Graphic.Sdl2.Delegates;
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Mapping;
-using Alis.Extension.Graphic.Sdl2.Properties;
 using Alis.Extension.Graphic.Sdl2.Structs;
 
 namespace Alis.Extension.Graphic.Sdl2
@@ -52,11 +51,6 @@ namespace Alis.Extension.Graphic.Sdl2
         ///     The native lib name
         /// </summary>
         private const string NativeLibName = "sdl2";
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Sdl" /> class
-        /// </summary>
-        static NativeSdl() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2", DllType.Lib, Sdl2Dlls.GlSdlDllBytes, Assembly.GetAssembly(typeof(Sdl2Dlls)));
 
         /// <summary>
         ///     Sdl the joystick is haptic using the specified joystick

@@ -29,7 +29,6 @@
 
 using System.Reflection;
 using Alis.Core.Aspect.Data.Dll;
-using Alis.Extension.Graphic.Ui.Properties;
 
 namespace Alis.Extension.Graphic.Ui.Fonts
 {
@@ -52,13 +51,5 @@ namespace Alis.Extension.Graphic.Ui.Fonts
         ///     The font icon file name far
         /// </summary>
         public static readonly string NameLight = "JetBrainsMonoNL-Regular.ttf";
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="JetBrains" /> class
-        /// </summary>
-        static JetBrains()
-        {
-            EmbeddedDllClass.ExtractEmbeddedDlls("jetbrains", DllType.File, FontResources.FontsJetBrainDllBytes, Assembly.GetExecutingAssembly(), "Assets");
-        }
     }
 }

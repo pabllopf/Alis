@@ -32,7 +32,6 @@ using System.Reflection;
 using System.Text;
 using Alis.Core.Aspect.Data.Dll;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.Ui.Properties;
 
 namespace Alis.Extension.Graphic.Ui
 {
@@ -41,32 +40,6 @@ namespace Alis.Extension.Graphic.Ui
     /// </summary>
     public static partial class ImGui
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGui" /> class
-        /// </summary>
-        static ImGui()
-        {
-            string assemblyExecution = Assembly.GetExecutingAssembly().FullName;
-            if (assemblyExecution.Contains("Test"))
-            {
-                return;
-            }
-
-            string assemblyCalling = Assembly.GetCallingAssembly().FullName;
-            if (assemblyCalling.Contains("Test"))
-            {
-                return;
-            }
-
-            string assemblyEntry = Assembly.GetEntryAssembly()?.FullName;
-            if ((assemblyEntry != null) && assemblyEntry.Contains("Test"))
-            {
-                return;
-            }
-
-            EmbeddedDllClass.ExtractEmbeddedDlls("cimgui", DllType.Lib, ImGuiDlls.ImGuiDllBytes, Assembly.GetExecutingAssembly());
-        }
-
         /// <summary>
         ///     Accepts the drag drop payload using the specified type
         /// </summary>

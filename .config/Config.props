@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <PropertyGroup>
-        <TargetFrameworks Condition="'$(Configuration)' == 'Debug'">
-            net8.0;netstandard2.0;net461;netcoreapp2.0;
-        </TargetFrameworks>
+        <TargetFrameworks Condition="'$(Configuration)' == 'Debug'">net8.0;netstandard2.0;net461;netcoreapp2.0;</TargetFrameworks>
         <TargetFrameworks Condition="'$(Configuration)' == 'Release'">
             netcoreapp2.0;netcoreapp2.1;netcoreapp2.2;netcoreapp3.0;netcoreapp3.1;
             net5.0;net6.0;net7.0;net8.0;net9.0;
@@ -19,10 +17,12 @@
         
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU;x64;x86;arm;arm64</Platforms>
-        
+
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         
         <DefineConstants>$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
     </PropertyGroup>
+
     
     
     <PropertyGroup>
@@ -125,7 +125,45 @@
         <Title>$(AssemblyName)</Title>
         <Version>$(AssemblyVersion)</Version>
     </PropertyGroup>
+
     
+    <ItemGroup>
+        <None Include="$(SolutionDir).config/target/alis.targets" Visible="false" Pack="true" Link="build/$(AssemblyName).targets" PackagePath="build/$(AssemblyName).targets" />
+        <None Include="$(SolutionDir).config/target/alis.targets" Visible="false" Pack="true" Link="buildTransitive/$(AssemblyName).targets" PackagePath="buildTransitive/$(AssemblyName).targets" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <None Remove="$(ProjectDir)runtimes/**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="runtimes/**" Pack="true" PackagePath="runtimes/" Visible="false" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(RuntimeIdentifier)' != ''">
+        <None Include="runtimes/$(RuntimeIdentifier)/native/**" Link="%(Filename)%(Extension)" Pack="false" Visible="false" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always"/>
+    </ItemGroup>
+    
+    <ItemGroup Condition="$(NETCoreSdkRuntimeIdentifier) != '' AND '$(RuntimeIdentifier)' == ''">
+        <None Include="runtimes/$(NETCoreSdkRuntimeIdentifier)/native/**" Link="%(Filename)%(Extension)" Visible="false" Pack="false" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always"/>
+    </ItemGroup>
+    
+    <!--
+    <ItemGroup>
+        <None Remove="runtimes/**" />
+    </ItemGroup>
+    
+    <ItemGroup Condition="'$(RuntimeIdentifier)' == ''">
+        <None Include="runtimes/**" Pack="true" PackagePath="runtimes/" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never"/>
+    </ItemGroup>
+    
+    <ItemGroup Condition="'$(RuntimeIdentifier)' != ''">
+        <None Include="runtimes/$(RuntimeIdentifier)/native/**" Pack="false" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always"/>
+    </ItemGroup>
+    -->
+    
+
     <ItemGroup>
         <None Include="$(SolutionDir)license.md" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="."/>
         <None Include="$(ProjectDir).docs/readme.md" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="."/>
@@ -164,7 +202,7 @@
 
 
 
-    <ItemGroup >
+    <ItemGroup Condition="$(AssemblyName.Contains('Extension')) == false" >
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
                           Include="
           $(SolutionDir)2_Application/**/generator/**/*.Generator.csproj;
@@ -233,12 +271,6 @@
         <PackageReference Include="Dropbox.Api" Version="7.0.0"/>
     </ItemGroup>
     
-    <!--
-    <ItemGroup>
-        <EmbeddedResource Include="$(ProjectDir)**/resources/**/*.zip;"/>
-    </ItemGroup>-->
-
-
     <ItemGroup Condition="$(Configuration) == 'Release'">
 
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) AND $(ProjectDir.Contains('Extension')) == False AND $(ProjectDir.Contains('Benchmark')) == False"
@@ -350,7 +382,7 @@
 
     <ItemGroup Condition="'$(Configuration)' == 'Release'">
         <None
-            Condition="$(AssemblyName.Contains('Generator')) == false"
+            Condition="$(AssemblyName.Contains('Generator')) == false AND $(AssemblyName.Contains('Extension')) == false"
             Include="$(SolutionDir)**/**/generator/bin/Release/netstandard2.0/*Generator.dll"
             Pack="false"
             TargetPath="../../analyzers/dotnet/cs/%(Filename)%(Extension)"
@@ -360,7 +392,7 @@
             Visible="false"/>
 
         <None
-            Condition="$(AssemblyName.Contains('Generator')) == false"
+            Condition="$(AssemblyName.Contains('Generator')) == false AND $(AssemblyName.Contains('Extension')) == false"
             Include="$(SolutionDir)**/**/generator/bin/Release/netstandard2.0/*Generator.pdb"
             Pack="false"
             TargetPath="../../analyzers/dotnet/cs/%(Filename)%(Extension)"
@@ -370,7 +402,7 @@
             Visible="false"/>
 
         <None
-            Condition="$(AssemblyName.Contains('Generator')) == false"
+            Condition="$(AssemblyName.Contains('Generator')) == false AND $(AssemblyName.Contains('Extension')) == false"
             Include="$(SolutionDir)**/**/generator/bin/Release/netstandard2.0/*Generator.deps.json"
             Pack="false"
             TargetPath="../../analyzers/dotnet/cs/%(Filename)%(Extension)"
@@ -380,15 +412,15 @@
             Visible="false"/>
         
         <Content
-            Condition="$(AssemblyName.Contains('Generator')) == false"
+            Condition="$(AssemblyName.Contains('Generator')) == false AND $(AssemblyName.Contains('Extension')) == false"
             Include="$(ProjectDir)bin/Release/analyzers/dotnet/cs/*.dll" Visible="false" PackagePath="analyzers/dotnet/cs/"/>
 
         <Content
-            Condition="$(AssemblyName.Contains('Generator')) == false"
+            Condition="$(AssemblyName.Contains('Generator')) == false AND $(AssemblyName.Contains('Extension')) == false"
             Include="$(ProjectDir)bin/Release/analyzers/dotnet/cs/*.pdb" Visible="false" PackagePath="analyzers/dotnet/cs/"/>
 
         <Content
-            Condition="$(AssemblyName.Contains('Generator')) == false"
+            Condition="$(AssemblyName.Contains('Generator')) == false AND $(AssemblyName.Contains('Extension')) == false"
             Include="$(ProjectDir)bin/Release/analyzers/dotnet/cs/*.deps.json" Visible="false" PackagePath="analyzers/dotnet/cs/"/>
         
         <Content Include="$(ProjectDir)bin/Release/lib/net5.0/*.json" Visible="false" PackagePath="lib/net5.0/"/>
