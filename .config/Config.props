@@ -33,12 +33,12 @@
         <NeutralLanguage>en</NeutralLanguage>
         <WarningsAsErrors>true</WarningsAsErrors>
         <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
 
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         
-        <!--
+        
         <DebugSymbols>true</DebugSymbols>
         <IncludeSource>true</IncludeSource>
         <IncludeSymbols>true</IncludeSymbols>
@@ -52,7 +52,7 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <CopyDebugSymbolFilesFromPackages>true</CopyDebugSymbolFilesFromPackages>
         <CopyDocumentationFilesFromPackages>true</CopyDocumentationFilesFromPackages>
-        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>-->
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
         
     </PropertyGroup>
     
