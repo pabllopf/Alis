@@ -27,7 +27,6 @@
         
         <DefineConstants>$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
     </PropertyGroup>
-
     
     
     <PropertyGroup>
@@ -39,7 +38,9 @@
         <WarningsAsErrors>true</WarningsAsErrors>
         <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
         <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <DebugType>portable</DebugType>
@@ -51,22 +52,6 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <Deterministic>true</Deterministic>
         <SourceLinkCreate>true</SourceLinkCreate>
-        
-        <!--
-        <DebugSymbols>true</DebugSymbols>
-        <IncludeSource>true</IncludeSource>
-        <IncludeSymbols>true</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <DebugType>full</DebugType>
-        <Deterministic>true</Deterministic>
-        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <GenerateDocumentationFile>false</GenerateDocumentationFile>
-        <CopyDebugSymbolFilesFromPackages>false</CopyDebugSymbolFilesFromPackages>
-        <CopyDocumentationFilesFromPackages>false</CopyDocumentationFilesFromPackages>
-        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>-->
     </PropertyGroup>
 
     <ItemGroup>
