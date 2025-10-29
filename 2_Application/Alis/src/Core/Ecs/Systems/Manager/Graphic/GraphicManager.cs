@@ -118,10 +118,10 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
 #elif winx64
             platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
-#elif LINUX
+#elif linuxarm64 || linuxarm || linuxx64
             platform = new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();
 #else
-            throw new Exception("Sistema operativo no soportado");
+            platform = null;
 #endif
 
 
