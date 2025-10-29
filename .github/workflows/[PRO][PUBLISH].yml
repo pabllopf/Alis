@@ -251,7 +251,7 @@ jobs:
             
   build_apps:
     needs: [ prepare ]
-    runs-on: ubuntu-latest
+    runs-on: macos-13
     strategy:
       matrix:
         framework: [ net8.0 ]
