@@ -44,91 +44,101 @@ jobs:
 
 
   build_extensions:
-    needs: prepare
-    runs-on: ubuntu-latest
-    steps:
-
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: master
-          fetch-depth: 1
-
-      - name: Cache NuGet packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget-
-
-      - name: Get current version
-        id: get-version
-        run: |
-          file=Directory.Build.props
-          version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
-          IFS='.' read -r major minor patch <<< "$version"
-      
-          patch=$((patch + 1))
-          if [[ "$patch" -gt 9 ]]; then
-            patch=0
-            minor=$((minor + 1))
-          fi
-          if [[ "$minor" -gt 9 ]]; then
-            minor=0
-            major=$((major + 1))
-          fi
-      
-          versionfinal="$major.$minor.$patch"
-      
-          # ✅ GNU sed compatible (Ubuntu)
-          sed -i "s/$version/$versionfinal/" "$file"
-      
-          echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
-
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 9.0.301
-
-      - name: Restore dependencies
-        run: dotnet restore alis.sln
-
-      - name: Build extensiones automáticamente
-        shell: bash
-        run: |
-          # Lista de frameworks a compilar
-          frameworks=(net5.0 net8.0 netstandard2.0 net461 netcoreapp2.0)
+      needs: prepare
+      runs-on: ubuntu-latest
+      strategy:
+        fail-fast: false
+        matrix:
+          runtime: [win-x64, win-x86, win-arm64, linux-x64, linux-arm64, osx-x64, osx-arm64]
+          framework: [net5.0, net8.0, netstandard2.0, net461, netcoreapp2.0]
   
-          echo "🔍 Buscando proyectos de extensión..."
-          for proj in $(find 1_Presentation/Extension -name "*.csproj" | grep -viE "sample|generator|benchmark|template|Alis.App|test"); do
-            echo "🧱 Compilando $proj (Release base)"
-            dotnet build "$proj" -c Release -m:4 --verbosity quiet  || exit 1
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            ref: master
+            fetch-depth: 1
   
-            for fw in "${frameworks[@]}"; do
-              echo "➡️  Framework: $fw"
+        - name: Cache NuGet packages
+          uses: actions/cache@v4
+          with:
+            path: ~/.nuget/packages
+            key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+            restore-keys: |
+              ${{ runner.os }}-nuget-
   
-              # Selección de runtimes según tipo de framework
-              if [[ "$fw" == netcoreapp* ]]; then
-                runtimes=("win-x64" "linux-x64" "osx-x64")
-              else
-                runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm64" "osx-x64" "osx-arm64")
-              fi
+        - name: Get current version
+          id: get-version
+          run: |
+            file=Directory.Build.props
+            version=$(grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' "$file" | head -n1)
+            IFS='.' read -r major minor patch <<< "$version"
+            patch=$((patch + 1))
+            if [[ "$patch" -gt 9 ]]; then
+              patch=0
+              minor=$((minor + 1))
+            fi
+            if [[ "$minor" -gt 9 ]]; then
+              minor=0
+              major=$((major + 1))
+            fi
+            versionfinal="$major.$minor.$patch"
+            sed -i "s/$version/$versionfinal/" "$file"
+            echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
   
-              for rt in "${runtimes[@]}"; do
-                echo "⚙️  Compilando $proj -> fw=$fw, rt=$rt"
-                dotnet build "$proj"  -c Release -m:4 --verbosity quiet -f "$fw" -r "$rt" || exit 1
-              done
+        - name: Setup .NET
+          uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: 9.0.301
+  
+        - name: Check disk space and clean if needed
+          shell: bash
+          run: |
+            echo "💽 Espacio en disco antes de limpiar:"
+            df -h /
+  
+            THRESHOLD_GB=5
+            FREE_GB=$(df -BG / | tail -1 | awk '{print $4}' | sed 's/G//')
+  
+            if (( FREE_GB < THRESHOLD_GB )); then
+              echo "⚠️ Espacio libre menor de ${THRESHOLD_GB}GB. Limpiando..."
+              sudo rm -rf /usr/share/dotnet/sdk/NuGetFallbackFolder || true
+              sudo rm -rf /opt/hostedtoolcache/dotnet || true
+              sudo rm -rf "$HOME/.nuget/packages" || true
+              sudo apt-get clean
+              docker system prune -af || true
+            else
+              echo "✅ Espacio suficiente: ${FREE_GB}GB libres."
+            fi
+  
+            echo "💽 Espacio en disco después de limpiar:"
+            df -h /
+  
+        - name: Restore dependencies
+          run: dotnet restore alis.sln
+  
+        - name: Build extensiones automáticamente
+          shell: bash
+          run: |
+            fw="${{ matrix.framework }}"
+            rt="${{ matrix.runtime }}"
+  
+            echo "🔍 Buscando proyectos de extensión..."
+            for proj in $(find 1_Presentation/Extension -name "*.csproj" | grep -viE "sample|generator|benchmark|template|Alis.App|test"); do
+              echo "🧱 Compilando $proj (Release base)"
+              dotnet build "$proj" -c Release -m:4 --verbosity quiet || exit 1
+  
+              echo "➡️  Framework: $fw | Runtime: $rt"
+              dotnet build "$proj" -c Release -m:4 --verbosity quiet -f "$fw" -r "$rt" || exit 1
             done
-          done
+  
+        - name: Upload build artifacts
+          uses: actions/upload-artifact@v4
+          with:
+            name: build-core-extensions-${{ matrix.framework }}-${{ matrix.runtime }}
+            path: |
+              **/1_Presentation/**/Extension/**/src/**/bin/**/Release/**/*.dll
 
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-core-extensions
-          path: |
-            **/1_Presentation/**/Extension/**/src/**/bin/**/Release/**/*.dll
             
   build_core:
     needs: prepare
