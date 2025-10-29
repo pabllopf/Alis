@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.7.9] - 2025-10-31
+### :sparkles: New Features
+- [`4988bb6`](https://github.com/pabllopf/Alis/commit/4988bb6495907f2468dda4f208ed37b1a068d4cf) - new runtimes from extensions *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`566952a`](https://github.com/pabllopf/Alis/commit/566952abe2d7927a361de3b4ffba106b3394bbce) - delete unless props *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6f0ebaa`](https://github.com/pabllopf/Alis/commit/6f0ebaaa792a4f842f4e382ca4f2d80fb662b980) - delete unless props from old sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`27960a1`](https://github.com/pabllopf/Alis/commit/27960a105508f802769d92864c6a2c1a2149174f) - unit test on imgui module *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.7.8] - 2025-10-29
 ### :sparkles: New Features
 - [`db20d92`](https://github.com/pabllopf/Alis/commit/db20d9224a726066c59fd342852c04ef966f232f) - add new input system with default onpresskey *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4965,3 +4975,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.7.6]: https://github.com/pabllopf/Alis/compare/v0.7.5...v0.7.6
 [v0.7.7]: https://github.com/pabllopf/Alis/compare/v0.7.6...v0.7.7
 [v0.7.8]: https://github.com/pabllopf/Alis/compare/v0.7.7...v0.7.8
+[v0.7.9]: https://github.com/pabllopf/Alis/compare/v0.7.8...v0.7.9
