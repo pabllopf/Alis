@@ -64,6 +64,7 @@
         <NoWarn>$(NoWarn);NU1903;</NoWarn> <!-- Error NU1903 : Warning As Error: Package has high severity vulnerability -->
         <NoWarn>$(NoWarn);NU1902;</NoWarn> <!-- Error NU1902 : Warning As Error: Package has moderate severity vulnerabilities -->
         <NoWarn>$(NoWarn);CS0162;</NoWarn>
+        <NoWarn>$(NoWarn);ALIS001;ALIS009;ALIS010;</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
