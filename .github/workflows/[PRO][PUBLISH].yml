@@ -57,14 +57,6 @@ jobs:
           ref: master
           fetch-depth: 1
 
-      - name: Cache NuGet packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget-
-
       - name: Get current version
         id: get-version
         run: |
@@ -117,9 +109,6 @@ jobs:
           echo "💽 Espacio en disco después de limpiar:"
           df -h /
 
-      - name: Restore dependencies
-        run: dotnet restore alis.sln
-
       - name: Build extensiones automáticamente
         run: |
           echo "Buscando proyectos..."
@@ -150,7 +139,7 @@ jobs:
         with:
           name: build-core-extensions-${{ matrix.framework }}
           path: |
-            **/1_Presentation/**/Extension/**/src/**/bin/**/Release/**/*.dll
+            **/1_Presentation/**/Extension/**/src/**/bin/**/Release/**/*
 
             
   build_core:
@@ -194,17 +183,6 @@ jobs:
         with:
           dotnet-version: 9.0.301
 
-      - name: Cache NuGet packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget-
-
-      - name: Restore dependencies
-        run: dotnet restore alis.sln
-        
       - name: Build Core (all frameworks)
         shell: bash
         run: |
@@ -243,15 +221,15 @@ jobs:
         with:
           name: build-core-output
           path: |
-            **/2_Application/**/src/**/bin/**/Release/**/*.dll
-            **/3_Structuration/**/src/**/bin/**/Release/**/*.dll
-            **/4_Operation/**/src/**/bin/**/Release/**/*.dll
-            **/5_Declaration/**/src/**/bin/**/Release/**/*.dll
-            **/6_Ideation/**/src/**/bin/**/Release/**/*.dll
+            **/2_Application/**/src/**/bin/**/Release/**/*
+            **/3_Structuration/**/src/**/bin/**/Release/**/*
+            **/4_Operation/**/src/**/bin/**/Release/**/*
+            **/5_Declaration/**/src/**/bin/**/Release/**/*
+            **/6_Ideation/**/src/**/bin/**/Release/**/*
             
   build_apps:
     needs: [ prepare ]
-    runs-on: macos-13
+    runs-on: macos-15-intel
     strategy:
       matrix:
         framework: [ net8.0 ]
@@ -288,13 +266,13 @@ jobs:
         with:
           dotnet-version: 9.0.301
 
-      - name: Cache NuGet packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget-
+      - name: Limpiar entorno
+        run: |
+          echo "Limpiando entorno..."
+          rm -rf /Users/runner/.dotnet
+          rm -rf /Users/runner/.nuget
+          
+          echo "Entorno limpio."
 
       - name: Restore dependencies
         run: dotnet restore alis.sln
@@ -375,7 +353,7 @@ jobs:
   publish_packages:
     name: Publish NuGet Packages
     needs: [ prepare, build_extensions, build_core, build_apps ]
-    runs-on: macos-13
+    runs-on: macos-15-intel
     steps:
 
       - name: Limpiar entorno
