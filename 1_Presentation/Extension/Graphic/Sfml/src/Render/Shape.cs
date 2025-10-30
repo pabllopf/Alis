@@ -31,9 +31,8 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
-using Alis.Core.Aspect.Data.Dll;
+
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.Sfml.Properties;
 using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Render
@@ -57,16 +56,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         ///     The my texture
         /// </summary>
         private Texture myTexture;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Shape" /> class
-        /// </summary>
-        static Shape()
-        {
-            EmbeddedDllClass.ExtractEmbeddedDlls("sfml", DllType.File, SfmlDlls.SfmlDllBytes, Assembly.GetAssembly(typeof(SfmlDlls)));
-        }
-
-
+        
         /// <summary>
         ///     Default constructor
         /// </summary>

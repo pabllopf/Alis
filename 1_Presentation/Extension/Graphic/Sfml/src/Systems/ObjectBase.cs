@@ -29,8 +29,7 @@
 
 using System;
 using System.Reflection;
-using Alis.Core.Aspect.Data.Dll;
-using Alis.Extension.Graphic.Sfml.Properties;
+
 
 namespace Alis.Extension.Graphic.Sfml.Systems
 {
@@ -44,15 +43,6 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         ///     The zero
         /// </summary>
         private IntPtr myCPointer = IntPtr.Zero;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ObjectBase" /> class
-        /// </summary>
-        static ObjectBase()
-        {
-            EmbeddedDllClass.ExtractEmbeddedDlls("sfml", DllType.File, SfmlDlls.SfmlDllBytes, Assembly.GetAssembly(typeof(SfmlDlls)));
-        }
-
 
         /// <summary>
         ///     Construct the object from a pointer to the C library object

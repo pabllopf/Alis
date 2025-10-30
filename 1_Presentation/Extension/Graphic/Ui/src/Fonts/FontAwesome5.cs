@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Reflection;
-using Alis.Core.Aspect.Data.Dll;
+
 
 namespace Alis.Extension.Graphic.Ui.Fonts
 {

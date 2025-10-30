@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Security;
-using Alis.Core.Aspect.Data.Dll;
+
 using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Windows
@@ -15,13 +15,6 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     //////////////////////////////////////////////////////////////////
     public class Context : CriticalFinalizerObject
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Context"/> class
-        /// </summary>
-        static Context() 
-        {
-            EmbeddedDllClass.ExtractEmbeddedDlls("sfml", DllType.File, Properties.SfmlDlls.SfmlDllBytes, Assembly.GetAssembly(typeof(Properties.SfmlDlls)));
-        }
         
         /// <summary>
         /// Default constructor

@@ -30,7 +30,7 @@
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data.Dll;
+
 
 namespace Alis.Extension.Graphic.Sdl2.Sdl2Image
 {
