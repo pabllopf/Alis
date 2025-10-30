@@ -259,6 +259,14 @@ jobs:
         framework: [ net8.0 ]
     steps:
 
+      - name: Limpiar entorno
+        run: |
+          echo "Limpiando entorno..."
+          rm -rf /Users/runner/.dotnet
+          rm -rf /Users/runner/.nuget
+          
+          echo "Entorno limpio."
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -289,14 +297,6 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
-
-      - name: Limpiar entorno
-        run: |
-          echo "Limpiando entorno..."
-          rm -rf /Users/runner/.dotnet
-          rm -rf /Users/runner/.nuget
-          
-          echo "Entorno limpio."
 
       - name: Restore dependencies
         run: dotnet restore alis.sln
