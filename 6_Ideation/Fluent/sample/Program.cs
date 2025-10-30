@@ -48,8 +48,11 @@ namespace Alis.Core.Aspect.Fluent.Sample
                 .WithModel("F8")
                 .WithColor("Red")
                 .Build();
-
-            Console.ReadKey();
+            
+            Console.WriteLine($"Car Name: {sampleCar.Name}");
+            Console.WriteLine($"Car Model: {sampleCar.Model}");
+            Console.WriteLine($"Car Color: {sampleCar.Color}");
+            
         }
     }
 }
