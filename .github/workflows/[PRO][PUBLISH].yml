@@ -92,7 +92,7 @@ jobs:
           echo "💽 Espacio en disco antes de limpiar:"
           df -h /
 
-          THRESHOLD_GB=5
+          THRESHOLD_GB=25
           FREE_GB=$(df -BG / | tail -1 | awk '{print $4}' | sed 's/G//')
 
           if (( FREE_GB < THRESHOLD_GB )); then
@@ -177,11 +177,35 @@ jobs:
       
           echo "version=$versionfinal" >> "$GITHUB_OUTPUT"
 
+      - name: Check disk space and clean if needed
+        shell: bash
+        run: |
+          echo "💽 Espacio en disco antes de limpiar:"
+          df -h /
+
+          THRESHOLD_GB=25
+          FREE_GB=$(df -BG / | tail -1 | awk '{print $4}' | sed 's/G//')
+
+          if (( FREE_GB < THRESHOLD_GB )); then
+            echo "⚠️ Espacio libre menor de ${THRESHOLD_GB}GB. Limpiando..."
+            sudo rm -rf /usr/share/dotnet/sdk/NuGetFallbackFolder || true
+            sudo rm -rf /opt/hostedtoolcache/dotnet || true
+            sudo rm -rf "$HOME/.nuget/packages" || true
+            sudo apt-get clean
+            docker system prune -af || true
+          else
+            echo "✅ Espacio suficiente: ${FREE_GB}GB libres."
+          fi
+
+          echo "💽 Espacio en disco después de limpiar:"
+          df -h /
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
+
+      
 
       - name: Build Core (all frameworks)
         shell: bash
