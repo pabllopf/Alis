@@ -33,7 +33,6 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Dll;
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Extension.Graphic.Sdl2.Properties;
 using Version = Alis.Extension.Graphic.Sdl2.Structs.Version;
 
 namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
@@ -47,12 +46,6 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Ttf
         ///     The native lib name
         /// </summary>
         private const string NativeLibName = "sdl2_ttf";
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="SdlTtf" /> class
-        /// </summary>
-        static NativeSdlTtf() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf", DllType.Lib, Sdl2TtfDlls.GlSdlTtfDllBytes, Assembly.GetAssembly(typeof(Sdl2TtfDlls)));
-
 
         /// <summary>
         ///     Ttf the glyph metrics using the specified font

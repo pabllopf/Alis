@@ -29,7 +29,6 @@
 
 using System.Reflection;
 using Alis.Core.Aspect.Data.Dll;
-using Alis.Extension.Graphic.Ui.Properties;
 
 namespace Alis.Extension.Graphic.Ui.Fonts
 {
@@ -5077,13 +5076,5 @@ namespace Alis.Extension.Graphic.Ui.Fonts
         ///     The yin yang
         /// </summary>
         public static readonly string YinYang = "\uf6ad";
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="FontAwesome5" /> class
-        /// </summary>
-        static FontAwesome5()
-        {
-            EmbeddedDllClass.ExtractEmbeddedDlls("fontawesome", DllType.File, FontResources.FontAwesomeDllBytes, Assembly.GetExecutingAssembly(), "Assets");
-        }
     }
 }
