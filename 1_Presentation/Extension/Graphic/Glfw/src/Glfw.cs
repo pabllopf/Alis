@@ -43,7 +43,6 @@ namespace Alis.Extension.Graphic.Glfw
     ///     The base class the vast majority of the GLFW functions, excluding only Vulkan and native platform specific
     ///     functions.
     /// </summary>
-    [SuppressUnmanagedCodeSecurity]
     public static class Glfw
     {
         /// <summary>
