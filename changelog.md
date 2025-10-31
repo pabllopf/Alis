@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.8.0] - 2025-10-31
+### :bug: Bug Fixes
+- [`8f74469`](https://github.com/pabllopf/Alis/commit/8f74469a73d3dd7bc2d38aaa9e0d259e802708b0) - add sourcelink *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aeac3f0`](https://github.com/pabllopf/Alis/commit/aeac3f0b6c55800a25f426ff009d20b1041f4915) - nuget runtimes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c36aa61`](https://github.com/pabllopf/Alis/commit/c36aa6136946e4c571121f7ad2fc03d5d470b525) - update the version chekout *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.7.9] - 2025-10-31
 ### :sparkles: New Features
 - [`4988bb6`](https://github.com/pabllopf/Alis/commit/4988bb6495907f2468dda4f208ed37b1a068d4cf) - new runtimes from extensions *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4976,3 +4983,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.7.7]: https://github.com/pabllopf/Alis/compare/v0.7.6...v0.7.7
 [v0.7.8]: https://github.com/pabllopf/Alis/compare/v0.7.7...v0.7.8
 [v0.7.9]: https://github.com/pabllopf/Alis/compare/v0.7.8...v0.7.9
+[v0.8.0]: https://github.com/pabllopf/Alis/compare/v0.7.9...v0.8.0
