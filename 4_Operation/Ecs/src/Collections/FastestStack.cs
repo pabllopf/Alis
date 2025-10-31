@@ -684,7 +684,14 @@ namespace Alis.Core.Ecs.Collections
             _size = 0;
             _version = 0;
         }
-        
+
+        /// <summary>
+        ///     Creates the i
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <returns>A fast stack of t</returns>
+        public static FastestStack<T> Create(int i) => new FastestStack<T>(i);
+
         /// <summary>
         ///     Converts the span
         /// </summary>

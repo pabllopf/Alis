@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The create
         /// </summary>
-        private FastestStack<Archetype> _archetypes = new FastestStack<Archetype>(2);
+        private FastestStack<Archetype> _archetypes = FastestStack<Archetype>.Create(2);
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Query" /> class
@@ -90,6 +90,11 @@ namespace Alis.Core.Ecs.Systems
         /// <param name="archetype">The archetype</param>
         internal void TryAttachArchetype(Archetype archetype)
         {
+            if (!IncludeDisabled && archetype.HasTag<Disable>())
+            {
+                return;
+            }
+
             if (ArchetypeSatisfiesQuery(archetype.Id))
             {
                 _archetypes.Push(archetype);

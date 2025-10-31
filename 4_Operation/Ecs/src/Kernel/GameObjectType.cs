@@ -59,7 +59,12 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         public readonly FastImmutableArray<ComponentId> Types =>
             Archetypes.Archetype.ArchetypeTable[RawIndex].ComponentTypes;
-        
+
+        /// <summary>
+        ///     The tag types
+        /// </summary>
+        public readonly FastImmutableArray<TagId> Tags => Archetypes.Archetype.ArchetypeTable[RawIndex].TagTypes;
+
         /// <summary>
         ///     Checks if this <see cref="GameObjectType" /> has a component represented by a <see cref="ComponentId" />
         /// </summary>
@@ -69,7 +74,17 @@ namespace Alis.Core.Ecs.Kernel
         ///     <see langword="false" /> otherwise
         /// </returns>
         public readonly bool HasComponent(ComponentId componentId) => GlobalWorldTables.ComponentIndex(this, componentId) != 0;
-        
+
+        /// <summary>
+        ///     Checks if this <see cref="GameObjectType" /> has a tag represented by a <see cref="TagId" />
+        /// </summary>
+        /// <param name="tagId">The ID of the tag type to check if this <see cref="GameObjectType" /> has</param>
+        /// <returns>
+        ///     <see langword="true" /> if this GameObject type has a tag of the specified tag ID, <see langword="false" />
+        ///     otherwise
+        /// </returns>
+        public readonly bool HasTag(TagId tagId) => GlobalWorldTables.HasTag(this, tagId);
+
         /// <summary>
         ///     Checks if this <see cref="GameObjectType" /> represents the same ID as <paramref name="other" />
         /// </summary>
@@ -105,7 +120,14 @@ namespace Alis.Core.Ecs.Kernel
         /// <param name="right">The second EntityType</param>
         /// <returns><see langword="true" /> if they represent different IDs, <see langword="false" /> otherwise</returns>
         public static bool operator !=(GameObjectType left, GameObjectType right) => !left.Equals(right);
-        
+
+        /// <summary>
+        ///     Gets an <see cref="GameObjectType" /> without needing an <see cref="GameObject" /> of the specific type.
+        /// </summary>
+        /// <param name="components">The components the <see cref="GameObjectType" /> should have.</param>
+        /// <param name="tags">The tags the <see cref="GameObjectType" /> should have.</param>
+        public static GameObjectType EntityTypeOf(ReadOnlySpan<ComponentId> components, ReadOnlySpan<TagId> tags) => Archetypes.Archetype.GetArchetypeId(components, tags);
+
         /// <summary>
         ///     Archetypes the context
         /// </summary>

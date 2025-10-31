@@ -103,5 +103,16 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         {
             return Unsafe.Add(ref ComponentTagLocationTable[archetype.RawIndex][0], component.RawIndex) & IndexBits;
         }
+
+        /// <summary>
+        ///     Hases the tag using the specified archetype
+        /// </summary>
+        /// <param name="archetype">The archetype</param>
+        /// <param name="tag">The tag</param>
+        /// <returns>The bool</returns>
+        public static bool HasTag(GameObjectType archetype, TagId tag)
+        {
+            return (Unsafe.Add(ref ComponentTagLocationTable[archetype.RawIndex][0], tag.RawValue) & HasTagMask) != 0;
+        }
     }
 }

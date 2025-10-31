@@ -46,11 +46,21 @@ namespace Alis.Core.Ecs.Kernel.Events
         ///     The delete
         /// </summary>
         internal FrugalStack<Action<GameObject>> Delete;
-        
+
+        /// <summary>
+        ///     The detach
+        /// </summary>
+        internal TagEvent Detach;
+
         /// <summary>
         ///     The remove
         /// </summary>
         internal ComponentEvent Remove;
+
+        /// <summary>
+        ///     The tag
+        /// </summary>
+        internal TagEvent Tag;
 
         /// <summary>
         ///     Initalizes the exists
@@ -62,6 +72,8 @@ namespace Alis.Core.Ecs.Kernel.Events
             if (!exists)
             {
                 record = new EventRecord();
+                record.Tag = new TagEvent();
+                record.Detach = new TagEvent();
                 record.Add = new ComponentEvent();
                 record.Remove = new ComponentEvent();
                 record.Delete = new FrugalStack<Action<GameObject>>();

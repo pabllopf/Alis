@@ -126,7 +126,93 @@ namespace Alis.Core.Ecs
             world.MoveEntityToArchetypeRemove(runners, this, ref thisLookup, to);
             //scene.MoveEntityToArchetypeRemove invokes the events for us
         }
-        
+
+        /// <summary>
+        ///     Adds a tag to this <see cref="GameObject" />
+        /// </summary>
+        /// <inheritdoc cref="Add{T}(in T)" />
+        public void Tag<T>()
+        {
+            ref GameObjectLocation thisLookup = ref AssertIsAlive(out Scene world);
+
+            if (!world.AllowStructualChanges)
+            {
+                world.WorldUpdateCommandBuffer.Tag<T>(this);
+                return;
+            }
+
+            Archetype to = TraverseThroughCacheOrCreate<TagId, NeighborCache<T>>(
+                world,
+                ref NeighborCache<T>.Tag.Lookup,
+                ref thisLookup,
+                true);
+
+            world.MoveEntityToArchetypeIso(this, ref thisLookup, to);
+
+            GameObjectFlags flags = thisLookup.Flags | world.WorldEventFlags;
+            if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Tagged))
+            {
+                if (world.Tagged.HasListeners)
+                {
+                    InvokeTagWorldEvents<T>(ref world.Tagged, this);
+                }
+
+                if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Tagged))
+                {
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+                    EventRecord events = world.EventLookup[EntityIdOnly];
+#else
+                    ref EventRecord events =
+                        ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
+#endif
+                    InvokePerEntityTagEvents<T>(this, ref events.Tag);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Removes a tag from this <see cref="GameObject" />
+        /// </summary>
+        /// <inheritdoc cref="Add{T}(in T)" />
+        public void Detach<T>()
+        {
+            ref GameObjectLocation thisLookup = ref AssertIsAlive(out Scene world);
+
+            if (!world.AllowStructualChanges)
+            {
+                world.WorldUpdateCommandBuffer.Detach<T>(this);
+                return;
+            }
+
+            Archetype to = TraverseThroughCacheOrCreate<TagId, NeighborCache<T>>(
+                world,
+                ref NeighborCache<T>.Detach.Lookup,
+                ref thisLookup,
+                false);
+
+            world.MoveEntityToArchetypeIso(this, ref thisLookup, to);
+
+            GameObjectFlags flags = thisLookup.Flags | world.WorldEventFlags;
+            if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Detach))
+            {
+                if (world.Detached.HasListeners)
+                {
+                    InvokeTagWorldEvents<T>(ref world.Detached, this);
+                }
+
+                if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Detach))
+                {
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
+                    EventRecord events = world.EventLookup[EntityIdOnly];
+#else
+                    ref EventRecord events =
+                        ref CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
+#endif
+                    InvokePerEntityTagEvents<T>(this, ref events.Detach);
+                }
+            }
+        }
+
         /// <summary>
         ///     Invokes the component scene events using the specified event
         /// </summary>
@@ -158,12 +244,51 @@ namespace Alis.Core.Ecs
 
             events.GenericEvent!.Invoke(gameObject, ref component);
         }
-        
+
+        /// <summary>
+        ///     Invokes the tag scene events using the specified event
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="e">The event</param>
+        /// <param name="gameObject">The gameObject</param>
+        private static void InvokeTagWorldEvents<T>(ref Event<TagId> e, GameObject gameObject)
+        {
+            e.InvokeInternal(gameObject, Kernel.Tag<T>.Id);
+        }
+
+        /// <summary>
+        ///     Invokes the per gameObject tag events using the specified gameObject
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="gameObject">The gameObject</param>
+        /// <param name="events">The events</param>
+        private static void InvokePerEntityTagEvents<T>(GameObject gameObject, ref Event<TagId> events)
+        {
+            events.Invoke(gameObject, Kernel.Tag<T>.Id);
+        }
+
         /// <summary>
         ///     The neighbor cache
         /// </summary>
         public struct NeighborCache<T> : IArchetypeGraphEdge
         {
+            /// <summary>
+            ///     Modifies the tags using the specified tags
+            /// </summary>
+            /// <param name="tags">The tags</param>
+            /// <param name="add">The add</param>
+            public void ModifyTags(ref FastImmutableArray<TagId> tags, bool add)
+            {
+                if (add)
+                {
+                    tags = MemoryHelpers.Concat(tags, Kernel.Tag<T>.Id);
+                }
+                else
+                {
+                    tags = MemoryHelpers.Remove(tags, Kernel.Tag<T>.Id);
+                }
+            }
+
             /// <summary>
             ///     Modifies the components using the specified components
             /// </summary>
@@ -267,16 +392,23 @@ namespace Alis.Core.Ecs
                 bool add)
             {
                 FastImmutableArray<ComponentId> componentIDs = archetypeFromId.Types;
+                FastImmutableArray<TagId> tagIDs = archetypeFromId.Tags;
 
                 if (typeof(T) == typeof(ComponentId))
                 {
                     default(TEdge).ModifyComponents(ref componentIDs, add);
                 }
+                else
+                {
+                    default(TEdge).ModifyTags(ref tagIDs, add);
+                }
 
                 Archetype archetype = Archetype.CreateOrGetExistingArchetype(
                     componentIDs.AsSpan(),
+                    tagIDs.AsSpan(),
                     scene,
-                    componentIDs);
+                    componentIDs,
+                    tagIDs);
 
                 cache.Set(archetypeFromId.RawIndex, archetype.Id.RawIndex);
 
@@ -289,6 +421,13 @@ namespace Alis.Core.Ecs
         /// </summary>
         internal interface IArchetypeGraphEdge
         {
+            /// <summary>
+            ///     Modifies the tags using the specified tags
+            /// </summary>
+            /// <param name="tags">The tags</param>
+            /// <param name="add">The add</param>
+            void ModifyTags(ref FastImmutableArray<TagId> tags, bool add);
+
             /// <summary>
             ///     Modifies the components using the specified components
             /// </summary>

@@ -104,7 +104,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The create
         /// </summary>
-        internal static FastestStack<ComponentData> ComponentTable = new FastestStack<ComponentData>(16);
+        internal static FastestStack<ComponentData> ComponentTable = FastestStack<ComponentData>.Create(16);
 
         /// <summary>
         ///     The none component runner table
@@ -285,7 +285,7 @@ namespace Alis.Core.Ecs.Kernel
                 NoneComponentRunnerTable.Clear();
                 _existingComponentIDs.Clear();
                 _nextComponentId = -1;
-                ComponentTable = new FastestStack<ComponentData>(16);
+                ComponentTable = FastestStack<ComponentData>.Create(16);
                 // Forzar la inicialización de void para mantener el comportamiento original
                 GetComponentId(typeof(void));
             }

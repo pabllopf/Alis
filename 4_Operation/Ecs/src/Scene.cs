@@ -101,7 +101,7 @@ namespace Alis.Core.Ecs
         ///     The create
         /// </summary>
         private FastestStack<ArchetypeDeferredUpdateRecord> _altDeferredCreationArchetypes =
-            new FastestStack<ArchetypeDeferredUpdateRecord>(4);
+            FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
 
         //these lookups exists for programmical api optimization
         //normal <T1, T2...> methods use a shared global static cache
@@ -134,12 +134,17 @@ namespace Alis.Core.Ecs
         ///     The create
         /// </summary>
         public FastestStack<ArchetypeDeferredUpdateRecord> DeferredCreationArchetypes =
-            new FastestStack<ArchetypeDeferredUpdateRecord>(4);
+            FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
+
+        /// <summary>
+        ///     The tag event
+        /// </summary>
+        public Event<TagId> Detached = new Event<TagId>();
 
         /// <summary>
         ///     The create
         /// </summary>
-        public FastestStack<GameObjectType> EnabledArchetypes = new FastestStack<GameObjectType>(16);
+        public FastestStack<GameObjectType> EnabledArchetypes = FastestStack<GameObjectType>.Create(16);
 
         /// <summary>
         ///     The gameObject only event
@@ -186,7 +191,12 @@ namespace Alis.Core.Ecs
         ///     The remove tag lookup
         /// </summary>
         public FastLookup RemoveTagLookup = new();
-        
+
+        /// <summary>
+        ///     The tag event
+        /// </summary>
+        public Event<TagId> Tagged = new Event<TagId>();
+
         //archetype ID -> Archetype?
         /// <summary>
         ///     The scene archetype table
@@ -217,7 +227,8 @@ namespace Alis.Core.Ecs
 
             WorldUpdateCommandBuffer = new CommandBuffer(this);
             DefaultWorldGameObject = new GameObject(Id, default(ushort), default(int));
-            DefaultArchetype = Archetype.CreateOrGetExistingArchetype([],  this, FastImmutableArray<ComponentId>.Empty);
+            DefaultArchetype = Archetype.CreateOrGetExistingArchetype([], [], this, FastImmutableArray<ComponentId>.Empty,
+                FastImmutableArray<TagId>.Empty);
         }
 
         /// <summary>
@@ -314,7 +325,25 @@ namespace Alis.Core.Ecs
             add => AddEvent(ref ComponentRemovedEvent, value, GameObjectFlags.RemoveComp);
             remove => RemoveEvent(ref ComponentRemovedEvent, value, GameObjectFlags.RemoveComp);
         }
-        
+
+        /// <summary>
+        ///     Invoked whenever a tag is added to an gameObject.
+        /// </summary>
+        public event Action<GameObject, TagId> TagTagged
+        {
+            add => AddEvent(ref Tagged, value, GameObjectFlags.Tagged);
+            remove => RemoveEvent(ref Tagged, value, GameObjectFlags.Tagged);
+        }
+
+        /// <summary>
+        ///     Invoked whenever a tag is removed from an gameObject.
+        /// </summary>
+        public event Action<GameObject, TagId> TagDetached
+        {
+            add => AddEvent(ref Detached, value, GameObjectFlags.Detach);
+            remove => RemoveEvent(ref Detached, value, GameObjectFlags.Detach);
+        }
+
         /// <summary>
         ///     Adds the event using the specified event
         /// </summary>
@@ -356,42 +385,6 @@ namespace Alis.Core.Ecs
             gameObjectLocation.Version = version;
             EntityTable[id] = gameObjectLocation;
             return new GameObject(Id, version, id);
-        }
-        
-        /// <summary>
-        ///     Creates an <see cref="GameObject" />
-        /// </summary>
-        /// <param name="components">The components to use</param>
-        /// <returns>The created gameObject</returns>
-        public GameObject CreateFromObjects(ReadOnlySpan<object> components)
-        {
-            if (components.Length > MemoryHelpers.MaxComponentCount)
-            {
-                throw new ArgumentException("Max 127 components on an gameObject", nameof(components));
-            }
-
-            Span<ComponentId> types = stackalloc ComponentId[components.Length];
-
-            for (int i = 0; i < components.Length; i++)
-            {
-                types[i] = Component.GetComponentId(components[i].GetType());
-            }
-
-            Archetype archetype = Archetype.CreateOrGetExistingArchetype(types!, this);
-
-            ref GameObjectIdOnly entityId = ref archetype.CreateEntityLocation(GameObjectFlags.None, out GameObjectLocation loc);
-            GameObject gameObject = CreateEntityFromLocation(loc);
-            entityId.ID = gameObject.EntityID;
-            entityId.Version = gameObject.EntityVersion;
-
-            Span<ComponentStorageBase> archetypeComponents = archetype.Components.AsSpan();
-            for (int i = 1; i < archetypeComponents.Length; i++)
-            {
-                archetypeComponents[i].SetAt(components[i - 1], loc.Index);
-            }
-
-            EntityCreatedEvent.Invoke(gameObject);
-            return gameObject;
         }
 
        /// <summary>
@@ -504,6 +497,11 @@ namespace Alis.Core.Ecs
         /// <param name="temporaryCreationArchetype">The temporary creation archetype</param>
         public void ArchetypeAdded(Archetype archetype, Archetype temporaryCreationArchetype)
         {
+            if (!GlobalWorldTables.HasTag(archetype.Id, Tag<Disable>.Id))
+            {
+                EnabledArchetypes.Push(archetype.Id);
+            }
+
             foreach (KeyValuePair<int, Query> qkvp in QueryCache)
             {
                 qkvp.Value.TryAttachArchetype(archetype);
@@ -675,7 +673,43 @@ namespace Alis.Core.Ecs
             return ref Unsafe.NullRef<EventRecord>();
         }
 #endif
-        
+
+        /// <summary>
+        ///     Creates an <see cref="GameObject" />
+        /// </summary>
+        /// <param name="components">The components to use</param>
+        /// <returns>The created gameObject</returns>
+        public GameObject CreateFromObjects(ReadOnlySpan<object> components)
+        {
+            if (components.Length > MemoryHelpers.MaxComponentCount)
+            {
+                throw new ArgumentException("Max 127 components on an gameObject", nameof(components));
+            }
+
+            Span<ComponentId> types = stackalloc ComponentId[components.Length];
+
+            for (int i = 0; i < components.Length; i++)
+            {
+                types[i] = Component.GetComponentId(components[i].GetType());
+            }
+
+            Archetype archetype = Archetype.CreateOrGetExistingArchetype(types!, [], this);
+
+            ref GameObjectIdOnly entityId = ref archetype.CreateEntityLocation(GameObjectFlags.None, out GameObjectLocation loc);
+            GameObject gameObject = CreateEntityFromLocation(loc);
+            entityId.ID = gameObject.EntityID;
+            entityId.Version = gameObject.EntityVersion;
+
+            Span<ComponentStorageBase> archetypeComponents = archetype.Components.AsSpan();
+            for (int i = 1; i < archetypeComponents.Length; i++)
+            {
+                archetypeComponents[i].SetAt(components[i - 1], loc.Index);
+            }
+
+            EntityCreatedEvent.Invoke(gameObject);
+            return gameObject;
+        }
+
         /// <summary>
         ///     Creates an <see cref="GameObject" /> with zero components.
         /// </summary>

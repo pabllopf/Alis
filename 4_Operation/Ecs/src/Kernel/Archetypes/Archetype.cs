@@ -53,7 +53,12 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     Gets the value of the archetype type array
         /// </summary>
         internal FastImmutableArray<ComponentId> ArchetypeTypeArray => _archetypeId.Types;
-        
+
+        /// <summary>
+        ///     Gets the value of the archetype tag array
+        /// </summary>
+        internal FastImmutableArray<TagId> ArchetypeTagArray => _archetypeId.Tags;
+
         /// <summary>
         ///     Gets the value of the gameObject count
         /// </summary>
@@ -447,7 +452,27 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal int GetComponentIndex(ComponentId component) => Unsafe.Add(ref ComponentTagTable[0], component.RawIndex) & GlobalWorldTables.IndexBits;
-        
+
+        /// <summary>
+        ///     Hases the tag
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The bool</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal bool HasTag<T>()
+        {
+            ushort index = Tag<T>.Id.RawValue;
+            return Unsafe.Add(ref ComponentTagTable[0], index) << 7 != 0;
+        }
+
+        /// <summary>
+        ///     Hases the tag using the specified tag id
+        /// </summary>
+        /// <param name="tagId">The tag id</param>
+        /// <returns>The bool</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal bool HasTag(TagId tagId) => Unsafe.Add(ref ComponentTagTable[0], tagId.RawValue) << 7 != 0;
+
         /// <summary>
         ///     Gets the gameObject span
         /// </summary>

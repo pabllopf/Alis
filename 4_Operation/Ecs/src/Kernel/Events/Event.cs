@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+global using TagEvent = Alis.Core.Ecs.Kernel.Events.Event<Alis.Core.Ecs.Kernel.TagId>;
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Collections;

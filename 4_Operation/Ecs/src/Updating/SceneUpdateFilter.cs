@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     The create
         /// </summary>
-        private FastestStack<ComponentId> _filteredComponents = new FastestStack<ComponentId>(8);
+        private FastestStack<ComponentId> _filteredComponents = FastestStack<ComponentId>.Create(8);
 
         /// <summary>
         ///     The last registered component id
