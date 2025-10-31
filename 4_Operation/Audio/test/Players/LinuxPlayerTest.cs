@@ -90,7 +90,7 @@ namespace Alis.Core.Audio.Test.Players
         public void GetBashCommand_InvalidInput()
         {
             LinuxPlayer player = new LinuxPlayer();
-            string command = player.GetBashCommand("test.wav");
+            string command = player.GetBashCommand("test.mp3");
 
             Assert.Equal("aplay -q", command);
         }
