@@ -3,14 +3,17 @@ name: "[PRO][TEST]"
 on:
   push:
     branches: [ master ]
-
+permissions:
+  contents: write
+  pull-requests: write
+  
 jobs:
   macos_13_x64:
     runs-on: macOS-13
     if: "contains(github.event.head_commit.message, 'test: pro')"
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 1
 
@@ -18,9 +21,6 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
-
-      - name: Build Alis.Core.Ecs.Generator
-        run: dotnet build ./4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj -f netstandard2.0 -c Release
 
       - name: install
         run: |
@@ -43,7 +43,7 @@ jobs:
     if: "contains(github.event.head_commit.message, 'test: pro')"
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 1
 
@@ -51,10 +51,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.301
-
-      - name: Build Alis.Core.Ecs.Generator
-        run: dotnet build ./4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj -f netstandard2.0 -c Release
-
+          
       - name: install
         run: |
           choco install ffmpeg -y
@@ -76,7 +73,7 @@ jobs:
     steps:
 
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 1
 
@@ -85,20 +82,10 @@ jobs:
         with:
           dotnet-version: 9.0.301
 
-      - name: Build Alis.Core.Ecs.Generator
-        run: dotnet build ./4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj -f netstandard2.0 -c Release
-
       - name: install
         run: |
           sudo apt-get update -y
           sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev ffmpeg
-
-      - name: Free up disk space
-        run: |
-          sudo apt-get clean
-          sudo apt-get autoremove -y
-          sudo rm -rf /usr/local/lib/android /opt/ghc /usr/share/swift /usr/local/.ghcup
-          df -h
 
       - name: Dotnet test Release
         run: dotnet test alis.sln -c Release -f net8.0

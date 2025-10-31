@@ -55,7 +55,7 @@ namespace Alis.Core.Audio.Test.Players
         public void Play_ValidInput_Linux()
         {
             TestUnixPlayer player = new TestUnixPlayer();
-            player.Play("test.mp3").Wait();
+            player.Play("test.wav").Wait();
 
             Thread.Sleep(1000);
 

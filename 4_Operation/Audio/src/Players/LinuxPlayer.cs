@@ -67,7 +67,7 @@ namespace Alis.Core.Audio.Players
         /// <returns>The string</returns>
         internal override string GetBashCommand(string fileName)
         {
-            if (Path.GetExtension(fileName).ToLower().Equals(".mp3"))
+            if (Path.GetExtension(fileName).ToLower().Equals(".wav"))
             {
                 return "mpg123 -q";
             }
