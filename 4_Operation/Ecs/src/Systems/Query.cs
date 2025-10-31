@@ -90,7 +90,7 @@ namespace Alis.Core.Ecs.Systems
         /// <param name="archetype">The archetype</param>
         internal void TryAttachArchetype(Archetype archetype)
         {
-            if (!IncludeDisabled && archetype.HasTag<Disable>())
+            if (!IncludeDisabled)
             {
                 return;
             }

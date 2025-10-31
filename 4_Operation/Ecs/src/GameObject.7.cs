@@ -138,102 +138,6 @@ namespace Alis.Core.Ecs
         }
 
         /// <summary>
-        ///     Adds a tag to this <see cref="GameObject" />
-        /// </summary>
-        /// <inheritdoc cref="Add{T}(in T)" />
-        public void Tag<T1, T2, T3, T4, T5, T6, T7>()
-        {
-            ref GameObjectLocation thisLookup = ref AssertIsAlive(out Scene world);
-
-            if (!world.AllowStructualChanges)
-            {
-                world.WorldUpdateCommandBuffer.Tag<T1>(this);
-                world.WorldUpdateCommandBuffer.Tag<T2>(this);
-                world.WorldUpdateCommandBuffer.Tag<T3>(this);
-                world.WorldUpdateCommandBuffer.Tag<T4>(this);
-                world.WorldUpdateCommandBuffer.Tag<T5>(this);
-                world.WorldUpdateCommandBuffer.Tag<T6>(this);
-                world.WorldUpdateCommandBuffer.Tag<T7>(this);
-
-                return;
-            }
-
-            Archetype to = TraverseThroughCacheOrCreate<TagId, NeighborCache<T1, T2, T3, T4, T5, T6, T7>>(
-                world,
-                ref NeighborCache<T1, T2, T3, T4, T5, T6, T7>.Tag.Lookup,
-                ref thisLookup,
-                true);
-
-            world.MoveEntityToArchetypeIso(this, ref thisLookup, to);
-
-            GameObjectFlags flags = thisLookup.Flags | world.WorldEventFlags;
-            if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Tagged))
-            {
-                if (world.Tagged.HasListeners)
-                    InvokeTagWorldEvents<T1, T2, T3, T4, T5, T6, T7>(ref world.Tagged, this);
-
-                if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Tagged))
-                {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-                    EventRecord events = world.EventLookup[EntityIdOnly];
-#else
-                ref EventRecord events =
-                    ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
-#endif
-                    InvokePerEntityTagEvents<T1, T2, T3, T4, T5, T6, T7>(this, ref events.Tag);
-                }
-            }
-        }
-
-        /// <summary>
-        ///     Removes a tag from this <see cref="GameObject" />
-        /// </summary>
-        /// <inheritdoc cref="Add{T}(in T)" />
-        public void Detach<T1, T2, T3, T4, T5, T6, T7>()
-        {
-            ref GameObjectLocation thisLookup = ref AssertIsAlive(out Scene world);
-
-            if (!world.AllowStructualChanges)
-            {
-                world.WorldUpdateCommandBuffer.Detach<T1>(this);
-                world.WorldUpdateCommandBuffer.Detach<T2>(this);
-                world.WorldUpdateCommandBuffer.Detach<T3>(this);
-                world.WorldUpdateCommandBuffer.Detach<T4>(this);
-                world.WorldUpdateCommandBuffer.Detach<T5>(this);
-                world.WorldUpdateCommandBuffer.Detach<T6>(this);
-                world.WorldUpdateCommandBuffer.Detach<T7>(this);
-
-                return;
-            }
-
-            Archetype to = TraverseThroughCacheOrCreate<TagId, NeighborCache<T1, T2, T3, T4, T5, T6, T7>>(
-                world,
-                ref NeighborCache<T1, T2, T3, T4, T5, T6, T7>.Detach.Lookup,
-                ref thisLookup,
-                false);
-
-            world.MoveEntityToArchetypeIso(this, ref thisLookup, to);
-
-            GameObjectFlags flags = thisLookup.Flags | world.WorldEventFlags;
-            if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Detach))
-            {
-                if (world.Detached.HasListeners)
-                    InvokeTagWorldEvents<T1, T2, T3, T4, T5, T6, T7>(ref world.Detached, this);
-
-                if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Detach))
-                {
-#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-                    EventRecord events = world.EventLookup[EntityIdOnly];
-#else
-                ref EventRecord events =
-                    ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrNullRef(world.EventLookup, EntityIdOnly);
-#endif
-                    InvokePerEntityTagEvents<T1, T2, T3, T4, T5, T6, T7>(this, ref events.Detach);
-                }
-            }
-        }
-
-        /// <summary>
         ///     Invokes the component scene events using the specified event
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
@@ -302,76 +206,14 @@ namespace Alis.Core.Ecs
             events.GenericEvent!.Invoke(gameObject, ref component7);
         }
 
-        /// <summary>
-        ///     Invokes the tag scene events using the specified event
-        /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <typeparam name="T6">The </typeparam>
-        /// <typeparam name="T7">The </typeparam>
-        /// <param name="e">The event</param>
-        /// <param name="gameObject">The gameObject</param>
-        private static void InvokeTagWorldEvents<T1, T2, T3, T4, T5, T6, T7>(ref Event<TagId> e, GameObject gameObject)
-        {
-            e.InvokeInternal(gameObject, Kernel.Tag<T1>.Id);
-            e.InvokeInternal(gameObject, Kernel.Tag<T2>.Id);
-            e.InvokeInternal(gameObject, Kernel.Tag<T3>.Id);
-            e.InvokeInternal(gameObject, Kernel.Tag<T4>.Id);
-            e.InvokeInternal(gameObject, Kernel.Tag<T5>.Id);
-            e.InvokeInternal(gameObject, Kernel.Tag<T6>.Id);
-            e.InvokeInternal(gameObject, Kernel.Tag<T7>.Id);
-        }
-
-        /// <summary>
-        ///     Invokes the per gameObject tag events using the specified gameObject
-        /// </summary>
-        /// <typeparam name="T1">The </typeparam>
-        /// <typeparam name="T2">The </typeparam>
-        /// <typeparam name="T3">The </typeparam>
-        /// <typeparam name="T4">The </typeparam>
-        /// <typeparam name="T5">The </typeparam>
-        /// <typeparam name="T6">The </typeparam>
-        /// <typeparam name="T7">The </typeparam>
-        /// <param name="gameObject">The gameObject</param>
-        /// <param name="events">The events</param>
-        private static void InvokePerEntityTagEvents<T1, T2, T3, T4, T5, T6, T7>(GameObject gameObject, ref Event<TagId> events)
-        {
-            events.Invoke(gameObject, Kernel.Tag<T1>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T2>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T3>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T4>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T5>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T6>.Id);
-            events.Invoke(gameObject, Kernel.Tag<T7>.Id);
-        }
+        
 
         /// <summary>
         ///     The neighbor cache
         /// </summary>
         public struct NeighborCache<T1, T2, T3, T4, T5, T6, T7> : IArchetypeGraphEdge
         {
-            /// <summary>
-            ///     Modifies the tags using the specified tags
-            /// </summary>
-            /// <param name="tags">The tags</param>
-            /// <param name="add">The add</param>
-            public void ModifyTags(ref FastImmutableArray<TagId> tags, bool add)
-            {
-                if (add)
-                    tags = MemoryHelpers.Concat(tags,
-                    [
-                        Kernel.Tag<T1>.Id, Kernel.Tag<T2>.Id, Kernel.Tag<T3>.Id, Kernel.Tag<T4>.Id, Kernel.Tag<T5>.Id, Kernel.Tag<T6>.Id, Kernel.Tag<T7>.Id
-                    ]);
-                else
-                    tags = MemoryHelpers.Remove(tags,
-                    [
-                        Kernel.Tag<T1>.Id, Kernel.Tag<T2>.Id, Kernel.Tag<T3>.Id, Kernel.Tag<T4>.Id, Kernel.Tag<T5>.Id, Kernel.Tag<T6>.Id, Kernel.Tag<T7>.Id
-                    ]);
-            }
-
+           
             /// <summary>
             ///     Modifies the components using the specified components
             /// </summary>

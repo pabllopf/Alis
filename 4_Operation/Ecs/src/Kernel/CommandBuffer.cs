@@ -68,12 +68,7 @@ namespace Alis.Core.Ecs.Kernel
         ///     The create
         /// </summary>
         internal FastestStack<GameObjectIdOnly> DeleteEntityBuffer = FastestStack<GameObjectIdOnly>.Create(2);
-
-        /// <summary>
-        ///     The create
-        /// </summary>
-        internal FastestStack<TagCommand> DetachTagEntityBuffer = FastestStack<TagCommand>.Create(2);
-
+        
         /// <summary>
         ///     The is inactive
         /// </summary>
@@ -94,12 +89,7 @@ namespace Alis.Core.Ecs.Kernel
         ///     The scene
         /// </summary>
         internal Scene Scene;
-
-        /// <summary>
-        ///     The create
-        /// </summary>
-        internal FastestStack<TagCommand> TagEntityBuffer = FastestStack<TagCommand>.Create(2);
-
+        
         /// <summary>
         ///     Creates a command buffer, which stores changes to a scene without directly applying them.
         /// </summary>
@@ -333,28 +323,6 @@ namespace Alis.Core.Ecs.Kernel
                 }
             }
 
-            while (TagEntityBuffer.TryPop(out TagCommand command))
-            {
-                ref GameObjectLocation record = ref Scene.EntityTable[command.Entity.ID];
-                if (record.Version == command.Entity.Version)
-                {
-                    Scene.MoveEntityToArchetypeIso(command.Entity.ToEntity(Scene), ref record,
-                        Archetype.GetAdjacentArchetypeLookup(Scene,
-                            ArchetypeEdgeKey.Tag(command.TagId, record.Archetype.Id, ArchetypeEdgeType.AddTag)));
-                }
-            }
-
-            while (DetachTagEntityBuffer.TryPop(out TagCommand command))
-            {
-                ref GameObjectLocation record = ref Scene.EntityTable[command.Entity.ID];
-                if (record.Version == command.Entity.Version)
-                {
-                    Scene.MoveEntityToArchetypeIso(command.Entity.ToEntity(Scene), ref record,
-                        Archetype.GetAdjacentArchetypeLookup(Scene,
-                            ArchetypeEdgeKey.Tag(command.TagId, record.Archetype.Id, ArchetypeEdgeType.RemoveTag)));
-                }
-            }
-
             IsInactive = true;
 
             return hasItems;
@@ -385,51 +353,7 @@ namespace Alis.Core.Ecs.Kernel
         {
             IsInactive = false;
         }
-
-
-        /// <summary>
-        ///     Tags an gameObject with a tag when <see cref="Playback" /> is called.
-        /// </summary>
-        /// <typeparam name="T">The type to tag the gameObject with.</typeparam>
-        /// <param name="gameObject">The gameObject to tag.</param>
-        public void Tag<T>(GameObject gameObject)
-        {
-            Tag(gameObject, Kernel.Tag<T>.Id);
-        }
-
-        /// <summary>
-        ///     Tags an gameObject with a tag when <see cref="Playback" /> is called.
-        /// </summary>
-        /// <param name="tagId">The ID of the tag type to tag.</param>
-        /// <param name="gameObject">The gameObject to tag.</param>
-        public void Tag(GameObject gameObject, TagId tagId)
-        {
-            SetIsActive();
-            TagEntityBuffer.Push(new(gameObject.EntityIdOnly, tagId));
-        }
-
-        /// <summary>
-        ///     Detaches a tag from an gameObject when <see cref="Playback" /> is called.
-        /// </summary>
-        /// <typeparam name="T">The type of tag to detach.</typeparam>
-        /// <param name="gameObject">The gameObject to detach from.</param>
-        public void Detach<T>(GameObject gameObject)
-        {
-            Detach(gameObject, Kernel.Tag<T>.Id);
-        }
-
-        /// <summary>
-        ///     Detaches a tag from an gameObject when <see cref="Playback" /> is called.
-        /// </summary>
-        /// <param name="gameObject">The gameObject to detach from.</param>
-        /// <param name="tagId">The ID of the tag type to detach from the gameObject.</param>
-        public void Detach(GameObject gameObject, TagId tagId)
-        {
-            SetIsActive();
-            DetachTagEntityBuffer.Push(new(gameObject.EntityIdOnly, tagId));
-        }
-
-
+        
         /// <summary>
         ///     Begins to create an gameObject, which will be resolved when <see cref="Playback" /> is called.
         /// </summary>

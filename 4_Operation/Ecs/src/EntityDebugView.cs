@@ -43,12 +43,7 @@ namespace Alis.Core.Ecs
         ///     Gets the value of the component types
         /// </summary>
         public FastImmutableArray<ComponentId> ComponentTypes => target.ComponentTypes;
-
-        /// <summary>
-        ///     Gets the value of the tags
-        /// </summary>
-        public FastImmutableArray<TagId> Tags => target.TagTypes;
-
+        
         /// <summary>
         ///     Gets the value of the components
         /// </summary>

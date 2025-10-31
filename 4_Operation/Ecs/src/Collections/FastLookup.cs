@@ -83,10 +83,8 @@ namespace Alis.Core.Ecs.Collections
             }
 
             if (scene.ArchetypeGraphEdges.TryGetValue(
-                    edgeKey = typeof(T) == typeof(ComponentId)
-                        ? ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType)
-                        : ArchetypeEdgeKey.Tag(new(id.Value), archetype, edgeType), out Archetype destination))
-                //warm/cool depending on number of times they add/remove
+                    edgeKey = ArchetypeEdgeKey.Component(new(id.Value), archetype, edgeType)
+                        , out Archetype destination))
             {
                 return destination.Id;
             }
