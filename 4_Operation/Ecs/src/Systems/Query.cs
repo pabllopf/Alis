@@ -90,11 +90,6 @@ namespace Alis.Core.Ecs.Systems
         /// <param name="archetype">The archetype</param>
         internal void TryAttachArchetype(Archetype archetype)
         {
-            if (!IncludeDisabled)
-            {
-                return;
-            }
-
             if (ArchetypeSatisfiesQuery(archetype.Id))
             {
                 _archetypes.Push(archetype);

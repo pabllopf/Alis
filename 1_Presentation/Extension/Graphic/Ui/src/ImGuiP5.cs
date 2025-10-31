@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
+
 using System.Text;
 
 using Alis.Core.Aspect.Math.Vector;
