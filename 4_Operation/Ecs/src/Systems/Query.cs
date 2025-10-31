@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The create
         /// </summary>
-        private FastestStack<Archetype> _archetypes = FastestStack<Archetype>.Create(2);
+        private FastestStack<Archetype> _archetypes = new FastestStack<Archetype>(2);
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Query" /> class
