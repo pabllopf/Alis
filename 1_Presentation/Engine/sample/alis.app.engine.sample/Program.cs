@@ -29,6 +29,7 @@
 
 using Alis.Core.Ecs.Systems;
 
+
 namespace Alis.App.Engine.Sample
 {
     /// <summary>
