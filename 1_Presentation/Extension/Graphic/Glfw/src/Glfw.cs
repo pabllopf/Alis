@@ -32,13 +32,10 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
-using Alis.Core.Aspect.Data.Dll;
+
 using Alis.Extension.Graphic.Glfw.Enums;
-using Alis.Extension.Graphic.Glfw.Properties;
 using Alis.Extension.Graphic.Glfw.Structs;
 using Image = Alis.Core.Graphic.Image;
-
-#pragma warning disable 0419
 
 namespace Alis.Extension.Graphic.Glfw
 {
@@ -66,7 +63,6 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         static Glfw()
         {
-            EmbeddedDllClass.ExtractEmbeddedDlls("glfw", DllType.Lib, GlfwDlls.GlfwDllBytes, Assembly.GetAssembly(typeof(GlfwDlls)));
             Init();
             SetErrorCallback(ErrorCallback);
         }

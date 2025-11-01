@@ -28,8 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Reflection;
-using Alis.Core.Aspect.Data.Dll;
-using Alis.Extension.Graphic.Sfml.Properties;
+
 
 namespace Alis.Extension.Graphic.Sfml.Systems
 {
@@ -57,13 +56,5 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         ///     The window
         /// </summary>
         public const string Window = "csfml-window";
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Csfml" /> class
-        /// </summary>
-        static Csfml()
-        {
-            EmbeddedDllClass.ExtractEmbeddedDlls("sfml", DllType.File, SfmlDlls.SfmlDllBytes, Assembly.GetAssembly(typeof(SfmlDlls)));
-        }
     }
 }

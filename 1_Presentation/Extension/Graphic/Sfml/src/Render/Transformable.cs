@@ -29,9 +29,8 @@
 
 using System;
 using System.Reflection;
-using Alis.Core.Aspect.Data.Dll;
+
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.Sfml.Properties;
 using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Render
@@ -93,15 +92,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         ///     The my transform need update
         /// </summary>
         private bool myTransformNeedUpdate = true;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ObjectBase" /> class
-        /// </summary>
-        static Transformable()
-        {
-            EmbeddedDllClass.ExtractEmbeddedDlls("sfml", DllType.File, SfmlDlls.SfmlDllBytes, Assembly.GetAssembly(typeof(SfmlDlls)));
-        }
-
+        
         /// <summary>
         ///     Default constructor
         /// </summary>

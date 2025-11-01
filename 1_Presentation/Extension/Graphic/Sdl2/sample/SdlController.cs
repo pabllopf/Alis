@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Alis.Core.Aspect.Data.Dll;
+
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
@@ -99,20 +99,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sample
             Version versionSdl2 = Sdl.GetVersion();
             Logger.Info($"SDL2 VERSION {versionSdl2.major}.{versionSdl2.minor}.{versionSdl2.patch}");
 
-            if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
-            {
-                Sdl.SetHint(Hint.HintRenderDriver, "opengl");
-            }
-
-            if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.OSX)
-            {
-                Sdl.SetHint(Hint.HintRenderDriver, "opengl");
-            }
-
-            if (EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Linux)
-            {
-                Sdl.SetHint(Hint.HintRenderDriver, "opengl");
-            }
+            Sdl.SetHint(Hint.HintRenderDriver, "opengl");
 
             // create the window which should be able to have a valid OpenGL context and is resizable
             WindowSettings flags = WindowSettings.WindowResizable | WindowSettings.WindowShown;
