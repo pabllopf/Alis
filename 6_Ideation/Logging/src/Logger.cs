@@ -29,9 +29,7 @@
 
 
 using System.Diagnostics;
-#if DEBUG
 using System;
-#endif
 
 namespace Alis.Core.Aspect.Logging
 {
