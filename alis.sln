@@ -561,6 +561,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Aspect.Time", "6_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Aspect.Time.Test", "6_Ideation\Time\test\Alis.Core.Aspect.Time.Test.csproj", "{F6F98F10-81CF-4CCC-BC19-A9490DA2BC31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Aspect.Fluent.Generator", "6_Ideation\Fluent\generator\Alis.Core.Aspect.Fluent.Generator.csproj", "{26468C37-D8C6-4071-B3E5-3D64F51032FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -3015,6 +3017,26 @@ Global
 		{F6F98F10-81CF-4CCC-BC19-A9490DA2BC31}.Release|OsxArm64.Build.0 = Release|Any CPU
 		{F6F98F10-81CF-4CCC-BC19-A9490DA2BC31}.Release|Winx64.ActiveCfg = Release|Any CPU
 		{F6F98F10-81CF-4CCC-BC19-A9490DA2BC31}.Release|Winx64.Build.0 = Release|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Debug|x64.Build.0 = Debug|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Debug|x86.Build.0 = Debug|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Debug|OsxArm64.ActiveCfg = Debug|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Debug|OsxArm64.Build.0 = Debug|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Debug|Winx64.ActiveCfg = Debug|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Debug|Winx64.Build.0 = Debug|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Release|x64.ActiveCfg = Release|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Release|x64.Build.0 = Release|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Release|x86.ActiveCfg = Release|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Release|x86.Build.0 = Release|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Release|OsxArm64.ActiveCfg = Release|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Release|OsxArm64.Build.0 = Release|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Release|Winx64.ActiveCfg = Release|Any CPU
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD}.Release|Winx64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -3216,6 +3238,7 @@ Global
 		{0A1C67DA-5D00-4AF2-9023-397B63B7099F} = {F9E35AED-AB0A-2754-C94A-493E8BBFA51E}
 		{629D4174-F4E7-455D-AD62-1BA8868D92C3} = {F9E35AED-AB0A-2754-C94A-493E8BBFA51E}
 		{F6F98F10-81CF-4CCC-BC19-A9490DA2BC31} = {F9E35AED-AB0A-2754-C94A-493E8BBFA51E}
+		{26468C37-D8C6-4071-B3E5-3D64F51032FD} = {311DFC38-30D5-30DF-2957-5E6010762FD7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}
