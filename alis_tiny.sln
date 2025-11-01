@@ -226,6 +226,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Extension.Graphic.Sdl2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Extension.Graphic.Sdl2.Sample", "1_Presentation\Extension\Graphic\Sdl2\sample\Alis.Extension.Graphic.Sdl2.Sample.csproj", "{68CEAF99-590D-480A-913E-F82705969E91}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Aspect.Fluent.Generator", "6_Ideation\Fluent\generator\Alis.Core.Aspect.Fluent.Generator.csproj", "{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -960,6 +962,26 @@ Global
 		{68CEAF99-590D-480A-913E-F82705969E91}.Release|OsxArm64.Build.0 = Release|Any CPU
 		{68CEAF99-590D-480A-913E-F82705969E91}.Release|Winx64.ActiveCfg = Release|Any CPU
 		{68CEAF99-590D-480A-913E-F82705969E91}.Release|Winx64.Build.0 = Release|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Debug|x64.Build.0 = Debug|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Debug|x86.Build.0 = Debug|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Debug|OsxArm64.ActiveCfg = Debug|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Debug|OsxArm64.Build.0 = Debug|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Debug|Winx64.ActiveCfg = Debug|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Debug|Winx64.Build.0 = Debug|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Release|x64.ActiveCfg = Release|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Release|x64.Build.0 = Release|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Release|x86.ActiveCfg = Release|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Release|x86.Build.0 = Release|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Release|OsxArm64.ActiveCfg = Release|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Release|OsxArm64.Build.0 = Release|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Release|Winx64.ActiveCfg = Release|Any CPU
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1}.Release|Winx64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1026,6 +1048,7 @@ Global
 		{52F9F68D-7679-4FA0-9BBE-65F56A2E4D8D} = {94A01D18-8529-4A05-8D61-EC2226EC816E}
 		{4E902C31-9284-4A74-8523-C99241C5B0D3} = {52F9F68D-7679-4FA0-9BBE-65F56A2E4D8D}
 		{68CEAF99-590D-480A-913E-F82705969E91} = {52F9F68D-7679-4FA0-9BBE-65F56A2E4D8D}
+		{676F1EE6-2F0A-4F7A-AABF-5B775FD803B1} = {311DFC38-30D5-30DF-2957-5E6010762FD7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}
