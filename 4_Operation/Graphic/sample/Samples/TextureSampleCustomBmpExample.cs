@@ -145,17 +145,7 @@ namespace Alis.Core.Graphic.Sample.Samples
             Gl.GlDeleteShader(vertexShader);
             Gl.GlDeleteShader(fragmentShader);
 
-            string imagePath = AssetManager.Find("tile000.bmp");
-            if (!File.Exists(imagePath))
-            {
-                throw new FileNotFoundException("Texture file not found", imagePath);
-            }
-
-            Image bmp = Image.Load(imagePath);
-            if (bmp == null)
-            {
-                throw new Exception("Invalid BMP file");
-            }
+            Image bmp = Image.LoadImageFromResources("tile000.bmp");
 
             texture = Gl.GenTexture();
             Gl.GlBindTexture(TextureTarget.Texture2D, texture);
