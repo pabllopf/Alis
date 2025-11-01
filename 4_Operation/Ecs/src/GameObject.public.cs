@@ -266,16 +266,7 @@ namespace Alis.Core.Ecs
             value = lookup.Archetype.Components[compIndex].GetAt(lookup.Index);
             return true;
         }
-
-
-        /// <summary>
-        ///     Adds a component to this <see cref="GameObject" /> as its own type
-        /// </summary>
-        /// <param name="component">The component, which could be boxed</param>
-        public void AddBoxed(object component)
-        {
-            AddAs(component.GetType(), component);
-        }
+        
 
         /// <summary>
         ///     Add a component to an <see cref="GameObject" />

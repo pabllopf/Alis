@@ -10,6 +10,16 @@
         <SonarQubeExclude>true</SonarQubeExclude>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <NoWarn>$(NoWarn);CS1685;</NoWarn> <!-- Error CS1685 : Warning As Error: Define on differente assemblys of alias gloabal -->
+        <NoWarn>$(NoWarn);CS0436;</NoWarn> <!-- Error CS0436 : Warning As Error: Overriding dependency version -->
+        <NoWarn>$(NoWarn);NU1903;</NoWarn> <!-- Error NU1903 : Warning As Error: Package has high severity vulnerability -->
+        <NoWarn>$(NoWarn);NU1902;</NoWarn> <!-- Error NU1902 : Warning As Error: Package has moderate severity vulnerabilities -->
+        <NoWarn>$(NoWarn);CS0162;</NoWarn>
+        <NoWarn>$(NoWarn);ALIS001;ALIS009;ALIS010;ALIS007;ALIS003;</NoWarn>
+    </PropertyGroup>
+
+
     <PropertyGroup Condition="($([MSBuild]::IsOSPlatform('linux')) AND '$(RuntimeIdentifier)' == '') OR $(RuntimeIdentifier.Contains('linux'))">
         <DefineConstants>$(DefineConstants);LINUX</DefineConstants>
         <IsLinux>true</IsLinux>
