@@ -52,22 +52,22 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The create
         /// </summary>
-        internal FastestStack<AddComponent> AddComponentBuffer = FastestStack<AddComponent>.Create(2);
+        internal FastestStack<AddComponent> AddComponentBuffer = new FastestStack<AddComponent>(2);
 
         /// <summary>
         ///     The create
         /// </summary>
-        internal FastestStack<CreateCommand> CreateEntityBuffer = FastestStack<CreateCommand>.Create(2);
+        internal FastestStack<CreateCommand> CreateEntityBuffer = new FastestStack<CreateCommand>(2);
 
         /// <summary>
         ///     The create
         /// </summary>
-        internal FastestStack<ComponentHandle> CreateEntityComponents = FastestStack<ComponentHandle>.Create(2);
+        internal FastestStack<ComponentHandle> CreateEntityComponents = new FastestStack<ComponentHandle>(2);
 
         /// <summary>
         ///     The create
         /// </summary>
-        internal FastestStack<GameObjectIdOnly> DeleteEntityBuffer = FastestStack<GameObjectIdOnly>.Create(2);
+        internal FastestStack<GameObjectIdOnly> DeleteEntityBuffer = new FastestStack<GameObjectIdOnly>(2);
         
         /// <summary>
         ///     The is inactive
@@ -83,7 +83,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The create
         /// </summary>
-        internal FastestStack<DeleteComponent> RemoveComponentBuffer = FastestStack<DeleteComponent>.Create(2);
+        internal FastestStack<DeleteComponent> RemoveComponentBuffer = new FastestStack<DeleteComponent>(2);
 
         /// <summary>
         ///     The scene

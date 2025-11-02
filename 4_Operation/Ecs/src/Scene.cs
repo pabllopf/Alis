@@ -101,7 +101,7 @@ namespace Alis.Core.Ecs
         ///     The create
         /// </summary>
         private FastestStack<ArchetypeDeferredUpdateRecord> _altDeferredCreationArchetypes =
-            FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
+            new FastestStack<ArchetypeDeferredUpdateRecord>(4);
 
         //these lookups exists for programmical api optimization
         //normal <T1, T2...> methods use a shared global static cache
@@ -134,12 +134,12 @@ namespace Alis.Core.Ecs
         ///     The create
         /// </summary>
         public FastestStack<ArchetypeDeferredUpdateRecord> DeferredCreationArchetypes =
-            FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
+            new FastestStack<ArchetypeDeferredUpdateRecord>(4);
 
         /// <summary>
         ///     The create
         /// </summary>
-        public FastestStack<GameObjectType> EnabledArchetypes = FastestStack<GameObjectType>.Create(16);
+        public FastestStack<GameObjectType> EnabledArchetypes = new FastestStack<GameObjectType>(16);
 
         /// <summary>
         ///     The gameObject only event
