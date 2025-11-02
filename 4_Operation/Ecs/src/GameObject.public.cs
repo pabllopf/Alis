@@ -336,119 +336,7 @@ namespace Alis.Core.Ecs
         {
             Remove(Component.GetComponentId(type));
         }
-
-
-        /// <summary>
-        ///     Checks whether this <see cref="GameObject" /> has a specific tag, using a <see cref="TagId" /> to represent the
-        ///     tag.
-        /// </summary>
-        /// <param name="tagId">The identifier of the tag to check.</param>
-        /// <returns>
-        ///     <see langword="true" /> if the tag identified by <paramref name="tagId" /> has this <see cref="GameObject" />;
-        ///     otherwise, <see langword="false" />.
-        /// </returns>
-        /// <exception cref="InvalidOperationException">Thrown if the <see cref="GameObject" /> is not alive.</exception>
-        public bool Tagged(TagId tagId)
-        {
-            ref GameObjectLocation lookup = ref AssertIsAlive(out Scene w);
-            return lookup.Archetype.HasTag(tagId);
-        }
-
-        /// <summary>
-        ///     Checks whether this <see cref="GameObject" /> has a specific tag, using a generic type parameter to represent the
-        ///     tag.
-        /// </summary>
-        /// <typeparam name="T">The type used as the tag.</typeparam>
-        /// <returns>
-        ///     <see langword="true" /> if the tag of type <typeparamref name="T" /> has this <see cref="GameObject" />; otherwise,
-        ///     <see langword="false" />.
-        /// </returns>
-        /// <exception cref="InvalidOperationException">Thrown if the <see cref="GameObject" /> is not alive.</exception>
-        public bool Tagged<T>() => Tagged(Kernel.Tag<T>.Id);
-
-        /// <summary>
-        ///     Checks whether this <see cref="GameObject" /> has a specific tag, using a <see cref="Type" /> to represent the tag.
-        /// </summary>
-        /// <remarks>
-        ///     Prefer the <see cref="Tagged(TagId)" /> or <see cref="Tagged{T}()" /> overloads. Use
-        ///     <see cref="Kernel.Tag{T}.Id" /> to get a <see cref="TagId" /> instance
-        /// </remarks>
-        /// <param name="type">The <see cref="Type" /> representing the tag to check.</param>
-        /// <returns>
-        ///     <see langword="true" /> if the tag represented by <paramref name="type" /> has this <see cref="GameObject" />;
-        ///     otherwise, <see langword="false" />.
-        /// </returns>
-        /// <exception cref="InvalidOperationException">Thrown if the <see cref="GameObject" /> not alive.</exception>
-        public bool Tagged(Type type) => Tagged(Kernel.Tag.GetTagId(type));
-
-        /// <summary>
-        ///     Adds a tag to this <see cref="GameObject" />. Tags are like components but do not take up extra memory.
-        /// </summary>
-        /// <exception cref="InvalidOperationException"><see cref="GameObject" /> is dead.</exception>
-        /// <param name="type">The type to use as a tag</param>
-        public bool Tag(Type type) => Tag(Kernel.Tag.GetTagId(type));
-
-        /// <summary>
-        ///     Adds a tag to this <see cref="GameObject" />. Tags are like components but do not take up extra memory.
-        /// </summary>
-        /// <remarks>
-        ///     Prefer the <see cref="Tag(TagId)" /> or <see cref="Tag{T}()" /> overloads. Use <see cref="Kernel.Tag{T}.Id" />
-        ///     to get a <see cref="TagId" /> instance
-        /// </remarks>
-        /// <exception cref="InvalidOperationException"><see cref="GameObject" /> is dead.</exception>
-        /// <param name="tagId">The tagID to use as the tag</param>
-        public bool Tag(TagId tagId)
-        {
-            ref GameObjectLocation lookup = ref AssertIsAlive(out Scene w);
-            if (lookup.Archetype.HasTag(tagId))
-            {
-                return false;
-            }
-
-            GameObjectType archetype =
-                w.AddTagLookup.FindAdjacentArchetypeId(tagId, lookup.Archetype.Id, Scene, ArchetypeEdgeType.AddTag);
-            w.MoveEntityToArchetypeIso(this, ref lookup, archetype.Archetype(w));
-
-            return true;
-        }
-
-
-        /// <summary>
-        ///     Removes a tag from this <see cref="GameObject" />. Tags are like components but do not take up extra memory.
-        /// </summary>
-        /// <exception cref="InvalidOperationException"><see cref="GameObject" /> is dead.</exception>
-        /// <returns>
-        ///     <see langword="true" /> if the Tag was removed successfully, <see langword="false" /> when the
-        ///     <see cref="GameObject" /> doesn't have the component
-        /// </returns>
-        /// <param name="type">The type of tag to remove.</param>
-        public bool Detach(Type type) => Detach(Kernel.Tag.GetTagId(type));
-
-        /// <summary>
-        ///     Removes a tag from this <see cref="GameObject" />. Tags are like components but do not take up extra memory.
-        /// </summary>
-        /// <exception cref="InvalidOperationException"><see cref="GameObject" /> is dead.</exception>
-        /// <returns>
-        ///     <see langword="true" /> if the Tag was removed successfully, <see langword="false" /> when the
-        ///     <see cref="GameObject" /> doesn't have the component
-        /// </returns>
-        /// <param name="tagId">The type of tag to remove.</param>
-        public bool Detach(TagId tagId)
-        {
-            ref GameObjectLocation lookup = ref AssertIsAlive(out Scene w);
-            if (!lookup.Archetype.HasTag(tagId))
-            {
-                return false;
-            }
-
-            GameObjectType archetype =
-                w.AddTagLookup.FindAdjacentArchetypeId(tagId, lookup.Archetype.Id, Scene, ArchetypeEdgeType.RemoveTag);
-            w.MoveEntityToArchetypeIso(this, ref lookup, archetype.Archetype(w));
-
-            return true;
-        }
-
-
+        
         /// <summary>
         ///     Raised when the gameObject is deleted
         /// </summary>
@@ -517,25 +405,7 @@ namespace Alis.Core.Ecs
                 return world.EventLookup.GetOrAddNew(EntityIdOnly).Remove.GenericEvent ??= new();
             }
         }
-
-        /// <summary>
-        ///     Raised when the gameObject is tagged
-        /// </summary>
-        public event Action<GameObject, TagId> OnTagged
-        {
-            add => InitalizeEventRecord(value, GameObjectFlags.Tagged);
-            remove => UnsubscribeEvent(value, GameObjectFlags.Tagged);
-        }
-
-        /// <summary>
-        ///     Raised when a tag is detached from the gameObject
-        /// </summary>
-        public event Action<GameObject, TagId> OnDetach
-        {
-            add => InitalizeEventRecord(value, GameObjectFlags.Detach);
-            remove => UnsubscribeEvent(value, GameObjectFlags.Detach);
-        }
-
+        
         /// <summary>
         ///     Unsubscribes the event using the specified value
         /// </summary>
@@ -569,14 +439,6 @@ namespace Alis.Core.Ecs
                     case GameObjectFlags.RemoveComp:
                         events!.Remove.NormalEvent.Remove((Action<GameObject, ComponentId>) value);
                         removeFlags = !events.Remove.HasListeners;
-                        break;
-                    case GameObjectFlags.Tagged:
-                        events!.Tag.Remove((Action<GameObject, TagId>) value);
-                        removeFlags = !events.Tag.HasListeners;
-                        break;
-                    case GameObjectFlags.Detach:
-                        events!.Detach.Remove((Action<GameObject, TagId>) value);
-                        removeFlags = !events.Detach.HasListeners;
                         break;
                     case GameObjectFlags.OnDelete:
                         events!.Delete.Remove((Action<GameObject>) value);
@@ -636,12 +498,6 @@ namespace Alis.Core.Ecs
                         record.Remove.NormalEvent.Add((Action<GameObject, ComponentId>) d);
                     }
 
-                    break;
-                case GameObjectFlags.Tagged:
-                    record.Tag.Add((Action<GameObject, TagId>) d);
-                    break;
-                case GameObjectFlags.Detach:
-                    record.Detach.Add((Action<GameObject, TagId>) d);
                     break;
                 case GameObjectFlags.OnDelete:
                     record.Delete.Push((Action<GameObject>) d);
@@ -707,20 +563,7 @@ namespace Alis.Core.Ecs
                 return lookup.Archetype.ArchetypeTypeArray;
             }
         }
-
-        /// <summary>
-        ///     Gets tags the gameObject has
-        /// </summary>
-        /// <exception cref="InvalidOperationException"><see cref="GameObject" /> is dead.</exception>
-        public FastImmutableArray<TagId> TagTypes
-        {
-            get
-            {
-                ref GameObjectLocation lookup = ref AssertIsAlive(out _);
-                return lookup.Archetype.ArchetypeTagArray;
-            }
-        }
-
+        
         /// <summary>
         ///     The <see cref="GameObjectType" /> of this <see cref="GameObject" />.
         /// </summary>
@@ -751,13 +594,12 @@ namespace Alis.Core.Ecs
         ///     The null gameObject
         /// </summary>
         public static GameObject Null => default(GameObject);
-
+        
         /// <summary>
         ///     Gets an <see cref="GameObjectType" /> without needing an <see cref="GameObject" /> of the specific type.
         /// </summary>
         /// <param name="components">The components the <see cref="GameObjectType" /> should have.</param>
         /// <param name="tags">The tags the <see cref="GameObjectType" /> should have.</param>
-        
-        public static GameObjectType EntityTypeOf(ReadOnlySpan<ComponentId> components, ReadOnlySpan<TagId> tags) => Archetype.GetArchetypeId(components, tags);
+        public static GameObjectType EntityTypeOf(ReadOnlySpan<ComponentId> components) => Archetype.GetArchetypeId(components);
     }
 }

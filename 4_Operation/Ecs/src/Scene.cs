@@ -137,11 +137,6 @@ namespace Alis.Core.Ecs
             FastestStack<ArchetypeDeferredUpdateRecord>.Create(4);
 
         /// <summary>
-        ///     The tag event
-        /// </summary>
-        public Event<TagId> Detached = new Event<TagId>();
-
-        /// <summary>
         ///     The create
         /// </summary>
         public FastestStack<GameObjectType> EnabledArchetypes = FastestStack<GameObjectType>.Create(16);
@@ -191,12 +186,7 @@ namespace Alis.Core.Ecs
         ///     The remove tag lookup
         /// </summary>
         public FastLookup RemoveTagLookup = new();
-
-        /// <summary>
-        ///     The tag event
-        /// </summary>
-        public Event<TagId> Tagged = new Event<TagId>();
-
+        
         //archetype ID -> Archetype?
         /// <summary>
         ///     The scene archetype table
@@ -227,8 +217,7 @@ namespace Alis.Core.Ecs
 
             WorldUpdateCommandBuffer = new CommandBuffer(this);
             DefaultWorldGameObject = new GameObject(Id, default(ushort), default(int));
-            DefaultArchetype = Archetype.CreateOrGetExistingArchetype([], [], this, FastImmutableArray<ComponentId>.Empty,
-                FastImmutableArray<TagId>.Empty);
+            DefaultArchetype = Archetype.CreateOrGetExistingArchetype([],  this, FastImmutableArray<ComponentId>.Empty);
         }
 
         /// <summary>
@@ -325,25 +314,7 @@ namespace Alis.Core.Ecs
             add => AddEvent(ref ComponentRemovedEvent, value, GameObjectFlags.RemoveComp);
             remove => RemoveEvent(ref ComponentRemovedEvent, value, GameObjectFlags.RemoveComp);
         }
-
-        /// <summary>
-        ///     Invoked whenever a tag is added to an gameObject.
-        /// </summary>
-        public event Action<GameObject, TagId> TagTagged
-        {
-            add => AddEvent(ref Tagged, value, GameObjectFlags.Tagged);
-            remove => RemoveEvent(ref Tagged, value, GameObjectFlags.Tagged);
-        }
-
-        /// <summary>
-        ///     Invoked whenever a tag is removed from an gameObject.
-        /// </summary>
-        public event Action<GameObject, TagId> TagDetached
-        {
-            add => AddEvent(ref Detached, value, GameObjectFlags.Detach);
-            remove => RemoveEvent(ref Detached, value, GameObjectFlags.Detach);
-        }
-
+        
         /// <summary>
         ///     Adds the event using the specified event
         /// </summary>
@@ -497,11 +468,6 @@ namespace Alis.Core.Ecs
         /// <param name="temporaryCreationArchetype">The temporary creation archetype</param>
         public void ArchetypeAdded(Archetype archetype, Archetype temporaryCreationArchetype)
         {
-            if (!GlobalWorldTables.HasTag(archetype.Id, Tag<Disable>.Id))
-            {
-                EnabledArchetypes.Push(archetype.Id);
-            }
-
             foreach (KeyValuePair<int, Query> qkvp in QueryCache)
             {
                 qkvp.Value.TryAttachArchetype(archetype);
