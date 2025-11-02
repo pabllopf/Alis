@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.8.3] - 2025-11-04
+### :sparkles: New Features
+- [`8e6ace4`](https://github.com/pabllopf/Alis/commit/8e6ace4bb96d2da91810aff7d6b383fcade6f465) - hub with build AOT *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`6616816`](https://github.com/pabllopf/Alis/commit/66168162bbc42178f52a57c99a07d02f04c2e12a) - logger with output *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f8c8984`](https://github.com/pabllopf/Alis/commit/f8c8984859a09b7614d52db6f2e1818186827ae1) - the sample of opengl *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9965d69`](https://github.com/pabllopf/Alis/commit/9965d691c91bc2ea073daea1dbef2fdf24708431) - default var to compile runtimes *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.8.2] - 2025-11-03
 ### :bug: Bug Fixes
 - [`63aa456`](https://github.com/pabllopf/Alis/commit/63aa456ff8c993829f141ed7b47b49b2267cea61) - the default init on ECS module *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -5022,3 +5032,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.8.0]: https://github.com/pabllopf/Alis/compare/v0.7.9...v0.8.0
 [v0.8.1]: https://github.com/pabllopf/Alis/compare/v0.8.0...v0.8.1
 [v0.8.2]: https://github.com/pabllopf/Alis/compare/v0.8.1...v0.8.2
+[v0.8.3]: https://github.com/pabllopf/Alis/compare/v0.8.2...v0.8.3
