@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:JetBrains.cs
+//  File:Attributes.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,29 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Updating;
 
-
-
-namespace Alis.Extension.Graphic.Ui.Fonts
+namespace Alis.Core.Ecs.Test.Helpers
 {
     /// <summary>
-    ///     The jet brains class
+    ///     The filter attribute class
     /// </summary>
-    public static class JetBrains
-    {
-        /// <summary>
-        ///     The font icon file name far
-        /// </summary>
-        public static readonly string NameRegular = "JetBrainsMonoNL-Regular.ttf";
+    /// <seealso cref="UpdateTypeAttribute" />
+    public class FilterAttribute1 : UpdateTypeAttribute;
 
-        /// <summary>
-        ///     The font icon file name far
-        /// </summary>
-        public static readonly string NameSolid = "JetBrainsMono-Bold.ttf";
-
-        /// <summary>
-        ///     The font icon file name far
-        /// </summary>
-        public static readonly string NameLight = "JetBrainsMonoNL-Regular.ttf";
-    }
+    /// <summary>
+    ///     The filter attribute class
+    /// </summary>
+    /// <seealso cref="UpdateTypeAttribute" />
+    public class FilterAttribute2 : UpdateTypeAttribute;
 }

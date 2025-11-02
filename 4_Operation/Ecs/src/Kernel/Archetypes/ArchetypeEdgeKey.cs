@@ -45,14 +45,8 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             };
         }
 
-#if NET8_0_OR_GREATER
-        internal long Packed => Unsafe.BitCast<ArchetypeEdgeKey, long>(this);
-#else
-    /// <summary>
-    ///     Gets the value of the packed
-    /// </summary>
-    internal long Packed => Unsafe.As<ArchetypeEdgeKey, long>(ref this);
-#endif
+        internal long Packed => Unsafe.As<ArchetypeEdgeKey, long>(ref this);
+        
         /// <summary>
         ///     Equalses the other
         /// </summary>

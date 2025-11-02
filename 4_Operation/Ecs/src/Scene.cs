@@ -357,6 +357,42 @@ namespace Alis.Core.Ecs
             EntityTable[id] = gameObjectLocation;
             return new GameObject(Id, version, id);
         }
+        
+        /// <summary>
+        ///     Creates an <see cref="GameObject" />
+        /// </summary>
+        /// <param name="components">The components to use</param>
+        /// <returns>The created gameObject</returns>
+        public GameObject CreateFromObjects(ReadOnlySpan<object> components)
+        {
+            if (components.Length > MemoryHelpers.MaxComponentCount)
+            {
+                throw new ArgumentException("Max 127 components on an gameObject", nameof(components));
+            }
+
+            Span<ComponentId> types = stackalloc ComponentId[components.Length];
+
+            for (int i = 0; i < components.Length; i++)
+            {
+                types[i] = Component.GetComponentId(components[i].GetType());
+            }
+
+            Archetype archetype = Archetype.CreateOrGetExistingArchetype(types!, this);
+
+            ref GameObjectIdOnly entityId = ref archetype.CreateEntityLocation(GameObjectFlags.None, out GameObjectLocation loc);
+            GameObject gameObject = CreateEntityFromLocation(loc);
+            entityId.ID = gameObject.EntityID;
+            entityId.Version = gameObject.EntityVersion;
+
+            Span<ComponentStorageBase> archetypeComponents = archetype.Components.AsSpan();
+            for (int i = 1; i < archetypeComponents.Length; i++)
+            {
+                archetypeComponents[i].SetAt(components[i - 1], loc.Index);
+            }
+
+            EntityCreatedEvent.Invoke(gameObject);
+            return gameObject;
+        }
 
        /// <summary>
        /// 

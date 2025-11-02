@@ -29,7 +29,7 @@
 
 using System;
 using System.IO;
-using System.Reflection;
+
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent.Components;

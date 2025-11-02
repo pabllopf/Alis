@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:JetBrains.cs
+//  File:DummyTypes.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,29 +27,45 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Fluent.Components;
 
-
-
-namespace Alis.Extension.Graphic.Ui.Fonts
+namespace Alis.Core.Ecs.Test.Helpers
 {
     /// <summary>
-    ///     The jet brains class
+    ///     The class class
     /// </summary>
-    public static class JetBrains
-    {
-        /// <summary>
-        ///     The font icon file name far
-        /// </summary>
-        public static readonly string NameRegular = "JetBrainsMonoNL-Regular.ttf";
+    public class Class1;
 
-        /// <summary>
-        ///     The font icon file name far
-        /// </summary>
-        public static readonly string NameSolid = "JetBrainsMono-Bold.ttf";
+    /// <summary>
+    ///     The class class
+    /// </summary>
+    public class Class2;
 
-        /// <summary>
-        ///     The font icon file name far
-        /// </summary>
-        public static readonly string NameLight = "JetBrainsMonoNL-Regular.ttf";
-    }
+    /// <summary>
+    ///     The class class
+    /// </summary>
+    public class Class3;
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public record struct Struct1(int Value);
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public record struct Struct2(int Value);
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public record struct Struct3(int Value);
+    
+    /// <summary>
+    ///     The child class
+    /// </summary>
+    /// <seealso cref="BaseClass" />
+    public class ChildClass : BaseClass;
+
+    /// <summary>
+    ///     The base class
+    /// </summary>
+    public class BaseClass;
+    
 }
