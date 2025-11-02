@@ -78,7 +78,7 @@ namespace Alis.Core.Audio.Test.Players
         public void GetBashCommand_ValidInput()
         {
             LinuxPlayer player = new LinuxPlayer();
-            string command = player.GetBashCommand("test.mp3");
+            string command = player.GetBashCommand("test.wav");
 
             Assert.Equal("mpg123 -q", command);
         }

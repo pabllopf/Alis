@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Assets
         /// <summary>
         ///     The audio mp3
         /// </summary>
-        public const string AudioMp3 = "horse.mp3";
+        public const string AudioMp3 = "horse.wav";
 
         /// <summary>
         ///     The audio ogg

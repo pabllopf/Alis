@@ -78,7 +78,7 @@ namespace Alis.Core.Audio.Test.Players
         public void GetBashCommand_ValidInput()
         {
             MacPlayer player = new MacPlayer();
-            string command = player.GetBashCommand("test.mp3");
+            string command = player.GetBashCommand("test.wav");
 
             Assert.Equal("afplay", command);
         }
