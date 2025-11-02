@@ -29,7 +29,7 @@
 
 using Xunit;
 
-namespace Alis.Core.Graphic.Test
+namespace Alis.Core.Ecs.Test
 {
     /// <summary>
     ///     The default test class
