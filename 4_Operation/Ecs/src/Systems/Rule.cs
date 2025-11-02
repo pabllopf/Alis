@@ -57,6 +57,11 @@ namespace Alis.Core.Ecs.Systems
         private ComponentId _compId;
 
         /// <summary>
+        ///     The tag id
+        /// </summary>
+        private TagId _tagId;
+
+        /// <summary>
         ///     Rules the applies using the specified archetype id
         /// </summary>
         /// <param name="archetypeId">The archetype id</param>
@@ -67,6 +72,8 @@ namespace Alis.Core.Ecs.Systems
             {
                 RuleState.NotComponent => !archetypeId.HasComponent(_compId),
                 RuleState.HasComponent => archetypeId.HasComponent(_compId),
+                RuleState.NotTag => !archetypeId.HasTag(_tagId),
+                RuleState.HasTag => archetypeId.HasTag(_tagId),
                 RuleState.CustomDelegate => _custom!(archetypeId),
                 RuleState.IncludeDisabled => true,
                 _ => throw new InvalidDataException("Rule not initialized correctly. Use one of the factory methods.")
@@ -105,7 +112,29 @@ namespace Alis.Core.Ecs.Systems
             _ruleState = RuleState.NotComponent,
             _compId = compId
         };
-        
+
+        /// <summary>
+        ///     Creates a rule that applies when an archetype has the specified tag.
+        /// </summary>
+        /// <param name="tagId">The ID of the tag to check for.</param>
+        /// <returns>A <see cref="Rule" /> that checks for the presence of a tag.</returns>
+        public static Rule HasTag(TagId tagId) => new Rule
+        {
+            _ruleState = RuleState.HasTag,
+            _tagId = tagId
+        };
+
+        /// <summary>
+        ///     Creates a rule that applies when an archetype does not have the specified tag.
+        /// </summary>
+        /// <param name="tagId">The ID of the tag to check for absence.</param>
+        /// <returns>A <see cref="Rule" /> that checks for the absence of a tag.</returns>
+        public static Rule NotTag(TagId tagId) => new Rule
+        {
+            _ruleState = RuleState.NotTag,
+            _tagId = tagId
+        };
+
         /// <summary>
         ///     Determines whether this <see cref="Rule" /> is equal to another <see cref="Rule" />.
         /// </summary>
@@ -113,7 +142,8 @@ namespace Alis.Core.Ecs.Systems
         /// <returns><see langword="true" /> if the rules are equal, <see langword="false" /> otherwise.</returns>
         public bool Equals(Rule other) => (_ruleState == other._ruleState) &&
                                           (_custom == other._custom) &&
-                                          _compId.Equals(other._compId);
+                                          _compId.Equals(other._compId) &&
+                                          _tagId.Equals(other._tagId);
 
         /// <summary>
         ///     Determines whether this <see cref="Rule" /> is equal to an object.
@@ -129,7 +159,7 @@ namespace Alis.Core.Ecs.Systems
         ///     Gets a hash code for this <see cref="Rule" />.
         /// </summary>
         /// <returns>A hash code representing this <see cref="Rule" />.</returns>
-        public override int GetHashCode() => HashCode.Combine(_ruleState, _custom, _compId);
+        public override int GetHashCode() => HashCode.Combine(_ruleState, _custom, _compId, _tagId);
 
         /// <summary>
         ///     Determines whether two <see cref="Rule" /> instances are equal.

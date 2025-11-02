@@ -49,7 +49,8 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The empty
         /// </summary>
-        public static readonly GameObjectType Id = Archetype.GetArchetypeId(ArchetypeComponentIDs.AsSpan(), ArchetypeComponentIDs);
+        public static readonly GameObjectType Id = Archetype.GetArchetypeId(ArchetypeComponentIDs.AsSpan(), [],
+            ArchetypeComponentIDs, FastImmutableArray<TagId>.Empty);
 
         /// <summary>
         ///     Creates the new or get existing archetypes using the specified scene

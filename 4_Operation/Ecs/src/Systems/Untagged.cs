@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EntityDebugView.cs
+//  File:Untagged.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,50 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Alis.Core.Aspect.Math.Collections;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
 
-namespace Alis.Core.Ecs
+namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
-    ///     The gameObject debug view class
+    ///     Specifies a query should not have a tag of <see paramref="T" />
     /// </summary>
-    public class EntityDebugView(GameObject target)
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct Untagged<T> : IRuleProvider
     {
         /// <summary>
-        ///     Gets the value of the component types
+        ///     The rule.
         /// </summary>
-        public FastImmutableArray<ComponentId> ComponentTypes => target.ComponentTypes;
-
-        /// <summary>
-        ///     Gets the value of the tags
-        /// </summary>
-        public FastImmutableArray<TagId> Tags => target.TagTypes;
-
-        /// <summary>
-        ///     Gets the value of the components
-        /// </summary>
-
-        public Dictionary<Type, object> Components
-        {
-            get
-            {
-                if (!target.InternalIsAlive(out Scene world, out GameObjectLocation eloc))
-                {
-                    return [];
-                }
-
-                Dictionary<Type, object> components = [];
-
-                for (int i = 0; i < ComponentTypes.Length; i++)
-                {
-                    components[ComponentTypes[i].Type] = target.Get(ComponentTypes[i]);
-                }
-
-                return components;
-            }
-        }
+        public Rule Rule => Rule.NotTag(Tag<T>.Id);
     }
 }
