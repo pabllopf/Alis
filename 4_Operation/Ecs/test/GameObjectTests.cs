@@ -42,6 +42,19 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class GameObjectTests
     {
+        static GameObjectTests()
+        {
+            Component.RegisterComponent<int>();
+            Component.RegisterComponent<double>();
+            Component.RegisterComponent<Struct1>();
+            Component.RegisterComponent<Struct2>();
+            Component.RegisterComponent<Struct3>();
+            Component.RegisterComponent<Class1>();
+            Component.RegisterComponent<Class2>();
+            Component.RegisterComponent<BaseClass>();
+            Component.RegisterComponent<ChildClass>();
+        }
+        
         /// <summary>
         ///     Tests that ctor creates null
         /// </summary>
@@ -191,7 +204,7 @@ namespace Alis.Core.Ecs.Test
             {
                 GameObject e = scene.Create();
                 e.AddAs(Component<BaseClass>.Id, new ChildClass());
-
+                
                 Assert.Equal(typeof(ChildClass), e.Get<BaseClass>().GetType());
                 Assert.Throws<InvalidCastException>(() => e.AddAs(Component<ChildClass>.Id, new BaseClass()));
             }
