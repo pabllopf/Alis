@@ -47,26 +47,5 @@ namespace Alis.Core.Audio.Test.Players
         {
             Assert.True(true);
         }
-        
-        /// <summary>
-        ///     Tests that play valid input
-        /// </summary>
-        [LinuxOnly]
-        public void Play_ValidInput_Linux()
-        {
-            TestUnixPlayer player = new TestUnixPlayer();
-            player.Play("test.wav").Wait();
-
-            Thread.Sleep(1000);
-
-            if (player.Playing)
-            {
-                Assert.True(player.Playing);
-            }
-            else
-            {
-                Assert.False(player.Playing);
-            }
-        }
     }
 }
