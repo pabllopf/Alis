@@ -401,7 +401,7 @@ jobs:
           for project in $(find . -name "*.csproj" -type f); do
             if [[ $project != *".Template."* && $project != *".App."* && $project != *".Test."* && $project != *".Benchmark"* && $project != *".Benchmark."* && $project != *".Sample."* && $project != *".Generator"* && $project != *".Generator."* ]]; then
               echo "Packing $project"
-              dotnet pack "$project" -c Release --no-build --nologo --no-restore --include-symbols -o "./.publish/${{ needs.prepare.outputs.version }}/"
+              dotnet pack "$project" -c Release --nologo --include-symbols -o "./.publish/${{ needs.prepare.outputs.version }}/"
             fi
           done
 
