@@ -456,7 +456,7 @@ jobs:
         run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.snupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET }} --skip-duplicate
 
       - name: Publish to GitHub NuGet Feed
-        run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+        run: dotnet nuget push ./.publish/${{ needs.prepare.outputs.version }}/*.nupkg --timeout 2000 --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
 
       - name: git config --global user.name github-actions
         run: git config --global user.name "${{ secrets.USER_NAME }}"
