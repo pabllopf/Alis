@@ -207,6 +207,7 @@ jobs:
       
 
   build-core:
+    needs: prepare
     name: Build Core (${{ matrix.group_name }})
     runs-on: ubuntu-latest
 
