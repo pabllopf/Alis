@@ -5,6 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.8.1] - 2025-11-03
+### :sparkles: New Features
+- [`7408b2b`](https://github.com/pabllopf/Alis/commit/7408b2b5c156c11ce953c3b2983517a4d7be4f76) - new rule analycer to be comaptible with aOT *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0ece901`](https://github.com/pabllopf/Alis/commit/0ece90144b0b0c1e6dd15141b2b683a4bbdb6dd0) - delete tag system on ECS to reduce size of final dll *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`97635c1`](https://github.com/pabllopf/Alis/commit/97635c1df92e27d235433338b183d472fa676a8c) - add new default test on aspects modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`9fdf70d`](https://github.com/pabllopf/Alis/commit/9fdf70dcca1f362bbc38c561d52c968d99960d06) - delete dlls magnament *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e311e34`](https://github.com/pabllopf/Alis/commit/e311e349c71d510db38e96b980c7b2e6b4d7dc08) - initial compilation with new analycer *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6cbd683`](https://github.com/pabllopf/Alis/commit/6cbd683820b7c421df57a590ec49baf0e7c6f025) - Remove SuppressUnmanagedCodeSecurity from Glfw class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`43da22c`](https://github.com/pabllopf/Alis/commit/43da22c750e543e7cca1c6faddb1d1fe4c56c2c6) - Add cross-platform asset packaging to csproj files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4f3f0d1`](https://github.com/pabllopf/Alis/commit/4f3f0d1231c61b40723f7f0f5b7cdfdbc10a0385) - add new tests on ECS *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d002cec`](https://github.com/pabllopf/Alis/commit/d002cec560fa08ced75a41c84bdac20667089e4e) - Add AssemblyInfo to disable test parallelization *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`56cf971`](https://github.com/pabllopf/Alis/commit/56cf971b7292fb32a456aea2da6a172df84fece4) - Add missing System.Reflection import *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bf5dd67`](https://github.com/pabllopf/Alis/commit/bf5dd671cb0b121f43f48808dbb853010cbf411c) - Remove FastestStack.Create factory method usage *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0c153c7`](https://github.com/pabllopf/Alis/commit/0c153c7b51c8139053fc1c43badbdda98a93f546) - spaces and tabjs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e7666fa`](https://github.com/pabllopf/Alis/commit/e7666fa3bf7de951fd5cbbbc936caa937e2c0d7a) - add tags system. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ad94957`](https://github.com/pabllopf/Alis/commit/ad94957ad52c6d36ab8e80baccc8d4c37eaf5d08) - the ECS system update *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`77bb0d5`](https://github.com/pabllopf/Alis/commit/77bb0d543568e0215896b4b4cbf60a558515d710) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`95b26ae`](https://github.com/pabllopf/Alis/commit/95b26aed9a37a7c9783aeefe4c62448c0f27b7cb) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1e9b1bb`](https://github.com/pabllopf/Alis/commit/1e9b1bb38dfece77cfef13c58a202cc4fe22982e) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a6f5310`](https://github.com/pabllopf/Alis/commit/a6f531000686479efd2ead10c5718752cbe660e9) - check all unit test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`00e088e`](https://github.com/pabllopf/Alis/commit/00e088e701e5cfff78ca593d9ba74ef9523f7715) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`80c4f88`](https://github.com/pabllopf/Alis/commit/80c4f88ef61ed84923ad520ddd5d5e134f9f2d11) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e1e7e34`](https://github.com/pabllopf/Alis/commit/e1e7e344aff404cb8e9423ac08217d45b0ddced3) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c571dd1`](https://github.com/pabllopf/Alis/commit/c571dd1c65bdb3c7faf2c16339a4838e7eaf2dbb) - pro check *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6d5682a`](https://github.com/pabllopf/Alis/commit/6d5682af7f20239f4104ac5ae50ec5a7765c064e) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.8.0] - 2025-10-31
 ### :bug: Bug Fixes
 - [`8f74469`](https://github.com/pabllopf/Alis/commit/8f74469a73d3dd7bc2d38aaa9e0d259e802708b0) - add sourcelink *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -4984,3 +5015,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.7.8]: https://github.com/pabllopf/Alis/compare/v0.7.7...v0.7.8
 [v0.7.9]: https://github.com/pabllopf/Alis/compare/v0.7.8...v0.7.9
 [v0.8.0]: https://github.com/pabllopf/Alis/compare/v0.7.9...v0.8.0
+[v0.8.1]: https://github.com/pabllopf/Alis/compare/v0.8.0...v0.8.1
