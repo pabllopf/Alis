@@ -43,7 +43,8 @@
     </PropertyGroup>
     
     <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-        <IncludeSymbols>true</IncludeSymbols>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <IncludeSymbols>false</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
@@ -66,6 +67,7 @@
         <NoWarn>$(NoWarn);NU1903;</NoWarn> <!-- Error NU1903 : Warning As Error: Package has high severity vulnerability -->
         <NoWarn>$(NoWarn);NU1902;</NoWarn> <!-- Error NU1902 : Warning As Error: Package has moderate severity vulnerabilities -->
         <NoWarn>$(NoWarn);CS0162;</NoWarn>
+        <NoWarn>$(NoWarn);NU5128;</NoWarn> <!-- Error NU5128 : Warning As Error: The package contains a project reference -->
         <NoWarn>$(NoWarn);ALIS001;ALIS009;ALIS010;</NoWarn>
     </PropertyGroup>
 
