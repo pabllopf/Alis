@@ -24,9 +24,6 @@
         
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU;x64;x86;arm;arm64</Platforms>
-        
-        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-        <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
 
     <PropertyGroup>
