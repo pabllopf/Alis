@@ -47,9 +47,7 @@ namespace Alis.Core.Aspect.Logging
         [Conditional("DEBUG")]
         public static void Trace(string message)
         {
-#if DEBUG
             Console.WriteLine($"[TRACE] {message}");
-#endif
         }
 
         /// <summary>
@@ -59,9 +57,7 @@ namespace Alis.Core.Aspect.Logging
         [Conditional("DEBUG")]
         public static void Info(string message)
         {
-#if DEBUG
             Console.WriteLine($"[INFO] {message}");
-#endif
         }
 
         /// <summary>
@@ -71,9 +67,7 @@ namespace Alis.Core.Aspect.Logging
         [Conditional("DEBUG")]
         public static void Log(string message)
         {
-#if DEBUG
             Console.WriteLine($"[LOG] {message}");
-#endif
         }
 
         /// <summary>
@@ -83,9 +77,7 @@ namespace Alis.Core.Aspect.Logging
         [Conditional("DEBUG")]
         public static void Warning(string message)
         {
-#if DEBUG
             Console.WriteLine($"[WARNING] {message}");
-#endif
         }
 
         /// <summary>
@@ -95,9 +87,7 @@ namespace Alis.Core.Aspect.Logging
         [Conditional("DEBUG")]
         public static void Error(string message)
         {
-#if DEBUG
             Console.WriteLine($"[ERROR] {message}");
-#endif
         }
 
         /// <summary>
@@ -107,9 +97,7 @@ namespace Alis.Core.Aspect.Logging
         [Conditional("DEBUG")]
         public static void Debug(string message)
         {
-#if DEBUG
             Console.WriteLine($"[DEBUG] {message}");
-#endif
         }
 
         /// <summary>
@@ -119,10 +107,8 @@ namespace Alis.Core.Aspect.Logging
         [Conditional("DEBUG")]
         public static void Exception(string toString)
         {
-#if DEBUG
             Console.WriteLine($"[EXCEPTION] {toString}");
             throw new Exception(toString);
-#endif
         }
     }
 }
