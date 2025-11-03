@@ -141,7 +141,7 @@ jobs:
           path: |
             **/1_Presentation/**/Extension/**/src/**/bin/**/Release/**/*
 
-  build-core:
+  build_core:
     needs: prepare
     name: Build Core (${{ matrix.group_name }})
     runs-on: ubuntu-latest
