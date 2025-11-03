@@ -41,3 +41,4 @@ namespace Alis.Core.Aspect.Fluent
         TOrigin Build();
     }
 }
+
