@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.8.2] - 2025-11-03
+### :bug: Bug Fixes
+- [`63aa456`](https://github.com/pabllopf/Alis/commit/63aa456ff8c993829f141ed7b47b49b2267cea61) - the default init on ECS module *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.8.1] - 2025-11-03
 ### :sparkles: New Features
 - [`7408b2b`](https://github.com/pabllopf/Alis/commit/7408b2b5c156c11ce953c3b2983517a4d7be4f76) - new rule analycer to be comaptible with aOT *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -5016,3 +5021,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.7.9]: https://github.com/pabllopf/Alis/compare/v0.7.8...v0.7.9
 [v0.8.0]: https://github.com/pabllopf/Alis/compare/v0.7.9...v0.8.0
 [v0.8.1]: https://github.com/pabllopf/Alis/compare/v0.8.0...v0.8.1
+[v0.8.2]: https://github.com/pabllopf/Alis/compare/v0.8.1...v0.8.2
