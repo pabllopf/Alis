@@ -206,43 +206,63 @@ jobs:
 
       
 
-      - name: Build Core (all frameworks)
+  build-core:
+    name: Build Core (${{ matrix.group_name }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - group_name: "Group 1 - Modern .NET"
+            frameworks: "net5.0 net6.0 net7.0 net8.0 net9.0"
+            runtimes: "win-x64 win-x86 win-arm64 linux-x64 linux-arm64 osx-x64 osx-arm64"
+
+          - group_name: "Group 2 - .NET Standard"
+            frameworks: "netstandard2.0 netstandard2.1"
+            runtimes: "win-x64 win-x86 win-arm64 linux-x64 linux-arm64 osx-x64 osx-arm64"
+
+          - group_name: "Group 3 - .NET Framework"
+            frameworks: "net461 net471 net472 net48 net481"
+            runtimes: "win-x64 win-x86 win-arm64 linux-x64 linux-arm64 osx-x64 osx-arm64"
+
+          - group_name: "Group 4 - Legacy .NET Core"
+            frameworks: "netcoreapp2.0 netcoreapp2.1 netcoreapp2.2 netcoreapp3.0 netcoreapp3.1"
+            runtimes: "win-x64 linux-x64 osx-x64"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.301
+
+      - name: Build Core (${{ matrix.group_name }})
         shell: bash
         run: |
-          frameworks=(
-            net5.0 net6.0 net7.0 net8.0 net9.0
-            netstandard2.0 netstandard2.1
-            net461 net471 net472 net48 net481
-            netcoreapp2.0 netcoreapp2.1 netcoreapp2.2 netcoreapp3.0 netcoreapp3.1
-          )
-  
+          echo "🧩 Iniciando compilación para ${{ matrix.group_name }}"
+          IFS=' ' read -r -a frameworks <<< "${{ matrix.frameworks }}"
+          IFS=' ' read -r -a runtimes <<< "${{ matrix.runtimes }}"
+
           echo "Buscando proyectos core..."
-  
           for proj in $(find . -name "*.csproj" | grep -viE "sample|generator|benchmark|template|Alis.App|extension|test"); do
             echo "🧱 Compilando $proj (base Release)"
-            dotnet build "$proj" -c Release -m:4 --verbosity quiet  || exit 1
-  
+            dotnet build "$proj" -c Release -m:4 --verbosity quiet || exit 1
+
             for fw in "${frameworks[@]}"; do
-              echo "➡️  Framework: $fw"
-  
-              # Seleccionar runtimes según framework
-              if [[ "$fw" == netcoreapp* ]]; then
-                runtimes=("win-x64" "linux-x64" "osx-x64")
-              else
-                runtimes=("win-x64" "win-x86" "win-arm64" "linux-x64" "linux-arm64" "osx-x64" "osx-arm64")
-              fi
-  
+              echo "➡️ Framework: $fw"
               for rt in "${runtimes[@]}"; do
-                echo "⚙️  Compilando $proj -> fw=$fw, rt=$rt"
-                dotnet build "$proj" -c Release -m:4 --verbosity quiet  -f "$fw" -r "$rt" || exit 1
+                echo "⚙️ Compilando $proj -> fw=$fw, rt=$rt"
+                dotnet build "$proj" -c Release -m:4 --verbosity quiet -f "$fw" -r "$rt" || exit 1
               done
             done
           done
 
-      - name: Upload build artifacts
+      - name: Upload build artifacts (${{ matrix.group_name }})
         uses: actions/upload-artifact@v4
         with:
-          name: build-core-output
+          name: build-core-${{ matrix.group_name }}
           path: |
             **/2_Application/**/src/**/bin/**/Release/**/*
             **/3_Structuration/**/src/**/bin/**/Release/**/*
