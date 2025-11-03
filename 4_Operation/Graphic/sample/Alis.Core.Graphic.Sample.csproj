@@ -41,9 +41,16 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application')) OR $(ProjectDir.Contains('3_Domain'))"
                           Include="
           $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
+                          OutputItemType="Analyzer"
+                          PrivateAssets="all"
+                          ReferenceOutputAssembly="false"/>
+
+        <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
+                          Include="
           $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
@@ -256,27 +263,27 @@
         <AssetsOutput>$(ProjectDir)obj/assets.pack</AssetsOutput>
     </PropertyGroup>
 
-      <Target Name="ZipAssets" BeforeTargets="BeforeRestore;BeforeBuild;Clean;Rebuild;Publish">
-       <Message Text="ZipAssets: AssetsDir='$(AssetsDir)'; AssetsZip='$(AssetsZip)'; AssetsOutput='$(AssetsOutput)'" Importance="high"/>
-     
-       <!-- Windows: solo si existe el directorio -->
-       <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
-             Command="powershell -NoLogo -Command &quot;Compress-Archive -Path '$(AssetsDir)\\*' -DestinationPath '$(AssetsZip)' -Force; [Convert]::ToBase64String([System.IO.File]::ReadAllBytes('$(AssetsZip)')) | Out-File -FilePath '$(AssetsOutput)' -Encoding ASCII&quot;" />
-     
-       <!-- macOS/Linux: usar redirección para la compatibilidad con distintas implementaciones de base64 -->
-       <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
-             Command="sh -c &quot;zip -r -9 '$(AssetsZip)' '$(AssetsDir)' &amp;&amp; base64 &lt; '$(AssetsZip)' &gt; '$(AssetsOutput)'&quot;" />
-     
-       <!-- Si no existe AssetsDir, crear un archivo de salida vacío para no romper el build -->
-       <Message Condition="!Exists('$(AssetsDir)')" Text="No existe el directorio `$(AssetsDir)`. Se genera `$(AssetsOutput)` vacío." Importance="high"/>
-     
-       <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
-             Command="powershell -NoLogo -Command &quot;Set-Content -Path '$(AssetsOutput)' -Value '' -Encoding ASCII&quot;" />
-     
-       <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
-             Command="sh -c &quot;mkdir -p '$(ProjectDir)obj' &amp;&amp; : &gt; '$(AssetsOutput)'&quot;" />
-     </Target>
-    
+    <Target Name="ZipAssets" BeforeTargets="BeforeRestore;BeforeBuild;Clean;Rebuild;Publish">
+        <Message Text="ZipAssets: AssetsDir='$(AssetsDir)'; AssetsZip='$(AssetsZip)'; AssetsOutput='$(AssetsOutput)'" Importance="high"/>
+
+        <!-- Windows: solo si existe el directorio -->
+        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
+              Command="powershell -NoLogo -Command &quot;Compress-Archive -Path '$(AssetsDir)\\*' -DestinationPath '$(AssetsZip)' -Force; [Convert]::ToBase64String([System.IO.File]::ReadAllBytes('$(AssetsZip)')) | Out-File -FilePath '$(AssetsOutput)' -Encoding ASCII&quot;" />
+
+        <!-- macOS/Linux: usar redirección para la compatibilidad con distintas implementaciones de base64 -->
+        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
+              Command="sh -c &quot;zip -r -9 '$(AssetsZip)' '$(AssetsDir)' &amp;&amp; base64 &lt; '$(AssetsZip)' &gt; '$(AssetsOutput)'&quot;" />
+
+        <!-- Si no existe AssetsDir, crear un archivo de salida vacío para no romper el build -->
+        <Message Condition="!Exists('$(AssetsDir)')" Text="No existe el directorio `$(AssetsDir)`. Se genera `$(AssetsOutput)` vacío." Importance="high"/>
+
+        <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
+              Command="powershell -NoLogo -Command &quot;Set-Content -Path '$(AssetsOutput)' -Value '' -Encoding ASCII&quot;" />
+
+        <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
+              Command="sh -c &quot;mkdir -p '$(ProjectDir)obj' &amp;&amp; : &gt; '$(AssetsOutput)'&quot;" />
+    </Target>
+
     <ItemGroup>
         <AdditionalFiles Include="$(AssetsOutput)" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" Visible="false" />
     </ItemGroup>
