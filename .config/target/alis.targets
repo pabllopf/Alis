@@ -1,4 +1,22 @@
 <Project>
+    
+    <PropertyGroup>
+        <!-- Deriva el nombre del ensamblado a partir del archivo .targets -->
+        <_PackageAssemblyName>$(MSBuildThisFileName)</_PackageAssemblyName>
+        <_PackageAssemblyName>$([System.IO.Path]::GetFileNameWithoutExtension($(_PackageAssemblyName)))</_PackageAssemblyName>
+
+        <!-- Si RuntimeIdentifier está vacío, usa NETCoreSdkRuntimeIdentifier -->
+        <_EffectiveRuntimeIdentifier Condition="'$(RuntimeIdentifier)' != ''">$(RuntimeIdentifier)</_EffectiveRuntimeIdentifier>
+        <_EffectiveRuntimeIdentifier Condition="'$(RuntimeIdentifier)' == '' and '$(NETCoreSdkRuntimeIdentifier)' != ''">$(NETCoreSdkRuntimeIdentifier)</_EffectiveRuntimeIdentifier>
+    </PropertyGroup>
+
+    <!-- Solo referencia si hay un RID efectivo -->
+    <ItemGroup Condition="'$(_EffectiveRuntimeIdentifier)' != ''">
+        <Reference Include="$(_PackageAssemblyName)">
+            <HintPath>$(MSBuildThisFileDirectory)../runtimes/$(_EffectiveRuntimeIdentifier)/lib/$(TargetFramework)/$(_PackageAssemblyName).dll</HintPath>
+            <Private>true</Private>
+        </Reference>
+    </ItemGroup>
 
     <!-- ========== PROPIEDADES DE ASSETS ========== -->
     <PropertyGroup>
