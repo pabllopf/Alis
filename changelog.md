@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.8.4] - 2025-11-05
+### :bug: Bug Fixes
+- [`5c61045`](https://github.com/pabllopf/Alis/commit/5c61045d24195b19a1bed3f1f88c6a5b655e156b) - Update Release config to exclude build output and symbols *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.8.3] - 2025-11-04
 ### :sparkles: New Features
 - [`8e6ace4`](https://github.com/pabllopf/Alis/commit/8e6ace4bb96d2da91810aff7d6b383fcade6f465) - hub with build AOT *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -5033,3 +5038,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.8.1]: https://github.com/pabllopf/Alis/compare/v0.8.0...v0.8.1
 [v0.8.2]: https://github.com/pabllopf/Alis/compare/v0.8.1...v0.8.2
 [v0.8.3]: https://github.com/pabllopf/Alis/compare/v0.8.2...v0.8.3
+[v0.8.4]: https://github.com/pabllopf/Alis/compare/v0.8.3...v0.8.4
