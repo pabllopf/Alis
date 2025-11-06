@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <OutputType>WinExe</OutputType>
+        <OutputType>Exe</OutputType>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
         <LangVersion>13</LangVersion>
         <Nullable>disable</Nullable>
@@ -39,15 +39,7 @@
     <ItemGroup>
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
-
-    <ItemGroup Condition="Exists('$(ProjectDir)Assets/')">
-        <None
-            Update="$(ProjectDir)Assets/**"
-            LinkBase="Assets"
-            CopyToOutputDirectory="Always"
-            CopyToPublishDirectory="Always"/>
-    </ItemGroup>
-
+    
     <ItemGroup>
         <PackageReference Include="MonoMac.NetStandard" Version="0.0.4"/>
     </ItemGroup>
@@ -246,5 +238,160 @@
     <ItemGroup>
         <AdditionalFiles Include="$(AssetsOutput)" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" Visible="false" />
     </ItemGroup>
+
+
+
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <!-- app.manifest file to use when building the project -->
+        <ApplicationManifest>$(ProjectDir)Config/app.manifest</ApplicationManifest>
+
+        <!-- Enables Ahead-of-Time (AOT) compilation for maximum performance and smaller binaries. -->
+        <PublishAot>true</PublishAot>
+        <!-- Publishes all dependencies with the app, so it runs independently of the system's .NET installation. -->
+        <SelfContained>true</SelfContained>
+
+        <!-- Uses invariant globalization to reduce the size by excluding culture-specific data. -->
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <!-- Folds identical method bodies to reduce code duplication and binary size. -->
+        <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
+        <!-- Disables reflection support to allow more aggressive trimming and reduce binary size. -->
+        <IlcDisableReflection>true</IlcDisableReflection>
+
+        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+
+        <IlcTrimMetadata>true</IlcTrimMetadata>
+
+        <IlcGenerateStackTraceData>false</IlcGenerateStackTraceData>
+
+        <!-- Disables stack trace support to save space, at the cost of less detailed error information. -->
+        <StackTraceSupport>false</StackTraceSupport>
+        <!-- Optimizes the build for size rather than speed. -->
+        <OptimizationPreference>Size</OptimizationPreference>
+        <IlcOptimizationPreference>Size</IlcOptimizationPreference>
+        <!-- Removes debug information from the output, reducing binary size. -->
+        <DebugType>none</DebugType>
+
+        <!-- Generates a method statistics file for analysis; does not affect published size. -->
+        <IlcGenerateMstatFile>true</IlcGenerateMstatFile>
+        <!-- Generates a DGML graph file for code analysis; does not affect published size. -->
+        <IlcGenerateDgmlFile>true</IlcGenerateDgmlFile>
+        <!-- Generates a map file for code analysis; does not affect published size. -->
+        <IlcGenerateMapFile>true</IlcGenerateMapFile>
+        <!-- Dumps generated IL code for inspection; does not affect published size. -->
+        <IlcDumpGeneratedIL>true</IlcDumpGeneratedIL>
+
+        <TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
+
+
+        <NoConfig>true</NoConfig>
+        <Optimize>true</Optimize>
+
+        <!-- Enables tree trimming to remove unused code and libraries, reducing the final binary size. -->
+        <PublishTrimmed>true</PublishTrimmed>
+        <!-- Aggressively trims unused assemblies and types; 'link' is the most space-saving mode. -->
+        <TrimMode>link</TrimMode>
+        <!-- Suppresses warnings about code that may be unsafe to trim, useful for aggressive size reduction. -->
+        <SuppressTrimAnalysisWarnings>true</SuppressTrimAnalysisWarnings>
+        <!-- Compresses files in single-file publish mode, further reducing disk footprint. -->
+        <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+        <!-- Removes debugging symbols from the output, saving space in the final binary. -->
+        <StripSymbols>true</StripSymbols>
+        <!-- Disables ReadyToRun compilation, which can increase binary size; only enable if startup performance is critical. -->
+        <EnableReadyToRun>false</EnableReadyToRun>
+        <!-- Ensures native libraries are extracted only when needed, reducing initial disk usage. -->
+        <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+        <!-- Allows unloading of unused assemblies, which can help reduce memory and disk usage in some scenarios. -->
+        <EnableAssemblyLoadContextUnload>true</EnableAssemblyLoadContextUnload>
+        <!-- Prevents inclusion of default items (like unnecessary files) in the build output, reducing published size. -->
+        <EnableDefaultItems>true</EnableDefaultItems>
+        <!-- Avoids copying unused satellite assemblies (localization resources), saving space if not needed. -->
+        <CopyUnusedSatelliteAssemblies>false</CopyUnusedSatelliteAssemblies>
+        <!-- Disables generation of XML documentation files, which are not needed for runtime and take extra space. -->
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <!-- Prevents creation of reference assemblies, which are only needed for development, not for deployment. -->
+        <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+        <!-- Disables SourceLink, which embeds source control metadata and can increase output size. -->
+        <EnableSourceLink>false</EnableSourceLink>
+        <!-- Prevents generation of native debug symbols (.dSYM) on macOS. -->
+        <DebugSymbols>false</DebugSymbols>
+
+        <!-- Prevents generation of PDB files, which are not needed in production and take up space. -->
+        <GenerateDebugSymbols>false</GenerateDebugSymbols>
+    </PropertyGroup>
+
+
+    <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+        <!-- app.manifest file to use when building the project -->
+        <ApplicationManifest>$(ProjectDir)Config/app.manifest</ApplicationManifest>
+
+        <!-- Enables Ahead-of-Time (AOT) compilation for maximum performance and smaller binaries. -->
+        <PublishAot>true</PublishAot>
+        <!-- Publishes all dependencies with the app, so it runs independently of the system's .NET installation. -->
+        <SelfContained>true</SelfContained>
+
+        <!-- Uses invariant globalization to reduce the size by excluding culture-specific data. -->
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <!-- Folds identical method bodies to reduce code duplication and binary size. -->
+        <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
+        <!-- Disables reflection support to allow more aggressive trimming and reduce binary size. -->
+        <IlcDisableReflection>true</IlcDisableReflection>
+
+        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+
+        <IlcTrimMetadata>true</IlcTrimMetadata>
+
+        <IlcGenerateStackTraceData>true</IlcGenerateStackTraceData>
+
+        <!-- Disables stack trace support to save space, at the cost of less detailed error information. -->
+        <StackTraceSupport>true</StackTraceSupport>
+        <!-- Optimizes the build for size rather than speed. -->
+        <OptimizationPreference>Size</OptimizationPreference>
+        <IlcOptimizationPreference>Size</IlcOptimizationPreference>
+
+        <!-- Generates a method statistics file for analysis; does not affect published size. -->
+        <IlcGenerateMstatFile>true</IlcGenerateMstatFile>
+        <!-- Generates a DGML graph file for code analysis; does not affect published size. -->
+        <IlcGenerateDgmlFile>true</IlcGenerateDgmlFile>
+        <!-- Generates a map file for code analysis; does not affect published size. -->
+        <IlcGenerateMapFile>true</IlcGenerateMapFile>
+        <!-- Dumps generated IL code for inspection; does not affect published size. -->
+        <IlcDumpGeneratedIL>true</IlcDumpGeneratedIL>
+
+        <Optimize>true</Optimize>
+
+        <!-- Enables tree trimming to remove unused code and libraries, reducing the final binary size. -->
+        <PublishTrimmed>true</PublishTrimmed>
+        <!-- Aggressively trims unused assemblies and types; 'link' is the most space-saving mode. -->
+        <TrimMode>link</TrimMode>
+        <!-- Suppresses warnings about code that may be unsafe to trim, useful for aggressive size reduction. -->
+        <SuppressTrimAnalysisWarnings>false</SuppressTrimAnalysisWarnings>
+
+        <!-- Compresses files in single-file publish mode, further reducing disk footprint. -->
+        <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+
+        <!-- Removes debugging symbols from the output, saving space in the final binary. -->
+        <StripSymbols>true</StripSymbols>
+        <!-- Disables ReadyToRun compilation, which can increase binary size; only enable if startup performance is critical. -->
+        <EnableReadyToRun>false</EnableReadyToRun>
+        <!-- Ensures native libraries are extracted only when needed, reducing initial disk usage. -->
+        <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+        <!-- Allows unloading of unused assemblies, which can help reduce memory and disk usage in some scenarios. -->
+        <EnableAssemblyLoadContextUnload>true</EnableAssemblyLoadContextUnload>
+        <!-- Prevents inclusion of default items (like unnecessary files) in the build output, reducing published size. -->
+        <EnableDefaultItems>true</EnableDefaultItems>
+        <!-- Avoids copying unused satellite assemblies (localization resources), saving space if not needed. -->
+        <CopyUnusedSatelliteAssemblies>false</CopyUnusedSatelliteAssemblies>
+        <!-- Disables generation of XML documentation files, which are not needed for runtime and take extra space. -->
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <!-- Prevents creation of reference assemblies, which are only needed for development, not for deployment. -->
+        <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+        <!-- Disables SourceLink, which embeds source control metadata and can increase output size. -->
+        <EnableSourceLink>false</EnableSourceLink>
+
+        <!-- Prevents generation of PDB files, which are not needed in production and take up space. -->
+        <GenerateDebugSymbols>false</GenerateDebugSymbols>
+    </PropertyGroup>
+    
+    
     
 </Project>

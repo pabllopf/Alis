@@ -32,7 +32,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Entity;
@@ -220,23 +222,24 @@ namespace Alis.App.Hub.Windows.Sections
             List<string> availableVersions = FetchAvailableVersionsAsync().Result;
             versions = availableVersions.ToArray();
         }
-
+        
         /// <summary>
         ///     Fetches the available versions
         /// </summary>
         /// <returns>A task containing a list of string</returns>
         private async Task<List<string>> FetchAvailableVersionsAsync()
         {
+            List<string> versionList = new List<string>();
+            
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("User-Agent", "request");
                 string response = await client.GetStringAsync("https://api.github.com/repos/pabllopf/alis/releases");
-                List<Dictionary<string, object>> releases = JsonSerializer.Deserialize<List<Dictionary<string, object>>>(response);
-
-                List<string> versionList = new List<string>();
-                foreach (Dictionary<string, object> release in releases)
+                ReleasesInfo releases = JsonNativeAot.Deserialize<ReleasesInfo>(response);
+                
+                foreach (ReleaseElement release in releases.Releases)
                 {
-                    string version = release["tag_name"]?.ToString();
+                    string version = release.Element["tag_name"]?.ToString();
                     if (!string.IsNullOrEmpty(version))
                     {
                         versionList.Add(version);
