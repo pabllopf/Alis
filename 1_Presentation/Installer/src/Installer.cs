@@ -286,13 +286,13 @@ namespace Alis.App.Installer
 
             if (!Directory.Exists(dirFonts))
             {
-                Logger.Info(@$"ERROR, DIR NOT FOUND: {dirFonts}");
+                Logger.Exception(@$"ERROR, DIR NOT FOUND: {dirFonts}");
                 return;
             }
 
             if (!File.Exists(dirFonts + fontToLoad))
             {
-                Logger.Info(@$"ERROR, FONT NOT FOUND: {dirFonts + fontToLoad}");
+                Logger.Exception(@$"ERROR, FONT NOT FOUND: {dirFonts + fontToLoad}");
                 return;
             }
 
