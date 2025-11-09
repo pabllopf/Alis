@@ -138,8 +138,15 @@ namespace Alis.Core.Ecs.Kernel
         internal static IComponentStorageBaseFactory GetComponentFactoryFromType(Type t)
         {
             if (GenerationServices.UserGeneratedTypeMap.TryGetValue(t,
-                    out (IComponentStorageBaseFactory Factory, int UpdateOrder) type)) return type.Factory;
-            if (NoneComponentRunnerTable.TryGetValue(t, out IComponentStorageBaseFactory t1)) return t1;
+                    out (IComponentStorageBaseFactory Factory, int UpdateOrder) type))
+            {
+                return type.Factory;
+            }
+
+            if (NoneComponentRunnerTable.TryGetValue(t, out IComponentStorageBaseFactory t1))
+            {
+                return t1;
+            }
 
             Throw_ComponentTypeNotInit(t);
             return null!;
@@ -153,7 +160,9 @@ namespace Alis.Core.Ecs.Kernel
         public static void RegisterComponent<T>()
         {
             if (!GenerationServices.UserGeneratedTypeMap.ContainsKey(typeof(T)))
+            {
                 NoneComponentRunnerTable[typeof(T)] = new NoneUpdateRunnerFactory<T>();
+            }
         }
 
         /// <summary>
@@ -172,16 +181,20 @@ namespace Alis.Core.Ecs.Kernel
             {
                 Type type = typeof(T);
                 if (_existingComponentIDs.TryGetValue(type, out ComponentId value))
+                {
                     return (value, (IdTable<T>)ComponentTable[value.RawIndex].Storage,
                         (ComponentDelegates<T>.InitDelegate)ComponentTable[value.RawIndex].Initer,
                         (ComponentDelegates<T>.DestroyDelegate)ComponentTable[value.RawIndex].Destroyer);
+                }
 
                 //EnsureTypeInit(type);
 
                 int nextIdInt = ++_nextComponentId;
 
                 if (nextIdInt == ushort.MaxValue)
+                {
                     throw new InvalidOperationException("Exceeded maximum unique component type count of 65535");
+                }
 
                 ComponentId id = new ComponentId((ushort)nextIdInt);
                 _existingComponentIDs[type] = id;
@@ -216,14 +229,19 @@ namespace Alis.Core.Ecs.Kernel
         {
             lock (GlobalWorldTables.BufferChangeLock)
             {
-                if (_existingComponentIDs.TryGetValue(t, out ComponentId value)) return value;
+                if (_existingComponentIDs.TryGetValue(t, out ComponentId value))
+                {
+                    return value;
+                }
 
                 //EnsureTypeInit(t);
 
                 int nextIdInt = ++_nextComponentId;
 
                 if (nextIdInt == ushort.MaxValue)
+                {
                     throw new InvalidOperationException("Exceeded maximum unique component type count of 65535");
+                }
 
                 ComponentId id = new ComponentId((ushort)nextIdInt);
                 _existingComponentIDs[t] = id;
@@ -246,12 +264,21 @@ namespace Alis.Core.Ecs.Kernel
         private static IdTable GetComponentTable(Type type)
         {
             if (NoneComponentRunnerTable.TryGetValue(type, out IComponentStorageBaseFactory fac))
+            {
                 return fac.CreateStack();
+            }
+
             if (GenerationServices.UserGeneratedTypeMap.TryGetValue(type,
                     out (IComponentStorageBaseFactory Factory, int UpdateOrder) data))
+            {
                 return data.Factory.CreateStack();
+            }
+
             if (type == typeof(void))
+            {
                 return null!;
+            }
+
             Throw_ComponentTypeNotInit(type);
             return null!;
         }
@@ -269,7 +296,9 @@ namespace Alis.Core.Ecs.Kernel
         private static void Throw_ComponentTypeNotInit(Type t)
         {
             if (typeof(IComponentBase).IsAssignableFrom(t))
+            {
                 throw new InvalidOperationException($"{t.FullName} is not initalized. (Is the source generator working?)");
+            }
 
             throw new InvalidOperationException(
                 $"{t.FullName} is not initalized. (Did you initalize T with Component.RegisterComponent<T>()?)");

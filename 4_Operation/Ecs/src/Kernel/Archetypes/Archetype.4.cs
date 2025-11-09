@@ -32,7 +32,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         {
             ushort index = Id.RawIndex;
             ref WorldArchetypeTableItem archetypes = ref Unsafe.Add(ref scene.WorldArchetypeTable[0], index);
-            if (archetypes.Archetype is null) archetypes = CreateArchetypes(scene);
+            if (archetypes.Archetype is null)
+            {
+                archetypes = CreateArchetypes(scene);
+            }
+
             return archetypes;
 
             //this method is literally only called once per scene

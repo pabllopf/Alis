@@ -61,11 +61,15 @@ namespace Alis.Core.Ecs.Collections
         public override T[] Rent(int minimumLength)
         {
             if (minimumLength < MinBucketSize)
+            {
                 return new T[minimumLength];
+            }
 
             int bucketIndex = GetBucketIndex(minimumLength);
             if (bucketIndex == -1)
+            {
                 return new T[minimumLength]; // fallback for oversized arrays
+            }
 
             ref T[] slot = ref _buckets[bucketIndex];
             if (slot is not null)
@@ -92,10 +96,14 @@ namespace Alis.Core.Ecs.Collections
         {
             int bucketIndex = GetBucketIndex(array.Length);
             if (bucketIndex == -1)
+            {
                 return;
+            }
 
             if (clearArray && RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 array.AsSpan().Clear();
+            }
 
             _buckets[bucketIndex] = array;
         }
@@ -109,7 +117,9 @@ namespace Alis.Core.Ecs.Collections
         private static int GetBucketIndex(int size)
         {
             if (size < MinBucketSize)
+            {
                 return -1;
+            }
 
             int log2;
 #if NET6_0_OR_GREATER
@@ -121,7 +131,11 @@ namespace Alis.Core.Ecs.Collections
             if ((n & 0xFF00) != 0) { n >>= 8; log2 += 8; }
             if ((n & 0xF0) != 0) { n >>= 4; log2 += 4; }
             if ((n & 0xC) != 0) { n >>= 2; log2 += 2; }
-            if ((n & 0x2) != 0) log2 += 1;
+            if ((n & 0x2) != 0)
+            {
+                log2 += 1;
+            }
+
             log2 += 1; // since we rounded down
 #endif
 

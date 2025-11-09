@@ -265,11 +265,17 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
             {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
                 long key = GetHash(types, tagTypes);
-                if (ExistingArchetypes.TryGetValue(key, out ArchetypeData value)) return value.Id;
+                if (ExistingArchetypes.TryGetValue(key, out ArchetypeData value))
+                {
+                    return value.Id;
+                }
 
                 int nextIdInt = ++NextArchetypeId;
                 if (nextIdInt == ushort.MaxValue)
+                {
                     throw new InvalidOperationException("Exceeded maximum unique archetype count of 65535");
+                }
+
                 ArchetypeID finalId = new ArchetypeID((ushort) nextIdInt);
 
                 FastImmutableArray<ComponentId> arr = typesArray ?? MemoryHelpers.ReadOnlySpanToImmutableArray(types);

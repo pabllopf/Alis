@@ -210,7 +210,11 @@ namespace Alis.Core.Ecs.Redifinition
             where TValue : new()
         {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-            if (dictionary.TryGetValue(key, out TValue value)) return value;
+            if (dictionary.TryGetValue(key, out TValue value))
+            {
+                return value;
+            }
+
             return dictionary[key] = new();
 #else
             ref TValue res = ref CollectionsMarshal.GetValueRefOrAddDefault(dictionary, key, out bool _);

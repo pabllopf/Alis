@@ -55,15 +55,23 @@ namespace System.Runtime.CompilerServices
         /// <returns></returns>
         private static bool IsReferenceOrContainsReferences(Type type)
         {
-            if (!type.IsValueType) return true;
+            if (!type.IsValueType)
+            {
+                return true;
+            }
 
-            if (type.IsPrimitive || type.IsPointer) return false;
+            if (type.IsPrimitive || type.IsPointer)
+            {
+                return false;
+            }
 
             FieldInfo[] fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
             for (int i = 0; i < fields.Length; i++)
             {
                 if (IsReferenceOrContainsReferences(fields[i].FieldType))
+                {
                     return true;
+                }
             }
 
             return false;

@@ -79,32 +79,7 @@ namespace Alis.Core.Graphic
   /// <returns>The image</returns>
   public static Image LoadImageFromResources(string resourceName)
   {
-      using (Stream streamPack = AssetRegistry.GetAssetStreamByBaseName("assets.pack"))
-      {
-          if (streamPack == null)
-              throw new FileNotFoundException("Resource file 'assets.pack' not found in embedded resources.");
-  
-          using (MemoryStream memPack = new MemoryStream())
-          {
-              streamPack.CopyTo(memPack);
-              memPack.Position = 0;
-  
-              using (ZipArchive zip = new ZipArchive(memPack, ZipArchiveMode.Read))
-              {
-                  ZipArchiveEntry entry = zip.Entries.FirstOrDefault(e => e.FullName.Contains(resourceName));
-                  if (entry == null)
-                      throw new FileNotFoundException($"Resource '{resourceName}' not found in 'assets.pack'.");
-  
-                  using (Stream entryStream = entry.Open())
-                  using (MemoryStream memImage = new MemoryStream())
-                  {
-                      entryStream.CopyTo(memImage);
-                      memImage.Position = 0;
-                      return LoadFromStream(memImage);
-                  }
-              }
-          }
-      }
+      return LoadFromStream(AssetRegistry.GetResourceMemoryStreamByName(resourceName));
   }
         /// <summary>
         /// Loads the from stream using the specified stream

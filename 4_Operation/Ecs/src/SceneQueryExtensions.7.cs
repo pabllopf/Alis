@@ -55,7 +55,9 @@ namespace Alis.Core.Ecs
         {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
             if (scene.QueryCache.TryGetValue(QueryHashCache<T1, T2, T3, T4, T5, T6, T7>.Value, out Query value))
+            {
                 return value;
+            }
 
             value = scene.CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray([
                 default(T1).Rule, default(T2).Rule, default(T3).Rule, default(T4).Rule, default(T5).Rule, default(T6).Rule,

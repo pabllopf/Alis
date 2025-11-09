@@ -89,7 +89,9 @@ namespace Alis.Core.Ecs
                     GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
             {
                 if (world.ComponentAddedEvent.HasListeners)
+                {
                     InvokeComponentWorldEvents<T1, T2, T3, T4, T5, T6, T7>(ref world.ComponentAddedEvent, this);
+                }
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.AddComp | GameObjectFlags.AddGenericComp))
                 {
@@ -170,7 +172,9 @@ namespace Alis.Core.Ecs
             if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Tagged))
             {
                 if (world.Tagged.HasListeners)
+                {
                     InvokeTagWorldEvents<T1, T2, T3, T4, T5, T6, T7>(ref world.Tagged, this);
+                }
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Tagged))
                 {
@@ -218,7 +222,9 @@ namespace Alis.Core.Ecs
             if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Detach))
             {
                 if (world.Detached.HasListeners)
+                {
                     InvokeTagWorldEvents<T1, T2, T3, T4, T5, T6, T7>(ref world.Detached, this);
+                }
 
                 if (GameObjectLocation.HasEventFlag(flags, GameObjectFlags.Detach))
                 {
@@ -291,7 +297,9 @@ namespace Alis.Core.Ecs
 
 
             if (!hasGenericEvent)
+            {
                 return;
+            }
 
             events.GenericEvent!.Invoke(gameObject, ref component1);
             events.GenericEvent!.Invoke(gameObject, ref component2);
@@ -361,15 +369,19 @@ namespace Alis.Core.Ecs
             public void ModifyTags(ref FastImmutableArray<TagId> tags, bool add)
             {
                 if (add)
+                {
                     tags = MemoryHelpers.Concat(tags,
                     [
                         Kernel.Tag<T1>.Id, Kernel.Tag<T2>.Id, Kernel.Tag<T3>.Id, Kernel.Tag<T4>.Id, Kernel.Tag<T5>.Id, Kernel.Tag<T6>.Id, Kernel.Tag<T7>.Id
                     ]);
+                }
                 else
+                {
                     tags = MemoryHelpers.Remove(tags,
                     [
                         Kernel.Tag<T1>.Id, Kernel.Tag<T2>.Id, Kernel.Tag<T3>.Id, Kernel.Tag<T4>.Id, Kernel.Tag<T5>.Id, Kernel.Tag<T6>.Id, Kernel.Tag<T7>.Id
                     ]);
+                }
             }
 
             /// <summary>
@@ -380,17 +392,21 @@ namespace Alis.Core.Ecs
             public void ModifyComponents(ref FastImmutableArray<ComponentId> components, bool add)
             {
                 if (add)
+                {
                     components = MemoryHelpers.Concat(components,
                     [
                         Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id, Component<T5>.Id,
                         Component<T6>.Id, Component<T7>.Id
                     ]);
+                }
                 else
+                {
                     components = MemoryHelpers.Remove(components,
                     [
                         Component<T1>.Id, Component<T2>.Id, Component<T3>.Id, Component<T4>.Id, Component<T5>.Id,
                         Component<T6>.Id, Component<T7>.Id
                     ]);
+                }
             }
 
             //separate into individual classes to avoid creating uneccecary static classes.

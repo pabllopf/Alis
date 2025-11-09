@@ -30,7 +30,9 @@ namespace Alis.Core.Aspect.Data.Generator
         public void Execute(GeneratorExecutionContext context)
         {
             if (context.SyntaxReceiver is not SerializableSyntaxReceiver receiver)
+            {
                 return;
+            }
 
             foreach (TypeDeclarationSyntax typeDeclaration in receiver.CandidateTypes)
             {
@@ -38,7 +40,9 @@ namespace Alis.Core.Aspect.Data.Generator
                 ISymbol symbol = model.GetDeclaredSymbol(typeDeclaration);
 
                 if (symbol is not INamedTypeSymbol typeSymbol)
+                {
                     continue;
+                }
 
                 // Generar código de serialización/deserialización
                 string source = GenerateSerializationCode(typeSymbol);
@@ -74,7 +78,9 @@ namespace Alis.Core.Aspect.Data.Generator
                 if (member is IPropertySymbol property)
                 {
                     if (property.GetAttributes().Any(a => a.AttributeClass?.Name.Contains("JsonNativeIgnore") ?? false))
+                    {
                         continue;
+                    }
 
                     AttributeData propNameAttr = property.GetAttributes()
                         .FirstOrDefault(a => a.AttributeClass?.Name == "JsonNativePropertyNameAttribute");
@@ -155,7 +161,9 @@ namespace Alis.Core.Aspect.Data.Generator
                 {
                     // Ignorar propiedades con el atributo JsonNativeIgnore
                     if (property.GetAttributes().Any(a => a.AttributeClass?.Name.Contains("JsonNativeIgnore") ?? false))
+                    {
                         continue;
+                    }
 
                     AttributeData propNameAttr = property.GetAttributes()
                         .FirstOrDefault(a => a.AttributeClass?.Name == "JsonNativePropertyNameAttribute");
