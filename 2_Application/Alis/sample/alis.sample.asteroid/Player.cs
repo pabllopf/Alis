@@ -62,7 +62,10 @@ namespace Alis.Sample.Asteroid
             audioSource = self.Get<AudioSource>();
             gameObject = self;
         }
-        
+
+        private float timeCounter = 3;
+        private float resetTime = 3;
+        private int counterEntities = 3;
         
         /// <summary>
         /// Ons the update
@@ -79,6 +82,15 @@ namespace Alis.Sample.Asteroid
             {
                 currentVelocity = Vector2F.Normalize(currentVelocity) * maxVelocity;
                 boxCollider.Body.LinearVelocity = currentVelocity;
+            }
+
+            timeCounter -= Context.TimeManager.DeltaTime;
+            if (timeCounter <= 0)
+            {
+                counterEntities += 1;
+                CreateBullet();
+                timeCounter = resetTime;
+                Console.WriteLine("Bullets created: " + counterEntities);
             }
         }
 
@@ -154,53 +166,53 @@ namespace Alis.Sample.Asteroid
             if (key == ConsoleKey.Spacebar && (direction.X != 0 || direction.Y != 0))
             {
                 audioSource.Play();
-                //this.Context.SceneManager.CurrentScene.GetByTag("Points").Get<CounterManager>().Decrement();
-                
-                
-                
-                //bullet.Name = $"Bullet_{Context.TimeManager.FrameCount}";
-        
-                Transform transform = gameObject.Get<Transform>();
-                Transform t = new Transform();
-                t.Position = new Vector2F(transform.Position.X, transform.Position.Y);
-                t.Scale = new Vector2F(1, 1);
-                
-                Sprite s = new SpriteBuilder(Context)
-                    .SetTexture("asteroid_0.bmp")
-                    .Depth(1)
-                    .Build();
-                
-                
-                int bulletSpeed = 5;
-                Vector2F velo = new Vector2F(direction.X * bulletSpeed, direction.Y * bulletSpeed);
-
-                BoxCollider box = new BoxColliderBuilder(Context)
-                    .IsActive(true)
-                    .BodyType(BodyType.Dynamic)
-                    .IsTrigger(true)
-                    .AutoTilling(false)
-                    .Size(0.25F, 0.25F)
-                    .Rotation(0.0f)
-                    .RelativePosition(0, 0)
-                    .LinearVelocity(velo.X, velo.Y)
-                    .Mass(1.0f)
-                    .Restitution(1f)
-                    .Friction(0f)
-                    .FixedRotation(true)
-                    .IgnoreGravity(true)
-                    .Build();
-                
-                var bullet = Context.SceneManager.CurrentWorld.Create<Transform, Sprite, BoxCollider, Bullet>(t, s, box, new Bullet());
-                
-                
-                box.Context = this.Context;
-                s.Context = this.Context;
-                
-                box.OnStart(bullet);
-                s.OnStart(bullet);
-                
-                
+                CreateBullet();
             }
+        }
+
+        public void CreateBullet()
+        {
+            Transform transform = gameObject.Get<Transform>();
+            Transform t = new Transform
+            {
+                Position = new Vector2F(transform.Position.X, transform.Position.Y),
+                Scale = new Vector2F(1, 1)
+            };
+
+            Sprite s = new SpriteBuilder(Context)
+                .SetTexture("asteroid_0.bmp")
+                .Depth(1)
+                .Build();
+
+
+            int bulletSpeed = 5;
+            Vector2F velo = new Vector2F(2 * bulletSpeed, 2 * bulletSpeed);
+
+            BoxCollider box = new BoxColliderBuilder(Context)
+                .IsActive(true)
+                .BodyType(BodyType.Dynamic)
+                .IsTrigger(false)
+                .AutoTilling(false)
+                .Size(0.25F, 0.25F)
+                .Rotation(0.0f)
+                .RelativePosition(0, 0)
+                .LinearVelocity(velo.X, velo.Y)
+                .Mass(1.0f)
+                .Restitution(1f)
+                .Friction(0f)
+                .FixedRotation(true)
+                .IgnoreGravity(true)
+                .Build();
+            
+            
+            GameObject bullet = Context.SceneManager.CurrentWorld.Create<Transform, Sprite, BoxCollider, Bullet>(t, s, box, new Bullet());
+
+
+            box.Context = this.Context;
+            s.Context = this.Context;
+
+            box.OnStart(bullet);
+            s.OnStart(bullet);
         }
 
         /// <summary>

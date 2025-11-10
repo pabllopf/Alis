@@ -165,7 +165,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             {
                 Context.Exit();
             }
-            
+            /*
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>();
             DateTime now = DateTime.UtcNow;
             foreach (ConsoleKey k in allKeys)
@@ -236,6 +236,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             previousKeys = new HashSet<ConsoleKey>(currentKeys);
             currentKeys = newKeys;
 
+*/
+
             float pixelsPerMeter = PixelsPerMeter;
             Setting contextSetting = Context.Setting;
             PhysicSetting physicSettings = contextSetting.Physic;
@@ -261,6 +263,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                          .Query<With<Camera>>()
                          .Enumerate<Camera>())
             {
+                // prepare sprite rendering state once per frame
+                Sprite.BeginFrame();
+
                 foreach (GameObject spriteGameobject in spriteGameObjects)
                 {
                     if (spriteGameobject.Has<Animator>() && spriteGameobject.Has<Sprite>())
@@ -289,6 +294,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                         
                     }
                 }
+
+                // finalize sprite rendering state
+                Sprite.EndFrame();
             }
 
             // Swap the buffers to display the triangle
@@ -303,3 +311,4 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         }
     }
 }
+

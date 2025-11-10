@@ -51,17 +51,14 @@ namespace Alis.Core.Ecs.Components.Render
         /// <summary>
         ///     The image handle
         /// </summary>
-        private GCHandle imageHandle;
 
-        /// <summary>
-        ///     The indices handle
-        /// </summary>
-        private GCHandle indicesHandle;
+        private GCHandle imageHandle;
 
         /// <summary>
         ///     The vertices handle
         /// </summary>
-        private GCHandle verticesHandle;
+
+        // removed per-instance vertices/indices handles - we use shared buffers now
 
         /// <summary>
         ///     Gets or sets the value of the depth
@@ -90,22 +87,74 @@ namespace Alis.Core.Ecs.Components.Render
         /// <summary>
         ///     Gets or sets the value of the shader program
         /// </summary>
-        private uint ShaderProgram { get; set; }
+        // shader and quad buffers are now shared to avoid recompiling/allocating per sprite
+        private static uint SharedShaderProgram;
+        private static uint SharedVao;
+        private static uint SharedVbo;
+        private static uint SharedEbo;
+        private static bool SharedInitialized = false;
+
+        // cached uniform locations
+        private static int OffsetLocation = -1;
+        private static int ScaleLocation = -1;
+        private static int RotationLocation = -1;
+        private static int FlipLocation = -1;
+        private static int TextureLocation = -1;
+
+        // track last bound texture to avoid redundant binds
+        private static uint LastBoundTexture = 0;
+
+        /// <summary>
+        /// Called once per frame before rendering sprites to reset cached state and enable blending.
+        /// </summary>
+        public static void BeginFrame()
+        {
+            // ensure shader and buffers initialized
+            InitializeSharedResources();
+            // reset last bound texture to force the first bind
+            LastBoundTexture = 0;
+            // enable blending once per frame
+            Gl.GlEnable(EnableCap.Blend);
+            Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+        }
+
+        /// <summary>
+        /// Called after rendering sprites for the frame to optionally restore GL state.
+        /// </summary>
+        public static void EndFrame()
+        {
+            // optionally disable blending; some renderers prefer leaving it enabled
+            Gl.GlDisable(EnableCap.Blend);
+            // unbind VAO and program for cleanliness
+            Gl.GlBindVertexArray(0);
+            Gl.GlUseProgram(0);
+        }
+
+        /// <summary>
+        /// Release shared GL resources used by Sprite (call on application shutdown)
+        /// </summary>
+        public static void ReleaseSharedResources()
+        {
+            if (!SharedInitialized)
+                return;
+
+            if (SharedVao != 0) Gl.DeleteVertexArray(SharedVao);
+            if (SharedVbo != 0) Gl.DeleteBuffer(SharedVbo);
+            if (SharedEbo != 0) Gl.DeleteBuffer(SharedEbo);
+            if (SharedShaderProgram != 0) Gl.GlDeleteProgram(SharedShaderProgram);
+
+            SharedVao = 0;
+            SharedVbo = 0;
+            SharedEbo = 0;
+            SharedShaderProgram = 0;
+            SharedInitialized = false;
+            LastBoundTexture = 0;
+        }
 
         /// <summary>
         ///     Gets or sets the value of the vao
         /// </summary>
-        private uint Vao { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the vbo
-        /// </summary>
-        private uint Vbo { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the ebo
-        /// </summary>
-        private uint Ebo { get; set; }
+        // removed per-instance Vao/Vbo/Ebo
 
         /// <summary>
         ///     Gets or sets the value of the texture
@@ -136,10 +185,13 @@ namespace Alis.Core.Ecs.Components.Render
         }
 
         /// <summary>
-        ///     Initializes the shaders
+        ///     Initializes the shared shaders and quad buffers (run once)
         /// </summary>
-        private void InitializeShaders()
+        private static void InitializeSharedResources()
         {
+            if (SharedInitialized)
+                return;
+
             string vertexShaderSource = @"
              #version 330 core
              layout (location = 0) in vec3 aPos;
@@ -188,13 +240,64 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.ShaderSource(fragmentShader, fragmentShaderSource);
             Gl.GlCompileShader(fragmentShader);
 
-            ShaderProgram = Gl.GlCreateProgram();
-            Gl.GlAttachShader(ShaderProgram, vertexShader);
-            Gl.GlAttachShader(ShaderProgram, fragmentShader);
-            Gl.GlLinkProgram(ShaderProgram);
+            SharedShaderProgram = Gl.GlCreateProgram();
+            Gl.GlAttachShader(SharedShaderProgram, vertexShader);
+            Gl.GlAttachShader(SharedShaderProgram, fragmentShader);
+            Gl.GlLinkProgram(SharedShaderProgram);
 
             Gl.GlDeleteShader(vertexShader);
             Gl.GlDeleteShader(fragmentShader);
+
+            // cache uniform locations after linking
+            Gl.GlUseProgram(SharedShaderProgram);
+            OffsetLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "offset");
+            ScaleLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "scale");
+            RotationLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "rotation");
+            FlipLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "flip");
+            TextureLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "texture1");
+            // set default texture unit (0)
+            Gl.GlUniform1I(TextureLocation, 0);
+            Gl.GlUseProgram(0);
+
+            // create a shared unit quad (vertices not pre-scaled)
+            float[] vertices =
+            {
+                1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
+                1.0f, 1.0f, 0.0f, 1.0f, 1.0f,
+                -1.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+                -1.0f, -1.0f, 0.0f, 0.0f, 0.0f
+            };
+
+            uint[] indices = {0, 1, 3, 1, 2, 3};
+
+            SharedVao = Gl.GenVertexArray();
+            SharedVbo = Gl.GenBuffer();
+            SharedEbo = Gl.GenBuffer();
+
+            Gl.GlBindVertexArray(SharedVao);
+
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, SharedVbo);
+            // pin vertex data briefly for buffer upload
+            var vHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
+            Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), vHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+            vHandle.Free();
+
+            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, SharedEbo);
+            var iHandle = GCHandle.Alloc(indices, GCHandleType.Pinned);
+            Gl.GlBufferData(BufferTarget.ElementArrayBuffer, new IntPtr(indices.Length * sizeof(uint)), iHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+            iHandle.Free();
+
+            Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), IntPtr.Zero);
+            Gl.EnableVertexAttribArray(0);
+
+            Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), new IntPtr(3 * sizeof(float)));
+            Gl.EnableVertexAttribArray(1);
+
+            // unbind to be safe
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, 0);
+            Gl.GlBindVertexArray(0);
+
+            SharedInitialized = true;
         }
 
         /// <summary>
@@ -241,52 +344,7 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GenerateMipmap(TextureTarget.Texture2D);
         }
 
-        /// <summary>
-        ///     Setup the buffers
-        /// </summary>
-        /// <summary>
-        ///     Setup the buffers
-        /// </summary>
-        private void SetupBuffers()
-        {
-            int windowWidth = (int)Context.Setting.Graphic.WindowSize.X;
-            int windowHeight = (int)Context.Setting.Graphic.WindowSize.Y;
-
-            float scaleX = Size.X / windowWidth;
-            float scaleY = Size.Y / windowHeight;
-
-            float[] vertices =
-            {
-                1 * scaleX, -1 * scaleY, 0.0f, 1.0f, 0.0f,
-                1 * scaleX, 1 * scaleY, 0.0f, 1.0f, 1.0f,
-                -1 * scaleX, 1 * scaleY, 0.0f, 0.0f, 1.0f,
-                -1 * scaleX, -1 * scaleY, 0.0f, 0.0f, 0.0f
-            };
-
-            uint[] indices = {0, 1, 3, 1, 2, 3};
-
-            Vao = Gl.GenVertexArray();
-            Vbo = Gl.GenBuffer();
-            Ebo = Gl.GenBuffer();
-
-            Gl.GlBindVertexArray(Vao);
-
-            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
-            verticesHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
-            Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), verticesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
-            verticesHandle.Free();
-
-            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
-            indicesHandle = GCHandle.Alloc(indices, GCHandleType.Pinned);
-            Gl.GlBufferData(BufferTarget.ElementArrayBuffer, new IntPtr(indices.Length * sizeof(uint)), indicesHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
-            indicesHandle.Free();
-
-            Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), IntPtr.Zero);
-            Gl.EnableVertexAttribArray(0);
-
-            Gl.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), new IntPtr(3 * sizeof(float)));
-            Gl.EnableVertexAttribArray(1);
-        }
+        // removed SetupBuffers per-instance; we use shared buffers
 
         /// <summary>
         ///     Renders the gameobject
@@ -297,29 +355,27 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="pixelsPerMeter">The pixels per meter</param>
         public void Render(GameObject gameobject, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
-            
-           
-            
             if (!string.IsNullOrEmpty(NameFile) && (Path == string.Empty))
             {
                 Path = AssetManager.Find(NameFile);
-                InitializeShaders();
+                // Initialize shared shader+buffers once
+                InitializeSharedResources();
                 LoadTexture(Path);
-                SetupBuffers();
+                // no per-instance buffers to setup
             }
 
             Vector2F position = gameobject.Get<Transform>().Position;
             float spriteRotation = gameobject.Get<Transform>().Rotation;
-            
+            var transformScale = gameobject.Get<Transform>().Scale;
             
             // Insertar en Render(...) después de obtener position y spriteRotation
-            if (!IsSpriteVisible(position, Size, gameobject.Get<Transform>().Scale, spriteRotation, cameraPosition, cameraResolution, pixelsPerMeter))
+            if (!IsSpriteVisible(position, Size, transformScale, spriteRotation, cameraPosition, cameraResolution, pixelsPerMeter))
                 return;
 
-            Gl.GlUseProgram(ShaderProgram);
-            Gl.GlBindVertexArray(Vao);
-            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, Ebo);
-            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
+            Gl.GlUseProgram(SharedShaderProgram);
+            Gl.GlBindVertexArray(SharedVao);
+            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, SharedEbo);
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, SharedVbo);
 
             // Conversión de metros a píxeles
             float positionXPixels = (position.X - cameraPosition.X) * pixelsPerMeter;
@@ -330,30 +386,31 @@ namespace Alis.Core.Ecs.Components.Render
             float worldY = 2.0f * positionYPixels / cameraResolution.Y;
 
             // Enviar valores normalizados al shader
-            int offsetLocation = Gl.GlGetUniformLocation(ShaderProgram, "offset");
-            Gl.GlUniform2F(offsetLocation, worldX, worldY);
+            Gl.GlUniform2F(OffsetLocation, worldX, worldY);
 
-            int scaleLocation = Gl.GlGetUniformLocation(ShaderProgram, "scale");
-            Gl.GlUniform2F(scaleLocation, gameobject.Get<Transform>().Scale.X, gameobject.Get<Transform>().Scale.Y);
+            // compute scale uniform so that quad vertices (which are -1..1) are scaled to sprite pixel size
+            int windowWidth = (int)Context.Setting.Graphic.WindowSize.X;
+            int windowHeight = (int)Context.Setting.Graphic.WindowSize.Y;
 
-            int rotationLocation = Gl.GlGetUniformLocation(ShaderProgram, "rotation");
-            Gl.GlUniform1F(rotationLocation, spriteRotation);
+            // scaleX/Y convert sprite pixel size into normalized device coordinates factor used by vertex shader
+            float scaleX = (Size.X / windowWidth) * transformScale.X;
+            float scaleY = (Size.Y / windowHeight) * transformScale.Y;
 
-            // Enviar la propiedad Flip al shader
-            int flipLocation = Gl.GlGetUniformLocation(ShaderProgram, "flip");
-            Gl.GlUniform1I(flipLocation, Flip ? 1 : 0);
+            Gl.GlUniform2F(ScaleLocation, scaleX, scaleY);
+            Gl.GlUniform1F(RotationLocation, spriteRotation);
+            Gl.GlUniform1I(FlipLocation, Flip ? 1 : 0);
 
-            // Activar blending para manejar transparencias
-            Gl.GlEnable(EnableCap.Blend);
-            Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-
-            // Vincular la textura antes de dibujar
-            Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
+            // Vincular la textura antes de dibujar (evitar binds redundantes)
+            if (LastBoundTexture != Texture)
+            {
+                Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
+                LastBoundTexture = Texture;
+            }
 
             // Dibujar el sprite
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
 
-            Gl.GlDisable(EnableCap.Blend);
+            // NOTE: blending should ideally be enabled once per frame by the renderer/system to avoid overhead.
         }
         
        
@@ -400,16 +457,22 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void OnExit(IGameObject self)
         {
-            /*Gl.DeleteVertexArray(Vao);
-            Gl.DeleteBuffer(Vbo);
-            Gl.DeleteBuffer(Ebo);
-            Gl.GlDeleteProgram(ShaderProgram);
-            Gl.DeleteTexture(Texture);
-            
+            // free per-instance texture
+            try
+            {
+                if (Texture != 0)
+                {
+                    Gl.DeleteTexture(Texture);
+                    Texture = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Warning($"Error releasing sprite texture: {ex.Message}");
+            }
+
             Path = string.Empty;
-            */
-            
-            Logger.Info("Sprite resources have been released.");
+            Logger.Info("Sprite instance resources have been released.");
         }
     }
 }
