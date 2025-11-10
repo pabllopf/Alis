@@ -34,6 +34,7 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Graphic;
@@ -296,6 +297,9 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="pixelsPerMeter">The pixels per meter</param>
         public void Render(GameObject gameobject, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
+            
+           
+            
             if (!string.IsNullOrEmpty(NameFile) && (Path == string.Empty))
             {
                 Path = AssetManager.Find(NameFile);
@@ -306,6 +310,11 @@ namespace Alis.Core.Ecs.Components.Render
 
             Vector2F position = gameobject.Get<Transform>().Position;
             float spriteRotation = gameobject.Get<Transform>().Rotation;
+            
+            
+            // Insertar en Render(...) después de obtener position y spriteRotation
+            if (!IsSpriteVisible(position, Size, gameobject.Get<Transform>().Scale, spriteRotation, cameraPosition, cameraResolution, pixelsPerMeter))
+                return;
 
             Gl.GlUseProgram(ShaderProgram);
             Gl.GlBindVertexArray(Vao);
@@ -345,6 +354,36 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
 
             Gl.GlDisable(EnableCap.Blend);
+        }
+        
+       
+        private bool IsSpriteVisible(Vector2F spriteWorldPosition, Vector2F spriteSizePixels, Vector2F spriteScale, float rotationDegrees, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
+        {
+            // posición del sprite relativa a la cámara en píxeles (centro de cámara)
+            float px = (spriteWorldPosition.X - cameraPosition.X) * pixelsPerMeter;
+            float py = (spriteWorldPosition.Y - cameraPosition.Y) * pixelsPerMeter;
+        
+            // medias en píxeles
+            float halfW = spriteSizePixels.X * spriteScale.X * 0.5f;
+            float halfH = spriteSizePixels.Y * spriteScale.Y * 0.5f;
+        
+            // ampliar AABB si hay rotación (aprox usando |cos| y |sin|)
+            if (CustomMathF.Abs(rotationDegrees) > 0.0001f)
+            {
+                float rad = rotationDegrees * (CustomMathF.Pi / 180f);
+                float c = CustomMathF.Abs(CustomMathF.Cos(rad));
+                float s = CustomMathF.Abs(CustomMathF.Sin(rad));
+                float rotHalfW = c * halfW + s * halfH;
+                float rotHalfH = s * halfW + c * halfH;
+                halfW = rotHalfW;
+                halfH = rotHalfH;
+            }
+        
+            float camHalfW = cameraResolution.X * 0.5f;
+            float camHalfH = cameraResolution.Y * 0.5f;
+        
+            // overlap check (AABB centrado en la cámara)
+            return !(CustomMathF.Abs(px) > camHalfW + halfW || CustomMathF.Abs(py) > camHalfH + halfH);
         }
         
 
