@@ -150,12 +150,7 @@ namespace Alis.Core.Ecs.Components.Render
             SharedInitialized = false;
             LastBoundTexture = 0;
         }
-
-        /// <summary>
-        ///     Gets or sets the value of the vao
-        /// </summary>
-        // removed per-instance Vao/Vbo/Ebo
-
+        
         /// <summary>
         ///     Gets or sets the value of the texture
         /// </summary>
