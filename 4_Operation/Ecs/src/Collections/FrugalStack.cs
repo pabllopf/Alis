@@ -37,9 +37,13 @@ namespace Alis.Core.Ecs.Collections
         {
             T[] buffer = _buffer;
             if ((uint)_nextIndex < (uint)buffer.Length)
+            {
                 buffer[_nextIndex++] = comp;
+            }
             else
+            {
                 ResizeAndPush(comp);
+            }
         }
 
         /// <summary>
@@ -79,7 +83,10 @@ namespace Alis.Core.Ecs.Collections
         {
             T next = _buffer[--_nextIndex];
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
+            {
                 _buffer[_nextIndex] = default!;
+            }
+
             return next;
         }
 

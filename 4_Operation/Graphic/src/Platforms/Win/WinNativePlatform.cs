@@ -232,7 +232,10 @@ namespace Alis.Core.Graphic.Platforms.Win
                 {
                     // Avoid invalid combinations: WS_CHILD with WS_EX_APPWINDOW
                     if ((style & WindowStyles.Child) != 0 && exStyle == (int)WindowExStyles.AppWindow)
+                    {
                         continue;
+                    }
+
                     foreach (var sz in sizes)
                     {
                         hWnd = User32.CreateWindowEx(exStyle, className, title,
@@ -253,9 +256,15 @@ namespace Alis.Core.Graphic.Platforms.Win
                             Logger.Info(lastErrorMsg);
                         }
                     }
-                    if (windowCreated) break;
+                    if (windowCreated)
+                    {
+                        break;
+                    }
                 }
-                if (windowCreated) break;
+                if (windowCreated)
+                {
+                    break;
+                }
             }
             if (!windowCreated)
             {
@@ -324,10 +333,22 @@ namespace Alis.Core.Graphic.Platforms.Win
             {
                 var pfd = configs[i];
                 int pixelFormat = Gdi32.ChoosePixelFormat(hDc, ref pfd);
-                if (pixelFormat == 0) continue;
-                if (!Gdi32.SetPixelFormat(hDc, pixelFormat, ref pfd)) continue;
+                if (pixelFormat == 0)
+                {
+                    continue;
+                }
+
+                if (!Gdi32.SetPixelFormat(hDc, pixelFormat, ref pfd))
+                {
+                    continue;
+                }
+
                 IntPtr dummyContext = Opengl32.wglCreateContext(hDc);
-                if (dummyContext == IntPtr.Zero) continue;
+                if (dummyContext == IntPtr.Zero)
+                {
+                    continue;
+                }
+
                 if (!Opengl32.wglMakeCurrent(hDc, dummyContext))
                 {
                     Opengl32.wglDeleteContext(dummyContext);
@@ -597,7 +618,10 @@ namespace Alis.Core.Graphic.Platforms.Win
         {
             bool result = Initialize(width, height, title);
             if (!result)
+            {
                 return false;
+            }
+
             try
             {
                 // Cargar el icono usando Win32 API
@@ -709,7 +733,10 @@ namespace Alis.Core.Graphic.Platforms.Win
        public void SetWindowIcon(string iconPath)
         {
             if (hWnd == IntPtr.Zero)
+            {
                 return;
+            }
+
             const uint IMAGE_ICON = 1;
             const uint LR_LOADFROMFILE = 0x00000010;
             IntPtr hIcon = LoadImage(IntPtr.Zero, iconPath, IMAGE_ICON, 0, 0, LR_LOADFROMFILE);
@@ -720,9 +747,14 @@ namespace Alis.Core.Graphic.Platforms.Win
                 IntPtr oldSmallIcon = SendMessage(hWnd, WM_SETICON, new IntPtr(0), hIcon);
                 IntPtr oldBigIcon = SendMessage(hWnd, WM_SETICON, new IntPtr(1), hIcon);
                 if (oldSmallIcon != IntPtr.Zero)
+                {
                     DestroyIcon(oldSmallIcon);
+                }
+
                 if (oldBigIcon != IntPtr.Zero)
+                {
                     DestroyIcon(oldBigIcon);
+                }
             }
         }
         

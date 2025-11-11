@@ -206,7 +206,10 @@ namespace Alis.Core.Ecs.Generator
         {
             Indents--;
             if (Indents < 0)
+            {
                 throw new InvalidOperationException("Indentation level must be positive!");
+            }
+
             if (_sb[_sb.Length - 1] == ' '
                 && _sb[_sb.Length - 2] == ' '
                 && _sb[_sb.Length - 3] == ' '
@@ -225,7 +228,10 @@ namespace Alis.Core.Ecs.Generator
         public CodeBuilder AppendWithDot(string str)
         {
             if(string.IsNullOrEmpty(str))
+            {
                 return this;
+            }
+
             _sb.Append(str);
             _sb.Append('.');
             return this;

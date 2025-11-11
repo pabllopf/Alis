@@ -82,36 +82,9 @@ namespace Alis.Core.Audio.Players
         /// <exception cref="FileNotFoundException">Resource '{wavFileName}' not found in 'assets.pack'.</exception>
         /// <exception cref="FileNotFoundException">Resource file 'assets.pack' not found in embedded resources.</exception>
         /// <returns>A task containing the string</returns>
-        private static async Task<string> ExtractWavFromResourcesAsync(string wavFileName)
+        private static string ExtractWavFromResourcesAsync(string wavFileName)
         {
-         
-        
-            using (Stream streamPack = AssetRegistry.GetAssetStreamByBaseName("assets.pack"))
-            {
-                if (streamPack == null)
-                    throw new FileNotFoundException("Resource file 'assets.pack' not found in embedded resources.");
-        
-                using (MemoryStream memPack = new MemoryStream())
-                {
-                    await streamPack.CopyToAsync(memPack);
-                    memPack.Position = 0;
-        
-                    using (ZipArchive zip = new ZipArchive(memPack, ZipArchiveMode.Read))
-                    {
-                        ZipArchiveEntry entry = zip.Entries.FirstOrDefault(e => e.FullName.Contains(wavFileName));
-                        if (entry == null)
-                            throw new FileNotFoundException($"Resource '{wavFileName}' not found in 'assets.pack'.");
-        
-                        string tempFilePath = Path.Combine(Path.GetTempPath(), Path.GetFileName(wavFileName));
-                        using (Stream entryStream = entry.Open())
-                        using (FileStream fileStream = File.Create(tempFilePath))
-                        {
-                            await entryStream.CopyToAsync(fileStream);
-                        }
-                        return tempFilePath;
-                    }
-                }
-            }
+            return AssetRegistry.GetResourcePathByName(wavFileName);
         }
         
         /// <summary>
@@ -143,7 +116,7 @@ namespace Alis.Core.Audio.Players
                 {
                     try
                     {
-                        fileName = await ExtractWavFromResourcesAsync(fileName);
+                        fileName =  ExtractWavFromResourcesAsync(fileName);
                         _lastExtractedFile = fileName;
                     }
                     catch (Exception ex)
@@ -184,7 +157,7 @@ namespace Alis.Core.Audio.Players
            {
                if (!File.Exists(fileName))
                {
-                   fileName = await ExtractWavFromResourcesAsync(fileName);
+                   fileName =  ExtractWavFromResourcesAsync(fileName);
                    _lastExtractedFile = fileName;
                }
                else
@@ -228,7 +201,9 @@ namespace Alis.Core.Audio.Players
         private double GetAudioDuration(string fileName)
         {
             if (!File.Exists(fileName))
+            {
                 throw new FileNotFoundException($"El archivo '{fileName}' no existe.");
+            }
 
             var process = new Process
             {
@@ -250,7 +225,9 @@ namespace Alis.Core.Audio.Players
             {
                 var parts = line.Split(':');
                 if (parts.Length > 1 && double.TryParse(parts[1].Replace(".", ",").Replace("sec", "").Trim(), out double seconds))
+                {
                     return seconds;
+                }
             }
 
             return 1.0;

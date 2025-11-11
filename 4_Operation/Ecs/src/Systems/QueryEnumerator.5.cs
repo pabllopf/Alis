@@ -94,7 +94,10 @@ namespace Alis.Core.Ecs.Systems
         /// <returns><see langword="true" /> when its possible to enumerate further, otherwise <see langword="false" />.</returns>
         public bool MoveNext()
         {
-            if (++_componentIndex < _currentSpan1.Length) return true;
+            if (++_componentIndex < _currentSpan1.Length)
+            {
+                return true;
+            }
 
             _componentIndex = 0;
             _archetypeIndex++;
@@ -110,7 +113,9 @@ namespace Alis.Core.Ecs.Systems
 
 
                 if (!_currentSpan1.IsEmpty)
+                {
                     return true;
+                }
 
                 _archetypeIndex++;
             }

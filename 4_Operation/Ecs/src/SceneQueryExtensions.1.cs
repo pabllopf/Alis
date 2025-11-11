@@ -47,7 +47,10 @@ namespace Alis.Core.Ecs
             where T : struct, IRuleProvider
         {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
-            if (scene.QueryCache.TryGetValue(QueryHashCache<T>.Value, out Query value)) return value;
+            if (scene.QueryCache.TryGetValue(QueryHashCache<T>.Value, out Query value))
+            {
+                return value;
+            }
 
             value = scene.CreateQuery(MemoryHelpers.ReadOnlySpanToImmutableArray([default(T).Rule]));
             scene.QueryCache[QueryHashCache<T>.Value] = value;

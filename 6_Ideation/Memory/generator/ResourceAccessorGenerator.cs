@@ -109,7 +109,9 @@ namespace Alis.Core.Aspect.Memory.Generator
                 {
                     sb.Append(compressed[i]);
                     if (i < compressed.Length - 1)
+                    {
                         sb.Append(',');
+                    }
                 }
 
                 string assemblyName = compilation.AssemblyName ?? "DefaultAssembly";

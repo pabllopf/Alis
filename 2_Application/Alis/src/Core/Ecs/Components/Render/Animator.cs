@@ -131,8 +131,10 @@ namespace Alis.Core.Ecs.Components.Render
         public void OnUpdate(IGameObject self)
         {
             if (_clock == null)
+            {
                 return;
-    
+            }
+
             float deltaTime = _clock.ElapsedMilliseconds / 1000f;
             _clock.Restart();
     

@@ -426,7 +426,10 @@ namespace Alis.Core.Graphic.Ui
             int charsPerRow = 28; // caracteres por fila
             int xSpacing = 1; // espaciado horizontal
             int ySpacing = 0; // espaciado vertical
-            if (CharacterRects.Count == 0) InitializeCharacterRectsFromAtlas(charWidth, charHeight, charsPerRow, xSpacing, ySpacing);
+            if (CharacterRects.Count == 0)
+            {
+                InitializeCharacterRectsFromAtlas(charWidth, charHeight, charsPerRow, xSpacing, ySpacing);
+            }
 
             // Tamaño lógico de la fuente en pantalla
             float fontSize = sizeFont; // valor lógico de la fuente (por ejemplo, 1)
@@ -456,7 +459,10 @@ namespace Alis.Core.Graphic.Ui
             float posX = xPos;
             foreach (char c in text)
             {
-                if (!CharacterRects.TryGetValue(c, out RectangleI srcRect)) continue;
+                if (!CharacterRects.TryGetValue(c, out RectangleI srcRect))
+                {
+                    continue;
+                }
 
                 // Coordenadas de textura (UV)
                 /*float u0 = (float)srcRect.X / Size.X;

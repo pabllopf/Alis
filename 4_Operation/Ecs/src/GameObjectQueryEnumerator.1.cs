@@ -75,7 +75,10 @@ namespace Alis.Core.Ecs
         /// <returns><see langword="true" /> when its possible to enumerate further, otherwise <see langword="false" />.</returns>
         public bool MoveNext()
         {
-            if (++_componentIndex < _currentSpan1.Length) return true;
+            if (++_componentIndex < _currentSpan1.Length)
+            {
+                return true;
+            }
 
             do
             {

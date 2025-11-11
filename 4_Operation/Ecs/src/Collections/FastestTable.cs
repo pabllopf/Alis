@@ -43,7 +43,11 @@ namespace Alis.Core.Ecs.Collections
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
-                if (index >= _buffer.Length) return ref ResizeGet(index);
+                if (index >= _buffer.Length)
+                {
+                    return ref ResizeGet(index);
+                }
+
                 ref T r0 = ref _buffer[0];
                 return ref Unsafe.Add(ref r0, index);
             }
@@ -57,7 +61,11 @@ namespace Alis.Core.Ecs.Collections
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
-                if (index >= _buffer.Length) return ref ResizeGet(index);
+                if (index >= _buffer.Length)
+                {
+                    return ref ResizeGet(index);
+                }
+
                 ref T r0 = ref MemoryMarshal.GetArrayDataReference(_buffer);
                 return ref Unsafe.Add(ref r0, index);
             }
@@ -109,7 +117,10 @@ namespace Alis.Core.Ecs.Collections
         public void EnsureCapacity(int size)
         {
             if (_buffer.Length >= size)
+            {
                 return;
+            }
+
             FastestArrayPool<T>.ResizeArrayFromPool(ref _buffer, size);
         }
 

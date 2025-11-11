@@ -453,7 +453,9 @@ namespace Alis.Core.Ecs
             {
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
                 if (!_singleComponentUpdates.TryGetValue(componentType, out singleComponent))
+                {
                     _singleComponentUpdates[componentType] = singleComponent = new(this, componentType);
+                }
 #else
                 singleComponent =
                     CollectionsMarshal.GetValueRefOrAddDefault(_singleComponentUpdates, componentType, out _) ??= new(this, componentType);

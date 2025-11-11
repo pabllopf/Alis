@@ -80,7 +80,9 @@ namespace Alis.Core.Ecs
         public ChunkTuple<T1, T2, T3> CreateMany<T1, T2, T3>(int count)
         {
             if ((uint)count == 0) // Efficient validation for non-positive values
+            {
                 throw new ArgumentOutOfRangeException(nameof(count));
+            }
 
             WorldArchetypeTableItem archetype = Archetype<T1, T2, T3>.CreateNewOrGetExistingArchetypes(this);
             int entityCount = archetype.Archetype.EntityCount;
@@ -92,10 +94,12 @@ namespace Alis.Core.Ecs
 
             // Invoke events if listeners are present
             if (EntityCreatedEvent.HasListeners)
+            {
                 foreach (ref GameObjectIdOnly entityId in entityLocations)
                 {
                     EntityCreatedEvent.Invoke(entityId.ToEntity(this));
                 }
+            }
 
             // Return the result with calculated spans
             return new ChunkTuple<T1, T2, T3>

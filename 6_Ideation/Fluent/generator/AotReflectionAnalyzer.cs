@@ -272,7 +272,10 @@ namespace Alis.Core.Aspect.Fluent.Generator
             IObjectCreationOperation creation = (IObjectCreationOperation)context.Operation;
             ITypeSymbol type = creation.Type;
             string fullName = type?.ToDisplayString();
-            if (fullName == null) return;
+            if (fullName == null)
+            {
+                return;
+            }
 
             // new System.Reflection.Emit.DynamicMethod(...) or other emit types
             if (fullName.StartsWith("System.Reflection.Emit") || fullName.Contains("DynamicMethod") || fullName.Contains("AssemblyBuilder"))
@@ -344,7 +347,11 @@ namespace Alis.Core.Aspect.Fluent.Generator
             // detect casts to dynamic-related interfaces
             IConversionOperation conv = (IConversionOperation)context.Operation;
             ITypeSymbol target = conv.Type;
-            if (target == null) return;
+            if (target == null)
+            {
+                return;
+            }
+
             string targetName = target.ToDisplayString();
             if (targetName.Contains("IDynamicMetaObjectProvider") || targetName == "dynamic")
             {
@@ -423,13 +430,23 @@ namespace Alis.Core.Aspect.Fluent.Generator
         /// <returns>The bool</returns>
         private static bool IsReflectionType(ITypeSymbol type)
         {
-            if (type == null) return false;
+            if (type == null)
+            {
+                return false;
+            }
+
             string name = type.ToDisplayString();
             // Cubre System.Reflection y subniveles
-            if (name.StartsWith("System.Reflection", StringComparison.Ordinal)) return true;
+            if (name.StartsWith("System.Reflection", StringComparison.Ordinal))
+            {
+                return true;
+            }
 
             // Common reflection/emit related types
-            if (name.Contains("System.Type") || name.Contains("System.Reflection.Emit") || name.Contains("System.Reflection.TypeInfo")) return true;
+            if (name.Contains("System.Type") || name.Contains("System.Reflection.Emit") || name.Contains("System.Reflection.TypeInfo"))
+            {
+                return true;
+            }
 
             return false;
         }
@@ -443,9 +460,21 @@ namespace Alis.Core.Aspect.Fluent.Generator
         {
             string t = method.ContainingType?.ToDisplayString() ?? string.Empty;
             string n = method.Name;
-            if (t.StartsWith("System.Reflection.Emit", StringComparison.Ordinal)) return true;
-            if (t.Contains("DynamicMethod") || t.Contains("AssemblyBuilder") || t.Contains("ModuleBuilder")) return true;
-            if (n.Contains("DefineMethod") || n.Contains("GetILGenerator") || n.Contains("Emit")) return true;
+            if (t.StartsWith("System.Reflection.Emit", StringComparison.Ordinal))
+            {
+                return true;
+            }
+
+            if (t.Contains("DynamicMethod") || t.Contains("AssemblyBuilder") || t.Contains("ModuleBuilder"))
+            {
+                return true;
+            }
+
+            if (n.Contains("DefineMethod") || n.Contains("GetILGenerator") || n.Contains("Emit"))
+            {
+                return true;
+            }
+
             return false;
         }
 
@@ -458,8 +487,16 @@ namespace Alis.Core.Aspect.Fluent.Generator
         {
             string t = method.ContainingType?.ToDisplayString() ?? string.Empty;
             string n = method.Name;
-            if (t.StartsWith("System.Reflection.MethodInfo", StringComparison.Ordinal) || t.StartsWith("System.Reflection.MemberInfo")) return n == "Invoke" || n == "GetValue" || n == "SetValue" || n == "InvokeMember" || n == "GetRuntimeMethod";
-            if (t.StartsWith("System.Reflection.PropertyInfo")) return true;
+            if (t.StartsWith("System.Reflection.MethodInfo", StringComparison.Ordinal) || t.StartsWith("System.Reflection.MemberInfo"))
+            {
+                return n == "Invoke" || n == "GetValue" || n == "SetValue" || n == "InvokeMember" || n == "GetRuntimeMethod";
+            }
+
+            if (t.StartsWith("System.Reflection.PropertyInfo"))
+            {
+                return true;
+            }
+
             return false;
         }
 
@@ -494,10 +531,26 @@ namespace Alis.Core.Aspect.Fluent.Generator
         {
             string t = method.ContainingType?.ToDisplayString() ?? string.Empty;
             // heurísticas para detectar uso de serializadores comunes que dependen de reflexión por defecto
-            if (t.StartsWith("System.Runtime.Serialization.Formatters.Binary.BinaryFormatter", StringComparison.Ordinal)) return true;
-            if (t.StartsWith("Newtonsoft.Json.JsonConvert", StringComparison.Ordinal)) return true; // aunque Newtonsoft puede configurarse, la configuración por defecto usa reflexión
-            if (t.StartsWith("System.Text.Json.JsonSerializer", StringComparison.Ordinal)) return true; // System.Text.Json puede requerir metadata para AOT
-            if (t.Contains("XmlSerializer")) return true; // XmlSerializer genera assemblies dinámicamente o usa reflection
+            if (t.StartsWith("System.Runtime.Serialization.Formatters.Binary.BinaryFormatter", StringComparison.Ordinal))
+            {
+                return true;
+            }
+
+            if (t.StartsWith("Newtonsoft.Json.JsonConvert", StringComparison.Ordinal))
+            {
+                return true; // aunque Newtonsoft puede configurarse, la configuración por defecto usa reflexión
+            }
+
+            if (t.StartsWith("System.Text.Json.JsonSerializer", StringComparison.Ordinal))
+            {
+                return true; // System.Text.Json puede requerir metadata para AOT
+            }
+
+            if (t.Contains("XmlSerializer"))
+            {
+                return true; // XmlSerializer genera assemblies dinámicamente o usa reflection
+            }
+
             return false;
         }
         #endregion

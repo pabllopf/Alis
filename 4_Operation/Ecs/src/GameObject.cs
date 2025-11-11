@@ -103,7 +103,10 @@ namespace Alis.Core.Ecs
             //hardware trap
             ref GameObjectLocation lookup = ref scene.EntityTable.UnsafeIndexNoResize(EntityID);
             if (lookup.Version != EntityVersion)
+            {
                 Throw_EntityIsDead();
+            }
+
             return ref lookup;
         }
 
@@ -118,12 +121,16 @@ namespace Alis.Core.Ecs
         private Ref<T> TryGetCore<T>(out bool exists)
         {
             if (!InternalIsAlive(out Scene _, out GameObjectLocation entityLocation))
+            {
                 goto doesntExist;
+            }
 
             int compIndex = GlobalWorldTables.ComponentIndex(entityLocation.ArchetypeId, Component<T>.Id);
 
             if (compIndex == 0)
+            {
                 goto doesntExist;
+            }
 
             exists = true;
             ComponentStorage<T> storage =  Unsafe.As<ComponentStorage<T>>(
