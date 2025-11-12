@@ -293,7 +293,7 @@ namespace Alis.Core.Ecs.Components.Collider
                 Body.FixedRotation = FixedRotation;
                 Body.Mass = Mass;
                 Body.SleepingAllowed = false;
-                Body.IsBullet = true;
+                Body.IsBullet = false;
                 Body.IgnoreGravity = IgnoreGravity;
                 Body.LinearVelocity = LinearVelocity;
                 Body.Awake = true;

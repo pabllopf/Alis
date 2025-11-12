@@ -52,14 +52,14 @@ namespace Alis.Sample.Asteroid
             
                 if (gameObject.Tag == "Asteroid")
                 {
-                    Logger.Info("Bullet hit an asteroid and will decrease its health.");
+                    //Logger.Info("Bullet hit an asteroid and will decrease its health.");
                     other.Get<Asteroid>().DecreaseHealth();
                     //Context.SceneManager.CurrentWorld.(this.GameObject);
                 }
             
                 if (gameObject.Tag == "Wall")
                 {
-                    Logger.Info("Bullet hit a wall and will be destroyed.");
+                    //Logger.Info("Bullet hit a wall and will be destroyed.");
                     //this.GameObject.Context.SceneManager.DestroyGameObject(this.GameObject);
                 }
             }
