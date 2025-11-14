@@ -13,34 +13,81 @@ namespace Alis.Core.Aspect.Memory
     /// </summary>
     public static class AssetRegistry
     {
+        /// <summary>
+        /// The registered asset loaders
+        /// </summary>
         private static readonly Dictionary<string, Func<Stream>> RegisteredAssetLoaders = new();
         // Lock por ensamblado para reducir contención
+        /// <summary>
+        /// The assembly locks
+        /// </summary>
         private static readonly ConcurrentDictionary<string, object> _assemblyLocks = new();
+        /// <summary>
+        /// The global lock
+        /// </summary>
         private static readonly object _globalLock = new();
 
         // Cache del ZIP cargado en memoria por assembly
+        /// <summary>
+        /// The zip entry info class
+        /// </summary>
         private class ZipEntryInfo
         {
+            /// <summary>
+            /// Gets or sets the value of the full name
+            /// </summary>
             public string FullName { get; set; } = string.Empty;
+            /// <summary>
+            /// Gets or sets the value of the length
+            /// </summary>
             public long Length { get; set; }
+            /// <summary>
+            /// Gets or sets the value of the last write time utc
+            /// </summary>
             public DateTimeOffset LastWriteTimeUtc { get; set; }
         }
 
+        /// <summary>
+        /// The zip cache entry class
+        /// </summary>
         private class ZipCacheEntry
         {
             // bytes del paquete (no copiados al crear MemoryStream)
+            /// <summary>
+            /// Gets or sets the value of the pack bytes
+            /// </summary>
             public byte[] PackBytes { get; set; }
             // índices ligeros para búsquedas rápidas
+            /// <summary>
+            /// Gets or sets the value of the entries by full name lower
+            /// </summary>
             public Dictionary<string, ZipEntryInfo> EntriesByFullNameLower { get; set; } = new();
+            /// <summary>
+            /// Gets or sets the value of the entries by file name lower
+            /// </summary>
             public Dictionary<string, List<ZipEntryInfo>> EntriesByFileNameLower { get; set; } = new();
         }
 
+        /// <summary>
+        /// The zip cache
+        /// </summary>
         private static readonly Dictionary<string, ZipCacheEntry> _zipCache = new();
         // Cache de rutas extraídas: key -> ruta en disco
+        /// <summary>
+        /// The extracted path cache
+        /// </summary>
         private static readonly Dictionary<string, string> _extractedPathCache = new();
 
+        /// <summary>
+        /// Gets or sets the value of the active assembly name
+        /// </summary>
         private static string ActiveAssemblyName { get; set; } = null;
 
+        /// <summary>
+        /// Registers the assembly using the specified assembly name
+        /// </summary>
+        /// <param name="assemblyName">The assembly name</param>
+        /// <param name="assetLoader">The asset loader</param>
         public static void RegisterAssembly(string assemblyName, Func<Stream> assetLoader)
         {
             lock (_globalLock)
@@ -58,11 +105,27 @@ namespace Alis.Core.Aspect.Memory
             }
         }
 
+        /// <summary>
+        /// Gets the assembly lock using the specified assembly name
+        /// </summary>
+        /// <param name="assemblyName">The assembly name</param>
+        /// <returns>The object</returns>
         private static object GetAssemblyLock(string assemblyName)
         {
             return _assemblyLocks.GetOrAdd(assemblyName, _ => new object());
         }
 
+        /// <summary>
+        /// Gets the resource memory stream by name using the specified resource name
+        /// </summary>
+        /// <param name="resourceName">The resource name</param>
+        /// <exception cref="FileNotFoundException">Cache del assets.pack no disponible.</exception>
+        /// <exception cref="InvalidOperationException">La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pack registrado.</exception>
+        /// <exception cref="InvalidOperationException">No hay una asamblea activa configurada.</exception>
+        /// <exception cref="FileNotFoundException">Resource '{resourceName}' not found in `assets.pack` (race).</exception>
+        /// <exception cref="FileNotFoundException">Resource '{resourceName}' not found in `assets.pack`.</exception>
+        /// <exception cref="ArgumentException">resourceName no puede estar vacío. </exception>
+        /// <returns>The memory stream</returns>
         public static MemoryStream GetResourceMemoryStreamByName(string resourceName)
         {
             if (string.IsNullOrWhiteSpace(resourceName))
@@ -131,6 +194,17 @@ namespace Alis.Core.Aspect.Memory
             }
         }
 
+        /// <summary>
+        /// Gets the resource path by name using the specified resource name
+        /// </summary>
+        /// <param name="resourceName">The resource name</param>
+        /// <exception cref="FileNotFoundException">Cache del assets.pack no disponible.</exception>
+        /// <exception cref="InvalidOperationException">La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pack registrado.</exception>
+        /// <exception cref="InvalidOperationException">No hay una asamblea activa configurada.</exception>
+        /// <exception cref="FileNotFoundException">Resource '{resourceName}' not found in `assets.pack` (race).</exception>
+        /// <exception cref="FileNotFoundException">Resource '{resourceName}' not found in `assets.pack`.</exception>
+        /// <exception cref="ArgumentException">resourceName no puede estar vacío. </exception>
+        /// <returns>The string</returns>
         public static string GetResourcePathByName(string resourceName)
         {
             if (string.IsNullOrWhiteSpace(resourceName))
@@ -241,11 +315,22 @@ namespace Alis.Core.Aspect.Memory
             }
         }
 
+        /// <summary>
+        /// Normalizes the resource key using the specified resource name
+        /// </summary>
+        /// <param name="resourceName">The resource name</param>
+        /// <returns>The string</returns>
         private static string NormalizeResourceKey(string resourceName)
         {
             return resourceName.Replace('\\', '/').TrimStart('/').ToLowerInvariant();
         }
 
+        /// <summary>
+        /// Makes the safe temp name using the specified assembly name
+        /// </summary>
+        /// <param name="assemblyName">The assembly name</param>
+        /// <param name="entryFullName">The entry full name</param>
+        /// <returns>The string</returns>
         private static string MakeSafeTempName(string assemblyName, string entryFullName)
         {
             string fileName = entryFullName.Replace('\\', '_').Replace('/', '_');
@@ -257,6 +342,11 @@ namespace Alis.Core.Aspect.Memory
             return $"{assemblyName}_{fileName}";
         }
 
+        /// <summary>
+        /// Ensures the zip cached for active assembly
+        /// </summary>
+        /// <exception cref="InvalidOperationException">La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pack registrado.</exception>
+        /// <exception cref="FileNotFoundException">Resource file `assets.pack` not found in embedded resources.</exception>
         private static void EnsureZipCachedForActiveAssembly()
         {
             if (_zipCache.ContainsKey(ActiveAssemblyName))
@@ -311,6 +401,12 @@ namespace Alis.Core.Aspect.Memory
             }
         }
 
+        /// <summary>
+        /// Finds the zip entry info using the specified cache entry
+        /// </summary>
+        /// <param name="cacheEntry">The cache entry</param>
+        /// <param name="resourceName">The resource name</param>
+        /// <returns>The match</returns>
         private static ZipEntryInfo FindZipEntryInfo(ZipCacheEntry cacheEntry, string resourceName)
         {
             string normalized = NormalizeResourceKey(resourceName);

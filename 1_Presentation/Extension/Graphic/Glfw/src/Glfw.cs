@@ -235,17 +235,12 @@ namespace Alis.Extension.Graphic.Glfw
         [DllImport(Library, EntryPoint = "glfwSetWindowOpacity", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetWindowOpacity(IntPtr window, float opacity);
 
+        
         /// <summary>
-        ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values until
-        ///     changed by a call to this function or <see cref="DefaultWindowHints" />, or until the library is terminated.
-        ///     <para>
-        ///         Some hints are platform specific. These may be set on any platform but they will only affect their
-        ///         specific platform. Other platforms will ignore them. Setting these hints requires no platform specific
-        ///         headers or functions.
-        ///     </para>
+        /// Windows the hint string using the specified hint
         /// </summary>
-        /// <param name="hint">The window hit to set.</param>
-        /// <param name="value">The new value of the window hint.</param>
+        /// <param name="hint">The hint</param>
+        /// <param name="value">The value</param>
         [DllImport(Library, EntryPoint = "glfwWindowHintString", CallingConvention = CallingConvention.Cdecl)]
         public static extern void WindowHintString(Hint hint, byte[] value);
 
@@ -1596,13 +1591,13 @@ namespace Alis.Extension.Graphic.Glfw
         private static extern IntPtr GetProcAddress(byte[] procName);
 
         /// <summary>
-        ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
+        ///     Sets hints for the next call to The hints, once set, retain their values
         ///     until changed by a call to <see cref="WindowHint(Hint, int)" /> or <see cref="DefaultWindowHints" />, or until the
         ///     library is
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to <see cref="CreateWindow" />.
+        ///         this will instead be reported by the next call to 
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>
@@ -1784,7 +1779,7 @@ namespace Alis.Extension.Graphic.Glfw
         ///     Gets the address of the specified OpenGL or OpenGL ES core or extension function, if it is
         ///     supported by the current context.
         ///     This function does not apply to Vulkan. If you are rendering with Vulkan, use
-        ///     <see cref="Vulkan.GetInstanceProcAddress" /> instead.
+        ///      instead.
         /// </summary>
         /// <param name="procName">Name of the function.</param>
         /// <returns>The address of the function, or <see cref="IntPtr.Zero" /> if an error occurred.</returns>
@@ -1869,13 +1864,13 @@ namespace Alis.Extension.Graphic.Glfw
         }
 
         /// <summary>
-        ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
+        ///     Sets hints for the next call to  The hints, once set, retain their values
         ///     until changed by a call to <see cref="WindowHint(Hint, int)" /> or <see cref="DefaultWindowHints" />, or until the
         ///     library is
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to <see cref="CreateWindow" />.
+        ///         this will instead be reported by the next call to 
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>
@@ -1886,13 +1881,13 @@ namespace Alis.Extension.Graphic.Glfw
         }
 
         /// <summary>
-        ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
+        ///     Sets hints for the next call to  The hints, once set, retain their values
         ///     until changed by a call to <see cref="WindowHint(Hint, int)" /> or <see cref="DefaultWindowHints" />, or until the
         ///     library is
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to <see cref="CreateWindow" />.
+        ///         this will instead be reported by the next call to 
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>
@@ -1903,13 +1898,13 @@ namespace Alis.Extension.Graphic.Glfw
         }
 
         /// <summary>
-        ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
+        ///     Sets hints for the next call to  The hints, once set, retain their values
         ///     until changed by a call to <see cref="WindowHint(Hint, int)" /> or <see cref="DefaultWindowHints" />, or until the
         ///     library is
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to <see cref="CreateWindow" />.
+        ///         this will instead be reported by the next call to 
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>
@@ -1920,13 +1915,13 @@ namespace Alis.Extension.Graphic.Glfw
         }
 
         /// <summary>
-        ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
+        ///     Sets hints for the next call to  The hints, once set, retain their values
         ///     until changed by a call to <see cref="WindowHint(Hint, int)" /> or <see cref="DefaultWindowHints" />, or until the
         ///     library is
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to <see cref="CreateWindow" />.
+        ///         this will instead be reported by the next call to 
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>
@@ -1937,13 +1932,13 @@ namespace Alis.Extension.Graphic.Glfw
         }
 
         /// <summary>
-        ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
+        ///     Sets hints for the next call to  The hints, once set, retain their values
         ///     until changed by a call to <see cref="WindowHint(Hint, int)" /> or <see cref="DefaultWindowHints" />, or until the
         ///     library is
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to <see cref="CreateWindow" />.
+        ///         this will instead be reported by the next call to 
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>
@@ -1954,13 +1949,13 @@ namespace Alis.Extension.Graphic.Glfw
         }
 
         /// <summary>
-        ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
+        ///     Sets hints for the next call to  The hints, once set, retain their values
         ///     until changed by a call to <see cref="WindowHint(Hint, int)" /> or <see cref="DefaultWindowHints" />, or until the
         ///     library is
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to <see cref="CreateWindow" />.
+        ///         this will instead be reported by the next call to 
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>
@@ -1971,13 +1966,13 @@ namespace Alis.Extension.Graphic.Glfw
         }
 
         /// <summary>
-        ///     Sets hints for the next call to <see cref="CreateWindow" />. The hints, once set, retain their values
+        ///     Sets hints for the next call to  The hints, once set, retain their values
         ///     until changed by a call to <see cref="WindowHint(Hint, int)" /> or <see cref="DefaultWindowHints" />, or until the
         ///     library is
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to <see cref="CreateWindow" />.
+        ///         this will instead be reported by the next call to 
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>

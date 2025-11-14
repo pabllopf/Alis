@@ -45,20 +45,13 @@ namespace Alis.Core.Ecs.Components.Render
     /// <summary>
     ///     The sprite
     /// </summary>
-    public record struct Sprite(Context context, string NameFile, int Depth) : ISprite
+    public record struct Sprite(Context Context, string NameFile, int Depth) : ISprite
     {
         /// <summary>
         ///     The image handle
         /// </summary>
-
         private GCHandle imageHandle;
-
-        /// <summary>
-        ///     The vertices handle
-        /// </summary>
-
-        // removed per-instance vertices/indices handles - we use shared buffers now
-
+        
         /// <summary>
         ///     Gets or sets the value of the depth
         /// </summary>
@@ -88,19 +81,49 @@ namespace Alis.Core.Ecs.Components.Render
         /// </summary>
         // shader and quad buffers are now shared to avoid recompiling/allocating per sprite
         private static uint SharedShaderProgram;
+        /// <summary>
+        /// The shared vao
+        /// </summary>
         private static uint SharedVao;
+        /// <summary>
+        /// The shared vbo
+        /// </summary>
         private static uint SharedVbo;
+        /// <summary>
+        /// The shared ebo
+        /// </summary>
         private static uint SharedEbo;
+        /// <summary>
+        /// The shared initialized
+        /// </summary>
         private static bool SharedInitialized = false;
 
         // cached uniform locations
+        /// <summary>
+        /// The offset location
+        /// </summary>
         private static int OffsetLocation = -1;
+        /// <summary>
+        /// The scale location
+        /// </summary>
         private static int ScaleLocation = -1;
+        /// <summary>
+        /// The rotation location
+        /// </summary>
         private static int RotationLocation = -1;
+        /// <summary>
+        /// The flip location
+        /// </summary>
         private static int FlipLocation = -1;
+        /// <summary>
+        /// The texture location
+        /// </summary>
         private static int TextureLocation = -1;
 
         // track last bound texture to avoid redundant binds
+        /// <summary>
+        /// The last bound texture
+        /// </summary>
         private static uint LastBoundTexture = 0;
 
         /// <summary>
@@ -408,6 +431,17 @@ namespace Alis.Core.Ecs.Components.Render
         }
         
        
+        /// <summary>
+        /// Ises the sprite visible using the specified sprite world position
+        /// </summary>
+        /// <param name="spriteWorldPosition">The sprite world position</param>
+        /// <param name="spriteSizePixels">The sprite size pixels</param>
+        /// <param name="spriteScale">The sprite scale</param>
+        /// <param name="rotationDegrees">The rotation degrees</param>
+        /// <param name="cameraPosition">The camera position</param>
+        /// <param name="cameraResolution">The camera resolution</param>
+        /// <param name="pixelsPerMeter">The pixels per meter</param>
+        /// <returns>The bool</returns>
         private bool IsSpriteVisible(Vector2F spriteWorldPosition, Vector2F spriteSizePixels, Vector2F spriteScale, float rotationDegrees, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
             // posición del sprite relativa a la cámara en píxeles (centro de cámara)
@@ -443,7 +477,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// <summary>
         /// Gets or sets the value of the context
         /// </summary>
-        public Context Context { get; set; } = context;
+        public Context Context { get; set; } = Context;
         
         /// <summary>
         /// Ons the exit using the specified self

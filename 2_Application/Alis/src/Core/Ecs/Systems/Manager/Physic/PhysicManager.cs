@@ -49,6 +49,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// </summary>
         private float timeStepPhysics;
 
+        /// <summary>
+        /// The iterations
+        /// </summary>
         private SolverIterations iterations;
 
         /// <summary>
