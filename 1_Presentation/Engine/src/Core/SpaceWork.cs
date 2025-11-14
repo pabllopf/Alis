@@ -30,12 +30,12 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Text.Json;
 using Alis.App.Engine.Demos;
 using Alis.App.Engine.Entity;
 using Alis.App.Engine.Menus;
 using Alis.App.Engine.Windows;
 using Alis.App.Engine.Windows.Settings;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Extension.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.Ui;
 
@@ -156,7 +156,9 @@ namespace Alis.App.Engine.Core
             TopMenuMac = new TopMenuMac(this);
             BottomMenu = new BottomMenu(this);
 
-            Project = JsonSerializer.Deserialize<Project>(File.ReadAllText(Path.Combine(Path.GetTempPath(), "projectConfig.json")));
+            string projectPath = File.ReadAllText(Path.Combine(Path.GetTempPath(), "projectConfig.json"));
+            Project projectToLoad = JsonNativeAot.Deserialize<Project>(projectPath);
+            Project = projectToLoad;
         }
 
         /// <summary>

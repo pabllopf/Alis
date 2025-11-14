@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <OutputType>Exe</OutputType>
+        <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">$(NETCoreSdkRuntimeIdentifier)</RuntimeIdentifier>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
         <LangVersion>13</LangVersion>
         <Nullable>disable</Nullable>
@@ -18,6 +19,11 @@
         <NoWarn>$(NoWarn);NU1902;</NoWarn> <!-- Error NU1902 : Warning As Error: Package has moderate severity vulnerabilities -->
         <NoWarn>$(NoWarn);CS0162;</NoWarn>
         <NoWarn>$(NoWarn);ALIS001;ALIS009;ALIS010;ALIS007;ALIS003;</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <DefineConstants Condition="'$(RuntimeIdentifier)' != ''">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>
+        <DefineConstants Condition="'$(RuntimeIdentifier)' == ''" >$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
     </PropertyGroup>
 
 
@@ -40,9 +46,7 @@
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
     
-    <ItemGroup>
-        <PackageReference Include="MonoMac.NetStandard" Version="0.0.4"/>
-    </ItemGroup>
+   
 
     <ItemGroup>
         <ProjectReference

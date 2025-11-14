@@ -37,7 +37,7 @@ using Alis.App.Engine.Core;
 using Alis.Core.Aspect.Logging;
 
 using Alis.Extension.Graphic.Ui;
-using MonoMac.AppKit;
+
 
 namespace Alis.App.Engine.Menus
 {
@@ -192,7 +192,7 @@ namespace Alis.App.Engine.Menus
         private static void AboutAlis()
         {
             string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            if (OperatingSystem.IsMacOS())
+            /*if (OperatingSystem.IsMacOS())
             {
                 NSAlert alert = new NSAlert
                 {
@@ -201,7 +201,7 @@ namespace Alis.App.Engine.Menus
                     InformativeText = $"Version v{version} \nby Pablo Perdomo Falcón"
                 };
                 alert.RunModal();
-            }
+            }*/
 
             if (OperatingSystem.IsWindows() || OperatingSystem.IsLinux())
             {

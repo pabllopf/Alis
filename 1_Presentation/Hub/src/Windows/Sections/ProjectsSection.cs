@@ -34,7 +34,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text.Json;
+
 using System.Threading.Tasks;
 using Alis.App.Engine.Fonts;
 using Alis.App.Hub.Core;
@@ -112,7 +112,7 @@ namespace Alis.App.Hub.Windows.Sections
         {
             Logger.Info($"Opening project: {project.Name}");
 
-            string projectConfig = JsonSerializer.Serialize(project);
+            string projectConfig = JsonNativeAot.Serialize<Project>(project);
             string configFilePath = Path.Combine(Path.GetTempPath(), "projectConfig.json");
             File.WriteAllText(configFilePath, projectConfig);
 

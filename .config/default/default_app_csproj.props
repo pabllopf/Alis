@@ -37,9 +37,7 @@
             CopyToPublishDirectory="Always"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="MonoMac.NetStandard" Version="0.0.4"/>
-    </ItemGroup>
+   
 
     <ItemGroup>
         <ProjectReference

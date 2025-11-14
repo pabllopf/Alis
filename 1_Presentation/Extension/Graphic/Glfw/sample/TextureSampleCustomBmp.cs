@@ -30,7 +30,7 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data.Resource;
+
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Extension.Graphic.Glfw.Enums;
@@ -198,7 +198,8 @@ namespace Alis.Extension.Graphic.Glfw.Sample
             Gl.GlDeleteShader(vertexShader);
             Gl.GlDeleteShader(fragmentShader);
 
-            string imagePath = AssetManager.Find("tile000.bmp");
+            // TODO: fix path issue
+            string imagePath = "tile000.bmp";
             if (!File.Exists(imagePath))
             {
                 throw new FileNotFoundException("Texture file not found", imagePath);

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Core.Aspect.Data.Resource;
 
 namespace Alis.App.Hub.Entity
 {
@@ -57,7 +56,7 @@ namespace Alis.App.Hub.Entity
             for (int i = 0; i < 10; i++)
             {
                 // Seleccionar una imagen aleatoria
-                string imagePath = AssetManager.Find(imageOptions[1]);
+                string imagePath = "";
 
                 // Crear un nuevo GalleryItem con datos aleatorios
                 GalleryItem item = new GalleryItem(

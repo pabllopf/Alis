@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Data.Resource;
+
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Audio.Sample
@@ -54,7 +54,8 @@ namespace Alis.Core.Audio.Sample
                     switch (command)
                     {
                         case "play":
-                            _ = player.Play(AssetManager.Find("sample.wav"));
+                            // TODO: fix pahth issue
+                            _ = player.Play("sample.wav");
                             break;
                         case "stop":
                             _ = player.Stop();

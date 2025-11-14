@@ -27,7 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Text.Json.Serialization;
+using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.App.Hub.Entity
@@ -35,7 +36,8 @@ namespace Alis.App.Hub.Entity
     /// <summary>
     ///     The project class
     /// </summary>
-    public class Project
+    [Serializable , StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public partial struct Project
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Project" /> class
@@ -45,7 +47,6 @@ namespace Alis.App.Hub.Entity
         /// <param name="cloudStatus">The cloud status</param>
         /// <param name="modifiedDate">The modified date</param>
         /// <param name="editorVersion">The editor version</param>
-        [JsonConstructor]
         public Project(string name, string path, string cloudStatus, string modifiedDate, string editorVersion)
         {
             Name = name;
@@ -58,43 +59,43 @@ namespace Alis.App.Hub.Entity
         /// <summary>
         ///     Gets the value of the name
         /// </summary>
-        [JsonPropertyName("_name_")]
-        public string Name { get; } = "Not Set";
+        [JsonNativePropertyName("_name_")]
+        public string Name { get; set; } = "Not Set";
 
         /// <summary>
         ///     Gets the value of the path
         /// </summary>
-        [JsonPropertyName("_path_")]
-        public string Path { get; } = "Not Set";
+        [JsonNativePropertyName("_path_")]
+        public string Path { get; set; } = "Not Set";
 
         /// <summary>
         ///     Gets the value of the cloud status
         /// </summary>
-        [JsonPropertyName("_cloudStatus_")]
-        public string CloudStatus { get; } = "Not Synced";
+        [JsonNativePropertyName("_cloudStatus_")]
+        public string CloudStatus { get; set; } = "Not Synced";
 
         /// <summary>
         ///     Gets the value of the modified date
         /// </summary>
-        [JsonPropertyName("_modifiedDate_")]
-        public string ModifiedDate { get; } = "Never";
+        [JsonNativePropertyName("_modifiedDate_")]
+        public string ModifiedDate { get; set; } = "Never";
 
         /// <summary>
         ///     Gets the value of the editor version
         /// </summary>
-        [JsonPropertyName("_editorVersion_")]
-        public string EditorVersion { get; } = "2021.1.0";
+        [JsonNativePropertyName("_editorVersion_")]
+        public string EditorVersion { get; set; } = "2021.1.0";
 
         /// <summary>
         ///     Gets or sets the value of the version
         /// </summary>
-        [JsonPropertyName("_version_")]
+        [JsonNativePropertyName("_version_")]
         public string Version { get; set; } = "1.0.0";
 
         /// <summary>
         ///     Gets or sets the value of the last modified
         /// </summary>
-        [JsonPropertyName("_lastModified_")]
+        [JsonNativePropertyName("_lastModified_")]
         public string LastModified { get; set; } = "Never";
     }
 }

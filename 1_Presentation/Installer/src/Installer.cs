@@ -38,7 +38,6 @@ using Alis.App.Engine.Fonts;
 using Alis.App.Installer.Core;
 using Alis.App.Installer.Shaders;
 
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
@@ -430,7 +429,9 @@ namespace Alis.App.Installer
             _vertexArrayObject = Gl.GenVertexArray();
 
             // Set icon app:
-            string iconPath = AssetManager.Find("app.bmp");
+            
+            // TODO: change icon
+            string iconPath = "";
             if (!string.IsNullOrEmpty(iconPath) && File.Exists(iconPath))
             {
                 IntPtr icon = Sdl.LoadBmp(iconPath);

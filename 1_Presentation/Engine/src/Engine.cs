@@ -35,12 +35,10 @@ using System.Text;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.App.Engine.Shaders;
-
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
-
+using Alis.Core.Aspect.Memory;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Alis.Core.Graphic.OpenGL.Enums;
@@ -170,7 +168,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The windows
         /// </summary>
-        private SpaceWork spaceWork = new SpaceWork();
+        private SpaceWork SpaceWork = new SpaceWork();
 
         /// <summary>
         ///     Disposes this instance
@@ -204,9 +202,9 @@ namespace Alis.App.Engine
 
             enginePath = AppDomain.CurrentDomain.BaseDirectory;
 
-            Environment.CurrentDirectory = spaceWork.Project.Path;
-            spaceWork = new SpaceWork();
-            spaceWork.Initialize();
+            Environment.CurrentDirectory = SpaceWork.Project.Path;
+            SpaceWork = new SpaceWork();
+            SpaceWork.Initialize();
             Environment.CurrentDirectory = enginePath;
 
             Sdl.SetHint(Hint.HintRenderDriver, "opengl");
@@ -241,26 +239,26 @@ namespace Alis.App.Engine
                 flags |= WindowSettings.WindowAllowHighDpi;
             }
 
-            spaceWork.Window = Sdl.CreateWindow(NameEngine,
+            SpaceWork.Window = Sdl.CreateWindow(NameEngine,
                 (int) WindowPos.WindowPosCentered,
                 (int) WindowPos.WindowPosCentered,
                 widthWindow, heightWindow, flags);
-            _glContext = CreateGlContext(spaceWork.Window);
+            _glContext = CreateGlContext(SpaceWork.Window);
 
             // compile the shader program
             _shader = new GlShaderProgram(VertexShader.ShaderCode, FragmentShader.ShaderCode);
 
-            spaceWork.ContextGui = ImGui.CreateContext();
+            SpaceWork.ContextGui = ImGui.CreateContext();
 
-            spaceWork.Io = ImGui.GetIo();
-            spaceWork.Io.WantSaveIniSettings = false;
+            SpaceWork.Io = ImGui.GetIo();
+            SpaceWork.Io.WantSaveIniSettings = false;
 
-            spaceWork.Io.DisplaySize = new Vector2F(widthWindow, heightWindow);
+            SpaceWork.Io.DisplaySize = new Vector2F(widthWindow, heightWindow);
 
             Logger.Info($@"IMGUI VERSION {ImGui.GetVersion()}");
 
             // active plot renders
-            spaceWork.Io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
+            SpaceWork.Io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
                                          ImGuiBackendFlags.PlatformHasViewports |
                                          ImGuiBackendFlags.HasGamepad |
                                          ImGuiBackendFlags.HasMouseHoveredViewport |
@@ -268,28 +266,108 @@ namespace Alis.App.Engine
 
 
             // Enable Keyboard Controls
-            spaceWork.Io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
+            SpaceWork.Io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
                                         ImGuiConfigFlags.NavEnableGamepad;
 
             // CONFIG DOCKSPACE 
-            spaceWork.Io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
+            SpaceWork.Io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
                                         ImGuiConfigFlags.ViewportsEnable;
 
             ImNodes.CreateContext();
             ImPlot.CreateContext();
-            ImGuizMo.SetImGuiContext(spaceWork.ContextGui);
-            ImGui.SetCurrentContext(spaceWork.ContextGui);
+            ImGuizMo.SetImGuiContext(SpaceWork.ContextGui);
+            ImGui.SetCurrentContext(SpaceWork.ContextGui);
 
             // REBUILD ATLAS
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
-            //fonts.AddFontDefault();
+             //fonts.AddFontDefault();
 
-            float fontSize = 14;
-            float fontSizeIcon = 13.5f;
+            int fontSize = 14;
+            int fontSizeIcon = 13;
 
-            string fontFileSolid = AssetManager.Find("Engine_JetBrainsMono-Bold.ttf");
-            spaceWork.FontLoaded16Solid = fonts.AddFontFromFileTtf(fontFileSolid, fontSize);
+            MemoryStream fontFileSolid = AssetRegistry.GetResourceMemoryStreamByName("Engine_JetBrainsMono-Bold.ttf");
+            IntPtr fontData = Marshal.AllocHGlobal((int) fontFileSolid.Length);
+            byte[] fontDataBytes = new byte[fontFileSolid.Length];
+            fontFileSolid.ReadExactly(fontDataBytes, 0, (int) fontFileSolid.Length);
+            Marshal.Copy(fontDataBytes, 0, fontData, (int) fontFileSolid.Length);
+            SpaceWork.FontLoaded16Solid = fonts.AddFontFromMemoryTtf(fontData, fontSize, fontSize);
+            
+            try
+            {
+                ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
+                iconsConfig.MergeMode = true;
+                iconsConfig.SnapH = true;
+                iconsConfig.GlyphMinAdvanceX = 18;
+
+                ushort[] iconRanges = new ushort[3];
+                iconRanges[0] = FontAwesome5.IconMin;
+                iconRanges[1] = FontAwesome5.IconMax;
+                iconRanges[2] = 0;
+
+                // Allocate GCHandle to pin IconRanges in memory
+                GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
+
+                IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
+                
+                
+                MemoryStream fontAwesome = AssetRegistry.GetResourceMemoryStreamByName(FontAwesome5.NameSolid);
+                IntPtr fontAwesomeData = Marshal.AllocHGlobal((int) fontAwesome.Length);
+                byte[] fontAwesomeDataBytes = new byte[fontAwesome.Length];
+                fontAwesome.ReadExactly(fontAwesomeDataBytes, 0, (int) fontAwesome.Length);
+                Marshal.Copy(fontAwesomeDataBytes, 0, fontAwesomeData, (int) fontAwesome.Length);
+                fonts.AddFontFromMemoryTtf(fontAwesomeData, fontSizeIcon, fontSizeIcon, iconsConfig, rangePtr);
+            }
+            catch (Exception e)
+            {
+                Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
+                return;
+            }
+            
+            MemoryStream fontFileSolid12 = AssetRegistry.GetResourceMemoryStreamByName("Engine_JetBrainsMono-Bold.ttf");
+            IntPtr fontData12 = Marshal.AllocHGlobal((int) fontFileSolid12.Length);
+            byte[] fontDataBytes12 = new byte[fontFileSolid12.Length];
+            fontFileSolid12.ReadExactly(fontDataBytes12, 0, (int) fontFileSolid12.Length);
+            Marshal.Copy(fontDataBytes12, 0, fontData12, (int) fontFileSolid12.Length);
+            SpaceWork.FontLoaded10Solid = fonts.AddFontFromMemoryTtf(fontData12, 12, 12);
+            
+            try
+            {
+                ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
+                iconsConfig.MergeMode = true;
+                iconsConfig.SnapH = true;
+                iconsConfig.GlyphMinAdvanceX = 18;
+
+                ushort[] iconRanges = new ushort[3];
+                iconRanges[0] = FontAwesome5.IconMin;
+                iconRanges[1] = FontAwesome5.IconMax;
+                iconRanges[2] = 0;
+
+                // Allocate GCHandle to pin IconRanges in memory
+                GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
+
+                IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
+                
+                MemoryStream fontAwesome12 = AssetRegistry.GetResourceMemoryStreamByName(FontAwesome5.NameSolid);
+                IntPtr fontAwesomeData12 = Marshal.AllocHGlobal((int) fontAwesome12.Length);
+                byte[] fontAwesomeDataBytes12 = new byte[fontAwesome12.Length];
+                fontAwesome12.ReadExactly(fontAwesomeDataBytes12, 0, (int) fontAwesome12.Length);
+                Marshal.Copy(fontAwesomeDataBytes12, 0, fontAwesomeData12, (int) fontAwesome12.Length);
+                fonts.AddFontFromMemoryTtf(fontAwesomeData12, 12, 12, iconsConfig, rangePtr);
+            }
+            catch (Exception e)
+            {
+                Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
+                return;
+            }
+            
+            MemoryStream fontFileSolid40 = AssetRegistry.GetResourceMemoryStreamByName("Engine_JetBrainsMono-Bold.ttf");
+            IntPtr fontData40 = Marshal.AllocHGlobal((int) fontFileSolid40.Length);
+            byte[] fontDataBytes40 = new byte[fontFileSolid40.Length];
+            fontFileSolid40.ReadExactly(fontDataBytes40, 0, (int) fontFileSolid40.Length);
+            Marshal.Copy(fontDataBytes40, 0, fontData40, (int) fontFileSolid40.Length);
+            SpaceWork.FontLoaded45Bold = fonts.AddFontFromMemoryTtf(fontData40, 40, 40);
+            
             try
             {
                 ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
@@ -307,9 +385,12 @@ namespace Alis.App.Engine
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
 
-                // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
-                string fontAwesome = AssetManager.Find(FontAwesome5.NameSolid);
-                fonts.AddFontFromFileTtf(fontAwesome, fontSizeIcon, iconsConfig, rangePtr);
+                MemoryStream fontAwesome40 = AssetRegistry.GetResourceMemoryStreamByName(FontAwesome5.NameSolid);
+                IntPtr fontAwesomeData40 = Marshal.AllocHGlobal((int) fontAwesome40.Length);
+                byte[] fontAwesomeDataBytes40 = new byte[fontAwesome40.Length];
+                fontAwesome40.ReadExactly(fontAwesomeDataBytes40, 0, (int) fontAwesome40.Length);
+                Marshal.Copy(fontAwesomeDataBytes40, 0, fontAwesomeData40, (int) fontAwesome40.Length);
+                fonts.AddFontFromMemoryTtf(fontAwesomeData40, 40, 40, iconsConfig, rangePtr);
             }
             catch (Exception e)
             {
@@ -317,8 +398,12 @@ namespace Alis.App.Engine
                 return;
             }
 
-            string fontFileSolid10 = AssetManager.Find("Engine_JetBrainsMono-Bold.ttf");
-            spaceWork.FontLoaded10Solid = fonts.AddFontFromFileTtf(fontFileSolid10, 12);
+            MemoryStream fontFileSolid28 = AssetRegistry.GetResourceMemoryStreamByName("Engine_JetBrainsMono-Bold.ttf");
+            IntPtr fontData28 = Marshal.AllocHGlobal((int) fontFileSolid28.Length);
+            byte[] fontDataBytes28 = new byte[fontFileSolid28.Length];
+            fontFileSolid28.ReadExactly(fontDataBytes28, 0, (int) fontFileSolid28.Length);
+            Marshal.Copy(fontDataBytes28, 0, fontData28, (int) fontFileSolid28.Length);
+            SpaceWork.FontLoaded30Bold = fonts.AddFontFromMemoryTtf(fontData28, 28, 28);
             try
             {
                 ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
@@ -336,74 +421,26 @@ namespace Alis.App.Engine
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
 
-                // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
-                string fontAwesome = AssetManager.Find(FontAwesome5.NameSolid);
-                fonts.AddFontFromFileTtf(fontAwesome, 12, iconsConfig, rangePtr);
+                MemoryStream fontAwesome28 = AssetRegistry.GetResourceMemoryStreamByName(FontAwesome5.NameSolid);
+                IntPtr fontAwesomeData28 = Marshal.AllocHGlobal((int) fontAwesome28.Length);
+                byte[] fontAwesomeDataBytes28 = new byte[fontAwesome28.Length];
+                fontAwesome28.ReadExactly(fontAwesomeDataBytes28, 0, (int) fontAwesome28.Length);
+                Marshal.Copy(fontAwesomeDataBytes28, 0, fontAwesomeData28, (int) fontAwesome28.Length);
+                fonts.AddFontFromMemoryTtf(fontAwesomeData28, 28, 28, iconsConfig, rangePtr);
             }
             catch (Exception e)
             {
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
                 return;
             }
-
-            string fontFileSolid45 = AssetManager.Find("Engine_JetBrainsMono-Bold.ttf");
-            spaceWork.FontLoaded45Bold = fonts.AddFontFromFileTtf(fontFileSolid45, 40);
-            try
-            {
-                ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
-                iconsConfig.MergeMode = true;
-                iconsConfig.SnapH = true;
-                iconsConfig.GlyphMinAdvanceX = 18;
-
-                ushort[] iconRanges = new ushort[3];
-                iconRanges[0] = FontAwesome5.IconMin;
-                iconRanges[1] = FontAwesome5.IconMax;
-                iconRanges[2] = 0;
-
-                // Allocate GCHandle to pin IconRanges in memory
-                GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
-
-                IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
-
-                string fontAwesome = AssetManager.Find(FontAwesome5.NameSolid);
-                fonts.AddFontFromFileTtf(fontAwesome, 40, iconsConfig, rangePtr);
-            }
-            catch (Exception e)
-            {
-                Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
-                return;
-            }
-
-            string fontFileSolid30 = AssetManager.Find("Engine_JetBrainsMono-Bold.ttf");
-            spaceWork.FontLoaded30Bold = fonts.AddFontFromFileTtf(fontFileSolid30, 28);
-            try
-            {
-                ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
-                iconsConfig.MergeMode = true;
-                iconsConfig.SnapH = true;
-                iconsConfig.GlyphMinAdvanceX = 18;
-
-                ushort[] iconRanges = new ushort[3];
-                iconRanges[0] = FontAwesome5.IconMin;
-                iconRanges[1] = FontAwesome5.IconMax;
-                iconRanges[2] = 0;
-
-                // Allocate GCHandle to pin IconRanges in memory
-                GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
-
-                IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
-
-                string fontAwesome = AssetManager.Find(FontAwesome5.NameSolid);
-                fonts.AddFontFromFileTtf(fontAwesome, 28, iconsConfig, rangePtr);
-            }
-            catch (Exception e)
-            {
-                Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
-                return;
-            }
-
-            string fontAwesomeLight = AssetManager.Find("Engine_JetBrainsMonoNL-Regular.ttf");
-            spaceWork.FontLoaded16Light = fonts.AddFontFromFileTtf(fontAwesomeLight, fontSize);
+            
+            MemoryStream fontFileSolidLight = AssetRegistry.GetResourceMemoryStreamByName("Engine_JetBrainsMono-Bold.ttf");
+            IntPtr fontDataLight = Marshal.AllocHGlobal((int) fontFileSolidLight.Length);
+            byte[] fontDataBytesLight = new byte[fontFileSolidLight.Length];
+            fontFileSolidLight.ReadExactly(fontDataBytesLight, 0, (int) fontFileSolidLight.Length);
+            Marshal.Copy(fontDataBytesLight, 0, fontDataLight, (int) fontFileSolidLight.Length);
+            SpaceWork.FontLoaded16Light = fonts.AddFontFromMemoryTtf(fontDataLight, fontSize, fontSize);
+            
             try
             {
                 ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
@@ -421,8 +458,13 @@ namespace Alis.App.Engine
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
 
-                // Assuming 'io' is a valid ImGuiIO instance and 'dir' and 'dirIcon' are defined paths
-                fonts.AddFontFromFileTtf(fontAwesomeLight, fontSizeIcon, iconsConfig, rangePtr);
+
+                MemoryStream fontAwesome = AssetRegistry.GetResourceMemoryStreamByName(FontAwesome5.NameLight);
+                IntPtr fontAwesomeData = Marshal.AllocHGlobal((int) fontAwesome.Length);
+                byte[] fontAwesomeDataBytes = new byte[fontAwesome.Length];
+                fontAwesome.ReadExactly(fontAwesomeDataBytes, 0, (int) fontAwesome.Length);
+                Marshal.Copy(fontAwesomeDataBytes, 0, fontAwesomeData, (int) fontAwesome.Length);
+                fonts.AddFontFromMemoryTtf(fontAwesomeData, fontSizeIcon, fontSizeIcon, iconsConfig, rangePtr);
             }
             catch (Exception e)
             {
@@ -436,10 +478,10 @@ namespace Alis.App.Engine
             fonts.ClearTexData();
 
             // CONFIG DOCKSPACE
-            spaceWork.Viewport = ImGui.GetMainViewport();
-            ImGui.SetNextWindowPos(spaceWork.Viewport.WorkPos);
-            ImGui.SetNextWindowSize(spaceWork.Viewport.WorkSize);
-            ImGui.SetNextWindowViewport(spaceWork.Viewport.Id);
+            SpaceWork.Viewport = ImGui.GetMainViewport();
+            ImGui.SetNextWindowPos(SpaceWork.Viewport.WorkPos);
+            ImGui.SetNextWindowSize(SpaceWork.Viewport.WorkSize);
+            ImGui.SetNextWindowViewport(SpaceWork.Viewport.Id);
             //ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
             //ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
             dockspaceflags |= ImGuiWindowFlags.MenuBar;
@@ -447,34 +489,34 @@ namespace Alis.App.Engine
             dockspaceflags |= ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
 
             // config spaceWork.Style
-            spaceWork.Style = ImGui.GetStyle();
+            SpaceWork.Style = ImGui.GetStyle();
 
             SetStyle();
 
             // config input manager 
 
-            spaceWork.Io.KeyMap[(int) ImGuiKey.Tab] = (int) SdlScancode.SdlScancodeTab;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.LeftArrow] = (int) SdlScancode.SdlScancodeLeft;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.RightArrow] = (int) SdlScancode.SdlScancodeRight;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.UpArrow] = (int) SdlScancode.SdlScancodeUp;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.DownArrow] = (int) SdlScancode.SdlScancodeDown;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.PageUp] = (int) SdlScancode.SdlScancodePageup;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.PageDown] = (int) SdlScancode.SdlScancodePagedown;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.Home] = (int) SdlScancode.SdlScancodeHome;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.End] = (int) SdlScancode.SdlScancodeEnd;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.Insert] = (int) SdlScancode.SdlScancodeInsert;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.Delete] = (int) SdlScancode.SdlScancodeDelete;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.Backspace] = (int) SdlScancode.SdlScancodeBackspace;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.Space] = (int) SdlScancode.SdlScancodeSpace;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.Enter] = (int) SdlScancode.SdlScancodeReturn;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.Escape] = (int) SdlScancode.SdlScancodeEscape;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.KeypadEnter] = (int) SdlScancode.SdlScancodeReturn2;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.A] = (int) SdlScancode.SdlScancodeA;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.C] = (int) SdlScancode.SdlScancodeC;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.V] = (int) SdlScancode.SdlScancodeV;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.X] = (int) SdlScancode.SdlScancodeX;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.Y] = (int) SdlScancode.SdlScancodeY;
-            spaceWork.Io.KeyMap[(int) ImGuiKey.Z] = (int) SdlScancode.SdlScancodeZ;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.Tab] = (int) SdlScancode.SdlScancodeTab;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.LeftArrow] = (int) SdlScancode.SdlScancodeLeft;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.RightArrow] = (int) SdlScancode.SdlScancodeRight;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.UpArrow] = (int) SdlScancode.SdlScancodeUp;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.DownArrow] = (int) SdlScancode.SdlScancodeDown;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.PageUp] = (int) SdlScancode.SdlScancodePageup;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.PageDown] = (int) SdlScancode.SdlScancodePagedown;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.Home] = (int) SdlScancode.SdlScancodeHome;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.End] = (int) SdlScancode.SdlScancodeEnd;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.Insert] = (int) SdlScancode.SdlScancodeInsert;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.Delete] = (int) SdlScancode.SdlScancodeDelete;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.Backspace] = (int) SdlScancode.SdlScancodeBackspace;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.Space] = (int) SdlScancode.SdlScancodeSpace;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.Enter] = (int) SdlScancode.SdlScancodeReturn;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.Escape] = (int) SdlScancode.SdlScancodeEscape;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.KeypadEnter] = (int) SdlScancode.SdlScancodeReturn2;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.A] = (int) SdlScancode.SdlScancodeA;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.C] = (int) SdlScancode.SdlScancodeC;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.V] = (int) SdlScancode.SdlScancodeV;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.X] = (int) SdlScancode.SdlScancodeX;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.Y] = (int) SdlScancode.SdlScancodeY;
+            SpaceWork.Io.KeyMap[(int) ImGuiKey.Z] = (int) SdlScancode.SdlScancodeZ;
 
             _vboHandle = Gl.GenBuffer();
             _elementsHandle = Gl.GenBuffer();
@@ -482,22 +524,27 @@ namespace Alis.App.Engine
 
 
             // Set icon app:
-            string iconPath = AssetManager.Find("Engine_app.bmp");
+            
+            // TODO: CHANGE THIS TO USE A PNG LOADER
+
+            string iconPath = "";
             if (!string.IsNullOrEmpty(iconPath) && File.Exists(iconPath))
             {
                 IntPtr icon = Sdl.LoadBmp(iconPath);
-                Sdl.SetWindowIcon(spaceWork.Window, icon);
+                Sdl.SetWindowIcon(SpaceWork.Window, icon);
             }
 
-            spaceWork.Start();
+            SpaceWork.Start();
 
-            ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
+            // TODO: FIX THIS TO LOAD THE CONFIG FROM THE USER FOLDER
+            
+            //ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
 
-            while (!spaceWork.Quit)
+            while (!SpaceWork.Quit)
             {
                 while (Sdl.PollEvent(out Event e) != 0)
                 {
-                    spaceWork.Event = e;
+                    SpaceWork.Event = e;
                     ProcessEvent(e);
                     switch (e.type)
                     {
@@ -505,7 +552,7 @@ namespace Alis.App.Engine
                         {
                             if (e.window.windowEvent == WindowEventId.SdlWindowEventClose)
                             {
-                                spaceWork.Quit = true;
+                                SpaceWork.Quit = true;
                             }
 
                             break;
@@ -516,7 +563,7 @@ namespace Alis.App.Engine
                             switch (e.key.KeySym.sym)
                             {
                                 case KeyCodes.Escape:
-                                    spaceWork.Quit = true;
+                                    SpaceWork.Quit = true;
                                     break;
                             }
 
@@ -529,24 +576,24 @@ namespace Alis.App.Engine
                 ImGui.NewFrame();
                 ImGuizMo.BeginFrame();
 
-                Environment.CurrentDirectory = spaceWork.Project.Path;
+                Environment.CurrentDirectory = SpaceWork.Project.Path;
 
                 // Setup display size (every frame to accommodate for window resizing)
-                Vector2F windowSize = Sdl.GetWindowSize(spaceWork.Window);
-                Sdl.GetDrawableSize(spaceWork.Window, out int displayW, out int displayH);
-                spaceWork.Io.DisplaySize = new Vector2F(windowSize.X, windowSize.Y);
+                Vector2F windowSize = Sdl.GetWindowSize(SpaceWork.Window);
+                Sdl.GetDrawableSize(SpaceWork.Window, out int displayW, out int displayH);
+                SpaceWork.Io.DisplaySize = new Vector2F(windowSize.X, windowSize.Y);
                 if ((windowSize.X > 0) && (windowSize.Y > 0))
                 {
-                    spaceWork.Io.DisplayFramebufferScale = new Vector2F(displayW / windowSize.X, displayH / windowSize.Y);
+                    SpaceWork.Io.DisplayFramebufferScale = new Vector2F(displayW / windowSize.X, displayH / windowSize.Y);
                 }
 
                 // Setup time step (we don't use SDL_GetTicks() because it is using millisecond resolution)
                 ulong frequency = Sdl.GetPerformanceFrequency();
                 ulong currentTime = Sdl.GetPerformanceCounter();
-                spaceWork.Io.DeltaTime = _time > 0 ? (float) ((double) (currentTime - _time) / frequency) : 1.0f / 60.0f;
-                if (spaceWork.Io.DeltaTime <= 0)
+                SpaceWork.Io.DeltaTime = _time > 0 ? (float) ((double) (currentTime - _time) / frequency) : 1.0f / 60.0f;
+                if (SpaceWork.Io.DeltaTime <= 0)
                 {
-                    spaceWork.Io.DeltaTime = 0.016f;
+                    SpaceWork.Io.DeltaTime = 0.016f;
                 }
 
                 //Logger.Warning($"displayW: {displayW} displayH: {displayH} windowSize.X: {windowSize.X} windowSize.Y: {windowSize.Y}");
@@ -559,10 +606,10 @@ namespace Alis.App.Engine
                 RenderProject();
 
 
-                Sdl.MakeCurrent(spaceWork.Window, _glContext);
+                Sdl.MakeCurrent(SpaceWork.Window, _glContext);
                 ImGui.Render();
 
-                Gl.GlViewport(0, 0, (int) spaceWork.Io.DisplaySize.X, (int) spaceWork.Io.DisplaySize.Y);
+                Gl.GlViewport(0, 0, (int) SpaceWork.Io.DisplaySize.X, (int) SpaceWork.Io.DisplaySize.Y);
                 Gl.GlClear(ClearBufferMask.ColorBufferBit);
 
                 RenderDrawData();
@@ -577,7 +624,7 @@ namespace Alis.App.Engine
 
 
                 Gl.GlDisable(EnableCap.ScissorTest);
-                Sdl.SwapWindow(spaceWork.Window);
+                Sdl.SwapWindow(SpaceWork.Window);
             }
 
             if (_shader != null)
@@ -591,7 +638,7 @@ namespace Alis.App.Engine
             }
 
             Sdl.DeleteContext(_glContext);
-            Sdl.DestroyWindow(spaceWork.Window);
+            Sdl.DestroyWindow(SpaceWork.Window);
             Sdl.Quit();
         }
 
@@ -856,26 +903,26 @@ namespace Alis.App.Engine
         public void RenderProject()
         {
             // Configurar la ventana principal (DockSpace)
-            ImGui.SetNextWindowPos(spaceWork.Viewport.WorkPos);
-            ImGui.SetNextWindowSize(spaceWork.Viewport.Size);
+            ImGui.SetNextWindowPos(SpaceWork.Viewport.WorkPos);
+            ImGui.SetNextWindowSize(SpaceWork.Viewport.Size);
             ImGui.Begin("DockSpace Demo", dockspaceflags);
 
 
-            spaceWork.DockSpaceMenu.Update();
+            SpaceWork.DockSpaceMenu.Update();
 
-            Vector2F dockSize = spaceWork.Viewport.Size - new Vector2F(5, 85);
+            Vector2F dockSize = SpaceWork.Viewport.Size - new Vector2F(5, 85);
 
             // Calcular el tamaño del DockSpace restante
-            if (spaceWork.IsMacOs)
+            if (SpaceWork.IsMacOs)
             {
-                dockSize = spaceWork.Viewport.Size - new Vector2F(5, 60);
+                dockSize = SpaceWork.Viewport.Size - new Vector2F(5, 60);
             }
 
             uint dockSpaceId = ImGui.GetId("MyDockSpace");
             ImGui.DockSpace(dockSpaceId, dockSize);
 
             // Renderizar el contenido principal del espacio de trabajo
-            spaceWork.Update();
+            SpaceWork.Update();
 
             ImGui.End();
         }
@@ -1249,7 +1296,7 @@ namespace Alis.App.Engine
             // Set OS mouse position if requested (rarely used, only when ImGuiConfigFlags_NavEnableSetMousePos is enabled by user)
             if (imGuiIoPtr.WantSetMousePos)
             {
-                Sdl.WarpMouseInWindow(spaceWork.Window, (int) imGuiIoPtr.MousePos.X, (int) imGuiIoPtr.MousePos.Y);
+                Sdl.WarpMouseInWindow(SpaceWork.Window, (int) imGuiIoPtr.MousePos.X, (int) imGuiIoPtr.MousePos.Y);
             }
             else
             {
@@ -1269,7 +1316,7 @@ namespace Alis.App.Engine
             imGuiIoPtr.MouseDown = rangeAccessor;
 
             IntPtr focusedWindow = Sdl.GetKeyboardFocus();
-            if (spaceWork.Window == focusedWindow)
+            if (SpaceWork.Window == focusedWindow)
             {
                 // SDL_GetMouseState() gives mouse position seemingly based on the last window entered/focused(?)
                 // The creation of a new windows at runtime and SDL_CaptureMouse both seems to severely mess up with that, so we retrieve that position globally.

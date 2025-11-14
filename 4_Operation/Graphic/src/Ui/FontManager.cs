@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Definition;
 
 namespace Alis.Core.Graphic.Ui
@@ -40,7 +39,7 @@ namespace Alis.Core.Graphic.Ui
         /// <summary>
         /// Gets the value of the default font
         /// </summary>
-        public static Font DefaultFont { get; } = new Font("mono.bmp", 1, 1, AssetManager.Find("MONO_V5.bmp"));
+        public static Font DefaultFont { get; } = new Font("mono.bmp", 1, 1, "");
         
         /// <summary>
         /// Renders the text using the specified text
