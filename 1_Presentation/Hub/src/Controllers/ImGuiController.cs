@@ -425,6 +425,7 @@ namespace Alis.App.Hub.Controllers
 
             //fonts.AddFontDefault();
 
+            /*
             int fontSize = 14;
             int fontSizeIcon = 13;
 
@@ -612,7 +613,7 @@ namespace Alis.App.Hub.Controllers
             {
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameLight} {e.Message}");
                 return;
-            }
+            }*/
 
             fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int width, out int height, out int _);
             SpaceWork.FontTextureId = SpaceWork.OpenGlController.LoadTexture(pixelData, width, height);
