@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs.Systems.Scope;
+using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.Systems.Manager.Physic
@@ -47,6 +48,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         ///     The time step physics
         /// </summary>
         private float timeStepPhysics;
+
+        private SolverIterations iterations;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicManager" /> class
@@ -134,6 +137,11 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
             }
             
             
+            iterations = new SolverIterations();
+            iterations.PositionIterations = SettingEnv.PositionIterations;
+            iterations.VelocityIterations = SettingEnv.VelocityIterations;
+            iterations.ToiPositionIterations = SettingEnv.ToiPositionIterations;
+            iterations.ToiVelocityIterations = SettingEnv.ToiVelocityIterations;
         }
 
         /// <summary>
@@ -141,7 +149,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         /// </summary>
         public override void OnPhysicUpdate()
         {
-            WorldPhysic.Step(timeStepPhysics);
+            WorldPhysic.Step(timeStepPhysics, ref iterations);
         }
 
         /// <summary>
