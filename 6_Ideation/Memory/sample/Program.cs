@@ -57,23 +57,19 @@ namespace Alis.Core.Aspect.Memory.Sample
         
             try
             {
-                using (Stream streamPack = AssetRegistry.GetAssetStreamByBaseName("assets.pack"))
+                using (Stream streamPack = AssetRegistry.GetResourceMemoryStreamByName("app.bmp"))
                 {
                     if (streamPack == null)
-                        throw new FileNotFoundException("Resource file 'assets.pack' not found in embedded resources.");
-
-                    using (MemoryStream memPack = new MemoryStream())
                     {
-                        streamPack.CopyTo(memPack);
-                        memPack.Position = 0;
+                        throw new InvalidOperationException("Recurso 'app.bmp' no encontrado en el registro de recursos.");
+                    }
 
-                        using (ZipArchive zip = new ZipArchive(memPack, ZipArchiveMode.Read))
-                        {
-                            foreach (var entry in zip.Entries)
-                            {
-                                Console.WriteLine($"{zip.Entries.IndexOf(entry)}) '{entry.FullName}', Size: {entry.Length} bytes, Size(Kb) : {entry.Length / 1024} Kb");
-                            }
-                        }
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        streamPack.CopyTo(memoryStream);
+                        byte[] assetData = memoryStream.ToArray();
+
+                        Console.WriteLine($"✅ Recurso 'app.bmp' cargado correctamente. Tamaño: {assetData.Length} bytes.");
                     }
                 }
             }
