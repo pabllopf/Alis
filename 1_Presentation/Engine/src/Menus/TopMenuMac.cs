@@ -30,7 +30,7 @@
 using System.Diagnostics;
 using Alis.App.Engine.Core;
 using Alis.Core.Aspect.Logging;
-using MonoMac.AppKit;
+
 
 namespace Alis.App.Engine.Menus
 {
@@ -60,7 +60,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         public void Initialize()
         {
-            ConfigureMenu();
+            //ConfigureMenu();
         }
 
         /// <summary>
@@ -84,6 +84,7 @@ namespace Alis.App.Engine.Menus
         {
         }
 
+        /*
         /// <summary>
         ///     Configures the menu
         /// </summary>
@@ -286,6 +287,6 @@ namespace Alis.App.Engine.Menus
 
             menuItem.Submenu = submenu;
             mainMenu.AddItem(menuItem);
-        }
+        }*/
     }
 }

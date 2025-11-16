@@ -29,9 +29,7 @@
 
 using System.Runtime.InteropServices;
 using System.Threading;
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Audio;
 using Alis.Core.Ecs.Systems.Scope;
 
@@ -87,7 +85,7 @@ namespace Alis.Core.Ecs.Components.Audio
         /// <summary>
         ///     Gets or sets the value of the full path audio file
         /// </summary>
-        private string FullPathAudioFile { get; set; } = AssetManager.Find(nameFile);
+        private string FullPathAudioFile { get; set; } = "";
 
         /// <summary>
         ///     Plays this instance
@@ -96,7 +94,7 @@ namespace Alis.Core.Ecs.Components.Audio
         {
             if (string.IsNullOrEmpty(FullPathAudioFile) && !string.IsNullOrEmpty(NameFile))
             {
-                FullPathAudioFile = AssetManager.Find(NameFile);
+                FullPathAudioFile = "";
             }
 
             if (!IsLooping)

@@ -31,7 +31,6 @@ using System;
 using System.IO;
 
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
@@ -352,7 +351,7 @@ namespace Alis.Core.Ecs.Components.Render
         {
             if (!string.IsNullOrEmpty(NameFile) && (Path == string.Empty))
             {
-                Path = AssetManager.Find(NameFile);
+                Path = "";
                 // Initialize shared shader+buffers once
                 InitializeSharedResources();
                 LoadTexture(Path);

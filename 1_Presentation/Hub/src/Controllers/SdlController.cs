@@ -30,7 +30,6 @@
 using System;
 using System.IO;
 using Alis.App.Hub.Core;
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL;
@@ -123,7 +122,7 @@ namespace Alis.App.Hub.Controllers
         /// </summary>
         public override void OnStart()
         {
-            string iconPath = AssetManager.Find("Hub_app.bmp");
+            string iconPath = "";
             if (!string.IsNullOrEmpty(iconPath) && File.Exists(iconPath))
             {
                 IntPtr icon = Sdl.LoadBmp(iconPath);

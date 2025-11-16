@@ -31,7 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
@@ -414,7 +413,7 @@ namespace Alis.Core.Graphic.Ui
         {
             if (!string.IsNullOrEmpty(NameFile) && (Path == string.Empty))
             {
-                Path = AssetManager.Find(NameFile);
+                Path = "";
                 InitializeShaders();
                 LoadTexture(Path);
                 SetupBuffers();

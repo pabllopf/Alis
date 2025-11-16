@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Data.Resource;
+
 using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Sample.Asteroid

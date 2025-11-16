@@ -1,8 +1,5 @@
 using System.Collections.Generic;
 using System.IO;
-using Alis.Core.Aspect.Data;
-using Alis.Core.Aspect.Data.Resource;
-using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Ecs.Systems.Scope;
@@ -161,15 +158,7 @@ namespace Alis.Core.Ecs.Components.Render
         
             if (sprite.NameFile != textureName)
             {
-                if (File.Exists(AssetManager.Find(textureName)))
-                {
-                    sprite.LoadTexture(AssetManager.Find(textureName));
-                }
-                else
-                {
-                    sprite.LoadTexture(textureName);
-                }
-            
+                sprite.LoadTexture(textureName);
             }
         }
 
