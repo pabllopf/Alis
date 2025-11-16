@@ -38,6 +38,6 @@ namespace Alis.App.Hub
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        public static void Main(string[] args) => new HubEngine().Run();
+        public static void Main() => new HubEngine().Run();
     }
 }
