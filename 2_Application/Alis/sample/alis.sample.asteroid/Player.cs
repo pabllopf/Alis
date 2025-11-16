@@ -63,8 +63,17 @@ namespace Alis.Sample.Asteroid
             gameObject = self;
         }
 
+        /// <summary>
+        /// The time counter
+        /// </summary>
         private float timeCounter = 3;
+        /// <summary>
+        /// The reset time
+        /// </summary>
         private float resetTime = 3;
+        /// <summary>
+        /// The counter entities
+        /// </summary>
         private int counterEntities = 3;
         
         /// <summary>
@@ -170,6 +179,9 @@ namespace Alis.Sample.Asteroid
             }
         }
 
+        /// <summary>
+        /// Creates the bullet
+        /// </summary>
         public void CreateBullet()
         {
             Transform transform = gameObject.Get<Transform>();
