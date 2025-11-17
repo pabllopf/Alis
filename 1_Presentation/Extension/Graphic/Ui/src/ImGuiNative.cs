@@ -1101,7 +1101,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the get io
         /// </summary>
         /// <returns>The im gui io</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetIO")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetIO")]
         public static extern IntPtr igGetIO();
 
         /// <summary>
@@ -5253,5 +5253,23 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImVec4_ImVec4_Float")]
         public static extern Vector4F ImVec4_ImVec4_Float(float x, float y, float z, float w);
+
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DockBuilderRemoveNode")]
+        public static extern void igDockBuilderRemoveNode(uint dockspaceId);
+
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DockBuilderAddNode")]
+        public static extern void igDockBuilderAddNode(uint dockspaceId, ImGuiDockNodeFlags none);
+
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DockBuilderSetNodeSize")]
+        public static extern void igDockBuilderSetNodeSize(uint dockspaceId, Vector2F viewportSize);
+
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DockBuilderSplitNode")]
+        public static extern uint igDockBuilderSplitNode(uint dockMainId, ImGuiDir left, float p2, IntPtr zero, out uint dockIdRight);
+
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DockBuilderDockWindow")]
+        public static extern void igDockBuilderDockWindow(byte[] getBytes, uint dockIdLeft);
+
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DockBuilderFinish")]
+        public static extern void igDockBuilderFinish(uint dockspaceId);
     }
 }

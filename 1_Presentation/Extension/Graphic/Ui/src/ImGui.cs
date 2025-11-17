@@ -625,5 +625,35 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im font config ptr</returns>
         public static ImFontConfigPtr ImFontConfig() => ImGuiNative.ImFontConfig_ImFontConfig();
+
+        public static void DockBuilderRemoveNode(uint dockspaceId)
+        {
+            ImGuiNative.igDockBuilderRemoveNode(dockspaceId);
+        }
+
+        public static void DockBuilderAddNode(uint dockspaceId, ImGuiDockNodeFlags none)
+        {
+            ImGuiNative.igDockBuilderAddNode(dockspaceId, none);
+        }
+
+        public static void DockBuilderSetNodeSize(uint dockspaceId, Vector2F viewportSize)
+        {
+            ImGuiNative.igDockBuilderSetNodeSize(dockspaceId, viewportSize);
+        }
+
+        public static uint DockBuilderSplitNode(uint dockMainId, ImGuiDir left, float p2, object p3,  out uint dockIdRight)
+        {
+            return ImGuiNative.igDockBuilderSplitNode(dockMainId, left, p2, IntPtr.Zero, out dockIdRight);
+        }
+
+        public static void DockBuilderDockWindow(string scene, uint dockIdLeft)
+        {
+            ImGuiNative.igDockBuilderDockWindow(Encoding.UTF8.GetBytes(scene), dockIdLeft);
+        }
+
+        public static void DockBuilderFinish(uint dockspaceId)
+        {
+            ImGuiNative.igDockBuilderFinish(dockspaceId);
+        }
     }
 }

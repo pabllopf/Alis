@@ -897,6 +897,8 @@ namespace Alis.App.Engine
             style.DisabledAlpha = 0.6f;
         }
 
+        static bool firstTime = true;
+        
         /// <summary>
         ///     Renders the project
         /// </summary>
@@ -920,6 +922,14 @@ namespace Alis.App.Engine
 
             uint dockSpaceId = ImGui.GetId("MyDockSpace");
             ImGui.DockSpace(dockSpaceId, dockSize);
+            
+            
+           
+            if (firstTime)
+            {
+                BuildDefaultLayout();
+                firstTime = false;
+            }
 
             // Renderizar el contenido principal del espacio de trabajo
             SpaceWork.Update();
@@ -1330,6 +1340,38 @@ namespace Alis.App.Engine
             // SDL_CaptureMouse() let the OS know e.g. that our imgui drag outside the SDL window boundaries shouldn't e.g. trigger the OS window resize cursor.
             bool anyMouseButtonDown = ImGui.IsAnyMouseDown();
             Sdl.CaptureMouse(anyMouseButtonDown);
+        }
+        
+        void BuildDefaultLayout()
+        {
+            ImGuiViewportPtr viewport = ImGui.GetMainViewport();
+            uint dockspace_id = ImGui.DockSpaceOverViewport(viewport);
+            
+            // Limpia lo que hubiera antes
+            ImGui.DockBuilderRemoveNode(dockspace_id);
+            ImGui.DockBuilderAddNode(dockspace_id, ImGuiDockNodeFlags.None);
+            ImGui.DockBuilderSetNodeSize(dockspace_id, viewport.Size);
+
+            // Divide nodos
+            uint dock_main_id = dockspace_id;
+            uint dock_id_left;
+            uint dock_id_right;
+            uint dock_id_right_top;
+            uint dock_id_right_bottom;
+
+            // Split principal: izquierda 20%, derecha 80%
+            dock_id_left = ImGui.DockBuilderSplitNode(dock_main_id, ImGuiDir.Left, 0.20f, null, out dock_id_right);
+
+            // Split en la zona derecha: arriba 60%, abajo 40%
+            dock_id_right_top = ImGui.DockBuilderSplitNode(dock_id_right, ImGuiDir.Up, 0.60f, null, out dock_id_right_bottom);
+
+            // Asigna ventanas
+            ImGui.DockBuilderDockWindow("Scene", dock_id_left);
+            ImGui.DockBuilderDockWindow("Inspector", dock_id_right_top);
+            ImGui.DockBuilderDockWindow("Console", dock_id_right_bottom);
+
+            // Finalizar
+            ImGui.DockBuilderFinish(dockspace_id);
         }
 
         /// <summary>
