@@ -50,7 +50,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The terminal
         /// </summary>
-        private static readonly string NameWindow = $"{FontAwesome5.Terminal} Console";
+        public static readonly string NameWindow = $"{FontAwesome5.Terminal} Console";
 
         /// <summary>
         ///     The command ptr

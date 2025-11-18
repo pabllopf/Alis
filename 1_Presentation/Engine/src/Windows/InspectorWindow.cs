@@ -47,7 +47,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The info circle
         /// </summary>
-        private static readonly string NameWindow = $"{FontAwesome5.InfoCircle} Inspector";
+        public static readonly string NameWindow = $"{FontAwesome5.InfoCircle} Inspector";
 
         /*
         // Define a dictionary to map component types to icons

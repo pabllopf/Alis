@@ -51,7 +51,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The folder open
         /// </summary>
-        private static readonly string WindowName = $"{FontAwesome5.FolderOpen} Assets";
+        public static readonly string WindowName = $"{FontAwesome5.FolderOpen} Assets";
 
         /// <summary>
         ///     The command ptr

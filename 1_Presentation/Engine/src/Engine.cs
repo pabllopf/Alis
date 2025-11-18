@@ -35,6 +35,7 @@ using System.Text;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.App.Engine.Shaders;
+using Alis.App.Engine.Windows;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
@@ -273,10 +274,10 @@ namespace Alis.App.Engine
             SpaceWork.Io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
                                         ImGuiConfigFlags.ViewportsEnable;
 
-            ImNodes.CreateContext();
-            ImPlot.CreateContext();
-            ImGuizMo.SetImGuiContext(SpaceWork.ContextGui);
-            ImGui.SetCurrentContext(SpaceWork.ContextGui);
+            //ImNodes.CreateContext();
+            //ImPlot.CreateContext();
+            //ImGuizMo.SetImGuiContext(SpaceWork.ContextGui);
+            //ImGui.SetCurrentContext(SpaceWork.ContextGui);
 
             // REBUILD ATLAS
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
@@ -574,7 +575,7 @@ namespace Alis.App.Engine
 
                 //Gl.GlClearColor(0.05f, 0.05f, 0.05f, 1.00f);
                 ImGui.NewFrame();
-                ImGuizMo.BeginFrame();
+                //ImGuizMo.BeginFrame();
 
                 Environment.CurrentDirectory = SpaceWork.Project.Path;
 
@@ -1366,12 +1367,14 @@ namespace Alis.App.Engine
             dock_id_right_top = ImGui.DockBuilderSplitNode(dock_id_right, ImGuiDir.Up, 0.60f, null, out dock_id_right_bottom);
 
             // Asigna ventanas
-            ImGui.DockBuilderDockWindow("Scene", dock_id_left);
-            ImGui.DockBuilderDockWindow("Inspector", dock_id_right_top);
-            ImGui.DockBuilderDockWindow("Console", dock_id_right_bottom);
+            ImGui.DockBuilderDockWindow(AssetsWindow.WindowName, dock_id_left);
+            ImGui.DockBuilderDockWindow(InspectorWindow.NameWindow, dock_id_right_top);
+            ImGui.DockBuilderDockWindow(ConsoleWindow.NameWindow, dock_id_right_bottom);
 
             // Finalizar
             ImGui.DockBuilderFinish(dockspace_id);
+            
+            Console.WriteLine($"Imgui version {ImGui.GetVersion()}");
         }
 
         /// <summary>
