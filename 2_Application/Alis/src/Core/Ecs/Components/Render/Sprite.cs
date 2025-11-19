@@ -29,7 +29,6 @@
 
 using System;
 using System.IO;
-
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
@@ -48,10 +47,68 @@ namespace Alis.Core.Ecs.Components.Render
     public record struct Sprite(Context Context, string NameFile, int Depth) : ISprite
     {
         /// <summary>
+        ///     Gets or sets the value of the shader program
+        /// </summary>
+        // shader and quad buffers are now shared to avoid recompiling/allocating per sprite
+        private static uint SharedShaderProgram;
+
+        /// <summary>
+        ///     The shared vao
+        /// </summary>
+        private static uint SharedVao;
+
+        /// <summary>
+        ///     The shared vbo
+        /// </summary>
+        private static uint SharedVbo;
+
+        /// <summary>
+        ///     The shared ebo
+        /// </summary>
+        private static uint SharedEbo;
+
+        /// <summary>
+        ///     The shared initialized
+        /// </summary>
+        private static bool SharedInitialized = false;
+
+        // cached uniform locations
+        /// <summary>
+        ///     The offset location
+        /// </summary>
+        private static int OffsetLocation = -1;
+
+        /// <summary>
+        ///     The scale location
+        /// </summary>
+        private static int ScaleLocation = -1;
+
+        /// <summary>
+        ///     The rotation location
+        /// </summary>
+        private static int RotationLocation = -1;
+
+        /// <summary>
+        ///     The flip location
+        /// </summary>
+        private static int FlipLocation = -1;
+
+        /// <summary>
+        ///     The texture location
+        /// </summary>
+        private static int TextureLocation = -1;
+
+        // track last bound texture to avoid redundant binds
+        /// <summary>
+        ///     The last bound texture
+        /// </summary>
+        private static uint LastBoundTexture = 0;
+
+        /// <summary>
         ///     The image handle
         /// </summary>
         private GCHandle imageHandle;
-        
+
         /// <summary>
         ///     Gets or sets the value of the depth
         /// </summary>
@@ -77,103 +134,6 @@ namespace Alis.Core.Ecs.Components.Render
         private Vector2F Size { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the shader program
-        /// </summary>
-        // shader and quad buffers are now shared to avoid recompiling/allocating per sprite
-        private static uint SharedShaderProgram;
-        /// <summary>
-        /// The shared vao
-        /// </summary>
-        private static uint SharedVao;
-        /// <summary>
-        /// The shared vbo
-        /// </summary>
-        private static uint SharedVbo;
-        /// <summary>
-        /// The shared ebo
-        /// </summary>
-        private static uint SharedEbo;
-        /// <summary>
-        /// The shared initialized
-        /// </summary>
-        private static bool SharedInitialized = false;
-
-        // cached uniform locations
-        /// <summary>
-        /// The offset location
-        /// </summary>
-        private static int OffsetLocation = -1;
-        /// <summary>
-        /// The scale location
-        /// </summary>
-        private static int ScaleLocation = -1;
-        /// <summary>
-        /// The rotation location
-        /// </summary>
-        private static int RotationLocation = -1;
-        /// <summary>
-        /// The flip location
-        /// </summary>
-        private static int FlipLocation = -1;
-        /// <summary>
-        /// The texture location
-        /// </summary>
-        private static int TextureLocation = -1;
-
-        // track last bound texture to avoid redundant binds
-        /// <summary>
-        /// The last bound texture
-        /// </summary>
-        private static uint LastBoundTexture = 0;
-
-        /// <summary>
-        /// Called once per frame before rendering sprites to reset cached state and enable blending.
-        /// </summary>
-        public static void BeginFrame()
-        {
-            // ensure shader and buffers initialized
-            InitializeSharedResources();
-            // reset last bound texture to force the first bind
-            LastBoundTexture = 0;
-            // enable blending once per frame
-            Gl.GlEnable(EnableCap.Blend);
-            Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-        }
-
-        /// <summary>
-        /// Called after rendering sprites for the frame to optionally restore GL state.
-        /// </summary>
-        public static void EndFrame()
-        {
-            // optionally disable blending; some renderers prefer leaving it enabled
-            Gl.GlDisable(EnableCap.Blend);
-            // unbind VAO and program for cleanliness
-            Gl.GlBindVertexArray(0);
-            Gl.GlUseProgram(0);
-        }
-
-        /// <summary>
-        /// Release shared GL resources used by Sprite (call on application shutdown)
-        /// </summary>
-        public static void ReleaseSharedResources()
-        {
-            if (!SharedInitialized)
-                return;
-
-            if (SharedVao != 0) Gl.DeleteVertexArray(SharedVao);
-            if (SharedVbo != 0) Gl.DeleteBuffer(SharedVbo);
-            if (SharedEbo != 0) Gl.DeleteBuffer(SharedEbo);
-            if (SharedShaderProgram != 0) Gl.GlDeleteProgram(SharedShaderProgram);
-
-            SharedVao = 0;
-            SharedVbo = 0;
-            SharedEbo = 0;
-            SharedShaderProgram = 0;
-            SharedInitialized = false;
-            LastBoundTexture = 0;
-        }
-        
-        /// <summary>
         ///     Gets or sets the value of the texture
         /// </summary>
         private uint Texture { get; set; }
@@ -198,7 +158,83 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void OnStart(IGameObject self)
         {
-            
+        }
+
+
+        /// <summary>
+        ///     Gets or sets the value of the context
+        /// </summary>
+        public Context Context { get; set; } = Context;
+
+        /// <summary>
+        ///     Ons the exit using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void OnExit(IGameObject self)
+        {
+            // free per-instance texture
+            try
+            {
+                if (Texture != 0)
+                {
+                    Gl.DeleteTexture(Texture);
+                    Texture = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Warning($"Error releasing sprite texture: {ex.Message}");
+            }
+
+            Path = string.Empty;
+            Logger.Info("Sprite instance resources have been released.");
+        }
+
+        /// <summary>
+        ///     Called once per frame before rendering sprites to reset cached state and enable blending.
+        /// </summary>
+        public static void BeginFrame()
+        {
+            // ensure shader and buffers initialized
+            InitializeSharedResources();
+            // reset last bound texture to force the first bind
+            LastBoundTexture = 0;
+            // enable blending once per frame
+            Gl.GlEnable(EnableCap.Blend);
+            Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+        }
+
+        /// <summary>
+        ///     Called after rendering sprites for the frame to optionally restore GL state.
+        /// </summary>
+        public static void EndFrame()
+        {
+            // optionally disable blending; some renderers prefer leaving it enabled
+            Gl.GlDisable(EnableCap.Blend);
+            // unbind VAO and program for cleanliness
+            Gl.GlBindVertexArray(0);
+            Gl.GlUseProgram(0);
+        }
+
+        /// <summary>
+        ///     Release shared GL resources used by Sprite (call on application shutdown)
+        /// </summary>
+        public static void ReleaseSharedResources()
+        {
+            if (!SharedInitialized)
+                return;
+
+            if (SharedVao != 0) Gl.DeleteVertexArray(SharedVao);
+            if (SharedVbo != 0) Gl.DeleteBuffer(SharedVbo);
+            if (SharedEbo != 0) Gl.DeleteBuffer(SharedEbo);
+            if (SharedShaderProgram != 0) Gl.GlDeleteProgram(SharedShaderProgram);
+
+            SharedVao = 0;
+            SharedVbo = 0;
+            SharedEbo = 0;
+            SharedShaderProgram = 0;
+            SharedInitialized = false;
+            LastBoundTexture = 0;
         }
 
         /// <summary>
@@ -337,14 +373,12 @@ namespace Alis.Core.Ecs.Components.Render
                     nameToLoadFile = imagePath;
                     NameFile = imagePath;
                 }
-                
+
                 // get name of resources from imagepath:
                 image = Image.LoadImageFromResources(nameToLoadFile);
-             
             }
 
-            
-            
+
             Size = new Vector2F(image.Width, image.Height);
             Texture = Gl.GenTexture();
             Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
@@ -384,7 +418,7 @@ namespace Alis.Core.Ecs.Components.Render
             Vector2F position = gameobject.Get<Transform>().Position;
             float spriteRotation = gameobject.Get<Transform>().Rotation;
             var transformScale = gameobject.Get<Transform>().Scale;
-            
+
             // Insertar en Render(...) después de obtener position y spriteRotation
             if (!IsSpriteVisible(position, Size, transformScale, spriteRotation, cameraPosition, cameraResolution, pixelsPerMeter))
                 return;
@@ -406,12 +440,12 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GlUniform2F(OffsetLocation, worldX, worldY);
 
             // compute scale uniform so that quad vertices (which are -1..1) are scaled to sprite pixel size
-            int windowWidth = (int)Context.Setting.Graphic.WindowSize.X;
-            int windowHeight = (int)Context.Setting.Graphic.WindowSize.Y;
+            int windowWidth = (int) Context.Setting.Graphic.WindowSize.X;
+            int windowHeight = (int) Context.Setting.Graphic.WindowSize.Y;
 
             // scaleX/Y convert sprite pixel size into normalized device coordinates factor used by vertex shader
-            float scaleX = (Size.X / windowWidth) * transformScale.X;
-            float scaleY = (Size.Y / windowHeight) * transformScale.Y;
+            float scaleX = Size.X / windowWidth * transformScale.X;
+            float scaleY = Size.Y / windowHeight * transformScale.Y;
 
             Gl.GlUniform2F(ScaleLocation, scaleX, scaleY);
             Gl.GlUniform1F(RotationLocation, spriteRotation);
@@ -429,10 +463,10 @@ namespace Alis.Core.Ecs.Components.Render
 
             // NOTE: blending should ideally be enabled once per frame by the renderer/system to avoid overhead.
         }
-        
-       
+
+
         /// <summary>
-        /// Ises the sprite visible using the specified sprite world position
+        ///     Ises the sprite visible using the specified sprite world position
         /// </summary>
         /// <param name="spriteWorldPosition">The sprite world position</param>
         /// <param name="spriteSizePixels">The sprite size pixels</param>
@@ -447,11 +481,11 @@ namespace Alis.Core.Ecs.Components.Render
             // posición del sprite relativa a la cámara en píxeles (centro de cámara)
             float px = (spriteWorldPosition.X - cameraPosition.X) * pixelsPerMeter;
             float py = (spriteWorldPosition.Y - cameraPosition.Y) * pixelsPerMeter;
-        
+
             // medias en píxeles
             float halfW = spriteSizePixels.X * spriteScale.X * 0.5f;
             float halfH = spriteSizePixels.Y * spriteScale.Y * 0.5f;
-        
+
             // ampliar AABB si hay rotación (aprox usando |cos| y |sin|)
             if (CustomMathF.Abs(rotationDegrees) > 0.0001f)
             {
@@ -463,44 +497,12 @@ namespace Alis.Core.Ecs.Components.Render
                 halfW = rotHalfW;
                 halfH = rotHalfH;
             }
-        
+
             float camHalfW = cameraResolution.X * 0.5f;
             float camHalfH = cameraResolution.Y * 0.5f;
-        
+
             // overlap check (AABB centrado en la cámara)
             return !(CustomMathF.Abs(px) > camHalfW + halfW || CustomMathF.Abs(py) > camHalfH + halfH);
-        }
-        
-
-
-        
-        /// <summary>
-        /// Gets or sets the value of the context
-        /// </summary>
-        public Context Context { get; set; } = Context;
-        
-        /// <summary>
-        /// Ons the exit using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void OnExit(IGameObject self)
-        {
-            // free per-instance texture
-            try
-            {
-                if (Texture != 0)
-                {
-                    Gl.DeleteTexture(Texture);
-                    Texture = 0;
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Warning($"Error releasing sprite texture: {ex.Message}");
-            }
-
-            Path = string.Empty;
-            Logger.Info("Sprite instance resources have been released.");
         }
     }
 }

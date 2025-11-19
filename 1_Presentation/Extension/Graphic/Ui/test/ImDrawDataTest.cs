@@ -193,7 +193,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             // Arrange
             ImDrawData drawData = new ImDrawData {Valid = 1, CmdListsCount = 5};
-
         }
 
         /// <summary>
@@ -208,7 +207,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Marshal.StructureToPtr(drawList, drawData.CmdListsPtr, false);
 
             // Act
-
         }
 
         /// <summary>
@@ -224,7 +222,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             Vector2F fbScale = new Vector2F(2.0f, 2.0f);
 
             // Act
-
         }
 
         /// <summary>
@@ -234,7 +231,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Clear_ThrowsDllNotFoundException()
         {
             ImDrawData drawData = new ImDrawData();
-
         }
 
         /// <summary>
@@ -244,7 +240,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void DeIndexAllBuffers_ThrowsDllNotFoundException()
         {
             ImDrawData drawData = new ImDrawData();
-
         }
 
         /// <summary>
@@ -255,7 +250,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImDrawData drawData = new ImDrawData();
             Vector2F fbScale = new Vector2F(1.0f, 1.0f);
-
         }
 
         /// <summary>

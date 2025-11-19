@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Execution;
 using Alis.Core.Ecs.Systems.Manager;
@@ -89,7 +88,6 @@ namespace Alis.Core.Ecs.Systems.Scope
         /// </summary>
         /// <param name="setting">The settings</param>
         /// <param name="sceneManager">The scene manager</param>
-        
         public Context(Setting setting, SceneManager sceneManager)
         {
             IsRunning = true;
@@ -108,7 +106,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         /// <summary>
         ///     The runtime
         /// </summary>
-        
+
         public Runtime<AManager> Runtime { get; }
 
         /// <summary>
@@ -119,49 +117,49 @@ namespace Alis.Core.Ecs.Systems.Scope
         /// <summary>
         ///     Gets the value of the audio manager
         /// </summary>
-        
+
         public AudioManager AudioManager => Runtime.Get<AudioManager>();
 
         /// <summary>
         ///     Gets the value of the graphic manager
         /// </summary>
-        
+
         public GraphicManager GraphicManager => Runtime.Get<GraphicManager>();
 
         /// <summary>
         ///     Gets the value of the input manager
         /// </summary>
-        
+
         public InputManager InputManager => Runtime.Get<InputManager>();
 
         /// <summary>
         ///     Gets the value of the network manager
         /// </summary>
-        
+
         public NetworkManager NetworkManager => Runtime.Get<NetworkManager>();
 
         /// <summary>
         ///     Gets the value of the physic manager
         /// </summary>
-        
+
         public PhysicManager PhysicManager => Runtime.Get<PhysicManager>();
 
         /// <summary>
         ///     Gets the value of the time manager
         /// </summary>
-        
+
         public TimeManager TimeManager => Runtime.Get<TimeManager>();
 
         /// <summary>
         ///     The settings
         /// </summary>
-        
+
         public Setting Setting { get; set; }
 
         /// <summary>
         ///     Gets the value of the scene manager
         /// </summary>
-        
+
         public SceneManager SceneManager => Runtime.Get<SceneManager>();
 
         /// <summary>

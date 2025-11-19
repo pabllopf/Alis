@@ -29,7 +29,6 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.Ui.Extras.GuizMo;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
@@ -45,7 +44,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         [Fact]
         public void AllowAxisFlip_ShouldNotThrow()
         {
-
         }
 
         /// <summary>
@@ -54,7 +52,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         [Fact]
         public void BeginFrame_ShouldNotThrow()
         {
-
         }
 
         /// <summary>
@@ -67,7 +64,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             float[] translation = new float[3];
             float[] rotation = new float[3];
             float[] scale = new float[3];
-
         }
 
         /// <summary>
@@ -80,7 +76,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             float projection = 0;
             float matrices = 0;
             int matrixCount = 1;
-
         }
 
         /// <summary>
@@ -93,7 +88,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             float[] projection = new float[16];
             float[] matrix = new float[16];
             float gridSize = 1.0f;
-
         }
 
         /// <summary>
@@ -102,7 +96,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         [Fact]
         public void Enable_ShouldNotThrow()
         {
-
         }
 
         /// <summary>
@@ -111,7 +104,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         [Fact]
         public void IsOver_ShouldReturnBool()
         {
-
         }
 
         /// <summary>
@@ -120,7 +112,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         [Fact]
         public void IsOver_WithOperation_ShouldReturnBool()
         {
-
         }
 
         /// <summary>
@@ -129,7 +120,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         [Fact]
         public void IsUsing_ShouldReturnBool()
         {
-
         }
 
         /// <summary>
@@ -141,7 +131,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             float[] view = new float[16];
             float[] projection = new float[16];
             float[] matrix = new float[16];
-
         }
 
         /// <summary>
@@ -154,7 +143,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             float[] rotation = new float[3];
             float[] scale = new float[3];
             float[] matrix = new float[16];
-
         }
 
         /// <summary>
@@ -163,7 +151,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         [Fact]
         public void SetDrawList_ShouldNotThrow()
         {
-
         }
 
         /// <summary>
@@ -173,7 +160,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         public void SetDrawList_WithDrawList_ShouldNotThrow()
         {
             ImDrawList drawList = new ImDrawList();
-
         }
 
         /// <summary>
@@ -182,7 +168,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         [Fact]
         public void SetGizmoSizeClipSpace_ShouldNotThrow()
         {
-
         }
 
         /// <summary>
@@ -191,7 +176,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         [Fact]
         public void SetId_ShouldNotThrow()
         {
-
         }
 
         /// <summary>
@@ -201,7 +185,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         public void SetImGuiContext_ShouldNotThrow()
         {
             IntPtr ctx = IntPtr.Zero;
-
         }
 
         /// <summary>
@@ -210,7 +193,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         [Fact]
         public void SetOrthographic_ShouldNotThrow()
         {
-
         }
 
         /// <summary>
@@ -219,7 +201,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         [Fact]
         public void SetRect_ShouldNotThrow()
         {
-
         }
 
         /// <summary>
@@ -233,7 +214,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             Vector2F position = new Vector2F(0.0f, 0.0f);
             Vector2F size = new Vector2F(1.0f, 1.0f);
             uint backgroundColor = 0;
-
         }
     }
 }

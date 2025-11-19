@@ -27,14 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Core.Ecs.Redifinition
 {
     /// <summary>
     ///     Specifies the level of memory trimming Alis internal buffers should do
     /// </summary>
-    
     public enum MemoryTrimming
     {
         /// <summary>

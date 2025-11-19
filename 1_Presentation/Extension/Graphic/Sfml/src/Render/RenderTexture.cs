@@ -69,7 +69,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="width">Width of the render-texture</param>
         /// <param name="height">Height of the render-texture</param>
         /// <param name="depthBuffer">Do you want a depth-buffer attached?</param>
-        
         public RenderTexture(uint width, uint height, bool depthBuffer) :
             base(sfRenderTexture_create(width, height, depthBuffer))
         {

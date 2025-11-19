@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:GameObject.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -12,11 +41,8 @@ namespace Alis.Core.Ecs
     ///     An GameObject reference; refers to a collection of components of unqiue types.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 2)]
-    
     public partial struct GameObject : IEquatable<GameObject>, IGameObject
     {
-
-
         /// <summary>
         ///     Creates an <see cref="GameObject" /> identical to <see cref="GameObject.Null" />
         /// </summary>
@@ -72,11 +98,6 @@ namespace Alis.Core.Ecs
         internal int EntityLow => Unsafe.As<GameObject, EntityHighLow>(ref this).EntityLow;
 
 
-
-
-
-
-
         /// <summary>
         ///     Internals the is alive using the specified scene
         /// </summary>
@@ -111,7 +132,6 @@ namespace Alis.Core.Ecs
         }
 
 
-
         /// <summary>
         ///     Tries the get core using the specified exists
         /// </summary>
@@ -133,7 +153,7 @@ namespace Alis.Core.Ecs
             }
 
             exists = true;
-            ComponentStorage<T> storage =  Unsafe.As<ComponentStorage<T>>(
+            ComponentStorage<T> storage = Unsafe.As<ComponentStorage<T>>(
                 Unsafe.Add(ref entityLocation.Archetype.Components[0], compIndex));
 
             return new Ref<T>(storage, entityLocation.Index);
@@ -176,21 +196,18 @@ namespace Alis.Core.Ecs
         /// <param name="a">The first gameObject to compare.</param>
         /// <param name="b">The second gameObject to compare.</param>
         /// <returns><see langword="true" /> if the entities refer to the same gameObject; otherwise, <see langword="false" />.</returns>
-        public static bool operator ==(GameObject a, GameObject b)
-        {
-            return a.Equals(b);
-        }
+        public static bool operator ==(GameObject a, GameObject b) => a.Equals(b);
 
         /// <summary>
         ///     Checks if two <see cref="GameObject" /> structs do not refer to the same gameObject.
         /// </summary>
         /// <param name="a">The first gameObject to compare.</param>
         /// <param name="b">The second gameObject to compare.</param>
-        /// <returns><see langword="true" /> if the entities do not refer to the same gameObject; otherwise, <see langword="false" />.</returns>
-        public static bool operator !=(GameObject a, GameObject b)
-        {
-            return !a.Equals(b);
-        }
+        /// <returns>
+        ///     <see langword="true" /> if the entities do not refer to the same gameObject; otherwise,
+        ///     <see langword="false" />.
+        /// </returns>
+        public static bool operator !=(GameObject a, GameObject b) => !a.Equals(b);
 
         /// <summary>
         ///     Determines whether the specified object is equal to the current <see cref="GameObject" />.
@@ -200,10 +217,7 @@ namespace Alis.Core.Ecs
         ///     <see langword="true" /> if the specified object is an <see cref="GameObject" /> and is equal to the current
         ///     gameObject; otherwise, <see langword="false" />.
         /// </returns>
-        public override bool Equals(object obj)
-        {
-            return obj is GameObject entity && Equals(entity);
-        }
+        public override bool Equals(object obj) => obj is GameObject entity && Equals(entity);
 
         /// <summary>
         ///     Determines whether the specified <see cref="GameObject" /> is equal to the current <see cref="GameObject" />.
@@ -213,18 +227,12 @@ namespace Alis.Core.Ecs
         ///     <see langword="true" /> if the specified gameObject is equal to the current gameObject; otherwise,
         ///     <see langword="false" />.
         /// </returns>
-        public bool Equals(GameObject other)
-        {
-            return other.PackedValue == PackedValue;
-        }
+        public bool Equals(GameObject other) => other.PackedValue == PackedValue;
 
         /// <summary>
         ///     Serves as the default hash function.
         /// </summary>
         /// <returns>A hash code for the current <see cref="GameObject" />.</returns>
-        public override int GetHashCode()
-        {
-            return PackedValue.GetHashCode();
-        }
-    } 
+        public override int GetHashCode() => PackedValue.GetHashCode();
+    }
 }

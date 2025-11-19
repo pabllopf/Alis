@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    /// The on before update interface
+    ///     The on before update interface
     /// </summary>
     public interface IOnBeforeUpdate
     {
         /// <summary>
-        /// Ons the before update using the specified self
+        ///     Ons the before update using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         void OnBeforeUpdate(IGameObject self);

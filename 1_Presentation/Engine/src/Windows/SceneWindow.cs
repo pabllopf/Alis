@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -37,8 +38,6 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
-
-
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Ui;
 
@@ -53,7 +52,7 @@ namespace Alis.App.Engine.Windows
         ///     The hashtag
         /// </summary>
         private static readonly string NameWindow = $"{FontAwesome5.Hashtag} Scene";
-        
+
         // Crear un HashSet para almacenar los botones activos
         /// <summary>
         ///     The active button

@@ -35,7 +35,7 @@ namespace Alis.Benchmark.CustomEcs.Components
     ///     The component 12
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct Component12
+    public struct Component12
     {
         /// <summary>
         ///     The value

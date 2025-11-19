@@ -29,8 +29,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Data;
-
 
 namespace Alis.Extension.Io.FileDialog
 {
@@ -60,7 +58,7 @@ namespace Alis.Extension.Io.FileDialog
             {
                 return new LinuxFilePicker();
             }
-            
+
             throw new NotSupportedException("This platform is not supported.");
         }
     }

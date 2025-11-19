@@ -84,7 +84,7 @@ namespace Alis.Core.Audio
         }
 
         /// <summary>
-        /// Plays the loop using the specified file name
+        ///     Plays the loop using the specified file name
         /// </summary>
         /// <param name="fileName">The file name</param>
         /// <param name="loop">The loop</param>

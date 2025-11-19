@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Core.Ecs.Updating
 {
     /// <summary>
@@ -38,6 +36,5 @@ namespace Alis.Core.Ecs.Updating
     ///     This is an interface so the user can implement an
     ///     <see cref="UpdateTypeAttribute" /> as also an order attribute
     /// </remarks>
-    
     internal interface IComponentUpdateOrderAttribute;
 }

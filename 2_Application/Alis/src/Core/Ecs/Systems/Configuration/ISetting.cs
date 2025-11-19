@@ -42,39 +42,38 @@ namespace Alis.Core.Ecs.Systems.Configuration
     public interface ISetting
     {
         /// <summary>
-        /// Gets or sets the value of the general
+        ///     Gets or sets the value of the general
         /// </summary>
-        public GeneralSetting General { get; set; }
+        GeneralSetting General { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the audio
         /// </summary>
-        
-        public AudioSetting Audio { get; set; }
+
+        AudioSetting Audio { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the graphic
         /// </summary>
-        
-        public GraphicSetting Graphic { get; set; }
+
+        GraphicSetting Graphic { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the input
         /// </summary>
-        
-        public InputSetting Input { get; set; }
+
+        InputSetting Input { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the network
         /// </summary>
-        
-        public NetworkSetting Network { get; set; }
+
+        NetworkSetting Network { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the physic
         /// </summary>
-        
-        public PhysicSetting Physic { get; set; }
 
+        PhysicSetting Physic { get; set; }
     }
 }

@@ -32,7 +32,6 @@ using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems.Scope;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Builder.Core.Ecs.Components.Render
 {
@@ -43,6 +42,11 @@ namespace Alis.Builder.Core.Ecs.Components.Render
     public class CameraBuilder : IBuild<Camera>
     {
         /// <summary>
+        ///     The context
+        /// </summary>
+        private readonly Context context;
+
+        /// <summary>
         ///     The vector
         /// </summary>
         private Vector2F cameraPosition = new Vector2F(0, 0);
@@ -51,23 +55,15 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         ///     The vector
         /// </summary>
         private Vector2F resolution = new Vector2F(1920, 1080);
-        
-        /// <summary>
-        /// The context
-        /// </summary>
-        private Context context;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CameraBuilder"/> class
+        ///     Initializes a new instance of the <see cref="CameraBuilder" /> class
         /// </summary>
         /// <param name="context">The context</param>
-        public CameraBuilder(Context context)
-        {
-            this.context = context;
-        }
+        public CameraBuilder(Context context) => this.context = context;
 
         /// <summary>
-        /// Gets or sets the value of the background color
+        ///     Gets or sets the value of the background color
         /// </summary>
         private Color backgroundColor { get; set; } = Color.Black;
 
@@ -102,7 +98,7 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         }
 
         /// <summary>
-        /// Backgrounds the color using the specified black
+        ///     Backgrounds the color using the specified black
         /// </summary>
         /// <param name="black">The black</param>
         /// <returns>The camera builder</returns>

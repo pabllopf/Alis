@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             NullTerminatedString nts = new NullTerminatedString(byteArray);
             Assert.Equal("Hello", nts.ToString());
         }
-        
+
         /// <summary>
         ///     Tests that to string data is null returns empty string
         /// </summary>

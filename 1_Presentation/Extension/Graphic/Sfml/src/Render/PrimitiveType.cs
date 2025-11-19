@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Extension.Graphic.Sfml.Render
 {
     /// <summary>
@@ -61,15 +59,12 @@ namespace Alis.Extension.Graphic.Sfml.Render
         Quads,
 
         /// List of connected lines, a point uses the previous point to form a line
-        
         LinesStrip = LineStrip,
 
         /// List of connected triangles, a point uses the two previous points to form a triangle
-        
         TrianglesStrip = TriangleStrip,
 
         /// List of connected triangles, a point uses the common center and the previous point to form a triangle
-        
         TrianglesFan = TriangleFan
     }
 }

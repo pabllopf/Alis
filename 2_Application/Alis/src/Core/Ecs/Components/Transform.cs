@@ -30,7 +30,6 @@
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.Components
 {
@@ -40,18 +39,20 @@ namespace Alis.Core.Ecs.Components
     public struct Transform : IOnStart, IOnExit
     {
         /// <summary>
-        /// The position origin
+        ///     The position origin
         /// </summary>
         private readonly Vector2F positionOrigin;
+
         /// <summary>
-        /// The rotation origin
+        ///     The rotation origin
         /// </summary>
         private readonly float rotationOrigin;
+
         /// <summary>
-        /// The scale origin
+        ///     The scale origin
         /// </summary>
         private readonly Vector2F scaleOrigin;
-        
+
         /// <summary>
         ///     The position
         /// </summary>
@@ -66,7 +67,7 @@ namespace Alis.Core.Ecs.Components
         ///     The scale
         /// </summary>
         public Vector2F Scale;
-        
+
         /// <summary>
         ///     Initialize using a position vector and a Complex rotation.
         /// </summary>
@@ -76,8 +77,8 @@ namespace Alis.Core.Ecs.Components
         {
             Rotation = rotation;
             Position = position;
-            Scale = Vector2F.One; 
-            
+            Scale = Vector2F.One;
+
             positionOrigin = position;
             rotationOrigin = rotation;
             scaleOrigin = Vector2F.One;
@@ -94,14 +95,14 @@ namespace Alis.Core.Ecs.Components
             Rotation = rotation;
             Position = position;
             Scale = scale;
-            
+
             positionOrigin = position;
             rotationOrigin = rotation;
             scaleOrigin = scale;
         }
-        
+
         /// <summary>
-        /// Ons the start using the specified self
+        ///     Ons the start using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnStart(IGameObject self)
@@ -109,7 +110,7 @@ namespace Alis.Core.Ecs.Components
         }
 
         /// <summary>
-        /// Ons the exit using the specified self
+        ///     Ons the exit using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnExit(IGameObject self)

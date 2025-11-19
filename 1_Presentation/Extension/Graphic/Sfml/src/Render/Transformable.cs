@@ -27,9 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using System;
-
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 
@@ -92,7 +91,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         ///     The my transform need update
         /// </summary>
         private bool myTransformNeedUpdate = true;
-        
+
         /// <summary>
         ///     Default constructor
         /// </summary>

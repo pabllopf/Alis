@@ -37,34 +37,32 @@ namespace Alis.Core.Aspect.Time
     public class Clock
     {
         /// <summary>
-        /// Gets the value of the elapsed seconds
-        /// </summary>
-        public long ElapsedSeconds => (ElapsedMilliseconds / 1000);
-
-        /// <summary>
-        /// The ticks per millisecond
+        ///     The ticks per millisecond
         /// </summary>
         private const long TicksPerMillisecond = 10000;
+
         /// <summary>
-        /// The ticks per millisecond
+        ///     The ticks per millisecond
         /// </summary>
         private const long TicksPerSecond = TicksPerMillisecond * 1000;
 
         /// <summary>
-        /// The elapsed
+        ///     The elapsed
         /// </summary>
         private TimeSpan _elapsed;
+
         /// <summary>
-        /// The start time
-        /// </summary>
-        private DateTime _startTime;
-        /// <summary>
-        /// The is running
+        ///     The is running
         /// </summary>
         private bool _isRunning;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Clock"/> class
+        ///     The start time
+        /// </summary>
+        private DateTime _startTime;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Clock" /> class
         /// </summary>
         public Clock()
         {
@@ -72,7 +70,37 @@ namespace Alis.Core.Aspect.Time
         }
 
         /// <summary>
-        /// Starts this instance
+        ///     Gets the value of the elapsed seconds
+        /// </summary>
+        public long ElapsedSeconds => ElapsedMilliseconds / 1000;
+
+        /// <summary>
+        ///     Gets the value of the is running
+        /// </summary>
+        public bool IsRunning => _isRunning;
+
+        /// <summary>
+        ///     Gets the value of the elapsed
+        /// </summary>
+        public TimeSpan Elapsed => _isRunning ? _elapsed + (DateTime.UtcNow - _startTime) : _elapsed;
+
+        /// <summary>
+        ///     Gets the value of the elapsed milliseconds
+        /// </summary>
+        public long ElapsedMilliseconds => (long) Elapsed.TotalMilliseconds;
+
+        /// <summary>
+        ///     Gets the value of the elapsed ticks
+        /// </summary>
+        public long ElapsedTicks => Elapsed.Ticks;
+
+        /// <summary>
+        ///     Gets the value of the debugger display
+        /// </summary>
+        private string DebuggerDisplay => $"{Elapsed} (IsRunning = {_isRunning})";
+
+        /// <summary>
+        ///     Starts this instance
         /// </summary>
         public void Start()
         {
@@ -85,7 +113,7 @@ namespace Alis.Core.Aspect.Time
         }
 
         /// <summary>
-        /// Starts the new
+        ///     Starts the new
         /// </summary>
         /// <returns>The </returns>
         public static Clock StartNew()
@@ -96,7 +124,7 @@ namespace Alis.Core.Aspect.Time
         }
 
         /// <summary>
-        /// Stops this instance
+        ///     Stops this instance
         /// </summary>
         public void Stop()
         {
@@ -109,7 +137,7 @@ namespace Alis.Core.Aspect.Time
         }
 
         /// <summary>
-        /// Resets this instance
+        ///     Resets this instance
         /// </summary>
         public void Reset()
         {
@@ -120,7 +148,7 @@ namespace Alis.Core.Aspect.Time
 
         // Convenience method for replacing {sw.Reset(); sw.Start();} with a single sw.Restart()
         /// <summary>
-        /// Restarts this instance
+        ///     Restarts this instance
         /// </summary>
         public void Restart()
         {
@@ -130,48 +158,11 @@ namespace Alis.Core.Aspect.Time
         }
 
         /// <summary>
-        /// Returns the <see cref="Elapsed"/> time as a string.
+        ///     Returns the <see cref="Elapsed" /> time as a string.
         /// </summary>
         /// <returns>
-        /// Elapsed time string in the same format used by <see cref="TimeSpan.ToString()"/>.
+        ///     Elapsed time string in the same format used by <see cref="TimeSpan.ToString()" />.
         /// </returns>
         public override string ToString() => Elapsed.ToString();
-
-        /// <summary>
-        /// Gets the value of the is running
-        /// </summary>
-        public bool IsRunning
-        {
-            get { return _isRunning; }
-        }
-
-        /// <summary>
-        /// Gets the value of the elapsed
-        /// </summary>
-        public TimeSpan Elapsed
-        {
-            get { return _isRunning ? _elapsed + (DateTime.UtcNow - _startTime) : _elapsed; }
-        }
-
-        /// <summary>
-        /// Gets the value of the elapsed milliseconds
-        /// </summary>
-        public long ElapsedMilliseconds
-        {
-            get { return (long)Elapsed.TotalMilliseconds; }
-        }
-
-        /// <summary>
-        /// Gets the value of the elapsed ticks
-        /// </summary>
-        public long ElapsedTicks
-        {
-            get { return Elapsed.Ticks; }
-        }
-
-        /// <summary>
-        /// Gets the value of the debugger display
-        /// </summary>
-        private string DebuggerDisplay => $"{Elapsed} (IsRunning = {_isRunning})";
     }
 }

@@ -41,8 +41,8 @@ namespace Alis.Core.Ecs.Components.Render
     /// <seealso cref="IOnUpdate" />
     /// <seealso cref="IHasBuilder{SpriteBuilder}" />
     /// <seealso cref="IBuild{Sprite}" />
-    public interface ISprite:
-        IOnStart, 
+    public interface ISprite :
+        IOnStart,
         IOnUpdate,
         IHasContext<Context>,
         IOnExit

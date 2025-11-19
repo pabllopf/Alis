@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Time.Sample
             // Create a new Clock instance
             Clock clock = new Clock();
             clock.Start();
-            
+
             int i = 0;
             while (i < 1000)
             {

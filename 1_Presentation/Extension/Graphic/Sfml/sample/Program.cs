@@ -33,7 +33,6 @@ using Alis.Extension.Graphic.Sfml.Windows;
 
 namespace Alis.Extension.Graphic.Sfml.Sample
 {
-    
     /// <summary>
     ///     The program class
     /// </summary>

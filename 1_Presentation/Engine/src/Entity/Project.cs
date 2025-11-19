@@ -36,7 +36,7 @@ namespace Alis.App.Engine.Entity
     /// <summary>
     ///     The project class
     /// </summary>
-    [Serializable , StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [Serializable, StructLayout(LayoutKind.Sequential, Pack = 1)]
     public partial struct Project
     {
         /// <summary>

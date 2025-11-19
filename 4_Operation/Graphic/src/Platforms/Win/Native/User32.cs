@@ -36,17 +36,14 @@ using System.Text;
 namespace Alis.Core.Graphic.Platforms.Win.Native
 {
     /// <summary>
-    /// 
     /// </summary>
     internal static class User32
     {
         /// <summary>
-        /// 
         /// </summary>
         private const string DllName = "user32.dll";
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="dwExStyle"></param>
         /// <param name="lpClassName"></param>
@@ -77,7 +74,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
             IntPtr lpParam);
 
         /// <summary>
-        /// SetWindowTextA (ANSI version)
+        ///     SetWindowTextA (ANSI version)
         /// </summary>
         /// <param name="hWnd"></param>
         /// <param name="lpString"></param>
@@ -86,7 +83,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern bool SetWindowTextA(IntPtr hWnd, string lpString);
 
         /// <summary>
-        /// CreateWindowExA (ANSI version)
+        ///     CreateWindowExA (ANSI version)
         /// </summary>
         [DllImport(DllName, SetLastError = true, EntryPoint = "CreateWindowExA")]
         public static extern IntPtr CreateWindowExA(
@@ -104,7 +101,6 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
             IntPtr lpParam);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="hWnd"></param>
         /// <returns></returns>
@@ -112,7 +108,6 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern bool DestroyWindow(IntPtr hWnd);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="hWnd"></param>
         /// <param name="nCmdShow"></param>
@@ -121,7 +116,6 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="hWnd"></param>
         /// <returns></returns>
@@ -129,7 +123,6 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern bool UpdateWindow(IntPtr hWnd);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="hWnd"></param>
         /// <param name="lpString"></param>
@@ -138,7 +131,6 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern bool SetWindowText(IntPtr hWnd, string lpString);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="hWnd"></param>
         /// <param name="hWndInsertAfter"></param>
@@ -152,7 +144,6 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="hWnd"></param>
         /// <param name="msg"></param>
@@ -163,7 +154,6 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern IntPtr DefWindowProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="lpWndClass"></param>
         /// <returns></returns>
@@ -171,7 +161,6 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern ushort RegisterClass(ref Wndclass lpWndClass);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="hWnd"></param>
         /// <returns></returns>
@@ -179,7 +168,6 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern IntPtr GetDC(IntPtr hWnd);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="hWnd"></param>
         /// <param name="hDc"></param>
@@ -188,7 +176,6 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern int ReleaseDC(IntPtr hWnd, IntPtr hDc);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="lpMsg"></param>
         /// <param name="hWnd"></param>
@@ -200,7 +187,6 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern bool PeekMessage(out Msg lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax, uint wRemoveMsg);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="lpMsg"></param>
         /// <returns></returns>
@@ -208,7 +194,6 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern bool TranslateMessage(ref Msg lpMsg);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="lpMsg"></param>
         /// <returns></returns>
@@ -216,7 +201,6 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern IntPtr DispatchMessage(ref Msg lpMsg);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="lpMsg"></param>
         /// <param name="hWnd"></param>
@@ -227,7 +211,6 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern int GetMessage(out Msg lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="hWnd"></param>
         /// <param name="lpString"></param>
@@ -237,7 +220,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
 
         /// <summary>
-        /// /
+        ///     /
         /// </summary>
         /// <param name="hWnd"></param>
         /// <param name="lpRect"></param>
@@ -246,7 +229,6 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         public static extern int GetWindowRect(IntPtr hWnd, out Rect lpRect);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="hWnd"></param>
         /// <returns></returns>

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sprite.cs
+//  File:Font.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -45,19 +45,26 @@ namespace Alis.Core.Graphic.Ui
     public class Font(string NameFile, int Depth, int size, string fullPath)
     {
         /// <summary>
+        ///     The size
+        /// </summary>
+        private readonly int sizeFont = size;
+
+
+        // Diccionario para las posiciones de cada carácter en el atlas
+        /// <summary>
+        ///     The character rects
+        /// </summary>
+        private Dictionary<char, RectangleI> CharacterRects = new();
+
+        /// <summary>
+        ///     The full path
+        /// </summary>
+        private string fullPathFont = fullPath;
+
+        /// <summary>
         ///     The image handle
         /// </summary>
         private GCHandle imageHandle;
-        
-        /// <summary>
-        /// The size
-        /// </summary>
-        private int sizeFont = size;
-        
-        /// <summary>
-        /// The full path
-        /// </summary>
-        private string fullPathFont = fullPath;
 
         /// <summary>
         ///     The indices handle
@@ -91,7 +98,7 @@ namespace Alis.Core.Graphic.Ui
         ///     Gets or sets the value of the size
         /// </summary>
 
-        private Vector2F Size { get; set; } 
+        private Vector2F Size { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the shader program
@@ -123,7 +130,7 @@ namespace Alis.Core.Graphic.Ui
         /// </summary>
 
         private bool Flip { get; set; }
-        
+
         /// <summary>
         ///     Initializes the shaders
         /// </summary>
@@ -273,28 +280,21 @@ namespace Alis.Core.Graphic.Ui
             Gl.EnableVertexAttribArray(1);
         }
 
-
-        // Diccionario para las posiciones de cada carácter en el atlas
-        /// <summary>
-        /// The character rects
-        /// </summary>
-        private Dictionary<char, RectangleI> CharacterRects = new();
-
         // Inicializa el diccionario de rectángulos de caracteres (asume cuadrícula ASCII)
         /// <summary>
-        /// Initializes the character rects using the specified char width
+        ///     Initializes the character rects using the specified char width
         /// </summary>
         /// <param name="charWidth">The char width</param>
         /// <param name="charHeight">The char height</param>
         private void InitializeCharacterRects(int charWidth, int charHeight)
         {
-            int atlasCols = (int)(Size.X / charWidth);
-            int atlasRows = (int)(Size.Y / charHeight);
+            int atlasCols = (int) (Size.X / charWidth);
+            int atlasRows = (int) (Size.Y / charHeight);
             for (int i = 0; i < 256; i++) // ASCII básico
             {
                 int col = i % atlasCols;
                 int row = i / atlasCols;
-                CharacterRects[(char)i] = new RectangleI
+                CharacterRects[(char) i] = new RectangleI
                 {
                     X = col * charWidth,
                     Y = row * charHeight,
@@ -306,7 +306,7 @@ namespace Alis.Core.Graphic.Ui
 
         // Inicializa el diccionario de rectángulos de caracteres usando organización personalizada
         /// <summary>
-        /// Initializes the character rects custom using the specified char width
+        ///     Initializes the character rects custom using the specified char width
         /// </summary>
         /// <param name="charWidth">The char width</param>
         /// <param name="charHeight">The char height</param>
@@ -324,31 +324,33 @@ namespace Alis.Core.Graphic.Ui
             for (int i = 0; i < lowercase.Length; i++)
             {
                 char c = lowercase[i];
-                int x = (i % charsPerRow) * (charWidth + xSpacing);
-                int y = (i / charsPerRow) * (charHeight + ySpacing);
-                CharacterRects[c] = new RectangleI { X = x, Y = y, W = charWidth, H = charHeight };
+                int x = i % charsPerRow * (charWidth + xSpacing);
+                int y = i / charsPerRow * (charHeight + ySpacing);
+                CharacterRects[c] = new RectangleI {X = x, Y = y, W = charWidth, H = charHeight};
             }
+
             // Mayúsculas
             for (int i = 0; i < uppercase.Length; i++)
             {
                 char c = uppercase[i];
-                int x = (i % charsPerRow) * (charWidth + xSpacing);
-                int y = ((i / charsPerRow) + 1) * (charHeight + ySpacing); // Siguiente fila
-                CharacterRects[c] = new RectangleI { X = x, Y = y, W = charWidth, H = charHeight };
+                int x = i % charsPerRow * (charWidth + xSpacing);
+                int y = (i / charsPerRow + 1) * (charHeight + ySpacing); // Siguiente fila
+                CharacterRects[c] = new RectangleI {X = x, Y = y, W = charWidth, H = charHeight};
             }
+
             // Números
             for (int i = 0; i < special.Length; i++)
             {
                 char c = special[i];
-                int x = (i % charsPerRow) * (charWidth + xSpacing);
-                int y = ((i / charsPerRow) + 2) * (charHeight + ySpacing); // Siguiente fila
-                CharacterRects[c] = new RectangleI { X = x, Y = y, W = charWidth, H = charHeight };
+                int x = i % charsPerRow * (charWidth + xSpacing);
+                int y = (i / charsPerRow + 2) * (charHeight + ySpacing); // Siguiente fila
+                CharacterRects[c] = new RectangleI {X = x, Y = y, W = charWidth, H = charHeight};
             }
         }
 
         // Inicializa el diccionario de rectángulos de caracteres siguiendo la lógica exacta del ejemplo proporcionado
         /// <summary>
-        /// Initializes the character rects from atlas using the specified char width
+        ///     Initializes the character rects from atlas using the specified char width
         /// </summary>
         /// <param name="charWidth">The char width</param>
         /// <param name="charHeight">The char height</param>
@@ -362,8 +364,8 @@ namespace Alis.Core.Graphic.Ui
             string lowercase = "abcdefghijklmnopqrstuvwxyz";
             string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string special = "0123456789.:;,(*!?)^#$%{&-+@";
-            
-            
+
+
             // Iterate over special characters
             for (int i = 0; i < special.Length; i++)
             {
@@ -373,7 +375,7 @@ namespace Alis.Core.Graphic.Ui
                 characterRects[c] = new RectangleI
                     {X = x, Y = y, W = charWidth, H = charHeight};
             }
-            
+
             // Iterate over uppercase characters
             for (int i = 0; i < uppercase.Length; i++)
             {
@@ -384,7 +386,7 @@ namespace Alis.Core.Graphic.Ui
                     {X = x, Y = y, W = charWidth, H = charHeight};
             }
 
-            
+
             // Iterate over lowercase characters
             for (int i = 0; i < lowercase.Length; i++)
             {
@@ -395,14 +397,12 @@ namespace Alis.Core.Graphic.Ui
                     {X = x, Y = y, W = charWidth, H = charHeight};
             }
 
-          
-           
-            
+
             CharacterRects = characterRects;
         }
 
         /// <summary>
-        /// Renders the text using the specified text
+        ///     Renders the text using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="xPos">The pos</param>
@@ -434,7 +434,7 @@ namespace Alis.Core.Graphic.Ui
             float fontSize = sizeFont; // valor lógico de la fuente (por ejemplo, 1)
             float pixelsPerUnit = 32.0f; // 1 unidad lógica equivale a 32 píxeles en pantalla
             float screenCharWidth = fontSize * pixelsPerUnit;
-            float screenCharHeight = fontSize * pixelsPerUnit * ((float)charHeight / charWidth); // mantiene proporción
+            float screenCharHeight = fontSize * pixelsPerUnit * ((float) charHeight / charWidth); // mantiene proporción
 
             Vector2F cameraPosition = new Vector2F(0, 0);
             Vector2F cameraResolution = new Vector2F(800, 600);
@@ -471,7 +471,7 @@ namespace Alis.Core.Graphic.Ui
 
                 int posXx = srcRect.X;
                 int posYy = srcRect.Y;
-                
+
                 float u0 = posXx / Size.X;
                 float v0 = posYy / Size.Y;
                 float u1 = (posXx + srcRect.W) / Size.X;
@@ -498,9 +498,9 @@ namespace Alis.Core.Graphic.Ui
                 float[] vertices =
                 {
                     1, -1, 0.0f, u1, v0,
-                    1,  1, 0.0f, u1, v1,
-                   -1,  1, 0.0f, u0, v1,
-                   -1, -1, 0.0f, u0, v0
+                    1, 1, 0.0f, u1, v1,
+                    -1, 1, 0.0f, u0, v1,
+                    -1, -1, 0.0f, u0, v0
                 };
                 Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
                 verticesHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
@@ -510,6 +510,7 @@ namespace Alis.Core.Graphic.Ui
 
                 posX += screenCharWidth + xSpacing; // avanzar según el tamaño lógico en pantalla
             }
+
             Gl.GlDisable(EnableCap.Blend);
         }
     }

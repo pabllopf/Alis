@@ -32,9 +32,6 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Ecs.Components.Render;
-using Alis.Core.Ecs.Systems;
-using Alis.Core.Ecs.Systems.Manager.Scene;
 using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Sample.Flappy.Bird
@@ -42,20 +39,15 @@ namespace Alis.Sample.Flappy.Bird
     /// <summary>
     ///     The main menu controller class
     /// </summary>
-    
     public class MainMenuController : IOnUpdate, IOnPressKey, IHasContext<Context>
     {
-
         /// <summary>
-        /// Ons the update using the specified self
+        ///     Gets or sets the value of the context
         /// </summary>
-        /// <param name="self">The self</param>
-        public void OnUpdate(IGameObject self)
-        {
-        }
+        public Context Context { get; set; }
 
         /// <summary>
-        /// Ons the press key using the specified info
+        ///     Ons the press key using the specified info
         /// </summary>
         /// <param name="info">The info</param>
         public void OnPressKey(KeyEventInfo info)
@@ -68,8 +60,11 @@ namespace Alis.Sample.Flappy.Bird
         }
 
         /// <summary>
-        /// Gets or sets the value of the context
+        ///     Ons the update using the specified self
         /// </summary>
-        public Context Context { get; set; }
+        /// <param name="self">The self</param>
+        public void OnUpdate(IGameObject self)
+        {
+        }
     }
 }

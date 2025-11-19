@@ -27,9 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-using System.Diagnostics;
 using System;
+using System.Diagnostics;
 
 namespace Alis.Core.Aspect.Logging
 {

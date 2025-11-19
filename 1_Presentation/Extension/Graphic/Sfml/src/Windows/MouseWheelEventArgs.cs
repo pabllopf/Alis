@@ -34,7 +34,6 @@ namespace Alis.Extension.Graphic.Sfml.Windows
     /// <summary>
     ///     Mouse wheel event parameters
     /// </summary>
-    
     public class MouseWheelEventArgs : EventArgs
     {
         /// <summary>Scroll amount</summary>

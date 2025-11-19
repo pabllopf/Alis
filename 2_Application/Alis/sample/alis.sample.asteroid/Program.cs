@@ -68,11 +68,11 @@ namespace Alis.Sample.Asteroid
                         .Debug(true)
                         .Gravity(0.0f, -9.8f)
                     )
-                    )
+                )
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
                         .Name("Main Scene")
-                        
+
                         // CAMERA
                         .Add<GameObject>(mainCamera => mainCamera
                             .Name("Camera")
@@ -80,9 +80,9 @@ namespace Alis.Sample.Asteroid
                             .WithComponent<Camera>(camera => camera
                                 .Resolution(1024, 640)
                                 .BackgroundColor(Color.Black)
-                                )
                             )
-                        
+                        )
+
                         // SPAWN POINT ASTEROID
                         .Add<GameObject>(spawnPointAsteroid => spawnPointAsteroid
                             .Name("Spawn Point Asteroid")
@@ -90,36 +90,32 @@ namespace Alis.Sample.Asteroid
                                 .Position(0, 0)
                                 .Scale(1, 1)
                                 .Rotation(0)
-                                )
-                            .WithComponent(new SpawnAsteroid())
                             )
-                        
+                            .WithComponent(new SpawnAsteroid())
+                        )
                         .Add<GameObject>(counterPoints => counterPoints
                             .Name("Counter")
                             .Tag("Points")
                             .WithComponent(new CounterManager())
-                            )
-                        
+                        )
                         .Add<GameObject>(counterPoints => counterPoints
                             .Name("HealthController")
                             .Tag("HealthController")
                             .WithComponent(new HealthController())
-                            )
-                        
+                        )
+
                         // SOUNDTRACK
-                        
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .Tag("Soundtrack")
                             .WithComponent<AudioSource>(audioSource => audioSource
-                                
                                 .PlayOnAwake(true)
                                 .Volume(50)
                                 .Loop(true)
                                 .File("soundtrack.wav")
-                                )
                             )
-                        
+                        )
+
                         // PLAYER
                         .Add<GameObject>(player => player
                             .Name("Player")
@@ -128,17 +124,16 @@ namespace Alis.Sample.Asteroid
                                 .Position(0, 0)
                                 .Scale(1.3f, 1.3f)
                                 .Rotation(0)
-                                )
+                            )
                             .WithComponent<Sprite>(sprite => sprite
                                 .SetTexture("player.bmp")
                                 .Depth(1)
-                                )
+                            )
                             .WithComponent<AudioSource>(audioSource => audioSource
                                 .PlayOnAwake(false)
                                 .File("fire.wav")
-                                )
+                            )
                             .WithComponent<BoxCollider>(boxCollider => boxCollider
-                                
                                 .IsActive(true)
                                 .BodyType(BodyType.Dynamic)
                                 .IsTrigger(false)
@@ -150,21 +145,18 @@ namespace Alis.Sample.Asteroid
                                 .Friction(0f)
                                 .FixedRotation(false)
                                 .IgnoreGravity(true)
-                                )
-                            .WithComponent<Player>(new Player())
                             )
-                        
+                            .WithComponent(new Player())
+                        )
                         .Add<GameObject>(sound => sound
                             .Name("SoundPlayer")
                             .Tag("SoundPlayer")
                             .WithComponent<AudioSource>(audioSource => audioSource
-                                
                                 .PlayOnAwake(false)
                                 .File("bangLarge.wav")
-                                )
                             )
-                            
-                        
+                        )
+
                         // ASTEROID
                         .Add<GameObject>(asteroid => asteroid
                             .Name("Asteroid")
@@ -173,14 +165,13 @@ namespace Alis.Sample.Asteroid
                                 .Position(6, 6)
                                 .Scale(3, 3)
                                 .Rotation(0)
-                                )
+                            )
                             .WithComponent<Sprite>(sprite => sprite
                                 .SetTexture("asteroid_0.bmp")
                                 .Depth(1)
-                                )
+                            )
                             .WithComponent(new Asteroid())
                             .WithComponent<BoxCollider>(boxCollider => boxCollider
-                                
                                 .IsActive(true)
                                 .BodyType(BodyType.Dynamic)
                                 .IsTrigger(false)
@@ -193,9 +184,9 @@ namespace Alis.Sample.Asteroid
                                 .Friction(0.5f)
                                 .FixedRotation(true)
                                 .IgnoreGravity(true)
-                                )
                             )
-                        
+                        )
+
                         // ASTEROID
                         .Add<GameObject>(asteroid => asteroid
                             .Name("Asteroid")
@@ -204,14 +195,13 @@ namespace Alis.Sample.Asteroid
                                 .Position(-6, -6)
                                 .Scale(3, 3)
                                 .Rotation(0)
-                                )
+                            )
                             .WithComponent<Sprite>(sprite => sprite
                                 .SetTexture("asteroid_0.bmp")
                                 .Depth(1)
-                                )
+                            )
                             .WithComponent(new Asteroid())
                             .WithComponent<BoxCollider>(boxCollider => boxCollider
-                                
                                 .IsActive(true)
                                 .BodyType(BodyType.Dynamic)
                                 .IsTrigger(false)
@@ -224,9 +214,9 @@ namespace Alis.Sample.Asteroid
                                 .Friction(0.5f)
                                 .FixedRotation(true)
                                 .IgnoreGravity(true)
-                                )
                             )
-                        
+                        )
+
                         // WALLS
                         .Add<GameObject>(downWall => downWall
                             .Name("downWall")
@@ -234,9 +224,8 @@ namespace Alis.Sample.Asteroid
                             .IsStatic()
                             .Transform(transform => transform
                                 .Position(0, -11)
-                                )
+                            )
                             .WithComponent<BoxCollider>(boxCollider => boxCollider
-                                
                                 .IsActive(true)
                                 .BodyType(BodyType.Static)
                                 .IsTrigger(false)
@@ -249,17 +238,16 @@ namespace Alis.Sample.Asteroid
                                 .Friction(0.1f)
                                 .FixedRotation(true)
                                 .IgnoreGravity(true)
-                                )
                             )
+                        )
                         .Add<GameObject>(upWall => upWall
                             .Name("upWall")
                             .Tag("Wall")
                             .IsStatic()
                             .Transform(transform => transform
                                 .Position(0, 11)
-                                )
+                            )
                             .WithComponent<BoxCollider>(boxCollider => boxCollider
-                                
                                 .IsActive(true)
                                 .BodyType(BodyType.Static)
                                 .IsTrigger(false)
@@ -272,17 +260,16 @@ namespace Alis.Sample.Asteroid
                                 .Friction(0.1f)
                                 .FixedRotation(true)
                                 .IgnoreGravity(true)
-                                )
                             )
+                        )
                         .Add<GameObject>(leftWall => leftWall
                             .Name("leftWall")
                             .Tag("Wall")
                             .IsStatic()
                             .Transform(transform => transform
                                 .Position(-17, 0)
-                                )
+                            )
                             .WithComponent<BoxCollider>(boxCollider => boxCollider
-                                
                                 .IsActive(true)
                                 .BodyType(BodyType.Static)
                                 .IsTrigger(false)
@@ -295,17 +282,16 @@ namespace Alis.Sample.Asteroid
                                 .Friction(0.1f)
                                 .FixedRotation(true)
                                 .IgnoreGravity(true)
-                                )
                             )
+                        )
                         .Add<GameObject>(rightWall => rightWall
                             .Name("rightWall")
                             .Tag("Wall")
                             .IsStatic()
                             .Transform(transform => transform
                                 .Position(17, 0)
-                                )
+                            )
                             .WithComponent<BoxCollider>(boxCollider => boxCollider
-                                
                                 .IsActive(true)
                                 .BodyType(BodyType.Static)
                                 .IsTrigger(false)
@@ -318,13 +304,10 @@ namespace Alis.Sample.Asteroid
                                 .Friction(0.1f)
                                 .FixedRotation(true)
                                 .IgnoreGravity(true)
-                                )
                             )
-                        
-                        
                         )
                     )
-                
+                )
                 .Run();
         }
     }

@@ -32,7 +32,6 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Collider;
-using Alis.Core.Ecs.Components.Render;
 
 namespace Alis.Sample.Pong
 {
@@ -69,16 +68,15 @@ namespace Alis.Sample.Pong
         }
 
         /// <summary>
-        /// Ons the hold key using the specified info
+        ///     Ons the hold key using the specified info
         /// </summary>
         /// <param name="info">The info</param>
         public void OnHoldKey(KeyEventInfo info)
         {
-
         }
 
         /// <summary>
-        /// Ons the release key using the specified info
+        ///     Ons the release key using the specified info
         /// </summary>
         /// <param name="info">The info</param>
         public void OnReleaseKey(KeyEventInfo info)
@@ -119,7 +117,7 @@ namespace Alis.Sample.Pong
         }
 
         /// <summary>
-        /// Ons the press key using the specified info
+        ///     Ons the press key using the specified info
         /// </summary>
         /// <param name="info">The info</param>
         public void OnPressKey(KeyEventInfo info)

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PooledStackWithIndex.cs
+//  File:PooledStack.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -79,6 +79,211 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         ///     The version
         /// </summary>
         private int _version; // Used to keep enumerator in sync w/ collection. Do not rename (binary serialization)
+
+
+        /// <summary>
+        ///     Create a stack with the default initial capacity.
+        /// </summary>
+        public PooledStack() : this(ClearMode.Auto, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Create a stack with the default initial capacity.
+        /// </summary>
+        public PooledStack(ClearMode clearMode) : this(clearMode, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Create a stack with the default initial capacity.
+        /// </summary>
+        public PooledStack(ArrayPool<T> customPool) : this(ClearMode.Auto, customPool)
+        {
+        }
+
+        /// <summary>
+        ///     Create a stack with the default initial capacity and a custom ArrayPool.
+        /// </summary>
+        public PooledStack(ClearMode clearMode, ArrayPool<T> customPool)
+        {
+            _pool = customPool ?? ArrayPool<T>.Shared;
+            _array = Array.Empty<T>();
+            _clearOnFree = ShouldClear(clearMode);
+        }
+
+        /// <summary>
+        ///     Create a stack with a specific initial capacity.  The initial capacity
+        ///     must be a non-negative number.
+        /// </summary>
+        public PooledStack(int capacity) : this(capacity, ClearMode.Auto, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Create a stack with a specific initial capacity.  The initial capacity
+        ///     must be a non-negative number.
+        /// </summary>
+        public PooledStack(int capacity, ClearMode clearMode) : this(capacity, clearMode, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Create a stack with a specific initial capacity.  The initial capacity
+        ///     must be a non-negative number.
+        /// </summary>
+        public PooledStack(int capacity, ArrayPool<T> customPool) : this(capacity, ClearMode.Auto, customPool)
+        {
+        }
+
+        /// <summary>
+        ///     Create a stack with a specific initial capacity.  The initial capacity
+        ///     must be a non-negative number.
+        /// </summary>
+        public PooledStack(int capacity, ClearMode clearMode, ArrayPool<T> customPool)
+        {
+            if (capacity < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(capacity));
+            }
+
+            _pool = customPool ?? ArrayPool<T>.Shared;
+            _array = _pool.Rent(capacity);
+            _clearOnFree = ShouldClear(clearMode);
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(IEnumerable<T> enumerable) : this(enumerable, ClearMode.Auto, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(IEnumerable<T> enumerable, ClearMode clearMode) : this(enumerable, clearMode, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(IEnumerable<T> enumerable, ArrayPool<T> customPool) : this(enumerable, ClearMode.Auto, customPool)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(IEnumerable<T> enumerable, ClearMode clearMode, ArrayPool<T> customPool)
+        {
+            _pool = customPool ?? ArrayPool<T>.Shared;
+            _clearOnFree = ShouldClear(clearMode);
+
+            switch (enumerable)
+            {
+                case null:
+                    throw new ArgumentNullException(nameof(enumerable));
+
+                case ICollection<T> collection:
+                    if (collection.Count == 0)
+                    {
+                        _array = Array.Empty<T>();
+                    }
+                    else
+                    {
+                        _array = _pool.Rent(collection.Count);
+                        collection.CopyTo(_array, 0);
+                        _size = collection.Count;
+                    }
+
+                    break;
+
+                default:
+                    using (PooledList<T> list = new PooledList<T>(enumerable))
+                    {
+                        _array = _pool.Rent(list.Count);
+                        list.Span.CopyTo(_array);
+                        _size = list.Count;
+                    }
+
+                    break;
+            }
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(T[] array) : this(array.AsSpan(), ClearMode.Auto, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(T[] array, ClearMode clearMode) : this(array.AsSpan(), clearMode, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(T[] array, ArrayPool<T> customPool) : this(array.AsSpan(), ClearMode.Auto, customPool)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(T[] array, ClearMode clearMode, ArrayPool<T> customPool) : this(array.AsSpan(), clearMode, customPool)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(ReadOnlySpan<T> span) : this(span, ClearMode.Auto, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(ReadOnlySpan<T> span, ClearMode clearMode) : this(span, clearMode, ArrayPool<T>.Shared)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(ReadOnlySpan<T> span, ArrayPool<T> customPool) : this(span, ClearMode.Auto, customPool)
+        {
+        }
+
+        /// <summary>
+        ///     Fills a Stack with the contents of a particular collection.  The items are
+        ///     pushed onto the stack in the same order they are read by the enumerator.
+        /// </summary>
+        public PooledStack(ReadOnlySpan<T> span, ClearMode clearMode, ArrayPool<T> customPool)
+        {
+            _pool = customPool ?? ArrayPool<T>.Shared;
+            _clearOnFree = ShouldClear(clearMode);
+            _array = _pool.Rent(span.Length);
+            span.CopyTo(_array);
+            _size = span.Length;
+        }
 
         /// <summary>
         ///     Returns the ClearMode behavior for the collection, denoting whether values are
@@ -171,6 +376,13 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         }
 
         /// <summary>
+        ///     Gets the enumerator
+        /// </summary>
+        /// <returns>The enumerator</returns>
+        IEnumerator IEnumerable.GetEnumerator()
+            => new Enumerator(this);
+
+        /// <summary>
         ///     Ons the deserialization using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
@@ -197,13 +409,6 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         /// </summary>
         /// <returns></returns>
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
-            => new Enumerator(this);
-
-        /// <summary>
-        ///     Gets the enumerator
-        /// </summary>
-        /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator()
             => new Enumerator(this);
 
         /// <summary>
@@ -535,7 +740,6 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
         /// <exception cref="InvalidOperationException">Stack was empty.</exception>
         private void ThrowForEmptyStack()
         {
-
             throw new InvalidOperationException("Stack was empty.");
         }
 
@@ -691,7 +895,6 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
             /// <exception cref="InvalidOperationException"></exception>
             private void ThrowEnumerationNotStartedOrEnded()
             {
-
                 throw new InvalidOperationException(_index == -2 ? "Enumeration was not started." : "Enumeration has ended.");
             }
 
@@ -715,213 +918,5 @@ namespace Alis.Benchmark.CustomCollections.Stacks.Elements
                 _currentElement = default(T);
             }
         }
-
-
-
-        /// <summary>
-        ///     Create a stack with the default initial capacity.
-        /// </summary>
-        public PooledStack() : this(ClearMode.Auto, ArrayPool<T>.Shared)
-        {
-        }
-
-        /// <summary>
-        ///     Create a stack with the default initial capacity.
-        /// </summary>
-        public PooledStack(ClearMode clearMode) : this(clearMode, ArrayPool<T>.Shared)
-        {
-        }
-
-        /// <summary>
-        ///     Create a stack with the default initial capacity.
-        /// </summary>
-        public PooledStack(ArrayPool<T> customPool) : this(ClearMode.Auto, customPool)
-        {
-        }
-
-        /// <summary>
-        ///     Create a stack with the default initial capacity and a custom ArrayPool.
-        /// </summary>
-        public PooledStack(ClearMode clearMode, ArrayPool<T> customPool)
-        {
-            _pool = customPool ?? ArrayPool<T>.Shared;
-            _array = Array.Empty<T>();
-            _clearOnFree = ShouldClear(clearMode);
-        }
-
-        /// <summary>
-        ///     Create a stack with a specific initial capacity.  The initial capacity
-        ///     must be a non-negative number.
-        /// </summary>
-        public PooledStack(int capacity) : this(capacity, ClearMode.Auto, ArrayPool<T>.Shared)
-        {
-        }
-
-        /// <summary>
-        ///     Create a stack with a specific initial capacity.  The initial capacity
-        ///     must be a non-negative number.
-        /// </summary>
-        public PooledStack(int capacity, ClearMode clearMode) : this(capacity, clearMode, ArrayPool<T>.Shared)
-        {
-        }
-
-        /// <summary>
-        ///     Create a stack with a specific initial capacity.  The initial capacity
-        ///     must be a non-negative number.
-        /// </summary>
-        public PooledStack(int capacity, ArrayPool<T> customPool) : this(capacity, ClearMode.Auto, customPool)
-        {
-        }
-
-        /// <summary>
-        ///     Create a stack with a specific initial capacity.  The initial capacity
-        ///     must be a non-negative number.
-        /// </summary>
-        public PooledStack(int capacity, ClearMode clearMode, ArrayPool<T> customPool)
-        {
-            if (capacity < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(capacity));
-            }
-
-            _pool = customPool ?? ArrayPool<T>.Shared;
-            _array = _pool.Rent(capacity);
-            _clearOnFree = ShouldClear(clearMode);
-        }
-
-        /// <summary>
-        ///     Fills a Stack with the contents of a particular collection.  The items are
-        ///     pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(IEnumerable<T> enumerable) : this(enumerable, ClearMode.Auto, ArrayPool<T>.Shared)
-        {
-        }
-
-        /// <summary>
-        ///     Fills a Stack with the contents of a particular collection.  The items are
-        ///     pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(IEnumerable<T> enumerable, ClearMode clearMode) : this(enumerable, clearMode, ArrayPool<T>.Shared)
-        {
-        }
-
-        /// <summary>
-        ///     Fills a Stack with the contents of a particular collection.  The items are
-        ///     pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(IEnumerable<T> enumerable, ArrayPool<T> customPool) : this(enumerable, ClearMode.Auto, customPool)
-        {
-        }
-
-        /// <summary>
-        ///     Fills a Stack with the contents of a particular collection.  The items are
-        ///     pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(IEnumerable<T> enumerable, ClearMode clearMode, ArrayPool<T> customPool)
-        {
-            _pool = customPool ?? ArrayPool<T>.Shared;
-            _clearOnFree = ShouldClear(clearMode);
-
-            switch (enumerable)
-            {
-                case null:
-                    throw new ArgumentNullException(nameof(enumerable));
-
-                case ICollection<T> collection:
-                    if (collection.Count == 0)
-                    {
-                        _array = Array.Empty<T>();
-                    }
-                    else
-                    {
-                        _array = _pool.Rent(collection.Count);
-                        collection.CopyTo(_array, 0);
-                        _size = collection.Count;
-                    }
-
-                    break;
-
-                default:
-                    using (PooledList<T> list = new PooledList<T>(enumerable))
-                    {
-                        _array = _pool.Rent(list.Count);
-                        list.Span.CopyTo(_array);
-                        _size = list.Count;
-                    }
-
-                    break;
-            }
-        }
-
-        /// <summary>
-        ///     Fills a Stack with the contents of a particular collection.  The items are
-        ///     pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(T[] array) : this(array.AsSpan(), ClearMode.Auto, ArrayPool<T>.Shared)
-        {
-        }
-
-        /// <summary>
-        ///     Fills a Stack with the contents of a particular collection.  The items are
-        ///     pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(T[] array, ClearMode clearMode) : this(array.AsSpan(), clearMode, ArrayPool<T>.Shared)
-        {
-        }
-
-        /// <summary>
-        ///     Fills a Stack with the contents of a particular collection.  The items are
-        ///     pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(T[] array, ArrayPool<T> customPool) : this(array.AsSpan(), ClearMode.Auto, customPool)
-        {
-        }
-
-        /// <summary>
-        ///     Fills a Stack with the contents of a particular collection.  The items are
-        ///     pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(T[] array, ClearMode clearMode, ArrayPool<T> customPool) : this(array.AsSpan(), clearMode, customPool)
-        {
-        }
-
-        /// <summary>
-        ///     Fills a Stack with the contents of a particular collection.  The items are
-        ///     pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(ReadOnlySpan<T> span) : this(span, ClearMode.Auto, ArrayPool<T>.Shared)
-        {
-        }
-
-        /// <summary>
-        ///     Fills a Stack with the contents of a particular collection.  The items are
-        ///     pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(ReadOnlySpan<T> span, ClearMode clearMode) : this(span, clearMode, ArrayPool<T>.Shared)
-        {
-        }
-
-        /// <summary>
-        ///     Fills a Stack with the contents of a particular collection.  The items are
-        ///     pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(ReadOnlySpan<T> span, ArrayPool<T> customPool) : this(span, ClearMode.Auto, customPool)
-        {
-        }
-
-        /// <summary>
-        ///     Fills a Stack with the contents of a particular collection.  The items are
-        ///     pushed onto the stack in the same order they are read by the enumerator.
-        /// </summary>
-        public PooledStack(ReadOnlySpan<T> span, ClearMode clearMode, ArrayPool<T> customPool)
-        {
-            _pool = customPool ?? ArrayPool<T>.Shared;
-            _clearOnFree = ShouldClear(clearMode);
-            _array = _pool.Rent(span.Length);
-            span.CopyTo(_array);
-            _size = span.Length;
-        }
-
-
     }
 }

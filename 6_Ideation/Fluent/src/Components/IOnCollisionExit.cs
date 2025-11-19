@@ -30,14 +30,14 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    /// The on collision exit interface
+    ///     The on collision exit interface
     /// </summary>
     public interface IOnCollisionExit
     {
         /// <summary>
-        /// Ons the collision exit using the specified other
+        ///     Ons the collision exit using the specified other
         /// </summary>
         /// <param name="other">The other</param>
-        public void OnCollisionExit(IGameObject other);
+        void OnCollisionExit(IGameObject other);
     }
 }

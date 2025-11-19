@@ -11,9 +11,9 @@
         <ApplicationIcon>Config/app.ico</ApplicationIcon>
     </PropertyGroup>
 
-     <PropertyGroup>
+    <PropertyGroup>
         <DefineConstants Condition="'$(RuntimeIdentifier)' != ''">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>
-        <DefineConstants Condition="'$(RuntimeIdentifier)' == ''" >$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
+        <DefineConstants Condition="'$(RuntimeIdentifier)' == ''">$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup>
@@ -217,22 +217,22 @@
         </PropertyGroup>
 
         <!-- Create folder structure -->
-        <MakeDir Directories="$(AppMacOSDir);$(AppResourcesDir)" />
+        <MakeDir Directories="$(AppMacOSDir);$(AppResourcesDir)"/>
 
         <!-- Copy the executable -->
-        <Copy SourceFiles="$(PublishDir)$(AppName)" DestinationFolder="$(AppMacOSDir)" />
+        <Copy SourceFiles="$(PublishDir)$(AppName)" DestinationFolder="$(AppMacOSDir)"/>
 
         <!-- Copy content files (adjust pattern if you have more content) -->
-        <Copy SourceFiles="@(Content)" DestinationFolder="$(AppResourcesDir)" SkipUnchangedFiles="true" Condition="@(Content->Count()) &gt; 0" />
+        <Copy SourceFiles="@(Content)" DestinationFolder="$(AppResourcesDir)" SkipUnchangedFiles="true" Condition="@(Content->Count()) &gt; 0"/>
 
         <!-- Convert icon to .icns if necessary -->
-        <Exec Command="sips -s format icns $(AppIconIco) --out $(AppIconIcns)" Condition="Exists('$(AppIconIco)')" />
+        <Exec Command="sips -s format icns $(AppIconIco) --out $(AppIconIcns)" Condition="Exists('$(AppIconIco)')"/>
 
         <!-- Copy Info.plist generated in Config -->
-        <Copy SourceFiles="$(AppPlistSource)" DestinationFiles="$(AppPlist)" />
+        <Copy SourceFiles="$(AppPlistSource)" DestinationFiles="$(AppPlist)"/>
 
         <!-- Set executable permissions for the binary -->
-        <Exec Command="chmod +x $(AppMacOSDir)/$(AppName)" />
+        <Exec Command="chmod +x $(AppMacOSDir)/$(AppName)"/>
     </Target>
 
     <Target Name="GenerateDynamicInfoPlist" BeforeTargets="Publish">
@@ -241,11 +241,11 @@
             <DynamicPlistOutput>$(ProjectDir)obj/Info.plist</DynamicPlistOutput>
         </PropertyGroup>
         <ReadLinesFromFile File="$(DynamicPlistTemplate)">
-            <Output TaskParameter="Lines" ItemName="PlistLines" />
+            <Output TaskParameter="Lines" ItemName="PlistLines"/>
         </ReadLinesFromFile>
         <WriteLinesToFile
             File="$(DynamicPlistOutput)"
             Lines="@(PlistLines->Replace('Alis.Sample.Flappy.Bird', '$(AssemblyName)')->Replace('1.0', '$(Version)')->Replace('com.alis.flappybird', '$(ApplicationId)'))"
-            Overwrite="true" />
+            Overwrite="true"/>
     </Target>
 </Project>

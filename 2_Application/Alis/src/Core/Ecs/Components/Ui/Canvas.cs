@@ -30,7 +30,7 @@
 namespace Alis.Core.Ecs.Components.Ui
 {
     /// <summary>
-    /// The canvas
+    ///     The canvas
     /// </summary>
     public struct Canvas
     {

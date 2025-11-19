@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
 
 namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon

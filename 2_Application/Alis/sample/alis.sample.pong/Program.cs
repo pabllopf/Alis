@@ -47,7 +47,6 @@ namespace Alis.Sample.Pong
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            
             VideoGame
                 .Create()
                 .Settings(setting => setting
@@ -145,8 +144,8 @@ namespace Alis.Sample.Pong
                                 .Friction(0f)
                                 .FixedRotation(true)
                                 .IgnoreGravity(true)
-                               )
-                           )
+                            )
+                        )
                         .Add<GameObject>(downWall => downWall
                             .Transform(transform => transform
                                 .Position(0, -10)
@@ -202,8 +201,8 @@ namespace Alis.Sample.Pong
                                 .Friction(0.1f)
                                 .FixedRotation(true)
                                 .IgnoreGravity(true)
-                               )
-                           )
+                            )
+                        )
                         .Add<GameObject>(rightWall => rightWall
                             .Transform(transform => transform
                                 .Position(16, 0)

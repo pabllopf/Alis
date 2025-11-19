@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
 using System.Security;
 using Alis.Extension.Graphic.Sfml.Systems;
@@ -357,31 +356,26 @@ namespace Alis.Extension.Graphic.Sfml.Windows
             /// <summary>
             ///     The dash key
             /// </summary>
-            
             Dash = Hyphen,
 
             /// <summary>
             ///     The back space key
             /// </summary>
-            
             BackSpace = Backspace,
 
             /// <summary>
             ///     The return key
             /// </summary>
-            
             Return = Enter,
 
             /// <summary>
             ///     The back slash key
             /// </summary>
-            
             BackSlash = Backslash,
 
             /// <summary>
             ///     The semi colon key
             /// </summary>
-            
             SemiColon = Semicolon
         }
 

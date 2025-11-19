@@ -31,16 +31,15 @@ using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Memory;
-using Alis.Core.Ecs.Components.Body;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
-using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Configuration.Physic;
 using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms;
+using Alis.Core.Graphic.Platforms.Win;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
 
 namespace Alis.Core.Ecs.Systems.Manager.Graphic
@@ -57,14 +56,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         private const float PixelsPerMeter = 32.0f;
 
         /// <summary>
-        ///     The platform
+        ///     The escape
         /// </summary>
-        private INativePlatform platform;
-        
-        /// <summary>
-        /// The escape
-        /// </summary>
-        ConsoleKey[] allKeys = new[]
+        private ConsoleKey[] allKeys = new[]
         {
             ConsoleKey.A, ConsoleKey.B, ConsoleKey.C, ConsoleKey.D, ConsoleKey.E,
             ConsoleKey.F, ConsoleKey.G, ConsoleKey.H, ConsoleKey.I, ConsoleKey.J,
@@ -75,19 +69,26 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             ConsoleKey.Spacebar, ConsoleKey.Enter, ConsoleKey.Escape
         };
 
-        // Diccionario para guardar el timestamp de pulsación de cada tecla
-        /// <summary>
-        /// The date time
-        /// </summary>
-        private Dictionary<ConsoleKey, DateTime> keyDownTimestamps = new Dictionary<ConsoleKey, DateTime>();
         // Estado actual de teclas presionadas
         /// <summary>
-        /// The console key
+        ///     The console key
         /// </summary>
         private HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey>();
+
+        // Diccionario para guardar el timestamp de pulsación de cada tecla
+        /// <summary>
+        ///     The date time
+        /// </summary>
+        private Dictionary<ConsoleKey, DateTime> keyDownTimestamps = new Dictionary<ConsoleKey, DateTime>();
+
+        /// <summary>
+        ///     The platform
+        /// </summary>
+        private INativePlatform platform;
+
         // Estado anterior de teclas presionadas
         /// <summary>
-        /// The console key
+        ///     The console key
         /// </summary>
         private HashSet<ConsoleKey> previousKeys = new HashSet<ConsoleKey>();
 
@@ -111,7 +112,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
 #if osxarm64 || osxarm || osxx64 || osx
             platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
 #elif winx64
-            platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
+            platform = new WinNativePlatform();
 #elif linuxarm64 || linuxarm || linuxx64
             platform = new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();
 #else
@@ -125,12 +126,12 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             //Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
             //Gl.GlEnable(EnableCap.DepthTest);
 
-            
+
             platform.SetTitle(Context.Setting.General.Name);
-            
+
             platform.SetWindowIcon(AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon));
-            
-            
+
+
             platform.ShowWindow();
         }
 
@@ -285,7 +286,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                         {
                             boxCollider.Render(boxColliderGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
                         }
-                        
                     }
                 }
 
@@ -305,4 +305,3 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         }
     }
 }
-

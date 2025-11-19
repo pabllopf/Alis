@@ -29,12 +29,10 @@
 
 using System;
 using System.Collections.Generic;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
-
 
 namespace Alis.Core.Physic.Collision
 {
@@ -643,9 +641,8 @@ namespace Alis.Core.Physic.Collision
             return numOut;
         }
 
-     
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="poly1"></param>
         /// <param name="xf1To2"></param>

@@ -1,67 +1,74 @@
-using System;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Context.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Security;
-
 using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Windows
 {
     //////////////////////////////////////////////////////////////////
     /// <summary>
-    /// This class defines a .NET interface to an SFML OpenGL Context
+    ///     This class defines a .NET interface to an SFML OpenGL Context
     /// </summary>
     //////////////////////////////////////////////////////////////////
     public class Context : CriticalFinalizerObject
     {
-        
         /// <summary>
-        /// Default constructor
+        ///     The our global context
         /// </summary>
-        
-        public Context()
-        {
-            myThis = sfContext_create();
-        }
+        private static Context _ourGlobalContext;
 
-        
         /// <summary>
-        /// Finalizer
+        ///     The zero
         /// </summary>
-        
-        ~Context()
-        {
-            sfContext_destroy(myThis);
-        }
+        private readonly IntPtr myThis = IntPtr.Zero;
 
-        
         /// <summary>
-        /// Activate or deactivate the context
+        ///     Default constructor
         /// </summary>
-        /// <param name="active">True to activate, false to deactivate</param>
-        /// <returns>true on success, false on failure</returns>
-        
-        public bool SetActive(bool active)
-        {
-            return sfContext_setActive(myThis, active);
-        }
+        public Context() => myThis = sfContext_create();
 
-        
-        /// <summary>
-        /// Get the settings of the context.
-        /// </summary>
-        
-        public ContextSettings Settings
-        {
-            get { return sfContext_getSettings(myThis); }
-        }
 
-        
         /// <summary>
-        /// Global helper context
+        ///     Get the settings of the context.
         /// </summary>
-        
+
+        public ContextSettings Settings => sfContext_getSettings(myThis);
+
+
+        /// <summary>
+        ///     Global helper context
+        /// </summary>
+
         public static Context Global
         {
             get
@@ -75,58 +82,63 @@ namespace Alis.Extension.Graphic.Sfml.Windows
             }
         }
 
-        
+
         /// <summary>
-        /// Provide a string describing the object
+        ///     Finalizer
         /// </summary>
-        /// <returns>String description of the object</returns>
-        
-        public override string ToString()
+        ~Context()
         {
-            return "[Context]";
+            sfContext_destroy(myThis);
         }
 
-        /// <summary>
-        /// The our global context
-        /// </summary>
-        private static Context _ourGlobalContext = null;
 
         /// <summary>
-        /// The zero
+        ///     Activate or deactivate the context
         /// </summary>
-        private readonly IntPtr myThis = IntPtr.Zero;
+        /// <param name="active">True to activate, false to deactivate</param>
+        /// <returns>true on success, false on failure</returns>
+        public bool SetActive(bool active) => sfContext_setActive(myThis, active);
+
+
+        /// <summary>
+        ///     Provide a string describing the object
+        /// </summary>
+        /// <returns>String description of the object</returns>
+        public override string ToString() => "[Context]";
 
         #region Imports
+
         /// <summary>
-        /// Sfs the context create
+        ///     Sfs the context create
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern IntPtr sfContext_create();
+        private static extern IntPtr sfContext_create();
 
         /// <summary>
-        /// Sfs the context destroy using the specified view
+        ///     Sfs the context destroy using the specified view
         /// </summary>
         /// <param name="view">The view</param>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfContext_destroy(IntPtr view);
+        private static extern void sfContext_destroy(IntPtr view);
 
         /// <summary>
-        /// Sfs the context set active using the specified view
+        ///     Sfs the context set active using the specified view
         /// </summary>
         /// <param name="view">The view</param>
         /// <param name="active">The active</param>
         /// <returns>The bool</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern bool sfContext_setActive(IntPtr view, bool active);
+        private static extern bool sfContext_setActive(IntPtr view, bool active);
 
         /// <summary>
-        /// Sfs the context get settings using the specified view
+        ///     Sfs the context get settings using the specified view
         /// </summary>
         /// <param name="view">The view</param>
         /// <returns>The context settings</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern ContextSettings sfContext_getSettings(IntPtr view);
+        private static extern ContextSettings sfContext_getSettings(IntPtr view);
+
         #endregion
     }
 }

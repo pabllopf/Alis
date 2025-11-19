@@ -29,8 +29,6 @@
 
 using System;
 using System.IO;
-using System.IO.Compression;
-using System.Linq;
 
 namespace Alis.Core.Aspect.Memory.Sample
 {
@@ -47,14 +45,14 @@ namespace Alis.Core.Aspect.Memory.Sample
         {
             LoadAsset();
         }
-        
+
         /// <summary>
-        /// Loads the asset
+        ///     Loads the asset
         /// </summary>
         public static void LoadAsset()
         {
             Console.WriteLine("Intentando cargar 'asset.pak' de forma AOT-compatible...");
-        
+
             try
             {
                 using (Stream streamPack = AssetRegistry.GetResourceMemoryStreamByName("app.bmp"))

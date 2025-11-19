@@ -15,22 +15,22 @@
             netstandard2.0;
             net461;
         </TargetFrameworks>
-        
+
         <RuntimeIdentifiers>
             win-x64; win-x86; win-arm64;
             linux-x64; linux-arm; linux-arm64;
             osx-x64;osx-arm64;
         </RuntimeIdentifiers>
-        
+
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU;x64;x86;arm;arm64</Platforms>
     </PropertyGroup>
 
     <PropertyGroup>
         <DefineConstants Condition="'$(RuntimeIdentifier)' != ''">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>
-        <DefineConstants Condition="'$(RuntimeIdentifier)' == ''" >$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
+        <DefineConstants Condition="'$(RuntimeIdentifier)' == ''">$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
     </PropertyGroup>
-    
+
     <PropertyGroup>
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <LangVersion>13</LangVersion>
@@ -41,7 +41,7 @@
         <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
         <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     </PropertyGroup>
-    
+
     <PropertyGroup Condition="'$(Configuration)' == 'Release'">
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <IncludeSymbols>false</IncludeSymbols>
@@ -58,9 +58,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
     </ItemGroup>
-    
+
     <PropertyGroup>
         <NoWarn>$(NoWarn);CS1685;</NoWarn> <!-- Error CS1685 : Warning As Error: Define on differente assemblys of alias gloabal -->
         <NoWarn>$(NoWarn);CS0436;</NoWarn> <!-- Error CS0436 : Warning As Error: Overriding dependency version -->
@@ -74,7 +74,7 @@
     <ItemGroup>
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
     </ItemGroup>
-    
+
     <ItemGroup Condition="
     $(TargetFramework.Equals('net461')) OR
     $(TargetFramework.Equals('net462')) OR 
@@ -101,7 +101,7 @@
         <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
         <PackageReference Include="System.Memory" Version="4.6.2"/>
     </ItemGroup>
-    
+
     <ItemGroup Condition="
     $(TargetFramework.Equals('netstandard2.0')) OR
     $(TargetFramework.Equals('netstandard2.1'))
@@ -109,7 +109,7 @@
         <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.1"/>
         <PackageReference Include="System.Memory" Version="4.6.2"/>
     </ItemGroup>
-    
+
     <PropertyGroup>
         <FileVersion>$(AssemblyVersion)</FileVersion>
         <Company>Pablo Perdomo Falcón</Company>
@@ -133,15 +133,15 @@
         <Version>$(AssemblyVersion)</Version>
     </PropertyGroup>
 
-    
+
     <ItemGroup>
-        <None Include="$(SolutionDir).config/target/alis.targets" Visible="false" Pack="true" Link="build/$(AssemblyName).targets" PackagePath="build/$(AssemblyName).targets" />
-        <None Include="$(SolutionDir).config/target/alis.targets" Visible="false" Pack="true" Link="buildTransitive/$(AssemblyName).targets" PackagePath="buildTransitive/$(AssemblyName).targets" />
+        <None Include="$(SolutionDir).config/target/alis.targets" Visible="false" Pack="true" Link="build/$(AssemblyName).targets" PackagePath="build/$(AssemblyName).targets"/>
+        <None Include="$(SolutionDir).config/target/alis.targets" Visible="false" Pack="true" Link="buildTransitive/$(AssemblyName).targets" PackagePath="buildTransitive/$(AssemblyName).targets"/>
     </ItemGroup>
 
 
     <ItemGroup>
-        <None Remove="$(ProjectDir)runtimes/**" />
+        <None Remove="$(ProjectDir)runtimes/**"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -151,11 +151,11 @@
     <ItemGroup Condition="'$(RuntimeIdentifier)' != ''">
         <None Include="runtimes/$(RuntimeIdentifier)/native/**" Link="%(Filename)%(Extension)" Pack="false" Visible="false" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always"/>
     </ItemGroup>
-    
+
     <ItemGroup Condition="$(NETCoreSdkRuntimeIdentifier) != '' AND '$(RuntimeIdentifier)' == ''">
         <None Include="runtimes/$(NETCoreSdkRuntimeIdentifier)/native/**" Link="%(Filename)%(Extension)" Visible="false" Pack="false" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always"/>
     </ItemGroup>
-    
+
     <!--
     <ItemGroup>
         <None Remove="runtimes/**" />
@@ -169,7 +169,7 @@
         <None Include="runtimes/$(RuntimeIdentifier)/native/**" Pack="false" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always"/>
     </ItemGroup>
     -->
-    
+
 
     <ItemGroup>
         <None Include="$(SolutionDir)license.md" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="."/>
@@ -193,7 +193,7 @@
     <ItemGroup Condition="$(Configuration) == 'Debug'">
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
                           Include="$(SolutionDir)2_Application/**/src/**/Alis.csproj"/>
-        
+
         <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
                           Include="$(SolutionDir)3_Structuration/**/src/**/Alis.*.csproj"/>
 
@@ -206,7 +206,6 @@
         <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
                           Include="$(SolutionDir)6_Ideation/**/src/**/Alis.*.csproj"/>
     </ItemGroup>
-
 
 
     <ItemGroup>
@@ -231,8 +230,7 @@
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false"/>
-        
-        
+
 
         <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
                           Include="
@@ -262,7 +260,6 @@
     </ItemGroup>
 
 
-
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Payment.Stripe'))">
         <PackageReference Include="Stripe.net" Version="47.1.0"/>
     </ItemGroup>
@@ -278,7 +275,7 @@
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Extension.Cloud.DropBox'))">
         <PackageReference Include="Dropbox.Api" Version="7.0.0"/>
     </ItemGroup>
-    
+
     <ItemGroup Condition="$(Configuration) == 'Release'">
 
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) AND $(ProjectDir.Contains('Extension')) == False AND $(ProjectDir.Contains('Benchmark')) == False"
@@ -368,7 +365,7 @@
                           $(SolutionDir)**/obj/**/**;
                           $(SolutionDir)**/bin/**/**;"
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-        
+
         <Compile Condition="($(ProjectDir.Contains('3_Structuration')) OR $(ProjectDir.Contains('4_Operation')))"
                  Include="
                         $(SolutionDir)6_Ideation/**/src/**/*.cs;"
@@ -418,7 +415,7 @@
             CopyToPublishDirectory="PreserveNewest"
             CopyToOutputDirectory="PreserveNewest"
             Visible="false"/>
-        
+
         <Content
             Condition="$(AssemblyName.Contains('Generator')) == false AND $(AssemblyName.Contains('Extension')) == false"
             Include="$(ProjectDir)bin/Release/analyzers/dotnet/cs/*.dll" Visible="false" PackagePath="analyzers/dotnet/cs/"/>
@@ -430,7 +427,7 @@
         <Content
             Condition="$(AssemblyName.Contains('Generator')) == false AND $(AssemblyName.Contains('Extension')) == false"
             Include="$(ProjectDir)bin/Release/analyzers/dotnet/cs/*.deps.json" Visible="false" PackagePath="analyzers/dotnet/cs/"/>
-        
+
         <!--
         <Content Include="$(ProjectDir)bin/Release/lib/net5.0/*" Visible="false" PackagePath="lib/net5.0/"/>
         <Content Include="$(ProjectDir)bin/Release/lib/net6.0/*" Visible="false" PackagePath="lib/net6.0/"/>

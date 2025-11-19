@@ -218,7 +218,7 @@ namespace Alis.Extension.Media.FFmpeg.BaseClasses
         /// </summary>
         [JsonNativeIgnore]
         public double AvgFrameRateNumber { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the value of the time base
         /// </summary>

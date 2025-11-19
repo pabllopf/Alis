@@ -27,13 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
-
-
 using Alis.Extension.Graphic.Ui;
 
 namespace Alis.App.Engine.Windows

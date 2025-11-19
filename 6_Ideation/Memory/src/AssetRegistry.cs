@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:AssetRegistry.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Buffers;
 using System.Collections.Concurrent;
@@ -9,82 +38,44 @@ using System.Linq;
 namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    /// The asset registry class
+    ///     The asset registry class
     /// </summary>
     public static class AssetRegistry
     {
         /// <summary>
-        /// The registered asset loaders
+        ///     The registered asset loaders
         /// </summary>
         private static readonly Dictionary<string, Func<Stream>> RegisteredAssetLoaders = new();
+
         // Lock por ensamblado para reducir contención
         /// <summary>
-        /// The assembly locks
+        ///     The assembly locks
         /// </summary>
         private static readonly ConcurrentDictionary<string, object> _assemblyLocks = new();
+
         /// <summary>
-        /// The global lock
+        ///     The global lock
         /// </summary>
         private static readonly object _globalLock = new();
 
-        // Cache del ZIP cargado en memoria por assembly
         /// <summary>
-        /// The zip entry info class
-        /// </summary>
-        private class ZipEntryInfo
-        {
-            /// <summary>
-            /// Gets or sets the value of the full name
-            /// </summary>
-            public string FullName { get; set; } = string.Empty;
-            /// <summary>
-            /// Gets or sets the value of the length
-            /// </summary>
-            public long Length { get; set; }
-            /// <summary>
-            /// Gets or sets the value of the last write time utc
-            /// </summary>
-            public DateTimeOffset LastWriteTimeUtc { get; set; }
-        }
-
-        /// <summary>
-        /// The zip cache entry class
-        /// </summary>
-        private class ZipCacheEntry
-        {
-            // bytes del paquete (no copiados al crear MemoryStream)
-            /// <summary>
-            /// Gets or sets the value of the pack bytes
-            /// </summary>
-            public byte[] PackBytes { get; set; }
-            // índices ligeros para búsquedas rápidas
-            /// <summary>
-            /// Gets or sets the value of the entries by full name lower
-            /// </summary>
-            public Dictionary<string, ZipEntryInfo> EntriesByFullNameLower { get; set; } = new();
-            /// <summary>
-            /// Gets or sets the value of the entries by file name lower
-            /// </summary>
-            public Dictionary<string, List<ZipEntryInfo>> EntriesByFileNameLower { get; set; } = new();
-        }
-
-        /// <summary>
-        /// The zip cache
+        ///     The zip cache
         /// </summary>
         private static readonly Dictionary<string, ZipCacheEntry> _zipCache = new();
+
         // Cache de rutas extraídas: key -> ruta en disco
         /// <summary>
-        /// The extracted path cache
+        ///     The extracted path cache
         /// </summary>
         private static readonly Dictionary<string, string> _extractedPathCache = new();
 
         /// <summary>
-        /// Gets or sets the value of the active assembly name
+        ///     Gets or sets the value of the active assembly name
         /// </summary>
-        private static string ActiveAssemblyName { get; set; } = null;
+        private static string ActiveAssemblyName { get; set; }
 
         /// <summary>
-        /// Registers the assembly using the specified assembly name
+        ///     Registers the assembly using the specified assembly name
         /// </summary>
         /// <param name="assemblyName">The assembly name</param>
         /// <param name="assetLoader">The asset loader</param>
@@ -106,7 +97,7 @@ namespace Alis.Core.Aspect.Memory
         }
 
         /// <summary>
-        /// Gets the assembly lock using the specified assembly name
+        ///     Gets the assembly lock using the specified assembly name
         /// </summary>
         /// <param name="assemblyName">The assembly name</param>
         /// <returns>The object</returns>
@@ -116,11 +107,14 @@ namespace Alis.Core.Aspect.Memory
         }
 
         /// <summary>
-        /// Gets the resource memory stream by name using the specified resource name
+        ///     Gets the resource memory stream by name using the specified resource name
         /// </summary>
         /// <param name="resourceName">The resource name</param>
         /// <exception cref="FileNotFoundException">Cache del assets.pack no disponible.</exception>
-        /// <exception cref="InvalidOperationException">La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pack registrado.</exception>
+        /// <exception cref="InvalidOperationException">
+        ///     La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pack
+        ///     registrado.
+        /// </exception>
         /// <exception cref="InvalidOperationException">No hay una asamblea activa configurada.</exception>
         /// <exception cref="FileNotFoundException">Resource '{resourceName}' not found in `assets.pack` (race).</exception>
         /// <exception cref="FileNotFoundException">Resource '{resourceName}' not found in `assets.pack`.</exception>
@@ -166,13 +160,13 @@ namespace Alis.Core.Aspect.Memory
             }
 
             // Crear un ZipArchive local sobre los bytes cacheados para extraer la entrada
-            MemoryStream msResult = entryInfo.Length <= int.MaxValue ? new MemoryStream((int)entryInfo.Length) : new MemoryStream();
+            MemoryStream msResult = entryInfo.Length <= int.MaxValue ? new MemoryStream((int) entryInfo.Length) : new MemoryStream();
             ArrayPool<byte> pool = ArrayPool<byte>.Shared;
             byte[] buffer = pool.Rent(81920);
             try
             {
-                using MemoryStream packStream = new MemoryStream(cacheEntry.PackBytes, writable: false);
-                using ZipArchive zip = new ZipArchive(packStream, ZipArchiveMode.Read, leaveOpen: true);
+                using MemoryStream packStream = new MemoryStream(cacheEntry.PackBytes, false);
+                using ZipArchive zip = new ZipArchive(packStream, ZipArchiveMode.Read, true);
                 ZipArchiveEntry zipEntry = zip.GetEntry(entryInfo.FullName);
                 if (zipEntry == null)
                 {
@@ -185,6 +179,7 @@ namespace Alis.Core.Aspect.Memory
                 {
                     msResult.Write(buffer, 0, read);
                 }
+
                 msResult.Position = 0;
                 return msResult;
             }
@@ -195,11 +190,14 @@ namespace Alis.Core.Aspect.Memory
         }
 
         /// <summary>
-        /// Gets the resource path by name using the specified resource name
+        ///     Gets the resource path by name using the specified resource name
         /// </summary>
         /// <param name="resourceName">The resource name</param>
         /// <exception cref="FileNotFoundException">Cache del assets.pack no disponible.</exception>
-        /// <exception cref="InvalidOperationException">La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pack registrado.</exception>
+        /// <exception cref="InvalidOperationException">
+        ///     La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pack
+        ///     registrado.
+        /// </exception>
         /// <exception cref="InvalidOperationException">No hay una asamblea activa configurada.</exception>
         /// <exception cref="FileNotFoundException">Resource '{resourceName}' not found in `assets.pack` (race).</exception>
         /// <exception cref="FileNotFoundException">Resource '{resourceName}' not found in `assets.pack`.</exception>
@@ -248,6 +246,7 @@ namespace Alis.Core.Aspect.Memory
                         {
                             return cachedPath;
                         }
+
                         _extractedPathCache.Remove(compositeKey);
                     }
                     else
@@ -283,8 +282,8 @@ namespace Alis.Core.Aspect.Memory
             byte[] buffer2 = pool2.Rent(81920);
             try
             {
-                using MemoryStream packStream = new MemoryStream(cacheEntry.PackBytes, writable: false);
-                using ZipArchive zip = new ZipArchive(packStream, ZipArchiveMode.Read, leaveOpen: true);
+                using MemoryStream packStream = new MemoryStream(cacheEntry.PackBytes, false);
+                using ZipArchive zip = new ZipArchive(packStream, ZipArchiveMode.Read, true);
                 ZipArchiveEntry zipEntry = zip.GetEntry(entryInfo.FullName);
                 if (zipEntry == null)
                 {
@@ -302,7 +301,13 @@ namespace Alis.Core.Aspect.Memory
                     }
                 }
 
-                try { File.SetLastWriteTimeUtc(tempFilePath, entryInfo.LastWriteTimeUtc.UtcDateTime); } catch { }
+                try
+                {
+                    File.SetLastWriteTimeUtc(tempFilePath, entryInfo.LastWriteTimeUtc.UtcDateTime);
+                }
+                catch
+                {
+                }
 
                 string compositeKey2 = ActiveAssemblyName.ToLowerInvariant() + "|" + NormalizeResourceKey(resourceName);
                 _extractedPathCache[compositeKey2] = tempFilePath;
@@ -316,17 +321,14 @@ namespace Alis.Core.Aspect.Memory
         }
 
         /// <summary>
-        /// Normalizes the resource key using the specified resource name
+        ///     Normalizes the resource key using the specified resource name
         /// </summary>
         /// <param name="resourceName">The resource name</param>
         /// <returns>The string</returns>
-        private static string NormalizeResourceKey(string resourceName)
-        {
-            return resourceName.Replace('\\', '/').TrimStart('/').ToLowerInvariant();
-        }
+        private static string NormalizeResourceKey(string resourceName) => resourceName.Replace('\\', '/').TrimStart('/').ToLowerInvariant();
 
         /// <summary>
-        /// Makes the safe temp name using the specified assembly name
+        ///     Makes the safe temp name using the specified assembly name
         /// </summary>
         /// <param name="assemblyName">The assembly name</param>
         /// <param name="entryFullName">The entry full name</param>
@@ -343,9 +345,12 @@ namespace Alis.Core.Aspect.Memory
         }
 
         /// <summary>
-        /// Ensures the zip cached for active assembly
+        ///     Ensures the zip cached for active assembly
         /// </summary>
-        /// <exception cref="InvalidOperationException">La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pack registrado.</exception>
+        /// <exception cref="InvalidOperationException">
+        ///     La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pack
+        ///     registrado.
+        /// </exception>
         /// <exception cref="FileNotFoundException">Resource file `assets.pack` not found in embedded resources.</exception>
         private static void EnsureZipCachedForActiveAssembly()
         {
@@ -371,9 +376,9 @@ namespace Alis.Core.Aspect.Memory
             byte[] bytes = mem.ToArray();
 
             // Indexar mediante un ZipArchive temporal
-            using MemoryStream indexStream = new MemoryStream(bytes, writable: false);
-            using ZipArchive zip = new ZipArchive(indexStream, ZipArchiveMode.Read, leaveOpen: true);
-            ZipCacheEntry cacheEntry = new ZipCacheEntry { PackBytes = bytes };
+            using MemoryStream indexStream = new MemoryStream(bytes, false);
+            using ZipArchive zip = new ZipArchive(indexStream, ZipArchiveMode.Read, true);
+            ZipCacheEntry cacheEntry = new ZipCacheEntry {PackBytes = bytes};
 
             foreach (ZipArchiveEntry e in zip.Entries)
             {
@@ -392,6 +397,7 @@ namespace Alis.Core.Aspect.Memory
                     list = new List<ZipEntryInfo>();
                     cacheEntry.EntriesByFileNameLower[fileNameLower] = list;
                 }
+
                 list.Add(info);
             }
 
@@ -402,7 +408,7 @@ namespace Alis.Core.Aspect.Memory
         }
 
         /// <summary>
-        /// Finds the zip entry info using the specified cache entry
+        ///     Finds the zip entry info using the specified cache entry
         /// </summary>
         /// <param name="cacheEntry">The cache entry</param>
         /// <param name="resourceName">The resource name</param>
@@ -432,6 +438,51 @@ namespace Alis.Core.Aspect.Memory
                                      e.FullName.Replace('\\', '/').IndexOf(resourceName, StringComparison.OrdinalIgnoreCase) >= 0);
 
             return match;
+        }
+
+        // Cache del ZIP cargado en memoria por assembly
+        /// <summary>
+        ///     The zip entry info class
+        /// </summary>
+        private class ZipEntryInfo
+        {
+            /// <summary>
+            ///     Gets or sets the value of the full name
+            /// </summary>
+            public string FullName { get; set; } = string.Empty;
+
+            /// <summary>
+            ///     Gets or sets the value of the length
+            /// </summary>
+            public long Length { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the value of the last write time utc
+            /// </summary>
+            public DateTimeOffset LastWriteTimeUtc { get; set; }
+        }
+
+        /// <summary>
+        ///     The zip cache entry class
+        /// </summary>
+        private class ZipCacheEntry
+        {
+            // bytes del paquete (no copiados al crear MemoryStream)
+            /// <summary>
+            ///     Gets or sets the value of the pack bytes
+            /// </summary>
+            public byte[] PackBytes { get; set; }
+
+            // índices ligeros para búsquedas rápidas
+            /// <summary>
+            ///     Gets or sets the value of the entries by full name lower
+            /// </summary>
+            public Dictionary<string, ZipEntryInfo> EntriesByFullNameLower { get; } = new();
+
+            /// <summary>
+            ///     Gets or sets the value of the entries by file name lower
+            /// </summary>
+            public Dictionary<string, List<ZipEntryInfo>> EntriesByFileNameLower { get; } = new();
         }
     }
 }

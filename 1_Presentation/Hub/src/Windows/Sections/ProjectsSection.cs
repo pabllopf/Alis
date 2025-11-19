@@ -32,9 +32,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices;
-
 using System.Threading.Tasks;
 using Alis.App.Engine.Fonts;
 using Alis.App.Hub.Core;
@@ -62,7 +60,7 @@ namespace Alis.App.Hub.Windows.Sections
             new Project("MacOS Project", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", "v0.5.0"),
             new Project("MacOS Project (latest)", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", "v0.8.5"),
             new Project("Windows Project", "C:/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "5 minutes ago", "v0.8.5"),
-            new Project("LINUX Project", "/home/parallels/Repositorios/Alis/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "5 minutes ago", "v0.8.5"),
+            new Project("LINUX Project", "/home/parallels/Repositorios/Alis/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "5 minutes ago", "v0.8.5")
         };
 #else
         /// <summary>
@@ -112,7 +110,7 @@ namespace Alis.App.Hub.Windows.Sections
         {
             Logger.Info($"Opening project: {project.Name}");
 
-            string projectConfig = JsonNativeAot.Serialize<Project>(project);
+            string projectConfig = JsonNativeAot.Serialize(project);
             string configFilePath = Path.Combine(Path.GetTempPath(), "projectConfig.json");
             File.WriteAllText(configFilePath, projectConfig);
 

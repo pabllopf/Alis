@@ -1,5 +1,5 @@
 <Project>
-    
+
     <PropertyGroup>
         <!-- Deriva el nombre del ensamblado a partir del archivo .targets -->
         <_PackageAssemblyName>$(MSBuildThisFileName)</_PackageAssemblyName>
@@ -18,7 +18,7 @@
         </Reference>
     </ItemGroup>
 
-    
+
     <!-- ========== PROPIEDADES DE ASSETS ========== -->
     <PropertyGroup>
         <!-- Carpeta de recursos -->
@@ -37,20 +37,20 @@
 
         <!-- Windows -->
         <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
-              Command="powershell -NoLogo -Command &quot;Compress-Archive -Path '$(AssetsDir)\\*' -DestinationPath '$(AssetsZip)' -Force; [Convert]::ToBase64String([System.IO.File]::ReadAllBytes('$(AssetsZip)')) | Out-File -FilePath '$(AssetsOutput)' -Encoding ASCII&quot;" />
+              Command="powershell -NoLogo -Command &quot;Compress-Archive -Path '$(AssetsDir)\\*' -DestinationPath '$(AssetsZip)' -Force; [Convert]::ToBase64String([System.IO.File]::ReadAllBytes('$(AssetsZip)')) | Out-File -FilePath '$(AssetsOutput)' -Encoding ASCII&quot;"/>
 
         <!-- macOS/Linux -->
         <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
-              Command="sh -c &quot;zip -r -9 '$(AssetsZip)' '$(AssetsDir)' &amp;&amp; base64 &lt; '$(AssetsZip)' &gt; '$(AssetsOutput)'&quot;" />
+              Command="sh -c &quot;zip -r -9 '$(AssetsZip)' '$(AssetsDir)' &amp;&amp; base64 &lt; '$(AssetsZip)' &gt; '$(AssetsOutput)'&quot;"/>
 
         <!-- Si no hay AssetsDir -->
         <Message Condition="!Exists('$(AssetsDir)')" Text="No existe el directorio '$(AssetsDir)'. Se genera '$(AssetsOutput)' vacío." Importance="High"/>
 
         <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
-              Command="powershell -NoLogo -Command &quot;Set-Content -Path '$(AssetsOutput)' -Value '' -Encoding ASCII&quot;" />
+              Command="powershell -NoLogo -Command &quot;Set-Content -Path '$(AssetsOutput)' -Value '' -Encoding ASCII&quot;"/>
 
         <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
-              Command="sh -c &quot;mkdir -p '$(ProjectDir)obj' &amp;&amp; : &gt; '$(AssetsOutput)'&quot;" />
+              Command="sh -c &quot;mkdir -p '$(ProjectDir)obj' &amp;&amp; : &gt; '$(AssetsOutput)'&quot;"/>
 
     </Target>
 
@@ -60,7 +60,7 @@
         <AdditionalFiles Include="$(AssetsOutput)"
                          CopyToOutputDirectory="Never"
                          CopyToPublishDirectory="Never"
-                         Visible="false" />
+                         Visible="false"/>
     </ItemGroup>
 
 </Project>

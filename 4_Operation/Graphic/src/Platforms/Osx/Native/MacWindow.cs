@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 #if osxarm64 || osxarm || osxx64 || osx
-
 using System;
 using System.Runtime.InteropServices;
 
@@ -57,14 +56,17 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// Gets or sets the value of the handle
         /// </summary>
         public IntPtr Handle { get; private set; }
+
         /// <summary>
         /// Gets or sets the value of the width
         /// </summary>
         public int Width { get; private set; }
+
         /// <summary>
         /// Gets or sets the value of the height
         /// </summary>
         public int Height { get; private set; }
+
         /// <summary>
         /// Gets or sets the value of the title
         /// </summary>
@@ -89,6 +91,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// Shows this instance
         /// </summary>
         public void Show() => ObjectiveCInterop.objc_msgSend_void_IntPtr(Handle, ObjectiveCInterop.Sel("makeKeyAndOrderFront:"), IntPtr.Zero);
+
         /// <summary>
         /// Hides this instance
         /// </summary>
@@ -123,29 +126,29 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <returns>The bool</returns>
         public bool IsVisible() => ObjectiveCInterop.objc_msgSend(Handle, ObjectiveCInterop.Sel("isVisible")) != IntPtr.Zero;
 
-     // csharp
-     /// <summary>
-     /// Gets the frame
-     /// </summary>
-     /// <returns>The ns rect</returns>
-     public NsRect GetFrame()
-     {
-         IntPtr framePtr = ObjectiveCInterop.objc_msgSend(Handle, ObjectiveCInterop.Sel("frame"));
-     
-         // Leer cuatro doubles (8 bytes cada uno) desde la estructura nativa (x, y, width, height)
-         long v0 = Marshal.ReadInt64(framePtr, 0);
-         long v1 = Marshal.ReadInt64(framePtr, 8);
-         long v2 = Marshal.ReadInt64(framePtr, 16);
-         long v3 = Marshal.ReadInt64(framePtr, 24);
-     
-         return new NsRect
-         {
-             x = BitConverter.Int64BitsToDouble(v0),
-             y = BitConverter.Int64BitsToDouble(v1),
-             width = BitConverter.Int64BitsToDouble(v2),
-             height = BitConverter.Int64BitsToDouble(v3)
-         };
-     }
+        // csharp
+        /// <summary>
+        /// Gets the frame
+        /// </summary>
+        /// <returns>The ns rect</returns>
+        public NsRect GetFrame()
+        {
+            IntPtr framePtr = ObjectiveCInterop.objc_msgSend(Handle, ObjectiveCInterop.Sel("frame"));
+
+            // Leer cuatro doubles (8 bytes cada uno) desde la estructura nativa (x, y, width, height)
+            long v0 = Marshal.ReadInt64(framePtr, 0);
+            long v1 = Marshal.ReadInt64(framePtr, 8);
+            long v2 = Marshal.ReadInt64(framePtr, 16);
+            long v3 = Marshal.ReadInt64(framePtr, 24);
+
+            return new NsRect
+            {
+                x = BitConverter.Int64BitsToDouble(v0),
+                y = BitConverter.Int64BitsToDouble(v1),
+                width = BitConverter.Int64BitsToDouble(v2),
+                height = BitConverter.Int64BitsToDouble(v3)
+            };
+        }
     }
 }
 

@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Scene.3.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Kernel;
@@ -48,15 +77,15 @@ namespace Alis.Core.Ecs
 
             //1x array lookup per component
             ref T1 ref1 =
-                ref  Unsafe.As<ComponentStorage<T1>>(
+                ref Unsafe.As<ComponentStorage<T1>>(
                     Unsafe.Add(ref components[0], Archetype<T1, T2, T3>.OfComponent<T1>.Index))[eloc.Index];
             ref1 = comp1;
             ref T2 ref2 =
-                ref  Unsafe.As<ComponentStorage<T2>>(
+                ref Unsafe.As<ComponentStorage<T2>>(
                     Unsafe.Add(ref components[0], Archetype<T1, T2, T3>.OfComponent<T2>.Index))[eloc.Index];
             ref2 = comp2;
             ref T3 ref3 =
-                ref  Unsafe.As<ComponentStorage<T3>>(
+                ref Unsafe.As<ComponentStorage<T3>>(
                     Unsafe.Add(ref components[0], Archetype<T1, T2, T3>.OfComponent<T3>.Index))[eloc.Index];
             ref3 = comp3;
 
@@ -79,7 +108,7 @@ namespace Alis.Core.Ecs
         /// <returns>The entities created and their component spans</returns>
         public ChunkTuple<T1, T2, T3> CreateMany<T1, T2, T3>(int count)
         {
-            if ((uint)count == 0) // Efficient validation for non-positive values
+            if ((uint) count == 0) // Efficient validation for non-positive values
             {
                 throw new ArgumentOutOfRangeException(nameof(count));
             }

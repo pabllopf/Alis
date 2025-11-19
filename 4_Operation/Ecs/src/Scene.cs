@@ -32,7 +32,6 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
@@ -387,9 +386,8 @@ namespace Alis.Core.Ecs
             return new GameObject(Id, version, id);
         }
 
-       /// <summary>
-       /// 
-       /// </summary>
+        /// <summary>
+        /// </summary>
         public void Update()
         {
             EnterDisallowState();
@@ -781,6 +779,5 @@ namespace Alis.Core.Ecs
             archetype.EnsureCapacity(count);
             EntityTable.EnsureCapacity(count + EntityCount);
         }
-        
     }
 }

@@ -37,26 +37,26 @@ namespace Alis.App.Hub.Core
         /// <summary>
         ///     Ons the init
         /// </summary>
-        public void OnInit();
+        void OnInit();
 
         /// <summary>
         ///     Ons the start
         /// </summary>
-        public void OnStart();
+        void OnStart();
 
         /// <summary>
         ///     Ons the update
         /// </summary>
-        public void OnUpdate();
+        void OnUpdate();
 
         /// <summary>
         ///     Ons the render
         /// </summary>
-        public void OnRender();
+        void OnRender();
 
         /// <summary>
         ///     Ons the destroy
         /// </summary>
-        public void OnDestroy();
+        void OnDestroy();
     }
 }

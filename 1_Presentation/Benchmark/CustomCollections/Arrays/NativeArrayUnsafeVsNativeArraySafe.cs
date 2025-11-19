@@ -35,7 +35,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
     /// <summary>
     ///     The native array unsafe vs native array safe class
     /// </summary>
-    [ Config(typeof(CustomConfig))]
+    [Config(typeof(CustomConfig))]
     public class NativeArrayUnsafeVsNativeArraySafe : IDisposable
     {
         /// <summary>
@@ -57,7 +57,16 @@ namespace Alis.Benchmark.CustomCollections.Arrays
         ///     The native array
         /// </summary>
         private NativeArray<int> nativeArray;
-        
+
+        /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            fastArraySafe.Dispose();
+            nativeArray?.Dispose();
+        }
+
         // Inicialización
         /// <summary>
         ///     Setup this instance
@@ -181,7 +190,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 fastArraySafe[i] = i;
             }
         }
-        
+
 
         /// <summary>
         ///     Benchmarks the native array sequential access
@@ -258,7 +267,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 int value = fastArraySafe[random.Next(0, ArraySize)];
             }
         }
-        
+
 
         /// <summary>
         ///     Benchmarks the dispose native array
@@ -326,7 +335,7 @@ namespace Alis.Benchmark.CustomCollections.Arrays
                 int value = span[i];
             }
         }
-        
+
 
         /// <summary>
         ///     Benchmarks the native array as span len
@@ -365,15 +374,6 @@ namespace Alis.Benchmark.CustomCollections.Arrays
             {
                 int value = span[i];
             }
-        }
-
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            fastArraySafe.Dispose();
-            nativeArray?.Dispose();
         }
     }
 }

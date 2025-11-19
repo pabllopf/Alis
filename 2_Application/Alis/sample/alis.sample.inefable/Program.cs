@@ -70,7 +70,6 @@ namespace Alis.Sample.Inefable
                 .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
                         .Name("Dungeon Entrance")
-                        
                         .Add<GameObject>(camera => camera
                             .Name("Main Camera")
                             .Transform(trasform => trasform
@@ -82,7 +81,6 @@ namespace Alis.Sample.Inefable
                                 .Resolution(1024, 768)
                             )
                         )
-                        
                         .Add<GameObject>(background => background
                             .Name("Background")
                             .Tag("Environment")

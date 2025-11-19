@@ -34,7 +34,7 @@ namespace Alis.Benchmark.CustomEcs
     /// <summary>
     ///     The alis ecs benchmark class
     /// </summary>
-    [ Config(typeof(CustomConfig))]
+    [Config(typeof(CustomConfig))]
     public partial class AlisEcsBenchmark
     {
         /// <summary>
@@ -53,8 +53,5 @@ namespace Alis.Benchmark.CustomEcs
             SetupAlis();
             SetupFrent();
         }
-
-       
-       
     }
 }

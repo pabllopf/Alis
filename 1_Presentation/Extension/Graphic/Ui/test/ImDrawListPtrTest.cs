@@ -732,7 +732,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddDrawCmd_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -742,7 +741,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddImage_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -752,7 +750,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddImage_WithUvMin_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -762,7 +759,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddImage_WithUvMinUvMax_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -772,7 +768,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddImage_WithUvMinUvMaxCol_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -782,7 +777,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddImageQuad_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -792,7 +786,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddImageQuad_WithUv1_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -802,7 +795,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddImageQuad_WithUv1Uv2_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -812,7 +804,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddImageQuad_WithUv1Uv2Uv3_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -822,7 +813,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddImageQuad_WithUv1Uv2Uv3Uv4_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -832,7 +822,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddImageRounded_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -842,7 +831,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddImageRounded_WithFlags_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -852,7 +840,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddLine_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -862,7 +849,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddLine_WithThickness_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -872,7 +858,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddNgon_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -882,7 +867,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddNgon_WithThickness_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -892,7 +876,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddNgonFilled_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -903,7 +886,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Vector2F points = new Vector2F();
-
         }
 
         /// <summary>
@@ -913,7 +895,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddQuad_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -923,7 +904,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddQuad_WithThickness_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -933,7 +913,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddQuadFilled_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -943,7 +922,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddRect_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -953,7 +931,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddRect_WithRounding_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -963,7 +940,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddRect_WithRoundingFlags_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -973,7 +949,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddRect_WithRoundingFlagsThickness_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -983,7 +958,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddRectFilled_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -993,7 +967,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddRectFilled_WithRounding_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1003,7 +976,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddRectFilled_WithRoundingFlags_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1013,7 +985,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddRectFilledMultiColor_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1023,7 +994,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddTriangle_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1033,7 +1003,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddTriangle_WithThickness_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1043,7 +1012,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddTriangleFilled_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1053,7 +1021,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void ChannelsMerge_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1063,7 +1030,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void ChannelsSetCurrent_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1073,7 +1039,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void ChannelsSplit_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1083,7 +1048,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void CloneOutput_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1093,7 +1057,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetClipRectMax_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1103,7 +1066,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetClipRectMin_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1113,7 +1075,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathArcTo_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1123,7 +1084,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathArcTo_WithNumSegments_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1133,7 +1093,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathArcToFast_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1143,7 +1102,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathBezierCubicCurveTo_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1153,7 +1111,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathBezierCubicCurveTo_WithNumSegments_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1163,7 +1120,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathBezierQuadraticCurveTo_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1173,7 +1129,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathBezierQuadraticCurveTo_WithNumSegments_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1183,7 +1138,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathClear_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1193,7 +1147,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathFillConvex_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1203,7 +1156,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathLineTo_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1213,7 +1165,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathLineToMergeDuplicate_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1223,7 +1174,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathRect_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1233,7 +1183,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathRect_WithRounding_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1243,7 +1192,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathRect_WithRoundingFlags_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1253,7 +1201,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathStroke_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1263,7 +1210,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathStroke_WithFlags_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1273,7 +1219,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathStroke_WithFlagsThickness_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1283,7 +1228,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PopClipRect_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1293,7 +1237,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PopTextureId_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1303,7 +1246,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PrimQuadUv_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1313,7 +1255,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PrimRect_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1323,7 +1264,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PrimRectUv_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1333,7 +1273,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PrimReserve_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1343,7 +1282,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PrimUnreserve_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1353,7 +1291,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PrimVtx_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1363,7 +1300,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PrimWriteIdx_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1373,7 +1309,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PrimWriteVtx_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1383,7 +1318,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PushClipRect_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1393,7 +1327,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PushClipRect_WithIntersect_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -1403,7 +1336,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_AddRectFilled_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1413,7 +1345,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_AddRectFilledMultiColor_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1423,7 +1354,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_AddTriangle_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1433,7 +1363,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_AddTriangle_WithThickness_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1443,7 +1372,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_AddTriangleFilled_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1453,7 +1381,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_ChannelsMerge_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1463,7 +1390,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_ChannelsSetCurrent_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1473,7 +1399,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_ChannelsSplit_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1483,7 +1408,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_CloneOutput_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1493,7 +1417,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_GetClipRectMax_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1503,7 +1426,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_GetClipRectMin_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1513,7 +1435,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PathArcTo_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1523,7 +1444,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathArcTo_WithSegments_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1533,7 +1453,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PathArcToFast_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1543,7 +1462,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PathBezierCubicCurveTo_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1553,7 +1471,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathBezierCubicCurveTo_WithSegments_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1563,7 +1480,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PathBezierQuadraticCurveTo_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1573,7 +1489,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathBezierQuadraticCurveTo_WithSegments_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1583,7 +1498,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PathClear_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1593,7 +1507,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PathFillConvex_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1603,7 +1516,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PathLineTo_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1613,7 +1525,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PathLineToMergeDuplicate_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1623,7 +1534,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PathRect_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1633,7 +1543,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PathRect_WithRounding_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1643,7 +1552,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathRect_WithRoundingAndFlags_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1653,7 +1561,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PathStroke_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1663,7 +1570,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PathStroke_WithFlags_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1673,7 +1579,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PathStroke_WithFlagsAndThickness_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1683,7 +1588,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PopClipRect_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1693,7 +1597,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PopTextureId_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1703,7 +1606,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PrimQuadUv_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1713,7 +1615,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PrimRect_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1723,7 +1624,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PrimRectUv_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1733,7 +1633,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PrimReserve_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1743,7 +1642,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PrimUnreserve_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1753,7 +1651,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PrimVtx_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1763,7 +1660,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PrimWriteIdx_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1773,7 +1669,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PrimWriteVtx_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1783,7 +1678,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PushClipRect_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1793,7 +1687,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void v2_PushClipRect_WithIntersect_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1803,7 +1696,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PushClipRectFullScreen_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1813,7 +1705,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PushTextureId_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1823,7 +1714,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddText_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1833,7 +1723,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddText_WithFont_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1843,7 +1732,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void _PathArcToN_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1853,7 +1741,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void _PopUnusedDrawCmd_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1863,7 +1750,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void _ResetForNewFrame_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1873,7 +1759,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void _TryMergeDrawCmds_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1883,7 +1768,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddBezierCubic_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1893,7 +1777,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddBezierCubic_WithSegments_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1903,7 +1786,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddBezierQuadratic_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1913,7 +1795,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddBezierQuadratic_WithSegments_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1923,7 +1804,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddCallback_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1933,7 +1813,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddCircle_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1943,7 +1822,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddCircle_WithSegments_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1953,7 +1831,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddCircle_WithSegmentsAndThickness_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1963,7 +1840,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddCircleFilled_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -1973,7 +1849,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddCircleFilled_WithSegments_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -2069,7 +1944,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void _CalcCircleAutoSegmentCount_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -2079,7 +1953,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void _ClearFreeMemory_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -2089,7 +1962,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void _OnChangedClipRect_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -2099,7 +1971,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void _OnChangedTextureID_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -2109,7 +1980,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void _OnChangedVtxOffset_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>
@@ -2119,7 +1989,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void _PathArcToFastEx_ThrowsDllNotFoundException()
         {
             ImDrawListPtr drawListPtr = new ImDrawListPtr();
-
         }
 
         /// <summary>

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -43,11 +44,6 @@ using Alis.Core.Aspect.Memory;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Alis.Core.Graphic.OpenGL.Enums;
-
-
-
-
-
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Mapping;
@@ -95,6 +91,8 @@ namespace Alis.App.Engine
         ///     The fragment shader
         /// </summary>
         private static readonly FragmentShader FragmentShader = new FragmentShader();
+
+        private static bool firstTime = true;
 
         /// <summary>
         ///     The mouse pressed
@@ -282,7 +280,7 @@ namespace Alis.App.Engine
             // REBUILD ATLAS
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
-             //fonts.AddFontDefault();
+            //fonts.AddFontDefault();
 
             int fontSize = 14;
             int fontSizeIcon = 13;
@@ -293,7 +291,7 @@ namespace Alis.App.Engine
             fontFileSolid.ReadExactly(fontDataBytes, 0, (int) fontFileSolid.Length);
             Marshal.Copy(fontDataBytes, 0, fontData, (int) fontFileSolid.Length);
             SpaceWork.FontLoaded16Solid = fonts.AddFontFromMemoryTtf(fontData, fontSize, fontSize);
-            
+
             try
             {
                 ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
@@ -310,8 +308,8 @@ namespace Alis.App.Engine
                 GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
-                
-                
+
+
                 MemoryStream fontAwesome = AssetRegistry.GetResourceMemoryStreamByName(FontAwesome5.NameSolid);
                 IntPtr fontAwesomeData = Marshal.AllocHGlobal((int) fontAwesome.Length);
                 byte[] fontAwesomeDataBytes = new byte[fontAwesome.Length];
@@ -324,14 +322,14 @@ namespace Alis.App.Engine
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
                 return;
             }
-            
+
             MemoryStream fontFileSolid12 = AssetRegistry.GetResourceMemoryStreamByName("Engine_JetBrainsMono-Bold.ttf");
             IntPtr fontData12 = Marshal.AllocHGlobal((int) fontFileSolid12.Length);
             byte[] fontDataBytes12 = new byte[fontFileSolid12.Length];
             fontFileSolid12.ReadExactly(fontDataBytes12, 0, (int) fontFileSolid12.Length);
             Marshal.Copy(fontDataBytes12, 0, fontData12, (int) fontFileSolid12.Length);
             SpaceWork.FontLoaded10Solid = fonts.AddFontFromMemoryTtf(fontData12, 12, 12);
-            
+
             try
             {
                 ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
@@ -348,7 +346,7 @@ namespace Alis.App.Engine
                 GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
-                
+
                 MemoryStream fontAwesome12 = AssetRegistry.GetResourceMemoryStreamByName(FontAwesome5.NameSolid);
                 IntPtr fontAwesomeData12 = Marshal.AllocHGlobal((int) fontAwesome12.Length);
                 byte[] fontAwesomeDataBytes12 = new byte[fontAwesome12.Length];
@@ -361,14 +359,14 @@ namespace Alis.App.Engine
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
                 return;
             }
-            
+
             MemoryStream fontFileSolid40 = AssetRegistry.GetResourceMemoryStreamByName("Engine_JetBrainsMono-Bold.ttf");
             IntPtr fontData40 = Marshal.AllocHGlobal((int) fontFileSolid40.Length);
             byte[] fontDataBytes40 = new byte[fontFileSolid40.Length];
             fontFileSolid40.ReadExactly(fontDataBytes40, 0, (int) fontFileSolid40.Length);
             Marshal.Copy(fontDataBytes40, 0, fontData40, (int) fontFileSolid40.Length);
             SpaceWork.FontLoaded45Bold = fonts.AddFontFromMemoryTtf(fontData40, 40, 40);
-            
+
             try
             {
                 ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
@@ -434,14 +432,14 @@ namespace Alis.App.Engine
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
                 return;
             }
-            
+
             MemoryStream fontFileSolidLight = AssetRegistry.GetResourceMemoryStreamByName("Engine_JetBrainsMono-Bold.ttf");
             IntPtr fontDataLight = Marshal.AllocHGlobal((int) fontFileSolidLight.Length);
             byte[] fontDataBytesLight = new byte[fontFileSolidLight.Length];
             fontFileSolidLight.ReadExactly(fontDataBytesLight, 0, (int) fontFileSolidLight.Length);
             Marshal.Copy(fontDataBytesLight, 0, fontDataLight, (int) fontFileSolidLight.Length);
             SpaceWork.FontLoaded16Light = fonts.AddFontFromMemoryTtf(fontDataLight, fontSize, fontSize);
-            
+
             try
             {
                 ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
@@ -525,7 +523,7 @@ namespace Alis.App.Engine
 
 
             // Set icon app:
-            
+
             // TODO: CHANGE THIS TO USE A PNG LOADER
 
             string iconPath = "";
@@ -538,7 +536,7 @@ namespace Alis.App.Engine
             SpaceWork.Start();
 
             // TODO: FIX THIS TO LOAD THE CONFIG FROM THE USER FOLDER
-            
+
             //ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
 
             while (!SpaceWork.Quit)
@@ -898,8 +896,6 @@ namespace Alis.App.Engine
             style.DisabledAlpha = 0.6f;
         }
 
-        static bool firstTime = true;
-        
         /// <summary>
         ///     Renders the project
         /// </summary>
@@ -923,9 +919,8 @@ namespace Alis.App.Engine
 
             uint dockSpaceId = ImGui.GetId("MyDockSpace");
             ImGui.DockSpace(dockSpaceId, dockSize);
-            
-            
-           
+
+
             if (firstTime)
             {
                 BuildDefaultLayout();
@@ -1342,12 +1337,12 @@ namespace Alis.App.Engine
             bool anyMouseButtonDown = ImGui.IsAnyMouseDown();
             Sdl.CaptureMouse(anyMouseButtonDown);
         }
-        
-        void BuildDefaultLayout()
+
+        private void BuildDefaultLayout()
         {
             ImGuiViewportPtr viewport = ImGui.GetMainViewport();
             uint dockspace_id = ImGui.DockSpaceOverViewport(viewport);
-            
+
             // Limpia lo que hubiera antes
             ImGui.DockBuilderRemoveNode(dockspace_id);
             ImGui.DockBuilderAddNode(dockspace_id, ImGuiDockNodeFlags.None);
@@ -1373,7 +1368,7 @@ namespace Alis.App.Engine
 
             // Finalizar
             ImGui.DockBuilderFinish(dockspace_id);
-            
+
             Console.WriteLine($"Imgui version {ImGui.GetVersion()}");
         }
 

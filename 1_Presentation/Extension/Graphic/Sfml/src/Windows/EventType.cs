@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Extension.Graphic.Sfml.Windows
 {
     /// <summary>
@@ -58,7 +56,6 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         KeyReleased,
 
         /// <summary>Event triggered when the mouse wheel is scrolled (deprecated)</summary>
-        
         MouseWheelMoved,
 
         /// <summary>Event triggered when a mouse wheel is scrolled</summary>

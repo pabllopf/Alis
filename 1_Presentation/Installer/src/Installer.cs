@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,19 +38,13 @@ using System.Threading.Tasks;
 using Alis.App.Engine.Fonts;
 using Alis.App.Installer.Core;
 using Alis.App.Installer.Shaders;
-
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
-
 using Alis.Core.Aspect.Time;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Alis.Core.Graphic.OpenGL.Enums;
-
-
-
-
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Mapping;
@@ -429,7 +424,7 @@ namespace Alis.App.Installer
             _vertexArrayObject = Gl.GenVertexArray();
 
             // Set icon app:
-            
+
             // TODO: change icon
             string iconPath = "";
             if (!string.IsNullOrEmpty(iconPath) && File.Exists(iconPath))
@@ -549,7 +544,7 @@ namespace Alis.App.Installer
                     ImGui.Separator();
                 }
 
-                Sdl.SetWindowTitle(spaceWork.Window, $"{NameEngine} - {Math.Round((double)clock.ElapsedSeconds)}s");
+                Sdl.SetWindowTitle(spaceWork.Window, $"{NameEngine} - {Math.Round((double) clock.ElapsedSeconds)}s");
 
                 ImGui.End();
 

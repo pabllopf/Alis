@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    /// The on exit interface
+    ///     The on exit interface
     /// </summary>
     public interface IOnExit
     {
         /// <summary>
-        /// Ons the exit using the specified self
+        ///     Ons the exit using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         void OnExit(IGameObject self);

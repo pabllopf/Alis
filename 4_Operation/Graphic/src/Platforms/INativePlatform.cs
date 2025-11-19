@@ -45,7 +45,7 @@ namespace Alis.Core.Graphic.Platforms
         bool Initialize(int width, int height, string title);
 
         /// <summary>
-        /// Initializes the width
+        ///     Initializes the width
         /// </summary>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
@@ -115,8 +115,7 @@ namespace Alis.Core.Graphic.Platforms
         /// </summary>
         /// <returns>The int</returns>
         int GetWindowHeight();
-        
-        
+
 
         // Otros métodos según necesidades
         /// <summary>
@@ -134,14 +133,14 @@ namespace Alis.Core.Graphic.Platforms
         bool TryGetLastKeyPressed(out ConsoleKey key);
 
         /// <summary>
-        /// Ises the key down using the specified console key
+        ///     Ises the key down using the specified console key
         /// </summary>
         /// <param name="consoleKey">The console key</param>
         /// <returns>The bool</returns>
         bool IsKeyDown(ConsoleKey consoleKey);
 
         /// <summary>
-        /// Sets the window icon from the specified BMP file path
+        ///     Sets the window icon from the specified BMP file path
         /// </summary>
         /// <param name="iconPath">Full path to the BMP icon file</param>
         void SetWindowIcon(string iconPath);

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IOnUpdate.6.cs
+//  File:IOnUpdate.7.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -36,9 +36,8 @@ namespace Alis.Core.Aspect.Fluent.Components
     // ReSharper disable once PartialTypeWithSinglePart
     public partial interface IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> : IComponentBase
     {
-        
         /// <summary>
-        /// Updates the self
+        ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="arg1">The arg</param>

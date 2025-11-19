@@ -66,7 +66,7 @@ namespace Alis.Benchmark.EntityComponentSystem.CreateEntityWithTwoComponents
             }
         }
 
-        
+
         /// <summary>
         ///     Frents the bulk
         /// </summary>

@@ -30,19 +30,18 @@
 namespace Alis.Core.Aspect.Logging.Sample
 {
     /// <summary>
-    /// The program class
+    ///     The program class
     /// </summary>
     public class Program
     {
-        
         /// <summary>
-        /// Main the args
+        ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
             // Log a message
-           Logger.Log("Hello, world!");
+            Logger.Log("Hello, world!");
 
             // Log an error
             Logger.Error("This is an error message.");

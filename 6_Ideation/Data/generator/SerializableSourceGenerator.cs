@@ -1,20 +1,48 @@
-using System.Text;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SerializableSourceGenerator.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System.Linq;
+using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-
 
 namespace Alis.Core.Aspect.Data.Generator
 {
     /// <summary>
-    /// The serializable source generator class
+    ///     The serializable source generator class
     /// </summary>
-    /// <seealso cref="ISourceGenerator"/>
+    /// <seealso cref="ISourceGenerator" />
     [Generator]
     public class SerializableSourceGenerator : ISourceGenerator
     {
         /// <summary>
-        /// Initializes the context
+        ///     Initializes the context
         /// </summary>
         /// <param name="context">The context</param>
         public void Initialize(GeneratorInitializationContext context)
@@ -24,7 +52,7 @@ namespace Alis.Core.Aspect.Data.Generator
         }
 
         /// <summary>
-        /// Executes the context
+        ///     Executes the context
         /// </summary>
         /// <param name="context">The context</param>
         public void Execute(GeneratorExecutionContext context)
@@ -51,7 +79,7 @@ namespace Alis.Core.Aspect.Data.Generator
         }
 
         /// <summary>
-        /// Generates the serialization code using the specified type symbol
+        ///     Generates the serialization code using the specified type symbol
         /// </summary>
         /// <param name="typeSymbol">The type symbol</param>
         /// <returns>The string</returns>
@@ -127,7 +155,7 @@ namespace Alis.Core.Aspect.Data.Generator
                     else if (type is INamedTypeSymbol namedTypeSymbol && namedTypeSymbol.TypeArguments.Length > 0)
                     {
                         // Tipo complejo serializable
-                       sb.AppendLine($"            yield return (\"{jsonName}\", {property.Name} != null ? \"[\" + string.Join(\",\", {property.Name}.Select(x => x is IJsonSerializable js ? js.ToJson() : x.ToString())) + \"]\" : null);");
+                        sb.AppendLine($"            yield return (\"{jsonName}\", {property.Name} != null ? \"[\" + string.Join(\",\", {property.Name}.Select(x => x is IJsonSerializable js ? js.ToJson() : x.ToString())) + \"]\" : null);");
                     }
                     else
                     {
@@ -140,12 +168,12 @@ namespace Alis.Core.Aspect.Data.Generator
             // En GenerateSerializationCode, dentro del foreach de propiedades:
             if (typeSymbol.BaseType?.ToDisplayString() == "System.Exception")
             {
-                sb.AppendLine($"            yield return (nameof(Message), Message);");
-                sb.AppendLine($"            yield return (nameof(StackTrace), StackTrace);");
-                sb.AppendLine($"            yield return (nameof(Source), Source);");
-                sb.AppendLine($"            yield return (nameof(HResult), HResult.ToString());");
-                sb.AppendLine($"            yield return (nameof(HelpLink), HelpLink);");
-                sb.AppendLine($"            yield return (nameof(InnerException), InnerException?.Message);");
+                sb.AppendLine("            yield return (nameof(Message), Message);");
+                sb.AppendLine("            yield return (nameof(StackTrace), StackTrace);");
+                sb.AppendLine("            yield return (nameof(Source), Source);");
+                sb.AppendLine("            yield return (nameof(HResult), HResult.ToString());");
+                sb.AppendLine("            yield return (nameof(HelpLink), HelpLink);");
+                sb.AppendLine("            yield return (nameof(InnerException), InnerException?.Message);");
             }
 
             sb.AppendLine("        }");
@@ -229,48 +257,48 @@ namespace Alis.Core.Aspect.Data.Generator
                     {
                         switch (type.SpecialType)
                         {
-                            case Microsoft.CodeAnalysis.SpecialType.System_Boolean:
+                            case SpecialType.System_Boolean:
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && bool.TryParse(v_{name}, out var b_{name}) ? b_{name} : false,");
                                 break;
-                            case Microsoft.CodeAnalysis.SpecialType.System_Char:
+                            case SpecialType.System_Char:
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && char.TryParse(v_{name}, out var c_{name}) ? c_{name} : '\\0',");
                                 break;
-                            case Microsoft.CodeAnalysis.SpecialType.System_Byte:
+                            case SpecialType.System_Byte:
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && byte.TryParse(v_{name}, out var b_{name}) ? b_{name} : (byte)0,");
                                 break;
-                            case Microsoft.CodeAnalysis.SpecialType.System_SByte:
+                            case SpecialType.System_SByte:
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && sbyte.TryParse(v_{name}, out var sb_{name}) ? sb_{name} : (sbyte)0,");
                                 break;
-                            case Microsoft.CodeAnalysis.SpecialType.System_Int16:
+                            case SpecialType.System_Int16:
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && short.TryParse(v_{name}, out var s_{name}) ? s_{name} : (short)0,");
                                 break;
-                            case Microsoft.CodeAnalysis.SpecialType.System_UInt16:
+                            case SpecialType.System_UInt16:
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && ushort.TryParse(v_{name}, out var us_{name}) ? us_{name} : (ushort)0,");
                                 break;
-                            case Microsoft.CodeAnalysis.SpecialType.System_Int32:
+                            case SpecialType.System_Int32:
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && int.TryParse(v_{name}, out var i_{name}) ? i_{name} : 0,");
                                 break;
-                            case Microsoft.CodeAnalysis.SpecialType.System_UInt32:
+                            case SpecialType.System_UInt32:
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && uint.TryParse(v_{name}, out var ui_{name}) ? ui_{name} : 0u,");
                                 break;
-                            case Microsoft.CodeAnalysis.SpecialType.System_Int64:
+                            case SpecialType.System_Int64:
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && long.TryParse(v_{name}, out var l_{name}) ? l_{name} : 0L,");
                                 break;
-                            case Microsoft.CodeAnalysis.SpecialType.System_UInt64:
+                            case SpecialType.System_UInt64:
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && ulong.TryParse(v_{name}, out var ul_{name}) ? ul_{name} : 0UL,");
                                 break;
-                            case Microsoft.CodeAnalysis.SpecialType.System_Single:
+                            case SpecialType.System_Single:
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && float.TryParse(v_{name}, out var f_{name}) ? f_{name} : 0f,");
                                 break;
-                            case Microsoft.CodeAnalysis.SpecialType.System_Double:
+                            case SpecialType.System_Double:
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && double.TryParse(v_{name}, out var d_{name}) ? d_{name} : 0d,");
                                 break;
-                            case Microsoft.CodeAnalysis.SpecialType.System_Decimal:
+                            case SpecialType.System_Decimal:
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && decimal.TryParse(v_{name}, out var dec_{name}) ? dec_{name} : 0m,");
                                 break;
-                            case Microsoft.CodeAnalysis.SpecialType.System_String:
-                                
-                                
+                            case SpecialType.System_String:
+
+
                                 sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) ? v_{name} : null,");
                                 break;
                             default:
@@ -304,7 +332,6 @@ namespace Alis.Core.Aspect.Data.Generator
             }
 
 
-
             sb.AppendLine("            };");
             sb.AppendLine("        }");
 
@@ -325,7 +352,7 @@ namespace Alis.Core.Aspect.Data.Generator
                         return sb.ToString();
                     }
             ");
-            
+
             sb.AppendLine(@"
                    private static T[,] Parse2DArrayInline<T>(string json)
                    {
@@ -376,11 +403,10 @@ namespace Alis.Core.Aspect.Data.Generator
 
             sb.AppendLine("    }");
             sb.AppendLine("}");
-            
+
             sb.AppendLine("#pragma warning restore CS1591 // Restaurar advertencia de comentario XML");
 
             return sb.ToString();
         }
     }
 }
-

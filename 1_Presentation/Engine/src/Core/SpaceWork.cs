@@ -246,7 +246,6 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public void Initialize()
         {
-            
             ImGuiDemo.Initialize();
             ImPlotDemo.Initialize();
             ImGuizmoDemo.Initialize();

@@ -28,10 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using System.Runtime.InteropServices;
 using System.Security;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
 
@@ -56,7 +54,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         ///     The my texture
         /// </summary>
         private Texture myTexture;
-        
+
         /// <summary>
         ///     Default constructor
         /// </summary>

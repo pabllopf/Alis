@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
 
 namespace Alis.Extension.Graphic.Sfml.Windows
@@ -57,8 +56,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         [FieldOffset(4)] public MouseButtonEvent MouseButton;
 
         /// <summary>Arguments for mouse wheel events (MouseWheelMoved)</summary>
-        [FieldOffset(4)]
-        public MouseWheelEvent MouseWheel;
+        [FieldOffset(4)] public MouseWheelEvent MouseWheel;
 
         /// <summary>Arguments for mouse wheel scroll events (MouseWheelScrolled)</summary>
         [FieldOffset(4)] public MouseWheelScrollEvent MouseWheelScroll;

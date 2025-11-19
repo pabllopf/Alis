@@ -368,7 +368,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetTexId_ReturnsTexId()
         {
             ImDrawCmd cmd = new ImDrawCmd();
-
         }
     }
 }

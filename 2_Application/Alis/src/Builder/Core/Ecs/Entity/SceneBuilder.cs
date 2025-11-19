@@ -57,7 +57,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         ///     Gets the value of the scene
         /// </summary>
         private Scene Scene { get; } = new Scene();
-        
+
         /// <summary>
         ///     Builds this instance
         /// </summary>

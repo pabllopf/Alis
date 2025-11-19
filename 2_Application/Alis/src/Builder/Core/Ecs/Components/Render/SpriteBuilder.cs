@@ -44,6 +44,11 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         ISetTexture<SpriteBuilder, string>
     {
         /// <summary>
+        ///     The context
+        /// </summary>
+        private readonly Context context;
+
+        /// <summary>
         ///     The depth
         /// </summary>
         private int depth;
@@ -52,20 +57,12 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         ///     The empty
         /// </summary>
         private string nameFile = string.Empty;
-        
-        /// <summary>
-        /// The context
-        /// </summary>
-        private Context context;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpriteBuilder"/> class
+        ///     Initializes a new instance of the <see cref="SpriteBuilder" /> class
         /// </summary>
         /// <param name="context">The context</param>
-        public SpriteBuilder(Context context)
-        {
-            this.context = context;
-        }
+        public SpriteBuilder(Context context) => this.context = context;
 
         /// <summary>
         ///     Builds this instance

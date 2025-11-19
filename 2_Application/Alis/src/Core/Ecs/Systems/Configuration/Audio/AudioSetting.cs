@@ -38,19 +38,19 @@ namespace Alis.Core.Ecs.Systems.Configuration.Audio
     public struct AudioSetting(int volume = 100, bool mute = false) : IAudioSetting
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AudioSetting"/> class
+        ///     Initializes a new instance of the <see cref="AudioSetting" /> class
         /// </summary>
-        public AudioSetting() : this(volume: 100, mute: false)
+        public AudioSetting() : this(100, false)
         {
         }
-        
+
         /// <summary>
-        /// Gets or sets the value of the volume
+        ///     Gets or sets the value of the volume
         /// </summary>
         public int Volume { get; set; } = volume;
-        
+
         /// <summary>
-        /// Gets or sets the value of the mute
+        ///     Gets or sets the value of the mute
         /// </summary>
         public bool Mute { get; set; } = mute;
     }

@@ -27,14 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Core.Ecs.Systems
 {
     /// <summary>
     ///     Types of rules.
     /// </summary>
-    
     public enum RuleTypes
     {
         /// <summary>

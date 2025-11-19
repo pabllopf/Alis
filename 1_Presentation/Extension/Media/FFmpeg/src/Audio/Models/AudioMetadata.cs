@@ -39,7 +39,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio.Models
     ///     The audio metadata class
     /// </summary>
     [Serializable]
-    public partial class AudioMetadata 
+    public partial class AudioMetadata
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioMetadata" /> class

@@ -28,11 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using System.Runtime.InteropServices;
-using System.Security;
 using System.Text;
-
 using Alis.Extension.Graphic.Glfw.Enums;
 using Alis.Extension.Graphic.Glfw.Structs;
 using Image = Alis.Core.Graphic.Image;
@@ -235,9 +232,9 @@ namespace Alis.Extension.Graphic.Glfw
         [DllImport(Library, EntryPoint = "glfwSetWindowOpacity", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetWindowOpacity(IntPtr window, float opacity);
 
-        
+
         /// <summary>
-        /// Windows the hint string using the specified hint
+        ///     Windows the hint string using the specified hint
         /// </summary>
         /// <param name="hint">The hint</param>
         /// <param name="value">The value</param>
@@ -1597,7 +1594,7 @@ namespace Alis.Extension.Graphic.Glfw
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to 
+        ///         this will instead be reported by the next call to
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>
@@ -1779,7 +1776,7 @@ namespace Alis.Extension.Graphic.Glfw
         ///     Gets the address of the specified OpenGL or OpenGL ES core or extension function, if it is
         ///     supported by the current context.
         ///     This function does not apply to Vulkan. If you are rendering with Vulkan, use
-        ///      instead.
+        ///     instead.
         /// </summary>
         /// <param name="procName">Name of the function.</param>
         /// <returns>The address of the function, or <see cref="IntPtr.Zero" /> if an error occurred.</returns>
@@ -1870,7 +1867,7 @@ namespace Alis.Extension.Graphic.Glfw
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to 
+        ///         this will instead be reported by the next call to
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>
@@ -1887,7 +1884,7 @@ namespace Alis.Extension.Graphic.Glfw
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to 
+        ///         this will instead be reported by the next call to
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>
@@ -1904,7 +1901,7 @@ namespace Alis.Extension.Graphic.Glfw
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to 
+        ///         this will instead be reported by the next call to
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>
@@ -1921,7 +1918,7 @@ namespace Alis.Extension.Graphic.Glfw
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to 
+        ///         this will instead be reported by the next call to
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>
@@ -1938,7 +1935,7 @@ namespace Alis.Extension.Graphic.Glfw
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to 
+        ///         this will instead be reported by the next call to
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>
@@ -1955,7 +1952,7 @@ namespace Alis.Extension.Graphic.Glfw
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to 
+        ///         this will instead be reported by the next call to
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>
@@ -1972,7 +1969,7 @@ namespace Alis.Extension.Graphic.Glfw
         ///     terminated.
         ///     <para>
         ///         This function does not check whether the specified hint values are valid. If you set hints to invalid values
-        ///         this will instead be reported by the next call to 
+        ///         this will instead be reported by the next call to
         ///     </para>
         /// </summary>
         /// <param name="hint">The hint.</param>

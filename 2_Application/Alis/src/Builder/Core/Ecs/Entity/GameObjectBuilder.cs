@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:GameObjectBuilder.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using Alis.Builder.Core.Ecs.Components.Audio;
 using Alis.Builder.Core.Ecs.Components.Collider;
@@ -11,8 +40,6 @@ using Alis.Core.Ecs.Components.Audio;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems.Scope;
-using Alis.Core.Physic;
-using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Builder.Core.Ecs.Entity
 {
@@ -22,22 +49,22 @@ namespace Alis.Builder.Core.Ecs.Entity
     public class GameObjectBuilder : IBuild<GameObject>
     {
         /// <summary>
-        /// The scene
+        ///     The context
+        /// </summary>
+        private readonly Context context;
+
+        /// <summary>
+        ///     The scene
         /// </summary>
         private readonly Scene scene;
 
         /// <summary>
-        /// The game object
+        ///     The game object
         /// </summary>
         private GameObject gameObject;
-        
-        /// <summary>
-        /// The context
-        /// </summary>
-        private Context context;
 
         /// <summary>
-        /// The is static
+        ///     The is static
         /// </summary>
         private Info info = new Info
         {
@@ -50,14 +77,14 @@ namespace Alis.Builder.Core.Ecs.Entity
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GameObjectBuilder"/> class
+        ///     Initializes a new instance of the <see cref="GameObjectBuilder" /> class
         /// </summary>
         /// <param name="scene">The scene</param>
         /// <param name="context">The context</param>
         public GameObjectBuilder(Scene scene, Context context)
         {
             this.scene = scene;
-            this.gameObject = scene.Create();
+            gameObject = scene.Create();
             this.context = context;
         }
 
@@ -65,13 +92,10 @@ namespace Alis.Builder.Core.Ecs.Entity
         ///     Builds this instance
         /// </summary>
         /// <returns>The dictionary of components</returns>
-        public GameObject Build()
-        {
-            return gameObject;
-        }
+        public GameObject Build() => gameObject;
 
         /// <summary>
-        /// Transforms the config
+        ///     Transforms the config
         /// </summary>
         /// <param name="config">The config</param>
         /// <returns>The game object builder</returns>
@@ -79,12 +103,12 @@ namespace Alis.Builder.Core.Ecs.Entity
         {
             TransformBuilder transformBuilder = new TransformBuilder();
             config(transformBuilder);
-            gameObject.Add<Alis.Core.Ecs.Components.Transform>(transformBuilder.Build());
+            gameObject.Add(transformBuilder.Build());
             return this;
         }
 
         /// <summary>
-        /// Adds the component using the specified config
+        ///     Adds the component using the specified config
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="config">The config</param>
@@ -93,12 +117,12 @@ namespace Alis.Builder.Core.Ecs.Entity
         {
             AnimatorBuilder builder = new AnimatorBuilder(context);
             config(builder);
-            gameObject.Add<Animator>(builder.Build());
+            gameObject.Add(builder.Build());
             return this;
         }
 
         /// <summary>
-        /// Adds the component using the specified config
+        ///     Adds the component using the specified config
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="config">The config</param>
@@ -107,12 +131,12 @@ namespace Alis.Builder.Core.Ecs.Entity
         {
             CameraBuilder cameraBuilder = new CameraBuilder(context);
             config(cameraBuilder);
-            gameObject.Add<Camera>(cameraBuilder.Build());
+            gameObject.Add(cameraBuilder.Build());
             return this;
         }
 
         /// <summary>
-        /// Adds the component using the specified config
+        ///     Adds the component using the specified config
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="config">The config</param>
@@ -121,12 +145,12 @@ namespace Alis.Builder.Core.Ecs.Entity
         {
             SpriteBuilder spriteBuilder = new SpriteBuilder(context);
             config(spriteBuilder);
-            gameObject.Add<Sprite>(spriteBuilder.Build());
+            gameObject.Add(spriteBuilder.Build());
             return this;
         }
 
         /// <summary>
-        /// Adds the component using the specified config
+        ///     Adds the component using the specified config
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="config">The config</param>
@@ -136,12 +160,12 @@ namespace Alis.Builder.Core.Ecs.Entity
             AudioSourceBuilder audioBuilder = new AudioSourceBuilder(context);
             config(audioBuilder);
             AudioSource audio = audioBuilder.Build();
-            gameObject.Add<AudioSource>(audio);
+            gameObject.Add(audio);
             return this;
         }
 
         /// <summary>
-        /// Adds the component using the specified config
+        ///     Adds the component using the specified config
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="config">The config</param>
@@ -151,12 +175,12 @@ namespace Alis.Builder.Core.Ecs.Entity
             BoxColliderBuilder boxColliderBuilder = new BoxColliderBuilder(context);
             config(boxColliderBuilder);
             BoxCollider boxCollider = boxColliderBuilder.Build();
-            gameObject.Add<BoxCollider>(boxCollider);
+            gameObject.Add(boxCollider);
             return this;
         }
 
         /// <summary>
-        /// Adds the component using the specified config
+        ///     Adds the component using the specified config
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="config">The config</param>
@@ -170,33 +194,33 @@ namespace Alis.Builder.Core.Ecs.Entity
             {
                 hasContext.Context = context;
             }
-            
+
             config(component);
-            gameObject.Add<T>(component);
+            gameObject.Add(component);
             return this;
         }
 
         /// <summary>
-        /// Adds the component
+        ///     Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The game object builder</returns>
         public GameObjectBuilder WithComponent<T>() where T : IOnUpdate, new()
         {
             T component = new T();
-            
+
             // if component has interface IHasContext<Context>, set the context:
             if (component is IHasContext<Context> hasContext)
             {
                 hasContext.Context = context;
             }
-            
-            gameObject.Add<T>(component);
+
+            gameObject.Add(component);
             return this;
         }
 
         /// <summary>
-        /// Adds the component using the specified component
+        ///     Adds the component using the specified component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
@@ -207,20 +231,20 @@ namespace Alis.Builder.Core.Ecs.Entity
             {
                 hasContext.Context = context;
             }
-            
-            gameObject.Add<T>(component);
+
+            gameObject.Add(component);
             return this;
         }
 
         /// <summary>
-        /// Names the camera
+        ///     Names the camera
         /// </summary>
         /// <param name="name">The camera</param>
         /// <returns>The game object builder</returns>
         public GameObjectBuilder Name(string name)
         {
             info.Name = name;
-            
+
             if (gameObject.Has<Info>())
             {
                 ref Info i = ref gameObject.Get<Info>();
@@ -228,14 +252,14 @@ namespace Alis.Builder.Core.Ecs.Entity
             }
             else
             {
-                gameObject.Add<Info>(info);
+                gameObject.Add(info);
             }
-            
+
             return this;
         }
 
         /// <summary>
-        /// Tags the tag
+        ///     Tags the tag
         /// </summary>
         /// <param name="tag">The tag</param>
         /// <returns>The game object builder</returns>
@@ -249,13 +273,14 @@ namespace Alis.Builder.Core.Ecs.Entity
             }
             else
             {
-                gameObject.Add<Info>(info);
+                gameObject.Add(info);
             }
+
             return this;
         }
 
         /// <summary>
-        /// Ids the id
+        ///     Ids the id
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The game object builder</returns>
@@ -266,7 +291,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         }
 
         /// <summary>
-        /// Ises the active using the specified is active
+        ///     Ises the active using the specified is active
         /// </summary>
         /// <param name="isActive">The is active</param>
         /// <returns>The game object builder</returns>
@@ -280,19 +305,20 @@ namespace Alis.Builder.Core.Ecs.Entity
             }
             else
             {
-                gameObject.Add<Info>(info);
+                gameObject.Add(info);
             }
+
             return this;
         }
-        
+
         /// <summary>
-        /// Ises the active
+        ///     Ises the active
         /// </summary>
         /// <returns>The game object builder</returns>
         public GameObjectBuilder IsActive()
         {
             info.IsActive = true;
-            
+
             if (gameObject.Has<Info>())
             {
                 ref Info i = ref gameObject.Get<Info>();
@@ -300,13 +326,14 @@ namespace Alis.Builder.Core.Ecs.Entity
             }
             else
             {
-                gameObject.Add<Info>(info);
+                gameObject.Add(info);
             }
+
             return this;
         }
 
         /// <summary>
-        /// Ises the static using the specified is static
+        ///     Ises the static using the specified is static
         /// </summary>
         /// <param name="isStatic">The is static</param>
         /// <returns>The game object builder</returns>
@@ -320,13 +347,14 @@ namespace Alis.Builder.Core.Ecs.Entity
             }
             else
             {
-                gameObject.Add<Info>(info);
+                gameObject.Add(info);
             }
+
             return this;
         }
-        
+
         /// <summary>
-        /// Ises the static
+        ///     Ises the static
         /// </summary>
         /// <returns>The game object builder</returns>
         public GameObjectBuilder IsStatic()
@@ -339,11 +367,10 @@ namespace Alis.Builder.Core.Ecs.Entity
             }
             else
             {
-                gameObject.Add<Info>(info);
+                gameObject.Add(info);
             }
+
             return this;
         }
-
-        
     }
 }

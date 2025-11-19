@@ -37,8 +37,8 @@ using Alis.Core.Graphic.Platforms.Win.Native;
 namespace Alis.Core.Graphic.Platforms.Win
 {
     /// <summary>
-    /// Provides a Win32 implementation for native platform window and OpenGL context management.
-    /// Designed for scalability and maintainability.
+    ///     Provides a Win32 implementation for native platform window and OpenGL context management.
+    ///     Designed for scalability and maintainability.
     /// </summary>
     public class WinNativePlatform : INativePlatform
     {
@@ -46,98 +46,68 @@ namespace Alis.Core.Graphic.Platforms.Win
         // CONSTANTS
         // ------------------------------------------------------------------
         /// <summary>
-        /// 
         /// </summary>
         private const string WindowClassName = "AlisWin32GLWindow";
 
         /// <summary>
-        /// 
         /// </summary>
         private const int CwUsedefault = unchecked((int) 0x80000000);
 
         /// <summary>
-        /// 
         /// </summary>
         private const uint SwpNomove = 0x0040;
 
-        // ------------------------------------------------------------------
-        // DELEGATES
-        // ------------------------------------------------------------------
         /// <summary>
-        /// Delegate for window procedure callback.
+        ///     The console key
         /// </summary>
-        private delegate IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+        private readonly HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
+
+        /// <summary>
+        /// </summary>
+        private IntPtr hDc;
+
+        /// <summary>
+        /// </summary>
+        private int height;
+
+        /// <summary>
+        /// </summary>
+        private IntPtr hGlrc;
 
         // ------------------------------------------------------------------
         // FIELDS
         // ------------------------------------------------------------------
         /// <summary>
-        /// 
         /// </summary>
         private IntPtr hInstance;
 
         /// <summary>
-        /// 
         /// </summary>
         private IntPtr hWnd;
 
         /// <summary>
-        /// 
         /// </summary>
-        private IntPtr hDc;
+        private ConsoleKey? lastKeyPressed;
 
         /// <summary>
-        /// 
-        /// </summary>
-        private IntPtr hGlrc;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private int width;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private int height;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private string title;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private ConsoleKey? lastKeyPressed = null;
-
-        /// <summary>
-        /// 
         /// </summary>
         private bool running = true;
 
         /// <summary>
-        /// 
+        /// </summary>
+        private string title;
+
+        /// <summary>
+        /// </summary>
+        private int width;
+
+        /// <summary>
         /// </summary>
         private WndProc wndProcDelegate;
 
         /// <summary>
-        /// 
         /// </summary>
         private IntPtr wndProcPtr;
-
-        /// <summary>
-        /// The console key
-        /// </summary>
-        private HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="lpModuleName"></param>
-        /// <returns></returns>
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
-        private static extern IntPtr GetModuleHandle(string lpModuleName);
 
 
         // ------------------------------------------------------------------
@@ -145,7 +115,6 @@ namespace Alis.Core.Graphic.Platforms.Win
         // ------------------------------------------------------------------
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="w"></param>
         /// <param name="h"></param>
@@ -186,7 +155,7 @@ namespace Alis.Core.Graphic.Platforms.Win
             // Try all combinations for maximum compatibility
             var styleCombos = new[]
             {
-                (WindowStyles.OverlappedWindow | WindowStyles.Visible),
+                WindowStyles.OverlappedWindow | WindowStyles.Visible
                 //(WindowStyles.OverlappedWindow),
                 //(WindowStyles.Visible),
                 //(WindowStyles.Popup | WindowStyles.Visible),
@@ -199,7 +168,7 @@ namespace Alis.Core.Graphic.Platforms.Win
             var exStyles = new[]
             {
                 //(int)WindowExStyles.None,
-                (int)WindowExStyles.AppWindow,
+                (int) WindowExStyles.AppWindow
                 /*(int)WindowExStyles.Topmost,
                 (int)WindowExStyles.ToolWindow,
                 (int)WindowExStyles.WindowEdge,
@@ -219,7 +188,7 @@ namespace Alis.Core.Graphic.Platforms.Win
             var sizes = new[]
             {
                 //(width, height),
-                (w, h),
+                (w, h)
                 //(1024, 768),
                 //(640, 480),
             };
@@ -231,7 +200,7 @@ namespace Alis.Core.Graphic.Platforms.Win
                 foreach (var style in styleCombos)
                 {
                     // Avoid invalid combinations: WS_CHILD with WS_EX_APPWINDOW
-                    if ((style & WindowStyles.Child) != 0 && exStyle == (int)WindowExStyles.AppWindow)
+                    if ((style & WindowStyles.Child) != 0 && exStyle == (int) WindowExStyles.AppWindow)
                     {
                         continue;
                     }
@@ -239,33 +208,34 @@ namespace Alis.Core.Graphic.Platforms.Win
                     foreach (var sz in sizes)
                     {
                         hWnd = User32.CreateWindowEx(exStyle, className, title,
-                            (int)style,
+                            (int) style,
                             CwUsedefault, CwUsedefault, sz.Item1, sz.Item2,
                             IntPtr.Zero, IntPtr.Zero, hInstance, IntPtr.Zero);
                         if (hWnd != IntPtr.Zero)
                         {
-                            Logger.Info($"Window created successfully with exStyle: 0x{exStyle:X}, style: 0x{(int)style:X}, size: {sz.Item1}x{sz.Item2}");
+                            Logger.Info($"Window created successfully with exStyle: 0x{exStyle:X}, style: 0x{(int) style:X}, size: {sz.Item1}x{sz.Item2}");
                             windowCreated = true;
                             break;
                         }
-                        else
-                        {
-                            int win32Err = Marshal.GetLastWin32Error();
-                            string meaning = GetWin32ErrorMeaning(win32Err);
-                            lastErrorMsg = $"Failed to create window with exStyle: 0x{exStyle:X}, style: 0x{(int)style:X}, size: {sz.Item1}x{sz.Item2}, Win32 error: {win32Err} - {meaning}";
-                            Logger.Info(lastErrorMsg);
-                        }
+
+                        int win32Err = Marshal.GetLastWin32Error();
+                        string meaning = GetWin32ErrorMeaning(win32Err);
+                        lastErrorMsg = $"Failed to create window with exStyle: 0x{exStyle:X}, style: 0x{(int) style:X}, size: {sz.Item1}x{sz.Item2}, Win32 error: {win32Err} - {meaning}";
+                        Logger.Info(lastErrorMsg);
                     }
+
                     if (windowCreated)
                     {
                         break;
                     }
                 }
+
                 if (windowCreated)
                 {
                     break;
                 }
             }
+
             if (!windowCreated)
             {
                 Logger.Info($"Could not create Win32 window after several attempts. Last error: {lastErrorMsg}");
@@ -360,7 +330,7 @@ namespace Alis.Core.Graphic.Platforms.Win
                 if (procAttribs != IntPtr.Zero)
                 {
                     WglCreateContextAttribsARB wglCreateContextAttribsARB = Marshal.GetDelegateForFunctionPointer<WglCreateContextAttribsARB>(procAttribs);
-                    int[] attribs = new int[]
+                    int[] attribs = new[]
                     {
                         0x2091, 3, // WGL_CONTEXT_MAJOR_VERSION_ARB, 3
                         0x2092, 3, // WGL_CONTEXT_MINOR_VERSION_ARB, 3
@@ -378,11 +348,9 @@ namespace Alis.Core.Graphic.Platforms.Win
                             contextOk = true;
                             break;
                         }
-                        else
-                        {
-                            Opengl32.wglDeleteContext(hGlrc);
-                            hGlrc = IntPtr.Zero;
-                        }
+
+                        Opengl32.wglDeleteContext(hGlrc);
+                        hGlrc = IntPtr.Zero;
                     }
                 }
 
@@ -399,12 +367,12 @@ namespace Alis.Core.Graphic.Platforms.Win
             }
 
             SetTitle(WindowClassName);
-            
+
             return true;
         }
 
         /// <summary>
-        /// Shows the window.
+        ///     Shows the window.
         /// </summary>
         public void ShowWindow()
         {
@@ -416,7 +384,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         }
 
         /// <summary>
-        /// Hides the window.
+        ///     Hides the window.
         /// </summary>
         public void HideWindow()
         {
@@ -427,7 +395,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         }
 
         /// <summary>
-        /// Sets the window title.
+        ///     Sets the window title.
         /// </summary>
         public void SetTitle(string t)
         {
@@ -439,7 +407,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         }
 
         /// <summary>
-        /// Sets the window size.
+        ///     Sets the window size.
         /// </summary>
         public void SetSize(int w, int h)
         {
@@ -452,7 +420,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         }
 
         /// <summary>
-        /// Makes the OpenGL context current.
+        ///     Makes the OpenGL context current.
         /// </summary>
         public void MakeContextCurrent()
         {
@@ -463,7 +431,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         }
 
         /// <summary>
-        /// Swaps the front and back buffers.
+        ///     Swaps the front and back buffers.
         /// </summary>
         public void SwapBuffers()
         {
@@ -474,15 +442,12 @@ namespace Alis.Core.Graphic.Platforms.Win
         }
 
         /// <summary>
-        /// Returns whether the window is visible.
+        ///     Returns whether the window is visible.
         /// </summary>
-        public bool IsWindowVisible()
-        {
-            return hWnd != IntPtr.Zero && User32.IsWindowVisible(hWnd);
-        }
+        public bool IsWindowVisible() => hWnd != IntPtr.Zero && User32.IsWindowVisible(hWnd);
 
         /// <summary>
-        /// Polls and processes window events.
+        ///     Polls and processes window events.
         /// </summary>
         public bool PollEvents()
         {
@@ -516,7 +481,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         }
 
         /// <summary>
-        /// Cleans up resources and destroys the window and OpenGL context.
+        ///     Cleans up resources and destroys the window and OpenGL context.
         /// </summary>
         public void Cleanup()
         {
@@ -541,7 +506,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         }
 
         /// <summary>
-        /// Gets the current window width.
+        ///     Gets the current window width.
         /// </summary>
         public int GetWindowWidth()
         {
@@ -556,7 +521,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         }
 
         /// <summary>
-        /// Gets the current window height.
+        ///     Gets the current window height.
         /// </summary>
         public int GetWindowHeight()
         {
@@ -571,7 +536,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         }
 
         /// <summary>
-        /// Gets the address of an OpenGL function.
+        ///     Gets the address of an OpenGL function.
         /// </summary>
         public IntPtr GetProcAddress(string name)
         {
@@ -586,7 +551,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         }
 
         /// <summary>
-        /// Tries to get the last key pressed.
+        ///     Tries to get the last key pressed.
         /// </summary>
         public bool TryGetLastKeyPressed(out ConsoleKey key)
         {
@@ -602,17 +567,14 @@ namespace Alis.Core.Graphic.Platforms.Win
         }
 
         /// <summary>
-        /// Ises the key down using the specified key
+        ///     Ises the key down using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The bool</returns>
-        public bool IsKeyDown(ConsoleKey key)
-        {
-            return pressedKeys.Contains(key);
-        }
+        public bool IsKeyDown(ConsoleKey key) => pressedKeys.Contains(key);
 
         /// <summary>
-        /// Crea la ventana y le asigna un icono BMP usando el path proporcionado (Win32 API)
+        ///     Crea la ventana y le asigna un icono BMP usando el path proporcionado (Win32 API)
         /// </summary>
         public bool Initialize(int width, int height, string title, string iconPath)
         {
@@ -640,11 +602,50 @@ namespace Alis.Core.Graphic.Platforms.Win
             {
                 Logger.Error($"Error asignando icono: {ex.Message}");
             }
+
             return true;
         }
 
         /// <summary>
-        /// Sends the message using the specified h wnd
+        ///     Sets the window icon from the specified BMP file path (Win32 API)
+        /// </summary>
+        public void SetWindowIcon(string iconPath)
+        {
+            if (hWnd == IntPtr.Zero)
+            {
+                return;
+            }
+
+            const uint IMAGE_ICON = 1;
+            const uint LR_LOADFROMFILE = 0x00000010;
+            IntPtr hIcon = LoadImage(IntPtr.Zero, iconPath, IMAGE_ICON, 0, 0, LR_LOADFROMFILE);
+            if (hIcon != IntPtr.Zero)
+            {
+                const int WM_SETICON = 0x0080;
+                // Libera el icono anterior si existe
+                IntPtr oldSmallIcon = SendMessage(hWnd, WM_SETICON, new IntPtr(0), hIcon);
+                IntPtr oldBigIcon = SendMessage(hWnd, WM_SETICON, new IntPtr(1), hIcon);
+                if (oldSmallIcon != IntPtr.Zero)
+                {
+                    DestroyIcon(oldSmallIcon);
+                }
+
+                if (oldBigIcon != IntPtr.Zero)
+                {
+                    DestroyIcon(oldBigIcon);
+                }
+            }
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="lpModuleName"></param>
+        /// <returns></returns>
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+        private static extern IntPtr GetModuleHandle(string lpModuleName);
+
+        /// <summary>
+        ///     Sends the message using the specified h wnd
         /// </summary>
         /// <param name="hWnd">The wnd</param>
         /// <param name="Msg">The msg</param>
@@ -655,7 +656,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
 
         /// <summary>
-        /// Loads the image using the specified h inst
+        ///     Loads the image using the specified h inst
         /// </summary>
         /// <param name="hInst">The inst</param>
         /// <param name="lpszName">The lpsz name</param>
@@ -671,7 +672,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         // PRIVATE METHODS
         // ------------------------------------------------------------------
         /// <summary>
-        /// Window procedure callback for handling window messages.
+        ///     Window procedure callback for handling window messages.
         /// </summary>
         private IntPtr WindowProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
         {
@@ -702,13 +703,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-        private delegate IntPtr WglCreateContextAttribsARB(IntPtr hdc, IntPtr hShareContext, int[] attribs);
-
-        /// <summary>
-        /// Gets the win 32 error meaning using the specified error code
+        ///     Gets the win 32 error meaning using the specified error code
         /// </summary>
         /// <param name="errorCode">The error code</param>
         /// <returns>The string</returns>
@@ -728,43 +723,25 @@ namespace Alis.Core.Graphic.Platforms.Win
         }
 
         /// <summary>
-        /// Sets the window icon from the specified BMP file path (Win32 API)
-        /// </summary>
-       public void SetWindowIcon(string iconPath)
-        {
-            if (hWnd == IntPtr.Zero)
-            {
-                return;
-            }
-
-            const uint IMAGE_ICON = 1;
-            const uint LR_LOADFROMFILE = 0x00000010;
-            IntPtr hIcon = LoadImage(IntPtr.Zero, iconPath, IMAGE_ICON, 0, 0, LR_LOADFROMFILE);
-            if (hIcon != IntPtr.Zero)
-            {
-                const int WM_SETICON = 0x0080;
-                // Libera el icono anterior si existe
-                IntPtr oldSmallIcon = SendMessage(hWnd, WM_SETICON, new IntPtr(0), hIcon);
-                IntPtr oldBigIcon = SendMessage(hWnd, WM_SETICON, new IntPtr(1), hIcon);
-                if (oldSmallIcon != IntPtr.Zero)
-                {
-                    DestroyIcon(oldSmallIcon);
-                }
-
-                if (oldBigIcon != IntPtr.Zero)
-                {
-                    DestroyIcon(oldBigIcon);
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Destroys the icon using the specified h icon
+        ///     Destroys the icon using the specified h icon
         /// </summary>
         /// <param name="hIcon">The icon</param>
         /// <returns>The bool</returns>
         [DllImport("user32.dll", SetLastError = true)]
         private static extern bool DestroyIcon(IntPtr hIcon);
+
+        // ------------------------------------------------------------------
+        // DELEGATES
+        // ------------------------------------------------------------------
+        /// <summary>
+        ///     Delegate for window procedure callback.
+        /// </summary>
+        private delegate IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+
+        /// <summary>
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+        private delegate IntPtr WglCreateContextAttribsARB(IntPtr hdc, IntPtr hShareContext, int[] attribs);
     }
 }
 

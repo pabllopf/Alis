@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Systems;
-using Alis.Core.Ecs.Systems.Configuration;
 
 namespace Alis.Sample.Desktop
 {

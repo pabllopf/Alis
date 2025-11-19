@@ -29,8 +29,6 @@
 
 using System;
 
-
-
 namespace Alis.Extension.Graphic.Sfml.Systems
 {
     /// <summary>

@@ -27,18 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    /// The on press key interface
+    ///     The on press key interface
     /// </summary>
-    /// <seealso cref="IComponentBase"/>
-    public interface IOnPressKey 
+    /// <seealso cref="IComponentBase" />
+    public interface IOnPressKey
     {
         /// <summary>
-        /// Ons the press key usando información extendida
+        ///     Ons the press key usando información extendida
         /// </summary>
         void OnPressKey(KeyEventInfo info);
     }

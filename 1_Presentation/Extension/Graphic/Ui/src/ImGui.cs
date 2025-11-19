@@ -29,7 +29,6 @@
 
 using System;
 using System.Text;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Extension.Graphic.Ui
@@ -641,10 +640,7 @@ namespace Alis.Extension.Graphic.Ui
             ImGuiNative.igDockBuilderSetNodeSize(dockspaceId, viewportSize);
         }
 
-        public static uint DockBuilderSplitNode(uint dockMainId, ImGuiDir left, float p2, object p3,  out uint dockIdRight)
-        {
-            return ImGuiNative.igDockBuilderSplitNode(dockMainId, left, p2, IntPtr.Zero, out dockIdRight);
-        }
+        public static uint DockBuilderSplitNode(uint dockMainId, ImGuiDir left, float p2, object p3, out uint dockIdRight) => ImGuiNative.igDockBuilderSplitNode(dockMainId, left, p2, IntPtr.Zero, out dockIdRight);
 
         public static void DockBuilderDockWindow(string scene, uint dockIdLeft)
         {

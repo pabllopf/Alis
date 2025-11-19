@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.Components.Audio
     ///     The audio clip
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct AudioSource(Context context, string nameFile = "", float volume = 100, bool isMute = false, bool playOnAwake = false, bool loop = false) : 
+    public struct AudioSource(Context context, string nameFile = "", float volume = 100, bool isMute = false, bool playOnAwake = false, bool loop = false) :
         IAudioSource
     {
         /// <summary>
@@ -105,7 +105,6 @@ namespace Alis.Core.Ecs.Components.Audio
             {
                 _ = player.PlayLoop(string.IsNullOrEmpty(FullPathAudioFile) ? NameFile : FullPathAudioFile, true);
             }
-           
         }
 
         /// <summary>
@@ -152,12 +151,12 @@ namespace Alis.Core.Ecs.Components.Audio
         }
 
         /// <summary>
-        /// Gets or sets the value of the context
+        ///     Gets or sets the value of the context
         /// </summary>
         public Context Context { get; set; } = context;
-        
+
         /// <summary>
-        /// Ons the exit using the specified self
+        ///     Ons the exit using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnExit(IGameObject self)

@@ -37,16 +37,16 @@ namespace Alis.App.Installer.Core
         /// <summary>
         ///     Initializes this instance
         /// </summary>
-        public void Initialize();
+        void Initialize();
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public void Update();
+        void Update();
 
         /// <summary>
         ///     Renders this instance
         /// </summary>
-        public void Render();
+        void Render();
     }
 }

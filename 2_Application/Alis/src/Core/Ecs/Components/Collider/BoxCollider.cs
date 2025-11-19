@@ -30,12 +30,8 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Systems;
-using Alis.Core.Ecs.Systems.Manager.Physic;
 using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
@@ -245,9 +241,9 @@ namespace Alis.Core.Ecs.Components.Collider
         /// </summary>
 
         public uint Ebo { get; private set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the this game object
+        ///     Gets or sets the value of the this game object
         /// </summary>
         private IGameObject ThisGameObject { get; set; }
 
@@ -298,16 +294,34 @@ namespace Alis.Core.Ecs.Components.Collider
                 Body.LinearVelocity = LinearVelocity;
                 Body.Awake = true;
                 Body.SetIsSensor(IsTrigger);
-                
-                ThisGameObject = (GameObject)self;
+
+                ThisGameObject = (GameObject) self;
                 Body.Tag = self;
 
-                Body.OnCollision += OnCollision; 
+                Body.OnCollision += OnCollision;
                 Body.OnSeparation += OnSeparation;
             }
         }
 
-       
+        /// <summary>
+        ///     Gets or sets the value of the context
+        /// </summary>
+        public Context Context { get; set; }
+
+        /// <summary>
+        ///     Ons the exit using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void OnExit(IGameObject self)
+        {
+            if (Body != null)
+            {
+                Context.PhysicManager.WorldPhysic.Remove(Body);
+                Body = null;
+            }
+        }
+
+
         /// <summary>
         ///     Describes whether this instance on collision
         /// </summary>
@@ -327,7 +341,7 @@ namespace Alis.Core.Ecs.Components.Collider
                     Type componentType = component.Type;
                     if (typeof(IOnCollisionEnter).IsAssignableFrom(componentType))
                     {
-                        IOnCollisionEnter onPressKey = (IOnCollisionEnter)fixtureBGameObject.Get(componentType);
+                        IOnCollisionEnter onPressKey = (IOnCollisionEnter) fixtureBGameObject.Get(componentType);
                         onPressKey.OnCollisionEnter(ThisGameObject);
                     }
                 }
@@ -339,7 +353,7 @@ namespace Alis.Core.Ecs.Components.Collider
                     Type componentType = component.Type;
                     if (typeof(IOnCollisionEnter).IsAssignableFrom(componentType))
                     {
-                        IOnCollisionEnter onPressKey = (IOnCollisionEnter)fixtureGameObject.Get(componentType);
+                        IOnCollisionEnter onPressKey = (IOnCollisionEnter) fixtureGameObject.Get(componentType);
                         onPressKey.OnCollisionEnter(ThisGameObject);
                     }
                 }
@@ -359,9 +373,7 @@ namespace Alis.Core.Ecs.Components.Collider
             GameObject fixtureGameObject = (GameObject) fixtureA.GetBody.Tag;
             GameObject fixtureBGameObject = (GameObject) fixtureB.GetBody.Tag;
 
-            
-            
-            
+
             if (fixtureGameObject.Equals(ThisGameObject) && fixtureBGameObject.Has<BoxCollider>())
             {
                 foreach (ComponentId component in fixtureBGameObject.ComponentTypes)
@@ -369,7 +381,7 @@ namespace Alis.Core.Ecs.Components.Collider
                     Type componentType = component.Type;
                     if (typeof(IOnCollisionExit).IsAssignableFrom(componentType))
                     {
-                        IOnCollisionExit onPressKey = (IOnCollisionExit)fixtureBGameObject.Get(componentType);
+                        IOnCollisionExit onPressKey = (IOnCollisionExit) fixtureBGameObject.Get(componentType);
                         onPressKey.OnCollisionExit(ThisGameObject);
                     }
                 }
@@ -381,7 +393,7 @@ namespace Alis.Core.Ecs.Components.Collider
                     Type componentType = component.Type;
                     if (typeof(IOnCollisionExit).IsAssignableFrom(componentType))
                     {
-                        IOnCollisionExit onPressKey = (IOnCollisionExit)fixtureGameObject.Get(componentType);
+                        IOnCollisionExit onPressKey = (IOnCollisionExit) fixtureGameObject.Get(componentType);
                         onPressKey.OnCollisionExit(ThisGameObject);
                     }
                 }
@@ -554,24 +566,6 @@ namespace Alis.Core.Ecs.Components.Collider
             Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Line);
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
             Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Fill);
-        }
-
-        /// <summary>
-        /// Gets or sets the value of the context
-        /// </summary>
-        public Context Context { get; set; }
-        
-        /// <summary>
-        /// Ons the exit using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void OnExit(IGameObject self)
-        {
-            if (Body != null)
-            {
-                Context.PhysicManager.WorldPhysic.Remove(Body);
-                Body = null;
-            }
         }
     }
 }

@@ -9,7 +9,7 @@
         <Nullable>disable</Nullable>
         <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
         <SonarQubeExclude>true</SonarQubeExclude>
-       
+
     </PropertyGroup>
 
     <PropertyGroup>
@@ -22,7 +22,7 @@
 
     <PropertyGroup>
         <DefineConstants Condition="'$(RuntimeIdentifier)' != ''">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>
-        <DefineConstants Condition="'$(RuntimeIdentifier)' == ''" >$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
+        <DefineConstants Condition="'$(RuntimeIdentifier)' == ''">$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
     </PropertyGroup>
 
 
@@ -44,8 +44,7 @@
     <ItemGroup>
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
-    
-   
+
 
     <ItemGroup>
         <ProjectReference
@@ -224,26 +223,25 @@
 
         <!-- Windows: solo si existe el directorio -->
         <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
-              Command="powershell -NoLogo -Command &quot;Compress-Archive -Path '$(AssetsDir)\\*' -DestinationPath '$(AssetsZip)' -Force; [Convert]::ToBase64String([System.IO.File]::ReadAllBytes('$(AssetsZip)')) | Out-File -FilePath '$(AssetsOutput)' -Encoding ASCII&quot;" />
+              Command="powershell -NoLogo -Command &quot;Compress-Archive -Path '$(AssetsDir)\\*' -DestinationPath '$(AssetsZip)' -Force; [Convert]::ToBase64String([System.IO.File]::ReadAllBytes('$(AssetsZip)')) | Out-File -FilePath '$(AssetsOutput)' -Encoding ASCII&quot;"/>
 
         <!-- macOS/Linux: usar redirección para la compatibilidad con distintas implementaciones de base64 -->
         <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
-              Command="sh -c &quot;zip -r -9 '$(AssetsZip)' '$(AssetsDir)' &amp;&amp; base64 &lt; '$(AssetsZip)' &gt; '$(AssetsOutput)'&quot;" />
+              Command="sh -c &quot;zip -r -9 '$(AssetsZip)' '$(AssetsDir)' &amp;&amp; base64 &lt; '$(AssetsZip)' &gt; '$(AssetsOutput)'&quot;"/>
 
         <!-- Si no existe AssetsDir, crear un archivo de salida vacío para no romper el build -->
         <Message Condition="!Exists('$(AssetsDir)')" Text="No existe el directorio `$(AssetsDir)`. Se genera `$(AssetsOutput)` vacío." Importance="high"/>
 
         <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
-              Command="powershell -NoLogo -Command &quot;Set-Content -Path '$(AssetsOutput)' -Value '' -Encoding ASCII&quot;" />
+              Command="powershell -NoLogo -Command &quot;Set-Content -Path '$(AssetsOutput)' -Value '' -Encoding ASCII&quot;"/>
 
         <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
-              Command="sh -c &quot;mkdir -p '$(ProjectDir)obj' &amp;&amp; : &gt; '$(AssetsOutput)'&quot;" />
+              Command="sh -c &quot;mkdir -p '$(ProjectDir)obj' &amp;&amp; : &gt; '$(AssetsOutput)'&quot;"/>
     </Target>
 
     <ItemGroup>
-        <AdditionalFiles Include="$(AssetsOutput)" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" Visible="false" />
+        <AdditionalFiles Include="$(AssetsOutput)" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" Visible="false"/>
     </ItemGroup>
-
 
 
     <PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -396,7 +394,6 @@
         <!-- Prevents generation of PDB files, which are not needed in production and take up space. -->
         <GenerateDebugSymbols>false</GenerateDebugSymbols>
     </PropertyGroup>
-    
-    
-    
+
+
 </Project>

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 #if osxarm64 || osxarm || osxx64 || osx
-
 using System;
 using System.Runtime.InteropServices;
 
@@ -52,10 +51,12 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// Gets or sets the value of the view
         /// </summary>
         public IntPtr View { get; private set; }
+
         /// <summary>
         /// Gets or sets the value of the context
         /// </summary>
         public IntPtr Context { get; private set; }
+
         /// <summary>
         /// Gets or sets the value of the pixel format
         /// </summary>
@@ -98,6 +99,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// Makes the current
         /// </summary>
         public void MakeCurrent() => ObjectiveCInterop.objc_msgSend_void(Context, ObjectiveCInterop.Sel("makeCurrentContext"));
+
         /// <summary>
         /// Swaps the buffers
         /// </summary>
@@ -106,4 +108,3 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
 }
 
 #endif
-

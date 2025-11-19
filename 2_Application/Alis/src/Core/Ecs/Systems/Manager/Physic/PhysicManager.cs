@@ -40,9 +40,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
     public class PhysicManager : AManager
     {
         /// <summary>
-        ///     The vector
+        ///     The iterations
         /// </summary>
-        public WorldPhysic WorldPhysic;
+        private SolverIterations iterations;
 
         /// <summary>
         ///     The time step physics
@@ -50,18 +50,15 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         private float timeStepPhysics;
 
         /// <summary>
-        /// The iterations
+        ///     The vector
         /// </summary>
-        private SolverIterations iterations;
+        public WorldPhysic WorldPhysic;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicManager" /> class
         /// </summary>
         /// <param name="context">The context</param>
-        public PhysicManager(Context context) : base(context)
-        {
-            WorldPhysic = new WorldPhysic(context.Setting.Physic.Gravity);
-        }
+        public PhysicManager(Context context) : base(context) => WorldPhysic = new WorldPhysic(context.Setting.Physic.Gravity);
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicManager" /> class
@@ -138,8 +135,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
             {
                 timeStepPhysics = 1f / 5f;
             }
-            
-            
+
+
             iterations = new SolverIterations();
             iterations.PositionIterations = SettingEnv.PositionIterations;
             iterations.VelocityIterations = SettingEnv.VelocityIterations;
@@ -166,11 +163,10 @@ namespace Alis.Core.Ecs.Systems.Manager.Physic
         }
 
         /// <summary>
-        /// Ons the exit
+        ///     Ons the exit
         /// </summary>
         public override void OnExit()
         {
-           
         }
 
 

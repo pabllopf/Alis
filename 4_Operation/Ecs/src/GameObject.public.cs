@@ -766,7 +766,6 @@ namespace Alis.Core.Ecs
         /// </summary>
         /// <param name="components">The components the <see cref="GameObjectType" /> should have.</param>
         /// <param name="tags">The tags the <see cref="GameObjectType" /> should have.</param>
-        
         public static GameObjectType EntityTypeOf(ReadOnlySpan<ComponentId> components, ReadOnlySpan<TagId> tags) => Archetype.GetArchetypeId(components, tags);
     }
 }

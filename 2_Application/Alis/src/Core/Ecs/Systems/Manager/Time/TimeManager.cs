@@ -38,14 +38,14 @@ namespace Alis.Core.Ecs.Systems.Manager.Time
     public class TimeManager : AManager
     {
         /// <summary>
-        ///     The one second
-        /// </summary>
-        public readonly double OneSecond = 1.0;
-
-        /// <summary>
         ///     The milliseconds in second
         /// </summary>
         public readonly int MillisecondsInSecond = 1000;
+
+        /// <summary>
+        ///     The one second
+        /// </summary>
+        public readonly double OneSecond = 1.0;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="TimeManager" /> class

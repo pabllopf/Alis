@@ -29,10 +29,6 @@
 
 using System;
 using System.IO;
-using System.IO.Compression;
-using System.Linq;
-
-using System.Resources;
 using Alis.Core.Aspect.Memory;
 
 namespace Alis.Core.Graphic
@@ -69,20 +65,18 @@ namespace Alis.Core.Graphic
         ///     Gets the value of the data
         /// </summary>
         public byte[] Data { get; }
-        
-  /// <summary>
-  /// Loads the image from resources using the specified resource name
-  /// </summary>
-  /// <param name="resourceName">The resource name</param>
-  /// <exception cref="FileNotFoundException">Resource '{resourceName}' not found in 'assets.pack'.</exception>
-  /// <exception cref="FileNotFoundException">Resource file 'assets.pack' not found in embedded resources.</exception>
-  /// <returns>The image</returns>
-  public static Image LoadImageFromResources(string resourceName)
-  {
-      return LoadFromStream(AssetRegistry.GetResourceMemoryStreamByName(resourceName));
-  }
+
         /// <summary>
-        /// Loads the from stream using the specified stream
+        ///     Loads the image from resources using the specified resource name
+        /// </summary>
+        /// <param name="resourceName">The resource name</param>
+        /// <exception cref="FileNotFoundException">Resource '{resourceName}' not found in 'assets.pack'.</exception>
+        /// <exception cref="FileNotFoundException">Resource file 'assets.pack' not found in embedded resources.</exception>
+        /// <returns>The image</returns>
+        public static Image LoadImageFromResources(string resourceName) => LoadFromStream(AssetRegistry.GetResourceMemoryStreamByName(resourceName));
+
+        /// <summary>
+        ///     Loads the from stream using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <exception cref="InvalidDataException">Not a valid BMP file (missing BM header)</exception>
@@ -106,7 +100,7 @@ namespace Alis.Core.Graphic
                 reader.BaseStream.Seek(18, SeekOrigin.Begin);
                 int width = reader.ReadInt32();
                 int height = reader.ReadInt32();
-                
+
                 reader.BaseStream.Seek(28, SeekOrigin.Begin);
                 short bitsPerPixel = reader.ReadInt16();
 
@@ -114,7 +108,7 @@ namespace Alis.Core.Graphic
                 int compression = reader.ReadInt32();
 
                 int bytesPerPixel = bitsPerPixel / 8;
-                int rowPadded = ((width * bitsPerPixel + 31) / 32) * 4;
+                int rowPadded = (width * bitsPerPixel + 31) / 32 * 4;
                 byte[] rawData = new byte[height * width * 4];
 
                 // Leer paleta si existe
@@ -132,6 +126,7 @@ namespace Alis.Core.Graphic
                 {
                     paletteSize = 2;
                 }
+
                 if (paletteSize > 0)
                 {
                     reader.BaseStream.Seek(headerSize + 14, SeekOrigin.Begin);
@@ -142,31 +137,44 @@ namespace Alis.Core.Graphic
                         byte green = reader.ReadByte();
                         byte red = reader.ReadByte();
                         byte reserved = reader.ReadByte();
-                        palette[i] = new byte[] { red, green, blue, 255 };
+                        palette[i] = new byte[] {red, green, blue, 255};
                     }
                 }
 
                 int[] bitfieldsMasks = null;
-                if (compression == 3) {
+                if (compression == 3)
+                {
                     // Las máscaras están justo después del header
                     reader.BaseStream.Seek(headerSize + 14, SeekOrigin.Begin);
                     bitfieldsMasks = new int[bitsPerPixel == 32 ? 4 : 3];
-                    for (int i = 0; i < bitfieldsMasks.Length; i++) {
+                    for (int i = 0; i < bitfieldsMasks.Length; i++)
+                    {
                         bitfieldsMasks[i] = reader.ReadInt32();
                     }
+
                     reader.BaseStream.Seek(pixelDataOffset, SeekOrigin.Begin);
                 }
 
                 // Soporte explícito para imágenes BMP de 24 bits (RGB)
                 // Si bitsPerPixel == 24, se procesa como imagen RGB sin canal alfa
                 // El canal alfa se establece en 255 por defecto
-                if (compression == 0 || compression == 3) { // BI_RGB
+                if (compression == 0 || compression == 3)
+                {
+                    // BI_RGB
                     LoadBmpRgb(reader, width, height, bitsPerPixel, rawData, palette, rowPadded, bytesPerPixel);
-                } else if (compression == 1 && bitsPerPixel == 8) { // BI_RLE8
+                }
+                else if (compression == 1 && bitsPerPixel == 8)
+                {
+                    // BI_RLE8
                     LoadBmpRle8(reader, width, height, bitsPerPixel, rawData, palette, rowPadded, bytesPerPixel);
-                } else if (compression == 2 && bitsPerPixel == 4) { // BI_RLE4
+                }
+                else if (compression == 2 && bitsPerPixel == 4)
+                {
+                    // BI_RLE4
                     LoadBmpRle4(reader, width, height, bitsPerPixel, rawData, palette, rowPadded, bytesPerPixel);
-                } else {
+                }
+                else
+                {
                     throw new NotSupportedException($"Unsupported BMP compression type: {compression}");
                 }
 
@@ -189,7 +197,7 @@ namespace Alis.Core.Graphic
 
         // Métodos separados para cada tipo de BMP
         /// <summary>
-        /// Loads the bmp rgb using the specified reader
+        ///     Loads the bmp rgb using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="width">The width</param>
@@ -200,10 +208,13 @@ namespace Alis.Core.Graphic
         /// <param name="rowPadded">The row padded</param>
         /// <param name="bytesPerPixel">The bytes per pixel</param>
         /// <exception cref="NotSupportedException">Unsupported bits per pixel: {bitsPerPixel}</exception>
-        private static void LoadBmpRgb(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel) {
-            if (height < 0) {
+        private static void LoadBmpRgb(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel)
+        {
+            if (height < 0)
+            {
                 height = -height;
             }
+
             for (int y = 0; y < height; y++)
             {
                 int row = y; // Corregido: siempre cargar de arriba hacia abajo
@@ -214,13 +225,14 @@ namespace Alis.Core.Graphic
                         byte blue = reader.ReadByte();
                         byte green = reader.ReadByte();
                         byte red = reader.ReadByte();
-                        byte alpha = bitsPerPixel == 32 ? reader.ReadByte() : (byte)255;
+                        byte alpha = bitsPerPixel == 32 ? reader.ReadByte() : (byte) 255;
                         int index = (row * width + x) * 4;
                         rawData[index + 0] = red;
                         rawData[index + 1] = green;
                         rawData[index + 2] = blue;
                         rawData[index + 3] = alpha;
                     }
+
                     int padding = rowPadded - width * bytesPerPixel;
                     if (padding > 0)
                     {
@@ -238,6 +250,7 @@ namespace Alis.Core.Graphic
                         rawData[index + 2] = palette[colorIndex][2];
                         rawData[index + 3] = palette[colorIndex][3];
                     }
+
                     int padding = rowPadded - width;
                     if (padding > 0)
                     {
@@ -250,9 +263,9 @@ namespace Alis.Core.Graphic
                     for (int x = 0; x < width; x += 2)
                     {
                         byte b = reader.ReadByte();
-                        for (int i = 0; i < 2 && (x + i) < width; i++)
+                        for (int i = 0; i < 2 && x + i < width; i++)
                         {
-                            byte colorIndex = (byte)((i == 0) ? (b >> 4) : (b & 0x0F));
+                            byte colorIndex = (byte) (i == 0 ? b >> 4 : b & 0x0F);
                             int index = (row * width + x + i) * 4;
                             rawData[index + 0] = palette[colorIndex][0];
                             rawData[index + 1] = palette[colorIndex][1];
@@ -261,7 +274,8 @@ namespace Alis.Core.Graphic
                             pixels++;
                         }
                     }
-                    int padding = rowPadded - ((width + 1) / 2);
+
+                    int padding = rowPadded - (width + 1) / 2;
                     if (padding > 0)
                     {
                         reader.BaseStream.Seek(padding, SeekOrigin.Current);
@@ -273,9 +287,9 @@ namespace Alis.Core.Graphic
                     for (int x = 0; x < width; x += 8)
                     {
                         byte b = reader.ReadByte();
-                        for (int i = 0; i < 8 && (x + i) < width; i++)
+                        for (int i = 0; i < 8 && x + i < width; i++)
                         {
-                            byte colorIndex = (byte)((b >> (7 - i)) & 0x01);
+                            byte colorIndex = (byte) ((b >> (7 - i)) & 0x01);
                             int index = (row * width + x + i) * 4;
                             rawData[index + 0] = palette[colorIndex][0];
                             rawData[index + 1] = palette[colorIndex][1];
@@ -284,7 +298,8 @@ namespace Alis.Core.Graphic
                             pixels++;
                         }
                     }
-                    int padding = rowPadded - ((width + 7) / 8);
+
+                    int padding = rowPadded - (width + 7) / 8;
                     if (padding > 0)
                     {
                         reader.BaseStream.Seek(padding, SeekOrigin.Current);
@@ -298,7 +313,7 @@ namespace Alis.Core.Graphic
         }
 
         /// <summary>
-        /// Loads the bmp rle 8 using the specified reader
+        ///     Loads the bmp rle 8 using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="width">The width</param>
@@ -308,8 +323,8 @@ namespace Alis.Core.Graphic
         /// <param name="palette">The palette</param>
         /// <param name="rowPadded">The row padded</param>
         /// <param name="bytesPerPixel">The bytes per pixel</param>
-        private static void LoadBmpRle8(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel) {
-            
+        private static void LoadBmpRle8(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel)
+        {
             int x = 0, y = 0; // Corregido: empezar desde la primera fila
             while (reader.BaseStream.Position < reader.BaseStream.Length && y < height)
             {
@@ -324,6 +339,7 @@ namespace Alis.Core.Graphic
                             x = 0;
                             y++;
                         }
+
                         int index = (y * width + x) * 4; // Corregido: filas de arriba hacia abajo
                         rawData[index + 0] = palette[value][0];
                         rawData[index + 1] = palette[value][1];
@@ -361,6 +377,7 @@ namespace Alis.Core.Graphic
                                 x = 0;
                                 y++;
                             }
+
                             int index = (y * width + x) * 4;
                             rawData[index + 0] = palette[absValue][0];
                             rawData[index + 1] = palette[absValue][1];
@@ -368,6 +385,7 @@ namespace Alis.Core.Graphic
                             rawData[index + 3] = palette[absValue][3];
                             x++;
                         }
+
                         if ((absCount & 1) == 1)
                         {
                             reader.ReadByte(); // Padding
@@ -378,7 +396,7 @@ namespace Alis.Core.Graphic
         }
 
         /// <summary>
-        /// Loads the bmp rle 4 using the specified reader
+        ///     Loads the bmp rle 4 using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="width">The width</param>
@@ -388,11 +406,13 @@ namespace Alis.Core.Graphic
         /// <param name="palette">The palette</param>
         /// <param name="rowPadded">The row padded</param>
         /// <param name="bytesPerPixel">The bytes per pixel</param>
-        private static void LoadBmpRle4(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel) {
-            if (height < 0) {
+        private static void LoadBmpRle4(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel)
+        {
+            if (height < 0)
+            {
                 height = -height;
             }
-            
+
             int x = 0, y = 0; // Corregido: empezar desde la primera fila
             while (reader.BaseStream.Position < reader.BaseStream.Length && y < height)
             {
@@ -400,16 +420,17 @@ namespace Alis.Core.Graphic
                 byte value = reader.ReadByte();
                 if (count > 0)
                 {
-                    byte first = (byte)(value >> 4);
-                    byte second = (byte)(value & 0x0F);
+                    byte first = (byte) (value >> 4);
+                    byte second = (byte) (value & 0x0F);
                     for (int i = 0; i < count; i++)
                     {
-                        byte colorIndex = (byte)((i % 2 == 0) ? first : second);
+                        byte colorIndex = i % 2 == 0 ? first : second;
                         if (x >= width)
                         {
                             x = 0;
                             y++;
                         }
+
                         int index = (y * width + x) * 4; // Corregido: filas de arriba hacia abajo
                         rawData[index + 0] = palette[colorIndex][0];
                         rawData[index + 1] = palette[colorIndex][1];
@@ -443,16 +464,17 @@ namespace Alis.Core.Graphic
                         for (int i = 0; i < pairs; i++)
                         {
                             byte absValue = reader.ReadByte();
-                            byte first = (byte)(absValue >> 4);
-                            byte second = (byte)(absValue & 0x0F);
-                            for (int j = 0; j < 2 && (i * 2 + j) < absCount; j++)
+                            byte first = (byte) (absValue >> 4);
+                            byte second = (byte) (absValue & 0x0F);
+                            for (int j = 0; j < 2 && i * 2 + j < absCount; j++)
                             {
-                                byte colorIndex = (j == 0) ? first : second;
+                                byte colorIndex = j == 0 ? first : second;
                                 if (x >= width)
                                 {
                                     x = 0;
                                     y++;
                                 }
+
                                 int index = (y * width + x) * 4;
                                 rawData[index + 0] = palette[colorIndex][0];
                                 rawData[index + 1] = palette[colorIndex][1];
@@ -461,7 +483,8 @@ namespace Alis.Core.Graphic
                                 x++;
                             }
                         }
-                        if (((absCount & 3) == 1) || ((absCount & 3) == 2))
+
+                        if ((absCount & 3) == 1 || (absCount & 3) == 2)
                         {
                             reader.ReadByte(); // Padding
                         }

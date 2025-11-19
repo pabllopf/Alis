@@ -34,7 +34,6 @@ using Alis.App.Hub.Utils;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 
-
 namespace Alis.App.Hub.Windows.Sections
 {
     /// <summary>

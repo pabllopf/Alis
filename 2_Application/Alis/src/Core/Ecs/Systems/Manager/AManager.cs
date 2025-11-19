@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Core.Ecs.Systems.Manager
@@ -108,7 +107,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnEnable()
         {
-            
         }
 
         /// <summary>
@@ -116,7 +114,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnInit()
         {
-            
         }
 
         /// <summary>
@@ -124,7 +121,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnAwake()
         {
-            
         }
 
         /// <summary>
@@ -132,7 +128,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnStart()
         {
-            
         }
 
         /// <summary>
@@ -140,7 +135,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnBeforeUpdate()
         {
-            
         }
 
         /// <summary>
@@ -148,7 +142,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnUpdate()
         {
-            
         }
 
         /// <summary>
@@ -156,7 +149,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnAfterUpdate()
         {
-            
         }
 
         /// <summary>
@@ -164,7 +156,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnProcessPendingChanges()
         {
-            
         }
 
         /// <summary>
@@ -172,7 +163,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnBeforeFixedUpdate()
         {
-            
         }
 
         /// <summary>
@@ -180,7 +170,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnFixedUpdate()
         {
-            
         }
 
         /// <summary>
@@ -188,7 +177,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnAfterFixedUpdate()
         {
-            
         }
 
         /// <summary>
@@ -196,7 +184,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnDispatchEvents()
         {
-            
         }
 
         /// <summary>
@@ -204,7 +191,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnCalculate()
         {
-            
         }
 
         /// <summary>
@@ -212,7 +198,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnBeforeDraw()
         {
-            
         }
 
         /// <summary>
@@ -220,7 +205,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnDraw()
         {
-            
         }
 
         /// <summary>
@@ -228,7 +212,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnAfterDraw()
         {
-            
         }
 
         /// <summary>
@@ -236,7 +219,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnGui()
         {
-            
         }
 
         /// <summary>
@@ -258,7 +240,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnReset()
         {
-            
         }
 
         /// <summary>
@@ -266,7 +247,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnStop()
         {
-            
         }
 
         /// <summary>
@@ -274,7 +254,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnExit()
         {
-            
         }
 
         /// <summary>
@@ -282,7 +261,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnDestroy()
         {
-            
         }
 
         /// <summary>
@@ -290,7 +268,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnSave()
         {
-            
         }
 
         /// <summary>
@@ -298,7 +275,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnLoad()
         {
-            
         }
 
         /// <summary>
@@ -307,7 +283,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// <param name="path">The path</param>
         public virtual void OnSave(string path)
         {
-            
         }
 
         /// <summary>
@@ -316,7 +291,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// <param name="path">The path</param>
         public virtual void OnLoad(string path)
         {
-            
         }
 
         /// <summary>
@@ -324,7 +298,6 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// </summary>
         public virtual void OnPhysicUpdate()
         {
-            
         }
     }
 }

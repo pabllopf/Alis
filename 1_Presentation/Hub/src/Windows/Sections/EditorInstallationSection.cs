@@ -32,9 +32,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
-using System.Runtime.InteropServices;
-
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Entity;
@@ -42,7 +39,6 @@ using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
-
 
 namespace Alis.App.Hub.Windows.Sections
 {
@@ -222,7 +218,7 @@ namespace Alis.App.Hub.Windows.Sections
             List<string> availableVersions = FetchAvailableVersionsAsync().Result;
             versions = availableVersions.ToArray();
         }
-        
+
         /// <summary>
         ///     Fetches the available versions
         /// </summary>
@@ -230,13 +226,13 @@ namespace Alis.App.Hub.Windows.Sections
         private async Task<List<string>> FetchAvailableVersionsAsync()
         {
             List<string> versionList = new List<string>();
-            
+
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("User-Agent", "request");
                 string response = await client.GetStringAsync("https://api.github.com/repos/pabllopf/alis/releases");
                 ReleasesInfo releases = JsonNativeAot.Deserialize<ReleasesInfo>(response);
-                
+
                 foreach (ReleaseElement release in releases.Releases)
                 {
                     string version = release.Element["tag_name"]?.ToString();

@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    /// The on start interface
+    ///     The on start interface
     /// </summary>
     public interface IOnStart
     {
         /// <summary>
-        /// Ons the start using the specified self
+        ///     Ons the start using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         void OnStart(IGameObject self);

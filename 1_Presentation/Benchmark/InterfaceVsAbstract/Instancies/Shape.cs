@@ -32,10 +32,10 @@ namespace Alis.Benchmark.InterfaceVsAbstract.Instancies
 // Interface definition
 
 // Abstract class definition
-    /// <summary>
-    ///     The shape class
-    /// </summary>
-    public abstract class Shape
+/// <summary>
+///     The shape class
+/// </summary>
+public abstract class Shape
     {
         /// <summary>
         ///     Gets the area

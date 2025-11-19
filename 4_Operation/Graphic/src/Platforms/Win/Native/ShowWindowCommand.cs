@@ -31,22 +31,19 @@
 
 using System;
 
-
 namespace Alis.Core.Graphic.Platforms.Win.Native
 {
     /// <summary>
-    /// ShowWindow commands.
+    ///     ShowWindow commands.
     /// </summary>
     [Flags]
-    public enum ShowWindowCommand : int
+    public enum ShowWindowCommand
     {
         /// <summary>
-        /// 
         /// </summary>
         Hide = 0,
 
         /// <summary>
-        /// 
         /// </summary>
         Show = 5
     }
