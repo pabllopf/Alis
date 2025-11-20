@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.App.Engine.Core;
+using Alis.App.Engine.Fonts;
 using Alis.Extension.Graphic.Ui;
 
 namespace Alis.App.Engine.Windows
@@ -41,7 +42,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The name window
         /// </summary>
-        private const string NameWindow = "Solution";
+        public static string NameWindow = $"{FontAwesome5.InfoCircle} Solution";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SolutionWindow" /> class

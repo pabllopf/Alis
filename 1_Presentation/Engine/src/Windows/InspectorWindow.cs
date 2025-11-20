@@ -115,7 +115,6 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     Renders this instance
         /// </summary>
-        [UnconditionalSuppressMessage("Trimming", "IL2026:Members annotated with 'RequiresUnreferencedCodeAttribute' require dynamic access otherwise can break functionality when trimming application code", Justification = "<Pending>")]
         public void Render()
         {
             ImGui.Begin(NameWindow);

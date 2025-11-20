@@ -41,7 +41,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The gamepad
         /// </summary>
-        private static readonly string NameWindow = $"{FontAwesome5.Gamepad} Game";
+        public static readonly string NameWindow = $"{FontAwesome5.Gamepad} Game";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameWindow" /> class

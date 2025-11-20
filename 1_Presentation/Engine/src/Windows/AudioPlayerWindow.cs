@@ -46,7 +46,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The music
         /// </summary>
-        private static readonly string WindowName = $"{FontAwesome5.Music} Audio Player";
+        public static readonly string WindowName = $"{FontAwesome5.Music} Audio Player";
 
         /// <summary>
         ///     The current time
