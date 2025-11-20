@@ -274,10 +274,10 @@ namespace Alis.App.Engine
             SpaceWork.Io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
                                         ImGuiConfigFlags.ViewportsEnable;
 
-            //ImNodes.CreateContext();
-            //ImPlot.CreateContext();
-            //ImGuizMo.SetImGuiContext(SpaceWork.ContextGui);
-            //ImGui.SetCurrentContext(SpaceWork.ContextGui);
+            ImNodes.CreateContext();
+            ImPlot.CreateContext();
+            ImGuizMo.SetImGuiContext(SpaceWork.ContextGui);
+            ImGui.SetCurrentContext(SpaceWork.ContextGui);
 
             // REBUILD ATLAS
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
@@ -575,7 +575,7 @@ namespace Alis.App.Engine
 
                 //Gl.GlClearColor(0.05f, 0.05f, 0.05f, 1.00f);
                 ImGui.NewFrame();
-                //ImGuizMo.BeginFrame();
+                ImGuizMo.BeginFrame();
 
                 Environment.CurrentDirectory = SpaceWork.Project.Path;
 
