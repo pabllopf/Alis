@@ -246,10 +246,11 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public void Initialize()
         {
+            /*
             ImGuiDemo.Initialize();
             ImPlotDemo.Initialize();
             ImGuizmoDemo.Initialize();
-            ImNodeDemo.Initialize();
+            ImNodeDemo.Initialize();*/
             IconDemo.Initialize();
 
             // if is macos system:
@@ -280,10 +281,10 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public void Start()
         {
-            ImGuiDemo.Start();
+           /* ImGuiDemo.Start();
             ImPlotDemo.Start();
             ImGuizmoDemo.Start();
-            ImNodeDemo.Start();
+            ImNodeDemo.Start();*/
             IconDemo.Start();
 
             // if is macos system:
@@ -314,10 +315,10 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public void Update()
         {
-            ImGuiDemo.Run();
+           /* ImGuiDemo.Run();
             ImPlotDemo.Run();
             ImGuizmoDemo.Run();
-            ImNodeDemo.Run();
+            ImNodeDemo.Run();*/
             IconDemo.Run();
 
             // if is macos system:

@@ -1101,7 +1101,7 @@ namespace Alis.Extension.Graphic.Ui
         ///     Igs the get io
         /// </summary>
         /// <returns>The im gui io</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "GetIO")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetIO")]
         public static extern IntPtr igGetIO();
 
         /// <summary>
@@ -5253,23 +5253,24 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImVec4_ImVec4_Float")]
         public static extern Vector4F ImVec4_ImVec4_Float(float x, float y, float z, float w);
+        
 
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DockBuilderRemoveNode")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderRemoveNode")]
         public static extern void igDockBuilderRemoveNode(uint dockspaceId);
 
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DockBuilderAddNode")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderAddNode")]
         public static extern void igDockBuilderAddNode(uint dockspaceId, ImGuiDockNodeFlags none);
 
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DockBuilderSetNodeSize")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderSetNodeSize")]
         public static extern void igDockBuilderSetNodeSize(uint dockspaceId, Vector2F viewportSize);
 
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DockBuilderSplitNode")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderSplitNode")]
         public static extern uint igDockBuilderSplitNode(uint dockMainId, ImGuiDir left, float p2, IntPtr zero, out uint dockIdRight);
 
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DockBuilderDockWindow")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderDockWindow")]
         public static extern void igDockBuilderDockWindow(byte[] getBytes, uint dockIdLeft);
 
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DockBuilderFinish")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderFinish")]
         public static extern void igDockBuilderFinish(uint dockspaceId);
     }
 }
