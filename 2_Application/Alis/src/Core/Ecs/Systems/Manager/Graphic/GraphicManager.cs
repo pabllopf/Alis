@@ -39,7 +39,6 @@ using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms;
-using Alis.Core.Graphic.Platforms.Win;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
 
 namespace Alis.Core.Ecs.Systems.Manager.Graphic
@@ -112,7 +111,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
 #if osxarm64 || osxarm || osxx64 || osx
             platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
 #elif winx64
-            platform = new WinNativePlatform();
+            platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
 #elif linuxarm64 || linuxarm || linuxx64
             platform = new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();
 #else
