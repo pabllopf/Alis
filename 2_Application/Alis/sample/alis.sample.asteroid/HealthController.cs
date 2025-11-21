@@ -27,15 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Sample.Asteroid
 {
     /// <summary>
-    /// The health controller class
+    ///     The health controller class
     /// </summary>
-    
     public class HealthController : IOnInit, IOnUpdate
     {
         /*
@@ -48,12 +46,12 @@ namespace Alis.Sample.Asteroid
         /// The health
         /// </summary>
         public int health = 1;
-        
+
         /// <summary>
         /// Ons the start
         /// </summary>
         public override void OnStart()
-        { 
+        {
             //fontManager = Context.GraphicManager.FontManager;
             //fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
         }
@@ -64,7 +62,7 @@ namespace Alis.Sample.Asteroid
         public override void OnGui()
         {
             //if (fontManager == null) return;
-            
+
             if (health == 3)
             {
              //   fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
@@ -72,20 +70,20 @@ namespace Alis.Sample.Asteroid
               //  fontManager.RenderText("MONO", $"^", -8.5f, -9, Color.White, 32);
                 return;
             }
-            
+
             if (health == 2)
             {
                // fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
                // fontManager.RenderText("MONO", $"^", -9.3f, -9, Color.White, 32);
                 return;
             }
-            
+
             if (health == 1)
             {
                 //fontManager.RenderText("MONO", $"^", -10.1f, -9, Color.White, 32);
                 return;
             }
-            
+
             if (health >= 0)
             {
                // fontManager.RenderText("MONO", $"GAME OVER", -2.8f, -0.5f, Color.White, 32);
@@ -128,21 +126,19 @@ namespace Alis.Sample.Asteroid
         }*/
 
         /// <summary>
-        /// Ons the init using the specified self
+        ///     Ons the init using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnInit(IGameObject self)
         {
-            
         }
 
         /// <summary>
-        /// Ons the update using the specified self
+        ///     Ons the update using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
-          
         }
     }
 }

@@ -31,7 +31,6 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components;
-using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Builder.Core.Ecs.Entity
 {
@@ -53,7 +52,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <summary>
         ///     The one
         /// </summary>
-        private float rotation = 0;
+        private float rotation;
 
         /// <summary>
         ///     The vector

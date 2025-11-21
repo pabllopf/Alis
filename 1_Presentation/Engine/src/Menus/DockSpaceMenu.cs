@@ -27,12 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
-
-
 using Alis.Extension.Graphic.Ui;
 
 namespace Alis.App.Engine.Menus
@@ -93,7 +92,7 @@ namespace Alis.App.Engine.Menus
                 {
                     // Lógica para retroceder
                     Logger.Info("Retrocediendo...");
-                    
+
                     // TODO: Load different layouts
                     // ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
                 }
@@ -104,7 +103,7 @@ namespace Alis.App.Engine.Menus
                 {
                     // Lógica para avanzar
                     Logger.Info("Avanzando...");
-                    
+
                     // TODO: Load different layouts
                     //ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_tall_config.ini"));
                 }

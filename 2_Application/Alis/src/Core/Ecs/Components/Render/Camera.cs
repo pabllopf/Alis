@@ -40,15 +40,15 @@ namespace Alis.Core.Ecs.Components.Render
     public struct Camera(Context context, Vector2F position, Vector2F resolution) : ICamera
     {
         /// <summary>
-        /// The position
+        ///     The position
         /// </summary>
         private readonly Vector2F positionOriginal = position;
-        
+
         /// <summary>
-        /// The resolution
+        ///     The resolution
         /// </summary>
         private readonly Vector2F resolutionOriginal = resolution;
-        
+
         /// <summary>
         ///     The position
         /// </summary>
@@ -67,9 +67,9 @@ namespace Alis.Core.Ecs.Components.Render
         {
             Logger.Info($"[{GetType()}] Initialized with position: ({Position.X},{Position.Y}) and resolution: ({Resolution.X},{Resolution.Y})");
         }
-        
+
         /// <summary>
-        /// Ons the exit using the specified self
+        ///     Ons the exit using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnExit(IGameObject self)
@@ -78,9 +78,9 @@ namespace Alis.Core.Ecs.Components.Render
             Resolution = new Vector2F(resolutionOriginal.X, resolutionOriginal.Y);
             Logger.Info($"[{GetType()}] Reset position: ({Position.X},{Position.Y}) and resolution: ({Resolution.X},{Resolution.Y})");
         }
-        
+
         /// <summary>
-        /// Gets or sets the value of the context
+        ///     Gets or sets the value of the context
         /// </summary>
         public Context Context { get; set; } = context;
     }

@@ -40,7 +40,7 @@ namespace Alis.Benchmark.EntityComponentSystem.Contexts
         ///     The component
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct Component1
+        public struct Component1
             : IComponent
         {
             /// <summary>
@@ -53,7 +53,7 @@ public struct Component1
         ///     The component
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct Component2
+        public struct Component2
             : IComponent
         {
             /// <summary>
@@ -66,7 +66,7 @@ public struct Component2
         ///     The component
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct Component3
+        public struct Component3
             : IComponent
         {
             /// <summary>
@@ -79,7 +79,7 @@ public struct Component3
         ///     The padding
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct Padding1
+        public struct Padding1
             : IComponent
         {
         }
@@ -88,7 +88,7 @@ public struct Padding1
         ///     The padding
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct Padding2
+        public struct Padding2
             : IComponent
         {
         }
@@ -97,7 +97,7 @@ public struct Padding2
         ///     The padding
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct Padding3
+        public struct Padding3
             : IComponent
         {
         }
@@ -106,7 +106,7 @@ public struct Padding3
         ///     The padding
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct Padding4
+        public struct Padding4
             : IComponent
         {
         }

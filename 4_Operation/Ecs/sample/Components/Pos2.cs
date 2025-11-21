@@ -40,15 +40,6 @@ namespace Alis.Core.Ecs.Sample.Components
         private IGameObject _gameObject;
 
         /// <summary>
-        ///     Updates the self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void OnUpdate(IGameObject self)
-        {
-            Logger.Info(_gameObject.Has<Vel2>() ? "I have velocity!" : "No velocity here!");
-        }
-
-        /// <summary>
         ///     Inits the self
         /// </summary>
         /// <param name="self">The self</param>
@@ -56,6 +47,15 @@ namespace Alis.Core.Ecs.Sample.Components
         {
             _gameObject = self;
             Logger.Info("I am initialized!");
+        }
+
+        /// <summary>
+        ///     Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void OnUpdate(IGameObject self)
+        {
+            Logger.Info(_gameObject.Has<Vel2>() ? "I have velocity!" : "No velocity here!");
         }
     }
 }

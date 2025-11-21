@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Audio.Sample

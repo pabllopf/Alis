@@ -91,10 +91,10 @@ namespace Alis.Benchmark
                 typeof(InterfaceVsAbstractBenchmark),
 
                 typeof(NativeArrayUnsafeVsNativeArraySafe),
-                
+
                 typeof(StacksBenchmarks),
                 typeof(FrugalsBenchmarks),
-                
+
                 typeof(TablesBenchmarks),
 
                 typeof(RemoveAtVsRemoveUnnorderAtListBenchmark),

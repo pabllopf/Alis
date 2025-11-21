@@ -29,15 +29,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
-using Alis.App.Engine.Fonts;
 using Alis.App.Hub.Core;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Aspect.Memory;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Extension.Graphic.Sdl2;
@@ -435,7 +432,7 @@ namespace Alis.App.Hub.Controllers
             fontFileSolid.ReadExactly(fontDataBytes, 0, (int) fontFileSolid.Length);
             Marshal.Copy(fontDataBytes, 0, fontData, (int) fontFileSolid.Length);
             SpaceWork.FontLoaded16Solid = fonts.AddFontFromMemoryTtf(fontData, fontSize, fontSize);
-            
+
             try
             {
                 ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
@@ -452,8 +449,8 @@ namespace Alis.App.Hub.Controllers
                 GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
-                
-                
+
+
                 MemoryStream fontAwesome = AssetRegistry.GetResourceMemoryStreamByName(FontAwesome5.NameSolid);
                 IntPtr fontAwesomeData = Marshal.AllocHGlobal((int) fontAwesome.Length);
                 byte[] fontAwesomeDataBytes = new byte[fontAwesome.Length];
@@ -466,14 +463,14 @@ namespace Alis.App.Hub.Controllers
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
                 return;
             }
-            
+
             MemoryStream fontFileSolid12 = AssetRegistry.GetResourceMemoryStreamByName("Hub_JetBrainsMono-Bold.ttf");
             IntPtr fontData12 = Marshal.AllocHGlobal((int) fontFileSolid12.Length);
             byte[] fontDataBytes12 = new byte[fontFileSolid12.Length];
             fontFileSolid12.ReadExactly(fontDataBytes12, 0, (int) fontFileSolid12.Length);
             Marshal.Copy(fontDataBytes12, 0, fontData12, (int) fontFileSolid12.Length);
             SpaceWork.FontLoaded10Solid = fonts.AddFontFromMemoryTtf(fontData12, 12, 12);
-            
+
             try
             {
                 ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
@@ -490,7 +487,7 @@ namespace Alis.App.Hub.Controllers
                 GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
 
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
-                
+
                 MemoryStream fontAwesome12 = AssetRegistry.GetResourceMemoryStreamByName(FontAwesome5.NameSolid);
                 IntPtr fontAwesomeData12 = Marshal.AllocHGlobal((int) fontAwesome12.Length);
                 byte[] fontAwesomeDataBytes12 = new byte[fontAwesome12.Length];
@@ -503,14 +500,14 @@ namespace Alis.App.Hub.Controllers
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
                 return;
             }
-            
+
             MemoryStream fontFileSolid40 = AssetRegistry.GetResourceMemoryStreamByName("Hub_JetBrainsMono-Bold.ttf");
             IntPtr fontData40 = Marshal.AllocHGlobal((int) fontFileSolid40.Length);
             byte[] fontDataBytes40 = new byte[fontFileSolid40.Length];
             fontFileSolid40.ReadExactly(fontDataBytes40, 0, (int) fontFileSolid40.Length);
             Marshal.Copy(fontDataBytes40, 0, fontData40, (int) fontFileSolid40.Length);
             SpaceWork.FontLoaded45Bold = fonts.AddFontFromMemoryTtf(fontData40, 40, 40);
-            
+
             try
             {
                 ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
@@ -576,14 +573,14 @@ namespace Alis.App.Hub.Controllers
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameSolid} {e.Message}");
                 return;
             }
-            
+
             MemoryStream fontFileSolidLight = AssetRegistry.GetResourceMemoryStreamByName("Hub_JetBrainsMono-Bold.ttf");
             IntPtr fontDataLight = Marshal.AllocHGlobal((int) fontFileSolidLight.Length);
             byte[] fontDataBytesLight = new byte[fontFileSolidLight.Length];
             fontFileSolidLight.ReadExactly(fontDataBytesLight, 0, (int) fontFileSolidLight.Length);
             Marshal.Copy(fontDataBytesLight, 0, fontDataLight, (int) fontFileSolidLight.Length);
             SpaceWork.FontLoaded16Light = fonts.AddFontFromMemoryTtf(fontDataLight, fontSize, fontSize);
-            
+
             try
             {
                 ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();

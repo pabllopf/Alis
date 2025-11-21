@@ -31,17 +31,15 @@
 
 using System;
 
-
 namespace Alis.Core.Graphic.Platforms.Win.Native
 {
     /// <summary>
-    /// Pixel type for OpenGL context.
+    ///     Pixel type for OpenGL context.
     /// </summary>
     [Flags]
     public enum PixelType : byte
     {
         /// <summary>
-        /// 
         /// </summary>
         RGBA = 0
     }

@@ -32,17 +32,14 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Audio;
 using Alis.Core.Ecs.Components.Collider;
-using Alis.Core.Ecs.Components.Render;
 
 namespace Alis.Sample.Flappy.Bird
 {
     /// <summary>
     ///     The bird controller class
     /// </summary>
-    
     public class BirdController : IOnStart, IOnUpdate, IOnPressKey
     {
         /// <summary>
@@ -59,29 +56,9 @@ namespace Alis.Sample.Flappy.Bird
         ///     Gets or sets the value of the is dead
         /// </summary>
         public bool IsDead { get; set; } = false;
-        
-        /// <summary>
-        /// Ons the start using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void OnStart(IGameObject self)
-        {
-            audioSource = self.Get<AudioSource>();
-            boxCollider = self.Get<BoxCollider>();
-            boxCollider.Body.Position = new Vector2F(-3, 0);
-        }
 
         /// <summary>
-        /// Ons the update using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void OnUpdate(IGameObject self)
-        {
-            
-        }
-
-        /// <summary>
-        /// Ons the press key using the specified info
+        ///     Ons the press key using the specified info
         /// </summary>
         /// <param name="info">The info</param>
         public void OnPressKey(KeyEventInfo info)
@@ -93,6 +70,23 @@ namespace Alis.Sample.Flappy.Bird
             }
         }
 
-       
+        /// <summary>
+        ///     Ons the start using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void OnStart(IGameObject self)
+        {
+            audioSource = self.Get<AudioSource>();
+            boxCollider = self.Get<BoxCollider>();
+            boxCollider.Body.Position = new Vector2F(-3, 0);
+        }
+
+        /// <summary>
+        ///     Ons the update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void OnUpdate(IGameObject self)
+        {
+        }
     }
 }

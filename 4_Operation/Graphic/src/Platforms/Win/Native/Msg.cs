@@ -35,37 +35,42 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Platforms.Win.Native
 {
     /// <summary>
-    /// 
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     internal struct Msg
     {
         /// <summary>
-        /// The hwnd
+        ///     The hwnd
         /// </summary>
         public IntPtr hwnd;
+
         /// <summary>
-        /// The message
+        ///     The message
         /// </summary>
         public uint message;
+
         /// <summary>
-        /// The param
+        ///     The param
         /// </summary>
         public IntPtr wParam;
+
         /// <summary>
-        /// The param
+        ///     The param
         /// </summary>
         public IntPtr lParam;
+
         /// <summary>
-        /// The time
+        ///     The time
         /// </summary>
         public uint time;
+
         /// <summary>
-        /// The pt
+        ///     The pt
         /// </summary>
         public int pt_x;
+
         /// <summary>
-        /// The pt
+        ///     The pt
         /// </summary>
         public int pt_y;
     }

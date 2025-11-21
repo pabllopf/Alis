@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui.Extras.Node;
 using Xunit;
 
@@ -47,7 +45,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void BeginInputAttribute_ShouldStartInputAttributeWithDefaultShape()
         {
             int id = 1;
-
         }
 
         /// <summary>
@@ -79,7 +76,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void BeginNodeEditor_ShouldStartNodeEditor()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -89,7 +85,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void BeginNodeTitleBar_ShouldStartNodeTitleBar()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -133,7 +128,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void ClearLinkSelection_ShouldClearLinkSelection()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -154,7 +148,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void ClearNodeSelection_ShouldClearNodeSelection()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -175,7 +168,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void CreateContext_ShouldCreateNewContext()
         {
-
         }
 
         /// <summary>
@@ -184,7 +176,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void DestroyContext_ShouldDestroyContext()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -194,7 +185,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void EditorContextCreate_ShouldCreateNewEditorContext()
         {
-
         }
 
         /// <summary>
@@ -203,7 +193,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void EditorContextFree_ShouldFreeEditorContext()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -213,7 +202,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void EditorContextGetPanning_ShouldGetPanningOfEditorContext()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -234,7 +222,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void EditorContextResetPanning_ShouldResetPanningOfEditorContext()
         {
-
         }
 
         /// <summary>
@@ -243,7 +230,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void EditorContextSet_ShouldSetEditorContext()
         {
-
         }
 
         /// <summary>
@@ -252,7 +238,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void EndInputAttribute_ShouldEndInputAttribute()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -262,7 +247,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void EndNode_ShouldEndNode()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -272,7 +256,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void EndNodeEditor_ShouldEndNodeEditor()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -282,7 +265,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void EndNodeTitleBar_ShouldEndNodeTitleBar()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -292,7 +274,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void EndOutputAttribute_ShouldEndOutputAttribute()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -302,7 +283,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void EndStaticAttribute_ShouldEndStaticAttribute()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -312,7 +292,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void GetCurrentContext_ShouldGetCurrentContext()
         {
-
         }
 
         /// <summary>
@@ -321,7 +300,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void GetNodeDimensions_ShouldGetDimensionsOfNode()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -386,7 +364,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void IsAnyAttributeActive_ShouldReturnWhetherAnyAttributeIsActive()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -408,7 +385,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void IsAttributeActive_ShouldReturnWhetherAttributeIsActive()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -418,7 +394,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void IsEditorHovered_ShouldReturnWhetherEditorIsHovered()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -493,7 +468,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void IsLinkDropped_ShouldReturnWhetherLinkIsDropped()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -628,7 +602,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void LoadEditorStateFromIniFile_ShouldLoadEditorStateFromIniFile()
         {
-
             // Add assertions to verify the behavior
         }
 
@@ -638,7 +611,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void LoadEditorStateFromIniString_ShouldLoadEditorStateFromIniString()
         {
-
         }
 
         /// <summary>
@@ -647,7 +619,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void NumSelectedLinks_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -656,7 +627,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void NumSelectedNodes_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -665,7 +635,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void PopAttributeFlag_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -674,7 +643,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void PopColorStyle_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -683,7 +651,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void PopStyleVar_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -692,7 +659,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void PopStyleVar_WithCount_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -701,7 +667,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void PushAttributeFlag_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -710,7 +675,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void PushColorStyle_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -719,7 +683,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void PushStyleVar_Float_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -728,7 +691,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void PushStyleVar_Vector2_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -737,7 +699,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void SaveCurrentEditorStateToIniFile_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -765,7 +726,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void SaveEditorStateToIniFile_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -793,7 +753,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void SelectLink_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -802,7 +761,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void SelectNode_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -811,7 +769,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void SetCurrentContext_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -820,7 +777,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void SetImGuiContext_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -829,7 +785,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void SetNodeDraggable_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -838,7 +793,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void SetNodeEditorSpacePos_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -847,7 +801,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void SetNodeGridSpacePos_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -856,7 +809,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void SetNodeScreenSpacePos_ThrowsDllNotFoundException()
         {
-
         }
 
         /// <summary>
@@ -865,7 +817,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         [Fact]
         public void SnapNodeToGrid_ThrowsDllNotFoundException()
         {
-
         }
     }
 }

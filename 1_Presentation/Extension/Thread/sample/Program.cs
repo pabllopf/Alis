@@ -71,8 +71,8 @@ namespace Alis.Extension.Thread.Sample
 
             Logger.Info("Press any key to stop all threads...");
             Console.ReadKey();
-            
-            
+
+
             threadManager.StopAllThreads();
 
             Logger.Info("Press any key to exit...");

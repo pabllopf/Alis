@@ -730,6 +730,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
                     // Aquí deberías mapear correctamente la tecla desde xev y eliminarla de pressedKeys
                     // pressedKeys.Remove(tecla);
                 }
+
                 if (xev.type == DestroyNotify)
                 {
                     running = false;
@@ -825,14 +826,15 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 IntPtr iconPixmap = XCreatePixmapFromBitmapData(display, window, bmpData, iconWidth, iconHeight);
                 if (iconPixmap != IntPtr.Zero)
                 {
-                    XWMHints hints = new XWMHints { flags = 2, icon_pixmap = iconPixmap };
+                    XWMHints hints = new XWMHints {flags = 2, icon_pixmap = iconPixmap};
                     XSetWMHints(display, window, ref hints);
                 }
             }
             catch (Exception ex)
             {
-               throw new Exception($"[OnInit] Error al establecer el icono de la ventana: {ex.Message}");
+                throw new Exception($"[OnInit] Error al establecer el icono de la ventana: {ex.Message}");
             }
+
             return true;
         }
 
@@ -846,30 +848,37 @@ namespace Alis.Core.Graphic.Platforms.Linux
             /// The flags
             /// </summary>
             public int flags;
+
             /// <summary>
             /// The input
             /// </summary>
             public IntPtr input;
+
             /// <summary>
             /// The icon pixmap
             /// </summary>
             public IntPtr icon_pixmap;
+
             /// <summary>
             /// The icon window
             /// </summary>
             public IntPtr icon_window;
+
             /// <summary>
             /// The icon
             /// </summary>
             public IntPtr icon_x;
+
             /// <summary>
             /// The icon
             /// </summary>
             public IntPtr icon_y;
+
             /// <summary>
             /// The icon mask
             /// </summary>
             public IntPtr icon_mask;
+
             /// <summary>
             /// The window group
             /// </summary>
@@ -917,7 +926,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 IntPtr iconPixmap = XCreatePixmapFromBitmapData(display, window, bmpData, iconWidth, iconHeight);
                 if (iconPixmap != IntPtr.Zero)
                 {
-                    XWMHints hints = new XWMHints { flags = 2, icon_pixmap = iconPixmap };
+                    XWMHints hints = new XWMHints {flags = 2, icon_pixmap = iconPixmap};
                     XSetWMHints(display, window, ref hints);
                 }
             }

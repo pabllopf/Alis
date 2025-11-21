@@ -621,13 +621,10 @@ namespace Alis.Core.Aspect.Math.Vector
         }
 
         /// <summary>
-        /// Returns the string
+        ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
-        public override string ToString()
-        {
-            return "{X: " + X + " Y: " + Y + "}";
-        }
+        public override string ToString() => "{X: " + X + " Y: " + Y + "}";
 
 
         /// <summary>

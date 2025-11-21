@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Component.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Fluent.Components;
@@ -78,7 +107,6 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     Use ComponentHandle.Create instead.
         /// </summary>
-        
         public static ComponentHandle StoreComponent(in T component)
         {
             GeneralComponentStorage.Create(out int index) = component;
@@ -90,10 +118,7 @@ namespace Alis.Core.Ecs.Kernel
         /// </summary>
         /// <param name="cap">The cap</param>
         /// <returns>A component storage of t</returns>
-        internal static ComponentStorage<T> CreateInstance(int cap)
-        {
-            return RunnerInstance.CreateStronglyTyped(cap);
-        }
+        internal static ComponentStorage<T> CreateInstance(int cap) => RunnerInstance.CreateStronglyTyped(cap);
     }
 
     /// <summary>
@@ -182,9 +207,9 @@ namespace Alis.Core.Ecs.Kernel
                 Type type = typeof(T);
                 if (_existingComponentIDs.TryGetValue(type, out ComponentId value))
                 {
-                    return (value, (IdTable<T>)ComponentTable[value.RawIndex].Storage,
-                        (ComponentDelegates<T>.InitDelegate)ComponentTable[value.RawIndex].Initer,
-                        (ComponentDelegates<T>.DestroyDelegate)ComponentTable[value.RawIndex].Destroyer);
+                    return (value, (IdTable<T>) ComponentTable[value.RawIndex].Storage,
+                        (ComponentDelegates<T>.InitDelegate) ComponentTable[value.RawIndex].Initer,
+                        (ComponentDelegates<T>.DestroyDelegate) ComponentTable[value.RawIndex].Destroyer);
                 }
 
                 //EnsureTypeInit(type);
@@ -196,17 +221,17 @@ namespace Alis.Core.Ecs.Kernel
                     throw new InvalidOperationException("Exceeded maximum unique component type count of 65535");
                 }
 
-                ComponentId id = new ComponentId((ushort)nextIdInt);
+                ComponentId id = new ComponentId((ushort) nextIdInt);
                 _existingComponentIDs[type] = id;
 
                 GlobalWorldTables.GrowComponentTagTableIfNeeded(id.RawIndex);
 
                 ComponentDelegates<T>.InitDelegate initDelegate =
-                    (ComponentDelegates<T>.InitDelegate)(GenerationServices.TypeIniters.TryGetValue(type, out Delegate v)
+                    (ComponentDelegates<T>.InitDelegate) (GenerationServices.TypeIniters.TryGetValue(type, out Delegate v)
                         ? v
                         : null);
                 ComponentDelegates<T>.DestroyDelegate destroyDelegate =
-                    (ComponentDelegates<T>.DestroyDelegate)(GenerationServices.TypeDestroyers.TryGetValue(type,
+                    (ComponentDelegates<T>.DestroyDelegate) (GenerationServices.TypeDestroyers.TryGetValue(type,
                         out Delegate v2)
                         ? v2
                         : null);
@@ -243,7 +268,7 @@ namespace Alis.Core.Ecs.Kernel
                     throw new InvalidOperationException("Exceeded maximum unique component type count of 65535");
                 }
 
-                ComponentId id = new ComponentId((ushort)nextIdInt);
+                ComponentId id = new ComponentId((ushort) nextIdInt);
                 _existingComponentIDs[t] = id;
 
                 GlobalWorldTables.GrowComponentTagTableIfNeeded(id.RawIndex);
@@ -305,7 +330,7 @@ namespace Alis.Core.Ecs.Kernel
         }
 
         /// <summary>
-        /// Resets the for tests
+        ///     Resets the for tests
         /// </summary>
         internal static void ResetForTests()
         {

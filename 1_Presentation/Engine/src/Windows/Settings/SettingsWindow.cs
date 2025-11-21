@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using System;
 using System.Linq;
 using System.Reflection;
@@ -34,11 +35,8 @@ using System.Runtime.InteropServices;
 using System.Text.Json.Serialization;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
-using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
-
-
 using Alis.Extension.Graphic.Ui;
 
 namespace Alis.App.Engine.Windows.Settings

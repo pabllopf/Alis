@@ -27,10 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics;
 using Alis.App.Engine.Core;
-using Alis.Core.Aspect.Logging;
-
 
 namespace Alis.App.Engine.Menus
 {

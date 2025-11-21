@@ -27,13 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using System;
 using System.Diagnostics.CodeAnalysis;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Math.Vector;
-
-
 using Alis.Extension.Graphic.Ui;
 
 namespace Alis.App.Engine.Windows
@@ -87,7 +86,7 @@ namespace Alis.App.Engine.Windows
         ///     The zero
         /// </summary>
         private IntPtr commandBufferTag = IntPtr.Zero;
-        
+
         /// <summary>
         ///     The zero
         /// </summary>

@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
-
 namespace Alis.Extension.Graphic.Sfml.Systems
 {
     /// <summary>

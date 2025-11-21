@@ -27,11 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using System;
-using System.Runtime.InteropServices;
 using System.Threading;
-
-
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Extension.Graphic.Sdl2.Enums;

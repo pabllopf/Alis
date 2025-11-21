@@ -28,41 +28,40 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    /// The game object interface
+    ///     The game object interface
     /// </summary>
     public interface IGameObject
     {
         /// <summary>
-        /// Gets this instance
+        ///     Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The ref</returns>
-        public ref T Get<T>();
+        ref T Get<T>();
 
         /// <summary>
-        /// Hases this instance
+        ///     Hases this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
-        public bool Has<T>();
+        bool Has<T>();
 
         /// <summary>
-        /// Hases the type
+        ///     Hases the type
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>The bool</returns>
-        public bool Has(Type type);
+        bool Has(Type type);
 
         /// <summary>
-        /// Tries the has
+        ///     Tries the has
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
-        public bool TryHas<T>();
+        bool TryHas<T>();
     }
 }

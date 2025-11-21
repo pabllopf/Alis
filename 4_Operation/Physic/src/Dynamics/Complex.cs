@@ -93,36 +93,36 @@ namespace Alis.Core.Physic.Dynamics
             I = imaginary;
         }
 
-     
-       /// <summary>
-       /// Creates the angle using the specified angle degrees
-       /// </summary>
-       /// <param name="angleDegrees">The angle degrees</param>
-       /// <returns>The complex</returns>
-       public static Complex FromAngle(float angleDegrees)
-       {
-           float angleRadians = angleDegrees * ((float)Math.PI / 180f);
-           if (Math.Abs(angleRadians) < float.Epsilon)
-           {
-               return One;
-           }
-       
-           return new Complex(
-               (float)Math.Cos(angleRadians),
-               (float)Math.Sin(angleRadians));
-       }
-        
-   /// <summary>
-   /// Returns the angle
-   /// </summary>
-   /// <returns>The float</returns>
-   public float ToAngle()
-   {
-       float angle = (float)(Math.Atan2(I, R) * (180.0 / Math.PI));
-       return (angle + 360f) % 360f;
-   }
-        
-        
+
+        /// <summary>
+        ///     Creates the angle using the specified angle degrees
+        /// </summary>
+        /// <param name="angleDegrees">The angle degrees</param>
+        /// <returns>The complex</returns>
+        public static Complex FromAngle(float angleDegrees)
+        {
+            float angleRadians = angleDegrees * ((float) Math.PI / 180f);
+            if (Math.Abs(angleRadians) < float.Epsilon)
+            {
+                return One;
+            }
+
+            return new Complex(
+                (float) Math.Cos(angleRadians),
+                (float) Math.Sin(angleRadians));
+        }
+
+        /// <summary>
+        ///     Returns the angle
+        /// </summary>
+        /// <returns>The float</returns>
+        public float ToAngle()
+        {
+            float angle = (float) (Math.Atan2(I, R) * (180.0 / Math.PI));
+            return (angle + 360f) % 360f;
+        }
+
+
         /// <summary>
         ///     Conjugates this instance
         /// </summary>

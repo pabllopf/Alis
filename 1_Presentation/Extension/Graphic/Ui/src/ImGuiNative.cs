@@ -5253,7 +5253,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImVec4_ImVec4_Float")]
         public static extern Vector4F ImVec4_ImVec4_Float(float x, float y, float z, float w);
-        
+
 
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderRemoveNode")]
         public static extern void igDockBuilderRemoveNode(uint dockspaceId);

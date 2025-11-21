@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Dynamics
@@ -67,7 +66,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             Rotation = rotation;
             Position = position;
-            Scale = Vector2F.One; 
+            Scale = Vector2F.One;
         }
 
         /// <summary>
@@ -91,7 +90,6 @@ namespace Alis.Core.Physic.Dynamics
         public ControllerTransform(Vector2F position, float angle)
             : this(position, Complex.FromAngle(angle))
         {
-         
         }
 
         /// <summary>
@@ -103,7 +101,6 @@ namespace Alis.Core.Physic.Dynamics
         public ControllerTransform(Vector2F position, float angle, Vector2F scale)
             : this(position, Complex.FromAngle(angle), scale)
         {
-           
         }
 
         /// <summary>

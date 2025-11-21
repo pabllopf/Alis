@@ -93,8 +93,8 @@ namespace Alis.Core.Ecs.Sample
         {
             using Scene scene = new Scene();
 
-            scene.Create<Vel, Pos>(default(Vel), default(Pos));
-            scene.Create<Pos>(default(Pos));
+            scene.Create(default(Vel), default(Pos));
+            scene.Create(default(Pos));
 
             scene.Update();
         }
@@ -106,8 +106,8 @@ namespace Alis.Core.Ecs.Sample
         {
             using Scene scene = new Scene();
 
-            scene.Create<Pos2>(default(Pos2));
-            scene.Create<Pos2, Vel2>(default(Pos2), default(Vel2));
+            scene.Create(default(Pos2));
+            scene.Create(default(Pos2), default(Vel2));
 
             scene.Update();
         }

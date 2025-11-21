@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Components
 {
     /// <summary>
-    /// The on awake interface
+    ///     The on awake interface
     /// </summary>
     public interface IOnAwake
     {
         /// <summary>
-        /// Ons the awake using the specified self
+        ///     Ons the awake using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         void OnAwake(IGameObject self);

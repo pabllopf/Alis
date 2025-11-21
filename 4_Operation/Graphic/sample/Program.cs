@@ -32,6 +32,7 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms;
+using Alis.Core.Graphic.Platforms.Win;
 using Alis.Core.Graphic.Sample.Samples;
 
 namespace Alis.Core.Graphic.Sample
@@ -50,7 +51,7 @@ namespace Alis.Core.Graphic.Sample
 #if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
             platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
 #elif winx64 || winx86 || winarm64 || winarm || win
-            platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
+            platform = new WinNativePlatform();
 #elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
             platform = new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();
 #else
@@ -98,7 +99,7 @@ namespace Alis.Core.Graphic.Sample
             example.Initialize();
             platform.ShowWindow();
             platform.SetTitle("C# + OpenGL Platform - Ejemplo " + option);
-            
+
             bool running = true;
             while (running)
             {

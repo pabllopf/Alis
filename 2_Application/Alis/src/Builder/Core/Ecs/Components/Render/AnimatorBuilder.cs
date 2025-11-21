@@ -43,23 +43,20 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         IAddAnimation<AnimatorBuilder, Func<AnimationBuilder, Animation>>
     {
         /// <summary>
+        ///     The context
+        /// </summary>
+        private readonly Context context;
+
+        /// <summary>
         ///     The animator
         /// </summary>
         private Animator animator = new Animator();
-        
-        /// <summary>
-        /// The context
-        /// </summary>
-        private Context context;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AnimatorBuilder"/> class
+        ///     Initializes a new instance of the <see cref="AnimatorBuilder" /> class
         /// </summary>
         /// <param name="context">The context</param>
-        public AnimatorBuilder(Context context)
-        {
-            this.context = context;
-        }
+        public AnimatorBuilder(Context context) => this.context = context;
 
         /// <summary>
         ///     Adds the animation using the specified value

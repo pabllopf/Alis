@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
@@ -105,7 +104,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 Vector2F v2 = vertices[i];
 
                 // If the code crashes here, it means your vertices are too close together.
-                }
+            }
 
             Vertices = new Vertices(vertices);
 

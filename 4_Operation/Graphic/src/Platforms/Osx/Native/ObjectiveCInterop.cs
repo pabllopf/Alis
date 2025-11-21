@@ -26,8 +26,8 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-#if osxarm64 || osxarm || osxx64 || osx
 
+#if osxarm64 || osxarm || osxx64 || osx
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -186,6 +186,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="n">The </param>
         /// <returns>The int ptr</returns>
         public static IntPtr Class(string n) => objc_getClass(n);
+
         /// <summary>
         /// Sels the n
         /// </summary>

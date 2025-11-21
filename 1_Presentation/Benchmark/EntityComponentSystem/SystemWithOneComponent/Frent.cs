@@ -124,7 +124,7 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithOneComponent
         ///     The increment
         /// </summary>
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct Increment : IAction<Component1>
+        public struct Increment : IAction<Component1>
         {
             /// <summary>
             ///     Runs the t 0

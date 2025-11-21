@@ -27,22 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Fluent.Components;
 
 namespace Alis.Sample.Asteroid
 {
     /// <summary>
-    /// The counter manager class
+    ///     The counter manager class
     /// </summary>
-    public class CounterManager : IOnInit , IOnUpdate
+    public class CounterManager : IOnInit, IOnUpdate
     {
         /*
         /// <summary>
         /// The counter
         /// </summary>
         public int counter = 10;
-        
+
         /// <summary>
         /// Ons the start
         /// </summary>
@@ -51,14 +50,14 @@ namespace Alis.Sample.Asteroid
             //fontManager = Context.GraphicManager.FontManager;
             //fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
         }
-        
+
         /// <summary>
         /// Ons the update
         /// </summary>
         public override void OnUpdate()
         {
         }
-        
+
         /// <summary>
         ///     Ons the gui
         /// </summary>
@@ -69,7 +68,7 @@ namespace Alis.Sample.Asteroid
                 //fontManager.RenderText("MONO", counter.ToString("D3"), -10, -10, Color.White, 32);
             }
         }
-        
+
         /// <summary>
         ///     Increments this instance
         /// </summary>
@@ -77,7 +76,7 @@ namespace Alis.Sample.Asteroid
         {
             counter += 10;
         }
-        
+
         /// <summary>
         /// Decrements this instance
         /// </summary>
@@ -101,21 +100,19 @@ namespace Alis.Sample.Asteroid
 
 
         /// <summary>
-        /// Ons the init using the specified self
+        ///     Ons the init using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnInit(IGameObject self)
         {
-            
         }
 
         /// <summary>
-        /// Ons the update using the specified self
+        ///     Ons the update using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
-            
         }
     }
 }

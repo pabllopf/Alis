@@ -32,46 +32,49 @@ using Alis.Core.Aspect.Fluent.Components;
 namespace Alis.Core.Ecs.Components
 {
     /// <summary>
-    /// Info component
+    ///     Info component
     /// </summary>
     public record struct Info : IOnInit, IOnUpdate
     {
         /// <summary>
-        /// The name
-        /// </summary>
-        public string Name;
-        /// <summary>
-        /// The tag
-        /// </summary>
-        public string Tag;
-        /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
         public int Id;
+
         /// <summary>
-        /// The is active
+        ///     The is active
         /// </summary>
         public bool IsActive;
+
         /// <summary>
-        /// The is static
+        ///     The is static
         /// </summary>
         public bool IsStatic;
+
         /// <summary>
-        /// Inits the self
+        ///     The name
+        /// </summary>
+        public string Name;
+
+        /// <summary>
+        ///     The tag
+        /// </summary>
+        public string Tag;
+
+        /// <summary>
+        ///     Inits the self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnInit(IGameObject self)
         {
-            
         }
 
         /// <summary>
-        /// Updates the self
+        ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
-            
         }
     }
 }

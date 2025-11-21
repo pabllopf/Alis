@@ -39,6 +39,6 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public void Start();
+        void Start();
     }
 }

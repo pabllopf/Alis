@@ -42,14 +42,17 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// The 
         /// </summary>
         public double x;
+
         /// <summary>
         /// The 
         /// </summary>
         public double y;
+
         /// <summary>
         /// The width
         /// </summary>
         public double width;
+
         /// <summary>
         /// The height
         /// </summary>

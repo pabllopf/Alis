@@ -1,3 +1,31 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Player.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 using System;
 using Alis.Builder.Core.Ecs.Components.Collider;
@@ -17,44 +45,118 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Sample.Asteroid
 {
     /// <summary>
-    /// The player class
+    ///     The player class
     /// </summary>
-    /// <seealso cref="IOnStart"/>
-    /// <seealso cref="IOnUpdate"/>
-    /// <seealso cref="IOnReleaseKey"/>
-    /// <seealso cref="IOnPressKey"/>
-    /// <seealso cref="IOnHoldKey"/>
-    /// <seealso cref="IHasContext{Context}"/>
+    /// <seealso cref="IOnStart" />
+    /// <seealso cref="IOnUpdate" />
+    /// <seealso cref="IOnReleaseKey" />
+    /// <seealso cref="IOnPressKey" />
+    /// <seealso cref="IOnHoldKey" />
+    /// <seealso cref="IHasContext{Context}" />
     public class Player : IOnStart, IOnUpdate, IOnReleaseKey, IOnPressKey, IOnHoldKey, IHasContext<Context>
     {
-        
         /// <summary>
-        /// The box collider
+        ///     The reset time
         /// </summary>
-        private BoxCollider boxCollider;
-        
-        /// <summary>
-        /// The audio source
-        /// </summary>
-        private AudioSource audioSource;
-        
-        /// <summary>
-        /// The game object
-        /// </summary>
-        private IGameObject gameObject;
-        
-        /// <summary>
-        /// The vector
-        /// </summary>
-        Vector2F direction = new Vector2F(0, 0);
+        private readonly float resetTime = 3;
 
         /// <summary>
-        /// The acceleration
+        ///     The acceleration
         /// </summary>
         public float acceleration = 2.0f;
-        
+
         /// <summary>
-        /// Ons the start
+        ///     The audio source
+        /// </summary>
+        private AudioSource audioSource;
+
+        /// <summary>
+        ///     The box collider
+        /// </summary>
+        private BoxCollider boxCollider;
+
+        /// <summary>
+        ///     The counter entities
+        /// </summary>
+        private int counterEntities = 3;
+
+        /// <summary>
+        ///     The vector
+        /// </summary>
+        private Vector2F direction = new Vector2F(0, 0);
+
+        /// <summary>
+        ///     The game object
+        /// </summary>
+        private IGameObject gameObject;
+
+        /// <summary>
+        ///     The time counter
+        /// </summary>
+        private float timeCounter = 3;
+
+        /// <summary>
+        ///     Gets or sets the value of the context
+        /// </summary>
+        public Context Context { get; set; }
+
+        /// <summary>
+        ///     Ons the hold key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        public void OnHoldKey(KeyEventInfo info)
+        {
+            ConsoleKey key = info.Key;
+            if (key == ConsoleKey.D)
+            {
+                direction.X = 1;
+            }
+
+            if (key == ConsoleKey.A)
+            {
+                direction.X = -1;
+            }
+
+            if (key == ConsoleKey.W)
+            {
+                direction.Y = 1;
+            }
+
+            if (key == ConsoleKey.S)
+            {
+                direction.Y = -1;
+            }
+
+            if (key == ConsoleKey.A || key == ConsoleKey.D || key == ConsoleKey.W || key == ConsoleKey.S)
+            {
+                boxCollider.Body.ApplyForce(direction * acceleration);
+            }
+        }
+
+        /// <summary>
+        ///     Ons the press down key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        public void OnPressKey(KeyEventInfo info)
+        {
+            ConsoleKey key = info.Key;
+            if (key == ConsoleKey.Spacebar && (direction.X != 0 || direction.Y != 0))
+            {
+                audioSource.Play();
+                CreateBullet();
+            }
+        }
+
+        /// <summary>
+        ///     Ons the release key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
+        public void OnReleaseKey(KeyEventInfo info)
+        {
+        }
+
+        /// <summary>
+        ///     Ons the start
         /// </summary>
         public void OnStart(IGameObject self)
         {
@@ -64,26 +166,13 @@ namespace Alis.Sample.Asteroid
         }
 
         /// <summary>
-        /// The time counter
-        /// </summary>
-        private float timeCounter = 3;
-        /// <summary>
-        /// The reset time
-        /// </summary>
-        private float resetTime = 3;
-        /// <summary>
-        /// The counter entities
-        /// </summary>
-        private int counterEntities = 3;
-        
-        /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public void OnUpdate(IGameObject self)
         {
             float targetRotationDegrees = CalculateRotationInDegrees(direction.X, direction.Y);
             boxCollider.Body.Rotation = targetRotationDegrees;
-        
+
             // Limit the maximum velocity
             float maxVelocity = 3.0f; // Set your desired maximum velocity
             Vector2F currentVelocity = boxCollider.Body.LinearVelocity;
@@ -104,7 +193,7 @@ namespace Alis.Sample.Asteroid
         }
 
         /// <summary>
-        /// Calculates the rotation in degrees using the specified x
+        ///     Calculates the rotation in degrees using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
@@ -166,21 +255,7 @@ namespace Alis.Sample.Asteroid
         }
 
         /// <summary>
-        /// Ons the press down key using the specified key
-        /// </summary>
-        /// <param name="key">The key</param>
-        public void OnPressKey(KeyEventInfo info)
-        {
-            ConsoleKey key = info.Key;
-            if (key == ConsoleKey.Spacebar && (direction.X != 0 || direction.Y != 0))
-            {
-                audioSource.Play();
-                CreateBullet();
-            }
-        }
-
-        /// <summary>
-        /// Creates the bullet
+        ///     Creates the bullet
         /// </summary>
         public void CreateBullet()
         {
@@ -215,63 +290,16 @@ namespace Alis.Sample.Asteroid
                 .FixedRotation(true)
                 .IgnoreGravity(true)
                 .Build();
-            
-            
-            GameObject bullet = Context.SceneManager.CurrentWorld.Create<Transform, Sprite, BoxCollider, Bullet>(t, s, box, new Bullet());
 
 
-            box.Context = this.Context;
-            s.Context = this.Context;
+            GameObject bullet = Context.SceneManager.CurrentWorld.Create(t, s, box, new Bullet());
+
+
+            box.Context = Context;
+            s.Context = Context;
 
             box.OnStart(bullet);
             s.OnStart(bullet);
         }
-
-        /// <summary>
-        /// Ons the release key using the specified info
-        /// </summary>
-        /// <param name="info">The info</param>
-        public void OnReleaseKey(KeyEventInfo info)
-        {
-            
-        }
-
-        /// <summary>
-        /// Ons the hold key using the specified info
-        /// </summary>
-        /// <param name="info">The info</param>
-        public void OnHoldKey(KeyEventInfo info)
-        {
-            ConsoleKey key = info.Key;
-            if (key == ConsoleKey.D)
-            {
-                direction.X = 1;
-            }
-
-            if (key == ConsoleKey.A)
-            {
-                direction.X = -1;
-            }
-
-            if (key == ConsoleKey.W)
-            {
-                direction.Y = 1;
-            }
-
-            if (key == ConsoleKey.S)
-            {
-                direction.Y = -1;
-            }
-
-            if (key == ConsoleKey.A || key == ConsoleKey.D || key == ConsoleKey.W || key == ConsoleKey.S)
-            {
-                this.boxCollider.Body.ApplyForce(direction * acceleration);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the value of the context
-        /// </summary>
-        public Context Context { get; set; }
     }
 }

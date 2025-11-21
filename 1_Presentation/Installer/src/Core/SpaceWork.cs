@@ -30,7 +30,6 @@
 using System;
 using Alis.Extension.Graphic.Ui;
 
-
 namespace Alis.App.Installer.Core
 {
     /// <summary>

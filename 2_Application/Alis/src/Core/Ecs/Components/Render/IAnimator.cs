@@ -38,8 +38,8 @@ namespace Alis.Core.Ecs.Components.Render
     /// </summary>
     /// <seealso cref="IOnInit" />
     /// <seealso cref="IOnUpdate" />
-    public interface IAnimator : 
-        IOnStart, 
+    public interface IAnimator :
+        IOnStart,
         IOnUpdate,
         IHasContext<Context>,
         IOnExit

@@ -32,7 +32,6 @@ using Alis.App.Hub.Controllers;
 using Alis.App.Hub.Windows;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Constructs;
-
 using Alis.Extension.Graphic.Sdl2;
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Mapping;

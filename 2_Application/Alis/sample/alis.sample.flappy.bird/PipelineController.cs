@@ -39,7 +39,7 @@ namespace Alis.Sample.Flappy.Bird
     /// <summary>
     ///     The pipeline controller class
     /// </summary>
-    internal class PipelineController() : IOnStart, IOnUpdate, IOnExit
+    internal class PipelineController : IOnStart, IOnUpdate, IOnExit
     {
         /// <summary>
         ///     The random height
@@ -65,7 +65,12 @@ namespace Alis.Sample.Flappy.Bird
         ///     The box collider
         /// </summary>
         private BoxCollider boxCollider;
-        
+
+        /// <summary>
+        ///     The info
+        /// </summary>
+        private Info info;
+
         /// <summary>
         ///     The pos origin
         /// </summary>
@@ -77,13 +82,20 @@ namespace Alis.Sample.Flappy.Bird
         public float Velocity = 3;
 
         /// <summary>
-        /// The info
+        ///     Ons the exit using the specified self
         /// </summary>
-        private Info info;
+        /// <param name="self">The self</param>
+        public void OnExit(IGameObject self)
+        {
+            Velocity = 0;
+            IsStop = true;
+            _generated = false;
+            Logger.Info($"{info.Name} Exiting...");
+        }
 
 
         /// <summary>
-        /// Ons the start using the specified self
+        ///     Ons the start using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnStart(IGameObject self)
@@ -91,12 +103,12 @@ namespace Alis.Sample.Flappy.Bird
             posOrigin = self.Get<Transform>();
             info = self.Get<Info>();
             boxCollider = self.Get<BoxCollider>();
-            
+
             Velocity = 3;
             boxCollider.Body.LinearVelocity = new Vector2F(-Velocity, 0);
-            
-            _randomHeight = (int)(DateTime.Now.Ticks % 4);
-            _randomDirection = Math.Abs((int)(DateTime.Now.Ticks % 4) % 2);
+
+            _randomHeight = (int) (DateTime.Now.Ticks % 4);
+            _randomDirection = Math.Abs((int) (DateTime.Now.Ticks % 4) % 2);
             Logger.Info($"{info.Name} NUM={_randomHeight} Direction={_randomDirection}");
 
             _generated = true;
@@ -104,13 +116,13 @@ namespace Alis.Sample.Flappy.Bird
         }
 
         /// <summary>
-        /// Ons the update using the specified self
+        ///     Ons the update using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
             Transform current = self.Get<Transform>();
-            
+
             if (IsStop && (Velocity != 0))
             {
                 Velocity = 0;
@@ -123,8 +135,8 @@ namespace Alis.Sample.Flappy.Bird
                 if (!_generated)
                 {
                     _generated = true;
-                    _randomHeight = (int)(DateTime.Now.Ticks % 2);
-                    _randomDirection = Math.Abs((int)(DateTime.Now.Ticks % 4) % 2);
+                    _randomHeight = (int) (DateTime.Now.Ticks % 2);
+                    _randomDirection = Math.Abs((int) (DateTime.Now.Ticks % 4) % 2);
                     Logger.Info($"{info.Name} NUM={_randomHeight} Direction={_randomDirection} velocity={Velocity}");
                 }
 
@@ -146,23 +158,11 @@ namespace Alis.Sample.Flappy.Bird
                     }
                 }
             }
-            
+
             if (_generated && !IsStop)
             {
                 _generated = false;
             }
-        }
-
-        /// <summary>
-        /// Ons the exit using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void OnExit(IGameObject self)
-        {
-            Velocity = 0;
-            IsStop = true;
-            _generated = false;
-            Logger.Info($"{info.Name} Exiting...");
         }
     }
 }

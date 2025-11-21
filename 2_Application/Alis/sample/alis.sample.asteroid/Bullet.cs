@@ -28,20 +28,17 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Components;
-using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Sample.Asteroid
 {
     /// <summary>
-    /// The bullet class
+    ///     The bullet class
     /// </summary>
     public struct Bullet : IOnCollisionEnter
     {
         /// <summary>
-        /// Ons the collision enter using the specified other
+        ///     Ons the collision enter using the specified other
         /// </summary>
         /// <param name="other">The other</param>
         public void OnCollisionEnter(IGameObject other)
@@ -49,14 +46,14 @@ namespace Alis.Sample.Asteroid
             if (other.Has<Info>())
             {
                 ref Info gameObject = ref other.Get<Info>();
-            
+
                 if (gameObject.Tag == "Asteroid")
                 {
                     //Logger.Info("Bullet hit an asteroid and will decrease its health.");
                     other.Get<Asteroid>().DecreaseHealth();
                     //Context.SceneManager.CurrentWorld.(this.GameObject);
                 }
-            
+
                 if (gameObject.Tag == "Wall")
                 {
                     //Logger.Info("Bullet hit a wall and will be destroyed.");

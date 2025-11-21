@@ -27,22 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs;
-using Alis.Core.Ecs.Systems.Scope;
-using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Asteroid
 {
     /// <summary>
-    /// The asteroid class
+    ///     The asteroid class
     /// </summary>
-    
     public class Asteroid : IOnInit, IOnUpdate
     {
+        /// <summary>
+        ///     Ons the init using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void OnInit(IGameObject self)
+        {
+        }
+
+        /// <summary>
+        ///     Ons the update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void OnUpdate(IGameObject self)
+        {
+        }
         /*
         /// <summary>
         /// The rb
@@ -70,30 +78,30 @@ namespace Alis.Sample.Asteroid
         /// The random
         /// </summary>
         private static readonly Random random = new Random();
-        
+
         /// <summary>
         /// Ons the start
         /// </summary>
-        public override void OnStart () 
+        public override void OnStart ()
         {
             rb = this.GameObject.Get<BoxCollider>();
         }
-        
+
         /// <summary>
         /// Ons the update
         /// </summary>
-        public override void OnUpdate () 
+        public override void OnUpdate ()
         {
            if (health <= 0)
            {
                this.Context.SceneManager.CurrentScene.GetByTag("SoundPlayer").Get<AudioSource>().Play();
                SpawnSubAsteroids();
-               
+
                GameObject.Context.SceneManager.CurrentScene.GetByTag("Points").Get<CounterManager>().Increment();
                this.GameObject.Context.SceneManager.DestroyGameObject(this.GameObject);
            }
         }
-        
+
         /// <summary>
         /// Spawns the sub asteroids
         /// </summary>
@@ -109,7 +117,7 @@ namespace Alis.Sample.Asteroid
                     parentTransform.Position = this.GameObject.Transform.Position;
                     parentTransform.Rotation = 0.0f;
                     parentTransform.Scale = new Vector2F(2.0f, 2.0f);
-                    
+
                     subAsteroid.Transform = parentTransform;
 
                     subAsteroid.Add(new AudioSource()
@@ -120,7 +128,7 @@ namespace Alis.Sample.Asteroid
                             .Volume(100.0f)
                             .Build())
                         .Build());
-                   
+
                     if (i == 0)
                     {
                         subAsteroid.Add(new BoxCollider().Builder()
@@ -171,7 +179,7 @@ namespace Alis.Sample.Asteroid
                     {
                         // generete a random number between 0 and 3
                         int randomAsteroid = random.Next(0, 3);
-                        
+
                         subAsteroid.Add(new Sprite().Builder()
                             .SetTexture($"asteroid_{randomAsteroid}.jpeg")
                             .Depth(1)
@@ -179,7 +187,7 @@ namespace Alis.Sample.Asteroid
                     }
 
                     subAsteroid.Add(new Asteroid());
-                   
+
                    Context.SceneManager.CurrentScene.Add(subAsteroid);
                }
            }
@@ -205,11 +213,11 @@ namespace Alis.Sample.Asteroid
                     yRandom = random.Next(-2, 2);
                     xRandom = random.Next(-2, 2);
                 }
-                
-                
+
+
 
                 Vector2F newVelocity = new Vector2F(xRandom, yRandom);
-                newVelocity = Vector2F.Normalize(newVelocity) * 3.0f; 
+                newVelocity = Vector2F.Normalize(newVelocity) * 3.0f;
 
                 rb.Body.LinearVelocity = newVelocity;
             }
@@ -221,7 +229,7 @@ namespace Alis.Sample.Asteroid
         /// <param name="gameObject">The game object</param>
         public override void OnCollisionExit(GameObject gameObject)
         {
-            
+
         }
 
         /// <summary>
@@ -232,32 +240,14 @@ namespace Alis.Sample.Asteroid
             health -= 1;
             Console.WriteLine("Asteroid health: " + health);
         }*/
-        
+
         /// <summary>
-        /// Decreases the health
+        ///     Decreases the health
         /// </summary>
         public void DecreaseHealth()
         {
             //health -= 1;
             //Console.WriteLine("Asteroid health: " + health);
-        }
-
-        /// <summary>
-        /// Ons the init using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void OnInit(IGameObject self)
-        {
-                
-        }
-
-        /// <summary>
-        /// Ons the update using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void OnUpdate(IGameObject self)
-        {
-          
         }
     }
 }

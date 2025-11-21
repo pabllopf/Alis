@@ -29,9 +29,6 @@
 
 using System;
 using System.IO;
-using System.IO.Compression;
-using System.Linq;
-
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -85,19 +82,6 @@ namespace Alis.Core.Audio.Players
         public bool Paused { get; private set; }
 
         /// <summary>
-        /// Extracts the wav from resources using the specified wav file name
-        /// </summary>
-        /// <param name="wavFileName">The wav file name</param>
-        /// <exception cref="InvalidOperationException">No entry assembly found.</exception>
-        /// <exception cref="FileNotFoundException">Resource '{wavFileName}' not found in 'assets.pack'.</exception>
-        /// <exception cref="FileNotFoundException">Resource file 'assets.pack' not found in embedded resources.</exception>
-        /// <returns>A task containing the string</returns>
-        private static string ExtractWavFromResourcesAsync(string wavFileName)
-        {
-            return AssetRegistry.GetResourcePathByName(wavFileName);
-        }
-        
-        /// <summary>
         ///     Plays the file name
         /// </summary>
         /// <param name="fileName">The file name</param>
@@ -114,7 +98,7 @@ namespace Alis.Core.Audio.Players
                     throw new FileNotFoundException($"File '{fileName}' not found.", ex);
                 }
             }
-            
+
             _fileName = fileName;
             _playbackTimer = new Timer
             {
@@ -133,9 +117,9 @@ namespace Alis.Core.Audio.Players
             return Task.CompletedTask;
         }
 
-        
+
         /// <summary>
-        /// Plays the loop using the specified file name
+        ///     Plays the loop using the specified file name
         /// </summary>
         /// <param name="fileName">The file name</param>
         /// <param name="loop">The loop</param>
@@ -153,21 +137,21 @@ namespace Alis.Core.Audio.Players
                     throw new FileNotFoundException($"File '{fileName}' not found.", ex);
                 }
             }
-        
+
             _fileName = fileName;
-            _playbackTimer = new Timer { AutoReset = false };
+            _playbackTimer = new Timer {AutoReset = false};
             _playStopwatch = new Clock();
-        
+
             ExecuteMsiCommand($"Status {_fileName} Length");
             string playCommand = loop ? $"Play {_fileName} Repeat" : $"Play {_fileName}";
             ExecuteMsiCommand(playCommand);
-        
+
             Paused = false;
             Playing = true;
             _playbackTimer.Elapsed += HandlePlaybackFinished;
             _playbackTimer.Start();
             _playStopwatch.Start();
-        
+
             return Task.CompletedTask;
         }
 
@@ -237,6 +221,16 @@ namespace Alis.Core.Audio.Players
 
             return Task.CompletedTask;
         }
+
+        /// <summary>
+        ///     Extracts the wav from resources using the specified wav file name
+        /// </summary>
+        /// <param name="wavFileName">The wav file name</param>
+        /// <exception cref="InvalidOperationException">No entry assembly found.</exception>
+        /// <exception cref="FileNotFoundException">Resource '{wavFileName}' not found in 'assets.pack'.</exception>
+        /// <exception cref="FileNotFoundException">Resource file 'assets.pack' not found in embedded resources.</exception>
+        /// <returns>A task containing the string</returns>
+        private static string ExtractWavFromResourcesAsync(string wavFileName) => AssetRegistry.GetResourcePathByName(wavFileName);
 
 
         /// <summary>

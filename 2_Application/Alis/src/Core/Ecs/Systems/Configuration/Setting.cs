@@ -55,16 +55,14 @@ namespace Alis.Core.Ecs.Systems.Configuration
             Physic = new PhysicSetting();
         }
 
-      /// <summary>
-      /// 
-      /// </summary>
-      /// <param name="general"></param>
-      /// <param name="audio"></param>
-      /// <param name="graphic"></param>
-      /// <param name="input"></param>
-      /// <param name="network"></param>
-      /// <param name="physic"></param>
-        
+        /// <summary>
+        /// </summary>
+        /// <param name="general"></param>
+        /// <param name="audio"></param>
+        /// <param name="graphic"></param>
+        /// <param name="input"></param>
+        /// <param name="network"></param>
+        /// <param name="physic"></param>
         public Setting(GeneralSetting general, AudioSetting audio, GraphicSetting graphic, InputSetting input, NetworkSetting network, PhysicSetting physic)
         {
             General = general;
@@ -78,37 +76,37 @@ namespace Alis.Core.Ecs.Systems.Configuration
         /// <summary>
         ///     Gets or sets the value of the general
         /// </summary>
-        
+
         public GeneralSetting General { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the audio
         /// </summary>
-        
+
         public AudioSetting Audio { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the graphic
         /// </summary>
-        
+
         public GraphicSetting Graphic { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the input
         /// </summary>
-        
+
         public InputSetting Input { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the network
         /// </summary>
-        
+
         public NetworkSetting Network { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the physic
         /// </summary>
-        
+
         public PhysicSetting Physic { get; set; }
 
         /// <summary>
@@ -117,7 +115,7 @@ namespace Alis.Core.Ecs.Systems.Configuration
         public void OnLoad()
         {
             General = General.OnLoad();
-            
+
             /*
             string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Setting");
             if (!Directory.Exists(directory))
@@ -192,7 +190,7 @@ namespace Alis.Core.Ecs.Systems.Configuration
         public void OnSave()
         {
             General.OnSave();
-            
+
             /*
             string directory = Path.Combine(Environment.CurrentDirectory, "Data", "Setting");
             if (!Directory.Exists(directory))

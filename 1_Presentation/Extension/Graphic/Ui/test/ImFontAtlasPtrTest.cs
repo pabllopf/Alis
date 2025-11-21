@@ -1289,7 +1289,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddFontDefault_ReturnsImFontPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1300,7 +1299,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
-
         }
 
         /// <summary>
@@ -1310,7 +1308,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddFontFromFileTtf_ReturnsImFontPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1321,7 +1318,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
-
         }
 
         /// <summary>
@@ -1333,7 +1329,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
             IntPtr glyphRanges = new IntPtr();
-
         }
 
         /// <summary>
@@ -1343,7 +1338,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddFontFromMemoryCompressedBase85Ttf_ReturnsImFontPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1354,7 +1348,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
-
         }
 
         /// <summary>
@@ -1366,7 +1359,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
             IntPtr glyphRanges = new IntPtr();
-
         }
 
         /// <summary>
@@ -1377,7 +1369,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             IntPtr compressedFontData = new IntPtr();
-
         }
 
         /// <summary>
@@ -1389,7 +1380,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             IntPtr compressedFontData = new IntPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
-
         }
 
         /// <summary>
@@ -1402,7 +1392,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             IntPtr compressedFontData = new IntPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
             IntPtr glyphRanges = new IntPtr();
-
         }
 
         /// <summary>
@@ -1413,7 +1402,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             IntPtr fontData = new IntPtr();
-
         }
 
         /// <summary>
@@ -1425,7 +1413,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             IntPtr fontData = new IntPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
-
         }
 
         /// <summary>
@@ -1438,7 +1425,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             IntPtr fontData = new IntPtr();
             ImFontConfigPtr fontCfg = new ImFontConfigPtr();
             IntPtr glyphRanges = new IntPtr();
-
         }
 
         /// <summary>
@@ -1448,7 +1434,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Build_ReturnsTrue()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1459,7 +1444,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
-
         }
 
         /// <summary>
@@ -1513,7 +1497,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetCustomRectByIndex_ReturnsCustomRect()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1523,7 +1506,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetGlyphRangesChineseFull_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1533,7 +1515,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetGlyphRangesChineseSimplifiedCommon_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1543,7 +1524,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetGlyphRangesCyrillic_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1553,7 +1533,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetGlyphRangesDefault_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1563,7 +1542,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetGlyphRangesGreek_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1573,7 +1551,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetGlyphRangesJapanese_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1583,7 +1560,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetGlyphRangesKorean_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1593,7 +1569,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetGlyphRangesThai_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1603,7 +1578,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetGlyphRangesVietnamese_ReturnsIntPtr()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1613,7 +1587,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetMouseCursorTexData_ReturnsTrue()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1623,7 +1596,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetTexDataAsAlpha8_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1633,7 +1605,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetTexDataAsAlpha8_WithBytesPerPixel_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1643,7 +1614,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetTexDataAsAlpha8_WithIntPtr_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1653,7 +1623,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetTexDataAsAlpha8_WithIntPtrAndBytesPerPixel_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1663,7 +1632,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetTexDataAsRgba32_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1673,7 +1641,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetTexDataAsRgba32_WithIntPtr_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1683,7 +1650,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetTexDataAsRgba32_WithIntPtrAndBytesPerPixel_ReturnsData()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>
@@ -1693,7 +1659,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void IsBuilt_ReturnsTrue()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-
         }
 
         /// <summary>

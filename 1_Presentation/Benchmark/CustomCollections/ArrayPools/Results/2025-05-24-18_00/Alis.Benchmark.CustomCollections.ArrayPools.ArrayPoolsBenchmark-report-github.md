@@ -10,8 +10,9 @@ Job=ShortRun  IterationCount=3  LaunchCount=1
 WarmupCount=3  
 
 ```
-| Method                                                    | ArraySize | Mean      | Error     | StdDev    | Gen0   | Allocated |
-|---------------------------------------------------------- |---------- |----------:|----------:|----------:|-------:|----------:|
+
+| Method                                                            | ArraySize |      Mean |     Error |    StdDev |   Gen0 | Allocated |
+|-------------------------------------------------------------------|-----------|----------:|----------:|----------:|-------:|----------:|
 | &#39;[ArrayPool]_Create()&#39;                                    | 16        |  6.901 ns | 1.7894 ns | 0.0981 ns |      - |         - |
 | &#39;[FastArrayPool]_Create()&#39;                                | 16        |  5.059 ns | 0.0921 ns | 0.0050 ns | 0.0105 |      88 B |
 | &#39;[ComponentArrayPool]_Create()&#39;                           | 16        |  3.493 ns | 0.1329 ns | 0.0073 ns |      - |         - |

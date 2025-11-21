@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.Glfw.Sample
                     TriangleSample triangleSample = new TriangleSample();
                     triangleSample.Run();
                     break;
-                
+
                 case 2:
                     CubeSample cubeSample = new CubeSample();
                     cubeSample.Run();
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.Glfw.Sample
                     RenderSquareUnfilled unfilled = new RenderSquareUnfilled();
                     unfilled.Run();
                     break;
-                
+
                 case 4:
                     TextureSampleCustomBmp textureSampleCustomBmp = new TextureSampleCustomBmp();
                     textureSampleCustomBmp.Run();

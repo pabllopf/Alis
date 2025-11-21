@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
@@ -327,10 +326,7 @@ namespace Alis.Core.Physic.Dynamics
         public float LinearDamping
         {
             get => _linearDamping;
-            set
-            {
-                _linearDamping = value;
-            }
+            set => _linearDamping = value;
         }
 
         /// <summary>
@@ -340,10 +336,7 @@ namespace Alis.Core.Physic.Dynamics
         public float AngularDamping
         {
             get => _angularDamping;
-            set
-            {
-                _angularDamping = value;
-            }
+            set => _angularDamping = value;
         }
 
         /// <summary>
@@ -885,10 +878,9 @@ namespace Alis.Core.Physic.Dynamics
             }
         }
 
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <returns></returns>
+        /// <summary>
+        /// </summary>
+        /// <returns></returns>
         public ControllerTransform GetTransform() => Xf;
 
         /// <summary>
@@ -941,7 +933,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (_bodyType == BodyType.Dynamic)
             {
-                if (Awake == false)
+                if (!Awake)
                 {
                     Awake = true;
                 }
@@ -961,7 +953,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (_bodyType == BodyType.Dynamic)
             {
-                if (Awake == false)
+                if (!Awake)
                 {
                     Awake = true;
                 }
@@ -1005,7 +997,7 @@ namespace Alis.Core.Physic.Dynamics
                 return;
             }
 
-            if (Awake == false)
+            if (!Awake)
             {
                 Awake = true;
             }
@@ -1028,7 +1020,7 @@ namespace Alis.Core.Physic.Dynamics
                 return;
             }
 
-            if (Awake == false)
+            if (!Awake)
             {
                 Awake = true;
             }
@@ -1048,7 +1040,7 @@ namespace Alis.Core.Physic.Dynamics
                 return;
             }
 
-            if (Awake == false)
+            if (!Awake)
             {
                 Awake = true;
             }
@@ -1270,7 +1262,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 if (jn.Other == other)
                 {
-                    if (jn.Joint.CollideConnected == false)
+                    if (!jn.Joint.CollideConnected)
                     {
                         return false;
                     }

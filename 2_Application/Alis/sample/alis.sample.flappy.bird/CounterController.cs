@@ -27,11 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Components.Audio;
 
@@ -40,14 +37,13 @@ namespace Alis.Sample.Flappy.Bird
     /// <summary>
     ///     The counter controller class
     /// </summary>
-    
     public class CounterController : IOnStart, IOnUpdate, IOnCollisionEnter, IOnCollisionExit
     {
         /// <summary>
         ///     The audio source
         /// </summary>
         private AudioSource audioSource;
-        
+
         //private FontManager fontManager;
 
         /// <summary>
@@ -59,6 +55,56 @@ namespace Alis.Sample.Flappy.Bird
         ///     Gets or sets the value of the counter
         /// </summary>
         public int Counter { get; set; }
+
+        /// <summary>
+        ///     Ons the collision enter using the specified other
+        /// </summary>
+        /// <param name="other">The other</param>
+        public void OnCollisionEnter(IGameObject other)
+        {
+            Logger.Log("Collision enter with");
+
+            Info info = other.Get<Info>();
+            if ((info.Tag == "Player") && !isEnter)
+            {
+                Increment();
+                audioSource.Play();
+                Logger.Info("Value: " + Counter);
+                isEnter = true;
+            }
+        }
+
+        /// <summary>
+        ///     Ons the collision exit using the specified other
+        /// </summary>
+        /// <param name="other">The other</param>
+        public void OnCollisionExit(IGameObject other)
+        {
+            Logger.Log("Collision exit with");
+            Info info = other.Get<Info>();
+            if ((info.Tag == "Player") && isEnter)
+            {
+                isEnter = false;
+                Logger.Info("Player exit");
+            }
+        }
+
+        /// <summary>
+        ///     Ons the start using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void OnStart(IGameObject self)
+        {
+            audioSource = self.Get<AudioSource>();
+        }
+
+        /// <summary>
+        ///     Ons the update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
+        public void OnUpdate(IGameObject self)
+        {
+        }
 
         /// <summary>
         ///     Increments this instance
@@ -82,58 +128,6 @@ namespace Alis.Sample.Flappy.Bird
         /// <returns>The string</returns>
         public override string ToString() => Counter.ToString();
 
-        /// <summary>
-        /// Ons the collision exit using the specified other
-        /// </summary>
-        /// <param name="other">The other</param>
-        public void OnCollisionExit(IGameObject other)
-        {
-            Logger.Log($"Collision exit with");
-            Info info = other.Get<Info>();
-            if ((info.Tag == "Player") && isEnter)
-            {
-                isEnter = false;
-                Logger.Info("Player exit");
-            }
-        }
-
-        /// <summary>
-        /// Ons the collision enter using the specified other
-        /// </summary>
-        /// <param name="other">The other</param>
-        public void OnCollisionEnter(IGameObject other)
-        {
-            Logger.Log($"Collision enter with");
-            
-            Info info = other.Get<Info>();
-            if ((info.Tag == "Player") && !isEnter)
-            {
-                Increment();
-                audioSource.Play();
-                Logger.Info("Value: " + Counter);
-                isEnter = true;
-            }
-            
-        }
-
-        /// <summary>
-        /// Ons the update using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void OnUpdate(IGameObject self)
-        {
-            
-        }
-
-        /// <summary>
-        /// Ons the start using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void OnStart(IGameObject self)
-        {
-            audioSource = self.Get<AudioSource>();    
-        }
-        
 
         /*
         /// <summary>

@@ -29,19 +29,15 @@
 
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Systems.Scope;
-using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Flappy.Bird
 {
     /// <summary>
     ///     The bird idle class
     /// </summary>
-    
     public class BirdIdle : IOnStart, IOnUpdate, IHasContext<Context>
     {
         /// <summary>
@@ -68,9 +64,14 @@ namespace Alis.Sample.Flappy.Bird
         ///     The go up
         /// </summary>
         private bool goUp = true;
-        
+
         /// <summary>
-        /// Ons the start using the specified self
+        ///     Gets or sets the value of the context
+        /// </summary>
+        public Context Context { get; set; }
+
+        /// <summary>
+        ///     Ons the start using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnStart(IGameObject self)
@@ -79,13 +80,13 @@ namespace Alis.Sample.Flappy.Bird
         }
 
         /// <summary>
-        /// Ons the update using the specified self
+        ///     Ons the update using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self)
         {
             ref Transform t = ref self.Get<Transform>();
-            
+
             // get the x position of game object:
             float x = t.Position.X;
 
@@ -139,10 +140,5 @@ namespace Alis.Sample.Flappy.Bird
                 goDown = false;
             }
         }
-
-        /// <summary>
-        /// Gets or sets the value of the context
-        /// </summary>
-        public Context Context { get; set; }
     }
 }

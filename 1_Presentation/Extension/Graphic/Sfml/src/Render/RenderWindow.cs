@@ -632,7 +632,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         ///    Image img = texture.CopyToImage();
         ///    </code>
         /// </remarks>
-        
         public Image Capture() => new Image(sfRenderWindow_capture(CPointer));
 
 

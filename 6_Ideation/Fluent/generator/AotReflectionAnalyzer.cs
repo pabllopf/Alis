@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:AotReflectionAnalyzer.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Immutable;
 using Microsoft.CodeAnalysis;
@@ -9,56 +38,65 @@ using Microsoft.CodeAnalysis.Operations;
 namespace Alis.Core.Aspect.Fluent.Generator
 {
     /// <summary>
-    /// The aot reflection analyzer class
+    ///     The aot reflection analyzer class
     /// </summary>
-    /// <seealso cref="DiagnosticAnalyzer"/>
+    /// <seealso cref="DiagnosticAnalyzer" />
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class AotReflectionAnalyzer : DiagnosticAnalyzer
     {
         // Diagnostic IDs
         /// <summary>
-        /// The id reflection api
+        ///     The id reflection api
         /// </summary>
         public const string IdReflectionApi = "ALIS001";
+
         /// <summary>
-        /// The id emit api
+        ///     The id emit api
         /// </summary>
         public const string IdEmitApi = "ALIS002";
+
         /// <summary>
-        /// The id invoke api
+        ///     The id invoke api
         /// </summary>
         public const string IdInvokeApi = "ALIS003";
+
         /// <summary>
-        /// The id activator api
+        ///     The id activator api
         /// </summary>
         public const string IdActivatorApi = "ALIS004";
+
         /// <summary>
-        /// The id type get type
+        ///     The id type get type
         /// </summary>
         public const string IdTypeGetType = "ALIS005";
+
         /// <summary>
-        /// The id dynamic
+        ///     The id dynamic
         /// </summary>
         public const string IdDynamic = "ALIS006";
+
         /// <summary>
-        /// The id serialization
+        ///     The id serialization
         /// </summary>
         public const string IdSerialization = "ALIS007";
+
         /// <summary>
-        /// The id expression compile
+        ///     The id expression compile
         /// </summary>
         public const string IdExpressionCompile = "ALIS008";
+
         /// <summary>
-        /// The id runtime helpers
+        ///     The id runtime helpers
         /// </summary>
         public const string IdRuntimeHelpers = "ALIS009";
+
         /// <summary>
-        /// The id unknown reflection
+        ///     The id unknown reflection
         /// </summary>
         public const string IdUnknownReflection = "ALIS010";
 
         /// <summary>
-        /// The description
+        ///     The description
         /// </summary>
         private static readonly DiagnosticDescriptor ReflectionApiRule = new DiagnosticDescriptor(
             IdReflectionApi,
@@ -66,11 +104,11 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Use of reflection API '{0}' may require additional runtime metadata and can break Publish AOT when reflection is disabled",
             "AOT/Reflection",
             DiagnosticSeverity.Error,
-            isEnabledByDefault: true,
-            description: "Detects direct uses of System.Reflection that usually require access to metadata that AOT may remove if not preserved.");
+            true,
+            "Detects direct uses of System.Reflection that usually require access to metadata that AOT may remove if not preserved.");
 
         /// <summary>
-        /// The description
+        ///     The description
         /// </summary>
         private static readonly DiagnosticDescriptor EmitApiRule = new DiagnosticDescriptor(
             IdEmitApi,
@@ -78,11 +116,11 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Dynamic code generation (Reflection.Emit/DynamicMethod/AssemblyBuilder) is not supported under AOT, usage detected: '{0}'",
             "AOT/CodeGen",
             DiagnosticSeverity.Error,
-            isEnabledByDefault: true,
-            description: "Detects dynamic code generation APIs that do not work in pure AOT environments.");
+            true,
+            "Detects dynamic code generation APIs that do not work in pure AOT environments.");
 
         /// <summary>
-        /// The is enabled by default
+        ///     The is enabled by default
         /// </summary>
         private static readonly DiagnosticDescriptor InvokeApiRule = new DiagnosticDescriptor(
             IdInvokeApi,
@@ -90,10 +128,10 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Dynamic invocation '{0}' depends on runtime metadata and is not compatible with reflection disabled",
             "AOT/Reflection",
             DiagnosticSeverity.Error,
-            isEnabledByDefault: true);
+            true);
 
         /// <summary>
-        /// The is enabled by default
+        ///     The is enabled by default
         /// </summary>
         private static readonly DiagnosticDescriptor ActivatorRule = new DiagnosticDescriptor(
             IdActivatorApi,
@@ -101,10 +139,10 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Activator.CreateInstance and variants '{0}' require creating types by name and are not compatible if reflection is disabled or required types are not preserved",
             "AOT/Reflection",
             DiagnosticSeverity.Error,
-            isEnabledByDefault: true);
+            true);
 
         /// <summary>
-        /// The is enabled by default
+        ///     The is enabled by default
         /// </summary>
         private static readonly DiagnosticDescriptor TypeGetTypeRule = new DiagnosticDescriptor(
             IdTypeGetType,
@@ -112,10 +150,10 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Call to Type.GetType/Assembly.Load '{0}' requires loading types by string which needs metadata not available in AOT if not preserved",
             "AOT/Reflection",
             DiagnosticSeverity.Error,
-            isEnabledByDefault: true);
+            true);
 
         /// <summary>
-        /// The is enabled by default
+        ///     The is enabled by default
         /// </summary>
         private static readonly DiagnosticDescriptor DynamicRule = new DiagnosticDescriptor(
             IdDynamic,
@@ -123,10 +161,10 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Use of 'dynamic' or IDynamicMetaObjectProvider '{0}' requires runtime binders that AOT may remove",
             "AOT/Dynamic",
             DiagnosticSeverity.Error,
-            isEnabledByDefault: true);
+            true);
 
         /// <summary>
-        /// The is enabled by default
+        ///     The is enabled by default
         /// </summary>
         private static readonly DiagnosticDescriptor SerializationRule = new DiagnosticDescriptor(
             IdSerialization,
@@ -134,10 +172,10 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Serializer using reflection by default '{0}' often fails under AOT if required types are not preserved",
             "AOT/Serialization",
             DiagnosticSeverity.Error,
-            isEnabledByDefault: true);
+            true);
 
         /// <summary>
-        /// The is enabled by default
+        ///     The is enabled by default
         /// </summary>
         private static readonly DiagnosticDescriptor ExpressionCompileRule = new DiagnosticDescriptor(
             IdExpressionCompile,
@@ -145,10 +183,10 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Expression.Compile() generates dynamic IL at runtime and is not supported under AOT, usage detected: '{0}'",
             "AOT/Expression",
             DiagnosticSeverity.Error,
-            isEnabledByDefault: true);
+            true);
 
         /// <summary>
-        /// The is enabled by default
+        ///     The is enabled by default
         /// </summary>
         private static readonly DiagnosticDescriptor RuntimeHelpersRule = new DiagnosticDescriptor(
             IdRuntimeHelpers,
@@ -156,10 +194,10 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Use of RuntimeHelpers or eager compilation '{0}' may depend on JIT behavior not available in AOT",
             "AOT/Runtime",
             DiagnosticSeverity.Error,
-            isEnabledByDefault: true);
+            true);
 
         /// <summary>
-        /// The is enabled by default
+        ///     The is enabled by default
         /// </summary>
         private static readonly DiagnosticDescriptor UnknownReflectionRule = new DiagnosticDescriptor(
             IdUnknownReflection,
@@ -167,14 +205,14 @@ namespace Alis.Core.Aspect.Fluent.Generator
             "Pattern detected that may require runtime reflection: '{0}' review manually for AOT",
             "AOT/ManualReview",
             DiagnosticSeverity.Error,
-            isEnabledByDefault: true);
+            true);
 
         /// <summary> /// Gets the value of the supported diagnostics /// </summary>
-        
-        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create( ReflectionApiRule, EmitApiRule, InvokeApiRule, ActivatorRule, TypeGetTypeRule, DynamicRule, SerializationRule, ExpressionCompileRule, RuntimeHelpersRule, UnknownReflectionRule);
-        
+
+        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(ReflectionApiRule, EmitApiRule, InvokeApiRule, ActivatorRule, TypeGetTypeRule, DynamicRule, SerializationRule, ExpressionCompileRule, RuntimeHelpersRule, UnknownReflectionRule);
+
         /// <summary>
-        /// Initializes the context
+        ///     Initializes the context
         /// </summary>
         /// <param name="context">The context</param>
         public override void Initialize(AnalysisContext context)
@@ -199,12 +237,12 @@ namespace Alis.Core.Aspect.Fluent.Generator
         }
 
         /// <summary>
-        /// Analyzes the invocation using the specified context
+        ///     Analyzes the invocation using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         private static void AnalyzeInvocation(OperationAnalysisContext context)
         {
-            IInvocationOperation invocation = (IInvocationOperation)context.Operation;
+            IInvocationOperation invocation = (IInvocationOperation) context.Operation;
             IMethodSymbol method = invocation.TargetMethod;
 
             string fullName = method.ContainingType?.ToDisplayString() + "." + method.Name;
@@ -264,12 +302,12 @@ namespace Alis.Core.Aspect.Fluent.Generator
         }
 
         /// <summary>
-        /// Analyzes the object creation using the specified context
+        ///     Analyzes the object creation using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         private static void AnalyzeObjectCreation(OperationAnalysisContext context)
         {
-            IObjectCreationOperation creation = (IObjectCreationOperation)context.Operation;
+            IObjectCreationOperation creation = (IObjectCreationOperation) context.Operation;
             ITypeSymbol type = creation.Type;
             string fullName = type?.ToDisplayString();
             if (fullName == null)
@@ -292,12 +330,12 @@ namespace Alis.Core.Aspect.Fluent.Generator
         }
 
         /// <summary>
-        /// Analyzes the field reference using the specified context
+        ///     Analyzes the field reference using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         private static void AnalyzeFieldReference(OperationAnalysisContext context)
         {
-            IFieldReferenceOperation op = (IFieldReferenceOperation)context.Operation;
+            IFieldReferenceOperation op = (IFieldReferenceOperation) context.Operation;
             string containing = op.Field.ContainingType?.ToDisplayString();
             string name = containing + "." + op.Field.Name;
 
@@ -308,12 +346,12 @@ namespace Alis.Core.Aspect.Fluent.Generator
         }
 
         /// <summary>
-        /// Analyzes the property reference using the specified context
+        ///     Analyzes the property reference using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         private static void AnalyzePropertyReference(OperationAnalysisContext context)
         {
-            IPropertyReferenceOperation op = (IPropertyReferenceOperation)context.Operation;
+            IPropertyReferenceOperation op = (IPropertyReferenceOperation) context.Operation;
             string containing = op.Property.ContainingType?.ToDisplayString();
             string name = containing + "." + op.Property.Name;
 
@@ -324,12 +362,12 @@ namespace Alis.Core.Aspect.Fluent.Generator
         }
 
         /// <summary>
-        /// Analyzes the method reference using the specified context
+        ///     Analyzes the method reference using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         private static void AnalyzeMethodReference(OperationAnalysisContext context)
         {
-            IMethodReferenceOperation op = (IMethodReferenceOperation)context.Operation;
+            IMethodReferenceOperation op = (IMethodReferenceOperation) context.Operation;
             string containing = op.Method.ContainingType?.ToDisplayString();
             string name = containing + "." + op.Method.Name;
             if (IsReflectionType(op.Method.ContainingType))
@@ -339,13 +377,13 @@ namespace Alis.Core.Aspect.Fluent.Generator
         }
 
         /// <summary>
-        /// Analyzes the conversion using the specified context
+        ///     Analyzes the conversion using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         private static void AnalyzeConversion(OperationAnalysisContext context)
         {
             // detect casts to dynamic-related interfaces
-            IConversionOperation conv = (IConversionOperation)context.Operation;
+            IConversionOperation conv = (IConversionOperation) context.Operation;
             ITypeSymbol target = conv.Type;
             if (target == null)
             {
@@ -358,22 +396,22 @@ namespace Alis.Core.Aspect.Fluent.Generator
                 Report(context, conv.Syntax.GetLocation(), DynamicRule, targetName);
             }
         }
-        
+
         /// <summary>
-        /// Analyzes the dynamic usage using the specified context
+        ///     Analyzes the dynamic usage using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         private static void AnalyzeDynamicUsage(SyntaxNodeAnalysisContext context)
         {
-            IdentifierNameSyntax id = (IdentifierNameSyntax)context.Node;
-        
+            IdentifierNameSyntax id = (IdentifierNameSyntax) context.Node;
+
             // Detecta la palabra clave `dynamic` comparando el texto del token en vez de usar SyntaxKind.DynamicKeyword
             if (string.Equals(id.Identifier.ValueText, "dynamic", StringComparison.Ordinal))
             {
                 Report(context, id.GetLocation(), DynamicRule, "dynamic keyword");
                 return;
             }
-        
+
             // Heurística para nameof/GetType/GetMethod
             if (id.Identifier.Text.Equals("GetType", StringComparison.Ordinal) || id.Identifier.Text.Equals("GetMethod", StringComparison.Ordinal))
             {
@@ -382,12 +420,12 @@ namespace Alis.Core.Aspect.Fluent.Generator
         }
 
         /// <summary>
-        /// Analyzes the member access using the specified context
+        ///     Analyzes the member access using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         private static void AnalyzeMemberAccess(SyntaxNodeAnalysisContext context)
         {
-            MemberAccessExpressionSyntax member = (MemberAccessExpressionSyntax)context.Node;
+            MemberAccessExpressionSyntax member = (MemberAccessExpressionSyntax) context.Node;
             string text = member.ToString();
             // heurística para detectar cadenas que contengan reflection APIs usadas por nombre
             if (text.Contains("GetMethod(") || text.Contains("GetType(") || text.Contains("GetProperty("))
@@ -397,8 +435,9 @@ namespace Alis.Core.Aspect.Fluent.Generator
         }
 
         #region Helpers
+
         /// <summary>
-        /// Reports the context
+        ///     Reports the context
         /// </summary>
         /// <param name="context">The context</param>
         /// <param name="location">The location</param>
@@ -411,7 +450,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
         }
 
         /// <summary>
-        /// Reports the context
+        ///     Reports the context
         /// </summary>
         /// <param name="context">The context</param>
         /// <param name="location">The location</param>
@@ -424,7 +463,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
         }
 
         /// <summary>
-        /// Ises the reflection type using the specified type
+        ///     Ises the reflection type using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>The bool</returns>
@@ -452,7 +491,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
         }
 
         /// <summary>
-        /// Ises the emit api using the specified method
+        ///     Ises the emit api using the specified method
         /// </summary>
         /// <param name="method">The method</param>
         /// <returns>The bool</returns>
@@ -479,7 +518,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
         }
 
         /// <summary>
-        /// Ises the invoke api using the specified method
+        ///     Ises the invoke api using the specified method
         /// </summary>
         /// <param name="method">The method</param>
         /// <returns>The bool</returns>
@@ -501,7 +540,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
         }
 
         /// <summary>
-        /// Ises the activator api using the specified method
+        ///     Ises the activator api using the specified method
         /// </summary>
         /// <param name="method">The method</param>
         /// <returns>The bool</returns>
@@ -512,7 +551,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
         }
 
         /// <summary>
-        /// Ises the type get type api using the specified method
+        ///     Ises the type get type api using the specified method
         /// </summary>
         /// <param name="method">The method</param>
         /// <returns>The bool</returns>
@@ -523,7 +562,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
         }
 
         /// <summary>
-        /// Ises the known serializer using the specified method
+        ///     Ises the known serializer using the specified method
         /// </summary>
         /// <param name="method">The method</param>
         /// <returns>The bool</returns>
@@ -553,6 +592,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
 
             return false;
         }
+
         #endregion
     }
 }

@@ -41,13 +41,12 @@ namespace Alis.Core.Ecs.Systems.Configuration.Physic
         Vector2F gravity = default(Vector2F),
         bool debug = false,
         Color debugColor = default(Color)
-        
-        ) : IPhysicSetting
+    ) : IPhysicSetting
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicSetting" /> class
         /// </summary>
-        public PhysicSetting() : this(new Vector2F(0, -9.81f) , false , new Color(0,0,0,1))
+        public PhysicSetting() : this(new Vector2F(0, -9.81f), false, new Color(0, 0, 0, 1))
         {
         }
 
@@ -57,11 +56,12 @@ namespace Alis.Core.Ecs.Systems.Configuration.Physic
         public Vector2F Gravity { get; set; } = gravity;
 
         /// <summary>
-        /// Gets or sets the value of the debug
+        ///     Gets or sets the value of the debug
         /// </summary>
-        public bool Debug { get; set; }  = debug;
+        public bool Debug { get; set; } = debug;
+
         /// <summary>
-        /// Gets or sets the value of the debug color
+        ///     Gets or sets the value of the debug color
         /// </summary>
         public Color DebugColor { get; set; } = debugColor;
     }

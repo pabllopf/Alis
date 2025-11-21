@@ -29,7 +29,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -264,7 +263,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Test_AddGlyph_v1()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -274,7 +272,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Test_AddRemapChar_v1()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -284,7 +281,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Test_AddRemapChar_v3()
         {
             ImFontPtr ptr = new ImFontPtr(new ImFont());
-
         }
 
         /// <summary>
@@ -294,7 +290,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Test_AddRemapChar_v2()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -304,7 +299,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Test_BuildLookupTable()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -314,7 +308,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Test_ClearOutputData()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -324,7 +317,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Test_FindGlyph()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -334,7 +326,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Test_FindGlyphNoFallback()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -344,7 +335,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Test_GetCharAdvance()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -364,7 +354,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Test_GrowIndex()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -374,7 +363,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Test_IsLoaded()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -384,7 +372,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Test_RenderChar()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
-
         }
 
         /// <summary>
@@ -394,7 +381,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Test_SetGlyphVisible()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
-
         }
 
         /// <summary>

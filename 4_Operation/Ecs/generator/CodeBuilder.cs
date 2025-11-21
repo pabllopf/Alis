@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:CodeBuilder.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Text;
 using System.Threading;
@@ -5,22 +34,27 @@ using System.Threading;
 namespace Alis.Core.Ecs.Generator
 {
     /// <summary>
-    /// The code builder class
+    ///     The code builder class
     /// </summary>
     internal class CodeBuilder
     {
         /// <summary>
-        /// The code builder delegate
+        ///     The tabs per indent
         /// </summary>
-        internal delegate void CodeBuilderDelegate<T>(in T model, CodeBuilder codeBuilder, CancellationToken ct);
+        public const int TabsPerIndent = 4;
 
         /// <summary>
-        /// The shared
+        ///     The shared
         /// </summary>
-        [ThreadStatic]
-        private static CodeBuilder _shared;
+        [ThreadStatic] private static CodeBuilder _shared;
+
         /// <summary>
-        /// Gets the value of the thread shared
+        ///     The sb
+        /// </summary>
+        private readonly StringBuilder _sb = new();
+
+        /// <summary>
+        ///     Gets the value of the thread shared
         /// </summary>
         public static CodeBuilder ThreadShared
         {
@@ -34,21 +68,12 @@ namespace Alis.Core.Ecs.Generator
         }
 
         /// <summary>
-        /// The tabs per indent
-        /// </summary>
-        public const int TabsPerIndent = 4;
-        /// <summary>
-        /// The sb
-        /// </summary>
-        private StringBuilder _sb = new();
-
-        /// <summary>
-        /// Gets or sets the value of the indents
+        ///     Gets or sets the value of the indents
         /// </summary>
         public int Indents { get; private set; }
 
         /// <summary>
-        /// Appends the value
+        ///     Appends the value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
@@ -60,7 +85,7 @@ namespace Alis.Core.Ecs.Generator
         }
 
         /// <summary>
-        /// Appends the value
+        ///     Appends the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The code builder</returns>
@@ -71,11 +96,12 @@ namespace Alis.Core.Ecs.Generator
             {
                 _sb.Append(c);
             }
+
             return this;
         }
 
         /// <summary>
-        /// Appends the value
+        ///     Appends the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="start">The start</param>
@@ -88,7 +114,7 @@ namespace Alis.Core.Ecs.Generator
         }
 
         /// <summary>
-        /// Appends the line using the specified value
+        ///     Appends the line using the specified value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
@@ -102,7 +128,7 @@ namespace Alis.Core.Ecs.Generator
         }
 
         /// <summary>
-        /// Foreaches the items
+        ///     Foreaches the items
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="items">The items</param>
@@ -111,30 +137,32 @@ namespace Alis.Core.Ecs.Generator
         /// <returns>The code builder</returns>
         public CodeBuilder Foreach<T>(ReadOnlySpan<T> items, CancellationToken ct, CodeBuilderDelegate<T> onEach)
         {
-            foreach(ref readonly T i in items)
+            foreach (ref readonly T i in items)
             {
                 onEach(in i, this, ct);
             }
+
             return this;
         }
 
         /// <summary>
-        /// Ifs the condition
+        ///     Ifs the condition
         /// </summary>
         /// <param name="condition">The condition</param>
         /// <param name="action">The action</param>
         /// <returns>The code builder</returns>
         public CodeBuilder If(bool condition, Action<CodeBuilder> action)
         {
-            if(condition)
+            if (condition)
             {
                 action(this);
             }
+
             return this;
         }
 
         /// <summary>
-        /// Ifs the condition
+        ///     Ifs the condition
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="condition">The condition</param>
@@ -147,11 +175,12 @@ namespace Alis.Core.Ecs.Generator
             {
                 action(uniform, this);
             }
+
             return this;
         }
 
         /// <summary>
-        /// Executes the uniform
+        ///     Executes the uniform
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="uniform">The uniform</param>
@@ -165,7 +194,7 @@ namespace Alis.Core.Ecs.Generator
         }
 
         /// <summary>
-        /// Appends the line
+        ///     Appends the line
         /// </summary>
         /// <returns>The code builder</returns>
         public CodeBuilder AppendLine()
@@ -176,7 +205,7 @@ namespace Alis.Core.Ecs.Generator
         }
 
         /// <summary>
-        /// Indents this instance
+        ///     Indents this instance
         /// </summary>
         /// <returns>The code builder</returns>
         public CodeBuilder Indent()
@@ -186,19 +215,20 @@ namespace Alis.Core.Ecs.Generator
         }
 
         /// <summary>
-        /// Scopes this instance
+        ///     Scopes this instance
         /// </summary>
         /// <returns>The code builder</returns>
         public CodeBuilder Scope() => Indent().AppendLine("{");
+
         /// <summary>
-        /// Unscopes this instance
+        ///     Unscopes this instance
         /// </summary>
         /// <returns>The code builder</returns>
         public CodeBuilder Unscope() => Outdent().AppendLine("}");
 
 
         /// <summary>
-        /// Outdents this instance
+        ///     Outdents this instance
         /// </summary>
         /// <exception cref="InvalidOperationException">Indentation level must be positive!</exception>
         /// <returns>The code builder</returns>
@@ -217,17 +247,18 @@ namespace Alis.Core.Ecs.Generator
             {
                 _sb.Remove(_sb.Length - 4, 4);
             }
+
             return this;
         }
 
         /// <summary>
-        /// Appends the with dot using the specified str
+        ///     Appends the with dot using the specified str
         /// </summary>
         /// <param name="str">The str</param>
         /// <returns>The code builder</returns>
         public CodeBuilder AppendWithDot(string str)
         {
-            if(string.IsNullOrEmpty(str))
+            if (string.IsNullOrEmpty(str))
             {
                 return this;
             }
@@ -238,7 +269,7 @@ namespace Alis.Core.Ecs.Generator
         }
 
         /// <summary>
-        /// Clears this instance
+        ///     Clears this instance
         /// </summary>
         /// <returns>The code builder</returns>
         public CodeBuilder Clear()
@@ -248,9 +279,14 @@ namespace Alis.Core.Ecs.Generator
         }
 
         /// <summary>
-        /// Returns the string
+        ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString() => _sb.ToString();
+
+        /// <summary>
+        ///     The code builder delegate
+        /// </summary>
+        internal delegate void CodeBuilderDelegate<T>(in T model, CodeBuilder codeBuilder, CancellationToken ct);
     }
 }

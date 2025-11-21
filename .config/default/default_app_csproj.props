@@ -37,7 +37,6 @@
             CopyToPublishDirectory="Always"/>
     </ItemGroup>
 
-   
 
     <ItemGroup>
         <ProjectReference

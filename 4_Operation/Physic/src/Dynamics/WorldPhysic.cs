@@ -1921,7 +1921,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Sets the gravity using the specified physic gravity
+        ///     Sets the gravity using the specified physic gravity
         /// </summary>
         /// <param name="physicGravity">The physic gravity</param>
         public void SetGravity(Vector2F physicGravity)

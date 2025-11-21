@@ -30,7 +30,7 @@
 namespace Alis.Core.Ecs.Components.Light
 {
     /// <summary>
-    /// The point light
+    ///     The point light
     /// </summary>
     public struct PointLight
     {

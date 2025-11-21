@@ -28,9 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using System.Runtime.InteropServices;
-
 
 namespace Alis.Extension.Graphic.Sdl2.Sdl2Image
 {
@@ -43,7 +41,7 @@ namespace Alis.Extension.Graphic.Sdl2.Sdl2Image
         ///     The native lib name
         /// </summary>
         public const string NativeLibName = "sdl2_image";
-        
+
         /// <summary>
         ///     Internals the img linked version
         /// </summary>

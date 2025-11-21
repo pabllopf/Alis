@@ -10,8 +10,9 @@ Job=ShortRun  IterationCount=3  LaunchCount=1
 WarmupCount=3  
 
 ```
-| Method                        | ArraySize | Mean       | Error     | StdDev    | Gen0   | Allocated |
-|------------------------------ |---------- |-----------:|----------:|----------:|-------:|----------:|
+
+| Method                                | ArraySize |       Mean |     Error |    StdDev |   Gen0 | Allocated |
+|---------------------------------------|-----------|-----------:|----------:|----------:|-------:|----------:|
 | &#39;[PooledStack]_Initialize()&#39;  | 10        |  8.2698 ns | 2.4110 ns | 0.1322 ns |      - |         - |
 | &#39;[FrugalStack]_Initialize()&#39;  | 10        |  7.2421 ns | 1.4304 ns | 0.0784 ns |      - |         - |
 | &#39;[FastestStack]_Initialize()&#39; | 10        |  6.9945 ns | 1.6904 ns | 0.0927 ns |      - |         - |

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.App.Engine.Core;
-
 using Alis.Extension.Graphic.Ui;
 
 namespace Alis.App.Engine.Windows

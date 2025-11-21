@@ -37,16 +37,16 @@ namespace Alis.App.Engine.Demos
         /// <summary>
         ///     Initializes this instance
         /// </summary>
-        public void Initialize();
+        void Initialize();
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public void Start();
+        void Start();
 
         /// <summary>
         ///     Runs this instance
         /// </summary>
-        public void Run();
+        void Run();
     }
 }

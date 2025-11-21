@@ -176,7 +176,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiPayload payload = new ImGuiPayload {Data = new IntPtr(123), DataSize = 100};
 
             // Act
-
         }
 
         /// <summary>
@@ -186,7 +185,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Clear_CallsImGuiNativeClear()
         {
             ImGuiPayload payload = new ImGuiPayload();
-
         }
 
         /// <summary>
@@ -196,7 +194,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void IsDataType_ReturnsTrueForMatchingType()
         {
             ImGuiPayload payload = new ImGuiPayload();
-
         }
 
         /// <summary>
@@ -206,7 +203,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void IsDataType_ReturnsFalseForNonMatchingType()
         {
             ImGuiPayload payload = new ImGuiPayload();
-
         }
 
         /// <summary>
@@ -216,7 +212,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void IsDelivery_ReturnsTrueWhenDelivery()
         {
             ImGuiPayload payload = new ImGuiPayload();
-
         }
 
         /// <summary>
@@ -226,7 +221,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void IsPreview_ReturnsTrueWhenPreview()
         {
             ImGuiPayload payload = new ImGuiPayload();
-
         }
 
         /// <summary>
@@ -239,7 +233,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiPayload payload = new ImGuiPayload {DataType = Encoding.UTF8.GetBytes("test\0")};
 
             // Act
-
         }
 
         /// <summary>
@@ -253,7 +246,6 @@ namespace Alis.Extension.Graphic.Ui.Test
 
 
             // Act
-
         }
 
         /// <summary>
@@ -266,7 +258,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiPayload payload = new ImGuiPayload {Delivery = 1};
 
             // Act
-
         }
 
         /// <summary>
@@ -279,7 +270,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiPayload payload = new ImGuiPayload {Delivery = 0};
 
             // Act
-
         }
 
         /// <summary>
@@ -292,7 +282,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiPayload payload = new ImGuiPayload {Preview = 1};
 
             // Act
-
         }
 
         /// <summary>
@@ -305,7 +294,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiPayload payload = new ImGuiPayload {Preview = 0};
 
             // Act
-
         }
     }
 }

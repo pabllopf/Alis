@@ -33,7 +33,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Physic.Dynamics;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Builder.Core.Ecs.Components.Collider
 {
@@ -60,20 +59,17 @@ namespace Alis.Builder.Core.Ecs.Components.Collider
         ///     The box collider
         /// </summary>
         private readonly BoxCollider boxCollider = new BoxCollider();
-        
+
         /// <summary>
-        /// The context
+        ///     The context
         /// </summary>
         private Context context;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BoxColliderBuilder"/> class
+        ///     Initializes a new instance of the <see cref="BoxColliderBuilder" /> class
         /// </summary>
         /// <param name="context">The context</param>
-        public BoxColliderBuilder(Context context)
-        { 
-            this.context =  context; 
-        }
+        public BoxColliderBuilder(Context context) => this.context = context;
 
         /// <summary>
         ///     Angular the velocity using the specified value
@@ -107,7 +103,7 @@ namespace Alis.Builder.Core.Ecs.Components.Collider
             boxCollider.BodyType = value;
             return this;
         }
-        
+
         /// <summary>
         ///     Builds this instance
         /// </summary>
@@ -141,10 +137,7 @@ namespace Alis.Builder.Core.Ecs.Components.Collider
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder IsActive(bool value)
-        {
-            return this;
-        }
+        public BoxColliderBuilder IsActive(bool value) => this;
 
         /// <summary>
         ///     Is the trigger

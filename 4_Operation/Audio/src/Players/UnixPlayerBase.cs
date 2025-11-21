@@ -30,9 +30,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
-
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Memory;
 using Alis.Core.Audio.Interfaces;
@@ -56,6 +54,16 @@ namespace Alis.Core.Audio.Players
         internal const string ResumeProcessCommand = "kill -CONT {0}";
 
         /// <summary>
+        ///     The last extracted file
+        /// </summary>
+        private string _lastExtractedFile;
+
+        /// <summary>
+        ///     The last played file
+        /// </summary>
+        private string _lastPlayedFile;
+
+        /// <summary>
         ///     The process
         /// </summary>
         private Process _process;
@@ -76,35 +84,17 @@ namespace Alis.Core.Audio.Players
         public bool Paused { get; private set; }
 
         /// <summary>
-        /// Extracts the wav from resources using the specified wav file name
-        /// </summary>
-        /// <param name="wavFileName">The wav file name</param>
-        /// <exception cref="FileNotFoundException">Resource '{wavFileName}' not found in 'assets.pack'.</exception>
-        /// <exception cref="FileNotFoundException">Resource file 'assets.pack' not found in embedded resources.</exception>
-        /// <returns>A task containing the string</returns>
-        private static string ExtractWavFromResourcesAsync(string wavFileName)
-        {
-            return AssetRegistry.GetResourcePathByName(wavFileName);
-        }
-        
-        /// <summary>
-        /// The last played file
-        /// </summary>
-        private string _lastPlayedFile;
-        /// <summary>
-        /// The last extracted file
-        /// </summary>
-        private string _lastExtractedFile;
-        
-        /// <summary>
-        /// Plays the file name
+        ///     Plays the file name
         /// </summary>
         /// <param name="fileName">The file name</param>
-        /// <exception cref="FileNotFoundException">The specified audio file '{fileName}' was not found and could not be extracted from resources. </exception>
+        /// <exception cref="FileNotFoundException">
+        ///     The specified audio file '{fileName}' was not found and could not be extracted
+        ///     from resources.
+        /// </exception>
         public async Task Play(string fileName)
         {
             await Stop();
-        
+
             // Si el archivo es el mismo y ya fue extraído, lo usamos directamente
             if (_lastPlayedFile == fileName && !string.IsNullOrEmpty(_lastExtractedFile) && File.Exists(_lastExtractedFile))
             {
@@ -116,7 +106,7 @@ namespace Alis.Core.Audio.Players
                 {
                     try
                     {
-                        fileName =  ExtractWavFromResourcesAsync(fileName);
+                        fileName = ExtractWavFromResourcesAsync(fileName);
                         _lastExtractedFile = fileName;
                     }
                     catch (Exception ex)
@@ -128,9 +118,10 @@ namespace Alis.Core.Audio.Players
                 {
                     _lastExtractedFile = fileName;
                 }
+
                 _lastPlayedFile = fileName;
             }
-        
+
             string bashToolName = GetBashCommand(fileName);
             _process = StartBashProcess($"{bashToolName} '{fileName}'");
             _process.EnableRaisingEvents = true;
@@ -140,97 +131,55 @@ namespace Alis.Core.Audio.Players
             Playing = true;
         }
 
-       /// <summary>
-       /// Plays the loop using the specified file name
-       /// </summary>
-       /// <param name="fileName">The file name</param>
-       /// <param name="loop">The loop</param>
-       public async Task PlayLoop(string fileName, bool loop)
-       {
-           await Stop();
-       
-           if (_lastPlayedFile == fileName && !string.IsNullOrEmpty(_lastExtractedFile) && File.Exists(_lastExtractedFile))
-           {
-               fileName = _lastExtractedFile;
-           }
-           else
-           {
-               if (!File.Exists(fileName))
-               {
-                   fileName =  ExtractWavFromResourcesAsync(fileName);
-                   _lastExtractedFile = fileName;
-               }
-               else
-               {
-                   _lastExtractedFile = fileName;
-               }
-       
-               _lastPlayedFile = fileName;
-           }
-       
-           if (!loop)
-           {
-               _process = StartBashProcess($"afplay '{fileName}'");
-               _process.EnableRaisingEvents = true;
-               _process.Exited += HandlePlaybackFinished;
-               Playing = true;
-               return;
-           }
-       
-           Playing = true;
-           double duration = GetAudioDuration(fileName);
-           _ = Task.Run(async () =>
-           {
-               while (Playing)
-               {
-                   _process = StartBashProcess($"afplay '{fileName}'");
-                   _process.EnableRaisingEvents = true;
-                   // No añadir HandlePlaybackFinished aquí
-                   await Task.Delay(TimeSpan.FromSeconds(duration - 0.1));
-               }
-           });
-       }
-
-        // Utilidad para obtener la duración del audio usando afinfo
         /// <summary>
-        /// Gets the audio duration using the specified file name
+        ///     Plays the loop using the specified file name
         /// </summary>
         /// <param name="fileName">The file name</param>
-        /// <exception cref="FileNotFoundException">El archivo '{fileName}' no existe.</exception>
-        /// <returns>The double</returns>
-        private double GetAudioDuration(string fileName)
+        /// <param name="loop">The loop</param>
+        public async Task PlayLoop(string fileName, bool loop)
         {
-            if (!File.Exists(fileName))
+            await Stop();
+
+            if (_lastPlayedFile == fileName && !string.IsNullOrEmpty(_lastExtractedFile) && File.Exists(_lastExtractedFile))
             {
-                throw new FileNotFoundException($"El archivo '{fileName}' no existe.");
+                fileName = _lastExtractedFile;
+            }
+            else
+            {
+                if (!File.Exists(fileName))
+                {
+                    fileName = ExtractWavFromResourcesAsync(fileName);
+                    _lastExtractedFile = fileName;
+                }
+                else
+                {
+                    _lastExtractedFile = fileName;
+                }
+
+                _lastPlayedFile = fileName;
             }
 
-            var process = new Process
+            if (!loop)
             {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "/usr/bin/afinfo",
-                    Arguments = fileName, // Sin comillas simples
-                    RedirectStandardOutput = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                }
-            };
-            process.Start();
-            string output = process.StandardOutput.ReadToEnd();
-            process.WaitForExit();
-
-            var line = output.Split('\n').FirstOrDefault(l => l.Contains("estimated duration"));
-            if (line != null)
-            {
-                var parts = line.Split(':');
-                if (parts.Length > 1 && double.TryParse(parts[1].Replace(".", ",").Replace("sec", "").Trim(), out double seconds))
-                {
-                    return seconds;
-                }
+                _process = StartBashProcess($"afplay '{fileName}'");
+                _process.EnableRaisingEvents = true;
+                _process.Exited += HandlePlaybackFinished;
+                Playing = true;
+                return;
             }
 
-            return 1.0;
+            Playing = true;
+            double duration = GetAudioDuration(fileName);
+            _ = Task.Run(async () =>
+            {
+                while (Playing)
+                {
+                    _process = StartBashProcess($"afplay '{fileName}'");
+                    _process.EnableRaisingEvents = true;
+                    // No añadir HandlePlaybackFinished aquí
+                    await Task.Delay(TimeSpan.FromSeconds(duration - 0.1));
+                }
+            });
         }
 
         /// <summary>
@@ -286,6 +235,57 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="percent">The percent</param>
         public abstract Task SetVolume(byte percent);
+
+        /// <summary>
+        ///     Extracts the wav from resources using the specified wav file name
+        /// </summary>
+        /// <param name="wavFileName">The wav file name</param>
+        /// <exception cref="FileNotFoundException">Resource '{wavFileName}' not found in 'assets.pack'.</exception>
+        /// <exception cref="FileNotFoundException">Resource file 'assets.pack' not found in embedded resources.</exception>
+        /// <returns>A task containing the string</returns>
+        private static string ExtractWavFromResourcesAsync(string wavFileName) => AssetRegistry.GetResourcePathByName(wavFileName);
+
+        // Utilidad para obtener la duración del audio usando afinfo
+        /// <summary>
+        ///     Gets the audio duration using the specified file name
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        /// <exception cref="FileNotFoundException">El archivo '{fileName}' no existe.</exception>
+        /// <returns>The double</returns>
+        private double GetAudioDuration(string fileName)
+        {
+            if (!File.Exists(fileName))
+            {
+                throw new FileNotFoundException($"El archivo '{fileName}' no existe.");
+            }
+
+            var process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "/usr/bin/afinfo",
+                    Arguments = fileName, // Sin comillas simples
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                }
+            };
+            process.Start();
+            string output = process.StandardOutput.ReadToEnd();
+            process.WaitForExit();
+
+            var line = output.Split('\n').FirstOrDefault(l => l.Contains("estimated duration"));
+            if (line != null)
+            {
+                var parts = line.Split(':');
+                if (parts.Length > 1 && double.TryParse(parts[1].Replace(".", ",").Replace("sec", "").Trim(), out double seconds))
+                {
+                    return seconds;
+                }
+            }
+
+            return 1.0;
+        }
 
         /// <summary>
         ///     Gets the bash command using the specified file name

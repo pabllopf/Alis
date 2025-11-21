@@ -36,9 +36,8 @@ namespace Alis.Core.Aspect.Fluent.Components
     // ReSharper disable once PartialTypeWithSinglePart
     public partial interface IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5> : IComponentBase
     {
-        
         /// <summary>
-        /// Updates the self
+        ///     Updates the self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="arg1">The arg</param>

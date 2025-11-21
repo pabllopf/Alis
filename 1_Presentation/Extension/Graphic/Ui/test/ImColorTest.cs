@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -64,7 +63,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImColor color = new ImColor();
 
             // Act
-
         }
 
         /// <summary>
@@ -77,7 +75,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImColor color = new ImColor();
 
             // Act
-
         }
 
         /// <summary>
@@ -99,7 +96,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void SetHsv_Should_SetCorrectValues()
         {
             ImColor color = new ImColor();
-
         }
 
         /// <summary>
@@ -109,7 +105,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void SetHsv_WithAlpha_Should_SetCorrectValues()
         {
             ImColor color = new ImColor();
-
         }
 
         /// <summary>
@@ -119,7 +114,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void V3_SetHsv_Should_SetCorrectValues()
         {
             ImColor color = new ImColor();
-
         }
 
         /// <summary>
@@ -129,7 +123,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void V3_SetHsv_WithAlpha_Should_SetCorrectValues()
         {
             ImColor color = new ImColor();
-
         }
     }
 }

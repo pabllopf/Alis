@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -118,7 +117,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             float x = 4;
 
             // Act
-            float result = (float)System.Math.Sqrt(x);
+            float result = (float) System.Math.Sqrt(x);
 
             // Assert
             Assert.Equal(2, result);
@@ -147,10 +146,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void Cos_ShouldCalculateCorrectly()
         {
             // Arrange
-            float x = (float)(System.Math.PI / 2);
+            float x = (float) (System.Math.PI / 2);
 
             // Act
-            float result = (float)System.Math.Cos(x);
+            float result = (float) System.Math.Cos(x);
 
             // Assert
             Assert.Equal(0, result, 5);
@@ -163,15 +162,15 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void Sin_ShouldCalculateCorrectly()
         {
             // Arrange
-            float x = (float)(System.Math.PI / 2);
+            float x = (float) (System.Math.PI / 2);
 
             // Act
-            float result = (float)System.Math.Sin(x);
+            float result = (float) System.Math.Sin(x);
 
             // Assert
             Assert.Equal(1, result, 5);
         }
-        
+
         /// <summary>
         ///     Tests that max should return maximum value
         /// </summary>

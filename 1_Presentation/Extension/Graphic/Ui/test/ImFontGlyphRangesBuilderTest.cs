@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -54,7 +53,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddChar_ShouldNotThrow()
         {
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
-
         }
 
         /// <summary>
@@ -64,7 +62,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Clear_ShouldNotThrow()
         {
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
-
         }
 
         /// <summary>
@@ -74,7 +71,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GetBit_ShouldReturnBool()
         {
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
-
         }
 
         /// <summary>
@@ -84,7 +80,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void SetBit_ShouldNotThrow()
         {
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
-
         }
     }
 }

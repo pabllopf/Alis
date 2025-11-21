@@ -32,7 +32,6 @@ using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Systems.Configuration.Physic;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Builder.Core.Ecs.System.Setting.Physic
 {
@@ -68,7 +67,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
         }
 
         /// <summary>
-        /// Debugs the b
+        ///     Debugs the b
         /// </summary>
         /// <param name="b">The </param>
         /// <returns>The physic setting builder</returns>
@@ -79,7 +78,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
         }
 
         /// <summary>
-        /// Debugs the color using the specified color
+        ///     Debugs the color using the specified color
         /// </summary>
         /// <param name="color">The color</param>
         /// <returns>The physic setting builder</returns>

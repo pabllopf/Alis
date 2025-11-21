@@ -37,6 +37,6 @@ namespace Alis.App.Installer.Shaders
         /// <summary>
         ///     Gets the value of the shader code
         /// </summary>
-        public string ShaderCode { get; }
+        string ShaderCode { get; }
     }
 }

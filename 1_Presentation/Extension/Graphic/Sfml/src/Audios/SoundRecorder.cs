@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SoundRecorder.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
@@ -5,199 +34,85 @@ using Alis.Extension.Graphic.Sfml.Systems;
 
 namespace Alis.Extension.Graphic.Sfml.Audios
 {
-    
     /// <summary>
-    /// Base class intended for capturing sound data
+    ///     Base class intended for capturing sound data
     /// </summary>
-    
     public abstract class SoundRecorder : ObjectBase
     {
-        
         /// <summary>
-        /// Default constructor
+        ///     The my process callback
         /// </summary>
-        
+        private readonly ProcessCallback myProcessCallback;
+
+        /// <summary>
+        ///     The my start callback
+        /// </summary>
+        private readonly StartCallback myStartCallback;
+
+        /// <summary>
+        ///     The my stop callback
+        /// </summary>
+        private readonly StopCallback myStopCallback;
+
+        /// <summary>
+        ///     Default constructor
+        /// </summary>
         public SoundRecorder() :
             base(IntPtr.Zero)
         {
-            myStartCallback = new StartCallback(OnStart);
-            myProcessCallback = new ProcessCallback(ProcessSamples);
-            myStopCallback = new StopCallback(OnStop);
+            myStartCallback = OnStart;
+            myProcessCallback = ProcessSamples;
+            myStopCallback = OnStop;
 
             CPointer = sfSoundRecorder_create(myStartCallback, myProcessCallback, myStopCallback, IntPtr.Zero);
         }
 
-        
-        /// <summary>
-        /// Start the capture using the default sample rate (44100 Hz).
-        /// 
-        /// Please note that only one capture can happen at the same time.
-        /// </summary>
-        
-        public bool Start()
-        {
-            return Start(44100);
-        }
 
-        
         /// <summary>
-        /// Start the capture.
-        ///
-        /// The sampleRate parameter defines the number of audio samples
-        /// captured per second. The higher, the better the quality
-        /// (for example, 44100 samples/sec is CD quality).
-        /// This function uses its own thread so that it doesn't block
-        /// the rest of the program while the capture runs.
-        /// 
-        /// Please note that only one capture can happen at the same time.
+        ///     Sample rate of the sound recorder.
         /// </summary>
-        /// <param name="sampleRate"> Sound frequency; the more samples, the higher the quality (44100 by default = CD quality)</param>
-        
-        public bool Start(uint sampleRate)
-        {
-            return sfSoundRecorder_start(CPointer, sampleRate);
-        }
-
-        
-        /// <summary>
-        /// Stop the capture
-        /// </summary>
-        
-        public void Stop()
-        {
-            sfSoundRecorder_stop(CPointer);
-        }
-
-        
-        /// <summary>
-        /// Sample rate of the sound recorder.
-        /// </summary>
-        /// 
         /// <remarks>
-        /// The sample rate defines the number of audio samples
-        /// captured per second. The higher, the better the quality
-        /// (for example, 44100 samples/sec is CD quality).
+        ///     The sample rate defines the number of audio samples
+        ///     captured per second. The higher, the better the quality
+        ///     (for example, 44100 samples/sec is CD quality).
         /// </remarks>
-        
-        public uint SampleRate
-        {
-            get { return sfSoundRecorder_getSampleRate(CPointer); }
-        }
 
-        
+        public uint SampleRate => sfSoundRecorder_getSampleRate(CPointer);
+
+
         /// <summary>
-        /// Get/Set the channel count of the audio capture device
+        ///     Get/Set the channel count of the audio capture device
         /// </summary>
-        /// 
         /// <remarks>
-        /// This method allows you to specify the number of channels
-        /// used for recording. Currently only 16-bit mono (1) and
-        /// 16-bit stereo (2) are supported.
+        ///     This method allows you to specify the number of channels
+        ///     used for recording. Currently only 16-bit mono (1) and
+        ///     16-bit stereo (2) are supported.
         /// </remarks>
-        
+
         public uint ChannelCount
         {
-            get { return sfSoundRecorder_getChannelCount(CPointer); }
-            set { sfSoundRecorder_setChannelCount(CPointer, value); }
+            get => sfSoundRecorder_getChannelCount(CPointer);
+            set => sfSoundRecorder_setChannelCount(CPointer, value);
         }
 
-        
+
         /// <summary>
-        /// Check if the system supports audio capture.
+        ///     Check if the system supports audio capture.
         /// </summary>
-        /// 
         /// <remarks>
-        /// This function should always be called before using
-        /// the audio capture features. If it returns false, then
-        /// any attempt to use the SoundRecorder or one of its derived
-        /// classes will fail.
+        ///     This function should always be called before using
+        ///     the audio capture features. If it returns false, then
+        ///     any attempt to use the SoundRecorder or one of its derived
+        ///     classes will fail.
         /// </remarks>
-        
-        public static bool IsAvailable
-        {
-            get { return sfSoundRecorder_isAvailable(); }
-        }
 
-        
-        /// <summary>
-        /// Provide a string describing the object
-        /// </summary>
-        /// <returns>String description of the object</returns>
-        
-        public override string ToString()
-        {
-            return "[SoundRecorder]" + " SampleRate(" + SampleRate + ")";
-        }
+        public static bool IsAvailable => sfSoundRecorder_isAvailable();
 
-        
-        /// <summary>
-        /// Start capturing audio data.
-        ///
-        /// This virtual function may be overridden by a derived class
-        /// if something has to be done every time a new capture
-        /// starts. If not, this function can be ignored; the default
-        /// implementation does nothing.
-        /// </summary>
-        /// <returns>False to abort recording audio data, true to continue</returns>
-        
-        public virtual bool OnStart()
-        {
-            // Does nothing by default
-            return true;
-        }
 
-        
         /// <summary>
-        /// Process a new chunk of recorded samples.
-        ///
-        /// This virtual function is called every time a new chunk of
-        /// recorded data is available. The derived class can then do
-        /// whatever it wants with it (storing it, playing it, sending
-        /// it over the network, etc.).
+        ///     Get the list of the names of all available audio capture devices
         /// </summary>
-        /// <param name="samples">Array of samples to process</param>
-        /// <returns>False to stop recording audio data, true to continue</returns>
-        
-        public abstract bool OnProcessSamples(short[] samples);
 
-        
-        /// <summary>
-        /// Stop capturing audio data.
-        ///
-        /// This virtual function may be overridden by a derived class
-        /// if something has to be done every time the capture
-        /// ends. If not, this function can be ignored; the default
-        /// implementation does nothing.
-        /// </summary>
-        
-        public virtual void OnStop()
-        {
-            // Does nothing by default
-        }
-
-        
-        /// <summary>
-        /// The processing interval controls the period
-        /// between calls to the onProcessSamples function. You may
-        /// want to use a small interval if you want to process the
-        /// recorded data in real time, for example.
-        ///
-        /// Note: this is only a hint, the actual period may vary.
-        /// So don't rely on this parameter to implement precise timing.
-        ///
-        /// The default processing interval is 100 ms.
-        /// </summary>
-        
-        protected void SetProcessingInterval(Time interval)
-        {
-            sfSoundRecorder_setProcessingInterval(CPointer, interval);
-        }
-
-        
-        /// <summary>
-        /// Get the list of the names of all available audio capture devices
-        /// </summary>
-        
         public static string[] AvailableDevices
         {
             get
@@ -208,67 +123,144 @@ namespace Alis.Extension.Graphic.Sfml.Audios
                 int ptrSize = IntPtr.Size;
                 for (uint i = 0; i < count; ++i)
                 {
-                    IntPtr currentPtr = Marshal.ReadIntPtr(devicesPtr, (int)(i * ptrSize));
+                    IntPtr currentPtr = Marshal.ReadIntPtr(devicesPtr, (int) (i * ptrSize));
                     devices[i] = Marshal.PtrToStringAnsi(currentPtr);
                 }
+
                 return devices;
             }
         }
 
-        
+
         /// <summary>
-        /// Get the name of the default audio capture device
+        ///     Get the name of the default audio capture device
         /// </summary>
-        
-        public static string DefaultDevice
+
+        public static string DefaultDevice => Marshal.PtrToStringAnsi(sfSoundRecorder_getDefaultDevice());
+
+
+        /// <summary>
+        ///     Start the capture using the default sample rate (44100 Hz).
+        ///     Please note that only one capture can happen at the same time.
+        /// </summary>
+        public bool Start() => Start(44100);
+
+
+        /// <summary>
+        ///     Start the capture.
+        ///     The sampleRate parameter defines the number of audio samples
+        ///     captured per second. The higher, the better the quality
+        ///     (for example, 44100 samples/sec is CD quality).
+        ///     This function uses its own thread so that it doesn't block
+        ///     the rest of the program while the capture runs.
+        ///     Please note that only one capture can happen at the same time.
+        /// </summary>
+        /// <param name="sampleRate"> Sound frequency; the more samples, the higher the quality (44100 by default = CD quality)</param>
+        public bool Start(uint sampleRate) => sfSoundRecorder_start(CPointer, sampleRate);
+
+
+        /// <summary>
+        ///     Stop the capture
+        /// </summary>
+        public void Stop()
         {
-            get { return Marshal.PtrToStringAnsi(sfSoundRecorder_getDefaultDevice()); }
+            sfSoundRecorder_stop(CPointer);
         }
 
-        
+
         /// <summary>
-        /// Set the audio capture device
+        ///     Provide a string describing the object
+        /// </summary>
+        /// <returns>String description of the object</returns>
+        public override string ToString() => "[SoundRecorder]" + " SampleRate(" + SampleRate + ")";
+
+
+        /// <summary>
+        ///     Start capturing audio data.
+        ///     This virtual function may be overridden by a derived class
+        ///     if something has to be done every time a new capture
+        ///     starts. If not, this function can be ignored; the default
+        ///     implementation does nothing.
+        /// </summary>
+        /// <returns>False to abort recording audio data, true to continue</returns>
+        public virtual bool OnStart() =>
+            // Does nothing by default
+            true;
+
+
+        /// <summary>
+        ///     Process a new chunk of recorded samples.
+        ///     This virtual function is called every time a new chunk of
+        ///     recorded data is available. The derived class can then do
+        ///     whatever it wants with it (storing it, playing it, sending
+        ///     it over the network, etc.).
+        /// </summary>
+        /// <param name="samples">Array of samples to process</param>
+        /// <returns>False to stop recording audio data, true to continue</returns>
+        public abstract bool OnProcessSamples(short[] samples);
+
+
+        /// <summary>
+        ///     Stop capturing audio data.
+        ///     This virtual function may be overridden by a derived class
+        ///     if something has to be done every time the capture
+        ///     ends. If not, this function can be ignored; the default
+        ///     implementation does nothing.
+        /// </summary>
+        public virtual void OnStop()
+        {
+            // Does nothing by default
+        }
+
+
+        /// <summary>
+        ///     The processing interval controls the period
+        ///     between calls to the onProcessSamples function. You may
+        ///     want to use a small interval if you want to process the
+        ///     recorded data in real time, for example.
+        ///     Note: this is only a hint, the actual period may vary.
+        ///     So don't rely on this parameter to implement precise timing.
+        ///     The default processing interval is 100 ms.
+        /// </summary>
+        protected void SetProcessingInterval(Time interval)
+        {
+            sfSoundRecorder_setProcessingInterval(CPointer, interval);
+        }
+
+
+        /// <summary>
+        ///     Set the audio capture device
         /// </summary>
         /// <param name="name">The name of the audio capture device</param>
         /// <returns>True, if it was able to set the requested device</returns>
-        
-        public bool SetDevice(string name)
-        {
-            return sfSoundRecorder_setDevice(CPointer, name);
-        }
+        public bool SetDevice(string name) => sfSoundRecorder_setDevice(CPointer, name);
 
-        
+
         /// <summary>
-        /// Get the name of the current audio capture device
+        ///     Get the name of the current audio capture device
         /// </summary>
         /// <returns>The name of the current audio capture device</returns>
-        
-        public string GetDevice()
-        {
-            return Marshal.PtrToStringAnsi(sfSoundRecorder_getDevice(CPointer));
-        }
+        public string GetDevice() => Marshal.PtrToStringAnsi(sfSoundRecorder_getDevice(CPointer));
 
-        
+
         /// <summary>
-        /// Handle the destruction of the object
+        ///     Handle the destruction of the object
         /// </summary>
         /// <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
-        
         public override void Destroy(bool disposing)
         {
             sfSoundRecorder_destroy(CPointer);
         }
 
-        
+
         /// <summary>
-        /// Function called directly by the C library ; convert
-        /// arguments and forward them to the internal virtual function
+        ///     Function called directly by the C library ; convert
+        ///     arguments and forward them to the internal virtual function
         /// </summary>
         /// <param name="samples">Pointer to the array of samples</param>
         /// <param name="nbSamples">Number of samples in the array</param>
         /// <param name="userData">User data -- unused</param>
         /// <returns>False to stop recording audio data, true to continue</returns>
-        
         private bool ProcessSamples(IntPtr samples, uint nbSamples, IntPtr userData)
         {
             short[] samplesArray = new short[nbSamples];
@@ -278,39 +270,27 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         }
 
         /// <summary>
-        /// The start callback
+        ///     The start callback
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate bool StartCallback();
 
         /// <summary>
-        /// The process callback
+        ///     The process callback
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate bool ProcessCallback(IntPtr samples, uint nbSamples, IntPtr userData);
 
         /// <summary>
-        /// The stop callback
+        ///     The stop callback
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate void StopCallback();
 
-        /// <summary>
-        /// The my start callback
-        /// </summary>
-        private readonly StartCallback myStartCallback;
-        /// <summary>
-        /// The my process callback
-        /// </summary>
-        private readonly ProcessCallback myProcessCallback;
-        /// <summary>
-        /// The my stop callback
-        /// </summary>
-        private readonly StopCallback myStopCallback;
-
         #region Imports
+
         /// <summary>
-        /// Sfs the sound recorder create using the specified on start
+        ///     Sfs the sound recorder create using the specified on start
         /// </summary>
         /// <param name="onStart">The on start</param>
         /// <param name="onProcess">The on process</param>
@@ -318,101 +298,102 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="userData">The user data</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern IntPtr sfSoundRecorder_create(StartCallback onStart, ProcessCallback onProcess, StopCallback onStop, IntPtr userData);
+        private static extern IntPtr sfSoundRecorder_create(StartCallback onStart, ProcessCallback onProcess, StopCallback onStop, IntPtr userData);
 
         /// <summary>
-        /// Sfs the sound recorder destroy using the specified sound recorder
+        ///     Sfs the sound recorder destroy using the specified sound recorder
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundRecorder_destroy(IntPtr soundRecorder);
+        private static extern void sfSoundRecorder_destroy(IntPtr soundRecorder);
 
         /// <summary>
-        /// Sfs the sound recorder start using the specified sound recorder
+        ///     Sfs the sound recorder start using the specified sound recorder
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
         /// <param name="sampleRate">The sample rate</param>
         /// <returns>The bool</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern bool sfSoundRecorder_start(IntPtr soundRecorder, uint sampleRate);
+        private static extern bool sfSoundRecorder_start(IntPtr soundRecorder, uint sampleRate);
 
         /// <summary>
-        /// Sfs the sound recorder stop using the specified sound recorder
+        ///     Sfs the sound recorder stop using the specified sound recorder
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundRecorder_stop(IntPtr soundRecorder);
+        private static extern void sfSoundRecorder_stop(IntPtr soundRecorder);
 
         /// <summary>
-        /// Sfs the sound recorder get sample rate using the specified sound recorder
+        ///     Sfs the sound recorder get sample rate using the specified sound recorder
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
         /// <returns>The uint</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern uint sfSoundRecorder_getSampleRate(IntPtr soundRecorder);
+        private static extern uint sfSoundRecorder_getSampleRate(IntPtr soundRecorder);
 
         /// <summary>
-        /// Sfs the sound recorder is available
+        ///     Sfs the sound recorder is available
         /// </summary>
         /// <returns>The bool</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern bool sfSoundRecorder_isAvailable();
+        private static extern bool sfSoundRecorder_isAvailable();
 
         /// <summary>
-        /// Sfs the sound recorder set processing interval using the specified sound recorder
+        ///     Sfs the sound recorder set processing interval using the specified sound recorder
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
         /// <param name="interval">The interval</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundRecorder_setProcessingInterval(IntPtr soundRecorder, Time interval);
+        private static extern void sfSoundRecorder_setProcessingInterval(IntPtr soundRecorder, Time interval);
 
         /// <summary>
-        /// Sfs the sound recorder get available devices using the specified count
+        ///     Sfs the sound recorder get available devices using the specified count
         /// </summary>
         /// <param name="count">The count</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern IntPtr sfSoundRecorder_getAvailableDevices(out uint count);
+        private static extern IntPtr sfSoundRecorder_getAvailableDevices(out uint count);
 
         /// <summary>
-        /// Sfs the sound recorder get default device
+        ///     Sfs the sound recorder get default device
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern IntPtr sfSoundRecorder_getDefaultDevice();
+        private static extern IntPtr sfSoundRecorder_getDefaultDevice();
 
         /// <summary>
-        /// Sfs the sound recorder set device using the specified sound recorder
+        ///     Sfs the sound recorder set device using the specified sound recorder
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
         /// <param name="name">The name</param>
         /// <returns>The bool</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern bool sfSoundRecorder_setDevice(IntPtr soundRecorder, string name);
+        private static extern bool sfSoundRecorder_setDevice(IntPtr soundRecorder, string name);
 
         /// <summary>
-        /// Sfs the sound recorder get device using the specified sound recorder
+        ///     Sfs the sound recorder get device using the specified sound recorder
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern IntPtr sfSoundRecorder_getDevice(IntPtr soundRecorder);
+        private static extern IntPtr sfSoundRecorder_getDevice(IntPtr soundRecorder);
 
         /// <summary>
-        /// Sfs the sound recorder set channel count using the specified sound recorder
+        ///     Sfs the sound recorder set channel count using the specified sound recorder
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
         /// <param name="channelCount">The channel count</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern void sfSoundRecorder_setChannelCount(IntPtr soundRecorder, uint channelCount);
+        private static extern void sfSoundRecorder_setChannelCount(IntPtr soundRecorder, uint channelCount);
 
         /// <summary>
-        /// Sfs the sound recorder get channel count using the specified sound recorder
+        ///     Sfs the sound recorder get channel count using the specified sound recorder
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
         /// <returns>The uint</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        static extern uint sfSoundRecorder_getChannelCount(IntPtr soundRecorder);
+        private static extern uint sfSoundRecorder_getChannelCount(IntPtr soundRecorder);
+
         #endregion
     }
 }

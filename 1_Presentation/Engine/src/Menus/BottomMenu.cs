@@ -27,12 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Fonts;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
-
-
 using Alis.Extension.Graphic.Ui;
 
 namespace Alis.App.Engine.Menus

@@ -33,7 +33,6 @@ using Alis.App.Hub.Core;
 using Alis.App.Hub.Entity;
 using Alis.Extension.Graphic.Ui;
 
-
 namespace Alis.App.Hub.Windows.Sections
 {
     /// <summary>

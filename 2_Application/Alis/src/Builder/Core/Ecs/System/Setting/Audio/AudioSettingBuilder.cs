@@ -39,17 +39,23 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Audio
         IBuild<AudioSetting>
     {
         /// <summary>
-        /// The volume
-        /// </summary>
-        private int volume;
-
-        /// <summary>
-        /// The is mute
+        ///     The is mute
         /// </summary>
         private bool isMute;
 
         /// <summary>
-        /// Volumes the volume
+        ///     The volume
+        /// </summary>
+        private int volume;
+
+        /// <summary>
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The audio setting</returns>
+        public AudioSetting Build() => new AudioSetting(volume, isMute);
+
+        /// <summary>
+        ///     Volumes the volume
         /// </summary>
         /// <param name="volume">The volume</param>
         /// <returns>The audio setting builder</returns>
@@ -58,9 +64,9 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Audio
             this.volume = volume;
             return this;
         }
-        
+
         /// <summary>
-        /// Ises the mute using the specified mute
+        ///     Ises the mute using the specified mute
         /// </summary>
         /// <param name="mute">The mute</param>
         /// <returns>The audio setting builder</returns>
@@ -69,11 +75,5 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Audio
             isMute = mute;
             return this;
         }
-
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The audio setting</returns>
-        public AudioSetting Build() => new AudioSetting(volume, isMute);
     }
 }

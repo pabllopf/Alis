@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Systems.Configuration.Network
         /// <summary>
         ///     Initializes a new instance of the <see cref="NetworkSetting" /> class
         /// </summary>
-        public NetworkSetting() : this(8080, "127.0.0.1", "localhost", "http")
+        public NetworkSetting() : this(8080)
         {
         }
 

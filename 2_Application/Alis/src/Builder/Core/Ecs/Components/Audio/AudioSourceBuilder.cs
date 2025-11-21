@@ -45,10 +45,10 @@ namespace Alis.Builder.Core.Ecs.Components.Audio
         IMute<AudioSourceBuilder, bool>
     {
         /// <summary>
-        /// The context
+        ///     The context
         /// </summary>
-        private Context context;
-        
+        private readonly Context context;
+
         /// <summary>
         ///     The is mute
         /// </summary>
@@ -75,20 +75,17 @@ namespace Alis.Builder.Core.Ecs.Components.Audio
         private float volume = 100;
 
         /// <summary>
+        ///     Initializes a new instance of the <see cref="AudioSourceBuilder" /> class
+        /// </summary>
+        /// <param name="context">The context</param>
+        public AudioSourceBuilder(Context context) => this.context = context;
+
+        /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The audio clip</returns>
         public AudioSource Build() => new AudioSource(context, nameFile, volume, isMute, playOnAwake, loop);
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AudioSourceBuilder"/> class
-        /// </summary>
-        /// <param name="context">The context</param>
-        public AudioSourceBuilder(Context context)
-        {
-            this.context = context;
-        }
-        
         /// <summary>
         ///     Files the path using the specified value
         /// </summary>

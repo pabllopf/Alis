@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Input
     public class InputManager : AManager
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InputManager"/> class
+        ///     Initializes a new instance of the <see cref="InputManager" /> class
         /// </summary>
         /// <param name="context">The context</param>
         public InputManager(Context context) : base(context)
@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Input
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InputManager"/> class
+        ///     Initializes a new instance of the <see cref="InputManager" /> class
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="name">The name</param>
