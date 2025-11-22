@@ -34,9 +34,11 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.App.Engine.Core;
+using Alis.App.Engine.Demos;
 using Alis.App.Engine.Fonts;
 using Alis.App.Engine.Shaders;
 using Alis.App.Engine.Windows;
+using Alis.App.Engine.Windows.Settings;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
@@ -92,7 +94,7 @@ namespace Alis.App.Engine
         /// </summary>
         private static readonly FragmentShader FragmentShader = new FragmentShader();
 
-        private static bool firstTime = true;
+        private static bool _firstTime = true;
 
         /// <summary>
         ///     The mouse pressed
@@ -167,7 +169,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The windows
         /// </summary>
-        private SpaceWork SpaceWork = new SpaceWork();
+        private SpaceWork spaceWork = new SpaceWork();
 
         /// <summary>
         ///     Disposes this instance
@@ -201,9 +203,9 @@ namespace Alis.App.Engine
 
             enginePath = AppDomain.CurrentDomain.BaseDirectory;
 
-            Environment.CurrentDirectory = SpaceWork.Project.Path;
-            SpaceWork = new SpaceWork();
-            SpaceWork.Initialize();
+            Environment.CurrentDirectory = spaceWork.Project.Path;
+            spaceWork = new SpaceWork();
+            spaceWork.Initialize();
             Environment.CurrentDirectory = enginePath;
 
             Sdl.SetHint(Hint.HintRenderDriver, "opengl");
@@ -238,26 +240,26 @@ namespace Alis.App.Engine
                 flags |= WindowSettings.WindowAllowHighDpi;
             }
 
-            SpaceWork.Window = Sdl.CreateWindow(NameEngine,
+            spaceWork.Window = Sdl.CreateWindow(NameEngine,
                 (int) WindowPos.WindowPosCentered,
                 (int) WindowPos.WindowPosCentered,
                 widthWindow, heightWindow, flags);
-            _glContext = CreateGlContext(SpaceWork.Window);
+            _glContext = CreateGlContext(spaceWork.Window);
 
             // compile the shader program
             _shader = new GlShaderProgram(VertexShader.ShaderCode, FragmentShader.ShaderCode);
 
-            SpaceWork.ContextGui = ImGui.CreateContext();
+            spaceWork.ContextGui = ImGui.CreateContext();
 
-            SpaceWork.Io = ImGui.GetIo();
-            SpaceWork.Io.WantSaveIniSettings = false;
+            spaceWork.Io = ImGui.GetIo();
+            spaceWork.Io.WantSaveIniSettings = false;
 
-            SpaceWork.Io.DisplaySize = new Vector2F(widthWindow, heightWindow);
+            spaceWork.Io.DisplaySize = new Vector2F(widthWindow, heightWindow);
 
             Logger.Info($@"IMGUI VERSION {ImGui.GetVersion()}");
 
             // active plot renders
-            SpaceWork.Io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
+            spaceWork.Io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
                                          ImGuiBackendFlags.PlatformHasViewports |
                                          ImGuiBackendFlags.HasGamepad |
                                          ImGuiBackendFlags.HasMouseHoveredViewport |
@@ -265,17 +267,17 @@ namespace Alis.App.Engine
 
 
             // Enable Keyboard Controls
-            SpaceWork.Io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
+            spaceWork.Io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
                                         ImGuiConfigFlags.NavEnableGamepad;
 
             // CONFIG DOCKSPACE 
-            SpaceWork.Io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
+            spaceWork.Io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
                                         ImGuiConfigFlags.ViewportsEnable;
 
             ImNodes.CreateContext();
             ImPlot.CreateContext();
-            ImGuizMo.SetImGuiContext(SpaceWork.ContextGui);
-            ImGui.SetCurrentContext(SpaceWork.ContextGui);
+            ImGuizMo.SetImGuiContext(spaceWork.ContextGui);
+            ImGui.SetCurrentContext(spaceWork.ContextGui);
 
             // REBUILD ATLAS
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
@@ -290,7 +292,7 @@ namespace Alis.App.Engine
             byte[] fontDataBytes = new byte[fontFileSolid.Length];
             fontFileSolid.ReadExactly(fontDataBytes, 0, (int) fontFileSolid.Length);
             Marshal.Copy(fontDataBytes, 0, fontData, (int) fontFileSolid.Length);
-            SpaceWork.FontLoaded16Solid = fonts.AddFontFromMemoryTtf(fontData, fontSize, fontSize);
+            spaceWork.FontLoaded16Solid = fonts.AddFontFromMemoryTtf(fontData, fontSize, fontSize);
 
             try
             {
@@ -328,7 +330,7 @@ namespace Alis.App.Engine
             byte[] fontDataBytes12 = new byte[fontFileSolid12.Length];
             fontFileSolid12.ReadExactly(fontDataBytes12, 0, (int) fontFileSolid12.Length);
             Marshal.Copy(fontDataBytes12, 0, fontData12, (int) fontFileSolid12.Length);
-            SpaceWork.FontLoaded10Solid = fonts.AddFontFromMemoryTtf(fontData12, 12, 12);
+            spaceWork.FontLoaded10Solid = fonts.AddFontFromMemoryTtf(fontData12, 12, 12);
 
             try
             {
@@ -365,7 +367,7 @@ namespace Alis.App.Engine
             byte[] fontDataBytes40 = new byte[fontFileSolid40.Length];
             fontFileSolid40.ReadExactly(fontDataBytes40, 0, (int) fontFileSolid40.Length);
             Marshal.Copy(fontDataBytes40, 0, fontData40, (int) fontFileSolid40.Length);
-            SpaceWork.FontLoaded45Bold = fonts.AddFontFromMemoryTtf(fontData40, 40, 40);
+            spaceWork.FontLoaded45Bold = fonts.AddFontFromMemoryTtf(fontData40, 40, 40);
 
             try
             {
@@ -402,7 +404,7 @@ namespace Alis.App.Engine
             byte[] fontDataBytes28 = new byte[fontFileSolid28.Length];
             fontFileSolid28.ReadExactly(fontDataBytes28, 0, (int) fontFileSolid28.Length);
             Marshal.Copy(fontDataBytes28, 0, fontData28, (int) fontFileSolid28.Length);
-            SpaceWork.FontLoaded30Bold = fonts.AddFontFromMemoryTtf(fontData28, 28, 28);
+            spaceWork.FontLoaded30Bold = fonts.AddFontFromMemoryTtf(fontData28, 28, 28);
             try
             {
                 ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
@@ -438,7 +440,7 @@ namespace Alis.App.Engine
             byte[] fontDataBytesLight = new byte[fontFileSolidLight.Length];
             fontFileSolidLight.ReadExactly(fontDataBytesLight, 0, (int) fontFileSolidLight.Length);
             Marshal.Copy(fontDataBytesLight, 0, fontDataLight, (int) fontFileSolidLight.Length);
-            SpaceWork.FontLoaded16Light = fonts.AddFontFromMemoryTtf(fontDataLight, fontSize, fontSize);
+            spaceWork.FontLoaded16Light = fonts.AddFontFromMemoryTtf(fontDataLight, fontSize, fontSize);
 
             try
             {
@@ -477,10 +479,10 @@ namespace Alis.App.Engine
             fonts.ClearTexData();
 
             // CONFIG DOCKSPACE
-            SpaceWork.Viewport = ImGui.GetMainViewport();
-            ImGui.SetNextWindowPos(SpaceWork.Viewport.WorkPos);
-            ImGui.SetNextWindowSize(SpaceWork.Viewport.WorkSize);
-            ImGui.SetNextWindowViewport(SpaceWork.Viewport.Id);
+            spaceWork.Viewport = ImGui.GetMainViewport();
+            ImGui.SetNextWindowPos(spaceWork.Viewport.WorkPos);
+            ImGui.SetNextWindowSize(spaceWork.Viewport.WorkSize);
+            ImGui.SetNextWindowViewport(spaceWork.Viewport.Id);
             //ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
             //ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
             dockspaceflags |= ImGuiWindowFlags.MenuBar;
@@ -488,34 +490,34 @@ namespace Alis.App.Engine
             dockspaceflags |= ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
 
             // config spaceWork.Style
-            SpaceWork.Style = ImGui.GetStyle();
+            spaceWork.Style = ImGui.GetStyle();
 
             SetStyle();
 
             // config input manager 
 
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.Tab] = (int) SdlScancode.SdlScancodeTab;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.LeftArrow] = (int) SdlScancode.SdlScancodeLeft;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.RightArrow] = (int) SdlScancode.SdlScancodeRight;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.UpArrow] = (int) SdlScancode.SdlScancodeUp;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.DownArrow] = (int) SdlScancode.SdlScancodeDown;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.PageUp] = (int) SdlScancode.SdlScancodePageup;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.PageDown] = (int) SdlScancode.SdlScancodePagedown;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.Home] = (int) SdlScancode.SdlScancodeHome;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.End] = (int) SdlScancode.SdlScancodeEnd;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.Insert] = (int) SdlScancode.SdlScancodeInsert;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.Delete] = (int) SdlScancode.SdlScancodeDelete;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.Backspace] = (int) SdlScancode.SdlScancodeBackspace;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.Space] = (int) SdlScancode.SdlScancodeSpace;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.Enter] = (int) SdlScancode.SdlScancodeReturn;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.Escape] = (int) SdlScancode.SdlScancodeEscape;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.KeypadEnter] = (int) SdlScancode.SdlScancodeReturn2;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.A] = (int) SdlScancode.SdlScancodeA;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.C] = (int) SdlScancode.SdlScancodeC;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.V] = (int) SdlScancode.SdlScancodeV;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.X] = (int) SdlScancode.SdlScancodeX;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.Y] = (int) SdlScancode.SdlScancodeY;
-            SpaceWork.Io.KeyMap[(int) ImGuiKey.Z] = (int) SdlScancode.SdlScancodeZ;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.Tab] = (int) SdlScancode.SdlScancodeTab;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.LeftArrow] = (int) SdlScancode.SdlScancodeLeft;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.RightArrow] = (int) SdlScancode.SdlScancodeRight;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.UpArrow] = (int) SdlScancode.SdlScancodeUp;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.DownArrow] = (int) SdlScancode.SdlScancodeDown;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.PageUp] = (int) SdlScancode.SdlScancodePageup;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.PageDown] = (int) SdlScancode.SdlScancodePagedown;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.Home] = (int) SdlScancode.SdlScancodeHome;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.End] = (int) SdlScancode.SdlScancodeEnd;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.Insert] = (int) SdlScancode.SdlScancodeInsert;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.Delete] = (int) SdlScancode.SdlScancodeDelete;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.Backspace] = (int) SdlScancode.SdlScancodeBackspace;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.Space] = (int) SdlScancode.SdlScancodeSpace;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.Enter] = (int) SdlScancode.SdlScancodeReturn;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.Escape] = (int) SdlScancode.SdlScancodeEscape;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.KeypadEnter] = (int) SdlScancode.SdlScancodeReturn2;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.A] = (int) SdlScancode.SdlScancodeA;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.C] = (int) SdlScancode.SdlScancodeC;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.V] = (int) SdlScancode.SdlScancodeV;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.X] = (int) SdlScancode.SdlScancodeX;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.Y] = (int) SdlScancode.SdlScancodeY;
+            spaceWork.Io.KeyMap[(int) ImGuiKey.Z] = (int) SdlScancode.SdlScancodeZ;
 
             _vboHandle = Gl.GenBuffer();
             _elementsHandle = Gl.GenBuffer();
@@ -530,20 +532,20 @@ namespace Alis.App.Engine
             if (!string.IsNullOrEmpty(iconPath) && File.Exists(iconPath))
             {
                 IntPtr icon = Sdl.LoadBmp(iconPath);
-                Sdl.SetWindowIcon(SpaceWork.Window, icon);
+                Sdl.SetWindowIcon(spaceWork.Window, icon);
             }
 
-            SpaceWork.Start();
+            spaceWork.Start();
 
             // TODO: FIX THIS TO LOAD THE CONFIG FROM THE USER FOLDER
 
             //ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
 
-            while (!SpaceWork.Quit)
+            while (!spaceWork.Quit)
             {
                 while (Sdl.PollEvent(out Event e) != 0)
                 {
-                    SpaceWork.Event = e;
+                    spaceWork.Event = e;
                     ProcessEvent(e);
                     switch (e.type)
                     {
@@ -551,7 +553,7 @@ namespace Alis.App.Engine
                         {
                             if (e.window.windowEvent == WindowEventId.SdlWindowEventClose)
                             {
-                                SpaceWork.Quit = true;
+                                spaceWork.Quit = true;
                             }
 
                             break;
@@ -562,7 +564,7 @@ namespace Alis.App.Engine
                             switch (e.key.KeySym.sym)
                             {
                                 case KeyCodes.Escape:
-                                    SpaceWork.Quit = true;
+                                    spaceWork.Quit = true;
                                     break;
                             }
 
@@ -575,24 +577,24 @@ namespace Alis.App.Engine
                 ImGui.NewFrame();
                 ImGuizMo.BeginFrame();
 
-                Environment.CurrentDirectory = SpaceWork.Project.Path;
+                Environment.CurrentDirectory = spaceWork.Project.Path;
 
                 // Setup display size (every frame to accommodate for window resizing)
-                Vector2F windowSize = Sdl.GetWindowSize(SpaceWork.Window);
-                Sdl.GetDrawableSize(SpaceWork.Window, out int displayW, out int displayH);
-                SpaceWork.Io.DisplaySize = new Vector2F(windowSize.X, windowSize.Y);
+                Vector2F windowSize = Sdl.GetWindowSize(spaceWork.Window);
+                Sdl.GetDrawableSize(spaceWork.Window, out int displayW, out int displayH);
+                spaceWork.Io.DisplaySize = new Vector2F(windowSize.X, windowSize.Y);
                 if ((windowSize.X > 0) && (windowSize.Y > 0))
                 {
-                    SpaceWork.Io.DisplayFramebufferScale = new Vector2F(displayW / windowSize.X, displayH / windowSize.Y);
+                    spaceWork.Io.DisplayFramebufferScale = new Vector2F(displayW / windowSize.X, displayH / windowSize.Y);
                 }
 
                 // Setup time step (we don't use SDL_GetTicks() because it is using millisecond resolution)
                 ulong frequency = Sdl.GetPerformanceFrequency();
                 ulong currentTime = Sdl.GetPerformanceCounter();
-                SpaceWork.Io.DeltaTime = _time > 0 ? (float) ((double) (currentTime - _time) / frequency) : 1.0f / 60.0f;
-                if (SpaceWork.Io.DeltaTime <= 0)
+                spaceWork.Io.DeltaTime = _time > 0 ? (float) ((double) (currentTime - _time) / frequency) : 1.0f / 60.0f;
+                if (spaceWork.Io.DeltaTime <= 0)
                 {
-                    SpaceWork.Io.DeltaTime = 0.016f;
+                    spaceWork.Io.DeltaTime = 0.016f;
                 }
 
                 //Logger.Warning($"displayW: {displayW} displayH: {displayH} windowSize.X: {windowSize.X} windowSize.Y: {windowSize.Y}");
@@ -605,10 +607,10 @@ namespace Alis.App.Engine
                 RenderProject();
 
 
-                Sdl.MakeCurrent(SpaceWork.Window, _glContext);
+                Sdl.MakeCurrent(spaceWork.Window, _glContext);
                 ImGui.Render();
 
-                Gl.GlViewport(0, 0, (int) SpaceWork.Io.DisplaySize.X, (int) SpaceWork.Io.DisplaySize.Y);
+                Gl.GlViewport(0, 0, (int) spaceWork.Io.DisplaySize.X, (int) spaceWork.Io.DisplaySize.Y);
                 Gl.GlClear(ClearBufferMask.ColorBufferBit);
 
                 RenderDrawData();
@@ -623,7 +625,7 @@ namespace Alis.App.Engine
 
 
                 Gl.GlDisable(EnableCap.ScissorTest);
-                Sdl.SwapWindow(SpaceWork.Window);
+                Sdl.SwapWindow(spaceWork.Window);
             }
 
             if (_shader != null)
@@ -637,7 +639,7 @@ namespace Alis.App.Engine
             }
 
             Sdl.DeleteContext(_glContext);
-            Sdl.DestroyWindow(SpaceWork.Window);
+            Sdl.DestroyWindow(spaceWork.Window);
             Sdl.Quit();
         }
 
@@ -902,33 +904,33 @@ namespace Alis.App.Engine
         public void RenderProject()
         {
             // Configurar la ventana principal (DockSpace)
-            ImGui.SetNextWindowPos(SpaceWork.Viewport.WorkPos);
-            ImGui.SetNextWindowSize(SpaceWork.Viewport.Size);
+            ImGui.SetNextWindowPos(spaceWork.Viewport.WorkPos);
+            ImGui.SetNextWindowSize(spaceWork.Viewport.Size);
             ImGui.Begin("DockSpace Demo", dockspaceflags);
 
 
-            SpaceWork.DockSpaceMenu.Update();
+            spaceWork.DockSpaceMenu.Update();
 
-            Vector2F dockSize = SpaceWork.Viewport.Size - new Vector2F(5, 85);
+            Vector2F dockSize = spaceWork.Viewport.Size - new Vector2F(5, 85);
 
             // Calcular el tamaño del DockSpace restante
-            if (SpaceWork.IsMacOs)
+            if (spaceWork.IsMacOs)
             {
-                dockSize = SpaceWork.Viewport.Size - new Vector2F(5, 60);
+                dockSize = spaceWork.Viewport.Size - new Vector2F(5, 60);
             }
 
             uint dockSpaceId = ImGui.GetId("MyDockSpace");
             ImGui.DockSpace(dockSpaceId, dockSize);
 
 
-            if (firstTime)
+            if (_firstTime)
             {
                 BuildDefaultLayout();
-                firstTime = false;
+                _firstTime = false;
             }
 
             // Renderizar el contenido principal del espacio de trabajo
-            SpaceWork.Update();
+            spaceWork.Update();
 
             ImGui.End();
         }
@@ -1302,7 +1304,7 @@ namespace Alis.App.Engine
             // Set OS mouse position if requested (rarely used, only when ImGuiConfigFlags_NavEnableSetMousePos is enabled by user)
             if (imGuiIoPtr.WantSetMousePos)
             {
-                Sdl.WarpMouseInWindow(SpaceWork.Window, (int) imGuiIoPtr.MousePos.X, (int) imGuiIoPtr.MousePos.Y);
+                Sdl.WarpMouseInWindow(spaceWork.Window, (int) imGuiIoPtr.MousePos.X, (int) imGuiIoPtr.MousePos.Y);
             }
             else
             {
@@ -1322,7 +1324,7 @@ namespace Alis.App.Engine
             imGuiIoPtr.MouseDown = rangeAccessor;
 
             IntPtr focusedWindow = Sdl.GetKeyboardFocus();
-            if (SpaceWork.Window == focusedWindow)
+            if (spaceWork.Window == focusedWindow)
             {
                 // SDL_GetMouseState() gives mouse position seemingly based on the last window entered/focused(?)
                 // The creation of a new windows at runtime and SDL_CaptureMouse both seems to severely mess up with that, so we retrieve that position globally.
@@ -1341,34 +1343,71 @@ namespace Alis.App.Engine
         private void BuildDefaultLayout()
         {
             ImGuiViewportPtr viewport = ImGui.GetMainViewport();
-            uint dockspace_id = ImGui.DockSpaceOverViewport(viewport);
+            uint dockspaceId = ImGui.DockSpaceOverViewport(viewport);
+            
+            Vector2F dockSize = spaceWork.Viewport.Size - new Vector2F(5, 85);
 
+            // Calcular el tamaño del DockSpace restante
+            if (spaceWork.IsMacOs)
+            {
+                dockSize = spaceWork.Viewport.Size - new Vector2F(5, 60);
+            }
+        
             // Limpia lo que hubiera antes
-            ImGui.DockBuilderRemoveNode(dockspace_id);
-            ImGui.DockBuilderAddNode(dockspace_id, ImGuiDockNodeFlags.None);
-            ImGui.DockBuilderSetNodeSize(dockspace_id, viewport.Size);
-
+            ImGui.DockBuilderRemoveNode(dockspaceId);
+            ImGui.DockBuilderAddNode(dockspaceId, ImGuiDockNodeFlags.None);
+            ImGui.DockBuilderSetNodeSize(dockspaceId, dockSize);
+        
             // Divide nodos
-            uint dock_main_id = dockspace_id;
-            uint dock_id_left;
-            uint dock_id_right;
-            uint dock_id_right_top;
-            uint dock_id_right_bottom;
-
-            // Split principal: izquierda 20%, derecha 80%
-            dock_id_left = ImGui.DockBuilderSplitNode(dock_main_id, ImGuiDir.Left, 0.20f, null, out dock_id_right);
-
-            // Split en la zona derecha: arriba 60%, abajo 40%
-            dock_id_right_top = ImGui.DockBuilderSplitNode(dock_id_right, ImGuiDir.Up, 0.60f, null, out dock_id_right_bottom);
-
+            uint dockMainId = dockspaceId;
+        
+            // Primera división: izquierda 20% y resto (center+right)
+            uint dockIdLeft = ImGui.DockBuilderSplitNode(dockMainId, ImGuiDir.Left, 0.20f, null, out uint dockRemaining);
+        
+            // Segunda división sobre el resto: derecha 20% y centro restante 80%
+            uint dockIdRight = ImGui.DockBuilderSplitNode(dockRemaining, ImGuiDir.Right, 0.20f, null, out uint dockIdCenter);
+        
+            // Divide la zona central: arriba 60%, abajo 40%
+            uint dockIdCenterTop = ImGui.DockBuilderSplitNode(dockIdCenter, ImGuiDir.Up, 0.60f, null, out uint dockIdCenterBottom);
+        
+            // Divide el centro inferior en dos partes: izquierda para scene, derecha para game
+            uint dockIdCenterBottomLeft = ImGui.DockBuilderSplitNode(dockIdCenterBottom, ImGuiDir.Left, 0.50f, null, out uint dockIdCenterBottomRight);
+        
             // Asigna ventanas
-            ImGui.DockBuilderDockWindow(AssetsWindow.WindowName, dock_id_left);
-            ImGui.DockBuilderDockWindow(InspectorWindow.NameWindow, dock_id_right_top);
-            ImGui.DockBuilderDockWindow(ConsoleWindow.NameWindow, dock_id_right_bottom);
-
+            
+            // izquierda completa: 
+            ImGui.DockBuilderDockWindow(InspectorWindow.NameWindow, dockIdLeft);           
+            ImGui.DockBuilderDockWindow(ProjectWindow.NameWindow, dockIdLeft); 
+            ImGui.DockBuilderDockWindow(SolutionWindow.NameWindow, dockIdLeft); 
+            
+            // Izquierda completa abajo:
+            ImGui.DockBuilderDockWindow(IconDemo.Name, dockIdCenterBottomLeft);
+            
+            // derecha completa: 
+            ImGui.DockBuilderDockWindow(SettingsWindow.WindowName, dockIdRight);    
+            
+            // derecha completa abajo:
+            ImGui.DockBuilderDockWindow(AudioPlayerWindow.WindowName, dockIdCenterBottomRight);
+        
+            // Centro arriba
+            ImGui.DockBuilderDockWindow(SceneWindow.NameWindow, dockIdCenterTop);
+            ImGui.DockBuilderDockWindow(GameWindow.NameWindow, dockIdCenterTop);
+            
+            // Samples:
+            ImGui.DockBuilderDockWindow("Gizmo", dockIdCenterTop);
+            ImGui.DockBuilderDockWindow("Simple plot", dockIdCenterTop);
+            ImGui.DockBuilderDockWindow("ImPlot Demo", dockIdCenterTop);
+            ImGui.DockBuilderDockWindow("Dear ImGui Demo", dockIdCenterTop);
+            ImGui.DockBuilderDockWindow("simple node editor", dockIdCenterTop);
+            
+        
+            // Centro abajo:
+            ImGui.DockBuilderDockWindow(AssetsWindow.WindowName, dockIdCenterBottomLeft);
+            ImGui.DockBuilderDockWindow(ConsoleWindow.NameWindow, dockIdCenterBottomLeft);
+        
             // Finalizar
-            ImGui.DockBuilderFinish(dockspace_id);
-
+            ImGui.DockBuilderFinish(dockspaceId);
+        
             Console.WriteLine($"Imgui version {ImGui.GetVersion()}");
         }
 

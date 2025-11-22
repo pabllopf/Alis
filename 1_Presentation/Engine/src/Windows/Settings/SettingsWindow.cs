@@ -50,7 +50,7 @@ namespace Alis.App.Engine.Windows.Settings
         /// <summary>
         ///     The music
         /// </summary>
-        private static readonly string WindowName = $"{FontAwesome5.Wrench} Settings";
+        public static readonly string WindowName = $"{FontAwesome5.Wrench} Settings";
 
         /// <summary>
         ///     The is open

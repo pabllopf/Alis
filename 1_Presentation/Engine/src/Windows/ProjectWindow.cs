@@ -45,7 +45,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The stream
         /// </summary>
-        private static readonly string NameWindow = $"{FontAwesome5.Stream} Project";
+        public static readonly string NameWindow = $"{FontAwesome5.Stream} Project";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ProjectWindow" /> class
@@ -74,78 +74,6 @@ namespace Alis.App.Engine.Windows
         {
             if (ImGui.Begin(NameWindow, ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoCollapse))
             {
-                ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0, 0, 0, 0)); // Set background to transparent
-                ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0); // Remove border
-
-                if (ImGui.BeginMenuBar())
-                {
-                    ImGui.Text($"{FontAwesome5.Cube}");
-
-                    ImGui.SameLine();
-/*
-                    commandPtr = Marshal.StringToHGlobalAnsi(SpaceWork.VideoGame.Context.SceneManager.CurrentScene.Name);
-                    if (ImGui.InputText("##SceneName", commandPtr, 125, ImGuiInputTextFlags.AlwaysOverwrite))
-                    {
-                        SpaceWork.VideoGame.Context.SceneManager.CurrentScene.Name = Marshal.PtrToStringAnsi(commandPtr);
-                        SpaceWork.VideoGame.Save();
-                    }
-
-                    ImGui.SameLine();
-                    // move to the right:
-                    ImGui.SetCursorPosX(ImGui.GetWindowWidth() - 25);
-
-                    if (ImGui.BeginMenu($"{FontAwesome5.Cog}## Options {NameWindow}"))
-                    {
-                        if (ImGui.MenuItem("Add GameObject"))
-                        {
-                            SpaceWork.VideoGame.Context.SceneManager.CurrentScene.Add(new GameObject().Builder()
-                                .Name($"New GameObject ({SpaceWork.VideoGame.Context.SceneManager.CurrentScene.GameObjects.Count})")
-                                .Build());
-                        }
-
-                        ImGui.Separator();
-
-                        if (ImGui.MenuItem("Filter by Name"))
-                        {
-                            _groupBy = "Name";
-                        }
-
-                        if (ImGui.MenuItem("Group by Tag"))
-                        {
-                            _groupBy = "Tag";
-                        }
-
-                        if (ImGui.MenuItem("Group by Layer"))
-                        {
-                            _groupBy = "Layer";
-                        }
-
-                        ImGui.EndMenu();
-                    }
-
-                    ImGui.EndMenuBar();
-                }
-
-                ImGui.PopStyleVar();
-                ImGui.PopStyleColor();
-
-                Scene scene = SpaceWork.VideoGame.Context.SceneManager.CurrentScene;
-                List<GameObject> gameObjects = scene.GameObjects;
-
-                switch (_groupBy)
-                {
-                    case "Tag":
-                        RenderGroupedByTag(gameObjects);
-                        break;
-                    case "Layer":
-                        RenderGroupedByLayer(gameObjects);
-                        break;
-                    default:
-                        RenderGameObjects(gameObjects);
-                        break;
-                }*/
-                }
-
                 ImGui.End();
             }
         }

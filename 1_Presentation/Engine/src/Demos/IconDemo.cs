@@ -39,6 +39,8 @@ namespace Alis.App.Engine.Demos
     /// <seealso cref="IDemo" />
     public class IconDemo : IDemo
     {
+        public static string Name => "Icon Demo";
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -67,7 +69,7 @@ namespace Alis.App.Engine.Demos
         [Conditional("DEBUG")]
         private void SimpleIcons()
         {
-            if (ImGui.Begin("Icon Demo"))
+            if (ImGui.Begin(Name))
             {
                 ImGui.Separator();
                 ImGui.Text("Font Awesome 5");
