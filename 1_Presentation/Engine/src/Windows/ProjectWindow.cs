@@ -74,8 +74,10 @@ namespace Alis.App.Engine.Windows
         {
             if (ImGui.Begin(NameWindow, ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoCollapse))
             {
-                ImGui.End();
+                
             }
+            
+            ImGui.End();
         }
 
         /// <summary>

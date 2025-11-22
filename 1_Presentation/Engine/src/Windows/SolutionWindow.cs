@@ -42,7 +42,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The name window
         /// </summary>
-        public static string NameWindow = $"{FontAwesome5.InfoCircle} Solution";
+        public static string NameWindow = $"{FontAwesome5.AddressCard} Solution";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SolutionWindow" /> class
@@ -69,8 +69,10 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public void Render()
         {
-            ImGui.Begin(NameWindow);
-
+            if (ImGui.Begin(NameWindow))
+            {
+                
+            }
             ImGui.End();
         }
 

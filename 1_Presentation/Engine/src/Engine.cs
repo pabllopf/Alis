@@ -1346,7 +1346,7 @@ namespace Alis.App.Engine
             Sdl.CaptureMouse(anyMouseButtonDown);
         }
         
-       // csharp
+      // csharp
        private void BuildDefaultLayout()
        {
            ImGuiViewportPtr viewport = ImGui.GetMainViewport();
@@ -1362,35 +1362,30 @@ namespace Alis.App.Engine
            // Forzar tamaño del nodo raíz al tamaño del viewport
            ImGui.DockBuilderSetNodeSize(dockspaceId, fullSize);
        
-           // Divide nodos (izquierda 20%, centro, derecha con ancho fijo)
+           // Ratios configurables (todos en porcentajes)
+           float leftRatio = 0.20f;    // ancho de la columna izquierda (20%)
+           float rightRatio = 0.25f;   // ancho de la columna derecha (20%)
+           float bottomRatio = 0.30f;  // altura común para todas las zonas inferiores (20%)
+       
+           // Divide nodos (izquierda, centro, derecha)
            uint dockMainId = dockspaceId;
        
-           // Izquierda 20%
-           uint dockIdLeft = ImGui.DockBuilderSplitNode(dockMainId, ImGuiDir.Left, 0.20f, null, out uint dockRemaining);
+           // Izquierda: reservar leftRatio del ancho
+           uint dockIdLeft = ImGui.DockBuilderSplitNode(dockMainId, ImGuiDir.Left, leftRatio, null, out uint dockRemaining);
        
-           // --- NUEVO: dividir la columna izquierda en arriba/abajo ---
-           // 75% arriba (Inspector/Project/Solution), 25% abajo (IconDemo). Ajusta el ratio si quieres otro tamaño.
-           uint dockIdLeftTop = ImGui.DockBuilderSplitNode(dockIdLeft, ImGuiDir.Up, 0.75f, null, out uint dockIdLeftBottom);
-       
-           // Definir un ancho fijo en píxeles para la columna derecha y calcular la fracción
-           float fixedRightWidthPx = 280f; // ajustar a lo que necesites
-           float rightRatio = Math.Max(0.05f, Math.Min(0.40f, fixedRightWidthPx / Math.Max(1.0f, fullSize.X)));
+           // Dividir la columna izquierda en arriba/abajo usando bottomRatio (arriba = 1 - bottomRatio)
+           uint dockIdLeftTop = ImGui.DockBuilderSplitNode(dockIdLeft, ImGuiDir.Up, 1.0f - bottomRatio, null, out uint dockIdLeftBottom);
        
            // Split para obtener la columna derecha con la fracción calculada
            uint dockIdRight = ImGui.DockBuilderSplitNode(dockRemaining, ImGuiDir.Right, rightRatio, null, out uint dockIdCenter);
        
-           // Forzar el tamaño del nodo derecho para que arranque con el ancho fijado
-           ImGui.DockBuilderSetNodeSize(dockIdRight, new Vector2F(fixedRightWidthPx, fullSize.Y));
+           // Dividir la columna derecha en arriba/abajo usando el mismo bottomRatio
+           uint dockIdRightTop = ImGui.DockBuilderSplitNode(dockIdRight, ImGuiDir.Up, 1.0f - bottomRatio, null, out uint dockIdRightBottom);
        
-           // --- NUEVO: dividir la columna derecha en arriba/abajo ---
-           uint dockIdRightTop = ImGui.DockBuilderSplitNode(dockIdRight, ImGuiDir.Up, 0.80f, null, out uint dockIdRightBottom);
-           float fixedRightBottomHeightPx = 120f;
-           ImGui.DockBuilderSetNodeSize(dockIdRightBottom, new Vector2F(fixedRightWidthPx, fixedRightBottomHeightPx));
+           // Divide la zona central en arriba/abajo usando el mismo bottomRatio
+           uint dockIdCenterTop = ImGui.DockBuilderSplitNode(dockIdCenter, ImGuiDir.Up, 1.0f - bottomRatio, null, out uint dockIdCenterBottom);
        
-           // Divide la zona central: arriba 60%, abajo 40%
-           uint dockIdCenterTop = ImGui.DockBuilderSplitNode(dockIdCenter, ImGuiDir.Up, 0.60f, null, out uint dockIdCenterBottom);
-       
-           // Centro inferior en dos: izquierda scene, derecha game
+           // Centro inferior en dos: izquierda (scene) y derecha (game)
            uint dockIdCenterBottomLeft = ImGui.DockBuilderSplitNode(dockIdCenterBottom, ImGuiDir.Left, 0.50f, null, out uint dockIdCenterBottomRight);
        
            // Asigna ventanas
@@ -1398,13 +1393,13 @@ namespace Alis.App.Engine
            ImGui.DockBuilderDockWindow(ProjectWindow.NameWindow, dockIdLeftTop);
            ImGui.DockBuilderDockWindow(SolutionWindow.NameWindow, dockIdLeftTop);
        
-           // IconDemo ahora en la parte inferior de la columna izquierda
+           // IconDemo en la parte inferior de la columna izquierda (altura = bottomRatio del viewport)
            ImGui.DockBuilderDockWindow(IconDemo.Name, dockIdLeftBottom);
        
            // Settings en la parte superior de la columna derecha
            ImGui.DockBuilderDockWindow(SettingsWindow.WindowName, dockIdRightTop);
        
-           // AudioPlayer en la parte inferior de la columna derecha
+           // AudioPlayer en la parte inferior de la columna derecha (misma altura bottomRatio)
            ImGui.DockBuilderDockWindow(AudioPlayerWindow.WindowName, dockIdRightBottom);
        
            ImGui.DockBuilderDockWindow(SceneWindow.NameWindow, dockIdCenterTop);
