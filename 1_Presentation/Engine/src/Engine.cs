@@ -94,8 +94,8 @@ namespace Alis.App.Engine
         /// </summary>
         private static readonly FragmentShader FragmentShader = new FragmentShader();
 
-        private static bool _firstTime = true;
-
+        private static int counter = 0;
+        
         /// <summary>
         ///     The mouse pressed
         /// </summary>
@@ -606,13 +606,15 @@ namespace Alis.App.Engine
 
                 RenderProject();
 
+                
+
 
                 Sdl.MakeCurrent(spaceWork.Window, _glContext);
                 ImGui.Render();
 
                 Gl.GlViewport(0, 0, (int) spaceWork.Io.DisplaySize.X, (int) spaceWork.Io.DisplaySize.Y);
                 Gl.GlClear(ClearBufferMask.ColorBufferBit);
-
+                
                 RenderDrawData();
 
                 Environment.CurrentDirectory = enginePath;
@@ -623,7 +625,8 @@ namespace Alis.App.Engine
                 ImGui.RenderPlatformWindowsDefault();
                 Sdl.MakeCurrent(backupCurrentWindow, backupCurrentContext);
 
-
+                
+                
                 Gl.GlDisable(EnableCap.ScissorTest);
                 Sdl.SwapWindow(spaceWork.Window);
             }
@@ -907,32 +910,35 @@ namespace Alis.App.Engine
             ImGui.SetNextWindowPos(spaceWork.Viewport.WorkPos);
             ImGui.SetNextWindowSize(spaceWork.Viewport.Size);
             ImGui.Begin("DockSpace Demo", dockspaceflags);
-
-
+        
             spaceWork.DockSpaceMenu.Update();
-
+        
             Vector2F dockSize = spaceWork.Viewport.Size - new Vector2F(5, 85);
-
+        
             // Calcular el tamaño del DockSpace restante
             if (spaceWork.IsMacOs)
             {
                 dockSize = spaceWork.Viewport.Size - new Vector2F(5, 60);
             }
-
+        
             uint dockSpaceId = ImGui.GetId("MyDockSpace");
             ImGui.DockSpace(dockSpaceId, dockSize);
-
-
-            if (_firstTime)
+        
+            
+            // Ejecutar layout una sola vez fuera de Begin/End para evitar mismatched Begin/End stack
+            if (counter >= 0 && counter < 4)
             {
                 BuildDefaultLayout();
-                _firstTime = false;
+                counter = 4;
             }
 
+            
             // Renderizar el contenido principal del espacio de trabajo
             spaceWork.Update();
-
+        
             ImGui.End();
+        
+            counter++;
         }
 
         /// <summary>
@@ -1340,68 +1346,64 @@ namespace Alis.App.Engine
             Sdl.CaptureMouse(anyMouseButtonDown);
         }
 
+       // C#
         private void BuildDefaultLayout()
         {
             ImGuiViewportPtr viewport = ImGui.GetMainViewport();
-            uint dockspaceId = ImGui.DockSpaceOverViewport(viewport);
-            
-            Vector2F dockSize = spaceWork.Viewport.Size - new Vector2F(5, 85);
-
-            // Calcular el tamaño del DockSpace restante
-            if (spaceWork.IsMacOs)
-            {
-                dockSize = spaceWork.Viewport.Size - new Vector2F(5, 60);
-            }
+            uint dockspaceId = ImGui.GetId("MyDockSpace");
+        
+            // Usar el tamaño real del viewport para evitar discrepancias
+            Vector2F fullSize = viewport.Size;
         
             // Limpia lo que hubiera antes
             ImGui.DockBuilderRemoveNode(dockspaceId);
             ImGui.DockBuilderAddNode(dockspaceId, ImGuiDockNodeFlags.None);
-            ImGui.DockBuilderSetNodeSize(dockspaceId, dockSize);
         
-            // Divide nodos
+            // Forzar tamaño del nodo raíz al tamaño del viewport
+            ImGui.DockBuilderSetNodeSize(dockspaceId, fullSize);
+        
+            // Divide nodos (izquierda 20%, centro, derecha con ancho fijo)
             uint dockMainId = dockspaceId;
         
-            // Primera división: izquierda 20% y resto (center+right)
+            // Izquierda 20%
             uint dockIdLeft = ImGui.DockBuilderSplitNode(dockMainId, ImGuiDir.Left, 0.20f, null, out uint dockRemaining);
         
-            // Segunda división sobre el resto: derecha 20% y centro restante 80%
-            uint dockIdRight = ImGui.DockBuilderSplitNode(dockRemaining, ImGuiDir.Right, 0.20f, null, out uint dockIdCenter);
+            // Definir un ancho fijo en píxeles para la columna derecha y calcular la fracción
+            float fixedRightWidthPx = 280f; // ajustar a lo que necesites
+            float rightRatio = Math.Max(0.05f, Math.Min(0.40f, fixedRightWidthPx / Math.Max(1.0f, fullSize.X)));
+        
+            // Split para obtener la columna derecha con la fracción calculada
+            uint dockIdRight = ImGui.DockBuilderSplitNode(dockRemaining, ImGuiDir.Right, rightRatio, null, out uint dockIdCenter);
+        
+            // Forzar el tamaño del nodo derecho para que arranque con el ancho fijado
+            ImGui.DockBuilderSetNodeSize(dockIdRight, new Vector2F(fixedRightWidthPx, fullSize.Y));
         
             // Divide la zona central: arriba 60%, abajo 40%
             uint dockIdCenterTop = ImGui.DockBuilderSplitNode(dockIdCenter, ImGuiDir.Up, 0.60f, null, out uint dockIdCenterBottom);
         
-            // Divide el centro inferior en dos partes: izquierda para scene, derecha para game
+            // Centro inferior en dos: izquierda scene, derecha game
             uint dockIdCenterBottomLeft = ImGui.DockBuilderSplitNode(dockIdCenterBottom, ImGuiDir.Left, 0.50f, null, out uint dockIdCenterBottomRight);
         
             // Asigna ventanas
-            
-            // izquierda completa: 
-            ImGui.DockBuilderDockWindow(InspectorWindow.NameWindow, dockIdLeft);           
-            ImGui.DockBuilderDockWindow(ProjectWindow.NameWindow, dockIdLeft); 
-            ImGui.DockBuilderDockWindow(SolutionWindow.NameWindow, dockIdLeft); 
-            
-            // Izquierda completa abajo:
+            ImGui.DockBuilderDockWindow(InspectorWindow.NameWindow, dockIdLeft);
+            ImGui.DockBuilderDockWindow(ProjectWindow.NameWindow, dockIdLeft);
+            ImGui.DockBuilderDockWindow(SolutionWindow.NameWindow, dockIdLeft);
+        
             ImGui.DockBuilderDockWindow(IconDemo.Name, dockIdCenterBottomLeft);
-            
-            // derecha completa: 
-            ImGui.DockBuilderDockWindow(SettingsWindow.WindowName, dockIdRight);    
-            
-            // derecha completa abajo:
+        
+            ImGui.DockBuilderDockWindow(SettingsWindow.WindowName, dockIdRight);
+        
             ImGui.DockBuilderDockWindow(AudioPlayerWindow.WindowName, dockIdCenterBottomRight);
         
-            // Centro arriba
             ImGui.DockBuilderDockWindow(SceneWindow.NameWindow, dockIdCenterTop);
             ImGui.DockBuilderDockWindow(GameWindow.NameWindow, dockIdCenterTop);
-            
-            // Samples:
+        
             ImGui.DockBuilderDockWindow("Gizmo", dockIdCenterTop);
             ImGui.DockBuilderDockWindow("Simple plot", dockIdCenterTop);
             ImGui.DockBuilderDockWindow("ImPlot Demo", dockIdCenterTop);
             ImGui.DockBuilderDockWindow("Dear ImGui Demo", dockIdCenterTop);
             ImGui.DockBuilderDockWindow("simple node editor", dockIdCenterTop);
-            
         
-            // Centro abajo:
             ImGui.DockBuilderDockWindow(AssetsWindow.WindowName, dockIdCenterBottomLeft);
             ImGui.DockBuilderDockWindow(ConsoleWindow.NameWindow, dockIdCenterBottomLeft);
         
@@ -1510,6 +1512,7 @@ namespace Alis.App.Engine
         /// </summary>
         private void RenderDrawData()
         {
+           
             ImDrawData drawData = ImGui.GetDrawData();
 
             // Avoid rendering when minimized, scale coordinates for retina displays (screen coordinates != framebuffer coordinates)
