@@ -29,12 +29,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.App.Hub.Core;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Aspect.Memory;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Extension.Graphic.Sdl2;
@@ -45,6 +47,7 @@ using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Extras.GuizMo;
 using Alis.Extension.Graphic.Ui.Extras.Node;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Fonts;
 
 namespace Alis.App.Hub.Controllers
 {
@@ -422,7 +425,6 @@ namespace Alis.App.Hub.Controllers
 
             //fonts.AddFontDefault();
 
-            /*
             int fontSize = 14;
             int fontSizeIcon = 13;
 
@@ -610,7 +612,7 @@ namespace Alis.App.Hub.Controllers
             {
                 Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameLight} {e.Message}");
                 return;
-            }*/
+            }
 
             fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int width, out int height, out int _);
             SpaceWork.FontTextureId = SpaceWork.OpenGlController.LoadTexture(pixelData, width, height);
