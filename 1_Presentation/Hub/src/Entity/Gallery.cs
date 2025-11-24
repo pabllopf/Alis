@@ -50,13 +50,13 @@ namespace Alis.App.Hub.Entity
             Items = new List<GalleryItem>();
 
             // Lista de posibles imágenes
-            string[] imageOptions = {"Hub_computer.png", "Hub_news.png", "Hub_cubes.png", "Hub_shop.png"};
+            string[] imageOptions = {"Hub_logo.bmp", "Hub_logo.bmp", "Hub_logo.bmp", "Hub_logo.bmp"};
 
             // Generar 10 elementos de la galería
             for (int i = 0; i < 10; i++)
             {
                 // Seleccionar una imagen aleatoria
-                string imagePath = "";
+                string imagePath = imageOptions[i % imageOptions.Length];
 
                 // Crear un nuevo GalleryItem con datos aleatorios
                 GalleryItem item = new GalleryItem(

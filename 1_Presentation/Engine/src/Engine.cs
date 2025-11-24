@@ -489,6 +489,7 @@ namespace Alis.App.Engine
             dockspaceflags |= ImGuiWindowFlags.MenuBar;
             dockspaceflags |= ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove;
             dockspaceflags |= ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
+            spaceWork.Io.ConfigDockingWithShift = false;
 
             // config spaceWork.Style
             spaceWork.Style = ImGui.GetStyle();
@@ -921,7 +922,13 @@ namespace Alis.App.Engine
             {
                 dockSize = spaceWork.Viewport.Size - new Vector2F(5, 60);
             }
-        
+            
+            // fix dockspace size with sidebars:
+            dockSize = dockSize - new Vector2F(80, 0);
+            
+            // fix dockspace position with sidebars:
+            ImGui.SetWindowPos(new Vector2F(40, 25));
+            
             uint dockSpaceId = ImGui.GetId("MyDockSpace");
             ImGui.DockSpace(dockSpaceId, dockSize);
         
@@ -936,10 +943,84 @@ namespace Alis.App.Engine
             
             // Renderizar el contenido principal del espacio de trabajo
             spaceWork.Update();
+
+            DrawLeftSidebar();
+            DrawRightSidebar();
         
             ImGui.End();
         
             counter++;
+        }
+        
+        static bool showProject = false;
+        static bool showInspector = false;
+        static bool showConsole = false;
+        
+        
+        private void DrawLeftSidebar()
+        {
+            Vector2F dockSize = spaceWork.Viewport.Size - new Vector2F(5, 80);
+            
+            ImGui.Begin("Sidebar1", ImGuiWindowFlags.NoTitleBar |
+                                   ImGuiWindowFlags.NoResize   |
+                                   ImGuiWindowFlags.NoMove     |
+                                   ImGuiWindowFlags.NoScrollbar |
+                                   ImGuiWindowFlags.NoScrollWithMouse);
+
+            ImGui.SetWindowPos(new Vector2F(0, 56));
+            ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
+
+            ImGui.PushFont(spaceWork.FontLoaded16Solid);
+            
+            // Botón Project
+            if (ImGui.Button($"{FontAwesome5.Folder}"))
+            {
+                showProject = !showProject; 
+            }
+            // Botón Inspector
+            if (ImGui.Button($"{FontAwesome5.Tools}"))
+                showInspector = !showInspector;
+
+            // Botón Console
+            if (ImGui.Button($"{FontAwesome5.Terminal}"))
+                showConsole = !showConsole;
+
+            ImGui.PopFont();
+            
+            ImGui.End();
+        }
+        
+        private void DrawRightSidebar()
+        {
+            Vector2F dockSize = spaceWork.Viewport.Size - new Vector2F(5, 80);
+            
+            ImGui.Begin("Sidebar2", ImGuiWindowFlags.NoTitleBar |
+                                    ImGuiWindowFlags.NoResize   |
+                                    ImGuiWindowFlags.NoMove     |
+                                    ImGuiWindowFlags.NoScrollbar |
+                                    ImGuiWindowFlags.NoScrollWithMouse);
+
+            ImGui.SetWindowPos(new Vector2F(dockSize.X - 35, 56));
+            ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
+
+            ImGui.PushFont(spaceWork.FontLoaded16Solid);
+            
+            // Botón Project
+            if (ImGui.Button($"{FontAwesome5.Folder}"))
+            {
+                showProject = !showProject; 
+            }
+            // Botón Inspector
+            if (ImGui.Button($"{FontAwesome5.Tools}"))
+                showInspector = !showInspector;
+
+            // Botón Console
+            if (ImGui.Button($"{FontAwesome5.Terminal}"))
+                showConsole = !showConsole;
+
+            ImGui.PopFont();
+            
+            ImGui.End();
         }
 
         /// <summary>
