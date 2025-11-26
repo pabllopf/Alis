@@ -122,7 +122,7 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         public void Render()
         {
-            if (ImGui.Begin(NameWindow))
+            if (ImGui.Begin(NameWindow, ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoCollapse))
             {
 
             }
