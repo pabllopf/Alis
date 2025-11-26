@@ -255,7 +255,16 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     Gets the value of the config docking with shift
         /// </summary>
-        public bool ConfigDockingWithShift => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigDockingWithShift != 0;
+        public bool ConfigDockingWithShift
+        {
+            get => Marshal.PtrToStructure<ImGuiIo>(NativePtr).ConfigDockingWithShift != 0;
+            set
+            {
+                ImGuiIo io = Marshal.PtrToStructure<ImGuiIo>(NativePtr);
+                io.ConfigDockingWithShift = value ? (byte) 1 : (byte) 0;
+                Marshal.StructureToPtr(io, NativePtr, false);
+            }
+        }
 
         /// <summary>
         ///     Gets the value of the config docking always tab bar
