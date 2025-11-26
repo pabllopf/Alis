@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
-using Alis.App.Engine.Fonts;
+
 using Alis.Extension.Graphic.Ui;
+using Alis.Extension.Graphic.Ui.Fonts;
 
 namespace Alis.App.Engine.Demos
 {
