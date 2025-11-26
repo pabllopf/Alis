@@ -70,6 +70,10 @@ namespace Alis.Extension.Graphic.Ui
         /// <summary>
         ///     The auto hide tab bar im gui dock node flags
         /// </summary>
-        AutoHideTabBar = 64
+        AutoHideTabBar = 64,
+        
+        NoTabBar = 128,
+        
+        NoWindowMenuButton  = 256,
     }
 }

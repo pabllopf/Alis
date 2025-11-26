@@ -148,7 +148,7 @@ namespace Alis.App.Engine.Demos
         [Conditional("DEBUG")]
         private void SimpleSample()
         {
-            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.35f, 0.3f, 0.3f, 1.0f));
+            //ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.35f, 0.3f, 0.3f, 1.0f));
 
 
             if (ImGui.Begin("Gizmo", ref isOpen))
@@ -206,7 +206,7 @@ namespace Alis.App.Engine.Demos
 
 
             ImGui.End();
-            ImGui.PopStyleColor();
+            //ImGui.PopStyleColor();
         }
     }
 }
