@@ -76,18 +76,21 @@ namespace Alis.Extension.Graphic.Ui.Sample
                 return;
             }
             
-            IntPtr _context = ImGui.CreateContext();
-            ImGui.SetCurrentContext(_context);
-
+            // Ensure native GL context is current and GL functions are loaded before creating ImGui context
             platform.MakeContextCurrent();
             Gl.Initialize(platform.GetProcAddress);
             Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
             Gl.GlEnable(EnableCap.DepthTest);
 
+            // Now create ImGui context (after OpenGL context is current)
+            IntPtr _context = ImGui.CreateContext();
+            ImGui.SetCurrentContext(_context);
+
             // Crear el ejemplo aquí, después de que el contexto nativo y GL estén listos
             example = new ImguiSample(platform);
 
-            //example.Initialize();
+            // Initialize example resources now that ImGui and GL are ready
+            example.Initialize();
             platform.ShowWindow();
             platform.SetTitle("C# + OpenGL Platform - ImGui");
             
