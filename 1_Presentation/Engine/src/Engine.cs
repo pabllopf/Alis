@@ -664,8 +664,11 @@ namespace Alis.App.Engine
 
             // Main background color for windows
             style[(int) ImGuiCol.WindowBg] = new Vector4F(0.13f, 0.14f, 0.15f, 1.0f);
-
+            //style[(int) ImGuiCol.WindowBg] = new Vector4F(0.098f, 0.102f, 0.114f, 1.0f);
+            
             // Main background color for child windows
+            //style[(int) ImGuiCol.ChildBg] = new Vector4F(0.13f, 0.14f, 0.15f, 1.0f);
+            
             style[(int) ImGuiCol.ChildBg] = new Vector4F(0.13f, 0.14f, 0.15f, 1.0f);
 
             // Background color for tooltips
@@ -835,7 +838,7 @@ namespace Alis.App.Engine
             style.PopupBorderSize = 1.0f;
 
             // Frame border size
-            style.FrameBorderSize = 1.0f;
+            style.FrameBorderSize = 0.0f;
 
             // Tab border size
             style.TabBorderSize = 0.0f;
@@ -862,10 +865,10 @@ namespace Alis.App.Engine
             style.IndentSpacing = 21;
 
             // Scrollbar size
-            style.ScrollbarSize = 12;
+            style.ScrollbarSize = 13;
 
             // Minimum grab size
-            style.GrabMinSize = 12;
+            style.GrabMinSize = 13;
 
             // Window title alignment
             style.WindowTitleAlign = new Vector2F(0.5f, 0.5f);
@@ -926,8 +929,17 @@ namespace Alis.App.Engine
             // fix dockspace size with sidebars:
             dockSize = dockSize - new Vector2F(80, 0);
             
-            // fix dockspace position with sidebars:
-            ImGui.SetWindowPos(new Vector2F(40, 25));
+            // Calcular el tamaño del DockSpace restante
+            if (spaceWork.IsMacOs)
+            {
+                // fix dockspace position with sidebars:
+                ImGui.SetWindowPos(new Vector2F(40, 0));
+            }
+            else
+            {
+                // fix dockspace position with sidebars:
+                ImGui.SetWindowPos(new Vector2F(40, 25));
+            }
             
             uint dockSpaceId = ImGui.GetId("MyDockSpace");
             ImGui.DockSpace(dockSpaceId, dockSize);
@@ -959,17 +971,34 @@ namespace Alis.App.Engine
         
         private void DrawLeftSidebar()
         {
-            Vector2F dockSize = spaceWork.Viewport.Size - new Vector2F(5, 80);
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
+            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+            
+            Vector2F dockSize = spaceWork.Viewport.Size - new Vector2F(5, 85);
+        
+            // Calcular el tamaño del DockSpace restante
+            if (spaceWork.IsMacOs)
+            {
+                dockSize = spaceWork.Viewport.Size - new Vector2F(5, 55);
+            }
             
             ImGui.Begin("Sidebar1", ImGuiWindowFlags.NoTitleBar |
                                    ImGuiWindowFlags.NoResize   |
                                    ImGuiWindowFlags.NoMove     |
                                    ImGuiWindowFlags.NoScrollbar |
                                    ImGuiWindowFlags.NoScrollWithMouse);
-
-            ImGui.SetWindowPos(new Vector2F(0, 56));
-            ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
-
+            
+            if (spaceWork.IsMacOs)
+            {
+                ImGui.SetWindowPos(new Vector2F(0, 30));
+                ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
+            }
+            else
+            {
+                ImGui.SetWindowPos(new Vector2F(0, 56));
+                ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
+            }
+            
             ImGui.PushFont(spaceWork.FontLoaded16Solid);
             
             // Botón Project
@@ -988,20 +1017,40 @@ namespace Alis.App.Engine
             ImGui.PopFont();
             
             ImGui.End();
+            
+            ImGui.PopStyleVar();
+            ImGui.PopStyleColor();
         }
         
         private void DrawRightSidebar()
         {
-            Vector2F dockSize = spaceWork.Viewport.Size - new Vector2F(5, 80);
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
+            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+            
+            Vector2F dockSize = spaceWork.Viewport.Size - new Vector2F(5, 85);
+        
+            // Calcular el tamaño del DockSpace restante
+            if (spaceWork.IsMacOs)
+            {
+                dockSize = spaceWork.Viewport.Size - new Vector2F(5, 55);
+            }
             
             ImGui.Begin("Sidebar2", ImGuiWindowFlags.NoTitleBar |
                                     ImGuiWindowFlags.NoResize   |
                                     ImGuiWindowFlags.NoMove     |
                                     ImGuiWindowFlags.NoScrollbar |
                                     ImGuiWindowFlags.NoScrollWithMouse);
-
-            ImGui.SetWindowPos(new Vector2F(dockSize.X - 35, 56));
-            ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
+            
+            if (spaceWork.IsMacOs)
+            {
+                ImGui.SetWindowPos(new Vector2F(dockSize.X - 35, 30));
+                ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
+            }
+            else
+            {
+                ImGui.SetWindowPos(new Vector2F(dockSize.X - 35, 56));
+                ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
+            }
 
             ImGui.PushFont(spaceWork.FontLoaded16Solid);
             
@@ -1021,6 +1070,9 @@ namespace Alis.App.Engine
             ImGui.PopFont();
             
             ImGui.End();
+            
+            ImGui.PopStyleVar();
+            ImGui.PopStyleColor();
         }
 
         /// <summary>
@@ -1443,7 +1495,7 @@ namespace Alis.App.Engine
        
            // Forzar tamaño del nodo raíz al tamaño del viewport
            ImGui.DockBuilderSetNodeSize(dockspaceId, fullSize);
-       
+           
            // Ratios configurables (todos en porcentajes)
            float leftRatio = 0.20f;    // ancho de la columna izquierda (20%)
            float rightRatio = 0.25f;   // ancho de la columna derecha (20%)

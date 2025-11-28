@@ -70,6 +70,21 @@ namespace Alis.App.Engine.Menus
             //ImGui.SetWindowSize(new Vector2F(0, 5), ImGuiCond.Always);
 
 
+            // Establecer el color de fondo de los botones
+            //ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
+            //ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
+            //ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.133f, 0.145f, 0.153f, 1.0f));
+            //ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+            
+            ImGui.PushStyleColor(ImGuiCol.Button,  new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBg,  new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+
+            
+            // quit border:
+            ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
+            
             // Crear barra de menú
             if (ImGui.BeginMenuBar())
             {
@@ -86,7 +101,7 @@ namespace Alis.App.Engine.Menus
                 ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
                 ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
                 // quit border:
-                ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
+                //ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
 
                 // Primer conjunto de botones: izquierda
                 if (ImGui.Button($"{FontAwesome5.ArrowLeft}"))
@@ -241,17 +256,18 @@ namespace Alis.App.Engine.Menus
                 {
                     Logger.Info("Abriendo ajustes...");
                 }
-
-                ImGui.PopStyleColor(2);
-                ImGui.PopStyleVar();
-
-                //ImGui.PopStyleVar();
+                
                 ImGui.EndMenuBar();
             }
+            
+        
 
             // Restaurar los valores de estilo anteriores
-            //ImGui.PopStyleVar(2);
-            //ImGui.PopStyleVar();
+            
+            ImGui.PopStyleColor(2);
+            ImGui.PopStyleVar(2);
+            ImGui.PopStyleColor(3);
+            
         }
 
 

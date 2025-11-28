@@ -79,11 +79,19 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         public void Render()
         {
-            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
-            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
+            //ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
+            //ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
+            //ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.133f, 0.145f, 0.153f, 1.0f));
+            //ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
 
+            ImGui.PushStyleColor(ImGuiCol.Button,  new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBg,  new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+
+            
             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 3));
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
 
 
             if (!SpaceWork.IsMacOs)
@@ -241,7 +249,7 @@ namespace Alis.App.Engine.Menus
                 //ImGui.EndTooltip();
 
 
-                ImGui.PopStyleVar(2);
+                ImGui.PopStyleVar(3);
                 ImGui.NextColumn();
 
                 // Barra de carga alineada a la derecha
@@ -253,7 +261,7 @@ namespace Alis.App.Engine.Menus
 
             // Restaurar el estilo
             //ImGui.PopStyleVar(1);
-            ImGui.PopStyleColor(2);
+            ImGui.PopStyleColor(3);
         }
 
         /// <summary>

@@ -651,5 +651,10 @@ namespace Alis.Extension.Graphic.Ui
         {
             ImGuiNative.igDockBuilderFinish(dockspaceId);
         }
+
+        public static void DockBuilderSetNodeFlags(uint dockspaceId, ImGuiDockNodeFlags dockNodeFlags)
+        {
+            ImGuiNative.igDockBuilderSetNodeFlags(dockspaceId, dockNodeFlags);
+        }
     }
 }

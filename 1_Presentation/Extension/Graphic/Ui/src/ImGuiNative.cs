@@ -5272,5 +5272,8 @@ namespace Alis.Extension.Graphic.Ui
 
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderFinish")]
         public static extern void igDockBuilderFinish(uint dockspaceId);
+
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderSetNodeFlags")]
+        public static extern void igDockBuilderSetNodeFlags(uint dockspaceId, ImGuiDockNodeFlags dockNodeFlags);
     }
 }
