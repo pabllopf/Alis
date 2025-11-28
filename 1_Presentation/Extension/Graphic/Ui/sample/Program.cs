@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-               INativePlatform platform;
+            INativePlatform platform;
 #if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
             platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
 #elif winx64 || winx86 || winarm64 || winarm || win
@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
 #else
             throw new Exception("Sistema operativo no soportado");
 #endif
-            
+
             IExample example = new ImguiSample();
 
             bool ok = platform.Initialize(800, 600, "C# + OpenGL Platform");
@@ -98,5 +98,5 @@ namespace Alis.Extension.Graphic.Ui.Sample
             example.Cleanup();
             platform.Cleanup();
         }
-        }
+    }
 }

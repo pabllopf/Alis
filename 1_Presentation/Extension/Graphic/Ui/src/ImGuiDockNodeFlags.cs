@@ -72,8 +72,14 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         AutoHideTabBar = 64,
         
+        /// <summary>
+        /// The no tab bar im gui dock node flags
+        /// </summary>
         NoTabBar = 128,
         
+        /// <summary>
+        /// The no window menu button im gui dock node flags
+        /// </summary>
         NoWindowMenuButton  = 256,
     }
 }

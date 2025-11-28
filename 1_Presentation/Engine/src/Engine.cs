@@ -95,6 +95,9 @@ namespace Alis.App.Engine
         /// </summary>
         private static readonly FragmentShader FragmentShader = new FragmentShader();
 
+        /// <summary>
+        /// The counter
+        /// </summary>
         private static int counter = 0;
         
         /// <summary>
@@ -964,11 +967,23 @@ namespace Alis.App.Engine
             counter++;
         }
         
+        /// <summary>
+        /// The show project
+        /// </summary>
         static bool showProject = false;
+        /// <summary>
+        /// The show inspector
+        /// </summary>
         static bool showInspector = false;
+        /// <summary>
+        /// The show console
+        /// </summary>
         static bool showConsole = false;
         
         
+        /// <summary>
+        /// Draws the left sidebar
+        /// </summary>
         private void DrawLeftSidebar()
         {
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
@@ -1022,6 +1037,9 @@ namespace Alis.App.Engine
             ImGui.PopStyleColor();
         }
         
+        /// <summary>
+        /// Draws the right sidebar
+        /// </summary>
         private void DrawRightSidebar()
         {
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
@@ -1481,6 +1499,9 @@ namespace Alis.App.Engine
         }
         
       // csharp
+       /// <summary>
+       /// Builds the default layout
+       /// </summary>
        private void BuildDefaultLayout()
        {
            ImGuiViewportPtr viewport = ImGui.GetMainViewport();
