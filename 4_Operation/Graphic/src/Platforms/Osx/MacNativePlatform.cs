@@ -63,6 +63,12 @@ namespace Alis.Core.Graphic.Platforms.Osx
 
         private HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
 
+        // Mouse state
+        private int mouseX = 0;
+        private int mouseY = 0;
+        private bool[] mouseButtons = new bool[5];
+        private float mouseWheel = 0.0f;
+
         /// <summary>
         /// </summary>
         /// <param name="w"></param>
@@ -150,6 +156,37 @@ namespace Alis.Core.Graphic.Platforms.Osx
             {
                 IntPtr eventType = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("type"));
                 int type = eventType.ToInt32();
+                // Mouse event types (NSEventType): 1=LeftDown,2=LeftUp,3=RightDown,4=RightUp,5=MouseMoved,22=ScrollWheel
+                if (type == 1 || type == 2 || type == 3 || type == 4 || type == 5 || type == 22)
+                {
+                    // Get locationInWindow
+                    IntPtr locationPtr = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("locationInWindow"));
+                    // Read two doubles (x,y)
+                    long lx = Marshal.ReadInt64(locationPtr, 0);
+                    long ly = Marshal.ReadInt64(locationPtr, 8);
+                    double px = BitConverter.Int64BitsToDouble(lx);
+                    double py = BitConverter.Int64BitsToDouble(ly);
+                    mouseX = (int)Math.Round(px);
+                    mouseY = (int)Math.Round(py);
+
+                    if (type == 1) { mouseButtons[0] = true; }
+                    else if (type == 2) { mouseButtons[0] = false; }
+                    else if (type == 3) { mouseButtons[1] = true; }
+                    else if (type == 4) { mouseButtons[1] = false; }
+                    else if (type == 22)
+                    {
+                        // scrollDeltaY
+                        IntPtr deltaYPtr = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("deltaY"));
+                        int deltaYi = ObjectiveCInterop.objc_msgSend_Int(deltaYPtr, ObjectiveCInterop.Sel("intValue"));
+                        mouseWheel = deltaYi;
+                    }
+
+                    // forward event to app
+                    ObjectiveCInterop.objc_msgSend_void_IntPtr(app, ObjectiveCInterop.Sel("sendEvent:"), evt);
+                    ObjectiveCInterop.objc_msgSend_void(app, ObjectiveCInterop.Sel("updateWindows"));
+                    return IsWindowVisible();
+                }
+
                 if (type == 10) // NSKeyDown
                 {
                     int keyCode = ObjectiveCInterop.objc_msgSend_Int(evt, ObjectiveCInterop.Sel("keyCode"));
@@ -484,6 +521,27 @@ namespace Alis.Core.Graphic.Platforms.Osx
 
             key = default(ConsoleKey);
             return false;
+        }
+
+        /// <summary>
+        ///     Obtiene el estado actual del ratón (posición y botones)
+        /// </summary>
+        public void GetMouseState(out int x, out int y, out bool[] buttons)
+        {
+            x = mouseX;
+            y = mouseY;
+            buttons = (bool[])mouseButtons.Clone();
+            // Reset wheel after reporting in GetMouseWheel if desired
+        }
+
+        /// <summary>
+        ///     Obtiene delta de rueda (vertical) y lo consume
+        /// </summary>
+        public float GetMouseWheel()
+        {
+            float v = mouseWheel;
+            mouseWheel = 0.0f;
+            return v;
         }
 
         /// <summary>

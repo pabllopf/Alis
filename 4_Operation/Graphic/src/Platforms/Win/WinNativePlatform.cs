@@ -567,11 +567,33 @@ namespace Alis.Core.Graphic.Platforms.Win
         }
 
         /// <summary>
-        ///     Ises the key down using the specified key
+        ///     Gets current mouse position and button states (Win32)
         /// </summary>
-        /// <param name="key">The key</param>
-        /// <returns>The bool</returns>
-        public bool IsKeyDown(ConsoleKey key) => pressedKeys.Contains(key);
+        public void GetMouseState(out int x, out int y, out bool[] buttons)
+        {
+            POINT p;
+            if (GetCursorPos(out p))
+            {
+                x = p.X;
+                y = p.Y;
+            }
+            else
+            {
+                x = 0; y = 0;
+            }
+
+            buttons = new bool[5];
+            buttons[0] = (GetAsyncKeyState(VK_LBUTTON) & 0x8000) != 0;
+            buttons[1] = (GetAsyncKeyState(VK_RBUTTON) & 0x8000) != 0;
+            buttons[2] = (GetAsyncKeyState(VK_MBUTTON) & 0x8000) != 0;
+            buttons[3] = (GetAsyncKeyState(VK_XBUTTON1) & 0x8000) != 0;
+            buttons[4] = (GetAsyncKeyState(VK_XBUTTON2) & 0x8000) != 0;
+        }
+
+        /// <summary>
+        ///     Returns mouse wheel delta (not accumulated here)
+        /// </summary>
+        public float GetMouseWheel() => 0.0f;
 
         /// <summary>
         ///     Crea la ventana y le asigna un icono BMP usando el path proporcionado (Win32 API)
@@ -667,6 +689,25 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// <returns>The int ptr</returns>
         [DllImport("user32.dll", SetLastError = true)]
         private static extern IntPtr LoadImage(IntPtr hInst, string lpszName, uint uType, int cxDesired, int cyDesired, uint fuLoad);
+
+        [DllImport("user32.dll")]
+        private static extern bool GetCursorPos(out POINT lpPoint);
+
+        [DllImport("user32.dll")]
+        private static extern short GetAsyncKeyState(int vKey);
+
+        [StructLayout(LayoutKind.Sequential)]
+        private struct POINT
+        {
+            public int X;
+            public int Y;
+        }
+
+        private const int VK_LBUTTON = 0x01;
+        private const int VK_RBUTTON = 0x02;
+        private const int VK_MBUTTON = 0x04;
+        private const int VK_XBUTTON1 = 0x05;
+        private const int VK_XBUTTON2 = 0x06;
 
         // ------------------------------------------------------------------
         // PRIVATE METHODS

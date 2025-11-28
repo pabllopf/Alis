@@ -144,5 +144,19 @@ namespace Alis.Core.Graphic.Platforms
         /// </summary>
         /// <param name="iconPath">Full path to the BMP icon file</param>
         void SetWindowIcon(string iconPath);
+
+        /// <summary>
+        ///     Gets the mouse state: position and button array (left, right, middle, aux1, aux2)
+        /// </summary>
+        /// <param name="x">out x</param>
+        /// <param name="y">out y</param>
+        /// <param name="buttons">out buttons array</param>
+        void GetMouseState(out int x, out int y, out bool[] buttons);
+
+        /// <summary>
+        ///     Gets the mouse wheel delta (vertical)
+        /// </summary>
+        /// <returns>float wheel</returns>
+        float GetMouseWheel();
     }
 }
