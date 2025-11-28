@@ -93,33 +93,26 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
 
             // Build font atlas using safe API and upload to GL
             var fonts = io.Fonts;
-            // Request font atlas data as managed byte[] (RGBA32)
-            fonts.GetTexDataAsRgba32(out byte[] pixels, out int width, out int height, out _);
+            // Preferred: get pointer to font pixels (avoids copying and GCHandle)
+            fonts.GetTexDataAsRgba32(out IntPtr pixelPtr, out int widthPtr, out int heightPtr);
 
-            if (pixels != null && width > 0 && height > 0)
+            if (pixelPtr != IntPtr.Zero && widthPtr > 0 && heightPtr > 0)
             {
-                // Sanity checks
                 if (_platform == null)
                 {
-                    Logger.Info("No hay plataforma asociada. No se puede subir la textura de fuentes.");
+                    Console.WriteLine("No hay plataforma asociada. No se puede subir la textura de fuentes.");
                     return;
                 }
 
-                // Ensure OpenGL context is current on this thread before calling GL functions
                 try
                 {
                     _platform.MakeContextCurrent();
-                    Console.WriteLine("MakeContextCurrent() called before font upload");
+                    Console.WriteLine("MakeContextCurrent() called before font upload (IntPtr path)");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error al activar el contexto OpenGL antes de subir la textura: {ex}");
                     return;
-                }
-
-                if (pixels == null)
-                {
-                    Logger.Info("Font atlas pixels is null, skipping font upload.");
                 }
 
                 _fontTexture = Gl.GenTexture();
@@ -128,47 +121,28 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
                 Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, TextureParameter.ClampToEdge);
                 Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Nearest);
                 Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Nearest);
-
-                // Set pixel alignment
                 Gl.GlPixelStorei(StoreParameter.UnpackAlignment, 1);
 
-                GCHandle handle = default;
-                try
+                Console.WriteLine($"Uploading font texture (IntPtr): width={widthPtr}, height={heightPtr}, ptr=0x{pixelPtr.ToInt64():X}");
+                Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, widthPtr, heightPtr, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelPtr);
+                int errPtr = Gl.GlGetError();
+                if (errPtr != 0)
                 {
-                    if (pixels == null)
-                        throw new InvalidOperationException("pixels array is null");
-
-                    handle = GCHandle.Alloc(pixels, GCHandleType.Pinned);
-                    IntPtr ptr = handle.AddrOfPinnedObject();
-
-                    // Extra logging to help debug: sizes and pointer (unconditional)
-                    Console.WriteLine($"Uploading font texture: width={width}, height={height}, ptr=0x{ptr.ToInt64():X}");
-
-                    Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, width, height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, ptr);
-
-                    // Check GL error after upload
-                    int err = Gl.GlGetError();
-                    if (err != 0)
-                    {
-                        Console.WriteLine($"GL error after TexImage2D: 0x{err:X}");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Log full exception with stack trace for debugging (unconditional)
-                    Console.WriteLine($"Exception uploading font texture: {ex}");
-                }
-                finally
-                {
-                    if (handle.IsAllocated)
-                        handle.Free();
+                    Console.WriteLine($"GL error after TexImage2D (IntPtr): 0x{errPtr:X}");
                 }
 
                 // Tell ImGui about our texture id (store as IntPtr)
                 fonts.SetTexId((IntPtr)_fontTexture);
-                // CPU side can be freed
-                // Note: wrapper may provide ClearTexData
-                // fonts.ClearTexData(); // only if available
+                // Free CPU side (cimgui provides ClearTexData)
+                try
+                {
+                    // Some bindings call this ClearTexData / ClearTexData
+                    fonts.ClearTexData();
+                }
+                catch (Exception)
+                {
+                    // Ignore if not implemented
+                }
             }
 
             // Create simple shader program
