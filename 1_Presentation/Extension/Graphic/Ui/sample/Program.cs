@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
             throw new Exception("Sistema operativo no soportado");
 #endif
 
-            IExample example = new ImguiSample();
+            IExample example = null;
 
             bool ok = platform.Initialize(800, 600, "C# + OpenGL Platform");
             if (!ok)
@@ -72,6 +72,9 @@ namespace Alis.Extension.Graphic.Ui.Sample
             Gl.Initialize(platform.GetProcAddress);
             Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
             Gl.GlEnable(EnableCap.DepthTest);
+
+            // Crear el ejemplo aquí, después de que el contexto nativo y GL estén listos
+            example = new ImguiSample(platform);
 
             example.Initialize();
             platform.ShowWindow();
