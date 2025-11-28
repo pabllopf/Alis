@@ -27,7 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Enums;
+using Alis.Core.Graphic.Platforms;
+using Alis.Extension.Graphic.Ui.Sample.Examples;
 
 namespace Alis.Extension.Graphic.Ui.Sample
 {
@@ -42,7 +47,56 @@ namespace Alis.Extension.Graphic.Ui.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Logger.Info("Starting ImGui Sample...");
+               INativePlatform platform;
+#if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
+            platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
+#elif winx64 || winx86 || winarm64 || winarm || win
+            platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
+#elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
+            platform = new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();
+#else
+            throw new Exception("Sistema operativo no soportado");
+#endif
+            
+            IExample example = new ImguiSample();
+
+            bool ok = platform.Initialize(800, 600, "C# + OpenGL Platform");
+            if (!ok)
+            {
+                Logger.Info("No se pudo inicializar la ventana ni el contexto OpenGL. El programa se cerrará.");
+                platform.Cleanup();
+                return;
+            }
+
+            platform.MakeContextCurrent();
+            Gl.Initialize(platform.GetProcAddress);
+            Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
+            Gl.GlEnable(EnableCap.DepthTest);
+
+            example.Initialize();
+            platform.ShowWindow();
+            platform.SetTitle("C# + OpenGL Platform - ImGui");
+
+            bool running = true;
+            while (running)
+            {
+                running = platform.PollEvents();
+                if (platform.TryGetLastKeyPressed(out ConsoleKey key))
+                {
+                    Logger.Info($"Tecla pulsada: {key}");
+                }
+
+                example.Draw();
+                platform.SwapBuffers();
+                int glError = Gl.GlGetError();
+                if (glError != 0)
+                {
+                    Logger.Info($"OpenGL error tras flushBuffer: 0x{glError:X}");
+                }
+            }
+
+            example.Cleanup();
+            platform.Cleanup();
         }
-    }
+        }
 }
