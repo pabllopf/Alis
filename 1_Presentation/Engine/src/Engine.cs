@@ -1491,7 +1491,7 @@ namespace Alis.App.Engine
        
            // Limpia lo que hubiera antes
            ImGui.DockBuilderRemoveNode(dockspaceId);
-           ImGui.DockBuilderAddNode(dockspaceId, ImGuiDockNodeFlags.None);
+           ImGui.DockBuilderAddNode(dockspaceId, ImGuiDockNodeFlags.NoWindowMenuButton);
        
            // Forzar tamaño del nodo raíz al tamaño del viewport
            ImGui.DockBuilderSetNodeSize(dockspaceId, fullSize);
@@ -1547,7 +1547,14 @@ namespace Alis.App.Engine
        
            ImGui.DockBuilderDockWindow(AssetsWindow.WindowName, dockIdCenterBottomLeft);
            ImGui.DockBuilderDockWindow(ConsoleWindow.NameWindow, dockIdCenterBottomLeft);
-       
+           
+           
+           
+           /*ImGui.DockBuilderSetNodeFlags(dockIdLeftTop, ImGuiDockNodeFlags.NoTabBar);
+           ImGui.DockBuilderSetNodeFlags(dockIdCenterTop, ImGuiDockNodeFlags.NoTabBar);
+           ImGui.DockBuilderSetNodeFlags(dockIdRightTop, ImGuiDockNodeFlags.NoTabBar);
+           ImGui.DockBuilderSetNodeFlags(dockIdCenterBottomLeft, ImGuiDockNodeFlags.NoTabBar);
+       */
            // Finalizar
            ImGui.DockBuilderFinish(dockspaceId);
        }
