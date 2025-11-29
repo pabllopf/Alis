@@ -1036,5 +1036,31 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         {
             ImNodesNative.ImNodes_StyleColorsLight(dest);
         }
+
+        public static void ShowDemoWindow()
+        {
+            ImGui.Begin("simple node editor");
+
+            ImNodes.BeginNodeEditor();
+            ImNodes.BeginNode(1);
+
+            ImNodes.BeginNodeTitleBar();
+            ImGui.TextUnformatted("simple node :)");
+            ImNodes.EndNodeTitleBar();
+
+            ImNodes.BeginInputAttribute(2);
+            ImGui.Text("input");
+            ImNodes.EndInputAttribute();
+
+            ImNodes.BeginOutputAttribute(3);
+            ImGui.Indent(40);
+            ImGui.Text("output");
+            ImNodes.EndOutputAttribute();
+
+            ImNodes.EndNode();
+            ImNodes.EndNodeEditor();
+
+            ImGui.End();
+        }
     }
 }
