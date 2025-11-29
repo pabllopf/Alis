@@ -42,9 +42,6 @@ namespace Alis.Core.Graphic.Platforms.Win
     /// </summary>
     public class WinNativePlatform : INativePlatform
     {
-        // ------------------------------------------------------------------
-        // CONSTANTS
-        // ------------------------------------------------------------------
         /// <summary>
         /// </summary>
         private const string WindowClassName = "AlisWin32GLWindow";
@@ -512,6 +509,12 @@ namespace Alis.Core.Graphic.Platforms.Win
         {
             if (hWnd != IntPtr.Zero)
             {
+                Rect clientRect;
+                if (GetClientRect(hWnd, out clientRect))
+                {
+                    return clientRect.Right - clientRect.Left;
+                }
+                // Fallback to window rect
                 Rect rect;
                 User32.GetWindowRect(hWnd, out rect);
                 return rect.Right - rect.Left;
@@ -527,6 +530,12 @@ namespace Alis.Core.Graphic.Platforms.Win
         {
             if (hWnd != IntPtr.Zero)
             {
+                Rect clientRect;
+                if (GetClientRect(hWnd, out clientRect))
+                {
+                    return clientRect.Bottom - clientRect.Top;
+                }
+                // Fallback to window rect
                 Rect rect;
                 User32.GetWindowRect(hWnd, out rect);
                 return rect.Bottom - rect.Top;
@@ -566,6 +575,13 @@ namespace Alis.Core.Graphic.Platforms.Win
             return false;
         }
 
+        public bool IsKeyDown(ConsoleKey consoleKey)
+        {
+            // Comprueba si la tecla está marcada como presionada por los mensajes de la ventana.
+            // Esto asegura que solo se consideren las pulsaciones relacionadas con la ventana creada.
+            return pressedKeys.Contains(consoleKey);
+        }
+
         /// <summary>
         ///     Gets current mouse position and button states (Win32)
         /// </summary>
@@ -574,8 +590,27 @@ namespace Alis.Core.Graphic.Platforms.Win
             POINT p;
             if (GetCursorPos(out p))
             {
-                x = p.X;
-                y = p.Y;
+                // Convert screen coordinates to client coordinates relative to our window
+                if (hWnd != IntPtr.Zero)
+                {
+                    POINT cp = p;
+                    if (ScreenToClient(hWnd, ref cp))
+                    {
+                        x = cp.X;
+                        y = cp.Y;
+                    }
+                    else
+                    {
+                        // Fallback to screen coords if ScreenToClient fails
+                        x = p.X;
+                        y = p.Y;
+                    }
+                }
+                else
+                {
+                    x = p.X;
+                    y = p.Y;
+                }
             }
             else
             {
@@ -694,7 +729,22 @@ namespace Alis.Core.Graphic.Platforms.Win
         private static extern bool GetCursorPos(out POINT lpPoint);
 
         [DllImport("user32.dll")]
+        private static extern bool ScreenToClient(IntPtr hWnd, ref POINT lpPoint);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern bool GetClientRect(IntPtr hWnd, out Rect lpRect);
+
+        [DllImport("user32.dll")]
         private static extern short GetAsyncKeyState(int vKey);
+
+        [DllImport("user32.dll")]
+        private static extern bool GetMessage(out Msg lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax, uint uRemoveMsg);
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr DispatchMessage(ref Msg lpMsg);
+
+        [DllImport("user32.dll")]
+        private static extern bool TranslateMessage(ref Msg lpMsg);
 
         [StructLayout(LayoutKind.Sequential)]
         private struct POINT
@@ -787,3 +837,4 @@ namespace Alis.Core.Graphic.Platforms.Win
 }
 
 #endif
+
