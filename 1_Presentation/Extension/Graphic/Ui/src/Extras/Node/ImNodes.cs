@@ -1037,6 +1037,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
             ImNodesNative.ImNodes_StyleColorsLight(dest);
         }
 
+        /// <summary>
+        /// Shows the demo window
+        /// </summary>
         public static void ShowDemoWindow()
         {
             ImGui.Begin("simple node editor");

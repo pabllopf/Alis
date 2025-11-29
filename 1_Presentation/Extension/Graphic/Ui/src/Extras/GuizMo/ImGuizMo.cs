@@ -334,6 +334,9 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// </summary>
         private static Vector3F translation;
 
+        /// <summary>
+        /// Shows the demo window
+        /// </summary>
         public static void ShowDemoWindow()
         {
              if (ImGui.Begin("Gizmo", ref isOpen))
