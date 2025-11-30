@@ -215,9 +215,38 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
         public void Draw()
         {
             var io = ImGui.GetIo();
+            // Update display size each frame (handles window resize)
             io.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(_platform.GetWindowWidth(), _platform.GetWindowHeight());
 
+            // Feed mouse state from platform
+            try
+            {
+                _platform.GetMouseState(out int mx, out int my, out bool[] mButtons);
+                io.MousePos = new Alis.Core.Aspect.Math.Vector.Vector2F(mx, my);
+                // Build MouseDown list expected by ImGui wrapper
+                var mouseDownList = new System.Collections.Generic.List<bool>();
+                for (int i = 0; i < 5; i++) mouseDownList.Add(i < mButtons.Length ? mButtons[i] : false);
+                io.MouseDown = mouseDownList;
+                io.MouseWheel = _platform.GetMouseWheel();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading mouse state from platform: {ex}");
+            }
+
             ImGui.NewFrame();
+
+            // Create a full-screen DockSpace so other windows can dock into it
+            try
+            {
+                // Ensure docking is enabled in io.ConfigFlags
+                ImGui.DockSpaceOverViewport();
+            }
+            catch (Exception ex)
+            {
+                // If Docking isn't compiled in cimgui, ignore
+                Console.WriteLine($"DockSpaceOverViewport error (may be unsupported): {ex}");
+            }
 
             if (_showDemo)
             {
@@ -232,6 +261,14 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             ImGui.Render();
             var drawData = ImGui.GetDrawData();
             RenderDrawData(drawData);
+
+            // After rendering, reset mouse wheel in case platform returns an accumulated value
+            try
+            {
+                // If platform provides mutable mouse wheel, try to clear it via GetMouseState side-effect; otherwise ignore
+                // For MacNativePlatform we reset mouseWheel inside GetMouseWheel implementation.
+            }
+            catch { }
         }
 
         private void RenderDrawData(ImDrawData drawData)

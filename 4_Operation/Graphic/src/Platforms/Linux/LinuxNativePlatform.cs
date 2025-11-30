@@ -935,6 +935,41 @@ namespace Alis.Core.Graphic.Platforms.Linux
                 throw new Exception($"[SetWindowIcon] Error al establecer el icono de la ventana: {ex.Message}");
             }
         }
+
+        [System.Runtime.InteropServices.DllImport("libX11.so.6")]
+        private static extern bool XQueryPointer(IntPtr display, IntPtr w, out IntPtr root_return, out IntPtr child_return,
+            out int root_x_return, out int root_y_return, out int win_x_return, out int win_y_return, out uint mask_return);
+
+        /// <summary>
+        /// Obtiene la posición del ratón y estado de botones en X11
+        /// </summary>
+        public void GetMouseState(out int x, out int y, out bool[] buttons)
+        {
+            x = 0; y = 0; buttons = new bool[5];
+            if (display == IntPtr.Zero || window == IntPtr.Zero)
+                return;
+            if (XQueryPointer(display, window, out IntPtr root, out IntPtr child, out int rootx, out int rooty, out int winx, out int winy, out uint mask))
+            {
+                x = winx;
+                y = winy;
+                // Button masks: Button1Mask = (1<<8) ?, use typical masks from X11/X.h
+                const uint Button1Mask = (1u << 8);
+                const uint Button2Mask = (1u << 9);
+                const uint Button3Mask = (1u << 10);
+                const uint Button4Mask = (1u << 11);
+                const uint Button5Mask = (1u << 12);
+                buttons[0] = (mask & Button1Mask) != 0;
+                buttons[2] = (mask & Button2Mask) != 0;
+                buttons[1] = (mask & Button3Mask) != 0;
+                buttons[3] = (mask & Button4Mask) != 0;
+                buttons[4] = (mask & Button5Mask) != 0;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene delta de rueda (no acumulado aquí)
+        /// </summary>
+        public float GetMouseWheel() => 0.0f;
     }
 }
 
