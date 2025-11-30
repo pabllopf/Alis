@@ -59,10 +59,34 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
 
         public void Initialize()
         {
-            // Create ImGui context (uses local wrapper)
-            _context = ImGui.CreateContext();
-            ImGui.SetCurrentContext(_context);
+            // Ensure native context is current before creating GL resources
+            _platform?.MakeContextCurrent();
+
+            // Do not create ImGui context here if it was already created by the application entry point.
+            // Just ensure ImGui current context is set and IO is available.
+            IntPtr currentCtx = ImGui.GetCurrentContext();
+            if (currentCtx == IntPtr.Zero)
+            {
+                // Create context if not previously created by the host
+                _context = ImGui.CreateContext();
+                ImGui.SetCurrentContext(_context);
+            }
+            else
+            {
+                _context = currentCtx;
+                ImGui.SetCurrentContext(_context);
+            }
+
             var io = ImGui.GetIo();
+            if (io.NativePtr == IntPtr.Zero)
+            {
+                throw new InvalidOperationException("ImGui IO is null. Ensure ImGui.CreateContext() was called after an active OpenGL context is current.");
+            }
+            // Create ImGui context (uses local wrapper)
+            //            _context = ImGui.CreateContext();
+            //            ImGui.SetCurrentContext(_context);
+            //            var io = ImGui.GetIo();
+            //io already obtained above
             io.BackendFlags |= ImGuiBackendFlags.HasMouseCursors | ImGuiBackendFlags.HasSetMousePos;
             io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
             ImGui.StyleColorsDark();
@@ -74,6 +98,30 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
 
             if (pixels != null && width > 0 && height > 0)
             {
+                // Sanity checks
+                if (_platform == null)
+                {
+                    Logger.Info("No hay plataforma asociada. No se puede subir la textura de fuentes.");
+                    return;
+                }
+
+                // Ensure OpenGL context is current on this thread before calling GL functions
+                try
+                {
+                    _platform.MakeContextCurrent();
+                    Console.WriteLine("MakeContextCurrent() called before font upload");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error al activar el contexto OpenGL antes de subir la textura: {ex}");
+                    return;
+                }
+
+                if (pixels == null)
+                {
+                    Logger.Info("Font atlas pixels is null, skipping font upload.");
+                }
+
                 _fontTexture = Gl.GenTexture();
                 Gl.GlBindTexture(TextureTarget.Texture2D, _fontTexture);
                 Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, TextureParameter.ClampToEdge);
@@ -84,15 +132,36 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
                 // Set pixel alignment
                 Gl.GlPixelStorei(StoreParameter.UnpackAlignment, 1);
 
-                GCHandle handle = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+                GCHandle handle = default;
                 try
                 {
+                    if (pixels == null)
+                        throw new InvalidOperationException("pixels array is null");
+
+                    handle = GCHandle.Alloc(pixels, GCHandleType.Pinned);
                     IntPtr ptr = handle.AddrOfPinnedObject();
+
+                    // Extra logging to help debug: sizes and pointer (unconditional)
+                    Console.WriteLine($"Uploading font texture: width={width}, height={height}, ptr=0x{ptr.ToInt64():X}");
+
                     Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, width, height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, ptr);
+
+                    // Check GL error after upload
+                    int err = Gl.GlGetError();
+                    if (err != 0)
+                    {
+                        Console.WriteLine($"GL error after TexImage2D: 0x{err:X}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Log full exception with stack trace for debugging (unconditional)
+                    Console.WriteLine($"Exception uploading font texture: {ex}");
                 }
                 finally
                 {
-                    handle.Free();
+                    if (handle.IsAllocated)
+                        handle.Free();
                 }
 
                 // Tell ImGui about our texture id (store as IntPtr)
