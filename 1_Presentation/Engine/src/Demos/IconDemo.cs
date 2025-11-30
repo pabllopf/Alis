@@ -40,6 +40,9 @@ namespace Alis.App.Engine.Demos
     /// <seealso cref="IDemo" />
     public class IconDemo : IDemo
     {
+        /// <summary>
+        /// Gets the value of the name
+        /// </summary>
         public static string Name => "Icon Demo";
         
         /// <summary>

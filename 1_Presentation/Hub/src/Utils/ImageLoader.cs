@@ -10,22 +10,58 @@
 
         namespace Alis.App.Hub.Utils
         {
+            /// <summary>
+            /// The image loader class
+            /// </summary>
             public static class ImageLoader
             {
                
+                /// <summary>
+                /// The cached texture class
+                /// </summary>
                 private class CachedTexture
                 {
+                    /// <summary>
+                    /// The texture id
+                    /// </summary>
                     public uint TextureId;
+                    /// <summary>
+                    /// The width
+                    /// </summary>
                     public int Width;
+                    /// <summary>
+                    /// The height
+                    /// </summary>
                     public int Height;
+                    /// <summary>
+                    /// The ref count
+                    /// </summary>
                     public int RefCount;
+                    /// <summary>
+                    /// The last access utc
+                    /// </summary>
                     public DateTime LastAccessUtc;
                 }
         
+                /// <summary>
+                /// The ordinal ignore case
+                /// </summary>
                 private static readonly Dictionary<string, CachedTexture> s_cache = new Dictionary<string, CachedTexture>(StringComparer.OrdinalIgnoreCase);
+                /// <summary>
+                /// The lock
+                /// </summary>
                 private static readonly object s_lock = new object();
+                /// <summary>
+                /// The from minutes
+                /// </summary>
                 private static readonly TimeSpan DefaultExpiration = TimeSpan.FromMinutes(5);
         
+                /// <summary>
+                /// Loads the texture from file using the specified file path
+                /// </summary>
+                /// <param name="filePath">The file path</param>
+                /// <exception cref="FileNotFoundException">Image not found in resources: {key}</exception>
+                /// <returns>The int ptr</returns>
                 public static IntPtr LoadTextureFromFile(string filePath)
                 {
                     string key = Path.GetFileName(filePath) ?? filePath;
@@ -105,6 +141,10 @@
                 }
         
                 // Llamar cuando ya no necesites la textura (por ejemplo al cerrar una ventana)
+                /// <summary>
+                /// Releases the texture using the specified file path
+                /// </summary>
+                /// <param name="filePath">The file path</param>
                 public static void ReleaseTexture(string filePath)
                 {
                     string key = Path.GetFileName(filePath) ?? filePath;
@@ -127,6 +167,10 @@
                 }
         
                 // Elimina texturas no usadas por más tiempo (por defecto DefaultExpiration)
+                /// <summary>
+                /// Clears the unused using the specified expiration
+                /// </summary>
+                /// <param name="expiration">The expiration</param>
                 public static void ClearUnused(TimeSpan? expiration = null)
                 {
                     var exp = expiration ?? DefaultExpiration;

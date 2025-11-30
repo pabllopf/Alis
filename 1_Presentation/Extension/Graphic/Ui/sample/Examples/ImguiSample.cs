@@ -29,18 +29,31 @@
 
 namespace Alis.Extension.Graphic.Ui.Sample.Examples
 {
+    /// <summary>
+    /// The imgui sample class
+    /// </summary>
+    /// <seealso cref="IExample"/>
     public class ImguiSample : IExample
     {
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public void Initialize()
         {
 
         }
 
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
         public void Draw()
         {
 
         }
 
+        /// <summary>
+        /// Cleanups this instance
+        /// </summary>
         public void Cleanup()
         {
 

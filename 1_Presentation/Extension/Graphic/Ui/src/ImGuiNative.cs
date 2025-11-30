@@ -5255,24 +5255,61 @@ namespace Alis.Extension.Graphic.Ui
         public static extern Vector4F ImVec4_ImVec4_Float(float x, float y, float z, float w);
 
 
+        /// <summary>
+        /// Igs the dock builder remove node using the specified dockspace id
+        /// </summary>
+        /// <param name="dockspaceId">The dockspace id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderRemoveNode")]
         public static extern void igDockBuilderRemoveNode(uint dockspaceId);
 
+        /// <summary>
+        /// Igs the dock builder add node using the specified dockspace id
+        /// </summary>
+        /// <param name="dockspaceId">The dockspace id</param>
+        /// <param name="none">The none</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderAddNode")]
         public static extern void igDockBuilderAddNode(uint dockspaceId, ImGuiDockNodeFlags none);
 
+        /// <summary>
+        /// Igs the dock builder set node size using the specified dockspace id
+        /// </summary>
+        /// <param name="dockspaceId">The dockspace id</param>
+        /// <param name="viewportSize">The viewport size</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderSetNodeSize")]
         public static extern void igDockBuilderSetNodeSize(uint dockspaceId, Vector2F viewportSize);
 
+        /// <summary>
+        /// Igs the dock builder split node using the specified dock main id
+        /// </summary>
+        /// <param name="dockMainId">The dock main id</param>
+        /// <param name="left">The left</param>
+        /// <param name="p2">The </param>
+        /// <param name="zero">The zero</param>
+        /// <param name="dockIdRight">The dock id right</param>
+        /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderSplitNode")]
         public static extern uint igDockBuilderSplitNode(uint dockMainId, ImGuiDir left, float p2, IntPtr zero, out uint dockIdRight);
 
+        /// <summary>
+        /// Igs the dock builder dock window using the specified get bytes
+        /// </summary>
+        /// <param name="getBytes">The get bytes</param>
+        /// <param name="dockIdLeft">The dock id left</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderDockWindow")]
         public static extern void igDockBuilderDockWindow(byte[] getBytes, uint dockIdLeft);
 
+        /// <summary>
+        /// Igs the dock builder finish using the specified dockspace id
+        /// </summary>
+        /// <param name="dockspaceId">The dockspace id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderFinish")]
         public static extern void igDockBuilderFinish(uint dockspaceId);
 
+        /// <summary>
+        /// Igs the dock builder set node flags using the specified dockspace id
+        /// </summary>
+        /// <param name="dockspaceId">The dockspace id</param>
+        /// <param name="dockNodeFlags">The dock node flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderSetNodeFlags")]
         public static extern void igDockBuilderSetNodeFlags(uint dockspaceId, ImGuiDockNodeFlags dockNodeFlags);
     }
