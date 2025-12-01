@@ -36,7 +36,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
     /// <summary>
     ///     The im gui z mo native class
     /// </summary>
-    internal static class ImGuiZmoNative
+    public static class ImGuiZmoNative
     {
         /// <summary>
         ///     The native library
@@ -184,7 +184,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_SetRect", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void InternalSetRect(float x, float y, float width, float height);
+        public static extern void InternalSetRect(float x, float y, float width, float height);
 
         /// <summary>
         ///     Ims the guizmo view manipulate using the specified view
@@ -195,6 +195,6 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <param name="size">The size</param>
         /// <param name="backgroundColor">The background color</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_ViewManipulate_Float", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void ImGuizmo_ViewManipulate(float[] view, float length, Vector2F position, Vector2F size, uint backgroundColor);
+        public static extern void ImGuizmo_ViewManipulate(float[] view, float length, Vector2F position, Vector2F size, uint backgroundColor);
     }
 }

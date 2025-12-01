@@ -30,6 +30,7 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory;
@@ -45,170 +46,184 @@ using Alis.Extension.Graphic.Ui.Sample.Examples;
 namespace Alis.Extension.Graphic.Ui.Sample
 {
     /// <summary>
-    ///     The program class
+    /// Sample host application that creates a native window, initializes OpenGL and ImGui,
+    /// and runs the selected example. Code is organized for clarity and maintainability.
     /// </summary>
     public static class Program
     {
         /// <summary>
-        ///     Main the args
+        /// Application entry point.
         /// </summary>
-        /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            INativePlatform platform;
-#if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
-            platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
-#elif winx64 || winx86 || winarm64 || winarm || win
-            platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
-#elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
-            platform = new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();
-#else
-            throw new Exception("Sistema operativo no soportado");
-#endif
+            INativePlatform platform = GetPlatform();
+            Debug.Assert(platform != null, "Platform implementation must be provided for the current OS.");
 
-            IExample example = null;
-
-            bool ok = platform.Initialize(800, 600, "C# + OpenGL Platform");
-            if (!ok)
+            // Initialize native window and GL context
+            if (!InitializePlatform(platform, 800, 600, "C# + OpenGL Platform"))
             {
-                Logger.Info("No se pudo inicializar la ventana ni el contexto OpenGL. El programa se cerrará.");
-                platform.Cleanup();
+                Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
+                platform?.Cleanup();
                 return;
             }
-            
-            // Ensure native GL context is current and GL functions are loaded before creating ImGui context
+
+            // Ensure GL API is loaded and viewport configured
             platform.MakeContextCurrent();
             Gl.Initialize(platform.GetProcAddress);
             Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
             Gl.GlEnable(EnableCap.DepthTest);
 
-            // Now create ImGui context (after OpenGL context is current)
-            IntPtr _context = ImGui.CreateContext();
-            ImGui.SetCurrentContext(_context);
+            // Create ImGui context and configure backends
+            IntPtr imguiContext = ImGui.CreateContext();
+            ImGui.SetCurrentContext(imguiContext);
 
-            // Crear el ejemplo aquí, después de que el contexto nativo y GL estén listos
-            example = new ImguiSample(platform);
-
-            // Initialize example resources now that ImGui and GL are ready
+            // Create the example instance after GL and ImGui are ready
+            IExample example = new ImguiSample(platform);
             example.Initialize();
+
             platform.ShowWindow();
             platform.SetTitle("C# + OpenGL Platform - ImGui");
-            
+
+            // Configure IO and features
             ImGuiIoPtr io = ImGui.GetIo();
-            
-            io.DisplaySize = new Vector2F(320, 320);
-            
-            Logger.Info($@"IMGUI VERSION {ImGui.GetVersion()}");
-            
-            io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset | ImGuiBackendFlags.PlatformHasViewports | ImGuiBackendFlags.HasGamepad | ImGuiBackendFlags.HasMouseHoveredViewport | ImGuiBackendFlags.HasMouseCursors;
+            io.DisplaySize = new Vector2F(platform.GetWindowWidth(), platform.GetWindowHeight());
 
+            Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
 
-            // Enable Keyboard Controls
-            io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
-            io.ConfigFlags |= ImGuiConfigFlags.NavEnableGamepad;
+            io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset
+                              | ImGuiBackendFlags.PlatformHasViewports
+                              | ImGuiBackendFlags.HasGamepad
+                              | ImGuiBackendFlags.HasMouseHoveredViewport
+                              | ImGuiBackendFlags.HasMouseCursors;
 
-            // CONFIG DOCKSPACE 
-            io.ConfigFlags |= ImGuiConfigFlags.DockingEnable;
-            io.ConfigFlags |= ImGuiConfigFlags.ViewportsEnable;
-            
+            io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard
+                              | ImGuiConfigFlags.NavEnableGamepad
+                              | ImGuiConfigFlags.DockingEnable
+                              | ImGuiConfigFlags.ViewportsEnable;
+
+            // Initialize optional ImGui extensions
             ImNodes.CreateContext();
             ImPlot.CreateContext();
-            ImGuizMo.SetImGuiContext(_context);
-            ImGui.SetCurrentContext(_context);
+            ImGuizMo.SetImGuiContext(imguiContext);
+            ImGui.SetCurrentContext(imguiContext);
 
-            // REBUILD ATLAS
+            // Load fonts and create font texture
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
-            
-            int fontSize = 14;
-            int fontSizeIcon = 18;
-            
-            MemoryStream fontFileSolid = AssetRegistry.GetResourceMemoryStreamByName("JetBrainsMono-Bold.ttf");
-            IntPtr fontData = Marshal.AllocHGlobal((int) fontFileSolid.Length);
-            byte[] fontDataBytes = new byte[fontFileSolid.Length];
-            fontFileSolid.ReadExactly(fontDataBytes, 0, (int) fontFileSolid.Length);
-            Marshal.Copy(fontDataBytes, 0, fontData, (int) fontFileSolid.Length);
-            ImFontPtr fontLoaded16Solid = fonts.AddFontFromMemoryTtf(fontData, fontSize, fontSize);
-            
-            try
-            {
-                ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
-                iconsConfig.MergeMode = true;
-                iconsConfig.SnapH = true;
-                iconsConfig.GlyphMinAdvanceX = 18;
 
+            // Primary font (JetBrainsMono)
+            const int fontSize = 14;
+            Stream jetBrainsStream = AssetRegistry.GetResourceMemoryStreamByName("JetBrainsMono-Bold.ttf");
+            Debug.Assert(jetBrainsStream != null && jetBrainsStream.Length > 0, "Primary font resource not found.");
+            IntPtr primaryFontPtr = LoadFontFromResource(jetBrainsStream, fontSize);
+            ImFontPtr fontLoaded = fonts.AddFontFromMemoryTtf(primaryFontPtr, fontSize, fontSize);
+
+            // Icon font (FontAwesome) - only if resource exists
+            const int iconFontSize = 18;
+            Stream faStream = AssetRegistry.GetResourceMemoryStreamByName(FontAwesome5.NameLight);
+            if (faStream != null && faStream.Length > 0)
+            {
+                IntPtr iconsPtr = LoadFontFromResource(faStream, iconFontSize);
+
+                // Prepare glyph ranges for FontAwesome
                 ushort[] iconRanges = new ushort[3];
                 iconRanges[0] = FontAwesome5.IconMin;
                 iconRanges[1] = FontAwesome5.IconMax;
                 iconRanges[2] = 0;
 
-                // Allocate GCHandle to pin IconRanges in memory
                 GCHandle iconRangesHandle = GCHandle.Alloc(iconRanges, GCHandleType.Pinned);
-
                 IntPtr rangePtr = iconRangesHandle.AddrOfPinnedObject();
 
+                ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
+                iconsConfig.MergeMode = true;
+                iconsConfig.SnapH = true;
+                iconsConfig.GlyphMinAdvanceX = 18;
 
-                MemoryStream fontAwesome = AssetRegistry.GetResourceMemoryStreamByName(FontAwesome5.NameLight);
-                IntPtr fontAwesomeData = Marshal.AllocHGlobal((int) fontAwesome.Length);
-                byte[] fontAwesomeDataBytes = new byte[fontAwesome.Length];
-                fontAwesome.ReadExactly(fontAwesomeDataBytes, 0, (int) fontAwesome.Length);
-                Marshal.Copy(fontAwesomeDataBytes, 0, fontAwesomeData, (int) fontAwesome.Length);
-                fonts.AddFontFromMemoryTtf(fontAwesomeData, fontSizeIcon, fontSizeIcon, iconsConfig, rangePtr);
+                fonts.AddFontFromMemoryTtf(iconsPtr, iconFontSize, iconFontSize, iconsConfig, rangePtr);
+
+                // Free the pinned ranges handle immediately; AddFontFromMemoryTtf typically copies the needed data.
+                iconRangesHandle.Free();
             }
-            catch (Exception e)
-            {
-                Logger.Exception(@$"ERROR, FONT ICONS NOT FOUND: {FontAwesome5.NameLight} {e.Message}");
-                return;
-            }
-            
-            fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int width, out int height, out int _);
-            uint _fontTextureId = LoadTexture(pixelData, width, height);
-            fonts.TexId = (IntPtr) _fontTextureId;
+
+            // Build font atlas and upload to GL
+            fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int texWidth, out int texHeight, out int _);
+            uint fontTexId = LoadTexture(pixelData, texWidth, texHeight);
+            fonts.TexId = (IntPtr)fontTexId;
             fonts.ClearTexData();
-            
-            ImGuiViewportPtr viewport = ImGui.GetMainViewport();
-            
-            ImGuiStyle Style = ImGui.GetStyle();
+
+            // Configure style
+            ImGuiStyle style = ImGui.GetStyle();
             ImGui.StyleColorsDark();
-            Style.WindowRounding = 0.0f;
-            Style.Colors2 = new Vector4F(0.00f, 0.00f, 0.00f, 1.00f);
-            
-            
-            uint _vboHandle = Gl.GenBuffer();
-            uint _elementsHandle = Gl.GenBuffer();
-            uint _vertexArrayObject = Gl.GenVertexArray();
-            
+            style.WindowRounding = 0.0f;
+            style.Colors2 = new Vector4F(0.00f, 0.00f, 0.00f, 1.00f);
+
+            // Main loop
             bool running = true;
             while (running)
             {
                 running = platform.PollEvents();
+
                 if (platform.TryGetLastKeyPressed(out ConsoleKey key))
                 {
-                    Logger.Info($"Tecla pulsada: {key}");
+                    Logger.Info($"Key pressed: {key}");
                 }
-                
+
                 example.Draw();
                 platform.SwapBuffers();
+
                 int glError = Gl.GlGetError();
                 if (glError != 0)
                 {
-                    Logger.Info($"OpenGL error tras flushBuffer: 0x{glError:X}");
+                    Logger.Info($"OpenGL error after SwapBuffers: 0x{glError:X}");
                 }
             }
 
+            // Cleanup
             example.Cleanup();
             platform.Cleanup();
         }
-        
-        
-        /// <summary>
-        ///     Loads the texture using the specified pixel data
-        /// </summary>
-        /// <param name="pixelData">The pixel data</param>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="format">The format</param>
-        /// <param name="internalFormat">The internal format</param>
-        /// <returns>The texture id</returns>
+
+        // Returns the appropriate platform implementation for the current OS.
+        private static INativePlatform GetPlatform()
+        {
+#if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
+            return new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
+#elif winx64 || winx86 || winarm64 || winarm || win
+            return new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
+#elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
+            return new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();
+#else
+            return null;
+#endif
+        }
+
+        // Initializes the native platform and OpenGL context. Returns true on success.
+        private static bool InitializePlatform(INativePlatform platform, int width, int height, string title)
+        {
+            if (platform == null) return false;
+            bool ok = platform.Initialize(width, height, title);
+            if (!ok)
+            {
+                Logger.Info("Failed to create native window / OpenGL context.");
+                return false;
+            }
+
+            return true;
+        }
+
+        // Loads a font from an input stream into unmanaged memory and returns the IntPtr to the data buffer.
+        // Note: The caller is responsible for memory lifetime if the native API expects it to remain valid.
+        private static IntPtr LoadFontFromResource(Stream stream, int size)
+        {
+            Debug.Assert(stream != null && stream.Length > 0, "Font stream must be valid.");
+
+            byte[] data = new byte[stream.Length];
+            stream.ReadExactly(data, 0, (int)stream.Length);
+            IntPtr nativePtr = Marshal.AllocHGlobal(data.Length);
+            Marshal.Copy(data, 0, nativePtr, data.Length);
+            return nativePtr;
+        }
+
+        // Loads the texture using the specified pixel data (RGBA8) and returns the GL texture id.
         private static uint LoadTexture(IntPtr pixelData, int width, int height, PixelFormat format = PixelFormat.Rgba, PixelInternalFormat internalFormat = PixelInternalFormat.Rgba)
         {
             uint textureId = Gl.GenTexture();
@@ -221,6 +236,5 @@ namespace Alis.Extension.Graphic.Ui.Sample
             return textureId;
         }
     }
-    
-    
 }
+

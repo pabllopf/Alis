@@ -29,45 +29,87 @@
 
 using System;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms;
-using Alis.Extension.Graphic.Ui;
+using Alis.Extension.Graphic.Ui.Extras.GuizMo;
+using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Extras.Plot;
 
 namespace Alis.Extension.Graphic.Ui.Sample.Examples
 {
+    /// <summary>
+    /// Simple ImGui example using the native platform and OpenGL.
+    /// The code is structured to avoid exception-heavy control flow and uses
+    /// Debug assertions / conditional checks instead of try/catch for validation.
+    /// </summary>
     public class ImguiSample : IExample
     {
+        /// <summary>
+        /// The platform
+        /// </summary>
         private readonly INativePlatform _platform;
+        /// <summary>
+        /// The context
+        /// </summary>
         private IntPtr _context;
 
+        /// <summary>
+        /// The font texture
+        /// </summary>
         private uint _fontTexture;
+        /// <summary>
+        /// The vao
+        /// </summary>
         private uint _vao;
+        /// <summary>
+        /// The vbo
+        /// </summary>
         private uint _vbo;
+        /// <summary>
+        /// The ebo
+        /// </summary>
         private uint _ebo;
+        /// <summary>
+        /// The shader program
+        /// </summary>
         private uint _shaderProgram;
 
+        /// <summary>
+        /// The show demo
+        /// </summary>
         private bool _showDemo = true;
+        /// <summary>
+        /// The counter
+        /// </summary>
         private int _counter;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImguiSample"/> class
+        /// </summary>
+        /// <param name="platform">The platform</param>
         public ImguiSample(INativePlatform platform)
         {
             _platform = platform;
         }
 
+        /// <summary>
+        /// Initialize GL resources and ImGui context. Uses assertions and guards
+        /// instead of exception handling for faster execution paths.
+        /// </summary>
         public void Initialize()
         {
-            // Ensure native context is current before creating GL resources
+            // Ensure the native GL context is current before creating GL resources.
+            Debug.Assert(_platform != null, "Platform must be provided before Initialize is called.");
             _platform?.MakeContextCurrent();
 
-            // Do not create ImGui context here if it was already created by the application entry point.
-            // Just ensure ImGui current context is set and IO is available.
+            // Create or reuse ImGui context
             IntPtr currentCtx = ImGui.GetCurrentContext();
             if (currentCtx == IntPtr.Zero)
             {
-                // Create context if not previously created by the host
                 _context = ImGui.CreateContext();
                 ImGui.SetCurrentContext(_context);
             }
@@ -78,42 +120,22 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             }
 
             var io = ImGui.GetIo();
-            if (io.NativePtr == IntPtr.Zero)
-            {
-                throw new InvalidOperationException("ImGui IO is null. Ensure ImGui.CreateContext() was called after an active OpenGL context is current.");
-            }
-            // Create ImGui context (uses local wrapper)
-            //            _context = ImGui.CreateContext();
-            //            ImGui.SetCurrentContext(_context);
-            //            var io = ImGui.GetIo();
-            //io already obtained above
+            Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO must be valid after creating or setting context.");
+
+            // Backend capabilities
             io.BackendFlags |= ImGuiBackendFlags.HasMouseCursors | ImGuiBackendFlags.HasSetMousePos;
             io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
             ImGui.StyleColorsDark();
 
-            // Build font atlas using safe API and upload to GL
+            // Build and upload font atlas to GL
             var fonts = io.Fonts;
-            // Preferred: get pointer to font pixels (avoids copying and GCHandle)
             fonts.GetTexDataAsRgba32(out IntPtr pixelPtr, out int widthPtr, out int heightPtr);
 
             if (pixelPtr != IntPtr.Zero && widthPtr > 0 && heightPtr > 0)
             {
-                if (_platform == null)
-                {
-                    Console.WriteLine("No hay plataforma asociada. No se puede subir la textura de fuentes.");
-                    return;
-                }
-
-                try
-                {
-                    _platform.MakeContextCurrent();
-                    Console.WriteLine("MakeContextCurrent() called before font upload (IntPtr path)");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error al activar el contexto OpenGL antes de subir la textura: {ex}");
-                    return;
-                }
+                Debug.Assert(_platform != null, "Platform required to upload font texture.");
+                // Ensure context is current (best-effort). MakeContextCurrent is void; assume host handles errors.
+                _platform.MakeContextCurrent();
 
                 _fontTexture = Gl.GenTexture();
                 Gl.GlBindTexture(TextureTarget.Texture2D, _fontTexture);
@@ -123,26 +145,16 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
                 Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Nearest);
                 Gl.GlPixelStorei(StoreParameter.UnpackAlignment, 1);
 
-                Console.WriteLine($"Uploading font texture (IntPtr): width={widthPtr}, height={heightPtr}, ptr=0x{pixelPtr.ToInt64():X}");
+                Logger.Info($"Uploading font texture: width={widthPtr}, height={heightPtr}, ptr=0x{pixelPtr.ToInt64():X}");
                 Gl.GlTexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, widthPtr, heightPtr, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixelPtr);
                 int errPtr = Gl.GlGetError();
                 if (errPtr != 0)
                 {
-                    Console.WriteLine($"GL error after TexImage2D (IntPtr): 0x{errPtr:X}");
+                    Logger.Info($"GL error after TexImage2D: 0x{errPtr:X}");
                 }
 
-                // Tell ImGui about our texture id (store as IntPtr)
+                // Inform ImGui about the texture id
                 fonts.SetTexId((IntPtr)_fontTexture);
-                // Free CPU side (cimgui provides ClearTexData)
-                try
-                {
-                    // Some bindings call this ClearTexData / ClearTexData
-                    fonts.ClearTexData();
-                }
-                catch (Exception)
-                {
-                    // Ignore if not implemented
-                }
             }
 
             // Create simple shader program
@@ -190,7 +202,7 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             Gl.GlDeleteShader(vert);
             Gl.GlDeleteShader(frag);
 
-            // Create VAO/VBO/EBO
+            // Create VAO/VBO/EBO and configure vertex attributes
             _vao = Gl.GenVertexArray();
             _vbo = Gl.GenBuffer();
             _ebo = Gl.GenBuffer();
@@ -199,7 +211,6 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, _vbo);
             Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, _ebo);
 
-            // ImDrawVert layout: pos(2 floats), uv(2 floats), col(uint) => stride
             int stride = Marshal.SizeOf<ImDrawVert>();
             Gl.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, stride, IntPtr.Zero);
             Gl.EnableVertexAttribArray(0);
@@ -212,65 +223,69 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             Gl.GlBindVertexArray(0);
         }
 
+        /// <summary>
+        /// Main per-frame draw. Updates ImGui IO from the platform and renders.
+        /// Avoids exception handling for common control flow.
+        /// </summary>
         public void Draw()
         {
             var io = ImGui.GetIo();
+
             // Update display size each frame (handles window resize)
             io.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(_platform.GetWindowWidth(), _platform.GetWindowHeight());
 
-            // Feed mouse state from platform
-            try
+            // Feed mouse state from platform using guarded checks (no try/catch)
+            if (_platform != null)
             {
                 _platform.GetMouseState(out int mx, out int my, out bool[] mButtons);
                 io.MousePos = new Alis.Core.Aspect.Math.Vector.Vector2F(mx, my);
-                // Build MouseDown list expected by ImGui wrapper
+
                 var mouseDownList = new System.Collections.Generic.List<bool>();
                 for (int i = 0; i < 5; i++) mouseDownList.Add(i < mButtons.Length ? mButtons[i] : false);
                 io.MouseDown = mouseDownList;
                 io.MouseWheel = _platform.GetMouseWheel();
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine($"Error reading mouse state from platform: {ex}");
+                // No platform: ensure sane defaults
+                io.MousePos = new Alis.Core.Aspect.Math.Vector.Vector2F(0, 0);
+                io.MouseDown = new System.Collections.Generic.List<bool> { false, false, false, false, false };
+                io.MouseWheel = 0.0f;
             }
 
             ImGui.NewFrame();
 
-            // Create a full-screen DockSpace so other windows can dock into it
-            try
+            // Only call DockSpaceOverViewport if docking is enabled in ImGui config flags
+            if ((io.ConfigFlags & ImGuiConfigFlags.DockingEnable) != 0)
             {
-                // Ensure docking is enabled in io.ConfigFlags
                 ImGui.DockSpaceOverViewport();
-            }
-            catch (Exception ex)
-            {
-                // If Docking isn't compiled in cimgui, ignore
-                Console.WriteLine($"DockSpaceOverViewport error (may be unsupported): {ex}");
             }
 
             if (_showDemo)
             {
                 ImGui.ShowDemoWindow(ref _showDemo);
             }
+            
+            ImPlot.ShowDemoWindow();
+            ImGuizMo.ShowDemoWindow();
+            ImNodes.ShowDemoWindow();
 
-            ImGui.Begin("Ejemplo Alis ImGui");
-            ImGui.Text($"Contador: {_counter}");
-            if (ImGui.Button("Incrementar")) _counter++;
+            ImGui.Begin("Alis ImGui Sample");
+            ImGui.Text($"Counter: {_counter}");
+            if (ImGui.Button("Increment")) _counter++;
             ImGui.End();
 
             ImGui.Render();
             var drawData = ImGui.GetDrawData();
             RenderDrawData(drawData);
 
-            // After rendering, reset mouse wheel in case platform returns an accumulated value
-            try
-            {
-                // If platform provides mutable mouse wheel, try to clear it via GetMouseState side-effect; otherwise ignore
-                // For MacNativePlatform we reset mouseWheel inside GetMouseWheel implementation.
-            }
-            catch { }
+            // No exception-handling here; platform may reset wheel internally if needed.
         }
 
+        /// <summary>
+        /// Renders the draw data using the specified draw data
+        /// </summary>
+        /// <param name="drawData">The draw data</param>
         private void RenderDrawData(ImDrawData drawData)
         {
             if (drawData.CmdListsCount == 0)
@@ -312,8 +327,6 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
                 int idxBufferSize = cmdList.IdxBuffer.Size * sizeof(ushort);
 
                 Gl.GlBindBuffer(BufferTarget.ArrayBuffer, _vbo);
-                // copy vertex data
-                // Marshal.Copy from unmanaged ptr to GC pinned buffer via GlBufferData expects IntPtr source
                 Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vtxBufferSize), cmdList.VtxBuffer.Data, BufferUsageHint.StreamDraw);
 
                 Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, _ebo);
@@ -325,7 +338,7 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
                     ImDrawCmd pcmd = cmdList.CmdBuffer[cmdi];
                     if (pcmd.UserCallback != IntPtr.Zero)
                     {
-                        // user callback (not handled)
+                        // User callbacks are not handled in this sample
                     }
                     else
                     {
@@ -355,6 +368,9 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             Gl.GlUseProgram(0);
         }
 
+        /// <summary>
+        /// Cleanups this instance
+        /// </summary>
         public void Cleanup()
         {
             if (_vbo != 0) Gl.DeleteBuffer(_vbo);
@@ -364,10 +380,12 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             if (_fontTexture != 0) Gl.DeleteTexture(_fontTexture);
 
             ImGui.SetCurrentContext(new IntPtr());
-            // No DestroyContext wrapper; if exists use ImGui.DestroyContext
         }
 
-        // Parameterless constructor: provided to avoid mismatches in some build contexts.
+        // Parameterless constructor to allow alternate build contexts
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImguiSample"/> class
+        /// </summary>
         public ImguiSample()
         {
             _platform = null;
