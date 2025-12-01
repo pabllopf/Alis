@@ -970,6 +970,18 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// Obtiene delta de rueda (no acumulado aquí)
         /// </summary>
         public float GetMouseWheel() => 0.0f;
+
+        /// <summary>
+        /// Trys the get last input characters
+        /// </summary>
+        /// <param name="chars">The chars</param>
+        /// <returns>The bool</returns>
+        public bool TryGetLastInputCharacters(out string chars)
+        {
+            // Por ahora no hay implementación de entrada de texto compuesta en X11 en este archivo.
+            chars = null;
+            return false;
+        }
     }
 }
 

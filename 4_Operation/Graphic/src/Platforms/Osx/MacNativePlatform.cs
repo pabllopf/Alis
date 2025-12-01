@@ -69,6 +69,8 @@ namespace Alis.Core.Graphic.Platforms.Osx
         private bool[] mouseButtons = new bool[5];
         private float mouseWheel = 0.0f;
 
+        private string inputCharBuffer = null;
+
         /// <summary>
         /// </summary>
         /// <param name="w"></param>

@@ -165,8 +165,14 @@ namespace Alis.Extension.Graphic.Ui.Sample
             {
                 running = _platform.PollEvents();
 
+                // Process key states for ImGui every frame (send down/up)
                 ProcessKeyWithImgui();
-                
+
+                // If platform provides text input (characters), forward them to ImGui
+                if (_platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
+                {
+                    ImGui.GetIo().AddInputCharactersUtf8(pendingChars);
+                }
 
                 example.Draw();
                 _platform.SwapBuffers();
@@ -186,7 +192,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
         private static void ProcessKeyWithImgui()
         {
             var io = ImGui.GetIo();
-
+            
             // Control y edición
             if (_platform.IsKeyDown(ConsoleKey.Backspace)) io.AddKeyEvent(ImGuiKey.Backspace, true); else io.AddKeyEvent(ImGuiKey.Backspace, false);
             if (_platform.IsKeyDown(ConsoleKey.Tab)) io.AddKeyEvent(ImGuiKey.Tab, true); else io.AddKeyEvent(ImGuiKey.Tab, false);
