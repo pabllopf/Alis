@@ -42,6 +42,7 @@ using Alis.Extension.Graphic.Ui.Extras.Node;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
 using Alis.Extension.Graphic.Ui.Fonts;
 using Alis.Extension.Graphic.Ui.Sample.Examples;
+using System.Threading;
 
 namespace Alis.Extension.Graphic.Ui.Sample
 {
@@ -58,6 +59,11 @@ namespace Alis.Extension.Graphic.Ui.Sample
         /// </summary>
         public static void Main(string[] args)
         {
+            // Frame limiter: 60 FPS target
+            const double targetFrameTime = 1.0 / 60.0;
+            var frameTimer = Stopwatch.StartNew();
+            double lastTime = frameTimer.Elapsed.TotalSeconds;
+
             _platform = GetPlatform();
             Debug.Assert(_platform != null, "Platform implementation must be provided for the current OS.");
 
@@ -163,6 +169,14 @@ namespace Alis.Extension.Graphic.Ui.Sample
             bool running = true;
             while (running)
             {
+                // Update delta time for ImGui using high-resolution timer
+                double now = frameTimer.Elapsed.TotalSeconds;
+                double delta = now - lastTime;
+                lastTime = now;
+                if (delta <= 0.0) delta = targetFrameTime;
+                if (delta > 0.25) delta = 0.25; // avoid huge dt values
+                io.DeltaTime = (float)delta;
+
                 running = _platform.PollEvents();
 
                 // Process key states for ImGui every frame (send down/up)
@@ -181,6 +195,25 @@ namespace Alis.Extension.Graphic.Ui.Sample
                 if (glError != 0)
                 {
                     Logger.Info($"OpenGL error after SwapBuffers: 0x{glError:X}");
+                }
+
+                // Frame pacing: sleep / spin until target frame time reached
+                double frameEnd = frameTimer.Elapsed.TotalSeconds;
+                double frameElapsed = frameEnd - now;
+                double sleepTime = targetFrameTime - frameElapsed;
+                if (sleepTime > 0.0)
+                {
+                    int sleepMs = (int)(sleepTime * 1000.0);
+                    if (sleepMs > 0)
+                    {
+                        // Sleep most of the remaining time (leave small margin for precision)
+                        Thread.Sleep(sleepMs);
+                    }
+                    // Busy-wait the rest for better precision
+                    while (frameTimer.Elapsed.TotalSeconds - now < targetFrameTime)
+                    {
+                        Thread.SpinWait(10);
+                    }
                 }
             }
 
@@ -329,8 +362,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
 
         // Loads a font from an input stream into unmanaged memory and returns the IntPtr to the data buffer.
         // Note: The caller is responsible for memory lifetime if the native API expects it to remain valid.
-        private static IntPtr LoadFontFromResource(Stream stream)
-        {
+        private static IntPtr LoadFontFromResource(Stream stream) {
             Debug.Assert(stream != null && stream.Length > 0, "Font stream must be valid.");
 
             byte[] data = new byte[stream.Length];
