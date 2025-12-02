@@ -321,7 +321,7 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             
             ImPlot.ShowDemoWindow();
             ImGuizMo.ShowDemoWindow();
-            //ImNodes.ShowDemoWindow();
+            ImNodes.ShowDemoWindow();
 
             ImGui.Begin("Alis ImGui Sample");
             ImGui.Text($"Counter: {_counter}");
