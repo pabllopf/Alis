@@ -86,7 +86,13 @@ namespace Alis.App.Hub
         /// The shader program
         /// </summary>
         private uint _shaderProgram;
-        
+
+        // State to handle mouse click/double-click detection
+        private readonly bool[] _prevMouseDown = new bool[5];
+        private readonly double[] _lastClickTime = new double[5];
+        private readonly Alis.Core.Aspect.Math.Vector.Vector2F[] _lastClickPos = new Alis.Core.Aspect.Math.Vector.Vector2F[5];
+
+
         /// <summary>
         /// Application entry point.
         /// </summary>
@@ -263,10 +269,7 @@ namespace Alis.App.Hub
             {
                 _spaceWork.IsRunning = platform.PollEvents();
 
-                if (platform.TryGetLastKeyPressed(out ConsoleKey key))
-                {
-                    Logger.Info($"Key pressed: {key}");
-                }
+                ProcessKeyWithImgui();
 
                 Draw();
                 
@@ -290,6 +293,117 @@ namespace Alis.App.Hub
             
             platform.Cleanup();
         }
+        
+          private void ProcessKeyWithImgui()
+        {
+            var io = ImGui.GetIo();
+
+            // Control y edición
+            if (platform.IsKeyDown(ConsoleKey.Backspace)) io.AddKeyEvent(ImGuiKey.Backspace, true); else io.AddKeyEvent(ImGuiKey.Backspace, false);
+            if (platform.IsKeyDown(ConsoleKey.Tab)) io.AddKeyEvent(ImGuiKey.Tab, true); else io.AddKeyEvent(ImGuiKey.Tab, false);
+            if (platform.IsKeyDown(ConsoleKey.Enter)) io.AddKeyEvent(ImGuiKey.Enter, true); else io.AddKeyEvent(ImGuiKey.Enter, false);
+            if (platform.IsKeyDown(ConsoleKey.Pause)) io.AddKeyEvent(ImGuiKey.Pause, true); else io.AddKeyEvent(ImGuiKey.Pause, false);
+            if (platform.IsKeyDown(ConsoleKey.PrintScreen)) io.AddKeyEvent(ImGuiKey.PrintScreen, true); else io.AddKeyEvent(ImGuiKey.PrintScreen, false);
+            if (platform.IsKeyDown(ConsoleKey.Escape)) io.AddKeyEvent(ImGuiKey.Escape, true); else io.AddKeyEvent(ImGuiKey.Escape, false);
+            if (platform.IsKeyDown(ConsoleKey.Spacebar)) io.AddKeyEvent(ImGuiKey.Space, true); else io.AddKeyEvent(ImGuiKey.Space, false);
+            if (platform.IsKeyDown(ConsoleKey.PageUp)) io.AddKeyEvent(ImGuiKey.PageUp, true); else io.AddKeyEvent(ImGuiKey.PageUp, false);
+            if (platform.IsKeyDown(ConsoleKey.PageDown)) io.AddKeyEvent(ImGuiKey.PageDown, true); else io.AddKeyEvent(ImGuiKey.PageDown, false);
+            if (platform.IsKeyDown(ConsoleKey.End)) io.AddKeyEvent(ImGuiKey.End, true); else io.AddKeyEvent(ImGuiKey.End, false);
+            if (platform.IsKeyDown(ConsoleKey.Home)) io.AddKeyEvent(ImGuiKey.Home, true); else io.AddKeyEvent(ImGuiKey.Home, false);
+            if (platform.IsKeyDown(ConsoleKey.Insert)) io.AddKeyEvent(ImGuiKey.Insert, true); else io.AddKeyEvent(ImGuiKey.Insert, false);
+            if (platform.IsKeyDown(ConsoleKey.Delete)) io.AddKeyEvent(ImGuiKey.Delete, true); else io.AddKeyEvent(ImGuiKey.Delete, false);
+
+            // Flechas
+            if (platform.IsKeyDown(ConsoleKey.LeftArrow)) io.AddKeyEvent(ImGuiKey.LeftArrow, true); else io.AddKeyEvent(ImGuiKey.LeftArrow, false);
+            if (platform.IsKeyDown(ConsoleKey.UpArrow)) io.AddKeyEvent(ImGuiKey.UpArrow, true); else io.AddKeyEvent(ImGuiKey.UpArrow, false);
+            if (platform.IsKeyDown(ConsoleKey.RightArrow)) io.AddKeyEvent(ImGuiKey.RightArrow, true); else io.AddKeyEvent(ImGuiKey.RightArrow, false);
+            if (platform.IsKeyDown(ConsoleKey.DownArrow)) io.AddKeyEvent(ImGuiKey.DownArrow, true); else io.AddKeyEvent(ImGuiKey.DownArrow, false);
+
+            // Números fila superior
+            if (platform.IsKeyDown(ConsoleKey.D0)) io.AddKeyEvent(ImGuiKey._0, true); else io.AddKeyEvent(ImGuiKey._0, false);
+            if (platform.IsKeyDown(ConsoleKey.D1)) io.AddKeyEvent(ImGuiKey._1, true); else io.AddKeyEvent(ImGuiKey._1, false);
+            if (platform.IsKeyDown(ConsoleKey.D2)) io.AddKeyEvent(ImGuiKey._2, true); else io.AddKeyEvent(ImGuiKey._2, false);
+            if (platform.IsKeyDown(ConsoleKey.D3)) io.AddKeyEvent(ImGuiKey._3, true); else io.AddKeyEvent(ImGuiKey._3, false);
+            if (platform.IsKeyDown(ConsoleKey.D4)) io.AddKeyEvent(ImGuiKey._4, true); else io.AddKeyEvent(ImGuiKey._4, false);
+            if (platform.IsKeyDown(ConsoleKey.D5)) io.AddKeyEvent(ImGuiKey._5, true); else io.AddKeyEvent(ImGuiKey._5, false);
+            if (platform.IsKeyDown(ConsoleKey.D6)) io.AddKeyEvent(ImGuiKey._6, true); else io.AddKeyEvent(ImGuiKey._6, false);
+            if (platform.IsKeyDown(ConsoleKey.D7)) io.AddKeyEvent(ImGuiKey._7, true); else io.AddKeyEvent(ImGuiKey._7, false);
+            if (platform.IsKeyDown(ConsoleKey.D8)) io.AddKeyEvent(ImGuiKey._8, true); else io.AddKeyEvent(ImGuiKey._8, false);
+            if (platform.IsKeyDown(ConsoleKey.D9)) io.AddKeyEvent(ImGuiKey._9, true); else io.AddKeyEvent(ImGuiKey._9, false);
+
+            // Letras A-Z
+            if (platform.IsKeyDown(ConsoleKey.A)) io.AddKeyEvent(ImGuiKey.A, true); else io.AddKeyEvent(ImGuiKey.A, false);
+            if (platform.IsKeyDown(ConsoleKey.B)) io.AddKeyEvent(ImGuiKey.B, true); else io.AddKeyEvent(ImGuiKey.B, false);
+            if (platform.IsKeyDown(ConsoleKey.C)) io.AddKeyEvent(ImGuiKey.C, true); else io.AddKeyEvent(ImGuiKey.C, false);
+            if (platform.IsKeyDown(ConsoleKey.D)) io.AddKeyEvent(ImGuiKey.D, true); else io.AddKeyEvent(ImGuiKey.D, false);
+            if (platform.IsKeyDown(ConsoleKey.E)) io.AddKeyEvent(ImGuiKey.E, true); else io.AddKeyEvent(ImGuiKey.E, false);
+            if (platform.IsKeyDown(ConsoleKey.F)) io.AddKeyEvent(ImGuiKey.F, true); else io.AddKeyEvent(ImGuiKey.F, false);
+            if (platform.IsKeyDown(ConsoleKey.G)) io.AddKeyEvent(ImGuiKey.G, true); else io.AddKeyEvent(ImGuiKey.G, false);
+            if (platform.IsKeyDown(ConsoleKey.H)) io.AddKeyEvent(ImGuiKey.H, true); else io.AddKeyEvent(ImGuiKey.H, false);
+            if (platform.IsKeyDown(ConsoleKey.I)) io.AddKeyEvent(ImGuiKey.I, true); else io.AddKeyEvent(ImGuiKey.I, false);
+            if (platform.IsKeyDown(ConsoleKey.J)) io.AddKeyEvent(ImGuiKey.J, true); else io.AddKeyEvent(ImGuiKey.J, false);
+            if (platform.IsKeyDown(ConsoleKey.K)) io.AddKeyEvent(ImGuiKey.K, true); else io.AddKeyEvent(ImGuiKey.K, false);
+            if (platform.IsKeyDown(ConsoleKey.L)) io.AddKeyEvent(ImGuiKey.L, true); else io.AddKeyEvent(ImGuiKey.L, false);
+            if (platform.IsKeyDown(ConsoleKey.M)) io.AddKeyEvent(ImGuiKey.M, true); else io.AddKeyEvent(ImGuiKey.M, false);
+            if (platform.IsKeyDown(ConsoleKey.N)) io.AddKeyEvent(ImGuiKey.N, true); else io.AddKeyEvent(ImGuiKey.N, false);
+            if (platform.IsKeyDown(ConsoleKey.O)) io.AddKeyEvent(ImGuiKey.O, true); else io.AddKeyEvent(ImGuiKey.O, false);
+            if (platform.IsKeyDown(ConsoleKey.P)) io.AddKeyEvent(ImGuiKey.P, true); else io.AddKeyEvent(ImGuiKey.P, false);
+            if (platform.IsKeyDown(ConsoleKey.Q)) io.AddKeyEvent(ImGuiKey.Q, true); else io.AddKeyEvent(ImGuiKey.Q, false);
+            if (platform.IsKeyDown(ConsoleKey.R)) io.AddKeyEvent(ImGuiKey.R, true); else io.AddKeyEvent(ImGuiKey.R, false);
+            if (platform.IsKeyDown(ConsoleKey.S)) io.AddKeyEvent(ImGuiKey.S, true); else io.AddKeyEvent(ImGuiKey.S, false);
+            if (platform.IsKeyDown(ConsoleKey.T)) io.AddKeyEvent(ImGuiKey.T, true); else io.AddKeyEvent(ImGuiKey.T, false);
+            if (platform.IsKeyDown(ConsoleKey.U)) io.AddKeyEvent(ImGuiKey.U, true); else io.AddKeyEvent(ImGuiKey.U, false);
+            if (platform.IsKeyDown(ConsoleKey.V)) io.AddKeyEvent(ImGuiKey.V, true); else io.AddKeyEvent(ImGuiKey.V, false);
+            if (platform.IsKeyDown(ConsoleKey.W)) io.AddKeyEvent(ImGuiKey.W, true); else io.AddKeyEvent(ImGuiKey.W, false);
+            if (platform.IsKeyDown(ConsoleKey.X)) io.AddKeyEvent(ImGuiKey.X, true); else io.AddKeyEvent(ImGuiKey.X, false);
+            if (platform.IsKeyDown(ConsoleKey.Y)) io.AddKeyEvent(ImGuiKey.Y, true); else io.AddKeyEvent(ImGuiKey.Y, false);
+            if (platform.IsKeyDown(ConsoleKey.Z)) io.AddKeyEvent(ImGuiKey.Z, true); else io.AddKeyEvent(ImGuiKey.Z, false);
+
+            // Teclas de función
+            if (platform.IsKeyDown(ConsoleKey.F1)) io.AddKeyEvent(ImGuiKey.F1, true); else io.AddKeyEvent(ImGuiKey.F1, false);
+            if (platform.IsKeyDown(ConsoleKey.F2)) io.AddKeyEvent(ImGuiKey.F2, true); else io.AddKeyEvent(ImGuiKey.F2, false);
+            if (platform.IsKeyDown(ConsoleKey.F3)) io.AddKeyEvent(ImGuiKey.F3, true); else io.AddKeyEvent(ImGuiKey.F3, false);
+            if (platform.IsKeyDown(ConsoleKey.F4)) io.AddKeyEvent(ImGuiKey.F4, true); else io.AddKeyEvent(ImGuiKey.F4, false);
+            if (platform.IsKeyDown(ConsoleKey.F5)) io.AddKeyEvent(ImGuiKey.F5, true); else io.AddKeyEvent(ImGuiKey.F5, false);
+            if (platform.IsKeyDown(ConsoleKey.F6)) io.AddKeyEvent(ImGuiKey.F6, true); else io.AddKeyEvent(ImGuiKey.F6, false);
+            if (platform.IsKeyDown(ConsoleKey.F7)) io.AddKeyEvent(ImGuiKey.F7, true); else io.AddKeyEvent(ImGuiKey.F7, false);
+            if (platform.IsKeyDown(ConsoleKey.F8)) io.AddKeyEvent(ImGuiKey.F8, true); else io.AddKeyEvent(ImGuiKey.F8, false);
+            if (platform.IsKeyDown(ConsoleKey.F9)) io.AddKeyEvent(ImGuiKey.F9, true); else io.AddKeyEvent(ImGuiKey.F9, false);
+            if (platform.IsKeyDown(ConsoleKey.F10)) io.AddKeyEvent(ImGuiKey.F10, true); else io.AddKeyEvent(ImGuiKey.F10, false);
+            if (platform.IsKeyDown(ConsoleKey.F11)) io.AddKeyEvent(ImGuiKey.F11, true); else io.AddKeyEvent(ImGuiKey.F11, false);
+            if (platform.IsKeyDown(ConsoleKey.F12)) io.AddKeyEvent(ImGuiKey.F12, true); else io.AddKeyEvent(ImGuiKey.F12, false);
+
+            // Teclado numérico
+            if (platform.IsKeyDown(ConsoleKey.NumPad0)) io.AddKeyEvent(ImGuiKey.Keypad0, true); else io.AddKeyEvent(ImGuiKey.Keypad0, false);
+            if (platform.IsKeyDown(ConsoleKey.NumPad1)) io.AddKeyEvent(ImGuiKey.Keypad1, true); else io.AddKeyEvent(ImGuiKey.Keypad1, false);
+            if (platform.IsKeyDown(ConsoleKey.NumPad2)) io.AddKeyEvent(ImGuiKey.Keypad2, true); else io.AddKeyEvent(ImGuiKey.Keypad2, false);
+            if (platform.IsKeyDown(ConsoleKey.NumPad3)) io.AddKeyEvent(ImGuiKey.Keypad3, true); else io.AddKeyEvent(ImGuiKey.Keypad3, false);
+            if (platform.IsKeyDown(ConsoleKey.NumPad4)) io.AddKeyEvent(ImGuiKey.Keypad4, true); else io.AddKeyEvent(ImGuiKey.Keypad4, false);
+            if (platform.IsKeyDown(ConsoleKey.NumPad5)) io.AddKeyEvent(ImGuiKey.Keypad5, true); else io.AddKeyEvent(ImGuiKey.Keypad5, false);
+            if (platform.IsKeyDown(ConsoleKey.NumPad6)) io.AddKeyEvent(ImGuiKey.Keypad6, true); else io.AddKeyEvent(ImGuiKey.Keypad6, false);
+            if (platform.IsKeyDown(ConsoleKey.NumPad7)) io.AddKeyEvent(ImGuiKey.Keypad7, true); else io.AddKeyEvent(ImGuiKey.Keypad7, false);
+            if (platform.IsKeyDown(ConsoleKey.NumPad8)) io.AddKeyEvent(ImGuiKey.Keypad8, true); else io.AddKeyEvent(ImGuiKey.Keypad8, false);
+            if (platform.IsKeyDown(ConsoleKey.NumPad9)) io.AddKeyEvent(ImGuiKey.Keypad9, true); else io.AddKeyEvent(ImGuiKey.Keypad9, false);
+            if (platform.IsKeyDown(ConsoleKey.Multiply)) io.AddKeyEvent(ImGuiKey.KeypadMultiply, true); else io.AddKeyEvent(ImGuiKey.KeypadMultiply, false);
+            if (platform.IsKeyDown(ConsoleKey.Add)) io.AddKeyEvent(ImGuiKey.KeypadAdd, true); else io.AddKeyEvent(ImGuiKey.KeypadAdd, false);
+            if (platform.IsKeyDown(ConsoleKey.Subtract)) io.AddKeyEvent(ImGuiKey.KeypadSubtract, true); else io.AddKeyEvent(ImGuiKey.KeypadSubtract, false);
+            if (platform.IsKeyDown(ConsoleKey.Decimal)) io.AddKeyEvent(ImGuiKey.KeypadDecimal, true); else io.AddKeyEvent(ImGuiKey.KeypadDecimal, false);
+            if (platform.IsKeyDown(ConsoleKey.Divide)) io.AddKeyEvent(ImGuiKey.KeypadDivide, true); else io.AddKeyEvent(ImGuiKey.KeypadDivide, false);
+
+            // Puntuación / OEM
+            if (platform.IsKeyDown(ConsoleKey.Oem1)) io.AddKeyEvent(ImGuiKey.Semicolon, true); else io.AddKeyEvent(ImGuiKey.Semicolon, false);
+            if (platform.IsKeyDown(ConsoleKey.Oem2)) io.AddKeyEvent(ImGuiKey.Slash, true); else io.AddKeyEvent(ImGuiKey.Slash, false);
+            if (platform.IsKeyDown(ConsoleKey.Oem3)) io.AddKeyEvent(ImGuiKey.GraveAccent, true); else io.AddKeyEvent(ImGuiKey.GraveAccent, false);
+            if (platform.IsKeyDown(ConsoleKey.Oem4)) io.AddKeyEvent(ImGuiKey.LeftBracket, true); else io.AddKeyEvent(ImGuiKey.LeftBracket, false);
+            if (platform.IsKeyDown(ConsoleKey.Oem5)) io.AddKeyEvent(ImGuiKey.Backslash, true); else io.AddKeyEvent(ImGuiKey.Backslash, false);
+            if (platform.IsKeyDown(ConsoleKey.Oem6)) io.AddKeyEvent(ImGuiKey.RightBracket, true); else io.AddKeyEvent(ImGuiKey.RightBracket, false);
+            if (platform.IsKeyDown(ConsoleKey.Oem7)) io.AddKeyEvent(ImGuiKey.Apostrophe, true); else io.AddKeyEvent(ImGuiKey.Apostrophe, false);
+            if (platform.IsKeyDown(ConsoleKey.OemComma)) io.AddKeyEvent(ImGuiKey.Comma, true); else io.AddKeyEvent(ImGuiKey.Comma, false);
+            if (platform.IsKeyDown(ConsoleKey.OemMinus)) io.AddKeyEvent(ImGuiKey.Minus, true); else io.AddKeyEvent(ImGuiKey.Minus, false);
+            if (platform.IsKeyDown(ConsoleKey.OemPeriod)) io.AddKeyEvent(ImGuiKey.Period, true); else io.AddKeyEvent(ImGuiKey.Period, false);
+            if (platform.IsKeyDown(ConsoleKey.OemPlus)) io.AddKeyEvent(ImGuiKey.Equal, true); else io.AddKeyEvent(ImGuiKey.Equal, false);
+        }
+
 
         /// <summary>
         ///     Loads the fonts
@@ -771,7 +885,48 @@ namespace Alis.App.Hub
 
                 var mouseDownList = new System.Collections.Generic.List<bool>();
                 for (int i = 0; i < 5; i++) mouseDownList.Add(i < mButtons.Length ? mButtons[i] : false);
+                // Compute click/double-click info like ImGui backends expect
+                var mouseClicked = new System.Collections.Generic.List<bool> { false, false, false, false, false };
+                var mouseDoubleClicked = new System.Collections.Generic.List<bool> { false, false, false, false, false };
+                var mouseClickedTime = new System.Collections.Generic.List<double> { 0, 0, 0, 0, 0 };
+                var mouseClickedCount = new System.Collections.Generic.List<ushort> { 0, 0, 0, 0, 0 };
+
+                double now = (double)System.Diagnostics.Stopwatch.GetTimestamp() / System.Diagnostics.Stopwatch.Frequency;
+                for (int i = 0; i < 5; i++)
+                {
+                    bool down = i < mButtons.Length ? mButtons[i] : false;
+                    bool prev = _prevMouseDown[i];
+
+                    // On press (was up, now down) -> register click
+                    if (down && !prev)
+                    {
+                        mouseClicked[i] = true;
+                        mouseClickedTime[i] = now;
+                        mouseClickedCount[i] = (ushort)(mouseClickedCount[i] + 1);
+
+                        double dt = now - _lastClickTime[i];
+                        float maxDist = _spaceWork.io.MouseDoubleClickMaxDist;
+                        float dx = _spaceWork.io.MousePos.X - _lastClickPos[i].X;
+                        float dy = _spaceWork.io.MousePos.Y - _lastClickPos[i].Y;
+                        float dist2 = dx * dx + dy * dy;
+                        if (dt <= _spaceWork.io.MouseDoubleClickTime && dist2 <= (maxDist * maxDist))
+                        {
+                            mouseDoubleClicked[i] = true;
+                            mouseClickedCount[i] = 2;
+                        }
+
+                        _lastClickTime[i] = now;
+                        _lastClickPos[i] = _spaceWork.io.MousePos;
+                    }
+
+                    _prevMouseDown[i] = down;
+                }
+
                 _spaceWork.io.MouseDown = mouseDownList;
+                _spaceWork.io.MouseClicked = mouseClicked;
+                _spaceWork.io.MouseClickedTime = mouseClickedTime;
+                _spaceWork.io.MouseClickedCount = mouseClickedCount;
+                _spaceWork.io.MouseDoubleClicked = mouseDoubleClicked;
                 _spaceWork.io.MouseWheel = platform.GetMouseWheel();
             }
             else
