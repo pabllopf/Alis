@@ -158,5 +158,13 @@ namespace Alis.Core.Graphic.Platforms
         /// </summary>
         /// <returns>float wheel</returns>
         float GetMouseWheel();
+
+        /// <summary>
+        ///     Devuelve la última cadena de caracteres de entrada (por ejemplo texto) acumulada por el backend de la plataforma.
+        ///     Esto permite transportar caracteres imprimibles (WM_CHAR / X11 KeySym) hacia ImGui.
+        /// </summary>
+        /// <param name="chars">La cadena de caracteres entrantes (puede contener varios caracteres)</param>
+        /// <returns>true si había caracteres pendientes, false si no</returns>
+        bool TryGetLastInputCharacters(out string chars);
     }
 }

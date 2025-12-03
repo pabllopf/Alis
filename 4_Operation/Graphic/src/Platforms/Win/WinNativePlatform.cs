@@ -106,6 +106,8 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// </summary>
         private IntPtr wndProcPtr;
 
+        private string inputCharBuffer = null;
+
 
         // ------------------------------------------------------------------
         // PUBLIC METHODS
@@ -781,6 +783,15 @@ namespace Alis.Core.Graphic.Platforms.Win
                     lastKeyPressed = null;
                     pressedKeys.Remove((ConsoleKey) wParam.ToInt32());
                     break;
+                case (WindowMessage)0x0102: // WM_CHAR
+                    // wParam contiene el caracter Unicode (WPARAM is UINT)
+                    char c = (char) wParam.ToInt32();
+                    if (!char.IsControl(c))
+                    {
+                        if (inputCharBuffer == null) inputCharBuffer = string.Empty;
+                        inputCharBuffer += c;
+                    }
+                    break;
                 case WindowMessage.Size:
                     width = lParam.ToInt32() & 0xFFFF;
                     height = (lParam.ToInt32() >> 16) & 0xFFFF;
@@ -833,8 +844,23 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
         private delegate IntPtr WglCreateContextAttribsARB(IntPtr hdc, IntPtr hShareContext, int[] attribs);
+
+        /// <summary>
+        ///     Tries to get the last input characters.
+        /// </summary>
+        public bool TryGetLastInputCharacters(out string chars)
+        {
+            if (!string.IsNullOrEmpty(inputCharBuffer))
+            {
+                chars = inputCharBuffer;
+                inputCharBuffer = null;
+                return true;
+            }
+
+            chars = null;
+            return false;
+        }
     }
 }
 
 #endif
-
