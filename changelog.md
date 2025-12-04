@@ -5,6 +5,51 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.8.6] - 2025-12-06
+### :sparkles: New Features
+- [`ba135fd`](https://github.com/pabllopf/Alis/commit/ba135fd94ce386ae8c9a3248a6cf305d2987cc4a) - Add release info models and update version fetching *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ba3d96c`](https://github.com/pabllopf/Alis/commit/ba3d96cf14238e606de9c85d91fc224bc0e16f29) - Add Engine and Installer projects with config and optimizations *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7759b0b`](https://github.com/pabllopf/Alis/commit/7759b0b4e7a72c70460e81b97cf5dff28ba6fa10) - Add ImGui dock builder API and default layout setup *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4d7e3b3`](https://github.com/pabllopf/Alis/commit/4d7e3b3068b8f93ce1abe0c32833f1a5f89b3400) - Refactor ImGui docking API usage and window naming *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`47c7c16`](https://github.com/pabllopf/Alis/commit/47c7c16d51db2e006b9fdcccc9463d83049cbec5) - enable and integrate all main windows in dock layout *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fc228c6`](https://github.com/pabllopf/Alis/commit/fc228c68681784d6845f547c514368d4866f7295) - Add sidebars and improve resource loading *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cfef587`](https://github.com/pabllopf/Alis/commit/cfef5878663f72be6ee6aef00c8ee24bd0ab7139) - Update UI styles and add ImGui dock node flags *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`27002e3`](https://github.com/pabllopf/Alis/commit/27002e38dcd19031c01e84c857609edc842819ad) - Add IExample interface and ImguiSample implementation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`52a3d06`](https://github.com/pabllopf/Alis/commit/52a3d0633d9931a15d9f8cbffd0a64b6ba56368d) - Refactor ImguiSample to require INativePlatform *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`35a960a`](https://github.com/pabllopf/Alis/commit/35a960a611e1ab2f6a6340322b01d94596a1cedc) - Refactor font texture upload to use IntPtr API *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`218eca2`](https://github.com/pabllopf/Alis/commit/218eca284cf087bcab5b7038494d0644315b16e5) - Remove unused controllers and shaders from Hub *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5abfb7a`](https://github.com/pabllopf/Alis/commit/5abfb7ac5788a0bb061c313ca719b5ab5158f27d) - Add mouse click/double-click and key event handling *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4198773`](https://github.com/pabllopf/Alis/commit/4198773abad6ac3e2f2449be7f3993e3f989d5b3) - Add frame limiter and pacing to sample app *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b9bc13f`](https://github.com/pabllopf/Alis/commit/b9bc13fd6cd0879dcdfd379d89a0cd432924042b) - Refactor asset handling and improve OpenGL buffer usage *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`fe1419b`](https://github.com/pabllopf/Alis/commit/fe1419be452b65f3fb8e0d535dfed98d1e861133) - Remove Info.plist from Installer assets *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`357a140`](https://github.com/pabllopf/Alis/commit/357a140bc0b4c11603cbdf155e628e41208a58c1) - Refactor resource access and add missing braces *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b6e3372`](https://github.com/pabllopf/Alis/commit/b6e3372d54111b7aa24a34e6dbe5e5064459ee5b) - Refactor Sprite rendering to use shared GL resources *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a7f55fe`](https://github.com/pabllopf/Alis/commit/a7f55fecb6b5dc06eb651c091dc7059937578407) - Update resource loading to use 'app.bmp' instead of 'assets.pack' *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ce36310`](https://github.com/pabllopf/Alis/commit/ce363103bcb94a89c2cbdd98059915ef3cc1a8b9) - Refactor project references and add XML docs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`75848aa`](https://github.com/pabllopf/Alis/commit/75848aa6f7cb19e2d57f8eb0b72859eb3adaf9c5) - Refactor project versions and update main method signature *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d407499`](https://github.com/pabllopf/Alis/commit/d407499cad3ab3f75448bfaeaa5d1163ddd35941) - platform class references and update ImGuiP8 window calls *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`881270a`](https://github.com/pabllopf/Alis/commit/881270a5911fad12ea33097842dbce80fd7af2ce) - Refactor dock layout initialization and improve layout logic *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`17eec5d`](https://github.com/pabllopf/Alis/commit/17eec5dd6561c807502a587d6f66d39157ad1470) - Refactor default layout to split left and right columns *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a51ebf4`](https://github.com/pabllopf/Alis/commit/a51ebf40387d3bbc32116033a9d2319be94b2056) - Refactor dock layout and window rendering logic *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c9ae393`](https://github.com/pabllopf/Alis/commit/c9ae393607507f0c0404d0dac50bc77b2c507907) - Wrap ImGui.Begin calls with conditional blocks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9ac45c2`](https://github.com/pabllopf/Alis/commit/9ac45c231f9a4d7fc37902b42f8572739c9c7749) - Remove FontAwesome5 and update font imports *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d421cf2`](https://github.com/pabllopf/Alis/commit/d421cf24ed0a4e1193dfe0f15c955c5830448ceb) - Update docking and window flags in ImGui integration *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0455b2d`](https://github.com/pabllopf/Alis/commit/0455b2db59cfda45eabbb28f2b07c09c2e2fd515) - Update project version to v0.8.5 in ProjectsSection *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d11b1e9`](https://github.com/pabllopf/Alis/commit/d11b1e931ac196488441063cdd9df877972e30ad) - Remove unnecessary macOS metadata file *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`007d802`](https://github.com/pabllopf/Alis/commit/007d802a4a3acf03bd7bed604265df4fde6d2e00) - Add platform text input forwarding to ImGui *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :recycle: Refactors
+- [`7ef3394`](https://github.com/pabllopf/Alis/commit/7ef33940ad66cc7986e4fe8cbe2cea72e894be50) - Refactor font loading and project serialization *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`6b10f66`](https://github.com/pabllopf/Alis/commit/6b10f661a2f5b47aae6fe080f2aa7c13e4cd6924) - Add XML documentation comments to UI and engine code *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`9d22d65`](https://github.com/pabllopf/Alis/commit/9d22d65355b5a4fc462a4baa0d4cc12c114e17ec) - Update multiple projects and core components *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.8.5] - 2025-11-06
 
 ### :bug: Bug Fixes
@@ -5551,3 +5596,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.8.4]: https://github.com/pabllopf/Alis/compare/v0.8.3...v0.8.4
 
 [v0.8.5]: https://github.com/pabllopf/Alis/compare/v0.8.4...v0.8.5
+[v0.8.6]: https://github.com/pabllopf/Alis/compare/v0.8.5...v0.8.6
