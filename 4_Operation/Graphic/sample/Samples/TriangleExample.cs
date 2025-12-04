@@ -86,7 +86,7 @@ void main() {
             Gl.GlBindVertexArray(vao);
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, vbo);
             GCHandle vHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
-            Gl.GlBufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
+            Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), vHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
             vHandle.Free();
             uint vertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
             Gl.ShaderSource(vertexShader, vertexShaderSource);

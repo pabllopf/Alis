@@ -52,6 +52,9 @@ namespace Alis.Extension.Graphic.Ui.Sample
     /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// The platform
+        /// </summary>
         private static INativePlatform _platform;
         
         /// <summary>
@@ -222,6 +225,9 @@ namespace Alis.Extension.Graphic.Ui.Sample
             _platform.Cleanup();
         }
 
+        /// <summary>
+        /// Processes the key with imgui
+        /// </summary>
         private static void ProcessKeyWithImgui()
         {
             var io = ImGui.GetIo();
@@ -333,6 +339,10 @@ namespace Alis.Extension.Graphic.Ui.Sample
         }
 
         // Returns the appropriate platform implementation for the current OS.
+        /// <summary>
+        /// Gets the platform
+        /// </summary>
+        /// <returns>The native platform</returns>
         private static INativePlatform GetPlatform()
         {
 #if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
@@ -347,6 +357,14 @@ namespace Alis.Extension.Graphic.Ui.Sample
         }
 
         // Initializes the native platform and OpenGL context. Returns true on success.
+        /// <summary>
+        /// Initializes the platform using the specified plat
+        /// </summary>
+        /// <param name="plat">The plat</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="title">The title</param>
+        /// <returns>The bool</returns>
         private static bool InitializePlatform(INativePlatform plat, int width, int height, string title)
         {
             if (plat == null) return false;
@@ -362,6 +380,11 @@ namespace Alis.Extension.Graphic.Ui.Sample
 
         // Loads a font from an input stream into unmanaged memory and returns the IntPtr to the data buffer.
         // Note: The caller is responsible for memory lifetime if the native API expects it to remain valid.
+        /// <summary>
+        /// Loads the font from resource using the specified stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <returns>The native ptr</returns>
         private static IntPtr LoadFontFromResource(Stream stream) {
             Debug.Assert(stream != null && stream.Length > 0, "Font stream must be valid.");
 
@@ -373,6 +396,15 @@ namespace Alis.Extension.Graphic.Ui.Sample
         }
 
         // Loads the texture using the specified pixel data (RGBA8) and returns the GL texture id.
+        /// <summary>
+        /// Loads the texture using the specified pixel data
+        /// </summary>
+        /// <param name="pixelData">The pixel data</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="format">The format</param>
+        /// <param name="internalFormat">The internal format</param>
+        /// <returns>The texture id</returns>
         private static uint LoadTexture(IntPtr pixelData, int width, int height, PixelFormat format = PixelFormat.Rgba, PixelInternalFormat internalFormat = PixelInternalFormat.Rgba)
         {
             uint textureId = Gl.GenTexture();

@@ -47,13 +47,7 @@
         </Content>
     </ItemGroup>
 
-    <ItemGroup Condition="Exists('$(ProjectDir)Assets/')">
-        <None
-            Update="$(ProjectDir)Assets/**"
-            LinkBase="Assets"
-            CopyToOutputDirectory="Always"
-            CopyToPublishDirectory="Always"/>
-    </ItemGroup>
+    
 
     <PropertyGroup Condition="($([MSBuild]::IsOSPlatform('linux')) AND '$(RuntimeIdentifier)' == '') OR $(RuntimeIdentifier.Contains('linux'))">
         <DefineConstants>$(DefineConstants);LINUX</DefineConstants>

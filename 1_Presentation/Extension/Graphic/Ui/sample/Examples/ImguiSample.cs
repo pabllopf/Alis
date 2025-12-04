@@ -88,8 +88,17 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
         private int _counter;
 
         // State to handle mouse click/double-click detection
+        /// <summary>
+        /// The prev mouse down
+        /// </summary>
         private readonly bool[] _prevMouseDown = new bool[5];
+        /// <summary>
+        /// The last click time
+        /// </summary>
         private readonly double[] _lastClickTime = new double[5];
+        /// <summary>
+        /// The vector
+        /// </summary>
         private readonly Alis.Core.Aspect.Math.Vector.Vector2F[] _lastClickPos = new Alis.Core.Aspect.Math.Vector.Vector2F[5];
 
         /// <summary>
