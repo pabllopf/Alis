@@ -41,6 +41,7 @@ namespace Alis.Core.Ecs.Systems
     /// <seealso cref="IHasBuilder{TOut}" />
     public sealed class VideoGame : IGame
     {
+        
         /// <summary>
         ///     The context handler
         /// </summary>
