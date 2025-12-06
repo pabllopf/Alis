@@ -53,6 +53,9 @@ namespace Alis.App.Hub
     /// </summary>
     public class HubEngine
     {
+        /// <summary>
+        /// The space work
+        /// </summary>
         private SpaceWork _spaceWork = new SpaceWork();
         
         /// <summary>
@@ -64,6 +67,9 @@ namespace Alis.App.Hub
         /// </summary>
         private IntPtr _context;
         
+        /// <summary>
+        /// The fonts
+        /// </summary>
         private ImFontAtlasPtr fonts;
 
         /// <summary>
@@ -88,8 +94,17 @@ namespace Alis.App.Hub
         private uint _shaderProgram;
 
         // State to handle mouse click/double-click detection
+        /// <summary>
+        /// The prev mouse down
+        /// </summary>
         private readonly bool[] _prevMouseDown = new bool[5];
+        /// <summary>
+        /// The last click time
+        /// </summary>
         private readonly double[] _lastClickTime = new double[5];
+        /// <summary>
+        /// The vector
+        /// </summary>
         private readonly Alis.Core.Aspect.Math.Vector.Vector2F[] _lastClickPos = new Alis.Core.Aspect.Math.Vector.Vector2F[5];
 
 
@@ -294,6 +309,9 @@ namespace Alis.App.Hub
             platform.Cleanup();
         }
         
+          /// <summary>
+          /// Processes the key with imgui
+          /// </summary>
           private void ProcessKeyWithImgui()
         {
             var io = ImGui.GetIo();

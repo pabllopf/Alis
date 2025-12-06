@@ -257,7 +257,7 @@
         <AssetsOutput>$(ProjectDir)obj/assets.pack</AssetsOutput>
     </PropertyGroup>
 
-    <Target Name="ZipAssets" BeforeTargets="BeforeRestore;BeforeBuild;Clean;Rebuild;Publish">
+    <Target Name="ZipAssets" BeforeTargets="BeforeRestore;BeforeBuild;Clean;Rebuild;Publish" Condition="!Exists('$(AssetsZip)')">
         <Message Text="ZipAssets: AssetsDir='$(AssetsDir)'; AssetsZip='$(AssetsZip)'; AssetsOutput='$(AssetsOutput)'" Importance="high"/>
 
         <!-- Windows: solo si existe el directorio -->

@@ -15,13 +15,6 @@
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
 
-    <ItemGroup Condition="Exists('$(ProjectDir)Assets/')">
-        <None
-            Update="$(ProjectDir)Assets/**"
-            LinkBase="Assets"
-            CopyToOutputDirectory="Always"
-            CopyToPublishDirectory="Always"/>
-    </ItemGroup>
 
 
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Benchmark')) == true">

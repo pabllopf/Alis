@@ -1,6 +1,12 @@
 <Project>
-    <PropertyGroup Label="BasePath">
-        <SolutionDir Condition="'$(SolutionDir)'==''">$(MSBuildThisFileDirectory)</SolutionDir>
+    <PropertyGroup>
+        <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+        <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+        <Deterministic>true</Deterministic>
+        <Optimize>true</Optimize>
+        <BuildInParallel>true</BuildInParallel>
+        <UseSharedCompilation>true</UseSharedCompilation>
+        <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -12,5 +18,62 @@
         <AssemblyVersion>0.8.5</AssemblyVersion>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+        <EnableNETAnalyzers>false</EnableNETAnalyzers>
+        <EnableRegexSourceGeneration>false</EnableRegexSourceGeneration>
+        <EnableJsonSourceGeneration>false</EnableJsonSourceGeneration>
+    </PropertyGroup>
 
+
+
+    <!--
+  Disables Roslyn language service in Visual Studio in favor of ReSharper one.
+      IT’S PROBABLY NOT A GOOD IDEA TO COMMIT THIS SNIPPET TO SOURCE CONTROL,
+      UNLESS IT IS INTENDED TO ENABLE THIS TECHNIQUE FOR EVERYONE ON THE TEAM.
+  Keep in mind that using this technique, code completion, code analysis,
+  quick-fixes and refactorings are provided only by ReSharper. Custom Roslyn code
+  analyzers will also not be available, as this technique effectively hides code
+  from Visual Studio. Another side effect is that Code Lens will not be
+  available.
+  This file is compatible with ReSharper 2020.1 and newer.
+  If you are using ReSharper 2019.2 or 2019.3, you should modify this file:
+  replace: '$(JetBrainsDesignTimeBuild)' != 'true'
+       to: ('$(DevEnvDir)' != '*Undefined*' OR '$(DesignTimeSilentResolution)' != 'False')
+  How to use:
+  One way is to name this file Directory.Build.targets and put near solution (or in parent folder).
+  Another is to put this file in %LOCALAPPDATA%\Microsoft\MSBuild\Current\Microsoft.Common.targets\ImportAfter
+  https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build
+-->
+        <PropertyGroup>
+            <DisableRoslynDesignTime Condition="'$(JetBrainsDesignTimeBuild)' != 'true' AND '$(DesignTimeBuild)' == 'true' AND '$(IsCodeSharingProject)' != 'true'">true</DisableRoslynDesignTime>
+        </PropertyGroup>
+        <ItemGroup Condition="'$(DisableRoslynDesignTime)' == 'true'">
+            <None Include="**/*$(DefaultLanguageSourceExtension)" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+            <None Include="**/*.cs;**/*.vb" Condition=" '$(EnableDefaultCompileItems)' != 'true' " />
+            <!-- If you have custom exclude patterns in csproj or included files, then you have to include
+              these patterns here as well (to hide files from solution explorer).
+              For example:
+              <None Remove="ASD\*" Condition=" '$(MSBuildProjectName)' == 'MyApplication' " />
+              For a full list of well-known propertes, see
+              https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-reserved-and-well-known-properties
+            -->
+            <UpToDateCheckInput Include="@(Compile)" />
+            <!-- You can write just Remove="@(Compile)" here, but it gives huge
+              performance penalty. This glob is used to avoid N^2 in RemoveOperation
+              https://github.com/Microsoft/msbuild/issues/2314 -->
+            <Compile Remove="**/*.cs;**/*.vb" />
+        </ItemGroup>
+        <Target Name="DisableRoslynTarget" BeforeTargets="CoreCompile" >
+            <PropertyGroup>
+                <DisableRoslynDesignTime Condition="'$(DisableRoslynDesignTime)' == 'true' OR ('$(JetBrainsDesignTimeBuild)' != 'true' AND '$(BuildingProject)' != 'true' AND '$(IsCodeSharingProject)' != 'true') ">true</DisableRoslynDesignTime>
+            </PropertyGroup>
+            <ItemGroup Condition="'$(DisableRoslynDesignTime)' == 'true'">
+                <None Include="@(Compile)" />
+                <Compile Remove="@(Compile)" />
+                <Compile Include="*.Designer.cs" />
+                <Compile Include="@(Compile->Replace('.Designer.', '.'))" />
+            </ItemGroup>
+            <Warning Condition="'$(DisableRoslynDesignTime)' == 'true'"
+                     Text="Roslyn language services are disabled. Remove or edit $(MSBuildThisFileFullPath) file to enable it back." />
+        </Target>
 </Project>

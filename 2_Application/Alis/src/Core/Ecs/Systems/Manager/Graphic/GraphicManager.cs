@@ -29,10 +29,14 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Memory;
+using Alis.Core.Ecs.Components.Body;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Configuration.Physic;
 using Alis.Core.Ecs.Systems.Scope;
@@ -159,7 +163,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             {
                 Context.Exit();
             }
-            /*
+            
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>();
             DateTime now = DateTime.UtcNow;
             foreach (ConsoleKey k in allKeys)
@@ -230,7 +234,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             previousKeys = new HashSet<ConsoleKey>(currentKeys);
             currentKeys = newKeys;
 
-*/
+
 
             float pixelsPerMeter = PixelsPerMeter;
             Setting contextSetting = Context.Setting;
