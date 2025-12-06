@@ -266,15 +266,6 @@ jobs:
         run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -m:4 --verbosity quiet -r win-x64 -f ${{ matrix.framework }}
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -m:4 --verbosity quiet -r win-x86 -f ${{ matrix.framework }}
-
-      - name: Publish ENGINE - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Engine/src/Alis.App.Engine.csproj -c Release -m:4 --verbosity quiet -r win-x86 -f ${{ matrix.framework }}
-
-      - name: Publish HUB - ${{ matrix.runtime }}
-        run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -m:4 --verbosity quiet -r win-x86 -f ${{ matrix.framework }}
-
-      - name: Publish INTALLER - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -m:4 --verbosity quiet -r win-arm64 -f ${{ matrix.framework }}
 
       - name: Publish ENGINE - ${{ matrix.runtime }}
@@ -282,7 +273,6 @@ jobs:
 
       - name: Publish HUB - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Hub/src/Alis.App.Hub.csproj -c Release -m:4 --verbosity quiet -r win-arm64 -f ${{ matrix.framework }}
-
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -m:4 --verbosity quiet -r linux-x64 -f ${{ matrix.framework }}
