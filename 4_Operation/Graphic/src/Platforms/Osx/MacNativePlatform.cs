@@ -546,6 +546,12 @@ namespace Alis.Core.Graphic.Platforms.Osx
             return v;
         }
 
+        public bool TryGetLastInputCharacters(out string chars)
+        {
+            chars = "";
+            return false;
+        }
+
         /// <summary>
         /// </summary>
         /// <param name="key"></param>
