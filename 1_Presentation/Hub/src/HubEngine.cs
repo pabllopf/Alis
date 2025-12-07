@@ -31,6 +31,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Alis.App.Hub.Core;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
@@ -107,12 +108,23 @@ namespace Alis.App.Hub
         /// </summary>
         private readonly Alis.Core.Aspect.Math.Vector.Vector2F[] _lastClickPos = new Alis.Core.Aspect.Math.Vector.Vector2F[5];
 
+        // --- Añadir campos en la clase HubEngine (junto a _prevMouseDown, _lastClickTime, _lastClickPos) ---
+        private readonly bool[] _mouseClicked = new bool[5];
+        private readonly bool[] _mouseDoubleClicked = new bool[5];
+        private readonly double[] _mouseClickedTime = new double[5];
+        private readonly ushort[] _mouseClickedCount = new ushort[5];
 
         /// <summary>
         /// Application entry point.
         /// </summary>
         public void Run()
         {
+            // Frame limiter: 60 FPS target
+            const double targetFrameTime = 1.0 / 60.0;
+            var frameTimer = Stopwatch.StartNew();
+            double lastTime = frameTimer.Elapsed.TotalSeconds;
+            
+            
             platform = GetPlatform();
             Debug.Assert(platform != null, "Platform implementation must be provided for the current OS.");
 
@@ -277,11 +289,30 @@ namespace Alis.App.Hub
             _spaceWork.OnInit();
             _spaceWork.OnStart();
             
-            
-            // Main loop
+            // Inicializar estado del ratón para evitar tiempos a 0 que ImGui interpretaría como clicks recientes
+            for (int i = 0; i < 5; i++)
+            {
+                _mouseClicked[i] = false;
+                _mouseDoubleClicked[i] = false;
+                _mouseClickedCount[i] = 0;
+                _mouseClickedTime[i] = 1e6; // valor grande = "no activo"
+                _prevMouseDown[i] = false;
+                _lastClickTime[i] = 0.0;
+                _lastClickPos[i] = new Alis.Core.Aspect.Math.Vector.Vector2F(0, 0);
+            }
            
+            var io = ImGui.GetIo();
+            
             while (_spaceWork.IsRunning)
             {
+                // Update delta time for ImGui using high-resolution timer
+                double now = frameTimer.Elapsed.TotalSeconds;
+                double delta = now - lastTime;
+                lastTime = now;
+                if (delta <= 0.0) delta = targetFrameTime;
+                if (delta > 0.25) delta = 0.25; // avoid huge dt values
+                io.DeltaTime = (float)delta;
+                
                 _spaceWork.IsRunning = platform.PollEvents();
 
                 ProcessKeyWithImgui();
@@ -294,6 +325,25 @@ namespace Alis.App.Hub
                 if (glError != 0)
                 {
                     Logger.Info($"OpenGL error after SwapBuffers: 0x{glError:X}");
+                }
+                
+                // Frame pacing: sleep / spin until target frame time reached
+                double frameEnd = frameTimer.Elapsed.TotalSeconds;
+                double frameElapsed = frameEnd - now;
+                double sleepTime = targetFrameTime - frameElapsed;
+                if (sleepTime > 0.0)
+                {
+                    int sleepMs = (int)(sleepTime * 1000.0);
+                    if (sleepMs > 0)
+                    {
+                        // Sleep most of the remaining time (leave small margin for precision)
+                        Thread.Sleep(sleepMs);
+                    }
+                    // Busy-wait the rest for better precision
+                    while (frameTimer.Elapsed.TotalSeconds - now < targetFrameTime)
+                    {
+                        Thread.SpinWait(10);
+                    }
                 }
             }
 
@@ -894,65 +944,37 @@ namespace Alis.App.Hub
 
             // Update display size each frame (handles window resize)
             _spaceWork.io.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(platform.GetWindowWidth(), platform.GetWindowHeight());
-
-            // Feed mouse state from platform using guarded checks (no try/catch)
+            
+            // --- Reemplazar la sección de manejo del ratón dentro de Draw() por llamadas a las APIs de ImGui IO ---
             if (platform != null)
             {
                 platform.GetMouseState(out int mx, out int my, out bool[] mButtons);
-                _spaceWork.io.MousePos = new Alis.Core.Aspect.Math.Vector.Vector2F(mx, my);
 
-                var mouseDownList = new System.Collections.Generic.List<bool>();
-                for (int i = 0; i < 5; i++) mouseDownList.Add(i < mButtons.Length ? mButtons[i] : false);
-                // Compute click/double-click info like ImGui backends expect
-                var mouseClicked = new System.Collections.Generic.List<bool> { false, false, false, false, false };
-                var mouseDoubleClicked = new System.Collections.Generic.List<bool> { false, false, false, false, false };
-                var mouseClickedTime = new System.Collections.Generic.List<double> { 0, 0, 0, 0, 0 };
-                var mouseClickedCount = new System.Collections.Generic.List<ushort> { 0, 0, 0, 0, 0 };
+                // En lugar de llenar las listas manualmente, usar las APIs de ImGuiIO para reportar eventos.
+                // Esto permite a ImGui calcular correctamente MouseClicked / MouseDoubleClicked internamente.
+                _spaceWork.io.AddMousePosEvent((float)mx, (float)my);
 
-                double now = (double)System.Diagnostics.Stopwatch.GetTimestamp() / System.Diagnostics.Stopwatch.Frequency;
+                // Reportar el estado de cada botón.
                 for (int i = 0; i < 5; i++)
                 {
                     bool down = i < mButtons.Length ? mButtons[i] : false;
-                    bool prev = _prevMouseDown[i];
-
-                    // On press (was up, now down) -> register click
-                    if (down && !prev)
-                    {
-                        mouseClicked[i] = true;
-                        mouseClickedTime[i] = now;
-                        mouseClickedCount[i] = (ushort)(mouseClickedCount[i] + 1);
-
-                        double dt = now - _lastClickTime[i];
-                        float maxDist = _spaceWork.io.MouseDoubleClickMaxDist;
-                        float dx = _spaceWork.io.MousePos.X - _lastClickPos[i].X;
-                        float dy = _spaceWork.io.MousePos.Y - _lastClickPos[i].Y;
-                        float dist2 = dx * dx + dy * dy;
-                        if (dt <= _spaceWork.io.MouseDoubleClickTime && dist2 <= (maxDist * maxDist))
-                        {
-                            mouseDoubleClicked[i] = true;
-                            mouseClickedCount[i] = 2;
-                        }
-
-                        _lastClickTime[i] = now;
-                        _lastClickPos[i] = _spaceWork.io.MousePos;
-                    }
-
-                    _prevMouseDown[i] = down;
+                    _spaceWork.io.AddMouseButtonEvent(i, down);
                 }
 
-                _spaceWork.io.MouseDown = mouseDownList;
-                _spaceWork.io.MouseClicked = mouseClicked;
-                _spaceWork.io.MouseClickedTime = mouseClickedTime;
-                _spaceWork.io.MouseClickedCount = mouseClickedCount;
-                _spaceWork.io.MouseDoubleClicked = mouseDoubleClicked;
-                _spaceWork.io.MouseWheel = platform.GetMouseWheel();
+                // Rueda del ratón (solo eje Y, asumimos 0 en X)
+                float wheel = platform.GetMouseWheel();
+                _spaceWork.io.AddMouseWheelEvent(wheel, 0.0f);
+
+                // Mantener DisplaySize actualizado
+                _spaceWork.io.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(platform.GetWindowWidth(), platform.GetWindowHeight());
             }
             else
             {
                 // No platform: ensure sane defaults
-                _spaceWork.io.MousePos = new Alis.Core.Aspect.Math.Vector.Vector2F(0, 0);
-                _spaceWork.io.MouseDown = new System.Collections.Generic.List<bool> { false, false, false, false, false };
-                _spaceWork.io.MouseWheel = 0.0f;
+                _spaceWork.io.AddMousePosEvent(0.0f, 0.0f);
+                for (int i = 0; i < 5; i++) _spaceWork.io.AddMouseButtonEvent(i, false);
+                _spaceWork.io.AddMouseWheelEvent(0.0f, 0.0f);
+                _spaceWork.io.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(0, 0);
             }
 
             ImGui.NewFrame();
