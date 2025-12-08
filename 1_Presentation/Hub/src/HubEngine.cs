@@ -316,6 +316,12 @@ namespace Alis.App.Hub
                 _spaceWork.IsRunning = platform.PollEvents();
 
                 ProcessKeyWithImgui();
+                
+                // Forward text input characters from the native platform to ImGui (e.g. WM_CHAR on Windows)
+                if (platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
+                {
+                    _spaceWork.io.AddInputCharactersUtf8(pendingChars);
+                }
 
                 Draw();
                 

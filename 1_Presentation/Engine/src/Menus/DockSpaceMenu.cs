@@ -55,12 +55,39 @@ namespace Alis.App.Engine.Menus
         public void Initialize()
         {
         }
+        
+        /// <summary>
+        ///     Gets the value of the top menu
+        /// </summary>
+        internal TopMenu TopMenu { get; }
+        
+        
+        /// <summary>
+        ///     Gets or sets the value of the top menu mac
+        /// </summary>
+        public TopMenuMac TopMenuMac { get; set; }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public void Update()
         {
+            // TODO: INCLUDE ALL THE LOGIC TO APPER THE MENU BAR
+            /*
+             // if is macos system:
+            if (!IsMacOs)
+            {
+                TopMenu.Initialize();
+            }
+            else
+            {
+                TopMenuMac.Initialize();
+            }
+            
+            
+             */
+            
+            
             // Establece el padding de la ventana
             //ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);  // Igual padding arriba y abajo
             //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 4f));
@@ -103,6 +130,18 @@ namespace Alis.App.Engine.Menus
                 // quit border:
                 //ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
 
+                // Primer conjunto de botones: izquierda
+                if (ImGui.Button($"{FontAwesome5.Bars}"))
+                {
+                    // Lógica para retroceder
+                    Logger.Info("Show normal menu...");
+
+                    // TODO: Load different layouts
+                    // ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
+                }
+                
+                ImGui.SameLine();
+                
                 // Primer conjunto de botones: izquierda
                 if (ImGui.Button($"{FontAwesome5.ArrowLeft}"))
                 {
@@ -202,7 +241,7 @@ namespace Alis.App.Engine.Menus
                 ImGui.SameLine();
 
                 // Botón de compilación
-                float compileOffset = ImGui.GetWindowWidth() - 295;
+                float compileOffset = ImGui.GetWindowWidth() - 495;
                 ImGui.SameLine(compileOffset);
                 if (ImGui.Button($"{FontAwesome5.Hammer}"))
                 {
@@ -255,6 +294,40 @@ namespace Alis.App.Engine.Menus
                 if (ImGui.Button($"{FontAwesome5.Cog}"))
                 {
                     Logger.Info("Abriendo ajustes...");
+                }
+                
+                ImGui.SameLine();
+                
+                if (ImGui.Button($"{FontAwesome5.Minus}"))
+                {
+                    // Lógica para retroceder
+                    Logger.Info("Show normal menu...");
+
+                    // TODO: Load different layouts
+                    // ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
+                }
+
+                
+                ImGui.SameLine();
+                
+                if (ImGui.Button($"{FontAwesome5.WindowRestore}"))
+                {
+                    // Lógica para retroceder
+                    Logger.Info("Show normal menu...");
+
+                    // TODO: Load different layouts
+                    // ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
+                }
+                
+                ImGui.SameLine();
+                
+                if (ImGui.Button($"{FontAwesome5.Times}"))
+                {
+                    // Lógica para retroceder
+                    Logger.Info("Show normal menu...");
+
+                    // TODO: Load different layouts
+                    // ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
                 }
                 
                 ImGui.EndMenuBar();
