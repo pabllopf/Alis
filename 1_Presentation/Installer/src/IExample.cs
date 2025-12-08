@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IRenderable.cs
+//  File:IExample.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,16 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Installer.Core
+namespace Alis.App.Installer
 {
     /// <summary>
-    ///     The renderable interface
+    ///     The example interface
     /// </summary>
-    public interface IRenderable
+    internal interface IExample
     {
         /// <summary>
-        ///     Renders this instance
+        ///     Initializes this instance
         /// </summary>
-        void Render();
+        void Initialize();
+
+        /// <summary>
+        ///     Draws this instance
+        /// </summary>
+        void Draw();
+
+        /// <summary>
+        ///     Cleanups this instance
+        /// </summary>
+        void Cleanup();
     }
 }
