@@ -36,7 +36,6 @@ using Alis.App.Engine.Menus;
 using Alis.App.Engine.Windows;
 using Alis.App.Engine.Windows.Settings;
 using Alis.Core.Aspect.Data.Json;
-using Alis.Extension.Graphic.Sdl2.Structs;
 using Alis.Extension.Graphic.Ui;
 
 namespace Alis.App.Engine.Core
@@ -109,12 +108,12 @@ namespace Alis.App.Engine.Core
         /// <summary>
         ///     The io
         /// </summary>
-        public ImGuiIoPtr Io;
+        public ImGuiIoPtr io;
 
         /// <summary>
         ///     The quit
         /// </summary>
-        public bool Quit = false;
+        public bool IsRunning = true;
 
         /// <summary>
         ///     The renderer game
@@ -152,8 +151,6 @@ namespace Alis.App.Engine.Core
             AudioPlayerWindow = new AudioPlayerWindow(this);
             AssetsWindow = new AssetsWindow(this);
 
-            TopMenu = new TopMenu(this);
-            TopMenuMac = new TopMenuMac(this);
             BottomMenu = new BottomMenu(this);
 
             string projectPath = File.ReadAllText(Path.Combine(Path.GetTempPath(), "projectConfig.json"));
@@ -166,10 +163,6 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public bool IsMacOs => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
 
-        /// <summary>
-        ///     Gets or sets the value of the top menu mac
-        /// </summary>
-        public TopMenuMac TopMenuMac { get; set; }
 
         /// <summary>
         ///     Gets the value of the console window
@@ -201,10 +194,7 @@ namespace Alis.App.Engine.Core
         /// </summary>
         internal ProjectWindow ProjectWindow { get; }
 
-        /// <summary>
-        ///     Gets the value of the top menu
-        /// </summary>
-        internal TopMenu TopMenu { get; }
+
 
         /// <summary>
         ///     Gets the value of the dock space menu
@@ -236,31 +226,19 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public Project Project { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the value of the event
-        /// </summary>
-        public Event Event { get; set; }
+        public uint FontTextureId { get; set; }
 
         /// <summary>
         ///     Initializes this instance
         /// </summary>
-        public void Initialize()
+        public void OnInit()
         {
             ImGuiDemo.Initialize();
             ImPlotDemo.Initialize();
             ImGuizmoDemo.Initialize();
             ImNodeDemo.Initialize();
             IconDemo.Initialize();
-
-            // if is macos system:
-            if (!IsMacOs)
-            {
-                TopMenu.Initialize();
-            }
-            else
-            {
-                TopMenuMac.Initialize();
-            }
+            
 
 
             BottomMenu.Initialize();
@@ -278,25 +256,14 @@ namespace Alis.App.Engine.Core
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public void Start()
+        public void OnStart()
         {
             ImGuiDemo.Start();
             ImPlotDemo.Start();
             ImGuizmoDemo.Start();
             ImNodeDemo.Start();
             IconDemo.Start();
-
-            // if is macos system:
-            if (!IsMacOs)
-            {
-                TopMenu.Start();
-            }
-            else
-            {
-                TopMenuMac.Start();
-            }
-
-
+            
             BottomMenu.Start();
             ConsoleWindow.Start();
             GameWindow.Start();
@@ -312,24 +279,14 @@ namespace Alis.App.Engine.Core
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public void Update()
+        public void OnRender()
         {
             ImGuiDemo.Run();
             ImPlotDemo.Run();
             ImGuizmoDemo.Run();
             ImNodeDemo.Run();
             IconDemo.Run();
-
-            // if is macos system:
-            if (!IsMacOs)
-            {
-                TopMenu.Render();
-            }
-            else
-            {
-                TopMenuMac.Render();
-            }
-
+            
             SettingsWindow.Render();
             BottomMenu.Render();
             ConsoleWindow.Render();

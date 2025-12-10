@@ -299,7 +299,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void Close()
         {
-            _spaceWork.Quit = true;
+            _spaceWork.IsRunning = true;
         }
 
         /// <summary>

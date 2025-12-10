@@ -59,7 +59,6 @@
 
     <ItemGroup>
         <ProjectReference Include="$(SolutionDir)2_Application/**/**/src/**/Alis.csproj;"/>
-        <ProjectReference Include="$(SolutionDir)1_Presentation/**/**/src/**/Alis.Extension.Graphic.Sdl2.csproj;"/>
         <ProjectReference Include="$(SolutionDir)1_Presentation/**/**/src/**/Alis.Extension.Graphic.Ui.csproj;"/>
         <ProjectReference Include="$(SolutionDir)1_Presentation/**/**/src/**/Alis.Extension.Updater.csproj;"/>
         <ProjectReference Include="$(SolutionDir)1_Presentation/**/**/src/**/Alis.Extension.Io.FileDialog.csproj;"/>
