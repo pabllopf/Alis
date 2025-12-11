@@ -153,7 +153,15 @@ namespace Alis.App.Engine.Core
 
             BottomMenu = new BottomMenu(this);
 
-            string projectPath = File.ReadAllText(Path.Combine(Path.GetTempPath(), "projectConfig.json"));
+            string filetoread = Path.Combine(Path.GetTempPath(), "projectConfig.json");
+            if (!File.Exists(filetoread))
+            {
+                Project =  new Project("MacOS Project (latest)", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", "v0.8.6");
+                string jsonDefaultValue = JsonNativeAot.Serialize(Project);
+                File.WriteAllText(filetoread, jsonDefaultValue);
+            }
+            
+            string projectPath = File.ReadAllText(filetoread);
             Project projectToLoad = JsonNativeAot.Deserialize<Project>(projectPath);
             Project = projectToLoad;
         }
