@@ -244,10 +244,7 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
         public void Draw()
         {
             var io = ImGui.GetIo();
-
-            // Update display size each frame (handles window resize)
-            io.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(_platform.GetWindowWidth(), _platform.GetWindowHeight());
-
+            
             // Feed mouse state from platform using guarded checks (no try/catch)
             if (_platform != null)
             {
@@ -359,13 +356,22 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             Gl.GlDisable(EnableCap.CullFace);
             Gl.GlDisable(EnableCap.DepthTest);
             Gl.GlEnable(EnableCap.ScissorTest);
-
-            Gl.GlViewport(0, 0, _platform.GetWindowWidth(), _platform.GetWindowHeight());
-
+            
+            // Obtener el viewport real del framebuffer
+            int[] viewport = new int[4];
+            Gl.GlGetIntegerv(0x0BA2, viewport); // 0x0BA2 = GL_VIEWPORT
+            int fbWidth = viewport[2];
+            int fbHeight = viewport[3];
+            ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
+            imGuiIoPtr.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(fbWidth, fbHeight);
+            imGuiIoPtr.DisplayFramebufferScale = new Alis.Core.Aspect.Math.Vector.Vector2F(
+                fbWidth / imGuiIoPtr.DisplaySize.X,
+                fbHeight / imGuiIoPtr.DisplaySize.Y);
+            
             float l = 0.0f;
-            float r = ImGui.GetIo().DisplaySize.X;
+            float r = imGuiIoPtr.DisplaySize.X;
             float t = 0.0f;
-            float b = ImGui.GetIo().DisplaySize.Y;
+            float b = imGuiIoPtr.DisplaySize.Y;
 
             var ortho = new Matrix4X4(
                 2.0f / (r - l), 0, 0, 0,
@@ -411,7 +417,7 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
                         Gl.GlBindTexture(TextureTarget.Texture2D, texId);
 
                         int x = (int)pcmd.ClipRect.X;
-                        int y = (int)(ImGui.GetIo().DisplaySize.Y - pcmd.ClipRect.W);
+                        int y = (int)(imGuiIoPtr.DisplaySize.Y - pcmd.ClipRect.W);
                         int width = (int)(pcmd.ClipRect.Z - pcmd.ClipRect.X);
                         int height = (int)(pcmd.ClipRect.W - pcmd.ClipRect.Y);
                         Gl.GlScissor(x, y, width, height);

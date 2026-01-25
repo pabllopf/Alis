@@ -79,6 +79,8 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         /// <param name="width">The width of the line</param>
         public delegate void LineWidth(float width);
+        
+        public delegate void GetIntegerv(int pname, int[] data);
 
         // En Gl.cs
         /// <summary>
@@ -121,6 +123,8 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         public static DeleteBuffers GlDeleteBuffers => GetCommand<DeleteBuffers>("glDeleteBuffers");
 
+        public static GetIntegerv GlGetIntegerV => GetCommand<GetIntegerv>("glGetIntegerv");
+        
         /// <summary>
         ///     The viewport
         /// </summary>
@@ -734,6 +738,12 @@ namespace Alis.Core.Graphic.OpenGL
         public static void GlActiveTexture(TextureUnit texture)
         {
             GlActiveTextureDelegate(texture);
+        }
+
+        public static void GlGetIntegerv(int i, int[] viewport)
+        {
+            var getIntegerv = GetCommand<GetIntegerv>("glGetIntegerv");
+            GlGetIntegerV(i, viewport);
         }
     }
 }
