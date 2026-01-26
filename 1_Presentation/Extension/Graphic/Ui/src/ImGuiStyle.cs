@@ -652,5 +652,10 @@ namespace Alis.Extension.Graphic.Ui
                 }
             }
         }
+
+        public void ScaleAllSizes(float f)
+        {
+            ImGuiNative.ImGuiStyle_ScaleAllSizes(ref this, f);
+        }
     }
 }

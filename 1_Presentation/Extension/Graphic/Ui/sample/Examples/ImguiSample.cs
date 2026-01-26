@@ -101,6 +101,8 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
         /// </summary>
         private readonly Alis.Core.Aspect.Math.Vector.Vector2F[] _lastClickPos = new Alis.Core.Aspect.Math.Vector.Vector2F[5];
 
+        private ImGuiStyle style;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ImguiSample"/> class
         /// </summary>
@@ -140,7 +142,9 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             io.BackendFlags |= ImGuiBackendFlags.HasMouseCursors | ImGuiBackendFlags.HasSetMousePos;
             io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
             ImGui.StyleColorsDark();
-
+            
+            style = ImGui.GetStyle();
+            
             // Build and upload font atlas to GL
             var fonts = io.Fonts;
             fonts.GetTexDataAsRgba32(out IntPtr pixelPtr, out int widthPtr, out int heightPtr);
@@ -364,9 +368,21 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             int fbHeight = viewport[3];
             ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
             imGuiIoPtr.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(fbWidth, fbHeight);
-            imGuiIoPtr.DisplayFramebufferScale = new Alis.Core.Aspect.Math.Vector.Vector2F(
-                fbWidth / imGuiIoPtr.DisplaySize.X,
-                fbHeight / imGuiIoPtr.DisplaySize.Y);
+            //imGuiIoPtr.DisplayFramebufferScale = new Alis.Core.Aspect.Math.Vector.Vector2F(
+            //    fbWidth / imGuiIoPtr.DisplaySize.X,
+            //    fbHeight / imGuiIoPtr.DisplaySize.Y);
+            
+            float resolutionProgramX = 800.0f;
+            float resolutionProgramY = 600.0f;
+            
+            float scaleX = fbWidth / resolutionProgramX;
+            float scaleY = fbHeight / resolutionProgramY;
+            float scaleFactor = Math.Min(scaleX, scaleY);
+
+            Console.WriteLine($"Setting style scale factor: {scaleFactor}");
+            
+            style.ScaleAllSizes(scaleFactor);
+            imGuiIoPtr.FontGlobalScale = scaleFactor;
             
             float l = 0.0f;
             float r = imGuiIoPtr.DisplaySize.X;

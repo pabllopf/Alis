@@ -5012,7 +5012,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="scaleFactor">The scale factor</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStyle_ScaleAllSizes")]
-        public static extern void ImGuiStyle_ScaleAllSizes(ImGuiStyle self, float scaleFactor);
+        public static extern void ImGuiStyle_ScaleAllSizes(ref ImGuiStyle self, float scaleFactor);
 
         /// <summary>
         ///     Ims the gui table column sort specs im gui table column sort specs
@@ -5312,5 +5312,8 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="dockNodeFlags">The dock node flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderSetNodeFlags")]
         public static extern void igDockBuilderSetNodeFlags(uint dockspaceId, ImGuiDockNodeFlags dockNodeFlags);
+
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igScaleAllSizes")]
+        public static extern void igScaleAllSizes(float scaleFactor);
     }
 }
