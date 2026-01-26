@@ -66,7 +66,7 @@ namespace Alis.App.Hub.Windows
         /// <summary>
         ///     Ons the render
         /// </summary>
-        public abstract void OnRender();
+        public abstract void OnRender(float scaleFactor);
 
         /// <summary>
         ///     Ons the destroy

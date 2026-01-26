@@ -116,8 +116,9 @@ namespace Alis.App.Hub
 
         private float resolutionProgramX = 1025;
         private float resolutionProgramY = 575;
-        
-        
+        private float scaleFactor;
+
+
         /// <summary>
         /// Application entry point.
         /// </summary>
@@ -993,7 +994,7 @@ namespace Alis.App.Hub
             // Show all render:
             
             
-            _spaceWork.OnRender();
+            _spaceWork.OnRender(scaleFactor);
 
 
 
@@ -1031,7 +1032,7 @@ namespace Alis.App.Hub
             
             float scaleX = fbWidth / resolutionProgramX;
             float scaleY = fbHeight / resolutionProgramY;
-            float scaleFactor = Math.Min(scaleX, scaleY);
+            scaleFactor = Math.Min(scaleX, scaleY);
 
             Console.WriteLine($"Setting style scale factor: {scaleFactor}");
             

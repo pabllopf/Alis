@@ -52,7 +52,7 @@ namespace Alis.App.Hub.Core
         /// <summary>
         ///     Ons the render
         /// </summary>
-        void OnRender();
+        void OnRender(float scale);
 
         /// <summary>
         ///     Ons the destroy

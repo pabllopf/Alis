@@ -135,7 +135,8 @@ namespace Alis.App.Hub.Windows
         /// <summary>
         ///     Renders this instance
         /// </summary>
-        public override void OnRender()
+        /// <param name="scaleFactor"></param>
+        public override void OnRender(float scaleFactor)
         {
             ImGuiIoPtr io = ImGui.GetIo();
             Vector2F screenSize = io.DisplaySize;
@@ -145,43 +146,18 @@ namespace Alis.App.Hub.Windows
 
             ImGui.Begin("##MainWindow", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove);
 
-            ImGui.BeginChild("Sidebar", new Vector2F(220, screenSize.Y - 20), true);
+            ImGui.BeginChild("Sidebar", new Vector2F(220 * scaleFactor, screenSize.Y - 20 * scaleFactor), true);
 
-            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(10, 10));
-            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10, 10));
-
-            /*
-            // Mostrar el logo y el texto "ALIS"
-            if (File.Exists(AssetManager.Find("Hub_logo.bmp")))
-            {
-                // Cargar y mostrar la imagen a una resolución más alta
-                IntPtr textureId = ImageLoader.LoadTextureFromFile(AssetManager.Find("Hub_logo.bmp"));
-                float iconSize = 50; // Aumenta el tamaño de la imagen
-                ImGui.Image(textureId, new Vector2F(iconSize, iconSize)); // Mostrar imagen más grande
-                ImGui.SameLine();
-
-                // Cambiar el tamaño de la fuente para que el texto sea más grande
-                ImGui.PushFont(spaceWork.FontLoaded45Bold); // Asegúrate de usar una fuente adecuada
-
-                // Centrar el texto "ALIS" vertical y horizontalmente con la imagen
-                Vector2F textSize = ImGui.CalcTextSize("ALIS");
-                float textX = (iconSize - textSize.X) / 2; // Centrado horizontal
-                float textY = (iconSize - textSize.Y) / 2; // Centrado vertical
-
-                //ImGui.SetCursorPosX(ImGui.GetCursorPosX() + textX); // Centrar en el eje X
-                ImGui.SetCursorPosY(ImGui.GetCursorPosY() + textY); // Centrar en el eje Y
-                ImGui.Text("ALIS");
-
-                ImGui.PopFont(); // Restaurar la fuente predeterminada
-            }*/
-
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(10 * scaleFactor, 10 * scaleFactor));
+            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10 * scaleFactor, 10 * scaleFactor));
+            
             ImGui.Separator();
             ImGui.PopStyleVar(2);
 
-            ButtonsLeftMenu();
+            ButtonsLeftMenu(scaleFactor);
 
-            ImGui.SetCursorPosY(screenSize.Y - 70);
-            if (ImGui.Button($"{FontAwesome5.Cog} Preferences", new Vector2F(200, 40)))
+            ImGui.SetCursorPosY(screenSize.Y - 70 * scaleFactor);
+            if (ImGui.Button($"{FontAwesome5.Cog} Preferences", new Vector2F(200 * scaleFactor, 40 * scaleFactor)))
             {
                 OpenPreferences();
             }
@@ -191,8 +167,8 @@ namespace Alis.App.Hub.Windows
             ImGui.EndChild();
 
             ImGui.SameLine();
-            ImGui.BeginChild("MainContent", new Vector2F(screenSize.X - 220, screenSize.Y - 20), false);
-            RenderMainContent();
+            ImGui.BeginChild("MainContent", new Vector2F(screenSize.X - 220 * scaleFactor, screenSize.Y - 20 * scaleFactor), false);
+            RenderMainContent(scaleFactor);
             ImGui.EndChild();
 
             ImGui.End();
@@ -261,45 +237,42 @@ namespace Alis.App.Hub.Windows
         /// <summary>
         ///     Buttonses the left menu
         /// </summary>
-        private void ButtonsLeftMenu()
+        private void ButtonsLeftMenu(float scaleFactor)
         {
             for (int i = 0; i < menuItems.Length; i++)
             {
-                // Definir los estilos antes de cada botón
-                ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 5.0f); // Redondear las esquinas
-                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10, 10)); // Espaciado entre los items
+                ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 5.0f * scaleFactor);
+                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10 * scaleFactor, 10 * scaleFactor));
                 ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2F(0, 0.5f));
 
-                // Crear el botón con la alineación adecuada
-                if (ImGui.Button(menuItems[i], new Vector2F(200, 40)))
+                if (ImGui.Button(menuItems[i], new Vector2F(200 * scaleFactor, 40 * scaleFactor)))
                 {
-                    selectedMenuItem = i; // Establecer el botón como seleccionado
+                    selectedMenuItem = i;
                 }
 
-                // Restaurar los estilos después de cada botón
-                ImGui.PopStyleVar(3); // Restaurar ItemSpacing y FrameRounding
+                ImGui.PopStyleVar(3);
             }
         }
 
         /// <summary>
         ///     Renders the main content
         /// </summary>
-        private void RenderMainContent()
+        private void RenderMainContent(float scaleFactor)
         {
             ImGui.PushStyleColor(ImGuiCol.ChildBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
             switch (selectedMenuItem)
             {
                 case 0:
-                    ProjectsSection.OnRender();
+                    ProjectsSection.OnRender(scaleFactor);
                     break;
                 case 1:
-                    EditorInstallationSection.OnRender();
+                    EditorInstallationSection.OnRender(scaleFactor);
                     break;
                 case 2:
-                    LearnSection.OnRender();
+                    LearnSection.OnRender(scaleFactor);
                     break;
                 case 3:
-                    CommunitySection.OnRender();
+                    CommunitySection.OnRender(scaleFactor);
                     break;
             }
 
@@ -307,3 +280,5 @@ namespace Alis.App.Hub.Windows
         }
     }
 }
+
+
