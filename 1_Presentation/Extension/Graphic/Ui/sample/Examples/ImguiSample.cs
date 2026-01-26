@@ -345,6 +345,8 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             // No exception-handling here; platform may reset wheel internally if needed.
         }
 
+        private bool firsttime = true;
+        
         /// <summary>
         /// Renders the draw data using the specified draw data
         /// </summary>
@@ -371,18 +373,23 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             //imGuiIoPtr.DisplayFramebufferScale = new Alis.Core.Aspect.Math.Vector.Vector2F(
             //    fbWidth / imGuiIoPtr.DisplaySize.X,
             //    fbHeight / imGuiIoPtr.DisplaySize.Y);
-            
-            float resolutionProgramX = 800.0f;
-            float resolutionProgramY = 600.0f;
-            
-            float scaleX = fbWidth / resolutionProgramX;
-            float scaleY = fbHeight / resolutionProgramY;
-            float scaleFactor = Math.Min(scaleX, scaleY);
 
-            Console.WriteLine($"Setting style scale factor: {scaleFactor}");
+            if (firsttime)
+            {
+                float resolutionProgramX = 800.0f;
+                float resolutionProgramY = 600.0f;
             
-            style.ScaleAllSizes(scaleFactor);
-            imGuiIoPtr.FontGlobalScale = scaleFactor;
+                float scaleX = fbWidth / resolutionProgramX;
+                float scaleY = fbHeight / resolutionProgramY;
+                float scaleFactor = Math.Min(scaleX, scaleY);
+
+                Console.WriteLine($"Setting style scale factor: {scaleFactor}");
+            
+                style.ScaleAllSizes(scaleFactor);
+                imGuiIoPtr.FontGlobalScale = scaleFactor;
+                firsttime = false;
+            }
+          
             
             float l = 0.0f;
             float r = imGuiIoPtr.DisplaySize.X;

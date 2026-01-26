@@ -171,16 +171,16 @@ namespace Alis.Core.Graphic.Platforms.Osx
                     mouseX = (int)Math.Round(px);
                     mouseY = (int)Math.Round(py);
 
-                    if (type == 1) { mouseButtons[0] = true; }
-                    else if (type == 2) { mouseButtons[0] = false; }
-                    else if (type == 3) { mouseButtons[1] = true; }
-                    else if (type == 4) { mouseButtons[1] = false; }
+                    if (type == 1) { mouseButtons[0] = true; Console.WriteLine($"Mouse izquierdo presionado en ({mouseX},{mouseY})"); }
+                    else if (type == 2) { mouseButtons[0] = false; Console.WriteLine($"Mouse izquierdo soltado en ({mouseX},{mouseY})"); }
+                    else if (type == 3) { mouseButtons[1] = true; Console.WriteLine($"Mouse derecho presionado en ({mouseX},{mouseY})"); }
+                    else if (type == 4) { mouseButtons[1] = false; Console.WriteLine($"Mouse derecho soltado en ({mouseX},{mouseY})"); }
                     else if (type == 22)
                     {
                         // scrollDeltaY
-                        IntPtr deltaYPtr = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("deltaY"));
-                        int deltaYi = ObjectiveCInterop.objc_msgSend_Int(deltaYPtr, ObjectiveCInterop.Sel("intValue"));
-                        mouseWheel = deltaYi;
+                        double deltaY = ObjectiveCInterop.objc_msgSend_double(evt, ObjectiveCInterop.Sel("deltaY"));
+                        mouseWheel = (float)deltaY;
+                        Console.WriteLine($"Scroll: {mouseWheel}");
                     }
 
                     // forward event to app
@@ -205,6 +205,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
                                 c = chars[0];
                         }
                     }
+                    Console.WriteLine($"Tecla presionada: keyCode={keyCode} char='{c}'");
 
                     // Mapear por keyCode primero (teclas especiales y flechas)
                     switch (keyCode)
@@ -427,6 +428,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
                                 c = chars[0];
                         }
                     }
+                    Console.WriteLine($"Tecla soltada: keyCode={keyCode} char='{c}'");
 
                     switch (keyCode)
                     {
@@ -700,6 +702,10 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// <returns></returns>
         [DllImport("/usr/lib/libobjc.A.dylib")]
         private static extern IntPtr sel_registerName(string name);
+
+        [DllImport("/usr/lib/libobjc.A.dylib")]
+        public static extern double objc_msgSend_double(IntPtr receiver, IntPtr selector);
     }
 }
 #endif
+

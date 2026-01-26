@@ -227,6 +227,15 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <returns>The ulong</returns>
         [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern ulong objc_msgSend_UL(IntPtr recv, IntPtr sel);
+
+        /// <summary>
+        /// Objcs the msg send double using the specified recv
+        /// </summary>
+        /// <param name="recv">The recv</param>
+        /// <param name="sel">The sel</param>
+        /// <returns>The double</returns>
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
+        public static extern double objc_msgSend_double(IntPtr recv, IntPtr sel);
     }
 }
 
