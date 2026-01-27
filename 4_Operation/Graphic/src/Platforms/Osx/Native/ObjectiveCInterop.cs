@@ -59,6 +59,30 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <returns>The int ptr</returns>
         [DllImport(Objc, EntryPoint = "sel_registerName", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr sel_registerName(string name);
+        
+        [DllImport("libobjc.A.dylib", EntryPoint = "objc_msgSend")]
+        public static extern NsRect objc_msgSend_NSRect(IntPtr receiver, IntPtr selector);
+        
+        [DllImport("libobjc.A.dylib", EntryPoint = "objc_msgSend_stret")]
+        public static extern void objc_msgSend_stret(out NsRect ret, IntPtr receiver, IntPtr selector);
+
+        
+        public static NsRect NSViewGetFrame(IntPtr view)
+        {
+            return objc_msgSend_NSRect(view, Sel("frame"));
+        }
+        
+        public static NsRect GetWindowFrame(IntPtr nsWindow)
+        {
+        #if osxarm64 || osxarm
+                    // Apple Silicon: usar objc_msgSend directamente
+                    return objc_msgSend_NSRect(nsWindow, Sel("frame"));
+        #else
+            // Intel: usar objc_msgSend_stret
+            objc_msgSend_stret(out NsRect frame, nsWindow, Sel("frame"));
+            return frame;
+        #endif
+                }
 
         /// <summary>
         /// Objcs the msg send using the specified recv
