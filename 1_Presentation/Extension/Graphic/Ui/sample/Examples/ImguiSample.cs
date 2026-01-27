@@ -87,20 +87,6 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
         /// </summary>
         private int _counter;
 
-        // State to handle mouse click/double-click detection
-        /// <summary>
-        /// The prev mouse down
-        /// </summary>
-        private readonly bool[] _prevMouseDown = new bool[5];
-        /// <summary>
-        /// The last click time
-        /// </summary>
-        private readonly double[] _lastClickTime = new double[5];
-        /// <summary>
-        /// The vector
-        /// </summary>
-        private readonly Alis.Core.Aspect.Math.Vector.Vector2F[] _lastClickPos = new Alis.Core.Aspect.Math.Vector.Vector2F[5];
-
         private ImGuiStyle style;
 
         /// <summary>
@@ -248,73 +234,6 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
         public void Draw()
         {
             var io = ImGui.GetIo();
-            
-            // Feed mouse state from platform using guarded checks (no try/catch)
-            if (_platform != null)
-            {
-                _platform.GetMouseState(out int mx, out int my, out bool[] mButtons);
-                io.MousePos = new Alis.Core.Aspect.Math.Vector.Vector2F(mx, my);
-
-                var mouseDownList = new System.Collections.Generic.List<bool>();
-                for (int i = 0; i < 5; i++) mouseDownList.Add(i < mButtons.Length ? mButtons[i] : false);
-                // We'll compute MouseClicked / MouseDoubleClicked / MouseClickedTime / MouseClickedCount below
-                // Prepare default click-related lists (cleared each frame)
-                var mouseClicked = new System.Collections.Generic.List<bool> { false, false, false, false, false };
-                var mouseDoubleClicked = new System.Collections.Generic.List<bool> { false, false, false, false, false };
-                var mouseClickedTime = new System.Collections.Generic.List<double> { 0, 0, 0, 0, 0 };
-                var mouseClickedCount = new System.Collections.Generic.List<ushort> { 0, 0, 0, 0, 0 };
-
-                // Detect transitions and fill click info
-                double now = (double)System.Diagnostics.Stopwatch.GetTimestamp() / System.Diagnostics.Stopwatch.Frequency;
-                for (int i = 0; i < 5; i++)
-                {
-                    bool down = i < mButtons.Length ? mButtons[i] : false;
-                    bool prev = _prevMouseDown[i];
-
-                    // On press (was up, now down) -> register click
-                    if (down && !prev)
-                    {
-                        mouseClicked[i] = true;
-                        mouseClickedTime[i] = now;
-                        mouseClickedCount[i] = (ushort)(mouseClickedCount[i] + 1);
-
-                        // Double click detection: compare with last click time and position
-                        double dt = now - _lastClickTime[i];
-                        float maxDist = io.MouseDoubleClickMaxDist;
-                        float dx = io.MousePos.X - _lastClickPos[i].X;
-                        float dy = io.MousePos.Y - _lastClickPos[i].Y;
-                        float dist2 = dx * dx + dy * dy;
-                        if (dt <= io.MouseDoubleClickTime && dist2 <= (maxDist * maxDist))
-                        {
-                            mouseDoubleClicked[i] = true;
-                            // Mark clicked count as a double-click (2)
-                            mouseClickedCount[i] = 2;
-                        }
-
-                        // Update last click info
-                        _lastClickTime[i] = now;
-                        _lastClickPos[i] = io.MousePos;
-                    }
-
-                    // Update prev state for next frame
-                    _prevMouseDown[i] = down;
-                }
-
-                // Finally set mouse down and click lists into io
-                io.MouseDown = mouseDownList;
-                io.MouseClicked = mouseClicked;
-                io.MouseClickedTime = mouseClickedTime;
-                io.MouseClickedCount = mouseClickedCount;
-                io.MouseDoubleClicked = mouseDoubleClicked;
-                io.MouseWheel = _platform.GetMouseWheel();
-            }
-            else
-            {
-                // No platform: ensure sane defaults
-                io.MousePos = new Alis.Core.Aspect.Math.Vector.Vector2F(0, 0);
-                io.MouseDown = new System.Collections.Generic.List<bool> { false, false, false, false, false };
-                io.MouseWheel = 0.0f;
-            }
 
             ImGui.NewFrame();
 
