@@ -168,18 +168,34 @@ namespace Alis.Core.Graphic.Platforms.Osx
                     long ly = Marshal.ReadInt64(locationPtr, 8);
                     double px = BitConverter.Int64BitsToDouble(lx);
                     double py = BitConverter.Int64BitsToDouble(ly);
-                    mouseX = (int)Math.Round(px);
-                    mouseY = (int)Math.Round(py);
+                    mouseX = (int) Math.Round(px);
+                    mouseY = (int) Math.Round(py);
 
-                    if (type == 1) { mouseButtons[0] = true; Console.WriteLine($"Mouse izquierdo presionado en ({mouseX},{mouseY})"); }
-                    else if (type == 2) { mouseButtons[0] = false; Console.WriteLine($"Mouse izquierdo soltado en ({mouseX},{mouseY})"); }
-                    else if (type == 3) { mouseButtons[1] = true; Console.WriteLine($"Mouse derecho presionado en ({mouseX},{mouseY})"); }
-                    else if (type == 4) { mouseButtons[1] = false; Console.WriteLine($"Mouse derecho soltado en ({mouseX},{mouseY})"); }
+                    if (type == 1)
+                    {
+                        mouseButtons[0] = true;
+                        Console.WriteLine($"Mouse izquierdo presionado en ({mouseX},{mouseY})");
+                    }
+                    else if (type == 2)
+                    {
+                        mouseButtons[0] = false;
+                        Console.WriteLine($"Mouse izquierdo soltado en ({mouseX},{mouseY})");
+                    }
+                    else if (type == 3)
+                    {
+                        mouseButtons[1] = true;
+                        Console.WriteLine($"Mouse derecho presionado en ({mouseX},{mouseY})");
+                    }
+                    else if (type == 4)
+                    {
+                        mouseButtons[1] = false;
+                        Console.WriteLine($"Mouse derecho soltado en ({mouseX},{mouseY})");
+                    }
                     else if (type == 22)
                     {
                         // scrollDeltaY
                         double deltaY = ObjectiveCInterop.objc_msgSend_double(evt, ObjectiveCInterop.Sel("deltaY"));
-                        mouseWheel = (float)deltaY;
+                        mouseWheel = (float) deltaY;
                         Console.WriteLine($"Scroll: {mouseWheel}");
                     }
 
@@ -205,6 +221,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
                                 c = chars[0];
                         }
                     }
+
                     Console.WriteLine($"Tecla presionada: keyCode={keyCode} char='{c}'");
 
                     // Mapear por keyCode primero (teclas especiales y flechas)
@@ -428,6 +445,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
                                 c = chars[0];
                         }
                     }
+
                     Console.WriteLine($"Tecla soltada: keyCode={keyCode} char='{c}'");
 
                     switch (keyCode)
@@ -531,44 +549,31 @@ namespace Alis.Core.Graphic.Platforms.Osx
         ///     Obtiene el estado actual del ratón (posición y botones)
         /// </summary>
 
-      
-      public void GetMouseState(out int x, out int y, out bool[] buttons)
-      {
-          // Obtener la posición global del mouse
-          var mouseLocation = GetMouseLocation();
-      
-          // Si tienes acceso a la ventana, deberías convertir a coordenadas relativas a la ventana aquí
-          // Por ejemplo: mouseLocation = ConvertirAGlobal(mouseLocation);
-      
-          x = (int)mouseLocation.X;
-          y = (int)mouseLocation.Y;
-          buttons = (bool[])mouseButtons.Clone();
-      }
-      
-      // Estructura para la posición
-      private struct CGPoint
-      {
-          public double X;
-          public double Y;
-      }
-      
-      // P/Invoke para obtener la posición global del mouse
-      [DllImport("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics")]
-      private static extern CGPoint CGEventGetLocation(IntPtr eventRef);
-      
-      private CGPoint GetMouseLocation()
-      {
-          IntPtr eventRef = CGEventCreate(IntPtr.Zero);
-          CGPoint point = CGEventGetLocation(eventRef);
-          CFRelease(eventRef);
-          return point;
-      }
-      
-      [DllImport("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics")]
-      private static extern IntPtr CGEventCreate(IntPtr source);
-      
-      [DllImport("/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation")]
-      private static extern void CFRelease(IntPtr cf);
+
+        public void GetMouseState(out int x, out int y, out bool[] buttons)
+        {
+            // Obtener la posición global del mouse
+            var mouseLocation = GetMouseLocation();
+
+            // Si tienes acceso a la ventana, deberías convertir a coordenadas relativas a la ventana aquí
+            // Por ejemplo: mouseLocation = ConvertirAGlobal(mouseLocation);
+
+            x = (int) mouseLocation.X;
+            y = (int) mouseLocation.Y;
+            buttons = (bool[]) mouseButtons.Clone();
+        }
+
+        // Estructura para la posición
+
+        private CGPoint GetMouseLocation()
+        {
+            IntPtr eventRef = ObjectiveCInterop.CGEventCreate(IntPtr.Zero);
+            CGPoint point = ObjectiveCInterop.CGEventGetLocation(eventRef);
+            ObjectiveCInterop.CFRelease(eventRef);
+            return point;
+        }
+
+
 
         /// <summary>
         ///     Obtiene delta de rueda (vertical) y lo consume
@@ -606,7 +611,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
             const int RtldDefault = 0;
             if (_openGlHandle == IntPtr.Zero)
             {
-                _openGlHandle = Dlopen(OpenGLPath, RtldDefault);
+                _openGlHandle = ObjectiveCInterop.Dlopen(OpenGLPath, RtldDefault);
                 if (_openGlHandle == IntPtr.Zero)
                 {
                     Logger.Info("❌ No se pudo abrir la librería OpenGL");
@@ -614,24 +619,10 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 }
             }
 
-            return Dlsym(_openGlHandle, name);
+            return ObjectiveCInterop.Dlsym(_openGlHandle, name);
         }
 
-        /// <summary>
-        /// </summary>
-        /// <param name="handle"></param>
-        /// <param name="symbol"></param>
-        /// <returns></returns>
-        [DllImport("/usr/lib/libSystem.B.dylib", EntryPoint = "dlsym", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr Dlsym(IntPtr handle, string symbol);
 
-        /// <summary>
-        /// </summary>
-        /// <param name="path"></param>
-        /// <param name="mode"></param>
-        /// <returns></returns>
-        [DllImport("/usr/lib/libSystem.B.dylib", EntryPoint = "dlopen", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr Dlopen(string path, int mode);
 
         /// <summary>
         /// Creates the window and sets the icon from the specified BMP file path (Cocoa, using objc_msgSend)
@@ -643,17 +634,17 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 return false;
             try
             {
-                IntPtr nsImageClass = objc_getClass("NSImage");
-                IntPtr allocSel = sel_registerName("alloc");
-                IntPtr initWithContentsSel = sel_registerName("initWithContentsOfFile:");
-                IntPtr nsAppClass = objc_getClass("NSApplication");
-                IntPtr sharedAppSel = sel_registerName("sharedApplication");
-                IntPtr setIconSel = sel_registerName("setApplicationIconImage:");
+                IntPtr nsImageClass = ObjectiveCInterop.objc_getClass("NSImage");
+                IntPtr allocSel = ObjectiveCInterop.sel_registerName("alloc");
+                IntPtr initWithContentsSel = ObjectiveCInterop.sel_registerName("initWithContentsOfFile:");
+                IntPtr nsAppClass = ObjectiveCInterop.objc_getClass("NSApplication");
+                IntPtr sharedAppSel = ObjectiveCInterop.sel_registerName("sharedApplication");
+                IntPtr setIconSel = ObjectiveCInterop.sel_registerName("setApplicationIconImage:");
 
-                IntPtr nsImageAlloc = objc_msgSend(nsImageClass, allocSel);
-                IntPtr nsImage = objc_msgSend(nsImageAlloc, initWithContentsSel, Marshal.StringToHGlobalAuto(iconPath));
-                IntPtr nsApp = objc_msgSend(nsAppClass, sharedAppSel);
-                objc_msgSend(nsApp, setIconSel, nsImage);
+                IntPtr nsImageAlloc = ObjectiveCInterop.objc_msgSend(nsImageClass, allocSel);
+                IntPtr nsImage = ObjectiveCInterop.objc_msgSend(nsImageAlloc, initWithContentsSel, Marshal.StringToHGlobalAuto(iconPath));
+                IntPtr nsApp = ObjectiveCInterop.objc_msgSend(nsAppClass, sharedAppSel);
+                ObjectiveCInterop.objc_msgSend(nsApp, setIconSel, nsImage);
             }
             catch (Exception ex)
             {
@@ -671,72 +662,34 @@ namespace Alis.Core.Graphic.Platforms.Osx
         {
             try
             {
-                IntPtr nsImageClass = objc_getClass("NSImage");
-                IntPtr allocSel = sel_registerName("alloc");
-                IntPtr initWithContentsSel = sel_registerName("initWithContentsOfFile:");
-                IntPtr nsAppClass = objc_getClass("NSApplication");
-                IntPtr sharedAppSel = sel_registerName("sharedApplication");
-                IntPtr setIconSel = sel_registerName("setApplicationIconImage:");
-                IntPtr nsStringClass = objc_getClass("NSString");
-                IntPtr stringWithUTF8Sel = sel_registerName("stringWithUTF8String:");
+                IntPtr nsImageClass = ObjectiveCInterop.objc_getClass("NSImage");
+                IntPtr allocSel = ObjectiveCInterop.sel_registerName("alloc");
+                IntPtr initWithContentsSel = ObjectiveCInterop.sel_registerName("initWithContentsOfFile:");
+                IntPtr nsAppClass = ObjectiveCInterop.objc_getClass("NSApplication");
+                IntPtr sharedAppSel = ObjectiveCInterop.sel_registerName("sharedApplication");
+                IntPtr setIconSel = ObjectiveCInterop.sel_registerName("setApplicationIconImage:");
+                IntPtr nsStringClass = ObjectiveCInterop.objc_getClass("NSString");
+                IntPtr stringWithUTF8Sel = ObjectiveCInterop.sel_registerName("stringWithUTF8String:");
 
                 // Crear NSString desde el path
                 IntPtr iconPathUtf8 = Marshal.StringToHGlobalAnsi(iconPath);
-                IntPtr nsString = objc_msgSend(nsStringClass, stringWithUTF8Sel, iconPathUtf8);
+                IntPtr nsString = ObjectiveCInterop.objc_msgSend(nsStringClass, stringWithUTF8Sel, iconPathUtf8);
                 Marshal.FreeHGlobal(iconPathUtf8);
                 if (nsString == IntPtr.Zero)
                     return;
 
-                IntPtr nsImageAlloc = objc_msgSend(nsImageClass, allocSel);
-                IntPtr nsImage = objc_msgSend(nsImageAlloc, initWithContentsSel, nsString);
+                IntPtr nsImageAlloc = ObjectiveCInterop.objc_msgSend(nsImageClass, allocSel);
+                IntPtr nsImage = ObjectiveCInterop.objc_msgSend(nsImageAlloc, initWithContentsSel, nsString);
                 if (nsImage == IntPtr.Zero)
                     return;
-                IntPtr nsApp = objc_msgSend(nsAppClass, sharedAppSel);
-                objc_msgSend(nsApp, setIconSel, nsImage);
+                IntPtr nsApp = ObjectiveCInterop.objc_msgSend(nsAppClass, sharedAppSel);
+                ObjectiveCInterop.objc_msgSend(nsApp, setIconSel, nsImage);
             }
             catch (Exception ex)
             {
                 Logger.Error($"❌ Error to set window icon: {ex.Message}");
             }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="receiver"></param>
-        /// <param name="selector"></param>
-        /// <returns></returns>
-        [DllImport("/usr/lib/libobjc.A.dylib")]
-        private static extern IntPtr objc_msgSend(IntPtr receiver, IntPtr selector);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="receiver"></param>
-        /// <param name="selector"></param>
-        /// <param name="arg1"></param>
-        /// <returns></returns>
-        [DllImport("/usr/lib/libobjc.A.dylib")]
-        private static extern IntPtr objc_msgSend(IntPtr receiver, IntPtr selector, IntPtr arg1);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        [DllImport("/usr/lib/libobjc.A.dylib")]
-        private static extern IntPtr objc_getClass(string name);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        [DllImport("/usr/lib/libobjc.A.dylib")]
-        private static extern IntPtr sel_registerName(string name);
-
-        [DllImport("/usr/lib/libobjc.A.dylib")]
-        public static extern double objc_msgSend_double(IntPtr receiver, IntPtr selector);
     }
 }
 #endif
