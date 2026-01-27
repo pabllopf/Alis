@@ -98,6 +98,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
             // Configure IO and features
             ImGuiIoPtr io = ImGui.GetIo();
             io.DisplaySize = new Vector2F(_platform.GetWindowWidth(), _platform.GetWindowHeight());
+            
 
             Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
 

@@ -114,6 +114,10 @@ namespace Alis.App.Hub
         private readonly double[] _mouseClickedTime = new double[5];
         private readonly ushort[] _mouseClickedCount = new ushort[5];
 
+        private int resolutionProgramX = 1025;
+        private int resolutionProgramY = 575;
+        
+        
         /// <summary>
         /// Application entry point.
         /// </summary>
@@ -129,7 +133,7 @@ namespace Alis.App.Hub
             Debug.Assert(platform != null, "Platform implementation must be provided for the current OS.");
 
             // Initialize native window and GL context
-            if (!InitializePlatform(platform, 1025, 575, "Alis Hub - by @pabllopf"))
+            if (!InitializePlatform(platform, resolutionProgramX, resolutionProgramY, "Alis Hub - by @pabllopf"))
             {
                 Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
                 platform?.Cleanup();
@@ -947,9 +951,6 @@ namespace Alis.App.Hub
         public void Draw()
         {
             _spaceWork.io = ImGui.GetIo();
-
-            // Update display size each frame (handles window resize)
-            _spaceWork.io.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(platform.GetWindowWidth(), platform.GetWindowHeight());
             
             // --- Reemplazar la sección de manejo del ratón dentro de Draw() por llamadas a las APIs de ImGui IO ---
             if (platform != null)
@@ -970,9 +971,6 @@ namespace Alis.App.Hub
                 // Rueda del ratón (solo eje Y, asumimos 0 en X)
                 float wheel = platform.GetMouseWheel();
                 _spaceWork.io.AddMouseWheelEvent(wheel, 0.0f);
-
-                // Mantener DisplaySize actualizado
-                _spaceWork.io.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(platform.GetWindowWidth(), platform.GetWindowHeight());
             }
             else
             {
@@ -1021,7 +1019,18 @@ namespace Alis.App.Hub
             Gl.GlDisable(EnableCap.DepthTest);
             Gl.GlEnable(EnableCap.ScissorTest);
 
-            Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
+            // Obtener el viewport real del framebuffer
+            int[] viewport = new int[4];
+            Gl.GlGetIntegerv(0x0BA2, viewport); // 0x0BA2 = GL_VIEWPORT
+            int fbWidth = viewport[2];
+            int fbHeight = viewport[3];
+            ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
+            imGuiIoPtr.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(fbWidth, fbHeight);
+            imGuiIoPtr.DisplayFramebufferScale = new Alis.Core.Aspect.Math.Vector.Vector2F(
+                resolutionProgramX / imGuiIoPtr.DisplaySize.X,
+                resolutionProgramY / imGuiIoPtr.DisplaySize.Y);
+            
+            Console.WriteLine($"Framebuffer Size: {fbWidth}x{fbHeight} | Display Size: {imGuiIoPtr.DisplaySize.X}x{imGuiIoPtr.DisplaySize.Y} | Scale: {imGuiIoPtr.DisplayFramebufferScale.X}x{imGuiIoPtr.DisplayFramebufferScale.Y}");
 
             float l = 0.0f;
             float r = ImGui.GetIo().DisplaySize.X;
