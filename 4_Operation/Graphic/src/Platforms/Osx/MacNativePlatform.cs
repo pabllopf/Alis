@@ -191,6 +191,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
                         mouseButtons[1] = false;
                         Console.WriteLine($"Mouse derecho soltado en ({mouseX},{mouseY})");
                     }
+                    
                     else if (type == 22)
                     {
                         // scrollDeltaY
