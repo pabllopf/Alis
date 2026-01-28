@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
@@ -98,7 +99,28 @@ namespace Alis.Extension.Graphic.Ui.Sample
             // Configure IO and features
             ImGuiIoPtr io = ImGui.GetIo();
             io.DisplaySize = new Vector2F(_platform.GetWindowWidth(), _platform.GetWindowHeight());
-            
+
+            // --- Mapeo de teclas ImGui-KeyMap (solo una vez) ---
+            io.KeyMap[(int)ImGuiKey.Tab] = (int)ConsoleKey.Tab;
+            io.KeyMap[(int)ImGuiKey.LeftArrow] = (int)ConsoleKey.LeftArrow;
+            io.KeyMap[(int)ImGuiKey.RightArrow] = (int)ConsoleKey.RightArrow;
+            io.KeyMap[(int)ImGuiKey.UpArrow] = (int)ConsoleKey.UpArrow;
+            io.KeyMap[(int)ImGuiKey.DownArrow] = (int)ConsoleKey.DownArrow;
+            io.KeyMap[(int)ImGuiKey.PageUp] = (int)ConsoleKey.PageUp;
+            io.KeyMap[(int)ImGuiKey.PageDown] = (int)ConsoleKey.PageDown;
+            io.KeyMap[(int)ImGuiKey.Home] = (int)ConsoleKey.Home;
+            io.KeyMap[(int)ImGuiKey.End] = (int)ConsoleKey.End;
+            io.KeyMap[(int)ImGuiKey.Delete] = (int)ConsoleKey.Delete;
+            io.KeyMap[(int)ImGuiKey.Backspace] = (int)ConsoleKey.Backspace;
+            io.KeyMap[(int)ImGuiKey.Enter] = (int)ConsoleKey.Enter;
+            io.KeyMap[(int)ImGuiKey.Escape] = (int)ConsoleKey.Escape;
+            io.KeyMap[(int)ImGuiKey.A] = (int)ConsoleKey.A;
+            io.KeyMap[(int)ImGuiKey.C] = (int)ConsoleKey.C;
+            io.KeyMap[(int)ImGuiKey.V] = (int)ConsoleKey.V;
+            io.KeyMap[(int)ImGuiKey.X] = (int)ConsoleKey.X;
+            io.KeyMap[(int)ImGuiKey.Y] = (int)ConsoleKey.Y;
+            io.KeyMap[(int)ImGuiKey.Z] = (int)ConsoleKey.Z;
+            // --- Fin mapeo teclas ---
 
             Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
 
@@ -169,6 +191,18 @@ namespace Alis.Extension.Graphic.Ui.Sample
             style.WindowRounding = 0.0f;
             style.Colors2 = new Vector4F(0.00f, 0.00f, 0.00f, 1.00f);
 
+            // Variables para detectar flancos de mouse y teclas
+            bool[] prevMouseButtons = new bool[3];
+            float prevMouseWheel = 0.0f;
+            Dictionary<ConsoleKey, bool> prevKeyState = new Dictionary<ConsoleKey, bool>();
+            // Lista de teclas relevantes (las del KeyMap de ImGui)
+            ConsoleKey[] trackedKeys = new ConsoleKey[] {
+                ConsoleKey.Tab, ConsoleKey.LeftArrow, ConsoleKey.RightArrow, ConsoleKey.UpArrow, ConsoleKey.DownArrow,
+                ConsoleKey.PageUp, ConsoleKey.PageDown, ConsoleKey.Home, ConsoleKey.End, ConsoleKey.Delete, ConsoleKey.Backspace,
+                ConsoleKey.Enter, ConsoleKey.Escape, ConsoleKey.A, ConsoleKey.C, ConsoleKey.V, ConsoleKey.X, ConsoleKey.Y, ConsoleKey.Z
+            };
+            foreach (var k in trackedKeys) prevKeyState[k] = false;
+
             // Main loop
             bool running = true;
             while (running)
@@ -185,6 +219,65 @@ namespace Alis.Extension.Graphic.Ui.Sample
 
                 // Process key states for ImGui every frame (send down/up)
                 ProcessKeyWithImgui();
+
+                // --- NUEVO: Procesar eventos de mouse y teclas modificadoras para ImGui ---
+                int mouseX, mouseY;
+                bool[] mouseButtons;
+                _platform.GetMouseState(out mouseX, out mouseY, out mouseButtons);
+                float mouseWheel = _platform.GetMouseWheel();
+
+                // --- Detección de flancos para mouse ---
+                for (int i = 0; i < 3; i++)
+                {
+                    bool prev = prevMouseButtons[i];
+                    bool curr = (mouseButtons != null && mouseButtons.Length > i) ? mouseButtons[i] : false;
+                    if (!prev && curr)
+                    {
+                        if (i == 0) Console.WriteLine($"Mouse izquierdo presionado en ({mouseX},{mouseY})");
+                        else if (i == 1) Console.WriteLine($"Mouse derecho presionado en ({mouseX},{mouseY})");
+                        else if (i == 2) Console.WriteLine($"Mouse central presionado en ({mouseX},{mouseY})");
+                    }
+                    else if (prev && !curr)
+                    {
+                        if (i == 0) Console.WriteLine($"Mouse izquierdo soltado en ({mouseX},{mouseY})");
+                        else if (i == 1) Console.WriteLine($"Mouse derecho soltado en ({mouseX},{mouseY})");
+                        else if (i == 2) Console.WriteLine($"Mouse central soltado en ({mouseX},{mouseY})");
+                    }
+                    prevMouseButtons[i] = curr;
+                }
+                // --- Detección de flanco para scroll ---
+                if (mouseWheel != 0.0f && prevMouseWheel == 0.0f)
+                {
+                    Console.WriteLine($"Scroll: {mouseWheel}");
+                }
+                prevMouseWheel = mouseWheel;
+
+                // --- Detección de flancos para teclas relevantes ---
+                foreach (var k in trackedKeys)
+                {
+                    bool prev = prevKeyState[k];
+                    bool curr = _platform.IsKeyDown(k);
+                    if (!prev && curr)
+                        Console.WriteLine($"Tecla presionada: {k}");
+                    else if (prev && !curr)
+                        Console.WriteLine($"Tecla soltada: {k}");
+                    prevKeyState[k] = curr;
+                }
+
+                io.AddMousePosEvent(mouseX, mouseY);
+                io.AddMouseButtonEvent(0, mouseButtons != null && mouseButtons.Length > 0 && mouseButtons[0]); // Izquierdo
+                io.AddMouseButtonEvent(1, mouseButtons != null && mouseButtons.Length > 1 && mouseButtons[1]); // Derecho
+                io.AddMouseButtonEvent(2, mouseButtons != null && mouseButtons.Length > 2 && mouseButtons[2]); // Central
+                if (mouseWheel != 0.0f)
+                {
+                    io.AddMouseWheelEvent(0.0f, mouseWheel);
+                }
+                // Teclas modificadoras
+                //io.AddKeyEvent(ImGuiKey.ModCtrl, _platform.IsKeyDown(ConsoleKey.LeftCtrl) || _platform.IsKeyDown(ConsoleKey.RightCtrl));
+                //io.AddKeyEvent(ImGuiKey.ModShift, _platform.IsKeyDown(ConsoleKey.LeftShift) || _platform.IsKeyDown(ConsoleKey.RightShift));
+                //io.AddKeyEvent(ImGuiKey.ModAlt, _platform.IsKeyDown(ConsoleKey.LeftAlt) || _platform.IsKeyDown(ConsoleKey.RightAlt));
+                //io.AddKeyEvent(ImGuiKey.ModSuper, _platform.IsKeyDown(ConsoleKey.LeftWindows) || _platform.IsKeyDown(ConsoleKey.RightWindows));
+                // --- FIN NUEVO ---
 
                 // If platform provides text input (characters), forward them to ImGui
                 if (_platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
