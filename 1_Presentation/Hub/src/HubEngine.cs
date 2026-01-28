@@ -114,8 +114,8 @@ namespace Alis.App.Hub
         private readonly double[] _mouseClickedTime = new double[5];
         private readonly ushort[] _mouseClickedCount = new ushort[5];
 
-        private int resolutionProgramX = 1025;
-        private int resolutionProgramY = 575;
+        private float resolutionProgramX = 1025;
+        private float resolutionProgramY = 575;
         
         
         /// <summary>
@@ -133,7 +133,7 @@ namespace Alis.App.Hub
             Debug.Assert(platform != null, "Platform implementation must be provided for the current OS.");
 
             // Initialize native window and GL context
-            if (!InitializePlatform(platform, resolutionProgramX, resolutionProgramY, "Alis Hub - by @pabllopf"))
+            if (!InitializePlatform(platform, (int)resolutionProgramX, (int)resolutionProgramY, "Alis Hub - by @pabllopf"))
             {
                 Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
                 platform?.Cleanup();
@@ -942,6 +942,7 @@ namespace Alis.App.Hub
             style.DisabledAlpha = 0.6f;
             
             _spaceWork.Style = style;
+           
         }
 
         /// <summary>
@@ -1026,9 +1027,19 @@ namespace Alis.App.Hub
             int fbHeight = viewport[3];
             ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
             imGuiIoPtr.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(fbWidth, fbHeight);
-            imGuiIoPtr.DisplayFramebufferScale = new Alis.Core.Aspect.Math.Vector.Vector2F(
-                resolutionProgramX / imGuiIoPtr.DisplaySize.X,
-                resolutionProgramY / imGuiIoPtr.DisplaySize.Y);
+            
+            
+            float scaleX = fbWidth / resolutionProgramX;
+            float scaleY = fbHeight / resolutionProgramY;
+            float scaleFactor = Math.Min(scaleX, scaleY);
+
+            Console.WriteLine($"Setting style scale factor: {scaleFactor}");
+            
+            _spaceWork.Style.ScaleAllSizes(scaleFactor);
+            var io = ImGui.GetIo();
+            io.FontGlobalScale = scaleFactor;
+            
+            
             
             Console.WriteLine($"Framebuffer Size: {fbWidth}x{fbHeight} | Display Size: {imGuiIoPtr.DisplaySize.X}x{imGuiIoPtr.DisplaySize.Y} | Scale: {imGuiIoPtr.DisplayFramebufferScale.X}x{imGuiIoPtr.DisplayFramebufferScale.Y}");
 
