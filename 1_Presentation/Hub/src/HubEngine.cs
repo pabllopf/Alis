@@ -393,25 +393,21 @@ namespace Alis.App.Hub
             platform.GetMousePositionInView(out float mx, out float my);
             
             
-            my = fbH - my; // Invertir coordenada Y para ImGui
+            //my = fbH - my; // Invertir coordenada Y para ImGui
 
-            if (isFirstTime)
-            {
-                // GL_VIEWPORT
-                int[] viewport = new int[4];
-                Gl.GlGetIntegerv(0x0BA2, viewport);
-                glViewportWidth = viewport[2];
-                glViewportHeight = viewport[3];
+            // GL_VIEWPORT
+            int[] viewport = new int[4];
+            Gl.GlGetIntegerv(0x0BA2, viewport);
+            glViewportWidth = viewport[2];
+            glViewportHeight = viewport[3];
             
-                float scaleX = glViewportWidth / resolutionProgramX;
-                float scaleY = glViewportHeight / resolutionProgramY;
-                scaleFactor = Math.Min(scaleX, scaleY);
-                isFirstTime = false;
-            }
+            float scaleX = glViewportWidth / resolutionProgramX;
+            float scaleY = glViewportHeight / resolutionProgramY;
            
+            my = fbH - my;
 
-            mx *= scaleFactor;
-            my *= scaleFactor; 
+            mx *= scaleX;
+            my *= scaleY; 
             
             //Console.WriteLine($"Mouse Pos in windows: X={mx}, Y={my} | Display Framebuffer Size: W={glViewportWidth}, H={glViewportHeight} | Window Size: W={winW}, H={winH} | Window Pos: X={winX}, Y={winY} | Windows Space Windows {fbW}, {fbH} | Scale Factor: {scaleFactor} | Resolution Program: W={resolutionProgramX}, H={resolutionProgramY} ");
             io.AddMousePosEvent(mx, my);
@@ -1067,32 +1063,28 @@ namespace Alis.App.Hub
             Gl.GlDisable(EnableCap.DepthTest);
             Gl.GlEnable(EnableCap.ScissorTest);
 
-            if (firstTimeScale)
-            {
-                // Obtener el viewport real del framebuffer
-                int[] viewport = new int[4];
-                Gl.GlGetIntegerv(0x0BA2, viewport); // 0x0BA2 = GL_VIEWPORT
-                int fbWidth = viewport[2];
-                int fbHeight = viewport[3];
-                ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
-                imGuiIoPtr.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(fbWidth, fbHeight);
+            // Obtener el viewport real del framebuffer
+            int[] viewport = new int[4];
+            Gl.GlGetIntegerv(0x0BA2, viewport); // 0x0BA2 = GL_VIEWPORT
+            int fbWidth = viewport[2];
+            int fbHeight = viewport[3];
+            ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
+            imGuiIoPtr.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(fbWidth, fbHeight);
             
             
-                float scaleX = fbWidth / resolutionProgramX;
-                float scaleY = fbHeight / resolutionProgramY;
-                scaleFactor = Math.Min(scaleX, scaleY);
+            float scaleX = fbWidth / resolutionProgramX;
+            float scaleY = fbHeight / resolutionProgramY;
+            scaleFactor = Math.Min(scaleX, scaleY);
 
-                Console.WriteLine($"Setting style scale factor: {scaleFactor}");
+            Console.WriteLine($"Setting style scale factor: {scaleFactor}");
             
-                _spaceWork.Style.ScaleAllSizes(scaleFactor);
-                _spaceWork.io.FontGlobalScale = scaleFactor;
+            _spaceWork.Style.ScaleAllSizes(scaleFactor);
+            _spaceWork.io.FontGlobalScale = scaleFactor;
             
             
             
-                Console.WriteLine($"Framebuffer Size: {fbWidth}x{fbHeight} | Display Size: {imGuiIoPtr.DisplaySize.X}x{imGuiIoPtr.DisplaySize.Y} | Scale: {imGuiIoPtr.DisplayFramebufferScale.X}x{imGuiIoPtr.DisplayFramebufferScale.Y}");
+            Console.WriteLine($"Framebuffer Size: {fbWidth}x{fbHeight} | Display Size: {imGuiIoPtr.DisplaySize.X}x{imGuiIoPtr.DisplaySize.Y} | Scale: {imGuiIoPtr.DisplayFramebufferScale.X}x{imGuiIoPtr.DisplayFramebufferScale.Y}");
 
-                firstTimeScale = false;
-            }
             
             
             float l = 0.0f;
