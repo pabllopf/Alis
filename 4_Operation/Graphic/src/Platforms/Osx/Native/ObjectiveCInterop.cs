@@ -287,10 +287,10 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <param name="selector"></param>
         /// <param name="arg1"></param>
         /// <returns></returns>
-        [DllImport("/usr/lib/libobjc.A.dylib")]
+        [DllImport("/usr/lib/libobjc.A.dylib", EntryPoint =  "objc_msgSend")]
         public static extern IntPtr objc_msgSend(IntPtr receiver, IntPtr selector, IntPtr arg1);
 
-        [DllImport("/usr/lib/libobjc.A.dylib")]
+        [DllImport("/usr/lib/libobjc.A.dylib", EntryPoint =  "objc_msgSend")]
         public static extern double objc_msgSend_double(IntPtr receiver, IntPtr selector);
         
         /// <summary>
