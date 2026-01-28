@@ -283,7 +283,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Ons the render
         /// </summary>
-        public override void OnRender()
+        public override void OnRender(float scaleFactor)
         {
             DetectInstalledVersions();
 
