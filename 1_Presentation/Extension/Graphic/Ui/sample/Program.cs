@@ -58,6 +58,9 @@ namespace Alis.Extension.Graphic.Ui.Sample
         /// </summary>
         private static INativePlatform _platform;
         
+        private static float resolutionProgramX = 800.0f;
+        private static float resolutionProgramY = 600.0f;
+        
         /// <summary>
         /// Application entry point.
         /// </summary>
@@ -72,7 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
             Debug.Assert(_platform != null, "Platform implementation must be provided for the current OS.");
 
             // Initialize native window and GL context
-            if (!InitializePlatform(_platform, 800, 600, "C# + OpenGL Platform"))
+            if (!InitializePlatform(_platform, (int)resolutionProgramX, (int)resolutionProgramY, "C# + OpenGL Platform"))
             {
                 Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
                 _platform.Cleanup();
@@ -240,10 +243,15 @@ namespace Alis.Extension.Graphic.Ui.Sample
             _platform.Cleanup();
         }
         
+        private static bool isFirstTime = true;
+        private static float scaleFactor;
+        private static int glViewportWidth;
+        private static int glViewportHeight;
+        
         private static void UpdateMousePosAndButtons()
         {
             var io = ImGui.GetIo();
-            //Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO no inicializado");
+            Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO no inicializado");
 
             // Obtener estado del mouse desde la plataforma
             _platform.GetMouseState(out int mouseX, out int mouseY, out bool[] mouseButtons);
@@ -252,23 +260,32 @@ namespace Alis.Extension.Graphic.Ui.Sample
             _platform.GetWindowMetrics(out int winX, out int winY,
                 out int winW, out int winH,
                 out int fbW, out int fbH);
-
-            //Console.WriteLine($"Window Pos: X={winX}, Y={winY} | Window Size: W={winW}, H={winH} | FB Size: W={fbW}, H={fbH}");
-
-            
             
             _platform.GetMousePositionInView(out float mx, out float my);
             
-            Console.WriteLine($"Mouse Pos in View: X={mx}, Y={my}");
             
-            // Origen arriba-izquierda (para ImGui)
-            float imguiY = 600 - my;
+            my = fbH - my; // Invertir coordenada Y para ImGui
 
-// Limitar dentro del framebuffer si quieres
-            mx = Math.Clamp(mx, 0, 800);
-            imguiY = Math.Clamp(imguiY, 0, 600);
+            if (isFirstTime)
+            {
+                // GL_VIEWPORT
+                int[] viewport = new int[4];
+                Gl.GlGetIntegerv(0x0BA2, viewport);
+                glViewportWidth = viewport[2];
+                glViewportHeight = viewport[3];
+            
+                float scaleX = glViewportWidth / resolutionProgramX;
+                float scaleY = glViewportHeight / resolutionProgramY;
+                scaleFactor = Math.Min(scaleX, scaleY);
+                isFirstTime = false;
+            }
+           
 
-            io.AddMousePosEvent(mx, imguiY);
+            mx *= scaleFactor;
+            my *= scaleFactor; 
+            
+            Console.WriteLine($"Mouse Pos in windows: X={mx}, Y={my} | Display Framebuffer Size: W={glViewportWidth}, H={glViewportHeight} | Window Size: W={winW}, H={winH} | Window Pos: X={winX}, Y={winY} | Windows Space Windows {fbW}, {fbH} | Scale Factor: {scaleFactor} | Resolution Program: W={resolutionProgramX}, H={resolutionProgramY} ");
+            io.AddMousePosEvent(mx, my);
 
 
          
