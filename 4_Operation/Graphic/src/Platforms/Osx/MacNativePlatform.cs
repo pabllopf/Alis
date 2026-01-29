@@ -530,13 +530,45 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// <summary>
         ///     Obtiene el estado actual del ratón (posición y botones)
         /// </summary>
-        public void GetMouseState(out int x, out int y, out bool[] buttons)
-        {
-            x = mouseX;
-            y = mouseY;
-            buttons = (bool[])mouseButtons.Clone();
-            // Reset wheel after reporting in GetMouseWheel if desired
-        }
+
+      
+      public void GetMouseState(out int x, out int y, out bool[] buttons)
+      {
+          // Obtener la posición global del mouse
+          var mouseLocation = GetMouseLocation();
+      
+          // Si tienes acceso a la ventana, deberías convertir a coordenadas relativas a la ventana aquí
+          // Por ejemplo: mouseLocation = ConvertirAGlobal(mouseLocation);
+      
+          x = (int)mouseLocation.X;
+          y = (int)mouseLocation.Y;
+          buttons = (bool[])mouseButtons.Clone();
+      }
+      
+      // Estructura para la posición
+      private struct CGPoint
+      {
+          public double X;
+          public double Y;
+      }
+      
+      // P/Invoke para obtener la posición global del mouse
+      [DllImport("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics")]
+      private static extern CGPoint CGEventGetLocation(IntPtr eventRef);
+      
+      private CGPoint GetMouseLocation()
+      {
+          IntPtr eventRef = CGEventCreate(IntPtr.Zero);
+          CGPoint point = CGEventGetLocation(eventRef);
+          CFRelease(eventRef);
+          return point;
+      }
+      
+      [DllImport("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics")]
+      private static extern IntPtr CGEventCreate(IntPtr source);
+      
+      [DllImport("/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation")]
+      private static extern void CFRelease(IntPtr cf);
 
         /// <summary>
         ///     Obtiene delta de rueda (vertical) y lo consume

@@ -99,29 +99,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
             // Configure IO and features
             ImGuiIoPtr io = ImGui.GetIo();
             io.DisplaySize = new Vector2F(_platform.GetWindowWidth(), _platform.GetWindowHeight());
-
-            // --- Mapeo de teclas ImGui-KeyMap (solo una vez) ---
-            io.KeyMap[(int)ImGuiKey.Tab] = (int)ConsoleKey.Tab;
-            io.KeyMap[(int)ImGuiKey.LeftArrow] = (int)ConsoleKey.LeftArrow;
-            io.KeyMap[(int)ImGuiKey.RightArrow] = (int)ConsoleKey.RightArrow;
-            io.KeyMap[(int)ImGuiKey.UpArrow] = (int)ConsoleKey.UpArrow;
-            io.KeyMap[(int)ImGuiKey.DownArrow] = (int)ConsoleKey.DownArrow;
-            io.KeyMap[(int)ImGuiKey.PageUp] = (int)ConsoleKey.PageUp;
-            io.KeyMap[(int)ImGuiKey.PageDown] = (int)ConsoleKey.PageDown;
-            io.KeyMap[(int)ImGuiKey.Home] = (int)ConsoleKey.Home;
-            io.KeyMap[(int)ImGuiKey.End] = (int)ConsoleKey.End;
-            io.KeyMap[(int)ImGuiKey.Delete] = (int)ConsoleKey.Delete;
-            io.KeyMap[(int)ImGuiKey.Backspace] = (int)ConsoleKey.Backspace;
-            io.KeyMap[(int)ImGuiKey.Enter] = (int)ConsoleKey.Enter;
-            io.KeyMap[(int)ImGuiKey.Escape] = (int)ConsoleKey.Escape;
-            io.KeyMap[(int)ImGuiKey.A] = (int)ConsoleKey.A;
-            io.KeyMap[(int)ImGuiKey.C] = (int)ConsoleKey.C;
-            io.KeyMap[(int)ImGuiKey.V] = (int)ConsoleKey.V;
-            io.KeyMap[(int)ImGuiKey.X] = (int)ConsoleKey.X;
-            io.KeyMap[(int)ImGuiKey.Y] = (int)ConsoleKey.Y;
-            io.KeyMap[(int)ImGuiKey.Z] = (int)ConsoleKey.Z;
-            // --- Fin mapeo teclas ---
-
+            
             Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
 
             io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset
@@ -220,65 +198,8 @@ namespace Alis.Extension.Graphic.Ui.Sample
                 // Process key states for ImGui every frame (send down/up)
                 ProcessKeyWithImgui();
 
-                // --- NUEVO: Procesar eventos de mouse y teclas modificadoras para ImGui ---
-                int mouseX, mouseY;
-                bool[] mouseButtons;
-                _platform.GetMouseState(out mouseX, out mouseY, out mouseButtons);
-                float mouseWheel = _platform.GetMouseWheel();
-
-                // --- Detección de flancos para mouse ---
-                for (int i = 0; i < 3; i++)
-                {
-                    bool prev = prevMouseButtons[i];
-                    bool curr = (mouseButtons != null && mouseButtons.Length > i) ? mouseButtons[i] : false;
-                    if (!prev && curr)
-                    {
-                        if (i == 0) Console.WriteLine($"Mouse izquierdo presionado en ({mouseX},{mouseY})");
-                        else if (i == 1) Console.WriteLine($"Mouse derecho presionado en ({mouseX},{mouseY})");
-                        else if (i == 2) Console.WriteLine($"Mouse central presionado en ({mouseX},{mouseY})");
-                    }
-                    else if (prev && !curr)
-                    {
-                        if (i == 0) Console.WriteLine($"Mouse izquierdo soltado en ({mouseX},{mouseY})");
-                        else if (i == 1) Console.WriteLine($"Mouse derecho soltado en ({mouseX},{mouseY})");
-                        else if (i == 2) Console.WriteLine($"Mouse central soltado en ({mouseX},{mouseY})");
-                    }
-                    prevMouseButtons[i] = curr;
-                }
-                // --- Detección de flanco para scroll ---
-                if (mouseWheel != 0.0f && prevMouseWheel == 0.0f)
-                {
-                    Console.WriteLine($"Scroll: {mouseWheel}");
-                }
-                prevMouseWheel = mouseWheel;
-
-                // --- Detección de flancos para teclas relevantes ---
-                foreach (var k in trackedKeys)
-                {
-                    bool prev = prevKeyState[k];
-                    bool curr = _platform.IsKeyDown(k);
-                    if (!prev && curr)
-                        Console.WriteLine($"Tecla presionada: {k}");
-                    else if (prev && !curr)
-                        Console.WriteLine($"Tecla soltada: {k}");
-                    prevKeyState[k] = curr;
-                }
-
-                io.AddMousePosEvent(mouseX, mouseY);
-                io.AddMouseButtonEvent(0, mouseButtons != null && mouseButtons.Length > 0 && mouseButtons[0]); // Izquierdo
-                io.AddMouseButtonEvent(1, mouseButtons != null && mouseButtons.Length > 1 && mouseButtons[1]); // Derecho
-                io.AddMouseButtonEvent(2, mouseButtons != null && mouseButtons.Length > 2 && mouseButtons[2]); // Central
-                if (mouseWheel != 0.0f)
-                {
-                    io.AddMouseWheelEvent(0.0f, mouseWheel);
-                }
-                // Teclas modificadoras
-                //io.AddKeyEvent(ImGuiKey.ModCtrl, _platform.IsKeyDown(ConsoleKey.LeftCtrl) || _platform.IsKeyDown(ConsoleKey.RightCtrl));
-                //io.AddKeyEvent(ImGuiKey.ModShift, _platform.IsKeyDown(ConsoleKey.LeftShift) || _platform.IsKeyDown(ConsoleKey.RightShift));
-                //io.AddKeyEvent(ImGuiKey.ModAlt, _platform.IsKeyDown(ConsoleKey.LeftAlt) || _platform.IsKeyDown(ConsoleKey.RightAlt));
-                //io.AddKeyEvent(ImGuiKey.ModSuper, _platform.IsKeyDown(ConsoleKey.LeftWindows) || _platform.IsKeyDown(ConsoleKey.RightWindows));
-                // --- FIN NUEVO ---
-
+                UpdateMousePosAndButtons();
+               
                 // If platform provides text input (characters), forward them to ImGui
                 if (_platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
                 {
@@ -317,6 +238,53 @@ namespace Alis.Extension.Graphic.Ui.Sample
             // Cleanup
             example.Cleanup();
             _platform.Cleanup();
+        }
+        
+        private static void UpdateMousePosAndButtons()
+        {
+            var io = ImGui.GetIo();
+            Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO no inicializado");
+
+            // Obtener estado del mouse desde la plataforma
+            _platform.GetMouseState(out int mouseX, out int mouseY, out bool[] mouseButtons);
+            Debug.Assert(mouseButtons != null && mouseButtons.Length >= 3, "mouseButtons debe tener al menos 3 elementos");
+
+            // Si ImGui solicita mover el cursor (raro, solo con NavEnableSetMousePos)
+            if (io.WantSetMousePos)
+            {
+                // Si tu plataforma soporta mover el cursor, implementa aquí
+                // platform.SetMousePosition(mouseX, mouseY); // Si tienes este método
+                Logger.Info("ImGui solicitó mover el cursor, pero no está implementado en la plataforma.");
+            }
+
+            io.AddMousePosEvent(mouseX, mouseY);
+            Logger.Trace($"MousePos actualizada: ({mouseX},{mouseY})");
+
+            // Actualizar estado de los botones (máximo 5 botones)
+            for (int i = 0; i < 5; i++)
+            {
+                bool isDown = (mouseButtons != null && i < mouseButtons.Length) ? mouseButtons[i] : false;
+                io.AddMouseButtonEvent(i, isDown);
+
+                if (isDown)
+                {
+                    Logger.Trace($"Botón ratón {i}: {("PRESIONADO")}");
+                }
+            }
+
+            // Actualizar la rueda del mouse (vertical)
+            float wheel = _platform.GetMouseWheel();
+            if (Math.Abs(wheel) > float.Epsilon)
+            {
+                io.AddMouseWheelEvent(0.0f, wheel);
+                Logger.Trace($"Rueda ratón: {wheel}");
+            }
+
+            // Validación extra: ¿algún botón presionado?
+            if (ImGui.IsAnyMouseDown())
+            {
+                Logger.Trace("Algún botón de ratón está presionado.");
+            }
         }
 
         /// <summary>
