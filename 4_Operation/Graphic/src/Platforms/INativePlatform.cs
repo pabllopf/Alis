@@ -173,5 +173,8 @@ namespace Alis.Core.Graphic.Platforms
         void GetWindowMetrics(out int winX, out int winY,
             out int winW, out int winH,
             out int fbW, out int fbH);
+
+
+        void GetMousePositionInView(out float x, out float y);
     }
 }

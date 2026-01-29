@@ -626,6 +626,42 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 fbH = winH;
             }
         }
+        
+        public void GetMousePositionInView(out float x, out float y)
+        {
+            x = 0;
+            y = 0;
+
+            if (window == null || window.Handle == IntPtr.Zero)
+                return;
+
+            // NSWindow*
+            IntPtr nsWindow = window.Handle;
+
+            // NSView* (contentView real donde está el OpenGL)
+            IntPtr nsView = ObjectiveCInterop.objc_msgSend(
+                nsWindow,
+                ObjectiveCInterop.Sel("contentView"));
+
+            if (nsView == IntPtr.Zero)
+                return;
+
+            // NSPoint mouse = [window mouseLocationOutsideOfEventStream]
+            NsPoint mouseScreen =
+                ObjectiveCInterop.objc_msgSend_NSPoint(nsWindow, ObjectiveCInterop.selMouseLocationOutside);
+
+            // NSPoint local = [view convertPoint:mouseScreen fromView:nil]
+            NsPoint local =
+                ObjectiveCInterop.objc_msgSend_NSPoint_NSPoint_IntPtr(
+                    nsView,
+                    ObjectiveCInterop.selConvertPointFromView,
+                    mouseScreen,
+                    IntPtr.Zero);
+
+            x = (float)local.X;
+            y = (float)local.Y;
+        }
+
 
 
         /// <summary>

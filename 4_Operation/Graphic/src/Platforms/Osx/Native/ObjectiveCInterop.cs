@@ -83,6 +83,24 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
             return frame;
         #endif
                 }
+        
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
+        public static extern NsPoint objc_msgSend_NSPoint(IntPtr receiver, IntPtr selector);
+
+        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
+        public static extern NsPoint objc_msgSend_NSPoint_NSPoint_IntPtr(
+            IntPtr receiver,
+            IntPtr selector,
+            NsPoint point,
+            IntPtr fromView);
+
+        internal static readonly IntPtr selMouseLocationOutside =
+            ObjectiveCInterop.Sel("mouseLocationOutsideOfEventStream");
+
+        internal static readonly IntPtr selConvertPointFromView =
+            ObjectiveCInterop.Sel("convertPoint:fromView:");
+
+       
 
         /// <summary>
         /// Objcs the msg send using the specified recv
