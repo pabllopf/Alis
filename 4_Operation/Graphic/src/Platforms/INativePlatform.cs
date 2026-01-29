@@ -166,5 +166,12 @@ namespace Alis.Core.Graphic.Platforms
         /// <param name="chars">La cadena de caracteres entrantes (puede contener varios caracteres)</param>
         /// <returns>true si había caracteres pendientes, false si no</returns>
         bool TryGetLastInputCharacters(out string chars);
+
+        int GetWindowPositionX();
+        int GetWindowPositionY();
+        
+        void GetWindowMetrics(out int winX, out int winY,
+            out int winW, out int winH,
+            out int fbW, out int fbH);
     }
 }

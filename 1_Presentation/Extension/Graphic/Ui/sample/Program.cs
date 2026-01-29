@@ -245,20 +245,30 @@ namespace Alis.Extension.Graphic.Ui.Sample
             var io = ImGui.GetIo();
             Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO no inicializado");
 
-            // Obtener estado del mouse desde la plataforma
-            _platform.GetMouseState(out int mouseX, out int mouseY, out bool[] mouseButtons);
-            Debug.Assert(mouseButtons != null && mouseButtons.Length >= 3, "mouseButtons debe tener al menos 3 elementos");
-
-            // Si ImGui solicita mover el cursor (raro, solo con NavEnableSetMousePos)
-            if (io.WantSetMousePos)
-            {
-                // Si tu plataforma soporta mover el cursor, implementa aquí
-                // platform.SetMousePosition(mouseX, mouseY); // Si tienes este método
-                Logger.Info("ImGui solicitó mover el cursor, pero no está implementado en la plataforma.");
-            }
-
-            io.AddMousePosEvent(mouseX, mouseY);
-            Logger.Trace($"MousePos actualizada: ({mouseX},{mouseY})");
+         // Obtener estado del mouse desde la plataforma
+         _platform.GetMouseState(out int mouseScreenX, out int mouseScreenY, out bool[] mouseButtons);
+         Debug.Assert(mouseButtons != null && mouseButtons.Length >= 3, "mouseButtons debe tener al menos 3 elementos");
+         
+         _platform.GetWindowMetrics(out int winX, out int winY,
+             out int winW, out int winH,
+             out int fbW, out int fbH);
+         
+         Console.WriteLine($"Window Pos: X={winX}, Y={winY} | Window Size: W={winW}, H={winH} | FB Size: W={fbW}, H={fbH}");
+         
+         
+         
+         // Tamaño de la ventana y posición en el monitor
+         float windowWidth = 800;
+         float windowHeight = 600;
+         float windowsPosX = 0;
+         float windowsPosY = 0;
+         
+         // Calcular posición relativa del mouse dentro de la ventana
+         float relativeMouseXOnWindows = mouseScreenX;
+         float relativeMouseYOnWindows = mouseScreenY - 0.0f;
+         
+            io.AddMousePosEvent(relativeMouseXOnWindows, relativeMouseYOnWindows);
+            //Logger.Trace($"POS MOUSE MONITOR: X={mouseScreenX}, Y={mouseScreenY} | POS MOUSE DENTRO VENTANA: X={relativeMouseXOnWindows}, Y={relativeMouseYOnWindows} | Windows Size: W={windowWidth}, H={windowHeight} | Windows Pos: X={windowsPosX}, Y={windowsPosY}");
 
             // Actualizar estado de los botones (máximo 5 botones)
             for (int i = 0; i < 5; i++)

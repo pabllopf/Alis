@@ -591,6 +591,43 @@ namespace Alis.Core.Graphic.Platforms.Osx
             return false;
         }
 
+        public int GetWindowPositionX()
+        {
+            NsRect frame = window.GetFrame();
+            return (int) frame.x;
+        }
+
+        public int GetWindowPositionY()
+        {
+            NsRect frame = window.GetFrame();
+            return (int) frame.y;
+        }
+
+        public void GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH)
+        {
+            // Obtener el frame real de la ventana usando P/Invoke directo
+            NsRect frame = ObjectiveCInterop.GetWindowFrame(window.Handle);
+            winX = (int)frame.x;
+            winY = (int)frame.y;
+            winW = (int)frame.width;
+            winH = (int)frame.height;
+
+            // Obtener la vista OpenGL asociada a la ventana
+            IntPtr contentView = ObjectiveCInterop.objc_msgSend(window.Handle, ObjectiveCInterop.Sel("contentView"));
+            if (contentView != IntPtr.Zero)
+            {
+                NsRect viewFrame = ObjectiveCInterop.NSViewGetFrame(contentView);
+                fbW = (int)viewFrame.width;
+                fbH = (int)viewFrame.height;
+            }
+            else
+            {
+                fbW = winW;
+                fbH = winH;
+            }
+        }
+
+
         /// <summary>
         /// </summary>
         /// <param name="key"></param>
