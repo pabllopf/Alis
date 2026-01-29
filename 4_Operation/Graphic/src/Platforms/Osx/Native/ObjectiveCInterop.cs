@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <summary>
         /// The objc
         /// </summary>
-        private const string Objc = "/usr/lib/libobjc.A.dylib";
+        public const string Objc = "/usr/lib/libobjc.A.dylib";
 
         /// <summary>
         /// Objcs the get using the specified name
@@ -227,15 +227,45 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <returns>The ulong</returns>
         [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern ulong objc_msgSend_UL(IntPtr recv, IntPtr sel);
+        
+        // P/Invoke para obtener la posición global del mouse
+        [DllImport("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics")]
+        public static extern CGPoint CGEventGetLocation(IntPtr eventRef);
+      
+        [DllImport("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics")]
+        public static extern IntPtr CGEventCreate(IntPtr source);
+      
+        [DllImport("/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation")]
+        public static extern void CFRelease(IntPtr cf);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="receiver"></param>
+        /// <param name="selector"></param>
+        /// <param name="arg1"></param>
+        /// <returns></returns>
+        [DllImport("/usr/lib/libobjc.A.dylib")]
+        public static extern IntPtr objc_msgSend(IntPtr receiver, IntPtr selector, IntPtr arg1);
+
+        [DllImport("/usr/lib/libobjc.A.dylib")]
+        public static extern double objc_msgSend_double(IntPtr receiver, IntPtr selector);
+        
+        /// <summary>
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="symbol"></param>
+        /// <returns></returns>
+        [DllImport("/usr/lib/libSystem.B.dylib", EntryPoint = "dlsym", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr Dlsym(IntPtr handle, string symbol);
 
         /// <summary>
-        /// Objcs the msg send double using the specified recv
         /// </summary>
-        /// <param name="recv">The recv</param>
-        /// <param name="sel">The sel</param>
-        /// <returns>The double</returns>
-        [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
-        public static extern double objc_msgSend_double(IntPtr recv, IntPtr sel);
+        /// <param name="path"></param>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        [DllImport("/usr/lib/libSystem.B.dylib", EntryPoint = "dlopen", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr Dlopen(string path, int mode);
     }
 }
 
