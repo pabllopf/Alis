@@ -305,6 +305,7 @@ namespace Alis.App.Engine
                 _spaceWork.IsRunning = platform.PollEvents();
 
                 ProcessKeyWithImgui();
+                UpdateMousePosAndButtons();
 
                 // Forward text input characters from the native platform to ImGui (e.g. WM_CHAR on Windows)
                 if (platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
@@ -352,6 +353,77 @@ namespace Alis.App.Engine
             ImGui.SetCurrentContext(new IntPtr());
             
             platform.Cleanup();
+        }
+        
+        private bool isFirstTime = true;
+        private int glViewportWidth;
+        private int glViewportHeight;
+        private float scaleFactor = 1.0f;
+        
+         private void UpdateMousePosAndButtons()
+        {
+            var io = ImGui.GetIo();
+            Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO no inicializado");
+
+            // Obtener estado del mouse desde la plataforma
+            platform.GetMouseState(out int mouseX, out int mouseY, out bool[] mouseButtons);
+            Debug.Assert(mouseButtons != null && mouseButtons.Length >= 3, "mouseButtons debe tener al menos 3 elementos");
+
+            platform.GetWindowMetrics(out int winX, out int winY,
+                out int winW, out int winH,
+                out int fbW, out int fbH);
+            
+            platform.GetMousePositionInView(out float mx, out float my);
+            
+            
+            my = fbH - my; // Invertir coordenada Y para ImGui
+
+            if (isFirstTime)
+            {
+                // GL_VIEWPORT
+                int[] viewport = new int[4];
+                Gl.GlGetIntegerv(0x0BA2, viewport);
+                glViewportWidth = viewport[2];
+                glViewportHeight = viewport[3];
+            
+                float scaleX = glViewportWidth / resolutionProgramX;
+                float scaleY = glViewportHeight / resolutionProgramY;
+                scaleFactor = Math.Min(scaleX, scaleY);
+                isFirstTime = false;
+            }
+           
+
+            mx *= scaleFactor;
+            my *= scaleFactor; 
+            
+            //Console.WriteLine($"Mouse Pos in windows: X={mx}, Y={my} | Display Framebuffer Size: W={glViewportWidth}, H={glViewportHeight} | Window Size: W={winW}, H={winH} | Window Pos: X={winX}, Y={winY} | Windows Space Windows {fbW}, {fbH} | Scale Factor: {scaleFactor} | Resolution Program: W={resolutionProgramX}, H={resolutionProgramY} ");
+            io.AddMousePosEvent(mx, my);
+
+            // Actualizar estado de los botones (máximo 5 botones)
+            for (int i = 0; i < 5; i++)
+            {
+                bool isDown = (mouseButtons != null && i < mouseButtons.Length) ? mouseButtons[i] : false;
+                io.AddMouseButtonEvent(i, isDown);
+
+                if (isDown)
+                {
+                    Logger.Trace($"Botón ratón {i}: {("PRESIONADO")}");
+                }
+            }
+
+            // Actualizar la rueda del mouse (vertical)
+            float wheel = platform.GetMouseWheel();
+            if (Math.Abs(wheel) > float.Epsilon)
+            {
+                io.AddMouseWheelEvent(0.0f, wheel);
+                Logger.Trace($"Rueda ratón: {wheel}");
+            }
+
+            // Validación extra: ¿algún botón presionado?
+            if (ImGui.IsAnyMouseDown())
+            {
+                Logger.Trace("Algún botón de ratón está presionado.");
+            }
         }
         
         /// <summary>
@@ -1074,36 +1146,6 @@ namespace Alis.App.Engine
         public void Draw()
         {
             _spaceWork.io = ImGui.GetIo();
-            
-            // --- Reemplazar la sección de manejo del ratón dentro de Draw() por llamadas a las APIs de ImGui IO ---
-            if (platform != null)
-            {
-                platform.GetMouseState(out int mx, out int my, out bool[] mButtons);
-
-                // En lugar de llenar las listas manualmente, usar las APIs de ImGuiIO para reportar eventos.
-                // Esto permite a ImGui calcular correctamente MouseClicked / MouseDoubleClicked internamente.
-                _spaceWork.io.AddMousePosEvent((float)mx, (float)my);
-
-                // Reportar el estado de cada botón.
-                for (int i = 0; i < 5; i++)
-                {
-                    bool down = i < mButtons.Length ? mButtons[i] : false;
-                    _spaceWork.io.AddMouseButtonEvent(i, down);
-                }
-
-                // Rueda del ratón (solo eje Y, asumimos 0 en X)
-                float wheel = platform.GetMouseWheel();
-                _spaceWork.io.AddMouseWheelEvent(wheel, 0.0f);
-
-            }
-            else
-            {
-                // No platform: ensure sane defaults
-                _spaceWork.io.AddMousePosEvent(0.0f, 0.0f);
-                for (int i = 0; i < 5; i++) _spaceWork.io.AddMouseButtonEvent(i, false);
-                _spaceWork.io.AddMouseWheelEvent(0.0f, 0.0f);
-                _spaceWork.io.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(0, 0);
-            }
 
             ImGui.NewFrame();
 
@@ -1231,6 +1273,8 @@ namespace Alis.App.Engine
            // Finalizar
            ImGui.DockBuilderFinish(dockspaceId);
        }
+         
+         private bool firstTimeScale = true;
 
         /// <summary>
         /// Renders the draw data using the specified draw data
@@ -1248,29 +1292,34 @@ namespace Alis.App.Engine
             Gl.GlDisable(EnableCap.DepthTest);
             Gl.GlEnable(EnableCap.ScissorTest);
 
-            // Obtener el viewport real del framebuffer
-            int[] viewport = new int[4];
-            Gl.GlGetIntegerv(0x0BA2, viewport); // 0x0BA2 = GL_VIEWPORT
-            int fbWidth = viewport[2];
-            int fbHeight = viewport[3];
-            ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
-            imGuiIoPtr.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(fbWidth, fbHeight);
+            if (firstTimeScale)
+            {
+                // Obtener el viewport real del framebuffer
+                int[] viewport = new int[4];
+                Gl.GlGetIntegerv(0x0BA2, viewport); // 0x0BA2 = GL_VIEWPORT
+                int fbWidth = viewport[2];
+                int fbHeight = viewport[3];
+                ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
+                imGuiIoPtr.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(fbWidth, fbHeight);
             
             
-            float scaleX = fbWidth / resolutionProgramX;
-            float scaleY = fbHeight / resolutionProgramY;
-            float scaleFactor = Math.Min(scaleX, scaleY);
+                float scaleX = fbWidth / resolutionProgramX;
+                float scaleY = fbHeight / resolutionProgramY;
+                scaleFactor = Math.Min(scaleX, scaleY);
 
-            Console.WriteLine($"Setting style scale factor: {scaleFactor}");
+                Console.WriteLine($"Setting style scale factor: {scaleFactor}");
             
-            _spaceWork.Style.ScaleAllSizes(scaleFactor);
-            var io = ImGui.GetIo();
-            io.FontGlobalScale = scaleFactor;
-            
+                _spaceWork.Style.ScaleAllSizes(scaleFactor);
+                _spaceWork.io.FontGlobalScale = scaleFactor;
             
             
-            Console.WriteLine($"Framebuffer Size: {fbWidth}x{fbHeight} | Display Size: {imGuiIoPtr.DisplaySize.X}x{imGuiIoPtr.DisplaySize.Y} | Scale: {imGuiIoPtr.DisplayFramebufferScale.X}x{imGuiIoPtr.DisplayFramebufferScale.Y}");
+            
+                Console.WriteLine($"Framebuffer Size: {fbWidth}x{fbHeight} | Display Size: {imGuiIoPtr.DisplaySize.X}x{imGuiIoPtr.DisplaySize.Y} | Scale: {imGuiIoPtr.DisplayFramebufferScale.X}x{imGuiIoPtr.DisplayFramebufferScale.Y}");
 
+                firstTimeScale = false;
+            }
+            
+            
             float l = 0.0f;
             float r = ImGui.GetIo().DisplaySize.X;
             float t = 0.0f;
