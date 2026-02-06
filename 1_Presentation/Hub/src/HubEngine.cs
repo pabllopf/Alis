@@ -109,13 +109,34 @@ namespace Alis.App.Hub
         private readonly Alis.Core.Aspect.Math.Vector.Vector2F[] _lastClickPos = new Alis.Core.Aspect.Math.Vector.Vector2F[5];
 
         // --- Añadir campos en la clase HubEngine (junto a _prevMouseDown, _lastClickTime, _lastClickPos) ---
+        /// <summary>
+        /// The mouse clicked
+        /// </summary>
         private readonly bool[] _mouseClicked = new bool[5];
+        /// <summary>
+        /// The mouse double clicked
+        /// </summary>
         private readonly bool[] _mouseDoubleClicked = new bool[5];
+        /// <summary>
+        /// The mouse clicked time
+        /// </summary>
         private readonly double[] _mouseClickedTime = new double[5];
+        /// <summary>
+        /// The mouse clicked count
+        /// </summary>
         private readonly ushort[] _mouseClickedCount = new ushort[5];
 
+        /// <summary>
+        /// The resolution program
+        /// </summary>
         private float resolutionProgramX = 1025;
+        /// <summary>
+        /// The resolution program
+        /// </summary>
         private float resolutionProgramY = 575;
+        /// <summary>
+        /// The scale factor
+        /// </summary>
         private float scaleFactor;
 
 
@@ -373,10 +394,22 @@ namespace Alis.App.Hub
         }
 
 
+        /// <summary>
+        /// The is first time
+        /// </summary>
         private static bool isFirstTime = true;
+        /// <summary>
+        /// The gl viewport width
+        /// </summary>
         private static int glViewportWidth;
+        /// <summary>
+        /// The gl viewport height
+        /// </summary>
         private static int glViewportHeight;
 
+        /// <summary>
+        /// Updates the mouse pos and buttons
+        /// </summary>
         private void UpdateMousePosAndButtons()
         {
             var io = ImGui.GetIo();
@@ -1045,6 +1078,9 @@ namespace Alis.App.Hub
             // No exception-handling here; platform may reset wheel internally if needed.
         }
 
+        /// <summary>
+        /// The first time scale
+        /// </summary>
         private bool firstTimeScale = true;
 
         /// <summary>

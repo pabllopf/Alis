@@ -234,6 +234,9 @@ namespace Alis.App.Engine.Core
         /// </summary>
         public Project Project { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the font texture id
+        /// </summary>
         public uint FontTextureId { get; set; }
 
         /// <summary>

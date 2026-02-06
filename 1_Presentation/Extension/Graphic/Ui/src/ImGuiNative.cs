@@ -5313,6 +5313,10 @@ namespace Alis.Extension.Graphic.Ui
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderSetNodeFlags")]
         public static extern void igDockBuilderSetNodeFlags(uint dockspaceId, ImGuiDockNodeFlags dockNodeFlags);
 
+        /// <summary>
+        /// Igs the scale all sizes using the specified scale factor
+        /// </summary>
+        /// <param name="scaleFactor">The scale factor</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igScaleAllSizes")]
         public static extern void igScaleAllSizes(float scaleFactor);
     }

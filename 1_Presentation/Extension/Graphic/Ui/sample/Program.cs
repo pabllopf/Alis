@@ -58,7 +58,13 @@ namespace Alis.Extension.Graphic.Ui.Sample
         /// </summary>
         private static INativePlatform _platform;
         
+        /// <summary>
+        /// The resolution program
+        /// </summary>
         private static float resolutionProgramX = 800.0f;
+        /// <summary>
+        /// The resolution program
+        /// </summary>
         private static float resolutionProgramY = 600.0f;
         
         /// <summary>
@@ -243,11 +249,26 @@ namespace Alis.Extension.Graphic.Ui.Sample
             _platform.Cleanup();
         }
         
+        /// <summary>
+        /// The is first time
+        /// </summary>
         private static bool isFirstTime = true;
+        /// <summary>
+        /// The scale factor
+        /// </summary>
         private static float scaleFactor;
+        /// <summary>
+        /// The gl viewport width
+        /// </summary>
         private static int glViewportWidth;
+        /// <summary>
+        /// The gl viewport height
+        /// </summary>
         private static int glViewportHeight;
         
+        /// <summary>
+        /// Updates the mouse pos and buttons
+        /// </summary>
         private static void UpdateMousePosAndButtons()
         {
             var io = ImGui.GetIo();
