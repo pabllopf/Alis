@@ -17,10 +17,6 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <WasmBuildNative>true</WasmBuildNative>
     <RunAOTCompilation>true</RunAOTCompilation>
-    <!-- Disable SIMD support as it's prerelease only on Safari -->
-    <WasmEnableSIMD>false</WasmEnableSIMD>
-    <!-- Normal,JustInterp,Full,FullInterp,Hybrid,LLVMOnly,LLVMOnlyInterp -->
-    <!-- <AOTMode>LLVMOnly</AOTMode> -->
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -45,8 +41,6 @@
   <ItemGroup>
     <PackageReference Include="CoroutineScheduler" Version="0.3.0" />
     <PackageReference Include="Silk.NET.OpenGLES" Version="2.21.0" />
-
-    <TrimmableAssembly Include="Silk.NET.Maths" />
   </ItemGroup>
 
   <ItemGroup>
