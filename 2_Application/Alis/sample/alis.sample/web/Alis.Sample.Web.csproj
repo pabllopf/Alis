@@ -50,6 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update=".nojekyll" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
+      <None Update=".nojekyll" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
+      <None Update=".gitattributes" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
   </ItemGroup>
 </Project>
