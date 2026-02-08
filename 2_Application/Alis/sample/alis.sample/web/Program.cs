@@ -21,6 +21,7 @@ namespace Alis.Sample.Web
         /// Gets or sets the value of the demo
         /// </summary>
         private static MeshDemo Demo { get; set;  }
+        
         /// <summary>
         /// Frames the time
         /// </summary>
@@ -30,8 +31,6 @@ namespace Alis.Sample.Web
         [UnmanagedCallersOnly]
         public static int Frame(double time, nint userData)
         {
-            ArgumentNullException.ThrowIfNull(Demo);
-
             Demo.Render();
 
             return 1;
