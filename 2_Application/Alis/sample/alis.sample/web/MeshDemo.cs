@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading.Tasks;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
@@ -110,6 +111,7 @@ namespace Alis.Sample.Web
             string vertexSource,
             string fragmentSource)
         {
+            Console.WriteLine("[MeshDemo] INICIALIZACIÓN");
             Scheduler = new();
             _ = Scheduler.SpawnTask(LogicThread);
 
@@ -119,30 +121,61 @@ namespace Alis.Sample.Web
 
             // create the shader
             ShaderProgram = Gl.GlCreateProgram();
+            Console.WriteLine($"[MeshDemo] ShaderProgram: {ShaderProgram}");
 
             VertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
             Gl.ShaderSource(VertexShader, vertexSource);
             Gl.GlCompileShader(VertexShader);
             Gl.GlGetShader(VertexShader, ShaderParameter.CompileStatus, out int res);
-            //gl.GetShaderInfoLog(VertexShader, out string log);
+            Gl.GlGetShader(VertexShader, ShaderParameter.InfoLogLength, out int logLen);
+            if (logLen > 1)
+            {
+                var log = new string(' ', logLen);
+                var output = new int[]                {
+                    0
+                };
+                Gl.GlGetShaderInfoLog(VertexShader, logLen, output, new StringBuilder(log));
+                Console.WriteLine($"[MeshDemo] VertexShader log: {log}");
+            }
+            Console.WriteLine($"[MeshDemo] VertexShader CompileStatus: {res}");
             Debug.Assert(res != 0);
 
             FragmentShader = Gl.GlCreateShader(ShaderType.FragmentShader);
             Gl.ShaderSource(FragmentShader, fragmentSource);
             Gl.GlCompileShader(FragmentShader);
             Gl.GlGetShader(FragmentShader, ShaderParameter.CompileStatus, out res);
-            //gl.GetShaderInfoLog(FragmentShader, out log);
+            Gl.GlGetShader(FragmentShader, ShaderParameter.InfoLogLength, out logLen);
+            if (logLen > 1)
+            {
+                var log = new string(' ', logLen);
+                var output = new int[]                {
+                    0
+                };
+                Gl.GlGetShaderInfoLog(FragmentShader, logLen, output, new StringBuilder(log));
+                Console.WriteLine($"[MeshDemo] FragmentShader log: {log}");
+            }
+            Console.WriteLine($"[MeshDemo] FragmentShader CompileStatus: {res}");
             Debug.Assert(res != 0);
 
             Gl.GlAttachShader(ShaderProgram, VertexShader);
             Gl.GlAttachShader(ShaderProgram, FragmentShader);
             Gl.GlLinkProgram(ShaderProgram);
-		
             Gl.GlGetProgram(ShaderProgram, ProgramParameter.LinkStatus, out res);
-            //gl.GetProgramInfoLog(ShaderProgram, out log);
+            Gl.GlGetProgram(ShaderProgram, ProgramParameter.InfoLogLength, out logLen);
+            if (logLen > 1)
+            {
+                var log = new string(' ', logLen);
+                var output = new int[]                {
+                    0
+                };
+                Gl.GlGetProgramInfoLog(ShaderProgram, logLen,  output, new StringBuilder(log));
+                Console.WriteLine($"[MeshDemo] Program link log: {log}");
+            }
+            Console.WriteLine($"[MeshDemo] Program LinkStatus: {res}");
             Debug.Assert(res != 0);
 
             ViewProjectionLocation = Gl.GlGetUniformLocation(ShaderProgram, "viewprojection");
+            Console.WriteLine($"[MeshDemo] ViewProjectionLocation: {ViewProjectionLocation}");
 
             // use and configure the shader
             Gl.GlUseProgram(ShaderProgram);
@@ -154,36 +187,46 @@ namespace Alis.Sample.Web
             };
             Gl.GlUniformMatrix2x3(ViewProjectionLocation, false, matrix);
             var err = Gl.GlGetError();
+            Console.WriteLine($"[MeshDemo] After UniformMatrix2x3, GL Error: {err}");
 
             // create the VAO
             VAO = Gl.GenVertexArray();
             Gl.GlBindVertexArray(VAO);
+            Console.WriteLine($"[MeshDemo] VAO: {VAO}");
 
             uint[] vbos =  new uint[2];
             Gl.GlGenBuffers(2, vbos);
             VBO = vbos[0];
             VBI = vbos[1];
+            Console.WriteLine($"[MeshDemo] VBO: {VBO}, VBI: {VBI}");
 
             int vert_size = Marshal.SizeOf<Vector2>();
             int colr_size = Marshal.SizeOf<Vector3>();
             int stride = Marshal.SizeOf<VertexShaderInput>();
+            Console.WriteLine($"[MeshDemo] stride: {stride}, vert_size: {vert_size}, colr_size: {colr_size}");
 
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, VBO);
             Gl.GlBufferData(
                 BufferTarget.ArrayBuffer,
                 (stride * VertexBuffer.Length), IntPtr.Zero,
                 BufferUsageHint.StreamDraw);
+            Console.WriteLine($"[MeshDemo] After initial GlBufferData ArrayBuffer, GL Error: {Gl.GlGetError()}");
 
             Gl.EnableVertexAttribArray(0); // vertex
             Gl.EnableVertexAttribArray(1); // color
+            Console.WriteLine($"[MeshDemo] After EnableVertexAttribArray, GL Error: {Gl.GlGetError()}");
 
-            Gl.VertexAttribPointer(0, vert_size / sizeof(float), VertexAttribPointerType.Float, false, (int)stride, (IntPtr)(0));
-            Gl.VertexAttribPointer(1, colr_size / sizeof(float), VertexAttribPointerType.Float, false, (int)stride, (IntPtr)(vert_size));
+            Gl.VertexAttribPointer(0, vert_size / sizeof(float), VertexAttribPointerType.Float, false, stride, (IntPtr)0);
+            Console.WriteLine($"[MeshDemo] After VertexAttribPointer 0, GL Error: {Gl.GlGetError()}");
+            Gl.VertexAttribPointer(1, colr_size / sizeof(float), VertexAttribPointerType.Float, false, stride, (IntPtr)vert_size);
+            Console.WriteLine($"[MeshDemo] After VertexAttribPointer 1, GL Error: {Gl.GlGetError()}");
 
             Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, VBI);
             Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(sizeof(ushort) * IndexBuffer.Length), new IntPtr(null), BufferUsageHint.StreamDraw);
+            Console.WriteLine($"[MeshDemo] After initial GlBufferData ElementArrayBuffer, GL Error: {Gl.GlGetError()}");
 
             Gl.GlBindVertexArray(0);
+            Console.WriteLine("[MeshDemo] INICIALIZACIÓN FIN");
         }
 
         /// <summary>
@@ -223,7 +266,7 @@ namespace Alis.Sample.Web
         /// </summary>
         public unsafe void Render()
         {
-            Debug.WriteLine("[MeshDemo] Render start");
+            Console.WriteLine("[MeshDemo] Render START");
             Scheduler.Resume();
 
             // update the vertex buffer
@@ -231,44 +274,51 @@ namespace Alis.Sample.Web
                 Matrix3x2.CreateScale(LogoScale) *
                 Matrix3x2.CreateRotation(LogoRotation) *
                 Matrix3x2.CreateTranslation(LogoTranslation);
+            Console.WriteLine($"[MeshDemo] modelMatrix: {modelMatrix}");
             for (int i = 0; i < MeshData.TriangleVerts.Length; i++)
             {
                 ref var dstVert = ref VertexBuffer[i];
                 ref var srcVert = ref MeshData.TriangleVerts[i];
                 dstVert.Vertex = Vector2.Transform(srcVert.Vertex, modelMatrix);
                 dstVert.Color = srcVert.Color;
+                if (i < 3) Console.WriteLine($"[MeshDemo] VertexBuffer[{i}]: {dstVert.Vertex} Color: {dstVert.Color}");
             }
             for (int i = 0; i < MeshData.TriangleIndices.Length; i++)
+            {
                 IndexBuffer[i] = MeshData.TriangleIndices[i];
-
-            Debug.WriteLine($"[MeshDemo] VertexBuffer[0]: {VertexBuffer[0].Vertex} Color: {VertexBuffer[0].Color}");
-            Debug.WriteLine($"[MeshDemo] IndexBuffer.Length: {IndexBuffer.Length}");
+                if (i < 6) Console.WriteLine($"[MeshDemo] IndexBuffer[{i}]: {IndexBuffer[i]}");
+            }
+            Console.WriteLine($"[MeshDemo] VertexBuffer.Length: {VertexBuffer.Length}, IndexBuffer.Length: {IndexBuffer.Length}");
 
             // dispatch GL commands
             Gl.GlClearColor(0.392f, 0.584f, 0.929f, 1.0f);
+            Console.WriteLine($"[MeshDemo] After GlClearColor, GL Error: {Gl.GlGetError()}");
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
-            Debug.WriteLine($"[MeshDemo] After Clear, GL Error: {Gl.GlGetError()}");
+            Console.WriteLine($"[MeshDemo] After GlClear, GL Error: {Gl.GlGetError()}");
 
             BindVAO();
-            Debug.WriteLine($"[MeshDemo] After BindVAO, GL Error: {Gl.GlGetError()}");
+            Console.WriteLine($"[MeshDemo] After BindVAO, GL Error: {Gl.GlGetError()}");
             var vertexHandle = GCHandle.Alloc(VertexBuffer, GCHandleType.Pinned);
             var indexHandle = GCHandle.Alloc(IndexBuffer, GCHandleType.Pinned);
             try
             {
+                Console.WriteLine($"[MeshDemo] Uploading vertex buffer: size={Marshal.SizeOf<VertexShaderInput>() * VertexBuffer.Length}");
                 Gl.GlBufferData(BufferTarget.ArrayBuffer, Marshal.SizeOf<VertexShaderInput>() * VertexBuffer.Length, vertexHandle.AddrOfPinnedObject(), BufferUsageHint.StreamDraw);
-                Debug.WriteLine($"[MeshDemo] After GlBufferData ArrayBuffer, GL Error: {Gl.GlGetError()}");
+                Console.WriteLine($"[MeshDemo] After GlBufferData ArrayBuffer, GL Error: {Gl.GlGetError()}");
+                Console.WriteLine($"[MeshDemo] Uploading index buffer: size={sizeof(ushort) * IndexBuffer.Length}");
                 Gl.GlBufferData(BufferTarget.ElementArrayBuffer, sizeof(ushort) * IndexBuffer.Length, indexHandle.AddrOfPinnedObject(), BufferUsageHint.StreamDraw);
-                Debug.WriteLine($"[MeshDemo] After GlBufferData ElementArrayBuffer, GL Error: {Gl.GlGetError()}");
+                Console.WriteLine($"[MeshDemo] After GlBufferData ElementArrayBuffer, GL Error: {Gl.GlGetError()}");
             }
             finally
             {
                 vertexHandle.Free();
                 indexHandle.Free();
             }
+            Console.WriteLine($"[MeshDemo] Drawing elements: count={IndexBuffer.Length}");
             Gl.GlDrawElements(PrimitiveType.Triangles, (int)IndexBuffer.Length, DrawElementsType.UnsignedShort, (IntPtr)0);
-            Debug.WriteLine($"[MeshDemo] After GlDrawElements, GL Error: {Gl.GlGetError()}");
+            Console.WriteLine($"[MeshDemo] After GlDrawElements, GL Error: {Gl.GlGetError()}");
             UnbindVAO();
-            Debug.WriteLine("[MeshDemo] Render end");
+            Console.WriteLine("[MeshDemo] Render END");
         }
 
         /// <summary>
