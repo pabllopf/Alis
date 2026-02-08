@@ -85,7 +85,9 @@ namespace Alis.App.Hub.Utils
             // Si no está en caché, cargar la imagen y crear la textura GPU
             Image image = Image.LoadImageFromResources(key);
             if (image == null)
+            {
                 throw new FileNotFoundException($"Image not found in resources: {key}");
+            }
 
             uint texture = 0;
             GCHandle imageHandle = default;
@@ -124,7 +126,10 @@ namespace Alis.App.Hub.Utils
             }
             finally
             {
-                if (imageHandle.IsAllocated) imageHandle.Free();
+                if (imageHandle.IsAllocated)
+                {
+                    imageHandle.Free();
+                }
             }
 
             CachedTexture entry = new CachedTexture
@@ -173,7 +178,10 @@ namespace Alis.App.Hub.Utils
 
             lock (s_lock)
             {
-                if (!s_cache.TryGetValue(key, out CachedTexture cached)) return;
+                if (!s_cache.TryGetValue(key, out CachedTexture cached))
+                {
+                    return;
+                }
 
                 cached.RefCount = Math.Max(0, cached.RefCount - 1);
                 if (cached.RefCount == 0)

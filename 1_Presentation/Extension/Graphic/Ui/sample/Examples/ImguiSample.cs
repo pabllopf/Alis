@@ -257,7 +257,11 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
 
             ImGui.Begin("Alis ImGui Sample");
             ImGui.Text($"Counter: {_counter}");
-            if (ImGui.Button("Increment")) _counter++;
+            if (ImGui.Button("Increment"))
+            {
+                _counter++;
+            }
+
             ImGui.End();
 
             ImGui.Render();
@@ -279,7 +283,9 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
         private void RenderDrawData(ImDrawData drawData)
         {
             if (drawData.CmdListsCount == 0)
+            {
                 return;
+            }
 
             Gl.GlEnable(EnableCap.Blend);
             Gl.GlBlendEquation(BlendEquationMode.FuncAdd);
@@ -389,11 +395,30 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
         /// </summary>
         public void Cleanup()
         {
-            if (_vbo != 0) Gl.DeleteBuffer(_vbo);
-            if (_ebo != 0) Gl.DeleteBuffer(_ebo);
-            if (_vao != 0) Gl.DeleteVertexArray(_vao);
-            if (_shaderProgram != 0) Gl.GlDeleteProgram(_shaderProgram);
-            if (_fontTexture != 0) Gl.DeleteTexture(_fontTexture);
+            if (_vbo != 0)
+            {
+                Gl.DeleteBuffer(_vbo);
+            }
+
+            if (_ebo != 0)
+            {
+                Gl.DeleteBuffer(_ebo);
+            }
+
+            if (_vao != 0)
+            {
+                Gl.DeleteVertexArray(_vao);
+            }
+
+            if (_shaderProgram != 0)
+            {
+                Gl.GlDeleteProgram(_shaderProgram);
+            }
+
+            if (_fontTexture != 0)
+            {
+                Gl.DeleteTexture(_fontTexture);
+            }
 
             ImGui.SetCurrentContext(new IntPtr());
         }
