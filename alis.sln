@@ -471,6 +471,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Desktop", "2_Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Web", "2_Application\Alis\sample\alis.sample\web\Alis.Sample.Web.csproj", "{70D1164F-96F6-45B7-8AC8-206CE464C58B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "target", "target", "{FA0F4EDA-967B-4CA9-A0A6-EFA80E43D6B1}"
+	ProjectSection(SolutionItems) = preProject
+		.config\target\alis.targets = .config\target\alis.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -3074,6 +3079,7 @@ Global
 		{26468C37-D8C6-4071-B3E5-3D64F51032FD} = {311DFC38-30D5-30DF-2957-5E6010762FD7}
 		{3523CF69-2EB1-4024-B0C8-A86DE68AB92D} = {A63E1CBB-101E-2C61-D05A-88BBA3F33BE6}
 		{70D1164F-96F6-45B7-8AC8-206CE464C58B} = {A63E1CBB-101E-2C61-D05A-88BBA3F33BE6}
+		{FA0F4EDA-967B-4CA9-A0A6-EFA80E43D6B1} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}
