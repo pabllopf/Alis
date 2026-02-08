@@ -64,7 +64,7 @@ namespace Alis.App.Installer
         {
             // Frame limiter: 60 FPS target
             const double targetFrameTime = 1.0 / 60.0;
-            var frameTimer = Stopwatch.StartNew();
+            Stopwatch frameTimer = Stopwatch.StartNew();
             double lastTime = frameTimer.Elapsed.TotalSeconds;
 
             _platform = GetPlatform();
@@ -230,7 +230,7 @@ namespace Alis.App.Installer
         /// </summary>
         private static void ProcessKeyWithImgui()
         {
-            var io = ImGui.GetIo();
+            ImGuiIoPtr io = ImGui.GetIo();
             
             // Control y edición
             if (_platform.IsKeyDown(ConsoleKey.Backspace)) io.AddKeyEvent(ImGuiKey.Backspace, true); else io.AddKeyEvent(ImGuiKey.Backspace, false);

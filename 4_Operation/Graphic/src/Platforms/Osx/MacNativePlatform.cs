@@ -554,7 +554,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
         public void GetMouseState(out int x, out int y, out bool[] buttons)
         {
             // Obtener la posición global del mouse
-            var mouseLocation = GetMouseLocation();
+            CGPoint mouseLocation = GetMouseLocation();
 
             // Si tienes acceso a la ventana, deberías convertir a coordenadas relativas a la ventana aquí
             // Por ejemplo: mouseLocation = ConvertirAGlobal(mouseLocation);

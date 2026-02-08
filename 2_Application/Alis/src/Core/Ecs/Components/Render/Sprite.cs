@@ -331,12 +331,12 @@ namespace Alis.Core.Ecs.Components.Render
 
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, SharedVbo);
             // pin vertex data briefly for buffer upload
-            var vHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
+            GCHandle vHandle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
             Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), vHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
             vHandle.Free();
 
             Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, SharedEbo);
-            var iHandle = GCHandle.Alloc(indices, GCHandleType.Pinned);
+            GCHandle iHandle = GCHandle.Alloc(indices, GCHandleType.Pinned);
             Gl.GlBufferData(BufferTarget.ElementArrayBuffer, new IntPtr(indices.Length * sizeof(uint)), iHandle.AddrOfPinnedObject(), BufferUsageHint.StaticDraw);
             iHandle.Free();
 
@@ -417,7 +417,7 @@ namespace Alis.Core.Ecs.Components.Render
 
             Vector2F position = gameobject.Get<Transform>().Position;
             float spriteRotation = gameobject.Get<Transform>().Rotation;
-            var transformScale = gameobject.Get<Transform>().Scale;
+            Vector2F transformScale = gameobject.Get<Transform>().Scale;
 
             // Insertar en Render(...) después de obtener position y spriteRotation
             if (!IsSpriteVisible(position, Size, transformScale, spriteRotation, cameraPosition, cameraResolution, pixelsPerMeter))

@@ -753,7 +753,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <param name="viewport">The viewport</param>
         public static void GlGetIntegerv(int i, int[] viewport)
         {
-            var getIntegerv = GetCommand<GetIntegerv>("glGetIntegerv");
+            GetIntegerv getIntegerv = GetCommand<GetIntegerv>("glGetIntegerv");
             GlGetIntegerV(i, viewport);
         }
 

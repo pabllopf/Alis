@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
@@ -134,7 +135,7 @@ namespace Alis.App.Installer
                 ImGui.SetCurrentContext(_context);
             }
 
-            var io = ImGui.GetIo();
+            ImGuiIoPtr io = ImGui.GetIo();
             Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO must be valid after creating or setting context.");
 
             // Backend capabilities
@@ -143,7 +144,7 @@ namespace Alis.App.Installer
             ImGui.StyleColorsDark();
 
             // Build and upload font atlas to GL
-            var fonts = io.Fonts;
+            ImFontAtlasPtr fonts = io.Fonts;
             fonts.GetTexDataAsRgba32(out IntPtr pixelPtr, out int widthPtr, out int heightPtr);
 
             if (pixelPtr != IntPtr.Zero && widthPtr > 0 && heightPtr > 0)
@@ -244,7 +245,7 @@ namespace Alis.App.Installer
         /// </summary>
         public void Draw()
         {
-            var io = ImGui.GetIo();
+            ImGuiIoPtr io = ImGui.GetIo();
 
             // Update display size each frame (handles window resize)
             io.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(_platform.GetWindowWidth(), _platform.GetWindowHeight());
@@ -255,14 +256,14 @@ namespace Alis.App.Installer
                 _platform.GetMouseState(out int mx, out int my, out bool[] mButtons);
                 io.MousePos = new Alis.Core.Aspect.Math.Vector.Vector2F(mx, my);
 
-                var mouseDownList = new System.Collections.Generic.List<bool>();
+                List<bool> mouseDownList = new System.Collections.Generic.List<bool>();
                 for (int i = 0; i < 5; i++) mouseDownList.Add(i < mButtons.Length ? mButtons[i] : false);
                 // We'll compute MouseClicked / MouseDoubleClicked / MouseClickedTime / MouseClickedCount below
                 // Prepare default click-related lists (cleared each frame)
-                var mouseClicked = new System.Collections.Generic.List<bool> { false, false, false, false, false };
-                var mouseDoubleClicked = new System.Collections.Generic.List<bool> { false, false, false, false, false };
-                var mouseClickedTime = new System.Collections.Generic.List<double> { 0, 0, 0, 0, 0 };
-                var mouseClickedCount = new System.Collections.Generic.List<ushort> { 0, 0, 0, 0, 0 };
+                List<bool> mouseClicked = new System.Collections.Generic.List<bool> { false, false, false, false, false };
+                List<bool> mouseDoubleClicked = new System.Collections.Generic.List<bool> { false, false, false, false, false };
+                List<double> mouseClickedTime = new System.Collections.Generic.List<double> { 0, 0, 0, 0, 0 };
+                List<ushort> mouseClickedCount = new System.Collections.Generic.List<ushort> { 0, 0, 0, 0, 0 };
 
                 // Detect transitions and fill click info
                 double now = (double)System.Diagnostics.Stopwatch.GetTimestamp() / System.Diagnostics.Stopwatch.Frequency;
@@ -339,7 +340,7 @@ namespace Alis.App.Installer
             ImGui.End();
 
             ImGui.Render();
-            var drawData = ImGui.GetDrawData();
+            ImDrawData drawData = ImGui.GetDrawData();
             RenderDrawData(drawData);
 
             // No exception-handling here; platform may reset wheel internally if needed.
@@ -368,7 +369,7 @@ namespace Alis.App.Installer
             float t = 0.0f;
             float b = ImGui.GetIo().DisplaySize.Y;
 
-            var ortho = new Matrix4X4(
+            Matrix4X4 ortho = new Matrix4X4(
                 2.0f / (r - l), 0, 0, 0,
                 0, 2.0f / (t - b), 0, 0,
                 0, 0, -1.0f, 0,
@@ -384,7 +385,7 @@ namespace Alis.App.Installer
 
             for (int n = 0; n < drawData.CmdListsCount; n++)
             {
-                var cmdList = drawData.CmdListsRange[n];
+                ImDrawListPtr cmdList = drawData.CmdListsRange[n];
 
                 int vtxBufferSize = cmdList.VtxBuffer.Size * Marshal.SizeOf<ImDrawVert>();
                 int idxBufferSize = cmdList.IdxBuffer.Size * sizeof(ushort);

@@ -72,7 +72,7 @@ namespace Alis.Sample.Web
         {
             Console.WriteLine($"Hello from dotnet!");
 
-            var display = EGL.GetDisplay(IntPtr.Zero);
+            IntPtr display = EGL.GetDisplay(IntPtr.Zero);
             if (display == IntPtr.Zero)
                 throw new Exception("Display was null");
 
@@ -92,8 +92,8 @@ namespace Alis.Sample.Web
                 EGL.EGL_NONE
             };
 
-            var config = IntPtr.Zero;
-            var numConfig = IntPtr.Zero;
+            IntPtr config = IntPtr.Zero;
+            IntPtr numConfig = IntPtr.Zero;
             if (!EGL.ChooseConfig(display, attributeList, ref config, 1, ref numConfig))
                 throw new Exception("ChoseConfig() failed");
             if (numConfig == IntPtr.Zero)
@@ -103,12 +103,12 @@ namespace Alis.Sample.Web
                 throw new Exception("BindApi() failed");
 
             int[] ctxAttribs = new int[] { EGL.EGL_CONTEXT_CLIENT_VERSION, 3, EGL.EGL_NONE };
-            var context = EGL.CreateContext(display, config, EGL.EGL_NO_CONTEXT, ctxAttribs);
+            IntPtr context = EGL.CreateContext(display, config, EGL.EGL_NO_CONTEXT, ctxAttribs);
             if (context == IntPtr.Zero)
                 throw new Exception("CreateContext() failed");
 
             // now create the surface
-            var surface = EGL.CreateWindowSurface(display, config, IntPtr.Zero, IntPtr.Zero);
+            IntPtr surface = EGL.CreateWindowSurface(display, config, IntPtr.Zero, IntPtr.Zero);
             if (surface == IntPtr.Zero)
                 throw new Exception("CreateWindowSurface() failed");
 
