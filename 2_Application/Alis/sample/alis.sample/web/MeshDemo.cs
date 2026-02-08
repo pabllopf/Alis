@@ -223,7 +223,7 @@ namespace Alis.Sample.Web
         /// </summary>
         public unsafe void Render()
         {
-            // iterate our logic thread
+            Debug.WriteLine("[MeshDemo] Render start");
             Scheduler.Resume();
 
             // update the vertex buffer
@@ -241,18 +241,24 @@ namespace Alis.Sample.Web
             for (int i = 0; i < MeshData.TriangleIndices.Length; i++)
                 IndexBuffer[i] = MeshData.TriangleIndices[i];
 
+            Debug.WriteLine($"[MeshDemo] VertexBuffer[0]: {VertexBuffer[0].Vertex} Color: {VertexBuffer[0].Color}");
+            Debug.WriteLine($"[MeshDemo] IndexBuffer.Length: {IndexBuffer.Length}");
+
             // dispatch GL commands
             Gl.GlClearColor(0.392f, 0.584f, 0.929f, 1.0f);
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
+            Debug.WriteLine($"[MeshDemo] After Clear, GL Error: {Gl.GlGetError()}");
 
             BindVAO();
-            // Corregido: GlBufferData no es genérico, se usa puntero a los datos
+            Debug.WriteLine($"[MeshDemo] After BindVAO, GL Error: {Gl.GlGetError()}");
             var vertexHandle = GCHandle.Alloc(VertexBuffer, GCHandleType.Pinned);
             var indexHandle = GCHandle.Alloc(IndexBuffer, GCHandleType.Pinned);
             try
             {
                 Gl.GlBufferData(BufferTarget.ArrayBuffer, Marshal.SizeOf<VertexShaderInput>() * VertexBuffer.Length, vertexHandle.AddrOfPinnedObject(), BufferUsageHint.StreamDraw);
+                Debug.WriteLine($"[MeshDemo] After GlBufferData ArrayBuffer, GL Error: {Gl.GlGetError()}");
                 Gl.GlBufferData(BufferTarget.ElementArrayBuffer, sizeof(ushort) * IndexBuffer.Length, indexHandle.AddrOfPinnedObject(), BufferUsageHint.StreamDraw);
+                Debug.WriteLine($"[MeshDemo] After GlBufferData ElementArrayBuffer, GL Error: {Gl.GlGetError()}");
             }
             finally
             {
@@ -260,7 +266,9 @@ namespace Alis.Sample.Web
                 indexHandle.Free();
             }
             Gl.GlDrawElements(PrimitiveType.Triangles, (int)IndexBuffer.Length, DrawElementsType.UnsignedShort, (IntPtr)0);
+            Debug.WriteLine($"[MeshDemo] After GlDrawElements, GL Error: {Gl.GlGetError()}");
             UnbindVAO();
+            Debug.WriteLine("[MeshDemo] Render end");
         }
 
         /// <summary>
