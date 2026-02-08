@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>12</LangVersion>
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+    <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
+    <IsAotCompatible>true</IsAotCompatible>
+    <NoWarn>$(NoWarn);RCS1090</NoWarn>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <EmccFlags>-s FULL_ES3=1 -lopenal -lGL -s</EmccFlags>
+    <WasmMainJSPath>main.js</WasmMainJSPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PublishTrimmed>true</PublishTrimmed>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <WasmBuildNative>true</WasmBuildNative>
+    <RunAOTCompilation>true</RunAOTCompilation>
+    <!-- Disable SIMD support as it's prerelease only on Safari -->
+    <WasmEnableSIMD>false</WasmEnableSIMD>
+    <!-- Normal,JustInterp,Full,FullInterp,Hybrid,LLVMOnly,LLVMOnlyInterp -->
+    <!-- <AOTMode>LLVMOnly</AOTMode> -->
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <NativeFileReference Include="Native/libEGL.c" ScanForPInvokes="true" />
+    <NativeFileReference Include="Native/openal32.c" ScanForPInvokes="true" />
+    <NativeFileReference Include="Native/emscripten.c" ScanForPInvokes="true" />
+
+    <WasmExtraFilesToDeploy Include="index.html" />
+    <WasmExtraFilesToDeploy Include="main.js" />
+    <WasmExtraFilesToDeploy Include="$(MSBuildThisFileDirectory)Assets\**" TargetPath="Assets/%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CoroutineScheduler" Version="0.3.0" />
+    <PackageReference Include="Silk.NET.OpenGLES" Version="2.21.0" />
+
+    <TrimmableAssembly Include="Silk.NET.Maths" />
+  </ItemGroup>
+</Project>

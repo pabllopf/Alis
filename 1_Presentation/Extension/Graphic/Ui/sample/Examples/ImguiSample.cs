@@ -87,6 +87,9 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
         /// </summary>
         private int _counter;
 
+        /// <summary>
+        /// The style
+        /// </summary>
         private ImGuiStyle style;
 
         /// <summary>
@@ -264,6 +267,9 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             // No exception-handling here; platform may reset wheel internally if needed.
         }
 
+        /// <summary>
+        /// The firsttime
+        /// </summary>
         private bool firsttime = true;
         
         /// <summary>

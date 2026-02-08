@@ -167,14 +167,36 @@ namespace Alis.Core.Graphic.Platforms
         /// <returns>true si había caracteres pendientes, false si no</returns>
         bool TryGetLastInputCharacters(out string chars);
 
+        /// <summary>
+        /// Gets the window position x
+        /// </summary>
+        /// <returns>The int</returns>
         int GetWindowPositionX();
+        /// <summary>
+        /// Gets the window position y
+        /// </summary>
+        /// <returns>The int</returns>
         int GetWindowPositionY();
         
+        /// <summary>
+        /// Gets the window metrics using the specified win x
+        /// </summary>
+        /// <param name="winX">The win</param>
+        /// <param name="winY">The win</param>
+        /// <param name="winW">The win</param>
+        /// <param name="winH">The win</param>
+        /// <param name="fbW">The fb</param>
+        /// <param name="fbH">The fb</param>
         void GetWindowMetrics(out int winX, out int winY,
             out int winW, out int winH,
             out int fbW, out int fbH);
 
 
+        /// <summary>
+        /// Gets the mouse position in view using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
         void GetMousePositionInView(out float x, out float y);
     }
 }

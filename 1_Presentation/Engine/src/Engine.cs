@@ -89,12 +89,30 @@ namespace Alis.App.Engine
         private readonly Alis.Core.Aspect.Math.Vector.Vector2F[] _lastClickPos = new Alis.Core.Aspect.Math.Vector.Vector2F[5];
 
         // --- Añadir campos en la clase HubEngine (junto a _prevMouseDown, _lastClickTime, _lastClickPos) ---
+        /// <summary>
+        /// The mouse clicked
+        /// </summary>
         private readonly bool[] _mouseClicked = new bool[5];
+        /// <summary>
+        /// The mouse double clicked
+        /// </summary>
         private readonly bool[] _mouseDoubleClicked = new bool[5];
+        /// <summary>
+        /// The mouse clicked time
+        /// </summary>
         private readonly double[] _mouseClickedTime = new double[5];
+        /// <summary>
+        /// The mouse clicked count
+        /// </summary>
         private readonly ushort[] _mouseClickedCount = new ushort[5];
 
+        /// <summary>
+        /// The resolution program
+        /// </summary>
         private float resolutionProgramX = 1920;
+        /// <summary>
+        /// The resolution program
+        /// </summary>
         private float resolutionProgramY = 1080;
         
         /// <summary>
@@ -355,11 +373,26 @@ namespace Alis.App.Engine
             platform.Cleanup();
         }
         
+        /// <summary>
+        /// The is first time
+        /// </summary>
         private bool isFirstTime = true;
+        /// <summary>
+        /// The gl viewport width
+        /// </summary>
         private int glViewportWidth;
+        /// <summary>
+        /// The gl viewport height
+        /// </summary>
         private int glViewportHeight;
+        /// <summary>
+        /// The scale factor
+        /// </summary>
         private float scaleFactor = 1.0f;
         
+         /// <summary>
+         /// Updates the mouse pos and buttons
+         /// </summary>
          private void UpdateMousePosAndButtons()
         {
             var io = ImGui.GetIo();
@@ -1136,7 +1169,13 @@ namespace Alis.App.Engine
             _spaceWork.Style = style;
         }
         
+        /// <summary>
+        /// The is init
+        /// </summary>
         private bool IsInit = false;
+        /// <summary>
+        /// The frame counter
+        /// </summary>
         private int FrameCounter = 0;
 
         /// <summary>
@@ -1202,6 +1241,9 @@ namespace Alis.App.Engine
             FrameCounter++;
         }
 
+         /// <summary>
+         /// Builds the default layout
+         /// </summary>
          private void BuildDefaultLayout()
        {
            ImGuiViewportPtr viewport = ImGui.GetMainViewport();
@@ -1274,6 +1316,9 @@ namespace Alis.App.Engine
            ImGui.DockBuilderFinish(dockspaceId);
        }
          
+         /// <summary>
+         /// The first time scale
+         /// </summary>
          private bool firstTimeScale = true;
 
         /// <summary>
