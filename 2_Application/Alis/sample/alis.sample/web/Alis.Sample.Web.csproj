@@ -2,7 +2,6 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <LangVersion>12</LangVersion>
-    <Nullable>enable</Nullable>
     <OutputType>Exe</OutputType>
     <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
     <IsAotCompatible>true</IsAotCompatible>
@@ -32,9 +31,10 @@
         <WasmExtraFilesToDeploy Include="$(MSBuildThisFileDirectory)Assets\**" TargetPath="Assets/%(RecursiveDir)%(Filename)%(Extension)" />
     </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CoroutineScheduler" Version="0.3.0" />
-    <PackageReference Include="Silk.NET.OpenGLES" Version="2.21.0" />
-  </ItemGroup>
-    
+    <ItemGroup>
+        <PackageReference Include="CoroutineScheduler" Version="0.3.0" />
+        <PackageReference Include="Silk.NET.OpenGLES" Version="2.21.0" />
+        <ProjectReference Include="$(SolutionDir)2_Application/alis/src/alis.csproj"/>
+    </ItemGroup>
+
 </Project>
