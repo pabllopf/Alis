@@ -67,7 +67,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     The get error
         /// </summary>
-        public delegate int GetError();
+        internal delegate int GetError();
 
         /// <summary>
         ///     The get proc address delegate
@@ -451,7 +451,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     Gets the value of glGetError
         /// </summary>
-        public static GetError GlGetErrorDelegate => GetCommand<GetError>("glGetError");
+        internal static GetError GlGetErrorDelegate => GetCommand<GetError>("glGetError");
 
         /// <summary>
         ///     Gets the value of the gl line width delegate
@@ -756,5 +756,24 @@ namespace Alis.Core.Graphic.OpenGL
             var getIntegerv = GetCommand<GetIntegerv>("glGetIntegerv");
             GlGetIntegerV(i, viewport);
         }
+
+        public static void GlGetShader(uint vertexShader, object compileStatus, out int i)
+        {
+                GlGetShaderIv(vertexShader, (ShaderParameter) compileStatus, Int1);
+                i = Int1[0];
+        }
+
+        public static void GlGetProgram(uint shaderProgram, object linkStatus, out int res)
+        {
+            GlGetProgramiv(shaderProgram, (ProgramParameter) linkStatus, Int1);
+            res = Int1[0];
+        }
+
+        public static void GlUniformMatrix2x3(int viewProjectionLocation, bool b, Span<float> matrix)
+        {
+                GetCommand<UniformMatrix2x3FvDel>("glUniformMatrix2x3fv")(viewProjectionLocation, 1, b, matrix);
+        }
+        
+        public delegate void UniformMatrix2x3FvDel(int location, int count, bool transpose, Span<float> value);
     }
 }
