@@ -757,23 +757,44 @@ namespace Alis.Core.Graphic.OpenGL
             GlGetIntegerV(i, viewport);
         }
 
+        /// <summary>
+        /// Gls the get shader using the specified vertex shader
+        /// </summary>
+        /// <param name="vertexShader">The vertex shader</param>
+        /// <param name="compileStatus">The compile status</param>
+        /// <param name="i">The </param>
         public static void GlGetShader(uint vertexShader, object compileStatus, out int i)
         {
                 GlGetShaderIv(vertexShader, (ShaderParameter) compileStatus, Int1);
                 i = Int1[0];
         }
 
+        /// <summary>
+        /// Gls the get program using the specified shader program
+        /// </summary>
+        /// <param name="shaderProgram">The shader program</param>
+        /// <param name="linkStatus">The link status</param>
+        /// <param name="res">The res</param>
         public static void GlGetProgram(uint shaderProgram, object linkStatus, out int res)
         {
             GlGetProgramiv(shaderProgram, (ProgramParameter) linkStatus, Int1);
             res = Int1[0];
         }
 
+        /// <summary>
+        /// Gls the uniform matrix 2x 3 using the specified view projection location
+        /// </summary>
+        /// <param name="viewProjectionLocation">The view projection location</param>
+        /// <param name="b">The </param>
+        /// <param name="matrix">The matrix</param>
         public static void GlUniformMatrix2x3(int viewProjectionLocation, bool b, Span<float> matrix)
         {
                 GetCommand<UniformMatrix2x3FvDel>("glUniformMatrix2x3fv")(viewProjectionLocation, 1, b, matrix);
         }
         
+        /// <summary>
+        /// The uniform matrix 2x fv del
+        /// </summary>
         public delegate void UniformMatrix2x3FvDel(int location, int count, bool transpose, Span<float> value);
     }
 }

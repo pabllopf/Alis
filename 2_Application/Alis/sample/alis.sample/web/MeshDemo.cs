@@ -9,10 +9,19 @@ namespace Alis.Sample.Web
     /// </summary>
     public class MeshDemo
     {
+        /// <summary>
+        /// The shader program
+        /// </summary>
         private uint shaderProgram;
+        /// <summary>
+        /// The vao
+        /// </summary>
         private uint vao;
 
         // Vértices del triángulo (posición 2D)
+        /// <summary>
+        /// The vertices
+        /// </summary>
         private static readonly float[] Vertices =
         {
             -0.5f, -0.5f,
@@ -21,6 +30,9 @@ namespace Alis.Sample.Web
         };
 
         // Vertex shader: WebGL2 compatible
+        /// <summary>
+        /// The vertex shader source
+        /// </summary>
         private const string VertexShaderSource = @"#version 300 es
 layout(location = 0) in vec2 in_xy;
 void main() {
@@ -28,6 +40,9 @@ void main() {
 }";
 
         // Fragment shader: color rojo fijo
+        /// <summary>
+        /// The fragment shader source
+        /// </summary>
         private const string FragmentShaderSource = @"#version 300 es
 precision mediump float;
 out vec4 outColor;
@@ -35,11 +50,21 @@ void main() {
     outColor = vec4(1.0, 0.0, 0.0, 1.0);
 }";
 
+        /// <summary>
+        /// Loads
+        /// </summary>
+        /// <returns>The mesh demo</returns>
         public static MeshDemo Load()
         {
             return new MeshDemo();
         }
 
+        /// <summary>
+        /// Checks the shader using the specified shader
+        /// </summary>
+        /// <param name="shader">The shader</param>
+        /// <param name="type">The type</param>
+        /// <exception cref="Exception">{type} shader failed to compile</exception>
         private static void CheckShader(uint shader, string type)
         {
             Gl.GlGetShader(shader, ShaderParameter.CompileStatus, out int status);
@@ -56,6 +81,11 @@ void main() {
             }
         }
 
+        /// <summary>
+        /// Checks the program using the specified program
+        /// </summary>
+        /// <param name="program">The program</param>
+        /// <exception cref="Exception">Shader program failed to link</exception>
         private static void CheckProgram(uint program)
         {
             Gl.GlGetProgram(program, ProgramParameter.LinkStatus, out int status);
@@ -72,6 +102,9 @@ void main() {
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MeshDemo"/> class
+        /// </summary>
         private MeshDemo()
         {
             // Crear y compilar shaders
@@ -110,6 +143,9 @@ void main() {
             Gl.GlBindVertexArray(0);
         }
 
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         public void Render()
         {
             Gl.GlClearColor(1f, 1f, 1f, 1f); // Fondo blanco
@@ -120,6 +156,11 @@ void main() {
             Gl.GlBindVertexArray(0);
         }
 
+        /// <summary>
+        /// Canvases the resized using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         public void CanvasResized(int width, int height)
         {
             Gl.GlViewport(0, 0, width, height);
