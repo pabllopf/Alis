@@ -119,9 +119,9 @@ namespace Alis.Sample.Web
             Gl.Initialize(EGL.GetProcAddress);
 
             Interop.Initialize();
-            ArgumentNullException.ThrowIfNull(BaseAddress);
+            // ArgumentNullException.ThrowIfNull(BaseAddress); // Ya no es necesario
 
-            Demo = await MeshDemo.LoadAsync(BaseAddress);
+            Demo = MeshDemo.Load();
             Demo?.CanvasResized(CanvasWidth, CanvasHeight);
 
             unsafe
