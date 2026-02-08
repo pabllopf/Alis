@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace WebGL.Sample
+namespace Alis.Sample.Web
 {
     internal static class Emscripten
     {

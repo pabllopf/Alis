@@ -1,7 +1,7 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
 
-namespace WebGL.Sample
+namespace Alis.Sample.Web
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "POD")]
     [StructLayout(LayoutKind.Sequential, Pack = 1)]

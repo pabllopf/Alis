@@ -2,12 +2,11 @@ using System;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
-
 using Silk.NET.OpenGLES;
 
 [assembly: SupportedOSPlatform("browser")]
 
-namespace WebGL.Sample
+namespace Alis.Sample.Web
 {
     public static class Test
     {

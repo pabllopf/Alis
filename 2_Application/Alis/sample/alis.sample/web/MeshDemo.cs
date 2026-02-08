@@ -4,12 +4,10 @@ using System.Net.Http;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-
 using CoroutineScheduler;
-
 using Silk.NET.OpenGLES;
 
-namespace WebGL.Sample
+namespace Alis.Sample.Web
 {
     public class MeshDemo
     {

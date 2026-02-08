@@ -1,9 +1,7 @@
 using System;
 using System.Runtime.InteropServices.JavaScript;
 
-using Silk.NET.OpenGLES;
-
-namespace WebGL.Sample
+namespace Alis.Sample.Web
 {
     internal static partial class Interop
     {

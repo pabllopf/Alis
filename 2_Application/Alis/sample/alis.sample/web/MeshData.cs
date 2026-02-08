@@ -1,4 +1,4 @@
-namespace WebGL.Sample
+namespace Alis.Sample.Web
 {
     public static class MeshData
     {
