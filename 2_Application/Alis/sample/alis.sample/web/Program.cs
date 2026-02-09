@@ -4,6 +4,7 @@ using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.Platforms.Web;
 
 [assembly: SupportedOSPlatform("browser")]
 
@@ -157,7 +158,7 @@ namespace Alis.Sample.Web
 
             unsafe
             {
-                Emscripten.RequestAnimationFrameLoop((delegate* unmanaged<double, nint, int>)&Frame, nint.Zero);
+                Emscripten.RequestAnimationFrameLoop((IntPtr)(delegate* unmanaged<double, nint, int>)&Frame, nint.Zero);
             }
         }
     }

@@ -1,12 +1,12 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Sample.Web
+namespace Alis.Core.Graphic.Platforms.Web
 {
     /// <summary>
     /// The egl class
     /// </summary>
-    internal static class EGL
+    public static class EGL
     {
         /// <summary>
         /// The lib egl

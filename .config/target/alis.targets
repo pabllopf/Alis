@@ -77,6 +77,7 @@
         <IsBrowserWasm Condition="'$(RuntimeIdentifier)' != 'browser-wasm'">false</IsBrowserWasm>
     </PropertyGroup>
 
+    
     <Target Name="GenerateGitattributesForBrowserWasm" BeforeTargets="Build">
         <WriteLinesToFile
             Condition="'$(IsBrowserWasm)' == 'true'"
@@ -365,8 +366,39 @@
         <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/main.js" />
         <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/index.html" />
         <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/runtimeconfig.template.json" />
+
+        <ItemGroup  Condition="'$(IsBrowserWasm)' == 'true'" >
+            <None Include="$(MSBuildProjectDirectory)/.gitattributes" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
+            <None Include="$(MSBuildProjectDirectory)/.nojekyll" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
+
+            <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/index.html" />
+            <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/main.js" />
+
+            <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/libEGL.c" ScanForPInvokes="true" />
+            <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/openal32.c" ScanForPInvokes="true" />
+            <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/emscripten.c" ScanForPInvokes="true" />
+
+            <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/Assets/**" TargetPath="Assets/%(RecursiveDir)%(Filename)%(Extension)" />
+
+            <PackageReference Include="CoroutineScheduler" Version="0.3.0" />
+        </ItemGroup>
     </Target>
 
+    <PropertyGroup Condition="'$(IsBrowserWasm)' == 'true'">
+        <IsAotCompatible>true</IsAotCompatible>
+        <NoWarn>$(NoWarn);RCS1090</NoWarn>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <EmccFlags>-s FULL_ES3=1 -lopenal -lGL -s</EmccFlags>
+        <WasmMainJSPath>main.js</WasmMainJSPath>
+
+        <PublishTrimmed>true</PublishTrimmed>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <WasmBuildNative>true</WasmBuildNative>
+        <RunAOTCompilation>true</RunAOTCompilation>
+    </PropertyGroup>
+
+
+  
     
 
   
