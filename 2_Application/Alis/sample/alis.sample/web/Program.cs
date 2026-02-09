@@ -134,20 +134,6 @@ namespace Alis.Sample.Web
                 throw new Exception("MakeCurrent() failed");
             }
             
-            
-            Music musicInfo2 = new Music
-            {
-                Name = "Prince Charming",
-                Artist = "Metallica",
-                Genre = "Rock and Metal",
-                Album = "Reload",
-                MusicId = Guid.NewGuid(),
-                ReleaseDate = DateTime.Now
-            };
-
-            string json = JsonNativeAot.Serialize(musicInfo2);
-            Console.WriteLine(json);
-
             Gl.Initialize(EGL.GetProcAddress);
 
             Interop.Initialize();
