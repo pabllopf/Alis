@@ -48,4 +48,8 @@
 
     <TrimmableAssembly Include="Silk.NET.Maths" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update=".nojekyll" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
+  </ItemGroup>
 </Project>
