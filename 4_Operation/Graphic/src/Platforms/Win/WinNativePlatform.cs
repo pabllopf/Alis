@@ -860,6 +860,54 @@ namespace Alis.Core.Graphic.Platforms.Win
             chars = null;
             return false;
         }
+
+        public int GetWindowPositionX()
+        {
+            if (hWnd != IntPtr.Zero)
+            {
+                Rect rect;
+                if (User32.GetWindowRect(hWnd, out rect) != 0)
+                {
+                    return rect.Left;
+                }
+            }
+
+            return 0;
+            
+        }
+
+        public int GetWindowPositionY()
+        {
+            if (hWnd != IntPtr.Zero)
+            {
+                Rect rect;
+                if (User32.GetWindowRect(hWnd, out rect) != 0)
+                {
+                    return rect.Top;
+                }
+            }
+
+            return 0;
+        }
+
+        public void GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH)
+        {
+            winX = GetWindowPositionX();
+            winY = GetWindowPositionY();
+            winW = GetWindowWidth();
+            winH = GetWindowHeight();
+            fbW = winW; // En este caso, asumimos que el framebuffer tiene el mismo tamaño que la ventana
+            fbH = winH;
+        }
+
+        public void GetMousePositionInView(out float x, out float y)
+        {
+            GetMouseState(out int mouseX, out int mouseY, out bool[] buttons);
+            int winW = GetWindowWidth();
+            int winH = GetWindowHeight();
+            x = (float) mouseX / winW;
+            y = (float) mouseY / winH;
+        }
     }
 }
 
