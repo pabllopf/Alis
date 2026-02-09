@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.8.7] - 2026-02-11
+### :sparkles: New Features
+- [`d6a614a`](https://github.com/pabllopf/Alis/commit/d6a614a01ca221e6879f22369a0efd7522630a8c) - Refactor Engine and SpaceWork, remove unused controllers *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7a354c3`](https://github.com/pabllopf/Alis/commit/7a354c3a38b94fb010418a1f914f26321b5e74ff) - sample with web and opengl *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`2013848`](https://github.com/pabllopf/Alis/commit/2013848ff76cc6618de9878587ead5e5c2a4d4db) - Refactor mouse input handling to use ImGui IO events *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a3781eb`](https://github.com/pabllopf/Alis/commit/a3781eb836d8ec181ef679d0f58f5d4cb277612d) - Refactor installer and remove unused core/shader files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`897cf88`](https://github.com/pabllopf/Alis/commit/897cf88c433545a9b85a92407ba69787b757b815) - Add default project config creation if missing *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.8.6] - 2025-12-06
 ### :sparkles: New Features
 - [`ba135fd`](https://github.com/pabllopf/Alis/commit/ba135fd94ce386ae8c9a3248a6cf305d2987cc4a) - Add release info models and update version fetching *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -5597,3 +5608,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v0.8.5]: https://github.com/pabllopf/Alis/compare/v0.8.4...v0.8.5
 [v0.8.6]: https://github.com/pabllopf/Alis/compare/v0.8.5...v0.8.6
+[v0.8.7]: https://github.com/pabllopf/Alis/compare/v0.8.6...v0.8.7
