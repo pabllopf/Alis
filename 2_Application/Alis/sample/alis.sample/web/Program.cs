@@ -2,6 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Graphic.OpenGL;
 
 [assembly: SupportedOSPlatform("browser")]
@@ -131,6 +132,20 @@ namespace Alis.Sample.Web
             {
                 throw new Exception("MakeCurrent() failed");
             }
+            
+            
+            Music musicInfo2 = new Music
+            {
+                Name = "Prince Charming",
+                Artist = "Metallica",
+                Genre = "Rock and Metal",
+                Album = "Reload",
+                MusicId = Guid.NewGuid(),
+                ReleaseDate = DateTime.Now
+            };
+
+            string json = JsonNativeAot.Serialize(musicInfo2);
+            Console.WriteLine(json);
 
             Gl.Initialize(EGL.GetProcAddress);
 

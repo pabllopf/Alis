@@ -63,4 +63,60 @@
                          Visible="false"/>
     </ItemGroup>
 
+
+
+
+    <Target Name="GenerateGitattributesForBrowserWasm" BeforeTargets="Build">
+        <PropertyGroup>
+            <IsBrowserWasm Condition="'$(RuntimeIdentifier)' == 'browser-wasm'">true</IsBrowserWasm>
+            <IsBrowserWasm Condition="'$(RuntimeIdentifier)' != 'browser-wasm'">false</IsBrowserWasm>
+        </PropertyGroup>
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/.gitattributes"
+            Lines="# put these in .gitattributes file
+                *.js binary
+                *.json binary
+                *.css binary
+                *.html binary"
+            Overwrite="true" />
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/.nojekyll"
+            Lines=""
+            Overwrite="true" />
+        
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/Native/emscripten.c"
+            Lines='#include "emscripten.h"'
+            Overwrite="true" />
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/Native/libEGL.c"
+            Lines='#include &lt;EGL/egl.h&gt;'
+            Overwrite="true" />
+        
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/Native/openal32.c"
+            Lines='
+            #include &lt;AL/al.h&gt; 
+            #include &lt;AL/alc.h&gt;'
+            Overwrite="true" />
+        
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/.gitattributes" />
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/.nojekyll" />
+
+        <ItemGroup Condition="'$(IsBrowserWasm)' == 'true'">
+            <None Include=".gitattributes" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
+            <NativeFileReference Include="Native/libEGL.c" ScanForPInvokes="true" />
+            <NativeFileReference Include="Native/openal32.c" ScanForPInvokes="true" />
+            <NativeFileReference Include="Native/emscripten.c" ScanForPInvokes="true" />
+        </ItemGroup>
+    </Target>
+
 </Project>

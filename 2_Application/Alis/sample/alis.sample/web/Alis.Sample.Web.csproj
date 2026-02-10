@@ -22,12 +22,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <NativeFileReference Include="Native/libEGL.c" ScanForPInvokes="true" />
-        <NativeFileReference Include="Native/openal32.c" ScanForPInvokes="true" />
-        <NativeFileReference Include="Native/emscripten.c" ScanForPInvokes="true" />
         
-        <None Update=".nojekyll" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
-        <None Update=".gitattributes" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
         
         <WasmExtraFilesToDeploy Include="index.html" />
         <WasmExtraFilesToDeploy Include="main.js" />
@@ -36,5 +31,24 @@
         <PackageReference Include="CoroutineScheduler" Version="0.3.0" />
         <ProjectReference Include="$(SolutionDir)2_Application/alis/src/alis.csproj"/>
     </ItemGroup>
+
+    <PropertyGroup>
+        <CompilerVisibleProperty>RuntimeIdentifier</CompilerVisibleProperty>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
+                          Include="
+          $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
+                          OutputItemType="Analyzer"
+                          PrivateAssets="all"
+                          ReferenceOutputAssembly="false"/>
+    </ItemGroup>
+
+
+
+
+   <Import Condition="'$(Configuration)'=='Debug'" Project="$(SolutionDir).config/target/alis.targets" />
 
 </Project>
