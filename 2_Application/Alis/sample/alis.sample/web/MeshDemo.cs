@@ -4,8 +4,9 @@ using System.Net.Http;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Enums;
 using CoroutineScheduler;
-using Silk.NET.OpenGLES;
 
 namespace Alis.Sample.Web
 {
@@ -14,10 +15,6 @@ namespace Alis.Sample.Web
     /// </summary>
     public class MeshDemo
     {
-        /// <summary>
-        /// Gets the value of the gl
-        /// </summary>
-        private GL Gl { get; }
         /// <summary>
         /// Gets the value of the scheduler
         /// </summary>
@@ -46,7 +43,7 @@ namespace Alis.Sample.Web
         /// <param name="gl">The gl</param>
         /// <param name="baseAddress">The base address</param>
         /// <returns>A task containing the mesh demo</returns>
-        public static async Task<MeshDemo> LoadAsync(GL gl, Uri baseAddress)
+        public static async Task<MeshDemo> LoadAsync(Uri baseAddress)
         {
             var client = new HttpClient()
             {
@@ -61,7 +58,7 @@ namespace Alis.Sample.Web
             var vertSource = await vertResponseTask;
             var fragSource = await fragResponseTask;
 
-            return new MeshDemo(gl, vertSource, fragSource);
+            return new MeshDemo(vertSource, fragSource);
         }
 
         // shader ids
@@ -110,11 +107,9 @@ namespace Alis.Sample.Web
         /// <param name="vertexSource">The vertex source</param>
         /// <param name="fragmentSource">The fragment source</param>
         unsafe private MeshDemo(
-            GL gl,
             string vertexSource,
             string fragmentSource)
         {
-            Gl = gl;
             Scheduler = new();
             _ = Scheduler.SpawnTask(LogicThread);
 
@@ -123,50 +118,49 @@ namespace Alis.Sample.Web
             IndexBuffer = new ushort[MeshData.TriangleIndices.Length];
 
             // create the shader
-            ShaderProgram = gl.CreateProgram();
+            ShaderProgram = Gl.GlCreateProgram();
 
-            VertexShader = gl.CreateShader(ShaderType.VertexShader);
-            gl.ShaderSource(VertexShader, vertexSource);
-            gl.CompileShader(VertexShader);
-            gl.GetShader(VertexShader, ShaderParameterName.CompileStatus, out int res);
+            VertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
+            Gl.ShaderSource(VertexShader, vertexSource);
+            Gl.GlCompileShader(VertexShader);
+            Gl.GlGetShader(VertexShader, ShaderParameter.CompileStatus, out int res);
             //gl.GetShaderInfoLog(VertexShader, out string log);
             Debug.Assert(res != 0);
 
-            FragmentShader = gl.CreateShader(ShaderType.FragmentShader);
-            gl.ShaderSource(FragmentShader, fragmentSource);
-            gl.CompileShader(FragmentShader);
-            gl.GetShader(FragmentShader, ShaderParameterName.CompileStatus, out res);
+            FragmentShader = Gl.GlCreateShader(ShaderType.FragmentShader);
+            Gl.ShaderSource(FragmentShader, fragmentSource);
+            Gl.GlCompileShader(FragmentShader);
+            Gl.GlGetShader(FragmentShader, ShaderParameter.CompileStatus, out res);
             //gl.GetShaderInfoLog(FragmentShader, out log);
             Debug.Assert(res != 0);
 
-            gl.AttachShader(ShaderProgram, VertexShader);
-            gl.AttachShader(ShaderProgram, FragmentShader);
-            gl.LinkProgram(ShaderProgram);
+            Gl.GlAttachShader(ShaderProgram, VertexShader);
+            Gl.GlAttachShader(ShaderProgram, FragmentShader);
+            Gl.GlLinkProgram(ShaderProgram);
 		
-            gl.GetProgram(ShaderProgram, ProgramPropertyARB.LinkStatus, out res);
+            Gl.GlGetProgram(ShaderProgram, ProgramParameter.LinkStatus, out res);
             //gl.GetProgramInfoLog(ShaderProgram, out log);
             Debug.Assert(res != 0);
 
-            ViewProjectionLocation = gl.GetUniformLocation(ShaderProgram, "viewprojection"u8);
-            Debug.Assert(gl.GetError() == GLEnum.NoError, "GetUniformLocation()");
+            ViewProjectionLocation = Gl.GlGetUniformLocation(ShaderProgram, "viewprojection");
 
             // use and configure the shader
-            gl.UseProgram(ShaderProgram);
+            Gl.GlUseProgram(ShaderProgram);
             var vp = Matrix3x2.Identity;
             Span<float> matrix = stackalloc float[]
             {
                 vp.M11, vp.M21, vp.M31,
                 vp.M12, vp.M22, vp.M32
             };
-            gl.UniformMatrix2x3(ViewProjectionLocation, false, matrix);
-            var err = gl.GetError();
+            Gl.GlUniformMatrix2x3(ViewProjectionLocation, false, matrix);
+            var err = Gl.GlGetError();
 
             // create the VAO
-            VAO = gl.GenVertexArray();
-            gl.BindVertexArray(VAO);
+            VAO = Gl.GenVertexArray();
+            Gl.GlBindVertexArray(VAO);
 
-            Span<uint> vbos = stackalloc uint[2];
-            gl.GenBuffers(vbos);
+            uint[] vbos =  new uint[2];
+            Gl.GlGenBuffers(2, vbos);
             VBO = vbos[0];
             VBI = vbos[1];
 
@@ -174,24 +168,22 @@ namespace Alis.Sample.Web
             int colr_size = Marshal.SizeOf<Vector3>();
             int stride = Marshal.SizeOf<VertexShaderInput>();
 
-            gl.BindBuffer(BufferTargetARB.ArrayBuffer, VBO);
-            gl.BufferData(
-                BufferTargetARB.ArrayBuffer,
-                (nuint)(stride * VertexBuffer.Length),
-                in nint.Zero,
-                BufferUsageARB.StreamDraw);
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, VBO);
+            Gl.GlBufferData(
+                BufferTarget.ArrayBuffer,
+                (stride * VertexBuffer.Length), IntPtr.Zero,
+                BufferUsageHint.StreamDraw);
 
-            gl.EnableVertexAttribArray(0); // vertex
-            gl.EnableVertexAttribArray(1); // color
+            Gl.EnableVertexAttribArray(0); // vertex
+            Gl.EnableVertexAttribArray(1); // color
 
-            gl.VertexAttribPointer(0, vert_size / sizeof(float), VertexAttribPointerType.Float, false, (uint)stride, (void*)(0));
-            gl.VertexAttribPointer(1, colr_size / sizeof(float), VertexAttribPointerType.Float, false, (uint)stride, (void*)(vert_size));
+            Gl.VertexAttribPointer(0, vert_size / sizeof(float), VertexAttribPointerType.Float, false, (int)stride, (IntPtr)(0));
+            Gl.VertexAttribPointer(1, colr_size / sizeof(float), VertexAttribPointerType.Float, false, (int)stride, (IntPtr)(vert_size));
 
-            gl.BindBuffer(BufferTargetARB.ElementArrayBuffer, VBI);
-            gl.BufferData(BufferTargetARB.ElementArrayBuffer, (nuint)(sizeof(ushort) * IndexBuffer.Length), null, BufferUsageARB.StreamDraw);
+            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, VBI);
+            Gl.GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(sizeof(ushort) * IndexBuffer.Length), new IntPtr(null), BufferUsageHint.StreamDraw);
 
-            gl.BindVertexArray(0);
-            Debug.Assert(gl.GetError() == GLEnum.NoError);
+            Gl.GlBindVertexArray(0);
         }
 
         /// <summary>
@@ -199,10 +191,9 @@ namespace Alis.Sample.Web
         /// </summary>
         public void BindVAO()
         {
-            Gl.BindVertexArray(VAO);
-            Gl.BindBuffer(BufferTargetARB.ArrayBuffer, VBO);
-            Gl.BindBuffer(BufferTargetARB.ElementArrayBuffer, VBI);
-            Debug.Assert(Gl.GetError() == GLEnum.NoError);
+            Gl.GlBindVertexArray(VAO);
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, VBO);
+            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, VBI);
         }
 
         /// <summary>
@@ -210,10 +201,9 @@ namespace Alis.Sample.Web
         /// </summary>
         public void UnbindVAO()
         {
-            Gl.BindVertexArray(0);
-            Gl.BindBuffer(BufferTargetARB.ArrayBuffer, 0);
-            Gl.BindBuffer(BufferTargetARB.ElementArrayBuffer, 0);
-            Debug.Assert(Gl.GetError() == GLEnum.NoError);
+            Gl.GlBindVertexArray(0);
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, 0);
+            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, 0);
         }
 
         /// <summary>
@@ -252,13 +242,24 @@ namespace Alis.Sample.Web
                 IndexBuffer[i] = MeshData.TriangleIndices[i];
 
             // dispatch GL commands
-            Gl.ClearColor(0.392f, 0.584f, 0.929f, 1.0f);
-            Gl.Clear(ClearBufferMask.ColorBufferBit);
+            Gl.GlClearColor(0.392f, 0.584f, 0.929f, 1.0f);
+            Gl.GlClear(ClearBufferMask.ColorBufferBit);
 
             BindVAO();
-            Gl.BufferData<VertexShaderInput>(BufferTargetARB.ArrayBuffer, VertexBuffer, BufferUsageARB.StreamDraw);
-            Gl.BufferData<ushort>(BufferTargetARB.ElementArrayBuffer, IndexBuffer, BufferUsageARB.StreamDraw);
-            Gl.DrawElements(PrimitiveType.Triangles, (uint)IndexBuffer.Length, DrawElementsType.UnsignedShort, (void*)0);
+            // Corregido: GlBufferData no es genérico, se usa puntero a los datos
+            var vertexHandle = GCHandle.Alloc(VertexBuffer, GCHandleType.Pinned);
+            var indexHandle = GCHandle.Alloc(IndexBuffer, GCHandleType.Pinned);
+            try
+            {
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, Marshal.SizeOf<VertexShaderInput>() * VertexBuffer.Length, vertexHandle.AddrOfPinnedObject(), BufferUsageHint.StreamDraw);
+                Gl.GlBufferData(BufferTarget.ElementArrayBuffer, sizeof(ushort) * IndexBuffer.Length, indexHandle.AddrOfPinnedObject(), BufferUsageHint.StreamDraw);
+            }
+            finally
+            {
+                vertexHandle.Free();
+                indexHandle.Free();
+            }
+            Gl.GlDrawElements(PrimitiveType.Triangles, (int)IndexBuffer.Length, DrawElementsType.UnsignedShort, (IntPtr)0);
             UnbindVAO();
         }
 
@@ -269,7 +270,7 @@ namespace Alis.Sample.Web
         /// <param name="height">The height</param>
         internal void CanvasResized(int width, int height)
         {
-            Gl.Viewport(0, 0, (uint)width, (uint)height);
+            Gl.GlViewport(0, 0, width, height);
 
             // note: in a rea lgame, aspect ratio corrections should be applies
             // to your projection transform, not your model transform

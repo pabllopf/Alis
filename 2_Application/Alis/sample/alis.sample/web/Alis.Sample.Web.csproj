@@ -29,7 +29,6 @@
         <WasmExtraFilesToDeploy Include="$(MSBuildThisFileDirectory)Assets\**" TargetPath="Assets/%(RecursiveDir)%(Filename)%(Extension)" />
 
         <PackageReference Include="CoroutineScheduler" Version="0.3.0" />
-        <PackageReference Include="Silk.NET.OpenGLES" Version="2.21.0" />
         <ProjectReference Include="$(SolutionDir)2_Application/alis/src/alis.csproj"/>
     </ItemGroup>
 

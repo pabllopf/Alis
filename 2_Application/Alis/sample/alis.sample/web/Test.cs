@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using System.Threading.Tasks;
-using Silk.NET.OpenGLES;
+using Alis.Core.Graphic.OpenGL;
 
 [assembly: SupportedOSPlatform("browser")]
 
@@ -115,19 +115,13 @@ namespace Alis.Sample.Web
 
             if (!EGL.MakeCurrent(display, surface, surface, context))
                 throw new Exception("MakeCurrent() failed");
-
-            //_ = EGL.DestroyContext(display, context);
-            //_ = EGL.DestroySurface(display, surface);
-            //_ = EGL.Terminate(display);
-
-            TrampolineFuncs.ApplyWorkaroundFixingInvocations();
-
-            var gl = GL.GetApi(EGL.GetProcAddress);
+            
+            Gl.Initialize(EGL.GetProcAddress);
 
             Interop.Initialize();
             ArgumentNullException.ThrowIfNull(BaseAddress);
 
-            Demo = await MeshDemo.LoadAsync(gl, BaseAddress);
+            Demo = await MeshDemo.LoadAsync(BaseAddress);
             Demo?.CanvasResized(CanvasWidth, CanvasHeight);
 
             unsafe
