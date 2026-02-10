@@ -122,7 +122,7 @@ namespace Alis.App.Engine
         {
             // Frame limiter: 60 FPS target
             const double targetFrameTime = 1.0 / 60.0;
-            var frameTimer = Stopwatch.StartNew();
+            Stopwatch frameTimer = Stopwatch.StartNew();
             double lastTime = frameTimer.Elapsed.TotalSeconds;
             
             
@@ -302,7 +302,7 @@ namespace Alis.App.Engine
                 _lastClickPos[i] = new Alis.Core.Aspect.Math.Vector.Vector2F(0, 0);
             }
            
-            var io = ImGui.GetIo();
+            ImGuiIoPtr io = ImGui.GetIo();
 
             _spaceWork.Viewport = ImGui.GetMainViewport();
             
@@ -395,7 +395,7 @@ namespace Alis.App.Engine
          /// </summary>
          private void UpdateMousePosAndButtons()
         {
-            var io = ImGui.GetIo();
+            ImGuiIoPtr io = ImGui.GetIo();
             Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO no inicializado");
 
             // Obtener estado del mouse desde la plataforma
@@ -599,7 +599,7 @@ namespace Alis.App.Engine
           /// </summary>
           private void ProcessKeyWithImgui()
         {
-            var io = ImGui.GetIo();
+            ImGuiIoPtr io = ImGui.GetIo();
 
             // Control y edición
             if (platform.IsKeyDown(ConsoleKey.Backspace)) io.AddKeyEvent(ImGuiKey.Backspace, true); else io.AddKeyEvent(ImGuiKey.Backspace, false);
@@ -1235,7 +1235,7 @@ namespace Alis.App.Engine
             ImGui.End();
 
             ImGui.Render();
-            var drawData = ImGui.GetDrawData();
+            ImDrawData drawData = ImGui.GetDrawData();
             RenderDrawData(drawData);
 
             FrameCounter++;
@@ -1370,7 +1370,7 @@ namespace Alis.App.Engine
             float t = 0.0f;
             float b = ImGui.GetIo().DisplaySize.Y;
 
-            var ortho = new Matrix4X4(
+            Matrix4X4 ortho = new Matrix4X4(
                 2.0f / (r - l), 0, 0, 0,
                 0, 2.0f / (t - b), 0, 0,
                 0, 0, -1.0f, 0,
@@ -1386,7 +1386,7 @@ namespace Alis.App.Engine
 
             for (int n = 0; n < drawData.CmdListsCount; n++)
             {
-                var cmdList = drawData.CmdListsRange[n];
+                ImDrawListPtr cmdList = drawData.CmdListsRange[n];
 
                 int vtxBufferSize = cmdList.VtxBuffer.Size * Marshal.SizeOf<ImDrawVert>();
                 int idxBufferSize = cmdList.IdxBuffer.Size * sizeof(ushort);

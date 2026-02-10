@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
         {
             // Frame limiter: 60 FPS target
             const double targetFrameTime = 1.0 / 60.0;
-            var frameTimer = Stopwatch.StartNew();
+            Stopwatch frameTimer = Stopwatch.StartNew();
             double lastTime = frameTimer.Elapsed.TotalSeconds;
 
             _platform = GetPlatform();
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
                 ConsoleKey.PageUp, ConsoleKey.PageDown, ConsoleKey.Home, ConsoleKey.End, ConsoleKey.Delete, ConsoleKey.Backspace,
                 ConsoleKey.Enter, ConsoleKey.Escape, ConsoleKey.A, ConsoleKey.C, ConsoleKey.V, ConsoleKey.X, ConsoleKey.Y, ConsoleKey.Z
             };
-            foreach (var k in trackedKeys) prevKeyState[k] = false;
+            foreach (ConsoleKey k in trackedKeys) prevKeyState[k] = false;
 
             // Main loop
             bool running = true;
@@ -271,7 +271,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
         /// </summary>
         private static void UpdateMousePosAndButtons()
         {
-            var io = ImGui.GetIo();
+            ImGuiIoPtr io = ImGui.GetIo();
             Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO no inicializado");
 
             // Obtener estado del mouse desde la plataforma
@@ -346,7 +346,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
         /// </summary>
         private static void ProcessKeyWithImgui()
         {
-            var io = ImGui.GetIo();
+            ImGuiIoPtr io = ImGui.GetIo();
             
             // Control y edición
             if (_platform.IsKeyDown(ConsoleKey.Backspace)) io.AddKeyEvent(ImGuiKey.Backspace, true); else io.AddKeyEvent(ImGuiKey.Backspace, false);

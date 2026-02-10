@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 
@@ -73,7 +74,7 @@ void main() {
                 Gl.GlGetShader(shader, ShaderParameter.InfoLogLength, out int logLen);
                 if (logLen > 1)
                 {
-                    var log = new System.Text.StringBuilder(logLen);
+                    StringBuilder log = new System.Text.StringBuilder(logLen);
                     Gl.GlGetShaderInfoLog(shader, logLen, null, log);
                     Console.WriteLine($"[MeshDemo] {type} shader compilation error: {log}");
                 }
@@ -94,7 +95,7 @@ void main() {
                 Gl.GlGetProgram(program, ProgramParameter.InfoLogLength, out int logLen);
                 if (logLen > 1)
                 {
-                    var log = new System.Text.StringBuilder(logLen);
+                    StringBuilder log = new System.Text.StringBuilder(logLen);
                     Gl.GlGetProgramInfoLog(program, logLen, null, log);
                     Console.WriteLine($"[MeshDemo] Program link error: {log}");
                 }

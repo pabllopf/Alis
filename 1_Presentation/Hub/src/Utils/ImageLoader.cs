@@ -74,7 +74,7 @@ namespace Alis.App.Hub.Utils
 
             lock (s_lock)
             {
-                if (s_cache.TryGetValue(key, out var cached))
+                if (s_cache.TryGetValue(key, out CachedTexture cached))
                 {
                     cached.RefCount++;
                     cached.LastAccessUtc = DateTime.UtcNow;
@@ -127,7 +127,7 @@ namespace Alis.App.Hub.Utils
                 if (imageHandle.IsAllocated) imageHandle.Free();
             }
 
-            var entry = new CachedTexture
+            CachedTexture entry = new CachedTexture
             {
                 TextureId = texture,
                 Width = image.Width,
@@ -139,7 +139,7 @@ namespace Alis.App.Hub.Utils
             lock (s_lock)
             {
                 // doble comprobación por si otro hilo la cargó al mismo tiempo
-                if (s_cache.TryGetValue(key, out var existing))
+                if (s_cache.TryGetValue(key, out CachedTexture existing))
                 {
                     // liberar la textura recién creada y usar la existente
                     try
@@ -173,7 +173,7 @@ namespace Alis.App.Hub.Utils
 
             lock (s_lock)
             {
-                if (!s_cache.TryGetValue(key, out var cached)) return;
+                if (!s_cache.TryGetValue(key, out CachedTexture cached)) return;
 
                 cached.RefCount = Math.Max(0, cached.RefCount - 1);
                 if (cached.RefCount == 0)
@@ -203,24 +203,24 @@ namespace Alis.App.Hub.Utils
         /// <param name="expiration">The expiration</param>
         public static void ClearUnused(TimeSpan? expiration = null)
         {
-            var exp = expiration ?? DefaultExpiration;
-            var now = DateTime.UtcNow;
+            TimeSpan exp = expiration ?? DefaultExpiration;
+            DateTime now = DateTime.UtcNow;
             List<string> toRemove = new List<string>();
 
             lock (s_lock)
             {
-                foreach (var kv in s_cache)
+                foreach (KeyValuePair<string, CachedTexture> kv in s_cache)
                 {
-                    var cached = kv.Value;
+                    CachedTexture cached = kv.Value;
                     if (cached.RefCount == 0 && (now - cached.LastAccessUtc) >= exp)
                     {
                         toRemove.Add(kv.Key);
                     }
                 }
 
-                foreach (var key in toRemove)
+                foreach (string key in toRemove)
                 {
-                    if (s_cache.TryGetValue(key, out var cached))
+                    if (s_cache.TryGetValue(key, out CachedTexture cached))
                     {
                         try
                         {

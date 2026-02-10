@@ -124,7 +124,7 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
                 ImGui.SetCurrentContext(_context);
             }
 
-            var io = ImGui.GetIo();
+            ImGuiIoPtr io = ImGui.GetIo();
             Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO must be valid after creating or setting context.");
 
             // Backend capabilities
@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             style = ImGui.GetStyle();
             
             // Build and upload font atlas to GL
-            var fonts = io.Fonts;
+            ImFontAtlasPtr fonts = io.Fonts;
             fonts.GetTexDataAsRgba32(out IntPtr pixelPtr, out int widthPtr, out int heightPtr);
 
             if (pixelPtr != IntPtr.Zero && widthPtr > 0 && heightPtr > 0)
@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
         /// </summary>
         public void Draw()
         {
-            var io = ImGui.GetIo();
+            ImGuiIoPtr io = ImGui.GetIo();
 
             ImGui.NewFrame();
 
@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             ImGui.End();
 
             ImGui.Render();
-            var drawData = ImGui.GetDrawData();
+            ImDrawData drawData = ImGui.GetDrawData();
             RenderDrawData(drawData);
 
             // No exception-handling here; platform may reset wheel internally if needed.
@@ -321,7 +321,7 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             float t = 0.0f;
             float b = imGuiIoPtr.DisplaySize.Y;
 
-            var ortho = new Matrix4X4(
+            Matrix4X4 ortho = new Matrix4X4(
                 2.0f / (r - l), 0, 0, 0,
                 0, 2.0f / (t - b), 0, 0,
                 0, 0, -1.0f, 0,
@@ -337,7 +337,7 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
 
             for (int n = 0; n < drawData.CmdListsCount; n++)
             {
-                var cmdList = drawData.CmdListsRange[n];
+                ImDrawListPtr cmdList = drawData.CmdListsRange[n];
 
                 int vtxBufferSize = cmdList.VtxBuffer.Size * Marshal.SizeOf<ImDrawVert>();
                 int idxBufferSize = cmdList.IdxBuffer.Size * sizeof(ushort);

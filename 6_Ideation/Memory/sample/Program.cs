@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Memory.Sample
                         throw new InvalidOperationException("Recurso 'app.bmp' no encontrado en el registro de recursos.");
                     }
 
-                    using (var memoryStream = new MemoryStream())
+                    using (MemoryStream memoryStream = new MemoryStream())
                     {
                         streamPack.CopyTo(memoryStream);
                         byte[] assetData = memoryStream.ToArray();

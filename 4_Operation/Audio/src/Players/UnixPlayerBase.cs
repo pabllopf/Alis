@@ -259,7 +259,7 @@ namespace Alis.Core.Audio.Players
                 throw new FileNotFoundException($"El archivo '{fileName}' no existe.");
             }
 
-            var process = new Process
+            Process process = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
@@ -274,10 +274,10 @@ namespace Alis.Core.Audio.Players
             string output = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
 
-            var line = output.Split('\n').FirstOrDefault(l => l.Contains("estimated duration"));
+            string line = output.Split('\n').FirstOrDefault(l => l.Contains("estimated duration"));
             if (line != null)
             {
-                var parts = line.Split(':');
+                string[] parts = line.Split(':');
                 if (parts.Length > 1 && double.TryParse(parts[1].Replace(".", ",").Replace("sec", "").Trim(), out double seconds))
                 {
                     return seconds;
