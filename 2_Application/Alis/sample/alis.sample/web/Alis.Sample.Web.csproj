@@ -16,6 +16,11 @@
         <RunAOTCompilation>true</RunAOTCompilation>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <DefineConstants Condition="'$(RuntimeIdentifier)' != ''">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>
+        <DefineConstants Condition="'$(RuntimeIdentifier)' == ''">$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
+    </PropertyGroup>
+
     <ItemGroup>
         <NativeFileReference Include="Native/libEGL.c" ScanForPInvokes="true" />
         <NativeFileReference Include="Native/openal32.c" ScanForPInvokes="true" />

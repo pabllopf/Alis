@@ -35,21 +35,21 @@ namespace Alis.Sample.Web
         /// The vertex shader source
         /// </summary>
         private const string VertexShaderSource = @"#version 300 es
-layout(location = 0) in vec2 in_xy;
-void main() {
-    gl_Position = vec4(in_xy, 0.0, 1.0);
-}";
+            layout(location = 0) in vec2 in_xy;
+            void main() {
+            gl_Position = vec4(in_xy, 0.0, 1.0);
+        }";
 
         // Fragment shader: color rojo fijo
         /// <summary>
         /// The fragment shader source
         /// </summary>
         private const string FragmentShaderSource = @"#version 300 es
-precision mediump float;
-out vec4 outColor;
-void main() {
-    outColor = vec4(1.0, 0.0, 0.0, 1.0);
-}";
+            precision mediump float;
+            out vec4 outColor;
+            void main() {
+            outColor = vec4(1.0, 0.0, 0.0, 1.0);
+        }";
 
         /// <summary>
         /// Loads
