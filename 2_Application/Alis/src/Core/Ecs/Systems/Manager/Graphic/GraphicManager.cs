@@ -353,6 +353,8 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                          .Query<With<Camera>>()
                          .Enumerate<Camera>())
             {
+                
+        
                 foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
                 {
                     if (boxColliderGameobject.Has<BoxCollider>())
@@ -364,6 +366,24 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                         }
                     }
                 }
+                
+
+                foreach (GameObject spriteGameobject in spriteGameObjects)
+                {
+                    if (spriteGameobject.Has<Animator>() && spriteGameobject.Has<Sprite>())
+                    {
+                        ref Animator animator = ref spriteGameobject.Get<Animator>();
+                        ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
+                        animator.DrawAnimation(ref sprite);
+                    }
+
+                    if (spriteGameobject.Has<Sprite>())
+                    {
+                        ref Sprite sprite = ref spriteGameobject.Get<Sprite>();
+                        sprite.Render(spriteGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
+                    }
+                }
+                
             }
         }
     }

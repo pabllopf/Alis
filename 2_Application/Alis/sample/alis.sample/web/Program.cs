@@ -206,6 +206,10 @@ namespace Alis.Sample.Web
                                 .Scale(2, 2)
                                 .Rotation(0)
                                 .Build())
+                            .WithComponent<Sprite>(sprite => sprite
+                                .Depth(1)
+                                .SetTexture("tile023.bmp")
+                                .Build())
                             .WithComponent<BoxCollider>(boxCollider => boxCollider
                                 .IsActive(true)
                                 .BodyType(BodyType.Dynamic)

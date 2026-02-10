@@ -542,9 +542,7 @@ namespace Alis.Core.Ecs.Components.Collider
                 right, top,     // top-right
                 right, bottom   // bottom-right
             };
-
-            //Gl.GlClearColor(1f, 1f, 1f, 1f); // Fondo blanco
-            //Gl.GlClear(ClearBufferMask.ColorBufferBit);
+            
             Gl.GlUseProgram(shaderProgram);
             Gl.GlBindVertexArray(vao);
 
