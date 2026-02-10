@@ -11,7 +11,7 @@ namespace Alis.Sample.Web
     /// <summary>
     /// The test class
     /// </summary>
-    public static class Test
+    public static class Program
     {
         /// <summary>
         /// Gets or sets the value of the base address
