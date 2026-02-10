@@ -16,11 +16,11 @@ namespace Alis.Sample.Web
         /// <summary>
         /// Gets or sets the value of the base address
         /// </summary>
-        public static Uri? BaseAddress { get; internal set; }
+        public static Uri BaseAddress { get; internal set; }
         /// <summary>
         /// Gets or sets the value of the demo
         /// </summary>
-        private static MeshDemo? Demo { get; set;  }
+        private static MeshDemo Demo { get; set;  }
         /// <summary>
         /// Frames the time
         /// </summary>
@@ -95,7 +95,7 @@ namespace Alis.Sample.Web
 
             var config = IntPtr.Zero;
             var numConfig = IntPtr.Zero;
-            if (!EGL.ChooseConfig(display, attributeList, ref config, (IntPtr)1, ref numConfig))
+            if (!EGL.ChooseConfig(display, attributeList, ref config, 1, ref numConfig))
                 throw new Exception("ChoseConfig() failed");
             if (numConfig == IntPtr.Zero)
                 throw new Exception("ChoseConfig() returned no configs");
@@ -104,7 +104,7 @@ namespace Alis.Sample.Web
                 throw new Exception("BindApi() failed");
 
             int[] ctxAttribs = new int[] { EGL.EGL_CONTEXT_CLIENT_VERSION, 3, EGL.EGL_NONE };
-            var context = EGL.CreateContext(display, config, (IntPtr)EGL.EGL_NO_CONTEXT, ctxAttribs);
+            var context = EGL.CreateContext(display, config, EGL.EGL_NO_CONTEXT, ctxAttribs);
             if (context == IntPtr.Zero)
                 throw new Exception("CreateContext() failed");
 
