@@ -58,6 +58,15 @@ namespace Alis.Core.Ecs.Systems.Scope
         /// </summary>
         public Context Context => _context;
 
+        private double targetFrameDuration = 0;
+        private double currentTime = 0;
+        float accumulator = 0;
+        private double lastTime = 0;
+        double totalTime = 0;
+        float lastDeltaTime = 0f;
+        float smoothDeltaTimeSum = 0f;
+        int smoothDeltaTimeCount = 0;
+
         /// <summary>
         ///     Runs this instance
         /// </summary>
@@ -71,14 +80,10 @@ namespace Alis.Core.Ecs.Systems.Scope
             runtime.OnAwake();
             runtime.OnStart();
 
-            double targetFrameDuration = 1 / setting.Graphic.TargetFrames;
-            double currentTime = timeManager.Clock.Elapsed.TotalSeconds;
-            float accumulator = 0;
-            double lastTime = timeManager.Clock.Elapsed.TotalSeconds;
-            double totalTime = 0;
-            float lastDeltaTime = 0f;
-            float smoothDeltaTimeSum = 0f;
-            int smoothDeltaTimeCount = 0;
+            targetFrameDuration = 1 / setting.Graphic.TargetFrames;
+           currentTime = timeManager.Clock.Elapsed.TotalSeconds;
+            accumulator = 0;
+          lastTime = timeManager.Clock.Elapsed.TotalSeconds;
 
             while (_context.IsRunning)
             {
@@ -188,6 +193,100 @@ namespace Alis.Core.Ecs.Systems.Scope
             _context.Setting.OnLoad();
             _context.Runtime.OnLoad();
             Run();
+        }
+
+        public void InitPreview()
+        {
+            Runtime<AManager> runtime = _context.Runtime;
+            Setting setting = _context.Setting;
+            TimeManager timeManager = _context.TimeManager;
+
+            _context.Setting.Graphic = _context.Setting.Graphic with {PreviewMode = true};
+            
+            runtime.OnInit();
+            runtime.OnAwake();
+            runtime.OnStart();
+
+            targetFrameDuration = 1 / setting.Graphic.TargetFrames;
+            currentTime = timeManager.Clock.Elapsed.TotalSeconds;
+            accumulator = 0;
+            lastTime = timeManager.Clock.Elapsed.TotalSeconds;
+        }
+
+        public void Preview()
+        {
+            Runtime<AManager> runtime = _context.Runtime;
+            Setting setting = _context.Setting;
+            TimeManager timeManager = _context.TimeManager;
+
+            double frameStartTime = timeManager.Clock.Elapsed.TotalSeconds;
+            double newTime = frameStartTime;
+
+            timeManager.DeltaTime = (float) (newTime - currentTime);
+            timeManager.UnscaledDeltaTime = (float) (newTime - currentTime);
+            timeManager.UnscaledTime += timeManager.UnscaledDeltaTime;
+            timeManager.UnscaledTimeAsDouble += timeManager.UnscaledDeltaTime;
+            timeManager.Time = timeManager.UnscaledTime * timeManager.TimeScale;
+            timeManager.TimeAsDouble = timeManager.UnscaledTimeAsDouble * timeManager.TimeScale;
+            timeManager.MaximumDeltaTime = Math.Max(timeManager.MaximumDeltaTime, timeManager.DeltaTime);
+            currentTime = newTime;
+            accumulator += timeManager.DeltaTime;
+            timeManager.FrameCount++;
+            timeManager.TotalFrames++;
+
+            if (newTime - lastTime >= timeManager.OneSecond)
+            {
+                totalTime += newTime - lastTime;
+                timeManager.AverageFrames = (int) (timeManager.TotalFrames / totalTime);
+                timeManager.FrameCount = 0;
+                lastTime = newTime;
+            }
+
+            runtime.OnDispatchEvents();
+            runtime.OnProcessPendingChanges();
+
+            runtime.OnPhysicUpdate();
+            runtime.OnBeforeUpdate();
+            runtime.OnUpdate();
+            runtime.OnAfterUpdate();
+
+            while (accumulator >= timeManager.Configuration.FixedTimeStep)
+            {
+                timeManager.InFixedTimeStep = true;
+                timeManager.FixedTime += timeManager.Configuration.FixedTimeStep;
+                timeManager.FixedTimeAsDouble += timeManager.Configuration.FixedTimeStep;
+                timeManager.FixedDeltaTime = timeManager.Configuration.FixedTimeStep;
+                timeManager.FixedUnscaledDeltaTime = timeManager.Configuration.FixedTimeStep / timeManager.TimeScale;
+                timeManager.FixedUnscaledTime += timeManager.FixedUnscaledDeltaTime;
+                timeManager.FixedUnscaledTimeAsDouble += timeManager.FixedUnscaledDeltaTime;
+                runtime.OnBeforeFixedUpdate();
+                runtime.OnFixedUpdate();
+                runtime.OnAfterFixedUpdate();
+                accumulator %= timeManager.Configuration.FixedTimeStep;
+                timeManager.InFixedTimeStep = false;
+            }
+
+            runtime.OnCalculate();
+
+            // Render game:
+            runtime.OnBeforeDraw();
+            runtime.OnDraw();
+            runtime.OnAfterDraw();
+            runtime.OnGui();
+            runtime.OnRenderPresent();
+
+
+            smoothDeltaTimeSum += timeManager.DeltaTime - lastDeltaTime;
+            smoothDeltaTimeCount++;
+            timeManager.SmoothDeltaTime = smoothDeltaTimeSum / smoothDeltaTimeCount;
+            lastDeltaTime = timeManager.DeltaTime;
+
+            double frameEndTime = timeManager.Clock.Elapsed.TotalSeconds;
+            double frameDuration = frameEndTime - frameStartTime;
+            if (frameDuration < targetFrameDuration)
+            {
+                Thread.Sleep((int) ((targetFrameDuration - frameDuration) * timeManager.MillisecondsInSecond));
+            }
         }
 
         /// <summary>

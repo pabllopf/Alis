@@ -112,6 +112,13 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         public override void OnInit()
         {
+            if (Context.Setting.Graphic.PreviewMode)
+            {
+                Console.WriteLine("Preview mode enabled, skipping graphics initialization.");
+                return;
+            }
+            
+            
 #if osxarm64 || osxarm || osxx64 || osx
             platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
 #elif winx64
@@ -121,8 +128,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
 #else
             platform = null;
 #endif
-
-
+            
             platform.Initialize((int) Context.Setting.Graphic.WindowSize.X, (int) Context.Setting.Graphic.WindowSize.Y, Context.Setting.General.Name);
             platform.MakeContextCurrent();
             Gl.Initialize(platform.GetProcAddress);
@@ -158,12 +164,19 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         public override void OnDraw()
         {
+            if (Context.Setting.Graphic.PreviewMode)
+            {
+                RenderPreview();
+                return;
+            }
+            
+
             bool running = platform.PollEvents();
             if (!running)
             {
                 Context.Exit();
             }
-            
+
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>();
             DateTime now = DateTime.UtcNow;
             foreach (ConsoleKey k in allKeys)
@@ -173,6 +186,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                     newKeys.Add(k);
                 }
             }
+
             // Detectar eventos
             HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>(newKeys);
             pressedKeys.ExceptWith(currentKeys); // Press: nuevas pulsaciones
@@ -186,6 +200,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             {
                 keyDownTimestamps[k] = now;
             }
+
             foreach (ConsoleKey k in releasedKeys)
             {
                 keyDownTimestamps.TryGetValue(k, out DateTime downTime);
@@ -200,16 +215,17 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                     Type componentType = component.Type;
                     if (typeof(IOnPressKey).IsAssignableFrom(componentType))
                     {
-                        IOnPressKey onPressKey = (IOnPressKey)gameObject.Get(componentType);
+                        IOnPressKey onPressKey = (IOnPressKey) gameObject.Get(componentType);
                         foreach (ConsoleKey k in pressedKeys)
                         {
                             KeyEventInfo info = new KeyEventInfo(k, now, TimeSpan.Zero);
                             onPressKey.OnPressKey(info);
                         }
                     }
+
                     if (typeof(IOnHoldKey).IsAssignableFrom(componentType))
                     {
-                        IOnHoldKey onHoldKey = (IOnHoldKey)gameObject.Get(componentType);
+                        IOnHoldKey onHoldKey = (IOnHoldKey) gameObject.Get(componentType);
                         foreach (ConsoleKey k in heldKeys)
                         {
                             keyDownTimestamps.TryGetValue(k, out DateTime downTime);
@@ -217,9 +233,10 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                             onHoldKey.OnHoldKey(info);
                         }
                     }
+
                     if (typeof(IOnReleaseKey).IsAssignableFrom(componentType))
                     {
-                        IOnReleaseKey onReleaseKey = (IOnReleaseKey)gameObject.Get(componentType);
+                        IOnReleaseKey onReleaseKey = (IOnReleaseKey) gameObject.Get(componentType);
                         foreach (ConsoleKey k in releasedKeys)
                         {
                             keyDownTimestamps.TryGetValue(k, out DateTime downTime);
@@ -241,7 +258,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             PhysicSetting physicSettings = contextSetting.Physic;
             Color backgrounColor = contextSetting.Graphic.BackgroundColor;
 
-            //Glfw.PollEvents();
 
             // Set the clear color (convert from 0-255 range to 0.0-1.0 range)
             Gl.GlClearColor(backgrounColor.R / 255.0f, backgrounColor.G / 255.0f, backgrounColor.B / 255.0f, backgrounColor.A / 255.0f);
@@ -263,6 +279,19 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             {
                 // prepare sprite rendering state once per frame
                 Sprite.BeginFrame();
+                
+                foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
+                {
+                    if (boxColliderGameobject.Has<BoxCollider>())
+                    {
+                        ref BoxCollider boxCollider = ref boxColliderGameobject.Get<BoxCollider>();
+                        if (physicSettings.Debug)
+                        {
+                            boxCollider.Render(boxColliderGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
+                        }
+                    }
+                }
+                
 
                 foreach (GameObject spriteGameobject in spriteGameObjects)
                 {
@@ -280,6 +309,50 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                     }
                 }
 
+              
+
+                // finalize sprite rendering state
+                Sprite.EndFrame();
+            }
+
+            // Swap the buffers to display the triangle
+            //Glfw.SwapBuffers(Window);
+
+
+            platform.SwapBuffers();
+            int glError = Gl.GlGetError();
+            if (glError != 0)
+            {
+                Logger.Info($"OpenGL error tras flushBuffer: 0x{glError:X}");
+            }
+        }
+
+        private void RenderPreview()
+        {
+            float pixelsPerMeter = PixelsPerMeter;
+            Setting contextSetting = Context.Setting;
+            PhysicSetting physicSettings = contextSetting.Physic;
+            Color backgrounColor = contextSetting.Graphic.BackgroundColor;
+
+
+            // Set the clear color (convert from 0-255 range to 0.0-1.0 range)
+            Gl.GlClearColor(backgrounColor.R / 255.0f, backgrounColor.G / 255.0f, backgrounColor.B / 255.0f, backgrounColor.A / 255.0f);
+
+            // Clear the screen
+            Gl.GlClear(ClearBufferMask.ColorBufferBit);
+            
+            GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.CurrentWorld
+                .Query<With<Sprite>>()
+                .EnumerateWithEntities();
+
+            GameObjectQueryEnumerator.QueryEnumerable boxColliderGameObjects = Context.SceneManager.CurrentWorld
+                .Query<With<BoxCollider>>()
+                .EnumerateWithEntities();
+
+            foreach (RefTuple<Camera> camera in Context.SceneManager.CurrentWorld
+                         .Query<With<Camera>>()
+                         .Enumerate<Camera>())
+            {
                 foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
                 {
                     if (boxColliderGameobject.Has<BoxCollider>())
@@ -291,19 +364,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                         }
                     }
                 }
-
-                // finalize sprite rendering state
-                Sprite.EndFrame();
-            }
-
-            // Swap the buffers to display the triangle
-            //Glfw.SwapBuffers(Window);
-
-            platform.SwapBuffers();
-            int glError = Gl.GlGetError();
-            if (glError != 0)
-            {
-                Logger.Info($"OpenGL error tras flushBuffer: 0x{glError:X}");
             }
         }
     }
