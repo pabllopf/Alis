@@ -277,9 +277,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                          .Query<With<Camera>>()
                          .Enumerate<Camera>())
             {
-                // prepare sprite rendering state once per frame
-                Sprite.BeginFrame();
-                
                 foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
                 {
                     if (boxColliderGameobject.Has<BoxCollider>())
@@ -308,11 +305,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                         sprite.Render(spriteGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
                     }
                 }
-
-              
-
-                // finalize sprite rendering state
-                Sprite.EndFrame();
+                
             }
 
             // Swap the buffers to display the triangle
