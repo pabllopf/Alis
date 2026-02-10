@@ -222,12 +222,29 @@ namespace Alis.Core.Ecs.Components.Render
         public static void ReleaseSharedResources()
         {
             if (!SharedInitialized)
+            {
                 return;
+            }
 
-            if (SharedVao != 0) Gl.DeleteVertexArray(SharedVao);
-            if (SharedVbo != 0) Gl.DeleteBuffer(SharedVbo);
-            if (SharedEbo != 0) Gl.DeleteBuffer(SharedEbo);
-            if (SharedShaderProgram != 0) Gl.GlDeleteProgram(SharedShaderProgram);
+            if (SharedVao != 0)
+            {
+                Gl.DeleteVertexArray(SharedVao);
+            }
+
+            if (SharedVbo != 0)
+            {
+                Gl.DeleteBuffer(SharedVbo);
+            }
+
+            if (SharedEbo != 0)
+            {
+                Gl.DeleteBuffer(SharedEbo);
+            }
+
+            if (SharedShaderProgram != 0)
+            {
+                Gl.GlDeleteProgram(SharedShaderProgram);
+            }
 
             SharedVao = 0;
             SharedVbo = 0;
@@ -243,7 +260,9 @@ namespace Alis.Core.Ecs.Components.Render
         private static void InitializeSharedResources()
         {
             if (SharedInitialized)
+            {
                 return;
+            }
 
             string vertexShaderSource = @"
              #version 330 core
@@ -421,7 +440,9 @@ namespace Alis.Core.Ecs.Components.Render
 
             // Insertar en Render(...) después de obtener position y spriteRotation
             if (!IsSpriteVisible(position, Size, transformScale, spriteRotation, cameraPosition, cameraResolution, pixelsPerMeter))
+            {
                 return;
+            }
 
             Gl.GlUseProgram(SharedShaderProgram);
             Gl.GlBindVertexArray(SharedVao);

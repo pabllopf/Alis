@@ -219,7 +219,9 @@ namespace Alis.Core.Graphic.Platforms.Osx
                         {
                             string chars = Marshal.PtrToStringAuto(utf8Ptr);
                             if (!string.IsNullOrEmpty(chars))
+                            {
                                 c = chars[0];
+                            }
                         }
                     }
 
@@ -443,7 +445,9 @@ namespace Alis.Core.Graphic.Platforms.Osx
                         {
                             string chars = Marshal.PtrToStringAuto(utf8Ptr);
                             if (!string.IsNullOrEmpty(chars))
+                            {
                                 c = chars[0];
+                            }
                         }
                     }
 
@@ -486,11 +490,17 @@ namespace Alis.Core.Graphic.Platforms.Osx
                         //case 61: pressedKeys.Remove(ConsoleKey.RightAlt); break;
                         default:
                             if (c >= '0' && c <= '9')
+                            {
                                 pressedKeys.Remove((ConsoleKey) ((int) ConsoleKey.D0 + (c - '0')));
+                            }
                             else if (c >= 'A' && c <= 'Z')
+                            {
                                 pressedKeys.Remove((ConsoleKey) ((int) ConsoleKey.A + (c - 'A')));
+                            }
                             else if (c >= 'a' && c <= 'z')
+                            {
                                 pressedKeys.Remove((ConsoleKey) ((int) ConsoleKey.A + (c - 'a')));
+                            }
                             else
                             {
                                 switch (c)
@@ -634,7 +644,9 @@ namespace Alis.Core.Graphic.Platforms.Osx
             y = 0;
 
             if (window == null || window.Handle == IntPtr.Zero)
+            {
                 return;
+            }
 
             // NSWindow*
             IntPtr nsWindow = window.Handle;
@@ -645,7 +657,9 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 ObjectiveCInterop.Sel("contentView"));
 
             if (nsView == IntPtr.Zero)
+            {
                 return;
+            }
 
             // NSPoint mouse = [window mouseLocationOutsideOfEventStream]
             NsPoint mouseScreen =
@@ -705,7 +719,10 @@ namespace Alis.Core.Graphic.Platforms.Osx
         {
             bool result = Initialize(width, height, title);
             if (!result)
+            {
                 return false;
+            }
+
             try
             {
                 IntPtr nsImageClass = ObjectiveCInterop.objc_getClass("NSImage");
@@ -750,12 +767,17 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 IntPtr nsString = ObjectiveCInterop.objc_msgSend(nsStringClass, stringWithUTF8Sel, iconPathUtf8);
                 Marshal.FreeHGlobal(iconPathUtf8);
                 if (nsString == IntPtr.Zero)
+                {
                     return;
+                }
 
                 IntPtr nsImageAlloc = ObjectiveCInterop.objc_msgSend(nsImageClass, allocSel);
                 IntPtr nsImage = ObjectiveCInterop.objc_msgSend(nsImageAlloc, initWithContentsSel, nsString);
                 if (nsImage == IntPtr.Zero)
+                {
                     return;
+                }
+
                 IntPtr nsApp = ObjectiveCInterop.objc_msgSend(nsAppClass, sharedAppSel);
                 ObjectiveCInterop.objc_msgSend(nsApp, setIconSel, nsImage);
             }
