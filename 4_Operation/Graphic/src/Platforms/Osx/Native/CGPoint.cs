@@ -29,7 +29,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.Platforms.Osx
+namespace Alis.Core.Graphic.Platforms.Osx.Native
 {
     internal struct CGPoint
     {

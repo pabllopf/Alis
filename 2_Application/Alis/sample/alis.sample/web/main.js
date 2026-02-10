@@ -7,7 +7,7 @@ const { setModuleImports, getAssemblyExports, getConfig, runMain } = await dotne
 
 const config = getConfig();
 const exports = await getAssemblyExports(config.mainAssemblyName);
-const interop = exports.WebGL.Sample.Interop;
+const interop = exports.Alis.Sample.Web.Interop;
 
 var canvas = globalThis.document.getElementById("canvas");
 dotnet.instance.Module["canvas"] = canvas;
