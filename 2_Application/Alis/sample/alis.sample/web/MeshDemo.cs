@@ -9,11 +9,27 @@ using Silk.NET.OpenGLES;
 
 namespace Alis.Sample.Web
 {
+    /// <summary>
+    /// The mesh demo class
+    /// </summary>
     public class MeshDemo
     {
+        /// <summary>
+        /// Gets the value of the gl
+        /// </summary>
         private GL Gl { get; }
+        /// <summary>
+        /// Gets the value of the scheduler
+        /// </summary>
         private Scheduler Scheduler { get; }
 	
+        /// <summary>
+        /// Downloads the file using the specified client
+        /// </summary>
+        /// <param name="client">The client</param>
+        /// <param name="path">The path</param>
+        /// <exception cref="Exception"></exception>
+        /// <returns>A task containing the string</returns>
         private static async Task<string> DownloadFile(
             HttpClient client,
             string path)
@@ -24,6 +40,12 @@ namespace Alis.Sample.Web
             return await response.Content.ReadAsStringAsync();
         }
 
+        /// <summary>
+        /// Loads the gl
+        /// </summary>
+        /// <param name="gl">The gl</param>
+        /// <param name="baseAddress">The base address</param>
+        /// <returns>A task containing the mesh demo</returns>
         public static async Task<MeshDemo> LoadAsync(GL gl, Uri baseAddress)
         {
             var client = new HttpClient()
@@ -43,17 +65,50 @@ namespace Alis.Sample.Web
         }
 
         // shader ids
+        /// <summary>
+        /// Gets the value of the shader program
+        /// </summary>
         private uint ShaderProgram { get; }
+        /// <summary>
+        /// Gets the value of the vertex shader
+        /// </summary>
         private uint VertexShader { get; }
+        /// <summary>
+        /// Gets the value of the fragment shader
+        /// </summary>
         private uint FragmentShader { get; }
+        /// <summary>
+        /// Gets the value of the view projection location
+        /// </summary>
         private int ViewProjectionLocation { get; }
         // vao ids
+        /// <summary>
+        /// Gets or sets the value of the vao
+        /// </summary>
         private uint VAO { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the vbo
+        /// </summary>
         private uint VBO { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the vbi
+        /// </summary>
         private uint VBI { get; set; }
+        /// <summary>
+        /// Gets the value of the vertex buffer
+        /// </summary>
         private VertexShaderInput[] VertexBuffer { get; }
+        /// <summary>
+        /// Gets the value of the index buffer
+        /// </summary>
         private ushort[] IndexBuffer { get; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MeshDemo"/> class
+        /// </summary>
+        /// <param name="gl">The gl</param>
+        /// <param name="vertexSource">The vertex source</param>
+        /// <param name="fragmentSource">The fragment source</param>
         unsafe private MeshDemo(
             GL gl,
             string vertexSource,
@@ -139,6 +194,9 @@ namespace Alis.Sample.Web
             Debug.Assert(gl.GetError() == GLEnum.NoError);
         }
 
+        /// <summary>
+        /// Binds the vao
+        /// </summary>
         public void BindVAO()
         {
             Gl.BindVertexArray(VAO);
@@ -147,6 +205,9 @@ namespace Alis.Sample.Web
             Debug.Assert(Gl.GetError() == GLEnum.NoError);
         }
 
+        /// <summary>
+        /// Unbinds the vao
+        /// </summary>
         public void UnbindVAO()
         {
             Gl.BindVertexArray(0);
@@ -155,9 +216,21 @@ namespace Alis.Sample.Web
             Debug.Assert(Gl.GetError() == GLEnum.NoError);
         }
 
+        /// <summary>
+        /// Gets or sets the value of the logo translation
+        /// </summary>
         private Vector2 LogoTranslation { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the logo scale
+        /// </summary>
         private Vector2 LogoScale { get; set; } = Vector2.One;
+        /// <summary>
+        /// Gets or sets the value of the logo rotation
+        /// </summary>
         private float LogoRotation { get; set; }
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
         public unsafe void Render()
         {
             // iterate our logic thread
@@ -189,6 +262,11 @@ namespace Alis.Sample.Web
             UnbindVAO();
         }
 
+        /// <summary>
+        /// Canvases the resized using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         internal void CanvasResized(int width, int height)
         {
             Gl.Viewport(0, 0, (uint)width, (uint)height);
@@ -198,6 +276,11 @@ namespace Alis.Sample.Web
             LogoScale = new Vector2(height / (float)width, 1.0f);
         }
 
+        /// <summary>
+        /// Moves the to using the specified position
+        /// </summary>
+        /// <param name="position">The position</param>
+        /// <param name="speed">The speed</param>
         public async Task MoveTo(Vector2 position, float speed)
         {
             var delta = position - LogoTranslation;
@@ -212,6 +295,9 @@ namespace Alis.Sample.Web
             LogoTranslation = position;
         }
 
+        /// <summary>
+        /// Logics the thread
+        /// </summary>
         private async Task LogicThread()
         {
             const float speed = 0.005f;

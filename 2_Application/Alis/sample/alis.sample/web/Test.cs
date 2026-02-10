@@ -8,10 +8,25 @@ using Silk.NET.OpenGLES;
 
 namespace Alis.Sample.Web
 {
+    /// <summary>
+    /// The test class
+    /// </summary>
     public static class Test
     {
+        /// <summary>
+        /// Gets or sets the value of the base address
+        /// </summary>
         public static Uri? BaseAddress { get; internal set; }
+        /// <summary>
+        /// Gets or sets the value of the demo
+        /// </summary>
         private static MeshDemo? Demo { get; set;  }
+        /// <summary>
+        /// Frames the time
+        /// </summary>
+        /// <param name="time">The time</param>
+        /// <param name="userData">The user data</param>
+        /// <returns>The int</returns>
         [UnmanagedCallersOnly]
         public static int Frame(double time, nint userData)
         {
@@ -22,8 +37,19 @@ namespace Alis.Sample.Web
             return 1;
         }
 
+        /// <summary>
+        /// Gets or sets the value of the canvas width
+        /// </summary>
         private static int CanvasWidth { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the canvas height
+        /// </summary>
         private static int CanvasHeight { get; set; }
+        /// <summary>
+        /// Canvases the resized using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         public static void CanvasResized(int width, int height)
         {
             CanvasWidth = width;
@@ -31,6 +57,18 @@ namespace Alis.Sample.Web
             Demo?.CanvasResized(CanvasWidth, CanvasHeight);
         }
 
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
+        /// <exception cref="Exception">BindApi() failed</exception>
+        /// <exception cref="Exception">ChoseConfig() failed</exception>
+        /// <exception cref="Exception">ChoseConfig() returned no configs</exception>
+        /// <exception cref="Exception">CreateContext() failed</exception>
+        /// <exception cref="Exception">CreateWindowSurface() failed</exception>
+        /// <exception cref="Exception">Display was null</exception>
+        /// <exception cref="Exception">Initialize() returned false.</exception>
+        /// <exception cref="Exception">MakeCurrent() failed</exception>
         public async static Task Main(string[] args)
         {
             Console.WriteLine($"Hello from dotnet!");

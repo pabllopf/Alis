@@ -1,7 +1,13 @@
 namespace Alis.Sample.Web
 {
+    /// <summary>
+    /// The mesh data class
+    /// </summary>
     public static class MeshData
     {
+        /// <summary>
+        /// Gets the value of the triangle verts
+        /// </summary>
         public static VertexShaderInput[] TriangleVerts { get; } = new VertexShaderInput[]
         {
             new() { Vertex = new(-0.000000f, +0.000000f), Color = new(0f, 0f, 0f) },
@@ -230,6 +236,9 @@ namespace Alis.Sample.Web
             new() { Vertex = new(+0.173558f, +0.124973f), Color = new(1f, 1f, 1f) },
             new() { Vertex = new(+0.361109f, +0.124973f), Color = new(1f, 1f, 1f) },
         };
+        /// <summary>
+        /// Gets the value of the triangle indices
+        /// </summary>
         public static ushort[] TriangleIndices { get; } = new ushort[]
         {
             4, 2, 1,
