@@ -982,6 +982,33 @@ namespace Alis.Core.Graphic.Platforms.Linux
             chars = null;
             return false;
         }
+
+        public int GetWindowPositionX()
+        {
+            return 0;
+        }
+
+        public int GetWindowPositionY()
+        {
+            return 0;
+        }
+
+        public void GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH)
+        {
+            winX = 0; winY = 0; winW = width; winH = height; fbW = width; fbH = height;
+            if (display != IntPtr.Zero && window != IntPtr.Zero)
+            {
+                
+            }
+            
+            return;
+        }
+
+        public void GetMousePositionInView(out float x, out float y)
+        {
+            x = 0; y = 0;
+            return;
+        }
     }
 }
 
