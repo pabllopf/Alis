@@ -4,6 +4,13 @@
         <LangVersion>13</LangVersion>
         <OutputType>Exe</OutputType>
         <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="$(SolutionDir)2_Application/alis/src/alis.csproj"/>
+    </ItemGroup>
+
+    <PropertyGroup>
         <IsAotCompatible>true</IsAotCompatible>
         <NoWarn>$(NoWarn);RCS1090</NoWarn>
         <InvariantGlobalization>true</InvariantGlobalization>
@@ -16,26 +23,23 @@
         <RunAOTCompilation>true</RunAOTCompilation>
     </PropertyGroup>
 
-    <PropertyGroup>
-        <DefineConstants Condition="'$(RuntimeIdentifier)' != ''">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>
-        <DefineConstants Condition="'$(RuntimeIdentifier)' == ''">$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
-    </PropertyGroup>
-
     <ItemGroup>
-        
-        
-        <WasmExtraFilesToDeploy Include="index.html" />
-        <WasmExtraFilesToDeploy Include="main.js" />
-        <WasmExtraFilesToDeploy Include="$(MSBuildThisFileDirectory)Assets\**" TargetPath="Assets/%(RecursiveDir)%(Filename)%(Extension)" />
+        <None Include="$(MSBuildProjectDirectory)/.gitattributes" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
+        <None Include="$(MSBuildProjectDirectory)/.nojekyll" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
+
+        <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/index.html" />
+        <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/main.js" />
+
+        <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/libEGL.c" ScanForPInvokes="true" />
+        <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/openal32.c" ScanForPInvokes="true" />
+        <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/emscripten.c" ScanForPInvokes="true" />
+
+        <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/Assets/**" TargetPath="Assets/%(RecursiveDir)%(Filename)%(Extension)" />
 
         <PackageReference Include="CoroutineScheduler" Version="0.3.0" />
-        <ProjectReference Include="$(SolutionDir)2_Application/alis/src/alis.csproj"/>
     </ItemGroup>
 
-    <PropertyGroup>
-        <CompilerVisibleProperty>RuntimeIdentifier</CompilerVisibleProperty>
-    </PropertyGroup>
-    
+
     <ItemGroup>
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
                           Include="
@@ -45,10 +49,6 @@
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false"/>
     </ItemGroup>
-
-
-
-
-   <Import Condition="'$(Configuration)'=='Debug'" Project="$(SolutionDir).config/target/alis.targets" />
+   <Import Project="$(SolutionDir).config/target/alis.targets" />
 
 </Project>

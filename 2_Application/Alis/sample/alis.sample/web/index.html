@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<link rel="modulepreload" href="./main.js" />
-	<link rel="modulepreload" href="./_framework/dotnet.js" />
-	<title>.NET + WebGL = 💖</title>
+	<meta charset='utf-8' />
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+	<link rel='modulepreload' href='./main.js' />
+	<link rel='modulepreload' href='./_framework/dotnet.js' />
+	<title>Alis</title>
 	<style>
-		body
-		{
-			margin: 0;
+		body {
+			margin: 0 ;
 			background-color: black;
 			overflow: hidden;
 		}
 
-		canvas#canvas
-		{
+		canvas#canvas {
 			width: 100vw;
 			height: 100vh;
 			outline: none;
@@ -26,19 +24,15 @@
 			transform: translate(-50%, -50%);
 		}
 
-		@media (min-aspect-ratio: 16/9)
-		{
-			canvas#canvas
-			{
+		@media (min-aspect-ratio: 16/9) {
+			canvas#canvas {
 				height: 100vh;
 				width: calc(100vh * (16 / 9));
 			}
 		}
 
-		@media (max-aspect-ratio: 4/3)
-		{
-			canvas#canvas
-			{
+		@media (max-aspect-ratio: 4/3) {
+			canvas#canvas {
 				width: 100vw;
 				height: calc(100vw / (4 / 3));
 			}
@@ -46,9 +40,7 @@
 	</style>
 </head>
 <body>
-	<canvas id="canvas" width="16" height="9">
-	</canvas>
-
-	<script type="module" src="./main.js"></script>
+	<canvas id='canvas' width='16' height='9'></canvas>
+	<script type='module' src='./main.js'></script>
 </body>
 </html>

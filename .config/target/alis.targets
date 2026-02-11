@@ -11,9 +11,17 @@
     </PropertyGroup>
 
     <!-- Solo referencia si hay un RID efectivo -->
-    <ItemGroup Condition="'$(_EffectiveRuntimeIdentifier)' != ''">
+    <ItemGroup Condition="'$(_EffectiveRuntimeIdentifier)' != '' AND '$(_EffectiveRuntimeIdentifier)' != 'browser-wasm'">
         <Reference Include="$(_PackageAssemblyName)">
             <HintPath>$(MSBuildThisFileDirectory)../runtimes/$(_EffectiveRuntimeIdentifier)/lib/$(TargetFramework)/$(_PackageAssemblyName).dll</HintPath>
+            <Private>true</Private>
+        </Reference>
+    </ItemGroup>
+
+    <!-- Solo referencia si hay un RID efectivo -->
+    <ItemGroup Condition="'$(_EffectiveRuntimeIdentifier)' == 'browser-wasm'">
+        <Reference Include="$(_PackageAssemblyName)">
+            <HintPath>$(MSBuildThisFileDirectory)../runtimes/win-x64/lib/$(TargetFramework)/$(_PackageAssemblyName).dll</HintPath>
             <Private>true</Private>
         </Reference>
     </ItemGroup>
@@ -64,14 +72,12 @@
     </ItemGroup>
 
 
-
+    <PropertyGroup>
+        <IsBrowserWasm Condition="'$(RuntimeIdentifier)' == 'browser-wasm'">true</IsBrowserWasm>
+        <IsBrowserWasm Condition="'$(RuntimeIdentifier)' != 'browser-wasm'">false</IsBrowserWasm>
+    </PropertyGroup>
 
     <Target Name="GenerateGitattributesForBrowserWasm" BeforeTargets="Build">
-        <PropertyGroup>
-            <IsBrowserWasm Condition="'$(RuntimeIdentifier)' == 'browser-wasm'">true</IsBrowserWasm>
-            <IsBrowserWasm Condition="'$(RuntimeIdentifier)' != 'browser-wasm'">false</IsBrowserWasm>
-        </PropertyGroup>
-
         <WriteLinesToFile
             Condition="'$(IsBrowserWasm)' == 'true'"
             File="$(MSBuildProjectDirectory)/.gitattributes"
@@ -107,16 +113,262 @@
             #include &lt;AL/al.h&gt; 
             #include &lt;AL/alc.h&gt;'
             Overwrite="true" />
+
+        
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/main.js"
+            Lines='
+        import { dotnet } from "./_framework/dotnet.js"
+
+    const { setModuleImports, getAssemblyExports, getConfig, runMain } = await dotnet
+    .withDiagnosticTracing(false)
+    .withApplicationArgumentsFromQuery()
+    .create()%3b
+
+    const config = getConfig()%3b
+    const exports = await getAssemblyExports(config.mainAssemblyName)%3b
+    const interop = exports.Alis.Sample.Web.Interop%3b
+
+    var canvas = globalThis.document.getElementById("canvas")%3b
+    dotnet.instance.Module["canvas"] = canvas%3b
+
+    setModuleImports("main.js", {
+    initialize: () =&gt; {
+
+    var checkCanvasResize = (dispatch) =&gt; {
+    var devicePixelRatio = window.devicePixelRatio || 1.0%3b
+    var displayWidth = canvas.clientWidth * devicePixelRatio%3b
+    var displayHeight = canvas.clientHeight * devicePixelRatio%3b
+
+    if (canvas.width != displayWidth || canvas.height != displayHeight) {
+    canvas.width = displayWidth%3b
+    canvas.height = displayHeight%3b
+    dispatch = true%3b
+    }
+
+    if (dispatch)
+    interop.OnCanvasResize(displayWidth, displayHeight, devicePixelRatio)%3b
+    }
+
+    function checkCanvasResizeFrame() {
+    checkCanvasResize(false)%3b
+    requestAnimationFrame(checkCanvasResizeFrame)%3b
+    }
+
+    var keyDown = (e) =&gt; {
+    e.stopPropagation()%3b
+    var shift = e.shiftKey%3b
+    var ctrl = e.ctrlKey%3b
+    var alt = e.altKey%3b
+    var repeat = e.repeat%3b
+    var code = e.keyCode%3b
+
+    interop.OnKeyDown(shift, ctrl, alt, repeat, code)%3b
+    }
+
+    var keyUp = (e) =&gt; {
+    e.stopPropagation()%3b
+    var shift = e.shiftKey%3b
+    var ctrl = e.ctrlKey%3b
+    var alt = e.altKey%3b
+    var code = e.keyCode%3b
+
+    interop.OnKeyUp(shift, ctrl, alt, code)%3b
+    }
+
+    var mouseMove = (e) =&gt; {
+    var x = e.offsetX%3b
+    var y = e.offsetY%3b
+    interop.OnMouseMove(x, y)%3b
+    }
+
+    var mouseDown = (e) =&gt; {
+    var shift = e.shiftKey%3b
+    var ctrl = e.ctrlKey%3b
+    var alt = e.altKey%3b
+    var button = e.button%3b
+
+    interop.OnMouseDown(shift, ctrl, alt, button)%3b
+    }
+
+    var mouseUp = (e) =&gt; {
+    var shift = e.shiftKey%3b
+    var ctrl = e.ctrlKey%3b
+    var alt = e.altKey%3b
+    var button = e.button%3b
+
+    interop.OnMouseUp(shift, ctrl, alt, button)%3b
+    }
+
+    var shouldIgnore = (e) =&gt; {
+    e.preventDefault()%3b
+    return e.touches.length &gt; 1 || e.type == "touchend" &amp;&amp; e.touches.length &gt; 0;
+    }
+
+    var touchStart = (e) =&gt; {
+    if (shouldIgnore(e))
+    return%3b
+
+    var shift = e.shiftKey%3b
+    var ctrl = e.ctrlKey%3b
+    var alt = e.altKey%3b
+    var button = 0%3b
+    var touch = e.changedTouches[0]%3b
+    var bcr = e.target.getBoundingClientRect()%3b
+    var x = touch.clientX - bcr.x%3b
+    var y = touch.clientY - bcr.y%3b
+
+    interop.OnMouseMove(x, y)%3b
+    interop.OnMouseDown(shift, ctrl, alt, button)%3b
+    }
+
+    var touchMove = (e) =&gt; {
+    if (shouldIgnore(e))
+    return%3b
+
+    var touch = e.changedTouches[0]%3b
+    var bcr = e.target.getBoundingClientRect()%3b
+    var x = touch.clientX - bcr.x%3b
+    var y = touch.clientY - bcr.y%3b
+
+    interop.OnMouseMove(x, y)%3b
+    }
+
+    var touchEnd = (e) =&gt; {
+    if (shouldIgnore(e))
+    return%3b
+
+    var shift = e.shiftKey%3b
+    var ctrl = e.ctrlKey%3b
+    var alt = e.altKey%3b
+    var button = 0%3b
+    var touch = e.changedTouches[0]%3b
+    var bcr = e.target.getBoundingClientRect()%3b
+    var x = touch.clientX - bcr.x%3b
+    var y = touch.clientY - bcr.y%3b
+
+    interop.OnMouseMove(x, y)%3b
+    interop.OnMouseUp(shift, ctrl, alt, button)%3b
+    }
+
+    //canvas.addEventListener("contextmenu", (e) =&gt; e.preventDefault(), false)%3b
+    canvas.addEventListener("keydown", keyDown, false)%3b
+    canvas.addEventListener("keyup", keyUp, false)%3b
+    canvas.addEventListener("mousemove", mouseMove, false)%3b
+    canvas.addEventListener("mousedown", mouseDown, false)%3b
+    canvas.addEventListener("mouseup", mouseUp, false)%3b
+    canvas.addEventListener("touchstart", touchStart, false)%3b
+    canvas.addEventListener("touchmove", touchMove, false)%3b
+    canvas.addEventListener("touchend", touchEnd, false)%3b
+    checkCanvasResize(true)%3b
+    checkCanvasResizeFrame()%3b
+
+    canvas.tabIndex = 1000%3b
+
+    interop.SetRootUri(window.location.toString())%3b
+
+    var langs = navigator.languages || []%3b
+    for (var i = 0%3b i &lt; langs.length%3b i++)
+    interop.AddLocale(langs[i])%3b
+    interop.AddLocale(navigator.language)%3b
+    interop.AddLocale(navigator.userLanguage)%3b
+    }
+    })%3b
+
+    await runMain()%3b
+
+    '
+            Overwrite="true" />
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/index.html"
+            Lines="
+                
+               &lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset='utf-8' /&gt;
+	&lt;meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' /&gt;
+	&lt;link rel='modulepreload' href='./main.js' /&gt;
+	&lt;link rel='modulepreload' href='./_framework/dotnet.js' /&gt;
+	&lt;title&gt;Alis&lt;/title&gt;
+	&lt;style&gt;
+		body {
+			margin: 0 %3b
+			background-color: black%3b
+			overflow: hidden%3b
+		}
+
+		canvas#canvas {
+			width: 100vw%3b
+			height: 100vh%3b
+			outline: none%3b
+			margin: 0%3b
+			position: absolute%3b
+			left: 50%%3b
+			top: 50%%3b
+			transform: translate(-50%, -50%)%3b
+		}
+
+		@media (min-aspect-ratio: 16/9) {
+			canvas#canvas {
+				height: 100vh%3b
+				width: calc(100vh * (16 / 9))%3b
+			}
+		}
+
+		@media (max-aspect-ratio: 4/3) {
+			canvas#canvas {
+				width: 100vw%3b
+				height: calc(100vw / (4 / 3))%3b
+			}
+		}
+	&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;canvas id='canvas' width='16' height='9'&gt;&lt;/canvas&gt;
+	&lt;script type='module' src='./main.js'&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            "
+            Overwrite="true" />
+
+
+        <WriteLinesToFile
+            Condition="'$(IsBrowserWasm)' == 'true'"
+            File="$(MSBuildProjectDirectory)/runtimeconfig.template.json"
+            Lines='
+    {
+    "wasmHostProperties": {
+        "perHostConfig": [
+            {
+                "name": "browser",
+                "html-path": "index.html",
+                "Host": "browser"
+            }
+        ]
+    }
+}
+
+'
+            Overwrite="true" />
+        
         
         <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/.gitattributes" />
         <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/.nojekyll" />
+        
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/Native/emscripten.c" />
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/Native/libEGL.c" />
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/Native/openal32.c" />
 
-        <ItemGroup Condition="'$(IsBrowserWasm)' == 'true'">
-            <None Include=".gitattributes" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
-            <NativeFileReference Include="Native/libEGL.c" ScanForPInvokes="true" />
-            <NativeFileReference Include="Native/openal32.c" ScanForPInvokes="true" />
-            <NativeFileReference Include="Native/emscripten.c" ScanForPInvokes="true" />
-        </ItemGroup>
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/main.js" />
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/index.html" />
+        <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/runtimeconfig.template.json" />
     </Target>
 
+    
+
+  
 </Project>
