@@ -4,40 +4,16 @@
         <LangVersion>13</LangVersion>
         <OutputType>Exe</OutputType>
         <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
     <ItemGroup>
         <ProjectReference Include="$(SolutionDir)2_Application/alis/src/alis.csproj"/>
     </ItemGroup>
 
-    <PropertyGroup>
-        <IsAotCompatible>true</IsAotCompatible>
-        <NoWarn>$(NoWarn);RCS1090</NoWarn>
-        <InvariantGlobalization>true</InvariantGlobalization>
-        <EmccFlags>-s FULL_ES3=1 -lopenal -lGL -s</EmccFlags>
-        <WasmMainJSPath>main.js</WasmMainJSPath>
 
-        <PublishTrimmed>true</PublishTrimmed>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <WasmBuildNative>true</WasmBuildNative>
-        <RunAOTCompilation>true</RunAOTCompilation>
-    </PropertyGroup>
 
-    <ItemGroup>
-        <None Include="$(MSBuildProjectDirectory)/.gitattributes" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
-        <None Include="$(MSBuildProjectDirectory)/.nojekyll" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
-
-        <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/index.html" />
-        <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/main.js" />
-
-        <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/libEGL.c" ScanForPInvokes="true" />
-        <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/openal32.c" ScanForPInvokes="true" />
-        <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/emscripten.c" ScanForPInvokes="true" />
-
-        <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/Assets/**" TargetPath="Assets/%(RecursiveDir)%(Filename)%(Extension)" />
-
-        <PackageReference Include="CoroutineScheduler" Version="0.3.0" />
-    </ItemGroup>
+   
 
 
     <ItemGroup>

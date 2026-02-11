@@ -1,11 +1,12 @@
+using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Sample.Web
+namespace Alis.Core.Graphic.Platforms.Web
 {
     /// <summary>
     /// The emscripten class
     /// </summary>
-    internal static class Emscripten
+    public static class Emscripten
     {
         /// <summary>
         /// Requests the animation frame loop using the specified f
@@ -14,6 +15,6 @@ namespace Alis.Sample.Web
         /// <param name="userDataPtr">The user data ptr</param>
         [DllImport("emscripten", EntryPoint = "emscripten_request_animation_frame_loop")]
         [DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
-        internal static extern unsafe void RequestAnimationFrameLoop(void* f, nint userDataPtr);
+        public static extern void RequestAnimationFrameLoop(IntPtr f, nint userDataPtr);
     }
 }
