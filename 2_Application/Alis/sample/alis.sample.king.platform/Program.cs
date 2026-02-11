@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
@@ -61,6 +63,7 @@ namespace Alis.Sample.King.Platform
                         .Build())
                     .Graphic(graphic => graphic
                         .Resolution(640, 480)
+                        .BackgroundColor(Color.Cyan)
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
