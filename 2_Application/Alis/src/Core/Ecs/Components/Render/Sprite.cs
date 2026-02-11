@@ -354,7 +354,6 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GenerateMipmap(TextureTarget.Texture2D);
         }
 
-        // removed SetupBuffers per-instance; we use shared buffers
 
         /// <summary>
         ///     Renders the gameobject
@@ -377,16 +376,19 @@ namespace Alis.Core.Ecs.Components.Render
             float spriteRotation = gameobject.Get<Transform>().Rotation;
             Vector2F transformScale = gameobject.Get<Transform>().Scale;
 
-            // Calcular offset en NDC (de -1 a 1)
+            // Escalado físico: tamaño del sprite en metros = (pixeles de la textura / pixelsPerMeter) * escala
+            float worldWidth = (Size.X / pixelsPerMeter) * transformScale.X;
+            float worldHeight = (Size.Y / pixelsPerMeter) * transformScale.Y;
+
+            // Convertir a NDC (de -1 a 1)
             Vector2F ndcOffset = new Vector2F(
-                ((position.X - cameraPosition.X) / cameraResolution.X) * 2.0f,
-                ((position.Y - cameraPosition.Y) / cameraResolution.Y) * 2.0f
+                ((position.X - cameraPosition.X) / (cameraResolution.X / pixelsPerMeter)) * 2.0f,
+                ((position.Y - cameraPosition.Y) / (cameraResolution.Y / pixelsPerMeter)) * 2.0f
             );
 
-            // Ajustar escala a NDC
             Vector2F ndcScale = new Vector2F(
-                (Size.X * transformScale.X) / cameraResolution.X,
-                (Size.Y * transformScale.Y) / cameraResolution.Y
+                worldWidth / (cameraResolution.X / pixelsPerMeter),
+                worldHeight / (cameraResolution.Y / pixelsPerMeter)
             );
 
             // Usar shader y VAO compartidos
