@@ -175,7 +175,11 @@ namespace Alis.Core.Graphic.Sample.Samples
             Gl.GlBindVertexArray(vao);
             Gl.GlActiveTexture(TextureUnit.Texture0); // Activar unidad de textura 0
             Gl.GlBindTexture(TextureTarget.Texture2D, texture);
+            // Habilitar blending para transparencia
+            Gl.GlEnable(EnableCap.Blend);
+            Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
+            Gl.GlDisable(EnableCap.Blend);
         }
 
         /// <summary>
