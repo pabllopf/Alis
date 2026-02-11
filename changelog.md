@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.8.8] - 2026-02-11
+### :bug: Bug Fixes
+- [`71d707f`](https://github.com/pabllopf/Alis/commit/71d707fc6dd976078f7db3a09c106c5ee3e8a80e) - Remove extra blank line in .config/target/alis.targets *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.8.7] - 2026-02-11
 ### :sparkles: New Features
 - [`d6a614a`](https://github.com/pabllopf/Alis/commit/d6a614a01ca221e6879f22369a0efd7522630a8c) - Refactor Engine and SpaceWork, remove unused controllers *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -5609,3 +5614,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.8.5]: https://github.com/pabllopf/Alis/compare/v0.8.4...v0.8.5
 [v0.8.6]: https://github.com/pabllopf/Alis/compare/v0.8.5...v0.8.6
 [v0.8.7]: https://github.com/pabllopf/Alis/compare/v0.8.6...v0.8.7
+[v0.8.8]: https://github.com/pabllopf/Alis/compare/v0.8.7...v0.8.8
