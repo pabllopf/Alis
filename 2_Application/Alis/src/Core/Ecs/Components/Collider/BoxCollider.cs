@@ -534,15 +534,17 @@ namespace Alis.Core.Ecs.Components.Collider
             float top = rectangleY / cameraResolution.Y * 2.0f - 1.0f;
             float bottom = (rectangleY + rectangleH) / cameraResolution.Y * 2.0f - 1.0f;
 
-            // Vértices del rectángulo (Triangle Strip: bottom-left, top-left, bottom-right, top-right)
+            // Vértices del rectángulo (en sentido antihorario: bottom-left, top-left, top-right, bottom-right)
             var rectVertices = new float[]
             {
                 left, bottom,   // bottom-left
                 left, top,      // top-left
-                right, bottom,  // bottom-right
-                right, top      // top-right
+                right, top,     // top-right
+                right, bottom   // bottom-right
             };
-            
+
+            //Gl.GlClearColor(1f, 1f, 1f, 1f); // Fondo blanco
+            //Gl.GlClear(ClearBufferMask.ColorBufferBit);
             Gl.GlUseProgram(shaderProgram);
             Gl.GlBindVertexArray(vao);
 
@@ -560,7 +562,8 @@ namespace Alis.Core.Ecs.Components.Collider
                     handle.Free();
             }
 
-            Gl.GlDrawArrays(PrimitiveType.TriangleStrip, 0, 4);
+            // Dibujar solo los bordes del rectángulo
+            Gl.GlDrawArrays(PrimitiveType.LineLoop, 0, 4);
             Gl.GlBindVertexArray(0);
         }
     }
