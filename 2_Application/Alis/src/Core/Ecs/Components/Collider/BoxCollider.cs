@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using System.Text;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Kernel;
@@ -223,24 +224,7 @@ namespace Alis.Core.Ecs.Components.Collider
         /// </summary>
 
         public Vector2F SizeOfTexture { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the vao
-        /// </summary>
-
-        public uint Vao { get; private set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the vbo
-        /// </summary>
-
-        public uint Vbo { get; private set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the ebo
-        /// </summary>
-
-        public uint Ebo { get; private set; }
+        
 
         /// <summary>
         ///     Gets or sets the value of the this game object
@@ -399,38 +383,93 @@ namespace Alis.Core.Ecs.Components.Collider
                 }
             }
         }
+        
+        
+        /// <summary>
+        /// The shader program
+        /// </summary>
+        private uint shaderProgram;
+        /// <summary>
+        /// The vao
+        /// </summary>
+        private uint vao;
+        
+        private uint vbo;
 
+        // Vértices del triángulo (posición 2D)
+        /// <summary>
+        /// The vertices
+        /// </summary>
+        private static readonly float[] Vertices =
+        {
+            -0.5f, -0.5f,
+            0.5f, -0.5f,
+            0.0f,  0.5f
+        };
+
+        
         /// <summary>
         ///     Initializes the shaders
         /// </summary>
         private void InitializeShaders()
         {
-            float[] vertices =
+
+            string version = "";
+            if (Context.Setting.Graphic.PreviewMode)
             {
-                -0.5f, 0.5f, 0.0f, // Top-left
-                0.5f, 0.5f, 0.0f, // Top-right
-                0.5f, -0.5f, 0.0f, // Bottom-right
-                -0.5f, -0.5f, 0.0f // Bottom-left
-            };
-
-            uint[] indices =
+                version = "#version 300 es";
+            }
+            else
             {
-                0, 1, 2, // First triangle
-                2, 3, 0 // Second triangle
-            };
+                version = "#version 330 core";
+            }
+            
+            
+        string VertexShaderSource = version + @"
+            layout(location = 0) in vec2 in_xy;
+            void main() {
+            gl_Position = vec4(in_xy, 0.0, 1.0);
+        }";
 
-            Vbo = Gl.GenBuffer();
-            Vao = Gl.GenVertexArray();
-            uint ebo = Gl.GenBuffer();
 
-            Gl.GlBindVertexArray(Vao);
+        string FragmentShaderSource = version + @"
+            precision mediump float;
+            out vec4 outColor;
+            void main() {
+            outColor = vec4(1.0, 0.0, 0.0, 1.0);
+        }";
 
-            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
-            GCHandle handle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
+     
+            
+            // Crear y compilar shaders
+            shaderProgram = Gl.GlCreateProgram();
+            uint vert = Gl.GlCreateShader(ShaderType.VertexShader);
+            Gl.ShaderSource(vert, VertexShaderSource);
+            Gl.GlCompileShader(vert);
+            Gl.GlAttachShader(shaderProgram, vert);
+
+            uint frag = Gl.GlCreateShader(ShaderType.FragmentShader);
+            Gl.ShaderSource(frag, FragmentShaderSource);
+            Gl.GlCompileShader(frag);
+       
+            Gl.GlAttachShader(shaderProgram, frag);
+
+            Gl.GlLinkProgram(shaderProgram);
+
+
+            // Crear VAO y VBO
+            vao = Gl.GenVertexArray();
+            Gl.GlBindVertexArray(vao);
+            uint[] vbos = new uint[1];
+            Gl.GlGenBuffers(1, vbos);
+            vbo = vbos[0];
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, vbo);
+            
+            GCHandle handle = GCHandle.Alloc(Vertices, GCHandleType.Pinned);
             try
             {
                 IntPtr pointer = handle.AddrOfPinnedObject();
-                Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), pointer, BufferUsageHint.StaticDraw);
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(Vertices.Length * sizeof(float)), pointer, BufferUsageHint.StaticDraw);
             }
             finally
             {
@@ -439,61 +478,13 @@ namespace Alis.Core.Ecs.Components.Collider
                     handle.Free();
                 }
             }
-
-            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, ebo);
-            handle = GCHandle.Alloc(indices, GCHandleType.Pinned);
-            try
-            {
-                IntPtr pointer = handle.AddrOfPinnedObject();
-                Gl.GlBufferData(BufferTarget.ElementArrayBuffer, new IntPtr(indices.Length * sizeof(uint)), pointer, BufferUsageHint.StaticDraw);
-            }
-            finally
-            {
-                if (handle.IsAllocated)
-                {
-                    handle.Free();
-                }
-            }
-
-            string vertexShaderSource = @"
-              #version 330 core
-              layout (location = 0) in vec3 aPos;
-              void main()
-              {
-                  gl_Position = vec4(aPos, 1.0);
-              }
-          ";
-
-            string fragmentShaderSource = @"
-              #version 330 core
-              out vec4 FragColor;
-              void main()
-              {
-                  FragColor = vec4(1.0f, 0.0f, 0.0f, 1.0f); // Red color
-              }
-          ";
-
-            uint vertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
-            Gl.ShaderSource(vertexShader, vertexShaderSource);
-            Gl.GlCompileShader(vertexShader);
-
-            uint fragmentShader = Gl.GlCreateShader(ShaderType.FragmentShader);
-            Gl.ShaderSource(fragmentShader, fragmentShaderSource);
-            Gl.GlCompileShader(fragmentShader);
-
-            ShaderProgram = Gl.GlCreateProgram();
-            Gl.GlAttachShader(ShaderProgram, vertexShader);
-            Gl.GlAttachShader(ShaderProgram, fragmentShader);
-            Gl.GlLinkProgram(ShaderProgram);
-
-            Gl.GlBindVertexArray(Vao);
-            Gl.GlUseProgram(ShaderProgram);
-
+            
+            
             Gl.EnableVertexAttribArray(0);
-            Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), IntPtr.Zero);
+            Gl.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, 2 * sizeof(float), IntPtr.Zero);
+            Gl.GlBindVertexArray(0);
         }
-
-
+        
         /// <summary>
         ///     Renders the gameobject
         /// </summary>
@@ -509,30 +500,33 @@ namespace Alis.Core.Ecs.Components.Collider
                 IsInit = true;
             }
 
+            RenderBoxCollider(gameobject, cameraPosition, cameraResolution, pixelsPerMeter);
+        }
+
+        private void RenderBoxCollider(
+            GameObject gameobject,
+            Vector2F cameraPosition,
+            Vector2F cameraResolution,
+            float pixelsPerMeter)
+        {
             ref Transform transform = ref gameobject.Get<Transform>();
 
             Vector2F colliderPosition = transform.Position;
             Vector2F colliderScale = transform.Scale;
-            float colliderRotation = transform.Rotation;
+            // float colliderRotation = transform.Rotation; // No se usa
 
             float posX = colliderPosition.X * pixelsPerMeter;
             float posY = colliderPosition.Y * pixelsPerMeter;
             float width = SizeOfTexture.X * pixelsPerMeter * colliderScale.X;
             float height = SizeOfTexture.Y * pixelsPerMeter * colliderScale.Y;
 
+            int x = (int)(posX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2);
+            int y = (int)(posY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2);
 
-            int x = (int) (posX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2);
-            int y = (int) (posY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2);
-
-            float rectangleX = (int) (x - width / 2);
-            float rectangleY = (int) (y - height / 2);
-            float rectangleW = (int) width;
-            float rectangleH = (int) height;
-
-            Gl.GlUseProgram(ShaderProgram);
-            Gl.GlBindVertexArray(Vao);
-            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
-
+            float rectangleX = (int)(x - width / 2);
+            float rectangleY = (int)(y - height / 2);
+            float rectangleW = (int)width;
+            float rectangleH = (int)height;
 
             // Calcular los vértices en NDC usando rectangleX, rectangleY, rectangleW, rectangleH
             float left = rectangleX / cameraResolution.X * 2.0f - 1.0f;
@@ -540,32 +534,36 @@ namespace Alis.Core.Ecs.Components.Collider
             float top = rectangleY / cameraResolution.Y * 2.0f - 1.0f;
             float bottom = (rectangleY + rectangleH) / cameraResolution.Y * 2.0f - 1.0f;
 
-            float[] vertices =
+            // Vértices del rectángulo (Triangle Strip: bottom-left, top-left, bottom-right, top-right)
+            var rectVertices = new float[]
             {
-                left, top, 0.0f, // Top-left
-                right, top, 0.0f, // Top-right
-                right, bottom, 0.0f, // Bottom-right
-                left, bottom, 0.0f // Bottom-left
+                left, bottom,   // bottom-left
+                left, top,      // top-left
+                right, bottom,  // bottom-right
+                right, top      // top-right
             };
+            
+            Gl.GlUseProgram(shaderProgram);
+            Gl.GlBindVertexArray(vao);
 
-            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, Vbo);
-            GCHandle handle = GCHandle.Alloc(vertices, GCHandleType.Pinned);
+            // Actualizar VBO dinámicamente (sin unsafe)
+            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, vbo);
+            var handle = GCHandle.Alloc(rectVertices, GCHandleType.Pinned);
             try
             {
                 IntPtr pointer = handle.AddrOfPinnedObject();
-                Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(vertices.Length * sizeof(float)), pointer, BufferUsageHint.StaticDraw);
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(rectVertices.Length * sizeof(float)), pointer, BufferUsageHint.DynamicDraw);
             }
             finally
             {
                 if (handle.IsAllocated)
-                {
                     handle.Free();
-                }
             }
 
-            Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Line);
-            Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
-            Gl.GlPolygonMode(MaterialFace.FrontAndBack, PolygonModeEnum.Fill);
+            Gl.GlDrawArrays(PrimitiveType.TriangleStrip, 0, 4);
+            Gl.GlBindVertexArray(0);
         }
     }
 }
+
+

@@ -63,5 +63,9 @@ namespace Alis.Core.Ecs.Systems.Scope
         ///     Loads the and run
         /// </summary>
         void LoadAndRun();
+
+        void InitPreview();
+
+        void Preview();
     }
 }
