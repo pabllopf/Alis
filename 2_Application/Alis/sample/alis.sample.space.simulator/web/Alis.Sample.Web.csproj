@@ -6,13 +6,13 @@
         <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
-    
-    
+
+
     <ItemGroup>
         <ProjectReference Include="$(SolutionDir)2_Application/alis/src/alis.csproj"/>
     </ItemGroup>
 
-    
+
     <ItemGroup>
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
                           Include="
@@ -22,7 +22,7 @@
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false"/>
     </ItemGroup>
-   <Import Project="$(SolutionDir).config/target/alis.targets" /> 
+    <Import Project="$(SolutionDir).config/target/alis.targets" />
 
-    
+
 </Project>

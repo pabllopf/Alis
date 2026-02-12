@@ -30,8 +30,12 @@
             Include="$(ProjectDir)../src/$(NameTest).csproj"/>
 
         <ProjectReference
-            Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False"
+            Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False AND Exists('$(ProjectDir)../../src/$(NameTest).csproj') == True"
             Include="$(ProjectDir)../../src/$(NameTest).csproj"/>
+
+        <ProjectReference
+            Condition="Exists('$(ProjectDir)../src/$(NameTest).csproj') == False AND Exists('$(ProjectDir)../../src/$(NameTest).csproj') == False"
+            Include="$(ProjectDir)../../../src/$(NameTest).csproj"/>
 
         <ProjectReference
             Condition="Exists('$(ProjectDir)../generator/$(NameTest).Generator.csproj')"
@@ -248,38 +252,4 @@
             Lines="@(PlistLines->Replace('Alis.Sample.Flappy.Bird', '$(AssemblyName)')->Replace('1.0', '$(Version)')->Replace('com.alis.flappybird', '$(ApplicationId)'))"
             Overwrite="true"/>
     </Target>
-
-    <PropertyGroup>
-        <!-- Carpeta de recursos -->
-        <AssetsDir>$(ProjectDir)Assets</AssetsDir>
-        <!-- Nombre del zip y el txt generado -->
-        <AssetsZip>$(ProjectDir)obj/assets.zip</AssetsZip>
-        <AssetsOutput>$(ProjectDir)obj/assets.pack</AssetsOutput>
-    </PropertyGroup>
-
-
-    <Target Name="ZipAssets" BeforeTargets="BeforeRestore;BeforeBuild;Clean;Rebuild;Publish" Condition="!Exists('$(ProjectDir)obj/assets.zip')">
-        <Message Text="ZipAssets: AssetsDir='$(AssetsDir)'; AssetsZip='$(AssetsZip)'; AssetsOutput='$(AssetsOutput)'" Importance="high"/>
-
-        <!-- Windows: solo si existe el directorio -->
-        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
-              Command="powershell -NoLogo -Command &quot;Compress-Archive -Path '$(AssetsDir)\\*' -DestinationPath '$(AssetsZip)' -Force; [Convert]::ToBase64String([System.IO.File]::ReadAllBytes('$(AssetsZip)')) | Out-File -FilePath '$(AssetsOutput)' -Encoding ASCII&quot;"/>
-
-        <!-- macOS/Linux: usar redirección para la compatibilidad con distintas implementaciones de base64 -->
-        <Exec Condition="Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
-              Command="sh -c &quot;zip -r -9 '$(AssetsZip)' '$(AssetsDir)' &amp;&amp; base64 &lt; '$(AssetsZip)' &gt; '$(AssetsOutput)'&quot;"/>
-
-        <!-- Si no existe AssetsDir, crear un archivo de salida vacío para no romper el build -->
-        <Message Condition="!Exists('$(AssetsDir)')" Text="No existe el directorio `$(AssetsDir)`. Se genera `$(AssetsOutput)` vacío." Importance="high"/>
-
-        <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' == 'Windows_NT'"
-              Command="powershell -NoLogo -Command &quot;Set-Content -Path '$(AssetsOutput)' -Value '' -Encoding ASCII&quot;"/>
-
-        <Exec Condition="!Exists('$(AssetsDir)') AND '$(OS)' != 'Windows_NT'"
-              Command="sh -c &quot;mkdir -p '$(ProjectDir)obj' &amp;&amp; : &gt; '$(AssetsOutput)'&quot;"/>
-    </Target>
-
-    <ItemGroup>
-        <AdditionalFiles Include="$(AssetsOutput)" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" Visible="false"/>
-    </ItemGroup>
 </Project>

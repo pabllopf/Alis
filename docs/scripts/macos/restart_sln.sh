@@ -49,6 +49,9 @@ select yn in "Yes" "No"; do
                  if [[ $i == *"Sample"* ]]; then
                      props="./.config/default/default_sample_csproj.props"
                  fi
+                 if [[ $i == *".Web"* ]]; then
+                    props="./.config/default/default_sample_web_csproj.props"
+                fi
                  if [[ $i == *"Test"* ]]; then
                      props="./.config/default/default_test_csproj.props"
                  fi
