@@ -159,13 +159,7 @@ namespace Alis.Core.Ecs.Components.Render
         public void OnStart(IGameObject self)
         {
         }
-
-
-        /// <summary>
-        ///     Gets or sets the value of the context
-        /// </summary>
-        public Context Context { get; set; } = Context;
-
+        
         /// <summary>
         ///     Ons the exit using the specified self
         /// </summary>
@@ -189,83 +183,28 @@ namespace Alis.Core.Ecs.Components.Render
             Path = string.Empty;
             Logger.Info("Sprite instance resources have been released.");
         }
-
-        /// <summary>
-        ///     Called once per frame before rendering sprites to reset cached state and enable blending.
-        /// </summary>
-        public static void BeginFrame()
-        {
-            // ensure shader and buffers initialized
-            InitializeSharedResources();
-            // reset last bound texture to force the first bind
-            LastBoundTexture = 0;
-            // enable blending once per frame
-            Gl.GlEnable(EnableCap.Blend);
-            Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-        }
-
-        /// <summary>
-        ///     Called after rendering sprites for the frame to optionally restore GL state.
-        /// </summary>
-        public static void EndFrame()
-        {
-            // optionally disable blending; some renderers prefer leaving it enabled
-            Gl.GlDisable(EnableCap.Blend);
-            // unbind VAO and program for cleanliness
-            Gl.GlBindVertexArray(0);
-            Gl.GlUseProgram(0);
-        }
-
-        /// <summary>
-        ///     Release shared GL resources used by Sprite (call on application shutdown)
-        /// </summary>
-        public static void ReleaseSharedResources()
-        {
-            if (!SharedInitialized)
-            {
-                return;
-            }
-
-            if (SharedVao != 0)
-            {
-                Gl.DeleteVertexArray(SharedVao);
-            }
-
-            if (SharedVbo != 0)
-            {
-                Gl.DeleteBuffer(SharedVbo);
-            }
-
-            if (SharedEbo != 0)
-            {
-                Gl.DeleteBuffer(SharedEbo);
-            }
-
-            if (SharedShaderProgram != 0)
-            {
-                Gl.GlDeleteProgram(SharedShaderProgram);
-            }
-
-            SharedVao = 0;
-            SharedVbo = 0;
-            SharedEbo = 0;
-            SharedShaderProgram = 0;
-            SharedInitialized = false;
-            LastBoundTexture = 0;
-        }
-
+        
         /// <summary>
         ///     Initializes the shared shaders and quad buffers (run once)
         /// </summary>
-        private static void InitializeSharedResources()
+        private void InitializeSharedResources()
         {
             if (SharedInitialized)
             {
                 return;
             }
+            
+            string version = "";
+            if (Context.Setting.Graphic.PreviewMode)
+            {
+                version = "#version 300 es";
+            }
+            else
+            {
+                version = "#version 330 core";
+            }
 
-            string vertexShaderSource = @"
-             #version 330 core
+            string vertexShaderSource = version + @"
              layout (location = 0) in vec3 aPos;
              layout (location = 1) in vec2 aTexCoord;
              out vec2 TexCoord;
@@ -293,8 +232,7 @@ namespace Alis.Core.Ecs.Components.Render
              }
          ";
 
-            string fragmentShaderSource = @"
-                #version 330 core
+            string fragmentShaderSource = version + @"
                 out vec4 FragColor;
                 in vec2 TexCoord;
                 uniform sampler2D texture1;
@@ -321,7 +259,7 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GlDeleteShader(fragmentShader);
 
             // cache uniform locations after linking
-            Gl.GlUseProgram(SharedShaderProgram);
+            //Gl.GlUseProgram(SharedShaderProgram);
             OffsetLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "offset");
             ScaleLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "scale");
             RotationLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "rotation");
@@ -329,7 +267,7 @@ namespace Alis.Core.Ecs.Components.Render
             TextureLocation = Gl.GlGetUniformLocation(SharedShaderProgram, "texture1");
             // set default texture unit (0)
             Gl.GlUniform1I(TextureLocation, 0);
-            Gl.GlUseProgram(0);
+            //Gl.GlUseProgram(0);
 
             // create a shared unit quad (vertices not pre-scaled)
             float[] vertices =
@@ -438,92 +376,7 @@ namespace Alis.Core.Ecs.Components.Render
             float spriteRotation = gameobject.Get<Transform>().Rotation;
             Vector2F transformScale = gameobject.Get<Transform>().Scale;
 
-            // Insertar en Render(...) después de obtener position y spriteRotation
-            if (!IsSpriteVisible(position, Size, transformScale, spriteRotation, cameraPosition, cameraResolution, pixelsPerMeter))
-            {
-                return;
-            }
-
-            Gl.GlUseProgram(SharedShaderProgram);
-            Gl.GlBindVertexArray(SharedVao);
-            Gl.GlBindBuffer(BufferTarget.ElementArrayBuffer, SharedEbo);
-            Gl.GlBindBuffer(BufferTarget.ArrayBuffer, SharedVbo);
-
-            // Conversión de metros a píxeles
-            float positionXPixels = (position.X - cameraPosition.X) * pixelsPerMeter;
-            float positionYPixels = (position.Y - cameraPosition.Y) * pixelsPerMeter;
-
-            // Normalizar a coordenadas OpenGL (-1 a 1) usando la resolución de la cámara
-            float worldX = 2.0f * positionXPixels / cameraResolution.X;
-            float worldY = 2.0f * positionYPixels / cameraResolution.Y;
-
-            // Enviar valores normalizados al shader
-            Gl.GlUniform2F(OffsetLocation, worldX, worldY);
-
-            // compute scale uniform so that quad vertices (which are -1..1) are scaled to sprite pixel size
-            int windowWidth = (int) Context.Setting.Graphic.WindowSize.X;
-            int windowHeight = (int) Context.Setting.Graphic.WindowSize.Y;
-
-            // scaleX/Y convert sprite pixel size into normalized device coordinates factor used by vertex shader
-            float scaleX = Size.X / windowWidth * transformScale.X;
-            float scaleY = Size.Y / windowHeight * transformScale.Y;
-
-            Gl.GlUniform2F(ScaleLocation, scaleX, scaleY);
-            Gl.GlUniform1F(RotationLocation, spriteRotation);
-            Gl.GlUniform1I(FlipLocation, Flip ? 1 : 0);
-
-            // Vincular la textura antes de dibujar (evitar binds redundantes)
-            if (LastBoundTexture != Texture)
-            {
-                Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
-                LastBoundTexture = Texture;
-            }
-
-            // Dibujar el sprite
-            Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
-
-            // NOTE: blending should ideally be enabled once per frame by the renderer/system to avoid overhead.
-        }
-
-
-        /// <summary>
-        ///     Ises the sprite visible using the specified sprite world position
-        /// </summary>
-        /// <param name="spriteWorldPosition">The sprite world position</param>
-        /// <param name="spriteSizePixels">The sprite size pixels</param>
-        /// <param name="spriteScale">The sprite scale</param>
-        /// <param name="rotationDegrees">The rotation degrees</param>
-        /// <param name="cameraPosition">The camera position</param>
-        /// <param name="cameraResolution">The camera resolution</param>
-        /// <param name="pixelsPerMeter">The pixels per meter</param>
-        /// <returns>The bool</returns>
-        private bool IsSpriteVisible(Vector2F spriteWorldPosition, Vector2F spriteSizePixels, Vector2F spriteScale, float rotationDegrees, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
-        {
-            // posición del sprite relativa a la cámara en píxeles (centro de cámara)
-            float px = (spriteWorldPosition.X - cameraPosition.X) * pixelsPerMeter;
-            float py = (spriteWorldPosition.Y - cameraPosition.Y) * pixelsPerMeter;
-
-            // medias en píxeles
-            float halfW = spriteSizePixels.X * spriteScale.X * 0.5f;
-            float halfH = spriteSizePixels.Y * spriteScale.Y * 0.5f;
-
-            // ampliar AABB si hay rotación (aprox usando |cos| y |sin|)
-            if (CustomMathF.Abs(rotationDegrees) > 0.0001f)
-            {
-                float rad = rotationDegrees * (CustomMathF.Pi / 180f);
-                float c = CustomMathF.Abs(CustomMathF.Cos(rad));
-                float s = CustomMathF.Abs(CustomMathF.Sin(rad));
-                float rotHalfW = c * halfW + s * halfH;
-                float rotHalfH = s * halfW + c * halfH;
-                halfW = rotHalfW;
-                halfH = rotHalfH;
-            }
-
-            float camHalfW = cameraResolution.X * 0.5f;
-            float camHalfH = cameraResolution.Y * 0.5f;
-
-            // overlap check (AABB centrado en la cámara)
-            return !(CustomMathF.Abs(px) > camHalfW + halfW || CustomMathF.Abs(py) > camHalfH + halfH);
+           
         }
     }
 }
