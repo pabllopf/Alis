@@ -53,6 +53,7 @@
 *.js
 *.c
 *.exe
+*.template.json
 *.txt
 *.nupkg
 *.suo
