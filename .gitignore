@@ -48,6 +48,10 @@
 **/**/**/**/.xsd
 
 *.log
+*.html
+*.css
+*.js
+*.c
 *.exe
 *.txt
 *.nupkg
