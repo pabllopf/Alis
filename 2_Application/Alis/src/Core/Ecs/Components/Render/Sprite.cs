@@ -194,66 +194,68 @@ namespace Alis.Core.Ecs.Components.Render
                 return;
             }
             
-            string version = "";
-            if (Context.Setting.Graphic.PreviewMode)
-            {
-                version = "#version 300 es";
-            }
-            else
-            {
-                version = "#version 330 core";
-            }
+            string version = Context.Setting.Graphic.PreviewMode ? "#version 300 es\n" : "#version 330 core\n";
+            string precision = Context.Setting.Graphic.PreviewMode ? "precision mediump float;\n" : string.Empty;
 
-            string vertexShaderSource = version + @"
-             layout (location = 0) in vec3 aPos;
-             layout (location = 1) in vec2 aTexCoord;
-             out vec2 TexCoord;
-             uniform vec2 offset;
-             uniform vec2 scale;
-             uniform float rotation;
-             uniform int flip;
-             void main()
-             {
-                 float radians = radians(rotation);
-                 float cosTheta = cos(radians);
-                 float sinTheta = sin(radians);
-                 mat2 rotationMatrix = mat2(cosTheta, -sinTheta, sinTheta, cosTheta);
-                 vec2 scaledPos = aPos.xy * scale;
-                 vec2 rotatedPos = rotationMatrix * scaledPos;
-                 gl_Position = vec4(rotatedPos + offset, aPos.z, 1.0);
-                 if (flip == 1)
-                 {
-                     TexCoord = vec2(1.0 - aTexCoord.x, aTexCoord.y);
-                 }
-                 else
-                 {
-                     TexCoord = vec2(aTexCoord.x, aTexCoord.y);
-                 }
-             }
-         ";
+            string vertexShaderSource = version +
+                (Context.Setting.Graphic.PreviewMode ? "in vec3 aPos;\nin vec2 aTexCoord;\nout vec2 TexCoord;\n" : "layout (location = 0) in vec3 aPos;\nlayout (location = 1) in vec2 aTexCoord;\nout vec2 TexCoord;\n") +
+                "uniform vec2 offset;\n" +
+                "uniform vec2 scale;\n" +
+                "uniform float rotation;\n" +
+                "uniform int flip;\n" +
+                "void main() {\n" +
+                "    float radians_ = radians(rotation);\n" +
+                "    float cosTheta = cos(radians_);\n" +
+                "    float sinTheta = sin(radians_);\n" +
+                "    mat2 rotationMatrix = mat2(cosTheta, -sinTheta, sinTheta, cosTheta);\n" +
+                "    vec2 scaledPos = aPos.xy * scale;\n" +
+                "    vec2 rotatedPos = rotationMatrix * scaledPos;\n" +
+                "    gl_Position = vec4(rotatedPos + offset, aPos.z, 1.0);\n" +
+                "    if (flip == 1) { TexCoord = vec2(1.0 - aTexCoord.x, aTexCoord.y); }\n" +
+                "    else { TexCoord = aTexCoord; }\n" +
+                "}\n";
 
-            string fragmentShaderSource = version + @"
-                out vec4 FragColor;
-                in vec2 TexCoord;
-                uniform sampler2D texture1;
-                void main()
-                {
-                    FragColor = texture(texture1, TexCoord);
-                }
-            ";
+            string fragmentShaderSource = version + precision +
+                (Context.Setting.Graphic.PreviewMode ? "in vec2 TexCoord;\nout vec4 FragColor;\n" : "in vec2 TexCoord;\nout vec4 FragColor;\n") +
+                "uniform sampler2D texture1;\n" +
+                "void main() {\n" +
+                "    FragColor = texture(texture1, TexCoord);\n" +
+                "}\n";
 
             uint vertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
             Gl.ShaderSource(vertexShader, vertexShaderSource);
             Gl.GlCompileShader(vertexShader);
+            if (!Gl.GetShaderCompileStatus(vertexShader))
+            {
+                string log = Gl.GetShaderInfoLog(vertexShader);
+                Logger.Error($"Vertex shader compilation failed: {log}");
+                throw new Exception($"Vertex shader compilation failed: {log}");
+            }
 
             uint fragmentShader = Gl.GlCreateShader(ShaderType.FragmentShader);
             Gl.ShaderSource(fragmentShader, fragmentShaderSource);
             Gl.GlCompileShader(fragmentShader);
+            if (!Gl.GetShaderCompileStatus(fragmentShader))
+            {
+                string log = Gl.GetShaderInfoLog(fragmentShader);
+                Logger.Error($"Fragment shader compilation failed: {log}");
+                throw new Exception($"Fragment shader compilation failed: {log}");
+            }
 
             SharedShaderProgram = Gl.GlCreateProgram();
             Gl.GlAttachShader(SharedShaderProgram, vertexShader);
             Gl.GlAttachShader(SharedShaderProgram, fragmentShader);
             Gl.GlLinkProgram(SharedShaderProgram);
+
+            // Validar enlace del programa
+            int[] linkStatus = new int[1];
+            Gl.GlGetProgramiv(SharedShaderProgram, ProgramParameter.LinkStatus, linkStatus);
+            if (linkStatus[0] == 0)
+            {
+                string log = Gl.GetProgramInfoLog(SharedShaderProgram);
+                Logger.Error($"Shader program link failed: {log}");
+                throw new Exception($"Shader program link failed: {log}");
+            }
 
             Gl.GlDeleteShader(vertexShader);
             Gl.GlDeleteShader(fragmentShader);
@@ -363,20 +365,56 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="pixelsPerMeter">The pixels per meter</param>
         public void Render(GameObject gameobject, Vector2F cameraPosition, Vector2F cameraResolution, float pixelsPerMeter)
         {
+            // Inicialización de recursos compartidos y textura si es necesario
             if (!string.IsNullOrEmpty(NameFile) && (Path == string.Empty))
             {
                 Path = "";
-                // Initialize shared shader+buffers once
                 InitializeSharedResources();
                 LoadTexture(Path);
-                // no per-instance buffers to setup
             }
 
             Vector2F position = gameobject.Get<Transform>().Position;
             float spriteRotation = gameobject.Get<Transform>().Rotation;
             Vector2F transformScale = gameobject.Get<Transform>().Scale;
 
-           
+            // Calcular offset en NDC (de -1 a 1)
+            Vector2F ndcOffset = new Vector2F(
+                ((position.X - cameraPosition.X) / cameraResolution.X) * 2.0f,
+                ((position.Y - cameraPosition.Y) / cameraResolution.Y) * 2.0f
+            );
+
+            // Ajustar escala a NDC
+            Vector2F ndcScale = new Vector2F(
+                (Size.X * transformScale.X) / cameraResolution.X,
+                (Size.Y * transformScale.Y) / cameraResolution.Y
+            );
+
+            // Usar shader y VAO compartidos
+            Gl.GlUseProgram(SharedShaderProgram);
+            Gl.GlBindVertexArray(SharedVao);
+
+            // Uniforms
+            Gl.GlUniform2F(OffsetLocation, ndcOffset.X, ndcOffset.Y);
+            Gl.GlUniform2F(ScaleLocation, ndcScale.X, ndcScale.Y);
+            Gl.GlUniform1F(RotationLocation, spriteRotation);
+            Gl.GlUniform1I(FlipLocation, Flip ? 1 : 0);
+            Gl.GlUniform1I(TextureLocation, 0); // textura en unidad 0
+
+            // Enlazar textura solo si es diferente a la última
+            if (Texture != LastBoundTexture)
+            {
+                Gl.GlActiveTexture(TextureUnit.Texture0);
+                Gl.GlBindTexture(TextureTarget.Texture2D, Texture);
+                LastBoundTexture = Texture;
+            }
+
+            // Dibujar quad
+            Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
+
+            // Desenlazar VAO y shader por seguridad
+            Gl.GlBindVertexArray(0);
+            Gl.GlUseProgram(0);
         }
     }
 }
+
