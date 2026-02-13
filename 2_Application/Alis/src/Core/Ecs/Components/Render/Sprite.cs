@@ -417,8 +417,11 @@ namespace Alis.Core.Ecs.Components.Render
             }
 
             // Dibujar quad
+            Gl.GlEnable(EnableCap.Blend);
+            Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
-
+            Gl.GlDisable(EnableCap.Blend);
+            
             // Desenlazar VAO y shader por seguridad
             Gl.GlBindVertexArray(0);
             Gl.GlUseProgram(0);
