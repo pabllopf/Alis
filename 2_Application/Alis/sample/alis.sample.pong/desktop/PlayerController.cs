@@ -33,7 +33,7 @@ using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Collider;
 
-namespace Alis.Sample.Pong
+namespace Alis.Sample.Pong.Desktop
 {
     /// <summary>
     ///     The player controller class

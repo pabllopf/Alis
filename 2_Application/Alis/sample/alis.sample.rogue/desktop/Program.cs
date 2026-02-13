@@ -30,7 +30,7 @@
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Systems;
 
-namespace Alis.Sample.Rogue
+namespace Alis.Sample.Rogue.Desktop
 {
     /// <summary>
     ///     The program class

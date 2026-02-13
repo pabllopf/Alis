@@ -35,7 +35,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Audio;
 using Alis.Core.Ecs.Components.Collider;
 
-namespace Alis.Sample.Flappy.Bird
+namespace Alis.Sample.Flappy.Bird.Desktop
 {
     /// <summary>
     ///     The bird controller class

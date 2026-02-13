@@ -35,7 +35,7 @@ using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Sample.Flappy.Bird
+namespace Alis.Sample.Flappy.Bird.Desktop
 {
     /// <summary>
     ///     The program class

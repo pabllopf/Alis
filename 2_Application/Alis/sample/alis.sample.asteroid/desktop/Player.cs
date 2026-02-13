@@ -42,7 +42,7 @@ using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Sample.Asteroid
+namespace Alis.Sample.Asteroid.Desktop
 {
     /// <summary>
     ///     The player class

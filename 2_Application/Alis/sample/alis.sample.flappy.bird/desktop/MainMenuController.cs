@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Systems.Scope;
 
-namespace Alis.Sample.Flappy.Bird
+namespace Alis.Sample.Flappy.Bird.Desktop
 {
     /// <summary>
     ///     The main menu controller class

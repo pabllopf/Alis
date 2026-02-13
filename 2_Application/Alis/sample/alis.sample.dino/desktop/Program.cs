@@ -30,7 +30,7 @@
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Systems;
 
-namespace Alis.Sample.Dino
+namespace Alis.Sample.Dino.Desktop
 {
     /// <summary>
     ///     The program class

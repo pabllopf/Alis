@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <LangVersion>13</LangVersion>
+        <OutputType>Exe</OutputType>
+        <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <ProjectReference Include="$(SolutionDir)2_Application/alis/src/alis.csproj"/>
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
+                          Include="
+          $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
+                          OutputItemType="Analyzer"
+                          PrivateAssets="all"
+                          ReferenceOutputAssembly="false"/>
+    </ItemGroup>
+    <Import Project="$(SolutionDir).config/target/alis.targets" />
+
+
+</Project>
