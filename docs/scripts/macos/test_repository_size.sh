@@ -11,11 +11,9 @@ find . -type d -name ".nuget" -exec rm -Rf {} \;
 find . -type d -name ".publish" -exec rm -Rf {} \;
 
 find ./ -name ".DS_Store" -exec rm -f {} \; 
-find ./ -name "*.so" -exec rm -f {} \; 
 find ./ -name "*.a" -exec rm -f {} \; 
 find ./ -name "*.o" -exec rm -f {} \;
 find ./ -name "*.nupkg" -exec rm -f {} \;
-find ./ -name "*.dylib" -exec rm -f {} \; 
 find ./ -name "*.exe" -exec rm -f {} \; 
 find ./ -name "*.pdb" -exec rm -f {} \; 
 find ./ -name "*.mdb" -exec rm -f {} \; 

@@ -10,6 +10,11 @@
         <SonarQubeExclude>true</SonarQubeExclude>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <DefineConstants Condition="'$(RuntimeIdentifier)' != ''">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>
+        <DefineConstants Condition="'$(RuntimeIdentifier)' == ''">$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
+    </PropertyGroup>
+
     <PropertyGroup Condition="($([MSBuild]::IsOSPlatform('linux')) AND '$(RuntimeIdentifier)' == '') OR $(RuntimeIdentifier.Contains('linux'))">
         <DefineConstants>$(DefineConstants);LINUX</DefineConstants>
         <IsLinux>true</IsLinux>
