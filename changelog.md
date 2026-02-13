@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.9.0] - 2026-02-15
+### :sparkles: New Features
+- [`418aa46`](https://github.com/pabllopf/Alis/commit/418aa465001756978a1f7e0d99beb24656c0f1e7) - Make WASM auto-generated files conditional *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`3ae3765`](https://github.com/pabllopf/Alis/commit/3ae3765d071256cf039cd21c7f074e94b4efc285) - Reorganize sample projects and update assets *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f1f74fa`](https://github.com/pabllopf/Alis/commit/f1f74fa159a1cc2ef47cb64e63d375e6d6b7ad9a) - Add runtime identifier defines and tweak macOS scripts *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0845809`](https://github.com/pabllopf/Alis/commit/0845809b568fe27632a82c38fcb6df3f76900932) - Add native graphic runtimes for multiple platforms *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7974d2c`](https://github.com/pabllopf/Alis/commit/7974d2c916c68f04b72d3b2271faf9cc71abac50) - Remove native object cleanup from macOS scripts *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.8.9] - 2026-02-15
 ### :sparkles: New Features
 - [`d3ed7b5`](https://github.com/pabllopf/Alis/commit/d3ed7b5fc3bf20dcaa6af2abe1e16eecb44423de) - Add preview mode and collider debug rendering *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -5624,3 +5635,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.8.7]: https://github.com/pabllopf/Alis/compare/v0.8.6...v0.8.7
 [v0.8.8]: https://github.com/pabllopf/Alis/compare/v0.8.7...v0.8.8
 [v0.8.9]: https://github.com/pabllopf/Alis/compare/v0.8.8...v0.8.9
+[v0.9.0]: https://github.com/pabllopf/Alis/compare/v0.8.9...v0.9.0
