@@ -90,6 +90,7 @@ namespace Alis.Extension.Network
         public void Dispose()
         {
             TcpClient?.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>

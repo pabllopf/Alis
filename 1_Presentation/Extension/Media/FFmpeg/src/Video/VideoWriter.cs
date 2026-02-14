@@ -184,6 +184,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
 
             DestinationStream?.Dispose();
             csc?.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>

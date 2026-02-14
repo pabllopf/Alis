@@ -111,6 +111,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         public void Dispose()
         {
             frameBuffer = null;
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>

@@ -85,6 +85,8 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                 {
                 }
             }
+            
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>

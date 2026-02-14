@@ -183,6 +183,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
 
             DestinationStream?.Dispose();
             csc?.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>

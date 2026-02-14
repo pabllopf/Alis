@@ -61,6 +61,7 @@ namespace Alis.Extension.Updater.Services.Api
         public void Dispose()
         {
             _httpClient?.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>
