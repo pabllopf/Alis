@@ -27,10 +27,41 @@ using System;
                 
                         public static void CanvasResized(int width, int height)
                         {
-                            CanvasWidth = width;
-                            CanvasHeight = height;
-                            
-                            Gl.GlViewport(0, 0, CanvasWidth, CanvasHeight);
+                             CanvasWidth = width;
+                         CanvasHeight = height;
+                     
+                         if(GameAlis == null)
+                         {
+                             return;
+                         }
+                         
+                         // Resolución original del juego
+                         int gameWidth = (int)GameAlis.Context.Setting.Graphic.WindowSize.X;
+                         int gameHeight = (int)GameAlis.Context.Setting.Graphic.WindowSize.Y;
+                     
+                         float aspectGame = (float)gameWidth / gameHeight;
+                         float aspectCanvas = (float)width / height;
+                     
+                         int viewportWidth, viewportHeight, viewportX, viewportY;
+                     
+                         if (aspectCanvas > aspectGame)
+                         {
+                             // Canvas más ancho, barras laterales
+                             viewportHeight = height;
+                             viewportWidth = (int)(height * aspectGame);
+                             viewportX = (width - viewportWidth) / 2;
+                             viewportY = 0;
+                         }
+                         else
+                         {
+                             // Canvas más alto, barras arriba y abajo
+                             viewportWidth = width;
+                             viewportHeight = (int)(width / aspectGame);
+                             viewportX = 0;
+                             viewportY = (height - viewportHeight) / 2;
+                         }
+                     
+                         Gl.GlViewport(viewportX, viewportY, viewportWidth, viewportHeight);
                         }
                         
                         public async static Task Main(string[] args)
@@ -104,7 +135,33 @@ using System;
                             
                             GameAlis.InitPreview();
                             
-                            Gl.GlViewport(0, 0, CanvasWidth, CanvasHeight);
+                          
+                            int gameWidth = (int)GameAlis.Context.Setting.Graphic.WindowSize.X;
+                            int gameHeight = (int)GameAlis.Context.Setting.Graphic.WindowSize.Y;
+                     
+                            float aspectGame = (float)gameWidth / gameHeight;
+                            float aspectCanvas = (float)CanvasWidth / CanvasHeight;
+                     
+                            int viewportWidth, viewportHeight, viewportX, viewportY;
+                     
+                            if (aspectCanvas > aspectGame)
+                            {
+                                // Canvas más ancho, barras laterales
+                                viewportHeight = CanvasHeight;
+                                viewportWidth = (int)(CanvasHeight * aspectGame);
+                                viewportX = (CanvasWidth - viewportWidth) / 2;
+                                viewportY = 0;
+                            }
+                            else
+                            {
+                                // Canvas más alto, barras arriba y abajo
+                                viewportWidth = CanvasWidth;
+                                viewportHeight = (int)(CanvasWidth / aspectGame);
+                                viewportX = 0;
+                                viewportY = (CanvasHeight - viewportHeight) / 2;
+                            }
+                     
+                            Gl.GlViewport(viewportX, viewportY, viewportWidth, viewportHeight);
                             
                             unsafe
                             {

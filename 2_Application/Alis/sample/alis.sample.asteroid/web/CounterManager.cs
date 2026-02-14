@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SpawnAsteroid.cs
+//  File:CounterManager.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,10 +32,73 @@ using Alis.Core.Aspect.Fluent.Components;
 namespace Alis.Sample.Asteroid.Web
 {
     /// <summary>
-    ///     The spawn asteroid class
+    ///     The counter manager class
     /// </summary>
-    public class SpawnAsteroid : IOnInit, IOnUpdate
+    public class CounterManager : IOnInit, IOnUpdate
     {
+        /*
+        /// <summary>
+        /// The counter
+        /// </summary>
+        public int counter = 10;
+
+        /// <summary>
+        /// Ons the start
+        /// </summary>
+        public override void OnStart()
+        {
+            //fontManager = Context.GraphicManager.FontManager;
+            //fontManager.LoadFont("MONO", 16, AssetManager.Find("mono.bmp"));
+        }
+
+        /// <summary>
+        /// Ons the update
+        /// </summary>
+        public override void OnUpdate()
+        {
+        }
+
+        /// <summary>
+        ///     Ons the gui
+        /// </summary>
+        public override void OnGui()
+        {
+            if(this.Context.SceneManager.CurrentScene.GetByTag("HealthController").Get<HealthController>().health > 0)
+            {
+                //fontManager.RenderText("MONO", counter.ToString("D3"), -10, -10, Color.White, 32);
+            }
+        }
+
+        /// <summary>
+        ///     Increments this instance
+        /// </summary>
+        public void Increment()
+        {
+            counter += 10;
+        }
+
+        /// <summary>
+        /// Decrements this instance
+        /// </summary>
+        public void Decrement()
+        {
+            counter -= 1;
+            if (counter < 0)
+            {
+                counter = 15;
+                this.Context.SceneManager.CurrentScene.GetByTag("HealthController").Get<HealthController>().Decrement();
+            }
+        }
+
+        /// <summary>
+        ///     Resets this instance
+        /// </summary>
+        public void Reset()
+        {
+            counter = 0;
+        }*/
+
+
         /// <summary>
         ///     Ons the init using the specified self
         /// </summary>

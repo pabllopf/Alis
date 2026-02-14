@@ -175,10 +175,41 @@ namespace $(RootNamespace)
                 
                         public static void CanvasResized(int width, int height)
                         {
-                            CanvasWidth = width%3b
-                            CanvasHeight = height%3b
-                            
-                            Gl.GlViewport(0, 0, CanvasWidth, CanvasHeight)%3b
+                             CanvasWidth = width%3b
+                         CanvasHeight = height%3b
+                     
+                         if(GameAlis == null)
+                         {
+                             return%3b
+                         }
+                         
+                         // Resolución original del juego
+                         int gameWidth = (int)GameAlis.Context.Setting.Graphic.WindowSize.X%3b
+                         int gameHeight = (int)GameAlis.Context.Setting.Graphic.WindowSize.Y%3b
+                     
+                         float aspectGame = (float)gameWidth / gameHeight%3b
+                         float aspectCanvas = (float)width / height%3b
+                     
+                         int viewportWidth, viewportHeight, viewportX, viewportY%3b
+                     
+                         if (aspectCanvas > aspectGame)
+                         {
+                             // Canvas más ancho, barras laterales
+                             viewportHeight = height%3b
+                             viewportWidth = (int)(height * aspectGame)%3b
+                             viewportX = (width - viewportWidth) / 2%3b
+                             viewportY = 0%3b
+                         }
+                         else
+                         {
+                             // Canvas más alto, barras arriba y abajo
+                             viewportWidth = width%3b
+                             viewportHeight = (int)(width / aspectGame)%3b
+                             viewportX = 0%3b
+                             viewportY = (height - viewportHeight) / 2%3b
+                         }
+                     
+                         Gl.GlViewport(viewportX, viewportY, viewportWidth, viewportHeight)%3b
                         }
                         
                         public async static Task Main(string[] args)
@@ -252,7 +283,33 @@ namespace $(RootNamespace)
                             
                             GameAlis.InitPreview()%3b
                             
-                            Gl.GlViewport(0, 0, CanvasWidth, CanvasHeight)%3b
+                          
+                            int gameWidth = (int)GameAlis.Context.Setting.Graphic.WindowSize.X%3b
+                            int gameHeight = (int)GameAlis.Context.Setting.Graphic.WindowSize.Y%3b
+                     
+                            float aspectGame = (float)gameWidth / gameHeight%3b
+                            float aspectCanvas = (float)CanvasWidth / CanvasHeight%3b
+                     
+                            int viewportWidth, viewportHeight, viewportX, viewportY%3b
+                     
+                            if (aspectCanvas > aspectGame)
+                            {
+                                // Canvas más ancho, barras laterales
+                                viewportHeight = CanvasHeight%3b
+                                viewportWidth = (int)(CanvasHeight * aspectGame)%3b
+                                viewportX = (CanvasWidth - viewportWidth) / 2%3b
+                                viewportY = 0%3b
+                            }
+                            else
+                            {
+                                // Canvas más alto, barras arriba y abajo
+                                viewportWidth = CanvasWidth%3b
+                                viewportHeight = (int)(CanvasWidth / aspectGame)%3b
+                                viewportX = 0%3b
+                                viewportY = (CanvasHeight - viewportHeight) / 2%3b
+                            }
+                     
+                            Gl.GlViewport(viewportX, viewportY, viewportWidth, viewportHeight)%3b
                             
                             unsafe
                             {
