@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:JsonNativePropertyNameAttribute.cs
+//  File:AlisException.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,24 +29,24 @@
 
 using System;
 
-namespace Alis.Core.Aspect.Data.Json
+namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
-    ///     The json native property name attribute class
+    /// The alis exception class
     /// </summary>
-    /// <seealso cref="Attribute" />
-    [AttributeUsage(AttributeTargets.Property)]
-    public sealed class JsonNativePropertyNameAttribute : Attribute
+    /// <seealso cref="Exception"/>
+    public class AlisException : Exception
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="JsonNativePropertyNameAttribute" /> class
-        /// </summary>
-        /// <param name="name">The name</param>
-        public JsonNativePropertyNameAttribute(string name) => Name = name;
+        public AlisException()
+        {
+        }
 
-        /// <summary>
-        ///     Gets the value of the name
-        /// </summary>
-        public string Name { get; }
+        public AlisException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+
+        public AlisException(string message) : base(message)
+        {
+        }
     }
 }

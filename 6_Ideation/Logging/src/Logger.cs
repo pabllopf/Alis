@@ -105,7 +105,7 @@ namespace Alis.Core.Aspect.Logging
         public static void Exception(string toString)
         {
             Console.WriteLine($"[EXCEPTION] {toString}");
-            throw new Exception(toString);
+            throw new AlisException(toString);
         }
     }
 }

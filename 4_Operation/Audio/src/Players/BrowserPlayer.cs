@@ -77,6 +77,7 @@ namespace Alis.Core.Audio.Players
         /// Gets the value of the paused
         /// </summary>
         public bool Paused => _paused;
+        
         public event EventHandler PlaybackFinished;
 
         /// <summary>
@@ -148,6 +149,7 @@ namespace Alis.Core.Audio.Players
             finally
             {
                 handle.Free();
+                PlaybackFinished?.Invoke(this, EventArgs.Empty);
             }
         }
 

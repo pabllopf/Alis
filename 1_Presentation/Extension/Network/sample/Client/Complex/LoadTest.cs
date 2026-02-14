@@ -114,7 +114,7 @@ namespace Alis.Extension.Network.Sample.Client.Complex
         /// <param name="webSocket">The web socket</param>
         private async Task Receive(WebSocket webSocket)
         {
-            Clock stopwatch = Clock.StartNew();
+            Clock stopwatch = Clock.Create();
             long len = await ReadAll(webSocket);
             Logger.Info($"Read {len:#,##0} bytes in {stopwatch.Elapsed.TotalMilliseconds:#,##0} ms");
         }
