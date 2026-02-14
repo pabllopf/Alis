@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.9.1] - 2026-02-16
+### :sparkles: New Features
+- [`efd3359`](https://github.com/pabllopf/Alis/commit/efd3359fb2297169c93c40aba9169e934e3370f8) - Add Asteroid web sample and canvas letterboxing *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`108b9fb`](https://github.com/pabllopf/Alis/commit/108b9fb470c8b383bac18f66312e380fecd17328) - Enable analyzers and update clock & logging *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`b3c21e3`](https://github.com/pabllopf/Alis/commit/b3c21e3863f502cab616145597d1ac726ebd19b8) - Add Flappy Bird web sample & browser audio *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b9be41e`](https://github.com/pabllopf/Alis/commit/b9be41e891cf2c596df1f3ad0d5d6da69fb2b2f7) - Implement BrowserPlayer with OpenAL backend *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ba2d211`](https://github.com/pabllopf/Alis/commit/ba2d211219979f76bf503fabfd9e39c6dd1dce72) - Update sample audio assets and web interop docs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0123334`](https://github.com/pabllopf/Alis/commit/0123334cfac86fa25652dde35f49e69f2b5fc831) - Remove SDL2 refs, add build targets and UI tweaks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2d4cc3a`](https://github.com/pabllopf/Alis/commit/2d4cc3a399924d4823a2b945acec0d1ebdac42dc) - Add JS interop and XML docs for web samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e0287cc`](https://github.com/pabllopf/Alis/commit/e0287cc670ea54e13045bfba37d6641bc49e8f5c) - Remove XML docs from samples and update config *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`4d2c2fe`](https://github.com/pabllopf/Alis/commit/4d2c2fe9df91e433c33a1fea10e5dbc98bbc09fa) - add Web support and reorganize packages *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8d19de3`](https://github.com/pabllopf/Alis/commit/8d19de3b9b4b1bfb0e5105343a9aecd022c9f213) - Add Web platform and refresh docs & config *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.9.0] - 2026-02-15
 ### :sparkles: New Features
 - [`418aa46`](https://github.com/pabllopf/Alis/commit/418aa465001756978a1f7e0d99beb24656c0f1e7) - Make WASM auto-generated files conditional *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -5636,3 +5654,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.8.8]: https://github.com/pabllopf/Alis/compare/v0.8.7...v0.8.8
 [v0.8.9]: https://github.com/pabllopf/Alis/compare/v0.8.8...v0.8.9
 [v0.9.0]: https://github.com/pabllopf/Alis/compare/v0.8.9...v0.9.0
+[v0.9.1]: https://github.com/pabllopf/Alis/compare/v0.9.0...v0.9.1
