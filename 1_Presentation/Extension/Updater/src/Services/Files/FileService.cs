@@ -44,7 +44,7 @@ namespace Alis.Extension.Updater.Services.Files
         /// <param name="url">The url</param>
         /// <param name="directory">The directory</param>
         /// <returns>A task containing the string</returns>
-        public Task<string> DownloadFileAsync(string url, string directory) => throw new NotImplementedException();
+        public Task<string> DownloadFileAsync(Uri url, string directory) => throw new NotImplementedException();
 
         /// <summary>
         ///     Extracts the and replace using the specified zip path

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Threading.Tasks;
 
 namespace Alis.Extension.Updater.Services.Files
@@ -42,7 +43,7 @@ namespace Alis.Extension.Updater.Services.Files
         /// <param name="url">The url</param>
         /// <param name="directory">The directory</param>
         /// <returns>A task containing the string</returns>
-        Task<string> DownloadFileAsync(string url, string directory);
+        Task<string> DownloadFileAsync(Uri url, string directory);
 
         /// <summary>
         ///     Extracts the and replace using the specified zip path
