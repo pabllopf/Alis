@@ -118,7 +118,6 @@ namespace Alis.Core.Ecs.Components
             Position = positionOrigin;
             Rotation = rotationOrigin;
             Scale = scaleOrigin;
-            Logger.Info($"[{GetType()}] Reset Transform of GameObject '{self.Get<Info>().Name}' to Position: {Position} , Rotation: {Rotation}, Scale: {Scale}");
         }
     }
 }

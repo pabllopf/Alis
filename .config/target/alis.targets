@@ -1,7 +1,6 @@
 <Project>
 
     <PropertyGroup>
-        
         <!-- Deriva el nombre del ensamblado a partir del archivo .targets -->
         <_PackageAssemblyName>$(MSBuildThisFileName)</_PackageAssemblyName>
         <_PackageAssemblyName>$([System.IO.Path]::GetFileNameWithoutExtension($(_PackageAssemblyName)))</_PackageAssemblyName>

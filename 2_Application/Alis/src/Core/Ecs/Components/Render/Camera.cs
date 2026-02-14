@@ -65,7 +65,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// <param name="self">The self</param>
         public void OnStart(IGameObject self)
         {
-            Logger.Info($"[{GetType()}] Initialized with position: ({Position.X},{Position.Y}) and resolution: ({Resolution.X},{Resolution.Y})");
+            Logger.Info($"[{nameof(Camera)}] Initialized with position: ({Position.X},{Position.Y}) and resolution: ({Resolution.X},{Resolution.Y})");
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.Components.Render
         {
             Position = new Vector2F(positionOriginal.X, positionOriginal.Y);
             Resolution = new Vector2F(resolutionOriginal.X, resolutionOriginal.Y);
-            Logger.Info($"[{GetType()}] Reset position: ({Position.X},{Position.Y}) and resolution: ({Resolution.X},{Resolution.Y})");
+            Logger.Info($"[{nameof(Camera)}] Reset position: ({Position.X},{Position.Y}) and resolution: ({Resolution.X},{Resolution.Y})");
         }
 
         /// <summary>
