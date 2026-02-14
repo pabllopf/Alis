@@ -193,7 +193,7 @@ The following table contains all the available packages, their purpose, and thei
 | **Alis.Core.Aspect.Time**    | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.time?label=&color=green)    | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.time?label=nuget&color=green)    | Time AOP utilities.   |
 
 
-## 🔷 Alis.Core 
+## 🔷 Alis.Core
 
 | Package Name          | Version                                                                        | Downloads                                                                            | Description           |
 | --------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | --------------------- |
