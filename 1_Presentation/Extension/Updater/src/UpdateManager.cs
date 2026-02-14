@@ -409,7 +409,7 @@ namespace Alis.Extension.Updater
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
 
             using HttpClient client = new HttpClient();
-            using HttpResponseMessage response = await client.GetAsync(url);
+            using HttpResponseMessage response = await client.GetAsync(new Uri(url));
             using FileStream fs = new FileStream(filePath, FileMode.CreateNew);
             await response.Content.CopyToAsync(fs);
 
