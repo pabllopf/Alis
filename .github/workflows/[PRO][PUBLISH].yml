@@ -83,7 +83,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 10.0.3
+          dotnet-version: '10.0.x'
           
       - name: Install Workloads
         run: dotnet workload install wasm-tools wasm-experimental
@@ -174,7 +174,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 10.0.3
+          dotnet-version: '10.0.x'
       
       - name: Install Workloads
         run: dotnet workload install wasm-tools wasm-experimental
@@ -256,7 +256,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 10.0.3
+          dotnet-version: '10.0.x'
 
       - name: Install Workloads
         run: dotnet workload install wasm-tools wasm-experimental
@@ -350,7 +350,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 10.0.3
+          dotnet-version: '10.0.x'
 
       - name: Install Workloads
         run: dotnet workload install wasm-tools wasm-experimental
