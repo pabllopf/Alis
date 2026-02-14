@@ -394,6 +394,9 @@ namespace Alis.Core.Ecs.Components.Collider
         /// </summary>
         private uint vao;
         
+        /// <summary>
+        /// The vbo
+        /// </summary>
         private uint vbo;
 
         // Vértices del triángulo (posición 2D)
@@ -503,6 +506,13 @@ namespace Alis.Core.Ecs.Components.Collider
             RenderBoxCollider(gameobject, cameraPosition, cameraResolution, pixelsPerMeter);
         }
 
+        /// <summary>
+        /// Renders the box collider using the specified gameobject
+        /// </summary>
+        /// <param name="gameobject">The gameobject</param>
+        /// <param name="cameraPosition">The camera position</param>
+        /// <param name="cameraResolution">The camera resolution</param>
+        /// <param name="pixelsPerMeter">The pixels per meter</param>
         private void RenderBoxCollider(
             GameObject gameobject,
             Vector2F cameraPosition,

@@ -58,13 +58,37 @@ namespace Alis.Core.Ecs.Systems.Scope
         /// </summary>
         public Context Context => _context;
 
+        /// <summary>
+        /// The target frame duration
+        /// </summary>
         private double targetFrameDuration = 0;
+        /// <summary>
+        /// The current time
+        /// </summary>
         private double currentTime = 0;
+        /// <summary>
+        /// The accumulator
+        /// </summary>
         float accumulator = 0;
+        /// <summary>
+        /// The last time
+        /// </summary>
         private double lastTime = 0;
+        /// <summary>
+        /// The total time
+        /// </summary>
         double totalTime = 0;
+        /// <summary>
+        /// The last delta time
+        /// </summary>
         float lastDeltaTime = 0f;
+        /// <summary>
+        /// The smooth delta time sum
+        /// </summary>
         float smoothDeltaTimeSum = 0f;
+        /// <summary>
+        /// The smooth delta time count
+        /// </summary>
         int smoothDeltaTimeCount = 0;
 
         /// <summary>
@@ -195,6 +219,9 @@ namespace Alis.Core.Ecs.Systems.Scope
             Run();
         }
 
+        /// <summary>
+        /// Inits the preview
+        /// </summary>
         public void InitPreview()
         {
             Runtime<AManager> runtime = _context.Runtime;
@@ -213,6 +240,9 @@ namespace Alis.Core.Ecs.Systems.Scope
             lastTime = timeManager.Clock.Elapsed.TotalSeconds;
         }
 
+        /// <summary>
+        /// Previews this instance
+        /// </summary>
         public void Preview()
         {
             Runtime<AManager> runtime = _context.Runtime;
