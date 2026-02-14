@@ -19,7 +19,7 @@
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/pabllopf)
 
 
-> Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
+> Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, WEB, Android(soon), IOS(soon).
 
 ## 📚 Table of Contents
 
@@ -42,7 +42,7 @@ integrations, AI, and more.
 
 ### Features:
 
-- **Cross-Platform**: Compatible with Windows, macOS, Linux, and planned support for Android and iOS.
+- **Cross-Platform**: Compatible with Windows, macOS, Linux, WEB,  and planned support for Android and iOS.
 - **Modular**: Each feature is available as a separate NuGet package.
 - **Open Source**: Licensed under GNU GPL v3.0 (ALL FREE!).
 - **Powerful Extensions**: Integrate easily with Google Ads, Google Drive, FFmpeg, and more.
@@ -79,6 +79,8 @@ integrations, AI, and more.
 - **macOS**
     - `osx-x64`
     - `osx-arm64`
+- **Web**
+    - `browser-wasm`
 
 --- 
 
@@ -116,7 +118,7 @@ class Program
 {
     static void Main()
     {
-        VideoGame.Create().Build().Run();
+        VideoGame.Create().Run();
     }
 }
 ```
@@ -160,43 +162,70 @@ of the framework. These are designed to cover advanced or specific use cases. Fo
 By including only the extensions you need, you can optimize your project and add functionality tailored to your game’s
 requirements.
 
+
+
 The following table contains all the available packages, their purpose, and their download statistics.
 
-| Package Name                              | Version                                                                                                | Downloads                                                                                                    | Description                                    |
-|-------------------------------------------|--------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|------------------------------------------------|
-| **Alis**                                  | ![Nuget](https://img.shields.io/nuget/v/alis?label=&color=green)                                       | ![Nuget](https://img.shields.io/nuget/dt/alis?label=nuget&color=green)                                       | Main package for the Alis framework.           |
-| **Alis.Core**                             | ![Nuget](https://img.shields.io/nuget/v/alis.core?label=&color=green)                                  | ![Nuget](https://img.shields.io/nuget/dt/alis.core?label=nuget&color=green)                                  | Core library for Alis.                         |
-| **Alis.Core.Aspect**                      | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect?label=&color=green)                           | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect?label=nuget&color=green)                           | Provides aspect-oriented programming features. |
-| **Alis.Core.Aspect.Data**                 | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.data?label=&color=green)                      | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.data?label=nuget&color=green)                      | Data handling extensions for AOP.              |
-| **Alis.Core.Aspect.Fluent**               | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.fluent?label=&color=green)                    | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.fluent?label=nuget&color=green)                    | Fluent API support for aspects.                |
-| **Alis.Core.Aspect.Logging**              | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.logging?label=&color=green)                   | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.logging?label=nuget&color=green)                   | Logging extensions for aspects.                |
-| **Alis.Core.Aspect.Math**                 | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.math?label=&color=green)                      | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.math?label=nuget&color=green)                      | Math utilities for aspect programming.         |
-| **Alis.Core.Aspect.Memory**               | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.memory?label=&color=green)                    | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.memory?label=nuget&color=green)                    | Memory management tools for aspects.           |
-| **Alis.Core.Aspect.Security**             | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.security?label=&color=green)                  | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.security?label=nuget&color=green)                  | Security enhancements for aspects.             |
-| **Alis.Core.Aspect.Thread**               | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.thread?label=&color=green)                    | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.thread?label=nuget&color=green)                    | Threading utilities for aspect programming.    |
-| **Alis.Core.Aspect.Time**                 | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.time?label=&color=green)                      | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.time?label=nuget&color=green)                      | Time-related utilities for aspects.            |
-| **Alis.Core.Audio**                       | ![Nuget](https://img.shields.io/nuget/v/alis.core.audio?label=&color=green)                            | ![Nuget](https://img.shields.io/nuget/dt/alis.core.audio?label=nuget&color=green)                            | Audio processing for Alis.                     |
-| **Alis.Core.Ecs**                         | ![Nuget](https://img.shields.io/nuget/v/alis.core.ecs?label=&color=green)                              | ![Nuget](https://img.shields.io/nuget/dt/alis.core.ecs?label=nuget&color=green)                              | Entity Component System module for Alis.       |
-| **Alis.Core.Graphic**                     | ![Nuget](https://img.shields.io/nuget/v/alis.core.graphic?label=&color=green)                          | ![Nuget](https://img.shields.io/nuget/dt/alis.core.graphic?label=nuget&color=green)                          | Graphics rendering utilities.                  |
-| **Alis.Core.Network**                     | ![Nuget](https://img.shields.io/nuget/v/alis.core.network?label=&color=green)                          | ![Nuget](https://img.shields.io/nuget/dt/alis.core.network?label=nuget&color=green)                          | Networking utilities for Alis.                 |
-| **Alis.Core.Physic**                      | ![Nuget](https://img.shields.io/nuget/v/alis.core.physic?label=&color=green)                           | ![Nuget](https://img.shields.io/nuget/dt/alis.core.physic?label=nuget&color=green)                           | Physics module for Alis.                       |
-| **Alis.Extension.Ads.GoogleAds**          | ![Nuget](https://img.shields.io/nuget/v/alis.extension.ads.googleads?label=&color=green)               | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.ads.googleads?label=nuget&color=green)               | Google Ads integration extension.              |
-| **Alis.Extension.Cloud.DropBox**          | ![Nuget](https://img.shields.io/nuget/v/alis.extension.cloud.dropbox?label=&color=green)               | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.cloud.dropbox?label=nuget&color=green)               | Dropbox cloud integration.                     |
-| **Alis.Extension.Cloud.GoogleDrive**      | ![Nuget](https://img.shields.io/nuget/v/alis.extension.cloud.googledrive?label=&color=green)           | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.cloud.googledrive?label=nuget&color=green)           | Google Drive cloud integration.                |
-| **Alis.Extension.Graphic.ImGui**          | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.imgui?label=&color=green)               | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.imgui?label=nuget&color=green)               | ImGui graphics extension for Alis.             |
-| **Alis.Extension.Graphic.OpenGL**         | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.opengl?label=&color=green)              | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.opengl?label=nuget&color=green)              | OpenGL graphics extension.                     |
-| **Alis.Extension.Graphic.Sdl2Image**      | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.sdl2image?label=&color=green)           | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.sdl2image?label=nuget&color=green)           | SDL2 image graphics extension.                 |
-| **Alis.Extension.Graphic.Sdl2Ttf**        | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.sdl2ttf?label=&color=green)             | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.sdl2ttf?label=nuget&color=green)             | SDL2 TTF graphics extension.                   |
-| **Alis.Extension.Io.FileDialog**          | ![Nuget](https://img.shields.io/nuget/v/alis.extension.io.filedialog?label=&color=green)               | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.io.filedialog?label=nuget&color=green)               | File dialog input/output extension.            |
-| **Alis.Extension.Language.Dialogue**      | ![Nuget](https://img.shields.io/nuget/v/alis.extension.language.dialogue?label=&color=green)           | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.language.dialogue?label=nuget&color=green)           | Dialogue system extension.                     |
-| **Alis.Extension.Language.Translator**    | ![Nuget](https://img.shields.io/nuget/v/alis.extension.language.translator?label=&color=green)         | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.language.translator?label=nuget&color=green)         | Translation system extension.                  |
-| **Alis.Extension.Math.DungeonGenerator**  | ![Nuget](https://img.shields.io/nuget/v/alis.extension.math.dungeongenerator?label=&color=green)       | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.math.dungeongenerator?label=nuget&color=green)       | Dungeon generator extension.                   |
-| **Alis.Extension.Math.HighSpeedPriority** | ![Nuget](https://img.shields.io/nuget/v/Alis.Extension.Math.HighSpeedPriorityQueue?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/Alis.Extension.Math.HighSpeedPriorityQueue?label=nuget&color=green) | High-speed math priority extension.            |
-| **Alis.Extension.Multimedia.FFmpeg**      | ![Nuget](https://img.shields.io/nuget/v/alis.extension.multimedia.ffmpeg?label=&color=green)           | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.multimedia.ffmpeg?label=nuget&color=green)           | FFmpeg multimedia processing extension.        |
-| **Alis.Extension.Payment.Stripe**         | ![Nuget](https://img.shields.io/nuget/v/alis.extension.payment.stripe?label=&color=green)              | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.payment.stripe?label=nuget&color=green)              | Stripe payment processing extension.           |
-| **Alis.Extension.Plugin**                 | ![Nuget](https://img.shields.io/nuget/v/alis.extension.plugin?label=&color=green)                      | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.plugin?label=nuget&color=green)                      | Plugin system extension for Alis.              |
-| **Alis.Extension.Profile**                | ![Nuget](https://img.shields.io/nuget/v/alis.extension.profile?label=&color=green)                     | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.profile?label=nuget&color=green)                     | User profile management extension.             |
-| **Alis.Extension.Updater**                | ![Nuget](https://img.shields.io/nuget/v/alis.extension.updater?label=&color=green)                     | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.updater?label=nuget&color=green)                     | Updater system for Alis.                       |
+## 🔷Alis
+
+| Package Name | Version                                                           | Downloads                                                               | Description                          |
+| ------------ | ----------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------ |
+| **Alis**     | ![Nuget](https://img.shields.io/nuget/v/alis?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis?label=nuget&color=green) | Main package for the Alis framework. |
+
+
+## 🔷 Alis.Core
+
+| Package Name  | Version                                                                | Downloads                                                                    | Description            |
+| ------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------- |
+| **Alis.Core** | ![Nuget](https://img.shields.io/nuget/v/alis.core?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core?label=nuget&color=green) | Core library for Alis. |
+
+
+## 🔷 Alis.Core.Aspect
+
+| Package Name                 | Version                                                                               | Downloads                                                                                   | Description           |
+| ---------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------- |
+| **Alis.Core.Aspect**         | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect?label=&color=green)         | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect?label=nuget&color=green)         | Base AOP system.      |
+| **Alis.Core.Aspect.Data**    | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.data?label=&color=green)    | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.data?label=nuget&color=green)    | Data AOP extensions.  |
+| **Alis.Core.Aspect.Fluent**  | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.fluent?label=&color=green)  | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.fluent?label=nuget&color=green)  | Fluent AOP API.       |
+| **Alis.Core.Aspect.Logging** | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.logging?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.logging?label=nuget&color=green) | Logging aspects.      |
+| **Alis.Core.Aspect.Math**    | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.math?label=&color=green)    | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.math?label=nuget&color=green)    | Math AOP utilities.   |
+| **Alis.Core.Aspect.Memory**  | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.memory?label=&color=green)  | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.memory?label=nuget&color=green)  | Memory AOP utilities. |
+| **Alis.Core.Aspect.Time**    | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.time?label=&color=green)    | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.time?label=nuget&color=green)    | Time AOP utilities.   |
+
+
+## 🔷 Alis.Core 
+
+| Package Name          | Version                                                                        | Downloads                                                                            | Description           |
+| --------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | --------------------- |
+| **Alis.Core.Graphic** | ![Nuget](https://img.shields.io/nuget/v/alis.core.graphic?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.graphic?label=nuget&color=green) | Graphics core module. |
+| **Alis.Core.Audio**   | ![Nuget](https://img.shields.io/nuget/v/alis.core.audio?label=&color=green)   | ![Nuget](https://img.shields.io/nuget/dt/alis.core.audio?label=nuget&color=green)   | Audio module.         |
+| **Alis.Core.Physic**  | ![Nuget](https://img.shields.io/nuget/v/alis.core.physic?label=&color=green)  | ![Nuget](https://img.shields.io/nuget/dt/alis.core.physic?label=nuget&color=green)  | Physics module.       |
+| **Alis.Core.Ecs**     | ![Nuget](https://img.shields.io/nuget/v/alis.core.ecs?label=&color=green)     | ![Nuget](https://img.shields.io/nuget/dt/alis.core.ecs?label=nuget&color=green)     | ECS module.           |
+
+
+## 🔷 Main — Alis.Extensions
+
+| Package Name                                   | Version                                                                                                 | Downloads                                                                                                     | Description                    |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| **Alis.Extension.Ads.GoogleAds**               | ![Nuget](https://img.shields.io/nuget/v/alis.extension.ads.googleads?label=&color=green)               | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.ads.googleads?label=nuget&color=green)               | Google Ads integration.        |
+| **Alis.Extension.Cloud.DropBox**               | ![Nuget](https://img.shields.io/nuget/v/alis.extension.cloud.dropbox?label=&color=green)               | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.cloud.dropbox?label=nuget&color=green)               | Dropbox integration.           |
+| **Alis.Extension.Cloud.GoogleDrive**           | ![Nuget](https://img.shields.io/nuget/v/alis.extension.cloud.googledrive?label=&color=green)           | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.cloud.googledrive?label=nuget&color=green)           | Google Drive integration.      |
+| **Alis.Extension.Profile**                     | ![Nuget](https://img.shields.io/nuget/v/alis.extension.profile?label=&color=green)                     | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.profile?label=nuget&color=green)                     | Profile system.                |
+| **Alis.Extension.Language.Translator**         | ![Nuget](https://img.shields.io/nuget/v/alis.extension.language.translator?label=&color=green)         | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.language.translator?label=nuget&color=green)         | Translation system.            |
+| **Alis.Extension.Language.Dialogue**           | ![Nuget](https://img.shields.io/nuget/v/alis.extension.language.dialogue?label=&color=green)           | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.language.dialogue?label=nuget&color=green)           | Dialogue system.               |
+| **Alis.Extension.Payment.Stripe**              | ![Nuget](https://img.shields.io/nuget/v/alis.extension.payment.stripe?label=&color=green)              | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.payment.stripe?label=nuget&color=green)              | Stripe integration.            |
+| **Alis.Extension.Math.HighSpeedPriorityQueue** | ![Nuget](https://img.shields.io/nuget/v/Alis.Extension.Math.HighSpeedPriorityQueue?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/Alis.Extension.Math.HighSpeedPriorityQueue?label=nuget&color=green) | High speed priority queue.     |
+| **Alis.Extension.Math.ProceduralDungeon**      | ![Nuget](https://img.shields.io/nuget/v/alis.extension.math.proceduraldungeon?label=&color=green)      | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.math.proceduraldungeon?label=nuget&color=green)      | Procedural dungeon generation. |
+| **Alis.Extension.Updater**                     | ![Nuget](https://img.shields.io/nuget/v/alis.extension.updater?label=&color=green)                     | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.updater?label=nuget&color=green)                     | Updater system.                |
+| **Alis.Extension.Io.FileDialog**               | ![Nuget](https://img.shields.io/nuget/v/alis.extension.io.filedialog?label=&color=green)               | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.io.filedialog?label=nuget&color=green)               | File dialog integration.       |
+| **Alis.Extension.Graphic.Sdl2**                | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.sdl2?label=&color=green)                | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.sdl2?label=nuget&color=green)                | SDL2 graphics backend.         |
+| **Alis.Extension.Graphic.Sfml**                | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.sfml?label=&color=green)                | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.sfml?label=nuget&color=green)                | SFML graphics backend.         |
+| **Alis.Extension.Graphic.Glfw**                | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.glfw?label=&color=green)                | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.glfw?label=nuget&color=green)                | GLFW graphics backend.         |
+| **Alis.Extension.Graphic.Ui**                  | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.ui?label=&color=green)                  | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.ui?label=nuget&color=green)                  | UI graphics helpers.           |
+| **Alis.Extension.Network**                     | ![Nuget](https://img.shields.io/nuget/v/alis.extension.network?label=&color=green)                     | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.network?label=nuget&color=green)                     | Networking extension.          |
+| **Alis.Extension.Security**                    | ![Nuget](https://img.shields.io/nuget/v/alis.extension.security?label=&color=green)                    | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.security?label=nuget&color=green)                    | Security extension.            |
+| **Alis.Extension.Thread**                      | ![Nuget](https://img.shields.io/nuget/v/alis.extension.thread?label=&color=green)                      | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.thread?label=nuget&color=green)                      | Thread utilities.              |
+| **Alis.Extension.Media.FFmpeg**                | ![Nuget](https://img.shields.io/nuget/v/alis.extension.media.ffmpeg?label=&color=green)                | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.media.ffmpeg?label=nuget&color=green)                | FFmpeg media processing.       |
 
 > **Note**: For the complete list of packages, visit the [NuGet Gallery](https://www.nuget.org/profiles/pabllopf).
 
