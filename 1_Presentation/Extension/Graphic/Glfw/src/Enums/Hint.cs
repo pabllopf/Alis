@@ -251,11 +251,11 @@ namespace Alis.Extension.Graphic.Glfw.Enums
 
         /// <summary>
         ///     Specifies which OpenGL profile to create the context for.
-        ///     <para>If requesting an OpenGL version below <c>3.2</c>, <see cref="Profile.Any" />  must be used.</para>
+        ///     <para>If requesting an OpenGL version below <c>3.2</c>, <see cref="GlfwProfile.Any" />  must be used.</para>
         ///     <para>If OpenGL ES is requested, this hint is ignored.</para>
         ///     <para>OpenGL profiles are described in detail in the OpenGL Reference Manual.</para>
-        ///     <para>Default Value: <see cref="Profile.Any" /></para>
-        ///     <para>Possible Values: Any of <see cref="Profile" /> values</para>
+        ///     <para>Default Value: <see cref="GlfwProfile.Any" /></para>
+        ///     <para>Possible Values: Any of <see cref="GlfwProfile" /> values</para>
         /// </summary>
         OpenglProfile = 0x00022008,
 
@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.Glfw.Enums
 
         /// <summary>
         ///     Specifies whether to also expose joystick hats as buttons, for compatibility with earlier versions of
-        ///     GLFW (less than 3.3) that did not have <see cref="Glfw.GetJoystickHats(int)" />.
+        ///     GLFW (less than 3.3) that did not have <see cref="GlfwNative.GetJoystickHats(int)" />.
         /// </summary>
         JoystickHatButtons = 0x00050001,
 
@@ -312,7 +312,7 @@ namespace Alis.Extension.Graphic.Glfw.Enums
         TransparentFramebuffer = 0x0002000A,
 
         /// <summary>
-        ///     Specifies whether the window will be given input focus when <see cref="Glfw.ShowWindow" /> is called.
+        ///     Specifies whether the window will be given input focus when <see cref="GlfwNative.ShowWindow" /> is called.
         ///     <para>Possible values are <c>true</c> and <c>false</c>.</para>
         /// </summary>
         FocusOnShow = 0x0002000C,
@@ -340,7 +340,7 @@ namespace Alis.Extension.Graphic.Glfw.Enums
         ///     Specifies the UTF-8 encoded name to use for auto-saving the window frame, or if empty disables frame
         ///     auto-saving for the window.
         ///     <para>macOs only, this is ignored on other platforms.</para>
-        ///     <para>This is set with <see cref="Glfw.WindowHintString" />.</para>
+        ///     <para>This is set with <see cref="GlfwNative.WindowHintString" />.</para>
         /// </summary>
         CocoaFrameName = 0x00023002,
 
@@ -355,13 +355,13 @@ namespace Alis.Extension.Graphic.Glfw.Enums
 
         /// <summary>
         ///     Specifies the desired ASCII encoded class parts of the ICCCM <c>WM_CLASS</c> window property.
-        ///     <para>Set with <see cref="Glfw.WindowHintString" />.</para>
+        ///     <para>Set with <see cref="GlfwNative.WindowHintString" />.</para>
         /// </summary>
         X11ClassName = 0x00024001,
 
         /// <summary>
         ///     Specifies the desired ASCII encoded instance parts of the ICCCM <c>WM_CLASS</c> window property.
-        ///     <para>Set with <see cref="Glfw.WindowHintString" />.</para>
+        ///     <para>Set with <see cref="GlfwNative.WindowHintString" />.</para>
         /// </summary>
         X11InstanceName = 0x00024002
     }

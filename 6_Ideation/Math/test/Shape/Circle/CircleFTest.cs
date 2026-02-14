@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Shape.Circle;
+using Alis.Core.Aspect.Math.Shapes.Circle;
 using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test.Shape.Circle

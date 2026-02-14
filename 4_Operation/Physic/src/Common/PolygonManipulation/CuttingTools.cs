@@ -29,7 +29,7 @@
 
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Common.PolygonManipulation

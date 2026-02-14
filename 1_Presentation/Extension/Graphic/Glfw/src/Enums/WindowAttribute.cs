@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.Glfw.Enums
 
         /// <summary>
         ///     Indicates whether the windowed mode window will be resizable by the <i>user</i>.
-        ///     <para>The window will still be resizable using the <see cref="Glfw.SetWindowSize" /> function.</para>
+        ///     <para>The window will still be resizable using the <see cref="GlfwNative.SetWindowSize" /> function.</para>
         ///     <para>This hint is ignored for full screen windows.</para>
         /// </summary>
         Resizable = 0x00020003,

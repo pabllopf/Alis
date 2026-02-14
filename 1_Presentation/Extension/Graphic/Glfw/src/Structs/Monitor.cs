@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         {
             get
             {
-                Glfw.GetMonitorWorkArea(handle, out int x, out int y, out int width, out int height);
+                GlfwNative.GetMonitorWorkArea(handle, out int x, out int y, out int width, out int height);
                 return new Rectangle(x, y, width, height);
             }
         }
@@ -128,13 +128,13 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         ///     Gets the content scale of this monitor.
         ///     <para>The content scale is the ratio between the current DPI and the platform's default DPI.</para>
         /// </summary>
-        /// <seealso cref="Glfw.GetMonitorContentScale" />
+        /// <seealso cref="GlfwNative.GetMonitorContentScale" />
 
         public PointF ContentScale
         {
             get
             {
-                Glfw.GetMonitorContentScale(handle, out float x, out float y);
+                GlfwNative.GetMonitorContentScale(handle, out float x, out float y);
                 return new PointF(x, y);
             }
         }
@@ -142,12 +142,12 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         /// <summary>
         ///     Gets or sets a user-defined pointer to associate with the window.
         /// </summary>
-        /// <seealso cref="Glfw.GetMonitorUserPointer" />
-        /// <seealso cref="Glfw.SetMonitorUserPointer" />
+        /// <seealso cref="GlfwNative.GetMonitorUserPointer" />
+        /// <seealso cref="GlfwNative.SetMonitorUserPointer" />
         public IntPtr UserPointer
         {
-            get => Glfw.GetMonitorUserPointer(handle);
-            set => Glfw.SetMonitorUserPointer(handle, value);
+            get => GlfwNative.GetMonitorUserPointer(handle);
+            set => GlfwNative.SetMonitorUserPointer(handle, value);
         }
     }
 }

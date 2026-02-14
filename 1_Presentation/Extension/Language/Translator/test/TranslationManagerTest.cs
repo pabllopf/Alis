@@ -47,13 +47,13 @@ namespace Alis.Extension.Language.Translator.Test
         {
             // Arrange
             TranslationManager translationManager = new TranslationManager();
-            Language language = new Language {Name = "English", Code = "en"};
+            Lang lang = new Lang {Name = "English", Code = "en"};
 
             // Act
-            translationManager.SetLanguage(language);
+            translationManager.SetLanguage(lang);
 
             // Assert
-            Assert.Equal(language, translationManager.Language);
+            Assert.Equal(lang, translationManager.Lang);
         }
 
         /// <summary>
@@ -64,13 +64,13 @@ namespace Alis.Extension.Language.Translator.Test
         {
             // Arrange
             TranslationManager translationManager = new TranslationManager();
-            Language language = new Language {Name = "Spanish", Code = "es"};
+            Lang lang = new Lang {Name = "Spanish", Code = "es"};
 
             // Act
-            translationManager.SetLanguage(language);
+            translationManager.SetLanguage(lang);
 
             // Assert
-            Assert.Contains(language, translationManager.GetAvailableLanguages());
+            Assert.Contains(lang, translationManager.GetAvailableLanguages());
         }
 
         /// <summary>
@@ -81,11 +81,11 @@ namespace Alis.Extension.Language.Translator.Test
         {
             // Arrange
             TranslationManager translationManager = new TranslationManager();
-            Language language = new Language {Name = "French", Code = "fr"};
+            Lang lang = new Lang {Name = "French", Code = "fr"};
 
             // Act
-            translationManager.SetLanguage(language);
-            translationManager.SetLanguage(language); // Add duplicate
+            translationManager.SetLanguage(lang);
+            translationManager.SetLanguage(lang); // Add duplicate
 
             // Assert
             Assert.Single(translationManager.GetAvailableLanguages()); // Only one instance should be in the list
@@ -119,9 +119,9 @@ namespace Alis.Extension.Language.Translator.Test
             translationManager.SetLanguage(name, code);
 
             // Assert
-            Language addedLanguage = translationManager.GetAvailableLanguages().FirstOrDefault(l => l.Code == code);
-            Assert.NotNull(addedLanguage);
-            Assert.Equal(name, addedLanguage.Name);
+            Lang addedLang = translationManager.GetAvailableLanguages().FirstOrDefault(l => l.Code == code);
+            Assert.NotNull(addedLang);
+            Assert.Equal(name, addedLang.Name);
         }
 
         /// <summary>
@@ -132,11 +132,11 @@ namespace Alis.Extension.Language.Translator.Test
         {
             // Arrange
             TranslationManager translationManager = new TranslationManager();
-            Language language = new Language {Name = "English", Code = "en"};
-            translationManager.SetLanguage(language);
+            Lang lang = new Lang {Name = "English", Code = "en"};
+            translationManager.SetLanguage(lang);
             const string key = "greeting";
             const string value = "Hello, CurrentWorld!";
-            translationManager.AddTranslation(language, key, value);
+            translationManager.AddTranslation(lang, key, value);
 
             // Act
             string result = translationManager.Translate(key);
@@ -153,8 +153,8 @@ namespace Alis.Extension.Language.Translator.Test
         {
             // Arrange
             TranslationManager translationManager = new TranslationManager();
-            Language language = new Language {Name = "English", Code = "en"};
-            translationManager.SetLanguage(language);
+            Lang lang = new Lang {Name = "English", Code = "en"};
+            translationManager.SetLanguage(lang);
             const string key = "greeting";
 
             // Act & Assert
@@ -170,13 +170,13 @@ namespace Alis.Extension.Language.Translator.Test
         {
             // Arrange
             TranslationManager translationManager = new TranslationManager();
-            Language language = new Language {Name = "Spanish", Code = "es"};
+            Lang lang = new Lang {Name = "Spanish", Code = "es"};
             const string key = "farewell";
             const string value = "Adiós";
 
             // Act
-            translationManager.SetLanguage(language);
-            translationManager.AddTranslation(language, key, value);
+            translationManager.SetLanguage(lang);
+            translationManager.AddTranslation(lang, key, value);
 
             // Assert
             string translatedValue = translationManager.Translate(key);
@@ -208,7 +208,7 @@ namespace Alis.Extension.Language.Translator.Test
             TranslationManager translationManager = new TranslationManager();
 
             // Act
-            List<Language> availableLanguages = translationManager.GetAvailableLanguages();
+            List<Lang> availableLanguages = translationManager.GetAvailableLanguages();
 
             // Assert
             Assert.Empty(availableLanguages);
@@ -222,15 +222,15 @@ namespace Alis.Extension.Language.Translator.Test
         {
             // Arrange
             TranslationManager translationManager = new TranslationManager();
-            Language language1 = new Language {Name = "Italian", Code = "it"};
-            Language language2 = new Language {Name = "Portuguese", Code = "pt"};
+            Lang language1 = new Lang {Name = "Italian", Code = "it"};
+            Lang language2 = new Lang {Name = "Portuguese", Code = "pt"};
 
             // Act
             translationManager.AddLanguage(language1);
             translationManager.AddLanguage(language2);
 
             // Assert
-            List<Language> availableLanguages = translationManager.GetAvailableLanguages();
+            List<Lang> availableLanguages = translationManager.GetAvailableLanguages();
             Assert.Contains(language1, availableLanguages);
             Assert.Contains(language2, availableLanguages);
         }
@@ -276,10 +276,10 @@ namespace Alis.Extension.Language.Translator.Test
             translationManager.SetLanguage(name, code);
 
             // Assert
-            Language selectedLanguage = translationManager.Language;
-            Assert.NotNull(selectedLanguage);
-            Assert.Equal(name, selectedLanguage.Name);
-            Assert.Equal(code, selectedLanguage.Code);
+            Lang selectedLang = translationManager.Lang;
+            Assert.NotNull(selectedLang);
+            Assert.Equal(name, selectedLang.Name);
+            Assert.Equal(code, selectedLang.Code);
         }
 
         /// <summary>
@@ -290,15 +290,15 @@ namespace Alis.Extension.Language.Translator.Test
         {
             // Arrange
             TranslationManager translationManager = new TranslationManager();
-            Language existingLanguage = new Language {Name = "Spanish", Code = "es"};
-            translationManager.AddLanguage(existingLanguage);
+            Lang existingLang = new Lang {Name = "Spanish", Code = "es"};
+            translationManager.AddLanguage(existingLang);
 
             // Act
-            translationManager.SetLanguage(existingLanguage.Name, existingLanguage.Code);
+            translationManager.SetLanguage(existingLang.Name, existingLang.Code);
 
             // Assert
-            Language selectedLanguage = translationManager.Language;
-            Assert.Equal(existingLanguage, selectedLanguage);
+            Lang selectedLang = translationManager.Lang;
+            Assert.Equal(existingLang, selectedLang);
         }
 
         /// <summary>
@@ -380,10 +380,10 @@ namespace Alis.Extension.Language.Translator.Test
             translationManager.SetLanguage(name, localCode);
 
             // Assert
-            Assert.NotNull(translationManager.Language);
-            Assert.Equal(name, translationManager.Language.Name);
-            Assert.Equal(localCode, translationManager.Language.Code);
-            Assert.Contains(translationManager.Language, translationManager.GetAvailableLanguages());
+            Assert.NotNull(translationManager.Lang);
+            Assert.Equal(name, translationManager.Lang.Name);
+            Assert.Equal(localCode, translationManager.Lang.Code);
+            Assert.Contains(translationManager.Lang, translationManager.GetAvailableLanguages());
         }
 
         /// <summary>
@@ -458,8 +458,8 @@ namespace Alis.Extension.Language.Translator.Test
         {
             // Arrange
             TranslationManager translationManager = new TranslationManager();
-            Language language = new Language {Name = "French", Code = "fr"};
-            translationManager.AddLanguage(language);
+            Lang lang = new Lang {Name = "French", Code = "fr"};
+            translationManager.AddLanguage(lang);
 
             const string localCode = "fr";
             const string key = "greeting";
@@ -469,7 +469,7 @@ namespace Alis.Extension.Language.Translator.Test
             translationManager.AddTranslation(localCode, key, value);
 
             // Assert
-            Assert.Contains(translationManager.Language, translationManager.GetAvailableLanguages());
+            Assert.Contains(translationManager.Lang, translationManager.GetAvailableLanguages());
             Assert.Equal(value, translationManager.Translate(key));
         }
 

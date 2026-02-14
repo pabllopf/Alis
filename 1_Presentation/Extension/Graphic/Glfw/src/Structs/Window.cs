@@ -109,8 +109,8 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         /// </summary>
         public float Opacity
         {
-            get => Glfw.GetWindowOpacity(handle);
-            set => Glfw.SetWindowOpacity(handle, Math.Min(1.0f, Math.Max(0.0f, value)));
+            get => GlfwNative.GetWindowOpacity(handle);
+            set => GlfwNative.SetWindowOpacity(handle, Math.Min(1.0f, Math.Max(0.0f, value)));
         }
 
         /// <summary>

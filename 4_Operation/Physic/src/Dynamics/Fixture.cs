@@ -29,8 +29,8 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision;
-using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics.Contacts;
 
 namespace Alis.Core.Physic.Dynamics

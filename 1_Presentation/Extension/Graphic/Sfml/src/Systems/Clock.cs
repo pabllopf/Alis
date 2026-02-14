@@ -50,7 +50,7 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         ///     Gets the time elapsed since the last call to Restart
         /// </summary>
 
-        public Time ElapsedTime => sfClock_getElapsedTime(CPointer);
+        public SfmlTime ElapsedSfmlTime => sfClock_getElapsedTime(CPointer);
 
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         ///     This function puts the time counter back to zero.
         /// </summary>
         /// <returns>Time elapsed since the clock was started.</returns>
-        public Time Restart() => sfClock_restart(CPointer);
+        public SfmlTime Restart() => sfClock_restart(CPointer);
 
         
 
@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// <param name="clock">The clock</param>
         /// <returns>The time</returns>
         [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Time sfClock_getElapsedTime(IntPtr clock);
+        private static extern SfmlTime sfClock_getElapsedTime(IntPtr clock);
 
         /// <summary>
         ///     Sfs the clock restart using the specified clock
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// <param name="clock">The clock</param>
         /// <returns>The time</returns>
         [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Time sfClock_restart(IntPtr clock);
+        private static extern SfmlTime sfClock_restart(IntPtr clock);
 
         
     }

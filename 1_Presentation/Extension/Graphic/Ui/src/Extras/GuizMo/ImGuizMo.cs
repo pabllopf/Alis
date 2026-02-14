@@ -341,13 +341,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         {
              if (ImGui.Begin("Gizmo", ref isOpen))
             {
-                ImGuizMo.Enable(true);
-                ImGuizMo.SetDrawList();
+                Enable(true);
+                SetDrawList();
 
                 ImGui.Text("ImGuizmo is a small library that allows you to manipulate 3D objects in the scene.");
                 ImGui.Text("You can use it to move, rotate and scale objects in the scene.");
 
-                ImGuizMo.DecomposeMatrixToComponents(ref matrix, ref matrixTranslation, ref matrixRotation, ref matrixScale);
+                DecomposeMatrixToComponents(ref matrix, ref matrixTranslation, ref matrixRotation, ref matrixScale);
 
                 translation.X = matrixTranslation[0];
                 translation.Y = matrixTranslation[1];
@@ -377,19 +377,19 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
                 matrixScale[1] = scale.Y;
                 matrixScale[2] = scale.Z;
 
-                ImGuizMo.RecomposeMatrixFromComponents(ref matrixTranslation, ref matrixRotation, ref matrixScale, ref matrix);
+                RecomposeMatrixFromComponents(ref matrixTranslation, ref matrixRotation, ref matrixScale, ref matrix);
 
                 ImGui.Text($"Translation: {translation}");
                 ImGui.Text($"Rotation: {rotation}");
                 ImGui.Text($"Scale: {scale}");
 
-                ImGuizMo.SetOrthographic(false);
-                ImGuizMo.SetRect(0, 0, ImGui.GetIo().DisplaySize.X, ImGui.GetIo().DisplaySize.Y);
+                SetOrthographic(false);
+                SetRect(0, 0, ImGui.GetIo().DisplaySize.X, ImGui.GetIo().DisplaySize.Y);
 
-                ImGuizMo.DrawGrid(ref cameraView, ref cameraProjection, ref identityMatrix, 10.0f);
-                ImGuizMo.Manipulate(cameraView, cameraProjection, Operation.Translate | Operation.Rotate | Operation.Scale, Mode.Local, matrix);
+                DrawGrid(ref cameraView, ref cameraProjection, ref identityMatrix, 10.0f);
+                Manipulate(cameraView, cameraProjection, Operation.Translate | Operation.Rotate | Operation.Scale, Mode.Local, matrix);
 
-                ImGuizMo.ViewManipulate(ref cameraView, 2.5f, new Vector2F(ImGui.GetWindowPos().X, ImGui.GetWindowPos().Y), new Vector2F(ImGui.GetWindowWidth(), ImGui.GetWindowHeight()), 0x10101010);
+                ViewManipulate(ref cameraView, 2.5f, new Vector2F(ImGui.GetWindowPos().X, ImGui.GetWindowPos().Y), new Vector2F(ImGui.GetWindowWidth(), ImGui.GetWindowHeight()), 0x10101010);
             }
 
 

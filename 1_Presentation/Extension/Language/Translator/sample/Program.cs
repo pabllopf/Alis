@@ -44,8 +44,8 @@ namespace Alis.Extension.Language.Translator.Sample
         {
             TranslationManager manager = new TranslationManager();
 
-            manager.AddLanguage(new Language {Name = "English", Code = "en"});
-            manager.AddLanguage(new Language {Name = "Spanish", Code = "es"});
+            manager.AddLanguage(new Lang {Name = "English", Code = "en"});
+            manager.AddLanguage(new Lang {Name = "Spanish", Code = "es"});
 
             manager.AddTranslation("en", "hello", "Hello");
             manager.AddTranslation("es", "hello", "Hola");
@@ -53,10 +53,10 @@ namespace Alis.Extension.Language.Translator.Sample
             manager.AddTranslation("es", "world", "Mundo");
 
             manager.SetLanguage("Spanish", "es");
-            Logger.Info($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
+            Logger.Info($"Current language: {manager.Lang.Name} - Language.Code:{manager.Lang.Code} Translate result: {manager.Translate("hello")}");
 
             manager.SetLanguage("English", "en");
-            Logger.Info($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
+            Logger.Info($"Current language: {manager.Lang.Name} - Language.Code:{manager.Lang.Code} Translate result: {manager.Translate("hello")}");
         }
     }
 }

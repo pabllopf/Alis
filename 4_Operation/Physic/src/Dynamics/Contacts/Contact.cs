@@ -29,8 +29,8 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision;
-using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
@@ -306,7 +306,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 Shape shapeA = FixtureA.GetShape;
                 Shape shapeB = FixtureB.GetShape;
-                touching = Collision.Collision.TestOverlap(shapeA, ChildIndexA, shapeB, ChildIndexB, ref bodyA.Xf, ref bodyB.Xf);
+                touching = Collision.TestOverlap(shapeA, ChildIndexA, shapeB, ChildIndexB, ref bodyA.Xf, ref bodyB.Xf);
 
                 // Sensors don't generate manifolds.
                 Manifold.PointCount = 0;
@@ -486,29 +486,29 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             switch (_type)
             {
                 case ContactType.Polygon:
-                    Collision.Collision.CollidePolygons(ref manifold, (PolygonShape) FixtureA.GetShape, ref controllerTransformA, (PolygonShape) FixtureB.GetShape, ref controllerTransformB);
+                    Collision.CollidePolygons(ref manifold, (PolygonShape) FixtureA.GetShape, ref controllerTransformA, (PolygonShape) FixtureB.GetShape, ref controllerTransformB);
                     break;
                 case ContactType.PolygonAndCircle:
-                    Collision.Collision.CollidePolygonAndCircle(ref manifold, (PolygonShape) FixtureA.GetShape, ref controllerTransformA, (CircleShape) FixtureB.GetShape, ref controllerTransformB);
+                    Collision.CollidePolygonAndCircle(ref manifold, (PolygonShape) FixtureA.GetShape, ref controllerTransformA, (CircleShape) FixtureB.GetShape, ref controllerTransformB);
                     break;
                 case ContactType.EdgeAndCircle:
-                    Collision.Collision.CollideEdgeAndCircle(ref manifold, (EdgeShape) FixtureA.GetShape, ref controllerTransformA, (CircleShape) FixtureB.GetShape, ref controllerTransformB);
+                    Collision.CollideEdgeAndCircle(ref manifold, (EdgeShape) FixtureA.GetShape, ref controllerTransformA, (CircleShape) FixtureB.GetShape, ref controllerTransformB);
                     break;
                 case ContactType.EdgeAndPolygon:
-                    Collision.Collision.CollideEdgeAndPolygon(ref manifold, (EdgeShape) FixtureA.GetShape, ref controllerTransformA, (PolygonShape) FixtureB.GetShape, ref controllerTransformB);
+                    Collision.CollideEdgeAndPolygon(ref manifold, (EdgeShape) FixtureA.GetShape, ref controllerTransformA, (PolygonShape) FixtureB.GetShape, ref controllerTransformB);
                     break;
                 case ContactType.ChainAndCircle:
                     ChainShape chain = (ChainShape) FixtureA.GetShape;
                     chain.GetChildEdge(Edge, ChildIndexA);
-                    Collision.Collision.CollideEdgeAndCircle(ref manifold, Edge, ref controllerTransformA, (CircleShape) FixtureB.GetShape, ref controllerTransformB);
+                    Collision.CollideEdgeAndCircle(ref manifold, Edge, ref controllerTransformA, (CircleShape) FixtureB.GetShape, ref controllerTransformB);
                     break;
                 case ContactType.ChainAndPolygon:
                     ChainShape loop2 = (ChainShape) FixtureA.GetShape;
                     loop2.GetChildEdge(Edge, ChildIndexA);
-                    Collision.Collision.CollideEdgeAndPolygon(ref manifold, Edge, ref controllerTransformA, (PolygonShape) FixtureB.GetShape, ref controllerTransformB);
+                    Collision.CollideEdgeAndPolygon(ref manifold, Edge, ref controllerTransformA, (PolygonShape) FixtureB.GetShape, ref controllerTransformB);
                     break;
                 case ContactType.Circle:
-                    Collision.Collision.CollideCircles(ref manifold, (CircleShape) FixtureA.GetShape, ref controllerTransformA, (CircleShape) FixtureB.GetShape, ref controllerTransformB);
+                    Collision.CollideCircles(ref manifold, (CircleShape) FixtureA.GetShape, ref controllerTransformA, (CircleShape) FixtureB.GetShape, ref controllerTransformB);
                     break;
             }
         }

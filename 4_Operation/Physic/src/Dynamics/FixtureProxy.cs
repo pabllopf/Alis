@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
-using Alis.Core.Physic.Collision;
+using Alis.Core.Physic.Collisions;
 
 namespace Alis.Core.Physic.Dynamics
 {

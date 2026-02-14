@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Shape.Line;
+using Alis.Core.Aspect.Math.Shapes.Line;
 using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test.Shape.Line

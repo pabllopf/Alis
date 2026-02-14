@@ -97,26 +97,26 @@ namespace Alis.Extension.Graphic.Glfw.Sample
         /// <exception cref="FileNotFoundException">Texture file not found </exception>
         public void Run()
         {
-            if (!Glfw.Init())
+            if (!GlfwNative.Init())
             {
                 throw new Exception("Failed to initialize GLFW");
             }
 
-            Gl.Initialize(Glfw.GetProcAddress);
+            Gl.Initialize(GlfwNative.GetProcAddress);
 
-            Glfw.WindowHint(Hint.ContextVersionMajor, 3);
-            Glfw.WindowHint(Hint.ContextVersionMinor, 3);
-            Glfw.WindowHint(Hint.OpenglProfile, Profile.Core);
-            Glfw.WindowHint(Hint.OpenglForwardCompatible, true);
+            GlfwNative.WindowHint(Hint.ContextVersionMajor, 3);
+            GlfwNative.WindowHint(Hint.ContextVersionMinor, 3);
+            GlfwNative.WindowHint(Hint.OpenglProfile, GlfwProfile.Core);
+            GlfwNative.WindowHint(Hint.OpenglForwardCompatible, true);
 
-            window = Glfw.CreateWindow(800, 600, "OpenGL Window", Monitor.None, Window.None);
+            window = GlfwNative.CreateWindow(800, 600, "OpenGL Window", Monitor.None, Window.None);
             if (window == Window.None)
             {
                 throw new Exception("Failed to create GLFW window");
             }
 
-            Glfw.MakeContextCurrent(window);
-            Glfw.SwapInterval(1);
+            GlfwNative.MakeContextCurrent(window);
+            GlfwNative.SwapInterval(1);
 
             int windowWidth = 800;
             int windowHeight = 600;
@@ -229,15 +229,15 @@ namespace Alis.Extension.Graphic.Glfw.Sample
 
             while (running)
             {
-                Glfw.PollEvents();
-                if (Glfw.WindowShouldClose(window))
+                GlfwNative.PollEvents();
+                if (GlfwNative.WindowShouldClose(window))
                 {
                     running = false;
                 }
 
                 Gl.GlClear(ClearBufferMask.ColorBufferBit);
                 Draw();
-                Glfw.SwapBuffers(window);
+                GlfwNative.SwapBuffers(window);
             }
 
             Gl.DeleteVertexArray(vao);

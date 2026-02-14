@@ -1075,7 +1075,7 @@ namespace Alis.App.Installer
         private static INativePlatform GetPlatform()
         {
 #if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
-            return new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
+            return new Core.Graphic.Platforms.Osx.MacNativePlatform();
 #elif winx64 || winx86 || winarm64 || winarm || win
             return new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
 #elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux

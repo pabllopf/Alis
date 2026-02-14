@@ -256,17 +256,17 @@ namespace Alis.App.Installer
                 _platform.GetMouseState(out int mx, out int my, out bool[] mButtons);
                 io.MousePos = new Alis.Core.Aspect.Math.Vector.Vector2F(mx, my);
 
-                List<bool> mouseDownList = new System.Collections.Generic.List<bool>();
+                List<bool> mouseDownList = new List<bool>();
                 for (int i = 0; i < 5; i++) mouseDownList.Add(i < mButtons.Length ? mButtons[i] : false);
                 // We'll compute MouseClicked / MouseDoubleClicked / MouseClickedTime / MouseClickedCount below
                 // Prepare default click-related lists (cleared each frame)
-                List<bool> mouseClicked = new System.Collections.Generic.List<bool> { false, false, false, false, false };
-                List<bool> mouseDoubleClicked = new System.Collections.Generic.List<bool> { false, false, false, false, false };
-                List<double> mouseClickedTime = new System.Collections.Generic.List<double> { 0, 0, 0, 0, 0 };
-                List<ushort> mouseClickedCount = new System.Collections.Generic.List<ushort> { 0, 0, 0, 0, 0 };
+                List<bool> mouseClicked = new List<bool> { false, false, false, false, false };
+                List<bool> mouseDoubleClicked = new List<bool> { false, false, false, false, false };
+                List<double> mouseClickedTime = new List<double> { 0, 0, 0, 0, 0 };
+                List<ushort> mouseClickedCount = new List<ushort> { 0, 0, 0, 0, 0 };
 
                 // Detect transitions and fill click info
-                double now = (double)System.Diagnostics.Stopwatch.GetTimestamp() / System.Diagnostics.Stopwatch.Frequency;
+                double now = (double)Stopwatch.GetTimestamp() / Stopwatch.Frequency;
                 for (int i = 0; i < 5; i++)
                 {
                     bool down = i < mButtons.Length ? mButtons[i] : false;
@@ -313,7 +313,7 @@ namespace Alis.App.Installer
             {
                 // No platform: ensure sane defaults
                 io.MousePos = new Alis.Core.Aspect.Math.Vector.Vector2F(0, 0);
-                io.MouseDown = new System.Collections.Generic.List<bool> { false, false, false, false, false };
+                io.MouseDown = new List<bool> { false, false, false, false, false };
                 io.MouseWheel = 0.0f;
             }
 

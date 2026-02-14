@@ -203,7 +203,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         ///     either paused or playing.
         /// </summary>
 
-        public Time PlayingOffset
+        public SfmlTime PlayingOffset
         {
             get => sfSoundStream_getPlayingOffset(CPointer);
             set => sfSoundStream_setPlayingOffset(CPointer, value);
@@ -289,8 +289,8 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <summary>
         ///     Virtual function called to seek into the stream
         /// </summary>
-        /// <param name="timeOffset">New position</param>
-        public abstract void OnSeek(Time timeOffset);
+        /// <param name="sfmlTimeOffset">New position</param>
+        public abstract void OnSeek(SfmlTime sfmlTimeOffset);
 
 
         /// <summary>
@@ -334,12 +334,12 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <summary>
         ///     Called to seek in the stream
         /// </summary>
-        /// <param name="timeOffset">New position</param>
+        /// <param name="sfmlTimeOffset">New position</param>
         /// <param name="userData">User data -- unused</param>
         /// <returns>If false is returned, the playback is aborted</returns>
-        private void Seek(Time timeOffset, IntPtr userData)
+        private void Seek(SfmlTime sfmlTimeOffset, IntPtr userData)
         {
-            OnSeek(timeOffset);
+            OnSeek(sfmlTimeOffset);
         }
 
         /// <summary>
@@ -352,7 +352,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         ///     The seek callback type
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate void SeekCallbackType(Time timeOffset, IntPtr userData);
+        private delegate void SeekCallbackType(SfmlTime sfmlTimeOffset, IntPtr userData);
 
         
 
@@ -480,9 +480,9 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         ///     Sfs the sound stream set playing offset using the specified sound stream
         /// </summary>
         /// <param name="soundStream">The sound stream</param>
-        /// <param name="timeOffset">The time offset</param>
+        /// <param name="sfmlTimeOffset">The time offset</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfSoundStream_setPlayingOffset(IntPtr soundStream, Time timeOffset);
+        private static extern void sfSoundStream_setPlayingOffset(IntPtr soundStream, SfmlTime sfmlTimeOffset);
 
         /// <summary>
         ///     Sfs the sound stream get loop using the specified sound stream
@@ -546,7 +546,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="soundStream">The sound stream</param>
         /// <returns>The time</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Time sfSoundStream_getPlayingOffset(IntPtr soundStream);
+        private static extern SfmlTime sfSoundStream_getPlayingOffset(IntPtr soundStream);
 
         
     }

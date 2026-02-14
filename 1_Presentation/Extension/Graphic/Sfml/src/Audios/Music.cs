@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         ///     Total duration of the music
         /// </summary>
 
-        public Time Duration => sfMusic_getDuration(CPointer);
+        public SfmlTime Duration => sfMusic_getDuration(CPointer);
 
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         ///     either paused or playing.
         /// </summary>
 
-        public Time PlayingOffset
+        public SfmlTime PlayingOffset
         {
             get => sfMusic_getPlayingOffset(CPointer);
             set => sfMusic_setPlayingOffset(CPointer, value);
@@ -348,12 +348,12 @@ namespace Alis.Extension.Graphic.Sfml.Audios
             /// <summary>
             ///     The offset
             /// </summary>
-            private Time offset;
+            private SfmlTime offset;
 
             /// <summary>
             ///     The length
             /// </summary>
-            private Time length;
+            private SfmlTime length;
         }
 
         
@@ -425,7 +425,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <returns>The time</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Time sfMusic_getDuration(IntPtr music);
+        private static extern SfmlTime sfMusic_getDuration(IntPtr music);
 
         /// <summary>
         ///     Sfs the music get loop points using the specified music
@@ -520,9 +520,9 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         ///     Sfs the music set playing offset using the specified music
         /// </summary>
         /// <param name="music">The music</param>
-        /// <param name="timeOffset">The time offset</param>
+        /// <param name="sfmlTimeOffset">The time offset</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMusic_setPlayingOffset(IntPtr music, Time timeOffset);
+        private static extern void sfMusic_setPlayingOffset(IntPtr music, SfmlTime sfmlTimeOffset);
 
         /// <summary>
         ///     Sfs the music get loop using the specified music
@@ -586,7 +586,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <returns>The time</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Time sfMusic_getPlayingOffset(IntPtr music);
+        private static extern SfmlTime sfMusic_getPlayingOffset(IntPtr music);
 
         
     }

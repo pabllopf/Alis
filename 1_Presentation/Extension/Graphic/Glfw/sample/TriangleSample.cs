@@ -94,38 +94,38 @@ namespace Alis.Extension.Graphic.Glfw.Sample
         {
             // Initialize GLFW
             // Initialize GLFW
-            if (!Glfw.Init())
+            if (!GlfwNative.Init())
             {
                 throw new Exception("Failed to initialize GLFW");
             }
 
-            Gl.Initialize(Glfw.GetProcAddress);
+            Gl.Initialize(GlfwNative.GetProcAddress);
 
             // Set GLFW window hints for OpenGL context
-            Glfw.WindowHint(Hint.ContextVersionMajor, 3);
-            Glfw.WindowHint(Hint.ContextVersionMinor, 2);
-            Glfw.WindowHint(Hint.OpenglProfile, Profile.Core);
-            Glfw.WindowHint(Hint.OpenglForwardCompatible, true);
-            Glfw.WindowHint(Hint.Doublebuffer, true);
-            Glfw.WindowHint(Hint.DepthBits, 24);
-            Glfw.WindowHint(Hint.AlphaBits, 8);
-            Glfw.WindowHint(Hint.StencilBits, 8);
+            GlfwNative.WindowHint(Hint.ContextVersionMajor, 3);
+            GlfwNative.WindowHint(Hint.ContextVersionMinor, 2);
+            GlfwNative.WindowHint(Hint.OpenglProfile, GlfwProfile.Core);
+            GlfwNative.WindowHint(Hint.OpenglForwardCompatible, true);
+            GlfwNative.WindowHint(Hint.Doublebuffer, true);
+            GlfwNative.WindowHint(Hint.DepthBits, 24);
+            GlfwNative.WindowHint(Hint.AlphaBits, 8);
+            GlfwNative.WindowHint(Hint.StencilBits, 8);
 
             // Create a GLFW window
-            window = Glfw.CreateWindow(800, 600, "OpenGL Window", Monitor.None, Window.None);
+            window = GlfwNative.CreateWindow(800, 600, "OpenGL Window", Monitor.None, Window.None);
             if (window == Window.None)
             {
                 throw new Exception("Failed to create GLFW window");
             }
 
             // Make the OpenGL context current
-            Glfw.MakeContextCurrent(window);
+            GlfwNative.MakeContextCurrent(window);
 
             // Enable v-sync
-            Glfw.SwapInterval(1);
+            GlfwNative.SwapInterval(1);
 
             // Log GLFW version
-            Logger.Log($"GLFW VERSION {Glfw.GetVersionString()}");
+            Logger.Log($"GLFW VERSION {GlfwNative.GetVersionString()}");
 
             // Define the vertices for the triangle
             float[] vertices =
@@ -213,8 +213,8 @@ namespace Alis.Extension.Graphic.Glfw.Sample
             while (running)
             {
                 // Event handling
-                Glfw.PollEvents();
-                if (Glfw.WindowShouldClose(window))
+                GlfwNative.PollEvents();
+                if (GlfwNative.WindowShouldClose(window))
                 {
                     running = false;
                 }
@@ -225,7 +225,7 @@ namespace Alis.Extension.Graphic.Glfw.Sample
                 Draw();
 
                 // Swap the buffers to display the triangle
-                Glfw.SwapBuffers(window);
+                GlfwNative.SwapBuffers(window);
             }
 
             // Cleanup

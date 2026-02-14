@@ -1,0 +1,72 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Profile.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
+{
+    /// <summary>
+    ///     The profile enum
+    /// </summary>
+    public enum FFmpegProfile
+    {
+        /// <summary>
+        ///     Automatically pick the appropriate profile
+        /// </summary>
+        Auto = 0,
+
+        /// <summary>
+        ///     Maximum compatibility on older devices. Least demanding.
+        /// </summary>
+        Baseline = 1,
+
+        /// <summary>
+        ///     Good compatibility even on older devices
+        /// </summary>
+        Main = 2,
+
+        /// <summary>
+        ///     Supported by most modern devices
+        /// </summary>
+        High = 3,
+
+        /// <summary>
+        ///     Support for 10-bit depth
+        /// </summary>
+        High10 = 4,
+
+        /// <summary>
+        ///     Support for 4:2:2 chroma subsampling
+        /// </summary>
+        High442 = 5,
+
+        /// <summary>
+        ///     Support for 4:4:4 chroma subsampling
+        /// </summary>
+        High444 = 6
+    }
+}

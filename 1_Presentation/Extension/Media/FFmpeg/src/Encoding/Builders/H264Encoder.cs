@@ -59,7 +59,7 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
         ///     Limit encoder output to a specific profile. This affects compatibility with older players and compression
         ///     efficiency. (Default: Auto)
         /// </summary>
-        public Profile EncoderProfile { get; set; } = Profile.Auto;
+        public FFmpegProfile EncoderFFmpegProfile { get; set; } = FFmpegProfile.Auto;
 
         /// <summary>
         ///     Gets or sets the value of the format
@@ -137,7 +137,7 @@ namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
             EncoderArguments = $"{CurrentQualitySettings} " +
                                $"-preset {EncoderPreset.ToString().ToLowerInvariant()}" +
                                (EncoderTune == Tune.Auto ? "" : $" -tune {EncoderTune.ToString().ToLowerInvariant()}") +
-                               (EncoderProfile == Profile.Auto ? "" : $" -profile:v {EncoderProfile.ToString().ToLowerInvariant()}")
+                               (EncoderFFmpegProfile == FFmpegProfile.Auto ? "" : $" -profile:v {EncoderFFmpegProfile.ToString().ToLowerInvariant()}")
         };
     }
 }

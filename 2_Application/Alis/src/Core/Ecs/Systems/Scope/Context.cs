@@ -53,7 +53,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         {
             IsRunning = true;
             Setting = new Setting();
-            Runtime = new Runtime<AManager>(
+            InternalRuntime = new InternalRuntime<AManager>(
                 new AudioManager(this),
                 new GraphicManager(this),
                 new InputManager(this),
@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         {
             IsRunning = true;
             Setting = setting;
-            Runtime = new Runtime<AManager>(
+            InternalRuntime = new InternalRuntime<AManager>(
                 new AudioManager(this),
                 new GraphicManager(this),
                 new InputManager(this),
@@ -92,7 +92,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         {
             IsRunning = true;
             Setting = setting;
-            Runtime = new Runtime<AManager>(
+            InternalRuntime = new InternalRuntime<AManager>(
                 new AudioManager(this),
                 new GraphicManager(this),
                 new InputManager(this),
@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         ///     The runtime
         /// </summary>
 
-        public Runtime<AManager> Runtime { get; }
+        public InternalRuntime<AManager> InternalRuntime { get; }
 
         /// <summary>
         ///     Gets or sets the value of the is running
@@ -118,37 +118,37 @@ namespace Alis.Core.Ecs.Systems.Scope
         ///     Gets the value of the audio manager
         /// </summary>
 
-        public AudioManager AudioManager => Runtime.Get<AudioManager>();
+        public AudioManager AudioManager => InternalRuntime.Get<AudioManager>();
 
         /// <summary>
         ///     Gets the value of the graphic manager
         /// </summary>
 
-        public GraphicManager GraphicManager => Runtime.Get<GraphicManager>();
+        public GraphicManager GraphicManager => InternalRuntime.Get<GraphicManager>();
 
         /// <summary>
         ///     Gets the value of the input manager
         /// </summary>
 
-        public InputManager InputManager => Runtime.Get<InputManager>();
+        public InputManager InputManager => InternalRuntime.Get<InputManager>();
 
         /// <summary>
         ///     Gets the value of the network manager
         /// </summary>
 
-        public NetworkManager NetworkManager => Runtime.Get<NetworkManager>();
+        public NetworkManager NetworkManager => InternalRuntime.Get<NetworkManager>();
 
         /// <summary>
         ///     Gets the value of the physic manager
         /// </summary>
 
-        public PhysicManager PhysicManager => Runtime.Get<PhysicManager>();
+        public PhysicManager PhysicManager => InternalRuntime.Get<PhysicManager>();
 
         /// <summary>
         ///     Gets the value of the time manager
         /// </summary>
 
-        public TimeManager TimeManager => Runtime.Get<TimeManager>();
+        public TimeManager TimeManager => InternalRuntime.Get<TimeManager>();
 
         /// <summary>
         ///     The settings
@@ -160,7 +160,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         ///     Gets the value of the scene manager
         /// </summary>
 
-        public SceneManager SceneManager => Runtime.Get<SceneManager>();
+        public SceneManager SceneManager => InternalRuntime.Get<SceneManager>();
 
         /// <summary>
         ///     Exits this instance
