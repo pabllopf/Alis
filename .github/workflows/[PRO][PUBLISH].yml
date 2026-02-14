@@ -87,7 +87,7 @@ jobs:
           dotnet-version: '10.0.x'
           
       - name: Install Workloads
-        run: dotnet workload install wasm-tools wasm-experimental
+        run: dotnet workload install wasm-tools wasm-experimental wasm-tools-net9
 
       - name: Check disk space and clean if needed
         shell: bash
@@ -178,7 +178,7 @@ jobs:
           dotnet-version: '10.0.x'
       
       - name: Install Workloads
-        run: dotnet workload install wasm-tools wasm-experimental
+        run: dotnet workload install wasm-tools wasm-experimental wasm-tools-net9
 
       - name: Build Core (${{ matrix.group_name }})
         shell: bash
@@ -260,7 +260,7 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Install Workloads
-        run: dotnet workload install wasm-tools wasm-experimental
+        run: dotnet workload install wasm-tools wasm-experimental wasm-tools-net9
 
       - name: Restore dependencies
         run: dotnet restore alis.sln
@@ -354,7 +354,7 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Install Workloads
-        run: dotnet workload install wasm-tools wasm-experimental
+        run: dotnet workload install wasm-tools wasm-experimental wasm-tools-net9
 
       - name: Download all build artifacts
         uses: actions/download-artifact@v4
