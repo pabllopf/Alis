@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate Vector2F GetPointCallbackType(uint index, IntPtr userData);
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the shape create using the specified get point count
@@ -394,6 +394,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_drawShape(IntPtr cPointer, IntPtr shape, ref RenderStates.MarshalData states);
 
-        #endregion
+        
     }
 }

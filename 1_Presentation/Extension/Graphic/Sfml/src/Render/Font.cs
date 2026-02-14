@@ -236,7 +236,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
             public IntPtr Family;
         }
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the font create from file using the specified filename
@@ -345,6 +345,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern InfoMarshalData sfFont_getInfo(IntPtr cPointer);
 
-        #endregion
+        
     }
 }

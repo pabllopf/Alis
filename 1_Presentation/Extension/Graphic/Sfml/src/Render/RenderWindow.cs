@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="mode">Video mode to use</param>
         /// <param name="title">Title of the window</param>
         public RenderWindow(VideoMode mode, string title) :
-            this(mode, title, Styles.Default, new ContextSettings(0, 0))
+            this(mode, title, Windows.Styles.Default, new ContextSettings(0, 0))
         {
         }
 
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="mode">Video mode to use</param>
         /// <param name="title">Title of the window</param>
         /// <param name="style">Window style (Resize | Close by default)</param>
-        public RenderWindow(VideoMode mode, string title, Styles style) :
+        public RenderWindow(VideoMode mode, string title, Windows.Styles style) :
             this(mode, title, style, new ContextSettings(0, 0))
         {
         }
@@ -78,7 +78,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="title">Title of the window</param>
         /// <param name="style">Window style (Resize | Close by default)</param>
         /// <param name="settings">Creation parameters</param>
-        public RenderWindow(VideoMode mode, string title, Styles style, ContextSettings settings) :
+        public RenderWindow(VideoMode mode, string title, Windows.Styles style, ContextSettings settings) :
             base(IntPtr.Zero, 0)
         {
             // Copiar el string a un array de bytes UTF-32 terminado en null
@@ -713,7 +713,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
             GC.SuppressFinalize(myDefaultView);
         }
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the render window create using the specified mode
@@ -724,7 +724,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="params">The params</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfRenderWindow_create(VideoMode mode, string title, Styles style, ref ContextSettings @params);
+        private static extern IntPtr sfRenderWindow_create(VideoMode mode, string title, Windows.Styles style, ref ContextSettings @params);
 
         /// <summary>
         ///     Sfs the render window create unicode using the specified mode
@@ -735,7 +735,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="params">The params</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfRenderWindow_createUnicode(VideoMode mode, IntPtr title, Styles style, ref ContextSettings @params);
+        private static extern IntPtr sfRenderWindow_createUnicode(VideoMode mode, IntPtr title, Windows.Styles style, ref ContextSettings @params);
 
         /// <summary>
         ///     Sfs the render window create from handle using the specified handle
@@ -1118,6 +1118,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfRenderWindow_getFrameTime(IntPtr cPointer);
 
-        #endregion
+        
     }
 }

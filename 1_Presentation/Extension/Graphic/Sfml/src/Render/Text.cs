@@ -45,28 +45,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
     public class Text : Transformable, IDrawable
     {
         /// <summary>
-        ///     Enumerate the string drawing styles
-        /// </summary>
-        [Flags]
-        public enum Styles
-        {
-            /// <summary>Regular characters, no style</summary>
-            Regular = 0,
-
-            /// <summary>Bold characters</summary>
-            Bold = 1 << 0,
-
-            /// <summary>Italic characters</summary>
-            Italic = 1 << 1,
-
-            /// <summary>Underlined characters</summary>
-            Underlined = 1 << 2,
-
-            /// <summary>Strike through characters</summary>
-            StrikeThrough = 1 << 3
-        }
-
-        /// <summary>
         ///     The my font
         /// </summary>
         private Font myFont;
@@ -121,25 +99,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
 
             Font = copy.Font;
         }
-
-
-        /// <summary>
-        ///     Fill color of the object
-        /// </summary>
-        /// <remarks>
-        ///     Deprecated. Use <see cref="FillColor" /> instead.
-        ///     By default, the text's fill color is opaque white.
-        ///     Setting the fill color to a transparent color with an outline
-        ///     will cause the outline to be displayed in the fill area of the text.
-        /// </remarks>
-
-        [Obsolete]
-        public Color Color
-        {
-            get => sfText_getFillColor(CPointer);
-            set => sfText_setFillColor(CPointer, value);
-        }
-
 
         /// <summary>
         ///     Fill color of the object
@@ -373,7 +332,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
             sfText_destroy(CPointer);
         }
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the text create
@@ -600,6 +559,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern FloatRect sfText_getLocalBounds(IntPtr cPointer);
 
-        #endregion
+        
     }
 }

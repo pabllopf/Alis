@@ -123,7 +123,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <summary>Video mode depth, in bits per pixel</summary>
         public uint BitsPerPixel;
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the video mode get desktop mode
@@ -156,6 +156,6 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfVideoMode_isValid(VideoMode mode);
 
-        #endregion
+        
     }
 }

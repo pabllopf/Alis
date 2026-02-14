@@ -269,7 +269,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
             sfVertexBuffer_destroy(CPointer);
         }
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the vertex buffer create using the specified vertex count
@@ -408,6 +408,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_drawVertexBuffer(IntPtr cPointer, IntPtr vertexBuffer, ref RenderStates.MarshalData states);
 
-        #endregion
+        
     }
 }

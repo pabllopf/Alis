@@ -240,7 +240,7 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// </summary>
         private long microseconds;
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the seconds using the specified amount
@@ -290,6 +290,6 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern long sfTime_asMicroseconds(Time time);
 
-        #endregion
+        
     }
 }

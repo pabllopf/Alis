@@ -208,7 +208,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
             }
         }
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the view create
@@ -336,6 +336,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfView_zoom(IntPtr view, float factor);
 
-        #endregion
+        
     }
 }

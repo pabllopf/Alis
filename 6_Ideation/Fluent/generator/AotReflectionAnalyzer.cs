@@ -434,7 +434,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
             }
         }
 
-        #region Helpers
+        
 
         /// <summary>
         ///     Reports the context
@@ -593,6 +593,6 @@ namespace Alis.Core.Aspect.Fluent.Generator
             return false;
         }
 
-        #endregion
+        
     }
 }
