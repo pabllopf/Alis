@@ -9,80 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{0F6E
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "application", "application", "{A1B35FDA-66DC-4C35-B80D-114770163610}"
-	ProjectSection(SolutionItems) = preProject
-		.config\application\AllowUnsafeBlocks.props = .config\application\AllowUnsafeBlocks.props
-		.config\application\LangVersion.props = .config\application\LangVersion.props
-		.config\application\OutputType.props = .config\application\OutputType.props
-		.config\application\Runtimes.props = .config\application\Runtimes.props
-		.config\application\SelfContained.props = .config\application\SelfContained.props
-		.config\application\Optimize.props = .config\application\Optimize.props
-		.config\application\Nullable.props = .config\application\Nullable.props
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assembly", "assembly", "{9444A5E5-647C-451D-97B2-0C480EA31258}"
-	ProjectSection(SolutionItems) = preProject
-		.config\assembly\Company.props = .config\assembly\Company.props
-		.config\assembly\FileVersion.props = .config\assembly\FileVersion.props
-		.config\assembly\NeutralLanguage.props = .config\assembly\NeutralLanguage.props
-		.config\assembly\Product.props = .config\assembly\Product.props
-		.config\assembly\InternalsVisibleTo.props = .config\assembly\InternalsVisibleTo.props
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{0B0C39B0-DF36-4782-9B28-0902A4927D78}"
-	ProjectSection(SolutionItems) = preProject
-		.config\docs\Docs.props = .config\docs\Docs.props
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "builds", "builds", "{7211F41D-27C7-461A-954A-7010BAD3DE1F}"
-	ProjectSection(SolutionItems) = preProject
-		.config\builds\NoWarn.props = .config\builds\NoWarn.props
-		.config\builds\TreatWarningsAsErrors.props = .config\builds\TreatWarningsAsErrors.props
-		.config\builds\WarningLevel.props = .config\builds\WarningLevel.props
-		.config\builds\WarningsAsErrors.props = .config\builds\WarningsAsErrors.props
-		.config\builds\SuppressTfmSupportBuildWarnings.props = .config\builds\SuppressTfmSupportBuildWarnings.props
-		.config\builds\PublishTrimmed.props = .config\builds\PublishTrimmed.props
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{F90708CD-3588-499D-93D9-78DF2AA56C86}"
-	ProjectSection(SolutionItems) = preProject
-		.config\nuget\Authors.props = .config\nuget\Authors.props
-		.config\nuget\Copyright.props = .config\nuget\Copyright.props
-		.config\nuget\Description.props = .config\nuget\Description.props
-		.config\nuget\DocumentationFile.props = .config\nuget\DocumentationFile.props
-		.config\nuget\FileVersion.props = .config\nuget\FileVersion.props
-		.config\nuget\GeneratePackageOnBuild.props = .config\nuget\GeneratePackageOnBuild.props
-		.config\nuget\InformationalVersion.props = .config\nuget\InformationalVersion.props
-		.config\nuget\Packable.props = .config\nuget\Packable.props
-		.config\nuget\PackageIcon.props = .config\nuget\PackageIcon.props
-		.config\nuget\PackageLicenseFile.props = .config\nuget\PackageLicenseFile.props
-		.config\nuget\PackageProjectUrl.props = .config\nuget\PackageProjectUrl.props
-		.config\nuget\PackageReleaseNotes.props = .config\nuget\PackageReleaseNotes.props
-		.config\nuget\PackageRequireLicenseAcceptance.props = .config\nuget\PackageRequireLicenseAcceptance.props
-		.config\nuget\PackageTags.props = .config\nuget\PackageTags.props
-		.config\nuget\PackageVersion.props = .config\nuget\PackageVersion.props
-		.config\nuget\RepositoryType.props = .config\nuget\RepositoryType.props
-		.config\nuget\RepositoryUrl.props = .config\nuget\RepositoryUrl.props
-		.config\nuget\Title.props = .config\nuget\Title.props
-		.config\nuget\Version.props = .config\nuget\Version.props
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "reference", "reference", "{8285E72E-D64B-400F-B220-257546B7F22B}"
-	ProjectSection(SolutionItems) = preProject
-		.config\reference\Packages.props = .config\reference\Packages.props
-		.config\reference\Projects.props = .config\reference\Projects.props
-		.config\reference\AssetFolder.props = .config\reference\AssetFolder.props
-		.config\reference\ContentFiles.props = .config\reference\ContentFiles.props
-		.config\reference\EmbeddedResources.props = .config\reference\EmbeddedResources.props
-		.config\reference\DataFolder.props = .config\reference\DataFolder.props
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "target", "target", "{F025DB85-A618-4B9B-BE22-ACF53063C9FA}"
-	ProjectSection(SolutionItems) = preProject
-		.config\target\AfterBuild.props = .config\target\AfterBuild.props
-		.config\target\BeforeBuild.props = .config\target\BeforeBuild.props
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{18D887C5-16C4-4B00-95FC-DC5B630309A0}"
 	ProjectSection(SolutionItems) = preProject
 		changelog.md = changelog.md
@@ -167,14 +93,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{2D95A184-C
 		license.md = license.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7D733040-0257-4FA9-885A-58637AFE5652}"
-	ProjectSection(SolutionItems) = preProject
-		.config\test\ExcludeFromCodeCoverage.props = .config\test\ExcludeFromCodeCoverage.props
-		.config\test\InternalsVisibleTo.props = .config\test\InternalsVisibleTo.props
-		.config\test\SonarQubeExclude.props = .config\test\SonarQubeExclude.props
-		.config\test\ParallelExe.props = .config\test\ParallelExe.props
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "default", "default", "{C1DB2A5F-48E8-45EF-9BE5-6A584CE7EE11}"
 	ProjectSection(SolutionItems) = preProject
 		.config\default\default_app_csproj.props = .config\default\default_app_csproj.props
@@ -183,6 +101,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "default", "default", "{C1DB
 		.config\default\default_generator_csproj.props = .config\default\default_generator_csproj.props
 		.config\default\default_sample_csproj.props = .config\default\default_sample_csproj.props
 		.config\default\default_test_csproj.props = .config\default\default_test_csproj.props
+		.config\default\default_sample_web_csproj.props = .config\default\default_sample_web_csproj.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "target", "target", "{FA0F4EDA-967B-4CA9-A0A6-EFA80E43D6B1}"
+	ProjectSection(SolutionItems) = preProject
+		.config\target\alis.targets = .config\target\alis.targets
 	EndProjectSection
 EndProject
 Global
@@ -204,20 +128,13 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A1B35FDA-66DC-4C35-B80D-114770163610} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
-		{9444A5E5-647C-451D-97B2-0C480EA31258} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
-		{0B0C39B0-DF36-4782-9B28-0902A4927D78} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
-		{7211F41D-27C7-461A-954A-7010BAD3DE1F} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
-		{F90708CD-3588-499D-93D9-78DF2AA56C86} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
-		{8285E72E-D64B-400F-B220-257546B7F22B} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
-		{F025DB85-A618-4B9B-BE22-ACF53063C9FA} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
 		{CDB74D6E-4B2E-4FDA-8239-B8C6C1C47059} = {6E102FFE-9727-458C-9361-4588C4157572}
 		{063D29E8-51CF-4155-B23F-8510CA62512A} = {6E102FFE-9727-458C-9361-4588C4157572}
 		{CF7DBB5E-6C12-4E8D-AA2D-F862A024CDFB} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
 		{020BC1B3-A88C-4938-AF9C-E35A4BEBDF72} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
 		{015EBC6B-559D-4454-9DB0-8E2D42CBBE34} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
-		{7D733040-0257-4FA9-885A-58637AFE5652} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
 		{C1DB2A5F-48E8-45EF-9BE5-6A584CE7EE11} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
+		{FA0F4EDA-967B-4CA9-A0A6-EFA80E43D6B1} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}
