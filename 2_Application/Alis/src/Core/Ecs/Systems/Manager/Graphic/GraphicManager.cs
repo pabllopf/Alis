@@ -128,19 +128,37 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
 #else
             platform = null;
 #endif
-            
-            platform.Initialize((int) Context.Setting.Graphic.WindowSize.X, (int) Context.Setting.Graphic.WindowSize.Y, Context.Setting.General.Name);
-            platform.MakeContextCurrent();
-            Gl.Initialize(platform.GetProcAddress);
-            //Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
-            //Gl.GlEnable(EnableCap.DepthTest);
-
-
-            platform.SetTitle(Context.Setting.General.Name);
-
-            if (Context.Setting.General.Icon != null)
+            if (Context.Setting.Graphic.WindowSize != default)
             {
-                platform.SetWindowIcon(AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon));  
+                platform.Initialize((int) Context.Setting.Graphic.WindowSize.X, (int) Context.Setting.Graphic.WindowSize.Y, "Alis Game");
+            }
+            else
+            {
+                platform.Initialize(800, 600, "Alis Game");
+            }
+           
+            
+            platform.MakeContextCurrent();
+            
+            Gl.Initialize(platform.GetProcAddress);
+            
+            if (!string.IsNullOrEmpty(Context.Setting.General.Name))
+            {
+                platform.SetTitle(Context.Setting.General.Name);
+            }
+            else
+            {
+                platform.SetTitle("Alis Game");
+            }
+            
+
+            if (!string.IsNullOrEmpty(Context.Setting.General.Icon))
+            {
+                if (AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon) != null)
+                {
+                    platform.SetWindowIcon(AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon));  
+                }
+               
             }
             
             platform.ShowWindow();

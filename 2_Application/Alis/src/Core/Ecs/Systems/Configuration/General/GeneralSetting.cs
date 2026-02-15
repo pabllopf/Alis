@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs.Systems.Configuration.General
         string version = "0.0.0",
         string author = "Pablo Perdomo Falcón",
         string license = "GPL-3.0 license",
-        string icon = "app.bmp") : IGeneralSetting, IJsonSerializable, IJsonDesSerializable<GeneralSetting>
+        string icon = "app.ico") : IGeneralSetting, IJsonSerializable, IJsonDesSerializable<GeneralSetting>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="GeneralSetting" /> class
