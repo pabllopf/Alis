@@ -20,7 +20,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <AssemblyVersion>0.8.9</AssemblyVersion>
+        <AssemblyVersion>0.9.0</AssemblyVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)'=='Debug'">
