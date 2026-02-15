@@ -30,7 +30,7 @@
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Components;
 
-namespace Alis.Sample.Asteroid
+namespace Alis.Sample.Asteroid.Desktop
 {
     /// <summary>
     ///     The bullet class

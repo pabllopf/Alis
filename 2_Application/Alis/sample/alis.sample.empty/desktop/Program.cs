@@ -29,7 +29,7 @@
 
 using Alis.Core.Ecs.Systems;
 
-namespace Alis.Sample.Desktop
+namespace Alis.Sample.Empty.Desktop
 {
     /// <summary>
     ///     The program class

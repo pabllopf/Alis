@@ -34,7 +34,7 @@ using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Systems.Scope;
 
-namespace Alis.Sample.Flappy.Bird
+namespace Alis.Sample.Flappy.Bird.Desktop
 {
     /// <summary>
     ///     The death zone class

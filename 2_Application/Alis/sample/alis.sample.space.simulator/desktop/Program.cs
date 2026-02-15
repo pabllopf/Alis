@@ -30,7 +30,7 @@
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Systems;
 
-namespace Alis.Sample.Space.Simulator
+namespace Alis.Sample.Space.Simulator.Desktop
 {
     /// <summary>
     ///     The program class

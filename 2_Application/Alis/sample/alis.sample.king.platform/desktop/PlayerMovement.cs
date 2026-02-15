@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
 
-namespace Alis.Sample.King.Platform
+namespace Alis.Sample.King.Platform.Desktop
 {
     /// <summary>
     ///     The player movement

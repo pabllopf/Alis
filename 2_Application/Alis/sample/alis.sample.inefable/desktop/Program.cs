@@ -31,7 +31,7 @@ using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems;
 
-namespace Alis.Sample.Inefable
+namespace Alis.Sample.Inefable.Desktop
 {
     /// <summary>
     ///     The program class

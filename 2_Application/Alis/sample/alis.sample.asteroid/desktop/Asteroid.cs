@@ -29,7 +29,7 @@
 
 using Alis.Core.Aspect.Fluent.Components;
 
-namespace Alis.Sample.Asteroid
+namespace Alis.Sample.Asteroid.Desktop
 {
     /// <summary>
     ///     The asteroid class

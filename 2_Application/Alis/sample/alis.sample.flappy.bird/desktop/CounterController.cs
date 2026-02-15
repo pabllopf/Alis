@@ -32,7 +32,7 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Components.Audio;
 
-namespace Alis.Sample.Flappy.Bird
+namespace Alis.Sample.Flappy.Bird.Desktop
 {
     /// <summary>
     ///     The counter controller class
