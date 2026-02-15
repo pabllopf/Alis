@@ -1,6 +1,7 @@
 <Project>
 
     <PropertyGroup>
+        
         <!-- Deriva el nombre del ensamblado a partir del archivo .targets -->
         <_PackageAssemblyName>$(MSBuildThisFileName)</_PackageAssemblyName>
         <_PackageAssemblyName>$([System.IO.Path]::GetFileNameWithoutExtension($(_PackageAssemblyName)))</_PackageAssemblyName>
@@ -78,7 +79,7 @@
     </PropertyGroup>
 
     
-    <Target Name="GenerateGitattributesForBrowserWasm" BeforeTargets="Restore;Build;Publish">
+    <Target Name="GenerateGitattributesForBrowserWasm" BeforeTargets="CoreCompile" Condition="$(NoAutoGenerateFiles) != 'true'">
         <WriteLinesToFile
             Condition="'$(IsBrowserWasm)' == 'true'"
             File="$(MSBuildProjectDirectory)/.gitattributes"
@@ -339,7 +340,7 @@ namespace $(RootNamespace)
 
     const config = getConfig()%3b
     const exports = await getAssemblyExports(config.mainAssemblyName)%3b
-    const interop = exports.Alis.Sample.Web.Interop%3b
+    const interop = exports.$(RootNamespace).Interop%3b
 
     var canvas = globalThis.document.getElementById("canvas")%3b
     dotnet.instance.Module["canvas"] = canvas%3b
@@ -580,24 +581,10 @@ namespace $(RootNamespace)
         <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/index.html" />
         <Delete Condition="'$(IsBrowserWasm)' == 'false'" Files="$(MSBuildProjectDirectory)/runtimeconfig.template.json" />
 
-        <ItemGroup  Condition="'$(IsBrowserWasm)' == 'true'" >
-            <None Include="$(MSBuildProjectDirectory)/.gitattributes" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
-            <None Include="$(MSBuildProjectDirectory)/.nojekyll" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
-
-            <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/index.html" />
-            <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/main.js" />
-
-            <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/libEGL.c" ScanForPInvokes="true" />
-            <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/openal32.c" ScanForPInvokes="true" />
-            <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/emscripten.c" ScanForPInvokes="true" />
-
-            <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/Assets/**" TargetPath="Assets/%(RecursiveDir)%(Filename)%(Extension)" />
-
-            <PackageReference Include="CoroutineScheduler" Version="0.3.0" />
-        </ItemGroup>
+     
     </Target>
 
-    <PropertyGroup Condition="'$(IsBrowserWasm)' == 'true'">
+    <PropertyGroup Condition="'$(IsBrowserWasm)' == 'true' AND $(NoAutoGenerateFiles) != 'true'">
         <IsAotCompatible>true</IsAotCompatible>
         <NoWarn>$(NoWarn);RCS1090</NoWarn>
         <InvariantGlobalization>true</InvariantGlobalization>
@@ -610,9 +597,29 @@ namespace $(RootNamespace)
         <RunAOTCompilation>true</RunAOTCompilation>
     </PropertyGroup>
 
+    <ItemGroup  Condition="'$(IsBrowserWasm)' == 'true' AND $(NoAutoGenerateFiles) != 'true'">
+        <None Include="$(MSBuildProjectDirectory)/.gitattributes" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
+        <None Include="$(MSBuildProjectDirectory)/.nojekyll" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
 
-  
-    
+        <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/index.html" />
+        <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/main.js" />
+
+        <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/libEGL.c" ScanForPInvokes="true" />
+        <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/openal32.c" ScanForPInvokes="true" />
+        <NativeFileReference Include="$(MSBuildProjectDirectory)/Native/emscripten.c" ScanForPInvokes="true" />
+
+        <WasmExtraFilesToDeploy Include="$(MSBuildProjectDirectory)/Assets/**" TargetPath="Assets/%(RecursiveDir)%(Filename)%(Extension)" />
+
+        <PackageReference Include="CoroutineScheduler" Version="0.3.0" />
+    </ItemGroup>
+
+
+
+    <ItemGroup Condition="'$(IsBrowserWasm)' == 'true' AND $(NoAutoGenerateFiles) != 'true'">
+        <Compile Include="$(MSBuildProjectDirectory)/EntryPoint.cs" Visible="false"  />
+        <Compile Include="$(MSBuildProjectDirectory)/Game.cs" Visible="false"  />
+        <Compile Include="$(MSBuildProjectDirectory)/Interop.cs" Visible="false" />
+    </ItemGroup>
 
   
 </Project>

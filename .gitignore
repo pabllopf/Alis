@@ -64,6 +64,8 @@
 *.svd
 *.pdb
 *.deb
+*.gitattributes
+*.nojekyll
 *.tar
 *.mdb
 *.opendb
