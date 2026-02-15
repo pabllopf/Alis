@@ -91,17 +91,16 @@ namespace Alis.Sample.Asteroid.Desktop
                                 .Scale(1, 1)
                                 .Rotation(0)
                             )
-                            .WithComponent(new SpawnAsteroid())
                         )
                         .Add<GameObject>(counterPoints => counterPoints
                             .Name("Counter")
                             .Tag("Points")
-                            .WithComponent(new CounterManager())
+                   
                         )
                         .Add<GameObject>(counterPoints => counterPoints
                             .Name("HealthController")
                             .Tag("HealthController")
-                            .WithComponent(new HealthController())
+                 
                         )
 
                         // SOUNDTRACK
@@ -146,7 +145,7 @@ namespace Alis.Sample.Asteroid.Desktop
                                 .FixedRotation(false)
                                 .IgnoreGravity(true)
                             )
-                            .WithComponent(new Player())
+                       
                         )
                         .Add<GameObject>(sound => sound
                             .Name("SoundPlayer")
