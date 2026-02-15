@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.8.9] - 2026-02-15
+### :sparkles: New Features
+- [`d3ed7b5`](https://github.com/pabllopf/Alis/commit/d3ed7b5fc3bf20dcaa6af2abe1e16eecb44423de) - Add preview mode and collider debug rendering *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5a0d491`](https://github.com/pabllopf/Alis/commit/5a0d491b21d32c942ff336c2b76fd4aee2e0f400) - Enable alpha blending for sprite draws *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aa7631e`](https://github.com/pabllopf/Alis/commit/aa7631e16816101da2ccb15e3aae902bfce74621) - Reorganize sample projects into desktop/web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ee9c969`](https://github.com/pabllopf/Alis/commit/ee9c969c66bed9e0579c7777a498f04daf03e61c) - Clean solution and centralize sample web props *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.8.8] - 2026-02-11
 ### :bug: Bug Fixes
 - [`71d707f`](https://github.com/pabllopf/Alis/commit/71d707fc6dd976078f7db3a09c106c5ee3e8a80e) - Remove extra blank line in .config/target/alis.targets *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -5615,3 +5623,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.8.6]: https://github.com/pabllopf/Alis/compare/v0.8.5...v0.8.6
 [v0.8.7]: https://github.com/pabllopf/Alis/compare/v0.8.6...v0.8.7
 [v0.8.8]: https://github.com/pabllopf/Alis/compare/v0.8.7...v0.8.8
+[v0.8.9]: https://github.com/pabllopf/Alis/compare/v0.8.8...v0.8.9
