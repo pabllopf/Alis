@@ -555,6 +555,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "android", "android", "{EFA9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Asteroid.Android", "2_Application\Alis\sample\alis.sample.asteroid\android\Alis.Sample.Asteroid.Android.csproj", "{9C95377A-521A-4F14-A23A-6F268D6E1198}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ios", "ios", "{834A6BAE-C24F-4FAC-A8BA-A01DD03CB6E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Asteroid.IOS", "2_Application\Alis\sample\alis.sample.asteroid\ios\Alis.Sample.Asteroid.IOS\Alis.Sample.Asteroid.IOS.csproj", "{BF63E0C6-B206-4179-A947-089B69DDC7E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -3229,6 +3233,26 @@ Global
 		{9C95377A-521A-4F14-A23A-6F268D6E1198}.Release|OsxArm64.Build.0 = Release|Any CPU
 		{9C95377A-521A-4F14-A23A-6F268D6E1198}.Release|Winx64.ActiveCfg = Release|Any CPU
 		{9C95377A-521A-4F14-A23A-6F268D6E1198}.Release|Winx64.Build.0 = Release|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Debug|x64.Build.0 = Debug|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Debug|x86.Build.0 = Debug|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Debug|OsxArm64.ActiveCfg = Debug|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Debug|OsxArm64.Build.0 = Debug|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Debug|Winx64.ActiveCfg = Debug|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Debug|Winx64.Build.0 = Debug|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Release|x64.ActiveCfg = Release|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Release|x64.Build.0 = Release|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Release|x86.ActiveCfg = Release|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Release|x86.Build.0 = Release|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Release|OsxArm64.ActiveCfg = Release|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Release|OsxArm64.Build.0 = Release|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Release|Winx64.ActiveCfg = Release|Any CPU
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6}.Release|Winx64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -3458,6 +3482,8 @@ Global
 		{78268E1A-8096-48B4-8846-5ED696FF3326} = {33BF1025-FF7D-AD1D-0D92-B7ACD9995B3D}
 		{EFA9585B-C7DC-4C18-A8BC-964B9544F00D} = {1D4F931A-7BF9-928F-A69C-3A36D7E4F7F3}
 		{9C95377A-521A-4F14-A23A-6F268D6E1198} = {EFA9585B-C7DC-4C18-A8BC-964B9544F00D}
+		{834A6BAE-C24F-4FAC-A8BA-A01DD03CB6E3} = {1D4F931A-7BF9-928F-A69C-3A36D7E4F7F3}
+		{BF63E0C6-B206-4179-A947-089B69DDC7E6} = {834A6BAE-C24F-4FAC-A8BA-A01DD03CB6E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}

@@ -1,9 +1,9 @@
 using Android.App;
-using Android.OS;
 using Android.Content;
 using Android.Opengl;
-using Java.Nio;
+using Android.OS;
 using Android.Util;
+using Java.Nio;
 
 namespace Alis.Sample.Asteroid.Android
 {
