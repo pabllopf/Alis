@@ -8,25 +8,31 @@ public class SceneDelegate : UIResponder, IUIWindowSceneDelegate
     [Export("scene:willConnectToSession:options:")]
     public void WillConnect(UIScene scene, UISceneSession session, UISceneConnectionOptions connectionOptions)
     {
-        // Use this method to optionally configure and attach the UIWindow 'Window' to the provided UIWindowScene 'scene'.
-        // Since we are not using a storyboard, the 'Window' property needs to be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see UIApplicationDelegate 'GetConfiguration' instead).
+        System.Diagnostics.Debug.WriteLine($"[SceneDelegate] WillConnect - UIScene: {scene}, UIWindowScene: {scene is UIWindowScene}");
         if (scene is UIWindowScene windowScene)
         {
             Window ??= new UIWindow(windowScene);
-
-            // Create a 'UIViewController' with a single 'UILabel'
-            var vc = new UIViewController();
-            vc.View!.AddSubview(new UILabel(Window!.Frame)
+            System.Diagnostics.Debug.WriteLine($"[SceneDelegate] Creando vista principal con bounds: {Window!.Bounds}");
+            UIView mainView;
+            if (ObjCRuntime.Runtime.Arch == ObjCRuntime.Arch.SIMULATOR)
             {
-                BackgroundColor = UIColor.SystemBackground,
-                TextAlignment = UITextAlignment.Center,
-                Text = "Hello, iOS!",
-                AutoresizingMask = UIViewAutoresizing.All,
-            });
-
-            Window.RootViewController = vc;
+                System.Diagnostics.Debug.WriteLine("[SceneDelegate] Usando MetalBlueView (simulador)");
+                mainView = new MetalBlueView(Window!.Bounds);
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("[SceneDelegate] Usando GLView (dispositivo real)");
+                mainView = new GLView(Window!.Bounds);
+            }
+            Window.RootViewController = new UIViewController { View = mainView };
             Window.MakeKeyAndVisible();
+            Window.RootViewController.View.SetNeedsLayout();
+            Window.RootViewController.View.LayoutIfNeeded();
+            System.Diagnostics.Debug.WriteLine("[SceneDelegate] Layout forzado tras asignar vista principal");
+        }
+        else
+        {
+            System.Diagnostics.Debug.WriteLine("[SceneDelegate] ERROR: scene no es UIWindowScene");
         }
     }
 
