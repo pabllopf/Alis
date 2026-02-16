@@ -1,3 +1,5 @@
+using UIKit;
+
 namespace Alis.Sample.Asteroid.IOS
 {
     public static class Program

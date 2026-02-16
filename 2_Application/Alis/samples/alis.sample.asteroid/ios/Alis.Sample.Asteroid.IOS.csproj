@@ -3,12 +3,31 @@
         <TargetFramework>net10.0-ios</TargetFramework>
         <OutputType>Exe</OutputType>
         <Nullable>enable</Nullable>
-        <ImplicitUsings>true</ImplicitUsings>
-        <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/</OutDir>
         <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
     </PropertyGroup>
+    
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
         <CodesignKey>Apple Development: pabllopf2@gmail.com (CY8H4S7W7N)</CodesignKey>
         <IOSDebugOverWiFi>true</IOSDebugOverWiFi>
     </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="
+            $(SolutionDir)2_Application/Alis/src/Alis.csproj;
+            $(SolutionDir)3_Structuration/Core/src/Alis.Core.csproj;
+            $(SolutionDir)4_Operation/Audio/src/Alis.Core.Audio.csproj;
+            $(SolutionDir)4_Operation/Graphic/src/Alis.Core.Graphic.csproj;
+            $(SolutionDir)4_Operation/Ecs/src/Alis.Core.Ecs.csproj;
+            $(SolutionDir)4_Operation/Physic/src/Alis.Core.Physic.csproj;
+            $(SolutionDir)5_Declaration/Aspect/src/Alis.Core.Aspect.csproj;
+            $(SolutionDir)6_Ideation/Data/src/Alis.Core.Aspect.Data.csproj;
+            $(SolutionDir)6_Ideation/Fluent/src/Alis.Core.Aspect.Fluent.csproj;
+            $(SolutionDir)6_Ideation/Logging/src/Alis.Core.Aspect.Logging.csproj;
+            $(SolutionDir)6_Ideation/Math/src/Alis.Core.Aspect.Math.csproj;
+            $(SolutionDir)6_Ideation/Memory/src/Alis.Core.Aspect.Memory.csproj;
+            $(SolutionDir)6_Ideation/Time/src/Alis.Core.Aspect.Time.csproj;
+        ">
+            <Properties>TargetFramework=netstandard2.0</Properties>
+        </ProjectReference>
+    </ItemGroup>
 </Project>

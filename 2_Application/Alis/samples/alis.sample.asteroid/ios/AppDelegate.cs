@@ -1,3 +1,6 @@
+using Foundation;
+using UIKit;
+
 namespace Alis.Sample.Asteroid.IOS;
 
 [Register("AppDelegate")]
