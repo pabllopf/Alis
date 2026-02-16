@@ -320,6 +320,9 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
         }
 
+        /// <summary>
+        /// Renders the preview
+        /// </summary>
         private void RenderPreview()
         {
             float pixelsPerMeter = PixelsPerMeter;

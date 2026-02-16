@@ -21,7 +21,7 @@ find "$BASE_DIR" -type f -iname "*.wav" | while read -r file; do
     duration=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$file")
     duration=${duration%.*}
 
-    ffmpeg -y -i "$file" -ac 1 -ar 16000 -acodec adpcm_ms "$temp" -hide_banner -loglevel error
+    ffmpeg -y -i "$file" -ac 1 -ar 16000 -acodec pcm_s16le "$temp" -hide_banner -loglevel error
 
     # Verificar creación
     if [ ! -f "$temp" ]; then

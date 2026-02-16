@@ -29,26 +29,62 @@
 
 using System;
 using System.IO;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Memory;
 using Alis.Core.Audio.Interfaces;
 using Alis.Core.Audio.Players;
 
 namespace Alis.Core.Audio.Players
 {
+    /// <summary>
+    /// The browser player class
+    /// </summary>
+    /// <seealso cref="IPlayer"/>
     internal class BrowserPlayer : IPlayer
     {
+        /// <summary>
+        /// The device
+        /// </summary>
         private IntPtr _device;
+        /// <summary>
+        /// The context
+        /// </summary>
         private IntPtr _context;
+        /// <summary>
+        /// The source
+        /// </summary>
         private uint _source;
+        /// <summary>
+        /// The buffer
+        /// </summary>
         private uint _buffer;
+        /// <summary>
+        /// The playing
+        /// </summary>
         private bool _playing;
+        /// <summary>
+        /// The paused
+        /// </summary>
         private bool _paused;
 
+        /// <summary>
+        /// Gets the value of the playing
+        /// </summary>
         public bool Playing => _playing;
+        /// <summary>
+        /// Gets the value of the paused
+        /// </summary>
         public bool Paused => _paused;
         public event EventHandler PlaybackFinished;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BrowserPlayer"/> class
+        /// </summary>
+        /// <exception cref="Exception">No se pudo abrir el dispositivo OpenAL</exception>
+        /// <exception cref="Exception">No se pudo activar el contexto OpenAL</exception>
+        /// <exception cref="Exception">No se pudo crear el contexto OpenAL</exception>
         public BrowserPlayer()
         {
             Console.WriteLine("[BrowserPlayer] Inicializando OpenAL...");
@@ -68,16 +104,27 @@ namespace Alis.Core.Audio.Players
             Console.WriteLine($"[BrowserPlayer] Buffer generado: {_buffer}");
         }
 
+        /// <summary>
+        /// Plays the file name
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="Exception">Formato WAV no soportado</exception>
         public async Task Play(string fileName)
         {
             Console.WriteLine($"[BrowserPlayer] Play: {fileName}");
-            if (!File.Exists(fileName))
+            byte[] wavData = null;
+            using (var stream = AssetRegistry.GetResourceMemoryStreamByName(fileName))
             {
-                Console.WriteLine($"[BrowserPlayer] Archivo no encontrado: {fileName}");
-                throw new FileNotFoundException(fileName);
+                if (stream == null)
+                {
+                    Console.WriteLine($"[BrowserPlayer] Recurso no encontrado: {fileName}");
+                    throw new FileNotFoundException(fileName);
+                }
+                wavData = new byte[stream.Length];
+                await stream.ReadAsync(wavData, 0, (int)stream.Length);
+                Console.WriteLine($"[BrowserPlayer] Tamaño del recurso: {wavData.Length}");
             }
-            byte[] wavData = File.ReadAllBytes(fileName);
-            Console.WriteLine($"[BrowserPlayer] Tamaño del archivo: {wavData.Length}");
             int dataOffset, dataSize, freq, format;
             if (!TryParseWav(wavData, out dataOffset, out dataSize, out freq, out format))
             {
@@ -104,12 +151,20 @@ namespace Alis.Core.Audio.Players
             }
         }
 
+        /// <summary>
+        /// Plays the loop using the specified file name
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        /// <param name="loop">The loop</param>
         public Task PlayLoop(string fileName, bool loop)
         {
             // No implementado: se puede usar alSourcei(_source, AL_LOOPING, 1)
             return Play(fileName);
         }
 
+        /// <summary>
+        /// Pauses this instance
+        /// </summary>
         public Task Pause()
         {
             OpenAl.alSourceStop(_source);
@@ -118,6 +173,9 @@ namespace Alis.Core.Audio.Players
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Resumes this instance
+        /// </summary>
         public Task Resume()
         {
             OpenAl.alSourcePlay(_source);
@@ -126,6 +184,9 @@ namespace Alis.Core.Audio.Players
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Stops this instance
+        /// </summary>
         public Task Stop()
         {
             OpenAl.alSourceStop(_source);
@@ -134,27 +195,84 @@ namespace Alis.Core.Audio.Players
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Sets the volume using the specified percent
+        /// </summary>
+        /// <param name="percent">The percent</param>
         public Task SetVolume(byte percent)
         {
             // No implementado: se puede usar alSourcef(_source, AL_GAIN, percent/100f)
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Tries the parse wav using the specified wav
+        /// </summary>
+        /// <param name="wav">The wav</param>
+        /// <param name="dataOffset">The data offset</param>
+        /// <param name="dataSize">The data size</param>
+        /// <param name="freq">The freq</param>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         private bool TryParseWav(byte[] wav, out int dataOffset, out int dataSize, out int freq, out int format)
         {
-            // Simple WAV PCM 16bit mono/stereo parser
+            // Parser WAV extendido: muestra todos los campos fmt, chunks, y sugiere conversión si es comprimido
             dataOffset = 0; dataSize = 0; freq = 0; format = 0;
-            if (wav.Length < 44) return false;
-            if (wav[0] != 'R' || wav[1] != 'I' || wav[2] != 'F' || wav[3] != 'F') return false;
-            if (wav[8] != 'W' || wav[9] != 'A' || wav[10] != 'V' || wav[11] != 'E') return false;
-            int channels = BitConverter.ToInt16(wav, 22);
-            freq = BitConverter.ToInt32(wav, 24);
-            int bits = BitConverter.ToInt16(wav, 34);
-            int pos = 12;
+            if (wav.Length < 44)
+            {
+                Console.WriteLine($"[WAV] Archivo demasiado pequeño: {wav.Length} bytes");
+                return false;
+            }
+            if (wav[0] != 'R' || wav[1] != 'I' || wav[2] != 'F' || wav[3] != 'F')
+            {
+                Console.WriteLine("[WAV] No es un archivo RIFF");
+                return false;
+            }
+            if (wav[8] != 'W' || wav[9] != 'A' || wav[10] != 'V' || wav[11] != 'E')
+            {
+                Console.WriteLine("[WAV] No es un archivo WAVE");
+                return false;
+            }
+            // Buscar chunk 'fmt '
+            int fmtPos = 12;
+            int fmtSize = 0;
+            while (fmtPos < wav.Length - 8)
+            {
+                string chunkId = System.Text.Encoding.ASCII.GetString(wav, fmtPos, 4);
+                int chunkSize = BitConverter.ToInt32(wav, fmtPos + 4);
+                if (chunkId == "fmt ")
+                {
+                    fmtSize = chunkSize;
+                    break;
+                }
+                fmtPos += 8 + chunkSize;
+            }
+            if (fmtSize == 0)
+            {
+                Console.WriteLine("[WAV] No se encontró chunk 'fmt '");
+                return false;
+            }
+            int audioFormat = BitConverter.ToInt16(wav, fmtPos + 8);
+            int channels = BitConverter.ToInt16(wav, fmtPos + 10);
+            freq = BitConverter.ToInt32(wav, fmtPos + 12);
+            int byteRate = BitConverter.ToInt32(wav, fmtPos + 16);
+            int blockAlign = BitConverter.ToInt16(wav, fmtPos + 20);
+            int bits = BitConverter.ToInt16(wav, fmtPos + 22);
+            int extraSize = (fmtSize > 16) ? BitConverter.ToInt16(wav, fmtPos + 24) : 0;
+            Console.WriteLine($"[WAV] audioFormat: {audioFormat}, Canales: {channels}, Frecuencia: {freq}, Bits: {bits}, ByteRate: {byteRate}, BlockAlign: {blockAlign}, ExtraSize: {extraSize}");
+            if (audioFormat != 1)
+            {
+                Console.WriteLine($"[WAV] Formato comprimido no soportado: {audioFormat} (solo PCM=1)");
+                Console.WriteLine("[WAV] SUGERENCIA: Convierte el archivo WAV a PCM 16 bits usando Audacity, ffmpeg o sox.");
+                return false;
+            }
+            // Buscar chunk 'data', ignorando chunks extra
+            int pos = fmtPos + 8 + fmtSize;
             while (pos < wav.Length - 8)
             {
                 string chunkId = System.Text.Encoding.ASCII.GetString(wav, pos, 4);
                 int chunkSize = BitConverter.ToInt32(wav, pos + 4);
+                Console.WriteLine($"[WAV] Chunk: {chunkId}, Size: {chunkSize}, Pos: {pos}");
                 if (chunkId == "data")
                 {
                     dataOffset = pos + 8;
@@ -163,14 +281,39 @@ namespace Alis.Core.Audio.Players
                 }
                 pos += 8 + chunkSize;
             }
-            if (dataOffset == 0 || dataSize == 0) return false;
+            if (dataOffset == 0 || dataSize == 0)
+            {
+                Console.WriteLine("[WAV] No se encontró chunk 'data'");
+                return false;
+            }
+            // Soportar PCM 8/16 bits
             if (bits == 16)
             {
                 if (channels == 1) format = 0x1101; // AL_FORMAT_MONO16
                 else if (channels == 2) format = 0x1103; // AL_FORMAT_STEREO16
-                else return false;
+                else
+                {
+                    Console.WriteLine($"[WAV] Canales no soportados: {channels}");
+                    return false;
+                }
             }
-            else return false;
+            else if (bits == 8)
+            {
+                if (channels == 1) format = 0x1100; // AL_FORMAT_MONO8
+                else if (channels == 2) format = 0x1102; // AL_FORMAT_STEREO8
+                else
+                {
+                    Console.WriteLine($"[WAV] Canales no soportados: {channels}");
+                    return false;
+                }
+            }
+            else
+            {
+                Console.WriteLine($"[WAV] Bits no soportados: {bits}");
+                Console.WriteLine("[WAV] SUGERENCIA: Convierte el archivo WAV a PCM 16 bits usando Audacity, ffmpeg o sox.");
+                return false;
+            }
+            Console.WriteLine($"[WAV] dataOffset={dataOffset}, dataSize={dataSize}, format={format}");
             return true;
         }
     }

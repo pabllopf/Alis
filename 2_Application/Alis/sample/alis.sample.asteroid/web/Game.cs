@@ -9,8 +9,15 @@ using Alis.Sample.Asteroid.Desktop;
 
 namespace Alis.Sample.Asteroid.Web
 {
+    /// <summary>
+    /// The game class
+    /// </summary>
     public static class Game
     {
+        /// <summary>
+        /// Creates
+        /// </summary>
+        /// <returns>The video game</returns>
         public static VideoGame Create()
         {
             return VideoGame

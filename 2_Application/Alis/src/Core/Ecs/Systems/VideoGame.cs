@@ -103,8 +103,14 @@ namespace Alis.Core.Ecs.Systems
         /// </summary>
         public void Save() => _contextHandler.Save();
 
+        /// <summary>
+        /// Inits the preview
+        /// </summary>
         public void InitPreview() => _contextHandler.InitPreview();
         
+        /// <summary>
+        /// Previews this instance
+        /// </summary>
         public void Preview() => _contextHandler.Preview();
     }
 }

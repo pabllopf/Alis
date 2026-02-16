@@ -9,8 +9,15 @@ using Alis.Sample.Flappy.Bird.Desktop;
 
 namespace Alis.Sample.Flappy.Bird.Web
 {
+    /// <summary>
+    /// The game class
+    /// </summary>
     public static class Game
     {
+        /// <summary>
+        /// Creates
+        /// </summary>
+        /// <returns>The video game</returns>
         public static VideoGame Create()
         {
              return VideoGame
