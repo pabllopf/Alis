@@ -9,7 +9,18 @@
         <ApplicationVersion>1</ApplicationVersion>
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     </PropertyGroup>
+    
     <ItemGroup>
-      <ProjectReference Include="..\..\..\src\Alis.csproj" />
+      <ProjectReference Include="$(SolutionDir)2_Application/Alis/src/Alis.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
+                          Include="
+          $(SolutionDir)4_Operation/**/**/generator/**/*Generator.csproj;
+          $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
+                          OutputItemType="Analyzer"
+                          PrivateAssets="all"
+                          ReferenceOutputAssembly="false"/>
     </ItemGroup>
 </Project>
