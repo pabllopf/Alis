@@ -252,6 +252,4 @@
             Lines="@(PlistLines->Replace('Alis.Sample.Flappy.Bird', '$(AssemblyName)')->Replace('1.0', '$(Version)')->Replace('com.alis.flappybird', '$(ApplicationId)'))"
             Overwrite="true"/>
     </Target>
-
-    <Import Project="$(SolutionDir).config/target/alis.targets" />
 </Project>
