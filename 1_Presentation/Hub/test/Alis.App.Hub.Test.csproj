@@ -13,10 +13,10 @@
 
 
     <ItemGroup Condition="$(AssemblyName.Contains('Test')) == true">
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1"/>
-        <PackageReference Include="xunit" Version="2.6.6"/>
-        <PackageReference Include="Xunit.StaFact" Version="1.1.11"/>
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1"/>
+        <PackageReference Include="xunit.v3" Version="3.2.2"/>
+        <PackageReference Include="Xunit.StaFact" Version="3.0.13"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
