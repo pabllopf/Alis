@@ -290,7 +290,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
             sfSound_destroy(CPointer);
         }
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the sound create
@@ -487,6 +487,6 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Time sfSound_getPlayingOffset(IntPtr sound);
 
-        #endregion
+        
     }
 }

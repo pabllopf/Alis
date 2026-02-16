@@ -196,7 +196,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
             public uint ProductId;
         }
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the joystick is connected using the specified joystick
@@ -255,6 +255,6 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IdentificationMarshalData sfJoystick_getIdentification(uint joystick);
 
-        #endregion
+        
     }
 }

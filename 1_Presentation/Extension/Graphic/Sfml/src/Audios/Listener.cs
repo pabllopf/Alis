@@ -95,7 +95,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
             set => sfListener_setUpVector(value);
         }
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the listener set global volume using the specified volume
@@ -153,6 +153,6 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector3F sfListener_getUpVector();
 
-        #endregion
+        
     }
 }

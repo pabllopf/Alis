@@ -218,7 +218,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
             sfSoundBuffer_destroy(CPointer);
         }
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the sound buffer create from file using the specified filename
@@ -331,6 +331,6 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Time sfSoundBuffer_getDuration(IntPtr soundBuffer);
 
-        #endregion
+        
     }
 }

@@ -737,7 +737,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <summary>Event handler for the SensorChanged event</summary>
         public event EventHandler<SensorEventArgs> SensorChanged;
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the window create using the specified mode
@@ -1012,6 +1012,6 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector2F sfTouch_getPosition(uint finger, IntPtr relativeTo);
 
-        #endregion
+        
     }
 }

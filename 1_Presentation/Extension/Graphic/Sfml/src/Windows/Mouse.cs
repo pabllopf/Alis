@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
             }
         }
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the mouse is button pressed using the specified button
@@ -172,6 +172,6 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfMouse_setPosition(Vector2F position, IntPtr relativeTo);
 
-        #endregion
+        
     }
 }

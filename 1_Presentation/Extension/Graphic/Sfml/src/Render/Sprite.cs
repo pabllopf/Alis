@@ -195,7 +195,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
             sfSprite_destroy(CPointer);
         }
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the sprite create
@@ -286,6 +286,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern FloatRect sfSprite_getLocalBounds(IntPtr cPointer);
 
-        #endregion
+        
     }
 }

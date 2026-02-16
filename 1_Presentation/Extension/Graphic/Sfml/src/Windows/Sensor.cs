@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <returns>The current sensor value</returns>
         public static Vector3F GetValue(Type sensor) => sfSensor_getValue(sensor);
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the sensor is available using the specified sensor
@@ -119,6 +119,6 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector3F sfSensor_getValue(Type sensor);
 
-        #endregion
+        
     }
 }

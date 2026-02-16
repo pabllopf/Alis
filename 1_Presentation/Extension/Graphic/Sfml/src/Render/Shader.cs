@@ -734,7 +734,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         {
         }
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the shader create from file using the specified vertex shader filename
@@ -1142,6 +1142,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfShader_isGeometryAvailable();
 
-        #endregion
+        
     }
 }

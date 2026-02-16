@@ -398,7 +398,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
             sfKeyboard_setVirtualKeyboardVisible(visible);
         }
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the keyboard is key pressed using the specified key
@@ -415,6 +415,6 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfKeyboard_setVirtualKeyboardVisible(bool visible);
 
-        #endregion
+        
     }
 }

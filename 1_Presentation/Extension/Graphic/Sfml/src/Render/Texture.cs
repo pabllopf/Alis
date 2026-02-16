@@ -477,7 +477,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
             }
         }
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the texture create using the specified width
@@ -715,6 +715,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfTexture_getMaximumSize();
 
-        #endregion
+        
     }
 }

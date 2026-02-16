@@ -356,7 +356,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
             private Time length;
         }
 
-        #region Imports
+        
 
         /// <summary>
         ///     Sfs the music create from file using the specified filename
@@ -588,6 +588,6 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Time sfMusic_getPlayingOffset(IntPtr music);
 
-        #endregion
+        
     }
 }

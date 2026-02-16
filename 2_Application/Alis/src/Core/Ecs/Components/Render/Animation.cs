@@ -97,11 +97,4 @@ namespace Alis.Core.Ecs.Components.Render
             Frames.Add(frame);
         }
     }
-
-    /// <summary>
-    ///     The animation interface
-    /// </summary>
-    public interface IAnimation
-    {
-    }
 }

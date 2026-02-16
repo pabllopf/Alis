@@ -29,8 +29,6 @@
 
 using System;
 
-// TODO: Create Hint component
-
 namespace Alis.Extension.Graphic.Glfw.Enums
 {
     /// <summary>
@@ -148,52 +146,6 @@ namespace Alis.Extension.Graphic.Glfw.Enums
         ///     <para>Possible Values: <c>0</c> to <see cref="int.MaxValue" /> or <see cref="Constants.Default" />.</para>
         /// </summary>
         StencilBits = 0x00021006,
-
-        /// <summary>
-        ///     Specify the desired bit depths of the red component of the accumulation buffer. <see cref="Constants.Default" />
-        ///     means
-        ///     the application has no preference.
-        ///     <para>Accumulation buffers are a legacy OpenGL feature and should not be used in new code.</para>
-        ///     <para>Default Value: <c>0</c></para>
-        ///     <para>Possible Values: <c>0</c> to <see cref="int.MaxValue" /> or <see cref="Constants.Default" />.</para>
-        /// </summary>
-        [Obsolete] AccumRedBits = 0x00021007,
-
-        /// <summary>
-        ///     Specify the desired bit depths of the green component of the accumulation buffer. <see cref="Constants.Default" />
-        ///     means the application has no preference.
-        ///     <para>Accumulation buffers are a legacy OpenGL feature and should not be used in new code.</para>
-        ///     <para>Default Value: <c>0</c></para>
-        ///     <para>Possible Values: <c>0</c> to <see cref="int.MaxValue" /> or <see cref="Constants.Default" />.</para>
-        /// </summary>
-        [Obsolete] AccumGreenBits = 0x00021008,
-
-        /// <summary>
-        ///     Specify the desired bit depths of the blue component of the accumulation buffer. <see cref="Constants.Default" />
-        ///     means the application has no preference.
-        ///     <para>Accumulation buffers are a legacy OpenGL feature and should not be used in new code.</para>
-        ///     <para>Default Value: <c>0</c></para>
-        ///     <para>Possible Values: <c>0</c> to <see cref="int.MaxValue" /> or <see cref="Constants.Default" />.</para>
-        /// </summary>
-        [Obsolete] AccumBlueBits = 0x00021009,
-
-        /// <summary>
-        ///     Specify the desired bit depths of the alpha component of the accumulation buffer.
-        ///     <para><see cref="Constants.Default" /> means the application has no preference.</para>
-        ///     <para>Accumulation buffers are a legacy OpenGL feature and should not be used in new code.</para>
-        ///     <para>Default Value: <c>0</c></para>
-        ///     <para>Possible Values: <c>0</c> to <see cref="int.MaxValue" /> or <see cref="Constants.Default" />.</para>
-        /// </summary>
-        [Obsolete] AccumAlphaBits = 0x0002100a,
-
-        /// <summary>
-        ///     Specifies the desired number of auxiliary buffers.<see cref="Constants.Default" /> means the application has no
-        ///     preference.
-        ///     <para>Auxiliary buffers are a legacy OpenGL feature and should not be used in new code.</para>
-        ///     <para>Default Value: <c>0</c></para>
-        ///     <para>Possible Values: <c>0</c> to <see cref="int.MaxValue" /> or <see cref="Constants.Default" />.</para>
-        /// </summary>
-        [Obsolete] AuxBuffers = 0x0002100b,
 
         /// <summary>
         ///     Specifies whether to use stereoscopic rendering.
