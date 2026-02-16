@@ -189,7 +189,7 @@ namespace Alis.App.Engine.Menus
         /// </summary>
         private static void AboutAlis()
         {
-            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            string version = "latest";
             /*if (OperatingSystem.IsMacOS())
             {
                 NSAlert alert = new NSAlert
