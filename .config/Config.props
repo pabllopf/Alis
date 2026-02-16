@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <PropertyGroup>
-        <TargetFrameworks Condition="'$(Configuration)' == 'Debug'">netstandard2.0;net8.0;net9.0;net10.0;</TargetFrameworks>
+        <TargetFrameworks Condition="'$(Configuration)' == 'Debug'">netstandard2.0;net10.0;</TargetFrameworks>
         <TargetFrameworks Condition="'$(Configuration)' == 'Release'">
             netcoreapp2.0;netcoreapp2.1;netcoreapp2.2;netcoreapp3.0;netcoreapp3.1;
             net5.0;net6.0;net7.0;net8.0;net9.0;net10.0;
@@ -11,7 +11,7 @@
 
         <TargetFrameworks Condition="'$(Configuration)' == 'Release' AND $(AssemblyName.Contains('Extension')) == true">
             netcoreapp2.0;
-            net5.0;net8.0;net9.0;net10.0;
+            net5.0;net10.0;
             netstandard2.0;
             net461;
         </TargetFrameworks>
