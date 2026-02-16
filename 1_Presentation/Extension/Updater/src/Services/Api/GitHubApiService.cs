@@ -49,7 +49,7 @@ namespace Alis.Extension.Updater.Services.Api
         ///     Initializes a new instance of the <see cref="GitHubApiService" /> class
         /// </summary>
         /// <param name="apiUrl"></param>
-        public GitHubApiService(string apiUrl)
+        public GitHubApiService(Uri apiUrl)
         {
             _httpClient = new HttpClient();
             ApiUrl = apiUrl;
@@ -81,6 +81,6 @@ namespace Alis.Extension.Updater.Services.Api
         /// <summary>
         ///     Gets the value of the api url
         /// </summary>
-        public string ApiUrl { get; }
+        public Uri ApiUrl { get; }
     }
 }

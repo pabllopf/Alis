@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Updater.Services.Api
         /// <summary>
         ///     Gets the value of the api url
         /// </summary>
-        string ApiUrl { get; }
+        Uri ApiUrl { get; }
 
         /// <summary>
         ///     Gets the latest release using the specified api url
