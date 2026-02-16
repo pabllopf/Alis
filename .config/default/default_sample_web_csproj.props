@@ -22,7 +22,7 @@
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false"/>
     </ItemGroup>
-    <Import Project="$(SolutionDir).config/target/alis.targets" />
+   
 
 
 </Project>
