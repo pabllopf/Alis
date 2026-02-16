@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.9.2] - 2026-02-16
+### :sparkles: New Features
+- [`67bbf08`](https://github.com/pabllopf/Alis/commit/67bbf08af460094008e1ffdc996d253cbd439920) - Add net10.0 to Release TargetFrameworks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2f35be7`](https://github.com/pabllopf/Alis/commit/2f35be77c37e7a50dc79e8ea05f4622da703b475) - Add net10.0 runtime content entries *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`32c41fd`](https://github.com/pabllopf/Alis/commit/32c41fd435d2418fccf0285d14d08f5561f85a43) - Refactor SFML layer, move Styles and clean imports *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7ea7b80`](https://github.com/pabllopf/Alis/commit/7ea7b80c245a697c785fec77b670ff24ae8f8841) - CA1054 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f053724`](https://github.com/pabllopf/Alis/commit/f053724aa366df7dec095cdbe7efb8ba245d3627) - CA1056  Use Uri type for GitHub API URL *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3c94e16`](https://github.com/pabllopf/Alis/commit/3c94e167a2e30fc80106d952b4ea9f31e30be41c) - CA2234  Use Uri overload for HttpClient.GetAsync *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2e66603`](https://github.com/pabllopf/Alis/commit/2e666030ad1dcefd015a365fb42839d26c89ec7b) - CA1816 Call GC.SuppressFinalize(this) in Dispose *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`efbb03c`](https://github.com/pabllopf/Alis/commit/efbb03cd8b80dec40837bb7429b247e5c2226dda) - CA1054 Change DownloadFileAsync to accept Uri *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2df27ae`](https://github.com/pabllopf/Alis/commit/2df27ae33ca345e1d00404a45063d4ee47431a55) - '10.0.x' sdk .net *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.9.1] - 2026-02-16
 ### :sparkles: New Features
 - [`efd3359`](https://github.com/pabllopf/Alis/commit/efd3359fb2297169c93c40aba9169e934e3370f8) - Add Asteroid web sample and canvas letterboxing *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -5655,3 +5670,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.8.9]: https://github.com/pabllopf/Alis/compare/v0.8.8...v0.8.9
 [v0.9.0]: https://github.com/pabllopf/Alis/compare/v0.8.9...v0.9.0
 [v0.9.1]: https://github.com/pabllopf/Alis/compare/v0.9.0...v0.9.1
+[v0.9.2]: https://github.com/pabllopf/Alis/compare/v0.9.1...v0.9.2
