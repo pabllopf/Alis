@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SpawnAsteroid.cs
+//  File:Bullet.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,28 +28,38 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Ecs.Components;
 
 namespace Alis.Sample.Asteroid.Web
 {
     /// <summary>
-    ///     The spawn asteroid class
+    ///     The bullet class
     /// </summary>
-    public class SpawnAsteroid : IOnInit, IOnUpdate
+    public struct Bullet : IOnCollisionEnter
     {
         /// <summary>
-        ///     Ons the init using the specified self
+        ///     Ons the collision enter using the specified other
         /// </summary>
-        /// <param name="self">The self</param>
-        public void OnInit(IGameObject self)
+        /// <param name="other">The other</param>
+        public void OnCollisionEnter(IGameObject other)
         {
-        }
+            if (other.Has<Info>())
+            {
+                ref Info gameObject = ref other.Get<Info>();
 
-        /// <summary>
-        ///     Ons the update using the specified self
-        /// </summary>
-        /// <param name="self">The self</param>
-        public void OnUpdate(IGameObject self)
-        {
+                if (gameObject.Tag == "Asteroid")
+                {
+                    //Logger.Info("Bullet hit an asteroid and will decrease its health.");
+                    other.Get<Asteroid>().DecreaseHealth();
+                    //Context.SceneManager.CurrentWorld.(this.GameObject);
+                }
+
+                if (gameObject.Tag == "Wall")
+                {
+                    //Logger.Info("Bullet hit a wall and will be destroyed.");
+                    //this.GameObject.Context.SceneManager.DestroyGameObject(this.GameObject);
+                }
+            }
         }
     }
 }

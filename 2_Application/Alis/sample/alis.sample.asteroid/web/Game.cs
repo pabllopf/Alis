@@ -5,7 +5,6 @@ using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Physic.Dynamics;
-using Alis.Sample.Asteroid.Desktop;
 
 namespace Alis.Sample.Asteroid.Web
 {
@@ -67,10 +66,24 @@ namespace Alis.Sample.Asteroid.Web
                         .Add<GameObject>(counterPoints => counterPoints
                             .Name("Counter")
                             .Tag("Points")
+
                         )
                         .Add<GameObject>(counterPoints => counterPoints
                             .Name("HealthController")
                             .Tag("HealthController")
+
+                        )
+
+                        // SOUNDTRACK
+                        .Add<GameObject>(soundTrack => soundTrack
+                            .Name("Soundtrack")
+                            .Tag("Soundtrack")
+                            .WithComponent<AudioSource>(audioSource => audioSource
+                                .PlayOnAwake(true)
+                                .Volume(50)
+                                .Loop(true)
+                                .File("soundtrack.wav")
+                            )
                         )
 
                         // PLAYER
@@ -86,6 +99,10 @@ namespace Alis.Sample.Asteroid.Web
                                 .SetTexture("player.bmp")
                                 .Depth(1)
                             )
+                            .WithComponent<AudioSource>(audioSource => audioSource
+                                .PlayOnAwake(false)
+                                .File("fire.wav")
+                            )
                             .WithComponent<BoxCollider>(boxCollider => boxCollider
                                 .IsActive(true)
                                 .BodyType(BodyType.Dynamic)
@@ -98,6 +115,15 @@ namespace Alis.Sample.Asteroid.Web
                                 .Friction(0f)
                                 .FixedRotation(false)
                                 .IgnoreGravity(true)
+                            )
+
+                        )
+                        .Add<GameObject>(sound => sound
+                            .Name("SoundPlayer")
+                            .Tag("SoundPlayer")
+                            .WithComponent<AudioSource>(audioSource => audioSource
+                                .PlayOnAwake(false)
+                                .File("bangLarge.wav")
                             )
                         )
 
@@ -114,6 +140,7 @@ namespace Alis.Sample.Asteroid.Web
                                 .SetTexture("asteroid_0.bmp")
                                 .Depth(1)
                             )
+                            .WithComponent(new Asteroid())
                             .WithComponent<BoxCollider>(boxCollider => boxCollider
                                 .IsActive(true)
                                 .BodyType(BodyType.Dynamic)
@@ -143,6 +170,7 @@ namespace Alis.Sample.Asteroid.Web
                                 .SetTexture("asteroid_0.bmp")
                                 .Depth(1)
                             )
+                            .WithComponent(new Asteroid())
                             .WithComponent<BoxCollider>(boxCollider => boxCollider
                                 .IsActive(true)
                                 .BodyType(BodyType.Dynamic)

@@ -7,28 +7,13 @@ using System;
                 
                 namespace Alis.Sample.Snake.Web
                 {
-                    /// <summary>
-                    /// The entry point class
-                    /// </summary>
                     public static class EntryPoint
                     {
                         
-                        /// <summary>
-                        /// Gets or sets the value of the base address
-                        /// </summary>
                         public static Uri BaseAddress { get; internal set; }
                         
-                        /// <summary>
-                        /// Gets or sets the value of the game alis
-                        /// </summary>
                         private static VideoGame GameAlis { get; set; }
                         
-                        /// <summary>
-                        /// Frames the time
-                        /// </summary>
-                        /// <param name="time">The time</param>
-                        /// <param name="userData">The user data</param>
-                        /// <returns>The int</returns>
                         [UnmanagedCallersOnly]
                         public static int Frame(double time, nint userData)
                         {
@@ -36,41 +21,49 @@ using System;
                             return 1;
                         }
                         
-                        /// <summary>
-                        /// Gets or sets the value of the canvas width
-                        /// </summary>
                         private static int CanvasWidth { get; set; }
                 
-                        /// <summary>
-                        /// Gets or sets the value of the canvas height
-                        /// </summary>
                         private static int CanvasHeight { get; set; }
                 
-                        /// <summary>
-                        /// Canvases the resized using the specified width
-                        /// </summary>
-                        /// <param name="width">The width</param>
-                        /// <param name="height">The height</param>
                         public static void CanvasResized(int width, int height)
                         {
-                            CanvasWidth = width;
-                            CanvasHeight = height;
-                            
-                            Gl.GlViewport(0, 0, CanvasWidth, CanvasHeight);
+                             CanvasWidth = width;
+                         CanvasHeight = height;
+                     
+                         if(GameAlis == null)
+                         {
+                             return;
+                         }
+                         
+                         // Resolución original del juego
+                         int gameWidth = (int)GameAlis.Context.Setting.Graphic.WindowSize.X;
+                         int gameHeight = (int)GameAlis.Context.Setting.Graphic.WindowSize.Y;
+                     
+                         float aspectGame = (float)gameWidth / gameHeight;
+                         float aspectCanvas = (float)width / height;
+                     
+                         int viewportWidth, viewportHeight, viewportX, viewportY;
+                     
+                         if (aspectCanvas > aspectGame)
+                         {
+                             // Canvas más ancho, barras laterales
+                             viewportHeight = height;
+                             viewportWidth = (int)(height * aspectGame);
+                             viewportX = (width - viewportWidth) / 2;
+                             viewportY = 0;
+                         }
+                         else
+                         {
+                             // Canvas más alto, barras arriba y abajo
+                             viewportWidth = width;
+                             viewportHeight = (int)(width / aspectGame);
+                             viewportX = 0;
+                             viewportY = (height - viewportHeight) / 2;
+                         }
+                     
+                         Gl.GlViewport(viewportX, viewportY, viewportWidth, viewportHeight);
                         }
                         
-                        /// <summary>
-                        /// Main the args
-                        /// </summary>
-                        /// <param name="args">The args</param>
-                        /// <exception cref="Exception">BindApi() failed</exception>
-                        /// <exception cref="Exception">ChoseConfig() failed</exception>
-                        /// <exception cref="Exception">ChoseConfig() returned no configs</exception>
-                        /// <exception cref="Exception">CreateContext() failed</exception>
-                        /// <exception cref="Exception">CreateWindowSurface() failed</exception>
-                        /// <exception cref="Exception">Display was null</exception>
-                        /// <exception cref="Exception">Initialize() returned false.</exception>
-                        /// <exception cref="Exception">MakeCurrent() failed</exception>
                         public async static Task Main(string[] args)
                         {
                             Console.WriteLine($"Hello from dotnet!");
@@ -142,7 +135,33 @@ using System;
                             
                             GameAlis.InitPreview();
                             
-                            Gl.GlViewport(0, 0, CanvasWidth, CanvasHeight);
+                          
+                            int gameWidth = (int)GameAlis.Context.Setting.Graphic.WindowSize.X;
+                            int gameHeight = (int)GameAlis.Context.Setting.Graphic.WindowSize.Y;
+                     
+                            float aspectGame = (float)gameWidth / gameHeight;
+                            float aspectCanvas = (float)CanvasWidth / CanvasHeight;
+                     
+                            int viewportWidth, viewportHeight, viewportX, viewportY;
+                     
+                            if (aspectCanvas > aspectGame)
+                            {
+                                // Canvas más ancho, barras laterales
+                                viewportHeight = CanvasHeight;
+                                viewportWidth = (int)(CanvasHeight * aspectGame);
+                                viewportX = (CanvasWidth - viewportWidth) / 2;
+                                viewportY = 0;
+                            }
+                            else
+                            {
+                                // Canvas más alto, barras arriba y abajo
+                                viewportWidth = CanvasWidth;
+                                viewportHeight = (int)(CanvasWidth / aspectGame);
+                                viewportX = 0;
+                                viewportY = (CanvasHeight - viewportHeight) / 2;
+                            }
+                     
+                            Gl.GlViewport(viewportX, viewportY, viewportWidth, viewportHeight);
                             
                             unsafe
                             {
