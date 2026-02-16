@@ -1,16 +1,18 @@
 using Android.App;
 using Android.Content;
 using Android.Opengl;
-using Android.OS;
 using Android.Util;
-using Java.Nio;
+using System.Runtime.InteropServices;
+using Android.Runtime;
+using Android.OS;
 
 namespace Alis.Sample.Asteroid.Android
 {
     [Activity(Label = "Alis.Sample.Asteroid.Android", MainLauncher = true, Theme = "@android:style/Theme.NoTitleBar")]
+    [Register("crc647600d30597f44ece.MainActivity")]
     public class MainActivity : Activity
     {
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle? savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             var glView = new GlView(this);
@@ -29,7 +31,6 @@ namespace Alis.Sample.Asteroid.Android
 
     public class TriangleRenderer : Java.Lang.Object, GLSurfaceView.IRenderer
     {
-        private FloatBuffer? vertexBuffer;
         private int program;
         private int positionHandle;
         private static readonly float[] triangleCoords = {
@@ -46,52 +47,75 @@ namespace Alis.Sample.Asteroid.Android
         public void OnSurfaceCreated(Java.Lang.Object gl, Java.Lang.Object config)
         {
             Log.Debug("AlisGL", "OnSurfaceCreated llamado");
-            ByteBuffer bb = ByteBuffer.AllocateDirect(triangleCoords.Length * 4);
-            bb.Order(ByteOrder.NativeOrder());
-            vertexBuffer = bb.AsFloatBuffer();
-            vertexBuffer.Put(triangleCoords);
-            vertexBuffer.Position(0);
+            // Fijar el array de vértices en memoria no administrada
+            int size = triangleCoords.Length * sizeof(float);
+            IntPtr vertexPtr = Marshal.AllocHGlobal(size);
+            Marshal.Copy(triangleCoords, 0, vertexPtr, triangleCoords.Length);
 
-            int vertexShader = LoadShader(GLES20.GlVertexShader, vertexShaderCode);
-            int fragmentShader = LoadShader(GLES20.GlFragmentShader, fragmentShaderCode);
+            int vertexShader = LoadShader(GL.GL_VERTEX_SHADER, vertexShaderCode);
+            int fragmentShader = LoadShader(GL.GL_FRAGMENT_SHADER, fragmentShaderCode);
 
-            program = GLES20.GlCreateProgram();
-            GLES20.GlAttachShader(program, vertexShader);
-            GLES20.GlAttachShader(program, fragmentShader);
-            GLES20.GlLinkProgram(program);
+            program = GL.glCreateProgram();
+            GL.glAttachShader(program, vertexShader);
+            GL.glAttachShader(program, fragmentShader);
+            GL.glLinkProgram(program);
 
-            positionHandle = GLES20.GlGetAttribLocation(program, "vPosition");
+            positionHandle = GL.glGetAttribLocation(program, "vPosition");
+
+            // Guardar el puntero para usarlo en OnDrawFrame
+            _vertexPtr = vertexPtr;
         }
+
+        private IntPtr _vertexPtr;
 
         public void OnDrawFrame(Java.Lang.Object gl)
         {
             Log.Debug("AlisGL", "OnDrawFrame llamado");
-            if (vertexBuffer == null) {
-                Log.Error("AlisGL", "vertexBuffer es null");
+            if (_vertexPtr == IntPtr.Zero) {
+                Log.Error("AlisGL", "vertexPtr es null");
                 return;
             }
-            GLES20.GlClearColor(1f, 0f, 0f, 1f);
-            GLES20.GlClear(GLES20.GlColorBufferBit);
-            GLES20.GlUseProgram(program);
-            GLES20.GlEnableVertexAttribArray(positionHandle);
-            vertexBuffer.Position(0);
-            GLES20.GlVertexAttribPointer(positionHandle, COORDS_PER_VERTEX, GLES20.GlFloat, false, 0, vertexBuffer);
-            GLES20.GlDrawArrays(GLES20.GlTriangles, 0, 3);
-            GLES20.GlDisableVertexAttribArray(positionHandle);
+            GL.glClearColor(1f, 0f, 0f, 1f);
+            GL.glClear(GL.GL_COLOR_BUFFER_BIT);
+            GL.glUseProgram(program);
+            GL.glEnableVertexAttribArray(positionHandle);
+            GL.glVertexAttribPointer(positionHandle, COORDS_PER_VERTEX, GL.GL_FLOAT, false, 0, _vertexPtr);
+            GL.glDrawArrays(GL.GL_TRIANGLES, 0, 3);
+            GL.glDisableVertexAttribArray(positionHandle);
         }
 
         public void OnSurfaceChanged(Java.Lang.Object gl, int width, int height)
         {
             Log.Debug("AlisGL", $"OnSurfaceChanged llamado: width={width}, height={height}");
-            GLES20.GlViewport(0, 0, width, height);
+            GL.glViewport(0, 0, width, height);
         }
 
         private int LoadShader(int type, string shaderCode)
         {
-            int shader = GLES20.GlCreateShader(type);
-            GLES20.GlShaderSource(shader, shaderCode);
-            GLES20.GlCompileShader(shader);
+            int shader = GL.glCreateShader(type);
+            // Preparar el string como UTF8 y pasar el puntero
+            IntPtr strPtr = Marshal.StringToHGlobalAnsi(shaderCode);
+            IntPtr[] strArray = new IntPtr[] { strPtr };
+            int[] length = new int[] { shaderCode.Length };
+            GCHandle handle = GCHandle.Alloc(strArray, GCHandleType.Pinned);
+            try {
+                GL.glShaderSource(shader, 1, handle.AddrOfPinnedObject(), length);
+            } finally {
+                handle.Free();
+                Marshal.FreeHGlobal(strPtr);
+            }
+            GL.glCompileShader(shader);
             return shader;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (_vertexPtr != IntPtr.Zero)
+            {
+                Marshal.FreeHGlobal(_vertexPtr);
+                _vertexPtr = IntPtr.Zero;
+            }
+            base.Dispose(disposing);
         }
 
         // Métodos para compatibilidad con IGL10/EGLConfig
