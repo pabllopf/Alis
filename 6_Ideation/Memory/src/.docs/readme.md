@@ -1,4 +1,4 @@
-[![](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/banner/Alis_Banner_970x250.png)](https://pabllopf.github.io/Alis/index.html)
+[![](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/banner/Alis_Banner_970x250.bmp)](https://pabllopf.github.io/Alis/index.html)
 
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_Alis&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_Alis)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_Alis&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_Alis)
@@ -14,18 +14,19 @@
 [![License](https://img.shields.io/badge/license-GPL%20v3.0-blue)](https://github.com/pabllopf/Alis/blob/main/LICENSE)
 [![Web](https://img.shields.io/website?down_color=red&down_message=failed&up_color=blue&up_message=active&url=https%3A%2F%2Fpabllopf.github.io%2FAlis.Web%2F)](https://pabllopf.github.io/Alis.Web/index.html)
 ![Nuget](https://img.shields.io/nuget/v/alis?label=latest%20version&color=green)
-![Total downloads](https://img.shields.io/badge/downloads-+300k-green)
+![Total downloads](https://img.shields.io/badge/downloads-+400k-green)
 ![GitHub Stars](https://img.shields.io/github/stars/pabllopf/alis?style=social)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/pabllopf)
 
 
-> Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, Android(soon), IOS(soon).
+> Develop the video games of your dreams 💯 free!! on Windows, MacOS, Linux, WEB, Android(soon), IOS(soon).
 
-## 📚 Alis.Core.Aspect.Memory
+## 📚 Table of Contents
 
-- [Modular Design](#-modular-design)
 - [Description](#-description)
 - [Getting Started](#-getting-started)
+- [Features](#features)
+- [NuGet Packages Overview](#-nuget-packages-overview)
 - [License](#-license)
 - [Contributor Guide](#-contributor-guide)
 - [Authors](#-authors)
@@ -33,19 +34,34 @@
 
 ---
 
+## 📖 Description
+
+Alis is a cross-platform framework designed to help developers create video games effortlessly. It includes a wide range
+of packages tailored for different functionalities like graphics, physics, networking, audio, and extensions for cloud
+integrations, AI, and more.
+
+### Features:
+
+- **Cross-Platform**: Compatible with Windows, macOS, Linux, WEB,  and planned support for Android and iOS.
+- **Modular**: Each feature is available as a separate NuGet package.
+- **Open Source**: Licensed under GNU GPL v3.0 (ALL FREE!).
+- **Powerful Extensions**: Integrate easily with Google Ads, Google Drive, FFmpeg, and more.
+
+---
+
 ### ⚙️ Modular Design
 
-> All modules within the Alis framework, including `Alis.Core.Aspect.Memory`, are fully independent and can be used
-> separately. While the primary focus of Alis is game development, these modules are designed to be versatile and can be
-> integrated into other types of applications or environments where memory management or data validation is required.
+> All modules within the Alis framework are fully independent and can be used separately. While the primary focus of
+> Alis is game development, these modules are versatile and can be integrated into other types of applications requiring
+> data management capabilities.
 
 ---
 
 ### 🖥️ Platform Compatibility
 
-> The Alis framework, including `Alis.Core.Aspect.Memory`, is designed to support a wide range of platforms, ensuring
-> flexibility and adaptability for developers. Each module is optimized for seamless integration across the following
-> architectures and operating systems:
+> The Alis framework is designed to support a wide range of platforms, ensuring flexibility and adaptability for
+> developers. Each module is optimized for seamless integration across the following architectures and operating
+> systems:
 
 #### Supported Platforms:
 
@@ -63,142 +79,202 @@
 - **macOS**
     - `osx-x64`
     - `osx-arm64`
+- **Web**
+    - `browser-wasm`
 
 --- 
 
-## 📖 Description
+### 🎮 Platform Compatibility
 
-`Alis.Core.Aspect.Memory` is a module within the Alis framework that provides tools for memory management and
-validation, ensuring that values meet specified constraints. It includes a set of attributes and a validation system to
-ensure that data values adhere to important rules, such as non-zero or non-null values.
+`Alis` is designed to support a wide range of frameworks, ensuring maximum flexibility across different platforms and
+environments. Whether you're working with legacy systems or the latest .NET versions, this module has got you covered!
 
-### Features:
+#### Supported Frameworks:
 
-- **Data Validation**: Use attributes like `[IsNotZero]` and `` to ensure values meet specific conditions.
-- **Flexible Validation**: Validator system that checks values before they are used, preventing runtime errors.
-- **Main Classes**:
-    - `Validator`: Validates data according to rules such as non-zero or non-null.
-    - `NotZeroException`: Thrown when a value is zero when it shouldn't be.
+| **Framework**      | **Version(s)**                                                                      |
+|--------------------|-------------------------------------------------------------------------------------|
+| **.NET Core**      | `netcoreapp2.0`, `netcoreapp2.1`, `netcoreapp2.2`, `netcoreapp3.0`, `netcoreapp3.1` |
+| **.NET 5 & Above** | `net5.0`, `net6.0`, `net7.0`, `net8.0`, `net9.0`                                    |
+| **.NET Standard**  | `netstandard2.0`, `netstandard2.1`                                                  |
+| **.NET Framework** | `net471`, `net472`, `net48`, `net481`                                               |
 
 ---
 
 ## 🚀 Getting Started
 
-To start using `Alis.Core.Aspect.Memory`, simply install the package:
+To start using Alis, simply install the core package from NuGet:
 
 ```bash
-dotnet add package Alis.Core.Aspect.Memory
+dotnet add package Alis
 ```
 
-This module is ideal for applications where data integrity is crucial, and you need to ensure that certain values adhere
-to specific constraints.
-
-### Basic Usage Example:
+### 🛠️ Example Usage
 
 ```csharp
-using Alis.Core.Aspect.Memory;
-using System;
+using Alis;
+using Alis.Core.Ecs.System;
 
-public static class Program
+class Program
 {
-    /// <summary>
-    ///     Gets or sets the value of the non zero value
-    /// </summary>
-    [IsNotZero] private static int _nonZeroValue;
-
-    /// <summary>
-    ///     Gets or sets the value of the non zero value
-    /// </summary>
-    private static int _nonZeroValuev2;
-
-    /// <summary>
-    ///     Gets or sets the value of the sample
-    /// </summary>
-    [IsNotZero]
-    private static int Sample { get; set; }
-
-    /// <summary>
-    ///     Samples the method using the specified value
-    /// </summary>
-    /// <param name="value">The value</param>
-    public static void SampleMethod([IsNotZero] int value)
+    static void Main()
     {
-        
-       Logger.Info("The value of value is " + value);
-    }
-
-    /// <summary>
-    ///     Main the args
-    /// </summary>
-    /// <param name="args">The args</param>
-    public static void Main(string[] args)
-    {
-        try
-        {
-            Sample = 0;
-            
-        }
-        catch (NotZeroException e)
-        {
-           Logger.Info(e);
-        }
-
-        try
-        {
-            SampleMethod(0);
-        }
-        catch (NotZeroException e)
-        {
-           Logger.Info(e);
-        }
-
-        _nonZeroValuev2 = 0;
-        
-
-        try
-        {
-            _nonZeroValue = 0;
-            
-        }
-        catch (NotZeroException ex)
-        {
-           Logger.Info(ex);
-        }
-
-        try
-        {
-            _nonZeroValue = 5;
-            
-           Logger.Info("NonZeroValue has been successfully set to " + _nonZeroValue);
-        }
-        catch (NotZeroException ex)
-        {
-           Logger.Info(ex.Message);
-        }
+        VideoGame.Create().Run();
     }
 }
 ```
 
 ---
 
+## 📦 NuGet Packages Overview
+
+The ALIS framework is built with a modular architecture to provide flexibility, scalability, and performance
+optimization for game development. Below, you’ll find an explanation of the structure and purpose of the different
+packages available.
+
+### Core Package
+
+If your primary goal is to develop a game, you should start with the **ALIS** package. This is the main package of the
+framework and includes the fundamental tools required to build games effectively. It acts as the foundation, and in most
+cases, it’s all you need to get started.
+
+### Modular Architecture
+
+The framework is divided into multiple packages to ensure clarity and scalability:
+
+- **Clear Responsibility**: Each package handles a specific domain, such as graphics, physics, or ECS (Entity Component
+  System), making the framework easy to maintain and extend.
+- **Customizability**: Only include the packages relevant to your game, keeping your project lightweight and performant.
+- **Reusability**: Packages can be reused across different projects without relying on unnecessary dependencies.
+
+This structure allows developers to tailor the framework to their specific needs, focusing on essential features without
+being burdened by unused functionality.
+
+### Extensions
+
+The framework also provides a variety of **extensions**, which are optional add-ons that enhance the core functionality
+of the framework. These are designed to cover advanced or specific use cases. For example:
+
+- **Graphic Extensions** like OpenGL or SDL2 allow for advanced rendering capabilities.
+- **Cloud Extensions** enable integration with services such as Dropbox or Google Drive.
+- **Language and Audio Extensions** add dialogue systems, translators, or enhanced audio features.
+- **Physics, Math, and Networking Extensions** allow deeper customization and control over game mechanics.
+
+By including only the extensions you need, you can optimize your project and add functionality tailored to your game’s
+requirements.
+
+
+
+The following table contains all the available packages, their purpose, and their download statistics.
+
+## 🔷Alis
+
+| Package Name | Version                                                           | Downloads                                                               | Description                          |
+| ------------ | ----------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------ |
+| **Alis**     | ![Nuget](https://img.shields.io/nuget/v/alis?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis?label=nuget&color=green) | Main package for the Alis framework. |
+
+
+## 🔷 Alis.Core
+
+| Package Name  | Version                                                                | Downloads                                                                    | Description            |
+| ------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------- |
+| **Alis.Core** | ![Nuget](https://img.shields.io/nuget/v/alis.core?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core?label=nuget&color=green) | Core library for Alis. |
+
+
+## 🔷 Alis.Core.Aspect
+
+| Package Name                 | Version                                                                               | Downloads                                                                                   | Description           |
+| ---------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------- |
+| **Alis.Core.Aspect**         | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect?label=&color=green)         | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect?label=nuget&color=green)         | Base AOP system.      |
+| **Alis.Core.Aspect.Data**    | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.data?label=&color=green)    | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.data?label=nuget&color=green)    | Data AOP extensions.  |
+| **Alis.Core.Aspect.Fluent**  | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.fluent?label=&color=green)  | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.fluent?label=nuget&color=green)  | Fluent AOP API.       |
+| **Alis.Core.Aspect.Logging** | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.logging?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.logging?label=nuget&color=green) | Logging aspects.      |
+| **Alis.Core.Aspect.Math**    | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.math?label=&color=green)    | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.math?label=nuget&color=green)    | Math AOP utilities.   |
+| **Alis.Core.Aspect.Memory**  | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.memory?label=&color=green)  | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.memory?label=nuget&color=green)  | Memory AOP utilities. |
+| **Alis.Core.Aspect.Time**    | ![Nuget](https://img.shields.io/nuget/v/alis.core.aspect.time?label=&color=green)    | ![Nuget](https://img.shields.io/nuget/dt/alis.core.aspect.time?label=nuget&color=green)    | Time AOP utilities.   |
+
+
+## 🔷 Alis.Core
+
+| Package Name          | Version                                                                        | Downloads                                                                            | Description           |
+| --------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | --------------------- |
+| **Alis.Core.Graphic** | ![Nuget](https://img.shields.io/nuget/v/alis.core.graphic?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/alis.core.graphic?label=nuget&color=green) | Graphics core module. |
+| **Alis.Core.Audio**   | ![Nuget](https://img.shields.io/nuget/v/alis.core.audio?label=&color=green)   | ![Nuget](https://img.shields.io/nuget/dt/alis.core.audio?label=nuget&color=green)   | Audio module.         |
+| **Alis.Core.Physic**  | ![Nuget](https://img.shields.io/nuget/v/alis.core.physic?label=&color=green)  | ![Nuget](https://img.shields.io/nuget/dt/alis.core.physic?label=nuget&color=green)  | Physics module.       |
+| **Alis.Core.Ecs**     | ![Nuget](https://img.shields.io/nuget/v/alis.core.ecs?label=&color=green)     | ![Nuget](https://img.shields.io/nuget/dt/alis.core.ecs?label=nuget&color=green)     | ECS module.           |
+
+
+## 🔷 Main — Alis.Extensions
+
+| Package Name                                   | Version                                                                                                 | Downloads                                                                                                     | Description                    |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| **Alis.Extension.Ads.GoogleAds**               | ![Nuget](https://img.shields.io/nuget/v/alis.extension.ads.googleads?label=&color=green)               | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.ads.googleads?label=nuget&color=green)               | Google Ads integration.        |
+| **Alis.Extension.Cloud.DropBox**               | ![Nuget](https://img.shields.io/nuget/v/alis.extension.cloud.dropbox?label=&color=green)               | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.cloud.dropbox?label=nuget&color=green)               | Dropbox integration.           |
+| **Alis.Extension.Cloud.GoogleDrive**           | ![Nuget](https://img.shields.io/nuget/v/alis.extension.cloud.googledrive?label=&color=green)           | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.cloud.googledrive?label=nuget&color=green)           | Google Drive integration.      |
+| **Alis.Extension.Profile**                     | ![Nuget](https://img.shields.io/nuget/v/alis.extension.profile?label=&color=green)                     | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.profile?label=nuget&color=green)                     | Profile system.                |
+| **Alis.Extension.Language.Translator**         | ![Nuget](https://img.shields.io/nuget/v/alis.extension.language.translator?label=&color=green)         | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.language.translator?label=nuget&color=green)         | Translation system.            |
+| **Alis.Extension.Language.Dialogue**           | ![Nuget](https://img.shields.io/nuget/v/alis.extension.language.dialogue?label=&color=green)           | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.language.dialogue?label=nuget&color=green)           | Dialogue system.               |
+| **Alis.Extension.Payment.Stripe**              | ![Nuget](https://img.shields.io/nuget/v/alis.extension.payment.stripe?label=&color=green)              | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.payment.stripe?label=nuget&color=green)              | Stripe integration.            |
+| **Alis.Extension.Math.HighSpeedPriorityQueue** | ![Nuget](https://img.shields.io/nuget/v/Alis.Extension.Math.HighSpeedPriorityQueue?label=&color=green) | ![Nuget](https://img.shields.io/nuget/dt/Alis.Extension.Math.HighSpeedPriorityQueue?label=nuget&color=green) | High speed priority queue.     |
+| **Alis.Extension.Math.ProceduralDungeon**      | ![Nuget](https://img.shields.io/nuget/v/alis.extension.math.proceduraldungeon?label=&color=green)      | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.math.proceduraldungeon?label=nuget&color=green)      | Procedural dungeon generation. |
+| **Alis.Extension.Updater**                     | ![Nuget](https://img.shields.io/nuget/v/alis.extension.updater?label=&color=green)                     | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.updater?label=nuget&color=green)                     | Updater system.                |
+| **Alis.Extension.Io.FileDialog**               | ![Nuget](https://img.shields.io/nuget/v/alis.extension.io.filedialog?label=&color=green)               | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.io.filedialog?label=nuget&color=green)               | File dialog integration.       |
+| **Alis.Extension.Graphic.Sdl2**                | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.sdl2?label=&color=green)                | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.sdl2?label=nuget&color=green)                | SDL2 graphics backend.         |
+| **Alis.Extension.Graphic.Sfml**                | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.sfml?label=&color=green)                | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.sfml?label=nuget&color=green)                | SFML graphics backend.         |
+| **Alis.Extension.Graphic.Glfw**                | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.glfw?label=&color=green)                | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.glfw?label=nuget&color=green)                | GLFW graphics backend.         |
+| **Alis.Extension.Graphic.Ui**                  | ![Nuget](https://img.shields.io/nuget/v/alis.extension.graphic.ui?label=&color=green)                  | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.graphic.ui?label=nuget&color=green)                  | UI graphics helpers.           |
+| **Alis.Extension.Network**                     | ![Nuget](https://img.shields.io/nuget/v/alis.extension.network?label=&color=green)                     | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.network?label=nuget&color=green)                     | Networking extension.          |
+| **Alis.Extension.Security**                    | ![Nuget](https://img.shields.io/nuget/v/alis.extension.security?label=&color=green)                    | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.security?label=nuget&color=green)                    | Security extension.            |
+| **Alis.Extension.Thread**                      | ![Nuget](https://img.shields.io/nuget/v/alis.extension.thread?label=&color=green)                      | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.thread?label=nuget&color=green)                      | Thread utilities.              |
+| **Alis.Extension.Media.FFmpeg**                | ![Nuget](https://img.shields.io/nuget/v/alis.extension.media.ffmpeg?label=&color=green)                | ![Nuget](https://img.shields.io/nuget/dt/alis.extension.media.ffmpeg?label=nuget&color=green)                | FFmpeg media processing.       |
+
+> **Note**: For the complete list of packages, visit the [NuGet Gallery](https://www.nuget.org/profiles/pabllopf).
+
+---
+
 ## 🛡️ License
 
 The ALIS framework is released under
-the [GNU General Public License v3 (GPL-3.0)](https://github.com/pabllopf/Alis/blob/master/license.md), ensuring your
-freedom to use, modify, and distribute the framework.
+the [GNU General Public License v3 (GPL-3.0)](https://github.com/pabllopf/Alis/blob/master/license.md), a strong
+copyleft license that ensures your freedom to use, modify, and distribute the framework while preserving the same
+license terms. Below is an explanation of how the license affects you as a developer:
 
-[![License](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/licence/License.png)](https://github.com/pabllopf/Alis/blob/master/license.md)
+[![License](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/licence/License.bmp)](https://github.com/pabllopf/Alis/blob/master/license.md)
 
 ### Key License Points
 
-- **Complete Freedom for Developers**:  
-  Any software created with the ALIS framework is **free** to use, modify, and distribute.
+- **Complete Freedom for Video Game Developers**:  
+  Any video game created with the ALIS framework is **completely free and unrestricted**. You are free to create,
+  publish, and distribute your games without any licensing fees or royalties.
 
 - **Source Code Availability**:  
-  If you modify the ALIS framework, you must make the source code publicly available under the GPL-3.0 license.
+  If you make modifications to the ALIS framework itself or integrate it as part of a larger software project (beyond
+  just using it in a video game), you are required to make those changes publicly available under the same GPL-3.0
+  license. This ensures the framework remains open and accessible to everyone.
+
+- **No Obligation to Mention**:  
+  While it’s not required, it would be greatly appreciated if you mention or credit the ALIS project somewhere in your
+  game, such as in the credits or documentation. This is entirely optional and is meant to help grow the ALIS community.
+
+- **Patent Rights**:  
+  Contributors to ALIS provide an express grant of patent rights, meaning you’re protected from patent-related legal
+  issues when using the framework.
+
+- **Copyright and Notices**:  
+  You must preserve copyright notices and license texts when redistributing ALIS, either in its original form or as part
+  of a modified version.
+
+### What This Means for Your Games
+
+- **Your Game’s License**:  
+  The GPL-3.0 license applies only to the ALIS framework and its modifications. It does not impose restrictions on the
+  license of the game you build using ALIS. You are free to license your game however you choose (e.g., proprietary,
+  open-source, or public domain).
 
 - **Monetization**:  
-  You are free to monetize any project developed using ALIS without any royalties.
+  You are free to monetize games created with ALIS, whether by selling them, integrating ads, or any other form of
+  commercialization.
+
+> For more details, you can read the full license by clicking the link below:
 
 [![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/master/license.md)
 
@@ -206,34 +282,113 @@ freedom to use, modify, and distribute the framework.
 
 ## Contributor Guide
 
-We welcome contributions to the project! Please check
-our [Code of Conduct](https://github.com/pabllopf/Alis/blob/main/code_of_conduct.md) for guidelines on how to contribute
-respectfully.
+Thank you for investing your time in contributing to our project! Any contribution you make will be reflected.
+Read our Code of Conduct to keep our community approachable and respectable.
 
 [![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/main/code_of_conduct.md)
 
----
+### Contributor Covenant Code of Conduct
+
+In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making
+participation in our project and our community a harassment-free experience for everyone, regardless of age, body size,
+disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education,
+socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+
+[![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/main/code_of_conduct.md)
 
 ## Authors
 
 <!-- readme: pabllopf -start -->
-
-| [![Pablo Perdomo Falcón](https://avatars.githubusercontent.com/u/48176121?v=4&s=75)](https://github.com/pabllopf) |
-|:-----------------------------------------------------------------------------------------------------------------:|
-|                              **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                              |
-
+<table>
+	<tbody>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/pabllopf">
+                    <img src="https://avatars.githubusercontent.com/u/48176121?v=4" width="75;" alt="pabllopf"/>
+                    <br />
+                    <sub><b>Pablo Perdomo Falcón</b></sub>
+                </a>
+            </td>
+		</tr>
+	<tbody>
+</table>
 <!-- readme: pabllopf -end -->
 
 ## Collaborators
 
 <!-- readme: collaborators -start -->
-
-| [![Raúl Lozano Ponce](https://avatars.githubusercontent.com/u/43152062?v=4)](https://github.com/RaulLozanoPonce) | [![Juan Ángel Trujillo Jiménez](https://avatars.githubusercontent.com/u/45520663?v=4)](https://github.com/cannt) | [![Pablo Perdomo Falcón](https://avatars.githubusercontent.com/u/48176121?v=4)](https://github.com/pabllopf) | [![Christian García](https://avatars.githubusercontent.com/u/55676590?v=4)](https://github.com/Chgv99) | [![RicardoVillarta](https://avatars.githubusercontent.com/u/62963416?v=4)](https://github.com/RicardoVillarta) |
-|:----------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------:|
-|                           **[Raúl Lozano Ponce](https://github.com/RaulLozanoPonce)**                            |                           **[Juan Ángel Trujillo Jiménez](https://github.com/cannt)**                            |                           **[Pablo Perdomo Falcón](https://github.com/pabllopf)**                            |                           **[Christian García](https://github.com/Chgv99)**                            |                           **[RicardoVillarta](https://github.com/RicardoVillarta)**                            |
-
-| [![Gabriel](https://avatars.githubusercontent.com/u/75950686?v=4)](https://github.com/GabrielRT01) | [![Pedro D.GR](https://avatars.githubusercontent.com/u/82670532?v=4)](https://github.com/SPEEDCROW98) | [![Claudia2000pf](https://avatars.githubusercontent.com/u/82757764?v=4)](https://github.com/Claudia2000pf) | [![Carlos](https://avatars.githubusercontent.com/u/82760316?v=4)](https://github.com/suarez0965) | [![Roser Almenar](https://avatars.githubusercontent.com/u/118014440?v=4)](https://github.com/roseralmenar) |
-|:--------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------:|
-|                           **[Gabriel](https://github.com/GabrielRT01)**                            |                           **[Pedro D.GR](https://github.com/SPEEDCROW98)**                            |                           **[Claudia2000pf](https://github.com/Claudia2000pf)**                            |                           **[Carlos](https://github.com/suarez0965)**                            |                            **[Roser Almenar](https://github.com/roseralmenar)**                            |
-
+<table>
+	<tbody>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/RaulLozanoPonce">
+                    <img src="https://avatars.githubusercontent.com/u/43152062?v=4" width="75;" alt="RaulLozanoPonce"/>
+                    <br />
+                    <sub><b>Raúl Lozano Ponce</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/cannt">
+                    <img src="https://avatars.githubusercontent.com/u/45520663?v=4" width="75;" alt="cannt"/>
+                    <br />
+                    <sub><b>Juan Ángel Trujillo Jiménez</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/pabllopf">
+                    <img src="https://avatars.githubusercontent.com/u/48176121?v=4" width="75;" alt="pabllopf"/>
+                    <br />
+                    <sub><b>Pablo Perdomo Falcón</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/Chgv99">
+                    <img src="https://avatars.githubusercontent.com/u/55676590?v=4" width="75;" alt="Chgv99"/>
+                    <br />
+                    <sub><b>Christian García</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/RicardoVillarta">
+                    <img src="https://avatars.githubusercontent.com/u/62963416?v=4" width="75;" alt="RicardoVillarta"/>
+                    <br />
+                    <sub><b>RicardoVillarta</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/GabrielRT01">
+                    <img src="https://avatars.githubusercontent.com/u/75950686?v=4" width="75;" alt="GabrielRT01"/>
+                    <br />
+                    <sub><b>Gabriel</b></sub>
+                </a>
+            </td>
+		</tr>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/SPEEDCROW98">
+                    <img src="https://avatars.githubusercontent.com/u/82670532?v=4" width="75;" alt="SPEEDCROW98"/>
+                    <br />
+                    <sub><b>Pedro D.GR</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/Claudia2000pf">
+                    <img src="https://avatars.githubusercontent.com/u/82757764?v=4" width="75;" alt="Claudia2000pf"/>
+                    <br />
+                    <sub><b>Claudia2000pf</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/suarez0965">
+                    <img src="https://avatars.githubusercontent.com/u/82760316?v=4" width="75;" alt="suarez0965"/>
+                    <br />
+                    <sub><b>Carlos</b></sub>
+                </a>
+            </td>
+		</tr>
+	<tbody>
+</table>
 <!-- readme: collaborators -end -->
+
+
+<a href="https://info.flagcounter.com/1AeG"><img src="https://s01.flagcounter.com/count2/1AeG/bg_FFFFFF/txt_000000/border_CCCCCC/columns_8/maxflags_250/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>

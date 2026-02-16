@@ -37,14 +37,26 @@ namespace Alis.Core.Aspect.Logging
     /// <seealso cref="Exception"/>
     public class AlisException : Exception
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AlisException"/> class
+        /// </summary>
         public AlisException()
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AlisException"/> class
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// <param name="innerException">The inner exception</param>
         public AlisException(string message, Exception innerException) : base(message, innerException)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AlisException"/> class
+        /// </summary>
+        /// <param name="message">The message</param>
         public AlisException(string message) : base(message)
         {
         }

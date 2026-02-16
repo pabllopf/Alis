@@ -143,7 +143,7 @@
         <Product>Alis</Product>
         <Authors>$(Company)</Authors>
         <Copyright>GNU General Public License v3.0</Copyright>
-        <Description>Videogame cross-platform framework for ios(soon), android(soon), mac, linux and windows.</Description>
+        <Description>Videogame cross-platform framework for Windows, MacOS, Linux, WEB, Android(soon), IOS(soon).</Description>
         <FileVersion>$(AssemblyVersion)</FileVersion>
         <InformationalVersion>$(AssemblyInformationalVersion)</InformationalVersion>
         <IsPackable>true</IsPackable>
@@ -152,7 +152,7 @@
         <PackageProjectUrl>www.alisengine.com</PackageProjectUrl>
         <PackageReadmeFile>readme.md</PackageReadmeFile>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <PackageTags>game framework windows macos linux ios android</PackageTags>
+        <PackageTags>game framework windows macos linux ios android web</PackageTags>
         <PackageVersion>$(AssemblyVersion)</PackageVersion>
         <RepositoryType>public</RepositoryType>
         <RepositoryUrl>https://github.com/pabllopf/Alis</RepositoryUrl>
