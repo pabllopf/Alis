@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net10.0-android</TargetFramework>
+        <RuntimeIdentifiers>android-arm64;android-arm;android-x64;android-x86</RuntimeIdentifiers>
         <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
         <OutputType>Exe</OutputType>
         <Nullable>enable</Nullable>
@@ -10,6 +11,6 @@
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     </PropertyGroup>
     <ItemGroup>
-      <ProjectReference Include="..\..\..\src\Alis.csproj" TargetFramework="netstandard2.0" />
+      <ProjectReference Include="..\..\..\src\Alis.csproj" />
     </ItemGroup>
 </Project>
