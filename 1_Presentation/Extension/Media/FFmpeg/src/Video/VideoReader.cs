@@ -100,6 +100,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
         public void Dispose()
         {
             DataStream?.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>

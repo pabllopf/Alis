@@ -90,6 +90,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
         public void Dispose()
         {
             frameBuffer = null;
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>

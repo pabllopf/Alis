@@ -99,6 +99,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         public void Dispose()
         {
             DataStream?.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>

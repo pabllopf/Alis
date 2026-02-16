@@ -99,6 +99,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         public void Dispose()
         {
             solveVelocityConstraintsWaitLock?.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>

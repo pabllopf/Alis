@@ -710,11 +710,8 @@ namespace Alis.Extension.Graphic.Sfml.Render
         private void Initialize()
         {
             myDefaultView = new View(sfRenderWindow_getDefaultView(CPointer));
-            GC.SuppressFinalize(myDefaultView);
         }
-
         
-
         /// <summary>
         ///     Sfs the render window create using the specified mode
         /// </summary>

@@ -76,6 +76,7 @@ namespace Alis.Core.Ecs.Collections
         public void Dispose()
         {
             Recycled.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>

@@ -74,8 +74,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         {
             myDefaultView = new View(sfRenderTexture_getDefaultView(CPointer));
             myTexture = new Texture(sfRenderTexture_getTexture(CPointer));
-            GC.SuppressFinalize(myDefaultView);
-            GC.SuppressFinalize(myTexture);
         }
 
 
@@ -90,8 +88,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         {
             myDefaultView = new View(sfRenderTexture_getDefaultView(CPointer));
             myTexture = new Texture(sfRenderTexture_getTexture(CPointer));
-            GC.SuppressFinalize(myDefaultView);
-            GC.SuppressFinalize(myTexture);
         }
 
 
