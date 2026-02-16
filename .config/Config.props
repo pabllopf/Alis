@@ -18,10 +18,12 @@
         </TargetFrameworks>
 
         <RuntimeIdentifiers>
+            browser-wasm;
             win-x64;win-x86;
             linux-x64;linux-arm64;linux-arm;
             osx-x64;osx-arm64;
-            android-arm64;android-x64
+            android-arm64;android-x64;
+            ios-arm64;iossimulator-arm64;iossimulator-x64
         </RuntimeIdentifiers>
         
         
