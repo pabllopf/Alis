@@ -97,7 +97,7 @@ namespace Alis.Extension.Network
             KeepAliveInterval = keepAliveInterval;
             CancellationToken = cancellationToken;
             webSocketImpl.Pong += WebSocketImplPong;
-            Stopwatch = Clock.StartNew();
+            Stopwatch = Clock.Create();
 
             if (keepAliveInterval == TimeSpan.Zero)
             {

@@ -37,16 +37,6 @@ namespace Alis.Core.Aspect.Time
     public class Clock
     {
         /// <summary>
-        ///     The ticks per millisecond
-        /// </summary>
-        private const long TicksPerMillisecond = 10000;
-
-        /// <summary>
-        ///     The ticks per millisecond
-        /// </summary>
-        private const long TicksPerSecond = TicksPerMillisecond * 1000;
-
-        /// <summary>
         ///     The elapsed
         /// </summary>
         private TimeSpan _elapsed;
@@ -116,7 +106,7 @@ namespace Alis.Core.Aspect.Time
         ///     Starts the new
         /// </summary>
         /// <returns>The </returns>
-        public static Clock StartNew()
+        public static Clock Create()
         {
             Clock s = new Clock();
             s.Start();

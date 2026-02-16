@@ -91,12 +91,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             {
                 return false;
             }
-
-            if (obj.GetType() != typeof(MassData))
-            {
-                return false;
-            }
-
+            
             return Equals((MassData) obj);
         }
 

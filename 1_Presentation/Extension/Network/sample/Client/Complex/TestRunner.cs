@@ -87,7 +87,7 @@ namespace Alis.Extension.Network.Sample.Client.Complex
         /// </summary>
         public void Run()
         {
-            Clock stopwatch = Clock.StartNew();
+            Clock stopwatch = Clock.Create();
             Parallel.For(0, _numThreads, Run);
             Logger.Info($"Completed in {stopwatch.Elapsed.TotalMilliseconds:#,##0.00} ms");
         }
