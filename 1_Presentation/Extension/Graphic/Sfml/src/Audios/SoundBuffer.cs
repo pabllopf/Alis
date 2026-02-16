@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         ///     Total duration of the buffer
         /// </summary>
 
-        public Time Duration => sfSoundBuffer_getDuration(CPointer);
+        public SfmlTime Duration => sfSoundBuffer_getDuration(CPointer);
 
 
         /// <summary>
@@ -329,7 +329,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The time</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Time sfSoundBuffer_getDuration(IntPtr soundBuffer);
+        private static extern SfmlTime sfSoundBuffer_getDuration(IntPtr soundBuffer);
 
         
     }

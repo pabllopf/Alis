@@ -28,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Builder.Core.Ecs.System.Manager.Scenes;
-using Alis.Builder.Core.Ecs.System.Setting;
+using Alis.Builder.Core.Ecs.System.ConfigurationBuilders;
+using Alis.Builder.Core.Ecs.System.ManagerBuilders.Scenes;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Ecs.Systems;

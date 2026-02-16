@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common.PhysicsLogic;
+using Alis.Core.Physic.Common.Logic;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Controllers
@@ -35,7 +35,7 @@ namespace Alis.Core.Physic.Controllers
     /// <summary>
     ///     The controller class
     /// </summary>
-    /// <seealso cref="FilterData" />
+    /// <seealso cref="Common.Logic.FilterData" />
     public abstract class Controller : FilterData
     {
         /// <summary>

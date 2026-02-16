@@ -30,7 +30,7 @@
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision;
+using Alis.Core.Physic.Collisions;
 
 namespace Alis.Core.Physic.Common.TextureTools
 {

@@ -32,6 +32,7 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Text;
 using Alis.Extension.Graphic.Glfw.Enums;
 using Alis.Extension.Graphic.Glfw.Structs;
 using Microsoft.Win32.SafeHandles;
@@ -151,9 +152,9 @@ namespace Alis.Extension.Graphic.Glfw
         public NativeWindow(int width, int height, string title, Monitor monitor, Window share) : base(true)
         {
             this.title = title ?? string.Empty;
-            Window = Glfw.CreateWindow(width, height, title ?? string.Empty, monitor, share);
+            Window = GlfwNative.CreateWindow(width, height, title ?? string.Empty, monitor, share);
             SetHandle(Window);
-            if (Glfw.GetClientApi(this) != ClientApi.None)
+            if (GlfwNative.GetClientApi(this) != ClientApi.None)
             {
                 MakeCurrent();
             }
@@ -183,12 +184,12 @@ namespace Alis.Extension.Graphic.Glfw
         /// <summary>
         ///     Gets the ratio between the current DPI and the platform's default DPI.
         /// </summary>
-        /// <seealso cref="Glfw.GetWindowContentScale" />
+        /// <seealso cref="GlfwNative.GetWindowContentScale" />
         public PointF ContentScale
         {
             get
             {
-                Glfw.GetWindowContentScale(handle, out float x, out float y);
+                GlfwNative.GetWindowContentScale(handle, out float x, out float y);
                 return new PointF(x, y);
             }
         }
@@ -204,8 +205,8 @@ namespace Alis.Extension.Graphic.Glfw
             get => new Rectangle(Position, ClientSize);
             set
             {
-                Glfw.SetWindowPosition(Window, value.X, value.Y);
-                Glfw.SetWindowSize(Window, value.Width, value.Height);
+                GlfwNative.SetWindowPosition(Window, value.X, value.Y);
+                GlfwNative.SetWindowSize(Window, value.Width, value.Height);
             }
         }
 
@@ -217,7 +218,7 @@ namespace Alis.Extension.Graphic.Glfw
         {
             get
             {
-                Glfw.GetWindowSize(Window, out int width, out int dummy);
+                GlfwNative.GetWindowSize(Window, out int width, out int dummy);
                 return width;
             }
             set
@@ -227,8 +228,8 @@ namespace Alis.Extension.Graphic.Glfw
                     throw new Exception("Window width muts be greater than 0.");
                 }
 
-                Glfw.GetWindowSize(Window, out int dummy, out int height);
-                Glfw.SetWindowSize(Window, value, height);
+                GlfwNative.GetWindowSize(Window, out int dummy, out int height);
+                GlfwNative.SetWindowSize(Window, value, height);
             }
         }
 
@@ -240,7 +241,7 @@ namespace Alis.Extension.Graphic.Glfw
         {
             get
             {
-                Glfw.GetWindowSize(Window, out int dummy, out int height);
+                GlfwNative.GetWindowSize(Window, out int dummy, out int height);
                 return height;
             }
             set
@@ -250,8 +251,8 @@ namespace Alis.Extension.Graphic.Glfw
                     throw new Exception("Window height muts be greater than 0.");
                 }
 
-                Glfw.GetWindowSize(Window, out int width, out int dummy);
-                Glfw.SetWindowSize(Window, width, value);
+                GlfwNative.GetWindowSize(Window, out int width, out int dummy);
+                GlfwNative.SetWindowSize(Window, width, value);
             }
         }
 
@@ -265,10 +266,10 @@ namespace Alis.Extension.Graphic.Glfw
         {
             get
             {
-                Glfw.GetWindowSize(Window, out int width, out int height);
+                GlfwNative.GetWindowSize(Window, out int width, out int height);
                 return new Size(width, height);
             }
-            set => Glfw.SetWindowSize(Window, value.Width, value.Height);
+            set => GlfwNative.SetWindowSize(Window, value.Width, value.Height);
         }
 
         /// <summary>
@@ -279,8 +280,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </value>
         public string Clipboard
         {
-            get => Glfw.GetClipboardString(Window);
-            set => Glfw.SetClipboardString(Window, value);
+            get => GlfwNative.GetClipboardString(Window);
+            set => GlfwNative.SetClipboardString(Window, value);
         }
 
         /// <summary>
@@ -291,8 +292,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </value>
         public CursorMode CursorMode
         {
-            get => (CursorMode) Glfw.GetInputMode(Window, InputMode.Cursor);
-            set => Glfw.SetInputMode(Window, InputMode.Cursor, (int) value);
+            get => (CursorMode) GlfwNative.GetInputMode(Window, InputMode.Cursor);
+            set => GlfwNative.SetInputMode(Window, InputMode.Cursor, (int) value);
         }
 
         /// <summary>
@@ -317,7 +318,7 @@ namespace Alis.Extension.Graphic.Glfw
             {
                 try
                 {
-                    return Native.GetWin32Window(Window);
+                    return GetWin32Window(Window);
                 }
                 catch (Exception)
                 {
@@ -325,6 +326,247 @@ namespace Alis.Extension.Graphic.Glfw
                 }
             }
         }
+        
+            /// <summary>
+        ///     Returns the CGDirectDisplayID of the specified monitor.
+        /// </summary>
+        /// <param name="monitor">The monitor to query.</param>
+        /// <returns>The CGDirectDisplayID of the specified monitor, or if an error occurred.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetCocoaMonitor", CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint GetCocoaMonitor(Monitor monitor);
+
+        /// <summary>
+        ///     Retrieves a pointer to the X11 display.
+        ///     <para>The pointer is to a native <c>Display</c> struct defined by X11..</para>
+        /// </summary>
+        /// <returns>A pointer to the X11 display struct.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetX11Display", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr GetX11Display();
+
+        /// <summary>
+        ///     Retrieves a pointer to the Wayland display.
+        ///     <para>The pointer is to a native <c>wl_display</c> struct defined in wayland-client.c.</para>
+        /// </summary>
+        /// <returns>A pointer to the Wayland display struct.</returns>
+        /// <seealso href="https://github.com/msteinert/wayland/blob/master/src/wayland-client.c" />
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWaylandDisplay", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr GetWaylandDisplay();
+
+        /// <summary>
+        ///     Retrieves a pointer to the Wayland output monitor.
+        ///     <para>The pointer is to a native <c>wl_output</c> struct defined in wayland-client.c.</para>
+        /// </summary>
+        /// <returns>A pointer to the Wayland output struct.</returns>
+        /// <seealso href="https://github.com/msteinert/wayland/blob/master/src/wayland-client.c" />
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWaylandMonitor", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr GetWaylandMonitor(Monitor monitor);
+
+        /// <summary>
+        ///     Returns the pointer to the Wayland window for the specified window.
+        /// </summary>
+        /// <param name="window">A window instance.</param>
+        /// <returns>A pointer to a Wayland window, or <see cref="IntPtr.Zero" /> if error occurred.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWaylandWindow", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr GetWaylandWindow(Window window);
+
+        /// <summary>
+        ///     Returns the pointer to the GLX window for the specified window.
+        /// </summary>
+        /// <param name="window">A window instance.</param>
+        /// <returns>A pointer to a GLX window, or <see cref="IntPtr.Zero" /> if error occurred.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetGLXWindow", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr GetGLXWindow(Window window);
+
+        /// <summary>
+        ///     Returns the pointer to the X11 window for the specified window.
+        /// </summary>
+        /// <param name="window">A window instance.</param>
+        /// <returns>A pointer to an X11 window, or <see cref="IntPtr.Zero" /> if error occurred.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetX11Window", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr GetX11Window(Window window);
+
+        /// <summary>
+        ///     Returns the RROutput of the specified monitor.
+        /// </summary>
+        /// <param name="monitor">The monitor to query.</param>
+        /// <returns>The RROutput of the specified monitor, or <see cref="IntPtr.Zero" /> if an error occurred.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetX11Monitor", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr GetX11Monitor(Monitor monitor);
+
+        /// <summary>
+        ///     Returns the RRCrtc of the specified monitor.
+        /// </summary>
+        /// <param name="monitor">The monitor to query.</param>
+        /// <returns>The RRCrtc of the specified monitor, or <see cref="IntPtr.Zero" /> if an error occurred.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetX11Adapter", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr GetX11Adapter(Monitor monitor);
+
+        /// <summary>
+        ///     Returns the pointer to the Cocoa window for the specified window.
+        /// </summary>
+        /// <param name="window">A window instance.</param>
+        /// <returns>A pointer to a Cocoa window, or <see cref="IntPtr.Zero" /> if error occurred.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetCocoaWindow", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr GetCocoaWindow(Window window);
+
+        /// <summary>
+        ///     Returns the NSOpenGLContext of the specified window.
+        /// </summary>
+        /// <param name="window">A window instance.</param>
+        /// <returns>The NSOpenGLContext of the specified window, or <see cref="NSOpenGLContext.None" /> if an error occurred.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetNSGLContext", CallingConvention = CallingConvention.Cdecl)]
+        public static extern NSOpenGLContext GetNSGLContext(Window window);
+
+        /// <summary>
+        ///     Returns the OSMesaContext of the specified window.
+        /// </summary>
+        /// <param name="window">A window instance.</param>
+        /// <returns>The OSMesaContext of the specified window, or <see cref="OSMesaContext.None" /> if an error occurred.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetOSMesaContext", CallingConvention = CallingConvention.Cdecl)]
+        public static extern OSMesaContext GetOSMesaContext(Window window);
+
+        /// <summary>
+        ///     Returns the GLXContext of the specified window.
+        /// </summary>
+        /// <param name="window">A window instance.</param>
+        /// <returns>The GLXContext of the specified window, or <see cref="GLXContext.None" /> if an error occurred.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetGLXContext", CallingConvention = CallingConvention.Cdecl)]
+        public static extern GLXContext GetGLXContext(Window window);
+
+        /// <summary>
+        ///     Returns the EGLContext of the specified window.
+        /// </summary>
+        /// <param name="window">A window instance.</param>
+        /// <returns>The EGLContext of the specified window, or <see cref="EGLContext.None" /> if an error occurred.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetEGLContext", CallingConvention = CallingConvention.Cdecl)]
+        public static extern EGLContext GetEglContext(Window window);
+
+        /// <summary>
+        ///     Returns the EGLDisplay used by GLFW.
+        /// </summary>
+        /// <returns>The EGLDisplay used by GLFW, or <see cref="EglDisplay.None" /> if an error occurred.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetEGLDisplay", CallingConvention = CallingConvention.Cdecl)]
+        public static extern EglDisplay GetEglDisplay();
+
+        /// <summary>
+        ///     Returns the <see cref="EglSurface" /> of the specified window
+        /// </summary>
+        /// <param name="window">A window instance.</param>
+        /// <returns>The EGLSurface of the specified window, or <see cref="EglSurface.None" /> if an error occurred.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetEGLSurface", CallingConvention = CallingConvention.Cdecl)]
+        public static extern EglSurface GetEglSurface(Window window);
+
+        /// <summary>
+        ///     Returns the WGL context of the specified window.
+        /// </summary>
+        /// <param name="window">A window instance.</param>
+        /// <returns>The WGL context of the specified window, or <see cref="EGLContext.None" /> if an error occurred.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWGLContext", CallingConvention = CallingConvention.Cdecl)]
+        public static extern Hglrc GetWglContext(Window window);
+
+        /// <summary>
+        ///     Returns the HWND of the specified window.
+        /// </summary>
+        /// <param name="window">A window instance.</param>
+        /// <returns>The HWND of the specified window, or <see cref="IntPtr.Zero" /> if an error occurred.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWin32Window", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr GetWin32Window(Window window);
+
+        /// <summary>
+        ///     Returns the contents of the selection as a string.
+        /// </summary>
+        /// <returns>The selected string, or <c>null</c> if error occurs or no string is selected.</returns>
+        public static string GetX11SelectionString()
+        {
+            IntPtr ptr = GetX11SelectionStringInternal();
+            return ptr == IntPtr.Zero ? null : Util.PtrToStringUTF8(ptr);
+        }
+
+        /// <summary>
+        ///     Sets the clipboard string of an X11 window.
+        /// </summary>
+        /// <param name="str">The string to set.</param>
+        public static void SetX11SelectionString(string str)
+        {
+            SetX11SelectionString(Encoding.UTF8.GetBytes(str));
+        }
+
+        /// <summary>
+        ///     Retrieves the color buffer associated with the specified window.
+        /// </summary>
+        /// <param name="window">The window whose color buffer to retrieve.</param>
+        /// <param name="width">The width of the color buffer.</param>
+        /// <param name="height">The height of the color buffer.</param>
+        /// <param name="format">The pixel format of the color buffer.</param>
+        /// <param name="buffer">A pointer to the first element in the buffer.</param>
+        /// <returns><c>true</c> if operation was successful, otherwise <c>false</c>.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetOSMesaColorBuffer", CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool
+            GetOSMesaColorBuffer(Window window, out int width, out int height, out int format, out IntPtr buffer);
+
+        /// <summary>
+        ///     Retrieves the depth buffer associated with the specified window.
+        /// </summary>
+        /// <param name="window">The window whose depth buffer to retrieve.</param>
+        /// <param name="width">The width of the depth buffer.</param>
+        /// <param name="height">The height of the depth buffer.</param>
+        /// <param name="bytesPerValue">The number of bytes per element in the buffer.</param>
+        /// <param name="buffer">A pointer to the first element in the buffer.</param>
+        /// <returns><c>true</c> if operation was successful, otherwise <c>false</c>.</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetOSMesaDepthBuffer", CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool
+            GetOSMesaDepthBuffer(Window window, out int width, out int height, out int bytesPerValue,
+                out IntPtr buffer);
+
+
+        /// <summary>
+        ///     Sets the x 11 selection string using the specified str
+        /// </summary>
+        /// <param name="str">The str</param>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwSetX11SelectionString", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void SetX11SelectionString(byte[] str);
+
+        /// <summary>
+        ///     Gets the x 11 selection string internal
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetX11SelectionString", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr GetX11SelectionStringInternal();
+
+        /// <summary>
+        ///     Gets the win 32 adapter internal using the specified monitor
+        /// </summary>
+        /// <param name="monitor">The monitor</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWin32Adapter", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr GetWin32AdapterInternal(Monitor monitor);
+
+        /// <summary>
+        ///     Gets the win 32 monitor internal using the specified monitor
+        /// </summary>
+        /// <param name="monitor">The monitor</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(GlfwNative.Library, EntryPoint = "glfwGetWin32Monitor", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr GetWin32MonitorInternal(Monitor monitor);
+
+
+        /// <summary>
+        ///     Gets the win32 adapter.
+        /// </summary>
+        /// <param name="monitor">A monitor instance.</param>
+        /// <returns>dapter device name (for example \\.\DISPLAY1) of the specified monitor, or <c>null</c> if an error occurred.</returns>
+        public static string GetWin32Adapter(Monitor monitor) => Util.PtrToStringUTF8(GetWin32AdapterInternal(monitor));
+
+        /// <summary>
+        ///     Returns the display device name of the specified monitor
+        /// </summary>
+        /// <param name="monitor">A monitor instance.</param>
+        /// <returns>
+        ///     The display device name (for example \\.\DISPLAY1\Monitor0) of the specified monitor, or <c>null</c> if an
+        ///     error occurred.
+        /// </returns>
+        public static string GetWin32Monitor(Monitor monitor) => Util.PtrToStringUTF8(GetWin32MonitorInternal(monitor));
+        
 
         /// <summary>
         ///     Gets a value indicating whether this instance is closing.
@@ -332,7 +574,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <value>
         ///     <c>true</c> if this instance is closing; otherwise, <c>false</c>.
         /// </value>
-        public bool IsClosing => Glfw.WindowShouldClose(Window);
+        public bool IsClosing => GlfwNative.WindowShouldClose(Window);
 
         /// <summary>
         ///     Gets a value indicating whether this instance is decorated.
@@ -340,7 +582,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <value>
         ///     <c>true</c> if this instance is decorated; otherwise, <c>false</c>.
         /// </value>
-        public bool IsDecorated => Glfw.GetWindowAttribute(Window, WindowAttribute.Decorated);
+        public bool IsDecorated => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Decorated);
 
         /// <summary>
         ///     Gets a value indicating whether this instance is floating (top-most, always-on-top).
@@ -348,7 +590,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <value>
         ///     <c>true</c> if this instance is floating; otherwise, <c>false</c>.
         /// </value>
-        public bool IsFloating => Glfw.GetWindowAttribute(Window, WindowAttribute.Floating);
+        public bool IsFloating => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Floating);
 
         /// <summary>
         ///     Gets a value indicating whether this instance is focused.
@@ -356,7 +598,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <value>
         ///     <c>true</c> if this instance is focused; otherwise, <c>false</c>.
         /// </value>
-        public bool IsFocused => Glfw.GetWindowAttribute(Window, WindowAttribute.Focused);
+        public bool IsFocused => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Focused);
 
         /// <summary>
         ///     Gets a value indicating whether this instance is resizable.
@@ -364,7 +606,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <value>
         ///     <c>true</c> if this instance is resizable; otherwise, <c>false</c>.
         /// </value>
-        public bool IsResizable => Glfw.GetWindowAttribute(Window, WindowAttribute.Resizable);
+        public bool IsResizable => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Resizable);
 
         /// <summary>
         ///     Gets or sets a value indicating whether this <see cref="NativeWindow" /> is maximized.
@@ -375,16 +617,16 @@ namespace Alis.Extension.Graphic.Glfw
         /// </value>
         public bool Maximized
         {
-            get => Glfw.GetWindowAttribute(Window, WindowAttribute.Maximized);
+            get => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Maximized);
             set
             {
                 if (value)
                 {
-                    Glfw.MaximizeWindow(Window);
+                    GlfwNative.MaximizeWindow(Window);
                 }
                 else
                 {
-                    Glfw.RestoreWindow(Window);
+                    GlfwNative.RestoreWindow(Window);
                 }
             }
         }
@@ -398,16 +640,16 @@ namespace Alis.Extension.Graphic.Glfw
         /// </value>
         public bool Minimized
         {
-            get => Glfw.GetWindowAttribute(Window, WindowAttribute.AutoIconify);
+            get => GlfwNative.GetWindowAttribute(Window, WindowAttribute.AutoIconify);
             set
             {
                 if (value)
                 {
-                    Glfw.IconifyWindow(Window);
+                    GlfwNative.IconifyWindow(Window);
                 }
                 else
                 {
-                    Glfw.RestoreWindow(Window);
+                    GlfwNative.RestoreWindow(Window);
                 }
             }
         }
@@ -419,7 +661,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <value>
         ///     The monitor.
         /// </value>
-        public Monitor Monitor => Glfw.GetWindowMonitor(Window);
+        public Monitor Monitor => GlfwNative.GetWindowMonitor(Window);
 
         /// <summary>
         ///     Gets or sets the mouse position in screen-coordinates relative to the client area of the window.
@@ -431,10 +673,10 @@ namespace Alis.Extension.Graphic.Glfw
         {
             get
             {
-                Glfw.GetCursorPosition(Window, out double x, out double y);
+                GlfwNative.GetCursorPosition(Window, out double x, out double y);
                 return new Point(Convert.ToInt32(x), Convert.ToInt32(y));
             }
-            set => Glfw.SetCursorPosition(Window, value.X, value.Y);
+            set => GlfwNative.SetCursorPosition(Window, value.X, value.Y);
         }
 
         /// <summary>
@@ -447,14 +689,14 @@ namespace Alis.Extension.Graphic.Glfw
         {
             get
             {
-                Glfw.GetWindowPosition(Window, out int x, out int y);
-                Glfw.GetWindowFrameSize(Window, out int l, out int t, out int dummy1, out int dummy2);
+                GlfwNative.GetWindowPosition(Window, out int x, out int y);
+                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int dummy1, out int dummy2);
                 return new Point(x - l, y - t);
             }
             set
             {
-                Glfw.GetWindowFrameSize(Window, out int l, out int t, out int dummy1, out int dummy2);
-                Glfw.SetWindowPosition(Window, value.X + l, value.Y + t);
+                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int dummy1, out int dummy2);
+                GlfwNative.SetWindowPosition(Window, value.X + l, value.Y + t);
             }
         }
 
@@ -468,14 +710,14 @@ namespace Alis.Extension.Graphic.Glfw
         {
             get
             {
-                Glfw.GetWindowSize(Window, out int width, out int height);
-                Glfw.GetWindowFrameSize(Window, out int l, out int t, out int r, out int b);
+                GlfwNative.GetWindowSize(Window, out int width, out int height);
+                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int r, out int b);
                 return new Size(width + l + r, height + t + b);
             }
             set
             {
-                Glfw.GetWindowFrameSize(Window, out int l, out int t, out int r, out int b);
-                Glfw.SetWindowSize(Window, value.Width - l - r, value.Height - t - b);
+                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int r, out int b);
+                GlfwNative.SetWindowSize(Window, value.Width - l - r, value.Height - t - b);
             }
         }
 
@@ -483,23 +725,23 @@ namespace Alis.Extension.Graphic.Glfw
         ///     Sets the sticky keys input mode.
         ///     <para>
         ///         Set to <c>true</c> to enable sticky keys, or <c>false</c> to disable it. If sticky keys are enabled, a key
-        ///         press will ensure that <see cref="Glfw.GetKey" /> returns <see cref="InputState.Press" /> the next time it is
+        ///         press will ensure that <see cref="GlfwNative.GetKey" /> returns <see cref="InputState.Press" /> the next time it is
         ///         called even if the key had been released before the call. This is useful when you are only interested in
         ///         whether keys have been pressed but not when or in which order.
         ///     </para>
         /// </summary>
         public bool StickyKeys
         {
-            get => Glfw.GetInputMode(Window, InputMode.StickyKeys) == (int) Constants.True;
+            get => GlfwNative.GetInputMode(Window, InputMode.StickyKeys) == (int) Constants.True;
             set =>
-                Glfw.SetInputMode(Window, InputMode.StickyKeys, value ? (int) Constants.True : (int) Constants.False);
+                GlfwNative.SetInputMode(Window, InputMode.StickyKeys, value ? (int) Constants.True : (int) Constants.False);
         }
 
         /// <summary>
         ///     Gets or sets the sticky mouse button input mode.
         ///     <para>
         ///         Set to <c>true</c> to enable sticky mouse buttons, or <c>false</c> to disable it. If sticky mouse buttons are
-        ///         enabled, a mouse button press will ensure that <see cref="Glfw.GetMouseButton" /> returns
+        ///         enabled, a mouse button press will ensure that <see cref="GlfwNative.GetMouseButton" /> returns
         ///         <see cref="InputState.Press" /> the next time it is called even if the mouse button had been released before
         ///         the call. This is useful when you are only interested in whether mouse buttons have been pressed but not when
         ///         or in which order.
@@ -507,9 +749,9 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         public bool StickyMouseButtons
         {
-            get => Glfw.GetInputMode(Window, InputMode.StickyMouseButton) == (int) Constants.True;
+            get => GlfwNative.GetInputMode(Window, InputMode.StickyMouseButton) == (int) Constants.True;
             set =>
-                Glfw.SetInputMode(Window, InputMode.StickyMouseButton,
+                GlfwNative.SetInputMode(Window, InputMode.StickyMouseButton,
                     value ? (int) Constants.True : (int) Constants.False);
         }
 
@@ -526,7 +768,7 @@ namespace Alis.Extension.Graphic.Glfw
             set
             {
                 title = value;
-                Glfw.SetWindowTitle(Window, value ?? string.Empty);
+                GlfwNative.SetWindowTitle(Window, value ?? string.Empty);
             }
         }
 
@@ -538,8 +780,8 @@ namespace Alis.Extension.Graphic.Glfw
         /// </value>
         public IntPtr UserPointer
         {
-            get => Glfw.GetWindowUserPointer(Window);
-            set => Glfw.SetWindowUserPointer(Window, value);
+            get => GlfwNative.GetWindowUserPointer(Window);
+            set => GlfwNative.SetWindowUserPointer(Window, value);
         }
 
         /// <summary>
@@ -554,7 +796,7 @@ namespace Alis.Extension.Graphic.Glfw
             get
             {
                 Monitor monitor = Monitor;
-                return Glfw.GetVideoMode(monitor == Monitor.None ? Glfw.PrimaryMonitor : monitor);
+                return GlfwNative.GetVideoMode(monitor == Monitor.None ? GlfwNative.PrimaryMonitor : monitor);
             }
         }
 
@@ -566,16 +808,16 @@ namespace Alis.Extension.Graphic.Glfw
         /// </value>
         public bool Visible
         {
-            get => Glfw.GetWindowAttribute(Window, WindowAttribute.Visible);
+            get => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Visible);
             set
             {
                 if (value)
                 {
-                    Glfw.ShowWindow(Window);
+                    GlfwNative.ShowWindow(Window);
                 }
                 else
                 {
-                    Glfw.HideWindow(Window);
+                    GlfwNative.HideWindow(Window);
                 }
             }
         }
@@ -650,7 +892,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         public void RequestAttention()
         {
-            Glfw.RequestWindowAttention(handle);
+            GlfwNative.RequestWindowAttention(handle);
         }
 
 
@@ -684,8 +926,8 @@ namespace Alis.Extension.Graphic.Glfw
                 return;
             }
 
-            Monitor monitor = Monitor == Monitor.None ? Glfw.PrimaryMonitor : Monitor;
-            VideoMode videoMode = Glfw.GetVideoMode(monitor);
+            Monitor monitor = Monitor == Monitor.None ? GlfwNative.PrimaryMonitor : Monitor;
+            VideoMode videoMode = GlfwNative.GetVideoMode(monitor);
             Size size = Size;
             Position = new Point((videoMode.Width - size.Width) / 2, (videoMode.Height - size.Height) / 2);
         }
@@ -696,7 +938,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         public new void Close()
         {
-            Glfw.SetWindowShouldClose(Window, true);
+            GlfwNative.SetWindowShouldClose(Window, true);
             OnClosing();
             base.Close();
         }
@@ -706,7 +948,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         public void Focus()
         {
-            Glfw.FocusWindow(Window);
+            GlfwNative.FocusWindow(Window);
         }
 
         /// <summary>
@@ -714,7 +956,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         public void Fullscreen()
         {
-            Fullscreen(Glfw.PrimaryMonitor);
+            Fullscreen(GlfwNative.PrimaryMonitor);
         }
 
         /// <summary>
@@ -723,7 +965,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <param name="monitor">The monitor to display the window fullscreen.</param>
         public void Fullscreen(Monitor monitor)
         {
-            Glfw.SetWindowMonitor(Window, monitor, 0, 0, 0, 0, -1);
+            GlfwNative.SetWindowMonitor(Window, monitor, 0, 0, 0, 0, -1);
         }
 
         /// <summary>
@@ -731,7 +973,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         public void MakeCurrent()
         {
-            Glfw.MakeContextCurrent(Window);
+            GlfwNative.MakeContextCurrent(Window);
         }
 
         /// <summary>
@@ -740,7 +982,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         public void Maximize()
         {
-            Glfw.MaximizeWindow(Window);
+            GlfwNative.MaximizeWindow(Window);
         }
 
         /// <summary>
@@ -749,7 +991,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         public void Minimize()
         {
-            Glfw.IconifyWindow(Window);
+            GlfwNative.IconifyWindow(Window);
         }
 
         /// <summary>
@@ -758,7 +1000,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         public void Restore()
         {
-            Glfw.RestoreWindow(Window);
+            GlfwNative.RestoreWindow(Window);
         }
 
         /// <summary>
@@ -769,7 +1011,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <param name="denominator">The denominator of the desired aspect ratio.</param>
         public void SetAspectRatio(int numerator, int denominator)
         {
-            Glfw.SetWindowAspectRatio(Window, numerator, denominator);
+            GlfwNative.SetWindowAspectRatio(Window, numerator, denominator);
         }
 
         /// <summary>
@@ -779,7 +1021,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <param name="images">One or more images to set as an icon.</param>
         public void SetIcons(params Image[] images)
         {
-            Glfw.SetWindowIcon(Window, images.Length, images);
+            GlfwNative.SetWindowIcon(Window, images.Length, images);
         }
 
         /// <summary>
@@ -798,7 +1040,7 @@ namespace Alis.Extension.Graphic.Glfw
         public void SetMonitor(Monitor monitor, int x, int y, int width, int height,
             int refreshRate = (int) Constants.Default)
         {
-            Glfw.SetWindowMonitor(Window, monitor, x, y, width, height, refreshRate);
+            GlfwNative.SetWindowMonitor(Window, monitor, x, y, width, height, refreshRate);
         }
 
         /// <summary>
@@ -820,7 +1062,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <param name="maxHeight">The maximum height of the client area.</param>
         public void SetSizeLimits(int minWidth, int minHeight, int maxWidth, int maxHeight)
         {
-            Glfw.SetWindowSizeLimits(Window, minWidth, minHeight, maxWidth, maxHeight);
+            GlfwNative.SetWindowSizeLimits(Window, minWidth, minHeight, maxWidth, maxHeight);
         }
 
         /// <summary>
@@ -831,7 +1073,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         public void SwapBuffers()
         {
-            Glfw.SwapBuffers(Window);
+            GlfwNative.SwapBuffers(Window);
         }
 
         /// <summary>
@@ -855,7 +1097,7 @@ namespace Alis.Extension.Graphic.Glfw
         {
             try
             {
-                Glfw.DestroyWindow(Window);
+                GlfwNative.DestroyWindow(Window);
                 return true;
             }
             catch (Exception)
@@ -885,21 +1127,21 @@ namespace Alis.Extension.Graphic.Glfw
             windowMaximizeCallback = (_, maximized) => OnMaximizeChanged(maximized);
             windowContentScaleCallback = (_, x, y) => OnContentScaleChanged(x, y);
 
-            Glfw.SetWindowPositionCallback(Window, windowPositionCallback);
-            Glfw.SetWindowSizeCallback(Window, windowSizeCallback);
-            Glfw.SetWindowFocusCallback(Window, windowFocusCallback);
-            Glfw.SetCloseCallback(Window, closeCallback);
-            Glfw.SetDropCallback(Window, dropCallback);
-            Glfw.SetCursorPositionCallback(Window, cursorPositionCallback);
-            Glfw.SetCursorEnterCallback(Window, cursorEnterCallback);
-            Glfw.SetMouseButtonCallback(Window, mouseButtonCallback);
-            Glfw.SetScrollCallback(Window, scrollCallback);
-            Glfw.SetCharModsCallback(Window, charModsCallback);
-            Glfw.SetFramebufferSizeCallback(Window, framebufferSizeCallback);
-            Glfw.SetWindowRefreshCallback(Window, windowRefreshCallback);
-            Glfw.SetKeyCallback(Window, keyCallback);
-            Glfw.SetWindowMaximizeCallback(Window, windowMaximizeCallback);
-            Glfw.SetWindowContentScaleCallback(Window, windowContentScaleCallback);
+            GlfwNative.SetWindowPositionCallback(Window, windowPositionCallback);
+            GlfwNative.SetWindowSizeCallback(Window, windowSizeCallback);
+            GlfwNative.SetWindowFocusCallback(Window, windowFocusCallback);
+            GlfwNative.SetCloseCallback(Window, closeCallback);
+            GlfwNative.SetDropCallback(Window, dropCallback);
+            GlfwNative.SetCursorPositionCallback(Window, cursorPositionCallback);
+            GlfwNative.SetCursorEnterCallback(Window, cursorEnterCallback);
+            GlfwNative.SetMouseButtonCallback(Window, mouseButtonCallback);
+            GlfwNative.SetScrollCallback(Window, scrollCallback);
+            GlfwNative.SetCharModsCallback(Window, charModsCallback);
+            GlfwNative.SetFramebufferSizeCallback(Window, framebufferSizeCallback);
+            GlfwNative.SetWindowRefreshCallback(Window, windowRefreshCallback);
+            GlfwNative.SetKeyCallback(Window, keyCallback);
+            GlfwNative.SetWindowMaximizeCallback(Window, windowMaximizeCallback);
+            GlfwNative.SetWindowContentScaleCallback(Window, windowContentScaleCallback);
         }
 
         /// <summary>
@@ -1048,7 +1290,7 @@ namespace Alis.Extension.Graphic.Glfw
             Closing?.Invoke(this, args);
             if (args.Cancel)
             {
-                Glfw.SetWindowShouldClose(Window, false);
+                GlfwNative.SetWindowShouldClose(Window, false);
             }
             else
             {

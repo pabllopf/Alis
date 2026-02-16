@@ -222,7 +222,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         ///     So don't rely on this parameter to implement precise timing.
         ///     The default processing interval is 100 ms.
         /// </summary>
-        protected void SetProcessingInterval(Time interval)
+        protected void SetProcessingInterval(SfmlTime interval)
         {
             sfSoundRecorder_setProcessingInterval(CPointer, interval);
         }
@@ -344,7 +344,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="soundRecorder">The sound recorder</param>
         /// <param name="interval">The interval</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfSoundRecorder_setProcessingInterval(IntPtr soundRecorder, Time interval);
+        private static extern void sfSoundRecorder_setProcessingInterval(IntPtr soundRecorder, SfmlTime interval);
 
         /// <summary>
         ///     Sfs the sound recorder get available devices using the specified count

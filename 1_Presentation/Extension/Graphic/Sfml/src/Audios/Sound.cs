@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         ///     either paused or playing.
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public Time PlayingOffset
+        public SfmlTime PlayingOffset
         {
             get => sfSound_getPlayingOffset(CPointer);
             set => sfSound_setPlayingOffset(CPointer, value);
@@ -427,9 +427,9 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         ///     Sfs the sound set playing offset using the specified sound
         /// </summary>
         /// <param name="sound">The sound</param>
-        /// <param name="timeOffset">The time offset</param>
+        /// <param name="sfmlTimeOffset">The time offset</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfSound_setPlayingOffset(IntPtr sound, Time timeOffset);
+        private static extern void sfSound_setPlayingOffset(IntPtr sound, SfmlTime sfmlTimeOffset);
 
         /// <summary>
         ///     Sfs the sound get pitch using the specified sound
@@ -485,7 +485,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="sound">The sound</param>
         /// <returns>The time</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Time sfSound_getPlayingOffset(IntPtr sound);
+        private static extern SfmlTime sfSound_getPlayingOffset(IntPtr sound);
 
         
     }

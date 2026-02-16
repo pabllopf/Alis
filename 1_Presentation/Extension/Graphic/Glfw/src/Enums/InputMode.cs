@@ -41,14 +41,14 @@ namespace Alis.Extension.Graphic.Glfw.Enums
         Cursor = 0x00033001,
 
         /// <summary>
-        ///     If specified, enables setting sticky keys, where <see cref="Glfw.GetKey" /> will return
+        ///     If specified, enables setting sticky keys, where <see cref="GlfwNative.GetKey" /> will return
         ///     <see cref="InputState.Press" /> the first time you call it for a key that was pressed, even if that key has already
         ///     been released.
         /// </summary>
         StickyKeys = 0x00033002,
 
         /// <summary>
-        ///     If specified, enables setting sticky mouse buttons, where <see cref="Glfw.GetMouseButton" /> will return
+        ///     If specified, enables setting sticky mouse buttons, where <see cref="GlfwNative.GetMouseButton" /> will return
         ///     <see cref="InputState.Press" /> the first time you call it for a mouse button that was pressed, even if that mouse
         ///     button has already been released.
         /// </summary>
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Glfw.Enums
 
         /// <summary>
         ///     When the cursor is disabled, raw (unscaled and unaccelerated) mouse motion can be enabled if available.
-        ///     <seealso cref="Glfw.RawMouseMotionSupported" />
+        ///     <seealso cref="GlfwNative.RawMouseMotionSupported" />
         /// </summary>
         RawMouseMotion = 0x00033005
     }

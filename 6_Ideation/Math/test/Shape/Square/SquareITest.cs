@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Shape.Square;
+using Alis.Core.Aspect.Math.Shapes.Square;
 using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test.Shape.Square

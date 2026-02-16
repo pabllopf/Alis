@@ -31,7 +31,7 @@
 using System;
 using System.Threading;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Shape.Rectangle;
+using Alis.Core.Aspect.Math.Shapes.Rectangle;
 using Alis.Extension.Graphic.Sdl2.Enums;
 using Alis.Extension.Graphic.Sdl2.Mapping;
 using Alis.Extension.Graphic.Sdl2.Structs;

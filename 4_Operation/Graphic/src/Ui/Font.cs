@@ -32,7 +32,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Aspect.Math.Shape.Rectangle;
+using Alis.Core.Aspect.Math.Shapes.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;

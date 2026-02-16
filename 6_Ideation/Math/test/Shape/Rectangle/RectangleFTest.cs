@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Shape.Rectangle;
+using Alis.Core.Aspect.Math.Shapes.Rectangle;
 using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test.Shape.Rectangle

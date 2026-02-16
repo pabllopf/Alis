@@ -95,10 +95,10 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
             IntPtr fromView);
 
         internal static readonly IntPtr selMouseLocationOutside =
-            ObjectiveCInterop.Sel("mouseLocationOutsideOfEventStream");
+            Sel("mouseLocationOutsideOfEventStream");
 
         internal static readonly IntPtr selConvertPointFromView =
-            ObjectiveCInterop.Sel("convertPoint:fromView:");
+            Sel("convertPoint:fromView:");
 
        
 

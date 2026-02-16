@@ -1044,24 +1044,24 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         {
             ImGui.Begin("simple node editor");
 
-            ImNodes.BeginNodeEditor();
-            ImNodes.BeginNode(1);
+            BeginNodeEditor();
+            BeginNode(1);
 
-            ImNodes.BeginNodeTitleBar();
+            BeginNodeTitleBar();
             ImGui.TextUnformatted("simple node :)");
-            ImNodes.EndNodeTitleBar();
+            EndNodeTitleBar();
 
-            ImNodes.BeginInputAttribute(2);
+            BeginInputAttribute(2);
             ImGui.Text("input");
-            ImNodes.EndInputAttribute();
+            EndInputAttribute();
 
-            ImNodes.BeginOutputAttribute(3);
+            BeginOutputAttribute(3);
             ImGui.Indent(40);
             ImGui.Text("output");
-            ImNodes.EndOutputAttribute();
+            EndOutputAttribute();
 
-            ImNodes.EndNode();
-            ImNodes.EndNodeEditor();
+            EndNode();
+            EndNodeEditor();
 
             ImGui.End();
         }

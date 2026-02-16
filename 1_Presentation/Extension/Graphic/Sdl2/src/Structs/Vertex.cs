@@ -29,7 +29,7 @@
 
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Aspect.Math.Shape.Point;
+using Alis.Core.Aspect.Math.Shapes.Point;
 
 namespace Alis.Extension.Graphic.Sdl2.Structs
 {

@@ -106,7 +106,7 @@ namespace Alis.App.Hub
         /// <summary>
         /// The vector
         /// </summary>
-        private readonly Alis.Core.Aspect.Math.Vector.Vector2F[] _lastClickPos = new Alis.Core.Aspect.Math.Vector.Vector2F[5];
+        private readonly Vector2F[] _lastClickPos = new Vector2F[5];
 
         // --- Añadir campos en la clase HubEngine (junto a _prevMouseDown, _lastClickTime, _lastClickPos) ---
         /// <summary>
@@ -173,8 +173,8 @@ namespace Alis.App.Hub
             ImGui.SetCurrentContext(imguiContext);
             
              // Ensure the native GL context is current before creating GL resources.
-            Debug.Assert(this.platform != null, "Platform must be provided before Initialize is called.");
-            this.platform?.MakeContextCurrent();
+            Debug.Assert(platform != null, "Platform must be provided before Initialize is called.");
+            platform?.MakeContextCurrent();
 
             // Create or reuse ImGui context
             IntPtr currentCtx = ImGui.GetCurrentContext();
@@ -324,7 +324,7 @@ namespace Alis.App.Hub
                 _mouseClickedTime[i] = 1e6; // valor grande = "no activo"
                 _prevMouseDown[i] = false;
                 _lastClickTime[i] = 0.0;
-                _lastClickPos[i] = new Alis.Core.Aspect.Math.Vector.Vector2F(0, 0);
+                _lastClickPos[i] = new Vector2F(0, 0);
             }
            
             ImGuiIoPtr io = ImGui.GetIo();
@@ -1855,7 +1855,7 @@ namespace Alis.App.Hub
             int fbWidth = viewport[2];
             int fbHeight = viewport[3];
             ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
-            imGuiIoPtr.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(fbWidth, fbHeight);
+            imGuiIoPtr.DisplaySize = new Vector2F(fbWidth, fbHeight);
             
             
             float scaleX = fbWidth / resolutionProgramX;

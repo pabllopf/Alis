@@ -29,10 +29,10 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision;
-using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Common;
-using Alis.Core.Physic.Common.PhysicsLogic;
+using Alis.Core.Physic.Common.Logic;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Joints;
 

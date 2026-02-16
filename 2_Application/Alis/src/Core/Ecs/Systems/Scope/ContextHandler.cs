@@ -96,13 +96,13 @@ namespace Alis.Core.Ecs.Systems.Scope
         /// </summary>
         public void Run()
         {
-            Runtime<AManager> runtime = _context.Runtime;
+            InternalRuntime<AManager> internalRuntime = _context.InternalRuntime;
             Setting setting = _context.Setting;
             TimeManager timeManager = _context.TimeManager;
 
-            runtime.OnInit();
-            runtime.OnAwake();
-            runtime.OnStart();
+            internalRuntime.OnInit();
+            internalRuntime.OnAwake();
+            internalRuntime.OnStart();
 
             targetFrameDuration = 1 / setting.Graphic.TargetFrames;
            currentTime = timeManager.Clock.Elapsed.TotalSeconds;
@@ -134,13 +134,13 @@ namespace Alis.Core.Ecs.Systems.Scope
                     lastTime = newTime;
                 }
 
-                runtime.OnDispatchEvents();
-                runtime.OnProcessPendingChanges();
+                internalRuntime.OnDispatchEvents();
+                internalRuntime.OnProcessPendingChanges();
 
-                runtime.OnPhysicUpdate();
-                runtime.OnBeforeUpdate();
-                runtime.OnUpdate();
-                runtime.OnAfterUpdate();
+                internalRuntime.OnPhysicUpdate();
+                internalRuntime.OnBeforeUpdate();
+                internalRuntime.OnUpdate();
+                internalRuntime.OnAfterUpdate();
 
                 while (accumulator >= timeManager.Configuration.FixedTimeStep)
                 {
@@ -151,21 +151,21 @@ namespace Alis.Core.Ecs.Systems.Scope
                     timeManager.FixedUnscaledDeltaTime = timeManager.Configuration.FixedTimeStep / timeManager.TimeScale;
                     timeManager.FixedUnscaledTime += timeManager.FixedUnscaledDeltaTime;
                     timeManager.FixedUnscaledTimeAsDouble += timeManager.FixedUnscaledDeltaTime;
-                    runtime.OnBeforeFixedUpdate();
-                    runtime.OnFixedUpdate();
-                    runtime.OnAfterFixedUpdate();
+                    internalRuntime.OnBeforeFixedUpdate();
+                    internalRuntime.OnFixedUpdate();
+                    internalRuntime.OnAfterFixedUpdate();
                     accumulator %= timeManager.Configuration.FixedTimeStep;
                     timeManager.InFixedTimeStep = false;
                 }
 
-                runtime.OnCalculate();
+                internalRuntime.OnCalculate();
 
                 // Render game:
-                runtime.OnBeforeDraw();
-                runtime.OnDraw();
-                runtime.OnAfterDraw();
-                runtime.OnGui();
-                runtime.OnRenderPresent();
+                internalRuntime.OnBeforeDraw();
+                internalRuntime.OnDraw();
+                internalRuntime.OnAfterDraw();
+                internalRuntime.OnGui();
+                internalRuntime.OnRenderPresent();
 
 
                 smoothDeltaTimeSum += timeManager.DeltaTime - lastDeltaTime;
@@ -181,8 +181,8 @@ namespace Alis.Core.Ecs.Systems.Scope
                 }
             }
 
-            runtime.OnStop();
-            runtime.OnExit();
+            internalRuntime.OnStop();
+            internalRuntime.OnExit();
         }
 
 
@@ -197,7 +197,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         public void Save()
         {
             _context.Setting.OnSave();
-            _context.Runtime.OnSave();
+            _context.InternalRuntime.OnSave();
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         public void Load()
         {
             _context.Setting.OnLoad();
-            _context.Runtime.OnLoad();
+            _context.InternalRuntime.OnLoad();
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         public void LoadAndRun()
         {
             _context.Setting.OnLoad();
-            _context.Runtime.OnLoad();
+            _context.InternalRuntime.OnLoad();
             Run();
         }
 
@@ -224,15 +224,15 @@ namespace Alis.Core.Ecs.Systems.Scope
         /// </summary>
         public void InitPreview()
         {
-            Runtime<AManager> runtime = _context.Runtime;
+            InternalRuntime<AManager> internalRuntime = _context.InternalRuntime;
             Setting setting = _context.Setting;
             TimeManager timeManager = _context.TimeManager;
 
             _context.Setting.Graphic = _context.Setting.Graphic with {PreviewMode = true};
             
-            runtime.OnInit();
-            runtime.OnAwake();
-            runtime.OnStart();
+            internalRuntime.OnInit();
+            internalRuntime.OnAwake();
+            internalRuntime.OnStart();
 
             targetFrameDuration = 1 / setting.Graphic.TargetFrames;
             currentTime = timeManager.Clock.Elapsed.TotalSeconds;
@@ -245,7 +245,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         /// </summary>
         public void Preview()
         {
-            Runtime<AManager> runtime = _context.Runtime;
+            InternalRuntime<AManager> internalRuntime = _context.InternalRuntime;
             Setting setting = _context.Setting;
             TimeManager timeManager = _context.TimeManager;
 
@@ -272,13 +272,13 @@ namespace Alis.Core.Ecs.Systems.Scope
                 lastTime = newTime;
             }
 
-            runtime.OnDispatchEvents();
-            runtime.OnProcessPendingChanges();
+            internalRuntime.OnDispatchEvents();
+            internalRuntime.OnProcessPendingChanges();
 
-            runtime.OnPhysicUpdate();
-            runtime.OnBeforeUpdate();
-            runtime.OnUpdate();
-            runtime.OnAfterUpdate();
+            internalRuntime.OnPhysicUpdate();
+            internalRuntime.OnBeforeUpdate();
+            internalRuntime.OnUpdate();
+            internalRuntime.OnAfterUpdate();
 
             while (accumulator >= timeManager.Configuration.FixedTimeStep)
             {
@@ -289,21 +289,21 @@ namespace Alis.Core.Ecs.Systems.Scope
                 timeManager.FixedUnscaledDeltaTime = timeManager.Configuration.FixedTimeStep / timeManager.TimeScale;
                 timeManager.FixedUnscaledTime += timeManager.FixedUnscaledDeltaTime;
                 timeManager.FixedUnscaledTimeAsDouble += timeManager.FixedUnscaledDeltaTime;
-                runtime.OnBeforeFixedUpdate();
-                runtime.OnFixedUpdate();
-                runtime.OnAfterFixedUpdate();
+                internalRuntime.OnBeforeFixedUpdate();
+                internalRuntime.OnFixedUpdate();
+                internalRuntime.OnAfterFixedUpdate();
                 accumulator %= timeManager.Configuration.FixedTimeStep;
                 timeManager.InFixedTimeStep = false;
             }
 
-            runtime.OnCalculate();
+            internalRuntime.OnCalculate();
 
             // Render game:
-            runtime.OnBeforeDraw();
-            runtime.OnDraw();
-            runtime.OnAfterDraw();
-            runtime.OnGui();
-            runtime.OnRenderPresent();
+            internalRuntime.OnBeforeDraw();
+            internalRuntime.OnDraw();
+            internalRuntime.OnAfterDraw();
+            internalRuntime.OnGui();
+            internalRuntime.OnRenderPresent();
 
 
             smoothDeltaTimeSum += timeManager.DeltaTime - lastDeltaTime;
@@ -326,7 +326,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         public void Save(string path)
         {
             _context.Setting.OnSave();
-            _context.Runtime.OnSave(path);
+            _context.InternalRuntime.OnSave(path);
         }
     }
 }

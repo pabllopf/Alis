@@ -301,7 +301,7 @@ namespace Alis.Core.Ecs.Redifinition
 #if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && (!NET6_0_OR_GREATER)
         [ThreadStatic] internal static readonly ComponentHandle[] SharedTempComponentHandleBuffer = new ComponentHandle[8];
 
-        [ThreadStatic] internal static readonly Alis.Core.Ecs.Updating.ComponentStorageBase[] SharedTempComponentStorageBuffer = new Alis.Core.Ecs.Updating.ComponentStorageBase[8];
+        [ThreadStatic] internal static readonly Updating.ComponentStorageBase[] SharedTempComponentStorageBuffer = new Updating.ComponentStorageBase[8];
 #endif
     }
 
