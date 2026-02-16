@@ -671,10 +671,10 @@ namespace $(RootNamespace)
 
 
 
-    <ItemGroup Condition="'$(IsBrowserWasm)' == 'true' AND $(NoAutoGenerateFiles) != 'true'">
-        <Compile Include="$(MSBuildProjectDirectory)/EntryPoint.cs" Visible="false"  />
-        <Compile Include="$(MSBuildProjectDirectory)/Game.cs" Visible="false"  />
-        <Compile Include="$(MSBuildProjectDirectory)/Interop.cs" Visible="false" />
+   <ItemGroup Condition="'$(IsBrowserWasm)' == 'true' AND $(NoAutoGenerateFiles) != 'true'">
+        <Compile Condition="!Exists('$(MSBuildProjectDirectory)/EntryPoint.cs')" Include="$(MSBuildProjectDirectory)/EntryPoint.cs" Visible="false" />
+        <Compile Condition="!Exists('$(MSBuildProjectDirectory)/Interop.cs')" Include="$(MSBuildProjectDirectory)/Interop.cs" Visible="false" />
+        <Compile Condition="!Exists('$(MSBuildProjectDirectory)/Game.cs')" Include="$(MSBuildProjectDirectory)/Game.cs" Visible="false" />
     </ItemGroup>
 
   
