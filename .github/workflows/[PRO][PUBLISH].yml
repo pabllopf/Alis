@@ -51,6 +51,21 @@ jobs:
         framework: [ net5.0, net10.0, netstandard2.0, net461, netcoreapp2.0 ]
         
     steps:
+    
+      - name: 🔥 Aggressive cleanup (system + caches)
+        run: |
+          echo "🧹 Removing large preinstalled toolchains"
+          sudo rm -rf /usr/local/lib/android || true
+          sudo rm -rf /usr/share/dotnet || true
+          sudo rm -rf /opt/ghc || true
+          sudo rm -rf /usr/local/.ghcup || true
+          sudo rm -rf /usr/local/share/powershell || true
+          sudo rm -rf /usr/local/share/chromium || true
+          sudo rm -rf /opt/hostedtoolcache || true
+          sudo docker system prune -af || true
+          sudo apt-get clean
+          df -h /
+    
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -170,6 +185,21 @@ jobs:
             runtimes: "win-x64 linux-x64 osx-x64"
 
     steps:
+    
+      - name: 🔥 Aggressive cleanup (system + caches)
+        run: |
+          echo "🧹 Removing large preinstalled toolchains"
+          sudo rm -rf /usr/local/lib/android || true
+          sudo rm -rf /usr/share/dotnet || true
+          sudo rm -rf /opt/ghc || true
+          sudo rm -rf /usr/local/.ghcup || true
+          sudo rm -rf /usr/local/share/powershell || true
+          sudo rm -rf /usr/local/share/chromium || true
+          sudo rm -rf /opt/hostedtoolcache || true
+          sudo docker system prune -af || true
+          sudo apt-get clean
+          df -h /
+    
       - uses: actions/checkout@v4
 
       - name: Setup .NET
