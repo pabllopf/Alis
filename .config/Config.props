@@ -30,7 +30,9 @@
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU;x64;x86;arm;arm64</Platforms>
     </PropertyGroup>
-
+    
+    
+    
     <PropertyGroup>
         <DefineConstants Condition="'$(RuntimeIdentifier)' != ''">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>
         <DefineConstants Condition="'$(RuntimeIdentifier)' == ''">$([System.String]::Copy('$(NETCoreSdkRuntimeIdentifier)').Replace('-',''));</DefineConstants>
@@ -48,11 +50,6 @@
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
         <AnalysisMode>AllEnabledByDefault</AnalysisMode>
         <AnalysisLevel>latest</AnalysisLevel>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
-        <RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
     </PropertyGroup>
     
     <PropertyGroup Condition="'$(Configuration)' == 'Release'">
@@ -84,6 +81,7 @@
         <NoWarn>$(NoWarn);
             NU1904;
             MSB3245;
+            CS1685;
             CA1815;CA2225;CA1051;CA2000;CA1062;CA1065;CA5392;CA1838;CA5392;A1834;CA2208;CA1725;CA1825;CA1044;CA2201;
             CA1024;CA1000;CA1813;CA1018;CA1032;CA1716;CA1040;CA1308;CA1721;CA1066;CA1866;CA1305;CA1305;CA1310;CA1031;
             CA1034;CA1711;CA2249;CA1863;CA2007;CA1309;

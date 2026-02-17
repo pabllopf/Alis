@@ -4,12 +4,6 @@
     </PropertyGroup>
     
     <PropertyGroup>
-        <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
-        <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-        <Deterministic>true</Deterministic>
-        <Optimize>true</Optimize>
-        <BuildInParallel>true</BuildInParallel>
-        <UseSharedCompilation>true</UseSharedCompilation>
         <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
     </PropertyGroup>
 

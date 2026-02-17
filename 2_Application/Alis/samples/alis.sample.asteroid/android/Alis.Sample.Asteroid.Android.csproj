@@ -7,7 +7,6 @@
         <ApplicationId>com.companyname.Alis.Sample.Asteroid.Android</ApplicationId>
         <ApplicationVersion>1</ApplicationVersion>
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-        <ResolveAssemblyReferenceTargetFrameworkForMultiTargeting>netstandard2.0</ResolveAssemblyReferenceTargetFrameworkForMultiTargeting>
     </PropertyGroup>
 
     <ItemGroup>
@@ -26,7 +25,10 @@
             $(SolutionDir)6_Ideation/Memory/src/Alis.Core.Aspect.Memory.csproj;
             $(SolutionDir)6_Ideation/Time/src/Alis.Core.Aspect.Time.csproj;
         ">
-            <Properties>TargetFramework=netstandard2.0</Properties>
+            <Properties>
+                TargetFramework=netstandard2.0;
+                RuntimeIdentifiers=
+            </Properties>
         </ProjectReference>
     </ItemGroup>
 </Project>
