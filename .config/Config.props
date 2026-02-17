@@ -234,7 +234,11 @@
           $(SolutionDir)6_Ideation/**/**/generator/**/*.Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
-                          ReferenceOutputAssembly="false"/>
+                          ReferenceOutputAssembly="false" >
+            <Properties>
+                TargetFramework=netstandard2.0
+            </Properties>
+        </ProjectReference>
 
 
         <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
@@ -245,7 +249,11 @@
           $(SolutionDir)6_Ideation/**/generator/**/*.Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
-                          ReferenceOutputAssembly="false"/>
+                          ReferenceOutputAssembly="false">
+            <Properties>
+                TargetFramework=netstandard2.0
+            </Properties>
+        </ProjectReference>
 
 
         <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
@@ -255,7 +263,11 @@
           $(SolutionDir)6_Ideation/**/generator/**/*.Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
-                          ReferenceOutputAssembly="false"/>
+                          ReferenceOutputAssembly="false">
+            <Properties>
+                TargetFramework=netstandard2.0
+            </Properties>
+        </ProjectReference>
 
 
         <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
@@ -264,7 +276,11 @@
           $(SolutionDir)6_Ideation/**/generator/**/*.Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
-                          ReferenceOutputAssembly="false"/>
+                          ReferenceOutputAssembly="false">
+            <Properties>
+                TargetFramework=netstandard2.0
+            </Properties>
+        </ProjectReference>
 
 
         <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
@@ -272,7 +288,11 @@
           $(SolutionDir)6_Ideation/**/generator/**/*.Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
-                          ReferenceOutputAssembly="false"/>
+                          ReferenceOutputAssembly="false">
+            <Properties>
+                TargetFramework=netstandard2.0
+            </Properties>
+        </ProjectReference>
     </ItemGroup>
 
 

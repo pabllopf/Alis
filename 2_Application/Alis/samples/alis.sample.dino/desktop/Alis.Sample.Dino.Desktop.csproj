@@ -38,7 +38,11 @@
             Include="$(ProjectDir)../generator/$(NameTest).Generator.csproj"
             OutputItemType="Analyzer"
             PrivateAssets="all"
-            ReferenceOutputAssembly="false"/>
+            ReferenceOutputAssembly="false">
+            <Properties>
+                TargetFramework=netstandard2.0
+            </Properties>
+        </ProjectReference>
     </ItemGroup>
 
    <ItemGroup>
@@ -97,7 +101,11 @@
           $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
-                          ReferenceOutputAssembly="false"/>
+                          ReferenceOutputAssembly="false">
+                <Properties>
+                    TargetFramework=netstandard2.0
+                </Properties>
+        </ProjectReference>
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)'=='Release'">

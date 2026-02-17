@@ -626,7 +626,11 @@ namespace $(RootNamespace)
           $(SolutionDir)6_Ideation/**/**/generator/**/*Generator.csproj;"
                           OutputItemType="Analyzer"
                           PrivateAssets="all"
-                          ReferenceOutputAssembly="false"/>
+                          ReferenceOutputAssembly="false">
+                <Properties>
+                    TargetFrameworks=netstandard2.0
+                </Properties>
+        </ProjectReference>
     </ItemGroup>
 
     <!-- ========== PROPIEDADES DE ASSETS ========== -->
