@@ -29,9 +29,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Diagnostics;
+using System.Threading;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory;
@@ -43,7 +44,6 @@ using Alis.Extension.Graphic.Ui.Extras.Node;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
 using Alis.Extension.Graphic.Ui.Fonts;
 using Alis.Extension.Graphic.Ui.Sample.Examples;
-using System.Threading;
 
 namespace Alis.Extension.Graphic.Ui.Sample
 {
