@@ -188,7 +188,7 @@
     
     <ItemGroup>
         <None Include="$(SolutionDir)license.md" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="."/>
-        <!--<None Include="$(SolutionDir)/readme.md" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="."/>-->
+        <None Include="$(SolutionDir)/readme.md" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="."/>
         <None Include="$(SolutionDir)docs/logo/logo.png" LinkBase=".docs/" Pack="true" Visible="true" PackagePath="."/>
     </ItemGroup>
 
