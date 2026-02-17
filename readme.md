@@ -82,6 +82,10 @@ integrations, AI, and more.
 - **Web**
     - `browser-wasm`
 
+- **Mobile (Planned)**
+    - `Android (soon)`
+    - `iOS (soon)`
+
 --- 
 
 ### 🎮 Platform Compatibility
@@ -94,7 +98,7 @@ environments. Whether you're working with legacy systems or the latest .NET vers
 | **Framework**      | **Version(s)**                                                                      |
 |--------------------|-------------------------------------------------------------------------------------|
 | **.NET Core**      | `netcoreapp2.0`, `netcoreapp2.1`, `netcoreapp2.2`, `netcoreapp3.0`, `netcoreapp3.1` |
-| **.NET 5 & Above** | `net5.0`, `net6.0`, `net7.0`, `net8.0`, `net9.0`                                    |
+| **.NET 5 & Above** | `net5.0`, `net6.0`, `net7.0`, `net8.0`, `net9.0`, `net10.0`                          |
 | **.NET Standard**  | `netstandard2.0`, `netstandard2.1`                                                  |
 | **.NET Framework** | `net471`, `net472`, `net48`, `net481`                                               |
 
