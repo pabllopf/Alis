@@ -13,21 +13,11 @@ public class SceneDelegate : UIResponder, IUIWindowSceneDelegate
         {
             Window ??= new UIWindow(windowScene);
             System.Diagnostics.Debug.WriteLine($"[SceneDelegate] Creando vista principal con bounds: {Window!.Bounds}");
-            UIView mainView;
-            if (ObjCRuntime.Runtime.Arch == ObjCRuntime.Arch.SIMULATOR)
-            {
-                System.Diagnostics.Debug.WriteLine("[SceneDelegate] Usando MetalBlueView (simulador)");
-                mainView = new MetalBlueView(Window!.Bounds);
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("[SceneDelegate] Usando GLView (dispositivo real)");
-                mainView = new GLView(Window!.Bounds);
-            }
-            Window.RootViewController = new UIViewController { View = mainView };
+            var blueGlkvc = new BlueGlkViewController(Window!.Bounds);
+            Window.RootViewController = blueGlkvc;
             Window.MakeKeyAndVisible();
-            Window.RootViewController.View.SetNeedsLayout();
-            Window.RootViewController.View.LayoutIfNeeded();
+            Window.RootViewController?.View.SetNeedsLayout();
+            Window.RootViewController?.View.LayoutIfNeeded();
             System.Diagnostics.Debug.WriteLine("[SceneDelegate] Layout forzado tras asignar vista principal");
         }
         else

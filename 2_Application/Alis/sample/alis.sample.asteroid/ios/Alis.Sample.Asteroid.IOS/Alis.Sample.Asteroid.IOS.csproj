@@ -7,6 +7,7 @@
         <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <CodesignKey>iPhone Developer</CodesignKey>
+      <CodesignKey>Apple Development: pabllopf2@gmail.com (CY8H4S7W7N)</CodesignKey>
+      <IOSDebugOverWiFi>true</IOSDebugOverWiFi>
     </PropertyGroup>
 </Project>
