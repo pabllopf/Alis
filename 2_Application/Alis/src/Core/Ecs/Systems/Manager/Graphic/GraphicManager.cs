@@ -138,9 +138,11 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
 
             platform.SetTitle(Context.Setting.General.Name);
 
-            platform.SetWindowIcon(AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon));
-
-
+            if (Context.Setting.General.Icon != null)
+            {
+                platform.SetWindowIcon(AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon));  
+            }
+            
             platform.ShowWindow();
         }
 
