@@ -1,10 +1,11 @@
-using Android.App;
 using Android.Content;
 using Android.Opengl;
 using Android.Util;
 using System.Runtime.InteropServices;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Enums;
+using Alis.Core.Graphic.Platforms.Android;
 using Android.Runtime;
-using Android.OS;
 
 namespace Alis.Sample.Asteroid.Android
 {
@@ -31,42 +32,47 @@ namespace Alis.Sample.Asteroid.Android
 
     public class TriangleRenderer : Java.Lang.Object, GLSurfaceView.IRenderer
     {
-        private int program;
+        private uint program;
         private int positionHandle;
-        private static readonly float[] triangleCoords = {
+        private IntPtr _vertexPtr;
+        private static readonly float[] TriangleCoords = {
             0f, 0.5f,
             -0.5f, -0.5f,
             0.5f, -0.5f
         };
-        private const int COORDS_PER_VERTEX = 2;
-        private static readonly string vertexShaderCode =
+        private const int CoordsPerVertex = 2;
+        private static readonly string VertexShaderCode =
             "attribute vec2 vPosition; void main() { gl_Position = vec4(vPosition, 0.0, 1.0); }";
-        private static readonly string fragmentShaderCode =
+        private static readonly string FragmentShaderCode =
             "precision mediump float; void main() { gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0); }";
-
+        
+        
         public void OnSurfaceCreated(Java.Lang.Object gl, Java.Lang.Object config)
         {
+            // Inicializar Gl con el puntero de funciones de EGL
+            Gl.Initialize(EGLDroid.GetProcAddress);
             Log.Debug("AlisGL", "OnSurfaceCreated llamado");
-            // Fijar el array de vértices en memoria no administrada
-            int size = triangleCoords.Length * sizeof(float);
+            int size = TriangleCoords.Length * sizeof(float);
             IntPtr vertexPtr = Marshal.AllocHGlobal(size);
-            Marshal.Copy(triangleCoords, 0, vertexPtr, triangleCoords.Length);
+            Marshal.Copy(TriangleCoords, 0, vertexPtr, TriangleCoords.Length);
 
-            int vertexShader = LoadShader(GL.GL_VERTEX_SHADER, vertexShaderCode);
-            int fragmentShader = LoadShader(GL.GL_FRAGMENT_SHADER, fragmentShaderCode);
+            uint vertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
+            Gl.ShaderSource(vertexShader, VertexShaderCode);
+            Gl.GlCompileShader(vertexShader);
 
-            program = GL.glCreateProgram();
-            GL.glAttachShader(program, vertexShader);
-            GL.glAttachShader(program, fragmentShader);
-            GL.glLinkProgram(program);
+            uint fragmentShader = Gl.GlCreateShader(ShaderType.FragmentShader);
+            Gl.ShaderSource(fragmentShader, FragmentShaderCode);
+            Gl.GlCompileShader(fragmentShader);
 
-            positionHandle = GL.glGetAttribLocation(program, "vPosition");
+            program = Gl.GlCreateProgram();
+            Gl.GlAttachShader(program, vertexShader);
+            Gl.GlAttachShader(program, fragmentShader);
+            Gl.GlLinkProgram(program);
 
-            // Guardar el puntero para usarlo en OnDrawFrame
+            positionHandle = Gl.GlGetAttribLocation(program, "vPosition");
+
             _vertexPtr = vertexPtr;
         }
-
-        private IntPtr _vertexPtr;
 
         public void OnDrawFrame(Java.Lang.Object gl)
         {
@@ -75,36 +81,33 @@ namespace Alis.Sample.Asteroid.Android
                 Log.Error("AlisGL", "vertexPtr es null");
                 return;
             }
-            GL.glClearColor(1f, 0f, 0f, 1f);
-            GL.glClear(GL.GL_COLOR_BUFFER_BIT);
-            GL.glUseProgram(program);
-            GL.glEnableVertexAttribArray(positionHandle);
-            GL.glVertexAttribPointer(positionHandle, COORDS_PER_VERTEX, GL.GL_FLOAT, false, 0, _vertexPtr);
-            GL.glDrawArrays(GL.GL_TRIANGLES, 0, 3);
-            GL.glDisableVertexAttribArray(positionHandle);
+            Gl.GlClearColor(1f, 0f, 0f, 1f); // Fondo rojo
+            Gl.GlClear(ClearBufferMask.ColorBufferBit); // Limpiar buffer de color
+            Gl.GlUseProgram(program);
+            Gl.EnableVertexAttribArray(positionHandle);
+            Gl.VertexAttribPointer(
+                positionHandle,
+                CoordsPerVertex,
+                VertexAttribPointerType.Float,
+                false,
+                0,
+                _vertexPtr
+            );
+            Gl.GlDrawArrays(PrimitiveType.Triangles, 0, 3); // Triángulo blanco
+            
         }
 
         public void OnSurfaceChanged(Java.Lang.Object gl, int width, int height)
         {
             Log.Debug("AlisGL", $"OnSurfaceChanged llamado: width={width}, height={height}");
-            GL.glViewport(0, 0, width, height);
+            Gl.GlViewport(0, 0, width, height);
         }
 
-        private int LoadShader(int type, string shaderCode)
+        private uint LoadShader(ShaderType type, string shaderCode)
         {
-            int shader = GL.glCreateShader(type);
-            // Preparar el string como UTF8 y pasar el puntero
-            IntPtr strPtr = Marshal.StringToHGlobalAnsi(shaderCode);
-            IntPtr[] strArray = new IntPtr[] { strPtr };
-            int[] length = new int[] { shaderCode.Length };
-            GCHandle handle = GCHandle.Alloc(strArray, GCHandleType.Pinned);
-            try {
-                GL.glShaderSource(shader, 1, handle.AddrOfPinnedObject(), length);
-            } finally {
-                handle.Free();
-                Marshal.FreeHGlobal(strPtr);
-            }
-            GL.glCompileShader(shader);
+            uint shader = Gl.GlCreateShader(type);
+            Gl.ShaderSource(shader, shaderCode);
+            Gl.GlCompileShader(shader);
             return shader;
         }
 
@@ -121,15 +124,15 @@ namespace Alis.Sample.Asteroid.Android
         // Métodos para compatibilidad con IGL10/EGLConfig
         public void OnDrawFrame(Javax.Microedition.Khronos.Opengles.IGL10? gl)
         {
-            OnDrawFrame((Java.Lang.Object)null!);
+            OnDrawFrame((Java.Lang.Object)null);
         }
         public void OnSurfaceChanged(Javax.Microedition.Khronos.Opengles.IGL10? gl, int width, int height)
         {
-            OnSurfaceChanged((Java.Lang.Object)null!, width, height);
+            OnSurfaceChanged((Java.Lang.Object)null, width, height);
         }
         public void OnSurfaceCreated(Javax.Microedition.Khronos.Opengles.IGL10? gl, Javax.Microedition.Khronos.Egl.EGLConfig? config)
         {
-            OnSurfaceCreated((Java.Lang.Object)null!, (Java.Lang.Object)null!);
+            OnSurfaceCreated((Java.Lang.Object)null, (Java.Lang.Object)null);
         }
     }
 }
