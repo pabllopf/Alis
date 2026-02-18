@@ -17,6 +17,12 @@
             net461;
         </TargetFrameworks>
         
+        <RuntimeIdentifiers>
+            linux-x64;linux-arm;linux-arm64;
+            win-x64;win-x86;win-arm;win-arm64;
+            osx-x64;osx-arm64;
+        </RuntimeIdentifiers>
+        
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU;x64;x86;arm;arm64</Platforms>
     </PropertyGroup>
