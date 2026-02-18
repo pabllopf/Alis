@@ -38,6 +38,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
+          
+      - name: Install Workloads
+        run: dotnet workload install wasm-tools wasm-experimental android ios
 
       - name: SonarQube Scan
         run: |

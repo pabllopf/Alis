@@ -19,6 +19,9 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
+      - name: Install Workloads
+        run: dotnet workload install wasm-tools wasm-experimental android ios
+
       - name: install
         run: |
           brew install sdl2 sdl2_image sdl2_ttf ffmpeg
@@ -48,6 +51,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
+
+      - name: Install Workloads
+        run: dotnet workload install wasm-tools wasm-experimental android ios
           
       - name: install
         run: |
@@ -78,6 +84,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
+
+      - name: Install Workloads
+        run: dotnet workload install wasm-tools wasm-experimental android ios
 
       - name: install
         run: |
