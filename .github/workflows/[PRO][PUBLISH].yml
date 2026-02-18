@@ -261,6 +261,9 @@ jobs:
 
       - name: Install Workloads
         run: dotnet workload install wasm-tools wasm-experimental android ios
+        
+      - name: restore
+        run: dotnet restore alis.sln
 
       - name: Publish INTALLER - ${{ matrix.runtime }}
         run: dotnet build ./1_Presentation/Installer/src/Alis.App.Installer.csproj -c Release -m:4 --verbosity quiet -r win-x64 -f ${{ matrix.framework }}
