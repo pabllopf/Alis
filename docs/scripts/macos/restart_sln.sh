@@ -80,36 +80,33 @@ select yn in "Yes" "No"; do
       echo "Usando solución: $sln"
       echo "Base: $base"
       
-      # 3) Añadir todos los .csproj bajo la base
-      find "$base" -name "*.csproj" -type f | while read -r csproj; do
-        rel="${csproj#$base}"
-        # Aplanar carpetas especiales
-        for F in sample src test generator; do
-          rel="${rel//$F\//}"
-        done
-        # Quitar / final si existe
-        rel="${rel%/}"
-        # Quitar nombre del archivo
-        folder="$(dirname "$rel")"
-        # Reemplazar / inicial y espacios
-        folder="${folder#/}"
-        folder="$(echo "$folder" | xargs)"
-        if [[ -z "$folder" || "$folder" == "." ]]; then
-          dotnet sln "$sln" add "$csproj"
-        else
-          dotnet sln "$sln" add "$csproj" --solution-folder "$folder"
-        fi
-      done
-        
-          
-          for i in `find . -name "*.csproj" -type f`; do
-              if [[ $i == *$skip* ]] ; then
-                  echo "Skip project $i"
-              else
-                  echo "Add csproj = $i"
-                  dotnet restore $i
-              fi
-          done
+      # add 2_Application/Alis/src/Alis.csproj
+      dotnet sln "$sln" add "$base""2_Application/Alis/src/Alis.csproj" --solution-folder "2_Application/Alis"
+      sleep 1
+      
+      # add 4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj
+      dotnet sln "$sln" add "$base""4_Operation/Ecs/generator/Alis.Core.Ecs.Generator.csproj" --solution-folder "4_Operation/Ecs"
+      sleep 1
+            
+      # add 4_Operation/Graphic/generator/Alis.Core.Graphic.Generator.csproj
+      dotnet sln "$sln" add "$base""4_Operation/Graphic/generator/Alis.Core.Graphic.Generator.csproj" --solution-folder "4_Operation/Graphic"
+      sleep 1
+      
+              
+      
+     # Añadir todos los .csproj bajo la base, quitando carpetas src, test, generator, sample, desktop, web, android e ios del path relativo, excluyendo Alis.csproj
+     find "$base" -name "*.csproj" -type f | while read -r csproj; do
+       relpath="${csproj#$base}"
+       folder=$(dirname "$relpath" | sed -E 's/(^|\/)(src|test|generator|sample|desktop|web|android|ios)(\/|$)/\1/g' | sed 's/^\/\+//;s/\/\+$//')
+       dotnet sln "$sln" add "$csproj" --solution-folder "$folder"
+       echo "Added $csproj to $sln under folder $folder"
+       sleep 1
+     done
+      
+      
+      
+         
+       
                     
           cd ./docs/scripts/macos/ || exit 
           
