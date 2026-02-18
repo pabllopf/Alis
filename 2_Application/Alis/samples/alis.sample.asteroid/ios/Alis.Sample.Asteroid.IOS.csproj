@@ -1,8 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net10.0-ios</TargetFramework>
-        <RuntimeIdentifier Condition=" '$(Configuration)' == 'Debug'">iossimulator-arm64</RuntimeIdentifier>
-        <RuntimeIdentifier Condition=" '$(Configuration)' == 'Release'">ios-arm64</RuntimeIdentifier>
         <OutputType>Exe</OutputType>
         <Nullable>enable</Nullable>
         <ImplicitUsings>true</ImplicitUsings>
