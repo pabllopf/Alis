@@ -300,99 +300,25 @@ socio-economic status, nationality, personal appearance, race, religion, or sexu
 
 [![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/main/code_of_conduct.md)
 
+
 ## Authors
 
-<!-- readme: pabllopf -start -->
-<table>
-	<tbody>
-		<tr>
-            <td align="center">
-                <a href="https://github.com/pabllopf">
-                    <img src="https://avatars.githubusercontent.com/u/48176121?v=4" width="75;" alt="pabllopf"/>
-                    <br />
-                    <sub><b>Pablo Perdomo Falcón</b></sub>
-                </a>
-            </td>
-		</tr>
-	<tbody>
-</table>
-<!-- readme: pabllopf -end -->
+|                                                                                                                                           | 
+|-------------------------------------------------------------------------------------------------------------------------------------------|
+| ![](https://avatars.githubusercontent.com/u/48176121?v=4&s=200)<br>**Pablo Perdomo Falcón**<br>([@pabllopf](https://github.com/pabllopf)) | 
+
+---
 
 ## Collaborators
 
-<!-- readme: collaborators -start -->
-<table>
-	<tbody>
-		<tr>
-            <td align="center">
-                <a href="https://github.com/RaulLozanoPonce">
-                    <img src="https://avatars.githubusercontent.com/u/43152062?v=4" width="75;" alt="RaulLozanoPonce"/>
-                    <br />
-                    <sub><b>Raúl Lozano Ponce</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/cannt">
-                    <img src="https://avatars.githubusercontent.com/u/45520663?v=4" width="75;" alt="cannt"/>
-                    <br />
-                    <sub><b>Juan Ángel Trujillo Jiménez</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/pabllopf">
-                    <img src="https://avatars.githubusercontent.com/u/48176121?v=4" width="75;" alt="pabllopf"/>
-                    <br />
-                    <sub><b>Pablo Perdomo Falcón</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/Chgv99">
-                    <img src="https://avatars.githubusercontent.com/u/55676590?v=4" width="75;" alt="Chgv99"/>
-                    <br />
-                    <sub><b>Christian García</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/RicardoVillarta">
-                    <img src="https://avatars.githubusercontent.com/u/62963416?v=4" width="75;" alt="RicardoVillarta"/>
-                    <br />
-                    <sub><b>RicardoVillarta</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/GabrielRT01">
-                    <img src="https://avatars.githubusercontent.com/u/75950686?v=4" width="75;" alt="GabrielRT01"/>
-                    <br />
-                    <sub><b>Gabriel</b></sub>
-                </a>
-            </td>
-		</tr>
-		<tr>
-            <td align="center">
-                <a href="https://github.com/SPEEDCROW98">
-                    <img src="https://avatars.githubusercontent.com/u/82670532?v=4" width="75;" alt="SPEEDCROW98"/>
-                    <br />
-                    <sub><b>Pedro D.GR</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/Claudia2000pf">
-                    <img src="https://avatars.githubusercontent.com/u/82757764?v=4" width="75;" alt="Claudia2000pf"/>
-                    <br />
-                    <sub><b>Claudia2000pf</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/suarez0965">
-                    <img src="https://avatars.githubusercontent.com/u/82760316?v=4" width="75;" alt="suarez0965"/>
-                    <br />
-                    <sub><b>Carlos</b></sub>
-                </a>
-            </td>
-		</tr>
-	<tbody>
-</table>
-<!-- readme: collaborators -end -->
+| | | | |
+|---|---|---|---|
+| ![](https://avatars.githubusercontent.com/u/43152062?v=4)<br>**Raúl Lozano Ponce**<br>([@RaulLozanoPonce](https://github.com/RaulLozanoPonce)) | ![](https://avatars.githubusercontent.com/u/45520663?v=4)<br>**Juan Ángel Trujillo Jiménez**<br>([@cannt](https://github.com/cannt)) | ![](https://avatars.githubusercontent.com/u/55676590?v=4)<br>**Christian García**<br>([@Chgv99](https://github.com/Chgv99)) | ![](https://avatars.githubusercontent.com/u/62963416?v=4)<br>**RicardoVillarta**<br>([@RicardoVillarta](https://github.com/RicardoVillarta)) |
+| ![](https://avatars.githubusercontent.com/u/75950686?v=4)<br>**Gabriel**<br>([@GabrielRT01](https://github.com/GabrielRT01)) | ![](https://avatars.githubusercontent.com/u/82670532?v=4)<br>**Pedro D.GR**<br>([@SPEEDCROW98](https://github.com/SPEEDCROW98)) | ![](https://avatars.githubusercontent.com/u/82757764?v=4)<br>**Claudia2000pf**<br>([@Claudia2000pf](https://github.com/Claudia2000pf)) | ![](https://avatars.githubusercontent.com/u/82760316?v=4)<br>**Carlos**<br>([@suarez0965](https://github.com/suarez0965)) |
 
 
+
+
+## Stats
 <a href="https://info.flagcounter.com/1AeG"><img src="https://s01.flagcounter.com/count2/1AeG/bg_FFFFFF/txt_000000/border_CCCCCC/columns_8/maxflags_250/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+
