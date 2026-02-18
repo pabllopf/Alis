@@ -16,17 +16,14 @@
             netstandard2.0;
             net461;
         </TargetFrameworks>
-        
+
         <RuntimeIdentifiers>
-            linux-x64; linux-arm; linux-arm64;
-            win-x64;win-x86;win-arm64;
+            win-x64;win-x86;
+            linux-x64;linux-arm64;linux-arm;
             osx-x64;osx-arm64;
+            android-arm64;android-x64
         </RuntimeIdentifiers>
         
-        <RuntimeIdentifiers Condition="$(TargetFramework) == 'net10.0-android' OR $(TargetFramework) == 'net10.0'"> 
-            $(RuntimeIdentifiers);
-            android-arm64;android-x64;
-        </RuntimeIdentifiers>
         
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU;x64;x86;arm;arm64</Platforms>
@@ -180,11 +177,11 @@
         <None Include="runtimes/**" Pack="true" PackagePath="runtimes/" Visible="false" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never"/>
     </ItemGroup>
 
-    <ItemGroup Condition="'$(RuntimeIdentifier)' != ''">
+    <ItemGroup Condition="'$(RuntimeIdentifier)' != '' AND Exists('$(ProjectDir)runtimes/$(RuntimeIdentifier)/native/')">
         <None Include="runtimes/$(RuntimeIdentifier)/native/**" Link="%(Filename)%(Extension)" Pack="false" Visible="false" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest"/>
     </ItemGroup>
 
-    <ItemGroup Condition="$(NETCoreSdkRuntimeIdentifier) != '' AND '$(RuntimeIdentifier)' == ''">
+    <ItemGroup Condition="$(NETCoreSdkRuntimeIdentifier) != '' AND '$(RuntimeIdentifier)' == '' AND Exists('$(ProjectDir)runtimes/$(NETCoreSdkRuntimeIdentifier)/native/')">
         <None Include="runtimes/$(NETCoreSdkRuntimeIdentifier)/native/**" Link="%(Filename)%(Extension)" Visible="false" Pack="false" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest"/>
     </ItemGroup>
     

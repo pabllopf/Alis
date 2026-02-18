@@ -1,3 +1,4 @@
+using System;
 using Android.Content;
 using Android.Opengl;
 using Android.Util;
@@ -5,6 +6,8 @@ using System.Runtime.InteropServices;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms.Android;
+using Android.App;
+using Android.OS;
 using Android.Runtime;
 
 namespace Alis.Sample.Asteroid.Android
