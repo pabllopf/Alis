@@ -495,6 +495,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physic", "4_Opera
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physic.Sample", "4_Operation\Physic\sample\Alis.Core.Physic.Sample.csproj", "{97D4EA5D-15DF-4E51-AF78-6ABC936AA74E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Asteroid.Android", "2_Application\Alis\samples\alis.sample.asteroid\android\Alis.Sample.Asteroid.Android.csproj", "{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -3109,6 +3111,26 @@ Global
 		{97D4EA5D-15DF-4E51-AF78-6ABC936AA74E}.Release|OsxArm64.Build.0 = Release|Any CPU
 		{97D4EA5D-15DF-4E51-AF78-6ABC936AA74E}.Release|Winx64.ActiveCfg = Release|Any CPU
 		{97D4EA5D-15DF-4E51-AF78-6ABC936AA74E}.Release|Winx64.Build.0 = Release|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Debug|x64.Build.0 = Debug|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Debug|x86.Build.0 = Debug|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Debug|OsxArm64.ActiveCfg = Debug|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Debug|OsxArm64.Build.0 = Debug|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Debug|Winx64.ActiveCfg = Debug|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Debug|Winx64.Build.0 = Debug|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Release|x64.ActiveCfg = Release|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Release|x64.Build.0 = Release|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Release|x86.ActiveCfg = Release|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Release|x86.Build.0 = Release|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Release|OsxArm64.ActiveCfg = Release|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Release|OsxArm64.Build.0 = Release|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Release|Winx64.ActiveCfg = Release|Any CPU
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C}.Release|Winx64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -3308,6 +3330,7 @@ Global
 		{9F069CCE-6B96-4E9A-A277-FAA981DF173D} = {33BF1025-FF7D-AD1D-0D92-B7ACD9995B3D}
 		{424CE523-6BD8-4441-ACF4-085F04AC9A9A} = {33BF1025-FF7D-AD1D-0D92-B7ACD9995B3D}
 		{97D4EA5D-15DF-4E51-AF78-6ABC936AA74E} = {33BF1025-FF7D-AD1D-0D92-B7ACD9995B3D}
+		{CA7981ED-43D0-4D4C-973D-A3FE5F73D96C} = {391F436B-7C07-4ED8-EC1F-AF1C30605558}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}
