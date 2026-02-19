@@ -32,28 +32,37 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Memory.Test
 {
+    /// <summary>
+    /// The zip cache entry test class
+    /// </summary>
     public class ZipCacheEntryTest
     {
+        /// <summary>
+        /// Tests that pack bytes get set works correctly
+        /// </summary>
         [Fact]
         public void PackBytes_GetSet_WorksCorrectly()
         {
             // Arrange
-            var cacheEntry = new ZipCacheEntry();
+            ZipCacheEntry cacheEntry = new ZipCacheEntry();
             byte[] expectedBytes = { 1, 2, 3, 4, 5 };
 
             // Act
             cacheEntry.PackBytes = expectedBytes;
-            var result = cacheEntry.PackBytes;
+            byte[] result = cacheEntry.PackBytes;
 
             // Assert
             Assert.Equal(expectedBytes, result);
         }
 
+        /// <summary>
+        /// Tests that pack bytes set to null works correctly
+        /// </summary>
         [Fact]
         public void PackBytes_SetToNull_WorksCorrectly()
         {
             // Arrange
-            var cacheEntry = new ZipCacheEntry();
+            ZipCacheEntry cacheEntry = new ZipCacheEntry();
             byte[] bytes = { 1, 2, 3 };
             cacheEntry.PackBytes = bytes;
 
@@ -64,11 +73,14 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Null(cacheEntry.PackBytes);
         }
 
+        /// <summary>
+        /// Tests that entries by full name lower is initialized empty dictionary
+        /// </summary>
         [Fact]
         public void EntriesByFullNameLower_IsInitialized_EmptyDictionary()
         {
             // Arrange & Act
-            var cacheEntry = new ZipCacheEntry();
+            ZipCacheEntry cacheEntry = new ZipCacheEntry();
 
             // Assert
             Assert.NotNull(cacheEntry.EntriesByFullNameLower);
@@ -76,12 +88,15 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Empty(cacheEntry.EntriesByFullNameLower);
         }
 
+        /// <summary>
+        /// Tests that entries by full name lower can add entries
+        /// </summary>
         [Fact]
         public void EntriesByFullNameLower_CanAddEntries()
         {
             // Arrange
-            var cacheEntry = new ZipCacheEntry();
-            var entryInfo = new ZipEntryInfo { FullName = "test.txt", Length = 100 };
+            ZipCacheEntry cacheEntry = new ZipCacheEntry();
+            ZipEntryInfo entryInfo = new ZipEntryInfo { FullName = "test.txt", Length = 100 };
             string key = "test.txt";
 
             // Act
@@ -89,18 +104,21 @@ namespace Alis.Core.Aspect.Memory.Test
 
             // Assert
             Assert.Single(cacheEntry.EntriesByFullNameLower);
-            Assert.True(cacheEntry.EntriesByFullNameLower.TryGetValue(key, out var retrieved));
+            Assert.True(cacheEntry.EntriesByFullNameLower.TryGetValue(key, out ZipEntryInfo retrieved));
             Assert.Equal(entryInfo, retrieved);
         }
 
+        /// <summary>
+        /// Tests that entries by full name lower multiple entries all retrievable
+        /// </summary>
         [Fact]
         public void EntriesByFullNameLower_MultipleEntries_AllRetrievable()
         {
             // Arrange
-            var cacheEntry = new ZipCacheEntry();
-            var entry1 = new ZipEntryInfo { FullName = "file1.txt", Length = 100 };
-            var entry2 = new ZipEntryInfo { FullName = "file2.txt", Length = 200 };
-            var entry3 = new ZipEntryInfo { FullName = "file3.txt", Length = 300 };
+            ZipCacheEntry cacheEntry = new ZipCacheEntry();
+            ZipEntryInfo entry1 = new ZipEntryInfo { FullName = "file1.txt", Length = 100 };
+            ZipEntryInfo entry2 = new ZipEntryInfo { FullName = "file2.txt", Length = 200 };
+            ZipEntryInfo entry3 = new ZipEntryInfo { FullName = "file3.txt", Length = 300 };
 
             // Act
             cacheEntry.EntriesByFullNameLower["file1.txt"] = entry1;
@@ -114,11 +132,14 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal(entry3, cacheEntry.EntriesByFullNameLower["file3.txt"]);
         }
 
+        /// <summary>
+        /// Tests that entries by file name lower is initialized empty dictionary
+        /// </summary>
         [Fact]
         public void EntriesByFileNameLower_IsInitialized_EmptyDictionary()
         {
             // Arrange & Act
-            var cacheEntry = new ZipCacheEntry();
+            ZipCacheEntry cacheEntry = new ZipCacheEntry();
 
             // Assert
             Assert.NotNull(cacheEntry.EntriesByFileNameLower);
@@ -126,12 +147,15 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Empty(cacheEntry.EntriesByFileNameLower);
         }
 
+        /// <summary>
+        /// Tests that entries by file name lower can add entries list
+        /// </summary>
         [Fact]
         public void EntriesByFileNameLower_CanAddEntriesList()
         {
             // Arrange
-            var cacheEntry = new ZipCacheEntry();
-            var entryList = new List<ZipEntryInfo>
+            ZipCacheEntry cacheEntry = new ZipCacheEntry();
+            List<ZipEntryInfo> entryList = new List<ZipEntryInfo>
             {
                 new ZipEntryInfo { FullName = "folder1/test.txt" },
                 new ZipEntryInfo { FullName = "folder2/test.txt" }
@@ -143,18 +167,21 @@ namespace Alis.Core.Aspect.Memory.Test
 
             // Assert
             Assert.Single(cacheEntry.EntriesByFileNameLower);
-            Assert.True(cacheEntry.EntriesByFileNameLower.TryGetValue(key, out var retrieved));
+            Assert.True(cacheEntry.EntriesByFileNameLower.TryGetValue(key, out List<ZipEntryInfo> retrieved));
             Assert.Equal(2, retrieved.Count);
             Assert.Equal(entryList, retrieved);
         }
 
+        /// <summary>
+        /// Tests that entries by file name lower multiple file names all retrievable
+        /// </summary>
         [Fact]
         public void EntriesByFileNameLower_MultipleFileNames_AllRetrievable()
         {
             // Arrange
-            var cacheEntry = new ZipCacheEntry();
-            var list1 = new List<ZipEntryInfo> { new ZipEntryInfo { FullName = "file.txt" } };
-            var list2 = new List<ZipEntryInfo> { new ZipEntryInfo { FullName = "file.bin" } };
+            ZipCacheEntry cacheEntry = new ZipCacheEntry();
+            List<ZipEntryInfo> list1 = new List<ZipEntryInfo> { new ZipEntryInfo { FullName = "file.txt" } };
+            List<ZipEntryInfo> list2 = new List<ZipEntryInfo> { new ZipEntryInfo { FullName = "file.bin" } };
 
             // Act
             cacheEntry.EntriesByFileNameLower["file.txt"] = list1;
@@ -166,15 +193,18 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal(list2, cacheEntry.EntriesByFileNameLower["file.bin"]);
         }
 
+        /// <summary>
+        /// Tests that all properties set and retrieve work together
+        /// </summary>
         [Fact]
         public void AllProperties_SetAndRetrieve_WorkTogether()
         {
             // Arrange
-            var cacheEntry = new ZipCacheEntry();
+            ZipCacheEntry cacheEntry = new ZipCacheEntry();
             byte[] expectedBytes = { 80, 75, 3, 4 }; // ZIP signature
-            var entry1 = new ZipEntryInfo { FullName = "test1.txt", Length = 1024 };
-            var entry2 = new ZipEntryInfo { FullName = "test2.txt", Length = 2048 };
-            var list = new List<ZipEntryInfo> { entry1 };
+            ZipEntryInfo entry1 = new ZipEntryInfo { FullName = "test1.txt", Length = 1024 };
+            ZipEntryInfo entry2 = new ZipEntryInfo { FullName = "test2.txt", Length = 2048 };
+            List<ZipEntryInfo> list = new List<ZipEntryInfo> { entry1 };
 
             // Act
             cacheEntry.PackBytes = expectedBytes;
@@ -189,13 +219,16 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal(entry1, cacheEntry.EntriesByFullNameLower["test1.txt"]);
         }
 
+        /// <summary>
+        /// Tests that entries by full name lower can update existing entry
+        /// </summary>
         [Fact]
         public void EntriesByFullNameLower_CanUpdateExistingEntry()
         {
             // Arrange
-            var cacheEntry = new ZipCacheEntry();
-            var entry1 = new ZipEntryInfo { FullName = "file.txt", Length = 100 };
-            var entry2 = new ZipEntryInfo { FullName = "file.txt", Length = 200 };
+            ZipCacheEntry cacheEntry = new ZipCacheEntry();
+            ZipEntryInfo entry1 = new ZipEntryInfo { FullName = "file.txt", Length = 100 };
+            ZipEntryInfo entry2 = new ZipEntryInfo { FullName = "file.txt", Length = 200 };
             cacheEntry.EntriesByFullNameLower["file.txt"] = entry1;
 
             // Act
@@ -206,14 +239,17 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal(200, cacheEntry.EntriesByFullNameLower["file.txt"].Length);
         }
 
+        /// <summary>
+        /// Tests that entries by file name lower can add multiple entries same file
+        /// </summary>
         [Fact]
         public void EntriesByFileNameLower_CanAddMultipleEntriesSameFile()
         {
             // Arrange
-            var cacheEntry = new ZipCacheEntry();
-            var entry1 = new ZipEntryInfo { FullName = "folder1/file.txt" };
-            var entry2 = new ZipEntryInfo { FullName = "folder2/file.txt" };
-            var entryList = new List<ZipEntryInfo> { entry1, entry2 };
+            ZipCacheEntry cacheEntry = new ZipCacheEntry();
+            ZipEntryInfo entry1 = new ZipEntryInfo { FullName = "folder1/file.txt" };
+            ZipEntryInfo entry2 = new ZipEntryInfo { FullName = "folder2/file.txt" };
+            List<ZipEntryInfo> entryList = new List<ZipEntryInfo> { entry1, entry2 };
 
             // Act
             cacheEntry.EntriesByFileNameLower["file.txt"] = entryList;
