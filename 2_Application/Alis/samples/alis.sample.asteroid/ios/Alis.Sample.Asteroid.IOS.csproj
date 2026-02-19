@@ -8,7 +8,7 @@
     </PropertyGroup>
     
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-        <CodesignKey>Apple Development: pabllopf2@gmail.com (CY8H4S7W7N)</CodesignKey>
+        <CodesignKey>iPhone Developer</CodesignKey>
         <IOSDebugOverWiFi>true</IOSDebugOverWiFi>
     </PropertyGroup>
 
