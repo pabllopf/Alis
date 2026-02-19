@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TimeConfiguration.cs
+//  File:ITimeSetting.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,39 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-
-namespace Alis.Core.Aspect.Time
+namespace Alis.Core.Ecs.Systems.Configuration.Time
 {
     /// <summary>
-    ///     The time class
+    /// The time setting interface
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct TimeConfiguration(
-        float fixedTimeStep,
-        float maximumAllowedTimeStep,
-        float timeScale)
+    public interface ITimeSetting
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="TimeConfiguration" /> class
+        /// Gets the value of the fixed time step
         /// </summary>
-        public TimeConfiguration() : this(0.016f, 0.25f, 1.0f)
-        {
-        }
-
+        float FixedTimeStep { get; }
+        
         /// <summary>
-        ///     Gets the value of the fixed time step
+        /// Gets the value of the maximum allowed time step
         /// </summary>
-        public readonly float FixedTimeStep = fixedTimeStep;
-
+        float MaximumAllowedTimeStep { get; }
+        
         /// <summary>
-        ///     Gets the value of the maximum allowed time step
+        /// Gets the value of the time scale
         /// </summary>
-        public readonly float MaximumAllowedTimeStep = maximumAllowedTimeStep;
-
-        /// <summary>
-        ///     Gets the value of the time scale
-        /// </summary>
-        public readonly float TimeScale = timeScale;
+        float TimeScale { get; }
     }
 }

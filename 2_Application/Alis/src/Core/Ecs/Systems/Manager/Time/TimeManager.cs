@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Time;
+using Alis.Core.Ecs.Systems.Configuration.Time;
 using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Core.Ecs.Systems.Manager.Time
@@ -59,7 +60,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Time
         /// <summary>
         ///     Gets or sets the value of the configuration
         /// </summary>
-        public TimeConfiguration Configuration { get; } = new TimeConfiguration();
+        public TimeSetting Setting { get; } = new TimeSetting();
 
         /// <summary>
         ///     Gets the value of the clock

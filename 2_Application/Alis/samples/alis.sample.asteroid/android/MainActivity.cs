@@ -44,9 +44,17 @@ using Object = Java.Lang.Object;
 
 namespace Alis.Sample.Asteroid.Android
 {
+    /// <summary>
+    /// The main activity class
+    /// </summary>
+    /// <seealso cref="Activity"/>
     [Activity(Label = "Alis.Sample.Asteroid.Android", MainLauncher = true, Theme = "@android:style/Theme.NoTitleBar"), Register("crc647600d30597f44ece.MainActivity")]
     public class MainActivity : Activity
     {
+        /// <summary>
+        /// Ons the create using the specified saved instance state
+        /// </summary>
+        /// <param name="savedInstanceState">The saved instance state</param>
         protected override void OnCreate(Bundle? savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -55,8 +63,16 @@ namespace Alis.Sample.Asteroid.Android
         }
     }
 
+    /// <summary>
+    /// The gl view class
+    /// </summary>
+    /// <seealso cref="GLSurfaceView"/>
     public class GlView : GLSurfaceView
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GlView"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
         public GlView(Context context) : base(context)
         {
             SetEGLContextClientVersion(2);
@@ -64,10 +80,21 @@ namespace Alis.Sample.Asteroid.Android
         }
     }
 
+    /// <summary>
+    /// The triangle renderer class
+    /// </summary>
+    /// <seealso cref="Object"/>
+    /// <seealso cref="GLSurfaceView.IRenderer"/>
     public class TriangleRenderer : Object, GLSurfaceView.IRenderer
     {
+        /// <summary>
+        /// The coords per vertex
+        /// </summary>
         private const int CoordsPerVertex = 2;
 
+        /// <summary>
+        /// The triangle coords
+        /// </summary>
         private static readonly float[] TriangleCoords =
         {
             0f, 0.5f,
@@ -75,33 +102,68 @@ namespace Alis.Sample.Asteroid.Android
             0.5f, -0.5f
         };
 
+        /// <summary>
+        /// The vertex shader code
+        /// </summary>
         private static readonly string VertexShaderCode =
             "attribute vec2 vPosition; void main() { gl_Position = vec4(vPosition, 0.0, 1.0); }";
 
+        /// <summary>
+        /// The fragment shader code
+        /// </summary>
         private static readonly string FragmentShaderCode =
             "precision mediump float; void main() { gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0); }";
 
+        /// <summary>
+        /// The vertex ptr
+        /// </summary>
         private IntPtr _vertexPtr;
+        /// <summary>
+        /// The position handle
+        /// </summary>
         private int positionHandle;
+        /// <summary>
+        /// The program
+        /// </summary>
         private uint program;
 
         // Métodos para compatibilidad con IGL10/EGLConfig
+        /// <summary>
+        /// Ons the draw frame using the specified gl
+        /// </summary>
+        /// <param name="gl">The gl</param>
         public void OnDrawFrame(IGL10? gl)
         {
             OnDrawFrame((Object) null);
         }
 
+        /// <summary>
+        /// Ons the surface changed using the specified gl
+        /// </summary>
+        /// <param name="gl">The gl</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         public void OnSurfaceChanged(IGL10? gl, int width, int height)
         {
             OnSurfaceChanged((Object) null, width, height);
         }
 
+        /// <summary>
+        /// Ons the surface created using the specified gl
+        /// </summary>
+        /// <param name="gl">The gl</param>
+        /// <param name="config">The config</param>
         public void OnSurfaceCreated(IGL10? gl, EGLConfig? config)
         {
             OnSurfaceCreated(null, (Object) null);
         }
 
 
+        /// <summary>
+        /// Ons the surface created using the specified gl
+        /// </summary>
+        /// <param name="gl">The gl</param>
+        /// <param name="config">The config</param>
         public void OnSurfaceCreated(Object gl, Object config)
         {
             // Inicializar Gl con el puntero de funciones de EGL
@@ -129,6 +191,10 @@ namespace Alis.Sample.Asteroid.Android
             _vertexPtr = vertexPtr;
         }
 
+        /// <summary>
+        /// Ons the draw frame using the specified gl
+        /// </summary>
+        /// <param name="gl">The gl</param>
         public void OnDrawFrame(Object gl)
         {
             Log.Debug("AlisGL", "OnDrawFrame llamado");
@@ -153,12 +219,24 @@ namespace Alis.Sample.Asteroid.Android
             Gl.GlDrawArrays(PrimitiveType.Triangles, 0, 3); // Triángulo blanco
         }
 
+        /// <summary>
+        /// Ons the surface changed using the specified gl
+        /// </summary>
+        /// <param name="gl">The gl</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         public void OnSurfaceChanged(Object gl, int width, int height)
         {
             Log.Debug("AlisGL", $"OnSurfaceChanged llamado: width={width}, height={height}");
             Gl.GlViewport(0, 0, width, height);
         }
 
+        /// <summary>
+        /// Loads the shader using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="shaderCode">The shader code</param>
+        /// <returns>The shader</returns>
         private uint LoadShader(ShaderType type, string shaderCode)
         {
             uint shader = Gl.GlCreateShader(type);
@@ -167,6 +245,10 @@ namespace Alis.Sample.Asteroid.Android
             return shader;
         }
 
+        /// <summary>
+        /// Disposes the disposing
+        /// </summary>
+        /// <param name="disposing">The disposing</param>
         protected override void Dispose(bool disposing)
         {
             if (_vertexPtr != IntPtr.Zero)

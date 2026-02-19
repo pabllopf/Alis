@@ -36,18 +36,53 @@ using OpenGLES;
 namespace Alis.Sample.Asteroid.IOS
 {
     // GLKViewController que pinta el fondo rojo y un triángulo blanco
+    /// <summary>
+    /// The blue glk view controller class
+    /// </summary>
+    /// <seealso cref="GLKViewController"/>
     public class BlueGlkViewController : GLKViewController
     {
+        /// <summary>
+        /// The gl color buffer bit
+        /// </summary>
         private const uint GL_COLOR_BUFFER_BIT = 0x4000;
+        /// <summary>
+        /// The gl array buffer
+        /// </summary>
         private const uint GL_ARRAY_BUFFER = 0x8892;
+        /// <summary>
+        /// The gl static draw
+        /// </summary>
         private const uint GL_STATIC_DRAW = 0x88E4;
+        /// <summary>
+        /// The gl float
+        /// </summary>
         private const uint GL_FLOAT = 0x1406;
+        /// <summary>
+        /// The gl triangles
+        /// </summary>
         private const uint GL_TRIANGLES = 0x0004;
+        /// <summary>
+        /// The context
+        /// </summary>
         private readonly EAGLContext? _context;
+        /// <summary>
+        /// The position loc
+        /// </summary>
         private int _positionLoc;
+        /// <summary>
+        /// The program
+        /// </summary>
         private int _program;
+        /// <summary>
+        /// The vbo
+        /// </summary>
         private uint _vbo;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BlueGlkViewController"/> class
+        /// </summary>
+        /// <param name="frame">The frame</param>
         public BlueGlkViewController(CGRect frame)
         {
             _context = new EAGLContext(EAGLRenderingAPI.OpenGLES2);
@@ -64,60 +99,158 @@ namespace Alis.Sample.Asteroid.IOS
             SetupGL();
         }
 
+        /// <summary>
+        /// Gls the clear color using the specified r
+        /// </summary>
+        /// <param name="r">The </param>
+        /// <param name="g">The </param>
+        /// <param name="b">The </param>
+        /// <param name="a">The </param>
         [DllImport("__Internal")]
         private static extern void glClearColor(float r, float g, float b, float a);
 
+        /// <summary>
+        /// Gls the clear using the specified mask
+        /// </summary>
+        /// <param name="mask">The mask</param>
         [DllImport("__Internal")]
         private static extern void glClear(uint mask);
 
+        /// <summary>
+        /// Gls the create shader using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>The int</returns>
         [DllImport("__Internal")]
         private static extern int glCreateShader(uint type);
 
+        /// <summary>
+        /// Gls the shader source using the specified shader
+        /// </summary>
+        /// <param name="shader">The shader</param>
+        /// <param name="count">The count</param>
+        /// <param name="source">The source</param>
+        /// <param name="length">The length</param>
         [DllImport("__Internal")]
         private static extern void glShaderSource(int shader, int count, string[] source, int[] length);
 
+        /// <summary>
+        /// Gls the compile shader using the specified shader
+        /// </summary>
+        /// <param name="shader">The shader</param>
         [DllImport("__Internal")]
         private static extern void glCompileShader(int shader);
 
+        /// <summary>
+        /// Gls the create program
+        /// </summary>
+        /// <returns>The int</returns>
         [DllImport("__Internal")]
         private static extern int glCreateProgram();
 
+        /// <summary>
+        /// Gls the attach shader using the specified program
+        /// </summary>
+        /// <param name="program">The program</param>
+        /// <param name="shader">The shader</param>
         [DllImport("__Internal")]
         private static extern void glAttachShader(int program, int shader);
 
+        /// <summary>
+        /// Gls the link program using the specified program
+        /// </summary>
+        /// <param name="program">The program</param>
         [DllImport("__Internal")]
         private static extern void glLinkProgram(int program);
 
+        /// <summary>
+        /// Gls the use program using the specified program
+        /// </summary>
+        /// <param name="program">The program</param>
         [DllImport("__Internal")]
         private static extern void glUseProgram(int program);
 
+        /// <summary>
+        /// Gls the get attrib location using the specified program
+        /// </summary>
+        /// <param name="program">The program</param>
+        /// <param name="name">The name</param>
+        /// <returns>The int</returns>
         [DllImport("__Internal")]
         private static extern int glGetAttribLocation(int program, string name);
 
+        /// <summary>
+        /// Gls the enable vertex attrib array using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
         [DllImport("__Internal")]
         private static extern void glEnableVertexAttribArray(int index);
 
+        /// <summary>
+        /// Gls the vertex attrib pointer using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <param name="size">The size</param>
+        /// <param name="type">The type</param>
+        /// <param name="normalized">The normalized</param>
+        /// <param name="stride">The stride</param>
+        /// <param name="pointer">The pointer</param>
         [DllImport("__Internal")]
         private static extern void glVertexAttribPointer(int index, int size, uint type, bool normalized, int stride, IntPtr pointer);
 
+        /// <summary>
+        /// Gls the gen buffers using the specified n
+        /// </summary>
+        /// <param name="n">The </param>
+        /// <param name="buffers">The buffers</param>
         [DllImport("__Internal")]
         private static extern void glGenBuffers(int n, out uint buffers);
 
+        /// <summary>
+        /// Gls the bind buffer using the specified target
+        /// </summary>
+        /// <param name="target">The target</param>
+        /// <param name="buffer">The buffer</param>
         [DllImport("__Internal")]
         private static extern void glBindBuffer(uint target, uint buffer);
 
+        /// <summary>
+        /// Gls the buffer data using the specified target
+        /// </summary>
+        /// <param name="target">The target</param>
+        /// <param name="size">The size</param>
+        /// <param name="data">The data</param>
+        /// <param name="usage">The usage</param>
         [DllImport("__Internal")]
         private static extern void glBufferData(uint target, IntPtr size, float[] data, uint usage);
 
+        /// <summary>
+        /// Gls the draw arrays using the specified mode
+        /// </summary>
+        /// <param name="mode">The mode</param>
+        /// <param name="first">The first</param>
+        /// <param name="count">The count</param>
         [DllImport("__Internal")]
         private static extern void glDrawArrays(uint mode, int first, int count);
 
+        /// <summary>
+        /// Gls the delete program using the specified program
+        /// </summary>
+        /// <param name="program">The program</param>
         [DllImport("__Internal")]
         private static extern void glDeleteProgram(int program);
 
+        /// <summary>
+        /// Gls the delete buffers using the specified n
+        /// </summary>
+        /// <param name="n">The </param>
+        /// <param name="buffers">The buffers</param>
         [DllImport("__Internal")]
         private static extern void glDeleteBuffers(int n, ref uint buffers);
 
+        /// <summary>
+        /// Setup the gl
+        /// </summary>
         private void SetupGL()
         {
             EAGLContext.SetCurrentContext(_context);
@@ -149,6 +282,11 @@ namespace Alis.Sample.Asteroid.IOS
             glBufferData(GL_ARRAY_BUFFER, vertices.Length * sizeof(float), vertices, GL_STATIC_DRAW);
         }
 
+        /// <summary>
+        /// Draws the in rect using the specified view
+        /// </summary>
+        /// <param name="view">The view</param>
+        /// <param name="rect">The rect</param>
         public override void DrawInRect(GLKView view, CGRect rect)
         {
             EAGLContext.SetCurrentContext(_context);
@@ -163,6 +301,10 @@ namespace Alis.Sample.Asteroid.IOS
             glDrawArrays(GL_TRIANGLES, 0, 3);
         }
 
+        /// <summary>
+        /// Disposes the disposing
+        /// </summary>
+        /// <param name="disposing">The disposing</param>
         protected override void Dispose(bool disposing)
         {
             if (_vbo != 0)

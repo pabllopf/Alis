@@ -31,8 +31,15 @@ using UIKit;
 
 namespace Alis.Sample.Asteroid.IOS
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
             UIApplication.Main(args, null, typeof(AppDelegate));

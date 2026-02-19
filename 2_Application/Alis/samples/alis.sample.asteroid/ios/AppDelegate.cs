@@ -32,19 +32,41 @@ using UIKit;
 
 namespace Alis.Sample.Asteroid.IOS
 {
+    /// <summary>
+    /// The app delegate class
+    /// </summary>
+    /// <seealso cref="UIApplicationDelegate"/>
     [Register("AppDelegate")]
     public class AppDelegate : UIApplicationDelegate
     {
+        /// <summary>
+        /// Finisheds the launching using the specified application
+        /// </summary>
+        /// <param name="application">The application</param>
+        /// <param name="launchOptions">The launch options</param>
+        /// <returns>The bool</returns>
         public override bool FinishedLaunching(UIApplication application, NSDictionary? launchOptions) =>
             // Override point for customization after application launch.
             true;
 
+        /// <summary>
+        /// Gets the configuration using the specified application
+        /// </summary>
+        /// <param name="application">The application</param>
+        /// <param name="connectingSceneSession">The connecting scene session</param>
+        /// <param name="options">The options</param>
+        /// <returns>The ui scene configuration</returns>
         public override UISceneConfiguration GetConfiguration(UIApplication application, UISceneSession connectingSceneSession, UISceneConnectionOptions options) =>
             // Called when a new scene session is being created.
             // Use this method to select a configuration to create the new scene with.
             // "Default Configuration" is defined in the Info.plist's 'UISceneConfigurationName' key.
             new UISceneConfiguration("Default Configuration", connectingSceneSession.Role);
 
+        /// <summary>
+        /// Dids the discard scene sessions using the specified application
+        /// </summary>
+        /// <param name="application">The application</param>
+        /// <param name="sceneSessions">The scene sessions</param>
         public override void DidDiscardSceneSessions(UIApplication application, NSSet<UISceneSession> sceneSessions)
         {
             // Called when the user discards a scene session.

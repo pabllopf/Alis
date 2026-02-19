@@ -149,19 +149,19 @@ namespace Alis.Core.Ecs.Systems.Scope
                 internalRuntime.OnUpdate();
                 internalRuntime.OnAfterUpdate();
 
-                while (accumulator >= timeManager.Configuration.FixedTimeStep)
+                while (accumulator >= timeManager.Setting.FixedTimeStep)
                 {
                     timeManager.InFixedTimeStep = true;
-                    timeManager.FixedTime += timeManager.Configuration.FixedTimeStep;
-                    timeManager.FixedTimeAsDouble += timeManager.Configuration.FixedTimeStep;
-                    timeManager.FixedDeltaTime = timeManager.Configuration.FixedTimeStep;
-                    timeManager.FixedUnscaledDeltaTime = timeManager.Configuration.FixedTimeStep / timeManager.TimeScale;
+                    timeManager.FixedTime += timeManager.Setting.FixedTimeStep;
+                    timeManager.FixedTimeAsDouble += timeManager.Setting.FixedTimeStep;
+                    timeManager.FixedDeltaTime = timeManager.Setting.FixedTimeStep;
+                    timeManager.FixedUnscaledDeltaTime = timeManager.Setting.FixedTimeStep / timeManager.TimeScale;
                     timeManager.FixedUnscaledTime += timeManager.FixedUnscaledDeltaTime;
                     timeManager.FixedUnscaledTimeAsDouble += timeManager.FixedUnscaledDeltaTime;
                     internalRuntime.OnBeforeFixedUpdate();
                     internalRuntime.OnFixedUpdate();
                     internalRuntime.OnAfterFixedUpdate();
-                    accumulator %= timeManager.Configuration.FixedTimeStep;
+                    accumulator %= timeManager.Setting.FixedTimeStep;
                     timeManager.InFixedTimeStep = false;
                 }
 
@@ -287,19 +287,19 @@ namespace Alis.Core.Ecs.Systems.Scope
             internalRuntime.OnUpdate();
             internalRuntime.OnAfterUpdate();
 
-            while (accumulator >= timeManager.Configuration.FixedTimeStep)
+            while (accumulator >= timeManager.Setting.FixedTimeStep)
             {
                 timeManager.InFixedTimeStep = true;
-                timeManager.FixedTime += timeManager.Configuration.FixedTimeStep;
-                timeManager.FixedTimeAsDouble += timeManager.Configuration.FixedTimeStep;
-                timeManager.FixedDeltaTime = timeManager.Configuration.FixedTimeStep;
-                timeManager.FixedUnscaledDeltaTime = timeManager.Configuration.FixedTimeStep / timeManager.TimeScale;
+                timeManager.FixedTime += timeManager.Setting.FixedTimeStep;
+                timeManager.FixedTimeAsDouble += timeManager.Setting.FixedTimeStep;
+                timeManager.FixedDeltaTime = timeManager.Setting.FixedTimeStep;
+                timeManager.FixedUnscaledDeltaTime = timeManager.Setting.FixedTimeStep / timeManager.TimeScale;
                 timeManager.FixedUnscaledTime += timeManager.FixedUnscaledDeltaTime;
                 timeManager.FixedUnscaledTimeAsDouble += timeManager.FixedUnscaledDeltaTime;
                 internalRuntime.OnBeforeFixedUpdate();
                 internalRuntime.OnFixedUpdate();
                 internalRuntime.OnAfterFixedUpdate();
-                accumulator %= timeManager.Configuration.FixedTimeStep;
+                accumulator %= timeManager.Setting.FixedTimeStep;
                 timeManager.InFixedTimeStep = false;
             }
 

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EGLDroid.cs
+//  File:TimeConfiguration.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,39 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.Platforms.Android
+namespace Alis.Core.Ecs.Systems.Configuration.Time
 {
     /// <summary>
-    /// The egl droid class
+    ///     The time class
     /// </summary>
-    public class EGLDroid
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public readonly struct TimeSetting(
+        float fixedTimeStep,
+        float maximumAllowedTimeStep,
+        float timeScale): ITimeSetting
     {
         /// <summary>
-        ///     Gets the proc address using the specified proc
+        ///     Initializes a new instance of the <see cref="TimeSetting" /> class
         /// </summary>
-        /// <param name="proc">The proc</param>
-        /// <returns>The int ptr</returns>
-        [DllImport("libEGL", EntryPoint = "eglGetProcAddress", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
-        public static extern IntPtr GetProcAddress(string proc);
+        public TimeSetting() : this(0.016f, 0.25f, 1.0f)
+        {
+        }
+        
+        /// <summary>
+        ///     Gets the value of the maximum allowed time step
+        /// </summary>
+        public float MaximumAllowedTimeStep  { get; } = maximumAllowedTimeStep;
+
+        /// <summary>
+        ///     Gets the value of the time scale
+        /// </summary>
+        public float TimeScale  { get; } = timeScale;
+
+        /// <summary>
+        /// Gets the value of the fixed time step
+        /// </summary>
+        public float FixedTimeStep { get; } = fixedTimeStep;
     }
 }
