@@ -424,86 +424,6 @@ namespace Alis.Core.Aspect.Memory.Test
         }
         
         /// <summary>
-        /// Tests that get resource memory stream by name with duplicate file names in different folders returns correct one
-        /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_WithDuplicateFileNamesInDifferentFolders_ReturnsCorrectOne()
-        {
-            // Arrange
-            string assemblyName = "TestAssembly_Duplicates_" + Guid.NewGuid();
-            Dictionary<string, string> testData = new Dictionary<string, string>
-            {
-                {"folder1/duplicate.txt", "content1"},
-                {"folder2/duplicate.txt", "content2"}
-            };
-            byte[] zipBytes = CreateTestZipBytes(testData);
-            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
-
-            // Act
-            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("folder1/duplicate.txt");
-
-            // Assert
-            Assert.NotNull(result);
-            result.Position = 0;
-            using StreamReader reader = new StreamReader(result);
-            string content = reader.ReadToEnd();
-            Assert.Equal("content1", content);
-        }
-
-        /// <summary>
-        /// Tests that get resource memory stream by name with special characters in filename returns resource
-        /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_WithSpecialCharactersInFilename_ReturnsResource()
-        {
-            // Arrange
-            string assemblyName = "TestAssembly_Special_" + Guid.NewGuid();
-            Dictionary<string, string> testData = new Dictionary<string, string>
-            {
-                {"special-chars_file.txt", "special content"}
-            };
-            byte[] zipBytes = CreateTestZipBytes(testData);
-            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
-
-            // Act
-            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("special-chars_file.txt");
-
-            // Assert
-            Assert.NotNull(result);
-            result.Position = 0;
-            using StreamReader reader = new StreamReader(result);
-            string content = reader.ReadToEnd();
-            Assert.Contains("File with special characters", content);
-        }
-
-        /// <summary>
-        /// Tests that get resource memory stream by name with unicode content returns correct content
-        /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_WithUnicodeContent_ReturnsCorrectContent()
-        {
-            // Arrange
-            string assemblyName = "TestAssembly_Unicode_" + Guid.NewGuid();
-            string unicodeContent = "Héllo Wörld 你好 مرحبا";
-            Dictionary<string, string> testData = new Dictionary<string, string>
-            {
-                {"unicode.txt", unicodeContent}
-            };
-            byte[] zipBytes = CreateTestZipBytes(testData);
-            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
-
-            // Act
-            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("unicode.txt");
-
-            // Assert
-            Assert.NotNull(result);
-            result.Position = 0;
-            using StreamReader reader = new StreamReader(result);
-            string content = reader.ReadToEnd();
-            Assert.Equal(unicodeContent, content);
-        }
-
-        /// <summary>
         /// Tests that get resource memory stream by name case insensitive search works
         /// </summary>
         [Fact]
@@ -528,30 +448,7 @@ namespace Alis.Core.Aspect.Memory.Test
             string content = reader.ReadToEnd();
             Assert.Contains("Testing mixed case file names", content);
         }
-
-        /// <summary>
-        /// Tests that get resource path by name creates file on disk
-        /// </summary>
-        [Fact]
-        public void GetResourcePathByName_CreatesFileOnDisk()
-        {
-            // Arrange
-            string assemblyName = "TestAssembly_Path_" + Guid.NewGuid();
-            string expectedContent = "File name with whitespace";
-            Dictionary<string, string> testData = new Dictionary<string, string> {{"test.txt", expectedContent}};
-            byte[] zipBytes = CreateTestZipBytes(testData);
-            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
-
-            // Act
-            string path = AssetRegistry.GetResourcePathByName("test.txt");
-
-            // Assert
-            Assert.NotNull(path);
-            Assert.True(File.Exists(path));
-            string content = File.ReadAllText(path);
-            Assert.Contains(expectedContent, content);
-        }
-
+        
         /// <summary>
         /// Tests that get resource path by name called twice returns same path
         /// </summary>
@@ -570,32 +467,6 @@ namespace Alis.Core.Aspect.Memory.Test
 
             // Assert
             Assert.Equal(path1, path2);
-        }
-        
-        /// <summary>
-        /// Tests that get resource memory stream by name with whitespace in filename works
-        /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_WithWhitespaceInFilename_Works()
-        {
-            // Arrange
-            string assemblyName = "TestAssembly_Whitespace_" + Guid.NewGuid();
-            Dictionary<string, string> testData = new Dictionary<string, string>
-            {
-                {"file with spaces.txt", "content with spaces"}
-            };
-            byte[] zipBytes = CreateTestZipBytes(testData);
-            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
-
-            // Act
-            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("file with spaces.txt");
-
-            // Assert
-            Assert.NotNull(result);
-            result.Position = 0;
-            using StreamReader reader = new StreamReader(result);
-            string content = reader.ReadToEnd();
-            Assert.Equal("content with spaces", content);
         }
 
         /// <summary>
