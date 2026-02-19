@@ -329,6 +329,19 @@ jobs:
             **/1_Presentation/Hub/src/**/bin/**/Release/**/*.zip
   
   publish_packages:
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
+      discussions: write
+      issues: write
+      pages: write
+      packages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
     name: Publish NuGet Packages
     needs: [ prepare, build_extensions, build_core, build_apps ]
     runs-on: macos-15-intel
