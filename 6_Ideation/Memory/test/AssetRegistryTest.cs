@@ -423,6 +423,258 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal(0, result.Length);
         }
         
+        /// <summary>
+        /// Tests that get resource memory stream by name with duplicate file names in different folders returns correct one
+        /// </summary>
+        [Fact]
+        public void GetResourceMemoryStreamByName_WithDuplicateFileNamesInDifferentFolders_ReturnsCorrectOne()
+        {
+            // Arrange
+            string assemblyName = "TestAssembly_Duplicates_" + Guid.NewGuid();
+            Dictionary<string, string> testData = new Dictionary<string, string>
+            {
+                {"folder1/duplicate.txt", "content1"},
+                {"folder2/duplicate.txt", "content2"}
+            };
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            // Act
+            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("folder1/duplicate.txt");
+
+            // Assert
+            Assert.NotNull(result);
+            result.Position = 0;
+            using StreamReader reader = new StreamReader(result);
+            string content = reader.ReadToEnd();
+            Assert.Equal("content1", content);
+        }
+
+        /// <summary>
+        /// Tests that get resource memory stream by name with special characters in filename returns resource
+        /// </summary>
+        [Fact]
+        public void GetResourceMemoryStreamByName_WithSpecialCharactersInFilename_ReturnsResource()
+        {
+            // Arrange
+            string assemblyName = "TestAssembly_Special_" + Guid.NewGuid();
+            Dictionary<string, string> testData = new Dictionary<string, string>
+            {
+                {"special-chars_file.txt", "special content"}
+            };
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            // Act
+            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("special-chars_file.txt");
+
+            // Assert
+            Assert.NotNull(result);
+            result.Position = 0;
+            using StreamReader reader = new StreamReader(result);
+            string content = reader.ReadToEnd();
+            Assert.Contains("File with special characters", content);
+        }
+
+        /// <summary>
+        /// Tests that get resource memory stream by name with unicode content returns correct content
+        /// </summary>
+        [Fact]
+        public void GetResourceMemoryStreamByName_WithUnicodeContent_ReturnsCorrectContent()
+        {
+            // Arrange
+            string assemblyName = "TestAssembly_Unicode_" + Guid.NewGuid();
+            string unicodeContent = "Héllo Wörld 你好 مرحبا";
+            Dictionary<string, string> testData = new Dictionary<string, string>
+            {
+                {"unicode.txt", unicodeContent}
+            };
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            // Act
+            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("unicode.txt");
+
+            // Assert
+            Assert.NotNull(result);
+            result.Position = 0;
+            using StreamReader reader = new StreamReader(result);
+            string content = reader.ReadToEnd();
+            Assert.Equal(unicodeContent, content);
+        }
+
+        /// <summary>
+        /// Tests that get resource memory stream by name case insensitive search works
+        /// </summary>
+        [Fact]
+        public void GetResourceMemoryStreamByName_CaseInsensitiveSearch_Works()
+        {
+            // Arrange
+            string assemblyName = "TestAssembly_CaseInsensitive_" + Guid.NewGuid();
+            Dictionary<string, string> testData = new Dictionary<string, string>
+            {
+                {"MixedCase.TXT", "Testing mixed case file names"}
+            };
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            // Act
+            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("mixedcase.txt");
+
+            // Assert
+            Assert.NotNull(result);
+            result.Position = 0;
+            using StreamReader reader = new StreamReader(result);
+            string content = reader.ReadToEnd();
+            Assert.Contains("Testing mixed case file names", content);
+        }
+
+        /// <summary>
+        /// Tests that get resource path by name creates file on disk
+        /// </summary>
+        [Fact]
+        public void GetResourcePathByName_CreatesFileOnDisk()
+        {
+            // Arrange
+            string assemblyName = "TestAssembly_Path_" + Guid.NewGuid();
+            string expectedContent = "File name with whitespace";
+            Dictionary<string, string> testData = new Dictionary<string, string> {{"test.txt", expectedContent}};
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            // Act
+            string path = AssetRegistry.GetResourcePathByName("test.txt");
+
+            // Assert
+            Assert.NotNull(path);
+            Assert.True(File.Exists(path));
+            string content = File.ReadAllText(path);
+            Assert.Contains(expectedContent, content);
+        }
+
+        /// <summary>
+        /// Tests that get resource path by name called twice returns same path
+        /// </summary>
+        [Fact]
+        public void GetResourcePathByName_CalledTwice_ReturnsSamePath()
+        {
+            // Arrange
+            string assemblyName = "TestAssembly_PathCache_" + Guid.NewGuid();
+            Dictionary<string, string> testData = new Dictionary<string, string> {{"cached.txt", "cached content"}};
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            // Act
+            string path1 = AssetRegistry.GetResourcePathByName("cached.txt");
+            string path2 = AssetRegistry.GetResourcePathByName("cached.txt");
+
+            // Assert
+            Assert.Equal(path1, path2);
+        }
+        
+        /// <summary>
+        /// Tests that get resource memory stream by name with whitespace in filename works
+        /// </summary>
+        [Fact]
+        public void GetResourceMemoryStreamByName_WithWhitespaceInFilename_Works()
+        {
+            // Arrange
+            string assemblyName = "TestAssembly_Whitespace_" + Guid.NewGuid();
+            Dictionary<string, string> testData = new Dictionary<string, string>
+            {
+                {"file with spaces.txt", "content with spaces"}
+            };
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            // Act
+            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("file with spaces.txt");
+
+            // Assert
+            Assert.NotNull(result);
+            result.Position = 0;
+            using StreamReader reader = new StreamReader(result);
+            string content = reader.ReadToEnd();
+            Assert.Equal("content with spaces", content);
+        }
+
+        /// <summary>
+        /// Tests that register assembly with null loader throws when trying to get resource
+        /// </summary>
+        [Fact]
+        public void RegisterAssembly_WithNullLoader_ThrowsWhenTryingToGetResource()
+        {
+            // Arrange
+            string assemblyName = "TestAssembly_NullLoader_" + Guid.NewGuid();
+            AssetRegistry.RegisterAssembly(assemblyName, () => null);
+
+            // Act & Assert
+            FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() => 
+                AssetRegistry.GetResourceMemoryStreamByName("any.txt"));
+            Assert.Contains("not found", ex.Message);
+        }
+        
+
+        /// <summary>
+        /// Tests that get resource memory stream by name with different file extensions works
+        /// </summary>
+        [Fact]
+        public void GetResourceMemoryStreamByName_WithDifferentFileExtensions_Works()
+        {
+            // Arrange
+            string assemblyName = "TestAssembly_Extensions_" + Guid.NewGuid();
+            Dictionary<string, string> testData = new Dictionary<string, string>
+            {
+                {"file.txt", "text"},
+                {"file.json", "json"},
+                {"file.xml", "xml"},
+                {"file.dat", "data"}
+            };
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            // Act & Assert
+            using (MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("file.txt"))
+            {
+                result.Position = 0;
+                using StreamReader reader = new StreamReader(result);
+                Assert.Contains("Content for nested folder testing ", reader.ReadToEnd());
+            }
+
+            using (MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("file.json"))
+            {
+                result.Position = 0;
+                using StreamReader reader = new StreamReader(result);
+                Assert.Contains("sample", reader.ReadToEnd());
+            }
+        }
+
+        /// <summary>
+        /// Tests that get resource memory stream by name partial path match works
+        /// </summary>
+        [Fact]
+        public void GetResourceMemoryStreamByName_PartialPathMatch_Works()
+        {
+            // Arrange
+            string assemblyName = "TestAssembly_PartialPath_" + Guid.NewGuid();
+            Dictionary<string, string> testData = new Dictionary<string, string>
+            {
+                {"assets/images/apps.bmp", "logo content"}
+            };
+            byte[] zipBytes = CreateTestZipBytes(testData);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+
+            // Act
+            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("images/apps.bmp");
+
+            // Assert
+            Assert.NotNull(result);
+            result.Position = 0;
+            using StreamReader reader = new StreamReader(result);
+            string content = reader.ReadToEnd();
+            Assert.Contains("BM", content);
+        }
+        
     }
 }
 
