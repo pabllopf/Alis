@@ -156,11 +156,11 @@ namespace Alis.App.Engine.Core
             string filetoread = Path.Combine(Path.GetTempPath(), "projectConfig.json");
             if (!File.Exists(filetoread))
             {
-                Project =  new Project("MacOS Project (latest)", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", "v0.8.6");
+                Project = new Project("MacOS Project (latest)", "/Users/pabllopf/Repositorios/Alis/1_Presentation/Engine/sample/alis.app.engine.sample", "NOT CONNECTED", "3 days ago", "v0.8.6");
                 string jsonDefaultValue = JsonNativeAot.Serialize(Project);
                 File.WriteAllText(filetoread, jsonDefaultValue);
             }
-            
+
             string projectPath = File.ReadAllText(filetoread);
             Project projectToLoad = JsonNativeAot.Deserialize<Project>(projectPath);
             Project = projectToLoad;
@@ -203,7 +203,6 @@ namespace Alis.App.Engine.Core
         internal ProjectWindow ProjectWindow { get; }
 
 
-
         /// <summary>
         ///     Gets the value of the dock space menu
         /// </summary>
@@ -235,7 +234,7 @@ namespace Alis.App.Engine.Core
         public Project Project { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the font texture id
+        ///     Gets or sets the value of the font texture id
         /// </summary>
         public uint FontTextureId { get; set; }
 
@@ -249,7 +248,6 @@ namespace Alis.App.Engine.Core
             ImGuizmoDemo.Initialize();
             ImNodeDemo.Initialize();
             IconDemo.Initialize();
-            
 
 
             BottomMenu.Initialize();
@@ -274,7 +272,7 @@ namespace Alis.App.Engine.Core
             ImGuizmoDemo.Start();
             ImNodeDemo.Start();
             IconDemo.Start();
-            
+
             BottomMenu.Start();
             ConsoleWindow.Start();
             GameWindow.Start();
@@ -297,7 +295,7 @@ namespace Alis.App.Engine.Core
             ImGuizmoDemo.Run();
             ImNodeDemo.Run();
             IconDemo.Run();
-            
+
             SettingsWindow.Render();
             BottomMenu.Render();
             ConsoleWindow.Render();

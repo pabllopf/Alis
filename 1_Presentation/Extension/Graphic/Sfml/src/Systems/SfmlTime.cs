@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Time.cs
+//  File:SfmlTime.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -240,7 +240,6 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// </summary>
         private long microseconds;
 
-        
 
         /// <summary>
         ///     Sfs the seconds using the specified amount
@@ -289,7 +288,5 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// <returns>The long</returns>
         [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern long sfTime_asMicroseconds(SfmlTime sfmlTime);
-
-        
     }
 }

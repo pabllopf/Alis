@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
             {
                 return false;
             }
-            
+
             return Equals((MassData) obj);
         }
 

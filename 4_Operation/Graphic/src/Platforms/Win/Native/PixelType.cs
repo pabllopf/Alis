@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 #if winx64 || winx86 || winarm64 || winarm || win
-
 using System;
 
 namespace Alis.Core.Graphic.Platforms.Win.Native

@@ -35,6 +35,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
+
 // New: required for SHA256
 
 namespace Alis.Core.Aspect.Memory.Generator
@@ -75,8 +76,8 @@ namespace Alis.Core.Aspect.Memory.Generator
                 Compilation compilation = combined.Compilation;
 
                 // Check if the project is a Console or Windows Application
-                if (compilation.Options.OutputKind != OutputKind.ConsoleApplication &&
-                    compilation.Options.OutputKind != OutputKind.WindowsApplication)
+                if ((compilation.Options.OutputKind != OutputKind.ConsoleApplication) &&
+                    (compilation.Options.OutputKind != OutputKind.WindowsApplication))
                 {
 #if NET8_0_OR_GREATER
                     DiagnosticDescriptor descInfo = new DiagnosticDescriptor("ALIS0013", "Proyecto no ejecutable", "El generador no se ejecuta en proyectos de tipo {0}", "AOT Resources", DiagnosticSeverity.Info, true);

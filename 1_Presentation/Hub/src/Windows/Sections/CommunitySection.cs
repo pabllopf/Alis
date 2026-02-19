@@ -45,7 +45,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     The gallery
         /// </summary>
-        private readonly Gallery gallery = new Gallery( );
+        private readonly Gallery gallery = new Gallery();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="CommunitySection" /> class
@@ -128,9 +128,8 @@ namespace Alis.App.Hub.Windows.Sections
 
                     // Columna de la imagen
                     ImGui.TableSetColumnIndex(0);
-                    
-                    
-                    
+
+
                     ImGui.Image(ImageLoader.LoadTextureFromFile(item.ImagePath), new Vector2F(100, 100));
 
                     // Columna del nombre

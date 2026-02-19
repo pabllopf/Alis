@@ -27,10 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.App.Engine.Core;
-
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
@@ -75,9 +72,8 @@ namespace Alis.App.Engine.Windows
         {
             if (ImGui.Begin(NameWindow, ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoCollapse))
             {
-                
             }
-            
+
             ImGui.End();
         }
 

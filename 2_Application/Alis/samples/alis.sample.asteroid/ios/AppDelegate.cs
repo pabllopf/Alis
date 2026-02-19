@@ -1,29 +1,55 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:AppDelegate.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Foundation;
 using UIKit;
 
-namespace Alis.Sample.Asteroid.IOS;
-
-[Register("AppDelegate")]
-public class AppDelegate : UIApplicationDelegate
+namespace Alis.Sample.Asteroid.IOS
 {
-    public override bool FinishedLaunching(UIApplication application, NSDictionary? launchOptions)
+    [Register("AppDelegate")]
+    public class AppDelegate : UIApplicationDelegate
     {
-        // Override point for customization after application launch.
-        return true;
-    }
+        public override bool FinishedLaunching(UIApplication application, NSDictionary? launchOptions) =>
+            // Override point for customization after application launch.
+            true;
 
-    public override UISceneConfiguration GetConfiguration(UIApplication application, UISceneSession connectingSceneSession, UISceneConnectionOptions options)
-    {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        // "Default Configuration" is defined in the Info.plist's 'UISceneConfigurationName' key.
-        return new UISceneConfiguration("Default Configuration", connectingSceneSession.Role);
-    }
+        public override UISceneConfiguration GetConfiguration(UIApplication application, UISceneSession connectingSceneSession, UISceneConnectionOptions options) =>
+            // Called when a new scene session is being created.
+            // Use this method to select a configuration to create the new scene with.
+            // "Default Configuration" is defined in the Info.plist's 'UISceneConfigurationName' key.
+            new UISceneConfiguration("Default Configuration", connectingSceneSession.Role);
 
-    public override void DidDiscardSceneSessions(UIApplication application, NSSet<UISceneSession> sceneSessions)
-    {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after 'FinishedLaunching'.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+        public override void DidDiscardSceneSessions(UIApplication application, NSSet<UISceneSession> sceneSessions)
+        {
+            // Called when the user discards a scene session.
+            // If any sessions were discarded while the application was not running, this will be called shortly after 'FinishedLaunching'.
+            // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+        }
     }
 }

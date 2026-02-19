@@ -339,24 +339,6 @@ namespace Alis.Extension.Graphic.Sfml.Audios
             sfMusic_destroy(CPointer);
         }
 
-        /// <summary>
-        ///     The time span
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        public struct TimeSpan
-        {
-            /// <summary>
-            ///     The offset
-            /// </summary>
-            private SfmlTime offset;
-
-            /// <summary>
-            ///     The length
-            /// </summary>
-            private SfmlTime length;
-        }
-
-        
 
         /// <summary>
         ///     Sfs the music create from file using the specified filename
@@ -588,6 +570,21 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern SfmlTime sfMusic_getPlayingOffset(IntPtr music);
 
-        
+        /// <summary>
+        ///     The time span
+        /// </summary>
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+        public struct TimeSpan
+        {
+            /// <summary>
+            ///     The offset
+            /// </summary>
+            private SfmlTime offset;
+
+            /// <summary>
+            ///     The length
+            /// </summary>
+            private SfmlTime length;
+        }
     }
 }

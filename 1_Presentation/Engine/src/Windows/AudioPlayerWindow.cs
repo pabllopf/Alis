@@ -27,10 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using Alis.App.Engine.Core;
-
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;

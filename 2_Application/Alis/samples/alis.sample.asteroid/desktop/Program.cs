@@ -95,12 +95,10 @@ namespace Alis.Sample.Asteroid.Desktop
                         .Add<GameObject>(counterPoints => counterPoints
                             .Name("Counter")
                             .Tag("Points")
-                   
                         )
                         .Add<GameObject>(counterPoints => counterPoints
                             .Name("HealthController")
                             .Tag("HealthController")
-                 
                         )
 
                         // SOUNDTRACK
@@ -145,7 +143,6 @@ namespace Alis.Sample.Asteroid.Desktop
                                 .FixedRotation(false)
                                 .IgnoreGravity(true)
                             )
-                       
                         )
                         .Add<GameObject>(sound => sound
                             .Name("SoundPlayer")

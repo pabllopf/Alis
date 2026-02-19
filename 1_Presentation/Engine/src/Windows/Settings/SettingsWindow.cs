@@ -27,16 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-using System;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text.Json.Serialization;
 using Alis.App.Engine.Core;
-
-using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
 
@@ -120,7 +111,6 @@ namespace Alis.App.Engine.Windows.Settings
         /// <param name="settings">The settings</param>
         private void RenderSettings(object[] settings)
         {
-           
         }
     }
 }

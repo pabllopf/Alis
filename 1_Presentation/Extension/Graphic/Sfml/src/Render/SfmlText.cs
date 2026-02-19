@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Text.cs
+//  File:SfmlText.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -332,7 +332,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
             sfText_destroy(CPointer);
         }
 
-        
 
         /// <summary>
         ///     Sfs the text create
@@ -558,7 +557,5 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <returns>The float rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern FloatRect sfText_getLocalBounds(IntPtr cPointer);
-
-        
     }
 }

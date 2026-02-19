@@ -27,14 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Concurrent;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Alis.App.Engine.Core;
-
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;

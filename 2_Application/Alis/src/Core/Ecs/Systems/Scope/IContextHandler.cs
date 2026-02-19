@@ -65,12 +65,12 @@ namespace Alis.Core.Ecs.Systems.Scope
         void LoadAndRun();
 
         /// <summary>
-        /// Inits the preview
+        ///     Inits the preview
         /// </summary>
         void InitPreview();
 
         /// <summary>
-        /// Previews this instance
+        ///     Previews this instance
         /// </summary>
         void Preview();
     }

@@ -29,7 +29,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Text;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Kernel;
@@ -49,6 +48,33 @@ namespace Alis.Core.Ecs.Components.Collider
     /// <seealso cref="IOnUpdate" />
     public class BoxCollider : IBoxCollider
     {
+        // Vértices del triángulo (posición 2D)
+        /// <summary>
+        ///     The vertices
+        /// </summary>
+        private static readonly float[] Vertices =
+        {
+            -0.5f, -0.5f,
+            0.5f, -0.5f,
+            0.0f, 0.5f
+        };
+
+
+        /// <summary>
+        ///     The shader program
+        /// </summary>
+        private uint shaderProgram;
+
+        /// <summary>
+        ///     The vao
+        /// </summary>
+        private uint vao;
+
+        /// <summary>
+        ///     The vbo
+        /// </summary>
+        private uint vbo;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="BoxCollider" /> class
         /// </summary>
@@ -224,7 +250,7 @@ namespace Alis.Core.Ecs.Components.Collider
         /// </summary>
 
         public Vector2F SizeOfTexture { get; set; }
-        
+
 
         /// <summary>
         ///     Gets or sets the value of the this game object
@@ -383,40 +409,13 @@ namespace Alis.Core.Ecs.Components.Collider
                 }
             }
         }
-        
-        
-        /// <summary>
-        /// The shader program
-        /// </summary>
-        private uint shaderProgram;
-        /// <summary>
-        /// The vao
-        /// </summary>
-        private uint vao;
-        
-        /// <summary>
-        /// The vbo
-        /// </summary>
-        private uint vbo;
 
-        // Vértices del triángulo (posición 2D)
-        /// <summary>
-        /// The vertices
-        /// </summary>
-        private static readonly float[] Vertices =
-        {
-            -0.5f, -0.5f,
-            0.5f, -0.5f,
-            0.0f,  0.5f
-        };
 
-        
         /// <summary>
         ///     Initializes the shaders
         /// </summary>
         private void InitializeShaders()
         {
-
             string version = "";
             if (Context.Setting.Graphic.PreviewMode)
             {
@@ -426,24 +425,23 @@ namespace Alis.Core.Ecs.Components.Collider
             {
                 version = "#version 330 core";
             }
-            
-            
-        string VertexShaderSource = version + @"
+
+
+            string VertexShaderSource = version + @"
             layout(location = 0) in vec2 in_xy;
             void main() {
             gl_Position = vec4(in_xy, 0.0, 1.0);
         }";
 
 
-        string FragmentShaderSource = version + @"
+            string FragmentShaderSource = version + @"
             precision mediump float;
             out vec4 outColor;
             void main() {
             outColor = vec4(1.0, 0.0, 0.0, 1.0);
         }";
 
-     
-            
+
             // Crear y compilar shaders
             shaderProgram = Gl.GlCreateProgram();
             uint vert = Gl.GlCreateShader(ShaderType.VertexShader);
@@ -454,7 +452,7 @@ namespace Alis.Core.Ecs.Components.Collider
             uint frag = Gl.GlCreateShader(ShaderType.FragmentShader);
             Gl.ShaderSource(frag, FragmentShaderSource);
             Gl.GlCompileShader(frag);
-       
+
             Gl.GlAttachShader(shaderProgram, frag);
 
             Gl.GlLinkProgram(shaderProgram);
@@ -467,7 +465,7 @@ namespace Alis.Core.Ecs.Components.Collider
             Gl.GlGenBuffers(1, vbos);
             vbo = vbos[0];
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, vbo);
-            
+
             GCHandle handle = GCHandle.Alloc(Vertices, GCHandleType.Pinned);
             try
             {
@@ -481,13 +479,13 @@ namespace Alis.Core.Ecs.Components.Collider
                     handle.Free();
                 }
             }
-            
-            
+
+
             Gl.EnableVertexAttribArray(0);
             Gl.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, 2 * sizeof(float), IntPtr.Zero);
             Gl.GlBindVertexArray(0);
         }
-        
+
         /// <summary>
         ///     Renders the gameobject
         /// </summary>
@@ -507,7 +505,7 @@ namespace Alis.Core.Ecs.Components.Collider
         }
 
         /// <summary>
-        /// Renders the box collider using the specified gameobject
+        ///     Renders the box collider using the specified gameobject
         /// </summary>
         /// <param name="gameobject">The gameobject</param>
         /// <param name="cameraPosition">The camera position</param>
@@ -530,13 +528,13 @@ namespace Alis.Core.Ecs.Components.Collider
             float width = SizeOfTexture.X * pixelsPerMeter * colliderScale.X;
             float height = SizeOfTexture.Y * pixelsPerMeter * colliderScale.Y;
 
-            int x = (int)(posX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2);
-            int y = (int)(posY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2);
+            int x = (int) (posX - cameraPosition.X * pixelsPerMeter + cameraResolution.X / 2);
+            int y = (int) (posY - cameraPosition.Y * pixelsPerMeter + cameraResolution.Y / 2);
 
-            float rectangleX = (int)(x - width / 2);
-            float rectangleY = (int)(y - height / 2);
-            float rectangleW = (int)width;
-            float rectangleH = (int)height;
+            float rectangleX = (int) (x - width / 2);
+            float rectangleY = (int) (y - height / 2);
+            float rectangleW = (int) width;
+            float rectangleH = (int) height;
 
             // Calcular los vértices en NDC usando rectangleX, rectangleY, rectangleW, rectangleH
             float left = rectangleX / cameraResolution.X * 2.0f - 1.0f;
@@ -545,14 +543,14 @@ namespace Alis.Core.Ecs.Components.Collider
             float bottom = (rectangleY + rectangleH) / cameraResolution.Y * 2.0f - 1.0f;
 
             // Vértices del rectángulo (en sentido antihorario: bottom-left, top-left, top-right, bottom-right)
-            var rectVertices = new float[]
+            var rectVertices = new[]
             {
-                left, bottom,   // bottom-left
-                left, top,      // top-left
-                right, top,     // top-right
-                right, bottom   // bottom-right
+                left, bottom, // bottom-left
+                left, top, // top-left
+                right, top, // top-right
+                right, bottom // bottom-right
             };
-            
+
             Gl.GlUseProgram(shaderProgram);
             Gl.GlBindVertexArray(vao);
 
@@ -567,7 +565,9 @@ namespace Alis.Core.Ecs.Components.Collider
             finally
             {
                 if (handle.IsAllocated)
+                {
                     handle.Free();
+                }
             }
 
             // Dibujar solo los bordes del rectángulo
@@ -576,5 +576,3 @@ namespace Alis.Core.Ecs.Components.Collider
         }
     }
 }
-
-

@@ -39,7 +39,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
     internal class MacOpenGLContext
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MacOpenGLContext"/> class
+        ///     Initializes a new instance of the <see cref="MacOpenGLContext" /> class
         /// </summary>
         /// <param name="window">The window</param>
         public MacOpenGLContext(MacWindow window)
@@ -48,22 +48,22 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         }
 
         /// <summary>
-        /// Gets or sets the value of the view
+        ///     Gets or sets the value of the view
         /// </summary>
         public IntPtr View { get; private set; }
 
         /// <summary>
-        /// Gets or sets the value of the context
+        ///     Gets or sets the value of the context
         /// </summary>
         public IntPtr Context { get; private set; }
 
         /// <summary>
-        /// Gets or sets the value of the pixel format
+        ///     Gets or sets the value of the pixel format
         /// </summary>
         public IntPtr PixelFormat { get; private set; }
 
         /// <summary>
-        /// Crears the contexto using the specified window
+        ///     Crears the contexto using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         private void CrearContexto(MacWindow window)
@@ -96,12 +96,12 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         }
 
         /// <summary>
-        /// Makes the current
+        ///     Makes the current
         /// </summary>
         public void MakeCurrent() => ObjectiveCInterop.objc_msgSend_void(Context, ObjectiveCInterop.Sel("makeCurrentContext"));
 
         /// <summary>
-        /// Swaps the buffers
+        ///     Swaps the buffers
         /// </summary>
         public void SwapBuffers() => ObjectiveCInterop.objc_msgSend_void(Context, ObjectiveCInterop.Sel("flushBuffer"));
     }

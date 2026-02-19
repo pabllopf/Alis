@@ -32,6 +32,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms;
@@ -42,68 +43,82 @@ using Alis.Extension.Graphic.Ui.Extras.Plot;
 namespace Alis.Extension.Graphic.Ui.Sample.Examples
 {
     /// <summary>
-    /// Simple ImGui example using the native platform and OpenGL.
-    /// The code is structured to avoid exception-heavy control flow and uses
-    /// Debug assertions / conditional checks instead of try/catch for validation.
+    ///     Simple ImGui example using the native platform and OpenGL.
+    ///     The code is structured to avoid exception-heavy control flow and uses
+    ///     Debug assertions / conditional checks instead of try/catch for validation.
     /// </summary>
     public class ImguiSample : IExample
     {
         /// <summary>
-        /// The platform
+        ///     The platform
         /// </summary>
         private readonly INativePlatform _platform;
+
         /// <summary>
-        /// The context
+        ///     The context
         /// </summary>
         private IntPtr _context;
 
         /// <summary>
-        /// The font texture
-        /// </summary>
-        private uint _fontTexture;
-        /// <summary>
-        /// The vao
-        /// </summary>
-        private uint _vao;
-        /// <summary>
-        /// The vbo
-        /// </summary>
-        private uint _vbo;
-        /// <summary>
-        /// The ebo
-        /// </summary>
-        private uint _ebo;
-        /// <summary>
-        /// The shader program
-        /// </summary>
-        private uint _shaderProgram;
-
-        /// <summary>
-        /// The show demo
-        /// </summary>
-        private bool _showDemo = true;
-        /// <summary>
-        /// The counter
+        ///     The counter
         /// </summary>
         private int _counter;
 
         /// <summary>
-        /// The style
+        ///     The ebo
+        /// </summary>
+        private uint _ebo;
+
+        /// <summary>
+        ///     The font texture
+        /// </summary>
+        private uint _fontTexture;
+
+        /// <summary>
+        ///     The shader program
+        /// </summary>
+        private uint _shaderProgram;
+
+        /// <summary>
+        ///     The show demo
+        /// </summary>
+        private bool _showDemo = true;
+
+        /// <summary>
+        ///     The vao
+        /// </summary>
+        private uint _vao;
+
+        /// <summary>
+        ///     The vbo
+        /// </summary>
+        private uint _vbo;
+
+        /// <summary>
+        ///     The firsttime
+        /// </summary>
+        private bool firsttime = true;
+
+        /// <summary>
+        ///     The style
         /// </summary>
         private ImGuiStyle style;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImguiSample"/> class
+        ///     Initializes a new instance of the <see cref="ImguiSample" /> class
         /// </summary>
         /// <param name="platform">The platform</param>
-        public ImguiSample(INativePlatform platform)
-        {
-            _platform = platform;
-        }
+        public ImguiSample(INativePlatform platform) => _platform = platform;
+
+        // Parameterless constructor to allow alternate build contexts
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ImguiSample" /> class
+        /// </summary>
+        public ImguiSample() => _platform = null;
 
         /// <summary>
-        /// Initialize GL resources and ImGui context. Uses assertions and guards
-        /// instead of exception handling for faster execution paths.
+        ///     Initialize GL resources and ImGui context. Uses assertions and guards
+        ///     instead of exception handling for faster execution paths.
         /// </summary>
         public void Initialize()
         {
@@ -131,14 +146,14 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             io.BackendFlags |= ImGuiBackendFlags.HasMouseCursors | ImGuiBackendFlags.HasSetMousePos;
             io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
             ImGui.StyleColorsDark();
-            
+
             style = ImGui.GetStyle();
-            
+
             // Build and upload font atlas to GL
             ImFontAtlasPtr fonts = io.Fonts;
             fonts.GetTexDataAsRgba32(out IntPtr pixelPtr, out int widthPtr, out int heightPtr);
 
-            if (pixelPtr != IntPtr.Zero && widthPtr > 0 && heightPtr > 0)
+            if ((pixelPtr != IntPtr.Zero) && (widthPtr > 0) && (heightPtr > 0))
             {
                 Debug.Assert(_platform != null, "Platform required to upload font texture.");
                 // Ensure context is current (best-effort). MakeContextCurrent is void; assume host handles errors.
@@ -161,7 +176,7 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
                 }
 
                 // Inform ImGui about the texture id
-                fonts.SetTexId((IntPtr)_fontTexture);
+                fonts.SetTexId((IntPtr) _fontTexture);
             }
 
             // Create simple shader program
@@ -231,8 +246,8 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
         }
 
         /// <summary>
-        /// Main per-frame draw. Updates ImGui IO from the platform and renders.
-        /// Avoids exception handling for common control flow.
+        ///     Main per-frame draw. Updates ImGui IO from the platform and renders.
+        ///     Avoids exception handling for common control flow.
         /// </summary>
         public void Draw()
         {
@@ -250,7 +265,7 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             {
                 ImGui.ShowDemoWindow(ref _showDemo);
             }
-            
+
             ImPlot.ShowDemoWindow();
             ImGuizMo.ShowDemoWindow();
             ImNodes.ShowDemoWindow();
@@ -272,12 +287,40 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
         }
 
         /// <summary>
-        /// The firsttime
+        ///     Cleanups this instance
         /// </summary>
-        private bool firsttime = true;
-        
+        public void Cleanup()
+        {
+            if (_vbo != 0)
+            {
+                Gl.DeleteBuffer(_vbo);
+            }
+
+            if (_ebo != 0)
+            {
+                Gl.DeleteBuffer(_ebo);
+            }
+
+            if (_vao != 0)
+            {
+                Gl.DeleteVertexArray(_vao);
+            }
+
+            if (_shaderProgram != 0)
+            {
+                Gl.GlDeleteProgram(_shaderProgram);
+            }
+
+            if (_fontTexture != 0)
+            {
+                Gl.DeleteTexture(_fontTexture);
+            }
+
+            ImGui.SetCurrentContext(new IntPtr());
+        }
+
         /// <summary>
-        /// Renders the draw data using the specified draw data
+        ///     Renders the draw data using the specified draw data
         /// </summary>
         /// <param name="drawData">The draw data</param>
         private void RenderDrawData(ImDrawData drawData)
@@ -293,14 +336,14 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             Gl.GlDisable(EnableCap.CullFace);
             Gl.GlDisable(EnableCap.DepthTest);
             Gl.GlEnable(EnableCap.ScissorTest);
-            
+
             // Obtener el viewport real del framebuffer
             int[] viewport = new int[4];
             Gl.GlGetIntegerv(0x0BA2, viewport); // 0x0BA2 = GL_VIEWPORT
             int fbWidth = viewport[2];
             int fbHeight = viewport[3];
             ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
-            imGuiIoPtr.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(fbWidth, fbHeight);
+            imGuiIoPtr.DisplaySize = new Vector2F(fbWidth, fbHeight);
             //imGuiIoPtr.DisplayFramebufferScale = new Alis.Core.Aspect.Math.Vector.Vector2F(
             //    fbWidth / imGuiIoPtr.DisplaySize.X,
             //    fbHeight / imGuiIoPtr.DisplaySize.Y);
@@ -309,19 +352,19 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             {
                 float resolutionProgramX = 800.0f;
                 float resolutionProgramY = 600.0f;
-            
+
                 float scaleX = fbWidth / resolutionProgramX;
                 float scaleY = fbHeight / resolutionProgramY;
                 float scaleFactor = Math.Min(scaleX, scaleY);
 
                 Console.WriteLine($"Setting style scale factor: {scaleFactor}");
-            
+
                 style.ScaleAllSizes(scaleFactor);
                 imGuiIoPtr.FontGlobalScale = scaleFactor;
                 firsttime = false;
             }
-          
-            
+
+
             float l = 0.0f;
             float r = imGuiIoPtr.DisplaySize.X;
             float t = 0.0f;
@@ -365,18 +408,18 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
                     else
                     {
                         IntPtr texIdPtr = pcmd.GetTexId();
-                        uint texId = texIdPtr == IntPtr.Zero ? _fontTexture : (uint)texIdPtr.ToInt64();
+                        uint texId = texIdPtr == IntPtr.Zero ? _fontTexture : (uint) texIdPtr.ToInt64();
 
                         Gl.GlActiveTexture(TextureUnit.Texture0);
                         Gl.GlBindTexture(TextureTarget.Texture2D, texId);
 
-                        int x = (int)pcmd.ClipRect.X;
-                        int y = (int)(imGuiIoPtr.DisplaySize.Y - pcmd.ClipRect.W);
-                        int width = (int)(pcmd.ClipRect.Z - pcmd.ClipRect.X);
-                        int height = (int)(pcmd.ClipRect.W - pcmd.ClipRect.Y);
+                        int x = (int) pcmd.ClipRect.X;
+                        int y = (int) (imGuiIoPtr.DisplaySize.Y - pcmd.ClipRect.W);
+                        int width = (int) (pcmd.ClipRect.Z - pcmd.ClipRect.X);
+                        int height = (int) (pcmd.ClipRect.W - pcmd.ClipRect.Y);
                         Gl.GlScissor(x, y, width, height);
 
-                        Gl.GlDrawElements(PrimitiveType.Triangles, (int)pcmd.ElemCount, DrawElementsType.UnsignedShort, new IntPtr(idxOffset * sizeof(ushort)));
+                        Gl.GlDrawElements(PrimitiveType.Triangles, (int) pcmd.ElemCount, DrawElementsType.UnsignedShort, new IntPtr(idxOffset * sizeof(ushort)));
                     }
 
                     idxOffset += pcmd.ElemCount;
@@ -389,48 +432,5 @@ namespace Alis.Extension.Graphic.Ui.Sample.Examples
             Gl.GlBindVertexArray(0);
             Gl.GlUseProgram(0);
         }
-
-        /// <summary>
-        /// Cleanups this instance
-        /// </summary>
-        public void Cleanup()
-        {
-            if (_vbo != 0)
-            {
-                Gl.DeleteBuffer(_vbo);
-            }
-
-            if (_ebo != 0)
-            {
-                Gl.DeleteBuffer(_ebo);
-            }
-
-            if (_vao != 0)
-            {
-                Gl.DeleteVertexArray(_vao);
-            }
-
-            if (_shaderProgram != 0)
-            {
-                Gl.GlDeleteProgram(_shaderProgram);
-            }
-
-            if (_fontTexture != 0)
-            {
-                Gl.DeleteTexture(_fontTexture);
-            }
-
-            ImGui.SetCurrentContext(new IntPtr());
-        }
-
-        // Parameterless constructor to allow alternate build contexts
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ImguiSample"/> class
-        /// </summary>
-        public ImguiSample()
-        {
-            _platform = null;
-        }
     }
 }
-

@@ -352,7 +352,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         internal float m20, m21, m22;
 
-        
 
         /// <summary>
         ///     Sfs the transform get inverse using the specified transform
@@ -443,7 +442,5 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <returns>The bool</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfTransform_equal(ref Transform left, ref Transform right);
-
-        
     }
 }

@@ -264,7 +264,7 @@ namespace Alis.Core.Ecs
 
             _sharedCountdown.Dispose();
             RecycledEntityIds.Dispose();
-            
+
             GC.SuppressFinalize(this);
         }
 

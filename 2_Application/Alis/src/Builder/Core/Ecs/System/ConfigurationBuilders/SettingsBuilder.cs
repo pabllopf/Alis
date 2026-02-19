@@ -36,6 +36,7 @@ using Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Network;
 using Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Physic;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Ecs.Systems.Configuration;
 
 namespace Alis.Builder.Core.Ecs.System.ConfigurationBuilders
 {
@@ -43,7 +44,7 @@ namespace Alis.Builder.Core.Ecs.System.ConfigurationBuilders
     ///     Setting builder
     /// </summary>
     public class SettingsBuilder :
-        IBuild<Alis.Core.Ecs.Systems.Configuration.Setting>,
+        IBuild<Setting>,
         IAudio<SettingsBuilder, Action<AudioSettingBuilder>>,
         IGeneral<SettingsBuilder, Action<GeneralSettingBuilder>>,
         IGraphic<SettingsBuilder, Action<GraphicSettingBuilder>>,
@@ -54,7 +55,7 @@ namespace Alis.Builder.Core.Ecs.System.ConfigurationBuilders
         /// <summary>
         ///     The setting base
         /// </summary>
-        private readonly Alis.Core.Ecs.Systems.Configuration.Setting settingBase = new Alis.Core.Ecs.Systems.Configuration.Setting();
+        private readonly Setting settingBase = new Setting();
 
         /// <summary>
         ///     Audio the value
@@ -73,7 +74,7 @@ namespace Alis.Builder.Core.Ecs.System.ConfigurationBuilders
         ///     Build setting
         /// </summary>
         /// <returns></returns>
-        public Alis.Core.Ecs.Systems.Configuration.Setting Build() => settingBase;
+        public Setting Build() => settingBase;
 
         /// <summary>
         ///     Generals the value

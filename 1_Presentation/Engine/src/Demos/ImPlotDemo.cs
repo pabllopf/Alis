@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Diagnostics;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Extras.Plot;

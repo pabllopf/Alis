@@ -168,18 +168,19 @@ namespace Alis.Core.Graphic.Platforms
         bool TryGetLastInputCharacters(out string chars);
 
         /// <summary>
-        /// Gets the window position x
+        ///     Gets the window position x
         /// </summary>
         /// <returns>The int</returns>
         int GetWindowPositionX();
+
         /// <summary>
-        /// Gets the window position y
+        ///     Gets the window position y
         /// </summary>
         /// <returns>The int</returns>
         int GetWindowPositionY();
-        
+
         /// <summary>
-        /// Gets the window metrics using the specified win x
+        ///     Gets the window metrics using the specified win x
         /// </summary>
         /// <param name="winX">The win</param>
         /// <param name="winY">The win</param>
@@ -193,7 +194,7 @@ namespace Alis.Core.Graphic.Platforms
 
 
         /// <summary>
-        /// Gets the mouse position in view using the specified x
+        ///     Gets the mouse position in view using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>

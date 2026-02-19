@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:Installer.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -38,6 +38,7 @@ using Alis.Core.Aspect.Memory;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms;
+using Alis.Core.Graphic.Platforms.Osx;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Extras.GuizMo;
 using Alis.Extension.Graphic.Ui.Extras.Node;
@@ -47,18 +48,18 @@ using Alis.Extension.Graphic.Ui.Fonts;
 namespace Alis.App.Installer
 {
     /// <summary>
-    /// Sample host application that creates a native window, initializes OpenGL and ImGui,
-    /// and runs the selected example. Code is organized for clarity and maintainability.
+    ///     Sample host application that creates a native window, initializes OpenGL and ImGui,
+    ///     and runs the selected example. Code is organized for clarity and maintainability.
     /// </summary>
     public class Installer
     {
         /// <summary>
-        /// The platform
+        ///     The platform
         /// </summary>
         private static INativePlatform _platform;
-        
+
         /// <summary>
-        /// Application entry point.
+        ///     Application entry point.
         /// </summary>
         public void Run(string[] args)
         {
@@ -102,10 +103,10 @@ namespace Alis.App.Installer
             Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
 
             io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset
-                              | ImGuiBackendFlags.PlatformHasViewports
-                              | ImGuiBackendFlags.HasGamepad
-                              | ImGuiBackendFlags.HasMouseHoveredViewport
-                              | ImGuiBackendFlags.HasMouseCursors;
+                               | ImGuiBackendFlags.PlatformHasViewports
+                               | ImGuiBackendFlags.HasGamepad
+                               | ImGuiBackendFlags.HasMouseHoveredViewport
+                               | ImGuiBackendFlags.HasMouseCursors;
 
             io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard
                               | ImGuiConfigFlags.NavEnableGamepad
@@ -124,7 +125,7 @@ namespace Alis.App.Installer
             // Primary font (JetBrainsMono)
             const int fontSize = 14;
             Stream jetBrainsStream = AssetRegistry.GetResourceMemoryStreamByName("JetBrainsMono-Bold.ttf");
-            Debug.Assert(jetBrainsStream != null && jetBrainsStream.Length > 0, "Primary font resource not found.");
+            Debug.Assert((jetBrainsStream != null) && (jetBrainsStream.Length > 0), "Primary font resource not found.");
             IntPtr primaryFontPtr = LoadFontFromResource(jetBrainsStream);
 
             fonts.AddFontFromMemoryTtf(primaryFontPtr, fontSize, fontSize);
@@ -132,7 +133,7 @@ namespace Alis.App.Installer
             // Icon font (FontAwesome) - only if resource exists
             const int iconFontSize = 18;
             Stream faStream = AssetRegistry.GetResourceMemoryStreamByName(FontAwesome5.NameLight);
-            if (faStream != null && faStream.Length > 0)
+            if ((faStream != null) && (faStream.Length > 0))
             {
                 IntPtr iconsPtr = LoadFontFromResource(faStream);
 
@@ -159,7 +160,7 @@ namespace Alis.App.Installer
             // Build font atlas and upload to GL
             fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int texWidth, out int texHeight, out int _);
             uint fontTexId = LoadTexture(pixelData, texWidth, texHeight);
-            fonts.TexId = (IntPtr)fontTexId;
+            fonts.TexId = (IntPtr) fontTexId;
             fonts.ClearTexData();
 
             // Configure style
@@ -186,7 +187,7 @@ namespace Alis.App.Installer
                     delta = 0.25; // avoid huge dt values
                 }
 
-                io.DeltaTime = (float)delta;
+                io.DeltaTime = (float) delta;
 
                 running = _platform.PollEvents();
 
@@ -214,12 +215,13 @@ namespace Alis.App.Installer
                 double sleepTime = targetFrameTime - frameElapsed;
                 if (sleepTime > 0.0)
                 {
-                    int sleepMs = (int)(sleepTime * 1000.0);
+                    int sleepMs = (int) (sleepTime * 1000.0);
                     if (sleepMs > 0)
                     {
                         // Sleep most of the remaining time (leave small margin for precision)
                         Thread.Sleep(sleepMs);
                     }
+
                     // Busy-wait the rest for better precision
                     while (frameTimer.Elapsed.TotalSeconds - now < targetFrameTime)
                     {
@@ -234,12 +236,12 @@ namespace Alis.App.Installer
         }
 
         /// <summary>
-        /// Processes the key with imgui
+        ///     Processes the key with imgui
         /// </summary>
         private static void ProcessKeyWithImgui()
         {
             ImGuiIoPtr io = ImGui.GetIo();
-            
+
             // Control y edición
             if (_platform.IsKeyDown(ConsoleKey.Backspace))
             {
@@ -1069,13 +1071,13 @@ namespace Alis.App.Installer
 
         // Returns the appropriate platform implementation for the current OS.
         /// <summary>
-        /// Gets the platform
+        ///     Gets the platform
         /// </summary>
         /// <returns>The native platform</returns>
         private static INativePlatform GetPlatform()
         {
 #if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
-            return new Core.Graphic.Platforms.Osx.MacNativePlatform();
+            return new MacNativePlatform();
 #elif winx64 || winx86 || winarm64 || winarm || win
             return new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
 #elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
@@ -1087,7 +1089,7 @@ namespace Alis.App.Installer
 
         // Initializes the native platform and OpenGL context. Returns true on success.
         /// <summary>
-        /// Initializes the platform using the specified plat
+        ///     Initializes the platform using the specified plat
         /// </summary>
         /// <param name="plat">The plat</param>
         /// <param name="width">The width</param>
@@ -1114,15 +1116,16 @@ namespace Alis.App.Installer
         // Loads a font from an input stream into unmanaged memory and returns the IntPtr to the data buffer.
         // Note: The caller is responsible for memory lifetime if the native API expects it to remain valid.
         /// <summary>
-        /// Loads the font from resource using the specified stream
+        ///     Loads the font from resource using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The native ptr</returns>
-        private static IntPtr LoadFontFromResource(Stream stream) {
-            Debug.Assert(stream != null && stream.Length > 0, "Font stream must be valid.");
+        private static IntPtr LoadFontFromResource(Stream stream)
+        {
+            Debug.Assert((stream != null) && (stream.Length > 0), "Font stream must be valid.");
 
             byte[] data = new byte[stream.Length];
-            stream.ReadExactly(data, 0, (int)stream.Length);
+            stream.ReadExactly(data, 0, (int) stream.Length);
             IntPtr nativePtr = Marshal.AllocHGlobal(data.Length);
             Marshal.Copy(data, 0, nativePtr, data.Length);
             return nativePtr;
@@ -1130,7 +1133,7 @@ namespace Alis.App.Installer
 
         // Loads the texture using the specified pixel data (RGBA8) and returns the GL texture id.
         /// <summary>
-        /// Loads the texture using the specified pixel data
+        ///     Loads the texture using the specified pixel data
         /// </summary>
         /// <param name="pixelData">The pixel data</param>
         /// <param name="width">The width</param>
@@ -1151,4 +1154,3 @@ namespace Alis.App.Installer
         }
     }
 }
-

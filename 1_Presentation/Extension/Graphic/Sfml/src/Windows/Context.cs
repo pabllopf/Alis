@@ -106,7 +106,6 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <returns>String description of the object</returns>
         public override string ToString() => "[Context]";
 
-        
 
         /// <summary>
         ///     Sfs the context create
@@ -138,7 +137,5 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <returns>The context settings</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern ContextSettings sfContext_getSettings(IntPtr view);
-
-        
     }
 }

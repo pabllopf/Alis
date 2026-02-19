@@ -249,19 +249,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         private Vector2F InternalGetPoint(uint index, IntPtr userData) => GetPoint(index);
 
-        /// <summary>
-        ///     The get point count callback type
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate uint GetPointCountCallbackType(IntPtr userData);
-
-        /// <summary>
-        ///     The get point callback type
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate Vector2F GetPointCallbackType(uint index, IntPtr userData);
-
-        
 
         /// <summary>
         ///     Sfs the shape create using the specified get point count
@@ -394,6 +381,16 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_drawShape(IntPtr cPointer, IntPtr shape, ref RenderStates.MarshalData states);
 
-        
+        /// <summary>
+        ///     The get point count callback type
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        private delegate uint GetPointCountCallbackType(IntPtr userData);
+
+        /// <summary>
+        ///     The get point callback type
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        private delegate Vector2F GetPointCallbackType(uint index, IntPtr userData);
     }
 }

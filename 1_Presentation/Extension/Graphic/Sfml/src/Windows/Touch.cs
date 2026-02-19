@@ -75,7 +75,6 @@ namespace Alis.Extension.Graphic.Sfml.Windows
             return sfTouch_getPosition(finger, IntPtr.Zero);
         }
 
-        
 
         /// <summary>
         ///     Sfs the touch is down using the specified finger
@@ -93,7 +92,5 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <returns>The vector 2i</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector2F sfTouch_getPosition(uint finger, IntPtr relativeTo);
-
-        
     }
 }

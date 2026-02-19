@@ -33,6 +33,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms;
@@ -44,77 +45,88 @@ using Alis.Extension.Graphic.Ui.Extras.Plot;
 namespace Alis.App.Installer
 {
     /// <summary>
-    /// Simple ImGui example using the native platform and OpenGL.
-    /// The code is structured to avoid exception-heavy control flow and uses
-    /// Debug assertions / conditional checks instead of try/catch for validation.
+    ///     Simple ImGui example using the native platform and OpenGL.
+    ///     The code is structured to avoid exception-heavy control flow and uses
+    ///     Debug assertions / conditional checks instead of try/catch for validation.
     /// </summary>
     public class ImguiSample : IExample
     {
         /// <summary>
-        /// The platform
+        ///     The vector
+        /// </summary>
+        private readonly Vector2F[] _lastClickPos = new Vector2F[5];
+
+        /// <summary>
+        ///     The last click time
+        /// </summary>
+        private readonly double[] _lastClickTime = new double[5];
+
+        /// <summary>
+        ///     The platform
         /// </summary>
         private readonly INativePlatform _platform;
+
+        // State to handle mouse click/double-click detection
         /// <summary>
-        /// The context
+        ///     The prev mouse down
+        /// </summary>
+        private readonly bool[] _prevMouseDown = new bool[5];
+
+        /// <summary>
+        ///     The context
         /// </summary>
         private IntPtr _context;
 
         /// <summary>
-        /// The font texture
+        ///     The counter
         /// </summary>
-        private uint _fontTexture;
+        private int _counter;
+
         /// <summary>
-        /// The vao
-        /// </summary>
-        private uint _vao;
-        /// <summary>
-        /// The vbo
-        /// </summary>
-        private uint _vbo;
-        /// <summary>
-        /// The ebo
+        ///     The ebo
         /// </summary>
         private uint _ebo;
+
         /// <summary>
-        /// The shader program
+        ///     The font texture
+        /// </summary>
+        private uint _fontTexture;
+
+        /// <summary>
+        ///     The shader program
         /// </summary>
         private uint _shaderProgram;
 
         /// <summary>
-        /// The show demo
+        ///     The show demo
         /// </summary>
         private bool _showDemo = true;
-        /// <summary>
-        /// The counter
-        /// </summary>
-        private int _counter;
-
-        // State to handle mouse click/double-click detection
-        /// <summary>
-        /// The prev mouse down
-        /// </summary>
-        private readonly bool[] _prevMouseDown = new bool[5];
-        /// <summary>
-        /// The last click time
-        /// </summary>
-        private readonly double[] _lastClickTime = new double[5];
-        /// <summary>
-        /// The vector
-        /// </summary>
-        private readonly Alis.Core.Aspect.Math.Vector.Vector2F[] _lastClickPos = new Alis.Core.Aspect.Math.Vector.Vector2F[5];
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImguiSample"/> class
+        ///     The vao
+        /// </summary>
+        private uint _vao;
+
+        /// <summary>
+        ///     The vbo
+        /// </summary>
+        private uint _vbo;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ImguiSample" /> class
         /// </summary>
         /// <param name="platform">The platform</param>
-        public ImguiSample(INativePlatform platform)
-        {
-            _platform = platform;
-        }
+        public ImguiSample(INativePlatform platform) => _platform = platform;
+
+        // Parameterless constructor to allow alternate build contexts
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ImguiSample" /> class
+        /// </summary>
+        public ImguiSample() => _platform = null;
 
         /// <summary>
-        /// Initialize GL resources and ImGui context. Uses assertions and guards
-        /// instead of exception handling for faster execution paths.
+        ///     Initialize GL resources and ImGui context. Uses assertions and guards
+        ///     instead of exception handling for faster execution paths.
         /// </summary>
         public void Initialize()
         {
@@ -147,7 +159,7 @@ namespace Alis.App.Installer
             ImFontAtlasPtr fonts = io.Fonts;
             fonts.GetTexDataAsRgba32(out IntPtr pixelPtr, out int widthPtr, out int heightPtr);
 
-            if (pixelPtr != IntPtr.Zero && widthPtr > 0 && heightPtr > 0)
+            if ((pixelPtr != IntPtr.Zero) && (widthPtr > 0) && (heightPtr > 0))
             {
                 Debug.Assert(_platform != null, "Platform required to upload font texture.");
                 // Ensure context is current (best-effort). MakeContextCurrent is void; assume host handles errors.
@@ -170,7 +182,7 @@ namespace Alis.App.Installer
                 }
 
                 // Inform ImGui about the texture id
-                fonts.SetTexId((IntPtr)_fontTexture);
+                fonts.SetTexId((IntPtr) _fontTexture);
             }
 
             // Create simple shader program
@@ -240,33 +252,37 @@ namespace Alis.App.Installer
         }
 
         /// <summary>
-        /// Main per-frame draw. Updates ImGui IO from the platform and renders.
-        /// Avoids exception handling for common control flow.
+        ///     Main per-frame draw. Updates ImGui IO from the platform and renders.
+        ///     Avoids exception handling for common control flow.
         /// </summary>
         public void Draw()
         {
             ImGuiIoPtr io = ImGui.GetIo();
 
             // Update display size each frame (handles window resize)
-            io.DisplaySize = new Alis.Core.Aspect.Math.Vector.Vector2F(_platform.GetWindowWidth(), _platform.GetWindowHeight());
+            io.DisplaySize = new Vector2F(_platform.GetWindowWidth(), _platform.GetWindowHeight());
 
             // Feed mouse state from platform using guarded checks (no try/catch)
             if (_platform != null)
             {
                 _platform.GetMouseState(out int mx, out int my, out bool[] mButtons);
-                io.MousePos = new Alis.Core.Aspect.Math.Vector.Vector2F(mx, my);
+                io.MousePos = new Vector2F(mx, my);
 
                 List<bool> mouseDownList = new List<bool>();
-                for (int i = 0; i < 5; i++) mouseDownList.Add(i < mButtons.Length ? mButtons[i] : false);
+                for (int i = 0; i < 5; i++)
+                {
+                    mouseDownList.Add(i < mButtons.Length ? mButtons[i] : false);
+                }
+
                 // We'll compute MouseClicked / MouseDoubleClicked / MouseClickedTime / MouseClickedCount below
                 // Prepare default click-related lists (cleared each frame)
-                List<bool> mouseClicked = new List<bool> { false, false, false, false, false };
-                List<bool> mouseDoubleClicked = new List<bool> { false, false, false, false, false };
-                List<double> mouseClickedTime = new List<double> { 0, 0, 0, 0, 0 };
-                List<ushort> mouseClickedCount = new List<ushort> { 0, 0, 0, 0, 0 };
+                List<bool> mouseClicked = new List<bool> {false, false, false, false, false};
+                List<bool> mouseDoubleClicked = new List<bool> {false, false, false, false, false};
+                List<double> mouseClickedTime = new List<double> {0, 0, 0, 0, 0};
+                List<ushort> mouseClickedCount = new List<ushort> {0, 0, 0, 0, 0};
 
                 // Detect transitions and fill click info
-                double now = (double)Stopwatch.GetTimestamp() / Stopwatch.Frequency;
+                double now = (double) Stopwatch.GetTimestamp() / Stopwatch.Frequency;
                 for (int i = 0; i < 5; i++)
                 {
                     bool down = i < mButtons.Length ? mButtons[i] : false;
@@ -277,7 +293,7 @@ namespace Alis.App.Installer
                     {
                         mouseClicked[i] = true;
                         mouseClickedTime[i] = now;
-                        mouseClickedCount[i] = (ushort)(mouseClickedCount[i] + 1);
+                        mouseClickedCount[i] = (ushort) (mouseClickedCount[i] + 1);
 
                         // Double click detection: compare with last click time and position
                         double dt = now - _lastClickTime[i];
@@ -285,7 +301,7 @@ namespace Alis.App.Installer
                         float dx = io.MousePos.X - _lastClickPos[i].X;
                         float dy = io.MousePos.Y - _lastClickPos[i].Y;
                         float dist2 = dx * dx + dy * dy;
-                        if (dt <= io.MouseDoubleClickTime && dist2 <= (maxDist * maxDist))
+                        if ((dt <= io.MouseDoubleClickTime) && (dist2 <= maxDist * maxDist))
                         {
                             mouseDoubleClicked[i] = true;
                             // Mark clicked count as a double-click (2)
@@ -312,8 +328,8 @@ namespace Alis.App.Installer
             else
             {
                 // No platform: ensure sane defaults
-                io.MousePos = new Alis.Core.Aspect.Math.Vector.Vector2F(0, 0);
-                io.MouseDown = new List<bool> { false, false, false, false, false };
+                io.MousePos = new Vector2F(0, 0);
+                io.MouseDown = new List<bool> {false, false, false, false, false};
                 io.MouseWheel = 0.0f;
             }
 
@@ -329,7 +345,7 @@ namespace Alis.App.Installer
             {
                 ImGui.ShowDemoWindow(ref _showDemo);
             }
-            
+
             ImPlot.ShowDemoWindow();
             ImGuizMo.ShowDemoWindow();
             ImNodes.ShowDemoWindow();
@@ -351,7 +367,40 @@ namespace Alis.App.Installer
         }
 
         /// <summary>
-        /// Renders the draw data using the specified draw data
+        ///     Cleanups this instance
+        /// </summary>
+        public void Cleanup()
+        {
+            if (_vbo != 0)
+            {
+                Gl.DeleteBuffer(_vbo);
+            }
+
+            if (_ebo != 0)
+            {
+                Gl.DeleteBuffer(_ebo);
+            }
+
+            if (_vao != 0)
+            {
+                Gl.DeleteVertexArray(_vao);
+            }
+
+            if (_shaderProgram != 0)
+            {
+                Gl.GlDeleteProgram(_shaderProgram);
+            }
+
+            if (_fontTexture != 0)
+            {
+                Gl.DeleteTexture(_fontTexture);
+            }
+
+            ImGui.SetCurrentContext(new IntPtr());
+        }
+
+        /// <summary>
+        ///     Renders the draw data using the specified draw data
         /// </summary>
         /// <param name="drawData">The draw data</param>
         private void RenderDrawData(ImDrawData drawData)
@@ -413,18 +462,18 @@ namespace Alis.App.Installer
                     else
                     {
                         IntPtr texIdPtr = pcmd.GetTexId();
-                        uint texId = texIdPtr == IntPtr.Zero ? _fontTexture : (uint)texIdPtr.ToInt64();
+                        uint texId = texIdPtr == IntPtr.Zero ? _fontTexture : (uint) texIdPtr.ToInt64();
 
                         Gl.GlActiveTexture(TextureUnit.Texture0);
                         Gl.GlBindTexture(TextureTarget.Texture2D, texId);
 
-                        int x = (int)pcmd.ClipRect.X;
-                        int y = (int)(ImGui.GetIo().DisplaySize.Y - pcmd.ClipRect.W);
-                        int width = (int)(pcmd.ClipRect.Z - pcmd.ClipRect.X);
-                        int height = (int)(pcmd.ClipRect.W - pcmd.ClipRect.Y);
+                        int x = (int) pcmd.ClipRect.X;
+                        int y = (int) (ImGui.GetIo().DisplaySize.Y - pcmd.ClipRect.W);
+                        int width = (int) (pcmd.ClipRect.Z - pcmd.ClipRect.X);
+                        int height = (int) (pcmd.ClipRect.W - pcmd.ClipRect.Y);
                         Gl.GlScissor(x, y, width, height);
 
-                        Gl.GlDrawElements(PrimitiveType.Triangles, (int)pcmd.ElemCount, DrawElementsType.UnsignedShort, new IntPtr(idxOffset * sizeof(ushort)));
+                        Gl.GlDrawElements(PrimitiveType.Triangles, (int) pcmd.ElemCount, DrawElementsType.UnsignedShort, new IntPtr(idxOffset * sizeof(ushort)));
                     }
 
                     idxOffset += pcmd.ElemCount;
@@ -437,48 +486,5 @@ namespace Alis.App.Installer
             Gl.GlBindVertexArray(0);
             Gl.GlUseProgram(0);
         }
-
-        /// <summary>
-        /// Cleanups this instance
-        /// </summary>
-        public void Cleanup()
-        {
-            if (_vbo != 0)
-            {
-                Gl.DeleteBuffer(_vbo);
-            }
-
-            if (_ebo != 0)
-            {
-                Gl.DeleteBuffer(_ebo);
-            }
-
-            if (_vao != 0)
-            {
-                Gl.DeleteVertexArray(_vao);
-            }
-
-            if (_shaderProgram != 0)
-            {
-                Gl.GlDeleteProgram(_shaderProgram);
-            }
-
-            if (_fontTexture != 0)
-            {
-                Gl.DeleteTexture(_fontTexture);
-            }
-
-            ImGui.SetCurrentContext(new IntPtr());
-        }
-
-        // Parameterless constructor to allow alternate build contexts
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ImguiSample"/> class
-        /// </summary>
-        public ImguiSample()
-        {
-            _platform = null;
-        }
     }
 }
-

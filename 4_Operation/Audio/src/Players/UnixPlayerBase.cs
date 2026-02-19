@@ -96,7 +96,7 @@ namespace Alis.Core.Audio.Players
             await Stop();
 
             // Si el archivo es el mismo y ya fue extraído, lo usamos directamente
-            if (_lastPlayedFile == fileName && !string.IsNullOrEmpty(_lastExtractedFile) && File.Exists(_lastExtractedFile))
+            if ((_lastPlayedFile == fileName) && !string.IsNullOrEmpty(_lastExtractedFile) && File.Exists(_lastExtractedFile))
             {
                 fileName = _lastExtractedFile;
             }
@@ -140,7 +140,7 @@ namespace Alis.Core.Audio.Players
         {
             await Stop();
 
-            if (_lastPlayedFile == fileName && !string.IsNullOrEmpty(_lastExtractedFile) && File.Exists(_lastExtractedFile))
+            if ((_lastPlayedFile == fileName) && !string.IsNullOrEmpty(_lastExtractedFile) && File.Exists(_lastExtractedFile))
             {
                 fileName = _lastExtractedFile;
             }
@@ -278,7 +278,7 @@ namespace Alis.Core.Audio.Players
             if (line != null)
             {
                 string[] parts = line.Split(':');
-                if (parts.Length > 1 && double.TryParse(parts[1].Replace(".", ",").Replace("sec", "").Trim(), out double seconds))
+                if ((parts.Length > 1) && double.TryParse(parts[1].Replace(".", ",").Replace("sec", "").Trim(), out double seconds))
                 {
                     return seconds;
                 }

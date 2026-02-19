@@ -1,69 +1,100 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SceneDelegate.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System.Diagnostics;
 using Foundation;
 using UIKit;
 
-namespace Alis.Sample.Asteroid.IOS;
-
-[Register("SceneDelegate")]
-public class SceneDelegate : UIResponder, IUIWindowSceneDelegate
+namespace Alis.Sample.Asteroid.IOS
 {
-    [Export("window")] public UIWindow? Window { get; set; }
-
-    [Export("scene:willConnectToSession:options:")]
-    public void WillConnect(UIScene scene, UISceneSession session, UISceneConnectionOptions connectionOptions)
+    [Register("SceneDelegate")]
+    public class SceneDelegate : UIResponder, IUIWindowSceneDelegate
     {
-        System.Diagnostics.Debug.WriteLine($"[SceneDelegate] WillConnect - UIScene: {scene}, UIWindowScene: {scene is UIWindowScene}");
-        if (scene is UIWindowScene windowScene)
+        [Export("window")] public UIWindow? Window { get; set; }
+
+        [Export("scene:willConnectToSession:options:")]
+        public void WillConnect(UIScene scene, UISceneSession session, UISceneConnectionOptions connectionOptions)
         {
-            Window ??= new UIWindow(windowScene);
-            System.Diagnostics.Debug.WriteLine($"[SceneDelegate] Creando vista principal con bounds: {Window!.Bounds}");
-            var blueGlkvc = new BlueGlkViewController(Window!.Bounds);
-            Window.RootViewController = blueGlkvc;
-            Window.MakeKeyAndVisible();
-            Window.RootViewController?.View.SetNeedsLayout();
-            Window.RootViewController?.View.LayoutIfNeeded();
-            System.Diagnostics.Debug.WriteLine("[SceneDelegate] Layout forzado tras asignar vista principal");
+            Debug.WriteLine($"[SceneDelegate] WillConnect - UIScene: {scene}, UIWindowScene: {scene is UIWindowScene}");
+            if (scene is UIWindowScene windowScene)
+            {
+                Window ??= new UIWindow(windowScene);
+                Debug.WriteLine($"[SceneDelegate] Creando vista principal con bounds: {Window!.Bounds}");
+                var blueGlkvc = new BlueGlkViewController(Window!.Bounds);
+                Window.RootViewController = blueGlkvc;
+                Window.MakeKeyAndVisible();
+                Window.RootViewController?.View.SetNeedsLayout();
+                Window.RootViewController?.View.LayoutIfNeeded();
+                Debug.WriteLine("[SceneDelegate] Layout forzado tras asignar vista principal");
+            }
+            else
+            {
+                Debug.WriteLine("[SceneDelegate] ERROR: scene no es UIWindowScene");
+            }
         }
-        else
+
+        [Export("sceneDidDisconnect:")]
+        public void DidDisconnect(UIScene scene)
         {
-            System.Diagnostics.Debug.WriteLine("[SceneDelegate] ERROR: scene no es UIWindowScene");
+            // Called as the scene is being released by the system.
+            // This occurs shortly after the scene enters the background, or when its session is discarded.
+            // Release any resources associated with this scene that can be re-created the next time the scene connects.
+            // The scene may re-connect later, as its session was not neccessarily discarded (see UIApplicationDelegate `DidDiscardSceneSessions` instead).
         }
-    }
 
-    [Export("sceneDidDisconnect:")]
-    public void DidDisconnect(UIScene scene)
-    {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not neccessarily discarded (see UIApplicationDelegate `DidDiscardSceneSessions` instead).
-    }
+        [Export("sceneDidBecomeActive:")]
+        public void DidBecomeActive(UIScene scene)
+        {
+            // Called when the scene has moved from an inactive state to an active state.
+            // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        }
 
-    [Export("sceneDidBecomeActive:")]
-    public void DidBecomeActive(UIScene scene)
-    {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-    }
+        [Export("sceneWillResignActive:")]
+        public void WillResignActive(UIScene scene)
+        {
+            // Called when the scene will move from an active state to an inactive state.
+            // This may occur due to temporary interruptions (ex. an incoming phone call).
+        }
 
-    [Export("sceneWillResignActive:")]
-    public void WillResignActive(UIScene scene)
-    {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
-    }
+        [Export("sceneWillEnterForeground:")]
+        public void WillEnterForeground(UIScene scene)
+        {
+            // Called as the scene transitions from the background to the foreground.
+            // Use this method to undo the changes made on entering the background.
+        }
 
-    [Export("sceneWillEnterForeground:")]
-    public void WillEnterForeground(UIScene scene)
-    {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
-    }
-
-    [Export("sceneDidEnterBackground:")]
-    public void DidEnterBackground(UIScene scene)
-    {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
+        [Export("sceneDidEnterBackground:")]
+        public void DidEnterBackground(UIScene scene)
+        {
+            // Called as the scene transitions from the foreground to the background.
+            // Use this method to save data, release shared resources, and store enough scene-specific state information
+            // to restore the scene back to its current state.
+        }
     }
 }

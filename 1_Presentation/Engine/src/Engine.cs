@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Engine.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -14,6 +43,7 @@ using Alis.Core.Aspect.Memory;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms;
+using Alis.Core.Graphic.Platforms.Osx;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Extras.GuizMo;
 using Alis.Extension.Graphic.Ui.Extras.Node;
@@ -23,100 +53,159 @@ using Alis.Extension.Graphic.Ui.Fonts;
 namespace Alis.App.Engine
 {
     /// <summary>
-    /// Sample host application that creates a native window, initializes OpenGL and ImGui,
-    /// and runs the selected example. Code is organized for clarity and maintainability.
+    ///     Sample host application that creates a native window, initializes OpenGL and ImGui,
+    ///     and runs the selected example. Code is organized for clarity and maintainability.
     /// </summary>
     public class Engine
     {
         /// <summary>
-        /// The space work
+        ///     The show project
         /// </summary>
-        private SpaceWork _spaceWork = new SpaceWork();
-        
+        private static bool showProject;
+
         /// <summary>
-        /// The platform
+        ///     The show inspector
         /// </summary>
-        private INativePlatform platform;
+        private static bool showInspector;
+
         /// <summary>
-        /// The context
+        ///     The show console
+        /// </summary>
+        private static bool showConsole;
+
+        /// <summary>
+        ///     The vector
+        /// </summary>
+        private readonly Vector2F[] _lastClickPos = new Vector2F[5];
+
+        /// <summary>
+        ///     The last click time
+        /// </summary>
+        private readonly double[] _lastClickTime = new double[5];
+
+        // --- Añadir campos en la clase HubEngine (junto a _prevMouseDown, _lastClickTime, _lastClickPos) ---
+        /// <summary>
+        ///     The mouse clicked
+        /// </summary>
+        private readonly bool[] _mouseClicked = new bool[5];
+
+        /// <summary>
+        ///     The mouse clicked count
+        /// </summary>
+        private readonly ushort[] _mouseClickedCount = new ushort[5];
+
+        /// <summary>
+        ///     The mouse clicked time
+        /// </summary>
+        private readonly double[] _mouseClickedTime = new double[5];
+
+        /// <summary>
+        ///     The mouse double clicked
+        /// </summary>
+        private readonly bool[] _mouseDoubleClicked = new bool[5];
+
+        /// <summary>
+        ///     The prev mouse down
+        /// </summary>
+        private readonly bool[] _prevMouseDown = new bool[5];
+
+        /// <summary>
+        ///     The space work
+        /// </summary>
+        private readonly SpaceWork _spaceWork = new SpaceWork();
+
+        /// <summary>
+        ///     The resolution program
+        /// </summary>
+        private readonly float resolutionProgramX = 1920;
+
+        /// <summary>
+        ///     The resolution program
+        /// </summary>
+        private readonly float resolutionProgramY = 1080;
+
+        /// <summary>
+        ///     The context
         /// </summary>
         private IntPtr _context;
-        
+
         /// <summary>
-        /// The fonts
+        ///     The ebo
         /// </summary>
-        private ImFontAtlasPtr fonts;
-        
+        private uint _ebo;
+
+        /// <summary>
+        ///     The font texture
+        /// </summary>
+        private uint _fontTexture;
+
+        /// <summary>
+        ///     The shader program
+        /// </summary>
+        private uint _shaderProgram;
+
+        /// <summary>
+        ///     The vao
+        /// </summary>
+        private uint _vao;
+
+        /// <summary>
+        ///     The vbo
+        /// </summary>
+        private uint _vbo;
+
         /// <summary>
         ///     The dockspaceflags
         /// </summary>
         private ImGuiWindowFlags dockspaceflags;
 
         /// <summary>
-        /// The font texture
+        ///     The first time scale
         /// </summary>
-        private uint _fontTexture;
-        /// <summary>
-        /// The vao
-        /// </summary>
-        private uint _vao;
-        /// <summary>
-        /// The vbo
-        /// </summary>
-        private uint _vbo;
-        /// <summary>
-        /// The ebo
-        /// </summary>
-        private uint _ebo;
-        /// <summary>
-        /// The shader program
-        /// </summary>
-        private uint _shaderProgram;
-        
-        /// <summary>
-        /// The prev mouse down
-        /// </summary>
-        private readonly bool[] _prevMouseDown = new bool[5];
-        
-        /// <summary>
-        /// The last click time
-        /// </summary>
-        private readonly double[] _lastClickTime = new double[5];
-        
-        /// <summary>
-        /// The vector
-        /// </summary>
-        private readonly Vector2F[] _lastClickPos = new Vector2F[5];
-
-        // --- Añadir campos en la clase HubEngine (junto a _prevMouseDown, _lastClickTime, _lastClickPos) ---
-        /// <summary>
-        /// The mouse clicked
-        /// </summary>
-        private readonly bool[] _mouseClicked = new bool[5];
-        /// <summary>
-        /// The mouse double clicked
-        /// </summary>
-        private readonly bool[] _mouseDoubleClicked = new bool[5];
-        /// <summary>
-        /// The mouse clicked time
-        /// </summary>
-        private readonly double[] _mouseClickedTime = new double[5];
-        /// <summary>
-        /// The mouse clicked count
-        /// </summary>
-        private readonly ushort[] _mouseClickedCount = new ushort[5];
+        private bool firstTimeScale = true;
 
         /// <summary>
-        /// The resolution program
+        ///     The fonts
         /// </summary>
-        private float resolutionProgramX = 1920;
+        private ImFontAtlasPtr fonts;
+
         /// <summary>
-        /// The resolution program
+        ///     The frame counter
         /// </summary>
-        private float resolutionProgramY = 1080;
-        
+        private int FrameCounter;
+
         /// <summary>
-        /// Application entry point.
+        ///     The gl viewport height
+        /// </summary>
+        private int glViewportHeight;
+
+        /// <summary>
+        ///     The gl viewport width
+        /// </summary>
+        private int glViewportWidth;
+
+        /// <summary>
+        ///     The is first time
+        /// </summary>
+        private bool isFirstTime = true;
+
+        /// <summary>
+        ///     The is init
+        /// </summary>
+        private bool IsInit;
+
+        /// <summary>
+        ///     The platform
+        /// </summary>
+        private INativePlatform platform;
+
+        /// <summary>
+        ///     The scale factor
+        /// </summary>
+        private float scaleFactor = 1.0f;
+
+        /// <summary>
+        ///     Application entry point.
         /// </summary>
         public void Run()
         {
@@ -124,13 +213,13 @@ namespace Alis.App.Engine
             const double targetFrameTime = 1.0 / 60.0;
             Stopwatch frameTimer = Stopwatch.StartNew();
             double lastTime = frameTimer.Elapsed.TotalSeconds;
-            
-            
+
+
             platform = GetPlatform();
             Debug.Assert(platform != null, "Platform implementation must be provided for the current OS.");
 
             // Initialize native window and GL context
-            if (!InitializePlatform(platform, (int)resolutionProgramX, (int)resolutionProgramY, "Alis Hub - by @pabllopf"))
+            if (!InitializePlatform(platform, (int) resolutionProgramX, (int) resolutionProgramY, "Alis Hub - by @pabllopf"))
             {
                 Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
                 platform?.Cleanup();
@@ -146,8 +235,8 @@ namespace Alis.App.Engine
             // Create ImGui context and configure backends
             IntPtr imguiContext = ImGui.CreateContext();
             ImGui.SetCurrentContext(imguiContext);
-            
-             // Ensure the native GL context is current before creating GL resources.
+
+            // Ensure the native GL context is current before creating GL resources.
             Debug.Assert(platform != null, "Platform must be provided before Initialize is called.");
             platform?.MakeContextCurrent();
 
@@ -163,32 +252,32 @@ namespace Alis.App.Engine
                 _context = currentCtx;
                 ImGui.SetCurrentContext(_context);
             }
-            
+
             _spaceWork.io = ImGui.GetIo();
             Debug.Assert(_spaceWork.io.NativePtr != IntPtr.Zero, "ImGui _spaceWork.io must be valid after creating or setting context.");
 
             // Backend capabilities
-            
+
             // active plot renders
-             _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
-                                         ImGuiBackendFlags.PlatformHasViewports |
-                                         ImGuiBackendFlags.HasGamepad |
-                                         ImGuiBackendFlags.HasMouseHoveredViewport |
-                                         ImGuiBackendFlags.HasMouseCursors;
+            _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
+                                          ImGuiBackendFlags.PlatformHasViewports |
+                                          ImGuiBackendFlags.HasGamepad |
+                                          ImGuiBackendFlags.HasMouseHoveredViewport |
+                                          ImGuiBackendFlags.HasMouseCursors;
 
 
             // Enable Keyboard Controls
-             _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
-                                        ImGuiConfigFlags.NavEnableGamepad;
+            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
+                                         ImGuiConfigFlags.NavEnableGamepad;
 
             // CONFIG DOCKSPACE 
-             _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
-                                        ImGuiConfigFlags.ViewportsEnable;
-             
-             
-             _spaceWork.io = ImGui.GetIo();
-             _spaceWork.io.WantSaveIniSettings = false;
-            
+            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
+                                         ImGuiConfigFlags.ViewportsEnable;
+
+
+            _spaceWork.io = ImGui.GetIo();
+            _spaceWork.io.WantSaveIniSettings = false;
+
             // Create simple shader program
             const string vertexShaderSource = "#version 330 core\n" +
                                               "layout (location = 0) in vec2 Position;\n" +
@@ -265,31 +354,31 @@ namespace Alis.App.Engine
             Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
 
             _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset
-                              | ImGuiBackendFlags.PlatformHasViewports
-                              | ImGuiBackendFlags.HasGamepad
-                              | ImGuiBackendFlags.HasMouseHoveredViewport
-                              | ImGuiBackendFlags.HasMouseCursors;
+                                          | ImGuiBackendFlags.PlatformHasViewports
+                                          | ImGuiBackendFlags.HasGamepad
+                                          | ImGuiBackendFlags.HasMouseHoveredViewport
+                                          | ImGuiBackendFlags.HasMouseCursors;
 
             _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard
-                              | ImGuiConfigFlags.NavEnableGamepad
-                              | ImGuiConfigFlags.DockingEnable
-                              | ImGuiConfigFlags.ViewportsEnable;
+                                         | ImGuiConfigFlags.NavEnableGamepad
+                                         | ImGuiConfigFlags.DockingEnable
+                                         | ImGuiConfigFlags.ViewportsEnable;
 
             // Initialize optional ImGui extensions
             ImNodes.CreateContext();
             ImPlot.CreateContext();
             ImGuizMo.SetImGuiContext(imguiContext);
             ImGui.SetCurrentContext(imguiContext);
-            
+
             // Load fonts:
             LoadFonts();
-            
+
             // Configure style
             SetStyle();
 
             _spaceWork.OnInit();
             _spaceWork.OnStart();
-            
+
             // Inicializar estado del ratón para evitar tiempos a 0 que ImGui interpretaría como clicks recientes
             for (int i = 0; i < 5; i++)
             {
@@ -301,15 +390,15 @@ namespace Alis.App.Engine
                 _lastClickTime[i] = 0.0;
                 _lastClickPos[i] = new Vector2F(0, 0);
             }
-           
+
             ImGuiIoPtr io = ImGui.GetIo();
 
             _spaceWork.Viewport = ImGui.GetMainViewport();
-            
+
             dockspaceflags |= ImGuiWindowFlags.MenuBar;
             dockspaceflags |= ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove;
             dockspaceflags |= ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
-            
+
             while (_spaceWork.IsRunning)
             {
                 // Update delta time for ImGui using high-resolution timer
@@ -326,8 +415,8 @@ namespace Alis.App.Engine
                     delta = 0.25; // avoid huge dt values
                 }
 
-                io.DeltaTime = (float)delta;
-                
+                io.DeltaTime = (float) delta;
+
                 _spaceWork.IsRunning = platform.PollEvents();
 
                 ProcessKeyWithImgui();
@@ -340,7 +429,7 @@ namespace Alis.App.Engine
                 }
 
                 Draw();
-                
+
                 platform.SwapBuffers();
 
                 int glError = Gl.GlGetError();
@@ -348,19 +437,20 @@ namespace Alis.App.Engine
                 {
                     Logger.Info($"OpenGL error after SwapBuffers: 0x{glError:X}");
                 }
-                
+
                 // Frame pacing: sleep / spin until target frame time reached
                 double frameEnd = frameTimer.Elapsed.TotalSeconds;
                 double frameElapsed = frameEnd - now;
                 double sleepTime = targetFrameTime - frameElapsed;
                 if (sleepTime > 0.0)
                 {
-                    int sleepMs = (int)(sleepTime * 1000.0);
+                    int sleepMs = (int) (sleepTime * 1000.0);
                     if (sleepMs > 0)
                     {
                         // Sleep most of the remaining time (leave small margin for precision)
                         Thread.Sleep(sleepMs);
                     }
+
                     // Busy-wait the rest for better precision
                     while (frameTimer.Elapsed.TotalSeconds - now < targetFrameTime)
                     {
@@ -396,46 +486,29 @@ namespace Alis.App.Engine
             }
 
             ImGui.SetCurrentContext(new IntPtr());
-            
+
             platform.Cleanup();
         }
-        
+
         /// <summary>
-        /// The is first time
+        ///     Updates the mouse pos and buttons
         /// </summary>
-        private bool isFirstTime = true;
-        /// <summary>
-        /// The gl viewport width
-        /// </summary>
-        private int glViewportWidth;
-        /// <summary>
-        /// The gl viewport height
-        /// </summary>
-        private int glViewportHeight;
-        /// <summary>
-        /// The scale factor
-        /// </summary>
-        private float scaleFactor = 1.0f;
-        
-         /// <summary>
-         /// Updates the mouse pos and buttons
-         /// </summary>
-         private void UpdateMousePosAndButtons()
+        private void UpdateMousePosAndButtons()
         {
             ImGuiIoPtr io = ImGui.GetIo();
             Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO no inicializado");
 
             // Obtener estado del mouse desde la plataforma
             platform.GetMouseState(out int mouseX, out int mouseY, out bool[] mouseButtons);
-            Debug.Assert(mouseButtons != null && mouseButtons.Length >= 3, "mouseButtons debe tener al menos 3 elementos");
+            Debug.Assert((mouseButtons != null) && (mouseButtons.Length >= 3), "mouseButtons debe tener al menos 3 elementos");
 
             platform.GetWindowMetrics(out int winX, out int winY,
                 out int winW, out int winH,
                 out int fbW, out int fbH);
-            
+
             platform.GetMousePositionInView(out float mx, out float my);
-            
-            
+
+
             my = fbH - my; // Invertir coordenada Y para ImGui
 
             if (isFirstTime)
@@ -445,29 +518,29 @@ namespace Alis.App.Engine
                 Gl.GlGetIntegerv(0x0BA2, viewport);
                 glViewportWidth = viewport[2];
                 glViewportHeight = viewport[3];
-            
+
                 float scaleX = glViewportWidth / resolutionProgramX;
                 float scaleY = glViewportHeight / resolutionProgramY;
                 scaleFactor = Math.Min(scaleX, scaleY);
                 isFirstTime = false;
             }
-           
+
 
             mx *= scaleFactor;
-            my *= scaleFactor; 
-            
+            my *= scaleFactor;
+
             //Console.WriteLine($"Mouse Pos in windows: X={mx}, Y={my} | Display Framebuffer Size: W={glViewportWidth}, H={glViewportHeight} | Window Size: W={winW}, H={winH} | Window Pos: X={winX}, Y={winY} | Windows Space Windows {fbW}, {fbH} | Scale Factor: {scaleFactor} | Resolution Program: W={resolutionProgramX}, H={resolutionProgramY} ");
             io.AddMousePosEvent(mx, my);
 
             // Actualizar estado de los botones (máximo 5 botones)
             for (int i = 0; i < 5; i++)
             {
-                bool isDown = (mouseButtons != null && i < mouseButtons.Length) ? mouseButtons[i] : false;
+                bool isDown = (mouseButtons != null) && (i < mouseButtons.Length) ? mouseButtons[i] : false;
                 io.AddMouseButtonEvent(i, isDown);
 
                 if (isDown)
                 {
-                    Logger.Trace($"Botón ratón {i}: {("PRESIONADO")}");
+                    Logger.Trace($"Botón ratón {i}: {"PRESIONADO"}");
                 }
             }
 
@@ -485,7 +558,7 @@ namespace Alis.App.Engine
                 Logger.Trace("Algún botón de ratón está presionado.");
             }
         }
-        
+
         /// <summary>
         ///     Renders the project
         /// </summary>
@@ -494,43 +567,30 @@ namespace Alis.App.Engine
             DrawLeftSidebar();
             DrawRightSidebar();
         }
-        
-         /// <summary>
-        /// The show project
-        /// </summary>
-        static bool showProject = false;
+
+
         /// <summary>
-        /// The show inspector
-        /// </summary>
-        static bool showInspector = false;
-        /// <summary>
-        /// The show console
-        /// </summary>
-        static bool showConsole = false;
-        
-        
-        /// <summary>
-        /// Draws the left sidebar
+        ///     Draws the left sidebar
         /// </summary>
         private void DrawLeftSidebar()
         {
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
             ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
-            
+
             Vector2F dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 85);
-        
+
             // Calcular el tamaño del DockSpace restante
             if (_spaceWork.IsMacOs)
             {
                 dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 55);
             }
-            
+
             ImGui.Begin("Sidebar1", ImGuiWindowFlags.NoTitleBar |
-                                   ImGuiWindowFlags.NoResize   |
-                                   ImGuiWindowFlags.NoMove     |
-                                   ImGuiWindowFlags.NoScrollbar |
-                                   ImGuiWindowFlags.NoScrollWithMouse);
-            
+                                    ImGuiWindowFlags.NoResize |
+                                    ImGuiWindowFlags.NoMove |
+                                    ImGuiWindowFlags.NoScrollbar |
+                                    ImGuiWindowFlags.NoScrollWithMouse);
+
             if (_spaceWork.IsMacOs)
             {
                 ImGui.SetWindowPos(new Vector2F(0, 30));
@@ -541,14 +601,15 @@ namespace Alis.App.Engine
                 ImGui.SetWindowPos(new Vector2F(0, 56));
                 ImGui.SetWindowSize(new Vector2F(40, dockSize.Y));
             }
-            
+
             ImGui.PushFont(_spaceWork.FontLoaded16Solid);
-            
+
             // Botón Project
             if (ImGui.Button($"{FontAwesome5.Folder}"))
             {
-                showProject = !showProject; 
+                showProject = !showProject;
             }
+
             // Botón Inspector
             if (ImGui.Button($"{FontAwesome5.Tools}"))
             {
@@ -562,35 +623,35 @@ namespace Alis.App.Engine
             }
 
             ImGui.PopFont();
-            
+
             ImGui.End();
-            
+
             ImGui.PopStyleVar();
             ImGui.PopStyleColor();
         }
-        
+
         /// <summary>
-        /// Draws the right sidebar
+        ///     Draws the right sidebar
         /// </summary>
         private void DrawRightSidebar()
         {
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
             ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
-            
+
             Vector2F dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 85);
-        
+
             // Calcular el tamaño del DockSpace restante
             if (_spaceWork.IsMacOs)
             {
                 dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 55);
             }
-            
+
             ImGui.Begin("Sidebar2", ImGuiWindowFlags.NoTitleBar |
-                                    ImGuiWindowFlags.NoResize   |
-                                    ImGuiWindowFlags.NoMove     |
+                                    ImGuiWindowFlags.NoResize |
+                                    ImGuiWindowFlags.NoMove |
                                     ImGuiWindowFlags.NoScrollbar |
                                     ImGuiWindowFlags.NoScrollWithMouse);
-            
+
             if (_spaceWork.IsMacOs)
             {
                 ImGui.SetWindowPos(new Vector2F(dockSize.X - 35, 30));
@@ -603,12 +664,13 @@ namespace Alis.App.Engine
             }
 
             ImGui.PushFont(_spaceWork.FontLoaded16Solid);
-            
+
             // Botón Project
             if (ImGui.Button($"{FontAwesome5.Folder}"))
             {
-                showProject = !showProject; 
+                showProject = !showProject;
             }
+
             // Botón Inspector
             if (ImGui.Button($"{FontAwesome5.Tools}"))
             {
@@ -622,17 +684,17 @@ namespace Alis.App.Engine
             }
 
             ImGui.PopFont();
-            
+
             ImGui.End();
-            
+
             ImGui.PopStyleVar();
             ImGui.PopStyleColor();
         }
-        
-          /// <summary>
-          /// Processes the key with imgui
-          /// </summary>
-          private void ProcessKeyWithImgui()
+
+        /// <summary>
+        ///     Processes the key with imgui
+        /// </summary>
+        private void ProcessKeyWithImgui()
         {
             ImGuiIoPtr io = ImGui.GetIo();
 
@@ -1470,7 +1532,7 @@ namespace Alis.App.Engine
         private void LoadFonts()
         {
             fonts = ImGui.GetIo().Fonts;
-            
+
             int fontSize = 14;
             int fontSizeIcon = 13;
 
@@ -1479,7 +1541,7 @@ namespace Alis.App.Engine
             byte[] fontDataBytes = new byte[fontFileSolid.Length];
             fontFileSolid.ReadExactly(fontDataBytes, 0, (int) fontFileSolid.Length);
             Marshal.Copy(fontDataBytes, 0, fontData, (int) fontFileSolid.Length);
-           _spaceWork.FontLoaded16Solid = fonts.AddFontFromMemoryTtf(fontData, fontSize, fontSize);
+            _spaceWork.FontLoaded16Solid = fonts.AddFontFromMemoryTtf(fontData, fontSize, fontSize);
 
             try
             {
@@ -1517,7 +1579,7 @@ namespace Alis.App.Engine
             byte[] fontDataBytes12 = new byte[fontFileSolid12.Length];
             fontFileSolid12.ReadExactly(fontDataBytes12, 0, (int) fontFileSolid12.Length);
             Marshal.Copy(fontDataBytes12, 0, fontData12, (int) fontFileSolid12.Length);
-           _spaceWork.FontLoaded10Solid = fonts.AddFontFromMemoryTtf(fontData12, 12, 12);
+            _spaceWork.FontLoaded10Solid = fonts.AddFontFromMemoryTtf(fontData12, 12, 12);
 
             try
             {
@@ -1554,7 +1616,7 @@ namespace Alis.App.Engine
             byte[] fontDataBytes40 = new byte[fontFileSolid40.Length];
             fontFileSolid40.ReadExactly(fontDataBytes40, 0, (int) fontFileSolid40.Length);
             Marshal.Copy(fontDataBytes40, 0, fontData40, (int) fontFileSolid40.Length);
-           _spaceWork.FontLoaded45Bold = fonts.AddFontFromMemoryTtf(fontData40, 40, 40);
+            _spaceWork.FontLoaded45Bold = fonts.AddFontFromMemoryTtf(fontData40, 40, 40);
 
             try
             {
@@ -1591,7 +1653,7 @@ namespace Alis.App.Engine
             byte[] fontDataBytes28 = new byte[fontFileSolid28.Length];
             fontFileSolid28.ReadExactly(fontDataBytes28, 0, (int) fontFileSolid28.Length);
             Marshal.Copy(fontDataBytes28, 0, fontData28, (int) fontFileSolid28.Length);
-           _spaceWork.FontLoaded30Bold = fonts.AddFontFromMemoryTtf(fontData28, 28, 28);
+            _spaceWork.FontLoaded30Bold = fonts.AddFontFromMemoryTtf(fontData28, 28, 28);
             try
             {
                 ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
@@ -1627,7 +1689,7 @@ namespace Alis.App.Engine
             byte[] fontDataBytesLight = new byte[fontFileSolidLight.Length];
             fontFileSolidLight.ReadExactly(fontDataBytesLight, 0, (int) fontFileSolidLight.Length);
             Marshal.Copy(fontDataBytesLight, 0, fontDataLight, (int) fontFileSolidLight.Length);
-           _spaceWork.FontLoaded16Light = fonts.AddFontFromMemoryTtf(fontDataLight, fontSize, fontSize);
+            _spaceWork.FontLoaded16Light = fonts.AddFontFromMemoryTtf(fontDataLight, fontSize, fontSize);
 
             try
             {
@@ -1663,12 +1725,10 @@ namespace Alis.App.Engine
             // Build font atlas and upload to GL
             fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int texWidth, out int texHeight, out int _);
             _spaceWork.FontTextureId = LoadTexture(pixelData, texWidth, texHeight);
-            fonts.TexId = (IntPtr)_spaceWork.FontTextureId;
+            fonts.TexId = (IntPtr) _spaceWork.FontTextureId;
             fonts.ClearTexData();
-            
-            
         }
-        
+
         /// <summary>
         ///     Sets the style
         /// </summary>
@@ -1684,7 +1744,7 @@ namespace Alis.App.Engine
 
             // Main background color for windows
             style[(int) ImGuiCol.WindowBg] = new Vector4F(0.13f, 0.14f, 0.15f, 1.0f);
-            
+
             // Background color for child windows
             style[(int) ImGuiCol.ChildBg] = new Vector4F(0.13f, 0.14f, 0.15f, 1.0f);
 
@@ -1921,22 +1981,13 @@ namespace Alis.App.Engine
             style.Alpha = 1.0f;
 
             style.DisabledAlpha = 0.6f;
-            
+
             _spaceWork.Style = style;
         }
-        
-        /// <summary>
-        /// The is init
-        /// </summary>
-        private bool IsInit = false;
-        /// <summary>
-        /// The frame counter
-        /// </summary>
-        private int FrameCounter = 0;
 
         /// <summary>
-        /// Main per-frame draw. Updates ImGui _spaceWork.io from the platform and renders.
-        /// Avoids exception handling for common control flow.
+        ///     Main per-frame draw. Updates ImGui _spaceWork.io from the platform and renders.
+        ///     Avoids exception handling for common control flow.
         /// </summary>
         public void Draw()
         {
@@ -1948,20 +1999,20 @@ namespace Alis.App.Engine
             ImGui.SetNextWindowPos(_spaceWork.Viewport.WorkPos);
             ImGui.SetNextWindowSize(_spaceWork.Viewport.Size);
             ImGui.Begin("DockSpace Demo", dockspaceflags);
-        
+
             _spaceWork.DockSpaceMenu.Update();
-        
+
             Vector2F dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 85);
-        
+
             // Calcular el tamaño del DockSpace restante
             if (_spaceWork.IsMacOs)
             {
                 dockSize = _spaceWork.Viewport.Size - new Vector2F(5, 60);
             }
-            
+
             // fix dockspace size with sidebars:
             dockSize = dockSize - new Vector2F(80, 0);
-            
+
             // Calcular el tamaño del DockSpace restante
             if (_spaceWork.IsMacOs)
             {
@@ -1973,21 +2024,21 @@ namespace Alis.App.Engine
                 // fix dockspace position with sidebars:
                 ImGui.SetWindowPos(new Vector2F(40, 25));
             }
-            
+
             uint dockSpaceId = ImGui.GetId("MyDockSpace");
             ImGui.DockSpace(dockSpaceId, dockSize);
 
-            
+
             _spaceWork.OnRender();
             RenderProject();
-            
+
             // Ejecutar layout una sola vez fuera de Begin/End para evitar mismatched Begin/End stack
-            if (!IsInit && FrameCounter>=2)
+            if (!IsInit && (FrameCounter >= 2))
             {
                 BuildDefaultLayout();
                 IsInit = true;
             }
-            
+
             ImGui.End();
 
             ImGui.Render();
@@ -1997,88 +2048,83 @@ namespace Alis.App.Engine
             FrameCounter++;
         }
 
-         /// <summary>
-         /// Builds the default layout
-         /// </summary>
-         private void BuildDefaultLayout()
-       {
-           ImGuiViewportPtr viewport = ImGui.GetMainViewport();
-           uint dockspaceId = ImGui.GetId("MyDockSpace");
-       
-           // Usar el tamaño real del viewport para evitar discrepancias
-           Vector2F fullSize = viewport.Size;
-       
-           // Limpia lo que hubiera antes
-           ImGui.DockBuilderRemoveNode(dockspaceId);
-           ImGui.DockBuilderAddNode(dockspaceId, ImGuiDockNodeFlags.NoWindowMenuButton);
-       
-           // Forzar tamaño del nodo raíz al tamaño del viewport
-           ImGui.DockBuilderSetNodeSize(dockspaceId, fullSize);
-           
-           // Ratios configurables (todos en porcentajes)
-           float leftRatio = 0.20f;    // ancho de la columna izquierda (20%)
-           float rightRatio = 0.25f;   // ancho de la columna derecha (20%)
-           float bottomRatio = 0.30f;  // altura común para todas las zonas inferiores (20%)
-       
-           // Divide nodos (izquierda, centro, derecha)
-           uint dockMainId = dockspaceId;
-       
-           // Izquierda: reservar leftRatio del ancho
-           uint dockIdLeft = ImGui.DockBuilderSplitNode(dockMainId, ImGuiDir.Left, leftRatio, null, out uint dockRemaining);
-       
-           // Dividir la columna izquierda en arriba/abajo usando bottomRatio (arriba = 1 - bottomRatio)
-           uint dockIdLeftTop = ImGui.DockBuilderSplitNode(dockIdLeft, ImGuiDir.Up, 1.0f - bottomRatio, null, out uint dockIdLeftBottom);
-       
-           // Split para obtener la columna derecha con la fracción calculada
-           uint dockIdRight = ImGui.DockBuilderSplitNode(dockRemaining, ImGuiDir.Right, rightRatio, null, out uint dockIdCenter);
-       
-           // Dividir la columna derecha en arriba/abajo usando el mismo bottomRatio
-           uint dockIdRightTop = ImGui.DockBuilderSplitNode(dockIdRight, ImGuiDir.Up, 1.0f - bottomRatio, null, out uint dockIdRightBottom);
-       
-           // Divide la zona central en arriba/abajo usando el mismo bottomRatio
-           uint dockIdCenterTop = ImGui.DockBuilderSplitNode(dockIdCenter, ImGuiDir.Up, 1.0f - bottomRatio, null, out uint dockIdCenterBottom);
-       
-           // Centro inferior en dos: izquierda (scene) y derecha (game)
-           uint dockIdCenterBottomLeft = ImGui.DockBuilderSplitNode(dockIdCenterBottom, ImGuiDir.Left, 0.50f, null, out uint dockIdCenterBottomRight);
-       
-           // Asigna ventanas
-           ImGui.DockBuilderDockWindow(InspectorWindow.NameWindow, dockIdLeftTop);
-           ImGui.DockBuilderDockWindow(ProjectWindow.NameWindow, dockIdLeftTop);
-           ImGui.DockBuilderDockWindow(SolutionWindow.NameWindow, dockIdLeftTop);
-       
-           // IconDemo en la parte inferior de la columna izquierda (altura = bottomRatio del viewport)
-           ImGui.DockBuilderDockWindow(IconDemo.Name, dockIdLeftBottom);
-       
-           // Settings en la parte superior de la columna derecha
-           ImGui.DockBuilderDockWindow(SettingsWindow.WindowName, dockIdRightTop);
-       
-           // AudioPlayer en la parte inferior de la columna derecha (misma altura bottomRatio)
-           ImGui.DockBuilderDockWindow(AudioPlayerWindow.WindowName, dockIdRightBottom);
-       
-           ImGui.DockBuilderDockWindow(SceneWindow.NameWindow, dockIdCenterTop);
-           ImGui.DockBuilderDockWindow(GameWindow.NameWindow, dockIdCenterTop);
-       
-           ImGui.DockBuilderDockWindow("Gizmo", dockIdCenterTop);
-           ImGui.DockBuilderDockWindow("Simple plot", dockIdCenterTop);
-           ImGui.DockBuilderDockWindow("ImPlot Demo", dockIdCenterTop);
-           ImGui.DockBuilderDockWindow("Dear ImGui Demo", dockIdCenterTop);
-           ImGui.DockBuilderDockWindow("simple node editor", dockIdCenterTop);
-       
-           ImGui.DockBuilderDockWindow(AssetsWindow.WindowName, dockIdCenterBottomLeft);
-           ImGui.DockBuilderDockWindow(ConsoleWindow.NameWindow, dockIdCenterBottomLeft);
-           
-           
-           // Finalizar
-           ImGui.DockBuilderFinish(dockspaceId);
-       }
-         
-         /// <summary>
-         /// The first time scale
-         /// </summary>
-         private bool firstTimeScale = true;
+        /// <summary>
+        ///     Builds the default layout
+        /// </summary>
+        private void BuildDefaultLayout()
+        {
+            ImGuiViewportPtr viewport = ImGui.GetMainViewport();
+            uint dockspaceId = ImGui.GetId("MyDockSpace");
+
+            // Usar el tamaño real del viewport para evitar discrepancias
+            Vector2F fullSize = viewport.Size;
+
+            // Limpia lo que hubiera antes
+            ImGui.DockBuilderRemoveNode(dockspaceId);
+            ImGui.DockBuilderAddNode(dockspaceId, ImGuiDockNodeFlags.NoWindowMenuButton);
+
+            // Forzar tamaño del nodo raíz al tamaño del viewport
+            ImGui.DockBuilderSetNodeSize(dockspaceId, fullSize);
+
+            // Ratios configurables (todos en porcentajes)
+            float leftRatio = 0.20f; // ancho de la columna izquierda (20%)
+            float rightRatio = 0.25f; // ancho de la columna derecha (20%)
+            float bottomRatio = 0.30f; // altura común para todas las zonas inferiores (20%)
+
+            // Divide nodos (izquierda, centro, derecha)
+            uint dockMainId = dockspaceId;
+
+            // Izquierda: reservar leftRatio del ancho
+            uint dockIdLeft = ImGui.DockBuilderSplitNode(dockMainId, ImGuiDir.Left, leftRatio, null, out uint dockRemaining);
+
+            // Dividir la columna izquierda en arriba/abajo usando bottomRatio (arriba = 1 - bottomRatio)
+            uint dockIdLeftTop = ImGui.DockBuilderSplitNode(dockIdLeft, ImGuiDir.Up, 1.0f - bottomRatio, null, out uint dockIdLeftBottom);
+
+            // Split para obtener la columna derecha con la fracción calculada
+            uint dockIdRight = ImGui.DockBuilderSplitNode(dockRemaining, ImGuiDir.Right, rightRatio, null, out uint dockIdCenter);
+
+            // Dividir la columna derecha en arriba/abajo usando el mismo bottomRatio
+            uint dockIdRightTop = ImGui.DockBuilderSplitNode(dockIdRight, ImGuiDir.Up, 1.0f - bottomRatio, null, out uint dockIdRightBottom);
+
+            // Divide la zona central en arriba/abajo usando el mismo bottomRatio
+            uint dockIdCenterTop = ImGui.DockBuilderSplitNode(dockIdCenter, ImGuiDir.Up, 1.0f - bottomRatio, null, out uint dockIdCenterBottom);
+
+            // Centro inferior en dos: izquierda (scene) y derecha (game)
+            uint dockIdCenterBottomLeft = ImGui.DockBuilderSplitNode(dockIdCenterBottom, ImGuiDir.Left, 0.50f, null, out uint dockIdCenterBottomRight);
+
+            // Asigna ventanas
+            ImGui.DockBuilderDockWindow(InspectorWindow.NameWindow, dockIdLeftTop);
+            ImGui.DockBuilderDockWindow(ProjectWindow.NameWindow, dockIdLeftTop);
+            ImGui.DockBuilderDockWindow(SolutionWindow.NameWindow, dockIdLeftTop);
+
+            // IconDemo en la parte inferior de la columna izquierda (altura = bottomRatio del viewport)
+            ImGui.DockBuilderDockWindow(IconDemo.Name, dockIdLeftBottom);
+
+            // Settings en la parte superior de la columna derecha
+            ImGui.DockBuilderDockWindow(SettingsWindow.WindowName, dockIdRightTop);
+
+            // AudioPlayer en la parte inferior de la columna derecha (misma altura bottomRatio)
+            ImGui.DockBuilderDockWindow(AudioPlayerWindow.WindowName, dockIdRightBottom);
+
+            ImGui.DockBuilderDockWindow(SceneWindow.NameWindow, dockIdCenterTop);
+            ImGui.DockBuilderDockWindow(GameWindow.NameWindow, dockIdCenterTop);
+
+            ImGui.DockBuilderDockWindow("Gizmo", dockIdCenterTop);
+            ImGui.DockBuilderDockWindow("Simple plot", dockIdCenterTop);
+            ImGui.DockBuilderDockWindow("ImPlot Demo", dockIdCenterTop);
+            ImGui.DockBuilderDockWindow("Dear ImGui Demo", dockIdCenterTop);
+            ImGui.DockBuilderDockWindow("simple node editor", dockIdCenterTop);
+
+            ImGui.DockBuilderDockWindow(AssetsWindow.WindowName, dockIdCenterBottomLeft);
+            ImGui.DockBuilderDockWindow(ConsoleWindow.NameWindow, dockIdCenterBottomLeft);
+
+
+            // Finalizar
+            ImGui.DockBuilderFinish(dockspaceId);
+        }
 
         /// <summary>
-        /// Renders the draw data using the specified draw data
+        ///     Renders the draw data using the specified draw data
         /// </summary>
         /// <param name="drawData">The draw data</param>
         private void RenderDrawData(ImDrawData drawData)
@@ -2104,25 +2150,24 @@ namespace Alis.App.Engine
                 int fbHeight = viewport[3];
                 ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
                 imGuiIoPtr.DisplaySize = new Vector2F(fbWidth, fbHeight);
-            
-            
+
+
                 float scaleX = fbWidth / resolutionProgramX;
                 float scaleY = fbHeight / resolutionProgramY;
                 scaleFactor = Math.Min(scaleX, scaleY);
 
                 Console.WriteLine($"Setting style scale factor: {scaleFactor}");
-            
+
                 _spaceWork.Style.ScaleAllSizes(scaleFactor);
                 _spaceWork.io.FontGlobalScale = scaleFactor;
-            
-            
-            
+
+
                 Console.WriteLine($"Framebuffer Size: {fbWidth}x{fbHeight} | Display Size: {imGuiIoPtr.DisplaySize.X}x{imGuiIoPtr.DisplaySize.Y} | Scale: {imGuiIoPtr.DisplayFramebufferScale.X}x{imGuiIoPtr.DisplayFramebufferScale.Y}");
 
                 firstTimeScale = false;
             }
-            
-            
+
+
             float l = 0.0f;
             float r = ImGui.GetIo().DisplaySize.X;
             float t = 0.0f;
@@ -2166,18 +2211,18 @@ namespace Alis.App.Engine
                     else
                     {
                         IntPtr texIdPtr = pcmd.GetTexId();
-                        uint texId = texIdPtr == IntPtr.Zero ? _fontTexture : (uint)texIdPtr.ToInt64();
+                        uint texId = texIdPtr == IntPtr.Zero ? _fontTexture : (uint) texIdPtr.ToInt64();
 
                         Gl.GlActiveTexture(TextureUnit.Texture0);
                         Gl.GlBindTexture(TextureTarget.Texture2D, texId);
 
-                        int x = (int)pcmd.ClipRect.X;
-                        int y = (int)(ImGui.GetIo().DisplaySize.Y - pcmd.ClipRect.W);
-                        int width = (int)(pcmd.ClipRect.Z - pcmd.ClipRect.X);
-                        int height = (int)(pcmd.ClipRect.W - pcmd.ClipRect.Y);
+                        int x = (int) pcmd.ClipRect.X;
+                        int y = (int) (ImGui.GetIo().DisplaySize.Y - pcmd.ClipRect.W);
+                        int width = (int) (pcmd.ClipRect.Z - pcmd.ClipRect.X);
+                        int height = (int) (pcmd.ClipRect.W - pcmd.ClipRect.Y);
                         Gl.GlScissor(x, y, width, height);
 
-                        Gl.GlDrawElements(PrimitiveType.Triangles, (int)pcmd.ElemCount, DrawElementsType.UnsignedShort, new IntPtr(idxOffset * sizeof(ushort)));
+                        Gl.GlDrawElements(PrimitiveType.Triangles, (int) pcmd.ElemCount, DrawElementsType.UnsignedShort, new IntPtr(idxOffset * sizeof(ushort)));
                     }
 
                     idxOffset += pcmd.ElemCount;
@@ -2193,13 +2238,13 @@ namespace Alis.App.Engine
 
         // Returns the appropriate platform implementation for the current OS.
         /// <summary>
-        /// Gets the platform
+        ///     Gets the platform
         /// </summary>
         /// <returns>The native platform</returns>
         private INativePlatform GetPlatform()
         {
 #if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
-            return new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
+            return new MacNativePlatform();
 #elif winx64 || winx86 || winarm64 || winarm || win
             return new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
 #elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
@@ -2211,7 +2256,7 @@ namespace Alis.App.Engine
 
         // Initializes the native platform and OpenGL context. Returns true on success.
         /// <summary>
-        /// Initializes the platform using the specified platform
+        ///     Initializes the platform using the specified platform
         /// </summary>
         /// <param name="platform">The platform</param>
         /// <param name="width">The width</param>
@@ -2238,17 +2283,17 @@ namespace Alis.App.Engine
         // Loads a font from an input stream into unmanaged memory and returns the IntPtr to the data buffer.
         // Note: The caller is responsible for memory lifetime if the native API expects it to remain valid.
         /// <summary>
-        /// Loads the font from resource using the specified stream
+        ///     Loads the font from resource using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <param name="size">The size</param>
         /// <returns>The native ptr</returns>
-        private  IntPtr LoadFontFromResource(Stream stream, int size)
+        private IntPtr LoadFontFromResource(Stream stream, int size)
         {
-            Debug.Assert(stream != null && stream.Length > 0, "Font stream must be valid.");
+            Debug.Assert((stream != null) && (stream.Length > 0), "Font stream must be valid.");
 
             byte[] data = new byte[stream.Length];
-            stream.ReadExactly(data, 0, (int)stream.Length);
+            stream.ReadExactly(data, 0, (int) stream.Length);
             IntPtr nativePtr = Marshal.AllocHGlobal(data.Length);
             Marshal.Copy(data, 0, nativePtr, data.Length);
             return nativePtr;
@@ -2256,7 +2301,7 @@ namespace Alis.App.Engine
 
         // Loads the texture using the specified pixel data (RGBA8) and returns the GL texture id.
         /// <summary>
-        /// Loads the texture using the specified pixel data
+        ///     Loads the texture using the specified pixel data
         /// </summary>
         /// <param name="pixelData">The pixel data</param>
         /// <param name="width">The width</param>
@@ -2264,7 +2309,7 @@ namespace Alis.App.Engine
         /// <param name="format">The format</param>
         /// <param name="internalFormat">The internal format</param>
         /// <returns>The texture id</returns>
-        private  uint LoadTexture(IntPtr pixelData, int width, int height, PixelFormat format = PixelFormat.Rgba, PixelInternalFormat internalFormat = PixelInternalFormat.Rgba)
+        private uint LoadTexture(IntPtr pixelData, int width, int height, PixelFormat format = PixelFormat.Rgba, PixelInternalFormat internalFormat = PixelInternalFormat.Rgba)
         {
             uint textureId = Gl.GenTexture();
             Gl.GlPixelStorei(StoreParameter.UnpackAlignment, 1);
@@ -2277,4 +2322,3 @@ namespace Alis.App.Engine
         }
     }
 }
-

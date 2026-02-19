@@ -188,7 +188,7 @@ namespace Alis.Core.Ecs.Collections
 #endif
 
             int index = log2 - 4;
-            return index >= 0 && index < BucketCount ? index : -1;
+            return (index >= 0) && (index < BucketCount) ? index : -1;
         }
 
         /// <summary>
@@ -197,7 +197,9 @@ namespace Alis.Core.Ecs.Collections
         private void ClearBuckets()
         {
             for (int i = 0; i < BucketCount; i++)
+            {
                 _buckets[i] = null;
+            }
         }
     }
 }

@@ -1,20 +1,48 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Emscripten.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.Platforms.Web
 {
     /// <summary>
-    /// The emscripten class
+    ///     The emscripten class
     /// </summary>
     public static class Emscripten
     {
         /// <summary>
-        /// Requests the animation frame loop using the specified f
+        ///     Requests the animation frame loop using the specified f
         /// </summary>
         /// <param name="f">The </param>
         /// <param name="userDataPtr">The user data ptr</param>
-        [DllImport("emscripten", EntryPoint = "emscripten_request_animation_frame_loop")]
-        [DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
+        [DllImport("emscripten", EntryPoint = "emscripten_request_animation_frame_loop"), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
         public static extern void RequestAnimationFrameLoop(IntPtr f, nint userDataPtr);
     }
 }

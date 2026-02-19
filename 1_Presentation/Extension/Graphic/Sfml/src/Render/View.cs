@@ -208,7 +208,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
             }
         }
 
-        
 
         /// <summary>
         ///     Sfs the view create
@@ -335,7 +334,5 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="factor">The factor</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfView_zoom(IntPtr view, float factor);
-
-        
     }
 }

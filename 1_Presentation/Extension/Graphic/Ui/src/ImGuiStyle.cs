@@ -654,7 +654,7 @@ namespace Alis.Extension.Graphic.Ui
         }
 
         /// <summary>
-        /// Scales the all sizes using the specified f
+        ///     Scales the all sizes using the specified f
         /// </summary>
         /// <param name="f">The </param>
         public void ScaleAllSizes(float f)

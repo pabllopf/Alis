@@ -1038,7 +1038,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.Node
         }
 
         /// <summary>
-        /// Shows the demo window
+        ///     Shows the demo window
         /// </summary>
         public static void ShowDemoWindow()
         {

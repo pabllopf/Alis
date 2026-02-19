@@ -69,7 +69,6 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// <returns>Time elapsed since the clock was started.</returns>
         public SfmlTime Restart() => sfClock_restart(CPointer);
 
-        
 
         /// <summary>
         ///     Sfs the clock create
@@ -100,7 +99,5 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// <returns>The time</returns>
         [DllImport(Csfml.System, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern SfmlTime sfClock_restart(IntPtr clock);
-
-        
     }
 }

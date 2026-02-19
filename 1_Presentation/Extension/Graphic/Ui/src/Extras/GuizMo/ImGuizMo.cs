@@ -39,6 +39,85 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
     public static class ImGuizMo
     {
         /// <summary>
+        ///     The camera projection
+        /// </summary>
+        private static float[] cameraProjection = new float[16]
+        {
+            2.0f / 800.0f, 0.0f, 0.0f, 0.0f,
+            0.0f, 2.0f / 600.0f, 0.0f, 0.0f,
+            0.0f, 0.0f, -1.0f, 0.0f,
+            -1.0f, -1.0f, 0.0f, 1.0f
+        };
+
+        /// <summary>
+        ///     The camera view
+        /// </summary>
+        private static float[] cameraView = new float[16]
+        {
+            1.0f, 0.0f, 0.0f, 0.0f,
+            0.0f, 1.0f, 0.0f, 0.0f,
+            0.0f, 0.0f, 1.0f, 0.0f,
+            0.0f, 0.0f, 0.0f, 1.0f
+        };
+
+        /// <summary>
+        ///     The identity matrix
+        /// </summary>
+        private static float[] identityMatrix = new float[16]
+        {
+            1.0f, 0.0f, 0.0f, 0.0f,
+            0.0f, 1.0f, 0.0f, 0.0f,
+            0.0f, 0.0f, 1.0f, 0.0f,
+            0.0f, 0.0f, 0.0f, 1.0f
+        };
+
+        /// <summary>
+        ///     The is open
+        /// </summary>
+        private static bool isOpen;
+
+        /// <summary>
+        ///     The matrix
+        /// </summary>
+        private static float[] matrix = new float[16]
+        {
+            1.0f, 0.0f, 0.0f, 0.0f,
+            0.0f, 1.0f, 0.0f, 0.0f,
+            0.0f, 0.0f, 1.0f, 0.0f,
+            0.0f, 0.0f, 2.0f, 1.0f
+        };
+
+        /// <summary>
+        ///     The matrix rotation
+        /// </summary>
+        private static float[] matrixRotation = new float[3];
+
+        /// <summary>
+        ///     The matrix scale
+        /// </summary>
+        private static float[] matrixScale = new float[3];
+
+        /// <summary>
+        ///     The matrix translation
+        /// </summary>
+        private static float[] matrixTranslation = new float[3];
+
+        /// <summary>
+        ///     The vector
+        /// </summary>
+        private static Vector3F rotation;
+
+        /// <summary>
+        ///     The vector
+        /// </summary>
+        private static Vector3F scale;
+
+        /// <summary>
+        ///     The vector
+        /// </summary>
+        private static Vector3F translation;
+
+        /// <summary>
         ///     Allows the axis flip using the specified value
         /// </summary>
         /// <param name="value">The value</param>
@@ -254,92 +333,13 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         {
             ImGuiZmoNative.ImGuizmo_ViewManipulate(view, length, position, size, backgroundColor);
         }
-        
-         /// <summary>
-        ///     The camera projection
-        /// </summary>
-        private static float[] cameraProjection = new float[16]
-        {
-            2.0f / 800.0f, 0.0f, 0.0f, 0.0f,
-            0.0f, 2.0f / 600.0f, 0.0f, 0.0f,
-            0.0f, 0.0f, -1.0f, 0.0f,
-            -1.0f, -1.0f, 0.0f, 1.0f
-        };
 
         /// <summary>
-        ///     The camera view
-        /// </summary>
-        private static float[] cameraView = new float[16]
-        {
-            1.0f, 0.0f, 0.0f, 0.0f,
-            0.0f, 1.0f, 0.0f, 0.0f,
-            0.0f, 0.0f, 1.0f, 0.0f,
-            0.0f, 0.0f, 0.0f, 1.0f
-        };
-
-        /// <summary>
-        ///     The identity matrix
-        /// </summary>
-        private static float[] identityMatrix = new float[16]
-        {
-            1.0f, 0.0f, 0.0f, 0.0f,
-            0.0f, 1.0f, 0.0f, 0.0f,
-            0.0f, 0.0f, 1.0f, 0.0f,
-            0.0f, 0.0f, 0.0f, 1.0f
-        };
-
-        /// <summary>
-        ///     The is open
-        /// </summary>
-        private static bool isOpen;
-
-        /// <summary>
-        ///     The matrix
-        /// </summary>
-        private static float[] matrix = new float[16]
-        {
-            1.0f, 0.0f, 0.0f, 0.0f,
-            0.0f, 1.0f, 0.0f, 0.0f,
-            0.0f, 0.0f, 1.0f, 0.0f,
-            0.0f, 0.0f, 2.0f, 1.0f
-        };
-
-        /// <summary>
-        ///     The matrix rotation
-        /// </summary>
-        private static float[] matrixRotation = new float[3];
-
-        /// <summary>
-        ///     The matrix scale
-        /// </summary>
-        private static float[] matrixScale = new float[3];
-
-        /// <summary>
-        ///     The matrix translation
-        /// </summary>
-        private static float[] matrixTranslation = new float[3];
-
-        /// <summary>
-        ///     The vector
-        /// </summary>
-        private static Vector3F rotation;
-
-        /// <summary>
-        ///     The vector
-        /// </summary>
-        private static Vector3F scale;
-
-        /// <summary>
-        ///     The vector
-        /// </summary>
-        private static Vector3F translation;
-
-        /// <summary>
-        /// Shows the demo window
+        ///     Shows the demo window
         /// </summary>
         public static void ShowDemoWindow()
         {
-             if (ImGui.Begin("Gizmo", ref isOpen))
+            if (ImGui.Begin("Gizmo", ref isOpen))
             {
                 Enable(true);
                 SetDrawList();

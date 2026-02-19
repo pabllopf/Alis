@@ -159,7 +159,7 @@ namespace Alis.Core.Ecs.Components.Render
         public void OnStart(IGameObject self)
         {
         }
-        
+
         /// <summary>
         ///     Ons the exit using the specified self
         /// </summary>
@@ -183,7 +183,7 @@ namespace Alis.Core.Ecs.Components.Render
             Path = string.Empty;
             Logger.Info("Sprite instance resources have been released.");
         }
-        
+
         /// <summary>
         ///     Initializes the shared shaders and quad buffers (run once)
         /// </summary>
@@ -193,34 +193,34 @@ namespace Alis.Core.Ecs.Components.Render
             {
                 return;
             }
-            
+
             string version = Context.Setting.Graphic.PreviewMode ? "#version 300 es\n" : "#version 330 core\n";
             string precision = Context.Setting.Graphic.PreviewMode ? "precision mediump float;\n" : string.Empty;
 
             string vertexShaderSource = version +
-                (Context.Setting.Graphic.PreviewMode ? "in vec3 aPos;\nin vec2 aTexCoord;\nout vec2 TexCoord;\n" : "layout (location = 0) in vec3 aPos;\nlayout (location = 1) in vec2 aTexCoord;\nout vec2 TexCoord;\n") +
-                "uniform vec2 offset;\n" +
-                "uniform vec2 scale;\n" +
-                "uniform float rotation;\n" +
-                "uniform int flip;\n" +
-                "void main() {\n" +
-                "    float radians_ = radians(rotation);\n" +
-                "    float cosTheta = cos(radians_);\n" +
-                "    float sinTheta = sin(radians_);\n" +
-                "    mat2 rotationMatrix = mat2(cosTheta, -sinTheta, sinTheta, cosTheta);\n" +
-                "    vec2 scaledPos = aPos.xy * scale;\n" +
-                "    vec2 rotatedPos = rotationMatrix * scaledPos;\n" +
-                "    gl_Position = vec4(rotatedPos + offset, aPos.z, 1.0);\n" +
-                "    if (flip == 1) { TexCoord = vec2(1.0 - aTexCoord.x, aTexCoord.y); }\n" +
-                "    else { TexCoord = aTexCoord; }\n" +
-                "}\n";
+                                        (Context.Setting.Graphic.PreviewMode ? "in vec3 aPos;\nin vec2 aTexCoord;\nout vec2 TexCoord;\n" : "layout (location = 0) in vec3 aPos;\nlayout (location = 1) in vec2 aTexCoord;\nout vec2 TexCoord;\n") +
+                                        "uniform vec2 offset;\n" +
+                                        "uniform vec2 scale;\n" +
+                                        "uniform float rotation;\n" +
+                                        "uniform int flip;\n" +
+                                        "void main() {\n" +
+                                        "    float radians_ = radians(rotation);\n" +
+                                        "    float cosTheta = cos(radians_);\n" +
+                                        "    float sinTheta = sin(radians_);\n" +
+                                        "    mat2 rotationMatrix = mat2(cosTheta, -sinTheta, sinTheta, cosTheta);\n" +
+                                        "    vec2 scaledPos = aPos.xy * scale;\n" +
+                                        "    vec2 rotatedPos = rotationMatrix * scaledPos;\n" +
+                                        "    gl_Position = vec4(rotatedPos + offset, aPos.z, 1.0);\n" +
+                                        "    if (flip == 1) { TexCoord = vec2(1.0 - aTexCoord.x, aTexCoord.y); }\n" +
+                                        "    else { TexCoord = aTexCoord; }\n" +
+                                        "}\n";
 
             string fragmentShaderSource = version + precision +
-                (Context.Setting.Graphic.PreviewMode ? "in vec2 TexCoord;\nout vec4 FragColor;\n" : "in vec2 TexCoord;\nout vec4 FragColor;\n") +
-                "uniform sampler2D texture1;\n" +
-                "void main() {\n" +
-                "    FragColor = texture(texture1, TexCoord);\n" +
-                "}\n";
+                                          (Context.Setting.Graphic.PreviewMode ? "in vec2 TexCoord;\nout vec4 FragColor;\n" : "in vec2 TexCoord;\nout vec4 FragColor;\n") +
+                                          "uniform sampler2D texture1;\n" +
+                                          "void main() {\n" +
+                                          "    FragColor = texture(texture1, TexCoord);\n" +
+                                          "}\n";
 
             uint vertexShader = Gl.GlCreateShader(ShaderType.VertexShader);
             Gl.ShaderSource(vertexShader, vertexShaderSource);
@@ -327,7 +327,7 @@ namespace Alis.Core.Ecs.Components.Render
             else
             {
                 string nameToLoadFile = imagePath == string.Empty ? NameFile : imagePath;
-                if (NameFile != string.Empty && imagePath != string.Empty && NameFile != imagePath)
+                if ((NameFile != string.Empty) && (imagePath != string.Empty) && (NameFile != imagePath))
                 {
                     nameToLoadFile = imagePath;
                     NameFile = imagePath;
@@ -375,7 +375,7 @@ namespace Alis.Core.Ecs.Components.Render
             Vector2F position = gameobject.Get<Transform>().Position;
             float spriteRotation = gameobject.Get<Transform>().Rotation;
             Vector2F transformScale = gameobject.Get<Transform>().Scale;
-            
+
             // Insertar en Render(...) después de obtener position y spriteRotation
             if (!IsSpriteVisible(position, Size, transformScale, spriteRotation, cameraPosition, cameraResolution, pixelsPerMeter))
             {
@@ -383,13 +383,13 @@ namespace Alis.Core.Ecs.Components.Render
             }
 
             // Escalado físico: tamaño del sprite en metros = (pixeles de la textura / pixelsPerMeter) * escala
-            float worldWidth = (Size.X / pixelsPerMeter) * transformScale.X;
-            float worldHeight = (Size.Y / pixelsPerMeter) * transformScale.Y;
+            float worldWidth = Size.X / pixelsPerMeter * transformScale.X;
+            float worldHeight = Size.Y / pixelsPerMeter * transformScale.Y;
 
             // Convertir a NDC (de -1 a 1)
             Vector2F ndcOffset = new Vector2F(
-                ((position.X - cameraPosition.X) / (cameraResolution.X / pixelsPerMeter)) * 2.0f,
-                ((position.Y - cameraPosition.Y) / (cameraResolution.Y / pixelsPerMeter)) * 2.0f
+                (position.X - cameraPosition.X) / (cameraResolution.X / pixelsPerMeter) * 2.0f,
+                (position.Y - cameraPosition.Y) / (cameraResolution.Y / pixelsPerMeter) * 2.0f
             );
 
             Vector2F ndcScale = new Vector2F(
@@ -421,13 +421,13 @@ namespace Alis.Core.Ecs.Components.Render
             Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
             Gl.GlDrawElements(PrimitiveType.Triangles, 6, DrawElementsType.UnsignedInt, IntPtr.Zero);
             Gl.GlDisable(EnableCap.Blend);
-            
+
             // Desenlazar VAO y shader por seguridad
             Gl.GlBindVertexArray(0);
             Gl.GlUseProgram(0);
         }
-        
-        
+
+
         /// <summary>
         ///     Ises the sprite visible using the specified sprite world position
         /// </summary>
@@ -469,4 +469,3 @@ namespace Alis.Core.Ecs.Components.Render
         }
     }
 }
-

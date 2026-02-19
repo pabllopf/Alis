@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
-
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Fonts;
 
@@ -41,10 +40,10 @@ namespace Alis.App.Engine.Demos
     public class IconDemo : IDemo
     {
         /// <summary>
-        /// Gets the value of the name
+        ///     Gets the value of the name
         /// </summary>
         public static string Name => "Icon Demo";
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>

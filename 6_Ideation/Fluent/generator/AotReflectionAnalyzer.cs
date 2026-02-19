@@ -281,7 +281,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
             }
 
             // Expression.Compile
-            if (method.ContainingType?.ToDisplayString() == "System.Linq.Expressions.Expression" && method.Name == "Compile")
+            if ((method.ContainingType?.ToDisplayString() == "System.Linq.Expressions.Expression") && (method.Name == "Compile"))
             {
                 Report(context, invocation.Syntax.GetLocation(), ExpressionCompileRule, fullName);
                 return;
@@ -434,7 +434,6 @@ namespace Alis.Core.Aspect.Fluent.Generator
             }
         }
 
-        
 
         /// <summary>
         ///     Reports the context
@@ -547,7 +546,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
         private static bool IsActivatorApi(IMethodSymbol method)
         {
             string t = method.ContainingType?.ToDisplayString() ?? string.Empty;
-            return t == "System.Activator" && (method.Name.StartsWith("CreateInstance", StringComparison.Ordinal) || method.Name.StartsWith("Create"));
+            return (t == "System.Activator") && (method.Name.StartsWith("CreateInstance", StringComparison.Ordinal) || method.Name.StartsWith("Create"));
         }
 
         /// <summary>
@@ -558,7 +557,7 @@ namespace Alis.Core.Aspect.Fluent.Generator
         private static bool IsTypeGetTypeApi(IMethodSymbol method)
         {
             string t = method.ContainingType?.ToDisplayString() ?? string.Empty;
-            return (t == "System.Type" && method.Name == "GetType") || (t == "System.Reflection.Assembly" && (method.Name == "Load" || method.Name == "LoadFrom"));
+            return ((t == "System.Type") && (method.Name == "GetType")) || ((t == "System.Reflection.Assembly") && (method.Name == "Load" || method.Name == "LoadFrom"));
         }
 
         /// <summary>
@@ -592,7 +591,5 @@ namespace Alis.Core.Aspect.Fluent.Generator
 
             return false;
         }
-
-        
     }
 }

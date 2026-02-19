@@ -342,19 +342,6 @@ namespace Alis.Extension.Graphic.Sfml.Audios
             OnSeek(sfmlTimeOffset);
         }
 
-        /// <summary>
-        ///     The get data callback type
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate bool GetDataCallbackType(ref Chunk dataChunk, IntPtr userData);
-
-        /// <summary>
-        ///     The seek callback type
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate void SeekCallbackType(SfmlTime sfmlTimeOffset, IntPtr userData);
-
-        
 
         /// <summary>
         ///     Sfs the sound stream create using the specified on get data
@@ -548,6 +535,16 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern SfmlTime sfSoundStream_getPlayingOffset(IntPtr soundStream);
 
-        
+        /// <summary>
+        ///     The get data callback type
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        private delegate bool GetDataCallbackType(ref Chunk dataChunk, IntPtr userData);
+
+        /// <summary>
+        ///     The seek callback type
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        private delegate void SeekCallbackType(SfmlTime sfmlTimeOffset, IntPtr userData);
     }
 }

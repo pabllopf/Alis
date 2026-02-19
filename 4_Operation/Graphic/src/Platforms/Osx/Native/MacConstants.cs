@@ -36,62 +36,62 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
     internal static class MacConstants
     {
         /// <summary>
-        /// The ns window style mask titled
+        ///     The ns window style mask titled
         /// </summary>
         public const ulong NsWindowStyleMaskTitled = 1UL << 0;
 
         /// <summary>
-        /// The ns window style mask closable
+        ///     The ns window style mask closable
         /// </summary>
         public const ulong NsWindowStyleMaskClosable = 1UL << 1;
 
         /// <summary>
-        /// The ns window style mask miniaturizable
+        ///     The ns window style mask miniaturizable
         /// </summary>
         public const ulong NsWindowStyleMaskMiniaturizable = 1UL << 2;
 
         /// <summary>
-        /// The ns window style mask resizable
+        ///     The ns window style mask resizable
         /// </summary>
         public const ulong NsWindowStyleMaskResizable = 1UL << 3;
 
         /// <summary>
-        /// The ns backing store buffered
+        ///     The ns backing store buffered
         /// </summary>
         public const ulong NsBackingStoreBuffered = 2;
 
         /// <summary>
-        /// The ns application activation policy regular
+        ///     The ns application activation policy regular
         /// </summary>
         public const long NsApplicationActivationPolicyRegular = 0;
 
         /// <summary>
-        /// The ns open glpfa open gl profile
+        ///     The ns open glpfa open gl profile
         /// </summary>
         public const int NsOpenGlpfaOpenGlProfile = 99;
 
         /// <summary>
-        /// The ns open gl profile version 32 core
+        ///     The ns open gl profile version 32 core
         /// </summary>
         public const int NsOpenGlProfileVersion32Core = 0x3200;
 
         /// <summary>
-        /// The ns open glpfa double buffer
+        ///     The ns open glpfa double buffer
         /// </summary>
         public const int NsOpenGlpfaDoubleBuffer = 5;
 
         /// <summary>
-        /// The ns open glpfa color size
+        ///     The ns open glpfa color size
         /// </summary>
         public const int NsOpenGlpfaColorSize = 8;
 
         /// <summary>
-        /// The ns open glpfa depth size
+        ///     The ns open glpfa depth size
         /// </summary>
         public const int NsOpenGlpfaDepthSize = 12;
 
         /// <summary>
-        /// The cf string encoding utf
+        ///     The cf string encoding utf
         /// </summary>
         public const uint KCfStringEncodingUtf8 = 0x08000100;
     }

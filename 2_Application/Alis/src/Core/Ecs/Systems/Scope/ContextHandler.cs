@@ -48,6 +48,46 @@ namespace Alis.Core.Ecs.Systems.Scope
         private readonly Context _context;
 
         /// <summary>
+        ///     The accumulator
+        /// </summary>
+        private float accumulator;
+
+        /// <summary>
+        ///     The current time
+        /// </summary>
+        private double currentTime;
+
+        /// <summary>
+        ///     The last delta time
+        /// </summary>
+        private float lastDeltaTime;
+
+        /// <summary>
+        ///     The last time
+        /// </summary>
+        private double lastTime;
+
+        /// <summary>
+        ///     The smooth delta time count
+        /// </summary>
+        private int smoothDeltaTimeCount;
+
+        /// <summary>
+        ///     The smooth delta time sum
+        /// </summary>
+        private float smoothDeltaTimeSum;
+
+        /// <summary>
+        ///     The target frame duration
+        /// </summary>
+        private double targetFrameDuration;
+
+        /// <summary>
+        ///     The total time
+        /// </summary>
+        private double totalTime;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="ContextHandler" /> class
         /// </summary>
         /// <param name="context">The context</param>
@@ -57,39 +97,6 @@ namespace Alis.Core.Ecs.Systems.Scope
         ///     Gets the value of the context
         /// </summary>
         public Context Context => _context;
-
-        /// <summary>
-        /// The target frame duration
-        /// </summary>
-        private double targetFrameDuration = 0;
-        /// <summary>
-        /// The current time
-        /// </summary>
-        private double currentTime = 0;
-        /// <summary>
-        /// The accumulator
-        /// </summary>
-        float accumulator = 0;
-        /// <summary>
-        /// The last time
-        /// </summary>
-        private double lastTime = 0;
-        /// <summary>
-        /// The total time
-        /// </summary>
-        double totalTime = 0;
-        /// <summary>
-        /// The last delta time
-        /// </summary>
-        float lastDeltaTime = 0f;
-        /// <summary>
-        /// The smooth delta time sum
-        /// </summary>
-        float smoothDeltaTimeSum = 0f;
-        /// <summary>
-        /// The smooth delta time count
-        /// </summary>
-        int smoothDeltaTimeCount = 0;
 
         /// <summary>
         ///     Runs this instance
@@ -105,9 +112,9 @@ namespace Alis.Core.Ecs.Systems.Scope
             internalRuntime.OnStart();
 
             targetFrameDuration = 1 / setting.Graphic.TargetFrames;
-           currentTime = timeManager.Clock.Elapsed.TotalSeconds;
+            currentTime = timeManager.Clock.Elapsed.TotalSeconds;
             accumulator = 0;
-          lastTime = timeManager.Clock.Elapsed.TotalSeconds;
+            lastTime = timeManager.Clock.Elapsed.TotalSeconds;
 
             while (_context.IsRunning)
             {
@@ -220,7 +227,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         }
 
         /// <summary>
-        /// Inits the preview
+        ///     Inits the preview
         /// </summary>
         public void InitPreview()
         {
@@ -229,7 +236,7 @@ namespace Alis.Core.Ecs.Systems.Scope
             TimeManager timeManager = _context.TimeManager;
 
             _context.Setting.Graphic = _context.Setting.Graphic with {PreviewMode = true};
-            
+
             internalRuntime.OnInit();
             internalRuntime.OnAwake();
             internalRuntime.OnStart();
@@ -241,7 +248,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         }
 
         /// <summary>
-        /// Previews this instance
+        ///     Previews this instance
         /// </summary>
         public void Preview()
         {

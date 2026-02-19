@@ -81,9 +81,9 @@ namespace Alis.Sample.King.Platform.Desktop
         /// </summary>
         public PlayerMovement()
         {
-            animator = default;
+            animator = default(Animator);
             boxCollider = null;
-            sprite = default;
+            sprite = default(Sprite);
         }
 
         /// <summary>

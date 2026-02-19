@@ -516,6 +516,7 @@ namespace Alis.Core.Graphic.Platforms.Win
                 {
                     return clientRect.Right - clientRect.Left;
                 }
+
                 // Fallback to window rect
                 Rect rect;
                 User32.GetWindowRect(hWnd, out rect);
@@ -537,6 +538,7 @@ namespace Alis.Core.Graphic.Platforms.Win
                 {
                     return clientRect.Bottom - clientRect.Top;
                 }
+
                 // Fallback to window rect
                 Rect rect;
                 User32.GetWindowRect(hWnd, out rect);
@@ -616,7 +618,8 @@ namespace Alis.Core.Graphic.Platforms.Win
             }
             else
             {
-                x = 0; y = 0;
+                x = 0;
+                y = 0;
             }
 
             buttons = new bool[5];
@@ -783,7 +786,7 @@ namespace Alis.Core.Graphic.Platforms.Win
                     lastKeyPressed = null;
                     pressedKeys.Remove((ConsoleKey) wParam.ToInt32());
                     break;
-                case (WindowMessage)0x0102: // WM_CHAR
+                case (WindowMessage) 0x0102: // WM_CHAR
                     // wParam contiene el caracter Unicode (WPARAM is UINT)
                     char c = (char) wParam.ToInt32();
                     if (!char.IsControl(c))
@@ -791,6 +794,7 @@ namespace Alis.Core.Graphic.Platforms.Win
                         if (inputCharBuffer == null) inputCharBuffer = string.Empty;
                         inputCharBuffer += c;
                     }
+
                     break;
                 case WindowMessage.Size:
                     width = lParam.ToInt32() & 0xFFFF;
@@ -873,7 +877,6 @@ namespace Alis.Core.Graphic.Platforms.Win
             }
 
             return 0;
-            
         }
 
         public int GetWindowPositionY()

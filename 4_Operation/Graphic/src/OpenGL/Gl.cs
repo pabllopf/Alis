@@ -65,9 +65,9 @@ namespace Alis.Core.Graphic.OpenGL
         public delegate uint GenFramebuffer();
 
         /// <summary>
-        ///     The get error
+        ///     The get integerv
         /// </summary>
-        internal delegate int GetError();
+        public delegate void GetIntegerv(int pname, int[] data);
 
         /// <summary>
         ///     The get proc address delegate
@@ -79,17 +79,17 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         /// <param name="width">The width of the line</param>
         public delegate void LineWidth(float width);
-        
-        /// <summary>
-        /// The get integerv
-        /// </summary>
-        public delegate void GetIntegerv(int pname, int[] data);
 
         // En Gl.cs
         /// <summary>
         ///     The read pixels
         /// </summary>
         public delegate void ReadPixels(int x, int y, int width, int height, PixelFormat format, PixelType type, IntPtr pixels);
+
+        /// <summary>
+        ///     The uniform matrix 2x fv del
+        /// </summary>
+        public delegate void UniformMatrix2x3FvDel(int location, int count, bool transpose, Span<float> value);
 
         /// <summary>
         ///     The get proc address
@@ -127,10 +127,10 @@ namespace Alis.Core.Graphic.OpenGL
         public static DeleteBuffers GlDeleteBuffers => GetCommand<DeleteBuffers>("glDeleteBuffers");
 
         /// <summary>
-        /// Gets the value of the gl get integer v
+        ///     Gets the value of the gl get integer v
         /// </summary>
         public static GetIntegerv GlGetIntegerV => GetCommand<GetIntegerv>("glGetIntegerv");
-        
+
         /// <summary>
         ///     The viewport
         /// </summary>
@@ -747,7 +747,7 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Gls the get integerv using the specified i
+        ///     Gls the get integerv using the specified i
         /// </summary>
         /// <param name="i">The </param>
         /// <param name="viewport">The viewport</param>
@@ -758,19 +758,19 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Gls the get shader using the specified vertex shader
+        ///     Gls the get shader using the specified vertex shader
         /// </summary>
         /// <param name="vertexShader">The vertex shader</param>
         /// <param name="compileStatus">The compile status</param>
         /// <param name="i">The </param>
         public static void GlGetShader(uint vertexShader, object compileStatus, out int i)
         {
-                GlGetShaderIv(vertexShader, (ShaderParameter) compileStatus, Int1);
-                i = Int1[0];
+            GlGetShaderIv(vertexShader, (ShaderParameter) compileStatus, Int1);
+            i = Int1[0];
         }
 
         /// <summary>
-        /// Gls the get program using the specified shader program
+        ///     Gls the get program using the specified shader program
         /// </summary>
         /// <param name="shaderProgram">The shader program</param>
         /// <param name="linkStatus">The link status</param>
@@ -782,19 +782,19 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
         /// <summary>
-        /// Gls the uniform matrix 2x 3 using the specified view projection location
+        ///     Gls the uniform matrix 2x 3 using the specified view projection location
         /// </summary>
         /// <param name="viewProjectionLocation">The view projection location</param>
         /// <param name="b">The </param>
         /// <param name="matrix">The matrix</param>
         public static void GlUniformMatrix2x3(int viewProjectionLocation, bool b, Span<float> matrix)
         {
-                GetCommand<UniformMatrix2x3FvDel>("glUniformMatrix2x3fv")(viewProjectionLocation, 1, b, matrix);
+            GetCommand<UniformMatrix2x3FvDel>("glUniformMatrix2x3fv")(viewProjectionLocation, 1, b, matrix);
         }
-        
+
         /// <summary>
-        /// The uniform matrix 2x fv del
+        ///     The get error
         /// </summary>
-        public delegate void UniformMatrix2x3FvDel(int location, int count, bool transpose, Span<float> value);
+        internal delegate int GetError();
     }
 }

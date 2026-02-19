@@ -326,8 +326,279 @@ namespace Alis.Extension.Graphic.Glfw
                 }
             }
         }
-        
-            /// <summary>
+
+
+        /// <summary>
+        ///     Gets a value indicating whether this instance is closing.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if this instance is closing; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsClosing => GlfwNative.WindowShouldClose(Window);
+
+        /// <summary>
+        ///     Gets a value indicating whether this instance is decorated.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if this instance is decorated; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsDecorated => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Decorated);
+
+        /// <summary>
+        ///     Gets a value indicating whether this instance is floating (top-most, always-on-top).
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if this instance is floating; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsFloating => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Floating);
+
+        /// <summary>
+        ///     Gets a value indicating whether this instance is focused.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if this instance is focused; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsFocused => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Focused);
+
+        /// <summary>
+        ///     Gets a value indicating whether this instance is resizable.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if this instance is resizable; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsResizable => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Resizable);
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether this <see cref="NativeWindow" /> is maximized.
+        ///     <para>Has no effect on fullscreen windows.</para>
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if maximized; otherwise, <c>false</c>.
+        /// </value>
+        public bool Maximized
+        {
+            get => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Maximized);
+            set
+            {
+                if (value)
+                {
+                    GlfwNative.MaximizeWindow(Window);
+                }
+                else
+                {
+                    GlfwNative.RestoreWindow(Window);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether this <see cref="NativeWindow" /> is minimized.
+        ///     <para>If window is already minimized, does nothing.</para>
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if minimized; otherwise, <c>false</c>.
+        /// </value>
+        public bool Minimized
+        {
+            get => GlfwNative.GetWindowAttribute(Window, WindowAttribute.AutoIconify);
+            set
+            {
+                if (value)
+                {
+                    GlfwNative.IconifyWindow(Window);
+                }
+                else
+                {
+                    GlfwNative.RestoreWindow(Window);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Gets the monitor this window is fullscreen on.
+        ///     <para>Returns <see cref="Structs.Monitor.None" /> if window is not fullscreen.</para>
+        /// </summary>
+        /// <value>
+        ///     The monitor.
+        /// </value>
+        public Monitor Monitor => GlfwNative.GetWindowMonitor(Window);
+
+        /// <summary>
+        ///     Gets or sets the mouse position in screen-coordinates relative to the client area of the window.
+        /// </summary>
+        /// <value>
+        ///     The mouse position.
+        /// </value>
+        public Point MousePosition
+        {
+            get
+            {
+                GlfwNative.GetCursorPosition(Window, out double x, out double y);
+                return new Point(Convert.ToInt32(x), Convert.ToInt32(y));
+            }
+            set => GlfwNative.SetCursorPosition(Window, value.X, value.Y);
+        }
+
+        /// <summary>
+        ///     Gets or sets the position of the window in screen coordinates, including border, titlebar, etc..
+        /// </summary>
+        /// <value>
+        ///     The position.
+        /// </value>
+        public Point Position
+        {
+            get
+            {
+                GlfwNative.GetWindowPosition(Window, out int x, out int y);
+                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int dummy1, out int dummy2);
+                return new Point(x - l, y - t);
+            }
+            set
+            {
+                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int dummy1, out int dummy2);
+                GlfwNative.SetWindowPosition(Window, value.X + l, value.Y + t);
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets the size of the window, in screen coordinates, including border, titlebar, etc.
+        /// </summary>
+        /// <value>
+        ///     A <see cref="System.Drawing.Size" /> in screen coordinates that represents the size of the window.
+        /// </value>
+        public Size Size
+        {
+            get
+            {
+                GlfwNative.GetWindowSize(Window, out int width, out int height);
+                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int r, out int b);
+                return new Size(width + l + r, height + t + b);
+            }
+            set
+            {
+                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int r, out int b);
+                GlfwNative.SetWindowSize(Window, value.Width - l - r, value.Height - t - b);
+            }
+        }
+
+        /// <summary>
+        ///     Sets the sticky keys input mode.
+        ///     <para>
+        ///         Set to <c>true</c> to enable sticky keys, or <c>false</c> to disable it. If sticky keys are enabled, a key
+        ///         press will ensure that <see cref="GlfwNative.GetKey" /> returns <see cref="InputState.Press" /> the next time
+        ///         it is
+        ///         called even if the key had been released before the call. This is useful when you are only interested in
+        ///         whether keys have been pressed but not when or in which order.
+        ///     </para>
+        /// </summary>
+        public bool StickyKeys
+        {
+            get => GlfwNative.GetInputMode(Window, InputMode.StickyKeys) == (int) Constants.True;
+            set =>
+                GlfwNative.SetInputMode(Window, InputMode.StickyKeys, value ? (int) Constants.True : (int) Constants.False);
+        }
+
+        /// <summary>
+        ///     Gets or sets the sticky mouse button input mode.
+        ///     <para>
+        ///         Set to <c>true</c> to enable sticky mouse buttons, or <c>false</c> to disable it. If sticky mouse buttons are
+        ///         enabled, a mouse button press will ensure that <see cref="GlfwNative.GetMouseButton" /> returns
+        ///         <see cref="InputState.Press" /> the next time it is called even if the mouse button had been released before
+        ///         the call. This is useful when you are only interested in whether mouse buttons have been pressed but not when
+        ///         or in which order.
+        ///     </para>
+        /// </summary>
+        public bool StickyMouseButtons
+        {
+            get => GlfwNative.GetInputMode(Window, InputMode.StickyMouseButton) == (int) Constants.True;
+            set =>
+                GlfwNative.SetInputMode(Window, InputMode.StickyMouseButton,
+                    value ? (int) Constants.True : (int) Constants.False);
+        }
+
+        /// <summary>
+        ///     Gets or sets the window title or caption.
+        /// </summary>
+        /// <value>
+        ///     The title.
+        /// </value>
+
+        public string Title
+        {
+            get => title;
+            set
+            {
+                title = value;
+                GlfwNative.SetWindowTitle(Window, value ?? string.Empty);
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets a user-defined pointer for GLFW to retain for this instance.
+        /// </summary>
+        /// <value>
+        ///     The user-defined pointer.
+        /// </value>
+        public IntPtr UserPointer
+        {
+            get => GlfwNative.GetWindowUserPointer(Window);
+            set => GlfwNative.SetWindowUserPointer(Window, value);
+        }
+
+        /// <summary>
+        ///     Gets the video mode for the monitor this window is fullscreen on.
+        ///     <para>If window is not fullscreen, returns the <see cref="Structs.VideoMode" /> for the primary monitor.</para>
+        /// </summary>
+        /// <value>
+        ///     The video mode.
+        /// </value>
+        public VideoMode VideoMode
+        {
+            get
+            {
+                Monitor monitor = Monitor;
+                return GlfwNative.GetVideoMode(monitor == Monitor.None ? GlfwNative.PrimaryMonitor : monitor);
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether this <see cref="NativeWindow" /> is visible.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if visible; otherwise, <c>false</c>.
+        /// </value>
+        public bool Visible
+        {
+            get => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Visible);
+            set
+            {
+                if (value)
+                {
+                    GlfwNative.ShowWindow(Window);
+                }
+                else
+                {
+                    GlfwNative.HideWindow(Window);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Determines whether the specified <paramref name="window" /> is equal to this instance.
+        /// </summary>
+        /// <param name="window">A <see cref="NativeWindow" /> instance to compare for equality.</param>
+        /// <returns><c>true</c> if objects represent the same window, otherwise <c>false</c>.</returns>
+        public bool Equals(NativeWindow window)
+        {
+            if (ReferenceEquals(null, window))
+            {
+                return false;
+            }
+
+            return ReferenceEquals(this, window) || Window.Equals(window.Window);
+        }
+
+        /// <summary>
         ///     Returns the CGDirectDisplayID of the specified monitor.
         /// </summary>
         /// <param name="monitor">The monitor to query.</param>
@@ -566,276 +837,6 @@ namespace Alis.Extension.Graphic.Glfw
         ///     error occurred.
         /// </returns>
         public static string GetWin32Monitor(Monitor monitor) => Util.PtrToStringUTF8(GetWin32MonitorInternal(monitor));
-        
-
-        /// <summary>
-        ///     Gets a value indicating whether this instance is closing.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if this instance is closing; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsClosing => GlfwNative.WindowShouldClose(Window);
-
-        /// <summary>
-        ///     Gets a value indicating whether this instance is decorated.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if this instance is decorated; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsDecorated => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Decorated);
-
-        /// <summary>
-        ///     Gets a value indicating whether this instance is floating (top-most, always-on-top).
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if this instance is floating; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsFloating => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Floating);
-
-        /// <summary>
-        ///     Gets a value indicating whether this instance is focused.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if this instance is focused; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsFocused => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Focused);
-
-        /// <summary>
-        ///     Gets a value indicating whether this instance is resizable.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if this instance is resizable; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsResizable => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Resizable);
-
-        /// <summary>
-        ///     Gets or sets a value indicating whether this <see cref="NativeWindow" /> is maximized.
-        ///     <para>Has no effect on fullscreen windows.</para>
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if maximized; otherwise, <c>false</c>.
-        /// </value>
-        public bool Maximized
-        {
-            get => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Maximized);
-            set
-            {
-                if (value)
-                {
-                    GlfwNative.MaximizeWindow(Window);
-                }
-                else
-                {
-                    GlfwNative.RestoreWindow(Window);
-                }
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets a value indicating whether this <see cref="NativeWindow" /> is minimized.
-        ///     <para>If window is already minimized, does nothing.</para>
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if minimized; otherwise, <c>false</c>.
-        /// </value>
-        public bool Minimized
-        {
-            get => GlfwNative.GetWindowAttribute(Window, WindowAttribute.AutoIconify);
-            set
-            {
-                if (value)
-                {
-                    GlfwNative.IconifyWindow(Window);
-                }
-                else
-                {
-                    GlfwNative.RestoreWindow(Window);
-                }
-            }
-        }
-
-        /// <summary>
-        ///     Gets the monitor this window is fullscreen on.
-        ///     <para>Returns <see cref="Structs.Monitor.None" /> if window is not fullscreen.</para>
-        /// </summary>
-        /// <value>
-        ///     The monitor.
-        /// </value>
-        public Monitor Monitor => GlfwNative.GetWindowMonitor(Window);
-
-        /// <summary>
-        ///     Gets or sets the mouse position in screen-coordinates relative to the client area of the window.
-        /// </summary>
-        /// <value>
-        ///     The mouse position.
-        /// </value>
-        public Point MousePosition
-        {
-            get
-            {
-                GlfwNative.GetCursorPosition(Window, out double x, out double y);
-                return new Point(Convert.ToInt32(x), Convert.ToInt32(y));
-            }
-            set => GlfwNative.SetCursorPosition(Window, value.X, value.Y);
-        }
-
-        /// <summary>
-        ///     Gets or sets the position of the window in screen coordinates, including border, titlebar, etc..
-        /// </summary>
-        /// <value>
-        ///     The position.
-        /// </value>
-        public Point Position
-        {
-            get
-            {
-                GlfwNative.GetWindowPosition(Window, out int x, out int y);
-                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int dummy1, out int dummy2);
-                return new Point(x - l, y - t);
-            }
-            set
-            {
-                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int dummy1, out int dummy2);
-                GlfwNative.SetWindowPosition(Window, value.X + l, value.Y + t);
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets the size of the window, in screen coordinates, including border, titlebar, etc.
-        /// </summary>
-        /// <value>
-        ///     A <see cref="System.Drawing.Size" /> in screen coordinates that represents the size of the window.
-        /// </value>
-        public Size Size
-        {
-            get
-            {
-                GlfwNative.GetWindowSize(Window, out int width, out int height);
-                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int r, out int b);
-                return new Size(width + l + r, height + t + b);
-            }
-            set
-            {
-                GlfwNative.GetWindowFrameSize(Window, out int l, out int t, out int r, out int b);
-                GlfwNative.SetWindowSize(Window, value.Width - l - r, value.Height - t - b);
-            }
-        }
-
-        /// <summary>
-        ///     Sets the sticky keys input mode.
-        ///     <para>
-        ///         Set to <c>true</c> to enable sticky keys, or <c>false</c> to disable it. If sticky keys are enabled, a key
-        ///         press will ensure that <see cref="GlfwNative.GetKey" /> returns <see cref="InputState.Press" /> the next time it is
-        ///         called even if the key had been released before the call. This is useful when you are only interested in
-        ///         whether keys have been pressed but not when or in which order.
-        ///     </para>
-        /// </summary>
-        public bool StickyKeys
-        {
-            get => GlfwNative.GetInputMode(Window, InputMode.StickyKeys) == (int) Constants.True;
-            set =>
-                GlfwNative.SetInputMode(Window, InputMode.StickyKeys, value ? (int) Constants.True : (int) Constants.False);
-        }
-
-        /// <summary>
-        ///     Gets or sets the sticky mouse button input mode.
-        ///     <para>
-        ///         Set to <c>true</c> to enable sticky mouse buttons, or <c>false</c> to disable it. If sticky mouse buttons are
-        ///         enabled, a mouse button press will ensure that <see cref="GlfwNative.GetMouseButton" /> returns
-        ///         <see cref="InputState.Press" /> the next time it is called even if the mouse button had been released before
-        ///         the call. This is useful when you are only interested in whether mouse buttons have been pressed but not when
-        ///         or in which order.
-        ///     </para>
-        /// </summary>
-        public bool StickyMouseButtons
-        {
-            get => GlfwNative.GetInputMode(Window, InputMode.StickyMouseButton) == (int) Constants.True;
-            set =>
-                GlfwNative.SetInputMode(Window, InputMode.StickyMouseButton,
-                    value ? (int) Constants.True : (int) Constants.False);
-        }
-
-        /// <summary>
-        ///     Gets or sets the window title or caption.
-        /// </summary>
-        /// <value>
-        ///     The title.
-        /// </value>
-
-        public string Title
-        {
-            get => title;
-            set
-            {
-                title = value;
-                GlfwNative.SetWindowTitle(Window, value ?? string.Empty);
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets a user-defined pointer for GLFW to retain for this instance.
-        /// </summary>
-        /// <value>
-        ///     The user-defined pointer.
-        /// </value>
-        public IntPtr UserPointer
-        {
-            get => GlfwNative.GetWindowUserPointer(Window);
-            set => GlfwNative.SetWindowUserPointer(Window, value);
-        }
-
-        /// <summary>
-        ///     Gets the video mode for the monitor this window is fullscreen on.
-        ///     <para>If window is not fullscreen, returns the <see cref="Structs.VideoMode" /> for the primary monitor.</para>
-        /// </summary>
-        /// <value>
-        ///     The video mode.
-        /// </value>
-        public VideoMode VideoMode
-        {
-            get
-            {
-                Monitor monitor = Monitor;
-                return GlfwNative.GetVideoMode(monitor == Monitor.None ? GlfwNative.PrimaryMonitor : monitor);
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets a value indicating whether this <see cref="NativeWindow" /> is visible.
-        /// </summary>
-        /// <value>
-        ///     <c>true</c> if visible; otherwise, <c>false</c>.
-        /// </value>
-        public bool Visible
-        {
-            get => GlfwNative.GetWindowAttribute(Window, WindowAttribute.Visible);
-            set
-            {
-                if (value)
-                {
-                    GlfwNative.ShowWindow(Window);
-                }
-                else
-                {
-                    GlfwNative.HideWindow(Window);
-                }
-            }
-        }
-
-        /// <summary>
-        ///     Determines whether the specified <paramref name="window" /> is equal to this instance.
-        /// </summary>
-        /// <param name="window">A <see cref="NativeWindow" /> instance to compare for equality.</param>
-        /// <returns><c>true</c> if objects represent the same window, otherwise <c>false</c>.</returns>
-        public bool Equals(NativeWindow window)
-        {
-            if (ReferenceEquals(null, window))
-            {
-                return false;
-            }
-
-            return ReferenceEquals(this, window) || Window.Equals(window.Window);
-        }
 
         /// <summary>
         ///     Raises the <see cref="Maximized" /> event.

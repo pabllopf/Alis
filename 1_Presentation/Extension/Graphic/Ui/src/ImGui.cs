@@ -626,7 +626,7 @@ namespace Alis.Extension.Graphic.Ui
         public static ImFontConfigPtr ImFontConfig() => ImGuiNative.ImFontConfig_ImFontConfig();
 
         /// <summary>
-        /// Docks the builder remove node using the specified dockspace id
+        ///     Docks the builder remove node using the specified dockspace id
         /// </summary>
         /// <param name="dockspaceId">The dockspace id</param>
         public static void DockBuilderRemoveNode(uint dockspaceId)
@@ -635,7 +635,7 @@ namespace Alis.Extension.Graphic.Ui
         }
 
         /// <summary>
-        /// Docks the builder add node using the specified dockspace id
+        ///     Docks the builder add node using the specified dockspace id
         /// </summary>
         /// <param name="dockspaceId">The dockspace id</param>
         /// <param name="none">The none</param>
@@ -645,7 +645,7 @@ namespace Alis.Extension.Graphic.Ui
         }
 
         /// <summary>
-        /// Docks the builder set node size using the specified dockspace id
+        ///     Docks the builder set node size using the specified dockspace id
         /// </summary>
         /// <param name="dockspaceId">The dockspace id</param>
         /// <param name="viewportSize">The viewport size</param>
@@ -655,7 +655,7 @@ namespace Alis.Extension.Graphic.Ui
         }
 
         /// <summary>
-        /// Docks the builder split node using the specified dock main id
+        ///     Docks the builder split node using the specified dock main id
         /// </summary>
         /// <param name="dockMainId">The dock main id</param>
         /// <param name="left">The left</param>
@@ -666,7 +666,7 @@ namespace Alis.Extension.Graphic.Ui
         public static uint DockBuilderSplitNode(uint dockMainId, ImGuiDir left, float p2, object p3, out uint dockIdRight) => ImGuiNative.igDockBuilderSplitNode(dockMainId, left, p2, IntPtr.Zero, out dockIdRight);
 
         /// <summary>
-        /// Docks the builder dock window using the specified scene
+        ///     Docks the builder dock window using the specified scene
         /// </summary>
         /// <param name="scene">The scene</param>
         /// <param name="dockIdLeft">The dock id left</param>
@@ -676,7 +676,7 @@ namespace Alis.Extension.Graphic.Ui
         }
 
         /// <summary>
-        /// Docks the builder finish using the specified dockspace id
+        ///     Docks the builder finish using the specified dockspace id
         /// </summary>
         /// <param name="dockspaceId">The dockspace id</param>
         public static void DockBuilderFinish(uint dockspaceId)
@@ -685,7 +685,7 @@ namespace Alis.Extension.Graphic.Ui
         }
 
         /// <summary>
-        /// Docks the builder set node flags using the specified dockspace id
+        ///     Docks the builder set node flags using the specified dockspace id
         /// </summary>
         /// <param name="dockspaceId">The dockspace id</param>
         /// <param name="dockNodeFlags">The dock node flags</param>

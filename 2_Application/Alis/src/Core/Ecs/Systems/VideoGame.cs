@@ -41,7 +41,6 @@ namespace Alis.Core.Ecs.Systems
     /// <seealso cref="IHasBuilder{TOut}" />
     public sealed class VideoGame : IGame
     {
-        
         /// <summary>
         ///     The context handler
         /// </summary>
@@ -104,12 +103,12 @@ namespace Alis.Core.Ecs.Systems
         public void Save() => _contextHandler.Save();
 
         /// <summary>
-        /// Inits the preview
+        ///     Inits the preview
         /// </summary>
         public void InitPreview() => _contextHandler.InitPreview();
-        
+
         /// <summary>
-        /// Previews this instance
+        ///     Previews this instance
         /// </summary>
         public void Preview() => _contextHandler.Preview();
     }

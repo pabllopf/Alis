@@ -726,15 +726,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
             }
         }
 
-        /// <summary>
-        ///     Special type that can be passed to SetParameter,
-        ///     and that represents the texture of the object being drawn
-        /// </summary>
-        public class CurrentTextureType
-        {
-        }
-
-        
 
         /// <summary>
         ///     Sfs the shader create from file using the specified vertex shader filename
@@ -1142,6 +1133,12 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfShader_isGeometryAvailable();
 
-        
+        /// <summary>
+        ///     Special type that can be passed to SetParameter,
+        ///     and that represents the texture of the object being drawn
+        /// </summary>
+        public class CurrentTextureType
+        {
+        }
     }
 }
