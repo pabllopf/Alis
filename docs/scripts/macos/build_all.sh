@@ -20,7 +20,6 @@ select yn in "Yes" "No"; do
       fi;done
     
     
-    
     cd ./docs/scripts/macos/ || exit 
 
 break;;
