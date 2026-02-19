@@ -5,6 +5,41 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.9.3] - 2026-02-19
+### :sparkles: New Features
+- [`34852d6`](https://github.com/pabllopf/Alis/commit/34852d6f66ee5908cf8b3569635aaefdbf3df714) - Add Asteroid Android sample project *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f69385e`](https://github.com/pabllopf/Alis/commit/f69385e8dd3ca1ff29ed2d21bbf8f2d684e9d58b) - Add defaults and validation for graphics init *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`62a7dfa`](https://github.com/pabllopf/Alis/commit/62a7dfa3953c38ef6800ee0be0255ace2d5f6623) - Add iOS sample and update build configs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8c26cab`](https://github.com/pabllopf/Alis/commit/8c26cab307f2fd18af8c36c46e5915ae6ef4767a) - Add BlueGlkViewController and update SceneDelegate *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f77c8c9`](https://github.com/pabllopf/Alis/commit/f77c8c927609efcea8a282b4fe0773173349def9) - Add native GL bindings and unmanaged buffer *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`99b41e6`](https://github.com/pabllopf/Alis/commit/99b41e6847af8fa8154b1ed25519003ce4d71c51) - Bump projects to net10.0 and reorganize iOS sample *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`d657824`](https://github.com/pabllopf/Alis/commit/d657824dfe17a3d55134e69ec59678278082da90) - Switch MainActivity to OpenGL view; remove resources *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`412ca47`](https://github.com/pabllopf/Alis/commit/412ca47cce3bcdcef58a6f32d5f579e0e340a840) - Add Metal/GL views; remove app icons *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`680b6a4`](https://github.com/pabllopf/Alis/commit/680b6a448ddb80aecfb623d42276ccbdc90ba58c) - Add triangle rendering and GL setup to GLK view *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e50a6ec`](https://github.com/pabllopf/Alis/commit/e50a6ec18a6d27d1ff2ea78fa45727d9980eb940) - Use Alis.Core.Graphic OpenGL on Android *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e8d21a4`](https://github.com/pabllopf/Alis/commit/e8d21a4d59c9355fb3bbd88170b371f0141dd06e) - Bump defaults to .NET 10 and adjust Android API *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`73b30cc`](https://github.com/pabllopf/Alis/commit/73b30cc3e45e6de49fb984cb77adcb07ff9f53c0) - Update CI workflows to .NET 10 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5819faa`](https://github.com/pabllopf/Alis/commit/5819faa49b0e45503237a58cd1f315754988dfa2) - Add android/ios .NET workloads to CI *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fe1e663`](https://github.com/pabllopf/Alis/commit/fe1e663f539cca6cc1e19a45e377e540403d0aac) - Remove alis.targets imports and Benchmark project *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`293b6cd`](https://github.com/pabllopf/Alis/commit/293b6cdb3a3fe34f8e8f5aa4493a94dd6b9a2ff9) - delete unless csproj *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1821673`](https://github.com/pabllopf/Alis/commit/18216735eefd06201bbcd97a53eace534042dc55) - generators on .netstandard2.0 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c620cbb`](https://github.com/pabllopf/Alis/commit/c620cbb10ca387696723969fa836924a004cf47c) - Upgrade test packages to xUnit v3 and Test SDK *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ec35e0e`](https://github.com/pabllopf/Alis/commit/ec35e0eff18523194f347403f600c86ac7984bf5) - add new runtimes to project *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ff5a4d8`](https://github.com/pabllopf/Alis/commit/ff5a4d8a7c1c512241dd5afd2925e3b81a8500fe) - sample of web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`21cab3f`](https://github.com/pabllopf/Alis/commit/21cab3f6b8ea28d82ccabe98ca95ee4ceed1d10e) - macOS-13 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5bf4362`](https://github.com/pabllopf/Alis/commit/5bf43625d4c87aa6b5f9330b1de0e35239f9ab5d) - add geenrator to android app *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5247d8f`](https://github.com/pabllopf/Alis/commit/5247d8fd6f9ba213f4353fc325cb897c6c074d66) - Set common OutDir and update build configs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bef6e7e`](https://github.com/pabllopf/Alis/commit/bef6e7e4fcacb098c02057cd2317bcc46e37e163) - delete readme *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5658b5a`](https://github.com/pabllopf/Alis/commit/5658b5ae0deba956081f00d8e0877d35ffaa0cb9) - version dotnet *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ca5253c`](https://github.com/pabllopf/Alis/commit/ca5253cac71294176cc1cf2ec6421bb1c1ac5df6) - sonarcloud *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`48677c2`](https://github.com/pabllopf/Alis/commit/48677c242a318012fde888958c732ad34534481f) - generator *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bb05bd7`](https://github.com/pabllopf/Alis/commit/bb05bd760648ce529d31fb3edff54311cbb7b150) - ios version *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a72896a`](https://github.com/pabllopf/Alis/commit/a72896a2ac1ed724bfaed0e28c65a5eccfe64b40) - sonarcloud *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9cd856d`](https://github.com/pabllopf/Alis/commit/9cd856d605b8b7db29de29b09d4a07afc081169d) - targets *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.9.2] - 2026-02-16
 ### :sparkles: New Features
 - [`67bbf08`](https://github.com/pabllopf/Alis/commit/67bbf08af460094008e1ffdc996d253cbd439920) - Add net10.0 to Release TargetFrameworks *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -5671,3 +5706,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.9.0]: https://github.com/pabllopf/Alis/compare/v0.8.9...v0.9.0
 [v0.9.1]: https://github.com/pabllopf/Alis/compare/v0.9.0...v0.9.1
 [v0.9.2]: https://github.com/pabllopf/Alis/compare/v0.9.1...v0.9.2
+[v0.9.3]: https://github.com/pabllopf/Alis/compare/v0.9.2...v0.9.3
