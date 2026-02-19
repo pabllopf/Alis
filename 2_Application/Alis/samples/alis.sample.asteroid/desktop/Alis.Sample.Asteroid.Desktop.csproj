@@ -48,6 +48,7 @@
    <ItemGroup>
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation')) OR $(ProjectDir.Contains('2_Application'))"
                           Include="$(SolutionDir)2_Application/alis/src/alis.csproj"/>
+       
     </ItemGroup>
 
     <!-- ========== PROPIEDADES DE ASSETS ========== -->
@@ -105,7 +106,7 @@
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false">
                 <Properties>
-                    TargetFrameworks=netstandard2.0
+                    TargetFramework=netstandard2.0
                 </Properties>
         </ProjectReference>
     </ItemGroup>
