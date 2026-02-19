@@ -8,28 +8,11 @@ select yn in "Yes" "No"; do
     find . -type d -name "publish" -exec rm -Rf {} \;
     find . -type d -name ".publish" -exec rm -Rf {} \;
     
-    for i in `find . -name "*.csproj" -type f`; 
-          do if [[ $i != *".Template."* && $i != *".App."* && $i != *".Test."* && $i != *".Benchmark."* && $i != *".Sample."* ]] ; 
-          then 
-            echo "Build project $i" ;
-            dotnet restore $i;
-            dotnet build $i -c Release; 
-            dotnet build $i -r win-x64 -c Release;
-            dotnet build $i -r win-arm64 -c Release;
-            dotnet build $i -r win-x86 -c Release;
-            dotnet build $i -r osx-x64 -c Release;
-            dotnet build $i -r osx-arm64 -c Release;
-            dotnet build $i -r linux-x64 -c Release;
-            dotnet build $i -r linux-x86 -c Release;
-            dotnet build $i -r linux-arm64 -c Release;
-            else 
-              echo "Skip project $i";
-              dotnet restore $i;
-        fi;done
+    dotnet restore alis.sln;
         
         
     for i in `find . -name "*.csproj" -type f`; 
-      do if [[ $i == *".Template."* || $i == *".App."* || $i == *".Test."* || $i == *".Benchmark."* || $i == *".Sample."* ]] ; 
+      do if [[ $i == *".Template."* || $i == *".App."* || $i == *".Test."* || $i == *".Benchmark."* || $i == *".Sample."* || $i == *".Generator."* ]] ; 
       then 
         echo "Skip project $i"; 
       else 

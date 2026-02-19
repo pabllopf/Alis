@@ -4,12 +4,14 @@
         <OutputType>Exe</OutputType>
         <Nullable>enable</Nullable>
         <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+       
     </PropertyGroup>
     
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
         <CodesignKey>Apple Development: pabllopf2@gmail.com (CY8H4S7W7N)</CodesignKey>
         <IOSDebugOverWiFi>true</IOSDebugOverWiFi>
     </PropertyGroup>
+
 
     <ItemGroup>
         <ProjectReference Include="
@@ -27,7 +29,10 @@
             $(SolutionDir)6_Ideation/Memory/src/Alis.Core.Aspect.Memory.csproj;
             $(SolutionDir)6_Ideation/Time/src/Alis.Core.Aspect.Time.csproj;
         ">
-            <Properties>TargetFramework=netstandard2.0</Properties>
+            <Properties>
+                TargetFramework=netstandard2.0;
+                RuntimeIdentifiers=
+            </Properties>
         </ProjectReference>
     </ItemGroup>
 </Project>

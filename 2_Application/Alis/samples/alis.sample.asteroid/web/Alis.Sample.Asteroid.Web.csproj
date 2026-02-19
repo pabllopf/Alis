@@ -5,6 +5,7 @@
         <OutputType>Exe</OutputType>
         <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+          <NoAutoGenerateFiles>true</NoAutoGenerateFiles>
     </PropertyGroup>
 
     <PropertyGroup>
