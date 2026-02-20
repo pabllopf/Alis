@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IFilePicker.cs
+//  File:FileDialogType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,35 +30,24 @@
 namespace Alis.Extension.Io.FileDialog
 {
     /// <summary>
-    ///     Interface for file picker strategy pattern implementations across different operating systems.
+    ///     Enumeration representing different types of file dialogs.
     /// </summary>
-    public interface IFilePicker
+    public enum FileDialogType
     {
         /// <summary>
-        ///     Opens a file picker dialog to select a single file (legacy method).
+        ///     Dialog for opening/selecting an existing file
         /// </summary>
-        /// <returns>The path of the selected file, or null if cancelled</returns>
-        string ChooseFile();
+        OpenFile = 0,
 
         /// <summary>
-        ///     Opens a file picker dialog with advanced options.
+        ///     Dialog for saving a file with a new name
         /// </summary>
-        /// <param name="options">The dialog options</param>
-        /// <returns>The result containing selected file path(s) or error information</returns>
-        FilePickerResult PickFile(FilePickerOptions options);
+        SaveFile = 1,
 
         /// <summary>
-        ///     Opens a file picker dialog allowing multiple file selection.
+        ///     Dialog for selecting a folder/directory
         /// </summary>
-        /// <param name="options">The dialog options</param>
-        /// <returns>The result containing selected file paths or error information</returns>
-        FilePickerResult PickFiles(FilePickerOptions options);
-
-        /// <summary>
-        ///     Opens a folder picker dialog.
-        /// </summary>
-        /// <param name="options">The dialog options</param>
-        /// <returns>The result containing the selected folder path or error information</returns>
-        FilePickerResult PickFolder(FilePickerOptions options);
+        SelectFolder = 2
     }
 }
+

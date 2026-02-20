@@ -27,7 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Text;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Io.FileDialog
@@ -38,40 +42,292 @@ namespace Alis.Extension.Io.FileDialog
     public class WindowsFilePicker : IFilePicker
     {
         /// <summary>
-        ///     Chooses the file
+        /// The file open script
         /// </summary>
-        /// <returns>The string</returns>
+        private const string FileOpenScript = @"
+Add-Type -AssemblyName System.Windows.Forms
+$dialog = New-Object System.Windows.Forms.OpenFileDialog
+$dialog.Title = '{0}'
+{1}
+{2}
+if ($dialog.ShowDialog() -eq 'OK') {{
+    $dialog.FileName
+}}
+";
+
+        /// <summary>
+        /// The file save script
+        /// </summary>
+        private const string FileSaveScript = @"
+Add-Type -AssemblyName System.Windows.Forms
+$dialog = New-Object System.Windows.Forms.SaveFileDialog
+$dialog.Title = '{0}'
+{1}
+{2}
+if ($dialog.ShowDialog() -eq 'OK') {{
+    $dialog.FileName
+}}
+";
+
+        /// <summary>
+        /// The folder select script
+        /// </summary>
+        private const string FolderSelectScript = @"
+Add-Type -AssemblyName System.Windows.Forms
+$dialog = New-Object System.Windows.Forms.FolderBrowserDialog
+$dialog.Description = '{0}'
+{1}
+if ($dialog.ShowDialog() -eq 'OK') {{
+    $dialog.SelectedPath
+}}
+";
+
+        /// <summary>
+        ///     Opens a file picker dialog to select a single file (legacy method).
+        /// </summary>
+        /// <returns>The path of the selected file, or null if cancelled</returns>
         public string ChooseFile()
         {
-            // Start the process to invoke the PowerShell script that opens the file picker dialog
-            // Start the process to invoke the PowerShell script that opens the file picker dialog
+            Logger.Trace("ChooseFile() called on WindowsFilePicker.");
 
-
-            Process process = new Process();
-            process.StartInfo = new ProcessStartInfo
+            try
             {
-                FileName = "powershell",
-                Arguments = "-Command \"Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.OpenFileDialog]::new().ShowDialog()\"\n",
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
+                var options = new FilePickerOptions("Select a file", FileDialogType.OpenFile);
+                var result = PickFile(options);
 
-            // Start the process and capture its output
-            process.Start();
-            process.WaitForExit();
-
-            // Check if the user selected a file or cancelled
-            if (process.ExitCode == 0)
+                string selectedPath = result.IsSuccess ? result.SelectedPath : null;
+                Logger.Info($"ChooseFile() result: {selectedPath ?? "cancelled"}");
+                return selectedPath;
+            }
+            catch (Exception ex)
             {
-                // The user selected a file (this can be expanded further to capture the file path)
-                Logger.Info("File selected!");
-                return "selected_file_path"; // Return the file path if a file is selected (replace with actual capture logic)
+                Logger.Error($"Error in ChooseFile(): {ex.Message}");
+                return null;
+            }
+        }
+
+        /// <summary>
+        ///     Opens a file picker dialog with advanced options to select a single file.
+        /// </summary>
+        /// <param name="options">The dialog options</param>
+        /// <returns>The result containing selected file path or error information</returns>
+        public FilePickerResult PickFile(FilePickerOptions options)
+        {
+            Logger.Trace($"PickFile() called with options - Title: {options?.Title}");
+
+            try
+            {
+                FilePickerValidator.ValidateOptions(options);
+                options.AllowMultiple = false;
+
+                string script = BuildOpenFileScript(options);
+                string result = ExecuteScript(script);
+
+                return ParseResult(result, options, false);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"Error in PickFile(): {ex.Message}");
+                return FilePickerResult.CreateError($"Error picking file: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        ///     Opens a file picker dialog allowing multiple file selection.
+        /// </summary>
+        /// <param name="options">The dialog options</param>
+        /// <returns>The result containing selected file paths or error information</returns>
+        public FilePickerResult PickFiles(FilePickerOptions options)
+        {
+            Logger.Trace($"PickFiles() called with options - Title: {options?.Title}");
+
+            try
+            {
+                FilePickerValidator.ValidateOptions(options);
+                options.AllowMultiple = true;
+
+                string script = BuildOpenFileScript(options);
+                string result = ExecuteScript(script);
+
+                return ParseResult(result, options, true);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"Error in PickFiles(): {ex.Message}");
+                return FilePickerResult.CreateError($"Error picking files: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        ///     Opens a folder picker dialog.
+        /// </summary>
+        /// <param name="options">The dialog options</param>
+        /// <returns>The result containing the selected folder path or error information</returns>
+        public FilePickerResult PickFolder(FilePickerOptions options)
+        {
+            Logger.Trace($"PickFolder() called with options - Title: {options?.Title}");
+
+            try
+            {
+                FilePickerValidator.ValidateOptions(options);
+
+                string script = BuildFolderSelectScript(options);
+                string result = ExecuteScript(script);
+
+                return ParseResult(result, options, false);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"Error in PickFolder(): {ex.Message}");
+                return FilePickerResult.CreateError($"Error picking folder: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        ///     Builds the PowerShell script for opening a file.
+        /// </summary>
+        private string BuildOpenFileScript(FilePickerOptions options)
+        {
+            Logger.Trace("Building OpenFile PowerShell script.");
+
+            StringBuilder script = new StringBuilder(FileOpenScript);
+            script.Replace("{0}", EscapeScriptString(options.Title ?? "Select a file"));
+
+            // Add default path
+            string pathConfig = string.Empty;
+            if (!string.IsNullOrEmpty(options.DefaultPath))
+            {
+                pathConfig = $"$dialog.InitialDirectory = '{FilePickerPathConverter.ConvertPathSeparators(options.DefaultPath)}'";
             }
 
-            // The user cancelled or closed the dialog
-            Logger.Info("The user cancelled or closed the dialog.");
-            return null; // Return null if no file was selected
+            script.Replace("{1}", pathConfig);
+
+            // Add filters and multiselect
+            StringBuilder optionsConfig = new StringBuilder();
+            if (options.Filters != null && options.Filters.Count > 0)
+            {
+                optionsConfig.AppendLine("$dialog.Filter = '" + BuildFilterString(options.Filters) + "'");
+            }
+
+            if (options.AllowMultiple)
+            {
+                optionsConfig.AppendLine("$dialog.Multiselect = $true");
+            }
+
+            script.Replace("{2}", optionsConfig.ToString());
+
+            return script.ToString();
+        }
+
+        /// <summary>
+        ///     Builds the PowerShell script for selecting a folder.
+        /// </summary>
+        private string BuildFolderSelectScript(FilePickerOptions options)
+        {
+            Logger.Trace("Building FolderSelect PowerShell script.");
+
+            StringBuilder script = new StringBuilder(FolderSelectScript);
+            script.Replace("{0}", EscapeScriptString(options.Title ?? "Select a folder"));
+
+            string pathConfig = string.Empty;
+            if (!string.IsNullOrEmpty(options.DefaultPath))
+            {
+                pathConfig = $"$dialog.SelectedPath = '{FilePickerPathConverter.ConvertPathSeparators(options.DefaultPath)}'";
+            }
+
+            script.Replace("{1}", pathConfig);
+
+            return script.ToString();
+        }
+
+        /// <summary>
+        ///     Builds the filter string for Windows file dialogs.
+        /// </summary>
+        private string BuildFilterString(List<FilePickerFilter> filters)
+        {
+            Logger.Trace($"Building filter string for {filters.Count} filter(s).");
+
+            if (filters == null || filters.Count == 0)
+            {
+                return "All files (*.*)|*.*";
+            }
+
+            var filterParts = filters.Select(f => $"{f.DisplayName}|{f.GetFormattedExtensions()}");
+            string result = string.Join("|", filterParts) + "|All files (*.*)|*.*";
+
+            Logger.Trace($"Filter string: {result}");
+            return result;
+        }
+
+        /// <summary>
+        ///     Executes a PowerShell script and returns the output.
+        /// </summary>
+        private string ExecuteScript(string script)
+        {
+            Logger.Trace("Executing PowerShell script.");
+
+            try
+            {
+                return FilePickerExecutor.ExecuteCommand("powershell", $"-NoProfile -NonInteractive -Command \"{script}\"", 30000);
+            }
+            catch (Exception ex)
+            {
+                Logger.Warning($"Error executing PowerShell script: {ex.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        ///     Parses the dialog result.
+        /// </summary>
+        private FilePickerResult ParseResult(string output, FilePickerOptions options, bool allowMultiple)
+        {
+            Logger.Trace($"Parsing result from dialog output: {output ?? "(null)"}");
+
+            if (string.IsNullOrWhiteSpace(output))
+            {
+                Logger.Info("Dialog was cancelled by user.");
+                return FilePickerResult.CreateCancelled();
+            }
+
+            try
+            {
+                var paths = allowMultiple
+                    ? FilePickerPathConverter.SplitMultiplePaths(output)
+                    : new[] { FilePickerPathConverter.NormalizePath(output) };
+
+                paths = paths.Where(p => !string.IsNullOrEmpty(p)).ToArray();
+
+                if (paths.Length == 0)
+                {
+                    Logger.Info("No paths selected.");
+                    return FilePickerResult.CreateCancelled();
+                }
+
+                Logger.Info($"Successfully selected {paths.Length} path(s).");
+                return new FilePickerResult(paths.ToList());
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"Error parsing dialog result: {ex.Message}");
+                return FilePickerResult.CreateError($"Error parsing result: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        ///     Escapes special characters in PowerShell strings.
+        /// </summary>
+        private string EscapeScriptString(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return input;
+            }
+
+            return input
+                .Replace("'", "''")
+                .Replace("\"", "`\"")
+                .Replace("$", "`$");
         }
     }
 }
