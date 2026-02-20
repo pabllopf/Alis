@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.9.4] - 2026-02-20
+### :sparkles: New Features
+- [`ef9f842`](https://github.com/pabllopf/Alis/commit/ef9f84246da7ab0b423d9540dc8d0cf7febb78b8) - do generator with net10 *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`d9b6cc4`](https://github.com/pabllopf/Alis/commit/d9b6cc414575492ea4c76b2882ed43cda34730b4) - engine build *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`17e2e5c`](https://github.com/pabllopf/Alis/commit/17e2e5c635f3d4389b8807dc17a52c5fa253c719) - the main sln config *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.9.3] - 2026-02-19
 ### :sparkles: New Features
 - [`34852d6`](https://github.com/pabllopf/Alis/commit/34852d6f66ee5908cf8b3569635aaefdbf3df714) - Add Asteroid Android sample project *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -5707,3 +5716,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.9.1]: https://github.com/pabllopf/Alis/compare/v0.9.0...v0.9.1
 [v0.9.2]: https://github.com/pabllopf/Alis/compare/v0.9.1...v0.9.2
 [v0.9.3]: https://github.com/pabllopf/Alis/compare/v0.9.2...v0.9.3
+[v0.9.4]: https://github.com/pabllopf/Alis/compare/v0.9.3...v0.9.4
