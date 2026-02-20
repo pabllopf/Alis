@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using Alis.Extension.Language.Dialogue.Core;
 
 namespace Alis.Extension.Language.Dialogue
 {
@@ -46,6 +48,7 @@ namespace Alis.Extension.Language.Dialogue
             Id = id;
             Text = text;
             Options = new List<DialogOption>();
+            Branches = new Dictionary<string, Dialog>();
         }
 
         /// <summary>
@@ -64,12 +67,55 @@ namespace Alis.Extension.Language.Dialogue
         public List<DialogOption> Options { get; set; }
 
         /// <summary>
+        ///     Gets or sets the branching dialogs (for dialog tree)
+        /// </summary>
+        public Dictionary<string, Dialog> Branches { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the parent dialog id (for back navigation)
+        /// </summary>
+        public string ParentDialogId { get; set; }
+
+        /// <summary>
         ///     Adds the option using the specified option
         /// </summary>
         /// <param name="option">The option</param>
         public void AddOption(DialogOption option)
         {
-            Options.Add(option);
+            if (option != null)
+            {
+                Options.Add(option);
+            }
+        }
+
+        /// <summary>
+        ///     Adds a branch dialog
+        /// </summary>
+        /// <param name="key">The branch key identifier</param>
+        /// <param name="dialog">The branch dialog</param>
+        /// <exception cref="ArgumentNullException">Thrown when key is null or empty</exception>
+        public void AddBranch(string key, Dialog dialog)
+        {
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
+            if (dialog != null)
+            {
+                dialog.ParentDialogId = this.Id;
+                Branches[key] = dialog;
+            }
+        }
+
+        /// <summary>
+        ///     Gets a branch dialog by key
+        /// </summary>
+        /// <param name="key">The branch key</param>
+        /// <returns>The branch dialog or null if not found</returns>
+        public Dialog GetBranch(string key)
+        {
+            return Branches.TryGetValue(key, out Dialog branch) ? branch : null;
         }
     }
 }

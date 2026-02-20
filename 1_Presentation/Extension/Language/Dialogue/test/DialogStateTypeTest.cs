@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DialogTest.cs
+//  File:DialogStateTypeTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,59 +27,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Logging;
+using Alis.Extension.Language.Dialogue.Core;
 using Xunit;
 
 namespace Alis.Extension.Language.Dialogue.Test
 {
     /// <summary>
-    ///     The dialog test class
+    ///     Tests for DialogStateType enum
     /// </summary>
-    public class DialogTest
+    public class DialogStateTypeTest
     {
-    /// <summary>
-    ///     Tests that dialog constructor should initialize properties
-    /// </summary>
-    [Fact]
-    public void Dialog_Constructor_ShouldInitializeProperties()
-    {
-        string id = "testId";
-        string text = "Test Text";
-        Dialog dialog = new Dialog(id, text);
-
-        Assert.Equal(id, dialog.Id);
-        Assert.Equal(text, dialog.Text);
-        Assert.Empty(dialog.Options);
-        Assert.Empty(dialog.Branches);
-    }
-
         /// <summary>
-        ///     Tests that add option should add option to list
+        ///     Tests that dialog state type idle has correct value
         /// </summary>
         [Fact]
-        public void AddOption_ShouldAddOptionToList()
+        public void DialogStateType_Idle_HasCorrectValue()
         {
-            Dialog dialog = new Dialog("testId", "Test Text");
-            DialogOption option = new DialogOption("Option Text", () => Logger.Info("Test Action"));
-            dialog.AddOption(option);
-
-            Assert.Single(dialog.Options);
-            Assert.Contains(option, dialog.Options);
+            Assert.Equal(0, (int)DialogStateType.Idle);
         }
 
         /// <summary>
-        ///     Tests that dialog option constructor should initialize properties
+        ///     Tests that dialog state type running has correct value
         /// </summary>
         [Fact]
-        public void DialogOption_Constructor_ShouldInitializeProperties()
+        public void DialogStateType_Running_HasCorrectValue()
         {
-            string text = "Option Text";
-            Action action = () => Logger.Info("Test Action");
-            DialogOption option = new DialogOption(text, action);
+            Assert.Equal(1, (int)DialogStateType.Running);
+        }
 
-            Assert.Equal(text, option.Text);
-            Assert.Equal(action, option.Action);
+        /// <summary>
+        ///     Tests that dialog state type paused has correct value
+        /// </summary>
+        [Fact]
+        public void DialogStateType_Paused_HasCorrectValue()
+        {
+            Assert.Equal(2, (int)DialogStateType.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that dialog state type completed has correct value
+        /// </summary>
+        [Fact]
+        public void DialogStateType_Completed_HasCorrectValue()
+        {
+            Assert.Equal(3, (int)DialogStateType.Completed);
         }
     }
 }
+

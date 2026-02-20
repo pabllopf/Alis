@@ -85,22 +85,22 @@ namespace Alis.Extension.Language.Dialogue.Test
             Assert.Null(exception);
         }
 
-        /// <summary>
-        ///     Tests that show dialog should invoke action on valid option selection
-        /// </summary>
-        [Fact]
-        public void ShowDialog_ShouldInvokeActionOnValidOptionSelection()
-        {
-            DialogManager manager = new DialogManager();
-            bool actionInvoked = false;
-            Dialog dialog = new Dialog("testId", "Test Dialog");
-            dialog.AddOption(new DialogOption("Option 1", () => { actionInvoked = true; }));
-            manager.AddDialog(dialog);
+    /// <summary>
+    ///     Tests that show dialog should invoke action on valid option selection
+    /// </summary>
+    [Fact]
+    public void ShowDialog_ShouldInvokeActionOnValidOptionSelection()
+    {
+        DialogManager manager = new DialogManager();
+        bool actionInvoked = false;
+        Dialog dialog = new Dialog("testId", "Test Dialog");
+        dialog.AddOption(new DialogOption("Option 1", () => actionInvoked = true));
+        manager.AddDialog(dialog);
 
-            Console.SetIn(new StringReader("1\n")); // Simulate user input
-            manager.ShowDialog("testId");
+        Console.SetIn(new StringReader("1\n")); // Simulate user input
+        manager.ShowDialog("testId");
 
-            Assert.True(actionInvoked);
-        }
+        Assert.True(actionInvoked);
+    }
     }
 }

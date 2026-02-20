@@ -39,7 +39,7 @@ namespace Alis.Extension.Language.Dialogue
     public class DialogManager
     {
         /// <summary>
-        ///     The dialog
+        ///     The dialog dictionary
         /// </summary>
         internal readonly Dictionary<string, Dialog> Dialogs = new Dictionary<string, Dialog>();
 
@@ -47,8 +47,14 @@ namespace Alis.Extension.Language.Dialogue
         ///     Adds the dialog using the specified dialog
         /// </summary>
         /// <param name="dialog">The dialog</param>
+        /// <exception cref="ArgumentNullException">Thrown when dialog is null</exception>
         public void AddDialog(Dialog dialog)
         {
+            if (dialog == null)
+            {
+                throw new ArgumentNullException(nameof(dialog));
+            }
+
             Dialogs[dialog.Id] = dialog;
         }
 
@@ -56,10 +62,9 @@ namespace Alis.Extension.Language.Dialogue
         ///     Gets the dialog using the specified id
         /// </summary>
         /// <param name="id">The id</param>
-        /// <returns>The dialog</returns>
+        /// <returns>The dialog or null if not found</returns>
         public Dialog GetDialog(string id) => Dialogs.TryGetValue(id, out Dialog dialog) ? dialog : null;
 
-        // Example usage: ShowDialog("greeting");
         /// <summary>
         ///     Shows the dialog using the specified id
         /// </summary>
@@ -82,7 +87,7 @@ namespace Alis.Extension.Language.Dialogue
             int choice = Convert.ToInt32(Console.ReadLine()) - 1;
             if ((choice >= 0) && (choice < dialog.Options.Count))
             {
-                dialog.Options[choice].Action.Invoke();
+                dialog.Options[choice].Action?.Invoke();
             }
         }
     }
