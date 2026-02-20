@@ -224,9 +224,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Io", "Io", "{C77F4F02-E67F-F2DF-C1C4-1950D37B7A8C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FileDialog", "FileDialog", "{065EAFB4-3D10-4F7D-CDEB-EE57BEDAF37D}"
-	ProjectSection(SolutionItems) = preProject
-		1_Presentation\Extension\Io\FileDialog\MACOS_INSTRUCTIONS.md = 1_Presentation\Extension\Io\FileDialog\MACOS_INSTRUCTIONS.md
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Extension.Io.FileDialog.Test", "1_Presentation\Extension\Io\FileDialog\test\Alis.Extension.Io.FileDialog.Test.csproj", "{91498310-B33A-4542-AD7E-21DAC6BCA5FA}"
 EndProject
@@ -245,6 +242,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Language", "Language", "{BD3E673D-F084-D41C-BCEB-0B0A69B9B7F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Translator", "Translator", "{5039320E-D02F-1F70-99B0-B9678715514F}"
+	ProjectSection(SolutionItems) = preProject
+		1_Presentation\Extension\Language\Translator\README.md = 1_Presentation\Extension\Language\Translator\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Extension.Language.Translator.Test", "1_Presentation\Extension\Language\Translator\test\Alis.Extension.Language.Translator.Test.csproj", "{A2C5C004-4D91-4E78-AF1C-97968D265DA3}"
 EndProject
