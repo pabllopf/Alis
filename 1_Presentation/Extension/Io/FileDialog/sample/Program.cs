@@ -54,9 +54,6 @@ namespace Alis.Extension.Io.FileDialog.Sample
                 // Get the platform-specific file picker
                 IFilePicker filePicker = FilePickerFactory.CreateFilePicker();
 
-                // Example 1: Legacy method (single file selection)
-                DemonstrateLegacyMethod(filePicker);
-
                 Logger.Info("");
 
                 // Example 2: Single file selection with options
@@ -84,33 +81,6 @@ namespace Alis.Extension.Io.FileDialog.Sample
             {
                 Logger.Error($"An error occurred: {ex.Message}");
                 Logger.Error($"Stack Trace: {ex.StackTrace}");
-            }
-        }
-
-        /// <summary>
-        ///     Demonstrates the legacy ChooseFile method.
-        /// </summary>
-        private static void DemonstrateLegacyMethod(IFilePicker filePicker)
-        {
-            Logger.Info("--- Example 1: Legacy Method (ChooseFile) ---");
-            Logger.Info("Note: This method opens a dialog. Press Cancel or Escape to skip.");
-
-            try
-            {
-                string selectedFile = filePicker.ChooseFile();
-
-                if (!string.IsNullOrEmpty(selectedFile))
-                {
-                    Logger.Info($"Selected file: {selectedFile}");
-                }
-                else
-                {
-                    Logger.Info("No file selected.");
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Warning($"Legacy method error: {ex.Message}");
             }
         }
 

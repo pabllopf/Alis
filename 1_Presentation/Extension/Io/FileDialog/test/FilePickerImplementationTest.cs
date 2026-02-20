@@ -78,27 +78,6 @@ namespace Alis.Extension.Io.FileDialog.Test
         }
 
         /// <summary>
-        ///     Tests that WindowsFilePicker.ChooseFile returns null when cancelled.
-        /// </summary>
-        [Fact]
-        public void WindowsFilePicker_ChooseFile_WithCancelledDialog_ShouldReturnNull()
-        {
-            // Arrange
-            var picker = new WindowsFilePicker();
-
-            // Act & Assert
-            // This test would only work in an interactive environment with actual dialog
-            // In unit tests, we skip this as it requires user interaction
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                // Test only on Windows
-                var result = picker.ChooseFile();
-                // Can be null (cancelled) or a string (file selected)
-                Assert.True(result == null || !string.IsNullOrEmpty(result));
-            }
-        }
-
-        /// <summary>
         ///     Tests that WindowsFilePicker.PickFile validates options.
         /// </summary>
         [Fact]

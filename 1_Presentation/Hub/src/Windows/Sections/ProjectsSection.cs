@@ -346,18 +346,22 @@ namespace Alis.App.Hub.Windows.Sections
 
                 if (ImGui.Button($"{FontAwesome5.Folder}## Browse"))
                 {
-                    // DEFAULT PATH USER PATH:
-                    string defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-
                     // Get the platform-specific file picker
                     IFilePicker filePicker = FilePickerFactory.CreateFilePicker();
 
                     // Choose a file using the platform-specific picker
-                    string selectedFile = filePicker.ChooseFile();
-
-                    if (!string.IsNullOrEmpty(selectedFile))
+                    FilePickerOptions options = new FilePickerOptions
                     {
-                        projectPath = selectedFile;
+                        Title = "Select Project Folder",
+                        DefaultPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                        AllowMultiple = false,
+                    };
+                    FilePickerResult selectedFile = filePicker.PickFile(options);
+
+                    if (selectedFile.IsSuccess)
+                    {
+                        projectPath = selectedFile.SelectedPath;
+                        Logger.Info("Selected project path: " + projectPath);
                     }
                 }
 
