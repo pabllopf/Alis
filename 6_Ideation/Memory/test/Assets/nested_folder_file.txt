@@ -1,0 +1,1 @@
+Content for nested folder testing with complex paths.
