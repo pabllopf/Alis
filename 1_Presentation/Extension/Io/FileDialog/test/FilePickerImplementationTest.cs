@@ -45,15 +45,31 @@ namespace Alis.Extension.Io.FileDialog.Test
         /// </summary>
         private class MockFilePicker : IFilePicker
         {
+            /// <summary>
+            /// The should succeed
+            /// </summary>
             private readonly bool _shouldSucceed;
+            /// <summary>
+            /// The mock path
+            /// </summary>
             private readonly string _mockPath;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="MockFilePicker"/> class
+            /// </summary>
+            /// <param name="shouldSucceed">The should succeed</param>
+            /// <param name="mockPath">The mock path</param>
             public MockFilePicker(bool shouldSucceed = true, string mockPath = "/mock/path/file.txt")
             {
                 _shouldSucceed = shouldSucceed;
                 _mockPath = mockPath;
             }
 
+            /// <summary>
+            /// Picks the file using the specified options
+            /// </summary>
+            /// <param name="options">The options</param>
+            /// <returns>The file picker result</returns>
             public FilePickerResult PickFile(FilePickerOptions options)
             {
                 if (!_shouldSucceed)
@@ -63,6 +79,11 @@ namespace Alis.Extension.Io.FileDialog.Test
                 return new FilePickerResult(new List<string> { _mockPath });
             }
 
+            /// <summary>
+            /// Picks the files using the specified options
+            /// </summary>
+            /// <param name="options">The options</param>
+            /// <returns>The file picker result</returns>
             public FilePickerResult PickFiles(FilePickerOptions options)
             {
                 if (!_shouldSucceed)
@@ -72,6 +93,11 @@ namespace Alis.Extension.Io.FileDialog.Test
                 return new FilePickerResult(new List<string> { _mockPath, _mockPath + ".bak" });
             }
 
+            /// <summary>
+            /// Picks the folder using the specified options
+            /// </summary>
+            /// <param name="options">The options</param>
+            /// <returns>The file picker result</returns>
             public FilePickerResult PickFolder(FilePickerOptions options)
             {
                 if (!_shouldSucceed)

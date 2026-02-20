@@ -383,20 +383,42 @@ namespace Alis.Extension.Language.Translator.Test
         /// </summary>
         private class TestTranslationObserver : ITranslationObserver
         {
+            /// <summary>
+            /// Gets or sets the value of the language changed called
+            /// </summary>
             public bool LanguageChangedCalled { get; set; }
+            /// <summary>
+            /// Gets or sets the value of the translations updated called
+            /// </summary>
             public bool TranslationsUpdatedCalled { get; set; }
+            /// <summary>
+            /// Gets or sets the value of the translation not found called
+            /// </summary>
             public bool TranslationNotFoundCalled { get; set; }
 
+            /// <summary>
+            /// Ons the language changed using the specified language
+            /// </summary>
+            /// <param name="language">The language</param>
             public void OnLanguageChanged(ILanguage language)
             {
                 LanguageChangedCalled = true;
             }
 
+            /// <summary>
+            /// Ons the translations updated using the specified language code
+            /// </summary>
+            /// <param name="languageCode">The language code</param>
             public void OnTranslationsUpdated(string languageCode)
             {
                 TranslationsUpdatedCalled = true;
             }
 
+            /// <summary>
+            /// Ons the translation not found using the specified language code
+            /// </summary>
+            /// <param name="languageCode">The language code</param>
+            /// <param name="key">The key</param>
             public void OnTranslationNotFound(string languageCode, string key)
             {
                 TranslationNotFoundCalled = true;
