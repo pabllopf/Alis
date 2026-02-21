@@ -376,10 +376,20 @@ osascript /path/to/script.applescript
 ```
 
 **AppleScript File Handling:**
-- Scripts are written to temporary files
-- Executed via `osascript`
-- Temporary files are cleaned up
+- Scripts are written to secure temporary files
+- Random filename generation using `Path.GetRandomFileName()`
+- Cryptographically safe temporary file creation (csharpsquid:S5445 compliant)
+- Executed via `osascript` with isolated execution context
+- Temporary files are securely cleaned up after execution
 - Output is parsed and normalized
+- Error handling ensures cleanup even if execution fails
+
+**Security Measures:**
+- ✅ **Secure Temp File Generation:** Uses `Path.GetRandomFileName()` instead of `Path.GetTempFileName()`
+- ✅ **Unique File Names:** Cryptographically random names prevent collision attacks
+- ✅ **Proper Cleanup:** Files are always deleted in `finally` block
+- ✅ **Isolated Execution:** AppleScript runs in isolated `osascript` process
+- ✅ **Input Validation:** All user input is properly escaped in AppleScript strings
 
 ---
 

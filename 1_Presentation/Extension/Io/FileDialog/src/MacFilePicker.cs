@@ -205,8 +205,11 @@ namespace Alis.Extension.Io.FileDialog
 
             try
             {
-                // Create temporary file for the script
-                string tmpFile = System.IO.Path.GetTempFileName();
+                // Create temporary file for the script securely
+                string tmpFile = System.IO.Path.Combine(
+                    System.IO.Path.GetTempPath(),
+                    System.IO.Path.GetRandomFileName() + ".applescript");
+                
                 System.IO.File.WriteAllText(tmpFile, script);
 
                 try
