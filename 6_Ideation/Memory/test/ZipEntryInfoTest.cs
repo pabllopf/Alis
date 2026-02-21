@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using Xunit;
 
 namespace Alis.Core.Aspect.Memory.Test
@@ -143,6 +144,183 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal(expectedName, zipEntryInfo.FullName);
             Assert.Equal(expectedLength, zipEntryInfo.Length);
             Assert.Equal(expectedDateTime, zipEntryInfo.LastWriteTimeUtc);
+        }
+
+        /// <summary>
+        /// Tests that length can be zero
+        /// </summary>
+        [Fact]
+        public void Length_CanBeZero()
+        {
+            // Arrange
+            ZipEntryInfo zipEntryInfo = new ZipEntryInfo();
+
+            // Act
+            zipEntryInfo.Length = 0L;
+
+            // Assert
+            Assert.Equal(0L, zipEntryInfo.Length);
+        }
+
+        /// <summary>
+        /// Tests that length can be very large
+        /// </summary>
+        [Fact]
+        public void Length_CanBeVeryLarge()
+        {
+            // Arrange
+            ZipEntryInfo zipEntryInfo = new ZipEntryInfo();
+            long largeLength = long.MaxValue - 1;
+
+            // Act
+            zipEntryInfo.Length = largeLength;
+
+            // Assert
+            Assert.Equal(largeLength, zipEntryInfo.Length);
+        }
+
+        /// <summary>
+        /// Tests that last write time utc can be set to past date
+        /// </summary>
+        [Fact]
+        public void LastWriteTimeUtc_CanBeSetToPastDate()
+        {
+            // Arrange
+            ZipEntryInfo zipEntryInfo = new ZipEntryInfo();
+            DateTimeOffset pastDate = new DateTimeOffset(1990, 5, 15, 10, 30, 0, TimeSpan.Zero);
+
+            // Act
+            zipEntryInfo.LastWriteTimeUtc = pastDate;
+
+            // Assert
+            Assert.Equal(pastDate, zipEntryInfo.LastWriteTimeUtc);
+        }
+
+        /// <summary>
+        /// Tests that last write time utc can be set to future date
+        /// </summary>
+        [Fact]
+        public void LastWriteTimeUtc_CanBeSetToFutureDate()
+        {
+            // Arrange
+            ZipEntryInfo zipEntryInfo = new ZipEntryInfo();
+            DateTimeOffset futureDate = new DateTimeOffset(2030, 12, 31, 23, 59, 59, TimeSpan.Zero);
+
+            // Act
+            zipEntryInfo.LastWriteTimeUtc = futureDate;
+
+            // Assert
+            Assert.Equal(futureDate, zipEntryInfo.LastWriteTimeUtc);
+        }
+
+        /// <summary>
+        /// Tests that full name with special characters can be set
+        /// </summary>
+        [Fact]
+        public void FullName_WithSpecialCharacters_CanBeSet()
+        {
+            // Arrange
+            ZipEntryInfo zipEntryInfo = new ZipEntryInfo();
+            string specialName = "folder/special-file_v1.0.txt";
+
+            // Act
+            zipEntryInfo.FullName = specialName;
+
+            // Assert
+            Assert.Equal(specialName, zipEntryInfo.FullName);
+        }
+
+        /// <summary>
+        /// Tests that full name with backslashes can be set
+        /// </summary>
+        [Fact]
+        public void FullName_WithBackslashes_CanBeSet()
+        {
+            // Arrange
+            ZipEntryInfo zipEntryInfo = new ZipEntryInfo();
+            string nameWithBackslashes = "folder\\subfolder\\file.txt";
+
+            // Act
+            zipEntryInfo.FullName = nameWithBackslashes;
+
+            // Assert
+            Assert.Equal(nameWithBackslashes, zipEntryInfo.FullName);
+        }
+
+        /// <summary>
+        /// Tests that full name with very long path can be set
+        /// </summary>
+        [Fact]
+        public void FullName_WithVeryLongPath_CanBeSet()
+        {
+            // Arrange
+            ZipEntryInfo zipEntryInfo = new ZipEntryInfo();
+            string longPath = string.Join("/", Enumerable.Repeat("folder", 50)) + "/file.txt";
+
+            // Act
+            zipEntryInfo.FullName = longPath;
+
+            // Assert
+            Assert.Equal(longPath, zipEntryInfo.FullName);
+        }
+
+        /// <summary>
+        /// Tests that all properties can be null or default
+        /// </summary>
+        [Fact]
+        public void AllProperties_CanBeNullOrDefault()
+        {
+            // Arrange & Act
+            ZipEntryInfo zipEntryInfo = new ZipEntryInfo();
+
+            // Assert
+            Assert.NotNull(zipEntryInfo.FullName);
+            Assert.Equal(0L, zipEntryInfo.Length);
+            Assert.Equal(default(DateTimeOffset), zipEntryInfo.LastWriteTimeUtc);
+        }
+
+        /// <summary>
+        /// Tests that multiple instances can have different values
+        /// </summary>
+        [Fact]
+        public void MultipleInstances_CanHaveDifferentValues()
+        {
+            // Arrange
+            ZipEntryInfo info1 = new ZipEntryInfo
+            {
+                FullName = "file1.txt",
+                Length = 100L,
+                LastWriteTimeUtc = DateTimeOffset.UtcNow
+            };
+
+            ZipEntryInfo info2 = new ZipEntryInfo
+            {
+                FullName = "file2.txt",
+                Length = 200L,
+                LastWriteTimeUtc = DateTimeOffset.UtcNow.AddDays(-1)
+            };
+
+            // Assert
+            Assert.NotEqual(info1.FullName, info2.FullName);
+            Assert.NotEqual(info1.Length, info2.Length);
+            Assert.NotEqual(info1.LastWriteTimeUtc, info2.LastWriteTimeUtc);
+        }
+
+        /// <summary>
+        /// Tests that full name with unicode characters can be set
+        /// </summary>
+        [Fact]
+        public void FullName_WithUnicodeCharacters_CanBeSet()
+        {
+            // Arrange
+            ZipEntryInfo zipEntryInfo = new ZipEntryInfo();
+            string unicodeName = "文件/archivo/файл.txt";
+
+            // Act
+            zipEntryInfo.FullName = unicodeName;
+
+            // Assert
+            Assert.Equal(unicodeName, zipEntryInfo.FullName);
         }
     }
 }

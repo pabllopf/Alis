@@ -258,5 +258,162 @@ namespace Alis.Core.Aspect.Memory.Test
             // Assert
             Assert.Equal(3, cacheEntry.EntriesByFileNameLower["file.txt"].Count);
         }
+
+        /// <summary>
+        /// Tests that entries by full name lower lookup is case sensitive
+        /// </summary>
+        [Fact]
+        public void EntriesByFullNameLower_LookupIsCaseSensitive()
+        {
+            // Arrange
+            ZipCacheEntry entry = new ZipCacheEntry();
+            ZipEntryInfo info = new ZipEntryInfo {FullName = "Test.txt", Length = 100};
+            entry.EntriesByFullNameLower["test.txt"] = info;
+
+            // Act
+            bool existsLower = entry.EntriesByFullNameLower.ContainsKey("test.txt");
+            bool existsUpper = entry.EntriesByFullNameLower.ContainsKey("TEST.TXT");
+
+            // Assert
+            Assert.True(existsLower);
+            Assert.False(existsUpper);
+        }
+
+        /// <summary>
+        /// Tests that entries by file name lower can handle empty list
+        /// </summary>
+        [Fact]
+        public void EntriesByFileNameLower_CanHandleEmptyList()
+        {
+            // Arrange
+            ZipCacheEntry entry = new ZipCacheEntry();
+            List<ZipEntryInfo> emptyList = new List<ZipEntryInfo>();
+
+            // Act
+            entry.EntriesByFileNameLower["empty.txt"] = emptyList;
+
+            // Assert
+            Assert.Single(entry.EntriesByFileNameLower);
+            Assert.Empty(entry.EntriesByFileNameLower["empty.txt"]);
+        }
+
+        /// <summary>
+        /// Tests that entries by full name lower can update existing entry value
+        /// </summary>
+        [Fact]
+        public void EntriesByFullNameLower_CanUpdateExistingEntryValue()
+        {
+            // Arrange
+            ZipCacheEntry entry = new ZipCacheEntry();
+            ZipEntryInfo info1 = new ZipEntryInfo {FullName = "file.txt", Length = 100};
+            ZipEntryInfo info2 = new ZipEntryInfo {FullName = "file.txt", Length = 200};
+            entry.EntriesByFullNameLower["file.txt"] = info1;
+
+            // Act
+            entry.EntriesByFullNameLower["file.txt"] = info2;
+
+            // Assert
+            Assert.Single(entry.EntriesByFullNameLower);
+            Assert.Equal(200, entry.EntriesByFullNameLower["file.txt"].Length);
+        }
+
+        /// <summary>
+        /// Tests that entries by file name lower with nested paths works correctly
+        /// </summary>
+        [Fact]
+        public void EntriesByFileNameLower_WithNestedPaths_WorksCorrectly()
+        {
+            // Arrange
+            ZipCacheEntry entry = new ZipCacheEntry();
+            ZipEntryInfo info1 = new ZipEntryInfo {FullName = "a/b/c/file.txt", Length = 100};
+            ZipEntryInfo info2 = new ZipEntryInfo {FullName = "x/y/z/file.txt", Length = 200};
+            
+            List<ZipEntryInfo> list = new List<ZipEntryInfo> {info1, info2};
+
+            // Act
+            entry.EntriesByFileNameLower["file.txt"] = list;
+
+            // Assert
+            Assert.Single(entry.EntriesByFileNameLower);
+            Assert.Equal(2, entry.EntriesByFileNameLower["file.txt"].Count);
+            Assert.Contains(info1, entry.EntriesByFileNameLower["file.txt"]);
+            Assert.Contains(info2, entry.EntriesByFileNameLower["file.txt"]);
+        }
+
+        /// <summary>
+        /// Tests that pack bytes can store large arrays
+        /// </summary>
+        [Fact]
+        public void PackBytes_CanStoreLargeArrays()
+        {
+            // Arrange
+            ZipCacheEntry entry = new ZipCacheEntry();
+            byte[] largeBytes = new byte[1024 * 1024]; // 1MB
+            for (int i = 0; i < largeBytes.Length; i++)
+            {
+                largeBytes[i] = (byte)(i % 256);
+            }
+
+            // Act
+            entry.PackBytes = largeBytes;
+
+            // Assert
+            Assert.NotNull(entry.PackBytes);
+            Assert.Equal(largeBytes.Length, entry.PackBytes.Length);
+            Assert.Equal(largeBytes[0], entry.PackBytes[0]);
+            Assert.Equal(largeBytes[largeBytes.Length - 1], entry.PackBytes[largeBytes.Length - 1]);
+        }
+
+        /// <summary>
+        /// Tests that entries by full name lower can remove entries
+        /// </summary>
+        [Fact]
+        public void EntriesByFullNameLower_CanRemoveEntries()
+        {
+            // Arrange
+            ZipCacheEntry entry = new ZipCacheEntry();
+            ZipEntryInfo info = new ZipEntryInfo {FullName = "file.txt", Length = 100};
+            entry.EntriesByFullNameLower["file.txt"] = info;
+
+            // Act
+            bool removed = entry.EntriesByFullNameLower.Remove("file.txt");
+
+            // Assert
+            Assert.True(removed);
+            Assert.Empty(entry.EntriesByFullNameLower);
+        }
+
+        /// <summary>
+        /// Tests that entries by file name lower can clear all entries
+        /// </summary>
+        [Fact]
+        public void EntriesByFileNameLower_CanClearAllEntries()
+        {
+            // Arrange
+            ZipCacheEntry entry = new ZipCacheEntry();
+            entry.EntriesByFileNameLower["file1.txt"] = new List<ZipEntryInfo> { new ZipEntryInfo() };
+            entry.EntriesByFileNameLower["file2.txt"] = new List<ZipEntryInfo> { new ZipEntryInfo() };
+
+            // Act
+            entry.EntriesByFileNameLower.Clear();
+
+            // Assert
+            Assert.Empty(entry.EntriesByFileNameLower);
+        }
+
+        /// <summary>
+        /// Tests that zip cache entry with null pack bytes can be created
+        /// </summary>
+        [Fact]
+        public void ZipCacheEntry_WithNullPackBytes_CanBeCreated()
+        {
+            // Arrange & Act
+            ZipCacheEntry entry = new ZipCacheEntry();
+
+            // Assert
+            Assert.Null(entry.PackBytes);
+            Assert.NotNull(entry.EntriesByFullNameLower);
+            Assert.NotNull(entry.EntriesByFileNameLower);
+        }
     }
 }
