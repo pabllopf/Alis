@@ -32,86 +32,107 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Memory.Test
 {
+    /// <summary>
+    /// The zip entry info test class
+    /// </summary>
     public class ZipEntryInfoTest
     {
+        /// <summary>
+        /// Tests that full name get set works correctly
+        /// </summary>
         [Fact]
         public void FullName_GetSet_WorksCorrectly()
         {
             // Arrange
-            var zipEntryInfo = new ZipEntryInfo();
+            ZipEntryInfo zipEntryInfo = new ZipEntryInfo();
             string expectedName = "path/to/file.txt";
 
             // Act
             zipEntryInfo.FullName = expectedName;
-            var result = zipEntryInfo.FullName;
+            string result = zipEntryInfo.FullName;
 
             // Assert
             Assert.Equal(expectedName, result);
         }
 
+        /// <summary>
+        /// Tests that full name default value is empty string
+        /// </summary>
         [Fact]
         public void FullName_DefaultValue_IsEmptyString()
         {
             // Arrange & Act
-            var zipEntryInfo = new ZipEntryInfo();
+            ZipEntryInfo zipEntryInfo = new ZipEntryInfo();
 
             // Assert
             Assert.Equal(string.Empty, zipEntryInfo.FullName);
         }
 
+        /// <summary>
+        /// Tests that length get set works correctly
+        /// </summary>
         [Fact]
         public void Length_GetSet_WorksCorrectly()
         {
             // Arrange
-            var zipEntryInfo = new ZipEntryInfo();
+            ZipEntryInfo zipEntryInfo = new ZipEntryInfo();
             long expectedLength = 1024L;
 
             // Act
             zipEntryInfo.Length = expectedLength;
-            var result = zipEntryInfo.Length;
+            long result = zipEntryInfo.Length;
 
             // Assert
             Assert.Equal(expectedLength, result);
         }
 
+        /// <summary>
+        /// Tests that length with large value works correctly
+        /// </summary>
         [Fact]
         public void Length_WithLargeValue_WorksCorrectly()
         {
             // Arrange
-            var zipEntryInfo = new ZipEntryInfo();
+            ZipEntryInfo zipEntryInfo = new ZipEntryInfo();
             long expectedLength = long.MaxValue;
 
             // Act
             zipEntryInfo.Length = expectedLength;
-            var result = zipEntryInfo.Length;
+            long result = zipEntryInfo.Length;
 
             // Assert
             Assert.Equal(expectedLength, result);
         }
 
+        /// <summary>
+        /// Tests that last write time utc get set works correctly
+        /// </summary>
         [Fact]
         public void LastWriteTimeUtc_GetSet_WorksCorrectly()
         {
             // Arrange
-            var zipEntryInfo = new ZipEntryInfo();
-            var expectedDateTime = new DateTimeOffset(2023, 5, 15, 10, 30, 45, TimeSpan.Zero);
+            ZipEntryInfo zipEntryInfo = new ZipEntryInfo();
+            DateTimeOffset expectedDateTime = new DateTimeOffset(2023, 5, 15, 10, 30, 45, TimeSpan.Zero);
 
             // Act
             zipEntryInfo.LastWriteTimeUtc = expectedDateTime;
-            var result = zipEntryInfo.LastWriteTimeUtc;
+            DateTimeOffset result = zipEntryInfo.LastWriteTimeUtc;
 
             // Assert
             Assert.Equal(expectedDateTime, result);
         }
 
+        /// <summary>
+        /// Tests that multiple properties set and retrieve all values correct
+        /// </summary>
         [Fact]
         public void MultipleProperties_SetAndRetrieve_AllValuesCorrect()
         {
             // Arrange
-            var zipEntryInfo = new ZipEntryInfo();
+            ZipEntryInfo zipEntryInfo = new ZipEntryInfo();
             string expectedName = "folder/file.bin";
             long expectedLength = 5120L;
-            var expectedDateTime = new DateTimeOffset(2024, 1, 20, 15, 45, 30, TimeSpan.Zero);
+            DateTimeOffset expectedDateTime = new DateTimeOffset(2024, 1, 20, 15, 45, 30, TimeSpan.Zero);
 
             // Act
             zipEntryInfo.FullName = expectedName;
