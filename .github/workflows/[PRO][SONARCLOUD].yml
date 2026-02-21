@@ -57,26 +57,24 @@ jobs:
 
       - name: SonarQube Scan
         run: |
-          dotnet tool install --global coverlet.console --version 6.0.4
-          dotnet tool install --global dotnet-sonarscanner --version 11.0.0
+          dotnet tool restore
 
-          dotnet sonarscanner begin /k:"${{ secrets.SONAR_PROJECT_KEY }}" /o:"${{ secrets.SONAR_ORGANIZATION }}" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.scanner.skipJreProvisioning=true /d:sonar.language=cs /d:sonar.dotnet.version=10.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
-          
-          
-          skip="Sample"
-          for i in $(find . -name "*.csproj" -type f); do
-             if [[ $i == *$skip* ]]; then
-                 echo "Skip project $i"
-             else
-                 echo "Check csproj = $i"
-                 dotnet build $i -c Release -f net10.0 -v quiet -p:WarningLevel=0 -clp:ErrorsOnly
-             fi
-          done
-          
-          rm -rf ./.test                                                                                                                                                 
-          mkdir -p ./.test
-          
-          dotnet test ./alis.sln -c Release --no-build -f net10.0 -v minimal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:UseSourceLink=true /p:DeterministicSourcePaths=true
-           
-          
-          dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          dotnet sonarscanner begin \
+            /k:"${{ secrets.SONAR_PROJECT_KEY }}" \
+            /o:"${{ secrets.SONAR_ORGANIZATION }}" \
+            /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" \
+            /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+            /d:sonar.cs.opencover.reportsPaths="**/*.opencover.xml"
+
+          dotnet restore ./alis.sln
+
+          dotnet build ./alis.sln -c Release --no-restore
+
+          dotnet test ./alis.sln \
+            -c Release \
+            --no-build \
+            /p:CollectCoverage=true \
+            /p:CoverletOutputFormat=opencover
+
+          dotnet sonarscanner end \
+            /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
