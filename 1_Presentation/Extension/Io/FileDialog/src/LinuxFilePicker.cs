@@ -61,6 +61,7 @@ namespace Alis.Extension.Io.FileDialog
             try
             {
                 FilePickerValidator.ValidateOptions(options);
+                if (options == null) throw new ArgumentNullException(nameof(options));
                 options.AllowMultiple = false;
 
                 string result = ExecuteFileDialog(options, false);
@@ -85,6 +86,7 @@ namespace Alis.Extension.Io.FileDialog
             try
             {
                 FilePickerValidator.ValidateOptions(options);
+                if (options == null) throw new ArgumentNullException(nameof(options));
                 options.AllowMultiple = true;
 
                 string result = ExecuteFileDialog(options, true);
@@ -109,6 +111,7 @@ namespace Alis.Extension.Io.FileDialog
             try
             {
                 FilePickerValidator.ValidateOptions(options);
+                if (options == null) throw new ArgumentNullException(nameof(options));
 
                 string result = ExecuteFolderDialog(options);
                 return ParseResult(result, options, false);
