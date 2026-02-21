@@ -49,7 +49,16 @@ jobs:
 
           dotnet sonarscanner begin /k:"${{ secrets.SONAR_PROJECT_KEY }}" /o:"${{ secrets.SONAR_ORGANIZATION }}" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.scanner.skipJreProvisioning=true /d:sonar.language=cs /d:sonar.dotnet.version=10.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
           
-          dotnet build alis.sln --no-incremental -c Release -f net10.0 -v quiet -p:WarningLevel=0
+          
+          skip="Sample"
+          for i in $(find . -name "*.csproj" -type f); do
+             if [[ $i == *$skip* ]]; then
+                 echo "Skip project $i"
+             else
+                 echo "Check csproj = $i"
+                 dotnet build $i -c Release -f net10.0 -v quiet -p:WarningLevel=0
+             fi
+          done
           
           dotnet test --no-build -f net10.0 -v minimal -c Release ./alis.sln --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
