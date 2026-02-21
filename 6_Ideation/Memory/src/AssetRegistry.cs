@@ -439,50 +439,5 @@ namespace Alis.Core.Aspect.Memory
 
             return match;
         }
-
-        // Cache del ZIP cargado en memoria por assembly
-        /// <summary>
-        ///     The zip entry info class
-        /// </summary>
-        private class ZipEntryInfo
-        {
-            /// <summary>
-            ///     Gets or sets the value of the full name
-            /// </summary>
-            public string FullName { get; set; } = string.Empty;
-
-            /// <summary>
-            ///     Gets or sets the value of the length
-            /// </summary>
-            public long Length { get; set; }
-
-            /// <summary>
-            ///     Gets or sets the value of the last write time utc
-            /// </summary>
-            public DateTimeOffset LastWriteTimeUtc { get; set; }
-        }
-
-        /// <summary>
-        ///     The zip cache entry class
-        /// </summary>
-        private class ZipCacheEntry
-        {
-            // bytes del paquete (no copiados al crear MemoryStream)
-            /// <summary>
-            ///     Gets or sets the value of the pack bytes
-            /// </summary>
-            public byte[] PackBytes { get; set; }
-
-            // índices ligeros para búsquedas rápidas
-            /// <summary>
-            ///     Gets or sets the value of the entries by full name lower
-            /// </summary>
-            public Dictionary<string, ZipEntryInfo> EntriesByFullNameLower { get; } = new();
-
-            /// <summary>
-            ///     Gets or sets the value of the entries by file name lower
-            /// </summary>
-            public Dictionary<string, List<ZipEntryInfo>> EntriesByFileNameLower { get; } = new();
-        }
     }
 }
