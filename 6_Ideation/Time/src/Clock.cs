@@ -83,12 +83,7 @@ namespace Alis.Core.Aspect.Time
         ///     Gets the value of the elapsed ticks
         /// </summary>
         public long ElapsedTicks => Elapsed.Ticks;
-
-        /// <summary>
-        ///     Gets the value of the debugger display
-        /// </summary>
-        private string DebuggerDisplay => $"{Elapsed} (IsRunning = {_isRunning})";
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>

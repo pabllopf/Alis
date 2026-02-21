@@ -1,6 +1,6 @@
-# TimeConfiguration Class
+# TimeSetting Class
 
-The `TimeConfiguration` class is part of the `Alis.Core.Aspect.Time` namespace. It is used to manage time-related
+The `TimeSetting` class is part of the `Alis.Core.Aspect.Time` namespace. It is used to manage time-related
 configurations in an application.
 
 ## Properties
@@ -14,21 +14,21 @@ configurations in an application.
 
 ## Constructor
 
-The `TimeConfiguration` class has a constructor that accepts three parameters, each corresponding to one of the
+The `TimeSetting` class has a constructor that accepts three parameters, each corresponding to one of the
 properties mentioned above. The parameters have default values, so they can be omitted when instantiating
-the `TimeConfiguration` class.
+the `TimeSetting` class.
 
 ```csharp
-public TimeConfiguration(float fixedTimeStep = 0.016f, float maximumAllowedTimeStep = 0.10f, float timeScale = 1.00f)
+public TimeSetting(float fixedTimeStep = 0.016f, float maximumAllowedTimeStep = 0.10f, float timeScale = 1.00f)
 ```
 
 ## Usage
 
-Here is an example of how to use the `TimeConfiguration` class:
+Here is an example of how to use the `TimeSetting` class:
 
 ```csharp
-TimeConfiguration timeConfig = new TimeConfiguration(0.02f, 0.15f, 1.0f);
+TimeSetting timeConfig = new TimeSetting(0.02f, 0.15f, 1.0f);
 ```
 
-In this example, a new `TimeConfiguration` object is created with a `FixedTimeStep` of 0.02, a `MaximumAllowedTimeStep`
+In this example, a new `TimeSetting` object is created with a `FixedTimeStep` of 0.02, a `MaximumAllowedTimeStep`
 of 0.15, and a `TimeScale` of 1.0.
