@@ -103,7 +103,7 @@
                           PrivateAssets="all"
                           ReferenceOutputAssembly="false">
                 <Properties>
-                    TargetFrameworks=netstandard2.0
+                    TargetFramework=netstandard2.0
                 </Properties>
         </ProjectReference>
     </ItemGroup>
