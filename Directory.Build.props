@@ -9,7 +9,10 @@
 
     <PropertyGroup>
         <VSTestLogger>trx%3bLogFileName=$(MSBuildProjectName).trx</VSTestLogger>
-        <VSTestResultsDirectory>$(SolutionDir).test/$(TargetFramework)</VSTestResultsDirectory>
+        <VSTestResultsDirectory>$(SolutionDir).test</VSTestResultsDirectory>
+
+        <CoverletOutputFormat>opencover</CoverletOutputFormat>
+        <CoverletOutput>$(SolutionDir).test/$(MSBuildProjectName).opencover.xml</CoverletOutput>
     </PropertyGroup>
 
     <PropertyGroup>

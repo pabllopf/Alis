@@ -73,5 +73,9 @@ jobs:
              fi
           done
           
-          dotnet test --no-build -f net10.0 -v minimal -clp:ErrorsOnly -c Release ./alis.sln --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          rm -rf ./.test                                                                                                                                                 
+          mkdir -p ./.test
+          
+          dotnet test ./alis.sln -c Release --no-build -f net10.0 -v minimal /p:CollectCoverage=true
+          
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
