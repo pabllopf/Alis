@@ -12,6 +12,19 @@ on:
 
 jobs:
   build-and-analyze:
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
+      discussions: write
+      issues: write
+      pages: write
+      packages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
     if: contains(github.event.head_commit.message, 'fix:')
     runs-on: macOS-15
 

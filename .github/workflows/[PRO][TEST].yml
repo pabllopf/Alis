@@ -7,6 +7,19 @@ on:
   
 jobs:
   macos_13_x64:
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
+      discussions: write
+      issues: write
+      pages: write
+      packages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
     runs-on: macOS-15
     if: "contains(github.event.head_commit.message, 'test: pro')"
     steps:
@@ -40,6 +53,19 @@ jobs:
           reporter: dotnet-trx              # Format of test results
 
   windows_2022_x64:
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
+      discussions: write
+      issues: write
+      pages: write
+      packages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
     runs-on: windows-2022
     if: "contains(github.event.head_commit.message, 'test: pro')"
     steps:
@@ -72,6 +98,19 @@ jobs:
           reporter: dotnet-trx              # Format of test results
 
   ubuntu_22_04_x64:
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
+      discussions: write
+      issues: write
+      pages: write
+      packages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
     runs-on: ubuntu-22.04
     if: "contains(github.event.head_commit.message, 'test: pro')"
     steps:
