@@ -39,6 +39,7 @@ using Alis.Core.Aspect.Memory;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms;
+using Alis.Core.Graphic.Platforms.Osx;
 using Alis.Extension.Graphic.Ui.Extras.GuizMo;
 using Alis.Extension.Graphic.Ui.Extras.Node;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
@@ -48,27 +49,48 @@ using Alis.Extension.Graphic.Ui.Sample.Examples;
 namespace Alis.Extension.Graphic.Ui.Sample
 {
     /// <summary>
-    /// Sample host application that creates a native window, initializes OpenGL and ImGui,
-    /// and runs the selected example. Code is organized for clarity and maintainability.
+    ///     Sample host application that creates a native window, initializes OpenGL and ImGui,
+    ///     and runs the selected example. Code is organized for clarity and maintainability.
     /// </summary>
     public static class Program
     {
         /// <summary>
-        /// The platform
+        ///     The platform
         /// </summary>
         private static INativePlatform _platform;
-        
+
         /// <summary>
-        /// The resolution program
+        ///     The resolution program
         /// </summary>
-        private static float resolutionProgramX = 800.0f;
+        private static readonly float resolutionProgramX = 800.0f;
+
         /// <summary>
-        /// The resolution program
+        ///     The resolution program
         /// </summary>
-        private static float resolutionProgramY = 600.0f;
-        
+        private static readonly float resolutionProgramY = 600.0f;
+
         /// <summary>
-        /// Application entry point.
+        ///     The is first time
+        /// </summary>
+        private static bool isFirstTime = true;
+
+        /// <summary>
+        ///     The scale factor
+        /// </summary>
+        private static float scaleFactor;
+
+        /// <summary>
+        ///     The gl viewport width
+        /// </summary>
+        private static int glViewportWidth;
+
+        /// <summary>
+        ///     The gl viewport height
+        /// </summary>
+        private static int glViewportHeight;
+
+        /// <summary>
+        ///     Application entry point.
         /// </summary>
         public static void Main(string[] args)
         {
@@ -81,7 +103,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
             Debug.Assert(_platform != null, "Platform implementation must be provided for the current OS.");
 
             // Initialize native window and GL context
-            if (!InitializePlatform(_platform, (int)resolutionProgramX, (int)resolutionProgramY, "C# + OpenGL Platform"))
+            if (!InitializePlatform(_platform, (int) resolutionProgramX, (int) resolutionProgramY, "C# + OpenGL Platform"))
             {
                 Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
                 _platform.Cleanup();
@@ -108,14 +130,14 @@ namespace Alis.Extension.Graphic.Ui.Sample
             // Configure IO and features
             ImGuiIoPtr io = ImGui.GetIo();
             io.DisplaySize = new Vector2F(_platform.GetWindowWidth(), _platform.GetWindowHeight());
-            
+
             Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
 
             io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset
-                              | ImGuiBackendFlags.PlatformHasViewports
-                              | ImGuiBackendFlags.HasGamepad
-                              | ImGuiBackendFlags.HasMouseHoveredViewport
-                              | ImGuiBackendFlags.HasMouseCursors;
+                               | ImGuiBackendFlags.PlatformHasViewports
+                               | ImGuiBackendFlags.HasGamepad
+                               | ImGuiBackendFlags.HasMouseHoveredViewport
+                               | ImGuiBackendFlags.HasMouseCursors;
 
             io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard
                               | ImGuiConfigFlags.NavEnableGamepad
@@ -134,7 +156,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
             // Primary font (JetBrainsMono)
             const int fontSize = 14;
             Stream jetBrainsStream = AssetRegistry.GetResourceMemoryStreamByName("JetBrainsMono-Bold.ttf");
-            Debug.Assert(jetBrainsStream != null && jetBrainsStream.Length > 0, "Primary font resource not found.");
+            Debug.Assert((jetBrainsStream != null) && (jetBrainsStream.Length > 0), "Primary font resource not found.");
             IntPtr primaryFontPtr = LoadFontFromResource(jetBrainsStream);
 
             fonts.AddFontFromMemoryTtf(primaryFontPtr, fontSize, fontSize);
@@ -142,7 +164,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
             // Icon font (FontAwesome) - only if resource exists
             const int iconFontSize = 18;
             Stream faStream = AssetRegistry.GetResourceMemoryStreamByName(FontAwesome5.NameLight);
-            if (faStream != null && faStream.Length > 0)
+            if ((faStream != null) && (faStream.Length > 0))
             {
                 IntPtr iconsPtr = LoadFontFromResource(faStream);
 
@@ -169,7 +191,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
             // Build font atlas and upload to GL
             fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int texWidth, out int texHeight, out int _);
             uint fontTexId = LoadTexture(pixelData, texWidth, texHeight);
-            fonts.TexId = (IntPtr)fontTexId;
+            fonts.TexId = (IntPtr) fontTexId;
             fonts.ClearTexData();
 
             // Configure style
@@ -183,12 +205,16 @@ namespace Alis.Extension.Graphic.Ui.Sample
             float prevMouseWheel = 0.0f;
             Dictionary<ConsoleKey, bool> prevKeyState = new Dictionary<ConsoleKey, bool>();
             // Lista de teclas relevantes (las del KeyMap de ImGui)
-            ConsoleKey[] trackedKeys = new ConsoleKey[] {
+            ConsoleKey[] trackedKeys = new[]
+            {
                 ConsoleKey.Tab, ConsoleKey.LeftArrow, ConsoleKey.RightArrow, ConsoleKey.UpArrow, ConsoleKey.DownArrow,
                 ConsoleKey.PageUp, ConsoleKey.PageDown, ConsoleKey.Home, ConsoleKey.End, ConsoleKey.Delete, ConsoleKey.Backspace,
                 ConsoleKey.Enter, ConsoleKey.Escape, ConsoleKey.A, ConsoleKey.C, ConsoleKey.V, ConsoleKey.X, ConsoleKey.Y, ConsoleKey.Z
             };
-            foreach (ConsoleKey k in trackedKeys) prevKeyState[k] = false;
+            foreach (ConsoleKey k in trackedKeys)
+            {
+                prevKeyState[k] = false;
+            }
 
             // Main loop
             bool running = true;
@@ -208,7 +234,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
                     delta = 0.25; // avoid huge dt values
                 }
 
-                io.DeltaTime = (float)delta;
+                io.DeltaTime = (float) delta;
 
                 running = _platform.PollEvents();
 
@@ -216,7 +242,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
                 ProcessKeyWithImgui();
 
                 UpdateMousePosAndButtons();
-               
+
                 // If platform provides text input (characters), forward them to ImGui
                 if (_platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
                 {
@@ -238,12 +264,13 @@ namespace Alis.Extension.Graphic.Ui.Sample
                 double sleepTime = targetFrameTime - frameElapsed;
                 if (sleepTime > 0.0)
                 {
-                    int sleepMs = (int)(sleepTime * 1000.0);
+                    int sleepMs = (int) (sleepTime * 1000.0);
                     if (sleepMs > 0)
                     {
                         // Sleep most of the remaining time (leave small margin for precision)
                         Thread.Sleep(sleepMs);
                     }
+
                     // Busy-wait the rest for better precision
                     while (frameTimer.Elapsed.TotalSeconds - now < targetFrameTime)
                     {
@@ -256,26 +283,9 @@ namespace Alis.Extension.Graphic.Ui.Sample
             example.Cleanup();
             _platform.Cleanup();
         }
-        
+
         /// <summary>
-        /// The is first time
-        /// </summary>
-        private static bool isFirstTime = true;
-        /// <summary>
-        /// The scale factor
-        /// </summary>
-        private static float scaleFactor;
-        /// <summary>
-        /// The gl viewport width
-        /// </summary>
-        private static int glViewportWidth;
-        /// <summary>
-        /// The gl viewport height
-        /// </summary>
-        private static int glViewportHeight;
-        
-        /// <summary>
-        /// Updates the mouse pos and buttons
+        ///     Updates the mouse pos and buttons
         /// </summary>
         private static void UpdateMousePosAndButtons()
         {
@@ -284,15 +294,15 @@ namespace Alis.Extension.Graphic.Ui.Sample
 
             // Obtener estado del mouse desde la plataforma
             _platform.GetMouseState(out int mouseX, out int mouseY, out bool[] mouseButtons);
-            Debug.Assert(mouseButtons != null && mouseButtons.Length >= 3, "mouseButtons debe tener al menos 3 elementos");
+            Debug.Assert((mouseButtons != null) && (mouseButtons.Length >= 3), "mouseButtons debe tener al menos 3 elementos");
 
             _platform.GetWindowMetrics(out int winX, out int winY,
                 out int winW, out int winH,
                 out int fbW, out int fbH);
-            
+
             _platform.GetMousePositionInView(out float mx, out float my);
-            
-            
+
+
             my = fbH - my; // Invertir coordenada Y para ImGui
 
             if (isFirstTime)
@@ -302,35 +312,33 @@ namespace Alis.Extension.Graphic.Ui.Sample
                 Gl.GlGetIntegerv(0x0BA2, viewport);
                 glViewportWidth = viewport[2];
                 glViewportHeight = viewport[3];
-            
+
                 float scaleX = glViewportWidth / resolutionProgramX;
                 float scaleY = glViewportHeight / resolutionProgramY;
                 scaleFactor = Math.Min(scaleX, scaleY);
                 isFirstTime = false;
             }
-           
+
 
             mx *= scaleFactor;
-            my *= scaleFactor; 
-            
+            my *= scaleFactor;
+
             Console.WriteLine($"Mouse Pos in windows: X={mx}, Y={my} | Display Framebuffer Size: W={glViewportWidth}, H={glViewportHeight} | Window Size: W={winW}, H={winH} | Window Pos: X={winX}, Y={winY} | Windows Space Windows {fbW}, {fbH} | Scale Factor: {scaleFactor} | Resolution Program: W={resolutionProgramX}, H={resolutionProgramY} ");
             io.AddMousePosEvent(mx, my);
 
 
-         
-       
             //io.AddMousePosEvent(relativeMouseXOnWindows, relativeMouseYOnWindows);
             //Logger.Trace($"POS MOUSE MONITOR: X={mouseScreenX}, Y={mouseScreenY} | POS MOUSE DENTRO VENTANA: X={relativeMouseXOnWindows}, Y={relativeMouseYOnWindows} | Windows Size: W={windowWidth}, H={windowHeight} | Windows Pos: X={windowsPosX}, Y={windowsPosY}");
 
             // Actualizar estado de los botones (máximo 5 botones)
             for (int i = 0; i < 5; i++)
             {
-                bool isDown = (mouseButtons != null && i < mouseButtons.Length) ? mouseButtons[i] : false;
+                bool isDown = (mouseButtons != null) && (i < mouseButtons.Length) ? mouseButtons[i] : false;
                 io.AddMouseButtonEvent(i, isDown);
 
                 if (isDown)
                 {
-                    Logger.Trace($"Botón ratón {i}: {("PRESIONADO")}");
+                    Logger.Trace($"Botón ratón {i}: {"PRESIONADO"}");
                 }
             }
 
@@ -350,12 +358,12 @@ namespace Alis.Extension.Graphic.Ui.Sample
         }
 
         /// <summary>
-        /// Processes the key with imgui
+        ///     Processes the key with imgui
         /// </summary>
         private static void ProcessKeyWithImgui()
         {
             ImGuiIoPtr io = ImGui.GetIo();
-            
+
             // Control y edición
             if (_platform.IsKeyDown(ConsoleKey.Backspace))
             {
@@ -1185,13 +1193,13 @@ namespace Alis.Extension.Graphic.Ui.Sample
 
         // Returns the appropriate platform implementation for the current OS.
         /// <summary>
-        /// Gets the platform
+        ///     Gets the platform
         /// </summary>
         /// <returns>The native platform</returns>
         private static INativePlatform GetPlatform()
         {
 #if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
-            return new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
+            return new MacNativePlatform();
 #elif winx64 || winx86 || winarm64 || winarm || win
             return new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
 #elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
@@ -1203,7 +1211,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
 
         // Initializes the native platform and OpenGL context. Returns true on success.
         /// <summary>
-        /// Initializes the platform using the specified plat
+        ///     Initializes the platform using the specified plat
         /// </summary>
         /// <param name="plat">The plat</param>
         /// <param name="width">The width</param>
@@ -1230,15 +1238,16 @@ namespace Alis.Extension.Graphic.Ui.Sample
         // Loads a font from an input stream into unmanaged memory and returns the IntPtr to the data buffer.
         // Note: The caller is responsible for memory lifetime if the native API expects it to remain valid.
         /// <summary>
-        /// Loads the font from resource using the specified stream
+        ///     Loads the font from resource using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The native ptr</returns>
-        private static IntPtr LoadFontFromResource(Stream stream) {
-            Debug.Assert(stream != null && stream.Length > 0, "Font stream must be valid.");
+        private static IntPtr LoadFontFromResource(Stream stream)
+        {
+            Debug.Assert((stream != null) && (stream.Length > 0), "Font stream must be valid.");
 
             byte[] data = new byte[stream.Length];
-            stream.ReadExactly(data, 0, (int)stream.Length);
+            stream.ReadExactly(data, 0, (int) stream.Length);
             IntPtr nativePtr = Marshal.AllocHGlobal(data.Length);
             Marshal.Copy(data, 0, nativePtr, data.Length);
             return nativePtr;
@@ -1246,7 +1255,7 @@ namespace Alis.Extension.Graphic.Ui.Sample
 
         // Loads the texture using the specified pixel data (RGBA8) and returns the GL texture id.
         /// <summary>
-        /// Loads the texture using the specified pixel data
+        ///     Loads the texture using the specified pixel data
         /// </summary>
         /// <param name="pixelData">The pixel data</param>
         /// <param name="width">The width</param>
@@ -1267,4 +1276,3 @@ namespace Alis.Extension.Graphic.Ui.Sample
         }
     }
 }
-

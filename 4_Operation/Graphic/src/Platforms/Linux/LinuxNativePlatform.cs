@@ -945,7 +945,9 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// </summary>
         public void GetMouseState(out int x, out int y, out bool[] buttons)
         {
-            x = 0; y = 0; buttons = new bool[5];
+            x = 0;
+            y = 0;
+            buttons = new bool[5];
             if (display == IntPtr.Zero || window == IntPtr.Zero)
                 return;
             if (XQueryPointer(display, window, out IntPtr root, out IntPtr child, out int rootx, out int rooty, out int winx, out int winy, out uint mask))
@@ -995,18 +997,23 @@ namespace Alis.Core.Graphic.Platforms.Linux
 
         public void GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH)
         {
-            winX = 0; winY = 0; winW = width; winH = height; fbW = width; fbH = height;
+            winX = 0;
+            winY = 0;
+            winW = width;
+            winH = height;
+            fbW = width;
+            fbH = height;
             if (display != IntPtr.Zero && window != IntPtr.Zero)
             {
-                
             }
-            
+
             return;
         }
 
         public void GetMousePositionInView(out float x, out float y)
         {
-            x = 0; y = 0;
+            x = 0;
+            y = 0;
             return;
         }
     }

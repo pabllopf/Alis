@@ -40,7 +40,7 @@ namespace Alis.Core.Ecs.Systems.Configuration.Audio
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSetting" /> class
         /// </summary>
-        public AudioSetting() : this(100, false)
+        public AudioSetting() : this(100)
         {
         }
 

@@ -240,10 +240,10 @@ namespace Alis.Core.Ecs.Generator
                 throw new InvalidOperationException("Indentation level must be positive!");
             }
 
-            if (_sb[_sb.Length - 1] == ' '
-                && _sb[_sb.Length - 2] == ' '
-                && _sb[_sb.Length - 3] == ' '
-                && _sb[_sb.Length - 4] == ' ')
+            if ((_sb[_sb.Length - 1] == ' ')
+                && (_sb[_sb.Length - 2] == ' ')
+                && (_sb[_sb.Length - 3] == ' ')
+                && (_sb[_sb.Length - 4] == ' '))
             {
                 _sb.Remove(_sb.Length - 4, 4);
             }

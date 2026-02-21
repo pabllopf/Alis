@@ -158,47 +158,6 @@ namespace Alis.Extension.Graphic.Sfml.Windows
 
 
         /// <summary>
-        ///     Identification holds a joystick's identification
-        /// </summary>
-        public struct Identification
-        {
-            /// <summary>Name of the joystick</summary>
-            public string Name;
-
-            /// <summary>Manufacturer identifier</summary>
-            public uint VendorId;
-
-            /// <summary>Product identifier</summary>
-            public uint ProductId;
-        }
-
-
-        /// <summary>
-        ///     Internal struct used for marshaling the joystick
-        ///     identification struct from unmanaged code.
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        internal struct IdentificationMarshalData
-        {
-            /// <summary>
-            ///     The name
-            /// </summary>
-            public IntPtr Name;
-
-            /// <summary>
-            ///     The vendor id
-            /// </summary>
-            public uint VendorId;
-
-            /// <summary>
-            ///     The product id
-            /// </summary>
-            public uint ProductId;
-        }
-
-        
-
-        /// <summary>
         ///     Sfs the joystick is connected using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
@@ -255,6 +214,44 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IdentificationMarshalData sfJoystick_getIdentification(uint joystick);
 
-        
+
+        /// <summary>
+        ///     Identification holds a joystick's identification
+        /// </summary>
+        public struct Identification
+        {
+            /// <summary>Name of the joystick</summary>
+            public string Name;
+
+            /// <summary>Manufacturer identifier</summary>
+            public uint VendorId;
+
+            /// <summary>Product identifier</summary>
+            public uint ProductId;
+        }
+
+
+        /// <summary>
+        ///     Internal struct used for marshaling the joystick
+        ///     identification struct from unmanaged code.
+        /// </summary>
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct IdentificationMarshalData
+        {
+            /// <summary>
+            ///     The name
+            /// </summary>
+            public IntPtr Name;
+
+            /// <summary>
+            ///     The vendor id
+            /// </summary>
+            public uint VendorId;
+
+            /// <summary>
+            ///     The product id
+            /// </summary>
+            public uint ProductId;
+        }
     }
 }

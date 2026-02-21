@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.App.Engine.Core;
-
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
@@ -50,22 +48,22 @@ namespace Alis.App.Engine.Menus
         public DockSpaceMenu(SpaceWork spaceWork) => SpaceWork = spaceWork;
 
         /// <summary>
+        ///     Gets the value of the top menu
+        /// </summary>
+        internal TopMenu TopMenu { get; }
+
+
+        /// <summary>
+        ///     Gets or sets the value of the top menu mac
+        /// </summary>
+        public TopMenuMac TopMenuMac { get; set; }
+
+        /// <summary>
         ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
         }
-        
-        /// <summary>
-        ///     Gets the value of the top menu
-        /// </summary>
-        internal TopMenu TopMenu { get; }
-        
-        
-        /// <summary>
-        ///     Gets or sets the value of the top menu mac
-        /// </summary>
-        public TopMenuMac TopMenuMac { get; set; }
 
         /// <summary>
         ///     Updates this instance
@@ -83,11 +81,11 @@ namespace Alis.App.Engine.Menus
             {
                 TopMenuMac.Initialize();
             }
-            
-            
+
+
              */
-            
-            
+
+
             // Establece el padding de la ventana
             //ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);  // Igual padding arriba y abajo
             //ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 4f));
@@ -102,16 +100,16 @@ namespace Alis.App.Engine.Menus
             //ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
             //ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.133f, 0.145f, 0.153f, 1.0f));
             //ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
-            
-            ImGui.PushStyleColor(ImGuiCol.Button,  new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
-            ImGui.PushStyleColor(ImGuiCol.FrameBg,  new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+
+            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
             ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
 
-            
+
             // quit border:
             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0);
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
-            
+
             // Crear barra de menú
             if (ImGui.BeginMenuBar())
             {
@@ -139,9 +137,9 @@ namespace Alis.App.Engine.Menus
                     // TODO: Load different layouts
                     // ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
                 }
-                
+
                 ImGui.SameLine();
-                
+
                 // Primer conjunto de botones: izquierda
                 if (ImGui.Button($"{FontAwesome5.ArrowLeft}"))
                 {
@@ -295,9 +293,9 @@ namespace Alis.App.Engine.Menus
                 {
                     Logger.Info("Abriendo ajustes...");
                 }
-                
+
                 ImGui.SameLine();
-                
+
                 if (ImGui.Button($"{FontAwesome5.Minus}"))
                 {
                     // Lógica para retroceder
@@ -307,9 +305,9 @@ namespace Alis.App.Engine.Menus
                     // ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
                 }
 
-                
+
                 ImGui.SameLine();
-                
+
                 if (ImGui.Button($"{FontAwesome5.WindowRestore}"))
                 {
                     // Lógica para retroceder
@@ -318,9 +316,9 @@ namespace Alis.App.Engine.Menus
                     // TODO: Load different layouts
                     // ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
                 }
-                
+
                 ImGui.SameLine();
-                
+
                 if (ImGui.Button($"{FontAwesome5.Times}"))
                 {
                     // Lógica para retroceder
@@ -329,18 +327,16 @@ namespace Alis.App.Engine.Menus
                     // TODO: Load different layouts
                     // ImGui.LoadIniSettingsFromDisk(AssetManager.Find("Engine_default_config.ini"));
                 }
-                
+
                 ImGui.EndMenuBar();
             }
-            
-        
+
 
             // Restaurar los valores de estilo anteriores
-            
+
             ImGui.PopStyleColor(2);
             ImGui.PopStyleVar(2);
             ImGui.PopStyleColor(3);
-            
         }
 
 

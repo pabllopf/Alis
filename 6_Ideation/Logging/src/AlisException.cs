@@ -32,20 +32,20 @@ using System;
 namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
-    /// The alis exception class
+    ///     The alis exception class
     /// </summary>
-    /// <seealso cref="Exception"/>
+    /// <seealso cref="Exception" />
     public class AlisException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AlisException"/> class
+        ///     Initializes a new instance of the <see cref="AlisException" /> class
         /// </summary>
         public AlisException()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AlisException"/> class
+        ///     Initializes a new instance of the <see cref="AlisException" /> class
         /// </summary>
         /// <param name="message">The message</param>
         /// <param name="innerException">The inner exception</param>
@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AlisException"/> class
+        ///     Initializes a new instance of the <see cref="AlisException" /> class
         /// </summary>
         /// <param name="message">The message</param>
         public AlisException(string message) : base(message)

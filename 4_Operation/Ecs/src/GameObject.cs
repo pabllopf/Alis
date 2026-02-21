@@ -109,7 +109,7 @@ namespace Alis.Core.Ecs
             scene = GlobalWorldTables.Worlds.UnsafeIndexNoResize(WorldID);
             if (scene is null)
             {
-                gameObjectLocation = default;
+                gameObjectLocation = default(GameObjectLocation);
                 return false;
             }
 
@@ -160,7 +160,7 @@ namespace Alis.Core.Ecs
 
             doesntExist:
             exists = false;
-            return default;
+            return default(Ref<T>);
         }
 
         /// <summary>

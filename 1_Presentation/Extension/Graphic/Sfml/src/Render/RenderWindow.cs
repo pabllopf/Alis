@@ -711,7 +711,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         {
             myDefaultView = new View(sfRenderWindow_getDefaultView(CPointer));
         }
-        
+
         /// <summary>
         ///     Sfs the render window create using the specified mode
         /// </summary>
@@ -1114,7 +1114,5 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <returns>The uint</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfRenderWindow_getFrameTime(IntPtr cPointer);
-
-        
     }
 }

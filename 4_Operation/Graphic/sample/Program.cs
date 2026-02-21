@@ -32,6 +32,7 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms;
+using Alis.Core.Graphic.Platforms.Osx;
 using Alis.Core.Graphic.Sample.Samples;
 
 namespace Alis.Core.Graphic.Sample
@@ -48,7 +49,7 @@ namespace Alis.Core.Graphic.Sample
         {
             INativePlatform platform;
 #if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
-            platform = new Platforms.Osx.MacNativePlatform();
+            platform = new MacNativePlatform();
 #elif winx64 || winx86 || winarm64 || winarm || win
             platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
 #elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux

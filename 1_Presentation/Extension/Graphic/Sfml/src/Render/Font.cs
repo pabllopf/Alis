@@ -214,31 +214,6 @@ namespace Alis.Extension.Graphic.Sfml.Render
 
 
         /// <summary>
-        ///     Info holds various information about a font
-        /// </summary>
-        public struct Info
-        {
-            /// <summary>The font family</summary>
-            public string Family;
-        }
-
-
-        /// <summary>
-        ///     Internal struct used for marshaling the font info
-        ///     struct from unmanaged code.
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        internal struct InfoMarshalData
-        {
-            /// <summary>
-            ///     The family
-            /// </summary>
-            public IntPtr Family;
-        }
-
-        
-
-        /// <summary>
         ///     Sfs the font create from file using the specified filename
         /// </summary>
         /// <param name="filename">The filename</param>
@@ -345,6 +320,28 @@ namespace Alis.Extension.Graphic.Sfml.Render
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern InfoMarshalData sfFont_getInfo(IntPtr cPointer);
 
-        
+
+        /// <summary>
+        ///     Info holds various information about a font
+        /// </summary>
+        public struct Info
+        {
+            /// <summary>The font family</summary>
+            public string Family;
+        }
+
+
+        /// <summary>
+        ///     Internal struct used for marshaling the font info
+        ///     struct from unmanaged code.
+        /// </summary>
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct InfoMarshalData
+        {
+            /// <summary>
+            ///     The family
+            /// </summary>
+            public IntPtr Family;
+        }
     }
 }

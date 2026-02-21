@@ -140,7 +140,7 @@ namespace Alis.Sample.Asteroid.Desktop
         public void OnPressKey(KeyEventInfo info)
         {
             ConsoleKey key = info.Key;
-            if (key == ConsoleKey.Spacebar && (direction.X != 0 || direction.Y != 0))
+            if ((key == ConsoleKey.Spacebar) && (direction.X != 0 || direction.Y != 0))
             {
                 audioSource.Play();
                 CreateBullet();
@@ -226,25 +226,25 @@ namespace Alis.Sample.Asteroid.Desktop
             }
             else
             {
-                if (x > 0 && y > 0)
+                if ((x > 0) && (y > 0))
                 {
                     angle = 315;
                     //Console.WriteLine("angle: " + angle);
                 }
 
-                if (x < 0 && y > 0)
+                if ((x < 0) && (y > 0))
                 {
                     angle = 45;
                     //Console.WriteLine("angle: " + angle);
                 }
 
-                if (x < 0 && y < 0)
+                if ((x < 0) && (y < 0))
                 {
                     angle = 135;
                     //Console.WriteLine("angle: " + angle);
                 }
 
-                if (x > 0 && y < 0)
+                if ((x > 0) && (y < 0))
                 {
                     angle = 225;
                     //Console.WriteLine("angle: " + angle);

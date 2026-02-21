@@ -94,7 +94,7 @@ namespace Alis.Core.Ecs.Collections
         {
             if (_nextIndex == 0)
             {
-                value = default!;
+                value = default(T)!;
                 return false;
             }
 
@@ -112,7 +112,7 @@ namespace Alis.Core.Ecs.Collections
             T next = _buffer[--_nextIndex];
             if (RuntimeHelpers.IsReferenceOrContainsReferences<T>())
             {
-                _buffer[_nextIndex] = default!;
+                _buffer[_nextIndex] = default(T)!;
             }
 
             return next;
@@ -125,11 +125,13 @@ namespace Alis.Core.Ecs.Collections
         public void Remove(T item)
         {
             for (int i = 0; i < _nextIndex; i++)
+            {
                 if (EqualityComparer<T>.Default.Equals(_buffer[i], item))
                 {
                     _buffer[i] = Pop();
                     break;
                 }
+            }
         }
 
 

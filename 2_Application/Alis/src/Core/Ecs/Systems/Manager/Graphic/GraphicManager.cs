@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory;
 using Alis.Core.Ecs.Components.Body;
 using Alis.Core.Ecs.Components.Collider;
@@ -43,6 +44,7 @@ using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms;
+using Alis.Core.Graphic.Platforms.Osx;
 using Color = Alis.Core.Aspect.Math.Definition.Color;
 
 namespace Alis.Core.Ecs.Systems.Manager.Graphic
@@ -61,7 +63,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// <summary>
         ///     The escape
         /// </summary>
-        private ConsoleKey[] allKeys = new[]
+        private readonly ConsoleKey[] allKeys = new[]
         {
             ConsoleKey.A, ConsoleKey.B, ConsoleKey.C, ConsoleKey.D, ConsoleKey.E,
             ConsoleKey.F, ConsoleKey.G, ConsoleKey.H, ConsoleKey.I, ConsoleKey.J,
@@ -72,17 +74,17 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             ConsoleKey.Spacebar, ConsoleKey.Enter, ConsoleKey.Escape
         };
 
+        // Diccionario para guardar el timestamp de pulsación de cada tecla
+        /// <summary>
+        ///     The date time
+        /// </summary>
+        private readonly Dictionary<ConsoleKey, DateTime> keyDownTimestamps = new Dictionary<ConsoleKey, DateTime>();
+
         // Estado actual de teclas presionadas
         /// <summary>
         ///     The console key
         /// </summary>
         private HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey>();
-
-        // Diccionario para guardar el timestamp de pulsación de cada tecla
-        /// <summary>
-        ///     The date time
-        /// </summary>
-        private Dictionary<ConsoleKey, DateTime> keyDownTimestamps = new Dictionary<ConsoleKey, DateTime>();
 
         /// <summary>
         ///     The platform
@@ -117,10 +119,10 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                 Console.WriteLine("Preview mode enabled, skipping graphics initialization.");
                 return;
             }
-            
-            
+
+
 #if osxarm64 || osxarm || osxx64 || osx
-            platform = new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
+            platform = new MacNativePlatform();
 #elif winx64
             platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
 #elif linuxarm64 || linuxarm || linuxx64
@@ -128,7 +130,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
 #else
             platform = null;
 #endif
-            if (Context.Setting.Graphic.WindowSize != default)
+            if (Context.Setting.Graphic.WindowSize != default(Vector2F))
             {
                 platform.Initialize((int) Context.Setting.Graphic.WindowSize.X, (int) Context.Setting.Graphic.WindowSize.Y, "Alis Game");
             }
@@ -136,12 +138,12 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             {
                 platform.Initialize(800, 600, "Alis Game");
             }
-           
-            
+
+
             platform.MakeContextCurrent();
-            
+
             Gl.Initialize(platform.GetProcAddress);
-            
+
             if (!string.IsNullOrEmpty(Context.Setting.General.Name))
             {
                 platform.SetTitle(Context.Setting.General.Name);
@@ -150,17 +152,16 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             {
                 platform.SetTitle("Alis Game");
             }
-            
+
 
             if (!string.IsNullOrEmpty(Context.Setting.General.Icon))
             {
                 if (AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon) != null)
                 {
-                    platform.SetWindowIcon(AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon));  
+                    platform.SetWindowIcon(AssetRegistry.GetResourcePathByName(Context.Setting.General.Icon));
                 }
-               
             }
-            
+
             platform.ShowWindow();
         }
 
@@ -189,7 +190,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                 RenderPreview();
                 return;
             }
-            
+
 
             bool running = platform.PollEvents();
             if (!running)
@@ -272,7 +273,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             currentKeys = newKeys;
 
 
-
             float pixelsPerMeter = PixelsPerMeter;
             Setting contextSetting = Context.Setting;
             PhysicSetting physicSettings = contextSetting.Physic;
@@ -308,7 +308,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                         }
                     }
                 }
-                
+
 
                 foreach (GameObject spriteGameobject in spriteGameObjects)
                 {
@@ -325,7 +325,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                         sprite.Render(spriteGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
                     }
                 }
-                
             }
 
             // Swap the buffers to display the triangle
@@ -341,7 +340,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         }
 
         /// <summary>
-        /// Renders the preview
+        ///     Renders the preview
         /// </summary>
         private void RenderPreview()
         {
@@ -356,7 +355,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
 
             // Clear the screen
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
-            
+
             GameObjectQueryEnumerator.QueryEnumerable spriteGameObjects = Context.SceneManager.CurrentWorld
                 .Query<With<Sprite>>()
                 .EnumerateWithEntities();
@@ -369,8 +368,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                          .Query<With<Camera>>()
                          .Enumerate<Camera>())
             {
-                
-        
                 foreach (GameObject boxColliderGameobject in boxColliderGameObjects)
                 {
                     if (boxColliderGameobject.Has<BoxCollider>())
@@ -382,7 +379,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                         }
                     }
                 }
-                
+
 
                 foreach (GameObject spriteGameobject in spriteGameObjects)
                 {
@@ -399,7 +396,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
                         sprite.Render(spriteGameobject, camera.Item1.Value.Position, camera.Item1.Value.Resolution, pixelsPerMeter);
                     }
                 }
-                
             }
         }
     }

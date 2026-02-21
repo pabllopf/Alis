@@ -85,6 +85,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
                 {
                 }
             }
+
             GC.SuppressFinalize(this);
         }
 

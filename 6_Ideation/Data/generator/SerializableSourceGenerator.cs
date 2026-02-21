@@ -117,13 +117,13 @@ namespace Alis.Core.Aspect.Data.Generator
                         : property.Name;
 
                     ITypeSymbol type = property.Type;
-                    if (type is IArrayTypeSymbol arrayType && arrayType.Rank == 1)
+                    if (type is IArrayTypeSymbol arrayType && (arrayType.Rank == 1))
                     {
                         // Array simple
                         string elemType = arrayType.ElementType.ToDisplayString();
                         sb.AppendLine($"            yield return (\"{jsonName}\", JoinJsonSerializableArray({property.Name}));");
                     }
-                    else if (type is IArrayTypeSymbol arrayType2D && arrayType2D.Rank == 2)
+                    else if (type is IArrayTypeSymbol arrayType2D && (arrayType2D.Rank == 2))
                     {
                         // Array 2D
                         string elemType = arrayType2D.ElementType.ToDisplayString();
@@ -131,7 +131,7 @@ namespace Alis.Core.Aspect.Data.Generator
                             $"            yield return (\"{jsonName}\", {property.Name} != null ? \"[\" + string.Join(\",\", Enumerable.Range(0, {property.Name}.GetLength(0)).Select(i => \"[\" + string.Join(\",\", Enumerable.Range(0, {property.Name}.GetLength(1)).Select(j => {property.Name}[i,j] is IJsonSerializable js ? JsonNativeAot.Serialize(js) : {property.Name}[i,j].ToString())) + \"]\")) + \"]\" : null);");
                     }
                     else if (type.AllInterfaces.Any(i => i.ToDisplayString().StartsWith("System.Collections.Generic.IEnumerable"))
-                             && type is INamedTypeSymbol namedType && namedType.TypeArguments.Length == 1)
+                             && type is INamedTypeSymbol namedType && (namedType.TypeArguments.Length == 1))
                     {
                         // Colección genérica
                         string itemType = namedType.TypeArguments[0].ToDisplayString();
@@ -152,7 +152,7 @@ namespace Alis.Core.Aspect.Data.Generator
                         // Enum
                         sb.AppendLine($"            yield return (\"{jsonName}\", {property.Name}.ToString());");
                     }
-                    else if (type is INamedTypeSymbol namedTypeSymbol && namedTypeSymbol.TypeArguments.Length > 0)
+                    else if (type is INamedTypeSymbol namedTypeSymbol && (namedTypeSymbol.TypeArguments.Length > 0))
                     {
                         // Tipo complejo serializable
                         sb.AppendLine($"            yield return (\"{jsonName}\", {property.Name} != null ? \"[\" + string.Join(\",\", {property.Name}.Select(x => x is IJsonSerializable js ? js.ToJson() : x.ToString())) + \"]\" : null);");
@@ -208,13 +208,13 @@ namespace Alis.Core.Aspect.Data.Generator
                         sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && Enum.TryParse<{typeName}>(v_{name}, out var e_{name}) ? e_{name} : default,");
                     }
                     else if (type.AllInterfaces.Any(i => i.ToDisplayString().StartsWith("System.Collections.Generic.IEnumerable"))
-                             && type is INamedTypeSymbol namedType && namedType.TypeArguments.Length == 1)
+                             && type is INamedTypeSymbol namedType && (namedType.TypeArguments.Length == 1))
                     {
                         string itemType = namedType.TypeArguments[0].ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
                         sb.AppendLine(
                             $"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && !string.IsNullOrEmpty(v_{name}) ? System.Text.RegularExpressions.Regex.Matches(v_{name}, \"{{[^{{}}]*}}\", System.Text.RegularExpressions.RegexOptions.Singleline).Cast<System.Text.RegularExpressions.Match>().Select(m => JsonNativeAot.Deserialize<{itemType}>(m.Value)).ToList() : new List<{itemType}>(),");
                     }
-                    else if (type is IArrayTypeSymbol arrayType && arrayType.Rank == 1)
+                    else if (type is IArrayTypeSymbol arrayType && (arrayType.Rank == 1))
                     {
                         // Array simple
                         string elemType = arrayType.ElementType.ToDisplayString();
@@ -227,14 +227,14 @@ namespace Alis.Core.Aspect.Data.Generator
                         sb.AppendLine($"                        typeof({elemType}) == typeof(bool) ? bool.Parse(x) :");
                         sb.AppendLine($"                        Activator.CreateInstance(typeof({elemType}), x)").AppendLine($").Cast<{elemType}>().ToArray() : new {elemType}[0],");
                     }
-                    else if (type is IArrayTypeSymbol arrayType2D && arrayType2D.Rank == 2)
+                    else if (type is IArrayTypeSymbol arrayType2D && (arrayType2D.Rank == 2))
                     {
                         // Array 2D
                         string elemType = arrayType2D.ElementType.ToDisplayString();
                         sb.AppendLine($"                {name} = properties.TryGetValue(\"{jsonName}\", out var v_{name}) && !string.IsNullOrEmpty(v_{name}) ?");
                         sb.AppendLine($"                    Parse2DArrayInline<{elemType}>(v_{name}) : new {elemType}[0,0],");
                     }
-                    else if (type.ToDisplayString().StartsWith("System.Collections.Generic.Dictionary") && type is INamedTypeSymbol dictType && dictType.TypeArguments.Length == 2)
+                    else if (type.ToDisplayString().StartsWith("System.Collections.Generic.Dictionary") && type is INamedTypeSymbol dictType && (dictType.TypeArguments.Length == 2))
                     {
                         // Diccionario genérico
                         string keyType = dictType.TypeArguments[0].ToDisplayString();

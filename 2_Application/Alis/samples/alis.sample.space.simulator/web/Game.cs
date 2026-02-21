@@ -37,17 +37,17 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Sample.Space.Simulator.Web
 {
     /// <summary>
-    /// The game class
+    ///     The game class
     /// </summary>
     public static class Game
     {
         /// <summary>
-        /// Creates
+        ///     Creates
         /// </summary>
         /// <returns>The video game</returns>
         public static VideoGame Create()
         {
-             return VideoGame.Create()
+            return VideoGame.Create()
                 .Settings(setting => setting
                     .General(general => general
                         .Name("King Game")

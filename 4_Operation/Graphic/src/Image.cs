@@ -163,12 +163,12 @@ namespace Alis.Core.Graphic
                     // BI_RGB
                     LoadBmpRgb(reader, width, height, bitsPerPixel, rawData, palette, rowPadded, bytesPerPixel);
                 }
-                else if (compression == 1 && bitsPerPixel == 8)
+                else if ((compression == 1) && (bitsPerPixel == 8))
                 {
                     // BI_RLE8
                     LoadBmpRle8(reader, width, height, bitsPerPixel, rawData, palette, rowPadded, bytesPerPixel);
                 }
-                else if (compression == 2 && bitsPerPixel == 4)
+                else if ((compression == 2) && (bitsPerPixel == 4))
                 {
                     // BI_RLE4
                     LoadBmpRle4(reader, width, height, bitsPerPixel, rawData, palette, rowPadded, bytesPerPixel);
@@ -239,7 +239,7 @@ namespace Alis.Core.Graphic
                         reader.BaseStream.Seek(padding, SeekOrigin.Current);
                     }
                 }
-                else if (bitsPerPixel == 8 && palette != null)
+                else if ((bitsPerPixel == 8) && (palette != null))
                 {
                     for (int x = 0; x < width; x++)
                     {
@@ -257,13 +257,13 @@ namespace Alis.Core.Graphic
                         reader.BaseStream.Seek(padding, SeekOrigin.Current);
                     }
                 }
-                else if (bitsPerPixel == 4 && palette != null)
+                else if ((bitsPerPixel == 4) && (palette != null))
                 {
                     int pixels = 0;
                     for (int x = 0; x < width; x += 2)
                     {
                         byte b = reader.ReadByte();
-                        for (int i = 0; i < 2 && x + i < width; i++)
+                        for (int i = 0; (i < 2) && (x + i < width); i++)
                         {
                             byte colorIndex = (byte) (i == 0 ? b >> 4 : b & 0x0F);
                             int index = (row * width + x + i) * 4;
@@ -281,13 +281,13 @@ namespace Alis.Core.Graphic
                         reader.BaseStream.Seek(padding, SeekOrigin.Current);
                     }
                 }
-                else if (bitsPerPixel == 1 && palette != null)
+                else if ((bitsPerPixel == 1) && (palette != null))
                 {
                     int pixels = 0;
                     for (int x = 0; x < width; x += 8)
                     {
                         byte b = reader.ReadByte();
-                        for (int i = 0; i < 8 && x + i < width; i++)
+                        for (int i = 0; (i < 8) && (x + i < width); i++)
                         {
                             byte colorIndex = (byte) ((b >> (7 - i)) & 0x01);
                             int index = (row * width + x + i) * 4;
@@ -326,7 +326,7 @@ namespace Alis.Core.Graphic
         private static void LoadBmpRle8(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel)
         {
             int x = 0, y = 0; // Corregido: empezar desde la primera fila
-            while (reader.BaseStream.Position < reader.BaseStream.Length && y < height)
+            while ((reader.BaseStream.Position < reader.BaseStream.Length) && (y < height))
             {
                 byte count = reader.ReadByte();
                 byte value = reader.ReadByte();
@@ -414,7 +414,7 @@ namespace Alis.Core.Graphic
             }
 
             int x = 0, y = 0; // Corregido: empezar desde la primera fila
-            while (reader.BaseStream.Position < reader.BaseStream.Length && y < height)
+            while ((reader.BaseStream.Position < reader.BaseStream.Length) && (y < height))
             {
                 byte count = reader.ReadByte();
                 byte value = reader.ReadByte();
@@ -466,7 +466,7 @@ namespace Alis.Core.Graphic
                             byte absValue = reader.ReadByte();
                             byte first = (byte) (absValue >> 4);
                             byte second = (byte) (absValue & 0x0F);
-                            for (int j = 0; j < 2 && i * 2 + j < absCount; j++)
+                            for (int j = 0; (j < 2) && (i * 2 + j < absCount); j++)
                             {
                                 byte colorIndex = j == 0 ? first : second;
                                 if (x >= width)

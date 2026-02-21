@@ -242,7 +242,7 @@ namespace Alis.Core.Aspect.Memory
                     if (entryCandidate != null)
                     {
                         FileInfo fi = new FileInfo(cachedPath);
-                        if (fi.Length == entryCandidate.Length && File.GetLastWriteTimeUtc(cachedPath) == entryCandidate.LastWriteTimeUtc.UtcDateTime)
+                        if ((fi.Length == entryCandidate.Length) && (File.GetLastWriteTimeUtc(cachedPath) == entryCandidate.LastWriteTimeUtc.UtcDateTime))
                         {
                             return cachedPath;
                         }
@@ -270,7 +270,7 @@ namespace Alis.Core.Aspect.Memory
             if (File.Exists(tempFilePath))
             {
                 FileInfo fi = new FileInfo(tempFilePath);
-                if (fi.Length == entryInfo.Length && File.GetLastWriteTimeUtc(tempFilePath) == entryInfo.LastWriteTimeUtc.UtcDateTime)
+                if ((fi.Length == entryInfo.Length) && (File.GetLastWriteTimeUtc(tempFilePath) == entryInfo.LastWriteTimeUtc.UtcDateTime))
                 {
                     string compositeKey = ActiveAssemblyName.ToLowerInvariant() + "|" + NormalizeResourceKey(resourceName);
                     _extractedPathCache[compositeKey] = tempFilePath;
@@ -425,7 +425,7 @@ namespace Alis.Core.Aspect.Memory
 
             // 2) Buscar por file name exacto
             string fileNameLower = Path.GetFileName(resourceName).ToLowerInvariant();
-            if (cacheEntry.EntriesByFileNameLower.TryGetValue(fileNameLower, out List<ZipEntryInfo> list) && list.Count == 1)
+            if (cacheEntry.EntriesByFileNameLower.TryGetValue(fileNameLower, out List<ZipEntryInfo> list) && (list.Count == 1))
             {
                 return list[0];
             }

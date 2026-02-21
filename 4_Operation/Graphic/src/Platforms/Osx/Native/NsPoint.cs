@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:d.cs
+//  File:NsPoint.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,17 +32,18 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Platforms.Osx.Native
 {
     /// <summary>
-    /// The ns point
+    ///     The ns point
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct NsPoint
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public double X;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public double Y;
     }

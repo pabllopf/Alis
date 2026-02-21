@@ -269,25 +269,6 @@ namespace Alis.Extension.Graphic.Sfml.Audios
             return OnProcessSamples(samplesArray);
         }
 
-        /// <summary>
-        ///     The start callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate bool StartCallback();
-
-        /// <summary>
-        ///     The process callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate bool ProcessCallback(IntPtr samples, uint nbSamples, IntPtr userData);
-
-        /// <summary>
-        ///     The stop callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate void StopCallback();
-
-        
 
         /// <summary>
         ///     Sfs the sound recorder create using the specified on start
@@ -394,6 +375,22 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundRecorder_getChannelCount(IntPtr soundRecorder);
 
-        
+        /// <summary>
+        ///     The start callback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        private delegate bool StartCallback();
+
+        /// <summary>
+        ///     The process callback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        private delegate bool ProcessCallback(IntPtr samples, uint nbSamples, IntPtr userData);
+
+        /// <summary>
+        ///     The stop callback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        private delegate void StopCallback();
     }
 }

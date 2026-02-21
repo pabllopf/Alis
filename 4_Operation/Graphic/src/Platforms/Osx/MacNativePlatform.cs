@@ -45,6 +45,10 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// </summary>
         private static IntPtr _openGlHandle = IntPtr.Zero;
 
+        private readonly bool[] mouseButtons = new bool[5];
+
+        private readonly HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
+
         /// <summary>
         /// </summary>
         private MacOpenGLContext glContext;
@@ -52,6 +56,12 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// <summary>
         /// </summary>
         private ConsoleKey? lastKeyPressed;
+
+        private float mouseWheel;
+
+        // Mouse state
+        private int mouseX;
+        private int mouseY;
 
         /// <summary>
         /// </summary>
@@ -61,14 +71,6 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// </summary>
         private MacWindow window;
 
-        private HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
-
-        // Mouse state
-        private int mouseX = 0;
-        private int mouseY = 0;
-        private bool[] mouseButtons = new bool[5];
-        private float mouseWheel = 0.0f;
-        
         /// <summary>
         /// </summary>
         /// <param name="w"></param>
@@ -189,7 +191,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
                         mouseButtons[1] = false;
                         Console.WriteLine($"Mouse derecho soltado en ({mouseX},{mouseY})");
                     }
-                    
+
                     else if (type == 22)
                     {
                         // scrollDeltaY
@@ -341,17 +343,17 @@ namespace Alis.Core.Graphic.Platforms.Osx
                         //case 61: lastKeyPressed = ConsoleKey.RightAlt; pressedKeys.Add(ConsoleKey.RightAlt); break;
                         default:
                             // Si es número, letra o símbolo
-                            if (c >= '0' && c <= '9')
+                            if ((c >= '0') && (c <= '9'))
                             {
                                 lastKeyPressed = (ConsoleKey) ((int) ConsoleKey.D0 + (c - '0'));
                                 pressedKeys.Add(lastKeyPressed.Value);
                             }
-                            else if (c >= 'A' && c <= 'Z')
+                            else if ((c >= 'A') && (c <= 'Z'))
                             {
                                 lastKeyPressed = (ConsoleKey) ((int) ConsoleKey.A + (c - 'A'));
                                 pressedKeys.Add(lastKeyPressed.Value);
                             }
-                            else if (c >= 'a' && c <= 'z')
+                            else if ((c >= 'a') && (c <= 'z'))
                             {
                                 lastKeyPressed = (ConsoleKey) ((int) ConsoleKey.A + (c - 'a'));
                                 pressedKeys.Add(lastKeyPressed.Value);
@@ -487,15 +489,15 @@ namespace Alis.Core.Graphic.Platforms.Osx
                         //case 58: pressedKeys.Remove(ConsoleKey.LeftAlt); break;
                         //case 61: pressedKeys.Remove(ConsoleKey.RightAlt); break;
                         default:
-                            if (c >= '0' && c <= '9')
+                            if ((c >= '0') && (c <= '9'))
                             {
                                 pressedKeys.Remove((ConsoleKey) ((int) ConsoleKey.D0 + (c - '0')));
                             }
-                            else if (c >= 'A' && c <= 'Z')
+                            else if ((c >= 'A') && (c <= 'Z'))
                             {
                                 pressedKeys.Remove((ConsoleKey) ((int) ConsoleKey.A + (c - 'A')));
                             }
-                            else if (c >= 'a' && c <= 'z')
+                            else if ((c >= 'a') && (c <= 'z'))
                             {
                                 pressedKeys.Remove((ConsoleKey) ((int) ConsoleKey.A + (c - 'a')));
                             }
@@ -557,8 +559,6 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// <summary>
         ///     Obtiene el estado actual del ratón (posición y botones)
         /// </summary>
-
-
         public void GetMouseState(out int x, out int y, out bool[] buttons)
         {
             // Obtener la posición global del mouse
@@ -571,17 +571,6 @@ namespace Alis.Core.Graphic.Platforms.Osx
             y = (int) mouseLocation.Y;
             buttons = (bool[]) mouseButtons.Clone();
         }
-
-        // Estructura para la posición
-
-        private CGPoint GetMouseLocation()
-        {
-            IntPtr eventRef = ObjectiveCInterop.CGEventCreate(IntPtr.Zero);
-            CGPoint point = ObjectiveCInterop.CGEventGetLocation(eventRef);
-            ObjectiveCInterop.CFRelease(eventRef);
-            return point;
-        }
-
 
 
         /// <summary>
@@ -616,18 +605,18 @@ namespace Alis.Core.Graphic.Platforms.Osx
         {
             // Obtener el frame real de la ventana usando P/Invoke directo
             NsRect frame = ObjectiveCInterop.GetWindowFrame(window.Handle);
-            winX = (int)frame.x;
-            winY = (int)frame.y;
-            winW = (int)frame.width;
-            winH = (int)frame.height;
+            winX = (int) frame.x;
+            winY = (int) frame.y;
+            winW = (int) frame.width;
+            winH = (int) frame.height;
 
             // Obtener la vista OpenGL asociada a la ventana
             IntPtr contentView = ObjectiveCInterop.objc_msgSend(window.Handle, ObjectiveCInterop.Sel("contentView"));
             if (contentView != IntPtr.Zero)
             {
                 NsRect viewFrame = ObjectiveCInterop.NSViewGetFrame(contentView);
-                fbW = (int)viewFrame.width;
-                fbH = (int)viewFrame.height;
+                fbW = (int) viewFrame.width;
+                fbH = (int) viewFrame.height;
             }
             else
             {
@@ -635,7 +624,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 fbH = winH;
             }
         }
-        
+
         public void GetMousePositionInView(out float x, out float y)
         {
             x = 0;
@@ -671,20 +660,16 @@ namespace Alis.Core.Graphic.Platforms.Osx
                     mouseScreen,
                     IntPtr.Zero);
 
-            x = (float)local.X;
-            y = (float)local.Y;
+            x = (float) local.X;
+            y = (float) local.Y;
         }
-
 
 
         /// <summary>
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public bool IsKeyDown(ConsoleKey key)
-        {
-            return pressedKeys.Contains(key);
-        }
+        public bool IsKeyDown(ConsoleKey key) => pressedKeys.Contains(key);
 
         /// <summary>
         /// </summary>
@@ -709,9 +694,8 @@ namespace Alis.Core.Graphic.Platforms.Osx
         }
 
 
-
         /// <summary>
-        /// Creates the window and sets the icon from the specified BMP file path (Cocoa, using objc_msgSend)
+        ///     Creates the window and sets the icon from the specified BMP file path (Cocoa, using objc_msgSend)
         /// </summary>
         public bool Initialize(int width, int height, string title, string iconPath)
         {
@@ -745,7 +729,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
         }
 
         /// <summary>
-        /// Sets the window icon from the specified BMP file path (Cocoa, safe NSString handling)
+        ///     Sets the window icon from the specified BMP file path (Cocoa, safe NSString handling)
         /// </summary>
         public void SetWindowIcon(string iconPath)
         {
@@ -784,7 +768,16 @@ namespace Alis.Core.Graphic.Platforms.Osx
                 Logger.Error($"❌ Error to set window icon: {ex.Message}");
             }
         }
+
+        // Estructura para la posición
+
+        private CGPoint GetMouseLocation()
+        {
+            IntPtr eventRef = ObjectiveCInterop.CGEventCreate(IntPtr.Zero);
+            CGPoint point = ObjectiveCInterop.CGEventGetLocation(eventRef);
+            ObjectiveCInterop.CFRelease(eventRef);
+            return point;
+        }
     }
 }
 #endif
-

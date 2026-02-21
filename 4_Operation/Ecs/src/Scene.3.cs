@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs
             WorldArchetypeTableItem archetypes = Archetype<T1, T2, T3>.CreateNewOrGetExistingArchetypes(this);
 
             ref GameObjectIdOnly entity = ref Unsafe.NullRef<GameObjectIdOnly>();
-            GameObjectLocation eloc = default;
+            GameObjectLocation eloc = default(GameObjectLocation);
 
             ComponentStorageBase[] components;
 

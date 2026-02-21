@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.App.Engine.Core;
-
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
@@ -84,11 +82,11 @@ namespace Alis.App.Engine.Menus
             //ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.133f, 0.145f, 0.153f, 1.0f));
             //ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
 
-            ImGui.PushStyleColor(ImGuiCol.Button,  new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
-            ImGui.PushStyleColor(ImGuiCol.FrameBg,  new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
             ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
 
-            
+
             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(4, 3));
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);

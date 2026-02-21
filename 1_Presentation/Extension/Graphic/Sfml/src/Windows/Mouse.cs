@@ -146,7 +146,6 @@ namespace Alis.Extension.Graphic.Sfml.Windows
             }
         }
 
-        
 
         /// <summary>
         ///     Sfs the mouse is button pressed using the specified button
@@ -171,7 +170,5 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="relativeTo">The relative to</param>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfMouse_setPosition(Vector2F position, IntPtr relativeTo);
-
-        
     }
 }

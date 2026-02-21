@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GLES2.cs
+//  File:EGLDroid.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,12 +35,11 @@ namespace Alis.Core.Graphic.Platforms.Android
     public class EGLDroid
     {
         /// <summary>
-        /// Gets the proc address using the specified proc
+        ///     Gets the proc address using the specified proc
         /// </summary>
         /// <param name="proc">The proc</param>
         /// <returns>The int ptr</returns>
-        [DllImport("libEGL", EntryPoint = "eglGetProcAddress", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-        [DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
+        [DllImport("libEGL", EntryPoint = "eglGetProcAddress", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
         public static extern IntPtr GetProcAddress(string proc);
     }
 }

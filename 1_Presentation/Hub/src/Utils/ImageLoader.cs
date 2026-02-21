@@ -1,3 +1,31 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ImageLoader.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 
 using System;
@@ -11,59 +39,27 @@ using Alis.Core.Graphic.OpenGL.Enums;
 namespace Alis.App.Hub.Utils
 {
     /// <summary>
-    /// The image loader class
+    ///     The image loader class
     /// </summary>
     public static class ImageLoader
     {
-
         /// <summary>
-        /// The cached texture class
-        /// </summary>
-        private class CachedTexture
-        {
-            /// <summary>
-            /// The texture id
-            /// </summary>
-            public uint TextureId;
-
-            /// <summary>
-            /// The width
-            /// </summary>
-            public int Width;
-
-            /// <summary>
-            /// The height
-            /// </summary>
-            public int Height;
-
-            /// <summary>
-            /// The ref count
-            /// </summary>
-            public int RefCount;
-
-            /// <summary>
-            /// The last access utc
-            /// </summary>
-            public DateTime LastAccessUtc;
-        }
-
-        /// <summary>
-        /// The ordinal ignore case
+        ///     The ordinal ignore case
         /// </summary>
         private static readonly Dictionary<string, CachedTexture> s_cache = new Dictionary<string, CachedTexture>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
-        /// The lock
+        ///     The lock
         /// </summary>
         private static readonly object s_lock = new object();
 
         /// <summary>
-        /// The from minutes
+        ///     The from minutes
         /// </summary>
         private static readonly TimeSpan DefaultExpiration = TimeSpan.FromMinutes(5);
 
         /// <summary>
-        /// Loads the texture from file using the specified file path
+        ///     Loads the texture from file using the specified file path
         /// </summary>
         /// <param name="filePath">The file path</param>
         /// <exception cref="FileNotFoundException">Image not found in resources: {key}</exception>
@@ -90,7 +86,7 @@ namespace Alis.App.Hub.Utils
             }
 
             uint texture = 0;
-            GCHandle imageHandle = default;
+            GCHandle imageHandle = default(GCHandle);
             try
             {
                 texture = Gl.GenTexture();
@@ -169,7 +165,7 @@ namespace Alis.App.Hub.Utils
 
         // Llamar cuando ya no necesites la textura (por ejemplo al cerrar una ventana)
         /// <summary>
-        /// Releases the texture using the specified file path
+        ///     Releases the texture using the specified file path
         /// </summary>
         /// <param name="filePath">The file path</param>
         public static void ReleaseTexture(string filePath)
@@ -206,7 +202,7 @@ namespace Alis.App.Hub.Utils
 
         // Elimina texturas no usadas por más tiempo (por defecto DefaultExpiration)
         /// <summary>
-        /// Clears the unused using the specified expiration
+        ///     Clears the unused using the specified expiration
         /// </summary>
         /// <param name="expiration">The expiration</param>
         public static void ClearUnused(TimeSpan? expiration = null)
@@ -220,7 +216,7 @@ namespace Alis.App.Hub.Utils
                 foreach (KeyValuePair<string, CachedTexture> kv in s_cache)
                 {
                     CachedTexture cached = kv.Value;
-                    if (cached.RefCount == 0 && (now - cached.LastAccessUtc) >= exp)
+                    if ((cached.RefCount == 0) && (now - cached.LastAccessUtc >= exp))
                     {
                         toRemove.Add(kv.Key);
                     }
@@ -243,6 +239,37 @@ namespace Alis.App.Hub.Utils
                     }
                 }
             }
+        }
+
+        /// <summary>
+        ///     The cached texture class
+        /// </summary>
+        private class CachedTexture
+        {
+            /// <summary>
+            ///     The height
+            /// </summary>
+            public int Height;
+
+            /// <summary>
+            ///     The last access utc
+            /// </summary>
+            public DateTime LastAccessUtc;
+
+            /// <summary>
+            ///     The ref count
+            /// </summary>
+            public int RefCount;
+
+            /// <summary>
+            ///     The texture id
+            /// </summary>
+            public uint TextureId;
+
+            /// <summary>
+            ///     The width
+            /// </summary>
+            public int Width;
         }
     }
 }

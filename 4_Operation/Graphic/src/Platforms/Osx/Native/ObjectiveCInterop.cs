@@ -40,12 +40,18 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
     internal static class ObjectiveCInterop
     {
         /// <summary>
-        /// The objc
+        ///     The objc
         /// </summary>
         public const string Objc = "/usr/lib/libobjc.A.dylib";
 
+        internal static readonly IntPtr selMouseLocationOutside =
+            Sel("mouseLocationOutsideOfEventStream");
+
+        internal static readonly IntPtr selConvertPointFromView =
+            Sel("convertPoint:fromView:");
+
         /// <summary>
-        /// Objcs the get using the specified name
+        ///     Objcs the get using the specified name
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The int ptr</returns>
@@ -53,37 +59,34 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         public static extern IntPtr objc_getClass(string name);
 
         /// <summary>
-        /// Sels the register name using the specified name
+        ///     Sels the register name using the specified name
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The int ptr</returns>
         [DllImport(Objc, EntryPoint = "sel_registerName", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr sel_registerName(string name);
-        
+
         [DllImport("libobjc.A.dylib", EntryPoint = "objc_msgSend")]
         public static extern NsRect objc_msgSend_NSRect(IntPtr receiver, IntPtr selector);
-        
+
         [DllImport("libobjc.A.dylib", EntryPoint = "objc_msgSend_stret")]
         public static extern void objc_msgSend_stret(out NsRect ret, IntPtr receiver, IntPtr selector);
 
-        
-        public static NsRect NSViewGetFrame(IntPtr view)
-        {
-            return objc_msgSend_NSRect(view, Sel("frame"));
-        }
-        
+
+        public static NsRect NSViewGetFrame(IntPtr view) => objc_msgSend_NSRect(view, Sel("frame"));
+
         public static NsRect GetWindowFrame(IntPtr nsWindow)
         {
-        #if osxarm64 || osxarm
-                    // Apple Silicon: usar objc_msgSend directamente
-                    return objc_msgSend_NSRect(nsWindow, Sel("frame"));
-        #else
+#if osxarm64 || osxarm
+            // Apple Silicon: usar objc_msgSend directamente
+            return objc_msgSend_NSRect(nsWindow, Sel("frame"));
+#else
             // Intel: usar objc_msgSend_stret
             objc_msgSend_stret(out NsRect frame, nsWindow, Sel("frame"));
             return frame;
-        #endif
-                }
-        
+#endif
+        }
+
         [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern NsPoint objc_msgSend_NSPoint(IntPtr receiver, IntPtr selector);
 
@@ -94,16 +97,9 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
             NsPoint point,
             IntPtr fromView);
 
-        internal static readonly IntPtr selMouseLocationOutside =
-            Sel("mouseLocationOutsideOfEventStream");
-
-        internal static readonly IntPtr selConvertPointFromView =
-            Sel("convertPoint:fromView:");
-
-       
 
         /// <summary>
-        /// Objcs the msg send using the specified recv
+        ///     Objcs the msg send using the specified recv
         /// </summary>
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
@@ -112,7 +108,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         public static extern IntPtr objc_msgSend(IntPtr recv, IntPtr sel);
 
         /// <summary>
-        /// Objcs the msg send int ptr using the specified recv
+        ///     Objcs the msg send int ptr using the specified recv
         /// </summary>
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
@@ -122,7 +118,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         public static extern IntPtr objc_msgSend_IntPtr(IntPtr recv, IntPtr sel, IntPtr arg1);
 
         /// <summary>
-        /// Objcs the msg send void using the specified recv
+        ///     Objcs the msg send void using the specified recv
         /// </summary>
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
@@ -130,7 +126,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         public static extern void objc_msgSend_void(IntPtr recv, IntPtr sel);
 
         /// <summary>
-        /// Objcs the msg send void int ptr using the specified recv
+        ///     Objcs the msg send void int ptr using the specified recv
         /// </summary>
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
@@ -139,7 +135,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         public static extern void objc_msgSend_void_IntPtr(IntPtr recv, IntPtr sel, IntPtr arg1);
 
         /// <summary>
-        /// Objcs the msg send void bool using the specified recv
+        ///     Objcs the msg send void bool using the specified recv
         /// </summary>
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
@@ -148,7 +144,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         public static extern void objc_msgSend_void_Bool(IntPtr recv, IntPtr sel, bool arg1);
 
         /// <summary>
-        /// Objcs the msg send void long using the specified recv
+        ///     Objcs the msg send void long using the specified recv
         /// </summary>
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
@@ -157,7 +153,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         public static extern void objc_msgSend_void_Long(IntPtr recv, IntPtr sel, long value);
 
         /// <summary>
-        /// Objcs the msg send ns rect ul ul bool using the specified recv
+        ///     Objcs the msg send ns rect ul ul bool using the specified recv
         /// </summary>
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
@@ -176,7 +172,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
             ulong styleMask, ulong backing, bool defer);
 
         /// <summary>
-        /// Objcs the msg send ns rect int ptr using the specified recv
+        ///     Objcs the msg send ns rect int ptr using the specified recv
         /// </summary>
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
@@ -193,7 +189,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
             IntPtr arg1);
 
         /// <summary>
-        /// Objcs the msg send ul int ptr int ptr bool using the specified recv
+        ///     Objcs the msg send ul int ptr int ptr bool using the specified recv
         /// </summary>
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
@@ -207,7 +203,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
             IntPtr recv, IntPtr sel, ulong mask, IntPtr untilDate, IntPtr inMode, bool dequeue);
 
         /// <summary>
-        /// Cfs the string create with c string using the specified alloc
+        ///     Cfs the string create with c string using the specified alloc
         /// </summary>
         /// <param name="alloc">The alloc</param>
         /// <param name="str">The str</param>
@@ -217,27 +213,27 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         public static extern IntPtr CFStringCreateWithCString(IntPtr alloc, string str, uint enc);
 
         /// <summary>
-        /// Nses the application load
+        ///     Nses the application load
         /// </summary>
         [DllImport("/System/Library/Frameworks/AppKit.framework/AppKit")]
         public static extern void NSApplicationLoad();
 
         /// <summary>
-        /// S the n
+        ///     S the n
         /// </summary>
         /// <param name="n">The </param>
         /// <returns>The int ptr</returns>
         public static IntPtr Class(string n) => objc_getClass(n);
 
         /// <summary>
-        /// Sels the n
+        ///     Sels the n
         /// </summary>
         /// <param name="n">The </param>
         /// <returns>The int ptr</returns>
         public static IntPtr Sel(string n) => sel_registerName(n);
 
         /// <summary>
-        /// Nses the string using the specified s
+        ///     Nses the string using the specified s
         /// </summary>
         /// <param name="s">The </param>
         /// <returns>The str</returns>
@@ -253,7 +249,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         }
 
         /// <summary>
-        /// Objcs the msg send int using the specified recv
+        ///     Objcs the msg send int using the specified recv
         /// </summary>
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
@@ -262,37 +258,36 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         public static extern int objc_msgSend_Int(IntPtr recv, IntPtr sel);
 
         /// <summary>
-        /// Objcs the msg send ul using the specified recv
+        ///     Objcs the msg send ul using the specified recv
         /// </summary>
         /// <param name="recv">The recv</param>
         /// <param name="sel">The sel</param>
         /// <returns>The ulong</returns>
         [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl)]
         public static extern ulong objc_msgSend_UL(IntPtr recv, IntPtr sel);
-        
+
         // P/Invoke para obtener la posición global del mouse
         [DllImport("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics")]
         public static extern CGPoint CGEventGetLocation(IntPtr eventRef);
-      
+
         [DllImport("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics")]
         public static extern IntPtr CGEventCreate(IntPtr source);
-      
+
         [DllImport("/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation")]
         public static extern void CFRelease(IntPtr cf);
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="receiver"></param>
         /// <param name="selector"></param>
         /// <param name="arg1"></param>
         /// <returns></returns>
-        [DllImport("/usr/lib/libobjc.A.dylib", EntryPoint =  "objc_msgSend")]
+        [DllImport("/usr/lib/libobjc.A.dylib", EntryPoint = "objc_msgSend")]
         public static extern IntPtr objc_msgSend(IntPtr receiver, IntPtr selector, IntPtr arg1);
 
-        [DllImport("/usr/lib/libobjc.A.dylib", EntryPoint =  "objc_msgSend")]
+        [DllImport("/usr/lib/libobjc.A.dylib", EntryPoint = "objc_msgSend")]
         public static extern double objc_msgSend_double(IntPtr receiver, IntPtr selector);
-        
+
         /// <summary>
         /// </summary>
         /// <param name="handle"></param>

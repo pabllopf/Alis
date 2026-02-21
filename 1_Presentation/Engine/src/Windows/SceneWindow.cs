@@ -27,12 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
-
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
@@ -120,7 +117,6 @@ namespace Alis.App.Engine.Windows
         {
             if (ImGui.Begin(NameWindow, ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoCollapse))
             {
-
             }
 
             ImGui.End();

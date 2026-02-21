@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-
 using Alis.App.Hub.Core;
 using Alis.App.Hub.Windows.Sections;
 using Alis.Core.Aspect.Math.Vector;
@@ -150,7 +149,7 @@ namespace Alis.App.Hub.Windows
 
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2F(10 * scaleFactor, 10 * scaleFactor));
             ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2F(10 * scaleFactor, 10 * scaleFactor));
-            
+
             ImGui.Separator();
             ImGui.PopStyleVar(2);
 
@@ -280,5 +279,3 @@ namespace Alis.App.Hub.Windows
         }
     }
 }
-
-

@@ -90,7 +90,7 @@ namespace Alis.Core.Ecs.Components.Render
         ///     Gets the value of the current animation
         /// </summary>
         public Animation CurrentAnimation =>
-            Animations.Count > 0 ? Animations[CurrentAnimationIndex] : default;
+            Animations.Count > 0 ? Animations[CurrentAnimationIndex] : default(Animation);
 
         /// <summary>
         ///     Adds the animation using the specified animation
@@ -121,7 +121,7 @@ namespace Alis.Core.Ecs.Components.Render
         public void NextFrame()
         {
             List<Frame> frames = CurrentAnimation.Frames;
-            if (frames != null && frames.Count > 0)
+            if ((frames != null) && (frames.Count > 0))
             {
                 CurrentFrameIndex = (CurrentFrameIndex + 1) % frames.Count;
             }
@@ -134,12 +134,12 @@ namespace Alis.Core.Ecs.Components.Render
         public Frame GetCurrentFrame()
         {
             List<Frame> frames = CurrentAnimation.Frames;
-            if (frames != null && frames.Count > 0)
+            if ((frames != null) && (frames.Count > 0))
             {
                 return frames[CurrentFrameIndex];
             }
 
-            return default;
+            return default(Frame);
         }
 
         /// <summary>

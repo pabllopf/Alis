@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Ecs.Components

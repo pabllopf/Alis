@@ -1,19 +1,50 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:MainActivity.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
-using Android.Content;
-using Android.Opengl;
-using Android.Util;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms.Android;
 using Android.App;
+using Android.Content;
+using Android.Opengl;
 using Android.OS;
 using Android.Runtime;
+using Android.Util;
+using Javax.Microedition.Khronos.Opengles;
+using EGLConfig = Javax.Microedition.Khronos.Egl.EGLConfig;
+using Object = Java.Lang.Object;
 
 namespace Alis.Sample.Asteroid.Android
 {
-    [Activity(Label = "Alis.Sample.Asteroid.Android", MainLauncher = true, Theme = "@android:style/Theme.NoTitleBar")]
-    [Register("crc647600d30597f44ece.MainActivity")]
+    [Activity(Label = "Alis.Sample.Asteroid.Android", MainLauncher = true, Theme = "@android:style/Theme.NoTitleBar"), Register("crc647600d30597f44ece.MainActivity")]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle? savedInstanceState)
@@ -33,24 +64,45 @@ namespace Alis.Sample.Asteroid.Android
         }
     }
 
-    public class TriangleRenderer : Java.Lang.Object, GLSurfaceView.IRenderer
+    public class TriangleRenderer : Object, GLSurfaceView.IRenderer
     {
-        private uint program;
-        private int positionHandle;
-        private IntPtr _vertexPtr;
-        private static readonly float[] TriangleCoords = {
+        private const int CoordsPerVertex = 2;
+
+        private static readonly float[] TriangleCoords =
+        {
             0f, 0.5f,
             -0.5f, -0.5f,
             0.5f, -0.5f
         };
-        private const int CoordsPerVertex = 2;
+
         private static readonly string VertexShaderCode =
             "attribute vec2 vPosition; void main() { gl_Position = vec4(vPosition, 0.0, 1.0); }";
+
         private static readonly string FragmentShaderCode =
             "precision mediump float; void main() { gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0); }";
-        
-        
-        public void OnSurfaceCreated(Java.Lang.Object gl, Java.Lang.Object config)
+
+        private IntPtr _vertexPtr;
+        private int positionHandle;
+        private uint program;
+
+        // Métodos para compatibilidad con IGL10/EGLConfig
+        public void OnDrawFrame(IGL10? gl)
+        {
+            OnDrawFrame((Object) null);
+        }
+
+        public void OnSurfaceChanged(IGL10? gl, int width, int height)
+        {
+            OnSurfaceChanged((Object) null, width, height);
+        }
+
+        public void OnSurfaceCreated(IGL10? gl, EGLConfig? config)
+        {
+            OnSurfaceCreated(null, (Object) null);
+        }
+
+
+        public void OnSurfaceCreated(Object gl, Object config)
         {
             // Inicializar Gl con el puntero de funciones de EGL
             Gl.Initialize(EGLDroid.GetProcAddress);
@@ -77,13 +129,15 @@ namespace Alis.Sample.Asteroid.Android
             _vertexPtr = vertexPtr;
         }
 
-        public void OnDrawFrame(Java.Lang.Object gl)
+        public void OnDrawFrame(Object gl)
         {
             Log.Debug("AlisGL", "OnDrawFrame llamado");
-            if (_vertexPtr == IntPtr.Zero) {
+            if (_vertexPtr == IntPtr.Zero)
+            {
                 Log.Error("AlisGL", "vertexPtr es null");
                 return;
             }
+
             Gl.GlClearColor(1f, 0f, 0f, 1f); // Fondo rojo
             Gl.GlClear(ClearBufferMask.ColorBufferBit); // Limpiar buffer de color
             Gl.GlUseProgram(program);
@@ -97,10 +151,9 @@ namespace Alis.Sample.Asteroid.Android
                 _vertexPtr
             );
             Gl.GlDrawArrays(PrimitiveType.Triangles, 0, 3); // Triángulo blanco
-            
         }
 
-        public void OnSurfaceChanged(Java.Lang.Object gl, int width, int height)
+        public void OnSurfaceChanged(Object gl, int width, int height)
         {
             Log.Debug("AlisGL", $"OnSurfaceChanged llamado: width={width}, height={height}");
             Gl.GlViewport(0, 0, width, height);
@@ -121,21 +174,8 @@ namespace Alis.Sample.Asteroid.Android
                 Marshal.FreeHGlobal(_vertexPtr);
                 _vertexPtr = IntPtr.Zero;
             }
-            base.Dispose(disposing);
-        }
 
-        // Métodos para compatibilidad con IGL10/EGLConfig
-        public void OnDrawFrame(Javax.Microedition.Khronos.Opengles.IGL10? gl)
-        {
-            OnDrawFrame((Java.Lang.Object)null);
-        }
-        public void OnSurfaceChanged(Javax.Microedition.Khronos.Opengles.IGL10? gl, int width, int height)
-        {
-            OnSurfaceChanged((Java.Lang.Object)null, width, height);
-        }
-        public void OnSurfaceCreated(Javax.Microedition.Khronos.Opengles.IGL10? gl, Javax.Microedition.Khronos.Egl.EGLConfig? config)
-        {
-            OnSurfaceCreated((Java.Lang.Object)null, (Java.Lang.Object)null);
+            base.Dispose(disposing);
         }
     }
 }

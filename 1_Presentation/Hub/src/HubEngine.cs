@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:HubEngine.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -40,6 +40,7 @@ using Alis.Core.Aspect.Memory;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.Platforms;
+using Alis.Core.Graphic.Platforms.Osx;
 using Alis.Extension.Graphic.Ui;
 using Alis.Extension.Graphic.Ui.Extras.GuizMo;
 using Alis.Extension.Graphic.Ui.Extras.Node;
@@ -49,99 +50,131 @@ using Alis.Extension.Graphic.Ui.Fonts;
 namespace Alis.App.Hub
 {
     /// <summary>
-    /// Sample host application that creates a native window, initializes OpenGL and ImGui,
-    /// and runs the selected example. Code is organized for clarity and maintainability.
+    ///     Sample host application that creates a native window, initializes OpenGL and ImGui,
+    ///     and runs the selected example. Code is organized for clarity and maintainability.
     /// </summary>
     public class HubEngine
     {
         /// <summary>
-        /// The space work
+        ///     The is first time
         /// </summary>
-        private SpaceWork _spaceWork = new SpaceWork();
-        
-        /// <summary>
-        /// The platform
-        /// </summary>
-        private INativePlatform platform;
-        /// <summary>
-        /// The context
-        /// </summary>
-        private IntPtr _context;
-        
-        /// <summary>
-        /// The fonts
-        /// </summary>
-        private ImFontAtlasPtr fonts;
+        private static bool isFirstTime = true;
 
         /// <summary>
-        /// The font texture
+        ///     The gl viewport width
         /// </summary>
-        private uint _fontTexture;
-        /// <summary>
-        /// The vao
-        /// </summary>
-        private uint _vao;
-        /// <summary>
-        /// The vbo
-        /// </summary>
-        private uint _vbo;
-        /// <summary>
-        /// The ebo
-        /// </summary>
-        private uint _ebo;
-        /// <summary>
-        /// The shader program
-        /// </summary>
-        private uint _shaderProgram;
+        private static int glViewportWidth;
 
-        // State to handle mouse click/double-click detection
         /// <summary>
-        /// The prev mouse down
+        ///     The gl viewport height
         /// </summary>
-        private readonly bool[] _prevMouseDown = new bool[5];
+        private static int glViewportHeight;
+
         /// <summary>
-        /// The last click time
-        /// </summary>
-        private readonly double[] _lastClickTime = new double[5];
-        /// <summary>
-        /// The vector
+        ///     The vector
         /// </summary>
         private readonly Vector2F[] _lastClickPos = new Vector2F[5];
 
+        /// <summary>
+        ///     The last click time
+        /// </summary>
+        private readonly double[] _lastClickTime = new double[5];
+
         // --- Añadir campos en la clase HubEngine (junto a _prevMouseDown, _lastClickTime, _lastClickPos) ---
         /// <summary>
-        /// The mouse clicked
+        ///     The mouse clicked
         /// </summary>
         private readonly bool[] _mouseClicked = new bool[5];
+
         /// <summary>
-        /// The mouse double clicked
-        /// </summary>
-        private readonly bool[] _mouseDoubleClicked = new bool[5];
-        /// <summary>
-        /// The mouse clicked time
-        /// </summary>
-        private readonly double[] _mouseClickedTime = new double[5];
-        /// <summary>
-        /// The mouse clicked count
+        ///     The mouse clicked count
         /// </summary>
         private readonly ushort[] _mouseClickedCount = new ushort[5];
 
         /// <summary>
-        /// The resolution program
+        ///     The mouse clicked time
         /// </summary>
-        private float resolutionProgramX = 1025;
+        private readonly double[] _mouseClickedTime = new double[5];
+
         /// <summary>
-        /// The resolution program
+        ///     The mouse double clicked
         /// </summary>
-        private float resolutionProgramY = 575;
+        private readonly bool[] _mouseDoubleClicked = new bool[5];
+
+        // State to handle mouse click/double-click detection
         /// <summary>
-        /// The scale factor
+        ///     The prev mouse down
+        /// </summary>
+        private readonly bool[] _prevMouseDown = new bool[5];
+
+        /// <summary>
+        ///     The space work
+        /// </summary>
+        private readonly SpaceWork _spaceWork = new SpaceWork();
+
+        /// <summary>
+        ///     The resolution program
+        /// </summary>
+        private readonly float resolutionProgramX = 1025;
+
+        /// <summary>
+        ///     The resolution program
+        /// </summary>
+        private readonly float resolutionProgramY = 575;
+
+        /// <summary>
+        ///     The context
+        /// </summary>
+        private IntPtr _context;
+
+        /// <summary>
+        ///     The ebo
+        /// </summary>
+        private uint _ebo;
+
+        /// <summary>
+        ///     The font texture
+        /// </summary>
+        private uint _fontTexture;
+
+        /// <summary>
+        ///     The shader program
+        /// </summary>
+        private uint _shaderProgram;
+
+        /// <summary>
+        ///     The vao
+        /// </summary>
+        private uint _vao;
+
+        /// <summary>
+        ///     The vbo
+        /// </summary>
+        private uint _vbo;
+
+        /// <summary>
+        ///     The first time scale
+        /// </summary>
+        private bool firstTimeScale = true;
+
+        /// <summary>
+        ///     The fonts
+        /// </summary>
+        private ImFontAtlasPtr fonts;
+
+        /// <summary>
+        ///     The platform
+        /// </summary>
+        private INativePlatform platform;
+
+        /// <summary>
+        ///     The scale factor
         /// </summary>
         private float scaleFactor;
 
 
         /// <summary>
-        /// Application entry point.
+        ///     Application entry point.
         /// </summary>
         public void Run()
         {
@@ -149,13 +182,13 @@ namespace Alis.App.Hub
             const double targetFrameTime = 1.0 / 60.0;
             Stopwatch frameTimer = Stopwatch.StartNew();
             double lastTime = frameTimer.Elapsed.TotalSeconds;
-            
-            
+
+
             platform = GetPlatform();
             Debug.Assert(platform != null, "Platform implementation must be provided for the current OS.");
 
             // Initialize native window and GL context
-            if (!InitializePlatform(platform, (int)resolutionProgramX, (int)resolutionProgramY, "Alis Hub - by @pabllopf"))
+            if (!InitializePlatform(platform, (int) resolutionProgramX, (int) resolutionProgramY, "Alis Hub - by @pabllopf"))
             {
                 Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
                 platform?.Cleanup();
@@ -171,8 +204,8 @@ namespace Alis.App.Hub
             // Create ImGui context and configure backends
             IntPtr imguiContext = ImGui.CreateContext();
             ImGui.SetCurrentContext(imguiContext);
-            
-             // Ensure the native GL context is current before creating GL resources.
+
+            // Ensure the native GL context is current before creating GL resources.
             Debug.Assert(platform != null, "Platform must be provided before Initialize is called.");
             platform?.MakeContextCurrent();
 
@@ -188,32 +221,32 @@ namespace Alis.App.Hub
                 _context = currentCtx;
                 ImGui.SetCurrentContext(_context);
             }
-            
+
             _spaceWork.io = ImGui.GetIo();
             Debug.Assert(_spaceWork.io.NativePtr != IntPtr.Zero, "ImGui _spaceWork.io must be valid after creating or setting context.");
 
             // Backend capabilities
-            
+
             // active plot renders
-             _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
-                                         ImGuiBackendFlags.PlatformHasViewports |
-                                         ImGuiBackendFlags.HasGamepad |
-                                         ImGuiBackendFlags.HasMouseHoveredViewport |
-                                         ImGuiBackendFlags.HasMouseCursors;
+            _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
+                                          ImGuiBackendFlags.PlatformHasViewports |
+                                          ImGuiBackendFlags.HasGamepad |
+                                          ImGuiBackendFlags.HasMouseHoveredViewport |
+                                          ImGuiBackendFlags.HasMouseCursors;
 
 
             // Enable Keyboard Controls
-             _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
-                                        ImGuiConfigFlags.NavEnableGamepad;
+            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard |
+                                         ImGuiConfigFlags.NavEnableGamepad;
 
             // CONFIG DOCKSPACE 
-             _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
-                                        ImGuiConfigFlags.ViewportsEnable;
-             
-             
-             _spaceWork.io = ImGui.GetIo();
-             _spaceWork.io.WantSaveIniSettings = false;
-            
+            _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.DockingEnable |
+                                         ImGuiConfigFlags.ViewportsEnable;
+
+
+            _spaceWork.io = ImGui.GetIo();
+            _spaceWork.io.WantSaveIniSettings = false;
+
             // Create simple shader program
             const string vertexShaderSource = "#version 330 core\n" +
                                               "layout (location = 0) in vec2 Position;\n" +
@@ -290,31 +323,31 @@ namespace Alis.App.Hub
             Logger.Info($"IMGUI VERSION {ImGui.GetVersion()}");
 
             _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset
-                              | ImGuiBackendFlags.PlatformHasViewports
-                              | ImGuiBackendFlags.HasGamepad
-                              | ImGuiBackendFlags.HasMouseHoveredViewport
-                              | ImGuiBackendFlags.HasMouseCursors;
+                                          | ImGuiBackendFlags.PlatformHasViewports
+                                          | ImGuiBackendFlags.HasGamepad
+                                          | ImGuiBackendFlags.HasMouseHoveredViewport
+                                          | ImGuiBackendFlags.HasMouseCursors;
 
             _spaceWork.io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard
-                              | ImGuiConfigFlags.NavEnableGamepad
-                              | ImGuiConfigFlags.DockingEnable
-                              | ImGuiConfigFlags.ViewportsEnable;
+                                         | ImGuiConfigFlags.NavEnableGamepad
+                                         | ImGuiConfigFlags.DockingEnable
+                                         | ImGuiConfigFlags.ViewportsEnable;
 
             // Initialize optional ImGui extensions
             ImNodes.CreateContext();
             ImPlot.CreateContext();
             ImGuizMo.SetImGuiContext(imguiContext);
             ImGui.SetCurrentContext(imguiContext);
-            
+
             // Load fonts:
             LoadFonts();
-            
+
             // Configure style
             SetStyle();
 
             _spaceWork.OnInit();
             _spaceWork.OnStart();
-            
+
             // Inicializar estado del ratón para evitar tiempos a 0 que ImGui interpretaría como clicks recientes
             for (int i = 0; i < 5; i++)
             {
@@ -326,9 +359,9 @@ namespace Alis.App.Hub
                 _lastClickTime[i] = 0.0;
                 _lastClickPos[i] = new Vector2F(0, 0);
             }
-           
+
             ImGuiIoPtr io = ImGui.GetIo();
-            
+
             while (_spaceWork.IsRunning)
             {
                 // Update delta time for ImGui using high-resolution timer
@@ -345,14 +378,14 @@ namespace Alis.App.Hub
                     delta = 0.25; // avoid huge dt values
                 }
 
-                io.DeltaTime = (float)delta;
-                
+                io.DeltaTime = (float) delta;
+
                 _spaceWork.IsRunning = platform.PollEvents();
 
                 ProcessKeyWithImgui();
-                
+
                 UpdateMousePosAndButtons();
-                
+
                 // Forward text input characters from the native platform to ImGui (e.g. WM_CHAR on Windows)
                 if (platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
                 {
@@ -360,7 +393,7 @@ namespace Alis.App.Hub
                 }
 
                 Draw();
-                
+
                 platform.SwapBuffers();
 
                 int glError = Gl.GlGetError();
@@ -368,19 +401,20 @@ namespace Alis.App.Hub
                 {
                     Logger.Info($"OpenGL error after SwapBuffers: 0x{glError:X}");
                 }
-                
+
                 // Frame pacing: sleep / spin until target frame time reached
                 double frameEnd = frameTimer.Elapsed.TotalSeconds;
                 double frameElapsed = frameEnd - now;
                 double sleepTime = targetFrameTime - frameElapsed;
                 if (sleepTime > 0.0)
                 {
-                    int sleepMs = (int)(sleepTime * 1000.0);
+                    int sleepMs = (int) (sleepTime * 1000.0);
                     if (sleepMs > 0)
                     {
                         // Sleep most of the remaining time (leave small margin for precision)
                         Thread.Sleep(sleepMs);
                     }
+
                     // Busy-wait the rest for better precision
                     while (frameTimer.Elapsed.TotalSeconds - now < targetFrameTime)
                     {
@@ -416,26 +450,12 @@ namespace Alis.App.Hub
             }
 
             ImGui.SetCurrentContext(new IntPtr());
-            
+
             platform.Cleanup();
         }
 
-
         /// <summary>
-        /// The is first time
-        /// </summary>
-        private static bool isFirstTime = true;
-        /// <summary>
-        /// The gl viewport width
-        /// </summary>
-        private static int glViewportWidth;
-        /// <summary>
-        /// The gl viewport height
-        /// </summary>
-        private static int glViewportHeight;
-
-        /// <summary>
-        /// Updates the mouse pos and buttons
+        ///     Updates the mouse pos and buttons
         /// </summary>
         private void UpdateMousePosAndButtons()
         {
@@ -444,15 +464,15 @@ namespace Alis.App.Hub
 
             // Obtener estado del mouse desde la plataforma
             platform.GetMouseState(out int mouseX, out int mouseY, out bool[] mouseButtons);
-            Debug.Assert(mouseButtons != null && mouseButtons.Length >= 3, "mouseButtons debe tener al menos 3 elementos");
+            Debug.Assert((mouseButtons != null) && (mouseButtons.Length >= 3), "mouseButtons debe tener al menos 3 elementos");
 
             platform.GetWindowMetrics(out int winX, out int winY,
                 out int winW, out int winH,
                 out int fbW, out int fbH);
-            
+
             platform.GetMousePositionInView(out float mx, out float my);
-            
-            
+
+
             //my = fbH - my; // Invertir coordenada Y para ImGui
 
             // GL_VIEWPORT
@@ -460,27 +480,27 @@ namespace Alis.App.Hub
             Gl.GlGetIntegerv(0x0BA2, viewport);
             glViewportWidth = viewport[2];
             glViewportHeight = viewport[3];
-            
+
             float scaleX = glViewportWidth / resolutionProgramX;
             float scaleY = glViewportHeight / resolutionProgramY;
-           
+
             my = fbH - my;
 
             mx *= scaleX;
-            my *= scaleY; 
-            
+            my *= scaleY;
+
             //Console.WriteLine($"Mouse Pos in windows: X={mx}, Y={my} | Display Framebuffer Size: W={glViewportWidth}, H={glViewportHeight} | Window Size: W={winW}, H={winH} | Window Pos: X={winX}, Y={winY} | Windows Space Windows {fbW}, {fbH} | Scale Factor: {scaleFactor} | Resolution Program: W={resolutionProgramX}, H={resolutionProgramY} ");
             io.AddMousePosEvent(mx, my);
 
             // Actualizar estado de los botones (máximo 5 botones)
             for (int i = 0; i < 5; i++)
             {
-                bool isDown = (mouseButtons != null && i < mouseButtons.Length) ? mouseButtons[i] : false;
+                bool isDown = (mouseButtons != null) && (i < mouseButtons.Length) ? mouseButtons[i] : false;
                 io.AddMouseButtonEvent(i, isDown);
 
                 if (isDown)
                 {
-                    Logger.Trace($"Botón ratón {i}: {("PRESIONADO")}");
+                    Logger.Trace($"Botón ratón {i}: {"PRESIONADO"}");
                 }
             }
 
@@ -500,9 +520,9 @@ namespace Alis.App.Hub
         }
 
         /// <summary>
-          /// Processes the key with imgui
-          /// </summary>
-          private void ProcessKeyWithImgui()
+        ///     Processes the key with imgui
+        /// </summary>
+        private void ProcessKeyWithImgui()
         {
             // Control y edición
             if (platform.IsKeyDown(ConsoleKey.Backspace))
@@ -1338,7 +1358,7 @@ namespace Alis.App.Hub
         private void LoadFonts()
         {
             fonts = ImGui.GetIo().Fonts;
-            
+
             int fontSize = 14;
             int fontSizeIcon = 13;
 
@@ -1347,7 +1367,7 @@ namespace Alis.App.Hub
             byte[] fontDataBytes = new byte[fontFileSolid.Length];
             fontFileSolid.ReadExactly(fontDataBytes, 0, (int) fontFileSolid.Length);
             Marshal.Copy(fontDataBytes, 0, fontData, (int) fontFileSolid.Length);
-           _spaceWork.FontLoaded16Solid = fonts.AddFontFromMemoryTtf(fontData, fontSize, fontSize);
+            _spaceWork.FontLoaded16Solid = fonts.AddFontFromMemoryTtf(fontData, fontSize, fontSize);
 
             try
             {
@@ -1385,7 +1405,7 @@ namespace Alis.App.Hub
             byte[] fontDataBytes12 = new byte[fontFileSolid12.Length];
             fontFileSolid12.ReadExactly(fontDataBytes12, 0, (int) fontFileSolid12.Length);
             Marshal.Copy(fontDataBytes12, 0, fontData12, (int) fontFileSolid12.Length);
-           _spaceWork.FontLoaded10Solid = fonts.AddFontFromMemoryTtf(fontData12, 12, 12);
+            _spaceWork.FontLoaded10Solid = fonts.AddFontFromMemoryTtf(fontData12, 12, 12);
 
             try
             {
@@ -1422,7 +1442,7 @@ namespace Alis.App.Hub
             byte[] fontDataBytes40 = new byte[fontFileSolid40.Length];
             fontFileSolid40.ReadExactly(fontDataBytes40, 0, (int) fontFileSolid40.Length);
             Marshal.Copy(fontDataBytes40, 0, fontData40, (int) fontFileSolid40.Length);
-           _spaceWork.FontLoaded45Bold = fonts.AddFontFromMemoryTtf(fontData40, 40, 40);
+            _spaceWork.FontLoaded45Bold = fonts.AddFontFromMemoryTtf(fontData40, 40, 40);
 
             try
             {
@@ -1459,7 +1479,7 @@ namespace Alis.App.Hub
             byte[] fontDataBytes28 = new byte[fontFileSolid28.Length];
             fontFileSolid28.ReadExactly(fontDataBytes28, 0, (int) fontFileSolid28.Length);
             Marshal.Copy(fontDataBytes28, 0, fontData28, (int) fontFileSolid28.Length);
-           _spaceWork.FontLoaded30Bold = fonts.AddFontFromMemoryTtf(fontData28, 28, 28);
+            _spaceWork.FontLoaded30Bold = fonts.AddFontFromMemoryTtf(fontData28, 28, 28);
             try
             {
                 ImFontConfigPtr iconsConfig = ImGui.ImFontConfig();
@@ -1495,7 +1515,7 @@ namespace Alis.App.Hub
             byte[] fontDataBytesLight = new byte[fontFileSolidLight.Length];
             fontFileSolidLight.ReadExactly(fontDataBytesLight, 0, (int) fontFileSolidLight.Length);
             Marshal.Copy(fontDataBytesLight, 0, fontDataLight, (int) fontFileSolidLight.Length);
-           _spaceWork.FontLoaded16Light = fonts.AddFontFromMemoryTtf(fontDataLight, fontSize, fontSize);
+            _spaceWork.FontLoaded16Light = fonts.AddFontFromMemoryTtf(fontDataLight, fontSize, fontSize);
 
             try
             {
@@ -1531,12 +1551,10 @@ namespace Alis.App.Hub
             // Build font atlas and upload to GL
             fonts.GetTexDataAsRgba32(out IntPtr pixelData, out int texWidth, out int texHeight, out int _);
             _spaceWork.FontTextureId = LoadTexture(pixelData, texWidth, texHeight);
-            fonts.TexId = (IntPtr)_spaceWork.FontTextureId;
+            fonts.TexId = (IntPtr) _spaceWork.FontTextureId;
             fonts.ClearTexData();
-            
-            
         }
-        
+
         /// <summary>
         ///     Sets the style
         /// </summary>
@@ -1552,7 +1570,7 @@ namespace Alis.App.Hub
 
             // Main background color for windows
             style[(int) ImGuiCol.WindowBg] = new Vector4F(0.13f, 0.14f, 0.15f, 1.0f);
-            
+
             // Background color for child windows
             style[(int) ImGuiCol.ChildBg] = new Vector4F(0.13f, 0.14f, 0.15f, 1.0f);
 
@@ -1789,20 +1807,18 @@ namespace Alis.App.Hub
             style.Alpha = 1.0f;
 
             style.DisabledAlpha = 0.6f;
-            
+
             _spaceWork.Style = style;
-           
         }
 
         /// <summary>
-        /// Main per-frame draw. Updates ImGui _spaceWork.io from the platform and renders.
-        /// Avoids exception handling for common control flow.
+        ///     Main per-frame draw. Updates ImGui _spaceWork.io from the platform and renders.
+        ///     Avoids exception handling for common control flow.
         /// </summary>
         public void Draw()
         {
             _spaceWork.io = ImGui.GetIo();
-            
-           
+
 
             ImGui.NewFrame();
 
@@ -1813,10 +1829,9 @@ namespace Alis.App.Hub
             }
 
             // Show all render:
-            
-            
-            _spaceWork.OnRender(scaleFactor);
 
+
+            _spaceWork.OnRender(scaleFactor);
 
 
             ImGui.Render();
@@ -1827,12 +1842,7 @@ namespace Alis.App.Hub
         }
 
         /// <summary>
-        /// The first time scale
-        /// </summary>
-        private bool firstTimeScale = true;
-
-        /// <summary>
-        /// Renders the draw data using the specified draw data
+        ///     Renders the draw data using the specified draw data
         /// </summary>
         /// <param name="drawData">The draw data</param>
         private void RenderDrawData(ImDrawData drawData)
@@ -1856,23 +1866,21 @@ namespace Alis.App.Hub
             int fbHeight = viewport[3];
             ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
             imGuiIoPtr.DisplaySize = new Vector2F(fbWidth, fbHeight);
-            
-            
+
+
             float scaleX = fbWidth / resolutionProgramX;
             float scaleY = fbHeight / resolutionProgramY;
             scaleFactor = Math.Min(scaleX, scaleY);
 
             Console.WriteLine($"Setting style scale factor: {scaleFactor}");
-            
+
             _spaceWork.Style.ScaleAllSizes(scaleFactor);
             _spaceWork.io.FontGlobalScale = scaleFactor;
-            
-            
-            
+
+
             Console.WriteLine($"Framebuffer Size: {fbWidth}x{fbHeight} | Display Size: {imGuiIoPtr.DisplaySize.X}x{imGuiIoPtr.DisplaySize.Y} | Scale: {imGuiIoPtr.DisplayFramebufferScale.X}x{imGuiIoPtr.DisplayFramebufferScale.Y}");
 
-            
-            
+
             float l = 0.0f;
             float r = ImGui.GetIo().DisplaySize.X;
             float t = 0.0f;
@@ -1916,18 +1924,18 @@ namespace Alis.App.Hub
                     else
                     {
                         IntPtr texIdPtr = pcmd.GetTexId();
-                        uint texId = texIdPtr == IntPtr.Zero ? _fontTexture : (uint)texIdPtr.ToInt64();
+                        uint texId = texIdPtr == IntPtr.Zero ? _fontTexture : (uint) texIdPtr.ToInt64();
 
                         Gl.GlActiveTexture(TextureUnit.Texture0);
                         Gl.GlBindTexture(TextureTarget.Texture2D, texId);
 
-                        int x = (int)pcmd.ClipRect.X;
-                        int y = (int)(ImGui.GetIo().DisplaySize.Y - pcmd.ClipRect.W);
-                        int width = (int)(pcmd.ClipRect.Z - pcmd.ClipRect.X);
-                        int height = (int)(pcmd.ClipRect.W - pcmd.ClipRect.Y);
+                        int x = (int) pcmd.ClipRect.X;
+                        int y = (int) (ImGui.GetIo().DisplaySize.Y - pcmd.ClipRect.W);
+                        int width = (int) (pcmd.ClipRect.Z - pcmd.ClipRect.X);
+                        int height = (int) (pcmd.ClipRect.W - pcmd.ClipRect.Y);
                         Gl.GlScissor(x, y, width, height);
 
-                        Gl.GlDrawElements(PrimitiveType.Triangles, (int)pcmd.ElemCount, DrawElementsType.UnsignedShort, new IntPtr(idxOffset * sizeof(ushort)));
+                        Gl.GlDrawElements(PrimitiveType.Triangles, (int) pcmd.ElemCount, DrawElementsType.UnsignedShort, new IntPtr(idxOffset * sizeof(ushort)));
                     }
 
                     idxOffset += pcmd.ElemCount;
@@ -1943,13 +1951,13 @@ namespace Alis.App.Hub
 
         // Returns the appropriate platform implementation for the current OS.
         /// <summary>
-        /// Gets the platform
+        ///     Gets the platform
         /// </summary>
         /// <returns>The native platform</returns>
         private INativePlatform GetPlatform()
         {
 #if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
-            return new Alis.Core.Graphic.Platforms.Osx.MacNativePlatform();
+            return new MacNativePlatform();
 #elif winx64 || winx86 || winarm64 || winarm || win
             return new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
 #elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
@@ -1961,7 +1969,7 @@ namespace Alis.App.Hub
 
         // Initializes the native platform and OpenGL context. Returns true on success.
         /// <summary>
-        /// Initializes the platform using the specified platform
+        ///     Initializes the platform using the specified platform
         /// </summary>
         /// <param name="platform">The platform</param>
         /// <param name="width">The width</param>
@@ -1988,17 +1996,17 @@ namespace Alis.App.Hub
         // Loads a font from an input stream into unmanaged memory and returns the IntPtr to the data buffer.
         // Note: The caller is responsible for memory lifetime if the native API expects it to remain valid.
         /// <summary>
-        /// Loads the font from resource using the specified stream
+        ///     Loads the font from resource using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <param name="size">The size</param>
         /// <returns>The native ptr</returns>
-        private  IntPtr LoadFontFromResource(Stream stream, int size)
+        private IntPtr LoadFontFromResource(Stream stream, int size)
         {
-            Debug.Assert(stream != null && stream.Length > 0, "Font stream must be valid.");
+            Debug.Assert((stream != null) && (stream.Length > 0), "Font stream must be valid.");
 
             byte[] data = new byte[stream.Length];
-            stream.ReadExactly(data, 0, (int)stream.Length);
+            stream.ReadExactly(data, 0, (int) stream.Length);
             IntPtr nativePtr = Marshal.AllocHGlobal(data.Length);
             Marshal.Copy(data, 0, nativePtr, data.Length);
             return nativePtr;
@@ -2006,7 +2014,7 @@ namespace Alis.App.Hub
 
         // Loads the texture using the specified pixel data (RGBA8) and returns the GL texture id.
         /// <summary>
-        /// Loads the texture using the specified pixel data
+        ///     Loads the texture using the specified pixel data
         /// </summary>
         /// <param name="pixelData">The pixel data</param>
         /// <param name="width">The width</param>
@@ -2014,7 +2022,7 @@ namespace Alis.App.Hub
         /// <param name="format">The format</param>
         /// <param name="internalFormat">The internal format</param>
         /// <returns>The texture id</returns>
-        private  uint LoadTexture(IntPtr pixelData, int width, int height, PixelFormat format = PixelFormat.Rgba, PixelInternalFormat internalFormat = PixelInternalFormat.Rgba)
+        private uint LoadTexture(IntPtr pixelData, int width, int height, PixelFormat format = PixelFormat.Rgba, PixelInternalFormat internalFormat = PixelInternalFormat.Rgba)
         {
             uint textureId = Gl.GenTexture();
             Gl.GlPixelStorei(StoreParameter.UnpackAlignment, 1);
@@ -2027,4 +2035,3 @@ namespace Alis.App.Hub
         }
     }
 }
-

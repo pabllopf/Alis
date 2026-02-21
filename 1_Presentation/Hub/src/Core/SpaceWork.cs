@@ -105,9 +105,19 @@ namespace Alis.App.Hub.Core
         public GlShaderProgram GlShader;
 
         /// <summary>
+        ///     Gets the value of the height main window
+        /// </summary>
+        public int HeightMainWindow;
+
+        /// <summary>
         ///     The io
         /// </summary>
         public ImGuiIoPtr io;
+
+        /// <summary>
+        ///     The quit
+        /// </summary>
+        public bool IsRunning;
 
         /// <summary>
         ///     The style
@@ -133,11 +143,6 @@ namespace Alis.App.Hub.Core
         ///     Gets or sets the value of the viewport
         /// </summary>
         public ImGuiViewportPtr ViewportHub;
-        
-        /// <summary>
-        ///     Gets the value of the height main window
-        /// </summary>
-        public int HeightMainWindow;
 
         /// <summary>
         ///     Gets the value of the width main window
@@ -147,15 +152,10 @@ namespace Alis.App.Hub.Core
         /// <summary>
         ///     The window
         /// </summary>
-        public IntPtr WindowHub ;
+        public IntPtr WindowHub;
 
         /// <summary>
-        ///     The quit
-        /// </summary>
-        public bool IsRunning ;
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SpaceWork"/> class
+        ///     Initializes a new instance of the <see cref="SpaceWork" /> class
         /// </summary>
         public SpaceWork()
         {
@@ -166,19 +166,19 @@ namespace Alis.App.Hub.Core
             IsRunning = true;
             HubWindow = new HubWindow(this);
         }
-        
+
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public void OnInit() => HubWindow.OnInit();
-        
+
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public void OnStart() => HubWindow.OnStart();
 
         /// <summary>
-        /// Ons the render
+        ///     Ons the render
         /// </summary>
         /// <param name="scaleFactor"></param>
         public void OnRender(float scaleFactor) => HubWindow.OnRender(scaleFactor);
