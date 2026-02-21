@@ -56,9 +56,9 @@ jobs:
                  echo "Skip project $i"
              else
                  echo "Check csproj = $i"
-                 dotnet build $i -c Release -f net10.0 -v quiet -p:WarningLevel=0
+                 dotnet build $i -c Release -f net10.0 -v quiet -p:WarningLevel=0 -clp:ErrorsOnly
              fi
           done
           
-          dotnet test --no-build -f net10.0 -v minimal -c Release ./alis.sln --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          dotnet test --no-build -f net10.0 -v minimal -clp:ErrorsOnly -c Release ./alis.sln --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
