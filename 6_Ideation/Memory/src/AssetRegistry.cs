@@ -34,6 +34,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Alis.Core.Aspect.Memory
 {
@@ -137,7 +139,6 @@ namespace Alis.Core.Aspect.Memory
                 throw new InvalidOperationException($"La asamblea activa '{ActiveAssemblyName}' no tiene un assets.pack registrado.");
             }
 
-            string normalizedKey = NormalizeResourceKey(resourceName);
             ZipEntryInfo entryInfo;
             ZipCacheEntry cacheEntry;
 
@@ -263,7 +264,7 @@ namespace Alis.Core.Aspect.Memory
             } // liberado el lock para la extracción en disco
 
             // Extraer a disco usando PackBytes sin copiar todo el ZIP
-            string safeName = MakeSafeTempName(ActiveAssemblyName, entryInfo.FullName);
+            string safeName = MakeSafeTempName(ActiveAssemblyName, normalizedKey);
             string tempFilePath = Path.Combine(Path.GetTempPath(), safeName);
 
             // Si ya existe en disco y coincide con el ZIP, devolverlo
@@ -331,17 +332,42 @@ namespace Alis.Core.Aspect.Memory
         ///     Makes the safe temp name using the specified assembly name
         /// </summary>
         /// <param name="assemblyName">The assembly name</param>
-        /// <param name="entryFullName">The entry full name</param>
+        /// <param name="normalizedResourceKey">The normalized resource key</param>
         /// <returns>The string</returns>
-        private static string MakeSafeTempName(string assemblyName, string entryFullName)
+        private static string MakeSafeTempName(string assemblyName, string normalizedResourceKey)
         {
-            string fileName = entryFullName.Replace('\\', '_').Replace('/', '_');
-            if (fileName.Length > 200)
+            string extension = Path.GetExtension(normalizedResourceKey) ?? string.Empty;
+            if (extension.Length > 16 || extension.Contains('/') || extension.Contains('\\'))
             {
-                fileName = fileName.Substring(fileName.Length - 200);
+                extension = string.Empty;
             }
 
-            return $"{assemblyName}_{fileName}";
+            byte[] keyBytes = Encoding.UTF8.GetBytes(normalizedResourceKey);
+            string hash;
+            using (SHA256 sha = SHA256.Create())
+            {
+                hash = ToLowerHex(sha.ComputeHash(keyBytes));
+            }
+
+            return string.IsNullOrEmpty(extension)
+                ? $"{assemblyName}_{hash}"
+                : $"{assemblyName}_{hash}{extension}";
+        }
+
+        private static string ToLowerHex(byte[] bytes)
+        {
+            if (bytes == null || bytes.Length == 0)
+            {
+                return string.Empty;
+            }
+
+            StringBuilder sb = new StringBuilder(bytes.Length * 2);
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                sb.Append(bytes[i].ToString("x2"));
+            }
+
+            return sb.ToString();
         }
 
         /// <summary>
@@ -441,3 +467,6 @@ namespace Alis.Core.Aspect.Memory
         }
     }
 }
+
+
+
