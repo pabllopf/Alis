@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DummyTest.cs
+//  File:FilePickerFactoryTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,162 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
     /// <summary>
-    ///     The dummy test class
+    ///     Unit tests for FilePickerFactory class.
     /// </summary>
-    public class DummyTest
+    public class FilePickerFactoryTest
     {
         /// <summary>
-        ///     Tests that default test
+        ///     Tests that CreateFilePicker returns a valid IFilePicker instance.
         /// </summary>
         [Fact]
-        public void DefaultTest()
+        public void CreateFilePicker_ShouldReturnValidInstance()
         {
-            Assert.True(true);
+            // Act
+            var picker = FilePickerFactory.CreateFilePicker();
+
+            // Assert
+            Assert.NotNull(picker);
+            Assert.IsAssignableFrom<IFilePicker>(picker);
+        }
+
+        /// <summary>
+        ///     Tests that CreateFilePicker returns the correct implementation for Windows.
+        /// </summary>
+        [Fact]
+        public void CreateFilePicker_OnWindows_ShouldReturnWindowsFilePicker()
+        {
+            // Act
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                var picker = FilePickerFactory.CreateFilePicker();
+
+                // Assert
+                Assert.IsType<WindowsFilePicker>(picker);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that CreateFilePicker returns the correct implementation for macOS.
+        /// </summary>
+        [Fact]
+        public void CreateFilePicker_OnMac_ShouldReturnMacFilePicker()
+        {
+            // Act
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                var picker = FilePickerFactory.CreateFilePicker();
+
+                // Assert
+                Assert.IsType<MacFilePicker>(picker);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that CreateFilePicker returns the correct implementation for Linux.
+        /// </summary>
+        [Fact]
+        public void CreateFilePicker_OnLinux_ShouldReturnLinuxFilePicker()
+        {
+            // Act
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                var picker = FilePickerFactory.CreateFilePicker();
+
+                // Assert
+                Assert.IsType<LinuxFilePicker>(picker);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that CreateFilePickerWithOptions validates options before creating.
+        /// </summary>
+        [Fact]
+        public void CreateFilePickerWithOptions_WithNullOptions_ShouldThrowArgumentNullException()
+        {
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => FilePickerFactory.CreateFilePickerWithOptions(null));
+        }
+
+        /// <summary>
+        ///     Tests that CreateFilePickerWithOptions validates empty title.
+        /// </summary>
+        [Fact]
+        public void CreateFilePickerWithOptions_WithEmptyTitle_ShouldThrowArgumentException()
+        {
+            // Arrange
+            var options = new FilePickerOptions { Title = "" };
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => FilePickerFactory.CreateFilePickerWithOptions(options));
+        }
+
+        /// <summary>
+        ///     Tests that CreateFilePickerWithOptions returns valid instance.
+        /// </summary>
+        [Fact]
+        public void CreateFilePickerWithOptions_WithValidOptions_ShouldReturnValidInstance()
+        {
+            // Arrange
+            var options = new FilePickerOptions("Test Title");
+
+            // Act
+            var picker = FilePickerFactory.CreateFilePickerWithOptions(options);
+
+            // Assert
+            Assert.NotNull(picker);
+            Assert.IsAssignableFrom<IFilePicker>(picker);
+        }
+
+        /// <summary>
+        ///     Tests that GetPlatformName returns a non-empty string.
+        /// </summary>
+        [Fact]
+        public void GetPlatformName_ShouldReturnNonEmptyString()
+        {
+            // Act
+            string platformName = FilePickerFactory.GetPlatformName();
+
+            // Assert
+            Assert.NotNull(platformName);
+            Assert.NotEmpty(platformName);
+            Assert.True(platformName is "Windows" or "macOS" or "Linux" or "Unknown");
+        }
+
+        /// <summary>
+        ///     Tests that IsPlatformSupported returns true for known platforms.
+        /// </summary>
+        [Fact]
+        public void IsPlatformSupported_ShouldReturnTrueForKnownPlatforms()
+        {
+            // Act
+            bool isSupported = FilePickerFactory.IsPlatformSupported();
+
+            // Assert
+            Assert.True(isSupported);
+        }
+
+        /// <summary>
+        ///     Tests that GetPlatformName matches the current platform.
+        /// </summary>
+        [Fact]
+        public void GetPlatformName_ShouldMatchCurrentPlatform()
+        {
+            // Act
+            string platformName = FilePickerFactory.GetPlatformName();
+            string expectedPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "Windows"
+                : RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ? "macOS"
+                : RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? "Linux"
+                : "Unknown";
+
+            // Assert
+            Assert.Equal(expectedPlatform, platformName);
         }
     }
 }
