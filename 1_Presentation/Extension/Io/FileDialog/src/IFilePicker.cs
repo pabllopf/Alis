@@ -34,11 +34,6 @@ namespace Alis.Extension.Io.FileDialog
     /// </summary>
     public interface IFilePicker
     {
-        /// <summary>
-        ///     Opens a file picker dialog to select a single file (legacy method).
-        /// </summary>
-        /// <returns>The path of the selected file, or null if cancelled</returns>
-        string ChooseFile();
 
         /// <summary>
         ///     Opens a file picker dialog with advanced options.

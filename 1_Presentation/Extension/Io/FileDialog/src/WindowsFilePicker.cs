@@ -82,29 +82,6 @@ if ($dialog.ShowDialog() -eq 'OK') {{
 }}
 ";
 
-        /// <summary>
-        ///     Opens a file picker dialog to select a single file (legacy method).
-        /// </summary>
-        /// <returns>The path of the selected file, or null if cancelled</returns>
-        public string ChooseFile()
-        {
-            Logger.Trace("ChooseFile() called on WindowsFilePicker.");
-
-            try
-            {
-                var options = new FilePickerOptions("Select a file", FileDialogType.OpenFile);
-                var result = PickFile(options);
-
-                string selectedPath = result.IsSuccess ? result.SelectedPath : null;
-                Logger.Info($"ChooseFile() result: {selectedPath ?? "cancelled"}");
-                return selectedPath;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error($"Error in ChooseFile(): {ex.Message}");
-                return null;
-            }
-        }
 
         /// <summary>
         ///     Opens a file picker dialog with advanced options to select a single file.
