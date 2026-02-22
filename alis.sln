@@ -225,7 +225,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Io", "Io", "{C77F4F02-E67F-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FileDialog", "FileDialog", "{065EAFB4-3D10-4F7D-CDEB-EE57BEDAF37D}"
 	ProjectSection(SolutionItems) = preProject
-		1_Presentation\Extension\Io\FileDialog\FIX_SUMMARY.sh = 1_Presentation\Extension\Io\FileDialog\FIX_SUMMARY.sh
 		1_Presentation\Extension\Io\FileDialog\MACOS_INSTRUCTIONS.md = 1_Presentation\Extension\Io\FileDialog\MACOS_INSTRUCTIONS.md
 	EndProjectSection
 EndProject
