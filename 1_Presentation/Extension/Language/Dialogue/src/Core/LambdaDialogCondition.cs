@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DialogTest.cs
+//  File:LambdaDialogCondition.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,58 +28,43 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Logging;
-using Xunit;
 
-namespace Alis.Extension.Language.Dialogue.Test
+namespace Alis.Extension.Language.Dialogue.Core
 {
     /// <summary>
-    ///     The dialog test class
+    ///     A dialog condition implemented using a lambda function
     /// </summary>
-    public class DialogTest
+    public class LambdaDialogCondition : IDialogCondition
     {
-    /// <summary>
-    ///     Tests that dialog constructor should initialize properties
-    /// </summary>
-    [Fact]
-    public void Dialog_Constructor_ShouldInitializeProperties()
-    {
-        string id = "testId";
-        string text = "Test Text";
-        Dialog dialog = new Dialog(id, text);
-
-        Assert.Equal(id, dialog.Id);
-        Assert.Equal(text, dialog.Text);
-        Assert.Empty(dialog.Options);
-        Assert.Empty(dialog.Branches);
-    }
+        /// <summary>
+        ///     The evaluation function
+        /// </summary>
+        private readonly Func<DialogContext, bool> _evaluateFunc;
 
         /// <summary>
-        ///     Tests that add option should add option to list
+        ///     Initializes a new instance of the <see cref="LambdaDialogCondition" /> class
         /// </summary>
-        [Fact]
-        public void AddOption_ShouldAddOptionToList()
+        /// <param name="evaluateFunc">The evaluation function</param>
+        /// <exception cref="ArgumentNullException">Thrown when evaluateFunc is null</exception>
+        public LambdaDialogCondition(Func<DialogContext, bool> evaluateFunc)
         {
-            Dialog dialog = new Dialog("testId", "Test Text");
-            DialogOption option = new DialogOption("Option Text", () => Logger.Info("Test Action"));
-            dialog.AddOption(option);
-
-            Assert.Single(dialog.Options);
-            Assert.Contains(option, dialog.Options);
+            _evaluateFunc = evaluateFunc ?? throw new ArgumentNullException(nameof(evaluateFunc));
         }
 
         /// <summary>
-        ///     Tests that dialog option constructor should initialize properties
+        ///     Evaluates the condition against the provided context
         /// </summary>
-        [Fact]
-        public void DialogOption_Constructor_ShouldInitializeProperties()
+        /// <param name="context">The dialog context</param>
+        /// <returns>True if the condition is satisfied</returns>
+        public bool Evaluate(DialogContext context)
         {
-            string text = "Option Text";
-            Action action = () => Logger.Info("Test Action");
-            DialogOption option = new DialogOption(text, action);
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
 
-            Assert.Equal(text, option.Text);
-            Assert.Equal(action, option.Action);
+            return _evaluateFunc(context);
         }
     }
 }
+
