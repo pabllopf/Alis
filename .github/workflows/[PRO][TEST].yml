@@ -39,7 +39,7 @@ jobs:
           brew link ffmpeg
 
       - name: Dotnet test Release
-        run: dotnet test alis.sln -c Release -f net8.0
+        run: dotnet test alis_design.sln -c Release -f net8.0
         env:
           DOTNET_CLI_TELEMETRY_OPTOUT: 1
 
@@ -75,7 +75,7 @@ jobs:
           choco install ffmpeg -y
 
       - name: Dotnet test Release
-        run: dotnet test alis.sln -c Release -f net8.0
+        run: dotnet test alis_design.sln -c Release -f net8.0
         env:
           DOTNET_CLI_TELEMETRY_OPTOUT: 1
 
@@ -120,7 +120,7 @@ jobs:
           df -h
 
       - name: Dotnet test Release
-        run: dotnet test alis.sln -c Release -f net8.0
+        run: dotnet test alis_design.sln -c Release -f net8.0
         env:
           DOTNET_CLI_TELEMETRY_OPTOUT: 1
 
