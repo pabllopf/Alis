@@ -242,9 +242,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Language", "Language", "{BD3E673D-F084-D41C-BCEB-0B0A69B9B7F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Translator", "Translator", "{5039320E-D02F-1F70-99B0-B9678715514F}"
-	ProjectSection(SolutionItems) = preProject
-		1_Presentation\Extension\Language\Translator\README.md = 1_Presentation\Extension\Language\Translator\README.md
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Extension.Language.Translator.Test", "1_Presentation\Extension\Language\Translator\test\Alis.Extension.Language.Translator.Test.csproj", "{A2C5C004-4D91-4E78-AF1C-97968D265DA3}"
 EndProject
@@ -253,6 +250,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Extension.Language.Translator.Sample", "1_Presentation\Extension\Language\Translator\sample\Alis.Extension.Language.Translator.Sample.csproj", "{CDAC76E0-11E2-46BF-BEA7-C572B55A9D41}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dialogue", "Dialogue", "{4BA67671-AE0B-6CB3-EB4D-56761639978C}"
+	ProjectSection(SolutionItems) = preProject
+		1_Presentation\Extension\Language\Dialogue\CAMBIOS.md = 1_Presentation\Extension\Language\Dialogue\CAMBIOS.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Extension.Language.Dialogue.Test", "1_Presentation\Extension\Language\Dialogue\test\Alis.Extension.Language.Dialogue.Test.csproj", "{569140FB-130B-4C1C-9910-CD23F54D812D}"
 EndProject
