@@ -1,58 +1,43 @@
 name: "[PRO][SONARCLOUD]"
+
 on:
   push:
     branches:
+      - main
       - master
+      - develop
+      - 'releases/**'
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [ opened, synchronize, reopened ]
+
 jobs:
-  build:
-    permissions:
-      actions: write
-      checks: write
-      contents: write
-      deployments: write
-      discussions: write
-      issues: write
-      pages: write
-      packages: write
-      pull-requests: write
-      repository-projects: write
-      security-events: write
-      statuses: write
-    name: Build and analyze
+  build-and-analyze:
     if: contains(github.event.head_commit.message, 'fix:')
-    runs-on: windows-latest
+    runs-on: macOS-13
+
     steps:
-      - uses: actions/checkout@v4
+      # 1. Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: Cache SonarQube Cloud packages
-        uses: actions/cache@v4
+          fetch-depth: 0
+
+      # 2. Install SDL2 and ffmpeg dependencies
+      - name: install
+        run: brew install glew glfw sdl2 sdl2_image sdl2_ttf ffmpeg csfml sfml
+
+      # 4. Setup .NET 8.0
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
-          path: ~\sonar\cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-      - name: Cache SonarQube Cloud scanner
-        id: cache-sonar-scanner
-        uses: actions/cache@v4
-        with:
-          path: ${{ runner.temp }}\scanner
-          key: ${{ runner.os }}-sonar-scanner
-          restore-keys: ${{ runner.os }}-sonar-scanner
-      - name: Install SonarQube Cloud scanner
-        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
-        shell: powershell
+          dotnet-version: 9.0.301
+
+      - name: SonarQube Scan
         run: |
-          New-Item -Path ${{ runner.temp }}\scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path ${{ runner.temp }}\scanner
-      - name: Build and analyze
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        shell: powershell
-        run: |
-          ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"${{ secrets.SONAR_PROJECT_KEY }}" /o:"${{ secrets.SONAR_ORGANIZATION }}" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.tests=**/*Tests.csproj /d:sonar.cs.opencover.reportsPaths=./**/TestResults/**/*.opencover.xml
-          dotnet build alis_design.sln -v minimal -clp:ErrorsOnly -f net8.0 -c Release
-          dotnet test --no-build -v minimal -clp:ErrorsOnly -f net8.0 -c Release ./alis_design.sln --collect "XPlat Code Coverage;Format=opencover"
-          ${{ runner.temp }}\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-        
+          dotnet tool install --global coverlet.console --version 6.0.3
+          dotnet tool install --global dotnet-sonarscanner --version 8.0.2
+
+          dotnet sonarscanner begin /k:"${{ secrets.SONAR_PROJECT_KEY }}" /o:"${{ secrets.SONAR_ORGANIZATION }}" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=true /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
+          dotnet build --no-incremental -c Release -f net8.0 ./alis.sln
+          dotnet test --no-build -f net8.0 -c Release ./alis.sln --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
