@@ -66,9 +66,7 @@ jobs:
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
             /d:sonar.cs.opencover.reportsPaths="**/*.opencover.xml"
 
-          dotnet restore ./alis.sln
-
-          dotnet build ./alis.sln -c Release --no-restore
+          dotnet build ./alis.sln -c Release
 
           dotnet test ./alis.sln \
             -c Release \
