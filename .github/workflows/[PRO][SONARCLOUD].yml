@@ -76,3 +76,4 @@ jobs:
 
           dotnet sonarscanner end \
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
