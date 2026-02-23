@@ -7,6 +7,19 @@ on:
 
 jobs:
   prepare:
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
+      discussions: write
+      issues: write
+      pages: write
+      packages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
     if: contains(github.event.head_commit.message, 'release:')
     runs-on: ubuntu-latest
     outputs:
@@ -44,6 +57,19 @@ jobs:
 
 
   build_extensions:
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
+      discussions: write
+      issues: write
+      pages: write
+      packages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
     needs: prepare
     runs-on: ubuntu-latest
     strategy:
@@ -160,6 +186,19 @@ jobs:
             **/1_Presentation/**/Extension/**/src/**/bin/**/Release/**/*
 
   build_core:
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
+      discussions: write
+      issues: write
+      pages: write
+      packages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
     needs: prepare
     name: Build Core (${{ matrix.group_name }})
     runs-on: ubuntu-latest
@@ -243,6 +282,19 @@ jobs:
             **/6_Ideation/**/src/**/bin/**/Release/**/*
             
   build_apps:
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
+      discussions: write
+      issues: write
+      pages: write
+      packages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
     needs: [ prepare ]
     runs-on: macos-15
     strategy:
