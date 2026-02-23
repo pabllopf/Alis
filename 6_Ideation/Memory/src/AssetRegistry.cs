@@ -352,6 +352,11 @@ namespace Alis.Core.Aspect.Memory
                 : $"{assemblyName}_{hash}{extension}";
         }
 
+        /// <summary>
+        /// Returns the lower hex using the specified bytes
+        /// </summary>
+        /// <param name="bytes">The bytes</param>
+        /// <returns>The string</returns>
         private static string ToLowerHex(byte[] bytes)
         {
             if (bytes == null || bytes.Length == 0)

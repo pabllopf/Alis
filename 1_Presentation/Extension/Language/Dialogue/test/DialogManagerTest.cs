@@ -597,8 +597,15 @@ namespace Alis.Extension.Language.Dialogue.Test
         /// </summary>
         private class MockDialogEventObserver : IDialogEventObserver
         {
+            /// <summary>
+            /// Gets or sets the value of the events received
+            /// </summary>
             public int EventsReceived { get; private set; }
 
+            /// <summary>
+            /// Ons the dialog event using the specified dialog event
+            /// </summary>
+            /// <param name="dialogEvent">The dialog event</param>
             public void OnDialogEvent(DialogEvent dialogEvent)
             {
                 EventsReceived++;

@@ -43,10 +43,20 @@ namespace Alis.Extension.Language.Dialogue.Test
         /// </summary>
         private class MockObserver : IDialogEventObserver
         {
+            /// <summary>
+            /// Gets or sets the value of the last received event
+            /// </summary>
             public DialogEvent LastReceivedEvent { get; set; }
 
+            /// <summary>
+            /// Gets or sets the value of the event count
+            /// </summary>
             public int EventCount { get; set; }
 
+            /// <summary>
+            /// Ons the dialog event using the specified dialog event
+            /// </summary>
+            /// <param name="dialogEvent">The dialog event</param>
             public void OnDialogEvent(DialogEvent dialogEvent)
             {
                 LastReceivedEvent = dialogEvent;
