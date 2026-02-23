@@ -142,8 +142,7 @@ namespace Alis.Core.Aspect.Memory
             ZipEntryInfo entryInfo;
             ZipCacheEntry cacheEntry;
 
-            object asmLock = GetAssemblyLock(ActiveAssemblyName);
-            lock (asmLock)
+            lock (GetAssemblyLock(ActiveAssemblyName))
             {
                 EnsureZipCachedForActiveAssembly();
 
@@ -225,8 +224,7 @@ namespace Alis.Core.Aspect.Memory
             ZipEntryInfo entryInfo;
             ZipCacheEntry cacheEntry;
 
-            object asmLock = GetAssemblyLock(ActiveAssemblyName);
-            lock (asmLock)
+            lock (GetAssemblyLock(ActiveAssemblyName))
             {
                 EnsureZipCachedForActiveAssembly();
 
