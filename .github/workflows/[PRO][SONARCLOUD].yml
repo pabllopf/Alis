@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
+          
       # 4. Setup .NET 8.0
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -47,6 +47,6 @@ jobs:
           dotnet tool install --global dotnet-sonarscanner --version 8.0.2
           
           dotnet sonarscanner begin /k:"${{ secrets.SONAR_PROJECT_KEY }}" /o:"${{ secrets.SONAR_ORGANIZATION }}" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
-          dotnet build --no-incremental -c Debug -f net8.0 ./alis_design.sln
-          dotnet test --no-build -f net8.0 -c Debug ./alis_design.sln --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          dotnet build -c Debug -f net8.0 ./alis_design.sln
+          dotnet test --no-build -m:4 -f net8.0 -c Debug ./alis_design.sln --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
