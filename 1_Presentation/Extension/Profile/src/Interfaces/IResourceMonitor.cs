@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Profiler.cs
+//  File:IResourceMonitor.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,48 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Extension.Profile
+namespace Alis.Extension.Profile.Interfaces
 {
     /// <summary>
-    ///     The profiler class
+    ///     Defines the contract for monitoring system resources such as CPU and memory usage.
+    ///     Implementations of this interface provide platform-specific or custom strategies
+    ///     for measuring resource consumption during profiling operations.
     /// </summary>
-    public class Profiler
+    public interface IResourceMonitor
     {
         /// <summary>
-        ///     The elapsed time
+        ///     Measures the current CPU usage of the process.
         /// </summary>
-        private TimeSpan elapsedTime;
+        /// <returns>
+        ///     A <see cref="double" /> representing the CPU usage as a percentage (0-100)
+        ///     or in milliseconds depending on the implementation strategy.
+        /// </returns>
+        double GetCpuUsage();
 
         /// <summary>
-        ///     The start time
+        ///     Measures the current memory usage of the process.
         /// </summary>
-        private DateTime startTime;
+        /// <returns>
+        ///     A <see cref="long" /> representing the memory usage in bytes.
+        /// </returns>
+        long GetMemoryUsage();
 
         /// <summary>
-        ///     Starts the profiling
+        ///     Gets the total number of garbage collections that have occurred
+        ///     for all generations since the process started.
         /// </summary>
-        public void StartProfiling()
-        {
-            startTime = DateTime.Now;
-        }
+        /// <returns>
+        ///     An <see cref="int" /> representing the total garbage collection count.
+        /// </returns>
+        int GetGarbageCollectionCount();
 
         /// <summary>
-        ///     Stops the profiling
+        ///     Gets the total number of threads currently active in the process.
         /// </summary>
-        public void StopProfiling()
-        {
-            elapsedTime = DateTime.Now - startTime;
-        }
-
-        /// <summary>
-        ///     Gets the elapsed time
-        /// </summary>
-        /// <returns>The elapsed time</returns>
-        public TimeSpan GetElapsedTime() => elapsedTime;
-
-        /// <summary>
-        ///     Gets the start time
-        /// </summary>
-        /// <returns>The start time</returns>
-        public DateTime GetStartTime() => startTime;
+        /// <returns>
+        ///     An <see cref="int" /> representing the thread count.
+        /// </returns>
+        int GetThreadCount();
     }
 }
+

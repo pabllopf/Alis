@@ -27,82 +27,134 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics;
+using System;
+using Alis.Extension.Profile.Factories;
+using Alis.Extension.Profile.Interfaces;
+using Alis.Extension.Profile.Models;
 
 namespace Alis.Extension.Profile
 {
     /// <summary>
-    ///     The profiler service class
+    ///     Orchestrates profiling operations by coordinating time tracking and resource monitoring.
+    ///     This service follows the Facade pattern to provide a simplified interface
+    ///     for complex profiling operations and dependency injection for testability.
     /// </summary>
-    public class ProfilerService
+    public class ProfilerService : IProfilerService
     {
         /// <summary>
-        ///     The profile data
+        ///     The time tracker for measuring elapsed time during profiling.
         /// </summary>
-        private readonly ProfileData profileData;
+        private readonly ITimeTracker timeTracker;
 
         /// <summary>
-        ///     The profiler
+        ///     The factory for creating resource metric snapshots.
         /// </summary>
-        private readonly Profiler profiler;
+        private readonly ResourceMetricsFactory metricsFactory;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ProfilerService" /> class
+        ///     The initial resource metrics captured at the start of profiling.
         /// </summary>
-        public ProfilerService()
+        private ResourceMetrics startMetrics;
+
+        /// <summary>
+        ///     The start time of the current profiling session.
+        /// </summary>
+        private DateTime sessionStartTime;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ProfilerService" /> class.
+        /// </summary>
+        /// <param name="timeTracker">The time tracker implementation to use.</param>
+        /// <param name="metricsFactory">The factory for creating resource metrics.</param>
+        /// <exception cref="ArgumentNullException">
+        ///     Thrown when timeTracker or metricsFactory is null.
+        /// </exception>
+        public ProfilerService(ITimeTracker timeTracker, ResourceMetricsFactory metricsFactory)
         {
-            profiler = new Profiler();
-            profileData = new ProfileData();
+            this.timeTracker = timeTracker ?? throw new ArgumentNullException(nameof(timeTracker));
+            this.metricsFactory = metricsFactory ?? throw new ArgumentNullException(nameof(metricsFactory));
+            startMetrics = ResourceMetrics.Empty;
+            sessionStartTime = DateTime.MinValue;
         }
 
         /// <summary>
-        ///     Starts the profiling
+        ///     Gets a value indicating whether profiling is currently active.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if profiling is active; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsActive => timeTracker.IsRunning;
+
+        /// <summary>
+        ///     Starts a new profiling session, capturing initial resource metrics
+        ///     and beginning time tracking.
         /// </summary>
         public void StartProfiling()
         {
-            profiler.StartProfiling();
-            profileData.CpuUsage = GetCpuUsage();
-            profileData.MemoryUsage = GetMemoryUsage();
+            sessionStartTime = DateTime.Now;
+            startMetrics = metricsFactory.CreateSnapshot();
+            timeTracker.Start();
         }
 
         /// <summary>
-        ///     Stops the profiling
+        ///     Stops the current profiling session and captures final metrics.
         /// </summary>
-        /// <returns>The profile data</returns>
-        public ProfileData StopProfiling()
+        /// <returns>
+        ///     A <see cref="ProfileSnapshot" /> containing the collected profiling data.
+        /// </returns>
+        /// <exception cref="InvalidOperationException">
+        ///     Thrown when attempting to stop profiling without an active session.
+        /// </exception>
+        public ProfileSnapshot StopProfiling()
         {
-            profiler.StopProfiling();
-            profileData.CpuUsage = GetCpuUsage();
-            profileData.MemoryUsage = GetMemoryUsage();
-            return profileData;
+            if (!IsActive)
+            {
+                throw new InvalidOperationException("Cannot stop profiling: no active profiling session.");
+            }
+
+            timeTracker.Stop();
+            ResourceMetrics endMetrics = metricsFactory.CreateSnapshot();
+            DateTime sessionEndTime = DateTime.Now;
+
+            return new ProfileSnapshot(
+                elapsedTime: timeTracker.GetElapsedTime(),
+                startMetrics: startMetrics,
+                endMetrics: endMetrics,
+                startTime: sessionStartTime,
+                endTime: sessionEndTime
+            );
         }
 
         /// <summary>
-        ///     Gets the cpu usage
+        ///     Gets the current profiling snapshot without stopping the session.
+        ///     Useful for real-time monitoring during long-running operations.
         /// </summary>
-        /// <returns>The cpu usage</returns>
-        public double GetCpuUsage()
+        /// <returns>
+        ///     A <see cref="ProfileSnapshot" /> representing the current state.
+        /// </returns>
+        public ProfileSnapshot GetCurrentSnapshot()
         {
-            double cpuUsage = Process.GetCurrentProcess().TotalProcessorTime.TotalMilliseconds;
-            // This is a placeholder, replace with actual code
-            return cpuUsage;
+            ResourceMetrics currentMetrics = metricsFactory.CreateSnapshot();
+            DateTime currentTime = DateTime.Now;
+
+            return new ProfileSnapshot(
+                elapsedTime: timeTracker.GetElapsedTime(),
+                startMetrics: startMetrics,
+                endMetrics: currentMetrics,
+                startTime: sessionStartTime,
+                endTime: currentTime
+            );
         }
 
         /// <summary>
-        ///     Gets the memory usage
+        ///     Resets the profiler service to its initial state, clearing all data.
         /// </summary>
-        /// <returns>The memory usage</returns>
-        public long GetMemoryUsage()
+        public void Reset()
         {
-            long memoryUsage = Process.GetCurrentProcess().WorkingSet64;
-            // This is a placeholder, replace with actual code
-            return memoryUsage;
+            timeTracker.Reset();
+            startMetrics = ResourceMetrics.Empty;
+            sessionStartTime = DateTime.MinValue;
         }
-
-        /// <summary>
-        ///     Gets the profile data
-        /// </summary>
-        /// <returns>The profile data</returns>
-        public ProfileData GetProfileData() => profileData;
     }
 }
+
