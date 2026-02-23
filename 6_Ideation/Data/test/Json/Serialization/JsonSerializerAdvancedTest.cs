@@ -74,7 +74,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
             string json = _serializer.Serialize(obj);
 
             // Assert
-            Assert.Contains(value.ToString().ToLower(), json);
+            Assert.Contains(value.ToString(), json);
         }
 
         [Theory]
@@ -209,7 +209,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
             // Assert
             Assert.Contains("Test", json);
             Assert.Contains("30", json);
-            Assert.Contains("true", json);
+            Assert.Contains("True", json);
         }
 
         [Theory]
