@@ -76,6 +76,7 @@ jobs:
           rm -rf ./.test                                                                                                                                                 
           mkdir -p ./.test
           
-          dotnet test ./alis.sln -c Release --no-build -f net10.0 -v minimal /p:CollectCoverage=true
+          dotnet test ./alis.sln -c Release --no-build -f net10.0 -v minimal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:UseSourceLink=true /p:DeterministicSourcePaths=true
+           
           
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
