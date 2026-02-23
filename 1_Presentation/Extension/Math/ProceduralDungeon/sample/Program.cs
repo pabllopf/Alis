@@ -183,6 +183,7 @@ namespace Sample
             }
         }
 
+        
         /// <summary>
         ///     Visualizes a dungeon in the console.
         /// </summary>
