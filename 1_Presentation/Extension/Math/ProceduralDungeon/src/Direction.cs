@@ -32,23 +32,23 @@ namespace Alis.Extension.Math.ProceduralDungeon
     /// <summary>
     ///     The direction enum
     /// </summary>
-    public enum Direction
+    public enum Direction : int
     {
         /// <summary>
         ///     The none direction
         /// </summary>
-        None,
+        None = 0,
 
         /// <summary>The north</summary>
-        North,
+        North = 1,
 
         /// <summary>The east</summary>
-        East,
+        East = 2,
 
         /// <summary>The south</summary>
-        South,
+        South = 3,
 
         /// <summary>The west</summary>
-        West
+        West = 4
     }
 }

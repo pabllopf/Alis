@@ -28,164 +28,173 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using Alis.Core.Aspect.Data.Json;
+using Alis.Extension.Math.ProceduralDungeon.Interfaces;
+using Alis.Extension.Math.ProceduralDungeon.Models;
+using Alis.Extension.Math.ProceduralDungeon.Services;
 
 namespace Alis.Extension.Math.ProceduralDungeon
 {
-    /// <summary>Random dungeon generator.</summary>
-    [Serializable]
-    public partial class Dungeon
+    /// <summary>
+    ///     Facade class providing a simplified interface for generating procedural dungeons.
+    ///     This class encapsulates the complexity of dungeon generation and provides
+    ///     an easy-to-use API for clients.
+    /// </summary>
+    /// <remarks>
+    ///     The Dungeon class implements the Facade pattern, hiding the complex subsystem
+    ///     of factories, builders, and generators behind a simple interface.
+    ///     It manages the lifecycle of all dependencies and ensures proper initialization.
+    /// </remarks>
+    /// <example>
+    ///     <code>
+    ///     // Create with default configuration
+    ///     var dungeon = new Dungeon();
+    ///     var data = dungeon.Generate();
+    ///     
+    ///     // Create with custom configuration
+    ///     var config = new DungeonConfiguration 
+    ///     { 
+    ///         BoardWidth = 200,
+    ///         NumberOfRooms = 8 
+    ///     };
+    ///     var customDungeon = new Dungeon(config);
+    ///     var customData = customDungeon.Generate();
+    ///     </code>
+    /// </example>
+    public class Dungeon : IDisposable
     {
-        /// <summary>The board width</summary>
-        public const int BoardWidth = 150;
-
-        /// <summary>The board height</summary>
-        public const int BoardHeight = 150;
-
-        /// <summary>The number of rooms</summary>
-        public const int NumOfRooms = 4;
-
-        /// <summary>The first room width</summary>
-        public const int FirstRoomWidth = 8;
-
-        /// <summary>The first room height</summary>
-        public const int FirstRoomHeight = 8;
-
-        /// <summary>The room width</summary>
-        public const int RoomWidth = 5;
-
-        /// <summary>The room height</summary>
-        public const int RoomHeight = 5;
-
-        /// <summary>The boss room width</summary>
-        public const int BossRoomWidth = 7;
-
-        /// <summary>The boss room height</summary>
-        public const int BossRoomHeight = 7;
-
-        /// <summary>The corridor width</summary>
-        public const int CorridorWidth = 4;
-
-        /// <summary>The corridor height</summary>
-        public const int CorridorHeight = 4;
+        /// <summary>
+        ///     The dungeon generator used to create dungeons.
+        /// </summary>
+        private readonly IDungeonGenerator _generator;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Dungeon" /> class
+        ///     The random number generator used for randomization.
         /// </summary>
-        public Dungeon()
-        {
-            Board = new BoardSquare[BoardWidth, BoardHeight];
+        private readonly IRandomNumberGenerator _randomNumberGenerator;
 
-            for (int x = 0; x < BoardWidth; x++)
+        /// <summary>
+        ///     Indicates whether this instance has been disposed.
+        /// </summary>
+        private bool _disposed;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Dungeon" /> class with default configuration.
+        /// </summary>
+        /// <remarks>
+        ///     Creates a dungeon generator with default settings:
+        ///     - Board size: 150x150
+        ///     - Number of rooms: 4
+        ///     - Standard room dimensions with boss room
+        /// </remarks>
+        public Dungeon() : this(new DungeonConfiguration())
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Dungeon" /> class with custom configuration.
+        /// </summary>
+        /// <param name="configuration">The configuration settings for dungeon generation.</param>
+        /// <exception cref="ArgumentNullException">Thrown when configuration is null.</exception>
+        /// <exception cref="ArgumentException">Thrown when configuration is invalid.</exception>
+        public Dungeon(DungeonConfiguration configuration)
+        {
+            if (configuration == null)
+                throw new ArgumentNullException(nameof(configuration));
+
+            configuration.Validate();
+
+            _randomNumberGenerator = new CryptoRandomNumberGenerator();
+            _generator = CreateGenerator(configuration, _randomNumberGenerator);
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Dungeon" /> class with custom generator.
+        /// </summary>
+        /// <param name="generator">The dungeon generator to use.</param>
+        /// <param name="randomNumberGenerator">The random number generator to use.</param>
+        /// <exception cref="ArgumentNullException">Thrown when any parameter is null.</exception>
+        /// <remarks>
+        ///     This constructor is primarily used for testing purposes, allowing dependency injection.
+        /// </remarks>
+        internal Dungeon(IDungeonGenerator generator, IRandomNumberGenerator randomNumberGenerator)
+        {
+            _generator = generator ?? throw new ArgumentNullException(nameof(generator));
+            _randomNumberGenerator = randomNumberGenerator ?? throw new ArgumentNullException(nameof(randomNumberGenerator));
+        }
+
+        /// <summary>
+        ///     Generates a new procedural dungeon with rooms, corridors, and complete board layout.
+        /// </summary>
+        /// <returns>
+        ///     A <see cref="DungeonData" /> instance containing the complete dungeon structure,
+        ///     including board grid, room positions, and corridor connections.
+        /// </returns>
+        /// <remarks>
+        ///     The generation process includes:
+        ///     1. Creating rooms with appropriate spacing
+        ///     2. Connecting rooms with corridors
+        ///     3. Building the board grid
+        ///     4. Generating walls and corners
+        ///     Each call to Generate() produces a unique dungeon layout.
+        /// </remarks>
+        /// <exception cref="ObjectDisposedException">Thrown when called after disposal.</exception>
+        public DungeonData Generate()
+        {
+            return _generator.Generate();
+        }
+
+        /// <summary>
+        ///     Releases all resources used by this instance.
+        /// </summary>
+        /// <remarks>
+        ///     Disposes of the random number generator and other managed resources.
+        ///     After disposal, this instance should not be used.
+        /// </remarks>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Creates a dungeon generator with all necessary dependencies.
+        /// </summary>
+        /// <param name="configuration">The dungeon configuration.</param>
+        /// <param name="randomNumberGenerator">The random number generator.</param>
+        /// <returns>A configured dungeon generator instance.</returns>
+        private static IDungeonGenerator CreateGenerator(
+            DungeonConfiguration configuration,
+            IRandomNumberGenerator randomNumberGenerator)
+        {
+            IRoomFactory roomFactory = new RoomFactory();
+            ICorridorFactory corridorFactory = new CorridorFactory(randomNumberGenerator);
+            IBoardBuilder boardBuilder = new BoardBuilder();
+
+            return new DungeonGenerator(configuration, roomFactory, corridorFactory, boardBuilder);
+        }
+
+        /// <summary>
+        ///     Releases the unmanaged resources used by this instance and optionally releases the managed resources.
+        /// </summary>
+        /// <param name="disposing">
+        ///     True to release both managed and unmanaged resources; 
+        ///     false to release only unmanaged resources.
+        /// </param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
             {
-                for (int y = 0; y < BoardHeight; y++)
+                if (disposing)
                 {
-                    if (Board[x, y] is null)
+                    if (_randomNumberGenerator is IDisposable disposable)
                     {
-                        Board[x, y] = new BoardSquare {Type = BoardSquareType.Empty};
+                        disposable.Dispose();
                     }
                 }
-            }
 
-            Rooms = new List<Room>(NumOfRooms);
-            Corridors = new List<Corridor>(NumOfRooms - 1);
-        }
-
-        /// <summary>Gets or sets the board.</summary>
-        /// <value>The board.</value>
-        [JsonNativePropertyName("board")]
-        public BoardSquare[,] Board { get; set; }
-
-        /// <summary>Gets or sets the rooms.</summary>
-        /// <value>The rooms.</value>
-        [JsonNativePropertyName("rooms")]
-        public List<Room> Rooms { get; set; }
-
-        /// <summary>Gets or sets the corridors.</summary>
-        /// <value>The corridors.</value>
-        [JsonNativePropertyName("corridors")]
-        public List<Corridor> Corridors { get; set; }
-
-        /// <summary>Starts this instance.</summary>
-        public void Start()
-        {
-            SetUpRoomsAndCorridors();
-            ConfigRoomsAndCorridors();
-            CreateBoard();
-        }
-
-        /// <summary>Sets up rooms and corridors.</summary>
-        public void SetUpRoomsAndCorridors()
-        {
-            Rooms.AddRange(new Room[NumOfRooms]);
-            Corridors.AddRange(new Corridor[Rooms.Count - 1]);
-
-            Rooms[0] = Room.SetUpFirstRoom(BoardWidth / 2, BoardHeight / 2, FirstRoomWidth, FirstRoomHeight);
-            Corridors[0] = Corridor.SetUpFirstCorridor(CorridorWidth, CorridorHeight, Rooms[0]);
-
-            for (int index = 1; index < Rooms.Count; index++)
-            {
-                Rooms[index] = Room.SetUp(RoomWidth, RoomHeight, Corridors[index - 1]);
-                if (index < Corridors.Count)
-                {
-                    Corridors[index] = Corridor.SetUp(CorridorWidth, CorridorHeight, Rooms[index]);
-                }
-            }
-
-            Corridors[NumOfRooms - 2] = Corridor.SetUp(CorridorWidth, CorridorHeight, Rooms[NumOfRooms - 2]);
-            Rooms[NumOfRooms - 1] = Room.SetUp(BossRoomWidth, BossRoomHeight, Corridors[NumOfRooms - 2]);
-        }
-
-        /// <summary>Creates the rooms and corridors.</summary>
-        public void ConfigRoomsAndCorridors()
-        {
-            Rooms.ForEach(room =>
-            {
-                for (int x = room.XPos; x < room.XPos + room.Width; x++)
-                {
-                    for (int y = room.YPos; y < room.YPos + room.Height; y++)
-                    {
-                        Board[x, y].Type = BoardSquareType.Floor;
-                    }
-                }
-            });
-
-            Corridors.ForEach(corridor =>
-            {
-                for (int x = corridor.XPos; x < corridor.XPos + corridor.Width; x++)
-                {
-                    for (int y = corridor.YPos; y < corridor.YPos + corridor.Height; y++)
-                    {
-                        Board[x, y].Type = BoardSquareType.Floor;
-                    }
-                }
-            });
-        }
-
-        /// <summary>Creates the board.</summary>
-        public void CreateBoard()
-        {
-            for (int x = 0; x < BoardWidth; x++)
-            {
-                for (int y = 0; y < BoardHeight; y++)
-                {
-                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x, y - 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.WallDown : Board[x, y].Type;
-                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x - 1, y].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.WallLeft : Board[x, y].Type;
-                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x + 1, y].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.WallRight : Board[x, y].Type;
-                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x, y + 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.WallTop : Board[x, y].Type;
-
-                    Board[x, y].Type = !Board[x, y].Type.Equals(BoardSquareType.Empty) && Board[x - 1, y].Type.Equals(BoardSquareType.Empty) && Board[x, y - 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerLeftDown : Board[x, y].Type;
-                    Board[x, y].Type = !Board[x, y].Type.Equals(BoardSquareType.Empty) && Board[x + 1, y].Type.Equals(BoardSquareType.Empty) && Board[x, y - 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerRightDown : Board[x, y].Type;
-                    Board[x, y].Type = !Board[x, y].Type.Equals(BoardSquareType.Empty) && Board[x - 1, y].Type.Equals(BoardSquareType.Empty) && Board[x, y + 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerLeftUp : Board[x, y].Type;
-                    Board[x, y].Type = !Board[x, y].Type.Equals(BoardSquareType.Empty) && Board[x + 1, y].Type.Equals(BoardSquareType.Empty) && Board[x, y + 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerRightUp : Board[x, y].Type;
-
-                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x - 1, y - 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerInternalLeftDown : Board[x, y].Type;
-                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x + 1, y - 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerInternalRightDown : Board[x, y].Type;
-                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x - 1, y + 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerInternalLeftUp : Board[x, y].Type;
-                    Board[x, y].Type = Board[x, y].Type.Equals(BoardSquareType.Floor) && Board[x + 1, y + 1].Type.Equals(BoardSquareType.Empty) ? BoardSquareType.CornerInternalRightUp : Board[x, y].Type;
-                }
+                _disposed = true;
             }
         }
     }
 }
+

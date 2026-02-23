@@ -27,297 +27,276 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
+using Alis.Extension.Math.ProceduralDungeon.Models;
 using Xunit;
 
 namespace Alis.Extension.Math.ProceduralDungeon.Test
 {
     /// <summary>
-    ///     The dungeon test class
+    ///     Test class for <see cref="Dungeon" />.
+    ///     Verifies the main facade class functionality.
     /// </summary>
     public class DungeonTest
     {
         /// <summary>
-        ///     Tests that set up first room should initialize room with given parameters
+        ///     Tests that default constructor creates a valid dungeon.
         /// </summary>
         [Fact]
-        public void SetUpFirstRoom_ShouldInitializeRoomWithGivenParameters()
+        public void Constructor_Default_CreatesValidInstance()
         {
-            // Arrange
-            int xPos = 5;
-            int yPos = 10;
-            int width = 15;
-            int height = 20;
-
             // Act
-            Room room = Room.SetUpFirstRoom(xPos, yPos, width, height);
+            using Dungeon dungeon = new Dungeon();
 
             // Assert
-            Assert.Equal(xPos, room.XPos);
-            Assert.Equal(yPos, room.YPos);
-            Assert.Equal(width, room.Width);
-            Assert.Equal(height, room.Height);
+            Assert.NotNull(dungeon);
         }
 
         /// <summary>
-        ///     Tests that set up should initialize room with correct parameters when direction is north
+        ///     Tests that constructor with configuration creates a valid dungeon.
         /// </summary>
         [Fact]
-        public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsNorth()
+        public void Constructor_WithConfiguration_CreatesValidInstance()
         {
             // Arrange
-            int width = 10;
-            int height = 5;
-            Corridor corridor = new Corridor(5, 5, 10, 2, Direction.North);
-
-            // Act
-            Room room = Room.SetUp(width, height, corridor);
-
-            // Assert
-            Assert.Equal(5, room.XPos);
-            Assert.Equal(7, room.YPos);
-            Assert.Equal(width, room.Width);
-            Assert.Equal(height, room.Height);
-            Assert.Equal(Direction.North, room.Direction);
-        }
-
-        /// <summary>
-        ///     Tests that set up should initialize room with correct parameters when direction is south
-        /// </summary>
-        [Fact]
-        public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsSouth()
-        {
-            // Arrange
-            int width = 10;
-            int height = 5;
-            Corridor corridor = new Corridor(5, 5, 10, 2, Direction.South);
-
-            // Act
-            Room room = Room.SetUp(width, height, corridor);
-
-            // Assert
-            Assert.Equal(5, room.XPos);
-            Assert.Equal(0, room.YPos);
-            Assert.Equal(width, room.Width);
-            Assert.Equal(height, room.Height);
-            Assert.Equal(Direction.South, room.Direction);
-        }
-
-        /// <summary>
-        ///     Tests that set up should initialize room with correct parameters when direction is east
-        /// </summary>
-        [Fact]
-        public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsEast()
-        {
-            // Arrange
-            int width = 10;
-            int height = 5;
-            Corridor corridor = new Corridor(5, 5, 2, 10, Direction.East);
-
-            // Act
-            Room room = Room.SetUp(width, height, corridor);
-
-            // Assert
-            Assert.True(room.XPos >= 0);
-            Assert.True(room.YPos >= 0);
-            Assert.Equal(height, room.Width);
-            Assert.Equal(width, room.Height);
-            Assert.Equal(Direction.East, room.Direction);
-        }
-
-        /// <summary>
-        ///     Tests that set up should initialize room with correct parameters when direction is west
-        /// </summary>
-        [Fact]
-        public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsWest()
-        {
-            // Arrange
-            int width = 10;
-            int height = 5;
-            Corridor corridor = new Corridor(5, 5, 2, 10, Direction.West);
-
-            // Act
-            Room room = Room.SetUp(width, height, corridor);
-
-            // Assert
-            Assert.True(room.XPos >= 0);
-            Assert.True(room.YPos >= 0);
-            Assert.Equal(height, room.Width);
-            Assert.Equal(width, room.Height);
-            Assert.Equal(Direction.West, room.Direction);
-        }
-
-        /// <summary>
-        ///     Tests that start should initialize rooms and corridors
-        /// </summary>
-        [Fact]
-        public void Start_ShouldInitializeRoomsAndCorridors()
-        {
-            // Arrange
-            Dungeon dungeon = new Dungeon();
-
-            // Act
-            dungeon.Start();
-
-            // Assert
-            Assert.NotNull(dungeon.Rooms);
-            Assert.NotNull(dungeon.Corridors);
-        }
-
-        /// <summary>
-        ///     Tests that set up rooms and corridors should set up rooms and corridors correctly
-        /// </summary>
-        [Fact]
-        public void SetUpRoomsAndCorridors_ShouldSetUpRoomsAndCorridorsCorrectly()
-        {
-            // Arrange
-            Dungeon dungeon = new Dungeon();
-
-            // Act
-            dungeon.SetUpRoomsAndCorridors();
-            dungeon.ConfigRoomsAndCorridors();
-            dungeon.CreateBoard();
-
-            // Assert
-            Assert.NotNull(dungeon.Rooms);
-            Assert.NotNull(dungeon.Corridors);
-            Assert.Equal(Dungeon.NumOfRooms, dungeon.Rooms.Count);
-            Assert.Equal(Dungeon.NumOfRooms - 1, dungeon.Corridors.Count);
-            Assert.Equal(Dungeon.FirstRoomWidth, dungeon.Rooms[0].Width);
-            Assert.Equal(Dungeon.FirstRoomHeight, dungeon.Rooms[0].Height);
-        }
-
-        /// <summary>
-        ///     Tests that config rooms and corridors should configure board correctly
-        /// </summary>
-        [Fact]
-        public void ConfigRoomsAndCorridors_ShouldConfigureBoardCorrectly()
-        {
-            // Arrange
-            Dungeon dungeon = new Dungeon();
-            dungeon.SetUpRoomsAndCorridors();
-
-            // Act
-            dungeon.ConfigRoomsAndCorridors();
-
-            // Assert
-            foreach (Room room in dungeon.Rooms)
+            DungeonConfiguration config = new DungeonConfiguration
             {
-                for (int x = room.XPos; x < room.XPos + room.Width; x++)
+                BoardWidth = 100,
+                BoardHeight = 100,
+                NumberOfRooms = 5
+            };
+
+            // Act
+            using Dungeon dungeon = new Dungeon(config);
+
+            // Assert
+            Assert.NotNull(dungeon);
+        }
+
+        /// <summary>
+        ///     Tests that constructor throws exception with null configuration.
+        /// </summary>
+        [Fact]
+        public void Constructor_WithNullConfiguration_ThrowsArgumentNullException()
+        {
+            // Arrange
+            DungeonConfiguration config = null;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => new Dungeon(config));
+        }
+
+        /// <summary>
+        ///     Tests that constructor throws exception with invalid configuration.
+        /// </summary>
+        [Fact]
+        public void Constructor_WithInvalidConfiguration_ThrowsArgumentException()
+        {
+            // Arrange
+            DungeonConfiguration config = new DungeonConfiguration
+            {
+                BoardWidth = -100,
+                BoardHeight = 100
+            };
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => new Dungeon(config));
+        }
+
+        /// <summary>
+        ///     Tests that Generate returns valid dungeon data.
+        /// </summary>
+        [Fact]
+        public void Generate_ReturnsValidDungeonData()
+        {
+            // Arrange
+            using Dungeon dungeon = new Dungeon();
+
+            // Act
+            DungeonData data = dungeon.Generate();
+
+            // Assert
+            Assert.NotNull(data);
+            Assert.NotNull(data.Board);
+            Assert.NotNull(data.Rooms);
+            Assert.NotNull(data.Corridors);
+            Assert.True(data.Width > 0);
+            Assert.True(data.Height > 0);
+        }
+
+        /// <summary>
+        ///     Tests that Generate creates expected number of rooms.
+        /// </summary>
+        [Fact]
+        public void Generate_CreatesExpectedNumberOfRooms()
+        {
+            // Arrange
+            DungeonConfiguration config = new DungeonConfiguration
+            {
+                NumberOfRooms = 5
+            };
+            using Dungeon dungeon = new Dungeon(config);
+
+            // Act
+            DungeonData data = dungeon.Generate();
+
+            // Assert
+            Assert.Equal(5, data.Rooms.Count);
+        }
+
+        /// <summary>
+        ///     Tests that Generate creates expected number of corridors.
+        /// </summary>
+        [Fact]
+        public void Generate_CreatesExpectedNumberOfCorridors()
+        {
+            // Arrange
+            DungeonConfiguration config = new DungeonConfiguration
+            {
+                NumberOfRooms = 5
+            };
+            using Dungeon dungeon = new Dungeon(config);
+
+            // Act
+            DungeonData data = dungeon.Generate();
+
+            // Assert
+            Assert.Equal(5, data.Corridors.Count); // Number of rooms = number of corridors
+        }
+
+        /// <summary>
+        ///     Tests that Generate creates a boss room.
+        /// </summary>
+        [Fact]
+        public void Generate_CreatesBossRoom()
+        {
+            // Arrange
+            using Dungeon dungeon = new Dungeon();
+
+            // Act
+            DungeonData data = dungeon.Generate();
+
+            // Assert
+            bool hasBossRoom = false;
+            foreach (RoomData room in data.Rooms)
+            {
+                if (room.IsBossRoom)
                 {
-                    for (int y = room.YPos; y < room.YPos + room.Height; y++)
-                    {
-                        Assert.Equal(BoardSquareType.Floor, dungeon.Board[x, y].Type);
-                    }
+                    hasBossRoom = true;
+                    break;
                 }
             }
+            Assert.True(hasBossRoom);
+        }
 
-            foreach (Corridor corridor in dungeon.Corridors)
+        /// <summary>
+        ///     Tests that Generate can be called multiple times.
+        /// </summary>
+        [Fact]
+        public void Generate_CalledMultipleTimes_ReturnsNewDungeons()
+        {
+            // Arrange
+            using Dungeon dungeon = new Dungeon();
+
+            // Act
+            DungeonData data1 = dungeon.Generate();
+            DungeonData data2 = dungeon.Generate();
+
+            // Assert
+            Assert.NotSame(data1, data2);
+            Assert.NotSame(data1.Rooms, data2.Rooms);
+            Assert.NotSame(data1.Corridors, data2.Corridors);
+        }
+        
+
+        /// <summary>
+        ///     Tests that Dispose can be called multiple times safely.
+        /// </summary>
+        [Fact]
+        public void Dispose_CalledMultipleTimes_DoesNotThrow()
+        {
+            // Arrange
+            Dungeon dungeon = new Dungeon();
+
+            // Act & Assert
+            dungeon.Dispose();
+            dungeon.Dispose(); // Should not throw
+        }
+
+        /// <summary>
+        ///     Tests that dungeon generation respects board size configuration.
+        /// </summary>
+        [Fact]
+        public void Generate_RespectsConfiguredBoardSize()
+        {
+            // Arrange
+            int width = 200;
+            int height = 250;
+            DungeonConfiguration config = new DungeonConfiguration
             {
-                for (int x = corridor.XPos; x < corridor.XPos + corridor.Width; x++)
+                BoardWidth = width,
+                BoardHeight = height
+            };
+            using Dungeon dungeon = new Dungeon(config);
+
+            // Act
+            DungeonData data = dungeon.Generate();
+
+            // Assert
+            Assert.Equal(width, data.Width);
+            Assert.Equal(height, data.Height);
+        }
+
+        /// <summary>
+        ///     Tests that generated dungeon has valid board with all squares initialized.
+        /// </summary>
+        [Fact]
+        public void Generate_CreatesValidBoardWithInitializedSquares()
+        {
+            // Arrange
+            using Dungeon dungeon = new Dungeon();
+
+            // Act
+            DungeonData data = dungeon.Generate();
+
+            // Assert
+            for (int x = 0; x < data.Width; x++)
+            {
+                for (int y = 0; y < data.Height; y++)
                 {
-                    for (int y = corridor.YPos; y < corridor.YPos + corridor.Height; y++)
-                    {
-                        Assert.Equal(BoardSquareType.Floor, dungeon.Board[x, y].Type);
-                    }
+                    Assert.NotNull(data.Board[x, y]);
                 }
             }
         }
 
         /// <summary>
-        ///     Tests that board should be initialized with correct dimensions
+        ///     Tests that generated dungeon has at least one floor tile.
         /// </summary>
         [Fact]
-        public void Board_ShouldBeInitializedWithCorrectDimensions()
+        public void Generate_CreatesAtLeastOneFloorTile()
         {
             // Arrange
-            Dungeon dungeon = new Dungeon();
+            using Dungeon dungeon = new Dungeon();
 
             // Act
-            BoardSquare[,] board = dungeon.Board;
+            DungeonData data = dungeon.Generate();
 
             // Assert
-            Assert.Equal(Dungeon.BoardWidth, board.GetLength(0));
-            Assert.Equal(Dungeon.BoardHeight, board.GetLength(1));
-        }
-
-        /// <summary>
-        ///     Tests that rooms should be initialized as empty list
-        /// </summary>
-        [Fact]
-        public void Rooms_ShouldBeInitializedAsEmptyList()
-        {
-            // Arrange
-            Dungeon dungeon = new Dungeon();
-
-            // Act
-            List<Room> rooms = dungeon.Rooms;
-
-            // Assert
-            Assert.NotNull(rooms);
-            Assert.Empty(rooms);
-        }
-
-        /// <summary>
-        ///     Tests that corridors should be initialized as empty list
-        /// </summary>
-        [Fact]
-        public void Corridors_ShouldBeInitializedAsEmptyList()
-        {
-            // Arrange
-            Dungeon dungeon = new Dungeon();
-
-            // Act
-            List<Corridor> corridors = dungeon.Corridors;
-
-            // Assert
-            Assert.NotNull(corridors);
-            Assert.Empty(corridors);
-        }
-
-        /// <summary>
-        ///     Tests that create board should create board with correct walls and corners
-        /// </summary>
-        [Fact]
-        public void CreateBoard_ShouldCreateBoardWithCorrectWallsAndCorners()
-        {
-            // Arrange
-            Dungeon dungeon = new Dungeon();
-            dungeon.SetUpRoomsAndCorridors();
-            dungeon.ConfigRoomsAndCorridors();
-
-            // Act
-            dungeon.CreateBoard();
-
-            // Assert
-            for (int x = 0; x < Dungeon.BoardWidth; x++)
+            bool hasFloor = false;
+            for (int x = 0; x < data.Width; x++)
             {
-                for (int y = 0; y < Dungeon.BoardHeight; y++)
+                for (int y = 0; y < data.Height; y++)
                 {
-                    if (dungeon.Board[x, y].Type == BoardSquareType.Floor)
+                    if (data.Board[x, y].Type == BoardSquareType.Floor)
                     {
-                        if (dungeon.Board[x, y - 1].Type == BoardSquareType.Empty)
-                        {
-                            Assert.Equal(BoardSquareType.WallDown, dungeon.Board[x, y].Type);
-                        }
-
-                        if (dungeon.Board[x - 1, y].Type == BoardSquareType.Empty)
-                        {
-                            Assert.Equal(BoardSquareType.WallLeft, dungeon.Board[x, y].Type);
-                        }
-
-                        if (dungeon.Board[x + 1, y].Type == BoardSquareType.Empty)
-                        {
-                            Assert.Equal(BoardSquareType.WallRight, dungeon.Board[x, y].Type);
-                        }
-
-                        if (dungeon.Board[x, y + 1].Type == BoardSquareType.Empty)
-                        {
-                            Assert.Equal(BoardSquareType.WallTop, dungeon.Board[x, y].Type);
-                        }
+                        hasFloor = true;
+                        break;
                     }
                 }
+                if (hasFloor) break;
             }
+            Assert.True(hasFloor);
         }
     }
 }
+
