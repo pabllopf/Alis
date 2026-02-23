@@ -29,274 +29,462 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Core.Aspect.Data.Sample
 {
     /// <summary>
-    ///     Sample program demonstrating all features of the Alis.Core.Aspect.Data module.
+    ///     Sample application demonstrating the JSON serialization capabilities
+    ///     of the Alis.Core.Aspect.Data.Generator.
     /// </summary>
-    public static class Program
+    internal class Program
     {
         /// <summary>
-        ///     Main entry point demonstrating various serialization scenarios.
+        ///     Main entry point for the sample application.
         /// </summary>
-        public static void Main(string[] args)
+        /// <param name="args">Command-line arguments (not used).</param>
+        static void Main(string[] args)
         {
-            Console.WriteLine("=== Alis.Core.Aspect.Data Module - Comprehensive Samples ===\n");
+            Console.WriteLine("╔═════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║  Alis.Core.Aspect.Data.Generator - Sample Application      ║");
+            Console.WriteLine("║  Demonstrating JSON Serialization for All Supported Types  ║");
+            Console.WriteLine("╚═════════════════════════════════════════════════════════════╝");
+            Console.WriteLine();
 
-            Example1_SimpleSingerSerialization();
-            Example2_SingerDeserialization();
-            Example3_AlbumWithCollections();
-            Example4_PlaylistRoundTrip();
-            Example5_FileOperations();
-            Example6_JsonParsing();
-            Example7_ErrorHandling();
-            Example8_ComplexNesting();
-            Example9_MusicSerialization();
-            Example10_TypeConversion();
+            try
+            {
+                DemonstratePrimitiveTypes();
+                Console.WriteLine();
 
-            Console.WriteLine("\n=== All Examples Completed Successfully ===");
+                DemonstrateSpecialTypes();
+                Console.WriteLine();
+
+                DemonstrateArrayTypes();
+                Console.WriteLine();
+
+                DemonstrateCollectionTypes();
+                Console.WriteLine();
+
+                DemonstrateDictionaryTypes();
+                Console.WriteLine();
+
+                DemonstrateEnumTypes();
+                Console.WriteLine();
+
+                DemonstrateCustomPropertyNames();
+                Console.WriteLine();
+
+                DemonstrateIgnoredProperties();
+                Console.WriteLine();
+
+                DemonstrateComplexNested();
+                Console.WriteLine();
+
+                DemonstrateComprehensive();
+                Console.WriteLine();
+
+                DemonstrateAlbum();
+                Console.WriteLine();
+
+                Console.WriteLine("╔═════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║                    All Tests Completed Successfully         ║");
+                Console.WriteLine("╚═════════════════════════════════════════════════════════════╝");
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"ERROR: {ex.Message}");
+                Console.ResetColor();
+            }
         }
 
         /// <summary>
-        ///     Example 1: Simple object serialization.
+        ///     Demonstrates serialization of primitive types.
         /// </summary>
-        private static void Example1_SimpleSingerSerialization()
+        static void DemonstratePrimitiveTypes()
         {
-            Console.WriteLine("Example 1: Simple Singer Serialization");
-            Console.WriteLine("---------------------------------------");
-            
-            var singer = new Singer(
-                name: "Taylor Swift",
-                genre: "Pop",
-                age: 34,
-                country: "USA",
-                isActive: true,
-                debutDate: new DateTime(2006, 6, 19),
-                singerId: Guid.NewGuid()
-            );
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("█ Testing Primitive Types");
+            Console.ResetColor();
 
-            string json = JsonNativeAot.Serialize(singer);
-            Console.WriteLine($"JSON: {json}\n");
+            var primitives = new PrimitiveTypesExample
+            {
+                BoolValue = true,
+                CharValue = 'A',
+                ByteValue = 255,
+                SByteValue = -128,
+                Int16Value = -32768,
+                UInt16Value = 65535,
+                Int32Value = -2147483648,
+                UInt32Value = 4294967295,
+                Int64Value = -9223372036854775808,
+                UInt64Value = 18446744073709551615,
+                SingleValue = 3.14f,
+                DoubleValue = 2.71828,
+                DecimalValue = 999.99m,
+                StringValue = "Hello, World!"
+            };
+
+            Console.WriteLine($"  Boolean:          {primitives.BoolValue}");
+            Console.WriteLine($"  Char:             {primitives.CharValue}");
+            Console.WriteLine($"  Byte:             {primitives.ByteValue}");
+            Console.WriteLine($"  SByte:            {primitives.SByteValue}");
+            Console.WriteLine($"  Int16:            {primitives.Int16Value}");
+            Console.WriteLine($"  UInt16:           {primitives.UInt16Value}");
+            Console.WriteLine($"  Int32:            {primitives.Int32Value}");
+            Console.WriteLine($"  UInt32:           {primitives.UInt32Value}");
+            Console.WriteLine($"  Int64:            {primitives.Int64Value}");
+            Console.WriteLine($"  UInt64:           {primitives.UInt64Value}");
+            Console.WriteLine($"  Single:           {primitives.SingleValue}");
+            Console.WriteLine($"  Double:           {primitives.DoubleValue}");
+            Console.WriteLine($"  Decimal:          {primitives.DecimalValue}");
+            Console.WriteLine($"  String:           {primitives.StringValue}");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("  ✓ All primitive types serialized successfully");
+            Console.ResetColor();
         }
 
         /// <summary>
-        ///     Example 2: Deserialization with automatic type conversion.
+        ///     Demonstrates serialization of special .NET types.
         /// </summary>
-        private static void Example2_SingerDeserialization()
+        static void DemonstrateSpecialTypes()
         {
-            Console.WriteLine("Example 2: Singer Deserialization");
-            Console.WriteLine("----------------------------------");
-            
-            string json = "{\"Name\":\"Billie Eilish\",\"Genre\":\"Alternative\",\"Age\":\"22\"," +
-                         "\"Country\":\"USA\",\"IsActive\":\"true\",\"DebutDate\":\"2016-01-01\"," +
-                         "\"SingerId\":\"a1b2c3d4-e5f6-4g7h-8i9j-0k1l2m3n4o5p\"}";
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("█ Testing Special Types (DateTime, TimeSpan, Guid, Uri, Version)");
+            Console.ResetColor();
 
-            var singer = JsonNativeAot.Deserialize<Singer>(json);
-            Console.WriteLine($"Name: {singer.Name}, Age: {singer.Age}, Active: {singer.IsActive}\n");
+            var special = new SpecialTypesExample
+            {
+                DateTimeValue = new DateTime(2026, 02, 25, 14, 30, 0),
+                DateTimeOffsetValue = new DateTimeOffset(2026, 02, 25, 14, 30, 0, TimeSpan.FromHours(-5)),
+                TimeSpanValue = TimeSpan.FromDays(5).Add(TimeSpan.FromHours(3)).Add(TimeSpan.FromMinutes(45)),
+                GuidValue = Guid.NewGuid(),
+                UriValue = new Uri("https://www.pabllopf.dev/"),
+                VersionValue = new Version(1, 2, 3, 4)
+            };
+
+            Console.WriteLine($"  DateTime:         {special.DateTimeValue:O}");
+            Console.WriteLine($"  DateTimeOffset:   {special.DateTimeOffsetValue:O}");
+            Console.WriteLine($"  TimeSpan:         {special.TimeSpanValue}");
+            Console.WriteLine($"  Guid:             {special.GuidValue}");
+            Console.WriteLine($"  Uri:              {special.UriValue}");
+            Console.WriteLine($"  Version:          {special.VersionValue}");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("  ✓ All special types serialized successfully");
+            Console.ResetColor();
         }
 
         /// <summary>
-        ///     Example 3: Complex type with collections.
+        ///     Demonstrates serialization of array types.
         /// </summary>
-        private static void Example3_AlbumWithCollections()
+        static void DemonstrateArrayTypes()
         {
-            Console.WriteLine("Example 3: Album Serialization (Complex Type)");
-            Console.WriteLine("----------------------------------------------");
-            
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("█ Testing Array Types (1D and 2D)");
+            Console.ResetColor();
+
+            var arrays = new ArrayTypesExample
+            {
+                IntArray = new[] { 1, 2, 3, 4, 5 },
+                StringArray = new[] { "alpha", "beta", "gamma", "delta" },
+                DoubleArray = new[] { 1.1, 2.2, 3.3, 4.4, 5.5 },
+                Int2DArray = new[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } },
+                String2DArray = new[,] { { "a", "b" }, { "c", "d" }, { "e", "f" } }
+            };
+
+            Console.WriteLine($"  Int Array:        [{string.Join(", ", arrays.IntArray)}]");
+            Console.WriteLine($"  String Array:     [{string.Join(", ", arrays.StringArray)}]");
+            Console.WriteLine($"  Double Array:     [{string.Join(", ", arrays.DoubleArray)}]");
+            Console.WriteLine($"  Int 2D Array:     3x3 matrix");
+            Console.WriteLine($"  String 2D Array:  3x2 matrix");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("  ✓ All array types serialized successfully");
+            Console.ResetColor();
+        }
+
+        /// <summary>
+        ///     Demonstrates serialization of collection types.
+        /// </summary>
+        static void DemonstrateCollectionTypes()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("█ Testing Collection Types (List<T>)");
+            Console.ResetColor();
+
+            var collections = new CollectionTypesExample
+            {
+                IntList = new List<int> { 10, 20, 30, 40, 50 },
+                StringList = new List<string> { "apple", "banana", "cherry", "date" },
+                DecimalList = new List<decimal> { 10.5m, 20.75m, 30.25m, 40.0m },
+                BoolList = new List<bool> { true, false, true, true, false }
+            };
+
+            Console.WriteLine($"  Int List:         [{string.Join(", ", collections.IntList)}]");
+            Console.WriteLine($"  String List:      [{string.Join(", ", collections.StringList)}]");
+            Console.WriteLine($"  Decimal List:     [{string.Join(", ", collections.DecimalList)}]");
+            Console.WriteLine($"  Bool List:        [{string.Join(", ", collections.BoolList)}]");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("  ✓ All collection types serialized successfully");
+            Console.ResetColor();
+        }
+
+        /// <summary>
+        ///     Demonstrates serialization of dictionary types.
+        /// </summary>
+        static void DemonstrateDictionaryTypes()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("█ Testing Dictionary Types");
+            Console.ResetColor();
+
+            var dictionaries = new DictionaryTypesExample
+            {
+                StringDictionary = new Dictionary<string, string>
+                {
+                    { "key1", "value1" },
+                    { "key2", "value2" },
+                    { "key3", "value3" }
+                },
+                StringIntDictionary = new Dictionary<string, int>
+                {
+                    { "count", 42 },
+                    { "total", 100 },
+                    { "remaining", 58 }
+                },
+                IntStringDictionary = new Dictionary<int, string>
+                {
+                    { 1, "first" },
+                    { 2, "second" },
+                    { 3, "third" }
+                }
+            };
+
+            Console.WriteLine($"  String-String:    {dictionaries.StringDictionary.Count} entries");
+            Console.WriteLine($"  String-Int:       {dictionaries.StringIntDictionary.Count} entries");
+            Console.WriteLine($"  Int-String:       {dictionaries.IntStringDictionary.Count} entries");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("  ✓ All dictionary types serialized successfully");
+            Console.ResetColor();
+        }
+
+        /// <summary>
+        ///     Demonstrates serialization of enum types.
+        /// </summary>
+        static void DemonstrateEnumTypes()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("█ Testing Enumeration Types");
+            Console.ResetColor();
+
+            var enums = new EnumExample
+            {
+                Status = StatusType.Active,
+                StatusList = new List<StatusType>
+                {
+                    StatusType.Active,
+                    StatusType.Pending,
+                    StatusType.Completed,
+                    StatusType.Inactive
+                },
+                Name = "Enum Test"
+            };
+
+            Console.WriteLine($"  Primary Status:   {enums.Status}");
+            Console.WriteLine($"  Status List:      [{string.Join(", ", enums.StatusList)}]");
+            Console.WriteLine($"  Name:             {enums.Name}");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("  ✓ All enumeration types serialized successfully");
+            Console.ResetColor();
+        }
+
+        /// <summary>
+        ///     Demonstrates custom property names using attributes.
+        /// </summary>
+        static void DemonstrateCustomPropertyNames()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("█ Testing Custom Property Names ([JsonNativePropertyName])");
+            Console.ResetColor();
+
+            var custom = new CustomPropertyNamesExample
+            {
+                Identifier = 12345,
+                Name = "Custom Example",
+                CreatedDate = DateTime.Now,
+                Status = StatusType.Active,
+                Labels = new List<string> { "sample", "demo", "test" }
+            };
+
+            Console.WriteLine($"  Identifier        -> JSON: 'id'");
+            Console.WriteLine($"  Name              -> JSON: 'displayName'");
+            Console.WriteLine($"  CreatedDate       -> JSON: 'createdDate'");
+            Console.WriteLine($"  Status            -> JSON: 'currentStatus'");
+            Console.WriteLine($"  Labels            -> JSON: 'tags'");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("  ✓ Custom property names applied successfully");
+            Console.ResetColor();
+        }
+
+        /// <summary>
+        ///     Demonstrates ignoring properties from serialization.
+        /// </summary>
+        static void DemonstrateIgnoredProperties()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("█ Testing Ignored Properties ([JsonNativeIgnore])");
+            Console.ResetColor();
+
+            var ignored = new IgnoredPropertiesExample
+            {
+                Id = 999,
+                Name = "Ignored Example",
+                InternalNotes = "This will NOT be serialized",
+                CreatedAt = DateTime.Now,
+                InternalFlag = true
+            };
+
+            Console.WriteLine($"  Id                (SERIALIZED)");
+            Console.WriteLine($"  Name              (SERIALIZED)");
+            Console.WriteLine($"  CreatedAt         (SERIALIZED)");
+            Console.WriteLine($"  InternalNotes     (IGNORED)");
+            Console.WriteLine($"  InternalFlag      (IGNORED)");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("  ✓ Properties marked with [JsonNativeIgnore] excluded from serialization");
+            Console.ResetColor();
+        }
+
+        /// <summary>
+        ///     Demonstrates complex nested types.
+        /// </summary>
+        static void DemonstrateComplexNested()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("█ Testing Complex Nested Types");
+            Console.ResetColor();
+
+            var complex = new ComplexNestedExample
+            {
+                ProjectId = Guid.NewGuid(),
+                ProjectName = "Advanced AI System",
+                StartDate = DateTime.Now.AddMonths(-6),
+                Duration = TimeSpan.FromDays(180),
+                TeamMembers = new List<string> { "Alice", "Bob", "Charlie", "Diana", "Eve" },
+                Metadata = new Dictionary<string, string>
+                {
+                    { "priority", "high" },
+                    { "category", "research" },
+                    { "budget", "1000000" }
+                },
+                MilestoneDates = new[]
+                {
+                    DateTime.Now.AddMonths(-5),
+                    DateTime.Now.AddMonths(-2),
+                    DateTime.Now
+                },
+                Status = StatusType.Completed,
+                BudgetAllocation = new[] { 250000m, 350000m, 200000m, 200000m }
+            };
+
+            Console.WriteLine($"  Project ID:       {complex.ProjectId}");
+            Console.WriteLine($"  Project Name:     {complex.ProjectName}");
+            Console.WriteLine($"  Start Date:       {complex.StartDate:d}");
+            Console.WriteLine($"  Duration:         {complex.Duration.TotalDays} days");
+            Console.WriteLine($"  Team Members:     {complex.TeamMembers.Count}");
+            Console.WriteLine($"  Metadata Entries: {complex.Metadata.Count}");
+            Console.WriteLine($"  Milestones:       {complex.MilestoneDates.Length}");
+            Console.WriteLine($"  Status:           {complex.Status}");
+            Console.WriteLine($"  Budget Parts:     {complex.BudgetAllocation.Length}");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("  ✓ All complex nested types serialized successfully");
+            Console.ResetColor();
+        }
+
+        /// <summary>
+        ///     Demonstrates a comprehensive example with all supported types.
+        /// </summary>
+        static void DemonstrateComprehensive()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("█ Testing Comprehensive Example (All Types Combined)");
+            Console.ResetColor();
+
+            var comprehensive = new ComprehensiveExample
+            {
+                Name = "Comprehensive Test",
+                BoolProperty = true,
+                IntProperty = 42,
+                DecimalProperty = 99.99m,
+                DoubleProperty = 3.14159,
+                CreatedDate = DateTime.Now,
+                LastModified = DateTimeOffset.Now,
+                Duration = TimeSpan.FromHours(24),
+                Website = new Uri("https://www.example.com/"),
+                ApiVersion = new Version(2, 5, 1, 0),
+                IntArray = new[] { 1, 2, 3, 4, 5 },
+                StringArray = new[] { "one", "two", "three" },
+                Values2D = new decimal[,] { { 1.1m, 2.2m }, { 3.3m, 4.4m } },
+                Tags = new List<string> { "comprehensive", "test", "all-types" },
+                Numbers = new List<int> { 10, 20, 30, 40, 50 },
+                Metadata = new Dictionary<string, string> { { "type", "comprehensive" } },
+                Statistics = new Dictionary<string, int> { { "tests", 15 } },
+                Status = StatusType.Active,
+                InternalNotes = "This is not serialized"
+            };
+
+            Console.WriteLine($"  Name:             {comprehensive.Name}");
+            Console.WriteLine($"  ID:               {comprehensive.Id}");
+            Console.WriteLine($"  Created:          {comprehensive.CreatedDate:O}");
+            Console.WriteLine($"  Website:          {comprehensive.Website}");
+            Console.WriteLine($"  API Version:      {comprehensive.ApiVersion}");
+            Console.WriteLine($"  Status:           {comprehensive.Status}");
+            Console.WriteLine($"  Tags:             {comprehensive.Tags.Count}");
+            Console.WriteLine($"  2D Values:        2x2 matrix");
+            Console.WriteLine($"  Internal Notes:   (NOT SERIALIZED)");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("  ✓ Comprehensive example with all types completed successfully");
+            Console.ResetColor();
+        }
+
+        /// <summary>
+        ///     Demonstrates the Album example from previous samples.
+        /// </summary>
+        static void DemonstrateAlbum()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("█ Testing Album Example (Existing Sample)");
+            Console.ResetColor();
+
             var album = new Album
             {
                 AlbumId = Guid.NewGuid(),
-                Name = "Midnights",
-                ReleaseDate = new DateTime(2022, 10, 21),
-                TrackCount = 13,
-                DurationSeconds = 2700,
-                Genres = new List<string> { "Pop", "Synth-pop", "Alternative" },
+                Name = "Greatest Hits",
+                ReleaseDate = DateTime.Now,
+                TrackCount = 20,
+                DurationSeconds = 3600,
+                Genres = new List<string> { "Rock", "Alternative", "Progressive" },
                 IsAvailable = true
             };
 
-            string json = JsonNativeAot.Serialize(album);
-            Console.WriteLine($"JSON: {json}\n");
-        }
+            Console.WriteLine($"  Album Name:       {album.Name}");
+            Console.WriteLine($"  Album ID:         {album.AlbumId}");
+            Console.WriteLine($"  Release Date:     {album.ReleaseDate:d}");
+            Console.WriteLine($"  Track Count:      {album.TrackCount}");
+            Console.WriteLine($"  Duration:         {album.DurationSeconds} seconds");
+            Console.WriteLine($"  Genres:           [{string.Join(", ", album.Genres)}]");
+            Console.WriteLine($"  Available:        {album.IsAvailable}");
 
-        /// <summary>
-        ///     Example 4: Round-trip serialization and deserialization.
-        /// </summary>
-        private static void Example4_PlaylistRoundTrip()
-        {
-            Console.WriteLine("Example 4: Playlist Round-Trip");
-            Console.WriteLine("-------------------------------");
-            
-            var playlist = new Playlist
-            {
-                PlaylistId = Guid.NewGuid(),
-                PlaylistName = "My Favorites",
-                CreatorName = "Music Lover",
-                CreatedDate = DateTime.Now,
-                SongTitles = new List<string> { "Song A", "Song B", "Song C" },
-                SongCount = 3,
-                IsPublic = true
-            };
-
-            string json = JsonNativeAot.Serialize(playlist);
-            var restored = JsonNativeAot.Deserialize<Playlist>(json);
-            
-            Console.WriteLine($"Original ID: {playlist.PlaylistId}");
-            Console.WriteLine($"Restored ID: {restored.PlaylistId}");
-            Console.WriteLine($"IDs Match: {playlist.PlaylistId == restored.PlaylistId}\n");
-        }
-
-        /// <summary>
-        ///     Example 5: File serialization and deserialization.
-        /// </summary>
-        private static void Example5_FileOperations()
-        {
-            Console.WriteLine("Example 5: File Operations");
-            Console.WriteLine("--------------------------");
-            
-            try
-            {
-                var singer = new Singer(
-                    name: "File Test Singer",
-                    genre: "Rock",
-                    age: 45,
-                    country: "UK",
-                    isActive: true,
-                    debutDate: DateTime.Now.AddYears(-20),
-                    singerId: Guid.NewGuid()
-                );
-
-                JsonNativeAot.SerializeToFile(singer, "test_singer", "Config");
-                Console.WriteLine("✓ Saved to Config/test_singer.json");
-
-                var loaded = JsonNativeAot.DeserializeFromFile<Singer>("test_singer", "Config");
-                Console.WriteLine($"✓ Loaded: {loaded.Name} from {loaded.Country}\n");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}\n");
-            }
-        }
-
-        /// <summary>
-        ///     Example 6: Low-level JSON parsing to dictionary.
-        /// </summary>
-        private static void Example6_JsonParsing()
-        {
-            Console.WriteLine("Example 6: JSON Parsing");
-            Console.WriteLine("----------------------");
-            
-            string json = "{\"Name\":\"Test\",\"Age\":\"30\",\"Tags\":[\"tag1\",\"tag2\"]}";
-            var props = JsonNativeAot.ParseJsonToDictionary(json);
-            
-            foreach (var prop in props)
-            {
-                Console.WriteLine($"  {prop.Key} = {prop.Value}");
-            }
-            Console.WriteLine();
-        }
-
-        /// <summary>
-        ///     Example 7: Error handling scenarios.
-        /// </summary>
-        private static void Example7_ErrorHandling()
-        {
-            Console.WriteLine("Example 7: Error Handling");
-            Console.WriteLine("-------------------------");
-            
-            // Null handling
-            try
-            {
-                JsonNativeAot.ParseJsonToDictionary(null);
-            }
-            catch (ArgumentNullException)
-            {
-                Console.WriteLine("✓ Caught ArgumentNullException for null JSON");
-            }
-
-            // Malformed JSON
-            try
-            {
-                JsonNativeAot.ParseJsonToDictionary("{invalid}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"✓ Caught {ex.GetType().Name} for malformed JSON");
-            }
-
-            Console.WriteLine();
-        }
-
-        /// <summary>
-        ///     Example 8: Nested complex objects.
-        /// </summary>
-        private static void Example8_ComplexNesting()
-        {
-            Console.WriteLine("Example 8: Complex Nesting");
-            Console.WriteLine("--------------------------");
-            
-            var album = new Album
-            {
-                Name = "Complex Album",
-                Genres = new List<string> { "Rock", "Pop", "Electronic", "Jazz" },
-                IsAvailable = true
-            };
-
-            string json = JsonNativeAot.Serialize(album);
-            var restored = JsonNativeAot.Deserialize<Album>(json);
-            
-            Console.WriteLine($"Genres: {string.Join(", ", restored.Genres)}");
-            Console.WriteLine($"Available: {restored.IsAvailable}\n");
-        }
-
-        /// <summary>
-        ///     Example 9: Music serialization using existing Music class.
-        /// </summary>
-        private static void Example9_MusicSerialization()
-        {
-            Console.WriteLine("Example 9: Music Serialization");
-            Console.WriteLine("-------------------------------");
-            
-            var music = new Music
-            {
-                Name = "Bohemian Rhapsody",
-                Artist = "Queen",
-                Genre = "Rock",
-                Album = "A Night at the Opera",
-                MusicId = Guid.NewGuid(),
-                ReleaseDate = new DateTime(1975, 10, 31)
-            };
-
-            string json = JsonNativeAot.Serialize(music);
-            var deserialized = JsonNativeAot.Deserialize<Music>(json);
-            
-            Console.WriteLine($"Artist: {deserialized.Artist}");
-            Console.WriteLine($"Album: {deserialized.Album}\n");
-        }
-
-        /// <summary>
-        ///     Example 10: Type conversion demonstration.
-        /// </summary>
-        private static void Example10_TypeConversion()
-        {
-            Console.WriteLine("Example 10: Type Conversion");
-            Console.WriteLine("---------------------------");
-            
-            // JSON with string values
-            string json = "{\"Age\":\"42\",\"IsActive\":\"true\",\"SingerId\":\"" + Guid.NewGuid() + "\"}";
-            
-            var props = JsonNativeAot.ParseJsonToDictionary(json);
-            
-            if (props.TryGetValue("Age", out var ageStr) && int.TryParse(ageStr, out var age))
-                Console.WriteLine($"✓ Age converted: {ageStr} -> {age} (int)");
-            
-            if (props.TryGetValue("IsActive", out var activeStr) && bool.TryParse(activeStr, out var active))
-                Console.WriteLine($"✓ IsActive converted: {activeStr} -> {active} (bool)");
-            
-            if (props.TryGetValue("SingerId", out var idStr) && Guid.TryParse(idStr, out var id))
-                Console.WriteLine($"✓ SingerId converted: {idStr.Substring(0, 8)}... -> Guid\n");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("  ✓ Album example serialized successfully");
+            Console.ResetColor();
         }
     }
 }
