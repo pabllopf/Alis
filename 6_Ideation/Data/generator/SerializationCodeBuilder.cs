@@ -141,6 +141,7 @@ namespace Alis.Core.Aspect.Data.Generator
                 AddSerializationCode(_stringBuilder, propertyName, jsonName, type);
             }
 
+            _stringBuilder.AppendLine("            yield break;");
             _stringBuilder.AppendLine("        }");
             _stringBuilder.AppendLine("");
         }
