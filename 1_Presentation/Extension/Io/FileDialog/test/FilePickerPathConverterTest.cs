@@ -90,6 +90,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         }
         
         
+        
         /// <summary>
         ///     Tests that ConvertPathSeparators converts backslashes to forward slashes on Unix.
         /// </summary>
