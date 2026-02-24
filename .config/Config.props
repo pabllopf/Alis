@@ -26,6 +26,7 @@
             ios-arm64;iossimulator-arm64;iossimulator-x64
         </RuntimeIdentifiers>
         
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
         
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU;x64;x86;arm;arm64</Platforms>
