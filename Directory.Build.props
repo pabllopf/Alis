@@ -6,15 +6,7 @@
     <PropertyGroup>
         <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
     </PropertyGroup>
-
-    <PropertyGroup>
-        <VSTestLogger>trx%3bLogFileName=$(MSBuildProjectName).trx</VSTestLogger>
-        <VSTestResultsDirectory>$(SolutionDir).test</VSTestResultsDirectory>
-
-        <CoverletOutputFormat>opencover</CoverletOutputFormat>
-        <CoverletOutput>$(SolutionDir).test/$(MSBuildProjectName).opencover.xml</CoverletOutput>
-    </PropertyGroup>
-
+    
     <PropertyGroup>
         <AssemblyVersion>0.9.4</AssemblyVersion>
     </PropertyGroup>
