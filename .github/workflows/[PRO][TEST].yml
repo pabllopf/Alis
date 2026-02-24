@@ -133,6 +133,7 @@ jobs:
         env:
           DOTNET_CLI_TELEMETRY_OPTOUT: 1
 
+
       - uses: dorny/test-reporter@v1
         with:
           name: Ubuntu 22_04 x64 Test Report                  # Name of the check run which will be created
