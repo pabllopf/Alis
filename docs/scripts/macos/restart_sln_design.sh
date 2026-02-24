@@ -24,36 +24,39 @@ select yn in "Yes" "No"; do
           
           dotnet new sln -o . -n Alis_design --force
           
-          cp ./.config/default_design.sln  ./Alis_design.sln
+          cp ./.config/default.sln  ./alis_design.sln
           
-          skip="Template"
-          skip2="Test"
+          skip="App"
           skip3="Sample"
+          skip2="Test"
           skip4="Benchmark"
-          skip5="Extension"
-          skip6="Engine"
-          skip7="Installer"
           for i in `find . -name "*.csproj" -type f`; do
-              if [[ $i == *$skip* ]] || [[ $i == *$skip2* ]] || [[ $i == *$skip3* ]] || [[ $i == *$skip4* ]] || [[ $i == *$skip5* ]] || [[ $i == *$skip6* ]] || [[ $i == *$skip7* ]]; then
+              if [[ $i == *$skip* ]] || [[ $i == *$skip2* ]] || [[ $i == *$skip3* ]] || [[ $i == *$skip4* ]] ; then
                   echo "Skip project $i"
+              elif [[ $i == *"Test"* ]] ; then
+                  echo "Write default value of csproj = $i"
+                  cat ./.config/default/default_test_csproj.props > $i
+              elif [[ $i == *"Generator"* ]] ; then
+                  echo "Write default value of csproj = $i"
+                  cat ./.config/default/default_generator_csproj.props > $i
               else
                   echo "Write default value of csproj = $i"
-                  cat ./.config/Default_csproj.props > $i
+                  cat ./.config/default/default_csproj.props > $i
               fi
           done
           
           for i in `find . -name "*.csproj" -type f`; do
-              if [[ $i == *$skip* ]] || [[ $i == *$skip2* ]] || [[ $i == *$skip3* ]] || [[ $i == *$skip4* ]] || [[ $i == *$skip5* ]] || [[ $i == *$skip6* ]] || [[ $i == *$skip7* ]]; then
+              if [[ $i == *$skip* ]] || [[ $i == *$skip3* ]] || [[ $i == *$skip4* ]] ; then
                   echo "Skip project $i"
               else
                   echo "Add csproj = $i"
-                  dotnet sln Alis_design.sln add $i
+                  dotnet sln alis_design.sln add $i
               fi
           done
         
           
           for i in `find . -name "*.csproj" -type f`; do
-              if [[ $i == *$skip* ]] || [[ $i == *$skip2* ]] || [[ $i == *$skip3* ]] || [[ $i == *$skip4* ]] || [[ $i == *$skip5* ]] || [[ $i == *$skip6* ]] || [[ $i == *$skip7* ]]; then
+              if [[ $i == *$skip* ]] || [[ $i == *$skip3* ]] || [[ $i == *$skip4* ]] ; then
                   echo "Skip project $i"
               else
                   echo "Add csproj = $i"
