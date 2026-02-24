@@ -49,7 +49,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             const string name = "customPropertyName";
 
             // Act
-            var attribute = new JsonNativePropertyNameAttribute(name);
+            JsonNativePropertyNameAttribute attribute = new JsonNativePropertyNameAttribute(name);
 
             // Assert
             Assert.NotNull(attribute);
@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             const string name = "";
 
             // Act
-            var attribute = new JsonNativePropertyNameAttribute(name);
+            JsonNativePropertyNameAttribute attribute = new JsonNativePropertyNameAttribute(name);
 
             // Assert
             Assert.NotNull(attribute);
@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             const string name = "custom-property_name.with.special@chars";
 
             // Act
-            var attribute = new JsonNativePropertyNameAttribute(name);
+            JsonNativePropertyNameAttribute attribute = new JsonNativePropertyNameAttribute(name);
 
             // Assert
             Assert.NotNull(attribute);
@@ -100,7 +100,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             const string name = "property name with spaces";
 
             // Act
-            var attribute = new JsonNativePropertyNameAttribute(name);
+            JsonNativePropertyNameAttribute attribute = new JsonNativePropertyNameAttribute(name);
 
             // Assert
             Assert.NotNull(attribute);
@@ -114,7 +114,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Constructor_WithNullName_CreatesAttributeSuccessfully()
         {
             // Act
-            var attribute = new JsonNativePropertyNameAttribute(null);
+            JsonNativePropertyNameAttribute attribute = new JsonNativePropertyNameAttribute(null);
 
             // Assert
             Assert.NotNull(attribute);
@@ -128,7 +128,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Name_Property_IsReadOnly()
         {
             // Act & Assert
-            var propertyInfo = typeof(JsonNativePropertyNameAttribute).GetProperty("Name", 
+            PropertyInfo propertyInfo = typeof(JsonNativePropertyNameAttribute).GetProperty("Name", 
                 BindingFlags.Public | BindingFlags.Instance);
             
             Assert.NotNull(propertyInfo);
@@ -143,11 +143,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Attribute_CanBeAppliedToProperty()
         {
             // Arrange & Act
-            var propertyInfo = typeof(TestClassWithAttribute).GetProperty(nameof(TestClassWithAttribute.CustomNameProperty));
+            PropertyInfo propertyInfo = typeof(TestClassWithAttribute).GetProperty(nameof(TestClassWithAttribute.CustomNameProperty));
 
             // Assert
             Assert.NotNull(propertyInfo);
-            var attribute = propertyInfo.GetCustomAttribute<JsonNativePropertyNameAttribute>();
+            JsonNativePropertyNameAttribute attribute = propertyInfo.GetCustomAttribute<JsonNativePropertyNameAttribute>();
             Assert.NotNull(attribute);
             Assert.Equal("customJsonName", attribute.Name);
         }
@@ -159,7 +159,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Attribute_IsSealed()
         {
             // Act
-            var attributeType = typeof(JsonNativePropertyNameAttribute);
+            Type attributeType = typeof(JsonNativePropertyNameAttribute);
 
             // Assert
             Assert.True(attributeType.IsSealed);
@@ -172,8 +172,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Attribute_TargetsPropertiesOnly()
         {
             // Arrange
-            var attributeType = typeof(JsonNativePropertyNameAttribute);
-            var attributeUsageAttr = attributeType.GetCustomAttribute<AttributeUsageAttribute>();
+            Type attributeType = typeof(JsonNativePropertyNameAttribute);
+            AttributeUsageAttribute attributeUsageAttr = attributeType.GetCustomAttribute<AttributeUsageAttribute>();
 
             // Assert
             Assert.NotNull(attributeUsageAttr);
@@ -190,7 +190,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             const string longName = "thisIsAVeryLongPropertyNameThatMightBeUsedInJsonSerializationWithManyCharactersAndNumbers123456789";
 
             // Act
-            var attribute = new JsonNativePropertyNameAttribute(longName);
+            JsonNativePropertyNameAttribute attribute = new JsonNativePropertyNameAttribute(longName);
 
             // Assert
             Assert.Equal(longName, attribute.Name);
@@ -206,7 +206,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             const string unicodeName = "属性名字مجموعةنام";
 
             // Act
-            var attribute = new JsonNativePropertyNameAttribute(unicodeName);
+            JsonNativePropertyNameAttribute attribute = new JsonNativePropertyNameAttribute(unicodeName);
 
             // Assert
             Assert.Equal(unicodeName, attribute.Name);
@@ -219,19 +219,19 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Attribute_CanBeAppliedToMultipleProperties()
         {
             // Arrange & Act
-            var classType = typeof(TestClassWithMultipleAttributes);
-            var property1 = classType.GetProperty(nameof(TestClassWithMultipleAttributes.Property1));
-            var property2 = classType.GetProperty(nameof(TestClassWithMultipleAttributes.Property2));
-            var property3 = classType.GetProperty(nameof(TestClassWithMultipleAttributes.Property3));
+            Type classType = typeof(TestClassWithMultipleAttributes);
+            PropertyInfo property1 = classType.GetProperty(nameof(TestClassWithMultipleAttributes.Property1));
+            PropertyInfo property2 = classType.GetProperty(nameof(TestClassWithMultipleAttributes.Property2));
+            PropertyInfo property3 = classType.GetProperty(nameof(TestClassWithMultipleAttributes.Property3));
 
             // Assert
             Assert.NotNull(property1);
             Assert.NotNull(property2);
             Assert.NotNull(property3);
 
-            var attr1 = property1.GetCustomAttribute<JsonNativePropertyNameAttribute>();
-            var attr2 = property2.GetCustomAttribute<JsonNativePropertyNameAttribute>();
-            var attr3 = property3.GetCustomAttribute<JsonNativePropertyNameAttribute>();
+            JsonNativePropertyNameAttribute attr1 = property1.GetCustomAttribute<JsonNativePropertyNameAttribute>();
+            JsonNativePropertyNameAttribute attr2 = property2.GetCustomAttribute<JsonNativePropertyNameAttribute>();
+            JsonNativePropertyNameAttribute attr3 = property3.GetCustomAttribute<JsonNativePropertyNameAttribute>();
 
             Assert.NotNull(attr1);
             Assert.NotNull(attr2);
@@ -249,7 +249,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Attribute_InheritsFromSystemAttribute()
         {
             // Act
-            var attributeType = typeof(JsonNativePropertyNameAttribute);
+            Type attributeType = typeof(JsonNativePropertyNameAttribute);
 
             // Assert
             Assert.True(attributeType.IsSubclassOf(typeof(Attribute)));
@@ -263,8 +263,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         {
             // Arrange
             const string name = "sameName";
-            var attribute1 = new JsonNativePropertyNameAttribute(name);
-            var attribute2 = new JsonNativePropertyNameAttribute(name);
+            JsonNativePropertyNameAttribute attribute1 = new JsonNativePropertyNameAttribute(name);
+            JsonNativePropertyNameAttribute attribute2 = new JsonNativePropertyNameAttribute(name);
 
             // Act & Assert
             Assert.Equal(attribute1.Name, attribute2.Name);
@@ -282,9 +282,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             const string mixedCaseName = "propertyName";
 
             // Act
-            var attr1 = new JsonNativePropertyNameAttribute(lowerCaseName);
-            var attr2 = new JsonNativePropertyNameAttribute(upperCaseName);
-            var attr3 = new JsonNativePropertyNameAttribute(mixedCaseName);
+            JsonNativePropertyNameAttribute attr1 = new JsonNativePropertyNameAttribute(lowerCaseName);
+            JsonNativePropertyNameAttribute attr2 = new JsonNativePropertyNameAttribute(upperCaseName);
+            JsonNativePropertyNameAttribute attr3 = new JsonNativePropertyNameAttribute(mixedCaseName);
 
             // Assert
             Assert.Equal(lowerCaseName, attr1.Name);

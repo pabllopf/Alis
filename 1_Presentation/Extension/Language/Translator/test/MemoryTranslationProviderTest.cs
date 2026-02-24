@@ -47,7 +47,7 @@ namespace Alis.Extension.Language.Translator.Test
         public async Task SetTranslationAsync_AndGetTranslationAsync_ShouldWorkCorrectly()
         {
             // Arrange
-            var provider = new MemoryTranslationProvider();
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
 
             // Act
             await provider.SetTranslationAsync("en", "greeting", "Hello");
@@ -64,7 +64,7 @@ namespace Alis.Extension.Language.Translator.Test
         public async Task GetTranslationAsync_WithNonExistingTranslation_ShouldReturnNull()
         {
             // Arrange
-            var provider = new MemoryTranslationProvider();
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
 
             // Act
             string result = await provider.GetTranslationAsync("en", "nonexistent");
@@ -80,7 +80,7 @@ namespace Alis.Extension.Language.Translator.Test
         public async Task RemoveTranslationAsync_WithExistingTranslation_ShouldRemoveSuccessfully()
         {
             // Arrange
-            var provider = new MemoryTranslationProvider();
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
             await provider.SetTranslationAsync("en", "greeting", "Hello");
 
             // Act
@@ -98,14 +98,14 @@ namespace Alis.Extension.Language.Translator.Test
         public async Task GetKeysAsync_ShouldReturnAllKeysForLanguage()
         {
             // Arrange
-            var provider = new MemoryTranslationProvider();
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
             await provider.SetTranslationAsync("en", "greeting", "Hello");
             await provider.SetTranslationAsync("en", "farewell", "Goodbye");
             await provider.SetTranslationAsync("es", "greeting", "Hola");
 
             // Act
-            var keys = await provider.GetKeysAsync("en");
-            var keysList = keys.ToList();
+            IEnumerable<string> keys = await provider.GetKeysAsync("en");
+            List<string> keysList = keys.ToList();
 
             // Assert
             Assert.Equal(2, keysList.Count);
@@ -120,10 +120,10 @@ namespace Alis.Extension.Language.Translator.Test
         public async Task GetKeysAsync_WithNonExistingLanguage_ShouldReturnEmpty()
         {
             // Arrange
-            var provider = new MemoryTranslationProvider();
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
 
             // Act
-            var keys = await provider.GetKeysAsync("en");
+            IEnumerable<string> keys = await provider.GetKeysAsync("en");
 
             // Assert
             Assert.Empty(keys);
@@ -136,12 +136,12 @@ namespace Alis.Extension.Language.Translator.Test
         public async Task LoadTranslationsAsync_ShouldReturnAllTranslations()
         {
             // Arrange
-            var provider = new MemoryTranslationProvider();
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
             await provider.SetTranslationAsync("en", "greeting", "Hello");
             await provider.SetTranslationAsync("es", "greeting", "Hola");
 
             // Act
-            var translations = await provider.LoadTranslationsAsync();
+            Dictionary<string, Dictionary<string, string>> translations = await provider.LoadTranslationsAsync();
 
             // Assert
             Assert.Equal(2, translations.Count);
@@ -158,8 +158,8 @@ namespace Alis.Extension.Language.Translator.Test
         public async Task SaveTranslationsAsync_ShouldSaveTranslationsCorrectly()
         {
             // Arrange
-            var provider = new MemoryTranslationProvider();
-            var translations = new Dictionary<string, Dictionary<string, string>>
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
+            Dictionary<string, Dictionary<string, string>> translations = new Dictionary<string, Dictionary<string, string>>
             {
                 {
                     "en", new Dictionary<string, string>
@@ -177,7 +177,7 @@ namespace Alis.Extension.Language.Translator.Test
 
             // Act
             await provider.SaveTranslationsAsync(translations);
-            var loaded = await provider.LoadTranslationsAsync();
+            Dictionary<string, Dictionary<string, string>> loaded = await provider.LoadTranslationsAsync();
 
             // Assert
             Assert.Equal(2, loaded.Count);
@@ -192,7 +192,7 @@ namespace Alis.Extension.Language.Translator.Test
         public async Task SaveTranslationsAsync_WithNull_ShouldThrowException()
         {
             // Arrange
-            var provider = new MemoryTranslationProvider();
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
 
             // Act & Assert
             await Assert.ThrowsAsync<ArgumentNullException>(async () => 
@@ -206,7 +206,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void Name_ShouldReturnProviderName()
         {
             // Arrange
-            var provider = new MemoryTranslationProvider();
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
 
             // Act
             string name = provider.Name;
@@ -222,7 +222,7 @@ namespace Alis.Extension.Language.Translator.Test
         public async Task SetTranslationAsync_WithMultipleLanguages_ShouldStoreIndependently()
         {
             // Arrange
-            var provider = new MemoryTranslationProvider();
+            MemoryTranslationProvider provider = new MemoryTranslationProvider();
 
             // Act
             await provider.SetTranslationAsync("en", "greeting", "Hello");

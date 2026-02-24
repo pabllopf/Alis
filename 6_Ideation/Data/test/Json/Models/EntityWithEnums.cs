@@ -22,10 +22,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public EntityWithEnums CreateFromProperties(Dictionary<string, string> properties)
         {
-            var obj = new EntityWithEnums();
-            if (properties.TryGetValue(nameof(Name), out var name)) obj.Name = name;
-            if (properties.TryGetValue(nameof(Status), out var status) && Enum.TryParse<StatusEnum>(status, out var statusVal)) obj.Status = statusVal;
-            if (properties.TryGetValue(nameof(Priority), out var priority) && Enum.TryParse<PriorityEnum>(priority, out var priorityVal)) obj.Priority = priorityVal;
+            EntityWithEnums obj = new EntityWithEnums();
+            if (properties.TryGetValue(nameof(Name), out string name)) obj.Name = name;
+            if (properties.TryGetValue(nameof(Status), out string status) && Enum.TryParse<StatusEnum>(status, out StatusEnum statusVal)) obj.Status = statusVal;
+            if (properties.TryGetValue(nameof(Priority), out string priority) && Enum.TryParse<PriorityEnum>(priority, out PriorityEnum priorityVal)) obj.Priority = priorityVal;
             return obj;
         }
     }

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Alis.Extension.Language.Translator.Test
@@ -44,8 +45,8 @@ namespace Alis.Extension.Language.Translator.Test
         public void AddLanguage_WithValidLanguage_ShouldAddLanguageSuccessfully()
         {
             // Arrange
-            var provider = new LanguageProvider();
-            var language = new Lang("en", "English");
+            LanguageProvider provider = new LanguageProvider();
+            Lang language = new Lang("en", "English");
 
             // Act
             provider.AddLanguage(language);
@@ -62,7 +63,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void AddLanguage_WithNullLanguage_ShouldThrowException()
         {
             // Arrange
-            var provider = new LanguageProvider();
+            LanguageProvider provider = new LanguageProvider();
 
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => provider.AddLanguage(null));
@@ -75,9 +76,9 @@ namespace Alis.Extension.Language.Translator.Test
         public void AddLanguage_WithDuplicateLanguageCode_ShouldThrowException()
         {
             // Arrange
-            var provider = new LanguageProvider();
-            var language1 = new Lang("en", "English");
-            var language2 = new Lang("en", "English Language");
+            LanguageProvider provider = new LanguageProvider();
+            Lang language1 = new Lang("en", "English");
+            Lang language2 = new Lang("en", "English Language");
 
             // Act
             provider.AddLanguage(language1);
@@ -93,8 +94,8 @@ namespace Alis.Extension.Language.Translator.Test
         public void RemoveLanguage_WithExistingLanguage_ShouldRemoveSuccessfully()
         {
             // Arrange
-            var provider = new LanguageProvider();
-            var language = new Lang("en", "English");
+            LanguageProvider provider = new LanguageProvider();
+            Lang language = new Lang("en", "English");
             provider.AddLanguage(language);
 
             // Act
@@ -112,7 +113,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void RemoveLanguage_WithNonExistingLanguage_ShouldReturnFalse()
         {
             // Arrange
-            var provider = new LanguageProvider();
+            LanguageProvider provider = new LanguageProvider();
 
             // Act
             bool result = provider.RemoveLanguage("en");
@@ -128,12 +129,12 @@ namespace Alis.Extension.Language.Translator.Test
         public void GetLanguageByCode_WithExistingLanguage_ShouldReturnLanguage()
         {
             // Arrange
-            var provider = new LanguageProvider();
-            var language = new Lang("en", "English");
+            LanguageProvider provider = new LanguageProvider();
+            Lang language = new Lang("en", "English");
             provider.AddLanguage(language);
 
             // Act
-            var result = provider.GetLanguageByCode("en");
+            ILanguage result = provider.GetLanguageByCode("en");
 
             // Assert
             Assert.NotNull(result);
@@ -147,10 +148,10 @@ namespace Alis.Extension.Language.Translator.Test
         public void GetLanguageByCode_WithNonExistingLanguage_ShouldReturnNull()
         {
             // Arrange
-            var provider = new LanguageProvider();
+            LanguageProvider provider = new LanguageProvider();
 
             // Act
-            var result = provider.GetLanguageByCode("en");
+            ILanguage result = provider.GetLanguageByCode("en");
 
             // Assert
             Assert.Null(result);
@@ -163,8 +164,8 @@ namespace Alis.Extension.Language.Translator.Test
         public void LanguageExists_WithExistingLanguage_ShouldReturnTrue()
         {
             // Arrange
-            var provider = new LanguageProvider();
-            var language = new Lang("en", "English");
+            LanguageProvider provider = new LanguageProvider();
+            Lang language = new Lang("en", "English");
             provider.AddLanguage(language);
 
             // Act
@@ -181,7 +182,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void LanguageExists_WithNonExistingLanguage_ShouldReturnFalse()
         {
             // Arrange
-            var provider = new LanguageProvider();
+            LanguageProvider provider = new LanguageProvider();
 
             // Act
             bool result = provider.LanguageExists("en");
@@ -197,10 +198,10 @@ namespace Alis.Extension.Language.Translator.Test
         public void GetAvailableLanguages_Initially_ShouldReturnEmptyList()
         {
             // Arrange
-            var provider = new LanguageProvider();
+            LanguageProvider provider = new LanguageProvider();
 
             // Act
-            var languages = provider.GetAvailableLanguages();
+            IReadOnlyList<ILanguage> languages = provider.GetAvailableLanguages();
 
             // Assert
             Assert.Empty(languages);
@@ -213,10 +214,10 @@ namespace Alis.Extension.Language.Translator.Test
         public void AddLanguage_WithMultipleLanguages_ShouldAddAllLanguages()
         {
             // Arrange
-            var provider = new LanguageProvider();
-            var english = new Lang("en", "English");
-            var spanish = new Lang("es", "Spanish");
-            var french = new Lang("fr", "French");
+            LanguageProvider provider = new LanguageProvider();
+            Lang english = new Lang("en", "English");
+            Lang spanish = new Lang("es", "Spanish");
+            Lang french = new Lang("fr", "French");
 
             // Act
             provider.AddLanguage(english);
@@ -224,7 +225,7 @@ namespace Alis.Extension.Language.Translator.Test
             provider.AddLanguage(french);
 
             // Assert
-            var languages = provider.GetAvailableLanguages();
+            IReadOnlyList<ILanguage> languages = provider.GetAvailableLanguages();
             Assert.Equal(3, languages.Count);
             Assert.Contains(english, languages);
             Assert.Contains(spanish, languages);

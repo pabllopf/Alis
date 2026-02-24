@@ -5,10 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AttachShaderTest.cs
+//  File:InputModeTests.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author:GitHub Copilot
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,12 +26,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Graphic.Glfw.Test.Delegates
+using Xunit;
+using Alis.Extension.Graphic.Glfw.Enums;
+
+namespace Alis.Extension.Graphic.Glfw.Test
 {
     /// <summary>
-    ///     The attach shader test class
+    ///     Tests for input mode management (cursor, keyboard, mouse)
     /// </summary>
-    public class AttachShaderTest
+    public class InputModeTests
     {
+        
     }
 }
+

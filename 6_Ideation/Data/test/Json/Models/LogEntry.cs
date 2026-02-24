@@ -26,9 +26,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public LogEntry CreateFromProperties(Dictionary<string, string> properties)
         {
-            var obj = new LogEntry();
-            if (properties.TryGetValue(nameof(LogId), out var v) && Guid.TryParse(v, out var val)) obj.LogId = val;
-            if (properties.TryGetValue(nameof(Timestamp), out v) && DateTime.TryParse(v, out var val2)) obj.Timestamp = val2;
+            LogEntry obj = new LogEntry();
+            if (properties.TryGetValue(nameof(LogId), out string v) && Guid.TryParse(v, out Guid val)) obj.LogId = val;
+            if (properties.TryGetValue(nameof(Timestamp), out v) && DateTime.TryParse(v, out DateTime val2)) obj.Timestamp = val2;
             if (properties.TryGetValue(nameof(Level), out v)) obj.Level = v;
             if (properties.TryGetValue(nameof(Message), out v)) obj.Message = v;
             if (properties.TryGetValue(nameof(Source), out v)) obj.Source = v;

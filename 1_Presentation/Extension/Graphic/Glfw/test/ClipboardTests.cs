@@ -5,10 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DrawArraysTest.cs
+//  File:ClipboardTests.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author:GitHub Copilot
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,12 +26,16 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Xunit;
+
 namespace Alis.Extension.Graphic.Glfw.Test
 {
     /// <summary>
-    ///     The draw arrays test class
+    ///     Tests for clipboard operations
     /// </summary>
-    public class DrawArraysTest
+    public class ClipboardTests
     {
+        
     }
 }
+

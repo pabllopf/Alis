@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Alis.Core.Aspect.Data.Json.Exceptions;
 using Alis.Core.Aspect.Data.Json.Parsing;
 
@@ -70,7 +71,7 @@ namespace Alis.Core.Aspect.Data.Json.Deserialization
 
             try
             {
-                var properties = _jsonParser.ParseToDictionary(json);
+                Dictionary<string, string> properties = _jsonParser.ParseToDictionary(json);
                 return new T().CreateFromProperties(properties);
             }
             catch (JsonDeserializationException)

@@ -232,7 +232,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
                 return "All files (*.*)|*.*";
             }
 
-            var filterParts = filters.Select(f => $"{f.DisplayName}|{f.GetFormattedExtensions()}");
+            IEnumerable<string> filterParts = filters.Select(f => $"{f.DisplayName}|{f.GetFormattedExtensions()}");
             string result = string.Join("|", filterParts) + "|All files (*.*)|*.*";
 
             Logger.Trace($"Filter string: {result}");
@@ -272,7 +272,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
 
             try
             {
-                var paths = allowMultiple
+                string[] paths = allowMultiple
                     ? FilePickerPathConverter.SplitMultiplePaths(output)
                     : new[] { FilePickerPathConverter.NormalizePath(output) };
 

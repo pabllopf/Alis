@@ -17,8 +17,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public MinimalClass CreateFromProperties(Dictionary<string, string> properties)
         {
-            var obj = new MinimalClass();
-            if (properties.TryGetValue(nameof(Value), out var v)) obj.Value = v;
+            MinimalClass obj = new MinimalClass();
+            if (properties.TryGetValue(nameof(Value), out string v)) obj.Value = v;
             return obj;
         }
     }

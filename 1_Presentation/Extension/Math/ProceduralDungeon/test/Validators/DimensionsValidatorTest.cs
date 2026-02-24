@@ -51,7 +51,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Validators
         public void ValidateDimensions_WithValidValues_ShouldNotThrow(int width, int height)
         {
             // Act & Assert
-            var exception = Record.Exception(() => 
+            Exception exception = Record.Exception(() => 
                 DimensionsValidator.ValidateDimensions(width, height));
             Assert.Null(exception);
         }
@@ -119,7 +119,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Validators
         public void ValidatePosition_WithValidValues_ShouldNotThrow(int x, int y)
         {
             // Act & Assert
-            var exception = Record.Exception(() => 
+            Exception exception = Record.Exception(() => 
                 DimensionsValidator.ValidatePosition(x, y));
             Assert.Null(exception);
         }
@@ -163,7 +163,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Validators
         public void ValidatePositive_WithPositiveValue_ShouldNotThrow(int value)
         {
             // Act & Assert
-            var exception = Record.Exception(() => 
+            Exception exception = Record.Exception(() => 
                 DimensionsValidator.ValidatePositive(value, "testParam"));
             Assert.Null(exception);
         }
@@ -207,7 +207,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Validators
         public void ValidateRange_WithValueInRange_ShouldNotThrow(int value, int min, int max)
         {
             // Act & Assert
-            var exception = Record.Exception(() => 
+            Exception exception = Record.Exception(() => 
                 DimensionsValidator.ValidateRange(value, min, max, "testParam"));
             Assert.Null(exception);
         }
@@ -251,7 +251,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Validators
             int x, int y, int width, int height, int boardWidth, int boardHeight)
         {
             // Act & Assert
-            var exception = Record.Exception(() => 
+            Exception exception = Record.Exception(() => 
                 DimensionsValidator.ValidateWithinBounds(x, y, width, height, boardWidth, boardHeight));
             Assert.Null(exception);
         }
@@ -299,7 +299,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Validators
         public void ValidateWithinBounds_WithElementAtExactBoundary_ShouldNotThrow()
         {
             // Act & Assert
-            var exception = Record.Exception(() => 
+            Exception exception = Record.Exception(() => 
                 DimensionsValidator.ValidateWithinBounds(0, 0, 50, 50, 50, 50));
             Assert.Null(exception);
         }

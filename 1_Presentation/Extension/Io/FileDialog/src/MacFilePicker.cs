@@ -254,7 +254,7 @@ namespace Alis.Extension.Io.FileDialog
 
             try
             {
-                var paths = FilePickerPathConverter.SplitMultiplePaths(output)
+                string[] paths = FilePickerPathConverter.SplitMultiplePaths(output)
                     .Where(p => !string.IsNullOrEmpty(p))
                     .ToArray();
 

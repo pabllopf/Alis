@@ -37,18 +37,18 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public NumericTypesClass CreateFromProperties(Dictionary<string, string> properties)
         {
-            var obj = new NumericTypesClass();
-            if (properties.TryGetValue(nameof(ByteValue), out var v) && byte.TryParse(v, out var val)) obj.ByteValue = val;
-            if (properties.TryGetValue(nameof(SByteValue), out v) && sbyte.TryParse(v, out var val2)) obj.SByteValue = val2;
-            if (properties.TryGetValue(nameof(ShortValue), out v) && short.TryParse(v, out var val3)) obj.ShortValue = val3;
-            if (properties.TryGetValue(nameof(UShortValue), out v) && ushort.TryParse(v, out var val4)) obj.UShortValue = val4;
-            if (properties.TryGetValue(nameof(IntValue), out v) && int.TryParse(v, out var val5)) obj.IntValue = val5;
-            if (properties.TryGetValue(nameof(UIntValue), out v) && uint.TryParse(v, out var val6)) obj.UIntValue = val6;
-            if (properties.TryGetValue(nameof(LongValue), out v) && long.TryParse(v, out var val7)) obj.LongValue = val7;
-            if (properties.TryGetValue(nameof(ULongValue), out v) && ulong.TryParse(v, out var val8)) obj.ULongValue = val8;
-            if (properties.TryGetValue(nameof(FloatValue), out v) && float.TryParse(v, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var val9)) obj.FloatValue = val9;
-            if (properties.TryGetValue(nameof(DoubleValue), out v) && double.TryParse(v, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var val10)) obj.DoubleValue = val10;
-            if (properties.TryGetValue(nameof(DecimalValue), out v) && decimal.TryParse(v, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var val11)) obj.DecimalValue = val11;
+            NumericTypesClass obj = new NumericTypesClass();
+            if (properties.TryGetValue(nameof(ByteValue), out string v) && byte.TryParse(v, out byte val)) obj.ByteValue = val;
+            if (properties.TryGetValue(nameof(SByteValue), out v) && sbyte.TryParse(v, out sbyte val2)) obj.SByteValue = val2;
+            if (properties.TryGetValue(nameof(ShortValue), out v) && short.TryParse(v, out short val3)) obj.ShortValue = val3;
+            if (properties.TryGetValue(nameof(UShortValue), out v) && ushort.TryParse(v, out ushort val4)) obj.UShortValue = val4;
+            if (properties.TryGetValue(nameof(IntValue), out v) && int.TryParse(v, out int val5)) obj.IntValue = val5;
+            if (properties.TryGetValue(nameof(UIntValue), out v) && uint.TryParse(v, out uint val6)) obj.UIntValue = val6;
+            if (properties.TryGetValue(nameof(LongValue), out v) && long.TryParse(v, out long val7)) obj.LongValue = val7;
+            if (properties.TryGetValue(nameof(ULongValue), out v) && ulong.TryParse(v, out ulong val8)) obj.ULongValue = val8;
+            if (properties.TryGetValue(nameof(FloatValue), out v) && float.TryParse(v, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out float val9)) obj.FloatValue = val9;
+            if (properties.TryGetValue(nameof(DoubleValue), out v) && double.TryParse(v, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double val10)) obj.DoubleValue = val10;
+            if (properties.TryGetValue(nameof(DecimalValue), out v) && decimal.TryParse(v, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out decimal val11)) obj.DecimalValue = val11;
             return obj;
         }
     }

@@ -104,31 +104,31 @@ namespace Alis.Core.Aspect.Data.Sample
         /// </summary>
         public Playlist CreateFromProperties(Dictionary<string, string> properties)
         {
-            var playlist = new Playlist();
+            Playlist playlist = new Playlist();
 
-            if (properties.TryGetValue("PlaylistId", out var playlistId) && 
-                Guid.TryParse(playlistId, out var playlistIdValue))
+            if (properties.TryGetValue("PlaylistId", out string playlistId) && 
+                Guid.TryParse(playlistId, out Guid playlistIdValue))
                 playlist.PlaylistId = playlistIdValue;
 
-            if (properties.TryGetValue("PlaylistName", out var name))
+            if (properties.TryGetValue("PlaylistName", out string name))
                 playlist.PlaylistName = name;
 
-            if (properties.TryGetValue("CreatorName", out var creator))
+            if (properties.TryGetValue("CreatorName", out string creator))
                 playlist.CreatorName = creator;
 
-            if (properties.TryGetValue("CreatedDate", out var created) && 
-                DateTime.TryParse(created, out var createdValue))
+            if (properties.TryGetValue("CreatedDate", out string created) && 
+                DateTime.TryParse(created, out DateTime createdValue))
                 playlist.CreatedDate = createdValue;
 
-            if (properties.TryGetValue("SongTitles", out var songs))
+            if (properties.TryGetValue("SongTitles", out string songs))
                 playlist.SongTitles = DeserializeSongs(songs);
 
-            if (properties.TryGetValue("SongCount", out var count) && 
-                int.TryParse(count, out var countValue))
+            if (properties.TryGetValue("SongCount", out string count) && 
+                int.TryParse(count, out int countValue))
                 playlist.SongCount = countValue;
 
-            if (properties.TryGetValue("IsPublic", out var isPublic) && 
-                bool.TryParse(isPublic, out var isPublicValue))
+            if (properties.TryGetValue("IsPublic", out string isPublic) && 
+                bool.TryParse(isPublic, out bool isPublicValue))
                 playlist.IsPublic = isPublicValue;
 
             return playlist;
@@ -142,7 +142,7 @@ namespace Alis.Core.Aspect.Data.Sample
             if (SongTitles == null || SongTitles.Count == 0)
                 return "[]";
 
-            var items = string.Join(",", SongTitles.Select(s => $"\"{s}\""));
+            string items = string.Join(",", SongTitles.Select(s => $"\"{s}\""));
             return $"[{items}]";
         }
 
@@ -151,14 +151,14 @@ namespace Alis.Core.Aspect.Data.Sample
         /// </summary>
         private static List<string> DeserializeSongs(string json)
         {
-            var songs = new List<string>();
+            List<string> songs = new List<string>();
             if (string.IsNullOrEmpty(json) || json == "[]")
                 return songs;
 
-            var items = json.Trim('[', ']').Split(',');
-            foreach (var item in items)
+            string[] items = json.Trim('[', ']').Split(',');
+            foreach (string item in items)
             {
-                var song = item.Trim().Trim('"');
+                string song = item.Trim().Trim('"');
                 if (!string.IsNullOrEmpty(song))
                     songs.Add(song);
             }

@@ -5,10 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GlShaderTest.cs
+//  File:GameWindowCreationTests.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author:GitHub Copilot
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,12 +26,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Graphic.Glfw.Test.Constructs
+using System;
+using Xunit;
+
+namespace Alis.Extension.Graphic.Glfw.Test
 {
     /// <summary>
-    ///     The gl shader test class
+    ///     Tests for GameWindow creation and initialization
     /// </summary>
-    public class GlShaderTest
+    public class GameWindowCreationTests
     {
+       
     }
 }

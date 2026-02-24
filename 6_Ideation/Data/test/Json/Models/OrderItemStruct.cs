@@ -21,10 +21,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public OrderItemStruct CreateFromProperties(Dictionary<string, string> properties)
         {
-            var obj = new OrderItemStruct();
-            if (properties.TryGetValue(nameof(ProductId), out var v) && int.TryParse(v, out var val)) obj.ProductId = val;
-            if (properties.TryGetValue(nameof(Quantity), out v) && int.TryParse(v, out var val2)) obj.Quantity = val2;
-            if (properties.TryGetValue(nameof(UnitPrice), out v) && decimal.TryParse(v, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var val3)) obj.UnitPrice = val3;
+            OrderItemStruct obj = new OrderItemStruct();
+            if (properties.TryGetValue(nameof(ProductId), out string v) && int.TryParse(v, out int val)) obj.ProductId = val;
+            if (properties.TryGetValue(nameof(Quantity), out v) && int.TryParse(v, out int val2)) obj.Quantity = val2;
+            if (properties.TryGetValue(nameof(UnitPrice), out v) && decimal.TryParse(v, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out decimal val3)) obj.UnitPrice = val3;
             return obj;
         }
     }

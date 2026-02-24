@@ -172,14 +172,14 @@ namespace Alis.Extension.Language.Dialogue.Sample
             Dialog shopDialog = new Dialog("shop", "Welcome to my shop! What would you like?");
 
             // Option 1: Always available
-            var basicOption = new DialogOption(
+            DialogOption basicOption = new DialogOption(
                 "Show me basic items",
                 () => Logger.Info("   ✓ Here are my basic items: Sword, Shield, Potion")
             );
             shopDialog.AddOption(basicOption);
 
             // Option 2: Only available if player has enough gold
-            var expensiveOption = new DialogOption(
+            DialogOption expensiveOption = new DialogOption(
                 "Show me rare items (requires 500+ gold)",
                 () => Logger.Info("   ✓ Here are my rare items: Dragon Sword, Mithril Armor, Phoenix Feather")
             );
@@ -191,7 +191,7 @@ namespace Alis.Extension.Language.Dialogue.Sample
             shopDialog.AddOption(expensiveOption);
 
             // Option 3: Only available if player completed prerequisite quest
-            var questOption = new DialogOption(
+            DialogOption questOption = new DialogOption(
                 "Show me legend items (requires 'Dragon Quest' completed)",
                 () => Logger.Info("   ✓ Here are legendary items: Excalibur, Holy Grail, Dragon Stone")
             );
@@ -208,9 +208,9 @@ namespace Alis.Extension.Language.Dialogue.Sample
             manager.SetContextVariable("gold", 100);
             manager.SetContextVariable("completedDragonQuest", false);
 
-            var availableOptions = manager.GetAvailableOptions();
+            List<DialogOption> availableOptions = manager.GetAvailableOptions();
             Logger.Info($"   Available options: {availableOptions.Count}");
-            foreach (var option in availableOptions)
+            foreach (DialogOption option in availableOptions)
             {
                 Logger.Info($"     • {option.Text}");
             }
@@ -224,7 +224,7 @@ namespace Alis.Extension.Language.Dialogue.Sample
 
             availableOptions = manager.GetAvailableOptions();
             Logger.Info($"   Available options: {availableOptions.Count}");
-            foreach (var option in availableOptions)
+            foreach (DialogOption option in availableOptions)
             {
                 Logger.Info($"     • {option.Text}");
             }
@@ -242,7 +242,7 @@ namespace Alis.Extension.Language.Dialogue.Sample
                 "Welcome to combat training! Choose your style:");
 
             // Create options with actions that modify context
-            var swordOption = new DialogOption("Train Sword Combat", () =>
+            DialogOption swordOption = new DialogOption("Train Sword Combat", () =>
                 Logger.Info("   ✓ You spend 2 hours training sword techniques!")
             );
             swordOption.AddDialogAction(new CallbackDialogAction("increaseSwordSkill", () =>
@@ -251,7 +251,7 @@ namespace Alis.Extension.Language.Dialogue.Sample
             }));
             trainingDialog.AddOption(swordOption);
 
-            var magicOption = new DialogOption("Study Magic", () =>
+            DialogOption magicOption = new DialogOption("Study Magic", () =>
                 Logger.Info("   ✓ You study ancient spell books!")
             );
             magicOption.AddDialogAction(new CallbackDialogAction("increaseMagicSkill", () =>
@@ -286,7 +286,7 @@ namespace Alis.Extension.Language.Dialogue.Sample
             DialogManager manager = new DialogManager();
 
             // Create a custom observer
-            var observer = new DialogEventObserver();
+            DialogEventObserver observer = new DialogEventObserver();
             manager.RegisterObserver(observer);
 
             Dialog npcDialog = new Dialog("npc",
@@ -304,7 +304,7 @@ namespace Alis.Extension.Language.Dialogue.Sample
 
             Logger.Info($"\n   Total events received: {observer.EventCount}");
             Logger.Info($"   Event types tracked:");
-            foreach (var eventType in observer.EventTypes)
+            foreach (DialogEventType eventType in observer.EventTypes)
             {
                 Logger.Info($"     • {eventType}");
             }
@@ -321,7 +321,7 @@ namespace Alis.Extension.Language.Dialogue.Sample
             Dialog questGiver = new Dialog("questGiver",
                 "Hail, hero! I have a task for you.");
 
-            var acceptOption = new DialogOption("I accept the quest", () =>
+            DialogOption acceptOption = new DialogOption("I accept the quest", () =>
                 Logger.Info("   ✓ Quest accepted: Defeat the Shadow Beast"))
             {
                 DialogActions = new List<IDialogAction>
@@ -331,10 +331,10 @@ namespace Alis.Extension.Language.Dialogue.Sample
                 }
             };
 
-            var refuseOption = new DialogOption("I'm not interested", () =>
+            DialogOption refuseOption = new DialogOption("I'm not interested", () =>
                 Logger.Info("   ✓ Quest giver looks disappointed"));
 
-            var infoOption = new DialogOption("Tell me more about this quest",
+            DialogOption infoOption = new DialogOption("Tell me more about this quest",
                 () => Logger.Info("   ✓ The Shadow Beast terrorizes the northern villages..."));
 
             questGiver.AddOption(acceptOption);
@@ -359,7 +359,7 @@ namespace Alis.Extension.Language.Dialogue.Sample
             manager.StartDialog("questGiver");
 
             Logger.Info("\n   Available options:");
-            var options = manager.GetAvailableOptions();
+            List<DialogOption> options = manager.GetAvailableOptions();
             for (int i = 0; i < options.Count; i++)
             {
                 Logger.Info($"     [{i + 1}] {options[i].Text}");

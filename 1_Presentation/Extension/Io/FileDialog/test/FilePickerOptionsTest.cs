@@ -44,7 +44,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void DefaultConstructor_ShouldCreateInstanceWithDefaults()
         {
             // Act
-            var options = new FilePickerOptions();
+            FilePickerOptions options = new FilePickerOptions();
 
             // Assert
             Assert.NotNull(options);
@@ -64,7 +64,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ConstructorWithParameters_ShouldCreateInstance()
         {
             // Act
-            var options = new FilePickerOptions("Open File", FileDialogType.OpenFile);
+            FilePickerOptions options = new FilePickerOptions("Open File", FileDialogType.OpenFile);
 
             // Assert
             Assert.Equal("Open File", options.Title);
@@ -98,8 +98,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void WithFilter_ShouldAddFilter()
         {
             // Arrange
-            var options = new FilePickerOptions("Test");
-            var filter = new FilePickerFilter("Text Files", "txt");
+            FilePickerOptions options = new FilePickerOptions("Test");
+            FilePickerFilter filter = new FilePickerFilter("Text Files", "txt");
 
             // Act
             options.WithFilter(filter);
@@ -116,11 +116,11 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void WithFilter_ShouldReturnOptions()
         {
             // Arrange
-            var options = new FilePickerOptions("Test");
-            var filter = new FilePickerFilter("Text Files", "txt");
+            FilePickerOptions options = new FilePickerOptions("Test");
+            FilePickerFilter filter = new FilePickerFilter("Text Files", "txt");
 
             // Act
-            var result = options.WithFilter(filter);
+            FilePickerOptions result = options.WithFilter(filter);
 
             // Assert
             Assert.Same(options, result);
@@ -133,7 +133,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void WithFilter_WithNullFilter_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var options = new FilePickerOptions("Test");
+            FilePickerOptions options = new FilePickerOptions("Test");
 
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => options.WithFilter(null));
@@ -146,7 +146,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void WithDefaultPath_ShouldSetPath()
         {
             // Arrange
-            var options = new FilePickerOptions("Test");
+            FilePickerOptions options = new FilePickerOptions("Test");
             string path = "/home/user";
 
             // Act
@@ -163,10 +163,10 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void WithDefaultPath_ShouldReturnOptions()
         {
             // Arrange
-            var options = new FilePickerOptions("Test");
+            FilePickerOptions options = new FilePickerOptions("Test");
 
             // Act
-            var result = options.WithDefaultPath("/home/user");
+            FilePickerOptions result = options.WithDefaultPath("/home/user");
 
             // Assert
             Assert.Same(options, result);
@@ -179,7 +179,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void WithMultipleSelection_ShouldEnableMultipleSelection()
         {
             // Arrange
-            var options = new FilePickerOptions("Test");
+            FilePickerOptions options = new FilePickerOptions("Test");
 
             // Act
             options.WithMultipleSelection();
@@ -195,10 +195,10 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void WithMultipleSelection_ShouldReturnOptions()
         {
             // Arrange
-            var options = new FilePickerOptions("Test");
+            FilePickerOptions options = new FilePickerOptions("Test");
 
             // Act
-            var result = options.WithMultipleSelection();
+            FilePickerOptions result = options.WithMultipleSelection();
 
             // Assert
             Assert.Same(options, result);
@@ -211,7 +211,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void IsDirectoryDialog_WithSelectFolderType_ShouldReturnTrue()
         {
             // Arrange
-            var options = new FilePickerOptions("Select", FileDialogType.SelectFolder);
+            FilePickerOptions options = new FilePickerOptions("Select", FileDialogType.SelectFolder);
 
             // Act
             bool result = options.IsDirectoryDialog();
@@ -227,7 +227,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void IsDirectoryDialog_WithOpenFileType_ShouldReturnFalse()
         {
             // Arrange
-            var options = new FilePickerOptions("Select", FileDialogType.OpenFile);
+            FilePickerOptions options = new FilePickerOptions("Select", FileDialogType.OpenFile);
 
             // Act
             bool result = options.IsDirectoryDialog();
@@ -243,7 +243,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void FluentApi_ShouldChainMethodsCalls()
         {
             // Act
-            var options = new FilePickerOptions("Test")
+            FilePickerOptions options = new FilePickerOptions("Test")
                 .WithDefaultPath("/home/user")
                 .WithFilter(new FilePickerFilter("Text Files", "txt"))
                 .WithMultipleSelection();

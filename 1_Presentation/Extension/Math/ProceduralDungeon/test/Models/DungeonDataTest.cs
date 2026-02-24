@@ -167,7 +167,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
             DungeonData dungeonData = new DungeonData(board, rooms, corridors);
 
             // Act
-            var result = dungeonData.Rooms;
+            List<RoomData> result = dungeonData.Rooms;
 
             // Assert
             Assert.Equal(2, result.Count);
@@ -191,7 +191,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
             DungeonData dungeonData = new DungeonData(board, rooms, corridors);
 
             // Act
-            var result = dungeonData.Corridors;
+            List<CorridorData> result = dungeonData.Corridors;
 
             // Assert
             Assert.Equal(2, result.Count);

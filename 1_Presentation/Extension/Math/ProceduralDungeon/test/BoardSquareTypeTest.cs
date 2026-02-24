@@ -64,7 +64,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void WallTypes_ShouldHaveDistinctValues()
         {
             // Arrange
-            var wallTypes = new[]
+            BoardSquareType[] wallTypes = new[]
             {
                 BoardSquareType.WallTop,
                 BoardSquareType.WallDown,
@@ -89,7 +89,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void CornerTypes_ShouldHaveDistinctValues()
         {
             // Arrange
-            var cornerTypes = new[]
+            BoardSquareType[] cornerTypes = new[]
             {
                 BoardSquareType.CornerLeftUp,
                 BoardSquareType.CornerLeftDown,

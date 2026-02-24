@@ -24,11 +24,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public TemporalTypesClass CreateFromProperties(Dictionary<string, string> properties)
         {
-            var obj = new TemporalTypesClass();
-            if (properties.TryGetValue(nameof(CreatedAt), out var v) && DateTime.TryParse(v, out var val)) obj.CreatedAt = val;
-            if (properties.TryGetValue(nameof(UpdatedAt), out v) && DateTime.TryParse(v, out var val2)) obj.UpdatedAt = val2;
-            if (properties.TryGetValue(nameof(Id), out v) && Guid.TryParse(v, out var val3)) obj.Id = val3;
-            if (properties.TryGetValue(nameof(CorrelationId), out v) && Guid.TryParse(v, out var val4)) obj.CorrelationId = val4;
+            TemporalTypesClass obj = new TemporalTypesClass();
+            if (properties.TryGetValue(nameof(CreatedAt), out string v) && DateTime.TryParse(v, out DateTime val)) obj.CreatedAt = val;
+            if (properties.TryGetValue(nameof(UpdatedAt), out v) && DateTime.TryParse(v, out DateTime val2)) obj.UpdatedAt = val2;
+            if (properties.TryGetValue(nameof(Id), out v) && Guid.TryParse(v, out Guid val3)) obj.Id = val3;
+            if (properties.TryGetValue(nameof(CorrelationId), out v) && Guid.TryParse(v, out Guid val4)) obj.CorrelationId = val4;
             return obj;
         }
     }

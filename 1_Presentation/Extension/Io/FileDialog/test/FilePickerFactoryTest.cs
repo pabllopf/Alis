@@ -45,7 +45,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void CreateFilePicker_ShouldReturnValidInstance()
         {
             // Act
-            var picker = FilePickerFactory.CreateFilePicker();
+            IFilePicker picker = FilePickerFactory.CreateFilePicker();
 
             // Assert
             Assert.NotNull(picker);
@@ -61,7 +61,7 @@ namespace Alis.Extension.Io.FileDialog.Test
             // Act
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                var picker = FilePickerFactory.CreateFilePicker();
+                IFilePicker picker = FilePickerFactory.CreateFilePicker();
 
                 // Assert
                 Assert.IsType<WindowsFilePicker>(picker);
@@ -77,7 +77,7 @@ namespace Alis.Extension.Io.FileDialog.Test
             // Act
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                var picker = FilePickerFactory.CreateFilePicker();
+                IFilePicker picker = FilePickerFactory.CreateFilePicker();
 
                 // Assert
                 Assert.IsType<MacFilePicker>(picker);
@@ -93,7 +93,7 @@ namespace Alis.Extension.Io.FileDialog.Test
             // Act
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                var picker = FilePickerFactory.CreateFilePicker();
+                IFilePicker picker = FilePickerFactory.CreateFilePicker();
 
                 // Assert
                 Assert.IsType<LinuxFilePicker>(picker);
@@ -117,7 +117,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void CreateFilePickerWithOptions_WithEmptyTitle_ShouldThrowArgumentException()
         {
             // Arrange
-            var options = new FilePickerOptions { Title = "" };
+            FilePickerOptions options = new FilePickerOptions { Title = "" };
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => FilePickerFactory.CreateFilePickerWithOptions(options));
@@ -130,10 +130,10 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void CreateFilePickerWithOptions_WithValidOptions_ShouldReturnValidInstance()
         {
             // Arrange
-            var options = new FilePickerOptions("Test Title");
+            FilePickerOptions options = new FilePickerOptions("Test Title");
 
             // Act
-            var picker = FilePickerFactory.CreateFilePickerWithOptions(options);
+            IFilePicker picker = FilePickerFactory.CreateFilePickerWithOptions(options);
 
             // Assert
             Assert.NotNull(picker);

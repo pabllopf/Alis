@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Json.Serialization;
 using Xunit;
@@ -53,7 +54,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_IntegerProperty_SerializesCorrectly(int value)
         {
             // Arrange
-            var obj = new TestIntObject { Value = value };
+            TestIntObject obj = new TestIntObject { Value = value };
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -68,7 +69,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_BooleanProperty_SerializesCorrectly(bool value)
         {
             // Arrange
-            var obj = new TestBoolObject { Flag = value };
+            TestBoolObject obj = new TestBoolObject { Flag = value };
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -85,7 +86,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_DoubleProperty_SerializesCorrectly(double value)
         {
             // Arrange
-            var obj = new TestDoubleObject { Number = value };
+            TestDoubleObject obj = new TestDoubleObject { Number = value };
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -108,7 +109,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_StringProperty_SerializesCorrectly(string value)
         {
             // Arrange
-            var obj = new TestStringObject { Text = value };
+            TestStringObject obj = new TestStringObject { Text = value };
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -121,7 +122,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_NullString_HandlesGracefully()
         {
             // Arrange
-            var obj = new TestStringObject { Text = null };
+            TestStringObject obj = new TestStringObject { Text = null };
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -134,7 +135,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_EmptyString_IncludesEmptyString()
         {
             // Arrange
-            var obj = new TestStringObject { Text = "" };
+            TestStringObject obj = new TestStringObject { Text = "" };
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -151,8 +152,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_DateTimeProperty_SerializesCorrectly()
         {
             // Arrange
-            var now = DateTime.Now;
-            var obj = new TestDateTimeObject { Timestamp = now };
+            DateTime now = DateTime.Now;
+            TestDateTimeObject obj = new TestDateTimeObject { Timestamp = now };
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -165,8 +166,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_GuidProperty_SerializesCorrectly()
         {
             // Arrange
-            var guid = Guid.NewGuid();
-            var obj = new TestGuidObject { Id = guid };
+            Guid guid = Guid.NewGuid();
+            TestGuidObject obj = new TestGuidObject { Id = guid };
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -179,7 +180,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_EmptyGuid_SerializesCorrectly()
         {
             // Arrange
-            var obj = new TestGuidObject { Id = Guid.Empty };
+            TestGuidObject obj = new TestGuidObject { Id = Guid.Empty };
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -196,7 +197,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_MultipleProperties_IncludesAllProperties()
         {
             // Arrange
-            var obj = new TestMultiObject
+            TestMultiObject obj = new TestMultiObject
             {
                 Name = "Test",
                 Age = 30,
@@ -220,7 +221,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_ObjectWithManyProperties_IncludesAll(int propertyCount)
         {
             // Arrange
-            var obj = new TestDynamicObject(propertyCount);
+            TestDynamicObject obj = new TestDynamicObject(propertyCount);
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -239,7 +240,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_ValidObject_StartsWithOpenBrace()
         {
             // Arrange
-            var obj = new TestStringObject { Text = "test" };
+            TestStringObject obj = new TestStringObject { Text = "test" };
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -252,7 +253,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_ValidObject_EndsWithCloseBrace()
         {
             // Arrange
-            var obj = new TestStringObject { Text = "test" };
+            TestStringObject obj = new TestStringObject { Text = "test" };
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -265,7 +266,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_PropertyWithCommas_FormatsCorrectly()
         {
             // Arrange
-            var obj = new TestMultiObject
+            TestMultiObject obj = new TestMultiObject
             {
                 Name = "First",
                 Age = 25,
@@ -288,7 +289,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_MaxIntValue_SerializesCorrectly()
         {
             // Arrange
-            var obj = new TestIntObject { Value = int.MaxValue };
+            TestIntObject obj = new TestIntObject { Value = int.MaxValue };
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -301,7 +302,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_MinIntValue_SerializesCorrectly()
         {
             // Arrange
-            var obj = new TestIntObject { Value = int.MinValue };
+            TestIntObject obj = new TestIntObject { Value = int.MinValue };
 
             // Act
             string json = _serializer.Serialize(obj);
@@ -318,8 +319,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         public void Serialize_LargeObject_CompletesInReasonableTime()
         {
             // Arrange
-            var obj = new TestDynamicObject(100);
-            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+            TestDynamicObject obj = new TestDynamicObject(100);
+            Stopwatch stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
             // Act
             string json = _serializer.Serialize(obj);

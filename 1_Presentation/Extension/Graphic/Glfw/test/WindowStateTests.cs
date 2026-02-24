@@ -5,10 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GlShaderProgramTest.cs
+//  File:WindowStateTests.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author:GitHub Copilot
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,12 +26,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Graphic.Glfw.Test.Constructs
+using Xunit;
+
+namespace Alis.Extension.Graphic.Glfw.Test
 {
     /// <summary>
-    ///     The gl shader program test class
+    ///     Tests for window state management (minimized, maximized, fullscreen)
     /// </summary>
-    public class GlShaderProgramTest
+    public class WindowStateTests
     {
+        
     }
 }
+

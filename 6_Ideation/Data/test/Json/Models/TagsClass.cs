@@ -20,20 +20,20 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
         public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
         {
             yield return (nameof(Name), Name);
-            var tagsJson = "[" + string.Join(",", Tags.Select(t => $"\"{t}\"")) + "]";
+            string tagsJson = "[" + string.Join(",", Tags.Select(t => $"\"{t}\"")) + "]";
             yield return (nameof(Tags), tagsJson);
         }
 
         public TagsClass CreateFromProperties(Dictionary<string, string> properties)
         {
-            var obj = new TagsClass();
-            if (properties.TryGetValue(nameof(Name), out var name)) obj.Name = name;
-            if (properties.TryGetValue(nameof(Tags), out var tagsJson))
+            TagsClass obj = new TagsClass();
+            if (properties.TryGetValue(nameof(Name), out string name)) obj.Name = name;
+            if (properties.TryGetValue(nameof(Tags), out string tagsJson))
             {
-                var items = tagsJson.Trim('[', ']').Split(',');
-                foreach (var item in items)
+                string[] items = tagsJson.Trim('[', ']').Split(',');
+                foreach (string item in items)
                 {
-                    var tag = item.Trim().Trim('"');
+                    string tag = item.Trim().Trim('"');
                     if (!string.IsNullOrEmpty(tag))
                         obj.Tags.Add(tag);
                 }

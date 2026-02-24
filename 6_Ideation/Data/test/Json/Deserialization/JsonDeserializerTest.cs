@@ -83,8 +83,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             {
                 return new SimpleTestObject
                 {
-                    Name = properties.TryGetValue("Name", out var name) ? name : null,
-                    Age = properties.TryGetValue("Age", out var age) && int.TryParse(age, out var ageValue) ? ageValue : 0
+                    Name = properties.TryGetValue("Name", out string name) ? name : null,
+                    Age = properties.TryGetValue("Age", out string age) && int.TryParse(age, out int ageValue) ? ageValue : 0
                 };
             }
         }
@@ -121,8 +121,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         /// </summary>
         public JsonDeserializerTest()
         {
-            var escapeHandler = new EscapeSequenceHandler();
-            var parser = new JsonParser(escapeHandler);
+            EscapeSequenceHandler escapeHandler = new EscapeSequenceHandler();
+            JsonParser parser = new JsonParser(escapeHandler);
             _deserializer = new JsonDeserializer(parser);
         }
 
@@ -133,7 +133,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         public void Deserialize_WithValidJson_ReturnsObject()
         {
             string json = "{\"Name\":\"John\",\"Age\":\"30\"}";
-            var result = _deserializer.Deserialize<SimpleTestObject>(json);
+            SimpleTestObject result = _deserializer.Deserialize<SimpleTestObject>(json);
 
             Assert.NotNull(result);
             Assert.Equal("John", result.Name);
@@ -156,7 +156,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         public void Deserialize_WithEmptyJson_ReturnsObject()
         {
             string json = "{}";
-            var result = _deserializer.Deserialize<SimpleTestObject>(json);
+            SimpleTestObject result = _deserializer.Deserialize<SimpleTestObject>(json);
 
             Assert.NotNull(result);
         }
@@ -168,7 +168,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         public void Deserialize_WithEmptyObject_ReturnsObject()
         {
             string json = "{}";
-            var result = _deserializer.Deserialize<EmptyObject>(json);
+            EmptyObject result = _deserializer.Deserialize<EmptyObject>(json);
 
             Assert.NotNull(result);
         }
@@ -180,7 +180,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         public void Deserialize_WithMissingProperty_HandlesGracefully()
         {
             string json = "{\"Name\":\"John\"}";
-            var result = _deserializer.Deserialize<SimpleTestObject>(json);
+            SimpleTestObject result = _deserializer.Deserialize<SimpleTestObject>(json);
 
             Assert.NotNull(result);
             Assert.Equal("John", result.Name);
@@ -194,7 +194,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         public void Deserialize_WithExtraProperty_IgnoresExtraProperty()
         {
             string json = "{\"Name\":\"John\",\"Age\":\"30\",\"Email\":\"john@example.com\"}";
-            var result = _deserializer.Deserialize<SimpleTestObject>(json);
+            SimpleTestObject result = _deserializer.Deserialize<SimpleTestObject>(json);
 
             Assert.NotNull(result);
             Assert.Equal("John", result.Name);
@@ -218,7 +218,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         public void Deserialize_WithWhitespace_ParsesCorrectly()
         {
             string json = "{ \"Name\" : \"John\" , \"Age\" : \"30\" }";
-            var result = _deserializer.Deserialize<SimpleTestObject>(json);
+            SimpleTestObject result = _deserializer.Deserialize<SimpleTestObject>(json);
 
             Assert.NotNull(result);
             Assert.Equal("John", result.Name);

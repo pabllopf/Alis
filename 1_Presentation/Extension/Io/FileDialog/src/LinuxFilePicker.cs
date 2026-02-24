@@ -191,7 +191,7 @@ namespace Alis.Extension.Io.FileDialog
         {
             Logger.Trace($"Building file dialog arguments for {tool}.");
 
-            var args = new List<string>();
+            List<string> args = new List<string>();
 
             if (tool == DefaultDialogTool) // zenity
             {
@@ -215,7 +215,7 @@ namespace Alis.Extension.Io.FileDialog
 
                 if (options.Filters != null && options.Filters.Count > 0)
                 {
-                    foreach (var filter in options.Filters)
+                    foreach (FilePickerFilter filter in options.Filters)
                     {
                         args.Add($"--file-filter=\"{EscapeShellString(filter.DisplayName)} | {filter.GetFormattedExtensions()}\"");
                     }
@@ -244,7 +244,7 @@ namespace Alis.Extension.Io.FileDialog
 
                 if (options.Filters != null && options.Filters.Count > 0)
                 {
-                    var filterStr = string.Join(" ", options.Filters.Select(f => $"{f.DisplayName} ({f.GetFormattedExtensions()})"));
+                    string filterStr = string.Join(" ", options.Filters.Select(f => $"{f.DisplayName} ({f.GetFormattedExtensions()})"));
                     args.Add($"\"{EscapeShellString(filterStr)}\"");
                 }
 
@@ -264,7 +264,7 @@ namespace Alis.Extension.Io.FileDialog
         {
             Logger.Trace($"Building folder dialog arguments for {tool}.");
 
-            var args = new List<string>();
+            List<string> args = new List<string>();
 
             if (tool == DefaultDialogTool) // zenity
             {

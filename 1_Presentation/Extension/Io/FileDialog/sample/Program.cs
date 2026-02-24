@@ -93,7 +93,7 @@ namespace Alis.Extension.Io.FileDialog.Sample
 
             try
             {
-                var options = new FilePickerOptions("Select a File", FileDialogType.OpenFile)
+                FilePickerOptions options = new FilePickerOptions("Select a File", FileDialogType.OpenFile)
                     .WithDefaultPath(System.IO.Path.GetTempPath());
 
                 Logger.Info("Opening file dialog...");
@@ -127,7 +127,7 @@ namespace Alis.Extension.Io.FileDialog.Sample
 
             try
             {
-                var options = new FilePickerOptions("Select Multiple Files", FileDialogType.OpenFile)
+                FilePickerOptions options = new FilePickerOptions("Select Multiple Files", FileDialogType.OpenFile)
                     .WithDefaultPath(System.IO.Path.GetTempPath())
                     .WithMultipleSelection();
 
@@ -166,7 +166,7 @@ namespace Alis.Extension.Io.FileDialog.Sample
 
             try
             {
-                var options = new FilePickerOptions("Select a Folder", FileDialogType.SelectFolder)
+                FilePickerOptions options = new FilePickerOptions("Select a Folder", FileDialogType.SelectFolder)
                     .WithDefaultPath(System.IO.Path.GetTempPath());
 
                 Logger.Info("Opening folder dialog...");
@@ -200,7 +200,7 @@ namespace Alis.Extension.Io.FileDialog.Sample
 
             try
             {
-                var options = new FilePickerOptions("Select a Text or Document File", FileDialogType.OpenFile)
+                FilePickerOptions options = new FilePickerOptions("Select a Text or Document File", FileDialogType.OpenFile)
                     .WithDefaultPath(System.IO.Path.GetTempPath())
                     .WithFilter(new FilePickerFilter("Text Files", "txt", "log"))
                     .WithFilter(new FilePickerFilter("Document Files", "doc", "docx", "pdf"))
@@ -208,7 +208,7 @@ namespace Alis.Extension.Io.FileDialog.Sample
 
                 Logger.Info("Opening filtered file dialog...");
                 Logger.Info("Filters configured:");
-                foreach (var filter in options.Filters)
+                foreach (FilePickerFilter filter in options.Filters)
                 {
                     Logger.Info($"  - {filter.DisplayName}: {filter.GetFormattedExtensions()}");
                 }

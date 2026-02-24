@@ -86,7 +86,7 @@ namespace Alis.Sample.Asteroid.IOS
         public BlueGlkViewController(CGRect frame)
         {
             _context = new EAGLContext(EAGLRenderingAPI.OpenGLES2);
-            var glkView = new GLKView(frame)
+            GLKView glkView = new GLKView(frame)
             {
                 Context = _context,
                 DrawableColorFormat = GLKViewDrawableColorFormat.RGBA8888,

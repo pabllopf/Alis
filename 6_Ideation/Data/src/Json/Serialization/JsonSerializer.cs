@@ -55,12 +55,12 @@ namespace Alis.Core.Aspect.Data.Json.Serialization
 
             try
             {
-                var jsonBuilder = new StringBuilder();
+                StringBuilder jsonBuilder = new StringBuilder();
                 jsonBuilder.Append("{");
 
                 bool isFirst = true;
 
-                foreach (var (propertyName, value) in instance.GetSerializableProperties())
+                foreach ((string propertyName, string value) in instance.GetSerializableProperties())
                 {
                     if (value == null)
                     {

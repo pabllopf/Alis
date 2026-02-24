@@ -44,7 +44,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void Constructor_WithValidParameters_ShouldCreateInstance()
         {
             // Act
-            var filter = new FilePickerFilter("Text Files", "txt", "doc");
+            FilePickerFilter filter = new FilePickerFilter("Text Files", "txt", "doc");
 
             // Assert
             Assert.NotNull(filter);
@@ -60,7 +60,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void Constructor_WithDotsInExtensions_ShouldRemoveDots()
         {
             // Act
-            var filter = new FilePickerFilter("Text Files", ".txt", ".doc");
+            FilePickerFilter filter = new FilePickerFilter("Text Files", ".txt", ".doc");
 
             // Assert
             Assert.Equal("txt", filter.Extensions[0]);
@@ -114,7 +114,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void GetFormattedExtensions_ShouldReturnCorrectFormat()
         {
             // Arrange
-            var filter = new FilePickerFilter("Text Files", "txt", "doc");
+            FilePickerFilter filter = new FilePickerFilter("Text Files", "txt", "doc");
 
             // Act
             string formatted = filter.GetFormattedExtensions();
@@ -130,7 +130,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void GetUtiFormat_ShouldReturnCorrectFormat()
         {
             // Arrange
-            var filter = new FilePickerFilter("Text Files", "txt", "doc");
+            FilePickerFilter filter = new FilePickerFilter("Text Files", "txt", "doc");
 
             // Act
             string utiFormat = filter.GetUtiFormat();
@@ -146,7 +146,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void Constructor_WithMixedCaseExtensions_ShouldPreserveLowerCase()
         {
             // Act
-            var filter = new FilePickerFilter("Text Files", "TXT", "Doc");
+            FilePickerFilter filter = new FilePickerFilter("Text Files", "TXT", "Doc");
 
             // Assert
             Assert.Equal("TXT", filter.Extensions[0]); // Original case preserved
@@ -160,7 +160,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void Constructor_WithSingleExtension_ShouldWork()
         {
             // Act
-            var filter = new FilePickerFilter("PDF Files", "pdf");
+            FilePickerFilter filter = new FilePickerFilter("PDF Files", "pdf");
 
             // Assert
             Assert.Single(filter.Extensions);
@@ -174,14 +174,14 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void Constructor_WithManyExtensions_ShouldWork()
         {
             // Arrange
-            var extensions = new[] { "jpg", "png", "gif", "bmp", "ico" };
+            string[] extensions = new[] { "jpg", "png", "gif", "bmp", "ico" };
 
             // Act
-            var filter = new FilePickerFilter("Image Files", extensions);
+            FilePickerFilter filter = new FilePickerFilter("Image Files", extensions);
 
             // Assert
             Assert.Equal(5, filter.Extensions.Count);
-            foreach (var ext in extensions)
+            foreach (string ext in extensions)
             {
                 Assert.Contains(ext, filter.Extensions);
             }

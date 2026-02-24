@@ -129,7 +129,7 @@ namespace Alis.Core.Audio.Players
         {
             Console.WriteLine($"[BrowserPlayer] Play: {fileName}");
             byte[] wavData = null;
-            using (var stream = AssetRegistry.GetResourceMemoryStreamByName(fileName))
+            using (MemoryStream stream = AssetRegistry.GetResourceMemoryStreamByName(fileName))
             {
                 if (stream == null)
                 {

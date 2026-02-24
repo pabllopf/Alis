@@ -223,7 +223,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
             DungeonConfiguration config = new DungeonConfiguration();
 
             // Act & Assert
-            var exception = Record.Exception(() => config.Validate());
+            Exception exception = Record.Exception(() => config.Validate());
             Assert.Null(exception);
         }
 

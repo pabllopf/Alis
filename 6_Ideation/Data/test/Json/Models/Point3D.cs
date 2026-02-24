@@ -28,12 +28,12 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public Point3D CreateFromProperties(Dictionary<string, string> properties)
         {
-            var x = 0.0;
-            var y = 0.0;
-            var z = 0.0;
-            if (properties.TryGetValue(nameof(X), out var xStr) && double.TryParse(xStr, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var xVal)) x = xVal;
-            if (properties.TryGetValue(nameof(Y), out var yStr) && double.TryParse(yStr, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var yVal)) y = yVal;
-            if (properties.TryGetValue(nameof(Z), out var zStr) && double.TryParse(zStr, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var zVal)) z = zVal;
+            double x = 0.0;
+            double y = 0.0;
+            double z = 0.0;
+            if (properties.TryGetValue(nameof(X), out string xStr) && double.TryParse(xStr, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double xVal)) x = xVal;
+            if (properties.TryGetValue(nameof(Y), out string yStr) && double.TryParse(yStr, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double yVal)) y = yVal;
+            if (properties.TryGetValue(nameof(Z), out string zStr) && double.TryParse(zStr, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double zVal)) z = zVal;
             return new Point3D(x, y, z);
         }
     }

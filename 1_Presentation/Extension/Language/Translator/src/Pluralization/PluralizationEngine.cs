@@ -122,7 +122,7 @@ namespace Alis.Extension.Language.Translator
         private void InitializeDefaultRules()
         {
             // English, German, Dutch, etc. - 2 forms (singular, plural)
-            var englishRule = (int quantity) => quantity == 1 ? 0 : 1;
+            Func<int, int> englishRule = (int quantity) => quantity == 1 ? 0 : 1;
             RegisterPluralizationRule("en", englishRule);
             pluralFormCounts["en"] = 2;
 
@@ -147,7 +147,7 @@ namespace Alis.Extension.Language.Translator
             pluralFormCounts["it"] = 2;
 
             // Russian - 3 forms (1, 21, 101...), (2-4, 22-24...), (0, 5-20, 25-30...)
-            var russianRule = (int quantity) =>
+            Func<int, int> russianRule = (int quantity) =>
             {
                 quantity = Math.Abs(quantity) % 100;
                 int tens = quantity % 10;
@@ -173,7 +173,7 @@ namespace Alis.Extension.Language.Translator
             pluralFormCounts["ru"] = 3;
 
             // Polish - 3 forms
-            var polishRule = (int quantity) =>
+            Func<int, int> polishRule = (int quantity) =>
             {
                 if (quantity == 1)
                 {
@@ -192,7 +192,7 @@ namespace Alis.Extension.Language.Translator
             pluralFormCounts["pl"] = 3;
 
             // Japanese, Korean, Chinese - 1 form (no pluralization)
-            var noPluralizationRule = (int quantity) => 0;
+            Func<int, int> noPluralizationRule = (int quantity) => 0;
             RegisterPluralizationRule("ja", noPluralizationRule);
             pluralFormCounts["ja"] = 1;
 

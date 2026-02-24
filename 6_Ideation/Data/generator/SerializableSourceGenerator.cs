@@ -72,7 +72,7 @@ namespace Alis.Core.Aspect.Data.Generator
                 }
 
                 // Generate serialization and deserialization code
-                var builder = new SerializationCodeBuilder(typeSymbol);
+                SerializationCodeBuilder builder = new SerializationCodeBuilder(typeSymbol);
                 string source = builder.Build();
                 context.AddSource($"{typeSymbol.Name}_Serialization.g.cs", source);
             }

@@ -21,9 +21,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public UserWithAddress CreateFromProperties(Dictionary<string, string> properties)
         {
-            var obj = new UserWithAddress();
-            if (properties.TryGetValue(nameof(Username), out var v)) obj.Username = v;
-            if (properties.TryGetValue(nameof(UserId), out v) && int.TryParse(v, out var val)) obj.UserId = val;
+            UserWithAddress obj = new UserWithAddress();
+            if (properties.TryGetValue(nameof(Username), out string v)) obj.Username = v;
+            if (properties.TryGetValue(nameof(UserId), out v) && int.TryParse(v, out int val)) obj.UserId = val;
             if (properties.TryGetValue(nameof(Address), out v) && !string.IsNullOrEmpty(v))
                 obj.Address = JsonNativeAot.Deserialize<AddressClass>(v);
             return obj;

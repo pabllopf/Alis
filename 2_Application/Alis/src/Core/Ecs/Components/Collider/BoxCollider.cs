@@ -543,7 +543,7 @@ namespace Alis.Core.Ecs.Components.Collider
             float bottom = (rectangleY + rectangleH) / cameraResolution.Y * 2.0f - 1.0f;
 
             // Vértices del rectángulo (en sentido antihorario: bottom-left, top-left, top-right, bottom-right)
-            var rectVertices = new[]
+            float[] rectVertices = new[]
             {
                 left, bottom, // bottom-left
                 left, top, // top-left
@@ -556,7 +556,7 @@ namespace Alis.Core.Ecs.Components.Collider
 
             // Actualizar VBO dinámicamente (sin unsafe)
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, vbo);
-            var handle = GCHandle.Alloc(rectVertices, GCHandleType.Pinned);
+            GCHandle handle = GCHandle.Alloc(rectVertices, GCHandleType.Pinned);
             try
             {
                 IntPtr pointer = handle.AddrOfPinnedObject();

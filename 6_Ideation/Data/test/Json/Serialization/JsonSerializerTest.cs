@@ -118,7 +118,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         [Fact]
         public void Serialize_WithSimpleObject_ReturnsValidJson()
         {
-            var obj = new SimpleTestObject { Name = "John", Age = 30 };
+            SimpleTestObject obj = new SimpleTestObject { Name = "John", Age = 30 };
             string result = _serializer.Serialize(obj);
 
             Assert.Contains("\"Name\"", result);
@@ -142,7 +142,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         [Fact]
         public void Serialize_WithArrayProperty_DoesNotAddQuotes()
         {
-            var obj = new ObjectWithArray();
+            ObjectWithArray obj = new ObjectWithArray();
             string result = _serializer.Serialize(obj);
 
             Assert.Contains("\"items\":[\"a\",\"b\",\"c\"]", result);
@@ -154,7 +154,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         [Fact]
         public void Serialize_WithNullProperty_ExcludesProperty()
         {
-            var obj = new ObjectWithNullProperty();
+            ObjectWithNullProperty obj = new ObjectWithNullProperty();
             string result = _serializer.Serialize(obj);
 
             Assert.Contains("\"Name\"", result);
@@ -167,7 +167,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         [Fact]
         public void Serialize_ResultStartsWithOpenBrace()
         {
-            var obj = new SimpleTestObject { Name = "Test", Age = 25 };
+            SimpleTestObject obj = new SimpleTestObject { Name = "Test", Age = 25 };
             string result = _serializer.Serialize(obj);
 
             Assert.StartsWith("{", result);
@@ -179,7 +179,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         [Fact]
         public void Serialize_ResultEndsWithCloseBrace()
         {
-            var obj = new SimpleTestObject { Name = "Test", Age = 25 };
+            SimpleTestObject obj = new SimpleTestObject { Name = "Test", Age = 25 };
             string result = _serializer.Serialize(obj);
 
             Assert.EndsWith("}", result);
@@ -191,7 +191,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         [Fact]
         public void Serialize_WithObjectProperty_DoesNotAddQuotes()
         {
-            var obj = new ObjectWithArray();
+            ObjectWithArray obj = new ObjectWithArray();
             string result = _serializer.Serialize(obj);
 
             Assert.StartsWith("{", result);
@@ -204,7 +204,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         [Fact]
         public void Serialize_WithMultipleProperties_SeparatedByCommas()
         {
-            var obj = new SimpleTestObject { Name = "John", Age = 30 };
+            SimpleTestObject obj = new SimpleTestObject { Name = "John", Age = 30 };
             string result = _serializer.Serialize(obj);
 
             int commaCount = result.Split(',').Length - 1;
@@ -217,7 +217,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         [Fact]
         public void Serialize_WithObjectWithNoProperties_ReturnsEmptyObject()
         {
-            var obj = new EmptyObject();
+            EmptyObject obj = new EmptyObject();
             string result = _serializer.Serialize(obj);
 
             Assert.Equal("{}", result);

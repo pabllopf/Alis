@@ -19,20 +19,20 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
         public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
         {
             yield return (nameof(PlayerName), PlayerName);
-            var scoresJson = "[" + string.Join(",", Scores) + "]";
+            string scoresJson = "[" + string.Join(",", Scores) + "]";
             yield return (nameof(Scores), scoresJson);
         }
 
         public ScoresClass CreateFromProperties(Dictionary<string, string> properties)
         {
-            var obj = new ScoresClass();
-            if (properties.TryGetValue(nameof(PlayerName), out var name)) obj.PlayerName = name;
-            if (properties.TryGetValue(nameof(Scores), out var scoresJson))
+            ScoresClass obj = new ScoresClass();
+            if (properties.TryGetValue(nameof(PlayerName), out string name)) obj.PlayerName = name;
+            if (properties.TryGetValue(nameof(Scores), out string scoresJson))
             {
-                var items = scoresJson.Trim('[', ']').Split(',');
-                foreach (var item in items)
+                string[] items = scoresJson.Trim('[', ']').Split(',');
+                foreach (string item in items)
                 {
-                    if (int.TryParse(item.Trim(), out var score))
+                    if (int.TryParse(item.Trim(), out int score))
                         obj.Scores.Add(score);
                 }
             }

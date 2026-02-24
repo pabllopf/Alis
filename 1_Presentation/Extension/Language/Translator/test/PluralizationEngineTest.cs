@@ -44,7 +44,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void GetPluralForm_EnglishWithOne_ShouldReturnSingular()
         {
             // Arrange
-            var engine = new PluralizationEngine();
+            PluralizationEngine engine = new PluralizationEngine();
 
             // Act
             int form = engine.GetPluralForm("en", 1);
@@ -64,7 +64,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void GetPluralForm_EnglishWithMultiple_ShouldReturnPlural(int quantity)
         {
             // Arrange
-            var engine = new PluralizationEngine();
+            PluralizationEngine engine = new PluralizationEngine();
 
             // Act
             int form = engine.GetPluralForm("en", quantity);
@@ -83,7 +83,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void GetPluralForm_Spanish_ShouldWorkCorrectly(int quantity, int expected)
         {
             // Arrange
-            var engine = new PluralizationEngine();
+            PluralizationEngine engine = new PluralizationEngine();
 
             // Act
             int form = engine.GetPluralForm("es", quantity);
@@ -104,7 +104,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void GetPluralForm_Russian_ShouldReturnCorrectForm(int quantity, int expected)
         {
             // Arrange
-            var engine = new PluralizationEngine();
+            PluralizationEngine engine = new PluralizationEngine();
 
             // Act
             int form = engine.GetPluralForm("ru", quantity);
@@ -123,7 +123,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void GetPluralForm_Japanese_ShouldAlwaysReturnZero(int quantity)
         {
             // Arrange
-            var engine = new PluralizationEngine();
+            PluralizationEngine engine = new PluralizationEngine();
 
             // Act
             int form = engine.GetPluralForm("ja", quantity);
@@ -139,7 +139,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void RegisterPluralizationRule_WithCustomRule_ShouldUseCustomRule()
         {
             // Arrange
-            var engine = new PluralizationEngine();
+            PluralizationEngine engine = new PluralizationEngine();
             Func<int, int> customRule = q => q % 2 == 0 ? 0 : 1;
 
             // Act
@@ -157,7 +157,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void RegisterPluralizationRule_WithNullRule_ShouldThrowException()
         {
             // Arrange
-            var engine = new PluralizationEngine();
+            PluralizationEngine engine = new PluralizationEngine();
 
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => engine.RegisterPluralizationRule("test", null));
@@ -174,7 +174,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void GetPluralFormCount_ShouldReturnCorrectCount(string languageCode, int expectedCount)
         {
             // Arrange
-            var engine = new PluralizationEngine();
+            PluralizationEngine engine = new PluralizationEngine();
 
             // Act
             int count = engine.GetPluralFormCount(languageCode);
@@ -190,7 +190,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void GetPluralForm_WithNullLanguageCode_ShouldThrowException()
         {
             // Arrange
-            var engine = new PluralizationEngine();
+            PluralizationEngine engine = new PluralizationEngine();
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => engine.GetPluralForm(null, 1));

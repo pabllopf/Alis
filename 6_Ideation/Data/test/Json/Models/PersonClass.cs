@@ -57,12 +57,12 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public PersonClass CreateFromProperties(Dictionary<string, string> properties)
         {
-            var person = new PersonClass();
-            if (properties.TryGetValue(nameof(Name), out var name))
+            PersonClass person = new PersonClass();
+            if (properties.TryGetValue(nameof(Name), out string name))
                 person.Name = name;
-            if (properties.TryGetValue(nameof(Age), out var age) && int.TryParse(age, out var ageValue))
+            if (properties.TryGetValue(nameof(Age), out string age) && int.TryParse(age, out int ageValue))
                 person.Age = ageValue;
-            if (properties.TryGetValue(nameof(Email), out var email))
+            if (properties.TryGetValue(nameof(Email), out string email))
                 person.Email = email;
             return person;
         }

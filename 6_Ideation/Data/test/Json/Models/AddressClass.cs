@@ -23,8 +23,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public AddressClass CreateFromProperties(Dictionary<string, string> properties)
         {
-            var obj = new AddressClass();
-            if (properties.TryGetValue(nameof(Street), out var v)) obj.Street = v;
+            AddressClass obj = new AddressClass();
+            if (properties.TryGetValue(nameof(Street), out string v)) obj.Street = v;
             if (properties.TryGetValue(nameof(City), out v)) obj.City = v;
             if (properties.TryGetValue(nameof(Country), out v)) obj.Country = v;
             if (properties.TryGetValue(nameof(ZipCode), out v)) obj.ZipCode = v;

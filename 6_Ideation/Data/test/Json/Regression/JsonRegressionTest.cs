@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Alis.Core.Aspect.Data.Json;
 using Alis.Core.Aspect.Data.Json.Helpers;
 using Alis.Core.Aspect.Data.Json.Parsing;
@@ -58,7 +60,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Improved whitespace trimming logic
             string json = "  {  \"key\"  :  \"value\"  }  ";
 
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
 
             Assert.Equal("value", result["key"]);
         }
@@ -70,7 +72,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Added newline handling
             string json = "{\n\"name\":\n\"John\"\n}";
 
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
 
             Assert.Equal("John", result["name"]);
         }
@@ -86,7 +88,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Proper escape sequence handling
             string json = "{\"text\":\"say \\\"hello\\\"\"}";
 
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
 
             Assert.Contains("\"", result["text"]);
         }
@@ -98,7 +100,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Added backslash escape handling
             string json = "{\"path\":\"C:\\\\\\\\Users\"}";
 
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
 
             Assert.Contains("\\", result["path"]);
         }
@@ -110,7 +112,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Loop through all escape sequences
             string json = "{\"text\":\"line1\\nline2\\ttab\"}";
 
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
 
             Assert.Contains("\n", result["text"]);
             Assert.Contains("\t", result["text"]);
@@ -127,7 +129,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Proper bracket counting
             string json = "{\"user\":{\"name\":\"Alice\",\"age\":\"30\"}}";
 
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
 
             Assert.Contains("name", result["user"]);
             Assert.Contains("Alice", result["user"]);
@@ -141,7 +143,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Improved bracket tracking
             string json = "{\"items\":[{\"id\":\"1\"},{\"id\":\"2\"}]}";
 
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
 
             Assert.Contains("id", result["items"]);
             Assert.Contains("1", result["items"]);
@@ -159,7 +161,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Preserve empty string values
             string json = "{\"name\":\"\"}";
 
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
 
             Assert.True(result.ContainsKey("name"));
             Assert.Equal("", result["name"]);
@@ -172,7 +174,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Return "[]" for empty arrays
             string json = "{\"items\":[]}";
 
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
 
             Assert.Equal("[]", result["items"]);
         }
@@ -184,7 +186,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Return "{}" for empty objects
             string json = "{\"data\":{}}";
 
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
 
             Assert.Equal("{}", result["data"]);
         }
@@ -198,7 +200,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: CS0023 error with nullable operator on value types
             // Fixed: Check IsValueType before using ?.
-            var obj = new NumericTypesStruct
+            NumericTypesStruct obj = new NumericTypesStruct
             {
                 IntValue = 42,
                 DoubleValue = 3.14
@@ -215,7 +217,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Null reference exceptions
             // Fixed: Use ?. for reference types
-            var obj = new PersonClass
+            PersonClass obj = new PersonClass
             {
                 Name = null,
                 Age = 30,
@@ -238,7 +240,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Use default values for missing properties
             string json = "{\"Name\":\"Test\"}";
 
-            var obj = JsonNativeAot.Deserialize<PersonClass>(json);
+            PersonClass obj = JsonNativeAot.Deserialize<PersonClass>(json);
 
             Assert.Equal("Test", obj.Name);
             Assert.Equal(0, obj.Age);
@@ -251,7 +253,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: TryParse with default fallback
             string json = "{\"Value\":\"not_a_number\"}";
 
-            var obj = JsonNativeAot.Deserialize<MinimalStruct>(json);
+            MinimalStruct obj = JsonNativeAot.Deserialize<MinimalStruct>(json);
 
             Assert.Equal(0, obj.Value);
         }
@@ -263,7 +265,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: TryParse with default fallback
             string json = "{\"Flag\":\"invalid\"}";
 
-            var obj = JsonNativeAot.Deserialize<PersonStruct>(json);
+            PersonStruct obj = JsonNativeAot.Deserialize<PersonStruct>(json);
 
             Assert.False(obj.IsActive);
         }
@@ -275,7 +277,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: TryParse with Guid.Empty fallback
             string json = "{\"Id\":\"not_a_guid\"}";
 
-            var obj = JsonNativeAot.Deserialize<TemporalTypesStruct>(json);
+            TemporalTypesStruct obj = JsonNativeAot.Deserialize<TemporalTypesStruct>(json);
 
             Assert.Equal(Guid.Empty, obj.Identifier);
         }
@@ -289,7 +291,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: @ symbol caused parsing issues
             // Fixed: Properly handle special characters
-            var original = new PersonClass
+            PersonClass original = new PersonClass
             {
                 Name = "User",
                 Age = 25,
@@ -297,7 +299,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<PersonClass>(json);
+            PersonClass restored = JsonNativeAot.Deserialize<PersonClass>(json);
 
             Assert.Equal("user@example.com", restored.Email);
         }
@@ -307,13 +309,13 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: URLs with slashes broken
             // Fixed: Proper escape handling
-            var original = new MinimalClass
+            MinimalClass original = new MinimalClass
             {
                 Value = "https://example.com/path"
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<MinimalClass>(json);
+            MinimalClass restored = JsonNativeAot.Deserialize<MinimalClass>(json);
 
             Assert.Equal("https://example.com/path", restored.Value);
         }
@@ -327,13 +329,13 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Decimal precision lost
             // Fixed: Use InvariantCulture for formatting
-            var original = new NumericTypesClass
+            NumericTypesClass original = new NumericTypesClass
             {
                 DecimalValue = 123.456789m
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<NumericTypesClass>(json);
+            NumericTypesClass restored = JsonNativeAot.Deserialize<NumericTypesClass>(json);
 
             Assert.Equal(original.DecimalValue, restored.DecimalValue);
         }
@@ -343,13 +345,13 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Double precision issues
             // Fixed: Use InvariantCulture for double parsing
-            var original = new NumericTypesStruct
+            NumericTypesStruct original = new NumericTypesStruct
             {
                 DoubleValue = 3.141592653589793
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<NumericTypesStruct>(json);
+            NumericTypesStruct restored = JsonNativeAot.Deserialize<NumericTypesStruct>(json);
 
             Assert.Equal(original.DoubleValue, restored.DoubleValue, 10);
         }
@@ -363,14 +365,14 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: DateTime serialization lost time component
             // Fixed: Use "O" format for round-trip
-            var original = new TemporalTypesStruct
+            TemporalTypesStruct original = new TemporalTypesStruct
             {
                 Timestamp = new DateTime(2023, 6, 15, 14, 30, 45),
                 Identifier = Guid.NewGuid()
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<TemporalTypesStruct>(json);
+            TemporalTypesStruct restored = JsonNativeAot.Deserialize<TemporalTypesStruct>(json);
 
             Assert.Equal(original.Timestamp.Year, restored.Timestamp.Year);
             Assert.Equal(original.Timestamp.Month, restored.Timestamp.Month);
@@ -382,7 +384,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: DateTime.MinValue caused issues
             // Fixed: Handle edge case values
-            var original = new TemporalTypesClass
+            TemporalTypesClass original = new TemporalTypesClass
             {
                 CreatedAt = DateTime.MinValue,
                 UpdatedAt = DateTime.MinValue,
@@ -391,7 +393,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<TemporalTypesClass>(json);
+            TemporalTypesClass restored = JsonNativeAot.Deserialize<TemporalTypesClass>(json);
 
             Assert.Equal(original.CreatedAt.Year, restored.CreatedAt.Year);
         }
@@ -405,7 +407,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Enum serialized as int
             // Fixed: Use ToString() for enum serialization
-            var original = new EntityWithEnums
+            EntityWithEnums original = new EntityWithEnums
             {
                 Name = "Test",
                 Status = StatusEnum.Active,
@@ -413,7 +415,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<EntityWithEnums>(json);
+            EntityWithEnums restored = JsonNativeAot.Deserialize<EntityWithEnums>(json);
 
             Assert.Equal(StatusEnum.Active, restored.Status);
             Assert.Equal(PriorityEnum.High, restored.Priority);
@@ -424,7 +426,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Default enum value (0) not handled
             // Fixed: Proper enum parsing with default
-            var original = new EntityWithEnums
+            EntityWithEnums original = new EntityWithEnums
             {
                 Name = "Test",
                 Status = StatusEnum.Unknown,
@@ -432,7 +434,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<EntityWithEnums>(json);
+            EntityWithEnums restored = JsonNativeAot.Deserialize<EntityWithEnums>(json);
 
             Assert.Equal(StatusEnum.Unknown, restored.Status);
         }
@@ -446,14 +448,14 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Empty lists became null
             // Fixed: Initialize empty list properly
-            var original = new TagsClass
+            TagsClass original = new TagsClass
             {
                 Name = "Test",
                 Tags = new System.Collections.Generic.List<string>()
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<TagsClass>(json);
+            TagsClass restored = JsonNativeAot.Deserialize<TagsClass>(json);
 
             Assert.NotNull(restored.Tags);
             Assert.Empty(restored.Tags);
@@ -464,7 +466,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Null elements in list caused issues
             // Fixed: Skip or handle null elements
-            var original = new TagsClass
+            TagsClass original = new TagsClass
             {
                 Name = "Test",
                 Tags = new System.Collections.Generic.List<string> { "tag1", null, "tag2" }
@@ -484,7 +486,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Nested objects flattened
             // Fixed: Proper nested serialization
-            var original = new UserWithAddress
+            UserWithAddress original = new UserWithAddress
             {
                 Username = "testuser",
                 UserId = 1,
@@ -496,7 +498,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<UserWithAddress>(json);
+            UserWithAddress restored = JsonNativeAot.Deserialize<UserWithAddress>(json);
 
             Assert.NotNull(restored.Address);
             Assert.Equal("123 Main St", restored.Address.Street);
@@ -507,7 +509,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Null nested objects caused NullReferenceException
             // Fixed: Null checks before serialization
-            var original = new UserWithAddress
+            UserWithAddress original = new UserWithAddress
             {
                 Username = "user",
                 UserId = 2,
@@ -515,7 +517,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<UserWithAddress>(json);
+            UserWithAddress restored = JsonNativeAot.Deserialize<UserWithAddress>(json);
 
             Assert.Equal("user", restored.Username);
         }
@@ -530,10 +532,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Regression: Long strings truncated
             // Fixed: Removed buffer size limitations
             string longString = new string('x', 10000);
-            var original = new MinimalClass { Value = longString };
+            MinimalClass original = new MinimalClass { Value = longString };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<MinimalClass>(json);
+            MinimalClass restored = JsonNativeAot.Deserialize<MinimalClass>(json);
 
             Assert.Equal(longString, restored.Value);
         }
@@ -543,13 +545,13 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Max int values caused overflow
             // Fixed: Proper int parsing with bounds check
-            var original = new NumericTypesClass
+            NumericTypesClass original = new NumericTypesClass
             {
                 IntValue = int.MaxValue
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<NumericTypesClass>(json);
+            NumericTypesClass restored = JsonNativeAot.Deserialize<NumericTypesClass>(json);
 
             Assert.Equal(int.MaxValue, restored.IntValue);
         }
@@ -563,14 +565,14 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Empty GUID serialization issue
             // Fixed: Handle Guid.Empty explicitly
-            var original = new TemporalTypesStruct
+            TemporalTypesStruct original = new TemporalTypesStruct
             {
                 Timestamp = DateTime.Now,
                 Identifier = Guid.Empty
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<TemporalTypesStruct>(json);
+            TemporalTypesStruct restored = JsonNativeAot.Deserialize<TemporalTypesStruct>(json);
 
             Assert.Equal(Guid.Empty, restored.Identifier);
         }
@@ -580,7 +582,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: DateTime.MinValue caused format exception
             // Fixed: Handle DateTime edge cases
-            var original = new ProductClass
+            ProductClass original = new ProductClass
             {
                 ProductId = 1,
                 ProductName = "Test",
@@ -590,7 +592,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<ProductClass>(json);
+            ProductClass restored = JsonNativeAot.Deserialize<ProductClass>(json);
 
             Assert.Equal(DateTime.MinValue.Year, restored.AddedDate.Year);
         }
@@ -606,7 +608,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Use case-sensitive dictionary
             string json = "{\"Name\":\"upper\",\"name\":\"lower\"}";
 
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
 
             Assert.Equal(2, result.Count);
         }
@@ -622,7 +624,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Overwrite with last value
             string json = "{\"key\":\"first\",\"key\":\"second\"}";
 
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
 
             Assert.Equal("second", result["key"]);
         }
@@ -636,13 +638,13 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Unicode characters corrupted
             // Fixed: Use UTF-8 encoding throughout
-            var original = new MinimalClass
+            MinimalClass original = new MinimalClass
             {
                 Value = "Hello 世界 🌍"
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<MinimalClass>(json);
+            MinimalClass restored = JsonNativeAot.Deserialize<MinimalClass>(json);
 
             Assert.Equal(original.Value, restored.Value);
         }
@@ -656,15 +658,15 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Slow parsing with large JSON
             // Fixed: Optimized parsing algorithm
-            var props = new System.Collections.Generic.List<string>();
+            List<string> props = new System.Collections.Generic.List<string>();
             for (int i = 0; i < 1000; i++)
             {
                 props.Add($"\"field{i}\":\"value{i}\"");
             }
             string json = "{" + string.Join(",", props) + "}";
 
-            var sw = System.Diagnostics.Stopwatch.StartNew();
-            var result = _parser.ParseToDictionary(json);
+            Stopwatch sw = System.Diagnostics.Stopwatch.StartNew();
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
             sw.Stop();
 
             Assert.True(sw.ElapsedMilliseconds < 2000);
@@ -705,10 +707,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Structs caused AOT compilation issues
             // Fixed: Proper struct handling in generator
-            var original = new Point2D(10, 20);
+            Point2D original = new Point2D(10, 20);
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<Point2D>(json);
+            Point2D restored = JsonNativeAot.Deserialize<Point2D>(json);
 
             Assert.Equal(original.X, restored.X);
             Assert.Equal(original.Y, restored.Y);
@@ -719,7 +721,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Complex structs failed AOT
             // Fixed: Better struct member access in generator
-            var original = new DbConnectionStruct
+            DbConnectionStruct original = new DbConnectionStruct
             {
                 Host = "localhost",
                 Port = 5432,
@@ -728,7 +730,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<DbConnectionStruct>(json);
+            DbConnectionStruct restored = JsonNativeAot.Deserialize<DbConnectionStruct>(json);
 
             Assert.Equal(original.Host, restored.Host);
             Assert.Equal(original.Port, restored.Port);
@@ -743,7 +745,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Memory leak with repeated serializations
             // Fixed: Proper disposal and StringBuilder reuse
-            var obj = new PersonClass { Name = "Test", Age = 30, Email = "test@test.com" };
+            PersonClass obj = new PersonClass { Name = "Test", Age = 30, Email = "test@test.com" };
 
             for (int i = 0; i < 1000; i++)
             {
@@ -764,7 +766,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
             for (int i = 0; i < 1000; i++)
             {
-                var obj = JsonNativeAot.Deserialize<PersonClass>(json);
+                PersonClass obj = JsonNativeAot.Deserialize<PersonClass>(json);
                 Assert.NotNull(obj);
             }
 
@@ -781,7 +783,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Thread safety issues
             // Fixed: Removed shared state
-            var obj = new PersonClass { Name = "Concurrent", Age = 30, Email = "test@test.com" };
+            PersonClass obj = new PersonClass { Name = "Concurrent", Age = 30, Email = "test@test.com" };
 
             System.Threading.Tasks.Parallel.For(0, 100, i =>
             {
@@ -801,7 +803,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: All null properties caused crash
             // Fixed: Handle all-null scenarios
-            var obj = new PersonClass
+            PersonClass obj = new PersonClass
             {
                 Name = null,
                 Age = 0,
@@ -820,7 +822,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Use default values
             string json = "{}";
 
-            var obj = JsonNativeAot.Deserialize<PersonClass>(json);
+            PersonClass obj = JsonNativeAot.Deserialize<PersonClass>(json);
 
             Assert.NotNull(obj);
         }
@@ -836,7 +838,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Allow underscores in identifiers
             string json = "{\"_id\":\"123\",\"user_name\":\"test\"}";
 
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
 
             Assert.Equal("123", result["_id"]);
             Assert.Equal("test", result["user_name"]);
@@ -851,14 +853,14 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: -0.0 vs 0.0 comparison issues
             // Fixed: Normalize zero values
-            var original = new NumericTypesStruct
+            NumericTypesStruct original = new NumericTypesStruct
             {
                 DoubleValue = -0.0,
                 FloatValue = -0.0f
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<NumericTypesStruct>(json);
+            NumericTypesStruct restored = JsonNativeAot.Deserialize<NumericTypesStruct>(json);
 
             Assert.Equal(0.0, Math.Abs(restored.DoubleValue));
             Assert.Equal(0.0f, Math.Abs(restored.FloatValue));
@@ -869,13 +871,13 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Very small doubles rounded to zero
             // Fixed: Use proper formatting
-            var original = new NumericTypesStruct
+            NumericTypesStruct original = new NumericTypesStruct
             {
                 DoubleValue = 0.000000001
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<NumericTypesStruct>(json);
+            NumericTypesStruct restored = JsonNativeAot.Deserialize<NumericTypesStruct>(json);
 
             Assert.True(restored.DoubleValue > 0);
         }
@@ -889,7 +891,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
         {
             // Regression: Non-deterministic serialization
             // Fixed: Stable property ordering
-            var obj = new PersonClass
+            PersonClass obj = new PersonClass
             {
                 Name = "Consistent",
                 Age = 30,
@@ -909,10 +911,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             // Fixed: Consistent serialization format
             string originalJson = "{\"Name\":\"Test\",\"Age\":\"30\",\"Email\":\"test@test.com\"}";
 
-            var obj = JsonNativeAot.Deserialize<PersonClass>(originalJson);
+            PersonClass obj = JsonNativeAot.Deserialize<PersonClass>(originalJson);
             string newJson = JsonNativeAot.Serialize(obj);
 
-            var obj2 = JsonNativeAot.Deserialize<PersonClass>(newJson);
+            PersonClass obj2 = JsonNativeAot.Deserialize<PersonClass>(newJson);
 
             Assert.Equal(obj.Name, obj2.Name);
             Assert.Equal(obj.Age, obj2.Age);
