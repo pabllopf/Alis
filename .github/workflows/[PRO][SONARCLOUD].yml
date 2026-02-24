@@ -57,8 +57,8 @@ jobs:
           dotnet tool install --global coverlet.console --version 6.0.4
           dotnet tool install --global dotnet-sonarscanner --version 11.0.0
 
-          dotnet sonarscanner begin /k:"${{ secrets.SONAR_PROJECT_KEY }}" /o:"${{ secrets.SONAR_ORGANIZATION }}" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.scanner.skipJreProvisioning=true /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
+          dotnet sonarscanner begin /k:"${{ secrets.SONAR_PROJECT_KEY }}" /o:"${{ secrets.SONAR_ORGANIZATION }}" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.scanner.skipJreProvisioning=true /d:sonar.language=cs /d:sonar.dotnet.version=10.0 /d:sonar.projectBaseDir="$(pwd)" /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
           dotnet build --no-incremental -v quiet -p:WarningLevel=0 -clp:ErrorsOnly -c Release -f net10.0 ./alis_design.sln
-          dotnet test --no-build -v quiet -p:WarningLevel=0 -clp:ErrorsOnly -f net10.0 -c Release ./alis_design.sln --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          dotnet test --no-build -v quiet -p:WarningLevel=0 -clp:ErrorsOnly -f net10.0 -c Release ./alis_design.sln --collect "XPlat Code Coverage;Format=opencover" 
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
