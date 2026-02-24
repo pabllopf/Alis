@@ -42,15 +42,9 @@ jobs:
           brew link ffmpeg
 
       - name: Dotnet test Release
-        run: dotnet test alis.sln -c Release -f net10.0
+        run: dotnet test alis.sln -c Release -f net8.0
         env:
           DOTNET_CLI_TELEMETRY_OPTOUT: 1
-
-      - uses: dorny/test-reporter@v1
-        with:
-          name: MacOs 12 x64 Test Report                  # Name of the check run which will be created
-          path: '.test/**/**/*.trx'                     # Path to test results (inside artifact .zip)
-          reporter: dotnet-trx              # Format of test results
 
   windows_2022_x64:
     permissions:
@@ -87,15 +81,9 @@ jobs:
           choco install ffmpeg -y
 
       - name: Dotnet test Release
-        run: dotnet test alis.sln -c Release -f net10.0
+        run: dotnet test alis.sln -c Release -f net8.0
         env:
           DOTNET_CLI_TELEMETRY_OPTOUT: 1
-
-      - uses: dorny/test-reporter@v1
-        with:
-          name: Windows 2022 x64 Test Report                  # Name of the check run which will be created
-          path: '.test/**/**/*.trx'                     # Path to test results (inside artifact .zip)
-          reporter: dotnet-trx              # Format of test results
 
   ubuntu_22_04_x64:
     permissions:
@@ -141,7 +129,7 @@ jobs:
           df -h
 
       - name: Dotnet test Release
-        run: dotnet test alis.sln -c Release -f net10.0
+        run: dotnet test alis.sln -c Release -f net8.0
         env:
           DOTNET_CLI_TELEMETRY_OPTOUT: 1
 
@@ -150,14 +138,6 @@ jobs:
           name: Ubuntu 22_04 x64 Test Report                  # Name of the check run which will be created
           path: '.test/**/**/*.trx'                      # Path to test results (inside artifact .zip)
           reporter: dotnet-trx              # Format of test results
-
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        id: test-results
-        if: always()
-        with:
-          files: |
-            .test/**/**/*.trx
 
       - name: Set badge color
         shell: bash
