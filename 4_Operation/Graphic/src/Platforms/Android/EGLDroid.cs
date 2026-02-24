@@ -43,6 +43,7 @@ namespace Alis.Core.Graphic.Platforms.Android
         /// <param name="proc">The proc</param>
         /// <returns>The int ptr</returns>
         [DllImport("libEGL", EntryPoint = "eglGetProcAddress", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr GetProcAddress(string proc);
     }
 }

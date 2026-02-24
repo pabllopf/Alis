@@ -128,6 +128,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <param name="proc">The proc</param>
         /// <returns>The int ptr</returns>
         [DllImport(LibEgl, EntryPoint = "eglGetProcAddress", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr GetProcAddress(string proc);
 
         /// <summary>
@@ -136,6 +137,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <param name="displayId">The display id</param>
         /// <returns>The int ptr</returns>
         [DllImport(LibEgl, EntryPoint = "eglGetDisplay", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr GetDisplay(IntPtr displayId);
 
         /// <summary>
@@ -147,6 +149,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <returns>The bool</returns>
         [DllImport(LibEgl, EntryPoint = "eglInitialize", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
         [return: MarshalAs(UnmanagedType.Bool)]
+        [ExcludeFromCodeCoverage]
         public static extern bool Initialize(IntPtr display, out int major, out int minor);
 
 
@@ -161,6 +164,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <returns>The bool</returns>
         [DllImport(LibEgl, EntryPoint = "eglChooseConfig", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
         [return: MarshalAs(UnmanagedType.Bool)]
+        [ExcludeFromCodeCoverage]
         public static extern bool ChooseConfig(IntPtr dpy, int[] attribList, ref IntPtr configs, IntPtr configSize /*fixed to 1*/, ref IntPtr numConfig);
 
         /// <summary>
@@ -170,6 +174,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <returns>The bool</returns>
         [DllImport(LibEgl, EntryPoint = "eglBindAPI", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
         [return: MarshalAs(UnmanagedType.Bool)]
+        [ExcludeFromCodeCoverage]
         public static extern bool BindApi(int api);
 
         /// <summary>
@@ -181,6 +186,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <param name="attribList">The attrib list</param>
         /// <returns>The int ptr</returns>
         [DllImport(LibEgl, EntryPoint = "eglCreateContext", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr CreateContext(IntPtr /*EGLDisplay*/ display, IntPtr /*EGLConfig*/ config, IntPtr shareContext, int[] attribList);
 
         /// <summary>
@@ -193,6 +199,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <returns>The bool</returns>
         [DllImport(LibEgl, EntryPoint = "eglGetConfigAttrib", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
         [return: MarshalAs(UnmanagedType.Bool)]
+        [ExcludeFromCodeCoverage]
         public static extern bool GetConfigAttrib(IntPtr /*EGLDisplay*/ display, IntPtr /*EGLConfig*/ config, IntPtr attribute, ref IntPtr value);
 
         /// <summary>
@@ -204,6 +211,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <param name="attribList">The attrib list</param>
         /// <returns>The int ptr</returns>
         [DllImport(LibEgl, EntryPoint = "eglCreateWindowSurface", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr CreateWindowSurface(IntPtr display, IntPtr config, IntPtr win, IntPtr attribList /*fixed to NULL*/);
 
         /// <summary>
@@ -213,6 +221,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <param name="surface">The surface</param>
         /// <returns>The int</returns>
         [DllImport(LibEgl, EntryPoint = "eglDestroySurface", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
+        [ExcludeFromCodeCoverage]
         public static extern int DestroySurface(IntPtr display, IntPtr surface);
 
         /// <summary>
@@ -222,6 +231,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <param name="ctx">The ctx</param>
         /// <returns>The int</returns>
         [DllImport(LibEgl, EntryPoint = "eglDestroyContext", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
+        [ExcludeFromCodeCoverage]
         public static extern int DestroyContext(IntPtr display, IntPtr ctx);
 
         /// <summary>
@@ -234,6 +244,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <returns>The bool</returns>
         [DllImport(LibEgl, EntryPoint = "eglMakeCurrent", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
         [return: MarshalAs(UnmanagedType.Bool)]
+        [ExcludeFromCodeCoverage]
         public static extern bool MakeCurrent(IntPtr display, IntPtr draw, IntPtr read, IntPtr ctx);
 
         /// <summary>
@@ -242,6 +253,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <param name="display">The display</param>
         /// <returns>The int</returns>
         [DllImport(LibEgl, EntryPoint = "eglTerminate", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
+        [ExcludeFromCodeCoverage]
         public static extern int Terminate(IntPtr display);
 
         /// <summary>
@@ -251,6 +263,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <param name="surface">The surface</param>
         /// <returns>The int</returns>
         [DllImport(LibEgl, EntryPoint = "eglSwapBuffers", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
+        [ExcludeFromCodeCoverage]
         public static extern int SwapBuffers(IntPtr display, IntPtr surface);
 
         /// <summary>
@@ -260,6 +273,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <param name="interval">The interval</param>
         /// <returns>The int</returns>
         [DllImport(LibEgl, EntryPoint = "eglSwapInterval", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl), DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
+        [ExcludeFromCodeCoverage]
         public static extern int SwapInterval(IntPtr display, int interval);
     }
 }

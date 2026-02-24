@@ -184,6 +184,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_SetRect", CallingConvention = CallingConvention.Cdecl)]
+        [ExcludeFromCodeCoverage]
         public static extern void InternalSetRect(float x, float y, float width, float height);
 
         /// <summary>
@@ -195,6 +196,7 @@ namespace Alis.Extension.Graphic.Ui.Extras.GuizMo
         /// <param name="size">The size</param>
         /// <param name="backgroundColor">The background color</param>
         [DllImport(NativeLibrary, EntryPoint = "ImGuizmo_ViewManipulate_Float", CallingConvention = CallingConvention.Cdecl)]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuizmo_ViewManipulate(float[] view, float length, Vector2F position, Vector2F size, uint backgroundColor);
     }
 }

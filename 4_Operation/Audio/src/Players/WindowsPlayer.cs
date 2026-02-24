@@ -242,6 +242,7 @@ namespace Alis.Core.Audio.Players
         /// <param name="hwndCallback">The hwnd callback</param>
         /// <returns>The int</returns>
         [DllImport("winmm.dll")]
+        [ExcludeFromCodeCoverage]
         private static extern int mciSendString(string command, StringBuilder stringReturn, int returnLength, IntPtr hwndCallback);
 
         /// <summary>
@@ -252,6 +253,7 @@ namespace Alis.Core.Audio.Players
         /// <param name="errorTextSize">The error text size</param>
         /// <returns>The int</returns>
         [DllImport("winmm.dll")]
+        [ExcludeFromCodeCoverage]
         private static extern int mciGetErrorString(int errorCode, StringBuilder errorText, int errorTextSize);
 
         /// <summary>
@@ -261,6 +263,7 @@ namespace Alis.Core.Audio.Players
         /// <param name="dwVolume">The dw volume</param>
         /// <returns>The int</returns>
         [DllImport("winmm.dll")]
+        [ExcludeFromCodeCoverage]
         public static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume);
 
         /// <summary>

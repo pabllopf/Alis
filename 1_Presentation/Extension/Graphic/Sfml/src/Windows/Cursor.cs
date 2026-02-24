@@ -215,6 +215,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="type">The type</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr sfCursor_createFromSystem(CursorType type);
 
         /// <summary>
@@ -225,6 +226,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="hotspot">The hotspot</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr sfCursor_createFromPixels(IntPtr pixels, Vector2F size, Vector2F hotspot);
 
         /// <summary>
@@ -232,6 +234,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfCursor_destroy(IntPtr cPointer);
     }
 }

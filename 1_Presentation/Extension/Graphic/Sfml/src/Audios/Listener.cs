@@ -101,6 +101,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="volume">The volume</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfListener_setGlobalVolume(float volume);
 
         /// <summary>
@@ -108,6 +109,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern float sfListener_getGlobalVolume();
 
         /// <summary>
@@ -115,6 +117,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="position">The position</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfListener_setPosition(Vector3F position);
 
         /// <summary>
@@ -122,6 +125,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <returns>The vector 3f</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern Vector3F sfListener_getPosition();
 
         /// <summary>
@@ -129,6 +133,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="direction">The direction</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfListener_setDirection(Vector3F direction);
 
         /// <summary>
@@ -136,6 +141,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <returns>The vector 3f</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern Vector3F sfListener_getDirection();
 
         /// <summary>
@@ -143,6 +149,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="upVector">The up vector</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfListener_setUpVector(Vector3F upVector);
 
         /// <summary>
@@ -150,6 +157,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <returns>The vector 3f</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern Vector3F sfListener_getUpVector();
     }
 }

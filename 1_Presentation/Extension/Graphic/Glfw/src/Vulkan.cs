@@ -60,6 +60,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <param name="surface">The handle to the created Vulkan surface.</param>
         /// <returns>VK_SUCCESS if successful, or a Vulkan error code if an error occurred.</returns>
         [DllImport(GlfwNative.Library, EntryPoint = "glfwCreateWindowSurface", CallingConvention = CallingConvention.Cdecl)]
+        [ExcludeFromCodeCoverage]
         public static extern int
             CreateWindowSurface(IntPtr vulkan, IntPtr window, IntPtr allocator, out ulong surface);
 
@@ -73,6 +74,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <returns><c>true</c> if the queue family supports presentation, or <c>false</c> otherwise.</returns>
         [DllImport(GlfwNative.Library, EntryPoint = "glfwGetPhysicalDevicePresentationSupport",
             CallingConvention = CallingConvention.Cdecl)]
+        [ExcludeFromCodeCoverage]
         public static extern bool GetPhysicalDevicePresentationSupport(IntPtr instance, IntPtr device, uint family);
 
         /// <summary>
@@ -83,6 +85,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <returns>The int ptr</returns>
         [DllImport(GlfwNative.Library, EntryPoint = "glfwGetInstanceProcAddress",
             CallingConvention = CallingConvention.Cdecl)]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr GetInstanceProcAddress(IntPtr vulkan, byte[] procName);
 
         /// <summary>
@@ -92,6 +95,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <returns>The int ptr</returns>
         [DllImport(GlfwNative.Library, EntryPoint = "glfwGetRequiredInstanceExtensions",
             CallingConvention = CallingConvention.Cdecl)]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr GetRequiredInstanceExtensions(out uint count);
 
         /// <summary>
@@ -99,6 +103,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <returns>The bool</returns>
         [DllImport(GlfwNative.Library, EntryPoint = "glfwVulkanSupported", CallingConvention = CallingConvention.Cdecl)]
+        [ExcludeFromCodeCoverage]
         private static extern bool VulkanSupported();
 
 

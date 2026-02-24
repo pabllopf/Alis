@@ -735,6 +735,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="fragmentShaderFilename">The fragment shader filename</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr sfShader_createFromFile(string vertexShaderFilename, string geometryShaderFilename, string fragmentShaderFilename);
 
         /// <summary>
@@ -745,6 +746,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="fragmentShader">The fragment shader</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr sfShader_createFromMemory(string vertexShader, string geometryShader, string fragmentShader);
 
         /// <summary>
@@ -755,6 +757,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="fragmentShaderStream">The fragment shader stream</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr sfShader_createFromStream(IntPtr vertexShaderStream, IntPtr geometryShaderStream, IntPtr fragmentShaderStream);
 
         /// <summary>
@@ -762,6 +765,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="shader">The shader</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_destroy(IntPtr shader);
 
         /// <summary>
@@ -771,6 +775,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="x">The </param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setFloatUniform(IntPtr shader, string name, float x);
 
         /// <summary>
@@ -780,6 +785,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="vector">The vector</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setVec2Uniform(IntPtr shader, string name, Vec2 vector);
 
         /// <summary>
@@ -789,6 +795,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="vector">The vector</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setVec3Uniform(IntPtr shader, string name, Vec3 vector);
 
         /// <summary>
@@ -798,6 +805,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="vector">The vector</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setVec4Uniform(IntPtr shader, string name, Vec4 vector);
 
         /// <summary>
@@ -807,6 +815,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="x">The </param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setIntUniform(IntPtr shader, string name, int x);
 
         /// <summary>
@@ -816,6 +825,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="vector">The vector</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setIvec2Uniform(IntPtr shader, string name, Ivec2 vector);
 
         /// <summary>
@@ -825,6 +835,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="vector">The vector</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setIvec3Uniform(IntPtr shader, string name, Ivec3 vector);
 
         /// <summary>
@@ -834,6 +845,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="vector">The vector</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setIvec4Uniform(IntPtr shader, string name, Ivec4 vector);
 
         /// <summary>
@@ -843,6 +855,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="x">The </param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setBoolUniform(IntPtr shader, string name, bool x);
 
         /// <summary>
@@ -852,6 +865,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="vector">The vector</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setBvec2Uniform(IntPtr shader, string name, Bvec2 vector);
 
         /// <summary>
@@ -861,6 +875,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="vector">The vector</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setBvec3Uniform(IntPtr shader, string name, Bvec3 vector);
 
         /// <summary>
@@ -870,6 +885,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="vector">The vector</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setBvec4Uniform(IntPtr shader, string name, Bvec4 vector);
 
         /// <summary>
@@ -879,6 +895,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="matrix">The matrix</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setMat3Uniform(IntPtr shader, string name, Matrix3X3 matrix);
 
         /// <summary>
@@ -888,6 +905,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="matrix">The matrix</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setMat4Uniform(IntPtr shader, string name, Matrix4X4 matrix);
 
         /// <summary>
@@ -897,6 +915,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="texture">The texture</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setTextureUniform(IntPtr shader, string name, IntPtr texture);
 
         /// <summary>
@@ -905,6 +924,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="shader">The shader</param>
         /// <param name="name">The name</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setCurrentTextureUniform(IntPtr shader, string name);
 
         /// <summary>
@@ -915,6 +935,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setFloatUniformArray(IntPtr shader, string name, float data, uint length);
 
         /// <summary>
@@ -925,6 +946,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setFloatUniformArray(IntPtr shader, string name, IntPtr data, uint length);
 
         /// <summary>
@@ -935,6 +957,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setVec2UniformArray(IntPtr shader, string name, Vec2 data, uint length);
 
         /// <summary>
@@ -945,6 +968,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setVec2UniformArray(IntPtr shader, string name, IntPtr data, uint length);
 
         /// <summary>
@@ -955,6 +979,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setVec3UniformArray(IntPtr shader, string name, Vec3 data, uint length);
 
         /// <summary>
@@ -965,6 +990,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setVec3UniformArray(IntPtr shader, string name, IntPtr data, uint length);
 
         /// <summary>
@@ -975,6 +1001,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setVec4UniformArray(IntPtr shader, string name, Vec4 data, uint length);
 
         /// <summary>
@@ -985,6 +1012,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setVec4UniformArray(IntPtr shader, string name, IntPtr data, uint length);
 
         /// <summary>
@@ -995,6 +1023,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setMat3UniformArray(IntPtr shader, string name, Matrix3X3 data, uint length);
 
         /// <summary>
@@ -1005,6 +1034,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setMat3UniformArray(IntPtr shader, string name, IntPtr data, uint length);
 
         /// <summary>
@@ -1015,6 +1045,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setMat4UniformArray(IntPtr shader, string name, Matrix4X4 data, uint length);
 
         /// <summary>
@@ -1025,6 +1056,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setMat4UniformArray(IntPtr shader, string name, IntPtr data, uint length);
 
         /// <summary>
@@ -1034,6 +1066,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="x">The </param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setFloatParameter(IntPtr shader, string name, float x);
 
         /// <summary>
@@ -1044,6 +1077,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setFloat2Parameter(IntPtr shader, string name, float x, float y);
 
         /// <summary>
@@ -1055,6 +1089,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="y">The </param>
         /// <param name="z">The </param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setFloat3Parameter(IntPtr shader, string name, float x, float y, float z);
 
         /// <summary>
@@ -1067,6 +1102,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="z">The </param>
         /// <param name="w">The </param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setFloat4Parameter(IntPtr shader, string name, float x, float y, float z, float w);
 
         /// <summary>
@@ -1076,6 +1112,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="color">The color</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setColorParameter(IntPtr shader, string name, Color color);
 
         /// <summary>
@@ -1085,6 +1122,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="transform">The transform</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setTransformParameter(IntPtr shader, string name, Transform transform);
 
         /// <summary>
@@ -1094,6 +1132,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="name">The name</param>
         /// <param name="texture">The texture</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setTextureParameter(IntPtr shader, string name, IntPtr texture);
 
         /// <summary>
@@ -1102,6 +1141,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="shader">The shader</param>
         /// <param name="name">The name</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_setCurrentTextureParameter(IntPtr shader, string name);
 
         /// <summary>
@@ -1110,6 +1150,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="shader">The shader</param>
         /// <returns>The uint</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern uint sfShader_getNativeHandle(IntPtr shader);
 
         /// <summary>
@@ -1117,6 +1158,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="shader">The shader</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfShader_bind(IntPtr shader);
 
         /// <summary>
@@ -1124,6 +1166,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <returns>The bool</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern bool sfShader_isAvailable();
 
         /// <summary>
@@ -1131,6 +1174,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <returns>The bool</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern bool sfShader_isGeometryAvailable();
 
         /// <summary>
