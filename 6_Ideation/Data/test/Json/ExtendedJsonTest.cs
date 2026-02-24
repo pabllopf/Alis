@@ -43,6 +43,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
     {
         #region Serialization Tests
 
+        /// <summary>
+        /// Tests that serialize with various integers serializes correctly
+        /// </summary>
+        /// <param name="value">The value</param>
         [Theory]
         [InlineData(0)]
         [InlineData(1)]
@@ -61,6 +65,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Contains(value.ToString(), json);
         }
 
+        /// <summary>
+        /// Tests that serialize with various doubles serializes correctly
+        /// </summary>
+        /// <param name="value">The value</param>
         [Theory]
         [InlineData(0.0)]
         [InlineData(1.5)]
@@ -82,6 +90,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
         }
         
 
+        /// <summary>
+        /// Tests that serialize with various strings serializes correctly
+        /// </summary>
+        /// <param name="value">The value</param>
         [Theory]
         [InlineData("")]
         [InlineData(" ")]
@@ -100,6 +112,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.NotEmpty(json);
         }
 
+        /// <summary>
+        /// Tests that serialize with null reference completes without error
+        /// </summary>
         [Fact]
         public void Serialize_WithNullReference_CompletesWithoutError()
         {
@@ -118,6 +133,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
         #region Deserialization Tests
 
+        /// <summary>
+        /// Tests that deserialize with integer values parses correctly
+        /// </summary>
+        /// <param name="value">The value</param>
         [Theory]
         [InlineData(0)]
         [InlineData(1)]
@@ -135,6 +154,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(value, obj.IntValue);
         }
 
+        /// <summary>
+        /// Tests that deserialize with string values parses correctly
+        /// </summary>
+        /// <param name="value">The value</param>
         [Theory]
         [InlineData("")]
         [InlineData("Test")]
@@ -151,6 +174,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(value, obj.StringValue);
         }
 
+        /// <summary>
+        /// Tests that deserialize with boolean values parses correctly
+        /// </summary>
+        /// <param name="value">The value</param>
         [Theory]
         [InlineData("true")]
         [InlineData("false")]
@@ -166,6 +193,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(bool.Parse(value), obj.BoolValue);
         }
 
+        /// <summary>
+        /// Tests that deserialize with missing property uses default value
+        /// </summary>
         [Fact]
         public void Deserialize_WithMissingProperty_UsesDefaultValue()
         {
@@ -180,6 +210,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(0, obj.IntValue);
         }
 
+        /// <summary>
+        /// Tests that deserialize with extra property ignores extra
+        /// </summary>
         [Fact]
         public void Deserialize_WithExtraProperty_IgnoresExtra()
         {
@@ -197,6 +230,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
         #region Round-Trip Tests
 
+        /// <summary>
+        /// Tests that round trip simple object preserves data
+        /// </summary>
         [Fact]
         public void RoundTrip_SimpleObject_PreservesData()
         {
@@ -216,6 +252,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(original.IntValue, restored.IntValue);
         }
 
+        /// <summary>
+        /// Tests that round trip multiple properties preserves all data
+        /// </summary>
         [Fact]
         public void RoundTrip_MultipleProperties_PreservesAllData()
         {
@@ -242,6 +281,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
         #region Parsing Tests
 
+        /// <summary>
+        /// Tests that parse json to dictionary with simple json returns all properties
+        /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithSimpleJson_ReturnsAllProperties()
         {
@@ -257,6 +299,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal("Value2", dict["Key2"]);
         }
 
+        /// <summary>
+        /// Tests that parse json to dictionary with empty json returns empty dictionary
+        /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithEmptyJson_ReturnsEmptyDictionary()
         {
@@ -270,6 +315,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Empty(dict);
         }
 
+        /// <summary>
+        /// Tests that parse json to dictionary with numbers returned as strings
+        /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithNumbers_ReturnedAsStrings()
         {
@@ -283,6 +331,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal("42", dict["Number"]);
         }
 
+        /// <summary>
+        /// Tests that parse json to dictionary with whitespace parses correctly
+        /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithWhitespace_ParsesCorrectly()
         {
@@ -300,6 +351,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
         #region Edge Case Tests
 
+        /// <summary>
+        /// Tests that serialize with empty string handles correctly
+        /// </summary>
         [Fact]
         public void Serialize_WithEmptyString_HandlesCorrectly()
         {
@@ -313,6 +367,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Contains("\"\"", json);
         }
 
+        /// <summary>
+        /// Tests that serialize with special characters handles correctly
+        /// </summary>
         [Fact]
         public void Serialize_WithSpecialCharacters_HandlesCorrectly()
         {
@@ -326,6 +383,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.NotEmpty(json);
         }
 
+        /// <summary>
+        /// Tests that deserialize with unicode characters parses correctly
+        /// </summary>
         [Fact]
         public void Deserialize_WithUnicodeCharacters_ParsesCorrectly()
         {
@@ -339,6 +399,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal("こんにちは", obj.StringValue);
         }
 
+        /// <summary>
+        /// Tests that parse json to dictionary with nested structure returns raw json
+        /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithNestedStructure_ReturnsRawJson()
         {
@@ -353,6 +416,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.True(dict["Data"].EndsWith("}"));
         }
 
+        /// <summary>
+        /// Tests that parse json to dictionary with array returns raw json
+        /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithArray_ReturnsRawJson()
         {
@@ -371,6 +437,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
         #region Error Handling Tests
 
+        /// <summary>
+        /// Tests that parse json to dictionary with null input throws argument null exception
+        /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithNullInput_ThrowsArgumentNullException()
         {
@@ -378,6 +447,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Throws<ArgumentNullException>(() => JsonNativeAot.ParseJsonToDictionary(null));
         }
 
+        /// <summary>
+        /// Tests that serialize with null instance throws argument null exception
+        /// </summary>
         [Fact]
         public void Serialize_WithNullInstance_ThrowsArgumentNullException()
         {
@@ -389,6 +461,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
         #region Complex Type Tests
 
+        /// <summary>
+        /// Tests that serialize with guid serializes as string
+        /// </summary>
         [Fact]
         public void Serialize_WithGuid_SerializesAsString()
         {
@@ -403,6 +478,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Contains(guid.ToString(), json);
         }
 
+        /// <summary>
+        /// Tests that serialize with date time serializes as string
+        /// </summary>
         [Fact]
         public void Serialize_WithDateTime_SerializesAsString()
         {
@@ -417,6 +495,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.NotEmpty(json);
         }
 
+        /// <summary>
+        /// Tests that deserialize with guid parses correctly
+        /// </summary>
         [Fact]
         public void Deserialize_WithGuid_ParsesCorrectly()
         {
@@ -435,13 +516,34 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
         #region Helper Classes
 
+        /// <summary>
+        /// The test object class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonDesSerializable{TestObject}"/>
         private class TestObject : IJsonSerializable, IJsonDesSerializable<TestObject>
         {
+            /// <summary>
+            /// Gets or sets the value of the string value
+            /// </summary>
             public string StringValue { get; set; }
+            /// <summary>
+            /// Gets or sets the value of the int value
+            /// </summary>
             public int IntValue { get; set; }
+            /// <summary>
+            /// Gets or sets the value of the bool value
+            /// </summary>
             public bool BoolValue { get; set; }
+            /// <summary>
+            /// Gets or sets the value of the double value
+            /// </summary>
             public double DoubleValue { get; set; }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("StringValue", StringValue);
@@ -450,6 +552,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 yield return ("DoubleValue", DoubleValue.ToString(CultureInfo.InvariantCulture));
             }
 
+            /// <summary>
+            /// Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The obj</returns>
             public TestObject CreateFromProperties(Dictionary<string, string> properties)
             {
                 TestObject obj = new TestObject();
@@ -471,17 +578,37 @@ namespace Alis.Core.Aspect.Data.Test.Json
             }
         }
 
+        /// <summary>
+        /// The complex test object class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonDesSerializable{ComplexTestObject}"/>
         private class ComplexTestObject : IJsonSerializable, IJsonDesSerializable<ComplexTestObject>
         {
+            /// <summary>
+            /// Gets or sets the value of the guid value
+            /// </summary>
             public Guid GuidValue { get; set; }
+            /// <summary>
+            /// Gets or sets the value of the date time value
+            /// </summary>
             public DateTime DateTimeValue { get; set; }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("GuidValue", GuidValue.ToString());
                 yield return ("DateTimeValue", DateTimeValue.ToString("O"));
             }
 
+            /// <summary>
+            /// Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The obj</returns>
             public ComplexTestObject CreateFromProperties(Dictionary<string, string> properties)
             {
                 ComplexTestObject obj = new ComplexTestObject();

@@ -9,12 +9,31 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
     /// </summary>
     public class ProductClass : IJsonSerializable, IJsonDesSerializable<ProductClass>
     {
+        /// <summary>
+        /// Gets or sets the value of the product id
+        /// </summary>
         public int ProductId { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the product name
+        /// </summary>
         public string ProductName { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the price
+        /// </summary>
         public decimal Price { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the in stock
+        /// </summary>
         public bool InStock { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the added date
+        /// </summary>
         public DateTime AddedDate { get; set; }
 
+        /// <summary>
+        /// Gets the serializable properties
+        /// </summary>
+        /// <returns>An enumerable of string property name and string value</returns>
         public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
         {
             yield return (nameof(ProductId), ProductId.ToString());
@@ -24,6 +43,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
             yield return (nameof(AddedDate), AddedDate.ToString("O"));
         }
 
+        /// <summary>
+        /// Creates the from properties using the specified properties
+        /// </summary>
+        /// <param name="properties">The properties</param>
+        /// <returns>The obj</returns>
         public ProductClass CreateFromProperties(Dictionary<string, string> properties)
         {
             ProductClass obj = new ProductClass();

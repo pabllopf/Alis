@@ -43,8 +43,14 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
     /// </summary>
     public class JsonDeserializerAdvancedTest
     {
+        /// <summary>
+        /// The deserializer
+        /// </summary>
         private readonly IJsonDeserializer _deserializer;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JsonDeserializerAdvancedTest"/> class
+        /// </summary>
         public JsonDeserializerAdvancedTest()
         {
             EscapeSequenceHandler escapeHandler = new EscapeSequenceHandler();
@@ -54,6 +60,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
         #region Integer Deserialization Tests
 
+        /// <summary>
+        /// Tests that deserialize integer value parses correctly
+        /// </summary>
+        /// <param name="jsonValue">The json value</param>
+        /// <param name="expected">The expected</param>
         [Theory]
         [InlineData("0", 0)]
         [InlineData("1", 1)]
@@ -72,6 +83,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal(expected, obj.Value);
         }
 
+        /// <summary>
+        /// Tests that deserialize integer as string converts correctly
+        /// </summary>
         [Fact]
         public void Deserialize_IntegerAsString_ConvertsCorrectly()
         {
@@ -89,6 +103,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
         #region Boolean Deserialization Tests
 
+        /// <summary>
+        /// Tests that deserialize boolean value parses correctly
+        /// </summary>
+        /// <param name="jsonValue">The json value</param>
+        /// <param name="expected">The expected</param>
         [Theory]
         [InlineData("true", true)]
         [InlineData("false", false)]
@@ -110,6 +129,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
         #region Double Deserialization Tests
 
+        /// <summary>
+        /// Tests that deserialize double value parses correctly
+        /// </summary>
+        /// <param name="jsonValue">The json value</param>
+        /// <param name="expected">The expected</param>
         [Theory]
         [InlineData("0.0", 0.0)]
         [InlineData("1.5", 1.5)]
@@ -131,6 +155,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
         #region String Deserialization Tests
 
+        /// <summary>
+        /// Tests that deserialize string value parses correctly
+        /// </summary>
+        /// <param name="value">The value</param>
         [Theory]
         [InlineData("")]
         [InlineData("simple")]
@@ -148,6 +176,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal(value, obj.Text);
         }
 
+        /// <summary>
+        /// Tests that deserialize unicode string parses correctly
+        /// </summary>
         [Fact]
         public void Deserialize_UnicodeString_ParsesCorrectly()
         {
@@ -165,6 +196,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
         #region DateTime and Guid Deserialization Tests
 
+        /// <summary>
+        /// Tests that deserialize date time value parses correctly
+        /// </summary>
         [Fact]
         public void Deserialize_DateTimeValue_ParsesCorrectly()
         {
@@ -181,6 +215,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal(expected.Day, obj.Timestamp.Day);
         }
 
+        /// <summary>
+        /// Tests that deserialize guid value parses correctly
+        /// </summary>
         [Fact]
         public void Deserialize_GuidValue_ParsesCorrectly()
         {
@@ -199,6 +236,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
         #region Missing Property Tests
 
+        /// <summary>
+        /// Tests that deserialize missing int property uses default value
+        /// </summary>
         [Fact]
         public void Deserialize_MissingIntProperty_UsesDefaultValue()
         {
@@ -212,6 +252,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal(0, obj.Value);
         }
 
+        /// <summary>
+        /// Tests that deserialize missing string property uses null
+        /// </summary>
         [Fact]
         public void Deserialize_MissingStringProperty_UsesNull()
         {
@@ -225,6 +268,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Null(obj.Text);
         }
 
+        /// <summary>
+        /// Tests that deserialize missing bool property uses default value
+        /// </summary>
         [Fact]
         public void Deserialize_MissingBoolProperty_UsesDefaultValue()
         {
@@ -242,6 +288,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
         #region Invalid Value Tests
 
+        /// <summary>
+        /// Tests that deserialize invalid integer value uses default value
+        /// </summary>
         [Fact]
         public void Deserialize_InvalidIntegerValue_UsesDefaultValue()
         {
@@ -255,6 +304,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal(0, obj.Value);
         }
 
+        /// <summary>
+        /// Tests that deserialize invalid boolean value uses default value
+        /// </summary>
         [Fact]
         public void Deserialize_InvalidBooleanValue_UsesDefaultValue()
         {
@@ -268,6 +320,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.False(obj.Flag);
         }
 
+        /// <summary>
+        /// Tests that deserialize invalid guid value uses empty guid
+        /// </summary>
         [Fact]
         public void Deserialize_InvalidGuidValue_UsesEmptyGuid()
         {
@@ -285,6 +340,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
         #region Extra Properties Tests
 
+        /// <summary>
+        /// Tests that deserialize with extra properties ignores extra
+        /// </summary>
         [Fact]
         public void Deserialize_WithExtraProperties_IgnoresExtra()
         {
@@ -298,6 +356,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             Assert.Equal(42, obj.Value);
         }
 
+        /// <summary>
+        /// Tests that deserialize with many extra properties ignores all
+        /// </summary>
         [Fact]
         public void Deserialize_WithManyExtraProperties_IgnoresAll()
         {
@@ -315,15 +376,32 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
         #region Helper Test Classes
 
+        /// <summary>
+        /// The test int object class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonDesSerializable{TestIntObject}"/>
         private class TestIntObject : IJsonSerializable, IJsonDesSerializable<TestIntObject>
         {
+            /// <summary>
+            /// Gets or sets the value of the value
+            /// </summary>
             public int Value { get; set; }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("Value", Value.ToString());
             }
 
+            /// <summary>
+            /// Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The obj</returns>
             public TestIntObject CreateFromProperties(Dictionary<string, string> properties)
             {
                 TestIntObject obj = new TestIntObject();
@@ -333,15 +411,32 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             }
         }
 
+        /// <summary>
+        /// The test bool object class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonDesSerializable{TestBoolObject}"/>
         private class TestBoolObject : IJsonSerializable, IJsonDesSerializable<TestBoolObject>
         {
+            /// <summary>
+            /// Gets or sets the value of the flag
+            /// </summary>
             public bool Flag { get; set; }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("Flag", Flag.ToString());
             }
 
+            /// <summary>
+            /// Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The obj</returns>
             public TestBoolObject CreateFromProperties(Dictionary<string, string> properties)
             {
                 TestBoolObject obj = new TestBoolObject();
@@ -351,15 +446,32 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             }
         }
 
+        /// <summary>
+        /// The test double object class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonDesSerializable{TestDoubleObject}"/>
         private class TestDoubleObject : IJsonSerializable, IJsonDesSerializable<TestDoubleObject>
         {
+            /// <summary>
+            /// Gets or sets the value of the number
+            /// </summary>
             public double Number { get; set; }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("Number", Number.ToString(CultureInfo.InvariantCulture));
             }
 
+            /// <summary>
+            /// Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The obj</returns>
             public TestDoubleObject CreateFromProperties(Dictionary<string, string> properties)
             {
                 TestDoubleObject obj = new TestDoubleObject();
@@ -370,15 +482,32 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             }
         }
 
+        /// <summary>
+        /// The test string object class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonDesSerializable{TestStringObject}"/>
         private class TestStringObject : IJsonSerializable, IJsonDesSerializable<TestStringObject>
         {
+            /// <summary>
+            /// Gets or sets the value of the text
+            /// </summary>
             public string Text { get; set; }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("Text", Text);
             }
 
+            /// <summary>
+            /// Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The obj</returns>
             public TestStringObject CreateFromProperties(Dictionary<string, string> properties)
             {
                 TestStringObject obj = new TestStringObject();
@@ -388,15 +517,32 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             }
         }
 
+        /// <summary>
+        /// The test date time object class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonDesSerializable{TestDateTimeObject}"/>
         private class TestDateTimeObject : IJsonSerializable, IJsonDesSerializable<TestDateTimeObject>
         {
+            /// <summary>
+            /// Gets or sets the value of the timestamp
+            /// </summary>
             public DateTime Timestamp { get; set; }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("Timestamp", Timestamp.ToString("O"));
             }
 
+            /// <summary>
+            /// Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The obj</returns>
             public TestDateTimeObject CreateFromProperties(Dictionary<string, string> properties)
             {
                 TestDateTimeObject obj = new TestDateTimeObject();
@@ -406,15 +552,32 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             }
         }
 
+        /// <summary>
+        /// The test guid object class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonDesSerializable{TestGuidObject}"/>
         private class TestGuidObject : IJsonSerializable, IJsonDesSerializable<TestGuidObject>
         {
+            /// <summary>
+            /// Gets or sets the value of the id
+            /// </summary>
             public Guid Id { get; set; }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("Id", Id.ToString());
             }
 
+            /// <summary>
+            /// Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The obj</returns>
             public TestGuidObject CreateFromProperties(Dictionary<string, string> properties)
             {
                 TestGuidObject obj = new TestGuidObject();
@@ -424,12 +587,30 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             }
         }
 
+        /// <summary>
+        /// The test multi object class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonDesSerializable{TestMultiObject}"/>
         private class TestMultiObject : IJsonSerializable, IJsonDesSerializable<TestMultiObject>
         {
+            /// <summary>
+            /// Gets or sets the value of the name
+            /// </summary>
             public string Name { get; set; }
+            /// <summary>
+            /// Gets or sets the value of the age
+            /// </summary>
             public int Age { get; set; }
+            /// <summary>
+            /// Gets or sets the value of the is active
+            /// </summary>
             public bool IsActive { get; set; }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("Name", Name);
@@ -437,6 +618,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
                 yield return ("IsActive", IsActive.ToString());
             }
 
+            /// <summary>
+            /// Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The obj</returns>
             public TestMultiObject CreateFromProperties(Dictionary<string, string> properties)
             {
                 TestMultiObject obj = new TestMultiObject();
@@ -450,17 +636,36 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             }
         }
 
+        /// <summary>
+        /// The test dynamic object class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonDesSerializable{TestDynamicObject}"/>
         private class TestDynamicObject : IJsonSerializable, IJsonDesSerializable<TestDynamicObject>
         {
+            /// <summary>
+            /// The property count
+            /// </summary>
             private readonly int _propertyCount;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestDynamicObject"/> class
+            /// </summary>
             public TestDynamicObject() : this(0) { }
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestDynamicObject"/> class
+            /// </summary>
+            /// <param name="propertyCount">The property count</param>
             public TestDynamicObject(int propertyCount)
             {
                 _propertyCount = propertyCount;
             }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 for (int i = 0; i < _propertyCount; i++)
@@ -469,6 +674,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
                 }
             }
 
+            /// <summary>
+            /// Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The test dynamic object</returns>
             public TestDynamicObject CreateFromProperties(Dictionary<string, string> properties)
             {
                 return new TestDynamicObject(properties.Count);

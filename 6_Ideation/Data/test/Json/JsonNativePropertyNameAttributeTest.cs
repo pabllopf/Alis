@@ -299,6 +299,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// </summary>
         private class TestClassWithAttribute
         {
+            /// <summary>
+            /// Gets or sets the value of the custom name property
+            /// </summary>
             [JsonNativePropertyName("customJsonName")]
             public string CustomNameProperty { get; set; }
         }
@@ -308,12 +311,21 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// </summary>
         private class TestClassWithMultipleAttributes
         {
+            /// <summary>
+            /// Gets or sets the value of the property 1
+            /// </summary>
             [JsonNativePropertyName("firstName")]
             public string Property1 { get; set; }
 
+            /// <summary>
+            /// Gets or sets the value of the property 2
+            /// </summary>
             [JsonNativePropertyName("lastName")]
             public string Property2 { get; set; }
 
+            /// <summary>
+            /// Gets or sets the value of the property 3
+            /// </summary>
             [JsonNativePropertyName("emailAddress")]
             public string Property3 { get; set; }
         }

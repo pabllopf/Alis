@@ -8,11 +8,27 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
     /// </summary>
     public struct DbConnectionStruct : IJsonSerializable, IJsonDesSerializable<DbConnectionStruct>
     {
+        /// <summary>
+        /// Gets or sets the value of the host
+        /// </summary>
         public string Host { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the port
+        /// </summary>
         public int Port { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the database
+        /// </summary>
         public string Database { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the timeout
+        /// </summary>
         public int Timeout { get; set; }
 
+        /// <summary>
+        /// Gets the serializable properties
+        /// </summary>
+        /// <returns>An enumerable of string property name and string value</returns>
         public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
         {
             yield return (nameof(Host), Host);
@@ -21,6 +37,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
             yield return (nameof(Timeout), Timeout.ToString());
         }
 
+        /// <summary>
+        /// Creates the from properties using the specified properties
+        /// </summary>
+        /// <param name="properties">The properties</param>
+        /// <returns>The obj</returns>
         public DbConnectionStruct CreateFromProperties(Dictionary<string, string> properties)
         {
             DbConnectionStruct obj = new DbConnectionStruct();

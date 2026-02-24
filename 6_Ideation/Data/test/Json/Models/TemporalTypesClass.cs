@@ -9,11 +9,27 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
     /// </summary>
     public class TemporalTypesClass : IJsonSerializable, IJsonDesSerializable<TemporalTypesClass>
     {
+        /// <summary>
+        /// Gets or sets the value of the created at
+        /// </summary>
         public DateTime CreatedAt { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the updated at
+        /// </summary>
         public DateTime UpdatedAt { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the id
+        /// </summary>
         public Guid Id { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the correlation id
+        /// </summary>
         public Guid CorrelationId { get; set; }
 
+        /// <summary>
+        /// Gets the serializable properties
+        /// </summary>
+        /// <returns>An enumerable of string property name and string value</returns>
         public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
         {
             yield return (nameof(CreatedAt), CreatedAt.ToString("O"));
@@ -22,6 +38,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
             yield return (nameof(CorrelationId), CorrelationId.ToString());
         }
 
+        /// <summary>
+        /// Creates the from properties using the specified properties
+        /// </summary>
+        /// <param name="properties">The properties</param>
+        /// <returns>The obj</returns>
         public TemporalTypesClass CreateFromProperties(Dictionary<string, string> properties)
         {
             TemporalTypesClass obj = new TemporalTypesClass();

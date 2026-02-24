@@ -9,10 +9,23 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
     /// </summary>
     public class EntityWithEnums : IJsonSerializable, IJsonDesSerializable<EntityWithEnums>
     {
+        /// <summary>
+        /// Gets or sets the value of the name
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the status
+        /// </summary>
         public StatusEnum Status { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the priority
+        /// </summary>
         public PriorityEnum Priority { get; set; }
 
+        /// <summary>
+        /// Gets the serializable properties
+        /// </summary>
+        /// <returns>An enumerable of string property name and string value</returns>
         public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
         {
             yield return (nameof(Name), Name);
@@ -20,6 +33,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
             yield return (nameof(Priority), Priority.ToString());
         }
 
+        /// <summary>
+        /// Creates the from properties using the specified properties
+        /// </summary>
+        /// <param name="properties">The properties</param>
+        /// <returns>The obj</returns>
         public EntityWithEnums CreateFromProperties(Dictionary<string, string> properties)
         {
             EntityWithEnums obj = new EntityWithEnums();

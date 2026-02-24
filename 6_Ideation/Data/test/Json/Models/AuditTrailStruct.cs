@@ -9,11 +9,27 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
     /// </summary>
     public struct AuditTrailStruct : IJsonSerializable, IJsonDesSerializable<AuditTrailStruct>
     {
+        /// <summary>
+        /// Gets or sets the value of the action
+        /// </summary>
         public string Action { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the user
+        /// </summary>
         public string User { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the when
+        /// </summary>
         public DateTime When { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the success
+        /// </summary>
         public bool Success { get; set; }
 
+        /// <summary>
+        /// Gets the serializable properties
+        /// </summary>
+        /// <returns>An enumerable of string property name and string value</returns>
         public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
         {
             yield return (nameof(Action), Action);
@@ -22,6 +38,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
             yield return (nameof(Success), Success.ToString());
         }
 
+        /// <summary>
+        /// Creates the from properties using the specified properties
+        /// </summary>
+        /// <param name="properties">The properties</param>
+        /// <returns>The obj</returns>
         public AuditTrailStruct CreateFromProperties(Dictionary<string, string> properties)
         {
             AuditTrailStruct obj = new AuditTrailStruct();
