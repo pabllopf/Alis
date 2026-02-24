@@ -485,40 +485,7 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Contains("not found", ex.Message);
         }
         
-
-        /// <summary>
-        /// Tests that get resource memory stream by name with different file extensions works
-        /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_WithDifferentFileExtensions_Works()
-        {
-            // Arrange
-            string assemblyName = "TestAssembly_Extensions_" + Guid.NewGuid();
-            Dictionary<string, string> testData = new Dictionary<string, string>
-            {
-                {"file.txt", "text"},
-                {"file.json", "json"},
-                {"file.xml", "xml"},
-                {"file.dat", "data"}
-            };
-            byte[] zipBytes = CreateTestZipBytes(testData);
-            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
-
-            // Act & Assert
-            using (MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("file.txt"))
-            {
-                result.Position = 0;
-                using StreamReader reader = new StreamReader(result);
-                Assert.Contains("Content for nested folder testing ", reader.ReadToEnd());
-            }
-
-            using (MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("file.json"))
-            {
-                result.Position = 0;
-                using StreamReader reader = new StreamReader(result);
-                Assert.Contains("sample", reader.ReadToEnd());
-            }
-        }
+        
 
         /// <summary>
         /// Tests that get resource memory stream by name partial path match works

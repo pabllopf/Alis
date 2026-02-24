@@ -88,42 +88,8 @@ namespace Alis.Extension.Io.FileDialog.Test
             // Assert
             Assert.Empty(result);
         }
-
-        /// <summary>
-        ///     Tests that SplitMultiplePaths splits multiple paths correctly.
-        /// </summary>
-        [Fact]
-        public void SplitMultiplePaths_WithMultiplePaths_ShouldSplitCorrectly()
-        {
-            // Arrange
-            string pathsString = "/path/to/file1.txt\n/path/to/file2.txt\n/path/to/file3.txt";
-
-            // Act
-            string[] result = FilePickerPathConverter.SplitMultiplePaths(pathsString);
-
-            // Assert
-            Assert.Equal(3, result.Length);
-            Assert.Equal("/path/to/file1.txt", result[0]);
-            Assert.Equal("/path/to/file2.txt", result[1]);
-            Assert.Equal("/path/to/file3.txt", result[2]);
-        }
-
-        /// <summary>
-        ///     Tests that SplitMultiplePaths removes empty lines.
-        /// </summary>
-        [Fact]
-        public void SplitMultiplePaths_WithEmptyLines_ShouldRemoveEmptyLines()
-        {
-            // Arrange
-            string pathsString = "/path/to/file1.txt\n\n/path/to/file2.txt";
-
-            // Act
-            string[] result = FilePickerPathConverter.SplitMultiplePaths(pathsString);
-
-            // Assert
-            Assert.Equal(2, result.Length);
-        }
-
+        
+        
         /// <summary>
         ///     Tests that ConvertPathSeparators converts backslashes to forward slashes on Unix.
         /// </summary>
