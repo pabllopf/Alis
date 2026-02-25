@@ -397,9 +397,19 @@ namespace Alis.Extension.Language.Dialogue.Sample
         /// </summary>
         private class DialogEventObserver : IDialogEventObserver
         {
+            /// <summary>
+            /// Gets or sets the value of the event count
+            /// </summary>
             public int EventCount { get; private set; }
+            /// <summary>
+            /// Gets the value of the event types
+            /// </summary>
             public List<DialogEventType> EventTypes { get; } = new List<DialogEventType>();
 
+            /// <summary>
+            /// Ons the dialog event using the specified dialog event
+            /// </summary>
+            /// <param name="dialogEvent">The dialog event</param>
             public void OnDialogEvent(DialogEvent dialogEvent)
             {
                 EventCount++;

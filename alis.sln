@@ -164,6 +164,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Aspect.Time.Sample", "6_Ideation\Time\sample\Alis.Core.Aspect.Time.Sample.csproj", "{2509E0CE-6D88-45E5-B732-55875238DE8D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{34B2F4B7-60D9-E760-1642-E3AE6A7BF67B}"
+	ProjectSection(SolutionItems) = preProject
+		6_Ideation\Data\REFACTORING_SUMMARY.md = 6_Ideation\Data\REFACTORING_SUMMARY.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Aspect.Data.Test", "6_Ideation\Data\test\Alis.Core.Aspect.Data.Test.csproj", "{31F11AED-BEEA-4122-974A-F315C145D6B6}"
 EndProject

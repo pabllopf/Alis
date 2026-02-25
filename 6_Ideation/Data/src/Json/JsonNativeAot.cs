@@ -29,9 +29,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text;
+using Alis.Core.Aspect.Data.Json.Deserialization;
+using Alis.Core.Aspect.Data.Json.FileOperations;
+using Alis.Core.Aspect.Data.Json.Helpers;
+using Alis.Core.Aspect.Data.Json.Parsing;
+using Alis.Core.Aspect.Data.Json.Serialization;
 
 namespace Alis.Core.Aspect.Data.Json
 {
@@ -41,375 +43,108 @@ namespace Alis.Core.Aspect.Data.Json
     public static class JsonNativeAot
     {
         /// <summary>
-        ///     Serializes the instance
+        /// The escape sequence handler
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="instance">The instance</param>
-        /// <returns>The string</returns>
+        private static readonly Lazy<IEscapeSequenceHandler> _escapeSequenceHandler = 
+            new(() => new EscapeSequenceHandler());
+
+        /// <summary>
+        /// The value
+        /// </summary>
+        private static readonly Lazy<IJsonParser> _jsonParser = 
+            new(() => new JsonParser(_escapeSequenceHandler.Value));
+
+        /// <summary>
+        /// The json serializer
+        /// </summary>
+        private static readonly Lazy<IJsonSerializer> _jsonSerializer = 
+            new(() => new JsonSerializer());
+
+        /// <summary>
+        /// The value
+        /// </summary>
+        private static readonly Lazy<IJsonDeserializer> _jsonDeserializer = 
+            new(() => new JsonDeserializer(_jsonParser.Value));
+
+        /// <summary>
+        /// The value
+        /// </summary>
+        private static readonly Lazy<IJsonFileHandler> _jsonFileHandler = 
+            new(() => new JsonFileHandler(_jsonSerializer.Value, _jsonDeserializer.Value));
+
+        /// <summary>
+        ///     Serializes an object to a JSON string.
+        /// </summary>
+        /// <typeparam name="T">The type of the object to serialize.</typeparam>
+        /// <param name="instance">The instance to serialize.</param>
+        /// <returns>A JSON string representation of the object.</returns>
         public static string Serialize<T>(T instance) where T : IJsonSerializable
         {
-            StringBuilder jsonBuilder = new StringBuilder();
-            jsonBuilder.Append("{");
-
-            foreach ((string propertyName, string value) in instance.GetSerializableProperties())
-            {
-                // Si el value empieza por { o [, NO poner comillas
-                if ((value != null) && (value.StartsWith("{") || value.StartsWith("[")))
-                {
-                    jsonBuilder.Append($"\"{propertyName}\":{value},");
-                }
-                else
-                {
-                    jsonBuilder.Append($"\"{propertyName}\":\"{value}\",");
-                }
-            }
-
-            if (jsonBuilder.Length > 1)
-            {
-                jsonBuilder.Length--;
-            }
-
-            jsonBuilder.Append("}");
-            return jsonBuilder.ToString();
+            return _jsonSerializer.Value.Serialize(instance);
         }
 
         /// <summary>
-        ///     Serializes the to file using the specified instance
+        ///     Serializes an object to a JSON file.
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="instance">The instance</param>
-        /// <param name="nameFile">The name file</param>
-        /// <param name="relativePath">The relative path</param>
-        public static void SerializeToFile<T>(T instance, string nameFile, string relativePath) where T : IJsonSerializable
+        /// <typeparam name="T">The type of the object to serialize.</typeparam>
+        /// <param name="instance">The instance to serialize.</param>
+        /// <param name="fileName">The name of the file (without .json extension).</param>
+        /// <param name="relativePath">The relative path where the file will be saved.</param>
+        public static void SerializeToFile<T>(T instance, string fileName, string relativePath) where T : IJsonSerializable
         {
-            StringBuilder jsonBuilder = new StringBuilder();
-            jsonBuilder.Append("{");
-
-            foreach ((string propertyName, string value) in instance.GetSerializableProperties())
-            {
-                jsonBuilder.Append($"\"{propertyName}\":\"{value}\",");
-            }
-
-            if (jsonBuilder.Length > 1)
-            {
-                jsonBuilder.Length--;
-            }
-
-            jsonBuilder.Append("}");
-            string json = jsonBuilder.ToString();
-            string path = Path.Combine(Environment.CurrentDirectory, relativePath);
-            string filePath = Path.Combine(path, $"{nameFile}.json");
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-
-            File.WriteAllText(filePath, json);
+            _jsonFileHandler.Value.SerializeToFile(instance, fileName, relativePath);
         }
 
         /// <summary>
-        ///     Deserializes the json
+        ///     Deserializes a JSON string into an object.
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="json">The json</param>
-        /// <returns>The</returns>
-        public static T Deserialize<T>(string json)
-            where T : IJsonSerializable, IJsonDesSerializable<T>, new()
+        /// <typeparam name="T">The target type.</typeparam>
+        /// <param name="json">The JSON string to deserialize.</param>
+        /// <returns>An instance of the specified type.</returns>
+        public static T Deserialize<T>(string json) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
         {
-            Dictionary<string, string> properties = ParseJsonToDictionary(json);
-            return new T().CreateFromProperties(properties);
+            return _jsonDeserializer.Value.Deserialize<T>(json);
         }
 
         /// <summary>
-        ///     Parses the json to dictionary using the specified json
+        ///     Parses a JSON string into a dictionary of property names and their string values.
         /// </summary>
-        /// <param name="json">The json</param>
-        /// <returns>The dict</returns>
+        /// <param name="json">The JSON string to parse.</param>
+        /// <returns>A dictionary containing property names as keys and their string representations as values.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when json is null.</exception>
+        /// <exception cref="Exceptions.JsonParsingException">Thrown when JSON parsing fails.</exception>
+        /// <remarks>
+        ///     This method provides low-level access to JSON parsing. It returns a raw dictionary
+        ///     of property names and values without deserializing to a specific type.
+        ///     
+        ///     Complex values (objects and arrays) are returned as raw JSON strings.
+        ///     
+        ///     Time Complexity: O(n) where n is the length of the JSON string.
+        ///     Space Complexity: O(n) for the output dictionary.
+        /// </remarks>
+        /// <example>
+        ///     <code>
+        ///     string json = "{\"Name\":\"John\",\"Age\":\"30\"}";
+        ///     var props = JsonNativeAot.ParseJsonToDictionary(json);
+        ///     // props["Name"] = "John"
+        ///     // props["Age"] = "30"
+        ///     </code>
+        /// </example>
         public static Dictionary<string, string> ParseJsonToDictionary(string json)
         {
-            Dictionary<string, string> dict = new Dictionary<string, string>();
-            if (string.IsNullOrEmpty(json))
-            {
-                return dict;
-            }
-
-            int i = 0;
-            int n = json.Length;
-
-            SkipWhitespace(json, ref i);
-            // skip optional leading '{'
-            if ((i < n) && (json[i] == '{'))
-            {
-                i++;
-            }
-
-            while (true)
-            {
-                SkipWhitespace(json, ref i);
-                if (i >= n)
-                {
-                    break;
-                }
-
-                if (json[i] == '}')
-                {
-                    i++;
-                    break;
-                }
-
-                // find key (must be a JSON string)
-                while ((i < n) && (json[i] != '"'))
-                {
-                    i++;
-                }
-
-                if (i >= n)
-                {
-                    break;
-                }
-
-                string key = ReadJsonString(json, ref i);
-
-                SkipWhitespace(json, ref i);
-                // skip colon
-                while ((i < n) && (json[i] != ':'))
-                {
-                    i++;
-                }
-
-                if ((i < n) && (json[i] == ':'))
-                {
-                    i++;
-                }
-
-                SkipWhitespace(json, ref i);
-
-                string value;
-
-                if ((i < n) && (json[i] == '{' || json[i] == '['))
-                {
-                    // raw object/array
-                    value = ReadRawJsonValue(json, ref i);
-                }
-                else if ((i < n) && (json[i] == '"'))
-                {
-                    // a JSON string: read and unescape it
-                    string inner = ReadJsonString(json, ref i);
-                    // if the inner string *contains* JSON (starts with { or [), keep it as-is (unescaped)
-                    value = inner;
-                }
-                else
-                {
-                    // primitive (number, true, false, null)
-                    int startVal = i;
-                    while ((i < n) && (json[i] != ',') && (json[i] != '}'))
-                    {
-                        i++;
-                    }
-
-                    value = json.Substring(startVal, i - startVal).Trim();
-                }
-
-                dict[key] = value;
-
-                // move past comma if present
-                SkipWhitespace(json, ref i);
-                if ((i < n) && (json[i] == ','))
-                {
-                    i++;
-                }
-            }
-
-            return dict;
+            return _jsonParser.Value.ParseToDictionary(json);
         }
 
         /// <summary>
-        ///     Skips the whitespace using the specified s
+        ///     Deserializes a JSON file into an object.
         /// </summary>
-        /// <param name="s">The </param>
-        /// <param name="i">The </param>
-        private static void SkipWhitespace(string s, ref int i)
+        /// <typeparam name="T">The target type.</typeparam>
+        /// <param name="fileName">The name of the file (without .json extension).</param>
+        /// <param name="relativePath">The relative path where the file is located.</param>
+        /// <returns>An instance of the specified type.</returns>
+        public static T DeserializeFromFile<T>(string fileName, string relativePath) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
         {
-            while ((i < s.Length) && char.IsWhiteSpace(s[i]))
-            {
-                i++;
-            }
-        }
-
-        /// <summary>
-        ///     Ises the escaped using the specified s
-        /// </summary>
-        /// <param name="s">The </param>
-        /// <param name="pos">The pos</param>
-        /// <returns>The bool</returns>
-        private static bool IsEscaped(string s, int pos)
-        {
-            // cuenta backslashes justo antes de pos
-            int cnt = 0;
-            int j = pos - 1;
-            while ((j >= 0) && (s[j] == '\\'))
-            {
-                cnt++;
-                j--;
-            }
-
-            return cnt % 2 == 1;
-        }
-
-        /// <summary>
-        ///     Reads the json string using the specified s
-        /// </summary>
-        /// <param name="s">The </param>
-        /// <param name="i">The </param>
-        /// <exception cref="InvalidOperationException">Expected '"' at start of JSON string.</exception>
-        /// <returns>The string</returns>
-        private static string ReadJsonString(string s, ref int i)
-        {
-            if (s[i] != '"')
-            {
-                throw new InvalidOperationException("Expected '\"' at start of JSON string.");
-            }
-
-            i++; // skip opening quote
-            StringBuilder sb = new StringBuilder();
-            int n = s.Length;
-
-            while (i < n)
-            {
-                char c = s[i];
-                if ((c == '"') && !IsEscaped(s, i))
-                {
-                    i++; // skip closing quote
-                    break;
-                }
-
-                if (c == '\\') // escape sequence
-                {
-                    i++;
-                    if (i >= n)
-                    {
-                        break;
-                    }
-
-                    char esc = s[i];
-                    switch (esc)
-                    {
-                        case '"': sb.Append('"'); break;
-                        case '\\': sb.Append('\\'); break;
-                        case '/': sb.Append('/'); break;
-                        case 'b': sb.Append('\b'); break;
-                        case 'f': sb.Append('\f'); break;
-                        case 'n': sb.Append('\n'); break;
-                        case 'r': sb.Append('\r'); break;
-                        case 't': sb.Append('\t'); break;
-                        case 'u':
-                            // \uXXXX
-                            if (i + 4 < n)
-                            {
-                                string hex = s.Substring(i + 1, 4);
-                                if (int.TryParse(hex, NumberStyles.HexNumber, null, out int code))
-                                {
-                                    sb.Append((char) code);
-                                }
-
-                                i += 4;
-                            }
-
-                            break;
-                        default:
-                            // unknown escape — keep literally
-                            sb.Append(esc);
-                            break;
-                    }
-
-                    i++;
-                }
-                else
-                {
-                    sb.Append(c);
-                    i++;
-                }
-            }
-
-            return sb.ToString();
-        }
-
-        /// <summary>
-        ///     Reads the raw json value using the specified s
-        /// </summary>
-        /// <param name="s">The </param>
-        /// <param name="i">The </param>
-        /// <returns>The string</returns>
-        private static string ReadRawJsonValue(string s, ref int i)
-        {
-            // s[i] == '{' or '['
-            char open = s[i];
-            char close = open == '{' ? '}' : ']';
-            int start = i;
-            int n = s.Length;
-            int depth = 0;
-            bool inString = false;
-
-            while (i < n)
-            {
-                char c = s[i];
-                if ((c == '"') && !IsEscaped(s, i))
-                {
-                    inString = !inString;
-                    i++;
-                    continue;
-                }
-
-                if (!inString)
-                {
-                    if (c == open)
-                    {
-                        depth++;
-                    }
-                    else if (c == close)
-                    {
-                        depth--;
-                        i++;
-                        if (depth == 0)
-                        {
-                            break;
-                        }
-
-                        continue;
-                    }
-                }
-
-                i++;
-            }
-
-            // substring from start to i (i already points after matching close)
-            if (i > start)
-            {
-                return s.Substring(start, i - start);
-            }
-
-            return "";
-        }
-
-        /// <summary>
-        ///     Deserializes the from file using the specified general setting name
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="generalSettingName">The general setting name</param>
-        /// <param name="data">The data</param>
-        /// <exception cref="FileNotFoundException">File {filePath} not found.</exception>
-        /// <returns>The</returns>
-        public static T DeserializeFromFile<T>(string generalSettingName, string data) where T : IJsonSerializable, IJsonDesSerializable<T>, new()
-        {
-            string path = Path.Combine(Environment.CurrentDirectory, data);
-            string filePath = Path.Combine(path, $"{generalSettingName}.json");
-            if (!File.Exists(filePath))
-            {
-                throw new FileNotFoundException($"File {filePath} not found.");
-            }
-
-            string json = File.ReadAllText(filePath);
-            return Deserialize<T>(json);
+            return _jsonFileHandler.Value.DeserializeFromFile<T>(fileName, relativePath);
         }
     }
 }

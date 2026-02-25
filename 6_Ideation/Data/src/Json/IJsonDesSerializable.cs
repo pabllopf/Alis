@@ -32,15 +32,60 @@ using System.Collections.Generic;
 namespace Alis.Core.Aspect.Data.Json
 {
     /// <summary>
-    ///     The json des serializable interface
+    ///     Defines a contract for objects that can be deserialized from JSON format.
     /// </summary>
+    /// <typeparam name="T">The type being deserialized.</typeparam>
+    /// <remarks>
+    ///     Types implementing this interface can reconstruct themselves from a property dictionary
+    ///     created by the JSON parser.
+    ///     
+    ///     Usage Pattern:
+    ///     Classes should implement this interface to support JSON deserialization through the
+    ///     JsonNativeAot.Deserialize&lt;T&gt; method. For complete bidirectional support,
+    ///     also implement IJsonSerializable.
+    ///     
+    ///     The class must have a parameterless constructor as required by the generic constraint.
+    /// </remarks>
     public interface IJsonDesSerializable<out T>
     {
         /// <summary>
-        ///     Creates the from properties using the specified properties
+        ///     Creates an instance of type T populated with data from the provided properties.
         /// </summary>
-        /// <param name="properties">The properties</param>
-        /// <returns>The</returns>
+        /// <param name="properties">A dictionary containing property names and their string values.</param>
+        /// <returns>A fully initialized instance of type T.</returns>
+        /// <remarks>
+        ///     Implementation Guide:
+        ///     - Create a new instance and populate its properties from the dictionary
+        ///     - Use TryGetValue to safely access properties (they may be missing or null)
+        ///     - Handle type conversions (string to int, bool, DateTime, etc.)
+        ///     - Provide sensible defaults for missing properties
+        ///     - Complex properties will be returned as raw JSON strings from the parser
+        ///     
+        ///     Time Complexity: Should be O(n) where n is the number of properties.
+        ///     
+        ///     Example:
+        ///     <code>
+        ///     public class Person : IJsonSerializable, IJsonDesSerializable&lt;Person&gt;
+        ///     {
+        ///         public string Name { get; set; }
+        ///         public int Age { get; set; }
+        ///         
+        ///         public Person CreateFromProperties(Dictionary&lt;string, string&gt; properties)
+        ///         {
+        ///             var person = new Person();
+        ///             
+        ///             if (properties.TryGetValue("Name", out var name))
+        ///                 person.Name = name;
+        ///             
+        ///             if (properties.TryGetValue("Age", out var age) && int.TryParse(age, out var ageValue))
+        ///                 person.Age = ageValue;
+        ///             
+        ///             return person;
+        ///         }
+        ///     }
+        ///     </code>
+        /// </remarks>
+        /// <exception cref="System.ArgumentException">May be thrown if properties are invalid.</exception>
         T CreateFromProperties(Dictionary<string, string> properties);
     }
 }
