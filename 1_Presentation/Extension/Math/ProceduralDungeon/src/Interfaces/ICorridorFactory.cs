@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IJsonDesSerializable.cs
+//  File:ICorridorFactory.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,33 +27,33 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Alis.Extension.Math.ProceduralDungeon.Models;
 
-namespace Alis.Core.Aspect.Data.Json
+namespace Alis.Extension.Math.ProceduralDungeon.Interfaces
 {
     /// <summary>
-    ///     Defines a contract for objects that can be deserialized from JSON format.
+    ///     Factory interface for creating corridors in a dungeon.
+    ///     Defines methods for creating different types of corridors that connect rooms.
     /// </summary>
-    /// <typeparam name="T">The type being deserialized.</typeparam>
-    /// <remarks>
-    ///     Types implementing this interface can reconstruct themselves from a property dictionary
-    ///     created by the JSON parser.
-    ///     
-    ///     Usage Pattern:
-    ///     Classes should implement this interface to support JSON deserialization through the
-    ///     JsonNativeAot.Deserialize&lt;T&gt; method. For complete bidirectional support,
-    ///     also implement IJsonSerializable.
-    ///     
-    ///     The class must have a parameterless constructor as required by the generic constraint.
-    /// </remarks>
-    public interface IJsonDesSerializable<out T>
+    public interface ICorridorFactory
     {
         /// <summary>
-        ///     Creates an instance of type T populated with data from the provided properties.
+        ///     Creates the first corridor connected to the starting room.
         /// </summary>
-        /// <param name="properties">A dictionary containing property names and their string values.</param>
-        /// <returns>A fully initialized instance of type T.</returns>
-        /// <exception cref="System.ArgumentException">May be thrown if properties are invalid.</exception>
-        T CreateFromProperties(Dictionary<string, string> properties);
+        /// <param name="width">The width of the corridor.</param>
+        /// <param name="height">The height of the corridor.</param>
+        /// <param name="room">The room to connect the corridor to.</param>
+        /// <returns>A corridor data instance.</returns>
+        CorridorData CreateFirstCorridor(int width, int height, RoomData room);
+        
+        /// <summary>
+        ///     Creates a standard corridor connected to a room.
+        /// </summary>
+        /// <param name="width">The width of the corridor.</param>
+        /// <param name="height">The height of the corridor.</param>
+        /// <param name="room">The room to connect the corridor to.</param>
+        /// <returns>A corridor data instance.</returns>
+        CorridorData CreateCorridor(int width, int height, RoomData room);
     }
 }
+

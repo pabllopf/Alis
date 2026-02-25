@@ -27,123 +27,190 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 
 namespace Alis.Extension.Math.ProceduralDungeon.Test
 {
     /// <summary>
-    ///     The board square test class
+    ///     Test class for <see cref="BoardSquareType"/> enum.
     /// </summary>
     public class BoardSquareTypeTest
     {
         /// <summary>
-        ///     Tests that set up first room should initialize room with given parameters
+        ///     Tests that empty has value 0.
         /// </summary>
         [Fact]
-        public void SetUpFirstRoom_ShouldInitializeRoomWithGivenParameters()
+        public void Empty_ShouldHaveValue0()
         {
-            // Arrange
-            int xPos = 5;
-            int yPos = 10;
-            int width = 15;
-            int height = 20;
-
-            // Act
-            Room room = Room.SetUpFirstRoom(xPos, yPos, width, height);
-
             // Assert
-            Assert.Equal(xPos, room.XPos);
-            Assert.Equal(yPos, room.YPos);
-            Assert.Equal(width, room.Width);
-            Assert.Equal(height, room.Height);
+            Assert.Equal(0, (int)BoardSquareType.Empty);
         }
 
         /// <summary>
-        ///     Tests that set up should initialize room with correct parameters when direction is north
+        ///     Tests that floor has value 1.
         /// </summary>
         [Fact]
-        public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsNorth()
+        public void Floor_ShouldHaveValue1()
         {
-            // Arrange
-            int width = 10;
-            int height = 5;
-            Corridor corridor = new Corridor(5, 5, 10, 2, Direction.North);
-
-            // Act
-            Room room = Room.SetUp(width, height, corridor);
-
             // Assert
-            Assert.Equal(5, room.XPos);
-            Assert.Equal(7, room.YPos);
-            Assert.Equal(width, room.Width);
-            Assert.Equal(height, room.Height);
-            Assert.Equal(Direction.North, room.Direction);
+            Assert.Equal(1, (int)BoardSquareType.Floor);
         }
 
         /// <summary>
-        ///     Tests that set up should initialize room with correct parameters when direction is south
+        ///     Tests that all wall types have distinct values.
         /// </summary>
         [Fact]
-        public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsSouth()
+        public void WallTypes_ShouldHaveDistinctValues()
         {
             // Arrange
-            int width = 10;
-            int height = 5;
-            Corridor corridor = new Corridor(5, 5, 10, 2, Direction.South);
+            var wallTypes = new[]
+            {
+                BoardSquareType.WallTop,
+                BoardSquareType.WallDown,
+                BoardSquareType.WallLeft,
+                BoardSquareType.WallRight
+            };
 
-            // Act
-            Room room = Room.SetUp(width, height, corridor);
-
-            // Assert
-            Assert.Equal(5, room.XPos);
-            Assert.Equal(0, room.YPos);
-            Assert.Equal(width, room.Width);
-            Assert.Equal(height, room.Height);
-            Assert.Equal(Direction.South, room.Direction);
+            // Act & Assert
+            for (int i = 0; i < wallTypes.Length; i++)
+            {
+                for (int j = i + 1; j < wallTypes.Length; j++)
+                {
+                    Assert.NotEqual(wallTypes[i], wallTypes[j]);
+                }
+            }
         }
 
         /// <summary>
-        ///     Tests that set up should initialize room with correct parameters when direction is east
+        ///     Tests that all corner types have distinct values.
         /// </summary>
         [Fact]
-        public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsEast()
+        public void CornerTypes_ShouldHaveDistinctValues()
         {
             // Arrange
-            int width = 10;
-            int height = 5;
-            Corridor corridor = new Corridor(5, 5, 2, 10, Direction.East);
+            var cornerTypes = new[]
+            {
+                BoardSquareType.CornerLeftUp,
+                BoardSquareType.CornerLeftDown,
+                BoardSquareType.CornerRightUp,
+                BoardSquareType.CornerRightDown,
+                BoardSquareType.CornerInternalLeftUp,
+                BoardSquareType.CornerInternalLeftDown,
+                BoardSquareType.CornerInternalRightUp,
+                BoardSquareType.CornerInternalRightDown
+            };
 
-            // Act
-            Room room = Room.SetUp(width, height, corridor);
-
-            // Assert
-            Assert.Equal(0, room.XPos);
-            Assert.Equal(8, room.YPos);
-            Assert.Equal(height, room.Width);
-            Assert.Equal(width, room.Height);
-            Assert.Equal(Direction.East, room.Direction);
+            // Act & Assert
+            for (int i = 0; i < cornerTypes.Length; i++)
+            {
+                for (int j = i + 1; j < cornerTypes.Length; j++)
+                {
+                    Assert.NotEqual(cornerTypes[i], cornerTypes[j]);
+                }
+            }
         }
 
         /// <summary>
-        ///     Tests that set up should initialize room with correct parameters when direction is west
+        ///     Tests that all enum values are defined.
+        /// </summary>
+        [Theory]
+        [InlineData(BoardSquareType.Empty)]
+        [InlineData(BoardSquareType.Floor)]
+        [InlineData(BoardSquareType.WallTop)]
+        [InlineData(BoardSquareType.WallDown)]
+        [InlineData(BoardSquareType.WallLeft)]
+        [InlineData(BoardSquareType.WallRight)]
+        [InlineData(BoardSquareType.CornerLeftUp)]
+        [InlineData(BoardSquareType.CornerLeftDown)]
+        [InlineData(BoardSquareType.CornerRightUp)]
+        [InlineData(BoardSquareType.CornerRightDown)]
+        [InlineData(BoardSquareType.CornerInternalLeftUp)]
+        [InlineData(BoardSquareType.CornerInternalLeftDown)]
+        [InlineData(BoardSquareType.CornerInternalRightUp)]
+        [InlineData(BoardSquareType.CornerInternalRightDown)]
+        public void EnumValue_ShouldBeDefined(BoardSquareType type)
+        {
+            // Assert
+            Assert.True(Enum.IsDefined(typeof(BoardSquareType), type));
+        }
+
+        /// <summary>
+        ///     Tests that enum can be converted to string.
         /// </summary>
         [Fact]
-        public void SetUp_ShouldInitializeRoomWithCorrectParameters_WhenDirectionIsWest()
+        public void ToString_ShouldReturnName()
         {
             // Arrange
-            int width = 10;
-            int height = 5;
-            Corridor corridor = new Corridor(5, 5, 2, 10, Direction.West);
+            BoardSquareType type = BoardSquareType.Floor;
 
             // Act
-            Room room = Room.SetUp(width, height, corridor);
+            string result = type.ToString();
 
             // Assert
-            Assert.True(room.XPos > 0);
-            Assert.True(room.YPos > 0);
-            Assert.Equal(height, room.Width);
-            Assert.Equal(width, room.Height);
-            Assert.Equal(Direction.West, room.Direction);
+            Assert.Equal("Floor", result);
+        }
+
+        /// <summary>
+        ///     Tests that enum values can be compared.
+        /// </summary>
+        [Fact]
+        public void Comparison_ShouldWork()
+        {
+            // Arrange
+            BoardSquareType empty = BoardSquareType.Empty;
+            BoardSquareType floor = BoardSquareType.Floor;
+
+            // Act & Assert
+            Assert.True(empty == BoardSquareType.Empty);
+            Assert.True(floor == BoardSquareType.Floor);
+            Assert.False(empty == floor);
+        }
+
+        /// <summary>
+        ///     Tests that all wall types are distinct from floor and empty.
+        /// </summary>
+        [Theory]
+        [InlineData(BoardSquareType.WallTop)]
+        [InlineData(BoardSquareType.WallDown)]
+        [InlineData(BoardSquareType.WallLeft)]
+        [InlineData(BoardSquareType.WallRight)]
+        public void WallTypes_ShouldBeDistinctFromFloorAndEmpty(BoardSquareType wallType)
+        {
+            // Assert
+            Assert.NotEqual(BoardSquareType.Empty, wallType);
+            Assert.NotEqual(BoardSquareType.Floor, wallType);
+        }
+
+        /// <summary>
+        ///     Tests that all corner types are distinct from floor and empty.
+        /// </summary>
+        [Theory]
+        [InlineData(BoardSquareType.CornerLeftUp)]
+        [InlineData(BoardSquareType.CornerLeftDown)]
+        [InlineData(BoardSquareType.CornerRightUp)]
+        [InlineData(BoardSquareType.CornerRightDown)]
+        public void OuterCornerTypes_ShouldBeDistinctFromFloorAndEmpty(BoardSquareType cornerType)
+        {
+            // Assert
+            Assert.NotEqual(BoardSquareType.Empty, cornerType);
+            Assert.NotEqual(BoardSquareType.Floor, cornerType);
+        }
+
+        /// <summary>
+        ///     Tests that all internal corner types are distinct from floor and empty.
+        /// </summary>
+        [Theory]
+        [InlineData(BoardSquareType.CornerInternalLeftUp)]
+        [InlineData(BoardSquareType.CornerInternalLeftDown)]
+        [InlineData(BoardSquareType.CornerInternalRightUp)]
+        [InlineData(BoardSquareType.CornerInternalRightDown)]
+        public void InternalCornerTypes_ShouldBeDistinctFromFloorAndEmpty(BoardSquareType cornerType)
+        {
+            // Assert
+            Assert.NotEqual(BoardSquareType.Empty, cornerType);
+            Assert.NotEqual(BoardSquareType.Floor, cornerType);
         }
     }
 }
+

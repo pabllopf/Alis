@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IJsonDesSerializable.cs
+//  File:IDungeonGenerator.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,33 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Alis.Extension.Math.ProceduralDungeon.Models;
 
-namespace Alis.Core.Aspect.Data.Json
+namespace Alis.Extension.Math.ProceduralDungeon.Interfaces
 {
     /// <summary>
-    ///     Defines a contract for objects that can be deserialized from JSON format.
+    ///     Interface for dungeon generation operations.
+    ///     Defines the contract for generating procedural dungeons.
     /// </summary>
-    /// <typeparam name="T">The type being deserialized.</typeparam>
-    /// <remarks>
-    ///     Types implementing this interface can reconstruct themselves from a property dictionary
-    ///     created by the JSON parser.
-    ///     
-    ///     Usage Pattern:
-    ///     Classes should implement this interface to support JSON deserialization through the
-    ///     JsonNativeAot.Deserialize&lt;T&gt; method. For complete bidirectional support,
-    ///     also implement IJsonSerializable.
-    ///     
-    ///     The class must have a parameterless constructor as required by the generic constraint.
-    /// </remarks>
-    public interface IJsonDesSerializable<out T>
+    public interface IDungeonGenerator
     {
         /// <summary>
-        ///     Creates an instance of type T populated with data from the provided properties.
+        ///     Generates a complete dungeon with rooms, corridors, and board layout.
         /// </summary>
-        /// <param name="properties">A dictionary containing property names and their string values.</param>
-        /// <returns>A fully initialized instance of type T.</returns>
-        /// <exception cref="System.ArgumentException">May be thrown if properties are invalid.</exception>
-        T CreateFromProperties(Dictionary<string, string> properties);
+        /// <returns>A fully generated dungeon instance.</returns>
+        DungeonData Generate();
     }
 }
+
