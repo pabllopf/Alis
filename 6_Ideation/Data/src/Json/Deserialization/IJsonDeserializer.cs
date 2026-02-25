@@ -40,8 +40,6 @@ namespace Alis.Core.Aspect.Data.Json.Deserialization
         /// <typeparam name="T">The target type, which must implement IJsonSerializable and IJsonDesSerializable&lt;T&gt;.</typeparam>
         /// <param name="json">The JSON string to deserialize.</param>
         /// <returns>An instance of the specified type populated with data from the JSON.</returns>
-        /// <exception cref="System.ArgumentNullException">Thrown when json is null.</exception>
-        /// <exception cref="JsonDeserializationException">Thrown when deserialization fails.</exception>
         T Deserialize<T>(string json) where T : IJsonSerializable, IJsonDesSerializable<T>, new();
     }
 }
