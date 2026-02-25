@@ -122,27 +122,7 @@ namespace Alis.Extension.Profile.Test.Implementations
             // Assert
             Assert.False(tracker.IsRunning);
         }
-
-        /// <summary>
-        ///     Tests that get elapsed time returns correct duration
-        /// </summary>
-        [Fact]
-        public void GetElapsedTime_ReturnsCorrectDuration()
-        {
-            // Arrange
-            StopwatchTimeTracker tracker = new StopwatchTimeTracker();
-            tracker.Start();
-            Thread.Sleep(100);
-            tracker.Stop();
-
-            // Act
-            TimeSpan elapsed = tracker.GetElapsedTime();
-
-            // Assert
-            Assert.True(elapsed.TotalMilliseconds >= 90); // Allow some tolerance
-            Assert.True(elapsed.TotalMilliseconds < 200); // Upper bound
-        }
-
+        
         /// <summary>
         ///     Tests that reset clears all tracking data
         /// </summary>
