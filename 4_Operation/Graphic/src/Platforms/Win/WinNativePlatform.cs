@@ -30,6 +30,7 @@
 #if winx64 || winx86 || winarm64 || winarm || win
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Graphic.Platforms.Win.Native;

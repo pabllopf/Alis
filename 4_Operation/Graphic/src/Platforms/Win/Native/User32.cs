@@ -31,7 +31,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
-
+using System.Diagnostics.CodeAnalysis;
 namespace Alis.Core.Graphic.Platforms.Win.Native
 {
     /// <summary>
