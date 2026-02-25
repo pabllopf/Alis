@@ -123,6 +123,7 @@ namespace Alis.Extension.Profile.Test.Implementations
             Assert.False(tracker.IsRunning);
         }
         
+        
         /// <summary>
         ///     Tests that reset clears all tracking data
         /// </summary>
