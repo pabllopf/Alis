@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Extension.Language.Dialogue.Core
 {
     /// <summary>
@@ -53,18 +51,6 @@ namespace Alis.Extension.Language.Dialogue.Core
         /// <param name="context">The dialog context</param>
         /// <returns>True if the action is valid for execution</returns>
         bool IsValid(DialogContext context);
-    }
-
-    /// <summary>
-    ///     Interface representing a dialog action with callback support
-    /// </summary>
-    public interface ICallbackDialogAction : IDialogAction
-    {
-        /// <summary>
-        ///     Sets the callback to be invoked when action is executed
-        /// </summary>
-        /// <param name="callback">The callback action</param>
-        void SetCallback(Action callback);
     }
 }
 
