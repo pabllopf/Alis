@@ -42,5 +42,6 @@ namespace Alis.Extension.Network
         ///     Closing the memory stream clears the buffer and returns it to the pool
         /// </summary>
         MemoryStream GetBuffer();
+        
     }
 }
