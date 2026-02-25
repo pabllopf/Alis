@@ -59,8 +59,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Skipper
            {
                if (OperatingSystem.IsWindows())
                {
-                   // Windows siempre tiene entorno gráfico si está corriendo
-                   return Environment.UserInteractive;
+                   // Windows puede fallar en ambientes CI/CD sin GPU (WGL: The driver does not appear to support OpenGL)
+                   // Omitir tests en Windows por defecto
+                   return false;
                }
                
                if (OperatingSystem.IsLinux())
