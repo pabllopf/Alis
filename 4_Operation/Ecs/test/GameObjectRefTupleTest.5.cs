@@ -1,36 +1,249 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:GameObjectRefTuple.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Test.Models;
+using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    ///     Tests the <see cref="GameObjectRefTuple{T1, T2, T3, T4, T5}"/> struct with five components.
+    /// </summary>
     public partial class GameObjectRefTupleTest
     {
+        /// <summary>
+        ///     Tests that game object ref tuple with five components can be created and initialized.
+        /// </summary>
+        [Fact]
+        public void RefTuple5_Initialize_ShouldSetGameObjectAndAllComponents()
+        {
+            // Arrange
+            Scene world = new Scene();
+            GameObject entity = world.Create();
+            Position pos = new Position { X = 10, Y = 20 };
+            Velocity vel = new Velocity { VX = 1, VY = 2 };
+            Health health = new Health { Value = 100 };
+            Armor armor = new Armor { Defense = 50 };
+            TestComponent test = new TestComponent { Value = 5 };
+            entity.Add(pos);
+            entity.Add(vel);
+            entity.Add(health);
+            entity.Add(armor);
+            entity.Add(test);
+            
+            // Act
+            var tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent>
+            {
+                GameObject = entity,
+                Item1 = new Ref<Position>(new[] { pos }, 0),
+                Item2 = new Ref<Velocity>(new[] { vel }, 0),
+                Item3 = new Ref<Health>(new[] { health }, 0),
+                Item4 = new Ref<Armor>(new[] { armor }, 0),
+                Item5 = new Ref<TestComponent>(new[] { test }, 0)
+            };
+            
+            // Assert
+            Assert.Equal(entity, tuple.GameObject);
+            Assert.Equal(10, tuple.Item1.Value.X);
+            Assert.Equal(1, tuple.Item2.Value.VX);
+            Assert.Equal(100, tuple.Item3.Value.Value);
+            Assert.Equal(50, tuple.Item4.Value.Defense);
+            Assert.Equal(5, tuple.Item5.Value.Value);
+            
+            world.Dispose();
+        }
         
+        /// <summary>
+        ///     Tests that ref tuple with five components can be deconstructed.
+        /// </summary>
+        [Fact]
+        public void RefTuple5_Deconstruct_ShouldReturnGameObjectAndAllRefs()
+        {
+            // Arrange
+            Scene world = new Scene();
+            GameObject entity = world.Create();
+            Position pos = new Position { X = 5, Y = 10 };
+            Velocity vel = new Velocity { VX = 2, VY = 3 };
+            Health health = new Health { Value = 50 };
+            Armor armor = new Armor { Defense = 25 };
+            TestComponent test = new TestComponent { Value = 3 };
+            entity.Add(pos);
+            entity.Add(vel);
+            entity.Add(health);
+            entity.Add(armor);
+            entity.Add(test);
+            
+            var tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent>
+            {
+                GameObject = entity,
+                Item1 = new Ref<Position>(new[] { pos }, 0),
+                Item2 = new Ref<Velocity>(new[] { vel }, 0),
+                Item3 = new Ref<Health>(new[] { health }, 0),
+                Item4 = new Ref<Armor>(new[] { armor }, 0),
+                Item5 = new Ref<TestComponent>(new[] { test }, 0)
+            };
+            
+            // Act
+            var (go, posRef, velRef, healthRef, armorRef, testRef) = tuple;
+            
+            // Assert
+            Assert.Equal(entity, go);
+            Assert.Equal(5, posRef.Value.X);
+            Assert.Equal(2, velRef.Value.VX);
+            Assert.Equal(50, healthRef.Value.Value);
+            Assert.Equal(25, armorRef.Value.Defense);
+            Assert.Equal(3, testRef.Value.Value);
+            
+            world.Dispose();
+        }
+        
+        /// <summary>
+        ///     Tests that modifying all five components through ref tuple updates them.
+        /// </summary>
+        [Fact]
+        public void RefTuple5_ModifyAllComponents_ShouldUpdateAll()
+        {
+            // Arrange
+            Scene world = new Scene();
+            GameObject entity = world.Create();
+            Position pos = new Position { X = 1, Y = 2 };
+            Velocity vel = new Velocity { VX = 0.5f, VY = 0.5f };
+            Health health = new Health { Value = 75 };
+            Armor armor = new Armor { Defense = 10 };
+            TestComponent test = new TestComponent { Value = 1 };
+            entity.Add(pos);
+            entity.Add(vel);
+            entity.Add(health);
+            entity.Add(armor);
+            entity.Add(test);
+            
+            var tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent>
+            {
+                GameObject = entity,
+                Item1 = new Ref<Position>(new[] { pos }, 0),
+                Item2 = new Ref<Velocity>(new[] { vel }, 0),
+                Item3 = new Ref<Health>(new[] { health }, 0),
+                Item4 = new Ref<Armor>(new[] { armor }, 0),
+                Item5 = new Ref<TestComponent>(new[] { test }, 0)
+            };
+            
+            // Act
+            tuple.Item1.Value.X = 100;
+            tuple.Item2.Value.VX = 10;
+            tuple.Item3.Value.Value = 200;
+            tuple.Item4.Value.Defense = 100;
+            tuple.Item5.Value.Value = 99;
+            
+            // Assert
+            Assert.Equal(100, entity.Get<Position>().X);
+            Assert.Equal(10, entity.Get<Velocity>().VX);
+            Assert.Equal(200, entity.Get<Health>().Value);
+            Assert.Equal(100, entity.Get<Armor>().Defense);
+            Assert.Equal(99, entity.Get<TestComponent>().Value);
+            
+            world.Dispose();
+        }
+        
+        /// <summary>
+        ///     Tests that all fields of ref tuple with five components are accessible.
+        /// </summary>
+        [Fact]
+        public void RefTuple5_AllFields_ShouldBeAccessible()
+        {
+            // Arrange
+            Scene world = new Scene();
+            GameObject entity = world.Create();
+            Position pos = new Position { X = 42, Y = 84 };
+            Velocity vel = new Velocity { VX = 1.5f, VY = 2.5f };
+            Health health = new Health { Value = 150 };
+            Armor armor = new Armor { Defense = 75 };
+            TestComponent test = new TestComponent { Value = 42 };
+            entity.Add(pos);
+            entity.Add(vel);
+            entity.Add(health);
+            entity.Add(armor);
+            entity.Add(test);
+            
+            // Act
+            var tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent>
+            {
+                GameObject = entity,
+                Item1 = new Ref<Position>(new[] { pos }, 0),
+                Item2 = new Ref<Velocity>(new[] { vel }, 0),
+                Item3 = new Ref<Health>(new[] { health }, 0),
+                Item4 = new Ref<Armor>(new[] { armor }, 0),
+                Item5 = new Ref<TestComponent>(new[] { test }, 0)
+            };
+            
+            // Assert
+            Assert.Equal(entity, tuple.GameObject);
+            Assert.Equal(42, tuple.Item1.Value.X);
+            Assert.Equal(1.5f, tuple.Item2.Value.VX);
+            Assert.Equal(150, tuple.Item3.Value.Value);
+            Assert.Equal(75, tuple.Item4.Value.Defense);
+            Assert.Equal(42, tuple.Item5.Value.Value);
+            
+            world.Dispose();
+        }
+        
+        /// <summary>
+        ///     Tests that multiple ref tuples with five components maintain separate state.
+        /// </summary>
+        [Fact]
+        public void RefTuple5_MultipleTuples_ShouldMaintainSeparateState()
+        {
+            // Arrange
+            Scene world = new Scene();
+            GameObject entity1 = world.Create();
+            GameObject entity2 = world.Create();
+            
+            Position pos1 = new Position { X = 1, Y = 1 };
+            Velocity vel1 = new Velocity { VX = 0.1f, VY = 0.1f };
+            Health health1 = new Health { Value = 100 };
+            Armor armor1 = new Armor { Defense = 50 };
+            TestComponent test1 = new TestComponent { Value = 10 };
+            entity1.Add(pos1);
+            entity1.Add(vel1);
+            entity1.Add(health1);
+            entity1.Add(armor1);
+            entity1.Add(test1);
+            
+            Position pos2 = new Position { X = 2, Y = 2 };
+            Velocity vel2 = new Velocity { VX = 0.2f, VY = 0.2f };
+            Health health2 = new Health { Value = 50 };
+            Armor armor2 = new Armor { Defense = 25 };
+            TestComponent test2 = new TestComponent { Value = 20 };
+            entity2.Add(pos2);
+            entity2.Add(vel2);
+            entity2.Add(health2);
+            entity2.Add(armor2);
+            entity2.Add(test2);
+            
+            // Act
+            var tuple1 = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent>
+            {
+                GameObject = entity1,
+                Item1 = new Ref<Position>(new[] { pos1 }, 0),
+                Item2 = new Ref<Velocity>(new[] { vel1 }, 0),
+                Item3 = new Ref<Health>(new[] { health1 }, 0),
+                Item4 = new Ref<Armor>(new[] { armor1 }, 0),
+                Item5 = new Ref<TestComponent>(new[] { test1 }, 0)
+            };
+            
+            var tuple2 = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent>
+            {
+                GameObject = entity2,
+                Item1 = new Ref<Position>(new[] { pos2 }, 0),
+                Item2 = new Ref<Velocity>(new[] { vel2 }, 0),
+                Item3 = new Ref<Health>(new[] { health2 }, 0),
+                Item4 = new Ref<Armor>(new[] { armor2 }, 0),
+                Item5 = new Ref<TestComponent>(new[] { test2 }, 0)
+            };
+            
+            // Assert
+            Assert.NotEqual(tuple1.GameObject, tuple2.GameObject);
+            Assert.Equal(10, tuple1.Item5.Value.Value);
+            Assert.Equal(20, tuple2.Item5.Value.Value);
+            
+            world.Dispose();
+        }
     }
 }

@@ -36,6 +36,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
     /// </summary>
     public class ImageTests
     {
+        /// <summary>
+        /// Tests that image load with non bitmap file returns null
+        /// </summary>
         [Fact]
         public void Image_Load_WithNonBitmapFile_ReturnsNull()
         {

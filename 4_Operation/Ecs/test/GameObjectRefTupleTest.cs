@@ -27,10 +27,166 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Test.Models;
+using Xunit;
+
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    ///     Tests the <see cref="GameObjectRefTuple{T1}"/> struct with a single component.
+    /// </summary>
     public partial class GameObjectRefTupleTest
     {
+        /// <summary>
+        ///     Tests that game object ref tuple can be initialized with a game object and component reference.
+        /// </summary>
+        [Fact]
+        public void RefTuple1_Initialize_ShouldSetGameObjectAndComponent()
+        {
+            // Arrange
+            Scene world = new Scene();
+            GameObject entity = world.Create();
+            entity.Add(new Position { X = 10, Y = 20 });
+            
+            // Act
+            var refTuple = new GameObjectRefTuple<Position>
+            {
+                GameObject = entity,
+                Item1 = new Ref<Position>(new[] { new Position { X = 10, Y = 20 } }, 0)
+            };
+            
+            // Assert
+            Assert.Equal(entity, refTuple.GameObject);
+            Assert.NotNull(refTuple.Item1);
+            
+            world.Dispose();
+        }
         
+        /// <summary>
+        ///     Tests that game object ref tuple deconstruction works correctly.
+        /// </summary>
+        [Fact]
+        public void RefTuple1_Deconstruct_ShouldReturnGameObjectAndRef()
+        {
+            // Arrange
+            Scene world = new Scene();
+            GameObject entity = world.Create();
+            Position pos = new Position { X = 5, Y = 15 };
+            entity.Add(pos);
+            
+            GameObjectRefTuple<Position> tuple = new GameObjectRefTuple<Position>
+            {
+                GameObject = entity,
+                Item1 = new Ref<Position>(new[] { pos }, 0)
+            };
+            
+            // Act
+            var (go, posRef) = tuple;
+            
+            // Assert
+            Assert.Equal(entity, go);
+            Assert.Equal(5, posRef.Value.X);
+            Assert.Equal(15, posRef.Value.Y);
+            
+            world.Dispose();
+        }
+        
+        /// <summary>
+        ///     Tests that multiple tuples with different game objects work independently.
+        /// </summary>
+        [Fact]
+        public void RefTuple1_MultipleTuples_ShouldMaintainSeparateState()
+        {
+            // Arrange
+            Scene world = new Scene();
+            GameObject entity1 = world.Create();
+            GameObject entity2 = world.Create();
+            Position pos1 = new Position { X = 1, Y = 2 };
+            Position pos2 = new Position { X = 3, Y = 4 };
+            entity1.Add(pos1);
+            entity2.Add(pos2);
+            
+            // Act
+            var tuple1 = new GameObjectRefTuple<Position> { GameObject = entity1, Item1 = new Ref<Position>(new[] { pos1 }, 0) };
+            var tuple2 = new GameObjectRefTuple<Position> { GameObject = entity2, Item1 = new Ref<Position>(new[] { pos2 }, 0) };
+            
+            // Assert
+            Assert.NotEqual(tuple1.GameObject, tuple2.GameObject);
+            Assert.Equal(1, tuple1.Item1.Value.X);
+            Assert.Equal(3, tuple2.Item1.Value.X);
+            
+            world.Dispose();
+        }
+        
+        /// <summary>
+        ///     Tests that ref tuple with different component types work correctly.
+        /// </summary>
+        [Fact]
+        public void RefTuple1_WithDifferentComponentTypes_ShouldWork()
+        {
+            // Arrange
+            Scene world = new Scene();
+            GameObject entity = world.Create();
+            Health health = new Health { Value = 100 };
+            entity.Add(health);
+            
+            // Act
+            var tuple = new GameObjectRefTuple<Health>
+            {
+                GameObject = entity,
+                Item1 = new Ref<Health>(new[] { health }, 0)
+            };
+            
+            // Assert
+            Assert.Equal(100, tuple.Item1.Value.Value);
+            
+            world.Dispose();
+        }
+        
+        /// <summary>
+        ///     Tests that game object field is properly accessible.
+        /// </summary>
+        [Fact]
+        public void RefTuple1_GameObjectField_ShouldBeAccessible()
+        {
+            // Arrange
+            Scene world = new Scene();
+            GameObject entity = world.Create();
+            Position pos = new Position();
+            entity.Add(pos);
+            
+            // Act
+            var tuple = new GameObjectRefTuple<Position> { GameObject = entity, Item1 = new Ref<Position>(new[] { pos }, 0) };
+            GameObject retrieved = tuple.GameObject;
+            
+            // Assert
+            Assert.Equal(entity, retrieved);
+            
+            world.Dispose();
+        }
+        
+        /// <summary>
+        ///     Tests that item1 field can be accessed and used.
+        /// </summary>
+        [Fact]
+        public void RefTuple1_Item1Field_ShouldBeAccessible()
+        {
+            // Arrange
+            Scene world = new Scene();
+            GameObject entity = world.Create();
+            Position pos = new Position { X = 42, Y = 84 };
+            entity.Add(pos);
+            
+            // Act
+            var tuple = new GameObjectRefTuple<Position> { GameObject = entity, Item1 = new Ref<Position>(new[] { pos }, 0) };
+            var item = tuple.Item1;
+            
+            // Assert
+            Assert.Equal(42, item.Value.X);
+            Assert.Equal(84, item.Value.Y);
+            
+            world.Dispose();
+        }
     }
 }

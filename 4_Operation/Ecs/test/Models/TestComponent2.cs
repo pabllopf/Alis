@@ -5,6 +5,9 @@ namespace Alis.Core.Ecs.Test.Models
     /// </summary>
     internal struct TestComponent2
     {
+        /// <summary>
+        /// The value
+        /// </summary>
         public int Value;
     }
 }

@@ -37,18 +37,27 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
     /// </summary>
     public class ConnectionStatusEnumTests
     {
+        /// <summary>
+        /// Tests that connection status connected is defined
+        /// </summary>
         [Fact]
         public void ConnectionStatus_Connected_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(ConnectionStatus), ConnectionStatus.Connected));
         }
 
+        /// <summary>
+        /// Tests that connection status disconnected is defined
+        /// </summary>
         [Fact]
         public void ConnectionStatus_Disconnected_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(ConnectionStatus), ConnectionStatus.Disconnected));
         }
 
+        /// <summary>
+        /// Tests that connection status can be cast to int
+        /// </summary>
         [Fact]
         public void ConnectionStatus_CanBeCastToInt()
         {
@@ -57,6 +66,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
             Assert.True(value >= 0);
         }
 
+        /// <summary>
+        /// Tests that connection status connected and disconnected are different
+        /// </summary>
         [Fact]
         public void ConnectionStatus_Connected_And_Disconnected_AreDifferent()
         {

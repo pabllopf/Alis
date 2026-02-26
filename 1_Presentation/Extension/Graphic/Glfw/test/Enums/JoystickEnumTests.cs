@@ -37,6 +37,10 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
     /// </summary>
     public class JoystickEnumTests
     {
+        /// <summary>
+        /// Tests that joystick all joysticks are defined
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
         [Theory]
         [InlineData(Joystick.Joystick1)]
         [InlineData(Joystick.Joystick2)]
@@ -59,6 +63,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
             Assert.True(Enum.IsDefined(typeof(Joystick), joystick));
         }
 
+        /// <summary>
+        /// Tests that joystick can be cast to int
+        /// </summary>
         [Fact]
         public void Joystick_CanBeCastToInt()
         {
@@ -67,6 +74,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
             Assert.True(value >= 0);
         }
 
+        /// <summary>
+        /// Tests that joystick all joysticks have unique values
+        /// </summary>
         [Fact]
         public void Joystick_AllJoysticks_HaveUniqueValues()
         {
