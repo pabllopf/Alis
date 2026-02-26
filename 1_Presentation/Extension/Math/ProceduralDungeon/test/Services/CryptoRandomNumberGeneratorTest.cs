@@ -165,7 +165,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             CryptoRandomNumberGenerator rng = new CryptoRandomNumberGenerator();
 
             // Act & Assert
-            var exception = Record.Exception(() => rng.Dispose());
+            Exception exception = Record.Exception(() => rng.Dispose());
             Assert.Null(exception);
         }
 
@@ -180,7 +180,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
 
             // Act & Assert
             rng.Dispose();
-            var exception = Record.Exception(() => rng.Dispose());
+            Exception exception = Record.Exception(() => rng.Dispose());
             Assert.Null(exception);
         }
 

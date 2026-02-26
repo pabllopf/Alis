@@ -45,10 +45,10 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ConstructorWithList_ShouldCreateSuccessfulResult()
         {
             // Arrange
-            var paths = new List<string> { "/path/to/file.txt" };
+            List<string> paths = new List<string> { "/path/to/file.txt" };
 
             // Act
-            var result = new FilePickerResult(paths);
+            FilePickerResult result = new FilePickerResult(paths);
 
             // Assert
             Assert.True(result.IsSuccess);
@@ -65,7 +65,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ConstructorWithString_ShouldCreateSuccessfulResult()
         {
             // Act
-            var result = new FilePickerResult("/path/to/file.txt");
+            FilePickerResult result = new FilePickerResult("/path/to/file.txt");
 
             // Assert
             Assert.True(result.IsSuccess);
@@ -121,7 +121,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void CreateCancelled_ShouldCreateCancelledResult()
         {
             // Act
-            var result = FilePickerResult.CreateCancelled();
+            FilePickerResult result = FilePickerResult.CreateCancelled();
 
             // Assert
             Assert.False(result.IsSuccess);
@@ -138,7 +138,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void CreateError_ShouldCreateErrorResult()
         {
             // Act
-            var result = FilePickerResult.CreateError("An error occurred");
+            FilePickerResult result = FilePickerResult.CreateError("An error occurred");
 
             // Assert
             Assert.False(result.IsSuccess);
@@ -174,10 +174,10 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ConstructorWithMultiplePaths_ShouldStorePaths()
         {
             // Arrange
-            var paths = new List<string> { "/path/one.txt", "/path/two.txt", "/path/three.txt" };
+            List<string> paths = new List<string> { "/path/one.txt", "/path/two.txt", "/path/three.txt" };
 
             // Act
-            var result = new FilePickerResult(paths);
+            FilePickerResult result = new FilePickerResult(paths);
 
             // Assert
             Assert.Equal(3, result.SelectedPaths.Count);
@@ -191,8 +191,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void SelectedPath_ShouldReturnFirstPath()
         {
             // Arrange
-            var paths = new List<string> { "/path/one.txt", "/path/two.txt" };
-            var result = new FilePickerResult(paths);
+            List<string> paths = new List<string> { "/path/one.txt", "/path/two.txt" };
+            FilePickerResult result = new FilePickerResult(paths);
 
             // Act
             string selectedPath = result.SelectedPath;
@@ -208,7 +208,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void ConstructorWithPathsWithSpaces_ShouldWork()
         {
             // Act
-            var result = new FilePickerResult("/path/to/my file.txt");
+            FilePickerResult result = new FilePickerResult("/path/to/my file.txt");
 
             // Assert
             Assert.Equal("/path/to/my file.txt", result.SelectedPath);
@@ -221,7 +221,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         public void Result_ShouldBeImmutable()
         {
             // Arrange
-            var result = new FilePickerResult("/path/to/file.txt");
+            FilePickerResult result = new FilePickerResult("/path/to/file.txt");
             int initialCount = result.SelectedPaths.Count;
 
             // Act

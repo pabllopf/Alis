@@ -106,7 +106,7 @@ namespace Alis.Core.Aspect.Data.Sample
             Console.WriteLine("█ Testing Primitive Types");
             Console.ResetColor();
 
-            var primitives = new PrimitiveTypesExample
+            PrimitiveTypesExample primitives = new PrimitiveTypesExample
             {
                 BoolValue = true,
                 CharValue = 'A',
@@ -153,7 +153,7 @@ namespace Alis.Core.Aspect.Data.Sample
             Console.WriteLine("█ Testing Special Types (DateTime, TimeSpan, Guid, Uri, Version)");
             Console.ResetColor();
 
-            var special = new SpecialTypesExample
+            SpecialTypesExample special = new SpecialTypesExample
             {
                 DateTimeValue = new DateTime(2026, 02, 25, 14, 30, 0),
                 DateTimeOffsetValue = new DateTimeOffset(2026, 02, 25, 14, 30, 0, TimeSpan.FromHours(-5)),
@@ -184,7 +184,7 @@ namespace Alis.Core.Aspect.Data.Sample
             Console.WriteLine("█ Testing Array Types (1D and 2D)");
             Console.ResetColor();
 
-            var arrays = new ArrayTypesExample
+            ArrayTypesExample arrays = new ArrayTypesExample
             {
                 IntArray = new[] { 1, 2, 3, 4, 5 },
                 StringArray = new[] { "alpha", "beta", "gamma", "delta" },
@@ -213,7 +213,7 @@ namespace Alis.Core.Aspect.Data.Sample
             Console.WriteLine("█ Testing Collection Types (List<T>)");
             Console.ResetColor();
 
-            var collections = new CollectionTypesExample
+            CollectionTypesExample collections = new CollectionTypesExample
             {
                 IntList = new List<int> { 10, 20, 30, 40, 50 },
                 StringList = new List<string> { "apple", "banana", "cherry", "date" },
@@ -240,7 +240,7 @@ namespace Alis.Core.Aspect.Data.Sample
             Console.WriteLine("█ Testing Dictionary Types");
             Console.ResetColor();
 
-            var dictionaries = new DictionaryTypesExample
+            DictionaryTypesExample dictionaries = new DictionaryTypesExample
             {
                 StringDictionary = new Dictionary<string, string>
                 {
@@ -280,7 +280,7 @@ namespace Alis.Core.Aspect.Data.Sample
             Console.WriteLine("█ Testing Enumeration Types");
             Console.ResetColor();
 
-            var enums = new EnumExample
+            EnumExample enums = new EnumExample
             {
                 Status = StatusType.Active,
                 StatusList = new List<StatusType>
@@ -311,7 +311,7 @@ namespace Alis.Core.Aspect.Data.Sample
             Console.WriteLine("█ Testing Custom Property Names ([JsonNativePropertyName])");
             Console.ResetColor();
 
-            var custom = new CustomPropertyNamesExample
+            CustomPropertyNamesExample custom = new CustomPropertyNamesExample
             {
                 Identifier = 12345,
                 Name = "Custom Example",
@@ -340,7 +340,7 @@ namespace Alis.Core.Aspect.Data.Sample
             Console.WriteLine("█ Testing Ignored Properties ([JsonNativeIgnore])");
             Console.ResetColor();
 
-            var ignored = new IgnoredPropertiesExample
+            IgnoredPropertiesExample ignored = new IgnoredPropertiesExample
             {
                 Id = 999,
                 Name = "Ignored Example",
@@ -369,7 +369,7 @@ namespace Alis.Core.Aspect.Data.Sample
             Console.WriteLine("█ Testing Complex Nested Types");
             Console.ResetColor();
 
-            var complex = new ComplexNestedExample
+            ComplexNestedExample complex = new ComplexNestedExample
             {
                 ProjectId = Guid.NewGuid(),
                 ProjectName = "Advanced AI System",
@@ -416,7 +416,7 @@ namespace Alis.Core.Aspect.Data.Sample
             Console.WriteLine("█ Testing Comprehensive Example (All Types Combined)");
             Console.ResetColor();
 
-            var comprehensive = new ComprehensiveExample
+            ComprehensiveExample comprehensive = new ComprehensiveExample
             {
                 Name = "Comprehensive Test",
                 BoolProperty = true,
@@ -463,7 +463,7 @@ namespace Alis.Core.Aspect.Data.Sample
             Console.WriteLine("█ Testing Album Example (Existing Sample)");
             Console.ResetColor();
 
-            var album = new Album
+            Album album = new Album
             {
                 AlbumId = Guid.NewGuid(),
                 Name = "Greatest Hits",

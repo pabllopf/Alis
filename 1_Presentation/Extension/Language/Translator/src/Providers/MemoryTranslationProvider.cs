@@ -67,8 +67,8 @@ namespace Alis.Extension.Language.Translator
         {
             lock (syncLock)
             {
-                var copy = new Dictionary<string, Dictionary<string, string>>();
-                foreach (var kvp in translations)
+                Dictionary<string, Dictionary<string, string>> copy = new Dictionary<string, Dictionary<string, string>>();
+                foreach (KeyValuePair<string, Dictionary<string, string>> kvp in translations)
                 {
                     copy[kvp.Key] = new Dictionary<string, string>(kvp.Value);
                 }
@@ -92,7 +92,7 @@ namespace Alis.Extension.Language.Translator
             lock (syncLock)
             {
                 translations.Clear();
-                foreach (var kvp in translationsDictionary)
+                foreach (KeyValuePair<string, Dictionary<string, string>> kvp in translationsDictionary)
                 {
                     if (kvp.Value != null)
                     {
@@ -198,7 +198,7 @@ namespace Alis.Extension.Language.Translator
                     return Task.FromResult(Enumerable.Empty<string>());
                 }
 
-                var keys = translations[languageCode].Keys.ToList();
+                List<string> keys = translations[languageCode].Keys.ToList();
                 return Task.FromResult<IEnumerable<string>>(keys);
             }
         }

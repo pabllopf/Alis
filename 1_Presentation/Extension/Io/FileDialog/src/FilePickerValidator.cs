@@ -228,7 +228,7 @@ namespace Alis.Extension.Io.FileDialog
 
             if (options.DialogType == FileDialogType.OpenFile)
             {
-                foreach (var path in result.SelectedPaths)
+                foreach (string path in result.SelectedPaths)
                 {
                     if (!IsValidFilePath(path))
                     {
@@ -243,7 +243,7 @@ namespace Alis.Extension.Io.FileDialog
             }
             else if (options.DialogType == FileDialogType.SelectFolder)
             {
-                foreach (var path in result.SelectedPaths)
+                foreach (string path in result.SelectedPaths)
                 {
                     if (!IsValidDirectoryPath(path))
                     {

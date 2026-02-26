@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Alis.Core.Aspect.Data.Json;
@@ -49,7 +51,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_ThreeLevelNesting_SerializesAndDeserializes()
         {
             // Arrange
-            var original = new UserWithAddress
+            UserWithAddress original = new UserWithAddress
             {
                 Username = "user123",
                 UserId = 456,
@@ -64,7 +66,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<UserWithAddress>(json);
+            UserWithAddress restored = JsonNativeAot.Deserialize<UserWithAddress>(json);
 
             // Assert
             Assert.Equal(original.Username, restored.Username);
@@ -83,7 +85,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_ListOfComplexObjects_SerializesCompletely()
         {
             // Arrange
-            var products = new List<ProductClass>
+            List<ProductClass> products = new List<ProductClass>
             {
                 new ProductClass { ProductId = 1, ProductName = "Laptop", Price = 999.99m, InStock = true, AddedDate = DateTime.Now },
                 new ProductClass { ProductId = 2, ProductName = "Mouse", Price = 29.99m, InStock = true, AddedDate = DateTime.Now },
@@ -91,11 +93,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             };
 
             // Act - Serialize each individually
-            var jsonList = products.Select(p => JsonNativeAot.Serialize(p)).ToList();
+            List<string> jsonList = products.Select(p => JsonNativeAot.Serialize(p)).ToList();
 
             // Assert
             Assert.Equal(3, jsonList.Count);
-            foreach (var json in jsonList)
+            foreach (string json in jsonList)
             {
                 Assert.NotEmpty(json);
                 Assert.Contains("ProductId", json);
@@ -111,16 +113,16 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_MixedValueAndReferenceTypes_AllPreserved()
         {
             // Arrange
-            var person = new PersonClass
+            PersonClass person = new PersonClass
             {
                 Name = "Alice",
                 Age = 30,
                 Email = "alice@example.com"
             };
 
-            var point = new Point2D(100, 200);
+            Point2D point = new Point2D(100, 200);
 
-            var product = new ProductClass
+            ProductClass product = new ProductClass
             {
                 ProductId = 42,
                 ProductName = "Widget",
@@ -134,9 +136,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             string pointJson = JsonNativeAot.Serialize(point);
             string productJson = JsonNativeAot.Serialize(product);
 
-            var restoredPerson = JsonNativeAot.Deserialize<PersonClass>(personJson);
-            var restoredPoint = JsonNativeAot.Deserialize<Point2D>(pointJson);
-            var restoredProduct = JsonNativeAot.Deserialize<ProductClass>(productJson);
+            PersonClass restoredPerson = JsonNativeAot.Deserialize<PersonClass>(personJson);
+            Point2D restoredPoint = JsonNativeAot.Deserialize<Point2D>(pointJson);
+            ProductClass restoredProduct = JsonNativeAot.Deserialize<ProductClass>(productJson);
 
             // Assert
             Assert.Equal(person.Name, restoredPerson.Name);
@@ -152,7 +154,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_SerializeToFile_AndReadBack_Successful()
         {
             // Arrange
-            var settings = new AppSettings
+            AppSettings settings = new AppSettings
             {
                 AppName = "TestApp",
                 Version = "1.0.0",
@@ -169,7 +171,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             {
                 // Act
                 JsonNativeAot.SerializeToFile(settings, fileName, path);
-                var restored = JsonNativeAot.DeserializeFromFile<AppSettings>(fileName, path);
+                AppSettings restored = JsonNativeAot.DeserializeFromFile<AppSettings>(fileName, path);
 
                 // Assert
                 Assert.Equal(settings.AppName, restored.AppName);
@@ -180,10 +182,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             finally
             {
                 // Cleanup
-                var fullPath = Path.Combine(Directory.GetCurrentDirectory(), path, $"{fileName}.json");
+                string fullPath = Path.Combine(Directory.GetCurrentDirectory(), path, $"{fileName}.json");
                 if (File.Exists(fullPath))
                     File.Delete(fullPath);
-                var dir = Path.Combine(Directory.GetCurrentDirectory(), path);
+                string dir = Path.Combine(Directory.GetCurrentDirectory(), path);
                 if (Directory.Exists(dir) && !Directory.GetFiles(dir).Any())
                     Directory.Delete(dir);
             }
@@ -193,8 +195,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_MultipleFileOperations_NoInterference()
         {
             // Arrange
-            var person = new PersonClass { Name = "File Test Person", Age = 25, Email = "test@file.com" };
-            var product = new ProductClass { ProductId = 999, ProductName = "File Test Product", Price = 99.99m, InStock = true, AddedDate = DateTime.Now };
+            PersonClass person = new PersonClass { Name = "File Test Person", Age = 25, Email = "test@file.com" };
+            ProductClass product = new ProductClass { ProductId = 999, ProductName = "File Test Product", Price = 99.99m, InStock = true, AddedDate = DateTime.Now };
 
             string fileName1 = $"test_person_{Guid.NewGuid()}";
             string fileName2 = $"test_product_{Guid.NewGuid()}";
@@ -206,8 +208,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
                 JsonNativeAot.SerializeToFile(person, fileName1, path);
                 JsonNativeAot.SerializeToFile(product, fileName2, path);
 
-                var restoredPerson = JsonNativeAot.DeserializeFromFile<PersonClass>(fileName1, path);
-                var restoredProduct = JsonNativeAot.DeserializeFromFile<ProductClass>(fileName2, path);
+                PersonClass restoredPerson = JsonNativeAot.DeserializeFromFile<PersonClass>(fileName1, path);
+                ProductClass restoredProduct = JsonNativeAot.DeserializeFromFile<ProductClass>(fileName2, path);
 
                 // Assert
                 Assert.Equal(person.Name, restoredPerson.Name);
@@ -216,9 +218,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             finally
             {
                 // Cleanup
-                var dir = Path.Combine(Directory.GetCurrentDirectory(), path);
-                var file1 = Path.Combine(dir, $"{fileName1}.json");
-                var file2 = Path.Combine(dir, $"{fileName2}.json");
+                string dir = Path.Combine(Directory.GetCurrentDirectory(), path);
+                string file1 = Path.Combine(dir, $"{fileName1}.json");
+                string file2 = Path.Combine(dir, $"{fileName2}.json");
                 if (File.Exists(file1)) File.Delete(file1);
                 if (File.Exists(file2)) File.Delete(file2);
                 if (Directory.Exists(dir) && !Directory.GetFiles(dir).Any())
@@ -234,7 +236,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_SerializeDeserialize1000Times_NoErrors()
         {
             // Arrange
-            var original = new PersonClass
+            PersonClass original = new PersonClass
             {
                 Name = "Stress Test",
                 Age = 30,
@@ -245,7 +247,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             for (int i = 0; i < 1000; i++)
             {
                 string json = JsonNativeAot.Serialize(original);
-                var restored = JsonNativeAot.Deserialize<PersonClass>(json);
+                PersonClass restored = JsonNativeAot.Deserialize<PersonClass>(json);
 
                 Assert.Equal(original.Name, restored.Name);
                 Assert.Equal(original.Age, restored.Age);
@@ -256,7 +258,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_ParallelSerialization_ThreadSafe()
         {
             // Arrange
-            var objects = Enumerable.Range(0, 100).Select(i => new PersonClass
+            List<PersonClass> objects = Enumerable.Range(0, 100).Select(i => new PersonClass
             {
                 Name = $"Person{i}",
                 Age = i,
@@ -264,14 +266,14 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             }).ToList();
 
             // Act
-            var results = new System.Collections.Concurrent.ConcurrentBag<bool>();
+            ConcurrentBag<bool> results = new System.Collections.Concurrent.ConcurrentBag<bool>();
 
             System.Threading.Tasks.Parallel.ForEach(objects, obj =>
             {
                 try
                 {
                     string json = JsonNativeAot.Serialize(obj);
-                    var restored = JsonNativeAot.Deserialize<PersonClass>(json);
+                    PersonClass restored = JsonNativeAot.Deserialize<PersonClass>(json);
                     results.Add(restored.Name == obj.Name);
                 }
                 catch
@@ -293,7 +295,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_ComplexStruct_WithMultipleTypes()
         {
             // Arrange
-            var config = new ConfigStruct
+            ConfigStruct config = new ConfigStruct
             {
                 Status = StatusEnum.Active,
                 Priority = PriorityEnum.Critical,
@@ -302,7 +304,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(config);
-            var restored = JsonNativeAot.Deserialize<ConfigStruct>(json);
+            ConfigStruct restored = JsonNativeAot.Deserialize<ConfigStruct>(json);
 
             // Assert
             Assert.Equal(config.Status, restored.Status);
@@ -314,7 +316,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_NumericTypesClass_AllTypesRoundTrip()
         {
             // Arrange
-            var original = new NumericTypesClass
+            NumericTypesClass original = new NumericTypesClass
             {
                 ByteValue = 255,
                 SByteValue = -128,
@@ -331,7 +333,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<NumericTypesClass>(json);
+            NumericTypesClass restored = JsonNativeAot.Deserialize<NumericTypesClass>(json);
 
             // Assert
             Assert.Equal(original.ByteValue, restored.ByteValue);
@@ -349,13 +351,13 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_EmptyCollections_HandleGracefully()
         {
             // Arrange
-            var tags = new TagsClass
+            TagsClass tags = new TagsClass
             {
                 Name = "EmptyTest",
                 Tags = new List<string>()
             };
 
-            var scores = new ScoresClass
+            ScoresClass scores = new ScoresClass
             {
                 PlayerName = "Player1",
                 Scores = new List<int>()
@@ -365,8 +367,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             string tagsJson = JsonNativeAot.Serialize(tags);
             string scoresJson = JsonNativeAot.Serialize(scores);
 
-            var restoredTags = JsonNativeAot.Deserialize<TagsClass>(tagsJson);
-            var restoredScores = JsonNativeAot.Deserialize<ScoresClass>(scoresJson);
+            TagsClass restoredTags = JsonNativeAot.Deserialize<TagsClass>(tagsJson);
+            ScoresClass restoredScores = JsonNativeAot.Deserialize<ScoresClass>(scoresJson);
 
             // Assert
             Assert.NotNull(restoredTags.Tags);
@@ -379,16 +381,16 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_LargeCollections_HandledEfficiently()
         {
             // Arrange
-            var tags = new TagsClass
+            TagsClass tags = new TagsClass
             {
                 Name = "LargeList",
                 Tags = Enumerable.Range(0, 1000).Select(i => $"tag{i}").ToList()
             };
 
             // Act
-            var sw = System.Diagnostics.Stopwatch.StartNew();
+            Stopwatch sw = System.Diagnostics.Stopwatch.StartNew();
             string json = JsonNativeAot.Serialize(tags);
-            var restored = JsonNativeAot.Deserialize<TagsClass>(json);
+            TagsClass restored = JsonNativeAot.Deserialize<TagsClass>(json);
             sw.Stop();
 
             // Assert
@@ -404,7 +406,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_MultipleDateTimeFormats_HandleCorrectly()
         {
             // Arrange
-            var timestamps = new[]
+            DateTime[] timestamps = new[]
             {
                 DateTime.Now,
                 DateTime.Today,
@@ -414,16 +416,16 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             };
 
             // Act & Assert
-            foreach (var timestamp in timestamps)
+            foreach (DateTime timestamp in timestamps)
             {
-                var original = new TemporalTypesStruct
+                TemporalTypesStruct original = new TemporalTypesStruct
                 {
                     Timestamp = timestamp,
                     Identifier = Guid.NewGuid()
                 };
 
                 string json = JsonNativeAot.Serialize(original);
-                var restored = JsonNativeAot.Deserialize<TemporalTypesStruct>(json);
+                TemporalTypesStruct restored = JsonNativeAot.Deserialize<TemporalTypesStruct>(json);
 
                 Assert.Equal(original.Timestamp.Year, restored.Timestamp.Year);
                 Assert.Equal(original.Timestamp.Month, restored.Timestamp.Month);
@@ -435,18 +437,18 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_MultipleGuids_AllUnique()
         {
             // Arrange
-            var guids = Enumerable.Range(0, 100).Select(_ => new TemporalTypesStruct
+            List<TemporalTypesStruct> guids = Enumerable.Range(0, 100).Select(_ => new TemporalTypesStruct
             {
                 Timestamp = DateTime.Now,
                 Identifier = Guid.NewGuid()
             }).ToList();
 
             // Act
-            var jsonList = guids.Select(g => JsonNativeAot.Serialize(g)).ToList();
-            var restored = jsonList.Select(json => JsonNativeAot.Deserialize<TemporalTypesStruct>(json)).ToList();
+            List<string> jsonList = guids.Select(g => JsonNativeAot.Serialize(g)).ToList();
+            List<TemporalTypesStruct> restored = jsonList.Select(json => JsonNativeAot.Deserialize<TemporalTypesStruct>(json)).ToList();
 
             // Assert
-            var uniqueGuids = restored.Select(r => r.Identifier).Distinct().Count();
+            int uniqueGuids = restored.Select(r => r.Identifier).Distinct().Count();
             Assert.Equal(100, uniqueGuids);
         }
 
@@ -458,7 +460,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_AuditTrail_CompleteWorkflow()
         {
             // Arrange
-            var audits = new[]
+            AuditTrailStruct[] audits = new[]
             {
                 new AuditTrailStruct { Action = "CREATE", User = "admin", When = DateTime.Now, Success = true },
                 new AuditTrailStruct { Action = "UPDATE", User = "user1", When = DateTime.Now.AddMinutes(5), Success = true },
@@ -466,8 +468,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             };
 
             // Act
-            var jsonAudits = audits.Select(a => JsonNativeAot.Serialize(a)).ToList();
-            var restored = jsonAudits.Select(json => JsonNativeAot.Deserialize<AuditTrailStruct>(json)).ToList();
+            List<string> jsonAudits = audits.Select(a => JsonNativeAot.Serialize(a)).ToList();
+            List<AuditTrailStruct> restored = jsonAudits.Select(json => JsonNativeAot.Deserialize<AuditTrailStruct>(json)).ToList();
 
             // Assert
             Assert.Equal(3, restored.Count);
@@ -482,7 +484,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_LogEntries_WithDifferentLevels()
         {
             // Arrange
-            var logs = new[]
+            LogEntry[] logs = new[]
             {
                 new LogEntry { LogId = Guid.NewGuid(), Timestamp = DateTime.Now, Level = "DEBUG", Message = "Debug message", Source = "App" },
                 new LogEntry { LogId = Guid.NewGuid(), Timestamp = DateTime.Now, Level = "INFO", Message = "Info message", Source = "Service" },
@@ -490,8 +492,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             };
 
             // Act
-            var jsonLogs = logs.Select(l => JsonNativeAot.Serialize(l)).ToList();
-            var restored = jsonLogs.Select(json => JsonNativeAot.Deserialize<LogEntry>(json)).ToList();
+            List<string> jsonLogs = logs.Select(l => JsonNativeAot.Serialize(l)).ToList();
+            List<LogEntry> restored = jsonLogs.Select(json => JsonNativeAot.Deserialize<LogEntry>(json)).ToList();
 
             // Assert
             Assert.Equal(3, restored.Count);
@@ -508,7 +510,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_AppSettings_CompleteConfiguration()
         {
             // Arrange
-            var settings = new AppSettings
+            AppSettings settings = new AppSettings
             {
                 AppName = "MyApplication",
                 Version = "2.1.0",
@@ -520,7 +522,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(settings);
-            var restored = JsonNativeAot.Deserialize<AppSettings>(json);
+            AppSettings restored = JsonNativeAot.Deserialize<AppSettings>(json);
 
             // Assert
             Assert.Equal(settings.AppName, restored.AppName);
@@ -535,7 +537,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_DatabaseConnection_MultipleConnections()
         {
             // Arrange
-            var connections = new[]
+            DbConnectionStruct[] connections = new[]
             {
                 new DbConnectionStruct { Host = "localhost", Port = 5432, Database = "maindb", Timeout = 30 },
                 new DbConnectionStruct { Host = "remote.server.com", Port = 3306, Database = "backupdb", Timeout = 60 },
@@ -543,8 +545,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             };
 
             // Act
-            var jsons = connections.Select(c => JsonNativeAot.Serialize(c)).ToList();
-            var restored = jsons.Select(json => JsonNativeAot.Deserialize<DbConnectionStruct>(json)).ToList();
+            List<string> jsons = connections.Select(c => JsonNativeAot.Serialize(c)).ToList();
+            List<DbConnectionStruct> restored = jsons.Select(json => JsonNativeAot.Deserialize<DbConnectionStruct>(json)).ToList();
 
             // Assert
             Assert.Equal(3, restored.Count);
@@ -562,7 +564,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_Point2D_MultipleCoordinates()
         {
             // Arrange
-            var points = new[]
+            Point2D[] points = new[]
             {
                 new Point2D(0, 0),
                 new Point2D(100, 200),
@@ -571,8 +573,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             };
 
             // Act
-            var jsons = points.Select(p => JsonNativeAot.Serialize(p)).ToList();
-            var restored = jsons.Select(json => JsonNativeAot.Deserialize<Point2D>(json)).ToList();
+            List<string> jsons = points.Select(p => JsonNativeAot.Serialize(p)).ToList();
+            List<Point2D> restored = jsons.Select(json => JsonNativeAot.Deserialize<Point2D>(json)).ToList();
 
             // Assert
             for (int i = 0; i < points.Length; i++)
@@ -586,7 +588,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_Point3D_WithDecimals()
         {
             // Arrange
-            var points = new[]
+            Point3D[] points = new[]
             {
                 new Point3D(0.0, 0.0, 0.0),
                 new Point3D(1.5, 2.5, 3.5),
@@ -595,8 +597,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             };
 
             // Act
-            var jsons = points.Select(p => JsonNativeAot.Serialize(p)).ToList();
-            var restored = jsons.Select(json => JsonNativeAot.Deserialize<Point3D>(json)).ToList();
+            List<string> jsons = points.Select(p => JsonNativeAot.Serialize(p)).ToList();
+            List<Point3D> restored = jsons.Select(json => JsonNativeAot.Deserialize<Point3D>(json)).ToList();
 
             // Assert
             for (int i = 0; i < points.Length; i++)
@@ -615,7 +617,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_ProductCatalog_MultipleProducts()
         {
             // Arrange
-            var products = new[]
+            ProductClass[] products = new[]
             {
                 new ProductClass { ProductId = 1, ProductName = "Laptop", Price = 1299.99m, InStock = true, AddedDate = DateTime.Now },
                 new ProductClass { ProductId = 2, ProductName = "Mouse", Price = 29.99m, InStock = true, AddedDate = DateTime.Now.AddDays(-1) },
@@ -624,8 +626,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             };
 
             // Act
-            var jsons = products.Select(p => JsonNativeAot.Serialize(p)).ToList();
-            var restored = jsons.Select(json => JsonNativeAot.Deserialize<ProductClass>(json)).ToList();
+            List<string> jsons = products.Select(p => JsonNativeAot.Serialize(p)).ToList();
+            List<ProductClass> restored = jsons.Select(json => JsonNativeAot.Deserialize<ProductClass>(json)).ToList();
 
             // Assert
             Assert.Equal(4, restored.Count);
@@ -637,7 +639,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_OrderItems_CompleteOrder()
         {
             // Arrange
-            var orderItems = new[]
+            OrderItemStruct[] orderItems = new[]
             {
                 new OrderItemStruct { ProductId = 101, Quantity = 2, UnitPrice = 19.99m },
                 new OrderItemStruct { ProductId = 102, Quantity = 1, UnitPrice = 49.99m },
@@ -645,8 +647,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             };
 
             // Act
-            var jsons = orderItems.Select(item => JsonNativeAot.Serialize(item)).ToList();
-            var restored = jsons.Select(json => JsonNativeAot.Deserialize<OrderItemStruct>(json)).ToList();
+            List<string> jsons = orderItems.Select(item => JsonNativeAot.Serialize(item)).ToList();
+            List<OrderItemStruct> restored = jsons.Select(json => JsonNativeAot.Deserialize<OrderItemStruct>(json)).ToList();
 
             // Calculate totals
             decimal originalTotal = orderItems.Sum(item => item.Quantity * item.UnitPrice);
@@ -665,15 +667,15 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_PerformanceBenchmark_SimpleType()
         {
             // Arrange
-            var obj = new MinimalClass { Value = "Performance Test" };
+            MinimalClass obj = new MinimalClass { Value = "Performance Test" };
             const int iterations = 10000;
 
             // Act
-            var sw = System.Diagnostics.Stopwatch.StartNew();
+            Stopwatch sw = System.Diagnostics.Stopwatch.StartNew();
             for (int i = 0; i < iterations; i++)
             {
                 string json = JsonNativeAot.Serialize(obj);
-                var restored = JsonNativeAot.Deserialize<MinimalClass>(json);
+                MinimalClass restored = JsonNativeAot.Deserialize<MinimalClass>(json);
             }
             sw.Stop();
 
@@ -686,7 +688,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Integration_PerformanceBenchmark_ComplexType()
         {
             // Arrange
-            var obj = new ProductClass
+            ProductClass obj = new ProductClass
             {
                 ProductId = 999,
                 ProductName = "Performance Test Product",
@@ -697,11 +699,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             const int iterations = 5000;
 
             // Act
-            var sw = System.Diagnostics.Stopwatch.StartNew();
+            Stopwatch sw = System.Diagnostics.Stopwatch.StartNew();
             for (int i = 0; i < iterations; i++)
             {
                 string json = JsonNativeAot.Serialize(obj);
-                var restored = JsonNativeAot.Deserialize<ProductClass>(json);
+                ProductClass restored = JsonNativeAot.Deserialize<ProductClass>(json);
             }
             sw.Stop();
 

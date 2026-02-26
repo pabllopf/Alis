@@ -46,7 +46,7 @@ namespace Alis.Extension.Language.Translator.Sample
             Console.WriteLine("=== Alis Translation System Sample ===\n");
 
             // Create translation manager with default providers
-            var manager = new TranslationManager();
+            TranslationManager manager = new TranslationManager();
 
             // Example 1: Basic Language Setup
             Console.WriteLine("1. Basic Language Setup");
@@ -104,7 +104,7 @@ namespace Alis.Extension.Language.Translator.Sample
 
             // Display available languages
             Console.WriteLine($"Available languages: {manager.GetAvailableLanguages().Count}");
-            foreach (var lang in manager.GetAvailableLanguages())
+            foreach (ILanguage lang in manager.GetAvailableLanguages())
             {
                 Console.WriteLine($"  - {lang.Code}: {lang.Name}");
             }
@@ -144,7 +144,7 @@ namespace Alis.Extension.Language.Translator.Sample
             manager.AddTranslation("es", "welcome", "¡Bienvenido {name}! Tienes {count} mensajes.");
 
             // Create parameters
-            var parameters = new Dictionary<string, object>
+            Dictionary<string, object> parameters = new Dictionary<string, object>
             {
                 { "name", "Alice" },
                 { "count", 5 }
@@ -207,7 +207,7 @@ namespace Alis.Extension.Language.Translator.Sample
         /// </summary>
         private static void ObserverPattern(TranslationManager manager)
         {
-            var observer = new ConsoleTranslationObserver();
+            ConsoleTranslationObserver observer = new ConsoleTranslationObserver();
             manager.Subscribe(observer);
 
             Console.WriteLine("Changing language to Spanish...");

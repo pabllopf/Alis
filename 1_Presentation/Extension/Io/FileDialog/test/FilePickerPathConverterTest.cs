@@ -206,7 +206,7 @@ namespace Alis.Extension.Io.FileDialog.Test
             else
             {
                 // On Unix/macOS, skip this test or use actual invalid chars
-                var result = FilePickerPathConverter.IsValidPath("/path/with\0null/char", false);
+                bool result = FilePickerPathConverter.IsValidPath("/path/with\0null/char", false);
                 // Null characters should still be invalid on all platforms
             }
         }

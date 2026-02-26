@@ -94,7 +94,7 @@ namespace Alis.Extension.Language.Translator
                 return false;
             }
 
-            var language = languages.FirstOrDefault(l => l.Code == languageCode);
+            ILanguage language = languages.FirstOrDefault(l => l.Code == languageCode);
             if (language == null)
             {
                 return false;

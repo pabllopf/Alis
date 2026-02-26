@@ -89,8 +89,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
             {
                 return new TestObject
                 {
-                    Name = properties.TryGetValue("Name", out var name) ? name : null,
-                    Value = properties.TryGetValue("Value", out var value) && int.TryParse(value, out var v) ? v : 0
+                    Name = properties.TryGetValue("Name", out string name) ? name : null,
+                    Value = properties.TryGetValue("Value", out string value) && int.TryParse(value, out int v) ? v : 0
                 };
             }
         }
@@ -100,10 +100,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         /// </summary>
         public JsonFileHandlerTest()
         {
-            var escapeHandler = new EscapeSequenceHandler();
-            var parser = new JsonParser(escapeHandler);
-            var serializer = new JsonSerializer();
-            var deserializer = new JsonDeserializer(parser);
+            EscapeSequenceHandler escapeHandler = new EscapeSequenceHandler();
+            JsonParser parser = new JsonParser(escapeHandler);
+            JsonSerializer serializer = new JsonSerializer();
+            JsonDeserializer deserializer = new JsonDeserializer(parser);
             
             _fileHandler = new JsonFileHandler(serializer, deserializer);
             _testDirectory = Path.Combine(Path.GetTempPath(), "JsonFileHandlerTests");
@@ -128,7 +128,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         {
             try
             {
-                var obj = new TestObject { Name = "Test", Value = 42 };
+                TestObject obj = new TestObject { Name = "Test", Value = 42 };
                 string relativePath = Path.Combine("JsonFileHandlerTests", "subdir");
                 
                 _fileHandler.SerializeToFile(obj, "testfile", relativePath);
@@ -157,7 +157,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         [Fact]
         public void SerializeToFile_WithNullFileName_ThrowsArgumentNullException()
         {
-            var obj = new TestObject { Name = "Test", Value = 42 };
+            TestObject obj = new TestObject { Name = "Test", Value = 42 };
             Assert.Throws<ArgumentNullException>(() => _fileHandler.SerializeToFile(obj, null, "path"));
         }
 
@@ -167,7 +167,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         [Fact]
         public void SerializeToFile_WithNullRelativePath_ThrowsArgumentNullException()
         {
-            var obj = new TestObject { Name = "Test", Value = 42 };
+            TestObject obj = new TestObject { Name = "Test", Value = 42 };
             Assert.Throws<ArgumentNullException>(() => _fileHandler.SerializeToFile(obj, "test", null));
         }
 
@@ -191,7 +191,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         {
             try
             {
-                var obj = new TestObject { Name = "Test", Value = 42 };
+                TestObject obj = new TestObject { Name = "Test", Value = 42 };
                 string relativePath = Path.Combine("JsonFileHandlerTests", "newdir", "subdir");
                 
                 _fileHandler.SerializeToFile(obj, "testfile", relativePath);
@@ -213,11 +213,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         {
             try
             {
-                var obj = new TestObject { Name = "John", Value = 100 };
+                TestObject obj = new TestObject { Name = "John", Value = 100 };
                 string relativePath = Path.Combine("JsonFileHandlerTests", "read");
                 
                 _fileHandler.SerializeToFile(obj, "testread", relativePath);
-                var result = _fileHandler.DeserializeFromFile<TestObject>("testread", relativePath);
+                TestObject result = _fileHandler.DeserializeFromFile<TestObject>("testread", relativePath);
 
                 Assert.NotNull(result);
                 Assert.Equal("John", result.Name);
@@ -237,14 +237,14 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         {
             try
             {
-                var obj1 = new TestObject { Name = "First", Value = 1 };
-                var obj2 = new TestObject { Name = "Second", Value = 2 };
+                TestObject obj1 = new TestObject { Name = "First", Value = 1 };
+                TestObject obj2 = new TestObject { Name = "Second", Value = 2 };
                 string relativePath = Path.Combine("JsonFileHandlerTests", "overwrite");
                 
                 _fileHandler.SerializeToFile(obj1, "testfile", relativePath);
                 _fileHandler.SerializeToFile(obj2, "testfile", relativePath);
 
-                var result = _fileHandler.DeserializeFromFile<TestObject>("testfile", relativePath);
+                TestObject result = _fileHandler.DeserializeFromFile<TestObject>("testfile", relativePath);
                 Assert.Equal("Second", result.Name);
                 Assert.Equal(2, result.Value);
             }

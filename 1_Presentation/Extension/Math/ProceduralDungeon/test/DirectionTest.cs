@@ -84,7 +84,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void AllDirections_ShouldHaveDistinctValues()
         {
             // Arrange
-            var directions = new[]
+            Direction[] directions = new[]
             {
                 Direction.North,
                 Direction.East,
@@ -156,7 +156,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         public void EnumValues_ShouldHaveExactly4Directions()
         {
             // Act
-            var directions = Enum.GetValues(typeof(Direction));
+            Array directions = Enum.GetValues(typeof(Direction));
 
             // Assert
             Assert.Equal(5, directions.Length);

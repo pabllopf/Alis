@@ -52,7 +52,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Serialize_WithVariousIntegers_SerializesCorrectly(int value)
         {
             // Arrange
-            var obj = new TestObject { IntValue = value };
+            TestObject obj = new TestObject { IntValue = value };
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Serialize_WithVariousDoubles_SerializesCorrectly(double value)
         {
             // Arrange
-            var obj = new TestObject { DoubleValue = value };
+            TestObject obj = new TestObject { DoubleValue = value };
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -91,7 +91,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Serialize_WithVariousStrings_SerializesCorrectly(string value)
         {
             // Arrange
-            var obj = new TestObject { StringValue = value };
+            TestObject obj = new TestObject { StringValue = value };
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -104,7 +104,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Serialize_WithNullReference_CompletesWithoutError()
         {
             // Arrange
-            var obj = new TestObject { StringValue = null };
+            TestObject obj = new TestObject { StringValue = null };
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -129,7 +129,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = $"{{\"IntValue\":\"{value}\"}}";
 
             // Act
-            var obj = JsonNativeAot.Deserialize<TestObject>(json);
+            TestObject obj = JsonNativeAot.Deserialize<TestObject>(json);
 
             // Assert
             Assert.Equal(value, obj.IntValue);
@@ -145,7 +145,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = $"{{\"StringValue\":\"{value}\"}}";
 
             // Act
-            var obj = JsonNativeAot.Deserialize<TestObject>(json);
+            TestObject obj = JsonNativeAot.Deserialize<TestObject>(json);
 
             // Assert
             Assert.Equal(value, obj.StringValue);
@@ -160,7 +160,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = $"{{\"BoolValue\":\"{value}\"}}";
 
             // Act
-            var obj = JsonNativeAot.Deserialize<TestObject>(json);
+            TestObject obj = JsonNativeAot.Deserialize<TestObject>(json);
 
             // Assert
             Assert.Equal(bool.Parse(value), obj.BoolValue);
@@ -173,7 +173,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{}";
 
             // Act
-            var obj = JsonNativeAot.Deserialize<TestObject>(json);
+            TestObject obj = JsonNativeAot.Deserialize<TestObject>(json);
 
             // Assert
             Assert.NotNull(obj);
@@ -187,7 +187,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"IntValue\":\"42\",\"ExtraProperty\":\"ignored\"}";
 
             // Act
-            var obj = JsonNativeAot.Deserialize<TestObject>(json);
+            TestObject obj = JsonNativeAot.Deserialize<TestObject>(json);
 
             // Assert
             Assert.Equal(42, obj.IntValue);
@@ -201,7 +201,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void RoundTrip_SimpleObject_PreservesData()
         {
             // Arrange
-            var original = new TestObject
+            TestObject original = new TestObject
             {
                 StringValue = "Original",
                 IntValue = 123
@@ -209,7 +209,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<TestObject>(json);
+            TestObject restored = JsonNativeAot.Deserialize<TestObject>(json);
 
             // Assert
             Assert.Equal(original.StringValue, restored.StringValue);
@@ -220,7 +220,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void RoundTrip_MultipleProperties_PreservesAllData()
         {
             // Arrange
-            var original = new TestObject
+            TestObject original = new TestObject
             {
                 StringValue = "Test",
                 IntValue = 42,
@@ -230,7 +230,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<TestObject>(json);
+            TestObject restored = JsonNativeAot.Deserialize<TestObject>(json);
 
             // Assert
             Assert.Equal(original.StringValue, restored.StringValue);
@@ -249,7 +249,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"Key1\":\"Value1\",\"Key2\":\"Value2\"}";
 
             // Act
-            var dict = JsonNativeAot.ParseJsonToDictionary(json);
+            Dictionary<string, string> dict = JsonNativeAot.ParseJsonToDictionary(json);
 
             // Assert
             Assert.Equal(2, dict.Count);
@@ -264,7 +264,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{}";
 
             // Act
-            var dict = JsonNativeAot.ParseJsonToDictionary(json);
+            Dictionary<string, string> dict = JsonNativeAot.ParseJsonToDictionary(json);
 
             // Assert
             Assert.Empty(dict);
@@ -277,7 +277,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"Number\":\"42\"}";
 
             // Act
-            var dict = JsonNativeAot.ParseJsonToDictionary(json);
+            Dictionary<string, string> dict = JsonNativeAot.ParseJsonToDictionary(json);
 
             // Assert
             Assert.Equal("42", dict["Number"]);
@@ -290,7 +290,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{ \"Key1\" : \"Value1\" , \"Key2\" : \"Value2\" }";
 
             // Act
-            var dict = JsonNativeAot.ParseJsonToDictionary(json);
+            Dictionary<string, string> dict = JsonNativeAot.ParseJsonToDictionary(json);
 
             // Assert
             Assert.Equal(2, dict.Count);
@@ -304,7 +304,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Serialize_WithEmptyString_HandlesCorrectly()
         {
             // Arrange
-            var obj = new TestObject { StringValue = "" };
+            TestObject obj = new TestObject { StringValue = "" };
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -317,7 +317,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Serialize_WithSpecialCharacters_HandlesCorrectly()
         {
             // Arrange
-            var obj = new TestObject { StringValue = "!@#$%^&*()" };
+            TestObject obj = new TestObject { StringValue = "!@#$%^&*()" };
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -333,7 +333,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"StringValue\":\"こんにちは\"}"; // Japanese "Hello"
 
             // Act
-            var obj = JsonNativeAot.Deserialize<TestObject>(json);
+            TestObject obj = JsonNativeAot.Deserialize<TestObject>(json);
 
             // Assert
             Assert.Equal("こんにちは", obj.StringValue);
@@ -346,7 +346,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"Data\":{\"Inner\":\"Value\"}}";
 
             // Act
-            var dict = JsonNativeAot.ParseJsonToDictionary(json);
+            Dictionary<string, string> dict = JsonNativeAot.ParseJsonToDictionary(json);
 
             // Assert
             Assert.True(dict["Data"].StartsWith("{"));
@@ -360,7 +360,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"Items\":[\"a\",\"b\",\"c\"]}";
 
             // Act
-            var dict = JsonNativeAot.ParseJsonToDictionary(json);
+            Dictionary<string, string> dict = JsonNativeAot.ParseJsonToDictionary(json);
 
             // Assert
             Assert.True(dict["Items"].StartsWith("["));
@@ -393,8 +393,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Serialize_WithGuid_SerializesAsString()
         {
             // Arrange
-            var guid = Guid.NewGuid();
-            var obj = new ComplexTestObject { GuidValue = guid };
+            Guid guid = Guid.NewGuid();
+            ComplexTestObject obj = new ComplexTestObject { GuidValue = guid };
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -407,8 +407,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Serialize_WithDateTime_SerializesAsString()
         {
             // Arrange
-            var now = DateTime.Now;
-            var obj = new ComplexTestObject { DateTimeValue = now };
+            DateTime now = DateTime.Now;
+            ComplexTestObject obj = new ComplexTestObject { DateTimeValue = now };
 
             // Act
             string json = JsonNativeAot.Serialize(obj);
@@ -421,11 +421,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Deserialize_WithGuid_ParsesCorrectly()
         {
             // Arrange
-            var guid = Guid.NewGuid();
+            Guid guid = Guid.NewGuid();
             string json = $"{{\"GuidValue\":\"{guid}\"}}";
 
             // Act
-            var obj = JsonNativeAot.Deserialize<ComplexTestObject>(json);
+            ComplexTestObject obj = JsonNativeAot.Deserialize<ComplexTestObject>(json);
 
             // Assert
             Assert.Equal(guid, obj.GuidValue);
@@ -452,19 +452,19 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             public TestObject CreateFromProperties(Dictionary<string, string> properties)
             {
-                var obj = new TestObject();
+                TestObject obj = new TestObject();
 
-                if (properties.TryGetValue("StringValue", out var str))
+                if (properties.TryGetValue("StringValue", out string str))
                     obj.StringValue = str;
 
-                if (properties.TryGetValue("IntValue", out var intStr) && int.TryParse(intStr, out var intVal))
+                if (properties.TryGetValue("IntValue", out string intStr) && int.TryParse(intStr, out int intVal))
                     obj.IntValue = intVal;
 
-                if (properties.TryGetValue("BoolValue", out var boolStr) && bool.TryParse(boolStr, out var boolVal))
+                if (properties.TryGetValue("BoolValue", out string boolStr) && bool.TryParse(boolStr, out bool boolVal))
                     obj.BoolValue = boolVal;
 
-                if (properties.TryGetValue("DoubleValue", out var doubleStr) && 
-                    double.TryParse(doubleStr, NumberStyles.Float, CultureInfo.InvariantCulture, out var doubleVal))
+                if (properties.TryGetValue("DoubleValue", out string doubleStr) && 
+                    double.TryParse(doubleStr, NumberStyles.Float, CultureInfo.InvariantCulture, out double doubleVal))
                     obj.DoubleValue = doubleVal;
 
                 return obj;
@@ -484,12 +484,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             public ComplexTestObject CreateFromProperties(Dictionary<string, string> properties)
             {
-                var obj = new ComplexTestObject();
+                ComplexTestObject obj = new ComplexTestObject();
 
-                if (properties.TryGetValue("GuidValue", out var guidStr) && Guid.TryParse(guidStr, out var guid))
+                if (properties.TryGetValue("GuidValue", out string guidStr) && Guid.TryParse(guidStr, out Guid guid))
                     obj.GuidValue = guid;
 
-                if (properties.TryGetValue("DateTimeValue", out var dtStr) && DateTime.TryParse(dtStr, out var dt))
+                if (properties.TryGetValue("DateTimeValue", out string dtStr) && DateTime.TryParse(dtStr, out DateTime dt))
                     obj.DateTimeValue = dt;
 
                 return obj;

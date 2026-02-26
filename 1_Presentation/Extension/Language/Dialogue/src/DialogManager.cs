@@ -248,7 +248,7 @@ namespace Alis.Extension.Language.Dialogue
             _actionExecutor.ExecuteActions(option.DialogActions, _currentContext);
 
             // Fire event
-            var @event = new DialogEvent(DialogEventType.OnOptionSelected, _currentContext.DialogId)
+            DialogEvent @event = new DialogEvent(DialogEventType.OnOptionSelected, _currentContext.DialogId)
             {
                 Data = option
             };
@@ -275,7 +275,7 @@ namespace Alis.Extension.Language.Dialogue
                 return new List<DialogOption>();
             }
 
-            var availableOptions = new List<DialogOption>();
+            List<DialogOption> availableOptions = new List<DialogOption>();
             foreach (DialogOption option in dialog.Options)
             {
                 if (option.Conditions.Count == 0 || _conditionEvaluator.EvaluateAll(option.Conditions, _currentContext))

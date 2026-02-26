@@ -27,12 +27,12 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public AppSettings CreateFromProperties(Dictionary<string, string> properties)
         {
-            var obj = new AppSettings();
-            if (properties.TryGetValue(nameof(AppName), out var v)) obj.AppName = v;
+            AppSettings obj = new AppSettings();
+            if (properties.TryGetValue(nameof(AppName), out string v)) obj.AppName = v;
             if (properties.TryGetValue(nameof(Version), out v)) obj.Version = v;
-            if (properties.TryGetValue(nameof(Port), out v) && int.TryParse(v, out var val)) obj.Port = val;
-            if (properties.TryGetValue(nameof(EnableLogging), out v) && bool.TryParse(v, out var val2)) obj.EnableLogging = val2;
-            if (properties.TryGetValue(nameof(EnableDebug), out v) && bool.TryParse(v, out var val3)) obj.EnableDebug = val3;
+            if (properties.TryGetValue(nameof(Port), out v) && int.TryParse(v, out int val)) obj.Port = val;
+            if (properties.TryGetValue(nameof(EnableLogging), out v) && bool.TryParse(v, out bool val2)) obj.EnableLogging = val2;
+            if (properties.TryGetValue(nameof(EnableDebug), out v) && bool.TryParse(v, out bool val3)) obj.EnableDebug = val3;
             if (properties.TryGetValue(nameof(LogLevel), out v)) obj.LogLevel = v;
             return obj;
         }

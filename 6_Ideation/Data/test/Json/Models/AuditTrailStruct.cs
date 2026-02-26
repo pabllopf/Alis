@@ -24,11 +24,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public AuditTrailStruct CreateFromProperties(Dictionary<string, string> properties)
         {
-            var obj = new AuditTrailStruct();
-            if (properties.TryGetValue(nameof(Action), out var v)) obj.Action = v;
+            AuditTrailStruct obj = new AuditTrailStruct();
+            if (properties.TryGetValue(nameof(Action), out string v)) obj.Action = v;
             if (properties.TryGetValue(nameof(User), out v)) obj.User = v;
-            if (properties.TryGetValue(nameof(When), out v) && DateTime.TryParse(v, out var val)) obj.When = val;
-            if (properties.TryGetValue(nameof(Success), out v) && bool.TryParse(v, out var val2)) obj.Success = val2;
+            if (properties.TryGetValue(nameof(When), out v) && DateTime.TryParse(v, out DateTime val)) obj.When = val;
+            if (properties.TryGetValue(nameof(Success), out v) && bool.TryParse(v, out bool val2)) obj.Success = val2;
             return obj;
         }
     }

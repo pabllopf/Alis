@@ -23,11 +23,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public DbConnectionStruct CreateFromProperties(Dictionary<string, string> properties)
         {
-            var obj = new DbConnectionStruct();
-            if (properties.TryGetValue(nameof(Host), out var v)) obj.Host = v;
-            if (properties.TryGetValue(nameof(Port), out v) && int.TryParse(v, out var val)) obj.Port = val;
+            DbConnectionStruct obj = new DbConnectionStruct();
+            if (properties.TryGetValue(nameof(Host), out string v)) obj.Host = v;
+            if (properties.TryGetValue(nameof(Port), out v) && int.TryParse(v, out int val)) obj.Port = val;
             if (properties.TryGetValue(nameof(Database), out v)) obj.Database = v;
-            if (properties.TryGetValue(nameof(Timeout), out v) && int.TryParse(v, out var val2)) obj.Timeout = val2;
+            if (properties.TryGetValue(nameof(Timeout), out v) && int.TryParse(v, out int val2)) obj.Timeout = val2;
             return obj;
         }
     }

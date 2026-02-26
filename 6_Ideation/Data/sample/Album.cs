@@ -108,32 +108,32 @@ namespace Alis.Core.Aspect.Data.Sample
         /// </summary>
         public Album CreateFromProperties(Dictionary<string, string> properties)
         {
-            var album = new Album();
+            Album album = new Album();
 
-            if (properties.TryGetValue("AlbumId", out var albumId) && 
-                Guid.TryParse(albumId, out var albumIdValue))
+            if (properties.TryGetValue("AlbumId", out string albumId) && 
+                Guid.TryParse(albumId, out Guid albumIdValue))
                 album.AlbumId = albumIdValue;
 
-            if (properties.TryGetValue("Name", out var name))
+            if (properties.TryGetValue("Name", out string name))
                 album.Name = name;
 
-            if (properties.TryGetValue("ReleaseDate", out var releaseDate) && 
-                DateTime.TryParse(releaseDate, out var releaseDateValue))
+            if (properties.TryGetValue("ReleaseDate", out string releaseDate) && 
+                DateTime.TryParse(releaseDate, out DateTime releaseDateValue))
                 album.ReleaseDate = releaseDateValue;
 
-            if (properties.TryGetValue("TrackCount", out var trackCount) && 
-                int.TryParse(trackCount, out var trackCountValue))
+            if (properties.TryGetValue("TrackCount", out string trackCount) && 
+                int.TryParse(trackCount, out int trackCountValue))
                 album.TrackCount = trackCountValue;
 
-            if (properties.TryGetValue("DurationSeconds", out var duration) && 
-                int.TryParse(duration, out var durationValue))
+            if (properties.TryGetValue("DurationSeconds", out string duration) && 
+                int.TryParse(duration, out int durationValue))
                 album.DurationSeconds = durationValue;
 
-            if (properties.TryGetValue("Genres", out var genres))
+            if (properties.TryGetValue("Genres", out string genres))
                 album.Genres = DeserializeGenres(genres);
 
-            if (properties.TryGetValue("IsAvailable", out var available) && 
-                bool.TryParse(available, out var availableValue))
+            if (properties.TryGetValue("IsAvailable", out string available) && 
+                bool.TryParse(available, out bool availableValue))
                 album.IsAvailable = availableValue;
 
             return album;
@@ -147,7 +147,7 @@ namespace Alis.Core.Aspect.Data.Sample
             if (Genres == null || Genres.Count == 0)
                 return "[]";
 
-            var items = string.Join(",", Genres.Select(g => $"\"{g}\""));
+            string items = string.Join(",", Genres.Select(g => $"\"{g}\""));
             return $"[{items}]";
         }
 
@@ -156,14 +156,14 @@ namespace Alis.Core.Aspect.Data.Sample
         /// </summary>
         private static List<string> DeserializeGenres(string json)
         {
-            var genres = new List<string>();
+            List<string> genres = new List<string>();
             if (string.IsNullOrEmpty(json) || json == "[]")
                 return genres;
 
-            var items = json.Trim('[', ']').Split(',');
-            foreach (var item in items)
+            string[] items = json.Trim('[', ']').Split(',');
+            foreach (string item in items)
             {
-                var genre = item.Trim().Trim('"');
+                string genre = item.Trim().Trim('"');
                 if (!string.IsNullOrEmpty(genre))
                     genres.Add(genre);
             }

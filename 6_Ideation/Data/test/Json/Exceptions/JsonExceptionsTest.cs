@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         public void JsonParsingException_WithMessage_StoresMessage()
         {
             string message = "Parsing failed at position 0";
-            var exception = new JsonParsingException(message);
+            JsonParsingException exception = new JsonParsingException(message);
 
             Assert.Equal(message, exception.Message);
         }
@@ -57,8 +57,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         public void JsonParsingException_WithMessageAndInnerException_StoresData()
         {
             string message = "Parsing failed";
-            var innerException = new InvalidOperationException("Inner error");
-            var exception = new JsonParsingException(message, innerException);
+            InvalidOperationException innerException = new InvalidOperationException("Inner error");
+            JsonParsingException exception = new JsonParsingException(message, innerException);
 
             Assert.Equal(message, exception.Message);
             Assert.Equal(innerException, exception.InnerException);
@@ -71,7 +71,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         public void JsonDeserializationException_WithMessage_StoresMessage()
         {
             string message = "Deserialization failed";
-            var exception = new JsonDeserializationException(message);
+            JsonDeserializationException exception = new JsonDeserializationException(message);
 
             Assert.Equal(message, exception.Message);
         }
@@ -83,8 +83,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         public void JsonDeserializationException_WithMessageAndInnerException_StoresData()
         {
             string message = "Deserialization failed";
-            var innerException = new FormatException("Format error");
-            var exception = new JsonDeserializationException(message, innerException);
+            FormatException innerException = new FormatException("Format error");
+            JsonDeserializationException exception = new JsonDeserializationException(message, innerException);
 
             Assert.Equal(message, exception.Message);
             Assert.Equal(innerException, exception.InnerException);
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         public void JsonSerializationException_WithMessage_StoresMessage()
         {
             string message = "Serialization failed";
-            var exception = new JsonSerializationException(message);
+            JsonSerializationException exception = new JsonSerializationException(message);
 
             Assert.Equal(message, exception.Message);
         }
@@ -109,8 +109,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         public void JsonSerializationException_WithMessageAndInnerException_StoresData()
         {
             string message = "Serialization failed";
-            var innerException = new NotSupportedException("Type not supported");
-            var exception = new JsonSerializationException(message, innerException);
+            NotSupportedException innerException = new NotSupportedException("Type not supported");
+            JsonSerializationException exception = new JsonSerializationException(message, innerException);
 
             Assert.Equal(message, exception.Message);
             Assert.Equal(innerException, exception.InnerException);
@@ -122,7 +122,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         [Fact]
         public void JsonParsingException_IsException()
         {
-            var exception = new JsonParsingException("test");
+            JsonParsingException exception = new JsonParsingException("test");
             Assert.IsAssignableFrom<Exception>(exception);
         }
 
@@ -132,7 +132,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         [Fact]
         public void JsonDeserializationException_IsException()
         {
-            var exception = new JsonDeserializationException("test");
+            JsonDeserializationException exception = new JsonDeserializationException("test");
             Assert.IsAssignableFrom<Exception>(exception);
         }
 
@@ -142,7 +142,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Exceptions
         [Fact]
         public void JsonSerializationException_IsException()
         {
-            var exception = new JsonSerializationException("test");
+            JsonSerializationException exception = new JsonSerializationException("test");
             Assert.IsAssignableFrom<Exception>(exception);
         }
     }

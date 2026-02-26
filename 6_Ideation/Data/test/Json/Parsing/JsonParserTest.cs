@@ -50,7 +50,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         /// </summary>
         public JsonParserTest()
         {
-            var escapeHandler = new EscapeSequenceHandler();
+            EscapeSequenceHandler escapeHandler = new EscapeSequenceHandler();
             _parser = new JsonParser(escapeHandler);
         }
 
@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         [Fact]
         public void ParseToDictionary_WithEmptyJson_ReturnsEmptyDictionary()
         {
-            var result = _parser.ParseToDictionary("{}");
+            Dictionary<string, string> result = _parser.ParseToDictionary("{}");
             Assert.Empty(result);
         }
 
@@ -71,7 +71,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         public void ParseToDictionary_WithSimpleProperty_ReturnsDictionary()
         {
             string json = "{\"name\":\"John\"}";
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
             
             Assert.Single(result);
             Assert.Equal("John", result["name"]);
@@ -84,7 +84,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         public void ParseToDictionary_WithMultipleProperties_ReturnsDictionary()
         {
             string json = "{\"name\":\"John\",\"age\":\"30\"}";
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
             
             Assert.Equal(2, result.Count);
             Assert.Equal("John", result["name"]);
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         public void ParseToDictionary_WithNestedObject_ReturnsRawJson()
         {
             string json = "{\"data\":{\"inner\":\"value\"}}";
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
             
             Assert.Single(result);
             Assert.StartsWith("{", result["data"]);
@@ -112,7 +112,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         public void ParseToDictionary_WithArray_ReturnsRawJson()
         {
             string json = "{\"items\":[\"a\",\"b\",\"c\"]}";
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
             
             Assert.Single(result);
             Assert.StartsWith("[", result["items"]);
@@ -126,7 +126,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         public void ParseToDictionary_WithNumber_ReturnedAsString()
         {
             string json = "{\"count\":42}";
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
             
             Assert.Equal("42", result["count"]);
         }
@@ -138,7 +138,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         public void ParseToDictionary_WithBoolean_ReturnedAsString()
         {
             string json = "{\"active\":true}";
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
             
             Assert.Equal("true", result["active"]);
         }
@@ -150,7 +150,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         public void ParseToDictionary_WithNull_ReturnedAsString()
         {
             string json = "{\"value\":null}";
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
             
             Assert.Equal("null", result["value"]);
         }
@@ -162,7 +162,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         public void ParseToDictionary_WithWhitespace_ParsesCorrectly()
         {
             string json = "{ \"name\" : \"John\" , \"age\" : \"30\" }";
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
             
             Assert.Equal(2, result.Count);
             Assert.Equal("John", result["name"]);
@@ -176,7 +176,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         public void ParseToDictionary_WithEscapedQuotes_UnescapesCorrectly()
         {
             string json = "{\"message\":\"Say \\\"Hello\\\"\"}";
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
             
             Assert.Equal("Say \"Hello\"", result["message"]);
         }
@@ -196,7 +196,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         [Fact]
         public void ParseToDictionary_WithEmptyString_ReturnsEmptyDictionary()
         {
-            var result = _parser.ParseToDictionary("");
+            Dictionary<string, string> result = _parser.ParseToDictionary("");
             Assert.Empty(result);
         }
 
@@ -206,7 +206,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         [Fact]
         public void ParseToDictionary_WithWhitespaceOnly_ReturnsEmptyDictionary()
         {
-            var result = _parser.ParseToDictionary("   ");
+            Dictionary<string, string> result = _parser.ParseToDictionary("   ");
             Assert.Empty(result);
         }
 
@@ -237,7 +237,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         public void ParseToDictionary_WithEscapedNewline_UnescapesCorrectly()
         {
             string json = "{\"text\":\"line1\\nline2\"}";
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
             
             Assert.Equal("line1\nline2", result["text"]);
         }
@@ -249,7 +249,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         public void ParseToDictionary_WithComplexJson_ParsesSuccessfully()
         {
             string json = "{\"user\":{\"name\":\"John\",\"age\":30},\"active\":true}";
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
             
             Assert.Equal(2, result.Count);
             Assert.Equal("true", result["active"]);
@@ -263,7 +263,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         public void ParseToDictionary_WithConsecutiveCommas_SkipsEmptyValues()
         {
             string json = "{\"a\":\"1\",\"b\":\"2\"}";
-            var result = _parser.ParseToDictionary(json);
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
             
             Assert.Equal(2, result.Count);
         }

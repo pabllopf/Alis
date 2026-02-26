@@ -5,10 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:MainActivity.cs
+//  File:NativeWindowCreationTests.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author:GitHub Copilot
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,28 +26,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Android.App;
-using Android.OS;
-using Android.Runtime;
+using System;
+using Xunit;
 
-namespace Alis.Sample.Asteroid.Android
+namespace Alis.Extension.Graphic.Glfw.Test
 {
     /// <summary>
-    /// The main activity class
+    ///     Tests for NativeWindow creation and initialization
     /// </summary>
-    /// <seealso cref="Activity"/>
-    [Activity(Label = "Alis.Sample.Asteroid.Android", MainLauncher = true, Theme = "@android:style/Theme.NoTitleBar"), Register("crc647600d30597f44ece.MainActivity")]
-    public class MainActivity : Activity
+    public class NativeWindowCreationTests
     {
-        /// <summary>
-        /// Ons the create using the specified saved instance state
-        /// </summary>
-        /// <param name="savedInstanceState">The saved instance state</param>
-        protected override void OnCreate(Bundle? savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-            GlView glView = new GlView(this);
-            SetContentView(glView);
-        }
+       
     }
 }
+

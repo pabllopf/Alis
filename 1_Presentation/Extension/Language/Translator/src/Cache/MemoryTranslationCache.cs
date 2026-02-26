@@ -75,7 +75,7 @@ namespace Alis.Extension.Language.Translator
                     return false;
                 }
 
-                var languageDict = cache[languageCode];
+                Dictionary<string, string> languageDict = cache[languageCode];
                 if (languageDict.ContainsKey(key))
                 {
                     value = languageDict[key];

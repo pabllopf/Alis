@@ -21,12 +21,12 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public PersonStruct CreateFromProperties(Dictionary<string, string> properties)
         {
-            var person = new PersonStruct();
-            if (properties.TryGetValue(nameof(Name), out var name))
+            PersonStruct person = new PersonStruct();
+            if (properties.TryGetValue(nameof(Name), out string name))
                 person.Name = name;
-            if (properties.TryGetValue(nameof(Age), out var age) && int.TryParse(age, out var ageValue))
+            if (properties.TryGetValue(nameof(Age), out string age) && int.TryParse(age, out int ageValue))
                 person.Age = ageValue;
-            if (properties.TryGetValue(nameof(IsActive), out var active) && bool.TryParse(active, out var activeValue))
+            if (properties.TryGetValue(nameof(IsActive), out string active) && bool.TryParse(active, out bool activeValue))
                 person.IsActive = activeValue;
             return person;
         }

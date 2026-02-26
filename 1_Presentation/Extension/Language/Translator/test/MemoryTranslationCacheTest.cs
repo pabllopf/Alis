@@ -43,7 +43,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void Set_AndTryGetTranslation_ShouldStoreAndRetrieveCorrectly()
         {
             // Arrange
-            var cache = new MemoryTranslationCache();
+            MemoryTranslationCache cache = new MemoryTranslationCache();
             string value = "Hello";
 
             // Act
@@ -62,7 +62,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void TryGetTranslation_WithNonExistingTranslation_ShouldReturnFalse()
         {
             // Arrange
-            var cache = new MemoryTranslationCache();
+            MemoryTranslationCache cache = new MemoryTranslationCache();
 
             // Act
             bool found = cache.TryGetTranslation("en", "greeting", out string result);
@@ -79,7 +79,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void Remove_WithExistingTranslation_ShouldRemoveSuccessfully()
         {
             // Arrange
-            var cache = new MemoryTranslationCache();
+            MemoryTranslationCache cache = new MemoryTranslationCache();
             cache.Set("en", "greeting", "Hello");
 
             // Act
@@ -98,7 +98,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void Remove_WithNonExistingTranslation_ShouldReturnFalse()
         {
             // Arrange
-            var cache = new MemoryTranslationCache();
+            MemoryTranslationCache cache = new MemoryTranslationCache();
 
             // Act
             bool removed = cache.Remove("en", "greeting");
@@ -114,7 +114,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void InvalidateLanguage_ShouldClearAllTranslationsForLanguage()
         {
             // Arrange
-            var cache = new MemoryTranslationCache();
+            MemoryTranslationCache cache = new MemoryTranslationCache();
             cache.Set("en", "greeting", "Hello");
             cache.Set("en", "farewell", "Goodbye");
 
@@ -135,7 +135,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void Clear_ShouldRemoveAllCachedTranslations()
         {
             // Arrange
-            var cache = new MemoryTranslationCache();
+            MemoryTranslationCache cache = new MemoryTranslationCache();
             cache.Set("en", "greeting", "Hello");
             cache.Set("es", "greeting", "Hola");
 
@@ -156,7 +156,7 @@ namespace Alis.Extension.Language.Translator.Test
         public void Set_WithMultipleLanguages_ShouldStoreIndependently()
         {
             // Arrange
-            var cache = new MemoryTranslationCache();
+            MemoryTranslationCache cache = new MemoryTranslationCache();
 
             // Act
             cache.Set("en", "greeting", "Hello");

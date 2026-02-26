@@ -51,11 +51,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void RoundTrip_IntegerValue_PreservesValue(int value)
         {
             // Arrange
-            var original = new TestInt { Value = value };
+            TestInt original = new TestInt { Value = value };
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<TestInt>(json);
+            TestInt restored = JsonNativeAot.Deserialize<TestInt>(json);
 
             // Assert
             Assert.Equal(original.Value, restored.Value);
@@ -67,11 +67,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void RoundTrip_BooleanValue_PreservesValue(bool value)
         {
             // Arrange
-            var original = new TestBool { Flag = value };
+            TestBool original = new TestBool { Flag = value };
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<TestBool>(json);
+            TestBool restored = JsonNativeAot.Deserialize<TestBool>(json);
 
             // Assert
             Assert.Equal(original.Flag, restored.Flag);
@@ -85,11 +85,11 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void RoundTrip_StringValue_PreservesValue(string value)
         {
             // Arrange
-            var original = new TestString { Text = value };
+            TestString original = new TestString { Text = value };
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<TestString>(json);
+            TestString restored = JsonNativeAot.Deserialize<TestString>(json);
 
             // Assert
             Assert.Equal(original.Text, restored.Text);
@@ -99,12 +99,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void RoundTrip_GuidValue_PreservesValue()
         {
             // Arrange
-            var guid = Guid.NewGuid();
-            var original = new TestGuid { Id = guid };
+            Guid guid = Guid.NewGuid();
+            TestGuid original = new TestGuid { Id = guid };
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<TestGuid>(json);
+            TestGuid restored = JsonNativeAot.Deserialize<TestGuid>(json);
 
             // Assert
             Assert.Equal(original.Id, restored.Id);
@@ -114,12 +114,12 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void RoundTrip_DateTimeValue_PreservesValue()
         {
             // Arrange
-            var date = new DateTime(2023, 6, 15, 10, 30, 45);
-            var original = new TestDateTime { Timestamp = date };
+            DateTime date = new DateTime(2023, 6, 15, 10, 30, 45);
+            TestDateTime original = new TestDateTime { Timestamp = date };
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<TestDateTime>(json);
+            TestDateTime restored = JsonNativeAot.Deserialize<TestDateTime>(json);
 
             // Assert
             Assert.Equal(original.Timestamp.Year, restored.Timestamp.Year);
@@ -138,7 +138,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"Name\":\"Alice\",\"Age\":\"30\"}";
 
             // Act
-            var dict = JsonNativeAot.ParseJsonToDictionary(json);
+            Dictionary<string, string> dict = JsonNativeAot.ParseJsonToDictionary(json);
 
             // Assert
             Assert.Equal(2, dict.Count);
@@ -153,7 +153,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{}";
 
             // Act
-            var dict = JsonNativeAot.ParseJsonToDictionary(json);
+            Dictionary<string, string> dict = JsonNativeAot.ParseJsonToDictionary(json);
 
             // Assert
             Assert.Empty(dict);
@@ -166,7 +166,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"Nested\":{\"Inner\":\"Value\"}}";
 
             // Act
-            var dict = JsonNativeAot.ParseJsonToDictionary(json);
+            Dictionary<string, string> dict = JsonNativeAot.ParseJsonToDictionary(json);
 
             // Assert
             Assert.Contains("Inner", dict["Nested"]);
@@ -179,7 +179,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"Items\":[\"a\",\"b\",\"c\"]}";
 
             // Act
-            var dict = JsonNativeAot.ParseJsonToDictionary(json);
+            Dictionary<string, string> dict = JsonNativeAot.ParseJsonToDictionary(json);
 
             // Assert
             Assert.StartsWith("[", dict["Items"]);
@@ -193,13 +193,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ParseJsonToDictionary_WithMultipleProperties_ReturnsAllProperties(int count)
         {
             // Arrange
-            var props = new List<string>();
+            List<string> props = new List<string>();
             for (int i = 0; i < count; i++)
                 props.Add($"\"Prop{i}\":\"Value{i}\"");
             string json = "{" + string.Join(",", props) + "}";
 
             // Act
-            var dict = JsonNativeAot.ParseJsonToDictionary(json);
+            Dictionary<string, string> dict = JsonNativeAot.ParseJsonToDictionary(json);
 
             // Assert
             Assert.Equal(count, dict.Count);
@@ -213,7 +213,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void SerializeToFile_AndDeserializeFromFile_PreservesData()
         {
             // Arrange
-            var original = new TestString { Text = "FileTest" };
+            TestString original = new TestString { Text = "FileTest" };
             string fileName = $"test_{Guid.NewGuid()}";
             string path = "TestData";
 
@@ -221,7 +221,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 // Act
                 JsonNativeAot.SerializeToFile(original, fileName, path);
-                var restored = JsonNativeAot.DeserializeFromFile<TestString>(fileName, path);
+                TestString restored = JsonNativeAot.DeserializeFromFile<TestString>(fileName, path);
 
                 // Assert
                 Assert.Equal(original.Text, restored.Text);
@@ -229,7 +229,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             finally
             {
                 // Cleanup
-                var fullPath = Path.Combine(Directory.GetCurrentDirectory(), path, $"{fileName}.json");
+                string fullPath = Path.Combine(Directory.GetCurrentDirectory(), path, $"{fileName}.json");
                 if (File.Exists(fullPath))
                     File.Delete(fullPath);
             }
@@ -239,7 +239,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void SerializeToFile_CreatesDirectory_IfNotExists()
         {
             // Arrange
-            var obj = new TestString { Text = "Test" };
+            TestString obj = new TestString { Text = "Test" };
             string fileName = $"test_{Guid.NewGuid()}";
             string path = $"TempDir_{Guid.NewGuid()}";
 
@@ -249,13 +249,13 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 JsonNativeAot.SerializeToFile(obj, fileName, path);
 
                 // Assert
-                var fullPath = Path.Combine(Directory.GetCurrentDirectory(), path, $"{fileName}.json");
+                string fullPath = Path.Combine(Directory.GetCurrentDirectory(), path, $"{fileName}.json");
                 Assert.True(File.Exists(fullPath));
             }
             finally
             {
                 // Cleanup
-                var dir = Path.Combine(Directory.GetCurrentDirectory(), path);
+                string dir = Path.Combine(Directory.GetCurrentDirectory(), path);
                 if (Directory.Exists(dir))
                     Directory.Delete(dir, true);
             }
@@ -298,7 +298,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void SerializeToFile_WithNullFileName_ThrowsArgumentNullException()
         {
             // Arrange
-            var obj = new TestString { Text = "Test" };
+            TestString obj = new TestString { Text = "Test" };
 
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => 
@@ -309,7 +309,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void SerializeToFile_WithNullPath_ThrowsArgumentNullException()
         {
             // Arrange
-            var obj = new TestString { Text = "Test" };
+            TestString obj = new TestString { Text = "Test" };
 
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => 
@@ -331,8 +331,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             public TestInt CreateFromProperties(Dictionary<string, string> properties)
             {
-                var obj = new TestInt();
-                if (properties.TryGetValue("Value", out var v) && int.TryParse(v, out var val))
+                TestInt obj = new TestInt();
+                if (properties.TryGetValue("Value", out string v) && int.TryParse(v, out int val))
                     obj.Value = val;
                 return obj;
             }
@@ -349,8 +349,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             public TestBool CreateFromProperties(Dictionary<string, string> properties)
             {
-                var obj = new TestBool();
-                if (properties.TryGetValue("Flag", out var v) && bool.TryParse(v, out var val))
+                TestBool obj = new TestBool();
+                if (properties.TryGetValue("Flag", out string v) && bool.TryParse(v, out bool val))
                     obj.Flag = val;
                 return obj;
             }
@@ -367,8 +367,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             public TestString CreateFromProperties(Dictionary<string, string> properties)
             {
-                var obj = new TestString();
-                if (properties.TryGetValue("Text", out var v))
+                TestString obj = new TestString();
+                if (properties.TryGetValue("Text", out string v))
                     obj.Text = v;
                 return obj;
             }
@@ -385,8 +385,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             public TestGuid CreateFromProperties(Dictionary<string, string> properties)
             {
-                var obj = new TestGuid();
-                if (properties.TryGetValue("Id", out var v) && Guid.TryParse(v, out var val))
+                TestGuid obj = new TestGuid();
+                if (properties.TryGetValue("Id", out string v) && Guid.TryParse(v, out Guid val))
                     obj.Id = val;
                 return obj;
             }
@@ -403,8 +403,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
             public TestDateTime CreateFromProperties(Dictionary<string, string> properties)
             {
-                var obj = new TestDateTime();
-                if (properties.TryGetValue("Timestamp", out var v) && DateTime.TryParse(v, out var val))
+                TestDateTime obj = new TestDateTime();
+                if (properties.TryGetValue("Timestamp", out string v) && DateTime.TryParse(v, out DateTime val))
                     obj.Timestamp = val;
                 return obj;
             }

@@ -278,7 +278,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             manager.AddDialog(dialog);
             manager.StartDialog("testDialog");
 
-            var options = manager.GetAvailableOptions();
+            List<DialogOption> options = manager.GetAvailableOptions();
 
             Assert.Equal(2, options.Count);
         }
@@ -291,7 +291,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         {
             DialogManager manager = new DialogManager();
 
-            var options = manager.GetAvailableOptions();
+            List<DialogOption> options = manager.GetAvailableOptions();
 
             Assert.Empty(options);
         }
@@ -449,7 +449,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         {
             DialogManager manager = new DialogManager();
             Dialog dialog = new Dialog("testDialog", "Test Dialog");
-            var option = new DialogOption("Option 1", () => { });
+            DialogOption option = new DialogOption("Option 1", () => { });
             option.AddCondition(new LambdaDialogCondition(ctx => ctx.GetVariable("canSelect") as bool? ?? false));
             dialog.AddOption(option);
             manager.AddDialog(dialog);
@@ -473,8 +473,8 @@ namespace Alis.Extension.Language.Dialogue.Test
             DialogManager manager = new DialogManager();
             Dialog dialog = new Dialog("testDialog", "Test Dialog");
             
-            var option1 = new DialogOption("Option 1", () => { });
-            var option2 = new DialogOption("Option 2", () => { });
+            DialogOption option1 = new DialogOption("Option 1", () => { });
+            DialogOption option2 = new DialogOption("Option 2", () => { });
             option1.AddCondition(new LambdaDialogCondition(_ => true));
             option2.AddCondition(new LambdaDialogCondition(_ => false));
             
@@ -483,7 +483,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             manager.AddDialog(dialog);
             manager.StartDialog("testDialog");
 
-            var availableOptions = manager.GetAvailableOptions();
+            List<DialogOption> availableOptions = manager.GetAvailableOptions();
 
             Assert.Single(availableOptions);
             Assert.Equal("Option 1", availableOptions[0].Text);
@@ -563,7 +563,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         public void EventObserver_ReceivesNotifications()
         {
             DialogManager manager = new DialogManager();
-            var observer = new MockDialogEventObserver();
+            MockDialogEventObserver observer = new MockDialogEventObserver();
             manager.RegisterObserver(observer);
 
             Dialog dialog = new Dialog("testDialog", "Test Dialog");

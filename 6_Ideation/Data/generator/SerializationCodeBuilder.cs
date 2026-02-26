@@ -249,7 +249,7 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <returns>The JSON property name.</returns>
         private static string GetJsonPropertyName(IPropertySymbol property)
         {
-            var propNameAttr = property.GetAttributes()
+            AttributeData propNameAttr = property.GetAttributes()
                 .FirstOrDefault(a => a.AttributeClass?.Name == "JsonNativePropertyNameAttribute");
 
             if (propNameAttr?.ConstructorArguments.FirstOrDefault().Value is string jsonName)

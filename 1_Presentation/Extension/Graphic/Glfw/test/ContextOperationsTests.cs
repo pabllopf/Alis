@@ -5,10 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ActiveAttribTypeTest.cs
+//  File:ContextOperationsTests.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author:GitHub Copilot
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,12 +26,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Graphic.Glfw.Test.Enums
+using Xunit;
+
+namespace Alis.Extension.Graphic.Glfw.Test
 {
     /// <summary>
-    ///     The active attrib type test class
+    ///     Tests for context operations (make current, swap buffers, etc.)
     /// </summary>
-    public class ActiveAttribTypeTest
+    public class ContextOperationsTests
     {
     }
 }
+

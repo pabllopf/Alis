@@ -25,10 +25,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public Point2D CreateFromProperties(Dictionary<string, string> properties)
         {
-            var x = 0;
-            var y = 0;
-            if (properties.TryGetValue(nameof(X), out var xStr) && int.TryParse(xStr, out var xVal)) x = xVal;
-            if (properties.TryGetValue(nameof(Y), out var yStr) && int.TryParse(yStr, out var yVal)) y = yVal;
+            int x = 0;
+            int y = 0;
+            if (properties.TryGetValue(nameof(X), out string xStr) && int.TryParse(xStr, out int xVal)) x = xVal;
+            if (properties.TryGetValue(nameof(Y), out string yStr) && int.TryParse(yStr, out int yVal)) y = yVal;
             return new Point2D(x, y);
         }
     }

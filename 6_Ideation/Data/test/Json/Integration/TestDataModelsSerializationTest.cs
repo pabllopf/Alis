@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Serialize_PersonClass_ProducesValidJson()
         {
             // Arrange
-            var person = new PersonClass
+            PersonClass person = new PersonClass
             {
                 Name = "John Doe",
                 Age = 30,
@@ -67,7 +67,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_PersonClass_PreservesAllProperties()
         {
             // Arrange
-            var original = new PersonClass
+            PersonClass original = new PersonClass
             {
                 Name = "Alice Smith",
                 Age = 25,
@@ -76,7 +76,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<PersonClass>(json);
+            PersonClass restored = JsonNativeAot.Deserialize<PersonClass>(json);
 
             // Assert
             Assert.Equal(original.Name, restored.Name);
@@ -91,11 +91,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_PersonClass_WithVariousValues(string name, int age, string email)
         {
             // Arrange
-            var original = new PersonClass { Name = name, Age = age, Email = email };
+            PersonClass original = new PersonClass { Name = name, Age = age, Email = email };
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<PersonClass>(json);
+            PersonClass restored = JsonNativeAot.Deserialize<PersonClass>(json);
 
             // Assert
             Assert.Equal(original.Name, restored.Name);
@@ -111,7 +111,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void Serialize_PersonStruct_ProducesValidJson()
         {
             // Arrange
-            var person = new PersonStruct
+            PersonStruct person = new PersonStruct
             {
                 Name = "Bob Jones",
                 Age = 40,
@@ -132,7 +132,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_PersonStruct_PreservesAllProperties()
         {
             // Arrange
-            var original = new PersonStruct
+            PersonStruct original = new PersonStruct
             {
                 Name = "Carol White",
                 Age = 35,
@@ -141,7 +141,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<PersonStruct>(json);
+            PersonStruct restored = JsonNativeAot.Deserialize<PersonStruct>(json);
 
             // Assert
             Assert.Equal(original.Name, restored.Name);
@@ -155,11 +155,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_PersonStruct_WithDifferentActiveStates(bool isActive)
         {
             // Arrange
-            var original = new PersonStruct { Name = "Test", Age = 20, IsActive = isActive };
+            PersonStruct original = new PersonStruct { Name = "Test", Age = 20, IsActive = isActive };
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<PersonStruct>(json);
+            PersonStruct restored = JsonNativeAot.Deserialize<PersonStruct>(json);
 
             // Assert
             Assert.Equal(original.IsActive, restored.IsActive);
@@ -173,7 +173,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_NumericTypesClass_PreservesAllNumericTypes()
         {
             // Arrange
-            var original = new NumericTypesClass
+            NumericTypesClass original = new NumericTypesClass
             {
                 ByteValue = 255,
                 SByteValue = -128,
@@ -190,7 +190,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<NumericTypesClass>(json);
+            NumericTypesClass restored = JsonNativeAot.Deserialize<NumericTypesClass>(json);
 
             // Assert
             Assert.Equal(original.ByteValue, restored.ByteValue);
@@ -210,11 +210,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_NumericTypesClass_WithZeroValues()
         {
             // Arrange
-            var original = new NumericTypesClass();
+            NumericTypesClass original = new NumericTypesClass();
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<NumericTypesClass>(json);
+            NumericTypesClass restored = JsonNativeAot.Deserialize<NumericTypesClass>(json);
 
             // Assert
             Assert.Equal(0, restored.ByteValue);
@@ -226,7 +226,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_NumericTypesClass_WithMaxValues()
         {
             // Arrange
-            var original = new NumericTypesClass
+            NumericTypesClass original = new NumericTypesClass
             {
                 ByteValue = byte.MaxValue,
                 ShortValue = short.MaxValue,
@@ -239,7 +239,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<NumericTypesClass>(json);
+            NumericTypesClass restored = JsonNativeAot.Deserialize<NumericTypesClass>(json);
 
             // Assert
             Assert.Equal(original.ByteValue, restored.ByteValue);
@@ -255,7 +255,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_NumericTypesStruct_PreservesValues()
         {
             // Arrange
-            var original = new NumericTypesStruct
+            NumericTypesStruct original = new NumericTypesStruct
             {
                 IntValue = 42,
                 DoubleValue = 3.14159,
@@ -265,7 +265,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<NumericTypesStruct>(json);
+            NumericTypesStruct restored = JsonNativeAot.Deserialize<NumericTypesStruct>(json);
 
             // Assert
             Assert.Equal(original.IntValue, restored.IntValue);
@@ -281,7 +281,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_NumericTypesStruct_WithVariousValues(int i, double d, float f, double dec)
         {
             // Arrange
-            var original = new NumericTypesStruct
+            NumericTypesStruct original = new NumericTypesStruct
             {
                 IntValue = i,
                 DoubleValue = d,
@@ -291,7 +291,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<NumericTypesStruct>(json);
+            NumericTypesStruct restored = JsonNativeAot.Deserialize<NumericTypesStruct>(json);
 
             // Assert
             Assert.Equal(original.IntValue, restored.IntValue);
@@ -306,10 +306,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_TemporalTypesClass_PreservesDateTimeAndGuid()
         {
             // Arrange
-            var now = DateTime.Now;
-            var guid1 = Guid.NewGuid();
-            var guid2 = Guid.NewGuid();
-            var original = new TemporalTypesClass
+            DateTime now = DateTime.Now;
+            Guid guid1 = Guid.NewGuid();
+            Guid guid2 = Guid.NewGuid();
+            TemporalTypesClass original = new TemporalTypesClass
             {
                 CreatedAt = now,
                 UpdatedAt = now.AddDays(1),
@@ -319,7 +319,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<TemporalTypesClass>(json);
+            TemporalTypesClass restored = JsonNativeAot.Deserialize<TemporalTypesClass>(json);
 
             // Assert
             Assert.Equal(original.CreatedAt.Year, restored.CreatedAt.Year);
@@ -333,7 +333,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_TemporalTypesClass_WithEmptyGuid()
         {
             // Arrange
-            var original = new TemporalTypesClass
+            TemporalTypesClass original = new TemporalTypesClass
             {
                 CreatedAt = DateTime.MinValue,
                 UpdatedAt = DateTime.MaxValue,
@@ -343,7 +343,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<TemporalTypesClass>(json);
+            TemporalTypesClass restored = JsonNativeAot.Deserialize<TemporalTypesClass>(json);
 
             // Assert
             Assert.Equal(Guid.Empty, restored.Id);
@@ -358,9 +358,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_TemporalTypesStruct_PreservesValues()
         {
             // Arrange
-            var timestamp = new DateTime(2023, 6, 15, 10, 30, 45);
-            var guid = Guid.NewGuid();
-            var original = new TemporalTypesStruct
+            DateTime timestamp = new DateTime(2023, 6, 15, 10, 30, 45);
+            Guid guid = Guid.NewGuid();
+            TemporalTypesStruct original = new TemporalTypesStruct
             {
                 Timestamp = timestamp,
                 Identifier = guid
@@ -368,7 +368,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<TemporalTypesStruct>(json);
+            TemporalTypesStruct restored = JsonNativeAot.Deserialize<TemporalTypesStruct>(json);
 
             // Assert
             Assert.Equal(original.Timestamp.Year, restored.Timestamp.Year);
@@ -384,7 +384,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_EntityWithEnums_PreservesEnumValues()
         {
             // Arrange
-            var original = new EntityWithEnums
+            EntityWithEnums original = new EntityWithEnums
             {
                 Name = "Entity1",
                 Status = StatusEnum.Active,
@@ -393,7 +393,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<EntityWithEnums>(json);
+            EntityWithEnums restored = JsonNativeAot.Deserialize<EntityWithEnums>(json);
 
             // Assert
             Assert.Equal(original.Name, restored.Name);
@@ -410,7 +410,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_EntityWithEnums_WithAllCombinations(StatusEnum status, PriorityEnum priority)
         {
             // Arrange
-            var original = new EntityWithEnums
+            EntityWithEnums original = new EntityWithEnums
             {
                 Name = "Test",
                 Status = status,
@@ -419,7 +419,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<EntityWithEnums>(json);
+            EntityWithEnums restored = JsonNativeAot.Deserialize<EntityWithEnums>(json);
 
             // Assert
             Assert.Equal(original.Status, restored.Status);
@@ -434,7 +434,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_ConfigStruct_PreservesValues()
         {
             // Arrange
-            var original = new ConfigStruct
+            ConfigStruct original = new ConfigStruct
             {
                 Status = StatusEnum.Active,
                 Priority = PriorityEnum.Critical,
@@ -443,7 +443,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<ConfigStruct>(json);
+            ConfigStruct restored = JsonNativeAot.Deserialize<ConfigStruct>(json);
 
             // Assert
             Assert.Equal(original.Status, restored.Status);
@@ -459,7 +459,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_AddressClass_PreservesAllFields()
         {
             // Arrange
-            var original = new AddressClass
+            AddressClass original = new AddressClass
             {
                 Street = "123 Main St",
                 City = "Springfield",
@@ -469,7 +469,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<AddressClass>(json);
+            AddressClass restored = JsonNativeAot.Deserialize<AddressClass>(json);
 
             // Assert
             Assert.Equal(original.Street, restored.Street);
@@ -482,7 +482,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_UserWithAddress_PreservesNestedObject()
         {
             // Arrange
-            var original = new UserWithAddress
+            UserWithAddress original = new UserWithAddress
             {
                 Username = "johndoe",
                 UserId = 42,
@@ -497,7 +497,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<UserWithAddress>(json);
+            UserWithAddress restored = JsonNativeAot.Deserialize<UserWithAddress>(json);
 
             // Assert
             Assert.Equal(original.Username, restored.Username);
@@ -511,7 +511,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_UserWithAddress_WithNullAddress()
         {
             // Arrange
-            var original = new UserWithAddress
+            UserWithAddress original = new UserWithAddress
             {
                 Username = "testuser",
                 UserId = 99,
@@ -520,7 +520,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<UserWithAddress>(json);
+            UserWithAddress restored = JsonNativeAot.Deserialize<UserWithAddress>(json);
 
             // Assert
             Assert.Equal(original.Username, restored.Username);
@@ -535,11 +535,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_Point2D_PreservesCoordinates()
         {
             // Arrange
-            var original = new Point2D(10, 20);
+            Point2D original = new Point2D(10, 20);
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<Point2D>(json);
+            Point2D restored = JsonNativeAot.Deserialize<Point2D>(json);
 
             // Assert
             Assert.Equal(original.X, restored.X);
@@ -554,11 +554,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_Point2D_WithVariousCoordinates(int x, int y)
         {
             // Arrange
-            var original = new Point2D(x, y);
+            Point2D original = new Point2D(x, y);
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<Point2D>(json);
+            Point2D restored = JsonNativeAot.Deserialize<Point2D>(json);
 
             // Assert
             Assert.Equal(original.X, restored.X);
@@ -569,11 +569,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_Point3D_PreservesCoordinates()
         {
             // Arrange
-            var original = new Point3D(1.5, 2.5, 3.5);
+            Point3D original = new Point3D(1.5, 2.5, 3.5);
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<Point3D>(json);
+            Point3D restored = JsonNativeAot.Deserialize<Point3D>(json);
 
             // Assert
             Assert.Equal(original.X, restored.X, 5);
@@ -588,11 +588,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_Point3D_WithVariousCoordinates(double x, double y, double z)
         {
             // Arrange
-            var original = new Point3D(x, y, z);
+            Point3D original = new Point3D(x, y, z);
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<Point3D>(json);
+            Point3D restored = JsonNativeAot.Deserialize<Point3D>(json);
 
             // Assert
             Assert.Equal(original.X, restored.X, 5);
@@ -608,7 +608,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_ProductClass_PreservesAllProperties()
         {
             // Arrange
-            var original = new ProductClass
+            ProductClass original = new ProductClass
             {
                 ProductId = 101,
                 ProductName = "Laptop",
@@ -619,7 +619,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<ProductClass>(json);
+            ProductClass restored = JsonNativeAot.Deserialize<ProductClass>(json);
 
             // Assert
             Assert.Equal(original.ProductId, restored.ProductId);
@@ -633,7 +633,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_OrderItemStruct_PreservesValues()
         {
             // Arrange
-            var original = new OrderItemStruct
+            OrderItemStruct original = new OrderItemStruct
             {
                 ProductId = 202,
                 Quantity = 5,
@@ -642,7 +642,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<OrderItemStruct>(json);
+            OrderItemStruct restored = JsonNativeAot.Deserialize<OrderItemStruct>(json);
 
             // Assert
             Assert.Equal(original.ProductId, restored.ProductId);
@@ -658,7 +658,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_AppSettings_PreservesConfiguration()
         {
             // Arrange
-            var original = new AppSettings
+            AppSettings original = new AppSettings
             {
                 AppName = "TestApp",
                 Version = "1.0.0",
@@ -670,7 +670,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<AppSettings>(json);
+            AppSettings restored = JsonNativeAot.Deserialize<AppSettings>(json);
 
             // Assert
             Assert.Equal(original.AppName, restored.AppName);
@@ -685,7 +685,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_DbConnectionStruct_PreservesConnectionDetails()
         {
             // Arrange
-            var original = new DbConnectionStruct
+            DbConnectionStruct original = new DbConnectionStruct
             {
                 Host = "localhost",
                 Port = 5432,
@@ -695,7 +695,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<DbConnectionStruct>(json);
+            DbConnectionStruct restored = JsonNativeAot.Deserialize<DbConnectionStruct>(json);
 
             // Assert
             Assert.Equal(original.Host, restored.Host);
@@ -712,8 +712,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_LogEntry_PreservesLogData()
         {
             // Arrange
-            var logId = Guid.NewGuid();
-            var original = new LogEntry
+            Guid logId = Guid.NewGuid();
+            LogEntry original = new LogEntry
             {
                 LogId = logId,
                 Timestamp = DateTime.Now,
@@ -724,7 +724,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<LogEntry>(json);
+            LogEntry restored = JsonNativeAot.Deserialize<LogEntry>(json);
 
             // Assert
             Assert.Equal(original.LogId, restored.LogId);
@@ -737,7 +737,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_AuditTrailStruct_PreservesAuditData()
         {
             // Arrange
-            var original = new AuditTrailStruct
+            AuditTrailStruct original = new AuditTrailStruct
             {
                 Action = "CREATE",
                 User = "admin",
@@ -747,7 +747,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<AuditTrailStruct>(json);
+            AuditTrailStruct restored = JsonNativeAot.Deserialize<AuditTrailStruct>(json);
 
             // Assert
             Assert.Equal(original.Action, restored.Action);
@@ -763,11 +763,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_MinimalClass_PreservesSingleProperty()
         {
             // Arrange
-            var original = new MinimalClass { Value = "test" };
+            MinimalClass original = new MinimalClass { Value = "test" };
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<MinimalClass>(json);
+            MinimalClass restored = JsonNativeAot.Deserialize<MinimalClass>(json);
 
             // Assert
             Assert.Equal(original.Value, restored.Value);
@@ -777,11 +777,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_MinimalStruct_PreservesSingleProperty()
         {
             // Arrange
-            var original = new MinimalStruct { Value = 42 };
+            MinimalStruct original = new MinimalStruct { Value = 42 };
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<MinimalStruct>(json);
+            MinimalStruct restored = JsonNativeAot.Deserialize<MinimalStruct>(json);
 
             // Assert
             Assert.Equal(original.Value, restored.Value);
@@ -794,11 +794,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_MinimalClass_WithVariousStrings(string value)
         {
             // Arrange
-            var original = new MinimalClass { Value = value };
+            MinimalClass original = new MinimalClass { Value = value };
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<MinimalClass>(json);
+            MinimalClass restored = JsonNativeAot.Deserialize<MinimalClass>(json);
 
             // Assert
             Assert.Equal(original.Value, restored.Value);
@@ -813,11 +813,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_MinimalStruct_WithVariousIntegers(int value)
         {
             // Arrange
-            var original = new MinimalStruct { Value = value };
+            MinimalStruct original = new MinimalStruct { Value = value };
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<MinimalStruct>(json);
+            MinimalStruct restored = JsonNativeAot.Deserialize<MinimalStruct>(json);
 
             // Assert
             Assert.Equal(original.Value, restored.Value);
@@ -831,7 +831,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_TagsClass_PreservesListOfStrings()
         {
             // Arrange
-            var original = new TagsClass
+            TagsClass original = new TagsClass
             {
                 Name = "Article1",
                 Tags = new System.Collections.Generic.List<string> { "tech", "programming", "csharp" }
@@ -839,7 +839,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<TagsClass>(json);
+            TagsClass restored = JsonNativeAot.Deserialize<TagsClass>(json);
 
             // Assert
             Assert.Equal(original.Name, restored.Name);
@@ -853,7 +853,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
         public void RoundTrip_ScoresClass_PreservesListOfIntegers()
         {
             // Arrange
-            var original = new ScoresClass
+            ScoresClass original = new ScoresClass
             {
                 PlayerName = "Player1",
                 Scores = new System.Collections.Generic.List<int> { 100, 95, 87, 92 }
@@ -861,7 +861,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             // Act
             string json = JsonNativeAot.Serialize(original);
-            var restored = JsonNativeAot.Deserialize<ScoresClass>(json);
+            ScoresClass restored = JsonNativeAot.Deserialize<ScoresClass>(json);
 
             // Assert
             Assert.Equal(original.PlayerName, restored.PlayerName);

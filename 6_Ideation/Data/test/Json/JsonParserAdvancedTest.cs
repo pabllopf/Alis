@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics;
 using Alis.Core.Aspect.Data.Json.Helpers;
 using Alis.Core.Aspect.Data.Json.Parsing;
 using Xunit;
@@ -50,7 +51,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "   {\"key\":\"value\"}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Single(dict);
@@ -64,7 +65,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"key\":\"value\"}   ";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Single(dict);
@@ -77,7 +78,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{  \"key\"  :  \"value\"  }";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal("value", dict["key"]);
@@ -90,7 +91,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\n\"key\":\"value\"\n}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Single(dict);
@@ -103,7 +104,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\t\"key\":\t\"value\"\t}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Single(dict);
@@ -120,7 +121,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"outer\":{\"inner\":\"value\"}}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.True(dict["outer"].Contains("inner"));
@@ -134,7 +135,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"items\":[\"a\",\"b\",\"c\"]}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.StartsWith("[", dict["items"]);
@@ -148,7 +149,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"items\":[]}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal("[]", dict["items"]);
@@ -161,7 +162,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"nested\":{}}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal("{}", dict["nested"]);
@@ -174,7 +175,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"level1\":{\"level2\":{\"level3\":\"value\"}}}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Contains("level2", dict["level1"]);
@@ -194,7 +195,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ParseToDictionary_WithMultipleProperties_ReturnsCorrectCount(int count)
         {
             // Arrange
-            var properties = new List<string>();
+            List<string> properties = new List<string>();
             for (int i = 0; i < count; i++)
             {
                 properties.Add($"\"prop{i}\":\"value{i}\"");
@@ -202,7 +203,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{" + string.Join(",", properties) + "}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal(count, dict.Count);
@@ -223,7 +224,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = $"{{\"key\":\"{value}\"}}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal(value, dict["key"]);
@@ -236,7 +237,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"key\":\"こんにちは\"}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal("こんにちは", dict["key"]);
@@ -249,7 +250,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"emoji\":\"😀\"}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal("😀", dict["emoji"]);
@@ -269,7 +270,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = $"{{\"key\":\"{escaped}\"}}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal(expected, dict["key"]);
@@ -282,7 +283,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"key\":\"value with \\\"quotes\\\"\"}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Contains("\"", dict["key"]);
@@ -295,7 +296,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"path\":\"C:\\\\\\\\Users\\\\\\\\file.txt\"}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Contains("\\", dict["path"]);
@@ -317,7 +318,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = $"{{\"number\":\"{number}\"}}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal(number, dict["number"]);
@@ -334,7 +335,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = $"{{\"number\":\"{number}\"}}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal(number, dict["number"]);
@@ -353,7 +354,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = $"{{\"flag\":\"{boolValue}\"}}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal(boolValue, dict["flag"]);
@@ -370,7 +371,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"key\":\"\"}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal("", dict["key"]);
@@ -383,7 +384,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"key\":\"   \"}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal("   ", dict["key"]);
@@ -400,7 +401,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"string\":\"text\",\"number\":\"42\",\"bool\":\"true\",\"nested\":{}}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal(4, dict.Count);
@@ -417,7 +418,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"key\":\"first\",\"key\":\"second\"}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal("second", dict["key"]);
@@ -431,7 +432,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ParseToDictionary_WithLargeJson_CompletesInReasonableTime()
         {
             // Arrange
-            var properties = new List<string>();
+            List<string> properties = new List<string>();
             for (int i = 0; i < 1000; i++)
             {
                 properties.Add($"\"prop{i}\":\"value{i}\"");
@@ -439,8 +440,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{" + string.Join(",", properties) + "}";
 
             // Act
-            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-            var dict = _parser.ParseToDictionary(json);
+            Stopwatch stopwatch = System.Diagnostics.Stopwatch.StartNew();
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
             stopwatch.Stop();
 
             // Assert
@@ -460,7 +461,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = $"{{\"{longName}\":\"value\"}}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Contains(longName, dict.Keys);
@@ -474,7 +475,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = $"{{\"key\":\"{longValue}\"}}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal(longValue, dict["key"]);
@@ -487,7 +488,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             string json = "{\"a\":\"1\",\"b\":\"2\",\"c\":\"3\"}";
 
             // Act
-            var dict = _parser.ParseToDictionary(json);
+            Dictionary<string, string> dict = _parser.ParseToDictionary(json);
 
             // Assert
             Assert.Equal(3, dict.Count);

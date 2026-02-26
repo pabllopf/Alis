@@ -60,7 +60,7 @@ namespace Alis.Sample.Asteroid.IOS
             {
                 Window ??= new UIWindow(windowScene);
                 Debug.WriteLine($"[SceneDelegate] Creando vista principal con bounds: {Window!.Bounds}");
-                var blueGlkvc = new BlueGlkViewController(Window!.Bounds);
+                BlueGlkViewController blueGlkvc = new BlueGlkViewController(Window!.Bounds);
                 Window.RootViewController = blueGlkvc;
                 Window.MakeKeyAndVisible();
                 Window.RootViewController?.View.SetNeedsLayout();

@@ -20,9 +20,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
 
         public TemporalTypesStruct CreateFromProperties(Dictionary<string, string> properties)
         {
-            var obj = new TemporalTypesStruct();
-            if (properties.TryGetValue(nameof(Timestamp), out var v) && DateTime.TryParse(v, out var val)) obj.Timestamp = val;
-            if (properties.TryGetValue(nameof(Identifier), out v) && Guid.TryParse(v, out var val2)) obj.Identifier = val2;
+            TemporalTypesStruct obj = new TemporalTypesStruct();
+            if (properties.TryGetValue(nameof(Timestamp), out string v) && DateTime.TryParse(v, out DateTime val)) obj.Timestamp = val;
+            if (properties.TryGetValue(nameof(Identifier), out v) && Guid.TryParse(v, out Guid val2)) obj.Identifier = val2;
             return obj;
         }
     }

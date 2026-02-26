@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Alis.Core.Aspect.Data.Json.Exceptions;
 using Alis.Core.Aspect.Data.Json.Helpers;
 
@@ -70,7 +71,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
 
             try
             {
-                var result = new Dictionary<string, string>();
+                Dictionary<string, string> result = new Dictionary<string, string>();
 
                 if (string.IsNullOrWhiteSpace(json))
                 {
@@ -166,7 +167,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
             }
 
             position++;
-            var result = new System.Text.StringBuilder();
+            StringBuilder result = new System.Text.StringBuilder();
 
             while (position < json.Length)
             {

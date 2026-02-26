@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Alis.Extension.Language.Translator
 {
@@ -159,7 +160,7 @@ namespace Alis.Extension.Language.Translator
 
             lock (syncLock)
             {
-                var language = languageProvider.GetLanguageByCode(languageCode);
+                ILanguage language = languageProvider.GetLanguageByCode(languageCode);
                 
                 if (language == null)
                 {
@@ -190,7 +191,7 @@ namespace Alis.Extension.Language.Translator
 
             lock (syncLock)
             {
-                var existingLanguage = languageProvider.GetLanguageByCode(code);
+                ILanguage existingLanguage = languageProvider.GetLanguageByCode(code);
                 ILanguage language;
 
                 if (existingLanguage != null)
@@ -247,7 +248,7 @@ namespace Alis.Extension.Language.Translator
                 throw new ArgumentNullException(nameof(code), "Language code cannot be null or empty");
             }
 
-            var language = new Lang(code, name);
+            Lang language = new Lang(code, name);
             AddLanguage(language);
         }
 
@@ -338,7 +339,7 @@ namespace Alis.Extension.Language.Translator
 
             string translated = Translate(key);
 
-            foreach (var kvp in parameters)
+            foreach (KeyValuePair<string, object> kvp in parameters)
             {
                 string placeholder = $"{{{kvp.Key}}}";
                 translated = translated.Replace(placeholder, kvp.Value?.ToString() ?? string.Empty);
@@ -506,7 +507,7 @@ namespace Alis.Extension.Language.Translator
             }
 
             // Try to get from provider
-            var translationTask = translationProvider.GetTranslationAsync(languageCode, key);
+            Task<string> translationTask = translationProvider.GetTranslationAsync(languageCode, key);
             translationTask.Wait();
             string value = translationTask.Result;
 
@@ -517,14 +518,14 @@ namespace Alis.Extension.Language.Translator
             }
 
             // Try fallback languages
-            foreach (var fallbackCode in fallbackLanguages)
+            foreach (string fallbackCode in fallbackLanguages)
             {
                 if (fallbackCode == languageCode)
                 {
                     continue; // Skip the current language
                 }
 
-                var fallbackTask = translationProvider.GetTranslationAsync(fallbackCode, key);
+                Task<string> fallbackTask = translationProvider.GetTranslationAsync(fallbackCode, key);
                 fallbackTask.Wait();
                 string fallbackValue = fallbackTask.Result;
 
@@ -544,8 +545,8 @@ namespace Alis.Extension.Language.Translator
         /// <param name="language">The newly selected language</param>
         private void NotifyLanguageChanged(ILanguage language)
         {
-            var observersCopy = new List<ITranslationObserver>(observers);
-            foreach (var observer in observersCopy)
+            List<ITranslationObserver> observersCopy = new List<ITranslationObserver>(observers);
+            foreach (ITranslationObserver observer in observersCopy)
             {
                 observer.OnLanguageChanged(language);
             }
@@ -557,8 +558,8 @@ namespace Alis.Extension.Language.Translator
         /// <param name="languageCode">The language code that was updated</param>
         private void NotifyTranslationsUpdated(string languageCode)
         {
-            var observersCopy = new List<ITranslationObserver>(observers);
-            foreach (var observer in observersCopy)
+            List<ITranslationObserver> observersCopy = new List<ITranslationObserver>(observers);
+            foreach (ITranslationObserver observer in observersCopy)
             {
                 observer.OnTranslationsUpdated(languageCode);
             }
@@ -571,8 +572,8 @@ namespace Alis.Extension.Language.Translator
         /// <param name="key">The translation key that was not found</param>
         private void NotifyTranslationNotFound(string languageCode, string key)
         {
-            var observersCopy = new List<ITranslationObserver>(observers);
-            foreach (var observer in observersCopy)
+            List<ITranslationObserver> observersCopy = new List<ITranslationObserver>(observers);
+            foreach (ITranslationObserver observer in observersCopy)
             {
                 observer.OnTranslationNotFound(languageCode, key);
             }

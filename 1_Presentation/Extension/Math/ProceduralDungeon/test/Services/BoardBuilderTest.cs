@@ -292,7 +292,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             List<RoomData> rooms = new List<RoomData>();
 
             // Act
-            var exception = Record.Exception(() => builder.PlaceRooms(board, rooms));
+            Exception exception = Record.Exception(() => builder.PlaceRooms(board, rooms));
 
             // Assert
             Assert.Null(exception);
@@ -310,7 +310,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             List<CorridorData> corridors = new List<CorridorData>();
 
             // Act
-            var exception = Record.Exception(() => builder.PlaceCorridors(board, corridors));
+            Exception exception = Record.Exception(() => builder.PlaceCorridors(board, corridors));
 
             // Assert
             Assert.Null(exception);
@@ -331,7 +331,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
             };
 
             // Act
-            var exception = Record.Exception(() => builder.PlaceRooms(board, rooms));
+            Exception exception = Record.Exception(() => builder.PlaceRooms(board, rooms));
 
             // Assert - Should not throw
             Assert.Null(exception);

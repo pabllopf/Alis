@@ -83,10 +83,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             {
                 return new UserProfile
                 {
-                    Username = properties.TryGetValue("Username", out var username) ? username : null,
-                    Email = properties.TryGetValue("Email", out var email) ? email : null,
-                    Age = properties.TryGetValue("Age", out var age) && int.TryParse(age, out var ageValue) ? ageValue : 0,
-                    IsActive = properties.TryGetValue("IsActive", out var isActive) && bool.TryParse(isActive, out var isActiveValue) ? isActiveValue : false
+                    Username = properties.TryGetValue("Username", out string username) ? username : null,
+                    Email = properties.TryGetValue("Email", out string email) ? email : null,
+                    Age = properties.TryGetValue("Age", out string age) && int.TryParse(age, out int ageValue) ? ageValue : 0,
+                    IsActive = properties.TryGetValue("IsActive", out string isActive) && bool.TryParse(isActive, out bool isActiveValue) ? isActiveValue : false
                 };
             }
         }
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void Serialize_Deserialize_RoundTrip_PreservesData()
         {
-            var original = new UserProfile
+            UserProfile original = new UserProfile
             {
                 Username = "johnsmith",
                 Email = "john@example.com",
@@ -106,7 +106,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             };
 
             string json = JsonNativeAot.Serialize(original);
-            var deserialized = JsonNativeAot.Deserialize<UserProfile>(json);
+            UserProfile deserialized = JsonNativeAot.Deserialize<UserProfile>(json);
 
             Assert.Equal(original.Username, deserialized.Username);
             Assert.Equal(original.Email, deserialized.Email);
@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void ParseJsonToDictionary_WithSimpleJson_ReturnsDictionary()
         {
             string json = "{\"key1\":\"value1\",\"key2\":\"value2\"}";
-            var properties = JsonNativeAot.ParseJsonToDictionary(json);
+            Dictionary<string, string> properties = JsonNativeAot.ParseJsonToDictionary(json);
 
             Assert.Equal(2, properties.Count);
             Assert.Equal("value1", properties["key1"]);
@@ -134,7 +134,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void Serialize_CreateValidJsonFormat()
         {
-            var obj = new UserProfile
+            UserProfile obj = new UserProfile
             {
                 Username = "testuser",
                 Email = "test@test.com",
@@ -157,7 +157,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Deserialize_WithCompleteJson_CreatesCompleteObject()
         {
             string json = "{\"Username\":\"alice\",\"Email\":\"alice@test.com\",\"Age\":\"28\",\"IsActive\":\"true\"}";
-            var user = JsonNativeAot.Deserialize<UserProfile>(json);
+            UserProfile user = JsonNativeAot.Deserialize<UserProfile>(json);
 
             Assert.Equal("alice", user.Username);
             Assert.Equal("alice@test.com", user.Email);
@@ -172,7 +172,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         public void Deserialize_WithPartialJson_FillsAvailableProperties()
         {
             string json = "{\"Username\":\"bob\"}";
-            var user = JsonNativeAot.Deserialize<UserProfile>(json);
+            UserProfile user = JsonNativeAot.Deserialize<UserProfile>(json);
 
             Assert.Equal("bob", user.Username);
             Assert.Null(user.Email);
@@ -186,7 +186,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void Serialize_WithWhitespaceInValues_EscapesCorrectly()
         {
-            var obj = new UserProfile
+            UserProfile obj = new UserProfile
             {
                 Username = "user with spaces",
                 Email = "user@example.com",
@@ -195,7 +195,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             };
 
             string json = JsonNativeAot.Serialize(obj);
-            var deserialized = JsonNativeAot.Deserialize<UserProfile>(json);
+            UserProfile deserialized = JsonNativeAot.Deserialize<UserProfile>(json);
 
             Assert.Equal("user with spaces", deserialized.Username);
         }
@@ -206,8 +206,8 @@ namespace Alis.Core.Aspect.Data.Test.Json
         [Fact]
         public void Serialize_MultipleObjects_ProducedDifferentJson()
         {
-            var obj1 = new UserProfile { Username = "user1", Email = "user1@test.com", Age = 25, IsActive = true };
-            var obj2 = new UserProfile { Username = "user2", Email = "user2@test.com", Age = 30, IsActive = false };
+            UserProfile obj1 = new UserProfile { Username = "user1", Email = "user1@test.com", Age = 25, IsActive = true };
+            UserProfile obj2 = new UserProfile { Username = "user2", Email = "user2@test.com", Age = 30, IsActive = false };
 
             string json1 = JsonNativeAot.Serialize(obj1);
             string json2 = JsonNativeAot.Serialize(obj2);

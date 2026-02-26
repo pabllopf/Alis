@@ -47,8 +47,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
         public JsonDeserializerAdvancedTest()
         {
-            var escapeHandler = new EscapeSequenceHandler();
-            var parser = new JsonParser(escapeHandler);
+            EscapeSequenceHandler escapeHandler = new EscapeSequenceHandler();
+            JsonParser parser = new JsonParser(escapeHandler);
             _deserializer = new JsonDeserializer(parser);
         }
 
@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             string json = $"{{\"Value\":\"{jsonValue}\"}}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestIntObject>(json);
+            TestIntObject obj = _deserializer.Deserialize<TestIntObject>(json);
 
             // Assert
             Assert.Equal(expected, obj.Value);
@@ -79,7 +79,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             string json = "{\"Value\":\"42\"}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestIntObject>(json);
+            TestIntObject obj = _deserializer.Deserialize<TestIntObject>(json);
 
             // Assert
             Assert.Equal(42, obj.Value);
@@ -100,7 +100,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             string json = $"{{\"Flag\":\"{jsonValue}\"}}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestBoolObject>(json);
+            TestBoolObject obj = _deserializer.Deserialize<TestBoolObject>(json);
 
             // Assert
             Assert.Equal(expected, obj.Flag);
@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             string json = $"{{\"Number\":\"{jsonValue}\"}}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestDoubleObject>(json);
+            TestDoubleObject obj = _deserializer.Deserialize<TestDoubleObject>(json);
 
             // Assert
             Assert.Equal(expected, obj.Number, 0.001);
@@ -142,7 +142,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             string json = $"{{\"Text\":\"{value}\"}}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestStringObject>(json);
+            TestStringObject obj = _deserializer.Deserialize<TestStringObject>(json);
 
             // Assert
             Assert.Equal(value, obj.Text);
@@ -155,7 +155,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             string json = "{\"Text\":\"こんにちは\"}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestStringObject>(json);
+            TestStringObject obj = _deserializer.Deserialize<TestStringObject>(json);
 
             // Assert
             Assert.Equal("こんにちは", obj.Text);
@@ -169,11 +169,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         public void Deserialize_DateTimeValue_ParsesCorrectly()
         {
             // Arrange
-            var expected = new DateTime(2023, 6, 15, 10, 30, 0);
+            DateTime expected = new DateTime(2023, 6, 15, 10, 30, 0);
             string json = $"{{\"Timestamp\":\"{expected:O}\"}}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestDateTimeObject>(json);
+            TestDateTimeObject obj = _deserializer.Deserialize<TestDateTimeObject>(json);
 
             // Assert
             Assert.Equal(expected.Year, obj.Timestamp.Year);
@@ -185,11 +185,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         public void Deserialize_GuidValue_ParsesCorrectly()
         {
             // Arrange
-            var expected = Guid.NewGuid();
+            Guid expected = Guid.NewGuid();
             string json = $"{{\"Id\":\"{expected}\"}}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestGuidObject>(json);
+            TestGuidObject obj = _deserializer.Deserialize<TestGuidObject>(json);
 
             // Assert
             Assert.Equal(expected, obj.Id);
@@ -206,7 +206,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             string json = "{}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestIntObject>(json);
+            TestIntObject obj = _deserializer.Deserialize<TestIntObject>(json);
 
             // Assert
             Assert.Equal(0, obj.Value);
@@ -219,7 +219,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             string json = "{}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestStringObject>(json);
+            TestStringObject obj = _deserializer.Deserialize<TestStringObject>(json);
 
             // Assert
             Assert.Null(obj.Text);
@@ -232,7 +232,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             string json = "{}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestBoolObject>(json);
+            TestBoolObject obj = _deserializer.Deserialize<TestBoolObject>(json);
 
             // Assert
             Assert.False(obj.Flag);
@@ -249,7 +249,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             string json = "{\"Value\":\"not_a_number\"}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestIntObject>(json);
+            TestIntObject obj = _deserializer.Deserialize<TestIntObject>(json);
 
             // Assert
             Assert.Equal(0, obj.Value);
@@ -262,7 +262,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             string json = "{\"Flag\":\"not_a_bool\"}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestBoolObject>(json);
+            TestBoolObject obj = _deserializer.Deserialize<TestBoolObject>(json);
 
             // Assert
             Assert.False(obj.Flag);
@@ -275,7 +275,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             string json = "{\"Id\":\"not_a_guid\"}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestGuidObject>(json);
+            TestGuidObject obj = _deserializer.Deserialize<TestGuidObject>(json);
 
             // Assert
             Assert.Equal(Guid.Empty, obj.Id);
@@ -292,7 +292,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             string json = "{\"Value\":\"42\",\"ExtraProp\":\"ignored\"}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestIntObject>(json);
+            TestIntObject obj = _deserializer.Deserialize<TestIntObject>(json);
 
             // Assert
             Assert.Equal(42, obj.Value);
@@ -305,7 +305,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             string json = "{\"Value\":\"42\",\"Extra1\":\"a\",\"Extra2\":\"b\",\"Extra3\":\"c\"}";
 
             // Act
-            var obj = _deserializer.Deserialize<TestIntObject>(json);
+            TestIntObject obj = _deserializer.Deserialize<TestIntObject>(json);
 
             // Assert
             Assert.Equal(42, obj.Value);
@@ -326,8 +326,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
             public TestIntObject CreateFromProperties(Dictionary<string, string> properties)
             {
-                var obj = new TestIntObject();
-                if (properties.TryGetValue("Value", out var value) && int.TryParse(value, out var intValue))
+                TestIntObject obj = new TestIntObject();
+                if (properties.TryGetValue("Value", out string value) && int.TryParse(value, out int intValue))
                     obj.Value = intValue;
                 return obj;
             }
@@ -344,8 +344,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
             public TestBoolObject CreateFromProperties(Dictionary<string, string> properties)
             {
-                var obj = new TestBoolObject();
-                if (properties.TryGetValue("Flag", out var value) && bool.TryParse(value, out var boolValue))
+                TestBoolObject obj = new TestBoolObject();
+                if (properties.TryGetValue("Flag", out string value) && bool.TryParse(value, out bool boolValue))
                     obj.Flag = boolValue;
                 return obj;
             }
@@ -362,9 +362,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
             public TestDoubleObject CreateFromProperties(Dictionary<string, string> properties)
             {
-                var obj = new TestDoubleObject();
-                if (properties.TryGetValue("Number", out var value) && 
-                    double.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out var doubleValue))
+                TestDoubleObject obj = new TestDoubleObject();
+                if (properties.TryGetValue("Number", out string value) && 
+                    double.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out double doubleValue))
                     obj.Number = doubleValue;
                 return obj;
             }
@@ -381,8 +381,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
             public TestStringObject CreateFromProperties(Dictionary<string, string> properties)
             {
-                var obj = new TestStringObject();
-                if (properties.TryGetValue("Text", out var value))
+                TestStringObject obj = new TestStringObject();
+                if (properties.TryGetValue("Text", out string value))
                     obj.Text = value;
                 return obj;
             }
@@ -399,8 +399,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
             public TestDateTimeObject CreateFromProperties(Dictionary<string, string> properties)
             {
-                var obj = new TestDateTimeObject();
-                if (properties.TryGetValue("Timestamp", out var value) && DateTime.TryParse(value, out var dateValue))
+                TestDateTimeObject obj = new TestDateTimeObject();
+                if (properties.TryGetValue("Timestamp", out string value) && DateTime.TryParse(value, out DateTime dateValue))
                     obj.Timestamp = dateValue;
                 return obj;
             }
@@ -417,8 +417,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
             public TestGuidObject CreateFromProperties(Dictionary<string, string> properties)
             {
-                var obj = new TestGuidObject();
-                if (properties.TryGetValue("Id", out var value) && Guid.TryParse(value, out var guidValue))
+                TestGuidObject obj = new TestGuidObject();
+                if (properties.TryGetValue("Id", out string value) && Guid.TryParse(value, out Guid guidValue))
                     obj.Id = guidValue;
                 return obj;
             }
@@ -439,12 +439,12 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
 
             public TestMultiObject CreateFromProperties(Dictionary<string, string> properties)
             {
-                var obj = new TestMultiObject();
-                if (properties.TryGetValue("Name", out var name))
+                TestMultiObject obj = new TestMultiObject();
+                if (properties.TryGetValue("Name", out string name))
                     obj.Name = name;
-                if (properties.TryGetValue("Age", out var age) && int.TryParse(age, out var ageValue))
+                if (properties.TryGetValue("Age", out string age) && int.TryParse(age, out int ageValue))
                     obj.Age = ageValue;
-                if (properties.TryGetValue("IsActive", out var active) && bool.TryParse(active, out var activeValue))
+                if (properties.TryGetValue("IsActive", out string active) && bool.TryParse(active, out bool activeValue))
                     obj.IsActive = activeValue;
                 return obj;
             }
