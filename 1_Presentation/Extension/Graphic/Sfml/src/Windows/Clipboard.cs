@@ -86,6 +86,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr sfClipboard_getUnicodeString();
 
         /// <summary>
@@ -93,6 +94,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// </summary>
         /// <param name="ptr">The ptr</param>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfClipboard_setUnicodeString(IntPtr ptr);
     }
 }

@@ -704,6 +704,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// <param name="lpModuleName"></param>
         /// <returns></returns>
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr GetModuleHandle(string lpModuleName);
 
         /// <summary>
@@ -715,6 +716,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// <param name="lParam">The param</param>
         /// <returns>The int ptr</returns>
         [DllImport("user32.dll", SetLastError = true)]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
 
         /// <summary>
@@ -728,27 +730,35 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// <param name="fuLoad">The fu load</param>
         /// <returns>The int ptr</returns>
         [DllImport("user32.dll", SetLastError = true)]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr LoadImage(IntPtr hInst, string lpszName, uint uType, int cxDesired, int cyDesired, uint fuLoad);
 
         [DllImport("user32.dll")]
+        [ExcludeFromCodeCoverage]
         private static extern bool GetCursorPos(out POINT lpPoint);
 
         [DllImport("user32.dll")]
+        [ExcludeFromCodeCoverage]
         private static extern bool ScreenToClient(IntPtr hWnd, ref POINT lpPoint);
 
         [DllImport("user32.dll", SetLastError = true)]
+        [ExcludeFromCodeCoverage]
         private static extern bool GetClientRect(IntPtr hWnd, out Rect lpRect);
 
         [DllImport("user32.dll")]
+        [ExcludeFromCodeCoverage]
         private static extern short GetAsyncKeyState(int vKey);
 
         [DllImport("user32.dll")]
+        [ExcludeFromCodeCoverage]
         private static extern bool GetMessage(out Msg lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax, uint uRemoveMsg);
 
         [DllImport("user32.dll")]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr DispatchMessage(ref Msg lpMsg);
 
         [DllImport("user32.dll")]
+        [ExcludeFromCodeCoverage]
         private static extern bool TranslateMessage(ref Msg lpMsg);
 
         [StructLayout(LayoutKind.Sequential)]
@@ -834,6 +844,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// <param name="hIcon">The icon</param>
         /// <returns>The bool</returns>
         [DllImport("user32.dll", SetLastError = true)]
+        [ExcludeFromCodeCoverage]
         private static extern bool DestroyIcon(IntPtr hIcon);
 
         // ------------------------------------------------------------------

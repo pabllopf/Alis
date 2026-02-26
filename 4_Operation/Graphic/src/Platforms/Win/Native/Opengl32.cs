@@ -46,6 +46,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="hdc"></param>
         /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "wglCreateContext")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr wglCreateContext(IntPtr hdc);
 
         /// <summary>
@@ -54,6 +55,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="hglrc"></param>
         /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "wglMakeCurrent")]
+        [ExcludeFromCodeCoverage]
         public static extern bool wglMakeCurrent(IntPtr hdc, IntPtr hglrc);
 
         /// <summary>
@@ -61,6 +63,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="hglrc"></param>
         /// <returns></returns>
         [DllImport(DllName, SetLastError = true, EntryPoint = "wglDeleteContext")]
+        [ExcludeFromCodeCoverage]
         public static extern bool wglDeleteContext(IntPtr hglrc);
 
         /// <summary>
@@ -68,6 +71,7 @@ namespace Alis.Core.Graphic.Platforms.Win.Native
         /// <param name="lpszProc"></param>
         /// <returns></returns>
         [DllImport("opengl32.dll", SetLastError = true, EntryPoint = "wglGetProcAddress")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr wglGetProcAddress(string lpszProc);
     }
 }

@@ -129,6 +129,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// </summary>
         /// <returns>The video mode</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern VideoMode sfVideoMode_getDesktopMode();
 
         /// <summary>
@@ -137,6 +138,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="count">The count</param>
         /// <returns>The video mode</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern VideoMode sfVideoMode_getFullscreenModes(out int count);
 
         /// <summary>
@@ -145,6 +147,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="count">The count</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sfVideoMode_getFullscreenModes"), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr sfVideoMode_getFullscreenModes_v2(out uint count);
 
         /// <summary>
@@ -153,6 +156,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <param name="mode">The mode</param>
         /// <returns>The bool</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern bool sfVideoMode_isValid(VideoMode mode);
     }
 }

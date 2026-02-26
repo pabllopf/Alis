@@ -50,12 +50,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The im gui payload</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igAcceptDragDropPayload")]
+        [ExcludeFromCodeCoverage]
         public static extern ImGuiPayload igAcceptDragDropPayload(byte[] type, ImGuiDragDropFlags flags);
 
         /// <summary>
         ///     Igs the align text to frame padding
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igAlignTextToFramePadding")]
+        [ExcludeFromCodeCoverage]
         public static extern void igAlignTextToFramePadding();
 
         /// <summary>
@@ -64,6 +66,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="platformIo">The platform io</param>
         /// <param name="funcPtr">The func ptr</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPlatformIO_Set_Platform_GetWindowPos")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiPlatformIO_Set_Platform_GetWindowPos(IntPtr platformIo, IntPtr funcPtr);
 
         /// <summary>
@@ -72,6 +75,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="platformIo">The platform io</param>
         /// <param name="funcPtr">The func ptr</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPlatformIO_Set_Platform_GetWindowSize")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiPlatformIO_Set_Platform_GetWindowSize(IntPtr platformIo, IntPtr funcPtr);
 
         /// <summary>
@@ -81,6 +85,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="dir">The dir</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igArrowButton")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igArrowButton(byte[] strId, ImGuiDir dir);
 
         /// <summary>
@@ -91,6 +96,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBegin")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBegin(byte[] name, ref bool pOpen, ImGuiWindowFlags flags);
 
         /// <summary>
@@ -102,6 +108,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginChild_Str")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginChild_Str(byte[] strId, Vector2F size, byte border, ImGuiWindowFlags flags);
 
         /// <summary>
@@ -113,6 +120,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginChild_ID")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginChild_ID(uint id, Vector2F size, byte border, ImGuiWindowFlags flags);
 
         /// <summary>
@@ -123,6 +131,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginChildFrame")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginChildFrame(uint id, Vector2F size, ImGuiWindowFlags flags);
 
         /// <summary>
@@ -133,6 +142,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginCombo")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginCombo(byte[] label, byte[] previewValue, ImGuiComboFlags flags);
 
         /// <summary>
@@ -140,6 +150,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="disabled">The disabled</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginDisabled")]
+        [ExcludeFromCodeCoverage]
         public static extern void igBeginDisabled(byte disabled);
 
         /// <summary>
@@ -148,6 +159,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginDragDropSource")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginDragDropSource(ImGuiDragDropFlags flags);
 
         /// <summary>
@@ -155,12 +167,14 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginDragDropTarget")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginDragDropTarget();
 
         /// <summary>
         ///     Igs the begin group
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginGroup")]
+        [ExcludeFromCodeCoverage]
         public static extern void igBeginGroup();
 
         /// <summary>
@@ -170,6 +184,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginListBox")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginListBox(byte[] label, Vector2F size);
 
         /// <summary>
@@ -177,6 +192,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginMainMenuBar")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginMainMenuBar();
 
         /// <summary>
@@ -186,6 +202,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="enabled">The enabled</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginMenu")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginMenu(byte[] label, bool enabled);
 
         /// <summary>
@@ -193,6 +210,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginMenuBar")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginMenuBar();
 
         /// <summary>
@@ -202,6 +220,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginPopup")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginPopup(byte[] strId, ImGuiWindowFlags flags);
 
         /// <summary>
@@ -211,6 +230,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="popupFlags">The popup flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginPopupContextItem")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginPopupContextItem(byte[] strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>
@@ -220,6 +240,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="popupFlags">The popup flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginPopupContextVoid")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginPopupContextVoid(byte[] strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>
@@ -229,6 +250,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="popupFlags">The popup flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginPopupContextWindow")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginPopupContextWindow(byte[] strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>
@@ -239,6 +261,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginPopupModal")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginPopupModal(byte[] name, bool pOpen, ImGuiWindowFlags flags);
 
         /// <summary>
@@ -248,6 +271,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginTabBar")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginTabBar(byte[] strId, ImGuiTabBarFlags flags);
 
         /// <summary>
@@ -258,6 +282,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginTabItem")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginTabItem(byte[] label, bool pOpen, ImGuiTabItemFlags flags);
 
         /// <summary>
@@ -270,18 +295,21 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="innerWidth">The inner width</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginTable")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igBeginTable(byte[] strId, int column, ImGuiTableFlags flags, Vector2F outerSize, float innerWidth);
 
         /// <summary>
         ///     Igs the begin tooltip
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginTooltip")]
+        [ExcludeFromCodeCoverage]
         public static extern void igBeginTooltip();
 
         /// <summary>
         ///     Igs the bullet
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBullet")]
+        [ExcludeFromCodeCoverage]
         public static extern void igBullet();
 
         /// <summary>
@@ -289,6 +317,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="fmt">The fmt</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBulletText")]
+        [ExcludeFromCodeCoverage]
         public static extern void igBulletText(byte[] fmt);
 
         /// <summary>
@@ -298,6 +327,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igButton")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igButton(byte[] label, Vector2F size);
 
         /// <summary>
@@ -305,6 +335,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCalcItemWidth")]
+        [ExcludeFromCodeCoverage]
         public static extern float igCalcItemWidth();
 
         /// <summary>
@@ -316,6 +347,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <param name="wrapWidth">The wrap width</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCalcTextSize")]
+        [ExcludeFromCodeCoverage]
         public static extern void igCalcTextSize(out Vector2F pOut, byte[] text, byte textEnd, bool hideTextAfterDoubleHash, float wrapWidth);
 
         /// <summary>
@@ -325,6 +357,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="v">The </param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCheckbox")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igCheckbox(byte[] label, ref bool v);
 
         /// <summary>
@@ -335,6 +368,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flagsValue">The flags value</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCheckboxFlags_IntPtr")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igCheckboxFlags_IntPtr(byte[] label, int flags, int flagsValue);
 
         /// <summary>
@@ -345,12 +379,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flagsValue">The flags value</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCheckboxFlags_UintPtr")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igCheckboxFlags_UintPtr(byte[] label, uint flags, uint flagsValue);
 
         /// <summary>
         ///     Igs the close current popup
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCloseCurrentPopup")]
+        [ExcludeFromCodeCoverage]
         public static extern void igCloseCurrentPopup();
 
         /// <summary>
@@ -360,6 +396,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCollapsingHeader_TreeNodeFlags")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igCollapsingHeader_TreeNodeFlags(byte[] label, ImGuiTreeNodeFlags flags);
 
         /// <summary>
@@ -370,6 +407,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCollapsingHeader_BoolPtr")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igCollapsingHeader_BoolPtr(byte[] label, bool pVisible, ImGuiTreeNodeFlags flags);
 
         /// <summary>
@@ -381,6 +419,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorButton")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igColorButton(byte[] descId, Vector4F col, ImGuiColorEditFlags flags, Vector2F size);
 
         /// <summary>
@@ -389,6 +428,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="in">The in</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorConvertFloat4ToU32")]
+        [ExcludeFromCodeCoverage]
         public static extern uint igColorConvertFloat4ToU32(Vector4F @in);
 
         /// <summary>
@@ -401,6 +441,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="outG">The out</param>
         /// <param name="outB">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorConvertHSVtoRGB")]
+        [ExcludeFromCodeCoverage]
         public static extern void igColorConvertHSVtoRGB(float h, float s, float v, out float outR, out float outG, out float outB);
 
         /// <summary>
@@ -413,6 +454,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="outS">The out</param>
         /// <param name="outV">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorConvertRGBtoHSV")]
+        [ExcludeFromCodeCoverage]
         public static extern void igColorConvertRGBtoHSV(float r, float g, float b, out float outH, out float outS, out float outV);
 
         /// <summary>
@@ -421,6 +463,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="pOut">The out</param>
         /// <param name="in">The in</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorConvertU32ToFloat4")]
+        [ExcludeFromCodeCoverage]
         public static extern void igColorConvertU32ToFloat4(out Vector4F pOut, uint @in);
 
         /// <summary>
@@ -431,6 +474,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorEdit3")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igColorEdit3(byte[] label, Vector3F col, ImGuiColorEditFlags flags);
 
         /// <summary>
@@ -441,6 +485,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorEdit4")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igColorEdit4(IntPtr label, ref Vector4F col, ImGuiColorEditFlags flags);
 
         /// <summary>
@@ -451,6 +496,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorPicker3")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igColorPicker3(byte[] label, Vector3F col, ImGuiColorEditFlags flags);
 
         /// <summary>
@@ -462,6 +508,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="refCol">The ref col</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorPicker4")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igColorPicker4(byte[] label, Vector4F col, ImGuiColorEditFlags flags, float refCol);
 
         /// <summary>
@@ -471,6 +518,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="id">The id</param>
         /// <param name="border">The border</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColumns")]
+        [ExcludeFromCodeCoverage]
         public static extern void igColumns(int count, byte[] id, byte border);
 
         /// <summary>
@@ -483,6 +531,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="popupMaxHeightInItems">The popup max height in items</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCombo_Str_arr")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igCombo_Str_arr(byte[] label, int currentItem, byte[][] items, int itemsCount, int popupMaxHeightInItems);
 
         /// <summary>
@@ -494,6 +543,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="popupMaxHeightInItems">The popup max height in items</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCombo_Str")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igCombo_Str(byte[] label, ref int currentItem, byte[] itemsSeparatedByZeros, int popupMaxHeightInItems);
 
         /// <summary>
@@ -502,6 +552,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="sharedFontAtlas">The shared font atlas</param>
         /// <returns>The int ptr</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCreateContext")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igCreateContext(IntPtr sharedFontAtlas);
 
         /// <summary>
@@ -516,6 +567,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="szDrawidx">The sz drawidx</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDebugCheckVersionAndDataLayout")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igDebugCheckVersionAndDataLayout(byte[] versionStr, uint szIo, uint szStyle, uint szVec2, uint szVec4, uint szDrawvert, uint szDrawidx);
 
         /// <summary>
@@ -523,6 +575,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="text">The text</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDebugTextEncoding")]
+        [ExcludeFromCodeCoverage]
         public static extern void igDebugTextEncoding(byte[] text);
 
         /// <summary>
@@ -534,6 +587,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="windowClass">The window class</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockSpace")]
+        [ExcludeFromCodeCoverage]
         public static extern uint igDockSpace(uint id, Vector2F size, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass);
 
         /// <summary>
@@ -544,6 +598,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="windowClass">The window class</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockSpaceOverViewport")]
+        [ExcludeFromCodeCoverage]
         public static extern uint igDockSpaceOverViewport(IntPtr viewport, ImGuiDockNodeFlags flags, ImGuiWindowClass windowClass);
 
         /// <summary>
@@ -558,6 +613,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragFloat")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igDragFloat(byte[] label, ref float v, float vSpeed, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -572,6 +628,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragFloat2")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igDragFloat2(byte[] label, ref Vector2F v, float vSpeed, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -586,6 +643,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragFloat3")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igDragFloat3(byte[] label, ref Vector3F v, float vSpeed, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -600,6 +658,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragFloat4")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igDragFloat4(byte[] label, Vector4F v, float vSpeed, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -616,6 +675,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragFloatRange2")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igDragFloatRange2(byte[] label, ref float vCurrentMin, ref float vCurrentMax, float vSpeed, float vMin, float vMax, byte[] format, byte[] formatMax, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -630,6 +690,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragInt")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igDragInt(byte[] label, ref int v, float vSpeed, int vMin, int vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -644,6 +705,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragInt2")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igDragInt2(byte[] label, ref int v, float vSpeed, int vMin, int vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -658,6 +720,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragInt3")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igDragInt3(byte[] label, ref int v, float vSpeed, int vMin, int vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -672,6 +735,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragInt4")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igDragInt4(byte[] label, ref int v, float vSpeed, int vMin, int vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -688,6 +752,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragIntRange2")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igDragIntRange2(byte[] label, ref int vCurrentMin, ref int vCurrentMax, float vSpeed, int vMin, int vMax, byte[] format, byte[] formatMax, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -703,6 +768,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragScalar")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igDragScalar(byte[] label, ImGuiDataType dataType, IntPtr pData, float vSpeed, IntPtr pMin, IntPtr pMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -719,6 +785,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragScalarN")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igDragScalarN(byte[] label, ImGuiDataType dataType, IntPtr pData, int components, float vSpeed, IntPtr pMin, IntPtr pMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -726,114 +793,133 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="size">The size</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDummy")]
+        [ExcludeFromCodeCoverage]
         public static extern void igDummy(Vector2F size);
 
         /// <summary>
         ///     Igs the end
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEnd")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEnd();
 
         /// <summary>
         ///     Igs the end child
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndChild")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndChild();
 
         /// <summary>
         ///     Igs the end child frame
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndChildFrame")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndChildFrame();
 
         /// <summary>
         ///     Igs the end combo
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndCombo")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndCombo();
 
         /// <summary>
         ///     Igs the end disabled
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndDisabled")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndDisabled();
 
         /// <summary>
         ///     Igs the end drag drop source
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndDragDropSource")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndDragDropSource();
 
         /// <summary>
         ///     Igs the end drag drop target
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndDragDropTarget")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndDragDropTarget();
 
         /// <summary>
         ///     Igs the end frame
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndFrame")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndFrame();
 
         /// <summary>
         ///     Igs the end group
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndGroup")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndGroup();
 
         /// <summary>
         ///     Igs the end list box
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndListBox")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndListBox();
 
         /// <summary>
         ///     Igs the end main menu bar
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndMainMenuBar")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndMainMenuBar();
 
         /// <summary>
         ///     Igs the end menu
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndMenu")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndMenu();
 
         /// <summary>
         ///     Igs the end menu bar
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndMenuBar")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndMenuBar();
 
         /// <summary>
         ///     Igs the end popup
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndPopup")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndPopup();
 
         /// <summary>
         ///     Igs the end tab bar
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndTabBar")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndTabBar();
 
         /// <summary>
         ///     Igs the end tab item
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndTabItem")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndTabItem();
 
         /// <summary>
         ///     Igs the end table
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndTable")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndTable();
 
         /// <summary>
         ///     Igs the end tooltip
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndTooltip")]
+        [ExcludeFromCodeCoverage]
         public static extern void igEndTooltip();
 
         /// <summary>
@@ -842,6 +928,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="id">The id</param>
         /// <returns>The im gui viewport</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igFindViewportByID")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igFindViewportByID(uint id);
 
         /// <summary>
@@ -850,6 +937,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="platformHandle">The platform handle</param>
         /// <returns>The im gui viewport</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igFindViewportByPlatformHandle")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igFindViewportByPlatformHandle(IntPtr platformHandle);
 
         /// <summary>
@@ -859,6 +947,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="pFreeFunc">The free func</param>
         /// <param name="pUserData">The user data</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetAllocatorFunctions")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetAllocatorFunctions(ref IntPtr pAllocFunc, ref IntPtr pFreeFunc, ref IntPtr pUserData);
 
         /// <summary>
@@ -866,6 +955,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im draw list</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetBackgroundDrawList_Nil")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igGetBackgroundDrawList_Nil();
 
         /// <summary>
@@ -874,6 +964,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="viewport">The viewport</param>
         /// <returns>The im draw list</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetBackgroundDrawList_ViewportPtr")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igGetBackgroundDrawList_ViewportPtr(IntPtr viewport);
 
         /// <summary>
@@ -881,6 +972,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetClipboardText")]
+        [ExcludeFromCodeCoverage]
         public static extern byte[] igGetClipboardText();
 
         /// <summary>
@@ -890,6 +982,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="alphaMul">The alpha mul</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetColorU32_Col")]
+        [ExcludeFromCodeCoverage]
         public static extern uint igGetColorU32_Col(ImGuiCol idx, float alphaMul);
 
         /// <summary>
@@ -898,6 +991,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="col">The col</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetColorU32_Vec4")]
+        [ExcludeFromCodeCoverage]
         public static extern uint igGetColorU32_Vec4(Vector4F col);
 
         /// <summary>
@@ -906,6 +1000,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="col">The col</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetColorU32_U32")]
+        [ExcludeFromCodeCoverage]
         public static extern uint igGetColorU32_U32(uint col);
 
         /// <summary>
@@ -913,6 +1008,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetColumnIndex")]
+        [ExcludeFromCodeCoverage]
         public static extern int igGetColumnIndex();
 
         /// <summary>
@@ -921,6 +1017,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="columnIndex">The column index</param>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetColumnOffset")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetColumnOffset(int columnIndex);
 
         /// <summary>
@@ -928,6 +1025,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetColumnsCount")]
+        [ExcludeFromCodeCoverage]
         public static extern int igGetColumnsCount();
 
         /// <summary>
@@ -936,6 +1034,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="columnIndex">The column index</param>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetColumnWidth")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetColumnWidth(int columnIndex);
 
         /// <summary>
@@ -943,6 +1042,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetContentRegionAvail")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetContentRegionAvail(out Vector2F pOut);
 
         /// <summary>
@@ -950,6 +1050,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetContentRegionMax")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetContentRegionMax(out Vector2F pOut);
 
         /// <summary>
@@ -957,6 +1058,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetCurrentContext")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igGetCurrentContext();
 
         /// <summary>
@@ -964,6 +1066,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetCursorPos")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetCursorPos(out Vector2F pOut);
 
         /// <summary>
@@ -971,6 +1074,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetCursorPosX")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetCursorPosX();
 
         /// <summary>
@@ -978,6 +1082,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetCursorPosY")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetCursorPosY();
 
         /// <summary>
@@ -985,6 +1090,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetCursorScreenPos")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetCursorScreenPos(out Vector2F pOut);
 
         /// <summary>
@@ -992,6 +1098,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetCursorStartPos")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetCursorStartPos(out Vector2F pOut);
 
         /// <summary>
@@ -999,6 +1106,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui payload</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetDragDropPayload")]
+        [ExcludeFromCodeCoverage]
         public static extern ImGuiPayload igGetDragDropPayload();
 
         /// <summary>
@@ -1006,6 +1114,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im draw data</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetDrawData")]
+        [ExcludeFromCodeCoverage]
         public static extern ref ImDrawData igGetDrawData();
 
         /// <summary>
@@ -1013,6 +1122,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetDrawListSharedData")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igGetDrawListSharedData();
 
         /// <summary>
@@ -1020,6 +1130,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im font</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetFont")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igGetFont();
 
         /// <summary>
@@ -1027,6 +1138,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetFontSize")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetFontSize();
 
         /// <summary>
@@ -1034,6 +1146,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetFontTexUvWhitePixel")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetFontTexUvWhitePixel(out Vector2F pOut);
 
         /// <summary>
@@ -1041,6 +1154,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im draw list</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetForegroundDrawList_Nil")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igGetForegroundDrawList_Nil();
 
         /// <summary>
@@ -1049,6 +1163,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="viewport">The viewport</param>
         /// <returns>The im draw list</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetForegroundDrawList_ViewportPtr")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igGetForegroundDrawList_ViewportPtr(IntPtr viewport);
 
         /// <summary>
@@ -1056,6 +1171,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetFrameCount")]
+        [ExcludeFromCodeCoverage]
         public static extern int igGetFrameCount();
 
         /// <summary>
@@ -1063,6 +1179,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetFrameHeight")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetFrameHeight();
 
         /// <summary>
@@ -1070,6 +1187,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetFrameHeightWithSpacing")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetFrameHeightWithSpacing();
 
         /// <summary>
@@ -1078,6 +1196,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="strId">The str id</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetID_Str")]
+        [ExcludeFromCodeCoverage]
         public static extern uint igGetID_Str(byte[] strId);
 
         /// <summary>
@@ -1087,6 +1206,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="strIdEnd">The str id end</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetID_StrStr")]
+        [ExcludeFromCodeCoverage]
         public static extern uint igGetID_StrStr(byte[] strIdBegin, byte[] strIdEnd);
 
         /// <summary>
@@ -1095,6 +1215,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="ptrId">The ptr id</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetID_Ptr")]
+        [ExcludeFromCodeCoverage]
         public static extern uint igGetID_Ptr(IntPtr ptrId);
 
         /// <summary>
@@ -1102,6 +1223,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui io</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetIO")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igGetIO();
 
         /// <summary>
@@ -1109,6 +1231,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetItemRectMax")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetItemRectMax(out Vector2F pOut);
 
         /// <summary>
@@ -1116,6 +1239,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetItemRectMin")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetItemRectMin(out Vector2F pOut);
 
         /// <summary>
@@ -1123,6 +1247,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetItemRectSize")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetItemRectSize(out Vector2F pOut);
 
         /// <summary>
@@ -1131,6 +1256,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="key">The key</param>
         /// <returns>The im gui key</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetKeyIndex")]
+        [ExcludeFromCodeCoverage]
         public static extern ImGuiKey igGetKeyIndex(ImGuiKey key);
 
         /// <summary>
@@ -1139,6 +1265,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="key">The key</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetKeyName")]
+        [ExcludeFromCodeCoverage]
         public static extern byte[] igGetKeyName(ImGuiKey key);
 
         /// <summary>
@@ -1149,6 +1276,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="rate">The rate</param>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetKeyPressedAmount")]
+        [ExcludeFromCodeCoverage]
         public static extern int igGetKeyPressedAmount(ImGuiKey key, float repeatDelay, float rate);
 
         /// <summary>
@@ -1156,6 +1284,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui viewport</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetMainViewport")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igGetMainViewport();
 
         /// <summary>
@@ -1164,6 +1293,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="button">The button</param>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetMouseClickedCount")]
+        [ExcludeFromCodeCoverage]
         public static extern int igGetMouseClickedCount(ImGuiMouseButton button);
 
         /// <summary>
@@ -1171,6 +1301,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui mouse cursor</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetMouseCursor")]
+        [ExcludeFromCodeCoverage]
         public static extern ImGuiMouseCursor igGetMouseCursor();
 
         /// <summary>
@@ -1180,6 +1311,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="button">The button</param>
         /// <param name="lockThreshold">The lock threshold</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetMouseDragDelta")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetMouseDragDelta(out Vector2F pOut, ImGuiMouseButton button, float lockThreshold);
 
         /// <summary>
@@ -1187,6 +1319,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetMousePos")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetMousePos(out Vector2F pOut);
 
         /// <summary>
@@ -1194,6 +1327,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetMousePosOnOpeningCurrentPopup")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetMousePosOnOpeningCurrentPopup(out Vector2F pOut);
 
         /// <summary>
@@ -1201,6 +1335,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui platform io</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetPlatformIO")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igGetPlatformIO();
 
         /// <summary>
@@ -1208,6 +1343,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetScrollMaxX")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetScrollMaxX();
 
         /// <summary>
@@ -1215,6 +1351,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetScrollMaxY")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetScrollMaxY();
 
         /// <summary>
@@ -1222,6 +1359,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetScrollX")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetScrollX();
 
         /// <summary>
@@ -1229,6 +1367,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetScrollY")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetScrollY();
 
         /// <summary>
@@ -1236,6 +1375,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui storage</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetStateStorage")]
+        [ExcludeFromCodeCoverage]
         public static extern ImGuiStorage igGetStateStorage();
 
         /// <summary>
@@ -1243,6 +1383,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui style</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetStyle")]
+        [ExcludeFromCodeCoverage]
         public static extern ref ImGuiStyle igGetStyle();
 
         /// <summary>
@@ -1251,6 +1392,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="idx">The idx</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetStyleColorName")]
+        [ExcludeFromCodeCoverage]
         public static extern byte[] igGetStyleColorName(ImGuiCol idx);
 
         /// <summary>
@@ -1259,6 +1401,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="idx">The idx</param>
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetStyleColorVec4")]
+        [ExcludeFromCodeCoverage]
         public static extern Vector4F igGetStyleColorVec4(ImGuiCol idx);
 
         /// <summary>
@@ -1266,6 +1409,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetTextLineHeight")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetTextLineHeight();
 
         /// <summary>
@@ -1273,6 +1417,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetTextLineHeightWithSpacing")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetTextLineHeightWithSpacing();
 
         /// <summary>
@@ -1280,6 +1425,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The double</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetTime")]
+        [ExcludeFromCodeCoverage]
         public static extern double igGetTime();
 
         /// <summary>
@@ -1287,6 +1433,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetTreeNodeToLabelSpacing")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetTreeNodeToLabelSpacing();
 
         /// <summary>
@@ -1294,6 +1441,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetVersion")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igGetVersion();
 
         /// <summary>
@@ -1301,6 +1449,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetWindowContentRegionMax")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetWindowContentRegionMax(out Vector2F pOut);
 
         /// <summary>
@@ -1308,6 +1457,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetWindowContentRegionMin")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetWindowContentRegionMin(out Vector2F pOut);
 
         /// <summary>
@@ -1315,6 +1465,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetWindowDockID")]
+        [ExcludeFromCodeCoverage]
         public static extern uint igGetWindowDockID();
 
         /// <summary>
@@ -1322,6 +1473,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetWindowDpiScale")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetWindowDpiScale();
 
         /// <summary>
@@ -1329,6 +1481,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im draw list</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetWindowDrawList")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igGetWindowDrawList();
 
         /// <summary>
@@ -1336,6 +1489,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetWindowHeight")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetWindowHeight();
 
         /// <summary>
@@ -1343,6 +1497,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetWindowPos")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetWindowPos(out Vector2F pOut);
 
         /// <summary>
@@ -1350,6 +1505,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOut">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetWindowSize")]
+        [ExcludeFromCodeCoverage]
         public static extern void igGetWindowSize(out Vector2F pOut);
 
         /// <summary>
@@ -1357,6 +1513,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui viewport</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetWindowViewport")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igGetWindowViewport();
 
         /// <summary>
@@ -1364,6 +1521,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetWindowWidth")]
+        [ExcludeFromCodeCoverage]
         public static extern float igGetWindowWidth();
 
         /// <summary>
@@ -1376,6 +1534,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="tintCol">The tint col</param>
         /// <param name="borderCol">The border col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igImage")]
+        [ExcludeFromCodeCoverage]
         public static extern void igImage(IntPtr userTextureId, Vector2F size, Vector2F uv0, Vector2F uv1, Vector4F tintCol, Vector4F borderCol);
 
         /// <summary>
@@ -1390,6 +1549,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="tintCol">The tint col</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igImageButton")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igImageButton(byte[] strId, IntPtr userTextureId, Vector2F size, Vector2F uv0, Vector2F uv1, Vector4F bgCol, Vector4F tintCol);
 
         /// <summary>
@@ -1397,6 +1557,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="indentW">The indent</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIndent")]
+        [ExcludeFromCodeCoverage]
         public static extern void igIndent(float indentW);
 
         /// <summary>
@@ -1410,6 +1571,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputDouble")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igInputDouble(byte[] label, ref double v, double step, double stepFast, byte[] format, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1423,6 +1585,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputFloat")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igInputFloat(byte[] label, ref float v, float step, float stepFast, byte[] format, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1434,6 +1597,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputFloat2")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igInputFloat2(byte[] label, ref Vector2F v, byte[] format, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1445,6 +1609,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputFloat3")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igInputFloat3(byte[] label, ref Vector3F v, byte[] format, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1456,6 +1621,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputFloat4")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igInputFloat4(byte[] label, ref Vector4F v, byte[] format, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1468,6 +1634,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputInt")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igInputInt(byte[] label, ref int v, int step, int stepFast, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1478,6 +1645,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputInt2")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igInputInt2(byte[] label, ref int v, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1488,6 +1656,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_igInputInt3")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igInputInt3(byte[] label, ref int v, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1498,6 +1667,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputInt4")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igInputInt4(byte[] label, ref int v, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1512,6 +1682,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputScalar")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igInputScalar(byte[] label, ImGuiDataType dataType, IntPtr pData, IntPtr pStep, IntPtr pStepFast, byte[] format, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1527,6 +1698,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputScalarN")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igInputScalarN(byte[] label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pStep, IntPtr pStepFast, byte[] format, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1540,6 +1712,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputText")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igInputText(byte[] label, IntPtr buf, uint bufSize, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr userData);
 
         /// <summary>
@@ -1554,6 +1727,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputTextMultiline")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igInputTextMultiline(byte[] label, byte[] buf, uint bufSize, Vector2F size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr userData);
 
         /// <summary>
@@ -1568,6 +1742,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInputTextWithHint")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igInputTextWithHint(byte[] label, byte[] hint, byte[] buf, uint bufSize, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, IntPtr userData);
 
         /// <summary>
@@ -1578,6 +1753,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igInvisibleButton")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igInvisibleButton(byte[] strId, Vector2F size, ImGuiButtonFlags flags);
 
         /// <summary>
@@ -1585,6 +1761,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsAnyItemActive")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsAnyItemActive();
 
         /// <summary>
@@ -1592,6 +1769,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsAnyItemFocused")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsAnyItemFocused();
 
         /// <summary>
@@ -1599,6 +1777,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsAnyItemHovered")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsAnyItemHovered();
 
         /// <summary>
@@ -1606,6 +1785,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsAnyMouseDown")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsAnyMouseDown();
 
         /// <summary>
@@ -1613,6 +1793,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsItemActivated")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsItemActivated();
 
         /// <summary>
@@ -1620,6 +1801,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsItemActive")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsItemActive();
 
         /// <summary>
@@ -1628,6 +1810,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="mouseButton">The mouse button</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsItemClicked")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsItemClicked(ImGuiMouseButton mouseButton);
 
         /// <summary>
@@ -1635,6 +1818,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsItemDeactivated")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsItemDeactivated();
 
         /// <summary>
@@ -1642,6 +1826,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsItemDeactivatedAfterEdit")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsItemDeactivatedAfterEdit();
 
         /// <summary>
@@ -1649,6 +1834,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsItemEdited")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsItemEdited();
 
         /// <summary>
@@ -1656,6 +1842,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsItemFocused")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsItemFocused();
 
         /// <summary>
@@ -1664,6 +1851,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsItemHovered")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsItemHovered(ImGuiHoveredFlags flags);
 
         /// <summary>
@@ -1671,6 +1859,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsItemToggledOpen")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsItemToggledOpen();
 
         /// <summary>
@@ -1678,6 +1867,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsItemVisible")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsItemVisible();
 
         /// <summary>
@@ -1686,6 +1876,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="key">The key</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsKeyDown_Nil")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsKeyDown_Nil(ImGuiKey key);
 
         /// <summary>
@@ -1695,6 +1886,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="repeat">The repeat</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsKeyPressed_Bool")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsKeyPressed_Bool(ImGuiKey key, byte repeat);
 
         /// <summary>
@@ -1703,6 +1895,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="key">The key</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsKeyReleased_Nil")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsKeyReleased_Nil(ImGuiKey key);
 
         /// <summary>
@@ -1712,6 +1905,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="repeat">The repeat</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsMouseClicked_Bool")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsMouseClicked_Bool(ImGuiMouseButton button, byte repeat);
 
         /// <summary>
@@ -1720,6 +1914,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="button">The button</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsMouseDoubleClicked")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsMouseDoubleClicked(ImGuiMouseButton button);
 
         /// <summary>
@@ -1728,6 +1923,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="button">The button</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsMouseDown_Nil")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsMouseDown_Nil(ImGuiMouseButton button);
 
         /// <summary>
@@ -1737,6 +1933,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="lockThreshold">The lock threshold</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsMouseDragging")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsMouseDragging(ImGuiMouseButton button, float lockThreshold);
 
         /// <summary>
@@ -1747,6 +1944,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="clip">The clip</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsMouseHoveringRect")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsMouseHoveringRect(Vector2F rMin, Vector2F rMax, byte clip);
 
         /// <summary>
@@ -1755,6 +1953,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="mousePos">The mouse pos</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsMousePosValid")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsMousePosValid(ref Vector2F mousePos);
 
         /// <summary>
@@ -1763,6 +1962,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="button">The button</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsMouseReleased_Nil")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsMouseReleased_Nil(ImGuiMouseButton button);
 
         /// <summary>
@@ -1772,6 +1972,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsPopupOpen_Str")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsPopupOpen_Str(byte[] strId, ImGuiPopupFlags flags);
 
         /// <summary>
@@ -1780,6 +1981,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsRectVisible_Nil")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsRectVisible_Nil(Vector2F size);
 
         /// <summary>
@@ -1789,6 +1991,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="rectMax">The rect max</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsRectVisible_Vec2")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsRectVisible_Vec2(Vector2F rectMin, Vector2F rectMax);
 
         /// <summary>
@@ -1796,6 +1999,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsWindowAppearing")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsWindowAppearing();
 
         /// <summary>
@@ -1803,6 +2007,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsWindowCollapsed")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsWindowCollapsed();
 
         /// <summary>
@@ -1810,6 +2015,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsWindowDocked")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsWindowDocked();
 
         /// <summary>
@@ -1818,6 +2024,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsWindowFocused")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsWindowFocused(ImGuiFocusedFlags flags);
 
         /// <summary>
@@ -1826,6 +2033,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igIsWindowHovered")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igIsWindowHovered(ImGuiHoveredFlags flags);
 
         /// <summary>
@@ -1834,6 +2042,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="label">The label</param>
         /// <param name="fmt">The fmt</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igLabelText")]
+        [ExcludeFromCodeCoverage]
         public static extern void igLabelText(byte[] label, byte[] fmt);
 
         /// <summary>
@@ -1846,6 +2055,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="heightInItems">The height in items</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igListBox_Str_arr")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igListBox_Str_arr(byte[] label, ref int currentItem, byte[][] items, int itemsCount, int heightInItems);
 
         /// <summary>
@@ -1853,6 +2063,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="iniFilename">The ini filename</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igLoadIniSettingsFromDisk")]
+        [ExcludeFromCodeCoverage]
         public static extern void igLoadIniSettingsFromDisk(byte[] iniFilename);
 
         /// <summary>
@@ -1861,18 +2072,21 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="iniData">The ini data</param>
         /// <param name="iniSize">The ini size</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igLoadIniSettingsFromMemory")]
+        [ExcludeFromCodeCoverage]
         public static extern void igLoadIniSettingsFromMemory(byte[] iniData, uint iniSize);
 
         /// <summary>
         ///     Igs the log buttons
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igLogButtons")]
+        [ExcludeFromCodeCoverage]
         public static extern void igLogButtons();
 
         /// <summary>
         ///     Igs the log finish
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igLogFinish")]
+        [ExcludeFromCodeCoverage]
         public static extern void igLogFinish();
 
         /// <summary>
@@ -1880,6 +2094,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="fmt">The fmt</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igLogText")]
+        [ExcludeFromCodeCoverage]
         public static extern void igLogText(byte[] fmt);
 
         /// <summary>
@@ -1887,6 +2102,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="autoOpenDepth">The auto open depth</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igLogToClipboard")]
+        [ExcludeFromCodeCoverage]
         public static extern void igLogToClipboard(int autoOpenDepth);
 
         /// <summary>
@@ -1895,6 +2111,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="autoOpenDepth">The auto open depth</param>
         /// <param name="filename">The filename</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igLogToFile")]
+        [ExcludeFromCodeCoverage]
         public static extern void igLogToFile(int autoOpenDepth, byte[] filename);
 
         /// <summary>
@@ -1902,6 +2119,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="autoOpenDepth">The auto open depth</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igLogToTTY")]
+        [ExcludeFromCodeCoverage]
         public static extern void igLogToTTY(int autoOpenDepth);
 
         /// <summary>
@@ -1910,6 +2128,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="size">The size</param>
         /// <returns>The void</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igMemAlloc")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr igMemAlloc(uint size);
 
         /// <summary>
@@ -1917,6 +2136,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="ptr">The ptr</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igMemFree")]
+        [ExcludeFromCodeCoverage]
         public static extern void igMemFree(IntPtr ptr);
 
         /// <summary>
@@ -1928,6 +2148,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="enabled">The enabled</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igMenuItem_Bool")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igMenuItem_Bool(byte[] label, byte[] shortcut, byte selected, byte enabled);
 
         /// <summary>
@@ -1939,24 +2160,28 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="enabled">The enabled</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igMenuItem_BoolPtr")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igMenuItem_BoolPtr(byte[] label, byte[] shortcut, bool pSelected, bool enabled);
 
         /// <summary>
         ///     Igs the new frame
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igNewFrame")]
+        [ExcludeFromCodeCoverage]
         public static extern void igNewFrame();
 
         /// <summary>
         ///     Igs the new line
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igNewLine")]
+        [ExcludeFromCodeCoverage]
         public static extern void igNewLine();
 
         /// <summary>
         ///     Igs the next column
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igNextColumn")]
+        [ExcludeFromCodeCoverage]
         public static extern void igNextColumn();
 
         /// <summary>
@@ -1965,6 +2190,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="strId">The str id</param>
         /// <param name="popupFlags">The popup flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igOpenPopup_Str")]
+        [ExcludeFromCodeCoverage]
         public static extern void igOpenPopup_Str(byte[] strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>
@@ -1973,6 +2199,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="id">The id</param>
         /// <param name="popupFlags">The popup flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igOpenPopup_ID")]
+        [ExcludeFromCodeCoverage]
         public static extern void igOpenPopup_ID(uint id, ImGuiPopupFlags popupFlags);
 
         /// <summary>
@@ -1981,6 +2208,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="strId">The str id</param>
         /// <param name="popupFlags">The popup flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igOpenPopupOnItemClick")]
+        [ExcludeFromCodeCoverage]
         public static extern void igOpenPopupOnItemClick(byte[] strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>
@@ -1996,6 +2224,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="graphSize">The graph size</param>
         /// <param name="stride">The stride</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPlotHistogram_FloatPtr")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPlotHistogram_FloatPtr(byte[] label, float values, int valuesCount, int valuesOffset, byte[] overlayText, float scaleMin, float scaleMax, Vector2F graphSize, int stride);
 
         /// <summary>
@@ -2011,42 +2240,49 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="graphSize">The graph size</param>
         /// <param name="stride">The stride</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPlotLines_FloatPtr")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPlotLines_FloatPtr(byte[] label, float values, int valuesCount, int valuesOffset, byte[] overlayText, float scaleMin, float scaleMax, Vector2F graphSize, int stride);
 
         /// <summary>
         ///     Igs the pop allow keyboard focus
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPopAllowKeyboardFocus")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPopAllowKeyboardFocus();
 
         /// <summary>
         ///     Igs the pop button repeat
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPopButtonRepeat")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPopButtonRepeat();
 
         /// <summary>
         ///     Igs the pop clip rect
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPopClipRect")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPopClipRect();
 
         /// <summary>
         ///     Igs the pop font
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPopFont")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPopFont();
 
         /// <summary>
         ///     Igs the pop id
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPopID")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPopID();
 
         /// <summary>
         ///     Igs the pop item width
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPopItemWidth")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPopItemWidth();
 
         /// <summary>
@@ -2054,6 +2290,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="count">The count</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPopStyleColor")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPopStyleColor(int count);
 
         /// <summary>
@@ -2061,12 +2298,14 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="count">The count</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPopStyleVar")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPopStyleVar(int count);
 
         /// <summary>
         ///     Igs the pop text wrap pos
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPopTextWrapPos")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPopTextWrapPos();
 
         /// <summary>
@@ -2076,6 +2315,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="sizeArg">The size arg</param>
         /// <param name="overlay">The overlay</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igProgressBar")]
+        [ExcludeFromCodeCoverage]
         public static extern void igProgressBar(float fraction, Vector2F sizeArg, byte[] overlay);
 
         /// <summary>
@@ -2083,6 +2323,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="allowKeyboardFocus">The allow keyboard focus</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushAllowKeyboardFocus")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPushAllowKeyboardFocus(byte allowKeyboardFocus);
 
         /// <summary>
@@ -2090,6 +2331,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="repeat">The repeat</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushButtonRepeat")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPushButtonRepeat(byte repeat);
 
         /// <summary>
@@ -2099,6 +2341,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="clipRectMax">The clip rect max</param>
         /// <param name="intersectWithCurrentClipRect">The intersect with current clip rect</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushClipRect")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPushClipRect(Vector2F clipRectMin, Vector2F clipRectMax, byte intersectWithCurrentClipRect);
 
         /// <summary>
@@ -2106,6 +2349,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="font">The font</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushFont")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPushFont(IntPtr font);
 
         /// <summary>
@@ -2113,6 +2357,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="strId">The str id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushID_Str")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPushID_Str(byte[] strId);
 
         /// <summary>
@@ -2121,6 +2366,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="strIdBegin">The str id begin</param>
         /// <param name="strIdEnd">The str id end</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushID_StrStr")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPushID_StrStr(byte[] strIdBegin, byte[] strIdEnd);
 
         /// <summary>
@@ -2128,6 +2374,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="ptrId">The ptr id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushID_Ptr")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPushID_Ptr(IntPtr ptrId);
 
         /// <summary>
@@ -2135,6 +2382,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="intId">The int id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushID_Int")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPushID_Int(int intId);
 
         /// <summary>
@@ -2142,6 +2390,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="itemWidth">The item width</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushItemWidth")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPushItemWidth(float itemWidth);
 
         /// <summary>
@@ -2150,6 +2399,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="idx">The idx</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushStyleColor_U32")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPushStyleColor_U32(ImGuiCol idx, uint col);
 
         /// <summary>
@@ -2158,6 +2408,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="idx">The idx</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushStyleColor_Vec4")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPushStyleColor_Vec4(ImGuiCol idx, Vector4F col);
 
         /// <summary>
@@ -2166,6 +2417,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="idx">The idx</param>
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushStyleVar_Float")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPushStyleVar_Float(ImGuiStyleVar idx, float val);
 
         /// <summary>
@@ -2174,6 +2426,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="idx">The idx</param>
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushStyleVar_Vec2")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPushStyleVar_Vec2(ImGuiStyleVar idx, Vector2F val);
 
         /// <summary>
@@ -2181,6 +2434,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="wrapLocalPosX">The wrap local pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igPushTextWrapPos")]
+        [ExcludeFromCodeCoverage]
         public static extern void igPushTextWrapPos(float wrapLocalPosX);
 
         /// <summary>
@@ -2190,6 +2444,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="active">The active</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igRadioButton_Bool")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igRadioButton_Bool(byte[] label, bool active);
 
         /// <summary>
@@ -2200,12 +2455,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="vButton">The button</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igRadioButton_IntPtr")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igRadioButton_IntPtr(byte[] label, ref int v, int vButton);
 
         /// <summary>
         ///     Igs the render
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igRender")]
+        [ExcludeFromCodeCoverage]
         public static extern void igRender();
 
         /// <summary>
@@ -2214,6 +2471,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="platformRenderArg">The platform render arg</param>
         /// <param name="rendererRenderArg">The renderer render arg</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igRenderPlatformWindowsDefault")]
+        [ExcludeFromCodeCoverage]
         public static extern void igRenderPlatformWindowsDefault(IntPtr platformRenderArg, IntPtr rendererRenderArg);
 
         /// <summary>
@@ -2221,6 +2479,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="button">The button</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igResetMouseDragDelta")]
+        [ExcludeFromCodeCoverage]
         public static extern void igResetMouseDragDelta(ImGuiMouseButton button);
 
         /// <summary>
@@ -2229,6 +2488,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="offsetFromStartX">The offset from start</param>
         /// <param name="spacing">The spacing</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSameLine")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSameLine(float offsetFromStartX, float spacing);
 
         /// <summary>
@@ -2236,6 +2496,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="iniFilename">The ini filename</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSaveIniSettingsToDisk")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSaveIniSettingsToDisk(byte[] iniFilename);
 
         /// <summary>
@@ -2244,6 +2505,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="outIniSize">The out ini size</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSaveIniSettingsToMemory")]
+        [ExcludeFromCodeCoverage]
         public static extern byte[] igSaveIniSettingsToMemory(out uint outIniSize);
 
         /// <summary>
@@ -2255,6 +2517,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSelectable_Bool")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igSelectable_Bool(byte[] label, bool selected, ImGuiSelectableFlags flags, Vector2F size);
 
         /// <summary>
@@ -2266,12 +2529,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSelectable_BoolPtr")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igSelectable_BoolPtr(byte[] label, bool pSelected, ImGuiSelectableFlags flags, Vector2F size);
 
         /// <summary>
         ///     Igs the separator
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSeparator")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSeparator();
 
         /// <summary>
@@ -2281,6 +2546,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="freeFunc">The free func</param>
         /// <param name="userData">The user data</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetAllocatorFunctions")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetAllocatorFunctions(IntPtr allocFunc, IntPtr freeFunc, IntPtr userData);
 
         /// <summary>
@@ -2288,6 +2554,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="text">The text</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetClipboardText")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetClipboardText(byte[] text);
 
         /// <summary>
@@ -2295,6 +2562,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="flags">The flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetColorEditOptions")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetColorEditOptions(ImGuiColorEditFlags flags);
 
         /// <summary>
@@ -2303,6 +2571,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="columnIndex">The column index</param>
         /// <param name="offsetX">The offset</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetColumnOffset")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetColumnOffset(int columnIndex, float offsetX);
 
         /// <summary>
@@ -2311,6 +2580,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="columnIndex">The column index</param>
         /// <param name="width">The width</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetColumnWidth")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetColumnWidth(int columnIndex, float width);
 
         /// <summary>
@@ -2318,6 +2588,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="ctx">The ctx</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetCurrentContext")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetCurrentContext(IntPtr ctx);
 
         /// <summary>
@@ -2325,6 +2596,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="localPos">The local pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetCursorPos")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetCursorPos(Vector2F localPos);
 
         /// <summary>
@@ -2332,6 +2604,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="localX">The local</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetCursorPosX")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetCursorPosX(float localX);
 
         /// <summary>
@@ -2339,6 +2612,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="localY">The local</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetCursorPosY")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetCursorPosY(float localY);
 
         /// <summary>
@@ -2346,6 +2620,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pos">The pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetCursorScreenPos")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetCursorScreenPos(Vector2F pos);
 
         /// <summary>
@@ -2357,18 +2632,21 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="cond">The cond</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetDragDropPayload")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igSetDragDropPayload(byte[] type, IntPtr data, uint sz, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the set item allow overlap
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetItemAllowOverlap")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetItemAllowOverlap();
 
         /// <summary>
         ///     Igs the set item default focus
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetItemDefaultFocus")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetItemDefaultFocus();
 
         /// <summary>
@@ -2376,6 +2654,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="offset">The offset</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetKeyboardFocusHere")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetKeyboardFocusHere(int offset);
 
         /// <summary>
@@ -2383,6 +2662,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="cursorType">The cursor type</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetMouseCursor")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetMouseCursor(ImGuiMouseCursor cursorType);
 
         /// <summary>
@@ -2390,6 +2670,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="wantCaptureKeyboard">The want capture keyboard</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextFrameWantCaptureKeyboard")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetNextFrameWantCaptureKeyboard(byte wantCaptureKeyboard);
 
         /// <summary>
@@ -2397,6 +2678,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="wantCaptureMouse">The want capture mouse</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextFrameWantCaptureMouse")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetNextFrameWantCaptureMouse(byte wantCaptureMouse);
 
         /// <summary>
@@ -2405,6 +2687,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="isOpen">The is open</param>
         /// <param name="cond">The cond</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextItemOpen")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetNextItemOpen(byte isOpen, ImGuiCond cond);
 
         /// <summary>
@@ -2412,6 +2695,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="itemWidth">The item width</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextItemWidth")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetNextItemWidth(float itemWidth);
 
         /// <summary>
@@ -2419,6 +2703,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="alpha">The alpha</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowBgAlpha")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetNextWindowBgAlpha(float alpha);
 
         /// <summary>
@@ -2426,6 +2711,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="windowClass">The window class</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowClass")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetNextWindowClass(ImGuiWindowClass windowClass);
 
         /// <summary>
@@ -2434,6 +2720,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="collapsed">The collapsed</param>
         /// <param name="cond">The cond</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowCollapsed")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetNextWindowCollapsed(byte collapsed, ImGuiCond cond);
 
         /// <summary>
@@ -2441,6 +2728,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="size">The size</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowContentSize")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetNextWindowContentSize(Vector2F size);
 
         /// <summary>
@@ -2449,12 +2737,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="dockId">The dock id</param>
         /// <param name="cond">The cond</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowDockID")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetNextWindowDockID(uint dockId, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the set next window focus
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowFocus")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetNextWindowFocus();
 
         /// <summary>
@@ -2464,6 +2754,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="cond">The cond</param>
         /// <param name="pivot">The pivot</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowPos")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetNextWindowPos(Vector2F pos, ImGuiCond cond, Vector2F pivot);
 
         /// <summary>
@@ -2471,6 +2762,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="scroll">The scroll</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowScroll")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetNextWindowScroll(Vector2F scroll);
 
         /// <summary>
@@ -2479,6 +2771,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="size">The size</param>
         /// <param name="cond">The cond</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowSize")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetNextWindowSize(Vector2F size, ImGuiCond cond);
 
         /// <summary>
@@ -2489,6 +2782,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="customCallback">The custom callback</param>
         /// <param name="customCallbackData">The custom callback data</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowSizeConstraints")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetNextWindowSizeConstraints(Vector2F sizeMin, Vector2F sizeMax, ImGuiSizeCallback customCallback, IntPtr customCallbackData);
 
         /// <summary>
@@ -2496,6 +2790,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="viewportId">The viewport id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetNextWindowViewport")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetNextWindowViewport(uint viewportId);
 
         /// <summary>
@@ -2504,6 +2799,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="localX">The local</param>
         /// <param name="centerXRatio">The center ratio</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetScrollFromPosX_Float")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetScrollFromPosX_Float(float localX, float centerXRatio);
 
         /// <summary>
@@ -2512,6 +2808,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="localY">The local</param>
         /// <param name="centerYRatio">The center ratio</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetScrollFromPosY_Float")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetScrollFromPosY_Float(float localY, float centerYRatio);
 
         /// <summary>
@@ -2519,6 +2816,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="centerXRatio">The center ratio</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetScrollHereX")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetScrollHereX(float centerXRatio);
 
         /// <summary>
@@ -2526,6 +2824,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="centerYRatio">The center ratio</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetScrollHereY")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetScrollHereY(float centerYRatio);
 
         /// <summary>
@@ -2533,6 +2832,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="scrollX">The scroll</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetScrollX_Float")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetScrollX_Float(float scrollX);
 
         /// <summary>
@@ -2540,6 +2840,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="scrollY">The scroll</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetScrollY_Float")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetScrollY_Float(float scrollY);
 
         /// <summary>
@@ -2547,6 +2848,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="storage">The storage</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetStateStorage")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetStateStorage(ImGuiStorage storage);
 
         /// <summary>
@@ -2554,6 +2856,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="tabOrDockedWindowLabel">The tab or docked window label</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetTabItemClosed")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetTabItemClosed(byte[] tabOrDockedWindowLabel);
 
         /// <summary>
@@ -2561,6 +2864,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="fmt">The fmt</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetTooltip")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetTooltip(byte[] fmt);
 
         /// <summary>
@@ -2569,6 +2873,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="collapsed">The collapsed</param>
         /// <param name="cond">The cond</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetWindowCollapsed_Bool")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetWindowCollapsed_Bool(byte collapsed, ImGuiCond cond);
 
         /// <summary>
@@ -2578,12 +2883,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="collapsed">The collapsed</param>
         /// <param name="cond">The cond</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetWindowCollapsed_Str")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetWindowCollapsed_Str(byte[] name, bool collapsed, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the set window focus nil
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetWindowFocus_Nil")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetWindowFocus_Nil();
 
         /// <summary>
@@ -2591,6 +2898,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="name">The name</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetWindowFocus_Str")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetWindowFocus_Str(byte[] name);
 
         /// <summary>
@@ -2598,6 +2906,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="scale">The scale</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetWindowFontScale")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetWindowFontScale(float scale);
 
         /// <summary>
@@ -2606,6 +2915,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="pos">The pos</param>
         /// <param name="cond">The cond</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetWindowPos_Vec2")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetWindowPos_Vec2(Vector2F pos, ImGuiCond cond);
 
         /// <summary>
@@ -2615,6 +2925,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="pos">The pos</param>
         /// <param name="cond">The cond</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetWindowPos_Str")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetWindowPos_Str(byte[] name, Vector2F pos, ImGuiCond cond);
 
         /// <summary>
@@ -2623,6 +2934,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="size">The size</param>
         /// <param name="cond">The cond</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetWindowSize_Vec2")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetWindowSize_Vec2(Vector2F size, ImGuiCond cond);
 
         /// <summary>
@@ -2632,6 +2944,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="size">The size</param>
         /// <param name="cond">The cond</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSetWindowSize_Str")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSetWindowSize_Str(byte[] name, Vector2F size, ImGuiCond cond);
 
         /// <summary>
@@ -2639,6 +2952,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOpen">The open</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igShowAboutWindow")]
+        [ExcludeFromCodeCoverage]
         public static extern void igShowAboutWindow(IntPtr pOpen);
 
         /// <summary>
@@ -2646,6 +2960,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOpen">The open</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igShowDebugLogWindow")]
+        [ExcludeFromCodeCoverage]
         public static extern void igShowDebugLogWindow(IntPtr pOpen);
 
         /// <summary>
@@ -2653,6 +2968,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOpen">The open</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igShowDemoWindow")]
+        [ExcludeFromCodeCoverage]
         public static extern void igShowDemoWindow(IntPtr pOpen);
 
         /// <summary>
@@ -2660,6 +2976,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The label</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igShowFontSelector")]
+        [ExcludeFromCodeCoverage]
         public static extern void igShowFontSelector(byte[] label);
 
         /// <summary>
@@ -2667,6 +2984,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOpen">The open</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igShowMetricsWindow")]
+        [ExcludeFromCodeCoverage]
         public static extern void igShowMetricsWindow(IntPtr pOpen);
 
         /// <summary>
@@ -2674,6 +2992,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="pOpen">The open</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igShowStackToolWindow")]
+        [ExcludeFromCodeCoverage]
         public static extern void igShowStackToolWindow(IntPtr pOpen);
 
         /// <summary>
@@ -2681,6 +3000,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="imGuiStyle"></param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igShowStyleEditor")]
+        [ExcludeFromCodeCoverage]
         public static extern void igShowStyleEditor(ImGuiStyle imGuiStyle);
 
         /// <summary>
@@ -2689,12 +3009,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="label">The label</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igShowStyleSelector")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igShowStyleSelector(byte[] label);
 
         /// <summary>
         ///     Igs the show user guide
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igShowUserGuide")]
+        [ExcludeFromCodeCoverage]
         public static extern void igShowUserGuide();
 
         /// <summary>
@@ -2708,6 +3030,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSliderAngle")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igSliderAngle(byte[] label, ref float vRad, float vDegreesMin, float vDegreesMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2721,6 +3044,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSliderFloat")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igSliderFloat(byte[] label, ref float v, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2734,6 +3058,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSliderFloat2")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igSliderFloat2(byte[] label, ref Vector2F v, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2747,6 +3072,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSliderFloat3")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igSliderFloat3(byte[] label, ref Vector3F v, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2760,6 +3086,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSliderFloat4")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igSliderFloat4(byte[] label, Vector4F v, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2773,6 +3100,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSliderInt")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igSliderInt(byte[] label, ref int v, int vMin, int vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2786,6 +3114,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSliderInt2")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igSliderInt2(byte[] label, ref int v, int vMin, int vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2799,6 +3128,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSliderInt3")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igSliderInt3(byte[] label, ref int v, int vMin, int vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2812,6 +3142,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSliderInt4")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igSliderInt4(byte[] label, ref int v, int vMin, int vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2826,6 +3157,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSliderScalar")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igSliderScalar(byte[] label, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2841,6 +3173,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSliderScalarN")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igSliderScalarN(byte[] label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pMin, IntPtr pMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2849,12 +3182,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="label">The label</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSmallButton")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igSmallButton(byte[] label);
 
         /// <summary>
         ///     Igs the spacing
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igSpacing")]
+        [ExcludeFromCodeCoverage]
         public static extern void igSpacing();
 
         /// <summary>
@@ -2862,6 +3197,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="dst">The dst</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igStyleColorsClassic")]
+        [ExcludeFromCodeCoverage]
         public static extern void igStyleColorsClassic(ImGuiStyle dst);
 
         /// <summary>
@@ -2869,6 +3205,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="dst">The dst</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igStyleColorsDark")]
+        [ExcludeFromCodeCoverage]
         public static extern void igStyleColorsDark(ImGuiStyle dst);
 
         /// <summary>
@@ -2876,6 +3213,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="dst">The dst</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igStyleColorsLight")]
+        [ExcludeFromCodeCoverage]
         public static extern void igStyleColorsLight(ImGuiStyle dst);
 
         /// <summary>
@@ -2885,6 +3223,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTabItemButton")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igTabItemButton(byte[] label, ImGuiTabItemFlags flags);
 
         /// <summary>
@@ -2892,6 +3231,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableGetColumnCount")]
+        [ExcludeFromCodeCoverage]
         public static extern int igTableGetColumnCount();
 
         /// <summary>
@@ -2900,6 +3240,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="columnN">The column</param>
         /// <returns>The im gui table column flags</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableGetColumnFlags")]
+        [ExcludeFromCodeCoverage]
         public static extern ImGuiTableColumnFlags igTableGetColumnFlags(int columnN);
 
         /// <summary>
@@ -2907,6 +3248,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableGetColumnIndex")]
+        [ExcludeFromCodeCoverage]
         public static extern int igTableGetColumnIndex();
 
         /// <summary>
@@ -2915,6 +3257,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="columnN">The column</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableGetColumnName_Int")]
+        [ExcludeFromCodeCoverage]
         public static extern byte[] igTableGetColumnName_Int(int columnN);
 
         /// <summary>
@@ -2922,6 +3265,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableGetRowIndex")]
+        [ExcludeFromCodeCoverage]
         public static extern int igTableGetRowIndex();
 
         /// <summary>
@@ -2929,6 +3273,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui table sort specs</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableGetSortSpecs")]
+        [ExcludeFromCodeCoverage]
         public static extern ImGuiTableSortSpecs igTableGetSortSpecs();
 
         /// <summary>
@@ -2936,12 +3281,14 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="label">The label</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableHeader")]
+        [ExcludeFromCodeCoverage]
         public static extern void igTableHeader(byte[] label);
 
         /// <summary>
         ///     Igs the table headers row
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableHeadersRow")]
+        [ExcludeFromCodeCoverage]
         public static extern void igTableHeadersRow();
 
         /// <summary>
@@ -2949,6 +3296,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableNextColumn")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igTableNextColumn();
 
         /// <summary>
@@ -2957,6 +3305,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="rowFlags">The row flags</param>
         /// <param name="minRowHeight">The min row height</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableNextRow")]
+        [ExcludeFromCodeCoverage]
         public static extern void igTableNextRow(ImGuiTableRowFlags rowFlags, float minRowHeight);
 
         /// <summary>
@@ -2966,6 +3315,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="color">The color</param>
         /// <param name="columnN">The column</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableSetBgColor")]
+        [ExcludeFromCodeCoverage]
         public static extern void igTableSetBgColor(ImGuiTableBgTarget target, uint color, int columnN);
 
         /// <summary>
@@ -2974,6 +3324,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="columnN">The column</param>
         /// <param name="v">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableSetColumnEnabled")]
+        [ExcludeFromCodeCoverage]
         public static extern void igTableSetColumnEnabled(int columnN, byte v);
 
         /// <summary>
@@ -2982,6 +3333,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="columnN">The column</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableSetColumnIndex")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igTableSetColumnIndex(int columnN);
 
         /// <summary>
@@ -2992,6 +3344,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="initWidthOrWeight">The init width or weight</param>
         /// <param name="userId">The user id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableSetupColumn")]
+        [ExcludeFromCodeCoverage]
         public static extern void igTableSetupColumn(byte[] label, ImGuiTableColumnFlags flags, float initWidthOrWeight, uint userId);
 
         /// <summary>
@@ -3000,6 +3353,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="cols">The cols</param>
         /// <param name="rows">The rows</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTableSetupScrollFreeze")]
+        [ExcludeFromCodeCoverage]
         public static extern void igTableSetupScrollFreeze(int cols, int rows);
 
         /// <summary>
@@ -3007,6 +3361,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="fmt">The fmt</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igText")]
+        [ExcludeFromCodeCoverage]
         public static extern void igText(byte[] fmt);
 
         /// <summary>
@@ -3015,6 +3370,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="col">The col</param>
         /// <param name="fmt">The fmt</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTextColored")]
+        [ExcludeFromCodeCoverage]
         public static extern void igTextColored(Vector4F col, byte[] fmt);
 
         /// <summary>
@@ -3022,6 +3378,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="fmt">The fmt</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTextDisabled")]
+        [ExcludeFromCodeCoverage]
         public static extern void igTextDisabled(byte[] fmt);
 
         /// <summary>
@@ -3030,6 +3387,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="text">The text</param>
         /// <param name="textEnd">The text end</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTextUnformatted")]
+        [ExcludeFromCodeCoverage]
         public static extern void igTextUnformatted(byte[] text, byte textEnd);
 
         /// <summary>
@@ -3037,6 +3395,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="fmt">The fmt</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTextWrapped")]
+        [ExcludeFromCodeCoverage]
         public static extern void igTextWrapped(byte[] fmt);
 
         /// <summary>
@@ -3045,6 +3404,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="label">The label</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTreeNode_Str")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igTreeNode_Str(byte[] label);
 
         /// <summary>
@@ -3054,6 +3414,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTreeNode_StrStr")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igTreeNode_StrStr(byte[] strId, byte[] fmt);
 
         /// <summary>
@@ -3063,6 +3424,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTreeNode_Ptr")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igTreeNode_Ptr(IntPtr ptrId, byte[] fmt);
 
         /// <summary>
@@ -3072,6 +3434,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTreeNodeEx_Str")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igTreeNodeEx_Str(byte[] label, ImGuiTreeNodeFlags flags);
 
         /// <summary>
@@ -3082,6 +3445,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTreeNodeEx_StrStr")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igTreeNodeEx_StrStr(byte[] strId, ImGuiTreeNodeFlags flags, byte[] fmt);
 
         /// <summary>
@@ -3092,12 +3456,14 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTreeNodeEx_Ptr")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igTreeNodeEx_Ptr(IntPtr ptrId, ImGuiTreeNodeFlags flags, byte[] fmt);
 
         /// <summary>
         ///     Igs the tree pop
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTreePop")]
+        [ExcludeFromCodeCoverage]
         public static extern void igTreePop();
 
         /// <summary>
@@ -3105,6 +3471,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="strId">The str id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTreePush_Str")]
+        [ExcludeFromCodeCoverage]
         public static extern void igTreePush_Str(byte[] strId);
 
         /// <summary>
@@ -3112,6 +3479,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="ptrId">The ptr id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igTreePush_Ptr")]
+        [ExcludeFromCodeCoverage]
         public static extern void igTreePush_Ptr(IntPtr ptrId);
 
         /// <summary>
@@ -3119,12 +3487,14 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="indentW">The indent</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igUnindent")]
+        [ExcludeFromCodeCoverage]
         public static extern void igUnindent(float indentW);
 
         /// <summary>
         ///     Igs the update platform windows
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igUpdatePlatformWindows")]
+        [ExcludeFromCodeCoverage]
         public static extern void igUpdatePlatformWindows();
 
         /// <summary>
@@ -3133,6 +3503,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="prefix">The prefix</param>
         /// <param name="b">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igValue_Bool")]
+        [ExcludeFromCodeCoverage]
         public static extern void igValue_Bool(byte[] prefix, bool b);
 
         /// <summary>
@@ -3141,6 +3512,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="prefix">The prefix</param>
         /// <param name="v">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igValue_Int")]
+        [ExcludeFromCodeCoverage]
         public static extern void igValue_Int(byte[] prefix, int v);
 
         /// <summary>
@@ -3149,6 +3521,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="prefix">The prefix</param>
         /// <param name="v">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igValue_Uint")]
+        [ExcludeFromCodeCoverage]
         public static extern void igValue_Uint(byte[] prefix, uint v);
 
         /// <summary>
@@ -3158,6 +3531,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="v">The </param>
         /// <param name="floatFormat">The float format</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igValue_Float")]
+        [ExcludeFromCodeCoverage]
         public static extern void igValue_Float(byte[] prefix, float v, byte[] floatFormat);
 
         /// <summary>
@@ -3172,6 +3546,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igVSliderFloat")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igVSliderFloat(byte[] label, Vector2F size, ref float v, float vMin, float vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -3186,6 +3561,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igVSliderInt")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igVSliderInt(byte[] label, Vector2F size, ref int v, int vMin, int vMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -3201,6 +3577,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igVSliderScalar")]
+        [ExcludeFromCodeCoverage]
         public static extern byte igVSliderScalar(byte[] label, Vector2F size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, byte[] format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -3212,6 +3589,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="v">The </param>
         /// <param name="a">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImColor_HSV")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImColor_HSV(out ImColor pOut, float h, float s, float v, float a);
 
         /// <summary>
@@ -3219,6 +3597,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im color</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImColor_ImColor_Nil")]
+        [ExcludeFromCodeCoverage]
         public static extern ImColor ImColor_ImColor_Nil();
 
         /// <summary>
@@ -3230,6 +3609,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="a">The </param>
         /// <returns>The im color</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImColor_ImColor_Float")]
+        [ExcludeFromCodeCoverage]
         public static extern ImColor ImColor_ImColor_Float(float r, float g, float b, float a);
 
         /// <summary>
@@ -3238,6 +3618,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="col">The col</param>
         /// <returns>The im color</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImColor_ImColor_Vec4")]
+        [ExcludeFromCodeCoverage]
         public static extern ImColor ImColor_ImColor_Vec4(Vector4F col);
 
         /// <summary>
@@ -3249,6 +3630,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="a">The </param>
         /// <returns>The im color</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImColor_ImColor_Int")]
+        [ExcludeFromCodeCoverage]
         public static extern ImColor ImColor_ImColor_Int(int r, int g, int b, int a);
 
         /// <summary>
@@ -3257,6 +3639,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="rgba">The rgba</param>
         /// <returns>The im color</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImColor_ImColor_U32")]
+        [ExcludeFromCodeCoverage]
         public static extern ImColor ImColor_ImColor_U32(uint rgba);
 
         /// <summary>
@@ -3268,6 +3651,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="v">The </param>
         /// <param name="a">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImColor_SetHSV")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImColor_SetHSV(ref ImColor self, float h, float s, float v, float a);
 
         /// <summary>
@@ -3276,6 +3660,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The int ptr</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawCmd_GetTexID")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImDrawCmd_GetTexID(ref ImDrawCmd self);
 
         /// <summary>
@@ -3283,6 +3668,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im draw cmd</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawCmd_ImDrawCmd")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImDrawCmd_ImDrawCmd();
 
         /// <summary>
@@ -3290,6 +3676,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawData_Clear")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawData_Clear(ref ImDrawData self);
 
         /// <summary>
@@ -3297,6 +3684,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawData_DeIndexAllBuffers")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawData_DeIndexAllBuffers(ref ImDrawData self);
 
         /// <summary>
@@ -3304,6 +3692,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im draw data</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawData_ImDrawData")]
+        [ExcludeFromCodeCoverage]
         public static extern ref ImDrawData ImDrawData_ImDrawData();
 
         /// <summary>
@@ -3312,6 +3701,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="fbScale">The fb scale</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawData_ScaleClipRects")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawData_ScaleClipRects(ref ImDrawData self, Vector2F fbScale);
 
         /// <summary>
@@ -3321,6 +3711,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="radius">The radius</param>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList__CalcCircleAutoSegmentCount")]
+        [ExcludeFromCodeCoverage]
         public static extern int ImDrawList__CalcCircleAutoSegmentCount(IntPtr self, float radius);
 
         /// <summary>
@@ -3328,6 +3719,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList__ClearFreeMemory")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList__ClearFreeMemory(IntPtr self);
 
         /// <summary>
@@ -3335,6 +3727,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList__OnChangedClipRect")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList__OnChangedClipRect(IntPtr self);
 
         /// <summary>
@@ -3342,6 +3735,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList__OnChangedTextureID")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList__OnChangedTextureID(IntPtr self);
 
         /// <summary>
@@ -3349,6 +3743,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList__OnChangedVtxOffset")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList__OnChangedVtxOffset(IntPtr self);
 
         /// <summary>
@@ -3361,6 +3756,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="aMaxSample">The max sample</param>
         /// <param name="aStep">The step</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList__PathArcToFastEx")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList__PathArcToFastEx(IntPtr self, Vector2F center, float radius, int aMinSample, int aMaxSample, int aStep);
 
         /// <summary>
@@ -3373,6 +3769,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="aMax">The max</param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList__PathArcToN")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList__PathArcToN(IntPtr self, Vector2F center, float radius, float aMin, float aMax, int numSegments);
 
         /// <summary>
@@ -3380,6 +3777,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList__PopUnusedDrawCmd")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList__PopUnusedDrawCmd(IntPtr self);
 
         /// <summary>
@@ -3387,6 +3785,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList__ResetForNewFrame")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList__ResetForNewFrame(IntPtr self);
 
         /// <summary>
@@ -3394,6 +3793,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList__TryMergeDrawCmds")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList__TryMergeDrawCmds(IntPtr self);
 
         /// <summary>
@@ -3408,6 +3808,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="thickness">The thickness</param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddBezierCubic")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddBezierCubic(IntPtr self, Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, uint col, float thickness, int numSegments);
 
         /// <summary>
@@ -3421,6 +3822,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="thickness">The thickness</param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddBezierQuadratic")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddBezierQuadratic(IntPtr self, Vector2F p1, Vector2F p2, Vector2F p3, uint col, float thickness, int numSegments);
 
         /// <summary>
@@ -3430,6 +3832,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="callback">The callback</param>
         /// <param name="callbackData">The callback data</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddCallback")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddCallback(IntPtr self, IntPtr callback, IntPtr callbackData);
 
         /// <summary>
@@ -3442,6 +3845,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="numSegments">The num segments</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddCircle")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddCircle(IntPtr self, Vector2F center, float radius, uint col, int numSegments, float thickness);
 
         /// <summary>
@@ -3453,6 +3857,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="col">The col</param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddCircleFilled")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddCircleFilled(IntPtr self, Vector2F center, float radius, uint col, int numSegments);
 
         /// <summary>
@@ -3463,6 +3868,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="numPoints">The num points</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddConvexPolyFilled")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddConvexPolyFilled(IntPtr self, ref Vector2F points, int numPoints, uint col);
 
         /// <summary>
@@ -3470,6 +3876,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddDrawCmd")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddDrawCmd(IntPtr self);
 
         /// <summary>
@@ -3483,6 +3890,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="uvMax">The uv max</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddImage")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddImage(IntPtr self, IntPtr userTextureId, Vector2F pMin, Vector2F pMax, Vector2F uvMin, Vector2F uvMax, uint col);
 
         /// <summary>
@@ -3500,6 +3908,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="uv4">The uv</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddImageQuad")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddImageQuad(IntPtr self, IntPtr userTextureId, Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, Vector2F uv1, Vector2F uv2, Vector2F uv3, Vector2F uv4, uint col);
 
         /// <summary>
@@ -3515,6 +3924,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddImageRounded")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddImageRounded(IntPtr self, IntPtr userTextureId, Vector2F pMin, Vector2F pMax, Vector2F uvMin, Vector2F uvMax, uint col, float rounding, ImDrawFlags flags);
 
         /// <summary>
@@ -3526,6 +3936,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddLine")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddLine(IntPtr self, Vector2F p1, Vector2F p2, uint col, float thickness);
 
         /// <summary>
@@ -3538,6 +3949,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="numSegments">The num segments</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddNgon")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddNgon(IntPtr self, Vector2F center, float radius, uint col, int numSegments, float thickness);
 
         /// <summary>
@@ -3549,6 +3961,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="col">The col</param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddNgonFilled")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddNgonFilled(IntPtr self, Vector2F center, float radius, uint col, int numSegments);
 
         /// <summary>
@@ -3561,6 +3974,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddPolyline")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddPolyline(IntPtr self, ref Vector2F points, int numPoints, uint col, ImDrawFlags flags, float thickness);
 
         /// <summary>
@@ -3574,6 +3988,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddQuad")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddQuad(IntPtr self, Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, uint col, float thickness);
 
         /// <summary>
@@ -3586,6 +4001,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="p4">The </param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddQuadFilled")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddQuadFilled(IntPtr self, Vector2F p1, Vector2F p2, Vector2F p3, Vector2F p4, uint col);
 
         /// <summary>
@@ -3599,6 +4015,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddRect")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddRect(IntPtr self, Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDrawFlags flags, float thickness);
 
         /// <summary>
@@ -3611,6 +4028,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddRectFilled")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddRectFilled(IntPtr self, Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDrawFlags flags);
 
         /// <summary>
@@ -3624,6 +4042,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="colBotRight">The col bot right</param>
         /// <param name="colBotLeft">The col bot left</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddRectFilledMultiColor")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddRectFilledMultiColor(IntPtr self, Vector2F pMin, Vector2F pMax, uint colUprLeft, uint colUprRight, uint colBotRight, uint colBotLeft);
 
         /// <summary>
@@ -3635,6 +4054,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="textBegin">The text begin</param>
         /// <param name="textEnd">The text end</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddText_Vec2")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddText_Vec2(IntPtr self, Vector2F pos, uint col, byte[] textBegin, byte[] textEnd);
 
         /// <summary>
@@ -3650,6 +4070,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="wrapWidth">The wrap width</param>
         /// <param name="cpuFineClipRect">The cpu fine clip rect</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddText_FontPtr")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddText_FontPtr(IntPtr self, IntPtr font, float fontSize, Vector2F pos, uint col, byte[] textBegin, byte[] textEnd, float wrapWidth, Vector4F cpuFineClipRect);
 
         /// <summary>
@@ -3662,6 +4083,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddTriangle")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddTriangle(IntPtr self, Vector2F p1, Vector2F p2, Vector2F p3, uint col, float thickness);
 
         /// <summary>
@@ -3673,6 +4095,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="p3">The </param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_AddTriangleFilled")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_AddTriangleFilled(IntPtr self, Vector2F p1, Vector2F p2, Vector2F p3, uint col);
 
         /// <summary>
@@ -3680,6 +4103,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_ChannelsMerge")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_ChannelsMerge(IntPtr self);
 
         /// <summary>
@@ -3688,6 +4112,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="n">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_ChannelsSetCurrent")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_ChannelsSetCurrent(IntPtr self, int n);
 
         /// <summary>
@@ -3696,6 +4121,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="count">The count</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_ChannelsSplit")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_ChannelsSplit(IntPtr self, int count);
 
         /// <summary>
@@ -3704,6 +4130,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The im draw list</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_CloneOutput")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImDrawList_CloneOutput(IntPtr self);
 
         /// <summary>
@@ -3712,6 +4139,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="pOut">The out</param>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_GetClipRectMax")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_GetClipRectMax(out Vector2F pOut, IntPtr self);
 
         /// <summary>
@@ -3720,6 +4148,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="pOut">The out</param>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_GetClipRectMin")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_GetClipRectMin(out Vector2F pOut, IntPtr self);
 
         /// <summary>
@@ -3728,6 +4157,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="sharedData">The shared data</param>
         /// <returns>The im draw list</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_ImDrawList")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImDrawList_ImDrawList(IntPtr sharedData);
 
         /// <summary>
@@ -3740,6 +4170,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="aMax">The max</param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathArcTo")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PathArcTo(IntPtr self, Vector2F center, float radius, float aMin, float aMax, int numSegments);
 
         /// <summary>
@@ -3751,6 +4182,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="aMinOf12">The min of 12</param>
         /// <param name="aMaxOf12">The max of 12</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathArcToFast")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PathArcToFast(IntPtr self, Vector2F center, float radius, int aMinOf12, int aMaxOf12);
 
         /// <summary>
@@ -3762,6 +4194,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="p4">The </param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathBezierCubicCurveTo")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PathBezierCubicCurveTo(IntPtr self, Vector2F p2, Vector2F p3, Vector2F p4, int numSegments);
 
         /// <summary>
@@ -3772,6 +4205,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="p3">The </param>
         /// <param name="numSegments">The num segments</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathBezierQuadraticCurveTo")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PathBezierQuadraticCurveTo(IntPtr self, Vector2F p2, Vector2F p3, int numSegments);
 
         /// <summary>
@@ -3779,6 +4213,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathClear")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PathClear(IntPtr self);
 
         /// <summary>
@@ -3787,6 +4222,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathFillConvex")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PathFillConvex(IntPtr self, uint col);
 
         /// <summary>
@@ -3795,6 +4231,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathLineTo")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PathLineTo(IntPtr self, Vector2F pos);
 
         /// <summary>
@@ -3803,6 +4240,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathLineToMergeDuplicate")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PathLineToMergeDuplicate(IntPtr self, Vector2F pos);
 
         /// <summary>
@@ -3814,6 +4252,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathRect")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PathRect(IntPtr self, Vector2F rectMin, Vector2F rectMax, float rounding, ImDrawFlags flags);
 
         /// <summary>
@@ -3824,6 +4263,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PathStroke")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PathStroke(IntPtr self, uint col, ImDrawFlags flags, float thickness);
 
         /// <summary>
@@ -3831,6 +4271,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PopClipRect")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PopClipRect(IntPtr self);
 
         /// <summary>
@@ -3838,6 +4279,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PopTextureID")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PopTextureID(IntPtr self);
 
         /// <summary>
@@ -3854,6 +4296,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="uvD">The uv</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PrimQuadUV")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PrimQuadUV(IntPtr self, Vector2F a, Vector2F b, Vector2F c, Vector2F d, Vector2F uvA, Vector2F uvB, Vector2F uvC, Vector2F uvD, uint col);
 
         /// <summary>
@@ -3864,6 +4307,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="b">The </param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PrimRect")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PrimRect(IntPtr self, Vector2F a, Vector2F b, uint col);
 
         /// <summary>
@@ -3876,6 +4320,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="uvB">The uv</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PrimRectUV")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PrimRectUV(IntPtr self, Vector2F a, Vector2F b, Vector2F uvA, Vector2F uvB, uint col);
 
         /// <summary>
@@ -3885,6 +4330,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="idxCount">The idx count</param>
         /// <param name="vtxCount">The vtx count</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PrimReserve")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PrimReserve(IntPtr self, int idxCount, int vtxCount);
 
         /// <summary>
@@ -3894,6 +4340,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="idxCount">The idx count</param>
         /// <param name="vtxCount">The vtx count</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PrimUnreserve")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PrimUnreserve(IntPtr self, int idxCount, int vtxCount);
 
         /// <summary>
@@ -3904,6 +4351,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="uv">The uv</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PrimVtx")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PrimVtx(IntPtr self, Vector2F pos, Vector2F uv, uint col);
 
         /// <summary>
@@ -3912,6 +4360,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="idx">The idx</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PrimVtx")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PrimWriteIdx(IntPtr self, ushort idx);
 
         /// <summary>
@@ -3922,6 +4371,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="uv">The uv</param>
         /// <param name="col">The col</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PrimWriteVtx")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PrimWriteVtx(IntPtr self, Vector2F pos, Vector2F uv, uint col);
 
         /// <summary>
@@ -3932,6 +4382,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="clipRectMax">The clip rect max</param>
         /// <param name="intersectWithCurrentClipRect">The intersect with current clip rect</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PushClipRect")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PushClipRect(IntPtr self, Vector2F clipRectMin, Vector2F clipRectMax, byte intersectWithCurrentClipRect);
 
         /// <summary>
@@ -3939,6 +4390,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PushClipRectFullScreen")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PushClipRectFullScreen(IntPtr self);
 
         /// <summary>
@@ -3947,6 +4399,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="textureId">The texture id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawList_PushTextureID")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawList_PushTextureID(IntPtr self, IntPtr textureId);
 
         /// <summary>
@@ -3954,6 +4407,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawListSplitter_Clear")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawListSplitter_Clear(IntPtr self);
 
         /// <summary>
@@ -3961,6 +4415,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawListSplitter_ClearFreeMemory")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawListSplitter_ClearFreeMemory(IntPtr self);
 
         /// <summary>
@@ -3968,6 +4423,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im draw list splitter</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawListSplitter_ImDrawListSplitter")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImDrawListSplitter_ImDrawListSplitter();
 
         /// <summary>
@@ -3976,6 +4432,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="drawList">The draw list</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawListSplitter_Merge")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawListSplitter_Merge(IntPtr self, IntPtr drawList);
 
         /// <summary>
@@ -3985,6 +4442,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="drawList">The draw list</param>
         /// <param name="channelIdx">The channel idx</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawListSplitter_SetCurrentChannel")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawListSplitter_SetCurrentChannel(IntPtr self, IntPtr drawList, int channelIdx);
 
         /// <summary>
@@ -3994,6 +4452,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="drawList">The draw list</param>
         /// <param name="count">The count</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImDrawListSplitter_Split")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImDrawListSplitter_Split(IntPtr self, IntPtr drawList, int count);
 
         /// <summary>
@@ -4012,6 +4471,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="v1">The </param>
         /// <param name="advanceX">The advance</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_AddGlyph")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFont_AddGlyph(IntPtr self, IntPtr srcCfg, ushort c, float x0, float y0, float x1, float y1, float u0, float v0, float u1, float v1, float advanceX);
 
         /// <summary>
@@ -4022,6 +4482,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="src">The src</param>
         /// <param name="overwriteDst">The overwrite dst</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_AddRemapChar")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFont_AddRemapChar(IntPtr self, ushort dst, ushort src, byte overwriteDst);
 
         /// <summary>
@@ -4029,6 +4490,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_BuildLookupTable")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFont_BuildLookupTable(IntPtr self);
 
         /// <summary>
@@ -4043,6 +4505,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="textEnd">The text end</param>
         /// <param name="remaining">The remaining</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_CalcTextSizeA")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFont_CalcTextSizeA(out Vector2F pOut, IntPtr self, float size, float maxWidth, float wrapWidth, byte[] textBegin, byte[] textEnd, ref IntPtr remaining);
 
         /// <summary>
@@ -4055,6 +4518,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_CalcWordWrapPositionA")]
+        [ExcludeFromCodeCoverage]
         public static extern byte[] ImFont_CalcWordWrapPositionA(IntPtr self, float scale, byte[] text, byte[] textEnd, float wrapWidth);
 
         /// <summary>
@@ -4062,6 +4526,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_ClearOutputData")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFont_ClearOutputData(IntPtr self);
 
         /// <summary>
@@ -4071,6 +4536,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="c">The </param>
         /// <returns>The im font glyph</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_FindGlyph")]
+        [ExcludeFromCodeCoverage]
         public static extern ImFontGlyph ImFont_FindGlyph(IntPtr self, ushort c);
 
         /// <summary>
@@ -4080,6 +4546,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="c">The </param>
         /// <returns>The im font glyph</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_FindGlyphNoFallback")]
+        [ExcludeFromCodeCoverage]
         public static extern ImFontGlyph ImFont_FindGlyphNoFallback(IntPtr self, ushort c);
 
         /// <summary>
@@ -4089,6 +4556,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="c">The </param>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_GetCharAdvance")]
+        [ExcludeFromCodeCoverage]
         public static extern float ImFont_GetCharAdvance(IntPtr self, ushort c);
 
         /// <summary>
@@ -4097,6 +4565,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_GetDebugName")]
+        [ExcludeFromCodeCoverage]
         public static extern byte[] ImFont_GetDebugName(IntPtr self);
 
         /// <summary>
@@ -4105,6 +4574,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="newSize">The new size</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_GrowIndex")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFont_GrowIndex(IntPtr self, int newSize);
 
         /// <summary>
@@ -4112,6 +4582,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im font</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_ImFont")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFont_ImFont();
 
         /// <summary>
@@ -4122,6 +4593,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="cLast">The last</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_IsGlyphRangeUnused")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImFont_IsGlyphRangeUnused(IntPtr self, uint cBegin, uint cLast);
 
         /// <summary>
@@ -4130,6 +4602,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_IsLoaded")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImFont_IsLoaded(IntPtr self);
 
         /// <summary>
@@ -4142,6 +4615,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="col">The col</param>
         /// <param name="c">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_RenderChar")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFont_RenderChar(IntPtr self, IntPtr drawList, float size, Vector2F pos, uint col, ushort c);
 
         /// <summary>
@@ -4158,6 +4632,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="wrapWidth">The wrap width</param>
         /// <param name="cpuFineClip">The cpu fine clip</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_RenderText")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFont_RenderText(IntPtr self, IntPtr drawList, float size, Vector2F pos, uint col, Vector4F clipRect, byte[] textBegin, byte[] textEnd, float wrapWidth, byte cpuFineClip);
 
         /// <summary>
@@ -4167,6 +4642,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="c">The </param>
         /// <param name="visible">The visible</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFont_SetGlyphVisible")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFont_SetGlyphVisible(IntPtr self, ushort c, byte visible);
 
         /// <summary>
@@ -4181,6 +4657,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="offset">The offset</param>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_AddCustomRectFontGlyph")]
+        [ExcludeFromCodeCoverage]
         public static extern int ImFontAtlas_AddCustomRectFontGlyph(IntPtr self, IntPtr font, ushort id, int width, int height, float advanceX, Vector2F offset);
 
         /// <summary>
@@ -4191,6 +4668,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="height">The height</param>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_AddCustomRectRegular")]
+        [ExcludeFromCodeCoverage]
         public static extern int ImFontAtlas_AddCustomRectRegular(IntPtr self, int width, int height);
 
         /// <summary>
@@ -4200,6 +4678,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="fontCfg">The font cfg</param>
         /// <returns>The im font</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_AddFont")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_AddFont(IntPtr self, IntPtr fontCfg);
 
         /// <summary>
@@ -4209,6 +4688,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="fontCfg">The font cfg</param>
         /// <returns>The im font</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_AddFontDefault")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_AddFontDefault(IntPtr self, IntPtr fontCfg);
 
         /// <summary>
@@ -4221,6 +4701,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_AddFontFromFileTTF")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_AddFontFromFileTTF(IntPtr self, byte[] filename, float sizePixels, IntPtr fontCfg, IntPtr glyphRanges);
 
         /// <summary>
@@ -4233,6 +4714,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_AddFontFromMemoryCompressedBase85TTF(IntPtr self, byte[] compressedFontDataBase85, float sizePixels, IntPtr fontCfg, IntPtr glyphRanges);
 
         /// <summary>
@@ -4246,6 +4728,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_AddFontFromMemoryCompressedTTF(IntPtr self, IntPtr compressedFontData, int compressedFontSize, float sizePixels, IntPtr fontCfg, IntPtr glyphRanges);
 
         /// <summary>
@@ -4259,6 +4742,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_AddFontFromMemoryTTF")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_AddFontFromMemoryTTF(IntPtr self, IntPtr fontData, int fontSize, float sizePixels, IntPtr fontCfg, IntPtr glyphRanges);
 
         /// <summary>
@@ -4267,6 +4751,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_Build")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImFontAtlas_Build(IntPtr self);
 
         /// <summary>
@@ -4277,6 +4762,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="outUvMin">The out uv min</param>
         /// <param name="outUvMax">The out uv max</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_CalcCustomRectUV")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontAtlas_CalcCustomRectUV(IntPtr self, ImFontAtlasCustomRect rect, out Vector2F outUvMin, out Vector2F outUvMax);
 
         /// <summary>
@@ -4284,6 +4770,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_Clear")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontAtlas_Clear(IntPtr self);
 
         /// <summary>
@@ -4291,6 +4778,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_ClearFonts")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontAtlas_ClearFonts(IntPtr self);
 
         /// <summary>
@@ -4298,6 +4786,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_ClearInputData")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontAtlas_ClearInputData(IntPtr self);
 
         /// <summary>
@@ -4305,6 +4794,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_ClearTexData")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontAtlas_ClearTexData(IntPtr self);
 
         /// <summary>
@@ -4314,6 +4804,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="index">The index</param>
         /// <returns>The im font atlas custom rect</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetCustomRectByIndex")]
+        [ExcludeFromCodeCoverage]
         public static extern ImFontAtlasCustomRect ImFontAtlas_GetCustomRectByIndex(IntPtr self, int index);
 
         /// <summary>
@@ -4322,6 +4813,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetGlyphRangesChineseFull")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_GetGlyphRangesChineseFull(IntPtr self);
 
         /// <summary>
@@ -4330,6 +4822,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon(IntPtr self);
 
         /// <summary>
@@ -4338,6 +4831,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetGlyphRangesCyrillic")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_GetGlyphRangesCyrillic(IntPtr self);
 
         /// <summary>
@@ -4346,6 +4840,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetGlyphRangesDefault")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_GetGlyphRangesDefault(IntPtr self);
 
         /// <summary>
@@ -4354,6 +4849,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetGlyphRangesGreek")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_GetGlyphRangesGreek(IntPtr self);
 
         /// <summary>
@@ -4362,6 +4858,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetGlyphRangesJapanese")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_GetGlyphRangesJapanese(IntPtr self);
 
         /// <summary>
@@ -4370,6 +4867,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetGlyphRangesKorean")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_GetGlyphRangesKorean(IntPtr self);
 
         /// <summary>
@@ -4378,6 +4876,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetGlyphRangesThai")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_GetGlyphRangesThai(IntPtr self);
 
         /// <summary>
@@ -4386,6 +4885,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetGlyphRangesVietnamese")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_GetGlyphRangesVietnamese(IntPtr self);
 
         /// <summary>
@@ -4399,6 +4899,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="outUvFill">The out uv fill</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetMouseCursorTexData")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImFontAtlas_GetMouseCursorTexData(IntPtr self, ImGuiMouseCursor cursor, out Vector2F outOffset, out Vector2F outSize, out Vector2F outUvBorder, out Vector2F outUvFill);
 
         /// <summary>
@@ -4410,6 +4911,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="outHeight">The out height</param>
         /// <param name="outBytesPerPixel">The out bytes per pixel</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetTexDataAsAlpha8")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontAtlas_GetTexDataAsAlpha8(IntPtr self, out byte[] outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel);
 
         /// <summary>
@@ -4421,6 +4923,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="outHeight">The out height</param>
         /// <param name="outBytesPerPixel">The out bytes per pixel</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetTexDataAsAlpha8")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontAtlas_GetTexDataAsAlpha8(IntPtr self, out IntPtr outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel);
 
         /// <summary>
@@ -4432,6 +4935,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="outHeight">The out height</param>
         /// <param name="outBytesPerPixel">The out bytes per pixel</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetTexDataAsRGBA32")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontAtlas_GetTexDataAsRGBA32(IntPtr self, out byte[] outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel);
 
         /// <summary>
@@ -4443,6 +4947,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="outHeight">The out height</param>
         /// <param name="outBytesPerPixel">The out bytes per pixel</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_GetTexDataAsRGBA32")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontAtlas_GetTexDataAsRGBA32(IntPtr self, out IntPtr outPixels, out int outWidth, out int outHeight, out int outBytesPerPixel);
 
         /// <summary>
@@ -4450,6 +4955,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im font atlas</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_ImFontAtlas")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontAtlas_ImFontAtlas();
 
         /// <summary>
@@ -4458,6 +4964,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_IsBuilt")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImFontAtlas_IsBuilt(IntPtr self);
 
         /// <summary>
@@ -4466,6 +4973,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="id">The id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlas_SetTexID")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontAtlas_SetTexID(IntPtr self, IntPtr id);
 
         /// <summary>
@@ -4473,6 +4981,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im font atlas custom rect</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlasCustomRect_ImFontAtlasCustomRect")]
+        [ExcludeFromCodeCoverage]
         public static extern ImFontAtlasCustomRect ImFontAtlasCustomRect_ImFontAtlasCustomRect();
 
         /// <summary>
@@ -4481,6 +4990,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontAtlasCustomRect_IsPacked")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImFontAtlasCustomRect_IsPacked(ref ImFontAtlasCustomRect self);
 
         /// <summary>
@@ -4488,6 +4998,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im font config</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontConfig_ImFontConfig")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontConfig_ImFontConfig();
 
         /// <summary>
@@ -4496,6 +5007,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="c">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontGlyphRangesBuilder_AddChar")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontGlyphRangesBuilder_AddChar(ref ImFontGlyphRangesBuilder self, ushort c);
 
         /// <summary>
@@ -4504,6 +5016,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="ranges">The ranges</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontGlyphRangesBuilder_AddRanges")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontGlyphRangesBuilder_AddRanges(ref ImFontGlyphRangesBuilder self, IntPtr ranges);
 
         /// <summary>
@@ -4513,6 +5026,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="text">The text</param>
         /// <param name="textEnd">The text end</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontGlyphRangesBuilder_AddText")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontGlyphRangesBuilder_AddText(ref ImFontGlyphRangesBuilder self, byte[] text, byte[] textEnd);
 
         /// <summary>
@@ -4521,6 +5035,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="outRanges">The out ranges</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontGlyphRangesBuilder_BuildRanges")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontGlyphRangesBuilder_BuildRanges(ref ImFontGlyphRangesBuilder self, IntPtr outRanges);
 
         /// <summary>
@@ -4528,6 +5043,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontGlyphRangesBuilder_Clear")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontGlyphRangesBuilder_Clear(ref ImFontGlyphRangesBuilder self);
 
         /// <summary>
@@ -4537,6 +5053,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="n">The </param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontGlyphRangesBuilder_GetBit")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImFontGlyphRangesBuilder_GetBit(ref ImFontGlyphRangesBuilder self, uint n);
 
         /// <summary>
@@ -4544,6 +5061,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im font glyph ranges builder</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontGlyphRangesBuilder_ImFontGlyphRangesBuilder")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImFontGlyphRangesBuilder_ImFontGlyphRangesBuilder();
 
         /// <summary>
@@ -4552,6 +5070,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="n">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImFontGlyphRangesBuilder_SetBit")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImFontGlyphRangesBuilder_SetBit(ref ImFontGlyphRangesBuilder self, uint n);
 
         /// <summary>
@@ -4559,6 +5078,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiInputTextCallbackData_ClearSelection")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiInputTextCallbackData_ClearSelection(IntPtr self);
 
         /// <summary>
@@ -4568,6 +5088,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="pos">The pos</param>
         /// <param name="bytesCount">The bytes count</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiInputTextCallbackData_DeleteChars")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiInputTextCallbackData_DeleteChars(IntPtr self, int pos, int bytesCount);
 
         /// <summary>
@@ -4576,6 +5097,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiInputTextCallbackData_HasSelection")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImGuiInputTextCallbackData_HasSelection(IntPtr self);
 
         /// <summary>
@@ -4583,6 +5105,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui input text callback data</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiInputTextCallbackData_ImGuiInputTextCallbackData")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiInputTextCallbackData_ImGuiInputTextCallbackData();
 
         /// <summary>
@@ -4593,6 +5116,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="text">The text</param>
         /// <param name="textEnd">The text end</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiInputTextCallbackData_InsertChars")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiInputTextCallbackData_InsertChars(IntPtr self, int pos, byte[] text, byte[] textEnd);
 
         /// <summary>
@@ -4600,6 +5124,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiInputTextCallbackData_SelectAll")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiInputTextCallbackData_SelectAll(IntPtr self);
 
         /// <summary>
@@ -4608,6 +5133,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="focused">The focused</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_AddFocusEvent")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_AddFocusEvent(IntPtr self, byte focused);
 
         /// <summary>
@@ -4616,6 +5142,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="c">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_AddInputCharacter")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_AddInputCharacter(IntPtr self, uint c);
 
         /// <summary>
@@ -4624,6 +5151,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="str">The str</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_AddInputCharactersUTF8")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_AddInputCharactersUTF8(IntPtr self, byte[] str);
 
         /// <summary>
@@ -4632,6 +5160,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="c">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_AddInputCharacterUTF16")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_AddInputCharacterUTF16(IntPtr self, ushort c);
 
         /// <summary>
@@ -4642,6 +5171,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="down">The down</param>
         /// <param name="v">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_AddKeyAnalogEvent")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_AddKeyAnalogEvent(IntPtr self, ImGuiKey key, byte down, float v);
 
         /// <summary>
@@ -4651,6 +5181,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="key">The key</param>
         /// <param name="down">The down</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_AddKeyEvent")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_AddKeyEvent(IntPtr self, ImGuiKey key, byte down);
 
         /// <summary>
@@ -4660,6 +5191,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="button">The button</param>
         /// <param name="down">The down</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_AddMouseButtonEvent")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_AddMouseButtonEvent(IntPtr self, int button, byte down);
 
         /// <summary>
@@ -4669,6 +5201,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_AddMousePosEvent")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_AddMousePosEvent(IntPtr self, float x, float y);
 
         /// <summary>
@@ -4677,6 +5210,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="id">The id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_AddMouseViewportEvent")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_AddMouseViewportEvent(IntPtr self, uint id);
 
         /// <summary>
@@ -4686,6 +5220,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="whX">The wh</param>
         /// <param name="whY">The wh</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_AddMouseWheelEvent")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_AddMouseWheelEvent(IntPtr self, float whX, float whY);
 
         /// <summary>
@@ -4693,6 +5228,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_ClearInputCharacters")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_ClearInputCharacters(IntPtr self);
 
         /// <summary>
@@ -4700,6 +5236,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_ClearInputKeys")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_ClearInputKeys(IntPtr self);
 
         /// <summary>
@@ -4707,6 +5244,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui io</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_ImGuiIO")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiIO_ImGuiIO();
 
         /// <summary>
@@ -4715,6 +5253,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="acceptingEvents">The accepting events</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_SetAppAcceptingEvents")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_SetAppAcceptingEvents(IntPtr self, byte acceptingEvents);
 
         /// <summary>
@@ -4726,6 +5265,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="nativeScancode">The native scancode</param>
         /// <param name="nativeLegacyIndex">The native legacy index</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiIO_SetKeyEventNativeData")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiIO_SetKeyEventNativeData(IntPtr self, ImGuiKey key, int nativeKeycode, int nativeScancode, int nativeLegacyIndex);
 
         /// <summary>
@@ -4735,6 +5275,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="itemsCount">The items count</param>
         /// <param name="itemsHeight">The items height</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiListClipper_Begin")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiListClipper_Begin(IntPtr self, int itemsCount, float itemsHeight);
 
         /// <summary>
@@ -4742,6 +5283,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiListClipper_End")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiListClipper_End(IntPtr self);
 
         /// <summary>
@@ -4751,6 +5293,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="itemMin">The item min</param>
         /// <param name="itemMax">The item max</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiListClipper_ForceDisplayRangeByIndices")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiListClipper_ForceDisplayRangeByIndices(IntPtr self, int itemMin, int itemMax);
 
         /// <summary>
@@ -4758,6 +5301,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui list clipper</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiListClipper_ImGuiListClipper")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiListClipper_ImGuiListClipper();
 
         /// <summary>
@@ -4766,6 +5310,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiListClipper_Step")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImGuiListClipper_Step(IntPtr self);
 
         /// <summary>
@@ -4773,6 +5318,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui once upon frame</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiOnceUponAFrame_ImGuiOnceUponAFrame")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiOnceUponAFrame_ImGuiOnceUponAFrame();
 
         /// <summary>
@@ -4780,6 +5326,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPayload_Clear")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiPayload_Clear(ref ImGuiPayload self);
 
         /// <summary>
@@ -4787,6 +5334,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui payload</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPayload_ImGuiPayload")]
+        [ExcludeFromCodeCoverage]
         public static extern ImGuiPayload ImGuiPayload_ImGuiPayload();
 
         /// <summary>
@@ -4796,6 +5344,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="type">The type</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPayload_IsDataType")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImGuiPayload_IsDataType(ref ImGuiPayload self, byte[] type);
 
         /// <summary>
@@ -4804,6 +5353,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPayload_IsDelivery")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImGuiPayload_IsDelivery(ref ImGuiPayload self);
 
         /// <summary>
@@ -4812,6 +5362,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPayload_IsPreview")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImGuiPayload_IsPreview(ref ImGuiPayload self);
 
         /// <summary>
@@ -4819,6 +5370,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui platform ime data</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPlatformImeData_ImGuiPlatformImeData")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiPlatformImeData_ImGuiPlatformImeData();
 
         /// <summary>
@@ -4826,6 +5378,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui platform io</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPlatformIO_ImGuiPlatformIO")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiPlatformIO_ImGuiPlatformIO();
 
         /// <summary>
@@ -4833,6 +5386,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui platform monitor</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPlatformMonitor_ImGuiPlatformMonitor")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiPlatformMonitor_ImGuiPlatformMonitor();
 
         /// <summary>
@@ -4840,6 +5394,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_BuildSortByKey")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiStorage_BuildSortByKey(ImGuiStorage self);
 
         /// <summary>
@@ -4847,6 +5402,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_Clear")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiStorage_Clear(ImGuiStorage self);
 
         /// <summary>
@@ -4857,6 +5413,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="defaultVal">The default val</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_GetBool")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImGuiStorage_GetBool(ImGuiStorage self, uint key, byte defaultVal);
 
         /// <summary>
@@ -4867,6 +5424,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="defaultVal">The default val</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_GetBoolRef")]
+        [ExcludeFromCodeCoverage]
         public static extern byte[] ImGuiStorage_GetBoolRef(ImGuiStorage self, uint key, byte defaultVal);
 
         /// <summary>
@@ -4877,6 +5435,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="defaultVal">The default val</param>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_GetFloat")]
+        [ExcludeFromCodeCoverage]
         public static extern float ImGuiStorage_GetFloat(ImGuiStorage self, uint key, float defaultVal);
 
         /// <summary>
@@ -4887,6 +5446,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="defaultVal">The default val</param>
         /// <returns>The float</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_GetFloat")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiStorage_GetFloatRef(ImGuiStorage self, uint key, float defaultVal);
 
         /// <summary>
@@ -4897,6 +5457,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="defaultVal">The default val</param>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_GetInt")]
+        [ExcludeFromCodeCoverage]
         public static extern int ImGuiStorage_GetInt(ImGuiStorage self, uint key, int defaultVal);
 
         /// <summary>
@@ -4907,6 +5468,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="defaultVal">The default val</param>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_GetIntRef")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiStorage_GetIntRef(ImGuiStorage self, uint key, int defaultVal);
 
         /// <summary>
@@ -4916,6 +5478,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="key">The key</param>
         /// <returns>The void</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_GetVoidPtr")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiStorage_GetVoidPtr(ImGuiStorage self, uint key);
 
         /// <summary>
@@ -4926,6 +5489,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="defaultVal">The default val</param>
         /// <returns>The void</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_GetVoidPtrRef")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiStorage_GetVoidPtrRef(ImGuiStorage self, uint key, IntPtr defaultVal);
 
         /// <summary>
@@ -4934,6 +5498,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_SetAllInt")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiStorage_SetAllInt(ImGuiStorage self, int val);
 
         /// <summary>
@@ -4943,6 +5508,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="key">The key</param>
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_SetBool")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiStorage_SetBool(ImGuiStorage self, uint key, byte val);
 
         /// <summary>
@@ -4952,6 +5518,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="key">The key</param>
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_SetFloat")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiStorage_SetFloat(ImGuiStorage self, uint key, float val);
 
         /// <summary>
@@ -4961,6 +5528,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="key">The key</param>
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_SetInt")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiStorage_SetInt(ImGuiStorage self, uint key, int val);
 
         /// <summary>
@@ -4970,6 +5538,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="key">The key</param>
         /// <param name="val">The val</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStorage_SetVoidPtr")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiStorage_SetVoidPtr(ImGuiStorage self, uint key, IntPtr val);
 
         /// <summary>
@@ -4979,6 +5548,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="valI">The val</param>
         /// <returns>The im gui storage pair</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStoragePair_ImGuiStoragePair_Int")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiStoragePair_ImGuiStoragePair_Int(uint key, int valI);
 
         /// <summary>
@@ -4988,6 +5558,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="valF">The val</param>
         /// <returns>The im gui storage pair</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStoragePair_ImGuiStoragePair_Float")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiStoragePair_ImGuiStoragePair_Float(uint key, float valF);
 
         /// <summary>
@@ -4997,6 +5568,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="valP">The val</param>
         /// <returns>The im gui storage pair</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStoragePair_ImGuiStoragePair_Ptr")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiStoragePair_ImGuiStoragePair_Ptr(uint key, IntPtr valP);
 
         /// <summary>
@@ -5004,6 +5576,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui style</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStyle_ImGuiStyle")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiStyle_ImGuiStyle();
 
         /// <summary>
@@ -5012,6 +5585,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="scaleFactor">The scale factor</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiStyle_ScaleAllSizes")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiStyle_ScaleAllSizes(ref ImGuiStyle self, float scaleFactor);
 
         /// <summary>
@@ -5019,6 +5593,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui table column sort specs</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTableColumnSortSpecs_ImGuiTableColumnSortSpecs")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiTableColumnSortSpecs_ImGuiTableColumnSortSpecs();
 
         /// <summary>
@@ -5026,6 +5601,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui table sort specs</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTableSortSpecs_ImGuiTableSortSpecs")]
+        [ExcludeFromCodeCoverage]
         public static extern ImGuiTableSortSpecs ImGuiTableSortSpecs_ImGuiTableSortSpecs();
 
         /// <summary>
@@ -5035,6 +5611,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="str">The str</param>
         /// <param name="strEnd">The str end</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextBuffer_append")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiTextBuffer_append(IntPtr self, byte[] str, byte[] strEnd);
 
         /// <summary>
@@ -5043,6 +5620,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="fmt">The fmt</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextBuffer_appendf")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiTextBuffer_appendf(IntPtr self, byte[] fmt);
 
         /// <summary>
@@ -5051,6 +5629,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextBuffer_begin")]
+        [ExcludeFromCodeCoverage]
         public static extern byte[] ImGuiTextBuffer_begin(IntPtr self);
 
         /// <summary>
@@ -5059,6 +5638,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextBuffer_c_str")]
+        [ExcludeFromCodeCoverage]
         public static extern byte[] ImGuiTextBuffer_c_str(IntPtr self);
 
         /// <summary>
@@ -5066,6 +5646,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextBuffer_clear")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiTextBuffer_clear(IntPtr self);
 
         /// <summary>
@@ -5074,6 +5655,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextBuffer_empty")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImGuiTextBuffer_empty(IntPtr self);
 
         /// <summary>
@@ -5082,6 +5664,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextBuffer_end")]
+        [ExcludeFromCodeCoverage]
         public static extern byte[] ImGuiTextBuffer_end(IntPtr self);
 
         /// <summary>
@@ -5089,6 +5672,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui text buffer</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextBuffer_ImGuiTextBuffer")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiTextBuffer_ImGuiTextBuffer();
 
         /// <summary>
@@ -5097,6 +5681,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <param name="capacity">The capacity</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextBuffer_reserve")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiTextBuffer_reserve(IntPtr self, int capacity);
 
         /// <summary>
@@ -5105,6 +5690,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The int</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextBuffer_size")]
+        [ExcludeFromCodeCoverage]
         public static extern int ImGuiTextBuffer_size(IntPtr self);
 
         /// <summary>
@@ -5112,6 +5698,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextFilter_Build")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiTextFilter_Build(IntPtr self);
 
         /// <summary>
@@ -5119,6 +5706,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextFilter_Clear")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiTextFilter_Clear(IntPtr self);
 
         /// <summary>
@@ -5129,6 +5717,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="width">The width</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextFilter_Draw")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImGuiTextFilter_Draw(IntPtr self, byte[] label, float width);
 
         /// <summary>
@@ -5137,6 +5726,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="defaultFilter">The default filter</param>
         /// <returns>The im gui text filter</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextFilter_ImGuiTextFilter")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiTextFilter_ImGuiTextFilter(byte[] defaultFilter);
 
         /// <summary>
@@ -5145,6 +5735,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextFilter_IsActive")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImGuiTextFilter_IsActive(IntPtr self);
 
         /// <summary>
@@ -5155,6 +5746,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="textEnd">The text end</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextFilter_PassFilter")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImGuiTextFilter_PassFilter(IntPtr self, byte[] text, byte[] textEnd);
 
         /// <summary>
@@ -5163,6 +5755,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextRange_empty")]
+        [ExcludeFromCodeCoverage]
         public static extern byte ImGuiTextRange_empty(IntPtr self);
 
         /// <summary>
@@ -5170,6 +5763,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui text range</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextRange_ImGuiTextRange_Nil")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiTextRange_ImGuiTextRange_Nil();
 
         /// <summary>
@@ -5179,6 +5773,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="e">The </param>
         /// <returns>The im gui text range</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextRange_ImGuiTextRange_Str")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiTextRange_ImGuiTextRange_Str(byte[] b, byte[] e);
 
         /// <summary>
@@ -5188,6 +5783,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="separator">The separator</param>
         /// <param name="out">The out</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiTextRange_split")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiTextRange_split(IntPtr self, byte separator, IntPtr @out);
 
         /// <summary>
@@ -5196,6 +5792,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="pOut">The out</param>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiViewport_GetCenter")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiViewport_GetCenter(out Vector2F pOut, IntPtr self);
 
         /// <summary>
@@ -5204,6 +5801,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="pOut">The out</param>
         /// <param name="self">The self</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiViewport_GetWorkCenter")]
+        [ExcludeFromCodeCoverage]
         public static extern void ImGuiViewport_GetWorkCenter(out Vector2F pOut, IntPtr self);
 
         /// <summary>
@@ -5211,6 +5809,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui viewport</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiViewport_ImGuiViewport")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImGuiViewport_ImGuiViewport();
 
         /// <summary>
@@ -5218,6 +5817,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The im gui window class</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiWindowClass_ImGuiWindowClass")]
+        [ExcludeFromCodeCoverage]
         public static extern ImGuiWindowClass ImGuiWindowClass_ImGuiWindowClass();
 
         /// <summary>
@@ -5225,6 +5825,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImVec2_ImVec2_Nil")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImVec2_ImVec2_Nil();
 
         /// <summary>
@@ -5234,6 +5835,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="y">The </param>
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImVec2_ImVec2_Float")]
+        [ExcludeFromCodeCoverage]
         public static extern IntPtr ImVec2_ImVec2_Float(float x, float y);
 
         /// <summary>
@@ -5241,6 +5843,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImVec4_ImVec4_Nil")]
+        [ExcludeFromCodeCoverage]
         public static extern Vector4F ImVec4_ImVec4_Nil();
 
         /// <summary>
@@ -5252,6 +5855,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="w">The </param>
         /// <returns>The vector</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImVec4_ImVec4_Float")]
+        [ExcludeFromCodeCoverage]
         public static extern Vector4F ImVec4_ImVec4_Float(float x, float y, float z, float w);
 
 
@@ -5260,6 +5864,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="dockspaceId">The dockspace id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderRemoveNode")]
+        [ExcludeFromCodeCoverage]
         public static extern void igDockBuilderRemoveNode(uint dockspaceId);
 
         /// <summary>
@@ -5268,6 +5873,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="dockspaceId">The dockspace id</param>
         /// <param name="none">The none</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderAddNode")]
+        [ExcludeFromCodeCoverage]
         public static extern void igDockBuilderAddNode(uint dockspaceId, ImGuiDockNodeFlags none);
 
         /// <summary>
@@ -5276,6 +5882,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="dockspaceId">The dockspace id</param>
         /// <param name="viewportSize">The viewport size</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderSetNodeSize")]
+        [ExcludeFromCodeCoverage]
         public static extern void igDockBuilderSetNodeSize(uint dockspaceId, Vector2F viewportSize);
 
         /// <summary>
@@ -5288,6 +5895,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="dockIdRight">The dock id right</param>
         /// <returns>The uint</returns>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderSplitNode")]
+        [ExcludeFromCodeCoverage]
         public static extern uint igDockBuilderSplitNode(uint dockMainId, ImGuiDir left, float p2, IntPtr zero, out uint dockIdRight);
 
         /// <summary>
@@ -5296,6 +5904,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="getBytes">The get bytes</param>
         /// <param name="dockIdLeft">The dock id left</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderDockWindow")]
+        [ExcludeFromCodeCoverage]
         public static extern void igDockBuilderDockWindow(byte[] getBytes, uint dockIdLeft);
 
         /// <summary>
@@ -5303,6 +5912,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="dockspaceId">The dockspace id</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderFinish")]
+        [ExcludeFromCodeCoverage]
         public static extern void igDockBuilderFinish(uint dockspaceId);
 
         /// <summary>
@@ -5311,6 +5921,7 @@ namespace Alis.Extension.Graphic.Ui
         /// <param name="dockspaceId">The dockspace id</param>
         /// <param name="dockNodeFlags">The dock node flags</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockBuilderSetNodeFlags")]
+        [ExcludeFromCodeCoverage]
         public static extern void igDockBuilderSetNodeFlags(uint dockspaceId, ImGuiDockNodeFlags dockNodeFlags);
 
         /// <summary>
@@ -5318,6 +5929,7 @@ namespace Alis.Extension.Graphic.Ui
         /// </summary>
         /// <param name="scaleFactor">The scale factor</param>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igScaleAllSizes")]
+        [ExcludeFromCodeCoverage]
         public static extern void igScaleAllSizes(float scaleFactor);
     }
 }

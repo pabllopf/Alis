@@ -346,6 +346,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="filename">The filename</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr sfMusic_createFromFile(string filename);
 
         /// <summary>
@@ -354,6 +355,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="stream">The stream</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr sfMusic_createFromStream(IntPtr stream);
 
         /// <summary>
@@ -363,6 +365,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="size">The size</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr sfMusic_createFromMemory(IntPtr data, ulong size);
 
         /// <summary>
@@ -370,6 +373,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="musicStream">The music stream</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfMusic_destroy(IntPtr musicStream);
 
         /// <summary>
@@ -377,6 +381,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="music">The music</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfMusic_play(IntPtr music);
 
         /// <summary>
@@ -384,6 +389,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="music">The music</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfMusic_pause(IntPtr music);
 
         /// <summary>
@@ -391,6 +397,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// </summary>
         /// <param name="music">The music</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfMusic_stop(IntPtr music);
 
         /// <summary>
@@ -399,6 +406,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <returns>The sound status</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern SoundStatus sfMusic_getStatus(IntPtr music);
 
         /// <summary>
@@ -407,6 +415,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <returns>The time</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern SfmlTime sfMusic_getDuration(IntPtr music);
 
         /// <summary>
@@ -415,6 +424,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <returns>The time span</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern TimeSpan sfMusic_getLoopPoints(IntPtr music);
 
         /// <summary>
@@ -424,6 +434,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="timePoints">The time points</param>
         /// <returns>The time span</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern TimeSpan sfMusic_setLoopPoints(IntPtr music, TimeSpan timePoints);
 
         /// <summary>
@@ -432,6 +443,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <returns>The uint</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern uint sfMusic_getChannelCount(IntPtr music);
 
         /// <summary>
@@ -440,6 +452,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <returns>The uint</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern uint sfMusic_getSampleRate(IntPtr music);
 
         /// <summary>
@@ -448,6 +461,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <param name="pitch">The pitch</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfMusic_setPitch(IntPtr music, float pitch);
 
         /// <summary>
@@ -456,6 +470,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <param name="loop">The loop</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfMusic_setLoop(IntPtr music, bool loop);
 
         /// <summary>
@@ -464,6 +479,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <param name="volume">The volume</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfMusic_setVolume(IntPtr music, float volume);
 
         /// <summary>
@@ -472,6 +488,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <param name="position">The position</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfMusic_setPosition(IntPtr music, Vector3F position);
 
         /// <summary>
@@ -480,6 +497,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <param name="relative">The relative</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfMusic_setRelativeToListener(IntPtr music, bool relative);
 
         /// <summary>
@@ -488,6 +506,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <param name="minDistance">The min distance</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfMusic_setMinDistance(IntPtr music, float minDistance);
 
         /// <summary>
@@ -496,6 +515,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <param name="attenuation">The attenuation</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfMusic_setAttenuation(IntPtr music, float attenuation);
 
         /// <summary>
@@ -504,6 +524,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <param name="sfmlTimeOffset">The time offset</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfMusic_setPlayingOffset(IntPtr music, SfmlTime sfmlTimeOffset);
 
         /// <summary>
@@ -512,6 +533,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <returns>The bool</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern bool sfMusic_getLoop(IntPtr music);
 
         /// <summary>
@@ -520,6 +542,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <returns>The float</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern float sfMusic_getPitch(IntPtr music);
 
         /// <summary>
@@ -528,6 +551,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <returns>The float</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern float sfMusic_getVolume(IntPtr music);
 
         /// <summary>
@@ -536,6 +560,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <returns>The vector 3f</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern Vector3F sfMusic_getPosition(IntPtr music);
 
         /// <summary>
@@ -544,6 +569,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <returns>The bool</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern bool sfMusic_isRelativeToListener(IntPtr music);
 
         /// <summary>
@@ -552,6 +578,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <returns>The float</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern float sfMusic_getMinDistance(IntPtr music);
 
         /// <summary>
@@ -560,6 +587,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <returns>The float</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern float sfMusic_getAttenuation(IntPtr music);
 
         /// <summary>
@@ -568,6 +596,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="music">The music</param>
         /// <returns>The time</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern SfmlTime sfMusic_getPlayingOffset(IntPtr music);
 
         /// <summary>

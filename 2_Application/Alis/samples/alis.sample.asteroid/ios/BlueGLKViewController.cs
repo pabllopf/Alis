@@ -107,6 +107,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// <param name="b">The </param>
         /// <param name="a">The </param>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern void glClearColor(float r, float g, float b, float a);
 
         /// <summary>
@@ -114,6 +115,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// </summary>
         /// <param name="mask">The mask</param>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern void glClear(uint mask);
 
         /// <summary>
@@ -122,6 +124,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// <param name="type">The type</param>
         /// <returns>The int</returns>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern int glCreateShader(uint type);
 
         /// <summary>
@@ -132,6 +135,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// <param name="source">The source</param>
         /// <param name="length">The length</param>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern void glShaderSource(int shader, int count, string[] source, int[] length);
 
         /// <summary>
@@ -139,6 +143,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// </summary>
         /// <param name="shader">The shader</param>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern void glCompileShader(int shader);
 
         /// <summary>
@@ -146,6 +151,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// </summary>
         /// <returns>The int</returns>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern int glCreateProgram();
 
         /// <summary>
@@ -154,6 +160,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// <param name="program">The program</param>
         /// <param name="shader">The shader</param>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern void glAttachShader(int program, int shader);
 
         /// <summary>
@@ -161,6 +168,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// </summary>
         /// <param name="program">The program</param>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern void glLinkProgram(int program);
 
         /// <summary>
@@ -168,6 +176,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// </summary>
         /// <param name="program">The program</param>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern void glUseProgram(int program);
 
         /// <summary>
@@ -177,6 +186,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// <param name="name">The name</param>
         /// <returns>The int</returns>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern int glGetAttribLocation(int program, string name);
 
         /// <summary>
@@ -184,6 +194,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// </summary>
         /// <param name="index">The index</param>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern void glEnableVertexAttribArray(int index);
 
         /// <summary>
@@ -196,6 +207,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// <param name="stride">The stride</param>
         /// <param name="pointer">The pointer</param>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern void glVertexAttribPointer(int index, int size, uint type, bool normalized, int stride, IntPtr pointer);
 
         /// <summary>
@@ -204,6 +216,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// <param name="n">The </param>
         /// <param name="buffers">The buffers</param>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern void glGenBuffers(int n, out uint buffers);
 
         /// <summary>
@@ -212,6 +225,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// <param name="target">The target</param>
         /// <param name="buffer">The buffer</param>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern void glBindBuffer(uint target, uint buffer);
 
         /// <summary>
@@ -222,6 +236,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// <param name="data">The data</param>
         /// <param name="usage">The usage</param>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern void glBufferData(uint target, IntPtr size, float[] data, uint usage);
 
         /// <summary>
@@ -231,6 +246,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// <param name="first">The first</param>
         /// <param name="count">The count</param>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern void glDrawArrays(uint mode, int first, int count);
 
         /// <summary>
@@ -238,6 +254,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// </summary>
         /// <param name="program">The program</param>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern void glDeleteProgram(int program);
 
         /// <summary>
@@ -246,6 +263,7 @@ namespace Alis.Sample.Asteroid.IOS
         /// <param name="n">The </param>
         /// <param name="buffers">The buffers</param>
         [DllImport("__Internal")]
+        [ExcludeFromCodeCoverage]
         private static extern void glDeleteBuffers(int n, ref uint buffers);
 
         /// <summary>

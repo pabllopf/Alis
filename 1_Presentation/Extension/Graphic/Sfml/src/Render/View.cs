@@ -214,6 +214,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr sfView_create();
 
         /// <summary>
@@ -222,6 +223,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="rect">The rect</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr sfView_createFromRect(FloatRect rect);
 
         /// <summary>
@@ -230,6 +232,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr sfView_copy(IntPtr view);
 
         /// <summary>
@@ -237,6 +240,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="view">The view</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfView_destroy(IntPtr view);
 
         /// <summary>
@@ -245,6 +249,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view</param>
         /// <param name="center">The center</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfView_setCenter(IntPtr view, Vector2F center);
 
         /// <summary>
@@ -253,6 +258,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view</param>
         /// <param name="size">The size</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfView_setSize(IntPtr view, Vector2F size);
 
         /// <summary>
@@ -261,6 +267,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view</param>
         /// <param name="angle">The angle</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfView_setRotation(IntPtr view, float angle);
 
         /// <summary>
@@ -269,6 +276,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view</param>
         /// <param name="viewport">The viewport</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfView_setViewport(IntPtr view, FloatRect viewport);
 
         /// <summary>
@@ -277,6 +285,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view</param>
         /// <param name="rectangle">The rectangle</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfView_reset(IntPtr view, FloatRect rectangle);
 
         /// <summary>
@@ -285,6 +294,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view</param>
         /// <returns>The vector 2f</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern Vector2F sfView_getCenter(IntPtr view);
 
         /// <summary>
@@ -293,6 +303,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view</param>
         /// <returns>The vector 2f</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern Vector2F sfView_getSize(IntPtr view);
 
         /// <summary>
@@ -301,6 +312,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view</param>
         /// <returns>The float</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern float sfView_getRotation(IntPtr view);
 
         /// <summary>
@@ -309,6 +321,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view</param>
         /// <returns>The float rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern FloatRect sfView_getViewport(IntPtr view);
 
         /// <summary>
@@ -317,6 +330,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view</param>
         /// <param name="offset">The offset</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfView_move(IntPtr view, Vector2F offset);
 
         /// <summary>
@@ -325,6 +339,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view</param>
         /// <param name="angle">The angle</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfView_rotate(IntPtr view, float angle);
 
         /// <summary>
@@ -333,6 +348,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="view">The view</param>
         /// <param name="factor">The factor</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfView_zoom(IntPtr view, float factor);
     }
 }

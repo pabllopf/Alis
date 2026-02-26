@@ -278,6 +278,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="usage">The usage</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr sfVertexBuffer_create(uint vertexCount, PrimitiveType type, UsageSpecifier usage);
 
         /// <summary>
@@ -286,6 +287,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="copy">The copy</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern IntPtr sfVertexBuffer_copy(IntPtr copy);
 
         /// <summary>
@@ -293,6 +295,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <param name="cPointer">The pointer</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfVertexBuffer_destroy(IntPtr cPointer);
 
         /// <summary>
@@ -301,6 +304,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="cPointer">The pointer</param>
         /// <returns>The uint</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern uint sfVertexBuffer_getVertexCount(IntPtr cPointer);
 
         /// <summary>
@@ -312,6 +316,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="offset">The offset</param>
         /// <returns>The bool</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern bool sfVertexBuffer_update(IntPtr cPointer, Vertex[] vertices, uint vertexCount, uint offset);
 
         /// <summary>
@@ -323,6 +328,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="offset">The offset</param>
         /// <returns>The bool</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern bool sfVertexBuffer_update(IntPtr cPointer, IntPtr vertices, uint vertexCount, uint offset);
 
         /// <summary>
@@ -332,6 +338,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern bool sfVertexBuffer_updateFromVertexBuffer(IntPtr cPointer, IntPtr other);
 
         /// <summary>
@@ -340,6 +347,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="cPointer">The pointer</param>
         /// <param name="other">The other</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfVertexBuffer_swap(IntPtr cPointer, IntPtr other);
 
         /// <summary>
@@ -348,6 +356,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="cPointer">The pointer</param>
         /// <returns>The uint</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern uint sfVertexBuffer_getNativeHandle(IntPtr cPointer);
 
         /// <summary>
@@ -356,6 +365,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="cPointer">The pointer</param>
         /// <param name="primitiveType">The primitive type</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfVertexBuffer_setPrimitiveType(IntPtr cPointer, PrimitiveType primitiveType);
 
         /// <summary>
@@ -364,6 +374,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="cPointer">The pointer</param>
         /// <returns>The primitive type</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern PrimitiveType sfVertexBuffer_getPrimitiveType(IntPtr cPointer);
 
         /// <summary>
@@ -372,6 +383,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="cPointer">The pointer</param>
         /// <param name="usageType">The usage type</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfVertexBuffer_setUsage(IntPtr cPointer, UsageSpecifier usageType);
 
         /// <summary>
@@ -380,6 +392,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="cPointer">The pointer</param>
         /// <returns>The usage specifier</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern UsageSpecifier sfVertexBuffer_getUsage(IntPtr cPointer);
 
         /// <summary>
@@ -387,6 +400,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// </summary>
         /// <returns>The bool</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern bool sfVertexBuffer_isAvailable();
 
         /// <summary>
@@ -396,6 +410,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="vertexArray">The vertex array</param>
         /// <param name="states">The states</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfRenderWindow_drawVertexBuffer(IntPtr cPointer, IntPtr vertexArray, ref RenderStates.MarshalData states);
 
         /// <summary>
@@ -405,6 +420,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="vertexBuffer">The vertex buffer</param>
         /// <param name="states">The states</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [ExcludeFromCodeCoverage]
         private static extern void sfRenderTexture_drawVertexBuffer(IntPtr cPointer, IntPtr vertexBuffer, ref RenderStates.MarshalData states);
     }
 }
