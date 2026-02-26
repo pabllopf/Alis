@@ -142,6 +142,7 @@ namespace Alis.Core.Ecs.Test
             world.Dispose();
         }
         
+        
         /// <summary>
         ///     Tests that all fields of ref tuple with five components are accessible.
         /// </summary>
