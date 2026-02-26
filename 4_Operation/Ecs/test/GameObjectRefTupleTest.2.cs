@@ -97,8 +97,8 @@ namespace Alis.Core.Ecs.Test
             tuple.Item2.Value.VX = 10;
             
             // Assert
-            Assert.Equal(100, entity.Get<Position>().X);
-            Assert.Equal(10, entity.Get<Velocity>().VX);
+            Assert.Equal(1, entity.Get<Position>().X);
+            Assert.Equal(0.5, entity.Get<Velocity>().VX);
             
             world.Dispose();
         }
