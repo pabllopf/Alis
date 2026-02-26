@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -93,7 +94,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, Tagged<PlayerTag>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
+            foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
             {
                 count++;
             }
@@ -177,7 +178,7 @@ namespace Alis.Core.Ecs.Test
             // Act - 6 With filters + Not EnemyTag
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, Not<EnemyTag>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
+            foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
             {
                 count++;
             }
@@ -219,7 +220,7 @@ namespace Alis.Core.Ecs.Test
             // Act - 5 With + 2 Tagged
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, Tagged<PlayerTag>, Tagged<TagComponent>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
+            foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
             {
                 count++;
             }
@@ -261,7 +262,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, IncludeDisabled>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
+            foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
             {
                 count++;
             }
@@ -294,7 +295,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>, Tagged<PlayerTag>>();
             bool found = false;
-            foreach (var (pos, vel, health, trans, test, another) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
+            foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> test, Ref<AnotherComponent> another) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
             {
                 Assert.Equal(100, pos.Value.X);
                 Assert.Equal(10, vel.Value.VX);

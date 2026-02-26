@@ -93,7 +93,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query query = scene.Query<With<Position>, Untagged<PlayerTag>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }
@@ -121,7 +121,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query query = scene.Query<With<Position>, Untagged<PlayerTag>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }
@@ -152,7 +152,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act - Untagged PlayerTag AND Untagged EnemyTag
             Query query = scene.Query<With<Position>, Untagged<PlayerTag>, Untagged<EnemyTag>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }
@@ -182,7 +182,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act - Tagged PlayerTag but Untagged EnemyTag
             Query query = scene.Query<With<Position>, Tagged<PlayerTag>, Untagged<EnemyTag>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }
@@ -252,7 +252,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act - Query for entities untagged with Disable
             Query query = scene.Query<With<Position>, Untagged<Disable>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }
@@ -280,7 +280,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>, Untagged<PlayerTag>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity>())
+            foreach (RefTuple<Position, Velocity> _ in query.Enumerate<Position, Velocity>())
             {
                 count++;
             }

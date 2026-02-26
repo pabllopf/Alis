@@ -94,7 +94,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }
@@ -120,7 +120,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }
@@ -146,7 +146,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity>())
+            foreach (RefTuple<Position, Velocity> _ in query.Enumerate<Position, Velocity>())
             {
                 count++;
             }

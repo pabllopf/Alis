@@ -148,15 +148,15 @@ namespace Alis.Core.Ecs.Test.Kernel
             }
 
             // Act
-            var query = scene.Query<With<TestComponent>>();
-            foreach (var component in query.Enumerate<TestComponent>())
+            Query query = scene.Query<With<TestComponent>>();
+            foreach (RefTuple<TestComponent> component in query.Enumerate<TestComponent>())
             {
                 component.Item1.Value.Value *= 2;
             }
 
             // Assert
             int expectedValue = 0;
-            foreach (var component in query.Enumerate<TestComponent>())
+            foreach (RefTuple<TestComponent> component in query.Enumerate<TestComponent>())
             {
                 Assert.Equal(expectedValue * 2, component.Item1.Value.Value);
                 expectedValue++;

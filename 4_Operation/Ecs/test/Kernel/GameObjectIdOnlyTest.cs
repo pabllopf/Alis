@@ -35,7 +35,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     /// <summary>
     ///     Tests the <see cref="GameObjectIdOnly"/> struct.
     /// </summary>
-    public class GameObjectIdOnlyTest
+    public partial class GameObjectIdOnlyTest
     {
         /// <summary>
         ///     Tests that constructor initializes id and version correctly.

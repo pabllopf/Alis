@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Tests that add component has correct value.
         /// </summary>
         [Fact]
-        public void AddComponent_ShouldHaveCorrectValue()
+        public void Add_ShouldHaveCorrectValue()
         {
             // Arrange & Act
             ArchetypeEdgeType edgeType = ArchetypeEdgeType.AddComponent;
@@ -96,15 +96,15 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         public void AllEdgeTypes_ShouldHaveUniqueValues()
         {
             // Arrange
-            ushort addComponent = (ushort)ArchetypeEdgeType.AddComponent;
+            ushort Add = (ushort)ArchetypeEdgeType.AddComponent;
             ushort removeComponent = (ushort)ArchetypeEdgeType.RemoveComponent;
             ushort addTag = (ushort)ArchetypeEdgeType.AddTag;
             ushort removeTag = (ushort)ArchetypeEdgeType.RemoveTag;
             
             // Assert
-            Assert.NotEqual(addComponent, removeComponent);
-            Assert.NotEqual(addComponent, addTag);
-            Assert.NotEqual(addComponent, removeTag);
+            Assert.NotEqual(Add, removeComponent);
+            Assert.NotEqual(Add, addTag);
+            Assert.NotEqual(Add, removeTag);
             Assert.NotEqual(removeComponent, addTag);
             Assert.NotEqual(removeComponent, removeTag);
             Assert.NotEqual(addTag, removeTag);
@@ -165,13 +165,13 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         public void EdgeTypeValues_ShouldBeWithinUShortRange()
         {
             // Arrange & Act
-            ushort addComponent = (ushort)ArchetypeEdgeType.AddComponent;
+            ushort Add = (ushort)ArchetypeEdgeType.AddComponent;
             ushort removeComponent = (ushort)ArchetypeEdgeType.RemoveComponent;
             ushort addTag = (ushort)ArchetypeEdgeType.AddTag;
             ushort removeTag = (ushort)ArchetypeEdgeType.RemoveTag;
             
             // Assert
-            Assert.True(addComponent >= ushort.MinValue && addComponent <= ushort.MaxValue);
+            Assert.True(Add >= ushort.MinValue && Add <= ushort.MaxValue);
             Assert.True(removeComponent >= ushort.MinValue && removeComponent <= ushort.MaxValue);
             Assert.True(addTag >= ushort.MinValue && addTag <= ushort.MaxValue);
             Assert.True(removeTag >= ushort.MinValue && removeTag <= ushort.MaxValue);

@@ -63,7 +63,7 @@ namespace Alis.Core.Ecs.Test
             entity.Add(testStruct);
             
             // Act
-            var tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct>
+            GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct> tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct>
             {
                 GameObject = entity,
                 Item1 = new Ref<Position>(new[] { pos }, 0),
@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Test
             entity.Add(test2);
             entity.Add(testStruct);
             
-            var tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct>
+            GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct> tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct>
             {
                 GameObject = entity,
                 Item1 = new Ref<Position>(new[] { pos }, 0),
@@ -120,7 +120,7 @@ namespace Alis.Core.Ecs.Test
             };
             
             // Act
-            var (go, posRef, velRef, healthRef, armorRef, testRef, test2Ref, structRef) = tuple;
+            (GameObject go, Ref<Position> posRef, Ref<Velocity> velRef, Ref<Health> healthRef, Ref<Armor> armorRef, Ref<TestComponent> testRef, Ref<TestComponent2> test2Ref, Ref<TestStruct> structRef) = tuple;
             
             // Assert
             Assert.Equal(entity, go);
@@ -154,7 +154,7 @@ namespace Alis.Core.Ecs.Test
             entity.Add(test2);
             entity.Add(testStruct);
             
-            var tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct>
+            GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct> tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct>
             {
                 GameObject = entity,
                 Item1 = new Ref<Position>(new[] { pos }, 0),
@@ -200,7 +200,7 @@ namespace Alis.Core.Ecs.Test
             entity.Add(testStruct);
             
             // Act
-            var tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct>
+            GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct> tuple = new GameObjectRefTuple<Position, Velocity, Health, Armor, TestComponent, TestComponent2, TestStruct>
             {
                 GameObject = entity,
                 Item1 = new Ref<Position>(new[] { pos }, 0),

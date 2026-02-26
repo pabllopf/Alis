@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Math.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -78,7 +79,7 @@ namespace Alis.Core.Ecs.Test
             
             // Act
             EntityDebugView debugView = new EntityDebugView(entity);
-            var componentTypes = debugView.ComponentTypes;
+            FastImmutableArray<ComponentId> componentTypes = debugView.ComponentTypes;
             
             // Assert
             Assert.Equal(2, componentTypes.Length);
@@ -101,7 +102,7 @@ namespace Alis.Core.Ecs.Test
             
             // Act
             EntityDebugView debugView = new EntityDebugView(entity);
-            var tags = debugView.Tags;
+            FastImmutableArray<TagId> tags = debugView.Tags;
             
             // Assert
             Assert.Single(tags);
