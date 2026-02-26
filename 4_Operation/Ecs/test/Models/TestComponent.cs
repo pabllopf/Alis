@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AssemblyInfo.cs
+//  File:TestComponent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,6 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
+using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Ecs.Systems;
 
-[assembly: CollectionBehavior(DisableTestParallelization = true, MaxParallelThreads = 1)]
+namespace Alis.Core.Ecs.Test.Models
+{
+    /// <summary>
+    ///     The test component
+    /// </summary>
+    internal struct TestComponent: IOnInit, IOnUpdate
+    {
+        public int Value;
+        public string Name;
+        public void OnInit(IGameObject self)
+        {
+            
+        }
+
+        public void OnUpdate(IGameObject self)
+        {
+           
+        }
+    }
+}

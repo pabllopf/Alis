@@ -7,6 +7,10 @@
         <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
        
     </PropertyGroup>
+
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
+    </ItemGroup>
     
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
         <CodesignKey>iPhone Developer</CodesignKey>

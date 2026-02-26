@@ -11,6 +11,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
+    </ItemGroup>
+
+    <ItemGroup>
         <ProjectReference Include="
             $(SolutionDir)2_Application/Alis/src/Alis.csproj;
             $(SolutionDir)3_Structuration/Core/src/Alis.Core.csproj;
