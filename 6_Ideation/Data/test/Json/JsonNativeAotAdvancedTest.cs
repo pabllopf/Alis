@@ -42,6 +42,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
     {
         #region Round-Trip Tests with Different Types
 
+        /// <summary>
+        /// Tests that round trip integer value preserves value
+        /// </summary>
+        /// <param name="value">The value</param>
         [Theory]
         [InlineData(0)]
         [InlineData(1)]
@@ -61,6 +65,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(original.Value, restored.Value);
         }
 
+        /// <summary>
+        /// Tests that round trip boolean value preserves value
+        /// </summary>
+        /// <param name="value">The value</param>
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
@@ -77,6 +85,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(original.Flag, restored.Flag);
         }
 
+        /// <summary>
+        /// Tests that round trip string value preserves value
+        /// </summary>
+        /// <param name="value">The value</param>
         [Theory]
         [InlineData("")]
         [InlineData("test")]
@@ -95,6 +107,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(original.Text, restored.Text);
         }
 
+        /// <summary>
+        /// Tests that round trip guid value preserves value
+        /// </summary>
         [Fact]
         public void RoundTrip_GuidValue_PreservesValue()
         {
@@ -110,6 +125,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal(original.Id, restored.Id);
         }
 
+        /// <summary>
+        /// Tests that round trip date time value preserves value
+        /// </summary>
         [Fact]
         public void RoundTrip_DateTimeValue_PreservesValue()
         {
@@ -131,6 +149,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
         #region ParseJsonToDictionary Tests
 
+        /// <summary>
+        /// Tests that parse json to dictionary with simple object returns all properties
+        /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithSimpleObject_ReturnsAllProperties()
         {
@@ -146,6 +167,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Equal("30", dict["Age"]);
         }
 
+        /// <summary>
+        /// Tests that parse json to dictionary with empty object returns empty dictionary
+        /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithEmptyObject_ReturnsEmptyDictionary()
         {
@@ -159,6 +183,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Empty(dict);
         }
 
+        /// <summary>
+        /// Tests that parse json to dictionary with nested object returns raw json
+        /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithNestedObject_ReturnsRawJson()
         {
@@ -172,6 +199,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Contains("Inner", dict["Nested"]);
         }
 
+        /// <summary>
+        /// Tests that parse json to dictionary with array returns raw json
+        /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithArray_ReturnsRawJson()
         {
@@ -186,6 +216,10 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.EndsWith("]", dict["Items"]);
         }
 
+        /// <summary>
+        /// Tests that parse json to dictionary with multiple properties returns all properties
+        /// </summary>
+        /// <param name="count">The count</param>
         [Theory]
         [InlineData(1)]
         [InlineData(5)]
@@ -209,6 +243,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
         #region File Operations Tests
 
+        /// <summary>
+        /// Tests that serialize to file and deserialize from file preserves data
+        /// </summary>
         [Fact]
         public void SerializeToFile_AndDeserializeFromFile_PreservesData()
         {
@@ -235,6 +272,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             }
         }
 
+        /// <summary>
+        /// Tests that serialize to file creates directory if not exists
+        /// </summary>
         [Fact]
         public void SerializeToFile_CreatesDirectory_IfNotExists()
         {
@@ -265,6 +305,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
         #region Error Handling Tests
 
+        /// <summary>
+        /// Tests that serialize with null throws argument null exception
+        /// </summary>
         [Fact]
         public void Serialize_WithNull_ThrowsArgumentNullException()
         {
@@ -272,6 +315,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Throws<ArgumentNullException>(() => JsonNativeAot.Serialize<TestString>(null));
         }
 
+        /// <summary>
+        /// Tests that deserialize with null throws argument null exception
+        /// </summary>
         [Fact]
         public void Deserialize_WithNull_ThrowsArgumentNullException()
         {
@@ -279,6 +325,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Throws<ArgumentNullException>(() => JsonNativeAot.Deserialize<TestString>(null));
         }
 
+        /// <summary>
+        /// Tests that parse json to dictionary with null throws argument null exception
+        /// </summary>
         [Fact]
         public void ParseJsonToDictionary_WithNull_ThrowsArgumentNullException()
         {
@@ -286,6 +335,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
             Assert.Throws<ArgumentNullException>(() => JsonNativeAot.ParseJsonToDictionary(null));
         }
 
+        /// <summary>
+        /// Tests that serialize to file with null instance throws argument null exception
+        /// </summary>
         [Fact]
         public void SerializeToFile_WithNullInstance_ThrowsArgumentNullException()
         {
@@ -294,6 +346,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 JsonNativeAot.SerializeToFile<TestString>(null, "file", "path"));
         }
 
+        /// <summary>
+        /// Tests that serialize to file with null file name throws argument null exception
+        /// </summary>
         [Fact]
         public void SerializeToFile_WithNullFileName_ThrowsArgumentNullException()
         {
@@ -305,6 +360,9 @@ namespace Alis.Core.Aspect.Data.Test.Json
                 JsonNativeAot.SerializeToFile(obj, null, "path"));
         }
 
+        /// <summary>
+        /// Tests that serialize to file with null path throws argument null exception
+        /// </summary>
         [Fact]
         public void SerializeToFile_WithNullPath_ThrowsArgumentNullException()
         {
@@ -320,15 +378,32 @@ namespace Alis.Core.Aspect.Data.Test.Json
 
         #region Helper Classes
 
+        /// <summary>
+        /// The test int class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonDesSerializable{TestInt}"/>
         private class TestInt : IJsonSerializable, IJsonDesSerializable<TestInt>
         {
+            /// <summary>
+            /// Gets or sets the value of the value
+            /// </summary>
             public int Value { get; set; }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("Value", Value.ToString());
             }
 
+            /// <summary>
+            /// Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The obj</returns>
             public TestInt CreateFromProperties(Dictionary<string, string> properties)
             {
                 TestInt obj = new TestInt();
@@ -338,15 +413,32 @@ namespace Alis.Core.Aspect.Data.Test.Json
             }
         }
 
+        /// <summary>
+        /// The test bool class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonDesSerializable{TestBool}"/>
         private class TestBool : IJsonSerializable, IJsonDesSerializable<TestBool>
         {
+            /// <summary>
+            /// Gets or sets the value of the flag
+            /// </summary>
             public bool Flag { get; set; }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("Flag", Flag.ToString());
             }
 
+            /// <summary>
+            /// Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The obj</returns>
             public TestBool CreateFromProperties(Dictionary<string, string> properties)
             {
                 TestBool obj = new TestBool();
@@ -356,15 +448,32 @@ namespace Alis.Core.Aspect.Data.Test.Json
             }
         }
 
+        /// <summary>
+        /// The test string class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonDesSerializable{TestString}"/>
         private class TestString : IJsonSerializable, IJsonDesSerializable<TestString>
         {
+            /// <summary>
+            /// Gets or sets the value of the text
+            /// </summary>
             public string Text { get; set; }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("Text", Text);
             }
 
+            /// <summary>
+            /// Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The obj</returns>
             public TestString CreateFromProperties(Dictionary<string, string> properties)
             {
                 TestString obj = new TestString();
@@ -374,15 +483,32 @@ namespace Alis.Core.Aspect.Data.Test.Json
             }
         }
 
+        /// <summary>
+        /// The test guid class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonDesSerializable{TestGuid}"/>
         private class TestGuid : IJsonSerializable, IJsonDesSerializable<TestGuid>
         {
+            /// <summary>
+            /// Gets or sets the value of the id
+            /// </summary>
             public Guid Id { get; set; }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("Id", Id.ToString());
             }
 
+            /// <summary>
+            /// Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The obj</returns>
             public TestGuid CreateFromProperties(Dictionary<string, string> properties)
             {
                 TestGuid obj = new TestGuid();
@@ -392,15 +518,32 @@ namespace Alis.Core.Aspect.Data.Test.Json
             }
         }
 
+        /// <summary>
+        /// The test date time class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
+        /// <seealso cref="IJsonDesSerializable{TestDateTime}"/>
         private class TestDateTime : IJsonSerializable, IJsonDesSerializable<TestDateTime>
         {
+            /// <summary>
+            /// Gets or sets the value of the timestamp
+            /// </summary>
             public DateTime Timestamp { get; set; }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("Timestamp", Timestamp.ToString("O"));
             }
 
+            /// <summary>
+            /// Creates the from properties using the specified properties
+            /// </summary>
+            /// <param name="properties">The properties</param>
+            /// <returns>The obj</returns>
             public TestDateTime CreateFromProperties(Dictionary<string, string> properties)
             {
                 TestDateTime obj = new TestDateTime();

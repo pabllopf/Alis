@@ -8,11 +8,27 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
     /// </summary>
     public struct NumericTypesStruct : IJsonSerializable, IJsonDesSerializable<NumericTypesStruct>
     {
+        /// <summary>
+        /// Gets or sets the value of the int value
+        /// </summary>
         public int IntValue { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the double value
+        /// </summary>
         public double DoubleValue { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the float value
+        /// </summary>
         public float FloatValue { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the decimal value
+        /// </summary>
         public decimal DecimalValue { get; set; }
 
+        /// <summary>
+        /// Gets the serializable properties
+        /// </summary>
+        /// <returns>An enumerable of string property name and string value</returns>
         public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
         {
             yield return (nameof(IntValue), IntValue.ToString());
@@ -21,6 +37,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
             yield return (nameof(DecimalValue), DecimalValue.ToString(System.Globalization.CultureInfo.InvariantCulture));
         }
 
+        /// <summary>
+        /// Creates the from properties using the specified properties
+        /// </summary>
+        /// <param name="properties">The properties</param>
+        /// <returns>The obj</returns>
         public NumericTypesStruct CreateFromProperties(Dictionary<string, string> properties)
         {
             NumericTypesStruct obj = new NumericTypesStruct();

@@ -9,12 +9,31 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
     /// </summary>
     public class LogEntry : IJsonSerializable, IJsonDesSerializable<LogEntry>
     {
+        /// <summary>
+        /// Gets or sets the value of the log id
+        /// </summary>
         public Guid LogId { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the timestamp
+        /// </summary>
         public DateTime Timestamp { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the level
+        /// </summary>
         public string Level { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the message
+        /// </summary>
         public string Message { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the source
+        /// </summary>
         public string Source { get; set; }
 
+        /// <summary>
+        /// Gets the serializable properties
+        /// </summary>
+        /// <returns>An enumerable of string property name and string value</returns>
         public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
         {
             yield return (nameof(LogId), LogId.ToString());
@@ -24,6 +43,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
             yield return (nameof(Source), Source);
         }
 
+        /// <summary>
+        /// Creates the from properties using the specified properties
+        /// </summary>
+        /// <param name="properties">The properties</param>
+        /// <returns>The obj</returns>
         public LogEntry CreateFromProperties(Dictionary<string, string> properties)
         {
             LogEntry obj = new LogEntry();

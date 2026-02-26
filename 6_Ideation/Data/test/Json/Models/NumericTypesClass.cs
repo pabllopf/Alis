@@ -8,18 +8,55 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
     /// </summary>
     public class NumericTypesClass : IJsonSerializable, IJsonDesSerializable<NumericTypesClass>
     {
+        /// <summary>
+        /// Gets or sets the value of the byte value
+        /// </summary>
         public byte ByteValue { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the s byte value
+        /// </summary>
         public sbyte SByteValue { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the short value
+        /// </summary>
         public short ShortValue { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the u short value
+        /// </summary>
         public ushort UShortValue { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the int value
+        /// </summary>
         public int IntValue { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the u int value
+        /// </summary>
         public uint UIntValue { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the long value
+        /// </summary>
         public long LongValue { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the u long value
+        /// </summary>
         public ulong ULongValue { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the float value
+        /// </summary>
         public float FloatValue { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the double value
+        /// </summary>
         public double DoubleValue { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the decimal value
+        /// </summary>
         public decimal DecimalValue { get; set; }
 
+        /// <summary>
+        /// Gets the serializable properties
+        /// </summary>
+        /// <returns>An enumerable of string property name and string value</returns>
         public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
         {
             yield return (nameof(ByteValue), ByteValue.ToString());
@@ -35,6 +72,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
             yield return (nameof(DecimalValue), DecimalValue.ToString(System.Globalization.CultureInfo.InvariantCulture));
         }
 
+        /// <summary>
+        /// Creates the from properties using the specified properties
+        /// </summary>
+        /// <param name="properties">The properties</param>
+        /// <returns>The obj</returns>
         public NumericTypesClass CreateFromProperties(Dictionary<string, string> properties)
         {
             NumericTypesClass obj = new NumericTypesClass();

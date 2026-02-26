@@ -9,15 +9,30 @@ namespace Alis.Core.Aspect.Data.Test.Json.Models
     /// </summary>
     public struct TemporalTypesStruct : IJsonSerializable, IJsonDesSerializable<TemporalTypesStruct>
     {
+        /// <summary>
+        /// Gets or sets the value of the timestamp
+        /// </summary>
         public DateTime Timestamp { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the identifier
+        /// </summary>
         public Guid Identifier { get; set; }
 
+        /// <summary>
+        /// Gets the serializable properties
+        /// </summary>
+        /// <returns>An enumerable of string property name and string value</returns>
         public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
         {
             yield return (nameof(Timestamp), Timestamp.ToString("O"));
             yield return (nameof(Identifier), Identifier.ToString());
         }
 
+        /// <summary>
+        /// Creates the from properties using the specified properties
+        /// </summary>
+        /// <param name="properties">The properties</param>
+        /// <returns>The obj</returns>
         public TemporalTypesStruct CreateFromProperties(Dictionary<string, string> properties)
         {
             TemporalTypesStruct obj = new TemporalTypesStruct();

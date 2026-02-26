@@ -38,7 +38,13 @@ namespace Alis.Core.Aspect.Data.Generator
     /// </summary>
     internal class SerializationCodeBuilder
     {
+        /// <summary>
+        /// The string builder
+        /// </summary>
         private readonly StringBuilder _stringBuilder;
+        /// <summary>
+        /// The type symbol
+        /// </summary>
         private readonly INamedTypeSymbol _typeSymbol;
 
         /// <summary>

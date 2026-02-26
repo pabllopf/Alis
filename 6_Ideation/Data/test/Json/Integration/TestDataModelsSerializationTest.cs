@@ -42,6 +42,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
     {
         #region PersonClass Tests
 
+        /// <summary>
+        /// Tests that serialize person class produces valid json
+        /// </summary>
         [Fact]
         public void Serialize_PersonClass_ProducesValidJson()
         {
@@ -63,6 +66,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Contains("john@example.com", json);
         }
 
+        /// <summary>
+        /// Tests that round trip person class preserves all properties
+        /// </summary>
         [Fact]
         public void RoundTrip_PersonClass_PreservesAllProperties()
         {
@@ -84,6 +90,12 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Email, restored.Email);
         }
 
+        /// <summary>
+        /// Tests that round trip person class with various values
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="age">The age</param>
+        /// <param name="email">The email</param>
         [Theory]
         [InlineData("", 0, "")]
         [InlineData("Test", 1, "test@mail.com")]
@@ -107,6 +119,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
         #region PersonStruct Tests
 
+        /// <summary>
+        /// Tests that serialize person struct produces valid json
+        /// </summary>
         [Fact]
         public void Serialize_PersonStruct_ProducesValidJson()
         {
@@ -128,6 +143,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Contains("True", json);
         }
 
+        /// <summary>
+        /// Tests that round trip person struct preserves all properties
+        /// </summary>
         [Fact]
         public void RoundTrip_PersonStruct_PreservesAllProperties()
         {
@@ -149,6 +167,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.IsActive, restored.IsActive);
         }
 
+        /// <summary>
+        /// Tests that round trip person struct with different active states
+        /// </summary>
+        /// <param name="isActive">The is active</param>
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
@@ -169,6 +191,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
         #region NumericTypesClass Tests
 
+        /// <summary>
+        /// Tests that round trip numeric types class preserves all numeric types
+        /// </summary>
         [Fact]
         public void RoundTrip_NumericTypesClass_PreservesAllNumericTypes()
         {
@@ -206,6 +231,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.DecimalValue, restored.DecimalValue);
         }
 
+        /// <summary>
+        /// Tests that round trip numeric types class with zero values
+        /// </summary>
         [Fact]
         public void RoundTrip_NumericTypesClass_WithZeroValues()
         {
@@ -222,6 +250,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(0.0, restored.DoubleValue);
         }
 
+        /// <summary>
+        /// Tests that round trip numeric types class with max values
+        /// </summary>
         [Fact]
         public void RoundTrip_NumericTypesClass_WithMaxValues()
         {
@@ -251,6 +282,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
         #region NumericTypesStruct Tests
 
+        /// <summary>
+        /// Tests that round trip numeric types struct preserves values
+        /// </summary>
         [Fact]
         public void RoundTrip_NumericTypesStruct_PreservesValues()
         {
@@ -274,6 +308,13 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.DecimalValue, restored.DecimalValue);
         }
 
+        /// <summary>
+        /// Tests that round trip numeric types struct with various values
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <param name="d">The </param>
+        /// <param name="f">The </param>
+        /// <param name="dec">The dec</param>
         [Theory]
         [InlineData(0, 0.0, 0.0f, 0)]
         [InlineData(100, 100.5, 100.5f, 100.50)]
@@ -302,6 +343,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
         #region TemporalTypesClass Tests
 
+        /// <summary>
+        /// Tests that round trip temporal types class preserves date time and guid
+        /// </summary>
         [Fact]
         public void RoundTrip_TemporalTypesClass_PreservesDateTimeAndGuid()
         {
@@ -329,6 +373,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.CorrelationId, restored.CorrelationId);
         }
 
+        /// <summary>
+        /// Tests that round trip temporal types class with empty guid
+        /// </summary>
         [Fact]
         public void RoundTrip_TemporalTypesClass_WithEmptyGuid()
         {
@@ -354,6 +401,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
         #region TemporalTypesStruct Tests
 
+        /// <summary>
+        /// Tests that round trip temporal types struct preserves values
+        /// </summary>
         [Fact]
         public void RoundTrip_TemporalTypesStruct_PreservesValues()
         {
@@ -380,6 +430,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
         #region EntityWithEnums Tests
 
+        /// <summary>
+        /// Tests that round trip entity with enums preserves enum values
+        /// </summary>
         [Fact]
         public void RoundTrip_EntityWithEnums_PreservesEnumValues()
         {
@@ -401,6 +454,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Priority, restored.Priority);
         }
 
+        /// <summary>
+        /// Tests that round trip entity with enums with all combinations
+        /// </summary>
+        /// <param name="status">The status</param>
+        /// <param name="priority">The priority</param>
         [Theory]
         [InlineData(StatusEnum.Unknown, PriorityEnum.Low)]
         [InlineData(StatusEnum.Active, PriorityEnum.Normal)]
@@ -430,6 +488,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
         #region ConfigStruct Tests
 
+        /// <summary>
+        /// Tests that round trip config struct preserves values
+        /// </summary>
         [Fact]
         public void RoundTrip_ConfigStruct_PreservesValues()
         {
@@ -455,6 +516,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
         #region AddressClass and UserWithAddress Tests
 
+        /// <summary>
+        /// Tests that round trip address class preserves all fields
+        /// </summary>
         [Fact]
         public void RoundTrip_AddressClass_PreservesAllFields()
         {
@@ -478,6 +542,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.ZipCode, restored.ZipCode);
         }
 
+        /// <summary>
+        /// Tests that round trip user with address preserves nested object
+        /// </summary>
         [Fact]
         public void RoundTrip_UserWithAddress_PreservesNestedObject()
         {
@@ -507,6 +574,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Address.City, restored.Address.City);
         }
 
+        /// <summary>
+        /// Tests that round trip user with address with null address
+        /// </summary>
         [Fact]
         public void RoundTrip_UserWithAddress_WithNullAddress()
         {
@@ -531,6 +601,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
         #region Point2D and Point3D Tests
 
+        /// <summary>
+        /// Tests that round trip point 2 d preserves coordinates
+        /// </summary>
         [Fact]
         public void RoundTrip_Point2D_PreservesCoordinates()
         {
@@ -546,6 +619,11 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Y, restored.Y);
         }
 
+        /// <summary>
+        /// Tests that round trip point 2 d with various coordinates
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
         [Theory]
         [InlineData(0, 0)]
         [InlineData(100, -100)]
@@ -565,6 +643,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Y, restored.Y);
         }
 
+        /// <summary>
+        /// Tests that round trip point 3 d preserves coordinates
+        /// </summary>
         [Fact]
         public void RoundTrip_Point3D_PreservesCoordinates()
         {
@@ -581,6 +662,12 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Z, restored.Z, 5);
         }
 
+        /// <summary>
+        /// Tests that round trip point 3 d with various coordinates
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="z">The </param>
         [Theory]
         [InlineData(0.0, 0.0, 0.0)]
         [InlineData(1.1, 2.2, 3.3)]
@@ -604,6 +691,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
         #region ProductClass and OrderItemStruct Tests
 
+        /// <summary>
+        /// Tests that round trip product class preserves all properties
+        /// </summary>
         [Fact]
         public void RoundTrip_ProductClass_PreservesAllProperties()
         {
@@ -629,6 +719,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.AddedDate.Year, restored.AddedDate.Year);
         }
 
+        /// <summary>
+        /// Tests that round trip order item struct preserves values
+        /// </summary>
         [Fact]
         public void RoundTrip_OrderItemStruct_PreservesValues()
         {
@@ -654,6 +747,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
         #region AppSettings and DbConnectionStruct Tests
 
+        /// <summary>
+        /// Tests that round trip app settings preserves configuration
+        /// </summary>
         [Fact]
         public void RoundTrip_AppSettings_PreservesConfiguration()
         {
@@ -681,6 +777,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.LogLevel, restored.LogLevel);
         }
 
+        /// <summary>
+        /// Tests that round trip db connection struct preserves connection details
+        /// </summary>
         [Fact]
         public void RoundTrip_DbConnectionStruct_PreservesConnectionDetails()
         {
@@ -708,6 +807,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
         #region LogEntry and AuditTrailStruct Tests
 
+        /// <summary>
+        /// Tests that round trip log entry preserves log data
+        /// </summary>
         [Fact]
         public void RoundTrip_LogEntry_PreservesLogData()
         {
@@ -733,6 +835,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Source, restored.Source);
         }
 
+        /// <summary>
+        /// Tests that round trip audit trail struct preserves audit data
+        /// </summary>
         [Fact]
         public void RoundTrip_AuditTrailStruct_PreservesAuditData()
         {
@@ -759,6 +864,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
         #region Minimal Types Tests
 
+        /// <summary>
+        /// Tests that round trip minimal class preserves single property
+        /// </summary>
         [Fact]
         public void RoundTrip_MinimalClass_PreservesSingleProperty()
         {
@@ -773,6 +881,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Value, restored.Value);
         }
 
+        /// <summary>
+        /// Tests that round trip minimal struct preserves single property
+        /// </summary>
         [Fact]
         public void RoundTrip_MinimalStruct_PreservesSingleProperty()
         {
@@ -787,6 +898,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Value, restored.Value);
         }
 
+        /// <summary>
+        /// Tests that round trip minimal class with various strings
+        /// </summary>
+        /// <param name="value">The value</param>
         [Theory]
         [InlineData("")]
         [InlineData("a")]
@@ -804,6 +919,10 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Equal(original.Value, restored.Value);
         }
 
+        /// <summary>
+        /// Tests that round trip minimal struct with various integers
+        /// </summary>
+        /// <param name="value">The value</param>
         [Theory]
         [InlineData(0)]
         [InlineData(1)]
@@ -827,6 +946,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
         #region Collection Types Tests
 
+        /// <summary>
+        /// Tests that round trip tags class preserves list of strings
+        /// </summary>
         [Fact]
         public void RoundTrip_TagsClass_PreservesListOfStrings()
         {
@@ -849,6 +971,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             Assert.Contains("csharp", restored.Tags);
         }
 
+        /// <summary>
+        /// Tests that round trip scores class preserves list of integers
+        /// </summary>
         [Fact]
         public void RoundTrip_ScoresClass_PreservesListOfIntegers()
         {

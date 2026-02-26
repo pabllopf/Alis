@@ -44,8 +44,14 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
     /// </summary>
     public class JsonRegressionTest
     {
+        /// <summary>
+        /// The parser
+        /// </summary>
         private readonly IJsonParser _parser;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JsonRegressionTest"/> class
+        /// </summary>
         public JsonRegressionTest()
         {
             _parser = new JsonParser(new EscapeSequenceHandler());
@@ -53,6 +59,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Whitespace Handling
 
+        /// <summary>
+        /// Tests that bug 001 parse to dictionary extra whitespace does not fail
+        /// </summary>
         [Fact]
         public void Bug001_ParseToDictionary_ExtraWhitespace_DoesNotFail()
         {
@@ -65,6 +74,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Equal("value", result["key"]);
         }
 
+        /// <summary>
+        /// Tests that bug 002 parse to dictionary newlines in json parses correctly
+        /// </summary>
         [Fact]
         public void Bug002_ParseToDictionary_NewlinesInJson_ParsesCorrectly()
         {
@@ -81,6 +93,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Escape Sequences
 
+        /// <summary>
+        /// Tests that bug 003 parse to dictionary escaped quotes unescapes correctly
+        /// </summary>
         [Fact]
         public void Bug003_ParseToDictionary_EscapedQuotes_UnescapesCorrectly()
         {
@@ -93,6 +108,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Contains("\"", result["text"]);
         }
 
+        /// <summary>
+        /// Tests that bug 004 parse to dictionary escaped backslash handles correctly
+        /// </summary>
         [Fact]
         public void Bug004_ParseToDictionary_EscapedBackslash_HandlesCorrectly()
         {
@@ -105,6 +123,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Contains("\\", result["path"]);
         }
 
+        /// <summary>
+        /// Tests that bug 005 parse to dictionary multiple escapes all processed
+        /// </summary>
         [Fact]
         public void Bug005_ParseToDictionary_MultipleEscapes_AllProcessed()
         {
@@ -122,6 +143,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Nested Structures
 
+        /// <summary>
+        /// Tests that bug 006 parse to dictionary nested object returns complete json
+        /// </summary>
         [Fact]
         public void Bug006_ParseToDictionary_NestedObject_ReturnsCompleteJson()
         {
@@ -136,6 +160,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Contains("age", result["user"]);
         }
 
+        /// <summary>
+        /// Tests that bug 007 parse to dictionary nested array returns complete array
+        /// </summary>
         [Fact]
         public void Bug007_ParseToDictionary_NestedArray_ReturnsCompleteArray()
         {
@@ -154,6 +181,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Empty Values
 
+        /// <summary>
+        /// Tests that bug 008 parse to dictionary empty string does not skip property
+        /// </summary>
         [Fact]
         public void Bug008_ParseToDictionary_EmptyString_DoesNotSkipProperty()
         {
@@ -167,6 +197,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Equal("", result["name"]);
         }
 
+        /// <summary>
+        /// Tests that bug 009 parse to dictionary empty array preserves empty array
+        /// </summary>
         [Fact]
         public void Bug009_ParseToDictionary_EmptyArray_PreservesEmptyArray()
         {
@@ -179,6 +212,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Equal("[]", result["items"]);
         }
 
+        /// <summary>
+        /// Tests that bug 010 parse to dictionary empty object preserves empty object
+        /// </summary>
         [Fact]
         public void Bug010_ParseToDictionary_EmptyObject_PreservesEmptyObject()
         {
@@ -195,6 +231,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Serialization Issues
 
+        /// <summary>
+        /// Tests that bug 011 serialize value type property no nullable operator
+        /// </summary>
         [Fact]
         public void Bug011_Serialize_ValueTypeProperty_NoNullableOperator()
         {
@@ -212,6 +251,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Contains("42", json);
         }
 
+        /// <summary>
+        /// Tests that bug 012 serialize reference type property uses nullable operator
+        /// </summary>
         [Fact]
         public void Bug012_Serialize_ReferenceTypeProperty_UsesNullableOperator()
         {
@@ -233,6 +275,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Deserialization Issues
 
+        /// <summary>
+        /// Tests that bug 013 deserialize missing property uses default
+        /// </summary>
         [Fact]
         public void Bug013_Deserialize_MissingProperty_UsesDefault()
         {
@@ -246,6 +291,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Equal(0, obj.Age);
         }
 
+        /// <summary>
+        /// Tests that bug 014 deserialize invalid integer value uses default
+        /// </summary>
         [Fact]
         public void Bug014_Deserialize_InvalidIntegerValue_UsesDefault()
         {
@@ -258,6 +306,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Equal(0, obj.Value);
         }
 
+        /// <summary>
+        /// Tests that bug 015 deserialize invalid bool value uses default
+        /// </summary>
         [Fact]
         public void Bug015_Deserialize_InvalidBoolValue_UsesDefault()
         {
@@ -270,6 +321,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.False(obj.IsActive);
         }
 
+        /// <summary>
+        /// Tests that bug 016 deserialize invalid guid value uses empty
+        /// </summary>
         [Fact]
         public void Bug016_Deserialize_InvalidGuidValue_UsesEmpty()
         {
@@ -286,6 +340,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Special Characters
 
+        /// <summary>
+        /// Tests that bug 017 round trip email address preserves at sign
+        /// </summary>
         [Fact]
         public void Bug017_RoundTrip_EmailAddress_PreservesAtSign()
         {
@@ -304,6 +361,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Equal("user@example.com", restored.Email);
         }
 
+        /// <summary>
+        /// Tests that bug 018 round trip url in string preserves slashes
+        /// </summary>
         [Fact]
         public void Bug018_RoundTrip_UrlInString_PreservesSlashes()
         {
@@ -324,6 +384,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Numeric Precision
 
+        /// <summary>
+        /// Tests that bug 019 round trip decimal precision maintained
+        /// </summary>
         [Fact]
         public void Bug019_RoundTrip_DecimalPrecision_Maintained()
         {
@@ -340,6 +403,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Equal(original.DecimalValue, restored.DecimalValue);
         }
 
+        /// <summary>
+        /// Tests that bug 020 round trip double precision maintained
+        /// </summary>
         [Fact]
         public void Bug020_RoundTrip_DoublePrecision_Maintained()
         {
@@ -360,6 +426,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: DateTime Handling
 
+        /// <summary>
+        /// Tests that bug 021 round trip date time preserves date
+        /// </summary>
         [Fact]
         public void Bug021_RoundTrip_DateTime_PreservesDate()
         {
@@ -379,6 +448,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Equal(original.Timestamp.Day, restored.Timestamp.Day);
         }
 
+        /// <summary>
+        /// Tests that bug 022 round trip min date time handles edge case
+        /// </summary>
         [Fact]
         public void Bug022_RoundTrip_MinDateTime_HandlesEdgeCase()
         {
@@ -402,6 +474,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Enum Serialization
 
+        /// <summary>
+        /// Tests that bug 023 round trip enum value preserves enum name
+        /// </summary>
         [Fact]
         public void Bug023_RoundTrip_EnumValue_PreservesEnumName()
         {
@@ -421,6 +496,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Equal(PriorityEnum.High, restored.Priority);
         }
 
+        /// <summary>
+        /// Tests that bug 024 round trip enum default value handles correctly
+        /// </summary>
         [Fact]
         public void Bug024_RoundTrip_EnumDefaultValue_HandlesCorrectly()
         {
@@ -443,6 +521,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Collection Handling
 
+        /// <summary>
+        /// Tests that bug 025 round trip empty list preserves empty list
+        /// </summary>
         [Fact]
         public void Bug025_RoundTrip_EmptyList_PreservesEmptyList()
         {
@@ -461,6 +542,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Empty(restored.Tags);
         }
 
+        /// <summary>
+        /// Tests that bug 026 round trip list with null elements handles gracefully
+        /// </summary>
         [Fact]
         public void Bug026_RoundTrip_ListWithNullElements_HandlesGracefully()
         {
@@ -481,6 +565,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Nested Objects
 
+        /// <summary>
+        /// Tests that bug 027 round trip nested object preserves nesting
+        /// </summary>
         [Fact]
         public void Bug027_RoundTrip_NestedObject_PreservesNesting()
         {
@@ -504,6 +591,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Equal("123 Main St", restored.Address.Street);
         }
 
+        /// <summary>
+        /// Tests that bug 028 round trip null nested object does not crash
+        /// </summary>
         [Fact]
         public void Bug028_RoundTrip_NullNestedObject_DoesNotCrash()
         {
@@ -526,6 +616,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Large Values
 
+        /// <summary>
+        /// Tests that bug 029 round trip very long string preserves entire string
+        /// </summary>
         [Fact]
         public void Bug029_RoundTrip_VeryLongString_PreservesEntireString()
         {
@@ -540,6 +633,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Equal(longString, restored.Value);
         }
 
+        /// <summary>
+        /// Tests that bug 030 round trip max int value no overflow
+        /// </summary>
         [Fact]
         public void Bug030_RoundTrip_MaxIntValue_NoOverflow()
         {
@@ -560,6 +656,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Special Case Values
 
+        /// <summary>
+        /// Tests that bug 031 round trip empty guid serializes correctly
+        /// </summary>
         [Fact]
         public void Bug031_RoundTrip_EmptyGuid_SerializesCorrectly()
         {
@@ -577,6 +676,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Equal(Guid.Empty, restored.Identifier);
         }
 
+        /// <summary>
+        /// Tests that bug 032 round trip min date time no exception
+        /// </summary>
         [Fact]
         public void Bug032_RoundTrip_MinDateTime_NoException()
         {
@@ -601,6 +703,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Property Name Cases
 
+        /// <summary>
+        /// Tests that bug 033 parse to dictionary case sensitive keys treats as different
+        /// </summary>
         [Fact]
         public void Bug033_ParseToDictionary_CaseSensitiveKeys_TreatsAsDifferent()
         {
@@ -617,6 +722,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Duplicate Keys
 
+        /// <summary>
+        /// Tests that bug 034 parse to dictionary duplicate keys uses last
+        /// </summary>
         [Fact]
         public void Bug034_ParseToDictionary_DuplicateKeys_UsesLast()
         {
@@ -633,6 +741,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Unicode Support
 
+        /// <summary>
+        /// Tests that bug 035 round trip unicode characters preserves correctly
+        /// </summary>
         [Fact]
         public void Bug035_RoundTrip_UnicodeCharacters_PreservesCorrectly()
         {
@@ -653,6 +764,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Performance Issues
 
+        /// <summary>
+        /// Tests that bug 036 parse to dictionary large json completes in time
+        /// </summary>
         [Fact]
         public void Bug036_ParseToDictionary_LargeJson_CompletesInTime()
         {
@@ -677,6 +791,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Null Handling
 
+        /// <summary>
+        /// Tests that bug 037 serialize null object throws exception
+        /// </summary>
         [Fact]
         public void Bug037_Serialize_NullObject_ThrowsException()
         {
@@ -687,6 +804,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Throws<ArgumentNullException>(() => JsonNativeAot.Serialize(nullPerson));
         }
 
+        /// <summary>
+        /// Tests that bug 038 deserialize null json throws exception
+        /// </summary>
         [Fact]
         public void Bug038_Deserialize_NullJson_ThrowsException()
         {
@@ -702,6 +822,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: AOT Compatibility
 
+        /// <summary>
+        /// Tests that bug 039 serialize struct aot compatible
+        /// </summary>
         [Fact]
         public void Bug039_Serialize_Struct_AotCompatible()
         {
@@ -716,6 +839,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Equal(original.Y, restored.Y);
         }
 
+        /// <summary>
+        /// Tests that bug 040 serialize complex struct aot compatible
+        /// </summary>
         [Fact]
         public void Bug040_Serialize_ComplexStruct_AotCompatible()
         {
@@ -740,6 +866,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Memory and Performance
 
+        /// <summary>
+        /// Tests that bug 041 multiple serializations no memory leak
+        /// </summary>
         [Fact]
         public void Bug041_MultipleSerializations_NoMemoryLeak()
         {
@@ -757,6 +886,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that bug 042 multiple deserializations no memory leak
+        /// </summary>
         [Fact]
         public void Bug042_MultipleDeserializations_NoMemoryLeak()
         {
@@ -778,6 +910,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Thread Safety
 
+        /// <summary>
+        /// Tests that bug 043 concurrent serializations no race conditions
+        /// </summary>
         [Fact]
         public void Bug043_ConcurrentSerializations_NoRaceConditions()
         {
@@ -798,6 +933,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Edge Cases
 
+        /// <summary>
+        /// Tests that bug 044 serialize all properties null does not crash
+        /// </summary>
         [Fact]
         public void Bug044_Serialize_AllPropertiesNull_DoesNotCrash()
         {
@@ -815,6 +953,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.NotEmpty(json);
         }
 
+        /// <summary>
+        /// Tests that bug 045 deserialize all properties missing creates object
+        /// </summary>
         [Fact]
         public void Bug045_Deserialize_AllPropertiesMissing_CreatesObject()
         {
@@ -831,6 +972,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Special Characters in Property Names
 
+        /// <summary>
+        /// Tests that bug 046 parse to dictionary property with underscore parses correctly
+        /// </summary>
         [Fact]
         public void Bug046_ParseToDictionary_PropertyWithUnderscore_ParsesCorrectly()
         {
@@ -848,6 +992,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Floating Point Edge Cases
 
+        /// <summary>
+        /// Tests that bug 047 round trip negative zero handles correctly
+        /// </summary>
         [Fact]
         public void Bug047_RoundTrip_NegativeZero_HandlesCorrectly()
         {
@@ -866,6 +1013,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Equal(0.0f, Math.Abs(restored.FloatValue));
         }
 
+        /// <summary>
+        /// Tests that bug 048 round trip very small double maintains precision
+        /// </summary>
         [Fact]
         public void Bug048_RoundTrip_VerySmallDouble_MaintainsPrecision()
         {
@@ -886,6 +1036,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
 
         #region Bug Fix: Consistency
 
+        /// <summary>
+        /// Tests that bug 049 multiple serializations produce same result
+        /// </summary>
         [Fact]
         public void Bug049_MultipleSerializations_ProduceSameResult()
         {
@@ -904,6 +1057,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             Assert.Equal(json1, json2);
         }
 
+        /// <summary>
+        /// Tests that bug 050 deserialize then serialize produces similar json
+        /// </summary>
         [Fact]
         public void Bug050_DeserializeThenSerialize_ProducesSimilarJson()
         {
