@@ -27,12 +27,163 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Linq;
+using System.Runtime.InteropServices;
+using Xunit;
+using Alis.Core.Graphic.OpenGL.Delegates;
+
 namespace Alis.Core.Graphic.Test.Delegates
 {
     /// <summary>
-    ///     The attach shader test class
+    /// Tests for the AttachShader delegate validating shader attachment function signature.
     /// </summary>
     public class AttachShaderTest
     {
+        /// <summary>
+        /// Tests that AttachShader is a delegate type.
+        /// </summary>
+        [Fact]
+        public void AttachShader_IsDelegate_TypeIsCorrect()
+        {
+            // Arrange & Act
+            var delegateType = typeof(AttachShader);
+
+            // Assert
+            Assert.True(delegateType.IsSubclassOf(typeof(MulticastDelegate)));
+        }
+
+        /// <summary>
+        /// Tests that AttachShader is public.
+        /// </summary>
+        [Fact]
+        public void AttachShader_IsPublic_CanBeAccessed()
+        {
+            // Arrange & Act
+            var delegateType = typeof(AttachShader);
+
+            // Assert
+            Assert.True(delegateType.IsPublic);
+        }
+
+        /// <summary>
+        /// Tests that AttachShader has UnmanagedFunctionPointer attribute.
+        /// </summary>
+        [Fact]
+        public void AttachShader_HasUnmanagedFunctionPointerAttribute_InteropIsConfigured()
+        {
+            // Arrange & Act
+            var delegateType = typeof(AttachShader);
+            var attribute = delegateType.GetCustomAttributes(typeof(UnmanagedFunctionPointerAttribute), false).FirstOrDefault();
+
+            // Assert
+            Assert.NotNull(attribute);
+        }
+
+        /// <summary>
+        /// Tests that AttachShader has two parameters.
+        /// </summary>
+        [Fact]
+        public void AttachShader_HasTwoParameters_SignatureIsCorrect()
+        {
+            // Arrange & Act
+            var delegateType = typeof(AttachShader);
+            var invokeMethod = delegateType.GetMethod("Invoke");
+
+            // Assert
+            Assert.NotNull(invokeMethod);
+            var parameters = invokeMethod.GetParameters();
+            Assert.Equal(2, parameters.Length);
+        }
+
+        /// <summary>
+        /// Tests that AttachShader first parameter is uint (program).
+        /// </summary>
+        [Fact]
+        public void AttachShader_FirstParameter_IsUint()
+        {
+            // Arrange & Act
+            var delegateType = typeof(AttachShader);
+            var invokeMethod = delegateType.GetMethod("Invoke");
+            var parameters = invokeMethod.GetParameters();
+
+            // Assert
+            Assert.Equal(typeof(uint), parameters[0].ParameterType);
+            Assert.Equal("program", parameters[0].Name);
+        }
+
+        /// <summary>
+        /// Tests that AttachShader second parameter is uint (shader).
+        /// </summary>
+        [Fact]
+        public void AttachShader_SecondParameter_IsUint()
+        {
+            // Arrange & Act
+            var delegateType = typeof(AttachShader);
+            var invokeMethod = delegateType.GetMethod("Invoke");
+            var parameters = invokeMethod.GetParameters();
+
+            // Assert
+            Assert.Equal(typeof(uint), parameters[1].ParameterType);
+            Assert.Equal("shader", parameters[1].Name);
+        }
+
+        /// <summary>
+        /// Tests that AttachShader return type is void.
+        /// </summary>
+        [Fact]
+        public void AttachShader_ReturnType_IsVoid()
+        {
+            // Arrange & Act
+            var delegateType = typeof(AttachShader);
+            var invokeMethod = delegateType.GetMethod("Invoke");
+
+            // Assert
+            Assert.NotNull(invokeMethod);
+            Assert.Equal(typeof(void), invokeMethod.ReturnType);
+        }
+
+        /// <summary>
+        /// Tests that AttachShader uses StdCall calling convention.
+        /// </summary>
+        [Fact]
+        public void AttachShader_UsesStdCallConvention_InteropConventionIsCorrect()
+        {
+            // Arrange & Act
+            var delegateType = typeof(AttachShader);
+            var attribute = (UnmanagedFunctionPointerAttribute)delegateType.GetCustomAttributes(typeof(UnmanagedFunctionPointerAttribute), false)[0];
+
+            // Assert
+            Assert.Equal(CallingConvention.StdCall, attribute.CallingConvention);
+        }
+
+        /// <summary>
+        /// Tests that AttachShader delegate can be instantiated.
+        /// </summary>
+        [Fact]
+        public void AttachShader_CanBeInstantiated_DelegateCreationIsValid()
+        {
+            // Arrange & Act
+            void TestFunction(uint program, uint shader) { }
+            var delegateInstance = new AttachShader(TestFunction);
+
+            // Assert
+            Assert.NotNull(delegateInstance);
+            Assert.IsType<AttachShader>(delegateInstance);
+        }
+
+        /// <summary>
+        /// Tests that AttachShader delegate Invoke method exists.
+        /// </summary>
+        [Fact]
+        public void AttachShader_InvokeMethod_Exists()
+        {
+            // Arrange & Act
+            var delegateType = typeof(AttachShader);
+            var invokeMethod = delegateType.GetMethod("Invoke");
+
+            // Assert
+            Assert.NotNull(invokeMethod);
+        }
     }
 }
