@@ -5,6 +5,122 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.9.5] - 2026-02-27
+### :sparkles: New Features
+- [`32926c7`](https://github.com/pabllopf/Alis/commit/32926c71580451b86e2562d9fb93578b1daca1f2) - new module IO FileDialog cross-platform *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`db4209b`](https://github.com/pabllopf/Alis/commit/db4209ba27081dfe87647f0d48d53538b9e600d4) - new module of Translator *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6ad1999`](https://github.com/pabllopf/Alis/commit/6ad1999e7c62f8a9e0e5b555c0ba5d62d73ee8f0) - add new system of dialogs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1c44ebb`](https://github.com/pabllopf/Alis/commit/1c44ebb9a75e7766be5577babdfc155ab7a5420a) - new system of dialogue *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ee9d0d9`](https://github.com/pabllopf/Alis/commit/ee9d0d9e00cab34e3e548bf31137abc71ad72bbb) - add coverlet.msbuild *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e557cc8`](https://github.com/pabllopf/Alis/commit/e557cc820dfa21f4e8ce6ba77f4638fae4063e9f) - new module json *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ba92ecb`](https://github.com/pabllopf/Alis/commit/ba92ecb593cbc5480bc935c1b50d29b941bc9342) - add new types to source generator json AOT *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3ed7a3b`](https://github.com/pabllopf/Alis/commit/3ed7a3bc40fac82009502f9ba588becd8f9dbe14) - add new dungeon module with better arquitecture. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8742f8c`](https://github.com/pabllopf/Alis/commit/8742f8c14a97c43d39492572cab2ebf3836fdef0) - add new profiler *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`44e56fb`](https://github.com/pabllopf/Alis/commit/44e56fbe43226898888a0512a3cc110f2de26c2e) - Refactor Engine: ImGui input & layout *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a4e2f6c`](https://github.com/pabllopf/Alis/commit/a4e2f6c4d62b6419e519f8eddb734828dc1afd3f) - Extract zip entry classes and add unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`42ced1f`](https://github.com/pabllopf/Alis/commit/42ced1f75d64357b5ae3a853b6f29a623e64258b) - Refactor tests: explicit types, docs; add asset *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ed8b358`](https://github.com/pabllopf/Alis/commit/ed8b3581bd3dc6cd41690c771ff860ccaf228171) - sonarcloud build *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5b08803`](https://github.com/pabllopf/Alis/commit/5b08803f12141a57f0d92aab2e6d63ddeb88ce67) - sonar buildings *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`98a0647`](https://github.com/pabllopf/Alis/commit/98a0647d1c330ab25b9097e68af30b71c7b82d11) - -clp:ErrorsOnly *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0f0b648`](https://github.com/pabllopf/Alis/commit/0f0b648753befa777154f63bfdd39bd98a499e3e) - disable generator files of wewb samples *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e82fc72`](https://github.com/pabllopf/Alis/commit/e82fc72285cc9557e5a6e2f02786ef0911091ca6) - version of .netstandard on generator loaders *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`01ab3de`](https://github.com/pabllopf/Alis/commit/01ab3de6f42a1ae0bc787c08c59fe0fb44f7d5e3) - delete unless unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8aa4cd4`](https://github.com/pabllopf/Alis/commit/8aa4cd45a6be51e0c74ee1e986f468f59271792f) - load txt files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3edeec2`](https://github.com/pabllopf/Alis/commit/3edeec2b3589f004c57bb4d1c2004700819c300a) - macos pick files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`004b955`](https://github.com/pabllopf/Alis/commit/004b955b27cd0e9d7fbad9b57a32316d73cece87) - add simple default test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`27550ae`](https://github.com/pabllopf/Alis/commit/27550ae8288aa0ba5a82372cbf3d3dc3aed378cf) - hange this code to not construct the path from file name entry of an archive. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9e2f599`](https://github.com/pabllopf/Alis/commit/9e2f599d62a18d1cc849b2a670a58508cf5075ad) - permissions on workflows *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c04560e`](https://github.com/pabllopf/Alis/commit/c04560e6e9e1d78246551758c2739df101b4bd8c) - 'Path.GetTempFileName()' is insecure. Use 'Path.GetRandomFileName()' instead. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`00a5b00`](https://github.com/pabllopf/Alis/commit/00a5b000d7a50b3f97254253650a7f123f145bba) - Exceptions should not be thrown from unexpected methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6663241`](https://github.com/pabllopf/Alis/commit/666324130ccb14ef78a913a5ff7e5b0d1ab3264b) - the   lock (GetAssemblyLock(ActiveAssemblyName)) *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6395d87`](https://github.com/pabllopf/Alis/commit/6395d87177976626cd22ba2bb3b2e5ce93f9eadc) - report path test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`912a314`](https://github.com/pabllopf/Alis/commit/912a314c20953fc5f6f2808f14ec248ebaf16886) - dotnet test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dbeb7a9`](https://github.com/pabllopf/Alis/commit/dbeb7a94d45c303b351054abe6a717528c776297) - optimice *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`09b1360`](https://github.com/pabllopf/Alis/commit/09b136030ecfdbe60d9d9b4ad503c1f2e21014f8) - Update build command in SonarCloud workflow *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a0d5a3a`](https://github.com/pabllopf/Alis/commit/a0d5a3a309235531f2484905be8a4fd4265dae8b) - new version without restore *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`db7512b`](https://github.com/pabllopf/Alis/commit/db7512b75074dc631623c8b97bcd769547b35d6d) - Add tool installations for SonarQube scanning *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cb032c2`](https://github.com/pabllopf/Alis/commit/cb032c2f577067f6d05e254cd53e804dedd55db2) - fast sonarcloud *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`758a770`](https://github.com/pabllopf/Alis/commit/758a770f87f209adc1e705788057979df99cb06e) - --collect "XPlat Code Coverage;Format=opencover" *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f817c9b`](https://github.com/pabllopf/Alis/commit/f817c9b8518d4e394835492b2a6c18f5a1e4e124) - /d:sonar.scanner.skipJreProvisioning=true *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fca84e7`](https://github.com/pabllopf/Alis/commit/fca84e7f78bd90644ccb5301c5eacf5f4f1cfff2) - load alis base project *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0a60425`](https://github.com/pabllopf/Alis/commit/0a60425410efc032cbe0f209e4eea8a093fd2f35) - sonarcloud *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f9d6ca8`](https://github.com/pabllopf/Alis/commit/f9d6ca8b54bddd66d9990a8db17233340604c15c) - add alis_design.sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`acc613b`](https://github.com/pabllopf/Alis/commit/acc613bc321b585e295615a9b4a205ac07eeb3af) - optimice the results *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c3f346c`](https://github.com/pabllopf/Alis/commit/c3f346c01e6be8eab5f9aff44c594ae54610d21c) - path versions *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d0db793`](https://github.com/pabllopf/Alis/commit/d0db7931ba92bf37fb29598fb45ca5afa4f48d0a) - the sonarcloud *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b919c96`](https://github.com/pabllopf/Alis/commit/b919c96071566679fb37be1c005a2fa4324ea659) - add custom params *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d10b88f`](https://github.com/pabllopf/Alis/commit/d10b88f8e2a543657d7f899e9fc674208fa46f95) - delete unless packreference *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`92725ff`](https://github.com/pabllopf/Alis/commit/92725ff47bf03742c0c27ae3894e9d9a60d6e938) - build on release mode *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6d1d377`](https://github.com/pabllopf/Alis/commit/6d1d37731b20b5867ea7297739e0b3164297373c) - java version *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5a42883`](https://github.com/pabllopf/Alis/commit/5a42883e5568d7fdc373f849424362d872484010) - support net8.0 on generator and test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1a18ffc`](https://github.com/pabllopf/Alis/commit/1a18ffcd1227cf34274b52928bea4d9da45d2652) - netversion --no-build -v minimal -clp:ErrorsOnly -f net8.0 -c Release *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`99a59a3`](https://github.com/pabllopf/Alis/commit/99a59a3f3578394736fc078887ce51f8f0f2493d) - --no-incremental *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aa4da16`](https://github.com/pabllopf/Alis/commit/aa4da16a9edadea1cda648bc32f50d54dff4508e) - alis_design.sln covert test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`044f571`](https://github.com/pabllopf/Alis/commit/044f571a912ba3e23d9ab16c373e3e6b220f14e4) - build to win *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b795833`](https://github.com/pabllopf/Alis/commit/b79583309264617ff76fa17ed0083cc4ebb900fc) - delete runtimeidentifier *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ba26edd`](https://github.com/pabllopf/Alis/commit/ba26edd32bcccf4b253fdb12c3325bb984d431b6) - /d:sonar.cs.opencover.reportsPaths=**/coverage.opencover.xml *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8d21d52`](https://github.com/pabllopf/Alis/commit/8d21d52c003d3f0efe253fa48426f5b4744ed038) - Modify SonarCloud workflow for coverage reporting *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ca6af30`](https://github.com/pabllopf/Alis/commit/ca6af30668e0e27f81c70c422ff10a7c837b6834) - unit test results *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c469cd7`](https://github.com/pabllopf/Alis/commit/c469cd71e1a913114e406584d387ad427dae8a1a) - the unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dc6b33f`](https://github.com/pabllopf/Alis/commit/dc6b33f01b2dc89e9fab46b3fe3fea50cdc058a8) - unit tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`06bf606`](https://github.com/pabllopf/Alis/commit/06bf60658235e855bee8049b2e6ec9d6b73d0c7c) - Update SonarCloud scanner paths and test command *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3805001`](https://github.com/pabllopf/Alis/commit/3805001e67260d5f2862abe3b4c1d684c6a41480) - Update SonarCloud workflow for coverage report path *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aebba6b`](https://github.com/pabllopf/Alis/commit/aebba6ba54e6d9a300817ad53d59cf7027cb2721) - Update SonarCloud scanner paths in workflow *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8d9479e`](https://github.com/pabllopf/Alis/commit/8d9479e78694dbe7bd6093ca5b913f4eedd8bdb0) - --no-build *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b15d267`](https://github.com/pabllopf/Alis/commit/b15d2679c0c8d8fa4fa205628ac4dfe7a3e67939) - reset sonarcloud *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5ebc8d4`](https://github.com/pabllopf/Alis/commit/5ebc8d463c923a2f99e634fc9ff85704e0d37144) - macOS-15 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6db4c99`](https://github.com/pabllopf/Alis/commit/6db4c996923870eb8ff12dae09b61d54318aa88c) - macOS-15 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`92cfcf3`](https://github.com/pabllopf/Alis/commit/92cfcf3f5956ab04062e768c9e842635017c1d86) - only alis time to check covert tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`51b9e9b`](https://github.com/pabllopf/Alis/commit/51b9e9b8d52ac958f3e46f7cc0e16aac14493901) - test versions *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b3a3cad`](https://github.com/pabllopf/Alis/commit/b3a3caddd6fe2ef3ca422a62241f235a08c6eee2) - test folder *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ee99378`](https://github.com/pabllopf/Alis/commit/ee99378f6dfb500b5db40db21c290d4c8c51026e) - test simple covert *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`226e65b`](https://github.com/pabllopf/Alis/commit/226e65b2ee535bea467efd380adda19989b27198) - --results-directory test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3eebc91`](https://github.com/pabllopf/Alis/commit/3eebc912c00385d8a798168639283fee2e795407) - dotnet-coverage collect "dotnet test -f net8.0 -c Release ./6_Ideation/Time/test/Alis.Core.Aspect.Time.Test.csproj" -f xml -o "coverage.xml" *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fad9e13`](https://github.com/pabllopf/Alis/commit/fad9e138428aa8f376401b0120e87a5cbfe68ffb) - macos-15-intel *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8c27fe2`](https://github.com/pabllopf/Alis/commit/8c27fe224730c26ff3d07e1064169f2a00e71ec2) - sonarcloud *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7060b04`](https://github.com/pabllopf/Alis/commit/7060b04bcb63cdcd183d94cff253bb5b4521db61) - alis_design.sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`80bcdb6`](https://github.com/pabllopf/Alis/commit/80bcdb61be48337f33956668ded985f2527911d8) - spaces *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6859738`](https://github.com/pabllopf/Alis/commit/68597384d97f5357cd85777c160342fc7718c05c) - mode Debug *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9161162`](https://github.com/pabllopf/Alis/commit/9161162a5a84a4d6023d61799ed2a2a35079faec) - test covert *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bde2049`](https://github.com/pabllopf/Alis/commit/bde2049f1d92a60fd0ff157b2ea640a08076c407) - optimice time compilation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`98952e0`](https://github.com/pabllopf/Alis/commit/98952e0d05aeb2b9a3a146cfa78b0a821a6bf66f) - the app csprojs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4dab289`](https://github.com/pabllopf/Alis/commit/4dab2892913417c6719ab0286ad54f017f8e2eb6) - the network module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`df2b99f`](https://github.com/pabllopf/Alis/commit/df2b99f33087e8ab924227328caf31dbd8d61fa6) - sonar rules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a98af21`](https://github.com/pabllopf/Alis/commit/a98af2162feaa348e73a0ae13a265ce5ee006028) - delete unless test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4358fef`](https://github.com/pabllopf/Alis/commit/4358fef9a63ab34dafd6f2c438c302e6cac326ae) - add [ExcludeFromCodeCoverage] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`04ef871`](https://github.com/pabllopf/Alis/commit/04ef871a1e08369ceb1b18ff37999876be75ee30) - the using System.Diagnostics.CodeAnalysis; *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`df5e4f5`](https://github.com/pabllopf/Alis/commit/df5e4f56f2f501fbc01e5fdbd0bcc12af142c2ff) - using System.Diagnostics.CodeAnalysis; *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cf2432e`](https://github.com/pabllopf/Alis/commit/cf2432eb9a3a12455841dd5e156ed684b1120aa9) - using System.Diagnostics.CodeAnalysis; *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e3c89a6`](https://github.com/pabllopf/Alis/commit/e3c89a648479af22c33ec9bd22a2c20eb2f2b130) - linux platform *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`8a1d39d`](https://github.com/pabllopf/Alis/commit/8a1d39da4cd432e3d95bdb7bd366f4df3cf5cba0) - Add XML docs and ITimeSetting interface *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ea021ac`](https://github.com/pabllopf/Alis/commit/ea021ac112a7f72ef57bd90883f67120aca949bb) - Add extensive tests for asset and zip handling *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7d9e184`](https://github.com/pabllopf/Alis/commit/7d9e184da07b47ecd4c5cb15ecc66cc3e5ee6606) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5e84794`](https://github.com/pabllopf/Alis/commit/5e84794ee045e9f40ac5acdeb1f101c12ffb93ee) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7a06a3a`](https://github.com/pabllopf/Alis/commit/7a06a3a7045448d10515f0df11c00fe134e54ec5) - pro update alis_design.sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`35fa7d2`](https://github.com/pabllopf/Alis/commit/35fa7d22eb8ab40a2d85eb4a904b89195f05a865) - pro Remove apt-get update from install step *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d2615cd`](https://github.com/pabllopf/Alis/commit/d2615cd37d26cd6eb6351dfad2285242e7077395) - pro Remove unnecessary installation step in workflow *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8d8cf4a`](https://github.com/pabllopf/Alis/commit/8d8cf4af53af7f84f1eb25306c110b8317799522) - pro Remove test reporter and badge creation steps *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bcffca3`](https://github.com/pabllopf/Alis/commit/bcffca346172dc44307e04eb69035a25ac9cd68e) - pro add full test to json module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f3ed103`](https://github.com/pabllopf/Alis/commit/f3ed103b3fc6b99509843ff81a7132274b95ae4d) - pro check all support *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`845875f`](https://github.com/pabllopf/Alis/commit/845875f5c68c909ded89d1ce2f344346105a51b5) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`09c9d0d`](https://github.com/pabllopf/Alis/commit/09c9d0d77e81ac0448e9f5ecb3fba4ca62ba89fd) - pro chcek IJsonDeserializer.cs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d9ee5ff`](https://github.com/pabllopf/Alis/commit/d9ee5fffd87cf6212ab6ef2345bdf00f10fd7a88) - proi check GetElapsedTime_ReturnsCorrectDuration *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1edf9c4`](https://github.com/pabllopf/Alis/commit/1edf9c43260fd7352fb94111308a1980db9cc6d4) - pro add glwf tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1ccdee3`](https://github.com/pabllopf/Alis/commit/1ccdee346f57a22409b5cf8365fe4ce882a5afcc) - pro add new 300 tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`98b4d69`](https://github.com/pabllopf/Alis/commit/98b4d69cbed97a9527b35b2a21919e6ee712aecb) - pro add 100 new tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c69a1b3`](https://github.com/pabllopf/Alis/commit/c69a1b36e8b5c30727ead452c7ae1f2552bf7db3) - pro add to linux and macos using System.Diagnostics.CodeAnalysis; *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`41e0429`](https://github.com/pabllopf/Alis/commit/41e04290d471a99c1a215c42c2648f09c8c0486c) - pro cheek the platform *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dcfef92`](https://github.com/pabllopf/Alis/commit/dcfef92a6c270b39dd88eb827492ef25f9999084) - pro check all platforms *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`db5eb73`](https://github.com/pabllopf/Alis/commit/db5eb7375d6737fdd6eeec35c57f4f84133b8c3a) - delete xmls files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`34c8bc3`](https://github.com/pabllopf/Alis/commit/34c8bc33fd1949237b3c5056f44bee9ec77c92d3) - delete unless xmls *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.9.4] - 2026-02-20
 ### :sparkles: New Features
 - [`ef9f842`](https://github.com/pabllopf/Alis/commit/ef9f84246da7ab0b423d9540dc8d0cf7febb78b8) - do generator with net10 *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -5717,3 +5833,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.9.2]: https://github.com/pabllopf/Alis/compare/v0.9.1...v0.9.2
 [v0.9.3]: https://github.com/pabllopf/Alis/compare/v0.9.2...v0.9.3
 [v0.9.4]: https://github.com/pabllopf/Alis/compare/v0.9.3...v0.9.4
+[v0.9.5]: https://github.com/pabllopf/Alis/compare/v0.9.4...v0.9.5
