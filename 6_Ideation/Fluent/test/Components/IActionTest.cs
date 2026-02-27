@@ -1,0 +1,119 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File: IActionTest.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web: https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using Alis.Core.Aspect.Fluent.Components;
+using Xunit;
+
+namespace Alis.Core.Aspect.Fluent.Test.Components
+{
+    /// <summary>
+    ///     Unit tests for the IAction interface with single parameter.
+    ///     Tests the Run method signature and correct invocation.
+    /// </summary>
+    public class IActionTest
+    {
+        /// <summary>
+        ///     Helper implementation for testing single parameter action.
+        /// </summary>
+        private class SingleParamAction : IAction<int>
+        {
+            public int LastValue { get; private set; }
+
+            public void Run(ref int arg1)
+            {
+                LastValue = arg1;
+            }
+        }
+
+        /// <summary>
+        ///     Tests that IAction can be implemented with a single parameter.
+        /// </summary>
+        [Fact]
+        public void IAction_CanBeImplementedWithSingleParameter()
+        {
+            var action = new SingleParamAction();
+            Assert.NotNull(action);
+            Assert.IsAssignableFrom<IAction<int>>(action);
+        }
+
+        /// <summary>
+        ///     Tests that Run method executes with correct parameter.
+        /// </summary>
+        [Fact]
+        public void Run_ExecutesWithCorrectParameter()
+        {
+            var action = new SingleParamAction();
+            int value = 42;
+            action.Run(ref value);
+            Assert.Equal(42, action.LastValue);
+        }
+
+        /// <summary>
+        ///     Tests Run method with different parameter values.
+        /// </summary>
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(-1)]
+        [InlineData(int.MaxValue)]
+        [InlineData(int.MinValue)]
+        public void Run_WorksWithVariousParameterValues(int paramValue)
+        {
+            var action = new SingleParamAction();
+            action.Run(ref paramValue);
+            Assert.Equal(paramValue, action.LastValue);
+        }
+
+        /// <summary>
+        ///     Tests IAction with string parameter type.
+        /// </summary>
+        [Fact]
+        public void IAction_WithStringParameterType()
+        {
+            var action = new StringParamAction();
+            string value = "test";
+            action.Run(ref value);
+            Assert.Equal("test", action.LastValue);
+        }
+
+        /// <summary>
+        ///     Helper implementation for string parameter.
+        /// </summary>
+        private class StringParamAction : IAction<string>
+        {
+            public string LastValue { get; private set; }
+
+            public void Run(ref string arg1)
+            {
+                LastValue = arg1;
+            }
+        }
+    }
+}
+

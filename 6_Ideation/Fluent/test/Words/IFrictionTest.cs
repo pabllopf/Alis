@@ -1,0 +1,113 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File: IFrictionTest.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web: https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using Alis.Core.Aspect.Fluent.Words;
+using Xunit;
+
+namespace Alis.Core.Aspect.Fluent.Test.Words
+{
+    /// <summary>
+    ///     Unit tests for the IFriction interface.
+    ///     Tests the Friction method for friction coefficient assignment.
+    /// </summary>
+    public class IFrictionTest
+    {
+        /// <summary>
+        ///     Helper builder class for friction.
+        /// </summary>
+        private class FrictionBuilder
+        {
+            public float FrictionValue { get; set; }
+        }
+
+        /// <summary>
+        ///     Helper implementation of IFriction.
+        /// </summary>
+        private class FrictionBuilderImpl : IFriction<FrictionBuilder, float>
+        {
+            private readonly FrictionBuilder _builder = new FrictionBuilder();
+
+            public FrictionBuilder Friction(float value)
+            {
+                _builder.FrictionValue = value;
+                return _builder;
+            }
+        }
+
+        /// <summary>
+        ///     Tests that IFriction can be implemented.
+        /// </summary>
+        [Fact]
+        public void IFriction_CanBeImplemented()
+        {
+            var builder = new FrictionBuilderImpl();
+            Assert.NotNull(builder);
+            Assert.IsAssignableFrom<IFriction<FrictionBuilder, float>>(builder);
+        }
+
+        /// <summary>
+        ///     Tests that Friction sets value correctly.
+        /// </summary>
+        [Fact]
+        public void Friction_SetsValueCorrectly()
+        {
+            var builder = new FrictionBuilderImpl();
+            var result = builder.Friction(0.5f);
+            Assert.Equal(0.5f, result.FrictionValue);
+        }
+
+        /// <summary>
+        ///     Tests that Friction returns builder.
+        /// </summary>
+        [Fact]
+        public void Friction_ReturnsBuilder()
+        {
+            var builder = new FrictionBuilderImpl();
+            var result = builder.Friction(0.3f);
+            Assert.NotNull(result);
+            Assert.IsType<FrictionBuilder>(result);
+        }
+
+        /// <summary>
+        ///     Tests Friction with typical physics values.
+        /// </summary>
+        [Theory]
+        [InlineData(0f)]
+        [InlineData(0.3f)]
+        [InlineData(0.5f)]
+        [InlineData(1f)]
+        public void Friction_WithTypicalPhysicsValues(float friction)
+        {
+            var builder = new FrictionBuilderImpl();
+            var result = builder.Friction(friction);
+            Assert.Equal(friction, result.FrictionValue);
+        }
+    }
+}
+
