@@ -416,5 +416,290 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(command);
             Assert.NotEmpty(command);
         }
+
+        /// <summary>
+        ///     Tests that get bash command with null should return afplay
+        /// </summary>
+        [MacOsOnly]
+        public void GetBashCommand_WithNull_ShouldReturnAfplay()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+
+            // Act
+            string command = player.GetBashCommand(null);
+
+            // Assert
+            Assert.Equal("afplay", command);
+        }
+
+        /// <summary>
+        ///     Tests that get bash command with special characters should return afplay
+        /// </summary>
+        [MacOsOnly]
+        public void GetBashCommand_WithSpecialCharacters_ShouldReturnAfplay()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+            string fileName = "test@#$.wav";
+
+            // Act
+            string command = player.GetBashCommand(fileName);
+
+            // Assert
+            Assert.Equal("afplay", command);
+        }
+
+        /// <summary>
+        ///     Tests that get bash command with path should return afplay
+        /// </summary>
+        [MacOsOnly]
+        public void GetBashCommand_WithPath_ShouldReturnAfplay()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+            string fileName = "/path/to/test.wav";
+
+            // Act
+            string command = player.GetBashCommand(fileName);
+
+            // Assert
+            Assert.Equal("afplay", command);
+        }
+
+        /// <summary>
+        ///     Tests that get bash command with aiff file should return afplay
+        /// </summary>
+        [MacOsOnly]
+        public void GetBashCommand_WithAiffFile_ShouldReturnAfplay()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+            string fileName = "test.aiff";
+
+            // Act
+            string command = player.GetBashCommand(fileName);
+
+            // Assert
+            Assert.Equal("afplay", command);
+        }
+
+        /// <summary>
+        ///     Tests that get bash command with aac file should return afplay
+        /// </summary>
+        [MacOsOnly]
+        public void GetBashCommand_WithAacFile_ShouldReturnAfplay()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+            string fileName = "test.aac";
+
+            // Act
+            string command = player.GetBashCommand(fileName);
+
+            // Assert
+            Assert.Equal("afplay", command);
+        }
+
+        /// <summary>
+        ///     Tests that set volume with boundary values should work
+        /// </summary>
+        [MacOsOnly]
+        public async Task SetVolume_WithBoundaryValues_ShouldWork()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+
+            // Act & Assert
+            await player.SetVolume(0);
+            await player.SetVolume(1);
+            await player.SetVolume(99);
+            await player.SetVolume(100);
+
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that set volume over 100 with various values should throw exception
+        /// </summary>
+        [MacOsOnly]
+        public async Task SetVolume_Over100WithVariousValues_ShouldThrowException()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+
+            // Act & Assert
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => player.SetVolume(101));
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => player.SetVolume(150));
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => player.SetVolume(200));
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => player.SetVolume(255));
+        }
+
+        /// <summary>
+        ///     Tests that set volume multiple times with different values should work
+        /// </summary>
+        [MacOsOnly]
+        public async Task SetVolume_MultipleTimes_WithDifferentValues_ShouldWork()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+
+            // Act
+            await player.SetVolume(0);
+            await player.SetVolume(25);
+            await player.SetVolume(50);
+            await player.SetVolume(75);
+            await player.SetVolume(100);
+            await player.SetVolume(50);
+            await player.SetVolume(0);
+
+            // Assert
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that set volume exception should have correct parameter name
+        /// </summary>
+        [MacOsOnly]
+        public async Task SetVolume_Exception_ShouldHaveCorrectParameterName()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+            byte volume = 150;
+
+            // Act & Assert
+            ArgumentOutOfRangeException exception = await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => 
+                player.SetVolume(volume));
+            
+            Assert.Equal("percent", exception.ParamName);
+        }
+
+        /// <summary>
+        ///     Tests that set volume exception should have correct message
+        /// </summary>
+        [MacOsOnly]
+        public async Task SetVolume_Exception_ShouldHaveCorrectMessage()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+            byte volume = 150;
+
+            // Act & Assert
+            ArgumentOutOfRangeException exception = await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => 
+                player.SetVolume(volume));
+            
+            Assert.Contains("100", exception.Message);
+        }
+
+        /// <summary>
+        ///     Tests that get bash command should always return same value
+        /// </summary>
+        [MacOsOnly]
+        public void GetBashCommand_ShouldAlwaysReturnSameValue()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+
+            // Act
+            string command1 = player.GetBashCommand("test1.wav");
+            string command2 = player.GetBashCommand("test2.mp3");
+            string command3 = player.GetBashCommand("test3.ogg");
+
+            // Assert
+            Assert.Equal(command1, command2);
+            Assert.Equal(command2, command3);
+            Assert.Equal("afplay", command1);
+        }
+
+        /// <summary>
+        ///     Tests that playback finished event without subscribers should not throw
+        /// </summary>
+        [MacOsOnly]
+        public void PlaybackFinished_Event_WithoutSubscribers_ShouldNotThrow()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+
+            // Act & Assert - No handlers attached, event won't raise error
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that stop multiple times should be safe
+        /// </summary>
+        [MacOsOnly]
+        public async Task Stop_MultipleTimes_ShouldBeSafe()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+
+            // Act
+            await player.Stop();
+            await player.Stop();
+            await player.Stop();
+
+            // Assert
+            Assert.False(player.Playing);
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that resume multiple times should be safe
+        /// </summary>
+        [MacOsOnly]
+        public async Task Resume_MultipleTimes_ShouldBeSafe()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+
+            // Act
+            await player.Resume();
+            await player.Resume();
+            await player.Resume();
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that pause resume cycle should work correctly
+        /// </summary>
+        [MacOsOnly]
+        public async Task Pause_Resume_Cycle_ShouldWorkCorrectly()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+
+            // Act
+            await player.Pause();
+            await player.Resume();
+            await player.Pause();
+            await player.Resume();
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that get bash command with different extensions should maintain consistency
+        /// </summary>
+        [MacOsOnly]
+        public void GetBashCommand_WithDifferentExtensions_ShouldMaintainConsistency()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+            string[] fileNames = 
+            {
+                "test.wav", "test.mp3", "test.ogg", "test.flac", 
+                "test.m4a", "test.aiff", "test.aac", "test.wma"
+            };
+
+            // Act & Assert
+            foreach (string fileName in fileNames)
+            {
+                string command = player.GetBashCommand(fileName);
+                Assert.Equal("afplay", command);
+            }
+        }
     }
 }

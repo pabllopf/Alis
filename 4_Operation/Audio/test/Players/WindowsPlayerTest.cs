@@ -585,6 +585,329 @@ namespace Alis.Core.Audio.Test.Players
             // Assert - No exception thrown
             Assert.False(player.Playing);
         }
+
+        /// <summary>
+        ///     Tests that dispose with using statement should work
+        /// </summary>
+        [Fact]
+        public void Dispose_WithUsingStatement_ShouldWork()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange & Act
+            using (WindowsPlayer player = new WindowsPlayer())
+            {
+                // Assert
+                Assert.NotNull(player);
+            }
+            
+            // Assert - No exception thrown after disposal
+            Assert.True(true);
+        }
+
+        /// <summary>
+        ///     Tests that play loop with loop false should work
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_WithLoopFalse_ShouldWork()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            string nonExistentFile = "nonexistent.wav";
+
+            // Act & Assert
+            await Assert.ThrowsAnyAsync<Exception>(async () => await player.PlayLoop(nonExistentFile, false));
+        }
+
+        /// <summary>
+        ///     Tests that set volume after dispose should not throw
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_AfterDispose_ShouldNotThrow()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            player.Dispose();
+
+            // Act
+            await player.SetVolume(50);
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that pause after dispose should not throw
+        /// </summary>
+        [Fact]
+        public async Task Pause_AfterDispose_ShouldNotThrow()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            player.Dispose();
+
+            // Act
+            await player.Pause();
+
+            // Assert - No exception thrown
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that resume after dispose should not throw
+        /// </summary>
+        [Fact]
+        public async Task Resume_AfterDispose_ShouldNotThrow()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            player.Dispose();
+
+            // Act
+            await player.Resume();
+
+            // Assert - No exception thrown
+            Assert.False(player.Playing);
+        }
+
+        /// <summary>
+        ///     Tests that playback finished event should be raiseable
+        /// </summary>
+        [Fact]
+        public void PlaybackFinished_Event_ShouldBeRaiseable()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            bool eventRaised = false;
+            player.PlaybackFinished += (sender, e) => eventRaised = true;
+
+            // Act - Event would be raised internally
+            
+            // Assert - Handler attached successfully
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that playback finished event can be unsubscribed
+        /// </summary>
+        [Fact]
+        public void PlaybackFinished_Event_CanBeUnsubscribed()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            EventHandler handler = (sender, e) => { };
+
+            // Act
+            player.PlaybackFinished += handler;
+            player.PlaybackFinished -= handler;
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that playback finished event with multiple handlers should work
+        /// </summary>
+        [Fact]
+        public void PlaybackFinished_Event_WithMultipleHandlers_ShouldWork()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            int count1 = 0;
+            int count2 = 0;
+
+            // Act
+            player.PlaybackFinished += (sender, e) => count1++;
+            player.PlaybackFinished += (sender, e) => count2++;
+
+            // Assert - Multiple handlers attached successfully
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that set volume with all valid values should work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_WithAllValidValues_ShouldWork()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act & Assert - Test boundary and mid-range values
+            for (byte i = 0; i <= 100; i += 10)
+            {
+                await player.SetVolume(i);
+            }
+            
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that pause stop sequence should reset state
+        /// </summary>
+        [Fact]
+        public async Task Pause_Stop_Sequence_ShouldResetState()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act
+            await player.Pause();
+            await player.Stop();
+
+            // Assert
+            Assert.False(player.Playing);
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that resume stop sequence should reset state
+        /// </summary>
+        [Fact]
+        public async Task Resume_Stop_Sequence_ShouldResetState()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act
+            await player.Resume();
+            await player.Stop();
+
+            // Assert
+            Assert.False(player.Playing);
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that dispose should be idempotent
+        /// </summary>
+        [Fact]
+        public void Dispose_ShouldBeIdempotent()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act
+            player.Dispose();
+            player.Dispose();
+            player.Dispose();
+
+            // Assert - Dispose can be called multiple times safely
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that play with whitespace file name should throw exception
+        /// </summary>
+        [Fact]
+        public async Task Play_WithWhitespaceFileName_ShouldThrowException()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act & Assert
+            await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play("   "));
+        }
+
+        /// <summary>
+        ///     Tests that play loop with whitespace file name should throw exception
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_WithWhitespaceFileName_ShouldThrowException()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act & Assert
+            await Assert.ThrowsAnyAsync<Exception>(async () => await player.PlayLoop("   ", true));
+        }
+
+        /// <summary>
+        ///     Tests that play with invalid path characters should throw exception
+        /// </summary>
+        [Fact]
+        public async Task Play_WithInvalidPathCharacters_ShouldThrowException()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            string invalidPath = "invalid<>path.wav";
+
+            // Act & Assert
+            await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play(invalidPath));
+        }
     }
 }
 

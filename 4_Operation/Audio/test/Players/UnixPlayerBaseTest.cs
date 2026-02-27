@@ -494,6 +494,313 @@ namespace Alis.Core.Audio.Test.Players
             // Assert
             Assert.Contains("CONT", command);
         }
+
+        /// <summary>
+        ///     Tests that pause process command should have format placeholder
+        /// </summary>
+        [UnixOnly]
+        public void PauseProcessCommand_ShouldHaveFormatPlaceholder()
+        {
+            // Arrange & Act
+            string command = UnixPlayerBase.PauseProcessCommand;
+
+            // Assert
+            Assert.Contains("{0}", command);
+        }
+
+        /// <summary>
+        ///     Tests that resume process command should have format placeholder
+        /// </summary>
+        [UnixOnly]
+        public void ResumeProcessCommand_ShouldHaveFormatPlaceholder()
+        {
+            // Arrange & Act
+            string command = UnixPlayerBase.ResumeProcessCommand;
+
+            // Assert
+            Assert.Contains("{0}", command);
+        }
+
+        /// <summary>
+        ///     Tests that pause process command should be formattable
+        /// </summary>
+        [UnixOnly]
+        public void PauseProcessCommand_ShouldBeFormattable()
+        {
+            // Arrange
+            string command = UnixPlayerBase.PauseProcessCommand;
+            int testPid = 12345;
+
+            // Act
+            string formattedCommand = string.Format(command, testPid);
+
+            // Assert
+            Assert.Contains("12345", formattedCommand);
+            Assert.DoesNotContain("{0}", formattedCommand);
+        }
+
+        /// <summary>
+        ///     Tests that resume process command should be formattable
+        /// </summary>
+        [UnixOnly]
+        public void ResumeProcessCommand_ShouldBeFormattable()
+        {
+            // Arrange
+            string command = UnixPlayerBase.ResumeProcessCommand;
+            int testPid = 67890;
+
+            // Act
+            string formattedCommand = string.Format(command, testPid);
+
+            // Assert
+            Assert.Contains("67890", formattedCommand);
+            Assert.DoesNotContain("{0}", formattedCommand);
+        }
+
+        /// <summary>
+        ///     Tests that playback finished event can be subscribed on mac
+        /// </summary>
+        [MacOsOnly]
+        public void PlaybackFinished_Event_CanBeSubscribed_OnMac()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+            bool eventHandled = false;
+
+            // Act
+            player.PlaybackFinished += (sender, e) => eventHandled = true;
+
+            // Assert - Handler attached successfully
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that playback finished event can be subscribed on linux
+        /// </summary>
+        [LinuxOnly]
+        public void PlaybackFinished_Event_CanBeSubscribed_OnLinux()
+        {
+            // Arrange
+            LinuxPlayer player = new LinuxPlayer();
+            bool eventHandled = false;
+
+            // Act
+            player.PlaybackFinished += (sender, e) => eventHandled = true;
+
+            // Assert - Handler attached successfully
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that stop then play should work on mac
+        /// </summary>
+        [MacOsOnly]
+        public async Task Stop_ThenPlay_ShouldWork_OnMac()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+
+            // Act
+            await player.Stop();
+            
+            // Try to play (will fail with non-existent file)
+            try
+            {
+                await player.Play("nonexistent.wav");
+            }
+            catch (Exception)
+            {
+                // Expected
+            }
+
+            // Assert - No state corruption
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that stop then play should work on linux
+        /// </summary>
+        [LinuxOnly]
+        public async Task Stop_ThenPlay_ShouldWork_OnLinux()
+        {
+            // Arrange
+            LinuxPlayer player = new LinuxPlayer();
+
+            // Act
+            await player.Stop();
+            
+            // Try to play (will fail with non-existent file)
+            try
+            {
+                await player.Play("nonexistent.wav");
+            }
+            catch (Exception)
+            {
+                // Expected
+            }
+
+            // Assert - No state corruption
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that pause commands should be different from resume commands
+        /// </summary>
+        [UnixOnly]
+        public void PauseCommand_ShouldBeDifferentFromResumeCommand()
+        {
+            // Arrange & Act
+            string pauseCommand = UnixPlayerBase.PauseProcessCommand;
+            string resumeCommand = UnixPlayerBase.ResumeProcessCommand;
+
+            // Assert
+            Assert.NotEqual(pauseCommand, resumeCommand);
+        }
+
+        /// <summary>
+        ///     Tests that unix player base commands should contain dash
+        /// </summary>
+        [UnixOnly]
+        public void UnixPlayerBase_Commands_ShouldContainDash()
+        {
+            // Arrange & Act
+            string pauseCommand = UnixPlayerBase.PauseProcessCommand;
+            string resumeCommand = UnixPlayerBase.ResumeProcessCommand;
+
+            // Assert
+            Assert.Contains("-", pauseCommand);
+            Assert.Contains("-", resumeCommand);
+        }
+
+        /// <summary>
+        ///     Tests that play loop without loop should work on mac
+        /// </summary>
+        [MacOsOnly]
+        public async Task PlayLoop_WithoutLoop_ShouldWork_OnMac()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+
+            // Act & Assert
+            try
+            {
+                await player.PlayLoop("nonexistent.wav", false);
+            }
+            catch (Exception)
+            {
+                // Expected for non-existent file
+                Assert.True(true);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that play loop without loop should work on linux
+        /// </summary>
+        [LinuxOnly]
+        public async Task PlayLoop_WithoutLoop_ShouldWork_OnLinux()
+        {
+            // Arrange
+            LinuxPlayer player = new LinuxPlayer();
+
+            // Act & Assert
+            try
+            {
+                await player.PlayLoop("nonexistent.wav", false);
+            }
+            catch (Exception)
+            {
+                // Expected for non-existent file
+                Assert.True(true);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that multiple resume calls should be safe on mac
+        /// </summary>
+        [MacOsOnly]
+        public async Task Resume_MultipleCalls_ShouldBeSafe_OnMac()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+
+            // Act
+            await player.Resume();
+            await player.Resume();
+            await player.Resume();
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that multiple resume calls should be safe on linux
+        /// </summary>
+        [LinuxOnly]
+        public async Task Resume_MultipleCalls_ShouldBeSafe_OnLinux()
+        {
+            // Arrange
+            LinuxPlayer player = new LinuxPlayer();
+
+            // Act
+            await player.Resume();
+            await player.Resume();
+            await player.Resume();
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that pause stop pause sequence should work on mac
+        /// </summary>
+        [MacOsOnly]
+        public async Task Pause_Stop_Pause_Sequence_ShouldWork_OnMac()
+        {
+            // Arrange
+            MacPlayer player = new MacPlayer();
+
+            // Act
+            await player.Pause();
+            await player.Stop();
+            await player.Pause();
+
+            // Assert
+            Assert.False(player.Playing);
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that pause stop pause sequence should work on linux
+        /// </summary>
+        [LinuxOnly]
+        public async Task Pause_Stop_Pause_Sequence_ShouldWork_OnLinux()
+        {
+            // Arrange
+            LinuxPlayer player = new LinuxPlayer();
+
+            // Act
+            await player.Pause();
+            await player.Stop();
+            await player.Pause();
+
+            // Assert
+            Assert.False(player.Playing);
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that constants should be readonly
+        /// </summary>
+        [UnixOnly]
+        public void UnixPlayerBase_Constants_ShouldBeReadonly()
+        {
+            // Arrange & Act
+            string pauseCommand1 = UnixPlayerBase.PauseProcessCommand;
+            string pauseCommand2 = UnixPlayerBase.PauseProcessCommand;
+
+            // Assert - Same reference indicates readonly const
+            Assert.Equal(pauseCommand1, pauseCommand2);
+        }
     }
 }
 

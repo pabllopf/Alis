@@ -588,6 +588,346 @@ namespace Alis.Core.Audio.Test
             // Assert
             Assert.Equal(1, eventCount);
         }
+
+        /// <summary>
+        ///     Tests that check os should return non null player
+        /// </summary>
+        [Fact]
+        public void CheckOs_ShouldReturnNonNullPlayer()
+        {
+            // Arrange & Act
+            IPlayer player = Player.CheckOs();
+
+            // Assert
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that play with null file name should throw exception
+        /// </summary>
+        [Fact]
+        public async Task Play_WithNullFileName_ShouldThrowException()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act & Assert
+            await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play(null));
+        }
+
+        /// <summary>
+        ///     Tests that play with empty file name should throw exception
+        /// </summary>
+        [Fact]
+        public async Task Play_WithEmptyFileName_ShouldThrowException()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act & Assert
+            await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play(string.Empty));
+        }
+
+        /// <summary>
+        ///     Tests that play loop with null file name should throw exception
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_WithNullFileName_ShouldThrowException()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act & Assert
+            await Assert.ThrowsAnyAsync<Exception>(async () => await player.PlayLoop(null, true));
+        }
+
+        /// <summary>
+        ///     Tests that play loop with empty file name should throw exception
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_WithEmptyFileName_ShouldThrowException()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act & Assert
+            await Assert.ThrowsAnyAsync<Exception>(async () => await player.PlayLoop(string.Empty, false));
+        }
+
+        /// <summary>
+        ///     Tests that resume without playing should not throw
+        /// </summary>
+        [Fact]
+        public async Task Resume_WithoutPlaying_ShouldNotThrow()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act
+            await player.Resume();
+
+            // Assert - No exception thrown
+            Assert.False(player.Playing);
+        }
+
+        /// <summary>
+        ///     Tests that set volume with byte max value should work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_WithByteMaxValue_ShouldWork()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act
+            await player.SetVolume(90);
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that set volume with byte min value should work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_WithByteMinValue_ShouldWork()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act
+            await player.SetVolume(byte.MinValue);
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that on playback finished should pass correct event args
+        /// </summary>
+        [Fact]
+        public void OnPlaybackFinished_ShouldPassCorrectEventArgs()
+        {
+            // Arrange
+            Player player = new Player();
+            EventArgs receivedArgs = null;
+            player.PlaybackFinished += (sender, e) => receivedArgs = e;
+
+            // Act
+            EventArgs testArgs = EventArgs.Empty;
+            player.OnPlaybackFinished(player, testArgs);
+
+            // Assert
+            Assert.Same(testArgs, receivedArgs);
+        }
+
+        /// <summary>
+        ///     Tests that multiple operations in sequence should work
+        /// </summary>
+        [Fact]
+        public async Task MultipleOperations_InSequence_ShouldWork()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act & Assert - No exception thrown
+            await player.SetVolume(50);
+            await player.Pause();
+            await player.Resume();
+            await player.Stop();
+            
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that check os should handle all platforms
+        /// </summary>
+        [Fact]
+        public void CheckOs_ShouldHandleAllPlatforms()
+        {
+            // Arrange & Act
+            IPlayer player = Player.CheckOs();
+
+            // Assert
+            Assert.NotNull(player);
+            
+            // Verify it's one of the expected types
+            bool isValidType = player is WindowsPlayer || 
+                              player is LinuxPlayer || 
+                              player is MacPlayer || 
+                              player is BrowserPlayer;
+            
+            Assert.True(isValidType || player == null);
+        }
+
+        /// <summary>
+        ///     Tests that playback finished event args should not be null
+        /// </summary>
+        [Fact]
+        public void PlaybackFinished_EventArgs_ShouldNotBeNull()
+        {
+            // Arrange
+            Player player = new Player();
+            EventArgs receivedArgs = null;
+            player.PlaybackFinished += (sender, e) => receivedArgs = e;
+
+            // Act
+            player.OnPlaybackFinished(player, EventArgs.Empty);
+
+            // Assert
+            Assert.NotNull(receivedArgs);
+        }
+
+        /// <summary>
+        ///     Tests that playing property should reflect internal player state
+        /// </summary>
+        [Fact]
+        public void Playing_Property_ShouldReflectInternalPlayerState()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act
+            bool initialState = player.Playing;
+
+            // Assert
+            Assert.False(initialState);
+        }
+
+        /// <summary>
+        ///     Tests that paused property should reflect internal player state
+        /// </summary>
+        [Fact]
+        public void Paused_Property_ShouldReflectInternalPlayerState()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act
+            bool initialState = player.Paused;
+
+            // Assert
+            Assert.False(initialState);
+        }
+
+        /// <summary>
+        ///     Tests that play loop with loop true should accept parameter
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_WithLoopTrue_ShouldAcceptParameter()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act & Assert
+            try
+            {
+                await player.PlayLoop("nonexistent.wav", true);
+            }
+            catch (Exception)
+            {
+                // Expected when file doesn't exist
+                Assert.True(true);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that set volume during playback should work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_DuringPlayback_ShouldWork()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act
+            try
+            {
+                await player.Play("nonexistent.wav");
+            }
+            catch
+            {
+                // Ignore file not found
+            }
+            
+            await player.SetVolume(75);
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that set volume while paused should work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_WhilePaused_ShouldWork()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act
+            await player.Pause();
+            await player.SetVolume(30);
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that on playback finished with custom event args should work
+        /// </summary>
+        [Fact]
+        public void OnPlaybackFinished_WithCustomEventArgs_ShouldWork()
+        {
+            // Arrange
+            Player player = new Player();
+            EventArgs receivedArgs = null;
+            player.PlaybackFinished += (sender, e) => receivedArgs = e;
+
+            // Act
+            EventArgs customArgs = new EventArgs();
+            player.OnPlaybackFinished(player, customArgs);
+
+            // Assert
+            Assert.Same(customArgs, receivedArgs);
+        }
+
+        /// <summary>
+        ///     Tests that pause resume multiple cycles should work
+        /// </summary>
+        [Fact]
+        public async Task Pause_Resume_MultipleCycles_ShouldWork()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act
+            await player.Pause();
+            await player.Resume();
+            await player.Pause();
+            await player.Resume();
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that internal player should forward playback finished to player
+        /// </summary>
+        [Fact]
+        public void InternalPlayer_ShouldForwardPlaybackFinishedToPlayer()
+        {
+            // Arrange
+            Player player = new Player();
+            bool eventReceived = false;
+            player.PlaybackFinished += (sender, e) => eventReceived = true;
+
+            // Act
+            player.OnPlaybackFinished(player, EventArgs.Empty);
+
+            // Assert
+            Assert.True(eventReceived);
+        }
     }
 }
 

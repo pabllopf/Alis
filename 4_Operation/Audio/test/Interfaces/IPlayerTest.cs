@@ -247,6 +247,387 @@ namespace Alis.Core.Audio.Test.Interfaces
         }
 
         /// <summary>
+        ///     Tests that play loop with false should work
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_WithFalse_ShouldWork()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            string fileName = "test.wav";
+            bool loop = false;
+            
+            // Act
+            await player.PlayLoop(fileName, loop);
+            
+            // Assert
+            Assert.True(player.Playing);
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that pause without playing should not set paused
+        /// </summary>
+        [Fact]
+        public async Task Pause_WithoutPlaying_ShouldNotSetPaused()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            
+            // Act
+            await player.Pause();
+            
+            // Assert
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that resume without pause should not change state
+        /// </summary>
+        [Fact]
+        public async Task Resume_WithoutPause_ShouldNotChangeState()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            await player.Play("test.wav");
+            
+            // Act
+            await player.Resume();
+            
+            // Assert
+            Assert.True(player.Playing);
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that multiple play calls should work
+        /// </summary>
+        [Fact]
+        public async Task Play_MultipleCalls_ShouldWork()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            
+            // Act
+            await player.Play("test1.wav");
+            await player.Play("test2.wav");
+            await player.Play("test3.wav");
+            
+            // Assert
+            Assert.True(player.Playing);
+        }
+
+        /// <summary>
+        ///     Tests that play stop play sequence should work
+        /// </summary>
+        [Fact]
+        public async Task Play_Stop_Play_Sequence_ShouldWork()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            
+            // Act
+            await player.Play("test1.wav");
+            await player.Stop();
+            await player.Play("test2.wav");
+            
+            // Assert
+            Assert.True(player.Playing);
+        }
+
+        /// <summary>
+        ///     Tests that play pause resume sequence should work
+        /// </summary>
+        [Fact]
+        public async Task Play_Pause_Resume_Sequence_ShouldWork()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            
+            // Act
+            await player.Play("test.wav");
+            await player.Pause();
+            await player.Resume();
+            
+            // Assert
+            Assert.True(player.Playing);
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that play pause stop sequence should work
+        /// </summary>
+        [Fact]
+        public async Task Play_Pause_Stop_Sequence_ShouldWork()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            
+            // Act
+            await player.Play("test.wav");
+            await player.Pause();
+            await player.Stop();
+            
+            // Assert
+            Assert.False(player.Playing);
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that set volume multiple times should work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_MultipleTimes_ShouldWork()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            
+            // Act
+            await player.SetVolume(0);
+            await player.SetVolume(50);
+            await player.SetVolume(100);
+            
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that playback finished event can be subscribed multiple times
+        /// </summary>
+        [Fact]
+        public void PlaybackFinished_Event_CanBeSubscribedMultipleTimes()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            int handler1Count = 0;
+            int handler2Count = 0;
+            
+            player.PlaybackFinished += (sender, e) => handler1Count++;
+            player.PlaybackFinished += (sender, e) => handler2Count++;
+            
+            // Act
+            player.RaisePlaybackFinished();
+            
+            // Assert
+            Assert.Equal(1, handler1Count);
+            Assert.Equal(1, handler2Count);
+        }
+
+        /// <summary>
+        ///     Tests that playback finished event can be unsubscribed
+        /// </summary>
+        [Fact]
+        public void PlaybackFinished_Event_CanBeUnsubscribed()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            int eventCount = 0;
+            EventHandler handler = (sender, e) => eventCount++;
+            
+            player.PlaybackFinished += handler;
+            player.RaisePlaybackFinished();
+            
+            // Act
+            player.PlaybackFinished -= handler;
+            player.RaisePlaybackFinished();
+            
+            // Assert
+            Assert.Equal(1, eventCount);
+        }
+
+        /// <summary>
+        ///     Tests that playback finished event without subscribers should not throw
+        /// </summary>
+        [Fact]
+        public void PlaybackFinished_Event_WithoutSubscribers_ShouldNotThrow()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            
+            // Act
+            player.RaisePlaybackFinished();
+            
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that play with null file name should accept parameter
+        /// </summary>
+        [Fact]
+        public async Task Play_WithNullFileName_ShouldAcceptParameter()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            
+            // Act
+            await player.Play(null);
+            
+            // Assert
+            Assert.True(player.Playing);
+        }
+
+        /// <summary>
+        ///     Tests that play with empty file name should accept parameter
+        /// </summary>
+        [Fact]
+        public async Task Play_WithEmptyFileName_ShouldAcceptParameter()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            
+            // Act
+            await player.Play(string.Empty);
+            
+            // Assert
+            Assert.True(player.Playing);
+        }
+
+        /// <summary>
+        ///     Tests that set volume with byte max should work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_WithByteMax_ShouldWork()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            byte volume = byte.MaxValue;
+            
+            // Act
+            await player.SetVolume(volume);
+            
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that set volume with byte min should work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_WithByteMin_ShouldWork()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            byte volume = byte.MinValue;
+            
+            // Act
+            await player.SetVolume(volume);
+            
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that multiple pause without play should not throw
+        /// </summary>
+        [Fact]
+        public async Task Pause_MultipleWithoutPlay_ShouldNotThrow()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            
+            // Act
+            await player.Pause();
+            await player.Pause();
+            await player.Pause();
+            
+            // Assert
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that multiple resume without play should not throw
+        /// </summary>
+        [Fact]
+        public async Task Resume_MultipleWithoutPlay_ShouldNotThrow()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            
+            // Act
+            await player.Resume();
+            await player.Resume();
+            await player.Resume();
+            
+            // Assert
+            Assert.False(player.Playing);
+        }
+
+        /// <summary>
+        ///     Tests that multiple stop calls should work
+        /// </summary>
+        [Fact]
+        public async Task Stop_MultipleCalls_ShouldWork()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            
+            // Act
+            await player.Stop();
+            await player.Stop();
+            await player.Stop();
+            
+            // Assert
+            Assert.False(player.Playing);
+        }
+
+        /// <summary>
+        ///     Tests that play loop then stop should work
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_ThenStop_ShouldWork()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            
+            // Act
+            await player.PlayLoop("test.wav", true);
+            await player.Stop();
+            
+            // Assert
+            Assert.False(player.Playing);
+        }
+
+        /// <summary>
+        ///     Tests that playback finished event should be invoked multiple times
+        /// </summary>
+        [Fact]
+        public void PlaybackFinished_Event_ShouldBeInvokedMultipleTimes()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            int eventCount = 0;
+            player.PlaybackFinished += (sender, e) => eventCount++;
+            
+            // Act
+            player.RaisePlaybackFinished();
+            player.RaisePlaybackFinished();
+            player.RaisePlaybackFinished();
+            
+            // Assert
+            Assert.Equal(3, eventCount);
+        }
+
+        /// <summary>
+        ///     Tests that set volume with various values should work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_WithVariousValues_ShouldWork()
+        {
+            // Arrange
+            TestPlayer player = new TestPlayer();
+            
+            // Act & Assert
+            await player.SetVolume(1);
+            await player.SetVolume(25);
+            await player.SetVolume(50);
+            await player.SetVolume(75);
+            await player.SetVolume(99);
+            
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
         ///     The test player class
         /// </summary>
         /// <seealso cref="IPlayer" />
