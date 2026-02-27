@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         ///     Initializes a new instance of the <see cref="Sink" /> class
         /// </summary>
         /// <param name="trapezoid">The trapezoid</param>
-        private Sink(Trapezoid trapezoid)
+        internal Sink(Trapezoid trapezoid)
             : base(null, null)
         {
             Trapezoid = trapezoid;
