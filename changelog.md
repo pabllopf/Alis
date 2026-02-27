@@ -5,6 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.9.6] - 2026-03-01
+### :bug: Bug Fixes
+- [`0a3356f`](https://github.com/pabllopf/Alis/commit/0a3356f38b4a49ed2e2f3161a42600f7071a040a) - add full covert of comments on xmls files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bcd0cc4`](https://github.com/pabllopf/Alis/commit/bcd0cc4ebd2f2f80cedd72b7d9ca9ef95fb0b294) - analice the covert of unit test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cb9f985`](https://github.com/pabllopf/Alis/commit/cb9f985319243308b03c096ba684c6788b9745ef) - simple updating the simple unit test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2628524`](https://github.com/pabllopf/Alis/commit/2628524ec4b88f4dd6504f3008e334c0b9a28194) - add new tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`521ab53`](https://github.com/pabllopf/Alis/commit/521ab5338bf413714f714dc54f6b8eee01f85f60) - add more of 1500 test to ECS *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fc8cf77`](https://github.com/pabllopf/Alis/commit/fc8cf7705b0479484811d95b521be358346c1f28) - add more 200 test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5cc4cea`](https://github.com/pabllopf/Alis/commit/5cc4cea5c48d4cdd5e08a0351a3a25f8b3e9fd0b) - add more 50 test to ContactIdTest *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8b1fc06`](https://github.com/pabllopf/Alis/commit/8b1fc064382830566e20379559ea95a2e813dc68) - add new internal test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7d4eb2d`](https://github.com/pabllopf/Alis/commit/7d4eb2d24f8c762850e0f5ed2aa89040f7ff72a3) - add more of 200 test to commons *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`10e0817`](https://github.com/pabllopf/Alis/commit/10e08176094baa58355812a25ecd4c484f788b9f) - more of 20 tests to Collisions *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ead5f67`](https://github.com/pabllopf/Alis/commit/ead5f673837beb7a5fc6c4650a71990c0380f51d) - add Decomposition tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e6ea360`](https://github.com/pabllopf/Alis/commit/e6ea3609190a75172f050b212dd185bb250e1371) - add more of 100 test to Physic *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`e250cb5`](https://github.com/pabllopf/Alis/commit/e250cb50135fdb1168f6604717649b8137fabde7) - pro check all ecs sustem *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`04209c3`](https://github.com/pabllopf/Alis/commit/04209c36fff343ecb44bb57f7a9839649374a5fa) - pro add new 100 test to ECS *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e38b3fd`](https://github.com/pabllopf/Alis/commit/e38b3fdba33891b1de1bea4487afd636296ea6f8) - pro add full covert to GameObjectRefTupleTest classes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ceb4de8`](https://github.com/pabllopf/Alis/commit/ceb4de8860a2eaede6edd9543a7e792448a5253d) - pro add new tests to GameObjectRefTupleTest *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3db0e16`](https://github.com/pabllopf/Alis/commit/3db0e1684f26e974cfc7e965e5a29d4afe46507c) - add 50 test to ecs sytem *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a986f2c`](https://github.com/pabllopf/Alis/commit/a986f2c926cb9d81f3343ceb046e7fca1ede4ae0) - add 1000 test to ECS module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a4feca7`](https://github.com/pabllopf/Alis/commit/a4feca7629a0331cb976e3f9b1d97cf533e42b0e) - pro check all the ecs tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1451401`](https://github.com/pabllopf/Alis/commit/14514017e1802a1b5b2e936dc7eab95df3023ffb) - pro add news test to ECS on refinition submodule *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`48e7681`](https://github.com/pabllopf/Alis/commit/48e7681ff45934e536bcd448d299fa76b8f8678a) - pro add more of 200 test to Physic *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9d8b3b0`](https://github.com/pabllopf/Alis/commit/9d8b3b039815a5f46ace8ca6f0cf383c16ca0e56) - pro add new tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2572c84`](https://github.com/pabllopf/Alis/commit/2572c846244d326238a5e73062fdf8cd8c6490b0) - pro check all *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.9.5] - 2026-02-27
 ### :sparkles: New Features
 - [`32926c7`](https://github.com/pabllopf/Alis/commit/32926c71580451b86e2562d9fb93578b1daca1f2) - new module IO FileDialog cross-platform *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -5834,3 +5863,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.9.3]: https://github.com/pabllopf/Alis/compare/v0.9.2...v0.9.3
 [v0.9.4]: https://github.com/pabllopf/Alis/compare/v0.9.3...v0.9.4
 [v0.9.5]: https://github.com/pabllopf/Alis/compare/v0.9.4...v0.9.5
+[v0.9.6]: https://github.com/pabllopf/Alis/compare/v0.9.5...v0.9.6
