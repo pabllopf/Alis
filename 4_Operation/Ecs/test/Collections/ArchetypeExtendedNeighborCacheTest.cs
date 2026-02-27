@@ -39,7 +39,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     Tests the <see cref="ArchetypeNeighborCache"/> struct which maintains
     ///     a fast cache for frequently accessed adjacent archetypes.
     /// </remarks>
-    public class ArchetypeNeighborCacheTest
+    public class ArchetypeExtendedNeighborCacheTest
     {
         /// <summary>
         ///     Tests that archetype neighbor cache can be created
@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Test.Collections
         ///     Verifies that ArchetypeNeighborCache can be instantiated.
         /// </remarks>
         [Fact]
-        public void ArchetypeNeighborCache_CanBeCreated()
+        public void v2_ArchetypeNeighborCache_CanBeCreated()
         {
             // Act
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();

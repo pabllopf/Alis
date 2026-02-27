@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs.Test.Collections
     ///     Tests the <see cref="EnumerableHelpers"/> static utility methods
     ///     for working with enumerables and enumerators.
     /// </remarks>
-    public class EnumerableHelpersTest
+    public class EnumerableExtenderHelpersTest
     {
         /// <summary>
         ///     Tests that enumerable helpers get empty enumerator returns valid enumerator
