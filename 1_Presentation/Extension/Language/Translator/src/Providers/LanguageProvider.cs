@@ -30,8 +30,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Alis.Extension.Language.Translator.Abstractions;
 
-namespace Alis.Extension.Language.Translator
+namespace Alis.Extension.Language.Translator.Providers
 {
     /// <summary>
     ///     Default implementation of the language provider

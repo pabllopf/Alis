@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Language.Translator.Abstractions;
 
 namespace Alis.Extension.Language.Translator
 {

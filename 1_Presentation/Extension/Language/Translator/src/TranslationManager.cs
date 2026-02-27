@@ -31,6 +31,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Alis.Extension.Language.Translator.Abstractions;
+using Alis.Extension.Language.Translator.Cache;
+using Alis.Extension.Language.Translator.Pluralization;
+using Alis.Extension.Language.Translator.Providers;
 
 namespace Alis.Extension.Language.Translator
 {

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Language.Translator
+namespace Alis.Extension.Language.Translator.Abstractions
 {
     /// <summary>
     ///     Interface that defines the contract for a translation cache

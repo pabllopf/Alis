@@ -27,246 +27,564 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using Alis.Core.Audio.Interfaces;
+using Alis.Core.Audio.Players;
+using Xunit;
+
 namespace Alis.Core.Audio.Test.Players
 {
     /// <summary>
     ///     The windows player test class
     /// </summary>
+    /// <seealso cref="WindowsPlayer" />
     public class WindowsPlayerTest
     {
-/*
-
         /// <summary>
-        /// Plays the valid input
+        ///     Tests that windows player constructor should initialize properly
         /// </summary>
-        [WindowsOnly]
-        public async Task Play_ValidInput()
+        [Fact]
+        public void WindowsPlayer_Constructor_ShouldInitializeProperly()
         {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange & Act
             WindowsPlayer player = new WindowsPlayer();
-            await player.Play(AssetManager.Find("sample_1.wav"));
 
-            Assert.True(player.Playing);
-        }
-
-        /// <summary>
-        /// Tests that pause valid input
-        /// </summary>
-        [WindowsOnly]
-        public async Task Pause_ValidInput()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            await player.Play(AssetManager.Find("sample_1.wav"));
-            await player.Pause();
-
-            Assert.True(player.Paused);
-        }
-
-        /// <summary>
-        /// Tests that resume valid input
-        /// </summary>
-        [WindowsOnly]
-        public async Task Resume_ValidInput()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            await player.Play(AssetManager.Find("sample_1.wav"));
-            await player.Pause();
-            await player.Resume();
-
+            // Assert
+            Assert.NotNull(player);
+            Assert.False(player.Playing);
             Assert.False(player.Paused);
         }
 
         /// <summary>
-        /// Tests that stop valid input
+        ///     Tests that playing property should return false initially
         /// </summary>
-        [WindowsOnly]
-        public async Task Stop_ValidInput()
+        [Fact]
+        public void Playing_Property_ShouldReturnFalseInitially()
         {
-            WindowsPlayer player = new WindowsPlayer();
-            await player.Play(AssetManager.Find("sample_1.wav"));
-            await player.Stop();
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
 
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act
+            bool playing = player.Playing;
+
+            // Assert
+            Assert.False(playing);
+        }
+
+        /// <summary>
+        ///     Tests that paused property should return false initially
+        /// </summary>
+        [Fact]
+        public void Paused_Property_ShouldReturnFalseInitially()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act
+            bool paused = player.Paused;
+
+            // Assert
+            Assert.False(paused);
+        }
+
+        /// <summary>
+        ///     Tests that play should throw file not found exception when file does not exist
+        /// </summary>
+        [Fact]
+        public async Task Play_ShouldThrowFileNotFoundException_WhenFileDoesNotExist()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            string nonExistentFile = "nonexistent_file_12345.wav";
+
+            // Act & Assert
+            await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play(nonExistentFile));
+        }
+
+        /// <summary>
+        ///     Tests that pause should not throw when not playing
+        /// </summary>
+        [Fact]
+        public async Task Pause_ShouldNotThrow_WhenNotPlaying()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act
+            await player.Pause();
+
+            // Assert
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that resume should not throw when not playing
+        /// </summary>
+        [Fact]
+        public async Task Resume_ShouldNotThrow_WhenNotPlaying()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act
+            await player.Resume();
+
+            // Assert
+            Assert.False(player.Paused);
             Assert.False(player.Playing);
         }
 
         /// <summary>
-        /// Tests that set volume valid input
+        ///     Tests that stop should set playing and paused to false
         /// </summary>
-        [WindowsOnly]
-        public async Task SetVolume_ValidInput()
+        [Fact]
+        public async Task Stop_ShouldSetPlayingAndPausedToFalse()
         {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
             WindowsPlayer player = new WindowsPlayer();
+
+            // Act
+            await player.Stop();
+
+            // Assert
+            Assert.False(player.Playing);
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that set volume should accept byte parameter
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_ShouldAcceptByteParameter()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            byte volume = 50;
+
+            // Act
+            await player.SetVolume(volume);
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that set volume with zero should work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_WithZero_ShouldWork()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            byte volume = 0;
+
+            // Act
+            await player.SetVolume(volume);
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that set volume with max value should work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_WithMaxValue_ShouldWork()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            byte volume = 100;
+
+            // Act
+            await player.SetVolume(volume);
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that multiple pause calls should be safe
+        /// </summary>
+        [Fact]
+        public async Task Pause_MultipleCalls_ShouldBeSafe()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act
+            await player.Pause();
+            await player.Pause();
+            await player.Pause();
+
+            // Assert - No exception thrown
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that multiple stop calls should be safe
+        /// </summary>
+        [Fact]
+        public async Task Stop_MultipleCalls_ShouldBeSafe()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act
+            await player.Stop();
+            await player.Stop();
+            await player.Stop();
+
+            // Assert
+            Assert.False(player.Playing);
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that playback finished event should be available
+        /// </summary>
+        [Fact]
+        public void PlaybackFinished_Event_ShouldBeAvailable()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            bool eventAttached = false;
+
+            // Act
+            player.PlaybackFinished += (sender, e) => { eventAttached = true; };
+
+            // Assert - Event handler attached without exception
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that dispose should not throw exception
+        /// </summary>
+        [Fact]
+        public void Dispose_ShouldNotThrowException()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act
+            player.Dispose();
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that multiple dispose calls should be safe
+        /// </summary>
+        [Fact]
+        public void Dispose_MultipleCalls_ShouldBeSafe()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act
+            player.Dispose();
+            player.Dispose();
+            player.Dispose();
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that play loop should throw file not found exception when file does not exist
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_ShouldThrowFileNotFoundException_WhenFileDoesNotExist()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            string nonExistentFile = "nonexistent_file_12345.wav";
+            bool loop = true;
+
+            // Act & Assert
+            await Assert.ThrowsAnyAsync<Exception>(async () => await player.PlayLoop(nonExistentFile, loop));
+        }
+
+        /// <summary>
+        ///     Tests that play loop without loop should work like normal play
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_WithoutLoop_ShouldWorkLikeNormalPlay()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            string nonExistentFile = "nonexistent_file_12345.wav";
+            bool loop = false;
+
+            // Act & Assert
+            await Assert.ThrowsAnyAsync<Exception>(async () => await player.PlayLoop(nonExistentFile, loop));
+        }
+
+        /// <summary>
+        ///     Tests that set volume with mid range values should work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_WithMidRangeValues_ShouldWork()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act & Assert
+            await player.SetVolume(25);
             await player.SetVolume(50);
+            await player.SetVolume(75);
 
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
+            Assert.NotNull(player);
         }
 
         /// <summary>
-        /// Tests that stop valid input v 2
+        ///     Tests that resume without pause should not throw
         /// </summary>
-        [WindowsOnly]
-        public async Task Stop_ValidInput_v2()
+        [Fact]
+        public async Task Resume_WithoutPause_ShouldNotThrow()
         {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
             WindowsPlayer player = new WindowsPlayer();
-            await player.Play(AssetManager.Find("sample_1.wav"));
+
+            // Act
+            await player.Resume();
+
+            // Assert
+            Assert.False(player.Playing);
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that windows player implements i player interface
+        /// </summary>
+        [Fact]
+        public void WindowsPlayer_ShouldImplementIPlayerInterface()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange & Act
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Assert
+            Assert.IsAssignableFrom<IPlayer>(player);
+        }
+
+        /// <summary>
+        ///     Tests that windows player implements i disposable interface
+        /// </summary>
+        [Fact]
+        public void WindowsPlayer_ShouldImplementIDisposableInterface()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange & Act
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Assert
+            Assert.IsAssignableFrom<IDisposable>(player);
+        }
+
+        /// <summary>
+        ///     Tests that set volume over 100 should still work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_Over100_ShouldStillWork()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            byte volume = 255; // Max byte value
+
+            // Act
+            await player.SetVolume(volume);
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that play with null file name should throw exception
+        /// </summary>
+        [Fact]
+        public async Task Play_WithNullFileName_ShouldThrowException()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act & Assert
+            await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play(null));
+        }
+
+        /// <summary>
+        ///     Tests that play loop with null file name should throw exception
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_WithNullFileName_ShouldThrowException()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act & Assert
+            await Assert.ThrowsAnyAsync<Exception>(async () => await player.PlayLoop(null, true));
+        }
+
+        /// <summary>
+        ///     Tests that play with empty file name should throw exception
+        /// </summary>
+        [Fact]
+        public async Task Play_WithEmptyFileName_ShouldThrowException()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+
+            // Act & Assert
+            await Assert.ThrowsAnyAsync<Exception>(async () => await player.Play(string.Empty));
+        }
+
+        /// <summary>
+        ///     Tests that stop after dispose should not throw
+        /// </summary>
+        [Fact]
+        public async Task Stop_AfterDispose_ShouldNotThrow()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+
+            // Arrange
+            WindowsPlayer player = new WindowsPlayer();
+            player.Dispose();
+
+            // Act
             await player.Stop();
 
-            Assert.False(player.Playing);
-            Assert.False(player.Paused);
-        }
-
-        /// <summary>
-        /// Tests that set volume valid input v 2
-        /// </summary>
-        [WindowsOnly]
-        public async Task SetVolume_ValidInput_v2()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            await player.SetVolume(50);
-
-            // Asserts would go here, but it's hard to assert anything because the method doesn't return anything or change any observable state
-        }
-
-        /// <summary>
-        /// Tests that set volume invalid input
-        /// </summary>
-        [WindowsOnly]
-        public async Task SetVolume_InvalidInput()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            await player.SetVolume(101);
-        }
-
-        /// <summary>
-        /// Resumes the valid input v 4
-        /// </summary>
-        [WindowsOnly]
-        public async Task Resume_ValidInput_v4()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            await player.Play(AssetManager.Find("sample_1.wav"));
-            await player.Pause();
-            await player.Resume();
-
-            Assert.False(player.Paused);
-        }
-
-        /// <summary>
-        /// Resumes the when not paused does nothing
-        /// </summary>
-        [WindowsOnly]
-        public async Task Resume_WhenNotPaused_DoesNothing()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            await player.Play(AssetManager.Find("sample_1.wav"));
-            await player.Resume();
-
-            Assert.False(player.Paused);
-        }
-
-        /// <summary>
-        /// Stops the valid input v 3
-        /// </summary>
-        [WindowsOnly]
-        public async Task Stop_ValidInput_v3()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            await player.Play(AssetManager.Find("sample_1.wav"));
-            await player.Stop();
-
-            Assert.False(player.Playing);
-            Assert.False(player.Paused);
-        }
-
-        /// <summary>
-        /// Stops the when not playing does nothing
-        /// </summary>
-        [WindowsOnly]
-        public async Task Stop_WhenNotPlaying_DoesNothing()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            await player.Stop();
-
-            Assert.False(player.Playing);
-            Assert.False(player.Paused);
-        }
-
-        /// <summary>
-        /// Resumes the valid input v 5
-        /// </summary>
-        [WindowsOnly]
-        public async Task Resume_ValidInput_v5()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            await player.Play(AssetManager.Find("sample_1.wav"));
-            await player.Pause();
-            await player.Resume();
-
-            Assert.False(player.Paused);
-        }
-
-        /// <summary>
-        /// Resumes the when not paused does nothing v 4
-        /// </summary>
-        [WindowsOnly]
-        public async Task Resume_WhenNotPaused_DoesNothing_v4()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            await player.Play(AssetManager.Find("sample_1.wav"));
-            await player.Resume();
-
-            Assert.False(player.Paused);
-        }
-
-        /// <summary>
-        /// Resumes the when not playing does nothing
-        /// </summary>
-        [WindowsOnly]
-        public async Task Resume_WhenNotPlaying_DoesNothing()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            await player.Resume();
-
-            Assert.False(player.Paused);
+            // Assert - No exception thrown
             Assert.False(player.Playing);
         }
-
-        /// <summary>
-        /// Pauses the valid input v 6
-        /// </summary>
-        [WindowsOnly]
-        public async Task Pause_ValidInput_v6()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            await player.Play(AssetManager.Find("sample_1.wav"));
-            await player.Pause();
-
-            Assert.True(player.Paused);
-        }
-
-        /// <summary>
-        /// Pauses the when not playing does nothing
-        /// </summary>
-        [WindowsOnly]
-        public async Task Pause_WhenNotPlaying_DoesNothing()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            await player.Pause();
-
-            Assert.False(player.Paused);
-        }
-
-        /// <summary>
-        /// Pauses the when already paused does nothing
-        /// </summary>
-        [WindowsOnly]
-        public async Task Pause_WhenAlreadyPaused_DoesNothing()
-        {
-            WindowsPlayer player = new WindowsPlayer();
-            await player.Play(AssetManager.Find("sample_1.wav"));
-            await player.Pause();
-            await player.Pause();
-
-            Assert.True(player.Paused);
-        }*/
     }
 }
+

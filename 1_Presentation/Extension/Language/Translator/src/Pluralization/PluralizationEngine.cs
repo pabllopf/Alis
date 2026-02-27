@@ -29,8 +29,9 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Extension.Language.Translator.Abstractions;
 
-namespace Alis.Extension.Language.Translator
+namespace Alis.Extension.Language.Translator.Pluralization
 {
     /// <summary>
     ///     Default implementation of the pluralization engine

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ITranslationObserver.cs
+//  File:UnixOnlyAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,35 +27,28 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Extension.Language.Translator.Abstractions
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
+using Xunit;
+
+namespace Alis.Core.Graphic.Test.Attributes
 {
     /// <summary>
-    ///     Interface that defines the contract for observing translation events
+    ///     The unix only attribute class
     /// </summary>
-    /// <remarks>
-    ///     Observers are notified when important translation events occur,
-    ///     such as language changes or translation updates.
-    /// </remarks>
-    public interface ITranslationObserver
+    /// <seealso cref="FactAttribute" />
+    [ExcludeFromCodeCoverage]
+    public class UnixOnlyAttribute : FactAttribute
     {
         /// <summary>
-        ///     Called when the current language has changed
+        ///     Initializes a new instance of the <see cref="UnixOnlyAttribute" /> class
         /// </summary>
-        /// <param name="language">The newly selected language</param>
-        void OnLanguageChanged(ILanguage language);
-
-        /// <summary>
-        ///     Called when translations have been updated
-        /// </summary>
-        /// <param name="languageCode">The language code that was updated</param>
-        void OnTranslationsUpdated(string languageCode);
-
-        /// <summary>
-        ///     Called when a translation is requested but not found
-        /// </summary>
-        /// <param name="languageCode">The language code</param>
-        /// <param name="key">The translation key that was not found</param>
-        void OnTranslationNotFound(string languageCode, string key);
+        public UnixOnlyAttribute()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && !RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Skip = "Only running on unix systems mode";
+            }
+        }
     }
 }
-

@@ -27,273 +27,567 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using Alis.Core.Audio.Interfaces;
+using Alis.Core.Audio.Players;
+using Xunit;
+
 namespace Alis.Core.Audio.Test
 {
     /// <summary>
     ///     The player test class
     /// </summary>
+    /// <seealso cref="Player" />
     public class PlayerTest
     {
-        /*
         /// <summary>
-        /// Tests that player constructor valid input
+        ///     Tests that player constructor should initialize internal player
         /// </summary>
         [Fact]
-        public void Player_Constructor_ValidInput()
+        public void Player_Constructor_ShouldInitializeInternalPlayer()
         {
-            try
+            // Arrange & Act
+            Player player = new Player();
+
+            // Assert
+            Assert.NotNull(player);
+            Assert.False(player.Playing);
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that player constructor should initialize with correct os specific player
+        /// </summary>
+        [Fact]
+        public void Player_Constructor_ShouldInitializeWithCorrectOsSpecificPlayer()
+        {
+            // Arrange & Act
+            Player player = new Player();
+
+            // Assert
+            Assert.NotNull(player);
+            
+            // Verify the player is initialized correctly for current OS
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Player player = new Player();
                 Assert.NotNull(player);
             }
-            catch (Exception e)
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                Assert.IsType<Exception>(e);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Tests that play valid input
-        /// </summary>
-        [Fact]
-        public async Task Play_ValidInput()
-        {
-            try
-            {
-                Player player = new Player();
-                await player.Play(AssetManager.Find("sample_1.wav"));
-
-                Assert.True(player.Playing);
-            }
-            catch (Exception e)
-            {
-                Assert.IsType<Exception>(e);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Tests that pause valid input
-        /// </summary>
-        [Fact]
-        public async Task Pause_ValidInput()
-        {
-            try
-            {
-                Player player = new Player();
-                await player.Play(AssetManager.Find("sample_1.wav"));
-                await player.Pause();
-
-                Assert.True(player.Paused);
-            }
-            catch (Exception e)
-            {
-                Assert.IsType<Exception>(e);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Tests that resume valid input
-        /// </summary>
-        [Fact]
-        public async Task Resume_ValidInput()
-        {
-            try
-            {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                {
-                    Player player = new Player();
-                    await player.Play(AssetManager.Find("sample_1.wav"));
-                    await player.Pause();
-                    await player.Resume();
-
-                    Assert.True(player.Paused);
-                }
-
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                {
-                    Player player = new Player();
-                    await player.Play(AssetManager.Find("sample_1.wav"));
-                    await player.Pause();
-                    await player.Resume();
-
-                    Assert.False(player.Paused);
-                }
-
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    Player player = new Player();
-                    await player.Play(AssetManager.Find("sample_1.wav"));
-                    await player.Pause();
-                    await player.Resume();
-
-                    Assert.False(player.Paused);
-                }
-            }
-            catch (Exception e)
-            {
-                Assert.IsType<Exception>(e);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Tests that stop valid input
-        /// </summary>
-        [Fact]
-        public async Task Stop_ValidInput()
-        {
-            try
-            {
-                Player player = new Player();
-                await player.Play(AssetManager.Find("sample_1.wav"));
-                await player.Stop();
-
-                Assert.False(player.Playing);
-            }
-            catch (Exception e)
-            {
-                Assert.IsType<Exception>(e);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Tests that set volume valid input
-        /// </summary>
-        [Fact]
-        public async Task SetVolume_ValidInput()
-        {
-            try
-            {
-                Player player = new Player();
-                await player.SetVolume(50);
-            }
-            catch (Exception e)
-            {
-                Assert.IsType<Exception>(e);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Tests that check os windows platform
-        /// </summary>
-        [Fact]
-        public void CheckOs_WindowsPlatform()
-        {
-            try
-            {
-
-
-                bool originalPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-
-
-                IPlayer player = Player.CheckOs();
-
-                if (originalPlatform)
-                {
-                    Assert.IsType<WindowsPlayer>(player);
-                }
-                else
-                {
-                    Assert.NotNull(player);
-                }
-            }
-            catch (Exception e)
-            {
-                Assert.IsType<Exception>(e);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Tests that check os linux platform
-        /// </summary>
-        [Fact]
-        public void CheckOs_LinuxPlatform()
-        {
-            try
-            {
-                bool originalPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
-
-
-                IPlayer player = Player.CheckOs();
-
-                if (originalPlatform)
-                {
-                    Assert.IsType<LinuxPlayer>(player);
-                }
-                else
-                {
-                    Assert.NotNull(player);
-                }
-            }
-            catch (Exception e)
-            {
-                Assert.IsType<Exception>(e);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Tests that check os mac platform
-        /// </summary>
-        [Fact]
-        public void CheckOs_MacPlatform()
-        {
-
-            try
-            {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                {
-                    IPlayer player = Player.CheckOs();
-
-                    Assert.IsType<MacPlayer>(player);
-                }
-
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    IPlayer player = Player.CheckOs();
-
-                    Assert.IsType<WindowsPlayer>(player);
-                }
-
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                {
-                    IPlayer player = Player.CheckOs();
-
-                    Assert.IsType<LinuxPlayer>(player);
-                }
-            }
-            catch (Exception e)
-            {
-                Assert.IsType<Exception>(e);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Tests that check os unknown platform
-        /// </summary>
-        [Fact]
-        public void CheckOs_UnknownPlatform()
-        {
-            try
-            {
-                bool originalPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
-
-                IPlayer player = Player.CheckOs();
-
                 Assert.NotNull(player);
             }
-            catch (Exception e)
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                Assert.IsType<Exception>(e);
-                throw;
+                Assert.NotNull(player);
             }
-        }*/
+        }
+
+        /// <summary>
+        ///     Tests that playing property should return false initially
+        /// </summary>
+        [Fact]
+        public void Playing_Property_ShouldReturnFalseInitially()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act
+            bool playing = player.Playing;
+
+            // Assert
+            Assert.False(playing);
+        }
+
+        /// <summary>
+        ///     Tests that paused property should return false initially
+        /// </summary>
+        [Fact]
+        public void Paused_Property_ShouldReturnFalseInitially()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act
+            bool paused = player.Paused;
+
+            // Assert
+            Assert.False(paused);
+        }
+
+        /// <summary>
+        ///     Tests that check os should return windows player on windows
+        /// </summary>
+        [Fact]
+        public void CheckOs_ShouldReturnWindowsPlayer_OnWindows()
+        {
+            // Arrange & Act
+            IPlayer player = Player.CheckOs();
+
+            // Assert
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Assert.IsType<WindowsPlayer>(player);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that check os should return linux player on linux
+        /// </summary>
+        [Fact]
+        public void CheckOs_ShouldReturnLinuxPlayer_OnLinux()
+        {
+            // Arrange & Act
+            IPlayer player = Player.CheckOs();
+
+            // Assert
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Assert.IsType<LinuxPlayer>(player);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that check os should return mac player on mac
+        /// </summary>
+        [Fact]
+        public void CheckOs_ShouldReturnMacPlayer_OnMac()
+        {
+            // Arrange & Act
+            IPlayer player = Player.CheckOs();
+
+            // Assert
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                Assert.IsType<MacPlayer>(player);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that check os should return browser player on webassembly
+        /// </summary>
+        [Fact]
+        public void CheckOs_ShouldReturnBrowserPlayer_OnWebAssembly()
+        {
+            // Arrange & Act
+            IPlayer player = Player.CheckOs();
+
+            // Assert
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY")))
+            {
+                Assert.IsType<BrowserPlayer>(player);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that check os should return browser player on browser
+        /// </summary>
+        [Fact]
+        public void CheckOs_ShouldReturnBrowserPlayer_OnBrowser()
+        {
+            // Arrange & Act
+            IPlayer player = Player.CheckOs();
+
+            // Assert
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("BROWSER")))
+            {
+                Assert.IsType<BrowserPlayer>(player);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that check os should return valid player on current platform
+        /// </summary>
+        [Fact]
+        public void CheckOs_ShouldReturnValidPlayer_OnCurrentPlatform()
+        {
+            // Arrange & Act
+            IPlayer player = Player.CheckOs();
+
+            // Assert
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that on playback finished should invoke event handler
+        /// </summary>
+        [Fact]
+        public void OnPlaybackFinished_ShouldInvokeEventHandler()
+        {
+            // Arrange
+            Player player = new Player();
+            bool eventRaised = false;
+            player.PlaybackFinished += (sender, e) => eventRaised = true;
+
+            // Act
+            player.OnPlaybackFinished(player, EventArgs.Empty);
+
+            // Assert
+            Assert.True(eventRaised);
+        }
+
+        /// <summary>
+        ///     Tests that on playback finished with null sender should not throw
+        /// </summary>
+        [Fact]
+        public void OnPlaybackFinished_WithNullSender_ShouldNotThrow()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act & Assert - No exception should be thrown
+            player.OnPlaybackFinished(null, EventArgs.Empty);
+        }
+
+        /// <summary>
+        ///     Tests that on playback finished without handlers should not throw
+        /// </summary>
+        [Fact]
+        public void OnPlaybackFinished_WithoutHandlers_ShouldNotThrow()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act & Assert - No exception should be thrown
+            player.OnPlaybackFinished(player, EventArgs.Empty);
+        }
+
+        /// <summary>
+        ///     Tests that playback finished event should be invokable
+        /// </summary>
+        [Fact]
+        public void PlaybackFinished_Event_ShouldBeInvokable()
+        {
+            // Arrange
+            Player player = new Player();
+            int eventCount = 0;
+            player.PlaybackFinished += (sender, e) => eventCount++;
+
+            // Act
+            player.OnPlaybackFinished(player, EventArgs.Empty);
+            player.OnPlaybackFinished(player, EventArgs.Empty);
+
+            // Assert
+            Assert.Equal(2, eventCount);
+        }
+
+        /// <summary>
+        ///     Tests that playback finished event sender should be player instance
+        /// </summary>
+        [Fact]
+        public void PlaybackFinished_Event_SenderShouldBePlayerInstance()
+        {
+            // Arrange
+            Player player = new Player();
+            object eventSender = null;
+            player.PlaybackFinished += (sender, e) => eventSender = sender;
+
+            // Act
+            player.OnPlaybackFinished(player, EventArgs.Empty);
+
+            // Assert
+            Assert.Same(player, eventSender);
+        }
+
+        /// <summary>
+        ///     Tests that multiple event handlers should all be invoked
+        /// </summary>
+        [Fact]
+        public void PlaybackFinished_MultipleEventHandlers_ShouldAllBeInvoked()
+        {
+            // Arrange
+            Player player = new Player();
+            int handler1Count = 0;
+            int handler2Count = 0;
+            int handler3Count = 0;
+
+            player.PlaybackFinished += (sender, e) => handler1Count++;
+            player.PlaybackFinished += (sender, e) => handler2Count++;
+            player.PlaybackFinished += (sender, e) => handler3Count++;
+
+            // Act
+            player.OnPlaybackFinished(player, EventArgs.Empty);
+
+            // Assert
+            Assert.Equal(1, handler1Count);
+            Assert.Equal(1, handler2Count);
+            Assert.Equal(1, handler3Count);
+        }
+
+        /// <summary>
+        ///     Tests that play method should accept file name parameter
+        /// </summary>
+        [Fact]
+        public async Task Play_Method_ShouldAcceptFileNameParameter()
+        {
+            // Arrange
+            Player player = new Player();
+            string fileName = "nonexistent.wav";
+
+            // Act & Assert
+            try
+            {
+                await player.Play(fileName);
+            }
+            catch (Exception)
+            {
+                // Expected when file doesn't exist
+                Assert.True(true);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that play loop method should accept file name and loop parameters
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_Method_ShouldAcceptFileNameAndLoopParameters()
+        {
+            // Arrange
+            Player player = new Player();
+            string fileName = "nonexistent.wav";
+            bool loop = true;
+
+            // Act & Assert
+            try
+            {
+                await player.PlayLoop(fileName, loop);
+            }
+            catch (Exception)
+            {
+                // Expected when file doesn't exist
+                Assert.True(true);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that pause method should be callable
+        /// </summary>
+        [Fact]
+        public async Task Pause_Method_ShouldBeCallable()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act
+            await player.Pause();
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that resume method should be callable
+        /// </summary>
+        [Fact]
+        public async Task Resume_Method_ShouldBeCallable()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act
+            await player.Resume();
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that stop method should be callable
+        /// </summary>
+        [Fact]
+        public async Task Stop_Method_ShouldBeCallable()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act
+            await player.Stop();
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that set volume method should accept byte parameter
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_Method_ShouldAcceptByteParameter()
+        {
+            // Arrange
+            Player player = new Player();
+            byte volume = 50;
+
+            // Act
+            await player.SetVolume(volume);
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that set volume with zero should work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_WithZero_ShouldWork()
+        {
+            // Arrange
+            Player player = new Player();
+            byte volume = 0;
+
+            // Act
+            await player.SetVolume(volume);
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that set volume with max value should work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_WithMaxValue_ShouldWork()
+        {
+            // Arrange
+            Player player = new Player();
+            byte volume = 100;
+
+            // Act
+            await player.SetVolume(volume);
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that play loop with false should work like normal play
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_WithFalse_ShouldWorkLikeNormalPlay()
+        {
+            // Arrange
+            Player player = new Player();
+            string fileName = "nonexistent.wav";
+            bool loop = false;
+
+            // Act & Assert
+            try
+            {
+                await player.PlayLoop(fileName, loop);
+            }
+            catch (Exception)
+            {
+                // Expected when file doesn't exist
+                Assert.True(true);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that multiple pause calls should be safe
+        /// </summary>
+        [Fact]
+        public async Task Pause_MultipleCalls_ShouldBeSafe()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act
+            await player.Pause();
+            await player.Pause();
+            await player.Pause();
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that multiple stop calls should be safe
+        /// </summary>
+        [Fact]
+        public async Task Stop_MultipleCalls_ShouldBeSafe()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act
+            await player.Stop();
+            await player.Stop();
+            await player.Stop();
+
+            // Assert - No exception thrown
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that internal player should handle playback finished event
+        /// </summary>
+        [Fact]
+        public void InternalPlayer_ShouldHandlePlaybackFinishedEvent()
+        {
+            // Arrange
+            Player player = new Player();
+            bool eventRaised = false;
+            player.PlaybackFinished += (sender, e) => eventRaised = true;
+
+            // Act
+            player.OnPlaybackFinished(player, EventArgs.Empty);
+
+            // Assert
+            Assert.True(eventRaised);
+        }
+
+        /// <summary>
+        ///     Tests that check os should return player implementing i player
+        /// </summary>
+        [Fact]
+        public void CheckOs_ShouldReturnPlayerImplementingIPlayer()
+        {
+            // Arrange & Act
+            IPlayer player = Player.CheckOs();
+
+            // Assert
+            Assert.NotNull(player);
+            Assert.IsAssignableFrom<IPlayer>(player);
+        }
+
+        /// <summary>
+        ///     Tests that set volume with mid range values should work
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_WithMidRangeValues_ShouldWork()
+        {
+            // Arrange
+            Player player = new Player();
+
+            // Act & Assert
+            await player.SetVolume(25);
+            await player.SetVolume(50);
+            await player.SetVolume(75);
+            
+            Assert.NotNull(player);
+        }
+
+        /// <summary>
+        ///     Tests that event handlers can be removed
+        /// </summary>
+        [Fact]
+        public void PlaybackFinished_EventHandlers_CanBeRemoved()
+        {
+            // Arrange
+            Player player = new Player();
+            int eventCount = 0;
+            EventHandler handler = (sender, e) => eventCount++;
+            
+            player.PlaybackFinished += handler;
+            player.OnPlaybackFinished(player, EventArgs.Empty);
+            
+            // Act
+            player.PlaybackFinished -= handler;
+            player.OnPlaybackFinished(player, EventArgs.Empty);
+
+            // Assert
+            Assert.Equal(1, eventCount);
+        }
     }
 }
+

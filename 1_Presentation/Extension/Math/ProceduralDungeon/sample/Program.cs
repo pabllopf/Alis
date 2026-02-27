@@ -28,11 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Extension.Math.ProceduralDungeon;
 using Alis.Extension.Math.ProceduralDungeon.Helpers;
 using Alis.Extension.Math.ProceduralDungeon.Models;
 
-namespace Sample
+namespace Alis.Extension.Math.ProceduralDungeon.Sample
 {
     /// <summary>
     ///     Sample program demonstrating procedural dungeon generation.
