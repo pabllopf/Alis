@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Language.Translator.Pluralization;
 using Xunit;
 
 namespace Alis.Extension.Language.Translator.Test

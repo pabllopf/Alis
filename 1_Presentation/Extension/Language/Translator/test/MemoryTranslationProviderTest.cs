@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Alis.Extension.Language.Translator.Providers;
 using Xunit;
 
 namespace Alis.Extension.Language.Translator.Test

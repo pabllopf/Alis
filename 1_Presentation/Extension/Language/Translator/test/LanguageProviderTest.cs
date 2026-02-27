@@ -29,6 +29,8 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Extension.Language.Translator.Abstractions;
+using Alis.Extension.Language.Translator.Providers;
 using Xunit;
 
 namespace Alis.Extension.Language.Translator.Test
