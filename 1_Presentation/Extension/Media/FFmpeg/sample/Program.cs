@@ -27,22 +27,99 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Enums;
+using Alis.Core.Graphic.Platforms;
+using Alis.Core.Graphic.Platforms.Osx;
+using Alis.Extension.Media.FFmpeg.Sample.Samples;
 
 namespace Alis.Extension.Media.FFmpeg.Sample
 {
     /// <summary>
     ///     The program class
     /// </summary>
-    public static class Program
+    internal static class Program
     {
         /// <summary>
-        ///     Main the args
+        ///     Main
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        private static void Main()
         {
-            Logger.Log("Hello CurrentWorld!");
+            INativePlatform platform;
+#if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
+            platform = new MacNativePlatform();
+#elif winx64 || winx86 || winarm64 || winarm || win
+            platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
+#elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
+            platform = new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();
+#else
+            throw new Exception("Sistema operativo no soportado");
+#endif
+
+            Logger.Info("Elige el ejemplo a mostrar:");
+            Logger.Info("0: Fondo rojo");
+            Logger.Info("1: Triángulo blanco");
+            Logger.Info("2: Cubo (vacío)");
+            Logger.Info("3: Cuadrado sin rellenar");
+            Logger.Info("4: Textura personalizada (BMP)");
+            Logger.Info("5: Load font with custom bmp");
+            Logger.Info("6: Load font with custom bmp 2");
+            Logger.Info("7: Load font with timer");
+            Logger.Info("Opción: ");
+            int option = 0;
+            string input = Console.ReadLine();
+            int.TryParse(input, out option);
+            IExample example = option switch
+            {
+                1 => new TriangleExample(),
+                2 => new CubeExample(),
+                3 => new SquareUnfilledExample(),
+                4 => new TextureSampleCustomBmpExample(),
+                5 => new LoadFontWithCustomBmpExample(),
+                6 => new LoadFontWithCustomBmpExample2(),
+                7 => new LoadFontwithTimerExample(),
+                _ => new SimpleRedExample()
+            };
+
+            bool ok = platform.Initialize(800, 600, "C# + OpenGL Platform");
+            if (!ok)
+            {
+                Logger.Info("No se pudo inicializar la ventana ni el contexto OpenGL. El programa se cerrará.");
+                platform.Cleanup();
+                return;
+            }
+
+            platform.MakeContextCurrent();
+            Gl.Initialize(platform.GetProcAddress);
+            Gl.GlViewport(0, 0, platform.GetWindowWidth(), platform.GetWindowHeight());
+            Gl.GlEnable(EnableCap.DepthTest);
+
+            example.Initialize();
+            platform.ShowWindow();
+            platform.SetTitle("C# + OpenGL Platform - Ejemplo " + option);
+
+            bool running = true;
+            while (running)
+            {
+                running = platform.PollEvents();
+                if (platform.TryGetLastKeyPressed(out ConsoleKey key))
+                {
+                    Logger.Info($"Tecla pulsada: {key}");
+                }
+
+                example.Draw();
+                platform.SwapBuffers();
+                int glError = Gl.GlGetError();
+                if (glError != 0)
+                {
+                    Logger.Info($"OpenGL error tras flushBuffer: 0x{glError:X}");
+                }
+            }
+
+            example.Cleanup();
+            platform.Cleanup();
         }
     }
 }
