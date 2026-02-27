@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Constructor_Default_StackCreated()
         {
             // Act
-            var stack = new FrugalStack<int>();
+            FrugalStack<int> stack = new FrugalStack<int>();
 
             // Assert
             Assert.NotNull(stack);
@@ -57,7 +57,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void PushAndPop_MultipleValues_CorrectLIFOOrder()
         {
             // Arrange
-            var stack = new FrugalStack<int>();
+            FrugalStack<int> stack = new FrugalStack<int>();
 
             // Act
             stack.Push(100);
@@ -77,7 +77,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void TryPop_EmptyStack_ReturnsFalse()
         {
             // Arrange
-            var stack = new FrugalStack<string>();
+            FrugalStack<string> stack = new FrugalStack<string>();
 
             // Act
             bool result = stack.TryPop(out string value);
@@ -94,7 +94,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void TryPop_WithElements_ReturnsTrueWithValue()
         {
             // Arrange
-            var stack = new FrugalStack<int>();
+            FrugalStack<int> stack = new FrugalStack<int>();
             stack.Push(42);
 
             // Act
@@ -112,7 +112,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Remove_ExistingElement_RemovedSuccessfully()
         {
             // Arrange
-            var stack = new FrugalStack<int>();
+            FrugalStack<int> stack = new FrugalStack<int>();
             stack.Push(10);
             stack.Push(20);
             stack.Push(30);
@@ -134,7 +134,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Push_MultipleElements_AllAccessible()
         {
             // Arrange
-            var stack = new FrugalStack<int>();
+            FrugalStack<int> stack = new FrugalStack<int>();
 
             // Act
             for (int i = 0; i < 50; i++)
@@ -156,7 +156,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Any_AfterPushAndPop_TracksEmptyState()
         {
             // Arrange
-            var stack = new FrugalStack<int>();
+            FrugalStack<int> stack = new FrugalStack<int>();
 
             // Act & Assert
             Assert.False(stack.Any);
@@ -175,7 +175,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Push_ReferenceType_MaintainReferences()
         {
             // Arrange
-            var stack = new FrugalStack<object>();
+            FrugalStack<object> stack = new FrugalStack<object>();
             var obj1 = new { Value = 1 };
             var obj2 = new { Value = 2 };
 
@@ -195,7 +195,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void PushPopCycles_MultipleOperations_CorrectState()
         {
             // Arrange
-            var stack = new FrugalStack<int>();
+            FrugalStack<int> stack = new FrugalStack<int>();
 
             // Act & Assert
             stack.Push(1);
@@ -219,9 +219,9 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Push_DifferentValueTypes_WorksCorrectly()
         {
             // Arrange
-            var intStack = new FrugalStack<int>();
-            var stringStack = new FrugalStack<string>();
-            var doubleStack = new FrugalStack<double>();
+            FrugalStack<int> intStack = new FrugalStack<int>();
+            FrugalStack<string> stringStack = new FrugalStack<string>();
+            FrugalStack<double> doubleStack = new FrugalStack<double>();
 
             // Act
             intStack.Push(42);
@@ -241,7 +241,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void RepeatedOperations_SameInstance_MaintainsCorrectBehavior()
         {
             // Arrange
-            var stack = new FrugalStack<int>();
+            FrugalStack<int> stack = new FrugalStack<int>();
 
             // Act & Assert - First cycle
             stack.Push(10);

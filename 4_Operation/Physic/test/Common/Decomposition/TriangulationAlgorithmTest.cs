@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Physic.Common.Decomposition;
 using Xunit;
 
@@ -109,7 +110,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
         [Fact]
         public void TriangulationAlgorithm_ShouldHaveSixValues()
         {
-            var values = System.Enum.GetValues(typeof(TriangulationAlgorithm));
+            Array values = System.Enum.GetValues(typeof(TriangulationAlgorithm));
             
             Assert.Equal(6, values.Length);
         }

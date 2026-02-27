@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core.Physic.Common.Decomposition.Seidel;
 using Xunit;
 
@@ -181,7 +182,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             TrapezoidalMap map = new TrapezoidalMap();
             
-            var trapezoids = map.Map;
+            HashSet<Trapezoid> trapezoids = map.Map;
             
             Assert.NotNull(trapezoids);
         }

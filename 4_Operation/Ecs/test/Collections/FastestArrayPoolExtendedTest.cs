@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void RentAndReturn_SingleArray_PoolReusesProperly()
         {
             // Arrange
-            var pool = FastestArrayPool<int>.Instance;
+            FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
             int[] array1 = pool.Rent(100);
             int[] array2;
 
@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Rent_BelowMinimumBucketSize_CreatesNewArray()
         {
             // Arrange
-            var pool = FastestArrayPool<int>.Instance;
+            FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
 
             // Act
             int[] smallArray = pool.Rent(8);
@@ -81,7 +81,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Rent_ProgressivelyLargerSizes_AllSuccessful()
         {
             // Arrange
-            var pool = FastestArrayPool<long>.Instance;
+            FastestArrayPool<long> pool = FastestArrayPool<long>.Instance;
             int[] sizes = { 16, 32, 64, 128, 256, 512, 1024 };
 
             // Act & Assert
@@ -100,7 +100,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ResizeArrayFromPool_DataPreservation_ContentIntact()
         {
             // Arrange
-            var pool = FastestArrayPool<int>.Instance;
+            FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
             int[] arr = { 1, 2, 3, 4, 5 };
             int[] originalCopy = (int[])arr.Clone();
 
@@ -123,7 +123,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Return_WithClearFlag_ReferencesCleared()
         {
             // Arrange
-            var pool = FastestArrayPool<string>.Instance;
+            FastestArrayPool<string> pool = FastestArrayPool<string>.Instance;
             string[] array = pool.Rent(50);
             array[0] = "test";
 
@@ -141,7 +141,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void MultipleCycles_RentReturnRentPattern_Consistent()
         {
             // Arrange
-            var pool = FastestArrayPool<int>.Instance;
+            FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
 
             // Act & Assert
             for (int cycle = 0; cycle < 5; cycle++)
@@ -169,7 +169,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Rent_OversizedRequest_FallbackArray()
         {
             // Arrange
-            var pool = FastestArrayPool<short>.Instance;
+            FastestArrayPool<short> pool = FastestArrayPool<short>.Instance;
             int hugeSize = int.MaxValue / 2;
 
             // Act
@@ -187,7 +187,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Rent_ValueTypeArray_ProperlyPooled()
         {
             // Arrange
-            var pool = FastestArrayPool<byte>.Instance;
+            FastestArrayPool<byte> pool = FastestArrayPool<byte>.Instance;
 
             // Act
             byte[] arr1 = pool.Rent(256);

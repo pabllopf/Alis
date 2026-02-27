@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnAwake_CanBeImplemented()
         {
-            var handler = new AwakeHandler();
+            AwakeHandler handler = new AwakeHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnAwake>(handler);
         }
@@ -72,8 +72,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnAwake_CanBeCalled()
         {
-            var handler = new AwakeHandler();
-            var gameObject = new MockGameObject();
+            AwakeHandler handler = new AwakeHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnAwake(gameObject);
             Assert.True(handler.WasAwakeCalled);
         }
@@ -84,8 +84,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnAwake_ReceivesCorrectGameObject()
         {
-            var handler = new AwakeHandler();
-            var gameObject = new MockGameObject();
+            AwakeHandler handler = new AwakeHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnAwake(gameObject);
             Assert.Same(gameObject, handler.LastGameObject);
         }
@@ -96,9 +96,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnAwake_CanBeCalledMultipleTimes()
         {
-            var handler = new AwakeHandler();
-            var gameObject1 = new MockGameObject();
-            var gameObject2 = new MockGameObject();
+            AwakeHandler handler = new AwakeHandler();
+            MockGameObject gameObject1 = new MockGameObject();
+            MockGameObject gameObject2 = new MockGameObject();
             handler.OnAwake(gameObject1);
             handler.OnAwake(gameObject2);
             Assert.True(handler.WasAwakeCalled);

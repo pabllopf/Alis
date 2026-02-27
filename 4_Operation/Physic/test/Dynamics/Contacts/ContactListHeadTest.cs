@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             ContactListHead head = new ContactListHead();
             
-            var list = head.ToList();
+            List<Contact> list = head.ToList();
             
             Assert.NotNull(list);
             Assert.Empty(list);

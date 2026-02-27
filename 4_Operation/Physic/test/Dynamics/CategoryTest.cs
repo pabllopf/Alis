@@ -175,7 +175,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Category_ShouldBeFlagsEnum()
         {
-            var attributes = typeof(Category).GetCustomAttributes(typeof(System.FlagsAttribute), false);
+            object[] attributes = typeof(Category).GetCustomAttributes(typeof(System.FlagsAttribute), false);
             
             Assert.NotEmpty(attributes);
         }

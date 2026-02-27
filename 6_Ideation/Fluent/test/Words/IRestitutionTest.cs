@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IRestitution_CanBeImplemented()
         {
-            var builder = new RestitutionBuilderImpl();
+            RestitutionBuilderImpl builder = new RestitutionBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IRestitution<RestitutionBuilder, float>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Restitution_SetsValueCorrectly()
         {
-            var builder = new RestitutionBuilderImpl();
-            var result = builder.Restitution(0.8f);
+            RestitutionBuilderImpl builder = new RestitutionBuilderImpl();
+            RestitutionBuilder result = builder.Restitution(0.8f);
             Assert.Equal(0.8f, result.RestitutionValue);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Restitution_ReturnsBuilder()
         {
-            var builder = new RestitutionBuilderImpl();
-            var result = builder.Restitution(0.6f);
+            RestitutionBuilderImpl builder = new RestitutionBuilderImpl();
+            RestitutionBuilder result = builder.Restitution(0.6f);
             Assert.NotNull(result);
             Assert.IsType<RestitutionBuilder>(result);
         }
@@ -105,8 +105,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData(1f)]
         public void Restitution_WithValidBounceValues(float restitution)
         {
-            var builder = new RestitutionBuilderImpl();
-            var result = builder.Restitution(restitution);
+            RestitutionBuilderImpl builder = new RestitutionBuilderImpl();
+            RestitutionBuilder result = builder.Restitution(restitution);
             Assert.Equal(restitution, result.RestitutionValue);
         }
     }

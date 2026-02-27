@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_CanCheckIfHasComponent()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 10 });
 
             // Act & Assert
@@ -63,7 +63,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_CanGetComponentReference()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
 
             // Act
@@ -81,7 +81,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_CanModifyComponentThroughReference()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
 
             // Act
@@ -102,7 +102,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_TryHasWorksOnLiveEntity()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create(new Health { Value = 100 });
 
             // Act
@@ -121,7 +121,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_CanAccessMultipleComponents()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position { X = 1, Y = 2 },
                 new Health { Value = 100 },
@@ -145,7 +145,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_ComponentDataPersistsAcrossAccesses()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create(new Health { Value = 100 });
 
             // Act
@@ -164,7 +164,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_CanGetComponentMultipleTimes()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
 
             // Act

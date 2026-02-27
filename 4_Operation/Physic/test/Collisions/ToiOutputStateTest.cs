@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Physic.Collisions;
 using Xunit;
 
@@ -98,7 +99,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void ToiOutputState_ShouldHaveFiveValues()
         {
-            var values = System.Enum.GetValues(typeof(ToiOutputState));
+            Array values = System.Enum.GetValues(typeof(ToiOutputState));
             
             Assert.Equal(5, values.Length);
         }

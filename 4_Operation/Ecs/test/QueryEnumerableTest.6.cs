@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -55,7 +56,7 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
             // Act
-            var enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>();
+            QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>();
 
             // Assert
             Assert.NotEqual(default, enumerable);
@@ -83,7 +84,7 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
             // Act & Assert
-            foreach (var (pos, vel, health, trans, test, another) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
+            foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> test, Ref<AnotherComponent> another) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
             {
                 Assert.Equal(10, pos.Value.X);
                 Assert.Equal(5, vel.Value.VX);
@@ -126,7 +127,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
+            foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
             {
                 count++;
             }
@@ -157,21 +158,21 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
             // Act
-            foreach (var (pos, vel, health, trans, test, another) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
+            foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> test, Ref<AnotherComponent> another) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
             {
-                var p = pos.Value;
+                Position p = pos.Value;
                 p.X = 100;
                 pos.Value = p;
 
-                var h = health.Value;
+                Health h = health.Value;
                 h.Value = 300;
                 health.Value = h;
 
-                var t = trans.Value;
+                Transform t = trans.Value;
                 t.Rotation = 180;
                 trans.Value = t;
 
-                var a = another.Value;
+                AnotherComponent a = another.Value;
                 a.X = 50;
                 another.Value = a;
             }
@@ -209,7 +210,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
+            foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
             {
                 count++;
             }
@@ -246,7 +247,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
+            foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
             {
                 count++;
             }

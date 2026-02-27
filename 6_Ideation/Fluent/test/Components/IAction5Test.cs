@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IAction5_CanBeImplementedWithFiveParameters()
         {
-            var action = new FiveParamAction();
+            FiveParamAction action = new FiveParamAction();
             Assert.NotNull(action);
             Assert.IsAssignableFrom<IAction<int, int, int, int, int>>(action);
         }
@@ -72,7 +72,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Run_ExecutesWithCorrectParameters()
         {
-            var action = new FiveParamAction();
+            FiveParamAction action = new FiveParamAction();
             int v1 = 10, v2 = 20, v3 = 30, v4 = 40, v5 = 50;
             action.Run(ref v1, ref v2, ref v3, ref v4, ref v5);
             Assert.Equal(10, action.Values[0]);
@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Run_WithAllValuesEqual()
         {
-            var action = new FiveParamAction();
+            FiveParamAction action = new FiveParamAction();
             int value = 42;
             int v1 = value, v2 = value, v3 = value, v4 = value, v5 = value;
             action.Run(ref v1, ref v2, ref v3, ref v4, ref v5);

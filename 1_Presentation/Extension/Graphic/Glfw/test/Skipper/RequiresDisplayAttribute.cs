@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test.Skipper
@@ -96,7 +97,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Skipper
                    // WindowServer es el proceso que gestiona el entorno gráfico
                    try
                    {
-                       var processStartInfo = new System.Diagnostics.ProcessStartInfo
+                       ProcessStartInfo processStartInfo = new System.Diagnostics.ProcessStartInfo
                        {
                            FileName = "pgrep",
                            Arguments = "WindowServer",
@@ -105,7 +106,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Skipper
                            CreateNoWindow = true
                        };
                
-                       using var process = System.Diagnostics.Process.Start(processStartInfo);
+                       using Process process = System.Diagnostics.Process.Start(processStartInfo);
                        if (process != null)
                        {
                            process.WaitForExit();

@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ToArray_Enumerable_ConvertsSuccessfully()
         {
             // Arrange
-            var enumerable = new[] { 1, 2, 3, 4, 5 };
+            int[] enumerable = new[] { 1, 2, 3, 4, 5 };
 
             // Act
             int[] array = EnumerableHelpers.ToArray(enumerable, out int count);
@@ -63,7 +63,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ToArray_ListEnumerable_OrderPreserved()
         {
             // Arrange
-            var list = new List<string> { "a", "b", "c", "d" };
+            List<string> list = new List<string> { "a", "b", "c", "d" };
 
             // Act
             string[] array = EnumerableHelpers.ToArray(list, out int count);
@@ -81,7 +81,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ToArray_EmptyEnumerable_ReturnsEmptyArray()
         {
             // Arrange
-            var emptyList = new List<int>();
+            List<int> emptyList = new List<int>();
 
             // Act
             int[] array = EnumerableHelpers.ToArray(emptyList, out int count);
@@ -97,7 +97,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ToArray_ValueTypes_ConvertsCorrectly()
         {
             // Arrange
-            var guids = new List<Guid>
+            List<Guid> guids = new List<Guid>
             {
                 Guid.NewGuid(),
                 Guid.NewGuid(),
@@ -119,7 +119,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ToArray_LargeEnumerable_ConvertedSuccessfully()
         {
             // Arrange
-            var largeList = new List<int>();
+            List<int> largeList = new List<int>();
             for (int i = 0; i < 10000; i++)
             {
                 largeList.Add(i);
@@ -141,7 +141,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ToArray_OutputCount_MatchesArrayLength()
         {
             // Arrange
-            var list = new List<double> { 1.1, 2.2, 3.3, 4.4, 5.5 };
+            List<double> list = new List<double> { 1.1, 2.2, 3.3, 4.4, 5.5 };
 
             // Act
             double[] array = EnumerableHelpers.ToArray(list, out int count);
@@ -158,7 +158,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ToArray_CustomEnumerable_Works()
         {
             // Arrange
-            var enumerable = (IEnumerable<int>)new[] { 10, 20, 30, 40 };
+            IEnumerable<int> enumerable = (IEnumerable<int>)new[] { 10, 20, 30, 40 };
 
             // Act
             int[] array = EnumerableHelpers.ToArray(enumerable, out int count);
@@ -176,7 +176,7 @@ namespace Alis.Core.Ecs.Test.Collections
             // Arrange
             var obj1 = new { ID = 1 };
             var obj2 = new { ID = 2 };
-            var list = new List<object> { obj1, obj2 };
+            List<object> list = new List<object> { obj1, obj2 };
 
             // Act
             object[] array = EnumerableHelpers.ToArray(list, out int count);

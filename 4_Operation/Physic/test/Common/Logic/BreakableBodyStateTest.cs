@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Physic.Common.Logic;
 using Xunit;
 
@@ -76,7 +77,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         [Fact]
         public void BreakableBodyState_ShouldHaveThreeValues()
         {
-            var values = System.Enum.GetValues(typeof(BreakableBodyState));
+            Array values = System.Enum.GetValues(typeof(BreakableBodyState));
             
             Assert.Equal(3, values.Length);
         }

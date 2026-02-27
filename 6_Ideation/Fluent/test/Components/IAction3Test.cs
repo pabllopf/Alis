@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IAction3_CanBeImplementedWithThreeParameters()
         {
-            var action = new ThreeParamAction();
+            ThreeParamAction action = new ThreeParamAction();
             Assert.NotNull(action);
             Assert.IsAssignableFrom<IAction<int, string, double>>(action);
         }
@@ -72,7 +72,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Run_ExecutesWithCorrectParameters()
         {
-            var action = new ThreeParamAction();
+            ThreeParamAction action = new ThreeParamAction();
             int intVal = 42;
             string strVal = "test";
             double dblVal = 3.14;
@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Run_HandlesExtremeValues()
         {
-            var action = new ThreeParamAction();
+            ThreeParamAction action = new ThreeParamAction();
             int intVal = int.MaxValue;
             string strVal = string.Empty;
             double dblVal = double.MinValue;

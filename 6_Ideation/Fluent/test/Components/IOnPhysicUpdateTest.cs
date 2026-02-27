@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnPhysicUpdate_CanBeImplemented()
         {
-            var handler = new PhysicUpdateHandler();
+            PhysicUpdateHandler handler = new PhysicUpdateHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnPhysicUpdate>(handler);
         }
@@ -71,8 +71,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnPhysicUpdate_CanBeCalled()
         {
-            var handler = new PhysicUpdateHandler();
-            var gameObject = new MockGameObject();
+            PhysicUpdateHandler handler = new PhysicUpdateHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnPhysicUpdate(gameObject);
             Assert.Equal(1, handler.UpdateCount);
         }
@@ -83,8 +83,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnPhysicUpdate_CountsPhysicsSteps()
         {
-            var handler = new PhysicUpdateHandler();
-            var gameObject = new MockGameObject();
+            PhysicUpdateHandler handler = new PhysicUpdateHandler();
+            MockGameObject gameObject = new MockGameObject();
             for (int i = 0; i < 50; i++)
             {
                 handler.OnPhysicUpdate(gameObject);

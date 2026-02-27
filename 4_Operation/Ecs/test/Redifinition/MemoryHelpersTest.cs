@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core.Ecs.Redifinition;
 using Xunit;
 
@@ -332,7 +333,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void GetOrAddNew_WithNewKey_CreatesNewValue()
         {
             // Arrange
-            var dict = new System.Collections.Generic.Dictionary<int, TestClass>();
+            Dictionary<int, TestClass> dict = new System.Collections.Generic.Dictionary<int, TestClass>();
 
             // Act
             TestClass value = MemoryHelpers.GetOrAddNew(dict, 1);
@@ -354,7 +355,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void GetOrAddNew_WithExistingKey_ReturnsExistingValue()
         {
             // Arrange
-            var dict = new System.Collections.Generic.Dictionary<int, TestClass>();
+            Dictionary<int, TestClass> dict = new System.Collections.Generic.Dictionary<int, TestClass>();
             TestClass original = new TestClass();
             dict[1] = original;
 
@@ -376,7 +377,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void GetOrAddNew_WithMultipleKeys_WorksCorrectly()
         {
             // Arrange
-            var dict = new System.Collections.Generic.Dictionary<string, TestClass>();
+            Dictionary<string, TestClass> dict = new System.Collections.Generic.Dictionary<string, TestClass>();
 
             // Act
             TestClass value1 = MemoryHelpers.GetOrAddNew(dict, "key1");
@@ -504,7 +505,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void GetOrAddNew_WithRapidCalls_WorksCorrectly()
         {
             // Arrange
-            var dict = new System.Collections.Generic.Dictionary<int, TestClass>();
+            Dictionary<int, TestClass> dict = new System.Collections.Generic.Dictionary<int, TestClass>();
 
             // Act
             for (int i = 0; i < 100; i++)

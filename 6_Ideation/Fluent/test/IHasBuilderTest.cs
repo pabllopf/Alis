@@ -51,7 +51,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IHasBuilder_CanBeImplemented()
         {
-            var builder = new TestBuilderImpl();
+            TestBuilderImpl builder = new TestBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IHasBuilder<string>>(builder);
         }
@@ -62,8 +62,8 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void Builder_ReturnsExpectedValue()
         {
-            var builder = new TestBuilderImpl();
-            var result = builder.Builder();
+            TestBuilderImpl builder = new TestBuilderImpl();
+            string result = builder.Builder();
             Assert.Equal("test_value", result);
         }
 
@@ -73,8 +73,8 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void Builder_DoesNotReturnNull()
         {
-            var builder = new TestBuilderImpl();
-            var result = builder.Builder();
+            TestBuilderImpl builder = new TestBuilderImpl();
+            string result = builder.Builder();
             Assert.NotNull(result);
         }
 
@@ -84,8 +84,8 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IHasBuilder_WithIntegerType()
         {
-            var builder = new IntBuilderImpl();
-            var result = builder.Builder();
+            IntBuilderImpl builder = new IntBuilderImpl();
+            int result = builder.Builder();
             Assert.Equal(100, result);
         }
 
@@ -103,8 +103,8 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IHasBuilder_WithCustomObjectType()
         {
-            var builder = new CustomBuilderImpl();
-            var result = builder.Builder();
+            CustomBuilderImpl builder = new CustomBuilderImpl();
+            TestData result = builder.Builder();
             Assert.NotNull(result);
             Assert.IsType<TestData>(result);
             Assert.Equal("data", result.Value);
@@ -133,7 +133,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         public void IHasBuilder_SupportsCovariance()
         {
             IHasBuilder<object> builder = new ObjectBuilderImpl();
-            var result = builder.Builder();
+            object result = builder.Builder();
             Assert.NotNull(result);
         }
 

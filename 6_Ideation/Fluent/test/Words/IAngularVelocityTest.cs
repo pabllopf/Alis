@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IAngularVelocity_CanBeImplemented()
         {
-            var builder = new AngularVelocityBuilderImpl();
+            AngularVelocityBuilderImpl builder = new AngularVelocityBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IAngularVelocity<AngularVelocityBuilder, float>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void AngularVelocity_SetsValueCorrectly()
         {
-            var builder = new AngularVelocityBuilderImpl();
-            var result = builder.AngularVelocity(45f);
+            AngularVelocityBuilderImpl builder = new AngularVelocityBuilderImpl();
+            AngularVelocityBuilder result = builder.AngularVelocity(45f);
             Assert.Equal(45f, result.AngularVelocityValue);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void AngularVelocity_ReturnsBuilder()
         {
-            var builder = new AngularVelocityBuilderImpl();
-            var result = builder.AngularVelocity(90f);
+            AngularVelocityBuilderImpl builder = new AngularVelocityBuilderImpl();
+            AngularVelocityBuilder result = builder.AngularVelocity(90f);
             Assert.NotNull(result);
             Assert.IsType<AngularVelocityBuilder>(result);
         }
@@ -105,8 +105,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData(360f)]
         public void AngularVelocity_WithVariousRotationSpeeds(float velocity)
         {
-            var builder = new AngularVelocityBuilderImpl();
-            var result = builder.AngularVelocity(velocity);
+            AngularVelocityBuilderImpl builder = new AngularVelocityBuilderImpl();
+            AngularVelocityBuilder result = builder.AngularVelocity(velocity);
             Assert.Equal(velocity, result.AngularVelocityValue);
         }
     }

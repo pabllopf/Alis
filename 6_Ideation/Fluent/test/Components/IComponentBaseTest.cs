@@ -19,7 +19,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void CanImplementIComponentBase()
         {
-            var component = new DummyComponent();
+            DummyComponent component = new DummyComponent();
             Assert.IsAssignableFrom<Alis.Core.Aspect.Fluent.Components.IComponentBase>(component);
         }
     }

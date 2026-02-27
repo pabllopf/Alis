@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Index_BeyondCapacity_AutomaticallyExpands()
         {
             // Arrange
-            var table = new FastestTable<int>(10);
+            FastestTable<int> table = new FastestTable<int>(10);
 
             // Act
             ref int value = ref table[100];
@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ReadWrite_ConsecutiveOperations_DataConsistent()
         {
             // Arrange
-            var table = new FastestTable<string>(50);
+            FastestTable<string> table = new FastestTable<string>(50);
 
             // Act
             for (int i = 0; i < 100; i++)
@@ -85,7 +85,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Index_SparseAccess_AllIndexesAccessible()
         {
             // Arrange
-            var table = new FastestTable<long>(10);
+            FastestTable<long> table = new FastestTable<long>(10);
             int[] sparseIndices = { 5, 50, 500, 5000 };
 
             // Act
@@ -109,7 +109,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void EnsureCapacity_PreallocateSpace_ReducesExpansions()
         {
             // Arrange
-            var table = new FastestTable<int>(10);
+            FastestTable<int> table = new FastestTable<int>(10);
 
             // Act
             table.EnsureCapacity(1000);
@@ -125,7 +125,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void UnsafeIndexNoResize_WithinCapacity_Succeeds()
         {
             // Arrange
-            var table = new FastestTable<int>(100);
+            FastestTable<int> table = new FastestTable<int>(100);
 
             // Act
             ref int value = ref table.UnsafeIndexNoResize(50);
@@ -142,7 +142,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Empty_DefaultTable_HasEmptyBuffer()
         {
             // Arrange & Act
-            var emptyTable = FastestTable<int>.Empty;
+            FastestTable<int> emptyTable = FastestTable<int>.Empty;
 
             // Assert
             Assert.NotNull(emptyTable._buffer);
@@ -156,7 +156,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Index_LargeIndexValue_BufferExpandsAppropriately()
         {
             // Arrange
-            var table = new FastestTable<int>(10);
+            FastestTable<int> table = new FastestTable<int>(10);
             int largeIndex = 100000;
 
             // Act
@@ -175,7 +175,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Index_ReferenceType_MaintainsReferenceIntegrity()
         {
             // Arrange
-            var table = new FastestTable<object>(10);
+            FastestTable<object> table = new FastestTable<object>(10);
             var obj1 = new { ID = 1 };
             var obj2 = new { ID = 2 };
 
@@ -197,9 +197,9 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Capacity_AlwaysPowerOfTwo_Valid()
         {
             // Arrange & Act
-            var table1 = new FastestTable<int>(10);
-            var table2 = new FastestTable<int>(100);
-            var table3 = new FastestTable<int>(1023);
+            FastestTable<int> table1 = new FastestTable<int>(10);
+            FastestTable<int> table2 = new FastestTable<int>(100);
+            FastestTable<int> table3 = new FastestTable<int>(1023);
 
             // Assert - Check that length is power of 2
             Assert.True(IsPowerOfTwo(table1._buffer.Length));
@@ -214,7 +214,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void MultipleResizings_DataIntegrity_Maintained()
         {
             // Arrange
-            var table = new FastestTable<int>(2);
+            FastestTable<int> table = new FastestTable<int>(2);
 
             // Act
             for (int i = 0; i < 1000; i++)

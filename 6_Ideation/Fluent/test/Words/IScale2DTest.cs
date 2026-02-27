@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IScale2D_CanBeImplemented()
         {
-            var builder = new Scale2DBuilder();
+            Scale2DBuilder builder = new Scale2DBuilder();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IScale2D<ScaleBuilder, float>>(builder);
         }
@@ -79,8 +79,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Scale_SetsValuesCorrectly()
         {
-            var builder = new Scale2DBuilder();
-            var result = builder.Scale(2f, 3f);
+            Scale2DBuilder builder = new Scale2DBuilder();
+            ScaleBuilder result = builder.Scale(2f, 3f);
             Assert.Equal(2f, result.ScaleX);
             Assert.Equal(3f, result.ScaleY);
         }
@@ -91,8 +91,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Scale_ReturnsBuilder()
         {
-            var builder = new Scale2DBuilder();
-            var result = builder.Scale(1f, 1f);
+            Scale2DBuilder builder = new Scale2DBuilder();
+            ScaleBuilder result = builder.Scale(1f, 1f);
             Assert.NotNull(result);
             Assert.IsType<ScaleBuilder>(result);
         }
@@ -103,8 +103,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Scale_WithUniformScaling()
         {
-            var builder = new Scale2DBuilder();
-            var result = builder.Scale(1.5f, 1.5f);
+            Scale2DBuilder builder = new Scale2DBuilder();
+            ScaleBuilder result = builder.Scale(1.5f, 1.5f);
             Assert.Equal(1.5f, result.ScaleX);
             Assert.Equal(1.5f, result.ScaleY);
         }
@@ -118,8 +118,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData(0.5f, 2f)]
         public void Scale_WithVariousScaleValues(float x, float y)
         {
-            var builder = new Scale2DBuilder();
-            var result = builder.Scale(x, y);
+            Scale2DBuilder builder = new Scale2DBuilder();
+            ScaleBuilder result = builder.Scale(x, y);
             Assert.Equal(x, result.ScaleX);
             Assert.Equal(y, result.ScaleY);
         }

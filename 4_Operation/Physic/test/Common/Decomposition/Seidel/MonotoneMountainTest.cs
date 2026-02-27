@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core.Physic.Common.Decomposition.Seidel;
 using Xunit;
 
@@ -219,7 +220,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         {
             MonotoneMountain mountain = new MonotoneMountain();
             
-            var triangles = mountain.Triangles;
+            List<List<Point>> triangles = mountain.Triangles;
             
             Assert.NotNull(triangles);
             Assert.Empty(triangles);

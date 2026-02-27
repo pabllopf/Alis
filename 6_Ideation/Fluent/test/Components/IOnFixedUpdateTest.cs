@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnFixedUpdate_CanBeImplemented()
         {
-            var handler = new FixedUpdateHandler();
+            FixedUpdateHandler handler = new FixedUpdateHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnFixedUpdate>(handler);
         }
@@ -71,8 +71,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnFixedUpdate_CanBeCalled()
         {
-            var handler = new FixedUpdateHandler();
-            var gameObject = new MockGameObject();
+            FixedUpdateHandler handler = new FixedUpdateHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnFixedUpdate(gameObject);
             Assert.Equal(1, handler.CallCount);
         }
@@ -83,8 +83,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnFixedUpdate_CountsPhysicsFrames()
         {
-            var handler = new FixedUpdateHandler();
-            var gameObject = new MockGameObject();
+            FixedUpdateHandler handler = new FixedUpdateHandler();
+            MockGameObject gameObject = new MockGameObject();
             for (int i = 0; i < 60; i++)
             {
                 handler.OnFixedUpdate(gameObject);

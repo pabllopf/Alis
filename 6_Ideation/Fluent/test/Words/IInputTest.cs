@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IInput_CanBeImplemented()
         {
-            var builder = new InputBuilderImpl();
+            InputBuilderImpl builder = new InputBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IInput<InputBuilder, string>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Input_SetsModeCorrectly()
         {
-            var builder = new InputBuilderImpl();
-            var result = builder.Input("Keyboard");
+            InputBuilderImpl builder = new InputBuilderImpl();
+            InputBuilder result = builder.Input("Keyboard");
             Assert.Equal("Keyboard", result.InputMode);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Input_ReturnsBuilder()
         {
-            var builder = new InputBuilderImpl();
-            var result = builder.Input("Gamepad");
+            InputBuilderImpl builder = new InputBuilderImpl();
+            InputBuilder result = builder.Input("Gamepad");
             Assert.NotNull(result);
             Assert.IsType<InputBuilder>(result);
         }
@@ -104,8 +104,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData("Touch")]
         public void Input_WithVariousModes(string mode)
         {
-            var builder = new InputBuilderImpl();
-            var result = builder.Input(mode);
+            InputBuilderImpl builder = new InputBuilderImpl();
+            InputBuilder result = builder.Input(mode);
             Assert.Equal(mode, result.InputMode);
         }
     }

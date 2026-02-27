@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common.Logic;
 using Alis.Core.Physic.Dynamics;
@@ -140,7 +141,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         [Fact]
         public void PhysicsLogic_ShouldBeAbstractClass()
         {
-            var type = typeof(PhysicsLogic);
+            Type type = typeof(PhysicsLogic);
             
             Assert.True(type.IsAbstract);
         }

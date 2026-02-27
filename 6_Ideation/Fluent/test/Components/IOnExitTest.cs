@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnExit_CanBeImplemented()
         {
-            var handler = new ExitHandler();
+            ExitHandler handler = new ExitHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnExit>(handler);
         }
@@ -73,8 +73,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnExit_CanBeCalled()
         {
-            var handler = new ExitHandler();
-            var gameObject = new MockGameObject();
+            ExitHandler handler = new ExitHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnExit(gameObject);
             Assert.True(handler.WasExitCalled);
         }
@@ -85,8 +85,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnExit_CountsInvocations()
         {
-            var handler = new ExitHandler();
-            var gameObject = new MockGameObject();
+            ExitHandler handler = new ExitHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnExit(gameObject);
             Assert.Equal(1, handler.ExitCount);
             handler.OnExit(gameObject);

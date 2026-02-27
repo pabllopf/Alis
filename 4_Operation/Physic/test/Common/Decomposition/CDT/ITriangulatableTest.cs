@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Physic.Common.Decomposition.CDT;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
@@ -109,7 +110,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         [Fact]
         public void ITriangulatable_ShouldBeInterface()
         {
-            var type = typeof(ITriangulatable);
+            Type type = typeof(ITriangulatable);
             
             Assert.True(type.IsInterface);
         }

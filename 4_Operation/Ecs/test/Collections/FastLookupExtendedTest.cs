@@ -26,6 +26,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Kernel;
@@ -46,7 +47,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Constructor_Default_CreatedSuccessfully()
         {
             // Arrange & Act
-            var lookup = new FastLookup();
+            FastLookup lookup = new FastLookup();
 
             // Assert
             Assert.NotNull(lookup);
@@ -59,7 +60,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void GetKey_AfterGet_ReturnsValidIndex()
         {
             // Arrange
-            var lookup = new FastLookup();
+            FastLookup lookup = new FastLookup();
 
             // Act
             uint key1 = lookup.GetKey(10, new GameObjectType(5));
@@ -76,7 +77,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void GetKey_DifferentInputs_DifferentKeys()
         {
             // Arrange
-            var lookup = new FastLookup();
+            FastLookup lookup = new FastLookup();
 
             // Act
             uint key1 = lookup.GetKey(5, new GameObjectType(10));
@@ -96,7 +97,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void GetKey_BoundaryValues_GeneratesValidKeys()
         {
             // Arrange
-            var lookup = new FastLookup();
+            FastLookup lookup = new FastLookup();
 
             // Act
             uint key1 = lookup.GetKey(0, new GameObjectType(0));
@@ -113,7 +114,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void GetKey_SameInputs_GeneratesSameKey()
         {
             // Arrange
-            var lookup = new FastLookup();
+            FastLookup lookup = new FastLookup();
             ushort id = 42;
             GameObjectType archetype = new GameObjectType(10);
 
@@ -132,8 +133,8 @@ namespace Alis.Core.Ecs.Test.Collections
         public void GetKey_ManyRequests_AllUnique()
         {
             // Arrange
-            var lookup = new FastLookup();
-            var keys = new System.Collections.Generic.HashSet<uint>();
+            FastLookup lookup = new FastLookup();
+            HashSet<uint> keys = new System.Collections.Generic.HashSet<uint>();
 
             // Act
             for (ushort i = 0; i < 100; i++)
@@ -153,7 +154,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void LookupIndex_AfterGetKey_ReturnsValidIndex()
         {
             // Arrange
-            var lookup = new FastLookup();
+            FastLookup lookup = new FastLookup();
             uint key = lookup.GetKey(5, new GameObjectType(10));
 
             // Act
@@ -170,7 +171,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void LookupIndex_RepeatCalls_ReturnsSameIndex()
         {
             // Arrange
-            var lookup = new FastLookup();
+            FastLookup lookup = new FastLookup();
             uint key = lookup.GetKey(15, new GameObjectType(20));
 
             // Act
@@ -188,7 +189,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void LookupIndex_NonExistentKey_ReturnsNotFoundIndicator()
         {
             // Arrange
-            var lookup = new FastLookup();
+            FastLookup lookup = new FastLookup();
 
             // Act
             int index = lookup.LookupIndex(999999u);

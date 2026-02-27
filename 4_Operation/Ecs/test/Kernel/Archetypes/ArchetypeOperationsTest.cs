@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -57,7 +58,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Scene scene = new Scene();
 
             // Act
-            var defaultArchetype = scene.DefaultArchetype;
+            Archetype defaultArchetype = scene.DefaultArchetype;
 
             // Assert
             Assert.NotNull(defaultArchetype);

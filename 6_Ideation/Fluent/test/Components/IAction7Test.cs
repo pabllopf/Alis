@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IAction7_CanBeImplementedWithSevenParameters()
         {
-            var action = new SevenParamAction();
+            SevenParamAction action = new SevenParamAction();
             Assert.NotNull(action);
             Assert.IsAssignableFrom<IAction<int, int, int, int, int, int, int>>(action);
         }
@@ -74,7 +74,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Run_ExecutesWithCorrectParameters()
         {
-            var action = new SevenParamAction();
+            SevenParamAction action = new SevenParamAction();
             int v1 = 1, v2 = 2, v3 = 3, v4 = 4, v5 = 5, v6 = 6, v7 = 7;
             action.Run(ref v1, ref v2, ref v3, ref v4, ref v5, ref v6, ref v7);
             for (int i = 0; i < 7; i++)
@@ -89,7 +89,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Run_WithNegativeValues()
         {
-            var action = new SevenParamAction();
+            SevenParamAction action = new SevenParamAction();
             int v1 = -1, v2 = -2, v3 = -3, v4 = -4, v5 = -5, v6 = -6, v7 = -7;
             action.Run(ref v1, ref v2, ref v3, ref v4, ref v5, ref v6, ref v7);
             for (int i = 0; i < 7; i++)

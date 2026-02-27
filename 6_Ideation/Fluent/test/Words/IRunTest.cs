@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IRun_CanBeImplemented()
         {
-            var runner = new TestRunner();
+            TestRunner runner = new TestRunner();
             Assert.NotNull(runner);
             Assert.IsAssignableFrom<IRun>(runner);
         }
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Run_CanBeCalled()
         {
-            var runner = new TestRunner();
+            TestRunner runner = new TestRunner();
             runner.Run();
             Assert.True(runner.HasRun);
         }
@@ -81,7 +81,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Run_IncrementsExecutionCount()
         {
-            var runner = new TestRunner();
+            TestRunner runner = new TestRunner();
             runner.Run();
             Assert.Equal(1, runner.RunCount);
             runner.Run();
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData(100)]
         public void Run_SupportsMultipleCalls(int callCount)
         {
-            var runner = new TestRunner();
+            TestRunner runner = new TestRunner();
             for (int i = 0; i < callCount; i++)
             {
                 runner.Run();

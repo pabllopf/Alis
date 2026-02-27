@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnBeforeUpdate_CanBeImplemented()
         {
-            var handler = new BeforeUpdateHandler();
+            BeforeUpdateHandler handler = new BeforeUpdateHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnBeforeUpdate>(handler);
         }
@@ -71,8 +71,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnBeforeUpdate_CanBeCalled()
         {
-            var handler = new BeforeUpdateHandler();
-            var gameObject = new MockGameObject();
+            BeforeUpdateHandler handler = new BeforeUpdateHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnBeforeUpdate(gameObject);
             Assert.Equal(1, handler.CallCount);
         }
@@ -83,8 +83,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnBeforeUpdate_CountsCalls()
         {
-            var handler = new BeforeUpdateHandler();
-            var gameObject = new MockGameObject();
+            BeforeUpdateHandler handler = new BeforeUpdateHandler();
+            MockGameObject gameObject = new MockGameObject();
             for (int i = 0; i < 5; i++)
             {
                 handler.OnBeforeUpdate(gameObject);

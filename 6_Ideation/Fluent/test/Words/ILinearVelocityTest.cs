@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void ILinearVelocity_CanBeImplemented()
         {
-            var builder = new LinearVelocityBuilderImpl();
+            LinearVelocityBuilderImpl builder = new LinearVelocityBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<ILinearVelocity<VelocityBuilder, float>>(builder);
         }
@@ -79,8 +79,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void LinearVelocity_SetsValuesCorrectly()
         {
-            var builder = new LinearVelocityBuilderImpl();
-            var result = builder.LinearVelocity(5f, 10f);
+            LinearVelocityBuilderImpl builder = new LinearVelocityBuilderImpl();
+            VelocityBuilder result = builder.LinearVelocity(5f, 10f);
             Assert.Equal(5f, result.VelocityX);
             Assert.Equal(10f, result.VelocityY);
         }
@@ -91,8 +91,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void LinearVelocity_ReturnsBuilder()
         {
-            var builder = new LinearVelocityBuilderImpl();
-            var result = builder.LinearVelocity(2f, 3f);
+            LinearVelocityBuilderImpl builder = new LinearVelocityBuilderImpl();
+            VelocityBuilder result = builder.LinearVelocity(2f, 3f);
             Assert.NotNull(result);
             Assert.IsType<VelocityBuilder>(result);
         }
@@ -107,8 +107,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData(20f, -20f)]
         public void LinearVelocity_WithVariousValues(float x, float y)
         {
-            var builder = new LinearVelocityBuilderImpl();
-            var result = builder.LinearVelocity(x, y);
+            LinearVelocityBuilderImpl builder = new LinearVelocityBuilderImpl();
+            VelocityBuilder result = builder.LinearVelocity(x, y);
             Assert.Equal(x, result.VelocityX);
             Assert.Equal(y, result.VelocityY);
         }

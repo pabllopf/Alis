@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Physic.Common.Decomposition.Seidel;
 using Xunit;
 
@@ -104,7 +105,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         [Fact]
         public void Node_ShouldBeAbstractClass()
         {
-            var type = typeof(Node);
+            Type type = typeof(Node);
             
             Assert.True(type.IsAbstract);
         }

@@ -50,7 +50,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_EntityCreatedEventFires()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             int eventCount = 0;
             GameObject createdEntity = default;
 
@@ -75,7 +75,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_EntityDeletedEventFires()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create();
             int eventCount = 0;
 
@@ -95,7 +95,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_ComponentAddedEventFires()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create();
             int eventCount = 0;
             ComponentId firedComponentId = default;
@@ -124,7 +124,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_ComponentRemovedEventFires()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 10 });
             int eventCount = 0;
             ComponentId firedComponentId = default;
@@ -153,7 +153,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_MultipleEventsAreTrackedCorrectly()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             int createdCount = 0;
             int deletedCount = 0;
             int componentAddedCount = 0;
@@ -181,7 +181,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_EventListenerCanBeRemoved()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             int eventCount = 0;
 
             void Handler(GameObject _) => eventCount++;
@@ -205,7 +205,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_MultipleListenersReceiveSameEvent()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             int listener1Count = 0;
             int listener2Count = 0;
 
@@ -227,9 +227,9 @@ namespace Alis.Core.Ecs.Test
         public void Scene_ComponentEventsIncludeCorrectComponentId()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create();
-            var addedComponentIds = new List<ComponentId>();
+            List<ComponentId> addedComponentIds = new List<ComponentId>();
 
             scene.ComponentAdded += (_, componentId) => addedComponentIds.Add(componentId);
 

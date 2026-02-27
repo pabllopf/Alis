@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Alis.Core.Ecs.Redifinition;
 using Xunit;
 
@@ -218,7 +220,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void MemoryTrimming_CanBeUsedInCollections()
         {
             // Arrange
-            var list = new System.Collections.Generic.List<MemoryTrimming>
+            List<MemoryTrimming> list = new System.Collections.Generic.List<MemoryTrimming>
             {
                 MemoryTrimming.Always,
                 MemoryTrimming.Normal,
@@ -242,7 +244,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void MemoryTrimming_CanBeUsedAsDictionaryKey()
         {
             // Arrange
-            var dict = new System.Collections.Generic.Dictionary<MemoryTrimming, string>
+            Dictionary<MemoryTrimming, string> dict = new System.Collections.Generic.Dictionary<MemoryTrimming, string>
             {
                 { MemoryTrimming.Always, "Always trim" },
                 { MemoryTrimming.Normal, "Normal trim" },
@@ -266,7 +268,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         public void MemoryTrimming_HasExactlyThreeValues()
         {
             // Act
-            var values = System.Enum.GetValues(typeof(MemoryTrimming));
+            Array values = System.Enum.GetValues(typeof(MemoryTrimming));
 
             // Assert
             Assert.Equal(3, values.Length);

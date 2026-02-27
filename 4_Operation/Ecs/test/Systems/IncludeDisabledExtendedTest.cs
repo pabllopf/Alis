@@ -61,7 +61,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query query = scene.Query<With<Position>, IncludeDisabled>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }
@@ -89,7 +89,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }
@@ -119,7 +119,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query query = scene.Query<With<Position>, Tagged<IncludeDisabledPlayerTag>, IncludeDisabled>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }
@@ -153,7 +153,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query query = scene.Query<With<Position>, With<Velocity>, IncludeDisabled>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity>())
+            foreach (RefTuple<Position, Velocity> _ in query.Enumerate<Position, Velocity>())
             {
                 count++;
             }
@@ -178,7 +178,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query standardQuery = scene.Query<With<Position>>();
             int countBefore = 0;
-            foreach (var _ in standardQuery.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in standardQuery.Enumerate<Position>())
             {
                 countBefore++;
             }
@@ -186,7 +186,7 @@ namespace Alis.Core.Ecs.Test.Systems
             entity.Tag<Disable>();
 
             int countAfter = 0;
-            foreach (var _ in standardQuery.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in standardQuery.Enumerate<Position>())
             {
                 countAfter++;
             }
@@ -212,7 +212,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query includeDisabledQuery = scene.Query<With<Position>, IncludeDisabled>();
             int countBefore = 0;
-            foreach (var _ in includeDisabledQuery.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in includeDisabledQuery.Enumerate<Position>())
             {
                 countBefore++;
             }
@@ -220,7 +220,7 @@ namespace Alis.Core.Ecs.Test.Systems
             entity.Tag<Disable>();
 
             int countAfter = 0;
-            foreach (var _ in includeDisabledQuery.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in includeDisabledQuery.Enumerate<Position>())
             {
                 countAfter++;
             }
@@ -253,14 +253,14 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query includeDisabledQuery = scene.Query<With<Position>, IncludeDisabled>();
             int countIncludeDisabled = 0;
-            foreach (var _ in includeDisabledQuery.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in includeDisabledQuery.Enumerate<Position>())
             {
                 countIncludeDisabled++;
             }
 
             Query standardQuery = scene.Query<With<Position>>();
             int countStandard = 0;
-            foreach (var _ in standardQuery.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in standardQuery.Enumerate<Position>())
             {
                 countStandard++;
             }
@@ -292,7 +292,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query query = scene.Query<With<Position>, Not<Velocity>, IncludeDisabled>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }
@@ -321,7 +321,7 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query query = scene.Query<With<Position>, IncludeDisabled>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }
@@ -359,14 +359,14 @@ namespace Alis.Core.Ecs.Test.Systems
             // Act
             Query standardQuery = scene.Query<With<Position>>();
             int standardCount = 0;
-            foreach (var _ in standardQuery.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in standardQuery.Enumerate<Position>())
             {
                 standardCount++;
             }
 
             Query includeDisabledQuery = scene.Query<With<Position>, IncludeDisabled>();
             int includedCount = 0;
-            foreach (var _ in includeDisabledQuery.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in includeDisabledQuery.Enumerate<Position>())
             {
                 includedCount++;
             }

@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void ISet_CanBeImplemented()
         {
-            var builder = new SetBuilder();
+            SetBuilder builder = new SetBuilder();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<ISet<Builder, string>>(builder);
         }
@@ -74,8 +74,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Set_ReturnsBuilder()
         {
-            var builder = new SetBuilder();
-            var result = builder.Set<object>("value");
+            SetBuilder builder = new SetBuilder();
+            Builder result = builder.Set<object>("value");
             Assert.NotNull(result);
             Assert.IsType<Builder>(result);
         }
@@ -86,8 +86,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Set_AssignsValueCorrectly()
         {
-            var builder = new SetBuilder();
-            var result = builder.Set<object>("assigned");
+            SetBuilder builder = new SetBuilder();
+            Builder result = builder.Set<object>("assigned");
             Assert.Equal("assigned", result.SetValue);
         }
 
@@ -97,9 +97,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Set_SupportsGenericTypeParameter()
         {
-            var builder = new SetBuilder();
-            var result1 = builder.Set<int>("value1");
-            var result2 = builder.Set<string>("value2");
+            SetBuilder builder = new SetBuilder();
+            Builder result1 = builder.Set<int>("value1");
+            Builder result2 = builder.Set<string>("value2");
             Assert.Equal("value2", result2.SetValue);
         }
     }

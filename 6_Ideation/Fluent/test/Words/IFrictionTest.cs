@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IFriction_CanBeImplemented()
         {
-            var builder = new FrictionBuilderImpl();
+            FrictionBuilderImpl builder = new FrictionBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IFriction<FrictionBuilder, float>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Friction_SetsValueCorrectly()
         {
-            var builder = new FrictionBuilderImpl();
-            var result = builder.Friction(0.5f);
+            FrictionBuilderImpl builder = new FrictionBuilderImpl();
+            FrictionBuilder result = builder.Friction(0.5f);
             Assert.Equal(0.5f, result.FrictionValue);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Friction_ReturnsBuilder()
         {
-            var builder = new FrictionBuilderImpl();
-            var result = builder.Friction(0.3f);
+            FrictionBuilderImpl builder = new FrictionBuilderImpl();
+            FrictionBuilder result = builder.Friction(0.3f);
             Assert.NotNull(result);
             Assert.IsType<FrictionBuilder>(result);
         }
@@ -104,8 +104,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData(1f)]
         public void Friction_WithTypicalPhysicsValues(float friction)
         {
-            var builder = new FrictionBuilderImpl();
-            var result = builder.Friction(friction);
+            FrictionBuilderImpl builder = new FrictionBuilderImpl();
+            FrictionBuilder result = builder.Friction(friction);
             Assert.Equal(friction, result.FrictionValue);
         }
     }

@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void ITransform_CanBeImplemented()
         {
-            var builder = new TransformBuilderImpl();
+            TransformBuilderImpl builder = new TransformBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<ITransform<TransformBuilder, string>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Transform_SetsOperationCorrectly()
         {
-            var builder = new TransformBuilderImpl();
-            var result = builder.Transform("Rotate90");
+            TransformBuilderImpl builder = new TransformBuilderImpl();
+            TransformBuilder result = builder.Transform("Rotate90");
             Assert.Equal("Rotate90", result.TransformOperation);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Transform_ReturnsBuilder()
         {
-            var builder = new TransformBuilderImpl();
-            var result = builder.Transform("Scale2x");
+            TransformBuilderImpl builder = new TransformBuilderImpl();
+            TransformBuilder result = builder.Transform("Scale2x");
             Assert.NotNull(result);
             Assert.IsType<TransformBuilder>(result);
         }
@@ -104,8 +104,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData("Shear")]
         public void Transform_WithVariousOperations(string operation)
         {
-            var builder = new TransformBuilderImpl();
-            var result = builder.Transform(operation);
+            TransformBuilderImpl builder = new TransformBuilderImpl();
+            TransformBuilder result = builder.Transform(operation);
             Assert.Equal(operation, result.TransformOperation);
         }
     }

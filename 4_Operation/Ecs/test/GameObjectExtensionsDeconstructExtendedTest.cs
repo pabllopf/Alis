@@ -105,7 +105,7 @@ namespace Alis.Core.Ecs.Test
             pos.Value.Y = 84;
 
             // Assert
-            Assert.True(entity.TryGet<Position>(out var modifiedPos));
+            Assert.True(entity.TryGet<Position>(out Ref<Position> modifiedPos));
             Assert.Equal(42, modifiedPos.Value.X);
             Assert.Equal(84, modifiedPos.Value.Y);
         }
@@ -176,7 +176,7 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.Equal(0, originalX);
             Assert.Equal(100, newX);
-            Assert.True(entity.TryGet<Position>(out var stored));
+            Assert.True(entity.TryGet<Position>(out Ref<Position> stored));
             Assert.Equal(100, stored.Value.X);
         }
 
@@ -221,7 +221,7 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create(originalPos);
 
             // Act
-            if (entity.TryGet<Position>(out var getPos))
+            if (entity.TryGet<Position>(out Ref<Position> getPos))
             {
                 getPos.Value.X = 50;
             }

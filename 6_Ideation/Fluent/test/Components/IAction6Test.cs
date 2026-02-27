@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IAction6_CanBeImplementedWithSixParameters()
         {
-            var action = new SixParamAction();
+            SixParamAction action = new SixParamAction();
             Assert.NotNull(action);
             Assert.IsAssignableFrom<IAction<int, int, int, int, int, int>>(action);
         }
@@ -73,7 +73,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Run_ExecutesWithCorrectParameters()
         {
-            var action = new SixParamAction();
+            SixParamAction action = new SixParamAction();
             int v1 = 10, v2 = 20, v3 = 30, v4 = 40, v5 = 50, v6 = 60;
             action.Run(ref v1, ref v2, ref v3, ref v4, ref v5, ref v6);
             for (int i = 0; i < 6; i++)
@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Run_WithZeroValues()
         {
-            var action = new SixParamAction();
+            SixParamAction action = new SixParamAction();
             int v1 = 0, v2 = 0, v3 = 0, v4 = 0, v5 = 0, v6 = 0;
             action.Run(ref v1, ref v2, ref v3, ref v4, ref v5, ref v6);
             Assert.All(action.Values, val => Assert.Equal(0, val));

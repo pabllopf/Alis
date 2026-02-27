@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IRotation_CanBeImplemented()
         {
-            var builder = new RotationBuilderImpl();
+            RotationBuilderImpl builder = new RotationBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IRotation<RotationBuilder, float>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Rotation_SetsValueCorrectly()
         {
-            var builder = new RotationBuilderImpl();
-            var result = builder.Rotation(45f);
+            RotationBuilderImpl builder = new RotationBuilderImpl();
+            RotationBuilder result = builder.Rotation(45f);
             Assert.Equal(45f, result.RotationValue);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Rotation_ReturnsBuilder()
         {
-            var builder = new RotationBuilderImpl();
-            var result = builder.Rotation(90f);
+            RotationBuilderImpl builder = new RotationBuilderImpl();
+            RotationBuilder result = builder.Rotation(90f);
             Assert.NotNull(result);
             Assert.IsType<RotationBuilder>(result);
         }
@@ -105,8 +105,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData(360f)]
         public void Rotation_WithStandardAngles(float angle)
         {
-            var builder = new RotationBuilderImpl();
-            var result = builder.Rotation(angle);
+            RotationBuilderImpl builder = new RotationBuilderImpl();
+            RotationBuilder result = builder.Rotation(angle);
             Assert.Equal(angle, result.RotationValue);
         }
 
@@ -116,8 +116,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Rotation_WithNegativeAngle()
         {
-            var builder = new RotationBuilderImpl();
-            var result = builder.Rotation(-45f);
+            RotationBuilderImpl builder = new RotationBuilderImpl();
+            RotationBuilder result = builder.Rotation(-45f);
             Assert.Equal(-45f, result.RotationValue);
         }
     }

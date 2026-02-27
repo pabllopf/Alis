@@ -51,7 +51,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IBuild_CanBeImplemented()
         {
-            var builder = new TestBuilder();
+            TestBuilder builder = new TestBuilder();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IBuild<string>>(builder);
         }
@@ -62,8 +62,8 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void Build_ReturnsOriginValue()
         {
-            var builder = new TestBuilder();
-            var result = builder.Build();
+            TestBuilder builder = new TestBuilder();
+            string result = builder.Build();
             Assert.Equal("built", result);
         }
 
@@ -73,8 +73,8 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void Build_DoesNotReturnNull()
         {
-            var builder = new TestBuilder();
-            var result = builder.Build();
+            TestBuilder builder = new TestBuilder();
+            string result = builder.Build();
             Assert.NotNull(result);
         }
 
@@ -84,8 +84,8 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IBuild_WithIntegerType()
         {
-            var builder = new IntBuilder();
-            var result = builder.Build();
+            IntBuilder builder = new IntBuilder();
+            int result = builder.Build();
             Assert.Equal(42, result);
         }
 
@@ -103,8 +103,8 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void IBuild_WithObjectType()
         {
-            var builder = new ObjectBuilder();
-            var result = builder.Build();
+            ObjectBuilder builder = new ObjectBuilder();
+            object result = builder.Build();
             Assert.NotNull(result);
             Assert.IsType<object>(result);
         }

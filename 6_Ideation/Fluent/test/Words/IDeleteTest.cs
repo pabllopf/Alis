@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IDelete_CanBeImplemented()
         {
-            var builder = new DeleteBuilder();
+            DeleteBuilder builder = new DeleteBuilder();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IDelete<Builder>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Delete_ReturnsBuilder()
         {
-            var builder = new DeleteBuilder();
-            var result = builder.Delete();
+            DeleteBuilder builder = new DeleteBuilder();
+            Builder result = builder.Delete();
             Assert.NotNull(result);
             Assert.IsType<Builder>(result);
         }
@@ -89,8 +89,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Delete_MarksObjectAsDeleted()
         {
-            var builder = new DeleteBuilder();
-            var result = builder.Delete();
+            DeleteBuilder builder = new DeleteBuilder();
+            Builder result = builder.Delete();
             Assert.True(result.IsDeleted);
         }
 
@@ -100,8 +100,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Delete_CanBeCalledMultipleTimes()
         {
-            var builder = new DeleteBuilder();
-            var result1 = builder.Delete();
+            DeleteBuilder builder = new DeleteBuilder();
+            Builder result1 = builder.Delete();
             Assert.True(result1.IsDeleted);
         }
     }

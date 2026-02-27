@@ -43,7 +43,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Index_BeyondCapacity_AutomaticallyExpands()
         {
             // Arrange
-            var table = new FastestTable<int>(10);
+            FastestTable<int> table = new FastestTable<int>(10);
 
             // Act
             ref int value = ref table[100];
@@ -61,7 +61,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ReadWrite_ConsecutiveOperations_DataConsistent()
         {
             // Arrange
-            var table = new FastestTable<string>(50);
+            FastestTable<string> table = new FastestTable<string>(50);
 
             // Act
             for (int i = 0; i < 100; i++)
@@ -84,7 +84,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Index_SparseAccess_AllIndexesAccessible()
         {
             // Arrange
-            var table = new FastestTable<long>(10);
+            FastestTable<long> table = new FastestTable<long>(10);
             int[] sparseIndices = { 5, 50, 500, 5000 };
 
             // Act
@@ -108,7 +108,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Empty_DefaultTable_HasEmptyBuffer()
         {
             // Arrange & Act
-            var emptyTable = FastestTable<int>.Empty;
+            FastestTable<int> emptyTable = FastestTable<int>.Empty;
 
             // Assert
             Assert.NotNull(emptyTable._buffer);
@@ -122,7 +122,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Index_ReferenceType_MaintainsReferenceIntegrity()
         {
             // Arrange
-            var table = new FastestTable<object>(10);
+            FastestTable<object> table = new FastestTable<object>(10);
             var obj1 = new { ID = 1 };
             var obj2 = new { ID = 2 };
 

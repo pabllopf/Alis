@@ -53,7 +53,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void EnumerableHelpers_CanGetEmptyEnumerator()
         {
             // Act
-            var emptyEnumerator = EnumerableHelpers.GetEmptyEnumerator<int>();
+            IEnumerator<int> emptyEnumerator = EnumerableHelpers.GetEmptyEnumerator<int>();
 
             // Assert
             Assert.NotNull(emptyEnumerator);
@@ -70,9 +70,9 @@ namespace Alis.Core.Ecs.Test.Collections
         public void EnumerableHelpers_EmptyEnumeratorWorksWithDifferentTypes()
         {
             // Act
-            var intEnumerator = EnumerableHelpers.GetEmptyEnumerator<int>();
-            var stringEnumerator = EnumerableHelpers.GetEmptyEnumerator<string>();
-            var doubleEnumerator = EnumerableHelpers.GetEmptyEnumerator<double>();
+            IEnumerator<int> intEnumerator = EnumerableHelpers.GetEmptyEnumerator<int>();
+            IEnumerator<string> stringEnumerator = EnumerableHelpers.GetEmptyEnumerator<string>();
+            IEnumerator<double> doubleEnumerator = EnumerableHelpers.GetEmptyEnumerator<double>();
 
             // Assert
             Assert.False(intEnumerator.MoveNext());

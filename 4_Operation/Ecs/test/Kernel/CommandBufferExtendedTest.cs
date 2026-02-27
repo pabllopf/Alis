@@ -204,9 +204,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             scene.Update();
 
             // Assert
-            Assert.True(entity.TryGet<Position>(out var pos));
+            Assert.True(entity.TryGet<Position>(out Ref<Position> pos));
             Assert.Equal(42, pos.Value.X);
-            Assert.True(entity.TryGet<Velocity>(out var vel));
+            Assert.True(entity.TryGet<Velocity>(out Ref<Velocity> vel));
             Assert.Equal(5, vel.Value.VX);
         }
 

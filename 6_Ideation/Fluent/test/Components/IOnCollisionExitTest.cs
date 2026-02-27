@@ -65,7 +65,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnCollisionExit_CanBeImplemented()
         {
-            var handler = new CollisionExitHandler();
+            CollisionExitHandler handler = new CollisionExitHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnCollisionExit>(handler);
         }
@@ -76,9 +76,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnCollisionExit_CanBeCalled()
         {
-            var handler = new CollisionExitHandler();
-            var self = new MockGameObject();
-            var collision = new MockGameObject();
+            CollisionExitHandler handler = new CollisionExitHandler();
+            MockGameObject self = new MockGameObject();
+            MockGameObject collision = new MockGameObject();
             handler.OnCollisionExit(self, collision);
             Assert.Equal(1, handler.ExitCount);
         }
@@ -89,9 +89,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnCollisionExit_CountsExits()
         {
-            var handler = new CollisionExitHandler();
-            var self = new MockGameObject();
-            var collision = new MockGameObject();
+            CollisionExitHandler handler = new CollisionExitHandler();
+            MockGameObject self = new MockGameObject();
+            MockGameObject collision = new MockGameObject();
             handler.OnCollisionExit(self, collision);
             handler.OnCollisionExit(self, collision);
             Assert.Equal(2, handler.ExitCount);

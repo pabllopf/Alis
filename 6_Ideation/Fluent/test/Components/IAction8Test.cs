@@ -64,7 +64,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IAction8_CanBeImplementedWithEightParameters()
         {
-            var action = new EightParamAction();
+            EightParamAction action = new EightParamAction();
             Assert.NotNull(action);
             Assert.IsAssignableFrom<IAction<int, int, int, int, int, int, int, int>>(action);
         }
@@ -75,7 +75,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Run_ExecutesWithCorrectParameters()
         {
-            var action = new EightParamAction();
+            EightParamAction action = new EightParamAction();
             int v1 = 1, v2 = 2, v3 = 3, v4 = 4, v5 = 5, v6 = 6, v7 = 7, v8 = 8;
             action.Run(ref v1, ref v2, ref v3, ref v4, ref v5, ref v6, ref v7, ref v8);
             for (int i = 0; i < 8; i++)
@@ -90,7 +90,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Run_WithMaxParameterCount()
         {
-            var action = new EightParamAction();
+            EightParamAction action = new EightParamAction();
             int v1 = 100, v2 = 100, v3 = 100, v4 = 100, v5 = 100, v6 = 100, v7 = 100, v8 = 100;
             action.Run(ref v1, ref v2, ref v3, ref v4, ref v5, ref v6, ref v7, ref v8);
             Assert.All(action.Values, val => Assert.Equal(100, val));

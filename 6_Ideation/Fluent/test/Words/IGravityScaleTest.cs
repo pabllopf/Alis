@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IGravityScale_CanBeImplemented()
         {
-            var builder = new GravityScaleBuilderImpl();
+            GravityScaleBuilderImpl builder = new GravityScaleBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IGravityScale<GravityScaleBuilder, float>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void GravityScale_SetsValueCorrectly()
         {
-            var builder = new GravityScaleBuilderImpl();
-            var result = builder.GravityScale(2f);
+            GravityScaleBuilderImpl builder = new GravityScaleBuilderImpl();
+            GravityScaleBuilder result = builder.GravityScale(2f);
             Assert.Equal(2f, result.GravityScaleValue);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void GravityScale_ReturnsBuilder()
         {
-            var builder = new GravityScaleBuilderImpl();
-            var result = builder.GravityScale(0.5f);
+            GravityScaleBuilderImpl builder = new GravityScaleBuilderImpl();
+            GravityScaleBuilder result = builder.GravityScale(0.5f);
             Assert.NotNull(result);
             Assert.IsType<GravityScaleBuilder>(result);
         }
@@ -105,8 +105,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData(5f)]
         public void GravityScale_WithVariousMultipliers(float scale)
         {
-            var builder = new GravityScaleBuilderImpl();
-            var result = builder.GravityScale(scale);
+            GravityScaleBuilderImpl builder = new GravityScaleBuilderImpl();
+            GravityScaleBuilder result = builder.GravityScale(scale);
             Assert.Equal(scale, result.GravityScaleValue);
         }
     }

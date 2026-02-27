@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
 
             // Act
-            var pos = entity.Get<Position>();
+            Position pos = entity.Get<Position>();
 
             // Assert
             Assert.Equal(10, pos.X);

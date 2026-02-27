@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -63,7 +64,7 @@ namespace Alis.Core.Ecs.Test
                 new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent>(query);
 
             // Act & Assert
-            foreach (var (pos, vel, health, trans, test) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
+            foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> test) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
             {
                 Assert.Equal(10, pos.Value.X);
                 Assert.Equal(5, vel.Value.VX);
@@ -103,7 +104,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
+            foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
             {
                 count++;
             }
@@ -134,17 +135,17 @@ namespace Alis.Core.Ecs.Test
                 new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent>(query);
 
             // Act
-            foreach (var (pos, vel, health, trans, test) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
+            foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> test) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
             {
-                var p = pos.Value;
+                Position p = pos.Value;
                 p.X = 100;
                 pos.Value = p;
 
-                var h = health.Value;
+                Health h = health.Value;
                 h.Value = 200;
                 health.Value = h;
 
-                var t = test.Value;
+                TestComponent t = test.Value;
                 t.Value = 500;
                 test.Value = t;
             }
@@ -181,7 +182,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
+            foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent>())
             {
                 count++;
             }

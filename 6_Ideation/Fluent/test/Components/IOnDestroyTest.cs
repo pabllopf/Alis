@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnDestroy_CanBeImplemented()
         {
-            var handler = new DestroyHandler();
+            DestroyHandler handler = new DestroyHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnDestroy>(handler);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnDestroy_CanBeCalled()
         {
-            var handler = new DestroyHandler();
-            var gameObject = new MockGameObject();
+            DestroyHandler handler = new DestroyHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnDestroy(gameObject);
             Assert.True(handler.WasDestroyCalled);
         }
@@ -89,8 +89,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnDestroy_RecordsCallCount()
         {
-            var handler = new DestroyHandler();
-            var gameObject = new MockGameObject();
+            DestroyHandler handler = new DestroyHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnDestroy(gameObject);
             Assert.Equal(1, handler.DestroyCount);
         }
@@ -101,8 +101,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnDestroy_CanBeCalledMultipleTimes()
         {
-            var handler = new DestroyHandler();
-            var gameObject = new MockGameObject();
+            DestroyHandler handler = new DestroyHandler();
+            MockGameObject gameObject = new MockGameObject();
             for (int i = 0; i < 5; i++)
             {
                 handler.OnDestroy(gameObject);

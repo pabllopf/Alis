@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnUpdate_CanBeImplemented()
         {
-            var handler = new UpdateHandler();
+            UpdateHandler handler = new UpdateHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnUpdate>(handler);
         }
@@ -72,8 +72,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnUpdate_CanBeCalled()
         {
-            var handler = new UpdateHandler();
-            var gameObject = new MockGameObject();
+            UpdateHandler handler = new UpdateHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnUpdate(gameObject);
             Assert.True(handler.WasUpdateCalled);
         }
@@ -84,8 +84,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnUpdate_CountsMultipleCalls()
         {
-            var handler = new UpdateHandler();
-            var gameObject = new MockGameObject();
+            UpdateHandler handler = new UpdateHandler();
+            MockGameObject gameObject = new MockGameObject();
             for (int i = 0; i < 10; i++)
             {
                 handler.OnUpdate(gameObject);
@@ -102,8 +102,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [InlineData(100)]
         public void OnUpdate_HandlesRepeatedCalls(int callCount)
         {
-            var handler = new UpdateHandler();
-            var gameObject = new MockGameObject();
+            UpdateHandler handler = new UpdateHandler();
+            MockGameObject gameObject = new MockGameObject();
             for (int i = 0; i < callCount; i++)
             {
                 handler.OnUpdate(gameObject);

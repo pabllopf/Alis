@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -81,7 +82,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in enumerable)
+            foreach (GameObjectRefTuple<Position> _ in enumerable)
             {
                 count++;
             }
@@ -106,7 +107,7 @@ namespace Alis.Core.Ecs.Test
             QueryEnumerable<Position> enumerable = new QueryEnumerable<Position>(query);
 
             // Act & Assert
-            foreach (var (entity, pos) in enumerable)
+            foreach ((GameObject entity, Ref<Position> pos) in enumerable)
             {
                 Assert.False(entity.IsNull);
                 Assert.True(entity.IsAlive);
@@ -131,7 +132,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in enumerable)
+            foreach (GameObjectRefTuple<Position> _ in enumerable)
             {
                 count++;
             }
@@ -158,13 +159,13 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count1 = 0;
-            foreach (var _ in enumerable)
+            foreach (GameObjectRefTuple<Position> _ in enumerable)
             {
                 count1++;
             }
 
             int count2 = 0;
-            foreach (var _ in enumerable)
+            foreach (GameObjectRefTuple<Position> _ in enumerable)
             {
                 count2++;
             }
@@ -190,9 +191,9 @@ namespace Alis.Core.Ecs.Test
             QueryEnumerable<Position> enumerable = new QueryEnumerable<Position>(query);
 
             // Act
-            foreach (var (_, pos) in enumerable)
+            foreach ((GameObject _, Ref<Position> pos) in enumerable)
             {
-                var p = pos.Value;
+                Position p = pos.Value;
                 p.X = 100;
                 p.Y = 200;
                 pos.Value = p;
@@ -219,7 +220,7 @@ namespace Alis.Core.Ecs.Test
             QueryEnumerable<Health> enumerable = new QueryEnumerable<Health>(query);
 
             // Act & Assert
-            foreach (var (_, health) in enumerable)
+            foreach ((GameObject _, Ref<Health> health) in enumerable)
             {
                 Assert.Equal(100, health.Value.Value);
             }
@@ -258,7 +259,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in enumerable)
+            foreach (GameObjectRefTuple<Position> _ in enumerable)
             {
                 count++;
             }

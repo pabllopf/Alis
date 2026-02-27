@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnCollisionEnter_CanBeImplemented()
         {
-            var handler = new CollisionEnterHandler();
+            CollisionEnterHandler handler = new CollisionEnterHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnCollisionEnter>(handler);
         }
@@ -77,9 +77,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnCollisionEnter_CanBeCalled()
         {
-            var handler = new CollisionEnterHandler();
-            var self = new MockGameObject();
-            var collision = new MockGameObject();
+            CollisionEnterHandler handler = new CollisionEnterHandler();
+            MockGameObject self = new MockGameObject();
+            MockGameObject collision = new MockGameObject();
             handler.OnCollisionEnter(self, collision);
             Assert.Equal(1, handler.CollisionCount);
         }
@@ -90,9 +90,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnCollisionEnter_RecordsCollider()
         {
-            var handler = new CollisionEnterHandler();
-            var self = new MockGameObject();
-            var collision = new MockGameObject();
+            CollisionEnterHandler handler = new CollisionEnterHandler();
+            MockGameObject self = new MockGameObject();
+            MockGameObject collision = new MockGameObject();
             handler.OnCollisionEnter(self, collision);
             Assert.Same(collision, handler.LastCollider);
         }
@@ -103,10 +103,10 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnCollisionEnter_HandlesMultipleCollisions()
         {
-            var handler = new CollisionEnterHandler();
-            var self = new MockGameObject();
-            var collision1 = new MockGameObject();
-            var collision2 = new MockGameObject();
+            CollisionEnterHandler handler = new CollisionEnterHandler();
+            MockGameObject self = new MockGameObject();
+            MockGameObject collision1 = new MockGameObject();
+            MockGameObject collision2 = new MockGameObject();
             handler.OnCollisionEnter(self, collision1);
             handler.OnCollisionEnter(self, collision2);
             Assert.Equal(2, handler.CollisionCount);

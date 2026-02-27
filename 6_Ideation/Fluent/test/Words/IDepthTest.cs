@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IDepth_CanBeImplemented()
         {
-            var builder = new DepthBuilderImpl();
+            DepthBuilderImpl builder = new DepthBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IDepth<DepthBuilder, int>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Depth_SetsValueCorrectly()
         {
-            var builder = new DepthBuilderImpl();
-            var result = builder.Depth(10);
+            DepthBuilderImpl builder = new DepthBuilderImpl();
+            DepthBuilder result = builder.Depth(10);
             Assert.Equal(10, result.DepthValue);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Depth_ReturnsBuilder()
         {
-            var builder = new DepthBuilderImpl();
-            var result = builder.Depth(5);
+            DepthBuilderImpl builder = new DepthBuilderImpl();
+            DepthBuilder result = builder.Depth(5);
             Assert.NotNull(result);
             Assert.IsType<DepthBuilder>(result);
         }
@@ -104,8 +104,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData(-10)]
         public void Depth_WithVariousValues(int depth)
         {
-            var builder = new DepthBuilderImpl();
-            var result = builder.Depth(depth);
+            DepthBuilderImpl builder = new DepthBuilderImpl();
+            DepthBuilder result = builder.Depth(depth);
             Assert.Equal(depth, result.DepthValue);
         }
     }

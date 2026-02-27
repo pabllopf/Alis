@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnStart_CanBeImplemented()
         {
-            var handler = new StartHandler();
+            StartHandler handler = new StartHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnStart>(handler);
         }
@@ -73,8 +73,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnStart_CanBeCalled()
         {
-            var handler = new StartHandler();
-            var gameObject = new MockGameObject();
+            StartHandler handler = new StartHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnStart(gameObject);
             Assert.True(handler.WasStartCalled);
         }
@@ -85,8 +85,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnStart_IncrementCallCount()
         {
-            var handler = new StartHandler();
-            var gameObject = new MockGameObject();
+            StartHandler handler = new StartHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnStart(gameObject);
             Assert.Equal(1, handler.CallCount);
             handler.OnStart(gameObject);
@@ -99,8 +99,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnStart_CanBeCalledWithGameObject()
         {
-            var handler = new StartHandler();
-            var gameObject = new MockGameObject();
+            StartHandler handler = new StartHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnStart(gameObject);
             Assert.True(handler.WasStartCalled);
         }

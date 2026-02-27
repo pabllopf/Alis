@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IIs_CanBeImplemented()
         {
-            var builder = new IsBuilder();
+            IsBuilder builder = new IsBuilder();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IIs<Builder, string>>(builder);
         }
@@ -74,8 +74,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Is_ReturnsBuilder()
         {
-            var builder = new IsBuilder();
-            var result = builder.Is<object>("value");
+            IsBuilder builder = new IsBuilder();
+            Builder result = builder.Is<object>("value");
             Assert.NotNull(result);
             Assert.IsType<Builder>(result);
         }
@@ -86,8 +86,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Is_PreservesValue()
         {
-            var builder = new IsBuilder();
-            var result = builder.Is<object>("test");
+            IsBuilder builder = new IsBuilder();
+            Builder result = builder.Is<object>("test");
             Assert.Equal("test", result.IsValue);
         }
 
@@ -97,9 +97,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Is_WithDifferentTypeParameters()
         {
-            var builder = new IsBuilder();
-            var result1 = builder.Is<int>("first");
-            var result2 = builder.Is<string>("second");
+            IsBuilder builder = new IsBuilder();
+            Builder result1 = builder.Is<int>("first");
+            Builder result2 = builder.Is<string>("second");
             Assert.Equal("second", result2.IsValue);
         }
 
@@ -109,8 +109,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Is_SupportsChaining()
         {
-            var builder = new IsBuilder();
-            var result = builder.Is<int>("value");
+            IsBuilder builder = new IsBuilder();
+            Builder result = builder.Is<int>("value");
             Assert.NotNull(result);
             Assert.IsType<Builder>(result);
         }

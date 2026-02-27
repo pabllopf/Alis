@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Reflection;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -244,7 +246,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void IRuleProvider_MultipleProviders_CanBeCollected()
         {
             // Arrange
-            var providers = new System.Collections.Generic.List<IRuleProvider>
+            List<IRuleProvider> providers = new System.Collections.Generic.List<IRuleProvider>
             {
                 new With<Position>(),
                 new With<Velocity>(),
@@ -252,7 +254,7 @@ namespace Alis.Core.Ecs.Test.Systems
             };
 
             // Act
-            var rules = new System.Collections.Generic.List<Rule>();
+            List<Rule> rules = new System.Collections.Generic.List<Rule>();
             foreach (IRuleProvider provider in providers)
             {
                 rules.Add(provider.Rule);
@@ -315,7 +317,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Act
             System.Type type = typeof(IRuleProvider);
-            var properties = type.GetProperties();
+            PropertyInfo[] properties = type.GetProperties();
 
             // Assert
             Assert.Single(properties);
@@ -333,7 +335,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             // Act
             System.Type type = typeof(IRuleProvider);
-            var property = type.GetProperty("Rule");
+            PropertyInfo property = type.GetProperty("Rule");
 
             // Assert
             Assert.NotNull(property);

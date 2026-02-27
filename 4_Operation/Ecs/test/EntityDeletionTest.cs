@@ -49,7 +49,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_CanBeDeleted()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 10 });
             Assert.True(entity.IsAlive);
 
@@ -70,7 +70,7 @@ namespace Alis.Core.Ecs.Test
         public void Query_ExcludesDeletedEntities()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position { X = 1 });
             GameObject entity2 = scene.Create(new Position { X = 2 });
             GameObject entity3 = scene.Create(new Position { X = 3 });
@@ -81,7 +81,7 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position>())
+            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
                 count++;
 
             Assert.Equal(2, count);
@@ -94,7 +94,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_CanDeleteMultipleEntities()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position { X = 1 });
             GameObject entity2 = scene.Create(new Position { X = 2 });
             GameObject entity3 = scene.Create(new Position { X = 3 });
@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position>())
+            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
                 count++;
 
             Assert.Equal(2, count);
@@ -120,7 +120,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_EntityDeletedEventFires()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position());
             int eventCount = 0;
 
@@ -140,7 +140,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_EntityDeletedEventIncludesCorrectEntity()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position());
             GameObject deletedEntity = default;
 
@@ -160,7 +160,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_CanDeleteAllEntities()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position());
             GameObject entity2 = scene.Create(new Position());
             GameObject entity3 = scene.Create(new Position());
@@ -173,7 +173,7 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position>())
+            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
                 count++;
 
             Assert.Equal(0, count);

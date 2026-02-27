@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnPressKey_CanBeImplemented()
         {
-            var handler = new PressKeyHandler();
+            PressKeyHandler handler = new PressKeyHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnPressKey>(handler);
         }
@@ -77,9 +77,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnPressKey_CanBeCalled()
         {
-            var handler = new PressKeyHandler();
-            var self = new MockGameObject();
-            var keyInfo = new KeyEventInfo(System.ConsoleKey.A, System.DateTime.UtcNow, System.TimeSpan.Zero);
+            PressKeyHandler handler = new PressKeyHandler();
+            MockGameObject self = new MockGameObject();
+            KeyEventInfo keyInfo = new KeyEventInfo(System.ConsoleKey.A, System.DateTime.UtcNow, System.TimeSpan.Zero);
             handler.OnPressKey(self, keyInfo);
             Assert.Equal(1, handler.PressCount);
         }
@@ -90,9 +90,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnPressKey_RecordsKeyEvent()
         {
-            var handler = new PressKeyHandler();
-            var self = new MockGameObject();
-            var keyInfo = new KeyEventInfo(System.ConsoleKey.Enter, System.DateTime.UtcNow, System.TimeSpan.FromMilliseconds(100));
+            PressKeyHandler handler = new PressKeyHandler();
+            MockGameObject self = new MockGameObject();
+            KeyEventInfo keyInfo = new KeyEventInfo(System.ConsoleKey.Enter, System.DateTime.UtcNow, System.TimeSpan.FromMilliseconds(100));
             handler.OnPressKey(self, keyInfo);
             Assert.Equal(System.ConsoleKey.Enter, handler.LastKeyEvent.Key);
         }
@@ -103,10 +103,10 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnPressKey_HandlesMultiplePresses()
         {
-            var handler = new PressKeyHandler();
-            var self = new MockGameObject();
-            var keyInfo1 = new KeyEventInfo(System.ConsoleKey.A, System.DateTime.UtcNow, System.TimeSpan.Zero);
-            var keyInfo2 = new KeyEventInfo(System.ConsoleKey.B, System.DateTime.UtcNow, System.TimeSpan.Zero);
+            PressKeyHandler handler = new PressKeyHandler();
+            MockGameObject self = new MockGameObject();
+            KeyEventInfo keyInfo1 = new KeyEventInfo(System.ConsoleKey.A, System.DateTime.UtcNow, System.TimeSpan.Zero);
+            KeyEventInfo keyInfo2 = new KeyEventInfo(System.ConsoleKey.B, System.DateTime.UtcNow, System.TimeSpan.Zero);
             handler.OnPressKey(self, keyInfo1);
             handler.OnPressKey(self, keyInfo2);
             Assert.Equal(2, handler.PressCount);

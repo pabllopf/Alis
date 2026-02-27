@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
@@ -141,7 +142,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             entity.Add(new Velocity { VX = 5, VY = 10 });
 
             // Assert
-            Assert.True(entity.TryGet<Position>(out var pos));
+            Assert.True(entity.TryGet<Position>(out Ref<Position> pos));
             Assert.Equal(42, pos.Value.X);
             Assert.Equal(84, pos.Value.Y);
         }
@@ -187,7 +188,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             // Act
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }
@@ -245,7 +246,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             // Verify queries work with many entities
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }
@@ -326,7 +327,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }

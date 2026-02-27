@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics;
@@ -167,7 +168,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void IBroadPhase_ShouldBeInterface()
         {
-            var type = typeof(IBroadPhase);
+            Type type = typeof(IBroadPhase);
             
             Assert.True(type.IsInterface);
         }

@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IAction2_CanBeImplementedWithTwoParameters()
         {
-            var action = new TwoParamAction();
+            TwoParamAction action = new TwoParamAction();
             Assert.NotNull(action);
             Assert.IsAssignableFrom<IAction<int, string>>(action);
         }
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Run_ExecutesWithCorrectParameters()
         {
-            var action = new TwoParamAction();
+            TwoParamAction action = new TwoParamAction();
             int intVal = 42;
             string strVal = "test";
             action.Run(ref intVal, ref strVal);
@@ -84,7 +84,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Run_HandlesParametersIndependently()
         {
-            var action = new TwoParamAction();
+            TwoParamAction action = new TwoParamAction();
             int intVal = 100;
             string strVal = "value";
             action.Run(ref intVal, ref strVal);
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IAction2_WithSameParameterTypes()
         {
-            var action = new SameTypeAction();
+            SameTypeAction action = new SameTypeAction();
             int val1 = 10;
             int val2 = 20;
             action.Run(ref val1, ref val2);

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common.Logic;
 using Alis.Core.Physic.Controllers;
@@ -157,7 +158,7 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void Controller_ShouldBeAbstractClass()
         {
-            var type = typeof(Controller);
+            Type type = typeof(Controller);
             
             Assert.True(type.IsAbstract);
         }

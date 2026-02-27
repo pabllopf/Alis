@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnDraw_CanBeImplemented()
         {
-            var handler = new DrawHandler();
+            DrawHandler handler = new DrawHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnDraw>(handler);
         }
@@ -71,8 +71,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnDraw_CanBeCalled()
         {
-            var handler = new DrawHandler();
-            var gameObject = new MockGameObject();
+            DrawHandler handler = new DrawHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnDraw(gameObject);
             Assert.Equal(1, handler.DrawCallCount);
         }
@@ -83,8 +83,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnDraw_CountsRenderingFrames()
         {
-            var handler = new DrawHandler();
-            var gameObject = new MockGameObject();
+            DrawHandler handler = new DrawHandler();
+            MockGameObject gameObject = new MockGameObject();
             for (int i = 0; i < 120; i++)
             {
                 handler.OnDraw(gameObject);

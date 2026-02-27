@@ -43,7 +43,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Index_SetAndGet_StoresAndRetrievesCorrectly()
         {
             // Arrange
-            var set = new SparseSet<int>();
+            SparseSet<int> set = new SparseSet<int>();
 
             // Act
             ref int value = ref set[5];
@@ -60,7 +60,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Index_MultipleSequentialInserts_AllAccessible()
         {
             // Arrange
-            var set = new SparseSet<string>();
+            SparseSet<string> set = new SparseSet<string>();
 
             // Act
             for (int i = 0; i < 50; i++)
@@ -83,7 +83,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Index_SparseAccess_AllIndexesAccessible()
         {
             // Arrange
-            var set = new SparseSet<long>();
+            SparseSet<long> set = new SparseSet<long>();
             int[] indices = { 5, 50, 500, 5000 };
 
             // Act
@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Index_LargeIndex_BufferExpands()
         {
             // Arrange
-            var set = new SparseSet<int>();
+            SparseSet<int> set = new SparseSet<int>();
 
             // Act
             ref int value = ref set[1000];
@@ -124,7 +124,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Index_ReferenceType_MaintainsReferences()
         {
             // Arrange
-            var set = new SparseSet<object>();
+            SparseSet<object> set = new SparseSet<object>();
             var obj1 = new { ID = 1 };
             var obj2 = new { ID = 2 };
 
@@ -146,7 +146,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void MultipleAccesses_SameIndex_DataConsistent()
         {
             // Arrange
-            var set = new SparseSet<int>();
+            SparseSet<int> set = new SparseSet<int>();
             ref int value = ref set[5];
             value = 100;
 
@@ -166,7 +166,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void MixedAccess_SparseAndSequential_ConsistentState()
         {
             // Arrange
-            var set = new SparseSet<string>();
+            SparseSet<string> set = new SparseSet<string>();
 
             // Act
             for (int i = 0; i < 5; i++)

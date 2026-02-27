@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
@@ -169,7 +170,7 @@ namespace Alis.Core.Ecs.Test
 
             // Assert
             Assert.True(entity.IsAlive);
-            Assert.NotNull(entity.TryGet<Position>(out var pos) ? pos : null);
+            Assert.NotNull(entity.TryGet<Position>(out Ref<Position> pos) ? pos : null);
         }
 
         /// <summary>
@@ -212,7 +213,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             scene.Update();
-            var hasComponent = entity.TryGet<Position>(out var pos);
+            bool hasComponent = entity.TryGet<Position>(out Ref<Position> pos);
 
             // Assert
             Assert.True(hasComponent);

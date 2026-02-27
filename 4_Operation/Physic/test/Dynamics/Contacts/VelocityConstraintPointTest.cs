@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Xunit;
@@ -175,7 +176,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void VelocityConstraintPoint_ShouldBeSealedClass()
         {
-            var type = typeof(VelocityConstraintPoint);
+            Type type = typeof(VelocityConstraintPoint);
             
             Assert.True(type.IsSealed);
         }

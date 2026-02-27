@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IPhysic_CanBeImplemented()
         {
-            var builder = new PhysicBuilderImpl();
+            PhysicBuilderImpl builder = new PhysicBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IPhysic<PhysicBuilder, string>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Physic_SetsEngineCorrectly()
         {
-            var builder = new PhysicBuilderImpl();
-            var result = builder.Physic("Box2D");
+            PhysicBuilderImpl builder = new PhysicBuilderImpl();
+            PhysicBuilder result = builder.Physic("Box2D");
             Assert.Equal("Box2D", result.PhysicsEngine);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Physic_ReturnsBuilder()
         {
-            var builder = new PhysicBuilderImpl();
-            var result = builder.Physic("Bullet");
+            PhysicBuilderImpl builder = new PhysicBuilderImpl();
+            PhysicBuilder result = builder.Physic("Bullet");
             Assert.NotNull(result);
             Assert.IsType<PhysicBuilder>(result);
         }
@@ -104,8 +104,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData("Havok")]
         public void Physic_WithVariousEngines(string engine)
         {
-            var builder = new PhysicBuilderImpl();
-            var result = builder.Physic(engine);
+            PhysicBuilderImpl builder = new PhysicBuilderImpl();
+            PhysicBuilder result = builder.Physic(engine);
             Assert.Equal(engine, result.PhysicsEngine);
         }
     }

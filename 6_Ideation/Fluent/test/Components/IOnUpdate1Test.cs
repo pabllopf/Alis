@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnUpdate1_CanBeImplemented()
         {
-            var handler = new Update1Handler();
+            Update1Handler handler = new Update1Handler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnUpdate<int>>(handler);
         }
@@ -74,8 +74,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Update_ExecutesWithCorrectParameter()
         {
-            var handler = new Update1Handler();
-            var gameObject = new MockGameObject();
+            Update1Handler handler = new Update1Handler();
+            MockGameObject gameObject = new MockGameObject();
             int value = 42;
             handler.Update(gameObject, ref value);
             Assert.Equal(42, handler.LastValue);
@@ -87,8 +87,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Update_CountsInvocations()
         {
-            var handler = new Update1Handler();
-            var gameObject = new MockGameObject();
+            Update1Handler handler = new Update1Handler();
+            MockGameObject gameObject = new MockGameObject();
             int value = 10;
             handler.Update(gameObject, ref value);
             handler.Update(gameObject, ref value);
@@ -101,8 +101,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnUpdate1_WithStringParameterType()
         {
-            var handler = new UpdateStringHandler();
-            var gameObject = new MockGameObject();
+            UpdateStringHandler handler = new UpdateStringHandler();
+            MockGameObject gameObject = new MockGameObject();
             string value = "test";
             handler.Update(gameObject, ref value);
             Assert.Equal("test", handler.LastValue);

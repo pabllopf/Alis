@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnAfterDraw_CanBeImplemented()
         {
-            var handler = new AfterDrawHandler();
+            AfterDrawHandler handler = new AfterDrawHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnAfterDraw>(handler);
         }
@@ -70,8 +70,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnAfterDraw_CanBeCalled()
         {
-            var handler = new AfterDrawHandler();
-            var gameObject = new MockGameObject();
+            AfterDrawHandler handler = new AfterDrawHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnAfterDraw(gameObject);
             Assert.Equal(1, handler.CallCount);
         }
@@ -82,8 +82,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnAfterDraw_CountsFrames()
         {
-            var handler = new AfterDrawHandler();
-            var gameObject = new MockGameObject();
+            AfterDrawHandler handler = new AfterDrawHandler();
+            MockGameObject gameObject = new MockGameObject();
             for (int i = 0; i < 120; i++)
             {
                 handler.OnAfterDraw(gameObject);

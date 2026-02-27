@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnAfterUpdate_CanBeImplemented()
         {
-            var handler = new AfterUpdateHandler();
+            AfterUpdateHandler handler = new AfterUpdateHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnAfterUpdate>(handler);
         }
@@ -70,8 +70,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnAfterUpdate_CanBeCalled()
         {
-            var handler = new AfterUpdateHandler();
-            var gameObject = new MockGameObject();
+            AfterUpdateHandler handler = new AfterUpdateHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnAfterUpdate(gameObject);
             Assert.Equal(1, handler.CallCount);
         }
@@ -82,8 +82,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnAfterUpdate_CountsCalls()
         {
-            var handler = new AfterUpdateHandler();
-            var gameObject = new MockGameObject();
+            AfterUpdateHandler handler = new AfterUpdateHandler();
+            MockGameObject gameObject = new MockGameObject();
             for (int i = 0; i < 10; i++)
             {
                 handler.OnAfterUpdate(gameObject);

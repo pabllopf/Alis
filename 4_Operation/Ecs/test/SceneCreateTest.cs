@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -277,7 +278,7 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create(testPos);
 
             // Assert
-            Assert.True(entity.TryGet<Position>(out var pos));
+            Assert.True(entity.TryGet<Position>(out Ref<Position> pos));
             Assert.Equal(42, pos.Value.X);
             Assert.Equal(84, pos.Value.Y);
         }
@@ -299,8 +300,8 @@ namespace Alis.Core.Ecs.Test
             GameObject entity2 = scene.Create(new Position { X = 2, Y = 2 });
 
             // Assert
-            Assert.True(entity1.TryGet<Position>(out var pos1));
-            Assert.True(entity2.TryGet<Position>(out var pos2));
+            Assert.True(entity1.TryGet<Position>(out Ref<Position> pos1));
+            Assert.True(entity2.TryGet<Position>(out Ref<Position> pos2));
             Assert.Equal(1, pos1.Value.X);
             Assert.Equal(2, pos2.Value.X);
         }
@@ -387,7 +388,7 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>>();
 
             int count = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 count++;
             }

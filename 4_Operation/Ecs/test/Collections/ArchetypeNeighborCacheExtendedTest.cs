@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Constructor_DefaultCreation_SuccessfulInitialization()
         {
             // Arrange & Act
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
             // Assert
             Assert.NotNull(cache);
@@ -59,7 +59,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Traverse_NonExistentKey_ReturnsMaxIndex()
         {
             // Arrange
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
             // Act
             int result = cache.Traverse(42);
@@ -75,7 +75,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void SetAndLookup_StoreAndRetrieveValue()
         {
             // Arrange
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             ushort key = 10;
             ushort value = 42;
 
@@ -94,7 +94,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void SetAndLookup_MultipleKeys_Independent()
         {
             // Arrange
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
             // Act
             cache.Set(1, 100);
@@ -121,7 +121,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void SetAndLookup_MaxCapacity_WorksCorrectly()
         {
             // Arrange
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
             // Act - The cache has limited capacity (4 entries based on InlineArray8 size)
             cache.Set(1, 10);
@@ -142,7 +142,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Traverse_CacheHitRatio_IsReasonable()
         {
             // Arrange
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             ushort testKey = 5;
             ushort testValue = 123;
             cache.Set(testKey, testValue);
@@ -161,7 +161,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void SetAndLookup_BoundaryValues_WorksCorrectly()
         {
             // Arrange
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
             // Act
             cache.Set(ushort.MinValue, 1);
@@ -182,7 +182,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void SetAndLookup_CircularOverwrite_UpdatesCorrectly()
         {
             // Arrange
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
             // Act - Fill capacity and overwrite
             for (int i = 0; i < 8; i++)

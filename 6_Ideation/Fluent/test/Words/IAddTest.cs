@@ -20,8 +20,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Add_ReturnsBuilderWithCorrectValue()
         {
-            var add = new DummyAdd();
-            var builder = add.Add(123);
+            DummyAdd add = new DummyAdd();
+            DummyBuilder builder = add.Add(123);
             Assert.NotNull(builder);
             Assert.Equal(123, builder.Value);
         }

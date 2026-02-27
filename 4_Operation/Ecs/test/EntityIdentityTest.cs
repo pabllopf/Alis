@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_EqualityWorks()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity1 = scene.Create();
             GameObject entity2 = entity1; // Same reference
 
@@ -78,7 +78,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_DifferentEntitiesAreNotEqual()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity1 = scene.Create();
             GameObject entity2 = scene.Create();
 
@@ -94,8 +94,8 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_EntitiesFromDifferentScenesAreNotEqual()
         {
             // Arrange
-            using var scene1 = new Scene();
-            using var scene2 = new Scene();
+            using Scene scene1 = new Scene();
+            using Scene scene2 = new Scene();
             GameObject entity1 = scene1.Create();
             GameObject entity2 = scene2.Create();
 
@@ -110,7 +110,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_GetHashCodeWorks()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity1 = scene.Create();
             GameObject entity2 = entity1;
 
@@ -129,7 +129,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_EntityIdsAreSequential()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
 
             // Act
             GameObject entity1 = scene.Create();
@@ -148,7 +148,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_IsNullCheck()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject nullEntity = default;
             GameObject validEntity = scene.Create();
 
@@ -164,7 +164,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_MaintainsIdentityAfterComponentChanges()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create();
             int originalId = entity.EntityID;
 

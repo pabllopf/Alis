@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IName_CanBeImplemented()
         {
-            var builder = new NameBuilderImpl();
+            NameBuilderImpl builder = new NameBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IName<NamedBuilder, string>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Name_SetsNameCorrectly()
         {
-            var builder = new NameBuilderImpl();
-            var result = builder.Name("GameObject");
+            NameBuilderImpl builder = new NameBuilderImpl();
+            NamedBuilder result = builder.Name("GameObject");
             Assert.Equal("GameObject", result.Name);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Name_ReturnsBuilder()
         {
-            var builder = new NameBuilderImpl();
-            var result = builder.Name("TestName");
+            NameBuilderImpl builder = new NameBuilderImpl();
+            NamedBuilder result = builder.Name("TestName");
             Assert.NotNull(result);
             Assert.IsType<NamedBuilder>(result);
         }
@@ -100,8 +100,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Name_WithEmptyString()
         {
-            var builder = new NameBuilderImpl();
-            var result = builder.Name(string.Empty);
+            NameBuilderImpl builder = new NameBuilderImpl();
+            NamedBuilder result = builder.Name(string.Empty);
             Assert.Equal(string.Empty, result.Name);
         }
 
@@ -114,8 +114,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData("Enemy#1")]
         public void Name_WithSpecialCharacters(string name)
         {
-            var builder = new NameBuilderImpl();
-            var result = builder.Name(name);
+            NameBuilderImpl builder = new NameBuilderImpl();
+            NamedBuilder result = builder.Name(name);
             Assert.Equal(name, result.Name);
         }
     }

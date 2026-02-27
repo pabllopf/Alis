@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void ISpeed_CanBeImplemented()
         {
-            var builder = new SpeedBuilderImpl();
+            SpeedBuilderImpl builder = new SpeedBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<ISpeed<SpeedBuilder, float>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Speed_SetsValueCorrectly()
         {
-            var builder = new SpeedBuilderImpl();
-            var result = builder.Speed(5.5f);
+            SpeedBuilderImpl builder = new SpeedBuilderImpl();
+            SpeedBuilder result = builder.Speed(5.5f);
             Assert.Equal(5.5f, result.SpeedValue);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Speed_ReturnsBuilder()
         {
-            var builder = new SpeedBuilderImpl();
-            var result = builder.Speed(10f);
+            SpeedBuilderImpl builder = new SpeedBuilderImpl();
+            SpeedBuilder result = builder.Speed(10f);
             Assert.NotNull(result);
             Assert.IsType<SpeedBuilder>(result);
         }
@@ -104,8 +104,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData(30f)]
         public void Speed_WithRealisticValues(float speed)
         {
-            var builder = new SpeedBuilderImpl();
-            var result = builder.Speed(speed);
+            SpeedBuilderImpl builder = new SpeedBuilderImpl();
+            SpeedBuilder result = builder.Speed(speed);
             Assert.Equal(speed, result.SpeedValue);
         }
     }

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
@@ -262,7 +263,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         [Fact]
         public void Joint_ShouldBeAbstractClass()
         {
-            var type = typeof(Joint);
+            Type type = typeof(Joint);
             
             Assert.True(type.IsAbstract);
         }

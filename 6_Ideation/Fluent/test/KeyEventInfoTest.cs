@@ -15,10 +15,10 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void Constructor_AssignsFieldsCorrectly()
         {
-            var key = ConsoleKey.A;
-            var timestamp = DateTime.UtcNow;
-            var duration = TimeSpan.FromSeconds(2);
-            var info = new Alis.Core.Aspect.Fluent.KeyEventInfo(key, timestamp, duration);
+            ConsoleKey key = ConsoleKey.A;
+            DateTime timestamp = DateTime.UtcNow;
+            TimeSpan duration = TimeSpan.FromSeconds(2);
+            KeyEventInfo info = new Alis.Core.Aspect.Fluent.KeyEventInfo(key, timestamp, duration);
             Assert.Equal(key, info.Key);
             Assert.Equal(timestamp, info.Timestamp);
             Assert.Equal(duration, info.HoldDuration);
@@ -30,7 +30,7 @@ namespace Alis.Core.Aspect.Fluent.Test
         [Fact]
         public void Constructor_AllowsExtremeValues()
         {
-            var info = new Alis.Core.Aspect.Fluent.KeyEventInfo(ConsoleKey.Z, DateTime.MinValue, TimeSpan.Zero);
+            KeyEventInfo info = new Alis.Core.Aspect.Fluent.KeyEventInfo(ConsoleKey.Z, DateTime.MinValue, TimeSpan.Zero);
             Assert.Equal(ConsoleKey.Z, info.Key);
             Assert.Equal(DateTime.MinValue, info.Timestamp);
             Assert.Equal(TimeSpan.Zero, info.HoldDuration);

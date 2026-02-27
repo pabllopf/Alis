@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Physic.Common.PolygonManipulation;
 using Xunit;
 
@@ -76,7 +77,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         [Fact]
         public void PolyClipType_ShouldHaveThreeValues()
         {
-            var values = System.Enum.GetValues(typeof(PolyClipType));
+            Array values = System.Enum.GetValues(typeof(PolyClipType));
             
             Assert.Equal(3, values.Length);
         }

@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IHas_CanBeImplemented()
         {
-            var builder = new HasBuilder();
+            HasBuilder builder = new HasBuilder();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IHas<Builder, string>>(builder);
         }
@@ -74,8 +74,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Has_ReturnsBuilder()
         {
-            var builder = new HasBuilder();
-            var result = builder.Has("property");
+            HasBuilder builder = new HasBuilder();
+            Builder result = builder.Has("property");
             Assert.NotNull(result);
             Assert.IsType<Builder>(result);
         }
@@ -86,8 +86,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Has_SetsPropertyCorrectly()
         {
-            var builder = new HasBuilder();
-            var result = builder.Has("test_prop");
+            HasBuilder builder = new HasBuilder();
+            Builder result = builder.Has("test_prop");
             Assert.Equal("test_prop", result.HasProperty);
         }
 
@@ -97,9 +97,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IHas_WithObjectArgument()
         {
-            var builder = new ObjectHasBuilder();
-            var obj = new object();
-            var result = builder.Has(obj);
+            ObjectHasBuilder builder = new ObjectHasBuilder();
+            object obj = new object();
+            ObjectBuilder result = builder.Has(obj);
             Assert.Same(obj, result.HasObject);
         }
 

@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IWith_CanBeImplemented()
         {
-            var builder = new WithBuilder();
+            WithBuilder builder = new WithBuilder();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IWith<Builder, string>>(builder);
         }
@@ -74,8 +74,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void With_ReturnsBuilder()
         {
-            var builder = new WithBuilder();
-            var result = builder.With("value");
+            WithBuilder builder = new WithBuilder();
+            Builder result = builder.With("value");
             Assert.NotNull(result);
             Assert.IsType<Builder>(result);
         }
@@ -86,8 +86,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void With_SetsValueCorrectly()
         {
-            var builder = new WithBuilder();
-            var result = builder.With("test");
+            WithBuilder builder = new WithBuilder();
+            Builder result = builder.With("test");
             Assert.Equal("test", result.WithValue);
         }
 
@@ -97,8 +97,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void With_SupportsMethodChaining()
         {
-            var withBuilder = new WithBuilder();
-            var result1 = withBuilder.With("first");
+            WithBuilder withBuilder = new WithBuilder();
+            Builder result1 = withBuilder.With("first");
             Assert.Equal("first", result1.WithValue);
         }
 
@@ -108,8 +108,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IWith_WithIntegerArgumentType()
         {
-            var builder = new IntWithBuilder();
-            var result = builder.With(100);
+            IntWithBuilder builder = new IntWithBuilder();
+            IntBuilder result = builder.With(100);
             Assert.Equal(100, result.Value);
         }
 

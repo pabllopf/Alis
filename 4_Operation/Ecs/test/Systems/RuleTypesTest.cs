@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Alis.Core.Ecs.Systems;
 using Xunit;
 
@@ -189,7 +191,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void RuleTypes_CanBeUsedInCollections()
         {
             // Arrange
-            var list = new System.Collections.Generic.List<RuleTypes>
+            List<RuleTypes> list = new System.Collections.Generic.List<RuleTypes>
             {
                 RuleTypes.Have,
                 RuleTypes.DoesNotHave
@@ -211,7 +213,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void RuleTypes_CanBeUsedAsDictionaryKey()
         {
             // Arrange
-            var dict = new System.Collections.Generic.Dictionary<RuleTypes, string>
+            Dictionary<RuleTypes, string> dict = new System.Collections.Generic.Dictionary<RuleTypes, string>
             {
                 { RuleTypes.Have, "Must have component" },
                 { RuleTypes.DoesNotHave, "Must not have component" }
@@ -233,7 +235,7 @@ namespace Alis.Core.Ecs.Test.Systems
         public void RuleTypes_HasExactlyTwoValues()
         {
             // Act
-            var values = System.Enum.GetValues(typeof(RuleTypes));
+            Array values = System.Enum.GetValues(typeof(RuleTypes));
 
             // Assert
             Assert.Equal(2, values.Length);

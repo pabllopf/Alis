@@ -26,6 +26,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Ecs.Collections;
 using Xunit;
 
@@ -44,7 +45,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Indexer_SetAndGet_StoresAndRetrieves()
         {
             // Arrange
-            var set = new ShortSparseSet<int>();
+            ShortSparseSet<int> set = new ShortSparseSet<int>();
 
             // Act
             set[(ushort)5] = 50;
@@ -62,7 +63,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Indexer_MultipleElements_AllStored()
         {
             // Arrange
-            var set = new ShortSparseSet<int>();
+            ShortSparseSet<int> set = new ShortSparseSet<int>();
 
             // Act
             for (int i = 0; i < 20; i++)
@@ -84,7 +85,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Has_StoredAndNonStored_CorrectResults()
         {
             // Arrange
-            var set = new ShortSparseSet<int>();
+            ShortSparseSet<int> set = new ShortSparseSet<int>();
             set[(ushort)10] = 100;
             set[(ushort)20] = 200;
 
@@ -101,7 +102,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Remove_ExistingElement_ElementRemoved()
         {
             // Arrange
-            var set = new ShortSparseSet<int>();
+            ShortSparseSet<int> set = new ShortSparseSet<int>();
             set[(ushort)5] = 50;
             set[(ushort)10] = 100;
 
@@ -121,7 +122,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Clear_AfterAdds_SetEmpty()
         {
             // Arrange
-            var set = new ShortSparseSet<int>();
+            ShortSparseSet<int> set = new ShortSparseSet<int>();
             for (int i = 0; i < 10; i++)
             {
                 set[(ushort)i] = i;
@@ -141,7 +142,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Indexer_SparseIndices_AllAccessible()
         {
             // Arrange
-            var set = new ShortSparseSet<int>();
+            ShortSparseSet<int> set = new ShortSparseSet<int>();
 
             // Act
             set[(ushort)100] = 1000;
@@ -161,7 +162,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Count_AfterOperations_Accurate()
         {
             // Arrange
-            var set = new ShortSparseSet<int>();
+            ShortSparseSet<int> set = new ShortSparseSet<int>();
 
             // Act & Assert
             Assert.Equal(0, set.Count);
@@ -183,7 +184,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void AsSpan_AfterAdds_ReturnsValidSpan()
         {
             // Arrange
-            var set = new ShortSparseSet<int>();
+            ShortSparseSet<int> set = new ShortSparseSet<int>();
             int[] values = { 10, 20, 30, 40, 50 };
 
             // Act
@@ -193,7 +194,7 @@ namespace Alis.Core.Ecs.Test.Collections
             }
 
             // Assert
-            var span = set.AsSpan();
+            Span<int> span = set.AsSpan();
             Assert.Equal(5, span.Length);
         }
 
@@ -204,7 +205,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Indexer_UpdateExisting_ValueReplaced()
         {
             // Arrange
-            var set = new ShortSparseSet<int>();
+            ShortSparseSet<int> set = new ShortSparseSet<int>();
             set[(ushort)5] = 50;
 
             // Act
@@ -222,7 +223,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Indexer_StringValues_StoresAndRetrieves()
         {
             // Arrange
-            var set = new ShortSparseSet<string>();
+            ShortSparseSet<string> set = new ShortSparseSet<string>();
 
             // Act
             set[(ushort)0] = "apple";

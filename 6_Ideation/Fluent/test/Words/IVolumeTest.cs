@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IVolume_CanBeImplemented()
         {
-            var builder = new VolumeBuilderImpl();
+            VolumeBuilderImpl builder = new VolumeBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IVolume<VolumeBuilder, float>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Volume_SetsLevelCorrectly()
         {
-            var builder = new VolumeBuilderImpl();
-            var result = builder.Volume(0.5f);
+            VolumeBuilderImpl builder = new VolumeBuilderImpl();
+            VolumeBuilder result = builder.Volume(0.5f);
             Assert.Equal(0.5f, result.VolumeLevel);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Volume_ReturnsBuilder()
         {
-            var builder = new VolumeBuilderImpl();
-            var result = builder.Volume(0.8f);
+            VolumeBuilderImpl builder = new VolumeBuilderImpl();
+            VolumeBuilder result = builder.Volume(0.8f);
             Assert.NotNull(result);
             Assert.IsType<VolumeBuilder>(result);
         }
@@ -105,8 +105,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData(1f)]
         public void Volume_WithValidRange(float level)
         {
-            var builder = new VolumeBuilderImpl();
-            var result = builder.Volume(level);
+            VolumeBuilderImpl builder = new VolumeBuilderImpl();
+            VolumeBuilder result = builder.Volume(level);
             Assert.Equal(level, result.VolumeLevel);
         }
 
@@ -116,10 +116,10 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Volume_WithExtremeValues()
         {
-            var builder = new VolumeBuilderImpl();
-            var resultMin = builder.Volume(0f);
+            VolumeBuilderImpl builder = new VolumeBuilderImpl();
+            VolumeBuilder resultMin = builder.Volume(0f);
             Assert.Equal(0f, resultMin.VolumeLevel);
-            var resultMax = builder.Volume(1f);
+            VolumeBuilder resultMax = builder.Volume(1f);
             Assert.Equal(1f, resultMax.VolumeLevel);
         }
     }

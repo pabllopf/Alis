@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_CanCreateEmptyEntity()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
 
             // Act
             GameObject entity = scene.Create();
@@ -66,8 +66,8 @@ namespace Alis.Core.Ecs.Test
         public void Scene_CanCreateEntityWithSingleComponent()
         {
             // Arrange
-            using var scene = new Scene();
-            var position = new Position { X = 10, Y = 20 };
+            using Scene scene = new Scene();
+            Position position = new Position { X = 10, Y = 20 };
 
             // Act
             GameObject entity = scene.Create(position);
@@ -87,9 +87,9 @@ namespace Alis.Core.Ecs.Test
         public void Scene_CanCreateEntityWithTwoComponents()
         {
             // Arrange
-            using var scene = new Scene();
-            var position = new Position { X = 5, Y = 15 };
-            var health = new Health { Value = 100 };
+            using Scene scene = new Scene();
+            Position position = new Position { X = 5, Y = 15 };
+            Health health = new Health { Value = 100 };
 
             // Act
             GameObject entity = scene.Create(position, health);
@@ -108,7 +108,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_CanCreateMultipleEntitiesWithSameComponents()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
 
             // Act
             GameObject entity1 = scene.Create(new Position { X = 1, Y = 2 });
@@ -131,7 +131,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_EntityIdsAreUnique()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
 
             // Act
             GameObject entity1 = scene.Create();
@@ -151,8 +151,8 @@ namespace Alis.Core.Ecs.Test
         public void Scene_EachSceneHasUniqueId()
         {
             // Arrange & Act
-            using var scene1 = new Scene();
-            using var scene2 = new Scene();
+            using Scene scene1 = new Scene();
+            using Scene scene2 = new Scene();
 
             // Assert
             Assert.NotEqual(scene1.Id, scene2.Id);
@@ -165,7 +165,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_CanCreateEntityWithThreeComponents()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
 
             // Act
             GameObject entity = scene.Create(
@@ -186,8 +186,8 @@ namespace Alis.Core.Ecs.Test
         public void Scene_CreatedEntityBelongsToCorrectScene()
         {
             // Arrange
-            using var scene1 = new Scene();
-            using var scene2 = new Scene();
+            using Scene scene1 = new Scene();
+            using Scene scene2 = new Scene();
 
             // Act
             GameObject entity1 = scene1.Create(new Position());

@@ -67,7 +67,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnHoldKey_CanBeImplemented()
         {
-            var handler = new HoldKeyHandler();
+            HoldKeyHandler handler = new HoldKeyHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnHoldKey>(handler);
         }
@@ -78,9 +78,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnHoldKey_CanBeCalled()
         {
-            var handler = new HoldKeyHandler();
-            var self = new MockGameObject();
-            var keyInfo = new KeyEventInfo(System.ConsoleKey.A, System.DateTime.UtcNow, System.TimeSpan.FromSeconds(1));
+            HoldKeyHandler handler = new HoldKeyHandler();
+            MockGameObject self = new MockGameObject();
+            KeyEventInfo keyInfo = new KeyEventInfo(System.ConsoleKey.A, System.DateTime.UtcNow, System.TimeSpan.FromSeconds(1));
             handler.OnHoldKey(self, keyInfo);
             Assert.Equal(1, handler.HoldCount);
         }
@@ -91,10 +91,10 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnHoldKey_AccumulatesHoldTime()
         {
-            var handler = new HoldKeyHandler();
-            var self = new MockGameObject();
-            var keyInfo1 = new KeyEventInfo(System.ConsoleKey.D, System.DateTime.UtcNow, System.TimeSpan.FromSeconds(2));
-            var keyInfo2 = new KeyEventInfo(System.ConsoleKey.D, System.DateTime.UtcNow, System.TimeSpan.FromSeconds(1));
+            HoldKeyHandler handler = new HoldKeyHandler();
+            MockGameObject self = new MockGameObject();
+            KeyEventInfo keyInfo1 = new KeyEventInfo(System.ConsoleKey.D, System.DateTime.UtcNow, System.TimeSpan.FromSeconds(2));
+            KeyEventInfo keyInfo2 = new KeyEventInfo(System.ConsoleKey.D, System.DateTime.UtcNow, System.TimeSpan.FromSeconds(1));
             handler.OnHoldKey(self, keyInfo1);
             handler.OnHoldKey(self, keyInfo2);
             Assert.Equal(2, handler.HoldCount);

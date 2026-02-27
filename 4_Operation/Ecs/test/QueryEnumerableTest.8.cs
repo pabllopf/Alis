@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -67,7 +68,7 @@ namespace Alis.Core.Ecs.Test
                 new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(query);
 
             // Act & Assert
-            foreach (var (pos, vel, health, trans, test, another, damage, armor) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
+            foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> test, Ref<AnotherComponent> another, Ref<Damage> damage, Ref<Armor> armor) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
             {
               
                 Assert.Equal(10, pos.Value.X);
@@ -116,7 +117,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
+            foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
             {
                 count++;
             }
@@ -150,21 +151,21 @@ namespace Alis.Core.Ecs.Test
                 new QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(query);
 
             // Act
-            foreach (var (pos, vel, health, trans, test, another, damage, armor) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
+            foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> test, Ref<AnotherComponent> another, Ref<Damage> damage, Ref<Armor> armor) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
             {
-                var p = pos.Value;
+                Position p = pos.Value;
                 p.X = 100;
                 pos.Value = p;
 
-                var h = health.Value;
+                Health h = health.Value;
                 h.Value = 500;
                 health.Value = h;
 
-                var d = damage.Value;
+                Damage d = damage.Value;
                 d.Amount = 75;
                 damage.Value = d;
 
-                var a = armor.Value;
+                Armor a = armor.Value;
                 a.Defense = 100;
                 armor.Value = a;
             }
@@ -205,7 +206,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
+            foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
             {
                 count++;
             }
@@ -240,7 +241,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             bool found = false;
-            foreach (var _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
+            foreach (RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> _ in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>())
             {
                 found = true;
             }

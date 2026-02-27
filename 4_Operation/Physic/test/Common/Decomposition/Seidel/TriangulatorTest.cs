@@ -207,7 +207,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             
             Triangulator triangulator = new Triangulator(polyLine, 0.001f);
             
-            var triangles = triangulator.Triangles;
+            List<List<Point>> triangles = triangulator.Triangles;
             
             Assert.NotNull(triangles);
         }
@@ -227,7 +227,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             
             Triangulator triangulator = new Triangulator(polyLine, 0.001f);
             
-            var trapezoids = triangulator.Trapezoids;
+            List<Trapezoid> trapezoids = triangulator.Trapezoids;
             
             Assert.NotNull(trapezoids);
         }

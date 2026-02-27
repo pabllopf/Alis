@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Common.Logic;
@@ -223,7 +224,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         [Fact]
         public void FilterData_ShouldBeAbstractClass()
         {
-            var type = typeof(FilterData);
+            Type type = typeof(FilterData);
             
             Assert.True(type.IsAbstract);
         }

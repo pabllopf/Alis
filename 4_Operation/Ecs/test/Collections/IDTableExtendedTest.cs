@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Constructor_Default_CreatedSuccessfully()
         {
             // Arrange & Act
-            var table = new IdTable<int>();
+            IdTable<int> table = new IdTable<int>();
 
             // Assert
             Assert.NotNull(table);
@@ -57,7 +57,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void CreateAndTake_StoreAndRetrieve_Works()
         {
             // Arrange
-            var table = new IdTable<int>();
+            IdTable<int> table = new IdTable<int>();
 
             // Act
             ref int slot = ref table.Create(out int index);
@@ -75,10 +75,10 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Create_MultipleSequential_AllAccessible()
         {
             // Arrange
-            var table = new IdTable<string>();
+            IdTable<string> table = new IdTable<string>();
 
             // Act
-            var indices = new int[100];
+            int[] indices = new int[100];
             for (int i = 0; i < 100; i++)
             {
                 ref string str = ref table.Create(out indices[i]);
@@ -100,8 +100,8 @@ namespace Alis.Core.Ecs.Test.Collections
         public void CreateAndTake_Multiple_AllStoredCorrectly()
         {
             // Arrange
-            var table = new IdTable<long>();
-            var indices = new int[4];
+            IdTable<long> table = new IdTable<long>();
+            int[] indices = new int[4];
             long[] values = { 10, 100, 500, 1000 };
 
             // Act
@@ -126,8 +126,8 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Create_ManyElements_AllAccessible()
         {
             // Arrange
-            var table = new IdTable<int>();
-            var indices = new int[1000];
+            IdTable<int> table = new IdTable<int>();
+            int[] indices = new int[1000];
 
             // Act
             for (int i = 0; i < 1000; i++)
@@ -151,7 +151,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Create_ReferenceType_MaintainReferences()
         {
             // Arrange
-            var table = new IdTable<object>();
+            IdTable<object> table = new IdTable<object>();
             var obj1 = new { ID = 1 };
             var obj2 = new { ID = 2 };
 
@@ -173,9 +173,9 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Create_DifferentValueTypes_WorksCorrectly()
         {
             // Arrange
-            var intTable = new IdTable<int>();
-            var stringTable = new IdTable<string>();
-            var doubleTable = new IdTable<double>();
+            IdTable<int> intTable = new IdTable<int>();
+            IdTable<string> stringTable = new IdTable<string>();
+            IdTable<double> doubleTable = new IdTable<double>();
 
             // Act
             ref int intVal = ref intTable.Create(out int intIdx);

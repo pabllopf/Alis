@@ -65,7 +65,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnReleaseKey_CanBeImplemented()
         {
-            var handler = new ReleaseKeyHandler();
+            ReleaseKeyHandler handler = new ReleaseKeyHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnReleaseKey>(handler);
         }
@@ -76,9 +76,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnReleaseKey_CanBeCalled()
         {
-            var handler = new ReleaseKeyHandler();
-            var self = new MockGameObject();
-            var keyInfo = new KeyEventInfo(System.ConsoleKey.Spacebar, System.DateTime.UtcNow, System.TimeSpan.FromMilliseconds(50));
+            ReleaseKeyHandler handler = new ReleaseKeyHandler();
+            MockGameObject self = new MockGameObject();
+            KeyEventInfo keyInfo = new KeyEventInfo(System.ConsoleKey.Spacebar, System.DateTime.UtcNow, System.TimeSpan.FromMilliseconds(50));
             handler.OnReleaseKey(self, keyInfo);
             Assert.Equal(1, handler.ReleaseCount);
         }
@@ -89,9 +89,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnReleaseKey_CountsReleases()
         {
-            var handler = new ReleaseKeyHandler();
-            var self = new MockGameObject();
-            var keyInfo = new KeyEventInfo(System.ConsoleKey.W, System.DateTime.UtcNow, System.TimeSpan.FromMilliseconds(200));
+            ReleaseKeyHandler handler = new ReleaseKeyHandler();
+            MockGameObject self = new MockGameObject();
+            KeyEventInfo keyInfo = new KeyEventInfo(System.ConsoleKey.W, System.DateTime.UtcNow, System.TimeSpan.FromMilliseconds(200));
             handler.OnReleaseKey(self, keyInfo);
             handler.OnReleaseKey(self, keyInfo);
             Assert.Equal(2, handler.ReleaseCount);

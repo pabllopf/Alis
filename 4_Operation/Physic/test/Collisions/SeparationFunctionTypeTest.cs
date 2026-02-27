@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Physic.Collisions;
 using Xunit;
 
@@ -76,7 +77,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void SeparationFunctionType_ShouldHaveThreeValues()
         {
-            var values = System.Enum.GetValues(typeof(SeparationFunctionType));
+            Array values = System.Enum.GetValues(typeof(SeparationFunctionType));
             
             Assert.Equal(3, values.Length);
         }

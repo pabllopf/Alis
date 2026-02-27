@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Constructor_WithCapacity_ChunkCreated()
         {
             // Arrange & Act
-            var chunk = new Chunk<int>(100);
+            Chunk<int> chunk = new Chunk<int>(100);
 
             // Assert
             Assert.NotNull(chunk);
@@ -58,7 +58,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Indexer_SetAndGet_WorksCorrectly()
         {
             // Arrange
-            var chunk = new Chunk<int>(50);
+            Chunk<int> chunk = new Chunk<int>(50);
 
             // Act
             chunk[0] = 42;
@@ -77,10 +77,10 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Buffer_Property_ReturnsValidSpan()
         {
             // Arrange
-            var chunk = new Chunk<int>(100);
+            Chunk<int> chunk = new Chunk<int>(100);
 
             // Act
-            var buffer = chunk.Buffer;
+            int[] buffer = chunk.Buffer;
 
             // Assert
             Assert.NotNull(buffer);
@@ -95,7 +95,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Chunk_WithDoubleType_StoresAndRetrievesValues()
         {
             // Arrange
-            var chunk = new Chunk<double>(50);
+            Chunk<double> chunk = new Chunk<double>(50);
 
             // Act
             chunk[0] = 3.14;
@@ -114,7 +114,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Chunk_WithStringType_StoresAndRetrievesValues()
         {
             // Arrange
-            var chunk = new Chunk<string>(50);
+            Chunk<string> chunk = new Chunk<string>(50);
 
             // Act
             chunk[0] = "Hello";
@@ -133,8 +133,8 @@ namespace Alis.Core.Ecs.Test.Collections
         public void MultipleChunks_Independent_SeparateData()
         {
             // Arrange
-            var chunk1 = new Chunk<int>(50);
-            var chunk2 = new Chunk<int>(100);
+            Chunk<int> chunk1 = new Chunk<int>(50);
+            Chunk<int> chunk2 = new Chunk<int>(100);
 
             // Act
             chunk1[0] = 25;
@@ -154,7 +154,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Constructor_DefaultChunk_ValidState()
         {
             // Arrange & Act
-            var chunk = new Chunk<int>(10);
+            Chunk<int> chunk = new Chunk<int>(10);
 
             // Assert
             Assert.NotNull(chunk.Buffer);

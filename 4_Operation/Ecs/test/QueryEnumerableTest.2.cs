@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -55,7 +56,7 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
             // Act
-            var enumerable = query.Enumerate<Position, Velocity>();
+            QueryEnumerator<Position, Velocity>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity>();
 
             // Assert
             Assert.NotEqual(default, enumerable);
@@ -78,7 +79,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity>())
+            foreach (RefTuple<Position, Velocity> _ in query.Enumerate<Position, Velocity>())
             {
                 count++;
             }
@@ -102,7 +103,7 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
             // Act & Assert
-            foreach (var (pos, vel) in query.Enumerate<Position, Velocity>())
+            foreach ((Ref<Position> pos, Ref<Velocity> vel) in query.Enumerate<Position, Velocity>())
             {
                 Assert.Equal(10, pos.Value.X);
                 Assert.Equal(20, pos.Value.Y);
@@ -128,7 +129,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity>())
+            foreach (RefTuple<Position, Velocity> _ in query.Enumerate<Position, Velocity>())
             {
                 count++;
             }
@@ -152,13 +153,13 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
             // Act
-            foreach (var (pos, vel) in query.Enumerate<Position, Velocity>())
+            foreach ((Ref<Position> pos, Ref<Velocity> vel) in query.Enumerate<Position, Velocity>())
             {
-                var p = pos.Value;
+                Position p = pos.Value;
                 p.X = 100;
                 pos.Value = p;
 
-                var v = vel.Value;
+                Velocity v = vel.Value;
                 v.VX = 50;
                 vel.Value = v;
             }
@@ -187,7 +188,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity>())
+            foreach (RefTuple<Position, Velocity> _ in query.Enumerate<Position, Velocity>())
             {
                 count++;
             }
@@ -211,7 +212,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity>())
+            foreach (RefTuple<Position, Velocity> _ in query.Enumerate<Position, Velocity>())
             {
                 count++;
             }
@@ -235,7 +236,7 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>, With<Velocity>>();
 
             // Act & Assert
-            foreach (var (entity, pos, vel) in query.EnumerateWithEntities<Position, Velocity>())
+            foreach ((GameObject entity, Ref<Position> pos, Ref<Velocity> vel) in query.EnumerateWithEntities<Position, Velocity>())
             {
                 Assert.False(entity.IsNull);
                 Assert.True(entity.IsAlive);

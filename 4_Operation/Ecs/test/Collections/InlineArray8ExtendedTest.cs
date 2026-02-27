@@ -26,6 +26,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Ecs.Collections;
 using Xunit;
 
@@ -44,7 +45,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Get_SetAndGet_StoresAndRetrievesCorrectly()
         {
             // Arrange
-            var array = new InlineArray8<int>();
+            InlineArray8<int> array = new InlineArray8<int>();
 
             // Act
             InlineArray8<int>.Get(ref array, 0) = 10;
@@ -62,7 +63,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Get_AllElements_CanBeAccessed()
         {
             // Arrange
-            var array = new InlineArray8<int>();
+            InlineArray8<int> array = new InlineArray8<int>();
 
             // Act
             for (int i = 0; i < 8; i++)
@@ -84,9 +85,9 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Get_ReferenceType_StoresReferences()
         {
             // Arrange
-            var array = new InlineArray8<string>();
-            var str1 = "Hello";
-            var str2 = "World";
+            InlineArray8<string> array = new InlineArray8<string>();
+            string str1 = "Hello";
+            string str2 = "World";
 
             // Act
             InlineArray8<string>.Get(ref array, 0) = str1;
@@ -104,7 +105,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Get_Overwrite_NewValueReplacesPrevious()
         {
             // Arrange
-            var array = new InlineArray8<int>();
+            InlineArray8<int> array = new InlineArray8<int>();
             InlineArray8<int>.Get(ref array, 3) = 30;
 
             // Act
@@ -121,7 +122,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void FixedSize_AlwaysEightElements_EnforcedByType()
         {
             // This is a compile-time constraint, but we can verify the usage pattern
-            var array = new InlineArray8<int>();
+            InlineArray8<int> array = new InlineArray8<int>();
 
             // All 8 indices should be accessible
             for (int i = 0; i < 8; i++)
@@ -139,7 +140,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Get_UninitializedAccess_HasDefaultValue()
         {
             // Arrange
-            var array = new InlineArray8<int>();
+            InlineArray8<int> array = new InlineArray8<int>();
 
             // Act - Don't initialize
             int value = InlineArray8<int>.Get(ref array, 5);
@@ -155,7 +156,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Get_InlineArrayField_Works()
         {
             // This tests that InlineArray8 is compatible with struct layouts
-            var array = new InlineArray8<byte>();
+            InlineArray8<byte> array = new InlineArray8<byte>();
             InlineArray8<byte>.Get(ref array, 0) = 255;
             InlineArray8<byte>.Get(ref array, 1) = 128;
 
@@ -170,8 +171,8 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Get_ValueTypeGuid_StoresAndRetrieves()
         {
             // Arrange
-            var array = new InlineArray8<System.Guid>();
-            var guid = System.Guid.NewGuid();
+            InlineArray8<Guid> array = new InlineArray8<System.Guid>();
+            Guid guid = System.Guid.NewGuid();
 
             // Act
             InlineArray8<System.Guid>.Get(ref array, 0) = guid;

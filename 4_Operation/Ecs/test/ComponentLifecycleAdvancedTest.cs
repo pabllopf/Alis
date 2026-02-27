@@ -289,7 +289,7 @@ namespace Alis.Core.Ecs.Test
             }
 
             // Act
-            var query = scene.Query<With<Position>>();
+            Query query = scene.Query<With<Position>>();
             int count = 0;
             foreach (GameObject entity in query.EnumerateWithEntities())
             {

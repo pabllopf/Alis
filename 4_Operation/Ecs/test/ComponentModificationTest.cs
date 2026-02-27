@@ -49,7 +49,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_CanAddComponent()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create();
             Assert.False(entity.Has<Position>());
 
@@ -68,7 +68,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_CanRemoveComponent()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 10 }, new Health { Value = 100 });
             Assert.True(entity.Has<Position>());
 
@@ -87,7 +87,7 @@ namespace Alis.Core.Ecs.Test
         public void Query_ReflectsComponentAddition()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create();
             Query query = scene.Query<With<Position>>();
 
@@ -96,7 +96,7 @@ namespace Alis.Core.Ecs.Test
 
             // Assert
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position>())
+            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
                 count++;
 
             Assert.Equal(1, count);
@@ -109,7 +109,7 @@ namespace Alis.Core.Ecs.Test
         public void Query_ReflectsComponentRemoval()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 5 });
             Query query = scene.Query<With<Position>>();
 
@@ -118,7 +118,7 @@ namespace Alis.Core.Ecs.Test
 
             // Assert
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position>())
+            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
                 count++;
 
             Assert.Equal(0, count);
@@ -131,7 +131,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_CanAddMultipleComponentsSequentially()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
             // Act
@@ -152,7 +152,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_CanRemoveMultipleComponents()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create(
                 new Position { X = 1 },
                 new Health { Value = 100 },
@@ -175,7 +175,7 @@ namespace Alis.Core.Ecs.Test
         public void GameObject_ComponentDataPreservedWhenAddingOtherComponents()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
 
             // Act
@@ -196,7 +196,7 @@ namespace Alis.Core.Ecs.Test
         public void Scene_CanAddComponentToMultipleEntities()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             GameObject entity1 = scene.Create();
             GameObject entity2 = scene.Create();
 
@@ -207,7 +207,7 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position>())
+            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
                 count++;
 
             Assert.Equal(2, count);

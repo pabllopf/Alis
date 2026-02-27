@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnBeforeDraw_CanBeImplemented()
         {
-            var handler = new BeforeDrawHandler();
+            BeforeDrawHandler handler = new BeforeDrawHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnBeforeDraw>(handler);
         }
@@ -70,8 +70,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnBeforeDraw_CanBeCalled()
         {
-            var handler = new BeforeDrawHandler();
-            var gameObject = new MockGameObject();
+            BeforeDrawHandler handler = new BeforeDrawHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnBeforeDraw(gameObject);
             Assert.Equal(1, handler.CallCount);
         }
@@ -82,8 +82,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnBeforeDraw_CountsCalls()
         {
-            var handler = new BeforeDrawHandler();
-            var gameObject = new MockGameObject();
+            BeforeDrawHandler handler = new BeforeDrawHandler();
+            MockGameObject gameObject = new MockGameObject();
             for (int i = 0; i < 60; i++)
             {
                 handler.OnBeforeDraw(gameObject);

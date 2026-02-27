@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Ecs.Collections;
 using Xunit;
 
@@ -53,7 +54,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ShortSparseSet_CanBeCreated()
         {
             // Act
-            var shortSet = new ShortSparseSet<int>();
+            ShortSparseSet<int> shortSet = new ShortSparseSet<int>();
 
             // Assert
             Assert.NotNull(shortSet);
@@ -71,7 +72,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Chunk_CanBeCreatedWithCapacity()
         {
             // Act
-            var chunk = new Chunk<int>(100);
+            Chunk<int> chunk = new Chunk<int>(100);
 
             // Assert
             Assert.NotNull(chunk.Buffer);
@@ -88,7 +89,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Chunk_SupportsElementAccess()
         {
             // Arrange
-            var chunk = new Chunk<int>(10);
+            Chunk<int> chunk = new Chunk<int>(10);
 
             // Act
             chunk[0] = 100;
@@ -110,12 +111,12 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Chunk_CanBeConvertedToSpan()
         {
             // Arrange
-            var chunk = new Chunk<int>(5);
+            Chunk<int> chunk = new Chunk<int>(5);
             chunk[0] = 10;
             chunk[1] = 20;
 
             // Act
-            var span = chunk.AsSpan();
+            Span<int> span = chunk.AsSpan();
 
             // Assert
             Assert.Equal(10, span[0]);
@@ -133,7 +134,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ArchetypeNeighborCache_CachesTransitions()
         {
             // Act
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
             // Assert
             Assert.NotNull(cache);
@@ -149,7 +150,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ArchetypeNeighborCache_HasProperStructure()
         {
             // Act
-            var cache = new ArchetypeNeighborCache();
+            ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
             // Assert - just verify it can be instantiated
             // ArchetypeNeighborCache is a value type
@@ -166,7 +167,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Chunk_CanBeReturnedToPool()
         {
             // Arrange
-            var chunk = new Chunk<int>(10);
+            Chunk<int> chunk = new Chunk<int>(10);
             chunk[0] = 100;
 
             // Act & Assert (no exception should be thrown)
@@ -184,14 +185,14 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Chunk_SupportsPartialSpan()
         {
             // Arrange
-            var chunk = new Chunk<int>(10);
+            Chunk<int> chunk = new Chunk<int>(10);
             for (int i = 0; i < 10; i++)
             {
                 chunk[i] = i * 10;
             }
 
             // Act
-            var partialSpan = chunk.AsSpan(2, 3);
+            Span<int> partialSpan = chunk.AsSpan(2, 3);
 
             // Assert
             Assert.Equal(20, partialSpan[0]);

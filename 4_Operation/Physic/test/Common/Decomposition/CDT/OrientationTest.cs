@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Physic.Common.Decomposition.CDT;
 using Xunit;
 
@@ -76,7 +77,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         [Fact]
         public void Orientation_ShouldHaveThreeValues()
         {
-            var values = System.Enum.GetValues(typeof(Orientation));
+            Array values = System.Enum.GetValues(typeof(Orientation));
             
             Assert.Equal(3, values.Length);
         }

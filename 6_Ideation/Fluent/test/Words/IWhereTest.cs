@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IWhere_CanBeImplemented()
         {
-            var builder = new WhereBuilder();
+            WhereBuilder builder = new WhereBuilder();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IWhere<QueryBuilder, string>>(builder);
         }
@@ -74,8 +74,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Where_ReturnsBuilder()
         {
-            var builder = new WhereBuilder();
-            var result = builder.Where("condition");
+            WhereBuilder builder = new WhereBuilder();
+            QueryBuilder result = builder.Where("condition");
             Assert.NotNull(result);
             Assert.IsType<QueryBuilder>(result);
         }
@@ -86,8 +86,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Where_StoresConditionCorrectly()
         {
-            var builder = new WhereBuilder();
-            var result = builder.Where("id > 5");
+            WhereBuilder builder = new WhereBuilder();
+            QueryBuilder result = builder.Where("id > 5");
             Assert.Equal("id > 5", result.Condition);
         }
 
@@ -97,8 +97,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Where_SupportsQueryBuilding()
         {
-            var whereBuilder = new WhereBuilder();
-            var result = whereBuilder.Where("name = 'test'");
+            WhereBuilder whereBuilder = new WhereBuilder();
+            QueryBuilder result = whereBuilder.Where("name = 'test'");
             Assert.Equal("name = 'test'", result.Condition);
         }
 
@@ -108,8 +108,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IWhere_WithIntegerCondition()
         {
-            var builder = new IntWhereBuilder();
-            var result = builder.Where(10);
+            IntWhereBuilder builder = new IntWhereBuilder();
+            IntQueryBuilder result = builder.Where(10);
             Assert.Equal(10, result.MinValue);
         }
 

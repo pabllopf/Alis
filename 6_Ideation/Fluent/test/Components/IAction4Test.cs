@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IAction4_CanBeImplementedWithFourParameters()
         {
-            var action = new FourParamAction();
+            FourParamAction action = new FourParamAction();
             Assert.NotNull(action);
             Assert.IsAssignableFrom<IAction<int, int, int, int>>(action);
         }
@@ -74,7 +74,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Run_ExecutesWithCorrectParameters()
         {
-            var action = new FourParamAction();
+            FourParamAction action = new FourParamAction();
             int val1 = 10;
             int val2 = 20;
             int val3 = 30;
@@ -95,7 +95,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [InlineData(-1, -2, -3, -4)]
         public void Run_PreservesParameterOrder(int v1, int v2, int v3, int v4)
         {
-            var action = new FourParamAction();
+            FourParamAction action = new FourParamAction();
             int arg1 = v1, arg2 = v2, arg3 = v3, arg4 = v4;
             action.Run(ref arg1, ref arg2, ref arg3, ref arg4);
             Assert.Equal(v1, action.Arg1);

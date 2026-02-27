@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Physic.Common.Decomposition.CDT.Util;
@@ -214,7 +215,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             array[1] = false;
             array[2] = true;
             
-            var values = array.ToList();
+            List<bool> values = array.ToList();
             
             Assert.Equal(3, values.Count);
             Assert.True(values[0]);

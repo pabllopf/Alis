@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Common;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
@@ -148,7 +149,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             Aabb aabb = new Aabb(new Vector2F(1.0f, 2.0f), new Vector2F(5.0f, 8.0f));
             
-            var vertices = aabb.Vertices;
+            Vertices vertices = aabb.Vertices;
             
             Assert.Equal(4, vertices.Count);
             Assert.Equal(new Vector2F(5.0f, 8.0f), vertices[0]); // UpperBound

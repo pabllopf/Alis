@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void ICreate_CanBeImplemented()
         {
-            var builder = new CreateBuilder();
+            CreateBuilder builder = new CreateBuilder();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<ICreate<TestBuilder, string>>(builder);
         }
@@ -74,8 +74,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Create_ReturnsBuilderWithValueSet()
         {
-            var builder = new CreateBuilder();
-            var result = builder.Create("test");
+            CreateBuilder builder = new CreateBuilder();
+            TestBuilder result = builder.Create("test");
             Assert.NotNull(result);
             Assert.Equal("test", result.CreatedValue);
         }
@@ -86,8 +86,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Create_SupportsFluentChaining()
         {
-            var createBuilder = new CreateBuilder();
-            var result = createBuilder.Create("value");
+            CreateBuilder createBuilder = new CreateBuilder();
+            TestBuilder result = createBuilder.Create("value");
             Assert.NotNull(result);
             Assert.IsType<TestBuilder>(result);
         }
@@ -98,8 +98,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Create_CanHandleNullArgument()
         {
-            var builder = new CreateBuilder();
-            var result = builder.Create(null);
+            CreateBuilder builder = new CreateBuilder();
+            TestBuilder result = builder.Create(null);
             Assert.NotNull(result);
             Assert.Null(result.CreatedValue);
         }
@@ -110,8 +110,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void ICreate_WithIntegerArgumentType()
         {
-            var builder = new IntCreateBuilder();
-            var result = builder.Create(42);
+            IntCreateBuilder builder = new IntCreateBuilder();
+            IntTestBuilder result = builder.Create(42);
             Assert.Equal(42, result.Value);
         }
 

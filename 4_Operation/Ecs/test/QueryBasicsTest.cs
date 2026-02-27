@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -49,7 +50,7 @@ namespace Alis.Core.Ecs.Test
         public void Query_FiltersBySingleComponent()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             scene.Create(new Position { X = 1 });
             scene.Create(new Position { X = 2 });
             scene.Create(new Health { Value = 100 });
@@ -57,7 +58,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            foreach (var (entity, pos) in query.EnumerateWithEntities<Position>())
+            foreach ((GameObject entity, Ref<Position> pos) in query.EnumerateWithEntities<Position>())
             {
                 count++;
                 Assert.True(entity.IsAlive);
@@ -74,7 +75,7 @@ namespace Alis.Core.Ecs.Test
         public void Query_FiltersByTwoComponents()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             scene.Create(new Position { X = 1 });
             scene.Create(new Position { X = 2 }, new Health { Value = 100 });
             scene.Create(new Health { Value = 50 });
@@ -82,7 +83,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             Query query = scene.Query<With<Position>, With<Health>>();
             int count = 0;
-            foreach (var (entity, pos, health) in query.EnumerateWithEntities<Position, Health>())
+            foreach ((GameObject entity, Ref<Position> pos, Ref<Health> health) in query.EnumerateWithEntities<Position, Health>())
             {
                 count++;
                 Assert.True(entity.IsAlive);
@@ -99,14 +100,14 @@ namespace Alis.Core.Ecs.Test
         public void Query_ReturnsEmptyWhenNoMatches()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             scene.Create(new Position { X = 1 });
             scene.Create(new Health { Value = 100 });
 
             // Act
             Query query = scene.Query<With<Velocity>>();
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Velocity>())
+            foreach (Ecs.Systems.GameObjectRefTuple<Velocity> _ in query.EnumerateWithEntities<Velocity>())
             {
                 count++;
             }
@@ -122,7 +123,7 @@ namespace Alis.Core.Ecs.Test
         public void Query_IsConsistentAcrossIterations()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             scene.Create(new Position { X = 1 });
             scene.Create(new Position { X = 2 });
 
@@ -130,11 +131,11 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>>();
             int count1 = 0, count2 = 0, count3 = 0;
 
-            foreach (var _ in query.EnumerateWithEntities<Position>())
+            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
                 count1++;
-            foreach (var _ in query.EnumerateWithEntities<Position>())
+            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
                 count2++;
-            foreach (var _ in query.EnumerateWithEntities<Position>())
+            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
                 count3++;
 
             // Assert
@@ -150,14 +151,14 @@ namespace Alis.Core.Ecs.Test
         public void Query_CanAccessComponentDataInEnumeration()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             scene.Create(new Position { X = 10, Y = 20 });
             scene.Create(new Position { X = 30, Y = 40 });
 
             // Act
             Query query = scene.Query<With<Position>>();
             int totalX = 0;
-            foreach (var (entity, pos) in query.EnumerateWithEntities<Position>())
+            foreach ((GameObject entity, Ref<Position> pos) in query.EnumerateWithEntities<Position>())
             {
                 totalX += (int)pos.Value.X;
             }
@@ -173,7 +174,7 @@ namespace Alis.Core.Ecs.Test
         public void Query_FiltersByThreeComponents()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             scene.Create(new Position { X = 1 });
             scene.Create(new Position { X = 2 }, new Health { Value = 100 });
             scene.Create(new Position { X = 3 }, new Health { Value = 100 }, new Velocity { VX = 1 });
@@ -198,7 +199,7 @@ namespace Alis.Core.Ecs.Test
         public void Query_CanBeReused()
         {
             // Arrange
-            using var scene = new Scene();
+            using Scene scene = new Scene();
             scene.Create(new Position { X = 1 });
             scene.Create(new Position { X = 2 });
 
@@ -206,11 +207,11 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>>();
             
             int firstUseCount = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position>())
+            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
                 firstUseCount++;
 
             int secondUseCount = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position>())
+            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
                 secondUseCount++;
 
             // Assert

@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IAudio_CanBeImplemented()
         {
-            var builder = new AudioBuilderImpl();
+            AudioBuilderImpl builder = new AudioBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IAudio<AudioBuilder, string>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Audio_SetsConfigurationCorrectly()
         {
-            var builder = new AudioBuilderImpl();
-            var result = builder.Audio("Stereo");
+            AudioBuilderImpl builder = new AudioBuilderImpl();
+            AudioBuilder result = builder.Audio("Stereo");
             Assert.Equal("Stereo", result.AudioConfig);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Audio_ReturnsBuilder()
         {
-            var builder = new AudioBuilderImpl();
-            var result = builder.Audio("Mono");
+            AudioBuilderImpl builder = new AudioBuilderImpl();
+            AudioBuilder result = builder.Audio("Mono");
             Assert.NotNull(result);
             Assert.IsType<AudioBuilder>(result);
         }
@@ -104,8 +104,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData("Spatial")]
         public void Audio_WithVariousConfigurations(string config)
         {
-            var builder = new AudioBuilderImpl();
-            var result = builder.Audio(config);
+            AudioBuilderImpl builder = new AudioBuilderImpl();
+            AudioBuilder result = builder.Audio(config);
             Assert.Equal(config, result.AudioConfig);
         }
     }

@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IPosition2D_CanBeImplemented()
         {
-            var builder = new Position2DBuilder();
+            Position2DBuilder builder = new Position2DBuilder();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IPosition2D<PositionBuilder, float>>(builder);
         }
@@ -79,8 +79,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Position_SetsCoordinatesCorrectly()
         {
-            var builder = new Position2DBuilder();
-            var result = builder.Position(10.5f, 20.5f);
+            Position2DBuilder builder = new Position2DBuilder();
+            PositionBuilder result = builder.Position(10.5f, 20.5f);
             Assert.Equal(10.5f, result.X);
             Assert.Equal(20.5f, result.Y);
         }
@@ -91,8 +91,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Position_ReturnsBuilder()
         {
-            var builder = new Position2DBuilder();
-            var result = builder.Position(5f, 5f);
+            Position2DBuilder builder = new Position2DBuilder();
+            PositionBuilder result = builder.Position(5f, 5f);
             Assert.NotNull(result);
             Assert.IsType<PositionBuilder>(result);
         }
@@ -103,8 +103,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Position_WithZeroCoordinates()
         {
-            var builder = new Position2DBuilder();
-            var result = builder.Position(0f, 0f);
+            Position2DBuilder builder = new Position2DBuilder();
+            PositionBuilder result = builder.Position(0f, 0f);
             Assert.Equal(0f, result.X);
             Assert.Equal(0f, result.Y);
         }
@@ -118,8 +118,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData(10f, -10f)]
         public void Position_WithVariousCoordinates(float x, float y)
         {
-            var builder = new Position2DBuilder();
-            var result = builder.Position(x, y);
+            Position2DBuilder builder = new Position2DBuilder();
+            PositionBuilder result = builder.Position(x, y);
             Assert.Equal(x, result.X);
             Assert.Equal(y, result.Y);
         }

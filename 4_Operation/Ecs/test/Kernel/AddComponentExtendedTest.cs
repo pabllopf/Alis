@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Ecs.Exceptions;
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -127,7 +128,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             entity.Add(testPos);
 
             // Assert
-            Assert.True(entity.TryGet<Position>(out var pos));
+            Assert.True(entity.TryGet<Position>(out Ref<Position> pos));
             Assert.Equal(42, pos.Value.X);
             Assert.Equal(84, pos.Value.Y);
         }
@@ -147,7 +148,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             int countBefore = 0;
             Query query = scene.Query<With<Position>>();
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 countBefore++;
             }
@@ -157,7 +158,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Assert
             int countAfter = 0;
-            foreach (var _ in query.Enumerate<Position>())
+            foreach (RefTuple<Position> _ in query.Enumerate<Position>())
             {
                 countAfter++;
             }
@@ -185,7 +186,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             // Assert
             Assert.True(entity.Has<Position>());
             Assert.True(entity.Has<Velocity>());
-            Assert.True(entity.TryGet<Position>(out var pos));
+            Assert.True(entity.TryGet<Position>(out Ref<Position> pos));
             Assert.Equal(1, pos.Value.X);
         }
 
@@ -207,7 +208,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             entity.Add(new Velocity { VX = 10, VY = 20 });
 
             // Assert
-            Assert.True(entity.TryGet<Position>(out var pos));
+            Assert.True(entity.TryGet<Position>(out Ref<Position> pos));
             Assert.Equal(42, pos.Value.X);
             Assert.Equal(84, pos.Value.Y);
         }
@@ -264,7 +265,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Assert
             Assert.True(entity.Has<Position>());
-            Assert.True(entity.TryGet<Position>(out var pos));
+            Assert.True(entity.TryGet<Position>(out Ref<Position> pos));
             Assert.Equal(0, pos.Value.X);
             Assert.Equal(0, pos.Value.Y);
         }
@@ -288,7 +289,7 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             // Assert
             Assert.True(entity.Has<Position>());
-            Assert.True(entity.TryGet<Position>(out var pos));
+            Assert.True(entity.TryGet<Position>(out Ref<Position> pos));
             Assert.Equal(10, pos.Value.X);
             Assert.Equal(20, pos.Value.Y);
         }

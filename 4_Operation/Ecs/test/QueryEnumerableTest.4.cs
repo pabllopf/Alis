@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -55,7 +56,7 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
 
             // Act
-            var enumerable = query.Enumerate<Position, Velocity, Health, Transform>();
+            QueryEnumerator<Position, Velocity, Health, Transform>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform>();
 
             // Assert
             Assert.NotEqual(default, enumerable);
@@ -82,7 +83,7 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
 
             // Act & Assert
-            foreach (var (pos, vel, health, trans) in query.Enumerate<Position, Velocity, Health, Transform>())
+            foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans) in query.Enumerate<Position, Velocity, Health, Transform>())
             {
                 Assert.Equal(10, pos.Value.X);
                 Assert.Equal(5, vel.Value.VX);
@@ -114,7 +115,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity, Health, Transform>())
+            foreach (RefTuple<Position, Velocity, Health, Transform> _ in query.Enumerate<Position, Velocity, Health, Transform>())
             {
                 count++;
             }
@@ -144,21 +145,21 @@ namespace Alis.Core.Ecs.Test
                 new QueryEnumerable<Position, Velocity, Health, Transform>(query);
 
             // Act
-            foreach (var (pos, vel, health, trans) in query.Enumerate<Position, Velocity, Health, Transform>())
+            foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans) in query.Enumerate<Position, Velocity, Health, Transform>())
             {
-                var p = pos.Value;
+                Position p = pos.Value;
                 p.X = 100;
                 pos.Value = p;
 
-                var v = vel.Value;
+                Velocity v = vel.Value;
                 v.VX = 50;
                 vel.Value = v;
 
-                var h = health.Value;
+                Health h = health.Value;
                 h.Value = 200;
                 health.Value = h;
 
-                var t = trans.Value;
+                Transform t = trans.Value;
                 t.Rotation = 90;
                 trans.Value = t;
             }
@@ -195,7 +196,7 @@ namespace Alis.Core.Ecs.Test
 
             // Act
             int count = 0;
-            foreach (var _ in query.Enumerate<Position, Velocity, Health, Transform>())
+            foreach (RefTuple<Position, Velocity, Health, Transform> _ in query.Enumerate<Position, Velocity, Health, Transform>())
             {
                 count++;
             }

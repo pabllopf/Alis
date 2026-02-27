@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IDensity_CanBeImplemented()
         {
-            var builder = new DensityBuilderImpl();
+            DensityBuilderImpl builder = new DensityBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IDensity<DensityBuilder, float>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Density_SetsValueCorrectly()
         {
-            var builder = new DensityBuilderImpl();
-            var result = builder.Density(1000f);
+            DensityBuilderImpl builder = new DensityBuilderImpl();
+            DensityBuilder result = builder.Density(1000f);
             Assert.Equal(1000f, result.DensityValue);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Density_ReturnsBuilder()
         {
-            var builder = new DensityBuilderImpl();
-            var result = builder.Density(500f);
+            DensityBuilderImpl builder = new DensityBuilderImpl();
+            DensityBuilder result = builder.Density(500f);
             Assert.NotNull(result);
             Assert.IsType<DensityBuilder>(result);
         }
@@ -104,8 +104,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData(2000f)]
         public void Density_WithVariousMaterials(float density)
         {
-            var builder = new DensityBuilderImpl();
-            var result = builder.Density(density);
+            DensityBuilderImpl builder = new DensityBuilderImpl();
+            DensityBuilder result = builder.Density(density);
             Assert.Equal(density, result.DensityValue);
         }
     }

@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IGraphic_CanBeImplemented()
         {
-            var builder = new GraphicBuilderImpl();
+            GraphicBuilderImpl builder = new GraphicBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IGraphic<GraphicBuilder, string>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Graphic_SetsTypeCorrectly()
         {
-            var builder = new GraphicBuilderImpl();
-            var result = builder.Graphic("Sprite");
+            GraphicBuilderImpl builder = new GraphicBuilderImpl();
+            GraphicBuilder result = builder.Graphic("Sprite");
             Assert.Equal("Sprite", result.GraphicType);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Graphic_ReturnsBuilder()
         {
-            var builder = new GraphicBuilderImpl();
-            var result = builder.Graphic("Mesh");
+            GraphicBuilderImpl builder = new GraphicBuilderImpl();
+            GraphicBuilder result = builder.Graphic("Mesh");
             Assert.NotNull(result);
             Assert.IsType<GraphicBuilder>(result);
         }
@@ -104,8 +104,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData("Trail")]
         public void Graphic_WithVariousTypes(string type)
         {
-            var builder = new GraphicBuilderImpl();
-            var result = builder.Graphic(type);
+            GraphicBuilderImpl builder = new GraphicBuilderImpl();
+            GraphicBuilder result = builder.Graphic(type);
             Assert.Equal(type, result.GraphicType);
         }
     }

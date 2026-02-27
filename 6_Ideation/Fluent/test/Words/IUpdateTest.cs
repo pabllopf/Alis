@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IUpdate_CanBeImplemented()
         {
-            var handler = new UpdateHandler();
+            UpdateHandler handler = new UpdateHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IUpdate<int,int>>(handler);
         }
@@ -72,7 +72,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Update_CanBeCalled()
         {
-            var handler = new UpdateHandler();
+            UpdateHandler handler = new UpdateHandler();
             handler.Update();
             Assert.True(handler.WasUpdated);
         }
@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Update_IncrementsCounter()
         {
-            var handler = new UpdateHandler();
+            UpdateHandler handler = new UpdateHandler();
             handler.Update();
             Assert.Equal(1, handler.UpdateCount);
             handler.Update();
@@ -96,7 +96,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Update_WorksInSequence()
         {
-            var handler = new UpdateHandler();
+            UpdateHandler handler = new UpdateHandler();
             for (int i = 0; i < 10; i++)
             {
                 handler.Update();

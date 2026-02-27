@@ -26,6 +26,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Ecs.Collections;
 using Xunit;
 
@@ -43,7 +44,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void PushAndPop_MultipleValues_CorrectLIFOOrder()
         {
             // Arrange
-            var stack = new FastestStack<int>();
+            FastestStack<int> stack = new FastestStack<int>();
 
             // Act
             stack.Push(10);
@@ -63,7 +64,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void TryPop_EmptyStack_ReturnsFalse()
         {
             // Arrange
-            var stack = new FastestStack<int>();
+            FastestStack<int> stack = new FastestStack<int>();
 
             // Act
             bool result = stack.TryPop(out int value);
@@ -80,7 +81,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void TryPop_WithElements_ReturnsTrueWithValue()
         {
             // Arrange
-            var stack = new FastestStack<int>();
+            FastestStack<int> stack = new FastestStack<int>();
             stack.Push(42);
 
             // Act
@@ -99,7 +100,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Clear_WithElements_StackEmpty()
         {
             // Arrange
-            var stack = new FastestStack<int>();
+            FastestStack<int> stack = new FastestStack<int>();
             for (int i = 0; i < 50; i++)
             {
                 stack.Push(i);
@@ -120,7 +121,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void PushPop_LargeNumberOfElements_MaintainsOrder()
         {
             // Arrange
-            var stack = new FastestStack<int>();
+            FastestStack<int> stack = new FastestStack<int>();
 
             // Act
             for (int i = 0; i < 1000; i++)
@@ -142,7 +143,7 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Any_EmptyVsNonEmpty_CorrectState()
         {
             // Arrange
-            var stack = new FastestStack<int>();
+            FastestStack<int> stack = new FastestStack<int>();
 
             // Act & Assert
             Assert.False(stack.Any);
@@ -161,9 +162,9 @@ namespace Alis.Core.Ecs.Test.Collections
         public void Push_ValueTypes_StoresAndRetrievesCorrectly()
         {
             // Arrange
-            var stack = new FastestStack<System.Guid>();
-            var guid1 = System.Guid.NewGuid();
-            var guid2 = System.Guid.NewGuid();
+            FastestStack<Guid> stack = new FastestStack<System.Guid>();
+            Guid guid1 = System.Guid.NewGuid();
+            Guid guid2 = System.Guid.NewGuid();
 
             // Act
             stack.Push(guid1);

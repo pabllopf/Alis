@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
@@ -101,7 +102,7 @@ namespace Alis.Core.Ecs.Test
             entity.Add(new Velocity { VX = 10, VY = 20 });
 
             // Assert
-            Assert.True(entity.TryGet<Position>(out var pos));
+            Assert.True(entity.TryGet<Position>(out Ref<Position> pos));
             Assert.Equal(42, pos.Value.X);
             Assert.Equal(84, pos.Value.Y);
         }
@@ -306,7 +307,7 @@ namespace Alis.Core.Ecs.Test
 
             // Assert
             Assert.True(entity.Has<Position>());
-            Assert.True(entity.TryGet<Position>(out var pos));
+            Assert.True(entity.TryGet<Position>(out Ref<Position> pos));
             Assert.Equal(10, pos.Value.X);
             Assert.Equal(20, pos.Value.Y);
         }

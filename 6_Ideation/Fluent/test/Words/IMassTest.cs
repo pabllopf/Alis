@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void IMass_CanBeImplemented()
         {
-            var builder = new MassBuilderImpl();
+            MassBuilderImpl builder = new MassBuilderImpl();
             Assert.NotNull(builder);
             Assert.IsAssignableFrom<IMass<MassBuilder, float>>(builder);
         }
@@ -77,8 +77,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Mass_SetsValueCorrectly()
         {
-            var builder = new MassBuilderImpl();
-            var result = builder.Mass(2.5f);
+            MassBuilderImpl builder = new MassBuilderImpl();
+            MassBuilder result = builder.Mass(2.5f);
             Assert.Equal(2.5f, result.MassValue);
         }
 
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [Fact]
         public void Mass_ReturnsBuilder()
         {
-            var builder = new MassBuilderImpl();
-            var result = builder.Mass(1f);
+            MassBuilderImpl builder = new MassBuilderImpl();
+            MassBuilder result = builder.Mass(1f);
             Assert.NotNull(result);
             Assert.IsType<MassBuilder>(result);
         }
@@ -105,8 +105,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         [InlineData(100f)]
         public void Mass_WithTypicalPhysicsValues(float mass)
         {
-            var builder = new MassBuilderImpl();
-            var result = builder.Mass(mass);
+            MassBuilderImpl builder = new MassBuilderImpl();
+            MassBuilder result = builder.Mass(mass);
             Assert.Equal(mass, result.MassValue);
         }
     }

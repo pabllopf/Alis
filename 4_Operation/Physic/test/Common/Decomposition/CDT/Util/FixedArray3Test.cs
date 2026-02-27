@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Physic.Common.Decomposition.CDT;
@@ -217,7 +218,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
             array[1] = "second";
             array[2] = "third";
             
-            var values = array.ToList();
+            List<string> values = array.ToList();
             
             Assert.Equal(3, values.Count);
             Assert.Equal("first", values[0]);

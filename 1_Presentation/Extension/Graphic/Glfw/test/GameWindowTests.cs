@@ -27,6 +27,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Drawing;
 using Alis.Extension.Graphic.Glfw.Enums;
 using Alis.Extension.Graphic.Glfw.Structs;
 using Alis.Extension.Graphic.Glfw.Test.Skipper;
@@ -138,7 +139,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             // Act
             window = new GameWindow(expectedWidth, expectedHeight, "Sized Window");
-            var size = window.Size;
+            Size size = window.Size;
 
             // Assert
             Assert.Equal(expectedWidth, size.Width);

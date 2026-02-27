@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IOnProcessPendingChanges_CanBeImplemented()
         {
-            var handler = new ProcessChangesHandler();
+            ProcessChangesHandler handler = new ProcessChangesHandler();
             Assert.NotNull(handler);
             Assert.IsAssignableFrom<IOnProcessPendingChanges>(handler);
         }
@@ -71,8 +71,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnProcessPendingChanges_CanBeCalled()
         {
-            var handler = new ProcessChangesHandler();
-            var gameObject = new MockGameObject();
+            ProcessChangesHandler handler = new ProcessChangesHandler();
+            MockGameObject gameObject = new MockGameObject();
             handler.OnProcessPendingChanges(gameObject);
             Assert.Equal(1, handler.ProcessCount);
         }
@@ -83,8 +83,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void OnProcessPendingChanges_CountsProcessingCycles()
         {
-            var handler = new ProcessChangesHandler();
-            var gameObject = new MockGameObject();
+            ProcessChangesHandler handler = new ProcessChangesHandler();
+            MockGameObject gameObject = new MockGameObject();
             for (int i = 0; i < 10; i++)
             {
                 handler.OnProcessPendingChanges(gameObject);

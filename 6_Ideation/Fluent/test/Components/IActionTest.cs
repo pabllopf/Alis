@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IAction_CanBeImplementedWithSingleParameter()
         {
-            var action = new SingleParamAction();
+            SingleParamAction action = new SingleParamAction();
             Assert.NotNull(action);
             Assert.IsAssignableFrom<IAction<int>>(action);
         }
@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void Run_ExecutesWithCorrectParameter()
         {
-            var action = new SingleParamAction();
+            SingleParamAction action = new SingleParamAction();
             int value = 42;
             action.Run(ref value);
             Assert.Equal(42, action.LastValue);
@@ -85,7 +85,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [InlineData(int.MinValue)]
         public void Run_WorksWithVariousParameterValues(int paramValue)
         {
-            var action = new SingleParamAction();
+            SingleParamAction action = new SingleParamAction();
             action.Run(ref paramValue);
             Assert.Equal(paramValue, action.LastValue);
         }
@@ -96,7 +96,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         [Fact]
         public void IAction_WithStringParameterType()
         {
-            var action = new StringParamAction();
+            StringParamAction action = new StringParamAction();
             string value = "test";
             action.Run(ref value);
             Assert.Equal("test", action.LastValue);

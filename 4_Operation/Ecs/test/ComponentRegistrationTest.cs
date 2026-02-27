@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -82,7 +83,7 @@ namespace Alis.Core.Ecs.Test
         public void Component_GetComponentIdByType()
         {
             // Arrange & Act
-            var positionType = typeof(Position);
+            Type positionType = typeof(Position);
             ComponentId genericId = Component<Position>.Id;
             ComponentId typeId = Component.GetComponentId(positionType);
 
