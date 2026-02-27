@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <param name="indexA">The index</param>
         /// <param name="fB">The </param>
         /// <param name="indexB">The index</param>
-        protected Contact(Fixture fA, int indexA, Fixture fB, int indexB)
+        protected internal Contact(Fixture fA, int indexA, Fixture fB, int indexB)
         {
             Reset(fA, indexA, fB, indexB);
         }
