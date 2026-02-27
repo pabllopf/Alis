@@ -34,7 +34,6 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
 using System.Diagnostics.CodeAnalysis;
 
-
 namespace Alis.Core.Graphic.Platforms.Linux
 {
     /// <summary>
