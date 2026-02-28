@@ -14,7 +14,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void DefaultConstructor_CreatesObject()
         {
-            var sprite = new Sprite();
+            Sprite sprite = new Sprite();
             Assert.NotNull(sprite);
         }
 
@@ -25,7 +25,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Constructor_WithTexture_Works()
         {
             Texture texture = null;
-            var sprite = new Sprite(texture);
+            Sprite sprite = new Sprite(texture);
             Assert.NotNull(sprite);
         }
     }

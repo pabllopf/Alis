@@ -15,7 +15,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Constructor_AssignsFields()
         {
-            var rect = new IntRect(1, 2, 3, 4);
+            IntRect rect = new IntRect(1, 2, 3, 4);
             Assert.Equal(1, rect.Left);
             Assert.Equal(2, rect.Top);
             Assert.Equal(3, rect.Width);
@@ -28,7 +28,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Contains_Works()
         {
-            var rect = new IntRect(0, 0, 10, 10);
+            IntRect rect = new IntRect(0, 0, 10, 10);
             Assert.True(rect.Contains(5, 5));
             Assert.False(rect.Contains(15, 5));
         }
@@ -39,9 +39,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Intersects_Works()
         {
-            var r1 = new IntRect(0, 0, 10, 10);
-            var r2 = new IntRect(5, 5, 10, 10);
-            var r3 = new IntRect(20, 20, 5, 5);
+            IntRect r1 = new IntRect(0, 0, 10, 10);
+            IntRect r2 = new IntRect(5, 5, 10, 10);
+            IntRect r3 = new IntRect(20, 20, 5, 5);
             Assert.True(r1.Intersects(r2));
             Assert.False(r1.Intersects(r3));
         }
@@ -52,9 +52,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Intersects_OverlapOutput_Works()
         {
-            var r1 = new IntRect(0, 0, 10, 10);
-            var r2 = new IntRect(5, 5, 10, 10);
-            Assert.True(r1.Intersects(r2, out var overlap));
+            IntRect r1 = new IntRect(0, 0, 10, 10);
+            IntRect r2 = new IntRect(5, 5, 10, 10);
+            Assert.True(r1.Intersects(r2, out IntRect overlap));
             Assert.Equal(5, overlap.Left);
             Assert.Equal(5, overlap.Top);
             Assert.Equal(5, overlap.Width);
@@ -67,7 +67,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void ToString_NotEmpty()
         {
-            var rect = new IntRect(1, 2, 3, 4);
+            IntRect rect = new IntRect(1, 2, 3, 4);
             Assert.False(string.IsNullOrWhiteSpace(rect.ToString()));
         }
     }

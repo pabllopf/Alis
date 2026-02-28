@@ -15,7 +15,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Constructor_AssignsFields()
         {
-            var t = new Transform(1,2,3,4,5,6,7,8,9);
+            Transform t = new Transform(1,2,3,4,5,6,7,8,9);
             Assert.Equal(1, t.m00);
             Assert.Equal(2, t.m01);
             Assert.Equal(3, t.m02);
@@ -33,8 +33,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void GetInverse_ReturnsTransform()
         {
-            var t = new Transform(1,0,0,0,1,0,0,0,1);
-            var inv = t.GetInverse();
+            Transform t = new Transform(1,0,0,0,1,0,0,0,1);
+            Transform inv = t.GetInverse();
             Assert.IsType<Transform>(inv);
         }
 
@@ -44,8 +44,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void TransformPoint_Works()
         {
-            var t = new Transform(1,0,0,0,1,0,0,0,1);
-            var v = t.TransformPoint(2,3);
+            Transform t = new Transform(1,0,0,0,1,0,0,0,1);
+            Vector2F v = t.TransformPoint(2,3);
             Assert.Equal(2, v.X);
             Assert.Equal(3, v.Y);
         }

@@ -15,7 +15,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [Fact]
         public void Constructor_CreatesObject()
         {
-            var clipboard = new Clipboard();
+            Clipboard clipboard = new Clipboard();
             Assert.NotNull(clipboard);
         }
     }

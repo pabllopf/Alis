@@ -14,7 +14,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void DefaultConstructor_Works()
         {
-            var shape = new CircleShape();
+            CircleShape shape = new CircleShape();
             Assert.NotNull(shape);
         }
 
@@ -24,7 +24,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void Constructor_WithRadiusAndPointCount_Works()
         {
-            var shape = new CircleShape(5.0f, 20);
+            CircleShape shape = new CircleShape(5.0f, 20);
             Assert.Equal(5.0f, shape.Radius);
             Assert.Equal(20u, shape.GetPointCount());
         }
@@ -35,8 +35,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [Fact]
         public void CopyConstructor_Works()
         {
-            var original = new CircleShape(3.0f, 10);
-            var copy = new CircleShape(original);
+            CircleShape original = new CircleShape(3.0f, 10);
+            CircleShape copy = new CircleShape(original);
             Assert.Equal(original.Radius, copy.Radius);
             Assert.Equal(original.GetPointCount(), copy.GetPointCount());
         }

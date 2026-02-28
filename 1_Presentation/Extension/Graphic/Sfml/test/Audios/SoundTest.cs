@@ -14,7 +14,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [Fact]
         public void DefaultConstructor_CreatesObject()
         {
-            var sound = new Sound();
+            Sound sound = new Sound();
             Assert.NotNull(sound);
         }
 
@@ -24,8 +24,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [Fact]
         public void CopyConstructor_CreatesCopy()
         {
-            var original = new Sound();
-            var copy = new Sound(original);
+            Sound original = new Sound();
+            Sound copy = new Sound(original);
             Assert.NotNull(copy);
         }
     }
