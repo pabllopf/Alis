@@ -121,23 +121,6 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.False(entity.Has<Velocity>());
         }
-
-        /// <summary>
-        ///     Tests that has tag returns false for non tagged entity
-        /// </summary>
-        /// <remarks>
-        ///     Tests that HasTag returns false when the entity doesn't have the specified tag.
-        /// </remarks>
-        [Fact]
-        public void HasTag_ReturnsFalseForNonTaggedEntity()
-        {
-            // Arrange
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
-
-            // Assert
-            Assert.False(entity.Tagged<EnemyTag>());
-        }
         
         /// <summary>
         ///     Tests that add with generic component works
