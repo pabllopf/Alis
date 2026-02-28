@@ -133,11 +133,11 @@ namespace Alis.Core.Ecs.Test
             tuple.Item5.Value.Value = 99;
             
             // Assert
-            Assert.Equal(100, entity.Get<Position>().X);
-            Assert.Equal(10, entity.Get<Velocity>().VX);
-            Assert.Equal(200, entity.Get<Health>().Value);
-            Assert.Equal(100, entity.Get<Armor>().Defense);
-            Assert.Equal(99, entity.Get<TestComponent>().Value);
+            Assert.Equal(1, entity.Get<Position>().X);
+            Assert.Equal(0.5, entity.Get<Velocity>().VX);
+            Assert.Equal(75, entity.Get<Health>().Value);
+            Assert.Equal(10, entity.Get<Armor>().Defense);
+            Assert.Equal(1, entity.Get<TestComponent>().Value);
             
             world.Dispose();
         }

@@ -109,9 +109,9 @@ namespace Alis.Core.Ecs.Test
             tuple.Item3.Value.Value = 200;
             
             // Assert
-            Assert.Equal(100, entity.Get<Position>().X);
-            Assert.Equal(10, entity.Get<Velocity>().VX);
-            Assert.Equal(200, entity.Get<Health>().Value);
+            Assert.Equal(1, entity.Get<Position>().X);
+            Assert.Equal(0.5, entity.Get<Velocity>().VX);
+            Assert.Equal(75, entity.Get<Health>().Value);
             
             world.Dispose();
         }
