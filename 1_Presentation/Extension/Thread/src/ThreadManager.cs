@@ -27,63 +27,91 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+using System;
+using Alis.Extension.Thread.Configuration;
+using Alis.Extension.Thread.Execution;
 
 namespace Alis.Extension.Thread
 {
     /// <summary>
-    ///     The thread manager class
+    ///     Modern thread manager for parallel execution of ECS component updates.
+    ///     Provides automatic work partitioning and efficient thread pool management.
     /// </summary>
-    public class ThreadManager
+    public sealed class ThreadManager : IDisposable
     {
         /// <summary>
-        ///     The cancellation token source
+        ///     The parallel update executor
         /// </summary>
-        private readonly Dictionary<ThreadTask, CancellationTokenSource> threadTokens = new Dictionary<ThreadTask, CancellationTokenSource>();
+        private readonly ParallelUpdateExecutor parallelExecutor;
 
         /// <summary>
-        ///     Starts the thread using the specified thread task
+        ///     Whether the manager has been disposed
         /// </summary>
-        /// <param name="threadTask">The thread task</param>
-        public void StartThread(ThreadTask threadTask)
+        private bool disposed;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ThreadManager" /> class with default configuration
+        /// </summary>
+        public ThreadManager() : this(new ParallelExtensionConfiguration())
         {
-            CancellationTokenSource cts = new CancellationTokenSource();
-            threadTokens.Add(threadTask, cts);
-            Task.Run(() => threadTask.Execute(cts.Token), cts.Token);
         }
 
         /// <summary>
-        ///     Stops the thread using the specified thread task
+        ///     Initializes a new instance of the <see cref="ThreadManager" /> class
         /// </summary>
-        /// <param name="threadTask">The thread task</param>
-        public void StopThread(ThreadTask threadTask)
+        /// <param name="configuration">The parallel execution configuration</param>
+        /// <exception cref="ArgumentNullException">Thrown when configuration is null</exception>
+        public ThreadManager(ParallelExtensionConfiguration configuration)
         {
-            if (threadTokens.TryGetValue(threadTask, out CancellationTokenSource cts))
+            if (configuration == null)
             {
-                cts.Cancel();
-                threadTokens.Remove(threadTask);
+                throw new ArgumentNullException(nameof(configuration));
+            }
+
+            parallelExecutor = configuration.CreateExecutor();
+        }
+
+        /// <summary>
+        ///     Gets the parallel update executor for executing component updates
+        /// </summary>
+        public ParallelUpdateExecutor ParallelExecutor
+        {
+            get
+            {
+                ThrowIfDisposed();
+                return parallelExecutor;
             }
         }
 
         /// <summary>
-        ///     Stops the all threads
+        ///     Disposes the thread manager and releases all resources
         /// </summary>
-        public void StopAllThreads()
+        public void Dispose()
         {
-            foreach (CancellationTokenSource cts in threadTokens.Values)
+            if (disposed)
             {
-                cts.Cancel();
+                return;
             }
 
-            threadTokens.Clear();
+            parallelExecutor?.Clear();
+            disposed = true;
         }
 
         /// <summary>
-        ///     Gets the thread count
+        ///     Throws if the manager has been disposed
         /// </summary>
-        /// <returns>The int</returns>
-        public int GetThreadCount() => threadTokens.Count;
+        /// <exception cref="ObjectDisposedException">Thrown when the manager is disposed</exception>
+        private void ThrowIfDisposed()
+        {
+#if NET5_0_OR_GREATER
+            ObjectDisposedException.ThrowIf(disposed, this);
+#else
+            if (disposed)
+            {
+                throw new ObjectDisposedException(GetType().FullName);
+            }
+#endif
+        }
     }
 }
+

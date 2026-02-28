@@ -28,55 +28,389 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Threading;
+using System.Diagnostics;
 using Alis.Core.Aspect.Logging;
+using Alis.Extension.Thread.Attributes;
+using Alis.Extension.Thread.Builder;
+using Alis.Extension.Thread.Configuration;
+using Alis.Extension.Thread.Integration;
+using Alis.Extension.Thread.Interfaces;
 
 namespace Alis.Extension.Thread.Sample
 {
+    /// <summary>
+    ///     Simple parallel-safe component for velocity
+    /// </summary>
+    [ParallelSafe(minBatchSize: 64)]
+    public struct VelocityComponent : IParallelCapable
+    {
+        public float X;
+        public float Y;
+        public float Z;
+        
+        public void ApplyDamping(float damping)
+        {
+            X *= damping;
+            Y *= damping;
+            Z *= damping;
+        }
+    }
+
+    /// <summary>
+    ///     Parallel-safe position component
+    /// </summary>
+    [ParallelSafe(minBatchSize: 128)]
+    public struct PositionComponent : IParallelCapable
+    {
+        public float X;
+        public float Y;
+        public float Z;
+        
+        public void ApplyVelocity(VelocityComponent velocity, float deltaTime)
+        {
+            X += velocity.X * deltaTime;
+            Y += velocity.Y * deltaTime;
+            Z += velocity.Z * deltaTime;
+        }
+    }
+
+    /// <summary>
+    ///     Component for physics calculations (heavy computation)
+    /// </summary>
+    [ParallelSafe(minBatchSize: 32)]
+    public struct PhysicsComponent : IParallelCapable
+    {
+        public float Mass;
+        public float Friction;
+        public float Restitution;
+        
+        public float CalculateForce(float acceleration)
+        {
+            return Mass * acceleration;
+        }
+    }
+
     /// <summary>
     ///     The program class
     /// </summary>
     public static class Program
     {
         /// <summary>
-        ///     Main the args
+        ///     Main entry point
         /// </summary>
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            ThreadManager threadManager = new ThreadManager();
+            Logger.Info("╔═══════════════════════════════════════════════════════════════╗");
+            Logger.Info("║        ALIS THREAD EXTENSION - PARALLEL ECS DEMO             ║");
+            Logger.Info("╚═══════════════════════════════════════════════════════════════╝\n");
 
-            CancellationTokenSource cts1 = new CancellationTokenSource();
-            ThreadTask task1 = new ThreadTask(token =>
+            // Demo 1: Basic parallel execution
+            DemoBasicParallelExecution();
+            WaitForKey("\nPress any key for configuration demo...");
+
+            // Demo 2: Custom configuration
+            DemoCustomConfiguration();
+            WaitForKey("\nPress any key for ECS integration demo...");
+
+            // Demo 3: ECS component parallelization
+            DemoEcsIntegration();
+            WaitForKey("\nPress any key for performance comparison...");
+
+            // Demo 4: Performance benchmarks
+            DemoPerformanceComparison();
+            WaitForKey("\nPress any key for advanced scenarios...");
+
+            // Demo 5: Advanced scenarios
+            DemoAdvancedScenarios();
+
+            Logger.Info("\n╔═══════════════════════════════════════════════════════════════╗");
+            Logger.Info("║                     DEMO COMPLETED                            ║");
+            Logger.Info("╚═══════════════════════════════════════════════════════════════╝");
+            WaitForKey("\nPress any key to exit...");
+        }
+
+        /// <summary>
+        ///     Demonstrates basic parallel execution
+        /// </summary>
+        private static void DemoBasicParallelExecution()
+        {
+            Logger.Info("─── 1. BASIC PARALLEL EXECUTION ───\n");
+
+            using (ThreadManager manager = ParallelExtensionBuilder.Create()
+                .EnableParallelExecution()
+                .WithAutoThreadCount()
+                .BuildManager())
             {
-                for (int i = 0; (i < 10) && !token.IsCancellationRequested; i++)
-                {
-                    System.Threading.Thread.Sleep(1000);
-                    Logger.Info($"Task 1 - {i}");
-                }
-            }, cts1.Token);
+                const int itemCount = 5000;
+                int[] data = new int[itemCount];
 
-            CancellationTokenSource cts2 = new CancellationTokenSource();
-            ThreadTask task2 = new ThreadTask(token =>
+                Logger.Info($"Processing {itemCount} items in parallel...");
+
+                Stopwatch sw = Stopwatch.StartNew();
+                manager.ParallelExecutor.ExecuteUpdate(itemCount, (start, length) =>
+                {
+                    for (int i = start; i < start + length; i++)
+                    {
+                        data[i] = ComputeExpensiveOperation(i);
+                    }
+                }, forceParallel: true, minBatchSize: 64);
+                sw.Stop();
+
+                Logger.Info($"✓ Completed in {sw.ElapsedMilliseconds}ms");
+                Logger.Info($"  Sample results: data[0]={data[0]}, data[100]={data[100]}, data[1000]={data[1000]}");
+            }
+        }
+
+        /// <summary>
+        ///     Demonstrates custom configuration
+        /// </summary>
+        private static void DemoCustomConfiguration()
+        {
+            Logger.Info("\n─── 2. CUSTOM CONFIGURATION ───\n");
+
+            // Configuration with builder
+            ParallelExtensionConfiguration config = new ParallelExtensionConfigurationBuilder()
+                .WithParallelExecution(true)
+                .WithMaxDegreeOfParallelism(4)
+                .WithMinBatchSizePerThread(32)
+                .WithDefaultMinBatchSize(64)
+                .Build();
+
+            using (ThreadManager manager = new ThreadManager(config))
             {
-                for (int i = 0; (i < 10) && !token.IsCancellationRequested; i++)
+                Logger.Info($"Configuration:");
+                Logger.Info($"  - Parallel Execution: {config.EnableParallelExecution}");
+                Logger.Info($"  - Max Threads: {config.MaxDegreeOfParallelism}");
+                Logger.Info($"  - Min Batch Size: {config.MinBatchSizePerThread}");
+                
+                int[] data = new int[2000];
+                manager.ParallelExecutor.ExecuteUpdate(data.Length, (start, length) =>
                 {
-                    System.Threading.Thread.Sleep(1000);
-                    Logger.Info($"Task 2 - {i}");
+                    for (int i = start; i < start + length; i++)
+                    {
+                        data[i] = i * 2;
+                    }
+                }, forceParallel: true);
+
+                Logger.Info($"✓ Processed {data.Length} items with custom configuration");
+            }
+        }
+
+        /// <summary>
+        ///     Demonstrates ECS integration
+        /// </summary>
+        private static void DemoEcsIntegration()
+        {
+            Logger.Info("\n─── 3. ECS COMPONENT INTEGRATION ───\n");
+
+            ComponentUpdateParallelizer parallelizer = ParallelExtensionBuilder.Create()
+                .EnableParallelExecution()
+                .WithMaxThreads(Environment.ProcessorCount)
+                .BuildParallelizer();
+
+            const int entityCount = 10000;
+            VelocityComponent[] velocities = new VelocityComponent[entityCount];
+            PositionComponent[] positions = new PositionComponent[entityCount];
+            PhysicsComponent[] physics = new PhysicsComponent[entityCount];
+
+            // Initialize components
+            for (int i = 0; i < entityCount; i++)
+            {
+                velocities[i] = new VelocityComponent { X = i * 0.1f, Y = i * 0.2f, Z = i * 0.3f };
+                positions[i] = new PositionComponent { X = 0, Y = 0, Z = 0 };
+                physics[i] = new PhysicsComponent { Mass = 1.0f + i * 0.001f, Friction = 0.5f, Restitution = 0.8f };
+            }
+
+            Logger.Info($"Simulating {entityCount} entities with 3 components each...");
+            Stopwatch sw = Stopwatch.StartNew();
+
+            const float deltaTime = 0.016f; // 60 FPS
+
+            // Update physics (parallel)
+            Span<PhysicsComponent> physicsSpan = physics.AsSpan();
+            parallelizer.ExecuteComponentUpdate(physicsSpan, index =>
+            {
+                float force = physics[index].CalculateForce(9.81f);
+                velocities[index].Y += (force / physics[index].Mass) * deltaTime;
+            });
+
+            // Apply damping to velocities (parallel)
+            Span<VelocityComponent> velocitySpan = velocities.AsSpan();
+            parallelizer.ExecuteComponentUpdate(velocitySpan, index =>
+            {
+                velocities[index].ApplyDamping(0.99f);
+            });
+
+            // Update positions (parallel with range action)
+            parallelizer.ExecuteRangeUpdate<PositionComponent>(entityCount, (start, length) =>
+            {
+                for (int i = start; i < start + length; i++)
+                {
+                    positions[i].ApplyVelocity(velocities[i], deltaTime);
                 }
-            }, cts2.Token);
+            });
 
-            threadManager.StartThread(task1);
-            threadManager.StartThread(task2);
+            sw.Stop();
+            Logger.Info($"✓ ECS update completed in {sw.ElapsedMilliseconds}ms");
+            Logger.Info($"  Entity 0 - Position: ({positions[0].X:F3}, {positions[0].Y:F3}, {positions[0].Z:F3})");
+            Logger.Info($"  Entity 500 - Position: ({positions[500].X:F3}, {positions[500].Y:F3}, {positions[500].Z:F3})");
+        }
 
-            Logger.Info("Press any key to stop all threads...");
-            Console.ReadKey();
+        /// <summary>
+        ///     Demonstrates performance comparison
+        /// </summary>
+        private static void DemoPerformanceComparison()
+        {
+            Logger.Info("\n─── 4. PERFORMANCE COMPARISON ───\n");
 
+            const int iterations = 3;
+            const int dataSize = 20000;
+            
+            // Sequential baseline
+            Logger.Info("Running sequential baseline...");
+            long sequentialTime = 0;
+            for (int iter = 0; iter < iterations; iter++)
+            {
+                int[] data = new int[dataSize];
+                Stopwatch sw = Stopwatch.StartNew();
+                for (int i = 0; i < dataSize; i++)
+                {
+                    data[i] = ComputeExpensiveOperation(i);
+                }
+                sw.Stop();
+                sequentialTime += sw.ElapsedMilliseconds;
+            }
+            sequentialTime /= iterations;
+            Logger.Info($"  Average: {sequentialTime}ms");
 
-            threadManager.StopAllThreads();
+            // Parallel execution
+            Logger.Info("\nRunning parallel execution...");
+            long parallelTime = 0;
+            using (ThreadManager manager = ParallelExtensionBuilder.Create()
+                .EnableParallelExecution()
+                .WithMaxThreads(Environment.ProcessorCount)
+                .BuildManager())
+            {
+                for (int iter = 0; iter < iterations; iter++)
+                {
+                    int[] data = new int[dataSize];
+                    Stopwatch sw = Stopwatch.StartNew();
+                    manager.ParallelExecutor.ExecuteUpdate(dataSize, (start, length) =>
+                    {
+                        for (int i = start; i < start + length; i++)
+                        {
+                            data[i] = ComputeExpensiveOperation(i);
+                        }
+                    }, forceParallel: true, minBatchSize: 64);
+                    sw.Stop();
+                    parallelTime += sw.ElapsedMilliseconds;
+                }
+            }
+            parallelTime /= iterations;
+            Logger.Info($"  Average: {parallelTime}ms");
 
-            Logger.Info("Press any key to exit...");
-            Console.ReadKey();
+            double speedup = (double)sequentialTime / parallelTime;
+            Logger.Info($"\n✓ Speedup: {speedup:F2}x faster");
+            Logger.Info($"  Efficiency: {(speedup / Environment.ProcessorCount * 100):F1}%");
+        }
+
+        /// <summary>
+        ///     Demonstrates advanced scenarios
+        /// </summary>
+        private static void DemoAdvancedScenarios()
+        {
+            Logger.Info("\n─── 5. ADVANCED SCENARIOS ───\n");
+
+            // Scenario 1: Adaptive batch sizing
+            Logger.Info("Scenario 1: Adaptive batch sizing");
+            using (ThreadManager manager = ParallelExtensionBuilder.Create()
+                .WithMinBatchSize(32)
+                .BuildManager())
+            {
+                VelocityComponent[] smallDataset = new VelocityComponent[100];
+                VelocityComponent[] largeDataset = new VelocityComponent[10000];
+
+                Span<VelocityComponent> smallSpan = smallDataset.AsSpan();
+                Span<VelocityComponent> largeSpan = largeDataset.AsSpan();
+
+                ComponentUpdateParallelizer parallelizer = new ComponentUpdateParallelizer(manager.ParallelExecutor);
+
+                // Small dataset - likely sequential
+                parallelizer.ExecuteComponentUpdate(smallSpan, i => smallDataset[i].X = i);
+                Logger.Info($"  ✓ Small dataset ({smallDataset.Length} items) processed");
+
+                // Large dataset - parallel
+                parallelizer.ExecuteComponentUpdate(largeSpan, i => largeDataset[i].X = i);
+                Logger.Info($"  ✓ Large dataset ({largeDataset.Length} items) processed");
+            }
+
+            // Scenario 2: Mixed component updates
+            Logger.Info("\nScenario 2: Mixed sequential and parallel updates");
+            using (ThreadManager manager = new ThreadManager())
+            {
+                const int count = 5000;
+                float[] criticalData = new float[count]; // Sequential
+                int[] normalData = new int[count]; // Parallel
+
+                // Critical section - sequential
+                for (int i = 0; i < count; i++)
+                {
+                    criticalData[i] = (float)Math.Sin(i * 0.01);
+                }
+
+                // Normal processing - parallel
+                manager.ParallelExecutor.ExecuteUpdate(count, (start, length) =>
+                {
+                    for (int i = start; i < start + length; i++)
+                    {
+                        normalData[i] = (int)(criticalData[i] * 1000);
+                    }
+                }, forceParallel: true);
+
+                Logger.Info($"  ✓ Mixed update completed");
+            }
+
+            // Scenario 3: Disabled parallelism for debugging
+            Logger.Info("\nScenario 3: Debugging mode (parallel disabled)");
+            using (ThreadManager manager = ParallelExtensionBuilder.Create()
+                .DisableParallelExecution()
+                .BuildManager())
+            {
+                int[] data = new int[1000];
+                manager.ParallelExecutor.ExecuteUpdate(data.Length, (start, length) =>
+                {
+                    for (int i = start; i < start + length; i++)
+                    {
+                        data[i] = i;
+                    }
+                });
+                Logger.Info($"  ✓ Debug mode: sequential execution verified");
+            }
+        }
+
+        /// <summary>
+        ///     Simulates an expensive computation
+        /// </summary>
+        private static int ComputeExpensiveOperation(int input)
+        {
+            int result = input;
+            for (int i = 0; i < 150; i++)
+            {
+                result = (result * 31 + i) % 1000000;
+            }
+            return result;
+        }
+
+        /// <summary>
+        ///     Waits for user key press
+        /// </summary>
+        private static void WaitForKey(string message)
+        {
+            Logger.Info(message);
+            Console.ReadKey(true);
+            Console.Clear();
         }
     }
 }
+

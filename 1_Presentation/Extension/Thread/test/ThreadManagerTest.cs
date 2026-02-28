@@ -27,7 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Threading;
+using System;
+using Alis.Extension.Thread.Configuration;
 using Xunit;
 
 namespace Alis.Extension.Thread.Test
@@ -38,263 +39,177 @@ namespace Alis.Extension.Thread.Test
     public class ThreadManagerTest
     {
         /// <summary>
-        ///     Tests that start thread should start new thread
+        ///     Tests that constructor with default configuration creates valid manager
         /// </summary>
         [Fact]
-        public void StartThread_ShouldStartNewThread()
+        public void Constructor_WithDefaultConfiguration_CreatesValidManager()
         {
-            // Arrange
-            ThreadManager threadManager = new ThreadManager();
-            CancellationTokenSource cts = new CancellationTokenSource();
-            ThreadTask threadTask = new ThreadTask(token =>
-            {
-                while (!token.IsCancellationRequested)
-                {
-                    System.Threading.Thread.Sleep(10); // Task that sleeps for 1 second
-                }
-            }, cts.Token);
-
             // Act
-            threadManager.StartThread(threadTask);
-
-            //wait 1s
-            System.Threading.Thread.Sleep(100);
-
-            Assert.Equal(1, threadManager.GetThreadCount());
-
-            // stop the thread
-            threadManager.StopAllThreads();
-
-            // Assert
-            Assert.Equal(0, threadManager.GetThreadCount());
+            using (ThreadManager manager = new ThreadManager())
+            {
+                // Assert
+                Assert.NotNull(manager);
+                Assert.NotNull(manager.ParallelExecutor);
+            }
         }
 
         /// <summary>
-        ///     Tests that stop all threads should stop all threads
+        ///     Tests that constructor with custom configuration creates valid manager
         /// </summary>
         [Fact]
-        public void StopAllThreads_ShouldStopAllThreads()
+        public void Constructor_WithCustomConfiguration_CreatesValidManager()
         {
             // Arrange
-            ThreadManager threadManager = new ThreadManager();
-            CancellationTokenSource cts1 = new CancellationTokenSource();
-            ThreadTask threadTask1 = new ThreadTask(token =>
-            {
-                while (!token.IsCancellationRequested)
-                {
-                    System.Threading.Thread.Sleep(15); // Task that sleeps for 1 second
-                }
-            }, cts1.Token);
-
-            CancellationTokenSource cts2 = new CancellationTokenSource();
-            ThreadTask threadTask2 = new ThreadTask(token =>
-            {
-                while (!token.IsCancellationRequested)
-                {
-                    System.Threading.Thread.Sleep(120); // Task that sleeps for 1 second
-                }
-            }, cts2.Token);
+            ParallelExtensionConfiguration config = new ParallelExtensionConfigurationBuilder()
+                .WithParallelExecution(true)
+                .WithMaxDegreeOfParallelism(4)
+                .Build();
 
             // Act
-            threadManager.StartThread(threadTask1);
-            threadManager.StartThread(threadTask2);
-
-            System.Threading.Thread.Sleep(10); // Wait for threads to start
-
-            threadManager.StopAllThreads();
-
-            // Assert
-            Assert.Equal(0, threadManager.GetThreadCount());
-        }
-
-
-        /// <summary>
-        ///     Tests that get thread count should return correct count
-        /// </summary>
-        [Fact]
-        public void GetThreadCount_ShouldReturnCorrectCount()
-        {
-            // Arrange
-            ThreadManager threadManager = new ThreadManager();
-            CancellationTokenSource cts1 = new CancellationTokenSource();
-            ThreadTask threadTask1 = new ThreadTask(token =>
+            using (ThreadManager manager = new ThreadManager(config))
             {
-                while (!token.IsCancellationRequested)
-                {
-                    System.Threading.Thread.Sleep(12); // Task that sleeps for 1 second
-                }
-            }, cts1.Token);
-
-            CancellationTokenSource cts2 = new CancellationTokenSource();
-            ThreadTask threadTask2 = new ThreadTask(token =>
-            {
-                while (!token.IsCancellationRequested)
-                {
-                    System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
-                }
-            }, cts2.Token);
-
-            // Act
-            threadManager.StartThread(threadTask1);
-            threadManager.StartThread(threadTask2);
-
-            // wait the threads to end
-            System.Threading.Thread.Sleep(19);
-
-            Assert.Equal(2, threadManager.GetThreadCount());
-
-            //end the threads
-            threadManager.StopAllThreads();
-
-            System.Threading.Thread.Sleep(100);
-
-            // Assert
-            Assert.Equal(0, threadManager.GetThreadCount());
+                // Assert
+                Assert.NotNull(manager);
+                Assert.NotNull(manager.ParallelExecutor);
+            }
         }
 
         /// <summary>
-        ///     Tests that start thread v 2 should start new thread
+        ///     Tests that constructor with null configuration throws argument null exception
         /// </summary>
         [Fact]
-        public void StartThread_v2_ShouldStartNewThread()
+        public void Constructor_WithNullConfiguration_ThrowsArgumentNullException()
+        {
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => new ThreadManager(null));
+        }
+
+        /// <summary>
+        ///     Tests that parallel executor property returns valid executor
+        /// </summary>
+        [Fact]
+        public void ParallelExecutor_ReturnsValidExecutor()
+        {
+            // Arrange
+            using (ThreadManager manager = new ThreadManager())
+            {
+                // Act
+                var executor = manager.ParallelExecutor;
+
+                // Assert
+                Assert.NotNull(executor);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that parallel executor after dispose throws object disposed exception
+        /// </summary>
+        [Fact]
+        public void ParallelExecutor_AfterDispose_ThrowsObjectDisposedException()
         {
             // Arrange
             ThreadManager manager = new ThreadManager();
-            CancellationTokenSource cts2 = new CancellationTokenSource();
-            ThreadTask threadTask2 = new ThreadTask(token =>
-            {
-                while (!token.IsCancellationRequested)
-                {
-                    System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
-                }
-            }, cts2.Token);
+            manager.Dispose();
 
-            // Act
-            manager.StartThread(threadTask2);
-
-            //wait 1s
-            System.Threading.Thread.Sleep(100);
-
-            // Assert
-            Assert.Equal(1, manager.GetThreadCount());
-
-            // stop the thread
-            manager.StopAllThreads();
-
-            System.Threading.Thread.Sleep(100);
-
-            // Assert
-            Assert.Equal(0, manager.GetThreadCount());
+            // Act & Assert
+            Assert.Throws<ObjectDisposedException>(() => manager.ParallelExecutor);
         }
 
         /// <summary>
-        ///     Tests that stop thread should stop specific thread
+        ///     Tests that dispose can be called multiple times safely
         /// </summary>
         [Fact]
-        public void StopThread_ShouldStopSpecificThread()
-        {
-            // Arrange
-            ThreadManager manager = new ThreadManager();
-            CancellationTokenSource cts2 = new CancellationTokenSource();
-            ThreadTask threadTask2 = new ThreadTask(token =>
-            {
-                while (!token.IsCancellationRequested)
-                {
-                    System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
-                }
-            }, cts2.Token);
-
-            // Act
-            manager.StartThread(threadTask2);
-
-            // Act
-            manager.StopThread(threadTask2);
-
-            System.Threading.Thread.Sleep(100);
-
-            // Assert
-            Assert.Equal(0, manager.GetThreadCount());
-        }
-
-        /// <summary>
-        ///     Tests that stop all threads v 2 should stop all threads
-        /// </summary>
-        [Fact]
-        public void StopAllThreads_v2_ShouldStopAllThreads()
+        public void Dispose_CalledMultipleTimes_DoesNotThrow()
         {
             // Arrange
             ThreadManager manager = new ThreadManager();
 
-            CancellationTokenSource cts1 = new CancellationTokenSource();
-            ThreadTask threadTask1 = new ThreadTask(token =>
-            {
-                while (!token.IsCancellationRequested)
-                {
-                    System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
-                }
-            }, cts1.Token);
-
-            CancellationTokenSource cts2 = new CancellationTokenSource();
-            ThreadTask threadTask2 = new ThreadTask(token =>
-            {
-                while (!token.IsCancellationRequested)
-                {
-                    System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
-                }
-            }, cts2.Token);
-
-            manager.StartThread(threadTask1);
-            manager.StartThread(threadTask2);
-
             // Act
-            manager.StopAllThreads();
+            manager.Dispose();
+            manager.Dispose();
+            manager.Dispose();
 
-            System.Threading.Thread.Sleep(100);
-
-            // Assert
-            Assert.Equal(0, manager.GetThreadCount());
+            // Assert - no exception thrown
+            Assert.True(true);
         }
 
         /// <summary>
-        ///     Tests that get thread count should return correct thread count
+        ///     Tests that manager can execute parallel work
         /// </summary>
         [Fact]
-        public void GetThreadCount_ShouldReturnCorrectThreadCount()
+        public void ThreadManager_CanExecuteParallelWork()
+        {
+            // Arrange
+            using (ThreadManager manager = new ThreadManager())
+            {
+                int[] data = new int[1000];
+
+                // Act
+                manager.ParallelExecutor.ExecuteUpdate(data.Length, (start, length) =>
+                {
+                    for (int i = start; i < start + length; i++)
+                    {
+                        data[i] = i * 2;
+                    }
+                }, forceParallel: true, minBatchSize: 64);
+
+                // Assert
+                for (int i = 0; i < data.Length; i++)
+                {
+                    Assert.Equal(i * 2, data[i]);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that manager with disabled parallelism works
+        /// </summary>
+        [Fact]
+        public void ThreadManager_WithDisabledParallelism_ExecutesSequentially()
+        {
+            // Arrange
+            ParallelExtensionConfiguration config = new ParallelExtensionConfigurationBuilder()
+                .WithParallelExecution(false)
+                .Build();
+
+            using (ThreadManager manager = new ThreadManager(config))
+            {
+                int[] data = new int[100];
+
+                // Act
+                manager.ParallelExecutor.ExecuteUpdate(data.Length, (start, length) =>
+                {
+                    for (int i = start; i < start + length; i++)
+                    {
+                        data[i] = i;
+                    }
+                });
+
+                // Assert
+                for (int i = 0; i < data.Length; i++)
+                {
+                    Assert.Equal(i, data[i]);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that dispose releases resources properly
+        /// </summary>
+        [Fact]
+        public void Dispose_ReleasesResourcesProperly()
         {
             // Arrange
             ThreadManager manager = new ThreadManager();
-
-            CancellationTokenSource cts1 = new CancellationTokenSource();
-            ThreadTask threadTask1 = new ThreadTask(token =>
-            {
-                while (!token.IsCancellationRequested)
-                {
-                    System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
-                }
-            }, cts1.Token);
-
-            CancellationTokenSource cts2 = new CancellationTokenSource();
-            ThreadTask threadTask2 = new ThreadTask(token =>
-            {
-                while (!token.IsCancellationRequested)
-                {
-                    System.Threading.Thread.Sleep(13); // Task that sleeps for 1 second
-                }
-            }, cts2.Token);
-
-            manager.StartThread(threadTask1);
-            manager.StartThread(threadTask2);
-
-            Assert.Equal(2, manager.GetThreadCount());
+            var executor = manager.ParallelExecutor; // Access before dispose
 
             // Act
-            manager.StopThread(threadTask1);
-            manager.StopThread(threadTask2);
-
-            System.Threading.Thread.Sleep(100);
+            manager.Dispose();
 
             // Assert
-            Assert.Equal(0, manager.GetThreadCount());
+            Assert.NotNull(executor); // Executor reference still exists
+            Assert.Throws<ObjectDisposedException>(() => manager.ParallelExecutor); // But manager is disposed
         }
     }
 }
+
