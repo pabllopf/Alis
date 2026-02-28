@@ -141,7 +141,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogLevel_OrderingIsMonotonic()
         {
             // Arrange
-            var levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical, LogLevel.None };
+            LogLevel[] levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical, LogLevel.None };
 
             // Assert
             for (int i = 0; i < levels.Length - 1; i++)
@@ -154,7 +154,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogLevel_HasSevenValues()
         {
             // Arrange
-            var values = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical, LogLevel.None };
+            LogLevel[] values = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical, LogLevel.None };
 
             // Assert
             Assert.Equal(7, values.Length);

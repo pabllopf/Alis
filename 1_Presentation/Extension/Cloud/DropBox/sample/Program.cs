@@ -28,10 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Systems.Scope;
+using Dropbox.Api.Files;
 
 namespace Alis.Extension.Cloud.DropBox.Sample
 {
@@ -49,10 +51,10 @@ namespace Alis.Extension.Cloud.DropBox.Sample
             Logger.Info("");
 
             // Create a new context for the game engine
-            var context = new Context();
+            Context context = new Context();
 
             // Create the DropBox cloud manager
-            var dropBoxManager = new DropBoxCloudManager(context);
+            DropBoxCloudManager dropBoxManager = new DropBoxCloudManager(context);
             Logger.Info($"DropBox Manager created: {dropBoxManager.Name} ({dropBoxManager.Tag})");
             Logger.Info("");
 
@@ -155,14 +157,14 @@ namespace Alis.Extension.Cloud.DropBox.Sample
                 }
 
                 // Example: Upload a file
-                var localFile = Path.GetTempFileName();
+                string localFile = Path.GetTempFileName();
                 try
                 {
                     // Create a sample file
                     File.WriteAllText(localFile, "Sample content for Dropbox upload");
 
                     // Upload the file
-                    var metadata = await manager.UploadFileAsync(localFile, "/sample-upload.txt");
+                    FileMetadata metadata = await manager.UploadFileAsync(localFile, "/sample-upload.txt");
                     Logger.Info($"Successfully uploaded file: {metadata.Name}");
                     Logger.Info($"File path: {metadata.PathDisplay}");
                 }
@@ -208,12 +210,12 @@ namespace Alis.Extension.Cloud.DropBox.Sample
                 }
 
                 // Example: Download a file
-                var downloadPath = Path.Combine(Path.GetTempPath(), "downloaded-file.txt");
+                string downloadPath = Path.Combine(Path.GetTempPath(), "downloaded-file.txt");
                 await manager.DownloadFileAsync("/sample-upload.txt", downloadPath);
 
                 if (File.Exists(downloadPath))
                 {
-                    var content = File.ReadAllText(downloadPath);
+                    string content = File.ReadAllText(downloadPath);
                     Logger.Info($"Successfully downloaded file with content: {content}");
                     File.Delete(downloadPath);
                 }
@@ -252,12 +254,12 @@ namespace Alis.Extension.Cloud.DropBox.Sample
                 }
 
                 // Example: List files in root directory
-                var files = await manager.ListFilesAsync("/");
+                IList<Metadata> files = await manager.ListFilesAsync("/");
 
                 Logger.Info($"Found {files.Count} items in Dropbox:");
-                foreach (var file in files)
+                foreach (Metadata file in files)
                 {
-                    var fileType = file is Dropbox.Api.Files.FileMetadata ? "File" : "Folder";
+                    string fileType = file is Dropbox.Api.Files.FileMetadata ? "File" : "Folder";
                     Logger.Info($"  - {file.Name} ({fileType})");
                 }
             }
@@ -294,7 +296,7 @@ namespace Alis.Extension.Cloud.DropBox.Sample
                 }
 
                 // Example: Get metadata for a specific file
-                var metadata = await manager.GetMetadataAsync("/sample-upload.txt");
+                Metadata metadata = await manager.GetMetadataAsync("/sample-upload.txt");
                 Logger.Info($"File metadata retrieved:");
                 Logger.Info($"  - Name: {metadata.Name}");
                 Logger.Info($"  - Path: {metadata.PathDisplay}");

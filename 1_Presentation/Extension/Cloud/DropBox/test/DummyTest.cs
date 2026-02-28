@@ -61,10 +61,10 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void Constructor_WithContext_CreatesManagerSuccessfully()
         {
             // Arrange
-            var context = CreateMockContext();
+            Context context = CreateMockContext();
 
             // Act
-            var manager = new DropBoxCloudManager(context);
+            DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
             // Assert
             Assert.NotNull(manager);
@@ -80,13 +80,13 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void Constructor_WithAllParameters_CreatesManagerSuccessfully()
         {
             // Arrange
-            var context = CreateMockContext();
-            var id = "test-id";
-            var name = "TestManager";
-            var tag = "TestTag";
+            Context context = CreateMockContext();
+            string id = "test-id";
+            string name = "TestManager";
+            string tag = "TestTag";
 
             // Act
-            var manager = new DropBoxCloudManager(id, name, tag, true, context);
+            DropBoxCloudManager manager = new DropBoxCloudManager(id, name, tag, true, context);
 
             // Assert
             Assert.NotNull(manager);
@@ -103,8 +103,8 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public async Task InitializeAsync_WithNullToken_ThrowsArgumentException()
         {
             // Arrange
-            var context = CreateMockContext();
-            var manager = new DropBoxCloudManager(context);
+            Context context = CreateMockContext();
+            DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
             // Act & Assert
             await Assert.ThrowsAsync<ArgumentException>(() => manager.InitializeAsync(null));
@@ -117,8 +117,8 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public async Task InitializeAsync_WithEmptyToken_ThrowsArgumentException()
         {
             // Arrange
-            var context = CreateMockContext();
-            var manager = new DropBoxCloudManager(context);
+            Context context = CreateMockContext();
+            DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
             // Act & Assert
             await Assert.ThrowsAsync<ArgumentException>(() => manager.InitializeAsync(string.Empty));
@@ -131,9 +131,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public async Task UploadFileAsync_WithoutInitialization_ThrowsInvalidOperationException()
         {
             // Arrange
-            var context = CreateMockContext();
-            var manager = new DropBoxCloudManager(context);
-            var tempFile = Path.GetTempFileName();
+            Context context = CreateMockContext();
+            DropBoxCloudManager manager = new DropBoxCloudManager(context);
+            string tempFile = Path.GetTempFileName();
 
             try
             {
@@ -157,12 +157,12 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public async Task UploadFileAsync_WithNonExistentFile_ThrowsFileNotFoundException()
         {
             // Arrange
-            var context = CreateMockContext();
-            var manager = new DropBoxCloudManager(context);
+            Context context = CreateMockContext();
+            DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
             // We can't fully test initialization without a real token, but we can test the file check
             // by using reflection or by catching the exception type
-            var nonExistentFile = "/path/that/does/not/exist/file.txt";
+            string nonExistentFile = "/path/that/does/not/exist/file.txt";
 
             // Act & Assert - This will fail due to not being initialized, but that's expected
             // We're testing the structure, not actual Dropbox API calls
@@ -177,8 +177,8 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public async Task DownloadFileAsync_WithoutInitialization_ThrowsInvalidOperationException()
         {
             // Arrange
-            var context = CreateMockContext();
-            var manager = new DropBoxCloudManager(context);
+            Context context = CreateMockContext();
+            DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
             // Act & Assert
             await Assert.ThrowsAsync<InvalidOperationException>(() =>
@@ -192,8 +192,8 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public async Task ListFilesAsync_WithoutInitialization_ThrowsInvalidOperationException()
         {
             // Arrange
-            var context = CreateMockContext();
-            var manager = new DropBoxCloudManager(context);
+            Context context = CreateMockContext();
+            DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
             // Act & Assert
             await Assert.ThrowsAsync<InvalidOperationException>(() =>
@@ -207,8 +207,8 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public async Task DeleteAsync_WithoutInitialization_ThrowsInvalidOperationException()
         {
             // Arrange
-            var context = CreateMockContext();
-            var manager = new DropBoxCloudManager(context);
+            Context context = CreateMockContext();
+            DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
             // Act & Assert
             await Assert.ThrowsAsync<InvalidOperationException>(() =>
@@ -222,8 +222,8 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public async Task GetMetadataAsync_WithoutInitialization_ThrowsInvalidOperationException()
         {
             // Arrange
-            var context = CreateMockContext();
-            var manager = new DropBoxCloudManager(context);
+            Context context = CreateMockContext();
+            DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
             // Act & Assert
             await Assert.ThrowsAsync<InvalidOperationException>(() =>
@@ -237,8 +237,8 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void OnDestroy_DisposesResources()
         {
             // Arrange
-            var context = CreateMockContext();
-            var manager = new DropBoxCloudManager(context);
+            Context context = CreateMockContext();
+            DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
             // Act
             manager.OnDestroy();
@@ -254,8 +254,8 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void IsInitialized_BeforeInitialization_ReturnsFalse()
         {
             // Arrange
-            var context = CreateMockContext();
-            var manager = new DropBoxCloudManager(context);
+            Context context = CreateMockContext();
+            DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
             // Act & Assert
             Assert.False(manager.IsInitialized);
@@ -269,8 +269,8 @@ namespace Alis.Extension.Cloud.DropBox.Test
         {
             // This test validates internal behavior through public API
             // Arrange
-            var context = CreateMockContext();
-            var manager = new DropBoxCloudManager(context);
+            Context context = CreateMockContext();
+            DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
             // Act - We can't directly test path normalization, but we can verify
             // that the manager properly handles paths without leading slashes
@@ -288,10 +288,10 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void Constructor_Default_InitializesWithDefaultValues()
         {
             // Arrange
-            var context = CreateMockContext();
+            Context context = CreateMockContext();
 
             // Act
-            var manager = new DropBoxCloudManager(context);
+            DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
             // Assert
             Assert.NotNull(manager.Id);
@@ -307,12 +307,12 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void MultipleInstances_AreIndependent()
         {
             // Arrange
-            var context1 = CreateMockContext();
-            var context2 = CreateMockContext();
+            Context context1 = CreateMockContext();
+            Context context2 = CreateMockContext();
 
             // Act
-            var manager1 = new DropBoxCloudManager(context1);
-            var manager2 = new DropBoxCloudManager(context2);
+            DropBoxCloudManager manager1 = new DropBoxCloudManager(context1);
+            DropBoxCloudManager manager2 = new DropBoxCloudManager(context2);
 
             // Assert
             Assert.NotEqual(manager1.Id, manager2.Id);
@@ -327,8 +327,8 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void ManagerProperties_CanBeModified()
         {
             // Arrange
-            var context = CreateMockContext();
-            var manager = new DropBoxCloudManager(context);
+            Context context = CreateMockContext();
+            DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
             // Act
             manager.Name = "NewName";

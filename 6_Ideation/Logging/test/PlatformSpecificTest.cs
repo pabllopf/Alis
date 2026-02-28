@@ -31,6 +31,7 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Outputs;
 using Alis.Core.Aspect.Logging.Test.Attributes;
 using Xunit;
@@ -47,19 +48,19 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Logging_Windows_PathWithBackslashes()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput();
+                MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("Logger");
+                ILogger logger = factory.CreateLogger("Logger");
 
-                var windowsPath = "C:\\Users\\TestUser\\Documents\\file.txt";
+                string windowsPath = "C:\\Users\\TestUser\\Documents\\file.txt";
 
                 // Act
                 logger.LogInfo($"File path: {windowsPath}");
 
                 // Assert
-                var entry = memoryOutput.GetEntries()[0];
+                ILogEntry entry = memoryOutput.GetEntries()[0];
                 Assert.Contains("\\", entry.Message);
             }
         }
@@ -68,19 +69,19 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Logging_Linux_PathWithForwardSlashes()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput();
+                MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("Logger");
+                ILogger logger = factory.CreateLogger("Logger");
 
-                var linuxPath = "/home/user/documents/file.txt";
+                string linuxPath = "/home/user/documents/file.txt";
 
                 // Act
                 logger.LogInfo($"File path: {linuxPath}");
 
                 // Assert
-                var entry = memoryOutput.GetEntries()[0];
+                ILogEntry entry = memoryOutput.GetEntries()[0];
                 Assert.Contains("/", entry.Message);
             }
         }
@@ -89,12 +90,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Logging_CurrentPlatform_ShouldBeDetected()
         {
             // Act
-            var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-            var isLinux = RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
-            var isOSX = RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+            bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+            bool isLinux = RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+            bool isOSX = RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
 
             // Assert - Exactly one should be true
-            var count = (isWindows ? 1 : 0) + (isLinux ? 1 : 0) + (isOSX ? 1 : 0);
+            int count = (isWindows ? 1 : 0) + (isLinux ? 1 : 0) + (isOSX ? 1 : 0);
             Assert.Equal(1, count);
         }
 
@@ -102,17 +103,17 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Logging_Windows_LineEndings()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput();
+                MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("Logger");
+                ILogger logger = factory.CreateLogger("Logger");
 
                 // Act
                 logger.LogInfo("Line 1\nLine 2");
 
                 // Assert
-                var entry = memoryOutput.GetEntries()[0];
+                ILogEntry entry = memoryOutput.GetEntries()[0];
                 Assert.Contains("\n", entry.Message);
             }
         }
@@ -121,7 +122,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Logging_Linux_Environment()
         {
             // Arrange
-            var homeDir = Environment.GetEnvironmentVariable("HOME");
+            string homeDir = Environment.GetEnvironmentVariable("HOME");
 
             // Assert
             Assert.NotNull(homeDir);
@@ -132,15 +133,15 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Logging_AllPlatforms_DateTime()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput();
+                MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("Logger");
+                ILogger logger = factory.CreateLogger("Logger");
 
                 // Act
                 logger.LogInfo("Test");
-                var entry = memoryOutput.GetEntries()[0];
+                ILogEntry entry = memoryOutput.GetEntries()[0];
 
                 // Assert - Timestamp should be valid
                 Assert.True(entry.Timestamp.Year >= 2020);
@@ -152,7 +153,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Logging_Windows_TempPath()
         {
             // Arrange
-            var tempPath = Path.GetTempPath();
+            string tempPath = Path.GetTempPath();
 
             // Assert
             Assert.NotEmpty(tempPath);
@@ -163,15 +164,15 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Logging_ThreadInfo_ShouldBeValid()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput();
+                MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("Logger");
+                ILogger logger = factory.CreateLogger("Logger");
 
                 // Act
                 logger.LogInfo("Test");
-                var entry = memoryOutput.GetEntries()[0];
+                ILogEntry entry = memoryOutput.GetEntries()[0];
 
                 // Assert
                 Assert.True(entry.ThreadId > 0);
@@ -182,19 +183,19 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Logging_Unicode_AcrossAllPlatforms()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput();
+                MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("Logger");
+                ILogger logger = factory.CreateLogger("Logger");
 
-                var unicodeMessage = "Unicode: 你好 مرحبا Привет 🎮";
+                string unicodeMessage = "Unicode: 你好 مرحبا Привет 🎮";
 
                 // Act
                 logger.LogInfo(unicodeMessage);
 
                 // Assert
-                var entry = memoryOutput.GetEntries()[0];
+                ILogEntry entry = memoryOutput.GetEntries()[0];
                 Assert.Equal(unicodeMessage, entry.Message);
             }
         }
@@ -203,7 +204,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Logging_ProcessInfo_ShouldBeAvailable()
         {
             // Arrange
-            var processId = System.Diagnostics.Process.GetCurrentProcess().Id;
+            int processId = System.Diagnostics.Process.GetCurrentProcess().Id;
 
             // Assert
             Assert.True(processId > 0);
@@ -215,9 +216,9 @@ namespace Alis.Core.Aspect.Logging.Test
             // Note: Windows file system is case-insensitive
 
             // Arrange
-            var tempDir = Path.GetTempPath();
-            var path1 = Path.Combine(tempDir, "TestFile.txt");
-            var path2 = Path.Combine(tempDir, "testfile.txt");
+            string tempDir = Path.GetTempPath();
+            string path1 = Path.Combine(tempDir, "TestFile.txt");
+            string path2 = Path.Combine(tempDir, "testfile.txt");
 
             // On Windows, these refer to the same file
             // This is informational - we don't create actual files
@@ -230,9 +231,9 @@ namespace Alis.Core.Aspect.Logging.Test
             // Note: Linux file system is case-sensitive
 
             // Arrange
-            var tempDir = Path.GetTempPath();
-            var path1 = Path.Combine(tempDir, "TestFile.txt");
-            var path2 = Path.Combine(tempDir, "testfile.txt");
+            string tempDir = Path.GetTempPath();
+            string path1 = Path.Combine(tempDir, "TestFile.txt");
+            string path2 = Path.Combine(tempDir, "testfile.txt");
 
             // On Linux, these refer to different files
             Assert.NotEqual(path1, path2, StringComparer.Ordinal);

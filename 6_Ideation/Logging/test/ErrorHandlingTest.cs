@@ -48,7 +48,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_AddNullOutput_ShouldThrow()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 // Act & Assert
                 Assert.Throws<ArgumentNullException>(() => factory.AddOutput(null));
@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_AddNullFilter_ShouldThrow()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 // Act & Assert
                 Assert.Throws<ArgumentNullException>(() => factory.AddFilter(null));
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_SetNullFormatter_ShouldThrow()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 // Act & Assert
                 Assert.Throws<ArgumentNullException>(() => factory.SetFormatter(null));
@@ -105,10 +105,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Logger_LogAfterDispose_ShouldHandleGracefully()
         {
             // Arrange
-            var factory = new LoggerFactory();
-            var memoryOutput = new MemoryLogOutput();
+            LoggerFactory factory = new LoggerFactory();
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
             factory.AddOutput(memoryOutput);
-            var logger = factory.CreateLogger("TestLogger");
+            ILogger logger = factory.CreateLogger("TestLogger");
 
             // Act
             factory.Dispose();
@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void FileLogOutput_WriteAfterDispose_ShouldHandleGracefully()
         {
             // Arrange
-            var output = new FileLogOutput(System.IO.Path.GetTempFileName());
+            FileLogOutput output = new FileLogOutput(System.IO.Path.GetTempFileName());
 
             // Act
             output.Dispose();
@@ -134,7 +134,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_WithNullException_ShouldHandleGracefully()
         {
             // Arrange & Act
-            var entry = new LogEntry(LogLevel.Error, "Error", "Logger", exception: null);
+            LogEntry entry = new LogEntry(LogLevel.Error, "Error", "Logger", exception: null);
 
             // Assert
             Assert.Null(entry.Exception);
@@ -144,11 +144,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_WithNullException_ShouldWork()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var entry = new LogEntry(LogLevel.Error, "Error", "Logger", exception: null);
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Error, "Error", "Logger", exception: null);
 
             // Act
-            var result = formatter.Format(entry);
+            string result = formatter.Format(entry);
 
             // Assert
             Assert.NotNull(result);
@@ -159,11 +159,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_WithNullException_ShouldNotIncludeException()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var result = formatter.Format(entry);
+            string result = formatter.Format(entry);
 
             // Assert
             Assert.DoesNotContain("\"exception\":", result);
@@ -173,10 +173,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_NullEntry_ShouldReturnFalse()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(_ => true);
+            ConditionalLogFilter filter = new ConditionalLogFilter(_ => true);
 
             // Act
-            var result = filter.ShouldLog(null);
+            bool result = filter.ShouldLog(null);
 
             // Assert
             Assert.True(result);
@@ -186,11 +186,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerNameFilter_EmptyNameList_ShouldAllowAll()
         {
             // Arrange
-            var filter = new LoggerNameFilter(new string[] { }, inclusive: true);
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            LoggerNameFilter filter = new LoggerNameFilter(new string[] { }, inclusive: true);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var result = filter.ShouldLog(entry);
+            bool result = filter.ShouldLog(entry);
 
             // Assert
             Assert.True(result);
@@ -200,13 +200,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_RequireAll_AllMustPass()
         {
             // Arrange
-            var filter1 = new ConditionalLogFilter(e => e.Message.Length > 0);
-            var filter2 = new ConditionalLogFilter(e => e.LoggerName != null);
-            var composite = new CompositeLogFilter(new[] { filter1, filter2 }, requireAll: true);
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            ConditionalLogFilter filter1 = new ConditionalLogFilter(e => e.Message.Length > 0);
+            ConditionalLogFilter filter2 = new ConditionalLogFilter(e => e.LoggerName != null);
+            CompositeLogFilter composite = new CompositeLogFilter(new[] { filter1, filter2 }, requireAll: true);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var result = composite.ShouldLog(entry);
+            bool result = composite.ShouldLog(entry);
 
             // Assert
             Assert.True(result);
@@ -216,13 +216,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_RequireAny_OneMustPass()
         {
             // Arrange
-            var filter1 = new ConditionalLogFilter(_ => false);
-            var filter2 = new ConditionalLogFilter(_ => true);
-            var composite = new CompositeLogFilter(new[] { filter1, filter2 }, requireAll: false);
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            ConditionalLogFilter filter1 = new ConditionalLogFilter(_ => false);
+            ConditionalLogFilter filter2 = new ConditionalLogFilter(_ => true);
+            CompositeLogFilter composite = new CompositeLogFilter(new[] { filter1, filter2 }, requireAll: false);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var result = composite.ShouldLog(entry);
+            bool result = composite.ShouldLog(entry);
 
             // Assert
             Assert.True(result);
@@ -232,8 +232,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void MemoryLogOutput_IsDisabledAfterDispose()
         {
             // Arrange
-            var output = new MemoryLogOutput();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            MemoryLogOutput output = new MemoryLogOutput();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
             output.Dispose();

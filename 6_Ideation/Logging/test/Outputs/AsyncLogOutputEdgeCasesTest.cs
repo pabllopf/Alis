@@ -48,8 +48,8 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void AsyncLogOutput_HighVolumeWrites()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput(maxEntries: 0);
-            var asyncOutput = new AsyncLogOutput(innerOutput);
+            MemoryLogOutput innerOutput = new MemoryLogOutput(maxEntries: 0);
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
 
             // Act
             for (int i = 0; i < 10000; i++)
@@ -66,9 +66,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void AsyncLogOutput_ConcurrentWrites()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput(maxEntries: 0);
-            var asyncOutput = new AsyncLogOutput(innerOutput);
-            var tasks = new Task[10];
+            MemoryLogOutput innerOutput = new MemoryLogOutput(maxEntries: 0);
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
+            Task[] tasks = new Task[10];
 
             // Act
             for (int t = 0; t < 10; t++)
@@ -94,8 +94,8 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void AsyncLogOutput_FlushMultipleTimes()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput(maxEntries: 0);
-            var asyncOutput = new AsyncLogOutput(innerOutput);
+            MemoryLogOutput innerOutput = new MemoryLogOutput(maxEntries: 0);
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
 
             // Act
             asyncOutput.Write(new LogEntry(LogLevel.Info, "Message 1", "Logger"));
@@ -117,8 +117,8 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void AsyncLogOutput_DisableThenEnable()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput(maxEntries: 0);
-            var asyncOutput = new AsyncLogOutput(innerOutput);
+            MemoryLogOutput innerOutput = new MemoryLogOutput(maxEntries: 0);
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
 
             // Act
             asyncOutput.Write(new LogEntry(LogLevel.Info, "Message 1", "Logger"));
@@ -136,9 +136,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void AsyncLogOutput_LargeMessages()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput(maxEntries: 0);
-            var asyncOutput = new AsyncLogOutput(innerOutput);
-            var largeMessage = new string('x', 100000);
+            MemoryLogOutput innerOutput = new MemoryLogOutput(maxEntries: 0);
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
+            string largeMessage = new string('x', 100000);
 
             // Act
             for (int i = 0; i < 10; i++)
@@ -155,8 +155,8 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void AsyncLogOutput_QueueFilling()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput(maxEntries: 0);
-            var asyncOutput = new AsyncLogOutput(innerOutput, maxQueueSize: 5);
+            MemoryLogOutput innerOutput = new MemoryLogOutput(maxEntries: 0);
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput, maxQueueSize: 5);
 
             // Act
             for (int i = 0; i < 20; i++)
@@ -176,8 +176,8 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void AsyncLogOutput_DisposeCleansUp()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput(maxEntries: 0);
-            var asyncOutput = new AsyncLogOutput(innerOutput);
+            MemoryLogOutput innerOutput = new MemoryLogOutput(maxEntries: 0);
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
 
             // Act
             for (int i = 0; i < 100; i++)
@@ -194,8 +194,8 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void AsyncLogOutput_MultipleDisposes()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput(maxEntries: 0);
-            var asyncOutput = new AsyncLogOutput(innerOutput);
+            MemoryLogOutput innerOutput = new MemoryLogOutput(maxEntries: 0);
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
 
             asyncOutput.Write(new LogEntry(LogLevel.Info, "Message", "Logger"));
 
@@ -208,8 +208,8 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void AsyncLogOutput_FlushAfterDispose()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput(maxEntries: 0);
-            var asyncOutput = new AsyncLogOutput(innerOutput);
+            MemoryLogOutput innerOutput = new MemoryLogOutput(maxEntries: 0);
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
 
             asyncOutput.Write(new LogEntry(LogLevel.Info, "Message", "Logger"));
             asyncOutput.Dispose();
@@ -229,12 +229,12 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void AsyncLogOutput_AllLogLevels()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput(maxEntries: 0);
-            var asyncOutput = new AsyncLogOutput(innerOutput);
-            var levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
+            MemoryLogOutput innerOutput = new MemoryLogOutput(maxEntries: 0);
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
+            LogLevel[] levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
 
             // Act
-            foreach (var level in levels)
+            foreach (LogLevel level in levels)
             {
                 asyncOutput.Write(new LogEntry(level, "Message", "Logger"));
             }
@@ -248,9 +248,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void AsyncLogOutput_PerformanceTest()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput(maxEntries: 0);
-            var asyncOutput = new AsyncLogOutput(innerOutput);
-            var startTime = DateTime.UtcNow;
+            MemoryLogOutput innerOutput = new MemoryLogOutput(maxEntries: 0);
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
+            DateTime startTime = DateTime.UtcNow;
 
             // Act
             for (int i = 0; i < 50000; i++)
@@ -259,7 +259,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             }
             asyncOutput.Flush();
 
-            var elapsed = DateTime.UtcNow - startTime;
+            TimeSpan elapsed = DateTime.UtcNow - startTime;
 
             // Assert
             Assert.True(elapsed.TotalSeconds < 10);

@@ -67,10 +67,10 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         {
             // Arrange
             ILogFilter filter = new LogLevelFilter(LogLevel.Info);
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var result = filter.ShouldLog(entry);
+            bool result = filter.ShouldLog(entry);
 
             // Assert
             Assert.True(result);
@@ -93,14 +93,14 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         public void ILogFilter_CanBeCombined()
         {
             // Arrange
-            var filters = new[] 
+            ILogFilter[] filters = new[] 
             {
                 (ILogFilter)new LogLevelFilter(LogLevel.Info),
                 (ILogFilter)new LoggerNameFilter(new[] { "Test" }, inclusive: true)
             };
 
             // Act & Assert
-            foreach (var filter in filters)
+            foreach (ILogFilter filter in filters)
             {
                 Assert.NotNull(filter);
             }

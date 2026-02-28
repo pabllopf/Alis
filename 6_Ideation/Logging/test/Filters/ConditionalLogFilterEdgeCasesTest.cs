@@ -46,14 +46,14 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         public void ConditionalLogFilter_PredicateThrowingMultipleTimes_ShouldAlwaysReturnTrue()
         {
             // Arrange
-            var callCount = 0;
-            var filter = new ConditionalLogFilter(e =>
+            int callCount = 0;
+            ConditionalLogFilter filter = new ConditionalLogFilter(e =>
             {
                 callCount++;
                 throw new InvalidOperationException("Always fails");
             });
 
-            var entry = CreateEntry(LogLevel.Info);
+            ILogEntry entry = CreateEntry(LogLevel.Info);
 
             // Act & Assert
             for (int i = 0; i < 5; i++)
@@ -67,8 +67,8 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         public void ConditionalLogFilter_StatefulPredicate_ShouldMaintainState()
         {
             // Arrange
-            var callCount = 0;
-            var filter = new ConditionalLogFilter(e =>
+            int callCount = 0;
+            ConditionalLogFilter filter = new ConditionalLogFilter(e =>
             {
                 callCount++;
                 return callCount % 2 == 1; // Only pass on odd calls
@@ -85,7 +85,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         public void ConditionalLogFilter_ComplexLogic_WithMessageLength()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e => e.Message.Length > 10);
+            ConditionalLogFilter filter = new ConditionalLogFilter(e => e.Message.Length > 10);
 
             // Act & Assert
             Assert.False(filter.ShouldLog(CreateEntry(LogLevel.Info, "Short")));
@@ -96,7 +96,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         public void ConditionalLogFilter_RegexLikeMatching()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e =>
+            ConditionalLogFilter filter = new ConditionalLogFilter(e =>
                 e.Message.Contains("ERROR") && e.Level >= LogLevel.Error
             );
 
@@ -110,12 +110,12 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         public void ConditionalLogFilter_CustomNamePreservation()
         {
             // Arrange
-            var customNames = new[] { "Filter1", "Filter2", "MyCustomFilter" };
+            string[] customNames = new[] { "Filter1", "Filter2", "MyCustomFilter" };
 
             // Act & Assert
-            foreach (var name in customNames)
+            foreach (string name in customNames)
             {
-                var filter = new ConditionalLogFilter(e => true, name);
+                ConditionalLogFilter filter = new ConditionalLogFilter(e => true, name);
                 Assert.Equal(name, filter.Name);
             }
         }
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         public void ConditionalLogFilter_AlwaysPassPredicate()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e => true);
+            ConditionalLogFilter filter = new ConditionalLogFilter(e => true);
 
             // Act & Assert
             for (int i = 0; i < 100; i++)
@@ -137,7 +137,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         public void ConditionalLogFilter_NeverPassPredicate()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e => false);
+            ConditionalLogFilter filter = new ConditionalLogFilter(e => false);
 
             // Act & Assert
             for (int i = 0; i < 100; i++)
@@ -150,15 +150,15 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         public void ConditionalLogFilter_PerformanceWithComplexLogic()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e =>
+            ConditionalLogFilter filter = new ConditionalLogFilter(e =>
                 e.Level >= LogLevel.Warning &&
                 e.Message.Length > 5 &&
                 !e.LoggerName.StartsWith("Internal") &&
                 e.Exception == null
             );
 
-            var validEntry = CreateEntry(LogLevel.Error, "Long message");
-            var startTime = DateTime.UtcNow;
+            ILogEntry validEntry = CreateEntry(LogLevel.Error, "Long message");
+            DateTime startTime = DateTime.UtcNow;
 
             // Act
             for (int i = 0; i < 10000; i++)
@@ -166,7 +166,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
                 filter.ShouldLog(validEntry);
             }
 
-            var elapsed = DateTime.UtcNow - startTime;
+            TimeSpan elapsed = DateTime.UtcNow - startTime;
 
             // Assert - Should complete in reasonable time
             Assert.True(elapsed.TotalSeconds < 1);

@@ -47,15 +47,15 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void SimpleLogFormatter_DeeplyNestedExceptionChain()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
             Exception innermost = new InvalidOperationException("Innermost");
             Exception middle = new ArgumentException("Middle", innermost);
             Exception outermost = new SystemException("Outermost", middle);
 
-            var entry = new LogEntry(LogLevel.Error, "Error", "Logger", outermost);
+            LogEntry entry = new LogEntry(LogLevel.Error, "Error", "Logger", outermost);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("SystemException", formatted);
@@ -66,13 +66,13 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void SimpleLogFormatter_VeryLongExceptionMessage()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var longExceptionMessage = new string('E', 50000);
-            var exception = new InvalidOperationException(longExceptionMessage);
-            var entry = new LogEntry(LogLevel.Error, "Error", "Logger", exception);
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            string longExceptionMessage = new string('E', 50000);
+            InvalidOperationException exception = new InvalidOperationException(longExceptionMessage);
+            LogEntry entry = new LogEntry(LogLevel.Error, "Error", "Logger", exception);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("InvalidOperationException", formatted);
@@ -82,16 +82,16 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void SimpleLogFormatter_ThirtyDeepScopes()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var scopes = new List<object>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            List<object> scopes = new List<object>();
             for (int i = 0; i < 30; i++)
             {
                 scopes.Add($"Level{i}");
             }
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("Scopes:", formatted);
@@ -103,12 +103,12 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void SimpleLogFormatter_ComplexLoggerName()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var complexName = "MyCompany.MyProduct.MyModule.MyComponent.MyClass.MyMethod";
-            var entry = new LogEntry(LogLevel.Info, "Message", complexName);
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            string complexName = "MyCompany.MyProduct.MyModule.MyComponent.MyClass.MyMethod";
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", complexName);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains(complexName, formatted);
@@ -118,12 +118,12 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void SimpleLogFormatter_CorrelationIdLength()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var longCorrId = new string('x', 100);
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", correlationId: longCorrId);
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            string longCorrId = new string('x', 100);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", correlationId: longCorrId);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains(longCorrId, formatted);
@@ -133,12 +133,12 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void SimpleLogFormatter_MultilineMessage()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var multilineMessage = "Line 1\nLine 2\nLine 3";
-            var entry = new LogEntry(LogLevel.Info, multilineMessage, "Logger");
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            string multilineMessage = "Line 1\nLine 2\nLine 3";
+            LogEntry entry = new LogEntry(LogLevel.Info, multilineMessage, "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("Line 1", formatted);
@@ -150,15 +150,15 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void SimpleLogFormatter_PerformanceWithManyScopes()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var scopes = new List<object>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            List<object> scopes = new List<object>();
             for (int i = 0; i < 100; i++)
             {
                 scopes.Add($"Scope{i}");
             }
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
 
-            var startTime = DateTime.UtcNow;
+            DateTime startTime = DateTime.UtcNow;
 
             // Act
             for (int i = 0; i < 1000; i++)
@@ -166,7 +166,7 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
                 formatter.Format(entry);
             }
 
-            var elapsed = DateTime.UtcNow - startTime;
+            TimeSpan elapsed = DateTime.UtcNow - startTime;
 
             // Assert - Should be reasonably fast
             Assert.True(elapsed.TotalSeconds < 5);
@@ -176,14 +176,14 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void SimpleLogFormatter_ConsistentFormatting()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger");
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger");
 
             // Act
-            var format1 = formatter.Format(entry);
+            string format1 = formatter.Format(entry);
             System.Threading.Thread.Sleep(10); // Small delay to ensure different timestamp
-            var entry2 = new LogEntry(LogLevel.Info, "Message", "Logger");
-            var format2 = formatter.Format(entry2);
+            LogEntry entry2 = new LogEntry(LogLevel.Info, "Message", "Logger");
+            string format2 = formatter.Format(entry2);
 
             // Assert - Different timestamps, same structure
             Assert.Equal(format1, format2);

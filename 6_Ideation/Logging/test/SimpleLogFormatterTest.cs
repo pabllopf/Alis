@@ -47,7 +47,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_Constructor()
         {
             // Act
-            var formatter = new SimpleLogFormatter();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
 
             // Assert
             Assert.NotNull(formatter);
@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_HasName()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
 
             // Assert
             Assert.NotNull(formatter.Name);
@@ -68,11 +68,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_Format_ContainsLevel()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var entry = new LogEntry(LogLevel.Warning, "Test", "Logger");
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Warning, "Test", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("Warning", formatted);
@@ -82,11 +82,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_Format_ContainsMessage()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Important message", "Logger");
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Important message", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("Important message", formatted);
@@ -96,11 +96,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_Format_ContainsLoggerName()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "MyLogger");
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "MyLogger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("MyLogger", formatted);
@@ -110,12 +110,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_Format_WithException()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var exception = new InvalidOperationException("Test error");
-            var entry = new LogEntry(LogLevel.Error, "Error occurred", "Logger", exception);
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            InvalidOperationException exception = new InvalidOperationException("Test error");
+            LogEntry entry = new LogEntry(LogLevel.Error, "Error occurred", "Logger", exception);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("InvalidOperationException", formatted);
@@ -126,11 +126,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_Format_WithCorrelationId()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger", correlationId: "CORR-123");
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger", correlationId: "CORR-123");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("CORR-123", formatted);
@@ -141,11 +141,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_Format_WithoutCorrelationId()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.DoesNotContain("CorrelationId", formatted);
@@ -155,12 +155,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_Format_WithScopes()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var scopes = new List<object> { "Scope1", "Scope2", "Scope3" };
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger", scopes: scopes);
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            List<object> scopes = new List<object> { "Scope1", "Scope2", "Scope3" };
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger", scopes: scopes);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("Scope1", formatted);
@@ -173,11 +173,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_Format_WithoutScopes()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             // Should not contain Scopes section if empty
@@ -188,14 +188,14 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_AllLevels()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            LogLevel[] levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
 
-            foreach (var level in levels)
+            foreach (LogLevel level in levels)
             {
                 // Act
-                var entry = new LogEntry(level, "Test", "Logger");
-                var formatted = formatter.Format(entry);
+                LogEntry entry = new LogEntry(level, "Test", "Logger");
+                string formatted = formatter.Format(entry);
 
                 // Assert
                 Assert.NotEmpty(formatted);
@@ -207,11 +207,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_EmptyMessage()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, string.Empty, "Logger");
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, string.Empty, "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.NotEmpty(formatted);
@@ -222,12 +222,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_LongMessage()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var longMessage = new string('x', 1000);
-            var entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            string longMessage = new string('x', 1000);
+            LogEntry entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains(longMessage, formatted);
@@ -237,12 +237,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_SpecialCharacters()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var specialMessage = "Test\nwith\nnewlines\tand\ttabs";
-            var entry = new LogEntry(LogLevel.Info, specialMessage, "Logger");
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            string specialMessage = "Test\nwith\nnewlines\tand\ttabs";
+            LogEntry entry = new LogEntry(LogLevel.Info, specialMessage, "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("Test", formatted);
@@ -252,12 +252,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void SimpleLogFormatter_MultipleScopes_WithArrows()
         {
             // Arrange
-            var formatter = new SimpleLogFormatter();
-            var scopes = new List<object> { "Engine", "Graphics", "Renderer" };
-            var entry = new LogEntry(LogLevel.Info, "Rendering", "Logger", scopes: scopes);
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            List<object> scopes = new List<object> { "Engine", "Graphics", "Renderer" };
+            LogEntry entry = new LogEntry(LogLevel.Info, "Rendering", "Logger", scopes: scopes);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("Engine", formatted);

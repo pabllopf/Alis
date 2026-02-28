@@ -50,13 +50,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Stress_HighFrequencyLogging_100K_Entries()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("StressTest");
+                ILogger logger = factory.CreateLogger("StressTest");
 
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act
                 for (int i = 0; i < 100000; i++)
@@ -76,13 +76,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Stress_ConcurrentLogging_10Threads_1KMessagesEach()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput);
 
-                var tasks = new Task[10];
-                var stopwatch = Stopwatch.StartNew();
+                Task[] tasks = new Task[10];
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act
                 for (int t = 0; t < 10; t++)
@@ -90,7 +90,7 @@ namespace Alis.Core.Aspect.Logging.Test
                     int threadNum = t;
                     tasks[t] = Task.Run(() =>
                     {
-                        var logger = factory.CreateLogger($"Logger{threadNum}");
+                        ILogger logger = factory.CreateLogger($"Logger{threadNum}");
                         for (int i = 0; i < 1000; i++)
                         {
                             logger.LogInfo($"Message {i}");
@@ -111,15 +111,15 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Stress_LargeMessageSize_1MB_Messages()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("StressTest");
+                ILogger logger = factory.CreateLogger("StressTest");
 
-                var largeMessage = new string('x', 1000000); // 1MB
+                string largeMessage = new string('x', 1000000); // 1MB
 
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act
                 for (int i = 0; i < 10; i++)
@@ -139,15 +139,15 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Stress_ManyLoggers_1000_Loggers()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput);
 
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act
-                var loggers = new ILogger[1000];
+                ILogger[] loggers = new ILogger[1000];
                 for (int i = 0; i < 1000; i++)
                 {
                     loggers[i] = factory.CreateLogger($"Logger{i}");
@@ -170,13 +170,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Stress_DeepScopeNesting_100_Levels()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("StressTest");
+                ILogger logger = factory.CreateLogger("StressTest");
 
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act - Create deeply nested scopes
                 Action<int> logAtDepth = null;
@@ -209,9 +209,9 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Stress_ManyFilters_50_Filters()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput);
 
                 // Add many filters
@@ -220,9 +220,9 @@ namespace Alis.Core.Aspect.Logging.Test
                     factory.AddFilter(new ConditionalLogFilter(e => true)); // Always pass
                 }
 
-                var logger = factory.CreateLogger("StressTest");
+                ILogger logger = factory.CreateLogger("StressTest");
 
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act
                 for (int i = 0; i < 1000; i++)
@@ -242,20 +242,20 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Stress_AllFormatterTypes_Performance()
         {
             // Arrange
-            var formatters = new ILogFormatter[]
+            ILogFormatter[] formatters = new ILogFormatter[]
             {
                 new SimpleLogFormatter(),
                 new CompactLogFormatter(),
                 new JsonLogFormatter()
             };
 
-            var entry = new LogEntry(LogLevel.Info, "Test message", "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test message", "Logger");
             const int iterations = 10000;
 
             // Act
-            foreach (var formatter in formatters)
+            foreach (ILogFormatter formatter in formatters)
             {
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 for (int i = 0; i < iterations; i++)
                 {
@@ -274,18 +274,18 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Stress_HighMemoryUsage_Scenario()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 10000);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 10000);
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("StressTest");
+                ILogger logger = factory.CreateLogger("StressTest");
 
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act - Log with increasingly large messages
                 for (int i = 0; i < 100; i++)
                 {
-                    var message = new string('x', i * 1000); // 0KB, 1KB, 2KB, ..., 99KB
+                    string message = new string('x', i * 1000); // 0KB, 1KB, 2KB, ..., 99KB
                     logger.LogInfo(message);
                 }
 
@@ -301,13 +301,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Stress_ExceptionLogging_With_StackTrace()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("StressTest");
+                ILogger logger = factory.CreateLogger("StressTest");
 
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act - Log many exceptions with stack traces
                 for (int i = 0; i < 1000; i++)
@@ -334,15 +334,15 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Stress_Sampling_Filter_Performance()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput);
                 factory.AddFilter(new SamplingLogFilter(sampleRate: 10)); // Log 1 in 10
 
-                var logger = factory.CreateLogger("StressTest");
+                ILogger logger = factory.CreateLogger("StressTest");
 
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act - Log 100K messages with sampling
                 for (int i = 0; i < 100000; i++)

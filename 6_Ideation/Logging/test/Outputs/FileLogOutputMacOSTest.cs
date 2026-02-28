@@ -54,17 +54,17 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             }
 
             // Arrange
-            var supportDir = Path.Combine(
+            string supportDir = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 "Alis",
                 "Logging"
             );
-            var filePath = Path.Combine(supportDir, "app.log");
+            string filePath = Path.Combine(supportDir, "app.log");
 
             // Act
             try
             {
-                using (var output = new FileLogOutput(filePath))
+                using (FileLogOutput output = new FileLogOutput(filePath))
                 {
                     output.Write(new LogEntry(LogLevel.Info, "macOS AppSupport test", "Logger"));
                 }
@@ -94,12 +94,12 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             }
 
             // Arrange
-            var tempDir = Path.Combine(Path.GetTempPath(), $"macos_{Guid.NewGuid()}");
-            var filePath = Path.Combine(tempDir, "test.log");
+            string tempDir = Path.Combine(Path.GetTempPath(), $"macos_{Guid.NewGuid()}");
+            string filePath = Path.Combine(tempDir, "test.log");
             Directory.CreateDirectory(tempDir);
 
             // Act
-            using (var output = new FileLogOutput(filePath))
+            using (FileLogOutput output = new FileLogOutput(filePath))
             {
                 output.Write(new LogEntry(LogLevel.Info, "Line 1", "Logger"));
                 output.Write(new LogEntry(LogLevel.Info, "Line 2", "Logger"));
@@ -107,7 +107,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
 
             // Assert
             Assert.True(File.Exists(filePath));
-            var content = File.ReadAllText(filePath);
+            string content = File.ReadAllText(filePath);
             // macOS uses Unix line endings (LF, not CRLF)
             Assert.DoesNotContain("\r\n", content);
 
@@ -125,14 +125,14 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             }
 
             // Arrange
-            var tempDir = Path.Combine(Path.GetTempPath(), $"macos_case_{Guid.NewGuid()}");
+            string tempDir = Path.Combine(Path.GetTempPath(), $"macos_case_{Guid.NewGuid()}");
             Directory.CreateDirectory(tempDir);
 
-            var path1 = Path.Combine(tempDir, "LogFile.txt");
-            var path2 = Path.Combine(tempDir, "logfile.txt");
+            string path1 = Path.Combine(tempDir, "LogFile.txt");
+            string path2 = Path.Combine(tempDir, "logfile.txt");
 
             // Act
-            using (var output1 = new FileLogOutput(path1))
+            using (FileLogOutput output1 = new FileLogOutput(path1))
             {
                 output1.Write(new LogEntry(LogLevel.Info, "First", "Logger"));
             }
@@ -148,11 +148,11 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void FileLogOutput_CrossPlatformPathSeparator()
         {
             // Arrange
-            var tempDir = Path.Combine(Path.GetTempPath(), $"cross_platform_{Guid.NewGuid()}");
-            var filePath = Path.Combine(tempDir, "logs", "app.log");
+            string tempDir = Path.Combine(Path.GetTempPath(), $"cross_platform_{Guid.NewGuid()}");
+            string filePath = Path.Combine(tempDir, "logs", "app.log");
 
             // Act
-            using (var output = new FileLogOutput(filePath))
+            using (FileLogOutput output = new FileLogOutput(filePath))
             {
                 output.Write(new LogEntry(LogLevel.Info, "Cross-platform test", "Logger"));
             }

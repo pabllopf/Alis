@@ -323,9 +323,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cloud", "Cloud", "{442A92EF-B8A4-6254-BCE6-72C4ADCE95D5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DropBox", "DropBox", "{3DDD1A45-D3F5-8418-EA28-F63F50BCB938}"
-	ProjectSection(SolutionItems) = preProject
-		1_Presentation\Extension\Cloud\DropBox\README.md = 1_Presentation\Extension\Cloud\DropBox\README.md
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Extension.Cloud.DropBox.Test", "1_Presentation\Extension\Cloud\DropBox\test\Alis.Extension.Cloud.DropBox.Test.csproj", "{3C4D7DAA-79CC-472F-9235-1042D140BA98}"
 EndProject
@@ -334,6 +331,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Extension.Cloud.DropBox.Sample", "1_Presentation\Extension\Cloud\DropBox\sample\Alis.Extension.Cloud.DropBox.Sample.csproj", "{EED6CC0B-7CD4-4501-AC02-1831329F1A3C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GoogleDrive", "GoogleDrive", "{4E377471-2001-71A8-3D75-7E823908190E}"
+	ProjectSection(SolutionItems) = preProject
+		1_Presentation\Extension\Cloud\GoogleDrive\IMPLEMENTATION_SUMMARY.md = 1_Presentation\Extension\Cloud\GoogleDrive\IMPLEMENTATION_SUMMARY.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Extension.Cloud.GoogleDrive.Test", "1_Presentation\Extension\Cloud\GoogleDrive\test\Alis.Extension.Cloud.GoogleDrive.Test.csproj", "{E7953AEA-DA67-47BE-9EAF-EA979E19830B}"
 EndProject

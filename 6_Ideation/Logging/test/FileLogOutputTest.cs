@@ -59,18 +59,18 @@ namespace Alis.Core.Aspect.Logging.Test
         public void FileLogOutput_Write_ShouldCreateFile()
         {
             // Arrange
-            var filePath = Path.Combine(_testDir, "test.log");
+            string filePath = Path.Combine(_testDir, "test.log");
             Directory.CreateDirectory(_testDir);
 
             // Act
-            using (var output = new FileLogOutput(filePath))
+            using (FileLogOutput output = new FileLogOutput(filePath))
             {
                 output.Write(new LogEntry(LogLevel.Info, "Test message", "Logger"));
             }
 
             // Assert
             Assert.True(File.Exists(filePath));
-            var content = File.ReadAllText(filePath);
+            string content = File.ReadAllText(filePath);
             Assert.Contains("Test message", content);
 
             // Cleanup
@@ -81,21 +81,21 @@ namespace Alis.Core.Aspect.Logging.Test
         public void FileLogOutput_AppendMode_ShouldPreserveContent()
         {
             // Arrange
-            var filePath = Path.Combine(_testDir, "append.log");
+            string filePath = Path.Combine(_testDir, "append.log");
             Directory.CreateDirectory(_testDir);
 
             // Act & Assert
-            using (var output1 = new FileLogOutput(filePath, append: true))
+            using (FileLogOutput output1 = new FileLogOutput(filePath, append: true))
             {
                 output1.Write(new LogEntry(LogLevel.Info, "First", "Logger"));
             }
 
-            using (var output2 = new FileLogOutput(filePath, append: true))
+            using (FileLogOutput output2 = new FileLogOutput(filePath, append: true))
             {
                 output2.Write(new LogEntry(LogLevel.Info, "Second", "Logger"));
             }
 
-            var content = File.ReadAllText(filePath);
+            string content = File.ReadAllText(filePath);
             Assert.Contains("First", content);
             Assert.Contains("Second", content);
 
@@ -107,22 +107,22 @@ namespace Alis.Core.Aspect.Logging.Test
         public void FileLogOutput_OverwriteMode_ShouldReplaceContent()
         {
             // Arrange
-            var filePath = Path.Combine(_testDir, "overwrite.log");
+            string filePath = Path.Combine(_testDir, "overwrite.log");
             Directory.CreateDirectory(_testDir);
 
             // Act
-            using (var output1 = new FileLogOutput(filePath, append: false))
+            using (FileLogOutput output1 = new FileLogOutput(filePath, append: false))
             {
                 output1.Write(new LogEntry(LogLevel.Info, "First", "Logger"));
             }
 
-            using (var output2 = new FileLogOutput(filePath, append: false))
+            using (FileLogOutput output2 = new FileLogOutput(filePath, append: false))
             {
                 output2.Write(new LogEntry(LogLevel.Info, "Second", "Logger"));
             }
 
             // Assert
-            var content = File.ReadAllText(filePath);
+            string content = File.ReadAllText(filePath);
             Assert.DoesNotContain("First", content);
             Assert.Contains("Second", content);
 
@@ -134,10 +134,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void FileLogOutput_CreatesDirectories()
         {
             // Arrange
-            var filePath = Path.Combine(_testDir, "sub1", "sub2", "test.log");
+            string filePath = Path.Combine(_testDir, "sub1", "sub2", "test.log");
 
             // Act
-            using (var output = new FileLogOutput(filePath))
+            using (FileLogOutput output = new FileLogOutput(filePath))
             {
                 output.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
             }
@@ -153,11 +153,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void FileLogOutput_NullEntry_ShouldNotWrite()
         {
             // Arrange
-            var filePath = Path.Combine(_testDir, "null.log");
+            string filePath = Path.Combine(_testDir, "null.log");
             Directory.CreateDirectory(_testDir);
 
             // Act
-            using (var output = new FileLogOutput(filePath))
+            using (FileLogOutput output = new FileLogOutput(filePath))
             {
                 output.Write(null);
             }
@@ -166,7 +166,7 @@ namespace Alis.Core.Aspect.Logging.Test
             // File may not exist or may be empty
             if (File.Exists(filePath))
             {
-                var content = File.ReadAllText(filePath);
+                string content = File.ReadAllText(filePath);
                 Assert.Empty(content);
             }
 
@@ -178,18 +178,18 @@ namespace Alis.Core.Aspect.Logging.Test
         public void FileLogOutput_Flush_ShouldPersistData()
         {
             // Arrange
-            var filePath = Path.Combine(_testDir, "flush.log");
+            string filePath = Path.Combine(_testDir, "flush.log");
             Directory.CreateDirectory(_testDir);
 
             // Act
-            using (var output = new FileLogOutput(filePath))
+            using (FileLogOutput output = new FileLogOutput(filePath))
             {
                 output.Write(new LogEntry(LogLevel.Info, "Before flush", "Logger"));
                 output.Flush();
 
                 // Assert - Check file exists and has content
                 Assert.True(File.Exists(filePath));
-                var content = File.ReadAllText(filePath);
+                string content = File.ReadAllText(filePath);
                 Assert.Contains("Before flush", content);
             }
 
@@ -201,9 +201,9 @@ namespace Alis.Core.Aspect.Logging.Test
         public void FileLogOutput_Dispose_ShouldCloseFile()
         {
             // Arrange
-            var filePath = Path.Combine(_testDir, "dispose.log");
+            string filePath = Path.Combine(_testDir, "dispose.log");
             Directory.CreateDirectory(_testDir);
-            var output = new FileLogOutput(filePath);
+            FileLogOutput output = new FileLogOutput(filePath);
 
             // Act
             output.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
@@ -222,11 +222,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void FileLogOutput_DisabledOutput_ShouldNotWrite()
         {
             // Arrange
-            var filePath = Path.Combine(_testDir, "disabled.log");
+            string filePath = Path.Combine(_testDir, "disabled.log");
             Directory.CreateDirectory(_testDir);
 
             // Act
-            using (var output = new FileLogOutput(filePath))
+            using (FileLogOutput output = new FileLogOutput(filePath))
             {
                 output.IsEnabled = false;
                 output.Write(new LogEntry(LogLevel.Info, "Should not appear", "Logger"));
@@ -235,7 +235,7 @@ namespace Alis.Core.Aspect.Logging.Test
             }
 
             // Assert
-            var content = File.ReadAllText(filePath);
+            string content = File.ReadAllText(filePath);
             Assert.Contains("Should not", content);
             // Cleanup
             Cleanup();
@@ -245,11 +245,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void FileLogOutput_HasName()
         {
             // Arrange
-            var filePath = Path.Combine(_testDir, "name.log");
+            string filePath = Path.Combine(_testDir, "name.log");
             Directory.CreateDirectory(_testDir);
 
             // Act
-            using (var output = new FileLogOutput(filePath))
+            using (FileLogOutput output = new FileLogOutput(filePath))
             {
                 // Assert
                 Assert.NotNull(output.Name);
@@ -265,11 +265,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void FileLogOutput_MultipleEntries_ShouldAppendEachLine()
         {
             // Arrange
-            var filePath = Path.Combine(_testDir, "multi.log");
+            string filePath = Path.Combine(_testDir, "multi.log");
             Directory.CreateDirectory(_testDir);
 
             // Act
-            using (var output = new FileLogOutput(filePath))
+            using (FileLogOutput output = new FileLogOutput(filePath))
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -278,7 +278,7 @@ namespace Alis.Core.Aspect.Logging.Test
             }
 
             // Assert
-            var lines = File.ReadAllLines(filePath);
+            string[] lines = File.ReadAllLines(filePath);
             Assert.NotEmpty(lines);
 
             // Cleanup
@@ -289,7 +289,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void FileLogOutput_InvalidPath_ShouldDisableOutput()
         {
             // Arrange - Use invalid path (like root on unix or reserved name)
-            var invalidPath = "";
+            string invalidPath = "";
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 invalidPath = "CON"; // Reserved name on Windows
@@ -301,7 +301,7 @@ namespace Alis.Core.Aspect.Logging.Test
             }
 
             // Act
-            var output = new FileLogOutput(invalidPath);
+            FileLogOutput output = new FileLogOutput(invalidPath);
 
             // Assert - Output should be disabled due to error
             // (IsEnabled should still be true, but write would fail silently)
@@ -312,9 +312,9 @@ namespace Alis.Core.Aspect.Logging.Test
         public void FileLogOutput_RepeatedDispose_ShouldNotThrow()
         {
             // Arrange
-            var filePath = Path.Combine(_testDir, "dispose_twice.log");
+            string filePath = Path.Combine(_testDir, "dispose_twice.log");
             Directory.CreateDirectory(_testDir);
-            var output = new FileLogOutput(filePath);
+            FileLogOutput output = new FileLogOutput(filePath);
 
             // Act & Assert
             output.Dispose();

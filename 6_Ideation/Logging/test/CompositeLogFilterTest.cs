@@ -46,12 +46,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_AND_AllFiltersMustPass()
         {
             // Arrange
-            var filters = new List<ILogFilter>
+            List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Info),
                 new LoggerNameFilter(new[] { "AllowedLogger" }, inclusive: true)
             };
-            var compositeFilter = new CompositeLogFilter(filters, requireAll: true);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, requireAll: true);
 
             // Act & Assert
             Assert.True(compositeFilter.ShouldLog(CreateEntry(LogLevel.Info, "AllowedLogger")));
@@ -64,12 +64,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_OR_AnyFilterCanPass()
         {
             // Arrange
-            var filters = new List<ILogFilter>
+            List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Error),
                 new LoggerNameFilter(new[] { "SpecialLogger" }, inclusive: true)
             };
-            var compositeFilter = new CompositeLogFilter(filters, requireAll: false);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, requireAll: false);
 
             // Act & Assert
             Assert.True(compositeFilter.ShouldLog(CreateEntry(LogLevel.Error, "OtherLogger")));
@@ -82,8 +82,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_EmptyFilterList_ShouldAllowAll()
         {
             // Arrange
-            var filters = new List<ILogFilter>();
-            var compositeFilter = new CompositeLogFilter(filters, requireAll: true);
+            List<ILogFilter> filters = new List<ILogFilter>();
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, requireAll: true);
 
             // Act & Assert
             Assert.True(compositeFilter.ShouldLog(CreateEntry(LogLevel.Trace, "Any")));
@@ -93,7 +93,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_NullFilterList_ShouldAllowAll()
         {
             // Arrange
-            var compositeFilter = new CompositeLogFilter(null, requireAll: true);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(null, requireAll: true);
 
             // Act & Assert
             Assert.True(compositeFilter.ShouldLog(CreateEntry(LogLevel.Info, "Any")));
@@ -103,11 +103,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_SingleFilter_AND()
         {
             // Arrange
-            var filters = new List<ILogFilter>
+            List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Warning)
             };
-            var compositeFilter = new CompositeLogFilter(filters, requireAll: true);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, requireAll: true);
 
             // Act & Assert
             Assert.False(compositeFilter.ShouldLog(CreateEntry(LogLevel.Info, "Logger")));
@@ -118,11 +118,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_SingleFilter_OR()
         {
             // Arrange
-            var filters = new List<ILogFilter>
+            List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Warning)
             };
-            var compositeFilter = new CompositeLogFilter(filters, requireAll: false);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, requireAll: false);
 
             // Act & Assert
             Assert.False(compositeFilter.ShouldLog(CreateEntry(LogLevel.Info, "Logger")));
@@ -133,11 +133,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_NullEntry_ShouldReturnTrue()
         {
             // Arrange
-            var filters = new List<ILogFilter>
+            List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Info)
             };
-            var compositeFilter = new CompositeLogFilter(filters, requireAll: true);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, requireAll: true);
 
             // Act & Assert
             Assert.True(compositeFilter.ShouldLog(null));
@@ -147,13 +147,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_MultipleFilters_AND_AllMustPass()
         {
             // Arrange
-            var filters = new List<ILogFilter>
+            List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Warning),
                 new LoggerNameFilter(new[] { "Engine" }, inclusive: true),
                 new ConditionalLogFilter(e => !e.Message.Contains("Ignore"), "CustomFilter")
             };
-            var compositeFilter = new CompositeLogFilter(filters, requireAll: true);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, requireAll: true);
 
             // Act & Assert
             Assert.True(compositeFilter.ShouldLog(CreateEntry(LogLevel.Warning, "Engine", "Important")));
@@ -166,13 +166,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_MultipleFilters_OR_AnyCanPass()
         {
             // Arrange
-            var filters = new List<ILogFilter>
+            List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Critical),
                 new LoggerNameFilter(new[] { "Security" }, inclusive: true),
                 new ConditionalLogFilter(e => e.Message.StartsWith("ERROR"), "ErrorPrefix")
             };
-            var compositeFilter = new CompositeLogFilter(filters, requireAll: false);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, requireAll: false);
 
             // Act & Assert
             Assert.True(compositeFilter.ShouldLog(CreateEntry(LogLevel.Critical, "Other", "Normal")));
@@ -185,11 +185,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_HasName()
         {
             // Arrange
-            var filters = new List<ILogFilter>
+            List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Info)
             };
-            var compositeFilter = new CompositeLogFilter(filters, requireAll: true);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, requireAll: true);
 
             // Act & Assert
             Assert.NotNull(compositeFilter.Name);
@@ -200,11 +200,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_AND_HasCorrectNameSuffix()
         {
             // Arrange
-            var filters = new List<ILogFilter>
+            List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Info)
             };
-            var compositeFilter = new CompositeLogFilter(filters, requireAll: true);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, requireAll: true);
 
             // Act & Assert
             Assert.Contains("AND", compositeFilter.Name);
@@ -214,11 +214,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_OR_HasCorrectNameSuffix()
         {
             // Arrange
-            var filters = new List<ILogFilter>
+            List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Info)
             };
-            var compositeFilter = new CompositeLogFilter(filters, requireAll: false);
+            CompositeLogFilter compositeFilter = new CompositeLogFilter(filters, requireAll: false);
 
             // Act & Assert
             Assert.Contains("OR", compositeFilter.Name);
@@ -228,21 +228,21 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompositeLogFilter_ComplexLogic_AND()
         {
             // Arrange
-            var innerFilters1 = new List<ILogFilter>
+            List<ILogFilter> innerFilters1 = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Warning),
                 new LoggerNameFilter(new[] { "Critical" }, inclusive: true)
             };
-            var innerFilters2 = new List<ILogFilter>
+            List<ILogFilter> innerFilters2 = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Error)
             };
 
-            var compositeInner1 = new CompositeLogFilter(innerFilters1, requireAll: true);
-            var compositeInner2 = new CompositeLogFilter(innerFilters2, requireAll: true);
+            CompositeLogFilter compositeInner1 = new CompositeLogFilter(innerFilters1, requireAll: true);
+            CompositeLogFilter compositeInner2 = new CompositeLogFilter(innerFilters2, requireAll: true);
 
-            var outerFilters = new List<ILogFilter> { compositeInner1, compositeInner2 };
-            var compositeOuter = new CompositeLogFilter(outerFilters, requireAll: false);
+            List<ILogFilter> outerFilters = new List<ILogFilter> { compositeInner1, compositeInner2 };
+            CompositeLogFilter compositeOuter = new CompositeLogFilter(outerFilters, requireAll: false);
 
             // Act & Assert - Should pass if either inner composite passes
             Assert.True(compositeOuter.ShouldLog(CreateEntry(LogLevel.Warning, "Critical")));

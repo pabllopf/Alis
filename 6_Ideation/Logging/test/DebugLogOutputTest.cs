@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
@@ -46,7 +47,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_Constructor_DefaultFormatter()
         {
             // Act
-            var output = new DebugLogOutput();
+            DebugLogOutput output = new DebugLogOutput();
 
             // Assert
             Assert.NotNull(output);
@@ -56,8 +57,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_Write_ShouldNotThrow()
         {
             // Arrange
-            var output = new DebugLogOutput();
-            var entry = new LogEntry(LogLevel.Info, "Test message", "Logger");
+            DebugLogOutput output = new DebugLogOutput();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test message", "Logger");
 
             // Act & Assert - Should not throw
             output.Write(entry);
@@ -67,7 +68,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_NullEntry_ShouldNotThrow()
         {
             // Arrange
-            var output = new DebugLogOutput();
+            DebugLogOutput output = new DebugLogOutput();
 
             // Act & Assert - Should not throw
             output.Write(null);
@@ -77,13 +78,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_AllLevels_ShouldNotThrow()
         {
             // Arrange
-            var output = new DebugLogOutput();
-            var levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
+            DebugLogOutput output = new DebugLogOutput();
+            LogLevel[] levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
 
             // Act & Assert
-            foreach (var level in levels)
+            foreach (LogLevel level in levels)
             {
-                var entry = new LogEntry(level, "Test", "Logger");
+                LogEntry entry = new LogEntry(level, "Test", "Logger");
                 output.Write(entry); // Should not throw
             }
         }
@@ -92,8 +93,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_CustomFormatter_ShouldBeUsed()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var output = new DebugLogOutput(formatter);
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            DebugLogOutput output = new DebugLogOutput(formatter);
 
             // Act & Assert - Should not throw
             output.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
@@ -103,7 +104,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_NullFormatter_ShouldUseDefault()
         {
             // Arrange & Act
-            var output = new DebugLogOutput(null);
+            DebugLogOutput output = new DebugLogOutput(null);
 
             // Assert
             output.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
@@ -113,7 +114,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_Disable_ShouldNotWrite()
         {
             // Arrange
-            var output = new DebugLogOutput();
+            DebugLogOutput output = new DebugLogOutput();
             output.IsEnabled = false;
 
             // Act & Assert - Should not throw
@@ -124,7 +125,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_Flush_ShouldNotThrow()
         {
             // Arrange
-            var output = new DebugLogOutput();
+            DebugLogOutput output = new DebugLogOutput();
 
             // Act & Assert - Should not throw
             output.Flush();
@@ -134,7 +135,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_Dispose_ShouldNotThrow()
         {
             // Arrange
-            var output = new DebugLogOutput();
+            DebugLogOutput output = new DebugLogOutput();
 
             // Act & Assert - Should not throw
             output.Dispose();
@@ -144,7 +145,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_RepeatedDispose_ShouldNotThrow()
         {
             // Arrange
-            var output = new DebugLogOutput();
+            DebugLogOutput output = new DebugLogOutput();
 
             // Act & Assert - Should not throw
             output.Dispose();
@@ -155,7 +156,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_HasName()
         {
             // Arrange
-            var output = new DebugLogOutput();
+            DebugLogOutput output = new DebugLogOutput();
 
             // Assert
             Assert.NotNull(output.Name);
@@ -166,7 +167,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_IsEnabled_DefaultTrue()
         {
             // Arrange
-            var output = new DebugLogOutput();
+            DebugLogOutput output = new DebugLogOutput();
 
             // Assert
             Assert.True(output.IsEnabled);
@@ -176,7 +177,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_IsEnabled_CanBeToggled()
         {
             // Arrange
-            var output = new DebugLogOutput();
+            DebugLogOutput output = new DebugLogOutput();
 
             // Act & Assert
             output.IsEnabled = true;
@@ -193,9 +194,9 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_WithException_ShouldNotThrow()
         {
             // Arrange
-            var output = new DebugLogOutput();
-            var exception = new System.InvalidOperationException("Test exception");
-            var entry = new LogEntry(LogLevel.Error, "Error message", "Logger", exception);
+            DebugLogOutput output = new DebugLogOutput();
+            InvalidOperationException exception = new System.InvalidOperationException("Test exception");
+            LogEntry entry = new LogEntry(LogLevel.Error, "Error message", "Logger", exception);
 
             // Act & Assert - Should not throw
             output.Write(entry);
@@ -205,8 +206,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_WithCorrelationId_ShouldNotThrow()
         {
             // Arrange
-            var output = new DebugLogOutput();
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", correlationId: "CORR-123");
+            DebugLogOutput output = new DebugLogOutput();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", correlationId: "CORR-123");
 
             // Act & Assert - Should not throw
             output.Write(entry);
@@ -216,8 +217,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void DebugLogOutput_WithScopes_ShouldNotThrow()
         {
             // Arrange
-            var output = new DebugLogOutput();
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: new[] { "Scope1", "Scope2" });
+            DebugLogOutput output = new DebugLogOutput();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: new[] { "Scope1", "Scope2" });
 
             // Act & Assert - Should not throw
             output.Write(entry);

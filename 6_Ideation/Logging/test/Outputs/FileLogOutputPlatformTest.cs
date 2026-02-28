@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Core;
@@ -48,12 +50,12 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void FileLogOutput_Windows_LongPathName()
         {
             // Arrange
-            var basePath = Path.Combine(Path.GetTempPath(), $"logging_windows_{Guid.NewGuid()}");
-            var longPath = Path.Combine(basePath, "Very", "Deep", "Nested", "Directory", "Structure");
-            var filePath = Path.Combine(longPath, "test.log");
+            string basePath = Path.Combine(Path.GetTempPath(), $"logging_windows_{Guid.NewGuid()}");
+            string longPath = Path.Combine(basePath, "Very", "Deep", "Nested", "Directory", "Structure");
+            string filePath = Path.Combine(longPath, "test.log");
 
             // Act
-            using (var output = new FileLogOutput(filePath))
+            using (FileLogOutput output = new FileLogOutput(filePath))
             {
                 output.Write(new LogEntry(LogLevel.Info, "Windows long path test", "Logger"));
             }
@@ -69,18 +71,18 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void FileLogOutput_Windows_FileEncoding()
         {
             // Arrange
-            var tempFile = Path.Combine(Path.GetTempPath(), $"log_{Guid.NewGuid()}.txt");
-            var message = "Testing Windows file encoding with special chars: ñ, ü, ö";
+            string tempFile = Path.Combine(Path.GetTempPath(), $"log_{Guid.NewGuid()}.txt");
+            string message = "Testing Windows file encoding with special chars: ñ, ü, ö";
 
             // Act
-            using (var output = new FileLogOutput(tempFile))
+            using (FileLogOutput output = new FileLogOutput(tempFile))
             {
                 output.Write(new LogEntry(LogLevel.Info, message, "Logger"));
             }
 
             // Assert
             Assert.True(File.Exists(tempFile));
-            var content = File.ReadAllText(tempFile);
+            string content = File.ReadAllText(tempFile);
             Assert.Contains(message, content);
 
             // Cleanup
@@ -91,12 +93,12 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void FileLogOutput_Linux_UnixPermissions()
         {
             // Arrange
-            var tempDir = Path.Combine(Path.GetTempPath(), $"logging_linux_{Guid.NewGuid()}");
+            string tempDir = Path.Combine(Path.GetTempPath(), $"logging_linux_{Guid.NewGuid()}");
             Directory.CreateDirectory(tempDir);
-            var filePath = Path.Combine(tempDir, "test.log");
+            string filePath = Path.Combine(tempDir, "test.log");
 
             // Act
-            using (var output = new FileLogOutput(filePath))
+            using (FileLogOutput output = new FileLogOutput(filePath))
             {
                 output.Write(new LogEntry(LogLevel.Info, "Linux test", "Logger"));
             }
@@ -112,18 +114,18 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void FileLogOutput_Linux_HomeDirectoryPath()
         {
             // Arrange
-            var homeDir = Environment.GetEnvironmentVariable("HOME");
+            string homeDir = Environment.GetEnvironmentVariable("HOME");
             if (string.IsNullOrEmpty(homeDir))
             {
                 homeDir = "/tmp";
             }
 
-            var tempDir = Path.Combine(homeDir, $".test_logging_{Guid.NewGuid()}");
-            var filePath = Path.Combine(tempDir, "test.log");
+            string tempDir = Path.Combine(homeDir, $".test_logging_{Guid.NewGuid()}");
+            string filePath = Path.Combine(tempDir, "test.log");
 
             // Act
             Directory.CreateDirectory(tempDir);
-            using (var output = new FileLogOutput(filePath))
+            using (FileLogOutput output = new FileLogOutput(filePath))
             {
                 output.Write(new LogEntry(LogLevel.Info, "Home directory test", "Logger"));
             }
@@ -139,12 +141,12 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void FileLogOutput_RelativePath_ShouldWorkAcrossPlatforms()
         {
             // Arrange
-            var relativePath = Path.Combine(".", "test_logs", "app.log");
-            var fullPath = Path.GetFullPath(relativePath);
-            var dir = Path.GetDirectoryName(fullPath);
+            string relativePath = Path.Combine(".", "test_logs", "app.log");
+            string fullPath = Path.GetFullPath(relativePath);
+            string dir = Path.GetDirectoryName(fullPath);
 
             // Act
-            using (var output = new FileLogOutput(relativePath))
+            using (FileLogOutput output = new FileLogOutput(relativePath))
             {
                 output.Write(new LogEntry(LogLevel.Info, "Relative path test", "Logger"));
             }
@@ -163,21 +165,21 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void FileLogOutput_Windows_DriveLetter()
         {
             // Arrange
-            var driveInfo = DriveInfo.GetDrives();
+            DriveInfo[] driveInfo = DriveInfo.GetDrives();
             if (driveInfo.Length == 0)
             {
                 return; // Skip if no drives
             }
 
-            var drive = driveInfo[0];
-            var tempDir = Path.Combine(drive.Name, "Temp", $"logging_{Guid.NewGuid()}");
-            var filePath = Path.Combine(tempDir, "test.log");
+            DriveInfo drive = driveInfo[0];
+            string tempDir = Path.Combine(drive.Name, "Temp", $"logging_{Guid.NewGuid()}");
+            string filePath = Path.Combine(tempDir, "test.log");
 
             try
             {
                 // Act
                 Directory.CreateDirectory(tempDir);
-                using (var output = new FileLogOutput(filePath))
+                using (FileLogOutput output = new FileLogOutput(filePath))
                 {
                     output.Write(new LogEntry(LogLevel.Info, "Drive letter test", "Logger"));
                 }
@@ -198,17 +200,17 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void FileLogOutput_ConcurrentAccessAcrossPlatforms()
         {
             // Arrange
-            var tempDir = Path.Combine(Path.GetTempPath(), $"concurrent_{Guid.NewGuid()}");
-            var filePath = Path.Combine(tempDir, "concurrent.log");
+            string tempDir = Path.Combine(Path.GetTempPath(), $"concurrent_{Guid.NewGuid()}");
+            string filePath = Path.Combine(tempDir, "concurrent.log");
             Directory.CreateDirectory(tempDir);
 
             // Act
-            var tasks = new System.Collections.Generic.List<System.Threading.Tasks.Task>();
+            List<Task> tasks = new System.Collections.Generic.List<System.Threading.Tasks.Task>();
             for (int i = 0; i < 5; i++)
             {
-                var task = System.Threading.Tasks.Task.Run(() =>
+                Task task = System.Threading.Tasks.Task.Run(() =>
                 {
-                    using (var output = new FileLogOutput(filePath, append: true))
+                    using (FileLogOutput output = new FileLogOutput(filePath, append: true))
                     {
                         output.Write(new LogEntry(LogLevel.Info, "Concurrent test", "Logger"));
                     }
@@ -220,7 +222,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
 
             // Assert
             Assert.True(File.Exists(filePath));
-            var content = File.ReadAllText(filePath);
+            string content = File.ReadAllText(filePath);
             Assert.NotEmpty(content);
 
             // Cleanup

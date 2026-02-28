@@ -36,6 +36,8 @@ using Alis.Core.Ecs.Systems.Manager;
 using Alis.Core.Ecs.Systems.Scope;
 using Dropbox.Api;
 using Dropbox.Api.Files;
+using Dropbox.Api.Stone;
+using Dropbox.Api.Users;
 
 namespace Alis.Extension.Cloud.DropBox
 {
@@ -101,7 +103,7 @@ namespace Alis.Extension.Cloud.DropBox
                 _dropboxClient = new DropboxClient(_accessToken);
 
                 // Verify the token is valid by getting account info
-                var account = await _dropboxClient.Users.GetCurrentAccountAsync();
+                FullAccount account = await _dropboxClient.Users.GetCurrentAccountAsync();
                 Logger.Info($"DropBox initialized successfully for user: {account.Name.DisplayName}");
             }
             catch (Exception ex)
@@ -138,9 +140,9 @@ namespace Alis.Extension.Cloud.DropBox
 
             try
             {
-                using (var stream = File.OpenRead(localFilePath))
+                using (FileStream stream = File.OpenRead(localFilePath))
                 {
-                    var response = await _dropboxClient.Files.UploadAsync(
+                    FileMetadata response = await _dropboxClient.Files.UploadAsync(
                         dropboxPath,
                         WriteMode.Add.Instance,
                         body: stream);
@@ -177,17 +179,17 @@ namespace Alis.Extension.Cloud.DropBox
             try
             {
                 // Ensure the destination directory exists
-                var directory = Path.GetDirectoryName(localFilePath);
+                string directory = Path.GetDirectoryName(localFilePath);
                 if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
                 {
                     Directory.CreateDirectory(directory);
                 }
 
-                using (var response = await _dropboxClient.Files.DownloadAsync(dropboxPath))
+                using (IDownloadResponse<FileMetadata> response = await _dropboxClient.Files.DownloadAsync(dropboxPath))
                 {
-                    using (var fileStream = File.Create(localFilePath))
+                    using (FileStream fileStream = File.Create(localFilePath))
                     {
-                        var stream = await response.GetContentAsStreamAsync();
+                        Stream stream = await response.GetContentAsStreamAsync();
                         await stream.CopyToAsync(fileStream);
                     }
                 }
@@ -226,7 +228,7 @@ namespace Alis.Extension.Cloud.DropBox
 
             try
             {
-                var result = await _dropboxClient.Files.ListFolderAsync(folderPath, recursive: recursive);
+                ListFolderResult result = await _dropboxClient.Files.ListFolderAsync(folderPath, recursive: recursive);
                 Logger.Info($"Listed {result.Entries.Count} items from DropBox path: {folderPath}");
                 return result.Entries;
             }
@@ -285,7 +287,7 @@ namespace Alis.Extension.Cloud.DropBox
 
             try
             {
-                var metadata = await _dropboxClient.Files.GetMetadataAsync(dropboxPath);
+                Metadata metadata = await _dropboxClient.Files.GetMetadataAsync(dropboxPath);
                 Logger.Info($"Retrieved metadata from DropBox: {dropboxPath}");
                 return metadata;
             }

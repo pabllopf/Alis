@@ -67,10 +67,10 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         {
             // Arrange
             ILogFormatter formatter = new SimpleLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var result = formatter.Format(entry);
+            string result = formatter.Format(entry);
 
             // Assert
             Assert.NotNull(result);
@@ -82,10 +82,10 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         {
             // Arrange
             ILogFormatter formatter = new SimpleLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var result = formatter.Format(entry);
+            string result = formatter.Format(entry);
 
             // Assert
             Assert.IsType<string>(result);
@@ -111,16 +111,16 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         public void ILogFormatter_DifferentImplementations_ProduceDifferentOutput()
         {
             // Arrange
-            var formatters = new ILogFormatter[]
+            ILogFormatter[] formatters = new ILogFormatter[]
             {
                 new SimpleLogFormatter(),
                 new CompactLogFormatter(),
                 new JsonLogFormatter()
             };
-            var entry = new LogEntry(LogLevel.Info, "Test message", "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test message", "Logger");
 
             // Act
-            var results = new string[3];
+            string[] results = new string[3];
             for (int i = 0; i < formatters.Length; i++)
             {
                 results[i] = formatters[i].Format(entry);

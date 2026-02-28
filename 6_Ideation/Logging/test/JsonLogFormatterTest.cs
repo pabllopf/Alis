@@ -48,7 +48,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_HasName()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
+            JsonLogFormatter formatter = new JsonLogFormatter();
 
             // Assert
             Assert.NotNull(formatter.Name);
@@ -59,11 +59,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_ShouldBeValidJson()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.StartsWith("{", formatted);
@@ -74,11 +74,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_ContainsTimestamp()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("\"timestamp\":", formatted);
@@ -88,11 +88,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_ContainsLevel()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Warning, "Test", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Warning, "Test", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("\"level\":\"Warning\"", formatted);
@@ -102,11 +102,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_ContainsMessage()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test message", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test message", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("\"message\":\"Test message\"", formatted);
@@ -116,11 +116,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_ContainsLogger()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "MyLogger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "MyLogger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("\"logger\":\"MyLogger\"", formatted);
@@ -130,11 +130,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_ContainsThreadId()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("\"threadId\":", formatted);
@@ -144,12 +144,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_WithException()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var exception = new InvalidOperationException("Operation failed");
-            var entry = new LogEntry(LogLevel.Error, "Error", "Logger", exception);
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            InvalidOperationException exception = new InvalidOperationException("Operation failed");
+            LogEntry entry = new LogEntry(LogLevel.Error, "Error", "Logger", exception);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("\"exception\":", formatted);
@@ -162,11 +162,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_WithoutException()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.DoesNotContain("\"exception\":", formatted);
@@ -176,11 +176,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_WithCorrelationId()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger", correlationId: "CORR-123");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger", correlationId: "CORR-123");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("\"correlationId\":\"CORR-123\"", formatted);
@@ -190,11 +190,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_WithoutCorrelationId()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.DoesNotContain("\"correlationId\":", formatted);
@@ -204,16 +204,16 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_WithProperties()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var properties = new Dictionary<string, object>
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            Dictionary<string, object> properties = new Dictionary<string, object>
             {
                 { "UserId", 123 },
                 { "Action", "Login" }
             };
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger", properties: properties);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger", properties: properties);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("\"properties\":", formatted);
@@ -227,11 +227,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_WithoutProperties()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.DoesNotContain("\"properties\":", formatted);
@@ -241,12 +241,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_WithScopes()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var scopes = new List<object> { "Scope1", "Scope2" };
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger", scopes: scopes);
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            List<object> scopes = new List<object> { "Scope1", "Scope2" };
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger", scopes: scopes);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("\"scopes\":", formatted);
@@ -258,11 +258,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_WithoutScopes()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.DoesNotContain("\"scopes\":", formatted);
@@ -272,11 +272,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_EscapesSpecialCharacters()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Message with \"quotes\" and \\backslash", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message with \"quotes\" and \\backslash", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("\\\"", formatted);
@@ -287,14 +287,14 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_AllLevels()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogLevel[] levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
 
-            foreach (var level in levels)
+            foreach (LogLevel level in levels)
             {
                 // Act
-                var entry = new LogEntry(level, "Test", "Logger");
-                var formatted = formatter.Format(entry);
+                LogEntry entry = new LogEntry(level, "Test", "Logger");
+                string formatted = formatter.Format(entry);
 
                 // Assert
                 Assert.Contains($"\"level\":\"{level}\"", formatted);
@@ -305,18 +305,18 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_ComplexProperties()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var properties = new Dictionary<string, object>
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            Dictionary<string, object> properties = new Dictionary<string, object>
             {
                 { "FrameNumber", 42 },
                 { "Timestamp", DateTime.Now.ToString("O") },
                 { "Position", "1,2,3" },
                 { "IsActive", true }
             };
-            var entry = new LogEntry(LogLevel.Info, "Game state", "Logger", properties: properties);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Game state", "Logger", properties: properties);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("\"properties\":", formatted);
@@ -328,11 +328,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_EmptyMessage()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, string.Empty, "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, string.Empty, "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.StartsWith("{", formatted);
@@ -343,12 +343,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_LongMessage()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var longMessage = new string('x', 1000);
-            var entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            string longMessage = new string('x', 1000);
+            LogEntry entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains(longMessage, formatted);
@@ -358,12 +358,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void JsonLogFormatter_Format_ValidJsonStructure()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger", correlationId: "ID", 
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger", correlationId: "ID", 
                 properties: new Dictionary<string, object> { { "key", "value" } });
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert - Check for balanced braces
             int openBraces = formatted.Count(c => c == '{');

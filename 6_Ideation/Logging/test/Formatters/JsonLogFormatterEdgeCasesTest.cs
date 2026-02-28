@@ -49,11 +49,11 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void JsonLogFormatter_ControlCharacters_ShouldBeEscaped()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Message with\nnewline\ttab\rcarriage", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message with\nnewline\ttab\rcarriage", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("\\n", formatted);
@@ -65,11 +65,11 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void JsonLogFormatter_QuotesAndBackslashes_ShouldBeEscaped()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Quote: \" and Backslash: \\", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Quote: \" and Backslash: \\", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("\\\"", formatted);
@@ -80,11 +80,11 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void JsonLogFormatter_UnicodeCharacters_ShouldBePreserved()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Unicode: 你好 مرحبا 🎮", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Unicode: 你好 مرحبا 🎮", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("你好", formatted);
@@ -96,12 +96,12 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void JsonLogFormatter_VeryLongStringInMessage()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var longMessage = new string('x', 100000);
-            var entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            string longMessage = new string('x', 100000);
+            LogEntry entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains(longMessage, formatted);
@@ -113,13 +113,13 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void JsonLogFormatter_VeryLongPropertyValue()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var longValue = new string('y', 100000);
-            var properties = new Dictionary<string, object> { { "LongKey", longValue } };
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            string longValue = new string('y', 100000);
+            Dictionary<string, object> properties = new Dictionary<string, object> { { "LongKey", longValue } };
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains(longValue, formatted);
@@ -129,16 +129,16 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void JsonLogFormatter_ManyProperties()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var properties = new Dictionary<string, object>();
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            Dictionary<string, object> properties = new Dictionary<string, object>();
             for (int i = 0; i < 100; i++)
             {
                 properties[$"Prop{i}"] = $"Value{i}";
             }
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("properties", formatted);
@@ -152,16 +152,16 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void JsonLogFormatter_ManyScopes()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var scopes = new List<object>();
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            List<object> scopes = new List<object>();
             for (int i = 0; i < 50; i++)
             {
                 scopes.Add($"Scope{i}");
             }
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("scopes", formatted);
@@ -173,11 +173,11 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void JsonLogFormatter_WindowsFilePathInMessage()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "File: C:\\Users\\Test\\file.txt", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "File: C:\\Users\\Test\\file.txt", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("C:\\\\Users\\\\Test\\\\file.txt", formatted);
@@ -187,11 +187,11 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void JsonLogFormatter_LinuxFilePathInMessage()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "File: /home/user/file.txt", "Logger");
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "File: /home/user/file.txt", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("/home/user/file.txt", formatted);
@@ -201,16 +201,16 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void JsonLogFormatter_SpecialJsonCharactersInPropertyNames()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var properties = new Dictionary<string, object>
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            Dictionary<string, object> properties = new Dictionary<string, object>
             {
                 { "key\"with\"quotes", "value" },
                 { "key\\with\\backslash", "value" }
             };
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.StartsWith("{", formatted);
@@ -221,16 +221,16 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void JsonLogFormatter_NullPropertyValues()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var properties = new Dictionary<string, object>
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            Dictionary<string, object> properties = new Dictionary<string, object>
             {
                 { "NullValue", null },
                 { "StringValue", "test" }
             };
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("\"NullValue\":\"null\"", formatted);
@@ -240,8 +240,8 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
         public void JsonLogFormatter_ValidJsonWithComplexEntry()
         {
             // Arrange
-            var formatter = new JsonLogFormatter();
-            var entry = new LogEntry(
+            JsonLogFormatter formatter = new JsonLogFormatter();
+            LogEntry entry = new LogEntry(
                 LogLevel.Error,
                 "Complex message",
                 "ComplexLogger",
@@ -252,15 +252,15 @@ namespace Alis.Core.Aspect.Logging.Test.Formatters
             );
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.StartsWith("{", formatted);
             Assert.EndsWith("}", formatted);
             
             // Count braces
-            var openCount = formatted.Count(c => c == '{');
-            var closeCount = formatted.Count(c => c == '}');
+            int openCount = formatted.Count(c => c == '{');
+            int closeCount = formatted.Count(c => c == '}');
             Assert.Equal(openCount, closeCount);
         }
     }

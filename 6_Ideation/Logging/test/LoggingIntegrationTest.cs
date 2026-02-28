@@ -49,16 +49,16 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Integration_CompleteWorkflow_ShouldSucceed()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput();
+                MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory
                     .AddOutput(memoryOutput)
                     .AddFilter(new LogLevelFilter(LogLevel.Info))
                     .SetFormatter(new SimpleLogFormatter())
                     .SetMinimumLevel(LogLevel.Trace);
 
-                var logger = factory.CreateLogger("IntegrationTest");
+                ILogger logger = factory.CreateLogger("IntegrationTest");
                 logger.SetCorrelationId("SESSION-123");
 
                 // Act
@@ -79,7 +79,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 }
 
                 // Assert
-                var entries = memoryOutput.GetEntries();
+                IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Equal(4, entries.Count);
                 Assert.All(entries, e => Assert.Equal("SESSION-123", e.CorrelationId));
             }
@@ -89,16 +89,16 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Integration_MultipleLoggersMultipleOutputs_ShouldSucceed()
         {
             // Arrange
-            var memory1 = new MemoryLogOutput();
-            var memory2 = new MemoryLogOutput();
+            MemoryLogOutput memory1 = new MemoryLogOutput();
+            MemoryLogOutput memory2 = new MemoryLogOutput();
 
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 factory.AddOutput(memory1);
                 factory.AddOutput(memory2);
 
-                var logger1 = factory.CreateLogger("Logger1");
-                var logger2 = factory.CreateLogger("Logger2");
+                ILogger logger1 = factory.CreateLogger("Logger1");
+                ILogger logger2 = factory.CreateLogger("Logger2");
 
                 // Act
                 logger1.LogInfo("Message from Logger1");
@@ -114,23 +114,23 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Integration_ComplexFiltering_ShouldSucceed()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput();
+                MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
 
-                var filters = new List<ILogFilter>
+                List<ILogFilter> filters = new List<ILogFilter>
                 {
                     new LogLevelFilter(LogLevel.Warning),
                     new LoggerNameFilter(new[] { "Engine", "Physics" }, inclusive: true),
                     new SamplingLogFilter(sampleRate: 2)
                 };
-                var composite = new CompositeLogFilter(filters, requireAll: false);
+                CompositeLogFilter composite = new CompositeLogFilter(filters, requireAll: false);
                 factory.AddFilter(composite);
 
-                var engineLogger = factory.CreateLogger("Engine");
-                var physicsLogger = factory.CreateLogger("Physics");
-                var audioLogger = factory.CreateLogger("Audio");
+                ILogger engineLogger = factory.CreateLogger("Engine");
+                ILogger physicsLogger = factory.CreateLogger("Physics");
+                ILogger audioLogger = factory.CreateLogger("Audio");
 
                 // Act
                 for (int i = 0; i < 10; i++)
@@ -149,19 +149,19 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Integration_StructuredLoggingWithContexts_ShouldSucceed()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput();
+                MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput)
                        .SetFormatter(new JsonLogFormatter());
 
-                var logger = factory.CreateLogger("GameEngine");
+                ILogger logger = factory.CreateLogger("GameEngine");
                 logger.SetCorrelationId(Guid.NewGuid().ToString("N").Substring(0, 8));
 
                 // Act
                 using (logger.BeginScope("Scene:MainMenu"))
                 {
-                    var playerData = new Dictionary<string, object>
+                    Dictionary<string, object> playerData = new Dictionary<string, object>
                     {
                         { "PlayerId", 1001 },
                         { "PlayerName", "Hero" },
@@ -171,7 +171,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 }
 
                 // Assert
-                var entries = memoryOutput.GetEntries();
+                IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Single(entries);
                 Assert.Equal(3, entries[0].Properties.Count);
                 Assert.Single(entries[0].Scopes);
@@ -182,12 +182,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Integration_ExceptionHandling_ShouldSucceed()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput();
+                MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
 
-                var logger = factory.CreateLogger("ErrorTest");
+                ILogger logger = factory.CreateLogger("ErrorTest");
 
                 // Act
                 try
@@ -200,7 +200,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 }
 
                 // Assert
-                var entries = memoryOutput.GetEntries();
+                IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Single(entries);
                 Assert.NotNull(entries[0].Exception);
                 Assert.IsType<InvalidOperationException>(entries[0].Exception);
@@ -211,23 +211,23 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Integration_ConcurrentLoggingFromMultipleThreads_ShouldSucceed()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput);
 
-                var logger = factory.CreateLogger("ConcurrentTest");
+                ILogger logger = factory.CreateLogger("ConcurrentTest");
                 const int threadCount = 10;
                 const int messagesPerThread = 100;
-                var tasks = new List<Task>();
+                List<Task> tasks = new List<Task>();
 
                 // Act
                 for (int t = 0; t < threadCount; t++)
                 {
                     int threadNum = t;
-                    var task = Task.Run(() =>
+                    Task task = Task.Run(() =>
                     {
-                        var threadLogger = factory.CreateLogger($"Thread{threadNum}");
+                        ILogger threadLogger = factory.CreateLogger($"Thread{threadNum}");
                         for (int i = 0; i < messagesPerThread; i++)
                         {
                             threadLogger.LogInfo($"Message {i}");
@@ -247,25 +247,25 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Integration_FormatterAndOutputCombinations_ShouldSucceed()
         {
             // Arrange & Act & Assert
-            var formatters = new ILogFormatter[]
+            ILogFormatter[] formatters = new ILogFormatter[]
             {
                 new SimpleLogFormatter(),
                 new CompactLogFormatter(),
                 new JsonLogFormatter()
             };
 
-            foreach (var formatter in formatters)
+            foreach (ILogFormatter formatter in formatters)
             {
-                using (var factory = new LoggerFactory())
+                using (LoggerFactory factory = new LoggerFactory())
                 {
-                    var memoryOutput = new MemoryLogOutput();
+                    MemoryLogOutput memoryOutput = new MemoryLogOutput();
                     factory.AddOutput(memoryOutput)
                            .SetFormatter(formatter);
 
-                    var logger = factory.CreateLogger("FormatterTest");
+                    ILogger logger = factory.CreateLogger("FormatterTest");
                     logger.LogInfo("Test message");
 
-                    var entries = memoryOutput.GetEntries();
+                    IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                     Assert.Single(entries);
                 }
             }
@@ -275,12 +275,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Integration_ScopedContextsWithMultipleLevels_ShouldSucceed()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput();
+                MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
 
-                var logger = factory.CreateLogger("ScopeTest");
+                ILogger logger = factory.CreateLogger("ScopeTest");
 
                 // Act
                 using (logger.BeginScope("Level1"))
@@ -303,7 +303,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 }
 
                 // Assert
-                var entries = memoryOutput.GetEntries();
+                IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Equal(5, entries.Count);
                 Assert.Equal(1, entries[0].Scopes.Count);
                 Assert.Equal(2, entries[1].Scopes.Count);
@@ -317,15 +317,15 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Integration_GameLoopSimulation_ShouldSucceed()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput)
                        .AddFilter(new SamplingLogFilter(sampleRate: 10)); // Log 1 in 10
 
-                var engineLogger = factory.CreateLogger("Engine");
-                var rendererLogger = factory.CreateLogger("Renderer");
-                var physicsLogger = factory.CreateLogger("Physics");
+                ILogger engineLogger = factory.CreateLogger("Engine");
+                ILogger rendererLogger = factory.CreateLogger("Renderer");
+                ILogger physicsLogger = factory.CreateLogger("Physics");
 
                 // Act - Simulate 100 frames
                 for (int frame = 0; frame < 100; frame++)

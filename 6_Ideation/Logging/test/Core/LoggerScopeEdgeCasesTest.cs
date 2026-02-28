@@ -46,8 +46,8 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LoggerScope_ThousandLevelsDeep()
         {
             // Arrange
-            var stack = new Stack<object>();
-            var scopes = new List<LoggerScope>();
+            Stack<object> stack = new Stack<object>();
+            List<LoggerScope> scopes = new List<LoggerScope>();
 
             // Act
             for (int i = 0; i < 1000; i++)
@@ -71,8 +71,8 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LoggerScope_StackUnwindingOrder()
         {
             // Arrange
-            var stack = new Stack<object>();
-            var scopes = new LoggerScope[5];
+            Stack<object> stack = new Stack<object>();
+            LoggerScope[] scopes = new LoggerScope[5];
 
             // Act - Push 5 scopes
             for (int i = 0; i < 5; i++)
@@ -92,9 +92,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LoggerScope_ParallelScopeCreation()
         {
             // Arrange
-            var stacks = new Stack<object>[10];
-            var scopes = new LoggerScope[10];
-            var tasks = new Task[10];
+            Stack<object>[] stacks = new Stack<object>[10];
+            LoggerScope[] scopes = new LoggerScope[10];
+            Task[] tasks = new Task[10];
 
             for (int i = 0; i < 10; i++)
             {
@@ -125,7 +125,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LoggerScope_ComplexObjectAsScope()
         {
             // Arrange
-            var stack = new Stack<object>();
+            Stack<object> stack = new Stack<object>();
             var complexObject = new
             {
                 RequestId = Guid.NewGuid(),
@@ -136,11 +136,11 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             };
 
             // Act
-            var scope = new LoggerScope(complexObject, stack, () => { });
+            LoggerScope scope = new LoggerScope(complexObject, stack, () => { });
 
             // Assert
             Assert.Single(stack);
-            var poppedObject = stack.Pop();
+            object poppedObject = stack.Pop();
             Assert.NotNull(poppedObject);
 
             scope.Dispose();
@@ -150,11 +150,11 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LoggerScope_CallbackThrowingException()
         {
             // Arrange
-            var stack = new Stack<object>();
-            var exceptionThrown = false;
+            Stack<object> stack = new Stack<object>();
+            bool exceptionThrown = false;
 
             // Act
-            var scope = new LoggerScope("TestScope", stack, () =>
+            LoggerScope scope = new LoggerScope("TestScope", stack, () =>
             {
                 exceptionThrown = true;
                 throw new InvalidOperationException("Callback error");
@@ -178,8 +178,8 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LoggerScope_DisposableBehavior()
         {
             // Arrange
-            var stack = new Stack<object>();
-            var scope = new LoggerScope("TestScope", stack, () => { });
+            Stack<object> stack = new Stack<object>();
+            LoggerScope scope = new LoggerScope("TestScope", stack, () => { });
 
             // Assert - Should implement IDisposable
             Assert.IsAssignableFrom<IDisposable>(scope);
@@ -189,11 +189,11 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LoggerScope_LongScopeName()
         {
             // Arrange
-            var stack = new Stack<object>();
-            var longName = new string('x', 100000);
+            Stack<object> stack = new Stack<object>();
+            string longName = new string('x', 100000);
 
             // Act
-            var scope = new LoggerScope(longName, stack, () => { });
+            LoggerScope scope = new LoggerScope(longName, stack, () => { });
 
             // Assert
             Assert.Single(stack);
@@ -206,11 +206,11 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LoggerScope_UnicodeInScopeName()
         {
             // Arrange
-            var stack = new Stack<object>();
-            var unicodeName = "Scope: 中文 مرحبا Привет 🎮";
+            Stack<object> stack = new Stack<object>();
+            string unicodeName = "Scope: 中文 مرحبا Привет 🎮";
 
             // Act
-            var scope = new LoggerScope(unicodeName, stack, () => { });
+            LoggerScope scope = new LoggerScope(unicodeName, stack, () => { });
 
             // Assert
             Assert.Single(stack);
@@ -223,11 +223,11 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LoggerScope_SpecialCharactersInName()
         {
             // Arrange
-            var stack = new Stack<object>();
-            var specialName = "Scope\nWith\tSpecial\rCharacters\"And'Quotes";
+            Stack<object> stack = new Stack<object>();
+            string specialName = "Scope\nWith\tSpecial\rCharacters\"And'Quotes";
 
             // Act
-            var scope = new LoggerScope(specialName, stack, () => { });
+            LoggerScope scope = new LoggerScope(specialName, stack, () => { });
 
             // Assert
             Assert.Single(stack);
@@ -240,8 +240,8 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LoggerScope_MultipleCallbacksInChain()
         {
             // Arrange
-            var stack = new Stack<object>();
-            var callOrder = new List<int>();
+            Stack<object> stack = new Stack<object>();
+            List<int> callOrder = new List<int>();
 
             // Create nested scopes with callbacks
             Action createNested = null;
@@ -250,9 +250,9 @@ namespace Alis.Core.Aspect.Logging.Test.Core
                 // This would be created in actual nested logging
             };
 
-            var scope1 = new LoggerScope("S1", stack, () => callOrder.Add(1));
-            var scope2 = new LoggerScope("S2", stack, () => callOrder.Add(2));
-            var scope3 = new LoggerScope("S3", stack, () => callOrder.Add(3));
+            LoggerScope scope1 = new LoggerScope("S1", stack, () => callOrder.Add(1));
+            LoggerScope scope2 = new LoggerScope("S2", stack, () => callOrder.Add(2));
+            LoggerScope scope3 = new LoggerScope("S3", stack, () => callOrder.Add(3));
 
             // Act - Dispose in LIFO order
             scope3.Dispose(); // Should call callback(3)
@@ -267,8 +267,8 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LoggerScope_ConcurrentDisposal()
         {
             // Arrange
-            var stacks = new Stack<object>[5];
-            var scopes = new LoggerScope[5];
+            Stack<object>[] stacks = new Stack<object>[5];
+            LoggerScope[] scopes = new LoggerScope[5];
 
             for (int i = 0; i < 5; i++)
             {
@@ -277,7 +277,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             }
 
             // Act - Dispose all simultaneously
-            var tasks = new Task[5];
+            Task[] tasks = new Task[5];
             for (int i = 0; i < 5; i++)
             {
                 int index = i;
@@ -297,10 +297,10 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LoggerScope_NullObjectAsScope()
         {
             // Arrange
-            var stack = new Stack<object>();
+            Stack<object> stack = new Stack<object>();
 
             // Act
-            var scope = new LoggerScope(null, stack, () => { });
+            LoggerScope scope = new LoggerScope(null, stack, () => { });
 
             // Assert
             Assert.Single(stack);

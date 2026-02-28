@@ -45,10 +45,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerScope_Constructor_ShouldPushScopeOntoStack()
         {
             // Arrange
-            var stack = new Stack<object>();
+            Stack<object> stack = new Stack<object>();
 
             // Act
-            var scope = new LoggerScope("TestScope", stack, () => { });
+            LoggerScope scope = new LoggerScope("TestScope", stack, () => { });
 
             // Assert
             Assert.Single(stack);
@@ -59,9 +59,9 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerScope_Dispose_ShouldPopScopeFromStack()
         {
             // Arrange
-            var stack = new Stack<object>();
+            Stack<object> stack = new Stack<object>();
             stack.Push("ExistingScope");
-            var scope = new LoggerScope("NewScope", stack, () => { });
+            LoggerScope scope = new LoggerScope("NewScope", stack, () => { });
             Assert.Equal(2, stack.Count);
 
             // Act
@@ -76,8 +76,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerScope_DisposeTwice_ShouldNotThrow()
         {
             // Arrange
-            var stack = new Stack<object>();
-            var scope = new LoggerScope("TestScope", stack, () => { });
+            Stack<object> stack = new Stack<object>();
+            LoggerScope scope = new LoggerScope("TestScope", stack, () => { });
 
             // Act & Assert
             scope.Dispose();
@@ -88,11 +88,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerScope_OnDisposeCallback_ShouldBeInvoked()
         {
             // Arrange
-            var stack = new Stack<object>();
-            var callbackInvoked = false;
+            Stack<object> stack = new Stack<object>();
+            bool callbackInvoked = false;
 
             // Act
-            var scope = new LoggerScope("TestScope", stack, () => callbackInvoked = true);
+            LoggerScope scope = new LoggerScope("TestScope", stack, () => callbackInvoked = true);
             scope.Dispose();
 
             // Assert
@@ -110,10 +110,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerScope_NullCallback_ShouldNotThrow()
         {
             // Arrange
-            var stack = new Stack<object>();
+            Stack<object> stack = new Stack<object>();
 
             // Act & Assert
-            var scope = new LoggerScope("TestScope", stack, null);
+            LoggerScope scope = new LoggerScope("TestScope", stack, null);
             scope.Dispose(); // Should not throw
         }
 
@@ -121,12 +121,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerScope_NestedScopes_ShouldMaintainStackOrder()
         {
             // Arrange
-            var stack = new Stack<object>();
+            Stack<object> stack = new Stack<object>();
 
             // Act
-            var scope1 = new LoggerScope("Scope1", stack, () => { });
-            var scope2 = new LoggerScope("Scope2", stack, () => { });
-            var scope3 = new LoggerScope("Scope3", stack, () => { });
+            LoggerScope scope1 = new LoggerScope("Scope1", stack, () => { });
+            LoggerScope scope2 = new LoggerScope("Scope2", stack, () => { });
+            LoggerScope scope3 = new LoggerScope("Scope3", stack, () => { });
 
             // Assert
             Assert.Equal(3, stack.Count);
@@ -144,7 +144,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerScope_UsingStatement_ShouldAutomaticallyDispose()
         {
             // Arrange
-            var stack = new Stack<object>();
+            Stack<object> stack = new Stack<object>();
             LoggerScope scope;
 
             // Act
@@ -161,9 +161,9 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerScope_MultipleScopes_ShouldPopInLifoOrder()
         {
             // Arrange
-            var stack = new Stack<object>();
-            var scope1 = new LoggerScope("A", stack, () => { });
-            var scope2 = new LoggerScope("B", stack, () => { });
+            Stack<object> stack = new Stack<object>();
+            LoggerScope scope1 = new LoggerScope("A", stack, () => { });
+            LoggerScope scope2 = new LoggerScope("B", stack, () => { });
 
             // Act
             scope2.Dispose();
@@ -177,8 +177,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerScope_DisposeBehavior_ShouldHandleEmptyStack()
         {
             // Arrange
-            var stack = new Stack<object>();
-            var scope = new LoggerScope("TestScope", stack, () => { });
+            Stack<object> stack = new Stack<object>();
+            LoggerScope scope = new LoggerScope("TestScope", stack, () => { });
             stack.Pop(); // Remove the scope manually
 
             // Act & Assert - Dispose should handle empty stack gracefully
@@ -189,11 +189,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerScope_ScopeWithObject_ShouldStoreObject()
         {
             // Arrange
-            var stack = new Stack<object>();
+            Stack<object> stack = new Stack<object>();
             var scopeObject = new { Id = 123, Name = "TestScope" };
 
             // Act
-            var scope = new LoggerScope(scopeObject, stack, () => { });
+            LoggerScope scope = new LoggerScope(scopeObject, stack, () => { });
 
             // Assert
             Assert.Single(stack);
@@ -204,11 +204,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerScope_ScopeWithNumber_ShouldStoreNumber()
         {
             // Arrange
-            var stack = new Stack<object>();
-            var scopeId = 42;
+            Stack<object> stack = new Stack<object>();
+            int scopeId = 42;
 
             // Act
-            var scope = new LoggerScope(scopeId, stack, () => { });
+            LoggerScope scope = new LoggerScope(scopeId, stack, () => { });
 
             // Assert
             Assert.Single(stack);
@@ -219,8 +219,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerScope_LongScopeChain_ShouldMaintainOrder()
         {
             // Arrange
-            var stack = new Stack<object>();
-            var scopes = new LoggerScope[100];
+            Stack<object> stack = new Stack<object>();
+            LoggerScope[] scopes = new LoggerScope[100];
 
             // Act
             for (int i = 0; i < 100; i++)
@@ -243,10 +243,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerScope_NullScope_ShouldBeAllowed()
         {
             // Arrange
-            var stack = new Stack<object>();
+            Stack<object> stack = new Stack<object>();
 
             // Act
-            var scope = new LoggerScope(null, stack, () => { });
+            LoggerScope scope = new LoggerScope(null, stack, () => { });
 
             // Assert
             Assert.Single(stack);

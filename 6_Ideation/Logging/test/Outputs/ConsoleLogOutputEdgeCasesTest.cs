@@ -46,9 +46,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void ConsoleLogOutput_VeryLongMessage()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
-            var longMessage = new string('x', 100000);
-            var entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            string longMessage = new string('x', 100000);
+            LogEntry entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
 
             // Act & Assert - Should not throw
             output.Write(entry);
@@ -58,13 +58,13 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void ConsoleLogOutput_AllColorLevels()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
-            var levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            LogLevel[] levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
 
             // Act & Assert
-            foreach (var level in levels)
+            foreach (LogLevel level in levels)
             {
-                var entry = new LogEntry(level, $"{level} message", "Logger");
+                LogEntry entry = new LogEntry(level, $"{level} message", "Logger");
                 output.Write(entry); // Should not throw
             }
         }
@@ -73,17 +73,17 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void ConsoleLogOutput_RapidSequence()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
-            var startTime = DateTime.UtcNow;
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            DateTime startTime = DateTime.UtcNow;
 
             // Act
             for (int i = 0; i < 1000; i++)
             {
-                var entry = new LogEntry(LogLevel.Info, $"Rapid message {i}", "Logger");
+                LogEntry entry = new LogEntry(LogLevel.Info, $"Rapid message {i}", "Logger");
                 output.Write(entry);
             }
 
-            var elapsed = DateTime.UtcNow - startTime;
+            TimeSpan elapsed = DateTime.UtcNow - startTime;
 
             // Assert - Should complete quickly
             Assert.True(elapsed.TotalSeconds < 5);
@@ -93,8 +93,8 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void ConsoleLogOutput_UnicodeCharacters()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
-            var entry = new LogEntry(LogLevel.Info, "Unicode: 你好 مرحبا 🎮", "Logger");
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Unicode: 你好 مرحبا 🎮", "Logger");
 
             // Act & Assert - Should not throw
             output.Write(entry);
@@ -104,8 +104,8 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void ConsoleLogOutput_ControlCharacters()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
-            var entry = new LogEntry(LogLevel.Info, "Message with\nnewline\ttab\rcarriage", "Logger");
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message with\nnewline\ttab\rcarriage", "Logger");
 
             // Act & Assert - Should not throw
             output.Write(entry);
@@ -115,8 +115,8 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void ConsoleLogOutput_EnableDisableToggle()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act & Assert - Multiple toggles should work
             for (int i = 0; i < 10; i++)
@@ -130,9 +130,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void ConsoleLogOutput_VeryLongLoggerName()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
-            var longName = "Namespace." + string.Join(".", new[] { "Class" });
-            var entry = new LogEntry(LogLevel.Info, "Message", longName);
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            string longName = "Namespace." + string.Join(".", new[] { "Class" });
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", longName);
 
             // Act & Assert - Should not throw
             output.Write(entry);
@@ -142,22 +142,22 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         public void ConsoleLogOutput_PerformanceTest()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
-            var entries = new ILogEntry[10000];
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            ILogEntry[] entries = new ILogEntry[10000];
             for (int i = 0; i < 10000; i++)
             {
                 entries[i] = new LogEntry(LogLevel.Info, $"Message {i}", "Logger");
             }
 
-            var startTime = DateTime.UtcNow;
+            DateTime startTime = DateTime.UtcNow;
 
             // Act
-            foreach (var entry in entries)
+            foreach (ILogEntry entry in entries)
             {
                 output.Write(entry);
             }
 
-            var elapsed = DateTime.UtcNow - startTime;
+            TimeSpan elapsed = DateTime.UtcNow - startTime;
 
             // Assert - Should handle 10k messages reasonably fast
             Assert.True(elapsed.TotalSeconds < 10);

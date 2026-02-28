@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Outputs;
 using Xunit;
 
@@ -92,17 +94,17 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Logger_SetDefaultLogger_ShouldAcceptCustomLogger()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var factory = new LoggerFactory();
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            LoggerFactory factory = new LoggerFactory();
             factory.AddOutput(memoryOutput);
-            var customLogger = factory.CreateLogger("CustomLogger");
+            ILogger customLogger = factory.CreateLogger("CustomLogger");
 
             // Act
             Logger.SetDefaultLogger(customLogger);
             customLogger.LogInfo("Test");
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
         }
 
@@ -141,7 +143,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Logger_LongMessage_ShouldNotThrow()
         {
             // Arrange
-            var longMessage = new string('x', 10000);
+            string longMessage = new string('x', 10000);
 
             // Act & Assert
             Logger.Info(longMessage);
@@ -151,7 +153,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Logger_SpecialCharacters_ShouldNotThrow()
         {
             // Arrange
-            var specialMessage = "Message with special chars: \n \t \r \" ' \\";
+            string specialMessage = "Message with special chars: \n \t \r \" ' \\";
 
             // Act & Assert
             Logger.Info(specialMessage);
@@ -161,10 +163,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Logger_InfoAndWarningMapping()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var factory = new LoggerFactory();
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            LoggerFactory factory = new LoggerFactory();
             factory.AddOutput(memoryOutput);
-            var logger = factory.CreateLogger("TestLogger");
+            ILogger logger = factory.CreateLogger("TestLogger");
             Logger.SetDefaultLogger(logger);
 
             // Act
@@ -172,7 +174,7 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Log("Log");
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Equal(2, entries.Count);
         }
     }

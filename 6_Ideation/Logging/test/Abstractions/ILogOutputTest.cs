@@ -80,7 +80,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         {
             // Arrange
             ILogOutput output = new MemoryLogOutput();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act & Assert - Should not throw
             output.Write(entry);

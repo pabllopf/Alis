@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Filters;
@@ -48,10 +49,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_Constructor_ShouldInitializeWithDefaultFormatter()
         {
             // Act
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 // Assert
-                var logger = factory.CreateLogger("TestLogger");
+                ILogger logger = factory.CreateLogger("TestLogger");
                 Assert.NotNull(logger);
             }
         }
@@ -60,10 +61,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_CreateLogger_ShouldReturnValidLogger()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 // Act
-                var logger = factory.CreateLogger("TestLogger");
+                ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Assert
                 Assert.NotNull(logger);
@@ -75,11 +76,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_CreateLoggerWithDifferentNames_ShouldReturnDifferentInstances()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 // Act
-                var logger1 = factory.CreateLogger("Logger1");
-                var logger2 = factory.CreateLogger("Logger2");
+                ILogger logger1 = factory.CreateLogger("Logger1");
+                ILogger logger2 = factory.CreateLogger("Logger2");
 
                 // Assert
                 Assert.NotSame(logger1, logger2);
@@ -92,11 +93,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_CreateLoggerWithSameName_ShouldReturnDifferentInstances()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 // Act
-                var logger1 = factory.CreateLogger("SameName");
-                var logger2 = factory.CreateLogger("SameName");
+                ILogger logger1 = factory.CreateLogger("SameName");
+                ILogger logger2 = factory.CreateLogger("SameName");
 
                 // Assert
                 Assert.NotSame(logger1, logger2);
@@ -109,12 +110,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_AddOutput_ShouldChainFluently()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var output = new MemoryLogOutput();
+                MemoryLogOutput output = new MemoryLogOutput();
 
                 // Act
-                var result = factory.AddOutput(output);
+                LoggerFactory result = factory.AddOutput(output);
 
                 // Assert
                 Assert.Same(factory, result);
@@ -125,12 +126,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_AddFilter_ShouldChainFluently()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var filter = new LogLevelFilter(LogLevel.Info);
+                LogLevelFilter filter = new LogLevelFilter(LogLevel.Info);
 
                 // Act
-                var result = factory.AddFilter(filter);
+                LoggerFactory result = factory.AddFilter(filter);
 
                 // Assert
                 Assert.Same(factory, result);
@@ -141,12 +142,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_SetFormatter_ShouldChainFluently()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var formatter = new CompactLogFormatter();
+                CompactLogFormatter formatter = new CompactLogFormatter();
 
                 // Act
-                var result = factory.SetFormatter(formatter);
+                LoggerFactory result = factory.SetFormatter(formatter);
 
                 // Assert
                 Assert.Same(factory, result);
@@ -157,11 +158,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_SetMinimumLevel_ShouldChainFluently()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
 
             // Act
             {
-                var result = factory.SetMinimumLevel(LogLevel.Warning);
+                LoggerFactory result = factory.SetMinimumLevel(LogLevel.Warning);
 
                 // Assert
                 Assert.Same(factory, result);
@@ -172,13 +173,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_FluentConfiguration_ShouldChainMultipleMethods()
         {
             // Arrange & Act
-            using (var factory = new LoggerFactory()
+            using (LoggerFactory factory = new LoggerFactory()
                 .AddOutput(new MemoryLogOutput())
                 .AddFilter(new LogLevelFilter(LogLevel.Info))
                 .SetMinimumLevel(LogLevel.Debug)
                 .SetFormatter(new SimpleLogFormatter()))
             {
-                var logger = factory.CreateLogger("TestLogger");
+                ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Assert
                 Assert.NotNull(logger);
@@ -189,7 +190,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_AddNullOutput_ShouldThrowArgumentNullException()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 // Act & Assert
                 Assert.Throws<ArgumentNullException>(() => factory.AddOutput(null));
@@ -200,7 +201,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_AddNullFilter_ShouldThrowArgumentNullException()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 // Act & Assert
                 Assert.Throws<ArgumentNullException>(() => factory.AddFilter(null));
@@ -211,7 +212,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_SetNullFormatter_ShouldThrowArgumentNullException()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 // Act & Assert
                 Assert.Throws<ArgumentNullException>(() => factory.SetFormatter(null));
@@ -222,11 +223,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_ConfiguredOutput_ShouldBeUsedByLoggers()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            using (var factory = new LoggerFactory())
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("TestLogger");
+                ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Act
                 logger.LogInfo("Test message");
@@ -240,12 +241,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_ConfiguredFilter_ShouldBeAppliedByLoggers()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            using (var factory = new LoggerFactory())
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 factory.AddOutput(memoryOutput);
                 factory.AddFilter(new LogLevelFilter(LogLevel.Warning));
-                var logger = factory.CreateLogger("TestLogger");
+                ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Act
                 logger.LogInfo("Info");
@@ -253,7 +254,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 logger.LogError("Error");
 
                 // Assert
-                var entries = memoryOutput.GetEntries();
+                IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Equal(2, entries.Count);
                 Assert.All(entries, e => Assert.True(e.Level >= LogLevel.Warning));
             }
@@ -263,12 +264,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_ConfiguredFormatter_ShouldBeUsedByOutputs()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            using (var factory = new LoggerFactory())
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 factory.AddOutput(memoryOutput);
                 factory.SetFormatter(new CompactLogFormatter());
-                var logger = factory.CreateLogger("TestLogger");
+                ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Act
                 logger.LogInfo("Test message");
@@ -282,12 +283,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_MinimumLevel_ShouldBeAppliedToLoggers()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            using (var factory = new LoggerFactory())
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 factory.AddOutput(memoryOutput);
                 factory.SetMinimumLevel(LogLevel.Warning);
-                var logger = factory.CreateLogger("TestLogger");
+                ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Act
                 logger.LogDebug("Debug");
@@ -295,7 +296,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 logger.LogWarning("Warning");
 
                 // Assert
-                var entries = memoryOutput.GetEntries();
+                IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Single(entries);
                 Assert.Equal(LogLevel.Warning, entries[0].Level);
             }
@@ -305,13 +306,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_MultipleOutputs_ShouldAllReceiveEntries()
         {
             // Arrange
-            var memory1 = new MemoryLogOutput();
-            var memory2 = new MemoryLogOutput();
-            using (var factory = new LoggerFactory())
+            MemoryLogOutput memory1 = new MemoryLogOutput();
+            MemoryLogOutput memory2 = new MemoryLogOutput();
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 factory.AddOutput(memory1);
                 factory.AddOutput(memory2);
-                var logger = factory.CreateLogger("TestLogger");
+                ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Act
                 logger.LogInfo("Message");
@@ -326,11 +327,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_Flush_ShouldFlushAllOutputs()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            using (var factory = new LoggerFactory())
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("TestLogger");
+                ILogger logger = factory.CreateLogger("TestLogger");
                 logger.LogInfo("Test");
 
                 // Act
@@ -345,8 +346,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_Dispose_ShouldCallDisposeOnOutputs()
         {
             // Arrange
-            var disposableOutput = new DisposableLogOutput();
-            var factory = new LoggerFactory();
+            DisposableLogOutput disposableOutput = new DisposableLogOutput();
+            LoggerFactory factory = new LoggerFactory();
             factory.AddOutput(disposableOutput);
 
             // Act
@@ -361,7 +362,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_DisposedFactory_ShouldNotThrowOnSecondDispose()
         {
             // Arrange
-            var factory = new LoggerFactory();
+            LoggerFactory factory = new LoggerFactory();
 
             // Act & Assert - Should not throw
             factory.Dispose();
@@ -372,10 +373,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_CreateLoggerWithEmptyName_ShouldBeAllowed()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 // Act
-                var logger = factory.CreateLogger(string.Empty);
+                ILogger logger = factory.CreateLogger(string.Empty);
 
                 // Assert
                 Assert.NotNull(logger);
@@ -387,20 +388,20 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_AddMultipleSameFilters_ShouldApplyAll()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            using (var factory = new LoggerFactory())
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 factory.AddOutput(memoryOutput);
                 factory.AddFilter(new LogLevelFilter(LogLevel.Info));
                 factory.AddFilter(new LoggerNameFilter(new[] { "TestLogger" }, inclusive: true));
-                var logger = factory.CreateLogger("TestLogger");
+                ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Act
                 logger.LogInfo("Message");
                 logger.LogDebug("Debug");
 
                 // Assert
-                var entries = memoryOutput.GetEntries();
+                IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
                 Assert.Single(entries);
             }
         }
@@ -409,19 +410,19 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerFactory_ChangeFormatter_ShouldAffectNewLoggers()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var formatter1 = new SimpleLogFormatter();
+                SimpleLogFormatter formatter1 = new SimpleLogFormatter();
                 factory.SetFormatter(formatter1);
 
-                var logger1 = factory.CreateLogger("Logger1");
+                ILogger logger1 = factory.CreateLogger("Logger1");
                 Assert.NotNull(logger1);
 
                 // Act
-                var formatter2 = new CompactLogFormatter();
+                CompactLogFormatter formatter2 = new CompactLogFormatter();
                 factory.SetFormatter(formatter2);
 
-                var logger2 = factory.CreateLogger("Logger2");
+                ILogger logger2 = factory.CreateLogger("Logger2");
 
                 // Assert
                 Assert.NotNull(logger2);

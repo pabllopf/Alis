@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConsoleLogOutput_Constructor_DefaultFormatter()
         {
             // Act
-            var output = new ConsoleLogOutput();
+            ConsoleLogOutput output = new ConsoleLogOutput();
 
             // Assert
             Assert.NotNull(output);
@@ -56,8 +56,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConsoleLogOutput_Write_ShouldNotThrow()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
-            var entry = new LogEntry(LogLevel.Info, "Test message", "Logger");
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test message", "Logger");
 
             // Act & Assert - Should not throw
             output.Write(entry);
@@ -67,7 +67,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConsoleLogOutput_NullEntry_ShouldNotThrow()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
+            ConsoleLogOutput output = new ConsoleLogOutput();
 
             // Act & Assert - Should not throw
             output.Write(null);
@@ -77,13 +77,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConsoleLogOutput_AllLevels_ShouldNotThrow()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
-            var levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            LogLevel[] levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
 
             // Act & Assert
-            foreach (var level in levels)
+            foreach (LogLevel level in levels)
             {
-                var entry = new LogEntry(level, "Test", "Logger");
+                LogEntry entry = new LogEntry(level, "Test", "Logger");
                 output.Write(entry); // Should not throw
             }
         }
@@ -92,8 +92,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConsoleLogOutput_CustomFormatter_ShouldBeUsed()
         {
             // Arrange
-            var formatter = new CompactLogFormatter();
-            var output = new ConsoleLogOutput(formatter);
+            CompactLogFormatter formatter = new CompactLogFormatter();
+            ConsoleLogOutput output = new ConsoleLogOutput(formatter);
 
             // Act & Assert - Should not throw
             output.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
@@ -103,7 +103,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConsoleLogOutput_NullFormatter_ShouldUseDefault()
         {
             // Arrange & Act
-            var output = new ConsoleLogOutput(null);
+            ConsoleLogOutput output = new ConsoleLogOutput(null);
 
             // Assert - Should use default formatter
             output.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
@@ -113,7 +113,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConsoleLogOutput_Disable_ShouldNotWrite()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
+            ConsoleLogOutput output = new ConsoleLogOutput();
             output.IsEnabled = false;
 
             // Act & Assert - Should not throw
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConsoleLogOutput_Flush_ShouldNotThrow()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
+            ConsoleLogOutput output = new ConsoleLogOutput();
 
             // Act & Assert - Should not throw
             output.Flush();
@@ -134,7 +134,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConsoleLogOutput_Dispose_ShouldNotThrow()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
+            ConsoleLogOutput output = new ConsoleLogOutput();
 
             // Act & Assert - Should not throw
             output.Dispose();
@@ -144,7 +144,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConsoleLogOutput_RepeatedDispose_ShouldNotThrow()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
+            ConsoleLogOutput output = new ConsoleLogOutput();
 
             // Act & Assert - Should not throw
             output.Dispose();
@@ -155,7 +155,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConsoleLogOutput_HasName()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
+            ConsoleLogOutput output = new ConsoleLogOutput();
 
             // Assert
             Assert.NotNull(output.Name);
@@ -166,7 +166,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConsoleLogOutput_IsEnabled_DefaultTrue()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
+            ConsoleLogOutput output = new ConsoleLogOutput();
 
             // Assert
             Assert.True(output.IsEnabled);
@@ -176,7 +176,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConsoleLogOutput_IsEnabled_CanBeToggled()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
+            ConsoleLogOutput output = new ConsoleLogOutput();
 
             // Act & Assert
             output.IsEnabled = true;
@@ -193,9 +193,9 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConsoleLogOutput_LongMessage_ShouldNotThrow()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
-            var longMessage = new string('x', 10000);
-            var entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            string longMessage = new string('x', 10000);
+            LogEntry entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
 
             // Act & Assert - Should not throw
             output.Write(entry);
@@ -205,9 +205,9 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConsoleLogOutput_SpecialCharacters_ShouldNotThrow()
         {
             // Arrange
-            var output = new ConsoleLogOutput();
-            var specialMessage = "Message with special chars: \n \t \r \" ' \\";
-            var entry = new LogEntry(LogLevel.Info, specialMessage, "Logger");
+            ConsoleLogOutput output = new ConsoleLogOutput();
+            string specialMessage = "Message with special chars: \n \t \r \" ' \\";
+            LogEntry entry = new LogEntry(LogLevel.Info, specialMessage, "Logger");
 
             // Act & Assert - Should not throw
             output.Write(entry);

@@ -47,7 +47,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_SimplePredicate_ShouldApply()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e => e.Level >= LogLevel.Warning);
+            ConditionalLogFilter filter = new ConditionalLogFilter(e => e.Level >= LogLevel.Warning);
 
             // Act & Assert
             Assert.False(filter.ShouldLog(CreateEntry(LogLevel.Info)));
@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_MessageContainsPredicate_ShouldApply()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e => e.Message.Contains("Error"));
+            ConditionalLogFilter filter = new ConditionalLogFilter(e => e.Message.Contains("Error"));
 
             // Act & Assert
             Assert.True(filter.ShouldLog(CreateEntry(LogLevel.Info, "Error occurred")));
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_LoggerNamePredicate_ShouldApply()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e => e.LoggerName.StartsWith("Engine"));
+            ConditionalLogFilter filter = new ConditionalLogFilter(e => e.LoggerName.StartsWith("Engine"));
 
             // Act & Assert
             Assert.True(filter.ShouldLog(CreateEntry(LogLevel.Info, "Test", "Engine.Core")));
@@ -81,7 +81,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_MultipleConditions_ShouldApply()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e =>
+            ConditionalLogFilter filter = new ConditionalLogFilter(e =>
                 e.Level >= LogLevel.Warning &&
                 e.Message.Contains("Critical")
             );
@@ -96,11 +96,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_ExceptionCheckPredicate_ShouldApply()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e => e.Exception != null);
+            ConditionalLogFilter filter = new ConditionalLogFilter(e => e.Exception != null);
 
             // Act & Assert
-            var entryWithException = new LogEntry(LogLevel.Error, "Error", "Logger", new InvalidOperationException());
-            var entryWithoutException = new LogEntry(LogLevel.Error, "Error", "Logger");
+            LogEntry entryWithException = new LogEntry(LogLevel.Error, "Error", "Logger", new InvalidOperationException());
+            LogEntry entryWithoutException = new LogEntry(LogLevel.Error, "Error", "Logger");
 
             Assert.True(filter.ShouldLog(entryWithException));
             Assert.False(filter.ShouldLog(entryWithoutException));
@@ -110,11 +110,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_CorrelationIdPredicate_ShouldApply()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e => !string.IsNullOrEmpty(e.CorrelationId));
+            ConditionalLogFilter filter = new ConditionalLogFilter(e => !string.IsNullOrEmpty(e.CorrelationId));
 
             // Act & Assert
-            var entryWithCorrelation = new LogEntry(LogLevel.Info, "Test", "Logger", correlationId: "CORR-123");
-            var entryWithoutCorrelation = new LogEntry(LogLevel.Info, "Test", "Logger");
+            LogEntry entryWithCorrelation = new LogEntry(LogLevel.Info, "Test", "Logger", correlationId: "CORR-123");
+            LogEntry entryWithoutCorrelation = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             Assert.True(filter.ShouldLog(entryWithCorrelation));
             Assert.False(filter.ShouldLog(entryWithoutCorrelation));
@@ -124,10 +124,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_PredicateThrowsException_ShouldReturnTrue()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e => throw new InvalidOperationException("Test error"));
+            ConditionalLogFilter filter = new ConditionalLogFilter(e => throw new InvalidOperationException("Test error"));
 
             // Act & Assert - Should not throw, should return true
-            var entry = CreateEntry(LogLevel.Info);
+            ILogEntry entry = CreateEntry(LogLevel.Info);
             Assert.True(filter.ShouldLog(entry));
         }
 
@@ -135,15 +135,15 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_NullEntry_ShouldBePassedToPredicate()
         {
             // Arrange
-            var predicateCalled = false;
-            var filter = new ConditionalLogFilter(e =>
+            bool predicateCalled = false;
+            ConditionalLogFilter filter = new ConditionalLogFilter(e =>
             {
                 predicateCalled = true;
                 return e != null;
             });
 
             // Act
-            var result = filter.ShouldLog(null);
+            bool result = filter.ShouldLog(null);
 
             // Assert
             Assert.True(predicateCalled);
@@ -154,7 +154,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_CustomName_ShouldUseProvidedName()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e => true, "MyCustomFilter");
+            ConditionalLogFilter filter = new ConditionalLogFilter(e => true, "MyCustomFilter");
 
             // Act & Assert
             Assert.Equal("MyCustomFilter", filter.Name);
@@ -164,7 +164,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_DefaultName_ShouldBeConditionalFilter()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e => true);
+            ConditionalLogFilter filter = new ConditionalLogFilter(e => true);
 
             // Act & Assert
             Assert.Equal("ConditionalFilter", filter.Name);
@@ -174,11 +174,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_ScopeCountPredicate_ShouldApply()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e => e.Scopes.Count > 0);
+            ConditionalLogFilter filter = new ConditionalLogFilter(e => e.Scopes.Count > 0);
 
             // Act & Assert
-            var entryWithScopes = new LogEntry(LogLevel.Info, "Test", "Logger", scopes: new[] { "Scope" });
-            var entryWithoutScopes = new LogEntry(LogLevel.Info, "Test", "Logger");
+            LogEntry entryWithScopes = new LogEntry(LogLevel.Info, "Test", "Logger", scopes: new[] { "Scope" });
+            LogEntry entryWithoutScopes = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             Assert.True(filter.ShouldLog(entryWithScopes));
             Assert.False(filter.ShouldLog(entryWithoutScopes));
@@ -188,12 +188,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_PropertyCountPredicate_ShouldApply()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e => e.Properties.Count >= 2);
+            ConditionalLogFilter filter = new ConditionalLogFilter(e => e.Properties.Count >= 2);
 
             // Act & Assert
-            var entryWithProperties = new LogEntry(LogLevel.Info, "Test", "Logger",
+            LogEntry entryWithProperties = new LogEntry(LogLevel.Info, "Test", "Logger",
                 properties: new Dictionary<string, object> { { "key1", "value1" }, { "key2", "value2" } });
-            var entryWithOneProperty = new LogEntry(LogLevel.Info, "Test", "Logger",
+            LogEntry entryWithOneProperty = new LogEntry(LogLevel.Info, "Test", "Logger",
                 properties: new Dictionary<string, object> { { "key", "value" } });
 
             Assert.True(filter.ShouldLog(entryWithProperties));
@@ -204,11 +204,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_ThreadIdPredicate_ShouldApply()
         {
             // Arrange
-            var currentThreadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
-            var filter = new ConditionalLogFilter(e => e.ThreadId == currentThreadId);
+            int currentThreadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
+            ConditionalLogFilter filter = new ConditionalLogFilter(e => e.ThreadId == currentThreadId);
 
             // Act & Assert
-            var entry = CreateEntry(LogLevel.Info);
+            ILogEntry entry = CreateEntry(LogLevel.Info);
             Assert.True(filter.ShouldLog(entry));
         }
 
@@ -216,17 +216,17 @@ namespace Alis.Core.Aspect.Logging.Test
         public void ConditionalLogFilter_ComplexLogicWithAllProperties_ShouldApply()
         {
             // Arrange
-            var filter = new ConditionalLogFilter(e =>
+            ConditionalLogFilter filter = new ConditionalLogFilter(e =>
                 e.Level >= LogLevel.Error &&
                 !string.IsNullOrEmpty(e.CorrelationId) &&
                 e.Message.Length > 5
             );
 
             // Act & Assert
-            var validEntry = new LogEntry(LogLevel.Error, "Long error message", "Logger", correlationId: "CORR-123");
-            var invalidEntry1 = new LogEntry(LogLevel.Info, "Long error message", "Logger", correlationId: "CORR-123");
-            var invalidEntry2 = new LogEntry(LogLevel.Error, "Long error message", "Logger");
-            var invalidEntry3 = new LogEntry(LogLevel.Error, "Short", "Logger", correlationId: "CORR-123");
+            LogEntry validEntry = new LogEntry(LogLevel.Error, "Long error message", "Logger", correlationId: "CORR-123");
+            LogEntry invalidEntry1 = new LogEntry(LogLevel.Info, "Long error message", "Logger", correlationId: "CORR-123");
+            LogEntry invalidEntry2 = new LogEntry(LogLevel.Error, "Long error message", "Logger");
+            LogEntry invalidEntry3 = new LogEntry(LogLevel.Error, "Short", "Logger", correlationId: "CORR-123");
 
             Assert.True(filter.ShouldLog(validEntry));
             Assert.False(filter.ShouldLog(invalidEntry1));

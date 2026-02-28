@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogLevelFilter_ShouldAllowLevelsGreaterThanOrEqual()
         {
             // Arrange
-            var filter = new LogLevelFilter(LogLevel.Warning);
+            LogLevelFilter filter = new LogLevelFilter(LogLevel.Warning);
 
             // Act & Assert
             Assert.False(filter.ShouldLog(CreateEntry(LogLevel.Trace)));
@@ -60,7 +60,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogLevelFilter_Trace_ShouldAllowAll()
         {
             // Arrange
-            var filter = new LogLevelFilter(LogLevel.Trace);
+            LogLevelFilter filter = new LogLevelFilter(LogLevel.Trace);
 
             // Act & Assert
             Assert.True(filter.ShouldLog(CreateEntry(LogLevel.Trace)));
@@ -75,7 +75,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogLevelFilter_Critical_ShouldOnlyAllowCritical()
         {
             // Arrange
-            var filter = new LogLevelFilter(LogLevel.Critical);
+            LogLevelFilter filter = new LogLevelFilter(LogLevel.Critical);
 
             // Act & Assert
             Assert.False(filter.ShouldLog(CreateEntry(LogLevel.Trace)));
@@ -90,7 +90,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogLevelFilter_None_ShouldRejectAll()
         {
             // Arrange
-            var filter = new LogLevelFilter(LogLevel.None);
+            LogLevelFilter filter = new LogLevelFilter(LogLevel.None);
 
             // Act & Assert
             Assert.False(filter.ShouldLog(CreateEntry(LogLevel.Trace)));
@@ -101,7 +101,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogLevelFilter_NullEntry_ShouldReturnFalse()
         {
             // Arrange
-            var filter = new LogLevelFilter(LogLevel.Info);
+            LogLevelFilter filter = new LogLevelFilter(LogLevel.Info);
 
             // Act & Assert
             Assert.False(filter.ShouldLog(null));
@@ -111,21 +111,21 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogLevelFilter_AllLevels_ShouldProduceExpectedResults()
         {
             // Arrange
-            var levels = new[]
+            LogLevel[] levels = new[]
             {
                 LogLevel.Trace, LogLevel.Debug, LogLevel.Info,
                 LogLevel.Warning, LogLevel.Error, LogLevel.Critical
             };
 
-            foreach (var level in levels)
+            foreach (LogLevel level in levels)
             {
-                var filter = new LogLevelFilter(level);
+                LogLevelFilter filter = new LogLevelFilter(level);
 
                 // Act & Assert
                 for (int i = 0; i < levels.Length; i++)
                 {
-                    var testLevel = levels[i];
-                    var expected = testLevel >= level;
+                    LogLevel testLevel = levels[i];
+                    bool expected = testLevel >= level;
                     Assert.Equal(expected, filter.ShouldLog(CreateEntry(testLevel)));
                 }
             }
@@ -135,7 +135,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogLevelFilter_HasName()
         {
             // Arrange
-            var filter = new LogLevelFilter(LogLevel.Warning);
+            LogLevelFilter filter = new LogLevelFilter(LogLevel.Warning);
 
             // Act & Assert
             Assert.NotNull(filter.Name);

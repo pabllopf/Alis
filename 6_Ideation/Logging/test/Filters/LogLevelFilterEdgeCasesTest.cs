@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         public void LogLevelFilter_BoundaryTrace_ShouldBeEqual()
         {
             // Arrange
-            var filter = new LogLevelFilter(LogLevel.Trace);
+            LogLevelFilter filter = new LogLevelFilter(LogLevel.Trace);
 
             // Act & Assert
             Assert.True(filter.ShouldLog(CreateEntry(LogLevel.Trace)));
@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         public void LogLevelFilter_BoundaryNone_ShouldRejectNone()
         {
             // Arrange
-            var filter = new LogLevelFilter(LogLevel.Critical);
+            LogLevelFilter filter = new LogLevelFilter(LogLevel.Critical);
 
             // Act & Assert - None is special
             Assert.True(filter.ShouldLog(CreateEntry(LogLevel.None)));
@@ -67,8 +67,8 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
             // Arrange & Act & Assert
             for (byte i = 0; i <= 5; i++)
             {
-                var level = (LogLevel)i;
-                var filter = new LogLevelFilter(level);
+                LogLevel level = (LogLevel)i;
+                LogLevelFilter filter = new LogLevelFilter(level);
                 Assert.NotNull(filter);
                 Assert.True(filter.ShouldLog(CreateEntry(level)));
             }
@@ -78,7 +78,7 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         public void LogLevelFilter_ByteComparison_ShouldBeDirect()
         {
             // Arrange
-            var filter = new LogLevelFilter((LogLevel)3); // Warning
+            LogLevelFilter filter = new LogLevelFilter((LogLevel)3); // Warning
 
             // Act & Assert
             Assert.True(filter.ShouldLog(CreateEntry((LogLevel)3)));
@@ -90,12 +90,12 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         public void LogLevelFilter_MultipleFilterInstances_ShouldBeIndependent()
         {
             // Arrange
-            var filter1 = new LogLevelFilter(LogLevel.Info);
-            var filter2 = new LogLevelFilter(LogLevel.Error);
+            LogLevelFilter filter1 = new LogLevelFilter(LogLevel.Info);
+            LogLevelFilter filter2 = new LogLevelFilter(LogLevel.Error);
 
             // Act & Assert
-            var infoEntry = CreateEntry(LogLevel.Info);
-            var errorEntry = CreateEntry(LogLevel.Error);
+            ILogEntry infoEntry = CreateEntry(LogLevel.Info);
+            ILogEntry errorEntry = CreateEntry(LogLevel.Error);
 
             Assert.False(filter2.ShouldLog(infoEntry));
             Assert.True(filter2.ShouldLog(errorEntry));
@@ -105,12 +105,12 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         public void LogLevelFilter_Reusability_ShouldWorkMultipleTimes()
         {
             // Arrange
-            var filter = new LogLevelFilter(LogLevel.Warning);
+            LogLevelFilter filter = new LogLevelFilter(LogLevel.Warning);
 
             // Act & Assert - Should work multiple times
             for (int i = 0; i < 100; i++)
             {
-                var result = filter.ShouldLog(CreateEntry(LogLevel.Warning));
+                bool result = filter.ShouldLog(CreateEntry(LogLevel.Warning));
                 Assert.True(result);
             }
         }

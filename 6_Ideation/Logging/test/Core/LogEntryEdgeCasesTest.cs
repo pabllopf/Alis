@@ -47,10 +47,10 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_Unicode_ShouldBePreserved()
         {
             // Arrange
-            var unicodeMessage = "Message with 中文, العربية, 🎮, émojis!";
+            string unicodeMessage = "Message with 中文, العربية, 🎮, émojis!";
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, unicodeMessage, "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, unicodeMessage, "Logger");
 
             // Assert
             Assert.Equal(unicodeMessage, entry.Message);
@@ -60,10 +60,10 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_VeryLongMessage_ShouldBeStored()
         {
             // Arrange
-            var longMessage = new string('a', 1000000); // 1MB message
+            string longMessage = new string('a', 1000000); // 1MB message
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
 
             // Assert
             Assert.Equal(1000000, entry.Message.Length);
@@ -73,10 +73,10 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_VeryLongLoggerName_ShouldBeStored()
         {
             // Arrange
-            var longName = "Namespace." + string.Join(".", new[] { "Class" }.Length is 1 ? new string('x', 1000) : new string('x', 1000));
+            string longName = "Namespace." + string.Join(".", new[] { "Class" }.Length is 1 ? new string('x', 1000) : new string('x', 1000));
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, "Message", longName);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", longName);
 
             // Assert
             Assert.Equal(longName, entry.LoggerName);
@@ -86,14 +86,14 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_ManyProperties_ShouldBeStored()
         {
             // Arrange
-            var properties = new Dictionary<string, object>();
+            Dictionary<string, object> properties = new Dictionary<string, object>();
             for (int i = 0; i < 1000; i++)
             {
                 properties[$"Property{i}"] = i;
             }
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
 
             // Assert
             Assert.Equal(1000, entry.Properties.Count);
@@ -103,14 +103,14 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_DeepScopeNesting_ShouldBeStored()
         {
             // Arrange
-            var scopes = new List<object>();
+            List<object> scopes = new List<object>();
             for (int i = 0; i < 100; i++)
             {
                 scopes.Add($"Scope{i}");
             }
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
 
             // Assert
             Assert.Equal(100, entry.Scopes.Count);
@@ -120,10 +120,10 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_WhitespaceOnlyMessage_ShouldBeStored()
         {
             // Arrange
-            var whitespaceMessage = "   \t\n\r   ";
+            string whitespaceMessage = "   \t\n\r   ";
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, whitespaceMessage, "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, whitespaceMessage, "Logger");
 
             // Assert
             Assert.Equal(whitespaceMessage, entry.Message);
@@ -133,14 +133,14 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_NullObjectInProperties_ShouldBeHandled()
         {
             // Arrange
-            var properties = new Dictionary<string, object>
+            Dictionary<string, object> properties = new Dictionary<string, object>
             {
                 { "NullValue", null },
                 { "ValidValue", "test" }
             };
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
 
             // Assert
             Assert.Equal(2, entry.Properties.Count);
@@ -151,10 +151,10 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_NullObjectInScopes_ShouldBeHandled()
         {
             // Arrange
-            var scopes = new List<object> { "ValidScope", null, "AnotherScope" };
+            List<object> scopes = new List<object> { "ValidScope", null, "AnotherScope" };
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
 
             // Assert
             Assert.Equal(3, entry.Scopes.Count);
@@ -165,11 +165,11 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_ExceptionWithInnerException_ShouldPreserveStack()
         {
             // Arrange
-            var innerException = new ArgumentException("Inner error");
-            var outerException = new InvalidOperationException("Outer error", innerException);
+            ArgumentException innerException = new ArgumentException("Inner error");
+            InvalidOperationException outerException = new InvalidOperationException("Outer error", innerException);
 
             // Act
-            var entry = new LogEntry(LogLevel.Error, "Message", "Logger", outerException);
+            LogEntry entry = new LogEntry(LogLevel.Error, "Message", "Logger", outerException);
 
             // Assert
             Assert.NotNull(entry.Exception);
@@ -181,10 +181,10 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_WindowsPaths_InMessage_ShouldPreserve()
         {
             // Arrange
-            var windowsPath = "C:\\Users\\Test\\Documents\\file.txt";
+            string windowsPath = "C:\\Users\\Test\\Documents\\file.txt";
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, windowsPath, "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, windowsPath, "Logger");
 
             // Assert
             Assert.Contains(windowsPath, entry.Message);
@@ -194,10 +194,10 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_LinuxPaths_InMessage_ShouldPreserve()
         {
             // Arrange
-            var linuxPath = "/home/user/documents/file.txt";
+            string linuxPath = "/home/user/documents/file.txt";
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, linuxPath, "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, linuxPath, "Logger");
 
             // Assert
             Assert.Contains(linuxPath, entry.Message);
@@ -207,7 +207,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_PropertyValuesOfDifferentTypes()
         {
             // Arrange
-            var properties = new Dictionary<string, object>
+            Dictionary<string, object> properties = new Dictionary<string, object>
             {
                 { "String", "value" },
                 { "Int", 42 },
@@ -218,7 +218,7 @@ namespace Alis.Core.Aspect.Logging.Test.Core
             };
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
 
             // Assert
             Assert.Equal(6, entry.Properties.Count);
@@ -230,14 +230,14 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_RepeatedPropertyNames_LastValueWins()
         {
             // Arrange
-            var properties = new Dictionary<string, object>
+            Dictionary<string, object> properties = new Dictionary<string, object>
             {
                 { "Key", "FirstValue" }
             };
             properties["Key"] = "SecondValue";
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
 
             // Assert
             Assert.Equal("SecondValue", entry.Properties["Key"]);
@@ -247,10 +247,10 @@ namespace Alis.Core.Aspect.Logging.Test.Core
         public void LogEntry_CorrelationIdWithSpecialCharacters()
         {
             // Arrange
-            var correlationId = "CORR-2024-03-02T10:30:45.123Z-uuid-1234-5678";
+            string correlationId = "CORR-2024-03-02T10:30:45.123Z-uuid-1234-5678";
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", correlationId: correlationId);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", correlationId: correlationId);
 
             // Assert
             Assert.Equal(correlationId, entry.CorrelationId);

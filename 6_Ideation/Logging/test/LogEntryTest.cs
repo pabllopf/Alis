@@ -48,16 +48,16 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_Constructor_ShouldInitializeAllProperties()
         {
             // Arrange
-            var level = LogLevel.Info;
-            var message = "Test message";
-            var loggerName = "TestLogger";
-            var exception = new InvalidOperationException("Test");
-            var correlationId = "CORR-123";
-            var properties = new Dictionary<string, object> { { "key", "value" } };
-            var scopes = new List<object> { "scope1" };
+            LogLevel level = LogLevel.Info;
+            string message = "Test message";
+            string loggerName = "TestLogger";
+            InvalidOperationException exception = new InvalidOperationException("Test");
+            string correlationId = "CORR-123";
+            Dictionary<string, object> properties = new Dictionary<string, object> { { "key", "value" } };
+            List<object> scopes = new List<object> { "scope1" };
 
             // Act
-            var entry = new LogEntry(level, message, loggerName, exception, correlationId, properties, scopes);
+            LogEntry entry = new LogEntry(level, message, loggerName, exception, correlationId, properties, scopes);
 
             // Assert
             Assert.Equal(level, entry.Level);
@@ -74,7 +74,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_NullMessage_ShouldStoreEmptyString()
         {
             // Arrange & Act
-            var entry = new LogEntry(LogLevel.Info, null, "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, null, "Logger");
 
             // Assert
             Assert.Equal(string.Empty, entry.Message);
@@ -84,7 +84,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_NullLoggerName_ShouldStoreEmptyString()
         {
             // Arrange & Act
-            var entry = new LogEntry(LogLevel.Info, "Message", null);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", null);
 
             // Assert
             Assert.Equal(string.Empty, entry.LoggerName);
@@ -94,7 +94,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_NullProperties_ShouldStoreEmptyDictionary()
         {
             // Arrange & Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: null);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: null);
 
             // Assert
             Assert.NotNull(entry.Properties);
@@ -105,7 +105,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_NullScopes_ShouldStoreEmptyList()
         {
             // Arrange & Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: null);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: null);
 
             // Assert
             Assert.NotNull(entry.Scopes);
@@ -116,11 +116,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_TimestampShouldBeCurrent()
         {
             // Arrange
-            var beforeCreation = DateTime.UtcNow;
+            DateTime beforeCreation = DateTime.UtcNow;
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger");
-            var afterCreation = DateTime.UtcNow;
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger");
+            DateTime afterCreation = DateTime.UtcNow;
 
             // Assert
             Assert.True(entry.Timestamp >= beforeCreation);
@@ -131,7 +131,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_ThreadIdShouldMatchCurrentThread()
         {
             // Arrange & Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger");
 
             // Assert
             Assert.Equal(Thread.CurrentThread.ManagedThreadId, entry.ThreadId);
@@ -141,12 +141,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_AllLogLevels_ShouldStoreCorrectly()
         {
             // Arrange
-            var levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical, LogLevel.None };
+            LogLevel[] levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical, LogLevel.None };
 
-            foreach (var level in levels)
+            foreach (LogLevel level in levels)
             {
                 // Act
-                var entry = new LogEntry(level, "Message", "Logger");
+                LogEntry entry = new LogEntry(level, "Message", "Logger");
 
                 // Assert
                 Assert.Equal(level, entry.Level);
@@ -157,10 +157,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_WithException_ShouldStoreException()
         {
             // Arrange
-            var exception = new ArgumentException("Invalid argument");
+            ArgumentException exception = new ArgumentException("Invalid argument");
 
             // Act
-            var entry = new LogEntry(LogLevel.Error, "Error occurred", "Logger", exception);
+            LogEntry entry = new LogEntry(LogLevel.Error, "Error occurred", "Logger", exception);
 
             // Assert
             Assert.NotNull(entry.Exception);
@@ -172,7 +172,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_WithoutException_ShouldHaveNullException()
         {
             // Arrange & Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger");
 
             // Assert
             Assert.Null(entry.Exception);
@@ -182,10 +182,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_WithCorrelationId_ShouldStoreIt()
         {
             // Arrange
-            var correlationId = Guid.NewGuid().ToString();
+            string correlationId = Guid.NewGuid().ToString();
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", correlationId: correlationId);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", correlationId: correlationId);
 
             // Assert
             Assert.Equal(correlationId, entry.CorrelationId);
@@ -195,7 +195,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_WithoutCorrelationId_ShouldBeNull()
         {
             // Arrange & Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger");
 
             // Assert
             Assert.Null(entry.CorrelationId);
@@ -205,7 +205,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_WithProperties_ShouldContainAllProperties()
         {
             // Arrange
-            var properties = new Dictionary<string, object>
+            Dictionary<string, object> properties = new Dictionary<string, object>
             {
                 { "UserId", 123 },
                 { "Action", "Login" },
@@ -213,7 +213,7 @@ namespace Alis.Core.Aspect.Logging.Test
             };
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", properties: properties);
 
             // Assert
             Assert.Equal(3, entry.Properties.Count);
@@ -225,10 +225,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_WithScopes_ShouldContainAllScopes()
         {
             // Arrange
-            var scopes = new List<object> { "Scope1", "Scope2", 42, new object() };
+            List<object> scopes = new List<object> { "Scope1", "Scope2", 42, new object() };
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
 
             // Assert
             Assert.Equal(4, entry.Scopes.Count);
@@ -241,7 +241,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_EmptyMessage_ShouldBeAllowed()
         {
             // Arrange & Act
-            var entry = new LogEntry(LogLevel.Info, string.Empty, "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, string.Empty, "Logger");
 
             // Assert
             Assert.Equal(string.Empty, entry.Message);
@@ -251,10 +251,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_LongMessage_ShouldBeStored()
         {
             // Arrange
-            var longMessage = new string('x', 10000);
+            string longMessage = new string('x', 10000);
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
 
             // Assert
             Assert.Equal(longMessage, entry.Message);
@@ -265,10 +265,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_SpecialCharactersInMessage_ShouldBePreserved()
         {
             // Arrange
-            var specialMessage = "Message with special chars: \n \t \r \" ' \\";
+            string specialMessage = "Message with special chars: \n \t \r \" ' \\";
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, specialMessage, "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, specialMessage, "Logger");
 
             // Assert
             Assert.Equal(specialMessage, entry.Message);
@@ -278,15 +278,15 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_MultipleThreads_ShouldCaptureCorrectThreadIds()
         {
             // Arrange
-            var threadIds = new List<int>();
-            var threads = new List<Thread>();
+            List<int> threadIds = new List<int>();
+            List<Thread> threads = new List<Thread>();
 
             // Act
             for (int i = 0; i < 5; i++)
             {
-                var thread = new Thread(() =>
+                Thread thread = new Thread(() =>
                 {
-                    var entry = new LogEntry(LogLevel.Info, "Message", "Logger");
+                    LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger");
                     lock (threadIds)
                     {
                         threadIds.Add(entry.ThreadId);
@@ -296,7 +296,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 thread.Start();
             }
 
-            foreach (var thread in threads)
+            foreach (Thread thread in threads)
             {
                 thread.Join();
             }
@@ -304,7 +304,7 @@ namespace Alis.Core.Aspect.Logging.Test
             // Assert
             Assert.Equal(5, threadIds.Count);
             // All thread IDs should be unique (one per thread)
-            var uniqueIds = new HashSet<int>(threadIds);
+            HashSet<int> uniqueIds = new HashSet<int>(threadIds);
             Assert.Equal(5, uniqueIds.Count);
         }
 
@@ -312,7 +312,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_PropertiesAreReadonly()
         {
             // Arrange
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger");
 
             // Assert - IReadOnlyDictionary should not have Add method
             Assert.True(typeof(IReadOnlyDictionary<string, object>).IsAssignableFrom(entry.Properties.GetType())
@@ -323,7 +323,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_ScopesAreReadonly()
         {
             // Arrange
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger");
 
             // Assert - IReadOnlyList should not have Add method
             Assert.True(typeof(IReadOnlyList<object>).IsAssignableFrom(entry.Scopes.GetType())
@@ -334,12 +334,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LogEntry_ImmutableAfterConstruction()
         {
             // Arrange
-            var entry = new LogEntry(LogLevel.Info, "Original", "Logger");
-            var originalMessage = entry.Message;
+            LogEntry entry = new LogEntry(LogLevel.Info, "Original", "Logger");
+            string originalMessage = entry.Message;
 
             // Act - Try to modify (should not affect entry)
-            var properties = new Dictionary<string, object> { { "key", "value" } };
-            var entry2 = new LogEntry(LogLevel.Warning, "Modified", "Logger", properties: properties);
+            Dictionary<string, object> properties = new Dictionary<string, object> { { "key", "value" } };
+            LogEntry entry2 = new LogEntry(LogLevel.Warning, "Modified", "Logger", properties: properties);
 
             // Assert
             Assert.Equal(originalMessage, entry.Message);
@@ -351,10 +351,10 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             // Arrange
             var complexScope = new { Id = 1, Name = "Test" };
-            var scopes = new List<object> { complexScope };
+            List<object> scopes = new List<object> { complexScope };
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: scopes);
 
             // Assert
             Assert.Single(entry.Scopes);

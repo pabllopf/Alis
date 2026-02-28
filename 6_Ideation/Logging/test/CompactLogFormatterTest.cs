@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompactLogFormatter_HasName()
         {
             // Arrange
-            var formatter = new CompactLogFormatter();
+            CompactLogFormatter formatter = new CompactLogFormatter();
 
             // Assert
             Assert.NotNull(formatter.Name);
@@ -57,13 +57,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompactLogFormatter_Format_ShouldBeShort()
         {
             // Arrange
-            var formatter = new CompactLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test message", "Logger");
-            var simpleFormatter = new SimpleLogFormatter();
+            CompactLogFormatter formatter = new CompactLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test message", "Logger");
+            SimpleLogFormatter simpleFormatter = new SimpleLogFormatter();
 
             // Act
-            var compact = formatter.Format(entry);
-            var simple = simpleFormatter.Format(entry);
+            string compact = formatter.Format(entry);
+            string simple = simpleFormatter.Format(entry);
 
             // Assert
             Assert.True(compact.Length < simple.Length, "Compact should be shorter than simple format");
@@ -73,10 +73,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompactLogFormatter_Format_ContainsLevelCode()
         {
             // Arrange
-            var formatter = new CompactLogFormatter();
+            CompactLogFormatter formatter = new CompactLogFormatter();
 
             // Test each level
-            var levelCodes = new (LogLevel, string)[]
+            (LogLevel, string)[] levelCodes = new (LogLevel, string)[]
             {
                 (LogLevel.Trace, "[T]"),
                 (LogLevel.Debug, "[D]"),
@@ -86,11 +86,11 @@ namespace Alis.Core.Aspect.Logging.Test
                 (LogLevel.Critical, "[C]")
             };
 
-            foreach (var (level, code) in levelCodes)
+            foreach ((LogLevel level, string code) in levelCodes)
             {
                 // Act
-                var entry = new LogEntry(level, "Test", "Logger");
-                var formatted = formatter.Format(entry);
+                LogEntry entry = new LogEntry(level, "Test", "Logger");
+                string formatted = formatter.Format(entry);
 
                 // Assert
                 Assert.Contains(code, formatted, System.StringComparison.Ordinal);
@@ -101,11 +101,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompactLogFormatter_Format_ContainsMessage()
         {
             // Arrange
-            var formatter = new CompactLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Important message", "Logger");
+            CompactLogFormatter formatter = new CompactLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Important message", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("Important message", formatted);
@@ -115,12 +115,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompactLogFormatter_Format_WithException()
         {
             // Arrange
-            var formatter = new CompactLogFormatter();
-            var exception = new InvalidOperationException("Operation failed");
-            var entry = new LogEntry(LogLevel.Error, "Error occurred", "Logger", exception);
+            CompactLogFormatter formatter = new CompactLogFormatter();
+            InvalidOperationException exception = new InvalidOperationException("Operation failed");
+            LogEntry entry = new LogEntry(LogLevel.Error, "Error occurred", "Logger", exception);
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains("Operation failed", formatted);
@@ -131,11 +131,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompactLogFormatter_Format_WithoutException()
         {
             // Arrange
-            var formatter = new CompactLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            CompactLogFormatter formatter = new CompactLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.DoesNotContain("[EXC:", formatted);
@@ -145,14 +145,14 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompactLogFormatter_AllLevels()
         {
             // Arrange
-            var formatter = new CompactLogFormatter();
-            var levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
+            CompactLogFormatter formatter = new CompactLogFormatter();
+            LogLevel[] levels = new[] { LogLevel.Trace, LogLevel.Debug, LogLevel.Info, LogLevel.Warning, LogLevel.Error, LogLevel.Critical };
 
-            foreach (var level in levels)
+            foreach (LogLevel level in levels)
             {
                 // Act
-                var entry = new LogEntry(level, "Test", "Logger");
-                var formatted = formatter.Format(entry);
+                LogEntry entry = new LogEntry(level, "Test", "Logger");
+                string formatted = formatter.Format(entry);
 
                 // Assert
                 Assert.NotEmpty(formatted);
@@ -164,11 +164,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompactLogFormatter_EmptyMessage()
         {
             // Arrange
-            var formatter = new CompactLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, string.Empty, "Logger");
+            CompactLogFormatter formatter = new CompactLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, string.Empty, "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.NotEmpty(formatted);
@@ -179,12 +179,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompactLogFormatter_LongMessage()
         {
             // Arrange
-            var formatter = new CompactLogFormatter();
-            var longMessage = new string('x', 1000);
-            var entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
+            CompactLogFormatter formatter = new CompactLogFormatter();
+            string longMessage = new string('x', 1000);
+            LogEntry entry = new LogEntry(LogLevel.Info, longMessage, "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             Assert.Contains(longMessage, formatted);
@@ -194,11 +194,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompactLogFormatter_DoesNotIncludeTimestamp()
         {
             // Arrange
-            var formatter = new CompactLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            CompactLogFormatter formatter = new CompactLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             // Compact format doesn't include timestamp
@@ -209,11 +209,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompactLogFormatter_DoesNotIncludeLoggerName()
         {
             // Arrange
-            var formatter = new CompactLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "MySpecificLogger");
+            CompactLogFormatter formatter = new CompactLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "MySpecificLogger");
 
             // Act
-            var formatted = formatter.Format(entry);
+            string formatted = formatter.Format(entry);
 
             // Assert
             // Compact format doesn't include logger name
@@ -224,17 +224,17 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CompactLogFormatter_Performance_ShouldBeVeryFast()
         {
             // Arrange
-            var formatter = new CompactLogFormatter();
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            CompactLogFormatter formatter = new CompactLogFormatter();
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
             const int iterations = 10000;
 
             // Act
-            var startTime = DateTime.UtcNow;
+            DateTime startTime = DateTime.UtcNow;
             for (int i = 0; i < iterations; i++)
             {
                 formatter.Format(entry);
             }
-            var elapsed = DateTime.UtcNow - startTime;
+            TimeSpan elapsed = DateTime.UtcNow - startTime;
 
             // Assert - Should format 10000 entries in reasonable time (< 1 second)
             Assert.True(elapsed.TotalSeconds < 1, $"Performance issue: {elapsed.TotalMilliseconds}ms for {iterations} iterations");

@@ -53,11 +53,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void AsyncLogOutput_Write_ShouldQueueEntry()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput();
-            var asyncOutput = new AsyncLogOutput(innerOutput);
+            MemoryLogOutput innerOutput = new MemoryLogOutput();
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
 
             // Act
-            var entry = new LogEntry(LogLevel.Info, "Test", "Logger");
+            LogEntry entry = new LogEntry(LogLevel.Info, "Test", "Logger");
             asyncOutput.Write(entry);
             asyncOutput.Flush();
 
@@ -69,13 +69,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void AsyncLogOutput_MultipleWrites_ShouldQueueAll()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput();
-            var asyncOutput = new AsyncLogOutput(innerOutput);
+            MemoryLogOutput innerOutput = new MemoryLogOutput();
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
 
             // Act
             for (int i = 0; i < 10; i++)
             {
-                var entry = new LogEntry(LogLevel.Info, $"Message {i}", "Logger");
+                LogEntry entry = new LogEntry(LogLevel.Info, $"Message {i}", "Logger");
                 asyncOutput.Write(entry);
             }
             asyncOutput.Flush();
@@ -88,8 +88,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void AsyncLogOutput_Flush_ShouldProcessQueue()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput();
-            var asyncOutput = new AsyncLogOutput(innerOutput);
+            MemoryLogOutput innerOutput = new MemoryLogOutput();
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
 
             // Act
             asyncOutput.Write(new LogEntry(LogLevel.Info, "Message 1", "Logger"));
@@ -107,8 +107,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void AsyncLogOutput_Disable_ShouldNotQueue()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput();
-            var asyncOutput = new AsyncLogOutput(innerOutput);
+            MemoryLogOutput innerOutput = new MemoryLogOutput();
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
             asyncOutput.IsEnabled = false;
 
             // Act
@@ -123,8 +123,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void AsyncLogOutput_NullEntry_ShouldNotQueue()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput();
-            var asyncOutput = new AsyncLogOutput(innerOutput);
+            MemoryLogOutput innerOutput = new MemoryLogOutput();
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
 
             // Act
             asyncOutput.Write(null);
@@ -138,8 +138,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void AsyncLogOutput_MaxQueueSize_ShouldEnforceLimit()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput();
-            var asyncOutput = new AsyncLogOutput(innerOutput, maxQueueSize: 5);
+            MemoryLogOutput innerOutput = new MemoryLogOutput();
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput, maxQueueSize: 5);
 
             // Act
             for (int i = 0; i < 10; i++)
@@ -156,8 +156,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void AsyncLogOutput_ZeroMaxQueueSize_ShouldBeUnlimited()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput();
-            var asyncOutput = new AsyncLogOutput(innerOutput, maxQueueSize: 0);
+            MemoryLogOutput innerOutput = new MemoryLogOutput();
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput, maxQueueSize: 0);
 
             // Act
             for (int i = 0; i < 1000; i++)
@@ -174,8 +174,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void AsyncLogOutput_HasName()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput();
-            var asyncOutput = new AsyncLogOutput(innerOutput);
+            MemoryLogOutput innerOutput = new MemoryLogOutput();
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
 
             // Act & Assert
             Assert.NotNull(asyncOutput.Name);
@@ -186,8 +186,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void AsyncLogOutput_Dispose_ShouldFlushAndDispose()
         {
             // Arrange
-            var innerOutput = new MemoryLogOutput();
-            var asyncOutput = new AsyncLogOutput(innerOutput);
+            MemoryLogOutput innerOutput = new MemoryLogOutput();
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(innerOutput);
             asyncOutput.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
 
             // Act
@@ -201,8 +201,8 @@ namespace Alis.Core.Aspect.Logging.Test
         public void AsyncLogOutput_InnerOutputException_ShouldNotPropagate()
         {
             // Arrange
-            var faultyOutput = new FaultyLogOutput();
-            var asyncOutput = new AsyncLogOutput(faultyOutput);
+            FaultyLogOutput faultyOutput = new FaultyLogOutput();
+            AsyncLogOutput asyncOutput = new AsyncLogOutput(faultyOutput);
 
             // Act & Assert - Should not throw
             asyncOutput.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));

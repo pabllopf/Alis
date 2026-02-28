@@ -46,9 +46,9 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         public void ILogger_Implementation_ShouldHaveNameProperty()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var logger = factory.CreateLogger("TestLogger");
+                ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Act & Assert
                 Assert.NotNull(logger.Name);
@@ -60,11 +60,11 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         public void ILogger_AllLoggingMethods_ShouldBeDefined()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput();
+                MemoryLogOutput memoryOutput = new MemoryLogOutput();
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("TestLogger");
+                ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Act & Assert - All methods should exist and be callable
                 logger.LogTrace("Trace");
@@ -74,14 +74,14 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
                 logger.LogError("Error");
                 logger.LogCritical("Critical");
 
-                var exception = new InvalidOperationException();
+                InvalidOperationException exception = new InvalidOperationException();
                 logger.LogError("Error", exception);
                 logger.LogCritical("Critical", exception);
 
                 logger.Log(LogLevel.Info, "Generic");
                 logger.Log(LogLevel.Info, "Generic with exception", exception);
 
-                var properties = new Dictionary<string, object> { { "key", "value" } };
+                Dictionary<string, object> properties = new Dictionary<string, object> { { "key", "value" } };
                 logger.LogStructured(LogLevel.Info, "Structured", properties);
 
                 Assert.True(memoryOutput.Count >= 11);
@@ -92,13 +92,13 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         public void ILogger_CorrelationIdMethods_ShouldExist()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var logger = factory.CreateLogger("TestLogger");
+                ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Act
                 logger.SetCorrelationId("TEST-ID");
-                var retrieved = logger.GetCorrelationId();
+                string retrieved = logger.GetCorrelationId();
 
                 // Assert
                 Assert.Equal("TEST-ID", retrieved);
@@ -109,12 +109,12 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         public void ILogger_ScopeMethods_ShouldExist()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var logger = factory.CreateLogger("TestLogger");
+                ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Act & Assert
-                var scope = logger.BeginScope("TestScope");
+                IDisposable scope = logger.BeginScope("TestScope");
                 Assert.NotNull(scope);
                 scope.Dispose();
             }
@@ -124,9 +124,9 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         public void ILogger_IsEnabledMethod_ShouldExist()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var logger = factory.CreateLogger("TestLogger");
+                ILogger logger = factory.CreateLogger("TestLogger");
 
                 // Act & Assert
                 Assert.True(logger.IsEnabled(LogLevel.Info));
@@ -137,7 +137,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         public void ILogger_ImplementationCanBeStored()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 ILogger logger = factory.CreateLogger("TestLogger");
 
@@ -151,7 +151,7 @@ namespace Alis.Core.Aspect.Logging.Test.Abstractions
         public void ILogger_MultipleImplementations_ShouldCoexist()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
                 ILogger logger1 = factory.CreateLogger("Logger1");
                 ILogger logger2 = factory.CreateLogger("Logger2");

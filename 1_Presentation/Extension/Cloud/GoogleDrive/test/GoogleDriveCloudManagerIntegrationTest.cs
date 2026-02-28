@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DropBoxCloudManagerIntegrationTest.cs
+//  File:GoogleDriveCloudManagerIntegrationTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,17 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.IO;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
 
-namespace Alis.Extension.Cloud.DropBox.Test
+namespace Alis.Extension.Cloud.GoogleDrive.Test
 {
     /// <summary>
-    ///     Integration tests for DropBoxCloudManager with file operations
+    ///     Integration tests for GoogleDriveCloudManager with local file operations
     /// </summary>
-    public class DropBoxCloudManagerIntegrationTest
+    public class GoogleDriveCloudManagerIntegrationTest
     {
         /// <summary>
         ///     Tests creating a temporary file and verifying its existence
@@ -70,7 +69,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         {
             // Arrange
             string tempFile = Path.GetTempFileName();
-            string content = "Test content for Dropbox integration";
+            string content = "Test content for Google Drive integration";
 
             try
             {
@@ -98,7 +97,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         {
             // Arrange
             Context context = new Context();
-            DropBoxCloudManager manager = new DropBoxCloudManager(context);
+            GoogleDriveCloudManager manager = new GoogleDriveCloudManager(context);
 
             // Act & Assert
             Assert.NotNull(manager);
@@ -115,7 +114,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         {
             // Arrange
             Context context = new Context();
-            DropBoxCloudManager manager = new DropBoxCloudManager(context);
+            GoogleDriveCloudManager manager = new GoogleDriveCloudManager(context);
 
             // Act
             bool initialState = manager.IsEnable;
@@ -134,7 +133,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
         {
             // Arrange
             Context context = new Context();
-            DropBoxCloudManager manager = new DropBoxCloudManager(context);
+            GoogleDriveCloudManager manager = new GoogleDriveCloudManager(context);
 
             // Act & Assert
             Assert.IsAssignableFrom<ICloudManager>(manager);
@@ -150,110 +149,89 @@ namespace Alis.Extension.Cloud.DropBox.Test
             Context context = new Context();
 
             // Act
-            DropBoxCloudManager manager = new DropBoxCloudManager(context);
+            GoogleDriveCloudManager manager = new GoogleDriveCloudManager(context);
 
             // Assert
-            Assert.NotNull(manager.Id);
-            Assert.NotEmpty(manager.Id);
-            Assert.Equal("DropBoxManager", manager.Name);
+            Assert.Equal("GoogleDriveManager", manager.Name);
             Assert.Equal("Cloud", manager.Tag);
             Assert.True(manager.IsEnable);
         }
+        
 
         /// <summary>
-        ///     Tests that OnDestroy doesn't throw exceptions
+        ///     Tests directory creation for downloads
         /// </summary>
         [Fact]
-        public void OnDestroy_DoesNotThrowException()
+        public void FileOperations_CreateDirectory_SucceedsWhenDoesNotExist()
         {
             // Arrange
-            Context context = new Context();
-            DropBoxCloudManager manager = new DropBoxCloudManager(context);
-
-            // Act & Assert - Should not throw
-            Exception exception = Record.Exception(() => manager.OnDestroy());
-            Assert.Null(exception);
-        }
-
-        /// <summary>
-        ///     Tests that multiple managers can coexist
-        /// </summary>
-        [Fact]
-        public void MultipleManagers_CanCoexist()
-        {
-            // Arrange
-            Context context1 = new Context();
-            Context context2 = new Context();
-
-            // Act
-            DropBoxCloudManager manager1 = new DropBoxCloudManager(context1);
-            DropBoxCloudManager manager2 = new DropBoxCloudManager(context2);
-
-            // Assert
-            Assert.NotEqual(manager1.Id, manager2.Id);
-            Assert.NotNull(manager1);
-            Assert.NotNull(manager2);
-        }
-
-        /// <summary>
-        ///     Tests setting and getting manager properties
-        /// </summary>
-        [Theory]
-        [InlineData("CustomName")]
-        [InlineData("AnotherName")]
-        [InlineData("")]
-        public void ManagerProperties_CanBeSet(string newName)
-        {
-            // Arrange
-            Context context = new Context();
-            DropBoxCloudManager manager = new DropBoxCloudManager(context);
-
-            // Act
-            manager.Name = newName;
-
-            // Assert
-            Assert.Equal(newName, manager.Name);
-        }
-
-        /// <summary>
-        ///     Tests path validation logic
-        /// </summary>
-        [Theory]
-        [InlineData("/file.txt")]
-        [InlineData("/folder/file.txt")]
-        [InlineData("/")]
-        public void PathValidation_WithVariousPaths_HandlesCorrectly(string path)
-        {
-            // This test demonstrates path handling patterns
-            // Paths with leading slash are valid
-            Assert.True(path[0] == '/');
-        }
-
-        /// <summary>
-        ///     Tests that uninitialized manager state is consistent
-        /// </summary>
-        [Fact]
-        public void UninitializedManager_HasConsistentState()
-        {
-            // Arrange
-            Context context = new Context();
-            DropBoxCloudManager manager = new DropBoxCloudManager(context);
-
-            // Act & Assert
-            Assert.False(manager.IsInitialized);
-            // Verify it's the same as IsInitialized being false for all operations
-            int checkCount = 0;
-            for (int i = 0; i < 3; i++)
+            string tempDir = Path.Combine(Path.GetTempPath(), "TestGoogleDriveDir");
+            if (Directory.Exists(tempDir))
             {
-                if (!manager.IsInitialized)
+                Directory.Delete(tempDir, true);
+            }
+
+            try
+            {
+                // Act
+                Directory.CreateDirectory(tempDir);
+
+                // Assert
+                Assert.True(Directory.Exists(tempDir));
+            }
+            finally
+            {
+                if (Directory.Exists(tempDir))
                 {
-                    checkCount++;
+                    Directory.Delete(tempDir, true);
                 }
             }
-            Assert.Equal(3, checkCount);
+        }
+
+        /// <summary>
+        ///     Tests CloudFileMetadata initialization
+        /// </summary>
+        [Fact]
+        public void CloudFileMetadata_InitializationAndProperties()
+        {
+            // Arrange
+            CloudFileMetadata metadata = new CloudFileMetadata
+            {
+                Id = "drive-123",
+                Name = "document.pdf",
+                Size = 5120,
+                Path = "/documents/document.pdf",
+                IsFolder = false
+            };
+
+            // Assert
+            Assert.Equal("drive-123", metadata.Id);
+            Assert.Equal("document.pdf", metadata.Name);
+            Assert.Equal(5120, metadata.Size);
+            Assert.Equal("/documents/document.pdf", metadata.Path);
+            Assert.False(metadata.IsFolder);
+        }
+
+        /// <summary>
+        ///     Tests CloudFileMetadata as folder
+        /// </summary>
+        [Fact]
+        public void CloudFileMetadata_AsFolder_ReturnsCorrectProperties()
+        {
+            // Arrange
+            CloudFileMetadata metadata = new CloudFileMetadata
+            {
+                Id = "folder-456",
+                Name = "MyFolder",
+                Size = 0,
+                Path = "/documents/MyFolder",
+                IsFolder = true
+            };
+
+            // Assert
+            Assert.True(metadata.IsFolder);
+            Assert.Equal("MyFolder", metadata.Name);
         }
     }
 }
-
-
 

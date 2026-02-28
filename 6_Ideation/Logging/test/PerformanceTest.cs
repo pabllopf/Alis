@@ -53,13 +53,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Performance_SimpleLogging_10KMessages_UnderXSeconds()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("PerfTest");
+                ILogger logger = factory.CreateLogger("PerfTest");
 
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act
                 for (int i = 0; i < 10000; i++)
@@ -80,14 +80,14 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Performance_FormattedLogging_1KMessages_UnderYSeconds()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput)
                        .SetFormatter(new SimpleLogFormatter());
-                var logger = factory.CreateLogger("PerfTest");
+                ILogger logger = factory.CreateLogger("PerfTest");
 
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act
                 for (int i = 0; i < 1000; i++)
@@ -108,14 +108,14 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Performance_JsonFormattedLogging_1KMessages_UnderYSeconds()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput)
                        .SetFormatter(new JsonLogFormatter());
-                var logger = factory.CreateLogger("PerfTest");
+                ILogger logger = factory.CreateLogger("PerfTest");
 
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act
                 for (int i = 0; i < 1000; i++)
@@ -136,14 +136,14 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Performance_CompactFormattedLogging_1KMessages_UnderYSeconds()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput)
                        .SetFormatter(new CompactLogFormatter());
-                var logger = factory.CreateLogger("PerfTest");
+                ILogger logger = factory.CreateLogger("PerfTest");
 
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act
                 for (int i = 0; i < 1000; i++)
@@ -164,14 +164,14 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Performance_WithFiltering_10KMessages_UnderXSeconds()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput)
                        .AddFilter(new LogLevelFilter(LogLevel.Info));
-                var logger = factory.CreateLogger("PerfTest");
+                ILogger logger = factory.CreateLogger("PerfTest");
 
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act
                 for (int i = 0; i < 10000; i++)
@@ -192,13 +192,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Performance_WithScopesLogging_1KMessages_UnderYSeconds()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("PerfTest");
+                ILogger logger = factory.CreateLogger("PerfTest");
 
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act
                 for (int i = 0; i < 1000; i++)
@@ -222,13 +222,13 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Performance_ExceptionLogging_1KMessages_UnderYSeconds()
         {
             // Arrange
-            using (var factory = new LoggerFactory())
+            using (LoggerFactory factory = new LoggerFactory())
             {
-                var memoryOutput = new MemoryLogOutput(maxEntries: 0);
+                MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
                 factory.AddOutput(memoryOutput);
-                var logger = factory.CreateLogger("PerfTest");
+                ILogger logger = factory.CreateLogger("PerfTest");
 
-                var stopwatch = Stopwatch.StartNew();
+                Stopwatch stopwatch = Stopwatch.StartNew();
 
                 // Act
                 for (int i = 0; i < 1000; i++)
@@ -256,7 +256,7 @@ namespace Alis.Core.Aspect.Logging.Test
         public void Performance_MemoryOutputStorage_Limits()
         {
             // Arrange
-            var output = new MemoryLogOutput(maxEntries: 100);
+            MemoryLogOutput output = new MemoryLogOutput(maxEntries: 100);
 
             // Act
             for (int i = 0; i < 1000; i++)

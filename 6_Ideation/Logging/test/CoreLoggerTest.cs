@@ -52,12 +52,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_Constructor_ShouldSetName()
         {
             // Arrange
-            var outputs = new List<ILogOutput>();
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
+            List<ILogOutput> outputs = new List<ILogOutput>();
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
 
             // Act
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Assert
             Assert.Equal("TestLogger", logger.Name);
@@ -67,17 +67,17 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_LogTrace_ShouldWriteToOutput()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act
             logger.LogTrace("Trace message");
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.Equal(LogLevel.Trace, entries[0].Level);
             Assert.Equal("Trace message", entries[0].Message);
@@ -87,17 +87,17 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_LogDebug_ShouldWriteToOutput()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act
             logger.LogDebug("Debug message");
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.Equal(LogLevel.Debug, entries[0].Level);
         }
@@ -106,17 +106,17 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_LogInfo_ShouldWriteToOutput()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act
             logger.LogInfo("Info message");
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.Equal(LogLevel.Info, entries[0].Level);
         }
@@ -125,17 +125,17 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_LogWarning_ShouldWriteToOutput()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act
             logger.LogWarning("Warning message");
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.Equal(LogLevel.Warning, entries[0].Level);
         }
@@ -144,17 +144,17 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_LogError_ShouldWriteToOutput()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act
             logger.LogError("Error message");
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.Equal(LogLevel.Error, entries[0].Level);
         }
@@ -163,17 +163,17 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_LogCritical_ShouldWriteToOutput()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act
             logger.LogCritical("Critical message");
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.Equal(LogLevel.Critical, entries[0].Level);
         }
@@ -182,18 +182,18 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_LogErrorWithException_ShouldIncludeException()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
-            var exception = new InvalidOperationException("Test exception");
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            InvalidOperationException exception = new InvalidOperationException("Test exception");
 
             // Act
             logger.LogError("Error with exception", exception);
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.NotNull(entries[0].Exception);
             Assert.Equal("Test exception", entries[0].Exception.Message);
@@ -203,18 +203,18 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_LogCriticalWithException_ShouldIncludeException()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
-            var exception = new ArgumentException("Test exception");
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            ArgumentException exception = new ArgumentException("Test exception");
 
             // Act
             logger.LogCritical("Critical with exception", exception);
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.NotNull(entries[0].Exception);
         }
@@ -223,17 +223,17 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_Log_ShouldWriteWithSpecifiedLevel()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act
             logger.Log(LogLevel.Warning, "Custom level message");
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.Equal(LogLevel.Warning, entries[0].Level);
         }
@@ -242,18 +242,18 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_LogWithException_ShouldWriteWithExceptionLevel()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
-            var exception = new NullReferenceException();
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            NullReferenceException exception = new NullReferenceException();
 
             // Act
             logger.Log(LogLevel.Error, "Error with exception", exception);
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.Equal(LogLevel.Error, entries[0].Level);
             Assert.NotNull(entries[0].Exception);
@@ -263,12 +263,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_LogStructured_ShouldIncludeProperties()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
-            var properties = new Dictionary<string, object>
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            Dictionary<string, object> properties = new Dictionary<string, object>
             {
                 { "UserId", 123 },
                 { "Action", "Login" }
@@ -278,7 +278,7 @@ namespace Alis.Core.Aspect.Logging.Test
             logger.LogStructured(LogLevel.Info, "Structured log", properties);
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.Equal(2, entries[0].Properties.Count);
             Assert.Equal(123, entries[0].Properties["UserId"]);
@@ -288,17 +288,17 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_LogStructuredWithNullProperties_ShouldLogAsNormal()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act
             logger.LogStructured(LogLevel.Info, "Log message", null);
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
         }
 
@@ -306,19 +306,19 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_SetCorrelationId_ShouldIncludeInEntries()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
-            var correlationId = "CORR-123";
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            string correlationId = "CORR-123";
 
             // Act
             logger.SetCorrelationId(correlationId);
             logger.LogInfo("Message");
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.Equal(correlationId, entries[0].CorrelationId);
         }
@@ -327,15 +327,15 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_GetCorrelationId_ShouldReturnSetValue()
         {
             // Arrange
-            var outputs = new List<ILogOutput>();
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
-            var correlationId = Guid.NewGuid().ToString();
+            List<ILogOutput> outputs = new List<ILogOutput>();
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            string correlationId = Guid.NewGuid().ToString();
 
             // Act
             logger.SetCorrelationId(correlationId);
-            var retrieved = logger.GetCorrelationId();
+            string retrieved = logger.GetCorrelationId();
 
             // Assert
             Assert.Equal(correlationId, retrieved);
@@ -345,11 +345,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_BeginScope_ShouldIncludeScopeInEntry()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act
             using (logger.BeginScope("TestScope"))
@@ -358,7 +358,7 @@ namespace Alis.Core.Aspect.Logging.Test
             }
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.Single(entries[0].Scopes);
             Assert.Equal("TestScope", entries[0].Scopes[0]);
@@ -368,11 +368,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_NestedScopes_ShouldIncludeAllScopes()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act
             using (logger.BeginScope("Scope1"))
@@ -384,7 +384,7 @@ namespace Alis.Core.Aspect.Logging.Test
             }
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.Equal(2, entries[0].Scopes.Count);
         }
@@ -393,10 +393,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_IsEnabledTrace_ShouldReturnTrue()
         {
             // Arrange
-            var outputs = new List<ILogOutput>();
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter, LogLevel.Trace);
+            List<ILogOutput> outputs = new List<ILogOutput>();
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter, LogLevel.Trace);
 
             // Act & Assert
             Assert.True(logger.IsEnabled(LogLevel.Trace));
@@ -406,10 +406,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_IsEnabledBelowMinimum_ShouldReturnFalse()
         {
             // Arrange
-            var outputs = new List<ILogOutput>();
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter, LogLevel.Warning);
+            List<ILogOutput> outputs = new List<ILogOutput>();
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter, LogLevel.Warning);
 
             // Act & Assert
             Assert.False(logger.IsEnabled(LogLevel.Info));
@@ -422,10 +422,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_IsEnabledNone_ShouldReturnFalse()
         {
             // Arrange
-            var outputs = new List<ILogOutput>();
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            List<ILogOutput> outputs = new List<ILogOutput>();
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act & Assert
             Assert.False(logger.IsEnabled(LogLevel.None));
@@ -435,11 +435,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_DisabledLevel_ShouldNotLogDisabledMessages()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter, LogLevel.Warning);
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter, LogLevel.Warning);
 
             // Act
             logger.LogInfo("Info");
@@ -447,7 +447,7 @@ namespace Alis.Core.Aspect.Logging.Test
             logger.LogError("Error");
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Equal(2, entries.Count);
             Assert.All(entries, e => Assert.True(e.Level >= LogLevel.Warning));
         }
@@ -456,11 +456,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_FilterBlocks_ShouldNotLog()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter> { new LogLevelFilter(LogLevel.Error) };
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter> { new LogLevelFilter(LogLevel.Error) };
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act
             logger.LogInfo("Info");
@@ -468,7 +468,7 @@ namespace Alis.Core.Aspect.Logging.Test
             logger.LogError("Error");
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Single(entries);
             Assert.Equal(LogLevel.Error, entries[0].Level);
         }
@@ -477,22 +477,22 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_MultipleFilters_ShouldApplyAll()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>
+            MemoryLogOutput memoryOutput = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>
             {
                 new LogLevelFilter(LogLevel.Info),
                 new LoggerNameFilter(new[] { "TestLogger" }, inclusive: true)
             };
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act
             logger.LogInfo("Message 1");
             logger.LogInfo("Message 2");
 
             // Assert
-            var entries = memoryOutput.GetEntries();
+            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
             Assert.Equal(2, entries.Count);
         }
 
@@ -500,12 +500,12 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_MultipleOutputs_ShouldWriteToAll()
         {
             // Arrange
-            var memory1 = new MemoryLogOutput();
-            var memory2 = new MemoryLogOutput();
-            var outputs = new List<ILogOutput> { memory1, memory2 };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            MemoryLogOutput memory1 = new MemoryLogOutput();
+            MemoryLogOutput memory2 = new MemoryLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { memory1, memory2 };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act
             logger.LogInfo("Test message");
@@ -519,17 +519,17 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_ConcurrentLogging_ShouldBeThreadSafe()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput(maxEntries: 0);
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
-            var tasks = new List<Task>();
+            MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            List<Task> tasks = new List<Task>();
 
             // Act
             for (int i = 0; i < 10; i++)
             {
-                var task = Task.Run(() =>
+                Task task = Task.Run(() =>
                 {
                     for (int j = 0; j < 100; j++)
                     {
@@ -548,18 +548,18 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_ConcurrentCorrelationId_ShouldBeThreadSafe()
         {
             // Arrange
-            var memoryOutput = new MemoryLogOutput(maxEntries: 0);
-            var outputs = new List<ILogOutput> { memoryOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
-            var tasks = new List<Task>();
+            MemoryLogOutput memoryOutput = new MemoryLogOutput(maxEntries: 0);
+            List<ILogOutput> outputs = new List<ILogOutput> { memoryOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            List<Task> tasks = new List<Task>();
 
             // Act
             for (int i = 0; i < 5; i++)
             {
                 int threadNum = i;
-                var task = Task.Run(() =>
+                Task task = Task.Run(() =>
                 {
                     logger.SetCorrelationId($"CORR-{threadNum}");
                     logger.LogInfo("Message");
@@ -576,11 +576,11 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_OutputException_ShouldNotPropagate()
         {
             // Arrange
-            var faultyOutput = new FaultyLogOutput();
-            var outputs = new List<ILogOutput> { faultyOutput };
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            FaultyLogOutput faultyOutput = new FaultyLogOutput();
+            List<ILogOutput> outputs = new List<ILogOutput> { faultyOutput };
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act & Assert - Should not throw
             logger.LogInfo("Message");
@@ -590,10 +590,10 @@ namespace Alis.Core.Aspect.Logging.Test
         public void CoreLogger_EmptyOutputsList_ShouldNotThrow()
         {
             // Arrange
-            var outputs = new List<ILogOutput>();
-            var filters = new List<ILogFilter>();
-            var formatter = new SimpleLogFormatter();
-            var logger = new CoreLogger("TestLogger", outputs, filters, formatter);
+            List<ILogOutput> outputs = new List<ILogOutput>();
+            List<ILogFilter> filters = new List<ILogFilter>();
+            SimpleLogFormatter formatter = new SimpleLogFormatter();
+            CoreLogger logger = new CoreLogger("TestLogger", outputs, filters, formatter);
 
             // Act & Assert - Should not throw
             logger.LogInfo("Message");
