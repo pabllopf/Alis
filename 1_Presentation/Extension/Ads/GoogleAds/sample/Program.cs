@@ -30,8 +30,6 @@
 using System;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Logging;
-using Alis.Extension.Ads.GoogleAds;
-using Moq;
 using Alis.Core.Ecs.Systems.Scope;
 
 namespace Alis.Extension.Ads.GoogleAds.Sample
@@ -79,10 +77,10 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             Logger.Info("--------------------------------");
 
             // Create a mock context (in real usage, you'd use your actual game engine context)
-            Mock<Context> mockContext = new Mock<Context>();
+            Context mockContext = new Context();
 
             // Initialize the ads manager
-            AdsManager adsManager = new AdsManager(mockContext.Object);
+            AdsManager adsManager = new AdsManager(mockContext);
 
             // Create configuration
             AdConfiguration config = new AdConfiguration(
@@ -147,8 +145,8 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             Logger.Info("Sample 2: Interstitial Ads");
             Logger.Info("---------------------------");
 
-            Mock<Context> mockContext = new Mock<Context>();
-            AdsManager adsManager = new AdsManager(mockContext.Object);
+            Context mockContext = new Context();
+            AdsManager adsManager = new AdsManager(mockContext);
 
             AdConfiguration config = new AdConfiguration(
                 appId: "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
@@ -211,8 +209,8 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             Logger.Info("Sample 3: Rewarded Video Ads");
             Logger.Info("-----------------------------");
 
-            Mock<Context> mockContext = new Mock<Context>();
-            AdsManager adsManager = new AdsManager(mockContext.Object);
+            Context mockContext = new Context();
+            AdsManager adsManager = new AdsManager(mockContext);
 
             AdConfiguration config = new AdConfiguration(
                 appId: "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
@@ -276,9 +274,9 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             Logger.Info("Sample 4: Complete Game Integration");
             Logger.Info("====================================");
 
-            Mock<Context> mockContext = new Mock<Context>();
+            Context mockContext = new Context();
             GameStateExample gameState = new GameStateExample();
-            AdsManager adsManager = new AdsManager(mockContext.Object);
+            AdsManager adsManager = new AdsManager(mockContext);
 
             // Configure ads based on game settings
             AdConfiguration config = new AdConfiguration(
@@ -343,46 +341,6 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             }
 
             Logger.Info($"Game state - Level: {gameState.CurrentLevel}, Coins: {gameState.Coins}");
-        }
-    }
-
-    /// <summary>
-    ///     Example game state class for integration demonstration
-    /// </summary>
-    public class GameStateExample
-    {
-        /// <summary>
-        ///     Gets or sets whether the player has premium status
-        /// </summary>
-        public bool IsPremium { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the current game level
-        /// </summary>
-        public int CurrentLevel { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the player's coins
-        /// </summary>
-        public int Coins { get; set; }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="GameStateExample" /> class
-        /// </summary>
-        public GameStateExample()
-        {
-            IsPremium = false;
-            CurrentLevel = 1;
-            Coins = 100;
-        }
-
-        /// <summary>
-        ///     Adds coins to the player's balance
-        /// </summary>
-        /// <param name="amount">The amount to add</param>
-        public void AddCoins(int amount)
-        {
-            Coins += amount;
         }
     }
 }
