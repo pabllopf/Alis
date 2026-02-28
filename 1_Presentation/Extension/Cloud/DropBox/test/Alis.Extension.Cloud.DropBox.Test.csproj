@@ -26,6 +26,24 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+
+        <PackageReference Include="Moq" Version="4.20.70"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Payment.Stripe'))">
+        <PackageReference Include="Stripe.net" Version="47.1.0"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Ads.GoogleAds'))">
+        <PackageReference Include="Google.Ads.Common" Version="9.5.3"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Cloud.GoogleDrive'))">
+        <PackageReference Include="Google.Apis.Drive.v3" Version="1.68.0.3601"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Contains('Alis.Extension.Cloud.DropBox'))">
+        <PackageReference Include="Dropbox.Api" Version="7.0.0"/>
     </ItemGroup>
 
     
