@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             int patch = 18;
 
             // Act
-            var version = new Version(major, minor, patch);
+            Version version = new Version(major, minor, patch);
 
             // Assert
             Assert.Equal((byte)major, version.major);
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void VersionConstructor_WithZeroValues_InitializesZeroVersion()
         {
             // Arrange & Act
-            var version = new Version(0, 0, 0);
+            Version version = new Version(0, 0, 0);
 
             // Assert
             Assert.Equal(0, version.major);
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             int patch = 255;
 
             // Act
-            var version = new Version(major, minor, patch);
+            Version version = new Version(major, minor, patch);
 
             // Assert
             Assert.Equal(255, version.major);
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void VersionConstructor_WithDifferentValues_InitializesProperly(int major, int minor, int patch)
         {
             // Act
-            var version = new Version(major, minor, patch);
+            Version version = new Version(major, minor, patch);
 
             // Assert
             Assert.Equal((byte)major, version.major);

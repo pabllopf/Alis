@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 using Alis.Core.Graphic.OpenGL.Enums;
 
@@ -142,7 +143,7 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void PixelFormat_HasMultipleValues_CountIsNotZero()
         {
-            var enumValues = System.Enum.GetValues(typeof(PixelFormat));
+            Array enumValues = System.Enum.GetValues(typeof(PixelFormat));
             Assert.NotEmpty(enumValues);
         }
 
@@ -162,8 +163,8 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void PixelFormat_CanCompareValues_EqualityWorks()
         {
-            var format1 = PixelFormat.Rgba;
-            var format2 = PixelFormat.Rgba;
+            PixelFormat format1 = PixelFormat.Rgba;
+            PixelFormat format2 = PixelFormat.Rgba;
             Assert.Equal(format1, format2);
         }
 
@@ -182,9 +183,9 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void PixelFormat_ContainsCommonFormats_AllPresent()
         {
-            var rgbFormat = PixelFormat.Rgb;
-            var rgbaFormat = PixelFormat.Rgba;
-            var redFormat = PixelFormat.Red;
+            PixelFormat rgbFormat = PixelFormat.Rgb;
+            PixelFormat rgbaFormat = PixelFormat.Rgba;
+            PixelFormat redFormat = PixelFormat.Red;
 
             Assert.NotNull(rgbFormat);
             Assert.NotNull(rgbaFormat);

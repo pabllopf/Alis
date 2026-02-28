@@ -29,6 +29,7 @@
 
 using System;
 using System.Linq;
+using System.Reflection;
 using Xunit;
 using Alis.Core.Graphic.Platforms;
 
@@ -46,7 +47,7 @@ namespace Alis.Core.Graphic.Test.Platforms
         public void INativePlatform_IsInterface_TypeIsCorrect()
         {
             // Arrange & Act
-            var interfaceType = typeof(INativePlatform);
+            Type interfaceType = typeof(INativePlatform);
 
             // Assert
             Assert.True(interfaceType.IsInterface);
@@ -59,7 +60,7 @@ namespace Alis.Core.Graphic.Test.Platforms
         public void INativePlatform_IsPublic_CanBeAccessed()
         {
             // Arrange & Act
-            var interfaceType = typeof(INativePlatform);
+            Type interfaceType = typeof(INativePlatform);
 
             // Assert
             Assert.True(interfaceType.IsPublic);
@@ -77,7 +78,7 @@ namespace Alis.Core.Graphic.Test.Platforms
         public void INativePlatform_ShowWindow_ReturnsVoid()
         {
             // Arrange & Act
-            var method = typeof(INativePlatform).GetMethod("ShowWindow");
+            MethodInfo method = typeof(INativePlatform).GetMethod("ShowWindow");
 
             // Assert
             Assert.NotNull(method);
@@ -91,7 +92,7 @@ namespace Alis.Core.Graphic.Test.Platforms
         public void INativePlatform_HideWindow_ReturnsVoid()
         {
             // Arrange & Act
-            var method = typeof(INativePlatform).GetMethod("HideWindow");
+            MethodInfo method = typeof(INativePlatform).GetMethod("HideWindow");
 
             // Assert
             Assert.NotNull(method);
@@ -105,7 +106,7 @@ namespace Alis.Core.Graphic.Test.Platforms
         public void INativePlatform_SetTitle_ReturnsVoid()
         {
             // Arrange & Act
-            var method = typeof(INativePlatform).GetMethod("SetTitle");
+            MethodInfo method = typeof(INativePlatform).GetMethod("SetTitle");
 
             // Assert
             Assert.NotNull(method);
@@ -119,7 +120,7 @@ namespace Alis.Core.Graphic.Test.Platforms
         public void INativePlatform_SetSize_ReturnsVoid()
         {
             // Arrange & Act
-            var method = typeof(INativePlatform).GetMethod("SetSize");
+            MethodInfo method = typeof(INativePlatform).GetMethod("SetSize");
 
             // Assert
             Assert.NotNull(method);
@@ -133,7 +134,7 @@ namespace Alis.Core.Graphic.Test.Platforms
         public void INativePlatform_IsWindowVisible_ReturnsBoolean()
         {
             // Arrange & Act
-            var method = typeof(INativePlatform).GetMethod("IsWindowVisible");
+            MethodInfo method = typeof(INativePlatform).GetMethod("IsWindowVisible");
 
             // Assert
             Assert.NotNull(method);
@@ -147,7 +148,7 @@ namespace Alis.Core.Graphic.Test.Platforms
         public void INativePlatform_PollEvents_ReturnsBoolean()
         {
             // Arrange & Act
-            var method = typeof(INativePlatform).GetMethod("PollEvents");
+            MethodInfo method = typeof(INativePlatform).GetMethod("PollEvents");
 
             // Assert
             Assert.NotNull(method);

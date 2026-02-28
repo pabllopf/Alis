@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 using Alis.Core.Graphic.OpenGL.Enums;
 
@@ -106,7 +107,7 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void TextureTarget_HasMultipleValues_CountIsNotZero()
         {
-            var enumValues = System.Enum.GetValues(typeof(TextureTarget));
+            Array enumValues = System.Enum.GetValues(typeof(TextureTarget));
             Assert.NotEmpty(enumValues);
         }
 
@@ -126,8 +127,8 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void TextureTarget_CanCompareValues_EqualityWorks()
         {
-            var target1 = TextureTarget.Texture2D;
-            var target2 = TextureTarget.Texture2D;
+            TextureTarget target1 = TextureTarget.Texture2D;
+            TextureTarget target2 = TextureTarget.Texture2D;
             Assert.Equal(target1, target2);
         }
 
@@ -146,8 +147,8 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void TextureTarget_Contains2DAndCubeMap_CommonTargets()
         {
-            var texture2D = TextureTarget.Texture2D;
-            var textureCube = TextureTarget.TextureCubeMap;
+            TextureTarget texture2D = TextureTarget.Texture2D;
+            TextureTarget textureCube = TextureTarget.TextureCubeMap;
 
             Assert.NotNull(texture2D);
             Assert.NotNull(textureCube);

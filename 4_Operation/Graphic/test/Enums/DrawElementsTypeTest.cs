@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 using Alis.Core.Graphic.OpenGL.Enums;
 
@@ -88,7 +89,7 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void DrawElementsType_HasThreeValues_CountIsCorrect()
         {
-            var enumValues = System.Enum.GetValues(typeof(DrawElementsType));
+            Array enumValues = System.Enum.GetValues(typeof(DrawElementsType));
             Assert.Equal(3, enumValues.Length);
         }
 
@@ -98,14 +99,14 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void AllValues_AreUnique_NoConflicts()
         {
-            var values = new[]
+            int[] values = new[]
             {
                 (int)DrawElementsType.UnsignedByte,
                 (int)DrawElementsType.UnsignedShort,
                 (int)DrawElementsType.UnsignedInt
             };
 
-            var uniqueCount = new System.Collections.Generic.HashSet<int>(values).Count;
+            int uniqueCount = new System.Collections.Generic.HashSet<int>(values).Count;
             Assert.Equal(values.Length, uniqueCount);
         }
 
@@ -125,8 +126,8 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void DrawElementsType_CanCompareValues_EqualityWorks()
         {
-            var type1 = DrawElementsType.UnsignedInt;
-            var type2 = DrawElementsType.UnsignedInt;
+            DrawElementsType type1 = DrawElementsType.UnsignedInt;
+            DrawElementsType type2 = DrawElementsType.UnsignedInt;
             Assert.Equal(type1, type2);
         }
 

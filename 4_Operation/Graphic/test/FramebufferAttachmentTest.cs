@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 using Alis.Core.Graphic.OpenGL;
 
@@ -57,7 +58,7 @@ namespace Alis.Core.Graphic.Test
         public void FramebufferAttachment_IsEnum_TypeIsCorrect()
         {
             // Arrange & Act
-            var enumType = typeof(FramebufferAttachment);
+            Type enumType = typeof(FramebufferAttachment);
 
             // Assert
             Assert.True(enumType.IsEnum);
@@ -70,7 +71,7 @@ namespace Alis.Core.Graphic.Test
         public void FramebufferAttachment_IsPublic_CanBeAccessed()
         {
             // Arrange & Act
-            var enumType = typeof(FramebufferAttachment);
+            Type enumType = typeof(FramebufferAttachment);
 
             // Assert
             Assert.True(enumType.IsPublic);
@@ -83,7 +84,7 @@ namespace Alis.Core.Graphic.Test
         public void FramebufferAttachment_HasValues_CountIsNotZero()
         {
             // Arrange
-            var enumValues = System.Enum.GetValues(typeof(FramebufferAttachment));
+            Array enumValues = System.Enum.GetValues(typeof(FramebufferAttachment));
 
             // Act & Assert
             Assert.NotEmpty(enumValues);
@@ -110,8 +111,8 @@ namespace Alis.Core.Graphic.Test
         public void FramebufferAttachment_CanCompareValues_EqualityWorks()
         {
             // Arrange & Act
-            var attach1 = FramebufferAttachment.ColorAttachment0;
-            var attach2 = FramebufferAttachment.ColorAttachment0;
+            FramebufferAttachment attach1 = FramebufferAttachment.ColorAttachment0;
+            FramebufferAttachment attach2 = FramebufferAttachment.ColorAttachment0;
 
             // Assert
             Assert.Equal(attach1, attach2);
@@ -124,7 +125,7 @@ namespace Alis.Core.Graphic.Test
         public void FramebufferAttachment_HasCorrectName_NamingConventionIsMaintained()
         {
             // Arrange & Act
-            var name = System.Enum.GetName(typeof(FramebufferAttachment), FramebufferAttachment.ColorAttachment0);
+            string name = System.Enum.GetName(typeof(FramebufferAttachment), FramebufferAttachment.ColorAttachment0);
 
             // Assert
             Assert.Equal("ColorAttachment0", name);

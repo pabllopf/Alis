@@ -29,6 +29,7 @@
 
 using System;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using Xunit;
 using Alis.Core.Graphic.OpenGL.Delegates;
@@ -47,7 +48,7 @@ namespace Alis.Core.Graphic.Test.Delegates
         public void AttachShader_IsDelegate_TypeIsCorrect()
         {
             // Arrange & Act
-            var delegateType = typeof(AttachShader);
+            Type delegateType = typeof(AttachShader);
 
             // Assert
             Assert.True(delegateType.IsSubclassOf(typeof(MulticastDelegate)));
@@ -60,7 +61,7 @@ namespace Alis.Core.Graphic.Test.Delegates
         public void AttachShader_IsPublic_CanBeAccessed()
         {
             // Arrange & Act
-            var delegateType = typeof(AttachShader);
+            Type delegateType = typeof(AttachShader);
 
             // Assert
             Assert.True(delegateType.IsPublic);
@@ -73,8 +74,8 @@ namespace Alis.Core.Graphic.Test.Delegates
         public void AttachShader_HasUnmanagedFunctionPointerAttribute_InteropIsConfigured()
         {
             // Arrange & Act
-            var delegateType = typeof(AttachShader);
-            var attribute = delegateType.GetCustomAttributes(typeof(UnmanagedFunctionPointerAttribute), false).FirstOrDefault();
+            Type delegateType = typeof(AttachShader);
+            object attribute = delegateType.GetCustomAttributes(typeof(UnmanagedFunctionPointerAttribute), false).FirstOrDefault();
 
             // Assert
             Assert.NotNull(attribute);
@@ -87,12 +88,12 @@ namespace Alis.Core.Graphic.Test.Delegates
         public void AttachShader_HasTwoParameters_SignatureIsCorrect()
         {
             // Arrange & Act
-            var delegateType = typeof(AttachShader);
-            var invokeMethod = delegateType.GetMethod("Invoke");
+            Type delegateType = typeof(AttachShader);
+            MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
 
             // Assert
             Assert.NotNull(invokeMethod);
-            var parameters = invokeMethod.GetParameters();
+            ParameterInfo[] parameters = invokeMethod.GetParameters();
             Assert.Equal(2, parameters.Length);
         }
 
@@ -103,9 +104,9 @@ namespace Alis.Core.Graphic.Test.Delegates
         public void AttachShader_FirstParameter_IsUint()
         {
             // Arrange & Act
-            var delegateType = typeof(AttachShader);
-            var invokeMethod = delegateType.GetMethod("Invoke");
-            var parameters = invokeMethod.GetParameters();
+            Type delegateType = typeof(AttachShader);
+            MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
+            ParameterInfo[] parameters = invokeMethod.GetParameters();
 
             // Assert
             Assert.Equal(typeof(uint), parameters[0].ParameterType);
@@ -119,9 +120,9 @@ namespace Alis.Core.Graphic.Test.Delegates
         public void AttachShader_SecondParameter_IsUint()
         {
             // Arrange & Act
-            var delegateType = typeof(AttachShader);
-            var invokeMethod = delegateType.GetMethod("Invoke");
-            var parameters = invokeMethod.GetParameters();
+            Type delegateType = typeof(AttachShader);
+            MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
+            ParameterInfo[] parameters = invokeMethod.GetParameters();
 
             // Assert
             Assert.Equal(typeof(uint), parameters[1].ParameterType);
@@ -135,8 +136,8 @@ namespace Alis.Core.Graphic.Test.Delegates
         public void AttachShader_ReturnType_IsVoid()
         {
             // Arrange & Act
-            var delegateType = typeof(AttachShader);
-            var invokeMethod = delegateType.GetMethod("Invoke");
+            Type delegateType = typeof(AttachShader);
+            MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
 
             // Assert
             Assert.NotNull(invokeMethod);
@@ -150,8 +151,8 @@ namespace Alis.Core.Graphic.Test.Delegates
         public void AttachShader_UsesStdCallConvention_InteropConventionIsCorrect()
         {
             // Arrange & Act
-            var delegateType = typeof(AttachShader);
-            var attribute = (UnmanagedFunctionPointerAttribute)delegateType.GetCustomAttributes(typeof(UnmanagedFunctionPointerAttribute), false)[0];
+            Type delegateType = typeof(AttachShader);
+            UnmanagedFunctionPointerAttribute attribute = (UnmanagedFunctionPointerAttribute)delegateType.GetCustomAttributes(typeof(UnmanagedFunctionPointerAttribute), false)[0];
 
             // Assert
             Assert.Equal(CallingConvention.StdCall, attribute.CallingConvention);
@@ -165,7 +166,7 @@ namespace Alis.Core.Graphic.Test.Delegates
         {
             // Arrange & Act
             void TestFunction(uint program, uint shader) { }
-            var delegateInstance = new AttachShader(TestFunction);
+            AttachShader delegateInstance = new AttachShader(TestFunction);
 
             // Assert
             Assert.NotNull(delegateInstance);
@@ -179,8 +180,8 @@ namespace Alis.Core.Graphic.Test.Delegates
         public void AttachShader_InvokeMethod_Exists()
         {
             // Arrange & Act
-            var delegateType = typeof(AttachShader);
-            var invokeMethod = delegateType.GetMethod("Invoke");
+            Type delegateType = typeof(AttachShader);
+            MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
 
             // Assert
             Assert.NotNull(invokeMethod);

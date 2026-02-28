@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 using Alis.Core.Graphic.OpenGL.Enums;
 
@@ -151,7 +152,7 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void BufferTarget_HasMultipleValues_CountIsNotZero()
         {
-            var enumValues = System.Enum.GetValues(typeof(BufferTarget));
+            Array enumValues = System.Enum.GetValues(typeof(BufferTarget));
             Assert.NotEmpty(enumValues);
             Assert.True(enumValues.Length > 5);
         }
@@ -172,8 +173,8 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void BufferTarget_CanCompareValues_EqualityWorks()
         {
-            var target1 = BufferTarget.ArrayBuffer;
-            var target2 = BufferTarget.ArrayBuffer;
+            BufferTarget target1 = BufferTarget.ArrayBuffer;
+            BufferTarget target2 = BufferTarget.ArrayBuffer;
             Assert.Equal(target1, target2);
         }
 
@@ -192,9 +193,9 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void BufferTarget_ContainsCommonTargets_AllPresent()
         {
-            var arrayBuffer = BufferTarget.ArrayBuffer;
-            var elementArrayBuffer = BufferTarget.ElementArrayBuffer;
-            var uniformBuffer = BufferTarget.UniformBuffer;
+            BufferTarget arrayBuffer = BufferTarget.ArrayBuffer;
+            BufferTarget elementArrayBuffer = BufferTarget.ElementArrayBuffer;
+            BufferTarget uniformBuffer = BufferTarget.UniformBuffer;
 
             Assert.NotNull(arrayBuffer);
             Assert.NotNull(elementArrayBuffer);

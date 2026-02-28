@@ -45,7 +45,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void AudioSpec_DefaultInitialization_CreatesValidStruct()
         {
             // Arrange & Act
-            var audioSpec = new AudioSpec();
+            AudioSpec audioSpec = new AudioSpec();
 
             // Assert
             Assert.Equal(0, audioSpec.Freq);
@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void AudioSpec_SetProperties_StoresValuesCorrectly()
         {
             // Arrange
-            var audioSpec = new AudioSpec();
+            AudioSpec audioSpec = new AudioSpec();
 
             // Act
             audioSpec.Freq = 44100;
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void AudioSpec_WithDifferentFrequencies_StoresValueCorrectly(int frequency)
         {
             // Arrange & Act
-            var audioSpec = new AudioSpec { Freq = frequency };
+            AudioSpec audioSpec = new AudioSpec { Freq = frequency };
 
             // Assert
             Assert.Equal(frequency, audioSpec.Freq);
@@ -104,7 +104,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void AudioSpec_WithDifferentChannels_StoresValueCorrectly(byte channels)
         {
             // Arrange & Act
-            var audioSpec = new AudioSpec { Channels = channels };
+            AudioSpec audioSpec = new AudioSpec { Channels = channels };
 
             // Assert
             Assert.Equal(channels, audioSpec.Channels);
@@ -117,7 +117,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void AudioSpec_WithDifferentFormats_StoresFormatCorrectly()
         {
             // Arrange & Act
-            var audioSpec = new AudioSpec { Format = Sdl.AudioF32Lsb };
+            AudioSpec audioSpec = new AudioSpec { Format = Sdl.AudioF32Lsb };
 
             // Assert
             Assert.Equal(Sdl.AudioF32Lsb, audioSpec.Format);
@@ -130,8 +130,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void AudioSpec_SetUserdata_StoresPointerCorrectly()
         {
             // Arrange
-            var audioSpec = new AudioSpec();
-            var userdata = new IntPtr(12345);
+            AudioSpec audioSpec = new AudioSpec();
+            IntPtr userdata = new IntPtr(12345);
 
             // Act
             audioSpec.Userdata = userdata;
@@ -147,10 +147,10 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void AudioSpec_IsValueType_CanBeCopied()
         {
             // Arrange
-            var original = new AudioSpec { Freq = 44100, Channels = 2 };
+            AudioSpec original = new AudioSpec { Freq = 44100, Channels = 2 };
 
             // Act
-            var copy = original;
+            AudioSpec copy = original;
 
             // Assert
             Assert.Equal(original.Freq, copy.Freq);
@@ -164,8 +164,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void AudioSpec_CopyIsIndependent_ModifyingCopyDoesNotAffectOriginal()
         {
             // Arrange
-            var original = new AudioSpec { Freq = 44100, Channels = 2 };
-            var copy = original;
+            AudioSpec original = new AudioSpec { Freq = 44100, Channels = 2 };
+            AudioSpec copy = original;
 
             // Act
             copy.Freq = 48000;

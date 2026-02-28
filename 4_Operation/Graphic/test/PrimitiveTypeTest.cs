@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 using Alis.Core.Graphic.OpenGL;
 
@@ -148,7 +149,7 @@ namespace Alis.Core.Graphic.Test
         public void AllValues_AreUnique_NoConflicts()
         {
             // Arrange
-            var values = new[]
+            int[] values = new[]
             {
                 (int)PrimitiveType.Points,
                 (int)PrimitiveType.Lines,
@@ -161,7 +162,7 @@ namespace Alis.Core.Graphic.Test
             };
 
             // Act
-            var uniqueCount = new System.Collections.Generic.HashSet<int>(values).Count;
+            int uniqueCount = new System.Collections.Generic.HashSet<int>(values).Count;
 
             // Assert
             Assert.Equal(values.Length, uniqueCount);
@@ -174,7 +175,7 @@ namespace Alis.Core.Graphic.Test
         public void PrimitiveType_IsEnum_TypeIsCorrect()
         {
             // Arrange & Act
-            var enumType = typeof(PrimitiveType);
+            Type enumType = typeof(PrimitiveType);
 
             // Assert
             Assert.True(enumType.IsEnum);
@@ -187,7 +188,7 @@ namespace Alis.Core.Graphic.Test
         public void PrimitiveType_IsPublic_CanBeAccessed()
         {
             // Arrange & Act
-            var enumType = typeof(PrimitiveType);
+            Type enumType = typeof(PrimitiveType);
 
             // Assert
             Assert.True(enumType.IsPublic);
@@ -200,7 +201,7 @@ namespace Alis.Core.Graphic.Test
         public void PrimitiveType_HasEightValues_CountIsCorrect()
         {
             // Arrange
-            var enumValues = System.Enum.GetValues(typeof(PrimitiveType));
+            Array enumValues = System.Enum.GetValues(typeof(PrimitiveType));
 
             // Act & Assert
             Assert.Equal(8, enumValues.Length);
@@ -227,8 +228,8 @@ namespace Alis.Core.Graphic.Test
         public void PrimitiveType_CanCompareValues_EqualityWorks()
         {
             // Arrange & Act
-            var triangles1 = PrimitiveType.Triangles;
-            var triangles2 = PrimitiveType.Triangles;
+            PrimitiveType triangles1 = PrimitiveType.Triangles;
+            PrimitiveType triangles2 = PrimitiveType.Triangles;
 
             // Assert
             Assert.Equal(triangles1, triangles2);
@@ -241,8 +242,8 @@ namespace Alis.Core.Graphic.Test
         public void PrimitiveType_DifferentValues_AreNotEqual()
         {
             // Arrange & Act
-            var lines = PrimitiveType.Lines;
-            var triangles = PrimitiveType.Triangles;
+            PrimitiveType lines = PrimitiveType.Lines;
+            PrimitiveType triangles = PrimitiveType.Triangles;
 
             // Assert
             Assert.NotEqual(lines, triangles);

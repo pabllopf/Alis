@@ -80,11 +80,11 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         {
             // Arrange
             IWindow window = new MockWindow();
-            var color = new Color(255, 128, 64, 255);
+            Color color = new Color(255, 128, 64, 255);
 
             // Act
             window.Background = color;
-            var retrievedColor = window.Background;
+            Color retrievedColor = window.Background;
 
             // Assert
             Assert.Equal(color, retrievedColor);
@@ -98,11 +98,11 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         {
             // Arrange
             IWindow window = new MockWindow();
-            var resolution = new Vector2F(1920, 1080);
+            Vector2F resolution = new Vector2F(1920, 1080);
 
             // Act
             window.Resolution = resolution;
-            var retrievedResolution = window.Resolution;
+            Vector2F retrievedResolution = window.Resolution;
 
             // Assert
             Assert.Equal(resolution, retrievedResolution);
@@ -119,7 +119,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
 
             // Act
             window.IsWindowResizable = true;
-            var isResizable = window.IsWindowResizable;
+            bool isResizable = window.IsWindowResizable;
 
             // Assert
             Assert.True(isResizable);
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
 
             // Act
             window.IsWindowResizable = false;
-            var isResizable = window.IsWindowResizable;
+            bool isResizable = window.IsWindowResizable;
 
             // Assert
             Assert.False(isResizable);
@@ -150,8 +150,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         {
             // Arrange
             IWindow window = new MockWindow();
-            var expectedColor = new Color(100, 150, 200, 255);
-            var expectedResolution = new Vector2F(800, 600);
+            Color expectedColor = new Color(100, 150, 200, 255);
+            Vector2F expectedResolution = new Vector2F(800, 600);
 
             // Act
             window.Background = expectedColor;
@@ -173,8 +173,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             // Arrange
             IWindow window1 = new MockWindow();
             IWindow window2 = new MockWindow();
-            var color1 = new Color(255, 0, 0, 255);
-            var color2 = new Color(0, 255, 0, 255);
+            Color color1 = new Color(255, 0, 0, 255);
+            Color color2 = new Color(0, 255, 0, 255);
 
             // Act
             window1.Background = color1;
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         {
             // Arrange
             IWindow window = new MockWindow();
-            var resolution = new Vector2F(width, height);
+            Vector2F resolution = new Vector2F(width, height);
 
             // Act
             window.Resolution = resolution;
@@ -216,7 +216,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         {
             // Arrange
             IWindow window = new MockWindow();
-            var blackColor = new Color(0, 0, 0, 255);
+            Color blackColor = new Color(0, 0, 0, 255);
 
             // Act
             window.Background = blackColor;
@@ -233,7 +233,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         {
             // Arrange
             IWindow window = new MockWindow();
-            var whiteColor = new Color(255, 255, 255, 255);
+            Color whiteColor = new Color(255, 255, 255, 255);
 
             // Act
             window.Background = whiteColor;

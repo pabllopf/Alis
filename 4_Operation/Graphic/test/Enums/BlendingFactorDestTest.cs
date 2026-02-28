@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 using Alis.Core.Graphic.OpenGL.Enums;
 
@@ -160,7 +161,7 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void BlendingFactorDest_HasMultipleValues_CountIsCorrect()
         {
-            var enumValues = System.Enum.GetValues(typeof(BlendingFactorDest));
+            Array enumValues = System.Enum.GetValues(typeof(BlendingFactorDest));
             Assert.NotEmpty(enumValues);
         }
 
@@ -180,8 +181,8 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void BlendingFactorDest_CanCompareValues_EqualityWorks()
         {
-            var factor1 = BlendingFactorDest.SrcAlpha;
-            var factor2 = BlendingFactorDest.SrcAlpha;
+            BlendingFactorDest factor1 = BlendingFactorDest.SrcAlpha;
+            BlendingFactorDest factor2 = BlendingFactorDest.SrcAlpha;
             Assert.Equal(factor1, factor2);
         }
 

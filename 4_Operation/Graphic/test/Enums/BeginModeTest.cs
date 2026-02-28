@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 using Alis.Core.Graphic.OpenGL.Enums;
 
@@ -169,7 +170,7 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void BeginMode_HasThirteenValues_CountIsCorrect()
         {
-            var enumValues = System.Enum.GetValues(typeof(BeginMode));
+            Array enumValues = System.Enum.GetValues(typeof(BeginMode));
             Assert.Equal(12, enumValues.Length);
         }
 
@@ -179,7 +180,7 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void AllValues_AreUnique_NoConflicts()
         {
-            var values = new[]
+            int[] values = new[]
             {
                 (int)BeginMode.Points,
                 (int)BeginMode.Lines,
@@ -195,7 +196,7 @@ namespace Alis.Core.Graphic.Test.Enums
                 (int)BeginMode.Patches
             };
 
-            var uniqueCount = new System.Collections.Generic.HashSet<int>(values).Count;
+            int uniqueCount = new System.Collections.Generic.HashSet<int>(values).Count;
             Assert.Equal(values.Length, uniqueCount);
         }
 
@@ -215,8 +216,8 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void BeginMode_CanCompareValues_EqualityWorks()
         {
-            var mode1 = BeginMode.Triangles;
-            var mode2 = BeginMode.Triangles;
+            BeginMode mode1 = BeginMode.Triangles;
+            BeginMode mode2 = BeginMode.Triangles;
             Assert.Equal(mode1, mode2);
         }
 

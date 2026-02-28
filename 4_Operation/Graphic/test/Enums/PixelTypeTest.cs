@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 using Alis.Core.Graphic.OpenGL.Enums;
 
@@ -142,7 +143,7 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void PixelType_HasMultipleValues_CountIsNotZero()
         {
-            var enumValues = System.Enum.GetValues(typeof(PixelType));
+            Array enumValues = System.Enum.GetValues(typeof(PixelType));
             Assert.NotEmpty(enumValues);
         }
 
@@ -162,8 +163,8 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void PixelType_CanCompareValues_EqualityWorks()
         {
-            var type1 = PixelType.Float;
-            var type2 = PixelType.Float;
+            PixelType type1 = PixelType.Float;
+            PixelType type2 = PixelType.Float;
             Assert.Equal(type1, type2);
         }
 
@@ -182,9 +183,9 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void PixelType_ContainsCommonTypes_AllPresent()
         {
-            var byteType = PixelType.Byte;
-            var unsignedByteType = PixelType.UnsignedByte;
-            var floatType = PixelType.Float;
+            PixelType byteType = PixelType.Byte;
+            PixelType unsignedByteType = PixelType.UnsignedByte;
+            PixelType floatType = PixelType.Float;
 
             Assert.NotNull(byteType);
             Assert.NotNull(unsignedByteType);

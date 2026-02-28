@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 using Alis.Core.Graphic.OpenGL.Enums;
 
@@ -142,7 +143,7 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void ProgramParameter_HasMultipleValues_CountIsNotZero()
         {
-            var enumValues = System.Enum.GetValues(typeof(ProgramParameter));
+            Array enumValues = System.Enum.GetValues(typeof(ProgramParameter));
             Assert.NotEmpty(enumValues);
         }
 
@@ -162,8 +163,8 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void ProgramParameter_CanCompareValues_EqualityWorks()
         {
-            var param1 = ProgramParameter.LinkStatus;
-            var param2 = ProgramParameter.LinkStatus;
+            ProgramParameter param1 = ProgramParameter.LinkStatus;
+            ProgramParameter param2 = ProgramParameter.LinkStatus;
             Assert.Equal(param1, param2);
         }
 
@@ -182,9 +183,9 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void ProgramParameter_ContainsCommonParameters_AllPresent()
         {
-            var linkStatus = ProgramParameter.LinkStatus;
-            var infoLogLength = ProgramParameter.InfoLogLength;
-            var activeUniforms = ProgramParameter.ActiveUniforms;
+            ProgramParameter linkStatus = ProgramParameter.LinkStatus;
+            ProgramParameter infoLogLength = ProgramParameter.InfoLogLength;
+            ProgramParameter activeUniforms = ProgramParameter.ActiveUniforms;
 
             Assert.NotNull(linkStatus);
             Assert.NotNull(infoLogLength);

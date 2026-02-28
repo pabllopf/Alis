@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void Vertex_DefaultInitialization_CreatesValidStruct()
         {
             // Arrange & Act
-            var vertex = new Vertex();
+            Vertex vertex = new Vertex();
 
             // Assert
             Assert.Equal(0.0f, vertex.Position.X);

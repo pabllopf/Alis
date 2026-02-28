@@ -27,7 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using Xunit;
 using Alis.Core.Graphic.Platforms.Osx.Native;
@@ -46,7 +49,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         public void NsPoint_IsStruct_TypeIsCorrect()
         {
             // Arrange & Act
-            var pointType = typeof(NsPoint);
+            Type pointType = typeof(NsPoint);
 
             // Assert
             Assert.True(pointType.IsValueType);
@@ -59,7 +62,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         public void NsPoint_IsPublic_CanBeAccessed()
         {
             // Arrange & Act
-            var pointType = typeof(NsPoint);
+            Type pointType = typeof(NsPoint);
 
             // Assert
             Assert.True(pointType.IsPublic);
@@ -73,7 +76,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         public void NsPoint_X_FieldExists()
         {
             // Arrange & Act
-            var xField = typeof(NsPoint).GetField("X");
+            FieldInfo xField = typeof(NsPoint).GetField("X");
 
             // Assert
             Assert.NotNull(xField);
@@ -87,7 +90,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         public void NsPoint_Y_FieldExists()
         {
             // Arrange & Act
-            var yField = typeof(NsPoint).GetField("Y");
+            FieldInfo yField = typeof(NsPoint).GetField("Y");
 
             // Assert
             Assert.NotNull(yField);
@@ -101,8 +104,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         public void NsPoint_Fields_ArePublic()
         {
             // Arrange & Act
-            var xField = typeof(NsPoint).GetField("X");
-            var yField = typeof(NsPoint).GetField("Y");
+            FieldInfo xField = typeof(NsPoint).GetField("X");
+            FieldInfo yField = typeof(NsPoint).GetField("Y");
 
             // Assert
             Assert.True(xField.IsPublic);
@@ -116,7 +119,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         public void NsPoint_CanBeInstantiated_StructCreationIsValid()
         {
             // Arrange & Act
-            var point = new NsPoint { X = 10.5, Y = 20.5 };
+            NsPoint point = new NsPoint { X = 10.5, Y = 20.5 };
 
             // Assert
             Assert.Equal(10.5, point.X);
@@ -130,7 +133,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         public void NsPoint_CanModifyFields_ValuesCanBeChanged()
         {
             // Arrange
-            var point = new NsPoint { X = 0, Y = 0 };
+            NsPoint point = new NsPoint { X = 0, Y = 0 };
 
             // Act
             point.X = 5.0;
@@ -148,7 +151,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         public void NsPoint_Fields_AreDoublePrecision()
         {
             // Arrange
-            var point = new NsPoint { X = 3.14159265358979, Y = 2.71828182845905 };
+            NsPoint point = new NsPoint { X = 3.14159265358979, Y = 2.71828182845905 };
 
             // Act & Assert
             Assert.Equal(3.14159265358979, point.X);
@@ -162,7 +165,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         public void NsPoint_DefaultInitialization_CreatesZeroCoordinates()
         {
             // Arrange & Act
-            var point = new NsPoint();
+            NsPoint point = new NsPoint();
 
             // Assert
             Assert.Equal(0.0, point.X);
@@ -176,7 +179,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         public void NsPoint_CanBeStoredInCollections_ListSupport()
         {
             // Arrange
-            var points = new System.Collections.Generic.List<NsPoint>
+            List<NsPoint> points = new System.Collections.Generic.List<NsPoint>
             {
                 new NsPoint { X = 0, Y = 0 },
                 new NsPoint { X = 10, Y = 10 },
@@ -195,7 +198,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         public void NsPoint_IsMarshallable_InteropIsSupported()
         {
             // Arrange
-            var pointType = typeof(NsPoint);
+            Type pointType = typeof(NsPoint);
 
             // Act
             int marshalSize = Marshal.SizeOf(pointType);

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 using Alis.Core.Graphic.OpenGL.Constructs;
 
@@ -44,7 +45,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void Uniform_IsValid_ValueExists()
         {
             // Arrange & Act
-            var uniformValue = ParamType.Uniform;
+            ParamType uniformValue = ParamType.Uniform;
 
             // Assert
             Assert.Equal(ParamType.Uniform, uniformValue);
@@ -57,7 +58,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void Attribute_IsValid_ValueExists()
         {
             // Arrange & Act
-            var attributeValue = ParamType.Attribute;
+            ParamType attributeValue = ParamType.Attribute;
 
             // Assert
             Assert.Equal(ParamType.Attribute, attributeValue);
@@ -70,7 +71,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void ParamType_IsEnum_TypeIsCorrect()
         {
             // Arrange & Act
-            var enumType = typeof(ParamType);
+            Type enumType = typeof(ParamType);
 
             // Assert
             Assert.True(enumType.IsEnum);
@@ -83,7 +84,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void ParamType_IsPublic_CanBeAccessed()
         {
             // Arrange & Act
-            var enumType = typeof(ParamType);
+            Type enumType = typeof(ParamType);
 
             // Assert
             Assert.True(enumType.IsPublic);
@@ -96,7 +97,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void ParamType_HasTwoValues_CountIsCorrect()
         {
             // Arrange
-            var enumValues = System.Enum.GetValues(typeof(ParamType));
+            Array enumValues = System.Enum.GetValues(typeof(ParamType));
 
             // Act & Assert
             Assert.Equal(2, enumValues.Length);
@@ -109,8 +110,8 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void ParamType_ValuesAreUnique_NoConflicts()
         {
             // Arrange & Act
-            var uniformValue = (int)ParamType.Uniform;
-            var attributeValue = (int)ParamType.Attribute;
+            int uniformValue = (int)ParamType.Uniform;
+            int attributeValue = (int)ParamType.Attribute;
 
             // Assert
             Assert.NotEqual(uniformValue, attributeValue);
@@ -123,8 +124,8 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void ParamType_CanCompareValues_EqualityWorks()
         {
             // Arrange & Act
-            var uniform1 = ParamType.Uniform;
-            var uniform2 = ParamType.Uniform;
+            ParamType uniform1 = ParamType.Uniform;
+            ParamType uniform2 = ParamType.Uniform;
 
             // Assert
             Assert.Equal(uniform1, uniform2);
@@ -188,8 +189,8 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void ParamType_Names_AreCorrect()
         {
             // Arrange & Act
-            var uniformName = System.Enum.GetName(typeof(ParamType), ParamType.Uniform);
-            var attributeName = System.Enum.GetName(typeof(ParamType), ParamType.Attribute);
+            string uniformName = System.Enum.GetName(typeof(ParamType), ParamType.Uniform);
+            string attributeName = System.Enum.GetName(typeof(ParamType), ParamType.Attribute);
 
             // Assert
             Assert.Equal("Uniform", uniformName);

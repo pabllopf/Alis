@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 using Alis.Core.Graphic.OpenGL;
 
@@ -57,7 +58,7 @@ namespace Alis.Core.Graphic.Test
         public void FramebufferTarget_IsEnum_TypeIsCorrect()
         {
             // Arrange & Act
-            var enumType = typeof(FramebufferTarget);
+            Type enumType = typeof(FramebufferTarget);
 
             // Assert
             Assert.True(enumType.IsEnum);
@@ -70,7 +71,7 @@ namespace Alis.Core.Graphic.Test
         public void FramebufferTarget_IsPublic_CanBeAccessed()
         {
             // Arrange & Act
-            var enumType = typeof(FramebufferTarget);
+            Type enumType = typeof(FramebufferTarget);
 
             // Assert
             Assert.True(enumType.IsPublic);
@@ -83,7 +84,7 @@ namespace Alis.Core.Graphic.Test
         public void FramebufferTarget_HasOneValue_CountIsCorrect()
         {
             // Arrange
-            var enumValues = System.Enum.GetValues(typeof(FramebufferTarget));
+            Array enumValues = System.Enum.GetValues(typeof(FramebufferTarget));
 
             // Act & Assert
             Assert.Single(enumValues);
@@ -110,8 +111,8 @@ namespace Alis.Core.Graphic.Test
         public void FramebufferTarget_CanCompareValues_EqualityWorks()
         {
             // Arrange & Act
-            var fb1 = FramebufferTarget.Framebuffer;
-            var fb2 = FramebufferTarget.Framebuffer;
+            FramebufferTarget fb1 = FramebufferTarget.Framebuffer;
+            FramebufferTarget fb2 = FramebufferTarget.Framebuffer;
 
             // Assert
             Assert.Equal(fb1, fb2);
@@ -137,7 +138,7 @@ namespace Alis.Core.Graphic.Test
         public void FramebufferTarget_HasCorrectName_NamingConventionIsMaintained()
         {
             // Arrange & Act
-            var name = System.Enum.GetName(typeof(FramebufferTarget), FramebufferTarget.Framebuffer);
+            string name = System.Enum.GetName(typeof(FramebufferTarget), FramebufferTarget.Framebuffer);
 
             // Assert
             Assert.Equal("Framebuffer", name);

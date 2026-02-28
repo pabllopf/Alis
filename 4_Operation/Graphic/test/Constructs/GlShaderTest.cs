@@ -29,6 +29,7 @@
 
 using System;
 using System.Linq;
+using System.Reflection;
 using Xunit;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Alis.Core.Graphic.OpenGL.Enums;
@@ -47,7 +48,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShader_IsSealed_CannotBeInherited()
         {
             // Arrange & Act
-            var shaderType = typeof(GlShader);
+            Type shaderType = typeof(GlShader);
 
             // Assert
             Assert.True(shaderType.IsSealed);
@@ -60,7 +61,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShader_IsPublic_CanBeAccessed()
         {
             // Arrange & Act
-            var shaderType = typeof(GlShader);
+            Type shaderType = typeof(GlShader);
 
             // Assert
             Assert.True(shaderType.IsPublic);
@@ -73,7 +74,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShader_ImplementsIDisposable_InterfaceIsCorrect()
         {
             // Arrange & Act
-            var shaderType = typeof(GlShader);
+            Type shaderType = typeof(GlShader);
 
             // Assert
             Assert.True(typeof(IDisposable).IsAssignableFrom(shaderType));
@@ -86,7 +87,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShader_ShaderId_PropertyExists()
         {
             // Arrange & Act
-            var shaderIdProperty = typeof(GlShader).GetProperty("ShaderId");
+            PropertyInfo shaderIdProperty = typeof(GlShader).GetProperty("ShaderId");
 
             // Assert
             Assert.NotNull(shaderIdProperty);
@@ -100,7 +101,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShader_ShaderType_PropertyExists()
         {
             // Arrange & Act
-            var shaderTypeProperty = typeof(GlShader).GetProperty("ShaderType");
+            PropertyInfo shaderTypeProperty = typeof(GlShader).GetProperty("ShaderType");
 
             // Assert
             Assert.NotNull(shaderTypeProperty);
@@ -114,7 +115,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShader_ShaderLog_PropertyExists()
         {
             // Arrange & Act
-            var shaderLogProperty = typeof(GlShader).GetProperty("ShaderLog");
+            PropertyInfo shaderLogProperty = typeof(GlShader).GetProperty("ShaderLog");
 
             // Assert
             Assert.NotNull(shaderLogProperty);
@@ -128,7 +129,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShader_ShaderLog_IsReadOnly()
         {
             // Arrange & Act
-            var shaderLogProperty = typeof(GlShader).GetProperty("ShaderLog");
+            PropertyInfo shaderLogProperty = typeof(GlShader).GetProperty("ShaderLog");
 
             // Assert
             Assert.NotNull(shaderLogProperty);
@@ -144,14 +145,14 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShader_Constructor_ParametersAreCorrect()
         {
             // Arrange
-            var constructors = typeof(GlShader).GetConstructors();
+            ConstructorInfo[] constructors = typeof(GlShader).GetConstructors();
 
             // Act
-            var constructor = constructors.FirstOrDefault();
+            ConstructorInfo constructor = constructors.FirstOrDefault();
 
             // Assert
             Assert.NotNull(constructor);
-            var parameters = constructor.GetParameters();
+            ParameterInfo[] parameters = constructor.GetParameters();
             Assert.Equal(2, parameters.Length);
             Assert.Equal(typeof(string), parameters[0].ParameterType); // source
             Assert.Equal(typeof(ShaderType), parameters[1].ParameterType); // type
@@ -164,7 +165,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShader_HasDestructor_CleanupIsProvided()
         {
             // Arrange & Act
-            var shaderType = typeof(GlShader);
+            Type shaderType = typeof(GlShader);
 
             // Assert
             Assert.True(shaderType.IsSealed);
@@ -177,10 +178,10 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShader_Properties_ProvideMetadata()
         {
             // Arrange
-            var shaderType = typeof(GlShader);
+            Type shaderType = typeof(GlShader);
 
             // Act
-            var properties = shaderType.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            PropertyInfo[] properties = shaderType.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
 
             // Assert
             Assert.NotEmpty(properties);
@@ -196,11 +197,11 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShader_PublicMembers_AreCorrect()
         {
             // Arrange
-            var shaderType = typeof(GlShader);
+            Type shaderType = typeof(GlShader);
 
             // Act
-            var publicProperties = shaderType.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-            var publicMethods = shaderType.GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.DeclaredOnly);
+            PropertyInfo[] publicProperties = shaderType.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            MethodInfo[] publicMethods = shaderType.GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.DeclaredOnly);
 
             // Assert
             Assert.NotEmpty(publicProperties);

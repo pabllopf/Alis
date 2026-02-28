@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Reflection;
 using Xunit;
 using Alis.Core.Graphic.Ui;
 using Alis.Core.Aspect.Math.Definition;
@@ -45,7 +47,7 @@ namespace Alis.Core.Graphic.Test.Ui
         public void DefaultFont_IsStatic_CanBeAccessed()
         {
             // Arrange & Act
-            var defaultFontProperty = typeof(FontManager).GetProperty("DefaultFont", 
+            PropertyInfo defaultFontProperty = typeof(FontManager).GetProperty("DefaultFont", 
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
 
             // Assert
@@ -60,7 +62,7 @@ namespace Alis.Core.Graphic.Test.Ui
         public void DefaultFont_ReturnsFont_TypeIsCorrect()
         {
             // Arrange & Act
-            var defaultFontProperty = typeof(FontManager).GetProperty("DefaultFont", 
+            PropertyInfo defaultFontProperty = typeof(FontManager).GetProperty("DefaultFont", 
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
 
             // Assert
@@ -75,7 +77,7 @@ namespace Alis.Core.Graphic.Test.Ui
         public void DefaultFont_IsReadOnly_CannotBeModified()
         {
             // Arrange & Act
-            var defaultFontProperty = typeof(FontManager).GetProperty("DefaultFont", 
+            PropertyInfo defaultFontProperty = typeof(FontManager).GetProperty("DefaultFont", 
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
 
             // Assert
@@ -90,7 +92,7 @@ namespace Alis.Core.Graphic.Test.Ui
         public void RenderText_MethodWithCoordinatesExists_CanBeInvoked()
         {
             // Arrange & Act
-            var method = typeof(FontManager).GetMethod("RenderText", 
+            MethodInfo method = typeof(FontManager).GetMethod("RenderText", 
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static,
                 null, new[] { typeof(string), typeof(int), typeof(int) }, null);
 
@@ -105,7 +107,7 @@ namespace Alis.Core.Graphic.Test.Ui
         public void RenderText_MethodWithColorsExists_CanBeInvoked()
         {
             // Arrange & Act
-            var method = typeof(FontManager).GetMethod("RenderText", 
+            MethodInfo method = typeof(FontManager).GetMethod("RenderText", 
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static,
                 null, new[] { typeof(string), typeof(int), typeof(int), typeof(Color), typeof(Color) }, null);
 
@@ -120,7 +122,7 @@ namespace Alis.Core.Graphic.Test.Ui
         public void FontManager_IsStatic_ClassIsCorrectlyStructured()
         {
             // Arrange
-            var fontManagerType = typeof(FontManager);
+            Type fontManagerType = typeof(FontManager);
 
             // Act & Assert
             Assert.True(fontManagerType.IsSealed);
@@ -134,7 +136,7 @@ namespace Alis.Core.Graphic.Test.Ui
         public void FontManager_IsPublic_CanBeAccessed()
         {
             // Arrange & Act
-            var fontManagerType = typeof(FontManager);
+            Type fontManagerType = typeof(FontManager);
 
             // Assert
             Assert.True(fontManagerType.IsPublic);
@@ -147,12 +149,12 @@ namespace Alis.Core.Graphic.Test.Ui
         public void RenderText_WithColors_ParametersAreCorrect()
         {
             // Arrange
-            var method = typeof(FontManager).GetMethod("RenderText", 
+            MethodInfo method = typeof(FontManager).GetMethod("RenderText", 
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static,
                 null, new[] { typeof(string), typeof(int), typeof(int), typeof(Color), typeof(Color) }, null);
 
             // Act
-            var parameters = method?.GetParameters();
+            ParameterInfo[] parameters = method?.GetParameters();
 
             // Assert
             Assert.NotNull(parameters);
@@ -171,12 +173,12 @@ namespace Alis.Core.Graphic.Test.Ui
         public void RenderText_WithCoordinates_ParametersAreCorrect()
         {
             // Arrange
-            var method = typeof(FontManager).GetMethod("RenderText", 
+            MethodInfo method = typeof(FontManager).GetMethod("RenderText", 
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static,
                 null, new[] { typeof(string), typeof(int), typeof(int) }, null);
 
             // Act
-            var parameters = method?.GetParameters();
+            ParameterInfo[] parameters = method?.GetParameters();
 
             // Assert
             Assert.NotNull(parameters);
@@ -193,10 +195,10 @@ namespace Alis.Core.Graphic.Test.Ui
         public void RenderText_Methods_ReturnVoid()
         {
             // Arrange
-            var method1 = typeof(FontManager).GetMethod("RenderText", 
+            MethodInfo method1 = typeof(FontManager).GetMethod("RenderText", 
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static,
                 null, new[] { typeof(string), typeof(int), typeof(int) }, null);
-            var method2 = typeof(FontManager).GetMethod("RenderText", 
+            MethodInfo method2 = typeof(FontManager).GetMethod("RenderText", 
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static,
                 null, new[] { typeof(string), typeof(int), typeof(int), typeof(Color), typeof(Color) }, null);
 
@@ -214,9 +216,9 @@ namespace Alis.Core.Graphic.Test.Ui
         public void FontManager_AllMembers_AreStatic()
         {
             // Arrange
-            var fontManagerType = typeof(FontManager);
-            var properties = fontManagerType.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
-            var methods = fontManagerType.GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.DeclaredOnly);
+            Type fontManagerType = typeof(FontManager);
+            PropertyInfo[] properties = fontManagerType.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+            MethodInfo[] methods = fontManagerType.GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.DeclaredOnly);
 
             // Act & Assert
             Assert.NotEmpty(properties);

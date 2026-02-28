@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void GameControllerType_DefaultInitialization_CreatesValidStruct()
         {
             // Arrange & Act
-            var controllerType = new GameControllerType();
+            GameControllerType controllerType = new GameControllerType();
 
             // Assert
             // GameControllerType should be instantiable
@@ -58,10 +58,10 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void GameControllerType_IsValueType_CanBeCopied()
         {
             // Arrange
-            var original = new GameControllerType();
+            GameControllerType original = new GameControllerType();
 
             // Act
-            var copy = original;
+            GameControllerType copy = original;
 
             // Assert
             // Both instances should be equal
@@ -75,8 +75,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void GameControllerType_MultipleInstances_AreIndependent()
         {
             // Arrange & Act
-            var type1 = new GameControllerType();
-            var type2 = new GameControllerType();
+            GameControllerType type1 = new GameControllerType();
+            GameControllerType type2 = new GameControllerType();
 
             // Assert
             Assert.NotNull(type1);

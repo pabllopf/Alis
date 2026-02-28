@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Xunit;
 using Alis.Core.Graphic.OpenGL.Enums;
 
@@ -151,7 +152,7 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void EnableCap_HasMultipleValues_CountIsNotZero()
         {
-            var enumValues = System.Enum.GetValues(typeof(EnableCap));
+            Array enumValues = System.Enum.GetValues(typeof(EnableCap));
             Assert.NotEmpty(enumValues);
             Assert.True(enumValues.Length > 10);
         }
@@ -172,8 +173,8 @@ namespace Alis.Core.Graphic.Test.Enums
         [Fact]
         public void EnableCap_CanCompareValues_EqualityWorks()
         {
-            var cap1 = EnableCap.Blend;
-            var cap2 = EnableCap.Blend;
+            EnableCap cap1 = EnableCap.Blend;
+            EnableCap cap2 = EnableCap.Blend;
             Assert.Equal(cap1, cap2);
         }
 
@@ -193,10 +194,10 @@ namespace Alis.Core.Graphic.Test.Enums
         public void EnableCap_ContainsCommonCapabilities_AllPresent()
         {
             // Verify that common capabilities are present
-            var blendCap = EnableCap.Blend;
-            var depthTestCap = EnableCap.DepthTest;
-            var scissorTestCap = EnableCap.ScissorTest;
-            var cullFaceCap = EnableCap.CullFace;
+            EnableCap blendCap = EnableCap.Blend;
+            EnableCap depthTestCap = EnableCap.DepthTest;
+            EnableCap scissorTestCap = EnableCap.ScissorTest;
+            EnableCap cullFaceCap = EnableCap.CullFace;
 
             Assert.NotNull(blendCap);
             Assert.NotNull(depthTestCap);

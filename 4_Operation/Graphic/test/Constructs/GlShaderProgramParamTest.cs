@@ -29,6 +29,7 @@
 
 using System;
 using System.Linq;
+using System.Reflection;
 using Xunit;
 using Alis.Core.Graphic.OpenGL.Constructs;
 
@@ -46,7 +47,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_IsSealed_CannotBeInherited()
         {
             // Arrange & Act
-            var paramType = typeof(GlShaderProgramParam);
+            Type paramType = typeof(GlShaderProgramParam);
 
             // Assert
             Assert.True(paramType.IsSealed);
@@ -59,7 +60,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_IsPublic_CanBeAccessed()
         {
             // Arrange & Act
-            var paramType = typeof(GlShaderProgramParam);
+            Type paramType = typeof(GlShaderProgramParam);
 
             // Assert
             Assert.True(paramType.IsPublic);
@@ -72,7 +73,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_Name_FieldExists()
         {
             // Arrange & Act
-            var nameField = typeof(GlShaderProgramParam).GetField("Name", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            FieldInfo nameField = typeof(GlShaderProgramParam).GetField("Name", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
 
             // Assert
             Assert.NotNull(nameField);
@@ -86,7 +87,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_ParamType_FieldExists()
         {
             // Arrange & Act
-            var paramTypeField = typeof(GlShaderProgramParam).GetField("ParamType", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            FieldInfo paramTypeField = typeof(GlShaderProgramParam).GetField("ParamType", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
 
             // Assert
             Assert.NotNull(paramTypeField);
@@ -100,7 +101,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_Type_FieldExists()
         {
             // Arrange & Act
-            var typeField = typeof(GlShaderProgramParam).GetField("Type", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            FieldInfo typeField = typeof(GlShaderProgramParam).GetField("Type", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
 
             // Assert
             Assert.NotNull(typeField);
@@ -114,7 +115,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_Location_PropertyExists()
         {
             // Arrange & Act
-            var locationProperty = typeof(GlShaderProgramParam).GetProperty("Location");
+            PropertyInfo locationProperty = typeof(GlShaderProgramParam).GetProperty("Location");
 
             // Assert
             Assert.NotNull(locationProperty);
@@ -130,7 +131,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_Program_PropertyExists()
         {
             // Arrange & Act
-            var programProperty = typeof(GlShaderProgramParam).GetProperty("Program");
+            PropertyInfo programProperty = typeof(GlShaderProgramParam).GetProperty("Program");
 
             // Assert
             Assert.NotNull(programProperty);
@@ -146,7 +147,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_ProgramId_PropertyExists()
         {
             // Arrange & Act
-            var programIdProperty = typeof(GlShaderProgramParam).GetProperty("ProgramId");
+            PropertyInfo programIdProperty = typeof(GlShaderProgramParam).GetProperty("ProgramId");
 
             // Assert
             Assert.NotNull(programIdProperty);
@@ -162,7 +163,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_HasTwoConstructors_OverloadsExist()
         {
             // Arrange & Act
-            var constructors = typeof(GlShaderProgramParam).GetConstructors();
+            ConstructorInfo[] constructors = typeof(GlShaderProgramParam).GetConstructors();
 
             // Assert
             Assert.Equal(2, constructors.Length);
@@ -175,11 +176,11 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_FirstConstructor_ParametersAreCorrect()
         {
             // Arrange
-            var constructors = typeof(GlShaderProgramParam).GetConstructors();
-            var constructor = constructors.FirstOrDefault(c => c.GetParameters().Length == 3);
+            ConstructorInfo[] constructors = typeof(GlShaderProgramParam).GetConstructors();
+            ConstructorInfo constructor = constructors.FirstOrDefault(c => c.GetParameters().Length == 3);
 
             // Act
-            var parameters = constructor?.GetParameters();
+            ParameterInfo[] parameters = constructor?.GetParameters();
 
             // Assert
             Assert.NotNull(parameters);
@@ -196,11 +197,11 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_SecondConstructor_ParametersAreCorrect()
         {
             // Arrange
-            var constructors = typeof(GlShaderProgramParam).GetConstructors();
-            var constructor = constructors.FirstOrDefault(c => c.GetParameters().Length == 5);
+            ConstructorInfo[] constructors = typeof(GlShaderProgramParam).GetConstructors();
+            ConstructorInfo constructor = constructors.FirstOrDefault(c => c.GetParameters().Length == 5);
 
             // Act
-            var parameters = constructor?.GetParameters();
+            ParameterInfo[] parameters = constructor?.GetParameters();
 
             // Assert
             Assert.NotNull(parameters);
@@ -219,9 +220,9 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_ReadonlyFields_CannotBeModified()
         {
             // Arrange
-            var nameField = typeof(GlShaderProgramParam).GetField("Name", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-            var paramTypeField = typeof(GlShaderProgramParam).GetField("ParamType", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-            var typeField = typeof(GlShaderProgramParam).GetField("Type", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            FieldInfo nameField = typeof(GlShaderProgramParam).GetField("Name", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            FieldInfo paramTypeField = typeof(GlShaderProgramParam).GetField("ParamType", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            FieldInfo typeField = typeof(GlShaderProgramParam).GetField("Type", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
 
             // Act & Assert
             Assert.NotNull(nameField);
@@ -240,9 +241,9 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_ModifiableProperties_CanBeChanged()
         {
             // Arrange & Act
-            var locationProperty = typeof(GlShaderProgramParam).GetProperty("Location");
-            var programProperty = typeof(GlShaderProgramParam).GetProperty("Program");
-            var programIdProperty = typeof(GlShaderProgramParam).GetProperty("ProgramId");
+            PropertyInfo locationProperty = typeof(GlShaderProgramParam).GetProperty("Location");
+            PropertyInfo programProperty = typeof(GlShaderProgramParam).GetProperty("Program");
+            PropertyInfo programIdProperty = typeof(GlShaderProgramParam).GetProperty("ProgramId");
 
             // Assert
             Assert.True(locationProperty.CanWrite);
@@ -257,10 +258,10 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_HasParameterMethods_ValueManagementExists()
         {
             // Arrange
-            var paramType = typeof(GlShaderProgramParam);
+            Type paramType = typeof(GlShaderProgramParam);
 
             // Act
-            var methods = paramType.GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            MethodInfo[] methods = paramType.GetMethods(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
 
             // Assert
             Assert.NotEmpty(methods);
@@ -273,7 +274,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void GlShaderProgramParam_Type_IsSystemType()
         {
             // Arrange
-            var typeField = typeof(GlShaderProgramParam).GetField("Type", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            FieldInfo typeField = typeof(GlShaderProgramParam).GetField("Type", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
 
             // Act & Assert
             Assert.NotNull(typeField);
