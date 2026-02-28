@@ -47,8 +47,8 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async Task LoadBannerAdAsync_WithoutInitialization_ShouldThrowException()
         {
             // Arrange
-            var mockContext = new Mock<Context>();
-            var manager = new AdsManager(mockContext.Object);
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
 
             // Act & Assert
             await Assert.ThrowsAsync<InvalidOperationException>(
@@ -63,9 +63,9 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async Task LoadBannerAdAsync_WithNullUnitId_ShouldThrowArgumentException()
         {
             // Arrange
-            var mockContext = new Mock<Context>();
-            var manager = new AdsManager(mockContext.Object);
-            var config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
+            AdConfiguration config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
             await manager.InitializeAsync(config);
 
             // Act & Assert
@@ -81,9 +81,9 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async Task LoadBannerAdAsync_WithEmptyUnitId_ShouldThrowArgumentException()
         {
             // Arrange
-            var mockContext = new Mock<Context>();
-            var manager = new AdsManager(mockContext.Object);
-            var config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
+            AdConfiguration config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
             await manager.InitializeAsync(config);
 
             // Act & Assert
@@ -99,9 +99,9 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async Task ShowInterstitialAd_ShouldResetLoadedState()
         {
             // Arrange
-            var mockContext = new Mock<Context>();
-            var manager = new AdsManager(mockContext.Object);
-            var config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
+            AdConfiguration config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
             await manager.InitializeAsync(config);
             await manager.LoadInterstitialAdAsync("interstitial-id");
 
@@ -121,9 +121,9 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async Task ShowRewardedVideoAd_ShouldResetLoadedState()
         {
             // Arrange
-            var mockContext = new Mock<Context>();
-            var manager = new AdsManager(mockContext.Object);
-            var config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
+            AdConfiguration config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
             await manager.InitializeAsync(config);
             await manager.LoadRewardedVideoAdAsync("rewarded-id");
 
@@ -143,9 +143,9 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async Task HideBannerAd_WithoutShowingFirst_ShouldNotThrow()
         {
             // Arrange
-            var mockContext = new Mock<Context>();
-            var manager = new AdsManager(mockContext.Object);
-            var config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
+            AdConfiguration config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
             await manager.InitializeAsync(config);
 
             // Act & Assert - Should not throw
@@ -159,9 +159,9 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async Task Initialize_ShouldPreserveConfigurationProperties()
         {
             // Arrange
-            var mockContext = new Mock<Context>();
-            var manager = new AdsManager(mockContext.Object);
-            var config = new AdConfiguration(
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
+            AdConfiguration config = new AdConfiguration(
                 appId: "test-app-id",
                 bannerAdUnitId: "banner-123",
                 interstitialAdUnitId: "interstitial-456",
@@ -186,9 +186,9 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async Task OnAdRewarded_ShouldProvideCorrectRewardArgs()
         {
             // Arrange
-            var mockContext = new Mock<Context>();
-            var manager = new AdsManager(mockContext.Object);
-            var config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
+            AdConfiguration config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
             await manager.InitializeAsync(config);
             await manager.LoadRewardedVideoAdAsync("rewarded-id");
 
@@ -212,9 +212,9 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async Task MultipleBannerLoadAndShowCycles_ShouldWork()
         {
             // Arrange
-            var mockContext = new Mock<Context>();
-            var manager = new AdsManager(mockContext.Object);
-            var config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
+            AdConfiguration config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
             await manager.InitializeAsync(config);
 
             // Act & Assert - Multiple cycles
@@ -235,9 +235,9 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async Task ShowInterstitialAd_WithoutLoading_ShouldNotThrow()
         {
             // Arrange
-            var mockContext = new Mock<Context>();
-            var manager = new AdsManager(mockContext.Object);
-            var config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
+            AdConfiguration config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
             await manager.InitializeAsync(config);
 
             // Act & Assert - Should log error but not throw
@@ -251,9 +251,9 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async Task BannerAdVisibility_ShouldBeIndependentOfLoadState()
         {
             // Arrange
-            var mockContext = new Mock<Context>();
-            var manager = new AdsManager(mockContext.Object);
-            var config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
+            AdConfiguration config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
             await manager.InitializeAsync(config);
             await manager.LoadBannerAdAsync("banner-id");
 
@@ -273,13 +273,13 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async Task Initialize_WithDifferentLoggingLevels_ShouldWork()
         {
             // Arrange
-            var mockContext = new Mock<Context>();
-            var manager = new AdsManager(mockContext.Object);
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
 
             // Test each logging level
             foreach (AdLoggingLevel level in Enum.GetValues(typeof(AdLoggingLevel)))
             {
-                var config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id")
+                AdConfiguration config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id")
                 {
                     LoggingLevel = level
                 };
@@ -299,12 +299,12 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async Task UnsubscribeFromEvent_ShouldNotTriggerEvent()
         {
             // Arrange
-            var mockContext = new Mock<Context>();
-            var manager = new AdsManager(mockContext.Object);
-            var config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager manager = new AdsManager(mockContext.Object);
+            AdConfiguration config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
             await manager.InitializeAsync(config);
 
-            var eventTriggered = false;
+            bool eventTriggered = false;
             Action<string> handler = (unitId) => { eventTriggered = true; };
 
             manager.OnBannerAdLoaded += handler;
@@ -328,13 +328,13 @@ namespace Alis.Extension.Ads.GoogleAds.Test
         public async Task CustomManagerProperties_ShouldBeSet()
         {
             // Arrange
-            var mockContext = new Mock<Context>();
-            var customId = "custom-ads-manager-id";
-            var customName = "CustomAdsManager";
-            var customTag = "CustomAds";
+            Mock<Context> mockContext = new Mock<Context>();
+            string customId = "custom-ads-manager-id";
+            string customName = "CustomAdsManager";
+            string customTag = "CustomAds";
 
-            var manager = new AdsManager(customId, customName, customTag, true, mockContext.Object);
-            var config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
+            AdsManager manager = new AdsManager(customId, customName, customTag, true, mockContext.Object);
+            AdConfiguration config = new AdConfiguration("app-id", "banner-id", "interstitial-id", "rewarded-id");
 
             // Act
             await manager.InitializeAsync(config);

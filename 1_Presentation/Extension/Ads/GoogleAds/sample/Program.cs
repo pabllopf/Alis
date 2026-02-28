@@ -79,13 +79,13 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             Logger.Info("--------------------------------");
 
             // Create a mock context (in real usage, you'd use your actual game engine context)
-            var mockContext = new Mock<Context>();
+            Mock<Context> mockContext = new Mock<Context>();
 
             // Initialize the ads manager
-            var adsManager = new AdsManager(mockContext.Object);
+            AdsManager adsManager = new AdsManager(mockContext.Object);
 
             // Create configuration
-            var config = new AdConfiguration(
+            AdConfiguration config = new AdConfiguration(
                 appId: "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
                 bannerAdUnitId: "ca-app-pub-3940256099942544/6300978111",
                 interstitialAdUnitId: "ca-app-pub-3940256099942544/1033173712",
@@ -147,10 +147,10 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             Logger.Info("Sample 2: Interstitial Ads");
             Logger.Info("---------------------------");
 
-            var mockContext = new Mock<Context>();
-            var adsManager = new AdsManager(mockContext.Object);
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager adsManager = new AdsManager(mockContext.Object);
 
-            var config = new AdConfiguration(
+            AdConfiguration config = new AdConfiguration(
                 appId: "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
                 bannerAdUnitId: "ca-app-pub-3940256099942544/6300978111",
                 interstitialAdUnitId: "ca-app-pub-3940256099942544/1033173712",
@@ -211,10 +211,10 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             Logger.Info("Sample 3: Rewarded Video Ads");
             Logger.Info("-----------------------------");
 
-            var mockContext = new Mock<Context>();
-            var adsManager = new AdsManager(mockContext.Object);
+            Mock<Context> mockContext = new Mock<Context>();
+            AdsManager adsManager = new AdsManager(mockContext.Object);
 
-            var config = new AdConfiguration(
+            AdConfiguration config = new AdConfiguration(
                 appId: "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
                 bannerAdUnitId: "ca-app-pub-3940256099942544/6300978111",
                 interstitialAdUnitId: "ca-app-pub-3940256099942544/1033173712",
@@ -276,12 +276,12 @@ namespace Alis.Extension.Ads.GoogleAds.Sample
             Logger.Info("Sample 4: Complete Game Integration");
             Logger.Info("====================================");
 
-            var mockContext = new Mock<Context>();
-            var gameState = new GameStateExample();
-            var adsManager = new AdsManager(mockContext.Object);
+            Mock<Context> mockContext = new Mock<Context>();
+            GameStateExample gameState = new GameStateExample();
+            AdsManager adsManager = new AdsManager(mockContext.Object);
 
             // Configure ads based on game settings
-            var config = new AdConfiguration(
+            AdConfiguration config = new AdConfiguration(
                 appId: "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy",
                 bannerAdUnitId: "ca-app-pub-3940256099942544/6300978111",
                 interstitialAdUnitId: "ca-app-pub-3940256099942544/1033173712",
