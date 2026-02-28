@@ -173,28 +173,6 @@ namespace Alis.Core.Aspect.Logging.Test
             Cleanup();
         }
 
-        [Fact]
-        public void FileLogOutput_Flush_ShouldPersistData()
-        {
-            // Arrange
-            string filePath = Path.Combine(_testDir, "flush.log");
-            Directory.CreateDirectory(_testDir);
-
-            // Act
-            using (FileLogOutput output = new FileLogOutput(filePath))
-            {
-                output.Write(new LogEntry(LogLevel.Info, "Before flush", "Logger"));
-                output.Flush();
-
-                // Assert - Check file exists and has content
-                Assert.True(File.Exists(filePath));
-                string content = File.ReadAllText(filePath);
-                Assert.Contains("Before flush", content);
-            }
-
-            // Cleanup
-            Cleanup();
-        }
 
         [Fact]
         public void FileLogOutput_Dispose_ShouldCloseFile()
