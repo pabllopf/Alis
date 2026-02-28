@@ -37,6 +37,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
     /// </summary>
     public class GlfwNativeMonitorTests
     {
+        /// <summary>
+        /// Gets the monitors returns non null array
+        /// </summary>
         [RequiresDisplay]
         public void GetMonitors_ReturnsNonNullArray()
         {
@@ -47,6 +50,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.NotNull(monitors);
         }
 
+        /// <summary>
+        /// Gets the primary monitor returns monitor
+        /// </summary>
         [RequiresDisplay]
         public void GetPrimaryMonitor_ReturnsMonitor()
         {
@@ -58,6 +64,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.True(monitor == Monitor.None || monitor != Monitor.None);
         }
 
+        /// <summary>
+        /// Gets the monitor physical size with valid monitor returns size
+        /// </summary>
         [RequiresDisplay]
         public void GetMonitorPhysicalSize_WithValidMonitor_ReturnsSize()
         {
@@ -73,6 +82,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.True(height > 0);
         }
 
+        /// <summary>
+        /// Gets the monitor position with valid monitor returns position
+        /// </summary>
         [RequiresDisplay]
         public void GetMonitorPosition_WithValidMonitor_ReturnsPosition()
         {
@@ -88,6 +100,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.True(y != int.MinValue);
         }
 
+        /// <summary>
+        /// Gets the monitor work area with valid monitor returns work area
+        /// </summary>
         [RequiresDisplay]
         public void GetMonitorWorkArea_WithValidMonitor_ReturnsWorkArea()
         {

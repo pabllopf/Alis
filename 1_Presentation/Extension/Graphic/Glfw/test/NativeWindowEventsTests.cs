@@ -39,13 +39,22 @@ namespace Alis.Extension.Graphic.Glfw.Test
     /// </summary>
     public class NativeWindowEventsTests : IDisposable
     {
+        /// <summary>
+        /// The window
+        /// </summary>
         private NativeWindow window;
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             window?.Dispose();
         }
 
+        /// <summary>
+        /// Natives the window closing event can be subscribed
+        /// </summary>
         [RequiresDisplay]
         public void NativeWindow_Closing_Event_CanBeSubscribed()
         {
@@ -61,6 +70,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.NotNull(window);
         }
 
+        /// <summary>
+        /// Natives the window size changed event can be subscribed
+        /// </summary>
         [RequiresDisplay]
         public void NativeWindow_SizeChanged_Event_CanBeSubscribed()
         {
@@ -78,6 +90,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
       
 
+        /// <summary>
+        /// Natives the window key press event can be subscribed
+        /// </summary>
         [RequiresDisplay]
         public void NativeWindow_KeyPress_Event_CanBeSubscribed()
         {
@@ -93,6 +108,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.NotNull(window);
         }
 
+        /// <summary>
+        /// Natives the window key release event can be subscribed
+        /// </summary>
         [RequiresDisplay]
         public void NativeWindow_KeyRelease_Event_CanBeSubscribed()
         {
@@ -108,6 +126,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.NotNull(window);
         }
 
+        /// <summary>
+        /// Natives the window key repeat event can be subscribed
+        /// </summary>
         [RequiresDisplay]
         public void NativeWindow_KeyRepeat_Event_CanBeSubscribed()
         {
@@ -125,6 +146,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
        
 
+        /// <summary>
+        /// Natives the window mouse enter event can be subscribed
+        /// </summary>
         [RequiresDisplay]
         public void NativeWindow_MouseEnter_Event_CanBeSubscribed()
         {
@@ -140,6 +164,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.NotNull(window);
         }
 
+        /// <summary>
+        /// Natives the window mouse leave event can be subscribed
+        /// </summary>
         [RequiresDisplay]
         public void NativeWindow_MouseLeave_Event_CanBeSubscribed()
         {
@@ -155,6 +182,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.NotNull(window);
         }
 
+        /// <summary>
+        /// Natives the window file drop event can be subscribed
+        /// </summary>
         [RequiresDisplay]
         public void NativeWindow_FileDrop_Event_CanBeSubscribed()
         {
@@ -171,6 +201,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
 
+        /// <summary>
+        /// Natives the window framebuffer size changed event can be subscribed
+        /// </summary>
         [RequiresDisplay]
         public void NativeWindow_FramebufferSizeChanged_Event_CanBeSubscribed()
         {
@@ -186,6 +219,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.NotNull(window);
         }
         
+        /// <summary>
+        /// Natives the window content scale changed event can be subscribed
+        /// </summary>
         [RequiresDisplay]
         public void NativeWindow_ContentScaleChanged_Event_CanBeSubscribed()
         {

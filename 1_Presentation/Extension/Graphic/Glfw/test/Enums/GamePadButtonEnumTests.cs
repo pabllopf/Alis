@@ -37,96 +37,144 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
     /// </summary>
     public class GamePadButtonEnumTests
     {
+        /// <summary>
+        /// Tests that game pad button a is defined
+        /// </summary>
         [Fact]
         public void GamePadButton_A_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(GamePadButton), GamePadButton.A));
         }
 
+        /// <summary>
+        /// Tests that game pad button b is defined
+        /// </summary>
         [Fact]
         public void GamePadButton_B_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(GamePadButton), GamePadButton.B));
         }
 
+        /// <summary>
+        /// Tests that game pad button x is defined
+        /// </summary>
         [Fact]
         public void GamePadButton_X_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(GamePadButton), GamePadButton.X));
         }
 
+        /// <summary>
+        /// Tests that game pad button y is defined
+        /// </summary>
         [Fact]
         public void GamePadButton_Y_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(GamePadButton), GamePadButton.Y));
         }
 
+        /// <summary>
+        /// Tests that game pad button left bumper is defined
+        /// </summary>
         [Fact]
         public void GamePadButton_LeftBumper_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(GamePadButton), GamePadButton.LeftBumper));
         }
 
+        /// <summary>
+        /// Tests that game pad button right bumper is defined
+        /// </summary>
         [Fact]
         public void GamePadButton_RightBumper_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(GamePadButton), GamePadButton.RightBumper));
         }
 
+        /// <summary>
+        /// Tests that game pad button back is defined
+        /// </summary>
         [Fact]
         public void GamePadButton_Back_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(GamePadButton), GamePadButton.Back));
         }
 
+        /// <summary>
+        /// Tests that game pad button start is defined
+        /// </summary>
         [Fact]
         public void GamePadButton_Start_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(GamePadButton), GamePadButton.Start));
         }
 
+        /// <summary>
+        /// Tests that game pad button guide is defined
+        /// </summary>
         [Fact]
         public void GamePadButton_Guide_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(GamePadButton), GamePadButton.Guide));
         }
 
+        /// <summary>
+        /// Tests that game pad button left thumb is defined
+        /// </summary>
         [Fact]
         public void GamePadButton_LeftThumb_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(GamePadButton), GamePadButton.LeftThumb));
         }
 
+        /// <summary>
+        /// Tests that game pad button right thumb is defined
+        /// </summary>
         [Fact]
         public void GamePadButton_RightThumb_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(GamePadButton), GamePadButton.RightThumb));
         }
 
+        /// <summary>
+        /// Tests that game pad button d pad up is defined
+        /// </summary>
         [Fact]
         public void GamePadButton_DPadUp_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(GamePadButton), GamePadButton.DpadUp));
         }
 
+        /// <summary>
+        /// Tests that game pad button d pad right is defined
+        /// </summary>
         [Fact]
         public void GamePadButton_DPadRight_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(GamePadButton), GamePadButton.DpadRight));
         }
 
+        /// <summary>
+        /// Tests that game pad button d pad down is defined
+        /// </summary>
         [Fact]
         public void GamePadButton_DPadDown_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(GamePadButton), GamePadButton.DpadDown));
         }
 
+        /// <summary>
+        /// Tests that game pad button d pad left is defined
+        /// </summary>
         [Fact]
         public void GamePadButton_DPadLeft_IsDefined()
         {
             Assert.True(Enum.IsDefined(typeof(GamePadButton), GamePadButton.DpadLeft));
         }
 
+        /// <summary>
+        /// Tests that game pad button can be cast to int
+        /// </summary>
         [Fact]
         public void GamePadButton_CanBeCastToInt()
         {
@@ -135,6 +183,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Enums
             Assert.True(value >= 0);
         }
 
+        /// <summary>
+        /// Tests that game pad button all buttons are different
+        /// </summary>
         [Fact]
         public void GamePadButton_AllButtons_AreDifferent()
         {

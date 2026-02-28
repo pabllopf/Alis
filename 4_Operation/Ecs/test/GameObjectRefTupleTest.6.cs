@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    /// The game object ref tuple test class
+    /// </summary>
     public partial class GameObjectRefTupleTest
     {
         
